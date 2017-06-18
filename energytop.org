@@ -2876,7 +2876,7 @@ Scott
 
               -- strongly related to # of pca comps needed to explain something\
               -- can be used to est. # pca comps needed to explain 90% of var.
-              -- see also: minka00autopcadim
+              -- see also: [[cite:Minka00AutoPCAdim][Minka 2000: Automatic Choice Dimensionality PCA]]
 
 ************* joint mutual information, either: see [[causality determination]] and other feature selection stuff
 *********** correlation matrix fixup: [[file:energy.bib::higham02nearestcorrmat][higham 2002: computing]] nearest corr mat
@@ -10761,6 +10761,7 @@ dimen* <<State Change Detection>>
 *** [[cite:Yu12MultiWayGMMkernPLS][Yu 2012: Multiway Gaussian Mixture Kernel PLS batch process quality]]
 *** [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: Large Data Set Fault Detect Wind Forecast LIGHTNING]]
 *** [[PLSR for Graph Learning]]
+*** [[cite:Pena03descSctrLinDep][Pena & Rodriguez 2003: Meas multivar scatter and linear dependence]]
 *** TODO <<Covariance sparseness>>
 ***** See also: [[Covariance Shrinkage]]
 ***** DONE [[cite:Tastu15spcTimeTrajGaussCpla][Tastu et al. 2015: and Space Time Trajectories Gaus Cpla Prec Mtrx]]
