@@ -1,0 +1,1507 @@
+Prosody Break Label Prediction
+
+* Use Dustin's features
+*** Feature Documentation
+***** Dustin says that this [[file:prosodic-feat.pdf][paper]] is fairly close to what he's doing.
+*** Merge Dustin feats 
+***** TODO why are so many of Dustin's features unknown in merged files?
+***** TODO what's up w/ [[file:~/prosbreak/exp/run/run.00055/log/contrastCommTrn_4_3.pl.log::TURN_TIME%202%2036803e%2006][giant TURN_TIME values]]?
+***** TODO fix lau
+******* Dustin says:
+        "Sure, they are in there as is - but just not with any phone statistics,
+        if you want phone statistics then you'd need to add them to the
+        phone_stat file (and put in a mean, stdev - etc, which you could compute
+        over the corpus).  So, they are there as is, but without phone stats. 
+        You can try it, but in my experience they've not usually been helpful."
+***** TODO add gender to wavinfo?
+***** DONE PATTERN_BOUNDARY problem
+******* two kinds always end up @ [[file:PATTERN_BOUNDARY.txt][bottom of tree]], probably meaningless
+******* stuff hangs forever @ pruning time
+******* try removing it & see what happens
+********* answer: stuff trained faster but still got stuck on the bl=1's
+******* DO THIS: solution: shrink BL='1' training set (the only one that hangs)
+***** DONE fix stuck TURN_CNT : 
+******* I was [[file:~/prosbreak/acoustfeats.pl::latProsProg%20htk%20pros%20swbd][calling]] lattice-prog per-speaker ==> missing a side
+******* DONE Dustin missing sequence # bug fix: gaps in aligns email to Dustin
+******* Fix
+********* DONE run 9 needs to be deleted and run over
+********* DONE do scripts up to lattice-prog probably need separate speaker dirs?
+********* DONE lattice-pros probably OK w/ mixed files BUT OK w/ mixed dirs?
+********* DONE [[file:~/prosbreak/ProsBreak.pm::sub%20accumAcFeatSnips][accumAcFeatSnips]] needs to separate snips by filename
+***** DONE what are the headers?: email to Dustin
+***** DONE merge *.check files to get word in a feature column?
+******* acoustfeats.pl must be per-speaker
+********* merged files are per-speaker
+          ==> per-speaker organization in acoustfeats.pl
+********* condor blowup
+*********** ~1K jobs when per-conversation
+*********** per-speaker would be ~2K jobs
+*********** solutions
+************* put per-speaker info into per-conversation jobs
+************* run steps in groups of speakers: DO THIS
+*************** would still require per-speaker information 
+*************** not simpler but more cleare somehow
+
+***** DONE acoustfeats.pl: merge all conv side files into one feature file (so mergeall.pl works)
+***** DONE mergeall.pl: handle different column headers (just did a hack)
+***** DONE trainweak.pl: use only good conversations
+***** DONE Fix merge-fles (Jeremy's code)
+******* merging based on words and word times?
+********* DONE email Jeremy to ask
+********* Jeremy aligns with:
+*********** BBN (the word itself)
+*********** BBN_start (milliseconds? I think centiseconds)
+*********** BBN_end (centiseconds?)
+******* acoustic col headers:
+********* Word.pm  [[<file:~/prosbreak/contrib/ssli-tools/ssli/corpus-tools/Prosody-Fex/SWBD/Word.pm::our%20acoustic_feature_labels>][     HARDCODED in @acoustic_feature_labels]]
+********* Acoustic.pm: [[<file:~/prosbreak/contrib/ssli-tools/ssli/corpus-tools/Prosody-Fex/SWBD/Acoustic.pm::my%20feature_labels%20SWBD%20Word%20acoustic_feature_labels>][ REFERENCES hardcoded acoustic labels]]
+********* DynaMerge.pm: [[<file:~/prosbreak/contrib/ssli-tools/ssli/corpus-tools/Prosody-Fex/DynaMerge.pm::my%20acoust_word%20lc%20acoust%20BBN>][EXPECTS BBN field]]: probably the ASR word
+*** Solution: quick hack: just hardcode Dustin's headers into Word.pm.
+* New features
+*** Word vocabulary dimension reduction
+***** Why
+******* C4.5 giant word crash problem (solves)
+******* contrast classifier OOV problem (solves, if it exists)
+***** _Equivalance classes_ from SRILM Toolkit
+******* Mari thinks this is much less important than POS, so I'll skip for now
+******* [[http://www.speech.sri.com/projects/srilm/manpages/ngram-class.html][ngram-class]] program (SRILM toolkit) should work
+********* clusters words by maximum mutual info. See [[file:~/doc/bib/speakerClust.bib::ARTICLE%20brown92classbased][brown92classbased]].
+********* TODO ISSUE: _bigrams_ in class-file?  If so, harder to convert to tree inputs
+********* -numClasses this is a new RR step option
+********* -classes: output file, I believe of [[http://www.speech.sri.com/projects/srilm/manpages/classes-format.html][classes-format]] format.
+********* -text: one sentence per line (here, a snip, I suppose)
+*********** avoid OOV/normalization probs: use same source as [[file:~/prosbreak/ProsBreak.pm::sub%20accumAcFeatSnips][accumAcFeatSnips()]]
+*********** want to calc from mergfiles so experiment w/ # classes later 
+*********** don't want to use checkfiles (temps in scratch)
+*********** could use: [[file:~/prosbreak/acoustfeats.pl::align%20in%20info%20alignFNms%200][alignments]] <- lattices <- checklist: [[file:/g/ssli/data/fisher/metadata/pros_features/timealn/sw4784A-ms98-a.align.gz][for example this one]]
+************* but lots of normalization happens before check file & final word
+*********** TODO *collect* checkfile sentences in [[file:~/prosbreak/ProsBreak.pm::sub%20accumAcFeatSnips][accumAcFeatSnips()]]:
+*********** TODO new function: calcEquivClasses
+************* run in both [[file:../trainweak.pl][trainweak.pl]] and [[file:../contrastTrees.pl][contrastTrees.pl]]
+************* pass through to [[file:~/prosbreak/ProsBreak.pm::sub%20readMergeFeats][readMergeFeats]]()
+*************** [[file:~/prosbreak/ProsBreak.pm::sub%20evalTree][evalTree(...$equivFNm)]]
+***************     new function: %eqmap=readEquivClasses() if $equivFNm
+*************** --> [[file:~/prosbreak/ProsBreak.pm::sub%20mkNameFileC45][mkNameFileC45(...\%eqmap)]] --> remaps $inValSetFNm
+*************** --> [[file:~/prosbreak/ProsBreak.pm::sub%20mkDatC45][mkDatFileC45(...\%eqmap)]]-->readMergeFeats()
+*************** [[file:~/prosbreak/ProsBreak.pm::sub%20trainTree][trainTree(...$equivFNm)]] 
+                - same passthrough as evalTree()
+*************** [[file:~/prosbreak/ProsBreak.pm::sub%20predictTreeEM][predictTreeEM(... $equivFNm)]]
+                - same mappings as train/evalTree()
+*************** [[file:~/prosbreak/ProsBreak.pm::sub%20trainTreeFinal][trainTreeFinal(...$equivFNm)]]
+                - same mappings as train/evalTree()
+********* -full (optional): is this better, slower?
+********* -incremental (optional) the default instead of -full
+********* -vocab (optional): file (can calc this automaticall from data)
+********* -counts (optional): bigram counts: can use -text instead
+********* TODO add new field to Word.pm acoustic features so can merge
+********* TODO a new assocFiles field?
+***** _POS tags_ Jeremey or Sarah, says Mari
+******* Mari later says that they may know of an automatic tagger 
+******* Mari says to collapse
+********* Nouns, Verbs, ..
+********* See Penn treebank adjectives
+********* don't collapse pronouns w/ nouns
+********* Collapsing example: paper Ken Ross & Ostenforf (Comput Sp Lang, July 1996)
+******* [[file:///atm/ente/ssli/research/packages/maxH-tagger/MXPOST.html][mxpost]] (Sarah and Ivan used)
+********* source: /g/ssli/research/packages/maxH-tagger
+********* bibref: [[file:~/doc/bib/speakerClust.bib::INPROCEEDINGS%20Ratnaparkhi96maxentPOS][Ratnaparkhi96maxentPOS]]
+********* related [[http://citeseer.ist.psu.edu/rd/97135572%2C581830%2C1%2C0.25%2CDownload/http://citeseer.ist.psu.edu/cache/papers/cs/27819/http:zSzzSzacl.ldc.upenn.eduzSzWzSzW96zSzW96-0213.pdf/ratnaparkhi96maximum.pdf][Ratnaparkhi paper]]
+******* Works on sentences (not individual words):
+********* DONE should on checkfiles [[file:~/prosbreak/ProsBreak.pm::sub%20accumAcFeatSnips][accumAcFeatSnips()]]
+********* DONE add new field to Word.pm acoustic features so can merge
+********* DONE tokenize contractions and whatnot in treebank fashion ([[file:///atm/ente/ssli/research/packages/maxH-tagger/MXPOST.html][required]]) 
+*********** Sarah actually didn't tokenize (see her email) 
+*********** SO: I'm going to blow it off too!
+*********** Hacks needed to compensate
+************* Certain contractions --> ','
+*************** eg:
+                1) it's --> ,  [only sometimes!] 
+                2)  how'd --> ' 
+*************** TODO in accumAcFeats(), convert ',' to ? (unknown symbol)
+************* Certain contractions --> ':'
+*************** eg:
+                1) That's --> :  [only sometimes, "That's right" is a
+                   common example] 
+*************** TODO in accumAcFeats(), convert ':' to ? (unknown symbol)
+************* @reject@ and other OOV's?
+*************** TODO accumAcFeats(): convert '.' to ?
+
+******* DONE which training set to use?
+********* [[file:/g/ssli/research/packages/maxH-tagger/README::mxpost%20the%20original%20pos%20tagger%20see%20MXPOST%20html][Options models trained on]]: 
+*********** treebank, swbd, swbd-bbn/treebank
+*********** ISSUE do they all require the same <<<tokenize>>>
+************* Sarah guess that they do (see her email)
+********* SO: I'm going to use the swbd (conversational, not sure about
+          swbd-bbn, and anyway, nobody is tokenized so small nuances may
+          be lost anyway)
+********* 
+******* DONE add features for previous and next word POS (Mari request)
+******* DONE Make "UH" inside of POS its own class (Mari requesst)
+******* Experiments
+********* DONE mergeall
+********* DONE acfeats only + POS (no BBN)
+********* DONE allfeats + POS - words
+********* DONE contrast classifiers
+
+***** _Conjunction class_ (Mari's "contrast classifiers"
+      email). She gives a list of examples, and says to look in dff
+******* DONE make phrase extractor
+******* DONE add to accumAcFeats (word behind)
+***** Prev/next CC,DM,FP from dff files (Mari, feature list email)
+******* TODO add in [[file:~/prosbreak/Prosody-Fex/SWBD/Dff.pm::insert%20previous%20and%20next%20duplicates%20Mari%20wants][Dff.pm]]
+******* TODO test
+***** Remove one copy of RP  
+******* [[file:~/prosbreak/Prosody-Fex/SWBD/Word.pm::my%20dffFeats%20qw%20AS%20CC%20DM%20FP%20WC%20RP][Two copies]] in Word.pm: one from mrg file, one from dff file.
+******* Non-uniqueness may cause bugs so fix
+********* DONE verify that there truly are two copies
+********* DONE Make a diffferent name (RPd, RPm)
+******* DONE Remove RPm in trainweak.pl and contrastSets.pl
+***** Remove SL,MS 
+******* since redundant w/ Dustin feats (Mari, feature list email)
+******* DONE to it in trainweak.pl and contrastSets.pl
+***** Filled pause class (Mari).
+******* DONE seems to be there already: [[file:feats.SO.txt::FP%20filled%20pause][FP feat]]
+***** TODO Figure out what features are really acceptable for final features
+* Classifier
+*** Old EM EE
+***** TODO debug EM train by using half labeled data
+***** DONE play with c4.5 pruning params?
+***** DONE multiple c4.5 restarts?
+***** DONE pruning by thresholding posteriors (Mari's suggestion)
+***** DONE sort outvals in [[file:~/prosbreak/ProsBreak.pm::my%20outValSet%20grep%20_%20ne%20deleteSymbol%20uniq%20values%20outValMap][parseOutValMapStr()]]
+***** DONE use probalistic mode?
+******* probalistic thresh for contin vals: maybe see [[http://www.basegroup.ru/trees/math_part2.en.htm][this C4.5 article]]
+******* requires _iterative_ mode, emacs woman doesn't show on [[file:~/prosbreak/contrib/c4.5-w/Doc/c4.5.1::EN][C4.5 manpage]] but troff does
+******* RESULT: didn't make any difference: compare run 41 and 37
+*** Contrast Classifier
+***** Bayesian approach, marginalizes out unlabeled distributions
+***** could still be a decision tree
+******* TODO read original paper (I've read part of it so far)
+******* DONE read SSLI guy's paper
+
+*** Hybrid
+
+    | algorithm | labeled feats | unlabeled feats | amt. unlabeled usable      | virtue    |
+    |-----------+---------------+-----------------+----------------------------+-----------|
+    |           | acc+syn+sem   | acc+syn         | limited, esp. if use words | sem boot  |
+    | contrast  | acc+syn+sem   | acc+syn         | unlimited                  | large dat |
+    | hybrid    | acc+syn+sem   | acc+syn         | unlimited                  |           |
+
+***** contrast: uses unlabeled data, no syntax features
+***** EM: fails on unlabeled, bootstraps w/ syntax features
+******* [[http://www.cc.gatech.edu/~dellaert/em-paper.pdf][Dellaert EM Tech Note]] is a pretty good EM intro
+***** Is there some way to do both?
+***** Neural Net EM
+******* Tree trained w/ sematic feature is _excellent_ on labelled data
+********* good p(BL|labeled sem data)
+******* Can't use contrast tree w/ semantic features
+********* contrast calc: p(labeledOr$BL|labeled+unlabeled [NON-sem data ! ])
+******* Bootstrap NN soft targets could be inserted at the meta classifier level
+********* _PROBLEM_ semantic features aren't available for unlabeled data!
+          ==> can only used semantic features as a *boot* thing
+******* somehow, NN must be using constrast classifier inputs
+********* NN's can't handle discrete stuff, like words very well
+********* easier to parallelize
+******* TODO try cmapping to figure it out!
+
+******* Cotraining
+*** SVMs
+***** Programs
+******* [[http://www.csie.ntu.edu.tw/~cjlin/libsvm/][libsvm]]
+********* Sangyun Hahn <syhahn@u.washington.edu> recommends
+*********** [[file:~/lib/c/pkgs/libsvm-2.82/README::b%20probability_estimates%20whether%20to%20train%20an%20SVC%20or%20SVR%20model%20for%20probability%20estimates%200%20or%201%20default%200][-b 1 option]] gives class probabilities
+*********** [[file:/homes/scotto/lib/c/pkgs/libsvm-2.82/FAQ.html][-wi option]] for unbalanced sets (search for "unbalanced")
+************* TODO weights param of class i /I don't understand this!/
+************* TODO need to do fancy cotraining then?
+********* documentation
+*********** [[http://www.csie.ntu.edu.tw/~cjlin/papers/guide/guide.pdf][Practical Guide]]
+*********** [[http://www.csie.ntu.edu.tw/~cjlin/papers/libsvm.pdf][LIBSVM: a Library for Support Vector Machines (manual)]]
+******* [[http://lmb.informatik.uni-freiburg.de/lmbsoft/libsvmtl/index.en.html?1000000000001100][libsvmTL]]
+********* internal clone (mostly) of libsvm, different interface, templatized
+********* [[http://lmb.informatik.uni-freiburg.de/lmbsoft/libsvmtl/comparison_to_libsvm.en.html][comparison]] (old?)
+***** Weakly supervised SVM
+******* [[http://people.cs.uchicago.edu/%7Evikass/sk_sigir06.pdf][Sindhwani, Large Scale Semisupervised Linear SVMs]]
+******* [[http://people.cs.uchicago.edu/%7Evikass/SNBFinal.pdf][Beyond the Point Cloud: from Transductive to Semi-supervised Learning]]
+********* has code!
+********* language interfaces
+*********** [[http://search.cpan.org/~lairdm/Algorithm-SVM-0.11/lib/Algorithm/SVM.pm][Algorithm::SVM - Perl bindings]]
+*********** [[http://www.csie.ntu.edu.tw/~cjlin/libsvm/#matlab][Matlab and quite a few other languages]]
+******* [[http://lmb.informatik.uni-freiburg.de/lmbsoft/libsvmtl/index.en.html?1000000000001100][LIBSVMTL]]
+********* libsvm clone but templatized, easier development 
+********* underlying code almost identical 
+********* [[http://lmb.informatik.uni-freiburg.de/lmbsoft/libsvmtl/comparison_to_libsvm.en.html][comparison sith libsvm]]:  missing 2 class probability outputs?
+*** Cotraining
+***** binary algorithm ([[file:~/doc/bib/speakerClust.bib::blum98combining][blum & mitchell 1998: combining labeled and]]):
+
+      L labeled points
+      U unlabeled points 
+
+      U': subset of u ulabeled samples from U
+
+      for k=1:K
+        h1 <- train on x1  (subset of L)
+        h2 <- train on x2
+
+        L <- p most positive samples in U' according to h1
+        L <- n most negative samples in U' according to h1
+        L <- p most positive samples in U' according to h2
+        L <- n most negative samples in U' according to h2
+
+        U' <- 2p+2n new examples from U
+     end
+
+     for them:  test pages: 1051 
+                
+                p=1, n=3, k=30, u=75
+     
+
+***** first run results
+
+      | iteration | acoustic error | syntax error |
+      |-----------+----------------+--------------|
+      |         0 |           8.23 |        12.46 |
+      |         1 |           8.82 |        12.99 |
+      |         2 |           8.28 |        13.62 |
+      |         3 |           8.12 |        13.65 |
+      |         4 |           7.92 |        14.16 |
+
+      This was with only two files used for each type of train/test data so
+      it's not that meaningful, except that syntax is running off into the
+      weeds.
+***** next run results
+      | classifier          | usePriors | nIter | nPickNoLab | nSubSamps | Results |
+      |---------------------+-----------+-------+------------+-----------+---------|
+      | quicknet.ac-mlp.syn |         1 |    10 |         50 |      5000 | ?       |
+      | quicknet.ac-mlp.syn |         1 |    20 |         25 |      5000 | eagle   |
+      | quicknet.ac-mlp.syn |         1 |    20 |         10 |      5000 | eagle   |
+      | quicknet.ac-mlp.syn |         1 |    20 |         50 |      1000 | eagle   |
+      | quicknet.ac-mlp.syn |         1 |    20 |         25 |      1000 | battak  |
+      | quicknet.ac-mlp.syn |         1 |    20 |         10 |      1000 | battak  |
+      | quicknet.ac-mlp.syn |         1 |    20 |         25 |       100 | crane   |
+      | quicknet.ac-mlp.syn |         1 |    20 |         10 |       100 | crane   |
+      | quicknet.ac-mlp.syn |         1 |    20 |          5 |       100 | crane   |
+      |                     |           |       |            |           |         |
+***** DONE rerun w/ tree -t 5 option
+
+*** QuickNet classifier
+***** [[http://b-src.cbrc.jp/markup/Torch3/decoder/SpeechMLP.cc][Torch 3.1]] has QuickNet handlers built-in
+***** use soft targets?
+******* soft target [[file:/g/ssli/research/packages/quicknet-v3_03/testsuite/Makefile.in::Soft%20target%20training][example]] from test suite
+***** unreliable input Papers
+******* [[http://citeseer.ist.psu.edu/14091.html][Marginalizing unknown MLP inputs in backprop]] (and older [[http://citeseer.ist.psu.edu/480650.html][1994 paper]])
+********* supposed to be simple and efficient
+******* [[http://citeseer.ist.psu.edu/morris00neural.html][IDIAP neural net than handles incomplete data]]
+******* [[http://ieeexplore.ieee.org/iel3/1059/7404/00298855.pdf?arnumber=298855][Classification with missing and uncertain inputs - Neural Networks]]
+********* missing and uncertain inputs, 1993
+******* [[http://wwwbrauer.informatik.tu-muenchen.de/~trespvol/papers/nips6_conn.pdf][Training Neural Networks with Deficient Data]]
+******* [[http://citeseer.ist.psu.edu/ghahramani95learning.html][Learning From Incomplete Data (1995)]]
+********* both mixtures and networks
+***** quicknet 3.11 hacks for weighting inputs by confidence
+
+        | QN variable              | Duda  | meaning                                        |
+        |--------------------------+-------+------------------------------------------------|
+        | [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::for%20i%200%20i%20n_frames%20i%20size_bunch][size_bunch]]               |       | num input frames crunched in one BP epoch?     |
+        |                          |       | set in [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.h::enum%20QN_OutputLayerType%20a_outtype%20size_t%20a_size_bunch][constructor]], from confi in [[file:~/lib/c/pkgs/quicknet/qnstrn.cc::config%20mlp3_bunch_size%20config%20threads][mlp creation]] |
+        |                          |       | [[file:~/lib/c/pkgs/quicknet/qnstrn.cc::config%20mlp3_bunch_size%2016][default is 16]].                                 |
+        | [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::n_output%20a_output][n_output]]                 | c     | numNetOuts                                     |
+        | [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::size_output%20a_output%20a_size_bunch][size_output]]              | n/a   | numNetOuts * numFramesPerBunch                 |
+        | out_dedy[size_output]    |       | delOutLayerErr/delHiddenLayerOut               |
+        | out_dedx[size_output]    |       | delOutLayerErr/delInputLayerOut                |
+        | out_dydx[size_output]    |       | delHiddenLayerOut/delInput (sigmoid diff.)     |
+        | target                   | tk    | desired network output                         |
+        | out[]                    | zk    | net output, this bunch                         |
+        | e                        | tk-zk | output error                                   |
+        | [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::size_hidden%20a_hidden%20a_size_bunch][size_hidden]]              |       | nHidden * nFramesInBunch(size_bunch)           |
+        | [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::out_dedx%20hid_y%20hid2out][hid_y]][size_hidden]       | yj    | hidden layer outputs, each frame in bunch      |
+        | x                        | ??    | hidden layer output??                          |
+        | [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::qn_mul_mfmf_mf%20n_frames%20n_output%20n_hidden%20out_dedx%20hid2out%20hid_dedy][hid_dedy]][size_hidden]    |       | delOutErr/delHiddenLayeOut, each frame         |
+        | [[file:~/lib/c/pkgs/quicknet/QN_MLP_OnlineFx3.h::fxint16%20hid2out%20Hidden%20to%20output%20weights][hid2out]][n_hid2out]       | w_kj  | hidden-to-out weights)                         |
+        | out_delta_bias[n_output] |       | offset?                                        |
+        | [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::hid_dedx%20in%20in2hid][hid_dedx]][size_hidden]    |       | Hidden feed back error term.                   |
+        | [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::n_in2hid%20a_input%20a_hidden][n_in2hid]]                 | j*i   | toal # hid 2 input weights                     |
+        | [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::hid_dedx%20in%20in2hid][in2hid]][n_in2hid]         | w_ji  | Input-to-hidden weights.                       |
+        | [[file:~/lib/c/pkgs/quicknet/QN_MLPWeightFile_RAP3.h::size_t%20n_hidden%20Size%20of%20the%20hidden%20layer][n_hidden]]                 | nH    | Number of hidden nodes                         |
+        | [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::qn_sumcol_mf_vf%20n_frames%20n_hidden%20hid_dedx%20hid_delta_bias][hid_delta_bias]][n_hidden] |       | Hidden bias update value for whole bunch       |
+        | [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::qn_mulacc_vff_vf%20n_hidden%20hid_delta_bias%20neg_hid_learnrate%20hid_bias][hid_bias]][n_hidden]       |       | Hidden layer bias                              |
+        | [[file:~/lib/c/pkgs/quicknet/QN_MLP_ThreadFl3.h::const%20size_t%20n_input%20No%20of%20input%20units][n_input]]                  | d     | Input vector dimension                         |
+        | [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::hid_dedx%20in%20in2hid][in]][n_input*n_frames]     | xj    | In dat, in[n_input*frameIndex + j]             |
+
+******* Xiao pointers (email)
+        ~lixiao/src/quicknet2/quicknet-v3_20pre5/QN_MLP_BunchFl3.cc
+        QN_MLP_BunchFl3::train_bunch()
+
+        ~lixiao/src/quicknet2/quicknet-v3_20pre5/QN_MLP_BunchFl3.cc
+        QN_MLP_OnlineFl3::train1()
+
+        ~lixiao/src/quicknet2/quicknet-v3_20pre5/QN_MLP_BunchFlVar.cc
+        QN_MLP_BunchFlVar::train_bunch() 
+******* DONE confidences for qnsnorm
+********* nah, just skip it
+******* DONE confidences for qnsfwd
+********* is there a bunch_size for qnsfwd? [[file:~/lib/c/pkgs/quicknet/qnsfwd.cc::mlp3%20new%20QN_MLP_BunchFl3%20debug%20fwdmlp][YES]]
+*********** [[file:~/lib/c/pkgs/quicknet/qnsfwd.cc::QN_hardForward%20debug%20Level%20of%20debugging][QN_hardForward()]] does the forward calc
+************* [[file:~/lib/c/pkgs/quicknet/QN_fwd.cc::mlp%20forward%20inp_count%20inp_buf%20out_buf][calls]] mlp->forward()
+*************** which [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::forward_bunch%20frames_this_bunch%20in%20out][calls]] the func [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::QN_MLP_BunchFl3%20forward_bunch%20size_t%20n_frames%20const%20float%20in%20const%20float%20conf_in%20float%20out][forward_bunch()]] a bunch of times
+*************** ==> must pass confidences down to bunch_forward anyway
+************* TODO "not implemented" for enum forward in qnsfwd
+********* but don't care b/c decisions are made once per frame
+******* DONE confidences for qnstrn
+********* DONE command line functions
+********* DONE "not implemented" for [[file:~/lib/c/pkgs/quicknet/qnstrn.cc::if%20config%20ftr2_ftr_count%200][ftr2]] stream
+********* DONE add conf memory, read functions
+*********** qnstrn.cc opens features by calling [[file:~/lib/c/pkgs/quicknet/qnstrn.cc::ftr_str%20QN_build_ftrstream%20debug%20dbgname%20filename%20format][QN_build_ftrstream()]]
+************* *ISSUE* must handle cross validation set [[file:~/lib/c/pkgs/quicknet/qnstrn.cc::QN_InFtrStream_Cut%20train_ftr_str%20NULL][split]]
+*********** train_ftr_str->read_ftrs(bunch_size, inp_buf) reads features
+************* calls [[file:~/lib/c/pkgs/quicknet/QN_PFile.h::QN_InFtrLabStream_PFile%20read_ftrs%20size_t%20frames%20float%20ftrs][QN_InFtrLabStream_PFile::read_ftrs()]]
+*************** which calls [[file:~/lib/c/pkgs/quicknet/QN_PFile.cc::QN_InFtrLabStream_PFile%20read_ftrslabs%20size_t%20frames%20float%20ftrs][QN_InFtrLabStream_PFile::read_ftrslabs()]]
+***************** /Could/ weight by conf here
+******************* would avoid probs w/ segments, etc. but won't handle
+                    bunch_size update problem
+*********** feature file [[file:~/lib/c/pkgs/quicknet/QN_utils.cc::FILE%20fp%20QN_open_ftrfile%20ptr][opened]] in [[file:~/lib/c/pkgs/quicknet/QN_utils.cc::QN_InFtrStream%20QN_build_ftrstream%20int%20debug%20const%20char%20dbgname][QN_build_ftrstream()]]
+************* [[file:~/lib/c/pkgs/quicknet/QN_utils.cc::QN_InFtrStream%20QN_open_ftrstream%20int%20debug%20const%20char%20dbgname][QN_open_ftrstream()]] reads features
+*************** [[file:~/lib/c/pkgs/quicknet/QN_ListStream.h::virtual%20size_t%20read_ftrs%20size_t%20count%20float%20ftrs%200][must]] be defined in derived class for read data type
+*************** [[file:~/lib/c/pkgs/quicknet/QN_utils.cc::ftr_str%20pfile_str][ftr_str = pfile_str]] from [[file:~/lib/c/pkgs/quicknet/QN_utils.cc::new%20QN_InFtrLabStream_PFile%20debug%20Select%20debugging][call]] of Pfile func [[file:~/lib/c/pkgs/quicknet/QN_PFile.cc::QN_InFtrLabStream_PFile%20QN_InFtrLabStream_PFile%20int%20a_debug][QN_InFtrLabStream_PFile() ]]
+*************** [[file:~/lib/c/pkgs/quicknet/QN_utils.cc::QN_InFtrStream%20ftr_str%20NULL][ftr_str]] (temporary), [[file:~/lib/c/pkgs/quicknet/QN_PFile.h::class%20QN_InFtrLabStream_PFile%20public%20QN_InFtrLabStream][class definition]]
+*************** DONE add "not implemented" meesages to non-Pfile data types
+*************** DONE need "not implemented" messages for [[file:~/lib/c/pkgs/quicknet/qnstrn.cc::const%20size_t%20window_len%201][input windows]]? 
+***************** Nope, windowing handled by streams (create_ftrstreams)
+*********** DONE create conf stream w/ another call to [[file:~/lib/c/pkgs/quicknet/qnstrn.cc::create_ftrstreams%20debug%20ftr1_file%20config%20ftr1_file][create_ftrstreams()]]
+*********** DONE [[file:~/lib/c/pkgs/quicknet/QN_utils.cc::if%20normfile%20NULL][disable normalization]] for confidences (set normfile to NULL)
+*********** DONE make sure feature/conf dims match
+*********** [[file:~/lib/c/pkgs/quicknet/QN_trn.cc::ftr_count%20train_ftr_str%20read_ftrs%20bunch_size%20inp_buf][train_ftr_str->read_ftrs()]] reads features
+********* [[file:~/lib/c/pkgs/quicknet/qnstrn.cc::create_mlp%20debug%20mlp][create_mlp()]]
+*********** [[file:~/lib/c/pkgs/quicknet/qnstrn.cc::QN_InFtrStream_Cut%20train_ftr_str%20NULL][QN_MLP_BunchFl3::QN_MLP_BunchFl3()]] constructor
+************* DONE "not implemented" asserts for non-bunch [[file:~/lib/c/pkgs/quicknet/qnstrn.cc::mlp3%20new%20QN_MLP_ThreadFl3%20debug%20train][mlp3 creations]]
+********* [[file:~/lib/c/pkgs/quicknet/qnstrn.cc::new%20QN_HardSentTrainer%20debug%20Debugging%20level][QN_HardSentTrainer()]] [the trainer object]
+*********** DONE "not implemented" message before call to [[file:~/lib/c/pkgs/quicknet/qnstrn.cc::new%20QN_SoftSentTrainer%20debug%20Debugging%20level][QN_SoftSentTrainer()]]
+*********** DONE pass in confidence train and cv streasm
+*********** call of [[file:~/lib/c/pkgs/quicknet/qnstrn.cc::trainer%20train][trainer->train()]] calls [[file:~/lib/c/pkgs/quicknet/QN_trn.cc::QN_HardSentTrainer%20train][QN_HardSentTrainer::train()]]
+************* /could/ pre-multiply by confidences [[file:~/lib/c/pkgs/quicknet/QN_trn.cc::Pre%20training%20cross%20validation][here]] or even higher but
+              hard to figure out b/c of all the segment counting stuff
+*************** pointers: can see how they were gotten here:
+************* [[file:~/lib/c/pkgs/quicknet/QN_trn.cc::percent_correct%20train_epoch][calls]] function [[file:~/lib/c/pkgs/quicknet/QN_trn.cc::QN_HardSentTrainer%20train_epoch][train_epoch()]]
+*************** [[file:~/lib/c/pkgs/quicknet/QN_trn.cc::mlp%20train%20trn_count%20inp_buf%20conf_inp_buf%20targ_buf%20out_buf][calls]] mlp->train() ([[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::QN_MLP_BunchFl3%20train%20size_t%20n_frames%20const%20float%20in%20const%20float%20conf][QN_MLP_BunchFl3::train()]]), which calls function [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::QN_MLP_BunchFl3%20train_bunch%20size_t%20n_frames%20const%20float%20in][train_bunch()]]
+***************** conf pre-multiply?
+******************* NO, since messy [[file:~/lib/c/pkgs/quicknet/QN_trn.cc::ftr_segid%20train_ftr_str%20nextseg][non-contiguous segments]] make looping
+                    through data a pain
+******************* TODO must use large bunches for confidence to make sense
+***************** [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::QN_MLP_BunchFl3%20forward_bunch%20size_t%20n_frames%20const%20float%20in][forward_bunch()]] is [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::forward_bunch%20n_frames%20in%20conf_in%20out][called]] to propagate inputs forward
+******************* [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::qn_copy_vf_mf%20n_frames%20n_hidden%20hid_bias%20hid_x][hid_x <-- qn_copy_vf_mf(...hid_bias]])
+********************* fill each row hidx[][] with a copy of hid_bias[]
+******************* [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::qn_mulntacc_mfmf_mf%20n_frames%20n_input%20n_hidden%20in%20in2hid%20hid_x][hid_x <-- qn_mulntacc_mfmf_mf(in, in2hid)]]:
+
+                      hid_x += in[][] * in2hid[][]
+                      (via [[file:~/lib/c/pkgs/quicknet/QN_fltvec.h::qn_nv_mulntacc_mfmf_mf%20a_rows%20a_cols%20b_rows%20a%20b%20res][call]] to [[file:~/lib/c/pkgs/quicknet/QN_fltvec.cc::qn_nv_mulntacc_mfmf_mf%20size_t%20Sm%20size_t%20Sk%20size_t%20Sn][qn_nv_mulntacc_mfmf_mf()]])
+
+                      ie. it's doing the input weighted sum and adding the bias
+
+********************* DONE do forward_bunch weighting by confidence here
+*********************** Bias addition ==> must conf weight here,not in bunch loop above
+*********************** Weight update within bunch ==> must divide by within-bunch conf's
+*********************** Dims from [[file:~/lib/c/pkgs/quicknet/QN_fltvec.cc::qn_nv_mulntacc_mfmf_mf%20size_t%20Sm%20size_t%20Sk%20size_t%20Sn][qn_nv_mulntacc_mfmf_mf()]] and [[file:~/lib/c/pkgs/quicknet/QN_fltvec.h::qn_mulntacc_mfmf_mf%20size_t%20a_rows%20size_t%20a_cols%20size_t%20b_rows][qn_mulntacc_mfmf_mf()]]:
+*********************** Use Quicknet built-ins (so less code)
+************************* DONE in[] * conf
+*************************** messy to do @ beginning b/c updates (conf divides) are done per-bunch
+************************* DONE forward_bunch() conf sum division
+******************* then does the rest of the net... no need to change
+
+***************** [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::qn_sub_vfvf_vf%20size_output%20out%20target%20out_dedy][out_dedx <-- calc de/dx]]
+******************* change in error w.r.t. change in hidden layer output?
+******************* out_dedx == (tk-zk)f'(netk) part of Duda eq (17), p. 291
+***************** [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::qn_mul_mfmf_mf%20n_frames%20n_output%20n_hidden%20out_dedx%20hid2out%20hid_dedy][hid_dedy <-- qn_mul_mfmf_mf()]]:
+******************* Calc change in hidden layer output w.r.t. output error, each frame
+******************* Back prop error through hidden to output weights.
+******************* (n_frames X nOuts) (nOuts X nHidden) --> (n_frames X nHidden)
+***************** [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::qn_multnacc_fmfmf_mf%20n_frames%20n_output%20n_hidden%20neg_hid2out_learnrate][hid2out <-- qn_multnacc_fmfmf_mf()]]
+******************* finishes Duda eq (17), p. 291: -ada * (tk-zk)*f'(netk)*yj
+***************** ... update output weights (don't care)
+***************** [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::qn_multnacc_fmfmf_mf%20n_frames%20n_hidden%20n_input%20neg_in2hid_learnrate][in2hid <-- qn_multnacc_fmfmf_mf()]]
+******************* update input to hidden weights
+******************* DONE add conf weight here: depends upon in[][] and learn rate
+******************* [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::qn_multnacc_fmfmf_mf%20n_frames%20n_hidden%20n_input%20neg_in2hid_learnrate][calls]] function [[file:~/lib/c/pkgs/quicknet/QN_fltvec.h::qn_multnacc_fmfmf_mf%20size_t%20a_rows%20size_t%20a_cols%20size_t%20b_cols][qn_multnacc_fmfmf_mf()]]
+******************* can hack [[file:~/lib/c/pkgs/quicknet/QN_fltvec.cc::qn_nv_multnacc_fmfmf_mf%20size_t%20Sk%20size_t%20Sm%20size_t%20Sn%20float%20scale][qn_nv_multnacc_fmfmf_mf()]] 
+***************** [[file:~/lib/c/pkgs/quicknet/QN_MLP_BunchFl3.cc::qn_mulacc_vff_vf%20n_hidden%20hid_delta_bias%20neg_hid_learnrate%20hid_bias][hid_bias <-- qn_mulacc_vff_vf()]]
+******************* update bias in hidden layer
+
+******************* don't need to change this, doesn't depend upon in[][]
+******* DONE Bunch size tests
+********* _Conclusion_: maybe there's a small effect on qnstrn for individual element qnstrn
+********* when removing points via low confidence, you might get inaccurate input-to-hidden weight updates
+********* maybe a larger bunch size will reduce this problem (if it exists)
+********* "total data set size must be roughly 100 times larger than the
+          bunch size to achieve satisfactory convergence and classification
+          performance." [[http://cag.csail.mit.edu/~krste/papers/MStrain.pdf][QuickNet Paper]]
+******* TODO for mlp_base.pl tests, and ProsBreak.pm, add conf==0 for unknown inputs
+********* DONE test mlp_base w/ conf code added but not used (run 859)
+          - small differences, probably due to randomness, so probably OK
+********* DONE add continuous input confidences and test mlp_base.pl
+          - CONCLUSION: slight loss in acfeats alone, slight gain on
+            allfeats.  Probably a wash
+          - RESULTS
+
+               Break Label Prediction Errors vs. Neural Net Type
+
+                    out
+runNum    featType  TypeMLP   nhidMLP   n1        n4        p         errorPct
+------------------------------------------------------------------------------
+01259     ACFEATS   softmax   1         0.92313   0.66496   0         17.978
+01260     ACFEATS   softmax   2         0.92161   0.72288   0.59761   14.2955
+01261     ACFEATS   softmax   3         0.91727   0.65205   0         18.2983
+01262     ACFEATS   softmax   5         0.92397   0.72704   0.63035   13.7237
+01263     ACFEATS   softmax   7         0.92446   0.7275    0.6367    13.7694
+01264     ACFEATS   softmax   8         0.92267   0.72623   0.63144   13.8381
+01265     ACFEATS   softmax   10        0.92291   0.72908   0.60282   13.8838
+01266     ACFEATS   softmax   12        0.92203   0.73118   0.59862   13.9296
+01267     ACFEATS   softmax   14        0.92366   0.7458    0.6169    13.5178
+01268     ACFEATS   softmax   15        0.92341   0.7283    0.62169   13.8152
+01269     ACFEATS   softmax   17        0.92462   0.72944   0.60238   13.8838
+01270     ACFEATS   softmax   20        0.91988   0.71465   0.59946   14.387
+01271     ACFEATS   softmax   23        0.92224   0.73099   0.61949   13.7923
+01272     ACFEATS   softmax   24        0.92436   0.7415    0.60787   13.678
+01273     ACFEATS   softmax   26        0.9215    0.71778   0.62714   14.021
+01274     ACFEATS   softmax   28        0.92663   0.73671   0.64116   13.2434
+01275     ACFEATS   softmax   30        0.92222   0.71447   0.61818   13.9753
+01276     ACFEATS   softmax   32        0.92743   0.74009   0.64126   13.1519
+01277     SYNFEATS  softmax   1         0.92734   0.70735   0         16.8344
+01278     SYNFEATS  softmax   2         0.93192   0.798     0.62729   11.7338
+01279     SYNFEATS  softmax   3         0.93317   0.80604   0.62571   11.5508
+01280     SYNFEATS  softmax   5         0.93136   0.80435   0.61237   11.688
+01281     SYNFEATS  softmax   7         0.93031   0.79976   0.63506   11.7795
+01282     SYNFEATS  softmax   8         0.93125   0.80515   0.63128   11.6194
+01283     SYNFEATS  softmax   10        0.93181   0.80608   0.63546   11.5737
+01284     SYNFEATS  softmax   12        0.92889   0.79626   0.63158   11.871
+01285     SYNFEATS  softmax   14        0.92996   0.79656   0.61947   11.8939
+01286     SYNFEATS  softmax   15        0.92901   0.80172   0.62745   11.7566
+01287     SYNFEATS  softmax   17        0.93071   0.81205   0.62309   11.7109
+01288     SYNFEATS  softmax   20        0.9293    0.8015    0.63006   11.7795
+01289     SYNFEATS  softmax   23        0.93052   0.80521   0.62281   11.6651
+01290     SYNFEATS  softmax   24        0.92886   0.80074   0.63768   11.7795
+01291     SYNFEATS  softmax   26        0.93148   0.80783   0.62873   11.5965
+01292     SYNFEATS  softmax   28        0.92977   0.80272   0.62229   11.8024
+01293     SYNFEATS  softmax   30        0.92974   0.8005    0.63001   11.7109
+01294     SYNFEATS  softmax   32        0.92954   0.80347   0.62192   11.9396
+01295     ALLFEATS  softmax   1         0.94676   0.74045   0         14.7758
+01296     ALLFEATS  softmax   2         0.94715   0.83214   0.70236   10.1098
+01297     ALLFEATS  softmax   3         0.94497   0.82251   0.71105   9.9268
+01298     ALLFEATS  softmax   5         0.94343   0.81486   0.72409   10.0412
+01299     ALLFEATS  softmax   7         0.94976   0.83962   0.73434   9.1263
+01300     ALLFEATS  softmax   8         0.94813   0.84235   0.7295    9.2864
+01301     ALLFEATS  softmax   10        0.94464   0.83394   0.73469   9.4922
+01302     ALLFEATS  softmax   12        0.94785   0.84041   0.72471   9.2635
+01303     ALLFEATS  softmax   14        0.94749   0.84048   0.73333   9.2177
+01304     ALLFEATS  softmax   15        0.94522   0.82775   0.72324   9.6295
+01305     ALLFEATS  softmax   17        0.94769   0.83473   0.73885   9.2635
+01306     ALLFEATS  softmax   20        0.95014   0.84629   0.75871   8.7145
+01307     ALLFEATS  softmax   23        0.94878   0.84638   0.74627   8.9433
+01308     ALLFEATS  softmax   24        0.94466   0.8266    0.73575   9.6523
+01309     ALLFEATS  softmax   26        0.94944   0.84487   0.7455    8.8747
+01310     ALLFEATS  softmax   28        0.94872   0.83735   0.7414    9.1034
+01311     ALLFEATS  softmax   30        0.94772   0.84485   0.74169   9.0119
+01312     ALLFEATS  softmax   32        0.94461   0.82582   0.73987   9.5608
+
+********* DONE add discrete, so have both contin and discrete
+          - CONCLUSTION: not a big gain either
+          - RESULTS
+                         Break Label Prediction Errors vs. Neural Net Type
+
+                    out
+runNum    featType  TypeMLP   nhidMLP   n1        n4        p         errorPct
+------------------------------------------------------------------------------
+01259     ACFEATS   softmax   1         0.92068   0.66393   0         18.161
+01260     ACFEATS   softmax   2         0.91418   0.6633    0.11304   17.9094
+01261     ACFEATS   softmax   3         0.9169    0.6988    0.54834   15.1647
+01262     ACFEATS   softmax   5         0.92167   0.72593   0.62402   14.0668
+01263     ACFEATS   softmax   7         0.91831   0.71511   0.60105   14.5471
+01264     ACFEATS   softmax   8         0.92279   0.73028   0.60465   13.9982
+01265     ACFEATS   softmax   10        0.92404   0.74043   0.59944   13.7008
+01266     ACFEATS   softmax   12        0.92312   0.73848   0.5927    13.7694
+01267     ACFEATS   softmax   14        0.92718   0.73255   0.61355   13.5865
+01268     ACFEATS   softmax   15        0.92009   0.72646   0.60541   14.1354
+01269     ACFEATS   softmax   17        0.92502   0.7302    0.63114   13.495
+01270     ACFEATS   softmax   20        0.92474   0.72795   0.62599   13.7008
+01271     ACFEATS   softmax   23        0.92661   0.7472    0.6376    13.0604
+01272     ACFEATS   softmax   24        0.92155   0.70672   0.6193    14.2269
+01273     ACFEATS   softmax   26        0.92418   0.72809   0.63199   13.6322
+01274     ACFEATS   softmax   28        0.92791   0.74485   0.63807   13.0375
+01275     ACFEATS   softmax   30        0.91987   0.7124    0.62222   14.387
+01276     ACFEATS   softmax   32        0.92531   0.74595   0.62602   13.2891
+01277     SYNFEATS  softmax   1         0.93223   0.72908   0         15.7823
+01278     SYNFEATS  softmax   2         0.93192   0.80372   0.63309   11.5508
+01279     SYNFEATS  softmax   3         0.93028   0.79853   0.62029   11.871
+01280     SYNFEATS  softmax   5         0.93162   0.79952   0.62393   11.8024
+01281     SYNFEATS  softmax   7         0.93281   0.80932   0.62974   11.4593
+01282     SYNFEATS  softmax   8         0.93063   0.80152   0.63068   11.688
+01283     SYNFEATS  softmax   10        0.9321    0.80291   0.62589   11.688
+01284     SYNFEATS  softmax   12        0.93013   0.80979   0.63128   11.6194
+01285     SYNFEATS  softmax   14        0.93088   0.80743   0.6383    11.5508
+01286     SYNFEATS  softmax   15        0.93097   0.80495   0.63128   11.6194
+01287     SYNFEATS  softmax   17        0.93308   0.81078   0.62626   11.4593
+01288     SYNFEATS  softmax   20        0.92959   0.78815   0.6129    12.0769
+01289     SYNFEATS  softmax   23        0.93007   0.80348   0.623     11.7338
+01290     SYNFEATS  softmax   24        0.93071   0.80848   0.62391   11.6423
+01291     SYNFEATS  softmax   26        0.92954   0.80339   0.61159   11.9396
+01292     SYNFEATS  softmax   28        0.93061   0.80519   0.63189   11.5508
+01293     SYNFEATS  softmax   30        0.92917   0.79267   0.63218   11.9167
+01294     SYNFEATS  softmax   32        0.93074   0.81065   0.61862   11.5737
+01295     ALLFEATS  softmax   1         0.94926   0.72893   0         14.9817
+01296     ALLFEATS  softmax   2         0.93197   0.73802   0         15.5306
+01297     ALLFEATS  softmax   3         0.94883   0.83042   0.74201   9.2864
+01298     ALLFEATS  softmax   5         0.9467    0.83283   0.72453   9.4922
+01299     ALLFEATS  softmax   7         0.9448    0.83969   0.72185   9.4465
+01300     ALLFEATS  softmax   8         0.94685   0.84174   0.74242   9.2177
+01301     ALLFEATS  softmax   10        0.94695   0.84579   0.73752   9.1263
+01302     ALLFEATS  softmax   12        0.9501    0.8467    0.73548   8.8975
+01303     ALLFEATS  softmax   14        0.94723   0.83777   0.74      9.2406
+01304     ALLFEATS  softmax   15        0.94879   0.84135   0.72962   9.1263
+01305     ALLFEATS  softmax   17        0.94829   0.8477    0.74235   8.9661
+01306     ALLFEATS  softmax   20        0.95042   0.84638   0.74436   8.8289
+01307     ALLFEATS  softmax   23        0.94478   0.84142   0.73936   9.2864
+01308     ALLFEATS  softmax   24        0.94924   0.83932   0.74211   9.0119
+01309     ALLFEATS  softmax   26        0.94971   0.84223   0.74935   8.8518
+01310     ALLFEATS  softmax   28        0.94888   0.83729   0.73496   9.172
+01311     ALLFEATS  softmax   30        0.94728   0.83983   0.74198   9.1491
+01312     ALLFEATS  softmax   32        0.94812   0.83821   0.73885   9.172   
+
+********* TODO go back to linear F0 (more unknowns) and run w/ confidences
+***** using MLP window of length > 1
+******* ftr1_window_offset: what does it mean?
+********* qnstrn, qnsfwd param: is it input index corresp. to first output?
+********* [[file:~/lib/c/pkgs/quicknet/qnsfwd.cc::create_ftrstream%20debug%20ftr1_file%20config%20ftr1_file][call]] to [[file:~/lib/c/pkgs/quicknet/qnsfwd.cc::create_ftrstream%20int%20debug%20const%20char%20dbgname%20const%20char%20filename][create_ftrstream()]]
+*********** turned into [[file:~/lib/c/pkgs/quicknet/qnstrn.cc::size_t%20window_extent%20size_t%20window_offset][window_offset]]
+*********** [[file:~/lib/c/pkgs/quicknet/qnsfwd.cc::new%20QN_InFtrStream_SeqWindow%20debug%20dbgname][call]] to QN_InFtrStream_SeqWindow turns it into [[file:~/lib/c/pkgs/quicknet/QN_windows.h::size_t%20a_bot_margin][a_top_margin]] 
+*********** --> [[file:~/lib/c/pkgs/quicknet/QN_windows.cc::top_margin%20a_top_margin][top_margin]]
+*********** looks like they're enforcing [[file:~/lib/c/pkgs/quicknet/QN_windows.cc::const%20size_t%20lost_frames%20top_margin%20bot_margin%20win_len%201][all frames to be full]]
+********* So, it means center of window (I think) so is -(winlen-1)/2 (for odd)
+******* [[file:~/lib/c/pkgs/quicknet/qnstrn.cc::int%20window_extent%20config%20window_extent][window_extent (s/b == window_len)]]
+        manpage: the number of frames from the beginning of the first input
+                window to the end of the last input window.  Typically this
+                is the same as ftr1_window_len.
+        so just set it
+******* time sync w/ wide long windows
+********* window_offset = -(window_width-1/2) for odd windows
+********* Katrin's example (from: [[file:~/meetings/clustloc/contrib/quicknet-katrin][quicknet-katrin]])
+*********** her email
+
+            	From: 	Katrin Kirchhoff <katrin@ssli-mail.ee.washington.edu>
+To: 	Scott Otterson <scotto@sharpleaf.org>
+Subject: 	Re: Quicknet for VAD
+Date: 	Thu, 14 Oct 2004 11:15:56 -0700	
+
+Hi Scott,
+
+I don't have the scripts for specifically that task, but here
+are general quicknet train/test scripts:
+
+/g/ssli/limbo/katrin/phonebook/scripts/qntrain.sh + qnforward.sh
+
+You need feature files in HTK format and label files in HTK VQ format.
+Two labels (for silence/non-silence) should be used, therefore you 
+need to set num_ouput=2  in the scripts. The ftrfile1 and labfile
+are files of filenames, pointing to feature and label files, respectively.
+Both need to be in the same order! Let me know if there are any other 
+questions,
+
+Katrin
+
+-----------------------------
+
+> A couple other questions about QuickNet:  Does the time delay between
+> the NN output change with changing window width, or does is always
+> correspond to the input vector in the window center.   Also, should the
+> number of posterior output frames equal the number of feature vector
+> input frames?
+
+The temporal position for the output vector is always equivalent to 
+that of the input (center) vector except at the beginning and end of 
+the signal if you have a window size > 1. This is because you need
+(window-width-1)/2 frames of context at the left and right edge 
+respectively. E.g. if you have 124 frames in your signal and use a window of 
+9 input frames you won't get any output for the first 4 and the last
+4 frames since they are needed as context for the input. The output
+will then just consist of 116 frames. I usually replicate the first
+and last outputs of the NN if the same number of frames is 
+required as in the input signal.
+
+Does this answer your questions?
+
+Katrin
+
+*********** her scripts (which are _wrong_: offset [[file:~/lib/c/pkgs/quicknet/qnstrn.cc::if%20ftr1_window_offset%200%20ftr1_window_offset%20window_extent][must be positive]])
+*********** [[file:~/meetings/clustloc/contrib/quicknet-katrin/qnforward.sh][~/meetings/clustloc/contrib/quicknet-katrin/qnforward.sh]]
+            #!/bin/sh
+
+command="$HOME/Linux.bin/qnforward-bin \
+  ftrfile1=../lists/full_train_rand.mfc \
+  file_format=htk \
+  outext=$1 \
+  labfile=../lists/full_train_rand_ipa.$1 \
+  outdir=/s0/katrin/phonebook-out/train-ipa/$1 \
+  ftrfile1_num_ftrs=26 \
+  input_weightfile=../weights/full_train_ipa_$1.wts \
+  input_normfile=../norms/full_train.norms \
+  write_outprobs=1 \
+  output_file_format=rapbin \
+  window_width=9 \
+  window_offset=-4 \
+  num_input=234 \
+  num_hidden=50 \
+  num_output=$2 \
+  mlp_output_type=linear \
+  first_ftr=0 \
+  num_ftrs=26 "
+
+echo $command
+eval $command
+
+*********** [[file:~/meetings/clustloc/contrib/quicknet-katrin/qntrain.sh][~/meetings/clustloc/contrib/quicknet-katrin/qntrain.sh]]
+
+#!/bin/sh
+
+if [ $# -ne 2 ]
+then
+    echo "Usage: qntrain.sh <feature id> < num output units>"
+    exit
+fi
+
+BASE=/g/ssli/limbo/katrin/phonebook
+
+command="$HOME/Linux.bin/qntrain-bin \
+  ftrfile1=$BASE/lists/full_train_rand.mfc \
+  train_labfile=$BASE/lists/full_train_rand_ipa.$1 \
+  file_format=htk \
+  ftrfile1_num_ftrs=26 \
+  input_weightfile=- \
+  input_normfile=$BASE/norms/full_train.norms \
+  output_weightfile=$BASE/weights/full_train_ipa_$1.wts \
+  log_weightfile=$BASE/weights/full_train_ipa_$1.wts.log \
+  window_width=9 \
+  window_offset=-4 \
+  num_input=234 \
+  num_hidden=50 \
+  num_output=$2 \
+  mlp_output_type=softmax \
+  num_train_sents=72000 \
+  first_cv_sent=72000 \
+  first_ftr=0 \
+  num_cv_sents=7778 \
+  train_cache_frames=50000 \
+  num_ftrs=26"
+
+echo $command
+eval $command
+********* _qnstrn_: do nothing
+*********** looks like both label & data frames are thrown away @ the beginning
+********* _qnstst_: copy outputs on front and back
+*********** skip is always 1 frame
+*********** [[Katrin's example]] email suggests only 1 output is lost but _not true_
+*********** [[file:~/lib/c/pkgs/quicknet/qnsfwd.cc::size_t%20bot_margin%20window_extent%20window_offset%20window_len][bot_margin = window_extent - window_offset - window_len]] ;
+            if have set window_offset to -(window_extent-1)/2, then 
+
+            bot_margin = (window_extent-1)/2
+
+*********** top_margin = (call to [[QN_InFtrStream_SeqWindow]] above)
+            if have set window_offset to -(window_extent-1)/2, then 
+
+            bot_margin = (window_extent-1)/2
+
+*********** [[file:~/lib/c/pkgs/quicknet/QN_windows.cc::const%20size_t%20lost_frames%20top_margin%20bot_margin%20win_len%201][lost_frames]] = (top_margin + bot_margin + win_len - 1)
+            if have set window_offset to -(window_extent-1)/2, then 
+
+            lost_frames = window_extent-1 + win_len-1
+                        = 2*win_len-2 (why 2?)
+
+*********** [[file:~/lib/c/pkgs/quicknet/QN_windows.cc::total_out_frames%20in_frames%20lost_frames][total_out_frames]] += in_frames - lost_frames (each seg) 
+*********** output padding: 
+************* left pad = win_len-1/2 
+************* right pad = enough to match input length?
+************* "feacat -padframes ($winlen-1)/2" works for odd sized windows
+
+********* TODO test 
+*********** train an NN to always output the center of the window
+*********** pad and test to see if it did
+*** MLP weak EM
+***** Improvements 
+******* TODO EM features different than final test/train
+********* stopping criteria is for the final test/train, not the EM test/train?
+********* probably ALL for internal, ACOUST for final
+********* ==> must have separate nhidden layers 
+********** DONE rerun MLP base to find optimal, also to retest quicknet stuff
+******* TODO store whole coeff trajectory, return the one getting best result
+******* TODO MLP inside EM is sigmoidx; final test/train EM is softmax
+******* DONE randomize EM data only once (so cost function changes only due
+        to training, not data switch
+*** TODO Canonical Correlation Analysis
+***** use CCA for syntactic/acoustic feature dimension reduction
+***** transform ac/syn feats during train, then, during test, use same
+      transform for for acfeats only
+***** [[file:~/meetings/xclust/doc/README.org::*%20http%20gosset%20wharton%20upenn%20edu%20research%20CCA_regression%20pdf%20Multi%20view%20CCA%20semi%20supervised][Multi-View CCA uses unlabeled data]]
+***** Using only acoustfeats, but unlabeled data: ridge regression
+******* there was a paper I read about this somewhere
+******* this can turn into dimension reduction
+******* nice [[http://www.tijldebie.net/papers/OED-final.pdf][slides]]
+***** Non-Linear Kernel CCA may work better
+******* Kernel matrix dimensionality is a big problem unless unless use
+******* [[file:~/meetings/xclust/doc/README.org::*incomplete%20http%20cmm%20ensmp%20fr%20bach%20ICML_2005_CSI_3%20pdf%20Cholesky%20decomposition][Incomplete Cholesky Decomposition]] (has matlab and C)
+*****  _semisupervised_ 
+******* (k)CCA transform from unlabeled syntactic/acoustic data
+******* doing CCA transform with [[file:~/meetings/xclust/ccaFiles.m::function%20ccaFiles%20varargin][ccaFiles.m]]
+********* runs out of memory with the 2GB exlusive directory turned on
+********* size of unlabeled training data is:
+          | feature | nFrms | nDim |
+          |---------+-------+------|
+          | acoust  |       |      |
+          | syntax  |       |      |
+*****  _supervised_
+******* (k)CCA use labeled incomplete cholesky decomposition
+******* see if can do better kCCA on labeled data if use this
+******* then use kCCA for acoust feats dim reduction
+******* try to bend dualcca.m, which I think used unlabeled ICD, to use labels
+*** TODO Use KPCA to remove noise (improve) acoustic feats
+***** Like [[http://www.kyb.mpg.de/bs/people/kimki/projweb/kha.htm][here]], use a library of images (unlabeled data) to reconstruct
+***** [[http://cmp.felk.cvut.cz/cmp/software/stprtool/index.html][Statistical Pattern Recognition Toolbox]] has the fast image denoising KHA method
+******* See p. 89 of the [[http://cmp.felk.cvut.cz/cmp/software/stprtool/stprtool.pdf][User's Guide]]
+******* See demo kpcadenois.m
+***** I'm planning to use this to learn the [[file:~/meetings/xclust/doc/README.org::*Kernel%20Hebbian%20Learning][xcorr lag manifold]] for SRP-PHAT scan
+***** [[http://ieeexplore.ieee.org/Xplore/login.jsp?url=/iel5/11159/35818/01699304.pdf?isnumber=35818&arnumber=1699304][Weakly Supervised Learning on Pre-image Problem in Kernel Methods]]
+******* I think this is requiring one-against-all labels
+******* can be adapted to contrast classifiers?
+***** Weakly supervised CCA/kCCA
+******* one view is acoustic features
+******* other view is class labels predicted by acoust+syntax classifier on unlabeled data
+******* dim reduction in CCA occurs when vector of class labels have small dim Dcca=min(view1,view2)
+******* if have several classifiers, which are cca'ed to one view, then the correlated parts are preserved
+******* other acoustic feature view is transformed for max correlation w/ classes
+*** TODO [[http://books.nips.cc/papers/files/nips20/NIPS2007_0964.pdf][A Bayesian LDA-Based Model for Semi-Supervised POS Tagging]] (use w/ PCA/CCA?)
+* Runs
+*** experiments
+    
+    | purpose                                  |   run | words  | EM       | note       | options              |  pTst |  pTrn |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | acfeat                                   |     0 | F1     |          | <10>       |                      |       |       |   |   |   |
+    | mergeall                                 |     9 |        |          | turns      |                      |       |       |   |   |   |
+    | thresh                                   |    22 | x      | 0        |            | thrsh=30             |       | 19.02 |   |   |   |
+    | thresh                                   |    56 | x      | 0/0 imp  | noaccoust/turns | thrsh=30             |       |       |   |   |   |
+    | thresh                                   |    59 | x      | 0/0 imp  | noaccoust/turns | thrsh=60             |       |       |   |   |   |
+    | thresh                                   |    60 | x      | 0/0 imp  | noaccoust/turns | thrsh=90             |  13.9 |   8.9 |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | thresh                                   |    62 | x      |          | acoust/fixEM | *Baseline*             |  19.8 |     7 |   |   |   |
+    | thresh                                   |     9 | x      |          | acoust/fixEM | thrsh=30             |  crsh |       |   |   |   |
+    | thresh                                   |    16 | x      |          | acoust/fixEM | thrsh=60             |       |       |   |   |   |
+    | thresh                                   |    17 | x      |          | acoust/fixEM | thrsh=90             |       |       |   |   |   |
+    | thresh                                   |    62 | x      |          | acoust/fixEM | thrsh=95             |       |       |   |   |   |
+    | thresh                                   |    64 | x      |          | acoust/fixEM | thrsh=975            |       |       |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | thresh                                   |    19 | x      |          | noaccoust/fixEM | *Baseline*             |  8.92 |   9.6 |   |   |   |
+    | thresh                                   |    19 | x      | 3        | noaccoust/fixEM | thrsh=30             |  14.1 |  12.2 |   |   |   |
+    | thresh                                   |    20 | x      | 1        | noaccoust/fixEM | thrsh=60             |  14.6 |  12.3 |   |   |   |
+    | thresh                                   |    21 | x      | 0        | noaccoust/fixEM | thrsh=90             |  9.01 |   9.5 |   |   |   |
+    | thresh                                   |    61 | x      | 1        | noaccoust/fixEM | thrsh=95             |  8.94 |   9.5 |   |   |   |
+    | thresh                                   |    63 | x      | 0        | noaccoust/fixEM | thrsh=975            |  8.92 |  9.65 |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | thresh                                   |    18 | POS    |          | acoust/fixEM | *Baseline*             |  18.4 |   7.0 |   |   |   |
+    | thresh                                   |    18 | POS    |          | acoust/fixEM | thrsh=10             |       |       |   |   |   |
+    | thresh                                   |    65 | POS    |          | acoust/fixEM | thrsh=30             |       |       |   |   |   |
+    | thresh                                   |    66 | POS    |          | acoust/fixEM | thrsh=60             |       |       |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | thresh                                   |    69 | POS    |          | noaccoust/fixEM | *Baseline*             |   8.9 |   9.6 |   |   |   |
+    | thresh                                   |    71 | POS    |          | noaccoust/fixEM | thrsh=05             |       |       |   |   |   |
+    | thresh                                   |    69 | POS    | 4        | noaccoust/fixEM | thrsh=10             |  10.2 |  10.7 |   |   |   |
+    | thresh                                   |    68 | POS    | 3        | noaccoust/fixEM | thrsh=30             |  14.1 |  12.2 |   |   |   |
+    | thresh                                   |    65 | POS    |          | noaccoust/fixEM | thrsh=60             |       |       |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | thresh                                   |    78 | POS    |          | NewAcoust, only Dustin's features, had a few more absolute times removed, trainweak.pl vers 1.7, w/ Dustin's stuff switched on. | *Baseline*             |  18.6 |  7.07 |   |   |   |
+    | thresh                                   |    78 | POS    |          | NewAcoust, only Dustin's features, had a few more absolute times removed, trainweak.pl vers 1.7, w/ Dustin's stuff switched on. | thrsh=30             |       |       |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | thresh                                   |    76 | POS    |          | NewNoLab: another attempt at removing times, etc, (trainweak.pl vers 1.6), run on 5/23, has asr_error and dff_tags, which nolab also didn't have before. | *Baseline*             |  9.84 |  4.79 |   |   |   |
+    | thresh                                   |    76 | POS    |          | NewNoLab: another attempt at removing times, etc, (trainweak.pl vers 1.6), run on 5/23, has asr_error and dff_tags, which nolab also didn't have before. | thrsh=30             |  crsh |       |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | thresh                                   |    77 | F1     |          |            | *Baseline*             |   9.9 |   5.1 |   |   |   |
+    | thresh                                   |    77 | F1     |          |            | thrsh=30             |       |       |   |   |   |
+    | thresh                                   |    26 | F1a    |          |            | *Baseline*             |  14.9 |   7.4 |   |   |   |
+    | thresh                                   |    26 | F1a    |          |            | thrsh=30             |       |       |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | newlabfeats                              |       | n/a    |          |            |                      |       |       |   |   |   |
+    | mkContrastSet                            |    45 | n/a    |          |            |                      |       |       |   |   |   |
+    | contrastTreeAv                           |    37 | x      |          |            |                      | 19.06 |       |   |   |   |
+    | contrastTreeAv                           |    23 | BBN    |          |            |                      | 19.15 |       |   |   |   |
+    | contrastTreeAv                           |    41 | x      |          |            | -p                   |  9.06 |       |   |   |   |
+    | contrastTreeAv                           |    55 | x      |          | turns/20Ksamps set lit | -t5                  |  19.8 |       |   |   |   |
+    | contrastTreeAv                           |    57 | BBN    |          | turns/20Ksamps set limit | -t5                  |  17.1 |       |   |   |   |
+    | contrastTreeAv                           |     ? | BBN    |          | noaccoust/turns 20Ksamps set limit | -t5                  |  9.47 |       |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | contrastTreeMLP                          |    73 | POS    | *        | acoustic only | avgDec               |  19.0 |  10.8 |   |   |   |
+    | contrastTreeMLP                          |    73 | POS    | sig      | acoustic only | -t5,nhid~35          |  17.5 |   9.1 |   |   |   |
+    | contrastTreeAv                           |    75 | POS    | *        | nolab/turns 20Ksamps set limit | avgDec               |  9.74 |   7.8 |   |   |   |
+    | contrastTreeMLP                          |    75 | POS    | sig      | nolab/turns 20Ksamps set limit | -t5,nhid~31          |   9.3 |   7.3 |   |   |   |
+    | contrastTreeMLP                          |    58 | POS    | softmax  | nolab/turns 20Ksamps set limit | -t5,nhid~39          |   9.2 |   7.0 |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | contrastTreeAv                           |    79 | POS    | *        | NewAcoust, only Dustin's features, had a few more absolute times removed, trainweak.pl vers 1.7, w/ Dustin's stuff switched on. | -t5                  |  18.5 |   9.8 |   |   |   |
+    | contrastTreeMLP                          |    79 | POS    | softmax  | NewAcoust, only Dustin's features, had a few more absolute times removed, trainweak.pl vers 1.7, w/ Dustin's stuff switched on. | -t5,nhid~25          |  18.2 |   7.5 |   |   |   |
+    | contrastTreeAv                           |    81 | POS    | *        | NewNoLab: another attempt at removing times, etc, (trainweak.pl vers 1.6), run on 5/23, has asr_error and dff_tags, which nolab also didn't have before. | -t5                  |   9.2 |   7.0 |   |   |   |
+    | contrastTreeMLP                          |    81 | POS    | softmax  | NewNoLab: another attempt at removing times, etc, (trainweak.pl vers 1.6), run on 5/23, has asr_error and dff_tags, which nolab also didn't have before. | -t5,nhid~33          |   9.7 |   6.1 |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | mkContrastSet                            |    45 | F1/F1a | *        |            | -t5                  |       |       |   |   |   |
+    | contrastTreeAv                           |    82 | F1     | *        |            | -t5                  |   9.0 |   7.4 |   |   |   |
+    | contrastTreeMLP                          |    82 | F1     | softmax  |            | -t5,nhid~37          |  10.6 |   6.3 |   |   |   |
+    | contrastTreeAv                           |    80 | F1a    | *        |            | -t5                  |  15.7 |   9.2 |   |   |   |
+    | contrastTreeMLP                          |    80 | F1a    | softmax  |            | -t5,nhid~37          |  14.6 |   7.4 |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | *MLP classsifier*                          |       |        |          |            |                      |       |       |   |   |   |
+    | /Original QuickNet/                        |       |        |          |            |                      |       |       |   |   |   |
+    | baseline MLP                             |  198+ | F1     | softmax  |            | nhidC=12             |   8.6 |       |   |   |   |
+    | contrastTreeAv                           |   252 | F1     | *        |            |                      |   9.0 |   7.4 |   |   |   |
+    | contrastTreeMLP                          |   252 | F1     | softmax  |            | nhidC=15,nhidM       |  10.6 |   6.3 |   |   |   |
+    | baseline MLP                             |  177+ | F1a    |          |            | nhidC=14             |  13.8 |       |   |   |   |
+    | contrastTreeAv                           |   241 | F1a    | *        |            |                      |   9.0 |   7.4 |   |   |   |
+    | contrastTreeMLP                          |   241 | F1a    | softmax  |            | nhidC=15,nhidM       |  10.6 |   6.3 |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | *MLP classsifier*                          |       |        |          |            |                      |       |       |   |   |   |
+    | /Partly NewQuicNet/                        |       |        |          |            |                      |       |       |   |   |   |
+    | baseline MLP                             |  309+ | F1     | softmax  |            | nhidC=8              |   8.8 |       |   |   |   |
+    | contrastTreeAv                           |       | F1     | *        |            |                      |   9.0 |   7.4 |   |   |   |
+    | contrastTreeMLP                          |       | F1     | softmax  |            | nhidC=15,nhidM=?     |  10.6 |   6.3 |   |   |   |
+    | baseline MLP                             |  309+ | F1a    |          |            | nhidC=3              |  13.3 |       |   |   |   |
+    | contrastTreeAv                           |       | F1a    | *        |            |                      |   9.0 |   7.4 |   |   |   |
+    | contrastTreeMLP                          |       | F1a    | softmax  |            | nhidC=15,nhidM=?     |  10.6 |   6.3 |   |   |   |
+    | baselineMLP                              |  282+ | F2     | softmax  |            | nhidC=17             |   9.1 |       |   |   |   |
+    | baselineMLP                              |  282+ | F2a    |          |            | nhidC=3              |  13.3 |       |   |   |   |
+    | contrastTreeAv                           |   241 | F2a    | *        |            |                      |  30.3 |  27.2 |   |   |   |
+    | contrastTreeMLP                          |   241 | F2a    | softmax  |            | nhidC=15,nhidM=35    |  16.9 |  17.5 |   |   |   |
+    | contrastTreeAv                           |   310 | F2     | *        |            |                      |  30.3 |  27.2 |   |   |   |
+    | contrastTreeMLP                          |   310 | F2     | softmax  |            | nhidC=15,nhimM=7     |  11.5 |  12.8 |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | *SPLINE F0 FEATS*                          |       |        |          |            |                      |       |       |   |   |   |
+    | acoustfeats                              |   311 | F3     |          |            |                      |       |       |   |   |   |
+    | merge                                    |   312 | F3     |          |            |                      |       |       |   |   |   |
+    | mlp_base (orig QuickNet)                 |  352+ | F3     | softmax  |            | nhidC=15             |   8.9 |       |   |   |   |
+    | mlp_base (orig QuickNet)                 |  352+ | F3a    | softmax  |            | nhidC=12             |  13.1 |       |   |   |   |
+    | mlp_base (QuickNetNew)                   |  859+ | F3     | softmax  |            | nhidC=15             |   8.9 |       |   |   |   |
+    | mlp_base (QuickNetNew)                   |  859+ | F3a    | softmax  |            | nhidC=28             |  13.1 |       |   |   |   |
+    | mkContrastset                            |   456 |        |          |            |                      |       |       |   |   |   |
+    | contrastTree_MLP                         |  585+ | F3*    |          |            |                      |       |       |   |   |   |
+    | contrastTree_MLP(>opts)                  |  638+ | F3     | sigmoidx |            | nhidC/M= 4/25        |  10.2 |       |   |   |   |
+    | contrastTree_MLP(>opts)                  |  638+ | F3a    | softmax  |            | nhidC/M=3/25         |  15.7 |       |   |   |   |
+    | contrastTree_MLP(>opts)                  |  638+ | F3a    | softmax  |            | nhidC/M=8/28         |  15.7 |       |   |   |   |
+    | baseline_C45 *BAD STUCK*                   |   639 | F3a    |          |            | -t 5                 |       |       |   |   |   |
+    | baseline_C45                             |   644 | F3a    |          |            | -t 5                 |       |       |   |   |   |
+    | contrastTreeC45 *BAD STUCK*                |     + | F3*    |          |            | -t 5                 |       |       |   |   |   |
+    | contrastTreeC45                          |  658+ | F3     | softmax  |            | -t 5,nhidM=33        |  23.8 |       |   |   |   |
+    | contrastTreeC45                          |  658+ | F3a    | softmax  |            | -t 5,nhidM=39        |  14.7 |       |   |   |   |
+    | contrastTreeC45                          |  658+ | F3a    | softmax  |            | -t 5,nhidM=39        |  14.7 |       |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | *COTRAIN*                                  |       |        |          |            |                      |       |       |   |   |   |
+    | /Partly NewQuicNet, spline/                |       |        |          | /priors/     |                      |       |       |   |   |   |
+    | quicknet.ac-treeC45.syn                  |       | F3a    | quicknet | 0          | 1 iter               |  13.7 |       |   |   |   |
+    | quicknet.ac-treeC45.syn                  |       | F3s    | tree     | 0          | 5 iter               |  11.6 |       |   |   |   |
+    | quicknet.all-treeC45.all                 |       | F3     | quicknet | 0          |                      |     X |       |   |   |   |
+    | quicknet.all-treeC45.all                 |       | F3     | tree     | 0          |                      |     X |       |   |   |   |
+    | quicknet.ac-quicknet.syn                 |       | F3a    | quicknet | 0          | 1 iter               |  13.7 |       |   |   |   |
+    | quicknet.ac-quicknet.syn                 |       | F3s    | quicknet | 0          | 9 iter               |  11.5 |       |   |   |   |
+    | treeC45.ac-treeC45.syn                   |       | F3a    | tree     | 0          |                      |     X |       |   |   |   |
+    | treeC45.ac-treeC45.syn                   |       | F3s    | tree     | 0          |                      |     X |       |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | quicknet.ac-treeC45.syn                  |       | F3a    | quicknet | 1          | 4 iter               |  13.7 |       |   |   |   |
+    | quicknet.ac-treeC45.syn                  |       | F3s    | tree     | 1          | 5 iter               |  11.7 |       |   |   |   |
+    | quicknet.all-treeC45.all                 |       | F3     | quicknet | 1          |                      |     X |       |   |   |   |
+    | quicknet.all-treeC45.all                 |       | F3     | tree     | 1          |                      |     X |       |   |   |   |
+    | quicknet.ac-quicknet.syn                 |       | F3a    | quicknet | 1          | 9 iter               |  13.4 |       |   |   |   |
+    | quicknet.ac-quicknet.syn                 |       | F3s    | quicknet | 1          | 7 iter               |  11.5 |       |   |   |   |
+    | treeC45.ac-treeC45.syn                   |       | F3a    | tree     | 1          |                      |     X |       |   |   |   |
+    | treeC45.ac-treeC45.syn                   |       | F3s    | tree     | 1          |                      |     X |       |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | *MLP UNKNOWN CONFIDENCES*                  |       |        |          |            |                      |       |       |   |   |   |
+    | mlp_base (unused unk conf)               |  859+ | F3     | softmax  |            | nhidC=17             |   9.0 |       |   |   |   |
+    | mlp_base (unused unk conf)               |  859+ | F3a    | softmax  |            | nhidC=32             |  13.1 |       |   |   |   |
+    | mlp_base (contin unk conf)               | 1313+ | F3     | softmax  |            | nhidC=20             |   8.7 |       |   |   |   |
+    | mlp_base (contin unk conf)               | 1313+ | F3a    | softmax  |            | nhidC=32             |  13.2 |       |   |   |   |
+    | mlp_base (contin+disc conf)              | 1313+ | F3     | softmax  |            | nhidC=20             |   8.9 |       |   |   |   |
+    | mlp_base (contin+disc conf)              | 1313+ | F3a    | softmax  |            | nhidC=28             |  13.0 |       |   |   |   |
+    | acfeats, no spline                       |  1370 | F4     |          |            |                      |       |       |   |   |   |
+    | mergeall no spline                       |  1372 | F4     |          |            |                      |       |       |   |   |   |
+    | mlp_base, all conf+no spline             | 1427+ | F4     | softmax  |            | nhid=20              |   8.9 |       |   |   |   |
+    | mlp_base, all conf+no spline             | 1427+ | F4a    | softmax  |            | nhid=28              |  13.4 |       |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | *PERF vs. TRAINING SIZE*                   |       |        |          |            |                      |       |       |   |   |   |
+    | mlp_base,no conf                         | 1458+ | F4     |          |            |                      |       |       |   |   |   |
+    | mlp_base,no conf                         | 1489+ | F3     |          |            |                      |       |       |   |   |   |
+    | mlp_base, ALL conf                       | 1551+ | F4     |          |            |                      |       |       |   |   |   |
+    | mlp_base, ALL conf                       | 1520+ | F3     |          |            |                      |       |       |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | *CCA Synfeat/Acoust*                       |       |        |          |            |                      |       |       |   |   |   |
+    | mlp_base, 300 file CCA                   | 1706+ | F3a    | softmax  |            | nhid=23, thresh=0.2  |  15.0 |       |   |   |   |
+    | "                                        | 1729+ | F3a    | "        |            | nhid=26, thresh=0.05 |  14.2 |       |   |   |   |
+    | mlp_base, 400 file CCA *crashed*           | 1770+ | F3a    |          |            | *DIED OUT OF MEM*      |       |       |   |   |   |
+    |------------------------------------------+-------+--------+----------+------------+----------------------+-------+-------+---+---+---|
+    | *MLP WEAK EM*                              |       |        |          |            |                      |       |       |   |   |   |
+    | 1st big run, feat/mlp combos             |  803+ |        |          |            |                      |       |       |   |   |   |
+    | 2nd, randomize EM dat once (BAD)         |  925+ |        |          |            |                      |       |       |   |   |   |
+    | 2nd, randomize EM dat once, same outtype |  993+ |        |          |            |                      |       |       |   |   |   |
+    | different EM/final outTypes              | 1021+ |        |          |            |                      |       |       |   |   |   |
+    | different EM/final feats/MLPs            | 1203+ |        |          |            |                      |       |       |   |   |   |
+
+    _New dev/train partitions_
+    | *rerun on new data*                             |       |                               |   |   |   |   |   |   |   |   |
+    | trainweak                                     |  1771 |                               |   |   |   |   |   |   |   |   |
+    | mlp_base (train data frac)                    | 1520+ |                               |   |   |   |   |   |   |   |   |
+    | mlp_base (nhid scan)                          | 1855+ |                               |   |   |   |   |   |   |   |   |
+    |-----------------------------------------------+-------+-------------------------------+---+---+---+---+---+---+---+---|
+    | cca, 2500trn/45000unlab                       | 1898+ | BROKEN+many others in between |   |   |   |   |   |   |   |   |
+    | cca, 2500trn/45000unlab                       | 2077+ | 30.1%, always picks n1        |   |   |   |   |   |   |   |   |
+    | cca, 20000trn/20000unlab                      | 2068+ | n,s                           |   |   |   |   |   |   |   |   |
+    | cca, 20000trn/20000unlab                      | 2102+ | f+4...f+40                    |   |   |   |   |   |   |   |   |
+    | cca, 20000trn/20000unlab                      | 2106+ | add baseMLP too               |   |   |   |   |   |   |   |   |
+    | 2106, using cannoncorr.m                      | 2122+ |                               |   |   |   |   |   |   |   |   |
+    | 45000trn/250e3 from 'unlabeled', cannoncorr.m | 2154+ |                               |   |   |   |   |   |   |   |   |
+    | 2154+ but my CCA code                         | 2170+ |                               |   |   |   |   |   |   |   |   |
+    
+
+    _Fake turn files when we have them for a side (for Zak)__
+    | acoustfeats.pl | 2171 |   |   |   |   |   |   |   |   |   |
+    | acoustfeats.pl |  311 |   |   |   |   |   |   |   |   |   |
+
+    /Partly NewQuickNet/ : restore sentence-level randomization in
+    QuickNet.pl; I thik that this performance was still a little worse than
+    the original quicknet -- not sure what the difference is due to,
+    something about what to do when $nsents is missing or undef?.  Anyway,
+    newer stuff QuickNetNew.p
+
+***** logs from 993+
+
+                         Break Label Prediction Errors vs. Neural Net Type [993+]
+
+                    out
+runNum    featType  TypeMLP   nhidMLP   n1Fimp    n4Fimp    pFimp     maxIter   errImp    errFinal
+--------------------------------------------------------------------------------------------------
+00926     ACFEATS   sigmoidx  3         0         0         0         0         0         15.0503
+00927     ACFEATS   sigmoidx  5         0         0         0         0         0         14.3413
+00928     ACFEATS   sigmoidx  7         0         0         0         0         0         14.2955
+00929     ACFEATS   sigmoidx  8         0         0         0         0         0         13.8152
+00930     ACFEATS   sigmoidx  10        0         0         0         0         0         13.7008
+00931     ACFEATS   sigmoidx  12        0         0         0         0         0         14.0439
+00932     ACFEATS   sigmoidx  14        0         0         0         0         0         15.0274
+00933     ACFEATS   sigmoidx  15        0         0         0         0         0         13.7694
+00934     ACFEATS   sigmoidx  17        0         0         0         0         0         13.7466
+00935     ACFEATS   sigmoidx  20        0.001838  -0.01289  0.008098  1         0.091491  14.4556
+00936     ACFEATS   sigmoidx  23        0         0         0         0         0         13.4492
+00938     ACFEATS   softmax   5         0         0         0         0         0         14.8673
+00939     ACFEATS   softmax   7         0         0         0         0         0         14.6844
+00940     ACFEATS   softmax   8         0         0         0         0         0         13.8609
+00941     ACFEATS   softmax   10        0         0         0         0         0         13.5865
+00942     ACFEATS   softmax   12        0         0         0         0         0         13.3577
+00943     ACFEATS   softmax   14        0         0         0         0         0         13.3577
+00944     ACFEATS   softmax   15        0         0         0         0         0         13.8838
+00945     ACFEATS   softmax   17        0         0         0         0         0         13.3349
+00946     ACFEATS   softmax   20        0         0         0         0         0         13.4035
+00947     ACFEATS   softmax   23        0         0         0         0         0         14.204
+00948     SYNFEATS  sigmoidx  3         0         0         0         0         0         11.9625
+00949     SYNFEATS  sigmoidx  5         0         0         0         0         0         11.7109
+00950     SYNFEATS  sigmoidx  7         0         0         0         0         0         11.7566
+00951     SYNFEATS  sigmoidx  8         -0.00256  -0.00237  0.012323  1         0.16011   11.7795
+00952     SYNFEATS  sigmoidx  10        0         0         0         0         0         11.3907
+00953     SYNFEATS  sigmoidx  12        -0.00265  -0.00144  0.008648  1         0.16011   11.5965
+00954     SYNFEATS  sigmoidx  14        -0.00058  -0.00516  0.004695  1         0.20586   11.5965
+00955     SYNFEATS  sigmoidx  15        -0.00066  -0.00817  0.003171  1         0.2516    11.5965
+00956     SYNFEATS  sigmoidx  17        -0.00053  -0.00268  0.009592  1         0.045746  11.5965
+00957     SYNFEATS  sigmoidx  20        0.000177  -0.00049  0.003356  1         0.11436   11.5279
+00958     SYNFEATS  sigmoidx  23        -0.00187  0.003205  0.006085  1         0.091491  11.7338
+00959     SYNFEATS  softmax   3         0         0         0         0         0         11.7338
+00960     SYNFEATS  softmax   5         0         0         0         0         0         11.7566
+00961     SYNFEATS  softmax   7         0         0         0         0         0         11.871
+00962     SYNFEATS  softmax   8         -0.00168  0.002683  0.00103   1         0.11436   11.5279
+00963     SYNFEATS  softmax   10        0         0         0         0         0         11.6194
+00964     SYNFEATS  softmax   12        -0.0009   -0.00526  0.013702  1         0.091491  11.8253
+00965     SYNFEATS  softmax   14        0         0         0         0         0         11.8253
+00966     SYNFEATS  softmax   15        0         0         0         0         0         11.5508
+00967     SYNFEATS  softmax   17        0         0         0         0         0         11.4135
+00968     SYNFEATS  softmax   20        0         0         0         0         0         11.6194
+00969     SYNFEATS  softmax   23        -0.00077  -0.00395  -0.01055  1         0.27447   11.5279
+00970     ALLFEATS  sigmoidx  3         0         0         0         0         0         9.4922
+00972     ALLFEATS  sigmoidx  7         0         0         0         0         0         9.4922
+00973     ALLFEATS  sigmoidx  8         0         0         0         0         0         9.4465
+00975     ALLFEATS  sigmoidx  12        0         0         0         0         0         9.2864
+00977     ALLFEATS  sigmoidx  15        0         0         0         0         0         9.3092
+00978     ALLFEATS  sigmoidx  17        0         0         0         0         0         9.355
+00981     ALLFEATS  softmax   3         0.000451  -0.0125   0.006095  1         0.29735   9.9268
+00982     ALLFEATS  softmax   5         0         0         0         0         0         9.6981
+00984     ALLFEATS  softmax   8         0         0         0         0         0         9.5837
+00985     ALLFEATS  softmax   10        0         0         0         0         0         9.0805
+00986     ALLFEATS  softmax   12        0         0         0         0         0         8.8747
+00987     ALLFEATS  softmax   14        0         0         0         0         0         8.8518
+00988     ALLFEATS  softmax   15        0         0         0         0         0         9.1949
+00990     ALLFEATS  softmax   20        0         0         0         0         0         9.4007
+00991     ALLFEATS  softmax   23        0         0         0         0         0         8.9433
+
+
+MissingScores Runs:
+  /g/ssli/transitory/scotto/prosbreak/weakMLP/weakMLP.00011/errStats.dump
+  /g/ssli/transitory/scotto/prosbreak/weakMLP/weakMLP.00045/errStats.dump
+  /g/ssli/transitory/scotto/prosbreak/weakMLP/weakMLP.00048/errStats.dump
+  /g/ssli/transitory/scotto/prosbreak/weakMLP/weakMLP.00050/errStats.dump
+  /g/ssli/transitory/scotto/prosbreak/weakMLP/weakMLP.00053/errStats.dump
+  /g/ssli/transitory/scotto/prosbreak/weakMLP/weakMLP.00054/errStats.dump
+  /g/ssli/transitory/scotto/prosbreak/weakMLP/weakMLP.00057/errStats.dump
+  /g/ssli/transitory/scotto/prosbreak/weakMLP/weakMLP.00063/errStats.dump
+
+
+***** logs from 1021+
+
+      [from scoreTableWMP.m]
+      
+                              Break Label Prediction Errors vs. Neural Net Type
+
+                              out
+                    outType   Type
+runNum    featType  MLPfinal  MLPem     nhidMLP   n1Fimp    n4Fimp    pFimp     maxIter   errImp    errFinal
+------------------------------------------------------------------------------------------------------------
+00995     ACFEATS   softmax   sigmoidx  7         0         0         0         0         0         14.2498
+00996     ACFEATS   softmax   sigmoidx  8         0         0         0         0         0         14.1354
+00997     ACFEATS   softmax   sigmoidx  10        0         0         0         0         0         14.5242
+00994     ACFEATS   softmax   sigmoidx  12        0         0         0         0         0         13.7237
+00998     ACFEATS   softmax   sigmoidx  14        0         0         0         0         0         14.2269
+00999     ACFEATS   softmax   sigmoidx  15        0         0         0         0         0         13.5407
+01000     ACFEATS   softmax   sigmoidx  17        0         0         0         0         0         13.9753
+01001     ACFEATS   softmax   sigmoidx  20        0         0         0         0         0         13.7466
+01002     ACFEATS   softmax   sigmoidx  23        0         0         0         0         0         13.7923
+00764     ACFEATS   softmax   softmax   7         0         0         0         0         0         14.3641
+00765     ACFEATS   softmax   softmax   8         0         0         0         0         0         14.4328
+00766     ACFEATS   softmax   softmax   10        0         0         0         0         0         14.0439
+00767     ACFEATS   softmax   softmax   12        0         0         0         0         0         13.2434
+00768     ACFEATS   softmax   softmax   14        0         0         0         0         0         14.3413
+00769     ACFEATS   softmax   softmax   15        0         0         0         0         0         14.0439
+00770     ACFEATS   softmax   softmax   17        0         0         0         0         0         13.8152
+00771     ACFEATS   softmax   softmax   20        0         0         0         0         0         13.8152
+00772     ACFEATS   softmax   softmax   23        0         0         0         0         0         13.5636
+01003     SYNFEATS  softmax   sigmoidx  7         -0.00013  -0.0042   0.012301  1         0.091491  11.7566
+01004     SYNFEATS  softmax   sigmoidx  8         0.001214  -0.00695  -0.01654  1         0.36597   11.6651
+01005     SYNFEATS  softmax   sigmoidx  10        0         0         0         0         0         11.6423
+01006     SYNFEATS  softmax   sigmoidx  12        0         0         0         0         0         11.7109
+01007     SYNFEATS  softmax   sigmoidx  14        0         0         0         0         0         11.7566
+01008     SYNFEATS  softmax   sigmoidx  15        0         0         0         0         0         11.9396
+01009     SYNFEATS  softmax   sigmoidx  17        -0.00097  -0.00179  0.010774  1         0.11436   11.8024
+01010     SYNFEATS  softmax   sigmoidx  20        0         0         0         0         0         11.4822
+01011     SYNFEATS  softmax   sigmoidx  23        0         0         0         0         0         11.4593
+00779     SYNFEATS  softmax   softmax   7         0         0         0         0         0         11.5508
+00780     SYNFEATS  softmax   softmax   8         0         0         0         0         0         11.6423
+00781     SYNFEATS  softmax   softmax   10        0         0         0         0         0         11.7795
+00782     SYNFEATS  softmax   softmax   12        0         0         0         0         0         11.8024
+00783     SYNFEATS  softmax   softmax   14        -0.00269  -0.00776  -0.00203  1         0.32022   11.8253
+00784     SYNFEATS  softmax   softmax   15        -0.00019  -0.00393  0.006619  1         0.13724   11.5965
+00785     SYNFEATS  softmax   softmax   17        0         0         0         0         0         11.4135
+00786     SYNFEATS  softmax   softmax   20        0         0         0         0         0         11.8939
+00787     SYNFEATS  softmax   softmax   23        -0.00155  0.003945  -0.00111  1         0.022873  11.5965
+01012     ALLFEATS  softmax   sigmoidx  7         0         0         0         0         0         9.5151
+01013     ALLFEATS  softmax   sigmoidx  8         0         0         0         0         0         9.1949
+01014     ALLFEATS  softmax   sigmoidx  10        0         0         0         0         0         9.721
+01015     ALLFEATS  softmax   sigmoidx  12        0         0         0         0         0         9.4007
+01019     ALLFEATS  softmax   sigmoidx  20        0         0         0         0         0         9.0348
+01020     ALLFEATS  softmax   sigmoidx  23        0         0         0         0         0         9.0805
+00794     ALLFEATS  softmax   softmax   7         0         0         0         0         0         9.172
+00797     ALLFEATS  softmax   softmax   12        0         0         0         0         0         8.7374
+00798     ALLFEATS  softmax   softmax   14        0         0         0         0         0         9.355
+00799     ALLFEATS  softmax   softmax   15        0         0         0         0         0         9.1263
+00801     ALLFEATS  softmax   softmax   20        0         0         0         0         0         9.4922
+00802     ALLFEATS  softmax   softmax   23        0         0         0         0         0         9.355
+
+
+***** FEATURES
+      | Feat     | Comment                                                                               |
+      |----------+---------------------------------------------------------------------------------------|
+      | NewNoLab | All features + POS - words, before adding context, and adding the conjuction features |
+      | F1       | all features, w/ contexts & additional features suggested by Mari 6/7/06              |
+      | F1a      | acoustic features only, w/ Mari's 6/7/06 context suggestions                          |
+      | F1s      | syntax features only                                                                  |
+      | F2       | F1 - TP,EMPH,BD,AS,dff_tag,align_remove Mari's 11/1 suggestion                        |
+      | F3       | F2 with spline interp in acoust feats && Jeremy unknown tag filtering                 |
+      | F4       | F3 with stylized (linear) F0 filtering                                                |
+      |          |                                                                                       |
+
+***** Results
+      | purpose         | feature   | pTst | pTrn |
+      |-----------------+-----------+------+------|
+      | Baseline        | NewNoLab  | 9.84 | 4.79 |
+      | Baseline        | F1        |  9.9 |  5.1 |
+      | Baseline        | NewAcoust | 18.6 | 7.07 |
+      | Baseline        | F1a       | 14.9 |  7.4 |
+      |-----------------+-----------+------+------|
+      | contrastTreeAv  | NewNoLab  |  9.2 |  7.0 |
+      | contrastTreeAv  | F1        |  9.0 |  7.4 |
+      | contrastTreeMLP | NewNoLab  |  9.7 |  6.1 |
+      | contrastTreeMLP | F1        | 10.6 |  6.3 |
+      | contrastTreeAv  | NewAcoust | 18.5 |  9.8 |
+      | contrastTreeAv  | F1a       | 15.7 |  9.2 |
+      | contrastTreeMLP | NewAcoust | 18.2 |  7.5 |
+      | contrastTreeMLP | F1a       | 14.6 |  7.4 |
+
+*** Debugging/Regression Test runs
+***** QuickNet.pm/ProsBreak.pm changes vs. mlp_base.pl performance
+******* changes
+********* QuickNet::mkLabAndFeatPfiles() [version 1.5]
+*********** separate existence of $nsent on file reading (add $fileRead)
+*********** randomize training data _before_ creating sentences instead of after
+************* means different training order and different data in covalidation "sent"
+********* make ProsBreak.pm changes to match [version 1.25?]
+********* ScottLib::detectorError() [version 1.136?]
+*********** add some new calcs
+******* results on merged run.198, forced to rerun run.118:
+******** before change: 13.15% error 
+
+--> baseMLP.14
+/g/ssli/transitory/scotto/baseMLP/baseMLP.00014/errStats.dump
+
+
+%errors = (
+            'val' => {
+                       'Bp' => {
+                                 'F' => '0.625',
+                                 'npts' => 4380,
+                                 'falsePct' => '26.3322884012539',
+                                 'recall' => '0.542725173210162',
+                                 'freqPct' => '9.88584474885845',
+                                 'precision' => '0.736677115987461',
+                                 'missPct' => '45.7274826789838',
+                                 'errorPct' => '6.43835616438356'
+                               },
+                       'B1' => {
+                                 'F' => '0.925995609909062',
+                                 'npts' => 4380,
+                                 'falsePct' => '11.1612515042118',
+                                 'recall' => '0.966928618205632',
+                                 'freqPct' => '69.7260273972603',
+                                 'precision' => '0.888387484957882',
+                                 'missPct' => '3.3071381794368',
+                                 'errorPct' => '10.7762557077626'
+                               },
+                       'B4' => {
+                                 'F' => '0.755828220858896',
+                                 'npts' => 4380,
+                                 'falsePct' => '16.4179104477612',
+                                 'recall' => '0.689809630459127',
+                                 'freqPct' => '20.3881278538813',
+                                 'precision' => '0.835820895522388',
+                                 'missPct' => '31.0190369540873',
+                                 'errorPct' => '9.08675799086758'
+                               }
+                     },
+            'all' => {
+                       'npts' => 4380,
+                       'errorPct' => '13.1506849315068'
+                     }
+          );
+
+
+rm /g/ssli/transitory/scotto/baseMLP/baseMLP.00014/errStats.dump
+
+******** after change 14.0% error
+
+%$writeDumpVar = (
+                   'val' => {
+                              'Bp' => {
+                                        'F' => '0.6',
+                                        'falsePct' => '30.2752293577982',
+                                        'missPct' => '47.3441108545035',
+                                        'errorPct' => '6.94063926940639',
+                                        'truePct' => '9.88584474885845',
+                                        'npts' => 4380,
+                                        'recall' => '0.526558891454965',
+                                        'precision' => '0.697247706422018'
+                                      },
+                              'B1' => {
+                                        'F' => '0.921627139940317',
+                                        'falsePct' => '11.4397826743133',
+                                        'missPct' => '3.92927308447937',
+                                        'errorPct' => '11.3926940639269',
+                                        'truePct' => '69.7260273972603',
+                                        'npts' => 4380,
+                                        'recall' => '0.960707269155206',
+                                        'precision' => '0.885602173256867'
+                                      },
+                              'B4' => {
+                                        'F' => '0.740967544396816',
+                                        'falsePct' => '18.2432432432432',
+                                        'missPct' => '32.2508398656215',
+                                        'errorPct' => '9.65753424657534',
+                                        'truePct' => '20.3881278538813',
+                                        'npts' => 4380,
+                                        'recall' => '0.677491601343785',
+                                        'precision' => '0.817567567567568'
+                                      }
+                            },
+                   'all' => {
+                              'npts' => 4380,
+                              'errorPct' => '13.9954337899543'
+                            }
+                 );
+
+
+********* noladb/noaccoust bug puzzle
+*********** I was accidentally excluding accoustic feats when I thought I was including all features present when unlabeled
+*********** _Actually_, I was including _only_ non-acoustic features present in unlabeled
+*********** TODO Figure out the puzzle:
+************* how could results be so good w/o acoustic features?
+************* acc feat runs were simply crashing: will the _true_ nolab runs even finish now??
+
+
+
+
+********* cotrain
+*********** setting 2
+            my $nPickNolab=10; # number unlabeled points to pick on each iteration (per class)
+            my $nIter=10;     # number of iterations
+            my $nSubSamps=300; # unlabeled subset size
+
+*********** cotrain
+                                             Stats vs. Decision Feature Type
+
+            n  F(acfeats)  F(synfeats)  F(prodProb)  F(sumProb)  Err(acfeats)  Err(synfeats)  Err(prodProb)  Err(sumProb)
+            -------------------------------------------------------------------------------------------------------------
+            1  0.92266     0.92928      0.92266      0.92266     14.9087       11.3927        14.9087        14.9087
+            2  0.92261     0.92928      0.92928      0.92928     14.8402       11.4155        11.3927        11.3927
+            3  0.92352     0.9293       0.92261      0.92261     14.7489       11.4155        14.8402        14.8402
+            4  0.92288     0.92926      0.92928      0.92928     14.6804       11.4612        11.4155        11.4155
+            5  0.92335     0.92907      0.92352      0.92352     14.6804       11.4612        14.7489        14.7489
+            6  0.9243      0.93025      0.9293       0.9293      14.8402       11.347         11.4155        11.4155
+            7  0.92491     0.93029      0.92288      0.92288     14.6575       11.3699        14.6804        14.6804
+            8  0.92398     0.93012      0.92926      0.92926     14.9543       11.3699        11.4612        11.4612
+            9  0.92315     0.92996      0.92335      0.92335     14.9543       11.4155        14.6804        14.6804
+            10 0.92122     0.93015      0.92907      0.92907     15.3881       11.3927        11.4612        11.461
+* Changes for ICASSP
+*** feature loading function wrappers
+*** compacting ASR abbreviations
+***** ASR says 'C_' 'N_' 'N_'; treebank is CNN ==> alignment is screwed up
+***** fix
+
+merged result
+w  bl
+----------------------------
+c_ 4 x x x x 
+n_ ?
+n_ ?
+
+convert to this:
+
+c_ 1 ? ? ? ?
+n_ 1 ? ? ? ?
+n_ 4 x x x x
+
+
+or this
+
+n_ 4 x x x x
+
+*** retrieve turn boundaries after unknown break label deletion
+***** unknown row deletion makes turn boundaries hard to find
+***** screws up Dustin's LM
+***** fix
+
+existing turn boundary column: 
+
+     TURN_F 'T' if turn else '0'
+
+if unknown symbol deletion removes the row, put on _previous_ row that
+wasn't deleted
+
+* Mari Status Reports
+*** 10/26/06 status report
+***** best contrast (look @ all MLP nhid) vs. best NN
+******* make case for devtest/devtrain partition + test
+***** cotrain results
+******* much optimization do to on training set sizes
+***** point out unknown variable stuff
+******* *note* I need to do this for xcpair confidences too
+******* _synergy_
+
+*** 11/8/06 Status report
+| feat.classifier                   | baseline | cotrain |   |
+|-----------------------------------+----------+---------+---|
+| cotrain: quicknet.ac-treeC45.syn  |    13.63 |    13.4 |   |
+| cotrain: quicknet.all-treeC45.all |      9.9 |     9.7 |   |
+| contrast Tree MPP                 |          |         |   |
+|                                   |          |         |   |
+| contrast trees MLP                |    worse |         |   |
+
+*** 12/6/06 Status Report
+
+***** Cotraining runs using different classifiers
+      
+      | combined classifier      | feature | classifier | usePriors | best iteration | %error |
+      |--------------------------+---------+------------+-----------+----------------+--------|
+      | quicknet.ac-treeC45.syn  | F3a     | quicknet   |         0 |              1 |   13.7 |
+      | quicknet.ac-treeC45.syn  | F3a     | quicknet   |         1 |              4 |   13.7 |
+      | quicknet.ac-treeC45.syn  | F3s     | tree       |         0 |              5 |   11.6 |
+      | quicknet.ac-treeC45.syn  | F3s     | tree       |         1 |              5 |   11.7 |
+      | quicknet.ac-quicknet.syn | F3a     | quicknet   |         0 |              1 |   13.7 |
+      | quicknet.ac-quicknet.syn | F3a     | quicknet   |         1 |              9 |   13.4 |
+      | quicknet.ac-quicknet.syn | F3s     | quicknet   |         0 |              9 |   11.5 |
+      | quicknet.ac-quicknet.syn | F3s     | quicknet   |         1 |              7 |   11.5 |
+
+***** CoEM
+******* Sangyun will implement weighted SVM this weekend
+******* Dustin will talk w/ BoostTexter author about weighted inputs this coming weekend
+
+***** Confidences
+******* Computer problems!!
+******* Still implementing/debugging direct EM algorithm
+******* PCA dimension experiment
+******* Non-Negative Matrix Factorization (NNMF) should work (but very slow)
+
+*** 1/31/07 Status Report
+***** Prosody
+******* weak MLP
+********* same outtypes: [[logs from 993+]]
+********* different outtypes: [[logs from 1021++]]
+*** 3/07/07 Status Report
+***** mlp_base.pl vs. # training points
+******* Does weak training fail b/c we already have enough data?
+******* Does confidence help when have fewer data pts?
+******* results
+********* run 1458+, no conf, stylized
+
+               Break Label Prediction Errors [1458]
+
+                    frac
+runNum    featType  TrainDat  nhidMLP   n1        n4        p         errorPct
+------------------------------------------------------------------------------
+01428     ACFEATS   0.1       32        0.91824   0.72159   0.52042   15.1418
+01429     ACFEATS   0.2       32        0.91692   0.70866   0.58637   15.3477
+01430     ACFEATS   0.3       32        0.91857   0.72671   0.59893   14.4099
+01431     ACFEATS   0.4       32        0.91869   0.71975   0.59418   14.6386
+01432     ACFEATS   0.5       32        0.92374   0.75345   0.61039   13.6322
+01433     ACFEATS   0.6       32        0.91999   0.73214   0.60837   14.1812
+01434     ACFEATS   0.7       32        0.92354   0.74427   0.61376   13.7237
+01435     ACFEATS   0.8       32        0.92477   0.74969   0.61436   13.4721
+01436     ACFEATS   0.9       32        0.92354   0.74427   0.6053    13.6551
+01437     ACFEATS   1         32        0.9232    0.74832   0.60326   13.6551
+01438     SYNFEATS  0.1       17        0.9335    0.80341   0.62647   11.4822
+01439     SYNFEATS  0.2       17        0.93175   0.80437   0.62353   11.6194
+01440     SYNFEATS  0.3       17        0.93252   0.80704   0.63034   11.4593
+01441     SYNFEATS  0.4       17        0.93074   0.80535   0.61926   11.688
+01442     SYNFEATS  0.5       17        0.93177   0.81007   0.62774   11.5279
+01443     SYNFEATS  0.6       17        0.9323    0.80802   0.63299   11.4135
+01444     SYNFEATS  0.7       17        0.93084   0.80269   0.62882   11.688
+01445     SYNFEATS  0.8       17        0.93164   0.80073   0.61714   11.8253
+01446     SYNFEATS  0.9       17        0.92999   0.80949   0.6211    11.6423
+01447     SYNFEATS  1         17        0.93017   0.80387   0.61071   11.8939
+01448     ALLFEATS  0.1       17        0.93982   0.81364   0.68427   10.9332
+01449     ALLFEATS  0.2       17        0.94239   0.81014   0.69734   10.5215
+01450     ALLFEATS  0.3       17        0.9425    0.83255   0.66223   10.2928
+01451     ALLFEATS  0.4       17        0.94584   0.83605   0.73171   9.5837
+01452     ALLFEATS  0.5       17        0.94532   0.82643   0.71429   9.7667
+01453     ALLFEATS  0.6       17        0.94458   0.83044   0.71208   9.7896
+01454     ALLFEATS  0.7       17        0.94935   0.83757   0.73317   9.2864
+01455     ALLFEATS  0.8       17        0.94795   0.84583   0.73804   9.0576
+01456     ALLFEATS  0.9       17        0.94762   0.84148   0.72611   9.2635
+01457     ALLFEATS  1         17        0.94883   0.84547   0.74169   8.9661          
+********* run 1489+, no conf, spline
+
+                       Break Label Prediction Errors [1489]
+
+                    frac
+runNum    featType  TrainDat  nhidMLP   n1        n4        p         errorPct
+------------------------------------------------------------------------------
+01459     ACFEATS   0.1       32        0.91058   0.66553   0.15029   18.3898
+01460     ACFEATS   0.2       32        0.92097   0.73156   0.59892   14.204
+01461     ACFEATS   0.3       32        0.9193    0.72469   0.58356   14.4785
+01462     ACFEATS   0.4       32        0.91975   0.72261   0.58659   14.2726
+01463     ACFEATS   0.5       32        0.92561   0.73991   0.63863   13.3577
+01464     ACFEATS   0.6       32        0.92117   0.7267    0.57849   14.1354
+01465     ACFEATS   0.7       32        0.92406   0.72831   0.61436   13.7923
+01466     ACFEATS   0.8       32        0.92188   0.73363   0.62797   13.7466
+01467     ACFEATS   0.9       32        0.92453   0.73805   0.65306   13.1747
+01468     ACFEATS   1         32        0.92949   0.74107   0.6545    12.9003
+01469     SYNFEATS  0.1       17        0.93151   0.79056   0.58499   12.0997
+01470     SYNFEATS  0.2       17        0.93233   0.80361   0.6219    11.6423
+01471     SYNFEATS  0.3       17        0.93106   0.79951   0.62691   11.8481
+01472     SYNFEATS  0.4       17        0.92928   0.79903   0.62038   11.9167
+01473     SYNFEATS  0.5       17        0.93017   0.79829   0.62882   11.8253
+01474     SYNFEATS  0.6       17        0.9336    0.80172   0.625     11.5737
+01475     SYNFEATS  0.7       17        0.93117   0.80414   0.62626   11.688
+01476     SYNFEATS  0.8       17        0.92962   0.80489   0.62009   11.8024
+01477     SYNFEATS  0.9       17        0.93277   0.80727   0.61605   11.6194
+01478     SYNFEATS  1         17        0.92894   0.8       0.63022   11.8253
+01479     ALLFEATS  0.1       17        0.94381   0.83314   0.70027   9.8582
+01480     ALLFEATS  0.2       17        0.94331   0.81845   0.72704   10.0183
+01481     ALLFEATS  0.3       17        0.94677   0.83579   0.71809   9.4465
+01482     ALLFEATS  0.4       17        0.94245   0.80497   0.7261    10.2013
+01483     ALLFEATS  0.5       17        0.94762   0.84      0.73159   9.3092
+01484     ALLFEATS  0.6       17        0.9451    0.84084   0.74131   9.2864
+01485     ALLFEATS  0.7       17        0.94947   0.84304   0.74018   8.989
+01486     ALLFEATS  0.8       17        0.94678   0.84174   0.72441   9.3092
+01487     ALLFEATS  0.9       17        0.94769   0.84386   0.74131   9.0576
+01488     ALLFEATS  1         17        0.9472    0.84254   0.74256   9.1034
+
+********* run 1551+, all conf, stylized
+
+                     Break Label Prediction Errors [1551]
+
+                    frac
+runNum    featType  TrainDat  nhidMLP   n1        n4        p         errorPct
+------------------------------------------------------------------------------
+01521     ACFEATS   0.1       32        0.90138   0.64628   0.43286   17.452
+01522     ACFEATS   0.2       32        0.91767   0.72585   0.54571   14.8673
+01523     ACFEATS   0.3       32        0.91842   0.7329    0.55443   14.5929
+01524     ACFEATS   0.4       32        0.91791   0.71981   0.53073   15.1876
+01525     ACFEATS   0.5       32        0.92051   0.73515   0.57379   14.2498
+01526     ACFEATS   0.6       32        0.92094   0.73715   0.55462   14.4556
+01527     ACFEATS   0.7       32        0.92202   0.73788   0.57101   13.9982
+01528     ACFEATS   0.8       32        0.91877   0.7294    0.56358   14.4556
+01529     ACFEATS   0.9       32        0.92252   0.73959   0.60892   13.9296
+01530     ACFEATS   1         32        0.92506   0.75614   0.59751   13.4263
+01531     SYNFEATS  0.1       17        0.93275   0.80932   0.61448   11.5508
+01532     SYNFEATS  0.2       17        0.92997   0.78664   0.60921   12.1226
+01533     SYNFEATS  0.3       17        0.93258   0.80695   0.61677   11.5508
+01534     SYNFEATS  0.4       17        0.92424   0.77849   0.63407   12.4199
+01535     SYNFEATS  0.5       17        0.93267   0.81081   0.62242   11.4593
+01536     SYNFEATS  0.6       17        0.93208   0.80964   0.63034   11.4593
+01537     SYNFEATS  0.7       17        0.9306    0.79927   0.61561   11.9167
+01538     SYNFEATS  0.8       17        0.93231   0.80556   0.61834   11.5965
+01539     SYNFEATS  0.9       17        0.93098   0.8053    0.63436   11.5965
+01540     SYNFEATS  1         17        0.93172   0.80222   0.62717   11.6423
+01541     ALLFEATS  0.1       17        0.94359   0.82884   0.70341   9.9726
+01542     ALLFEATS  0.2       17        0.94166   0.82718   0.68286   10.2242
+01543     ALLFEATS  0.3       17        0.94643   0.82425   0.7199    9.8124
+01544     ALLFEATS  0.4       17        0.94671   0.8418    0.72084   9.355
+01545     ALLFEATS  0.5       17        0.94549   0.83946   0.70277   9.6295
+01546     ALLFEATS  0.6       17        0.94668   0.82684   0.71023   9.8124
+01547     ALLFEATS  0.7       17        0.95045   0.84096   0.73671   9.0576
+01548     ALLFEATS  0.8       17        0.94883   0.84434   0.72796   9.1491
+01549     ALLFEATS  0.9       17        0.94936   0.84084   0.7184    9.2406
+01550     ALLFEATS  1         17        0.94954   0.8384    0.72298   9.2635
+
+********* run 1520+, all conf, spline
+
+                     Break Label Prediction Errors [1520]
+
+                    frac
+runNum    featType  TrainDat  nhidMLP   n1        n4        p         errorPct
+------------------------------------------------------------------------------
+01490     ACFEATS   0.1       32        0.91473   0.7005    0.47213   16.0567
+01491     ACFEATS   0.2       32        0.9168    0.71877   0.53102   15.3477
+01492     ACFEATS   0.3       32        0.92366   0.72393   0.57468   14.2955
+01493     ACFEATS   0.4       32        0.91919   0.71603   0.53997   14.753
+01494     ACFEATS   0.5       32        0.92305   0.73658   0.59534   13.8838
+01495     ACFEATS   0.6       32        0.92234   0.71881   0.58129   14.2269
+01496     ACFEATS   0.7       32        0.91993   0.72946   0.58774   14.1812
+01497     ACFEATS   0.8       32        0.92789   0.74236   0.62834   13.1747
+01498     ACFEATS   0.9       32        0.92619   0.73867   0.61436   13.5178
+01499     ACFEATS   1         32        0.92831   0.74209   0.64      13.0604
+01500     SYNFEATS  0.1       17        0.92941   0.79038   0.61329   12.0311
+01501     SYNFEATS  0.2       17        0.93099   0.79878   0.63235   11.7109
+01502     SYNFEATS  0.3       17        0.93128   0.79479   0.62661   11.8253
+01503     SYNFEATS  0.4       17        0.92872   0.79655   0.6325    11.8939
+01504     SYNFEATS  0.5       17        0.93263   0.80581   0.63034   11.4822
+01505     SYNFEATS  0.6       17        0.93115   0.80315   0.62791   11.688
+01506     SYNFEATS  0.7       17        0.93081   0.80407   0.61135   11.8481
+01507     SYNFEATS  0.8       17        0.93223   0.80534   0.6289    11.6194
+01508     SYNFEATS  0.9       17        0.93315   0.80938   0.62739   11.4135
+01509     SYNFEATS  1         17        0.93095   0.79926   0.62774   11.7338
+01510     ALLFEATS  0.1       17        0.93637   0.80461   0.66484   11.1162
+01511     ALLFEATS  0.2       17        0.93942   0.80856   0.68783   10.7502
+01512     ALLFEATS  0.3       17        0.94899   0.85451   0.73418   8.9204
+01513     ALLFEATS  0.4       17        0.94442   0.81883   0.7096    10.1784
+01514     ALLFEATS  0.5       17        0.94812   0.83824   0.74293   9.1034
+01515     ALLFEATS  0.6       17        0.94598   0.82888   0.73052   9.538
+01516     ALLFEATS  0.7       17        0.94765   0.8368    0.74401   9.2177
+01517     ALLFEATS  0.8       17        0.94868   0.84142   0.75385   8.9433
+01518     ALLFEATS  0.9       17        0.95055   0.84985   0.74545   8.6917
+01519     ALLFEATS  1         17        0.94866   0.84337   0.74401   8.989
+
