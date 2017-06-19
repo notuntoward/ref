@@ -1899,7 +1899,9 @@ Strike-through: nil
 ***** Can play audio but I haven't configured it
 ***** Tons of other configurations
 
-*** [[svn in emacs]]
+*** Version control in emacs
+***** [[svn in emacs]]
+***** [[git in emacs]]
 *** Inline images
 ***** in any file: use M-x [[http://www.netlaputa.ne.jp/~kose/Emacs/iimage.html][iimage-mode]]
 ***** this [[http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.php][works in org-mode]] (note C-c C-l links don't work? use double sq. brkts)
@@ -3797,8 +3799,7 @@ won't work if you close and immediately open onenote again.
 
   Med venlig hilsen Henning Christiansen
 
-***** svn in emacs
-      <<svn in emacs>>
+***** <<svn in emacs>>
 ******* [[http://www.xsteve.at/prg/vc_svn/][psvn.el]] like pcl-cvs.el (what I use for CVS)
 ********* the C-c c v stuff, in the code buffer
 ********* I've [[file:~/lib/emacs/psvn.el][installed]] it
@@ -4110,6 +4111,16 @@ won't work if you close and immediately open onenote again.
       git push -u origin master      
       
 ***** [[http://rogerdudler.github.io/git-guide/][git - the simple guide - no deep shit!]]
+***** [[https://confluence.atlassian.com/bitbucket/use-the-ssh-protocol-with-bitbucket-cloud-221449711.html][bitbucket SSH key]]
+***** [[https://help.cloudforge.com/hc/en-us/articles/215243143-Configure-TortoiseGIT-client-to-work-with-SSH-keys-on-Windows][tortoiseGIT ssh key]]
+***** [[https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud?team_source=header&utm_source=special-offer-email&utm_medium=email&utm_campaign=EP-124][Learn Git with Bitbucket Cloud | Atlassian Git Tutorial]]
+***** [[https://developer.atlassian.com/blog/2016/02/6-secret-bitbucket-features/?team_source=header&utm_source=special-offer-email&utm_medium=email&utm_campaign=EP-124][6 Bitbucket secrets - Atlassian Developers]]
+***** <<git in emacs>>
+      From: [[https://stackoverflow.com/questions/5925372/how-to-use-git-from-emacs][How to use git from emacs - Stack Overflow]]
+
+      viewing a diff (C-x v =)
+      getting the file's history (C-x v l)
+      reverting the file to a pristine state (C-x v u).
 * HTML
 *** tables
 ***** Easy visual [[http://www.quackit.com/html/html_table_generator.cfm][Table Generator]]
