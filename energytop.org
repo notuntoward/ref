@@ -11,8 +11,7 @@
 ********* they don't have our excellent domain expertise
 ********* but remember speech and who is out of a job now
 ***** What is deep learning?
-******* Stephan: concept building process (a paragraph in a book somewhere)
-        <<Stephan: concept building process>>
+******* <<Stephan: concept building process>> (a paragraph in a book somewhere)
         DL tech. and the concepts they build
 ********* Conv. NN
 ********* [[Autoencoder]]
@@ -123,6 +122,7 @@
 *** [[cite:9781319042387][Freedman et al. 2015: Universe, Venus/Earth Conv. Cells]]
 
 *** [[cite:Mai14financeEngCopulasExpln][Mai & Scherer 2014: Financial Eng Copulas Explnd]] 
+*** [[cite:Revelle17psychThryR_eBook][Revelle 2017: Intro Psychometrics, R.  Covar. Rgrssn, Factor Mdl]]
 *** [[http://www.neurosolutions.com/products/nsbook/][Interactive Neural Network Book]] explains recurrent NN's, has demos
 *** [[Books w/ source code]]
 *** Wind energy books I could buy
@@ -442,6 +442,11 @@
 ******* How does this compare with [[Kendall Tied Pairs]]?
 
 ***** _fractional rank matters for wind/solar_ Lots of repeated zeros
+***** <<Spearman's correlation to/from Linear Correlation>>
+      From: [[cite:MathWorks17simDetVarCopula][MathWorks 2017: Simulating Dependent Random]]
+
+      rho_s = (6/pi)*arcsin(rho/2) or rho = 2*sin(rho_s*pi/6)
+
 ***** TODO How to convert Spearman to/from Normal/T-copula?
 ***** see also: [[Kendall's rank correlation]]
 ***** see also: [[Kendall vs. Spearman]]
@@ -454,13 +459,19 @@
 ***** concordant/discordant: whether or not rankings within the pair are consistent
 ***** == +-1 for perfect agreement or disagreement
 ***** a more tolerant version of [[Spearman's rank correlation]] ([[Kendall's is tolerant?]])
-***** _tied pairs_: Tau-a, Tau-b, Tau-c (see article)
-      <Kendall Tied Pairs>>
+***** <<Kendall Tied Pairs>>: Tau-a, Tau-b, Tau-c (see article)
+      
       This is what you do when there are repeated values (certain with wind and solar).
 
       How does this compare with [[Spearman Fractional Rank]]
 
-***** TODO How to convert Kendall to/from Normal/T-copula ?
+***** <<Kendal's Tau to/from Linear Correlation>>
+      From: [[cite:MathWorks17simDetVarCopula][MathWorks 2017: Simulating Dependent Random]]
+
+      tau = (2/pi)*arcsin(rho) or rho = sin(tau*pi/2)
+
+      But which of the three [[Kendall Tied Pairs]] is this?
+
 ***** TODO Kendall vs. Spearman
       <<Kendall vs. Spearman>>
 ******* Kendall's has generally tighter confidence intervals
@@ -474,18 +485,23 @@
 
 ******* TODO which is better for copulas?  Normal or T-copula?
 ***** See also [[Spearman's rank correlation]]
-*** T-distribution
-    <<T-distribution>>
+*** <<T-distribution>>
 ***** T-distribution has longer tails than Gaussian: [[cite:Roth13multivarTdist][Roth 2013 Multivar T dist]]
 ***** can be conditionalized: [[cite:Ding16condMultivarTdist][Ding 2016: cond T dist]]
+***** [[cite:Shah14studentTprocAltGauss][Shah et al. 2014: Student Processes Alternatives Gaussian Processes]]
+***** [[cite:Solin15StateSpaceStudentTprocR][Solin & Saerkkae 2015: State Space Methods Student T Proc Regression]]
+***** [[cite:Xu16adaptStrmAnomAnlysTsubmod][Xu et al. 2016: Adaptive Streaming Anomaly Analysis]]
 ***** see [[T-Copula]]
 *** TODO <<T-Copula>>
-***** TODO T-copula vs. normal copula
+***** TODO <<T-copula vs. normal copula>>
 ******* [[file:energy.bib::Sutiene07scenCopula][Sutiene & Pranevicius 2007: Scenario Generation Employing Copulas]] (compares Gaussian to T-copula)
 
+******* [[cite:Shah14studentTprocAltGauss][Shah et al. 2014: Student Processes Alternatives Gaussian Processes]]
+***** [[cite:Solin15StateSpaceStudentTprocR][Solin & Saerkkae 2015: State Space Methods Student T Proc Regression]]
 ***** TODO Infotheory way to pick normal vs. T-copula: [[cite:Calsaverini09copulaInfo][Calsaverini & Vicente 2009 Info Theory Copula]]
 ***** See [[T-distritubion]]
 ***** See [[Copulas in Matlab]]      
+***** See [[Normal Copula]]
 *** Solar GHI, DNI, DHI, GTI
     From [[http://www.3tier.com/en/support/solar-prospecting-tools/what-global-horizontal-irradiance-solar-prospecting/][What is Global Horizontal Irradiance? :: Solar Online Tools FAQ...]]
     and [[https://firstgreenconsulting.wordpress.com/2012/04/26/differentiate-between-the-dni-dhi-and-ghi/][Differentiate between the DNI, DHI and GHI? |]]
@@ -2586,8 +2602,11 @@ Scott
 ***************** todo watch [[http://videolectures.net/ida07_pellet_apcba/][video]] for this paper
 *************** correlation matrix <--> correlation matrix (or covariance matrix)
                 r's [[http://ugrad.stat.ubc.ca/r/library/genets/html/partial.cor.html][cor2pcor()]] in pkg: partial.cor {genets}
-*************** partial correlation <--> regression coefficients
-                <<partial correlation vs. regression coefficients>>
+
+                Also see:
+                [[cite:Revelle17psychThryR_eBook][Revelle 2017: Intro Psychometrics, R.  Covar. Rgrssn, Factor Mdl]]
+
+*************** <<partial correlation vs. regression coefficients>>
 
                 from [[http://bm2.genes.nig.ac.jp/rgm2/r_current/library/corpcor/man/mvr.shrink.html][mvr.shrink {corpcor}]]:
 
@@ -2607,6 +2626,9 @@ Scott
                 this paper does it too: [[File:energy.bib::opgen-rhein07corr2caus][Opgen-Rhein & Strimmer 2007: From]]
 
                 there's a similar relationship with [[Semipartial Correlation]]s
+
+                Also see:
+                [[cite:Revelle17psychThryR_eBook][Revelle 2017: Intro Psychometrics, R.  Covar. Rgrssn, Factor Mdl]]
 
 *************** Also see:  [[cite:Kwan14regressnInterpInvCovMat][Kwan 2014 Regression Interp Inv Cov Matrix (Prec. Matrix)]] 
 *************** Also see: [[Dependence Learning]]
@@ -6002,9 +6024,10 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ******** [[http://www.cpc.ncep.noaa.gov/products/predictions/experimental/bulletin/Jun97/q27.html][Screening Multiple Linear Regressionf (SMLR)]].
 ********** related to [[file:energy.bib::Minka01BayesLinRegress][Minka 2001: Bayesian Linear Regression]] ?
 ********** maybe also related to [[Multivariate adaptive regression splines]]
-***** Gaussian Processes
+***** <<Gaussian Processes>>
 ******* TODO go through GP round table and annotate talks  (many relevant applications e.g. linear thing)
 ******* [[Copula Processes]]
+******* [[Copula vs. Gaussian or Student-T Regression]]
 ******* TODO [[cite:Elidan12copulaMachLrnTut][Elidan 2012: Copulas Machine Learning]] (Bcopulas, vines, GM's, GP's)
 ******* TODO [[cite:Elidan13copulasMachLrn][Elidan 2013: Copulas]] Mach Learng
 ******* Good For:
@@ -6038,6 +6061,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 *********** [[Fast GP-LVM]] software handles missing inputs, dynamics
 *********** [[http://www.journalarchive.jst.go.jp/english/jnlabstract_en.php%3Fcdjournal%3Dbhmk1974&cdvol%3D26&noissue%3D1&startpage%3D29][Additive GP's]] can show which inputs are having effects
 *********** Better than MLP for missing features (claim in: [[file:energy.bib::Wang06compGausProcNeuralForecast][Wang et al. 2006: Comparing Gaussian Processes]])
+*********** [[Copula vs. Gaussian or Student-T Regression]]
 *********** [[http://portal.acm.org/citation.cfm%3Fid%3D945369][The em algorithm for kernel matrix completion with auxiliary data]]
 *********** see also: [[missing values]]
 *********** see also: [[Mixtures of regressors]]
@@ -6139,11 +6163,13 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ******* [[http://mlg.eng.cam.ac.uk/pub/pdf/Tur11.pdf][Gaussian Processes for State Space Models and Change Point Detection]]
 ******* Combined Kalman and Gaussian: [[http://www.cs.washington.edu/homes/fox/abstracts/gp-ukf-iros-07.abstract.html][GP-UKF: Unscented Kalman Filters with Gaussian Process Prediction and Observation Models]]
 ******* Gaussian Process [[http://mlg.eng.cam.ac.uk/duvenaud/cookbook/index.html][periodic kernel]] (and other kernels)
+******* [[cite:Shah14studentTprocAltGauss][Shah et al. 2014: Student Processes Alternatives Gaussian Processes]]
 ******* Possibly another interaction term picker: [[file:energy.bib::Duvenaud11AddGausProcIntrct][Duvenaud et al. 2011: Additive]] Gaussian Proce Interact
 ******* [[cite:Lawrence16deepLrnEffic][Lawrence 2016: Deep Learning Pachinko James Watt]] Efficiency, GP var lrn.
 ******* See: [[Submodular Optimization]]
         e.g. [[file:energy.bib::Krause08robustSubModObsSel][Krause et al. 2008: Robust Submodular Observation Selection]]
 ******* [[file:energy.bib::Osborne08realtimeGausProc][Osborne et al. 2008: Towards Real Time]]
+******* See [[Copula Processes]]
 ******* See: [[Non-homogeneous Gaussian Regression]]
 ***** Non-homogeneous Gaussian Regression
       <<Non-homogeneous Gaussian Regression>>
@@ -7430,6 +7456,7 @@ sera
 *********** [[File:energy.bib::calsaverini09copulainfo][Calsaverini & Vicente 2009]] (Copula Info: when corr. in gaussian copula 
 *********** [[cite:Tastu15spcTimeTrajGaussCpla][Tastu et al. 2015: Space Time Trajectories Gaus Cpla Prec Mtrx]]
 *********** [[cite:Tastu13scenSpatTimeCpla][Tastu et al. 2013: Space time Gaussian copula scenario]] (actually, just wind)
+*********** [[cite:Shah14studentTprocAltGauss][Shah et al. 2014: Student Processes Alternatives Gaussian Processes]]
 *********** [[cite:Bessa16gaussCplaDcsns][Bessa 2016: Gaussian Copulas Wind Farm Scenarios]]
 *********** [[cite:Pinson09probFrcstStatScenWind][Pinson et al. 2009: From prob forecasts to scenarios]]
 *********** [[cite:Hagspiel12copulaWindPowEur][Hagspiel et al. 2012: Copula Europe Swiss Wind Pow]]
@@ -7442,12 +7469,16 @@ sera
 *********** [[file:energy.bib::Sutiene07scenCopula][Sutiene & Pranevicius 2007: Scenario Generation Employing Copulas]] (compares Gaussian to T-copula)
 *********** [[cite:Bessa16gaussCplaDcsns][Bessa 2016: Gaussian Copula multitemporal decision]]
 *********** [[Conditional Gaussian]]
+********* TODO [[T-Copula]]
 ********* <<Graph Copula Models>>
 *********** [[cite:Elidan12copulaMachLrnTut][Elidan 2012: Copulas Machine Learning]]
 *********** [[cite:Veeramachaneni15cplaGrphMdlsWindRsrcEst][Veeramachaneni et al. 2015: Copula Graphical Models wind farm site]]
 *********** [[cite:Hardesty15windFarmSiteCopula][Hardesty 2015: Siting Wind Farms Graph Copula]]
 *********** see [[Copula Processes]]
 ********* [[Dependence Learning]]
+********* <<Copula vs. Gaussian or Student-T Regression>>
+*********** [[cite:Solin15StateSpaceStudentTprocR][Solin & Saerkkae 2015: State Space Methods Efficent Student-T Rgrssn]]
+*********** one or two papers I've already put in .bib talk about SDE and Gaussian copulas.  Something about Gaussian Markov Random Fields GMRF
 ********* see [[Copula Processes]]
 ********* see [[Copulas for wind dir dependence]]
 ********* see [[Factor/Vine Copulas]]
@@ -7581,6 +7612,7 @@ sera
 ********* [[file:energy.bib::Steinbrecher08QuantileMech][Steinbrecher & Shaw 2008: Quantile]] Mechanics
 ********* see also: [[*Stochastic Differential Equations][Stochastic Differential Equations]] (same thing?)
 ******* TODO <<Stochastic Differential Equations>>
+
         Henrik Madsen, DTU, thinks these are best for scenario generation
         b/c they have few parameters, and their optimization is
         tractable, unlike w/ scenario trees
@@ -7606,6 +7638,7 @@ sera
 ********* [[http://link.springer.com/chapter/10.1007%252F978-3-540-72699-9_29][New Extended Kaiman Filter Algorithms for Stochastic Differential Algebraic Equations]]
 *********** using stochastic differential equations for predictive control (optimization)
 ********* [[file:energy.bib::Hertzler03classicalDistSDE][Hertzler 2003: Stochastic Differential Equation Modeling]] classical dist
+********* [[cite:Solin15StateSpaceStudentTprocR][Solin & Saerkkae 2015: State Space Methods]]
 ********* [[file:energy.bib::Brown12powCurvVerifSDE][Brown 2012: Fast Verification Wind]] (pow curve w/ with SDE)
 ********* [[file:energy.bib::Crane08timeSpaceCopula][Crane 2008: Time Space Varying Copulas]] (with SDE's)
 ********* [[file:energy.bib::Calderon10psplineDerivSDE][Calderon et al. 2010: P]]-spline using derivatives (could be used for SDE's)
@@ -9901,8 +9934,7 @@ Scott
 ******* [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: System. Integ. Lrg. (prob. persist & robust opt.)]]
 ******* [[file:energy.bib::Zhao14neISOrobustUC][Zhao et al. 2014: Comprehensive Evaluation Robust Unit Commitment]] (New England ISO)
 
-***** Submodular Optimization
-      <<Submodular Optimization>>
+***** <<Submodular Optimization>>
 ******* Jeff Bilmes has done a lot on it
 ********* talked about this @ ASRU 2008 ([[http://ssli.ee.washington.edu/~bilmes/ee595a_spring_2011/lecture1.pdf][his SSLI slides]])
 ********* he has a [[http://ssli.ee.washington.edu/~bilmes//pgs/sort_date.html][ton of papers]] on the topic; most relevant to feature selection?:
@@ -9946,6 +9978,7 @@ Scott
 ********* toolbox docs say something about mutual information clustering
 ********* also says MI is submodular but not monotonic
 ********* another toolbox or the same?  http://jmlr.csail.mit.edu/papers/volume11/krause10a/krause10a.pdf
+******* [[cite:Xu16adaptStrmAnomAnlysTsubmod][Xu et al. 2016: Adaptive Streaming Anomaly Analysis]]
 ******* Submodularity [[http://www.select.cs.cmu.edu/tutorials/icml08submodularity.html][can be used for active learning]] (see refs 6,11))
 ********* TODO [[file:energy.bib::GroweKuska03scenarioRedTree][Growe-Kuska et al. 2003: Scenario]] reduction, highly cited
 ***** Portfolio Optimization
@@ -10524,6 +10557,7 @@ dimen* <<State Change Detection>>
 ***** [[file:energy.bib::Chandola09anomalyDetSurv][Chandola et al. 2009: Anomaly]] det. survey
 ***** [[file:energy.bib::SantosTeixeira10anomSubSpcTrk][Santos & Milidiu 2010: Data]] anomaly detection
 ***** [[cite:Dienst16AnomOffshrWnd][Dienst & Beseler 2016: Automatic Anomaly Detection]] offshore SCADA (GlobalTec)
+***** [[cite:Xu16adaptStrmAnomAnlysTsubmod][Xu et al. 2016: Adaptive Streaming Anomaly Analysis]]
 ***** [[cite:Belloni11sparseQRl1][Belloni et al. 2011]] sparse QR: one step better than Dienst16, has Matlab
 ***** [[cite:Ide09ProxAnomDetSprs][Ide et al. 2009: Proximity Based Anomaly]] det sparse, lasso unstable
 ***** [[cite:Goldstein16cmprUnsupNovDetMV][Goldstein & Uchida 2016: Comparative Evaluation Unsupervised]] anom det
@@ -10668,6 +10702,7 @@ dimen* <<State Change Detection>>
 
 *** <<Fault Detection>>
 ***** TODO [[cite:Leahy16windTurbFaultMachLrn][Leahy et al. 2016: Diagnosing]] wind turbine faults: diagnosis and list of.  Looks pretty useful
+***** [[cite:Gayo11reliaWindFinalRprt][Gayo 2011: Final Report RELIAWIND turbine reliability]]
 ***** TODO [[cite:Aloraini14grphMdlTurbFaultDiag][Aloraini & Sayed-Mouchaweh 2014: Graphical Model Based]] wind turbine fault, does diagnosis
 ***** TODO [[cite:Ambati15deepLrnGuidePract][Ambati 2015: Deep]] Learn practial guide, people DO do fault detect w/ deep learning
 ***** TODO [[cite:Lv16faultDiagDeepLrn][Lv et al. 2016: Fault detect deep learn (has benchmark database)]]
@@ -10728,6 +10763,7 @@ dimen* <<State Change Detection>>
 *** [[file:energy.bib::Biau11seqQuantRgrsnTS][Biau & Patra 2011: Sequential Quantile Prediction Time Series]]
 *** [[cite:Mcwilliams09predOnlineVarSel][Mcwilliams & Montana 2009: Predictive data stream PLSR]]
 
+*** [[cite:Xu16adaptStrmAnomAnlysTsubmod][Xu et al. 2016: Adaptive Streaming Anomaly Analysis]]
 *** see also: [[Fault Detection]]
 *** see also: [[Novelty Detection]]
 *** also see [[Concept Drift Detection]]
@@ -10762,6 +10798,7 @@ dimen* <<State Change Detection>>
 *** [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: Large Data Set Fault Detect Wind Forecast LIGHTNING]]
 *** [[PLSR for Graph Learning]]
 *** [[cite:Pena03descSctrLinDep][Pena & Rodriguez 2003: Meas multivar scatter and linear dependence]]
+*** [[Partial Correlation]]
 *** TODO <<Covariance sparseness>>
 ***** See also: [[Covariance Shrinkage]]
 ***** DONE [[cite:Tastu15spcTimeTrajGaussCpla][Tastu et al. 2015: and Space Time Trajectories Gaus Cpla Prec Mtrx]]
@@ -10791,6 +10828,7 @@ dimen* <<State Change Detection>>
 *** TODO [[cite:Ng10kernCopulaProcThesis][Ng 2010: Kernel Based Copula Proc PhD]]
 *** TODO [[cite:Karra17CopulaIdxDepMono][Karra & Mili 2017: Copula Index Detecting]]
 *** TODO [[cite:Liu17multDatFusCplaProc][Liu et al. 2017: Multimodal Data Fusion]]
+*** [[cite:Shah14studentTprocAltGauss][Shah et al. 2014: Student Processes Alternatives Gaussian Processes]]
 *** Also: [[Copulas]]
 *** Also: [[Graph Copula Models]]
 * <<Reinforcement Learning>>

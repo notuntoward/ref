@@ -12,6 +12,7 @@
 
       See: [[File:~/.emacs::;;%20TODO%20use-package%20is%20redundant%20w/%20'(package-selected-packages%20in%20customizations)][use-packages notes in my .emacs]]
 
+***** TRY [[help:align-regexp]]
 ***** TRY [[http://oremacs.com/2015/10/23/dired-compress/][dired file compression]] instead of crypt++
 ***** TRY improve hydra
 ******* org: counsel-org-goto
@@ -262,7 +263,6 @@
 
 ***** TRY M-x proced
 ***** TRY Flashcards inside german.org: [[https://www.reddit.com/r/emacs/comments/63z6yj/org_mode_and_anki/][org-drill or pamparam]]
-***** TRY [[help:align-regexp]]
 ***** TRY <<Get IEEE & ScienceDirect with abstracts in emacs>>
 ******* [[Org-ref operations on .bib file]] (gets science direct, as of May 2017)
 ******* [[http://ieeexplore.ieee.org/gateway/][IEEE Xplore Search Gateway Search Parameters]] (but no download???)
@@ -7455,7 +7455,6 @@ ERROR: Cannot run texhash command. Please run manually.
 
     It's possible that Calibre will produce prettier pdf's but it requires
     a DRM breaker plugin that you had to download from an untrusted website.
-
 
 
 

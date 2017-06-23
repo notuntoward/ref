@@ -1,1 +1,1 @@
-Literature, papers, bibtex, howto's, etc.
+# My project's README

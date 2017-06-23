@@ -1205,6 +1205,137 @@ Matlab: http://ofai.at/research/impml/projects/hubology.html
   timestamp    = {2014.04.04},
 }
 
+@Article{Schnitzer12Localandglobal,
+  author    = {Schnitzer, Dominik and Flexer, Arthur and Schedl, Markus and Widmer, Gerhard},
+  title     = {Local and global scaling reduce hubs in space},
+  year      = {2012},
+  volume    = {13},
+  number    = {1},
+  pages     = {2871--2902},
+  url       = {http://dl.acm.org/citation.cfm?id=2503333},
+  abstract  = {'Hubness' has recently been identified as a general problem of high dimensional data spaces, manifesting itself in the emergence of objects, so-called hubs, which tend to be among the k nearest neighbors of a large number of data items. As a consequence many nearest neighbor relations in the distance space are asymmetric, that is, object y is amongst the nearest neighbors of x but not vice versa. The work presented here discusses two classes of methods that try to symmetrize nearest neighbor relations and investigates to what extent they can mitigate the negative effects of hubs. We evaluate local distance scaling and propose a global variant which has the advantage of being easy to approximate for large data sets and of having a probabilistic interpretation. Both local and global approaches are shown to be effective especially for high-dimensional data sets, which are affected by high hubness. Both methods lead to a strong decrease of hubness in these data sets, while at the same time improving properties like classification accuracy. We evaluate the methods on a large number of public machine learning data sets and synthetic data. Finally we present a real-world application where we are able to achieve significantly higher retrieval quality.},
+  file      = {Schnitzer12Localandglobal.pdf:Schnitzer12Localandglobal.pdf:PDF},
+  groups    = {Read},
+  journal   = {The Journal of Machine Learning Research},
+  owner     = {sotterson},
+  publisher = {JMLR. org},
+  review    = {High dim. KNN classification greatly improved with local and unsupervised global hub reduction. MP technique might be good for locLinQR, spectral or KNN clustering. MP also has probabilstic interpretation, maybe interesting for Kraskov MI estimation too? SNN not as reliable or effiencient (potentially) as MP and LS. Has Matlab
+
+updated in Flexer13shrKNNhubRdc, which has some nice plots
+
+Manifestations of the Curse of High Dimensionality
+
+* Hubs
+ - points that are the nearest neighbors of way too many other points
+* Orphans
+ - data points that are not the nearest neighbor of any other point
+ - this made 27\% of songs unreachable in music recommender system.
+* Concentration:
+ - all points points are at about the same distance from each other
+ - any set of points: this is a consequence of high dim spaces
+ - measurement: ratio of spread to magnitude, e.g. std(all distances)/mean(all distances)
+ ---- points closer to data mean are more likely to be hubs
+ ---- points further awy from mean are more likey to be orphans
+* Asymmetry
+ - y is the NN of x but y's nearest neighbor is some other point, a, not x
+ - causes KNN to fail.
+ - the techniques in this paper make adjacency more symmetric.
+* Pairwise stability (the lack of it):
+ - y is the NN of x
+ - a is he NN of y
+ - class(x) == class(y) != class(a) [this is the lack of stability]
+* Bad hubs
+ -- have different classes than the majority of data points they are nearest neighbors to
+
+Fixes for C.0.D and Hubs (not local, not global?)
+* SNN: Shared Nearest Neighbors
+ - helps with "non-globular" clusters
+ - similarity is the num. of KNN's that x and y have in common (NN overlap)
+* RNN Reverse Nearest Neighbor
+ - finds fartherst neighbors?? (not described)
+ - used for outlier detection
+* Proximity verification: based on the NN rank similarity
+
+Local Scaling Methods
+* LS: Local Scaling (Zelnik-Manor)
+ - initially used for spectral clustering
+ - tunes pairwise distances to account for different local densities (good for KNN density estimation?)
+ - x and y "close" iff dist. dx,y is small rel. to both local x and y scales (dist to x or y's kth NN)
+ - calls it "LS" (section 3.1)
+* Contextual dissimilarity measure (CDM), not explained
+* NICDM: non-iterative contextual dissimilarity measure
+ - scales by avg. dist to ith NN, for all x or y
+ - more stable than LS
+ - the local alternative this paper tries
+
+Global Scaling: Mutual Proximity (MP)
+* what the experiment with in this paper
+* converts distance to probability of being x and y being eachothers NN (k==1 in KNN)
+ - is a similarity measure now, scaled to (0,1)
+ --- IDEA: try this for spectral clustering, as LS already worked and this is already a similarity w/ nice scaling
+ --- IDEA: seem like it would be smooth, unlike KNN probs, so a good locLin weight function?
+ - can estimate w/ joint empirical distribution of all points but not necessary
+ --- almost, or just as, good to model joint distance by independent Gaussians/Gamma for each point
+ ----- but in Flexer13shrKNNhubRdc, the say the loss is small
+ --- Params come from subsamples (30 points, but I am not quite convinced b/c they avg. results)
+ --- Gaussian may be best: Gamma and Gauss perf. the same (?) but they drop gamma (Sec 4.4, p. 2889)
+ - scaling means that can combine multiple distance measures with ease
+ --- example is music timbre and rythmn distances
+* makes relationships symmetric and (I think) autoscales out hubs
+* is unsupervised so useful for more than classification!
+* IDEA: Globalness of MP is good b/c for KNN locLinQR neighborhoods
+ - with a dimension reduction loop, the adjacency fix would have to work at full dimension.
+* Compare with p-Gaussians global techniques e.g. Francois05locKernHiDim
+
+Performance Metrics
+* KNN classifer error
+* k-occurrence: num. times x occurs in the KNN lists of all other points
+* Hubness: k-occurrence distribution skewness
+ - postive skew (>1.4) is "hubby" (p. 2884)
+ - "very hubby": >2 (p. 2892)
+ --- see that dimensions as low as 30 are very hubby (p. 2892)
+ --- IDEA: would hub reduction reduce dimension-dependent bias in Kraskov04EstMutInfKNN
+ - see that "badness" of hubs about as bad as orphans (on tests, p. 2894)
+ - IDEA: justify need for special metrics by showing hubness of locLin QR input data
+ - IDEA: use hubness/orphanness as a probabilistic forecast input (for whole dataset, somehow or locally?)
+ -- maybe plot error vs. local region "hubness" or "orphanness"
+* Goodman-Kruksal Index: roughly, average class matching between pairs (pair stability)
+* Intrinsic dimensionality (ref to Levina04maxLikIntrinsDim )
+ - num. dims really needed to model the data (feature space dimension is "embedded dimension"
+ - ID and embedded dimension can be vastly different (9 vs. 15154 in one case, pl 2884)
+ - IDEA: use ID as a lower bound on dimension search for PCA, when the goal is regression?
+ ---- could there still be dims that aren't relevant to the regression targ, even at lower ID?
+ - IDEA: use this for dim reduction prior (final dim, post reduction, e.g. in PCA, if didn't have Minka00AutoPCAdim)
+ - IDEA: use to justify local regression dimension reduction (plot intrinsic dim. of each neighborhood)
+* Percent symmetric relations (want this to be high)
+
+RESULTS
+* Test set is large, very diverse
+ - image, audio, text, statistical, biological
+ - 3 kinds of distance measures: Euclidean, cosine, Kullback-Leibler divergence (KL-dist?)
+* initial tests done using empirical distribution
+* Performance Improvement
+ - quite large reduction in KNN classification error, and hubness
+ - best improvements on high intrinsic or embedded dimensions
+ - best improvements if data was already hubby (some high dims aren't hubby)
+ - hubness decreases most on most hubby original data (obvious?)
+ - hubness reduction never hurts, even if data is not hubby
+* Neither MP or NICDM reduce intrinsic dimensionality
+ - Good, b/c intrinsic dimensionality may be needed for discrimination
+ - This explanation is kind of given in Flexer13shrKNNhubRdc
+ - interesting multidimensional distance scaling (MDS) measurement technique!
+* MP seems equal or slightly better than NICDM on Godman-Kruskal (concordance) and symmetry
+* simple Gaussian indepence modelling of distribution performs as well as anything else
+ - but loss is called "small" in Flexer13shrKNNhubRdc
+* subsampling of distribution said to be as good, but I am not so sure about this
+* Seems like they like MP the best
+* not clear if tests were on balanced or imbalanced data
+ - see Tomasev13imbalKnnHubs for specific imbalanced data tests.
+
+Has MATLAB: http://www.ofai.at/~dominik.schnitzer/mp.},
+  timestamp = {2014.04.04},
+}
+
 @TechReport{Dokic15systIntegLrgData,
   author      = {Tatjana Dokic and Yingzhong Gu and Arjun Anand and Shang-Tse Cheng and Mladen Kezunovic},
   title       = {Systematic Integration of Large Data Sets for Improved Decision Making},
@@ -1247,6 +1378,69 @@ Project page is here http://pserc.wisc.edu/research/current_projects/t51.aspx},
   Review                   = {Clear description of generalized variance, partial correlation, multivariate normal and other multivariate tests, etc. From SAS.},
   Timestamp                = {2012.03.09},
   URL                      = {https://support.sas.com/pubscat/bookdetails.jsp?pc=56903}
+}
+
+@TechReport{Milligan11CostCausIntegVarGen,
+  author      = {Milligan, Michael and Ela, Erik and Hodge, Bri-Mathias and Kirby, Brendan and Lew, Debra and Clark, Charlton and DeCesaro, Jennifer and Lynn, Kevin},
+  title       = {Cost-Causation and Integration Cost Analysis for Variable Generation},
+  institution = {NREL},
+  year        = {2011},
+  type        = {Tech Report},
+  number      = {NREL/TP-5500-51860},
+  location    = {Colorado, USA},
+  month       = jun,
+  pages       = {275--3000},
+  url         = {http://www.nrel.gov/docs/fy11osti/51860.pdf},
+  abstract    = {1
+Cost-Causation and Integration Cost Analysis
+for Variable Generation
+
+Michael Milligan, Erik Ela, Bri-Mathias Hodge, Brendan Kirby (consultant), Debra Lew
+National Renewable Energy Laboratory
+
+Charlton Clark, Jennifer DeCesaro, Kevin Lynn
+United States Department of Energy
+Introduction
+
+Wind and solar power generation are prized for their environmental benefits, their low and stable
+operating costs, and their help in reducing fuel imports. Advances in both technologies are
+reducing capital costs and providing significant control capabilities. Still, the primary energy
+source for both technologies is variable and uncertain and a power system with significant wind
+or solar penetration must be operated differently than a power system based exclusively on
+conventional resources. It is very natural to ask what the additional cost of accommodating wind
+and solar generation is. However, calculating the integration cost of variable generation turns out
+to be surprisingly difficult.
+
+Integration cost analysis has progressed significantly over the past ten years. There is also a
+much better understanding of the cost drivers among the system stakeholders now than there was
+when wind and solar generation were in their infancy. This report examines how wind and solar
+integration studies have evolved, what analysis techniques work, what common mistakes are still
+made, what improvements are likely to be made in the near future, and why calculating
+integration costs is such a difficult problem and should be undertaken carefully, if at all.
+
+Analysis techniques are now very good at simulating power system operations with time-
+synchronized load, wind, and solar data. The best studies model security-constrained unit
+commitment and economic dispatch with hourly (or shorter) time steps covering one year or
+longer. They account for forecast errors for wind, solar, and load as well as actual output and
+consumption. Cases with and without wind and solar can be compared. Total system costs with
+and without renewables can be calculated fairly accurately under a range of system conditions.
+These cost differences are typically dominated by the fuel cost savings that renewables provide,
+however. Calculating an ?integration cost? that only includes the added cost the power system
+incurs dealing with the variability and uncertainty of wind and solar, and excludes the fuel cost
+savings, is much more difficult. The many complex interactions among components of the power
+system and assumptions regarding the no-wind base case all have important influences on
+integration cost estimates, and in fact raise questions of whether cost components that are commonly thought to be integration costs can be correctly untangled. We discuss many of these
+concerns and implications, shedding some light on the difficulties involved in measuring and
+interpreting integration cost estimates.},
+  file        = {Milligan11CostCausIntegVarGen.pdf:Milligan11CostCausIntegVarGen.pdf:PDF},
+  journal     = {Contract},
+  owner       = {sotterson},
+  review      = {How integration costs are attributed to various energy sources. Nuclear and large fossil fuel plants have higher integration costs than wind and solar (according to the article that said this paper was a reference for that factoid).
+
+The article referencing this one was:
+http://www.greentechmedia.com/articles/read/Grid-Integration-of-Wind-and-Solar-is-Cheap},
+  timestamp   = {2014.12.15},
+  volume      = {303},
 }
 
 @Book{Ackermann05WindPowSysBook,
@@ -1855,69 +2049,6 @@ Vladislav Akhmatov
   owner     = {sotterson},
   review    = {System level book on wind power: economics, electrical networks, storage, forecasting, markets, aeronautic and electro-mechanic design of turbines. Seems to have been used for some classes.},
   timestamp = {2015.01.28},
-}
-
-@TechReport{Milligan11CostCausIntegVarGen,
-  author      = {Milligan, Michael and Ela, Erik and Hodge, Bri-Mathias and Kirby, Brendan and Lew, Debra and Clark, Charlton and DeCesaro, Jennifer and Lynn, Kevin},
-  title       = {Cost-Causation and Integration Cost Analysis for Variable Generation},
-  institution = {NREL},
-  year        = {2011},
-  type        = {Tech Report},
-  number      = {NREL/TP-5500-51860},
-  location    = {Colorado, USA},
-  month       = jun,
-  pages       = {275--3000},
-  url         = {http://www.nrel.gov/docs/fy11osti/51860.pdf},
-  abstract    = {1
-Cost-Causation and Integration Cost Analysis
-for Variable Generation
-
-Michael Milligan, Erik Ela, Bri-Mathias Hodge, Brendan Kirby (consultant), Debra Lew
-National Renewable Energy Laboratory
-
-Charlton Clark, Jennifer DeCesaro, Kevin Lynn
-United States Department of Energy
-Introduction
-
-Wind and solar power generation are prized for their environmental benefits, their low and stable
-operating costs, and their help in reducing fuel imports. Advances in both technologies are
-reducing capital costs and providing significant control capabilities. Still, the primary energy
-source for both technologies is variable and uncertain and a power system with significant wind
-or solar penetration must be operated differently than a power system based exclusively on
-conventional resources. It is very natural to ask what the additional cost of accommodating wind
-and solar generation is. However, calculating the integration cost of variable generation turns out
-to be surprisingly difficult.
-
-Integration cost analysis has progressed significantly over the past ten years. There is also a
-much better understanding of the cost drivers among the system stakeholders now than there was
-when wind and solar generation were in their infancy. This report examines how wind and solar
-integration studies have evolved, what analysis techniques work, what common mistakes are still
-made, what improvements are likely to be made in the near future, and why calculating
-integration costs is such a difficult problem and should be undertaken carefully, if at all.
-
-Analysis techniques are now very good at simulating power system operations with time-
-synchronized load, wind, and solar data. The best studies model security-constrained unit
-commitment and economic dispatch with hourly (or shorter) time steps covering one year or
-longer. They account for forecast errors for wind, solar, and load as well as actual output and
-consumption. Cases with and without wind and solar can be compared. Total system costs with
-and without renewables can be calculated fairly accurately under a range of system conditions.
-These cost differences are typically dominated by the fuel cost savings that renewables provide,
-however. Calculating an ?integration cost? that only includes the added cost the power system
-incurs dealing with the variability and uncertainty of wind and solar, and excludes the fuel cost
-savings, is much more difficult. The many complex interactions among components of the power
-system and assumptions regarding the no-wind base case all have important influences on
-integration cost estimates, and in fact raise questions of whether cost components that are commonly thought to be integration costs can be correctly untangled. We discuss many of these
-concerns and implications, shedding some light on the difficulties involved in measuring and
-interpreting integration cost estimates.},
-  file        = {Milligan11CostCausIntegVarGen.pdf:Milligan11CostCausIntegVarGen.pdf:PDF},
-  journal     = {Contract},
-  owner       = {sotterson},
-  review      = {How integration costs are attributed to various energy sources. Nuclear and large fossil fuel plants have higher integration costs than wind and solar (according to the article that said this paper was a reference for that factoid).
-
-The article referencing this one was:
-http://www.greentechmedia.com/articles/read/Grid-Integration-of-Wind-and-Solar-is-Cheap},
-  timestamp   = {2014.12.15},
-  volume      = {303},
 }
 
 @Article{Gregorcic07LocalIDgaussProc,
@@ -3255,6 +3386,26 @@ partition.},
   timestamp = {2014.01.21},
 }
 
+@Article{Park14windPowCurveMon,
+  author    = {J. Y. Park and J. K. Lee and K. Y. Oh and J. S. Lee},
+  title     = {Development of a Novel Power Curve Monitoring Method for Wind Turbines and Its Field Tests},
+  journal   = IEEE_J_EC,
+  year      = {2014},
+  volume    = {29},
+  number    = {1},
+  pages     = {119--128},
+  month     = mar,
+  issn      = {0885-8969},
+  abstract  = {A novel power curve monitoring method for wind turbines was developed to prevent a turbine failure in a wind farm. Compared with the existing methods, this algorithm automatically calculates the power curve limits for power curve monitoring, even when a considerable number of abnormal data are included in wind speed-output power data measured at a wind turbine. In addition, the proposed algorithm automatically generates an alarm message when the wind speed-power data measured at the wind turbine deviate from the power curve limits, particularly considering their degree of deviation from the power curve limits and the cases when the measured data hover between the Warning Zones and the Alarm Zones. We confirmed its effectiveness through its field tests.},
+  doi       = {10.1109/TEC.2013.2294893},
+  file      = {:C\:\\Users\\sotterson\\Documents\\Tempo Box\\ref\\papers\\Park14windPowCurveMon.pdf:PDF},
+  keywords  = {condition monitoring, wind turbines, alarm zones, power curve monitoring method, turbine failure prevention, warning zones, wind farm, wind speed-output power data, wind turbines, Interpolation, Monitoring, Power measurement, Standards, Wind farms, Wind speed, Wind turbines, Alarm generation, condition monitoring, fault data queue, power curve, turbine monitoring, wind turbine},
+  owner     = {sotterson},
+  review    = {
+Referenced by: Leahy16windTurbFaultMachLrn},
+  timestamp = {2017.06.19},
+}
+
 @Article{Taylor98cmbinFrcstQuants,
   author    = {Taylor, James W and Bunn, Derek W},
   title     = {Combining forecast quantiles using quantile regression: Investigating the derived weights, estimator bias and imposing constraints},
@@ -4015,6 +4166,56 @@ Weaknesses
 * Is a Filter method so doesn't consider learning algorithm interaction (like a wrapper, I suppose)},
 }
 
+@Article{Asir16hiDimFeatSelLitRev,
+  author    = {Asir, D and Appavu, S and Jebamalar, E},
+  title     = {Literature Review on Feature Selection Methods for High-Dimensional Data},
+  year      = {2016},
+  volume    = {136},
+  number    = {1},
+  pages     = {9--17},
+  doi       = {10.5120/ijca2016908317},
+  abstract  = {ABSTRACT
+Feature selection plays a significant role in improving the
+performance of the machine learning algorithms in terms of
+reducing the time to build the learning model and increasing
+the accuracy in the learning process. Therefore, the
+researchers pay more attention on the feature selection to
+enhance the performance of the machine learning algorithms.
+Identifying the suitable feature selection method is very
+essential for a given machine learning task with high-
+dimensional data. Hence, it is required to conduct the study on
+the various feature selection methods for the research
+community especially dedicated to develop the suitable
+feature selection method for enhancing the performance of the
+machine learning tasks on high-dimensional data. In order to
+fulfill this objective, this paper devotes the complete literature
+review on the various feature selection methods for high-
+dimensional data.
+General Terms
+Literature review on feature selection methods, study on
+feature selection, wrapper-based feature selection, embedded-
+based feature selection, hybrid feature selection, filter-based
+feature selection, feature subset-based feature selection,
+feature ranking-based feature selection, attribute selection,
+dimensionality reduction, variable selection, survey on feature
+selection, feature selection for high-dimensional data,
+introduction to variable and feature selection, feature selection
+for classification.
+Keywords
+Introduction to variable and feature selection, information
+gain-based feature selection, gain ratio-based feature
+selection, symmetric uncertainty-based feature selection,
+subset-based feature selection, ranking-based feature
+selection, wrapper-based feature selection, embedded-based
+feature selection, filter-based feature selection, hybrid feature
+selection, selecting feature from high-dimensional data.},
+  file      = {Asir16hiDimFeatSelLitRev.pdf:Asir16hiDimFeatSelLitRev.pdf:PDF},
+  journal   = {International Journal of Computer Applications},
+  owner     = {sotterson},
+  review    = {I don't know if it's good but it's new.  Maybe worth skimming},
+  timestamp = {2016.06.22},
+}
+
 @Article{Zhang15solFrcstMetrics,
   author   = {Jie Zhang and Anthony Florita and Bri-Mathias Hodge and Siyuan Lu and Hendrik F. Hamann and Venkat Banunarayanan and Anna M. Brockway},
   title    = {A suite of metrics for assessing the performance of solar power forecasting},
@@ -4611,6 +4812,29 @@ Key Words: Bandwidth; Conditional density; Data visualization; DenSity estimatio
   url      = {//www.sciencedirect.com/science/article/pii/S0960148114001499},
 }
 
+@Article{Dunsmuir15glarma,
+  author    = {Dunsmuir, William TM and Scott, David J and others},
+  title     = {The glarma Package for Observation Driven Time Series Regression of Counts},
+  journal   = {Journal of Statistical Software},
+  year      = {2015},
+  volume    = {67},
+  number    = {7},
+  pages     = {1--36},
+  abstract  = {Abstract
+We review the theory and application of generalized linear autoregressive moving av-
+erage observation-driven models for time series of counts with explanatory variables and
+describe the estimation of these models using the R package glarma. Forecasting, diag-
+nostic and graphical methods are also illustrated by several examples.
+
+Keywords: observation-driven count time series, generalized linear ARMA models, glarma, R.},
+  file      = {Dunsmuir15glarma.pdf:Dunsmuir15glarma.pdf:PDF},
+  owner     = {sotterson},
+  publisher = {Foundation for Open Access Statistics},
+  review    = {An autoregressive GLM (generalized linear model).  Possibly useful for Henry Martin's thesis, modeling the autoregressive  "Hart" (sp?) distribution of the offer time-of-arrival (which is at heart, a kth order all-pole model, I think)..},
+  timestamp = {2016.12.05},
+  url       = {https://www.jstatsoft.org/article/view/v067i07/v67i07.pdf},
+}
+
 @Article{Poncela13autoTuneKalman,
   author    = {Poncela, Marta and Poncela, Pilar and Per{\'a}n, Jos{\'e} Ram{\'o}n},
   title     = {Automatic tuning of {Kalman} filters by maximum likelihood methods for wind energy forecasting},
@@ -4782,75 +5006,24 @@ The purpose of this site was to compare Koenker's method (the one in this paper)
 }
 
 @Article{Chen16DynamicCovarianceModels,
-  author        = {Ziqi Chen and Chenlei Leng},
-  title         = {Dynamic Covariance Models},
-  journal       = {Journal of the American Statistical Association},
-  year          = {2016},
-  volume        = {111},
-  number        = {515},
-  pages         = {1196-1207},
-  __markedentry = {[sotterson:]},
-  abstract      = {ABSTRACTAn important problem in contemporary statistics is to understand the relationship among a large number of variables based on a dataset, usually with p, the number of the variables, much larger than n, the sample size. Recent efforts have focused on modeling static covariance matrices where pairwise covariances are considered invariant. In many real systems, however, these pairwise relations often change. To characterize the changing correlations in a high-dimensional system, we study a class of dynamic covariance models (DCMs) assumed to be sparse, and investigate for the first time a unified theory for understanding their nonasymptotic error rates and model selection properties. In particular, in the challenging high-dimensional regime, we highlight a new uniform consistency theory in which the sample size can be seen as n4/5 when the bandwidth parameter is chosen as h proportional to n exp -1/5 for accounting for the dynamics. We show that this result holds uniformly over a range of the variable used for modeling the dynamics. The convergence rate bears the mark of the familiar bias-variance trade-off in the kernel smoothing literature. We illustrate the results with simulations and the analysis of a neuroimaging dataset. Supplementary materials for this article are available online.
+  author    = {Ziqi Chen and Chenlei Leng},
+  title     = {Dynamic Covariance Models},
+  journal   = {Journal of the American Statistical Association},
+  year      = {2016},
+  volume    = {111},
+  number    = {515},
+  pages     = {1196-1207},
+  abstract  = {ABSTRACTAn important problem in contemporary statistics is to understand the relationship among a large number of variables based on a dataset, usually with p, the number of the variables, much larger than n, the sample size. Recent efforts have focused on modeling static covariance matrices where pairwise covariances are considered invariant. In many real systems, however, these pairwise relations often change. To characterize the changing correlations in a high-dimensional system, we study a class of dynamic covariance models (DCMs) assumed to be sparse, and investigate for the first time a unified theory for understanding their nonasymptotic error rates and model selection properties. In particular, in the challenging high-dimensional regime, we highlight a new uniform consistency theory in which the sample size can be seen as n4/5 when the bandwidth parameter is chosen as h proportional to n exp -1/5 for accounting for the dynamics. We show that this result holds uniformly over a range of the variable used for modeling the dynamics. The convergence rate bears the mark of the familiar bias-variance trade-off in the kernel smoothing literature. We illustrate the results with simulations and the analysis of a neuroimaging dataset. Supplementary materials for this article are available online.
 
 Key Words: Covariance model; Dynamic covariance; Functional connectivity; High Dimen-
 sionality; Marginal independence; Rate of convergence; Sparsity; Uniform consistency},
-  doi           = {10.1080/01621459.2015.1077712},
-  eprint        = {http://dx.doi.org/10.1080/01621459.2015.1077712},
-  file          = {Chen16DynamicCovarianceModels.pdf:Chen16DynamicCovarianceModels.pdf:PDF},
-  owner         = {sotterson},
-  review        = {Big covariance model for which cov. coeffs are conditional on some data.  Good for wind power level, wind speed direction, etc...},
-  timestamp     = {2017.06.16},
-  url           = {http://dx.doi.org/10.1080/01621459.2015.1077712},
-}
-
-@Article{Asir16hiDimFeatSelLitRev,
-  author    = {Asir, D and Appavu, S and Jebamalar, E},
-  title     = {Literature Review on Feature Selection Methods for High-Dimensional Data},
-  year      = {2016},
-  volume    = {136},
-  number    = {1},
-  pages     = {9--17},
-  doi       = {10.5120/ijca2016908317},
-  abstract  = {ABSTRACT
-Feature selection plays a significant role in improving the
-performance of the machine learning algorithms in terms of
-reducing the time to build the learning model and increasing
-the accuracy in the learning process. Therefore, the
-researchers pay more attention on the feature selection to
-enhance the performance of the machine learning algorithms.
-Identifying the suitable feature selection method is very
-essential for a given machine learning task with high-
-dimensional data. Hence, it is required to conduct the study on
-the various feature selection methods for the research
-community especially dedicated to develop the suitable
-feature selection method for enhancing the performance of the
-machine learning tasks on high-dimensional data. In order to
-fulfill this objective, this paper devotes the complete literature
-review on the various feature selection methods for high-
-dimensional data.
-General Terms
-Literature review on feature selection methods, study on
-feature selection, wrapper-based feature selection, embedded-
-based feature selection, hybrid feature selection, filter-based
-feature selection, feature subset-based feature selection,
-feature ranking-based feature selection, attribute selection,
-dimensionality reduction, variable selection, survey on feature
-selection, feature selection for high-dimensional data,
-introduction to variable and feature selection, feature selection
-for classification.
-Keywords
-Introduction to variable and feature selection, information
-gain-based feature selection, gain ratio-based feature
-selection, symmetric uncertainty-based feature selection,
-subset-based feature selection, ranking-based feature
-selection, wrapper-based feature selection, embedded-based
-feature selection, filter-based feature selection, hybrid feature
-selection, selecting feature from high-dimensional data.},
-  file      = {Asir16hiDimFeatSelLitRev.pdf:Asir16hiDimFeatSelLitRev.pdf:PDF},
-  journal   = {International Journal of Computer Applications},
+  doi       = {10.1080/01621459.2015.1077712},
+  eprint    = {http://dx.doi.org/10.1080/01621459.2015.1077712},
+  file      = {Chen16DynamicCovarianceModels.pdf:Chen16DynamicCovarianceModels.pdf:PDF},
   owner     = {sotterson},
-  review    = {I don't know if it's good but it's new.  Maybe worth skimming},
-  timestamp = {2016.06.22},
+  review    = {Big covariance model for which cov. coeffs are conditional on some data.  Good for wind power level, wind speed direction, etc...},
+  timestamp = {2017.06.16},
+  url       = {http://dx.doi.org/10.1080/01621459.2015.1077712},
 }
 
 @Article{Oh15mdlDepHiDimFactrCopula,
@@ -4874,29 +5047,6 @@ This is a 2015 paper but the copy I have in this bibtex entry is a 2011 version.
 
 Maybe read the  tech report instead.  It seems to be pretty similar to this one, and it's 2015:  Oh15mdlDepHiDimFactrCopulaTechRep},
   timestamp = {2016.12.17},
-}
-
-@Article{Dunsmuir15glarma,
-  author    = {Dunsmuir, William TM and Scott, David J and others},
-  title     = {The glarma Package for Observation Driven Time Series Regression of Counts},
-  journal   = {Journal of Statistical Software},
-  year      = {2015},
-  volume    = {67},
-  number    = {7},
-  pages     = {1--36},
-  abstract  = {Abstract
-We review the theory and application of generalized linear autoregressive moving av-
-erage observation-driven models for time series of counts with explanatory variables and
-describe the estimation of these models using the R package glarma. Forecasting, diag-
-nostic and graphical methods are also illustrated by several examples.
-
-Keywords: observation-driven count time series, generalized linear ARMA models, glarma, R.},
-  file      = {Dunsmuir15glarma.pdf:Dunsmuir15glarma.pdf:PDF},
-  owner     = {sotterson},
-  publisher = {Foundation for Open Access Statistics},
-  review    = {An autoregressive GLM (generalized linear model).  Possibly useful for Henry Martin's thesis, modeling the autoregressive  "Hart" (sp?) distribution of the offer time-of-arrival (which is at heart, a kth order all-pole model, I think)..},
-  timestamp = {2016.12.05},
-  url       = {https://www.jstatsoft.org/article/view/v067i07/v67i07.pdf},
 }
 
 @Article{Cao12crvDerivParaPenSpln,
@@ -5815,6 +5965,44 @@ applications of vines are included.},
   timestamp            = {2009.02.23},
 }
 
+@Book{Revelle17psychThryR_eBook,
+  title     = {An introduction to psychometric theory with applications in R (eBook)},
+  publisher = {Northwestern University},
+  year      = {2017},
+  author    = {William Revelle},
+  abstract  = {An Overview
+This page is devoted to teaching others about psychometric theory as well as R. It consists of chapters
+of an in progress text as well as various short courses on R.
+The e-book is a work in progress. Chapters will appear sporadically. Parts of it are from the dra of a
+book being prepared for the Springer series on using R, other parts are just interesting tid-bits that
+would not be appropriate as chapters.
+It is written in the hope that I can instill in a new generation of psychologists the love for quantitative
+methodology imparted to me by reading the popular and then later the scientific texts of Ray Cattell
+[Cattell, 1966b] and Hans Eysenck [Eysenck, 1964, Eysenck, 1953, Eysenck, 1965]. Those Penguin and
+Pelican paperbacks by Cattell and Eysenck were the first indications that I had that it was possible to
+study personality and psychology with a quantitative approach.
+My course in psychometric theory, on which much of this book is based, was inspired by a course of the
+same name by Warren Norman. The organizational structure of this text owes a great deal to the
+structure of Warren's course. Warren introduced me, as well as a generation of graduate students at the
+University of Michigan, to the role of theory and measurement in the study of psychology. He
+introduced to me to the "bible" of psychometrics: Jum Nunnally's Psychometric Theory [Nunnally,
+1967].
+The students in my psychometric theory classes over the years, by their continuing questions and
+sometimes confusion, have given me the motivation to try to make this text as understandable and
+useful as I can. The members of the Society of Multivariate Experimental Psychology, by their
+willingness to share cutting (and sometimes bleeding) edge ideas freely and with respect for
+alternative interpretations have been a never ending source of new and exciting ideas.
+This book would not be possible without the amazing contributions of the R-Core Team and the many
+contributers to R and the R-Help listserve.
+Lecture notes to accompany these chapters are found in the syllabus for my course on psychometric
+theory.},
+  file      = {:Revelle17psychThryR_eBook.pdf:PDF},
+  owner     = {sotterson},
+  review    = {Possibly, a simple explanation of the relationship between the Gaussian correlation matrix, precision matrix, partial correlation, and factor models (chapters 4,5,6)},
+  timestamp = {2017.06.23},
+  url       = {http://www.personality-project.org/r/book/},
+}
+
 @Article{Sherwood13wgtQRmiss,
   author    = {Sherwood, Ben and Wang, Lan and Zhou, Xiao-Hua},
   title     = {Weighted quantile regression for analyzing health care cost data with missing covariates},
@@ -6053,44 +6241,6 @@ Could do Copula: Hollenbach14missDatImpCopula or Ding16gaussCopulaMissDatEM},
   timestamp = {2010.09.09},
 }
 
-@Article{Blum13dimRedABC,
-  author    = {Blum, MGB and Nunes, MA and Prangle, Dennis and Sisson, SA},
-  title     = {A comparative review of dimension reduction methods in approximate {Bayes}ian computation},
-  year      = {2013},
-  volume    = {28},
-  number    = {2},
-  pages     = {189--208},
-  url       = {http://arxiv.org/abs/1202.3819},
-  abstract  = {Approximate Bayesian computation (ABC) methods make use of
-comparisons between simulated and observed summary statistics to overcome
-the problem of computationally intractable likelihood functions. As the
-practical implementation of ABC requires computations based on vectors of
-summary statistics, rather than full data sets, a central question is how to
-derive low-dimensional summary statistics from the observed data with minimal
-loss of information. In this article we provide a comprehensive review
-and comparison of the performance of the principal methods of dimension
-reduction proposed in the ABC literature. The methods are split into three
-nonmutually exclusive classes consisting of best subset selection methods,
-projection techniques and regularization. In addition, we introduce two new
-methods of dimension reduction. The first is a best subset selection method
-based on Akaike and Bayesian information criteria, and the second uses ridge
-regression as a regularization procedure. We illustrate the performance of
-these dimension reduction techniques through the analysis of three challenging
-models and data sets.
-
-Key words and phrases: Approximate Bayesian computation, dimension reduction,
-likelihood-free inference, regularization, variable selection.},
-  file      = {Blum13dimRedABC.pdf:Blum13dimRedABC.pdf:PDF},
-  groups    = {Ensemble, PointDerived, doReadNonWPV_2},
-  journal   = {Statistical Science},
-  owner     = {sotterson},
-  publisher = {Institute of Mathematical Statistics},
-  review    = {Possibly good for ensemble analog search. Needed b/c ABC has probs w/ high dimensions (in some article I'\ve bibtexed). There are probably helpers for this method in other articles I've bibtexed, including an R implementation of ABC.
-
-It seems like the feature selection and dimension reduction transforms used here could be improved upon by other machine learning techniques.},
-  timestamp = {2013.10.04},
-}
-
 @Article{Fearnhead12semiAutoABCconstr,
   author    = {Fearnhead, Paul and Prangle, Dennis},
   title     = {Constructing summary statistics for approximate {Bayes}ian computation: semi-automatic approximate {Bayes}ian computation},
@@ -6132,6 +6282,44 @@ Paper for this on order from Subito
 A poster on this topic is attached.
 
 Some intro slides by Prangle are here: Prangle11sumStatSeqABC},
+  timestamp = {2013.10.04},
+}
+
+@Article{Blum13dimRedABC,
+  author    = {Blum, MGB and Nunes, MA and Prangle, Dennis and Sisson, SA},
+  title     = {A comparative review of dimension reduction methods in approximate {Bayes}ian computation},
+  year      = {2013},
+  volume    = {28},
+  number    = {2},
+  pages     = {189--208},
+  url       = {http://arxiv.org/abs/1202.3819},
+  abstract  = {Approximate Bayesian computation (ABC) methods make use of
+comparisons between simulated and observed summary statistics to overcome
+the problem of computationally intractable likelihood functions. As the
+practical implementation of ABC requires computations based on vectors of
+summary statistics, rather than full data sets, a central question is how to
+derive low-dimensional summary statistics from the observed data with minimal
+loss of information. In this article we provide a comprehensive review
+and comparison of the performance of the principal methods of dimension
+reduction proposed in the ABC literature. The methods are split into three
+nonmutually exclusive classes consisting of best subset selection methods,
+projection techniques and regularization. In addition, we introduce two new
+methods of dimension reduction. The first is a best subset selection method
+based on Akaike and Bayesian information criteria, and the second uses ridge
+regression as a regularization procedure. We illustrate the performance of
+these dimension reduction techniques through the analysis of three challenging
+models and data sets.
+
+Key words and phrases: Approximate Bayesian computation, dimension reduction,
+likelihood-free inference, regularization, variable selection.},
+  file      = {Blum13dimRedABC.pdf:Blum13dimRedABC.pdf:PDF},
+  groups    = {Ensemble, PointDerived, doReadNonWPV_2},
+  journal   = {Statistical Science},
+  owner     = {sotterson},
+  publisher = {Institute of Mathematical Statistics},
+  review    = {Possibly good for ensemble analog search. Needed b/c ABC has probs w/ high dimensions (in some article I'\ve bibtexed). There are probably helpers for this method in other articles I've bibtexed, including an R implementation of ABC.
+
+It seems like the feature selection and dimension reduction transforms used here could be improved upon by other machine learning techniques.},
   timestamp = {2013.10.04},
 }
 
@@ -9044,6 +9232,28 @@ Extension to multimodalit, sensor networkd: Liu17multDatFusCplaProc},
   url       = {http://link.springer.com/chapter/10.1007/978-3-642-35407-6_3},
 }
 
+@Article{Xu16adaptStrmAnomAnlysTsubmod,
+  author        = {Xu, Zhao and von Ritter, Lorenzo and Kersting, Kristian},
+  title         = {Adaptive Streaming Anomaly Analysis},
+  journal       = {NIPS},
+  year          = {2016},
+  month         = dec,
+  __markedentry = {[sotterson:6]},
+  abstract      = {Detecting anomalous activities from time series data is critical for enhancing avail-
+ability and security of systems in many domains. Streaming data usually contains
+complex dynamic patterns, which complicates the learning process. In this paper,
+we present a nonparametric Bayesian method AOTS to help automating the model
+learning for anomaly detection in streaming time series. The method learns the dy-
+namics of anomaly-contaminated time series with submodular optimization based
+kernel selection to effectively adapt to the data and identify potential anomalous
+events. Experiments on real data show encouraging results.},
+  file          = {:Xu16adaptStrmAnomAnlysTsubmod.pdf:PDF},
+  owner         = {sotterson},
+  review        = {Student T process anomaly detection with submodular optimization kernel selection.},
+  timestamp     = {2017.06.20},
+  url           = {http://workshops.inf.ed.ac.uk/nips2016-ai4datasci/submission.html},
+}
+
 @Article{Blythe12FeatExtrctChngPtSubSpc,
   author    = {D. A. J. Blythe and P. von Bunau and F. C. Meinecke and K. R. Muller},
   title     = {Feature Extraction for Change-Point Detection Using Stationary Subspace Analysis},
@@ -9776,6 +9986,37 @@ time (Taylor, 2003).},
   timestamp = {2013.03.15},
 }
 
+@TechReport{Tastu13scenSpatTimeCpla,
+  author      = {Julija Tastu and Pierre Pinson and Henrik Madsen},
+  title       = {Space-time scenarios of wind power generation produced using a {Gauss}ian copula with parametrized precision matrix},
+  institution = {Technical University of Denmark},
+  year        = {2013},
+  type        = {DTU Compute-Technical Report-2013},
+  number      = {14},
+  abstract    = {Emphasis is placed on generating space-time trajectories of wind power
+generation, consisting of paths sampled from high-dimensional joint predictive densities,
+describing wind power generation at a number of contiguous locations and
+successive lead times. A modelling approach taking advantage of the sparsity of precision
+matrices is introduced for the description of the underlying space-time dependence
+structure. The proposed parametrization of the dependence structure accounts
+for important process characteristics such as lead-time-dependent conditional precisions
+and direction-dependent cross-correlations. Estimation is performed in a maximum
+likelihood framework. Based on a test case application in Denmark, with spatial
+dependencies over 15 areas and temporal ones for 43 hourly lead times (hence,
+for a dimension of n = 645), it is shown that accounting for space-time effects is
+crucial for generating skilful trajectories.},
+  file        = {Tastu13scenSpatTimeCpla.pdf:Tastu13scenSpatTimeCpla.pdf:PDF},
+  groups      = {PointDerived, doReadWPV_1},
+  owner       = {sotterson},
+  publisher   = {Technical University of Denmark},
+  review      = {The space-time scenario forecasting study that Henrik Madsen presented at the EERA forecasting workshop, Roskilde, 2014. Attached is the revised 2013 version.
+
+Updated: Tastu15spcTimeTrajGaussCpla},
+  series      = {DTU Compute-Technical Report-2013},
+  timestamp   = {2014.03.25},
+  url         = {http://orbit.dtu.dk/en/publications/spacetime-scenarios-of-wind-power-generation-produced-using-a-gaussian-copula-with-parametrized-precision-matrix%287f73ed19-ed61-465a-a39b-6065e7595bbc%29.html},
+}
+
 @InBook{Tastu15spcTimeTrajGaussCpla,
   pages     = {267--296},
   title     = {Space-Time Trajectories of Wind Power Generation: Parametrized Precision Matrices Under a Gaussian Copula Approach},
@@ -9844,37 +10085,6 @@ RELATED
 * compare with Hagspiel12copulaWindPowEur},
   timestamp = {2017.06.07},
   url       = {http://dx.doi.org/10.1007/978-3-319-18732-7_14},
-}
-
-@TechReport{Tastu13scenSpatTimeCpla,
-  author      = {Julija Tastu and Pierre Pinson and Henrik Madsen},
-  title       = {Space-time scenarios of wind power generation produced using a {Gauss}ian copula with parametrized precision matrix},
-  institution = {Technical University of Denmark},
-  year        = {2013},
-  type        = {DTU Compute-Technical Report-2013},
-  number      = {14},
-  abstract    = {Emphasis is placed on generating space-time trajectories of wind power
-generation, consisting of paths sampled from high-dimensional joint predictive densities,
-describing wind power generation at a number of contiguous locations and
-successive lead times. A modelling approach taking advantage of the sparsity of precision
-matrices is introduced for the description of the underlying space-time dependence
-structure. The proposed parametrization of the dependence structure accounts
-for important process characteristics such as lead-time-dependent conditional precisions
-and direction-dependent cross-correlations. Estimation is performed in a maximum
-likelihood framework. Based on a test case application in Denmark, with spatial
-dependencies over 15 areas and temporal ones for 43 hourly lead times (hence,
-for a dimension of n = 645), it is shown that accounting for space-time effects is
-crucial for generating skilful trajectories.},
-  file        = {Tastu13scenSpatTimeCpla.pdf:Tastu13scenSpatTimeCpla.pdf:PDF},
-  groups      = {PointDerived, doReadWPV_1},
-  owner       = {sotterson},
-  publisher   = {Technical University of Denmark},
-  review      = {The space-time scenario forecasting study that Henrik Madsen presented at the EERA forecasting workshop, Roskilde, 2014. Attached is the revised 2013 version.
-
-Updated: Tastu15spcTimeTrajGaussCpla},
-  series      = {DTU Compute-Technical Report-2013},
-  timestamp   = {2014.03.25},
-  url         = {http://orbit.dtu.dk/en/publications/spacetime-scenarios-of-wind-power-generation-produced-using-a-gaussian-copula-with-parametrized-precision-matrix%287f73ed19-ed61-465a-a39b-6065e7595bbc%29.html},
 }
 
 @TechReport{Wu11curtailStochOpt,
@@ -11430,37 +11640,6 @@ Lag selection
   timestamp   = {2009.01.07},
 }
 
-@InProceedings{Tastu10mVarCondParam,
-  author    = {Julija Tastu and Pierre Pinson and Henrik Madsen},
-  title     = {Multivariate conditional parametric models for a spatio-temporal analysis of short-term wind power forecast errors},
-  booktitle = {European Wind Energy Conference and Exhibition (EWEC)},
-  year      = {2010},
-  url       = {http://www.imm.dtu.dk/English/Research/Mathematical_Statistics/People.aspx?lg=showcommon&id=257115},
-  abstract  = {Forecasts of wind power production are increasingly being used in various management tasks. So far, such forecasts and related uncertainty information have usually been generated individually for a given site of interest (either a wind farm or a group of wind farms), without properly accounting for the spatio-temporal dependencies observed in the wind generation field. However, it is intuitively expected that, owing to the inertia of meteorological forecasting systems, a forecast error made at a given point in space and time will be related to forecast errors at other points in space in the following period. The existence of such underlying patterns is demonstrated and analyzed in this paper, considering the case-study of western Denmark. Adaptive Multivariate Conditional Parametric models are proposed for capturing the interdependence structure of wind power forecast errors and reveal the effects of meteorological forecasts on this dependence. The results show that by considering spatiotemporal dependencies, the wind power forecast errors might be significally reduced. Even though focus is on one-hour-ahead forecast errors and on western Denmark only, the methodology proposed may be similarly applied to the case of further look-ahead times and larger areas.},
-  file      = {Tastu10mVarCondParam.pdf:Tastu10mVarCondParam.pdf:PDF},
-  groups    = {Read},
-  owner     = {scot},
-  review    = {Linear regression of power prediction errors, conditioned on wind spd, dir.
-
-Paper is really vague. Tastu10spatTempErr explains this work better that this paper
-
-Idea
-* lump NWP errors for 15 DK regions into 8 groups
-* predict errors for each, using past errors from the others
-* prediction is linear regression
--- output is error at group
--- input is error at all groups, possibly lagged
-* but the coeffs depend "smoothly" upon wind dir and speed (how is not explained)
-
-Results:
-* VAR w/o varying coeefs shows good forecast improvement (after add errors back on)
-* CP-VAR: coeffs conditioned on wind spd/dir improve even more
-* results reported only for forecasted wind direction conditioning
-
-* coeffs show that downwind sites depend upon upwind sites (coeff sensitivity to wind dor)},
-  timestamp = {2010.05.21},
-}
-
 @Article{Tastu10spatTempErr,
   author    = {Julija Tastu and Pierre Pinson and Ewelina Kotwa and Henrik Madsen and Henrik Aa. Nielsen},
   title     = {Spatio-temporal analysis and modeling of short-term wind power forecast errors},
@@ -11544,6 +11723,37 @@ The Tastu moved on to copulas:
 -Tastu15spcTimeTrajGaussCpla},
   timestamp = {2010.05.21},
   url       = {http://www3.interscience.wiley.com.globalproxy.cvt.dk/journal/123334586/abstract?CRETRY=1&SRETRY=0},
+}
+
+@InProceedings{Tastu10mVarCondParam,
+  author    = {Julija Tastu and Pierre Pinson and Henrik Madsen},
+  title     = {Multivariate conditional parametric models for a spatio-temporal analysis of short-term wind power forecast errors},
+  booktitle = {European Wind Energy Conference and Exhibition (EWEC)},
+  year      = {2010},
+  url       = {http://www.imm.dtu.dk/English/Research/Mathematical_Statistics/People.aspx?lg=showcommon&id=257115},
+  abstract  = {Forecasts of wind power production are increasingly being used in various management tasks. So far, such forecasts and related uncertainty information have usually been generated individually for a given site of interest (either a wind farm or a group of wind farms), without properly accounting for the spatio-temporal dependencies observed in the wind generation field. However, it is intuitively expected that, owing to the inertia of meteorological forecasting systems, a forecast error made at a given point in space and time will be related to forecast errors at other points in space in the following period. The existence of such underlying patterns is demonstrated and analyzed in this paper, considering the case-study of western Denmark. Adaptive Multivariate Conditional Parametric models are proposed for capturing the interdependence structure of wind power forecast errors and reveal the effects of meteorological forecasts on this dependence. The results show that by considering spatiotemporal dependencies, the wind power forecast errors might be significally reduced. Even though focus is on one-hour-ahead forecast errors and on western Denmark only, the methodology proposed may be similarly applied to the case of further look-ahead times and larger areas.},
+  file      = {Tastu10mVarCondParam.pdf:Tastu10mVarCondParam.pdf:PDF},
+  groups    = {Read},
+  owner     = {scot},
+  review    = {Linear regression of power prediction errors, conditioned on wind spd, dir.
+
+Paper is really vague. Tastu10spatTempErr explains this work better that this paper
+
+Idea
+* lump NWP errors for 15 DK regions into 8 groups
+* predict errors for each, using past errors from the others
+* prediction is linear regression
+-- output is error at group
+-- input is error at all groups, possibly lagged
+* but the coeffs depend "smoothly" upon wind dir and speed (how is not explained)
+
+Results:
+* VAR w/o varying coeefs shows good forecast improvement (after add errors back on)
+* CP-VAR: coeffs conditioned on wind spd/dir improve even more
+* results reported only for forecasted wind direction conditioning
+
+* coeffs show that downwind sites depend upon upwind sites (coeff sensitivity to wind dor)},
+  timestamp = {2010.05.21},
 }
 
 @Article{Jouan87fourDescCardiac,
@@ -12426,137 +12636,6 @@ Related to: Lichtendahl13probOrQuantAvg},
   URL                      = {http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6137521}
 }
 
-@Article{Schnitzer12Localandglobal,
-  author    = {Schnitzer, Dominik and Flexer, Arthur and Schedl, Markus and Widmer, Gerhard},
-  title     = {Local and global scaling reduce hubs in space},
-  year      = {2012},
-  volume    = {13},
-  number    = {1},
-  pages     = {2871--2902},
-  url       = {http://dl.acm.org/citation.cfm?id=2503333},
-  abstract  = {'Hubness' has recently been identified as a general problem of high dimensional data spaces, manifesting itself in the emergence of objects, so-called hubs, which tend to be among the k nearest neighbors of a large number of data items. As a consequence many nearest neighbor relations in the distance space are asymmetric, that is, object y is amongst the nearest neighbors of x but not vice versa. The work presented here discusses two classes of methods that try to symmetrize nearest neighbor relations and investigates to what extent they can mitigate the negative effects of hubs. We evaluate local distance scaling and propose a global variant which has the advantage of being easy to approximate for large data sets and of having a probabilistic interpretation. Both local and global approaches are shown to be effective especially for high-dimensional data sets, which are affected by high hubness. Both methods lead to a strong decrease of hubness in these data sets, while at the same time improving properties like classification accuracy. We evaluate the methods on a large number of public machine learning data sets and synthetic data. Finally we present a real-world application where we are able to achieve significantly higher retrieval quality.},
-  file      = {Schnitzer12Localandglobal.pdf:Schnitzer12Localandglobal.pdf:PDF},
-  groups    = {Read},
-  journal   = {The Journal of Machine Learning Research},
-  owner     = {sotterson},
-  publisher = {JMLR. org},
-  review    = {High dim. KNN classification greatly improved with local and unsupervised global hub reduction. MP technique might be good for locLinQR, spectral or KNN clustering. MP also has probabilstic interpretation, maybe interesting for Kraskov MI estimation too? SNN not as reliable or effiencient (potentially) as MP and LS. Has Matlab
-
-updated in Flexer13shrKNNhubRdc, which has some nice plots
-
-Manifestations of the Curse of High Dimensionality
-
-* Hubs
- - points that are the nearest neighbors of way too many other points
-* Orphans
- - data points that are not the nearest neighbor of any other point
- - this made 27\% of songs unreachable in music recommender system.
-* Concentration:
- - all points points are at about the same distance from each other
- - any set of points: this is a consequence of high dim spaces
- - measurement: ratio of spread to magnitude, e.g. std(all distances)/mean(all distances)
- ---- points closer to data mean are more likely to be hubs
- ---- points further awy from mean are more likey to be orphans
-* Asymmetry
- - y is the NN of x but y's nearest neighbor is some other point, a, not x
- - causes KNN to fail.
- - the techniques in this paper make adjacency more symmetric.
-* Pairwise stability (the lack of it):
- - y is the NN of x
- - a is he NN of y
- - class(x) == class(y) != class(a) [this is the lack of stability]
-* Bad hubs
- -- have different classes than the majority of data points they are nearest neighbors to
-
-Fixes for C.0.D and Hubs (not local, not global?)
-* SNN: Shared Nearest Neighbors
- - helps with "non-globular" clusters
- - similarity is the num. of KNN's that x and y have in common (NN overlap)
-* RNN Reverse Nearest Neighbor
- - finds fartherst neighbors?? (not described)
- - used for outlier detection
-* Proximity verification: based on the NN rank similarity
-
-Local Scaling Methods
-* LS: Local Scaling (Zelnik-Manor)
- - initially used for spectral clustering
- - tunes pairwise distances to account for different local densities (good for KNN density estimation?)
- - x and y "close" iff dist. dx,y is small rel. to both local x and y scales (dist to x or y's kth NN)
- - calls it "LS" (section 3.1)
-* Contextual dissimilarity measure (CDM), not explained
-* NICDM: non-iterative contextual dissimilarity measure
- - scales by avg. dist to ith NN, for all x or y
- - more stable than LS
- - the local alternative this paper tries
-
-Global Scaling: Mutual Proximity (MP)
-* what the experiment with in this paper
-* converts distance to probability of being x and y being eachothers NN (k==1 in KNN)
- - is a similarity measure now, scaled to (0,1)
- --- IDEA: try this for spectral clustering, as LS already worked and this is already a similarity w/ nice scaling
- --- IDEA: seem like it would be smooth, unlike KNN probs, so a good locLin weight function?
- - can estimate w/ joint empirical distribution of all points but not necessary
- --- almost, or just as, good to model joint distance by independent Gaussians/Gamma for each point
- ----- but in Flexer13shrKNNhubRdc, the say the loss is small
- --- Params come from subsamples (30 points, but I am not quite convinced b/c they avg. results)
- --- Gaussian may be best: Gamma and Gauss perf. the same (?) but they drop gamma (Sec 4.4, p. 2889)
- - scaling means that can combine multiple distance measures with ease
- --- example is music timbre and rythmn distances
-* makes relationships symmetric and (I think) autoscales out hubs
-* is unsupervised so useful for more than classification!
-* IDEA: Globalness of MP is good b/c for KNN locLinQR neighborhoods
- - with a dimension reduction loop, the adjacency fix would have to work at full dimension.
-* Compare with p-Gaussians global techniques e.g. Francois05locKernHiDim
-
-Performance Metrics
-* KNN classifer error
-* k-occurrence: num. times x occurs in the KNN lists of all other points
-* Hubness: k-occurrence distribution skewness
- - postive skew (>1.4) is "hubby" (p. 2884)
- - "very hubby": >2 (p. 2892)
- --- see that dimensions as low as 30 are very hubby (p. 2892)
- --- IDEA: would hub reduction reduce dimension-dependent bias in Kraskov04EstMutInfKNN
- - see that "badness" of hubs about as bad as orphans (on tests, p. 2894)
- - IDEA: justify need for special metrics by showing hubness of locLin QR input data
- - IDEA: use hubness/orphanness as a probabilistic forecast input (for whole dataset, somehow or locally?)
- -- maybe plot error vs. local region "hubness" or "orphanness"
-* Goodman-Kruksal Index: roughly, average class matching between pairs (pair stability)
-* Intrinsic dimensionality (ref to Levina04maxLikIntrinsDim )
- - num. dims really needed to model the data (feature space dimension is "embedded dimension"
- - ID and embedded dimension can be vastly different (9 vs. 15154 in one case, pl 2884)
- - IDEA: use ID as a lower bound on dimension search for PCA, when the goal is regression?
- ---- could there still be dims that aren't relevant to the regression targ, even at lower ID?
- - IDEA: use this for dim reduction prior (final dim, post reduction, e.g. in PCA, if didn't have Minka00AutoPCAdim)
- - IDEA: use to justify local regression dimension reduction (plot intrinsic dim. of each neighborhood)
-* Percent symmetric relations (want this to be high)
-
-RESULTS
-* Test set is large, very diverse
- - image, audio, text, statistical, biological
- - 3 kinds of distance measures: Euclidean, cosine, Kullback-Leibler divergence (KL-dist?)
-* initial tests done using empirical distribution
-* Performance Improvement
- - quite large reduction in KNN classification error, and hubness
- - best improvements on high intrinsic or embedded dimensions
- - best improvements if data was already hubby (some high dims aren't hubby)
- - hubness decreases most on most hubby original data (obvious?)
- - hubness reduction never hurts, even if data is not hubby
-* Neither MP or NICDM reduce intrinsic dimensionality
- - Good, b/c intrinsic dimensionality may be needed for discrimination
- - This explanation is kind of given in Flexer13shrKNNhubRdc
- - interesting multidimensional distance scaling (MDS) measurement technique!
-* MP seems equal or slightly better than NICDM on Godman-Kruskal (concordance) and symmetry
-* simple Gaussian indepence modelling of distribution performs as well as anything else
- - but loss is called "small" in Flexer13shrKNNhubRdc
-* subsampling of distribution said to be as good, but I am not so sure about this
-* Seems like they like MP the best
-* not clear if tests were on balanced or imbalanced data
- - see Tomasev13imbalKnnHubs for specific imbalanced data tests.
-
-Has MATLAB: http://www.ofai.at/~dominik.schnitzer/mp.},
-  timestamp = {2014.04.04},
-}
-
 @Article{Perea12hydroSchedIberdrola,
   author    = {Perea, A and Bellido, R and Sanz, P and L{\'o}pez, E and Latorre, JM and Ramos, A and Cerisola, S},
   title     = {Medium-term Hydro-scheduling in Iberdrola},
@@ -13311,6 +13390,44 @@ http://link.springer.com/book/10.1007/978-3-642-38652-7},
   timestamp    = {2014.04.04},
 }
 
+@Article{Pinson07nonParamProbFrcsEval,
+  author    = {Pinson, Pierre and Nielsen, Henrik Aa and M{\o}ller, Jan K and Madsen, Henrik and Kariniotakis, George N},
+  title     = {Non-parametric probabilistic forecasts of wind power: required properties and evaluation},
+  year      = {2007},
+  volume    = {10},
+  number    = {6},
+  pages     = {497--516},
+  doi       = {10.1002/we.230/abstract},
+  abstract  = {In market conditions where program responsible parties are
+penalized for deviations from proposed bids, energy storage can be used
+for compensating the energy imbalances induced by limited predictability
+of wind power. The energy storage capacity necessary for performing this
+task will differ between delivery periods, according to the magnitude and
+the evolution of forecast errors in each delivery period. A methodology is
+presented for the assessment of the necessary storage capacity for each
+delivery period, based on the degree of risk that the power producer
+accepts to be exposed to. This approach leads to a dynamic assessment
+of the energy storage capacity for different delivery periods. In such
+a context, energy storage is used as a means of risk hedging against
+penalties from the regulation market. The application of the algorithm
+on real data (both measurements and forecasts) of the yearly output of
+a wind farm shows that the application of a dynamic daily sizing of the
+necessary storage leads to a significant reduction of the storage capacity
+used, without affecting the producer?s profit significantly. The method
+proposed here may provide the basis for the introduction of storage
+as an independent market entity, where each producer may rent the
+necessary daily storage capacity for hedging the risk of the wind power
+limited predictability.
+Index Terms?wind power, storage, electricity markets, forecast, un-
+certainty, scenarios},
+  file      = {Pinson07nonParamProbFrcsEval.pdf:Pinson07nonParamProbFrcsEval.pdf:PDF},
+  journal   = {Wind Energy},
+  publisher = {Wiley Online Library},
+  review    = {Evaluation of the exponential tails model used in Pinson09dynStorSiz (I don't see this on 1\textsuperscript{st} reading).
+
+But says that adaptive quantile regression may be better at extreme values than adaptive resampling.},
+}
+
 @InProceedings{Pinson09dynStorSiz,
   author    = {Pinson, P. and Papaefthymiou, G. and Klockl, B. and Verboomen, J.},
   title     = {Dynamic sizing of energy storage for hedging wind power forecast uncertainty},
@@ -13350,44 +13467,6 @@ Conclusion
 -- w/o get 0.85 of that possible w/ max storage
 -- cost of reservoirs not compared to increased profit, though},
   timestamp = {2010.12.12},
-}
-
-@Article{Pinson07nonParamProbFrcsEval,
-  author    = {Pinson, Pierre and Nielsen, Henrik Aa and M{\o}ller, Jan K and Madsen, Henrik and Kariniotakis, George N},
-  title     = {Non-parametric probabilistic forecasts of wind power: required properties and evaluation},
-  year      = {2007},
-  volume    = {10},
-  number    = {6},
-  pages     = {497--516},
-  doi       = {10.1002/we.230/abstract},
-  abstract  = {In market conditions where program responsible parties are
-penalized for deviations from proposed bids, energy storage can be used
-for compensating the energy imbalances induced by limited predictability
-of wind power. The energy storage capacity necessary for performing this
-task will differ between delivery periods, according to the magnitude and
-the evolution of forecast errors in each delivery period. A methodology is
-presented for the assessment of the necessary storage capacity for each
-delivery period, based on the degree of risk that the power producer
-accepts to be exposed to. This approach leads to a dynamic assessment
-of the energy storage capacity for different delivery periods. In such
-a context, energy storage is used as a means of risk hedging against
-penalties from the regulation market. The application of the algorithm
-on real data (both measurements and forecasts) of the yearly output of
-a wind farm shows that the application of a dynamic daily sizing of the
-necessary storage leads to a significant reduction of the storage capacity
-used, without affecting the producer?s profit significantly. The method
-proposed here may provide the basis for the introduction of storage
-as an independent market entity, where each producer may rent the
-necessary daily storage capacity for hedging the risk of the wind power
-limited predictability.
-Index Terms?wind power, storage, electricity markets, forecast, un-
-certainty, scenarios},
-  file      = {Pinson07nonParamProbFrcsEval.pdf:Pinson07nonParamProbFrcsEval.pdf:PDF},
-  journal   = {Wind Energy},
-  publisher = {Wiley Online Library},
-  review    = {Evaluation of the exponential tails model used in Pinson09dynStorSiz (I don't see this on 1\textsuperscript{st} reading).
-
-But says that adaptive quantile regression may be better at extreme values than adaptive resampling.},
 }
 
 @TechReport{cigre02thermRateStd,
@@ -13722,31 +13801,6 @@ Note reference to "simplistic search methods" which might be kinda like analog e
   timestamp = {2013.10.04},
 }
 
-@Article{Maaten09DimRedCmpr,
-  author    = {van der Maaten, Laurens JP and Postma, Eric O and van den Herik, H Jaap},
-  title     = {Dimensionality reduction: A comparative review},
-  year      = {2009},
-  volume    = {10},
-  number    = {1-41},
-  pages     = {66--71},
-  url       = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.125.6716&rep=rep1&type=pdf},
-  abstract  = {In recent years, a variety of nonlinear dimensionality reduction techniques have been proposed that aim to address the limitations
-of traditional techniques such as PCA. The paper presents a review and systematic comparison of these techniques. The performances of the nonlinear techniques are investigated on artificial and natural tasks. The results of the experiments reveal that nonlinear techniques perform well on selected artificial tasks, but do not outperform the traditional PCA on real-world tasks.
-The paper explains these results by identifying weaknesses of current nonlinear techniques, and suggests how the performance of nonlinear dimensionality reduction techniques may be improved.
-Key words: Dimensionality reduction, manifold learning, feature extraction.},
-  file      = {Maaten09DimRedCmpr.pdf:Maaten09DimRedCmpr.pdf:PDF},
-  journal   = {Journal of Machine Learning Research},
-  owner     = {sotterson},
-  publisher = {Citeseer},
-  review    = {Highly cited dimensionality reduction review. Includes refs to intrinsic dimension estimation. Many techniques have matlab here:
-
-Matlab Toolbox for Dimensionality Reduction (v0.8.1 - March 2013)
-http://homepage.tudelft.nl/19j49/Matlab_Toolbox_for_Dimensionality_Reduction.html
-
-Technote has much more discussion. See: Maaten09DimRedCmprTechNote},
-  timestamp = {2014.05.12},
-}
-
 @TechReport{Maaten09DimRedCmprTechNote,
   author      = {Laurens van der Maaten and Eric Postma and Jaap van den Herik},
   title       = {Dimensionality Reduction: A Comparative Review},
@@ -13778,6 +13832,31 @@ Corresponding, shorter paper: Maaten09DimRedCmpr
 Matlab Toolbox for Dimensionality Reduction (v0.8.1 - March 2013)
 http://homepage.tudelft.nl/19j49/Matlab_Toolbox_for_Dimensionality_Reduction.html},
   timestamp   = {2014.06.26},
+}
+
+@Article{Maaten09DimRedCmpr,
+  author    = {van der Maaten, Laurens JP and Postma, Eric O and van den Herik, H Jaap},
+  title     = {Dimensionality reduction: A comparative review},
+  year      = {2009},
+  volume    = {10},
+  number    = {1-41},
+  pages     = {66--71},
+  url       = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.125.6716&rep=rep1&type=pdf},
+  abstract  = {In recent years, a variety of nonlinear dimensionality reduction techniques have been proposed that aim to address the limitations
+of traditional techniques such as PCA. The paper presents a review and systematic comparison of these techniques. The performances of the nonlinear techniques are investigated on artificial and natural tasks. The results of the experiments reveal that nonlinear techniques perform well on selected artificial tasks, but do not outperform the traditional PCA on real-world tasks.
+The paper explains these results by identifying weaknesses of current nonlinear techniques, and suggests how the performance of nonlinear dimensionality reduction techniques may be improved.
+Key words: Dimensionality reduction, manifold learning, feature extraction.},
+  file      = {Maaten09DimRedCmpr.pdf:Maaten09DimRedCmpr.pdf:PDF},
+  journal   = {Journal of Machine Learning Research},
+  owner     = {sotterson},
+  publisher = {Citeseer},
+  review    = {Highly cited dimensionality reduction review. Includes refs to intrinsic dimension estimation. Many techniques have matlab here:
+
+Matlab Toolbox for Dimensionality Reduction (v0.8.1 - March 2013)
+http://homepage.tudelft.nl/19j49/Matlab_Toolbox_for_Dimensionality_Reduction.html
+
+Technote has much more discussion. See: Maaten09DimRedCmprTechNote},
+  timestamp = {2014.05.12},
 }
 
 @Article{VonLuxburg07specClustTut,
@@ -15297,21 +15376,20 @@ See also: Lave13solarVarWvlt and Cormode10histoWvltProb},
 }
 
 @Article{Venkatasubramanian03rvwProcFaultDet_IIsearch,
-  author        = {Venkat Venkatasubramanian and Raghunathan Rengaswamy and Surya N Kavuri},
-  title         = {A review of process fault detection and diagnosis: Part II: Qualitative models and search strategies},
-  journal       = {Computers \& Chemical Engineering},
-  year          = {2003},
-  volume        = {27},
-  number        = {3},
-  pages         = {313 - 326},
-  issn          = {0098-1354},
-  __markedentry = {[sotterson:6]},
-  abstract      = {In this part of the paper, we review qualitative model representations and search strategies used in fault diagnostic systems. Qualitative models are usually developed based on some fundamental understanding of the physics and chemistry of the process. Various forms of qualitative models such as causal models and abstraction hierarchies are discussed. The relative advantages and disadvantages of these representations are highlighted. In terms of search strategies, we broadly classify them as topographic and symptomatic search techniques. Topographic searches perform malfunction analysis using a template of normal operation, whereas, symptomatic searches look for symptoms to direct the search to the fault location. Various forms of topographic and symptomatic search strategies are discussed.},
-  doi           = {http://dx.doi.org/10.1016/S0098-1354(02)00161-8},
-  keywords      = {Symptomatic search, Topographic search},
-  owner         = {sotterson},
-  timestamp     = {2017.06.17},
-  url           = {http://www.sciencedirect.com/science/article/pii/S0098135402001618},
+  author    = {Venkat Venkatasubramanian and Raghunathan Rengaswamy and Surya N Kavuri},
+  title     = {A review of process fault detection and diagnosis: Part II: Qualitative models and search strategies},
+  journal   = {Computers \& Chemical Engineering},
+  year      = {2003},
+  volume    = {27},
+  number    = {3},
+  pages     = {313 - 326},
+  issn      = {0098-1354},
+  abstract  = {In this part of the paper, we review qualitative model representations and search strategies used in fault diagnostic systems. Qualitative models are usually developed based on some fundamental understanding of the physics and chemistry of the process. Various forms of qualitative models such as causal models and abstraction hierarchies are discussed. The relative advantages and disadvantages of these representations are highlighted. In terms of search strategies, we broadly classify them as topographic and symptomatic search techniques. Topographic searches perform malfunction analysis using a template of normal operation, whereas, symptomatic searches look for symptoms to direct the search to the fault location. Various forms of topographic and symptomatic search strategies are discussed.},
+  doi       = {http://dx.doi.org/10.1016/S0098-1354(02)00161-8},
+  keywords  = {Symptomatic search, Topographic search},
+  owner     = {sotterson},
+  timestamp = {2017.06.17},
+  url       = {http://www.sciencedirect.com/science/article/pii/S0098135402001618},
 }
 
 @TechReport{Botterud11windPowFrcstOpUse,
@@ -16679,33 +16757,6 @@ Nearest Neighbors, Projection Pursuit Regression, Sliced Inverse Regression},
   URL                      = {https://statistics.stanford.edu/sites/default/files/1999-11.pdf}
 }
 
-@Article{Taylor13dimCurseLocRgrsn,
-  author    = {Taylor, James and Einbeck, Jochen},
-  title     = {Challenging the curse of dimensionality in multivariate local linear regression},
-  year      = {2013},
-  language  = {English},
-  volume    = {28},
-  number    = {3},
-  pages     = {955--976},
-  issn      = {0943-4062},
-  doi       = {10.1007/s00180-012-0342-0},
-  abstract  = {Local polynomial fitting for univariate data has been widely studied and discussed, but up until now the multivariate equivalent has often been deemed impractical, due to the so-called curse of dimensionality. Here, rather than discounting it completely, we use density as a threshold to determine where over a data range reliable multivariate smoothing is possible, whilst accepting that in large areas it is not. The merits of a density threshold derived from the asymptotic influence function are shown using both real and simulated data sets. Further, the challenging issue of multivariate bandwidth selection, which is known to be affected detrimentally by sparse data which inevitably arise in higher dimensions, is considered. In an effort to alleviate this problem, two adaptations to generalized cross-validation are implemented, and a simulation study is presented to support the proposed method. It is also discussed how the density threshold and the adapted generalized cross-validation technique introduced herein work neatly together.},
-  file      = {Taylor13dimCurseLocRgrsn.pdf:Taylor13dimCurseLocRgrsn:PDF},
-  journal   = {Computational Statistics},
-  keywords  = {Multivariate smoothing; Density estimation; Bandwidth selection; Influence function},
-  owner     = {sotterson},
-  publisher = {Springer-Verlag},
-  review    = {Maybe how to avoid additive QR model probs w/ local model cross-validation. Local linear or polynomial regression breaks down w/ more than a couple dims; a cross-validation technique shows how to identify spaces where there are enough points. Seems to partly get around the curse of dimensionality.
-
-The C.O.D is why DTU prefers additive models for multivariate quantile regression. e.g. Nielsen06quantRegr
-
-Another way is kernel shaping:
-http://robotics.stanford.edu/~ormoneit/research/node1.html
-
-Author's PhD thesis explains the idea here (I think) + other stuff that I don't know about yet: Taylor12locRgrsnStrat},
-  timestamp = {2014.02.14},
-}
-
 @PhdThesis{Taylor12locRgrsnStrat,
   author      = {Taylor, James},
   title       = {Strategies for mean and modal multivariate local regression},
@@ -16737,6 +16788,33 @@ relevance in modal regression is also discussed.},
 
 How to kind of get around curse of dimensionality w/ local regression models + some other stuff in the title that I don't know about yet.},
   timestamp   = {2014.02.06},
+}
+
+@Article{Taylor13dimCurseLocRgrsn,
+  author    = {Taylor, James and Einbeck, Jochen},
+  title     = {Challenging the curse of dimensionality in multivariate local linear regression},
+  year      = {2013},
+  language  = {English},
+  volume    = {28},
+  number    = {3},
+  pages     = {955--976},
+  issn      = {0943-4062},
+  doi       = {10.1007/s00180-012-0342-0},
+  abstract  = {Local polynomial fitting for univariate data has been widely studied and discussed, but up until now the multivariate equivalent has often been deemed impractical, due to the so-called curse of dimensionality. Here, rather than discounting it completely, we use density as a threshold to determine where over a data range reliable multivariate smoothing is possible, whilst accepting that in large areas it is not. The merits of a density threshold derived from the asymptotic influence function are shown using both real and simulated data sets. Further, the challenging issue of multivariate bandwidth selection, which is known to be affected detrimentally by sparse data which inevitably arise in higher dimensions, is considered. In an effort to alleviate this problem, two adaptations to generalized cross-validation are implemented, and a simulation study is presented to support the proposed method. It is also discussed how the density threshold and the adapted generalized cross-validation technique introduced herein work neatly together.},
+  file      = {Taylor13dimCurseLocRgrsn.pdf:Taylor13dimCurseLocRgrsn:PDF},
+  journal   = {Computational Statistics},
+  keywords  = {Multivariate smoothing; Density estimation; Bandwidth selection; Influence function},
+  owner     = {sotterson},
+  publisher = {Springer-Verlag},
+  review    = {Maybe how to avoid additive QR model probs w/ local model cross-validation. Local linear or polynomial regression breaks down w/ more than a couple dims; a cross-validation technique shows how to identify spaces where there are enough points. Seems to partly get around the curse of dimensionality.
+
+The C.O.D is why DTU prefers additive models for multivariate quantile regression. e.g. Nielsen06quantRegr
+
+Another way is kernel shaping:
+http://robotics.stanford.edu/~ormoneit/research/node1.html
+
+Author's PhD thesis explains the idea here (I think) + other stuff that I don't know about yet: Taylor12locRgrsnStrat},
+  timestamp = {2014.02.14},
 }
 
 @Article{Gneiting11quantOptFrcst,
@@ -19552,24 +19630,26 @@ are also identified.},
 @Article{Gill12powCurvCopula,
   author    = {Gill, S. and Stephen, B. and Galloway, S.},
   title     = {Wind Turbine Condition Assessment Through Power Curve Copula Modeling},
+  journal   = {Sustainable Energy, IEEE Transactions on},
   year      = {2012},
   volume    = {3},
   number    = {1},
-  month     = jan,
   pages     = {94--101},
+  month     = jan,
   issn      = {1949-3029},
-  doi       = {10.1109/TSTE.2011.2167164},
   abstract  = {Power curves constructed from wind speed and active power output measurements provide an established method of analyzing wind turbine performance. In this paper, it is proposed that operational data from wind turbines are used to estimate bivariate probability distribution functions representing the power curve of existing turbines so that deviations from expected behavior can be detected. Owing to the complex form of dependency between active power and wind speed, which no classical parameterized distribution can approximate, the application of empirical copulas is proposed; the statistical theory of copulas allows the distribution form of marginal distributions of wind speed and power to be expressed separately from information about the dependency between them. Copula analysis is discussed in terms of its likely usefulness in wind turbine condition monitoring, particularly in early recognition of incipient faults such as blade degradation, yaw, and pitch errors.},
+  doi       = {10.1109/TSTE.2011.2167164},
   file      = {Gill12powCurvCopula.pdf:Gill12powCurvCopula.pdf:PDF},
   groups    = {Read},
-  journal   = {Sustainable Energy, IEEE Transactions on},
   keywords  = {Condition monitoring;Estimation;Joints;Power measurement;Wind speed;Wind turbines;condition monitoring;curve fitting;power generation faults;power generation reliability;power measurement;statistical distributions;wind power;wind turbines;active power measurements;condition monitoring;copula modeling;faults recognition;marginal distributions;power curve;probability distribution functions;statistical theory;wind speed;wind turbine;Energy conversion;power generation reliability;wind power generation;},
   owner     = {sotterson},
   review    = {Wind and turbine pwr are marginally rank-transformed (I think) and then their dependency is estimated with a 2D histogram.  This is a kind of empirical compula.  Then, wind/power data from a different period are transformed with the same rank curves (and I'm not sure what happens with the dependency struct).  Anyway, they develop some metrics for detecting a change in wind/power relationships.  The hope is that they'll detect worn/dirty blades (but I guess other instruments might already do this), and problems with pitch and yaw control. For that, they seem to think that they'll need a fancier copula.
 
 The paper was simple yet I still don't completely understand it.
 1.) what happened to the dependency transform when they transformed unseen data
-2.) why the straight line?  Is this like a Q-Q plot?},
+2.) why the straight line?  Is this like a Q-Q plot?
+
+Referenced by Park14windPowCurveMon},
   timestamp = {2013.02.21},
 }
 
@@ -22430,33 +22510,6 @@ The place where this was published needs to be checked: The pdf says it was subm
   timestamp = {2013.10.29},
 }
 
-@Article{Hersbach00crpsDecomp,
-  author    = {Hersbach, Hans},
-  title     = {Decomposition of the continuous ranked probability score for ensemble prediction systems},
-  year      = {2000},
-  volume    = {15},
-  number    = {5},
-  pages     = {559--570},
-  issn      = {1520-0434},
-  abstract  = {Some time ago, the continuous ranked probability score (CRPS) was proposed as a new verification tool for (probabilistic) forecast systems. Its focus is on the entire permissible range of a certain (weather) parameter. The CRPS can be seen as a ranked probability score with an infinite number of classes, each of zero width. Alternatively, it can be interpreted as the integral of the Brier score over all possible threshold values for the parameter under consideration. For a deterministic forecast system the CRPS reduces to the mean absolute error.
-
-In this paper it is shown that for an ensemble prediction system the CRPS can be decomposed into a reliability part and a resolution/uncertainty part, in a way that is similar to the decomposition of the Brier score. The reliability part of the CRPS is closely connected to the rank histogram of the ensemble, while the resolution/uncertainty part can be related to the average spread within the ensemble and the behavior of its outliers. The usefulness of such a decomposition is illustrated for the ensemble prediction system running at the European Centre for Medium-Range Weather Forecasts. The evaluation of the CRPS and its decomposition proposed in this paper can be extended to systems issuing continuous probability forecasts, by realizing that these can be interpreted as the limit of ensemble forecasts with an infinite number of members.},
-  booktitle = {Weather and Forecasting},
-  doi       = {10.1175/1520-0434%282000%29015%3C0559:DOTCRP%3E2.0.CO;2},
-  file      = {Hersbach00crpsDecomp.pdf:Hersbach00crpsDecomp.pdf:PDF},
-  groups    = {Test, CitaviImport1, doReadWPV_1},
-  keywords  = {CPRSS},
-  ncite     = {224},
-  owner     = {sotterson},
-  review    = {Maybe the best ref. for CRPS. Explains discrete computation, how to compute for ensembles, decomposition... highly cited.
-
-Decomposition is analogous to the decomposition of the Brier score. Should probably understand why both decompositions matter.
-
-* the CRPS of a deterministic forecast is equal to the mean absolute error (MAE)
-* multidimensional CRPS is some kind of weighted average},
-  timestamp = {2013.09.26},
-}
-
 @Article{Jewson03likSkillFrcst,
   author    = {Jewson, Stephen},
   title     = {Use of the likelihood for measuring the skill of probabilistic forecasts},
@@ -22482,6 +22535,33 @@ this paper can be extended to systems issuing continuous probability forecasts, 
   ncite     = {7},
   owner     = {sotterson},
   review    = {Not highly cited, even though it's old. Possibly, this was an idea that didn't take off.},
+  timestamp = {2013.09.26},
+}
+
+@Article{Hersbach00crpsDecomp,
+  author    = {Hersbach, Hans},
+  title     = {Decomposition of the continuous ranked probability score for ensemble prediction systems},
+  year      = {2000},
+  volume    = {15},
+  number    = {5},
+  pages     = {559--570},
+  issn      = {1520-0434},
+  abstract  = {Some time ago, the continuous ranked probability score (CRPS) was proposed as a new verification tool for (probabilistic) forecast systems. Its focus is on the entire permissible range of a certain (weather) parameter. The CRPS can be seen as a ranked probability score with an infinite number of classes, each of zero width. Alternatively, it can be interpreted as the integral of the Brier score over all possible threshold values for the parameter under consideration. For a deterministic forecast system the CRPS reduces to the mean absolute error.
+
+In this paper it is shown that for an ensemble prediction system the CRPS can be decomposed into a reliability part and a resolution/uncertainty part, in a way that is similar to the decomposition of the Brier score. The reliability part of the CRPS is closely connected to the rank histogram of the ensemble, while the resolution/uncertainty part can be related to the average spread within the ensemble and the behavior of its outliers. The usefulness of such a decomposition is illustrated for the ensemble prediction system running at the European Centre for Medium-Range Weather Forecasts. The evaluation of the CRPS and its decomposition proposed in this paper can be extended to systems issuing continuous probability forecasts, by realizing that these can be interpreted as the limit of ensemble forecasts with an infinite number of members.},
+  booktitle = {Weather and Forecasting},
+  doi       = {10.1175/1520-0434%282000%29015%3C0559:DOTCRP%3E2.0.CO;2},
+  file      = {Hersbach00crpsDecomp.pdf:Hersbach00crpsDecomp.pdf:PDF},
+  groups    = {Test, CitaviImport1, doReadWPV_1},
+  keywords  = {CPRSS},
+  ncite     = {224},
+  owner     = {sotterson},
+  review    = {Maybe the best ref. for CRPS. Explains discrete computation, how to compute for ensembles, decomposition... highly cited.
+
+Decomposition is analogous to the decomposition of the Brier score. Should probably understand why both decompositions matter.
+
+* the CRPS of a deterministic forecast is equal to the mean absolute error (MAE)
+* multidimensional CRPS is some kind of weighted average},
   timestamp = {2013.09.26},
 }
 
@@ -23128,6 +23208,60 @@ Nice presentation slides also attached},
   timestamp = {2014.11.08},
 }
 
+@Article{Sohn08svmQR,
+  author    = {Sohn, I and Kim, S and Hwang, C and Lee, JW and Shim, J},
+  title     = {Support vector machine quantile regression for detecting differentially expressed genes in microarray analysis},
+  year      = {2008},
+  volume    = {47},
+  number    = {5},
+  pages     = {459},
+  url       = {http://www.schattauer.de/de/magazine/uebersicht/zeitschriften-a-z/methods/contents/archivestandard/manuscript/10343.html},
+  abstract  = {Summary
+Objectives: One of the main objectives of microarray
+analysis is to identify genes differentially expressed
+under two distinct experimental conditions. This task is
+complicated by the noisiness of data and the large
+number of genes that are examined. Fold change (FC)
+based gene selection often misleads because error
+variability for each gene is heterogeneous in different
+intensity ranges. Several statistical methods have been
+suggested, but some of them result in high false positive
+rates because they make very strong parametric
+assumptions.
+Methods: We present support vector quantile regression
+(SVMQR) using iterative reweighted least squares
+(IRWLS) procedure based on the Newton method instead
+of usual quadratic programming algorithms. This
+procedure makes it possible to derive the generalized
+approximate cross validation (GACV) method for
+choosing the parameters which affect the performance
+of SVMAR. We propose SVMQR based on a novel
+method for identifying differentially expressed genes
+with a small number of replicated microarrays.
+Results: We applied SVMQR to both three biological dataset
+and simulated dataset and showed that it
+performed more reliably and consistently than FC-based
+gene selection, Newton?s method based on the posterior
+odds of change, or the nonparametric t-test variant implemented
+in significance analysis of microarrays (SAM).
+Conclusions: The SVMQR method was an exploratory
+method for cDNA microarray experiments to identify
+genes with different expression levels between two
+types of samples (e.g., tumor versus normal tissue).
+The SVMQR method performed well in the situation
+where error variability for each gene was heterogeneous
+in intensity ranges.
+Keywords
+cDNA microarray, support vector machine, support
+vector machine quantile regression},
+  file      = {Sohn08svmQR.pdf:Sohn08svmQR.pdf:PDF},
+  groups    = {PointDerived, doReadNonWPV_1},
+  journal   = {Methods of information in medicine},
+  owner     = {sotterson},
+  review    = {quantile regression with support vector machines. Was done in high dim. gene problem (seems that there are ~6K) and is gradient based, and solved with IRWLS since the usual quadratic programming is impossible. Suggested that it is better than MARS (I'm not sure they showed it here, but I didn't check).},
+  timestamp = {2014.06.24},
+}
+
 @Article{Dette08quantRgrsNonCross,
   author    = {Dette, Holger and Volgushev, Stanislav},
   title     = {Non-crossing non-parametric estimates of quantile curves},
@@ -23280,60 +23414,6 @@ RELATED
 * Simpson12spatStatForgetCov},
   timestamp = {2017.06.15},
   url       = {http://dx.doi.org/10.1111/j.1467-9868.2011.00777.x},
-}
-
-@Article{Sohn08svmQR,
-  author    = {Sohn, I and Kim, S and Hwang, C and Lee, JW and Shim, J},
-  title     = {Support vector machine quantile regression for detecting differentially expressed genes in microarray analysis},
-  year      = {2008},
-  volume    = {47},
-  number    = {5},
-  pages     = {459},
-  url       = {http://www.schattauer.de/de/magazine/uebersicht/zeitschriften-a-z/methods/contents/archivestandard/manuscript/10343.html},
-  abstract  = {Summary
-Objectives: One of the main objectives of microarray
-analysis is to identify genes differentially expressed
-under two distinct experimental conditions. This task is
-complicated by the noisiness of data and the large
-number of genes that are examined. Fold change (FC)
-based gene selection often misleads because error
-variability for each gene is heterogeneous in different
-intensity ranges. Several statistical methods have been
-suggested, but some of them result in high false positive
-rates because they make very strong parametric
-assumptions.
-Methods: We present support vector quantile regression
-(SVMQR) using iterative reweighted least squares
-(IRWLS) procedure based on the Newton method instead
-of usual quadratic programming algorithms. This
-procedure makes it possible to derive the generalized
-approximate cross validation (GACV) method for
-choosing the parameters which affect the performance
-of SVMAR. We propose SVMQR based on a novel
-method for identifying differentially expressed genes
-with a small number of replicated microarrays.
-Results: We applied SVMQR to both three biological dataset
-and simulated dataset and showed that it
-performed more reliably and consistently than FC-based
-gene selection, Newton?s method based on the posterior
-odds of change, or the nonparametric t-test variant implemented
-in significance analysis of microarrays (SAM).
-Conclusions: The SVMQR method was an exploratory
-method for cDNA microarray experiments to identify
-genes with different expression levels between two
-types of samples (e.g., tumor versus normal tissue).
-The SVMQR method performed well in the situation
-where error variability for each gene was heterogeneous
-in intensity ranges.
-Keywords
-cDNA microarray, support vector machine, support
-vector machine quantile regression},
-  file      = {Sohn08svmQR.pdf:Sohn08svmQR.pdf:PDF},
-  groups    = {PointDerived, doReadNonWPV_1},
-  journal   = {Methods of information in medicine},
-  owner     = {sotterson},
-  review    = {quantile regression with support vector machines. Was done in high dim. gene problem (seems that there are ~6K) and is gradient based, and solved with IRWLS since the usual quadratic programming is impossible. Suggested that it is better than MARS (I'm not sure they showed it here, but I didn't check).},
-  timestamp = {2014.06.24},
 }
 
 @Article{Granger76frcstXfrmSeries,
@@ -23575,6 +23655,48 @@ http://www.stat.cmu.edu/~kass/bars/bars.html},
   owner     = {scot},
   review    = {sorta like cp-var but more flexible, maybe better adaptation?},
   timestamp = {2010.09.27},
+}
+
+@InProceedings{Solin15StateSpaceStudentTprocR,
+  author    = {Solin, Arno and S{\"a}rkk{\"a}, Simo},
+  title     = {State Space Methods for Efficient Inference in Student-t Process Regression.},
+  booktitle = {AISTATS},
+  year      = {2015},
+  abstract  = {The added flexibility of Student-t processes
+(TPs) over Gaussian processes (GPs) robus-
+tifies inference in outlier-contaminated noisy
+data. The uncertainties are better accounted
+for than in GP regression, because the pre-
+dictive covariances explicitly depend on the
+training observations. For an entangled
+noise model, the canonical-form TP regres-
+sion problem can be solved analytically, but
+the naive TP and GP solutions share the
+same cubic computational cost in the num-
+ber of training observations. We show how
+a large class of temporal TP regression mod-
+els can be reformulated as state space mod-
+els, and how a forward filtering and back-
+ward smoothing recursion can be derived for
+solving the inference analytically in linear
+time complexity. This is a novel finding
+that generalizes the previously known con-
+nection between Gaussian process regression
+and Kalman filtering to more general ellipti-
+cal processes and non-Gaussian Bayesian fil-
+tering. We derive this connection, demon-
+strate the benefits of the approach with ex-
+amples, and finally apply the method to em-
+pirical data},
+  file      = {:Solin15StateSpaceStudentTprocR.pdf:PDF;:Solin15StateSpaceStudentTprocR_poster.pdf:PDF},
+  owner     = {sotterson},
+  review    = {Like Gaussian Processes but with Student-T (better by itself) and a state-space time model (should be more computationally efficient).  Kind of like a stochastic differential equation.  Is a scenario generator.
+
+Can handle missing data inherently.
+
+Paper and Poster are attached.},
+  timestamp = {2017.06.20},
+  url       = {http://proceedings.mlr.press/v38/solin15.pdf},
 }
 
 @Article{Peters13StochConvectObsModel,
@@ -28848,6 +28970,23 @@ nal market.},
   url       = {http://www.ewea.org/uploads/tx_err/Internal_energy_market.pdf},
 }
 
+@Article{MathWorks17simDetVarCopula,
+  author    = {MathWorks},
+  title     = {Simulating Dependent Random Variables Using Copulas (version R2017a)},
+  journal   = {Matlab Statistics and Machine Learning Toolbox Documentation},
+  year      = {2017},
+  abstract  = {This example shows how to use copulas to generate data from multivariate distributions when there are complicated relationships among the variables, or when the individual variables are from different distributions.
+
+MATLAB? is an ideal tool for running simulations that incorporate random inputs or noise. Statistics and Machine Learning Toolbox? provides functions to create sequences of random data according to many common univariate distributions. The Toolbox also includes a few functions to generate random data from multivariate distributions, such as the multivariate normal and multivariate t. However, there is no built-in way to generate multivariate distributions for all marginal distribtions, or in cases where the individual variables are from different distributions.
+
+Recently, copulas have become popular in simulation models. Copulas are functions that describe dependencies among variables, and provide a way to create distributions to model correlated multivariate data. Using a copula, a data analyst can construct a multivariate distribution by specifying marginal univariate distributions, and choosing a particular copula to provide a correlation structure between variables. Bivariate distributions, as well as distributions in higher dimensions, are possible. In this example, we discuss how to use copulas to generate dependent multivariate random data in MATLAB, using Statistics and Machine Learning Toolbox.},
+  file      = {:MathWorks17simDetVarCopula.pdf:PDF},
+  owner     = {sotterson},
+  review    = {How to do dependent RV simulation using copulas.  Has equations for converting linear correlation to Spearmans Rank Correlation or Kendal's Tau (but which Kendal's "tied pair" is this? There are 3, see energytop.org)},
+  timestamp = {2017.06.20},
+  url       = {https://www.mathworks.com/help/stats/examples/simulating-dependent-random-variables-using-copulas.html},
+}
+
 @MISC{CribariNeto09betaRgrssnR,
   Author                   = {Cribari-Neto, Francisco and Zeileis, Achim},
   Title                    = {Beta regression in R},
@@ -32536,7 +32675,13 @@ the various risks that may confront a utility},
   file      = {Leahy16windTurbFaultMachLrn.pdf:Leahy16windTurbFaultMachLrn.pdf:PDF},
   keywords  = {SCADA systems, condition monitoring, fault diagnosis, learning (artificial intelligence), wind turbines, CMS, SCADA system, alarm data, condition monitoring systems, fault data, fault diagnosis, fault prediction, faulty operation period, incipient fault detection, machine learning techniques, maintenance scheduling, nominal operation period, operational data, pitch data, power curve, rotor data, south-east Ireland, temperature data, turbine health monitoring, turbine performance, turbine supervisory control and data acquisition system, wind turbine fault diagnosis, Blades, Generators, Maintenance engineering, Monitoring, Sensors, Wind speed, Wind turbines, FDD, Fault Detection, SCADA Data, SVM, Wind Turbine},
   owner     = {sotterson},
-  review    = {Seems to be a good overview of diagnosing wind turbine faults.},
+  review    = {Seems to be a good overview of diagnosing wind turbine faults using 10 minute SCADA data.
+
+Copula power curve that "could be possibly used in the future": Gill12powCurvCopula
+
+Used this to pre-filter out-of-nominal-operation points in order to refine their "no-fault" dataset.  Park14windPowCurveMon
+
+},
   timestamp = {2017.01.16},
 }
 
@@ -34792,6 +34937,24 @@ Stopping Criterion
  - this makes the bias roughly equal b/f and after a feature is added
 * May use MI instead of PMI/CMI b/c really want to max MI
 * and.. I(X;Y|Z)>MI(X;Y) is possble (Frenzel07partMutInfo), which could cause a stop in the wrong place},
+}
+
+@InProceedings{Shah14studentTprocAltGauss,
+  author    = {Amar Shah and Andrew Wilson and Zoubin Ghahramani},
+  title     = {{Student-t Processes as Alternatives to Gaussian Processes}},
+  booktitle = {Proceedings of the Seventeenth International Conference on Artificial Intelligence and Statistics},
+  year      = {2014},
+  editor    = {Samuel Kaski and Jukka Corander},
+  volume    = {33},
+  series    = {Proceedings of Machine Learning Research},
+  pages     = {877--885},
+  address   = {Reykjavik, Iceland},
+  month     = {22--25 Apr},
+  publisher = {PMLR},
+  abstract  = {We investigate the Student-t process as an alternative to the Gaussian process as a nonparametric prior over functions. We derive closed form expressions for the marginal likelihood and predictive distribution of a Student-t process, by integrating away an inverse Wishart process prior over the covariance kernel of a Gaussian process model.  We show surprising equivalences between different hierarchical Gaussian process models leading to Student-t processes, and derive a new sampling scheme for the inverse Wishart process, which helps elucidate these equivalences. Overall, we show that a Student-t process can retain the attractive properties of a Gaussian process -- a nonparametric representation, analytic marginal and predictive distributions, and easy model selection through covariance kernels -- but has enhanced flexibility, and a predictive covariance that, unlike a Gaussian process, explicitly depends on the values of training observations.  We verify empirically that a Student-t process is especially useful in situations where there are changes in covariance structure, or in applications like Bayesian optimization, where accurate predictive covariances are critical for good performance. These advantages come at no additional computational cost over Gaussian processes.},
+  file      = {shah14.pdf:http\://proceedings.mlr.press/v33/shah14.pdf:PDF},
+  review    = {Covariance matrices that change depending upon the data.  It seems like this is better than doing a non-stationary marginal transform, with a fixed (non-matching) covariance matrix, as in Tastu15spcTimeTrajGaussCpla, etc.},
+  url       = {http://proceedings.mlr.press/v33/shah14.html},
 }
 
 @Article{deLuna05predictSpatioTemp,
@@ -40087,6 +40250,18 @@ Using for Colombia GIZ course.},
   url       = {https://www.google.com/search?q=solar+irradiance+vs.+sandstorms+dust+solar+power&source=lnms&tbm=isch&sa=X&ved=0ahUKEwi0u9b_isrTAhWBPywKHcjUD30Q_AUIBigB&biw=1920&bih=988#imgrc=K0yUWyFSuSkmbM:},
 }
 
+@TechReport{Gayo11reliaWindFinalRprt,
+  author      = {Juan Bueno Gayo},
+  title       = {Final Report - RELIAWIND (Reliability focused research on optimizing Wind Energy systems design, operation and maintenance: Tools, proof of concepts, guidelines \& methodologies for a new generation)},
+  institution = {European Union 7th Framework Programme},
+  year        = {2011},
+  number      = {212966},
+  month       = mar,
+  file        = {:Gayo11reliaWindFinalRprt.pdf:PDF},
+  owner       = {sotterson},
+  timestamp   = {2017.06.19},
+}
+
 @Book{Getoor07Introductionstatisticalrelational,
   title     = {Introduction to statistical relational learning},
   publisher = {MIT press},
@@ -43675,6 +43850,7 @@ Time/space resolution:
   volume    = {27},
   number    = {3},
   pages     = {293--311},
+  file      = {:Venkatasubramanian03rvwProcFaultDet_Imodel.pdf:PDF},
   owner     = {sotterson},
   publisher = {Elsevier},
   timestamp = {2016.12.19},
@@ -44184,30 +44360,30 @@ Related article: Zhu12multiVaryCfsFncResp},
 
 @Comment{jabref-meta: fileDirectory-scot:papers;}
 
-@Comment{jabref-meta: groupstree:
+@Comment{jabref-meta: grouping:
 0 AllEntriesGroup:;
-1 ExplicitGroup:IWFTM08\;0\;;
-1 ExplicitGroup:Read\;0\;;
-1 ExplicitGroup:DOE-PNL09\;0\;;
-1 ExplicitGroup:ProbFrcst\;0\;;
-2 ExplicitGroup:Ensemble\;0\;;
-2 ExplicitGroup:PointDerived\;0\;;
-2 ExplicitGroup:Test\;0\;;
-2 ExplicitGroup:Use\;0\;;
-2 ExplicitGroup:ErrDistProps\;0\;;
-2 ExplicitGroup:Upscaling (prob)\;0\;;
-1 ExplicitGroup:Eweline\;0\;;
-2 ExplicitGroup:CitaviImport1\;0\;;
-2 ExplicitGroup:doReadWPV_1\;0\;;
-2 ExplicitGroup:doReadWPV_2\;0\;;
-2 ExplicitGroup:doReadNonWPV_1\;0\;;
-2 ExplicitGroup:doReadNonWPV_2\;0\;;
-1 ExplicitGroup:PtFrcst\;0\;;
-2 ExplicitGroup:PV\;0\;;
-2 ExplicitGroup:Wind\;0\;;
-2 ExplicitGroup:Use\;0\;;
-1 ExplicitGroup:recurNN\;0\;;
-1 ExplicitGroup:StochOpt\;0\;;
+1 StaticGroup:IWFTM08\;0\;1\;\;\;\;;
+1 StaticGroup:Read\;0\;1\;\;\;\;;
+1 StaticGroup:DOE-PNL09\;0\;1\;\;\;\;;
+1 StaticGroup:ProbFrcst\;0\;1\;\;\;\;;
+2 StaticGroup:Ensemble\;0\;1\;\;\;\;;
+2 StaticGroup:PointDerived\;0\;1\;\;\;\;;
+2 StaticGroup:Test\;0\;1\;\;\;\;;
+2 StaticGroup:Use\;0\;1\;\;\;\;;
+2 StaticGroup:ErrDistProps\;0\;1\;\;\;\;;
+2 StaticGroup:Upscaling (prob)\;0\;1\;\;\;\;;
+1 StaticGroup:Eweline\;0\;1\;\;\;\;;
+2 StaticGroup:CitaviImport1\;0\;1\;\;\;\;;
+2 StaticGroup:doReadWPV_1\;0\;1\;\;\;\;;
+2 StaticGroup:doReadWPV_2\;0\;1\;\;\;\;;
+2 StaticGroup:doReadNonWPV_1\;0\;1\;\;\;\;;
+2 StaticGroup:doReadNonWPV_2\;0\;1\;\;\;\;;
+1 StaticGroup:PtFrcst\;0\;1\;\;\;\;;
+2 StaticGroup:PV\;0\;1\;\;\;\;;
+2 StaticGroup:Wind\;0\;1\;\;\;\;;
+2 StaticGroup:Use\;0\;1\;\;\;\;;
+1 StaticGroup:recurNN\;0\;1\;\;\;\;;
+1 StaticGroup:StochOpt\;0\;1\;\;\;\;;
 }
 
 @Comment{jabref-meta: protectedFlag:true;}
