@@ -12,7 +12,6 @@
 
       See: [[File:~/.emacs::;;%20TODO%20use-package%20is%20redundant%20w/%20'(package-selected-packages%20in%20customizations)][use-packages notes in my .emacs]]
 
-***** TRY [[help:align-regexp]]
 ***** TRY [[http://oremacs.com/2015/10/23/dired-compress/][dired file compression]] instead of crypt++
 ***** TRY improve hydra
 ******* org: counsel-org-goto
@@ -531,6 +530,11 @@
             better than: instant search (ido: must switch to to buff and search)
             better than: ivy-resume goes back to it
             worse: always in minibuffer; ido uses big side buff if available.
+
+******* ACCEPTED remove dependency upon align-equals.el
+
+      Used script in https://gist.github.com/WaYdotNET/700416
+      which has many other align functions too.
 
 ***** *REJECTED*
 ******* REJECTED [[https://github.com/steckerhalter/helm-google][helm-google]]
@@ -2064,6 +2068,7 @@ For a public browser link. Share the note and copy the share url.
 * JabRef
 *** News and feature requests go [[http://discourse.jabref.org][here]]
 *** bug reports go [[https://github.com/JabRef/jabref/issues][here]]
+*** latest build: https://builds.jabref.org/master/
 *** setting up multiple previews: =Options-> Preferences-> Entry preview=
 *** Setting JabRef setup so it can push latex cites to Emacs
     <<Setting JabRef setup so it can push latex cites to Emacs>>
@@ -7455,7 +7460,6 @@ ERROR: Cannot run texhash command. Please run manually.
 
     It's possible that Calibre will produce prettier pdf's but it requires
     a DRM breaker plugin that you had to download from an untrusted website.
-
 
 
 

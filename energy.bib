@@ -4725,6 +4725,25 @@ http://support.sas.com/documentation/cdl/en/statug/63347/HTML/default/viewer.htm
   url       = {http://www.sciencedirect.com/science/article/pii/S0167865515003906},
 }
 
+@Article{Che17neuralNetTensorRnk1,
+  author    = {Maolin Che and Andrzej Cichocki and Yimin Wei},
+  title     = {Neural networks for computing best rank-one approximations of tensors and its applications},
+  journal   = {Neurocomputing},
+  year      = {2017},
+  pages     = {-},
+  issn      = {0925-2312},
+  abstract  = {Abstract This paper presents the neural dynamical network to compute a best rank-one approximation of a real-valued tensor. We implement the neural network model by the ordinary differential equations (ODE), which is a class of continuous-time recurrent neural network. Several new properties of solutions for the neural network are established. We prove that the locally asymptotic stability of solutions for \{ODE\} by constructive an appropriate Lyapunov function under mild conditions. Furthermore, we also discuss how to use the proposed neural networks for solving the tensor eigenvalue problem including the tensor H-eigenvalue problem, the tensor Z-eigenvalue problem, and the generalized eigenvalue problem with symmetric-definite tensor pairs. Finally, we generalize the proposed neural networks to the computation of the restricted singular values and the associated restricted singular vectors of real-valued tensors. We illustrate and validate theoretical results via numerical simulations. },
+  doi       = {https://doi.org/10.1016/j.neucom.2017.04.058},
+  file      = {:Che17neuralNetTensorRnk1.pdf:PDF},
+  keywords  = {Neural network, Ordinary differential equations, Lyapunov function, Lyapunov stability theory, Rank-one tensor, Best rank-one approximation, Z-eigenpair, Symmetric-definite tensor pair, H-eigenpair, The local maximal generalized eigenpair, The local minimal generalized eigenpair, Generalized tensor eigenpair, Local optimal rank-one approximation, Restricted singular value, Restricted singular vector},
+  owner     = {sotterson},
+  review    = {Use this for high dim covariance matrix learning by tensors?  Could the fact that it's NN based be a bridge to a deep learning approach?
+
+Tensors for covariance learning:  Li11tensoCovMatObjTrck},
+  timestamp = {2017.06.26},
+  url       = {http://www.sciencedirect.com/science/article/pii/S0925231217308263},
+}
+
 @Article{Ren15ensWindSolPowFrcstRev,
   author   = {Ye Ren and P.N. Suganthan and N. Srikanth},
   title    = {Ensemble methods for wind and solar power forecasting -- A state-of-the-art review},
@@ -5998,7 +6017,17 @@ Lecture notes to accompany these chapters are found in the syllabus for my cours
 theory.},
   file      = {:Revelle17psychThryR_eBook.pdf:PDF},
   owner     = {sotterson},
-  review    = {Possibly, a simple explanation of the relationship between the Gaussian correlation matrix, precision matrix, partial correlation, and factor models (chapters 4,5,6)},
+  review    = {Has a decent explanation of the relationship between scalar correlation and linear regression coefficient but it's not clear on multivariate regression or partial correlation.  Doesn't cover precision matrix, which is what I was looking for because of the models that handle high dim covaraince with a sparse precision matrix.  Has some good basic/interesting stuff, though:
+
+INTERESTING STUFF
+* IQ, SAT and ACT are all transforms of the deviation from the mean. (Table 3.11)
+* Correlation Coefficient vs. Regression CoefficientIs 
+  - just the linear prediction coefficient -- byx in eq. (4.5) -- but normalized by both stx and sty instead of just var_x, where y is the predictand.  
+  - Looked at the other way:byx = rxy * stdy / stdx
+* proof for why correlation coefficient is the cosine between two variables
+  - i.e. rxy=cos(angle x and y vectors)
+  - see just below eq. 4.11
+* Table 4.8: correlation-like meaasures and their relation to linear correlation (Pearson)},
   timestamp = {2017.06.23},
   url       = {http://www.personality-project.org/r/book/},
 }
@@ -9233,13 +9262,12 @@ Extension to multimodalit, sensor networkd: Liu17multDatFusCplaProc},
 }
 
 @Article{Xu16adaptStrmAnomAnlysTsubmod,
-  author        = {Xu, Zhao and von Ritter, Lorenzo and Kersting, Kristian},
-  title         = {Adaptive Streaming Anomaly Analysis},
-  journal       = {NIPS},
-  year          = {2016},
-  month         = dec,
-  __markedentry = {[sotterson:6]},
-  abstract      = {Detecting anomalous activities from time series data is critical for enhancing avail-
+  author    = {Xu, Zhao and von Ritter, Lorenzo and Kersting, Kristian},
+  title     = {Adaptive Streaming Anomaly Analysis},
+  journal   = {NIPS},
+  year      = {2016},
+  month     = dec,
+  abstract  = {Detecting anomalous activities from time series data is critical for enhancing avail-
 ability and security of systems in many domains. Streaming data usually contains
 complex dynamic patterns, which complicates the learning process. In this paper,
 we present a nonparametric Bayesian method AOTS to help automating the model
@@ -9247,11 +9275,11 @@ learning for anomaly detection in streaming time series. The method learns the d
 namics of anomaly-contaminated time series with submodular optimization based
 kernel selection to effectively adapt to the data and identify potential anomalous
 events. Experiments on real data show encouraging results.},
-  file          = {:Xu16adaptStrmAnomAnlysTsubmod.pdf:PDF},
-  owner         = {sotterson},
-  review        = {Student T process anomaly detection with submodular optimization kernel selection.},
-  timestamp     = {2017.06.20},
-  url           = {http://workshops.inf.ed.ac.uk/nips2016-ai4datasci/submission.html},
+  file      = {:Xu16adaptStrmAnomAnlysTsubmod.pdf:PDF},
+  owner     = {sotterson},
+  review    = {Student T process anomaly detection with submodular optimization kernel selection.},
+  timestamp = {2017.06.20},
+  url       = {http://workshops.inf.ed.ac.uk/nips2016-ai4datasci/submission.html},
 }
 
 @Article{Blythe12FeatExtrctChngPtSubSpc,
@@ -18498,7 +18526,20 @@ Novelty detection; One-class classification; Machine learning},
   file      = {Pimentel14revNovDet.pdf:Pimentel14revNovDet.pdf:PDF},
   owner     = {sotterson},
   publisher = {Elsevier},
-  review    = {Big review of novelty detection, discusses graphical models for novelty detection.},
+  review    = {Big review of novelty detection, discusses graphical models for novelty detection.
+
+CLASSIFICATION OF APPROACHES
+
+Novelty, anomaly, outlier, and change-point detection are either synonymous or "closely related" (change-point)
+
+He prefers this classification:
+  o probabilistic: usually density estimation of /normal/" class
+  o distance-based: dist based clustering, /normal/ data is tightly clustered
+  o reconstruction based: big regression model error ==> /novel/
+  o domain based: define a boundary around /normal/
+  o information theoretic: est. entropy, etc.: /novel/ data increases info content
+
+},
   timestamp = {2016.12.19},
   url       = {http://www.sciencedirect.com/science/article/pii/S016516841300515X},
 }
@@ -28073,7 +28114,17 @@ market and a standard bilevel setup.},
   abstract  = {The usefulness of covariance and correlation matrices is well-known in various academic fields. Matrix inversion, if required in an analytical setting, tends to mask the intuition in interpreting the corresponding empirical or experimental results. Drawing on the finance literature in mean-variance portfolio analysis, this paper presents pedagogically a regression-based interpretation of the inverse of the sample covariance matrix. Microsoft ExcelTM plays an important pedagogic role in this paper. The availability of various Excel functions and computational tools for numerical illustrations provides flexibility for instructors in the delivery of the corresponding analytical materials.},
   file      = {Kwan14regressnInterpInvCovMat.pdf:Kwan14regressnInterpInvCovMat.pdf:PDF},
   owner     = {sotterson},
-  review    = {A hopefully simple explanation of precision matrix, partial correlation, and linear regression.},
+  review    = {Derives the inverse covariance (precision) matrix in terms of linear regression coefficients,  variances and coefficient of determination (R^2).  See eq. 8.   Does not quite get to partial correlation.  Also expresses a minimum risk in terms of covariance matrix and/or linear regression.  Seems to be implicitly making smoe kind of uncorrelated errors assumption which I can't quite follow.
+
+Some facts:
+
+* Precision matrix diagonals: large for high variance, unpredictable variables (jth variable, diag j,j)
+* Regression coeffs: shrunken when j is a high variance, unpredictable variable.  If it's a high variance, predictable variable it's not shrunk so much.
+* Things that make a covariance matrix uninvertible (so no precision matrix)
+  - A constant variable
+  - a perfectly linear relationship between variables. 
+
+},
   timestamp = {2017.06.15},
   url       = {http://epublications.bond.edu.au/ejsie/vol7/iss1/3/?utm_source=epublications.bond.edu.au%2Fejsie%2Fvol7%2Fiss1%2F3&utm_medium=PDF&utm_campaign=PDFCoverPages},
 }
@@ -30350,6 +30401,26 @@ Keywords: stochastic programming; scenario generation; copulas},
   url       = {http://link.springer.com/article/10.1007/s10287-013-0184-4},
 }
 
+@Article{Tsiligkaridis13covEstHiDimKrPrdExp,
+  author        = {T. Tsiligkaridis and A. O. Hero},
+  title         = {Covariance Estimation in High Dimensions Via Kronecker Product Expansions},
+  journal       = IEEE_J_SP,
+  year          = {2013},
+  volume        = {61},
+  number        = {21},
+  pages         = {5347--5360},
+  month         = nov,
+  issn          = {1053-587X},
+  __markedentry = {[sotterson:6]},
+  abstract      = {This paper presents a new method for estimating high dimensional covariance matrices. The method, permuted rank-penalized least-squares (PRLS), is based on a Kronecker product series expansion of the true covariance matrix. Assuming an i.i.d. Gaussian random sample, we establish high dimensional rates of convergence to the true covariance as both the number of samples and the number of variables go to infinity. For covariance matrices of low separation rank, our results establish that PRLS has significantly faster convergence than the standard sample covariance matrix (SCM) estimator. The convergence rate captures a fundamental tradeoff between estimation error and approximation error, thus providing a scalable covariance estimation framework in terms of separation rank, similar to low rank approximation of covariance matrices . The MSE convergence rates generalize the high dimensional rates recently obtained for the ML Flip-flop algorithm , for Kronecker product covariance estimation. We show that a class of block Toeplitz covariance matrices is approximatable by low separation rank and give bounds on the minimal separation rank r that ensures a given level of bias. Simulations are presented to validate the theoretical bounds. As a real world application, we illustrate the utility of the proposed Kronecker covariance estimator for spatio-temporal linear least squares prediction of multivariate wind speed measurements.},
+  doi           = {10.1109/TSP.2013.2279355},
+  file          = {:papers\\Tsiligkaridis13covEstHiDimKrPrdExp.pdf:PDF},
+  keywords      = {Gaussian processes, convergence, covariance matrices, estimation theory, mean square error methods, random processes, Gaussian random sample, Kronecker product covariance estimation, Kronecker product series expansion, ML flip-flop algorithm, MSE convergence rates, PRLS, approximation error, block Toeplitz covariance matrices, estimation error, low separation rank, multivariate wind speed measurement, permuted rank-penalized least-squares, spatio-temporal linear least squares prediction, Brain modeling, Convergence, Covariance matrices, Estimation, Least squares approximations, Standards, Symmetric matrices, Kronecker product decompositions, Structured covariance estimation, high dimensional convergence rates, mean-square error, multivariate prediction, penalized least squares},
+  owner         = {sotterson},
+  review        = {Wind speed temporal-spatio covariance estimation for day ahead forecasting, and other things.},
+  timestamp     = {2017.07.03},
+}
+
 @Article{Carrion06effUnitCommMixInt,
   author    = {Carrion, M. and Arroyo, J.M.},
   title     = {A computationally efficient mixed-integer linear formulation for the thermal unit commitment problem},
@@ -30725,6 +30796,26 @@ Journal paper: Lai05NewCmplxStepDiff
 
 Maybe fancier stuff in: Abreu13genCmplxStepDiff},
   Timestamp                = {2014.07.06}
+}
+
+@InProceedings{Li11tensoCovMatObjTrck,
+  author    = {Peihua Li and Qi Sun},
+  title     = {Tensor-based covariance matrices for object tracking},
+  booktitle = {Proc. IEEE Int. Conf. Computer Vision Workshops (ICCV Workshops)},
+  year      = {2011},
+  pages     = {1681--1688},
+  month     = nov,
+  abstract  = {This paper presents tensor-based covariance matrices for object modeling and tracking. Unlike the traditional vector-based or matrix-based object representation, this method represents an object with a third-order tensor and has better capability to capture the intrinsic structure of the image data. We flatten the tensor to obtain all of its mode-n unfolding matrices, each one of which can be seen as a sample of observations of some high-dimensional random signals. For every mode-n unfolding matrix, we use the K-L transform to achieve the principal components of the column vectors. The covariance matrix of the reduced-dimensional signal via the K-L transform is used for modeling the object statistics. Based on this modeling, a distance measure is introduced for object tracking using the affine-invariant Riemannian metric. For adapting to the appearance changes of the object across time, we present an efficient, incremental model update mechanism. Experiments show that the proposed tracking method has promising performance.},
+  doi       = {10.1109/ICCVW.2011.6130452},
+  file      = {:Li11tensoCovMatObjTrck.pdf:PDF},
+  keywords  = {affine transforms, covariance matrices, image representation, statistical analysis, target tracking, tensors, K-L transform, affine-invariant Riemannian metric, column vectors, distance measure, high-dimensional random signals, image data, incremental model update mechanism, intrinsic structure, mode-n unfolding matrices, object modeling, object representation, object statistics, object tracking, principal components, tensor-based covariance matrices, third-order tensor, vector-based representation, Adaptation models, Computational modeling, Covariance matrix, Lighting, Tensile stress, Transforms, Vectors},
+  owner     = {sotterson},
+  review    = {Good for high dim covariance estimation of spatio-temporal fields, or in general?  
+
+* FanaeeT16tensorAnomDetSrvy says that tensors are good for spatio-temporal.
+* learning tensor approx with a NN: Che17neuralNetTensorRnk1
+},
+  timestamp = {2017.06.26},
 }
 
 @Article{Perez90ModelDayLightAvail,
@@ -32383,6 +32474,26 @@ Wind power forecasting; extreme situations; ramp event; large-scale variations; 
   owner        = {scot},
   review       = {Use for regime switching? Improve this algorithm with Singh10correntropyFilt or the other online correntropy paper?},
   timestamp    = {2010.12.02},
+}
+
+@Article{FanaeeT16tensorAnomDetSrvy,
+  author    = {Hadi Fanaee-T and Jo{\~a}o Gama},
+  title     = {Tensor-based anomaly detection: An interdisciplinary survey},
+  journal   = {Knowledge-Based Systems},
+  year      = {2016},
+  volume    = {98},
+  pages     = {130 - 147},
+  issn      = {0950-7051},
+  abstract  = {Traditional spectral-based methods such as PCA are popular for anomaly detection in a variety of problems and domains. However, if data includes tensor (multiway) structure (e.g. space-time-measurements), some meaningful anomalies may remain invisible with these methods. Although tensor-based anomaly detection (TAD) has been applied within a variety of disciplines over the last twenty years, it is not yet recognized as a formal category in anomaly detection. This survey aims to highlight the potential of tensor-based techniques as a novel approach for detection and identification of abnormalities and failures. We survey the interdisciplinary works in which TAD is reported and characterize the learning strategies, methods and applications; extract the important open issues in TAD and provide the corresponding existing solutions according to the state-of-the-art.},
+  doi       = {http://dx.doi.org/10.1016/j.knosys.2016.01.027},
+  file      = {:FanaeeT16tensorAnomDetSrvy.pdf:PDF},
+  keywords  = {Anomaly detection, Tensor analysis, Multiway data, Tensor decomposition, Tensorial learning},
+  owner     = {sotterson},
+  review    = {Mentions space-time matrices as an example of a tensor based field.  Besides being good for high dim anomaly detection, maybe this would be good for high dim covariance estimation, and upscaling.
+
+Tensors for covarinance estimation: Li11tensoCovMatObjTrck},
+  timestamp = {2017.06.26},
+  url       = {http://www.sciencedirect.com/science/article/pii/S0950705116000472},
 }
 
 @INPROCEEDINGS{Pan08xfrLrnDimRed,
@@ -36766,6 +36877,40 @@ But what is needed in the future to allow us to continue improving our forecasts
   url       = {https://www.earthmagazine.org/article/todays-weather-forecast-good-strong-chance-improvement},
 }
 
+@Article{Zivot13portTheoryMatrixEcon424,
+  author    = {Eric Zivot},
+  title     = {Portfolio Theory with Matrix Algebra. Course Notes, Econ 424/CFRM 462: Computational Finance and Financial Econometrics.},
+  journal   = {University of Washington, Seattle},
+  year      = {2013},
+  abstract  = {When working with large portfolios, the algebra of representing portfolio
+expected returns and variances becomes cumbersome. The use of matrix (lin-
+ear) algebra can greatly simplify many of the computations. Matrix algebra
+formulations are also very useful when it comes time to do actual computa-
+tions on the computer. The matrix algebra formulas are easy to translate
+into matrix programming languages like R. Popular spreadsheet programs
+like Microsoft Excel, which are the workhorse programs of many financial
+houses, can also handle basic matrix calculations. All of this makes it worth-
+while to become familiar with matrix techniques for portfolio calculations.},
+  file      = {:papers\\Zivot13portTheoryMatrixEcon424.pdf:PDF;:papers\\Zivot13portTheoryMatrixEcon424_slides.pdf:PDF},
+  owner     = {sotterson},
+  review    = {Optimal return given specified risk (standard deviation of return) or min. risk given specifed return.  Has R and a "... with R" textbook coming out soon. Very close but not quite right for ReWP because return return and risk have same units (in ReWP (reserve power), the return is money and the risk is power.  Also, I think this may be making an assumption of normality -- at least it does at the beginning, but I didn't follow the math.
+
+Main point: It's simpler to search possible allocations by searchign for optimal choices.  Two ways: 
+
+1. max expected return w/ specified risk
+2. min risk w/ specified returns
+
+"risk" is characterized by standard deviation of return.  See p. 11
+
+Exact pdf and slides came from:
+https://faculty.washington.edu/ezivot/econ424/portfolioTheoryMatrix.pdf
+https://faculty.washington.edu/ezivot/econ424/portfoliotheorymatrixslides.pdf
+
+},
+  timestamp = {2017.07.03},
+  url       = {https://faculty.washington.edu/ezivot/econ424/econ424.htm},
+}
+
 @Article{Pinson06qualValProbFrcst,
   author    = {Pinson, P. and Juban, J. and Kariniotakis, G. N.},
   title     = {On the Quality and Value of Probabilistic Forecasts of Wind Generation},
@@ -38946,6 +39091,19 @@ Three types mentioned here:
   url     = {http://publica.fraunhofer.de/documents/N-154116.html},
   journal = {Kassel: Institut f{\"u}r Solare Energieversorgungstechnik (ISET)},
   review  = {Description of the now upscaling used by the German TSO's. This was the reference Stephan used in: Vogt15HybridPhysMLrgnFrcst},
+}
+
+@Book{Bishop06PatternRecogMachLrnBook,
+  title         = {Pattern recognition and machine learning},
+  publisher     = {springer},
+  year          = {2006},
+  author        = {Bishop, Christopher M},
+  __markedentry = {[sotterson:]},
+  file          = {:Bishop06PatternRecogMachLrnBook.pdf:PDF},
+  owner         = {sotterson},
+  review        = {Bishop's classic machine learning book.  Stephan V. really likes it, says it has a lot on multivariate normal distributions.},
+  timestamp     = {2017.06.27},
+  url           = {http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf},
 }
 
 @InProceedings{Blatchford08caisoRenewInteg,
@@ -42676,7 +42834,7 @@ Related: Kraskov04EstMutInfKNN,Stogbauer04leastDepMutInfo
   review    = {NOTE: I COPIED THIS FROM SPEAKERCLUST.BIB AND ./PAPERS.SPEAKERCLUST
 Use to select good channel pairs?, 
 
- Heuristics used in this paper generalized inBrown12condLikInfoFeatSel (energy.bib)
+ Heuristics used in this paper are generalized inBrown12condLikInfoFeatSel (energy.bib)
 
  Yang09featSelMLPrand in energy.bib might be better?
 
@@ -43435,6 +43593,7 @@ Has other countries too e.g. Colombia: solarGis17colombiaSolarMap},
   month     = may,
   file      = {Spruyt14geomInterpCovMat.pdf:Spruyt14geomInterpCovMat.pdf:PDF},
   owner     = {sotterson},
+  review    = {Covers eigen values of covariance matrix.  But I was looking for info about partial correlation, linear regression and precision matrix.},
   timestamp = {2017.06.15},
   url       = {http://www.visiondummy.com/2014/04/geometric-interpretation-covariance-matrix/},
 }
@@ -43560,6 +43719,7 @@ I believe the 2nd edition is supposed to be published in 2017; I've attached the
   author    = {Sutton, Richard S and Barto, Andrew G},
   volume    = {1},
   number    = {1},
+  edition   = {First},
   owner     = {sotterson},
   review    = {A free reinforcement learning book w/ code.  Updated in 2017: Sutton17reinfLrnIntroBook
 

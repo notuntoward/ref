@@ -37,8 +37,14 @@
 ***** Tools
 ******* Software
 ********* Matlab
-********* Tensor flow
+********* <<Tensor Flow>>
 *********** can go in Matlab! via Python
+*********** [[https://hackaday.com/2017/03/24/ten-minute-tensorflow-speech-recognition/][Ten Minute TensorFlow Speech Recognition | Hackaday]] (very good)
+*********** [[https://youtu.be/eBbEDRsCmv4][Hands-on TensorBoard (TensorFlow Dev Summit 2017) - YouTube]]
+*********** [[https://esciencegroup.com/2016/02/08/tensorflow-meets-microsofts-cntk/][TensorFlow Meets Microsoft’s CNTK]]
+*********** weather prediction: [[https://hub.docker.com/r/claytantor/tensorflow-lstm-regression/][tensorflow-lstm-regression]] what weather?
+*********** [[https://hackaday.com/2017/04/11/introduction-to-tensorflow/][Introduction To TensorFlow | Hackaday]]
+*********** [[https://youtu.be/Ejec3ID_h0w][TensorFlow Tutorial]] (Sherry Moore, Google Brain)
 ********* Coffee in Matlab (stephan remembers?)
 ********* name some more...
 ******* Hardware
@@ -123,6 +129,7 @@
 
 *** [[cite:Mai14financeEngCopulasExpln][Mai & Scherer 2014: Financial Eng Copulas Explnd]] 
 *** [[cite:Revelle17psychThryR_eBook][Revelle 2017: Intro Psychometrics, R.  Covar. Rgrssn, Factor Mdl]]
+*** [[cite:Bishop06PatternRecogMachLrnBook][Bishop 2006: Pattern Recog & Mach Lrn Book]]
 *** [[http://www.neurosolutions.com/products/nsbook/][Interactive Neural Network Book]] explains recurrent NN's, has demos
 *** [[Books w/ source code]]
 *** Wind energy books I could buy
@@ -1744,6 +1751,8 @@ Scott
 ******* [[cite:Britz15tutorialRNN][Britz 2015: Recurrent Neural Networks Tutorial]]
 ******* [[cite:Busseti12deepLrnTimeSer][Busseti et al. 2012: Deep Learning Time Series Modeling (Demand frcst, RNN best)]]
 ******* [[cite:Perera14machLrnTechRES][Perera et al. 2014: Machine Learning Techniques RES]] (really deep?)
+******* <<Deep Learning Tensors>>
+********* [[cite:Che17neuralNetTensorRnk1][Che et al. 2017: Neural Tensor learn Rank 1]]
 ******* <<Deep Learning Regularization>>
 ********* [[cite:Gal16nnDropoutBayesApprox][Gal & Ghahramani 2016: Dropout Bayesian Approximation]]
 ******* [[Deep Learning School, Stanford, 2016]]
@@ -2076,9 +2085,11 @@ Scott
 ***** Deep Learning Code
 ******* Matlab: [[http://www.mathworks.com/matlabcentral/fileexchange/38310-deep-learning-toolbox][Deep Learning Toolbox]]
 ******* [[http://deeplearning.net/software_links/][deeplearning.net]]: software and papers, and [[http://deeplearning.net/reading-list/tutorials/][tutorials]]
-******* [[https://www.microsoft.com/en-us/cognitive-toolkit/][Microsoft Cognitive Toolkit]]
+******* <<Microsoft Cognitive Toolkit>>
+        From:  [[https://www.microsoft.com/en-us/cognitive-toolkit/][Microsoft Cognitive Toolkit]]
 ********* [[https://techcrunch.com/2017/06/01/microsoft-releases-version-2-0-of-its-deep-learning-toolkit/][Microsoft releases version 2.0 of its deep learning toolkit | TechCrunch]]
 ********* [[https://esciencegroup.com/2016/02/08/tensorflow-meets-microsofts-cntk/][TensorFlow Meets Microsoft’s CNTK]]
+******* [[Tensor Flow]]
 ***** TODO Deep Learning with Small Data
       <<Deep Learning with Small Data>>
 ******* [[cite:ERCIMnews16spclIssueMachLrn][ERCIM News 2016: Special endition on machine learn]] Micro-data Learning: the Other End of the Spectrum
@@ -2489,6 +2500,7 @@ Scott
 ********* [[cite:Yu12MultiWayGMMkernPLS][Yu 2012: Multiway Gaussian Mixture Kernel PLS batch process quality]]
 ********* [[cite:Yeniay02plsrNcmpsCmpr][Yeniay & Goektas 2002 compare PLS with other methods]]
 ********* [[cite:Lee07rbstAdaptPLS][Lee et al. 2007: Robust Adaptive Partial Least Squared Process Model]]
+********* [[cite:Tsiligkaridis13covEstHiDimKrPrdExp][Tsiligkaridis & Hero 2013: Covariance Estimation High Dim PLSR wind speed]]
 ********* [[cite:Colombani12sparsePLScmpr][Colombani et al. 2012: PLSR French cattle compare]]
 ********* [[cite:Kraemer08penPLSspline][Kraemer et al. 2008: Penalized Partial Least B-spline]]
 ********* [[cite:Tomassi11suffDimRedPkg][Tomassi et al. 2011: LDR sufficient dim package has PLSR]]
@@ -3161,12 +3173,7 @@ Scott
 
 ********************* ahmed and th
 ********************* mi: i(x;y) = h(y) - h(y|x) ([[http://en.wikipedia.org/wiki/mutual_information][wikipedia]]), so need normal conditional dist
-********************* conditional normal dist:
-*********************** *use this (esp the proof)*: [[http://en.wikipedia.org/wiki/multivariate_normal_distribution#conditional_distributions][bivariate to scalar]] (wikipedia, also has dim>2, so maybe better)
-************************* [[http://fourier.eng.hmc.edu/e161/lectures/gaussianprocess/node7.html][proof]] (from article footnote)
-*********************** [[http://mathworld.wolfram.com/bivariatenormaldistribution.html][bivariate to scalar]]
-*********************** [[http://gbhqed.wordpress.com/2010/02/21/conditional-and-marginal-distributions-of-a-multivariate-gaussian/][another dim>2 conditional dist]]
-*********************** [[http://www.cs.cmu.edu/~epxing/class/10701-08s/recitation/gaussian.pdf][multivariate gaussian distribution ]](conditional in dim=2)
+********************* [[Conditional Normal Distribution]]
 ********************* todo cover&thomas is supposed to have mi expressions for multivariate normal dist
 ********************* [[http://www.scholarpedia.org/article/mutual_information][mi is additive]] for independent variables
 
@@ -4102,6 +4109,7 @@ Hope that helps,
 ***** see also: [[Clustering for prediction]]
 ***** also see: [[Forecast aggregation]]
 ***** also wee: [[Portfolio Optimization and Forecasting]]
+***** also see: [[Portfolio Analysis]]
 *** Forecast combination
     <<Forecast combination>>
 ***** [[file:energy.bib::Tascikaraoglu14windFrstCombo][Tascikaraoglu & Uzunoglu 2014]] combining wind pow frcsts
@@ -7496,9 +7504,11 @@ sera
 *********** [[cite:Remillard17cplaCondQuantile][Remillard et al. 2017 copula conditional quantile w/ conf. band]]
 *********** [[cite:Kraus17copulaDvineQR][Kraus & Czado 2017: D-vine copuala, cond. quantile]] 
 *********** Alessandrini13wireCostFrcstResults: best prob frcst was norwegian copula
-*********** <<Conditional Gaussian>> (for conditional normal copula)
+*********** <<Conditional Normal Distribution>> (for conditional normal copula)
 ************* [[cite:Rasmussen06GaussProcBook][Rasmussen & Williams 2006: Gaussian Processes Machine Learning]]
 ************* [[cite:Wang06imageProcE161crsNts][Wang 2006: Computer Image Processing]]
+************* [[file:energy.bib::Roweis99gaussIdentities][Roweis 1999: Gaussian Identities]]
+************* [[http://gbhqed.wordpress.com/2010/02/21/conditional-and-marginal-distributions-of-a-multivariate-gaussian/][another dim>2 conditional normal dist page]]
 ********* <<Factor/Vine Copulas>>
 *********** [[file:energy.bib::][Cooke et al. 2007: Vines]]
 *********** [[file:energy.bib::Cooke10vinesArise][Cooke & Aas 2010: Vine Copula Method Handbook]]
@@ -8701,8 +8711,7 @@ al. 2012: Current]])
 *********** new verification methods for high dimensional forecasts
 *********** better link between skill scores (quality) and decsion impact (value)
 
-*** TODO Portfolio Optimization and Forecasting
-    <<Portfolio Optimization and Forecasting>>
+*** TODO <<Portfolio Optimization and Forecasting>>
 ***** TODO [[file:energy.bib::Taylor98cmbinFrcstQuants][Taylor & Bunn 1998: Combining quantile forecasts]] (expert quantile forecasts combined to single est. by weighted sum from QR)
 ***** TODO [[file:energy.bib::Eisenbrand09optMethFin_CrsNotes][Eisenbrand 2009: Optimization Methods Finance Course Notes]]
 ***** there are nice formulas for sums of Gaussian variables w/ covariance
@@ -8710,6 +8719,7 @@ al. 2012: Current]])
       this is a generalized central limit theorem
 ***** I found some hard to understand stuff about sums of dependent stable distributions: not clear if it's usable
 ***** [[cite:Martin15varWindLenTime][Martin et al. 2015: Variability wind len time has great table]]
+***** [[cite:Zivot13portTheoryMatrixEcon424][Zivot 2013: Portfolio Theory Matrix Algebra]]
 ***** [[cite:Bandi16SpectrumWindPow][Bandi 2016: Spectrum Wind Power Fluctuations]]: limits to variance reduction with spatial averaging
 ***** [[cite:SantosAlamillos14windVarBsld][Santos-Alamillos et al. 2014 spat. var Wind Baseload]]
 ***** [[cite:Camargo15modelWindPVcmplmnt][Camargo et al. 2015: Spatiotemporal model wind+PV complimentarity]]
@@ -9021,6 +9031,10 @@ later corrected by greg heath:
 
 *** a kind of [[Interaction term]]?
 *** [[www.sandia.gov/~tgkolda/TensorToolbox/index-2.5.html][MATLAB Tensor Toolbox Version 2.5]]
+*** [[cite:FanaeeT16tensorAnomDetSrvy][Fanaee-T & Gama 2016: Tensor anomaly detect survey]]
+*** [[cite:Li11tensoCovMatObjTrck][Li & Sun 2011: Tensor Covariance Matrix Obj Track]]
+*** [[cite:Che17neuralNetTensorRnk1][Che et al. 2017: Neural Tensor learn Rank 1]]
+*** [[Deep Learning Tensors]]
 *** B-spline/Wavelet periodic tensor basis: [[file:energy.bib::Kapl09tensSplnWvlt][Kapl & J\uttler 2009]]
 *** tensor networks, trains and optimization: [[file:energy.bib::Cichocki14TensorNetworksBigOpt][Cichocki 2014: Tensor Networks Big]]
 *** [[file:energy.bib::Zhao14MultiNonLinPLSoverview][Zhao et al. 2014: Multilinear]] and nonlin PLS, CCA (read before [[file:energy.bib::Cichocki14TensorNetworksBigOpt][Cichocki 2014: Tensor Networks Big]] ?)
@@ -10380,6 +10394,7 @@ Scott
 ***** [[file:energy.bib::Hart11genProfLrgVarRen][Hart & Jacobson 2011: Monte Carlo]] california generation portfolio
 ***** [[file:energy.bib::Hart12co2reduceRenew][Hart & Jacobson 2012]]: The carbon abatement potential of high penetration intermittent renewables
 ***** [[cite:Kaut14copulaMultiVarHeurist][Kaut 2014]] copula heuristic scen gen, multivar
+***** [[cite:Zivot13portTheoryMatrixEcon424][Zivot 2013: Portfolio Theory Matrix Algebra]]
 ***** See also [[Portfolio Optimization and Forecasting]]
 *** [[file:energy.bib::Nikolakakis11optWindSolMix][Nikolakakis & Fthenakis 2011, Opt wind/PV mix NY State]]
 
@@ -10549,9 +10564,19 @@ Scott
 *** [[cite:Smirni16cs426dscrtEvntSimCrsNotes][Smirni 2016: Discrete Event Sim. Course Notes]], does Poisson
 *** [[cite:Shinomoto10EstFireRatePoisson][Shinomoto 2010: Estimating Firing Rate Book Chapter]], Poisson rate est.
 dimen* <<State Change Detection>>
+* <<Anomaly Detection>>
+
+  /Novelty/, /anomaly/, /outlier/, and /change-point/ detection are either synonymous or "closely related" (change-point), says [[cite:Pimentel14revNovDet][Pimentel et al. 2014]].  So his proposed classification is instead: 
+
+  - probabilistic :: usually density estimation of /normal/" class
+  - distance-based ::  dist based clustering, /normal/ data is tightly clustered
+  - reconstruction based :: big regression model error ==> /novel/
+  - domain based :: define a boundary around /normal/
+  - information theoretic :: est. entropy, etc.: /novel/ data increases info content
+
 *** <<Novelty Detection>>
 ***** [[https://www.mapr.com/blog/n-novelty-detection-and-news-few-my-favorite-data-science-things][N is for Novelty Detection​]] (books and overview)
-***** [[cite:Pimentel14reviewnoveltydetection][Pimentel et al. 2014]] novelty det. review, mentions graphical models
+***** [[cite:Pimentel14revNovDet][Pimentel et al. 2014]] novelty det. review, mentions graphical models
 ***** [[file:c:/Users/sotterson/OneDrive/shareHW/DTU/doc/energy.bib::Gama14conceptDrftSurvey][Gama et al. 2014]] survey concept drift
 ***** [[file:energy.bib::Dunning14practMachLrnAnom][Dunning & Friedman 2014: Practical Machine Learning]] Anomaly Book
 ***** [[file:energy.bib::Chandola09anomalyDetSurv][Chandola et al. 2009: Anomaly]] det. survey
@@ -10678,6 +10703,7 @@ dimen* <<State Change Detection>>
 ******* see [[Copulas]]
 ******* see [[Novelty Detection]]
 ******* see [[Copula Processes]]
+***** Matlab ischange (2017b) function
 *** <<Outlier Detection>>
 ***** [[http://www.statisticsviews.com/details/feature/6597751/Outlier-Detection-Gets-a-Makeover---Surprise-Discovery-in-Scientific-Big-Data.html][Outlier Detection Gets a Makeover - Surprise Discovery in Scientific Big Data]]
 ***** [[file:energy.bib::Gupta14OutlierDetTempSurv][Gupta et al. 2014: Outlier Detection Temporal Data]] Survey (also has book)
@@ -10714,6 +10740,7 @@ dimen* <<State Change Detection>>
 ***** TODO [[file:energy.bib::Gill12powCurvCopula][Gill et al. 2012: Wind Turbine Condition]] wind/pow copula detects turbine faults (Vine copula?  Malte?)
 ***** TODO [[cite:Li01neuralWindPowGen][Li et al. 2001: Neural Net Wind pow (said to be good for turb fault det)]]
 ***** TODO [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: Large Data Set Fault Detect Wind Forecast LIGHTNING]]
+***** [[cite:FanaeeT16tensorAnomDetSrvy][Fanaee-T & Gama 2016: Tensor anomaly detect survey]]
 ***** [[cite:Venkatasubramanian03rvwProcFaultDet_Imodel][Venkatasubramanian et al. 2003 review fault det Part I: Model]]
 ***** [[cite:Venkatasubramanian03rvwProcFaultDet_IIsearch][Venkatasubramanian et al. 2003 review fault det Part II: qual search]]
 ***** [[cite:Venkatasubramanian03rvwProcFaultDet_IIIhist][Venkatasubramanian et al. 2003 review fault det Part II: Hist]]
@@ -10781,19 +10808,23 @@ dimen* <<State Change Detection>>
 *** see [[Graph Copula Models]]
 *** see also [[Copula Processes]]
 * <<Dependence Learning>>
-*** TODO [[cite:Simpson12spatStatForgetCov][Simpson et al. 2012: Spatial Stats Forget Covariance Matrix]]
+*** DONE [[cite:Revelle17psychThryR_eBook][Revelle 2017: Intro Psychometrics, R.  Covar. Rgrssn, Factor Mdl]]
+*** DONE [[cite:Spruyt14geomInterpCovMat][Spruyt 2014 Geom Interp Cov. Matrix]] (eigs of cov. matrx)
+*** DONE [[cite:Kwan14regressnInterpInvCovMat][Kwan 2014 Regression Interp Inv Cov Matrix (Prec. Matrix)]] 
 *** TODO [[cite:Fan16estLrgCovPrecMatrix][Fan et al. 2016 Est. Large Cov. Prec. Matrices]]
+*** TODO [[cite:Simpson12spatStatForgetCov][Simpson et al. 2012: Spatial Stats Forget Covariance Matrix]]
 *** TODO [[cite:Chen16DynamicCovarianceModels][Chen & Leng 2016: Dynamic Covariance Models]]
-*** [[cite:Rue02fitGausMarkovRndFlds][Rue & Tjelmeland 2002: Fitting Gaussian Markov Gaussian]]
-*** [[cite:Pinheiro96unCnstrParamVarCovMat][Pinheiro & Bates 1996: Unconstrained param of cov. mat]]
 *** [[cite:LI07nonParaAssessSpaceTimeCovar][Li et al. 2007: Nonparametric Assessment Properties Space/Time Cov Mat]]
 *** [[cite:Porcu07covarStatSpaceTime][Porcu et al. 2007: Covariance func stationary space/time]]
+*** TODO [[cite:FanaeeT16tensorAnomDetSrvy][Fanaee-T & Gama 2016: Tensor anomaly detect survey]]
+*** [[cite:Li11tensoCovMatObjTrck][Li & Sun 2011: Tensor Covariance Matrix Obj Track]]
+*** [[cite:Rue02fitGausMarkovRndFlds][Rue & Tjelmeland 2002: Fitting Gaussian Markov Gaussian]]
+*** [[cite:Pinheiro96unCnstrParamVarCovMat][Pinheiro & Bates 1996: Unconstrained param of cov. mat]]
 *** [[cite:Lindgren11linkGaussMMRFandSDE][Lindgren et al. 2011: Gaussian Gaussian Markov link SPDE and Prec. Mat]]
 *** [[cite:Pedregosa11ScikitlearnMachLrnPython][Pedregosa et al. 2011: Scikit Lrn Mach Lrn Python Library]]
-*** TODO [[cite:Spruyt14geomInterpCovMat][Spruyt 2014 Geom Interp Cov. Matrix]]
-*** TODO [[cite:Kwan14regressnInterpInvCovMat][Kwan 2014 Regression Interp Inv Cov Matrix (Prec. Matrix)]] 
 *** [[Adaptive covariance estimation and feature sel]]
 *** [[Frequency Domain Smoothed Covariance]]
+*** [[cite:Tsiligkaridis13covEstHiDimKrPrdExp][Tsiligkaridis & Hero 2013: Covariance Estimation High Dim PLSR wind speed]]
 *** [[cite:Yu12MultiWayGMMkernPLS][Yu 2012: Multiway Gaussian Mixture Kernel PLS batch process quality]]
 *** [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: Large Data Set Fault Detect Wind Forecast LIGHTNING]]
 *** [[PLSR for Graph Learning]]
@@ -11438,6 +11469,10 @@ optimization to be a generalization of linear programming.
     06/13/17 [[cite:Tastu15spcTimeTrajGaussCpla][Tastu et al. 2015: Space Time Trajectories Gaus Cpla Prec Mtrx]]
     06/16/17 [[cite:Bessa12adaptQuantCopulaFrcst][Bessa et al. 2012: Time adaptive quantile copula wind power frcst]]
              [[cite:Bessa16gaussCplaDcsns][Bessa 2016: Gaussian Copula multitemporal decision]] scenarios
+    06/27/17 [[cite:Revelle17psychThryR_eBook][Revelle 2017: Intro Psychometrics, R.  Covar. Rgrssn, Factor Mdl]]
+             [[cite:Spruyt14geomInterpCovMat][Spruyt 2014 Geom Interp Cov. Matrix]] (eigs of cov. matrx)
+    07/03/17 [[cite:Kwan14regressnInterpInvCovMat][Kwan 2014 Regression Interp Inv Cov Matrix (Prec. Matrix)]] 
+             [[cite:Zivot13portTheoryMatrixEcon424][Zivot 2013: Portfolio Theory Matrix Algebra]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:./energy.bib
