@@ -1130,6 +1130,36 @@ Related: Kraskov08MIChierClustMutInf.Papana08EvalMutInfoDynSys},
   timestamp = {2008.10.03},
 }
 
+@InProceedings{Malhotra15lstmAnomDetTS,
+  author       = {Malhotra, Pankaj and Vig, Lovekesh and Shroff, Gautam and Agarwal, Puneet},
+  title        = {Long short term memory networks for anomaly detection in time series},
+  booktitle    = {European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning},
+  year         = {2015},
+  pages        = {89},
+  organization = {Presses universitaires de Louvain},
+  abstract     = { Long Short Term Memory (LSTM) networks have been
+demonstrated to be particularly useful for learning sequences containing
+longer term patterns of unknown length, due to their ability to maintain
+long term memory. Stacking recurrent hidden layers in such networks also
+enables the learning of higher level temporal features, for faster learning
+with sparser representations. In this paper, we use stacked LSTM net-
+works for anomaly/fault detection in time series. A network is trained on
+non-anomalous data and used as a predictor over a number of time steps.
+The resulting prediction errors are modeled as a multivariate Gaussian
+distribution, which is used to assess the likelihood of anomalous behav-
+ior. The efficacy of this approach is demonstrated on four datasets: ECG,
+space shuttle, power demand, and multi-sensor engine dataset.},
+  file         = {:papers\\Malhotra15lstmAnomDetTS.pdf:PDF},
+  owner        = {sotterson},
+  review       = {LSTM NN does a point prediction of non-anomalous data, flexibly modeling temporal dependence.  A multivariate Gaussian then models the likelihood of the error time series via a Kalman filter . A low likelihood is an anomaly. 
+
+There is no trained abnormality detector.
+
+Obviously, this could be a Gaussian Copula or whatever...  The coolness of this idea is that the dependency inside the model e.g. Gaussian could capture temporal dependence.  The weakness is that the Gaussian dimension determines the max analysis window width but I think this method also a finite analysis window of length l.},
+  timestamp    = {2017.07.04},
+  url          = {https://www.elen.ucl.ac.be/Proceedings/esann/esannpdf/es2015-56.pdf},
+}
+
 @InProceedings{Flexer13shrKNNhubRdc,
   author       = {Flexer, Arthur and Schnitzer, Dominik},
   title        = {Can Shared Nearest Neighbors Reduce Hubness in High-Dimensional Spaces?},
@@ -4140,6 +4170,35 @@ tail dependence,
   url       = {http://www.sciencedirect.com/science/article/pii/S0196890416000406},
 }
 
+@Article{Chen17copulaTimeTrav,
+  author    = {Min Chen and Guizhen Yu and Peng Chen and Yunpeng Wang},
+  title     = {A copula-based approach for estimating the travel time reliability of urban arterial},
+  journal   = {Transportation Research Part C: Emerging Technologies},
+  year      = {2017},
+  volume    = {82},
+  pages     = {1 - 23},
+  issn      = {0968-090X},
+  abstract  = {Abstract Estimating the travel time reliability (TTR) of urban arterial is critical for real-time and reliable route guidance and provides theoretical bases and technical support for sophisticated traffic management and control. The state-of-art procedures for arterial \{TTR\} estimation usually assume that path travel time follows a certain distribution, with less consideration about segment correlations. However, the conventional approach is usually unrealistic because an important feature of urban arterial is the dependent structure of travel times on continuous segments. In this study, a copula-based approach that incorporates the stochastic characteristics of segments travel time is proposed to model arterial travel time distribution (TTD), which serves as a basis for \{TTR\} quantification. First, segments correlation is empirically analyzed and different types of copula models are examined. Then, fitting marginal distributions for segment \{TTD\} is conducted by parametric and non-parametric regression analysis, respectively. Based on the estimated parameters of the models, the best-fitting copula is determined in terms of the goodness-of-fit tests. Last, the model is examined at two study sites with \{AVI\} data and \{NGSIM\} trajectory data, respectively. The results of path \{TTD\} estimation demonstrate the advantage of the proposed copula-based approach, compared with the convolution model without capturing segments correlation and the empirical distribution fitting methods. Furthermore, when considering the segments correlation effect, it was found that the estimated path \{TTR\} is more accurate than that by the convolution model. },
+  doi       = {https://doi.org/10.1016/j.trc.2017.06.007},
+  file      = {:papers\\Chen17copulaTimeTrav.pdf:PDF},
+  keywords  = {Urban arterial, Travel time distribution, Travel time reliability, Segment correlation, Copula},
+  owner     = {sotterson},
+  review    = {Traffic route time is represented as a copula for the individual path segments, thus modelling the correlation between different path lengths better.  Also compares Pearson's Spearman's and Kendal's Tau correlation.
+
+Pearson's, Spearman's, and Kendal's Tau correlation.
+* linear (Pearson's) not invariant under nonlinear strictly increasing transformations 
+   - e.g. a copula marginal transform
+   -  so can't preserve linear correlation in original space
+* Rank based correlation
+   - options: Spearman's rho, Kendall's tau.
+   - Spearman confidence intervals less relilable and interpretable than Kendall
+      - this is from a paper they cite:  Kendall and Gibbons (1990) 
+      - they do a test and agree with it (See 4.2.1, but they don't really explain their reasoning)
+      - anyway, they ultimatly use Kendall's tau (},
+  timestamp = {2017.07.05},
+  url       = {http://www.sciencedirect.com/science/article/pii/S0968090X17301602},
+}
+
 @Article{Bennasar15jointMImaxFeatSel,
   author   = {Mohamed Bennasar and Yulia Hicks and Rossitza Setchi},
   title    = {Feature selection using Joint Mutual Information Maximisation},
@@ -7132,6 +7191,31 @@ Somewhat close to jointly estimating noisy supply and noisy demand price in resp
   URL                      = {http://www.freepatentsonline.com/20140365276.pdf}
 }
 
+@Article{Fang02metaElipDistMargKendalPears,
+  author    = {Hong-Bin Fang and Kai-Tai Fang and Samuel Kotz},
+  title     = {The Meta-elliptical Distributions with Given Marginals},
+  journal   = {Journal of Multivariate Analysis},
+  year      = {2002},
+  volume    = {82},
+  number    = {1},
+  pages     = {1 - 16},
+  issn      = {0047-259X},
+  abstract  = {Based on an analysis of copulas of elliptically contoured distributions, joint densities of continuous variables with given strictly increasing marginal distributions are constructed. A method utilized for this procedure is to embed the spherical distribution quantile transformation of each variable into an elliptically contoured distribution. The new class of distributions is then called meta-elliptical distributions. The corresponding analytic forms of the density, conditional distribution functions, and dependence properties are derived. This new class of distributions has the same Kendall's rank correlation coefficient as meta-Gaussian distributions. As an extension of elliptically contoured distributions, some new classes of distributions are also obtained.},
+  doi       = {http://dx.doi.org/10.1006/jmva.2001.2017},
+  file      = {:papers\\Fang02metaElipDistMargKendalPears.pdf:PDF},
+  keywords  = {conditional quantile, copulas, elliptically contoured distributions, Kendall's, likelihood ratio dependence, multivariate distribution, regression dependence},
+  owner     = {sotterson},
+  review    = {Proof of arcsin relationship between Kendall's tau and Pearson'ts Rho for Guassian Copula
+
+According to: https://stats.stackexchange.com/questions/133460/proof-of-the-relation-between-kendalls-tau-and-pearsons-rho-for-the-gaussian-c
+
+It is proven as Theorem 3.2 in Fang, Fang, & Kotz, The Meta-elliptical Distributions with Given Marginals Journal of Multivariate Analysis, Elsevier, 2002, 82, 1?16 but that relies on Theorem 2.22 in [K. T. Fang, Kotz, and Ng, "Symmetric Multivariate and Related Distribution," Chapman & Hall, London, 1990.] (to which I do not have access).
+
+},
+  timestamp = {2017.07.05},
+  url       = {http://www.sciencedirect.com/science/article/pii/S0047259X01920172},
+}
+
 @Article{Gottschall06stochModelWindCorr,
   author    = {Julia Gottschall and Edgar Anahua and Stephan Barth and Joachim Peinke},
   title     = {Stochastic Modelling of Wind Speed Power Production Correlations},
@@ -8887,6 +8971,45 @@ Keywords
   timestamp = {2009.02.18},
 }
 
+@Article{Sugiartawan17waveletLSTMfrcst,
+  author    = {Sugiartawan, Putu and Pulungan, Reza and Sari, Anny Kartika},
+  title     = {Prediction by a Hybrid of Wavelet Transform and Long-Short-Term-Memory Neural Network},
+  journal   = {INTERNATIONAL JOURNAL OF ADVANCED COMPUTER SCIENCE AND APPLICATIONS},
+  year      = {2017},
+  volume    = {8},
+  number    = {2},
+  pages     = {326--332},
+  abstract  = {Data originating from some specific fields, for in-
+stance tourist arrivals, may exhibit a high degree of fluctuations as
+well as non-linear characteristics due to time varying behaviors.
+This paper proposes a new hybrid method to perform prediction
+for such data. The proposed hybrid model of wavelet transform
+and long-short-term memory (LSTM) recurrent neural network
+(RNN) is able to capture non-linear attributes in tourist arrival
+time series. Firstly, data is decomposed into constitutive series
+through wavelet transform. The decomposition is expressed as a
+function of a combination of wavelet coefficients, which have
+different levels of resolution. Then, LSTM neural network is
+used to train and simulate the value at each level to find the
+bias vectors and weighting coefficients for the prediction value.
+A sliding windows model is employed to capture the time series
+nature of the data. An evaluation is conducted to compare the
+proposed model with other RNN algorithms, i.e., Elman RNN and
+Jordan RNN, as well as the combination of wavelet transform
+with each of them. The result shows that the proposed model has
+better performance in terms of training time than the original
+LSTM RNN, while the accuracy is better than the hybrid of
+wavelet-Elman and the hybrid of wavelet-Jordan.
+Keywords?Wavelet Transform; Long-Short-Term Memory; Re-
+current Neural Network; Time Series Prediction},
+  file      = {:papers\\Sugiartawan17waveletLSTMfrcst.pdf:PDF},
+  owner     = {sotterson},
+  publisher = {SCIENCE \& INFORMATION SAI ORGANIZATION LTD 19 BOLLING RD, BRADFORD, WEST YORKSHIRE, 00000, ENGLAND},
+  review    = {Wavelet decomp improves RNN method forecast accuracy, except for LSTM, where it trains about 2X faster but is much less accurate.  I didn't quite understand how the NN inputs are constructed from the wavelet decomposition.},
+  timestamp = {2017.07.04},
+  url       = {https://thesai.org/Downloads/Volume8No2/Paper_43-Prediction_by_a_Hybrid_of_Wavelet_Transform.pdf},
+}
+
 @Article{May10datSplitNN,
   author    = {May, Robert J and Maier, Holger R and Dandy, Graeme C},
   title     = {Data splitting for artificial neural networks using SOM-based stratified sampling},
@@ -10085,6 +10208,9 @@ COVARIANCE REGULARIZATION / CONSTRAINTS
 RESULTS
 * Huge reduction in the number of paramenters 
    - 2007690 params for a full sample covariance  --> 10 for the constrained precision matrix.  
+   - compare with matrix normal decomposition in Owen13monteCarloBook 
+   - also compare with mixture comp reduction in Anderlucci15covPatMix 
+   - and compare with other stuff in energytop.org <<Covariance sparseness>>
 * Accuracy
    - not quite as good as just using the sample covariance trained over a year's worth of data.
    - as measured by Logarithmic Score (mean likelihood of observations)
@@ -12044,7 +12170,9 @@ Compare with high dim knn hubness e.g. Schnitzer12Localandglobal},
   keywords  = {SPDE, GMRF, kernel methods, covariance functions},
   owner     = {sotterson},
   publisher = {John Wiley \& Sons, Ltd},
-  review    = {Referenced by Tastu15spcTimeTrajGaussCpla},
+  review    = {Says to model spatial random fields with Gaussian Markov Random Fields and stochastic partial differential equations (SPDEs).  Looks well written.  Has Matlab and R.
+
+Referenced by Tastu15spcTimeTrajGaussCpla},
   timestamp = {2017.06.08},
   url       = {http://dx.doi.org/10.1002/env.1137},
 }
@@ -17957,6 +18085,49 @@ four-dimensional random vector.},
   timestamp            = {2010.08.02},
 }
 
+@InProceedings{Li16waveletLSTMeegRecog,
+  author    = {M. Li and M. Zhang and X. Luo and J. Yang},
+  title     = {Combined long short-term memory based network employing wavelet coefficients for MI-{EEG} recognition},
+  booktitle = {Proc. IEEE Int. Conf. Mechatronics and Automation},
+  year      = {2016},
+  pages     = {1971--1976},
+  month     = aug,
+  abstract  = {Motor Imagery Electroencephalography (MI-
+EEG) plays an important role in brain computer interface (BCI) 
+based rehabilitation robot, and its recognition is the key problem. 
+The Discrete Wavelet Transform (DWT) has been applied to 
+extract the time-frequency features of MI-EEG. However, the 
+existing EEG classifiers, such as support vector machine (SVM),   
+linear discriminant analysis (LDA) and BP network, did not make 
+full use of the time sequence information in time-frequency 
+features, the resulting recognition performance were not very 
+ideal. In this paper, a Long Short-Term Memory (LSTM) based 
+recurrent Neural Network (RNN) is integrated with Discrete 
+Wavelet Transform (DWT) to yield a novel recognition method, 
+denoted as DWT-LSTM. DWT is applied to analyze the each 
+channel of MI-EEG and extract its effective wavelet coefficients, 
+representing the time-frequency features. Then a LSTM based 
+RNN is used as a classifier for the patten recognition of observed 
+MI-EEG data. Experiments are conducted on a publicly available 
+dataset, and the 5-fold cross validation experimental results show 
+that DWT-LSTM yields relatively higher classification accuracies 
+compared to the existing approaches. This is helpful for the 
+further research and application of RNN in processing of MI-
+EEG.  
+
+ 
+
+Index Terms - Brain computer interface; Long Short-Term 
+Memory; Recurrent Neural Network; Discrete Wavelet Transform; 
+motor imagery EEG;},
+  doi       = {10.1109/ICMA.2016.7558868},
+  file      = {:papers\\Li16waveletLSTMeegRecog.pdf:PDF},
+  keywords  = {backpropagation, brain-computer interfaces, discrete wavelet transforms, electroencephalography, feature extraction, medical signal processing, neural nets, patient rehabilitation, signal classification, support vector machines, time-frequency analysis, BCI, BP network, DWT-LSTM, EEG classifiers, LDA, LSTM based RNN, MI-EEG data, MI-EEG recognition, Motor Imagery Electroencephalography, SVM, brain computer interface based rehabilitation robot, discrete wavelet transform, effective wavelet coefficients, linear discriminant analysis, long short-term memory based network, patten recognition, recognition performance, recurrent neural network, support vector machine, time sequence information, time-frequency feature extraction, Discrete wavelet transforms, Electroencephalography, Feature extraction, Logic gates, Recurrent neural networks, Time-frequency analysis, Brain computer interface, Discrete Wavelet Transform, Long Short-Term Memory, Recurrent Neural Network, motor imagery EEG},
+  owner     = {sotterson},
+  review    = {Wavelet decomp and LSTM is better for time series pattern recog than other things.  The LSTM is predicting a categorical variable.  Wavelet packet basis choice seems to be done by hand, rather than with an algorithm.},
+  timestamp = {2017.07.04},
+}
+
 @Article{Kalpakis01distClustARIMA,
   author    = {Kalpakis, K. and Gada, D. and Puttagunta, V.},
   title     = {Distance measures for effective clustering of ARIMA time-series},
@@ -20518,6 +20689,40 @@ This paper is the Arxiv version, which might be a bit more bold in its claims th
   owner     = {sotterson},
   review    = {Gaussian Process kernel quantile regression w/ no crossing, and other good things. Could be an improvement upon Naryada Watson kernel estimator, as no crossing, and all the powerful GP machinery is available},
   timestamp = {2014.03.30},
+}
+
+@Article{Hoff07rankLikSemiParCplaMixed,
+  author        = {Hoff, Peter D},
+  title         = {Extending the rank likelihood for semiparametric copula estimation},
+  journal       = {The Annals of Applied Statistics},
+  year          = {2007},
+  pages         = {265--283},
+  __markedentry = {[sotterson:6]},
+  abstract      = {Quantitative studies in many fields involve the analysis of multivariate
+data of diverse types, including measurements that we may consider binary,
+ordinal and continuous. One approach to the analysis of such mixed data is
+to use a copula model, in which the associations among the variables are pa-
+rameterized separately from their univariate marginal distributions. The pur-
+pose of this article is to provide a simple, general method of semiparametric
+inference for copula models via a type of rank likelihood function for the
+association parameters. The proposed method of inference can be viewed as
+a generalization of marginal likelihood estimation, in which inference for a
+parameter of interest is based on a summary statistic whose sampling distri-
+bution is not a function of any nuisance parameters. In the context of cop-
+ula estimation, the extended rank likelihood is a function of the association
+parameters only and its applicability does not depend on any assumptions
+about the marginal distributions of the data, thus making it appropriate for
+the analysis of mixed continuous and discrete data with arbitrary marginal
+distributions. Estimation and inference for parameters of the Gaussian cop-
+ula are available via a straightforward Markov chain Monte Carlo algorithm
+based on Gibbs sampling. Specification of prior distributions or a parametric
+form for the univariate marginal distributions of the data is not necessary.},
+  file          = {:papers\\Hoff07rankLikSemiParCplaMixed.pdf:PDF},
+  owner         = {sotterson},
+  publisher     = {JSTOR},
+  review        = {How to do mixed discrete and continous Gaussian copulas.  Is an MCMC algorithm.  },
+  timestamp     = {2017.07.06},
+  url           = {http://projecteuclid.org/download/pdfview_1/euclid.aoas/1183143739},
 }
 
 @Article{Brocker07properScore,
@@ -23427,7 +23632,6 @@ Cites Oh11fastSmthQuantreg},
   owner     = {scotto},
   timestamp = {2008.12.27},
 }
-???
 
 @Article{Lindgren11linkGaussMMRFandSDE,
   author    = {Lindgren, Finn and Rue, H{\aa}vard and Lindstr{\"o}m, Johan},
@@ -24896,7 +25100,9 @@ KEY WORDS: Box-Cox power transformation; Extreme value; Heavy-tailed distributio
   number    = {1},
   pages     = {C1--C32},
   issn      = {1368-423X},
-  abstract  = {The estimation of large covariance and precision matrices is fundamental in modern multivariate analysis. However, problems arise from the statistical analysis of large panel economic and financial data. The covariance matrix reveals marginal correlations between variables, while the precision matrix encodes conditional correlations between pairs of variables given the remaining variables. In this paper, we provide a selective review of several recent developments on the estimation of large covariance and precision matrices. We focus on two general approaches: a rank-based method and a factor-model-based method. Theories and applications of both approaches are presented. These methods are expected to be widely applicable to the analysis of economic and financial data.},
+  abstract  = {The estimation of large covariance and precision matrices is fundamental in modern multivariate analysis. However, problems arise from the statistical analysis of large panel economic and financial data. The covariance matrix reveals marginal correlations between variables, while the precision matrix encodes conditional correlations between pairs of variables given the remaining variables. In this paper, we provide a selective review of several recent developments on the estimation of large covariance and precision matrices. We focus on two general approaches: a rank-based method and a factor-model-based method. Theories and applications of both approaches are presented. These methods are expected to be widely applicable to the analysis of economic and financial data.
+   Keywords: High-dimensionality, graphical model, approximate factor model, principal components, sparse matrix, low-rank matrix, thresholding, heavy-tailed, elliptical distribution, rank based methods
+},
   doi       = {10.1111/ectj.12061},
   file      = {Fan16estLrgCovPrecMatrix.pdf:Fan16estLrgCovPrecMatrix.pdf:PDF},
   keywords  = {Approximate factor model, Elliptical distribution, Graphical model, Heavy-tailed, High-dimensionality, Low-rank matrix, Principal components, Rank-based methods, Sparse matrix, Thresholding},
@@ -26398,6 +26604,57 @@ RESULTS
   owner     = {sotterson},
   publisher = {Kluwer Academic Publishers},
   timestamp = {2009.03.09},
+}
+
+@Article{Ghosh03nortaCorrRVdimNoGaussCpla,
+  author        = {Ghosh, Soumyadip and Henderson, Shane G},
+  title         = {Behavior of the NORTA method for correlated random vector generation as the dimension increases},
+  journal       = {ACM Transactions on Modeling and Computer Simulation (TOMACS)},
+  year          = {2003},
+  volume        = {13},
+  number        = {3},
+  pages         = {276--294},
+  __markedentry = {[sotterson:]},
+  abstract      = {The NORTA method is a fast general-purpose method for generating samples of a random vector
+with given marginal distributions and given correlation matrix. It is known that there exist
+marginal distributions and correlation matrices that the NORTA method cannot match, even
+though a random vector with the prescribed qualities exists. In this case we say that the correlation
+matrix is NORTA defective (for the given marginals). We investigate this problem as the dimension
+of the random vector increases. Simulation results show that the problem rapidly becomes acute,
+in the sense that an increasingly large proportion of correlation matrices are NORTA defective.
+Simulation results also show that if one is willing to settle for a correlation matrix that is ?close?
+to the desired one, then NORTA performs well with increasing dimension. As part of our analysis
+we develop a method for sampling symmetric positive definite correlation matrices uniformly (in
+the Lebesgue measure sense) from the set of all such matrices. This procedure can be used more
+generally for sampling uniformly from the space of all symmetric positive definite matrices with
+diagonal elements fixed at positive values.},
+  file          = {:papers\\Ghosh03nortaCorrRVdimNoGaussCpla.pdf:PDF},
+  owner         = {sotterson},
+  publisher     = {ACM},
+  review        = {Proof that can't express all patterns of Pearson corr and uniform margins with a Gaussian copula.
+
+Owen13monteCarloBook says:
+
+Ghosh and Henderson (2003) look into the phenomenon in which a desired
+Pearson correlation matrix, in combination with uniform margins, is unattain-
+able via the Gaussian copula. A well studied example from Li and Hammond
+(1975) has d = 3, F1 = F2 = F3 = U(0, 1) and
+
+Corr(X) = 
+
+1 ?0.4 0.2
+?0.4 1 0.8
+
+0.2 0.8 1
+
+.
+
+They show that Gaussian copula sampling cannot produce such a distribution.
+That such a distribution exists, and can be sampled by some other method, was
+proved by Ghosh and Henderson (2002). The failure to exist via the Gaussian
+copula is most interesting when the distribution exists.},
+  timestamp     = {2017.07.05},
+  url           = {https://ecommons.cornell.edu/bitstream/handle/1813/9249/TR001372.pdf?sequence=1},
 }
 
 @InProceedings{Theis10ensCosmoDE,
@@ -28480,6 +28737,28 @@ num. columns is bigger than max lag, so this is even bigger than literal blowout
   timestamp = {2009.09.08},
 }
 
+@Article{StatisticsSolutions17KendallAndSpearman,
+  author    = {StatisticsSolutions},
+  title     = {Kendall?s Tau and Spearman?s Rank Correlation Coefficient},
+  journal   = {Statistics Solutions Blog},
+  year      = {2017},
+  abstract  = {There are two accepted measures of non-parametric rank correlations: Kendall?s tau and Spearman?s (rho) rank correlation coefficient.},
+  file      = {:papers\\StatisticsSolutions17KendallAndSpearman.pdf:PDF},
+  owner     = {sotterson},
+  review    = {Compares Kendall's and Spearman's.  Spearman's is more widely used but maybe Kendall's is better? They are very similar and "invariably lead to the same inferences."
+
+Advantages of using Kendall?s tau over Spearman's rho
+* Distribution of Kendall?s tau has better statistical properties.
+ - p-values more accurate for smaller sample sizes
+ - "insensitive to error"
+ - usually smaller values (good?)
+* The interpretation of Kendall?s tau in terms of the probabilities of observing the agreeable (concordant) and non-agreeable (discordant) pairs is very direct.
+
+},
+  timestamp = {2017.07.05},
+  url       = {http://www.statisticssolutions.com/kendalls-tau-and-spearmans-rank-correlation-coefficient/},
+}
+
 @Article{Porcu07covarStatSpaceTime,
   author    = {E. Porcu and J. Mateu and M. Bevilacqua},
   title     = {Covariance functions that are stationary or nonstationary in space and stationary in time},
@@ -28494,6 +28773,54 @@ num. columns is bigger than max lag, so this is even bigger than literal blowout
   review    = {Use for wind velocity basis function, upscaling, offsite observations?
 See also Genton07spaceTimeCovMatrixApprox, LI07nonParaAssessSpaceTimeCovar},
   timestamp = {2008.12.27},
+}
+
+@Article{Ghosh02cbDistMargCovNoGaussCpla,
+  author    = {Ghosh, Soumyadip and Henderson, Shane G},
+  title     = {Chessboard distributions and random vectors with specified marginals and covariance matrix},
+  journal   = {Operations Research},
+  year      = {2002},
+  volume    = {50},
+  number    = {5},
+  pages     = {820--834},
+  abstract  = {There is a growing need for the ability to specify and generate correlated random variables as primitive
+
+inputs to stochastic models. Motivated by this need, several authors have explored the generation of
+
+random vectors with specied marginals, together with a specied covariance matrix, through the use
+
+of a transformation of a multivariate normal random vector.
+
+A covariance matrix is said to be feasible for a given set of marginal distributions if a random vector
+
+exists with these characteristics. We develop a computational approach for establishing whether a given
+
+covariance matrix is feasible for a given set of marginals. The approach is used to rigorously establish
+
+that there are sets of marginals with feasible covariance matrix that the normal transformation technique
+
+referred to above cannot match.
+
+An important feature of our analysis is that we show that for almost any covariance matrix (in a
+
+certain precise sense), our computational procedure either explicitly provides a construction of a random
+
+vector with the required properties, or establishes that no such random vector exists.
+
+We also provide two new methodologies that may be used to deal with the situation where one cannot
+
+exactly match the desired marginals and covariance matrix using the normal transformation technique.
+
+The new methodologies possess certain advantages over other approaches that have been suggested in
+
+the past.},
+  file      = {:papers\\Ghosh02cbDistMargCovNoGaussCpla.pdf:PDF},
+  owner     = {sotterson},
+  publisher = {INFORMS},
+  review    = {Shows that a checkerboard dist can exist and can be reproduced.  Matters because it's used in XX to prove that a desired Pearson correlation matrix, in combination with uniform margins, is unattain-
+able via the Gaussian copula.},
+  timestamp = {2017.07.05},
+  url       = {http://www.academia.edu/download/43767639/Chessboard_Distributions_and_Random_Vect20160315-1498-wghlxj.pdf},
 }
 
 @Article{Cormode10histoWvltProb,
@@ -29084,6 +29411,47 @@ Keywords: beta regression, rates, proportions, R.},
   timestamp = {2011.02.28},
 }
 
+@Book{Owen13monteCarloBook,
+  title     = {Monte Carlo theory, methods and examples},
+  year      = {2013},
+  author    = {Art B. Owen},
+  abstract  = {This is a book about the Monte Carlo method. The core idea of Monte Carlo is
+to learn about a system by simulating it with random sampling. That approach
+is powerful, flexible and very direct. It is often the simplest way to solve a
+problem, and sometimes the only feasible way.
+The Monte Carlo method is used in almost every quantitative subject of
+study: physical sciences, engineering, statistics, finance, and computing, includ-
+ing machine learning and graphics. Monte Carlo is even applied in some areas,
+like music theory, that are not always thought of as quantitative.
+The Monte Carlo method is both interesting and useful. In this book we will
+look at the ideas behind Monte Carlo sampling and relate them to each other.
+We will look at the mathematical properties of the methods to understand when
+and why they work. We will also look at some important practical details that
+we need to know in order to get reliable answers to serious problems. Often the
+best way to see the ideas and practical details is through an example, and so
+worked examples are included throughout.},
+  file      = {:papers\\Owen13monteCarloBook.pdf:PDF},
+  owner     = {sotterson},
+  review    = {Many nice things on markov processes, including copulas, matrix normal distribution, ...
+
+* info on matrix normal distribution (used in e.g. Anderlucci15covPatMix)
+* Example of a multivariate distribution you can't model with a normal copula (p. 50, reference to Ghosh03nortaCorrRVdimNoGaussCpla).
+
+Matrix Normal Distribution
+* Useful for a random matrix where both rows and columns are correlated
+* Matrix normal dist is really just a normal distribution 
+   - covariance matrix decomposed into the elementwise product of two separate covariance matrices.
+   - Cov matrices are constrained by matrix c, or is trace(gamma) and alternative constraint?
+* Is an "enormous simplification" in # coeffs over a full multivariate normal distribution
+  - For an (md X md) covariance matrix,  # coeffs reduction is on the order of:
+      (md)^2 -->  m^2 + d^2
+  - Anderlucci15covPatMix has table of other options for coefficient size reduction (in a mixture)
+  - compare with precision matrix decomp in: Tastu15spcTimeTrajGaussCpla
+* How to sample this distribution is explained.  Pretty simple},
+  timestamp = {2017.07.05},
+  url       = {http://statweb.stanford.edu/~owen/mc/},
+}
+
 @Misc{Karpathy16deepReinfLrnPongPix,
   author       = {Andrej Karpathy},
   title        = {Deep Reinforcement Learning: Pong from Pixels},
@@ -29469,6 +29837,24 @@ Possible power curve learning improvements:
 * could Johnson System distributions be used for the power curve? Torrez93JohnsonDistFitNeuron
 * or use stable distribution regression, replacing the sum and power curve? Frain09alphaDistAppsThesis},
   url       = {http://www.windintegrationworkshop.org/brussels2015/},
+}
+
+@Article{Kargin08curveFrcstFuncAR,
+  author    = {V. Kargin and A. Onatski},
+  title     = {Curve forecasting by functional autoregression},
+  journal   = {Journal of Multivariate Analysis},
+  year      = {2008},
+  volume    = {99},
+  number    = {10},
+  pages     = {2508 - 2526},
+  issn      = {0047-259X},
+  abstract  = {This paper deals with the prediction of curve-valued autoregression processes. It develops a novel technique, predictive factor decomposition, for the estimation of the autoregression operator. The technique is based on finding a reduced-rank approximation to the autoregression operator that minimizes the expected squared norm of the prediction error. Implementing this idea, we relate the operator approximation problem to the singular value decomposition of a combination of cross-covariance and covariance operators. We develop an estimation method based on regularization of the empirical counterpart of this singular value decomposition, prove its consistency and evaluate convergence rates. The method is illustrated by an example of the term structure of the Eurodollar futures rates. In the sample corresponding to the period of normal growth, the predictive factor technique outperforms the principal components method and performs on a par with custom-designed prediction methods.},
+  doi       = {http://dx.doi.org/10.1016/j.jmva.2008.03.001},
+  file      = {:papers\\Kargin08curveFrcstFuncAR.pdf:PDF},
+  keywords  = {62H25, 60G25, 91B84, Functional data analysis, Dimension reduction, Reduced-rank regression, Principal component, Singular value decomposition, Predictive factor, Term structure, Interest rates},
+  owner     = {sotterson},
+  timestamp = {2017.07.04},
+  url       = {http://www.sciencedirect.com/science/article/pii/S0047259X08000961},
 }
 
 @Article{Svoboda97schedRampConstr,
@@ -30402,23 +30788,22 @@ Keywords: stochastic programming; scenario generation; copulas},
 }
 
 @Article{Tsiligkaridis13covEstHiDimKrPrdExp,
-  author        = {T. Tsiligkaridis and A. O. Hero},
-  title         = {Covariance Estimation in High Dimensions Via Kronecker Product Expansions},
-  journal       = IEEE_J_SP,
-  year          = {2013},
-  volume        = {61},
-  number        = {21},
-  pages         = {5347--5360},
-  month         = nov,
-  issn          = {1053-587X},
-  __markedentry = {[sotterson:6]},
-  abstract      = {This paper presents a new method for estimating high dimensional covariance matrices. The method, permuted rank-penalized least-squares (PRLS), is based on a Kronecker product series expansion of the true covariance matrix. Assuming an i.i.d. Gaussian random sample, we establish high dimensional rates of convergence to the true covariance as both the number of samples and the number of variables go to infinity. For covariance matrices of low separation rank, our results establish that PRLS has significantly faster convergence than the standard sample covariance matrix (SCM) estimator. The convergence rate captures a fundamental tradeoff between estimation error and approximation error, thus providing a scalable covariance estimation framework in terms of separation rank, similar to low rank approximation of covariance matrices . The MSE convergence rates generalize the high dimensional rates recently obtained for the ML Flip-flop algorithm , for Kronecker product covariance estimation. We show that a class of block Toeplitz covariance matrices is approximatable by low separation rank and give bounds on the minimal separation rank r that ensures a given level of bias. Simulations are presented to validate the theoretical bounds. As a real world application, we illustrate the utility of the proposed Kronecker covariance estimator for spatio-temporal linear least squares prediction of multivariate wind speed measurements.},
-  doi           = {10.1109/TSP.2013.2279355},
-  file          = {:papers\\Tsiligkaridis13covEstHiDimKrPrdExp.pdf:PDF},
-  keywords      = {Gaussian processes, convergence, covariance matrices, estimation theory, mean square error methods, random processes, Gaussian random sample, Kronecker product covariance estimation, Kronecker product series expansion, ML flip-flop algorithm, MSE convergence rates, PRLS, approximation error, block Toeplitz covariance matrices, estimation error, low separation rank, multivariate wind speed measurement, permuted rank-penalized least-squares, spatio-temporal linear least squares prediction, Brain modeling, Convergence, Covariance matrices, Estimation, Least squares approximations, Standards, Symmetric matrices, Kronecker product decompositions, Structured covariance estimation, high dimensional convergence rates, mean-square error, multivariate prediction, penalized least squares},
-  owner         = {sotterson},
-  review        = {Wind speed temporal-spatio covariance estimation for day ahead forecasting, and other things.},
-  timestamp     = {2017.07.03},
+  author    = {T. Tsiligkaridis and A. O. Hero},
+  title     = {Covariance Estimation in High Dimensions Via Kronecker Product Expansions},
+  journal   = IEEE_J_SP,
+  year      = {2013},
+  volume    = {61},
+  number    = {21},
+  pages     = {5347--5360},
+  month     = nov,
+  issn      = {1053-587X},
+  abstract  = {This paper presents a new method for estimating high dimensional covariance matrices. The method, permuted rank-penalized least-squares (PRLS), is based on a Kronecker product series expansion of the true covariance matrix. Assuming an i.i.d. Gaussian random sample, we establish high dimensional rates of convergence to the true covariance as both the number of samples and the number of variables go to infinity. For covariance matrices of low separation rank, our results establish that PRLS has significantly faster convergence than the standard sample covariance matrix (SCM) estimator. The convergence rate captures a fundamental tradeoff between estimation error and approximation error, thus providing a scalable covariance estimation framework in terms of separation rank, similar to low rank approximation of covariance matrices . The MSE convergence rates generalize the high dimensional rates recently obtained for the ML Flip-flop algorithm , for Kronecker product covariance estimation. We show that a class of block Toeplitz covariance matrices is approximatable by low separation rank and give bounds on the minimal separation rank r that ensures a given level of bias. Simulations are presented to validate the theoretical bounds. As a real world application, we illustrate the utility of the proposed Kronecker covariance estimator for spatio-temporal linear least squares prediction of multivariate wind speed measurements.},
+  doi       = {10.1109/TSP.2013.2279355},
+  file      = {:papers\\Tsiligkaridis13covEstHiDimKrPrdExp.pdf:PDF},
+  keywords  = {Gaussian processes, convergence, covariance matrices, estimation theory, mean square error methods, random processes, Gaussian random sample, Kronecker product covariance estimation, Kronecker product series expansion, ML flip-flop algorithm, MSE convergence rates, PRLS, approximation error, block Toeplitz covariance matrices, estimation error, low separation rank, multivariate wind speed measurement, permuted rank-penalized least-squares, spatio-temporal linear least squares prediction, Brain modeling, Convergence, Covariance matrices, Estimation, Least squares approximations, Standards, Symmetric matrices, Kronecker product decompositions, Structured covariance estimation, high dimensional convergence rates, mean-square error, multivariate prediction, penalized least squares},
+  owner     = {sotterson},
+  review    = {Wind speed temporal-spatio covariance estimation for day ahead forecasting, and other things.},
+  timestamp = {2017.07.03},
 }
 
 @Article{Carrion06effUnitCommMixInt,
@@ -30602,6 +30987,36 @@ Non-time-adaptive in: Bessa11quantCplaWindPow
 Corresponding Tech note: Mendes11statWindFrcst},
   timestamp = {2011.12.01},
   url       = {http://www.sciencedirect.com/science/article/pii/S0960148111004587},
+}
+
+@InProceedings{Gross02earlyDetSPRT,
+  author    = {Gross, Kenny C and Lu, Wendy},
+  title     = {Early Detection of Signal and Process Anomalies in Enterprise Computing Systems.},
+  booktitle = {ICMLA},
+  year      = {2002},
+  pages     = {204--210},
+  abstract  = {This paper presents a real-time machine learning
+technique that has been adaptedfrom thefield ofstatistical
+process control (SPC) to give early annunciation of
+incipient anomalies in signals and processes involving
+enterprise computing systems and associated networks. A
+binary-hypothesis technique called the sequential
+probability ratio test (SPRT) provides optimal detection of
+change points for online surveillance of digitized signals
+and demonstrates the dual advantages of high sensitivity
+with good avoidance offalse alarms. SPRT-based systems
+are being developed for a variety of applications to
+enhance the reliability, availability, and serviceability of
+enterprise computing systems.
+Keywords: real-time fault monitoring; online defect
+identification; process anomaly detection},
+  file      = {:papers\\Gross02earlyDetSPRT.pdf:PDF},
+  owner     = {sotterson},
+  review    = {SPRT is a data-within-a-sliding-analysis-window likelihood ratio between a "normal operation" Gaussian (0 mean, sigma variance) and each of four corruptions of that Gaussian: "positive mean," "negative mean," "nominal variance," "inverse variance."   The four anomaly processes are tested within an analysis window, with preset mean or variance shifts, and and upper and lower boundary for the likelihood ratio.  If any of the anomaly processes are true (pass the LR test) then an alarm is triggered.
+
+I think this is the test that Peter said STEAG used in our June 30, 2017 meeting in Essen.},
+  timestamp = {2017.07.04},
+  url       = {https://pdfs.semanticscholar.org/c719/16c04eafda6a4b07e73374ba3e7b421f530e.pdf},
 }
 
 @Article{Carvalho12probWindGridInt,
@@ -36118,6 +36533,59 @@ the same coe?cients but are de?ned on di?erent regions.},
   timestamp = {2010.08.02},
 }
 
+@Article{Anderlucci15covPatMix,
+  author    = {Anderlucci, Laura and Viroli, Cinzia and others},
+  title     = {Covariance pattern mixture models for the analysis of multivariate heterogeneous longitudinal data},
+  journal   = {The Annals of Applied Statistics},
+  year      = {2015},
+  volume    = {9},
+  number    = {2},
+  pages     = {777--800},
+  abstract  = {We propose a novel approach for modeling multivariate longitudi-
+nal data in the presence of unobserved heterogeneity for the analysis
+of the Health and Retirement Study (HRS) data. Our proposal can be
+cast within the framework of linear mixed models with discrete indi-
+vidual random intercepts; however, differently from the standard for-
+mulation, the proposed Covariance Pattern Mixture Model (CPMM)
+does not require the usual local independence assumption. The model
+is thus able to simultaneously model the heterogeneity, the associa-
+tion among the responses and the temporal dependence structure.
+We focus on the investigation of temporal patterns related to the
+cognitive functioning in retired American respondents. In particular,
+we aim to understand whether it can be affected by some individual
+socio-economical characteristics and whether it is possible to identify
+some homogenous groups of respondents that share a similar cogni-
+tive profile. An accurate description of the detected groups allows
+government policy interventions to be opportunely addressed.
+Results identify three homogenous clusters of individuals with spe-
+cific cognitive functioning, consistent with the class conditional dis-
+tribution of the covariates. The flexibility of CPMM allows for a
+different contribution of each regressor on the responses according to
+group membership. In so doing, the identified groups receive a global
+and accurate phenomenological characterization},
+  file      = {:papers\\Anderlucci15covPatMix.pdf:PDF},
+  owner     = {sotterson},
+  publisher = {Institute of Mathematical Statistics},
+  review    = {A sparse and fast mixture model for modeling a multi-variable cross-variable and temporal correlation (adapt to copula?). Temporal and non-temporal components combined can be expressed with a matrix-normal distribution -- core is a linear model (like a Gaussian) but mixture part allows it to be, for example, power-level and wind direction sensitive, and marginal transforms also make it nonlinear.  Seems to be able to do mixture with still assuring temporal corr of a particular individual which is a combination of mixtures.  Can handle missing data.  Solution is a fast (on this data) EM algorithm. I can figure out how to do a copula transform (matrix-normal marginals) then this could better than precision-matrix approaches like Tastu13scenSpatTimeCpla.  
+
+Adaptation to Copula
+* matrix-normal dist is just another way to decompose a multivariate normal covariance matrix (Owen13monteCarloBook)
+* would have to do max lik learning but that's no different than Tastu15spcTimeTrajGaussCpla
+* compare with precision matrix sparsity in Tastu15spcTimeTrajGaussCpla
+* compare with other stuff in energytop.org <<Covariance sparseness>>
+
+TODO
+* what is the marginal distribution?  Do other copulas specifically transfer to uniform and then to the marginal of the dependence matrix?
+* look up conditional distribution
+* matrix normal distribution info in: Owen13monteCarloBook
+
+* Could also maybe use a trick like Bessa16gaussCplaDcsns?
+* Responses could be reference farms or whatever.
+"Response" means a regression output, the thing(s) you're predicting given other variables.  This paper avoids the common assumption in this kind of work that multivariate responses are independent of each other, given the latent mixture variable.  See Section 3.3},
+  timestamp = {2017.07.05},
+  url       = {http://projecteuclid.org/euclid.aoas/1437397111},
+}
+
 @Article{Kraemer08penPLSspline,
   author    = {Kr{\"a}mer, Nicole and Boulesteix, Anne-Laure and Tutz, Gerhard},
   title     = {Penalized Partial Least Squares with applications to B-spline transformations and functional data},
@@ -39094,16 +39562,15 @@ Three types mentioned here:
 }
 
 @Book{Bishop06PatternRecogMachLrnBook,
-  title         = {Pattern recognition and machine learning},
-  publisher     = {springer},
-  year          = {2006},
-  author        = {Bishop, Christopher M},
-  __markedentry = {[sotterson:]},
-  file          = {:Bishop06PatternRecogMachLrnBook.pdf:PDF},
-  owner         = {sotterson},
-  review        = {Bishop's classic machine learning book.  Stephan V. really likes it, says it has a lot on multivariate normal distributions.},
-  timestamp     = {2017.06.27},
-  url           = {http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf},
+  title     = {Pattern recognition and machine learning},
+  publisher = {springer},
+  year      = {2006},
+  author    = {Bishop, Christopher M},
+  file      = {:Bishop06PatternRecogMachLrnBook.pdf:PDF},
+  owner     = {sotterson},
+  review    = {Bishop's classic machine learning book.  Stephan V. really likes it, says it has a lot on multivariate normal distributions.},
+  timestamp = {2017.06.27},
+  url       = {http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf},
 }
 
 @InProceedings{Blatchford08caisoRenewInteg,
@@ -40216,6 +40683,22 @@ Advances, challenges
 
 Statistical models of wind speed vs. wind power
 * wind speed prediction models produce lower errors than models, which attempt to predict wind power outputs.},
+}
+
+@Article{Fonseca15modelDepCopulaCrsNts,
+  author    = {Pedro Fonseca},
+  title     = {Modeling Dependencies, Lecture 8},
+  journal   = {Quantitative Finance, Spring, University of Zurich},
+  year      = {2015},
+  file      = {:papers\\Fonseca15modelDepCopulaCrsNts.pdf:PDF},
+  owner     = {sotterson},
+  review    = {Why and how to model dependies, mainly Pearson/Spearman/Kendall and copulas.  Nice cookbooks and recipies.  Good summary of tail correlation, calibration.
+
+Note that Student-T distribution has 2 sided tail correlation and is non-zero even when linear corr is zero.
+
+Says correlation matrix is hard to calibrate.},
+  timestamp = {2017.07.05},
+  url       = {https://people.math.ethz.ch/~farkas/teaching/QF_FS15.html},
 }
 
 @MISC{Fox05nonParamRgrs,
