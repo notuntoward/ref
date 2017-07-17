@@ -499,9 +499,12 @@
         Is [[Kendall Tied Pairs]] more tolerant than [[Spearman Fractional Rank]] for repeated values?
 
 ******* TODO which is better for copulas?  Normal or T-Copula?
-m******* Graphical Comparisons:  [[cite:Fonseca15modelDepCopulaCrsNts][Fonseca 2015: Modeling Dependencies Lecture]]
+******* Graphical Comparisons:  [[cite:Fonseca15modelDepCopulaCrsNts][Fonseca 2015: Modeling Dependencies Lecture]]
 ******* Matlab function [[https://www.mathworks.com/help/stats/copulaparam.html][copulaparam]] converts to/from other correlation types
 ***** See also [[Spearman's rank correlation]]
+*** <<Wishart Distribution>>
+***** [[cite:Wikipedia17WishartDist][Wikipedia 2017: Wishart]]
+***** MLE est. of [[Normal Distribution]] cov. is Wishart: [[cite:Wikipedia17WishartDist][Wikipedia 2017: Wishart]]
 *** <<Normal Distribution>>
 ***** [[file:energy.bib::Roweis99gaussIdentities][Roweis 1999: Gaussian Identities]]
 ***** <<Conditional Normal Distribution>> (cond. normal copula, Gauss Proc, etc.)
@@ -509,10 +512,24 @@ m******* Graphical Comparisons:  [[cite:Fonseca15modelDepCopulaCrsNts][Fonseca 2
 ******* [[cite:Wang06imageProcE161crsNts][Wang 2006: Computer Image Processing]]
 ******* [[file:energy.bib::Roweis99gaussIdentities][Roweis 1999: Gaussian Identities]]
 ******* [[http://gbhqed.wordpress.com/2010/02/21/conditional-and-marginal-distributions-of-a-multivariate-gaussian/][another dim>2 conditional normal dist page]]
+***** MLE est. of MVnormDist cov. has [[Wishart Distribution]] 
+      From: [[cite:Wikipedia17WishartDist][Wikipedia 2017: Wishart]]
 ***** See also [[Normal Copula]]
+***** See also [[Matrix Normal Distribution]]
 *** <<Matrix Normal Distribution>>
+    This is a multivariate normal distribution parameterization in which the random variable is treated as a matrix and the covariance matrix is restricted to be an element-wise product of matrices separately modelling row-wise and  column-wise covariance.  It's useful for parsimoniously modeling temporal covariance with mixtures ([[cite:Anderlucci15covPatMix][Anderlucci et al. 2015: Covariance pattern mixture model]]).
+
 ***** [[cite:Owen13monteCarloBook][Owen 2013: Monte Carlo Methods Book]]
 ***** [[cite:Anderlucci15covPatMix][Anderlucci et al. 2015: Covariance Matrix Patterns Mixture]]
+***** [[cite:Wikipedia17matrixNormDist][Wikipedia 2017: Matrix Normal Dist]]
+***** [[cite:Zhou14graphEstMatNormGEMNI][Zhou 2014: Gemini matrix-norm precision graph sparse]]
+***** [[cite:Greenewald15krnckrProdPCAspatTempCov][Greenewald & Hero 2015: Robust Kronecker Product PCA spat/time cov]]
+***** <<Matrix Space-Time Separability, Normal Distribution>>
+******* [[cite:Mitchell05covSpcTimeSepTest][Mitchell et al. 2005: Testing space time cov mat separability]]
+******* [[cite:Lu05sepCovMatLikRatTest][Lu & Zimmerman 2005: space time cov mat separability lik rat test]]
+***** also [[Matrix T-distribution]]
+*** <<Matrix T-distribution>>
+***** also [[Matrix Normal Distribution]]
 *** <<T-distribution>>
 ***** T-distribution has longer tails than Gaussian: [[cite:Roth13multivarTdist][Roth 2013 Multivar T dist]]
 ***** can be conditionalized: [[cite:Ding16condMultivarTdist][Ding 2016: cond T dist]]
@@ -521,6 +538,7 @@ m******* Graphical Comparisons:  [[cite:Fonseca15modelDepCopulaCrsNts][Fonseca 2
 ***** [[cite:Xu16adaptStrmAnomAnlysTsubmod][Xu et al. 2016: Adaptive Streaming Anomaly Analysis]]
 ***** [[cite:Fonseca15modelDepCopulaCrsNts][Fonseca 2015: Modeling Dependencies Lecture]] has some T-dist/copula info
 ***** see [[T-Copula]]
+***** see [[Matrix T-distribution]]
 *** TODO <<T-Copula>>
 ***** TODO <<T-Copula vs. Normal Copula>>
 ******* [[file:energy.bib::Sutiene07scenCopula][Sutiene & Pranevicius 2007: Scenario Generation Employing Copulas]] (compares Gaussian to T-Copula)
@@ -1447,8 +1465,7 @@ STUFF SOME R CODE IN HERE
 ***** <<Lagged wind velocity basis>>
 ******* [[Angular In Input]] / [[Basis Learning]]
 ******* [[Distributed lag]]
-******* Converting Product to Sums
-        <<Converting Product to Sums>>
+******* <<Converting Product to Sums>>
 
         Many relationships e.g. direction and wind speed in power curves
         are products, making linear regression hard, because it is a
@@ -2465,6 +2482,8 @@ Scott
         spline,
         weighted, ....
 
+********* [[cite:Garcke17dimRedWindTurb][Garcke et al. 2017: Dimension Reduction PCA/DTW Turb Anom]]
+********* [[cite:Greenewald15krnckrProdPCAspatTempCov][Greenewald & Hero 2015: Robust Kronecker Product PCA spat/time cov]]
 ********* [[MDS vs. PCA]]
 ********* Sparse PCA
           <<Sparse PCA>>
@@ -4095,8 +4114,7 @@ Hope that helps,
 ***** [[file:energy.bib::Kraskov08MIChierClustMutInf][Kraskov & Grassberger 2008: MIC]] hier. clust w/ MI
 ***** See also: [[Feature reduction]], which often incorporates dist. metric learning
 ***** See also: [[Types of dependence or similarity]]
-*** Aggregation vs. Forecasting Accuracy
-    <<Aggregation vs. Forecasting Accuracy>>
+*** <<Aggregation vs. Forecasting Accuracy>>
 ***** aggregate is smoother and easier to forecast
 ******* [[File:energy.bib::siebert08regpowforecast][Siebert 2008: development of methods]]
 ******* [[File:energy.bib::giebel07erraggregwindpow][Giebel et al. 2007: forecast error of]]
@@ -4516,8 +4534,7 @@ Hope that helps,
     <<Lagged wind velocity basis>>
 ***** [[Angular In Input]] / [[Basis Learning]]
 ***** [[Distributed lag]]
-***** Converting Product to Sums
-      <<Converting Product to Sums>>
+***** <<Converting Product to Sums>>
 
       Many relationships e.g. direction and wind speed in power curves
       are products, making linear regression hard, because it is a
@@ -5048,8 +5065,7 @@ Scott
 
          P(w=2*pi*theta/260) = P * f(w)
 
-         Make f(w) a Fourier series in angle:  cos(w*k)+jsin(w*k) for a lot of k's
-         making a Fourier kernel (see [[file:energy.bib::Kaufman05perSplnRgrsn][Kaufman et al. 2005: Spline]]):
+         Make f(w) a Fourier series in angle:  cos(w*k)+jsin(w*k) for a lot of k's making a Fourier kernel (see [[file:energy.bib::Kaufman05perSplnRgrsn][Kaufman et al. 2005: Spline]]):
 
          P(w) = sum(alpha(k)*K(w(k)*w))
 
@@ -5455,8 +5471,7 @@ IEEE Xplore - Toward Automatic Time-Series Forecasting Using Neural Networks
 http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ********* Spatio-temporal with uncertainty: [[file:energy.bib::Lave13solarVarWvlt][Lave et al. 2013: Wavelet Based Variability]]
 ********* See also: [[Wavelet time series model]]
-******* TODO Harmonic Periodic Bases
-        <<Harmonic Periodic Bases>>
+******* TODO <<Harmonic Periodic Bases>>
 ********* direction via circular harmonics
 *********** could project wind speed onto [[http://www.blackpawn.com/texts/ch/default.html][circular harmonics]] of direction
 *********** takes advantage of DFT periodic extension
@@ -5525,6 +5540,17 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 
 ********* TODO [[file:energy.bib::Shen09spherHarm3D][Shen et al. 2009: Modeling Three Dimensional]] (detailed howto)
 ********* TODO 3D and 4D harmonic representation of shapes (good paper, read): [[file:energy.bib::Matheny95surfHarmShape][Matheny & Goldgof 1995]]
+********* IWES uses sin/cos (I think) with a "tent function"
+
+          The idea is to smooth the edges but does this really matter?  In APGfrcst.org, I wrote that cos/sin was about the same, or something like that.  I might have done an experiment.  Anway...
+
+          >>> Thomas Kanefendt 7/10/2017 5:42 PM >>>
+          Hi Scott,
+
+          the code we use to derive the two parts of the wind direction which are used as input to the ANNs is the method triangTrans in matlab\Datenbank\DataHandling\+oracleIFS\IFSData (it's at the end of the class code).
+
+          Thomas
+
 ******* TODO Splines
         <<Splines>>
 ********* Spline Tutorials
@@ -7461,6 +7487,7 @@ sera
 ********* [[cite:Wu15pvGenPairCpla][Wu et al. 2015: Versatile Probability Model PV Copula]]
 ********* [[cite:Ding16gaussCopulaMissDatEM][Ding & Song 2016: Gaussian Copula Miss Dat EM]]
 ********* [[cite:Mai14financeEngCopulasExpln][Mai & Scherer 2014: Financial Eng Copulas Explnd Book]] 
+********* [[cite:Gijbels14distSumCopulaDep][Gijbels & Herrmann 2014: Sum of RVS w/ Copula Dep.]]
 ********* <<Mixed Continous and Discrete Copulas>>
 *********** [[cite:Zilko16mixedDscrtContinCopula][Zilko & Kurowicka 2016: Copula mixed Dscrt/Contin, Normal OK]]
 *********** [[cite:Suh16GaussCopulaVarMixDat][Suh & Choi 2016: Gauss Copula Variatnl mixture, disc/cont, autoenc]]
@@ -8598,7 +8625,6 @@ variables will be preferred, when possible.
 ******* [[file:energy.bib::Cormode10histoWvltProb][Cormode & Garofalakis 2010: Histograms Wavelets Probabilistic Data]]
 ******* TODO [[cite:arbenz11fastsumdeprvsaep][Arbenz et al. 2011: AEP Dist Of Sum Of Dep RVs]]
 ******* TODO [[cite:arbenz12fastcompfuncrvsgaep][Arbenz et al. 2012: GAEP Dist Of Func. Of Dep RV's]]
-
 ******* [[file:energy.bib::Zhao10wvltUncTseries][Zhao et al. 2010: Wavelet Decomposition Uncertain]]
 ******* [[file:energy.bib::Akbarinia11sumRcrsProb][Akbarinia et al. 2011: SUM Query Processing Probabilistic Data]]
 ******* [[file:energy.bib::Jayram08aggProbStrms][Jayram et al. 2008: Estimating Statistical Aggregates]]
@@ -8611,6 +8637,7 @@ variables will be preferred, when possible.
 ******* [[file:energy.bib::Ranjan09CombEvalProbFrcsts][Ranjan 2009: Combining Evaluating Probabilistic Forecasts]]
 ******* [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]] (pools weather stations)
 ******* [[cite:Kim16sprsCondCplaMultiOut][Kim 2016: Sparse Cond. Copula Multi Out]]
+******* [[cite:Gijbels14distSumCopulaDep][Gijbels & Herrmann 2014: Sum of RVS w/ Copula Dep.]]
 ******* see also: [[Copulas]]
 ******* see also: [[Quantile Regression]]
 ******* see also: [[Point forecast aggregation]]
@@ -8749,9 +8776,9 @@ al. 2012: Current]])
 ***** [[cite:Bandi16SpectrumWindPow][Bandi 2016: Spectrum Wind Power Fluctuations]]: limits to variance reduction with spatial averaging
 ***** [[cite:SantosAlamillos14windVarBsld][Santos-Alamillos et al. 2014 spat. var Wind Baseload]]
 ***** [[cite:Camargo15modelWindPVcmplmnt][Camargo et al. 2015: Spatiotemporal model wind+PV complimentarity]]
+***** also see: [[Forecast aggregation]] (several more articles on summing RV's)
 ***** also see: [[Aggregation vs. Forecasting Accuracy]]
 ***** see also: [[Clustering for prediction]]
-***** also see: [[Forecast aggregation]]
 ***** also see: [[Extreme Quantile Clustering]]
 ***** also see: [[Portfolio Analysis]]
 ***** [[cite:Clifton13extrmFuncThNovDet][Clifton et al. 2013: Extreme Function Theory Novelty Detection]]
@@ -10406,7 +10433,7 @@ Scott
 *** [[cite:Davies00randGenStblCorrMat][Davies & Higham 2000: Numerically Stable Generation Cov. Mat: Matlab]]
 *** TODO [[cite:Higham02nearestCorrMat][Higham 2002: Computing nearest corr mat]]
 *** [[cite:Wang06imageProcE161crsNts][Wang 2006: Computer Image Processing (cond. prob for big Gaussian)]]
-*** [[cite:Rasmussen06GaussProcBook][Rasmussen & Williams 2006: Gaussian Processes Machine Learning (cond. Gauss prob)]]
+*** [[cite:Rasmussen06GaussProcBook][Rasmussen & Williams 2006: Gaussian Processes Mach. Learn (cond. Gauss prob)]]
 * <<Autoencoder>>
 *** [[cite:Suh16GaussCopulaVarMixDat][Suh & Choi 2016: Gauss Copula Variatnl mixture, disc/cont, autoenc]]
 *** [[Stephan: concept building process]]
@@ -10609,9 +10636,9 @@ Scott
 ***** [[file:energy.bib::Dunning14practMachLrnAnom][Dunning & Friedman 2014: Practical Machine Learning]] Anomaly Book
 ***** [[file:energy.bib::Chandola09anomalyDetSurv][Chandola et al. 2009: Anomaly]] det. survey
 ***** [[file:energy.bib::SantosTeixeira10anomSubSpcTrk][Santos & Milidiu 2010: Data]] anomaly detection
-***** [[cite:Dienst16AnomOffshrWnd][Dienst & Beseler 2016: Automatic Anomaly Detection]] offshore SCADA (GlobalTec)
-***** [[cite:Xu16adaptStrmAnomAnlysTsubmod][Xu et al. 2016: Adaptive Streaming Anomaly Analysis]]
+***** DONE [[cite:Dienst16AnomOffshrWnd][Dienst & Beseler 2016: Automatic Anomaly Detection]] offshore SCADA (GlobalTec)
 ***** [[cite:Belloni11sparseQRl1][Belloni et al. 2011]] sparse QR: one step better than Dienst16, has Matlab
+***** [[cite:Xu16adaptStrmAnomAnlysTsubmod][Xu et al. 2016: Adaptive Streaming Anomaly Analysis]]
 ***** [[cite:Ide09ProxAnomDetSprs][Ide et al. 2009: Proximity Based Anomaly]] det sparse, lasso unstable
 ***** [[cite:Goldstein16cmprUnsupNovDetMV][Goldstein & Uchida 2016: Comparative Evaluation Unsupervised]] anom det
 ***** [[cite:Clifton13extrmFuncThNovDet][Clifton et al. 2013: Extreme Function Theory Novelty Detection]]
@@ -10762,8 +10789,10 @@ Scott
 ***** also see [[State Change Alarm Criteria]]
 
 *** <<Fault Detection>>
-***** TODO [[cite:Leahy16windTurbFaultMachLrn][Leahy et al. 2016: Diagnosing]] wind turbine faults: diagnosis and list of.  Looks pretty useful
+***** DONE [[cite:Leahy16windTurbFaultMachLrn][Leahy et al. 2016: Diagnosing]] wind turbine faults: diagnosis and list of.  Looks pretty useful
+***** [[cite:FanaeeT16tensorAnomDetSrvy][Fanaee-T & Gama 2016: Tensor anomaly detect survey]]
 ***** [[cite:Gayo11reliaWindFinalRprt][Gayo 2011: Final Report RELIAWIND turbine reliability]]
+***** TODO [[cite:Bai16condCplaWindPowCrvFeat][Bai et al. 2016: cond copula pow curve, good for fault det?]]
 ***** TODO [[cite:Aloraini14grphMdlTurbFaultDiag][Aloraini & Sayed-Mouchaweh 2014: Graphical Model Based]] wind turbine fault, does diagnosis
 ***** TODO [[cite:Ambati15deepLrnGuidePract][Ambati 2015: Deep]] Learn practial guide, people DO do fault detect w/ deep learning
 ***** TODO [[cite:Lv16faultDiagDeepLrn][Lv et al. 2016: Fault detect deep learn (has benchmark database)]]
@@ -10773,20 +10802,19 @@ Scott
 ***** TODO [[cite:Marquez12CondMonWindTurbMeth][Marquez et al. 2012: Condition]] mon wind turb methods
 ***** TODO [[cite:Yin14ReviewDatDrivProcMon][Yin et al. 2014: Review Basic Data]] driv wind turb proc. mon.
 ***** TODO [[file:energy.bib::Gill12powCurvCopula][Gill et al. 2012: Wind Turbine Condition]] wind/pow copula detects turbine faults (Vine copula?  Malte?)
+***** TODO [[cite:Garcke17dimRedWindTurb][Garcke et al. 2017: Dimension Reduction PCA/DTW Turb Anom]]
 ***** TODO [[cite:Li01neuralWindPowGen][Li et al. 2001: Neural Net Wind pow (said to be good for turb fault det)]]
 ***** TODO [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: Large Data Set Fault Detect Wind Forecast LIGHTNING]]
 ***** [[cite:Malhotra15lstmAnomDetTS][Malhotra et al. 2015: LSTM TimeSer Anom. Det: Kalman could be Copula]]
-***** [[cite:FanaeeT16tensorAnomDetSrvy][Fanaee-T & Gama 2016: Tensor anomaly detect survey]]
 ***** [[cite:Venkatasubramanian03rvwProcFaultDet_Imodel][Venkatasubramanian et al. 2003 review fault det Part I: Model]]
 ***** [[cite:Venkatasubramanian03rvwProcFaultDet_IIsearch][Venkatasubramanian et al. 2003 review fault det Part II: qual search]]
-***** [[cite:Venkatasubramanian03rvwProcFaultDet_IIIhist][Venkatasubramanian et al. 2003 review fault det Part II: Hist]]
+***** [[cite:Venkatasubramanian03rvwProcFaultDet_IIIhist][Venkatasubramanian et al. 2003 review fault det Part III: Hist]]
 ***** [[cite:Blythe12FeatExtrctChngPtSubSpc][Blythe et al. 2012: Feature Extraction Change]]/Fault Stat. Subspace
 ***** [[cite:Abdollahi16grphMdlsFaultDiag][Abdollahi et al. 2016: Probabilistic Graphical Models]] fault diag.
 ***** [[https://github.com/SimonStreicher/FaultMap][FaultMap]]: fault detection software using JIDT tookit
-***** [[cite:Xu16bndLogRgrssnImbal][Xu et al. 2016: Robust Logistic Regression class imbal. (good for fault det)]]
-***** [[cite:Suh16GaussCopulaVarMixDat][Suh & Choi 2016: Gaussian Copula Variational mixed vars (good for fault det)]]
+***** [[cite:Xu16bndLogRgrssnImbal][Xu et al. 2016: Robust Logistic Regression class imbal. (for fault det)]]
+***** [[cite:Suh16GaussCopulaVarMixDat][Suh & Choi 2016: Gaussian Copula Variational mixed vars (for fault det)]]
 ***** also see [[State Change Alarm Criteria]]
-
 ***** see: [[Trend Copulas]]
 ***** <<Fault distributions>>
 ******* Weibull
@@ -10805,6 +10833,7 @@ Scott
 ***** see also [[Streamwise processing]]
 *** <<State Change Alarm Criteria>>
 ***** SPRT, the standard: [[cite:Gross02earlyDetSPRT][Gross & Lu 2002: Early Detection Signal SPRT]]
+***** SPRT, non-Gaussian, spec of H1 (from STEAG): [[cite:Deeskow17modNotesSPRT][Deeskow 2017: SPRT mods]]
 ***** <<Copula Based State Change Alarm Criteria>>
 ******* [[cite:Malhotra15lstmAnomDetTS][Malhotra et al. 2015: LSTM TimeSer Anom. Det: Kalman could be Copula]]
 ***** [[Stopping Criteria]]
@@ -10820,8 +10849,7 @@ Scott
 ***** [[file:energy.bib::McWilliams10sprsPLSonlnVarSel][McWilliams & Montana 2010: Sparse]]
 ***** [[File:energy.bib::anagnostopoulos10streamcov][Anagnostopoulos et al.: Streaming Covariance Selection]] (LASSO w/ missing feat handling)
 
-*** Streamwise Mutual Information
-    <<Streamwise Mutual Information>>
+*** <<Streamwise Mutual Information>>
 ***** [[file:energy.bib::Keller15EstMutualInfStrm][Keller et al. 2015: Estimating Mutual Information Data Streams]]
 *** [[file:energy.bib::SantosTeixeira10anomSubSpcTrk][Santos & Milidiu 2010: Data]]
 *** [[cite:Aggarwal17OutlierAnalysisBook][Aggarwal 2017: Outlier Analysis]] Book
@@ -10863,11 +10891,14 @@ Scott
 *** [[cite:Lindgren11linkGaussMMRFandSDE][Lindgren et al. 2011: Gaussian Gaussian Markov link SPDE and Prec. Mat]]
 *** [[cite:Pedregosa11ScikitlearnMachLrnPython][Pedregosa et al. 2011: Scikit Lrn Mach Lrn Python Library]]
 *** [[cite:Anderlucci15covPatMix][Anderlucci et al. 2015: Covariance patterns mixture]]
+*** [[cite:Zhou14graphEstMatNormGEMNI][Zhou 2014: Gemini matrix-norm precision graph sparse]]
+
 *** [[Adaptive covariance estimation and feature sel]]
 *** [[Frequency Domain Smoothed Covariance]]
 *** [[cite:Tsiligkaridis13covEstHiDimKrPrdExp][Tsiligkaridis & Hero 2013: Covariance Estimation High Dim PLSR wind speed]]
 *** [[cite:Yu12MultiWayGMMkernPLS][Yu 2012: Multiway Gaussian Mixture Kernel PLS batch process quality]]
 *** [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: Large Data Set Fault Detect Wind Forecast LIGHTNING]]
+*** [[Matrix Space-Time Separability, Normal Distribution]]
 *** [[PLSR for Graph Learning]]
 *** [[cite:Pena03descSctrLinDep][Pena & Rodriguez 2003: Meas multivar scatter and linear dependence]]
 *** [[Partial Correlation]]
@@ -10876,9 +10907,12 @@ Scott
 ***** DONE [[cite:Tastu15spcTimeTrajGaussCpla][Tastu et al. 2015: and Space Time Trajectories Gaus Cpla Prec Mtrx]]
 ***** [[cite:Simpson12spatStatForgetCov][Simpson et al. 2012: Spatial Stats Comp: forget cov. matrix, use SPDE]]
 ***** [[cite:Genton07spaceTimeCovMatrixApprox][Genton 2007: Separable approx space/time cov mat]]
+***** [[cite:Greenewald15krnckrProdPCAspatTempCov][Greenewald & Hero 2015: Robust Kronecker Product PCA spat/time cov]]
 ***** TODO [[cite:FanaeeT16tensorAnomDetSrvy][Fanaee-T & Gama 2016: Tensor anomaly detect survey]]
 ***** [[cite:Li11tensoCovMatObjTrck][Li & Sun 2011: Tensor Covariance Matrix Obj Track]]
 ***** [[Matrix Normal Distribution]]
+***** [[Matrix Space-Time Separability, Normal Distribution]]
+***** [[cite:Tastu15spcTimeTrajGaussCpla][Tastu et al. 2015: Space Time Trajectories (precision matrix)]]
 ***** [[cite:Anderlucci15covPatMix][Anderlucci et al. 2015: Covariance patterns mixture (has # coeffs table)]]
 ***** [[cite:Guo13GaussGraphStructLrnSlides][Guo 2013: Gaussian Graphical Models: struct est.]]
 ***** [[cite:Lindgren11linkGaussMMRFandSDE][Lindgren et al. 2011: Gaussian Gaussian Markov link SPDE and Prec. Mat]]
@@ -11062,8 +11096,9 @@ Scott
     *Conclusion*: Buy Juan Mi's book and go through his course's lecture
      notes, when available.
 
-***** Juan Mi's class: [[http://energy.imm.dtu.dk/phd-courses/tools-for-decision-making-under-uncertainty-in-electricity-markets.html][Tools for decision making under uncertainty in electricity markets]]
-      <<Juan Mi's Electricity Markets Class>>
+***** <<Juan Mi's Electricity Markets Class>>
+      [[http://energy.imm.dtu.dk/phd-courses/tools-for-decision-making-under-uncertainty-in-electricity-markets.html][Tools for decision making under uncertainty in electricity markets]]
+      
 ******* Books for this class
 ********* [[Book: Introduction to stochastic programmming]]
 ********* [[file:energy.bib::Conejo10uncertDecElecMktsBook][Conejo et al. 2010: Decision]] making under uncertainty
@@ -11101,8 +11136,7 @@ optimization to be a generalization of linear programming.
 ********* course textbook [[http://www.stanford.edu/class/ee364b/resources.html][is]]: [[Book: Convex Optimization]] (a free pdf)
 ********* covers stochcastic programming in [[http://videolectures.net/stanfordee364bs08_boyd_lec05/][lecture 5 video]]
 ********* [[http://www.stanford.edu/class/ee364b/courseinfo.html][includes robust optimization]] (which is what's used in New England ISO)
-***** [[https://class.stanford.edu/courses/Engineering/CVX101/Winter2014/info][CVX101 Convex Optimization]] (ran winter, 2014)
-      <<CVX101 Convex Optimization Winter 2014>>
+***** <<CVX101 Convex Optimization Winter 2014>>
 ******* [[http://www.stanford.edu/class/ee364a/courseinfo.html][mentioned]] in the EE364a Course information, says topics will be the same but get quizzes
 ******* [[https://class.stanford.edu/courses/Engineering/CVX101/Winter2014/discussion/forum/i4x-Engineering-CVX101-cvx/threads/53364d223da43e2512000008][should be available for one year]], or until next time they teach it
 ******* [[https://class.stanford.edu/courses/Engineering/CVX101/Winter2014/info][is based on Boyd's EE364a]]
@@ -11134,8 +11168,7 @@ optimization to be a generalization of linear programming.
 ******* include some linear programming stuff, so good reinforcement
 ***** Convex optimizaton is a prerequisite for submodular optimization: [[Submodular optimization class]]
 ***** Boyd's paper on quant rgrssn, quad (convex) prog. & stoch. opt: [[file:energy.bib::Shenoy15stochOptLdFrcstRgrssn][Shenoy et al. 2015: Non Parametric Regression]] stoch opt
-*** [[submodular%20optimization][Submodular optimization]]
-    <<Submodular optimization class>>
+*** <<Submodular optimization class>>
 
     *Conclusion*: maybe buy a book, go through the pdf or book that
      considers submodular opt. to be "the new convex optimization",
@@ -11525,11 +11558,13 @@ optimization to be a generalization of linear programming.
              [[cite:Li16waveletLSTMeegRecog][Li et al. 2016: LSTM and Wavelets for MI EEG Pattern Recog]]
              [[cite:Sugiartawan17waveletLSTMfrcst][Sugiartawan et al. 2017: Prediction Hybrid Wavelet LSTM]]
              [[cite:Gross02earlyDetSPRT][Gross & Lu 2002: Early Detection Signal SPRT]]
-    07/04/05 [[cite:Chen17copulaTimeTrav][Chen et al. 2017: copula travel time est pear/spear/kendall corr]]
+    07/05/17 [[cite:Chen17copulaTimeTrav][Chen et al. 2017: copula travel time est pear/spear/kendall corr]]
              [[cite:Fonseca15modelDepCopulaCrsNts][Fonseca 2015: Modeling Dependencies Lecture]]
              [[cite:StatisticsSolutions17KendallAndSpearman][StatisticsSolutions 2017: Kendall Spearman Compare]]
              [[cite:Anderlucci15covPatMix][Anderlucci et al. 2015: Covariance pattern mixture model]]
-    07/04/06 [[cite:Owen13monteCarloBook][Owen 2013: Monte Carlo Methods Book]]
+    07/06/17 [[cite:Owen13monteCarloBook][Owen 2013: Monte Carlo Methods Book]]
+    07/08/17 [[cite:Wikipedia17matrixNormDist][Wikipedia 2017: Matrix Normal Dist]]
+             [[cite:Wikipedia17WishartDist][Wikipedia 2017: Wishart]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:./energy.bib

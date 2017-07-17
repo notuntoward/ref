@@ -12,7 +12,6 @@
 
       See: [[File:~/.emacs::;;%20TODO%20use-package%20is%20redundant%20w/%20'(package-selected-packages%20in%20customizations)][use-packages notes in my .emacs]]
 
-***** TRY [[http://oremacs.com/2015/10/23/dired-compress/][dired file compression]] instead of crypt++
 ***** TRY improve hydra
 ******* org: counsel-org-goto
 ******* org: counsel-org-tag
@@ -91,7 +90,8 @@
       but I can never get recursive find to work.
 
 ******* TRY ? [[http://ergoemacs.org/emacs/elisp-xah-find-text.html][xah-find]] package: pure emacs find/grep good for windows
-***** <<ivy-mode>>
+***** TRY <<ivy-mode>>
+******* TRY org-mode search: horribly slow when not expanded, otherwise fast
 ******* TRY =C-h m=: inside of swiper, etc. brings up ivy help.  READ IT.
 ******* TRY to remember the return to point thing after searching: =C-u C-space=
 ***** TRY [[https://github.com/jkitchin/org-ref/blob/master/org-ref.org][org-ref-ivy-cite]]
@@ -186,7 +186,7 @@
 ********* tools needed: [[Elisp]]°
 ******* TRY [[https://github.com/caiorss/org-wiki][caiorss/org-wiki: Wiki for Emacs org-mode built on top of Emacs org-...]]
 ******* TRY [[https://www.emacswiki.org/emacs/Hyperbole][EmacsWiki: Hyperbole]]
-
+******* See [[Knowledge as Graphs]]
 ***** TRY [[http://kitchingroup.cheme.cmu.edu/blog/2017/04/15/A-new-org-mode-exporter-to-Word-for-scimax/][A new org-mode exporter to Word for scimax]]
 ***** TRY [[Saving/restoring window sessions]]
 ***** My org-mode experimentation: [[file:org_mode][./org_mode]]
@@ -272,6 +272,7 @@
 ******* [[http://guides.lib.berkeley.edu/information-studies/apis][APIs for scholarly resources]]
 ******* See also: [[BibTex and Emacs]]
 ***** *ACCEPTED*
+******* ACCEPTED [[http://oremacs.com/2015/10/23/dired-compress/][dired file compression]] instead of crypt++
 ******* ACCEPTED Make =M-%= search string comes from region, like =C-s= does
         Done: I installed package [[https://www.emacswiki.org/emacs/replace-from-region.el][replace-from-region.el]]
 
@@ -598,6 +599,7 @@
       [back]
 
 *** Org Mode
+***** [[http://orgmode.org/w/org-mode.git][org-mode git repository]].  I think this goes to the melpa package
 ***** [[https://kungsgeten.github.io/org-brain.html][org-brain]]
       <<org-brain>>
       Concept mapping in emacs, new project in March, 2017
@@ -7392,6 +7394,7 @@ ERROR: Cannot run texhash command. Please run manually.
 ***** [[http://www.rubydoc.info/gems/bibtex-ruby/4.0.1/BibTeX/Bibliography/RDFConverter][Class: BibTeX::Bibliography::RDFConverter — Documentation for bibtex-ruby]]
 ***** [[DocEar]], kind-of...
 *** [[org-brain]]
+*** [[Concept map-like stuff: superlabel, dedicated targets, org-brain]]
 * XML
 *** Translation tools
 * DTU
@@ -7460,8 +7463,6 @@ ERROR: Cannot run texhash command. Please run manually.
 
     It's possible that Calibre will produce prettier pdf's but it requires
     a DRM breaker plugin that you had to download from an untrusted website.
-
-
 
 * Cross-platform sharing
 *** DTU

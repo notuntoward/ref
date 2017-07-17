@@ -1151,7 +1151,7 @@ ior. The efficacy of this approach is demonstrated on four datasets: ECG,
 space shuttle, power demand, and multi-sensor engine dataset.},
   file         = {:papers\\Malhotra15lstmAnomDetTS.pdf:PDF},
   owner        = {sotterson},
-  review       = {LSTM NN does a point prediction of non-anomalous data, flexibly modeling temporal dependence.  A multivariate Gaussian then models the likelihood of the error time series via a Kalman filter . A low likelihood is an anomaly. 
+  review       = {LSTM NN does a point prediction of non-anomalous data, flexibly modeling temporal dependence.  A multivariate Gaussian then models the likelihood of the error time series via a Kalman filter . A low likelihood is an anomaly.
 
 There is no trained abnormality detector.
 
@@ -4186,13 +4186,13 @@ tail dependence,
   review    = {Traffic route time is represented as a copula for the individual path segments, thus modelling the correlation between different path lengths better.  Also compares Pearson's Spearman's and Kendal's Tau correlation.
 
 Pearson's, Spearman's, and Kendal's Tau correlation.
-* linear (Pearson's) not invariant under nonlinear strictly increasing transformations 
+* linear (Pearson's) not invariant under nonlinear strictly increasing transformations
    - e.g. a copula marginal transform
    -  so can't preserve linear correlation in original space
 * Rank based correlation
    - options: Spearman's rho, Kendall's tau.
    - Spearman confidence intervals less relilable and interpretable than Kendall
-      - this is from a paper they cite:  Kendall and Gibbons (1990) 
+      - this is from a paper they cite:  Kendall and Gibbons (1990)
       - they do a test and agree with it (See 4.2.1, but they don't really explain their reasoning)
       - anyway, they ultimatly use Kendall's tau (},
   timestamp = {2017.07.05},
@@ -6080,8 +6080,8 @@ theory.},
 
 INTERESTING STUFF
 * IQ, SAT and ACT are all transforms of the deviation from the mean. (Table 3.11)
-* Correlation Coefficient vs. Regression CoefficientIs 
-  - just the linear prediction coefficient -- byx in eq. (4.5) -- but normalized by both stx and sty instead of just var_x, where y is the predictand.  
+* Correlation Coefficient vs. Regression CoefficientIs
+  - just the linear prediction coefficient -- byx in eq. (4.5) -- but normalized by both stx and sty instead of just var_x, where y is the predictand.
   - Looked at the other way:byx = rxy * stdy / stdx
 * proof for why correlation coefficient is the cosine between two variables
   - i.e. rxy=cos(angle x and y vectors)
@@ -10194,7 +10194,7 @@ COVARIANCE REGULARIZATION / CONSTRAINTS
    - instead, it is saying that "only the NWSE neighbors have non-zero partial correlation"
       i.e. they have unique information that no other farms have, as seen by linear correlation
    - covariance matrix (inverse of precision) will have way more non-zero values
-   - but wouldn't it have been equally good to drive some covariances to zero?  
+   - but wouldn't it have been equally good to drive some covariances to zero?
       (maybe Simpson12spatStatForgetCov explains why)
 * Temporal covariance
    - is parameterized, with fixed-shape decreasing-with-lag autocorrelation
@@ -10203,13 +10203,13 @@ COVARIANCE REGULARIZATION / CONSTRAINTS
       -- same autocorr profile for all farms b/c they couldn't find something that would predict the shape
       -- could there be a more flexible parameterization?  See [[Distributed lag]] in energytop.org
    - There are also special boundary points at min,max horizon (I don't understand why).
-* Result is solved using maximum likelihood.  
+* Result is solved using maximum likelihood.
 
 RESULTS
-* Huge reduction in the number of paramenters 
-   - 2007690 params for a full sample covariance  --> 10 for the constrained precision matrix.  
-   - compare with matrix normal decomposition in Owen13monteCarloBook 
-   - also compare with mixture comp reduction in Anderlucci15covPatMix 
+* Huge reduction in the number of paramenters
+   - 2007690 params for a full sample covariance  --> 10 for the constrained precision matrix.
+   - compare with matrix normal decomposition in Owen13monteCarloBook
+   - also compare with mixture comp reduction in Anderlucci15covPatMix
    - and compare with other stuff in energytop.org <<Covariance sparseness>>
 * Accuracy
    - not quite as good as just using the sample covariance trained over a year's worth of data.
@@ -11823,53 +11823,53 @@ wind power prediction; forecast errors; correlation analysis; spatio-temporal mo
   file      = {Tastu10spatTempErr.pdf:Tastu10spatTempErr.pdf:PDF},
   groups    = {Read},
   owner     = {scot},
-  review    = {Predict future forecast errors w/ old errors at other farms; switch by wind dir, interp by wind speed. (Henrik likes this work, says maybe s/ use it for NORSEWInD) 
-* they don't expect 3TIER (Klarson) switching to work when no channels (why not?) 
-* DK is flat, has prevailing winds 
-   ==> they expect switching to succeed 
+  review    = {Predict future forecast errors w/ old errors at other farms; switch by wind dir, interp by wind speed. (Henrik likes this work, says maybe s/ use it for NORSEWInD)
+* they don't expect 3TIER (Klarson) switching to work when no channels (why not?)
+* DK is flat, has prevailing winds
+   ==> they expect switching to succeed
 
-This work corrects errors on WPPT-based forecasts 
-* HIRLAM met model from Danish Met. Inst. 
-* hour ahead foreacasts, sample rate is one hour, so one step ahead 
-* forecasts include diurnal and also adapt 
-* does POWER forecasts, so they're correcting power Groups 
-* forecasts for 15 regions lumped into 5 for this experiment * not sure why they lumped 
-* within group, wind speed and dir are separately averaged (not vectoral). WHY? 
+This work corrects errors on WPPT-based forecasts
+* HIRLAM met model from Danish Met. Inst.
+* hour ahead foreacasts, sample rate is one hour, so one step ahead
+* forecasts include diurnal and also adapt
+* does POWER forecasts, so they're correcting power Groups
+* forecasts for 15 regions lumped into 5 for this experiment * not sure why they lumped
+* within group, wind speed and dir are separately averaged (not vectoral). WHY?
 
-Prelim study 
-* see linear error dependency across space 
-* dependence is mostly in wind direction: "errors propagate downind" 
-* CCF and ACF waveforms show ARMA pattern 
+Prelim study
+* see linear error dependency across space
+* dependence is mostly in wind direction: "errors propagate downind"
+* CCF and ACF waveforms show ARMA pattern
 
-Wind dir/speed dependence 
-* clear downwind dependence 
-* high speed ==> high corr of errors, up to 5 lags 
-* says phase ships more prominent in high speeds (no cite) 
-* dependence is nonlinear 
+Wind dir/speed dependence
+* clear downwind dependence
+* high speed ==> high corr of errors, up to 5 lags
+* says phase ships more prominent in high speeds (no cite)
+* dependence is nonlinear
 
-Three models 
-* simple ARX error, no switching 
+Three models
+* simple ARX error, no switching
 * TARX model: ARX w/ threshold-based wind dir switching
  -- dir thresholds are chosen heuristically
- -- Switching training described in Pinson08regimeSwitchWind 
+ -- Switching training described in Pinson08regimeSwitchWind
 * CP-TARX model: TARX w/ linear coeffs changing smoothly w/ wind speed
  -- wind speed input is a linear combo of all speeds; kind of a hack
  -- trained CP coeffs sho increased long lag dependence w/ increasing wind speed
- -- also, why didn't they use the forecasted speed? 
+ -- also, why didn't they use the forecasted speed?
 
-Results 
-* most improvement from ARX 
-* TARX, CP-TARX better than ARX (test on train) 
-* cross validation: CP-TARX not so good, probably overtrained 
+Results
+* most improvement from ARX
+* TARX, CP-TARX better than ARX (test on train)
+* cross validation: CP-TARX not so good, probably overtrained
 
-My Comments 
-* study probably good enough to show that spatio-temporal dep. works 
-* scarce data probably makes speed and dir improvement numbers questionable. 
-* test case is only DK, which is probably too simple a system to make general conclusions about the approach 
-* I'm not sure that cross-validation totally works here: only 7 months, split into 3 sets 
-* lags picked contiguously; by AIC I think. Better to have non-contiguous 
-* only using wind; not pressure, temp, etc.  Optimal? 
-* I don't like the ad-hoc direction partitioning 
+My Comments
+* study probably good enough to show that spatio-temporal dep. works
+* scarce data probably makes speed and dir improvement numbers questionable.
+* test case is only DK, which is probably too simple a system to make general conclusions about the approach
+* I'm not sure that cross-validation totally works here: only 7 months, split into 3 sets
+* lags picked contiguously; by AIC I think. Better to have non-contiguous
+* only using wind; not pressure, temp, etc.  Optimal?
+* I don't like the ad-hoc direction partitioning
 * They want to add new farms w/o damaging old coeffs; an interesting problem
 
 The Tastu moved on to copulas:
@@ -12005,30 +12005,30 @@ Good background for probabilistic forecasts, since the extreme values are what s
   volume    = {56},
   number    = {3},
   pages     = {204--211},
-  abstract  = {Fundamental barriers to advancing 
-weather and climate diagnosis and 
-prediction on time-scales from days 
-to years are partly attributable 
-to gaps in knowledge and the 
-limited capability of contemporary 
-operational and research numerical 
-prediction systems to represent 
+  abstract  = {Fundamental barriers to advancing
+weather and climate diagnosis and
+prediction on time-scales from days
+to years are partly attributable
+to gaps in knowledge and the
+limited capability of contemporary
+operational and research numerical
+prediction systems to represent
 precipitating convection and its multi-
-scale organization, particularly in the 
-tropics. In this regard improvements 
-in convective parameterization have 
+scale organization, particularly in the
+tropics. In this regard improvements
+in convective parameterization have
 
-not kept pace with improvements 
-in knowledge gained from process 
-studies of convective organization. 
-As convective organization is not 
-represented by contemporar y 
-parameterizations, the large-scale 
-effects of convective organization 
-have, therefore, yet to be properly 
-assessed. Examples of tropical 
-phenomena in which the multi-scale 
-organization of convection is a key 
+not kept pace with improvements
+in knowledge gained from process
+studies of convective organization.
+As convective organization is not
+represented by contemporar y
+parameterizations, the large-scale
+effects of convective organization
+have, therefore, yet to be properly
+assessed. Examples of tropical
+phenomena in which the multi-scale
+organization of convection is a key
 process are:},
   file      = {Moncrieff07rsrchIntrWeathClim.pdf:Moncrieff07rsrchIntrWeathClim.pdf:PDF},
   publisher = {Geneva, Switzerland: The Organization, 1990-},
@@ -12904,7 +12904,7 @@ Computation updated in: Wood08FastSmthGAM},
   journal   = {Phys.org},
   year      = {2015},
   month     = jul,
-  abstract  = {IBM Research today revealed that solar and wind forecasts it is producing using machine learning and other cognitive computing technologies are proving to be as much as 30 percent more accurate than ones created using conventional approaches.  Part of a research program funded the by the U.S. Department of Energy's SunShot Initiative, the breakthrough results suggest new ways to optimize solar resources as they are increasingly integrated into the nation's energy systems.  
+  abstract  = {IBM Research today revealed that solar and wind forecasts it is producing using machine learning and other cognitive computing technologies are proving to be as much as 30 percent more accurate than ones created using conventional approaches.  Part of a research program funded the by the U.S. Department of Energy's SunShot Initiative, the breakthrough results suggest new ways to optimize solar resources as they are increasingly integrated into the nation's energy systems.
 IBM also announced that for a limited time it will provide foundational solar forecasts at five-kilometer spatial resolution to help government agencies and other organizations in the lower 48 states best evaluate their impact on supply and demand as well as operations.},
   file      = {Vu15solarFrcstIBMmachLrn.pdf:Vu15solarFrcstIBMmachLrn:PDF},
   owner     = {sotterson},
@@ -12913,7 +12913,7 @@ IBM also announced that for a limited time it will provide foundational solar fo
 Forecasts they're providing
 * Solar
 * Wind
-* Hydro 
+* Hydro
 * I think demand because they mention invisible PV "behind the meter" effect on demand curve.
 * horizon: minutes to weeks ahead
 * 5 km res for US lower 48, I think for free for some gov't agencies
@@ -12938,7 +12938,7 @@ From Video here: https://youtu.be/cj2RXjvRKOA
 Henrik Hamann, of the project, says
 * domain: NWP
 * combine other stuff  with NWP
-* thinks 50\% improvements 
+* thinks 50\% improvements
 * ramp forecasting is a focus
 (video was linked to by this article: http://www.computerworld.com/article/2948987/sustainable-it/ibms-machine-learning-crystal-ball-can-foresee-renewable-energy-availability.html)},
   timestamp = {2017.05.25},
@@ -14163,6 +14163,34 @@ For BMA ensemble forecasting (this NN approach is a mixture), could also be a wa
   timestamp = {2008.07.07},
 }
 
+@Article{Wikipedia17matrixNormDist,
+  author    = {Wikipedia},
+  title     = {Matrix normal distribution},
+  journal   = {Wikipedia},
+  year      = {2017},
+  abstract  = {In statistics, the matrix normal distribution is a
+probability distribution that is a generalization of
+the multivariate normal distribution to matrix-
+valued random variables.},
+  file      = {:papers\\Wikipedia17matrixNormDist.pdf:PDF},
+  owner     = {sotterson},
+  review    = {This is a multivariate normal distribution parameterization in which the random variable is treated as a matrix and the covariance matrix is restricted to be an element-wise product of matrices separately modelling row-wise (U) and  column-wise (V)covariance.
+
+ It's useful for parsimoniously  modeling temporal covariance with mixtures (Anderlucci15covPatMix).
+
+Factoids in this article
+* expected values
+* covariances
+* linear transforms of the RV and the effect on the means and covariances
+* MLE estimatoin
+  - mean is just the average
+  - covariance can be solved iteratively but is not unique
+    (Anderlucci15covPatMix and Owen13monteCarloBook) force it somehow
+* Sampling: pretty simple.  Fanciest thing is a Cholesky (or other) decomposition.},
+  timestamp = {2017.07.08},
+  url       = {https://en.wikipedia.org/wiki/Matrix_normal_distribution},
+}
+
 @Misc{Wikpedia16degOfFrdm,
   author       = {Wikipedia},
   title        = {Degrees of Freedom},
@@ -14182,6 +14210,28 @@ The term is most often used in the context of linear models (linear regression, 
 
 While introductory textbooks may introduce degrees of freedom as distribution parameters or through hypothesis testing, it is the underlying geometry that defines degrees of freedom, and is critical to a proper understanding of the concept. Walker (1940)[3] has stated this succinctly as "the number of observations minus the number of necessary relations among these observations."},
   file         = {Wikpedia16degOfFrdm.pdf:Wikpedia16degOfFrdm.pdf:PDF},
+}
+
+@Article{Wikipedia17WishartDist,
+  author    = {Wikipedia},
+  title     = {Wishart distribution},
+  journal   = {Wikipedia},
+  year      = {2017},
+  abstract  = {In statistics, the Wishart distribution is a generalization to multiple
+dimensions of the chi-squared distribution, or, in the case of non-integer
+degrees of freedom, of the gamma distribution. It is named in honor of
+John Wishart, who first formulated the distribution in 1928.[1]
+It is a family of probability distributions defined over symmetric,
+nonnegative-definite matrix-valued random variables (?random
+matrices?). These distributions are of great importance in the estimation
+of covariance matrices in multivariate statistics. In Bayesian statistics, the
+Wishart distribution is the conjugate prior of the inverse covariance-
+matrix of a multivariate-normal random-vector.},
+  file      = {:papers\\Wikipedia17WishartDist.pdf:PDF},
+  owner     = {sotterson},
+  review    = {The distribution of the MLE est of the multivariate normal dist is Wishart.  It's good for other stuff too, and is related to the matrix normal distribution.},
+  timestamp = {2017.07.08},
+  url       = {https://en.wikipedia.org/wiki/Wishart_distribution},
 }
 
 @Article{Zhou06streamFeatSel,
@@ -16405,6 +16455,26 @@ farm, wind power forecast.},
   url       = {http://www.ecmwf.int/en/elibrary/14092-introduction-numerical-weather-prediction-and-ensemble-weather-forecasting},
 }
 
+@Article{Greenewald15krnckrProdPCAspatTempCov,
+  author        = {K. Greenewald and A. O. Hero},
+  title         = {Robust Kronecker Product {PCA} for Spatio-Temporal Covariance Estimation},
+  journal       = IEEE_J_SP,
+  year          = {2015},
+  volume        = {63},
+  number        = {23},
+  pages         = {6368--6378},
+  month         = dec,
+  issn          = {1053-587X},
+  __markedentry = {[sotterson:]},
+  abstract      = {Kronecker PCA involves the use of a space versus time Kronecker product decomposition to estimate spatio-temporal covariances. In this paper, the addition of a sparse correction factor is considered, which corresponds to a model of the covariance as a sum of Kronecker products of low (separation) rank and a sparse matrix. This sparse correction extends the diagonally corrected Kronecker PCA of [Greenewald, and Hero, 2014] to allow for sparse unstructured {\textquotedblleft}outliers{\textquotedblright} anywhere in the covariance matrix, e.g., arising from variables or correlations that do not fit the Kronecker model well, or from sources such as sensor noise or sensor failure. We introduce a robust PCA-based algorithm to estimate the covariance under this model. An extension to Toeplitz temporal factors is also provided, producing a parameter reduction for temporally stationary measurement modeling. High dimensional MSE performance bounds are given for these extensions. Finally, the proposed extension of KronPCA is evaluated on both simulated and real data coming from yeast cell cycle experiments. This establishes the practical utility of robust Kronecker PCA in biological and other applications.},
+  doi           = {10.1109/TSP.2015.2472364},
+  file          = {:papers\\Greenewald15krnckrProdPCAspatTempCov.pdf:PDF},
+  keywords      = {covariance analysis, estimation theory, principal component analysis, signal processing, Kronecker product decomposition, parameter reduction, robust Kronecker product PCA, robust PCA based algorithm, spatio-temporal covariance estimation, temporally stationary measurement, Brain modeling, Covariance matrices, Linear programming, Optimization, Principal component analysis, Robustness, Sparse matrices, Kronecker product decompositions, Structured covariance estimation, high dimensional convergence rates, mean-square error, multivariate prediction, robust penalized least squares},
+  owner         = {sotterson},
+  review        = {A spatial/temporal Kronecker decomp of a covariance matrix.  Could be used for matrix-normal models, somehow, as they mention that this is one form that has this kind of cov mat.},
+  timestamp     = {2017.07.11},
+}
+
 @InProceedings{Zeiler14vizUnderstandConvNN,
   author       = {Zeiler, Matthew D and Fergus, Rob},
   title        = {Visualizing and understanding convolutional networks},
@@ -17367,28 +17437,28 @@ Paper for the library: Pedregosa11ScikitlearnMachLrnPython},
   title       = {Potential climatic impacts and reliability of very large-scale wind farms},
   institution = {MIT Joint Program on the Science and Policy of Global Change},
   year        = {2009},
-  abstract    = {Meeting future world energy needs while addressing climate change requires large-scale 
-deployment of low or zero greenhouse gas (GHG) emission technologies such as wind energy. The 
-widespread availability of wind power has fueled legitimate interest in this renewable energy source 
-as one of the needed technologies. For very large-scale utilization of this resource, there are 
-however potential environmental impacts, and also problems arising from its inherent intermittency, 
+  abstract    = {Meeting future world energy needs while addressing climate change requires large-scale
+deployment of low or zero greenhouse gas (GHG) emission technologies such as wind energy. The
+widespread availability of wind power has fueled legitimate interest in this renewable energy source
+as one of the needed technologies. For very large-scale utilization of this resource, there are
+however potential environmental impacts, and also problems arising from its inherent intermittency,
 in addition to the present need to lower unit costs. To explore some of these issues, we use a three-
-dimensional climate model to simulate the potential climate effects associated with installation of 
-wind-powered generators over vast areas of land or coastal ocean. Using windmills to meet 10% or 
-more of global energy demand in 2100, could cause surface warming exceeding 1oC over land 
-installations. In contrast, surface cooling exceeding 1oC is computed over ocean installations, but 
-the validity of simulating the impacts of windmills by simply increasing the ocean surface drag needs 
-further study. Significant warming or cooling remote from both the land and ocean installations, and 
-alterations of the global distributions of rainfall and clouds also occur. These results are influenced 
-by the competing effects of increases in roughness and decreases in wind speed on near-surface 
-turbulent heat fluxes, the differing nature of land and ocean surface friction, and the dimensions of 
-the installations parallel and perpendicular to the prevailing winds. These results are also 
-dependent on the accuracy of the model used, and the realism of the methods applied to simulate 
-windmills. Additional theory and new field observations will be required for their ultimate 
-validation. Intermittency of wind power on daily, monthly and longer time scales as computed in 
-these simulations and inferred from meteorological observations, poses a demand for one or more 
-options to ensure reliability, including backup generation capacity, very long distance power 
-transmission lines, and onsite energy storage, each with specific economic and/or technological 
+dimensional climate model to simulate the potential climate effects associated with installation of
+wind-powered generators over vast areas of land or coastal ocean. Using windmills to meet 10% or
+more of global energy demand in 2100, could cause surface warming exceeding 1oC over land
+installations. In contrast, surface cooling exceeding 1oC is computed over ocean installations, but
+the validity of simulating the impacts of windmills by simply increasing the ocean surface drag needs
+further study. Significant warming or cooling remote from both the land and ocean installations, and
+alterations of the global distributions of rainfall and clouds also occur. These results are influenced
+by the competing effects of increases in roughness and decreases in wind speed on near-surface
+turbulent heat fluxes, the differing nature of land and ocean surface friction, and the dimensions of
+the installations parallel and perpendicular to the prevailing winds. These results are also
+dependent on the accuracy of the model used, and the realism of the methods applied to simulate
+windmills. Additional theory and new field observations will be required for their ultimate
+validation. Intermittency of wind power on daily, monthly and longer time scales as computed in
+these simulations and inferred from meteorological observations, poses a demand for one or more
+options to ensure reliability, including backup generation capacity, very long distance power
+transmission lines, and onsite energy storage, each with specific economic and/or technological
 challenges.},
   file        = {2009 tech report:Prinn09climImpctlargeWindFrmsTechRep:PDF},
   owner       = {sotterson},
@@ -18093,32 +18163,32 @@ four-dimensional random vector.},
   pages     = {1971--1976},
   month     = aug,
   abstract  = {Motor Imagery Electroencephalography (MI-
-EEG) plays an important role in brain computer interface (BCI) 
-based rehabilitation robot, and its recognition is the key problem. 
-The Discrete Wavelet Transform (DWT) has been applied to 
-extract the time-frequency features of MI-EEG. However, the 
-existing EEG classifiers, such as support vector machine (SVM),   
-linear discriminant analysis (LDA) and BP network, did not make 
-full use of the time sequence information in time-frequency 
-features, the resulting recognition performance were not very 
-ideal. In this paper, a Long Short-Term Memory (LSTM) based 
-recurrent Neural Network (RNN) is integrated with Discrete 
-Wavelet Transform (DWT) to yield a novel recognition method, 
-denoted as DWT-LSTM. DWT is applied to analyze the each 
-channel of MI-EEG and extract its effective wavelet coefficients, 
-representing the time-frequency features. Then a LSTM based 
-RNN is used as a classifier for the patten recognition of observed 
-MI-EEG data. Experiments are conducted on a publicly available 
-dataset, and the 5-fold cross validation experimental results show 
-that DWT-LSTM yields relatively higher classification accuracies 
-compared to the existing approaches. This is helpful for the 
+EEG) plays an important role in brain computer interface (BCI)
+based rehabilitation robot, and its recognition is the key problem.
+The Discrete Wavelet Transform (DWT) has been applied to
+extract the time-frequency features of MI-EEG. However, the
+existing EEG classifiers, such as support vector machine (SVM),
+linear discriminant analysis (LDA) and BP network, did not make
+full use of the time sequence information in time-frequency
+features, the resulting recognition performance were not very
+ideal. In this paper, a Long Short-Term Memory (LSTM) based
+recurrent Neural Network (RNN) is integrated with Discrete
+Wavelet Transform (DWT) to yield a novel recognition method,
+denoted as DWT-LSTM. DWT is applied to analyze the each
+channel of MI-EEG and extract its effective wavelet coefficients,
+representing the time-frequency features. Then a LSTM based
+RNN is used as a classifier for the patten recognition of observed
+MI-EEG data. Experiments are conducted on a publicly available
+dataset, and the 5-fold cross validation experimental results show
+that DWT-LSTM yields relatively higher classification accuracies
+compared to the existing approaches. This is helpful for the
 further research and application of RNN in processing of MI-
-EEG.  
+EEG.
 
- 
 
-Index Terms - Brain computer interface; Long Short-Term 
-Memory; Recurrent Neural Network; Discrete Wavelet Transform; 
+
+Index Terms - Brain computer interface; Long Short-Term
+Memory; Recurrent Neural Network; Discrete Wavelet Transform;
 motor imagery EEG;},
   doi       = {10.1109/ICMA.2016.7558868},
   file      = {:papers\\Li16waveletLSTMeegRecog.pdf:PDF},
@@ -18314,7 +18384,7 @@ Vine Copulas
 * they used D-vine since they're mainly modelling temporal dependence
 * Can choose Frank, Gaussian (pair) or T0copula
 * Two optimization times
-   - sequential 
+   - sequential
       - choose one with min. AIC or BIC
       - estimate paremeters
       - use it to compute inputs to next copula tree
@@ -18325,7 +18395,7 @@ Gausssian Copula
 * Marginals are quantile copula forcasts in Bessa12adaptQuantCopulaFrcst
 * Temporal dependence
    - modeled in covariance, not precision matrix.
-   - uses exponential covariance function 
+   - uses exponential covariance function
      - time-distance exponential covariance dropoff
      - requires much less datthan, for example, D-vines
    - huge horizon: 1-48 hours ahead
@@ -20692,13 +20762,12 @@ This paper is the Arxiv version, which might be a bit more bold in its claims th
 }
 
 @Article{Hoff07rankLikSemiParCplaMixed,
-  author        = {Hoff, Peter D},
-  title         = {Extending the rank likelihood for semiparametric copula estimation},
-  journal       = {The Annals of Applied Statistics},
-  year          = {2007},
-  pages         = {265--283},
-  __markedentry = {[sotterson:6]},
-  abstract      = {Quantitative studies in many fields involve the analysis of multivariate
+  author    = {Hoff, Peter D},
+  title     = {Extending the rank likelihood for semiparametric copula estimation},
+  journal   = {The Annals of Applied Statistics},
+  year      = {2007},
+  pages     = {265--283},
+  abstract  = {Quantitative studies in many fields involve the analysis of multivariate
 data of diverse types, including measurements that we may consider binary,
 ordinal and continuous. One approach to the analysis of such mixed data is
 to use a copula model, in which the associations among the variables are pa-
@@ -20717,12 +20786,12 @@ distributions. Estimation and inference for parameters of the Gaussian cop-
 ula are available via a straightforward Markov chain Monte Carlo algorithm
 based on Gibbs sampling. Specification of prior distributions or a parametric
 form for the univariate marginal distributions of the data is not necessary.},
-  file          = {:papers\\Hoff07rankLikSemiParCplaMixed.pdf:PDF},
-  owner         = {sotterson},
-  publisher     = {JSTOR},
-  review        = {How to do mixed discrete and continous Gaussian copulas.  Is an MCMC algorithm.  },
-  timestamp     = {2017.07.06},
-  url           = {http://projecteuclid.org/download/pdfview_1/euclid.aoas/1183143739},
+  file      = {:papers\\Hoff07rankLikSemiParCplaMixed.pdf:PDF},
+  owner     = {sotterson},
+  publisher = {JSTOR},
+  review    = {How to do mixed discrete and continous Gaussian copulas.  Is an MCMC algorithm.  },
+  timestamp = {2017.07.06},
+  url       = {http://projecteuclid.org/download/pdfview_1/euclid.aoas/1183143739},
 }
 
 @Article{Brocker07properScore,
@@ -21690,10 +21759,10 @@ The bounds of skilful forecast range are quantified for three leading global for
   journal   = {Pv-tech Power},
   year      = {2016},
   volume    = {8},
-  abstract  = {Rising levels of PV penetration mean increasingly sophisticated forecasting 
-technologies are needed to maintain grid stability and maximise the economic value of PV 
-systems. The Grid Integration working group of the European Technology and Innovation Platform 
-? Photovoltaics (ETIP PV) shares the results of its ongoing research into the advantages and 
+  abstract  = {Rising levels of PV penetration mean increasingly sophisticated forecasting
+technologies are needed to maintain grid stability and maximise the economic value of PV
+systems. The Grid Integration working group of the European Technology and Innovation Platform
+? Photovoltaics (ETIP PV) shares the results of its ongoing research into the advantages and
 limitations of current forecasting technologies},
   file      = {Alet16caseBetterPVFrcst.pdf:Alet16caseBetterPVFrcst.pdf:PDF},
   owner     = {sotterson},
@@ -21898,6 +21967,27 @@ Note that this paper is a 2013 version. I couldn't figure out where it was publi
   owner     = {scot},
   review    = {adaptive lasso w/ missing feature handling},
   timestamp = {2010.09.27},
+}
+???
+
+@Article{Mitchell05covSpcTimeSepTest,
+  author    = {Mitchell, Matthew W. and Genton, Marc G. and Gumpertz, Marcia L.},
+  title     = {Testing for separability of space-time covariances},
+  journal   = {Environmetrics},
+  year      = {2005},
+  volume    = {16},
+  number    = {8},
+  pages     = {819--831},
+  issn      = {1099-095X},
+  abstract  = {Separable space-time covariance models are often used for modeling in environmental sciences because of their computational benefits. Unfortunately, there are few formal statistical tests for separability. We adapt a likelihood ratio test based on multivariate repeated measures to the spatio-temporal context. We apply this test to an environmental monitoring data set. Copyright  2005 John Wiley & Sons, Ltd.},
+  doi       = {10.1002/env.737},
+  file      = {:papers\\Mitchell05covSpcTimeSepTest.pdf:PDF},
+  keywords  = {elevated CO2, FACE, Kronecker product, separable space-time covariance},
+  owner     = {sotterson},
+  publisher = {John Wiley \& Sons, Ltd.},
+  review    = {Tests to see if cov matrix is really space/time separable, as in matrix normal models (e.g. Anderlucci15covPatMix).  And also as in precision matrices too, like in Tastu15spcTimeTrajGaussCpla ?},
+  timestamp = {2017.07.11},
+  url       = {http://dx.doi.org/10.1002/env.737},
 }
 
 @Article{Sweeney11frcstCombo,
@@ -23874,7 +23964,7 @@ Says that circular smoothing splines are best for a "uniform" periodic function 
 Angular reproducing kernel (I think this is what they call a cosine basis later).
 * build a angular reproducing kernel that starts with sin/cos harmonics
 * simplifies approximately to cos terms only (reduces the dimension by a factor of 2)
- - but they don't say how many turns (out of up to infinity) they use.
+ - but they don't say how many terms (out of up to infinity) they use.
 * compare w/ Pritchard10varQuantProbFrcst for wind power app
  - still uses sin/cos
  - stops at order 2 interaction
@@ -26607,15 +26697,14 @@ RESULTS
 }
 
 @Article{Ghosh03nortaCorrRVdimNoGaussCpla,
-  author        = {Ghosh, Soumyadip and Henderson, Shane G},
-  title         = {Behavior of the NORTA method for correlated random vector generation as the dimension increases},
-  journal       = {ACM Transactions on Modeling and Computer Simulation (TOMACS)},
-  year          = {2003},
-  volume        = {13},
-  number        = {3},
-  pages         = {276--294},
-  __markedentry = {[sotterson:]},
-  abstract      = {The NORTA method is a fast general-purpose method for generating samples of a random vector
+  author    = {Ghosh, Soumyadip and Henderson, Shane G},
+  title     = {Behavior of the NORTA method for correlated random vector generation as the dimension increases},
+  journal   = {ACM Transactions on Modeling and Computer Simulation (TOMACS)},
+  year      = {2003},
+  volume    = {13},
+  number    = {3},
+  pages     = {276--294},
+  abstract  = {The NORTA method is a fast general-purpose method for generating samples of a random vector
 with given marginal distributions and given correlation matrix. It is known that there exist
 marginal distributions and correlation matrices that the NORTA method cannot match, even
 though a random vector with the prescribed qualities exists. In this case we say that the correlation
@@ -26628,10 +26717,10 @@ we develop a method for sampling symmetric positive definite correlation matrice
 the Lebesgue measure sense) from the set of all such matrices. This procedure can be used more
 generally for sampling uniformly from the space of all symmetric positive definite matrices with
 diagonal elements fixed at positive values.},
-  file          = {:papers\\Ghosh03nortaCorrRVdimNoGaussCpla.pdf:PDF},
-  owner         = {sotterson},
-  publisher     = {ACM},
-  review        = {Proof that can't express all patterns of Pearson corr and uniform margins with a Gaussian copula.
+  file      = {:papers\\Ghosh03nortaCorrRVdimNoGaussCpla.pdf:PDF},
+  owner     = {sotterson},
+  publisher = {ACM},
+  review    = {Proof that can't express all patterns of Pearson corr and uniform margins with a Gaussian copula.
 
 Owen13monteCarloBook says:
 
@@ -26640,7 +26729,7 @@ Pearson correlation matrix, in combination with uniform margins, is unattain-
 able via the Gaussian copula. A well studied example from Li and Hammond
 (1975) has d = 3, F1 = F2 = F3 = U(0, 1) and
 
-Corr(X) = 
+Corr(X) =
 
 1 ?0.4 0.2
 ?0.4 1 0.8
@@ -26653,8 +26742,8 @@ They show that Gaussian copula sampling cannot produce such a distribution.
 That such a distribution exists, and can be sampled by some other method, was
 proved by Ghosh and Henderson (2002). The failure to exist via the Gaussian
 copula is most interesting when the distribution exists.},
-  timestamp     = {2017.07.05},
-  url           = {https://ecommons.cornell.edu/bitstream/handle/1813/9249/TR001372.pdf?sequence=1},
+  timestamp = {2017.07.05},
+  url       = {https://ecommons.cornell.edu/bitstream/handle/1813/9249/TR001372.pdf?sequence=1},
 }
 
 @InProceedings{Theis10ensCosmoDE,
@@ -27151,9 +27240,9 @@ output although there will be a decrease in the voltage output of the PV module.
 few cleaning method to prevent from dust accumulation on the surface of solar arrays.},
   file      = {Kleissl14curStateArtSolFrcst.pdf:Kleissl14curStateArtSolFrcst.pdf:PDF},
   owner     = {sotterson},
-  review    = {CPV production is highly correlated to DNI. DNI is impacted by phenomena 
-that are very difficult to forecast such as cirrus clouds, wild fires, dust storms, and episodic air 
-pollution events which can reduced DNI by up to 30% on otherwise cloud-free days. Water 
+  review    = {CPV production is highly correlated to DNI. DNI is impacted by phenomena
+that are very difficult to forecast such as cirrus clouds, wild fires, dust storms, and episodic air
+pollution events which can reduced DNI by up to 30% on otherwise cloud-free days. Water
 vapor, which is also an important determinant of DNI, is t},
   timestamp = {2017.04.29},
   url       = {http://uc-ciee.org/all-documents/a/451/113/nested},
@@ -28379,7 +28468,7 @@ Some facts:
 * Regression coeffs: shrunken when j is a high variance, unpredictable variable.  If it's a high variance, predictable variable it's not shrunk so much.
 * Things that make a covariance matrix uninvertible (so no precision matrix)
   - A constant variable
-  - a perfectly linear relationship between variables. 
+  - a perfectly linear relationship between variables.
 
 },
   timestamp = {2017.06.15},
@@ -29280,14 +29369,14 @@ TODO get reference to CRPSS (Jonsson 2012 G, I think)},
   title     = {Photovoltaic Array Performance Model},
   journal   = {Sandia Labs Report: SAND Report 2004-3535},
   year      = {2004},
-  abstract  = {This document summarizes the equations and applications associated with the photovoltaic array 
-performance model developed at Sandia National Laboratories over the last twelve years.  
-Electrical, thermal, and optical characteristics for photovoltaic modules are included in the 
-model, and the model is designed to use hourly solar resource and meteorological data.  The 
-versatility and accuracy of the model has been validated for flat-plate modules (all technologies) 
-and for concentrator modules, as well as for large arrays of modules.  Applications include 
-system design and sizing, ?translation? of field performance measurements to standard reporting 
-conditions, system performance optimization, and real-time comparison of measured versus 
+  abstract  = {This document summarizes the equations and applications associated with the photovoltaic array
+performance model developed at Sandia National Laboratories over the last twelve years.
+Electrical, thermal, and optical characteristics for photovoltaic modules are included in the
+model, and the model is designed to use hourly solar resource and meteorological data.  The
+versatility and accuracy of the model has been validated for flat-plate modules (all technologies)
+and for concentrator modules, as well as for large arrays of modules.  Applications include
+system design and sizing, ?translation? of field performance measurements to standard reporting
+conditions, system performance optimization, and real-time comparison of measured versus
 expected system performance.},
   file      = {King04pvArrayPerf.pdf:King04pvArrayPerf.pdf:PDF},
   owner     = {sotterson},
@@ -29325,19 +29414,19 @@ Day ahead
   author    = {Iv{\'a}n Pineda and Paul Wilczek},
   editor    = {Zo{\"o} Casey},
   isbn      = {978-2-930670-01-0},
-  abstract  = {This EWEA report serves two main purposes: 
+  abstract  = {This EWEA report serves two main purposes:
 
-* Contribute to the debate on the completion of an 
-Internal Energy Market (IEM) by 2014 and provide 
+* Contribute to the debate on the completion of an
+Internal Energy Market (IEM) by 2014 and provide
 views on present electricity market integration ap-
-proaches and the development of a future flexible 
-power system with a large scale uptake of wind 
+proaches and the development of a future flexible
+power system with a large scale uptake of wind
 power.
 
-* Place the current regulatory frameworks for wind 
-power integration in the context of developing a 
+* Place the current regulatory frameworks for wind
+power integration in the context of developing a
 single EU market for energy. To this end, it com-
-pares the impact of wind energy deployment with 
+pares the impact of wind energy deployment with
 the major obstacles blocking and integrated inter-
 nal market.},
   file      = {Pineda12intrnlEnrgyMktEU.pdf:Pineda12intrnlEnrgyMktEU.pdf:PDF},
@@ -29439,7 +29528,7 @@ worked examples are included throughout.},
 
 Matrix Normal Distribution
 * Useful for a random matrix where both rows and columns are correlated
-* Matrix normal dist is really just a normal distribution 
+* Matrix normal dist is really just a normal distribution
    - covariance matrix decomposed into the elementwise product of two separate covariance matrices.
    - Cov matrices are constrained by matrix c, or is trace(gamma) and alternative constraint?
 * Is an "enormous simplification" in # coeffs over a full multivariate normal distribution
@@ -29447,7 +29536,7 @@ Matrix Normal Distribution
       (md)^2 -->  m^2 + d^2
   - Anderlucci15covPatMix has table of other options for coefficient size reduction (in a mixture)
   - compare with precision matrix decomp in: Tastu15spcTimeTrajGaussCpla
-* How to sample this distribution is explained.  Pretty simple},
+* How to sample this distribution is explained.  Pretty simple, A,B can be chosen by Cholesky decomp: Wikipedia17matrixNormDist},
   timestamp = {2017.07.05},
   url       = {http://statweb.stanford.edu/~owen/mc/},
 }
@@ -30942,15 +31031,15 @@ http://scholar.google.com/scholar?q=ensemble+pruning+adaboost+streaming&hl=en&as
    - can only do kernel product for several explanatory variables
    - is a regression approach, not a statistically motivated density approach (like a copula, I guess)
 
-NOT THE USUAL COPULA IDEA 
+NOT THE USUAL COPULA IDEA
 * Differentiate the usual cdf copula to make a density estimator, with c(u,v)  and f(y) terms
-* So this predicts a density instead quantiles (I guess these are computed later by integration)
-* The copula density needs uniform (x,y) --> (u,v); 
+* So this predicts a density instead of quantiles (I guess these are computed later by integration)
+* The copula density needs uniform (x,y) --> (u,v);
 * u and v  are estimated by a simple empirical cdf, or the appropriate KDE kernel
 * KDE kernels used
   - Beta ("macro-beta"): is bounded so good for power or speed, lookahead, also has a bandwidth that must be tuned
   - von Mises: circular dependence on wind direction
-* inputs: 
+* inputs:
    - NWP wind speed (or generic "composite" power curve wind power,depending upon experiment)
    - wind direction (for wind speed experiment)
    - forecast horizon (instead of separate model for different horizons)
@@ -31014,7 +31103,7 @@ identification; process anomaly detection},
   owner     = {sotterson},
   review    = {SPRT is a data-within-a-sliding-analysis-window likelihood ratio between a "normal operation" Gaussian (0 mean, sigma variance) and each of four corruptions of that Gaussian: "positive mean," "negative mean," "nominal variance," "inverse variance."   The four anomaly processes are tested within an analysis window, with preset mean or variance shifts, and and upper and lower boundary for the likelihood ratio.  If any of the anomaly processes are true (pass the LR test) then an alarm is triggered.
 
-I think this is the test that Peter said STEAG used in our June 30, 2017 meeting in Essen.},
+I think this is the test that Peter said STEAG used in our June 30, 2017 meeting in Essen.  Hist modifications for non-Gaussianinity and for H1 are in Deeskow17modNotesSPRT},
   timestamp = {2017.07.04},
   url       = {https://pdfs.semanticscholar.org/c719/16c04eafda6a4b07e73374ba3e7b421f530e.pdf},
 }
@@ -31225,7 +31314,7 @@ Maybe fancier stuff in: Abreu13genCmplxStepDiff},
   file      = {:Li11tensoCovMatObjTrck.pdf:PDF},
   keywords  = {affine transforms, covariance matrices, image representation, statistical analysis, target tracking, tensors, K-L transform, affine-invariant Riemannian metric, column vectors, distance measure, high-dimensional random signals, image data, incremental model update mechanism, intrinsic structure, mode-n unfolding matrices, object modeling, object representation, object statistics, object tracking, principal components, tensor-based covariance matrices, third-order tensor, vector-based representation, Adaptation models, Computational modeling, Covariance matrix, Lighting, Tensile stress, Transforms, Vectors},
   owner     = {sotterson},
-  review    = {Good for high dim covariance estimation of spatio-temporal fields, or in general?  
+  review    = {Good for high dim covariance estimation of spatio-temporal fields, or in general?
 
 * FanaeeT16tensorAnomDetSrvy says that tensors are good for spatio-temporal.
 * learning tensor approx with a NN: Che17neuralNetTensorRnk1
@@ -33092,6 +33181,37 @@ http://www.evernote.com/l/AA0V1xHzL29PgYhOrFprhksnanhADGk1XAI/},
   url       = {http://www.pnas.org/content/113/48/13570.abstract},
 }
 
+@Article{Zhou14graphEstMatNormGEMNI,
+  author    = {Zhou, Shuheng},
+  title     = {Gemini: Graph estimation with matrix variate normal instances},
+  journal   = {Ann. Statist.},
+  year      = {2014},
+  volume    = {42},
+  number    = {2},
+  pages     = {532--562},
+  month     = {04},
+  abstract  = {Undirected graphs can be used to describe matrix variate distributions.
+In this paper, we develop new methods for estimating the graphical structures
+and underlying parameters, namely, the row and column covariance and in-
+verse covariance matrices from the matrix variate data. Under sparsity condi-
+tions, we show that one is able to recover the graphs and covariance matrices
+with a single random matrix from the matrix variate normal distribution. Our
+method extends, with suitable adaptation, to the general setting where repli-
+cates are available. We establish consistency and obtain the rates of conver-
+gence in the operator and the Frobenius norm. We show that having replicates
+will allow one to estimate more complicated graphical structures and achieve
+faster rates of convergence. We provide simulation evidence showing that we
+can recover graphical structures as well as estimating the precision matrices,
+as predicted by theory},
+  doi       = {10.1214/13-AOS1187},
+  fjournal  = {The Annals of Statistics},
+  owner     = {sotterson},
+  publisher = {The Institute of Mathematical Statistics},
+  review    = {Estimates covariance matrices by both decomposing it with matrix normal element-wise product matrices and with the precision matrix.  Uses that to estimate a dependence graph.  I think there's some kind of sparsity constraint too.},
+  timestamp = {2017.07.08},
+  url       = {http://dx.doi.org/10.1214/13-AOS1187},
+}
+
 @Article{Bertsimas13adptRobustOptUC,
   author    = {Bertsimas, D. and Litvinov, E. and Sun, X.A. and Jinye Zhao and Tongxin Zheng},
   title     = {Adaptive Robust Optimization for the Security Constrained Unit Commitment Problem},
@@ -33700,6 +33820,27 @@ Potential uses: 1) ensemble calibration (inputs are ensemble wind
   URL                      = {http://jmlr.org/proceedings/papers/v28/oliva13.pdf}
 }
 
+@Article{Garcke17dimRedWindTurb,
+  author    = {Garcke, Jochen and Iza-Teran, Rodrigo and Marks, Marvin and Pathare, Mandar and Schollbach, Dirk and Stettner, Martin},
+  title     = {Dimensionality Reduction for the Analysis of Time Series Data from Wind Turbines},
+  journal   = {To Appear (sometime, in some journal)},
+  year      = {2017},
+  abstract  = {We are addressing two related applications for the analysis of data from
+wind turbines. First, we consider time series data arising from virtual sensors in
+numerical simulations as employed during product development, and, second, we
+investigate sensor data from condition monitoring systems of installed wind turbines.
+For each application we propose a data analysis procedure based on dimensionality
+reduction. In the case of virtual product development we develop tools to assist
+the engineer in the process of analyzing the time series data from large bundles of
+numerical simulations in regard to similarities or anomalies. For condition monitoring
+we develop a procedure which detects damages early in the sensor data stream.},
+  file      = {:papers\\Garcke17dimRedWindTurb.pdf:PDF},
+  owner     = {sotterson},
+  review    = {Is used for Anomaly detection.  Uses PCA and dynamic time warping.  Certainly relevant to ModernWindABS.},
+  timestamp = {2017.07.10},
+  url       = {http://garcke.ins.uni-bonn.de/research/pub.php?list=garcke},
+}
+
 @InProceedings{Brochero13ensSelEvoMultipOpt,
   author    = {Brochero, Darwin and Gagn{\'e}, Christian and Anctil, Fran{\c{c}}ois},
   title     = {Evolutionary Multiobjective Optimization for Selecting Members of an Ensemble Streamflow Forecasting Model},
@@ -34192,6 +34333,26 @@ coe?cient models; Varying coe?cient models;},
   owner     = {sotterson},
   review    = {featsel for high dimension varying coeff models. Good for boosting?},
   timestamp = {2014.12.07},
+}
+
+@Article{Lu05sepCovMatLikRatTest,
+  author        = {Nelson Lu and Dale L. Zimmerman},
+  title         = {The likelihood ratio test for a separable covariance matrix},
+  journal       = {Statistics \& Probability Letters},
+  year          = {2005},
+  volume        = {73},
+  number        = {4},
+  pages         = {449 - 457},
+  issn          = {0167-7152},
+  __markedentry = {[sotterson:6]},
+  abstract      = {We consider the problem of testing whether a covariance matrix has a separable (Kronecker product) structure. Such structure is of particular interest when the observed variables can be cross-classified by two factors, as occurs for example when comparable or identical characteristics are measured on several parts of each subject. We derive the likelihood ratio test for separability on the basis of a random sample from a multivariate normal population, and we establish an invariance property of the test statistic that allows us to table its null distribution. An example illustrates the methodology.},
+  doi           = {http://dx.doi.org/10.1016/j.spl.2005.04.020},
+  file          = {:papers\\Lu05sepCovMatLikRatTest.pdf:PDF},
+  keywords      = {Kronecker product, Likelihood ratio test, Separability},
+  owner         = {sotterson},
+  review        = {Can you do a matrix normal distribution type Kronecker product covariance separation?},
+  timestamp     = {2017.07.11},
+  url           = {http://www.sciencedirect.com/science/article/pii/S0167715205001495},
 }
 
 @InProceedings{Ide09ProxAnomDetSprs,
@@ -35001,11 +35162,12 @@ Or for QR boosting in Fenske11*},
   owner     = {sotterson},
   review    = {Useful for upscaling or for ReWP porfolio analysis.  Is copula based.
 
-For just the sum of RV's see: Arbenz11fastSumDepRVsAEP},
+For just the sum of RV's see: Arbenz11fastSumDepRVsAEP
+See also Gijbels14distSumCopulaDep},
   timestamp = {2017.05.22},
-  url       = { 
+  url       = {
         http://dx.doi.org/10.1080/17442508.2011.566337
-    
+
 },
 }
 
@@ -35357,6 +35519,26 @@ ment costs because it requires less sensing data than conventional methods.},
 Later, he did this with a Copula Graphical model: Veeramachaneni15cplaGrphMdlsWindRsrcEst},
   timestamp = {2017.05.27},
   url       = {http://www.kalyanv.org/publications.html},
+}
+
+@Article{Gijbels14distSumCopulaDep,
+  author    = {Ir??ne Gijbels and Klaus Herrmann},
+  title     = {On the distribution of sums of random variables with copula-induced dependence},
+  journal   = {Insurance: Mathematics and Economics},
+  year      = {2014},
+  volume    = {59},
+  pages     = {27 - 44},
+  issn      = {0167-6687},
+  abstract  = {We investigate distributional properties of the sum of d possibly unbounded random variables. The joint distribution of the random vector is formulated by means of an absolutely continuous copula, allowing for a variety of different dependence structures between the summands. The obtained expression for the distribution of the sum features a separation property into marginal and dependence structure contributions typical for copula approaches. Along the same lines we obtain the formulation of a conditional expectation closely related to the expected shortfall common in actuarial and financial literature. We further exploit the separation to introduce new numerical algorithms to compute the distribution and quantile function, as well as this conditional expectation. A comparison with the most common competitors shows that the discussed Path Integration algorithm is the most suitable method for computing these quantities. In our example, we apply the theory to compute Value-at-Risk forecasts for a trivariate portfolio of index returns.},
+  doi       = {http://dx.doi.org/10.1016/j.insmatheco.2014.08.002},
+  file      = {:papers\\Gijbels14distSumCopulaDep.pdf:PDF},
+  keywords  = {(G)AEP algorithm, Aggregation of risk, Copula, Dependence, Expected shortfall, Path integration, Sums of random variables, Value-at-risk},
+  owner     = {sotterson},
+  review    = {Relevant to probabilistic forecast aggregation and upscaling when dependence is modelled with copulas.
+
+See also: Arbenz12fastCompFuncRVsGAEP},
+  timestamp = {2017.07.10},
+  url       = {http://www.sciencedirect.com/science/article/pii/S0167668714000961},
 }
 
 @Article{Zhang01multiWvltFrcst,
@@ -36318,8 +36500,7 @@ Alterntiave KSG information explanations
   number    = {2},
   pages     = {562--591},
   month     = {may},
-  abstract  = {We propose a new algorithm to compute numerically the distribution function of the sum of d dependent,
-non-negative random variables with given joint distribution.
+  abstract  = {We propose a new algorithm to compute numerically the distribution function of the sum of d dependent, non-negative random variables with given joint distribution.
 Keywords: convolution; distribution functions},
   doi       = {10.3150/10-BEJ284},
   file      = {Arbenz11fastSumDepRVsAEP.pdf:Arbenz11fastSumDepRVsAEP.pdf:PDF},
@@ -36566,7 +36747,7 @@ and accurate phenomenological characterization},
   file      = {:papers\\Anderlucci15covPatMix.pdf:PDF},
   owner     = {sotterson},
   publisher = {Institute of Mathematical Statistics},
-  review    = {A sparse and fast mixture model for modeling a multi-variable cross-variable and temporal correlation (adapt to copula?). Temporal and non-temporal components combined can be expressed with a matrix-normal distribution -- core is a linear model (like a Gaussian) but mixture part allows it to be, for example, power-level and wind direction sensitive, and marginal transforms also make it nonlinear.  Seems to be able to do mixture with still assuring temporal corr of a particular individual which is a combination of mixtures.  Can handle missing data.  Solution is a fast (on this data) EM algorithm. I can figure out how to do a copula transform (matrix-normal marginals) then this could better than precision-matrix approaches like Tastu13scenSpatTimeCpla.  
+  review    = {A sparse and fast mixture model for modeling a multi-variable cross-variable and temporal correlation (adapt to copula?). Temporal and non-temporal components combined can be expressed with a matrix-normal distribution -- core is a linear model (like a Gaussian) but mixture part allows it to be, for example, power-level and wind direction sensitive, and marginal transforms also make it nonlinear.  Seems to be able to do mixture with still assuring temporal corr of a particular individual which is a combination of mixtures.  Can handle missing data.  Solution is a fast (on this data) EM algorithm. I can figure out how to do a copula transform (matrix-normal marginals) then this could better than precision-matrix approaches like Tastu13scenSpatTimeCpla.
 
 Adaptation to Copula
 * matrix-normal dist is just another way to decompose a multivariate normal covariance matrix (Owen13monteCarloBook)
@@ -37363,7 +37544,7 @@ while to become familiar with matrix techniques for portfolio calculations.},
   owner     = {sotterson},
   review    = {Optimal return given specified risk (standard deviation of return) or min. risk given specifed return.  Has R and a "... with R" textbook coming out soon. Very close but not quite right for ReWP because return return and risk have same units (in ReWP (reserve power), the return is money and the risk is power.  Also, I think this may be making an assumption of normality -- at least it does at the beginning, but I didn't follow the math.
 
-Main point: It's simpler to search possible allocations by searchign for optimal choices.  Two ways: 
+Main point: It's simpler to search possible allocations by searchign for optimal choices.  Two ways:
 
 1. max expected return w/ specified risk
 2. min risk w/ specified returns
@@ -40149,6 +40330,19 @@ C:\Users\scott\OneDrive\shareHW\school\lectures_misc\DeepLearningSchool2016},
   url       = {https://www.bayareadlschool.org/},
 }
 
+@Article{Deeskow17modNotesSPRT,
+  author    = {Peter Deeskow},
+  title     = {SPRT modification notes},
+  journal   = {STEAG Energy Services GmbH},
+  year      = {2017},
+  file      = {:papers\\Deeskow17modNotesSPRT.pdf:PDF},
+  owner     = {sotterson},
+  review    = {These emails are related to the June 30 meeting with Peter Deeskow,  at STEAG.  We are also referring to this paper:  Gross02earlyDetSPRT
+
+Peter's modifications, which handle non-Gaussianinity specify H1, are on the next page.},
+  timestamp = {2017.07.14},
+}
+
 
 @Article{DelleMonache13analogEns,
   author    = {Delle Monache, Luca and Eckel, F Anthony and Rife, Daran L and Nagarajan, Badrinath and Searight, Keith},
@@ -40516,11 +40710,11 @@ Micro-data Learning: the Other End of the Spectrum
   year      = {2017},
   file      = {etip-pv17asessPVfrcstObsNeed.pdf:etip-pv17asessPVfrcstObsNeed:PDF},
   owner     = {sotterson},
-  review    = {has a simple power model:  
+  review    = {has a simple power model:
 
 P 'proportional to' G ( 1+k logG )  where G is the global irradiance and k is an installation parameter.
 
-* between 0 min and 2 h where there is no satisfactory physical forecasting technique for irradiance, stochastic learning techniques are used. 
+* between 0 min and 2 h where there is no satisfactory physical forecasting technique for irradiance, stochastic learning techniques are used.
 
 So, time series methods are used
 
@@ -40570,7 +40764,7 @@ Discretizing
  - low heights: tighter, terrain following (Fig 4)
  - high heights constant height, pressure, potential temp.
 * Vertical discretization
- - 30-100 levels 
+ - 30-100 levels
  - finer vertical levels when there is finer horizontal levels
  - top is highest level of interest, up to the stratopsphere
 
@@ -40584,7 +40778,7 @@ Courant Number (eq. 11, p. 11)
 ==> coarse grid ==> coarse time sample period
 * feature speed vs. spatial res. vs. time res.
 * C<=1
-is a limit on NWP numerical stability        
+is a limit on NWP numerical stability
 C<=1 (generally, depends upon finite differencing scheme used
 C = U*delT/delX; U is max translation speed of any features
  U is usually max wind speed @ tropospheric jet streak
@@ -40604,7 +40798,7 @@ Boundaries (vertical)
 * buffer layer at top
 * bottom layer: try to model surace of earth
 -  minimum:  topography and land use information (e.g., land versus water, grassland...
- - Heat and moisture transport between the surface and model 
+ - Heat and moisture transport between the surface and model
 - friction
 - parameterizations to down to centimeters
 - ocean state, altough often treated as fixed throughout the meteorological simulation duration.
@@ -40633,10 +40827,10 @@ Model parameterization
  - too CPU intensive to model (rare)
  - don't know how to model (relevant)
 * things being parameterized.  Example: WRF-ARW version 3.7.1, released in August 2015
- - fourteen planetary boundary layer, 
+ - fourteen planetary boundary layer,
  - twenty-one cloud microphysics
  -  thirteen cumulus convection
- - eight shortwave and longwave radiation parameterizations! 
+ - eight shortwave and longwave radiation parameterizations!
 * Also
  - land surface
  - ocean boundary layer
@@ -41505,9 +41699,9 @@ See also: Ding16gaussCopulaMissDatEM},
   file      = {Hu16solPnlClimImpct.pdf:Hu16solPnlClimImpct.pdf:PDF},
   owner     = {sotterson},
   publisher = {Nature Publishing Group},
-  review    = {PV panels cause a bit of global warming.  
+  review    = {PV panels cause a bit of global warming.
 
-For wind  power see (at least): 
+For wind  power see (at least):
 
 Evernote: http://www.evernote.com/l/AA0_6pgHVlBAbqBHsAPW3QlihjoZRiJrbpE/},
   timestamp = {2017.04.26},
@@ -42156,7 +42350,7 @@ Friendly slides by an IWES student(?)},
   publisher = {Nature Publishing Group},
   review    = {This article:
  http://www.evernote.com/l/AA0YFtn7eIlMYritm5ZW4tXZL_ybj5mnpa8/
-says that this Kusiak artiicle says that: 
+says that this Kusiak artiicle says that:
   More precise estimates of how much renewable energy will be generated bring many benefits. First, wind farms can more efficiently control the number and capacity of turbines in operation to meet electricity demand. This could increase power generation by at least 10\% and potentially up to 16\%, according to a recent commentary in Nature},
   timestamp = {2017.05.25},
   url       = {http://www.nature.com/news/renewables-share-data-on-wind-energy-1.19104},
@@ -42234,11 +42428,11 @@ Use for Colombia class.
 Good info / slide
 
 Requirements for good forecast
--  Multiple weather model input 
--  Advanced and robust forecasting system 
--  Meteorological know-how to tune the models 
--  Extra module for very short-term forecasting (0 to 6 hours) 
--  Specific module for ramps 
+-  Multiple weather model input
+-  Advanced and robust forecasting system
+-  Meteorological know-how to tune the models
+-  Extra module for very short-term forecasting (0 to 6 hours)
+-  Specific module for ramps
 - Use of measurement data: historical as well as online
 
 * good graph showing trubine height v.s gepstropic wind, other hight effects
@@ -42246,36 +42440,36 @@ Requirements for good forecast
 * nice graph showing what curtailments do to power curve (put in with downregulation section)
 
 Reasons for wind power forecasting errors
-* Avoidable forecasting errors due to lacking information from wind farms 
-- Missing turbine availability information (due to maintenance e.g.) 
-- Unannounced curtailments 
-- Wrong pooling of wind farms 
-* Machine features that are difficult to predict, but where additional data 
-from wind turbines could help: 
-- turbine shut downs due to 
--- high wind speeds 
--- low temperatures 
+* Avoidable forecasting errors due to lacking information from wind farms
+- Missing turbine availability information (due to maintenance e.g.)
+- Unannounced curtailments
+- Wrong pooling of wind farms
+* Machine features that are difficult to predict, but where additional data
+from wind turbines could help:
+- turbine shut downs due to
+-- high wind speeds
+-- low temperatures
 * Forecasting errors in NWP Data
 
 * good graph showing diurnal pattern
 
  VALUE OF DATA from Wind farms
-* Wind power measurements (very high influence on accuracy) 
-* Very short term forecast (0 ? 10 h) 
-* Essential for ramp forecasting 
-* Wind turbine availability (very high influence on accuracy) 
-* Adjust prediction for all prediction horizons 
-* Include availability into forecasting process 
-* Meteorological measurements (high influence on accuracy) 
-* Very short term forecast 
-* Detect deviations and correct forecast 
+* Wind power measurements (very high influence on accuracy)
+* Very short term forecast (0 ? 10 h)
+* Essential for ramp forecasting
+* Wind turbine availability (very high influence on accuracy)
+* Adjust prediction for all prediction horizons
+* Include availability into forecasting process
+* Meteorological measurements (high influence on accuracy)
+* Very short term forecast
+* Detect deviations and correct forecast
 
-Standardization and accuracy of data is important 
-* Availability of wind farm: 
-* Number of turbines up and running or 
-* Maximum available power output? 
-* Scheduled Maintenance 
-* Update of time periods through maintenance crew 
+Standardization and accuracy of data is important
+* Availability of wind farm:
+* Number of turbines up and running or
+* Maximum available power output?
+* Scheduled Maintenance
+* Update of time periods through maintenance crew
 
 * How does forecasting error move?
  - agrees with Schluter that error does not move in same dir as wind (not always advection)
@@ -42283,9 +42477,9 @@ Standardization and accuracy of data is important
 Forecast Combination
 * block diagram
 * graph shows that large errors are avoided.
- 
 
-* Curtailment 
+
+* Curtailment
 * Information flow between grid operator and wind farm operator},
   timestamp = {2017.04.13},
   url       = {https://www.spp.org/documents/28867/energymeteo_spp_qa.pdf},
@@ -42985,10 +43179,10 @@ http://people.duke.edu/~rnau/411home.htm},
 
 Fraunhofer Lines!  Sun looks like a 5800K blackbody, has find struction due to absorbtion of cooler outer Gas:  Fraunofer lines.
 
-*  the mean earth/sun distance of 149,597,890 km 
-* irradiance of sun ? 1 AU -- is called the solar constant. 
- --  is the total integrated irradiance over the entire spectrum 
- -- Currently accepted values are about 1360-1367 W m'2. 
+*  the mean earth/sun distance of 149,597,890 km
+* irradiance of sun ? 1 AU -- is called the solar constant.
+ --  is the total integrated irradiance over the entire spectrum
+ -- Currently accepted values are about 1360-1367 W m'2.
  -- changes 6.6% of due to variation of earth-to-sun distance
 
 * straight down (zero zenith) loss due to atmosphere:
@@ -43315,13 +43509,13 @@ Related: Kraskov04EstMutInfKNN,Stogbauer04leastDepMutInfo
   keywords  = { feature extraction, pattern classification, statistical analysis arrhythmia, cancer cell lines, first-order incremental feature selection, handwritten digits, linear discriminate analysis, lymphoma tissues, maximal statistical dependency criterion, minimal-redundancy-maximal-relevance criterion, mutual information criteria, naive Bayes, pattern classification systems, support vector machine},
   owner     = {sotterson},
   review    = {NOTE: I COPIED THIS FROM SPEAKERCLUST.BIB AND ./PAPERS.SPEAKERCLUST
-Use to select good channel pairs?, 
+Use to select good channel pairs?,
 
  Heuristics used in this paper are generalized inBrown12condLikInfoFeatSel (energy.bib)
 
  Yang09featSelMLPrand in energy.bib might be better?
 
-has matlab here: 
+has matlab here:
 http://www.mathworks.com/matlabcentral/fileexchange/loadFile.do?objectId=14608&objectType=File, other version, including C/C++ here: http://research.janelia.org/peng/proj/mRMR/index.htm
 
 Implemented in R in the parmigene package, mrnet function:
@@ -44437,11 +44631,11 @@ Value of probabilistic solar forecast
 * Solar probablistic ("variability") forecast has value for reducing wear-and-tear of the On Load Tap Changers (OLTCs). Since the root cause of this  problem is the occasional extreme variability of solar resource at very high spatial resolutions
 * section on large-scale, high cost events.
 
-Time/space resolution: 
-*  solar irradiance 
-* 1-km spatial resolution 
-* temporal resolutions: 5 minutes to hourly, 
-* horizons between 0 and 72 hours , with 1-6 hour and day-ahead horizons being of particular importance; 
+Time/space resolution:
+*  solar irradiance
+* 1-km spatial resolution
+* temporal resolutions: 5 minutes to hourly,
+* horizons between 0 and 72 hours , with 1-6 hour and day-ahead horizons being of particular importance;
 * Figure 1 is a nice graph showing how these are done vsl time and space},
   timestamp = {2017.04.13},
 }
@@ -44506,10 +44700,10 @@ Time/space resolution:
   year      = {2009},
   file      = {Voiland09sunFluctInstrmnt.pdf:Voiland09sunFluctInstrmnt.pdf:PDF},
   owner     = {sotterson},
-  review    = {Sun cycle solar output variability. 
+  review    = {Sun cycle solar output variability.
 
 Solar Ouput
-* 11 year cycle 
+* 11 year cycle
 * 0.1% change
 
 At Peak, More:
