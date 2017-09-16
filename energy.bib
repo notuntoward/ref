@@ -1,4 +1,4 @@
-% Encoding: US-ASCII
+% Encoding: UTF-8
 
 @Article{Nielsen00trackTimeVarCoeffFuncs,
   author    = {Nielsen, H. A. and Nielsen, T. S. and Joensen, A. K. and Madsen, H. and Holst, J.},
@@ -626,23 +626,22 @@ Has Matlab at: http://www.cs.huji.ac.il/labs/learning/code/fsr/},
 }
 
 @Article{Kraskov04EstMutInfKNN,
-  author        = {Kraskov, Alexander and Stogbauer, Harald and Grassberger, Peter},
-  title         = {Estimating mutual information},
-  journal       = {Physical Review E},
-  year          = {2004},
-  volume        = {69},
-  number        = {6},
-  pages         = {066138},
-  month         = jun,
-  __markedentry = {[sotterson:1]},
-  abstract      = {We present two classes of improved estimators for mutual information M(X,Y) , from samples of random points distributed according to some joint probability density ?(x,y) . In contrast to conventional estimators based on binnings, they are based on entropy estimates from k -nearest neighbor distances. This means that they are data efficient (with k=1 we resolve structures down to the smallest possible scales), adaptive (the resolution is higher where data are more numerous), and have minimal bias. Indeed, the bias of the underlying entropy estimates is mainly due to nonuniformity of the density at the smallest resolved scale, giving typically systematic errors which scale as functions of k?N for N points. Numerically, we find that both families become exact for independent distributions, i.e. the estimator M?(X,Y) vanishes (up to statistical fluctuations) if ?(x,y)=?(x)?(y) . This holds for all tested marginal distributions and for all dimensions of x and y . In addition, we give estimators for redundancies between more than two random variables. We compare our algorithms in detail with existing algorithms. Finally, we demonstrate the usefulness of our estimators for assessing the actual independence of components obtained from independent component analysis (ICA), for improving ICA, and for estimating the reliability of blind source separation.},
-  crossref      = {Papana08EvalMutInfoDynSys},
-  doi           = {10.1103/PhysRevE.69.066138},
-  file          = {Kraskov04EstMutInfKNN.pdf:Kraskov04EstMutInfKNN.pdf:PDF},
-  numpages      = {16},
-  owner         = {sotterson},
-  publisher     = {American Physical Society},
-  review        = {Estimates mutual information using K-nearest neighbors.
+  author    = {Kraskov, Alexander and Stogbauer, Harald and Grassberger, Peter},
+  title     = {Estimating mutual information},
+  journal   = {Physical Review E},
+  year      = {2004},
+  volume    = {69},
+  number    = {6},
+  pages     = {066138},
+  month     = jun,
+  abstract  = {We present two classes of improved estimators for mutual information M(X,Y) , from samples of random points distributed according to some joint probability density ?(x,y) . In contrast to conventional estimators based on binnings, they are based on entropy estimates from k -nearest neighbor distances. This means that they are data efficient (with k=1 we resolve structures down to the smallest possible scales), adaptive (the resolution is higher where data are more numerous), and have minimal bias. Indeed, the bias of the underlying entropy estimates is mainly due to nonuniformity of the density at the smallest resolved scale, giving typically systematic errors which scale as functions of k?N for N points. Numerically, we find that both families become exact for independent distributions, i.e. the estimator M?(X,Y) vanishes (up to statistical fluctuations) if ?(x,y)=?(x)?(y) . This holds for all tested marginal distributions and for all dimensions of x and y . In addition, we give estimators for redundancies between more than two random variables. We compare our algorithms in detail with existing algorithms. Finally, we demonstrate the usefulness of our estimators for assessing the actual independence of components obtained from independent component analysis (ICA), for improving ICA, and for estimating the reliability of blind source separation.},
+  crossref  = {Papana08EvalMutInfoDynSys},
+  doi       = {10.1103/PhysRevE.69.066138},
+  file      = {Kraskov04EstMutInfKNN.pdf:Kraskov04EstMutInfKNN.pdf:PDF},
+  numpages  = {16},
+  owner     = {sotterson},
+  publisher = {American Physical Society},
+  review    = {Estimates mutual information using K-nearest neighbors.
 * doesn't deteriorate as quickly at high dim as kernel density estimation (KDE), may be faster (p. 11)
 * Is the method tested in Papana08EvalMutInfoDynSys
 * good for small num. of points (says it works for only 30 in the conclusion)
@@ -708,7 +707,7 @@ Implementations
 * also a subset of MI funcs also parallelly implemented in R in the parmigene package: http://www.inside-r.org/packages/cran/parmigene/docs
 
 Related:  Sorjamaa05mutInfKNNpred},
-  timestamp     = {2008.10.10},
+  timestamp = {2008.10.10},
 }
 
 @Article{Diebold98evalDens,
@@ -1158,6 +1157,32 @@ There is no trained abnormality detector.
 Obviously, this could be a Gaussian Copula or whatever...  The coolness of this idea is that the dependency inside the model e.g. Gaussian could capture temporal dependence.  The weakness is that the Gaussian dimension determines the max analysis window width but I think this method also a finite analysis window of length l.},
   timestamp    = {2017.07.04},
   url          = {https://www.elen.ucl.ac.be/Proceedings/esann/esannpdf/es2015-56.pdf},
+}
+
+@Article{Morshedizadeh17impPowCurvMon,
+  author    = {Majid Morshedizadeh and Mojtaba Kordestani and Rupp Carriveau and David S-K Ting and Mehrdad Saif},
+  title     = {Improved power curve monitoring of wind turbines},
+  journal   = {Wind Engineering},
+  year      = {2017},
+  volume    = {41},
+  number    = {4},
+  pages     = {260-271},
+  abstract  = { Wind turbine power output monitoring can detect anomalies in turbine performance which have the potential to result in unexpected failure. This study examines common Supervisory Control And Data Acquisition data over a period of 20 months. It is common to have more than 150 signals acquired by Supervisory Control And Data Acquisition systems, and applying all is neither practical nor useful. Thus, to address the issue, correlation coefficients analysis has been applied in this work to reveal the most influential parameters on wind turbine active power. Then, radial basis function and multilayer perception artificial neural networks are set up, and their performance is compared in two static and dynamic states. The proposed combination of the feature selection method and the dynamic multilayer perception neural network structure has performed well with favorable prediction error levels compared to other methods. Thus, the combination may be a valuable tool for turbine power curve monitoring. 
+
+},
+  doi       = {10.1177/0309524X17709730},
+  eprint    = {http://dx.doi.org/10.1177/0309524X17709730},
+  file      = {:papers\\Morshedizadeh17impPowCurvMon.pdf:PDF},
+  keywords  = {Performance monitoring, wind turbines, artificial neural networks, Supervisory Control And Data Acquisition, power curve},
+  owner     = {sotterson},
+  review    = {Some kinda RBF feature selection for turbine monitoring.  NN and some kinda dynamic input.
+
+Paper downloaded from: https://www.researchgate.net/profile/Mojtaba_Kordestani/publication/317239656_Improved_power_curve_monitoring_of_wind_turbines/links/592de2710f7e9beee7337b09/Improved-power-curve-monitoring-of-wind-turbines.pdf},
+  timestamp = {2017.07.24},
+  url       = { 
+        http://dx.doi.org/10.1177/0309524X17709730
+    
+},
 }
 
 @InProceedings{Flexer13shrKNNhubRdc,
@@ -2383,17 +2408,17 @@ http://stackoverflow.com/questions/28582145/how-to-fit-a-smooth-line-to-some-poi
 @Article{Pinson10condPredInt,
   author    = {Pinson, P. and Kariniotakis, G.},
   title     = {Conditional Prediction Intervals of Wind Power Generation},
+  journal   = {Power Systems, IEEE Transactions on},
   year      = {2010},
   volume    = {25},
   number    = {4},
   pages     = {1845--1856},
   issn      = {0885-8950},
-  doi       = {10.1109/TPWRS.2010.2045774},
   abstract  = {A generic method for the providing of prediction intervals of wind power generation is described. Prediction intervals complement the more common wind power point forecasts, by giving a range of potential outcomes for a given probability, their so-called nominal coverage rate. Ideally they inform of the situation-specific uncertainty of point forecasts. In order to avoid a restrictive assumption on the shape of forecast error distributions, focus is given to an empirical and nonparametric approach named adapted resampling. This approach employs a fuzzy inference model that permits to integrate expertise on the characteristics of prediction errors for providing conditional interval forecasts. By simultaneously generating prediction intervals with various nominal coverage rates, one obtains full predictive distributions of wind generation. Adapted resampling is applied here to the case of an onshore Danish wind farm, for which three point forecasting methods are considered as input. The probabilistic forecasts generated are evaluated based on their reliability and sharpness, while compared to forecasts based on quantile regression and the climatology benchmark. The operational application of adapted resampling to the case of a large number of wind farms in Europe and Australia among others is finally discussed.},
   booktitle = {Power Systems, IEEE Transactions on},
+  doi       = {10.1109/TPWRS.2010.2045774},
   file      = {Pinson10condPredInt.pdf:Pinson10condPredInt.pdf:PDF},
   groups    = {Read, PointDerived, doReadWPV_1},
-  journal   = {Power Systems, IEEE Transactions on},
   keywords  = {fuzzy reasoning, load forecasting, production engineering computing, regression analysis, wind power, wind power plants, adapted resampling, climatology benchmark, conditional prediction intervals, forecast error distributions, fuzzy inference model, nominal coverage rate, onshore wind farm, quantile regression, situation-specific uncertainty, wind power generation, wind power point forecasts},
   owner     = {scot},
   review    = {Bootstrap model of point forecast errors produces a probabilistic forecast. Manually picked segmentation and fuzzy rules weight bootstrap samples. Could be improved.
@@ -2428,7 +2453,9 @@ CONCLUSIONS
 WAYS I THINK THIS COULD BE IMPROVED
 1.) Better bootstrap subsample size, replacement: Quantilies come from empirical c.d.f. which comes from simple counts of samples -- without replacement. But full sample bootstrap is a known bad way to est a dist. max (and min?) with replacement. When they do subsampling, it's not clear how they picked the subsample size. In sum, they need an approach something like Geyer06subSampBootStrap
 2.) Fix problems with censoring. They have to clip (censor) out-of-bounds predictions. Could censoring problem could be reduced by something in Chay01semiParmCensRgrsn ?
-3.) Bootstrap weighting should be statistically principled, probably an EM-learned mixture model By weighting subsamples, they're essentially assuming that the data comes from a mixture, but instead of probabilstic mixture weights, they're using hand-tuned fuzzy weights. Instead, they should use a real mixture model. I think this could be done w/ EM, and still retain the advantages of a bootstrap approach. An EM mixture approach would solve both the weighting and the partitioning in a statistically principled and data-driven manner.},
+3.) Bootstrap weighting should be statistically principled, probably an EM-learned mixture model By weighting subsamples, they're essentially assuming that the data comes from a mixture, but instead of probabilstic mixture weights, they're using hand-tuned fuzzy weights. Instead, they should use a real mixture model. I think this could be done w/ EM, and still retain the advantages of a bootstrap approach. An EM mixture approach would solve both the weighting and the partitioning in a statistically principled and data-driven manner.
+
+See also Pinson04OonlinePredRiskWind},
   timestamp = {2010.12.01},
 }
 
@@ -3064,23 +3091,21 @@ Tutorial slides: Raiko15supUnsupCombLadder},
 @Article{McVinish12impABCquantDist,
   author    = {McVinish, R.},
   title     = {Improving ABC for quantile distributions},
+  journal   = {Statistics and Computing},
   year      = {2012},
-  language  = {English},
   volume    = {22},
   number    = {6},
   pages     = {1199--1207},
   issn      = {0960-3174},
-  doi       = {10.1007/s11222-010-9209-9},
   abstract  = {A new approximate Bayesian computation (ABC) algorithm is proposed specifically designed for models involving quantile distributions. The proposed algorithm compares favourably with two other ABC algorithms when applied to examples involving quantile distributions.},
+  doi       = {10.1007/s11222-010-9209-9},
   file      = {McVinish12impABCquantDist.pdf:McVinish12impABCquantDist.pdf:PDF},
   groups    = {PointDerived, doReadNonWPV_2},
-  journal   = {Statistics and Computing},
   keywords  = {Approximate Bayesian computation; Likelihood-free inference; Markov chain Monte Carlo; Quantile distributions; Quantile regression},
+  language  = {English},
   owner     = {sotterson},
   publisher = {Springer US},
-  review    = {Somehow useful for quantile forecast, I would guess. Related post from X'ian blog post (bibtex'ed)
-
-pdf ordered from Subito.},
+  review    = {Somehow useful for quantile forecast, I would guess. Related post from X'ian blog post (bibtex'ed)},
   timestamp = {2013.10.04},
 }
 
@@ -3901,20 +3926,21 @@ RESULTS
   timestamp = {2014.03.30},
 }
 
-@MISC{Wicklin12choleskyUseCorr,
-  Author                   = {Rick Wicklin},
-  Title                    = {Use the Cholesky transformation to correlate and uncorrelate variables},
-  HowPublished             = {The DO Loop: Blog Post},
-  Month                    = feb,
-  Year                     = {2012},
-  Abstract                 = {A variance-covariance matrix expresses linear relationships between variables. Given the covariances between variables, did you know that you can write down an
+@Misc{Wicklin12choleskyUseCorr,
+  author        = {Rick Wicklin},
+  title         = {Use the Cholesky transformation to correlate and uncorrelate variables},
+  howpublished  = {The DO Loop: Blog Post},
+  month         = feb,
+  year          = {2012},
+  __markedentry = {[sotterson:1]},
+  abstract      = {A variance-covariance matrix expresses linear relationships between variables. Given the covariances between variables, did you know that you can write down an
 invertible linear transformation that "uncorrelates" the variables? Conversely, you can
 transform a set of uncorrelated variables into variables with given covariances. The
 transformation that works this magic is called the Cholesky transformation; it is
 represented by a matrix that is the "square root" of the covariance matrix.},
-  File                     = {Wicklin12choleskyUseCorr.pdf:Wicklin12choleskyUseCorr.pdf:PDF},
-  Owner                    = {sotterson},
-  Review                   = {Cholesky produces a "square root matrix": L*L'=A, where L is lower triangular and A is a positive semidifinite square matrix (like a covariance matrix).  Can be used to make correlated data, uncorrelate data, and solve linear systems with covariance matrices.  It's comutationally efficient.
+  file          = {Wicklin12choleskyUseCorr.pdf:Wicklin12choleskyUseCorr.pdf:PDF},
+  owner         = {sotterson},
+  review        = {Cholesky produces a "square root matrix": L*L'=A, where L is lower triangular and A is a positive semidifinite square matrix (like a covariance matrix).  Can be used to make correlated data, uncorrelate data, and solve linear systems with covariance matrices.  It's comutationally efficient.
 
 Uses:
 * To generate multivariate normal data with a given covariance structure from
@@ -3922,8 +3948,8 @@ uncorrelated normal variables.
 * To remove the correlations between variables. This task requires using the
 inverse Cholesky transformation.
 * To quickly solve linear systems that involve a covariance matrix.},
-  Timestamp                = {2015.12.22},
-  URL                      = {http://blogs.sas.com/content/iml/2012/02/08/use-the-cholesky-transformation-to-correlate-and-uncorrelate-variables.html}
+  timestamp     = {2015.12.22},
+  url           = {http://blogs.sas.com/content/iml/2012/02/08/use-the-cholesky-transformation-to-correlate-and-uncorrelate-variables.html},
 }
 
 @TechReport{Jones11renewEnrgyStrat,
@@ -5083,27 +5109,6 @@ The purpose of this site was to compare Koenker's method (the one in this paper)
   timestamp = {2014.02.28},
 }
 
-@Article{Chen16DynamicCovarianceModels,
-  author    = {Ziqi Chen and Chenlei Leng},
-  title     = {Dynamic Covariance Models},
-  journal   = {Journal of the American Statistical Association},
-  year      = {2016},
-  volume    = {111},
-  number    = {515},
-  pages     = {1196-1207},
-  abstract  = {ABSTRACTAn important problem in contemporary statistics is to understand the relationship among a large number of variables based on a dataset, usually with p, the number of the variables, much larger than n, the sample size. Recent efforts have focused on modeling static covariance matrices where pairwise covariances are considered invariant. In many real systems, however, these pairwise relations often change. To characterize the changing correlations in a high-dimensional system, we study a class of dynamic covariance models (DCMs) assumed to be sparse, and investigate for the first time a unified theory for understanding their nonasymptotic error rates and model selection properties. In particular, in the challenging high-dimensional regime, we highlight a new uniform consistency theory in which the sample size can be seen as n4/5 when the bandwidth parameter is chosen as h proportional to n exp -1/5 for accounting for the dynamics. We show that this result holds uniformly over a range of the variable used for modeling the dynamics. The convergence rate bears the mark of the familiar bias-variance trade-off in the kernel smoothing literature. We illustrate the results with simulations and the analysis of a neuroimaging dataset. Supplementary materials for this article are available online.
-
-Key Words: Covariance model; Dynamic covariance; Functional connectivity; High Dimen-
-sionality; Marginal independence; Rate of convergence; Sparsity; Uniform consistency},
-  doi       = {10.1080/01621459.2015.1077712},
-  eprint    = {http://dx.doi.org/10.1080/01621459.2015.1077712},
-  file      = {Chen16DynamicCovarianceModels.pdf:Chen16DynamicCovarianceModels.pdf:PDF},
-  owner     = {sotterson},
-  review    = {Big covariance model for which cov. coeffs are conditional on some data.  Good for wind power level, wind speed direction, etc...},
-  timestamp = {2017.06.16},
-  url       = {http://dx.doi.org/10.1080/01621459.2015.1077712},
-}
-
 @Article{Oh15mdlDepHiDimFactrCopula,
   author    = {Dong Hwan Oh and Andrew J. Patton},
   title     = {Modelling Dependence in High Dimensions with Factor Copulas},
@@ -5211,6 +5216,22 @@ Related to Dereszynski12sensNtwkMissDat},
   owner     = {sotterson},
   review    = {3TIR 2 Hour wind forecasts w/ offsite met towers and NWP. Oracle experiments hint at 3TIER needs * met towers up to 200km away useful for 2 hour forecasts (I'm not sure which were 200km away, though) Regression on combinations of: * 1 hour NWP (could be interpolated somehow. Do they just copy it?) * 10 minute met tower wind speed on site * 10 minute offsite met tower wind data * time window width not specified * lag from offsite not explained but probably fixed, heuristically (seems like direction used only to condition neural nets) Regressors trired * linear * fixed neural * conditional neural (threshold switches baseed on direction and wind speed) -- is the conditional part really needed? Just have these as NN inputs? * Support Vector Regression * these are retrained once a month, could be more often but they don't Time lag between site and off-site * not explained, either the lag or the width of the time window Oracle conclusions (2 hour lookahead, oracle across features AND regressor types!) * NWP worse than persistence but still helps in conjunction w/ other features * adding offsite observations helps more often than NWP * but site, offsite and NWP features can be better (oracle feature selection) * conditional neural nets consistently best (switched on wind speed, direction thresholds) -- just put those vars into the NN? -- means that a switching regressor is needed? * SVR no better than neural nets My conclusion: 3TIER could use: 1.) switching regression 2.) Switching feature selection 3.) A way tipsier the right lag (switching?) 4.) A way to pick the input window width (If it's not fixed to one -- can't tell from this) 5.) A way to upsample 1 hour NWP to 10 minute intervals. 6.) Missing feature handling},
   timestamp = {2008.09.30},
+}
+
+@Article{Khodayar17RoughDeepNNShrtWndSpdFrcst,
+  author        = {M. Khodayar and O. Kaynak and M. E. Khodayar},
+  title         = {Rough Deep Neural Architecture for Short-term Wind Speed Forecasting},
+  journal       = {IEEE Transactions on Industrial Informatics},
+  year          = {2017},
+  volume        = {PP},
+  number        = {99},
+  pages         = {1},
+  issn          = {1551-3203},
+  __markedentry = {[sotterson:1]},
+  abstract      = {Accurate wind speed forecasting is a fundamental requirement for large-scale integration of wind power generation. However, the intermittent and stochastic nature of wind speed makes this task challenging. Artificial neural networks (ANNs) are widely used in this area; however, they may fail to provide the accuracy that may be required. This is due to applying shallow architectures with error-prone hand-engineered features. This paper proposes a deep learning network (DNN) architecture with stacked auto-encoder (SAE) and stacked denoising auto-encoder (SDAE) for ultra-short-term and short-term wind speed forecasting. Auto-encoders (AEs) are applied for unsupervised feature learning from the unlabeled wind data and a supervised regression layer is applied at the top of the AEs for wind speed forecasting. There are several uncertain factors exist in the wind data that degrade the accuracy of current methodologies. In order to improve the accuracy, rough neural networks (RNNs) is incorporated in the proposed deep learning models to develop novel rough extensions of SAE and SDAE that are robust to wind uncertainties. Experimental results show that the proposed rough DNN models outperform classic DNNs and previous models that apply shallow architectures in the view of lower RMSE and MAE measurements.},
+  doi           = {10.1109/TII.2017.2730846},
+  file          = {:Khodayar17RoughDeepNNShrtWndSpdFrcst.pdf:PDF},
+  keywords      = {Autoregressive processes, Forecasting, Neural networks, Predictive models, Uncertainty, Wind forecasting, Wind speed, Deep Neural Network, Forecasting, Rough Neural Network, Uncertainty, Wind},
 }
 
 @Article{openEnergi15machLrnSmrtGrid,
@@ -5898,6 +5919,27 @@ This was in an open source journal, so I'm not sure how good it is.},
   timestamp = {2008.09.24},
 }
 
+@Article{Chen16DynamicCovarianceModels,
+  author    = {Ziqi Chen and Chenlei Leng},
+  title     = {Dynamic Covariance Models},
+  journal   = {Journal of the American Statistical Association},
+  year      = {2016},
+  volume    = {111},
+  number    = {515},
+  pages     = {1196-1207},
+  abstract  = {An important problem in contemporary statistics is to understand the relationship among a large number of variables based on a dataset, usually with p, the number of the variables, much larger than n, the sample size. Recent efforts have focused on modeling static covariance matrices where pairwise covariances are considered invariant. In many real systems, however, these pairwise relations often change. To characterize the changing correlations in a high-dimensional system, we study a class of dynamic covariance models (DCMs) assumed to be sparse, and investigate for the first time a unified theory for understanding their nonasymptotic error rates and model selection properties. In particular, in the challenging high-dimensional regime, we highlight a new uniform consistency theory in which the sample size can be seen as n4/5 when the bandwidth parameter is chosen as h proportional to n exp -1/5 for accounting for the dynamics. We show that this result holds uniformly over a range of the variable used for modeling the dynamics. The convergence rate bears the mark of the familiar bias-variance trade-off in the kernel smoothing literature. We illustrate the results with simulations and the analysis of a neuroimaging dataset. Supplementary materials for this article are available online.
+
+Key Words: Covariance model; Dynamic covariance; Functional connectivity; High Dimen-
+sionality; Marginal independence; Rate of convergence; Sparsity; Uniform consistency},
+  doi       = {10.1080/01621459.2015.1077712},
+  eprint    = {http://dx.doi.org/10.1080/01621459.2015.1077712},
+  file      = {Chen16DynamicCovarianceModels.pdf:Chen16DynamicCovarianceModels.pdf:PDF},
+  owner     = {sotterson},
+  review    = {Big covariance model for which cov. coeffs are conditional on some data.  Good for wind power level, wind speed direction, etc...},
+  timestamp = {2017.06.16},
+  url       = {http://dx.doi.org/10.1080/01621459.2015.1077712},
+}
+
 @Conference{Biller04scenarioDepModel,
   author       = {Biller, B. and Ghosh, S.},
   title        = {Dependence modeling for stochastic simulation},
@@ -6473,6 +6515,24 @@ POSSIBLE USES I CAN THINK OF
   timestamp = {2010.07.27},
 }
 
+@Article{Bessa17imprvUnderstandUncertFrcstPow,
+  author    = {Ricardo Bessa and Corinna Möhrlen and Vanessa Fundel and Malte Siefert and Jethro Browell and Sebastian Haglund El Gaidi and Bri-Mathias Hodge and Umit Cali and George Kariniotakis},
+  title     = {Towards Improved Understanding of the Applicability of Uncertainty Forecasts in the Electric Power Industry},
+  journal   = {Energies},
+  year      = {2017},
+  volume    = {10},
+  number    = {9, 1402},
+  month     = {sep},
+  abstract  = {Around the world wind energy is starting to become a major energy provider in electricity markets, as well as participating in ancillary services markets to help maintain grid stability. The reliability of system operations and smooth integration of wind energy into electricity markets has been strongly supported by years of improvement in weather and wind power forecasting systems. Deterministic forecasts are still predominant in utility practice although truly optimal decisions and risk hedging are only possible with the adoption of uncertainty forecasts. One of the main barriers for the industrial adoption of uncertainty forecasts is the lack of understanding of its information content (e.g., its physical and statistical modeling) and standardization of uncertainty forecast products, which frequently leads to mistrust towards uncertainty forecasts and their applicability in practice. This paper aims at improving this understanding by establishing a common terminology and reviewing the methods to determine, estimate, and communicate the uncertainty in weather and wind power forecasts. This conceptual analysis of the state of the art highlights that: (i) end-users should start to look at the forecast’s properties in order to map different uncertainty representations to specific wind energy-related user requirements; (ii) a multidisciplinary team is required to foster the integration of stochastic methods in the industry sector. A set of recommendations for standardization and improved training of operators are provided along with examples of best practices.
+
+Keywords: wind energy; uncertainty; decision-making; quantiles; ensembles; forecast; statistics; weather},
+  doi       = {10.3390/en10091402},
+  file      = {:Bessa17imprvUnderstandUncertFrcstPow.pdf:PDF},
+  keywords  = {Keywords: wind energy; uncertainty; decision-making; quantiles; ensembles; forecast; statistics; weather},
+  publisher = {{MDPI} {AG}},
+  review    = {Use of forecasts paper.  Maybe it has stuff from Eweline.},
+}
+
 @Article{May08varSelpartMutInfo,
   author    = {May,, Robert J. and Maier,, Holger R. and Dandy,, Graeme C. and Fernando,, T.M.K. Gayani},
   title     = {Non-linear variable selection for artificial neural networks using partial mutual information},
@@ -6549,6 +6609,21 @@ Possible explanation: if regression alg. Is bad, selected feats have high MI w/ 
   owner     = {sotterson},
   review    = {I got the code from Martin Hanel: /Users/sotterson/proj/regime/contrib/pmi He says it implements the method in: Bowden05inputNeuralWater},
   timestamp = {2009.03.26},
+}
+
+@InProceedings{Tao14WindPowPredPattrnDeepLrn,
+  author    = {Y. Tao and H. Chen and C. Qiu},
+  title     = {Wind power prediction and pattern feature based on deep learning method},
+  booktitle = {Proc. IEEE PES Asia-Pacific Power and Energy Engineering Conf. (APPEEC)},
+  year      = {2014},
+  pages     = {1--4},
+  month     = dec,
+  abstract  = {As a type of clean and renewable energy source, wind power is being widely used all around the world. However, owing to the uncertainty and instability of the wind power, it is essential to build an accurate prediction model for wind power. In order to build the model, the hidden rules of wind power patterns is extracted by historical data from wind farm based on deep belief network (DBN). Several experiments are conducted to compare different solutions to DBN. The experimental results show that prediction errors are significantly reduced using the proposed technique. Depth learning theory has a strong scientific and engineering practical value in the field of wind power prediction.},
+  doi       = {10.1109/APPEEC.2014.7066166},
+  file      = {:Tao14WindPowPredPattrnDeepLrn.pdf:PDF},
+  issn      = {2157-4839},
+  keywords  = {belief networks, learning (artificial intelligence), load forecasting, power engineering computing, wind power plants, DBN, accurate prediction model, deep belief network, depth learning theory, historical data, prediction errors, renewable energy source, wind farm, wind power patterns, wind power prediction, Artificial neural networks, Predictive models, Renewable energy sources, Training, Wind power generation, Wind speed, Boltzmann machine, deep belief network, neural network, pattern features, wind power prediction},
+  review    = {Deep learning wind power forecast.},
 }
 
 @Article{Ding16condMultivarTdist,
@@ -7497,11 +7572,11 @@ often required to assess model performance.},
 @Article{Guolo14betaRgrsTseries,
   author    = {Guolo, Annamaria and Varin, Cristiano and others},
   title     = {Beta regression for time series analysis of bounded data, with application to {Canada} Google{\textregistered} Flu Trends},
+  journal   = {The Annals of Applied Statistics},
   year      = {2014},
   volume    = {8},
   number    = {1},
   pages     = {74--88},
-  url       = {http://projecteuclid.org/euclid.aoas/1396966279},
   abstract  = {Bounded time series consisting of rates or proportions are often
 encountered in applications. This manuscript proposes a practical
 approach to analyze bounded time series, through a beta regression
@@ -7514,14 +7589,13 @@ cess. It is shown that inference, prediction, and control can be carried
 out straightforwardly, with minor modifications to standard analysis
 of autoregressive and moving average models. The methodology is
 motivated by an application to the influenza-like-illness incidence es-
-timated by the GoogleR
- Flu Trends project.},
+timated by the GoogleR Flu Trends project.},
   file      = {Guolo14betaRgrsTseries.pdf:Guolo14betaRgrsTseries.pdf:PDF},
-  journal   = {The Annals of Applied Statistics},
   owner     = {sotterson},
   publisher = {Institute of Mathematical Statistics},
   review    = {How to model temporal dependence with beta regression -- useful for quantile regression since it's bounded?},
   timestamp = {2014.07.18},
+  url       = {http://projecteuclid.org/euclid.aoas/1396966279},
 }
 
 @Article{Eilers96FlexSmthBsplnPnlty,
@@ -8423,6 +8497,28 @@ This could be a way to learn a power curve.},
   timestamp = {2015.04.07},
 }
 
+@Article{Vrac12CopulaAnalysisMixModels,
+  author        = {Vrac, M. and Billard, L. and Diday, E. and Ch{\'e}din, A.},
+  title         = {Copula analysis of mixture models},
+  journal       = {Computational Statistics},
+  year          = {2012},
+  volume        = {27},
+  number        = {3},
+  pages         = {427--457},
+  month         = {Sep},
+  issn          = {1613-9658},
+  __markedentry = {[sotterson:]},
+  abstract      = {Contemporary computers collect databases that can be too large for classical methods to handle. The present work takes data whose observations are distribution functions (rather than the single numerical point value of classical data) and presents a computational statistical approach of a new methodology to group the distributions into classes. The clustering method links the searched partition to the decomposition of mixture densities, through the notions of a function of distributions and of multi-dimensional copulas. The new clustering technique is illustrated by ascertaining distinct temperature and humidity regions for a global climate dataset and shows that the results compare favorably with those obtained from the standard EM algorithm method.
+
+Keywords: Classification of distributions Copulas Dynamical clustering Data distributions Estimation Mixture model },
+  day           = {01},
+  doi           = {10.1007/s00180-011-0266-0},
+  file          = {:Vrac12CopulaAnalysisMixModels.pdf:PDF},
+  keywords      = {Classification of distributions Copulas Dynamical clustering Data distributions Estimation Mixture model },
+  review        = {Possibly related to the idea of wind power regime detection, but I'm not quite sure because of some comments in the conclusion.  Anyway, clustering is somehow involved in this method, which sounds like what I want todo with clustering of prevailing wind dependence (correlation matrices).},
+  url           = {https://doi.org/10.1007/s00180-011-0266-0},
+}
+
 @Article{Hirth13ctlPowRnwblGerman,
   author    = {Hirth, Lion and Ziegenhagen, Inka},
   title     = {Control power and variable renewables: a glimpse at German data},
@@ -8587,7 +8683,7 @@ Use for spinning reserves?},
   file     = {Davies00randGenStblCorrMat.pdf:Davies00randGenStblCorrMat.pdf:PDF},
   review   = {Most recent paper for Matlab's gallery function 'randcolu' and 'randcorr' random covariance matrix options.
 
-Compare with: Hardin13genRealisticCorrMat},
+Compare with: Hardin13genRealisticCorrMatdoc },
   url      = {http://dx.doi.org/10.1023/A:1022384216930},
 }
 
@@ -9207,6 +9303,26 @@ The last work is mine, and I could say that in most cases, the gain in using Dee
 
 Talking about a specific model, Deep Belief Networks, there is a version of Restricted Bolztmann Machines that deals with continuous data (CRBM - Continuous Restricted Bolztmann Machines). Also, there is a version of RBM that is more focused on dynamic data, Conditional RBM.},
   timestamp = {2017.03.08},
+}
+
+@Article{DiazVico17deepNNwindSolEnrgyPred,
+  author        = {D{\'i}az--Vico, David and Torres--Barr{\'a}n, Alberto and Omari, Adil and Dorronsoro, Jos{\'e} R.},
+  title         = {Deep Neural Networks for Wind and Solar Energy Prediction},
+  journal       = {Neural Processing Letters},
+  year          = {2017},
+  month         = {Apr},
+  issn          = {1573-773X},
+  __markedentry = {[sotterson:1]},
+  abstract      = {Deep Learning models are recently receiving a large attention because of their very powerful modeling abilities, particularly on inputs that have a intrinsic one- or two-dimensional structure that can be captured and exploited by convolutional layers. In this work we will apply Deep Neural Networks (DNNs) in two problems, wind energy and daily solar radiation prediction, whose inputs, derived from Numerical Weather Prediction systems, have a clear spatial structure. As we shall see, the predictions of single deep models and, more so, of DNN ensembles can improve on those of Support Vector Regression, a Machine Learning method that can be considered the state of the art for regression.
+
+Keywords Deep learning · Convolutional neural network · Wind energy · Solar energy},
+  day           = {01},
+  doi           = {10.1007/s11063-017-9613-7},
+  file          = {:DiazVico17deepNNwindSolEnrgyPred.pdf:PDF},
+  review        = {Also see: Diaz15DeepNNwindEnrgyPred
+
+},
+  url           = {https://doi.org/10.1007/s11063-017-9613-7},
 }
 
 @InProceedings{Gal16nnDropoutBayesApprox,
@@ -11184,22 +11300,21 @@ Recommended here: https://www.mapr.com/blog/n-novelty-detection-and-news-few-my-
 }
 
 @Article{GomezHerrero15cplDynTSens,
-  author        = {G{\'o}mez-Herrero, Germ{\'a}n and Wu, Wei and Rutanen, Kalle and Soriano, Miguel C and Pipa, Gordon and Vicente, Raul},
-  title         = {Assessing coupling dynamics from an ensemble of time series},
-  year          = {2015},
-  volume        = {17},
-  number        = {4},
-  pages         = {1958--1970},
-  url           = {http://www.mdpi.com/1099-4300/17/4/1958/htm},
-  __markedentry = {[sotterson:1]},
-  abstract      = {Finding interdependency relations between time series provides valuable knowledge about the processes that generated the signals. Information theory sets a natural framework for important classes of statistical dependencies. However, a reliable estimation from information-theoretic functionals is hampered when the dependency to be assessed is brief or evolves in time. Here, we show that these limitations can be partly alleviated when we have access to an ensemble of independent repetitions of the time series. In particular, we gear a data-efficient estimator of probability densities to make use of the full structure of trial-based measures. By doing so, we can obtain time-resolved estimates for a family of entropy combinations (including mutual information, transfer entropy and their conditional counterparts), which are more accurate than the simple average of individual estimates over trials. We show with simulated and real data generated by coupled electronic circuits that the proposed approach allows one to recover the time-resolved dynamics of the coupling between different subsystems.
+  author    = {G{\'o}mez-Herrero, Germ{\'a}n and Wu, Wei and Rutanen, Kalle and Soriano, Miguel C and Pipa, Gordon and Vicente, Raul},
+  title     = {Assessing coupling dynamics from an ensemble of time series},
+  journal   = {Entropy},
+  year      = {2015},
+  volume    = {17},
+  number    = {4},
+  pages     = {1958--1970},
+  abstract  = {Finding interdependency relations between time series provides valuable knowledge about the processes that generated the signals. Information theory sets a natural framework for important classes of statistical dependencies. However, a reliable estimation from information-theoretic functionals is hampered when the dependency to be assessed is brief or evolves in time. Here, we show that these limitations can be partly alleviated when we have access to an ensemble of independent repetitions of the time series. In particular, we gear a data-efficient estimator of probability densities to make use of the full structure of trial-based measures. By doing so, we can obtain time-resolved estimates for a family of entropy combinations (including mutual information, transfer entropy and their conditional counterparts), which are more accurate than the simple average of individual estimates over trials. We show with simulated and real data generated by coupled electronic circuits that the proposed approach allows one to recover the time-resolved dynamics of the coupling between different subsystems.
 Keywords: entropy; transfer entropy; estimator; ensemble; trial; time series},
-  file          = {GomezHerrero15cplDynTSens.pdf:GomezHerrero15cplDynTSens.pdf:PDF},
-  journal       = {Entropy},
-  publisher     = {Multidisciplinary Digital Publishing Institute},
-  review        = {Another paper showing derivations of conditional mutual information feature selection.  Has derivation of KSG (Kraskov) MI equations.  This one was also recommended as a refrence to the MI change stopping point.by Lizier.
+  file      = {GomezHerrero15cplDynTSens.pdf:GomezHerrero15cplDynTSens.pdf:PDF},
+  publisher = {Multidisciplinary Digital Publishing Institute},
+  review    = {Another paper showing derivations of conditional mutual information feature selection.  Has derivation of KSG (Kraskov) MI equations.  This one was also recommended as a refrence to the MI change stopping point.by Lizier.
 
 maybe an alternative to Frenzel07partMutInfo},
+  url       = {http://www.mdpi.com/1099-4300/17/4/1958/htm},
 }
 
 @Article{George11estJohnsonDistBnd,
@@ -12377,20 +12492,21 @@ See also: Chernozhukov13infCntrFactDist for more on DR},
 }
 
 @Article{Higham02nearestCorrMat,
-  author    = {Higham, Nicholas J.},
-  title     = {Computing the nearest correlation matrix -- a problem from finance},
-  journal   = {IMA Journal of Numerical Analysis},
-  year      = {2002},
-  volume    = {22},
-  number    = {3},
-  pages     = {329--343},
-  abstract  = {Given a symmetric matrix, what is the nearest correlation matrix -- that is, the nearest symmetric positive semidefinite matrix with unit diagonal? This problem arises in the finance industry, where the correlations are between stocks. For distance measured in two weighted Frobenius norms we characterize the solution using convex analysis. We show how the modified alternating projections method can be used to compute the solution for the more commonly used of the weighted Frobenius norms. In the finance application the original matrix has many zero or negative eigenvalues; we show that for a certain class of weights the nearest correlation matrix has correspondingly many zero eigenvalues and that this fact can be exploited in the computation.},
-  doi       = {10.1093/imanum/22.3.329},
-  eprint    = {http://imajna.oxfordjournals.org/content/22/3/329.full.pdf+html},
-  file      = {Higham02nearestCorrMat.pdf:Higham02nearestCorrMat.pdf:PDF},
-  groups    = {Ensemble, doReadNonWPV_1},
-  owner     = {sotterson},
-  review    = {Given a symmetric matrix, how to compute the nearest valid correlation matrix. Has Matlab.
+  author        = {Higham, Nicholas J.},
+  title         = {Computing the nearest correlation matrix -- a problem from finance},
+  journal       = {IMA Journal of Numerical Analysis},
+  year          = {2002},
+  volume        = {22},
+  number        = {3},
+  pages         = {329--343},
+  __markedentry = {[sotterson:1]},
+  abstract      = {Given a symmetric matrix, what is the nearest correlation matrix -- that is, the nearest symmetric positive semidefinite matrix with unit diagonal? This problem arises in the finance industry, where the correlations are between stocks. For distance measured in two weighted Frobenius norms we characterize the solution using convex analysis. We show how the modified alternating projections method can be used to compute the solution for the more commonly used of the weighted Frobenius norms. In the finance application the original matrix has many zero or negative eigenvalues; we show that for a certain class of weights the nearest correlation matrix has correspondingly many zero eigenvalues and that this fact can be exploited in the computation.},
+  doi           = {10.1093/imanum/22.3.329},
+  eprint        = {http://imajna.oxfordjournals.org/content/22/3/329.full.pdf+html},
+  file          = {Higham02nearestCorrMat.pdf:Higham02nearestCorrMat.pdf:PDF},
+  groups        = {Ensemble, doReadNonWPV_1},
+  owner         = {sotterson},
+  review        = {Given a symmetric matrix, how to compute the nearest valid correlation matrix. Has Matlab.
 
 Useful for:
 * empirical correlations of large, low rank matrices.
@@ -12400,8 +12516,8 @@ Useful for:
 
 Matlab: http://www.mathworks.com/matlabcentral/fileexchange/21486-finding-a-similar-valid-correlation-matrix
 https://nickhigham.wordpress.com/2013/02/13/the-nearest-correlation-matrix/},
-  timestamp = {2012.03.09},
-  url       = {http://imajna.oxfordjournals.org/content/22/3/329.abstract},
+  timestamp     = {2012.03.09},
+  url           = {http://imajna.oxfordjournals.org/content/22/3/329.abstract},
 }
 
 @Article{Li11trendSVD,
@@ -15711,6 +15827,25 @@ Simonoff09transfRegrsn
   timestamp = {2011.11.07},
 }
 
+@InBook{Diaz15DeepNNwindEnrgyPred,
+  pages         = {430--443},
+  title         = {Deep Neural Networks for Wind Energy Prediction},
+  publisher     = {Springer International Publishing},
+  year          = {2015},
+  author        = {D{\'i}az, David and Torres, Alberto and Dorronsoro, Jos{\'e} R.},
+  editor        = {Rojas, Ignacio and Joya, Gonzalo and Catala, Andreu},
+  address       = {Cham},
+  isbn          = {978-3-319-19258-1},
+  __markedentry = {[sotterson:1]},
+  abstract      = {In this work we will apply some of the Deep Learning models that are currently obtaining state of the art results in several machine learning problems to the prediction of wind energy production. In particular, we will consider both deep, fully connected multilayer perceptrons with appropriate weight initialization, and also convolutional neural networks that can take advantage of the spatial and feature structure of the numerical weather prediction patterns. We will also explore the effects of regularization techniques such as dropout or weight decay and consider how to select the final predictive deep models after analyzing their training evolution.},
+  booktitle     = {Advances in Computational Intelligence: 13th International Work-Conference on Artificial Neural Networks, IWANN 2015, Palma de Mallorca, Spain, June 10-12, 2015. Proceedings, Part I},
+  doi           = {10.1007/978-3-319-19258-1_36},
+  review        = {I couldn't get paper but could get the paper for DiazVico17deepNNwindSolEnrgyPred
+
+Also see: DiazVico17deepNNwindSolEnrgyPred},
+  url           = {https://doi.org/10.1007/978-3-319-19258-1_36},
+}
+
 @Article{Vergara14revFeatSelMutInfo,
   author    = {Vergara, Jorge R and Est{\'e}vez, Pablo A},
   title     = {A review of feature selection methods based on mutual information},
@@ -16456,23 +16591,22 @@ farm, wind power forecast.},
 }
 
 @Article{Greenewald15krnckrProdPCAspatTempCov,
-  author        = {K. Greenewald and A. O. Hero},
-  title         = {Robust Kronecker Product {PCA} for Spatio-Temporal Covariance Estimation},
-  journal       = IEEE_J_SP,
-  year          = {2015},
-  volume        = {63},
-  number        = {23},
-  pages         = {6368--6378},
-  month         = dec,
-  issn          = {1053-587X},
-  __markedentry = {[sotterson:]},
-  abstract      = {Kronecker PCA involves the use of a space versus time Kronecker product decomposition to estimate spatio-temporal covariances. In this paper, the addition of a sparse correction factor is considered, which corresponds to a model of the covariance as a sum of Kronecker products of low (separation) rank and a sparse matrix. This sparse correction extends the diagonally corrected Kronecker PCA of [Greenewald, and Hero, 2014] to allow for sparse unstructured {\textquotedblleft}outliers{\textquotedblright} anywhere in the covariance matrix, e.g., arising from variables or correlations that do not fit the Kronecker model well, or from sources such as sensor noise or sensor failure. We introduce a robust PCA-based algorithm to estimate the covariance under this model. An extension to Toeplitz temporal factors is also provided, producing a parameter reduction for temporally stationary measurement modeling. High dimensional MSE performance bounds are given for these extensions. Finally, the proposed extension of KronPCA is evaluated on both simulated and real data coming from yeast cell cycle experiments. This establishes the practical utility of robust Kronecker PCA in biological and other applications.},
-  doi           = {10.1109/TSP.2015.2472364},
-  file          = {:papers\\Greenewald15krnckrProdPCAspatTempCov.pdf:PDF},
-  keywords      = {covariance analysis, estimation theory, principal component analysis, signal processing, Kronecker product decomposition, parameter reduction, robust Kronecker product PCA, robust PCA based algorithm, spatio-temporal covariance estimation, temporally stationary measurement, Brain modeling, Covariance matrices, Linear programming, Optimization, Principal component analysis, Robustness, Sparse matrices, Kronecker product decompositions, Structured covariance estimation, high dimensional convergence rates, mean-square error, multivariate prediction, robust penalized least squares},
-  owner         = {sotterson},
-  review        = {A spatial/temporal Kronecker decomp of a covariance matrix.  Could be used for matrix-normal models, somehow, as they mention that this is one form that has this kind of cov mat.},
-  timestamp     = {2017.07.11},
+  author    = {K. Greenewald and A. O. Hero},
+  title     = {Robust Kronecker Product {PCA} for Spatio-Temporal Covariance Estimation},
+  journal   = IEEE_J_SP,
+  year      = {2015},
+  volume    = {63},
+  number    = {23},
+  pages     = {6368--6378},
+  month     = dec,
+  issn      = {1053-587X},
+  abstract  = {Kronecker PCA involves the use of a space versus time Kronecker product decomposition to estimate spatio-temporal covariances. In this paper, the addition of a sparse correction factor is considered, which corresponds to a model of the covariance as a sum of Kronecker products of low (separation) rank and a sparse matrix. This sparse correction extends the diagonally corrected Kronecker PCA of [Greenewald, and Hero, 2014] to allow for sparse unstructured {\textquotedblleft}outliers{\textquotedblright} anywhere in the covariance matrix, e.g., arising from variables or correlations that do not fit the Kronecker model well, or from sources such as sensor noise or sensor failure. We introduce a robust PCA-based algorithm to estimate the covariance under this model. An extension to Toeplitz temporal factors is also provided, producing a parameter reduction for temporally stationary measurement modeling. High dimensional MSE performance bounds are given for these extensions. Finally, the proposed extension of KronPCA is evaluated on both simulated and real data coming from yeast cell cycle experiments. This establishes the practical utility of robust Kronecker PCA in biological and other applications.},
+  doi       = {10.1109/TSP.2015.2472364},
+  file      = {:papers\\Greenewald15krnckrProdPCAspatTempCov.pdf:PDF},
+  keywords  = {covariance analysis, estimation theory, principal component analysis, signal processing, Kronecker product decomposition, parameter reduction, robust Kronecker product PCA, robust PCA based algorithm, spatio-temporal covariance estimation, temporally stationary measurement, Brain modeling, Covariance matrices, Linear programming, Optimization, Principal component analysis, Robustness, Sparse matrices, Kronecker product decompositions, Structured covariance estimation, high dimensional convergence rates, mean-square error, multivariate prediction, robust penalized least squares},
+  owner     = {sotterson},
+  review    = {A spatial/temporal Kronecker decomp of a covariance matrix.  Could be used for matrix-normal models, somehow, as they mention that this is one form that has this kind of cov mat.},
+  timestamp = {2017.07.11},
 }
 
 @InProceedings{Zeiler14vizUnderstandConvNN,
@@ -17415,6 +17549,25 @@ Paper for the library: Pedregosa11ScikitlearnMachLrnPython},
 * use the blending trick to somehow to handle NWP ringup problem in hour ahead forecasting?
 * use this for a more sophisticated NWP downscale from GFS (the model they use)},
   Timestamp                = {2009.03.02}
+}
+
+@Article{Liu97mleEstTdistEM,
+  author    = {Chuanhai Liu},
+  title     = {ML Estimation of the Multivariate \em{t} Distribution and the EM Algorithm},
+  journal   = {Journal of Multivariate Analysis},
+  year      = {1997},
+  volume    = {63},
+  number    = {2},
+  pages     = {296 - 312},
+  issn      = {0047-259X},
+  abstract  = {Maximum likelihood estimation of the multivariatetdistribution, especially with unknown degrees of freedom, has been an interesting topic in the development of the EM algorithm. After a brief review of the EM algorithm and its application to finding the maximum likelihood estimates of the parameters of thetdistribution, this paper provides new versions of the ECME algorithm for maximum likelihood estimation of the multivariatetdistribution from data with possibly missing values. The results show that the new versions of the ECME algorithm converge faster than the previous procedures. Most important, the idea of this new implementation is quite general and useful for the development of the EM algorithm. Comparisons of different methods based on two datasets are presented.},
+  doi       = {http://dx.doi.org/10.1006/jmva.1997.1703},
+  file      = {:papers\\Liu97mleEstTdistEM.pdf:PDF},
+  keywords  = {EM, ECM, ECME, incomplete data, Newton-Raphson},
+  owner     = {sotterson},
+  review    = {What Henry Martin is using to estimate student t copulas for the Prime project.  Also is using it to fill in missing measurements and forecasts.},
+  timestamp = {2017.08.22},
+  url       = {http://www.sciencedirect.com/science/article/pii/S0047259X97917036},
 }
 
 @Article{Giacomini09copulaeTimVar,
@@ -18365,7 +18518,7 @@ Interaction terms might be selectable using: Duvenaud11AddGausProcIntrct},
 @InProceedings{Bessa16gaussCplaDcsns,
   author    = {R. J. Bessa},
   title     = {On the quality of the Gaussian copula for multi-temporal decision-making problems},
-  booktitle = {2016 Power Systems Computation Conference (PSCC)},
+  booktitle = {Power Systems Computation Conference (PSCC)},
   year      = {2016},
   pages     = {1-7},
   month     = {June},
@@ -19044,6 +19197,21 @@ Follow-on project ReWP: IWES14totProjDescReWPR},
 Could be used for analog ensembles, regime detection, scenario tree reduction (maybe, somehow).},
   Timestamp                = {2010.06.24},
   URL                      = {http://jmlr.csail.mit.edu/proceedings/papers/v9/}
+}
+
+@InProceedings{Davarifar14realtimePVdiagSPRT,
+  author    = {M. Davarifar and A. Rabhi and A. Hajjaji and Z. Daneshifar},
+  title     = {Real-time diagnosis of {PV} system by using the Sequential Probability Ratio Test (SPRT)},
+  booktitle = {Proc. 16th Int. Power Electronics and Motion Control Conf. and Exposition},
+  year      = {2014},
+  pages     = {508--513},
+  month     = sep,
+  abstract  = {Online monitoring of PV performance is prevalent in household application and fault supervisory system is new expectation of home user investors. In this regards, this paper has proposed Online PV fault Diagnosis by using Sequential Probability Ratio Test (SPRT) for improve measured signal value and anomaly detection. To identify defect characteristic of PV system, voltage and current of PV system are measured online and compared with simulated values, then residual signal is generated. SPRT let us to detect anomaly condition in-situ, and improve making decision for residual signal. With investigating of two residual signal of current and voltage, fault diagnosis procedure is suggested to classify types of fault and eventually find probability of fault location.},
+  doi       = {10.1109/EPEPEMC.2014.6980544},
+  file      = {:papers\\Davarifar14realtimePVdiagSPRT.pdf:PDF},
+  keywords  = {fault location, photovoltaic power systems, probability, PV system real-time diagnosis, SPRT, anomaly detection, fault location probability, measured signal value improvement, online PV fault diagnosis, sequential probability ratio test, Circuit faults, Junctions, Measurement uncertainty, Monitoring, Standards, Uncertainty, Voltage measurement, Faults diagnosis, PV System, Real time modeling},
+  owner     = {sotterson},
+  timestamp = {2017.07.19},
 }
 
 @Article{Adapa05dynThermRat,
@@ -23161,14 +23329,14 @@ to continuous outcome models, i.e., models in which the dependent variable is a 
 }
 
 @Book{Hastie09elemStatLrnBook,
-  author    = {Hastie, Trevor and Tibshirani, Robert and Friedman, Jerome and Hastie, T and Friedman, J and Tibshirani, R},
   title     = {The Elements of Statistical Learning},
-  year      = {2009},
-  volume    = {2},
-  edition   = {2},
-  number    = {1},
   publisher = {Springer},
-  url       = {http://statweb.stanford.edu/~tibs/ElemStatLearn/},
+  year      = {2009},
+  author    = {Hastie, Trevor and Tibshirani, Robert and Friedman, Jerome and Hastie, T and Friedman, J and Tibshirani, R},
+  volume    = {2},
+  number    = {1},
+  edition   = {2},
+  month     = jan,
   abstract  = {Statistical learning plays a key role in many areas of science, finance and
 industry. Here are some examples of learning problems:
 * Predict whether a patient, hospitalized due to a heart attack, will
@@ -23205,13 +23373,13 @@ is less developed in the literature, and is the focus of Chapter 14.
 Here are some examples of real learning problems that are discussed in
 this book.},
   file      = {Hastie09elemStatLrnBook_print10.pdf:Hastie09elemStatLrnBook_print10.pdf:PDF},
-  month     = jan,
   owner     = {sotterson},
   review    = {The classic statistical learning book that Henning and Olivier liked so much at DTU. Has R code!
 
 * recommends k=5 or 10 for k-fold CV, but he's quoting some other paper
 * relationship between ridge regression lamba and eigenvalues},
   timestamp = {2014.11.07},
+  url       = {https://web.stanford.edu/~hastie/Papers/ESLII.pdf},
 }
 
 @Article{Genton07spaceTimeCovMatrixApprox,
@@ -24103,6 +24271,20 @@ Networks, Recurrent Neural Networks},
   url        = {http://www.ijcaonline.org/archives/volume143/number11/25119-2016910497},
 }
 
+@InProceedings{Dalto15deepNNultraShrtWindSpdPred,
+  author        = {M. Dalto and J. Matuško and M. Vašak},
+  title         = {Deep neural networks for ultra-short-term wind forecasting},
+  booktitle     = {Proc. IEEE Int. Conf. Industrial Technology (ICIT)},
+  year          = {2015},
+  pages         = {1657--1663},
+  month         = mar,
+  __markedentry = {[sotterson:1]},
+  abstract      = {The aim of this paper is to present input variable selection algorithm and deep neural networks application to ultra-short-term wind prediction. Shallow and deep neural networks coupled with input variable selection algorithm are compared on the ultra-short-term wind prediction task for a set of different locations. Results show that carefully selected deep neural networks outperform shallow ones. Input variable selection use reduces the neural network complexity and simplifies deep neural network training.},
+  doi           = {10.1109/ICIT.2015.7125335},
+  file          = {:Dalto15deepNNultraShrtWindSpdPred.pdf:PDF},
+  keywords      = {neural nets, wind power, deep neural network training, input variable selection algorithm, ultrashort-term wind forecasting, ultrashort-term wind prediction, Artificial neural networks, Complexity theory, Input variables, Predictive models, Training, Wind forecasting},
+}
+
 @Article{Yeniay02plsrNcmpsCmpr,
   author   = {Yeniay, {\"O}zg{\"u}r and G{\"o}kta\c{s}, Atill},
   title    = {A comparison of partial least squares regression with other prediction methods},
@@ -24239,20 +24421,52 @@ There's an R implementation of ABC, somewhere in this bibtex file.},
 @Article{Pinson04OonlinePredRiskWind,
   author    = {P. Pinson and G. Kariniotakis},
   title     = {On-line assessment of prediction risk for wind power production forecasts},
+  journal   = {Wind Energy},
   year      = {2004},
   volume    = {7},
   number    = {2},
   pages     = {119--132},
-  doi       = {10.1002/we.114)},
-  url       = {http://www3.interscience.wiley.com/journal/108565883/abstract},
   abstract  = {The article introduces a new methodology for assessing on-line the prediction risk of shortterm wind power forecasts.The first stage of this methodology consists in computing confidence intervals with a confidence level defined by the end-user.The resampling approach is used, which, in contrast to existing methods for wind forecasting, does not need to make a restrictive hypothesis on the distribution of the errors.To account for the non-linearity of the power curve and the cut-off effect, the errors are classified using appropriate fuzzy sets. The confidence intervals are then fine-tuned to reduce their width in the case of stable weather conditions. For this purpose an appropriate index, called the 'meteo-risk index' (MRI), is defined reflecting the spread of the available numerical weather predictions. A linear relation between that index and the resulting prediction error is shown. The second part of the methodology is to use the MRI itself as a preventive on-line tool to derive signals for the operator on the meteorological risk, i.e. the probabilities of the occurrence of high prediction errors depending on the weather stability. Evaluation results of this methodology over a 1 year period on the case study of Ireland are given, where the output of several wind farms is predicted using a dynamic fuzzy neural network-based model.The proposed methodology is generic and can be applied to all kinds of wind power prediction models.},
+  doi       = {10.1002/we.114)},
   file      = {Pinson04OonlinePredRiskWind.pdf:Pinson04OonlinePredRiskWind.pdf:PDF;Pinson04OonlinePredRiskWind.pdf:Pinson04OonlinePredRiskWind.pdf:PDF},
   groups    = {DOE-PNL09, PointDerived, doReadWPV_2},
-  journal   = {Wind Energy},
   owner     = {sotterson},
-  review    = {Confidence level predictor w/ bootstrapping and fuzzy conditional dependence.
-Interesting input feature is the spread of time lagged ensembles (they call this 'stability' but it's not the NWP stability parameter')},
+  review    = {Wind power forecast confidence level predictor w/ bootstrapping and fuzzy conditional dependence.  This is a crude probabilistic wind power forecast with stuff potentially useful for copula conditional covariance matrixes and for quantile regression:  could project copula inputs onto speed/power basis functions, resulting in more meaningful covariance matrices (somehow?) and could use NPW lag MRI as a quantile regression input.
+
+Bootstrapping for confidence intervals, conditional upon deterministically forecasted power and wind speed, latest NWP horizon
+
+* First, sequentially bin into fuzzy forecasted speed/power categories
+   1. Two  speed bins: above and below high wind speed cutoff
+       - above cutoff, forecast error can only be negative
+       - neg. error proportional to forecasted power e.g. if forecast is zero, and in cutoff, error is zero
+    2. Three power bins
+       - low power (zero true power); 
+       - mid power (linear curve); 
+       - high power (saturated or cutoff)
+* Get empirical quantiles for each speed/power category by sampling sliding window of past errors
+* I guess a CI is computed for each category, and then the final CI is a fuzzy set weighted result of each of them
+* A different one for each NWP lookahead time
+* Point forecast came from a fuzzy neural network
+
+Adjustment of bootstrapped intervals w/ time-lagged NWP ensemble spread
+
+* between forecast ages (NWP start times), compute RMS difference of forecasts over a time window (I think)
+* "meteo risk index" (MRI): average over the forecast differences 
+   - I didn't bother to understand this exactly
+   - they call this 'stability' but it's not the NWP stability parameter
+* predict true confidence level with a linear fit of bootstrapped confidence intervals vs. MRI
+   - in eq. 6, is e0 the conf interval width or something?
+   - explanation not totally clear
+   - only allow narrowing of confidence level, not widening
+* in tests, could narrow CI 65% of time, mean narrow was 11% -- pretty good
+* Anyway, MRI would be a good probabilistic forecast feature
+   
+
+See also Pinson10condPredInt
+
+},
   timestamp = {2009.03.03},
+  url       = {http://www3.interscience.wiley.com/journal/108565883/abstract},
 }
 
 @InProceedings{Dobschinski14howGdFrcstVrblty,
@@ -25000,23 +25214,21 @@ Wright99bayesNN is same idea but is less computationally efficient},
 @Article{Nott12enKFisABC,
   author    = {Nott, David J and Marshall, Lucy and Ngoc, Tran Minh},
   title     = {The ensemble {Kalman} filter is an ABC algorithm},
+  journal   = {Statistics and Computing},
   year      = {2012},
   volume    = {22},
   number    = {6},
   pages     = {1273--1276},
-  url       = {http://link.springer.com/article/10.1007%2Fs11222-011-9300-x},
   abstract  = {The ensemble Kalman filter is the method of choice for many difficult high-dimensional filtering problems in meteorology, oceanography, hydrology and other fields. In this note we show that a common variant of the ensemble Kalman filter is an approximate Bayesian computation (ABC) algorithm. This is of interest for a number of reasons. First, the ensemble Kalman filter is an example of an ABC algorithm that predates the development of ABC algorithms. Second, the ensemble Kalman filter is used for very high-dimensional problems, whereas ABC methods are normally applied only in very low-dimensional problems. Third, recent state of the art extensions of the ensemble Kalman filter can also be understood within the ABC framework.},
   file      = {Nott12enKFisABC.pdf:Nott12enKFisABC.pdf:PDF},
   groups    = {Ensemble, PointDerived, Test, doReadNonWPV_2},
-  journal   = {Statistics and Computing},
   owner     = {sotterson},
   publisher = {Springer},
   review    = {Maybe ABC methods can be used for high dim problems, since a kind of ensemble Kalman filter is, and since it's an ABC. Other insights too.
 
-Note that other ABC methods avoid dimensionality problems w/ feature selection or dimension reduction (in this bibtex file). Maybe that's that the EnKF is doing too?
-
-Paper on order from Subito.},
+Note that other ABC methods avoid dimensionality problems w/ feature selection or dimension reduction (in this bibtex file). Maybe that's that the EnKF is doing too?},
   timestamp = {2013.10.04},
+  url       = {http://link.springer.com/article/10.1007%2Fs11222-011-9300-x},
 }
 
 @TechReport{Giebel05windEnsemble,
@@ -25703,11 +25915,10 @@ See also: Taylor07frcstSprMktPriceQR for a comparison w/ exponential weighting},
 }
 
 @PhdThesis{Kraskov04syncIndepMeasMIphd,
-  author        = {Kraskov, Alexander},
-  title         = {Synchronization and Interdependence Measures and their Applications to the Electroencephalogram of Epilepsy Patients and Clustering of Data},
-  year          = {2004},
-  __markedentry = {[sotterson:1]},
-  abstract      = {The history of the very interesting phenomenon of synchronization started in the seven-
+  author      = {Kraskov, Alexander},
+  title       = {Synchronization and Interdependence Measures and their Applications to the Electroencephalogram of Epilepsy Patients and Clustering of Data},
+  year        = {2004},
+  abstract    = {The history of the very interesting phenomenon of synchronization started in the seven-
 teenth century when the famous Dutch researcher Christiaan Huygens observed perfect
 agreement between the oscillating motions of two clocks hanging from a common sup-
 port [41, 89]. The word ?synchronization? came to many contemporary languages from
@@ -25813,14 +26024,14 @@ and applied in Sec. 4.2.2. In Chapter 5 a new algorithm for hierarchical cluster
 on mutual information is presented. In Section 5.1 the algorithm is formulated and in Sec-
 tion 5.3 two its applications are discussed. Finally, the conclusions of this thesis are drawn
 in Chapter 6.},
-  file          = {Kraskov04syncIndepMeasMIphd.pdf:Kraskov04syncIndepMeasMIphd.pdf:PDF},
-  institution   = {Universit{\"a}t Wuppertal, Fakult{\"a}t f{\"u}r Mathematik und Naturwissenschaften{\guillemotright} Physik{\guillemotright} Dissertationen},
-  review        = {* Section 3.2.2 explains in more detail the KNN mutual information estimator in Kraskov04EstMutInfKNN.
+  file        = {Kraskov04syncIndepMeasMIphd.pdf:Kraskov04syncIndepMeasMIphd.pdf:PDF},
+  institution = {Universit{\"a}t Wuppertal, Fakult{\"a}t f{\"u}r Mathematik und Naturwissenschaften{\guillemotright} Physik{\guillemotright} Dissertationen},
+  review      = {* Section 3.2.2 explains in more detail the KNN mutual information estimator in Kraskov04EstMutInfKNN.
 * Perhaps Victor02binlessInfo is even better about the KNN entropy estimator derivation.
 
 
 This is Kraskov's PhD thesiz},
-  url           = {http://elpub.bib.uni-wuppertal.de/servlets/DerivateServlet/Derivate-976/dc04f1.pdf},
+  url         = {http://elpub.bib.uni-wuppertal.de/servlets/DerivateServlet/Derivate-976/dc04f1.pdf},
 }
 
 @Article{Phan14stochOptPowFlow2stage,
@@ -26531,6 +26742,40 @@ days.},
   timestamp = {2008.08.21},
 }
 
+@TechReport{Monahan86GenerateMatrixTdist,
+  author      = {Monahan, John F},
+  title       = {Generating the Matrix t Distribution},
+  institution = {NC State Department of Statistics},
+  year        = {1986},
+  abstract    = {The matrix t distribution is a generalization of the multivariate Student t
+
+distribution, since the marginal distribution of rows or columns are of that
+
+form, as are some conditional distributions of columns. Moreover, Zellner
+
+(1971) uses the name Generalized Student t distribution. The distribution
+
+arises as the marginal posterior distribution of the matrix of regression
+
+coefficients in a multivariate normal regression model. Further details can be
+
+found in Zellner (1971, Chapter 8 and Appendix B.5), Dickey (1967), Geisser
+
+(1965) and Tiao and Zellner (1965).
+
+Since the generation follows a different characterization, the distribution
+
+theory is discussed in Section II. The method of computation is given in
+
+Section III. The first Appendix contains some details in two lemmas. The
+
+code for generating the distribution is given in the second Appendix.},
+  file        = {:papers\\Monahan86GenerateMatrixTdist.pdf:PDF},
+  owner       = {sotterson},
+  timestamp   = {2017.08.22},
+  url         = {http://www.stat.ncsu.edu/information/library/mimeo.php},
+}
+
 @Article{Cardellach03gpsrBlnOcnWnd,
   author    = {Cardellach, E. and Ruffini, G. and Pino, D. and Rius, A. and Komjathy, A. and Garrison, J.L.},
   title     = {Mediterranean balloon experiment: Ocean wind speed sensing from the stratosphere, using {GPS} reflections},
@@ -26590,6 +26835,26 @@ probabilities.},
   owner     = {sotterson},
   review    = {Calls the IWES kind of reliability diagram a "multicategory reliability diagram," or MCRD. Says it's better than binary thresholded reliability diagrams.},
   timestamp = {2014.12.08},
+}
+
+@Article{Hofert13samplingMultivarTdist,
+  author    = {Hofert, Marius},
+  title     = {On Sampling from the Multivariate t Distribution.},
+  journal   = {R Journal},
+  year      = {2013},
+  volume    = {5},
+  number    = {2},
+  abstract  = {The multivariate normal and the multivariate t distributions belong to the most widely used
+multivariate distributions in statistics, quantitative risk management, and insurance. In contrast to
+the multivariate normal distribution, the parameterization of the multivariate t distribution does
+not correspond to its moments. This, paired with a non-standard implementation in the R package
+mvtnorm, provides traps for working with the multivariate t distribution. In this paper, common
+traps are clarified and corresponding recent changes to mvtnorm are presented.},
+  file      = {:papers\\Hofert13samplingMultivarTdist.pdf:PDF},
+  owner     = {sotterson},
+  review    = {May have some good tips for generating samples given a trained t distribution model.},
+  timestamp = {2017.08.22},
+  url       = {https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwiLpcWygOvVAhUlCpoKHYmEANcQFggmMAA&url=https%3A%2F%2Fjournal.r-project.org%2Farchive%2F2013-2%2Fhofert.pdf&usg=AFQjCNEw3lPgSPvoe-y410et6_-xASnhbw},
 }
 
 @InCollection{Haupt14windPowFrcstNCARchapter,
@@ -26973,6 +27238,25 @@ Could be use for estimating reserve requirements, which are a contional value at
   volume    = {234},
 }
 
+@Article{Ghaderi17DeepLrnSpatTempFrcstWindPow,
+  author      = {Amir Ghaderi and Borhan M. Sanandaji and Faezeh Ghaderi},
+  title       = {Deep Forecast: Deep Learning-based Spatio-Temporal Forecasting},
+  journal     = {ICML Time Series Workshop},
+  year        = {2017},
+  abstract    = {The paper presents a spatio-temporal wind speed forecasting algorithm using Deep Learning (DL)and in particular, Recurrent Neural Networks(RNNs). Motivated by recent advances in renewable energy integration and smart grids, we apply our proposed algorithm for wind speed forecasting. Renewable energy resources (wind and solar)are random in nature and, thus, their integration is facilitated with accurate short-term forecasts. In our proposed framework, we model the spatiotemporal information by a graph whose nodes are data generating entities and its edges basically model how these nodes are interacting with each other. One of the main contributions of our work is the fact that we obtain forecasts of all nodes of the graph at the same time based on one framework. Results of a case study on recorded time series data from a collection of wind mills in the north-east of the U.S. show that the proposed DL-based forecasting algorithm significantly improves the short-term forecasts compared to a set of widely-used benchmarks models.},
+  date        = {2017-07-24},
+  eprint      = {1707.08110v1},
+  eprintclass = {cs.LG},
+  eprinttype  = {arXiv},
+  file        = {:Ghaderi17DeepLrnSpatTempFrcstWindPow.pdf:PDF},
+  keywords    = {cs.LG},
+  review      = {Deepl learnign spatio temporal wind power forecast, has TensorFlow code
+
+code
+https://github.com/amirstar/Deep-Forecast},
+  url         = {http://arxiv.org/pdf/1707.08110v1},
+}
+
 @Article{Skartveit98hourlydiffusefraction,
   author    = {Arvid Skartveit and Jan Asle Olseth and Marit Elisabet Tuft},
   title     = {An hourly diffuse fraction model with correction for variability and surface albedo},
@@ -27273,6 +27557,25 @@ the features common in both machine learning and statistics.},
   owner     = {sotterson},
   review    = {Friendly overview of QR with lots of meteorological example plots. Might be good as an inspiration for a tutorial.},
   timestamp = {2013.10.23},
+}
+
+@Article{Kibria06matrixTdistAppInf,
+  author    = {B.M. Golam Kibria},
+  title     = {The matrix-t distribution and its applications in predictive inference},
+  journal   = {Journal of Multivariate Analysis},
+  year      = {2006},
+  volume    = {97},
+  number    = {3},
+  pages     = {785 - 795},
+  issn      = {0047-259X},
+  abstract  = {The predictive distributions of the future responses and regression matrix under the multivariate elliptically contoured distributions are derived using structural approach. The predictive distributions are obtained as matrix-t which are identical to those obtained under matrix normal and matrix-t distributions. This gives inference robustness with respect to departures from the reference case of independent sampling from the matrix normal or dependent but uncorrelated sampling from matrix-t distributions. Some successful applications of matrix-t distribution in the field of spatial prediction have been addressed.},
+  doi       = {http://dx.doi.org/10.1016/j.jmva.2005.08.001},
+  file      = {:papers\\Kibria06matrixTdistAppInf.pdf:PDF},
+  keywords  = {Elliptically contoured distribution, Matrix-, Multivariate linear model, Predictive distribution, Robustness, Spatial prediction, Tolerance region},
+  owner     = {sotterson},
+  review    = {Might be good for parsimoniously modeling time dependence of a multivariate signal the way that the matrix normal distribution is.  Also, maybe good for mixtures of t-distributions the way matrix normal distribution is.},
+  timestamp = {2017.08.22},
+  url       = {http://www.sciencedirect.com/science/article/pii/S0047259X05001260},
 }
 
 @Article{Heim07spaceVaryCoeffs3D,
@@ -28745,6 +29048,41 @@ http://de.mathworks.com/products/connections/product_detail/product_35730.html},
   URL                      = {http://math.bu.edu/people/mveillet/html/alphastablepub.html}
 }
 
+@Article{Bengio09lrnDeepArchAI,
+  author   = {Yoshua Bengio},
+  title    = {Learning Deep Architectures for AI},
+  journal  = {Foundations and Trends® in Machine Learning},
+  year     = {2009},
+  volume   = {2},
+  number   = {1},
+  pages    = {1-127},
+  issn     = {1935-8237},
+  abstract = {Theoretical results suggest that in order to learn the kind of com-
+plicated functions that can represent high-level abstractions (e.g., in
+vision, language, and other AI-level tasks), one may need deep architec-
+tures. Deep architectures are composed of multiple levels of non-linear
+operations, such as in neural nets with many hidden layers or in com-
+plicated propositional formulae re-using many sub-formulae. Searching
+the parameter space of deep architectures is a difficult task, but learning
+algorithms such as those for Deep Belief Networks have recently been
+proposed to tackle this problem with notable success, beating the state-
+of-the-art in certain areas. This monograph discusses the motivations
+and principles regarding learning algorithms for deep architectures, in
+particular those exploiting as building blocks unsupervised learning of
+single-layer models such as Restricted Boltzmann Machines, used to
+construct deeper models such as Deep Belief Networks.},
+  doi      = {10.1561/2200000006},
+  file     = {:Bengio09lrnDeepArchAI.pdf:PDF},
+  review   = {Section 2 is said to be an informal explanation for why deep NN's can be better than shallow ones.
+
+Other explanations:
+  Pascanu2013numRespRgnsDeepNNpieceLin
+  Montufar2014numLinRegnDeepNN
+
+Guy who said it was an informal explanation: http://neuralnetworksanddeeplearning.com/chap5.html},
+  url      = {http://dx.doi.org/10.1561/2200000006},
+}
+
 @Article{Zanobetti00addDistLagMort,
   author    = {Zanobetti, A and Wand, MP and Schwartz, J and Ryan, LM},
   title     = {Generalized additive distributed lag models: quantifying mortality displacement},
@@ -28906,8 +29244,7 @@ the past.},
   file      = {:papers\\Ghosh02cbDistMargCovNoGaussCpla.pdf:PDF},
   owner     = {sotterson},
   publisher = {INFORMS},
-  review    = {Shows that a checkerboard dist can exist and can be reproduced.  Matters because it's used in XX to prove that a desired Pearson correlation matrix, in combination with uniform margins, is unattain-
-able via the Gaussian copula.},
+  review    = {Shows that a checkerboard dist can exist and can be reproduced.  Matters because it's used in XX to prove that a desired Pearson correlation matrix, in combination with uniform margins, is unattainable via the Gaussian copula.},
   timestamp = {2017.07.05},
   url       = {http://www.academia.edu/download/43767639/Chessboard_Distributions_and_Random_Vect20160315-1498-wghlxj.pdf},
 }
@@ -30372,6 +30709,26 @@ Seems possible since QR's would still be linear.},
   timestamp   = {2014.06.17},
 }
 
+@Article{Pascanu2013numRespRgnsDeepNNpieceLin,
+  author      = {Razvan Pascanu and Guido Montufar and Yoshua Bengio},
+  title       = {On the number of response regions of deep feed forward networks with piece-wise linear activations},
+  abstract    = {This paper explores the complexity of deep feedforward networks with linear pre-synaptic couplings and rectified linear activations. This is a contribution to the growing body of work contrasting the representational power of deep and shallow network architectures. In particular, we offer a framework for comparing deep and shallow models that belong to the family of piecewise linear functions based on computational geometry. We look at a deep rectifier multi-layer perceptron (MLP) with linear outputs units and compare it with a single layer version of the model. In the asymptotic regime, when the number of inputs stays constant, if the shallow model has $kn$ hidden units and $n_0$ inputs, then the number of linear regions is $O(k^{n_0}n^{n_0})$. For a $k$ layer model with $n$ hidden units on each layer it is $\Omega(\left\lfloor {n}/{n_0}\right\rfloor^{k-1}n^{n_0})$. The number $\left\lfloor{n}/{n_0}\right\rfloor^{k-1}$ grows faster than $k^{n_0}$ when $n$ tends to infinity or when $k$ tends to infinity and $n \geq 2n_0$. Additionally, even when $k$ is small, if we restrict $n$ to be $2n_0$, we can show that a deep model has considerably more linear regions that a shallow one. We consider this as a first step towards understanding the complexity of these models and specifically towards providing suitable mathematical tools for future analysis.
+
+Keywords: Deep learning, artificial neural network, rectifier unit, hyperplane arrangement, representational power},
+  date        = {2013-12-20},
+  eprint      = {1312.6098v5},
+  eprintclass = {cs.LG},
+  eprinttype  = {arXiv},
+  file        = {:Pascanu2013numRespRgnsDeepNNpieceLin.pdf:PDF},
+  keywords    = {cs.LG, cs.NE},
+  review      = {How a deep NN can model more complexity than a shallow one, given the same # of hidden nodes.  For a fixed # of hidden nodes, the number of piecewise linear regions increases faster with a deep NN than a shallow one.
+
+See also: 
+Montufar2014numLinRegnDeepNN
+Bengio09lrnDeepArchAI},
+  url         = {https://arxiv.org/abs/1312.6098},
+}
+
 @Article{Souza10gpCorrBoost,
   author    = {Souza, LuziaVidal and Pozo, Aurora and da??Rosa, JoelMauricioCorrea and Neto, AnselmoChaves},
   title     = {Applying correlation to enhance boosting technique using genetic programming as base learner},
@@ -31030,6 +31387,15 @@ http://scholar.google.com/scholar?q=ensemble+pruning+adaboost+streaming&hl=en&as
    - unstable when kernel denominator term near zero
    - can only do kernel product for several explanatory variables
    - is a regression approach, not a statistically motivated density approach (like a copula, I guess)
+
+BASIC COPULA IDEA
+* directly forecast from NWP instead of from deterministic power forecasts
+   - direct prob forecast is defined as preferred approach but why is not explained
+* use a copula to model the joint distribution of NWP variables and power
+   - separately transform each NWP input to uniform, as well as corresponding measured wind power
+      - the marginal transforms are done with unconditional, fixed empirical cdfs i.e. just counts.
+    - the copula joint rank relational model is done with a kernel product method.
+* power forecast is the conditional distribution
 
 NOT THE USUAL COPULA IDEA
 * Differentiate the usual cdf copula to make a density estimator, with c(u,v)  and f(y) terms
@@ -34336,23 +34702,22 @@ coe?cient models; Varying coe?cient models;},
 }
 
 @Article{Lu05sepCovMatLikRatTest,
-  author        = {Nelson Lu and Dale L. Zimmerman},
-  title         = {The likelihood ratio test for a separable covariance matrix},
-  journal       = {Statistics \& Probability Letters},
-  year          = {2005},
-  volume        = {73},
-  number        = {4},
-  pages         = {449 - 457},
-  issn          = {0167-7152},
-  __markedentry = {[sotterson:6]},
-  abstract      = {We consider the problem of testing whether a covariance matrix has a separable (Kronecker product) structure. Such structure is of particular interest when the observed variables can be cross-classified by two factors, as occurs for example when comparable or identical characteristics are measured on several parts of each subject. We derive the likelihood ratio test for separability on the basis of a random sample from a multivariate normal population, and we establish an invariance property of the test statistic that allows us to table its null distribution. An example illustrates the methodology.},
-  doi           = {http://dx.doi.org/10.1016/j.spl.2005.04.020},
-  file          = {:papers\\Lu05sepCovMatLikRatTest.pdf:PDF},
-  keywords      = {Kronecker product, Likelihood ratio test, Separability},
-  owner         = {sotterson},
-  review        = {Can you do a matrix normal distribution type Kronecker product covariance separation?},
-  timestamp     = {2017.07.11},
-  url           = {http://www.sciencedirect.com/science/article/pii/S0167715205001495},
+  author    = {Nelson Lu and Dale L. Zimmerman},
+  title     = {The likelihood ratio test for a separable covariance matrix},
+  journal   = {Statistics \& Probability Letters},
+  year      = {2005},
+  volume    = {73},
+  number    = {4},
+  pages     = {449 - 457},
+  issn      = {0167-7152},
+  abstract  = {We consider the problem of testing whether a covariance matrix has a separable (Kronecker product) structure. Such structure is of particular interest when the observed variables can be cross-classified by two factors, as occurs for example when comparable or identical characteristics are measured on several parts of each subject. We derive the likelihood ratio test for separability on the basis of a random sample from a multivariate normal population, and we establish an invariance property of the test statistic that allows us to table its null distribution. An example illustrates the methodology.},
+  doi       = {http://dx.doi.org/10.1016/j.spl.2005.04.020},
+  file      = {:papers\\Lu05sepCovMatLikRatTest.pdf:PDF},
+  keywords  = {Kronecker product, Likelihood ratio test, Separability},
+  owner     = {sotterson},
+  review    = {Can you do a matrix normal distribution type Kronecker product covariance separation?},
+  timestamp = {2017.07.11},
+  url       = {http://www.sciencedirect.com/science/article/pii/S0167715205001495},
 }
 
 @InProceedings{Ide09ProxAnomDetSprs,
@@ -34488,13 +34853,11 @@ Is this used in Dubois15deepMineCopulaHyper, which has Python?},
 }
 
 @InProceedings{Gao15mutInfoStrongDep,
-  author        = {Gao, Shuyang and Ver Steeg, Greg and Galstyan, Aram},
-  title         = {Efficient Estimation of Mutual Information for Strongly Dependent Variables.},
-  booktitle     = {AISTATS},
-  year          = {2015},
-  url           = {http://www.jmlr.org/proceedings/papers/v38/gao15.pdf},
-  __markedentry = {[sotterson:1]},
-  abstract      = {We demonstrate that a popular class of non-
+  author    = {Gao, Shuyang and Ver Steeg, Greg and Galstyan, Aram},
+  title     = {Efficient Estimation of Mutual Information for Strongly Dependent Variables.},
+  booktitle = {AISTATS},
+  year      = {2015},
+  abstract  = {We demonstrate that a popular class of non-
 parametric mutual information (MI) estima-
 tors based on k-nearest-neighbor graphs re-
 quires number of samples that scales expo-
@@ -34512,13 +34875,14 @@ tionship strengths over many orders of mag-
 nitude. We demonstrate the superior perfor-
 mance of the proposed estimator on both syn-
 thetic and real-world data.},
-  file          = {Gao15mutInfoStrongDep.pdf:Gao15mutInfoStrongDep.pdf:PDF},
-  review        = {Says Kraskov MI estimator (Kraskov04EstMutInfKNN) needs exponential num. points to estimate MI of strongly dependent variables.  Has a python implmentation of an MI estimatore built on Kraskov that is efficient for small sample sizes.  Also has a section covering which MI estimation technique is best in what situation.
+  file      = {Gao15mutInfoStrongDep.pdf:Gao15mutInfoStrongDep.pdf:PDF},
+  review    = {Says Kraskov MI estimator (Kraskov04EstMutInfKNN) needs exponential num. points to estimate MI of strongly dependent variables.  Has a python implmentation of an MI estimatore built on Kraskov that is efficient for small sample sizes.  Also has a section covering which MI estimation technique is best in what situation.
 
 See: Gao15mutInfoStrongDep
 
 Python implementation
 https://github.com/BiuBiuBiLL/NPEET_LNC},
+  url       = {http://www.jmlr.org/proceedings/papers/v38/gao15.pdf},
 }
 
 @Article{Samworth12optWgtKNNclass,
@@ -35923,6 +36287,23 @@ File came from: K:\Organisation\Kongresse\2014\2014-11_Wind_Integration_Workshop
   Timestamp                = {2010.11.08}
 }
 
+@Article{Theis12MixCondiGaussScaleMixImg,
+  author        = {Theis, Lucas and Hosseini, Reshad and Bethge, Matthias},
+  title         = {Mixtures of conditional Gaussian scale mixtures applied to multiscale image representations},
+  journal       = {PloS one},
+  year          = {2012},
+  volume        = {7},
+  number        = {7},
+  pages         = {e39857},
+  __markedentry = {[sotterson:6]},
+  abstract      = {We present a probabilistic model for natural images that is based on mixtures of Gaussian scale mixtures and a simple multiscale representation. We show that it is able to generate images with interesting higher-order correlations when trained on natural images or samples from an occlusion-based model. More importantly, our multiscale model allows for a principled evaluation. While it is easy to generate visually appealing images, we demonstrate that our model also yields the best performance reported to date when evaluated with respect to the cross-entropy rate, a measure tightly linked to the average log-likelihood. The ability to quantitatively evaluate our model differentiates it from other multiscale models, for which evaluation of these kinds of measures is usually intractable.},
+  doi           = {https://doi.org/10.1371/journal.pone.0039857},
+  file          = {:Theis12MixCondiGaussScaleMixImg.pdf:PDF},
+  publisher     = {Public Library of Science},
+  review        = {A Gaussian mixture model with conditional mixture weights as well as covariances.  Seems like it might be good for regime detection or a copula internal probability model (conditional mixture could handle Gaussian extreme shortcomings, and conditional covariance would handle non-stationary covariance (like wind power where wind speed above or below the linear region changes the covariance matrix)).},
+  url           = {http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0039857},
+}
+
 @Article{Brown12condLikInfoFeatSel,
   author    = {Brown, Gavin and Pocock, Adam and Zhao, Ming-Jie and Luj{\'a}n, Mikel},
   title     = {Conditional likelihood maximisation: a unifying framework for information theoretic feature selection},
@@ -36011,24 +36392,23 @@ Also, Axel's subsampling bootstrap algorithm is suspect. He sorta did what I did
 }
 
 @Article{Victor02binlessInfo,
-  author        = {Victor, Jonathan D.},
-  title         = {Binless strategies for estimation of information from neural data},
-  year          = {2002},
-  volume        = {66},
-  number        = {5},
-  month         = nov,
-  pages         = {051903},
-  doi           = {10.1103/PhysRevE.66.051903},
-  url           = {http://pre.aps.org.globalproxy.cvt.dk/abstract/PRE/v66/i5/e051903},
-  __markedentry = {[sotterson:1]},
-  abstract      = {We present an approach to estimate information carried by experimentally observed neural spike trains elicited by known stimuli. This approach makes use of an embedding of the observed spike trains into a set of vector spaces, and entropy estimates based on the nearest-neighbor Euclidean distances within these vector spaces at L. F. Kozachenko and N. N. Leonenko, Probl. Peredachi Inf. 23, 9 ~1987!\#. Using numerical examples, we show that this approach can be dramatically more efficient than standard bin-based approaches such as the ??direct??method at S. P. Strong, R. Koberle, R. R. de Ruyter van Steveninck, and W. Bialek, Phys. Rev. Lett. 80, 197 ~1998!\# for amounts of data typically available from laboratory experiments.},
-  file          = {Victor02binlessInfo.pdf:Victor02binlessInfo.pdf:PDF},
-  journal       = {Physical Review E},
-  numpages      = {15},
-  owner         = {scot},
-  publisher     = {American Physical Society},
-  review        = {Explains KNN entropy estimation but using only one nearest neighbor and in Euclidean instead of maximum-norm space.  Derivation may help in understanding  Kraskov04EstMutInfKNN or Kraskov04syncIndepMeasMIphd?},
-  timestamp     = {2011.06.01},
+  author    = {Victor, Jonathan D.},
+  title     = {Binless strategies for estimation of information from neural data},
+  journal   = {Physical Review E},
+  year      = {2002},
+  volume    = {66},
+  number    = {5},
+  pages     = {051903},
+  month     = nov,
+  abstract  = {We present an approach to estimate information carried by experimentally observed neural spike trains elicited by known stimuli. This approach makes use of an embedding of the observed spike trains into a set of vector spaces, and entropy estimates based on the nearest-neighbor Euclidean distances within these vector spaces at L. F. Kozachenko and N. N. Leonenko, Probl. Peredachi Inf. 23, 9 ~1987!\#. Using numerical examples, we show that this approach can be dramatically more efficient than standard bin-based approaches such as the ??direct??method at S. P. Strong, R. Koberle, R. R. de Ruyter van Steveninck, and W. Bialek, Phys. Rev. Lett. 80, 197 ~1998!\# for amounts of data typically available from laboratory experiments.},
+  doi       = {10.1103/PhysRevE.66.051903},
+  file      = {Victor02binlessInfo.pdf:Victor02binlessInfo.pdf:PDF},
+  numpages  = {15},
+  owner     = {scot},
+  publisher = {American Physical Society},
+  review    = {Explains KNN entropy estimation but using only one nearest neighbor and in Euclidean instead of maximum-norm space.  Derivation may help in understanding  Kraskov04EstMutInfKNN or Kraskov04syncIndepMeasMIphd?},
+  timestamp = {2011.06.01},
+  url       = {http://pre.aps.org.globalproxy.cvt.dk/abstract/PRE/v66/i5/e051903},
 }
 
 @Article{Dhillon08featSelFeatClass,
@@ -36417,15 +36797,14 @@ method which does not incorporate joint distributional information.},
 @Article{Frenzel07partMutInfo,
   author               = {Stefan Frenzel and Bernd Pompe},
   title                = {Partial Mutual Information for Coupling Analysis of Multivariate Time Series},
+  journal              = {Physical Review Letters},
   year                 = {2007},
   volume               = {99},
   number               = {20},
-  doi                  = {10.1103/PhysRevLett.99.204101},
-  __markedentry        = {[sotterson:1]},
   abstract             = {We propose a method to discover couplings in multivariate time series, based on partial mutual information, an information-theoretic generalization of partial correlation. It represents the part of mutual information of two random quantities that is not contained in a third one. By suitable choice of the latter, we can differentiate between direct and indirect interactions and derive an appropriate graphical model. An efficient estimator for partial mutual information is presented as well.},
   citeulike-article-id = {2189735},
+  doi                  = {10.1103/PhysRevLett.99.204101},
   file                 = {Frenzel07partMutInfo.pdf:Frenzel07partMutInfo.pdf:PDF},
-  journal              = {Physical Review Letters},
   keywords             = {information, information\_theory, information\_transfer, math},
   owner                = {sotterson},
   posted-at            = {2008-01-02 19:45:57},
@@ -37183,6 +37562,26 @@ Oline implementation
   owner     = {sotterson},
   review    = {A mix of linear QR (possibly autoregressive) and nonlinear QR. Idea is dimension reduction. Several refs to other dim reduction methods on p. 2. Could be related to adaboost ideas.},
   timestamp = {2013.10.24},
+}
+
+@InCollection{Montufar2014numLinRegnDeepNN,
+  author    = {Montufar, Guido F and Pascanu, Razvan and Cho, Kyunghyun and Bengio, Yoshua},
+  title     = {On the Number of Linear Regions of Deep Neural Networks},
+  booktitle = {Advances in Neural Information Processing Systems 27},
+  publisher = {Curran Associates, Inc.},
+  year      = {2014},
+  editor    = {Z. Ghahramani and M. Welling and C. Cortes and N. D. Lawrence and K. Q. Weinberger},
+  pages     = {2924--2932},
+  abstract  = {We study the complexity of functions computable by deep feedforward neural networks with piecewise linear activations in terms of the symmetries and the number of linear regions that they have. Deep networks are able to sequentially map portions of each layer's input-space to the same output. In this way, deep models compute functions that react equally to complicated patterns of different inputs. The compositional structure of these functions enables them to re-use pieces of computation exponentially often in terms of the network's depth. This paper investigates the complexity of such compositional maps and contributes new theoretical results regarding the advantage of depth for neural networks with piecewise linear activation functions. In particular, our analysis is not specific to a single family of models, and as an example, we employ it for rectifier and maxout networks. We improve complexity bounds from pre-existing work and investigate the behavior of units in higher layers.
+
+Keywords: Deep learning, neural network, input space partition, rectifier, maxout},
+  file      = {:Montufar2014numLinRegnDeepNN.pdf:PDF},
+  review    = {How NN complexity increases w/ # hidden units for piecwise linear activations.
+
+See also
+Pascanu2013numRespRgnsDeepNNpieceLin
+Bengio09lrnDeepArchAI},
+  url       = {http://papers.nips.cc/paper/5422-on-the-number-of-linear-regions-of-deep-neural-networks.pdf},
 }
 
 @Article{Selen08layLinRgrOrder,
@@ -39356,15 +39755,15 @@ KDE better than spline in some ways (spline QR compared to is: Nielsen06quantReg
   url       = {https://studylib.net/doc/16006792/understanding-local-diurnal-winds},
 }
 
-@TECHREPORT{3tier07windRampSGII,
-  Author                   = {3TIER},
-  Title                    = {A Prototype Day-Ahead Rapid Wind Ramp Event Forecast System Stage Gate II ? Interim Report},
-  Institution              = {3TIER},
-  Year                     = {2007},
-  File                     = {3tier07windRampSGII.pdf:3tier07windRampSGII.pdf:PDF;3tier07windRampSGII.pdf:3tier07windRampSGII.pdf:PDF},
-  Owner                    = {sotterson},
-  Review                   = {3TIER's ramp prediction report. IDEA for improvement * use regression w/ arbitrary cost function (penalizing ramp misses in proportion to ancilary costs entailed).},
-  Timestamp                = {2008.12.10}
+@TechReport{3tier07windRampSGII,
+  author      = {3TIER},
+  title       = {A Prototype Day-Ahead Rapid Wind Ramp Event Forecast System Stage Gate II ? Interim Report},
+  institution = {3TIER},
+  year        = {2007},
+  file        = {3tier07windRampSGII.pdf:3tier07windRampSGII.pdf:PDF},
+  owner       = {sotterson},
+  review      = {3TIER's ramp prediction report. IDEA for improvement * use regression w/ arbitrary cost function (penalizing ramp misses in proportion to ancilary costs entailed).},
+  timestamp   = {2008.12.10},
 }
 
 @Book{9781319042387,
@@ -40880,19 +41279,20 @@ Statistical models of wind speed vs. wind power
 }
 
 @Article{Fonseca15modelDepCopulaCrsNts,
-  author    = {Pedro Fonseca},
-  title     = {Modeling Dependencies, Lecture 8},
-  journal   = {Quantitative Finance, Spring, University of Zurich},
-  year      = {2015},
-  file      = {:papers\\Fonseca15modelDepCopulaCrsNts.pdf:PDF},
-  owner     = {sotterson},
-  review    = {Why and how to model dependies, mainly Pearson/Spearman/Kendall and copulas.  Nice cookbooks and recipies.  Good summary of tail correlation, calibration.
+  author        = {Pedro Fonseca},
+  title         = {Modeling Dependencies, Lecture 8},
+  journal       = {Quantitative Finance, Spring, University of Zurich},
+  year          = {2015},
+  __markedentry = {[sotterson:1]},
+  file          = {:papers\\Fonseca15modelDepCopulaCrsNts.pdf:PDF},
+  owner         = {sotterson},
+  review        = {Why and how to model dependies, mainly Pearson/Spearman/Kendall and copulas.  Nice cookbooks and recipies.  Good summary of tail correlation, calibration.
 
 Note that Student-T distribution has 2 sided tail correlation and is non-zero even when linear corr is zero.
 
 Says correlation matrix is hard to calibrate.},
-  timestamp = {2017.07.05},
-  url       = {https://people.math.ethz.ch/~farkas/teaching/QF_FS15.html},
+  timestamp     = {2017.07.05},
+  url           = {https://people.math.ethz.ch/~farkas/teaching/QF_FS15.html},
 }
 
 @MISC{Fox05nonParamRgrs,
@@ -41260,6 +41660,17 @@ http://r-forge.r-project.org/projects/spcopula/},
   groups      = {DOE-PNL09},
   owner       = {sotterson},
   timestamp   = {2009.03.03},
+}
+
+@Article{Guan17intradayMktDE,
+  author    = {Wenlin Guan},
+  title     = {Analyse historischer Daten des Intradaymarktes f?r Strom der EPEX Spot},
+  journal   = {Master's Thesis Talk},
+  year      = {2017},
+  file      = {:papers\\Guan17intradayMktDE.pdf:PDF},
+  owner     = {sotterson},
+  review    = {Seems to be something like an analog forecasast of intraday market prices on the German EPEX spot market.  This is the Master's Thesis tald (I think) of Henry Martin's officemate's boyfriend.  },
+  timestamp = {2017.08.22},
 }
 
 @Article{Guo13GaussGraphStructLrnSlides,
@@ -42582,16 +42993,15 @@ Slides: https://pdfs.semanticscholar.org/e882/a6014ac4d66b1035729305ff8aa76ba5d0
 }
 
 @Article{Lizier14JIDTinfoToolkit_SupMat,
-  author        = {Lizier, Joseph T},
-  title         = {Supplementary Material: JIDT: An information-theoretic toolkit for studying the dynamics of complex systems},
-  year          = {2014},
-  url           = {http://journal.frontiersin.org/file/downloadfile/870/octet-stream/presentation%201.pdf/796/2/113567},
-  __markedentry = {[sotterson:1]},
-  file          = {Lizier14JIDTinfoToolkit_SupMat.pdf:Lizier14JIDTinfoToolkit_SupMat.pdf:PDF},
-  review        = {Supplementary detail about the types of Mutual Information, referenced in the nice Table 1 in Lizier14JIDTinfoToolkit
+  author = {Lizier, Joseph T},
+  title  = {Supplementary Material: JIDT: An information-theoretic toolkit for studying the dynamics of complex systems},
+  year   = {2014},
+  file   = {Lizier14JIDTinfoToolkit_SupMat.pdf:Lizier14JIDTinfoToolkit_SupMat.pdf:PDF},
+  review = {Supplementary detail about the types of Mutual Information, referenced in the nice Table 1 in Lizier14JIDTinfoToolkit
 
 Conditional Mutual Information: explanation of how Kraskov04 was improved for condittional MI
 (but I think Frenzel07partMutInfo says conditional MI is often conflated with with partial MI)},
+  url    = {http://journal.frontiersin.org/file/downloadfile/870/octet-stream/presentation%201.pdf/796/2/113567},
 }
 
 @Article{Lorenz14WhereSolPowFrcst,

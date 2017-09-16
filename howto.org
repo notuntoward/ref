@@ -1,3 +1,6 @@
+
+TODO: Why does package-autoremove want to remove stuff like xcscope, buffer-move and cygwin-mount
+
 * Emacs
 *** *Emacs to try*
 
@@ -272,6 +275,9 @@
 ******* [[http://guides.lib.berkeley.edu/information-studies/apis][APIs for scholarly resources]]
 ******* See also: [[BibTex and Emacs]]
 ***** *ACCEPTED*
+******* ACCEPTED [[Jumping to papers from inside of org-mode and bibtex files]]
+******* ACCEPTED [[help:ivy-push-view]] (window configs)
+        I've bound it in my .emacs.  See [[Saving/restoring window sessions]]
 ******* ACCEPTED [[http://oremacs.com/2015/10/23/dired-compress/][dired file compression]] instead of crypt++
 ******* ACCEPTED Make =M-%= search string comes from region, like =C-s= does
         Done: I installed package [[https://www.emacswiki.org/emacs/replace-from-region.el][replace-from-region.el]]
@@ -1180,11 +1186,15 @@ Many text editors have access to these in some simple way, so before thinking ab
       ~(define-key global-map [mouse-4] 'next-multiframe-window)
       (define-key global-map [mouse-5] 'previous-multiframe-window)~
 
-*** Moving windows around:    =C-S-arrowkeys=
+*** Moving windows around:    =C-S-arrowkeys=, =C-|=
 
-    <C-S-arrowkeys>
+    *C-S-arrowkeys*
 
     (these are buffer-move commands mapped in my .emacs)
+
+    *C-|*
+
+    rotates from horizontal to vertical splitting
 
 *** Undo/Redo of window config: [[https://www.emacswiki.org/emacs/WinnerMode][winner-mode]]:
 
@@ -1194,8 +1204,8 @@ Many text editors have access to these in some simple way, so before thinking ab
 
       Doesn't save across sessions but I'll keep it because it's so simple.
 
-    Could also use [[https://oremacs.com/2016/06/27/ivy-push-view/][ivy-push-view]]
-      See: [[https://github.com/abo-abo/swiper/pull/587][Store full window-configuration with ivy-push-view by alfaromurillo]]
+    Could also use
+    See: [[https://github.com/abo-abo/swiper/pull/587][Store full window-configuration with ivy-push-view by alfaromurillo]]
 
 *** <<Emacs symbols>>
     From [[help:xah-math-input]]
@@ -1235,6 +1245,12 @@ Many text editors have access to these in some simple way, so before thinking ab
 *** TRY Hydras for window movement, moving cursor to windows, other window management
     https://github.com/abo-abo/hydra/wiki/Window-Management
 *** TRY <<Saving/restoring window sessions>>
+
+    For now, I've bound ~ivy-push-view~, ~ivy-pop-view~ and ~ivy-switch-view~
+
+    I wish it stored views but that's not there yet.  See my comment on a the ivy site here:
+    [[https://github.com/abo-abo/swiper/pull/587][  Store full window-configuration with ivy-push-view by alfaromurillo · Pull Re...]]
+
 ***** A big list of [[https://www.emacswiki.org/emacs/SessionManagement][Emacs Session Management Packages]]
 ***** builtin desktop saver (workable, but indirect buffer problem)
 
@@ -1285,6 +1301,8 @@ Many text editors have access to these in some simple way, so before thinking ab
 ***** [[https://oremacs.com/2016/06/27/ivy-push-view/][Bookmark the current window layout with Ivy · (or emacs]]
       Was still broken in May 2017 (I commented): 
         [[https://github.com/abo-abo/swiper/pull/587][Store full window-configuration with ivy-push-view by alfaromurillo · Pull Re...]]
+
+***** TRY [[help:ivy-push-view]] (window configs, now not saved to file.  Future?)
 ***** TRY winsav.el, part of [[https://github.com/jwiegley/nxhtml][nxhtml]] – Save and restore frames and window configurations.
 
       It's not a pkg so it's here:
@@ -1564,8 +1582,39 @@ Strike-through: nil
       OR  F4
 
 *** <<Windows Emacs>>
-***** [[http://vgoulet.act.ulaval.ca/en/emacs/][Windows Emacs w/ latest R built-in]]
-      <<Windows Emacs w/ latest R built-in>>
+***** Windows emacs builds
+******* <<Chocolatey Emacs>> choco install emacs64 (in admin powershell)
+        From: [[https://www.reddit.com/r/emacs/comments/5xoga4/what_is_the_current_best_way_to_set_up_emacs_on/][What is the current best way to set up emacs on Windows?]] 
+        Used: [[Chocolatey]]
+        9/16/2017: I installed it.  
+
+        It was installed to:
+
+        c:/ProgramData/chocolatey/lib/emacs64/tools/emacs/bin
+
+        (can't see ProgramData by default in File Explorer but it will go there if you type the path into the top bar)
+
+        Installed extra packages (so would work like [[Vincent Goulet Emacs]])
+
+        Associating runemacs w/ .org files, etc.
+          In Windows 10, search "default app settings" , then go to default by file type
+
+          But it still created a new, separate emacs window, rather than putting it in existing emacs window.
+
+
+        *Problems*
+
+        o had to install extra packages that [[Vincent Goulet Emacs]]
+        o had rm ~/.emacs.d/elpa and reinstall due to unidentifiable lisp probs.
+        o could associate files w/ emacs but they started a new emacs window 
+        
+******* <<Vincent Goulet Emacs>>: Windows Emacs w/ latest R built-in 
+        [[https://vigou3.github.io/emacs-modified-windows/][Emacs Modified for Windows]]
+
+        The install site above has a good list of packages for latex/markdown/R (ess)
+        
+        I used this list to pick extra packages for [[Chocolatey Emacs]]
+
 ***** Installing
 
       1. Run the emacs windows installer e.g.
@@ -1588,22 +1637,21 @@ Strike-through: nil
       7. [[Pinning emacs to Windows 10 Taskbar]]
 
 ***** Pinning emacs to taskbar
-******* Pinning emacs to Windows 10 Taskbar
-        <<Pinning emacs to Windows 10 Taskbar>>
+******* <<Pinning emacs to Windows 10 Taskbar>>
 
         How to pin it w/o getting the extra cmd window from showing up
 
-        1. Start emacs (can just click on emacs icon in the windows start menu)
+        1. Start emacs (click on emacs icon in windows start menu), this must be emacs.exe, not runemacs.exe or emacsclientw.exe
         2. Pin it to the taskbar (right click on taskbar icon)
         3. Right click on the emacs icon in the taskbar and edit Properties
-        4. Target == "C:\Program Files (x86)\GNU Emacs 25.1\bin\runemacs.exe"
+        4. Target == "<path to emacs install just above bin>\bin\runemacs.exe"
         5. set Start in: to %HOME%
 
         _Historical Note_: Windows 10 had an [[9696
 
-|
+|   |
 ][AppID bug]] that broke pinning but it
-        was [[http://permalink.gmane.org/gmane.emacs.windows/6050][fixed]], and I noticed that it /almost/ worked on 7/17/16.
+        was [[http://permalink.gmane.org/gmane.emacs.windows/6050][fixed]], and I noticed that it /almost/ worked on 7/17/16.  Seems to be totally fixed on 9/15/17.
 
 ********* Old stuff that didn't work
 *********** _This Windows 10 fix doesn't work:_
@@ -1794,8 +1842,7 @@ Strike-through: nil
                  removed) but I can't get it to work.  I [[https://mail.google.com/mail/u/0/?shva%3D1#inbox/13c5d929961bd808][posted a question]] to
                  him.
 
-***** Windows .emacs.d problem
-      <<Windows .emacs.d problem>>
+***** <<Windows .emacs.d problem>>
 
       Get ".emacs.d is unsafe" error message when have a user account w/
       admin privileges.  Fix by changing own to the user.
@@ -1884,6 +1931,24 @@ Strike-through: nil
 ***** says you can edit the entries locally, and submit the changes to Redmine.
 
 ***** See [[Get IEEE & ScienceDirect with abstracts in emacs]]
+***** <<Jumping to papers from inside of org-mode and bibtex files>>
+
+      org-ref now does this!
+
+******* in bibtex file, open paper in file field w/ a key combo
+******* also do it from inside of org-mode
+******* [[http://draketo.de/light/english/free-software/custom-link-completion-org-mode-25-lines-emacs][lisp code that seems close]]
+******* [[file:/Applications/Emacs.app/Contents/Resources/lisp/textmodes/bibtex.el.gz::defun%20bibtex%20copy%20field%20as%20kill%20optional%20comma][bibtex-copy-field-as-kill]] is a start for the part where file is extracted
+******* [[file:~/.emacs::defun%20org%20docview%20open%20link][org-docview-open]] is how to open the file in docview
+********* in org mode, C-c O (instead of C-c o) opens paper instead of bibfile
+*********** opens both?
+********* in bibtex file, use the same key combo to open the paper
+******* [[file:/Applications/Emacs.app/Contents/Resources/lisp/textmodes/bibtex.el.gz::defun%20bibtex%20url%20optional%20pos%20no%20browse][bibtex-url]] finds af inentry.  Mod to have it pick file
+********* modify so it finds the file field _in this entry_ ?
+******* [[file:/Applications/Emacs.app/Contents/Resources/lisp/textmodes/bibtex.el.gz::Parse%20the%20name%20part%20of%20a%20BibTeX%20field][bibtex-parse-field-name]] looks for and parses a field
+******* [[file:/Applications/Emacs.app/Contents/Resources/lisp/textmodes/bibtex.el.gz::defconst%20bibtex%20name%20part][bibtex-name-part]] matches the name of a field (regexp used by other funcs)
+******* inspired by [[file:~/.emacs::org%20add%20link%20type%20docview%20org%20docview%20open][org-docview]] (here's the [[http://osdir.com/ml/emacs-orgmode-gnu/2009-08/msg00358.html][original thread]])
+********* I insatalled w32-browser and emacs still insisted on use xpdf...
 *** <<Rectangle editing>>
     See: [[info:emacs#Rectangles][info:emacs#Rectangles]]
 ***** =C-x r RET= [[iedit-rectangle-mode]]: type same stuff on every line in rectangle
@@ -1971,6 +2036,7 @@ Strike-through: nil
       http://cestlaz.github.io/posts/using-emacs-12-python
       http://cestlaz.github.io/posts/using-emacs-13-yasnippet
 
+***** elpy path problem: [[https://github.com/jorgenschaefer/elpy/issues/1156][bug report]]
 *** Ruby in Emacs
 ***** debugger
 
@@ -2048,25 +2114,7 @@ For a public browser link. Share the note and copy the share url.
         (require 'ess-site)
 
 ***** Also add R to PATH so ESS can find it.  See: [[R for windows]]
-***** [[Windows Emacs w/ latest R built-in]]
-*** DONE idea for jumping to papers from inside of org-mode and bibtex files
-
-    org-ref does this!
-
-***** in bibtex file, open paper in file field w/ a key combo
-***** also do it from inside of org-mode
-***** [[http://draketo.de/light/english/free-software/custom-link-completion-org-mode-25-lines-emacs][lisp code that seems close]]
-***** [[file:/Applications/Emacs.app/Contents/Resources/lisp/textmodes/bibtex.el.gz::defun%20bibtex%20copy%20field%20as%20kill%20optional%20comma][bibtex-copy-field-as-kill]] is a start for the part where file is extracted
-***** [[file:~/.emacs::defun%20org%20docview%20open%20link][org-docview-open]] is how to open the file in docview
-******* in org mode, C-c O (instead of C-c o) opens paper instead of bibfile
-********* opens both?
-******* in bibtex file, use the same key combo to open the paper
-***** [[file:/Applications/Emacs.app/Contents/Resources/lisp/textmodes/bibtex.el.gz::defun%20bibtex%20url%20optional%20pos%20no%20browse][bibtex-url]] finds af inentry.  Mod to have it pick file
-******* modify so it finds the file field _in this entry_ ?
-***** [[file:/Applications/Emacs.app/Contents/Resources/lisp/textmodes/bibtex.el.gz::Parse%20the%20name%20part%20of%20a%20BibTeX%20field][bibtex-parse-field-name]] looks for and parses a field
-***** [[file:/Applications/Emacs.app/Contents/Resources/lisp/textmodes/bibtex.el.gz::defconst%20bibtex%20name%20part][bibtex-name-part]] matches the name of a field (regexp used by other funcs)
-***** inspired by [[file:~/.emacs::org%20add%20link%20type%20docview%20org%20docview%20open][org-docview]] (here's the [[http://osdir.com/ml/emacs-orgmode-gnu/2009-08/msg00358.html][original thread]])
-******* I insatalled w32-browser and emacs still insisted on use xpdf...
+***** [[Vincent Goulet Emacs]]
 * JabRef
 *** News and feature requests go [[http://discourse.jabref.org][here]]
 *** bug reports go [[https://github.com/JabRef/jabref/issues][here]]
@@ -2131,6 +2179,8 @@ C:\Program Files (x86)\GNU Emacs 25.1\bin\emacsclientw.exe
       system.  If it's searching the world, well, I already have google;
       if it's searching my own references first, then I'm really
       interested.
+*** Italics in article title: use =\em{}=
+    From: [[https://sourceforge.net/p/jabref/discussion/318825/thread/6e71725d/][JabRef / Discussion / Help:Italics in titles?]]
 * Old Computers
 *** Microsoft Surface Pro 3
 ***** Screenshots and snips
@@ -2558,11 +2608,32 @@ gestures for "show charm" and "switch apps"
 ***** Desktop dir link in homedir
 
 *** Windows package manager
-***** [[https://stackoverflow.com/questions/37823964/whats-the-difference-between-chocolatey-oneget-psget-nuget][powershell - What's the difference between Chocolatey, OneGet, PsGet, NuGet, ...]]
-***** [[https://www.hanselman.com/blog/AptGetForWindowsOneGetAndChocolateyOnWindows10.aspx][Apt-Get for Windows - OneGet and Chocolatey on Windows 10 - Scott Hanselman]]
-***** could use it to install ripgrep: [[https://github.com/BurntSushi/ripgrep][GitHub - BurntSushi/ripgrep: ripgrep combines the usability of The Silver Sea...]]
-***** OneGet v.s Chocolately:  [[https://chocolatey.org/faq#how-is-chocolatey-different-than-onegetpowershell-package-management][ChocolateyFAQs]]
-***** [[https://blogs.technet.microsoft.com/packagemanagement/2015/05/05/10-things-about-oneget-that-are-completely-different-than-you-think/][10 things about OneGet that are completely different than you think. – Packag...]] (OneGet works on Windows 7 too)
+***** <<Chocolatey>> (Homepage: [[https://chocolatey.org/][Chocolatey - The package manager for Windows]])
+      In a powershell, [[Installing Chocolatey]]:
+
+        choco install <package name>
+
+******* Packages: [[https://chocolatey.org/packages][Chocolatey Gallery | Packages]]
+******* <<Installing Chocolatey>>
+        From: [[https://mspoweruser.com/windows-10-tip-using-package-manager/][Windows 10 Tip: Using a package manager]]
+              [[https://chocolatey.org/install][Chocolatey Installation]]
+
+        /In admin powershell/
+
+        _Set permissions by running_
+
+          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+
+        _Install_
+
+          iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+***** Windows package management overviews
+******* Chocolately says use Chocolately, not OneGet:  [[https://chocolatey.org/faq#how-is-chocolatey-different-than-onegetpowershell-package-management][ChocolateyFAQs]]
+******* [[https://stackoverflow.com/questions/37823964/whats-the-difference-between-chocolatey-oneget-psget-nuget][powershell - What's the difference between Chocolatey, OneGet, PsGet, NuGet, ...]]
+******* [[https://www.hanselman.com/blog/AptGetForWindowsOneGetAndChocolateyOnWindows10.aspx][Apt-Get for Windows - OneGet and Chocolatey on Windows 10 - Scott Hanselman]]
+******* could use it to install ripgrep: [[https://github.com/BurntSushi/ripgrep][GitHub - BurntSushi/ripgrep: ripgrep combines the usability of The Silver Sea...]]
+******* [[https://blogs.technet.microsoft.com/packagemanagement/2015/05/05/10-things-about-oneget-that-are-completely-different-than-you-think/][10 things about OneGet that are completely different than you think. – Packag...]] (OneGet works on Windows 7 too)
+
 *** Windows Explorer "send to" menu
 
     From [[http://www.howtogeek.com/howto/windows-vista/customize-the-windows-vista-send-to-menu/][here]]:
@@ -2682,8 +2753,7 @@ that you get when you buy Office 365?
 ***** move taskbar of laptop to big monitor
       [[http://www.pcmag.com/article2/0,2817,1632004,00.asp][Supposedly]], you can unlock it and then drag it to the monitor.  This
       worked once on Windows 7 and then my taskbar disappeared!
-*** screen rotation shortcut undo
-    <<screen rotation shortcut undo>>
+*** <<screen rotation shortcut undo>>
 
    right-alt arrow keys are used by emacs org mode, screws up emacs org
    mode bindings.  Fix is to:
@@ -2913,6 +2983,24 @@ taskkill -im iexplore.exe
 ******* see [[http://www.askvg.com/how-to-show-add-accidentally-removed-bluetooth-icon-in-system-tray/][this]]
 ***** [[http://www.eightforums.com/tutorials/36102-bluetooth-devices-shortcut-create-windows-8-a.html][Desktop shortcut]] to bluetooth devices control panel (for on/off, etc.)
 ***** also see: [[Connecting%20w/%20Logitech%20Audio%20Adapter%20(Bluetooth)][Connecting w/ Logitech Audio Adapter (Bluetooth)]]
+*** TRY Pairing MS Comfort Sculpt Mouse to multiple computers
+    
+    I haven't tried this yet but but is [[https://answers.microsoft.com/en-us/windows/forum/windows_7-hardware/pairing-sculpt-comfort-mouse-to-multiple-computers/8da3698c-d593-4ae7-92b8-4c48fd4ec3d0][said]] to be a solution (was on a Windows 7 website, not sure if it works on Windows 10):
+
+Joe Seraphim replied on  November 28, 2016
+
+See post history
+ReplyIn reply to DanielW77380's post on August 31, 2016
+
+There is a way, but it is quite complicated. You need to first pair the mouse with all the computers you want to share the mouse with. After your last pairing, use the follow the steps from this web posting to get the last pairing key saved as a registry file.
+http://console.systems/2014/09/how-to-pair-low-energy-le-bluetooth.html
+(note: not www. at the front)
+
+You can then use the same tool Psexec to launch regedit with the required authorization and import this key registry file onto other windows computers to have them with the same pairing code last generated. You can even move this pairing key into Linux system.
+
+I think this can let you use your mouse with unlimited other computers, but I don't know what would happen if they were all within bluetooth range at once.
+If you ever put the mouse back into pairing mode again, you would have to transfer a new key file to all your other computer systems again.
+
 *** Mapping MS Comfort Sculpt Mouse Buttons
 ***** install [[https://www.microsoft.com/accessories/en-us/d/sculpt-comfort-mouse][Sculpt Comfort Mouse Mouse and Keyboard Center]]
 ***** I  mapped the "window key" from "Start" to "Task View
@@ -2931,8 +3019,7 @@ taskkill -im iexplore.exe
 ***** [[http://msdn.microsoft.com/en-us/library/aa370523(VS.85).aspx][MSIzap]] "G!" option is [[http://superuser.com/questions/82578/can-i-delete-the-folder-c-windows-installer-patchcache][said]] to be safe
       but must download a big SDK to get it
 
-*** Windows Perl
-    <<Windows Perl>>
+*** <<Windows Perl>>
 ***** Active State Perl
     I've installed activestate perl for the easy package managment, etc.
     But this causes confusion w/ the cygwin perl (have to give full path to
@@ -2949,8 +3036,7 @@ taskkill -im iexplore.exe
     Seems to be a netbeans bug.  There's a hack fix and a fix where you
     install SevenBeans.  See [[http://brianreiter.org/2011/02/04/pin-netbeans-6-9-to-windows-7-x64-taskbar/][here]].
 
-*** Remove bad file association
-    <<Remove bad file association>>
+*** <<Remove bad file association>>
 
     From [[http://superuser.com/questions/904188/how-can-i-unassociate-a-file-type-from-a-program-without-a-registry-edit][here]]:, I found out about
 
@@ -3165,8 +3251,7 @@ Note that on very high-DPI displays, this may make screen elements very small, a
     [[https://touchme.uservoice.com/][TouchMe Gesture Studio Beta]] works both in Desktop and Metro mode.  And
     it already has the OSK keyboard gesture built in (two finger up and down)
 
-*** Prevent devices from waking out of sleep
-    <<Prevent devices from waking out of sleep>>
+*** <<Prevent devices from waking out of sleep>>
 ***** Remove waking devices (this helped)
 
     From [[http://www.techradar.com/news/software/operating-systems/15-windows-8-1-annoyances-fixed-1207111/3#articleContent][here]]
@@ -3196,6 +3281,32 @@ Note that on very high-DPI displays, this may make screen elements very small, a
 ***** [[http://iboyd.net/index.php/2010/05/16/windows-7-power-management-fixing-pc-insomnia/][Advanced article]] on PC insomnia
 ***** Using the event viewer
       [[Http://www.techrepublic.com/article/simplify-the-windows-87-event-viewer-by-creating-custom-views/#ftag%3DRSS56d97e7][Detailed article]] event viewer customized views
+*** <<Avoid Spotify shutoff when screen saver turns on>>
+    
+    Problem is [[https://www.ghacks.net/2016/09/13/play-music-on-a-surface-while-the-screen-is-off/][said]] to be connected standby
+
+    Solution: [[Turn off connected standby]]
+
+*** TRY <<Turn off connected standby>>
+
+    *CAUTION*: a few days after I did this, I had more problems with powering up out of suspend than before, and WiFi also often didn't work after suspend. This could have been due to this change, or it could have been a problem with a new Windows update.
+
+    From [[https://www.ghacks.net/2016/09/13/play-music-on-a-surface-while-the-screen-is-off/][here]]:
+
+    o regedit.exe
+    o HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power
+    o CsEnabled --> 0
+    o restart
+
+    *Connected standby [[http://toolofgod.com/problems-and-solutions/disabling-connected-standby-fixed-my-surface-pro-4-problems/][causes many problems]] (Aug 2017, on SP4)*:
+
+    - Going to black screen after 10 minutes despite nothing in my power settings that allows this
+    - In the morning, Surface would not wake from sleep and be warm to the touch (still running)
+    - Crash after turning off the screen, requiring a long power press to hard reboot
+    - Slow AutoCAD performance
+    - Shutting off Spotify and Youtube when have screen saver
+      ([[Avoid Spotify shutoff when screen saver turns on]])     
+
 *** Custom refresh image
     <<Custom refresh image>>
 
@@ -3320,7 +3431,7 @@ DONE    Firefox: Open the Options screen, click the Advanced icon, click the
 *** R
 ***** [[Ro for windows]]
 ***** [[R packages setup]]
-***** [[Windows Emacs w/ latest R built-in]]
+***** [[Vincent Goulet Emacs]]
 *** Improving battery life
 ***** Find [[http://randomascii.wordpress.com/2013/07/08/windows-timer-resolution-megawatts-wasted/][programs that increase windows resolution]] e.g. Chrome
 ***** [[Prevent devices from waking out of sleep]]
@@ -4259,8 +4370,7 @@ table rows in previous examples.
     4. save as CSV to a file
     5. M-x org-table-import that file
 
-*** Perl screenscraping
-    <<Perl screenscraping>>
+*** <<Perl screenscraping>>
 ***** [[http://linuxgazette.net/108/oregan2.html][overview]]
 ***** WWW::Mechanize
 ******* [[http://www.perl.com/pub/2003/01/22/mechanize.html][perl.com]] article
@@ -6628,7 +6738,7 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 ******* guy's [[http://www.google-melange.com/gsoc/proposal/review/google/gsoc2013/nicolastr/12001][plan]] to add missing feature fill-in using matrix completion
 *** <<Windows Python>>
 
-    I installed from [[https://www.python.org/downloads/windows/][here]]
+    I installed from [[https://www.python.org/downloads/windows/][here]] (originally, lately, I installed anaconda instead)
 
     Needed at least for org-mode ox-clip
 
@@ -7162,8 +7272,7 @@ ERROR: Cannot run texhash command. Please run manually.
 
   (sometimes, this doesn't work b/c package expects config file in /usr)
 
-* Latex/Bibtex
-  <<Latex/Bibtex>>
+* <<Latex/Bibtex>>
 *** lint-like latex/bibtex syntax checkers
 ***** [[http://linux.die.net/man/1/lacheck][lacheck]]
 ***** [[http://baruch.ev-en.org/proj/chktex/][ChkTex]]
@@ -7394,6 +7503,7 @@ ERROR: Cannot run texhash command. Please run manually.
 ***** [[http://www.rubydoc.info/gems/bibtex-ruby/4.0.1/BibTeX/Bibliography/RDFConverter][Class: BibTeX::Bibliography::RDFConverter — Documentation for bibtex-ruby]]
 ***** [[DocEar]], kind-of...
 *** [[org-brain]]
+*** [[http://orgmode.org/worg/org-contrib/org-wikinodes.html][org-wikinodes: CamelCase wiki-like links]] (kind of a graph)
 *** [[Concept map-like stuff: superlabel, dedicated targets, org-brain]]
 * XML
 *** Translation tools
