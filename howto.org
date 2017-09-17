@@ -1584,13 +1584,14 @@ Strike-through: nil
 *** <<Windows Emacs>>
 ***** Windows emacs builds
 ******* <<Chocolatey Emacs>> choco install emacs64 (in admin powershell)
+        Using [[Chocolatey]] package manager
         From: [[https://www.reddit.com/r/emacs/comments/5xoga4/what_is_the_current_best_way_to_set_up_emacs_on/][What is the current best way to set up emacs on Windows?]] 
-        Used: [[Chocolatey]]
+
         9/16/2017: I installed it.  
 
         It was installed to:
 
-        c:/ProgramData/chocolatey/lib/emacs64/tools/emacs/bin
+        C:\ProgramData\chocolatey\lib\emacs64\tools\emacs\bin
 
         (can't see ProgramData by default in File Explorer but it will go there if you type the path into the top bar)
 
@@ -1607,6 +1608,9 @@ Strike-through: nil
         o had to install extra packages that [[Vincent Goulet Emacs]]
         o had rm ~/.emacs.d/elpa and reinstall due to unidentifiable lisp probs.
         o could associate files w/ emacs but they started a new emacs window 
+          Not even  this worked:
+
+          C:\Path\To\emacsclientw.exe --alternate-editor="C:\Path\To\runemacs.exe" -c
         
 ******* <<Vincent Goulet Emacs>>: Windows Emacs w/ latest R built-in 
         [[https://vigou3.github.io/emacs-modified-windows/][Emacs Modified for Windows]]
@@ -1740,7 +1744,7 @@ Strike-through: nil
 
       Set up so [[https://www.gnu.org/software/emacs/manual/efaq-w32.html#Associate-files-with-Emacs][new emacs doesn't start]] if old one is already running
       (the no-new-emacs part still doesn't work on emacs 25.1 and Windows 10)
-      1. ALTERNATE_EDITOR to runemacs.exe. /not emacslientw?/  I tried both, doesn't matter.
+      1. ALTERNATE_EDITOR to runemacs.exe. /not emacslientw?/  I tried both, doesn't matter. (if add path to emacs bin, this will be simpler)
       2. make sure .emacs has a (server-start)
       3. associate files using emacsclientw.exe /below/
 
@@ -1758,7 +1762,7 @@ Strike-through: nil
 
       *Windows 10 Fail*: On Windows 10, as of 2016-11-29, the procedure above still started a new emacs window when you click on a, for example, .org file.  But on Windows 7, it (correctly) uses an existing emacs window.  The problem was that the (server-running-p) check in .emacs wasn't working, so the servers was never started.
 
-      *Windows 10 Hack* change .emacs to just always run (server-start)
+      *Windows 10 Hack*: change .emacs to just always run (server-start)
 
 ******* old fixes that aren't necessary anymore on Windows 10, as of 7/17/16.
 
@@ -2088,8 +2092,7 @@ For a public browser link. Share the note and copy the share url.
 
 *** changing emacs icon
 ***** some icons are [[https://www.emacswiki.org/emacs/EmacsIcons][here]]
-***** Changing Windows Emacs Icon
-      <<Changing Windows Emacs Icon>>
+***** <<Changing Windows Emacs Icon>>
 
       From [[http://www.howtogeek.com/75983/stupid-geek-tricks-how-to-modify-the-icon-of-an-.exe-file/][here]]:
       1. install [[http://www.angusj.com/resourcehacker/][Resource Hacker]]
@@ -2608,8 +2611,9 @@ gestures for "show charm" and "switch apps"
 ***** Desktop dir link in homedir
 
 *** Windows package manager
-***** <<Chocolatey>> (Homepage: [[https://chocolatey.org/][Chocolatey - The package manager for Windows]])
-      In a powershell, [[Installing Chocolatey]]:
+***** <<Chocolatey>> ([[https://chocolatey.org/][Chocolatey - The package manager for Windows]])
+
+      Installing a package, in a powershell[[ (see Installing Chocolatey]]):
 
         choco install <package name>
 
@@ -7558,21 +7562,37 @@ ERROR: Cannot run texhash command. Please run manually.
 * SugarSync
 *** [[http://www.sugarsync.com/online-help/Syncing_a_Subfolder.htm][Syncing a subfolder]] of an already synced folder to another computer
 * Kindle
-*** exporting to pdf
-    partial overview [[http://www.digitaltrends.com/mobile/how-to-convert-kindle-to-pdf/#!LpAlh][here]]
+*** Exporting Kindle files to pdf
+    See partial overview [[http://www.digitaltrends.com/mobile/how-to-convert-kindle-to-pdf/#!LpAlh][here]].
 
-    full instructions
-    download windows 7 kindle b/c you can find the book file (*.amz)
-      tools->options->content shows you it's in:
-       D:\Users\sotterson\Documents\My Kindle Content
-    download epub converter from [[http://www.anicesoft.com/?s%3DEPUBCONV1][here]]
-    set up margins in settings
-       I thought L/R=60 and T/B=75 was OK
-    drag book file into epub converter
-    click Start
+    There are several options but I explored EPUB and Calibre.  
 
-    It's possible that Calibre will produce prettier pdf's but it requires
-    a DRM breaker plugin that you had to download from an untrusted website.
+    *Calibre*
+    It's possible that Calibre could produce prettier pdf's than EPUB but I couldn't figure out how to control the font size in the "Heuristic" mode, which would seem to be the setting that would produce the best results.  It also did wierd stuff, like occasional half-blank pages.
+
+    *EPUB*
+    On Koenkers05 quantile regression book, it did well so that's what I'm going with.  Unfortunately, last year (2016) I'd converted the copy I'm not annotating either with an old copy of EPUB or with bad settings.  Anyway, EPUB is pretty good now.
+
+    *EPUB instructions*
+
+    o *Get a DRM-friendly Kindle Reader*: It's an old desktop Kindle Reader
+      [[https://www.anicesoft.com/parse-kindle-books/][Instructions]] -- be sure to follow them carefully.
+
+    o *Download books to be converted*.  They'll be (*.amz) files in
+    
+      D:\Users\sotterson\Documents\My Kindle Content
+
+      (see Kindle Reader tools->options->content in case this changes)
+
+    o *Remove DRM*: download and run [[https://www.epubconverter.com/DownloadSoftware/download.aspx?type=ebook-removal-win][EpubSoft Ultimate DRM Remover]]
+
+    o *Convert de-DRMed Kindle file to pdf*: download/use [[https://www.epubconverter.com/DownloadSoftware/download.aspx?type=epub-converter-win][Anicesoft EPUB Converter]]
+
+      Settings (under output format, or something like that, icon) 
+      o margins: L/R=60 and T/B=75 seemed OK
+      o 16pt font matched IEEE paper size the best (IEEE is OK on my SP4)
+
+      Note: I didn't use the online [[https://www.epubconverter.com/kindle-to-pdf-converter/][Epub Converter Kindle To PDF Converter]] because it didn't work immediately, probably [[https://www.epubconverter.com/failed.html][because of the .amz file DRM]], which I don't get b/c I thought I had de-DRM'ed that already...
 
 * Cross-platform sharing
 *** DTU

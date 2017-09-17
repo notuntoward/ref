@@ -127,11 +127,14 @@
 *** [[cite:Rasmussen06GaussProcBook][Rasmussen & Williams 2006: Gaussian Processes Machine Learning Book]]
 *** [[cite:Laing11introTropMeteo][Laing & Evans 2011: Introduction Tropical Meteo]]
 *** [[cite:9781319042387][Freedman et al. 2015: Universe, Venus/Earth Conv. Cells]]
-*** [[cite:Mai14financeEngCopulasExpln][Mai & Scherer 2014: Financial Eng Copulas Explnd]] 
 *** [[cite:Revelle17psychThryR_eBook][Revelle 2017: Intro Psychometrics, R.  Covar. Rgrssn, Factor Mdl]]
 *** [[cite:Bishop06PatternRecogMachLrnBook][Bishop 2006: Pattern Recog & Mach Lrn Book]]
 *** [[cite:Owen13monteCarloBook][Owen 2013: Monte Carlo Methods Book]]
 *** [[cite:Bengio09lrnDeepArchAI][Bengio 2009: Learning Deep Architectures AI]]
+*** [[cite:Mai14financeEngCopulasExpln][Mai & Scherer 2014: Financial Eng Copulas Explnd]] 
+*** [[cite:Cherubini04CopulaMethodsInFinance][Cherubini et al. 2004: Copula Methods Finance Book]]
+*** [[cite:Cherubini11dynCopulaFinanceBk][Cherubini et al. 2011: Dynamic Copula Methods Finance Book]]
+*** [[cite:Joe14DepModelCopulasBk][Joe 2014: Dependence Copulas Chapman Hall Book]]
 *** [[http://www.neurosolutions.com/products/nsbook/][Interactive Neural Network Book]] explains recurrent NN's, has demos
 *** [[Books w/ source code]]
 *** Wind energy books I could buy
@@ -7521,6 +7524,9 @@ sera
 ********* [[cite:Wu15pvGenPairCpla][Wu et al. 2015: Versatile Probability Model PV Copula]]
 ********* [[cite:Ding16gaussCopulaMissDatEM][Ding & Song 2016: Gaussian Copula Miss Dat EM]]
 ********* [[cite:Mai14financeEngCopulasExpln][Mai & Scherer 2014: Financial Eng Copulas Explnd Book]] 
+********* [[cite:Cherubini04CopulaMethodsInFinance][Cherubini et al. 2004: Copula Methods Finance Book]]
+********* [[cite:Cherubini11dynCopulaFinanceBk][Cherubini et al. 2011: Dynamic Copula Methods Finance Book]]
+********* [[cite:Joe14DepModelCopulasBk][Joe 2014: Dependence Copulas Chapman Hall Book]]
 ********* [[cite:Gijbels14distSumCopulaDep][Gijbels & Herrmann 2014: Sum of RVS w/ Copula Dep.]]
 ********* <<Mixed Continuous and Discrete Copulas>>
 *********** [[cite:Zilko16mixedDscrtContinCopula][Zilko & Kurowicka 2016: Copula mixed Dscrt/Contin, Normal OK]]
