@@ -2181,6 +2181,41 @@ Kankanala14adaBoostPlus might be an improvement, also Tian09newAdaboost_RT and o
   timestamp = {2008.07.03},
 }
 
+@InProceedings{Pavlovski17skipTrainRgrssnTempNet,
+  author    = {Martin Pavlovski and Fang Zhou and Ivan Stojkovic and Ljupco Kocarev and Zoran Obradovic},
+  title     = {Adaptive Skip-Train Structured Regression Temporal Networks},
+  booktitle = {ECML PKDD. European Conference On Machine Learning \& Principles And Practice Of Knowledge Discovery In Databases},
+  year      = {2017},
+  abstract  = {A broad range of high impact applications involve learning
+a predictive model in a temporal network environment. In weather fore-
+casting, predicting effectiveness of treatments, outcomes in healthcare
+and in many other domains, networks are often large, while intervals
+between consecutive time moments are brief. Therefore, models are re-
+quired to forecast in a more scalable and efficient way, without compro-
+mising accuracy. The Gaussian Conditional Random Field (GCRF) is a
+widely used graphical model for performing structured regression on net-
+works. However, GCRF is not applicable to large networks and it cannot
+capture different network substructures (communities) since it consid-
+ers the entire network while learning. In this study, we present a novel
+model, Adaptive Skip-Train Structured Ensemble (AST-SE), which is a
+sampling-based structured regression ensemble for prediction on top of
+temporal networks. AST-SE takes advantage of the scheme of ensemble
+methods to allow multiple GCRFs to learn from several subnetworks.
+The proposed model is able to automatically skip the entire training or
+some phases of the training process. The prediction accuracy and effi-
+ciency of AST-SE were assessed and compared against alternatives on
+synthetic temporal networks and the H3N2 Virus Influenza network. The
+obtained results provide evidence that (1) AST-SE is ∼140 times faster
+than GCRF as it skips retraining quite frequently; (2) It still captures
+the original network structure more accurately than GCRF while op-
+erating solely on partial views of the network; (3) It outperforms both
+unweighted and weighted GCRF ensembles which also operate on sub-
+networks but require retraining at each timestep},
+  file      = {:Blau17NonRedundSpectDimRed.pdf:PDF},
+  review    = {And adaptive structured graph regression that updates all or an automatically chosen part of itself on each step.  Is fast and can handle big networks.   I talked to the ECML PKDD 2017 poster's author and it seemed to me that this could be applied to learning spatial dependencies across wind farms.  On thing I'm not sure of is if it can retain past lessons (weather regimes) or if it wipes them out as it adapts.    But since it updates substructures, maybe old regime info could be retained in the non-updated part of the graph?},
+  url       = {http://ecmlpkdd2017.ijs.si/program.html},
+}
+
 @Article{Stark06partCrossCorrResAmbig,
   author    = {Eran Stark and Rotem Drori and Moshe Abeles},
   title     = {Partial cross-correlation analysis resolves ambiguity in the encoding of multiple movement features},
@@ -8591,12 +8626,11 @@ Could this be used for distribution or quantile regression (output mononicity co
 }
 
 @Book{Cherubini04CopulaMethodsInFinance,
-  title         = {Copula methods in finance},
-  publisher     = {John Wiley \& Sons},
-  year          = {2004},
-  author        = {Cherubini, Umberto and Luciano, Elisa and Vecchiato, Walter},
-  __markedentry = {[Scott Otterson:]},
-  abstract      = {Copula Methods in Finance is the first book to address the mathematics of copula functions illustrated with finance applications.  It explains copulas by means of applications to major topics in derivative pricing and credit risk analysis.  Examples include pricing of the main exotic derivatives (barrier, basket, rainbow options) as well as risk management issues.  Particular focus is given to the pricing of asset-backed securities and basket credit derivative products and the evaluation of counterparty risk in derivative transactions.},
+  title     = {Copula methods in finance},
+  publisher = {John Wiley \& Sons},
+  year      = {2004},
+  author    = {Cherubini, Umberto and Luciano, Elisa and Vecchiato, Walter},
+  abstract  = {Copula Methods in Finance is the first book to address the mathematics of copula functions illustrated with finance applications.  It explains copulas by means of applications to major topics in derivative pricing and credit risk analysis.  Examples include pricing of the main exotic derivatives (barrier, basket, rainbow options) as well as risk management issues.  Particular focus is given to the pricing of asset-backed securities and basket credit derivative products and the evaluation of counterparty risk in derivative transactions.},
 }
 
 @Article{Embrechts09copulasPers,
@@ -9163,25 +9197,24 @@ Keywords: * data streams; * dynamic regression; * partial least squares; * varia
 }
 
 @Article{Wan16WindSpdDAfrcstDeepFeatLrn,
-  author        = {Wan, Jie and Liu, Jinfu and Ren, Guorui and Guo, Yufeng and Yu, Daren and Hu, Qinghua},
-  title         = {Day-Ahead Prediction of Wind Speed with Deep Feature Learning},
-  journal       = {International Journal of Pattern Recognition and Artificial Intelligence},
-  year          = {2016},
-  volume        = {30},
-  number        = {05},
-  pages         = {1650011},
-  __markedentry = {[sotterson:6]},
-  abstract      = {Day-ahead prediction of wind speed is a basic and key problem of large-scale wind power penetration. Many current techniques fail to satisfy practical engineering requirements because of wind speed's strong nonlinear features, influenced by many complex factors, and the general model's inability to automatically learn features. It is well recognized that wind speed varies in different patterns. In this paper, we propose a deep feature learning (DFL) approach to wind speed forecasting because of its advantages at both multi-layer feature extraction and unsupervised learning. A deep belief network (DBN) model for regression with an architecture of 144 input and 144 output nodes was constructed using a restricted Boltzmann machine (RBM). Day-ahead prediction experiments were then carried out. By comparing the experimental results, it was found that the prediction errors with respect to both size and stability of a DBN model with only three hidden layers were less than those of the other three typical approaches including support vector regression (SVR), single hidden layer neural networks (SHL-NN), and neural networks with three hidden layers (THL-NN). In addition, the DBN model can learn and obtain complex features of wind speed through its strong nonlinear mapping ability, which effectively improves its prediction precision. In addition, prediction errors are minimized when the number of DBN model's hidden layers reaches a threshold value. Above this number, it is not possible to improve the prediction accuracy by further increasing the number of hidden layers. Thus, the DBN method has a high practical value for wind speed prediction.
+  author   = {Wan, Jie and Liu, Jinfu and Ren, Guorui and Guo, Yufeng and Yu, Daren and Hu, Qinghua},
+  title    = {Day-Ahead Prediction of Wind Speed with Deep Feature Learning},
+  journal  = {International Journal of Pattern Recognition and Artificial Intelligence},
+  year     = {2016},
+  volume   = {30},
+  number   = {05},
+  pages    = {1650011},
+  abstract = {Day-ahead prediction of wind speed is a basic and key problem of large-scale wind power penetration. Many current techniques fail to satisfy practical engineering requirements because of wind speed's strong nonlinear features, influenced by many complex factors, and the general model's inability to automatically learn features. It is well recognized that wind speed varies in different patterns. In this paper, we propose a deep feature learning (DFL) approach to wind speed forecasting because of its advantages at both multi-layer feature extraction and unsupervised learning. A deep belief network (DBN) model for regression with an architecture of 144 input and 144 output nodes was constructed using a restricted Boltzmann machine (RBM). Day-ahead prediction experiments were then carried out. By comparing the experimental results, it was found that the prediction errors with respect to both size and stability of a DBN model with only three hidden layers were less than those of the other three typical approaches including support vector regression (SVR), single hidden layer neural networks (SHL-NN), and neural networks with three hidden layers (THL-NN). In addition, the DBN model can learn and obtain complex features of wind speed through its strong nonlinear mapping ability, which effectively improves its prediction precision. In addition, prediction errors are minimized when the number of DBN model's hidden layers reaches a threshold value. Above this number, it is not possible to improve the prediction accuracy by further increasing the number of hidden layers. Thus, the DBN method has a high practical value for wind speed prediction.
 
 Keywords: Wind speed; day-ahead prediction; Boltzmann machine; deep belief network; unsupervised learning; feature extraction; robustness
 
 
 
 Read More: http://www.worldscientific.com/doi/abs/10.1142/S0218001416500117?journalCode=ijprai},
-  doi           = {10.1142/S0218001416500117},
-  eprint        = {http://www.worldscientific.com/doi/pdf/10.1142/S0218001416500117},
-  review        = {I couldn't get the paper...},
-  url           = {http://www.worldscientific.com/doi/abs/10.1142/S0218001416500117},
+  doi      = {10.1142/S0218001416500117},
+  eprint   = {http://www.worldscientific.com/doi/pdf/10.1142/S0218001416500117},
+  review   = {I couldn't get the paper...},
+  url      = {http://www.worldscientific.com/doi/abs/10.1142/S0218001416500117},
 }
 
 @Misc{Agora13costOptResDE,
@@ -9495,12 +9528,11 @@ why KNN is not a good density estimator: GutierrezOsuna11kdnnLecNotes},
 }
 
 @Article{Joe14DepModelCopulasBk,
-  author        = {Joe, H},
-  title         = {Dependence modeling with Copulas, Chapman Hall, CRC},
-  journal       = {Published June/July},
-  year          = {2014},
-  __markedentry = {[Scott Otterson:6]},
-  abstract      = {Dependence Modeling with Copulas covers the substantial advances that have taken place in the field during the last 15 years, including vine copula modeling of high-dimensional data. Vine copula models are constructed from a sequence of bivariate copulas. The book develops generalizations of vine copula models, including common and structured factor models that extend from the Gaussian assumption to copulas. It also discusses other multivariate constructions and parametric copula families that have different tail properties and presents extensive material on dependence and tail properties to assist in copula model selection.
+  author   = {Joe, H},
+  title    = {Dependence modeling with Copulas, Chapman Hall, CRC},
+  journal  = {Published June/July},
+  year     = {2014},
+  abstract = {Dependence Modeling with Copulas covers the substantial advances that have taken place in the field during the last 15 years, including vine copula modeling of high-dimensional data. Vine copula models are constructed from a sequence of bivariate copulas. The book develops generalizations of vine copula models, including common and structured factor models that extend from the Gaussian assumption to copulas. It also discusses other multivariate constructions and parametric copula families that have different tail properties and presents extensive material on dependence and tail properties to assist in copula model selection.
 
 The author shows how numerical methods and algorithms for inference and simulation are important in high-dimensional copula applications. He presents the algorithms as pseudocode, illustrating their implementation for high-dimensional copula models. He also incorporates results to determine dependence and tail properties of multivariate distributions for future constructions of copula models},
 }
@@ -9593,6 +9625,23 @@ Belloni13progEvalHiDim says featsel (reduction too?) is hard when also doing inf
   owner     = {sotterson},
   review    = {A change in AR input noise mean screws up AR order estimation; SIC is best method but it's not good * forecasting w/ AR and estimting lags (kinda like AR order) will be a problem under non-stationarity * "structural break" is change in mean of AR input noise. Don't say how big the break is, though -- this had caused bad errors in AR modeling on some other work the authors did * SIC picks order the best but it's right only 10 pct of the time AR order estimating methods tested (equations given, so maybe this will be useful somewhere else?) 1. Akaike's informatino criterion: AIC 2. Schwarz information criterion: SIC 3. Hannan-Quinn criterion: HQC 4. Final prediction error: FPE 5. Corrected version of AIC: AICC},
   timestamp = {2009.02.09},
+}
+
+@Article{Carroll16failRateRepairOffshrWind,
+  author   = {Carroll, James and McDonald, Alasdair and McMillan, David},
+  title    = {Failure rate, repair time and unscheduled O\&M cost analysis of offshore wind turbines},
+  journal  = {Wind Energy},
+  year     = {2016},
+  volume   = {19},
+  number   = {6},
+  pages    = {1107--1119},
+  issn     = {1099-1824},
+  abstract = {Determining and understanding offshore wind turbine failure rates and resource requirement for repair are vital for modelling and reducing O&M costs and in turn reducing the cost of energy. While few offshore failure rates have been published in the past even less details on resource requirement for repair exist in the public domain. Based on ~350 offshore wind turbines throughout Europe this paper provides failure rates for the overall wind turbine and its sub-assemblies. It also provides failure rates by year of operation, cost category and failure modes for the components/sub-assemblies that are the highest contributor to the overall failure rate. Repair times, average repair costs and average number of technicians required for repair are also detailed in this paper. An onshore to offshore failure rate comparison is carried out for generators and converters based on this analysis and an analysis carried out in a past publication. The results of this paper will contribute to offshore wind O&M cost and resource modelling and aid in better decision making for O&M planners and managers. },
+  doi      = {10.1002/we.1887},
+  file     = {:Carroll16failRateRepairOffshrWind.pdf:PDF},
+  keywords = {failure mode, failure rate, offshore wind turbine, reliability},
+  review   = {What breaks when in offshore wind turbines.  Read for ModernWindABS, and give to Marek},
+  url      = {http://dx.doi.org/10.1002/we.1887},
 }
 
 @Article{Radovanovic10knnHubsSpc,
@@ -9927,6 +9976,7 @@ RESULTS
 @Article{Bremnes06compQuantileWind,
   author    = {John Bj{\o}rnar Bremnes},
   title     = {A comparison of a few statistical models for making quantile wind power forecasts},
+  journal   = {Wind Energy},
   year      = {2006},
   volume    = {9},
   number    = {1-2},
@@ -9934,7 +9984,6 @@ RESULTS
   abstract  = {During the last few years, probabilistic wind power forecasts have received increasing attention because of their assumed value in decision-making processes. In the current article, three statistical methods are described and several models based on these are compared. The statistical methods are local quantile regression, a local Gaussian model and the Nadaraya-Watson estimator for conditional cumulative distribution functions. The focus is on quantile forecasts, since these often provide the required type of information to make optimal economic decisions and are ideal for visualizing uncertainty. The statistical methods are applied to data from a wind farm in Norway and results are compared using appropriate measures for assessment of quantile forecasts and in terms of a simple model for economic value.},
   file      = {Bremnes06compQuantileWind.pdf:Bremnes06compQuantileWind.pdf:PDF;Bremnes06compQuantileWind.pdf:Bremnes06compQuantileWind.pdf:PDF},
   groups    = {Read, DOE-PNL09, Ensemble, PointDerived, Test, doReadWPV_1},
-  journal   = {Wind Energy},
   owner     = {sotterson},
   review    = {Compares local QR, local Gaussian, and Nadaraya-Watson product kernel for probabilistic forecasting. Performance is about the same (on incomplete tests), prefers NW b/c it's simple. Good ideas on performance metrics, expected wind variance, and output boundedness. Bremness won a contest using NW in 2013 (Alessandrini13wireCostFrcstResults)
 
@@ -9964,7 +10013,7 @@ METHODS COMPARED
 
 * Nadaraya-Watson (NW)
 - Just "samples less than quantile" bin counts weighted by distance to training point
-- quantiles are interpolated between training points, and extrapolated for out-of-boutn inputs
+- quantiles are interpolated between training points, and extrapolated for out-of-bound inputs
 - could also replace counts by "a known CDF" but I didn't understand what that meant
 - three versions:
 --- NW: speed --> untransformed power dist
@@ -10393,6 +10442,22 @@ RELATED
 * compare with Hagspiel12copulaWindPowEur},
   timestamp = {2017.06.07},
   url       = {http://dx.doi.org/10.1007/978-3-319-18732-7_14},
+}
+
+@Article{North82sampErrEstOrthogPCAnumCmps,
+  author    = {Gerald R. North and Thomas L. Bell and Robert F. Cahalan and Fanthune J. Moeng},
+  title     = {Sampling Errors in the Estimation of Empirical Orthogonal Functions},
+  journal   = {Monthly Weather Review},
+  year      = {1982},
+  volume    = {110},
+  number    = {7},
+  pages     = {699--706},
+  month     = {jul},
+  abstract  = {Empirical Orthogonal Functions (EOF's), eigenvectors of the spatial cross-covariance matrix of a meteorological field, are reviewed with special attention given to the necessary weighting factors for gridded data and the sampling errors incurred when too small a sample is available. The geographical shape of an EOF shows large intersample variability when its associated eigenvalue is “close” to a neighboring one. A rule of thumb indicating when an EOF is likely to be subject to large sampling fluctuations is presented. An explicit example, based on the statistics of the 500 mb geopotential height field, displays large intersample variability in the EOF's for sample sizes of a few hundred independent realizations, a size seldom exceeded by meteorological data sets.},
+  doi       = {10.1175/1520-0493(1982)110<0699:SEITEO>2.0.CO;2},
+  file      = {:North82sampErrEstOrthogPCAnumCmps - Sampling Errors in the Estimation of Empirical Orthogonal Functions:},
+  publisher = {American Meteorological Society},
+  review    = {The number of principal components test apparently used by LNEG for its weather classification work in IRPWIND WP82.3.  Is it somehow more appropriate for temporal-spatio covarariance matrices?},
 }
 
 @TechReport{Wu11curtailStochOpt,
@@ -11053,6 +11118,21 @@ preliminary version is also attached in case scan is too hard to read.},
   owner     = {scotto},
   review    = {tighter bounds on error prob than Fano's inequality cond. entropy. Also, I think generalizations for infinite variables. Does this explain anything in Kraskov03hierClustMutInf, where can't divide by entropy for tiny delta, and therefore dimension scaling can't be "divde by entropy" but just by dims? This is for conditional entropies, here, but is there a relation?},
   timestamp = {2011.05.20},
+}
+
+@InProceedings{Laskey14fastFrugalTreesVsBayesNetsRisk,
+  author    = {Laskey, K and Martignon, Laura},
+  title     = {Comparing fast and frugal trees and Bayesian networks for risk assessment},
+  booktitle = {Proc. 9th International Conference on Teaching Statistics},
+  year      = {2014},
+  address   = {Flagstaff, Arizona, USA},
+  abstract  = {Fast and frugal trees have been proposed as efficient heuristics for decision under risk. We 
+describe the construction of fast and frugal trees and compare their robustness for prediction 
+under risk with that of Bayesian networks. In particular we analyze situations of risky decisions in 
+the medical domain. We show that the performance of fast and frugal trees does not fall too far 
+behind that of the more complex Bayesian networks.},
+  file      = {:Laskey14fastFrugalTreesVsBayesNetsRisk.pdf:PDF},
+  review    = {A "frugal learning" approach, I think.},
 }
 
 @InProceedings{Brown09newInfoFeatSel,
@@ -15809,11 +15889,11 @@ Another Journal paper may be: Wang11windFrcstUncertUC},
 @Article{Ahmed10empCompForecast,
   author    = {Ahmed, N.K. and Atiya, A.F. and El Gayar, N. and El-Shishiny, H.},
   title     = {An empirical comparison of machine learning models for time series forecasting},
+  journal   = {Econometric Reviews},
   year      = {2010},
   volume    = {29},
   number    = {5},
   pages     = {594--621},
-  doi       = {10.1080/07474938.2010.481556},
   abstract  = {In this work we present a large scale comparison study for the major machine
 learning models for time series forecasting. Specifically, we apply the models on
 the monthly M3 time series competition data (around a thousand time series).
@@ -15828,8 +15908,8 @@ two methods turned out to be the multilayer perceptron and the Gaussian pro-
 cess regression. In addition to model comparisons, we have tested different
 preprocessing methods and have shown that they have different impacts on the
 performance.},
+  doi       = {10.1080/07474938.2010.481556},
   file      = {2007 Draft (the one I reviewed):Ahmed07empCompForecast.pdf:PDF;2010 final version:Ahmed10empCompForecast.pdf:PDF},
-  journal   = {Econometric Reviews},
   owner     = {scotto},
   publisher = {Citeseer},
   review    = {MLP's and Gaussian processes come out on top for business forecasting
@@ -15860,7 +15940,7 @@ Fink09xformFAQs
 Bremnes06compQuantileWind
 Simonoff09transfRegrsn
 
-* Generalized Regression Neural Network (GRNN) is the Nadaraya?Watson used (I think) for quantile regression, and found to be good, in Bremnes06compQuantileWind.},
+* Generalized Regression Neural Network (GRNN) is the Nadaraya-Watson used (I think) for quantile regression, and found to be good, in Bremnes06compQuantileWind.},
   timestamp = {2011.11.07},
 }
 
@@ -23167,6 +23247,35 @@ VPPs and improve security of supply.},
   Timestamp                = {2011.11.16}
 }
 
+@InProceedings{Blau17NonRedundSpectDimRed,
+  author    = {Blau, Yochai and Michaeli, Tomer},
+  title     = {Non-Redundant Spectral Dimensionality Reduction},
+  booktitle = {ECML PKDD. European Conference On Machine Learning \& Principles And Practice Of Knowledge Discovery In Databases},
+  year      = {2017},
+  abstract  = {Spectral dimensionality reduction algorithms are widely used
+in numerous domains, including for recognition, segmentation, tracking
+and visualization. However, despite their popularity, these algorithms
+suffer from a major limitation known as the “repeated Eigen-directions”
+phenomenon. That is, many of the embedding coordinates they produce
+typically capture the same direction along the data manifold. This leads
+to redundant and inefficient representations that do not reveal the true
+intrinsic dimensionality of the data. In this paper, we propose a general
+method for avoiding redundancy in spectral algorithms. Our approach
+relies on replacing the orthogonality constraints underlying those meth-
+ods by unpredictability constraints. Specifically, we require that each
+embedding coordinate be unpredictable (in the statistical sense) from all
+previous ones. We prove that these constraints necessarily prevent redun-
+dancy, and provide a simple technique to incorporate them into existing
+methods. As we illustrate on challenging high-dimensional scenarios, our
+approach produces significantly more informative and compact represen-
+tations, which improve visualization and classification tasks.},
+  file      = {:Blau17NonRedundSpectDimRed.pdf:PDF},
+  review    = {Impressive spectral dimension reduction technique, does better than standard Ng dimred, ISOMAP and several others.  One claim to fame is that this techniques works better than others when used as a preprocessor for classification.
+
+See also: Maaten08VisualizingDataUsingTSNE},
+  url       = {http://ecmlpkdd2017.ijs.si/program.html},
+}
+
 @Article{OrtegaVazquez07spinResCostBen,
   author    = {Ortega-Vazquez, M. A. and Kirschen, D. S.},
   title     = {Optimizing the Spinning Reserve Requirements Using a Cost/Benefit Analysis},
@@ -26678,21 +26787,20 @@ Key-Words: extreme value threshold selection;},
 }
 
 @Book{Cherubini11dynCopulaFinanceBk,
-  title         = {Dynamic Copula methods in finance},
-  publisher     = {John Wiley \& Sons},
-  year          = {2011},
-  author        = {Cherubini, Umberto and Mulinacci, Sabrina and Gobbi, Fabio and Romagnoli, Silvia},
-  volume        = {625},
-  isbn          = {978-0470683071},
-  __markedentry = {[Scott Otterson:]},
-  abstract      = {The latest tools and techniques for pricing and risk management
+  title     = {Dynamic Copula methods in finance},
+  publisher = {John Wiley \& Sons},
+  year      = {2011},
+  author    = {Cherubini, Umberto and Mulinacci, Sabrina and Gobbi, Fabio and Romagnoli, Silvia},
+  volume    = {625},
+  isbn      = {978-0470683071},
+  abstract  = {The latest tools and techniques for pricing and risk management
 
 This book introduces readers to the use of copula functions to represent the dynamics of financial assets and risk factors, integrated temporal and cross-section applications. The first part of the book will briefly introduce the standard the theory of copula functions, before examining the link between copulas and Markov processes. It will then introduce new techniques to design Markov processes that are suited to represent the dynamics of market risk factors and their co-movement, providing techniques to both estimate and simulate such dynamics. The second part of the book will show readers how to apply these methods to the evaluation of pricing of multivariate derivative contracts in the equity and credit markets. It will then move on to explore the applications of joint temporal and cross-section aggregation to the problem of risk integration.},
-  date          = {2011-11-11},
-  ean           = {9780470683071},
-  file          = {:Cherubini11dynCopulaFinanceBk.pdf:PDF},
-  pagetotal     = {274},
-  url           = {http://www.ebook.de/de/product/14834484/umberto_cherubini_sabrina_mulinacci_fabio_gobbi_dynamic_copula_methods_in_finance.html},
+  date      = {2011-11-11},
+  ean       = {9780470683071},
+  file      = {:Cherubini11dynCopulaFinanceBk.pdf:PDF},
+  pagetotal = {274},
+  url       = {http://www.ebook.de/de/product/14834484/umberto_cherubini_sabrina_mulinacci_fabio_gobbi_dynamic_copula_methods_in_finance.html},
 }
 
 @Article{Hocke08gapfillLombScarglePer,
@@ -28287,6 +28395,40 @@ Hyperparameter optimization Automatic machine learning Autonomous learning Deep 
 
 see also tensor decomp, which seems similar: Cichocki14TensorNetworksBigOpt},
   timestamp = {2014.11.01},
+}
+
+@InCollection{Feurer15autoMLautoSkLrn,
+  author    = {Feurer, Matthias and Klein, Aaron and Eggensperger, Katharina and Springenberg, Jost and Blum, Manuel and Hutter, Frank},
+  title     = {Efficient and Robust Automated Machine Learning},
+  booktitle = {Advances in Neural Information Processing Systems 28},
+  publisher = {Curran Associates, Inc.},
+  year      = {2015},
+  editor    = {C. Cortes and N. D. Lawrence and D. D. Lee and M. Sugiyama and R. Garnett},
+  pages     = {2962--2970},
+  abstract  = {The success of machine learning in a broad range of applications has led to an
+ever-growing demand for machine learning systems that can be used off the shelf
+by non-experts. To be effective in practice, such systems need to automatically
+choose a good algorithm and feature preprocessing steps for a new dataset at hand,
+and also set their respective hyperparameters. Recent work has started to tackle this
+automated machine learning (AutoML) problem with the help of efficient Bayesian
+optimization methods. Building on this, we introduce a robust new AutoML system
+based on scikit-learn (using 15 classifiers, 14 feature preprocessing methods, and
+4 data preprocessing methods, giving rise to a structured hypothesis space with
+110 hyperparameters). This system, which we dub AUTO-SKLEARN, improves on
+existing AutoML methods by automatically taking into account past performance
+on similar datasets, and by constructing ensembles from the models evaluated
+during the optimization. Our system won the first phase of the ongoing ChaLearn
+AutoML challenge, and our comprehensive analysis on over 100 diverse datasets
+shows that it substantially outperforms the previous state of the art in AutoML. We
+also demonstrate the performance gains due to each of our contributions and derive
+insights into the effectiveness of the individual components of AUTO-SKLEARN.},
+  file      = {:Feurer15autoMLautoSkLrn.pdf:PDF},
+  review    = {Automatic tuning of ML Python AUTO-SKLEARN algorithm parameters, also algorithm selection, ensemble building (I think).  Here they describing wining a some automl challenge.
+
+At ECML 2017, I talked to Frank Hutter (leader in the field and one of the authors) and he said that someone told him that the regression functions in this package weren't that great, and he said that not much time had been spent on them.
+
+Still, this is the paper he recommended as the closest thing to automatic machine learning.},
+  url       = {http://papers.nips.cc/paper/5872-efficient-and-robust-automated-machine-learning.pdf},
 }
 
 @Article{Weigel08modelCombo,
@@ -31499,6 +31641,10 @@ NOT THE USUAL COPULA IDEA
    - NWP wind speed (or generic "composite" power curve wind power,depending upon experiment)
    - wind direction (for wind speed experiment)
    - forecast horizon (instead of separate model for different horizons)
+* Distribution Estimators:
+   - unconditional power density fy (y): eq. 1 corrected by eq. 15 (in con. dens. eq. 13)
+   - copula dependence joint density: product kernel [ eq.2, example is eq. 11]
+   - marginal converter c.d.f.s: unconditional empirical c.d.f.s (eq. 12., note that fy(y) is a density)
 
 ADAPTATION
 * use exponential forgetting
@@ -36358,6 +36504,20 @@ File came from: K:\Organisation\Kongresse\2014\2014-11_Wind_Integration_Workshop
   timestamp = {2017.03.08},
 }
 
+@Article{Maaten08VisualizingDataUsingTSNE,
+  author        = {Maaten, Laurens van der and Hinton, Geoffrey},
+  title         = {Visualizing data using t-SNE},
+  journal       = {Journal of Machine Learning Research},
+  year          = {2008},
+  volume        = {9},
+  number        = {Nov},
+  pages         = {2579--2605},
+  __markedentry = {[sotterson:6]},
+  abstract      = {We present a new technique called "t-SNE" that visualizes high-dimensional data by giving each datapoint a location in a two or three-dimensional map. The technique is a variation of Stochastic Neighbor Embedding (Hinton and Roweis, 2002) that is much easier to optimize, and produces significantly better visualizations by reducing the tendency to crowd points together in the center of the map. t-SNE is better than existing techniques at creating a single map that reveals structure at many different scales. This is particularly important for high-dimensional data that lie on several different, but related, low-dimensional manifolds, such as images ofobjects from multiple classes seen from multiple viewpoints. For visualizing the structure of very large data sets, we show how t-SNE can use random walks on neighborhood graphs to allow the implicit structure of all of the data to influence the way in which a subset of the data is displayed. We illustrate the performance of t-SNE on a wide variety of data sets and compare it with many other non-parametric visualization techniques, including Sammon mapping, Isomap, and Locally Linear Embedding. The visualizations produced by t-SNE are significantly better than those produced by the other techniques on almost all of the data sets.},
+  review        = {The dimension reduction algorithm used by the ASML chip layout company that does anomaly detection.  Talked to head of their ML group and he referred me to this (ECML PKDD 2017).  Later in the conference somebody asked the author of Blau17NonRedundSpectDimRed why he'd omitted this technique as a benchmark.; he said that it was mainly used for 2D human interpretation, and that he thought (did not show) that his technqique would actually work better as a classification preprocessing step.},
+  url           = {http://www.jmlr.org/papers/v9/vandermaaten08a.html},
+}
+
 @INCOLLECTION{Wang07depSubspaceClust,
   Author                   = {Wang, Xufei and Li, Chunping},
   Title                    = {DBSC: A Dependency-Based Subspace Clustering Algorithm for High Dimensional Numerical Datasets},
@@ -37235,6 +37395,35 @@ TODO
   url       = {http://projecteuclid.org/euclid.aoas/1437397111},
 }
 
+@InProceedings{Ukkonen17ExplbDevSubsetsExplnNets,
+  author    = {Antti Ukkonen and Vladimir Dzyuba and Matthijs van Leeuwe},
+  title     = {Explaining Deviating Subsets through Explanation Networks},
+  booktitle = {ECML PKDD. European Conference On Machine Learning \& Principles And Practice Of Knowledge Discovery In Databases},
+  year      = {2017},
+  abstract  = {We propose a novel approach to finding explanations of de-
+viating subsets, often called subgroups. Existing approaches for subgroup
+discovery rely on various quality measures that nonetheless often fail to
+find subgroup sets that are diverse, of high quality, and most importantly,
+provide good explanations of the deviations that occur in the data.
+To tackle this issue we introduce explanation networks, which provide
+a holistic view on all candidate subgroups and how they relate to each
+other, offering elegant ways to select high-quality yet diverse subgroup
+sets. Explanation networks are constructed by representing subgroups
+by nodes and having weighted edges represent the extent to which one
+subgroup explains another. Explanatory strength is defined by extending
+ideas from database causality, in which interventions are used to quantify
+the effect of one query on another.
+Given an explanatory network, existing network analysis techniques can
+be used for subgroup discovery. In particular, we study the use of Page-
+Rank for pattern ranking and seed selection (from influence maximiza-
+tion) for pattern set selection. Experiments on synthetic and real data
+show that the proposed approach finds subgroup sets that are more likely
+to capture the generative processes of the data than other methods.},
+  file      = {:Ukkonen17ExplbDevSubsetsExplnNets.pdf:PDF},
+  review    = {Detects unusual groups of varibles given a scalar (I think) target variable.  The groups explain the target value and, I'm guessing, are unusual.  It's used in fraud detect and fault detection.  So maybe good for diagnosing any faults detected in ModernWindABS.  Once nice thing about it, is that it uses PageRank, so some of the hairiness is handled by a standard algorithm.},
+  url       = {http://ecmlpkdd2017.ijs.si/program.html},
+}
+
 @Article{Kraemer08penPLSspline,
   author    = {Kr{\"a}mer, Nicole and Boulesteix, Anne-Laure and Tutz, Gerhard},
   title     = {Penalized Partial Least Squares with applications to B-spline transformations and functional data},
@@ -38013,6 +38202,43 @@ But what is needed in the future to allow us to continue improving our forecasts
   review    = {Similar to the other Bauer article in Nature.  I grabbed a graph from this one for GIZ Colombia.  See also: Bauer15quietRevNWP},
   timestamp = {2017.04.25},
   url       = {https://www.earthmagazine.org/article/todays-weather-forecast-good-strong-chance-improvement},
+}
+
+@TechReport{Schaeffer14mkCovMatPosDef,
+  author      = {Schaeffer, Larry},
+  title       = {Making covariance matrices positive definite},
+  institution = {Centre for Genetic Improvement of Livestock, Department of Animal \& Poultry Science},
+  year        = {2014},
+  abstract    = {When working on simulation projects involving animals and genetics,
+genetic parameters are obtained by searching the literature for estimates.
+There are seldom any studies that include all of the traits of interest
+in one comprehensive analysis. Instead, estimates are scavenged from
+several different sources. After putting these estimates together into one
+covariance matrix, the likelihood that the matrix is singular is greater
+than 0. When the matrix is singular, of course, it cannot be inverted and
+it cannot be used for simulating traits on animals. Thus, a method of
+forcing the matrix to be positive definite would be useful, as long as most
+of the correlations between traits are maintained close to the estimates
+that were found. Estimated parameters have non-zero standard errors,
+and thus, there is some flexibility in correlations that can be allowed.
+Hayes and Hill (1981) presented the “bending” procedure to modify
+eigenvalues of singular matrices, and Jorjani et al.(2003) gave a weighted
+bending procedure. Finally, Meyer and Kirkpatrick (2010) presented
+bending using a penalized maximum likelihood method. To me, however,
+the bending procedure causes many correlations and actual variances to
+differ more than expected from the original values. For example, if the
+variance of one trait was 100, then after bending it could be 70. The
+variances at least should not differ very much before and after modifica-
+tion.
+Thus, over the years I have played with different approaches, until I
+think I have one that works, at least to my satisfaction. So the objective
+of this little paper is to present the method and share it with whomever
+wants to use it. There were some inconsistencies in the previous paper,
+and so they have been corrected in this version, hopefully. Also, the
+approach is a little different},
+  file        = {Tech Note:Schaeffer14mkCovMatPosDef.pdf:PDF},
+  review      = {Simple way of forcing cov matrix positive semidefiniteness},
+  url         = {http://www.aps.uoguelph.ca/~lrs/ELARES/PDforce.pdf},
 }
 
 @Article{Zivot13portTheoryMatrixEcon424,

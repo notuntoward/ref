@@ -606,8 +606,7 @@ TODO: Why does package-autoremove want to remove stuff like xcscope, buffer-move
 
 *** Org Mode
 ***** [[http://orgmode.org/w/org-mode.git][org-mode git repository]].  I think this goes to the melpa package
-***** [[https://kungsgeten.github.io/org-brain.html][org-brain]]
-      <<org-brain>>
+***** <<org-brain>>
       Concept mapping in emacs, new project in March, 2017
 ******* [[https://github.com/Kungsgeten/org-brain][GitHub - Kungsgeten/org-brain: Org-mode wiki + concept-mapping]]
 ******* Also: [[Knowledge as Graphs]]
@@ -1116,6 +1115,13 @@ Many text editors have access to these in some simple way, so before thinking ab
       =M-p/M-n= scroll through past history.  You can edit the strings on either side of the arrows.
 
       Could use this to selectively undo replacements, do different replacements, etc.
+
+***** Replace a string with a newline
+
+      =M-x replace-string RET ; RET C-q C-j=
+
+      =C-q= for quoted-insert,
+      =C-j= is a newline.
 
 *** UNDO: =C-/= and REDO: =C-g C-/ C-/ ...= and TREES
     From: [[http://stackoverflow.com/questions/3527142/how-do-you-redo-changes-after-undo-with-emacs][How do you 'redo' changes after 'undo' with Emacs?]]
@@ -2047,7 +2053,7 @@ Strike-through: nil
       M-x rubydb
       ruby -d <progname inluding '.rb'>
 
-*** [[*MS Office and Emacs][MS Office and Emacs]]
+*** [[MS Office and Emacs]]
 *** MacOS Emacs
 ***** Killing a MacOS task
       1.) kill -9 in a terminal -- work OK for almost everything
@@ -2080,6 +2086,30 @@ For a public browser link. Share the note and copy the share url.
 ******* TODO [[https://lists.nongnu.org/archive/html/emacs-orgmode/2016-07/msg00222.html][Try]] `elp-instrument-package' on "org-" prefix
 ***** startup
 ******* guy says use =use-package=: [[https://anuragpeshne.github.io/essays/emacsSpeed.html][Speeding Up Emacs]]
+******* profiling .emacs
+********* [[https://github.com/jschaf/esup][esup]] startup profiler
+
+          Run with: =M-x esup=
+          
+          Get an error message but it keeps running and produces a useful profile buffer.
+
+          Note: Inside of emacs package manager, melpa says it's an obsolete package.
+
+********* profile-dotemacs
+          From: [[https://www.emacswiki.org/emacs/ProfileDotEmacs][EmacsWiki: Profile Dot Emacs]]
+
+  Use the script: [[http://www.randomsample.de/profile-dotemacs.el][profile-dotemacs.el]]
+
+  Then start emacs as follows:
+
+  emacs -Q -l PATH/profile-dotemacs.el -f profile-dotemacs
+
+  with PATH being the path to where this file resides.
+
+  The specific file to be profiled is hardcoded within profile-dotemacs.el
+
+  (defvar profile-dotemacs-file "~/.emacs" "File to be profiled.")
+        
 ***** TODO normal editing
 ******* believable [[http://emacs.stackexchange.com/questions/5359/how-can-i-troubleshoot-a-very-slow-emacs][speed debugging advice]]
 ******* smartparens, auto-complete, line-number and font-lock [[http://emacs.stackexchange.com/questions/5359/how-can-i-troubleshoot-a-very-slow-emacs][are suspects]]
@@ -3828,7 +3858,7 @@ won't work if you close and immediately open onenote again.
 ***** If a User Account Control dialog appears, click Yes.
 ***** Click the Update Options button again, and then select Enable updates -- again, click Yes in the UAC dialog.
 
-*** MS Office and Emacs
+*** <<MS Office and Emacs>>
 ***** [[Org to/from MS Word]]
 ***** Viewing MS Office or OpenDocument in Emacs adocs: [[http://stackoverflow.com/questions/28474736/how-to-open-pdf-file-in-emacs][need unoconv]] & gs
 *** Excel
