@@ -6,6 +6,11 @@ TODO: Why does package-autoremove want to remove stuff like xcscope, buffer-move
 
     My experiments, Emacs packages I've tried and installed (from Melpa repository). Also, some builtins I could try
 
+***** TRY fix org-ref hydra thing: C-j no longer brings up hydra
+      It's bound in:
+
+      https://github.com/jkitchin/org-ref/blob/master/org-ref-bibtex.el
+
 ***** TRY get .emacs, etc. unified across machines.
 ***** TRY get Windows file associations working again, esp. pdf reader
 
@@ -15,6 +20,11 @@ TODO: Why does package-autoremove want to remove stuff like xcscope, buffer-move
 
       See: [[File:~/.emacs::;;%20TODO%20use-package%20is%20redundant%20w/%20'(package-selected-packages%20in%20customizations)][use-packages notes in my .emacs]]
 
+***** TRY use setup file for every org file (like a template)
+
+      Inspired by [[https://mail.google.com/mail/u/0/?shva=1#inbox/15f336bd15ceba8c][this]] email, the documentation is [[http://orgmode.org/manual/In_002dbuffer-settings.html][here]].
+
+***** TRY try to use ~org-iswitchb~ (=bound to C-c b=)
 ***** TRY improve hydra
 ******* org: counsel-org-goto
 ******* org: counsel-org-tag
@@ -275,6 +285,65 @@ TODO: Why does package-autoremove want to remove stuff like xcscope, buffer-move
 ******* [[http://guides.lib.berkeley.edu/information-studies/apis][APIs for scholarly resources]]
 ******* See also: [[BibTex and Emacs]]
 ***** *ACCEPTED*
+******* ACCEPTED Decide mappings: C-c b, C-c r *VS*. =C-x 5 c= etc. *VS.* Prefix
+      
+        *Conclusion*: New mappings will be
+
+          C-x C-f: find file (as always)
+          C-x 4 f: find file other window (easier than fully consistent =C-x 4 C-f=)
+          C-x 5 f: find file other frame
+
+          C-x C-r: find recent file (mimicking C-x c-f since it's also a file)
+          C-x 4 r: find recent file other window
+          C-x 5 r: find recent file other frame
+
+          C-x c:   clone buffer (like files but avoids =C-x C-c= (kills emacs))
+          C-x 4 c: clone buffer other window
+          C-x 5 c: clone buffer other frame
+
+          C-c b:   org-iswitchb (/generalize to "files of same mode"/)
+
+********* C-x 5 r vs. C-5 C-4? *C-x 4, *C-x 5 are better*
+
+            *Conclusion*: C-x 4 and C-x 5 would be consistent w/ frame and window functions ([[Emacs key binding conventions]])
+
+*********** For recentf, C-x 5 C-r is a little clumsy.
+*********** could use a prefix: C-4 C-r, C-5 C-r but C-x 4/5 r is following a standard
+*********** or did I make that up in my own .emacs file
+      
+********* C-c b (C-c 5 b) and C-c b (C-c 5 b)? *C-c b and C-c c are OK*
+*********** I can use C-c since I'm a user ([[Emacs key binding conventions]])
+*********** I had already mapped C-c b to clone-indirect-other buffer
+************* Nice b/c easy to type, and C-c 5 b would be easy too
+************* BUT it wrote over org-iswitchb which restricts to org files (also NICE)
+
+*********** For uniformity: I could also do C-c b, C-c 4 b, C-c 5 b
+************* Easy to type
+************* Consistent with C-c b
+
+********* Save C-c b binding to clone-indirect-buffer-other-window? *No*
+
+          Conclusion: redefining C-c b would not be a sacrifice since I never used my C-c b binding anyway.  And it was kind of inconsistent.
+
+          Also, somebody else uses this as "org-iswitchb" which I think is more consistent, somehow.  Note: org-iswitchb might have a sensible use for C-u prefixes.  See the help for this function.  This might generalized to other modes e.g. for C mode: C-u could mean to ".h" files, etc.
+
+********* Use prefixes args (e.g. C-u)? *No*
+
+          Conclusion: It seems like prefixes arguments are best for binary command options (C-u) and this isn't binary.  Also, I don't have a consistent idea for the other ones, while I do notice that C-x 4 and C-x 5 are almost always bound to window and frame functions
+
+          See [[Emacs key binding conventions]]
+
+********* C-x f is finger-memoried to find-file so use =r= and =c=? *Yes*
+
+******* ACCEPTED make recentf-ido-file-file-other-frame and window
+
+        - Start with recentf-ido-file-file() in .emac
+        - separate 'recentf file' finding
+        - call it in recentf-ido-file-file, recentf-ido-file-file-other-window and recentf-ido-file-file-other-frame
+        - ... using tricks in
+          - find-file-guessing-other-window
+          - find-file-guessing-other-frame
+        - maybe consult [[https://www.emacswiki.org/emacs/RecentFiles#toc2][this page]]
 ******* ACCEPTED [[Jumping to papers from inside of org-mode and bibtex files]]
 ******* ACCEPTED [[help:ivy-push-view]] (window configs)
         I've bound it in my .emacs.  See [[Saving/restoring window sessions]]
@@ -885,7 +954,7 @@ Many text editors have access to these in some simple way, so before thinking ab
       o Headlines: org '***' things preceded by the languages comment symbol
       o I've configured it for org-hot keys
 
-        _My most common commands (when configured, curor on a headline)_
+        _My most common commands (when configured, cursor on a headline)_
 
         =TAB=: cursor at file start: full outline expand/contract
              cursor on headline: normal headline cycling
@@ -1166,6 +1235,27 @@ Many text editors have access to these in some simple way, so before thinking ab
     <<Narrowing/Widening: narrow-or-widen-dwim>>
 ***** good for org-mode
 ***** good for programming and other stuff too
+*** <<Emacs key binding conventions>>
+
+    *Conclusions* 
+    1) Can bind C-c <letter> to anything (it's reserved for "users")
+    2) other C-c bindings (number, punctuation,...) are for modes
+    3) =4 and 5= are almost very commonly used for other frame and window funcs
+    4) Prefix command argument =C-u= is OK for commands that have two behaviors
+    5) I'm not sure what to do with other prefix command arguments
+
+***** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Key-Binding-Conventions.html][Key Binding Conventions]]
+***** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Keys.html][Standard Prefix Keys: C-x, C-x 4, ...]]
+***** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Command-Arguments.html][Prefix Command Arguments: C-u, M-e, ...]]
+***** =4= means "other window"; =5= means "other frame"
+
+      Looking at my (mostly) default emacs key bindings...
+      
+******* =C-x 4=: is mostly bound to things regarding windows
+******* =C-x 5=: is mostly bound to things regarding frames
+******* But other prefixes eg. =C-h,= are also associated with 4 and 5
+        and mean other frame and other window
+
 *** Navigation hydras: =M-<apps>=
     This is my binding.
 
@@ -1309,6 +1399,11 @@ Many text editors have access to these in some simple way, so before thinking ab
         [[https://github.com/abo-abo/swiper/pull/587][Store full window-configuration with ivy-push-view by alfaromurillo · Pull Re...]]
 
 ***** TRY [[help:ivy-push-view]] (window configs, now not saved to file.  Future?)
+
+******* Guy [[https://github.com/abo-abo/swiper/issues/570][(CSRaghunandan) says]] that can save it with desktop.el.  Maybe that's simple? 
+
+******* another suggestion is [[https://github.com/abo-abo/swiper/issues/1079][here]].
+
 ***** TRY winsav.el, part of [[https://github.com/jwiegley/nxhtml][nxhtml]] – Save and restore frames and window configurations.
 
       It's not a pkg so it's here:
@@ -2114,22 +2209,21 @@ For a public browser link. Share the note and copy the share url.
 ******* believable [[http://emacs.stackexchange.com/questions/5359/how-can-i-troubleshoot-a-very-slow-emacs][speed debugging advice]]
 ******* smartparens, auto-complete, line-number and font-lock [[http://emacs.stackexchange.com/questions/5359/how-can-i-troubleshoot-a-very-slow-emacs][are suspects]]
 ******* guy's [[https://punchagan.muse-amuse.in/tags/orgmode.html][speedup detective work]]:  =#+STARTUP: showeverything= didn't help me
-******* What didn't help me
 ********* [[https://punchagan.muse-amuse.in/tags/orgmode.html][recommendation]]:  =#+STARTUP: showeverything= didn't help me
 ********* (adaptive-wrap-prefix-mode +1) in visual-line-mode-hook
 ********* commenting out: (global-visual-line-mode +1)
 ********* TODO try adaptive-wrap
 
-*** changing emacs icon
-***** some icons are [[https://www.emacswiki.org/emacs/EmacsIcons][here]]
-***** <<Changing Windows Emacs Icon>>
+*** <<Changing Windows Emacs Icon>>
 
-      From [[http://www.howtogeek.com/75983/stupid-geek-tricks-how-to-modify-the-icon-of-an-.exe-file/][here]]:
-      1. install [[http://www.angusj.com/resourcehacker/][Resource Hacker]]
-      2. find emacs in windows explorer
-      3. right click it and "open with resource hacker"
-      4. Icon in LHS menu
-      5. right click on the icons and "replace with"
+    From [[http://www.howtogeek.com/75983/stupid-geek-tricks-how-to-modify-the-icon-of-an-.exe-file/][here]]:
+    1. install [[http://www.angusj.com/resourcehacker/][Resource Hacker]]
+    2. find emacs in windows explorer
+    3. right click it and "open with resource hacker"
+    4. Icon in LHS menu
+    5. right click on the icons and "replace with"
+
+***** some icons are [[https://www.emacswiki.org/emacs/EmacsIcons][here]]
 
 *** R in emacs
     <<R in emacs>>
@@ -2152,6 +2246,7 @@ For a public browser link. Share the note and copy the share url.
 *** News and feature requests go [[http://discourse.jabref.org][here]]
 *** bug reports go [[https://github.com/JabRef/jabref/issues][here]]
 *** latest build: https://builds.jabref.org/master/
+*** [[https://github.com/JabRef/jabref/blob/master/CHANGELOG.md#unreleased][What's new in latest build]] 
 *** setting up multiple previews: =Options-> Preferences-> Entry preview=
 *** Setting JabRef setup so it can push latex cites to Emacs
     <<Setting JabRef setup so it can push latex cites to Emacs>>
@@ -2182,19 +2277,19 @@ C:\Program Files (x86)\GNU Emacs 25.1\bin\emacsclientw.exe
       maintaining a giant topic file in emacs org mode; every time I
       enter a new paper in Jabref, I go to emacs and sprinkle the topic
       file with links to it.  Since a paper might be related to many
-      topics, I often add many links -- the fact that there many links
+      topics, I often add many links -- the fact that there are many links
       unfortunately does not fit well into the hierarchical mindmap
-      structure like that used in Docear.  There is a cross-link
-      capability but doesn't work well when there are many cross-links.
+      structure like that used in Docear.  Docear does have a cross-link
+      capability but it doesn't work well when there are many cross-links.
 
       Better would be a "many-to-one" and "one-to-many" structure like
       that in a Concept Map.  Concept Maps allow both hierarchy and
       arbitrary relationship links -- they're really just directed graphs
       with a nice interface for grouping nodes and redrawing.  The best
       program I've found is at http://cmap.ihmc.us/ but it doesn't work
-      well with bibtex).
+      well with BibTex).
 
-      Anyway, Docear is mindmap based, so I'm sticking with org mode.  It
+      Anyway, Docear is mindmap based, so I'm sticking with org mode.  Org mode
       can do the same thing as concept maps, is simple plain text, is
       super flexible, and has hooks to every publishing tool I use.  It's
       clunky and not graphical but it works.  Docear is going in the
@@ -2205,13 +2300,13 @@ C:\Program Files (x86)\GNU Emacs 25.1\bin\emacsclientw.exe
 ***** II. Paper Relationship Discovery
 
       I would love something like Evernote's approach.  Every time I save
-      a web article, it tells me about other articles I've already saved
-      that are related.  Restricting the search to stuff I've already
-      entered is better than telling me about all the articles in the
+      a web article, Evernote tells me about related articles I've already saved.  Restricting the search to stuff I've already
+      saved is better than telling me about all the articles in the
       world that are related.  I haven't tried Docear's recommender
       system.  If it's searching the world, well, I already have google;
       if it's searching my own references first, then I'm really
       interested.
+
 *** Italics in article title: use =\em{}=
     From: [[https://sourceforge.net/p/jabref/discussion/318825/thread/6e71725d/][JabRef / Discussion / Help:Italics in titles?]]
 * Old Computers
@@ -2808,7 +2903,7 @@ that you get when you buy Office 365?
       Download: [[https://joelpurra.com/projects/X-Mouse_Controls/][X-Mouse Controls by Joel Purra]]
       (different than [[https://www.highrez.co.uk/downloads/xmousebuttoncontrol.htm][X-mouse Button Control]], which only does buttons, and which I don't need)
       - not installable: ON SP4, I have it in: ~\bin\x-mouse_controls_2010-04-03_1155_release
-      - set autoraise delay
+      - set autoraise delay: 750ms seemed OK
       - This also fixes the alt-Tab mouse focus problem too
         - Before:
           - mouse on fullscreen window, far away from window underneath
@@ -4482,8 +4577,7 @@ table rows in previous examples.
     7. when you need to set the path, call:  path(pathdef);
 
 *** Graphics and plots
-***** Matlab color picking
-      <<Matlab color picking>>
+***** <<Matlab color picking>>
 ******* [[http://blogs.mathworks.com/pick/2008/08/15/colors-for-your-multi-line-plots/#comment-12842][20 hand made ugly-but-distinguishable colors]]
         (see [[file:~/lib/matlab/scottlib/extracolors.m][extracolors.m]], which is tested [[file:~/lib/matlab/scottlib/test/extracolors_test.m][here]])
 

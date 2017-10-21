@@ -405,7 +405,26 @@
 
       Q(tau) = min(x: cdf(x)>=tau)
 
-      Also see my [[Distribution Regression]] notes [[https://onedrive.live.com/edit.aspx?resid=4BBD96B3698748F8!163&cid=4bbd96b3698748f8&app=OneNote][in OneNote]]
+***** Also: [[Quantile Score]]
+***** Also: see my [[Distribution Regression]] notes [[https://onedrive.live.com/edit.aspx?resid=4BBD96B3698748F8!163&cid=4bbd96b3698748f8&app=OneNote][in OneNote]]
+***** Also: [[Quantile Confidence estimates]]
+***** Also: [[Summing Quantiles]]
+*** <<Quantile Score>>
+
+    The QS is a weighted absolute error between quantile forecasts and observations ([[cite:Bentzien14quantScrDecomp][Bentzien & Friederichs 2014]]) and in turn, the [[CRPS is a weighted sum of quantile scores]].
+
+***** Places with meaningful definitions of the quantile score
+******* Best? [[cite:Koenker05QuantRgrssnBook][Koenker 2005: Quantile Regression (Book)]], 
+********* Best derivation follows eq. (1.9) 
+********* another is above eq. (3.14)
+******* [[cite:Gneiting07strictPropScore][Gneiting & Raftery 2007: Strictly Proper Scoring]], eq. (27)
+******* [[cite:Ehm16quantileExpectileScrFrcst][Ehm et al. 2016: Quantile, Expectile Score Forecasts]]
+******* [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing quantile weighted scoring]]
+
+***** [[Quantile score & DWD style per-quantile reliability plots]]
+***** [[Quantile Confidence estimates]]
+***** [[Continuous Ranked Probability Score (CRPS)]]
+*** [[Continuous Ranked Probability Score (CRPS)]]
 *** [[Transfer Entropy]]
     <<Transfer Entropy>>
 
@@ -592,8 +611,7 @@
   :PROPERTIES:
   :ORDERED:  t
   :END:
-*** Books w/ source code
-    <<Books w/ source code>>
+*** <<Books w/ source code>>
 ***** [[http://www.neurosolutions.com/products/nsbook/][Interactive Neural Network Book]] explains recurrent NN's, has demos
 ***** [[http://www.amazon.com/Advanced-Algorithms-Neural-Networks-Sourcebook/dp/0471105880][Advanced Algorithms for Neural Networks: A C++ Sourcebook]] does regression, has source
 ***** [[http://www.amazon.com/Object-Oriented-Neural-Networks-Joey-Rogers/dp/0125931158/ref%3Dpd_bxgy_b_text_b][Object-Oriented Neural Networks in C++]]
@@ -3740,7 +3758,8 @@ Hope that helps,
       Most (all?) feature selection papers are about feature selection for
       point regression or classification.  Here are papers about feature
       selection that improves not only point forecast error, but measures of
-      error distribution error (e.g. [[CRPS]]);
+      error distribution error
+      e.g. [[Continuous Ranked Probability Score (CRPS)]]
 
 ******* see, maybe merge: [[*Physics-based%20power%20curve%20features][Physics-based power curve features]]
 ******* see, maybe merge: [[Wind power features besides spd/dir]]
@@ -3790,12 +3809,12 @@ Hope that helps,
 
 ******* [[cite:Bai16condCplaWindPowCrvFeat][Bai et al. 2016 Cond. Copula wind Pow curve and feats]]
 ******* [[file:energy.bib::Yao10simplexQRfeatSel][Yao 2010: Simplex Techniques Quantile]] (AIC, SIC, LASSO and others in Simplex)
-******* see also: [[Feature Selection for Quantile Regression]]
-******* see also: [[Feature selection for varying coefficient models]]
-******* see also: [[Relationship between NWP forecast variables and forecast error]]
-******* see also: [[feature selection for point regression]]
-******* see also: [[model selection]]
-******* see also: [[Quantile Regression]]
+******* also: [[Feature Selection for Quantile Regression]]
+******* also: [[Feature selection for varying coefficient models]]
+******* also: [[Relationship between NWP forecast variables and forecast error]]
+******* also: [[feature selection for point regression]]
+******* also: [[model selection]]
+******* also: [[Quantile Regression]]
 ***** <<Adaptive covariance estimation and feature sel>>
 ******* cite:Xiao13FastbivarPsplinesSndwich (2 psplines in tensor product)
 ******* [[file:energy.bib::Zliobaite09lrnCncptDrift][Žliobaitė 2009: Learning Concept Drift]] (overview)
@@ -4581,6 +4600,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ******* if parallel models
 ******* seems like they manually switch sources
 
+*** Also [[State Change Detection]]
 * <<Clustering for prediction>>
 *** clustering across farms, ramps: [[file:energy.bib::Guptay07symbDynFiltPatternRecog][Zoeller 2007: Pattern Recognition]] ?
 *** Ramps are "calculated" in [[file:energy.bib::Makarov08windMitigateBPA][Makarov 2008: Mitigating Operational Impacts]] w/ "swinging door"
@@ -6373,50 +6393,64 @@ variables will be preferred, when possible.
 ******* See: [[Wind and Solar Forecast Error Dependence]]
 ******* See: [[Solar and Load Forecast Error Dependence]]
 ******* See: [[Combined wind and load forecasting]]
-******* Johnson System Distributions
-        <<Johnson System Distributions>>
+******* <<Johnson System Distributions>>
 ********* TODO [[file:energy.bib::George11estJohnsonDistBnd][George & Ramachandran 2011: Estimation Parameters Johnson]] dist bounded
 ********* [[file:energy.bib::Xiao14genCorrRVjohnson][Xiao 2014: Generating Johnson]] random vectors (kind of a copula)
 ********* [[file:energy.bib::Torrez93JohnsonDistFitNeuron][Torrez & Durham 1993: Johnson Distributions Fitting]] from quantiles (neural net)
 ********* [[file:energy.bib::Flynn06johnsonSBextrm][Flynn 2006: Fitting Johnson SB]] extreme
-******* Stable Distributions
-        <<Stable Distributions>>
+******* <<Stable Distributions>>
         Axel used an alpha-stable distribution to compute extreme values
 ********* [[file:energy.bib::Nolan15StableDistBootCh1][Nolan 2015: Stable Distributions Models]]
 ********* [[file:energy.bib::Menn09smthTruncStblDist][Menn & Rachev 2009: Smoothly GARCH]] truncated stable distributions
 ********* [[file:energy.bib::Borak05stableDist][Borak et al. 2005: Stable]] Distributions (intro)
 ********* [[file:energy.bib::Veillette10AlphaStableDistMatlab][Veillette 2010: Alpha Stable MATLAB]]
 ********* [[file:energy.bib::Frain09alphaDistAppsThesis][Frain 2009: Studies Application Alpha Distribution Economics]] incl. rgrssn.
-***** Continuous Ranked Probability Score (*CRPS*)
-      <<CRPS>>
-******* [[http://www.eumetcal.org/resources/ukmeteocal/verification/www/english/msg/ver_prob_forec/uos3b/uos3b_ko1.htm][CRPS == MAE]] for deterministic forecasts (see also [[file:energy.bib::Hersbach00crpsDecomp][Hersbach 2000: Decomposition]])
+***** <<Continuous Ranked Probability Score (CRPS)>>
+******* 3 CRPS def's:  [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing dens. frcst score rules]]
+******* <<CRPS is a weighted sum of quantile scores>>
+        "weighted sum of [[Quantile Score]]s" according to:
+********* Contin. Integral of QS's [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing]] (eq. 22)
+********* [[cite:Broecker12rawEnsQntScrCRPS][Broecker 2012: Evaluating]]
+********* [[cite:Pritchard10varQuantProbFrcst][Pritchard 2010: Short term wind quantile]]
+********* Also: [[Multidimensional CRPS]]: also a weighted average
+********* Also: Weighting CRPS to compare forecasts: [[file:energy.bib::Ranjan09CombEvalProbFrcsts][Ranjan 2009: Combining Evaluating Probabilistic Forecasts]] 
+******* <<CRPS == MAE for deterministic forecasts>>
+********* See [[cite:Gneiting07strictPropScore][Gneiting & Raftery 2007: Strictly Proper Scoring]]
+********* See [[file:energy.bib::Hersbach00crpsDecomp][Hersbach 2000: Decomposition]]
+********* [[http://www.eumetcal.org/resources/ukmeteocal/verification/www/english/msg/ver_prob_forec/uos3b/uos3b_ko1.htm][This link]] also used to say this, I think.
+********* CRPS in same units as observations: [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing]]
+******* <<Multidimensional CRPS>>: a weighted average
+********* [[file:energy.bib::Hersbach00crpsDecomp][Hersbach 2000: Decomposition]]
+********* [[cite:Scheuerer14variogramProperScore][Scheuerer & Hamill 2014: Variogram]]
+********* Also? [[Scenario/Ensemble quality metrics]]
 ******* [[file:energy.bib::Todter12genIgnCRPS][Toedter & Ahrens 2012: Generalization Ignorance Score]] and CRPS decomp
-******* Matlab for CRPS
-        <<Matlab for CRPS>>
+******* <<Matlab for CRPS>>
 ********* [[http://iri.columbia.edu/~gonzalez/DPWG/matlab_code.html][Matlab code for CRPS]] (specifically [[https://github.com/itszootime/emulatorization-api/blob/master/matlab/validation/crps_ign.m][crps_ign.m]] (CRPS + ignorance score) *BUGGY*)
 *********** paper is here: [[file:energy.bib::Todter12genIgnCRPS][Toedter & Ahrens 2012: Generalization Ignorance Score]]
 *********** there were basic matrix size bugs in it when I tried the 27.02.2014 version.
 ********* N-dim CRPS [[http://iri.columbia.edu/~gonzalez/DPWG/matlab_code.html][matlab code]]
 ********* I have also proted some of the  [[http://cran.r-project.org/web/packages/verification/index.html][R verification package]] to Matlab
 ******* R for CRPS: see the [[http://cran.r-project.org/web/packages/verification/index.html][R verification package]] (I have ported some of this to Matlab)
-******* CRPS ~ summed quantile loss:
-********* [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing densisty frcsts score rules]]
-********* [[cite:Pritchard10varQuantProbFrcst][Pritchard 2010: Short term wind quantile]]
-********* CRPS is a weighted sum of quantile scores: [[cite:Broecker12rawEnsQntScrCRPS][Broecker 2012: Evaluating]]
 ******* A CRPS-based market! [[file:energy.bib::][Papakonstantinou & Pinson 2014: Towards]] uncert Mkt offers
 ******* Multidimensional CRPS is wgt'ed average: [[cite:Hersbach00crpsDecomp][Hersbach 2000: Decomp. of CRPS]]
 ******* relation between CRPS and Energy Score: [[file:energy.bib::Gneiting08multiVarEnsAssess][Gneiting et al. 2008: Assessing]]
-***** Quantile score & DWD style per-quantile reliability plots
+******* Also [[Quantile Score]]
+***** <<Quantile score & DWD style per-quantile reliability plots>>
 ******* [[cite:Bentzien14quantScrDecomp][Bentzien & Friederichs 2014 The quantile score and decomp.]]
 ******* [[cite:Bentzien13qntScrDecomp][Bentzien & Friederichs 2013: Decomposition graphical portray]]
+******* Also [[Quantile Score]]
 ***** <<Quantile Confidence estimates>>
 ******* [[cite:Remillard17cplaCondQuantile][Remillard et al. 2017 2 kinds of cond. copula, btstrp conf intrvl]]
+******* Also [[Quantile Score]]
 ***** <<Scenario/Ensemble quality metrics>>
 ******* [[file:energy.bib::Pinson12scenQualWind][Pinson & Girard 2012: Evaluating]] (scenario quality, energy score)
 ******* [[file:energy.bib::Pinson13DiscrimAbilityEnrgyScr][Pinson & Tastu 2013: Discrimination Energy]] score ability
 ******* [[file:energy.bib::Thorarinsdottir13highDimCalRankHist][Thorarinsdottir et al. 2013: Assessing]] high dim ensembles
 ******* [[cite:Tastu15spcTimeTrajGaussCpla][Tastu et al. 2015: Space Time Trajectories Gaus Cpla Prec Mtrx]]
         (Logarithmic Score and Energy Score)
+******* Also: [[Multidimensional CRPS]]
+***** <<Forecast Expectiles>>
+******* Expectile vs. quantile score: [[cite:Ehm16quantileExpectileScrFrcst][Ehm et al. 2016: Quantile, Expectile Score Forecasts]]
 ***** [[cite:Bessa12adaptQuantCopulaFrcst][Bessa et al. 2012: Time Adaptive Quantile Copula]]
 ***** [[file:energytop.org::*Classification%20Metrics%20under%20Class%20Imbalance][Classification Metrics under Class Imbalance]]
 ***** [[cite:Chai14rmseOrMae][Chai & Draxler 2014: Root RMSE MAE]]: when RMSE is/isn't good
@@ -6473,7 +6507,8 @@ variables will be preferred, when possible.
 ***** [[file:energy.bib::Roulston02frcstInfoEval][Roulston & Smith 2002: Evaluating]] (info theory == bidding quality!, ensembles)
 ***** [[file:energy.bib::Bentzien13qntScrDecomp][Bentzien & Friederichs 2013: Decomposition]] (quantile score and decomp)
 ***** [[file:energy.bib::Broecker12rawEnsQntScrCRPS][Broecker 2012: Evaluating]] raw ens: wind speed eval w/o power curve ?
-***** [[file:energy.bib::Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing]] dens frcsts: CRPS ~ summed qunatile loss
+***** [[file:energy.bib::Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing]] dens frcsts: CRPS ~ summed quantile loss
+***** [[file:energy.bib::Ranjan09CombEvalProbFrcsts][Ranjan 2009: Combining Evaluating Probabilistic Forecasts]] (weighted CRPS)
 ***** [[file:energy.bib::Gneiting11ptFrcstMkEval][Gneiting 2011: Making]] and eval pt. forecasts (for markets)
 ***** [[file:energy.bib::Gneiting11quantOptFrcst][Gneiting 2011: Quantiles]] as optimal point forecasts
 ***** [[file:energy.bib::Scheuerer14variogramProperScore][Scheuerer & Hamill 2014: Variogram]] score temp cont.
@@ -6628,8 +6663,7 @@ variables will be preferred, when possible.
 ******* [[file:energy.bib::Marvuglia11lrnFarmPowCrvGMR][Marvuglia & Messineo 2011: Learning]] farm pow curve GMR instead of MLP
 ***** [[file:energy.bib::Bel16gridFluctwndErr][Bel et al. 2016: Grid]] scale forecast errors
 ***** [[cite:Mirowski14loadFrcstFeatAlgAgg][Mirowski et al. 2014: Demand Frcst, algs, feats, aggregation]]
-***** Summing Quantiles
-      <<Summing Quantiles>>
+***** <<Summing Quantiles>>
 ******* [[file:energy.bib::Jose14TrimOpinPoolCal][Jose et al. 2014: Trimmed Opinion Pools]]
 ******* [[file:energy.bib::Lichtendahl13probOrQuantAvg][Lichtendahl et al. 2013: Is It Better]] to sum quantiles?
 ******* TODO see: [[Quantile Mixtures]]
@@ -7080,8 +7114,7 @@ Scott
 ******* [[http://www.boisestate.edu/news/update/2008/07232008/index.html][boise state sodar]]
 ******* sodar/lidar used for power curves: [[http://www.iop.org/ej/abstract/1755-1315/1/1/012059][remote sensing used for power curves]]
 ***** <<Forecasting Features>>
-******* Wind power features besides spd/dir
-        <<Wind power features besides spd/dir>>
+******* <<Wind power features besides spd/dir>>
 ********* see, maybe merge: [[*Physics-based%20power%20curve%20features][Physics-based power curve features]]
 ********* see, maybe merge: [[Relationship between NWP forecast variables and forecast error]]
 ********* see, maybe merge: [[Feature selection for probabilistic forecasts]]
@@ -7103,40 +7136,41 @@ Scott
 ********* see: [[Effect of precipitation]]
 ********* see: [[Net Demand Forecast]]
 ********* see: [[Combined wind and load forecasting]]
-******* 1st derivatives: may learn that there's a ramp near the end of the input window
-********* I used this for APG stuff (swinging doors ramps)
-********* [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006]] compare QR used it
-******* median filtered derivatives?
-********* avoid confusion from dropouts?
-********* Sum of inputs still captures loss in average power from dropout
-******* number of dropouts (roughly: sum(median(x)-x))
-******* Weather PCA: [[file:energy.bib::Lange03uncertFrcstMetSit][Lange & Heinemann 2003: Relating]]
-******* Risk index: [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]] QR
-******* Friction velocity:  [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]]
-******* Air Density (lots of papers)
-******* Features for ramp forecasts: [[file:energy.bib::Ferreira11rampFrcstSurv][Ferreira et al. 2011]]
-******* Weather regimes and ramps: [[file:energy.bib::Couto14weathRegimeRamps][Couto et al. shed: Impact Weather Regimes]] (LNEG, bogus)
-******* Climatology best for complex terrain not resolved by NWP: [[file:energy.bib::Gneiting08multiVarEnsAssess][Gneiting et al. 2008: Assessing]]
-******* Spread of time lagged ensembles: [[cite:Pinson04OonlinePredRiskWind][Pinson & Kariniotakis 2004]]
-******* Ensemble mean and spread (prob. frcst)
-        param (prob. frcst): [[file:energy.bib::Hagemann09vExtrapTemp][Hagemann et al. 2009: Uncertainty]]
-******* point forecast lags and empirical quantiles: [[file:energy.bib::Anastasiades13probFrcstWindVarIdxFeats][Anastasiades & McSharry 2013: Quantile]] variability features
-********* turbulence intensity: [[file:energy.bib::Kun14windIntrvlClustSOM][Kun & Jihong 2014: Wind SOM BP]]
-********* turbulence intensity: [[file:energy.bib::Roy14perfPredPitchTurbineVar][Roy 2014: Performance]] pred pitch turb var
-******* [[Concept drift detection]] (so can broaden prob forecast uncertainty)
-******* Stability/turbulence: [[file:energy.bib::Wharton12atmStabWindPow][Wharton & Lundquist 2012: Atmospheric]] stab wind pow
-******* Pressure and power total variation: [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]] quantile pow frcst
-******* Kalman filter
-********* input could be Kalman output
-********* NN could predict error from Kalman output or just total
-********* [[http://www.soe.ucsc.edu/~taoswap/GroupMeeting/UnscentedSeries_DanYuan_2004_11_17.ppt][Unscented Kalman Filter Slides]]
-******* Autotrain of NN's
-********* [[file:energy.bib::Yan12autoNNtsFrcst][Yan 2012: Toward Automatic Time]] auto NN train
-******* also see: [[Relationship between NWP forecast variables and forecast error]]
-******* also see: [[Summary of sensor location picking papers]]
-******* also see: [[Power curve learning]]
-******* also see: [[Feature Selection]]
-******* also see: [[Physics-based power curve features]]
+********* 1st derivatives: may learn that there's a ramp near the end of the input window
+*********** I used this for APG stuff (swinging doors ramps)
+*********** [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006]] compare QR used it
+********* median filtered derivatives?
+*********** avoid confusion from dropouts?
+*********** Sum of inputs still captures loss in average power from dropout
+********* number of dropouts (roughly: sum(median(x)-x))
+********* Weather PCA: [[file:energy.bib::Lange03uncertFrcstMetSit][Lange & Heinemann 2003: Relating]]
+********* Risk index: [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]] QR
+********* Friction velocity:  [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]]
+********* Power std: [[cite:Mittelmeier17powStdRatioWake][Mittelmeier et al. 2017: SCADA data pow std ratio wake]]
+********* Air Density (lots of papers)
+********* Features for ramp forecasts: [[file:energy.bib::Ferreira11rampFrcstSurv][Ferreira et al. 2011]]
+********* Weather regimes and ramps: [[file:energy.bib::Couto14weathRegimeRamps][Couto et al. shed: Impact Weather Regimes]] (LNEG, bogus)
+********* Climatology best for complex terrain not resolved by NWP: [[file:energy.bib::Gneiting08multiVarEnsAssess][Gneiting et al. 2008: Assessing]]
+********* Spread of time lagged ensembles: [[cite:Pinson04OonlinePredRiskWind][Pinson & Kariniotakis 2004]]
+********* Ensemble mean and spread (prob. frcst)
+          param (prob. frcst): [[file:energy.bib::Hagemann09vExtrapTemp][Hagemann et al. 2009: Uncertainty]]
+********* point forecast lags and empirical quantiles: [[file:energy.bib::Anastasiades13probFrcstWindVarIdxFeats][Anastasiades & McSharry 2013: Quantile]] variability features
+*********** turbulence intensity: [[file:energy.bib::Kun14windIntrvlClustSOM][Kun & Jihong 2014: Wind SOM BP]]
+*********** turbulence intensity: [[file:energy.bib::Roy14perfPredPitchTurbineVar][Roy 2014: Performance]] pred pitch turb var
+********* [[Concept drift detection]] (so can broaden prob forecast uncertainty)
+********* Stability/turbulence: [[file:energy.bib::Wharton12atmStabWindPow][Wharton & Lundquist 2012: Atmospheric]] stab wind pow
+********* Pressure and power total variation: [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]] quantile pow frcst
+********* Kalman filter
+*********** input could be Kalman output
+*********** NN could predict error from Kalman output or just total
+*********** [[http://www.soe.ucsc.edu/~taoswap/GroupMeeting/UnscentedSeries_DanYuan_2004_11_17.ppt][Unscented Kalman Filter Slides]]
+********* Autotrain of NN's
+*********** [[file:energy.bib::Yan12autoNNtsFrcst][Yan 2012: Toward Automatic Time]] auto NN train
+********* also: [[Physics-based power curve features]]
+********* also: [[Relationship between NWP forecast variables and forecast error]]
+********* also: [[Summary of sensor location picking papers]]
+********* also: [[Power curve learning]]
+********* also: [[Feature Selection]]
 ***** <<Lag Selection Enablers>>
 ******* another explanation for why lags might make sense: [[file:energy.bib::lu07lagensemble][lu et al. 2007: short range numerical]]
 ******* wind speed
@@ -7258,8 +7292,7 @@ Scott
 ******* gnss (gps, etc.)
 ********* [[file:energy.bib::cardellach03gpsrblnocnwnd][cardellach et al. 2003: mediterranean]] balloon gpsr
 ******* TODO read [[File:~/proj/norsewind/doc/norsewind.org::norsewind%20publications][Norsewind Publications]] to find out how satellite imaging is going
-***** Relationship between NWP forecast variables and forecast error
-      <<Relationship between NWP forecast variables and forecast error>>
+***** <<Relationship between NWP forecast variables and forecast error>>
 ******* see [[Feature selection for probabilistic forecasts]]
 ******* see, maybe merge: [[*Physics-based%20power%20curve%20features][Physics-based power curve features]]
 ******* see, maybe merge: [[Wind power features besides spd/dir]]
@@ -7277,11 +7310,15 @@ Scott
 ******* [[file:energy.bib::Anastasiades13probFrcstWindVarIdxFeats][Anastasiades & McSharry 2013: Quantile]] wind frcst var indices
 ******* [[file:energy.bib::Lee14PowerCurveEstimation][Lee et al. 2014: Power Curve Estimation]] like (density, turbulence intensity wind shear)
 ******* [[file:energy.bib::Gneiting08multiVarEnsAssess][Gneiting et al. 2008: Assessing]] climatology best for complex terrain not resolved by NWP
+******* [[cite:Pinson09skillEnsWndPow][Pinson et al. 2009: Skill ensembles]]
+******* [[cite:Nielsen06quantRegr][Nielsen et al. 2006: Using QR tried lagged ensembles]]
+******* 
 ******* stability/turbulence: [[file:energy.bib::Wharton12atmStabWindPow][Wharton & Lundquist 2012: Atmospheric]] stab wind pow
-******* see also: [[Wind power features besides spd/dir]]
-******* see also: [[Concept drift detection]]
-******* see: [[HTTP://confluence.iwes.fraunhofer.de/confluence/display/dabestand/cosmo%2bbackground][IWES COSMO variable list]]
-******* see: [[Forecasting Features]]
+******* Power std: [[cite:Mittelmeier17powStdRatioWake][Mittelmeier et al. 2017: SCADA data pow std ratio wake]]
+******* also: [[Wind power features besides spd/dir]]
+******* also: [[Concept drift detection]]
+******* also: [[HTTP://confluence.iwes.fraunhofer.de/confluence/display/dabestand/cosmo%2bbackground][IWES COSMO variable list]]
+******* also: [[Forecasting Features]]
 
 ***** NWP (should this be somewhere else?)
 ***** See also [[Combined wind and load forecasting]]
@@ -7347,7 +7384,7 @@ Scott
 ********* example is Dynamical Prediction model on slide 11 of [[file:energy.bib::Madsen08toolsWindIntegrate][Madsen et al. 2008: Tools for Integrating]]
 ********* [[file:energy.bib::Madsen08toolsWindIntegrate][Madsen et al. 2008: Tools for Integrating]] also does NowCaster type forecasts using wind predictions (p. 18)
 ***** <<Power curve learning>>
-******* *Physics-based power curve features*
+******* <<Physics-based power curve features>>
 
          Provide them as options to an NN, let feature selection pick the
          best.  Alternatively, they could be turned into
@@ -7434,6 +7471,8 @@ Scott
          organize them better...
 
          [[cite:Bai16condCplaWindPowCrvFeat][Bai et al. 2016 Cond. Copula wind Pow curve and feats]] selected form of inputs e.g. pressure using [[Conditional Copulas]], also had prob-forecast-specific features.
+
+         A simple proxy for stability/wake effects:  [[cite:Mittelmeier17powStdRatioWake][Mittelmeier et al. 2017: SCADA data pow std ratio wake]]
 
 ******* Learning montonicity
         <<Learning montonicity>>
@@ -11081,7 +11120,7 @@ Erika
 ******* see [[Copulas]]
 ******* see [[Novelty Detection]]
 ******* see [[Copula Processes]]
-***** Matlab ischange (2017b) function
+***** Matlab [[https://www.mathworks.com/help/matlab/ref/ischange.html#mw_52a87b5c-9d25-446a-94f9-92c7e71d5206][ischange]] (2017b) function: 
 ***** also see [[State Change Alarm Criteria]]
 
 *** <<Outlier Detection>>
@@ -11169,7 +11208,8 @@ Erika
 ***** <<Copula Based State Change Alarm Criteria>>
 ******* [[cite:Malhotra15lstmAnomDetTS][Malhotra et al. 2015: LSTM TimeSer Anom. Det: Kalman could be Copula]]
 ***** [[Stopping Criteria]]
-*** see also [[file:energytop.org::*Class%20Imbalance%20Handling][Class Imbalance Handling]]
+*** Also [[file:energytop.org::*Class%20Imbalance%20Handling][Class Imbalance Handling]]
+*** Also [[Automatic bad data detection]]
 * <<Streamwise processing>>
   A kind of adaptive processing w/ lags, etc.
 
@@ -11263,6 +11303,7 @@ TOTO: read Fan16* for an overview
 ******* [[cite:Pinheiro96unCnstrParamVarCovMat][Pinheiro & Bates 1996: Unconstrained Cov. Mat Parameterizations]]
 ******* [[cite:Cai16strctHiDimCovPrecAdapt][Cai et al. 2016: Estimating structured high dim cov & prec matrices]]
 ******* [[cite:Higham02nearestCorrMat][Higham 2002: Computing nearest correlation matrix]]
+******* [[cite:Litvinenko17approxLikHierCovMatSpatial][Litvinenko et al. 2017: Likelihood Approx Hier Non Homog Cov Mat Decomp.]]
 ******* [[cite:Tastu15spcTimeTrajGaussCpla][Tastu et al. 2015: Space Time Trajectories (precision matrix)]]
 ******* [[cite:Anderlucci15covPatMix][Anderlucci et al. 2015: Covariance patterns mixture (has # coeffs table)]]
 ******* [[cite:Li11tensoCovMatObjTrck][Li & Sun 2011: Tensor Covariance Matrix Obj Track]]
@@ -11977,6 +12018,7 @@ optimization to be a generalization of linear programming.
     07/06/17 [[cite:Owen13monteCarloBook][Owen 2013: Monte Carlo Methods Book]]
     07/08/17 [[cite:Wikipedia17matrixNormDist][Wikipedia 2017: Matrix Normal Dist]]
              [[cite:Wikipedia17WishartDist][Wikipedia 2017: Wishart]]
+    10/13/17 [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing weighted CRPS]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:./energy.bib

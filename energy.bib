@@ -3542,21 +3542,21 @@ prediction; economic value; grid operations},
 @Article{Gneiting14ProbFrcsting,
   author    = {Gneiting, Tilmann and Katzfuss, Matthias},
   title     = {Probabilistic Forecasting},
+  journal   = {Annual Review of Statistics and Its Application},
   year      = {2014},
   volume    = {1},
   number    = {1},
   pages     = {125--151},
-  doi       = {10.1146/annurev-statistics-062713-085831},
-  eprint    = {http://dx.doi.org/10.1146/annurev-statistics-062713-085831},
   abstract  = {A probabilistic forecast takes the form of a predictive probability distribution over future quantities or events of interest. Probabilistic forecasting aims to maximize the sharpness of the predictive distributions, subject to calibration, on the basis of the available information set. We formalize and study notions of calibration in a prediction space setting. In practice, probabilistic calibration can be checked by examining probability integral transform (PIT) histograms. Proper scoring rules such as the logarithmic score and the continuous ranked probability score serve to assess calibration and sharpness simultaneously. As a special case, consistent scoring functions provide decision-theoretically coherent tools for evaluating point forecasts. We emphasize methodological links to parametric and nonparametric distributional regression techniques, which attempt to model and to estimate conditional distribution functions; we use the context of statistically postprocessed ensemble forecasts in numerical weather prediction as an example. Throughout, we illustrate concepts and methodologies in data examples.
 
 Keywords
 calibration, consistent scoring function, ensemble forecast, proper scoring
 rule, distributional regression},
+  doi       = {10.1146/annurev-statistics-062713-085831},
+  eprint    = {http://dx.doi.org/10.1146/annurev-statistics-062713-085831},
   file      = {Gneiting14ProbFrcsting.pdf:Gneiting14ProbFrcsting.pdf:PDF},
-  journal   = {Annual Review of Statistics and Its Application},
   owner     = {sotterson},
-  review    = {Genaral Overvview of 2014 state of the art. Interesting topics: ensemble calibration, copulas for multidim, scenarios, aaggregation. onditional distributions (instead of quantiles), etc. Probably worth reading to catch up.},
+  review    = {General Overvview of 2014 state of the art. Interesting topics: ensemble calibration, copulas for multidim, scenarios, aaggregation. onditional distributions (instead of quantiles), etc. Probably worth reading to catch up.},
   timestamp = {2014.11.07},
 }
 
@@ -11630,18 +11630,33 @@ scenarios.},
 @Article{Pinson09ensembProbFrcst,
   author    = {Pierre Pinson and Henrik Madsen},
   title     = {Ensemble-based Probabilistic Forecasting at Horns Rev},
+  journal   = {Wind Energy},
   year      = {2009},
   volume    = {12},
   number    = {2},
   pages     = {137--155},
-  doi       = {10.1002/we.309},
   abstract  = {For management and trading purposes, information on short-term wind generation (from a few hours to a few days ahead) is crucial at large offshore wind farms, since they concentrate a large capacity at a single location. The most complete information that can be provided today consists of probabilistic forecasts, the resolution of which may be maximized by using meteorological ensemble predictions as input. The paper concentrates on the test case of the Horns Rev wind farm over a period of approximately 1 year, in order to describe, apply and discuss a complete ensemble-based probabilistic forecasting methodology. In a first stage, ensemble forecasts of meteorological variables are converted to power through a suitable power curve model. This model employs local polynomial regression, and is adaptively estimated with an orthogonal fitting method. The obtained ensemble forecasts of wind power are then converted into predictive distributions with an original adaptive kernel dressing method. The shape of the kernels is driven by a mean-variance model, the parameters of which are recursively estimated in order to maximize the overall skill of obtained predictive distributions. Such a methodology has the benefit of yielding predictive distributions that are of increased reliability (in a probabilistic sense) in comparison with the raw ensemble forecasts, at the same time taking advantage of their high resolution.},
+  doi       = {10.1002/we.309},
   file      = {Pinson09ensembProbFrcst.pdf:Pinson09ensembProbFrcst.pdf:PDF},
   groups    = {DOE-PNL09, Ensemble, doReadWPV_2},
-  journal   = {Wind Energy},
   owner     = {sotterson},
-  review    = {NWP ensemlbes --> wind power quantiles. Malte said the orthogonal interpolation used here might be good for either point or ensemble forecasts.},
+  review    = {NWP ensembles --> wind power quantiles. Malte said the orthogonal interpolation used here might be good for either point or ensemble forecasts.},
   timestamp = {2009.03.04},
+}
+
+@Article{Mittelmeier17powStdRatioWake,
+  author   = {Mittelmeier, N. and Allin, J. and Blodau, T. and Trabucchi, D. and Steinfeld, G. and Rott, A. and K{\"u}hn, M.},
+  title    = {An analysis of offshore wind farm SCADA measurements to identify key parameters influencing the magnitude of wake effects},
+  journal  = {Wind Energy Science},
+  year     = {2017},
+  volume   = {2},
+  number   = {2},
+  pages    = {477--490},
+  abstract = {For offshore wind farms, wake effects are among the largest sources of losses in energy production. At the same time, wake modelling is still associated with very high uncertainties. Therefore current research focusses on improving wake model predictions. It is known that atmospheric conditions, especially atmospheric stability, crucially influence the magnitude of those wake effects. The classification of atmospheric stability is usually based on measurements from met masts, buoys or lidar (light detection and ranging). In offshore conditions these measurements are expensive and scarce. However, every wind farm permanently produces SCADA (supervisory control and data acquisition) measurements. The objective of this study is to establish a classification for the magnitude of wake effects based on SCADA data. This delivers a basis to fit engineering wake models better to the ambient conditions in an offshore wind farm. The method is established with data from two offshore wind farms which each have a met mast nearby. A correlation is established between the stability classification from the met mast and signals within the SCADA data from the wind farm. The significance of these new signals on power production is demonstrated with data from two wind farms with met mast and long-range lidar measurements. Additionally, the method is validated with data from another wind farm without a met mast. The proposed signal consists of a good correlation between the standard deviation of active power divided by the average power of wind turbines in free flow with the ambient turbulence intensity (TI) when the wind turbines were operating in partial load. It allows us to distinguish between conditions with different magnitudes of wake effects. The proposed signal is very sensitive to increased turbulence induced by neighbouring turbines and wind farms, even at a distance of more than 38 rotor diameters.},
+  doi      = {10.5194/wes-2-477-2017},
+  file     = {:Mittelmeier17powStdRatioWake.pdf:PDF},
+  review   = {std(power)/mean(power) is related to wake effect.  Maybe it's a good input into a single turbine neural net power curve.  For ModernWindABS, could be a way to get around our inability to measure wake effects.},
+  url      = {https://www.wind-energ-sci.net/2/477/2017/},
 }
 
 @Article{Nielsen06quantRegr,
@@ -14105,6 +14120,7 @@ Could be another analog esemble technique.},
 @Article{Dalto14NshrtWindFrcstNNpmi,
   author    = {{\DH}alto, Mladen and Va{\v{s}}ak, Mario and Baotic, Mato and Matu{\v{s}}ko, Jadranko and Horvath, Kristian},
   title     = {Neural-network-based ultra-short-term wind forecasting},
+  journal   = {European Wind Energy Association 2014 Annual Event (EWEA 2014)},
   year      = {2014},
   abstract  = {In recent years rapid growth of wind power generation
 in many countries around the world has highlighted
@@ -14123,7 +14139,6 @@ near Split, Croatia. The use of neural network drastically
 outperforms simple persistence estimator on 3 hour
 horizon.},
   file      = {Dalto14NshrtWindFrcstNNpmi.pdf:Dalto14NshrtWindFrcstNNpmi.pdf:PDF},
-  journal   = {European Wind Energy Association 2014 Annual Event (EWEA 2014)},
   owner     = {sotterson},
   review    = {NN wind power forecast down to 10 minute horizon. Uses KDE partial mutual information to select features. KDE PMI is touted as having a good stopping criteria, but I think Fig. 2 suggests that the KNN PMI in Frenzel07partMutInfo is more senstive.
 
@@ -14136,6 +14151,7 @@ kNN based PMI: (-) does not have a stopping criteria (+) lower complexity
 
 PMI is also used this way in May08partMutInfoWaterFrcst, Dalto14NshrtWindFrcstNNpmi and others},
   timestamp = {2015.01.30},
+  url       = {https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjZxJXE9PTWAhVlDJoKHZwyCKYQFggpMAA&url=https%3A%2F%2Fbib.irb.hr%2Fdatoteka%2F692827.EWEA_ultra_short.pdf&usg=AOvVaw3fNDNdya5Blukrn50EJpEJ},
 }
 
 @Article{Nielsen98newWindRef,
@@ -14547,6 +14563,23 @@ Anyway could use for local linear quantile regression.},
   timestamp = {2014.04.04},
 }
 
+@Article{Ehm16quantileExpectileScrFrcst,
+  author   = {Ehm, Werner and Gneiting, Tilmann and Jordan, Alexander and Krüger, Fabian},
+  title    = {Of quantiles and expectiles: consistent scoring functions, Choquet representations and forecast rankings},
+  journal  = {Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
+  year     = {2016},
+  volume   = {78},
+  number   = {3},
+  pages    = {505--562},
+  issn     = {1467-9868},
+  abstract = {In the practice of point prediction, it is desirable that forecasters receive a directive in the form of a statistical functional. For example, forecasters might be asked to report the mean or a quantile of their predictive distributions. When evaluating and comparing competing forecasts, it is then critical that the scoring function used for these purposes be consistent for the functional at hand, in the sense that the expected score is minimized when following the directive. We show that any scoring function that is consistent for a quantile or an expectile functional can be represented as a mixture of elementary or extremal scoring functions that form a linearly parameterized family. Scoring functions for the mean value and probability forecasts of binary events constitute important examples. The extremal scoring functions admit appealing economic interpretations of quantiles and expectiles in the context of betting and investment problems. The Choquet-type mixture representations give rise to simple checks of whether a forecast dominates another in the sense that it is preferable under any consistent scoring function. In empirical settings it suffices to compare the average scores for only a finite number of extremal elements. Plots of the average scores with respect to the extremal scoring functions, which we call Murphy diagrams, permit detailed comparisons of the relative merits of competing forecasts.},
+  doi      = {10.1111/rssb.12154},
+  file     = {:Ehm16quantileExpectileScrFrcst.pdf:PDF},
+  keywords = {Choquet representation, Consistent scoring function, Decision theory, Economic utility, Elicitable, Expectile, Forecast ranking, Order sensitivity, Point forecast, Probability forecast, Quantile},
+  review   = {Compares quantile score loss function with expectile loss function},
+  url      = {http://dx.doi.org/10.1111/rssb.12154},
+}
+
 @Article{Gupta14OutlierDetTempSurv,
   author   = {M. Gupta and J. Gao and C. C. Aggarwal and J. Han},
   title    = {Outlier Detection for Temporal Data: A Survey},
@@ -14630,6 +14663,27 @@ performance assessment, Wind power forecast},
 
 Such copulas are also implemented with vine copulas (time-varying? w/ SDE or not?) here: Graler12timeSpaceVnCopula},
   timestamp = {2014.02.07},
+}
+
+@Article{Killick12OptDetChngPtsLinCompMatlab,
+  author    = {R. Killick and P. Fearnhead and I. A. Eckley},
+  title     = {Optimal Detection of Changepoints With a Linear Computational Cost},
+  journal   = {Journal of the American Statistical Association},
+  year      = {2012},
+  volume    = {107},
+  number    = {500},
+  pages     = {1590-1598},
+  abstract  = {In this article, we consider the problem of detecting multiple changepoints in large datasets. Our focus is on applications where the number of changepoints will increase as we collect more data: for example, in genetics as we analyze larger regions of the genome, or in finance as we observe time series over longer periods. We consider the common approach of detecting changepoints through minimizing a cost function over possible numbers and locations of changepoints. This includes several established procedures for detecting changing points, such as penalized likelihood and minimum description length. We introduce a new method for finding the minimum of such cost functions and hence the optimal number and location of changepoints that has a computational cost, which, under mild conditions, is linear in the number of observations. This compares favorably with existing methods for the same problem whose computational cost can be quadratic or even cubic. In simulation studies, we show that our new method can be orders of magnitude faster than these alternative exact methods. We also compare with the binary segmentation algorithm for identifying changepoints, showing that the exactness of our approach can lead to substantial improvements in the accuracy of the inferred segmentation of the data. This article has supplementary materials available online.
+
+Keywords: Dynamic programming, PELT, Segmentation, Structural change},
+  doi       = {10.1080/01621459.2012.737745},
+  eprint    = {http://dx.doi.org/10.1080/01621459.2012.737745},
+  publisher = {Taylor \& Francis},
+  review    = {The algorithms used in Matlab's ischange function.},
+  url       = { 
+        http://dx.doi.org/10.1080/01621459.2012.737745
+    
+},
 }
 
 @Article{Peng09parcorJointSprs,
@@ -22165,20 +22219,22 @@ Keywords: Python, supervised learning, unsupervised learning, model selection},
 @Article{Gneiting07strictPropScore,
   author    = {Gneiting, Tilmann and Raftery, Adrian E},
   title     = {Strictly Proper Scoring Rules, Prediction, and Estimation},
+  journal   = {Journal of the American Statistical Association},
   year      = {2007},
   volume    = {102},
   number    = {477},
   pages     = {359--378},
+  abstract  = {Scoring rules assess the quality of probabilistic forecasts, by assigning a numerical score based on the predictive distribution and on the event or value that materializes. A scoring rule is proper if the forecaster maximizes the expected score for an observation drawn from the distributionF if he or she issues the probabilistic forecast F, rather than G F. It is strictly proper if the maximum is unique. In prediction problems, proper scoring rules encourage the forecaster to make careful assessments and to be honest. In estimation problems, strictly proper scoring rules provide attractive loss and utility functions that can be tailored to the problem at hand. This article reviews and develops the theory of proper scoring rules on general probability spaces, and proposes and discusses examples thereof. Proper scoring rules derive from convex functions and relate to information measures, entropy functions, and Bregman divergences. In the case of categorical variables, we prove a rigorous version of the Savage representation. Examples of scoring rules for probabilistic forecasts in the form of predictive densities include the logarithmic, spherical, pseudospherical, and quadratic scores. The continuous ranked probability score applies to probabilistic forecasts that take the form of predictive cumulative distribution functions. It generalizes the absolute error and forms a special case of a new and very general type of score, the energy score. Like many other scoring rules, the energy score admits a kernel representation in terms of negative definite functions, with links to inequalities of Hoeffding type, in both univariate and multivariate settings. Proper scoring rules for quantile and interval forecasts are also discussed. We relate proper scoring rules to Bayes factors and to cross-validation, and propose a novel form of cross-validation known as random-fold cross-validation. A case study on probabilistic weather forecasts in the North American Pacific Northwest illustrates the importance of propriety. We note optimum score approaches to point and quantile estimation, and propose the intuitively appealing interval score as a utility function in interval estimation that addresses width as well as coverage.},
   doi       = {10.1198/016214506000001437},
   eprint    = {http://amstat.tandfonline.com/doi/pdf/10.1198/016214506000001437},
-  abstract  = {Scoring rules assess the quality of probabilistic forecasts, by assigning a numerical score based on the predictive distribution and on the event or value that materializes. A scoring rule is proper if the forecaster maximizes the expected score for an observation drawn from the distributionF if he or she issues the probabilistic forecast F, rather than G F. It is strictly proper if the maximum is unique. In prediction problems, proper scoring rules encourage the forecaster to make careful assessments and to be honest. In estimation problems, strictly proper scoring rules provide attractive loss and utility functions that can be tailored to the problem at hand. This article reviews and develops the theory of proper scoring rules on general probability spaces, and proposes and discusses examples thereof. Proper scoring rules derive from convex functions and relate to information measures, entropy functions, and Bregman divergences. In the case of categorical variables, we prove a rigorous version of the Savage representation. Examples of scoring rules for probabilistic forecasts in the form of predictive densities include the logarithmic, spherical, pseudospherical, and quadratic scores. The continuous ranked probability score applies to probabilistic forecasts that take the form of predictive cumulative distribution functions. It generalizes the absolute error and forms a special case of a new and very general type of score, the energy score. Like many other scoring rules, the energy score admits a kernel representation in terms of negative definite functions, with links to inequalities of Hoeffding type, in both univariate and multivariate settings. Proper scoring rules for quantile and interval forecasts are also discussed. We relate proper scoring rules to Bayes factors and to cross-validation, and propose a novel form of cross-validation known as random-fold cross-validation. A case study on probabilistic weather forecasts in the North American Pacific Northwest illustrates the importance of propriety. We note optimum score approaches to point and quantile estimation, and propose the intuitively appealing interval score as a utility function in interval estimation that addresses width as well as coverage.},
   file      = {Tech Report:Gneiting07strictPropScore_TR.pdf:PDF;Gneiting07strictPropScore.pdf:Gneiting07strictPropScore.pdf:PDF},
   groups    = {Test, doReadWPV_1},
-  journal   = {Journal of the American Statistical Association},
   owner     = {sotterson},
   review    = {Another probabilistic forecast scoring metric w/ huge num. of cites (680 in Oct. 2013). Explains CRPS (but Jonsson13elecPriceQR is more clear)
 
 Is used by Cannon11quantRgrsnNNprecip
+
+CRPS is the absolute error (average?) of a deterministic forecast: can use it to directly compare probabilistic and deterministic forecasts.
 
 I have the tech report returned by google scholar, but not the final journal paper.
 
@@ -24963,21 +25019,23 @@ Try later?},
 @Article{Broecker12rawEnsQntScrCRPS,
   author    = {Br{\"o}cker, Jochen},
   title     = {Evaluating raw ensembles with the continuous ranked probability score},
+  journal   = {Quarterly Journal of the Royal Meteorological Society},
   year      = {2012},
   volume    = {138},
   number    = {667},
   pages     = {1611--1617},
-  doi       = {10.1002/qj.1891/full},
   abstract  = {The continuous ranked probability score (CRPS) is a frequently used scoring rule. In contrast with many other scoring rules, the CRPS evaluates cumulative distribution functions. An ensemble of forecasts can easily be converted into a piecewise constant cumulative distribution function with steps at the ensemble members. This renders the CRPS a convenient scoring rule for the evaluation of ?raw? ensembles, obviating the need for sophisticated ensemble model output statistics or dressing methods prior to evaluation. In this article, a relation between the CRPS score and the quantile score is established. The evaluation of ?raw? ensembles using the CRPS is discussed in this light. It is shown that latent in this evaluation is an interpretation of the ensemble as quantiles but with non-uniform levels. This needs to be taken into account if the ensemble is evaluated further, for example with rank histograms.},
+  doi       = {10.1002/qj.1891/full},
   file      = {Broecker12rawEnsQntScrCRPS.pdf:Broecker12rawEnsQntScrCRPS.pdf:PDF},
   groups    = {Read, Ensemble, Test, doReadNonWPV_1},
-  journal   = {Quarterly Journal of the Royal Meteorological Society},
   ncite     = {1},
   owner     = {sotterson},
   publisher = {Wiley Online Library},
   review    = {A way to evaluate wind speed ensembles against measured power without a power curve? At least avoids calibration or dressing.
 
 * CRPS is a weighted sum of quantile scores (kinda like in Gneiting11compFrcstWgtQntSc)
+  - but he doesn't really say what the weights are
+
 * a CRPS-optimal rank histogram is not actually flat!
 
 Generates fake data for test
@@ -36505,17 +36563,16 @@ File came from: K:\Organisation\Kongresse\2014\2014-11_Wind_Integration_Workshop
 }
 
 @Article{Maaten08VisualizingDataUsingTSNE,
-  author        = {Maaten, Laurens van der and Hinton, Geoffrey},
-  title         = {Visualizing data using t-SNE},
-  journal       = {Journal of Machine Learning Research},
-  year          = {2008},
-  volume        = {9},
-  number        = {Nov},
-  pages         = {2579--2605},
-  __markedentry = {[sotterson:6]},
-  abstract      = {We present a new technique called "t-SNE" that visualizes high-dimensional data by giving each datapoint a location in a two or three-dimensional map. The technique is a variation of Stochastic Neighbor Embedding (Hinton and Roweis, 2002) that is much easier to optimize, and produces significantly better visualizations by reducing the tendency to crowd points together in the center of the map. t-SNE is better than existing techniques at creating a single map that reveals structure at many different scales. This is particularly important for high-dimensional data that lie on several different, but related, low-dimensional manifolds, such as images ofobjects from multiple classes seen from multiple viewpoints. For visualizing the structure of very large data sets, we show how t-SNE can use random walks on neighborhood graphs to allow the implicit structure of all of the data to influence the way in which a subset of the data is displayed. We illustrate the performance of t-SNE on a wide variety of data sets and compare it with many other non-parametric visualization techniques, including Sammon mapping, Isomap, and Locally Linear Embedding. The visualizations produced by t-SNE are significantly better than those produced by the other techniques on almost all of the data sets.},
-  review        = {The dimension reduction algorithm used by the ASML chip layout company that does anomaly detection.  Talked to head of their ML group and he referred me to this (ECML PKDD 2017).  Later in the conference somebody asked the author of Blau17NonRedundSpectDimRed why he'd omitted this technique as a benchmark.; he said that it was mainly used for 2D human interpretation, and that he thought (did not show) that his technqique would actually work better as a classification preprocessing step.},
-  url           = {http://www.jmlr.org/papers/v9/vandermaaten08a.html},
+  author   = {Maaten, Laurens van der and Hinton, Geoffrey},
+  title    = {Visualizing data using t-SNE},
+  journal  = {Journal of Machine Learning Research},
+  year     = {2008},
+  volume   = {9},
+  number   = {Nov},
+  pages    = {2579--2605},
+  abstract = {We present a new technique called "t-SNE" that visualizes high-dimensional data by giving each datapoint a location in a two or three-dimensional map. The technique is a variation of Stochastic Neighbor Embedding (Hinton and Roweis, 2002) that is much easier to optimize, and produces significantly better visualizations by reducing the tendency to crowd points together in the center of the map. t-SNE is better than existing techniques at creating a single map that reveals structure at many different scales. This is particularly important for high-dimensional data that lie on several different, but related, low-dimensional manifolds, such as images ofobjects from multiple classes seen from multiple viewpoints. For visualizing the structure of very large data sets, we show how t-SNE can use random walks on neighborhood graphs to allow the implicit structure of all of the data to influence the way in which a subset of the data is displayed. We illustrate the performance of t-SNE on a wide variety of data sets and compare it with many other non-parametric visualization techniques, including Sammon mapping, Isomap, and Locally Linear Embedding. The visualizations produced by t-SNE are significantly better than those produced by the other techniques on almost all of the data sets.},
+  review   = {The dimension reduction algorithm used by the ASML chip layout company that does anomaly detection.  Talked to head of their ML group and he referred me to this (ECML PKDD 2017).  Later in the conference somebody asked the author of Blau17NonRedundSpectDimRed why he'd omitted this technique as a benchmark.; he said that it was mainly used for 2D human interpretation, and that he thought (did not show) that his technqique would actually work better as a classification preprocessing step.},
+  url      = {http://www.jmlr.org/papers/v9/vandermaaten08a.html},
 }
 
 @INCOLLECTION{Wang07depSubspaceClust,
@@ -37006,15 +37063,24 @@ of wind resources in the Pacific Northwest.
 KEY WORDS: Continuous ranked probability score; Predictive ability testing; Probabilistic forecast;
 Proper scoring rule; Quantile; Weighted likelihood ratio test.},
   doi       = {10.1198/jbes.2010.08110},
-  file      = {Tech Note 2008:Gneiting11compFrcstWgtQntSc_TechNote.pdf:PDF;Paper 2011:Gneiting11compFrcstWgtQntSc.pdf:PDF},
+  file      = {Paper 2011:Gneiting11compFrcstWgtQntSc.pdf:PDF;Tech Note 2008:Gneiting11compFrcstWgtQntSc_TechNote.pdf:PDF},
   groups    = {Read, Test, doReadNonWPV_1},
   owner     = {sotterson},
-  review    = {How to compare density forecasts with emphasis on tails or whatever whill still being proper. Also, CRPS is just the sum of quantile scores across the alphas. Useful for reserve planning forecast evaluation, I guess.
+  review    = {How to compare density forecasts with emphasis on tails or whatever while still being proper. Also, CRPS is just the quantile scores at alphas, integrated across those alphas (alpha a.ka. tau a.k.a. "quantile probability"). Useful for reserve planning forecast evaluation, I guess.
 
-Eq (13) in the tech note says that CRPS is the integral over alpha of the quantile score
-* ALMOST the same as the usual QR loss function (Koenker05QuantRgrssnBook, eq. (1.9)). When I convert (1.9) I I don't get the multiplication by two.
+* Eq 22  says CRPS is Contin. Integral of quantile scores over probs [0,1]
+   - equally spaced quantiles: multiply QS sum by delta_alpha (a.k.a. delta  "tau")  or Newton-Cotes 
+    - for unequally spaced quantiles, you'd 
+       - individually multiply each QS by its delta_alpha, or 
+       - better: trapezpoidal integration (matlab trapz)
+       - or maybe better still: spline fit integrals, or whatever.
+ * Eq (13) in the tech note says pretty much the same thing
+  ALMOST the same as the usual QR loss function (Koenker05QuantRgrssnBook, eq. (1.9)). When I convert (1.9) I I don't get the multiplication by two.
 * agrees more or less with Broecker12rawEnsQntScrCRPS
-* Note that Argonne paper Mendes11statWindFrcst had to kind of punt on evaluating their density forecasts for different applications. Maybe this is the solution.},
+* CRPS is in same units as the observations
+* Note that Argonne paper Mendes11statWindFrcst had to kind of punt on evaluating their density forecasts for different applications. Maybe this is the solution.
+* Comparison of quantile score and expectile score: Ehm16quantileExpectileScrFrcst
+},
   timestamp = {2014.05.26},
 }
 
@@ -38031,6 +38097,36 @@ image manifolds.},
   keywords  = {Kalman filters, learning (artificial intelligence), multilayer perceptrons, nonlinear filters, parallel machines, power engineering computing, wind turbinesKalman filter training, SIMD parallel machine, air density, extended Kalman filter, terrain, time of day, vertical wind profile, wind directions, wind speeds, wind turbine power estimation},
   owner     = {scotto},
   timestamp = {2008.07.06},
+}
+
+@Article{Litvinenko17approxLikHierCovMatSpatial,
+  author        = {Litvinenko, Alexander and Sun, Ying and Genton, Marc G and Keyes, David},
+  title         = {Likelihood Approximation With Hierarchical Matrices For Large Spatial Datasets},
+  journal       = {arXiv preprint arXiv:1709.04419},
+  year          = {2017},
+  __markedentry = {[Scott Otterson:6]},
+  abstract      = {We use available measurements to estimate the unknown parameters (variance, smoothness
+parameter, and covariance length) of a covariance function by maximizing the joint Gaussian
+log-likelihood function. To overcome cubic complexity in the linear algebra, we approximate the
+discretized covariance function in the hierarchical (H-) matrix format. The H-matrix format has
+a log-linear computational cost and storage O(kn log n), where the rank k is a small integer and
+n is the number of locations. The H-matrix technique allows us to work with general covariance
+matrices in an efficient way, since H-matrices can approximate inhomogeneous covariance func-
+tions, with a fairly general mesh that is not necessarily axes-parallel, and neither the covariance
+matrix itself nor its inverse have to be sparse. We demonstrate our method with Monte Carlo
+simulations and an application to soil moisture data. The C, C++ codes and data are freely
+available.
+
+Keywords: Computational statistics; Hierarchical matrix; Large dataset; Mat´ern covariance;
+Random Field; Spatial statistics.},
+  file          = {:Litvinenko17approxLikHierCovMatSpatial.pdf:PDF},
+  review        = {A decomposition of a giant cov. matrix, used for approximating Gaussian likelihood. Particularly interesting is that it can handle inhomogeneous covariance functions -- no need for forcing a form like in Tastu15spcTimeTrajGaussCpla and the others.  Has C/C++.  Could be used for giant spatio-temporal copulas in Prime/IRPWIND?
+
+From: http://andrewgelman.com/2017/10/20/barry-gibb-came-fourth-barry-gibb-look-alike-contest/
+The methods includes "hierarchical decompositions of the covariance matrix (there is also code). This is a really neat method for solving the problem and a really exciting new idea in the field."
+
+},
+  url           = {https://arxiv.org/abs/1709.04419},
 }
 
 @INPROCEEDINGS{Yan06weatherIDnwp,
