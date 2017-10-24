@@ -4654,6 +4654,7 @@ See also: Hollenbach14missDatImpCopula},
   issn     = {0169-2070},
   abstract = {Abstract The energy industry has been going through a significant modernization process over the last decade. Its infrastructure is being upgraded rapidly. The supply, demand and prices are becoming more volatile and less predictable than ever before. Even its business model is being challenged fundamentally. In this competitive and dynamic environment, many decision-making processes rely on probabilistic forecasts to quantify the uncertain future. Although most of the papers in the energy forecasting literature focus on point or single-valued forecasts, the research interest in probabilistic energy forecasting research has taken off rapidly in recent years. In this paper, we summarize the recent research progress on probabilistic energy forecasting. A major portion of the paper is devoted to introducing the Global Energy Forecasting Competition 2014 (GEFCom2014), a probabilistic energy forecasting competition with four tracks on load, price, wind and solar forecasting, which attracted 581 participants from 61 countries. We conclude the paper with 12 predictions for the next decade of energy forecasting. },
   doi      = {http://doi.org/10.1016/j.ijforecast.2016.02.001},
+  file     = {:Hong16probEnrgyFrcstCompet14.pdf:PDF},
   keywords = {Electric load forecasting, Electricity price forecasting, Wind power forecasting, Solar power forecasting, Probabilistic forecasting, Forecasting competition },
   url      = {http://www.sciencedirect.com/science/article/pii/S0169207016000133},
 }
@@ -7468,13 +7469,13 @@ Cities Qin14geneRgrsnClustTime, I think, just because it talks about K-means clu
 @Article{Gruen12ExtBetaInR,
   author    = {Bettina Gr{\"u}n and Ioannis Kosmidis and Achim Zeileis},
   title     = {Extended Beta Regression in R: Shaken, Stirred, Mixed, and Partitioned},
+  journal   = {Journal of Statistical Software},
   year      = {2012},
   volume    = {48},
   number    = {11},
-  month     = may,
   pages     = {1--25},
+  month     = may,
   issn      = {1548-7660},
-  url       = {http://www.jstatsoft.org/v48/i11},
   abstract  = {Beta regression ? an increasingly popular approach for modeling rates and proportions ? is extended in various directions: (a) bias correction/reduction of the maximum likelihood estimator, (b) beta regression tree models by means of recursive partitioning, (c) latent class beta regression by means of finite mixture models. All three extensions may be of importance for enhancing the beta regression toolbox in practice to provide more reliable inference and capture both observed and unobserved/latent heterogeneity in the data. Using the analogy of Smithson and Verkuilen (2006), these extensions make beta regression not only ?a better lemon squeezer? (compared to classical least squares regression) but a full-fledged modern juicer offering lemon-based drinks: shaken and stirred (bias correction and reduction), mixed (finite mixture model), or partitioned (tree model). All three extensions are provided in the R package betareg (at least 2.4-0), building on generic algorithms and implementations for bias correction/reduction, model-based recursive partioning, and finite mixture models, respectively. Specifically, the new functions betatree() and betamix() reuse the object-oriented flexible implementation from the R packages party and flexmix, respectively.
 
 Keywords: beta regression, bias correction, bias reduction, recursive partitioning, nite mixture,
@@ -7483,15 +7484,16 @@ R.},
   bibdate   = {2012-02-14},
   coden     = {JSSOBK},
   day       = {24},
-  file      = {Gruen12ExtBetaInR.pdf:Gruen12ExtBetaInR.pdf:PDF},
-  journal   = {Journal of Statistical Software},
+  file      = {Gruen12ExtBetaInR.pdf:Gruen12ExtBetaInR.pdf:PDF;:Gruen13extendedBeta.pdf:PDF},
   owner     = {sotterson},
   review    = {Beta mixtures, trees, and R code.
 
 Is the R package: betareg
+TWO pdfs.  2012 and 2013.  Not sure which one is better.
 Code from paper is here: http://www.jstatsoft.org/v48/i11/},
   submitted = {2011-10-15},
   timestamp = {2014.07.18},
+  url       = {http://www.jstatsoft.org/v48/i11},
 }
 
 @InProceedings{Pinson08probFrcstMarkovSwitch,
@@ -8592,7 +8594,7 @@ Keywords: Balancing Power, Control Power, Variable Renewables, Wind Power, Solar
   issn      = {1063-6919},
   keywords  = {image classification, image segmentation, inference mechanisms, learning (artificial intelligence), NYUDv2, PASCAL VOC, SIFT flow, contemporary classification networks, fully convolutional networks, inference, learning, pixels-to-pixels, semantic segmentation, visual models, Adaptation models, Computer architecture, Convolution, Deconvolution, Image segmentation, Semantics, Training},
   owner     = {sotterson},
-  review    = {Source for one ModerWindABS kickoff meeting slide.  Should also probably read, since it has a huge # of citations.},
+  review    = {Source for one ModernWindABS kickoff meeting slide.  Should also probably read, since it has a huge # of citations.},
   timestamp = {2017.01.27},
 }
 
@@ -11734,13 +11736,14 @@ DATA
 }
 
 @InProceedings{Bentzien14quantScrDecomp,
-  author    = {Bentzien, Sabrina and Friederichs, Petra},
-  title     = {The quantile score and its decomposition},
-  booktitle = {EGU General Assembly Conference Abstracts},
-  year      = {2014},
-  volume    = {16},
-  pages     = {15691},
-  abstract  = {Forecast verification for probabilistic weather and climate predictions gain more and more importance due to
+  author        = {Bentzien, Sabrina and Friederichs, Petra},
+  title         = {The quantile score and its decomposition},
+  booktitle     = {EGU General Assembly Conference Abstracts},
+  year          = {2014},
+  volume        = {16},
+  pages         = {15691},
+  __markedentry = {[sotterson:1]},
+  abstract      = {Forecast verification for probabilistic weather and climate predictions gain more and more importance due to
 the increasing number of ensemble prediction systems. The predictive performance of probabilistic forecasts is
 generally assessed using proper score functions, which are applied to a set of forecast-observation pairs. The
 propriety of a score guarantees honesty and prevents hedging. A variety of proper scores exist for different types
@@ -11757,17 +11760,17 @@ this framework is illustrated on precipitation forecasts derived from the mesosc
 COSMO-DE-EPS of the German Meteorological Service.
 
 (From: http://adsabs.harvard.edu/abs/2014EGUGA..1615691B#)},
-  file      = {Bentzien14quantScrDecomp.pdf:Bentzien14quantScrDecomp.pdf:PDF},
-  owner     = {sotterson},
-  review    = {Poster showoing that quantile score is the integral of the check loss function.  Can be estimated as the average of the check loss functions  over a sample.
+  file          = {Bentzien14quantScrDecomp.pdf:Bentzien14quantScrDecomp.pdf:PDF},
+  owner         = {sotterson},
+  review        = {Poster showoing that quantile score is the integral of the check loss function.  Can be estimated as the average of the check loss functions  over a sample.
 
 Can be decomposed into reliability and resolution, (as can CRPS, I guess)
 
 Quantile reliability plots (like DWD does).
 
 See also Bentzien13qntScrDecomp},
-  timestamp = {2017.03.15},
-  url       = {http://www2.meteo.uni-bonn.de/staff/wahl/files/bentzien_poster_egu2014_qs.pdf},
+  timestamp     = {2017.03.15},
+  url           = {http://www2.meteo.uni-bonn.de/staff/wahl/files/bentzien_poster_egu2014_qs.pdf},
 }
 
 @InBook{Aler15machLrnDAsolarFrcstNWP,
@@ -14041,6 +14044,47 @@ the extension work of learning the idealized kernel [25].},
   file      = {paper:Yang07distMetricLrnOvrvw.pdf:PDF},
 }
 
+@Article{Bo09probLMPfrcstLdUncrt,
+  author    = {Rui Bo and Fangxing Li},
+  title     = {Probabilistic {LMP} Forecasting Considering Load Uncertainty},
+  journal   = {{IEEE} Transactions on Power Systems},
+  year      = {2009},
+  volume    = {24},
+  number    = {3},
+  pages     = {1279--1289},
+  month     = {aug},
+  abstract  = {In power market studies, the forecast of locational
+marginal price (LMP) relies on the load forecasting results from
+the viewpoint of planning. It is well known that short-term load
+forecasting results always carry certain degree of errors mainly
+due to the random nature of the load. At the same time, LMP step
+changes occur at critical load levels (CLLs). Therefore, it is inter-
+esting to investigate the impact of load forecasting uncertainty on
+LMP. With the assumption of a certain probability distribution of
+the actual load, this paper proposes the concept of probabilistic
+LMP and formulates the probability mass function of this random
+variable. The expected value of probabilistic LMP is then derived,
+as well as the lower and upper bound of its sensitivity. In addition,
+two useful curves, alignment probability of deterministic LMP
+versus forecasted load and expected value of probabilistic LMP
+versus forecasted load, are presented. The first curve is designed
+to identify the probability that the forecasted price in a determin-
+istic LMP matches the actual price at the forecasted load level.
+The second curve is demonstrated to be smooth and therefore
+eliminates the step changes in deterministic LMP forecasting.
+This helps planners avoid the possible sharp changes during
+decision-making process. The proposed concept and method are
+illustrated with a modified PJM five-bus system and the IEEE
+118-bus system.
+Index Terms—Critical load level, energy markets, load fore-
+casting, locational marginal pricing (LMP), normal distribution,
+optimal power flow (OPF), power markets, probabilistic LMP
+forecasting, uncertainty.},
+  doi       = {10.1109/tpwrs.2009.2023268},
+  file      = {:Bo09probLMPfrcstLdUncrt.pdf:PDF},
+  publisher = {Institute of Electrical and Electronics Engineers ({IEEE})},
+}
+
 @Article{Matos11rsrvProbFrcst,
   author    = {Matos, M.A. and Bessa, R.J.},
   title     = {Setting the Operating Reserve Using Probabilistic Wind Power Forecasts},
@@ -14678,8 +14722,11 @@ Such copulas are also implemented with vine copulas (time-varying? w/ SDE or not
 Keywords: Dynamic programming, PELT, Segmentation, Structural change},
   doi       = {10.1080/01621459.2012.737745},
   eprint    = {http://dx.doi.org/10.1080/01621459.2012.737745},
+  file      = {:Killick12OptDetChngPtsLinCompMatlab.pdf:PDF},
   publisher = {Taylor \& Francis},
-  review    = {The algorithms used in Matlab's ischange function.},
+  review    = {The algorithms used in Matlab's ischange function.
+
+Supplemental materials pasted on to the end of the main article pdf.},
   url       = { 
         http://dx.doi.org/10.1080/01621459.2012.737745
     
@@ -14833,6 +14880,7 @@ processing including audio/speech, image/vision, multimodality,
 language modeling, natural language processing, and
 information retrieval. Finally, future directions of deep learning
 are discussed and analyzed.},
+  file     = {:Deng12deepLnr3arch.pdf:PDF},
   review   = {A recommended good review of autoencoders, Boltzmann nets, and CNN's.},
   url      = {http://ai2-s2-pdfs.s3.amazonaws.com/5bd4/177440c17dad736f1e0d2227694d612f5a59.pdf},
 }
@@ -18720,7 +18768,7 @@ Gausssian Copula
    - modeled in covariance, not precision matrix.
    - uses exponential covariance function
      - time-distance exponential covariance dropoff
-     - requires much less datthan, for example, D-vines
+     - requires much less dat than, for example, D-vines
    - huge horizon: 1-48 hours ahead
    - cov mat with exponential  autocorr restriction much better than empirical cov.
       - spatio-temporal study,  Tastu15spcTimeTrajGaussCpla, found that empirical cov. mat was better
@@ -23215,30 +23263,31 @@ this paper can be extended to systems issuing continuous probability forecasts, 
 }
 
 @Article{Hersbach00crpsDecomp,
-  author    = {Hersbach, Hans},
-  title     = {Decomposition of the continuous ranked probability score for ensemble prediction systems},
-  year      = {2000},
-  volume    = {15},
-  number    = {5},
-  pages     = {559--570},
-  issn      = {1520-0434},
-  abstract  = {Some time ago, the continuous ranked probability score (CRPS) was proposed as a new verification tool for (probabilistic) forecast systems. Its focus is on the entire permissible range of a certain (weather) parameter. The CRPS can be seen as a ranked probability score with an infinite number of classes, each of zero width. Alternatively, it can be interpreted as the integral of the Brier score over all possible threshold values for the parameter under consideration. For a deterministic forecast system the CRPS reduces to the mean absolute error.
+  author        = {Hersbach, Hans},
+  title         = {Decomposition of the continuous ranked probability score for ensemble prediction systems},
+  year          = {2000},
+  volume        = {15},
+  number        = {5},
+  pages         = {559--570},
+  issn          = {1520-0434},
+  __markedentry = {[sotterson:1]},
+  abstract      = {Some time ago, the continuous ranked probability score (CRPS) was proposed as a new verification tool for (probabilistic) forecast systems. Its focus is on the entire permissible range of a certain (weather) parameter. The CRPS can be seen as a ranked probability score with an infinite number of classes, each of zero width. Alternatively, it can be interpreted as the integral of the Brier score over all possible threshold values for the parameter under consideration. For a deterministic forecast system the CRPS reduces to the mean absolute error.
 
 In this paper it is shown that for an ensemble prediction system the CRPS can be decomposed into a reliability part and a resolution/uncertainty part, in a way that is similar to the decomposition of the Brier score. The reliability part of the CRPS is closely connected to the rank histogram of the ensemble, while the resolution/uncertainty part can be related to the average spread within the ensemble and the behavior of its outliers. The usefulness of such a decomposition is illustrated for the ensemble prediction system running at the European Centre for Medium-Range Weather Forecasts. The evaluation of the CRPS and its decomposition proposed in this paper can be extended to systems issuing continuous probability forecasts, by realizing that these can be interpreted as the limit of ensemble forecasts with an infinite number of members.},
-  booktitle = {Weather and Forecasting},
-  doi       = {10.1175/1520-0434%282000%29015%3C0559:DOTCRP%3E2.0.CO;2},
-  file      = {Hersbach00crpsDecomp.pdf:Hersbach00crpsDecomp.pdf:PDF},
-  groups    = {Test, CitaviImport1, doReadWPV_1},
-  keywords  = {CPRSS},
-  ncite     = {224},
-  owner     = {sotterson},
-  review    = {Maybe the best ref. for CRPS. Explains discrete computation, how to compute for ensembles, decomposition... highly cited.
+  booktitle     = {Weather and Forecasting},
+  doi           = {10.1175/1520-0434%282000%29015%3C0559:DOTCRP%3E2.0.CO;2},
+  file          = {Hersbach00crpsDecomp.pdf:Hersbach00crpsDecomp.pdf:PDF},
+  groups        = {Test, CitaviImport1, doReadWPV_1},
+  keywords      = {CPRSS},
+  ncite         = {224},
+  owner         = {sotterson},
+  review        = {Maybe the best ref. for CRPS. Explains discrete computation, how to compute for ensembles, decomposition... highly cited.
 
 Decomposition is analogous to the decomposition of the Brier score. Should probably understand why both decompositions matter.
 
 * the CRPS of a deterministic forecast is equal to the mean absolute error (MAE)
 * multidimensional CRPS is some kind of weighted average},
-  timestamp = {2013.09.26},
+  timestamp     = {2013.09.26},
 }
 
 @Article{Politis03btstrpTimeSer,
@@ -23285,6 +23334,48 @@ VPPs and improve security of supply.},
   review    = {Solar and wind complimentarity for virtual power plant running.  Useful for ReWP reserve power portfolio planning.},
   timestamp = {2017.02.06},
   url       = {http://search.proquest.com/openview/b414ec24f42a0396ac8bd6cb1691e871/1?pq-origsite=gscholar&cbl=2037681},
+}
+
+@Article{Datta16Datta16hierNNGaussProcGeoStat,
+  author        = {Datta, Abhirup and Banerjee, Sudipto and Finley, Andrew O and Gelfand, Alan E},
+  title         = {Hierarchical nearest-neighbor Gaussian process models for large geostatistical datasets},
+  journal       = {Journal of the American Statistical Association},
+  year          = {2016},
+  volume        = {111},
+  number        = {514},
+  pages         = {800--812},
+  __markedentry = {[sotterson:]},
+  abstract      = {Spatial process models for analyzing geostatistical data entail computations that
+
+become prohibitive as the number of spatial locations become large. This manuscript
+
+develops a class of highly scalable Nearest Neighbor Gaussian Process (NNGP) models
+
+to provide fully model-based inference for large geostatistical datasets. We establish
+
+that the NNGP is a well-defined spatial process providing legitimate finite-dimensional
+
+Gaussian densities with sparse precision matrices. We embed the NNGP as a sparsity-
+
+inducing prior within a rich hierarchical modeling framework and outline how compu-
+
+tationally efficient Markov chain Monte Carlo (MCMC) algorithms can be executed
+
+without storing or decomposing large matrices. The floating point operations (flops)
+
+per iteration of this algorithm is linear in the number of spatial locations, thereby
+
+rendering substantial scalability. We illustrate the computational and inferential ben-
+
+efits of the NNGP over competing methods using simulation studies and also analyze
+
+forest biomass from a massive United States Forest Inventory dataset at a scale that
+
+precludes alternative dimension-reducing methods.},
+  file          = {:Datta16hierNNGaussProcGeoStat.pdf:PDF},
+  publisher     = {Taylor \& Francis},
+  review        = {Considered to be "exciting" by a stats guru who wrote the STAN proabilistic programming package.  This one is good because it can model non-homogenous covariance matrices.  Also has C/C++ code, I think.
+},
 }
 
 @INPROCEEDINGS{Hamad08spectClustIntro,
@@ -23487,6 +23578,40 @@ http://academic2.american.edu/~jpnolan/stable/stable.html
 Other ways of estimating a distribution from quantiles
 * general: Cook10distFromQuant
 * Johnson System: George11estJohnsonDistBnd},
+}
+
+@Article{Carpenter17StanProbProgLang,
+  author    = {Bob Carpenter and Andrew Gelman and Matthew D. Hoffman and Daniel Lee and Ben Goodrich and Michael Betancourt and Marcus Brubaker and Jiqiang Guo and Peter Li and Allen Riddell},
+  title     = {Stan: A Probabilistic Programming Language},
+  journal   = {Journal of Statistical Software},
+  year      = {2017},
+  volume    = {76},
+  number    = {1},
+  abstract  = {Stan is a probabilistic programming language for specifying statistical models. A Stan
+program imperatively defines a log probability function over parameters conditioned on
+specified data and constants. As of version 2.14.0, Stan provides full Bayesian inference
+for continuous-variable models through Markov chain Monte Carlo methods such as the
+No-U-Turn sampler, an adaptive form of Hamiltonian Monte Carlo sampling. Penalized
+maximum likelihood estimates are calculated using optimization methods such as the
+limited memory Broyden-Fletcher-Goldfarb-Shanno algorithm.
+Stan is also a platform for computing log densities and their gradients and Hessians,
+which can be used in alternative algorithms such as variational Bayes, expectation propa-
+gation, and marginal inference using approximate integration. To this end, Stan is set up
+so that the densities, gradients, and Hessians, along with intermediate quantities of the
+algorithm such as acceptance probabilities, are easily accessible.
+Stan can be called from the command line using the cmdstan package, through R using
+the rstan package, and through Python using the pystan package. All three interfaces sup-
+port sampling and optimization-based inference with diagnostics and posterior analysis.
+rstan and pystan also provide access to log probabilities, gradients, Hessians, parameter
+transforms, and specialized plotting.
+
+Keywords: probabilistic program, Bayesian inference, algorithmic differentiation, Stan.},
+  doi       = {10.18637/jss.v076.i01},
+  file      = {:Carpenter17StanProbProgLang.pdf:PDF},
+  publisher = {Foundation for Open Access Statistic},
+  review    = {probabilistic programming language that can do covariance/precision matrix estimation, with cholesky tricks too.
+
+Is really liked by Andrew Gelman, that statistics guru who says it's vastly faster than others stuff.},
 }
 
 @Unpublished{Lockhart13collin6ways,
@@ -25017,21 +25142,22 @@ Try later?},
 }
 
 @Article{Broecker12rawEnsQntScrCRPS,
-  author    = {Br{\"o}cker, Jochen},
-  title     = {Evaluating raw ensembles with the continuous ranked probability score},
-  journal   = {Quarterly Journal of the Royal Meteorological Society},
-  year      = {2012},
-  volume    = {138},
-  number    = {667},
-  pages     = {1611--1617},
-  abstract  = {The continuous ranked probability score (CRPS) is a frequently used scoring rule. In contrast with many other scoring rules, the CRPS evaluates cumulative distribution functions. An ensemble of forecasts can easily be converted into a piecewise constant cumulative distribution function with steps at the ensemble members. This renders the CRPS a convenient scoring rule for the evaluation of ?raw? ensembles, obviating the need for sophisticated ensemble model output statistics or dressing methods prior to evaluation. In this article, a relation between the CRPS score and the quantile score is established. The evaluation of ?raw? ensembles using the CRPS is discussed in this light. It is shown that latent in this evaluation is an interpretation of the ensemble as quantiles but with non-uniform levels. This needs to be taken into account if the ensemble is evaluated further, for example with rank histograms.},
-  doi       = {10.1002/qj.1891/full},
-  file      = {Broecker12rawEnsQntScrCRPS.pdf:Broecker12rawEnsQntScrCRPS.pdf:PDF},
-  groups    = {Read, Ensemble, Test, doReadNonWPV_1},
-  ncite     = {1},
-  owner     = {sotterson},
-  publisher = {Wiley Online Library},
-  review    = {A way to evaluate wind speed ensembles against measured power without a power curve? At least avoids calibration or dressing.
+  author        = {Br{\"o}cker, Jochen},
+  title         = {Evaluating raw ensembles with the continuous ranked probability score},
+  journal       = {Quarterly Journal of the Royal Meteorological Society},
+  year          = {2012},
+  volume        = {138},
+  number        = {667},
+  pages         = {1611--1617},
+  __markedentry = {[sotterson:1]},
+  abstract      = {The continuous ranked probability score (CRPS) is a frequently used scoring rule. In contrast with many other scoring rules, the CRPS evaluates cumulative distribution functions. An ensemble of forecasts can easily be converted into a piecewise constant cumulative distribution function with steps at the ensemble members. This renders the CRPS a convenient scoring rule for the evaluation of ?raw? ensembles, obviating the need for sophisticated ensemble model output statistics or dressing methods prior to evaluation. In this article, a relation between the CRPS score and the quantile score is established. The evaluation of ?raw? ensembles using the CRPS is discussed in this light. It is shown that latent in this evaluation is an interpretation of the ensemble as quantiles but with non-uniform levels. This needs to be taken into account if the ensemble is evaluated further, for example with rank histograms.},
+  doi           = {10.1002/qj.1891/full},
+  file          = {Broecker12rawEnsQntScrCRPS.pdf:Broecker12rawEnsQntScrCRPS.pdf:PDF},
+  groups        = {Read, Ensemble, Test, doReadNonWPV_1},
+  ncite         = {1},
+  owner         = {sotterson},
+  publisher     = {Wiley Online Library},
+  review        = {A way to evaluate wind speed ensembles against measured power without a power curve? At least avoids calibration or dressing.
 
 * CRPS is a weighted sum of quantile scores (kinda like in Gneiting11compFrcstWgtQntSc)
   - but he doesn't really say what the weights are
@@ -25043,7 +25169,7 @@ Generates fake data for test
 an EMOS use: Schuhen12
 
 I actually didn't quite understand this paper after a quick skim. Should really read it.},
-  timestamp = {2014.05.26},
+  timestamp     = {2014.05.26},
 }
 
 @Article{Lorenz11RegionalPVpowFrcst,
@@ -28545,7 +28671,7 @@ Still, this is the paper he recommended as the closest thing to automatic machin
   booktitle = {American Wind Energy Association (AWEA)},
   year      = {2008},
   abstract  = {The technology to harvest electricity from wind energy is now advanced enough to make entire cities powered by it a reality. High-quality shortterm forecasts of wind speed are vital to making this a more reliable energy source. Gneiting et al. (2006) have introduced an accurate and sharp model for forecasting the average wind speed two hours ahead based on both spatial and temporal information; however, this model is split into nonunique regimes based on the wind direction at an off-site location. This work both generalizes and improves upon this model by treating wind direction as a circular variable and including it in the model. It is robust in many experiments, such as predicting at new locations and under rotations of the wind directions. We compare this with the more common approach of modeling wind speeds and directions in the Cartesian space and use a skew-t distribution for the errors. The quality of the predictions from all of these models can be more realistically assessed with a loss measure that depends upon the power curve relating wind speed to power output. This proposed loss measure yields more insight into the true worth of each model's predictions.},
-  file      = {Hering08spaceTimeWindFrcst.pdf:Hering08spaceTimeWindFrcst.pdf:PDF;Hering08spaceTimeWindFrcst.pdf:Hering08spaceTimeWindFrcst.pdf:PDF},
+  file      = {Hering08spaceTimeWindFrcst.pdf:Hering08spaceTimeWindFrcst.pdf:PDF;Hering08spaceTimeWindFrcstSlides.pdf:Hering08spaceTimeWindFrcstSlides.pdf:PDF},
   groups    = {ErrDistProps, doReadWPV_2},
   owner     = {sotterson},
   review    = {Related slides at: Hering08spaceTimeWindFrcstSlides},
@@ -30081,11 +30207,11 @@ Recently, copulas have become popular in simulation models. Copulas are function
   url       = {https://www.mathworks.com/help/stats/examples/simulating-dependent-random-variables-using-copulas.html},
 }
 
-@MISC{CribariNeto09betaRgrssnR,
-  Author                   = {Cribari-Neto, Francisco and Zeileis, Achim},
-  Title                    = {Beta regression in R},
-  Year                     = {2009},
-  Abstract                 = {This introduction to the R package betareg is a (slightly) modified version of Cribari-
+@Misc{CribariNeto09betaRgrssnR,
+  author    = {Cribari-Neto, Francisco and Zeileis, Achim},
+  title     = {Beta regression in R},
+  year      = {2009},
+  abstract  = {This introduction to the R package betareg is a (slightly) modified version of Cribari-
 Neto and Zeileis (2010), published in the Journal of Statistical Software. A follow-up paper
 with various extensions is Gruun, Kosmidis, and Zeileis (2012) ? a slightly modified version
 of which is also provided within the package as vignette("betareg-ext", package =
@@ -30102,12 +30228,12 @@ describes the betareg package which provides the class of beta regressions in th
 for statistical computing. The underlying theory is briefly outlined, the implementation
 discussed and illustrated in various replication exercises.
 Keywords: beta regression, rates, proportions, R.},
-  File                     = {CribariNeto09betaRgrssnR.pdf:CribariNeto09betaRgrssnR.pdf:PDF},
-  Owner                    = {sotterson},
-  Publisher                = {Department of Statistics and Mathematics x, WU Vienna University of Economics and Business},
-  Review                   = {Quick beta regression info in R. SEe the two papers it implements for more detail:},
-  Timestamp                = {2014.07.18},
-  URL                      = {http://epub.wu.ac.at/726/}
+  file      = {2014 version:CribariNeto14betaRgrsnInR.pdf:PDF;2009 verson:CribariNeto09betaRgrssnR.pdf:PDF},
+  owner     = {sotterson},
+  publisher = {Department of Statistics and Mathematics x, WU Vienna University of Economics and Business},
+  review    = {Quick beta regression info in R. SEe the two papers it implements for more detail:},
+  timestamp = {2014.07.18},
+  url       = {http://epub.wu.ac.at/726/},
 }
 
 @Article{Kleiber02strucchange,
@@ -30614,11 +30740,11 @@ Optimization is done w/ dynamic programming and Lagrangian stuff.
 @Article{Bacher09pvFrcstOnlineClrSky,
   author    = {Bacher, Peder and Madsen, Henrik and Nielsen, Henrik Aalborg},
   title     = {Online short-term solar power forecasting},
+  journal   = {Solar Energy},
   year      = {2009},
   volume    = {83},
   number    = {10},
   pages     = {1772--1783},
-  url       = {http://www.sciencedirect.com/science/article/pii/S0038092X09001364},
   abstract  = {This paper describes a new approach to online forecasting of power production from PV systems. The method is suited to online forecasting in many applications and in this paper it is used to predict hourly values of solar power for horizons of up to 36 h. The data used is 15-min observations of solar power from 21 PV systems located on rooftops in a small village in Denmark. The suggested method is a two-stage method where first a statistical normalization of the solar power is obtained using a clear sky model. The clear sky model is found using statistical smoothing techniques. Then forecasts of the normalized solar power are calculated using adaptive linear time series models. Both autoregressive (AR) and AR with exogenous input (ARX) models are evaluated, where the latter takes numerical weather predictions (NWPs) as input. The results indicate that for forecasts up to 2 h ahead the most important input is the available observations of solar power, while for longer horizons NWPs are the most important input. A root mean square error improvement of around 35% is achieved by the ARX model compared to a proposed reference model.
 Keywords
 
@@ -30631,12 +30757,12 @@ Keywords
  Clear sky model;
  Quantile regression;
  Recursive least squares},
-  file      = {Bacher09pvFrcstOnlineClrSky.pdf:Bacher09pvFrcstOnlineClrSky.pdf:PDF},
-  journal   = {Solar Energy},
+  file      = {:Bacher09pvFrcstOnlineClrSky.pdf:PDF},
   owner     = {sotterson},
   publisher = {Elsevier},
   review    = {PV forecasting in two steps: 1. clear sky normalization 2. followed by ARX (0-2 hrs) or AR (2-36 hrs). Just like w/ wind, power is most important input or 0-2hrs, and after that, it's NWP. Highly cited so maybe a good paper to read for the normalization.},
   timestamp = {2015.02.19},
+  url       = {http://www.sciencedirect.com/science/article/pii/S0038092X09001364},
 }
 
 @Article{Sanchez2006shortWindPred,
@@ -33696,6 +33822,28 @@ localization and binary text classification.},
   URL                      = {http://www.aaai.org/Papers/AAAI/2008/AAAI08-108.pdf}
 }
 
+@InProceedings{Frank11svdRankInfo,
+  author        = {Frank, Mario and Buhmann, Joachim M},
+  title         = {Selecting the rank of truncated SVD by Maximum Approximation Capacity},
+  booktitle     = {Information Theory Proceedings (ISIT), 2011 IEEE International Symposium on},
+  year          = {2011},
+  pages         = {1036--1040},
+  organization  = {IEEE},
+  __markedentry = {[sotterson:6]},
+  abstract      = {Truncated Singular Value Decomposition (SVD) cal-
+culates the closest rank-k approximation of a given input matrix.
+Selecting the appropriate rank k defines a critical model order
+choice in most applications of SVD. To obtain a principled
+cut-off criterion for the spectrum, we convert the underlying
+optimization problem into a noisy channel coding problem.
+The optimal approximation capacity of this channel controls
+the appropriate strength of regularization to suppress noise.
+In simulation experiments, this information theoretic method to
+determine the optimal ra},
+  file          = {:Frank11svdRankInfo.pdf:PDF},
+  review        = {Good for pca dim picking but with SVD, and PCA has an SVD in it..  Also and different approach than Minka00AutoPCAdim, I guess.},
+}
+
 @Article{Courtney13frcstBayAvg,
   author    = {Courtney, Jennifer F and Lynch, Peter and Sweeney, Conor},
   title     = {High resolution forecasting for wind energy applications using {Bayes}ian model averaging},
@@ -35044,6 +35192,7 @@ sets to be compared. Using real-world data, we demonstrate
 that our matrix-based sparse structure learning approach suc-
 cessfully detects correlation anomalies under collinearities
 and heavy noise.},
+  file         = {:Ide09ProxAnomDetSprs.pdf:PDF},
   owner        = {sotterson},
   review       = {Says structure learned by straight lasso is unstable.  Same reason that Belloni13progEvalHiDim says that inference and featsel is hard, error prone.
 },
@@ -37046,13 +37195,14 @@ POSSIBLE IMPROVEMENTS
 }
 
 @Article{Gneiting11compFrcstWgtQntSc,
-  author    = {Gneiting, Tilmann and Ranjan, Roopesh},
-  title     = {Comparing density forecasts using threshold-and quantile-weighted scoring rules},
-  journal   = {Journal of Business \& Economic Statistics},
-  year      = {2011},
-  volume    = {29},
-  number    = {3},
-  abstract  = {We propose a method for comparing density forecasts that is based on weighted versions of the continuous
+  author        = {Gneiting, Tilmann and Ranjan, Roopesh},
+  title         = {Comparing density forecasts using threshold-and quantile-weighted scoring rules},
+  journal       = {Journal of Business \& Economic Statistics},
+  year          = {2011},
+  volume        = {29},
+  number        = {3},
+  __markedentry = {[sotterson:1]},
+  abstract      = {We propose a method for comparing density forecasts that is based on weighted versions of the continuous
 ranked probability score. The weighting emphasizes regions of interest, such as the tails or the center
 of a variable?s range, while retaining propriety, as opposed to a recently developed weighted likelihood
 ratio test, which can be hedged. Threshold- and quantile-based decompositions of the continuous ranked
@@ -37062,11 +37212,11 @@ density forecasts of quarterly inflation rates in the United Kingdom, and probab
 of wind resources in the Pacific Northwest.
 KEY WORDS: Continuous ranked probability score; Predictive ability testing; Probabilistic forecast;
 Proper scoring rule; Quantile; Weighted likelihood ratio test.},
-  doi       = {10.1198/jbes.2010.08110},
-  file      = {Paper 2011:Gneiting11compFrcstWgtQntSc.pdf:PDF;Tech Note 2008:Gneiting11compFrcstWgtQntSc_TechNote.pdf:PDF},
-  groups    = {Read, Test, doReadNonWPV_1},
-  owner     = {sotterson},
-  review    = {How to compare density forecasts with emphasis on tails or whatever while still being proper. Also, CRPS is just the quantile scores at alphas, integrated across those alphas (alpha a.ka. tau a.k.a. "quantile probability"). Useful for reserve planning forecast evaluation, I guess.
+  doi           = {10.1198/jbes.2010.08110},
+  file          = {Paper 2011:Gneiting11compFrcstWgtQntSc.pdf:PDF;Tech Note 2008:Gneiting11compFrcstWgtQntSc_TechNote.pdf:PDF},
+  groups        = {Read, Test, doReadNonWPV_1},
+  owner         = {sotterson},
+  review        = {How to compare density forecasts with emphasis on tails or whatever while still being proper. Also, CRPS is just the quantile scores at alphas, integrated across those alphas (alpha a.ka. tau a.k.a. "quantile probability"). Useful for reserve planning forecast evaluation, I guess.
 
 * Eq 22  says CRPS is Contin. Integral of quantile scores over probs [0,1]
    - equally spaced quantiles: multiply QS sum by delta_alpha (a.k.a. delta  "tau")  or Newton-Cotes 
@@ -37081,7 +37231,7 @@ Proper scoring rule; Quantile; Weighted likelihood ratio test.},
 * Note that Argonne paper Mendes11statWindFrcst had to kind of punt on evaluating their density forecasts for different applications. Maybe this is the solution.
 * Comparison of quantile score and expectile score: Ehm16quantileExpectileScrFrcst
 },
-  timestamp = {2014.05.26},
+  timestamp     = {2014.05.26},
 }
 
 @Article{Moller12multiCopulaBMA,
@@ -37383,7 +37533,7 @@ clustering algorithm used for classifying the data and the ?nal linear
 regression procedure. Moreover, clustering is performed in a suitably de-
 ?ned space that allows also to reconstruct di?erent submodels that share
 the same coe?cients but are de?ned on di?erent regions.},
-  file      = {Ferrari-Trecate03clustPcwsAffine.pdf:FerrariTrecate03clustPcwsAffine.pdf:PDF},
+  file      = {FerrariTrecate03clustPcwsAffine.pdf:FerrariTrecate03clustPcwsAffine.pdf:PDF},
   journal   = {Automatica},
   owner     = {sotterson},
   publisher = {Elsevier},
@@ -38100,12 +38250,11 @@ image manifolds.},
 }
 
 @Article{Litvinenko17approxLikHierCovMatSpatial,
-  author        = {Litvinenko, Alexander and Sun, Ying and Genton, Marc G and Keyes, David},
-  title         = {Likelihood Approximation With Hierarchical Matrices For Large Spatial Datasets},
-  journal       = {arXiv preprint arXiv:1709.04419},
-  year          = {2017},
-  __markedentry = {[Scott Otterson:6]},
-  abstract      = {We use available measurements to estimate the unknown parameters (variance, smoothness
+  author   = {Litvinenko, Alexander and Sun, Ying and Genton, Marc G and Keyes, David},
+  title    = {Likelihood Approximation With Hierarchical Matrices For Large Spatial Datasets},
+  journal  = {arXiv preprint arXiv:1709.04419},
+  year     = {2017},
+  abstract = {We use available measurements to estimate the unknown parameters (variance, smoothness
 parameter, and covariance length) of a covariance function by maximizing the joint Gaussian
 log-likelihood function. To overcome cubic complexity in the linear algebra, we approximate the
 discretized covariance function in the hierarchical (H-) matrix format. The H-matrix format has
@@ -38119,14 +38268,14 @@ available.
 
 Keywords: Computational statistics; Hierarchical matrix; Large dataset; Mat´ern covariance;
 Random Field; Spatial statistics.},
-  file          = {:Litvinenko17approxLikHierCovMatSpatial.pdf:PDF},
-  review        = {A decomposition of a giant cov. matrix, used for approximating Gaussian likelihood. Particularly interesting is that it can handle inhomogeneous covariance functions -- no need for forcing a form like in Tastu15spcTimeTrajGaussCpla and the others.  Has C/C++.  Could be used for giant spatio-temporal copulas in Prime/IRPWIND?
+  file     = {:Litvinenko17approxLikHierCovMatSpatial.pdf:PDF},
+  review   = {A decomposition of a giant cov. matrix, used for approximating Gaussian likelihood. Particularly interesting is that it can handle inhomogeneous covariance functions -- no need for forcing a form like in Tastu15spcTimeTrajGaussCpla and the others.  Has C/C++.  Could be used for giant spatio-temporal copulas in Prime/IRPWIND?
 
 From: http://andrewgelman.com/2017/10/20/barry-gibb-came-fourth-barry-gibb-look-alike-contest/
 The methods includes "hierarchical decompositions of the covariance matrix (there is also code). This is a really neat method for solving the problem and a really exciting new idea in the field."
 
 },
-  url           = {https://arxiv.org/abs/1709.04419},
+  url      = {https://arxiv.org/abs/1709.04419},
 }
 
 @INPROCEEDINGS{Yan06weatherIDnwp,
@@ -41532,7 +41681,7 @@ Micro-data Learning: the Other End of the Spectrum
   title     = {Assessing the need for better forecasting and observability of PV},
   journal   = {A white paper by the European technology and innovation platform PV, Working group on grid integration},
   year      = {2017},
-  file      = {etip-pv17asessPVfrcstObsNeed.pdf:etip-pv17asessPVfrcstObsNeed:PDF},
+  file      = {:etip-pv17asessPVfrcstObsNeed.pdf:PDF},
   owner     = {sotterson},
   review    = {has a simple power model:
 
@@ -41747,6 +41896,19 @@ Says correlation matrix is hard to calibrate.},
 In any case, it expands on the stuff covered in Geyer06subSampBootStrap
 
 See also: Fox08glmBookChap},
+  timestamp = {2014.02.08},
+}
+@InBook{Fox08glmBookChap,
+  author    = {John Fox},
+  title     = {Applied Regression Analysis and Generalized Linear Models, Second Edition},
+  year      = {2008},
+  publisher = {SAGE Publications, Inc},
+  chapter   = {Chapter 15: Generalized Linear Models},
+  pages     = {379--424},
+  url       = {http://www.sagepub.com/books/Book226359/samples},
+  file      = {Fox08glmBookChap:Fox08glmBookChap:PDF},
+  owner     = {sotterson},
+  review    = {Short chapter on generalized linear models.  I've marked it up but don't remember what I concluded.  See also Fox08btstrpRgrsnBookChap},
   timestamp = {2014.02.08},
 }
 
@@ -42250,6 +42412,7 @@ Fast KNN search
   title     = {Predictive maintenance for offshore wind parks. Error detection by means of Semi-Supervised Anomaly Detection},
   journal   = {?},
   year      = {2017},
+  file      = {:Haibach17predMaintWndSemiAnomDet_slides.pdf:PDF},
   owner     = {sotterson},
   timestamp = {2017.05.11},
 }
@@ -43773,23 +43936,24 @@ See also: exponential weighting vs. Holt-Winters: Taylor07frcstSprMktPriceQR},
 }
 
 @InProceedings{Minka00AutoPCAdim,
-  Title                    = {Automatic Choice of Dimensionality for {PCA}},
-  Author                   = {Thomas P. Minka},
-  Booktitle                = {Advances in Neural Information Processing Systems (NIPS)},
-  Year                     = {2000},
-  Pages                    = {598-604},
-  File                     = {Minka00AutoPCAdim.pdf:Minka00AutoPCAdim.pdf:PDF},
-  Owner                    = {scotto},
-  groups      = {Read},
-Review                   = {Bayesian choice of # of PCA dimensions model order selection criteria used (more or less) by Hansen ICA detect
+  author    = {Thomas P. Minka},
+  title     = {Automatic Choice of Dimensionality for {PCA}},
+  booktitle = {Advances in Neural Information Processing Systems (NIPS)},
+  year      = {2000},
+  pages     = {598-604},
+  file      = {Minka00AutoPCAdim.pdf:Minka00AutoPCAdim.pdf:PDF},
+  groups    = {Read},
+  owner     = {scotto},
+  review    = {Bayesian choice of # of PCA dimensions model order selection criteria used (more or less) by Hansen ICA detect
 * has matlab
 * longer tech note: Minka00AutoPCAdimTechNote (go there for matlab too)
 * Technote, maybe w/ more comments: Minka00AutoPCAdimTechNote
 * See also: Pena03descSctrLinDep
 * See also: Schnitzer12Localandglobal (also has matlab)
+* See also: Frank11svdRankInfo
 * I COPIED THIS FROM SPEAKERCLUST.BIB},
-  Timestamp                = {2007.06.03},
-  Url                      = {http://vismod.media.mit.edu/tech-reports/TR-514-ABSTRACT.html}
+  timestamp = {2007.06.03},
+  url       = {http://vismod.media.mit.edu/tech-reports/TR-514-ABSTRACT.html},
 }
 
 @TechReport{Minka00AutoPCAdimTechNote,

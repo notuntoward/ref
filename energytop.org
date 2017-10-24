@@ -117,6 +117,8 @@
 *** [[file:energy.bib::Markowski11mesoCh1][Markowski & Richardson 2011: Mesoscale]], Ch. 1: What is mesocale?
 *** [[file:energy.bib::Dunning14practMachLrnAnom][Dunning & Friedman 2014: Practical Machine Learning]] Anomaly Book
 *** [[https://www.amazon.com/Detection-Temporal-Synthesis-Knowledge-Discovery/dp/1627053751][Outlier Detection for Temporal Data (Synthesis Lectures on Data Mining and Knowledge Discovery)]]
+*** [[file:energy.bib::Fox08glmBookChap][Fox 2008: Chap 15 Generalized Linear Regression]]
+*** [[cite:Fox08btstrpRgrsnBookChap][Fox 2008: Chap 21: Bootstrapping Regrssn Models: Applied Regression Analysis]]
 *** [[cite:Aggarwal17OutlierAnalysisBook][Aggarwal 2017: Outlier Analysis]] Book
 *** [[cite:Sutton98reinfLrnIntroBook][Sutton & Barto 1998: Reinforcement]] Lrn Intro Book
 *** [[cite:Sutton17reinfLrnIntroBook][Sutton & Barto 2017: Reinforcement]] Lrn Intro Book
@@ -2302,6 +2304,7 @@ Scott
 ********* [[cite:Minka00AutoPCAdim][Minka 2000: Automatic Choice Dimensionality PCA]]
 ********* [[cite:Minka00AutoPCAdimTechNote][Minka 2000: Automatic PCA dim choice Tech Note]]
 ********* [[cite:North82sampErrEstOrthogPCAnumCmps][North et al. 1982: Sampling Errors Estimation PCA num dim]]
+********* [[cite:Frank11svdRankInfo][Frank & Buhmann 2011: Selecting truncated SVD rank Max Approx Cap]]
 ********* [[Effective Dependence]]
 ***** <<Partial Least Squares Regression>>
 ******* [[cite:Lee07rbstAdaptPLS][Lee et al. 2007: Robust Adaptive Partial]]
@@ -3806,7 +3809,6 @@ Hope that helps,
 ******* [[file:energy.bib::Lin13varSelQRspine][Lin et al. 2013: Variable]] selection ANOVA spline
 ******* see also: [[Ensemble selection]]
 ******* [[file:energy.bib::Juban07ProbWndFrcstFeatSelKDE][Juban et al. 2007: Probabilistic]] wind pow frcst: MI featsel --> KDE prob frcst
-
 ******* [[cite:Bai16condCplaWindPowCrvFeat][Bai et al. 2016 Cond. Copula wind Pow curve and feats]]
 ******* [[file:energy.bib::Yao10simplexQRfeatSel][Yao 2010: Simplex Techniques Quantile]] (AIC, SIC, LASSO and others in Simplex)
 ******* also: [[Feature Selection for Quantile Regression]]
@@ -3816,7 +3818,7 @@ Hope that helps,
 ******* also: [[model selection]]
 ******* also: [[Quantile Regression]]
 ***** <<Adaptive covariance estimation and feature sel>>
-******* cite:Xiao13FastbivarPsplinesSndwich (2 psplines in tensor product)
+******* [[cite:Xiao13FastbivarPsplinesSndwich][Xiao et al. 2013: Fast P spline Sndwich (2 psplines in tensor product)]]
 ******* [[file:energy.bib::Zliobaite09lrnCncptDrift][Žliobaitė 2009: Learning Concept Drift]] (overview)
 ******* [[file:energy.bib::Anagnostopoulos10streamCov][Anagnostopoulos et al.: Streaming Covariance Selection]] (lasso w/ missing feat handling)
 ******* [[file:energy.bib::Anagnostopoulos08adaptVarSel][Anagnostopoulos et al. 2008: Deciding]] (sliding window gaussian selects lasso)
@@ -7368,7 +7370,7 @@ Scott
 ***** Siemens: has NN alg, it seems: [[http://www.evernote.com/l/AA05QepHHVlLMJiB6pxDMLuP_nI41T8nlMk/][Machine Learning: Getting Machines to Mimic Intuition]]
 ***** [[cite:Otterson16stochTrdTSO][Otterson et al. 2016: Stochastic German TSO]]
 ***** [[cite:Siemens14sennFrcstsRES][Siemens 2014: Better Forecast RES Wnd/Solar/netDmd/xmssn/Deep]]
-
+***** [[cite:Bo09probLMPfrcstLdUncrt][Bo & Li 2009: Probabilistic LMP Price Forecasting]]
 ***** see also: [[Distribution to Distribution Regression]]
 ***** see also: [[Power Markets]]
 ***** see also: [[Optimal Bidding]]
@@ -7809,6 +7811,8 @@ Scott
 ******* [[http://mlg.eng.cam.ac.uk/pub/pdf/Tur11.pdf][Gaussian Processes for State Space Models and Change Point Detection]]
 ******* Combined Kalman and Gaussian: [[http://www.cs.washington.edu/homes/fox/abstracts/gp-ukf-iros-07.abstract.html][GP-UKF: Unscented Kalman Filters with Gaussian Process Prediction and Observation Models]]
 ******* Gaussian Process [[http://mlg.eng.cam.ac.uk/duvenaud/cookbook/index.html][periodic kernel]] (and other kernels)
+******* [[cite:Datta16Datta16hierNNGaussProcGeoStat][Datta et al. 2016: Hierarchical Gaussian Nearest Nhbrs Gauss Proc Geostat has C/C++]]
+******* [[cite:Carpenter17StanProbProgLang][Carpenter et al. 2017: Stan Prob Prog Lang does big cov mats, GP's]]
 ******* [[cite:Shah14studentTprocAltGauss][Shah et al. 2014: Student Processes Alternatives Gaussian Processes]]
 ******* Possibly another interaction term picker: [[file:energy.bib::Duvenaud11AddGausProcIntrct][Duvenaud et al. 2011: Additive]] Gaussian Proce Interact
 ******* [[cite:Lawrence16deepLrnEffic][Lawrence 2016: Deep Learning Pachinko James Watt]] Efficiency, GP var lrn.
@@ -7817,8 +7821,7 @@ Scott
 ******* [[file:energy.bib::Osborne08realtimeGausProc][Osborne et al. 2008: Towards Real Time]]
 ******* See [[Copula Processes]]
 ******* See: [[Non-homogeneous Gaussian Regression]]
-***** Non-homogeneous Gaussian Regression
-      <<Non-homogeneous Gaussian Regression>>
+***** <<Non-homogeneous Gaussian Regression>>
 
       Seems to be an extreme value (max) technique using [[Gaussian Processes]]?
 
@@ -10795,7 +10798,8 @@ Erika
 *** TODO [[cite:Higham02nearestCorrMat][Higham 2002: Computing nearest corr mat]]
 *** [[cite:Wang06imageProcE161crsNts][Wang 2006: Computer Image Processing (cond. prob for big Gaussian)]]
 *** [[cite:Rasmussen06GaussProcBook][Rasmussen & Williams 2006: Gaussian Processes Mach. Learn (cond. Gauss prob)]]
-*** Also [[Covariance Matrix Repair]]
+*** also [[Covariance Matrix Repair]]
+*** also [[Covariance Matrix Parameterization]]
 * <<Autoencoder>>
 *** [[cite:Suh16GaussCopulaVarMixDat][Suh & Choi 2016: Gauss Copula Variatnl mixture, disc/cont, autoenc]]
 *** [[Stephan: concept building process]]
@@ -11288,6 +11292,7 @@ TOTO: read Fan16* for an overview
 ***** TODO [[cite:FanaeeT16tensorAnomDetSrvy][Fanaee-T & Gama 2016: Tensor anomaly detect survey]]
 ***** TODO [[cite:Pedregosa11ScikitlearnMachLrnPython][Pedregosa et al. 2011: Scikit User Guide: Covariance Estimation]] (overview, methods in Python lib)
 ***** TODO [[cite:Kim16sprsCondCplaMultiOut][Kim 2016: Sparse Cond. Copula Multi Out]] (also gaussian process??)
+***** [[cite:Datta16Datta16hierNNGaussProcGeoStat][Datta et al. 2016: Hierarchical Gaussian Nearest Nhbrs Gauss Proc Geostat has C/C++]] 
 ***** <<Covariance Shrinkage>>
 ******* using R library technique in   [[file:energy.bib::Schafer05shrinkCov][Sch\afer & Strimmer 2005: Shrinkage Approach Large]]
 ******* using Markov constraints: [[file:energy.bib::Deng09largeGausCovMarkov][Deng & Yuan 2009: Large Gaussian Markov]]
@@ -11305,6 +11310,7 @@ TOTO: read Fan16* for an overview
 ******* [[cite:Higham02nearestCorrMat][Higham 2002: Computing nearest correlation matrix]]
 ******* [[cite:Litvinenko17approxLikHierCovMatSpatial][Litvinenko et al. 2017: Likelihood Approx Hier Non Homog Cov Mat Decomp.]]
 ******* [[cite:Tastu15spcTimeTrajGaussCpla][Tastu et al. 2015: Space Time Trajectories (precision matrix)]]
+******* [[cite:Carpenter17StanProbProgLang][Carpenter et al. 2017: Stan prob prog lang: cov/prec. mats, GP's]]
 ******* [[cite:Anderlucci15covPatMix][Anderlucci et al. 2015: Covariance patterns mixture (has # coeffs table)]]
 ******* [[cite:Li11tensoCovMatObjTrck][Li & Sun 2011: Tensor Covariance Matrix Obj Track]]
 ******* [[cite:Pinheiro96unCnstrParamVarCovMat][Pinheiro & Bates 1996: Unconstrained and Unconstrained cov mat]]
@@ -11321,8 +11327,9 @@ TOTO: read Fan16* for an overview
 ******* [[Matrix Normal Distribution]]
 ******* [[Matrix T-distribution]]
 ******* [[Frequency Domain Smoothed Covariance]]
-******* See also: [[Covariance Shrinkage]]
-******* Also: [[Covariance Matrix Repair]]
+******* also [[Covariance Shrinkage]]
+******* also [[Covariance Matrix Repair]]
+******* also [[Random Variable Generation]]
 ***** [[cite:Guo13GaussGraphStructLrnSlides][Guo 2013: Gaussian Graphical Models: struct est.]]
 ***** [[cite:Lindgren11linkGaussMMRFandSDE][Lindgren et al. 2011: Gaussian Gaussian Markov link SPDE and Prec. Mat]]
 ***** [[cite:Rue02fitGausMarkovRndFlds][Rue & Tjelmeland 2002: Fitting Gaussian Markov Gaussian]]
@@ -11338,7 +11345,7 @@ TOTO: read Fan16* for an overview
 ***** TODO Somewhere add paper: [[https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=10&cad=rja&uact=8&ved=0ahUKEwiI-cjoz7bWAhVGXhQKHZUIDV0QFghgMAk&url=http%253A%252F%252Fwww2.stat-athens.aueb.gr%252F~ptd%252FDellaportas_Pourahmadi.pdf&usg=AFQjCNFkGKsaH5PGewo0LgNiPRIqFQg64g][large time-varying covariance matrices in finance]]
 ***** [[cite:Schaeffer14mkCovMatPosDef][Schaeffer 2014: Making Cov Mat Pos Def]]   
 ***** TODO [[cite:Higham02nearestCorrMat][Higham 2002: Computing nearest corr mat]]
-***** also: [[Covariance Matrix Parameterization]]
+***** also [[Covariance Matrix Parameterization]]
 ***** also [[Random Variable Generation]]
 *** <<Non-stationary covariance>>
 

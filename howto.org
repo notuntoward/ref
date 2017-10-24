@@ -1,25 +1,63 @@
-
-TODO: Why does package-autoremove want to remove stuff like xcscope, buffer-move and cygwin-mount
-
 * Emacs
 *** *Emacs to try*
 
     My experiments, Emacs packages I've tried and installed (from Melpa repository). Also, some builtins I could try
 
-***** TRY fix org-ref hydra thing: C-j no longer brings up hydra
-      It's bound in:
+***** TRY get .emacs into git! Unifiy ref and shareHW dirs
+***** TRY fix helm and ref-bibtex bibtex _pdf openers_ on SP4 (Win 10 v.s Win 7?)
 
-      https://github.com/jkitchin/org-ref/blob/master/org-ref-bibtex.el
+      Comments on [[https://emacs.stackexchange.com/questions/3105/how-to-use-an-external-program-as-the-default-way-to-open-pdfs-from-emacs][this article]] might be of help w/ windows file associations or with using pdf-tools package ([[http://tuhdo.github.io/static/emacs-read-pdf.gif][demo]] for pdf-tools, I think)
 
+***** TRY Improve elpy python path: [[Better elpy path]]
+
+      Use conda.el hooks?
+
+      *problem*: elpy requires
+      (elpy-use-ipython)
+      but can't run this until know what conda environment (path to perl, iconsole, etc.) is known
+
+      Can conda.el call it after it has determined the environment e.g. with a hook?
+
+      Can conda.el get the path to the anaconda dir some other way than via an environment variable or by walking up the path of a python command, like I did at first?
+
+      Actually, conda.el DOES have hooks!
+
+;; hooks -- TODO once we actually have environment creation / deletion
+
+(defcustom conda-preactivate-hook nil
+  "Hook run before a conda environment is activated.")
+
+(defcustom conda-postactivate-hook nil
+  "Hook run after a conda environment is activated.")
+
+(defcustom conda-predeactivate-hook nil
+  "Hook run before a conda environment is deactivated.")
+
+(defcustom conda-postdeactivate-hook nil
+  "Hook run after a conda environment is deactivated.")
+
+***** TRY figure out how to activate tensorflow environment inside of elpy
+***** TRY expand-region/smart-region extra org mode bindings
+      expand-region: https://github.com/magnars/expand-region.el/blob/master/the-org-mode-expansions.el
+
+      expand has er/mark-org-parent, which I don't see in smart-region, but might be handy
+
+      It's included in smart-regions somehow, and I can see the function, but how to bind it?
+
+***** TRY put '#' in dedicated target link 
+
+      will prefer to match with dedicated links (but didn't [[][]] already do that?)
+
+      http://orgmode.org/manual/Internal-links.html
+
+***** TRY try out [[http://orgmode.org/worg/org-contrib/org-choose.html][org-choose]] module
 ***** TRY get .emacs, etc. unified across machines.
 ***** TRY get Windows file associations working again, esp. pdf reader
 
       Note: it already works for opening pdfs in bibtext mode (from C-c j p)
 
-***** TRY clean up .emacs w/ use-package or equivalent
-
-      See: [[File:~/.emacs::;;%20TODO%20use-package%20is%20redundant%20w/%20'(package-selected-packages%20in%20customizations)][use-packages notes in my .emacs]]
-
+***** TRY [[https://github.com/sigma/org-s5][ox-s5]] export, an org-->[[https://meyerweb.com/eric/tools/s5/][s5 slides in html/pdf]] (also try [[https://github.com/cybercode/org-slides][ox-deck]])
+***** TRY [[https://github.com/emacsmirror/org/blob/master/contrib/lisp/ox-confluence.el][org-confluence]] export
 ***** TRY use setup file for every org file (like a template)
 
       Inspired by [[https://mail.google.com/mail/u/0/?shva=1#inbox/15f336bd15ceba8c][this]] email, the documentation is [[http://orgmode.org/manual/In_002dbuffer-settings.html][here]].
@@ -243,12 +281,13 @@ TODO: Why does package-autoremove want to remove stuff like xcscope, buffer-move
       | hl-indent.el               | Dynamic | Unsupported | Slow for large files       |
       | visual-indentation-mode.el | Fixed   | Unsupported | Fast and slim, ugly        |
       | highlight-indent-guides    | ?       | ?           | in kaolin, has slim lines  |
-      |                            |         |             |                            |
+      
 ***** Syntax for try/accepted/reject todo things
       # -*- org-todo-keyword-faces: (("ACCEPTED" . "green") ("TRY" . "red") ("REJECTED" . "gray")) ; -*-
       #+TODO: TRY | REJECTED | ACCEPTED
 ***** TRY [[https://github.com/abo-abo/org-download][abo-abo/org-download: Drag and drop images to Emacs org-mode]]
 ***** TRY [[https://github.com/abo-abo/lispy][abo-abo/lispy: short and sweet LISP editing]]
+***** TRY [[https://github.com/abo-abo/lpy][abo-abo/lpy: Minimal Python IDE for GNU Emacs]]
 ***** TRY [[https://github.com/abo-abo/ace-window][abo-abo/ace-window: Quickly switch windows in Emacs]]
 ***** [[https://github.com/aaronjensen/spacemacs.d/blob/af8a583972e680fea512f939db06f17fffc84fb7/lisp/init-org.el#L215-L247][spacemacs.d/init-org.el Add beginnings of dwim org backspace]]
       Maybe nice in future
@@ -285,6 +324,23 @@ TODO: Why does package-autoremove want to remove stuff like xcscope, buffer-move
 ******* [[http://guides.lib.berkeley.edu/information-studies/apis][APIs for scholarly resources]]
 ******* See also: [[BibTex and Emacs]]
 ***** *ACCEPTED*
+******* ACCEPTED clean up .emacs w/ use-package or equivalent
+
+        See: [[File:~/.emacs::;;%20TODO%20use-package%20is%20redundant%20w/%20'(package-selected-packages%20in%20customizations)][use-packages notes in my .emacs]]
+******* ACCEPTED fix org-ref hydra thing: C-j no longer brings up hydra
+
+        My hack was to put it inside of 
+      
+          (use-package org-ref
+
+        and to directly put it into the bibtex map
+
+          (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
+
+        normally, it's bound in:
+
+        https://github.com/jkitchin/org-ref/blob/master/org-ref-bibtex.el
+
 ******* ACCEPTED Decide mappings: C-c b, C-c r *VS*. =C-x 5 c= etc. *VS.* Prefix
       
         *Conclusion*: New mappings will be
@@ -1231,8 +1287,7 @@ Many text editors have access to these in some simple way, so before thinking ab
 
     *Note*: Only need to type =+ -= = after =C-x C-+= or =C-x C--=
 
-*** Narrowing/Widening: [[narrow-or-widen-dwim]]
-    <<Narrowing/Widening: narrow-or-widen-dwim>>
+*** <<Narrowing/Widening: narrow-or-widen-dwim>>
 ***** good for org-mode
 ***** good for programming and other stuff too
 *** <<Emacs key binding conventions>>
@@ -1502,6 +1557,19 @@ Many text editors have access to these in some simple way, so before thinking ab
         (boundp 'abracadabra)
         => t
 
+***** getting file basename and path, walking up path
+
+      ;;find conda install dir, assuming conda already installed and in path
+
+      ;; find conda path
+      (setq conda-script-dir (file-name-directory (shell-command-to-string (concat os-which-cmd " conda"))))
+
+      ;; walk up tree
+      (setq conda-home-dir (file-name-directory (directory-file-name conda-script-dir)))
+
+      ;; I think there's a basename() for getting the executable name from the path
+
+
 ***** porting Lisp to elisp
 ******* [[https://yoo2080.wordpress.com/2013/08/16/differences-between-common-lisp-and-emacs-lisp/][Differences between Common Lisp and Emacs Lisp | Yoo Box]]
 ******* [[https://elpa.gnu.org/packages/cl-lib.html][GNU ELPA - cl-lib]]
@@ -1688,7 +1756,7 @@ Strike-through: nil
         Using [[Chocolatey]] package manager
         From: [[https://www.reddit.com/r/emacs/comments/5xoga4/what_is_the_current_best_way_to_set_up_emacs_on/][What is the current best way to set up emacs on Windows?]] 
 
-        9/16/2017: I installed it.  
+        9/16/2017: I installed it on SP4 (10/23/17, on work laptop).  
 
         It was installed to:
 
@@ -1709,7 +1777,7 @@ Strike-through: nil
         o had to install extra packages that [[Vincent Goulet Emacs]]
         o had rm ~/.emacs.d/elpa and reinstall due to unidentifiable lisp probs.
         o could associate files w/ emacs but they started a new emacs window 
-          Not even  this worked:
+          Not even this worked:
 
           C:\Path\To\emacsclientw.exe --alternate-editor="C:\Path\To\runemacs.exe" -c
         
@@ -2091,9 +2159,17 @@ Strike-through: nil
 ***** _However_, if you attach the image to org and then use iimage, the img displays!
 ***** opening pdf files from dired will open them directly in docview
 ***** opening an attachment from inside org-mode will open acroread
+***** also: TRY [[https://github.com/abo-abo/org-download][abo-abo/org-download: Drag and drop images to Emacs org-mode]]
 *** Emacs packages
 ***** include the libraries that are now in my .emacs or _emacs
 ***** must [[Proxy environment variable for emacs, wget, anki, and others]]
+
+*** <<use-package>>
+***** :init vs :config
+      From: https://github.com/jwiegley/use-package/issues/394
+
+      *:init*   stuff that doesn't run if the package is not availabel
+      *:config* code that means something (works) only after the pkg is loaded
 
 *** Remember cursor position, last file visit
     ;; for emacs 25.1 or later
@@ -2133,15 +2209,116 @@ Strike-through: nil
 ******* [[https://www.emacswiki.org/emacs/LineWrap][recommended here]] and [[http://emacs.stackexchange.com/questions/14589/correct-indentation-for-wrapped-lines][here]]
 ******* [[http://stackoverflow.com/questions/13559061/emacs-how-to-keep-the-indentation-level-of-a-very-long-wrapped-line][startup with hook]] (2012, and [[https://elpa.gnu.org/packages/adaptive-wrap.html][latest package is 2013]]:  still necessary?)
 *** <<Python in Emacs>>
-***** Emacs and Python videos from C'est la Z
+***** overviews
+******* [[https://www.emacswiki.org/emacs/PythonProgrammingInEmacs][EmacsWiki: Python Programming In Emacs]]
+******* [[http://wikemacs.org/wiki/Python][Python - WikEmacs]]
+******* <<Emacs and Python videos from C'est la Z>>
 
-      "As a postscript, let me share these links on how I use Emacs for Python development (each with a video) as well as my series on how I use Emacs in general":
+        "As a postscript, let me share these links on how I use Emacs for Python development (each with a video) as well as my series on how I use Emacs in general":
 
-      http://cestlaz.github.io/stories/emacs/
-      http://cestlaz.github.io/posts/using-emacs-12-python
-      http://cestlaz.github.io/posts/using-emacs-13-yasnippet
+        http://cestlaz.github.io/stories/emacs/
+        http://cestlaz.github.io/posts/using-emacs-12-python
+        http://cestlaz.github.io/posts/using-emacs-13-yasnippet
+***** jedi
 
-***** elpy path problem: [[https://github.com/jorgenschaefer/elpy/issues/1156][bug report]]
+      From [[http://wikemacs.org/wiki/Python][here]]: "It helps at autocompletion, finding definitions, showing documentation, etc. Elpy makes good use of it."
+
+******* [[https://github.com/tkf/emacs-jedi][GitHub - tkf/emacs-jedi: Python auto-completion for Emacs]]
+******* [[https://www.masteringemacs.org/article/jedi-completion-library-python][Jedi: A completion library for Python - Mastering Emacs]]
+******* what emacs video guy uses: [[Emacs and Python videos from C'est la Z]]
+******* is compatible with elpy: [[elpy and jedi and rope]]
+******* <<jedi and conda>>
+********* [[https://github.com/tkf/emacs-jedi/issues/154][How to tell emacs-jedi about conda environments · Issue #154 · tkf/emacs-jedi...]]
+
+          A bit gross: must look up packages in conda dist and then hard code them into .emacs
+
+********* [[activating conda environments in emacs]]
+***** rope
+      From [[http://wikemacs.org/wiki/Python][here]]: it's good for renaming variables and much more, needs two python packages to be installed.
+******* works with elpy: [[elpy and jedi and rope]]
+***** elpy 
+      So you can type =C-c= in a python script and emacs will run it
+******* emacs video guy says [[http://cestlaz.github.io/posts/using-emacs-12-python/][looks cool but is overkill for him]]
+******* RealPython guy [[https://realpython.com/blog/python/emacs-the-best-python-editor/][likes elpy]] (with tips and screenshots)
+******* [[https://github.com/jorgenschaefer/elpy/wiki/Configuration][elpy Configuration · jorgenschaefer/elpy]]
+******* elpy paths
+********* depends upon how you install python: [[Windows Python]]
+********* <<Better elpy path>>? See [[https://github.com/jorgenschaefer/elpy/issues/939][this]]
+********* fix for elpy path problem: [[https://github.com/jorgenschaefer/elpy/issues/1156][bug report]]
+******* [[elpy pyenv interface]]
+******* <<conda environments via elpy virtual environments>>
+        From [[https://github.com/jorgenschaefer/elpy/issues/285][here]]:
+
+        Looks like you either hardcode conda env. locs into your .emacs or you use the  [[elpy pyenv interface]] (M-x conda-workon).
+
+        I'm not a fan because the environment spec. doesn't get checked into svn or git or whatever.
+
+******* <<elpy and jedi and rope>>
+********* elpy [[http://wikemacs.org/wiki/Python][is said]] to make good use of jedi
+********* [[https://stackoverflow.com/questions/29809061/how-to-properly-setup-jedi-with-elpy-in-emacs][python - How to properly setup Jedi with elpy in emacs?]]
+********* [[https://github.com/jorgenschaefer/elpy/wiki/Configuration][elpy Configuration · jorgenschaefer/elpy]]
+******* [[elpy vs. anaconda-mode]]
+***** [[https://github.com/abo-abo/lpy][abo-abo/lpy: Minimal Python IDE for GNU Emacs]]
+***** pyenv
+******* <<elpy pyenv interface>> 
+********* [[https://stackoverflow.com/questions/37472595/how-to-activate-the-anancondas-env-python-in-emacs][how to activate the ananconda's env python in emacs? - Stack Overflow]]
+********* [[https://smythp.com/emacs/python/2016/04/27/pyenv-elpy.html][Using Elpy with pyenv in Emacs]]
+********* [[https://github.com/ssbb/pyenv-mode-auto][pyenv-mode-auto: Automatically activates pyenv version within E...]]
+
+          a little gross: needs a .python-version file in source code directory.  I'd rather have stock python with nothing especially for emacs in it.
+
+********* [[elpy pyenv interface]]
+******* [[https://emacs.stackexchange.com/questions/20092/using-conda-environments-in-emacs][Using conda environments in emacs - Emacs Stack Exchange]]
+        
+        What I'd like is something automatic.  Here, it's a bit gross: 
+
+        1. put cond envs into a file,
+        2. hardcode a reference to that file in emacs,
+        3. Run =M-x pyenv-workon= to switch
+
+***** [[https://github.com/proofit404/anaconda-mode][anaconda-mode: Code navigation, documentation lookup and ...]]
+******* is [[https://github.com/proofit404/anaconda-mode/issues/38][smaller than elpy]]
+******* [[https://github.com/proofit404/anaconda-mode/issues/38][has]] an interface to jedi
+******* <<anaconda-mode seems to use pyenv for conda environments>>
+******* also: [[activating conda environments in emacs]]
+******* <<elpy vs. anaconda-mode>>
+******* [[https://github.com/proofit404/anaconda-mode/issues/38][how does anaconda-mode compare to Elpy? · Issue #38 · proofit404/an...]]
+***** EIN -- Emacs IPython Notebook
+*******  [[https://github.com/millejoh/emacs-ipython-notebook][GitHub - millejoh/emacs-ipython-notebook]]
+******* works with both Jupyter and emacs org mode
+***** <<activating conda environments in emacs>>
+******* <<conda.el reads environmentl.yml>> (but still has problems)
+        From: [[https://github.com/necaris/conda.el][conda.el: Emacs helper library (and minor mode) to work with]]
+
+        *conda.el* has some problems to fix before I can use it
+        1. it's bin paths are wrong for windows: [[https://github.com/necaris/conda.el/issues/5][Doesn't work on Windows · Issue #5]]
+        2. always prints "env not found": [[https://github.com/necaris/conda.el/issues/8][No conda environment for file · Issue #8]]
+        3. when I run =C-c= (ipython) I get a warning b/c I'm running a hard-coded conda path (the wrong one, since I'm hard coded to root)
+        4. This might be b/c of my hard coded path: (setq conda-anaconda-home conda-home-dir).  Could use env var ANACONDA_HOME ([[help:conda-anaconda-home]])
+        5. but then (elpy-use-ipython) would still crash since would not be in path.  letting conda.el autofind the path worked, and I think ipython was working because emacs ignores PATH changes but still had an ipython.exe in its path.  Maybe this is also an elpy problem?  Could pyenv help?  Also, on windows, python.exe is in the top env dir and ipython.exe is in topdir/Scripts.  Seems like conda.el doesn't handle that.
+
+        Wait for this to get fixed before any more messing around: *just usd Spyder*
+
+        environment.yml: a [[documenting conda environment with environment.yml][recommended]] way to check anaconda environments into svn or git or whatever 
+
+********* [[Can]] automatically read environment.yml. 
+********* appears to also work with conda files other than environment.yml
+          
+          says: " search up the directory tree for a file defining a conda environment, such as an environment.yml file, and try to activate the named environment"
+********* hooks to eshell so can easily run conda commands from there          
+********* =conda-anaconda-home= must be set to anaconda home unless have . file
+
+          expected default is ~./.anaconda3
+
+          But I see that I have ~/.anaconda (on SP4)
+
+********* See also: [[documenting conda environment with environment.yml]]
+
+******* [[conda environments via elpy virtual environments]]
+******* [[jedi and conda]]
+******* [[elpy pyenv interface]]
+******* [[anaconda-mode seems to use pyenv for conda environments]]
+******* general: [[python conda environments]]
 *** Ruby in Emacs
 ***** debugger
 
@@ -2519,6 +2696,19 @@ gestures for "show charm" and "switch apps"
 ***** I had to manually enter my existing WiFi modem name b/c it couldn't find it
 * Windows
 *** [[http://www.burningcutlery.com/derek/winsetup/][Making Windows usable]]
+*** <<Windows environment variables: displaying>>
+    From: [[http://windowsitpro.com/powershell/powershell-one-liner-getting-local-environment-variables][here]]
+
+    In powershell
+      
+    all: 
+
+      Get-ChildItem Env:
+
+    a particular environment variable e.g. PATH
+
+       Get-ChildItem Env:PATH
+
 *** Cygwin
     must install cygwin first, of course
 ***** if install 64 bit, make symbolic link:  c:/cygwin64 --> c:/cygwin
@@ -2738,7 +2928,7 @@ gestures for "show charm" and "switch apps"
 *** Windows package manager
 ***** <<Chocolatey>> ([[https://chocolatey.org/][Chocolatey - The package manager for Windows]])
 
-      Installing a package, in a powershell[[ (see Installing Chocolatey]]):
+      Installing a package, in a powershell[[ (see [[Installing Chocolatey]])
 
         choco install <package name>
 
@@ -6849,26 +7039,179 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 
 *** also see [[Windows Perl]]
 * Python
-*** IWES Tensor flow install
+*** <<Windows Python>>
+    Needed at least for org-mode ox-clip
 
-    Stephan V: Anaconda
-               --> phython 3.5.3
-               --> tensorflow
+***** <<Install Windows Python with Anaconda>>
+      Mostly following this [[https://machinelearningmastery.com/setup-python-environment-machine-learning-deep-learning-anaconda/][TensorFlow install advice]]
 
-    had something to do with pip install of tensorflow which used a DLL that wasn't updated for 3.6 yet
+      The idea was to install everything with anaconda to avoid the "not compiled with AVX" warnings I got when I [[Install python with Chocolatey]]) but I still get them.
 
-    Do GPU install ([[https://www.tensorflow.org/install/install_windows][Requirements]])
-    o my work laptop has an NVIDIA GeForce 730M
-    o NVIDIA says this [[https://developer.nvidia.com/cuda-gpus][is CUDA compatible]], w/ 3.0 Compute capability
+      _Download Anaconda_ from [[https://www.anaconda.com/download/][here]] 
+      I picked 64 bit v3.6 ([[https://www.tensorflow.org/install/install_windows][v3.6 is OK for TensorFlow]] (Oct 21, 2017))
+        
+      _Install Anaconda_: 
+        o click the buttons
+        o _install for "Just for Me",_ not for "All Users."  Otherwise, to
+          install packages, etc. [[https://github.com/conda/conda/issues/3652][you'll need either]] 1) admin priveleges 2) to
+          change priveleges on the c:/ProgramData/Anaconda3 or 3) only use
+          Anaconda Navigator 4) clone your anaconda environment.  
+          All these are messy.
+
+          So I installed "Just for Me."  In this case, python.exe is installed in %USERPROFILE%\Anaconda3 and %USERPROFILE%\Anaconda3\Scripts (C:\Users\scotto\Anaconda3 and C:\Users\scotto\Anaconda3\Scripts)
+
+      _Start and Update Anaconda_ (from "anaconda prompt" on start menu)
+        
+        conda update conda
+        conda update anaconda
+
+        o [[https://groups.google.com/a/continuum.io/forum/#!topic/anaconda/KnZQBU8kd9Q][anaconda prompt is recommended]]
+        o could also add python stuff to windows PATH (not recommended)
+
+      _Add C:\Users\scotto\Anaconda3\Scripts to my Windows PATH_
+      (not recommended (see above, but this allows emacs elpy to work)
+
+      Do [[My SP4 TensorFlow install]]
+
+      restart anaconda console
+      pip install kiras (this did not work...)
+
+******* <<Uninstall Anaconda>>
+        It didn't show up in the Windows 10 program list nor was there an install program found on the Windows start menu.  However, you can [[https://stackoverflow.com/questions/29337928/how-to-remove-anaconda-from-windows-completely][uninstall it by running this program]]:
+
+          Uninstall-Anaconda.exe
+
+        which is in the anaconda root dir: either c:/ProgramData/Anaconda3 or C:\Users\username\Anaconda3 (when installed "just for me").
+
+***** <<Install python with Chocolatey>>
+
+    Problem with this was that I kept getting messages about this TensorFlow not being built for optimal performance on my SP4, was not compiled for some instruction set.   It did not sound like TensorFlow was going to fix this ever (some TF blog somewhere) so I decided to [[Install Windows Python with Anaconda]] instead, which seems to be recommended by a lot of people.
+
+    I installed using [[Chocolatey]], which gave me Python 3.6.3, which [[https://www.tensorflow.org/install/install_windows][seems to be OK for TensorFlow]] (Oct 21, 2017).  Following instructions I did: 
+
+      choco install -y python
+
+    Add to path (similar [[https://ianchanning.wordpress.com/2016/03/25/jupyter-on-windows-with-chocolatey/][was suggested]] for when install Jupyter): 
+
+      C:\Python36
+      C:\Python36\Scripts
+
+*** <<TensorFlow>>
+***** <<IWES Laptop TensorFlow install>>
+
+      From conda console prompt 
+      (from [[https://machinelearningmastery.com/setup-python-environment-machine-learning-deep-learning-anaconda/][here]] and also [[https://www.tensorflow.org/install/install_windows#installing_with_anaconda][official TensorFlow way]]):
+
+      _Update scikit-learn Library_ (in anaconda prompt)
+         conda update scikit-learn
+
+      _Install Deep Learning Libraries_ (from here, on my SP4, no GPU/CUDA)
+
+      conda create -n tensorflow python=3.6
+      pip install --ignore-installed --upgrade tensorflow 
+
+      activate tensorflow
+
+      python
+      import tensorflow as tf                              /just a test, in anaconda/
+      hello = tf.constant('Hello, TensorFlow!')
+      sess = tf.Session()
+      print(sess.run(hello))      
+      quit()
+
+      deactivate tensorflow                               /exits anaconda too.../
+
+******* StephanVogt-like: Anaconda
+                 --> phython 3.5.3
+                 --> tensorflow
+
+      had something to do with pip install of tensorflow which used a DLL that wasn't updated for 3.6 yet
+
+******* GPU install attempt ([[https://www.tensorflow.org/install/install_windows][Requirements]])
+        o my work laptop has an NVIDIA GeForce 730M
+       o NVIDIA says this [[https://developer.nvidia.com/cuda-gpus][is CUDA compatible]], w/ 3.0 Compute capability
+
+***** <<My SP4 TensorFlow install>>
+      mostly following [[https://www.tensorflow.org/install/install_windows][Installing TensorFlow on Windows  |  TensorFlow]]
+      o install [[Windows Python]]
+
+      From inside the anaconda-console
+
+      o create tensorflow environment (necessary?  [[https://machinelearningmastery.com/setup-python-environment-machine-learning-deep-learning-anaconda/][This guy doesn't do it]])
+
+        conda create -n tensorflow python=3.5 
+
+      o Activate the conda environment by issuing the following command:
+
+          activate tensorflow
+
+      o Install the CPU-only version of TensorFlow (SP4 doesn't hare right GPU)
+
+          pip install --ignore-installed --upgrade tensorflow 
+
+        (I installed the CPU only TF b/c I had problems with CUDA even on my    
+        IWES machine, which I think I thought had the right GPU)
+
+******* warning message when I ran the python [[https://www.tensorflow.org/install/install_windows][validation snippet]]
+
+2017-10-21 20:48:13.231634: W C:\tf_jenkins\home\workspace\rel-win\M\windows\PY\36\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-10-21 20:48:13.233221: W C:\tf_jenkins\home\workspace\rel-win\M\windows\PY\36\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
 
 *** Machine learning Python libs
 ***** [[http://scikit-learn.org/stable/][scikit-learn]]
 ******* guy's [[http://www.google-melange.com/gsoc/proposal/review/google/gsoc2013/nicolastr/12001][plan]] to add missing feature fill-in using matrix completion
-*** <<Windows Python>>
 
-    I installed from [[https://www.python.org/downloads/windows/][here]] (originally, lately, I installed anaconda instead)
+*** <<python conda environments>>
+    "conda environments" what anaconda makes e.g. the one for tensorflow
 
-    Needed at least for org-mode ox-clip
+    List environments (on the command line)
+      conda info -e
+
+    Activating/deactivating (in conda)
+
+      activate tensorflow
+      deactivate tensorflow
+
+    installing packages from list
+     conda list --export          ; makes the list, given some environment
+     conda install --file         ; installs them
+
+    finding root anaconda environment (where perl.exe is installed)
+
+      conda info -e | grep root | gawk '{print $3}'
+
+***** <<documenting conda environment with environment.yml>>
+      From: [[https://tdhopper.com/blog/2015/Nov/24/my-python-environment-workflow-with-conda/][My Python Environment Workflow with Conda - tdhopper.com]]
+
+      The best way I've seen to check the whole anaconda environment into svn, git or whatever (as of Oct. 22, 2017).  I think the corresponding emacs package is also the nicest: [[conda.el reads environmentl.yml]]
+
+******* The steps done when you start a project
+        (could be from the command line, then after starting conda)
+
+        from anacondal console
+
+        conda env create
+        (install whatever)
+        conda env activate
+        conda env export | grep -v "^prefix: " > environment.yml
+
+      create  [[https://github.com/conda/conda-env][environment.yml]] 
+      ... and at some time, you can check something in
+      is read by [[https://github.com/conda/conda-env][conda env create]]
+      ... a .env file sets up the environment when you visit the dir 
+      ... (needs "autoenv" installed by something)
+
+******* keeping your local install path out of environment.yml
+        From: [[https://stackoverflow.com/questions/41274007/anaconda-export-environment-file][python - Anaconda export Environment file - Stack Overflow]]
+
+        conda env export | grep -v "^prefix: " > environment.yml
+      
+***** Also [[activating conda environments in emacs]]
+
+*** pip vs. conda
+    From: [[https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/][Conda: Myths and Misconceptions | Pythonic Perambulations]]
+
+    "pip installs python packages within any environment; conda installs any package within conda environments"
 
 *** [[Python in Emacs]]
 * Browser config
