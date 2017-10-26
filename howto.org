@@ -46,9 +46,26 @@
 
 ***** TRY put '#' in dedicated target link 
 
-      will prefer to match with dedicated links (but didn't [[][]] already do that?)
+      Will prefer to match with dedicated links (but didn't [[][]] already do that?)
 
       http://orgmode.org/manual/Internal-links.html
+
+      This is somehow _incompatible with org-ref_.  If I test the example org file from [[https://github.com/snosov1/toc-org][GitHub - snosov1/toc-org: toc-org is an Emacs utility to have an up-to-date t...]]
+
+      and put my cursor on, or C-c C-o on any of the links referencing a headline (could also be referencing a dedicated target), I get errors like this:
+
+         Error running timer ‘org-ref-link-message’: (error "No match for custom ID: Installation")
+
+      /DOES toc-org insert custom ID definitions that org-ref would not crash on?/
+
+      *ANYWAY* _the change to my .emacs for # targets would be:_ 
+
+        (defun create-and-link-dedicated-org-target (callPrefix)
+
+        Changing the line:
+	  (kill-new (concat "[" targBdy "]"))
+        To this:
+	  (kill-new (concat "[#" targBdy "]")) ;'#' for dedicated targ match
 
 ***** TRY try out [[http://orgmode.org/worg/org-contrib/org-choose.html][org-choose]] module
 ***** TRY get .emacs, etc. unified across machines.
@@ -1293,9 +1310,9 @@ Many text editors have access to these in some simple way, so before thinking ab
 *** <<Emacs key binding conventions>>
 
     *Conclusions* 
-    1) Can bind C-c <letter> to anything (it's reserved for "users")
+    1) I can bind C-c <letter> to anything (it's reserved for "users")
     2) other C-c bindings (number, punctuation,...) are for modes
-    3) =4 and 5= are almost very commonly used for other frame and window funcs
+    3) =4 and 5= are very commonly used for other frame and window funcs
     4) Prefix command argument =C-u= is OK for commands that have two behaviors
     5) I'm not sure what to do with other prefix command arguments
 
@@ -3219,6 +3236,13 @@ taskkill -im iexplore.exe
     scannable by clicking on "index Properties and File Contents"
     control.  e.g. I did this for pdfs.
 
+*** Turn off default beep
+    This is the one that comes up when I mistype stuff.  Happens too often, esp. on Win10 Fall Creators Update.
+
+    Windows Key --> Change System Sounds --> Default Beep 
+
+    --> Select (None) in Sounds menu below
+    
 *** Bluetooth
 ***** Connecting w/ Logitech Audio Adapter (Bluetooth)
 

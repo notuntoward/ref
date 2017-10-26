@@ -1129,6 +1129,28 @@ Related: Kraskov08MIChierClustMutInf.Papana08EvalMutInfoDynSys},
   timestamp = {2008.10.03},
 }
 
+@Article{Liu11confWgtKNNimbal,
+  author    = {Liu, Wei and Chawla, Sanjay},
+  title     = {Class confidence weighted knn algorithms for imbalanced data sets},
+  journal   = {Advances in Knowledge Discovery and Data Mining},
+  year      = {2011},
+  pages     = {345--356},
+  abstract  = { In this paper, a novel k-nearest neighbors (kNN) weighting
+strategy is proposed for handling the problem of class imbalance. When
+dealing with highly imbalanced data, a salient drawback of existing kNN
+algorithms is that the class with more frequent samples tends to dominate
+the neighborhood of a test instance in spite of distance measurements,
+which leads to suboptimal classification performance on the minority
+class. To solve this problem, we propose CCW (class confidence weights)
+that uses the probability of attribute values given class labels to weight
+prototypes in kNN. The main advantage of CCW is that it is able to
+correct the inherent bias to majority class in existing kNN algorithms
+on any distance measurement. Theoretical analysis and comprehensive
+experiments confirm our claims},
+  file      = {:Liu11confWgtKNNimbal.pdf:PDF},
+  publisher = {Springer},
+}
+
 @InProceedings{Malhotra15lstmAnomDetTS,
   author       = {Malhotra, Pankaj and Vig, Lovekesh and Shroff, Gautam and Agarwal, Puneet},
   title        = {Long short term memory networks for anomaly detection in time series},
@@ -2211,7 +2233,7 @@ the original network structure more accurately than GCRF while op-
 erating solely on partial views of the network; (3) It outperforms both
 unweighted and weighted GCRF ensembles which also operate on sub-
 networks but require retraining at each timestep},
-  file      = {:Blau17NonRedundSpectDimRed.pdf:PDF},
+  file      = {:Pavlovski17skipTrainRgrssnTempNet.pdf:PDF},
   review    = {And adaptive structured graph regression that updates all or an automatically chosen part of itself on each step.  Is fast and can handle big networks.   I talked to the ECML PKDD 2017 poster's author and it seemed to me that this could be applied to learning spatial dependencies across wind farms.  On thing I'm not sure of is if it can retain past lessons (weather regimes) or if it wipes them out as it adapts.    But since it updates substructures, maybe old regime info could be retained in the non-updated part of the graph?},
   url       = {http://ecmlpkdd2017.ijs.si/program.html},
 }
@@ -4127,6 +4149,7 @@ Physical model could be logged to make angle, etc. additive, dep on speed could 
   issn     = {0960-1481},
   abstract = {Abstract A constantly increasing share of weather dependent renewable energies in Germany's power mix poses new challenges concerning grid management and security of energy supply. An evaluation of the three year period from 2012 to 2014 reveals, that 60\% of days with largest errors in the day-ahead wind power forecasts for Germany are linked to cyclones and troughs traversing the North Sea, the Baltic Sea or Germany. A cyclone detection algorithm has been developed to automatically indicate these critical weather situations. The algorithm is based on Numerical Weather Prediction model forecasts of mean sea level pressure. The cyclone detection is used to design an automated weather information tool for end-users such as Transmission System Operators (TSOs). For 2014, it identified a critical weather development in 38\% of all days. The root mean square error of day-ahead wind power forecasts increased by 1\% of installed capacity during these periods. A real time application of the tool is being implemented in order to support a sustainable and save integration of the increasing wind power production. It will then be provided to, and will be tested by, three German \{TSOs\} with the purpose of an operative usage to guarantee the security of supply.},
   doi      = {http://doi.org/10.1016/j.renene.2016.08.013},
+  file     = {:Steiner17critWeathWindPow.pdf:PDF},
   keywords = {Wind energy, Weather dependency, Cyclone detection, Net stability, Transmission system operator },
   url      = {http://www.sciencedirect.com/science/article/pii/S0960148116307145},
 }
@@ -9542,6 +9565,7 @@ The author shows how numerical methods and algorithms for inference and simulati
 @MastersThesis{Wildenhues13OptAlocSizDynStatcom,
   author      = {Sebastian Wildenhues},
   title       = {Optimal Allocation And Sizing Of Statcom For Power System Dynamic Performance Enhancement},
+  keywords =     {fred},
   institution = {University of Duisburg-Essen},
   year        = {2013},
   url         = {http://duepublico.uni-duisburg-essen.de/servlets/DocumentServlet?id=31859},
@@ -10457,7 +10481,7 @@ RELATED
   month     = {jul},
   abstract  = {Empirical Orthogonal Functions (EOF's), eigenvectors of the spatial cross-covariance matrix of a meteorological field, are reviewed with special attention given to the necessary weighting factors for gridded data and the sampling errors incurred when too small a sample is available. The geographical shape of an EOF shows large intersample variability when its associated eigenvalue is “close” to a neighboring one. A rule of thumb indicating when an EOF is likely to be subject to large sampling fluctuations is presented. An explicit example, based on the statistics of the 500 mb geopotential height field, displays large intersample variability in the EOF's for sample sizes of a few hundred independent realizations, a size seldom exceeded by meteorological data sets.},
   doi       = {10.1175/1520-0493(1982)110<0699:SEITEO>2.0.CO;2},
-  file      = {:North82sampErrEstOrthogPCAnumCmps - Sampling Errors in the Estimation of Empirical Orthogonal Functions:},
+  file      = {:North82sampErrEstOrthogPCAnumCmps.pdf:PDF},
   publisher = {American Meteorological Society},
   review    = {The number of principal components test apparently used by LNEG for its weather classification work in IRPWIND WP82.3.  Is it somehow more appropriate for temporal-spatio covarariance matrices?},
 }
@@ -13157,7 +13181,7 @@ Computation updated in: Wood08FastSmthGAM},
   month     = jul,
   abstract  = {IBM Research today revealed that solar and wind forecasts it is producing using machine learning and other cognitive computing technologies are proving to be as much as 30 percent more accurate than ones created using conventional approaches.  Part of a research program funded the by the U.S. Department of Energy's SunShot Initiative, the breakthrough results suggest new ways to optimize solar resources as they are increasingly integrated into the nation's energy systems.
 IBM also announced that for a limited time it will provide foundational solar forecasts at five-kilometer spatial resolution to help government agencies and other organizations in the lower 48 states best evaluate their impact on supply and demand as well as operations.},
-  file      = {Vu15solarFrcstIBMmachLrn.pdf:Vu15solarFrcstIBMmachLrn:PDF},
+  file      = {:Vu15solarFrcstIBMmachLrn.pdf:PDF},
   owner     = {sotterson},
   review    = {What IBM is doing in RES forecasting, which is "30%" more accurate than conventional approaches.
 
@@ -13293,6 +13317,46 @@ Index Terms?balancing market, imbalance settlement, Balance Responsible Parties 
 Reasons why the Bremnes algorith implmented by DTU (in IRPWIND)
 * German settlement calculation is done weeks or months after the imbalance; Dutch is a little bit quicker.
 * German prices are symmetric; Dutch are asymmetric.},
+}
+
+@TechReport{Lee12probCongestFrcst,
+  author      = {Steven Lee and Liang Min},
+  title       = {Probabilistic Transmission Congestion Forecasting},
+  institution = {California Energy Commission, Electric Power Research Institute},
+  year        = {2012},
+  number      = {CE C-500-2013-120},
+  month       = dec,
+  abstract    = {Improved forecasting of transmission congestion in both the short term and the long term can 
+increase the efficiency and reliability of the California electricity system. Improved forecasting 
+requires an approach that accounts for significant uncertainty caused by load and generation 
+forecasts as well as random unplanned equipment outages. California’s Renewable Portfolio 
+Standard requires that 20 percent of the state’s power be generated by renewable energy by 
+2020, which will increase the volatility of congestion due to wind generation. Annual congestion 
+costs on the California-Oregon Intertie path increased to $12 million in 2006 compared to $6.7 
+million in 2005, so improvements in congestion management could yield significant cost 
+savings and help achieve California’s energy goals. 
+This report introduced two probabilistic methods for long-term and short-term transmission 
+congestion forecasting that were developed by the Electric Power Research Institute. The 
+proposed method applied sequential Monte Carlo simulation in a probabilistic load flow as the 
+conceptual framework, added all the significant uncertainties and their probability distributions 
+that needed to be modeled, developed the models, and specified how to accurately model the 
+key input assumptions in order to derive valid confidence levels of the forecasted congestion 
+variables. The developed probabilistic method was successfully applied to the four-area 
+Western Electricity Coordinating Council equivalent system. The focus was on the confidence 
+levels of making such forecasts so that a window of forecastability was defined beyond which 
+any forecast would be considered to contain little actionable information. The probabilistic 
+forecasts of congestion would provide confidence limits and information for ranking the 
+potential benefits of alleviating congestion at the various transmission bottlenecks within the 
+window of forecastability. 
+
+ 
+
+Keywords: Transmission congestion forecasting, Monte Carlo Simulation (MCS), probability 
+distribution, probabilistic load flow, transmission bottlenecks, Western Electricity Coordinating 
+Council (WECC). },
+  file        = {:Lee12probCongestFrcst.pdf:PDF},
+  review      = {Related to net demand forecasting, and it's probabilstic.},
+  url         = {http://www.energy.ca.gov/2013publications/CEC-500-2013-120/CEC-500-2013-120.pdf},
 }
 
 @Article{Marvuglia11lrnFarmPowCrvGMR,
@@ -17371,17 +17435,17 @@ How to kind of get around curse of dimensionality w/ local regression models + s
 @Article{Taylor13dimCurseLocRgrsn,
   author    = {Taylor, James and Einbeck, Jochen},
   title     = {Challenging the curse of dimensionality in multivariate local linear regression},
+  journal   = {Computational Statistics},
   year      = {2013},
-  language  = {English},
   volume    = {28},
   number    = {3},
   pages     = {955--976},
   issn      = {0943-4062},
-  doi       = {10.1007/s00180-012-0342-0},
   abstract  = {Local polynomial fitting for univariate data has been widely studied and discussed, but up until now the multivariate equivalent has often been deemed impractical, due to the so-called curse of dimensionality. Here, rather than discounting it completely, we use density as a threshold to determine where over a data range reliable multivariate smoothing is possible, whilst accepting that in large areas it is not. The merits of a density threshold derived from the asymptotic influence function are shown using both real and simulated data sets. Further, the challenging issue of multivariate bandwidth selection, which is known to be affected detrimentally by sparse data which inevitably arise in higher dimensions, is considered. In an effort to alleviate this problem, two adaptations to generalized cross-validation are implemented, and a simulation study is presented to support the proposed method. It is also discussed how the density threshold and the adapted generalized cross-validation technique introduced herein work neatly together.},
-  file      = {Taylor13dimCurseLocRgrsn.pdf:Taylor13dimCurseLocRgrsn:PDF},
-  journal   = {Computational Statistics},
+  doi       = {10.1007/s00180-012-0342-0},
+  file      = {:Taylor13dimCurseLocRgrsn.pdf:PDF},
   keywords  = {Multivariate smoothing; Density estimation; Bandwidth selection; Influence function},
+  language  = {English},
   owner     = {sotterson},
   publisher = {Springer-Verlag},
   review    = {Maybe how to avoid additive QR model probs w/ local model cross-validation. Local linear or polynomial regression breaks down w/ more than a couple dims; a cross-validation technique shows how to identify spaces where there are enough points. Seems to partly get around the curse of dimensionality.
@@ -20402,6 +20466,7 @@ patterns can differ markedly. While some of them exhibit strong and usually comp
 dissimilar (e.g. without significant seasonal fluctuations). Secondly, different clients may use different time intervals to measure
 energy demand (in particular, not all clients have hourly registered demand). Moreover, there is a number of exogenous factors (e.g.
 factors related to weather conditions etc.) that may significantly influence the actual energy consumption.},
+  file      = {:Suchwalko16loadFrcst3deepLrnBlog.pdf:PDF},
   owner     = {sotterson},
   review    = {Forecasts Polish electricity demand with  regression, time series models, and deep neural networks (which  do a probablistic forecast too).  Deep learning seems best but the writeup is confused about input features and forecast horizon so it's hard to tell what these results mean.  Still,it's interesting to see the probabilistic forecast in the middle (could figure out how to make it output real quantiles instead of interval indicators).
 
@@ -22709,6 +22774,23 @@ compared against NWP ensembles in Girard10trajEvalWind (ensembles seem better?)
   timestamp = {2009.04.17},
 }
 
+@Article{Zhou11conjFrcstMkts,
+  author        = {Q. Zhou and L. Tesfatsion and C. C. Liu},
+  title         = {Short-Term Congestion Forecasting in Wholesale Power Markets},
+  journal       = {IEEE Transactions on Power Systems},
+  year          = {2011},
+  volume        = {26},
+  number        = {4},
+  pages         = {2185--2196},
+  month         = nov,
+  issn          = {0885-8950},
+  __markedentry = {[sotterson:]},
+  abstract      = {Short-term congestion forecasting is highly important for market participants in wholesale power markets that use locational marginal prices (LMPs) to manage congestion. Accurate congestion forecasting facilitates market traders in bidding and trading activities and assists market operators in system planning. This study proposes a new short-term forecasting algorithm for congestion, LMPs, and other power system variables based on the concept of system patterns - combinations of status flags for generating units and transmission lines. The advantage of this algorithm relative to standard statistical forecasting methods is that structural aspects underlying power market operations are exploited to reduce forecast error. The advantage relative to previously proposed structural forecasting methods is that data requirements are substantially reduced. Forecasting results based on a NYISO case study demonstrate the feasibility and accuracy of the proposed algorithm.},
+  doi           = {10.1109/TPWRS.2011.2123118},
+  file          = {:Zhou11conjFrcstMkts.pdf:PDF},
+  keywords      = {load forecasting, power markets, power system economics, pricing, statistical analysis, LMP, NYISO case study, forecast error reduction, locational marginal prices, power system variables, short-term congestion forecasting, standard statistical forecasting methods, wholesale power markets, Algorithm design and analysis, Forecasting, Power markets, Power system planning, Probabilistic logic, Congestion forecasting, convex hull algorithm, load partitioning, locational marginal price, price forecasting, system patterns, wholesale power market},
+}
+
 @Article{Couto14weathRegimeRamps,
   author    = {Couto, A. and Costa, P. and Rodrigues, L. and Lopes, V. and Estanqueiro, A.},
   title     = {Impact of Weather Regimes on the Wind Power Ramp Forecast in {Portugal}},
@@ -23337,15 +23419,14 @@ VPPs and improve security of supply.},
 }
 
 @Article{Datta16Datta16hierNNGaussProcGeoStat,
-  author        = {Datta, Abhirup and Banerjee, Sudipto and Finley, Andrew O and Gelfand, Alan E},
-  title         = {Hierarchical nearest-neighbor Gaussian process models for large geostatistical datasets},
-  journal       = {Journal of the American Statistical Association},
-  year          = {2016},
-  volume        = {111},
-  number        = {514},
-  pages         = {800--812},
-  __markedentry = {[sotterson:]},
-  abstract      = {Spatial process models for analyzing geostatistical data entail computations that
+  author    = {Datta, Abhirup and Banerjee, Sudipto and Finley, Andrew O and Gelfand, Alan E},
+  title     = {Hierarchical nearest-neighbor Gaussian process models for large geostatistical datasets},
+  journal   = {Journal of the American Statistical Association},
+  year      = {2016},
+  volume    = {111},
+  number    = {514},
+  pages     = {800--812},
+  abstract  = {Spatial process models for analyzing geostatistical data entail computations that
 
 become prohibitive as the number of spatial locations become large. This manuscript
 
@@ -23372,9 +23453,9 @@ efits of the NNGP over competing methods using simulation studies and also analy
 forest biomass from a massive United States Forest Inventory dataset at a scale that
 
 precludes alternative dimension-reducing methods.},
-  file          = {:Datta16hierNNGaussProcGeoStat.pdf:PDF},
-  publisher     = {Taylor \& Francis},
-  review        = {Considered to be "exciting" by a stats guru who wrote the STAN proabilistic programming package.  This one is good because it can model non-homogenous covariance matrices.  Also has C/C++ code, I think.
+  file      = {:Datta16hierNNGaussProcGeoStat.pdf:PDF},
+  publisher = {Taylor \& Francis},
+  review    = {Considered to be "exciting" by a stats guru who wrote the STAN proabilistic programming package.  This one is good because it can model non-homogenous covariance matrices.  Also has C/C++ code, I think.
 },
 }
 
@@ -26222,6 +26303,33 @@ p-Gaussians: Francois05locKernHiDim},
   review   = {Simple model for PV outout, based on electrical circuit and physics but  looks like it's easy to estimate the paramters of from data.},
 }
 
+@InProceedings{Liu12tsoLargeWind,
+  author       = {Liu, Zongyu and van der Sluis, Lou and Winter, Wilhelm and Paeschke, Helmut and Becker, Raik and Weber, Christoph and Eickmann, Jonas and Schroeders, Christian and Oldewurtel, Frauke and Roald, Line and others},
+  title        = {Challenges, experiences and possible solutions in transmission system operation with large wind integration},
+  booktitle    = {11th International Workshop on Large-Scale Integration of Wind Power into Power Systems},
+  year         = {2012},
+  organization = {11th International Workshop on Large-Scale Integration of Wind Power into Power Systems},
+  abstract     = {The growing share of electricity generated from 
+intermittent renewable energy sources as well as increasing 
+market-based cross-border flows and related physical flows 
+are leading to rising uncertainties in transmission network 
+operation. This paper presents the current and possible future 
+operational challenges from TSOs’ experiences, and provides 
+a comprehensive overview of expected features that a toolbox 
+should contain for the stable operation of the transmission 
+network. In addition, it outlines the research vision of the 
+UMBRELLA project, namely better use of renewable energy 
+forecasts, optimization of transmission system operation, and 
+risk-based security assessment, as the possible solution to 
+tackle the aforementioned challenges. In the end, a brief 
+introduction to the UMBRELLA project has been 
+incorporated.  
+Keywords: System operation, wind integration, renewable 
+energy forecasts, optimization of transmission system operation, 
+risk-based security assessment, TSO experiences},
+  file         = {:Liu12tsoLargeWind.pdf:PDF},
+}
+
 @Article{Winters60exponMvAvgSalesFrcst,
   author    = {Winters, Peter R},
   title     = {Forecasting sales by exponentially weighted moving averages},
@@ -28170,13 +28278,13 @@ The problem of heavy tail in regression models is studied. It is proposed that r
 @Article{Trevor04LAR,
   author    = {Bradley Efron Trevor and Trevor Hastie and Lain Johnstone and Robert Tibshirani},
   title     = {Least Angle Regression},
+  journal   = {Annals of Statistics},
   year      = {2004},
   volume    = {32},
   number    = {2},
   pages     = {407--499},
   abstract  = {The purpose of model selection algorithms such as All Subsets, Forward Selection and Backward Elimination is to choose a linear model on the basis of the same set of data to which the model will be applied. Typically we have available a large collection of possible covariates from which we hope to select a parsimonious set for the efficient prediction of a response variable. Least Angle Regression (LARS), a new model selection algorithm, is a useful and less greedy version of traditional forward selection methods. Three main properties are derived: (1) A simple modification of the LARS algorithm implements the Lasso, an attractive version of ordinary least squares that constrains the sum of the absolute regression coefficients; the LARS modification calculates all possible Lasso estimates for a given problem, using an order of magnitude less computer time than previous methods. (2) A different LARS modification efficiently implements Forward Stagewise linear regression, another promising new model selection method; this connection explains the similar numerical results previously observed for the Lasso and Stagewise, and helps us understand the properties of both methods, which are seen as constrained versions of the simpler LARS algorithm. (3) A simple approximation for the degrees of freedom of a LARS estimate is available, from which we derive a Cp estimate of prediction error; this allows a principled choice among the range of possible LARS estimates. LARS and its variants are computationally efficient: the paper describes a publicly available algorithm that requires only the same order of magnitude of computational effort as ordinary least squares applied to the full set of covariates.},
-  file      = {Tech Note, nice graphs, no dicussion:Trevor03LARtechNote.pdf:PDF;Journal Paper w/ Dicussions, bad graphs:Trevor04LARjournal.pdf:PDF;Trevor04LARjournal.pdf:Trevor04LARjournal.pdf:PDF},
-  journal   = {Annals of Statistics},
+  file      = {Tech Note, nice graphs, no dicussion:Trevor03LARtechNote.pdf:PDF;Journal Paper w/ Dicussions, bad graphs:Trevor04LAR.pdf:PDF;Trevor04LARjournal.pdf:Trevor04LARjournal.pdf:PDF},
   owner     = {sotterson},
   review    = {The least angle regression (LAR) algorithm for solving the Lasso. Much more efficient than straight Lasso.
 
@@ -30301,7 +30409,7 @@ Matrix Normal Distribution
   month        = may,
   year         = {2016},
   abstract     = {This is a long overdue blog post on Reinforcement Learning (RL). RL is hot! You may have noticed that computers can now automatically learn to play ATARI games (from raw game pixels!), they are beating world champions at Go, simulated quadrupeds are learning to run and leap, and robots are learning how to perform complex manipulation tasks that defy explicit programming. It turns out that all of these advances fall under the umbrella of RL research. I also became interested in RL myself over the last ~year: I worked through Richard Sutton?s book, read through David Silver?s course, watched John Schulmann?s lectures, wrote an RL library in Javascript, over the summer interned at DeepMind working in the DeepRL group, and most recently pitched in a little with the design/development of OpenAI Gym, a new RL benchmarking toolkit. So I?ve certainly been on this funwagon for at least a year but until now I haven?t gotten around to writing up a short post on why RL is a big deal, what it?s about, how it all developed and where it might be going.},
-  file         = {Blog Post:Karpathy16deepReinfLrnPongPix:PDF},
+  file         = {Blog Post:Karpathy16deepReinfLrnPongPix.pdf:PDF},
   owner        = {sotterson},
   review       = {Prefers policy gradient to DQ learning.
 
@@ -31296,6 +31404,19 @@ Keywords: copula, statistical dependency, monotonic, equitability, discrete},
   owner     = {sotterson},
   timestamp = {2017.06.06},
   url       = {https://arxiv.org/abs/1703.06686},
+}
+
+@InProceedings{Min08progCngstFrcstShrt,
+  author    = {Liang Min and S. T. Lee and Pei Zhang and V. Rose and J. Cole},
+  title     = {Short-term probabilistic transmission congestion forecasting},
+  booktitle = {Proc. Third Int. Conf. Electric Utility Deregulation and Restructuring and Power Technologies},
+  year      = {2008},
+  pages     = {764--770},
+  month     = apr,
+  abstract  = {This paper introduces a probabilistic method for short-term transmission congestion forecasting, which is recently developed by EPRI. The proposed method applies the sequential Monte Carlo simulation (MCS) in a probabilistic load flow as the conceptual framework, adds all the significant uncertainties and their probability distributions to be modeled, develops the models, and most importantly specifies how to accurately model the key input assumptions in order to derive valid confidence levels of the forecasted congestion variables. The developed probabilistic method is successfully applied to the four-area WECC equivalent system. Focus is on the confidence levels of making such forecasts, so that a window of forecast-ability is defined, beyond which any forecast would be considered to contain little actionable information. Within the window of forecast-ability, the probabilistic forecasts of congestion would provide confidence limits and information for ranking the potential benefits of alleviating congestion at the various transmission bottlenecks.},
+  doi       = {10.1109/DRPT.2008.4523508},
+  file      = {:Min08progCngstFrcstShrt.pdf:PDF},
+  keywords  = {Monte Carlo methods, load forecasting, power transmission planning, confidence levels, forecasted congestion variables, probabilistic load flow, probabilistic method, sequential Monte Carlo simulation, short-term transmission congestion forecasting, Artificial neural networks, Costs, Economic forecasting, Load flow, Load forecasting, Power system simulation, Predictive models, Probability distribution, Reliability, Uncertainty, Congestion forecasting, Monte Carlo Simulation (MCS), probabilistic load flow, probability distribution},
 }
 
 @Article{Muggeo07bivarDistLagSpline,
@@ -33176,6 +33297,23 @@ problem.},
   timestamp   = {2014.11.10},
 }
 
+@Article{Rebours07survVoltAncSrvc_I,
+  author   = {Y. G. Rebours and D. S. Kirschen and M. Trotignon and S. Rossignol},
+  title    = {A Survey of Frequency and Voltage Control Ancillary Services mdash;Part I: Technical Features},
+  journal  = {IEEE Transactions on Power Systems},
+  year     = {2007},
+  volume   = {22},
+  number   = {1},
+  pages    = {350--357},
+  month    = feb,
+  issn     = {0885-8950},
+  abstract = {This two-part paper surveys the frequency and voltage control ancillary services in power systems from various parts of the world. In this first part, the nomenclature used to describe active power reserves across 11 systems is first reviewed in order to facilitate the comparison of frequency control ancillary services. The essential technical features of frequency and voltage control ancillary services are then described. Finally, the technical requirements adopted in eight jurisdictions (North America, continental Europe, Germany, France, Spain, the Netherlands, Belgium, and Great Britain) are compared. The companion paper surveys the economic features of these ancillary services},
+  doi      = {10.1109/TPWRS.2006.888963},
+  file     = {:Rebours07survVoltAncSrvc_I.pdf:PDF},
+  keywords = {frequency control, power system control, power system economics, voltage control, active power reserves, economic features, frequency-voltage control ancillary services, Automatic generation control, Europe, Frequency control, Legged locomotion, Power generation, Power generation economics, Power system control, Power system economics, Power systems, Voltage control, Ancillary services, frequency control, reactive power, spinning reserve, system services, voltage control},
+  review   = {See also Rebours07survCtlAncSrvII},
+}
+
 @TechReport{Mitra08scenGenStoch,
   author      = {Sovan Mitra},
   title       = {Scenario Generation for Stochastic Programming},
@@ -33400,6 +33538,21 @@ QR-based spline solver described in: Calderon09PpsplineStableQR (QR linear algeb
 Matlab and demo files: http://www.caam.rice.edu/tech_reports/2009/PuDI_demo_mfiles.zip
 I've downloaded this to Eweline\frcst\common\contrib\PSQR},
   timestamp = {2014.10.30},
+}
+
+@InProceedings{Oliveira16copulaEnsANNfrcstTS,
+  author        = {R. T. A. de Oliveira and T. F. O. de Assis and P. R. A. Firmino and T. A. E. Ferreira and A. L. I. Oliveira},
+  title         = {Copulas-based ensemble of Artificial Neural Networks for forecasting real world time series},
+  booktitle     = {Proc. Int. Joint Conf. Neural Networks (IJCNN)},
+  year          = {2016},
+  pages         = {4089--4096},
+  month         = jul,
+  __markedentry = {[sotterson:6]},
+  abstract      = {Time series combined forecasters have been superior to the respective single models in statistical terms. In this way, the linear combination functions, e.g. the simple average (SA) and the minimal variance (MV) approaches, have been the main alternatives for aggregation in the literature. In this work, it is proposed a copulas-based method for combining biased single models. Copulas are multivariate functions that operate on marginal probability distributions, allowing one to model the forecasters errors and then the dependence among them: a typical divide-and-conquer framework that can result in nonlinear accurate combined forecasters. The performance of the copulas-based combination method is assessed by means of a comparison with SA and MV models, based on two financial time series.},
+  doi           = {10.1109/IJCNN.2016.7727732},
+  file          = {:Oliveira16copulaEnsANNfrcstTS.pdf:PDF},
+  keywords      = {divide and conquer methods, neural nets, probability, time series, ANN, MV approaches, SA approaches, artificial neural networks, copulas-based ensemble, divide-and-conquer framework, financial time series, marginal probability distributions, minimal variance approaches, multivariate functions, real world time series forecasting, simple average approaches, statistical terms, Biological system modeling, Computational modeling, Forecasting, Mathematical model, Maximum likelihood estimation, Predictive models, Time series analysis},
+  review        = {For forecast aggregation and other copula forecasting.},
 }
 
 @INCOLLECTION{Bernecker11QualSimRank,
@@ -33823,14 +33976,13 @@ localization and binary text classification.},
 }
 
 @InProceedings{Frank11svdRankInfo,
-  author        = {Frank, Mario and Buhmann, Joachim M},
-  title         = {Selecting the rank of truncated SVD by Maximum Approximation Capacity},
-  booktitle     = {Information Theory Proceedings (ISIT), 2011 IEEE International Symposium on},
-  year          = {2011},
-  pages         = {1036--1040},
-  organization  = {IEEE},
-  __markedentry = {[sotterson:6]},
-  abstract      = {Truncated Singular Value Decomposition (SVD) cal-
+  author       = {Frank, Mario and Buhmann, Joachim M},
+  title        = {Selecting the rank of truncated SVD by Maximum Approximation Capacity},
+  booktitle    = {Information Theory Proceedings (ISIT), 2011 IEEE International Symposium on},
+  year         = {2011},
+  pages        = {1036--1040},
+  organization = {IEEE},
+  abstract     = {Truncated Singular Value Decomposition (SVD) cal-
 culates the closest rank-k approximation of a given input matrix.
 Selecting the appropriate rank k defines a critical model order
 choice in most applications of SVD. To obtain a principled
@@ -33840,8 +33992,8 @@ The optimal approximation capacity of this channel controls
 the appropriate strength of regularization to suppress noise.
 In simulation experiments, this information theoretic method to
 determine the optimal ra},
-  file          = {:Frank11svdRankInfo.pdf:PDF},
-  review        = {Good for pca dim picking but with SVD, and PCA has an SVD in it..  Also and different approach than Minka00AutoPCAdim, I guess.},
+  file         = {:Frank11svdRankInfo.pdf:PDF},
+  review       = {Good for pca dim picking but with SVD, and PCA has an SVD in it..  Also and different approach than Minka00AutoPCAdim, I guess.},
 }
 
 @Article{Courtney13frcstBayAvg,
@@ -34012,6 +34164,7 @@ faster rates of convergence. We provide simulation evidence showing that we
 can recover graphical structures as well as estimating the precision matrices,
 as predicted by theory},
   doi       = {10.1214/13-AOS1187},
+  file      = {:Zhou14graphEstMatNormGEMNI.pdf:PDF},
   fjournal  = {The Annals of Statistics},
   owner     = {sotterson},
   publisher = {The Institute of Mathematical Statistics},
@@ -36467,7 +36620,7 @@ Stopping Criterion
   month     = {22--25 Apr},
   publisher = {PMLR},
   abstract  = {We investigate the Student-t process as an alternative to the Gaussian process as a nonparametric prior over functions. We derive closed form expressions for the marginal likelihood and predictive distribution of a Student-t process, by integrating away an inverse Wishart process prior over the covariance kernel of a Gaussian process model.  We show surprising equivalences between different hierarchical Gaussian process models leading to Student-t processes, and derive a new sampling scheme for the inverse Wishart process, which helps elucidate these equivalences. Overall, we show that a Student-t process can retain the attractive properties of a Gaussian process -- a nonparametric representation, analytic marginal and predictive distributions, and easy model selection through covariance kernels -- but has enhanced flexibility, and a predictive covariance that, unlike a Gaussian process, explicitly depends on the values of training observations.  We verify empirically that a Student-t process is especially useful in situations where there are changes in covariance structure, or in applications like Bayesian optimization, where accurate predictive covariances are critical for good performance. These advantages come at no additional computational cost over Gaussian processes.},
-  file      = {shah14.pdf:http\://proceedings.mlr.press/v33/shah14.pdf:PDF},
+  file      = {:Shah14studentTprocAltGauss.pdf:PDF},
   review    = {Covariance matrices that change depending upon the data.  It seems like this is better than doing a non-stationary marginal transform, with a fixed (non-matching) covariance matrix, as in Tastu15spcTimeTrajGaussCpla, etc.},
   url       = {http://proceedings.mlr.press/v33/shah14.html},
 }
@@ -36720,6 +36873,7 @@ File came from: K:\Organisation\Kongresse\2014\2014-11_Wind_Integration_Workshop
   number   = {Nov},
   pages    = {2579--2605},
   abstract = {We present a new technique called "t-SNE" that visualizes high-dimensional data by giving each datapoint a location in a two or three-dimensional map. The technique is a variation of Stochastic Neighbor Embedding (Hinton and Roweis, 2002) that is much easier to optimize, and produces significantly better visualizations by reducing the tendency to crowd points together in the center of the map. t-SNE is better than existing techniques at creating a single map that reveals structure at many different scales. This is particularly important for high-dimensional data that lie on several different, but related, low-dimensional manifolds, such as images ofobjects from multiple classes seen from multiple viewpoints. For visualizing the structure of very large data sets, we show how t-SNE can use random walks on neighborhood graphs to allow the implicit structure of all of the data to influence the way in which a subset of the data is displayed. We illustrate the performance of t-SNE on a wide variety of data sets and compare it with many other non-parametric visualization techniques, including Sammon mapping, Isomap, and Locally Linear Embedding. The visualizations produced by t-SNE are significantly better than those produced by the other techniques on almost all of the data sets.},
+  file     = {:Maaten08VisualizingDataUsingTSNE.pdf:PDF},
   review   = {The dimension reduction algorithm used by the ASML chip layout company that does anomaly detection.  Talked to head of their ML group and he referred me to this (ECML PKDD 2017).  Later in the conference somebody asked the author of Blau17NonRedundSpectDimRed why he'd omitted this technique as a benchmark.; he said that it was mainly used for 2D human interpretation, and that he thought (did not show) that his technqique would actually work better as a classification preprocessing step.},
   url      = {http://www.jmlr.org/papers/v9/vandermaaten08a.html},
 }
@@ -39022,6 +39176,18 @@ sites.},
 * Assumes that Gaussianizing RV's with a scalar transform makes their joint distribution a multi-variate Gaussian, which is not true in general. See Wu10gaussMargNotJoint.
 * Probably should use true multivariate Gaussianization (see energytop.org)},
   timestamp = {2010.07.05},
+}
+
+@InProceedings{Zhang09,
+  author    = {Guoqiang Zhang and Boming Zhang and Hongbin Sun and Wenchuan Wu},
+  title     = {Ultra-short term probabilistic transmission congestion forecasting considering wind power integration},
+  booktitle = {Proc. 8th Int. Conf. Advances in Power System Control Operation and Management (APSCOM 2009)},
+  year      = {2009},
+  pages     = {1--6},
+  month     = nov,
+  abstract  = {Wind power continues its rapid growth in the world. High wind penetration brings significant uncertainty to transmission congestion management. For system security consideration, some monitoring indexes of transmission congestion management should be presented to system operators. In this paper, the transmission congestion probability forecasting for power systems with high wind power integration is discussed, and a probabilistic forecasting method for ultra-short term transmission congestion is introduced. Probability distribution is applied to express the uncertainty brought by wind power integration in this paper. The proposed forecasting method applies the Boundary Load Flow and Newton power flow algorithm as the section power flow calculation framework, and obtains the probability distribution of section power flow through Monte Carlo Simulation in which antithetic variable sampling is used to reduce sampling frequency, and then the congestion probability of transmission sections is predicted. Simulation results of IEEE 39-bus system validate the efficiency of the proposed probabilistic forecasting method. The ultra-short term probabilistic forecasts of transmission congestion would provide monitoring index and information to system operators, which is helpful to relieve congestion scenario on the transmission sections.},
+  doi       = {10.1049/cp.2009.1776},
+  file      = {:Zhang09probCngstFrcstWind.pdf:PDF},
 }
 
 @INPROCEEDINGS{Potter09benProbRampFrcst,
@@ -41898,18 +42064,19 @@ In any case, it expands on the stuff covered in Geyer06subSampBootStrap
 See also: Fox08glmBookChap},
   timestamp = {2014.02.08},
 }
+
 @InBook{Fox08glmBookChap,
-  author    = {John Fox},
-  title     = {Applied Regression Analysis and Generalized Linear Models, Second Edition},
-  year      = {2008},
-  publisher = {SAGE Publications, Inc},
   chapter   = {Chapter 15: Generalized Linear Models},
   pages     = {379--424},
-  url       = {http://www.sagepub.com/books/Book226359/samples},
-  file      = {Fox08glmBookChap:Fox08glmBookChap:PDF},
+  title     = {Applied Regression Analysis and Generalized Linear Models, Second Edition},
+  publisher = {SAGE Publications, Inc},
+  year      = {2008},
+  author    = {John Fox},
+  file      = {:Fox08glmBookChap.pdf:PDF},
   owner     = {sotterson},
   review    = {Short chapter on generalized linear models.  I've marked it up but don't remember what I concluded.  See also Fox08btstrpRgrsnBookChap},
   timestamp = {2014.02.08},
+  url       = {http://www.sagepub.com/books/Book226359/samples},
 }
 
 @INCOLLECTION{Fox09BayesLearSwitchLinSys,
@@ -44647,13 +44814,13 @@ Boney16introSemiSupLadderBlog lists a couple sources for code},
   url       = {https://users.ics.aalto.fi/praiko/summerschool/supervised-unsupervised-ladder.pdf},
 }
 
-@Misc{Ramanathan14PPfraunDetDeepLrn,
+@Misc{Ramanathan14PPfraudDetDeepLrn,
   author       = {Venkatesh Ramanathan},
   title        = {PayPal's Fraud Detection with Deep Learning},
   howpublished = {H2O World},
   month        = nov,
   year         = {2014},
-  file         = {Ramanathan14PPfraunDetDeepLrn.pdf:Ramanathan14PPfraunDetDeepLrn.pdf:PDF},
+  file         = {Ramanathan14PPfraudDetDeepLrn.pdf:Ramanathan14PPfraudDetDeepLrn.pdf:PDF},
   owner        = {sotterson},
   review       = {Slides about Pay Pals suspicious transaction detector.  Very practical: how big it was, etc.},
   timestamp    = {2017.01.26},
@@ -45195,6 +45362,7 @@ Should track down the referenced work to see what they really did.},
   title     = {Course Notes. CS 426 , Simulation, Fall 2016},
   journal   = {Willian and Mary College},
   year      = {2016},
+  file      = {:Smirni16cs426dscrtEvntSimCrsNotes.pdf:PDF},
   owner     = {sotterson},
   review    = {How to simulate Poisson arriaval times.  Used for Henry Martin's MS thesis, and electricity market order book simulation.
 
@@ -45600,6 +45768,17 @@ RESULTS
 
 * Hubness visulazation tool, the "image hub explorer," ref 77 is available for download.},
   timestamp = {2014.04.04},
+}
+
+@Article{Tong17probFrcstPowSysSlides,
+  author  = {Lang Tong},
+  title   = {Probabilistic Forecasting for Power System Operations},
+  journal = {2017 Reliability \& Markets Peer Review: DOE/OE Transmission Reliability Program},
+  year    = {2017},
+  file    = {:Tong17probFrcstPowSysSlides.pdf:PDF},
+  review  = {
+
+Slides URL:  https://energy.gov/sites/prod/files/2017/07/f35/8.%20TongCERTS2017_final.pdf},
 }
 
 @Misc{Tuohy06windUnitCommit,

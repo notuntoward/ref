@@ -313,7 +313,7 @@
 
 ***** F-measure: geometric(?) mean of precision and recall?
 
-***** see also [[file:energytop.org::*Class%20Imbalance%20Handling][Class Imbalance Handling]]
+***** see also [[Class Imbalance Handling]]
 *** [[http://www.investopedia.com/terms/b/bid-and-asked.asp][ask]] (a.k.a. [[https://en.wikipedia.org/wiki/Ask_price][offer]]) min price a seller will accept
 *** <<Collinearity: What to do about it>>
 
@@ -599,6 +599,13 @@
 ***** See [[T-distritubion]]
 ***** See [[Copulas in Matlab]]      
 ***** See [[Normal Copula]]
+***** See [[Skew T-Copula]]
+*** <<Skew T-Copula>>
+
+    These are better than T-copulas because they can model asymmetry.  I don't know about robustness or dimensionality, though...
+
+***** [[cite:Zhao16nnSkewTcopulaPortfolioOpt][Zhao et al. 2016: Neural Network skew T Copula Prtflio Opt.]]
+***** also [[T-Copula]]
 *** Solar GHI, DNI, DHI, GTI
     From [[http://www.3tier.com/en/support/solar-prospecting-tools/what-global-horizontal-irradiance-solar-prospecting/][What is Global Horizontal Irradiance? :: Solar Online Tools FAQ...]]
     and [[https://firstgreenconsulting.wordpress.com/2012/04/26/differentiate-between-the-dni-dhi-and-ghi/][Differentiate between the DNI, DHI and GHI? |]]
@@ -2111,7 +2118,7 @@ Scott
 ***** [[cite:Karpathy14featLrnEscpdsBlog][Karpathy 2014: Feature Learning Escapades]] (Feature and Transfer learning)
 ***** [[cite:Karpathy16convNNcourseNotes][Karpathy 2016: Course Notes CS231n]] conv NN's (used for ModerWindABS kickoff)
 ***** [[cite:Ambati15deepLrnGuidePract][Ambati 2015: Deep]] Learn practical guide (intro & use of deep learn)
-***** [[cite:Ramanathan14PPfraunDetDeepLrn][Ramanathan 2014: PayPals Fraud Detection Deep Learning]] practical slides.  How big, etc.
+***** [[cite:Ramanathan14PPfraudDetDeepLrn][Ramanathan 2014: PayPals Fraud Detection Deep Learning]] practical slides.  How big, et.
 ***** [[cite:Lv16faultDiagDeepLrn][Lv et al. 2016: Fault detect deep learn (has benchmark database)]]
 ***** [[cite:Long15fullConvNNsemSeg][Long et al. 2015: Fully conv NN for sem. image seg]]
 ***** [[cite:Britz15tutorialRNN][Britz 2015: Recurrent Neural Networks Tutorial]]
@@ -7950,6 +7957,9 @@ Scott
 
 ***** TODO [[cite:Sogabe16optRESdpLrn][Sogabe et al. 2016: Optimization]] RES deep learning (net demand?)
 ***** TODO [[cite:Makarov09OperWindCA][Makarov et al. 2009: Operational Impacts Wind]] CAISO, swing door (simple use of net demand)
+***** [[cite:Lee12probCongestFrcst][Lee & Min 2012: Probabilistic Transmission Congestion Forecasting]]
+***** [[cite:Liu12tsoLargeWind][Liu et al. 2012: Challenges TSO large Wind]]
+***** [[cite:Min08progCngstFrcstShrt][Min et al. 2008: Short term prob congest forecast]]
 ***** [[File:energy.bib::jonsson10spinrsrv][Jonsson et al. 2010: allocation deployment spinning reserves]]
 ***** [[file:energy.bib::Schnabel13quantSheets][Schnabel & Eilers 2013: Simultaneous]] quantile sheets
 ***** [[file:energy.bib::Kristov14elecDS021st][Kristov & Martini 2014: Century Electric Distribution System Operations]] (CAISO net demand DSO)
@@ -7964,6 +7974,9 @@ Scott
 ***** [[cite:Soares17distGridMgmtPowFlw][Soares et al. 2017: Active Distribution Grid pow flow scenarios]]
 ***** [[cite:Vu15solarFrcstIBMmachLrn][Vu 2015: Machine IBM US DOE solar/demand/wind frcst Deep]] 
 ***** [[cite:Siemens14sennFrcstsRES][Siemens 2014: Better Forecast Renewable Energy Sources]]
+***** [[cite:Zhou11conjFrcstMkts][Zhou et al. 2011: Short Term Congestion Frcst Pow Mkt]]
+***** [[cite:Tong17probFrcstPowSysSlides][Tong 2017: Probabilistic Forecasting Power Systems Slides]]
+***** [[cite:Zhang09][Zhang et al. 2009: Ultra Short Prob Cngstion Wind Frcst]]
 ***** <<Combined wind and load forecasting>>
 ******* [[EPRI Predictive Thermal Circuit Ratings Technology Project]]
 ******* [[PNNL Energy Management System (EMS) Integration]]
@@ -8351,7 +8364,8 @@ Scott
 *********** TODO [[cite:Kim16sprsCondCplaMultiOut][Kim 2016: Sparse Cond. Copula Multi Out]]
 *********** [[cite:Pircalabu17priceVolRiskWndTrdCpla][Pircalabu et al. 2017: Joint wind pow price w/ cond. copula]]
 *********** [[cite:Remillard17cplaCondQuantile][Remillard et al. 2017 copula conditional quantile w/ conf. band]]
-*********** [[cite:Kraus17copulaDvineQR][Kraus & Czado 2017: D-vine copuala, cond. quantile]] 
+*********** [[cite:Kraus17copulaDvineQR][Kraus & Czado 2017: D-vine copula, cond. quantile]] 
+*********** [[cite:Oliveira16copulaEnsANNfrcstTS][Oliveira et al. 2016: Copulas Artificial Neural Frcst Aggr. combine]]
 *********** Alessandrini13wireCostFrcstResults: best prob frcst was norwegian copula
 *********** [[Conditional Normal Distribution]]
 ********* <<Factor/Vine Copulas>>
@@ -8798,7 +8812,7 @@ sera
 ***** [[file:energy.bib::Gneiting13CombinPredDist][Gneiting et al. 2013: Combining]] prob forecasts
 ***** [[file:energy.bib::Dobschinski14howGdFrcstVrblty][Dobschinski 2014: How]] good is my forecast variabilty
 *** <<Extreme Quantile Forecasting>>
-***** See also [[*Class Imbalance, handling][Class Imbalance, handling]]
+***** See also [[Class Imbalance Handling]]
 ***** TODO Review: [[file:energy.bib::Scarrott12ExtrmValThrshUncrtReview][Scarrott & MacDonald 2012: Review Extreme Value]] est/uncert.
 ***** TODO Jan's April 2015 quick study on extremes in Germany
 
@@ -8899,6 +8913,7 @@ sera
 ***** [[file:energy.bib::Hyndman07optCombHierFrcst][Hyndman et al. 2007: Optimal]] forecast combo, hierarchical.
 ***** [[file:energy.bib::Bel16gridFluctwndErr][Bel et al. 2016: Grid]] scale forecast errors
 ***** German now-upscaling: [[file:energy.bib::Biermann05eegNowUpscale][Biermann et al. 2005: Entwicklung Rechenmodells Windleistungsprognose Gebiet Verbundnetzes]]
+***** [[cite:Oliveira16copulaEnsANNfrcstTS][Oliveira et al. 2016: Copulas Artificial Neural Frcst Aggr. combine]]
 ***** [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]] (pools weather stations)
 ***** [[cite:Zhou16recurCNNcntinPain][Zhou et al. 2016: Recurrent Convolutional Neural Pain Est.]]
 ***** [[file:energy.bib::Lichtendahl13probOrQuantAvg][Lichtendahl et al. 2013: Is It Better]] to sum quantiles?
@@ -9003,6 +9018,7 @@ al. 2012: Current]])
 ***** If can assume independence, there formulas for sums independent stable distributions: [[file:energy.bib::Nolan15StableDistBootCh1][Nolan 2015: Stable Distributions Models]]
       this is a generalized central limit theorem
 ***** I found some hard to understand stuff about sums of dependent stable distributions: not clear if it's usable
+***** [[cite:Zhao16nnSkewTcopulaPortfolioOpt][Zhao et al. 2016: Neural Network skew T Copula Prtflio Opt]]
 ***** [[cite:Martin15varWindLenTime][Martin et al. 2015: Variability wind len time has great table]]
 ***** [[cite:Zivot13portTheoryMatrixEcon424][Zivot 2013: Portfolio Theory Matrix Algebra]]
 ***** [[cite:Bandi16SpectrumWindPow][Bandi 2016: Spectrum Wind Power Fluctuations]]: limits to variance reduction with spatial averaging
@@ -9385,17 +9401,16 @@ later corrected by greg heath:
 
   Important for novelty or outlier detection, fault detection, and predictive maintenance.
 
-*** Classification Metrics under Class Imbalance
-    <<Classification Metrics under Class Imbalance>>
+*** <<Classification Metrics under Class Imbalance>>
 ***** [[cite:Straube14infreqPerfEstImbal][Straube & Krell 2014: How]] infreq. events perf. estimation (MI, F-# affected by imbalance)
 ***** [[cite:Fawcett06introROCanalysis][Fawcett 2006: ROC]] intro
 ***** [[cite:Powers11evalPrecRecFrocEtc][Powers 2011: Evaluation]] prec/rec f-number, ROC, etc.
 ***** [[cite:Davis06relationshipPrecisionRecall][Davis & Goadrich 2006: Precision Recall ROC]]
+***** [[cite:Liu11confWgtKNNimbal][Liu & Chawla 2011: Class Imbal weighted KNN]]
 ***** [[http://www.evernote.com/l/AA2H_ee0T0VHSKLRrTw3rwSReABMBCYbZgs/][Computing Classification Evaluation Metrics in R]]
 ***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (discusses ROC stats)
 ***** See also [[*ROC, AUC, F-measure, ...][ROC, AUC, F-measure, ...]] (for which metric to use for class-imbalanced problems)
-*** Learning Classifier under Class Imbalance
-    <<Learning Classifier under Class Imbalance>>
+*** <<Learning Classifier under Class Imbalance>>
 ***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (recipie for learning under)
 ***** [[cite:Xu16bndLogRgrssnImbal][Xu et al. 2016: Robust]] logistic rgrssn in class imbal. (also does cost-sensitive learning)
 *** See also [[file:energytop.org::*Extreme%20Quantile%20Forecasting][Extreme Quantile Forecasting]]
@@ -9450,6 +9465,8 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 ***** [[file:energy.bib::Hirth13balPowRnwblGerman][Hirth & Ziegenhagen 2013: Balancing Power Variable Renewables]] Germany
 ***** [[file:energy.bib::Mills14integPVbalRsrv][Mills et al. 2014: Integrating Solar PV]] balance cost est, 1-hr errors most exp.
 ***** [[file:energy.bib::Milligan10opRsrvWindPowCmpr][Milligan et al. 2010: Operating]] reserve comparison, has freq. domain
+***** [[cite:Rebours07survVoltAncSrvc_I][Rebours et al. 2007: Survey Frequency Voltage I]]
+***** [[cite:Rebours07survCtlAncSrvII][Rebours et al. 2007 Survey Freq. Volt. II]]
 ***** [[file:energy.bib::Gutjahr13multiObjStochOptNonScl][Gutjahr & Pichler 2013: Stochastic]]
 ***** [[file:energy.bib::unknown15delivDownRegWind][2015: Delivery]] of downreg from wind farms tech rep.
 ***** see also: [[Optimal Reserve Allocation]]
@@ -9497,6 +9514,7 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 ******* TODO [[file:energy.bib::Hagemann15volIntradayEurope][Hagemann et al. 2015: Trading Volumes Intraday]]
 ******* TODO [[cite:Hagemann15priceDetDEintraday][Hagemann 2015: Price German]] Price features
 ******* TODO [[cite:Dunsmuir15glarma][Dunsmuir et al. 2015: Package Observation Driven]]: AR GLM, lim. order bk?
+******* [[cite:Liu12tsoLargeWind][Liu et al. 2012: Challenges TSO large Wind]]
 ******* [[cite:Cabrera16adaptProbPriceFrcst][Cabrera et al. 2016: Time Adaptive Probabilistic]] DE Day ahead price frcst
 ******* [[cite:Cabrera14genQuantFrcstDemandFuncD][Cabrera et al. 2014: Forecasting Generalized Quantiles Electricity Demand]]
 ******* TODO [[file:energy.bib::VanderVeen10imbalSettleDEvsNL][Van der Veen et al. 2010: Germany Netherlands]] imbal price: DE symmetric, unknown in realtime
@@ -10081,6 +10099,7 @@ Scott
 ***** [[file:energy.bib::Jolliffe03FrcstVerificationBook][Jolliffe & Stephenson 2003: Forecast]] verification, as econ. value of skill
 ***** [[https://www.evernote.com/shard/s13/nl/1523219/67c21d4a-59ef-4690-991d-b0dabeaf59a4][Research prepares for a 'sharing economy' in renewable electric power]]
 ***** [[cite:Pineda12intrnlEnrgyMktEU][Pineda et al. 2012: Creating Internal Energy Market Europe]] (intraday illiquidity increases costs in general EU)
+***** [[cite:Zhou11conjFrcstMkts][Zhou et al. 2011: Short Term Congestion Frcst Pow Mkt]]
 ***** [[cite:Luoma14valFrcstCA][Luoma et al. 2014: Forecast California]] (bias is good??  good references)
 ***** [[cite:Andrade17ercotRsrvLessMore][Juan et al. 2017: Impact Renewable Generation, propose rsrv mkt &power, joint]]
 ***** [[cite:Kaur16benefitsSolPowFrcstImbalMkt][Kaur et al. 2016: Benefits sol pow frcst Imbal Mkts]]
@@ -10778,7 +10797,7 @@ Erika
 ******* [[cite:Gowdar16reasonWindTurbFail][Gowdar & Gowda 2016: Reasons for wind turb fail]]
 ******* [[https://onedrive.live.com/edit.aspx/work/IWES?cid=4bbd96b3698748f8&id=documents&wd=target%2528Tutorials.one%257C93389E1B-FCE1-4F63-9068-1B49828D94D3%252FPredictive%2520Maintenance%2520with%2520Matlab%257CF90A03D9-B2A1-49F5-97FD-A5E26BFE11C0%252F%2529][Predictive Maintenance with Matlab (my OneNote notes on tutorial)]]
 ***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (discusses ROC stats, learning)
-***** see also [[*Class Imbalance Handling][Class Imbalance Handling]]
+***** see also [[Class Imbalance Handling]]
 ***** see also [[*State Change Detection][State Change Detection]] (for flaw detection)
 *** Smart Grid <<Smart Grid>>
 ***** Grid semantic web
@@ -11189,7 +11208,7 @@ Erika
 ******* Weibull
 ********* [[cite:Abernethy06weibullAnlysCh1][Abernethy 2006: New Weibull Handbook]]
 ********* [[cite:Lien13unlckWeibullAnlys][Lien & Nicholls 2013: Unlocking Weibull]]
-******* [[file:energytop.org::*Class%20Imbalance%20Handling][Class Imbalance Handling]]
+******* [[Class Imbalance Handling]]
 ***** TODO <<Root Cause Analysis>> / <<Fault Diagnosis>>
 ******* [[cite:Leahy16windTurbFaultMachLrn][Leahy et al. 2016: Diagnosing]] wind turbine faults: diagnosis and list of.  Looks pretty useful
 ******* [[cite:Aloraini14grphMdlTurbFaultDiag][Aloraini & Sayed-Mouchaweh 2014: Graphical Model Based]] wind turbine fault, does diagnosis
@@ -11212,7 +11231,7 @@ Erika
 ***** <<Copula Based State Change Alarm Criteria>>
 ******* [[cite:Malhotra15lstmAnomDetTS][Malhotra et al. 2015: LSTM TimeSer Anom. Det: Kalman could be Copula]]
 ***** [[Stopping Criteria]]
-*** Also [[file:energytop.org::*Class%20Imbalance%20Handling][Class Imbalance Handling]]
+*** Also [[Class Imbalance Handling]]
 *** Also [[Automatic bad data detection]]
 * <<Streamwise processing>>
   A kind of adaptive processing w/ lags, etc.
