@@ -670,6 +670,47 @@
 (global-set-key (kbd "C-x 4 r") 'sdo/find-recentf-other-window) ; like find-file
 (global-set-key (kbd "C-x 5 r") 'sdo/find-recentf-other-frame)
 
+;; ** Find recent directories
+;; From: http://pragmaticemacs.com/emacs/open-a-recent-directory-in-dired-revisited
+;; And:  http://stackoverflow.com/questions/23328037/in-emacs-how-to-maintain-a-list-of-recent-directories
+(defun bjm/ivy-dired-recent-dirs ()
+  "Present a list of recently used directories and open the selected one in dired"
+  (interactive)
+  (let ((recent-dirs
+         (delete-dups
+          (mapcar (lambda (file)
+                    (if (file-directory-p file)
+                        file
+                      (file-name-directory file)))
+                  recentf-list))))
+
+    (let ((dir (ivy-read "Directory: "
+                         recent-dirs
+                         :re-builder #'ivy--regex
+                         :sort nil
+                         :initial-input nil)))
+      (dired dir))))
+
+;; overwrites ido-list-directory, which was less useful than this
+(global-set-key (kbd "C-x C-d") 'bjm/ivy-dired-recent-dirs)
+
+;; *** another method, using counsel & fasd (works @ IWES but why?)
+;; calls executable "fasd" which I don't see in my IWES path.
+;; There is also an emacs fasd package, but this also wants the binary.
+;; Regardless, it somehow works!
+;; From: http://blog.binchen.org/posts/use-ivy-to-open-recent-directories.html
+(defun counsel-goto-recent-directory ()
+  "Open recent directory with dired"
+  (interactive)
+  (unless recentf-mode (recentf-mode 1))
+  (let ((collection
+         (delete-dups
+          (append (mapcar 'file-name-directory recentf-list)
+                  ;; fasd history
+                  (if (executable-find "fasd")
+                      (split-string (shell-command-to-string "fasd -ld") "\n" t))))))
+    (ivy-read "directories:" collection :action 'dired)))
+
 ;; * Function key bindings
 ;; ** functions in function keys
 (defun indent-buffer ()
