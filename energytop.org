@@ -10795,6 +10795,7 @@ Erika
 ***** <<Overviews of Predictive Maintenance>>
 ******* [[cite:Microsoft16predMaintPlaybook][Microsoft 2016: Cortana Intelligence Solution]] pred. maint playbook
 ******* [[cite:Gowdar16reasonWindTurbFail][Gowdar & Gowda 2016: Reasons for wind turb fail]]
+******* [[cite:GE16predixArchSrvcTechNote][GE 2016: Predix Architecture Services]]
 ******* [[https://onedrive.live.com/edit.aspx/work/IWES?cid=4bbd96b3698748f8&id=documents&wd=target%2528Tutorials.one%257C93389E1B-FCE1-4F63-9068-1B49828D94D3%252FPredictive%2520Maintenance%2520with%2520Matlab%257CF90A03D9-B2A1-49F5-97FD-A5E26BFE11C0%252F%2529][Predictive Maintenance with Matlab (my OneNote notes on tutorial)]]
 ***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (discusses ROC stats, learning)
 ***** see also [[Class Imbalance Handling]]

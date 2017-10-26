@@ -3,10 +3,22 @@
 
     My experiments, Emacs packages I've tried and installed (from Melpa repository). Also, some builtins I could try
 
-***** TRY get .emacs into git! Unifiy ref and shareHW dirs
 ***** TRY fix helm and ref-bibtex bibtex _pdf openers_ on SP4 (Win 10 v.s Win 7?)
 
       Comments on [[https://emacs.stackexchange.com/questions/3105/how-to-use-an-external-program-as-the-default-way-to-open-pdfs-from-emacs][this article]] might be of help w/ windows file associations or with using pdf-tools package ([[http://tuhdo.github.io/static/emacs-read-pdf.gif][demo]] for pdf-tools, I think)
+
+      Bug report is [[https://github.com/jkitchin/org-ref/issues/511][here]].
+
+***** TRY make bjm/ivy-dired-recent-dirs work like uniquified recentf with ido
+
+      /...or, is it OK as it is?/
+
+      Two ways, look the same to the user but maybe one is easier to idoize?
+
+      1. [[http://pragmaticemacs.com/emacs/open-a-recent-directory-in-dired-revisited][Method #1]] using ivy directly
+      [[From: http://blog.binchen.org/posts/use-ivy-to-open-recent-directories.html][2. Method #2]] using counsel
+         Calls executable "fasd" which I don't see in my IWES path.
+         There is also an emacs fasd package, but this also wants the binary???
 
 ***** TRY Improve elpy python path: [[Better elpy path]]
 
@@ -1466,6 +1478,8 @@ Many text editors have access to these in some simple way, so before thinking ab
 
 ******* Correctly save/restores org-mode indirect buffers (the only thing I've found that does)
 ******* But has errors after restoring anything once, even after restarting emacs several times.  It's like restoring a desktop corrupts some database permanently.
+***** [[https://github.com/nex3/perspective-el][GitHub - nex3/perspective-el: Perspectives for Emacs.]]
+      Somebody preferred it in comments on eyebrowse [[http://pragmaticemacs.com/emacs/easily-manage-emacs-workspaces-with-eyebrowse/][here]].
 ***** [[https://oremacs.com/2016/06/27/ivy-push-view/][Bookmark the current window layout with Ivy · (or emacs]]
       Was still broken in May 2017 (I commented): 
         [[https://github.com/abo-abo/swiper/pull/587][Store full window-configuration with ivy-push-view by alfaromurillo · Pull Re...]]
@@ -4561,6 +4575,7 @@ won't work if you close and immediately open onenote again.
   changes, and all.
 
 *** git
+***** [[http://git.or.cz/course/svn.html][Git vs. SVN Crash Course]]
 ***** initializing a git repository from scratch
       From: https://bitbucket.org/
 
