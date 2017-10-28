@@ -1101,8 +1101,23 @@ is already narrowed."
 ;;  incosolata-g: don't like it; 'f' looks terrible
 ;;  lucida console: readable, but too much space, blobby bold; top bullet too big
 
-(use-package org-bullets ; nice bullets (are customized)
-  :config (org-bullets-mode 1))
+;; https://github.com/cocreature/dotfiles/blob/master/emacs/.emacs.d/emacs.org
+
+;; https://github.com/AssailantLF/emacsconfig/blob/master/config.org
+(use-package org-bullets
+  :ensure t
+  :commands (org-bullets-mode)
+  :init
+  (setq org-bullets-bullet-list
+        '("●" "●" "￭" "￭" "￮" "￮" "▪" "▪" "▸" "▸" "•" "•"))
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+;;  (add-hook 'org-mode-hook #'org-bullets-mode))
+
+;; it works if I do this again, below.  WHY?
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+;; I ALSO deleted the org-bullets-bullet-list customization
 
 ;; could give nonheadline lists a nicer bullet than a hyphen
 ;; from: http://www.howardism.org/Technical/Emacs/orgmode-wordprocessor.html
@@ -1626,7 +1641,6 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(org-agenda-files
    (quote
     ("c:/Users/sotterson/OneDrive/shareHW/school/GIZcolombia/GIZcolombia.org")))
- '(org-bullets-bullet-list (quote ("●" "●" "￭" "￭" "￮" "￮" "▪" "▪" "▸" "▸" "•" "•")))
  '(org-confirm-shell-links (quote y-or-n-p))
  '(org-ctrl-k-protect-subtree t)
  '(org-cycle-include-plain-lists (quote integrate))
