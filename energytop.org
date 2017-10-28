@@ -5668,7 +5668,6 @@ sera
                        don't add
                      - would be a kind of [[Power Curve Learning]]
                   2) quantile persistence forecast, as in [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]] or [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: Systematic Integration Large (prob. persist & more)]]
-
                      - similar to Markov time-dependence for prob forecast
                   3.) could be used for analog ensembles (forecast from
                       past distributions)
