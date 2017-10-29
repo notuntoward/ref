@@ -1,407 +1,470 @@
 * Emacs
 *** *Emacs to try*
-
     My experiments, Emacs packages I've tried and installed (from Melpa repository). Also, some builtins I could try
+***** *TRY*
+******* TRY escape ivy in dired mode R
 
-***** ACCEPTED fix helm and ref-bibtex bibtex _pdf openers_ on SP4 (Win 10 v.s Win 7?)
+        Problem is that you can't rename a file with a filename that partially matches an existing filename e.g. in ~/.emacs, if there is already
+
+        ~/.emacs.d/elpa.older
+
+        I can't used =R= to create
+
+        ~/.emacs.d/elpa.old
+
+        because ivy takes over and forces the match to elpa.older
+
+        M-x describe-indings says =R= is mapped to dired-do-rename but I'm seeing an ivy-type display when I try to use it.
+
+        [[https://emacs.stackexchange.com/questions/28982/after-enabling-ivy-mode-dired-create-directory-does-not-allow-me-to-choose-an][This post]] is wrong for my example.
+
+******* TRY try out [[https://github.com/larstvei/Try][try]] (try packages w/o installing)
+******* TRY Improve elpy python path: [[Better elpy path]]
+
+        Use conda.el hooks?
+
+        *problem*: elpy requires
+        (elpy-use-ipython)
+        but can't run this until know what conda environment (path to perl, iconsole, etc.) is known
+
+        Can conda.el call it after it has determined the environment e.g. with a hook?
+
+        Can conda.el get the path to the anaconda dir some other way than via an environment variable or by walking up the path of a python command, like I did at first?
+
+        Actually, conda.el DOES have hooks!
+
+  ;; hooks -- TODO once we actually have environment creation / deletion
+
+  (defcustom conda-preactivate-hook nil
+    "Hook run before a conda environment is activated.")
+
+  (defcustom conda-postactivate-hook nil
+    "Hook run after a conda environment is activated.")
+
+  (defcustom conda-predeactivate-hook nil
+    "Hook run before a conda environment is deactivated.")
+
+  (defcustom conda-postdeactivate-hook nil
+    "Hook run after a conda environment is deactivated.")
+
+******* TRY decide on <<highlight symbol>>
+
+        _Two alternatives, neither perfect_:
+
+        highlight-thing is actively maintained, more flexible, [[https://github.com/emacs-tw/awesome-emacs#interface-enhancement][more popular?]] faster? (no fontlock), can be restricted to defun.  The change it needs is to query "describe-symbol" or something when it's in "symbol" mode and then only highlight if it's a symbol. Better yet, only if it's a variable, so "describe-variable", if that exists.
+
+        Related to [[smartscan]]
+
+********* highlight-symbol
+;; doesn't restrict to defun, has nav keys, also highlights words in comments
+;; alternative, only in defun: https://github.com/fgeller/highlight-thing.el
+;; prog-mode-hook could be  
+(use-package highlight-symbol
+  :config
+  (global-set-key [(control f3)] 'highlight-symbol)
+  (global-set-key [f3] 'highlight-symbol-next)
+  (global-set-key [(shift f3)] 'highlight-symbol-prev)
+  (global-set-key [(meta f3)] 'highlight-symbol-query-replace))
+
+********* highlight-thing
+
+;; alternative, only symbols: https://github.com/nschum/highlight-symbol.el
+;; this thing highlights any word the  cursor is on e.g. comments: too much!
+;; highlight-thing-what-thing lets you hightlight a huge # of different things
+(use-package highlight-thing  ; highlight variables, etc, like in matlab
+  :init
+  (setq highlight-thing-delay-seconds 1)
+  (setq highlight-thing-limit-to-defun t)
+  (setq highlight-thing-case-sensitive-p t)
+  :config (global-highlight-thing-mode)) ; alternatively, just do prog-mode-hook
+
+******* TRY <<smartscan>>
+
+        https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
+          From https://github.com/itsjeyd/emacs-config/blob/emacs24/init.el, this makes M-n and M-p look for the symbol at point.
+          (use-package smartscan
+          :defer t
+          :config (global-smartscan-mode t))
+
+        Related to [[highlight symbol]]
+
+******* TRY figure out how to activate tensorflow environment inside of elpy
+******* TRY bookmarks
+        remembers places in files or even on remote machines
+        [[https://www.youtube.com/watch?v=Mxpp91jo27A][bookmarks video]]
+******* TRY retry tramp.  Maybe good for working on IWES servers
+******* TRY python modes [[https://github.com/jorgenschaefer/elpy][elpy]] vs. [[https://github.com/proofit404/anaconda-mode][anaconda-mode]]
+******* TRY expand-region/smart-region extra org mode bindings
+        expand-region: https://github.com/magnars/expand-region.el/blob/master/the-org-mode-expansions.el
+
+        expand has er/mark-org-parent, which I don't see in smart-region, but might be handy
+
+        It's included in smart-regions somehow, and I can see the function, but how to bind it?
+
+******* TRY put '#' in dedicated target link 
+
+        Will prefer to match with dedicated links (but didn't [[][]] already do that?)
+
+        http://orgmode.org/manual/Internal-links.html
+
+        This is somehow _incompatible with org-ref_.  If I test the example org file from [[https://github.com/snosov1/toc-org][GitHub - snosov1/toc-org: toc-org is an Emacs utility to have an up-to-date t...]]
+
+        and put my cursor on, or C-c C-o on any of the links referencing a headline (could also be referencing a dedicated target), I get errors like this:
+
+           Error running timer ‘org-ref-link-message’: (error "No match for custom ID: Installation")
+
+        /DOES toc-org insert custom ID definitions that org-ref would not crash on?/
+
+        *ANYWAY* _the change to my .emacs for # targets would be:_ 
+
+          (defun create-and-link-dedicated-org-target (callPrefix)
+
+          Changing the line:
+	    (kill-new (concat "[" targBdy "]"))
+          To this:
+	    (kill-new (concat "[#" targBdy "]")) ;'#' for dedicated targ match
+
+******* TRY get .emacs, etc. unified across machines.
+******* TRY get Windows file associations working again, esp. pdf reader
+
+        Note: it already works for opening pdfs in bibtext mode (from C-c j p)
+
+******* TRY try out [[http://orgmode.org/worg/org-contrib/org-choose.html][org-choose]] module
+******* TRY different scrollbar color for window in focus (like modeline behavior)
       
-      Bug report is [[https://github.com/jkitchin/org-ref/issues/511][here]].
+        https://www.gnu.org/software/emacs/manual/html_node/elisp/Scroll-Bars.html
 
-      In the end (Oct. 28, 2017), this just started working again.  I'm not sure if I did anything that fixed it, or if one of the package updates did the job.  
+******* TRY [[https://github.com/sigma/org-s5][ox-s5]] export, an org-->[[https://meyerweb.com/eric/tools/s5/][s5 slides in html/pdf]] (also try [[https://github.com/cybercode/org-slides][ox-deck]])
+******* TRY [[https://github.com/emacsmirror/org/blob/master/contrib/lisp/ox-confluence.el][org-confluence]] export
+******* TRY use setup file for every org file (like a template)
+
+        Inspired by [[https://mail.google.com/mail/u/0/?shva=1#inbox/15f336bd15ceba8c][this]] email, the documentation is [[http://orgmode.org/manual/In_002dbuffer-settings.html][here]].
+
+******* TRY try to use ~org-iswitchb~ (=bound to C-c b=)
+******* TRY improve hydra
+********* org: counsel-org-goto
+********* org: counsel-org-tag
+********* counsel-unicode-char˲
+********* more describe stuff e.g. describe-key to my =M-apps= hydra
+********* Fancy region editing (double cursors but not that, remember the Finn's video)
+********* [[Rectangle editing]] (make it a sub-menu?)
+********* abo-abo window switching, etc. w/ setup: [[https://www.youtube.com/watch?v=_qZliI1BKzI][Switching Emacs windows with hydra and ace-window]]
+******* TRY [[https://github.com/abo-abo/swiper][ivy/swiper/counsel]]
+        For some things, I like ido better:
+        - See [[Swiper]]
+        - compunaut [[https://www.reddit.com/r/emacs/comments/51lqn9/helm_or_ivy/][says]] that [[https://github.com/compunaut/helm-ido-like-guide][setting helm up like ido]] makes it match ivy better, if want to use helm chunks
+********* TRY speed up swiper on energy.bib and energytop.org
+*********** the swiper-grep thing helped but did not solve it
+*********** it is said that visual line mode slows down swiper
+********* TRY make an <<ivy gridmode>> like [[https://github.com/larkery/ido-grid-mode.el][ido-grid-mode]]
+
+          o ivy grid would be especially nice in M-x (although counsel-M-x does show keys).  I asked (see [[Swiper]]).
+
+          gridmode is more efficient. I asked if ivy could do this, and abo-abo said [[https://github.com/abo-abo/swiper/issues/962]["No, but try ivy-format-function"]]
+
+          [[help:ivy-format-function]] default
+          *[[file:~/.emacs.d/elpa/ivy-20170416.1021/ivy.el][-->>
+              ]]* [[file:~/.emacs.d/elpa/ivy-20170416.1021/ivy.el::"Transform%20CAND-PAIRS%20into%20a%20string%20for%20minibuffer."][ivy-format-function-default]] 
+              -->
+                  [[file:~/.emacs.d/elpa/ivy-20170416.1021/ivy.el::(let%20((i%20-1))][ivy--format-function-generic]]
+
+          can see that these functions just take a list of items from a lower level ivy function, cancatenate a seperator and return.
+
+          To make grid mode, would change
+
+            [[file:~/.emacs.d/elpa/ivy-20170416.1021/ivy.el::(let%20((i%20-1))][ivy--format-function-generic]]
+
+          which makes a string that goes in the buffer.  It's just a vertical list, with one on each line, because a newline is inserted after each item in the list.
+
+          Would need to
+          o set a screen width
+          o set a max file width
+          o set a screen height
+          o decide max # items per row
+          o rewrite this function to only insert newlines at the row ends
+
+          What I don't understand is where the highlighting for matches in this display is applied.  If it's after a call to this function, it seems like I'd have to change A LOT.  If it's before them, and the highlighting is somehow transferred, then it's not too much.
+
+          Maybe the faces are added, like for the default function, [[file:~/.emacs.d/elpa/ivy-20170416.1021/ivy.el::(ivy--add-face%20str%20'ivy-current-match))][here]].
+
+********* [[Http://oremacs.com/swiper/#getting-started][Official ivy setup in manual]]
+********* TRY bindings on [[https://sam217pa.github.io/2016/09/13/from-helm-to-ivy/][this page]] or [[this other page]].  Things I might like
+          o ivy resume (goes back to previous swiper)
+            (C-r inside of swiper mini-buffer also does this)
+          o counsel-find-file (but no grid mode)
+          o counsel-M-x (but no grid mode)
+          o counsel-recentf (but no grid mode)
+          o ivy-switch-buffer (but no grid mode)
+          o [[http://oremacs.com/swiper/#key-bindings][officially recommended bindings]]
+********* ivy fonts: green inherited from 'highlight', different than ido yellow
+
+
+          'highlight' is also used for that fancy multi-curor-like-thing
+
+          also get rid of that ugly purple
+
+          [[https://oremacs.com/2015/03/14/more-swiper-ivy-stuff/][Guy says]] there are six faces that inherit the following fonts
+          highlight, isearch-lazy-highlight-face, isearch and match
+
+          From [[help:ivy-minibuffer-faces]]
+          swiper fonts are:
+          (ivy-minibuffer-match-face-1 ivy-minibuffer-match-face-2 ivy-minibuffer-match-face-3 ivy-minibuffer-match-face-4)
+
+********* See [[Swiper]]
+******* TRY play with [[help:org-show-context-detail]]
+******* TRY get grep/find on windows to work
+
+        grep w/ cygwin works fine
+
+        but I can never get recursive find to work.
+
+********* TRY ? [[http://ergoemacs.org/emacs/elisp-xah-find-text.html][xah-find]] package: pure emacs find/grep good for windows
+******* TRY <<ivy-mode>>
+********* TRY org-mode search: horribly slow when not expanded, otherwise fast
+********* TRY =C-h m=: inside of swiper, etc. brings up ivy help.  READ IT.
+********* TRY to remember the return to point thing after searching: =C-u C-space=
+******* TRY [[https://github.com/jkitchin/org-ref/blob/master/org-ref.org][org-ref-ivy-cite]]
+******* TRY [[https://github.com/jacktasia/dumb-jump][dumb-jump: an Emacs "jump to definition" package]]
+******* TRY C-h k and C-h f (help key and function)
+******* TRY [[Rectangle editing]]
+******* TRY [[Emacs Macros]]
+******* TRY remember to use apps-key for M-x
+******* TRY <<Concept map-like stuff: superlabel, dedicated targets, org-brain>>
+********* TRY Look at how concept maps tools do outlines
+*********** [[https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=7&cad=rja&uact=8&ved=0ahUKEwjPwfmQnefTAhVFL1AKHauECeEQFgg8MAY&url=http%253A%252F%252Fvue.tufts.edu%252Fhelp%252Fcontent%252FMap%252520Display.pdf&usg=AFQjCNF8aylIFqpcYkLTuya7kzqzQA_kMg&sig2=W3kYpzXSVJ3nSOoZcn1GKg][VUE]]
+*********** [[http://cmap.ihmc.us/][IHMC Cmap]]
+********* TRY [[https://github.com/Kungsgeten/org-brain][org-brain: Org-mode wiki + concept-mapping]] (and ask for what I would like in it)
+
+          *What I would like*:  Generally, preserve outline structure but still have two way links.
+          - Definition of a concept
+            - explicitly define with org dedicated target, or similar
+            - make every headline be an idea
+              - easy but...
+              - many headlines aren't really an idea
+              - would have problems with headlines containing unintended duplicate text
+          - Two sources of dependency: explicit and org-tree
+            - explicit: done by a two-way link
+            - org-tree parent/child/sibling relationships come from org outline
+              - sibling: under same headline (immediately or total)
+                Two kinds of sibling
+                - headline is defined as a concep
+                  - explicitly
+                  - or by a setting that makes all headlines a concept (tons of siblings)
+                - headline has no concept
+                  - would have a ton of sibling relationships in this view
+                  - but easier
+              - parent: this idea is a headline over some other idea
+              - child: this idea has a headline with some other idea in it
+          - If currently on X, then Y is shown as related to X
+            - in an outline, X is a parent of Y, X is a child of Y, X is a sibling of Y
+            - an explicit two-way link has been made
+          - Three views: parent of, child of, sibling of
+            - _X is parent of Y_
+              - show X's (narrowed) tree containing Y, expanded to highest sub level where Y shows up
+              - option to expand tree until show all instances of Y within X's tree
+              - option to expand normally
+              - option to un-narrow
+              - option to navigating to all other (disjoint) trees where X is a parent of Y
+            - _X is child of Y_
+              - show Y's (narrowed) tree containing (path to) highest sublevel of X
+              - option to expand tree until show all instances of X within Y's tree
+              - option to expand normally
+              - option to un-narrow
+              - option to navigating to all other (disjoint) trees where X is a child of Y
+            - _X is sibling of Y_
+              - expand (narrowed) tree(s) at level where can see both X and Y
+              - option to navigating to all other (disjoint) trees where X is a sibling of Y
+              - option to expand tree until show all instances of X and Y in tree (below top level of siblingship?)
+              - option to expand normally
+              - option to un-narrow
+          - View for explicit X/Y link
+            - /do something?!/
+          - search result outline display controllable like: org-show-context-detail
+
+*********** tools: [[Elisp]]
+********* Definition of a "Concept"
+*********** dedicated target
+*********** any headline
+*********** tags 
+************* quick way to have multiple assoc. but no ordering
+*********** bibtex reference
+********* TRY superlabel continue with =create-and-link-dedicated-org-target=
+          First step is probably: [[Fontlock to toggle hide dedicated targets]]
+********* TRY Hiding dedicated targets
+*********** TRY ~create-and-link-dedicated-org-target~: clean text from targText
+                remove links, etc., from before making target, etc.
+                Maybe remove all formatting: _x_, ~x~, etc.
+*********** [[https://emacs.stackexchange.com/questions/19230/how-to-hide-targets][org mode - How to hide <<target>>s? - Emacs Stack Exchange]] (my exact question!)
+
+            Doesn't work for spaces in targets
+
+*********** <<Fontlock to toggle hide dedicated targets>>
+
+            This is how hyperlinks, headline starts, etc. are hidden.
+            See: org-context in org.el
+
+            [[https://emacs.stackexchange.com/questions/5387/show-org-mode-hyperlink-as-plain-text][Here]], "David J" does it by calling org-remove-from-invisibility-spec
+
+*********** [[http://endlessparentheses.com/use-org-mode-links-for-absolutely-anything.html][Use Org-Mode Links for Absolutely Anything · Endless Parentheses]]
+
+*********** using unique ids instead of/within dedicated targets
+************* [[https://writequit.org/org/settings.html][Lee's Emacs settings file]] has my/org-custom-id-get and many others
+************* [[http://orgmode.org/w/?p=org-mode.git;a=blob_plain;f=lisp/org-id.el;hb=HEAD][package org-id]]
+************* [[http://endlessparentheses.com/markdown-style-link-ids-in-org-mode.html][Markdown style link IDs in org-mode · Endless Parentheses]]
+
+*********** tools needed: [[Elisp]]°
+********* TRY [[https://github.com/caiorss/org-wiki][caiorss/org-wiki: Wiki for Emacs org-mode built on top of Emacs org-...]]
+********* TRY [[https://www.emacswiki.org/emacs/Hyperbole][EmacsWiki: Hyperbole]]
+********* See [[Knowledge as Graphs]]
+******* TRY [[http://kitchingroup.cheme.cmu.edu/blog/2017/04/15/A-new-org-mode-exporter-to-Word-for-scimax/][A new org-mode exporter to Word for scimax]]
+******* TRY [[Saving/restoring window sessions]]
+******* My org-mode experimentation: [[file:org_mode][./org_mode]]
+******* TRY vertical lines for paren matching
+
+        PICKED: highlight-indent-guides (most subtle)
+        BUT: still need to make it work for all programming modes -- see below
+
+********* TRY Get hightlight-indent-guides to activate for all prog modes
+            I have
+              (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+            but it only works for elisp, so I have to manually do
+              M-x highlight-indent-guides-mode to activate
+
+            A [[ https://github.com/syl20bnr/spacemacs/issues/4741][thread on this problem]] says it could be a programming mode in scratch
+            (is org-mode a "programming mode?")
+            I guess not: I disabled orgmode in scratch on startup and highlighting on programming modes other than elisp still didn't work.
+
+            BUT, the thread is marked as solved, so come back to this someday
+********* ACCEPTED [[https://github.com/DarthFennec/highlight-indent-guides][highlight-indent-guides: Emacs minor mode to highlight i...]]
+
+          used in
+          [[https://github.com/0rdy/kaolin-theme][kaolin-theme: A dark jade Emacs theme inspired by Sierra.vim]]
+
+          config was
+          ;; Highlight indent guides
+
+          (hl-indent  gray)
+
+          `(highlight-indent-guides-odd-face  ((t (:background ,hl-indent))))
+          `(highlight-indent-guides-even-face  ((t (:background ,hl-indent))))
+          `(highlight-indent-guides-character-face  ((t (:foreground ,hl-indent))))
+
+
+
+********* [[https://github.com/DarthFennec/highlight-indent-guides][Comparison]]
+        | Package Name               | Widths  | Hard Tabs   | Other Notes                |
+        |----------------------------+---------+-------------+----------------------------|
+        | highlight-indentation.el   | Fixed   | Unsupported | Very popular, fat lines    |
+        | indent-guide.el            | Dynamic | Supported   | Fairly slow, jittery, asii |
+        | hl-indent.el               | Dynamic | Unsupported | Slow for large files       |
+        | visual-indentation-mode.el | Fixed   | Unsupported | Fast and slim, ugly        |
+        | highlight-indent-guides    | ?       | ?           | in kaolin, has slim lines  |
       
-      Comments on [[https://emacs.stackexchange.com/questions/3105/how-to-use-an-external-program-as-the-default-way-to-open-pdfs-from-emacs][this article]] might be of help w/ windows file associations or with using pdf-tools package ([[http://tuhdo.github.io/static/emacs-read-pdf.gif][demo]] for pdf-tools, I think)
-
-******* my bug tracking trail
-*********** org-ref bibtex hydra
-            hdyra 'p' [[file:~/.emacs.d/elpa/org-ref-20171019.724/org-ref-bibtex.el::("p"%20org-ref-open-bibtex-pdf)][calls]] org-ref-open-bibtex-pdf
-            org-ref-open-bibtex-pdf calls
-            the function [[file:~/.emacs.d/elpa/org-ref-20171019.724/org-ref-core.el::org-ref-open-bibtex-pdf][org-ref-open-bibtex-pdf]]
-
-            I changed this to print what it's trying to open.  Here are the responses:
-
-              ... key=Garcke17dimRedWindTurb, pdf=c:/Users/scotto/Tempo Box/ref/papers/Garcke17dimRedWindTurb.pdf
-
-            and then
-
-              tried to open c:/Users/scotto/Tempo Box/ref/papers/Garcke17dimRedWindTurb.pdf
-
-            which is the right path.
-
-              formats to: [[file:c:/Users/scotto/Tempo Box/ref/papers/garcke17dimredwindturb.pdf]]
-
-              (is the blank in the path the problem?)
-
-            this then [[file:~/.emacs.d/elpa/org-ref-20171019.724/org-ref-core.el::(org-open-link-from-string%20(format%20"%5b%5bfile:%25s%5d%5d"%20pdf)))][calls]] the function [[file:~/.emacs.d/elpa/org-plus-contrib-20171023/org.el::(defun%20org-open-link-from-string%20(s%20&optional%20arg%20reference-buffer)][org-open-link-from-string]]
-
-            _Experiments_
-
-  (setq pdf "c:/Users/scotto/Tempo Box/ref/papers/Garcke17dimRedWindTurb.pdf")
-
-  (setq pdf "c:/Users/scotto/OneDrive/scotto/tmp/Garcke17dimRedWindTurb.pdf")
-
-  (org-open-link-from-string (format "[[file:%s]]" pdf))
-
-  (message "qa=%s" (shell-quote-argument pdf))
-
-  (message "qa2=%s" (format "[[file:%s]]" (shell-quote-argument pdf)))
-  (message "qa3=%s" (format "[[file:""%s]]" pdf))
-
-  (org-open-link-from-string (format "[[file:%s]]" (shell-quote-argument pdf)))
-  (org-open-link-from-string (format "[[file:%s]]" pdf))
-
-  (setq pdf "c:/Users/scotto/Tempo Box/ref/papers/Garcke17dimRedWindTurb.pdf")
-  (org-open-link-from-string (format "[[file:%s]]" pdf))          
-
-***** TRY make bjm/ivy-dired-recent-dirs work like uniquified recentf with ido
-
-      /...or, is it OK as it is?/
-
-      Here are two ways to make recent directories.maybe one is easier to idoize?
-
-        1. [[http://pragmaticemacs.com/emacs/open-a-recent-directory-in-dired-revisited][Method #1]] using ivy directly
-        [[From: http://blog.binchen.org/posts/use-ivy-to-open-recent-directories.html][2. Method #2]] using counsel
-           Calls executable "fasd" which I don't see in my IWES path.
-           There is also an emacs fasd package, but this also wants the binary???
-
-      They look the same to the user but 
-
-***** TRY Improve elpy python path: [[Better elpy path]]
-
-      Use conda.el hooks?
-
-      *problem*: elpy requires
-      (elpy-use-ipython)
-      but can't run this until know what conda environment (path to perl, iconsole, etc.) is known
-
-      Can conda.el call it after it has determined the environment e.g. with a hook?
-
-      Can conda.el get the path to the anaconda dir some other way than via an environment variable or by walking up the path of a python command, like I did at first?
-
-      Actually, conda.el DOES have hooks!
-
-;; hooks -- TODO once we actually have environment creation / deletion
-
-(defcustom conda-preactivate-hook nil
-  "Hook run before a conda environment is activated.")
-
-(defcustom conda-postactivate-hook nil
-  "Hook run after a conda environment is activated.")
-
-(defcustom conda-predeactivate-hook nil
-  "Hook run before a conda environment is deactivated.")
-
-(defcustom conda-postdeactivate-hook nil
-  "Hook run after a conda environment is deactivated.")
-
-***** TRY figure out how to activate tensorflow environment inside of elpy
-***** TRY expand-region/smart-region extra org mode bindings
-      expand-region: https://github.com/magnars/expand-region.el/blob/master/the-org-mode-expansions.el
-
-      expand has er/mark-org-parent, which I don't see in smart-region, but might be handy
-
-      It's included in smart-regions somehow, and I can see the function, but how to bind it?
-
-***** TRY put '#' in dedicated target link 
-
-      Will prefer to match with dedicated links (but didn't [[][]] already do that?)
-
-      http://orgmode.org/manual/Internal-links.html
-
-      This is somehow _incompatible with org-ref_.  If I test the example org file from [[https://github.com/snosov1/toc-org][GitHub - snosov1/toc-org: toc-org is an Emacs utility to have an up-to-date t...]]
-
-      and put my cursor on, or C-c C-o on any of the links referencing a headline (could also be referencing a dedicated target), I get errors like this:
-
-         Error running timer ‘org-ref-link-message’: (error "No match for custom ID: Installation")
-
-      /DOES toc-org insert custom ID definitions that org-ref would not crash on?/
-
-      *ANYWAY* _the change to my .emacs for # targets would be:_ 
-
-        (defun create-and-link-dedicated-org-target (callPrefix)
-
-        Changing the line:
-	  (kill-new (concat "[" targBdy "]"))
-        To this:
-	  (kill-new (concat "[#" targBdy "]")) ;'#' for dedicated targ match
-
-***** TRY get .emacs, etc. unified across machines.
-***** TRY get Windows file associations working again, esp. pdf reader
-
-      Note: it already works for opening pdfs in bibtext mode (from C-c j p)
-
-***** TRY try out [[http://orgmode.org/worg/org-contrib/org-choose.html][org-choose]] module
-***** TRY different scrollbar color for window in focus (like modeline behavior)
-      
-      https://www.gnu.org/software/emacs/manual/html_node/elisp/Scroll-Bars.html
-
-***** TRY [[https://github.com/sigma/org-s5][ox-s5]] export, an org-->[[https://meyerweb.com/eric/tools/s5/][s5 slides in html/pdf]] (also try [[https://github.com/cybercode/org-slides][ox-deck]])
-***** TRY [[https://github.com/emacsmirror/org/blob/master/contrib/lisp/ox-confluence.el][org-confluence]] export
-***** TRY use setup file for every org file (like a template)
-
-      Inspired by [[https://mail.google.com/mail/u/0/?shva=1#inbox/15f336bd15ceba8c][this]] email, the documentation is [[http://orgmode.org/manual/In_002dbuffer-settings.html][here]].
-
-***** TRY try to use ~org-iswitchb~ (=bound to C-c b=)
-***** TRY improve hydra
-******* org: counsel-org-goto
-******* org: counsel-org-tag
-******* counsel-unicode-char˲
-******* more describe stuff e.g. describe-key to my =M-apps= hydra
-******* Fancy region editing (double cursors but not that, remember the Finn's video)
-******* [[Rectangle editing]] (make it a sub-menu?)
-******* abo-abo window switching, etc. w/ setup: [[https://www.youtube.com/watch?v=_qZliI1BKzI][Switching Emacs windows with hydra and ace-window]]
-***** TRY [[https://github.com/abo-abo/swiper][ivy/swiper/counsel]]
-      For some things, I like ido better:
-      - See [[Swiper]]
-      - compunaut [[https://www.reddit.com/r/emacs/comments/51lqn9/helm_or_ivy/][says]] that [[https://github.com/compunaut/helm-ido-like-guide][setting helm up like ido]] makes it match ivy better, if want to use helm chunks
-******* TRY speed up swiper on energy.bib and energytop.org
-********* the swiper-grep thing helped but did not solve it
-********* it is said that visual line mode slows down swiper
-******* TRY make an <<ivy gridmode>> like [[https://github.com/larkery/ido-grid-mode.el][ido-grid-mode]]
-
-        o ivy grid would be especially nice in M-x (although counsel-M-x does show keys).  I asked (see [[Swiper]]).
-
-        gridmode is more efficient. I asked if ivy could do this, and abo-abo said [[https://github.com/abo-abo/swiper/issues/962]["No, but try ivy-format-function"]]
-
-        [[help:ivy-format-function]] default
-        *[[file:~/.emacs.d/elpa/ivy-20170416.1021/ivy.el][-->>
-            ]]* [[file:~/.emacs.d/elpa/ivy-20170416.1021/ivy.el::"Transform%20CAND-PAIRS%20into%20a%20string%20for%20minibuffer."][ivy-format-function-default]] 
-            -->
-                [[file:~/.emacs.d/elpa/ivy-20170416.1021/ivy.el::(let%20((i%20-1))][ivy--format-function-generic]]
-
-        can see that these functions just take a list of items from a lower level ivy function, cancatenate a seperator and return.
-
-        To make grid mode, would change
-
-          [[file:~/.emacs.d/elpa/ivy-20170416.1021/ivy.el::(let%20((i%20-1))][ivy--format-function-generic]]
-
-        which makes a string that goes in the buffer.  It's just a vertical list, with one on each line, because a newline is inserted after each item in the list.
-
-        Would need to
-        o set a screen width
-        o set a max file width
-        o set a screen height
-        o decide max # items per row
-        o rewrite this function to only insert newlines at the row ends
-
-        What I don't understand is where the highlighting for matches in this display is applied.  If it's after a call to this function, it seems like I'd have to change A LOT.  If it's before them, and the highlighting is somehow transferred, then it's not too much.
-
-        Maybe the faces are added, like for the default function, [[file:~/.emacs.d/elpa/ivy-20170416.1021/ivy.el::(ivy--add-face%20str%20'ivy-current-match))][here]].
-
-******* [[Http://oremacs.com/swiper/#getting-started][Official ivy setup in manual]]
-******* TRY bindings on [[https://sam217pa.github.io/2016/09/13/from-helm-to-ivy/][this page]] or [[this other page]].  Things I might like
-        o ivy resume (goes back to previous swiper)
-          (C-r inside of swiper mini-buffer also does this)
-        o counsel-find-file (but no grid mode)
-        o counsel-M-x (but no grid mode)
-        o counsel-recentf (but no grid mode)
-        o ivy-switch-buffer (but no grid mode)
-        o [[http://oremacs.com/swiper/#key-bindings][officially recommended bindings]]
-******* ivy fonts: green inherited from 'highlight', different than ido yellow
-
-
-        'highlight' is also used for that fancy multi-curor-like-thing
-
-        also get rid of that ugly purple
-
-        [[https://oremacs.com/2015/03/14/more-swiper-ivy-stuff/][Guy says]] there are six faces that inherit the following fonts
-        highlight, isearch-lazy-highlight-face, isearch and match
-
-        From [[help:ivy-minibuffer-faces]]
-        swiper fonts are:
-        (ivy-minibuffer-match-face-1 ivy-minibuffer-match-face-2 ivy-minibuffer-match-face-3 ivy-minibuffer-match-face-4)
-
-******* See [[Swiper]]
-***** TRY play with [[help:org-show-context-detail]]
-***** TRY get grep/find on windows to work
-
-      grep w/ cygwin works fine
-
-      but I can never get recursive find to work.
-
-******* TRY ? [[http://ergoemacs.org/emacs/elisp-xah-find-text.html][xah-find]] package: pure emacs find/grep good for windows
-***** TRY <<ivy-mode>>
-******* TRY org-mode search: horribly slow when not expanded, otherwise fast
-******* TRY =C-h m=: inside of swiper, etc. brings up ivy help.  READ IT.
-******* TRY to remember the return to point thing after searching: =C-u C-space=
-***** TRY [[https://github.com/jkitchin/org-ref/blob/master/org-ref.org][org-ref-ivy-cite]]
-***** TRY [[https://github.com/jacktasia/dumb-jump][dumb-jump: an Emacs "jump to definition" package]]
-***** TRY C-h k and C-h f (help key and function)
-***** TRY [[Rectangle editing]]
-***** TRY [[Emacs Macros]]
-***** TRY remember to use apps-key for M-x
-***** TRY <<Concept map-like stuff: superlabel, dedicated targets, org-brain>>
-******* TRY Look at how concept maps tools do outlines
-********* [[https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=7&cad=rja&uact=8&ved=0ahUKEwjPwfmQnefTAhVFL1AKHauECeEQFgg8MAY&url=http%253A%252F%252Fvue.tufts.edu%252Fhelp%252Fcontent%252FMap%252520Display.pdf&usg=AFQjCNF8aylIFqpcYkLTuya7kzqzQA_kMg&sig2=W3kYpzXSVJ3nSOoZcn1GKg][VUE]]
-********* [[http://cmap.ihmc.us/][IHMC Cmap]]
-******* TRY [[https://github.com/Kungsgeten/org-brain][org-brain: Org-mode wiki + concept-mapping]] (and ask for what I would like in it)
-
-        *What I would like*:  Generally, preserve outline structure but still have two way links.
-        - Definition of a concept
-          - explicitly define with org dedicated target, or similar
-          - make every headline be an idea
-            - easy but...
-            - many headlines aren't really an idea
-            - would have problems with headlines containing unintended duplicate text
-        - Two sources of dependency: explicit and org-tree
-          - explicit: done by a two-way link
-          - org-tree parent/child/sibling relationships come from org outline
-            - sibling: under same headline (immediately or total)
-              Two kinds of sibling
-              - headline is defined as a concep
-                - explicitly
-                - or by a setting that makes all headlines a concept (tons of siblings)
-              - headline has no concept
-                - would have a ton of sibling relationships in this view
-                - but easier
-            - parent: this idea is a headline over some other idea
-            - child: this idea has a headline with some other idea in it
-        - If currently on X, then Y is shown as related to X
-          - in an outline, X is a parent of Y, X is a child of Y, X is a sibling of Y
-          - an explicit two-way link has been made
-        - Three views: parent of, child of, sibling of
-          - _X is parent of Y_
-            - show X's (narrowed) tree containing Y, expanded to highest sub level where Y shows up
-            - option to expand tree until show all instances of Y within X's tree
-            - option to expand normally
-            - option to un-narrow
-            - option to navigating to all other (disjoint) trees where X is a parent of Y
-          - _X is child of Y_
-            - show Y's (narrowed) tree containing (path to) highest sublevel of X
-            - option to expand tree until show all instances of X within Y's tree
-            - option to expand normally
-            - option to un-narrow
-            - option to navigating to all other (disjoint) trees where X is a child of Y
-          - _X is sibling of Y_
-            - expand (narrowed) tree(s) at level where can see both X and Y
-            - option to navigating to all other (disjoint) trees where X is a sibling of Y
-            - option to expand tree until show all instances of X and Y in tree (below top level of siblingship?)
-            - option to expand normally
-            - option to un-narrow
-        - View for explicit X/Y link
-          - /do something?!/
-        - search result outline display controllable like: org-show-context-detail
-
-********* tools: [[Elisp]]
-******* Definition of a "Concept"
-********* dedicated target
-********* any headline
-********* tags 
-*********** quick way to have multiple assoc. but no ordering
-********* bibtex reference
-******* TRY superlabel continue with =create-and-link-dedicated-org-target=
-        First step is probably: [[Fontlock to toggle hide dedicated targets]]
-******* TRY Hiding dedicated targets
-********* TRY ~create-and-link-dedicated-org-target~: clean text from targText
-              remove links, etc., from before making target, etc.
-              Maybe remove all formatting: _x_, ~x~, etc.
-********* [[https://emacs.stackexchange.com/questions/19230/how-to-hide-targets][org mode - How to hide <<target>>s? - Emacs Stack Exchange]] (my exact question!)
-
-          Doesn't work for spaces in targets
-
-********* <<Fontlock to toggle hide dedicated targets>>
-
-          This is how hyperlinks, headline starts, etc. are hidden.
-          See: org-context in org.el
-
-          [[https://emacs.stackexchange.com/questions/5387/show-org-mode-hyperlink-as-plain-text][Here]], "David J" does it by calling org-remove-from-invisibility-spec
-
-********* [[http://endlessparentheses.com/use-org-mode-links-for-absolutely-anything.html][Use Org-Mode Links for Absolutely Anything · Endless Parentheses]]
-
-********* using unique ids instead of/within dedicated targets
-*********** [[https://writequit.org/org/settings.html][Lee's Emacs settings file]] has my/org-custom-id-get and many others
-*********** [[http://orgmode.org/w/?p=org-mode.git;a=blob_plain;f=lisp/org-id.el;hb=HEAD][package org-id]]
-*********** [[http://endlessparentheses.com/markdown-style-link-ids-in-org-mode.html][Markdown style link IDs in org-mode · Endless Parentheses]]
-
-********* tools needed: [[Elisp]]°
-******* TRY [[https://github.com/caiorss/org-wiki][caiorss/org-wiki: Wiki for Emacs org-mode built on top of Emacs org-...]]
-******* TRY [[https://www.emacswiki.org/emacs/Hyperbole][EmacsWiki: Hyperbole]]
-******* See [[Knowledge as Graphs]]
-***** TRY [[http://kitchingroup.cheme.cmu.edu/blog/2017/04/15/A-new-org-mode-exporter-to-Word-for-scimax/][A new org-mode exporter to Word for scimax]]
-***** TRY [[Saving/restoring window sessions]]
-***** My org-mode experimentation: [[file:org_mode][./org_mode]]
-***** TRY vertical lines for paren matching
-
-      PICKED: highlight-indent-guides (most subtle)
-      BUT: still need to make it work for all programming modes -- see below
-
-******* TRY Get hightlight-indent-guides to activate for all prog modes
-          I have
-            (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-          but it only works for elisp, so I have to manually do
-            M-x highlight-indent-guides-mode to activate
-
-          A [[ https://github.com/syl20bnr/spacemacs/issues/4741][thread on this problem]] says it could be a programming mode in scratch
-          (is org-mode a "programming mode?")
-          I guess not: I disabled orgmode in scratch on startup and highlighting on programming modes other than elisp still didn't work.
-
-          BUT, the thread is marked as solved, so come back to this someday
-******* ACCEPTED [[https://github.com/DarthFennec/highlight-indent-guides][highlight-indent-guides: Emacs minor mode to highlight i...]]
-
-        used in
-        [[https://github.com/0rdy/kaolin-theme][kaolin-theme: A dark jade Emacs theme inspired by Sierra.vim]]
-
-        config was
-        ;; Highlight indent guides
-
-        (hl-indent  gray)
-
-        `(highlight-indent-guides-odd-face  ((t (:background ,hl-indent))))
-        `(highlight-indent-guides-even-face  ((t (:background ,hl-indent))))
-        `(highlight-indent-guides-character-face  ((t (:foreground ,hl-indent))))
-
-
-
-******* [[https://github.com/DarthFennec/highlight-indent-guides][Comparison]]
-      | Package Name               | Widths  | Hard Tabs   | Other Notes                |
-      |----------------------------+---------+-------------+----------------------------|
-      | highlight-indentation.el   | Fixed   | Unsupported | Very popular, fat lines    |
-      | indent-guide.el            | Dynamic | Supported   | Fairly slow, jittery, asii |
-      | hl-indent.el               | Dynamic | Unsupported | Slow for large files       |
-      | visual-indentation-mode.el | Fixed   | Unsupported | Fast and slim, ugly        |
-      | highlight-indent-guides    | ?       | ?           | in kaolin, has slim lines  |
-      
-***** Syntax for try/accepted/reject todo things
-      # -*- org-todo-keyword-faces: (("ACCEPTED" . "green") ("TRY" . "red") ("REJECTED" . "gray")) ; -*-
-      #+TODO: TRY | REJECTED | ACCEPTED
-***** TRY [[https://github.com/abo-abo/org-download][abo-abo/org-download: Drag and drop images to Emacs org-mode]]
-***** TRY [[https://github.com/abo-abo/lispy][abo-abo/lispy: short and sweet LISP editing]]
-***** TRY [[https://github.com/abo-abo/lpy][abo-abo/lpy: Minimal Python IDE for GNU Emacs]]
-***** TRY [[https://github.com/abo-abo/ace-window][abo-abo/ace-window: Quickly switch windows in Emacs]]
-***** [[https://github.com/aaronjensen/spacemacs.d/blob/af8a583972e680fea512f939db06f17fffc84fb7/lisp/init-org.el#L215-L247][spacemacs.d/init-org.el Add beginnings of dwim org backspace]]
-      Maybe nice in future
-      has lots org code examples
-
-      Might be worth it to see how (setq org-hide-emphasis-markers t) is responded to in org-mode:  maybe it can be hacked into hiding <<>> ?
-
-***** [[Emacs symbols]]
-***** TRY [[http://kitchingroup.cheme.cmu.edu/blog/2017/04/09/A-better-return-in-org-mode/][A better return in org-mode]]
-
-      I might like this Word like behavior but I just automatically wrote this bullet assuming that return would break me out of headline creation.  Which is more natural?  On the other hand, I do like org-autolist.
-
-******* a little better than, [[https://github.com/calvinwyoung/org-autolist][calvinwyoung/org-autolist]]
-        which I'm already using: jkitchin is considering merging it
-******* creates new rows of tables, for example, which is nice
-******* modified and posted on github by somebody [[https://github.com/Kungsgeten/selected.el][here]]
-******* still being heavily revised, as of April 15, 2017.  Wait for it to settle down?
-******* I still want to create a new headline if return or M-return in middle of line
-***** TRY [[https://github.com/tbanel/orgaggregate][orgtbl-aggregate]]
-***** TRY [[https://github.com/wolray/symbol-overlay][wolray/symbol-overlay: would be nice for programming e.g. in python or something]]
-***** TRY [[help:re-builder]]*
-
-      Can also use [[swiper]], which matches on regex (split into groups with a space).  Each group is highlighted with a different face.
-
-***** TRY M-x proced
-***** TRY Flashcards inside german.org: [[https://www.reddit.com/r/emacs/comments/63z6yj/org_mode_and_anki/][org-drill or pamparam]]
-***** TRY <<Get IEEE & ScienceDirect with abstracts in emacs>>
-******* [[Org-ref operations on .bib file]] (gets science direct, as of May 2017)
-******* [[http://ieeexplore.ieee.org/gateway/][IEEE Xplore Search Gateway Search Parameters]] (but no download???)
-******* [[gscholar-bibtex]] gets IEEE but no abstracts
-********* gscholar-bibtex-ieee-bibtex-content seems to be where it's done
-******* Python/wget: [[https://github.com/ipapusha/get-ieee-paper][ipapusha/get-ieee-paper: downloads an IEEE Xplore paper over ssh]]
-******* Ruby: [[https://github.com/BoolLi/BibTex-Fetcher/blob/master/parser.rb][BibTex-Fetcher/parser.rb at master · BoolLi/BibTex-Fetcher]]
-******* [[http://guides.lib.berkeley.edu/information-studies/apis][APIs for scholarly resources]]
-******* See also: [[BibTex and Emacs]]
+******* Syntax for try/accepted/reject todo things
+        # -*- org-todo-keyword-faces: (("ACCEPTED" . "green") ("TRY" . "red") ("REJECTED" . "gray")) ; -*-
+        #+TODO: TRY | REJECTED | ACCEPTED
+******* TRY [[https://github.com/abo-abo/org-download][abo-abo/org-download: Drag and drop images to Emacs org-mode]]
+******* TRY [[https://github.com/abo-abo/lispy][abo-abo/lispy: short and sweet LISP editing]]
+******* TRY [[https://github.com/abo-abo/lpy][abo-abo/lpy: Minimal Python IDE for GNU Emacs]]
+******* TRY [[https://github.com/abo-abo/ace-window][abo-abo/ace-window: Quickly switch windows in Emacs]]
+******* [[https://github.com/aaronjensen/spacemacs.d/blob/af8a583972e680fea512f939db06f17fffc84fb7/lisp/init-org.el#L215-L247][spacemacs.d/init-org.el Add beginnings of dwim org backspace]]
+        Maybe nice in future
+        has lots org code examples
+
+        Might be worth it to see how (setq org-hide-emphasis-markers t) is responded to in org-mode:  maybe it can be hacked into hiding <<>> ?
+
+******* [[Emacs symbols]]
+******* TRY [[http://kitchingroup.cheme.cmu.edu/blog/2017/04/09/A-better-return-in-org-mode/][A better return in org-mode]]
+
+        I might like this Word like behavior but I just automatically wrote this bullet assuming that return would break me out of headline creation.  Which is more natural?  On the other hand, I do like org-autolist.
+
+********* a little better than, [[https://github.com/calvinwyoung/org-autolist][calvinwyoung/org-autolist]]
+          which I'm already using: jkitchin is considering merging it
+********* creates new rows of tables, for example, which is nice
+********* modified and posted on github by somebody [[https://github.com/Kungsgeten/selected.el][here]]
+********* still being heavily revised, as of April 15, 2017.  Wait for it to settle down?
+********* I still want to create a new headline if return or M-return in middle of line
+******* TRY [[https://github.com/tbanel/orgaggregate][orgtbl-aggregate]]
+******* TRY [[https://github.com/wolray/symbol-overlay][wolray/symbol-overlay: would be nice for programming e.g. in python or something]]
+******* TRY [[help:re-builder]]*
+
+        Can also use [[swiper]], which matches on regex (split into groups with a space).  Each group is highlighted with a different face.
+
+******* TRY M-x proced
+******* TRY Flashcards inside german.org: [[https://www.reddit.com/r/emacs/comments/63z6yj/org_mode_and_anki/][org-drill or pamparam]]
+******* TRY <<Get IEEE & ScienceDirect with abstracts in emacs>>
+********* [[Org-ref operations on .bib file]] (gets science direct, as of May 2017)
+********* [[http://ieeexplore.ieee.org/gateway/][IEEE Xplore Search Gateway Search Parameters]] (but no download???)
+********* [[gscholar-bibtex]] gets IEEE but no abstracts
+*********** gscholar-bibtex-ieee-bibtex-content seems to be where it's done
+********* Python/wget: [[https://github.com/ipapusha/get-ieee-paper][ipapusha/get-ieee-paper: downloads an IEEE Xplore paper over ssh]]
+********* Ruby: [[https://github.com/BoolLi/BibTex-Fetcher/blob/master/parser.rb][BibTex-Fetcher/parser.rb at master · BoolLi/BibTex-Fetcher]]
+********* [[http://guides.lib.berkeley.edu/information-studies/apis][APIs for scholarly resources]]
+********* See also: [[BibTex and Emacs]]
 ***** *ACCEPTED*
+******* ACCEPTED get a recent directories like recent files
+
+        I picked bjm/ivy-dired-recent-dirs (Method #1 below).
+
+        I thought about ido'izing it, and making uniquifying like recent files are, but actually, I like the plain ivy binding better, so I'm keeping it as it.
+
+        Here are two ways to make recent directories.maybe one is easier to idoize?
+
+          1. [[http://pragmaticemacs.com/emacs/open-a-recent-directory-in-dired-revisited][Method #1]] using ivy directly
+          [[From: http://blog.binchen.org/posts/use-ivy-to-open-recent-directories.html][2. Method #2]] using counsel
+             Calls executable "fasd" which I don't see in my IWES path.
+             There is also an emacs fasd package, but this also wants the binary???
+
+        They look the same to the user but 
+******* ACCEPTED fix helm and ref-bibtex bibtex _pdf openers_ on SP4 (Win 10 v.s Win 7?)
+      
+        Bug report is [[https://github.com/jkitchin/org-ref/issues/511][here]].
+
+        In the end (Oct. 28, 2017), this just started working again.  I'm not sure if I did anything that fixed it, or if one of the package updates did the job.  
+      
+        Comments on [[https://emacs.stackexchange.com/questions/3105/how-to-use-an-external-program-as-the-default-way-to-open-pdfs-from-emacs][this article]] might be of help w/ windows file associations or with using pdf-tools package ([[http://tuhdo.github.io/static/emacs-read-pdf.gif][demo]] for pdf-tools, I think)
+
+********* my bug tracking trail
+************* org-ref bibtex hydra
+              hdyra 'p' [[file:~/.emacs.d/elpa/org-ref-20171019.724/org-ref-bibtex.el::("p"%20org-ref-open-bibtex-pdf)][calls]] org-ref-open-bibtex-pdf
+              org-ref-open-bibtex-pdf calls
+              the function [[file:~/.emacs.d/elpa/org-ref-20171019.724/org-ref-core.el::org-ref-open-bibtex-pdf][org-ref-open-bibtex-pdf]]
+
+              I changed this to print what it's trying to open.  Here are the responses:
+
+                ... key=Garcke17dimRedWindTurb, pdf=c:/Users/scotto/Tempo Box/ref/papers/Garcke17dimRedWindTurb.pdf
+
+              and then
+
+                tried to open c:/Users/scotto/Tempo Box/ref/papers/Garcke17dimRedWindTurb.pdf
+
+              which is the right path.
+
+                formats to: [[file:c:/Users/scotto/Tempo Box/ref/papers/garcke17dimredwindturb.pdf]]
+
+                (is the blank in the path the problem?)
+
+              this then [[file:~/.emacs.d/elpa/org-ref-20171019.724/org-ref-core.el::(org-open-link-from-string%20(format%20"%5b%5bfile:%25s%5d%5d"%20pdf)))][calls]] the function [[file:~/.emacs.d/elpa/org-plus-contrib-20171023/org.el::(defun%20org-open-link-from-string%20(s%20&optional%20arg%20reference-buffer)][org-open-link-from-string]]
+
+              _Experiments_
+
+    (setq pdf "c:/Users/scotto/Tempo Box/ref/papers/Garcke17dimRedWindTurb.pdf")
+
+    (setq pdf "c:/Users/scotto/OneDrive/scotto/tmp/Garcke17dimRedWindTurb.pdf")
+
+    (org-open-link-from-string (format "[[file:%s]]" pdf))
+
+    (message "qa=%s" (shell-quote-argument pdf))
+
+    (message "qa2=%s" (format "[[file:%s]]" (shell-quote-argument pdf)))
+    (message "qa3=%s" (format "[[file:""%s]]" pdf))
+
+    (org-open-link-from-string (format "[[file:%s]]" (shell-quote-argument pdf)))
+    (org-open-link-from-string (format "[[file:%s]]" pdf))
+
+    (setq pdf "c:/Users/scotto/Tempo Box/ref/papers/Garcke17dimRedWindTurb.pdf")
+    (org-open-link-from-string (format "[[file:%s]]" pdf))          
+
 ******* ACCEPTED clean up .emacs w/ use-package or equivalent
 
         See: [[File:~/.emacs::;;%20TODO%20use-package%20is%20redundant%20w/%20'(package-selected-packages%20in%20customizations)][use-packages notes in my .emacs]]
@@ -807,6 +870,15 @@
 
       [back]
 
+******* REJECTED anzu modeline display
+        [[https://github.com/syohex/emacs-anzu][GitHub - syohex/emacs-anzu: Emacs Port of anzu.vim]]
+
+        A nice little display of the number of matches of an isearch string, displayed on the mode-line. But I wasn't using it because I started using swiper instead of isearch.
+
+        One nice thing about it, though, is that it somehow knoew to put itself on the right side of the modeline.  
+
+        I'd like to do do that for (display-time-mode 1), where time would go on left side of modeline.
+        
 *** Org Mode
 ***** [[http://orgmode.org/w/org-mode.git][org-mode git repository]].  I think this goes to the melpa package
 ***** <<org-brain>>
@@ -1076,6 +1148,10 @@ Many text editors have access to these in some simple way, so before thinking ab
 ******* [[https://github.com/kametoku/orgmine][kametoku/orgmine: Emacs minor mode for org-mode with redmine integration]]
 ***** [[Orgmode latex editing]]
 ***** [[Org Element API]] (for elisp programming)
+***** <<Org-mode interface to trello>>: [[https://github.com/org-trello/org-trello][org-trello]]
+***** <<Presentation slides from org-mode>>
+******* [[https://github.com/coldnew/org-ioslide][org-ioslide: Export org-mode to Google I/O HTML5 slide.]]
+******* I had found several before. were lost.  Should search again
 ***** Org-mode parsers
 ******* [[http://orgmode.org/worg/org-tools/][Org Mode tools!]] (parsers in many languages)
 ******* [[https://common-lisp.net/project/cl-org-mode/][CL-ORG-MODE : A Lisp Parser of org-mode outlines]]
@@ -1477,7 +1553,10 @@ Many text editors have access to these in some simple way, so before thinking ab
 
     For now, I've bound ~ivy-push-view~, ~ivy-pop-view~ and ~ivy-switch-view~
 
-    I wish it stored views but that's not there yet.  See my comment on a the ivy site here:
+    This is litterally a push and pop, so you lose configs as you pop (restore) them.  Seems like winner-mode is better?   
+
+
+    I wish ivy-push/pop-view stored views but that's not there yet.  See my comment on a the ivy site here:
     [[https://github.com/abo-abo/swiper/pull/587][  Store full window-configuration with ivy-push-view by alfaromurillo · Pull Re...]]
 
 ***** A big list of [[https://www.emacswiki.org/emacs/SessionManagement][Emacs Session Management Packages]]
@@ -1491,6 +1570,11 @@ Many text editors have access to these in some simple way, so before thinking ab
 ******* works, mostly, but _doesn't restore org mode indirect buffers_
         just get one copy of the org file, if a there was a window with an indirect copy, it is not restored
 ******* out-if-the-box: only 1 session name, can't name them
+******* but maybe works if use desktop save mode for "buffers not visiting a file"
+        See [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Desktop-Save-Mode.html][Desktop Save Mode - GNU Emacs Lisp Reference Manual]]
+
+         (desktop-file-name file-name desktop-dirname)
+
 ******* [[https://bmag.github.io/2015/12/26/desktop.html][desktop-change-dir]] allows loading different sessions and switching
 
         _Just rebinding keys_:  Here's [[https://ericjmritz.wordpress.com/2013/05/28/emacs-desktops/][one guy's approach]]:
@@ -1517,6 +1601,20 @@ Many text editors have access to these in some simple way, so before thinking ab
 
       _Indirect buffers_: from [[http://emacs.stackexchange.com/questions/28964/how-to-save-a-desktop-with-narrowed-indirect-buffers][here]], it doesn't totally handle them but you can hack around this by saving a "sequence bookmark"
 
+***** [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Configuration-Registers.html#Configuration-Registers][configuration registers]] for storing/retrieving windows config (not out of the box...)
+
+      C-x r w X (save single fram config to register X)
+      C-x r f X (save all frame configs to register X)
+
+      C-x r j X (restore config from register X (either window or frame config)
+
+******* saves window buffer configs but doesn't reload the buffer from file (it seems, a least if the buffers are indirect)
+******* Guys says registers are better than desktop.el
+        Guy [[https://www.reddit.com/r/emacs/comments/76zw8x/restore_session_on_emacs_startup/][says]] emacs desktop.el is too hard to use (emacs maintainer disagrees), and that registers are best:
+
+             My main window config is built with registers, 5 windows in 1 frame: Ibuffer, multi-term, Gnus, contacts, and calendar. It takes less than 30 seconds upon a restart, which I don't do often. That config is saved with a simple C-x r w m (for main). So a C-x r j m will always bring me back to that config.  desktop.el can save registers to a file, according to the maintainer.
+
+******* [[Registers can store lots of things]]
 ***** [[https://github.com/ryuslash/desktop-registry][desktop-registry]]
       I get a null string error when I try to save a desktop.
       Last commit was 3 years ago.
@@ -1575,6 +1673,18 @@ Many text editors have access to these in some simple way, so before thinking ab
       more or less worked but..
       1. org-mode cloned indirect buffers were restored as direct buffers
       2. different sessions are accessed by hitting a number, even though you can name them (also, the name doesn't show up in the number menu)
+*** <<Registers can store lots of things>>
+    From: [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Registers.html][Registers - GNU Emacs Manual]]
+        
+    - Position Registers       :: Saving positions in registers
+    - Text Registers           :: Saving text in registers.
+    - Rectangle Registers      :: Saving rectangles in registers.
+    - Configuration Registers  :: Saving window configurations in registers.
+    - Number Registers         :: Numbers in registers.
+    - File Registers           :: File names in registers.
+    - Keyboard Macro Registers :: Keyboard macros in registers.
+    - Bookmarks                ::  Bookmarks are like registers, but persistent.
+        
 *** Indenting: =C-M-\= indents region
 *** <<Elisp>>
 ***** Evaluating Lisp
@@ -1606,6 +1716,8 @@ Many text editors have access to these in some simple way, so before thinking ab
       (function (lambda (x) (* x x)))
 
 ***** [[help:string=]] short alias for string-equal
+***** load .el instead instead of .elc if newer set [[http://endlessparentheses.com/sweet-new-features-in-24-4.html][load-prefer-newer]]
+      I have this customized to 'true'
 ***** [[https://emacs.stackexchange.com/questions/7148/get-all-regexp-matches-in-buffer-as-a-list][Get all regexp matches in buffer as a list]]
 ***** [[http://ergoemacs.org/emacs/elisp_universal_argument.html][Universal-argument]] (codes)
 ***** [[http://stackoverflow.com/questions/1019778/how-to-check-if-a-string-is-empty-in-emacs-lisp][test if string is empty]]
@@ -1649,7 +1761,7 @@ Many text editors have access to these in some simple way, so before thinking ab
 
       ;; I think there's a basename() for getting the executable name from the path
 
-
+***** elisp debugger: 
 ***** porting Lisp to elisp
 ******* [[https://yoo2080.wordpress.com/2013/08/16/differences-between-common-lisp-and-emacs-lisp/][Differences between Common Lisp and Emacs Lisp | Yoo Box]]
 ******* [[https://elpa.gnu.org/packages/cl-lib.html][GNU ELPA - cl-lib]]
@@ -1817,6 +1929,8 @@ Strike-through: nil
 
 ******* also setting org mode heading 1 to "sans" caused probs, so I un-specified it
 
+*** <<Emacs color picking>>
+***** [[https://julien.danjou.info/projects/emacs-packages#rainbow-mode][rainbow-mode.el]] would make it easier to sort color candidates    
 *** Emacs Macros
     <<Emacs Macros>>
 
@@ -2182,7 +2296,6 @@ Strike-through: nil
 
 ***** [[Setting JabRef setup so it can push latex cites to Emacs]]
 ***** says you can edit the entries locally, and submit the changes to Redmine.
-
 ***** See [[Get IEEE & ScienceDirect with abstracts in emacs]]
 ***** <<Jumping to papers from inside of org-mode and bibtex files>>
 
@@ -2711,6 +2824,15 @@ C:\Program Files (x86)\GNU Emacs 25.1\bin\emacsclientw.exe
      tabcal lincal novalidate XGridPts=0,10,20,50,70,90,120,259,400,513,600,767,900,1021,1240,1300,1340,1355,1365 YGridPts=0,10,20,100,163,223,321,479,640,700,740,755,767
 
 **** save battery life: [[Prevent devices from waking out of sleep]]
+**** on Fraunhofer IWES thinkpad: get the context menu back
+     It's not there on the T440p German keyboard
+
+     But on my SP4, SmartKeys syas it's 
+
+       Special: Application (E0_5D)
+
+     So I mapped the right control key to that in order to use my emacs hydra binding.
+
 *** Sony VAIO Flip 14
 **** mousepad middle click
 
@@ -7399,8 +7521,7 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
       5. Click on the drop-down arrow in the Action column for the above
          entry and select the PDF viewer you wish to use or not
 
-*** Google search
-    <<Google Search>>
+*** <<Google Search>>
 ***** get rid of annoying pdf url mangling
 
       Note: JabRef, as of R2.11.b2 can unmangle google links if you paste
@@ -7889,7 +8010,7 @@ ERROR: Cannot run texhash command. Please run manually.
 ***** [[http://www.michaels-website.de/gedit-latex-plugin/][gedit-latex-plugin]] (not so useful)
 ***** [[http://ftp.math.utah.edu/pub//bibclean/][bibclean]]
 *** converting [[http://www.see-out.com/sandramau/bibpat.html][patent info to bibtex entries]] (google scholar also works)
-*** TODO Latex and Emacs
+*** TODO <<Latex and Emacs>>
 ***** emacs [[https://www.emacswiki.org/emacs/LaTeXPreviewPane][latex-preview-pane]] is handy for finding org-mode export problems
 ***** Orgmode latex editing
 ******* =cdlatex= bindings, starting with =C-c {=
@@ -7912,6 +8033,7 @@ ERROR: Cannot run texhash command. Please run manually.
           - dvips is supposed to work too, for dvi only
             - or run: dvips, which can do that to (org-preview-latex-window?)
         - C-c C-e l l (export to Latex, which is fast)
+***** [[https://www.emacswiki.org/emacs/LaTeXPreviewPane][LaTeX Preview Pane]]
 ***** emacs viewing latex pdfs
 ******* must have [[http://stackoverflow.com/questions/28474736/how-to-open-pdf-file-in-emacs][dvipdf or dvipdfm]] & gs installed
 ********* dvipdfm came was in texlive bin directory
@@ -8111,6 +8233,7 @@ ERROR: Cannot run texhash command. Please run manually.
 ***** [[http://www.rubydoc.info/gems/bibtex-ruby/4.0.1/BibTeX/Bibliography/RDFConverter][Class: BibTeX::Bibliography::RDFConverter — Documentation for bibtex-ruby]]
 ***** [[DocEar]], kind-of...
 *** [[org-brain]]
+*** Sacha Chau's elisp for making a goal concept map (code at end of [[http://pages.sachachua.com/evil-plans/][this page]])
 *** [[http://orgmode.org/worg/org-contrib/org-wikinodes.html][org-wikinodes: CamelCase wiki-like links]] (kind of a graph)
 *** [[Concept map-like stuff: superlabel, dedicated targets, org-brain]]
 * XML

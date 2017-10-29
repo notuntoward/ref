@@ -33,6 +33,10 @@
 ;; * Package Configuration
 
 (prefer-coding-system 'utf-8); avoid complaints, put before (require 'package)
+;; from: https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
+(when (display-graphic-p)
+  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
+
 (require 'package)
 (add-to-list   'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list   'package-archives '("org" . "http://orgmode.org/elpa/") t)
@@ -261,6 +265,7 @@
 ;; ** Web Search
 ;; "search" the web
 (use-package google-this
+  :diminish google-this-mode
   :config
   (google-this-mode 1)) ; bound to C-c / g (and other bindings after '/')
 
@@ -306,6 +311,7 @@
 
 ;; * Swiper/Ivy
 (use-package swiper
+  :diminish ivy-mode
   :init
   (progn
     (setq ivy-use-virtual-buffers t) ; ivy-switch-buffer also shows recent files
@@ -400,16 +406,22 @@
 (global-set-key (kbd "M-[") 'scroll-down) ; page up
 (global-set-key (kbd "M-]") 'scroll-up)   ; page down
 
+;;from: https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
+(bind-key "C-x p" 'pop-to-mark-command) 
+(setq set-mark-command-repeat-pop t)
+
 (defun goto-line-with-feedback ()
   "Show line numbers temporarily, while prompting for the line
          number input"
   (interactive)
   (unwind-protect
       (progn
-	(linum-mode 1)
+	(linum-mode 1)                            ; only on current buffer
 	(goto-line (read-number "Goto line: ")))
-    (linum-mode -1)))
+    (linum-mode -1)))                             ; only on current buffer
 (global-set-key (kbd "C-=") 'goto-line-with-feedback)
+
+(global-set-key (kbd "C-M-=") 'global-linum-mode) ; toggles on all buffers
 
 ;; Bind S-arrow keys to moving cursor to buffer
 (windmove-default-keybindings); maps cursor moving to S-arrow keys
@@ -574,6 +586,19 @@
 (global-set-key (kbd "C-x 5 f") 'find-file-guessing-other-frame)
 ;;(global-set-key (kbd "C-x f") 'find-file-literally); overwrites set-fill-column
 
+;; ** name of file in current buffer (kind of the opposite of ffap)
+
+;; http://emacsredux.com/blog/2013/03/27/copy-filename-to-the-clipboard/ https://github.com/bbatsov/prelude
+(defun copy-current-file-name-to-clipboard ()
+  "Copy the current buffer file name to the clipboard."
+  (interactive)
+  (let ((filename (if (equal major-mode 'dired-mode)
+                      default-directory
+                    (buffer-file-name))))
+    (when filename
+      (kill-new filename)
+      (message "Copied buffer file name '%s' to the clipboard." filename))))
+
 ;; ** Find recent files
 ;; *** recentf exclusion of uninteresting files
 (setq recentf-exclude '( "/.emacs.bmk$"
@@ -694,24 +719,7 @@
 ;; overwrites ido-list-directory, which was less useful than this
 (global-set-key (kbd "C-x C-d") 'bjm/ivy-dired-recent-dirs)
 
-;; *** another method, using counsel & fasd (works @ IWES but why?)
-;; calls executable "fasd" which I don't see in my IWES path.
-;; There is also an emacs fasd package, but this also wants the binary.
-;; Regardless, it somehow works!
-;; From: http://blog.binchen.org/posts/use-ivy-to-open-recent-directories.html
-(defun counsel-goto-recent-directory ()
-  "Open recent directory with dired"
-  (interactive)
-  (unless recentf-mode (recentf-mode 1))
-  (let ((collection
-         (delete-dups
-          (append (mapcar 'file-name-directory recentf-list)
-                  ;; fasd history
-                  (if (executable-find "fasd")
-                      (split-string (shell-command-to-string "fasd -ld") "\n" t))))))
-    (ivy-read "directories:" collection :action 'dired)))
-
-;; * Function key bindings
+;;* Function key bindings
 ;; ** functions in function keys
 (defun indent-buffer ()
   (interactive)
@@ -775,6 +783,9 @@
 
 ;; does this make org-mode slower?  If so, disable it like this: http://stackoverflow.com/questions/24814988/emacs-disable-auto-complete-in-python-mode
 (use-package auto-complete
+  :diminish auto-complete-mode
+  :diminish global-auto-complete-mode
+  :diminish auto-complete-minor-mode
   :config (global-auto-complete-mode))
 
 ;; *** Ediff
@@ -788,6 +799,8 @@
 ;; Setup from: http://orgmode.org/worg/org-tutorials/org-outside-org.html
 ;;        and: http://www.modernemacs.com/post/outline-ivy/
 (use-package outshine
+  :diminish outline-mode
+  :diminish outline-minor-mode
   :config
   (add-hook 'outline-minor-mode-hook 'outshine-hook-function) ; for outshine
   (add-hook 'prog-mode-hook 'outline-minor-mode))             ; all prog modes
@@ -1064,6 +1077,8 @@ is already narrowed."
 ;; Quick org-mode bolding, etc.  With wrap-region, you'd bold with C-- * http://emacs.stackexchange.com/questions/10029/org-mode-how-to-create-an-org-mode-markup-keybinding
 ;; (works well with smart-region/expand-region)
 (use-package wrap-region
+  :diminish wrap-region-mode
+  :diminish wrap-region-minor-mode
   :config (progn
 	    (add-hook 'org-mode-hook #'wrap-region-mode)
 	    (wrap-region-add-wrapper "*" "*" nil 'org-mode) ; bold
@@ -1213,6 +1228,7 @@ is already narrowed."
 
 (use-package org-autolist
   :after org
+  :diminish org-autolist-mode
   :config
   (add-hook 'org-mode-hook (lambda ()
 			     (org-autolist-mode)))) ; new - or -[ ] w/ return
@@ -1342,7 +1358,7 @@ This function avoids making messed up targets by exiting without doing anything 
 ;;   ;;  (with-eval-after-load 'ox (require 'ox-pandoc)))
 ;;   )
 
-;; * writing Tools
+;; * Writing Tools
 ;; ** General Editing
 
 (setq next-line-add-newlines nil) ; don't create newlines for arrows @ buff end
@@ -1411,18 +1427,46 @@ This function avoids making messed up targets by exiting without doing anything 
   :config (progn
             (global-set-key "\C-cg" 'writegood-mode)
             (global-set-key "\C-c\C-gg" 'writegood-grade-level)
-            (global-set-key "\C-c\C-ge" 'writegood-reading-ease)
-            (defun toggle-writing-tools ()
-              "Enable/disable writing tools, initially writegood and flyspell"
-              (interactive)
-              ;; why don't these modes turn off when this function is called twice?  They do when called individually and interactively
-              (flyspell-mode)
-              (writegood-mode)
-              ;; nice standalone chrome/firefox addon but here must install separate java
-              ;;(require 'langtool)
-              ;;(setq langtool-language-tool-jar "/path/to/LanguageTool.jar"))))
-              )
-            (global-set-key (kbd "C-c W") 'toggle-writing-tools)))
+            (global-set-key "\C-c\C-ge" 'writegood-reading-ease)))
+
+
+;; https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
+;; do I like this?
+(use-package artbollocks-mode
+  :defer t
+;;  :load-path  "~/elisp/artbollocks-mode"
+  :config
+  (progn
+    (setq artbollocks-weasel-words-regex
+          (concat "\\b" (regexp-opt
+                         '("one of the"
+                           "should"
+                           "just"
+                           "sort of"
+                           "a lot"
+                           "probably"
+                           "maybe"
+                           "perhaps"
+                           "I think"
+                           "really"
+                           "pretty"
+                           "nice"
+                           "action"
+                           "utilize"
+                           "leverage") t) "\\b"))
+    ;; Don't show the art critic words, or at least until I figure
+    ;; out my own jargon
+    (setq artbollocks-jargon nil)))
+
+(defun toggle-writing-tools ()
+  "Enable/disable writing and proofing tools"
+  (interactive)
+  ;; why don't these modes turn off when this function is called twice?  They do when called individually and interactively
+  (flyspell-mode)
+  (writegood-mode)
+  (artbollocks-mode)) ;; do I like this?
+  
+(global-set-key (kbd "C-c W") 'toggle-writing-tools)
 
 ;; ** Latex
 
@@ -1440,16 +1484,29 @@ This function avoids making messed up targets by exiting without doing anything 
 ;;
 ;; When scimax/org-return, maybe use it instead.  May go back to this if the two are merged.
 (use-package cdlatex
+  :diminish org-cdlatex-mode
   :config (add-hook 'org-mode-hook 'turn-on-org-cdlatex))
 
 ;; * Emacs Command Execution
 
-(use-package undo-tree ; so far, I only use the redo C-? that it adds
-  :config (undo-tree-mode t))
+;; (use-package undo-tree ; so far, I only use the redo C-? that it adds
+;;   :config (undo-tree-mode t))
+
+;; do I like this ?
+;; I was only using the redo C-? that it addsthat it adds
+; 'q' gets out of the tree mode, but is the tree mode helpful?
+(use-package undo-tree
+  :diminish undo-tree-mode
+  :config
+  (progn
+    (global-undo-tree-mode)
+    (setq undo-tree-visualizer-timestamps t)
+    (setq undo-tree-visualizer-diff t)))
 
 (fset 'yes-or-no-p 'y-or-n-p) ; type just "y" instead of "yes"
 
 (use-package which-key ; complex key hints, better than guide-key
+  :diminish which-key-mode
   :config (progn (which-key-mode)
 		 (which-key-setup-side-window-right-bottom))) ; do bottom if no room on side
 
@@ -1519,13 +1576,6 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
 (set-face-foreground 'font-lock-type-face "blue3")
 
 (global-font-lock-mode t) ;so fontlocking is always turned on (diff for xemacs)
-(show-paren-mode 1) ; turn on blinking parens, any computer?
-
-;;default major setq
-;; visual line mode messes up org-tables but is GREAT for everything else
-(global-visual-line-mode +1)
-(global-set-key (kbd "C-c w") 'toggle-truncate-lines) ; e.g. to view org-mode tables
-
 ;; color the cursor red if in overwrite mode
 ;; https://www.emacswiki.org/emacs/EmacsNiftyTricks
 (setq hcz-set-cursor-color-color "")
@@ -1545,8 +1595,19 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
 (add-hook 'post-command-hook 'hcz-set-cursor-color-according-to-mode)
 
 (use-package beacon ; Flashes the cursor's line when you scroll.  Helpful.
+  :diminish beacon-mode
   :config
   (beacon-mode 1))
+
+(show-paren-mode 1) ; turn on blinking parens, any computer?
+
+;;default major setq
+;; visual line mode messes up org-tables but is GREAT for everything else
+(global-visual-line-mode +1)
+(global-set-key (kbd "C-c w") 'toggle-truncate-lines) ; e.g. to view org-mode tables
+
+; too crowded?, force on RHS, like Anzu search counter was on LHS?
+(display-time-mode 1) ; time on the modeline (is customized)
 
 (mouse-avoidance-mode 'animate)  ; get mouse out of way of cursor, is customized
 
@@ -1566,6 +1627,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
 ;; M-q using adaptive-fill-mode,
 ;; However, it doesn't indent 2nd line numbered or lettered lists
 (use-package adaptive-wrap ; required for visual line mode hook below?
+  :diminish adaptive-wrap-prefix-mode
   :config (add-hook 'visual-line-mode-hook
 		    (lambda ()
 		      (adaptive-wrap-prefix-mode +1)
@@ -1596,6 +1658,8 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(counsel-grep-base-command "grep -nEi '%s' %s")
  '(delete-selection-mode nil)
  '(dired-dwim-target t)
+ '(display-time-24hr-format t)
+ '(display-time-default-load-average nil)
  '(emacsw32-style-frame-title t)
  '(ess-default-style (quote OWN))
  '(ess-ido-flex-matching t)
@@ -1628,6 +1692,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(ivy-mode t)
  '(ivy-wrap t)
  '(load-home-init-file t t)
+ '(load-prefer-newer t)
  '(matlab-comment-column 0)
  '(matlab-comment-region-s "% ")
  '(matlab-cont-level 2)
@@ -1700,7 +1765,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (conda use-package counsel swiper-helm esup auctex auctex-latexmk ess ess-R-data-view ess-smart-equals ess-smart-underscore ess-view psvn igrep helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine highlight-indent-guides lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ ox-pandoc copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 undo-tree iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f org-ref writegood-mode auto-complete rainbow-delimiters smex matlab-mode popup parsebib org-plus-contrib org-cliplink org-bullets org-autolist org key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move cygwin-mount)))
+    (artbollocks-mode highlight-thing try conda use-package counsel swiper-helm esup auctex auctex-latexmk ess ess-R-data-view ess-smart-equals ess-smart-underscore ess-view psvn igrep helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine highlight-indent-guides lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ ox-pandoc copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 undo-tree iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f org-ref writegood-mode auto-complete rainbow-delimiters smex matlab-mode popup parsebib org-plus-contrib org-cliplink org-bullets org-autolist org key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move cygwin-mount)))
  '(paren-message-show-linenumber (quote absolute))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
