@@ -645,6 +645,7 @@
   (mapcar (lambda (x) (puthash x (+ 1 (gethash x tab 0)) tab)) coll)
   tab)
 
+;; This returns unique filenames of the form subtmp/tmp.org tmp/tmp.org but this messes up sorting since the 1st char comes from the dir, not the basename.  Also, buffer uniquify separates with '|'.  Should ideally match that for consistency.
 (defun vm/uniquify (filenames)
   "Given a bunch of filenames (as returned by `recentf-list'),
   simplify the names to make them more easily readable."
@@ -654,19 +655,45 @@
     (mapcar (apply-partially '-first (lambda (x) (= 1 (gethash x tab 0))))
             expanded-paths)))
 
+(defun sdo/uniquify (filenames)
+  "Given a bunch of filenames (as returned by `recentf-list'),
+  simplify the names to make them more easily readable.  Puts basname at front of uniq name, like buffer uniquify."
+
+  (let* ((expanded-paths (mapcar 'paths filenames))
+         ;; (xx (message "expPinit=%s" expanded-paths))
+         ;; expanded paths has every partial path possible for each file e.g.
+         ;;
+         ;; (tmp.org subtmp/tmp.org tmp/subtmp/tmp.org home/tmp/subtmp/tmp.org sotterson/home/tmp/subtmp/tmp.org Users/sotterson/home/tmp/subtmp/tmp.org c:/Users/sotterson/home/tmp/subtmp/tmp.org)
+         ;; AND
+         ;; (tmp.org tmp/tmp.org home/tmp/tmp.org sotterson/home/tmp/tmp.org Users/sotterson/home/tmp/tmp.org c:/Users/sotterson/home/tmp/tmp.org) 
+         (tab (make-hash-table :test 'equal))
+         (freqs (mapcar (apply-partially 'index-coll tab) expanded-paths)))
+    (mapcar ; mapcar applies func to "sequence", makes a list of results, same length as input, which is expanded-paths, below
+     (apply-partially ; func is apply-partially, which returns a FUNC operating '-first (lambda...
+      '-first (lambda (x) (= 1 (gethash x tab 0)))) ; FUNC starts with -first, which gets 1st in list if hash element w/ key x ==1 (so I guess if filename is unique already, otherwise 'nil')
+            expanded-paths))) ; mapcar works on this list
+
+
 ;; *** my recentf functions
 (require 'recentf)
+
+(defun sdo/uniquify-like-buffer (vm-unique-filename)
+  "Reformats filenames with smallest unique paths to buffer name style"
+  (string-join (reverse (split-string vm-unique-filename "/")) "|"))
 
 ;; a modified ido-recentf-open(): https://gist.github.com/vedang/8645234
 (defun sdo/find-recentf-func (find-file-func)
   "Select a recently visited file with Ido and then find it with FIND-FILE-FUNC.
 \n(fn FIND-FILE-FUNC)"
   
-  (let* ((unique-filenames (vm/uniquify recentf-list))
-         (filename-map (-partition 2 (-interleave unique-filenames
+  (let* ((unique-filenames-pth (vm/uniquify recentf-list))
+         (unique-filenames-buf
+          (mapcar (lambda (fnm) (sdo/uniquify-like-buffer fnm))
+                  unique-filenames-pth))
+         (filename-map (-partition 2 (-interleave unique-filenames-buf
                                                   recentf-list)))
          (short-filename (ido-completing-read "Choose recent file: "
-                                              unique-filenames
+                                              unique-filenames-buf
                                               nil
                                               t)))
     (if (and short-filename (not (equal "" short-filename)))
@@ -787,6 +814,12 @@
   :diminish global-auto-complete-mode
   :diminish auto-complete-minor-mode
   :config (global-auto-complete-mode))
+
+;; so M-n and M-p look for symbol at point.  Is redundant with highlight-thing
+;; From https://github.com/itsjeyd/emacs-config/blob/emacs24/init.el
+(use-package smartscan
+  :defer t
+  :config (global-smartscan-mode t))
 
 ;; *** Ediff
 ;; Do not pop up a separate window "frame" for ediff
@@ -1765,7 +1798,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (artbollocks-mode highlight-thing try conda use-package counsel swiper-helm esup auctex auctex-latexmk ess ess-R-data-view ess-smart-equals ess-smart-underscore ess-view psvn igrep helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine highlight-indent-guides lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ ox-pandoc copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 undo-tree iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f org-ref writegood-mode auto-complete rainbow-delimiters smex matlab-mode popup parsebib org-plus-contrib org-cliplink org-bullets org-autolist org key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move cygwin-mount)))
+    (smartscan artbollocks-mode highlight-thing try conda use-package counsel swiper-helm esup auctex auctex-latexmk ess ess-R-data-view ess-smart-equals ess-smart-underscore ess-view psvn igrep helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine highlight-indent-guides lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ ox-pandoc copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 undo-tree iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f org-ref writegood-mode auto-complete rainbow-delimiters smex matlab-mode popup parsebib org-plus-contrib org-cliplink org-bullets org-autolist org key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move cygwin-mount)))
  '(paren-message-show-linenumber (quote absolute))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
