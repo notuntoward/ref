@@ -18,7 +18,6 @@
 
         [[https://emacs.stackexchange.com/questions/28982/after-enabling-ivy-mode-dired-create-directory-does-not-allow-me-to-choose-an][This post]] is wrong for my example.
 
-******* TRY try out [[https://github.com/larstvei/Try][try]] (try packages w/o installing)
 ******* TRY Improve elpy python path: [[Better elpy path]]
 
         Use conda.el hooks?
@@ -359,7 +358,7 @@
         | hl-indent.el               | Dynamic | Unsupported | Slow for large files       |
         | visual-indentation-mode.el | Fixed   | Unsupported | Fast and slim, ugly        |
         | highlight-indent-guides    | ?       | ?           | in kaolin, has slim lines  |
-      
+        |----------------------------+---------+-------------+----------------------------|
 ******* Syntax for try/accepted/reject todo things
         # -*- org-todo-keyword-faces: (("ACCEPTED" . "green") ("TRY" . "red") ("REJECTED" . "gray")) ; -*-
         #+TODO: TRY | REJECTED | ACCEPTED
@@ -402,6 +401,12 @@
 ********* [[http://guides.lib.berkeley.edu/information-studies/apis][APIs for scholarly resources]]
 ********* See also: [[BibTex and Emacs]]
 ***** *ACCEPTED*
+******* ACCEPTED make recent files display "basename|dirname" like buffer uniquify
+        Done.  See ~/.emacs (defun sdo/uniquify-like-buffer (vm-unique-filename)...)
+
+******* ACCEPTED try out [[https://github.com/larstvei/Try][try]] (try packages w/o installing)
+        I've installed this.  It works unless the packages being tried has undownloaded dependencies, it seems.
+
 ******* ACCEPTED get a recent directories like recent files
 
         I picked bjm/ivy-dired-recent-dirs (Method #1 below).
