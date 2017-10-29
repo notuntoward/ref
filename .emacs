@@ -586,7 +586,7 @@
 (global-set-key (kbd "C-x 5 f") 'find-file-guessing-other-frame)
 ;;(global-set-key (kbd "C-x f") 'find-file-literally); overwrites set-fill-column
 
-;; ** name of file in current buffer (kind of the opposite of ffap)
+;; ** Name of file in current buffer (kind of the opposite of ffap)
 
 ;; http://emacsredux.com/blog/2013/03/27/copy-filename-to-the-clipboard/ https://github.com/bbatsov/prelude
 (defun copy-current-file-name-to-clipboard ()
@@ -611,7 +611,7 @@
 			 "\\.aux$" ; LaTeX
 			 ))
 
-;; *** uniquified recentf utils: https://gist.github.com/vedang/8645234
+;; *** uniquified recentf utils, from: https://gist.github.com/vedang/8645234
 ;; Implement functionality similar to uniquify to make recentf results bearable
 ;; Requires s.el and dash.el - awesome libraries from Magnar Sveen
 ;; Hat-tip : Baishampayan Ghose for the clojure implementation at
@@ -662,19 +662,17 @@
   "Reformats filenames with smallest unique paths to buffer name style"
   (string-join (reverse (split-string vm-unique-filename "/")) "|"))
 
-;; a modified ido-recentf-open(): https://gist.github.com/vedang/8645234
+;; a modified ido-recentf-open(), from: https://gist.github.com/vedang/8645234
 (defun sdo/find-recentf-func (find-file-func)
   "Select a recently visited file with Ido and then find it with FIND-FILE-FUNC.
 \n(fn FIND-FILE-FUNC)"
   
-  (let* ((unique-filenames-pth (vm/uniquify recentf-list))
-         (unique-filenames-buf
-          (mapcar (lambda (fnm) (sdo/uniquify-like-buffer fnm))
-                  unique-filenames-pth))
-         (filename-map (-partition 2 (-interleave unique-filenames-buf
+  (let* ((unique-filenames (mapcar (lambda (fnm) (sdo/uniquify-like-buffer fnm))
+                                   (vm/uniquify recentf-list)))
+         (filename-map (-partition 2 (-interleave unique-filenames
                                                   recentf-list)))
          (short-filename (ido-completing-read "Choose recent file: "
-                                              unique-filenames-buf
+                                              unique-filenames
                                               nil
                                               t)))
     (if (and short-filename (not (equal "" short-filename)))
