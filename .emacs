@@ -655,25 +655,6 @@
     (mapcar (apply-partially '-first (lambda (x) (= 1 (gethash x tab 0))))
             expanded-paths)))
 
-(defun sdo/uniquify (filenames)
-  "Given a bunch of filenames (as returned by `recentf-list'),
-  simplify the names to make them more easily readable.  Puts basname at front of uniq name, like buffer uniquify."
-
-  (let* ((expanded-paths (mapcar 'paths filenames))
-         ;; (xx (message "expPinit=%s" expanded-paths))
-         ;; expanded paths has every partial path possible for each file e.g.
-         ;;
-         ;; (tmp.org subtmp/tmp.org tmp/subtmp/tmp.org home/tmp/subtmp/tmp.org sotterson/home/tmp/subtmp/tmp.org Users/sotterson/home/tmp/subtmp/tmp.org c:/Users/sotterson/home/tmp/subtmp/tmp.org)
-         ;; AND
-         ;; (tmp.org tmp/tmp.org home/tmp/tmp.org sotterson/home/tmp/tmp.org Users/sotterson/home/tmp/tmp.org c:/Users/sotterson/home/tmp/tmp.org) 
-         (tab (make-hash-table :test 'equal))
-         (freqs (mapcar (apply-partially 'index-coll tab) expanded-paths)))
-    (mapcar ; mapcar applies func to "sequence", makes a list of results, same length as input, which is expanded-paths, below
-     (apply-partially ; func is apply-partially, which returns a FUNC operating '-first (lambda...
-      '-first (lambda (x) (= 1 (gethash x tab 0)))) ; FUNC starts with -first, which gets 1st in list if hash element w/ key x ==1 (so I guess if filename is unique already, otherwise 'nil')
-            expanded-paths))) ; mapcar works on this list
-
-
 ;; *** my recentf functions
 (require 'recentf)
 
