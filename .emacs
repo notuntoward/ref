@@ -18,14 +18,12 @@
 ;; per-buffer: https://www.masteringemacs.org/article/whats-new-in-emacs-25-1
 (save-place-mode 1)
 
-;; Emacs looks at default Emacs init file AFTER it looks here.
-;; So the initializations here could be written over.
-;; So:  Could inhibit loading the default init file.
-(setq inhibit-default-init 1)
-(setq inhibit-startup-message t)
-(setq inhibit-splash-screen t
+;; Emacs visits default Emacs init file AFTER here. Since the initializations here could be overwritten written, inhibit loading the default init file.
+(setq inhibit-default-init 1
+      inhibit-startup-message t
+      inhibit-splash-screen t
       initial-scratch-message nil
-      initial-major-mode 'org-mode)
+      initial-major-mode 'org-mode) ; scratch is then an org buffer
 
 ;; If have boot slowness
 ;;(use-package esup) ;; for profiling .emacs startup time (obsolete?)
@@ -50,27 +48,12 @@
   (message "Installing use-package and refreshing")
   (package-refresh-contents)
   (package-install 'use-package))
-(setq use-package-always-ensure t) ; so use-package always installs if missing
-
-;; ;; I needed to do (use-package org :ensure org-plus-contrib) so that org-modules would work on a clean install. But this caused an old version of org to be installed.
-;; ;; But is there a problem like: "I'm using this in my config, but whenever a third-party package (e.g., elfeed-org) gets installed with use-package, the default org is downloaded and installed. This cannot be right, any ideas how I can prevent that from happening?"
-;; ;;https://emacs.stackexchange.com/questions/7890/org-plus-contrib-and-org-with-require-or-use-package                                        ;
-;; ;; This is supposed to fix that
-;; ;; From:  https://github.com/jwiegley/use-package/issues/319
-;; (require 'cl) ; for remove-if
-;; (let* ((package--builtins '()) ; <- this does the trick
-;;        (missing (remove-if 'package-installed-p my-packages)))
-;;   (when missing
-;;     (package-refresh-contents)
-;;     (mapc 'package-install missing)))
+(setq use-package-always-ensure t) ; so use-package always installs missing pkgs
 
 ;; * Computer-specific setup
 
 (defvar running-ms-windows
   (eq system-type 'windows-nt))
-;; why??
-;; (defvar running-ms-windows
-;;   (string-match "windows" (prin1-to-string system-type)))
 
 (defvar running-gnu-linux
   (string-match "linux" (prin1-to-string system-type)))
@@ -289,14 +272,12 @@
 ;; ** Search/Replace within Buffer
 
 ;; Bindings for searching with currently highlighted string
-;; searching a word forwards by M-s
-(define-key isearch-mode-map "\M-s" 'isearch-repeat-forward) ;
-;; searching a word backwards by M-r
-(define-key isearch-mode-map "\M-r" 'isearch-repeat-backward) ;
+(define-key isearch-mode-map "\M-s" 'isearch-repeat-forward)  ; word forward
+(define-key isearch-mode-map "\M-r" 'isearch-repeat-backward) ; word backward
 
 (use-package replace-from-region
-  :config
-  (global-set-key (kbd "M-%") 'query-replace-from-region)); default was query-replace
+  :config                       ; default was query-replace
+  (global-set-key (kbd "M-%") 'query-replace-from-region))
 
 ;; When hit C-s (default emacs binding) with a region selected, use it as the search string.  From: http://stackoverflow.com/questions/202803/searching-for-marked-selected-text-in-emacs
 ;; NOTE: C-s C-w (extra C-w's expand region) also works well
@@ -330,7 +311,7 @@
 	    (swiper-func region))
 	(swiper-func)))))
 
-;; binding swiper inside use-package looked hard.  Just do this for now, fix later
+;; binding swiper inside use-package looked hard.  Do this for now, fix later
 (global-set-key "\C-s" 'sdo/swiper-region)
 ;;(global-set-key "\C-s" 'swiper) ; bind it instead to sdo/swiper-region
 ;; ivy-views integrate with ivy-switch-buffer (See https://oremacs.com/2016/06/27/ivy-push-view/).  That's probably nice but I'm still using ido-switch-buffer b/c of its rectangular view.  So, I've bound ivy-switch view to something close to switch-buffer.  
@@ -338,17 +319,15 @@
 (global-set-key (kbd "C-c V") 'ivy-pop-view) ; works like delete
 (global-set-key (kbd "C-x V") 'ivy-switch-view)
 ;; actually, this seems to do the (nearly) same thing as C-s s
-(global-set-key (kbd "C-c C-r") 'ivy-resume) ; Resume the last ivy completion session
-;; mabye nice but I want to preserve reverse search direction
+(global-set-key (kbd "C-c C-r") 'ivy-resume) ;Resume last ivy completion session
+;; maybe nice but I want to preserve reverse search direction
 ;;(define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
 
-;; This didn't install counsel.  I had to do it by hand.  Something to do w/ counsel being on melpa, not elpa?
-;; but... video guy also had a problem installing counsel, and he uses use-package all the time: https://www.youtube.com/watch?v=LReZI7VAy8w&t=82s
 (use-package counsel ; better kill-ring 2nd yanking
   :bind
   (("M-y" . counsel-yank-pop)
    :map ivy-minibuffer-map
-   ("M-y" . ivy-next-line)))
+   ("M-y" . ivy-next-line))) ; needed?
 
 ;; * IDO Mode
 ;; Ido mode (a replacement for iswitchb and much else).  Much is in customizations
@@ -391,8 +370,7 @@
 (use-package ido-describe-bindings
   :config (global-set-key (kbd "C-h b") 'ido-describe-bindings))
 
-;; ido- matching for emacs commands (could use ido-ubiquitous instead):
-;; https://www.reddit.com/r/emacs/comments/1xnhws/speaking_of_emacs_modes_flx_flxido_ido_smex_helm/?st=iu1g56lu&sh=554484fb
+;; ido- matching for emacs commands: https://www.reddit.com/r/emacs/comments/1xnhws/speaking_of_emacs_modes_flx_flxido_ido_smex_helm/?st=iu1g56lu&sh=554484fb
 (use-package smex
   :config (progn (smex-initialize)
 		 (global-set-key (kbd "M-x") 'smex)
@@ -406,9 +384,9 @@
 (global-set-key (kbd "M-[") 'scroll-down) ; page up
 (global-set-key (kbd "M-]") 'scroll-up)   ; page down
 
-;;from: https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
+;;Return to mark: https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
 (bind-key "C-x p" 'pop-to-mark-command) 
-(setq set-mark-command-repeat-pop t)
+(setq set-mark-command-repeat-pop t) ; C-x p keeps going backwards
 
 (defun goto-line-with-feedback ()
   "Show line numbers temporarily, while prompting for the line
@@ -434,20 +412,19 @@
 (global-set-key (kbd "<C-left>")   'windmove-left)
 (global-set-key (kbd "<C-right>")  'windmove-right)
 
-;; C-x C-x toggles from start to end
 (use-package smart-region
-  :init (global-set-key (kbd "C--") 'smart-region))
+  :init (global-set-key (kbd "C--") 'smart-region)) ; C-x toggles to start/end
 
 ;; * Buffer Handling
-;; names buffers containing same file names, different dirs
+;; ** Buffer naming
+;; Renames buffers containing same file names, different dirs
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward)
 (setq uniquify-after-kill-buffer-p 1)
 
-;;(global-set-key "m" 'org-mac-message-insert-link) ; only works on Mac
 (global-set-key "n" 'rename-buffer)
 
-;; list of buffers w/ ctl-mouse1
+;; ** List Buffers w/ ctl-mouse1
 (defun cw-build-buffers ()
   "Popup buffer menu."
   (interactive "@")
@@ -455,9 +432,8 @@
   (popup-menu (car (find-menu-item current-menubar '("Buffers")))))
 (global-set-key [(control button1)] 'cw-build-buffers)
 
-;; Fancier ibuffers: http://cestlaz.github.io/posts/using-emacs-34-ibuffer-emmet/
-;; Is this really better than the default?
-;; 
+;; ** ibuffer (better than the default buffer?)
+;;http://cestlaz.github.io/posts/using-emacs-34-ibuffer-emmet/
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (setq ibuffer-saved-filter-groups
       (quote (("default"
@@ -488,6 +464,7 @@
 ;; Don't ask for confirmation to delete marked buffers
 (setq ibuffer-expert t)
 
+;; ** Buffer movement
 ;; Bind shift-arrow keys to buffer moving commands
 ;; (org-mode keys should have already been unbound in the org section)
 (use-package buffer-move ; switch 'buffer-move-behavior' somehow changes this
@@ -496,6 +473,7 @@
 		 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 		 (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
 
+;; ** Indirect buffers
 (defun sdo/clone-indirect-buffer-other-frame (newname display-flag &optional norecord)
   "Like `clone-indirect-buffer' but display in another frame."
   (interactive
@@ -587,7 +565,6 @@
 ;;(global-set-key (kbd "C-x f") 'find-file-literally); overwrites set-fill-column
 
 ;; ** Name of file in current buffer (kind of the opposite of ffap)
-
 ;; http://emacsredux.com/blog/2013/03/27/copy-filename-to-the-clipboard/ https://github.com/bbatsov/prelude
 (defun copy-current-file-name-to-clipboard ()
   "Copy the current buffer file name to the clipboard."
