@@ -10797,8 +10797,9 @@ Erika
 ******* [[cite:GE16predixArchSrvcTechNote][GE 2016: Predix Architecture Services]]
 ******* [[https://onedrive.live.com/edit.aspx/work/IWES?cid=4bbd96b3698748f8&id=documents&wd=target%2528Tutorials.one%257C93389E1B-FCE1-4F63-9068-1B49828D94D3%252FPredictive%2520Maintenance%2520with%2520Matlab%257CF90A03D9-B2A1-49F5-97FD-A5E26BFE11C0%252F%2529][Predictive Maintenance with Matlab (my OneNote notes on tutorial)]]
 ***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (discusses ROC stats, learning)
-***** see also [[Class Imbalance Handling]]
-***** see also [[*State Change Detection][State Change Detection]] (for flaw detection)
+***** also [[Class Imbalance Handling]]
+***** also [[Fault Prediction]]
+***** also [[State Change Detection][State Change Detection]] (for flaw detection)
 *** Smart Grid <<Smart Grid>>
 ***** Grid semantic web
 ******* [[http://cordis.europa.eu/ictresults/index.cfm/section/news/tpl/article/id/90399][Semantic web promises a smarter electricity grid]]
@@ -11224,6 +11225,8 @@ Erika
 ********* TODO [[https://www.google.com/search?q=unsupervised+root+cause+analysis+fault+detect&source=lnt&tbs=qdr:y&sa=X&ved=0ahUKEwjx7_uV38vRAhWGCywKHcpFDKUQpwUIFA&biw=1684&bih=1036&cad=cbv&bvch=u&sei=O2Z_WMKJCMOdsgG1v6i4BA][google search]]: follow up on this
 ***** see also [[Novelty Detection]]
 ***** see also [[Streamwise processing]]
+*** <<Fault Prediction>>
+***** [[cite:Premraj17coOccrAlarmsWindTurb][Premraj & Wigbers 2017: Discovering co-occur alarms wind turn analytics]]
 *** <<State Change Alarm Criteria>>
 ***** SPRT, the standard: [[cite:Gross02earlyDetSPRT][Gross & Lu 2002: Early Detection Signal SPRT]]
 ***** SPRT, non-Gaussian, spec of H1 (from STEAG): [[cite:Deeskow17modNotesSPRT][Deeskow 2017: SPRT mods]]
