@@ -294,7 +294,7 @@
   :diminish ivy-mode
   :init
   (progn
-    (setq ivy-use-virtual-buffers t) ; ivy-switch-buffer also shows recent files
+;;    (setq ivy-use-virtual-buffers t) ; ivy-switch-buffer also shows recent files
     (setq ivy-count-format "(%d/%d) ") ; show candidate index/count in swiper
     ;; Search with swiper, handles org-mode headline unfold much better than helm
     ;; C-s C-w (extra C-w's expand region) also works well
@@ -1679,7 +1679,6 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(ido-mode (quote both) nil (ido))
  '(ido-use-filename-at-point (quote guess))
  '(ido-use-url-at-point t)
- '(ido-use-virtual-buffers t)
  '(indent-tabs-mode nil)
  '(ivy-mode t)
  '(ivy-wrap t)
