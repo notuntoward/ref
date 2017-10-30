@@ -46,6 +46,19 @@
   (defcustom conda-postdeactivate-hook nil
     "Hook run after a conda environment is deactivated.")
 
+******* TRY virtual buffers: do I like them?
+        I've turned it off to see if I care.
+
+        removed customization ido-use-virtual-buffers
+        commented out (ivy-use-virtual-buffers t)
+
+        would expect to notice the difference in at least
+        
+        ido-switch-buffer
+        ivy-switch-buffer
+
+        Right now, I don't use this from shorcuts -- I'm using ibuffer
+
 ******* TRY decide on <<highlight symbol>>
 
         _Two alternatives, neither perfect_:
@@ -2623,7 +2636,7 @@ For a public browser link. Share the note and copy the share url.
 *** latest build: https://builds.jabref.org/master/
 *** [[https://github.com/JabRef/jabref/blob/master/CHANGELOG.md#unreleased][What's new in latest build]] 
 *** setting up multiple previews: =Options-> Preferences-> Entry preview=
-*** Setting JabRef setup so it can push latex cites to Emacs
+*** setup so JabRef can push latex cites to Emacs
     <<Setting JabRef setup so it can push latex cites to Emacs>>
 
 =Options -> Preferences -> External programs -> "Settings for Emacs" -> "Path to Emacs (gnuclient or emacsclient)":=
