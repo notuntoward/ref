@@ -1,4 +1,3 @@
-;; .EMACS (nonheadline needed here for outshine global tabbing)
 ;; * Emacs Startup Behavior
 
 (require 'server) ; so file association works on windows and emacsclient
@@ -785,15 +784,19 @@
 (add-hook 'ediff-prepare-buffer-hook #'outline-show-all)
 
 ;; *** Outshine: org-mode like headlines in programming and other modes
-;; Setup from: http://orgmode.org/worg/org-tutorials/org-outside-org.html
-;;        and: http://www.modernemacs.com/post/outline-ivy/
 (use-package outshine
+;; this works if I run it from inside .emacs but not after a clean start  
+;;  :bind (:map outline-minor-mode-map ("S-<tab>" . outshine-cycle-buffer))
   :diminish outline-mode
   :diminish outline-minor-mode
   :config
   (add-hook 'outline-minor-mode-hook 'outshine-hook-function) ; for outshine
-  (add-hook 'prog-mode-hook 'outline-minor-mode))             ; all prog modes
-
+  (add-hook 'prog-mode-hook 'outline-minor-mode)             ; all prog modes
+  ;; from https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-outshine.el
+  (bind-keys
+   :map outline-minor-mode-map
+   ("<backtab>" . outshine-cycle-buffer))) ;Global cycle using S-TAB
+  
 ;; *** Vertical indent lines in programming modes
 ;; https://github.com/DarthFennec/highlight-indent-guides
 ;; M-x highlight-indent-guides-mode to activate
