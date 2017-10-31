@@ -312,7 +312,6 @@
 
 ;; binding swiper inside use-package looked hard.  Do this for now, fix later
 (global-set-key "\C-s" 'sdo/swiper-region)
-;;(global-set-key "\C-s" 'swiper) ; bind it instead to sdo/swiper-region
 ;; ivy-views integrate with ivy-switch-buffer (See https://oremacs.com/2016/06/27/ivy-push-view/).  That's probably nice but I'm still using ido-switch-buffer b/c of its rectangular view.  So, I've bound ivy-switch view to something close to switch-buffer.  
 (global-set-key (kbd "C-c v") 'ivy-push-view)
 (global-set-key (kbd "C-c V") 'ivy-pop-view) ; works like delete
@@ -1652,6 +1651,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(dired-dwim-target t)
  '(display-time-24hr-format t)
  '(display-time-default-load-average nil)
+ '(display-time-load-average-threshold 100000000)
  '(emacsw32-style-frame-title t)
  '(ess-default-style (quote OWN))
  '(ess-ido-flex-matching t)
@@ -1679,6 +1679,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(ido-mode (quote both) nil (ido))
  '(ido-use-filename-at-point (quote guess))
  '(ido-use-url-at-point t)
+;; '(ido-use-virtual-buffers t)
  '(indent-tabs-mode nil)
  '(ivy-mode t)
  '(ivy-wrap t)
