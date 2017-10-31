@@ -1597,21 +1597,20 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
 (global-visual-line-mode +1)
 (global-set-key (kbd "C-c w") 'toggle-truncate-lines) ; e.g. to view org-mode tables
 
-; too crowded?, force on RHS, like Anzu search counter was on LHS?
 (display-time-mode 1) ; time on the modeline (is customized)
 
+;; Right justifies time & other stuff in mode-line-misc-info, but undoes prevous modeline buffer uniquification (maybe I want to fix that...)
+(use-package smart-mode-line 
+  :config
+  (setq sml/theme nil) ; don't change existing modeline faces
+  (sml/setup))
+
+(column-number-mode 1) ; in mode-line
 (mouse-avoidance-mode 'animate)  ; get mouse out of way of cursor, is customized
 
-;; this TERRIBLY SLOWS DOWN energytop.org and others
-;;(global-hl-line-mode t) ; horizontal bar where cursor is, is customized
-;; Alternatives
-;;  * turn off in org-mode using hl-line-inhibit-highlighting-for-modes
-;;  * find that flashing cursor thing I saw in C'est la Emacs Youtube videos
-;;  * use toggle-hl-line-when-idlefrom  package hl-line+ (not sure if that helped)
-
-
 (auto-fill-mode -1)  ; don't do autofill: do visual wrap instead
-(remove-hook 'text-mode-hook #'turn-on-auto-fill) ; in case some other mode sets this hook in text mode
+;; in case some other mode sets this hook in text mode
+(remove-hook 'text-mode-hook #'turn-on-auto-fill)
 
 ;; Sets the wrap-prefix property on the fly so that single-long-line
 ;; paragraphs get word-wrapped in a way similar to what you'd get with
@@ -1757,7 +1756,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (smartscan artbollocks-mode highlight-thing try conda use-package counsel swiper-helm esup auctex auctex-latexmk ess ess-R-data-view ess-smart-equals ess-smart-underscore ess-view psvn igrep helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine highlight-indent-guides lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ ox-pandoc copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 undo-tree iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f org-ref writegood-mode auto-complete rainbow-delimiters smex matlab-mode popup parsebib org-plus-contrib org-cliplink org-bullets org-autolist org key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move cygwin-mount)))
+    (smart-mode-line smartscan artbollocks-mode highlight-thing try conda use-package counsel swiper-helm esup auctex auctex-latexmk ess ess-R-data-view ess-smart-equals ess-smart-underscore ess-view psvn igrep helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine highlight-indent-guides lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ ox-pandoc copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 undo-tree iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f org-ref writegood-mode auto-complete rainbow-delimiters smex matlab-mode popup parsebib org-plus-contrib org-cliplink org-bullets org-autolist org key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move cygwin-mount)))
  '(paren-message-show-linenumber (quote absolute))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
