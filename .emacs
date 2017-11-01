@@ -1480,12 +1480,7 @@ This function avoids making messed up targets by exiting without doing anything 
 
 ;; * Emacs Command Execution
 
-;; (use-package undo-tree ; so far, I only use the redo C-? that it adds
-;;   :config (undo-tree-mode t))
-
-;; do I like this ?
-;; I was only using the redo C-? that it addsthat it adds
-; 'q' gets out of the tree mode, but is the tree mode helpful?
+;; C-x u visualize an undo tree, C-/ is like old undo, C-? is redo
 (use-package undo-tree
   :diminish undo-tree-mode
   :config
@@ -1592,9 +1587,8 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
 
 (show-paren-mode 1) ; turn on blinking parens, any computer?
 
-;;default major setq
 ;; visual line mode messes up org-tables but is GREAT for everything else
-(global-visual-line-mode +1)
+(global-visual-line-mode +1) ; soft line wrapping
 (global-set-key (kbd "C-c w") 'toggle-truncate-lines) ; e.g. to view org-mode tables
 
 (display-time-mode 1) ; time on the modeline (is customized)
@@ -1775,6 +1769,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(scroll-step 1)
  '(search-default-mode (quote char-fold-to-regexp))
  '(show-paren-mode t)
+ '(sml/modified-char "•")
  '(swiper-action-recenter nil)
  '(tool-bar-mode nil)
  '(visual-line-fringe-indicators (quote (nil top-right-angle)))
@@ -1840,6 +1835,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(org-verbatim ((t (:inherit shadow :weight bold))))
  '(org-warning ((t (:foreground "firebrick" :weight normal))))
  '(region ((t (:background "LightSteelBlue1"))))
+ '(sml/modified ((t (:inherit sml/not-modified :foreground "firebrick" :weight bold))))
  '(table-cell-face ((t (:background "honeydew1" :foreground "black" :inverse-video nil))))
  '(writegood-duplicates-face ((t (:underline (:color "orange" :style wave)))))
  '(writegood-passive-voice-face ((t (:underline (:color "MediumOrchid1" :style wave)))))
