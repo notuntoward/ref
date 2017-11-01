@@ -106,6 +106,13 @@
         [[https://www.youtube.com/watch?v=Mxpp91jo27A][bookmarks video]]
 ******* TRY retry tramp.  Maybe good for working on IWES servers
 ******* TRY python modes [[https://github.com/jorgenschaefer/elpy][elpy]] vs. [[https://github.com/proofit404/anaconda-mode][anaconda-mode]]
+******* TRY expand-region/smart-region extra org mode bindings
+        expand-region: https://github.com/magnars/expand-region.el/blob/master/the-org-mode-expansions.el
+
+        expand has er/mark-org-parent, which I don't see in smart-region, but might be handy
+
+        It's included in smart-regions somehow, and I can see the function, but how to bind it?
+
 ******* TRY right justify mode-line clock
 ********* Modeline is controlled by the variable: =mode-line-format= 
 
@@ -202,6 +209,2523 @@
 
 ************* TODO I prefer the uniquified buffername, not the full path (or truncated)
 
+******* TRY put '#' in dedicated target link 
+
+        Will prefer to match with dedicated links (but didn't [[][]] already do that?)
+
+        http://orgmode.org/manual/Internal-links.html
+
+        This is somehow _incompatible with org-ref_.  If I test the example org file from [[https://github.com/snosov1/toc-org][GitHub - snosov1/toc-org: toc-org is an Emacs utility to have an up-to-date t...]]
+
+        and put my cursor on, or C-c C-o on any of the links referencing a headline (could also be referencing a dedicated target), I get errors like this:
+
+           Error running timer ‘org-ref-link-message’: (error "No match for custom ID: Installation")
+
+        /DOES toc-org insert custom ID definitions that org-ref would not crash on?/
+
+        *ANYWAY* _the change to my .emacs for # targets would be:_ 
+
+          (defun create-and-link-dedicated-org-target (callPrefix)
+
+          Changing the line:
+	    (kill-new (concat "[" targBdy "]"))
+          To this:
+	    (kill-new (concat "[#" targBdy "]")) ;'#' for dedicated targ match
+
+******* TRY get .emacs, etc. unified across machines.
+******* TRY get Windows file associations working again, esp. pdf reader
+
+        Note: it already works for opening pdfs in bibtext mode (from C-c j p)
+
+******* TRY try out [[http://orgmode.org/worg/org-contrib/org-choose.html][org-choose]] module
+******* TRY different scrollbar color for window in focus (like modeline behavior)
+      
+        https://www.gnu.org/software/emacs/manual/html_node/elisp/Scroll-Bars.html
+
+******* TRY [[https://github.com/sigma/org-s5][ox-s5]] export, an org-->[[https://meyerweb.com/eric/tools/s5/][s5 slides in html/pdf]] (also try [[https://github.com/cybercode/org-slides][ox-deck]])
+******* TRY [[https://github.com/emacsmirror/org/blob/master/contrib/lisp/ox-confluence.el][org-confluence]] export
+******* TRY use setup file for every org file (like a template)
+
+        Inspired by [[https://mail.google.com/mail/u/0/?shva=1#inbox/15f336bd15ceba8c][this]] email, the documentation is [[http://orgmode.org/manual/In_002dbuffer-settings.html][here]].
+
+******* TRY try to use ~org-iswitchb~ (=bound to C-c b=)
+******* TRY improve hydra
+********* org: counsel-org-goto
+********* org: counsel-org-tag
+********* counsel-unicode-char˲
+********* more describe stuff e.g. describe-key to my =M-apps= hydra
+********* Fancy region editing (double cursors but not that, remember the Finn's video)
+********* [[Rectangle editing]] (make it a sub-menu?)
+********* abo-abo window switching, etc. w/ setup: [[https://www.youtube.com/watch?v=_qZliI1BKzI][Switching Emacs windows with hydra and ace-window]]
+******* TRY [[https://github.com/abo-abo/swiper][ivy/swiper/counsel]]
+        For some things, I like ido better:
+        - See [[Swiper]]
+        - compunaut [[https://www.reddit.com/r/emacs/comments/51lqn9/helm_or_ivy/][says]] that [[https://github.com/compunaut/helm-ido-like-guide][setting helm up like ido]] makes it match ivy better, if want to use helm chunks
+********* TRY speed up swiper on energy.bib and energytop.org
+*********** the swiper-grep thing helped but did not solve it
+*********** it is said that visual line mode slows down swiper
+********* TRY make an <<ivy gridmode>> like [[https://github.com/larkery/ido-grid-mode.el][ido-grid-mode]]
+
+          o ivy grid would be especially nice in M-x (although counsel-M-x does show keys).  I asked (see [[Swiper]]).
+
+          gridmode is more efficient. I asked if ivy could do this, and abo-abo said [[https://github.com/abo-abo/swiper/issues/962]["No, but try ivy-format-function"]]
+
+          [[help:ivy-format-function]] default
+          *[[file:~/.emacs.d/elpa/ivy-20170416.1021/ivy.el][-->>
+              ]]* [[file:~/.emacs.d/elpa/ivy-20170416.1021/ivy.el::"Transform%20CAND-PAIRS%20into%20a%20string%20for%20minibuffer."][ivy-format-function-default]] 
+              -->
+                  [[file:~/.emacs.d/elpa/ivy-20170416.1021/ivy.el::(let%20((i%20-1))][ivy--format-function-generic]]
+
+          can see that these functions just take a list of items from a lower level ivy function, cancatenate a seperator and return.
+
+          To make grid mode, would change
+
+            [[file:~/.emacs.d/elpa/ivy-20170416.1021/ivy.el::(let%20((i%20-1))][ivy--format-function-generic]]
+
+          which makes a string that goes in the buffer.  It's just a vertical list, with one on each line, because a newline is inserted after each item in the list.
+
+          Would need to
+          o set a screen width
+          o set a max file width
+          o set a screen height
+          o decide max # items per row
+          o rewrite this function to only insert newlines at the row ends
+
+          What I don't understand is where the highlighting for matches in this display is applied.  If it's after a call to this function, it seems like I'd have to change A LOT.  If it's before them, and the highlighting is somehow transferred, then it's not too much.
+
+          Maybe the faces are added, like for the default function, [[file:~/.emacs.d/elpa/ivy-20170416.1021/ivy.el::(ivy--add-face%20str%20'ivy-current-match))][here]].
+
+********* [[Http://oremacs.com/swiper/#getting-started][Official ivy setup in manual]]
+********* TRY bindings on [[https://sam217pa.github.io/2016/09/13/from-helm-to-ivy/][this page]] or [[this other page]].  Things I might like
+          o ivy resume (goes back to previous swiper)
+            (C-r inside of swiper mini-buffer also does this)
+          o counsel-find-file (but no grid mode)
+          o counsel-M-x (but no grid mode)
+          o counsel-recentf (but no grid mode)
+          o ivy-switch-buffer (but no grid mode)
+          o [[http://oremacs.com/swiper/#key-bindings][officially recommended bindings]]
+********* ivy fonts: green inherited from 'highlight', different than ido yellow
+
+
+          'highlight' is also used for that fancy multi-curor-like-thing
+
+          also get rid of that ugly purple
+
+          [[https://oremacs.com/2015/03/14/more-swiper-ivy-stuff/][Guy says]] there are six faces that inherit the following fonts
+          highlight, isearch-lazy-highlight-face, isearch and match
+
+          From [[help:ivy-minibuffer-faces]]
+          swiper fonts are:
+          (ivy-minibuffer-match-face-1 ivy-minibuffer-match-face-2 ivy-minibuffer-match-face-3 ivy-minibuffer-match-face-4)
+
+********* See [[Swiper]]
+******* TRY play with [[help:org-show-context-detail]]
+******* TRY get grep/find on windows to work
+
+        grep w/ cygwin works fine
+
+        but I can never get recursive find to work.
+
+********* TRY ? [[http://ergoemacs.org/emacs/elisp-xah-find-text.html][xah-find]] package: pure emacs find/grep good for windows
+******* TRY <<ivy-mode>>
+********* TRY org-mode search: horribly slow when not expanded, otherwise fast
+********* TRY =C-h m=: inside of swiper, etc. brings up ivy help.  READ IT.
+********* TRY to remember the return to point thing after searching: =C-u C-space=
+******* TRY [[https://github.com/jkitchin/org-ref/blob/master/org-ref.org][org-ref-ivy-cite]]
+******* TRY [[https://github.com/jacktasia/dumb-jump][dumb-jump: an Emacs "jump to definition" package]]
+******* TRY C-h k and C-h f (help key and function)
+******* TRY [[Rectangle editing]]
+******* TRY [[Emacs Macros]]
+******* TRY remember to use apps-key for M-x
+******* TRY <<Concept map-like stuff: superlabel, dedicated targets, org-brain>>
+********* TRY Look at how concept maps tools do outlines
+*********** [[https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=7&cad=rja&uact=8&ved=0ahUKEwjPwfmQnefTAhVFL1AKHauECeEQFgg8MAY&url=http%253A%252F%252Fvue.tufts.edu%252Fhelp%252Fcontent%252FMap%252520Display.pdf&usg=AFQjCNF8aylIFqpcYkLTuya7kzqzQA_kMg&sig2=W3kYpzXSVJ3nSOoZcn1GKg][VUE]]
+*********** [[http://cmap.ihmc.us/][IHMC Cmap]]
+********* TRY [[https://github.com/Kungsgeten/org-brain][org-brain: Org-mode wiki + concept-mapping]] (and ask for what I would like in it)
+
+          *What I would like*:  Generally, preserve outline structure but still have two way links.
+          - Definition of a concept
+            - explicitly define with org dedicated target, or similar
+            - make every headline be an idea
+              - easy but...
+              - many headlines aren't really an idea
+              - would have problems with headlines containing unintended duplicate text
+          - Two sources of dependency: explicit and org-tree
+            - explicit: done by a two-way link
+            - org-tree parent/child/sibling relationships come from org outline
+              - sibling: under same headline (immediately or total)
+                Two kinds of sibling
+                - headline is defined as a concep
+                  - explicitly
+                  - or by a setting that makes all headlines a concept (tons of siblings)
+                - headline has no concept
+                  - would have a ton of sibling relationships in this view
+                  - but easier
+              - parent: this idea is a headline over some other idea
+              - child: this idea has a headline with some other idea in it
+          - If currently on X, then Y is shown as related to X
+            - in an outline, X is a parent of Y, X is a child of Y, X is a sibling of Y
+            - an explicit two-way link has been made
+          - Three views: parent of, child of, sibling of
+            - _X is parent of Y_
+              - show X's (narrowed) tree containing Y, expanded to highest sub level where Y shows up
+              - option to expand tree until show all instances of Y within X's tree
+              - option to expand normally
+              - option to un-narrow
+              - option to navigating to all other (disjoint) trees where X is a parent of Y
+            - _X is child of Y_
+              - show Y's (narrowed) tree containing (path to) highest sublevel of X
+              - option to expand tree until show all instances of X within Y's tree
+              - option to expand normally
+              - option to un-narrow
+              - option to navigating to all other (disjoint) trees where X is a child of Y
+            - _X is sibling of Y_
+              - expand (narrowed) tree(s) at level where can see both X and Y
+              - option to navigating to all other (disjoint) trees where X is a sibling of Y
+              - option to expand tree until show all instances of X and Y in tree (below top level of siblingship?)
+              - option to expand normally
+              - option to un-narrow
+          - View for explicit X/Y link
+            - /do something?!/
+          - search result outline display controllable like: org-show-context-detail
+
+*********** tools: [[Elisp]]
+********* Definition of a "Concept"
+*********** dedicated target
+*********** any headline
+*********** tags 
+************* quick way to have multiple assoc. but no ordering
+*********** bibtex reference
+********* TRY superlabel continue with =create-and-link-dedicated-org-target=
+          First step is probably: [[Fontlock to toggle hide dedicated targets]]
+********* TRY Hiding dedicated targets
+*********** TRY ~create-and-link-dedicated-org-target~: clean text from targText
+                remove links, etc., from before making target, etc.
+                Maybe remove all formatting: _x_, ~x~, etc.
+*********** [[https://emacs.stackexchange.com/questions/19230/how-to-hide-targets][org mode - How to hide <<target>>s? - Emacs Stack Exchange]] (my exact question!)
+
+            Doesn't work for spaces in targets
+
+*********** <<Fontlock to toggle hide dedicated targets>>
+
+            This is how hyperlinks, headline starts, etc. are hidden.
+            See: org-context in org.el
+
+            [[https://emacs.stackexchange.com/questions/5387/show-org-mode-hyperlink-as-plain-text][Here]], "David J" does it by calling org-remove-from-invisibility-spec
+
+*********** [[http://endlessparentheses.com/use-org-mode-links-for-absolutely-anything.html][Use Org-Mode Links for Absolutely Anything · Endless Parentheses]]
+
+*********** using unique ids instead of/within dedicated targets
+************* [[https://writequit.org/org/settings.html][Lee's Emacs settings file]] has my/org-custom-id-get and many others
+************* [[http://orgmode.org/w/?p=org-mode.git;a=blob_plain;f=lisp/org-id.el;hb=HEAD][package org-id]]
+************* [[http://endlessparentheses.com/markdown-style-link-ids-in-org-mode.html][Markdown style link IDs in org-mode · Endless Parentheses]]
+
+*********** tools needed: [[Elisp]]°
+********* TRY [[https://github.com/caiorss/org-wiki][caiorss/org-wiki: Wiki for Emacs org-mode built on top of Emacs org-...]]
+********* TRY [[https://www.emacswiki.org/emacs/Hyperbole][EmacsWiki: Hyperbole]]
+********* See [[Knowledge as Graphs]]
+******* TRY [[http://kitchingroup.cheme.cmu.edu/blog/2017/04/15/A-new-org-mode-exporter-to-Word-for-scimax/][A new org-mode exporter to Word for scimax]]
+******* TRY [[Saving/restoring window sessions]]
+******* My org-mode experimentation: [[file:org_mode][./org_mode]]
+******* TRY vertical lines for paren matching
+
+        PICKED: highlight-indent-guides (most subtle)
+        BUT: still need to make it work for all programming modes -- see below
+
+********* TRY Get hightlight-indent-guides to activate for all prog modes
+            I have
+              (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+            but it only works for elisp, so I have to manually do
+              M-x highlight-indent-guides-mode to activate
+
+            A [[ https://github.com/syl20bnr/spacemacs/issues/4741][thread on this problem]] says it could be a programming mode in scratch
+            (is org-mode a "programming mode?")
+            I guess not: I disabled orgmode in scratch on startup and highlighting on programming modes other than elisp still didn't work.
+
+            BUT, the thread is marked as solved, so come back to this someday
+********* ACCEPTED [[https://github.com/DarthFennec/highlight-indent-guides][highlight-indent-guides: Emacs minor mode to highlight i...]]
+
+          used in
+          [[https://github.com/0rdy/kaolin-theme][kaolin-theme: A dark jade Emacs theme inspired by Sierra.vim]]
+
+          config was
+          ;; Highlight indent guides
+
+          (hl-indent  gray)
+
+          `(highlight-indent-guides-odd-face  ((t (:background ,hl-indent))))
+          `(highlight-indent-guides-even-face  ((t (:background ,hl-indent))))
+          `(highlight-indent-guides-character-face  ((t (:foreground ,hl-indent))))
+
+
+
+********* [[https://github.com/DarthFennec/highlight-indent-guides][Comparison]]
+        | Package Name               | Widths  | Hard Tabs   | Other Notes                |
+        |----------------------------+---------+-------------+----------------------------|
+        | highlight-indentation.el   | Fixed   | Unsupported | Very popular, fat lines    |
+        | indent-guide.el            | Dynamic | Supported   | Fairly slow, jittery, asii |
+        | hl-indent.el               | Dynamic | Unsupported | Slow for large files       |
+        | visual-indentation-mode.el | Fixed   | Unsupported | Fast and slim, ugly        |
+        | highlight-indent-guides    | ?       | ?           | in kaolin, has slim lines  |
+        |----------------------------+---------+-------------+----------------------------|
+******* Syntax for try/accepted/reject todo things
+        # -*- org-todo-keyword-faces: (("ACCEPTED" . "green") ("TRY" . "red") ("REJECTED" . "gray")) ; -*-
+        #+TODO: TRY | REJECTED | ACCEPTED
+******* TRY [[https://github.com/abo-abo/org-download][abo-abo/org-download: Drag and drop images to Emacs org-mode]]
+******* TRY [[https://github.com/abo-abo/lispy][abo-abo/lispy: short and sweet LISP editing]]
+******* TRY [[https://github.com/abo-abo/lpy][abo-abo/lpy: Minimal Python IDE for GNU Emacs]]
+******* TRY [[https://github.com/abo-abo/ace-window][abo-abo/ace-window: Quickly switch windows in Emacs]]
+******* [[https://github.com/aaronjensen/spacemacs.d/blob/af8a583972e680fea512f939db06f17fffc84fb7/lisp/init-org.el#L215-L247][spacemacs.d/init-org.el Add beginnings of dwim org backspace]]
+        Maybe nice in future
+        has lots org code examples
+
+        Might be worth it to see how (setq org-hide-emphasis-markers t) is responded to in org-mode:  maybe it can be hacked into hiding <<>> ?
+
+******* [[Emacs symbols]]
+******* TRY [[http://kitchingroup.cheme.cmu.edu/blog/2017/04/09/A-better-return-in-org-mode/][A better return in org-mode]]
+
+        I might like this Word like behavior but I just automatically wrote this bullet assuming that return would break me out of headline creation.  Which is more natural?  On the other hand, I do like org-autolist.
+
+********* a little better than, [[https://github.com/calvinwyoung/org-autolist][calvinwyoung/org-autolist]]
+          which I'm already using: jkitchin is considering merging it
+********* creates new rows of tables, for example, which is nice
+********* modified and posted on github by somebody [[https://github.com/Kungsgeten/selected.el][here]]
+********* still being heavily revised, as of April 15, 2017.  Wait for it to settle down?
+********* I still want to create a new headline if return or M-return in middle of line
+******* TRY [[https://github.com/tbanel/orgaggregate][orgtbl-aggregate]]
+******* TRY [[https://github.com/wolray/symbol-overlay][wolray/symbol-overlay: would be nice for programming e.g. in python or something]]
+******* TRY [[help:re-builder]]*
+
+        Can also use [[swiper]], which matches on regex (split into groups with a space).  Each group is highlighted with a different face.
+
+******* TRY M-x proced
+******* TRY Flashcards inside german.org: [[https://www.reddit.com/r/emacs/comments/63z6yj/org_mode_and_anki/][org-drill or pamparam]]
+******* TRY <<Get IEEE & ScienceDirect with abstracts in emacs>>
+********* [[Org-ref operations on .bib file]] (gets science direct, as of May 2017)
+********* [[http://ieeexplore.ieee.org/gateway/][IEEE Xplore Search Gateway Search Parameters]] (but no download???)
+********* [[gscholar-bibtex]] gets IEEE but no abstracts
+*********** gscholar-bibtex-ieee-bibtex-content seems to be where it's done
+********* Python/wget: [[https://github.com/ipapusha/get-ieee-paper][ipapusha/get-ieee-paper: downloads an IEEE Xplore paper over ssh]]
+********* Ruby: [[https://github.com/BoolLi/BibTex-Fetcher/blob/master/parser.rb][BibTex-Fetcher/parser.rb at master · BoolLi/BibTex-Fetcher]]
+********* [[http://guides.lib.berkeley.edu/information-studies/apis][APIs for scholarly resources]]
+********* See also: [[BibTex and Emacs]]
+***** *ACCEPTED*
+******* ACCEPTED make recent files display "basename|dirname" like buffer uniquify
+        Done.  See ~/.emacs (defun sdo/uniquify-like-buffer (vm-unique-filename)...)
+
+******* ACCEPTED try out [[https://github.com/larstvei/Try][try]] (try packages w/o installing)
+        I've installed this.  It works unless the packages being tried has undownloaded dependencies, it seems.
+
+******* ACCEPTED get a recent directories like recent files
+
+        I picked bjm/ivy-dired-recent-dirs (Method #1 below).
+
+        I thought about ido'izing it, and making uniquifying like recent files are, but actually, I like the plain ivy binding better, so I'm keeping it as it.
+
+        Here are two ways to make recent directories.maybe one is easier to idoize?
+
+          1. [[http://pragmaticemacs.com/emacs/open-a-recent-directory-in-dired-revisited][Method #1]] using ivy directly
+          [[From: http://blog.binchen.org/posts/use-ivy-to-open-recent-directories.html][2. Method #2]] using counsel
+             Calls executable "fasd" which I don't see in my IWES path.
+             There is also an emacs fasd package, but this also wants the binary???
+
+        They look the same to the user but 
+******* ACCEPTED fix helm and ref-bibtex bibtex _pdf openers_ on SP4 (Win 10 v.s Win 7?)
+      
+        Bug report is [[https://github.com/jkitchin/org-ref/issues/511][here]].
+
+        In the end (Oct. 28, 2017), this just started working again.  I'm not sure if I did anything that fixed it, or if one of the package updates did the job.  
+      
+        Comments on [[https://emacs.stackexchange.com/questions/3105/how-to-use-an-external-program-as-the-default-way-to-open-pdfs-from-emacs][this article]] might be of help w/ windows file associations or with using pdf-tools package ([[http://tuhdo.github.io/static/emacs-read-pdf.gif][demo]] for pdf-tools, I think)
+
+********* my bug tracking trail
+************* org-ref bibtex hydra
+              hdyra 'p' [[file:~/.emacs.d/elpa/org-ref-20171019.724/org-ref-bibtex.el::("p"%20org-ref-open-bibtex-pdf)][calls]] org-ref-open-bibtex-pdf
+              org-ref-open-bibtex-pdf calls
+              the function [[file:~/.emacs.d/elpa/org-ref-20171019.724/org-ref-core.el::org-ref-open-bibtex-pdf][org-ref-open-bibtex-pdf]]
+
+              I changed this to print what it's trying to open.  Here are the responses:
+
+                ... key=Garcke17dimRedWindTurb, pdf=c:/Users/scotto/Tempo Box/ref/papers/Garcke17dimRedWindTurb.pdf
+
+              and then
+
+                tried to open c:/Users/scotto/Tempo Box/ref/papers/Garcke17dimRedWindTurb.pdf
+
+              which is the right path.
+
+                formats to: [[file:c:/Users/scotto/Tempo Box/ref/papers/garcke17dimredwindturb.pdf]]
+
+                (is the blank in the path the problem?)
+
+              this then [[file:~/.emacs.d/elpa/org-ref-20171019.724/org-ref-core.el::(org-open-link-from-string%20(format%20"%5b%5bfile:%25s%5d%5d"%20pdf)))][calls]] the function [[file:~/.emacs.d/elpa/org-plus-contrib-20171023/org.el::(defun%20org-open-link-from-string%20(s%20&optional%20arg%20reference-buffer)][org-open-link-from-string]]
+
+              _Experiments_
+
+    (setq pdf "c:/Users/scotto/Tempo Box/ref/papers/Garcke17dimRedWindTurb.pdf")
+
+    (setq pdf "c:/Users/scotto/OneDrive/scotto/tmp/Garcke17dimRedWindTurb.pdf")
+
+    (org-open-link-from-string (format "[[file:%s]]" pdf))
+
+    (message "qa=%s" (shell-quote-argument pdf))
+
+    (message "qa2=%s" (format "[[file:%s]]" (shell-quote-argument pdf)))
+    (message "qa3=%s" (format "[[file:""%s]]" pdf))
+
+    (org-open-link-from-string (format "[[file:%s]]" (shell-quote-argument pdf)))
+    (org-open-link-from-string (format "[[file:%s]]" pdf))
+
+    (setq pdf "c:/Users/scotto/Tempo Box/ref/papers/Garcke17dimRedWindTurb.pdf")
+    (org-open-link-from-string (format "[[file:%s]]" pdf))          
+
+******* ACCEPTED clean up .emacs w/ use-package or equivalent
+
+        See: [[File:~/.emacs::;;%20TODO%20use-package%20is%20redundant%20w/%20'(package-selected-packages%20in%20customizations)][use-packages notes in my .emacs]]
+******* ACCEPTED fix org-ref hydra thing: C-j no longer brings up hydra
+
+        My hack was to put it inside of 
+      
+          (use-package org-ref
+
+        and to directly put it into the bibtex map
+
+          (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
+
+        normally, it's bound in:
+
+        https://github.com/jkitchin/org-ref/blob/master/org-ref-bibtex.el
+
+******* ACCEPTED Decide mappings: C-c b, C-c r *VS*. =C-x 5 c= etc. *VS.* Prefix
+      
+        *Conclusion*: New mappings will be
+
+          C-x C-f: find file (as always)
+          C-x 4 f: find file other window (easier than fully consistent =C-x 4 C-f=)
+          C-x 5 f: find file other frame
+
+          C-x C-r: find recent file (mimicking C-x c-f since it's also a file)
+          C-x 4 r: find recent file other window
+          C-x 5 r: find recent file other frame
+
+          C-x c:   clone buffer (like files but avoids =C-x C-c= (kills emacs))
+          C-x 4 c: clone buffer other window
+          C-x 5 c: clone buffer other frame
+
+          C-c b:   org-iswitchb (/generalize to "files of same mode"/)
+
+********* C-x 5 r vs. C-5 C-4? *C-x 4, *C-x 5 are better*
+
+            *Conclusion*: C-x 4 and C-x 5 would be consistent w/ frame and window functions ([[Emacs key binding conventions]])
+
+*********** For recentf, C-x 5 C-r is a little clumsy.
+*********** could use a prefix: C-4 C-r, C-5 C-r but C-x 4/5 r is following a standard
+*********** or did I make that up in my own .emacs file
+      
+********* C-c b (C-c 5 b) and C-c b (C-c 5 b)? *C-c b and C-c c are OK*
+*********** I can use C-c since I'm a user ([[Emacs key binding conventions]])
+*********** I had already mapped C-c b to clone-indirect-other buffer
+************* Nice b/c easy to type, and C-c 5 b would be easy too
+************* BUT it wrote over org-iswitchb which restricts to org files (also NICE)
+
+*********** For uniformity: I could also do C-c b, C-c 4 b, C-c 5 b
+************* Easy to type
+************* Consistent with C-c b
+
+********* Save C-c b binding to clone-indirect-buffer-other-window? *No*
+
+          Conclusion: redefining C-c b would not be a sacrifice since I never used my C-c b binding anyway.  And it was kind of inconsistent.
+
+          Also, somebody else uses this as "org-iswitchb" which I think is more consistent, somehow.  Note: org-iswitchb might have a sensible use for C-u prefixes.  See the help for this function.  This might generalized to other modes e.g. for C mode: C-u could mean to ".h" files, etc.
+
+********* Use prefixes args (e.g. C-u)? *No*
+
+          Conclusion: It seems like prefixes arguments are best for binary command options (C-u) and this isn't binary.  Also, I don't have a consistent idea for the other ones, while I do notice that C-x 4 and C-x 5 are almost always bound to window and frame functions
+
+          See [[Emacs key binding conventions]]
+
+********* C-x f is finger-memoried to find-file so use =r= and =c=? *Yes*
+
+******* ACCEPTED make recentf-ido-file-file-other-frame and window
+
+        - Start with recentf-ido-file-file() in .emac
+        - separate 'recentf file' finding
+        - call it in recentf-ido-file-file, recentf-ido-file-file-other-window and recentf-ido-file-file-other-frame
+        - ... using tricks in
+          - find-file-guessing-other-window
+          - find-file-guessing-other-frame
+        - maybe consult [[https://www.emacswiki.org/emacs/RecentFiles#toc2][this page]]
+******* ACCEPTED [[Jumping to papers from inside of org-mode and bibtex files]]
+******* ACCEPTED [[help:ivy-push-view]] (window configs)
+        I've bound it in my .emacs.  See [[Saving/restoring window sessions]]
+******* ACCEPTED [[http://oremacs.com/2015/10/23/dired-compress/][dired file compression]] instead of crypt++
+******* ACCEPTED Make =M-%= search string comes from region, like =C-s= does
+        Done: I installed package [[https://www.emacswiki.org/emacs/replace-from-region.el][replace-from-region.el]]
+
+        Reason I hadn't done this so far is that I wanted to keep the "replace only within selected region of the default =M-%=.
+
+        Maybe make the default behavior a prefix option in a new function that looks something like ~sdo-swiper-region~
+
+        =M-%= already has a bunch of prefix args, and also has a fancy way of making the previous isearch string the replacement target (see help on M-%).
+
+        So, [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Interactive-Call.html][call-interactively]] or ~execute-extended-command~ to pass prefixes?
+
+      *Packages*
+        o Maybe use [[https://www.emacswiki.org/emacs/ReplacePlus#toc1][EmacsWiki: Replace Plus]]?  package mgr calls it obsolete.  I'm also not sure if it does regions.
+        o [[https://www.emacswiki.org/emacs/download/replace-from-region.el]]
+          package mgr says it's obsolete but it works (it's installed right now)
+
+      *Good to know*
+        =M-n=: invoke replacements from incremental search with a key sequence like ‘C-s C-s M-%’
+
+      *Maybe* I should try to duplicate the search --> search-replace behavior in ~sdo-swiper-region~
+
+******* ACCEPTED think of a good use for =M-app=
+        - hydra for all kinds of emacs functions?
+          Would that work when stuff is selected or 'at point'?
+          - symbol, function, variable
+          - man page
+          - info
+          - bindings
+        - [[make a hydra for the frame transpositions]] ?
+        - eval-region
+******* ACCEPTED good use for =M-m=, now that manpages are in hydra
+        - ~create-and-link-dedicated-org-target~
+        - eval-region
+******* ACCEPTED [[https://github.com/d12frosted/flyspell-correct][GitHub - d12frosted/flyspell-correct]] (ido, ivy, helm, ...)
+******* ACCEPTED org (the latest org mode)
+******* ACCEPTED org-bullets
+******* ACCEPTED org-plus-contrib (must have been something in there I wanted?)
+******* ACCEPTED [[https://github.com/calvinwyoung/org-autolist][org-autolist]]
+
+        *Keep it.*
+
+        org-autolist makes org-mode lists behave more like lists in non-programming editors such as Google Docs, MS Word, and OS X Notes.
+
+        When editing a list item, pressing "Return" will insert a new list item automatically. This works for both bullet points and checkboxes, so there's no need to think about whether to use M-<return> or M-S-<return>. Similarly, pressing "Backspace" at the beginning of a list item deletes the bullet / checkbox, and moves the cursor to the end of the previous line.
+
+        Works on '-' lists and checkboxes, not headlines ('***').  But it
+        works and is handy.  Must enable org-autolist-mode so it works.  See
+        instructions in the doc below (I've done that now).
+
+********* testing
+          - asdlkfjsfdj
+          - alskfjalsfjd
+          - alskdfjlkfj
+            - aslkdfj
+            - alskddfj
+          - alskfdj
+          - alksdfj
+          - [ ] asldkfj
+          - [ ] lkajfs
+          - [ ]
+
+********* package doc
+      org-autolist is an available package.
+
+           Status: Available from melpa -- Install
+          Archive: melpa
+          Version: 20150922.705
+          Summary: Improved list management in org-mode
+         Homepage: https://github.com/calvinwyoung/org-autolist
+         Keywords: lists checklists org-mode
+
+      `org-autolist` makes org-mode lists behave more like lists in non-programming
+      editors such as Google Docs, MS Word, and OS X Notes.
+
+      When editing a list item, pressing "Return" will insert a new list item
+      automatically. This works for both bullet points and checkboxes, so there's
+      no need to think about whether to use `M-<return>` or `M-S-<return>`. Similarly,
+      pressing "Backspace" at the beginning of a list item deletes the bullet /
+      checkbox, and moves the cursor to the end of the previous line.
+
+      To enable org-autolist mode in the current buffer:
+
+        (org-autolist-mode)
+
+      To enable it whenever you open an org file, add this to your init.el:
+
+        (add-hook 'org-mode-hook (lambda () (org-autolist-mode)))
+
+******* ACCEPTED org-cliplink
+
+        *Keep it.*
+
+        It's simple and it works.  A bit like pasting note links in Evernote.
+        Can edit title later to make it shorter.
+
+        I bound C-c y to org-cliplink
+
+********* test
+
+      [[https://github.com/calvinwyoung/org-autolist][GitHub - calvinwyoung/org-autolist: Making it even easier to edit lists in or...]]
+
+      [[http://www.canoo.net/services/Search/ueberblick/index.html?MenuId=Search&lang=en][canoonet - Dictionary for Spelling, Inflection, Wordformation and Grammar for...]]
+
+      [[http://www.nytimes.com/2016/05/05/us/politics/trump-gop.html?hp&action=click&pgtype=Homepage&clickSource=story-heading&module=first-column-region&region=top-news&WT.nav=top-news][With Donald Trump in Charge, Republicans Have a Day of Reckoning - The New Yo...]]
+********* package docs
+      org-cliplink is an available package.
+
+           Status: Available from melpa -- Install
+          Archive: melpa
+          Version: 20160319.500
+         Requires: emacs-24.4
+          Summary: insert org-mode links from the clipboard
+         Homepage: http://github.com/rexim/org-cliplink
+
+      A simple command that takes a URL from the clipboard and inserts an
+      org-mode link with a title of a page found by the URL into the
+      current buffer
+
+      This code was a part of my Emacs config almost a year. I decided to
+      publish it as a separate package in case someone needs this feature
+      too.
+
+      [back]
+      *
+******* ACCEPTED different screen font for ~code~ and =verbatim=
+******* ACCEPTED map mouse buttons to emacs functions e.g. mouse-4 and mouse-5 (browser back/forward)
+        Ideas
+********* I don't know,... try to use org-mode with a mouse and see
+********* C-x b (bufer history)
+********* winner mode
+********* buffer movement (winmove commands, although maybe that's stupid, since I would have my hands on a mouse)
+********* undo/redo (with undo-tree?)
+          *
+******* ACCEPTED [[help:narrow-or-widen-dwim]]
+******* ACCEPTED think of new home/end since it's a mess on SP4
+        didn't these used to be M-[ and M-]? Use for page up/down?  I don't know, but they are now.
+        Done: Home/end is now a hydra of []
+******* ACCEPTED swiper
+******* ACCEPTED write functions anchor-create and anchor-link
+        I'm always making anchors from headline titles and then turning around and linking them.  Make it simple:
+        *dedicated-target-create:* makes an dedicated-target (<<XX>>) and either
+           o puts it in the copy buffer so it can be pasted somewhere
+           o pastes it itself on the line below the current headline
+           o XX can come from
+             o selected text
+             o the full headline
+             o what you type in
+
+        *dedicated-target-link*: creates a link to an dedicated-target ([[[[XX]]]]) and puts it in copy buf
+           o you paste it where you want
+           o XX can come from
+             o copy buffer leftover from of *dedicated-target-create*
+             o putting the cursor on an dedicated-target (it's extracted)
+             o putting cursor on a dedicated-targetless headline
+               (it calls *dedicated-target-create* to make the dedicated-target)
+
+********* TRY ID's?: Auto headline ID making: [[https://writequit.org/articles/emacs-org-mode-generate-ids.html][Emacs Org-mode: Use good header ids!]]
+********* TRY See: jkitscher's headline link: I think he gets the text somehow
+********* TRY [[http://stackoverflow.com/questions/16346622/how-can-i-reference-a-section-by-number-in-org-mode-export][How can I reference a section by number in org-mode export?]]
+********* [[file:org_mode/superlabel.org]]
+********* [[how to do interesting stuff in org-mode/org-ref]]
+********* [[file:org_mode/sandbox/store-head-link.el::(when%20(and%20(eq%20major-mode%20'org-mode)%20;;%20do%20something%20if%20@%20org%20header,%20else%20ret%20nil][store-head-link.el]]
+********* [[http://kitchingroup.cheme.cmu.edu/blog/2017/04/09/A-better-return-in-org-mode/][A better return in org-mode]]
+********* dedicated target matching, fontifying: in org.el
+*********** org-target-regexp
+
+  (defconst org-target-regexp (let ((border "[^<>\n\r \t]"))
+			        (format "<<\\(%s\\|%s[^<>\n\r]*%s\\)>>"
+				        border border border))
+    "Regular expression matching a link target.")
+
+*********** org-at-target-p
+  (defun org-at-target-p ()
+    (or (org-in-regexp org-radio-target-regexp)
+        (org-in-regexp org-target-regexp)))
+*********** org-any-target-regexp
+  (defconst org-any-target-regexp
+    (format "%s\\|%s" org-radio-target-regexp org-target-regexp)
+    "Regular expression matching any target.")
+*********** what org-context does when he finds a target (org.el)
+
+        pushes start and end of context, expect position to be visible b/d of fontlock faces.
+
+       ((org-at-target-p)
+        (push (org-point-in-group p 0 :target) clist)
+        (goto-char (1- (match-beginning 0)))
+        (when (looking-at org-radio-target-regexp)
+	  (push (org-point-in-group p 0 :radio-target) clist))
+        (goto-char p))
+
+        "p" seems to be set somewhere with
+        (interactive "p")
+
+        <<bob>> <<>> <<>> <<>> <<>> <<>>
+
+********* org-heading-components() gets heading contents
+*********
+********* org-edit-headline() could be used to edit a heading when doing a target
+
+******* ACCEPTED TODO hide <<>>'s like hyperlink [[]]'s are hidden
+******* ACCEPTED =M-y=: counsel-yank-pop (within counsel-yank-pop) =M-y= cycles)
+******* ACCEPTED [[outshine-mode]]
+******* ACCEPTED less ugly ~code~ face
+      Courier seems be bitmapped is there truetype?
+
+      New Courier seems OK
+
+      ~code face~
+
+******* ACCEPTED better org-mode ellipses (end of line char)
+
+        In the end, I picked the single character for three little dots: ...
+
+********* [[https://zhangda.wordpress.com/2016/02/15/configurations-for-beautifying-emacs-org-mode/][one guy's collection]]: ellipsis and bullets
+          A test line»
+          A test line…
+          A test line⇉
+          A test line↴
+          A test line⤵
+          A test line➛
+          A test line➮
+          A test line➻
+          A test line↝
+********* aslkf sadf sfd¤þ
+********* lkasf sadf slkΔ
+********* lasjf asfd lkjsadfΞ
+********* asdlkfjasdf sdflk asdflkj safdΞ
+********* other possible chars
+  ¤
+  °
+  þ
+  Đ
+  Ɖ
+  Ǝ
+  ˥
+  Δ
+  Ξ
+  ϖ
+  Ϸ
+  З
+  Ф
+  Э
+  Ю
+
+******* ACCEPTED fix ediff of org files
+
+        Answer: turn off folding before ediff, following instructions [[https://emacs.stackexchange.com/questions/21335/prevent-folding-org-files-opened-by-ediff][here]] in .emacs
+
+        M-x font-lock acts like a literal toggle.  Can you ediff that way? NO.
+
+        add toggle-literal() to =M-apps= hydra?. NOT needed so delete this from .emacs
+
+******* ACCEPTED [[gscholar-bibtex]]
+******* ACCEPTED counsel-descbinds in hydra
+          It's overall better than ido binding search
+            better than: instant search (ido: must switch to to buff and search)
+            better than: ivy-resume goes back to it
+            worse: always in minibuffer; ido uses big side buff if available.
+
+******* ACCEPTED remove dependency upon align-equals.el
+
+      Used script in https://gist.github.com/WaYdotNET/700416
+      which has many other align functions too.
+
+***** *REJECTED*
+******* REJECTED [[https://github.com/steckerhalter/helm-google][helm-google]]
+        does nothing
+******* REJECTED ivy-bibtex
+        does nothing
+******* REJECTED make a hydra for the frame transpositions?
+        <<make a hydra for the frame transpositions>>
+        Bindings for [[https://www.emacswiki.org/emacs/TransposeFrame][EmacsWiki: Transpose Frame]]
+
+        *But do I need this?*  Existing =C-|= can already do what I want, I think.
+
+        *NOPE* C-| is enough.  Don't do this.
+
+        See .emacs, one already used, horizontal and vertical flipping might be useful
+        ;; make a hydra for the frame transpositions?
+        ;‘flip-frame’ … Flip vertically
+        ;‘flop-frame’ … Flop horizontally
+
+        An idea for =M-app=?
+******* REJECTED icicles (needed by some other package or is this a leftover?)
+
+******* REJECTED [[http://sachachua.com/blog/2017/04/emacs-pasting-with-the-mouse-without-moving-the-point-mouse-yank-at-point/][Pasting with the mouse without moving the point – mouse-yank-at-point]]
+
+      I guess I like the X-windows style of pasting and don't find the control problem that hard.
+
+      just add (setq mouse-yank-at-point t)
+      do I really use middle click mouse anymore?, like in X?
+
+******* REJECTED [[https://github.com/Kungsgeten/selected.el][GitHub - Kungsgeten/selected.el: Keymap for when region is active]]
+        Uppercases a region and stuff.  But I don't need this very often, and the standard M-u, etc. is fine
+
+******* REJECTED org-wunderlist
+
+        MS is killing Wunderlist and integrating into Win10.  This is very unlikely to survive, especially since [[https://github.com/myuhe/org-wunderlist.el][last checkin for org-wunderlist was 2015]]
+
+        Would be nice to sync org mode w/ phone and browser.  Wunderlist has been
+        bought by MS so maybe it will survive a while.  Could try this and switch
+        from Google Keep to Wunderlist (but will MS kill Wunderlist?).
+
+        Anyway, there are apps for windows 10, android, and browser interace.
+
+
+********* REJECTED package docs
+      org-wunderlist is an available package.
+
+           Status: Available from melpa -- Install
+          Archive: melpa
+          Version: 20150817.1913
+         Requires: request-deferred-0.2.0, alert-1.1, emacs-24, cl-lib-0.5, org-8.2.4,
+                     s-1.9.0
+          Summary: Org sync with Wunderlist
+         Homepage: https://github.com/myuhe/org-wunderlist.el
+         Keywords: convenience
+
+      Put the org-wunderlist.el to your
+      load-path.
+      Add to .emacs:
+      (require 'org-wunderlist)
+
+      [back]
+
+******* REJECTED anzu modeline display
+        [[https://github.com/syohex/emacs-anzu][GitHub - syohex/emacs-anzu: Emacs Port of anzu.vim]]
+
+        A nice little display of the number of matches of an isearch string, displayed on the mode-line. But I wasn't using it because I started using swiper instead of isearch.
+
+        One nice thing about it, though, is that it somehow knoew to put itself on the right side of the modeline.  
+
+        I'd like to do do that for (display-time-mode 1), where time would go on left side of modeline.
+        
+*** Org Mode
+***** [[http://orgmode.org/w/org-mode.git][org-mode git repository]].  I think this goes to the melpa package
+***** <<org-brain>>
+      Concept mapping in emacs, new project in March, 2017
+******* [[https://github.com/Kungsgeten/org-brain][GitHub - Kungsgeten/org-brain: Org-mode wiki + concept-mapping]]
+******* Also: [[Knowledge as Graphs]]
+***** org mode table math
+      See: [[http://orgmode.org/org.html#Advanced-features][Advanced-features]]
+***** emacs setup so orgmode builds on Windows
+      <<windows emacs org-mode build>>
+
+      *OBSOLETE*: I'm now using the emacs packages in emacs 24.3
+
+      So can download new org mode unzip it in ~/lib/emacs and install it
+      with:
+
+      make
+      make install
+
+      Setup:
+
+      1. edit org mode Makefile to point to gemacs-compiled dir
+      2. put windows emacs _on front of Windows PATH_ environment variable, so
+         that the cygwin emacs is not seen first, which will cause
+         confusion.  This also allows you to avoid "spaces in path" problem
+         when pinning emacs to the Windows task bar (you can write
+         runemacs.exe, saving the space-protecting apostrophes for an extra
+         command.  See [[*Pinning%20emacs%20to%20taskbar][Pinning emacs to taskbar]].
+      3. delete old emacs stuff in gemacs compiled so make sure everything is
+         gone.
+
+***** [[MoinMoin emacs]]
+***** [[org-mode indentation]]
+***** org-mode export
+******* A plain text file
+        For some reason, I can't see ascii in the export dispatcher, so I installed ox-minutes
+
+        This does show up in the dispatcher, and works OK.
+
+******* Org to/from Word
+        <<Org to/from MS Word>>
+
+********* Using [[Pandoc]]
+*********** Manually
+
+          make a Word file
+            pandoc -f org -t docx -o tmp.docx tmp.org
+          make a .org file
+            pandoc -f docx -t org -o tmp2.org tmp.docx
+
+          This really works!  The org-mode outline structure shows up as an outline structure in Word, and on the docx-->org step, the org structure is retained.
+
+          Problems
+          - I had was a syntax error when I tried to convert my whole howto.org file.
+          - the docx-->org version has those annoying :PROPERTIES: drawers, which weren't there before.  I guess I could just delete them.
+          - Heading fonts, etc. are
+          - How to control the appearance of headlines, etc. in Word output? (See  [[Pandoc docx output formatting]])
+*********** Using package [[https://github.com/kawabata/ox-pandoc][ox-pandoc: Another org-mode exporter via pandoc]]
+            Doesn't work yet
+************* On windows, it can't find my pandoc executable
+*************** [[Windows pandoc path]]
+*************** [[http://superuser.com/questions/685479/pandoc-in-emacs-in-windows-searching-for-program-permission-denied-usr-bin-p][Try these customizations]]?
+************* [[http://emacs.stackexchange.com/questions/22485/org-mode-pandoc-export-to-docx-and-open][how to get org mode to open the docx in word]]
+*********** [[http://kitchingroup.cheme.cmu.edu/blog/2014/07/17/Pandoc-does-org-mode-now/][Pandoc does org-mode now]] (how it works)
+*********** one guy's [[https://lists.gnu.org/archive/html/emacs-orgmode/2015-06/msg00246.html][back and forth workflow]]
+*********** there are also pandoc and pandoc-mode packages (not org)
+*********** [[Pandoc docx output formatting]]
+
+          Kind of annoying: must create a reference document using pandoc and then edit that to create the styles you want.  Can't directly use, for example, a conference paper template; you'd need to manually make the pandoc docx template look like the paper template.  Anyway...
+
+            pandoc myfile.txt -o reference.docx
+
+          where myfile just says "hello world" or something.  Then use Word to edit reference.docx to taste.
+
+*********** [[http://blog.kdheepak.com/writing-papers-with-markdown.html][Writing papers in markdown]] (org mode kind of is that)
+********* [[http://blog.binchen.org/posts/how-to-take-screen-shot-for-business-people-efficiently-in-emacs.html][Using OpenOffice]] (this needs zip to be installed)
+
+******* TODO [[https://github.com/kawabata/ox-pandoc][ox-pandoc]], a way to avoid org-export hell?
+
+        This is supposed to show up in the C-c C-e menu, and I have seen it there.  But for some reason, it's not there now.  *Fix!*
+
+********* which uses [[Pandoc]]
+********* [[http://www.rousette.org.uk/blog/archives/org-mode-and-pandoc/][a guy]] exports his org files to it, and then to whatever
+********* pandoc-citeproc seems important for citations
+********* inspiration: Keeping a lab notebook with org-mode, git, Papers, and Pandoc: ([[https://erikclarke.net/2014/10/04/keeping-a-lab-notebook-with-org-mode-git-papers-and-pandoc-part-i/][Part I]] and [[https://erikclarke.net/2014/10/21/keeping-a-lab-notebook-with-org-mode-git-papers-and-pandoc-part-ii/][Part II]])
+********* =cite:= partly lost: [[http://kitchingroup.cheme.cmu.edu/blog/category/pandoc/][jkitchin's org-cite test/modifications for pandoc]]
+********* [[https://sylvaindeville.net/2015/07/17/writing-academic-papers-in-plain-text-with-markdown-and-jupyter-notebook/][This fellow]] makes [[http://iopscience.iop.org/1468-6996/16/4/043501][perfect papers]] with Pandoc.
+********* TODO READ: [[https://kieranhealy.org/blog/archives/2014/01/23/plain-text/][Detailed description of a pandoc workflow]] using emacs (not orgmode)
+*********** has clickable links to bot figures and citations
+*********** bib is nicely formated: he uses CSL; IEEE CSL is [[https://github.com/citation-style-language/styles][here]]
+********* bibliography
+*********** style file (.csl)
+*********** reference in doc: =#+PANDOC_OPTIONS: csl:sample.csl=
+************* latest are [[https://www.zotero.org/styles?q=ieee][here]]
+*********** refernce bib to file: =#+BIBLIOGRAPHY: sample.bib=
+******* Controlling header numbering in exports
+
+        Off entirely for all documents
+          (setq org-export-with-section-numbers nil)
+
+        Turn them off entirely, this doc
+          - #+options: num:nil
+
+        Only numbers on 1st level, this doc
+          - #+options: num:1
+
+
+******* ox-confluence (exists)
+
+***** Moving/skipping to headlines
+******* [[Swiper]]
+******* [[http://orgmode.org/org.html#Motion][org-goto]]: =C-c C-j=
+******* <<Mark-ring>>
+
+        =C-SPC=
+          Set the mark, pushing it onto the mark ring, without activating it.
+
+        =C-u C-SPC=
+          Move point to where the mark was, and restore the mark from the ring of former marks.
+
+******* Moving/skipping to headlines w/ refile
+        From [[http://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/][here]]:
+
+        Moving a headline w/ org-refile
+          C-c C-w
+        Then select dest headline.  I've set it to use ido but it doesn't...
+
+        Skipping to a headline
+          C-u C-c C-w     (go there)
+          C-u C-u C-c C-w (return)
+
+******* [[outshine-mode]]
+***** [[Narrowing/Widening: narrow-or-widen-dwim]]
+***** <<org-ref>>
+******* [[https://github.com/jkitchin/org-ref/commits/master]["release notes"]]
+******* TODO better install
+********* DONE works best with latexmk (customization in my =.emacs=)
+********* DONE latexmk works best in TexLive, not MikTex, to install TexLive
+********* TODO give it a valid path to common .bib file in .emacs or customizations
+*********** TODO seems that you can't give paths to .bib file inside of org file.  Really?
+*********** TODO how make it the same path to energy.bib on work and home computers?
+******* Howto: [[http://kitchingroup.cheme.cmu.edu/blog/2015/12/11/Introduction-to-a-citation-processor-in-org-ref/][Introduction to a citation processor in org-ref]]
+******* bibtex vs. biblatex
+******* some problem?
+********* jabRef has done this bib-->biblatex conversion: article->journal --> article-->journaltitle
+********* lyx works fine with journaltitle, in fact it doesn't work unless you give it a path to biblatex
+********* but org-ref calls bibtex and this fails because it can't find "journal"
+
+          Can see this by running latex on the tex output file and then running bibtex.  Also, if I change journaltitle to journal, then org-ref works fine.
+
+********* org-ref was written with bibtex in mind but there's supposed to be a [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/13/Using-org-ref-for-citations-and-references/#sec-2][way to customize it for biblatex]].
+******* How to make the org-ref latex compile: install TexLive
+        <<How to make the org-ref latex compile: install TexLive>>
+
+        The solution for org-ref was to [[https://github.com/jkitchin/org-ref/issues/346#issuecomment-262874374][use latexmk]].  However, MikTex latexmk kept crashing on both home and work computers.  Since org-ref people were successfully using TexLive, I installed that instead (it can work with [[Lyx]], which is what it was using, but see the [[Lyx Tweaks for TexLive]]
+
+        _IWES TexLive Problem_: The proxy was a problem, even if I disabled it in Chrome and deleted by http_proxy env var.  And I was unable to customize the TexLive environment to use a proxy because it insists upon using a URL proxy and IWES has only a numerical IP address.
+
+        _IWES TexLive Solution_: Disable the proxy stuff in Chrome, delete
+        http_proxy (not sure if necess.) & then hook up with the IWES guest Wifi.  Finally, I was able to do a normal TexLive internet install. I also had to add the path to the TexLive latexmk binary (C:\texlive\2016\bin\win32) to the PATH environment variable.  I don't remember needing to do this at home.
+
+        Note also that, in .emacs, I had to modify the advice from
+        https://github.com/jkitchin/org-ref/issues/346#issuecomment-262874374
+        (which I mention there).
+
+As before, everything works starting from the leftover .tex file, for example, this makes a valid pdf:  latexmk -f -pdf tmp
+
+
+********* why _latex bibtex latex latex_ works on org-ref leftover .tex file
+
+Reasoning from [[http://tex.stackexchange.com/questions/8332/undefined-citation-warnings][here]]:
+
+Getting citations and references right always requires multiple runs of latex. The normal procedure is the following
+
+latex <file>
+bibtex <file>
+latex <file>
+"unlatex <file>
+
+The _first compile_ finds all the cite commands and makes a list of them in the _.aux file_, and takes note of the bibliography style. No citations are resolved in your document yet.
+
+Then _bibtex_ processes the aux file and using the bibliography style, and the list of citations creates a _.bbl file_ which contains the bibliography. No citations are resolved yet here either.
+
+The _next latex_ compile doesn't resolve the references either, but reads the .bbl file and _keeps track of the citations_.
+
+Finally the _last latex_ compile _resolves all the references_.
+
+The warnings you receive are normal, and should really only be paid attention to after the last latex compilation in the steps above.
+
+There are various scripts that automate some of these procedures so that you don't forget to do the multiple latex runs; one is latexmk and another is rubber.
+
+Many text editors have access to these in some simple way, so before thinking about installing them you should find out if your editor already has a way to use them.
+
+******* how another guy got org_ref [[https://github.com/jkitchin/org-ref/issues/165][to find the citations]] (see kitchin's linked-to setup)
+***** [[http://kitchingroup.cheme.cmu.edu/blog/archive/][KitchinGroup Blog]]: <<how to do interesting stuff in org-mode/org-ref>>
+******* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/04/New-link-features-in-org-9/][New link features in org 9]]
+        - store-my-headline :: a headline line that could replace those crappy dedicated-targets!
+******* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/07/Better-equation-numbering-in-LaTeX-fragments-in-org-mode/][Better equation numbering in LaTeX fragments in org-mode]]
+******* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/06/Justifying-LaTeX-preview-fragments-in-org-mode/][Justifying LaTeX preview fragments in org-mode]] with tooltips to see code
+******* [[http://kitchingroup.cheme.cmu.edu/blog/2015/10/09/Automatic-latex-image-toggling-when-cursor-is-on-a-fragment/][Automatic latex image toggling when cursor is on a fragment]] (with video, but broken)
+
+        It's been broken as of org-mode 8.3, or so.  Se James Wong post [[http://kitchingroup.cheme.cmu.edu/blog/2015/10/09/Automatic-latex-image-toggling-when-cursor-is-on-a-fragment/][here]].
+******* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/10/Persistent-highlighting-in-Emacs/][Persistent highlighting in Emacs]] (not a top priority)
+******* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/08/New-color-link-in-org-9-0-using-font-lock-to-color-the-text/][New color link in org 9.0 using font-lock to color the text]] (not a top priority)
+******* [[http://kitchingroup.cheme.cmu.edu/blog/2016/06/16/Copy-formatted-org-mode-text-from-Emacs-to-other-applications/][Copy formatted org-mode text from Emacs to other applications]] (Mac only for now)
+***** [[https://www.gnu.org/software/emacs/manual/html_node/org/Previewing-LaTeX-fragments.html][The Org Manual: Previewing LaTeX fragments]]
+      Can do it with commands in org text:
+
+      #+STARTUP: latexpreview
+      #+STARTUP: nolatexpreview
+
+      or with the keyboard
+
+      C-c C-x C-l  (preview on)
+      C-c C-c      (preview off)
+
+***** [[https://www.emacswiki.org/emacs/LaTeXMathPreview][EmacsWiki: LaTeX Math Preview]] (not just org mode)
+******* asks for filename every time, unlike on the web page
+******* note that latex escaping, like in org mode, isn't needed
+***** [[http://ieeexplore.ieee.org/search/searchresult.jsp?reload=true&newsearch=true&queryText=Org-mode&x=0&y=0][IEEE papers about org-mode]]
+***** /emphasizing/ a word / sentence / ... / marked region
+
+      1. Mark region to emphasize
+         a. manually, with the cursor/mouse, OR...
+         b. use =expand-region=: type =C--= until have selected the word/sentence/...
+      2. type =* _ / ~ ...= to add emphasis
+
+      *Note*: requires the =wrap-region= package.
+
+***** [[Concept map-like stuff: superlabel, dedicated targets, org-brain]]
+***** [[org-mode redmine interface]]
+***** Turning off/controlling plain list numbering
+      From: [[http://emacs.stackexchange.com/questions/19333/how-do-i-turn-off-the-automatic-list-feature-in-org-mode][How do I turn off the automatic list feature in org-mode? - Emacs Stack Exchange]]
+
+      *Turning off autonumbering for '.' or ')' or both*
+
+        Customize:
+          org-plain-list-ordered-item-terminator
+
+      *Making autonumber terminator vary with list level*
+
+        To get a list like:
+
+          1. item one
+             1) subitem one
+                1. subsubitem one
+          2. item two
+
+        ... make this customization
+
+        ~(setq org-list-demote-modify-bullet '(("-"  . "+")~
+                                      ~("+"  . "*")~
+                                      ~("*"  . "-")~
+                                      ~("1."  . "1)")~
+                                      ~("1)"  . "1.")))~
+
+      *Hierarchical list numbers* e.g 1., 2., 2.1, 2.2, 3., ...
+
+        ~(setq org-plain-list-ordered-item-terminator ?\))~
+
+        Then org only allows order list bullets ending with parentheses, and won't recognize "2.", "2.1", etc., as bullets.
+
+***** org-mode redmine interfaces
+******* [[https://github.com/gongo/org-redmine][org-redmine: Redmine tools using Emacs OrgMode]]
+********* old, 2011 [[https://www.youtube.com/watch?v=Qhl3JRO7xp0][video]]
+********* can't edit issues inside of org-mode? See [[https://github.com/gongo/org-redmine/issues/19][bug #19]]
+******* [[https://github.com/kametoku/orgmine][kametoku/orgmine: Emacs minor mode for org-mode with redmine integration]]
+***** [[Orgmode latex editing]]
+***** [[Org Element API]] (for elisp programming)
+***** <<Org-mode interface to trello>>: [[https://github.com/org-trello/org-trello][org-trello]]
+***** <<Presentation slides from org-mode>>
+******* [[https://github.com/coldnew/org-ioslide][org-ioslide: Export org-mode to Google I/O HTML5 slide.]]
+******* I had found several before. were lost.  Should search again
+***** Org-mode parsers
+******* [[http://orgmode.org/worg/org-tools/][Org Mode tools!]] (parsers in many languages)
+******* [[https://common-lisp.net/project/cl-org-mode/][CL-ORG-MODE : A Lisp Parser of org-mode outlines]]
+******* [[Elisp]]
+***** Org-mode in non-org buffers
+******* <<outshine-mode>>
+      From: [[https://github.com/alphapapa/outshine][alphapapa/outshine: {Emacs} outline with outshine outshines outline]]
+
+      o Allows org-mode style folding in non-org files, esp. programming modes
+      o Headlines: org '***' things preceded by the languages comment symbol
+      o I've configured it for org-hot keys
+
+        _My most common commands (when configured, cursor on a headline)_
+
+        =TAB=: cursor at file start: full outline expand/contract
+             cursor on headline: normal headline cycling
+        +/-  heading promote/demote
+        =c/C=  outline-cycle headline or cycle-buffer
+        =r/w=  narrow/widden to headline
+        =?=    list all outshine keys
+
+********* All outshine keys (similar to normal org-mode hot keys)
+          (as of 5/8/2017)
+
+  User-defined Speed commands
+  ===========================
+
+  Built-in Speed commands
+  =======================
+
+  Outline Navigation
+  ------------------
+  n   (outshine-speed-move-safe (quote outline-next-visible-heading))
+  p   (outshine-speed-move-safe (quote outline-previous-visible-heading))
+  f   (outshine-speed-move-safe (quote outline-forward-same-level))
+  u   (outshine-speed-move-safe (quote outline-up-heading))
+  b   (outshine-speed-move-safe (quote outline-backward-same-level))
+  F   outshine-next-block
+  B   outshine-previous-block
+  j   outshine-navi
+  J   outshine-imenu
+  g   outshine-imenu
+
+  Outline Visibility
+  ------------------
+  c   outline-cycle
+  C   outshine-cycle-buffer
+      (outshine-use-outorg (quote org-display-outline-path) (quote WHOLE-BUFFER-P))
+  r   outshine-narrow-to-subtree
+  w   widen
+
+  Outline Structure Editing
+  -------------------------
+  U   outline-move-subtree-up
+  D   outline-move-subtree-down
+  +   outline-demote
+  -   outline-promote
+  i   outshine-insert-heading
+  ^   outshine-sort-entries
+  m   outline-mark-subtree
+  #   outshine-toggle-comment
+
+  Clock Commands
+  --------------
+  I   outshine-clock-in
+  O   outshine-clock-out
+
+  Date & Time Commands
+  --------------------
+  .   outshine-time-stamp
+  !   outshine-time-stamp-inactive
+  d   outshine-deadline
+  s   outshine-schedule
+
+  Exporting
+  ---------
+  x   outshine-export-dispatch
+
+  Meta Data Editing
+  -----------------
+  t   outshine-todo
+  ,   outshine-priority
+  0   (outshine-use-outorg (lambda nil (interactive) (org-priority 32)))
+  1   (outshine-use-outorg (lambda nil (interactive) (org-priority 65)))
+  2   (outshine-use-outorg (lambda nil (interactive) (org-priority 66)))
+  3   (outshine-use-outorg (lambda nil (interactive) (org-priority 67)))
+  :   outshine-set-tags-command
+
+  Properties and Effort
+  ---------------------
+  y   outshine-set-property
+  Y   outshine-set-property-and-value
+  e   outshine-set-effort
+  E   outshine-inc-effort
+  v   outshine-agenda
+  <   (outshine-agenda-set-restriction-lock)
+  >   (outshine-agenda-remove-restriction-lock)
+
+  Misc
+  ----
+  o   outshine-open-at-point
+  ?   outshine-speed-command-help
+
+*** Dired operations
+***** file marking
+      From [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Marks-vs-Flags.html][here]]:
+******* mark files w/ _names_ matching regexp: *% m regexp RET*
+******* mark files which _contain_ regexp:     *% g regexp RET*
+******* _unmark_ all files:                    *M-DEL*
+***** rename multiple files
+      From [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Transforming-File-Names.html][here]]:
+      1. mark files to be renamed (see also [[Dired file marking]])
+      2. % R /from/ RES /to/ RET
+***** file regexp
+      From [[https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-text-across-multiple-files.html][here]]:
+      1. mark files to be replaced (see also [[Dired file marking]])
+      2. Q /and enter from regexp and replacement string/
+***** directly editing file names (wdired, reach by C-x C-q)
+      From [[https://www.masteringemacs.org/article/wdired-editable-dired-buffers][here(lots of tips)]]: you can edit dired like it was a file
+
+      C-x C-q : start when in dired
+      C-c C-c : save edits to really change filenames
+      C-c ESC : undo all changes
+
+*** Searching/Replacing
+***** <<Swiper>>
+      From: [[http://pragmaticemacs.com/emacs/dont-search-swipe/][Don’t search, swipe | Pragmatic Emacs]]
+******* =C-s= to search (my mapping: was =M-app= but this wouldn't repeat previous search)
+******* =C-s (again)= inside of swiper to go to previous search (across all buffers)
+******* =C-r= gives a list of previous searches
+******* =C-g= in swiper minibuffer will pop you back farom where you started
+******* =C-o= in swiper activates hydra-ivy (if install package?)
+
+        package Documentation is poor, though.  To see what it does:
+
+        ~M-x describe-symbol hydra-ivy/body~
+
+        Here's [[https://oremacs.com/2015/03/26/hydra-ivy-swiper/][a better idea for an ivy hydra]]
+******* =space twice= to search for literal space (doesn't work for !, though)
+******* =C-u C-SPC= after swiper exit returns to previous position w/ [[Mark-ring]]
+        *isearch did this too!* I didn't know.
+******* =M-q= [[https://github.com/abo-abo/swiper/issues/144][does query replace]] using the swiper string (and it does...)
+******* can navigate somewhere else with search
+******* can edit the current buffer while searching, and swiper minibuffer stays open
+******* [[https://www.youtube.com/watch?v=VvnJQpTFVDc][Video demo]]
+********* (note: C-r doesn't work like he says in the video)
+********* instead, it gives you a list of previous search terms
+********* [[https://github.com/abo-abo/swiper/issues/412][guy complained]] but he doesn't want change it, suggested how, though
+********* also supposed to do last search if hit C-s, but it does the one before that
+********* Swiper (did he mean just 'ivy'? does marking, etc. in dired
+          see video demo above, about 09:30
+          but I think you must bind ivy everywhere?
+
+          /But is built-in dired stuff actually just as good?/
+
+******* [[ivy gridmode]]
+***** Search for contents of marked region
+
+      o =C-s= with a region selected, use it as the search string
+
+      o =C-s=, =C-w=, =C-w=,... expands region of search hit.
+
+******* Done by adding [[http://stackoverflow.com/questions/202803/searching-for-marked-selected-text-in-emacs][jrh-isearch-with-region]] to .emacs
+******* I also added [[http://emacsrocks.com/e09.html][expand-region]] from melpa, mapped that to M--
+
+***** Search for word at cursor or contents of kill buffer(from [[http://stackoverflow.com/questions/202803/searching-for-marked-selected-text-in-emacs][here]])
+
+      Easiest is:
+        C-s C-w (w/ more C-w's to expand region) also works well
+
+      In general:
+        C-s or C-r (gets into search)
+        C-w (gets word following point. Can repeat to get more words)
+        C-y (pastes kill buffer into search)
+
+***** Search for "symbol" (exact) or word at point
+
+      M-s .
+
+      Nice b/c it parses the langauage you're in to figure out what a symbol is.  If you're pointing at a string, it expands isearches for the word at point.
+
+***** C-s s will search for previous string (default emacs bindings)
+***** search/replace German (and other chars)
+
+      To u and o match German ü and ö, customize:
+
+        search-default-mode  (Char-Fold Search)
+        replace-char-fold    (on)
+
+      My Emacs Stack Exchanage [[https://emacs.stackexchange.com/questions/32321/char-fold-search-match-for-german-eszett-%25C3%259F][question]] about ß
+
+***** =M-%= search string comes from region, like =C-s= does
+      Package [[https://www.emacswiki.org/emacs/replace-from-region.el][replace-from-region.el]] works well so I'm using it now (April 2007)
+
+      =M-%=: do query replace.  If region marked, use it to search, else standard
+      =M-p, M-p=: go through past replace strings.  You can edit them.
+      =arrowKeys=: act like  =M-p, M-p
+      =M-n=: gets replacements from isearch, like ‘C-s C-s M-%’
+
+      Emacs builtin, =query-replace=, originally bound to =M-%,= has many prefixes, which still work.
+
+***** _Replace within region_
+
+      Handy for changing a string everywhere in a buffer at once, for example, changing a varible (which could be matched by string searc or by =M-s .=)
+
+      _Two ways to do this_
+
+******* =iedit= replacing: instantly replace within a region but interactively
+
+        _Instantly replace through whole buffer_
+        (once you are in iedit mode...)
+
+        1. mark a word or phrase you want to replace
+        2. =C-;=
+        3. type the replacement
+        4. =C-g= to exit
+
+        _Replace within a narrowed region_
+
+        1. select narrowed region
+           a. select with mouse, or...
+           b. select with expand-region. My binding: =C--=
+        2. =C-;=
+        3. type the replacement
+
+        *Note*: doesn't =C-;= conflict with default binding for source block editing? [[file:org_mode/test.org::*Source%20code%20block][Source code block]]
+
+******* query-replace (default binding to =M-%=, no rebound)
+
+        after have set up search (using tricks above).  Is a built-in.
+
+        Especially handy for replacing /exactly/ a programming symbol instead of a string.  To do this, set up marking with:
+
+          =M-s .=
+
+        Replace default behavior is to "search and replace within the selected region" so it's not as easy to initiate a search string with a region.  Would require some hacking.
+
+***** Replace history
+
+      =M-p/M-n= scroll through past history.  You can edit the strings on either side of the arrows.
+
+      Could use this to selectively undo replacements, do different replacements, etc.
+
+***** Replace a string with a newline
+
+      =M-x replace-string RET ; RET C-q C-j=
+
+      =C-q= for quoted-insert,
+      =C-j= is a newline.
+
+*** UNDO: =C-/= and REDO: =C-g C-/ C-/ ...= and TREES
+    From: [[http://stackoverflow.com/questions/3527142/how-do-you-redo-changes-after-undo-with-emacs][How do you 'redo' changes after 'undo' with Emacs?]]
+
+    To undo once: C-/
+    To undo twice: C-/ C-/
+    To redo once, immediately after undoing: C-g C-/
+    To redo twice, immediately after undoing: C-g C-/ C-/.
+       Note that C-g is not repeated.
+    To undo immediately again, once: C-g C-/
+    To undo immediately again, twice: C-g C-/ C-/
+    To redo again, the same…
+
+    The =undo-tree= package is supposed (I thought) to add =C-?= and also a bunch of fancy tree stuff that I haven't figured out yet.
+
+*** Yanking
+
+    =C-y= yanks last kill (standard)
+    =M-y= cycles back through yank ring after have done 1st yank (standard)
+        /I've supplemented this binding with/ =counsel-yank-pop= (below)
+
+***** =M-y= (my mapping) [[http://pragmaticemacs.com/emacs/counsel-yank-pop-with-a-tweak/][counsel-yank-pop with a tweak]]
+******* don't need to type =C-y= first
+******* M-y, just like in the old days, but..
+******* can cycle both ways w/ =C-n=, =C-p=
+******* can type partial strings to find things in string
+******* can't paste into swiper like you can paste kill in into isearch
+***** [[https://github.com/browse-kill-ring/browse-kill-ring][Browse kill ring]] (I'm not using this, but it sounds nice too)
+******* Commenters here [[http://irreal.org/blog/?p=5707][seem to prefer it to counsel]]?
+******* it's a package & there's also a brows-kill-ring+ package
+******* Doesn't depend upon helm or ivy
+******* But, since I've already got both ivy AND helm, I'll skip it
+*** Zooming
+
+    =C-x C-+= starts zooming
+    =C-x C--= starts unzooming
+    =C-x C-0= sets default scaling
+
+    *Note*: Only need to type =+ -= = after =C-x C-+= or =C-x C--=
+
+*** <<Narrowing/Widening: narrow-or-widen-dwim>>
+***** good for org-mode
+***** good for programming and other stuff too
+*** <<Emacs key binding conventions>>
+
+    *Conclusions* 
+    1) I can bind C-c <letter> to anything (it's reserved for "users")
+    2) other C-c bindings (number, punctuation,...) are for modes
+    3) =4 and 5= are very commonly used for other frame and window funcs
+    4) Prefix command argument =C-u= is OK for commands that have two behaviors
+    5) I'm not sure what to do with other prefix command arguments
+
+***** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Key-Binding-Conventions.html][Key Binding Conventions]]
+***** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Keys.html][Standard Prefix Keys: C-x, C-x 4, ...]]
+***** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Command-Arguments.html][Prefix Command Arguments: C-u, M-e, ...]]
+***** =4= means "other window"; =5= means "other frame"
+
+      Looking at my (mostly) default emacs key bindings...
+      
+******* =C-x 4=: is mostly bound to things regarding windows
+******* =C-x 5=: is mostly bound to things regarding frames
+******* But other prefixes eg. =C-h,= are also associated with 4 and 5
+        and mean other frame and other window
+
+*** Navigation hydras: =M-<apps>=
+    This is my binding.
+
+    =helm-swiper=, mapped to =p= is a very nice occur.  In the end, I might get rid of the navigation hydra and just bind that.
+
+*** Moving cursor to windows: =S-arrowkeys=
+    (alternative to cumberson c-x 0)
+
+    <S-arrowkeys>
+
+    (these are windmove-* commands mapped in my .emacs)
+
+    Note that org-mode still messes with TODOs if the cursor is on one.  I thought I had a setting that fixed that, but I guess not (April 2017).
+
+*** Moving cursor through window/frame history with mouse
+
+    Using mouse: use mouse-4 and mouse-5 buttons:
+
+      _MS Sculpt_: swipe up/down
+      _Logitech_:  side thumb buttons
+
+    Requires these emacs bindings:
+
+      ~(define-key global-map [mouse-4] 'next-multiframe-window)
+      (define-key global-map [mouse-5] 'previous-multiframe-window)~
+
+*** Moving windows around:    =C-S-arrowkeys=, =C-|=
+
+    *C-S-arrowkeys*
+
+    (these are buffer-move commands mapped in my .emacs)
+
+    *C-|*
+
+    rotates from horizontal to vertical splitting
+
+*** Undo/Redo of window config: [[https://www.emacswiki.org/emacs/WinnerMode][winner-mode]]:
+
+    A window config undo/redo, doesn't save to disk but very good anyway
+
+      C-c leftArrow/rightArrow
+
+      Doesn't save across sessions but I'll keep it because it's so simple.
+
+    Could also use
+    See: [[https://github.com/abo-abo/swiper/pull/587][Store full window-configuration with ivy-push-view by alfaromurillo]]
+
+*** <<Emacs symbols>>
+    From [[help:xah-math-input]]
+
+    For now, I'm using [[http://ergoemacs.org/emacs/xmsi-math-symbols-input.html][Emacs: Xah Math Input Mode]] (named, rather than shortcuts, and advantage?)
+
+      1: Turn the mode on =xah-math-input-mode= or do it globally...
+      2: type an ascii string
+      3: hit shift-space:
+
+      | ascii | result after shift-space |
+      |-------+--------------------------|
+      | =     | ≈                        |
+      | =>    | ⇒                        |
+
+      _To see other options_: =M-x xah-math-input-list-math-symbols=
+
+      *NOTE* this said to be obsolete by elpa/melpa but it works for me
+
+***** TRY [[http://company-mode.github.io/][company-mode for Emacs]]
+      <<company-mode>>
+
+      * is [[https://github.com/vspinu/ac-math][said]] to solve "notorious issues in auto-complete"
+      * see also [[company-math]]
+
+***** [[http://orgmode.org/worg/org-symbols.html][Big table]] with all the different ways to denote symbols in orgmode
+***** <<company-math>>
+       [[vspinu/company-math]]
+******* superceeds [[https://github.com/vspinu/ac-math][ac-math]]
+******* requires [[company-mode]], an autoreplace that might have bigger effects, so check that out first.
+
+***** ucs-cmds and ucs-utils
+
+      Packages: seem simpler than [[company-math]] but maybe not as capable?)
+
+      See [[https://emacs.stackexchange.com/questions/20472/fast-unicode-symbol-insertion][fast-unicode-symbol-insertion]]
+*** TRY Hydras for window movement, moving cursor to windows, other window management
+    https://github.com/abo-abo/hydra/wiki/Window-Management
+*** TRY <<Saving/restoring window sessions>>
+
+    For now, I've bound ~ivy-push-view~, ~ivy-pop-view~ and ~ivy-switch-view~
+
+    This is litterally a push and pop, so you lose configs as you pop (restore) them.  Seems like winner-mode is better?   
+
+
+    I wish ivy-push/pop-view stored views but that's not there yet.  See my comment on a the ivy site here:
+    [[https://github.com/abo-abo/swiper/pull/587][  Store full window-configuration with ivy-push-view by alfaromurillo · Pull Re...]]
+
+***** A big list of [[https://www.emacswiki.org/emacs/SessionManagement][Emacs Session Management Packages]]
+***** builtin desktop saver (workable, but indirect buffer problem)
+
+      M-x desktop-save
+      M-x desktop-read
+
+      OR set it up to autosave and restore every time you quit and restart
+
+******* works, mostly, but _doesn't restore org mode indirect buffers_
+        just get one copy of the org file, if a there was a window with an indirect copy, it is not restored
+******* out-if-the-box: only 1 session name, can't name them
+******* but maybe works if use desktop save mode for "buffers not visiting a file"
+        See [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Desktop-Save-Mode.html][Desktop Save Mode - GNU Emacs Lisp Reference Manual]]
+
+         (desktop-file-name file-name desktop-dirname)
+
+******* [[https://bmag.github.io/2015/12/26/desktop.html][desktop-change-dir]] allows loading different sessions and switching
+
+        _Just rebinding keys_:  Here's [[https://ericjmritz.wordpress.com/2013/05/28/emacs-desktops/][one guy's approach]]:
+
+          C-c d c for desktop-clear
+          C-c d d for desktop-change-dir
+          C-c d s for desktop-save
+
+        _Using a little elisp_:
+
+          "Minimal Setup" [[https://www.emacswiki.org/emacs?action=browse;oldid=DeskTop;id=Desktop][here]] is a more elaborate idea
+
+******* desktop+ breaks it (April, 2017), I think
+        makes it write some buffer file to ~/.emacs.d
+        but then fails because it's zero length
+        doesn't write this file when desktop+ is installed
+******* [[https://bmag.github.io/2015/12/26/desktop.html#desktop-buffer-mode-handlers][example]] of desktop-buffer-mode-handlers (would write one for indirect-bufers)
+********* desktop+ does that but I don't understand the code
+***** [[http://emacs.stackexchange.com/questions/315/using-desktop-for-basic-project-management][bookmark+ and desktop.el (desktop.el is now builtin, I think)]]: broken
+      and more about similar ideas:
+      https://www.emacswiki.org/emacs?action=browse;oldid=DeskTop;id=Desktop
+
+      bookmark+ seems nice but it fails when I try to save a desktop. I get some kind of error message.  Also, doesn't save it in a default file: you have to specify each time.
+
+      _Indirect buffers_: from [[http://emacs.stackexchange.com/questions/28964/how-to-save-a-desktop-with-narrowed-indirect-buffers][here]], it doesn't totally handle them but you can hack around this by saving a "sequence bookmark"
+
+***** [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Configuration-Registers.html#Configuration-Registers][configuration registers]] for storing/retrieving windows config (not out of the box...)
+
+      C-x r w X (save single fram config to register X)
+      C-x r f X (save all frame configs to register X)
+
+      C-x r j X (restore config from register X (either window or frame config)
+
+******* saves window buffer configs but doesn't reload the buffer from file (it seems, a least if the buffers are indirect)
+******* Guys says registers are better than desktop.el
+        Guy [[https://www.reddit.com/r/emacs/comments/76zw8x/restore_session_on_emacs_startup/][says]] emacs desktop.el is too hard to use (emacs maintainer disagrees), and that registers are best:
+
+             My main window config is built with registers, 5 windows in 1 frame: Ibuffer, multi-term, Gnus, contacts, and calendar. It takes less than 30 seconds upon a restart, which I don't do often. That config is saved with a simple C-x r w m (for main). So a C-x r j m will always bring me back to that config.  desktop.el can save registers to a file, according to the maintainer.
+
+******* [[Registers can store lots of things]]
+***** [[https://github.com/ryuslash/desktop-registry][desktop-registry]]
+      I get a null string error when I try to save a desktop.
+      Last commit was 3 years ago.
+***** store [[https://www.emacswiki.org/emacs/WindowsAndRegisters][windows]] and [[https://www.emacswiki.org/emacs/FramesAndRegisters][frames in registers]]
+***** [[https://github.com/ffevotte/desktop-plus][desktop+]] : Broken, as of 4/11/2017
+
+      It almost works!  Looks like last update was 2015 (in 2017)
+
+******* Correctly save/restores org-mode indirect buffers (the only thing I've found that does)
+******* But has errors after restoring anything once, even after restarting emacs several times.  It's like restoring a desktop corrupts some database permanently.
+***** [[https://github.com/nex3/perspective-el][GitHub - nex3/perspective-el: Perspectives for Emacs.]]
+      Somebody preferred it in comments on eyebrowse [[http://pragmaticemacs.com/emacs/easily-manage-emacs-workspaces-with-eyebrowse/][here]].
+***** [[https://oremacs.com/2016/06/27/ivy-push-view/][Bookmark the current window layout with Ivy · (or emacs]]
+      Was still broken in May 2017 (I commented): 
+        [[https://github.com/abo-abo/swiper/pull/587][Store full window-configuration with ivy-push-view by alfaromurillo · Pull Re...]]
+
+***** TRY [[help:ivy-push-view]] (window configs, now not saved to file.  Future?)
+
+******* Guy [[https://github.com/abo-abo/swiper/issues/570][(CSRaghunandan) says]] that can save it with desktop.el.  Maybe that's simple? 
+
+******* another suggestion is [[https://github.com/abo-abo/swiper/issues/1079][here]].
+
+***** TRY winsav.el, part of [[https://github.com/jwiegley/nxhtml][nxhtml]] – Save and restore frames and window configurations.
+
+      It's not a pkg so it's here:
+      ~\lib\emacs\nxhtml-master\util\winsav.el
+
+      M-x load-file it
+
+      This seems to save the config but it's doesn't show up in M-x
+
+      [[file:~/tmp/nxhtml-master/util/winsav.el::(defun%20winsav-save-configuration%20(&optional%20dirname%20release)][winsav-save-configuration (&optional dirname release)]]
+
+
+*******  =winsav-restore-indirect-file-buffer= makes it sound like it does indirect buffers
+***** REJECTED [[http://ergoemacs.org/emacs/emacs_save_restore_opened_files.html][desktop-save-mode]]
+******* builtin for emacs version > 24.4
+******* customizable
+******* doesn't seem like you can name window configs, or avoid using one on startup
+***** REJECTED [[http://oremacs.com/2016/06/27/ivy-push-view/][ivy-push-view]]
+
+
+      Can push and pop views. But saving them across emacs restarts is not builtin (can be hacked, see comments).  It also didn't work the first time I tried it, and I haven't tried it again.
+
+      _winner-mode_ seems better, on balance
+      - does nearly the same thing
+      - simple arrow keys
+      - also doesn't save across emacs restarts (a shared failing)
+      - access is "backwards/forward," not random access as with ivy-push-view but that's OK
+      - winner-mode is standalone, doesn't require turning on ivy-mode globally (does ivy-mode mess up helm or ido if it's turned on?)
+      - winner-mode worked right away!
+***** REJECTED [[https://github.com/wasamasa/eyebrowse][eyebrowse]]
+      - Nice but it doesn't seem to store the sessions to a file
+      - _winner-mode_ does almost the same thing, and is adequate
+***** REJECTED [[https://github.com/pashinin/workgroups2][workgroups2]]
+      more or less worked but..
+      1. org-mode cloned indirect buffers were restored as direct buffers
+      2. different sessions are accessed by hitting a number, even though you can name them (also, the name doesn't show up in the number menu)
+*** <<Registers can store lots of things>>
+    From: [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Registers.html][Registers - GNU Emacs Manual]]
+        
+    - Position Registers       :: Saving positions in registers
+    - Text Registers           :: Saving text in registers.
+    - Rectangle Registers      :: Saving rectangles in registers.
+    - Configuration Registers  :: Saving window configurations in registers.
+    - Number Registers         :: Numbers in registers.
+    - File Registers           :: File names in registers.
+    - Keyboard Macro Registers :: Keyboard macros in registers.
+    - Bookmarks                ::  Bookmarks are like registers, but persistent.
+        
+*** Indenting: =C-M-\= indents region
+*** <<Elisp>>
+***** Evaluating Lisp
+      From: [[http://ergoemacs.org/emacs/elisp_eval_lisp_code.html][How to Evaluate Emacs Lisp Code]]
+
+      =Ctrl+Alt+x=    ~eval-defun:~	    eval the defun the cursor is in.
+      =Ctrl+x Ctrl+e= ~eval-last-sexp:~ eval lisp expression to the left of cursor
+                    ~eval-region~:    eval selected region (not bound)
+                    ~eval-buffer~     whole file in current window (not bound)
+
+      _The whole set_:
+        eval-last-sexp
+        eval-defun
+        eval-region
+        eval-buffer
+        load-file
+        eval-expression
+
+***** [[help:princ][princ]]: prints an object
+***** [[http://orgmode.org/worg/dev/org-element-api.html][Org Element API]]
+***** [[https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html#Top][GNU Emacs Lisp Reference Manual]]
+***** Many string funcs: [[https://github.com/magnars/s.el][magnars/s.el: The long lost Emacs string manipulation library.]]
+***** elisp hashes, etc: [[http://kitchingroup.cheme.cmu.edu/blog/2017/04/16/A-callable-plist-data-structure-for-Emacs/][A callable plist data structure for Emacs]]
+***** *#'* is short-hand for =function=
+
+      #'(lambda (x) (* x x))
+      is equivalent to
+
+      (function (lambda (x) (* x x)))
+
+***** [[help:string=]] short alias for string-equal
+***** load .el instead instead of .elc if newer set [[http://endlessparentheses.com/sweet-new-features-in-24-4.html][load-prefer-newer]]
+      I have this customized to 'true'
+***** [[https://emacs.stackexchange.com/questions/7148/get-all-regexp-matches-in-buffer-as-a-list][Get all regexp matches in buffer as a list]]
+***** [[http://ergoemacs.org/emacs/elisp_universal_argument.html][Universal-argument]] (codes)
+***** [[http://stackoverflow.com/questions/1019778/how-to-check-if-a-string-is-empty-in-emacs-lisp][test if string is empty]]
+      Since in elisp, a String is an int array, you can use
+
+      (= (length user-str) 0)
+      You can also use (string=) which is usually easier to read
+
+      (string= "" user-str)
+      Equal works as well, but a bit slower:
+
+      (equal "" user-str)
+
+***** [[http://stackoverflow.com/questions/757564/in-emacs-lisp-how-do-i-check-if-a-variable-is-defined][test for void variable]]
+
+        (boundp 'abracadabra)          ; Starts out void.
+        => nil
+
+        (let ((abracadabra 5))         ; Locally bind it.
+        (boundp 'abracadabra))
+        => t
+
+        (boundp 'abracadabra)          ; Still globally void.
+        => nil
+
+        (setq abracadabra 5)           ; Make it globally nonvoid.
+        => 5
+
+        (boundp 'abracadabra)
+        => t
+
+***** getting file basename and path, walking up path
+
+      ;;find conda install dir, assuming conda already installed and in path
+
+      ;; find conda path
+      (setq conda-script-dir (file-name-directory (shell-command-to-string (concat os-which-cmd " conda"))))
+
+      ;; walk up tree
+      (setq conda-home-dir (file-name-directory (directory-file-name conda-script-dir)))
+
+      ;; I think there's a basename() for getting the executable name from the path
+
+***** elisp debugger: 
+***** porting Lisp to elisp
+******* [[https://yoo2080.wordpress.com/2013/08/16/differences-between-common-lisp-and-emacs-lisp/][Differences between Common Lisp and Emacs Lisp | Yoo Box]]
+******* [[https://elpa.gnu.org/packages/cl-lib.html][GNU ELPA - cl-lib]]
+******* [[https://www.gnu.org/software/emacs/manual/html_node/cl/Porting-Common-Lisp.html][Common Lisp Extensions: Porting Common Lisp]]
+******* [[http://irreal.org/blog/?p=2103][Common Lisp versus Emacs Lisp | Irreal]]
+***** graph theory
+******* Lisp
+********* [[https://github.com/cicerojones/graph-and-networks/blob/master/graph-theory-and-search.lisp][graph-and-networks/graph-theory-and-search.lisp at master · cicerojones/graph...]]
+******* Elisp
+********* ??
+***** [[https://common-lisp.net/project/cl-org-mode/][CL-ORG-MODE : A Lisp Parser of org-mode outlines]]
+
+*** Fonts
+***** see available fonts: M-x list-fontsets
+***** fonts I found in Windows 10
+
+      I went with ~Courier New bold~.
+      o best matched Consolas size
+      o is sublty distinguishable from it (too subtle?)
+
+      Some text with ~code~ in the middle is ~this code~ font visible
+
+      I tried:
+
+         Courier New bold
+         Lucida Consolas normal
+         Inconsololata normal
+
+******* fonts shown by M-x list-fonsets (only a subset is show by this cmd)
+
+      -outline-Consolas-normal-normal-normal-mono-27-*-*-*-c-*-fontset-auto1
+      -*-*-*-*-*-*-*-*-*-*-*-*-fontset-default
+      -*-courier new-normal-r-*-*-13-*-*-*-c-*-fontset-standard
+      -outline-Courier New-normal-normal-normal-mono-27-*-*-*-c-*-fontset-startup
+      -outline-Consolas-normal-normal-normal-mono-27-*-*-*-c-*-fontset-auto1
+      -*-*-*-*-*-*-*-*-*-*-*-*-fontset-default
+      -*-courier new-normal-r-*-*-13-*-*-*-c-*-fontset-standard
+      -outline-Courier New-normal-normal-normal-mono-27-*-*-*-c-*-fontset-startup
+******* List of fonts in Word 2007 (should be on any windows machine)
+        From: [[https://graphicdesign.stackexchange.com/questions/13148/which-fonts-have-the-same-width-for-every-character][monospace - Which fonts have the same width for every character? - Graphic De...]]
+
+        BatangChe
+        Consolas
+        Courier New
+        DFKai-SB
+        DotunChe
+        GulimChe
+        GungSahChe
+        KaiTi
+        Lucida Console
+        MingLiU
+        MS Gothic
+        MS MinChe
+        NSimSun
+        SimHei
+        Simplified Arabic Fixed
+        SimSun
+        SimSun-ExtB
+
+******* =Windows-key fonts= sends you to control panel where you can display them
+
+***** utf-8 in emacs
+******* Add to .emacs so eshell is in utf-8
+        From [[http://stackoverflow.com/questions/6668580/how-to-get-support-for-and-the-like-in-the-emacs-shell-buffer][here]]:
+
+        If you want to make _eshell_ always open with utf-8 support, you can do
+        the following instead:
+
+          (defadvice shell (before advice-utf-shell activate)
+            (set-default-coding-systems 'utf-8))
+
+            (ad-activate 'shell)
+
+        or make a _special utf-8shell_ command
+
+          (defun utf8-shell ()
+            "Create Shell that supports UTF-8."
+            (interactive)
+            (set-default-coding-systems 'utf-8)
+            (shell))
+
+        or for _all-buffers_ in utf-8 (but somebody says this doesn't work):
+
+          (prefer-coding-system 'utf8)
+
+******* Temorarily make eshell or some other buffer recognize utf-8
+        From [[http://stackoverflow.com/questions/6668580/how-to-get-support-for-and-the-like-in-the-emacs-shell-buffer][here]]:
+
+        In the buffer
+
+          C-x RET p RET    (I guess it uses utf-8 by default)
+          C-x RET p utf-8
+
+        or (from [[http://lists.gnu.org/archive/html/help-gnu-emacs/2010-01/msg00462.html][here]]):
+
+          M-x set-buffer-process-coding-system
+
+******* Use file header to force emacs to read a file with  a certain coding
+         from [[https://www.emacswiki.org/emacs/ChangingEncodings][here]]:
+
+         Put at top of file:
+
+          ;;; Emacs 23 is unable to open this file properly:  -*- coding: windows-1252 -*-
+
+         or put in .emacs
+
+          (modify-coding-system-alist 'file "\\.txt\\'" 'windows-1252)
+
+         In my case, though, I replaced 'windows-1252' with 'utf-8'
+***** DTU linux machines
+******* On SunOS, bitstream vera sans mono looks great
+
+        - customizations in .emacs (in custom-set-faces):
+
+        '(default ((t (:inherit nil :stipple nil :background "white" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "bitstream" :family "Bitstream Vera Sans Mono"))))
+
+        - how it looks if do M-x describe-face default:
+
+Face: default (sample) (customize this face)
+
+Documentation:
+Basic default face.
+
+Defined in `faces.el'.
+
+        Family: Bitstream Vera Sans Mono
+       Foundry: bitstream
+         Width: normal
+        Height: 98
+        Weight: normal
+         Slant: normal
+    Foreground: #000000
+    Background: white
+     Underline: nil
+      Overline: nil
+Strike-through: nil
+           Box: nil
+       Inverse: nil
+       Stipple: nil
+          Font: #<font-object -bitstream-Bitstream Vera Sans Mono-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1>
+       Fontset: -bitstream-Bitstream Vera Sans Mono-normal-normal-normal-*-13-*-*-*-m-0-fontset-auto3
+       Inherit: nil
+
+[back]
+
+******* But on my build of emacs23 on hms1, I get blurry blue crap
+******* If I leave it to the default, I get lucida typewriter or something
+******* Also get blurry blue if I try any of the smooth fonts recommended [[http://www.emacswiki.org/emacs/GoodFonts#toc12][here]]
+
+        just put this code:
+
+ (dolist (font-family (font-family-list))
+  (let ((str font-family))
+    (insert (propertize (concat "The quick brown fox jumps over the lazy dog ("
+     str ")") 'face `((:family ,font-family))))
+    (newline)))
+
+       in scratch buffer and do M-x evaluate-buffer
+
+******* I tried to build emacs with xft (see README.so in the emacs src dir)
+
+        but it said I needed GTK+ 2.0 or something.
+
+******* So I stopped
+
+******* also setting org mode heading 1 to "sans" caused probs, so I un-specified it
+
+*** <<Emacs color picking>>
+***** [[https://julien.danjou.info/projects/emacs-packages#rainbow-mode][rainbow-mode.el]] would make it easier to sort color candidates    
+*** Emacs Macros
+    <<Emacs Macros>>
+
+    _Definition_
+
+          C-x (do your stuff) C-x
+      OR  F3  (do your stuff) F4
+
+    _Execution_
+
+          C-x e
+      OR  F4
+
+*** <<Windows Emacs>>
+***** Windows emacs builds
+******* <<Chocolatey Emacs>> choco install emacs64 (in admin powershell)
+        Using [[Chocolatey]] package manager
+        From: [[https://www.reddit.com/r/emacs/comments/5xoga4/what_is_the_current_best_way_to_set_up_emacs_on/][What is the current best way to set up emacs on Windows?]] 
+
+        9/16/2017: I installed it on SP4 (10/23/17, on work laptop).  
+
+        It was installed to:
+
+        C:\ProgramData\chocolatey\lib\emacs64\tools\emacs\bin
+
+        (can't see ProgramData by default in File Explorer but it will go there if you type the path into the top bar)
+
+        Installed extra packages (so would work like [[Vincent Goulet Emacs]])
+
+        Associating runemacs w/ .org files, etc.
+          In Windows 10, search "default app settings" , then go to default by file type
+
+          But it still created a new, separate emacs window, rather than putting it in existing emacs window.
+
+
+        *Problems*
+
+        o had to install extra packages that [[Vincent Goulet Emacs]]
+        o had rm ~/.emacs.d/elpa and reinstall due to unidentifiable lisp probs.
+        o could associate files w/ emacs but they started a new emacs window 
+          Not even this worked:
+
+          C:\Path\To\emacsclientw.exe --alternate-editor="C:\Path\To\runemacs.exe" -c
+        
+******* <<Vincent Goulet Emacs>>: Windows Emacs w/ latest R built-in 
+        [[https://vigou3.github.io/emacs-modified-windows/][Emacs Modified for Windows]]
+
+        The install site above has a good list of packages for latex/markdown/R (ess)
+        
+        I used this list to pick extra packages for [[Chocolatey Emacs]]
+
+***** Installing
+
+      1. Run the emacs windows installer e.g.
+
+          c:/Program Files (x86)/GNU Emacs 24.2/bin/addpm
+
+         which puts emacs in the start bar (still needed in Goulet emacs 24.5?)
+
+      2. Put emacs bins _on front of PATH_ env. var (for org mode compiles and
+         to make file associations and taskbar stuff shorter).
+
+      3. Set the HOME environment variable to where .emacs and .emacs.d are
+
+      4. set the ALTERNATE_EDITOR env. var to runemacs.exe
+
+      5. May need to create a blank dir called .emacs.d or do [[Windows .emacs.d problem]]
+
+      6. [[Windows Emacs File associations]] (Associate files with emacs)
+
+      7. [[Pinning emacs to Windows 10 Taskbar]]
+
+***** Pinning emacs to taskbar
+******* <<Pinning emacs to Windows 10 Taskbar>>
+
+        How to pin it w/o getting the extra cmd window from showing up
+
+        1. Start emacs (click on emacs icon in windows start menu), this must be emacs.exe, not runemacs.exe or emacsclientw.exe
+        2. Pin it to the taskbar (right click on taskbar icon)
+        3. Right click on the emacs icon in the taskbar and edit Properties
+        4. Target == "<path to emacs install just above bin>\bin\runemacs.exe"
+        5. set Start in: to %HOME%
+
+        _Historical Note_: Windows 10 had an [[9696
+
+|   |
+][AppID bug]] that broke pinning but it
+        was [[http://permalink.gmane.org/gmane.emacs.windows/6050][fixed]], and I noticed that it /almost/ worked on 7/17/16.  Seems to be totally fixed on 9/15/17.
+
+********* Old stuff that didn't work
+*********** _This Windows 10 fix doesn't work:_
+
+        I downloaded Win7AppID1.1.exe, put itt in ~/bin, and ran:
+        ./Win7AppId1.1.exe "C:\Users\scott\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\emacs.lnk" Gnu.Emacs
+
+        The program it sound no appid and that it had added the one I asked
+        for.  But the extra black windows still showed up when I clicked on
+        the emacs shortcut in the taskbar.
+
+*********** Windows 10 instructions from [[https://www.emacswiki.org/emacs/EmacsClient][here]]:
+
+            After upgrading to Windows 10 and installing a fresh installation
+            of Emacs, pinning emacs.exe to the taskbar had same old problems
+            (multiple icons), and the ‘fix’ above to change emacs.exe target to
+            ‘runemacs.exe’ didn’t help.
+
+            However,
+
+            o  using MichaelHoffman’s tip over in [[https://www.emacswiki.org/emacs/EmacsW32#toc51][{1}]] to use a nice tool
+               to set the AppID for the shortcut.
+
+            o Running the app at http://code.google.com/p/win7appid/ on the
+              emacs.lnk shortcut in
+
+              \users\<name>\ApplicationData\Microsoft\Internet Explorer\QuickLaunch\User Pinned\Taskbar
+
+              and setting it’s AppID to “Gnu.Emacs”
+
+             did the trick. --RobDavenport
+
+
+             _actually, it was here:_
+
+             C:\Users\scott\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar
+
+******* Pinning emacs to Windows 7 Taskbar
+        <<Pinning emacs to Windows 7 Taskbar>>
+
+        See: [[Pinning emacs to Windows 10 Taskbar]]
+
+        Now that Windows 10 has been fixed, you can use the same procedure
+        for Windows 10 and Windows 7.
+
+        *Troubleshooting*
+        - [[Fix connection actively refused error]]
+
+********* Old solutions (don't work on emacs Goulet 24.5, Win7)
+
+        _Solution_ (some kind of [[http://web.archiveorange.com/archive/v/UcW9CKPgcdv5OlUhbhhD][bug in emacs 23.3]]. was still present in 24.2.1)
+
+        Below is partly from [[http://emacs.stackexchange.com/questions/146/set-up-emacs-on-windows-to-start-a-single-instance-and-open-files-in-the-existin/158#158][here]] (this guy has (half of) [[https://yoo2080.wordpress.com/2014/02/05/how-to-associate-file-types-with-emacs-on-windows-8/][another idea]]).  It
+        almost works on Windows 8.1: you get an error message, but if you
+        click OK, emacs will start correctly (the same is true for file
+        associations, so it's some kind of global problem, either on emacs
+        24.4 or windows 8.1 or my setup).
+
+        1. make sure runemacs.exe is _on front of Windows PATH_ environment
+           variable, so that the cygwin emacs is not seen first, which will
+           cause confusion.
+        2. set ALTERNATE_EDITOR env. var to runemacs.exe
+        3. start runemacs.exe e.g. C:\Program Files (x86)\GNU Emacs 24.4\bin\runemacs.exe
+        4. right click on the emacs icon in the taskbar and edit Properties
+        5. Pin it to the taskbar
+        6. Properties == emacsclientw.exe -na runemacs.exe -c ""
+           USED TO WORK: 4. "C:\Program Files (x86)\GNU Emacs 24.4\bin\runemacs.exe"
+        7. change the starting directory to %HOME% so it starts in the right place
+***** [[screen rotation shortcut undo]]
+***** Fix connection actively refused error
+      <<Fix connection actively refused error>>
+
+      Problem: try to open file with emacs, or start from task bar, etc,
+      and get this error message:
+
+         Open in emacs: No connection could be made because the target
+         machine actively refuse it
+
+      From [[http://stackoverflow.com/questions/25320064/open-in-emacs-no-connection-could-be-made-because-the-target-machine-actively-r][here]], the solution is to delete the file:
+
+         ~/.emacs.d/server/serve
+
+***** <<Windows Emacs File associations>>
+
+      I can't get this to work.  Maybe [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Windows-Startup.html#Windows-Startup][official Emacs Windows Tops]] would help?
+
+      Set up so [[https://www.gnu.org/software/emacs/manual/efaq-w32.html#Associate-files-with-Emacs][new emacs doesn't start]] if old one is already running
+      (the no-new-emacs part still doesn't work on emacs 25.1 and Windows 10)
+      1. ALTERNATE_EDITOR to runemacs.exe. /not emacslientw?/  I tried both, doesn't matter. (if add path to emacs bin, this will be simpler)
+      2. make sure .emacs has a (server-start)
+      3. associate files using emacsclientw.exe /below/
+
+      emacsclientw association, for example, for org files:
+
+      1. Right click on a .org file
+      2. Properties
+      3. General tab
+      4. Click on "Change" button next to "opens with"
+      5. More Apps
+      6. Look for another app on pc
+      7. go to emacs dist bin and select emacsclientw.exe
+
+      After this, other filetypes can be associated with emacs the normal way with OpenWith or properties (don't have to go "look for another app on pc")
+
+      *Windows 10 Fail*: On Windows 10, as of 2016-11-29, the procedure above still started a new emacs window when you click on a, for example, .org file.  But on Windows 7, it (correctly) uses an existing emacs window.  The problem was that the (server-running-p) check in .emacs wasn't working, so the servers was never started.
+
+      *Windows 10 Hack*: change .emacs to just always run (server-start)
+
+******* old fixes that aren't necessary anymore on Windows 10, as of 7/17/16.
+
+      Works almost perfectly except for flashing black window in Goulet
+      emacs 24.5.  Mostly inspired by the article [[https://yoo2080.wordpress.com/2014/02/05/how-to-associate-file-types-with-emacs-on-windows-8/][here]]:
+
+      1. make sure runemacs.exe is _on front of Windows PATH_ environment
+         variable, so that the cygwin emacs is not seen first, which will
+         cause confusion.
+
+      2. create a batch file "Gnu Emacs Batch.bat" containing:
+
+         emacsclientw.exe -na runemacs.exe %*
+
+         I put this in ~/shareHW/config (which can be a symbolic link from
+         OneDrive)
+
+      3. Associate it with filetypes using windows explorer "open with"
+         - in Windows Explorer, right click on file file you want to associate
+         - "open with" (or "open" for 1st time: and then tick "installed
+           program...", go there, and then step below)
+         - make sure none of the standard programs e.g. Adobe Reader are
+           not highlighted. If the are, right click to unhighlight
+         - Seach button --> go to the location of the batch file and click "open"
+
+      4. Change the icon for files of this extension
+         - download [[http://www.nirsoft.net/utils/file_types_manager.html][FileTypesMan]]
+         - run it from the zip file (no install)
+         - double click on the .org extension entry
+         - in the default icon window, put: C:\Program Files (x86)\GNU
+           Emacs 24.5\bin\runemacs.exe
+         - might as well type in a description for that file type
+         - OK
+
+      *Troubleshooting*
+      - [[Fix connection actively refused error]]
+      - get rid of flashing black window. From [[https://yoo2080.wordpress.com/2014/02/05/how-to-associate-file-types-with-emacs-on-windows-8/][here]], under "how to
+        eliminate that temporary window and why does it show up?"
+
+        either replace the .bat file w/ an executable or replace it w/ a
+        change made in regedit with [[http://www.nirsoft.net/utils/file_types_manager.html][FileTypesMan]].
+
+        I haven't tried either fix, and still have a flashing window
+
+
+********* THIS ALSO DOESN'T WORK ANYMORE W/ Goulet emacs 24.5 / windows 7
+
+        /NOTE/ You first have to make Gnu EmacsClient an option by
+        associating the first file type with it by manually specififying
+        the path to emacsclientw.exe.  After that, it will know that emacs is
+        an option for opening files.
+
+        For me, this changed the associations for all files of that type, not
+        just the file I first right clicked on.
+
+        For accidentally screwed up file extensions see: [[Remove bad file association]]
+
+********* stuff that used to work but doesn't in Goulet emacs 24.5, windows 7
+*********** solution 1 (problem: "Gnu EmacsClient" doesn't exist)
+
+            By default, you get an extra black command window popup when you
+            start emacs via a file association. Here's how to get rid of it (on
+            Windows 8.1)
+
+            o in File Explorer, right click on the file
+            o properties
+            o in the "general" tab, click "change" next to "Opens with"
+            o click icon next to "Gnu EmacsClient"
+*********** solution 2
+           o (server-start) in .emacs
+           o [[http://www.emacswiki.org/emacs/EmacsClient][associate them with]] emacsclientw.exe -na runemacs.exe
+             - make ~/bin/emacsBatch.bat, containing the line:
+               emacsclientw.exe -na runemacs.exe "%1"
+             - then associate it with filetypes using windows explorer "open with"
+             - the above /did/ work and then I messed it up w/ some crappy shareware
+             - stuff that doesn't work
+               - setting environment variable ALTERNATE_EDITOR to runemacs.exe is
+                 also supposed to work, but I couldn't get it to
+               - [[http://www.emacswiki.org/emacs/EmacsMsWindowsIntegration#toc3][command lines]] are supposed to work (and [[http://emacs.1067599.n5.nabble.com/Usign-emacs-as-default-program-in-windows-7-td268764.html][one guy]] (Brian
+                 Elmegaard-2) says they do after old emacsw32 stuff is
+                 removed) but I can't get it to work.  I [[https://mail.google.com/mail/u/0/?shva%3D1#inbox/13c5d929961bd808][posted a question]] to
+                 him.
+
+***** <<Windows .emacs.d problem>>
+
+      Get ".emacs.d is unsafe" error message when have a user account w/
+      admin privileges.  Fix by changing own to the user.
+
+      o Click R-mouse on ~/.emacs.d/server
+      o select Properties (last item in menu).
+      o From Properties select the Tab Security
+      o select the button Advanced
+      o Select the Tab Owner
+      o change the owner from Administrators (<your-pc-name>\Administrators) into
+        <your-login-name> (<your-pc-name>\<your-login-name>.
+      o Check the "Replace owner on subcontainers and objects" to ensure
+        that subdirectories also have their ownership changed.
+
+      Now the server code will accept this directory as secure because
+      you are the owner.
+
+      From: http://lists.gnu.org/archive/html/help-emacs-windows/2011-03/msg00069.html
+
+***** [[windows emacs org-mode build]]
+***** [[Changing Windows Emacs Icon]]
+***** Opening files using windows defaults
+******* [[https://emacs.stackexchange.com/questions/3105/how-to-use-an-external-program-as-the-default-way-to-open-pdfs-from-emacs][Commenter says]] use: w32-browser.el
+******* Three w32 packages on melpa
+
+  w32-browser        20170308.1518 available  melpa      Run Windows application associated with a file.
+
+  w32browser-dlgopen 20170309.1433 available  melpa      Use w32browser with standard Windows Open File box.
+
+  helm-w32-launcher  20141223.1214 available  melpa      Start Menu entry launcher using Helm
+
+***** Installing GnuTLS for windows emacs
+
+      *Summary*: I didn't get this to work but maybe it doesn't matter.
+
+      This was missing on [[http://vgoulet.act.ulaval.ca/en/emacs/windows/][Vincent Goulet's Emacs]] 25.1 modified build 2.  The symptom is when I manage emacs packages, and get the error message
+
+        =gnutls.c: [1] (Emacs) GnuTLS library not found=
+
+      GnuTLS instructions are [[http://tahirhassan.blogspot.de/2016/03/installing-gnutls-on-emacs.html][here]] but it didn't work.  [[http://xn--9dbdkw.se/diary/how_to_enable_GnuTLS_for_Emacs_24_on_Windows/index.en.html][Here]] it says I can check the install with =M-: (gnutls-available-p) RET= (it fails). There are more complex instructions which I skipped because things seem to work without this library.
+
+      Also, Vincent Goulet's email address no longer works...
+
+***** [[Emacs 25 on Ubunto 16.10]]
+*** get rid of non-ascii chars
+    (useful for cleaning up bibfiles, etc.)
+
+***** terse way
+
+    From:
+    http://www.gnu.org/software/libtool/manual/emacs/Enabling-Multibyte.html
+
+    Visit the file and then:
+
+    C-x <RET> c raw-text
+
+    and then save it (may need to change a char so it will actually do the save).
+
+***** long way
+
+      M-x set-buffer-file-coding-system us-ascii
+
+    and save the file
+
+*** <<Latex/Bibtex and Emacs>>
+***** [[*Latex and Emacs][Latex and Emacs]]
+***** <<BibTex and Emacs>>
+******* <<Org-ref operations on .bib file>>
+********* =C-c C-l= is supposed to create a link instead looks up URL, as of 2016-12-05
+********* supposed to be able to add a paper by dragging a URL but it's [[https://github.com/jkitchin/org-ref/issues/347#issuecomment-263023007][broken]]
+********* dragging pdf w/ a doi works
+******* [[http://manas.tungare.name/software/isbn-to-bibtex/][ISBN to BibTex Converter]] (not Emacs, also broken as of 2016-12-05)
+******* also see [[*JabRef][JabRef]]
+******* [[Latex/Bibtex]]
+******* [[https://github.com/cute-jumper/gscholar-bibtex][gscholar-bibtex]]
+        <<gscholar-bibtex>>
+
+        I guess I might use it sometime, although JabRef is more powerful.
+
+        It works and has /most/ of the functionality found in JabRef.
+
+        Google scholar works
+        IEEE lookup works after I submitted a [[https://github.com/cute-jumper/gscholar-bibtex/issues/19][bug report]].  But it doesn't get abstracts and the author [[https://github.com/cute-jumper/gscholar-bibtex/issues/19][wants]] me to write that.
+
+***** [[Setting JabRef setup so it can push latex cites to Emacs]]
+***** says you can edit the entries locally, and submit the changes to Redmine.
+***** See [[Get IEEE & ScienceDirect with abstracts in emacs]]
+***** <<Jumping to papers from inside of org-mode and bibtex files>>
+
+      org-ref now does this!
+
+******* in bibtex file, open paper in file field w/ a key combo
+******* also do it from inside of org-mode
+******* [[http://draketo.de/light/english/free-software/custom-link-completion-org-mode-25-lines-emacs][lisp code that seems close]]
+******* [[file:/Applications/Emacs.app/Contents/Resources/lisp/textmodes/bibtex.el.gz::defun%20bibtex%20copy%20field%20as%20kill%20optional%20comma][bibtex-copy-field-as-kill]] is a start for the part where file is extracted
+******* [[file:~/.emacs::defun%20org%20docview%20open%20link][org-docview-open]] is how to open the file in docview
+********* in org mode, C-c O (instead of C-c o) opens paper instead of bibfile
+*********** opens both?
+********* in bibtex file, use the same key combo to open the paper
+******* [[file:/Applications/Emacs.app/Contents/Resources/lisp/textmodes/bibtex.el.gz::defun%20bibtex%20url%20optional%20pos%20no%20browse][bibtex-url]] finds af inentry.  Mod to have it pick file
+********* modify so it finds the file field _in this entry_ ?
+******* [[file:/Applications/Emacs.app/Contents/Resources/lisp/textmodes/bibtex.el.gz::Parse%20the%20name%20part%20of%20a%20BibTeX%20field][bibtex-parse-field-name]] looks for and parses a field
+******* [[file:/Applications/Emacs.app/Contents/Resources/lisp/textmodes/bibtex.el.gz::defconst%20bibtex%20name%20part][bibtex-name-part]] matches the name of a field (regexp used by other funcs)
+******* inspired by [[file:~/.emacs::org%20add%20link%20type%20docview%20org%20docview%20open][org-docview]] (here's the [[http://osdir.com/ml/emacs-orgmode-gnu/2009-08/msg00358.html][original thread]])
+********* I insatalled w32-browser and emacs still insisted on use xpdf...
+*** <<Rectangle editing>>
+    See: [[info:emacs#Rectangles][info:emacs#Rectangles]]
+***** =C-x r RET= [[iedit-rectangle-mode]]: type same stuff on every line in rectangle
+
+      =C-x C-x=   to move to corners.
+      =C-x r RET= to quit.
+
+      Easy way to prepend/append indentation, org table =|= ...
+
+***** ~rectangle-mark-mode~
+******* C-x C-x cycles cursor through corners
+***** ~rectangular-region-mode~: crashes on April 23, 2017
+*** [[Https://github.com/atykhonov/google-translate][Google-Translate]]
+
+    =C-ct=: translate selection or what you type
+    =C-n=:  switches translation directions
+
+***** I have it set for German <--> English
+***** Can play audio but I haven't configured it
+***** Tons of other configurations
+
+*** Version control in emacs
+***** [[svn in emacs]]
+***** [[git in emacs]]
+*** Inline images
+***** in any file: use M-x [[http://www.netlaputa.ne.jp/~kose/Emacs/iimage.html][iimage-mode]]
+***** this [[http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.php][works in org-mode]] (note C-c C-l links don't work? use double sq. brkts)
+***** out-of-the-box, paths don't work: img must be in dir of .org file?
+***** out-ofthe-box, ordinary file links to images does work if you visit them
+***** paths would work if modify some var?
+      iimage-mode-image-regex-alistiimage-mode-image-regex-alist
+      iimage-mode-image-filename-regex
+      others?
+
+***** _However_, if you attach the image to org and then use iimage, the img displays!
+***** opening pdf files from dired will open them directly in docview
+***** opening an attachment from inside org-mode will open acroread
+***** also: TRY [[https://github.com/abo-abo/org-download][abo-abo/org-download: Drag and drop images to Emacs org-mode]]
+*** Emacs packages
+***** include the libraries that are now in my .emacs or _emacs
+***** must [[Proxy environment variable for emacs, wget, anki, and others]]
+
+*** <<use-package>>
+***** :init vs :config
+      From: https://github.com/jwiegley/use-package/issues/394
+
+      *:init*   stuff that doesn't run if the package is not availabel
+      *:config* code that means something (works) only after the pkg is loaded
+
+*** Remember cursor position, last file visit
+    ;; for emacs 25.1 or later
+    (save-place-mode 1)
+
+*** Better indentation
+
+    Better than auto-fill and filladapt, which wrap when you hit space when
+    the cursor is beyond the margin.  This is OK, but it:
+
+    1. looks bad if the emacs frame is narrower than the margin
+    2. inserts a CR into the file, which won't necessarily match future frames
+    3. filladapt breaks cperl, org-mode plain lists, maybe matlab?
+    4. auto-fill by itself messes up indent in org-mode after a bullet or
+       an org-mode unrecognized bullet type e.g. 'o'
+
+***** org-mode indentation
+******* org-indent-mode
+
+    1. all lines are prefixed for display with the necessary amount of space2.
+    2. Also headlines are prefixed with additional stars, so that the amount of
+       indentation shifts by two spaces per level.
+    3. All headline stars but the last one are made invisible using the
+    org-hide face4; see below under ‘2.’
+
+********* indents text to match bullet.  Generally looks better
+********* but bad for wide tables or deep indent
+********* org-startup-indented does it for all files
+******* what I really want is just virtual line wrapping of text to whaever indent I have?
+
+********* org-indent-mode. In this minor mode, all lines are prefixed for display with the necessary amount of space2. Also headlines are prefixed with additional stars, so that the amount of indentation shifts by two spaces per level. All headline stars but the last one are made invisible using the org-hide face4; see below under ¡®2.¡¯ for more information on how this works. You can turn on org-indent-mode for all files by customizing the variable org-startup-indented, or you can turn it on for individual files using
+******* org-mode and visual-line-mode
+        This is almost perfect.  The only problem is that it mangles tables.
+********* my [[http://stackoverflow.com/questions/39696806/visual-line-mode-except-in-tables][Stackoverflow question]]: tables are still a problem on 9/26/16
+******* also see [[org mode]]
+***** adaptive-wrap (melpa package)
+******* [[https://www.emacswiki.org/emacs/LineWrap][recommended here]] and [[http://emacs.stackexchange.com/questions/14589/correct-indentation-for-wrapped-lines][here]]
+******* [[http://stackoverflow.com/questions/13559061/emacs-how-to-keep-the-indentation-level-of-a-very-long-wrapped-line][startup with hook]] (2012, and [[https://elpa.gnu.org/packages/adaptive-wrap.html][latest package is 2013]]:  still necessary?)
+*** <<Python in Emacs>>
+***** overviews
+******* [[https://www.emacswiki.org/emacs/PythonProgrammingInEmacs][EmacsWiki: Python Programming In Emacs]]
+******* [[http://wikemacs.org/wiki/Python][Python - WikEmacs]]
+******* <<Emacs and Python videos from C'est la Z>>
+
+        "As a postscript, let me share these links on how I use Emacs for Python development (each with a video) as well as my series on how I use Emacs in general":
+
+        http://cestlaz.github.io/stories/emacs/
+        http://cestlaz.github.io/posts/using-emacs-12-python
+        http://cestlaz.github.io/posts/using-emacs-13-yasnippet
+***** jedi
+
+      From [[http://wikemacs.org/wiki/Python][here]]: "It helps at autocompletion, finding definitions, showing documentation, etc. Elpy makes good use of it."
+
+******* [[https://github.com/tkf/emacs-jedi][GitHub - tkf/emacs-jedi: Python auto-completion for Emacs]]
+******* [[https://www.masteringemacs.org/article/jedi-completion-library-python][Jedi: A completion library for Python - Mastering Emacs]]
+******* what emacs video guy uses: [[Emacs and Python videos from C'est la Z]]
+******* is compatible with elpy: [[elpy and jedi and rope]]
+******* <<jedi and conda>>
+********* [[https://github.com/tkf/emacs-jedi/issues/154][How to tell emacs-jedi about conda environments · Issue #154 · tkf/emacs-jedi...]]
+
+          A bit gross: must look up packages in conda dist and then hard code them into .emacs
+
+********* [[activating conda environments in emacs]]
+***** rope
+      From [[http://wikemacs.org/wiki/Python][here]]: it's good for renaming variables and much more, needs two python packages to be installed.
+******* works with elpy: [[elpy and jedi and rope]]
+***** elpy 
+      So you can type =C-c= in a python script and emacs will run it
+******* emacs video guy says [[http://cestlaz.github.io/posts/using-emacs-12-python/][looks cool but is overkill for him]]
+******* RealPython guy [[https://realpython.com/blog/python/emacs-the-best-python-editor/][likes elpy]] (with tips and screenshots)
+******* [[https://github.com/jorgenschaefer/elpy/wiki/Configuration][elpy Configuration · jorgenschaefer/elpy]]
+******* elpy paths
+********* depends upon how you install python: [[Windows Python]]
+********* <<Better elpy path>>? See [[https://github.com/jorgenschaefer/elpy/issues/939][this]]
+********* fix for elpy path problem: [[https://github.com/jorgenschaefer/elpy/issues/1156][bug report]]
+******* [[elpy pyenv interface]]
+******* <<conda environments via elpy virtual environments>>
+        From [[https://github.com/jorgenschaefer/elpy/issues/285][here]]:
+
+        Looks like you either hardcode conda env. locs into your .emacs or you use the  [[elpy pyenv interface]] (M-x conda-workon).
+
+        I'm not a fan because the environment spec. doesn't get checked into svn or git or whatever.
+
+******* <<elpy and jedi and rope>>
+********* elpy [[http://wikemacs.org/wiki/Python][is said]] to make good use of jedi
+********* [[https://stackoverflow.com/questions/29809061/how-to-properly-setup-jedi-with-elpy-in-emacs][python - How to properly setup Jedi with elpy in emacs?]]
+********* [[https://github.com/jorgenschaefer/elpy/wiki/Configuration][elpy Configuration · jorgenschaefer/elpy]]
+******* [[elpy vs. anaconda-mode]]
+***** [[https://github.com/abo-abo/lpy][abo-abo/lpy: Minimal Python IDE for GNU Emacs]]
+***** pyenv
+******* <<elpy pyenv interface>> 
+********* [[https://stackoverflow.com/questions/37472595/how-to-activate-the-anancondas-env-python-in-emacs][how to activate the ananconda's env python in emacs? - Stack Overflow]]
+********* [[https://smythp.com/emacs/python/2016/04/27/pyenv-elpy.html][Using Elpy with pyenv in Emacs]]
+********* [[https://github.com/ssbb/pyenv-mode-auto][pyenv-mode-auto: Automatically activates pyenv version within E...]]
+
+          a little gross: needs a .python-version file in source code directory.  I'd rather have stock python with nothing especially for emacs in it.
+
+********* [[elpy pyenv interface]]
+******* [[https://emacs.stackexchange.com/questions/20092/using-conda-environments-in-emacs][Using conda environments in emacs - Emacs Stack Exchange]]
+        
+        What I'd like is something automatic.  Here, it's a bit gross: 
+
+        1. put cond envs into a file,
+        2. hardcode a reference to that file in emacs,
+        3. Run =M-x pyenv-workon= to switch
+
+***** [[https://github.com/proofit404/anaconda-mode][anaconda-mode: Code navigation, documentation lookup and ...]]
+******* is [[https://github.com/proofit404/anaconda-mode/issues/38][smaller than elpy]]
+******* [[https://github.com/proofit404/anaconda-mode/issues/38][has]] an interface to jedi
+******* <<anaconda-mode seems to use pyenv for conda environments>>
+******* also: [[activating conda environments in emacs]]
+******* <<elpy vs. anaconda-mode>>
+******* [[https://github.com/proofit404/anaconda-mode/issues/38][how does anaconda-mode compare to Elpy? · Issue #38 · proofit404/an...]]
+***** EIN -- Emacs IPython Notebook
+*******  [[https://github.com/millejoh/emacs-ipython-notebook][GitHub - millejoh/emacs-ipython-notebook]]
+******* works with both Jupyter and emacs org mode
+***** <<activating conda environments in emacs>>
+******* <<conda.el reads environmentl.yml>> (but still has problems)
+        From: [[https://github.com/necaris/conda.el][conda.el: Emacs helper library (and minor mode) to work with]]
+
+        *conda.el* has some problems to fix before I can use it
+        1. it's bin paths are wrong for windows: [[https://github.com/necaris/conda.el/issues/5][Doesn't work on Windows · Issue #5]]
+        2. always prints "env not found": [[https://github.com/necaris/conda.el/issues/8][No conda environment for file · Issue #8]]
+        3. when I run =C-c= (ipython) I get a warning b/c I'm running a hard-coded conda path (the wrong one, since I'm hard coded to root)
+        4. This might be b/c of my hard coded path: (setq conda-anaconda-home conda-home-dir).  Could use env var ANACONDA_HOME ([[help:conda-anaconda-home]])
+        5. but then (elpy-use-ipython) would still crash since would not be in path.  letting conda.el autofind the path worked, and I think ipython was working because emacs ignores PATH changes but still had an ipython.exe in its path.  Maybe this is also an elpy problem?  Could pyenv help?  Also, on windows, python.exe is in the top env dir and ipython.exe is in topdir/Scripts.  Seems like conda.el doesn't handle that.
+
+        Wait for this to get fixed before any more messing around: *just usd Spyder*
+
+        environment.yml: a [[documenting conda environment with environment.yml][recommended]] way to check anaconda environments into svn or git or whatever 
+
+********* [[Can]] automatically read environment.yml. 
+********* appears to also work with conda files other than environment.yml
+          
+          says: " search up the directory tree for a file defining a conda environment, such as an environment.yml file, and try to activate the named environment"
+********* hooks to eshell so can easily run conda commands from there          
+********* =conda-anaconda-home= must be set to anaconda home unless have . file
+
+          expected default is ~./.anaconda3
+
+          But I see that I have ~/.anaconda (on SP4)
+
+********* See also: [[documenting conda environment with environment.yml]]
+
+******* [[conda environments via elpy virtual environments]]
+******* [[jedi and conda]]
+******* [[elpy pyenv interface]]
+******* [[anaconda-mode seems to use pyenv for conda environments]]
+******* general: [[python conda environments]]
+*** Ruby in Emacs
+***** debugger
+
+      M-x rubydb
+      ruby -d <progname inluding '.rb'>
+
+*** [[MS Office and Emacs]]
+*** MacOS Emacs
+***** Killing a MacOS task
+      1.) kill -9 in a terminal -- work OK for almost everything
+      2.) Command+Option+Escape, choose process, kill it
+      3.) Right click the dock icon, hold down option, choose Force Quit
+***** [[http://groups.google.com/group/carbon-emacs%3Fhl%3Den][carbon emacs forum]]
+*** Evernote and Emacs
+***** [[http://code.google.com/p/emacs-evernote-mode/][Evernote mode]]
+******* [[file:~/lib/emacs/evernote-mode-0_41/][installation]]
+***** Getting a [[http://discussion.evernote.com/topic/23917-access-note-links-via-evernote-web/page__p__125018__hl__links__fromsearch__1#entry125018][private URL to an evernote note]]
+
+Posted 09 February 2012 - 01:43 PM
+
+For a private browser link. Pop out a note to a single note view window
+from the web client and copy the url from the address bar.
+
+For a public browser link. Share the note and copy the share url.
+
+*** Emacs speed up
+***** TODO profilers
+******* [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Profiling.html][GNU Emacs Lisp Reference Manual: Profiling]]
+
+           M-x profiler-start
+           (do some stuff that make Emacs slow)
+           M-x profiler-report
+           (look at it)
+           M-x profiler-stop
+           (when you have looked around enough)
+******* [[https://punchagan.muse-amuse.in/posts/how-i-learnt-to-use-emacs-profiler.html][How I learnt to use Emacs' profiler]]
+******* TODO [[https://lists.nongnu.org/archive/html/emacs-orgmode/2016-07/msg00222.html][Try]] `elp-instrument-package' on "org-" prefix
+***** startup
+******* guy says use =use-package=: [[https://anuragpeshne.github.io/essays/emacsSpeed.html][Speeding Up Emacs]]
+******* profiling .emacs
+********* [[https://github.com/jschaf/esup][esup]] startup profiler
+
+          Run with: =M-x esup=
+          
+          Get an error message but it keeps running and produces a useful profile buffer.
+
+          Note: Inside of emacs package manager, melpa says it's an obsolete package.
+
+********* profile-dotemacs
+          From: [[https://www.emacswiki.org/emacs/ProfileDotEmacs][EmacsWiki: Profile Dot Emacs]]
+
+  Use the script: [[http://www.randomsample.de/profile-dotemacs.el][profile-dotemacs.el]]
+
+  Then start emacs as follows:
+
+  emacs -Q -l PATH/profile-dotemacs.el -f profile-dotemacs
+
+  with PATH being the path to where this file resides.
+
+  The specific file to be profiled is hardcoded within profile-dotemacs.el
+
+  (defvar profile-dotemacs-file "~/.emacs" "File to be profiled.")
+        
+***** TODO normal editing
+******* believable [[http://emacs.stackexchange.com/questions/5359/how-can-i-troubleshoot-a-very-slow-emacs][speed debugging advice]]
+******* smartparens, auto-complete, line-number and font-lock [[http://emacs.stackexchange.com/questions/5359/how-can-i-troubleshoot-a-very-slow-emacs][are suspects]]
+******* guy's [[https://punchagan.muse-amuse.in/tags/orgmode.html][speedup detective work]]:  =#+STARTUP: showeverything= didn't help me
+********* [[https://punchagan.muse-amuse.in/tags/orgmode.html][recommendation]]:  =#+STARTUP: showeverything= didn't help me
+********* (adaptive-wrap-prefix-mode +1) in visual-line-mode-hook
+********* commenting out: (global-visual-line-mode +1)
+********* TODO try adaptive-wrap
+
+*** <<Changing Windows Emacs Icon>>
+
+    From [[http://www.howtogeek.com/75983/stupid-geek-tricks-how-to-modify-the-icon-of-an-.exe-file/][here]]:
+    1. install [[http://www.angusj.com/resourcehacker/][Resource Hacker]]
+    2. find emacs in windows explorer
+    3. right click it and "open with resource hacker"
+    4. Icon in LHS menu
+    5. right click on the icons and "replace with"
+
+***** some icons are [[https://www.emacswiki.org/emacs/EmacsIcons][here]]
+
+*** R in emacs
+    <<R in emacs>>
+
+***** install [[http://ess.r-project.org/Manual/ess.html][ESS]] (for latest version)
+      to avoid putting ESS in emacs installation directory, can do this:
+
+        cd ~/lib/emacs/
+        unzip ess-12.04-4.zip
+        mklink /D ess ess-12.04-4  (on windows)
+      and in .emacs
+
+        (add-to-list 'load-path "~/lib/emacs/ess/lisp") ; so load below works?
+        (load "~/lib/emacs/ess/lisp/ess-site")
+        (require 'ess-site)
+
+***** Also add R to PATH so ESS can find it.  See: [[R for windows]]
+***** [[Vincent Goulet Emacs]]
 * JabRef
 *** News and feature requests go [[http://discourse.jabref.org][here]]
 *** bug reports go [[https://github.com/JabRef/jabref/issues][here]]
@@ -2535,7 +5059,7 @@ table rows in previous examples.
 
 ***** [[http://www.soundtaxi.org/how_to_download_video_from_VideoLectures.php][riptiger]] ($35)
 ***** [[http://applian.com/how-to-record-download-capture/videolectures.html][Replay media catcher]] (40 EUR, free version downloads 50% for non-youtube)
-* PDF marmanipulation
+* PDF manipulation
 *** snipping pdf figures, equations and keeping them pdfs
 ***** [[http://www.lhnr.de/ext/gpdfx/][gpdfx]]: perfect but linux only.
 ***** [[http://briss.sourceforge.net/][briss]]: windows, have to save 1 page 1st, and then crop
