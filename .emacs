@@ -289,6 +289,9 @@
       (isearch-yank-string region))))
 (add-hook 'isearch-mode-hook #'jrh-isearch-with-region)
 
+;; C-; on symbol to edit all instances in scope & many other things. C-; to exit
+(require 'iedit) ; needed(?) to force package install: 
+
 ;; * Swiper/Ivy
 (use-package swiper
   :diminish ivy-mode
@@ -563,6 +566,7 @@
 ;;(global-set-key (kbd "C-x f") 'find-file-literally); overwrites set-fill-column
 
 ;; ** Name of file in current buffer (kind of the opposite of ffap)
+
 ;; http://emacsredux.com/blog/2013/03/27/copy-filename-to-the-clipboard/ https://github.com/bbatsov/prelude
 (defun copy-current-file-name-to-clipboard ()
   "Copy the current buffer file name to the clipboard."
@@ -1160,33 +1164,6 @@ is already narrowed."
 (define-key org-mode-map (kbd "<C-S-right>") nil) ; was switch TODO set
 
 ;; ** Org-ref
-;;
-;; my old org-ref setup. broke cite: key visiting (not creating) for some reason
-;; but maybe I want those "require" packages?
-;; ;; Setup org-ref: http://www.screencast.com/t/bxfafVydE
-;; (use-package org-ref
-;;   :defer t
-;;   :init
-;;   (progn
-;;     ;; really want these to be in a cross-platform location
-;;     (let ((default-directory docDir))
-;;       (setq org-ref-bibliography-notes (expand-file-name "notes.org"))
-;;       (setq org-ref-default-bibliography (expand-file-name "energy.bib"))
-;;       (setq org-ref-pdf-directory (expand-file-name "papers")))
-;;     (setq reftex-default-bibliography org-ref-default-bibliography)
-;;     ;; showing broken links vastly slowed down energytop.org so disable
-;;     ;; https://github.com/jkitchin/org-ref/issues/468
-;;     (setq org-ref-show-broken-links nil)
-;;     ;; Utils mentioned here: https://github.com/jkitchin/org-ref
-;;     (require 'org-ref-pdf)
-;;     (require 'org-ref-bibtex)
-;;     (require 'org-ref-latex)
-;;     (require 'org-ref-url-utils)
-;;     (require 'doi-utils)
-;;     ;;    (setq org-ref-completion-library 'org-ref-ivy-cite) ; original helm OK too
-;;     ;; Make the org-ref bibtex link folded.  This will make them not export as good latex (bummer) unless do file or dir specific thing.  See org_mode/test.org. See: https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
-;;     (org-link-set-parameters "cite" :display nil)
-;;     ))
 
 ;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
 (use-package org-ref
@@ -1213,7 +1190,7 @@ is already narrowed."
         bibtex-autokey-titlewords 2
         bibtex-autokey-titlewords-stretch 1
         bibtex-autokey-titleword-length 5)
-      ;; Make the org-ref bibtex link folded.  This will make them not export as good latex (bummer) unless do file or dir specific thing.  See org_mode/test.org. See: https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
+  ;; Make the org-ref bibtex link folded.  This will make them not export as good latex (bummer) unless do file or dir specific thing.  See org_mode/test.org. See: https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
   (org-link-set-parameters "cite" :display nil)
 )
 
@@ -1325,7 +1302,7 @@ This function avoids making messed up targets by exiting without doing anything 
 
 (use-package ox-minutes :defer 5) ; nice(er) ascii export, but slow start
 
-;; I couldn't get this to work after converter .emacs to use-package.  I had two problems
+;; I couldn't get pandoc to work after converting .emacs to use-package.  I had two problems
 ;;
 ;; 1.) On my SP4 with a clean install, I got the error "ox-pandoc was not provided"
 ;; 2.) on my work laptop, I somehow didn't see this, but no pandoc functions showed up on the org-export-dispatch list either.
@@ -1480,7 +1457,7 @@ This function avoids making messed up targets by exiting without doing anything 
 
 ;; * Emacs Command Execution
 
-;; C-x u visualize an undo tree, C-/ is like old undo, C-? is redo
+;; C-/ is like old undo, C-? is redo.  C-x u visualizes an undo tree, q to exit
 (use-package undo-tree
   :diminish undo-tree-mode
   :config
