@@ -290,7 +290,7 @@
 (add-hook 'isearch-mode-hook #'jrh-isearch-with-region)
 
 ;; C-; on symbol to edit all instances in scope & many other things. C-; to exit
-(require 'iedit) ; needed(?) to force package install: 
+(use-package iedit) ; needed(?) to force package install: 
 
 ;; * Swiper/Ivy
 (use-package swiper
