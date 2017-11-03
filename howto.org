@@ -61,14 +61,14 @@
 
 ******* TRY decide on <<highlight symbol>>
 
-        _Two alternatives, neither perfect_:
+        _Two alternatives, neither perfect_
 
         highlight-thing is actively maintained, more flexible, [[https://github.com/emacs-tw/awesome-emacs#interface-enhancement][more popular?]] faster? (no fontlock), can be restricted to defun.  The change it needs is to query "describe-symbol" or something when it's in "symbol" mode and then only highlight if it's a symbol. Better yet, only if it's a variable, so "describe-variable", if that exists.
 
-        Related to [[smartscan]]
+        Related to [[smartscan]] and [[iedit]]
 
 ********* highlight-symbol
-;; doesn't restrict to defun, has nav keys, also highlights words in comments
+;; /doesn't restrict to defun/, has nav keys, also highlights words in comments
 ;; alternative, only in defun: https://github.com/fgeller/highlight-thing.el
 ;; prog-mode-hook could be  
 (use-package highlight-symbol
@@ -80,8 +80,8 @@
 
 ********* highlight-thing
 
-;; alternative, only symbols: https://github.com/nschum/highlight-symbol.el
-;; this thing highlights any word the  cursor is on e.g. comments: too much!
+;; /highlights more than symbols, no nav keys/: https://github.com/nschum/highlight-symbol.el
+;; Highlights any word the cursor is on e.g. comments: too much!
 ;; highlight-thing-what-thing lets you hightlight a huge # of different things
 (use-package highlight-thing  ; highlight variables, etc, like in matlab
   :init
@@ -1473,15 +1473,15 @@ Many text editors have access to these in some simple way, so before thinking ab
 
       _Two ways to do this_
 
-******* =iedit= replacing: instantly replace within a region but interactively
+******* <<iedit>> interactive replace of string/symbol in region/defun & more
 
         _Instantly replace through whole buffer_
         (once you are in iedit mode...)
 
-        1. mark a word or phrase you want to replace
+        1. put cursor on symbol you want to edit (or mark some text)
         2. =C-;=
-        3. type the replacement
-        4. =C-g= to exit
+        3. type the replacement: all matches will be edited
+        4. =C-g= or  =C-;= to exit
 
         _Replace within a narrowed region_
 
@@ -1491,7 +1491,9 @@ Many text editors have access to these in some simple way, so before thinking ab
         2. =C-;=
         3. type the replacement
 
-        *Note*: doesn't =C-;= conflict with default binding for source block editing? [[file:org_mode/test.org::*Source%20code%20block][Source code block]]
+        *Note*: doesn't =C-;= conflict with default binding for source block editing?
+
+        Related to [[highlight symbol]]
 
 ******* query-replace (default binding to =M-%=, no rebound)
 
@@ -2729,8 +2731,8 @@ For a public browser link. Share the note and copy the share url.
 * JabRef
 *** News and feature requests go [[http://discourse.jabref.org][here]]
 *** bug reports go [[https://github.com/JabRef/jabref/issues][here]]
-*** latest build: https://builds.jabref.org/master/
-*** [[https://github.com/JabRef/jabref/blob/master/CHANGELOG.md#unreleased][What's new in latest build]] 
+*** latest dev build: https://builds.jabref.org/master/
+*** [[https://github.com/JabRef/jabref/blob/master/CHANGELOG.md#unreleased][What's new in latest dev build]] 
 *** setting up multiple previews: =Options-> Preferences-> Entry preview=
 *** setup so JabRef can push latex cites to Emacs
     <<Setting JabRef setup so it can push latex cites to Emacs>>
