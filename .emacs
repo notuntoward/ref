@@ -289,8 +289,15 @@
       (isearch-yank-string region))))
 (add-hook 'isearch-mode-hook #'jrh-isearch-with-region)
 
-;; C-; on symbol to edit all instances in scope & many other things. C-; to exit
-(use-package iedit) ; needed(?) to force package install: 
+;; C-; on symbol/word edits all instances in scope & other things. C-; to exit
+(use-package iedit
+  :config
+  (defun iedit-within-defun ()
+    "Do iedit search and replace within current defun (equivalent to C-0 C-;)"
+    (interactive)
+    (let ((current-prefix-arg '(0))) (call-interactively 'iedit-mode)))
+  :init
+  (define-key prog-mode-map (kbd "C-;") 'iedit-within-defun))
 
 ;; * Swiper/Ivy
 (use-package swiper
@@ -778,6 +785,11 @@
 (use-package smartscan
   :defer t
   :config (global-smartscan-mode t))
+
+;; works but not narrowed to defun, can't edit symbol by just typing, like in Matlab
+;; (use-package auto-highlight-symbol
+;;   :init
+  ;;   (global-auto-highlight-symbol-mode))
 
 ;; *** Ediff
 ;; Do not pop up a separate window "frame" for ediff
@@ -1746,6 +1758,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(scroll-step 1)
  '(search-default-mode (quote char-fold-to-regexp))
  '(show-paren-mode t)
+ '(sml/vc-mode-show-backend t)
  '(sml/modified-char "•")
  '(swiper-action-recenter nil)
  '(tool-bar-mode nil)
