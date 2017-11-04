@@ -61,7 +61,7 @@
 
 ******* TRY decide on <<highlight symbol>>
 
-        _Two alternatives, neither perfect_
+        _Three alternatives, neither perfect_
 
         highlight-thing is actively maintained, more flexible, [[https://github.com/emacs-tw/awesome-emacs#interface-enhancement][more popular?]] faster? (no fontlock), can be restricted to defun.  The change it needs is to query "describe-symbol" or something when it's in "symbol" mode and then only highlight if it's a symbol. Better yet, only if it's a variable, so "describe-variable", if that exists.
 
@@ -90,6 +90,11 @@
   (setq highlight-thing-case-sensitive-p t)
   :config (global-highlight-thing-mode)) ; alternatively, just do prog-mode-hook
 
+********* [[https://github.com/mhayashi1120/auto-highlight-symbol-mode][auto-highlight-symbol-mode]]
+*********** Doesn't restrict highlighting to defun
+*********** has navigation functions (see [[https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-highlight.el][this]] setup or [[https://github.com/tuhdo/emacs-proglang/blob/master/custom/setup-editing.el][this one]])
+*********** =ahs-edit-mode= does symbol editing but across defuns ([[https://github.com/tuhdo/emacs-proglang/issues/1][bug report]])
+*********** last commit was in 2012
 ******* TRY <<smartscan>>
 
         https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
@@ -1467,15 +1472,16 @@ Many text editors have access to these in some simple way, so before thinking ab
 
       Emacs builtin, =query-replace=, originally bound to =M-%,= has many prefixes, which still work.
 
-***** _Replace within region_
+***** <<Replace within region or defun>>
 
       Handy for changing a string everywhere in a buffer at once, for example, changing a varible (which could be matched by string searc or by =M-s .=)
 
       _Two ways to do this_
 
 ******* <<iedit>> interactive replace of string/symbol in region/defun & more
+        (also see [[Rectangle editing]])
 
-        _Instantly replace through whole buffer_
+        _Simultaneiously replace through whole buffer_
         (once you are in iedit mode...)
 
         1. put cursor on symbol you want to edit (or mark some text)
@@ -1490,6 +1496,14 @@ Many text editors have access to these in some simple way, so before thinking ab
            b. select with expand-region. My binding: =C--=
         2. =C-;=
         3. type the replacement
+
+        _Replace within a defun_ (options)
+
+        1.) =C-0 C-;= matches [[help:iedit-mode][only within current function]].
+            In org-mode, this limits matching to current list, etc.
+
+        2.) [[https://www.masteringemacs.org/article/iedit-interactive-multi-occurrence-editing-in-your-buffer][iedit-dwim]] hack, works but maybe don't want it b/c there's
+             no way to do full buffer. Also =C-0 C-;= is builtin ([[https://www.masteringemacs.org/article/iedit-interactive-multi-occurrence-editing-in-your-buffer][my comment]])
 
         *Note*: doesn't =C-;= conflict with default binding for source block editing?
 
@@ -2443,6 +2457,7 @@ Strike-through: nil
 ***** ~rectangle-mark-mode~
 ******* C-x C-x cycles cursor through corners
 ***** ~rectangular-region-mode~: crashes on April 23, 2017
+***** Also [[Replace within region or defun]] and specifically [[iedit]]
 *** [[Https://github.com/atykhonov/google-translate][Google-Translate]]
 
     =C-ct=: translate selection or what you type
