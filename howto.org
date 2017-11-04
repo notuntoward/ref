@@ -96,7 +96,8 @@
 *********** =ahs-edit-mode= does symbol editing but across defuns ([[https://github.com/tuhdo/emacs-proglang/issues/1][bug report]])
 *********** last commit was in 2012
 ******* TRY <<smartscan>>
-
+        Like [[iedit]] but no highlighting.  Also can replace like iedit, M-' globally and C-u M-' within defun (after M-n or M-p, replace is just a string, something like iedit)
+        
         https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
           From https://github.com/itsjeyd/emacs-config/blob/emacs24/init.el, this makes M-n and M-p look for the symbol at point.
           (use-package smartscan
@@ -1479,7 +1480,7 @@ Many text editors have access to these in some simple way, so before thinking ab
       _Two ways to do this_
 
 ******* <<iedit>> interactive replace of string/symbol in region/defun & more
-        (also see [[Rectangle editing]])
+        (also see [[Rectangle editing]] and [[smartscan]])
 
         _Simultaneiously replace through whole buffer_
         (once you are in iedit mode...)
@@ -1507,7 +1508,7 @@ Many text editors have access to these in some simple way, so before thinking ab
 
         *Note*: doesn't =C-;= conflict with default binding for source block editing?
 
-        Related to [[highlight symbol]]
+        Related to [[highlight symbol]] and [[smartscan]]
 
 ******* query-replace (default binding to =M-%=, no rebound)
 
@@ -3224,8 +3225,7 @@ gestures for "show charm" and "switch apps"
       as for [[Windows .emacs.d problem]]
 
 *** [[Windows Emacs]]
-*** make Windows symbolic links
-    <<Windows symbolic links>>
+*** <<Windows symbolic links>>
 
     (example: link to dropbox DTU directory, .emacs files)  These are
     understood by cygwin, windows and emacs so they're the most general.
@@ -3311,7 +3311,7 @@ gestures for "show charm" and "switch apps"
     [[http://www.askvg.com/fix-internet-explorer-tile-missing-from-windows-8-start-screen-or-metro-ie-doesnt-start/][Solution]]: just set the file association back to IE.  Apparently, the
     metro tile disappears when you install some other browser.
 
-*** OneDrive
+*** <<OneDrive>>
 ***** <<Getting rid of Microsoft Office Upload Center>>
       From: [[https://onedrive.uservoice.com/forums/262982-onedrive/suggestions/7160258-remove-the-need-for-office-upload-center-if-you-ar?page=2&per_page=20][Remove the need for Office Upload Center if you are using OneDrive.]]
 
@@ -8417,8 +8417,6 @@ ERROR: Cannot run texhash command. Please run manually.
 ***** */space*: where I'll have to put temp files if I port RunRouter
 ***** [[https://itswiki.imm.dtu.dk/How_do_I.../Use_the_Cluster_Facilities][matlab mini howto]]
 ***** also see: [[R cluster computing]]
-* SugarSync
-*** [[http://www.sugarsync.com/online-help/Syncing_a_Subfolder.htm][Syncing a subfolder]] of an already synced folder to another computer
 * Kindle
 *** Exporting Kindle files to pdf
     See partial overview [[http://www.digitaltrends.com/mobile/how-to-convert-kindle-to-pdf/#!LpAlh][here]].
@@ -8512,3 +8510,11 @@ ERROR: Cannot run texhash command. Please run manually.
 ***** DONE want to share onenote files
 ******* DropBox folder works
 ******* *BUT* must make sure to close onenote on computers to avoid concurrency probs
+*** [[OneDrive]]
+*** SugarSync
+***** [[http://www.sugarsync.com/online-help/Syncing_a_Subfolder.htm][Syncing a subfolder]] of an already synced folder to another computer
+*** [[https://www.bestvpn.com/syncthing-review/][Syncthing]]
+    Linux/Windows/Android dropbox-like thing but it's all on your computers, no cloud.  Has file versions.  Reviewer found setup confusing.
+*** Open TempoBox 
+
+    What Fraunhofer IWES had.  Slow, lots of sync failures, freezups.  I lost data with it.

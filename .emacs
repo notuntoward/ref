@@ -253,20 +253,19 @@
 
 ;; ** File System Search
 
-;; Requires ag package to be installed
-;; DOESN'T WORK.  Neither does counsel-ag
-;; so can use ag inside of eshell
-;; from: https://github.com/tomjakubowski/.emacs.d/issues/3
-(defun ag-eshell (string)
-  "Search with ag using the current eshell directory and a given string.
+(use-package ag
+  :after counsel
+  :config
+  ;; supposed to work on Windows: https://github.com/abo-abo/swiper/issues/672
+  (setq counsel-ag-base-command "ag --vimgrep --nocolor --nogroup %s")  
+  ;; DOESN'T WORK.  Neither does counsel-ag
+  ;; so can use ag inside of eshell. Installation: run alias ag 'ag-eshell $1' in eshell. This puts this elisp in emacs.d/eshell/alias, so need to do this for each install.
+  ;; from: https://github.com/tomjakubowski/.emacs.d/issues/3
+  (defun ag-eshell (string)
+    "Search with ag using the current eshell directory and a given string.
    To be used from within an eshell alias
    (`alias ag 'ag-eshell $1'` within eshell)"
-  (ag/search string (eshell/pwd)))
-;; Then run alias ag 'ag-eshell $1' in eshell
-;; This puts this elisp in emacs.d/eshell/alias, so need to do this for each install.
-
-;; supposed to work on Windows: https://github.com/abo-abo/swiper/issues/672
-(setq counsel-ag-base-command "ag --vimgrep --nocolor --nogroup %s")  
+    (ag/search string (eshell/pwd))))
 
 ;; ** Search/Replace within Buffer
 
@@ -275,7 +274,7 @@
 (define-key isearch-mode-map "\M-r" 'isearch-repeat-backward) ; word backward
 
 (use-package replace-from-region
-  :config                       ; default was query-replace
+  :config                    ; default was query-replace
   (global-set-key (kbd "M-%") 'query-replace-from-region))
 
 ;; When hit C-s (default emacs binding) with a region selected, use it as the search string.  From: http://stackoverflow.com/questions/202803/searching-for-marked-selected-text-in-emacs
@@ -300,38 +299,38 @@
   (define-key prog-mode-map (kbd "C-;") 'iedit-within-defun))
 
 ;; * Swiper/Ivy
+
 (use-package swiper
   :diminish ivy-mode
   :init
-  (progn
-;;    (setq ivy-use-virtual-buffers t) ; ivy-switch-buffer also shows recent files
-    (setq ivy-count-format "(%d/%d) ") ; show candidate index/count in swiper
-    ;; Search with swiper, handles org-mode headline unfold much better than helm
-    ;; C-s C-w (extra C-w's expand region) also works well
-    ;; I added -i to counsel-grep-base-command so grep is case-insensitive
-    ;;  (fset 'swiper-func 'counsel-grep-or-swiper) ; uses grep for long files, esp. org
-    (fset 'swiper-func 'swiper) ; standard swiper, slow on large org files
-    (defun sdo/swiper-region ()
-      "If region selected, swipe for it, else do normal swiper call"
-      (interactive)
-      (if mark-active
-	  (let ((region (funcall region-extract-function nil)))
-	    (deactivate-mark)
-	    (swiper-func region))
-	(swiper-func)))))
+  ;;(setq ivy-use-virtual-buffers t) ; ivy-switch-buffer also shows recent files
+  (setq ivy-count-format "(%d/%d) ") ; show candidate index/count in swiper
+  ;; Search with swiper, handles org-mode headline unfold much better than helm
+  ;; C-s C-w (extra C-w's expand region) also works well
+  ;; I added -i to counsel-grep-base-command so grep is case-insensitive
+  ;;  (fset 'swiper-func 'counsel-grep-or-swiper) ; uses grep for long files, esp. org
+  (fset 'swiper-func 'swiper) ; standard swiper, slow on large org files
+  (defun sdo/swiper-region ()
+    "If region selected, swipe for it, else do normal swiper call"
+    (interactive)
+    (if mark-active
+        (let ((region (funcall region-extract-function nil)))
+          (deactivate-mark)
+          (swiper-func region))
+      (swiper-func)))
 
-;; binding swiper inside use-package looked hard.  Do this for now, fix later
-(global-set-key "\C-s" 'sdo/swiper-region)
-;; ivy-views integrate with ivy-switch-buffer (See https://oremacs.com/2016/06/27/ivy-push-view/).  That's probably nice but I'm still using ido-switch-buffer b/c of its rectangular view.  So, I've bound ivy-switch view to something close to switch-buffer.  
-(global-set-key (kbd "C-c v") 'ivy-push-view)
-(global-set-key (kbd "C-c V") 'ivy-pop-view) ; works like delete
-(global-set-key (kbd "C-x V") 'ivy-switch-view)
-;; actually, this seems to do the (nearly) same thing as C-s s
-(global-set-key (kbd "C-c C-r") 'ivy-resume) ;Resume last ivy completion session
-;; maybe nice but I want to preserve reverse search direction
-;;(define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+  (global-set-key "\C-s" 'sdo/swiper-region)
+  ;; ivy-views integrate with ivy-switch-buffer (See https://oremacs.com/2016/06/27/ivy-push-view/).  That's probably nice but I'm still using ido-switch-buffer b/c of its rectangular view.  So, I've bound ivy-switch view to something close to switch-buffer.  
+  (global-set-key (kbd "C-c v") 'ivy-push-view)
+  (global-set-key (kbd "C-c V") 'ivy-pop-view) ; works like delete
+  (global-set-key (kbd "C-x V") 'ivy-switch-view)
+  ;; actually, this seems to do the (nearly) same thing as C-s s
+  (global-set-key (kbd "C-c C-r") 'ivy-resume)) ;Resume last ivy completion sess
 
 (use-package counsel ; better kill-ring 2nd yanking
+  :init
+  ;; maybe nice but I want to preserve reverse search direction
+  ;;(define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
   :bind
   (("M-y" . counsel-yank-pop)
    :map ivy-minibuffer-map
@@ -394,7 +393,7 @@
 
 ;;Return to mark: https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
 (bind-key "C-x p" 'pop-to-mark-command) 
-(setq set-mark-command-repeat-pop t) ; C-x p keeps going backwards
+(setq set-mark-command-repeat-pop t) ; so C-x p keeps going backwards in marks
 
 (defun goto-line-with-feedback ()
   "Show line numbers temporarily, while prompting for the line
@@ -420,7 +419,7 @@
 (global-set-key (kbd "<C-left>")   'windmove-left)
 (global-set-key (kbd "<C-right>")  'windmove-right)
 
-(use-package smart-region
+(use-package smart-region ; smart region selection expand
   :init (global-set-key (kbd "C--") 'smart-region)) ; C-x toggles to start/end
 
 ;; * Buffer Handling
@@ -570,11 +569,11 @@
 (global-set-key (kbd "C-x C-f") 'find-file-guessing) ; overridden by dired-mode-hook
 (global-set-key (kbd "C-x 4 f") 'find-file-guessing-other-window)
 (global-set-key (kbd "C-x 5 f") 'find-file-guessing-other-frame)
-;;(global-set-key (kbd "C-x f") 'find-file-literally); overwrites set-fill-column
+;;(global-set-key (kbd "C-x f") 'find-file-literally); erases set-fill-column
 
 ;; ** Name of file in current buffer (kind of the opposite of ffap)
 
-;; http://emacsredux.com/blog/2013/03/27/copy-filename-to-the-clipboard/ https://github.com/bbatsov/prelude
+;; From: http://emacsredux.com/blog/2013/03/27/copy-filename-to-the-clipboard/  and https://github.com/bbatsov/prelude
 (defun copy-current-file-name-to-clipboard ()
   "Copy the current buffer file name to the clipboard."
   (interactive)
@@ -597,7 +596,8 @@
 			 "\\.aux$" ; LaTeX
 			 ))
 
-;; *** uniquified recentf utils, from: https://gist.github.com/vedang/8645234
+;; *** Uniquified recentf utils, from: https://gist.github.com/vedang/8645234
+
 ;; Implement functionality similar to uniquify to make recentf results bearable
 ;; Requires s.el and dash.el - awesome libraries from Magnar Sveen
 ;; Hat-tip : Baishampayan Ghose for the clojure implementation at
@@ -641,10 +641,10 @@
     (mapcar (apply-partially '-first (lambda (x) (= 1 (gethash x tab 0))))
             expanded-paths)))
 
-;; *** my recentf functions
+;; *** My recentf functions
 (require 'recentf)
 
-(defun sdo/uniquify-like-buffer (vm-unique-filename)
+(defun sdo/uniquify-like-buffers (vm-unique-filename)
   "Reformats filenames with smallest unique paths to buffer name style"
   (string-join (reverse (split-string vm-unique-filename "/")) "|"))
 
@@ -653,7 +653,8 @@
   "Select a recently visited file with Ido and then find it with FIND-FILE-FUNC.
 \n(fn FIND-FILE-FUNC)"
   
-  (let* ((unique-filenames (mapcar (lambda (fnm) (sdo/uniquify-like-buffer fnm))
+  (let* ((unique-filenames (mapcar (lambda (fnm)
+                                     (sdo/uniquify-like-buffers fnm))
                                    (vm/uniquify recentf-list)))
          (filename-map (-partition 2 (-interleave unique-filenames
                                                   recentf-list)))
@@ -712,7 +713,7 @@
 (global-set-key (kbd "C-x C-d") 'bjm/ivy-dired-recent-dirs)
 
 ;;* Function key bindings
-;; ** functions in function keys
+;; ** functions run by function keys
 (defun indent-buffer ()
   (interactive)
   (indent-region (point-min) (point-max) nil))
@@ -781,6 +782,7 @@
   :config (global-auto-complete-mode))
 
 ;; so M-n and M-p look for symbol at point.  Is redundant with highlight-thing
+;; also can replace like iedit, M-' globally and C-u M-' within defun (after M-n or M-p)
 ;; From https://github.com/itsjeyd/emacs-config/blob/emacs24/init.el
 (use-package smartscan
   :defer t
@@ -929,6 +931,11 @@
     ;; I have ~/.anaconda but conda.el looks for ~/.anaconda3 so I must set it
     ;;(setq conda-anaconda-home conda-home-dir) ;; use env var instead
     ))
+
+(use-package python ; does this work w/ elpy?
+  :defer t
+  :config
+  (define-key python-mode-map (kbd "<backtab>") 'python-back-indent))
 
 ;; ** Perl
 ;; use CPerl mode instead of perl-mode (both come with emacs)
@@ -1574,7 +1581,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
   :config
   (beacon-mode 1))
 
-(show-paren-mode 1) ; turn on blinking parens, any computer?
+(show-paren-mode 1) ; turn on blinking parens
 
 ;; visual line mode messes up org-tables but is GREAT for everything else
 (global-visual-line-mode +1) ; soft line wrapping
@@ -1661,7 +1668,6 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(ido-mode (quote both) nil (ido))
  '(ido-use-filename-at-point (quote guess))
  '(ido-use-url-at-point t)
-;; '(ido-use-virtual-buffers t)
  '(indent-tabs-mode nil)
  '(ivy-mode t)
  '(ivy-wrap t)
@@ -1758,8 +1764,8 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(scroll-step 1)
  '(search-default-mode (quote char-fold-to-regexp))
  '(show-paren-mode t)
- '(sml/vc-mode-show-backend t)
  '(sml/modified-char "•")
+ '(sml/vc-mode-show-backend t)
  '(swiper-action-recenter nil)
  '(tool-bar-mode nil)
  '(visual-line-fringe-indicators (quote (nil top-right-angle)))
