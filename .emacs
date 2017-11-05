@@ -367,14 +367,13 @@
 (use-package flx-ido
   :ensure t
   :init
-  (progn  ;; copied from https://github.com/bdd/.emacs.d/blob/master/packages.el
-    (setq gc-cons-threshold (* 20 (expt 2 20)) ; megabytes
-	  ido-use-faces nil))
+  ;; copied from https://github.com/bdd/.emacs.d/blob/master/packages.el
+  (setq gc-cons-threshold (* 20 (expt 2 20)) ido-use-faces nil) ; megabytes
   :config
-  (progn (flx-ido-mode 1)
-	 ;; disable ido faces to see flx highlights.
-	 (setq ido-enable-flex-matching t)
-	 (setq ido-use-faces nil)))
+  (flx-ido-mode 1)
+  ;; disable ido faces to see flx highlights.
+  (setq ido-enable-flex-matching t)
+  (setq ido-use-faces nil))
 
 ;; I also have a hydra set up to do counsel bindings but ido-describe-bindings is here because it also shows unicode chars (that I don't know how to activate with my keyboard, but at least they're there...)
 (use-package ido-describe-bindings
@@ -382,11 +381,12 @@
 
 ;; ido- matching for emacs commands: https://www.reddit.com/r/emacs/comments/1xnhws/speaking_of_emacs_modes_flx_flxido_ido_smex_helm/?st=iu1g56lu&sh=554484fb
 (use-package smex
-  :config (progn (smex-initialize)
-		 (global-set-key (kbd "M-x") 'smex)
-		 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-		 ;; This is your old M-x.
-		 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)))
+  :config
+  (smex-initialize)
+  (global-set-key (kbd "M-x") 'smex)
+  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+  ;; This is your old M-x.
+  (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
 
 ;; * Scrolling, Cursor Movement and Selection
 
@@ -478,10 +478,11 @@
 ;; Bind shift-arrow keys to buffer moving commands
 ;; (org-mode keys should have already been unbound in the org section)
 (use-package buffer-move ; switch 'buffer-move-behavior' somehow changes this
-  :config (progn (global-set-key (kbd "<C-S-up>")     'buf-move-up)
-		 (global-set-key (kbd "<C-S-down>")   'buf-move-down)
-		 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
-		 (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
+  :config
+  (global-set-key (kbd "<C-S-up>")     'buf-move-up)
+  (global-set-key (kbd "<C-S-down>")   'buf-move-down)
+  (global-set-key (kbd "<C-S-left>")   'buf-move-left)
+  (global-set-key (kbd "<C-S-right>")  'buf-move-right))
 
 ;; ** Indirect buffers
 (defun sdo/clone-indirect-buffer-other-frame (newname display-flag &optional norecord)
@@ -818,10 +819,6 @@
    ("<backtab>" . outshine-cycle-buffer))) ;Global cycle using S-TAB
   
 ;; *** Vertical indent lines in programming modes
-;; https://github.com/DarthFennec/highlight-indent-guides
-;; M-x highlight-indent-guides-mode to activate
-;; is supposed to activate for prog. modes but for me, only works for elisp
-;; see howto.org for debugging trail
 (use-package highlight-indent-guides
   :config
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
@@ -861,17 +858,11 @@
 (setq c-basic-offset 2)  ; indents are multiples of this
 
 (defun my-c-mode-common-hook ()
-  ;; could override c-default-style in here e.g. (c-set-style "Ellemtel")
-  ;; so newline also indents (needed for cc-mode but not BOMC)
-  ;;  (define-key c-mode-map "\C-m" 'newline-and-indent)
-  ;;  (c-toggle-auto-state 1) ; get newlines after braces and some other things
   (c-toggle-auto-hungry-state 1) ; not sure what this does
-  ;; make c-mode tabs, after first token, work as tabs
-  (setq c-tab-always-indent nil)
+  (setq c-tab-always-indent nil) ;; so tab key, after first token, works as tab
   (setq c-basic-offset 2)  ; indents are multiples of this
   (define-key c++-msode-map "\C-c\C-L" 'ifdef-line)
-  (define-key c++-mode-map "\C-c\C-R" 'ifdef-region)
-  )
+  (define-key c++-mode-map "\C-c\C-R" 'ifdef-region))
 
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
@@ -895,11 +886,9 @@
   (goto-char end)
   (next-line 2))
 
-;;Source code brower like etags but better.  The latest is included w/ the
-;; cscope dist:
-;; http://sourceforge.net/project/showfiles.php?group_id=4664&release_id=42014
-(use-package xcscope ; put it in ~/lib/emacs
-  :config (define-key cscope-list-entry-keymap "q" 'quit-window)) ; make it quit like dired
+(use-package xcscope ; Source code brower like etags but better
+  :config
+  (define-key cscope-list-entry-keymap "q" 'quit-window)) ; so quits like dired
 
 ;; ** Python
 ;; Use Elpy instead of python-mode. Also requires some PYTHON LIBS, see: 
@@ -909,14 +898,13 @@
 (use-package elpy
   :defer t
   :init
-  (progn
-    (elpy-enable)
-    ;;(elpy-use-ipython); in conda.el custom hook so set after python path known
+  (elpy-enable)
+  ;;(elpy-use-ipython); in conda.el custom hook so set after python path known
 
-    ;; use flycheck, not elpy's flymake (https://realpython.com/blog/python/emacs-the-best-python-editor/)
-    (when (require 'flycheck nil t)
-      (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-      (add-hook 'elpy-mode-hook 'flycheck-mode))))
+  ;; use flycheck, not elpy's flymake (https://realpython.com/blog/python/emacs-the-best-python-editor/)
+  (when (require 'flycheck nil t)
+    (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+    (add-hook 'elpy-mode-hook 'flycheck-mode)))
 
 ;; working with python anaconda environments (is also customized)
 (setq conda-home-dir (getenv "ANACONDA_HOME"))
@@ -924,16 +912,15 @@
 (use-package conda
   :defer t
   :init
-  (progn
-    ;; if you want interactive shell support, include:
-    (conda-env-initialize-interactive-shells)
-    ;; if you want eshell support, include:
-    (conda-env-initialize-eshell)
-    ;; if you want auto-activation (see below for details), include:
-    ;; (conda-env-autoactivate-mode t) ;; avoid annoying messages, do by hand
-    ;; I have ~/.anaconda but conda.el looks for ~/.anaconda3 so I must set it
-    ;;(setq conda-anaconda-home conda-home-dir) ;; use env var instead
-    ))
+  ;; if you want interactive shell support, include:
+  (conda-env-initialize-interactive-shells)
+  ;; if you want eshell support, include:
+  (conda-env-initialize-eshell)
+  ;; if you want auto-activation (see below for details), include:
+  ;; (conda-env-autoactivate-mode t) ;; avoid annoying messages, do by hand
+  ;; I have ~/.anaconda but conda.el looks for ~/.anaconda3 so I must set it
+  ;;(setq conda-anaconda-home conda-home-dir) ;; use env var instead
+  )
 
 (use-package python ; does this work w/ elpy?
   :defer t
@@ -941,17 +928,16 @@
   (define-key python-mode-map (kbd "<backtab>") 'python-back-indent))
 
 ;; ** Perl
-;; use CPerl mode instead of perl-mode (both come with emacs)
+
+;; Use CPerl mode instead of perl-mode (both come with emacs)
 (require 'cperl-mode) ; so keymap stuff below works
 (mapc
  (lambda (pair)
    (if (eq (cdr pair) 'perl-mode)
        (setcdr pair 'cperl-mode)))
  (append auto-mode-alist interpreter-mode-alist))
-
-;; cperl-mode is preferred to perl-mode
-;; "Brevity is the soul of wit" <foo at acm.org>
 (defalias 'perl-mode 'cperl-mode)
+
 (define-key cperl-mode-map [f1] 'cperl-fill-paragraph)
 
 (require 'compile)
@@ -965,59 +951,56 @@
 			 (file-name-nondirectory buffer-file-name)))))
 
 ;; ** VC source code control
-;; so C-x v = inside of vc-dir will use ediff
-;; https://stackoverflow.com/questions/3712834/getting-vc-diff-to-use-ediff-in-emacs-23-2
-;; works for C-x v = but not '=' inside of vc-dir
+;
 (eval-after-load "vc-hooks"
-  '(define-key vc-prefix-map "=" 'vc-ediff))
+  '(define-key vc-prefix-map "=" 'vc-ediff)) ; so C-x v = will use ediff
 
 ;; ** R language
 (use-package ess
   :defer t ; avoid long init during emacs startup
-  :config (progn
-            (setq ess-ask-for-ess-directory nil)
-            (setq ess-local-process-name "R")
+  :config
+  (setq ess-ask-for-ess-directory nil)
+  (setq ess-local-process-name "R")
 
-            ;; SO NOTE: a bug makes this not work when R isn't already started:
-            ;; error is: "> Error: unexpected '>' in ">"
-            (defun my-ess-start-R ()
-              (interactive)
-              (if (not (member "*R*" (mapcar (function buffer-name) (buffer-list))))
-                  (progn
-                    (delete-other-windows)
-                    (setq w1 (selected-window))
-                    (setq w1name (buffer-name))
-                    (setq w2 (split-window w1 nil t))
-                    (R)
-                    (set-window-buffer w2 "*R*")
-                    (set-window-buffer w1 w1name))))
+  ;; SO NOTE: a bug makes this not work when R isn't already started:
+  ;; error is: "> Error: unexpected '>' in ">"
+  (defun my-ess-start-R ()
+    (interactive)
+    (if (not (member "*R*" (mapcar (function buffer-name) (buffer-list))))
+        (progn
+          (delete-other-windows)
+          (setq w1 (selected-window))
+          (setq w1name (buffer-name))
+          (setq w2 (split-window w1 nil t))
+          (R)
+          (set-window-buffer w2 "*R*")
+          (set-window-buffer w1 w1name))))
 
-            ;; almost works, but doesn't switch to R buffer like similar R func in C-ret
-            (defun my-ess-eval ()
-              (interactive)
-              (my-ess-start-R)
-              (if (and transient-mark-mode mark-active)
-                  (call-interactively 'ess-eval-region)
-                (call-interactively 'ess-eval-buffer)))
-            (add-hook 'ess-mode-hook
-                      '(lambda()
-                         (local-set-key [(shift return)] 'my-ess-eval)
-                         ;; but flycheck does nothing if I vist an R file.  Need to do some extra config?
-                         (flycheck-mode t)))
+  ;; almost works, but doesn't switch to R buffer like similar R func in C-ret
+  (defun my-ess-eval ()
+    (interactive)
+    (my-ess-start-R)
+    (if (and transient-mark-mode mark-active)
+        (call-interactively 'ess-eval-region)
+      (call-interactively 'ess-eval-buffer)))
+  (add-hook 'ess-mode-hook
+            '(lambda()
+               (local-set-key [(shift return)] 'my-ess-eval)
+               ;; but flycheck does nothing if I vist an R file.  Need to do some extra config?
+               (flycheck-mode t)))
 
-            (add-hook 'inferior-ess-mode-hook
-                      '(lambda()
-                         ;; Make up/down arrows search cmd history like tcsh
-                         (define-key inferior-ess-mode-map [up]
-                           'comint-previous-matching-input-from-input)
-                         (define-key inferior-ess-mode-map [down]
-                           'comint-next-matching-input-from-input)))
+  (add-hook 'inferior-ess-mode-hook
+            '(lambda()
+               ;; Make up/down arrows search cmd history like tcsh
+               (define-key inferior-ess-mode-map [up]
+                 'comint-previous-matching-input-from-input)
+               (define-key inferior-ess-mode-map [down]
+                 'comint-next-matching-input-from-input)))
 
-            ;; ESS autocomplete support
-            ;; http://ess.r-project.org/Manual/ess.html#Auto_002dcomplete
-            ;; setup will take too much time?
-            (setq ess-use-auto-complete 'script-only)
-            ))
+  ;; ESS autocomplete support
+  ;; http://ess.r-project.org/Manual/ess.html#Auto_002dcomplete
+  ;; setup will take too much time?
+  (setq ess-use-auto-complete 'script-only))
 
 (use-package ess-R-data-view :after ess)
 (use-package ess-smart-equals :after ess)
@@ -1354,8 +1337,9 @@ This function avoids making messed up targets by exiting without doing anything 
 (global-set-key "\C-c\C-b" 'count-words-buffer)
 
 (use-package flyspell-correct
-  :config (progn (require 'flyspell-correct-ido)
-		 (define-key flyspell-mode-map (kbd "C-;") 'flyspell-correct-previous-word-generic)))
+  :config
+  (require 'flyspell-correct-ido)
+  (define-key flyspell-mode-map (kbd "C-;") 'flyspell-correct-previous-word-generic))
 
 ;; finds repeated words
 (defun find-find-word-word ()
@@ -1364,39 +1348,37 @@ This function avoids making messed up targets by exiting without doing anything 
 (global-set-key "\e=" 'find-find-word-word)
 
 (use-package writegood-mode
-  :config (progn
-            (global-set-key "\C-cg" 'writegood-mode)
-            (global-set-key "\C-c\C-gg" 'writegood-grade-level)
-            (global-set-key "\C-c\C-ge" 'writegood-reading-ease)))
+  :config
+  (global-set-key "\C-cg" 'writegood-mode)
+  (global-set-key "\C-c\C-gg" 'writegood-grade-level)
+  (global-set-key "\C-c\C-ge" 'writegood-reading-ease))
 
 
 ;; https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
 ;; do I like this?
 (use-package artbollocks-mode
   :defer t
-;;  :load-path  "~/elisp/artbollocks-mode"
   :config
-  (progn
-    (setq artbollocks-weasel-words-regex
-          (concat "\\b" (regexp-opt
-                         '("one of the"
-                           "should"
-                           "just"
-                           "sort of"
-                           "a lot"
-                           "probably"
-                           "maybe"
-                           "perhaps"
-                           "I think"
-                           "really"
-                           "pretty"
-                           "nice"
-                           "action"
-                           "utilize"
-                           "leverage") t) "\\b"))
-    ;; Don't show the art critic words, or at least until I figure
-    ;; out my own jargon
-    (setq artbollocks-jargon nil)))
+  (setq artbollocks-weasel-words-regex
+        (concat "\\b" (regexp-opt
+                       '("one of the"
+                         "should"
+                         "just"
+                         "sort of"
+                         "a lot"
+                         "probably"
+                         "maybe"
+                         "perhaps"
+                         "I think"
+                         "really"
+                         "pretty"
+                         "nice"
+                         "action"
+                         "utilize"
+                         "leverage") t) "\\b"))
+  ;; Don't show the art critic words, or at least until I figure
+  ;; out my own jargon
+  (setq artbollocks-jargon nil))
 
 (defun toggle-writing-tools ()
   "Enable/disable writing and proofing tools"
@@ -1420,7 +1402,7 @@ This function avoids making messed up targets by exiting without doing anything 
 	    (define-key LaTeX-mode-map "\C-xn"
 	      nil)))
 
-;; faster latex entry: http://orgmode.org/manual/CDLaTeX-mode.html#CDLaTeX-mode
+;; Faster latex entry: http://orgmode.org/manual/CDLaTeX-mode.html#CDLaTeX-mode
 ;;
 ;; When scimax/org-return, maybe use it instead.  May go back to this if the two are merged.
 (use-package cdlatex
@@ -1433,17 +1415,17 @@ This function avoids making messed up targets by exiting without doing anything 
 (use-package undo-tree
   :diminish undo-tree-mode
   :config
-  (progn
-    (global-undo-tree-mode)
-    (setq undo-tree-visualizer-timestamps t)
-    (setq undo-tree-visualizer-diff t)))
+  (global-undo-tree-mode)
+  (setq undo-tree-visualizer-timestamps t)
+  (setq undo-tree-visualizer-diff t))
 
 (fset 'yes-or-no-p 'y-or-n-p) ; type just "y" instead of "yes"
 
 (use-package which-key ; complex key hints, better than guide-key
   :diminish which-key-mode
-  :config (progn (which-key-mode)
-		 (which-key-setup-side-window-right-bottom))) ; do bottom if no room on side
+  :config
+  (which-key-mode)
+  (which-key-setup-side-window-right-bottom)) ; do bottom if no room on side
 
 (defhydra hydra-utils (:color blue :hint nil)
   "
