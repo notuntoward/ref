@@ -138,6 +138,12 @@
 ;; so ^M doesn't show up in Linux xemacs shell while logged in to Solaris
 (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)
 
+;; to get rid of the ^M's in the shell output
+(add-hook 'comint-output-filter-functions 'shell-strip-ctrl-m nil t)
+;; for PC, so emacs uses command.com for shell
+(setq process-coding-system-alist
+      '(("cmdproxy" . (raw-text-dos . raw-text-dos))))
+
 ;; So passwords aren't displayed
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
 ;; patterns for my pwd, ssh, or krb prompts
@@ -1086,21 +1092,54 @@ is already narrowed."
 ;; from "wolfer1ne":
 ;;https://www.reddit.com/r/emacs/comments/5sx7j0/how_do_i_get_usepackage_to_ignore_the_bundled/
 ;; NOTE: However, on a clean start, I had to start emacs 3X in order for everything to resolve itself.
-(use-package org :ensure org-plus-contrib :pin org) 
+(use-package org
+  :ensure org-plus-contrib
+  :pin org
+  :config
+  (define-key global-map "\C-cl" 'org-store-link) ;overwrites what-line
+  ;;(global-set-key "\C-cc" 'org-capture) ; ovewrites org-ref-bibtex bindings
+  (define-key global-map "\C-ca" 'org-agenda)
+  ;; insert and follow links that have Org-mode syntax in any Emacs buffer.
+  (global-set-key (kbd "C-c L") 'org-insert-link-global)
+  (global-set-key (kbd "C-c o") 'org-open-at-point-global)
+  ;; Unbind org keys I don't use, or which could have been mapped to MS-word-like shift-arrow selection (when org-support-shift-select is set to true)
+  (define-key org-mode-map (kbd "<C-S-up>") nil) ; was timestamp clock up sync
+  (define-key org-mode-map (kbd "<C-S-down>") nil) ; was timestamp clck dwn sync
+  (define-key org-mode-map (kbd "<C-S-left>")  nil) ; was switch TODO set
+  (define-key org-mode-map (kbd "<C-S-right>") nil) ; was switch TODO set
+  ;; hook w/o outline stuff (but is fill adapt NOW working?  I remember seeing
+  ;; something about this on the org list somewhere in Feb. 2010)
+  (add-hook
+   'org-mode-hook
+   (function
+    (lambda ()
+      ;; (filladapt-mode -1))))  ; breaks plain lists
+      ;; undo org mode overwrites (C-a, C-e already work OK)
+      (define-key org-mode-map (kbd "\C-cb") 'org-iswitchb)
+      ;; wasnt' this set by (setq org-replace-disputed-keys t)
+      (define-key org-mode-map "\M-p" 'org-insert-drawer)
+      )))
+  ;; could give nonheadline lists a nicer bullet than a hyphen
+  ;; from: http://www.howardism.org/Technical/Emacs/orgmode-wordprocessor.html
+  ;;(font-lock-add-keywords 'org-mode
+  ;;                      '(("^ +\\([-*]\\) "
+  ;;                         (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+  ;; pause after completing each stage of path
+  (setq org-outline-path-complete-in-steps t)) 
 
 ;; Quick org-mode bolding, etc.  With wrap-region, you'd bold with C-- * http://emacs.stackexchange.com/questions/10029/org-mode-how-to-create-an-org-mode-markup-keybinding
 ;; (works well with smart-region/expand-region)
 (use-package wrap-region
   :diminish wrap-region-mode
   :diminish wrap-region-minor-mode
-  :config (progn
-	    (add-hook 'org-mode-hook #'wrap-region-mode)
-	    (wrap-region-add-wrapper "*" "*" nil 'org-mode) ; bold
-	    (wrap-region-add-wrapper "/" "/" nil 'org-mode) ; italics
-	    (wrap-region-add-wrapper "_" "_" nil 'org-mode) ; underline
-	    (wrap-region-add-wrapper "=" "=" nil 'org-mode) ; literal
-	    (wrap-region-add-wrapper "~" "~" nil 'org-mode) ; code
-	    (wrap-region-add-wrapper "+" "+" nil 'org-mode))) ; strikeout
+  :config
+  (add-hook 'org-mode-hook #'wrap-region-mode)
+  (wrap-region-add-wrapper "*" "*" nil 'org-mode) ; bold
+  (wrap-region-add-wrapper "/" "/" nil 'org-mode) ; italics
+  (wrap-region-add-wrapper "_" "_" nil 'org-mode) ; underline
+  (wrap-region-add-wrapper "=" "=" nil 'org-mode) ; literal
+  (wrap-region-add-wrapper "~" "~" nil 'org-mode) ; code
+  (wrap-region-add-wrapper "+" "+" nil 'org-mode)) ; strikeout
 
 ;; makes energytop.org super slow
 ;;(require 'org-ac) ; orgmode autocomplete for org #+ directives
@@ -1109,9 +1148,6 @@ is already narrowed."
 (use-package org-cliplink ;; make hyper link from URL in clipboard
   :config (define-key org-mode-map (kbd "C-c y") 'org-cliplink))
 
-(define-key global-map "\C-cl" 'org-store-link) ;overwrites what-line
-;;(global-set-key "\C-cc" 'org-capture) ; ovewrites org-ref-bibtex bindings
-(define-key global-map "\C-ca" 'org-agenda)
 
 ;; could play with stripe buffer for tables (must install stripe-buffer package)
 ;; org-table-stripes-enable      M-x ... RET
@@ -1130,57 +1166,12 @@ is already narrowed."
 ;;  incosolata-g: don't like it; 'f' looks terrible
 ;;  lucida console: readable, but too much space, blobby bold; top bullet too big
 
-;; https://github.com/cocreature/dotfiles/blob/master/emacs/.emacs.d/emacs.org
-
-;; https://github.com/AssailantLF/emacsconfig/blob/master/config.org
-(use-package org-bullets
-  :ensure t
-  :commands (org-bullets-mode)
+ (use-package org-bullets
   :init
-  (setq org-bullets-bullet-list
-        '("●" "●" "￭" "￭" "￮" "￮" "▪" "▪" "▸" "▸" "•" "•"))
+  (add-hook 'org-mode-hook #'org-bullets-mode)
   :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-;;  (add-hook 'org-mode-hook #'org-bullets-mode))
-
-;; it works if I do this again, below.  WHY?
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-;; I ALSO deleted the org-bullets-bullet-list customization
-
-;; could give nonheadline lists a nicer bullet than a hyphen
-;; from: http://www.howardism.org/Technical/Emacs/orgmode-wordprocessor.html
-;;(font-lock-add-keywords 'org-mode
-;;                      '(("^ +\\([-*]\\) "
-;;                         (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-
-;; so can insert and follow links that have Org-mode syntax in any Emacs buffer.
-(global-set-key (kbd "C-c L") 'org-insert-link-global)
-(global-set-key (kbd "C-c o") 'org-open-at-point-global)
-
-;;Refile w/ headline hierarchy.  Includes leaf nodes, which isn't perfect since you get a ton of matches at the bottom.  Try it out for a while and see...
-;;From here: http://stackoverflow.com/questions/26651382/emacs-org-mode-refile-using-the-goto-interface
-(setq org-refile-use-outline-path 'file) ; lets you give the refile targets as paths
-(setq org-outline-path-complete-in-steps t); will pause after completing each stage of the path
-
-;; hook w/o outline stuff (but is fill adapt NOW working?  I remember seeing
-;; something about this on the org list somewhere in Feb. 2010)
-(add-hook
- 'org-mode-hook
- (function
-  (lambda ()
-    ;; (filladapt-mode -1))))  ; breaks plain lists
-    ;; undo org mode overwrites (C-a, C-e already work OK)
-    (define-key org-mode-map (kbd "\C-cb") 'org-iswitchb)
-    ;; wasnt' this set by (setq org-replace-disputed-keys t)
-    (define-key org-mode-map "\M-p" 'org-insert-drawer)
-    )))
-
-;; Unbind org keys I don't use, or which could have been mapped to MS-word-like shift-arrow selection (when org-support-shift-select is set to true)
-(define-key org-mode-map (kbd "<C-S-up>")    nil) ; was timestamp clock up sync
-(define-key org-mode-map (kbd "<C-S-down>")  nil) ; was timestamp clock dwn sync
-(define-key org-mode-map (kbd "<C-S-left>")  nil) ; was switch TODO set
-(define-key org-mode-map (kbd "<C-S-right>") nil) ; was switch TODO set
+  (setq org-bullets-bullet-list
+        '("●" "●" "￭" "￭" "￮" "￮" "▪" "▪" "▸" "▸" "•" "•")))
 
 ;; ** Org-ref
 
@@ -1221,6 +1212,7 @@ is already narrowed."
 			     (org-autolist-mode)))) ; new - or -[ ] w/ return
 
 ;; ** Org Mode Dedicated Targets
+(require 'org)
 
 ;; --- Hide org-mode dedicated targets -----------------------------------------
 ;; Hides the <<>> around dedicated targets; the face of the remaining visible text is set by customizing the face: org-target
