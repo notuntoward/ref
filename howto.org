@@ -7968,8 +7968,7 @@ matlab-ruby-test.rb
 *** 2nd best in [[http://www.techradar.com/news/the-best-free-vpn][TechRadar Review]], Free, 10GB/mo: [[https://windscribe.com/download][Windscribe]]
 ***** also has deal on 2 year subs. w/ TR coupon in article
 ***** Works on SNL links if I set it to "US West" I did the [[instructions for Chrome]], not sure if that was necessary.
-* Lyx
-  <<Lyx>>
+* <<Lyx>>
 *** Windows Lyx: use TexLive instead of MikTex: [[How to make the org-ref latex compile: install TexLive]]
 
     <<Lyx tweaks for TexLive>>
@@ -8208,8 +8207,7 @@ ERROR: Cannot run texhash command. Please run manually.
 ******* paths are kind of interesting for display and presentation
 ******* latest version: Oct 2015
 ******* [[https://www.youtube.com/watch?v=Lt9ht4pYP5c][Easy Mindmap Tutorial - VUE for beginners - YouTube]]
-***** [[https://www.yworks.com/products/yed][yEd]]
-      <<yEd>>
+***** <<yEd>>
 ******* can do tree or arbitrary graph
 ******* is [[https://www.yworks.com/products/yed][based]] on XML-based [[http://graphml.graphdrawing.org/primer/graphml-primer.html][GraphML]]
 ********* enhancement involves graph display: [[http://docs.yworks.com/yfiles/doc/developers-guide/graphml.html][GraphML in yEd]]
