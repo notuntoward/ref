@@ -11203,8 +11203,6 @@ Erika
 ***** [[https://github.com/SimonStreicher/FaultMap][FaultMap]]: fault detection software using JIDT tookit
 ***** [[cite:Xu16bndLogRgrssnImbal][Xu et al. 2016: Robust Logistic Regression class imbal. (for fault det)]]
 ***** [[cite:Suh16GaussCopulaVarMixDat][Suh & Choi 2016: Gaussian Copula Variational mixed vars (for fault det)]]
-***** also see [[State Change Alarm Criteria]]
-***** see: [[Trend Copulas]]
 ***** <<Fault distributions>>
 ******* Weibull
 ********* [[cite:Abernethy06weibullAnlysCh1][Abernethy 2006: New Weibull Handbook]]
@@ -11223,8 +11221,10 @@ Erika
 
 ******* TODO Un/Semi-supervised Root Cause analysis
 ********* TODO [[https://www.google.com/search?q=unsupervised+root+cause+analysis+fault+detect&source=lnt&tbs=qdr:y&sa=X&ved=0ahUKEwjx7_uV38vRAhWGCywKHcpFDKUQpwUIFA&biw=1684&bih=1036&cad=cbv&bvch=u&sei=O2Z_WMKJCMOdsgG1v6i4BA][google search]]: follow up on this
-***** see also [[Novelty Detection]]
-***** see also [[Streamwise processing]]
+***** also [[State Change Alarm Criteria]]
+***** also [[Trend Copulas]]
+***** also [[Novelty Detection]]
+***** also [[Streamwise processing]]
 *** <<Fault Prediction>>
 ***** [[cite:Premraj17coOccrAlarmsWindTurb][Premraj & Wigbers 2017: Discovering co-occur alarms wind turn analytics]]
 *** <<State Change Alarm Criteria>>
