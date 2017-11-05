@@ -823,9 +823,9 @@
 ;; is supposed to activate for prog. modes but for me, only works for elisp
 ;; see howto.org for debugging trail
 (use-package highlight-indent-guides
-  :config (progn (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-		 ;; nicest looking, thinnest lines.
-		 (setq highlight-indent-guides-method 'character)))
+  :config
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+  (setq highlight-indent-guides-method 'character)) ; nicest, thinnest lines
 
 ;; ** Matlab mode
 
@@ -1111,6 +1111,13 @@ is already narrowed."
      ("^ +\\(*\\) "
       (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "✤")))))))
 
+ (use-package org-bullets
+  :init
+  (add-hook 'org-mode-hook #'org-bullets-mode)
+  :config
+  (setq org-bullets-bullet-list
+        '("●" "●" "￭" "￭" "￮" "￮" "▪" "▪" "▸" "▸" "•" "•")))
+
 ;; Quick org emphasis:  Select text & hit key below. smart-region pkg helps.
 (use-package wrap-region
   :diminish wrap-region-mode
@@ -1124,15 +1131,8 @@ is already narrowed."
   (wrap-region-add-wrapper "~" "~" nil 'org-mode)  ; code
   (wrap-region-add-wrapper "+" "+" nil 'org-mode)) ; strikeout
 
-(use-package org-cliplink ;; make hyper link from URL in clipboard
+(use-package org-cliplink ; make hyper link from URL in clipboard
   :config (define-key org-mode-map (kbd "C-c y") 'org-cliplink))
-
- (use-package org-bullets
-  :init
-  (add-hook 'org-mode-hook #'org-bullets-mode)
-  :config
-  (setq org-bullets-bullet-list
-        '("●" "●" "￭" "￭" "￮" "￮" "▪" "▪" "▸" "▸" "•" "•")))
 
 ;; ** Org-ref
 
@@ -1161,7 +1161,8 @@ is already narrowed."
         bibtex-autokey-titlewords 2
         bibtex-autokey-titlewords-stretch 1
         bibtex-autokey-titleword-length 5)
-  ;; Make the org-ref bibtex link folded.  This will make them not export as good latex (bummer) unless do file or dir specific thing.  See org_mode/test.org. See: https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
+  ;; Make org-ref cite: link folded in emacs.  Messes up Latex export:
+  ;; https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
   (org-link-set-parameters "cite" :display nil)
 )
 
@@ -1169,8 +1170,7 @@ is already narrowed."
   :after org
   :diminish org-autolist-mode
   :config
-  (add-hook 'org-mode-hook (lambda ()
-			     (org-autolist-mode)))) ; new - or -[ ] w/ return
+  (add-hook 'org-mode-hook #'org-autolist-mode)) ; new - or -[ ] w/ return
 
 ;; ** Org Mode Dedicated Targets
 (require 'org)
