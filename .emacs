@@ -24,9 +24,6 @@
       initial-scratch-message nil
       initial-major-mode 'org-mode) ; scratch is then an org buffer
 
-;; If have boot slowness
-;;(use-package esup) ;; for profiling .emacs startup time (obsolete?)
-
 ;; * Package Configuration
 
 (prefer-coding-system 'utf-8); avoid complaints, put before (require 'package)
@@ -1030,7 +1027,6 @@
 ;; ** Ruby
 (add-hook 'ruby-mode-hook
 	  (lambda ()
-            ;;(filladapt-mode -1)  ; breaks comment fill in cvs emacs
 	    (set (make-local-variable 'compile-command)
 		 (format "ruby -cw %s"
 			 (file-name-nondirectory buffer-file-name)))))
@@ -1088,83 +1084,48 @@ is already narrowed."
 ;; * Org Mode
 ;; ** Org Basic Config
 
-;; Ensure load and package update of modules and exporters: org-man, ox-*, etc.
-;; from "wolfer1ne":
-;;https://www.reddit.com/r/emacs/comments/5sx7j0/how_do_i_get_usepackage_to_ignore_the_bundled/
-;; NOTE: However, on a clean start, I had to start emacs 3X in order for everything to resolve itself.
 (use-package org
-  :ensure org-plus-contrib
+  :ensure org-plus-contrib ; fewer clean install errors, still must restart 3X
   :pin org
   :config
-  (define-key global-map "\C-cl" 'org-store-link) ;overwrites what-line
+  (define-key global-map "\C-cl" 'org-store-link)
+  (global-set-key (kbd "C-c L") 'org-insert-link-global) ; insert in any buffer
+  (global-set-key (kbd "C-c o") 'org-open-at-point-global) ; open in any buffer
+  (global-set-key "\C-cb" 'org-iswitchb) ; switch between org buffers
   ;;(global-set-key "\C-cc" 'org-capture) ; ovewrites org-ref-bibtex bindings
-  (define-key global-map "\C-ca" 'org-agenda)
-  ;; insert and follow links that have Org-mode syntax in any Emacs buffer.
-  (global-set-key (kbd "C-c L") 'org-insert-link-global)
-  (global-set-key (kbd "C-c o") 'org-open-at-point-global)
-  ;; Unbind org keys I don't use, or which could have been mapped to MS-word-like shift-arrow selection (when org-support-shift-select is set to true)
+  ;;(define-key global-map "\C-ca" 'org-agenda) ; I don't use agenda
+
+  ;; Unbind standard org keys so can always use for buffer-move
   (define-key org-mode-map (kbd "<C-S-up>") nil) ; was timestamp clock up sync
   (define-key org-mode-map (kbd "<C-S-down>") nil) ; was timestamp clck dwn sync
   (define-key org-mode-map (kbd "<C-S-left>")  nil) ; was switch TODO set
   (define-key org-mode-map (kbd "<C-S-right>") nil) ; was switch TODO set
-  ;; hook w/o outline stuff (but is fill adapt NOW working?  I remember seeing
-  ;; something about this on the org list somewhere in Feb. 2010)
-  (add-hook
-   'org-mode-hook
-   (function
-    (lambda ()
-      ;; (filladapt-mode -1))))  ; breaks plain lists
-      ;; undo org mode overwrites (C-a, C-e already work OK)
-      (define-key org-mode-map (kbd "\C-cb") 'org-iswitchb)
-      ;; wasnt' this set by (setq org-replace-disputed-keys t)
-      (define-key org-mode-map "\M-p" 'org-insert-drawer)
-      )))
-  ;; could give nonheadline lists a nicer bullet than a hyphen
-  ;; from: http://www.howardism.org/Technical/Emacs/orgmode-wordprocessor.html
-  ;;(font-lock-add-keywords 'org-mode
-  ;;                      '(("^ +\\([-*]\\) "
-  ;;                         (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-  ;; pause after completing each stage of path
-  (setq org-outline-path-complete-in-steps t)) 
 
-;; Quick org-mode bolding, etc.  With wrap-region, you'd bold with C-- * http://emacs.stackexchange.com/questions/10029/org-mode-how-to-create-an-org-mode-markup-keybinding
-;; (works well with smart-region/expand-region)
+  ;; Nicer bullets for non-headline lists (does this slow down org mode?)
+  ;; others: https://www.w3schools.com/charsets/ref_utf_symbols.asp
+  ;; ◇ ▷ ◈ ◎ ☆ ★ ☉ ♢ ♦ ━ ─ ⊣ ▬ ⊲ ✔ ✤ ✥ ✩ ✦ ✪ ✱ ✸ ✽ ➜ ➤
+  (font-lock-add-keywords
+   'org-mode
+   '(("^ +\\(-\\) "
+      (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "▬"))))
+     ("^ +\\(*\\) "
+      (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "✤")))))))
+
+;; Quick org emphasis:  Select text & hit key below. smart-region pkg helps.
 (use-package wrap-region
   :diminish wrap-region-mode
   :diminish wrap-region-minor-mode
   :config
   (add-hook 'org-mode-hook #'wrap-region-mode)
-  (wrap-region-add-wrapper "*" "*" nil 'org-mode) ; bold
-  (wrap-region-add-wrapper "/" "/" nil 'org-mode) ; italics
-  (wrap-region-add-wrapper "_" "_" nil 'org-mode) ; underline
-  (wrap-region-add-wrapper "=" "=" nil 'org-mode) ; literal
-  (wrap-region-add-wrapper "~" "~" nil 'org-mode) ; code
+  (wrap-region-add-wrapper "*" "*" nil 'org-mode)  ; bold
+  (wrap-region-add-wrapper "/" "/" nil 'org-mode)  ; italics
+  (wrap-region-add-wrapper "_" "_" nil 'org-mode)  ; underline
+  (wrap-region-add-wrapper "=" "=" nil 'org-mode)  ; literal
+  (wrap-region-add-wrapper "~" "~" nil 'org-mode)  ; code
   (wrap-region-add-wrapper "+" "+" nil 'org-mode)) ; strikeout
-
-;; makes energytop.org super slow
-;;(require 'org-ac) ; orgmode autocomplete for org #+ directives
-;;(org-ac/config-default)
 
 (use-package org-cliplink ;; make hyper link from URL in clipboard
   :config (define-key org-mode-map (kbd "C-c y") 'org-cliplink))
-
-
-;; could play with stripe buffer for tables (must install stripe-buffer package)
-;; org-table-stripes-enable      M-x ... RET
-;; and a bunch of other things for non-org buffers
-
-;; bullets and default fonts:  I tried several alternatives to the default courier new:
-;; big review here: http://www.codeproject.com/Articles/30040/Font-Survey-42-of-the-Best-Monospaced-Programming
-;;  anonymous pro: a dense serif font; bad @'s, blobby top lev bullet, rest OK
-;;  bitstream vera sans roman: nice looking, bullets a bit big but are clean
-;;  consolas: quite nce, bullets are good, readable; the best?
-;;  courier new: readable, serifed, a bit thin, bullets good; still the best?
-;;  incosolata: nice serif font, top level bullet too big, rest OK; 3rd place?
-;;  bitstream vera sans roman: nice looking, bullets a bit big but are clean
-;;  lucida console: readable, but too much space, blobby bold; top bullet too big
-;;  anonymous pro: a dense serif font; bad @'s, blobby top lev bullet, rest OK
-;;  incosolata-g: don't like it; 'f' looks terrible
-;;  lucida console: readable, but too much space, blobby bold; top bullet too big
 
  (use-package org-bullets
   :init
