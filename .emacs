@@ -381,7 +381,8 @@
 (global-set-key (kbd "<C-left>")   'windmove-left)
 (global-set-key (kbd "<C-right>")  'windmove-right)
 
-;; Traverse window movement history w/ mouse buttons usually bound to browser forward/back.  Goes through frames too, but may have to move mouse if frame gets out of focus.  On MS sculpt mouse, swipe down is 'back'; swipe up is 'forward'
+;; Traverse cursor movement history across windows and frames using mouse buttons usually bound to browser forward/back.
+;; On MS sculpt mouse, swipe down is 'back'; swipe up is 'forward'
 (define-key global-map [mouse-4] 'next-multiframe-window)
 (define-key global-map [mouse-5] 'previous-multiframe-window)
 
