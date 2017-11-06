@@ -46,6 +46,20 @@
   (defcustom conda-postdeactivate-hook nil
     "Hook run after a conda environment is deactivated.")
 
+******* TRY enable shift-arrow select, for uniformity with windows
+        I had been blocking them with
+
+        (windmove-default-keybindings); maps cursor moving to S-arrow keys 
+
+        but I removed it because I had also mapped these keys to C-arrows
+
+        (what were C-arrow keys doing without this)?
+
+        For C-arrow to work in org-mode, must enable
+        ‘org-support-shift-select’
+
+        (what were C-arrow keys doing in org-mode?)
+
 ******* TRY virtual buffers: do I like them?
         I've turned it off to see if I care.
 
@@ -2115,24 +2129,24 @@ Strike-through: nil
 
 ***** Installing
 
-      1. Run the emacs windows installer e.g.
+      1. Run the emacs windows installer e.g. Chocolatey or Vincent Goulet
 
-          c:/Program Files (x86)/GNU Emacs 24.2/bin/addpm
+      Running addpm.exe is no longer recommended, as of v 25.2.  From Chocolatey emacs [[file:c:/ProgramData/chocolatey/lib/emacs64/tools/emacs/share/emacs/25.2/README.W32][README.W32]]:
 
-         which puts emacs in the start bar (still needed in Goulet emacs 24.5?)
+         This is no longer needed in latest versions of Emacs, so we recommend you not do that, as running addpm.exe will insert entries into the Registry which might get in the way if you upgrade to later versions without updating those entries, or would like to uninstall Emacs.
 
-      2. Put emacs bins _on front of PATH_ env. var (for org mode compiles and
+      3. Put emacs bins _on front of PATH_ env. var (for org mode compiles and
          to make file associations and taskbar stuff shorter).
 
-      3. Set the HOME environment variable to where .emacs and .emacs.d are
+      4. Set the HOME environment variable to where .emacs and .emacs.d are
 
-      4. set the ALTERNATE_EDITOR env. var to runemacs.exe
+      5. set the ALTERNATE_EDITOR env. var to runemacs.exe
 
-      5. May need to create a blank dir called .emacs.d or do [[Windows .emacs.d problem]]
+      6. May need to create a blank dir called .emacs.d or do [[Windows .emacs.d problem]]
 
-      6. [[Windows Emacs File associations]] (Associate files with emacs)
+      7. [[Windows Emacs File associations]] (Associate files with emacs)
 
-      7. [[Pinning emacs to Windows 10 Taskbar]]
+      8. [[Pinning emacs to Windows 10 Taskbar]]
 
 ***** Pinning emacs to taskbar
 ******* <<Pinning emacs to Windows 10 Taskbar>>
