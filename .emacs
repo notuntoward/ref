@@ -1,33 +1,19 @@
 ;; * Emacs Startup Behavior
 
 (require 'server) ; so file association works on windows and emacsclient
-;; So don't get annoying warning/question when killing a buffer loaded w/
-;; emacsclient.  See
-;; http://shreevatsa.wordpress.com/2007/01/06/using-emacsclient/
-;; but this doesn't work in windows 10 either: still get warnings when kill
-(remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
+(add-to-list 'default-frame-alist '(fullscreen . fullheight)) ; startup at full height
+(save-place-mode 1) ; remember cursor position when returning to a file
 
-;; starts debugger when .emacs file error but I'm not sure what to do with that
-;;(setq debug-on-error t)
-
-;;http://emacs.stackexchange.com/questions/2999/how-to-maximize-my-emacs-frame-on-start-up
-(add-to-list 'default-frame-alist '(fullscreen . fullheight))
-
-;; remember cursor position, for emacs 25.1 or later
-;; per-buffer: https://www.masteringemacs.org/article/whats-new-in-emacs-25-1
-(save-place-mode 1)
-
-;; Emacs visits default Emacs init file AFTER here. Since the initializations here could be overwritten written, inhibit loading the default init file.
-(setq inhibit-default-init 1
-      inhibit-startup-message t
+(setq inhibit-startup-message t
       inhibit-splash-screen t
       initial-scratch-message nil
-      initial-major-mode 'org-mode) ; scratch is then an org buffer
+      initial-major-mode 'org-mode) ; so scratch is an org buffer
 
 ;; * Package Configuration
 
-(prefer-coding-system 'utf-8); avoid complaints, put before (require 'package)
-;; from: https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
+;; avoid complaints, put before (require 'package)
+;; https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
+(prefer-coding-system 'utf-8)
 (when (display-graphic-p)
   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
@@ -35,10 +21,6 @@
 (add-to-list   'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list   'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
-;; adds about 2+ secs to load time @ home
-;;(package-refresh-contents)
-
-;; For totaly clean start
 
 (unless (package-installed-p 'use-package) ;; for totally clean start
   (message "Installing use-package and refreshing")
@@ -105,18 +87,14 @@
 (message "computerNm %s shareDir %s docDir %s" computerNm shareDir docDir)
 
 (if window-system
-    (define-key global-map [S-down-mouse-3] 'imenu)
+    (progn
+      ;; middle mouse click on url starts browser in every file
+      (when (fboundp 'goto-address) (add-hook 'find-file-hooks 'goto-address))
+      (define-key global-map [S-down-mouse-3] 'imenu))
   (progn
     ;; on a term or cmdshell:
     (menu-bar-mode -1) ;menubar off when on an xterm (xemacs does automatically)
-    (set-face-background 'region "pale turquoise")) ;works on xterm
-  )
-
-;; to get rid of the ^M's in the shell output
-(add-hook 'comint-output-filter-functions 'shell-strip-ctrl-m nil t)
-;; for PC, so emacs uses command.com for shell
-(setq process-coding-system-alist
-      '(("cmdproxy" . (raw-text-dos . raw-text-dos))))
+    (set-face-background 'region "pale turquoise"))) ;works on xterm
 
 ;; to install it with the ps-print package, which I hadn't for 21.8, at least.
 (require 'ps-print)
@@ -134,12 +112,10 @@
 
 ;; so ^M doesn't show up in Linux xemacs shell while logged in to Solaris
 (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)
-
-;; to get rid of the ^M's in the shell output
 (add-hook 'comint-output-filter-functions 'shell-strip-ctrl-m nil t)
-;; for PC, so emacs uses command.com for shell
-(setq process-coding-system-alist
-      '(("cmdproxy" . (raw-text-dos . raw-text-dos))))
+
+(if running-ms-windows ; so emacs uses command.com for shell
+    (setq process-coding-system-alist'(("cmdproxy" . (raw-text-dos . raw-text-dos)))))
 
 ;; So passwords aren't displayed
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
@@ -151,25 +127,17 @@
 	      "@.*\\):\\s *\\'"))
 
 ;; ** Eshell
-;; as recommended: https://www.masteringemacs.org/article/complete-guide-mastering-eshell
-;; em-smart doesn't seem to do anything, nor does anything else immediately below
+;; Helps with editing commands, cursor jumping.  See
+;; https://www.masteringemacs.org/article/complete-guide-mastering-eshell
 (require 'eshell)
-(require 'em-smart)
+(require 'em-smart) ; I'm not sure what all this does, but no harm...
 (setq eshell-where-to-jump 'begin)
 (setq eshell-review-quick-commands nil)
 (setq eshell-smart-space-goes-to-end t)
 
-;; middle mouse click on url starts browser in every file
-(when (fboundp 'goto-address) (add-hook 'find-file-hooks 'goto-address))
-
-(add-hook 'text-mode-hook
-	  '(lambda ()
-	     (set (make-local-variable 'dabbrev-case-fold-search) t)
-	     (set (make-local-variable 'dabbrev-case-replace) t)))
-
 ;; ** Remote Process Communication
 
-;; could put scp/ftp or whatever here, if I need that someday
+;; Could put scp/ftp or whatever here, if I need that someday
 
 ;; TRAMP almost never used, slows things down
 ;; tramp: remote ssh, like ange-ftp: info page command different for gnu/xemacs
@@ -196,7 +164,7 @@
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
       create-lockfiles nil)
 
-(global-auto-revert-mode t) ; updates when file changes, like Matlab. Avoids conflicts?
+(global-auto-revert-mode t) ; updates when file changes, like Matlab.
 
 ;; * Window Config, Desktop Save and Restore
 ;; ** Adjusting Window Orientation
@@ -204,10 +172,6 @@
   :config (global-set-key (kbd "C-|")  'rotate-frame-clockwise))
 
 (winner-mode 1) ; Undo window config: C-c left; Redo window config: C-c right
-
-;; Traverse window movement history w/ mouse buttons usually bound to browser forward/back.  Goes through frames too, but may have to move mouse if frame gets out of focus.  On MS sculpt mouse, swipe down is 'back'; swipe up is 'forward'
-(define-key global-map [mouse-4] 'next-multiframe-window)
-(define-key global-map [mouse-5] 'previous-multiframe-window)
 
 ;; ** Attempts at saving desktop
 ;; buggy, as of April 8, 2017
@@ -248,7 +212,6 @@
 
 ;; * Search and Replace (see also Swiper/Ivy)
 ;; ** Web Search
-;; "search" the web
 (use-package google-this
   :diminish google-this-mode
   :config
@@ -280,7 +243,8 @@
   :config                    ; default was query-replace
   (global-set-key (kbd "M-%") 'query-replace-from-region))
 
-;; When hit C-s (default emacs binding) with a region selected, use it as the search string.  From: http://stackoverflow.com/questions/202803/searching-for-marked-selected-text-in-emacs
+;; So isearch searces for selected region, if there is one.  From:
+;;http://stackoverflow.com/questions/202803/searching-for-marked-selected-text-in-emacs
 ;; NOTE: C-s C-w (extra C-w's expand region) also works well
 (defun jrh-isearch-with-region ()
   "Use region as the isearch text."
@@ -332,8 +296,6 @@
 
 (use-package counsel ; better kill-ring 2nd yanking
   :init
-  ;; maybe nice but I want to preserve reverse search direction
-  ;;(define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
   :bind
   (("M-y" . counsel-yank-pop)
    :map ivy-minibuffer-map
@@ -347,8 +309,7 @@
 ;;
 ;; Should be placed after ivy to avoid partial ivy overwrites of ido functions
 
-;; as recommended: https://github.com/DarwinAwardWinner/ido-completing-read-plus
-(ido-mode 1)
+(ido-mode 1) ; https://github.com/DarwinAwardWinner/ido-completing-read-plus
 (ido-everywhere 1)
 
 ;; From: http://stackoverflow.com/questions/17986194/emacs-disable-automatic-file-search-in-ido-mode
@@ -365,7 +326,6 @@
   :config (ido-grid-mode 1))
 
 (use-package flx-ido
-  :ensure t
   :init
   ;; copied from https://github.com/bdd/.emacs.d/blob/master/packages.el
   (setq gc-cons-threshold (* 20 (expt 2 20)) ido-use-faces nil) ; megabytes
@@ -411,16 +371,19 @@
 
 (global-set-key (kbd "C-M-=") 'global-linum-mode) ; toggles on all buffers
 
-;; Bind S-arrow keys to moving cursor to buffer
-(windmove-default-keybindings); maps cursor moving to S-arrow keys
+;; So C-arrow keys move cursor to different buffer (C-S-arrow move buffers)
+;;(windmove-default-keybindings); maps cursor moving to S-arrow keys
 ;; when cursor is on edge, move to the other side, as in a torus space
 (setq windmove-wrap-around t )
-;; Overwrites org keys I don't use (TODO, and timestamp arrow keys?), or, when org-support-shift-select is set to true, would be mapped to MS-word-like shift-arrow selection (see also bindings for buffer-move package)
-;; switch 'buffer-move-behavior' somehow changes this
+;; Overwrites org keys I don't use (are inhibited in org setup)
 (global-set-key (kbd "<C-up>")     'windmove-up)
 (global-set-key (kbd "<C-down>")   'windmove-down)
 (global-set-key (kbd "<C-left>")   'windmove-left)
 (global-set-key (kbd "<C-right>")  'windmove-right)
+
+;; Traverse window movement history w/ mouse buttons usually bound to browser forward/back.  Goes through frames too, but may have to move mouse if frame gets out of focus.  On MS sculpt mouse, swipe down is 'back'; swipe up is 'forward'
+(define-key global-map [mouse-4] 'next-multiframe-window)
+(define-key global-map [mouse-5] 'previous-multiframe-window)
 
 (use-package smart-region ; smart region selection expand
   :init (global-set-key (kbd "C--") 'smart-region)) ; C-x toggles to start/end
@@ -475,9 +438,9 @@
 (setq ibuffer-expert t)
 
 ;; ** Buffer movement
-;; Bind shift-arrow keys to buffer moving commands
+;; So ctl-shift-arrow keys move buffers within a frame (ctl-arrows move cursor)
 ;; (org-mode keys should have already been unbound in the org section)
-(use-package buffer-move ; switch 'buffer-move-behavior' somehow changes this
+(use-package buffer-move
   :config
   (global-set-key (kbd "<C-S-up>")     'buf-move-up)
   (global-set-key (kbd "<C-S-down>")   'buf-move-down)
@@ -1297,6 +1260,11 @@ This function avoids making messed up targets by exiting without doing anything 
        (insert (format-time-string "%Y-%m-%d")))
 (global-set-key (kbd "C-c i") 'insert-date-string)
 
+(add-hook 'text-mode-hook
+	  '(lambda ()
+	     (set (make-local-variable 'dabbrev-case-fold-search) t)
+	     (set (make-local-variable 'dabbrev-case-replace) t)))
+
 ;; ** Writing and editing
 
 ;; Run Google translate. There are tons of customizations
@@ -1546,7 +1514,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
   :config (add-hook 'visual-line-mode-hook
 		    (lambda ()
 		      (adaptive-wrap-prefix-mode +1)
-		      (diminish 'visual-line-mode)))) ; hide mode string in mode line
+		      (diminish 'visual-line-mode))))
 ;; Other adaptive-wrap settings I could use but
 ;; don't want extra indent after bullet
 ;; (with-eval-after-load 'adaptive-wrap
