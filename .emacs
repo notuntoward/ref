@@ -371,10 +371,8 @@
 
 (global-set-key (kbd "C-M-=") 'global-linum-mode) ; toggles on all buffers
 
-;; So C-arrow keys move cursor to different buffer (C-S-arrow move buffers)
-;;(windmove-default-keybindings); maps cursor moving to S-arrow keys
-;; when cursor is on edge, move to the other side, as in a torus space
-(setq windmove-wrap-around t )
+;; So C-arrow keys move cursor to different buffer (C-S-arrow moves buffers)
+(setq windmove-wrap-around t ) ; wrap windows around edge, like torus space
 ;; Overwrites org keys I don't use (are inhibited in org setup)
 (global-set-key (kbd "<C-up>")     'windmove-up)
 (global-set-key (kbd "<C-down>")   'windmove-down)
@@ -1058,7 +1056,8 @@ is already narrowed."
    '(("^ +\\(-\\) "
       (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "▬"))))
      ("^ +\\(*\\) "
-      (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "✤")))))))
+      (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "✤"))))))
+  (defcustom org-support-shift-select 'always'))
 
  (use-package org-bullets
   :init
