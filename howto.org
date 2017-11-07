@@ -46,20 +46,6 @@
   (defcustom conda-postdeactivate-hook nil
     "Hook run after a conda environment is deactivated.")
 
-******* TRY enable shift-arrow select, for uniformity with windows
-        I had been blocking them with
-
-        (windmove-default-keybindings); maps cursor moving to S-arrow keys 
-
-        but I removed it because I had also mapped these keys to C-arrows
-
-        (what were C-arrow keys doing without this)?
-
-        For C-arrow to work in org-mode, must enable
-        ‘org-support-shift-select’
-
-        (what were C-arrow keys doing in org-mode?)
-
 ******* TRY virtual buffers: do I like them?
         I've turned it off to see if I care.
 
@@ -530,6 +516,39 @@
 ********* [[http://guides.lib.berkeley.edu/information-studies/apis][APIs for scholarly resources]]
 ********* See also: [[BibTex and Emacs]]
 ***** *ACCEPTED*
+******* ACCEPTED enable shift-arrow select, for uniformity with Windows/Linux
+
+        *Conclusions*: 
+
+        1.) set [[help:org-support-shift-select][org-support-shift-select]] to *'always'*
+            /[[Using customization instead of .emacs setq]]/
+        2.) retain my existing windmove =C-arrows= bindings
+
+        *Why*:
+
+        The default org setup [[help:org-support-shift-select][uses]] =C-arrows= for
+          1.) *headline*: change TODO state (left/right) and priority (up/down)
+              /I've been doing =C-c C-t= forever, so I don't care/
+          2.) *plain list*: change the bullet type
+              /this would be a little nice but I don't use it/
+          3.) *time stamp*: change the time
+              /never use/
+          4.) *property definition*: switch between allowed values
+              /never use/
+          5.) *BEGIN line of a clock table*: change time block
+              /never use/
+
+        These bindings [[http://orgmode.org/manual/Conflicts.html][conflict]] with:
+          1.) Windows/Linux style shift-select: I might like this consistency
+          2.) [[help:windmove-default-keybindings][windmove]] (but I had already mapped these keys to =C-arrows).
+              o =C-arrows= used to move cursor by word/paragraph, but I used M-f/b
+              o =C-arrows= consistent w/ buffer move: I'd [[
+                      (][mapped]] it to =C-S-arrows=
+
+        If customize [[help:org-support-shift-select][org-support-shift-select]], then shift select works
+          o *'t'**:* in text but not in special regions (bullet cycling is modified)
+          o *'always'*: works everywhere except on a timestamps
+
 ******* ACCEPTED make recent files display "basename|dirname" like buffer uniquify
         Done.  See ~/.emacs (defun sdo/uniquify-like-buffer (vm-unique-filename)...)
 
@@ -1918,6 +1937,10 @@ Many text editors have access to these in some simple way, so before thinking ab
 ******* Elisp
 ********* ??
 ***** [[https://common-lisp.net/project/cl-org-mode/][CL-ORG-MODE : A Lisp Parser of org-mode outlines]]
+
+*** <<Using customization instead of .emacs setq>>
+
+    Guy [[https://emacs.stackexchange.com/questions/102/advantages-of-setting-variables-with-setq-instead-of-custom-el][convincingly recommends]] using customizations instead of setq.  Also putting customizations in a separate file (I'm not sure this matters).
 
 *** Fonts
 ***** see available fonts: M-x list-fontsets
