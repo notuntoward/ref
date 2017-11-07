@@ -11,7 +11,7 @@
 
 ;; * Package Configuration
 
-;; avoid complaints, put before (require 'package)
+;; Avoid complaints, put before (require 'package)
 ;; https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
 (prefer-coding-system 'utf-8)
 (when (display-graphic-p)
@@ -506,7 +506,7 @@
 (setq dired-recursive-deletes t)
 
 ;; ** Find-file and URL
-;; Avoid extra "file or url" text in minibuf; use ffap only if @ valid URL or path
+;; Avoid extra "file or url" text in minibuf; use ffap only @ valid URL or path
 (defun find-file-guessing (arg)
   "Call find-file with file at point if valid. With a universal argument,
  force call to find-file"
@@ -677,7 +677,7 @@
                          :initial-input nil)))
       (dired dir))))
 
-;; overwrites ido-list-directory, which was less useful than this
+;; Overwrites ido-list-directory, which was less useful than this
 (global-set-key (kbd "C-x C-d") 'bjm/ivy-dired-recent-dirs)
 
 ;;* Function key bindings
@@ -730,9 +730,9 @@
 	 ("\\.cc$"   . c++-mode)
 	 ("\\.cpp$"  . c++-mode)
 	 ("\\.hh$"   . c++-mode)
-	 ("\\.c$"    . c++-mode)  ; can't hurt?
-	 ("\\.cpp$"    . c++-mode)
-	 ("\\.h$"    . c++-mode)  ; since CTS has C++ includes w/ .h
+	 ("\\.c$"    . c++-mode)
+	 ("\\.cpp$"  . c++-mode)
+	 ("\\.h$"    . c++-mode)
 	 ("\\.java$" . java-mode)
 	 ) auto-mode-alist))
 
@@ -776,7 +776,7 @@
   :diminish outline-minor-mode
   :config
   (add-hook 'outline-minor-mode-hook 'outshine-hook-function) ; for outshine
-  (add-hook 'prog-mode-hook 'outline-minor-mode)             ; all prog modes
+  (add-hook 'prog-mode-hook 'outline-minor-mode)              ; all prog modes
   ;; from https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-outshine.el
   (bind-keys
    :map outline-minor-mode-map
@@ -915,7 +915,7 @@
 			 (file-name-nondirectory buffer-file-name)))))
 
 ;; ** VC source code control
-;
+
 (eval-after-load "vc-hooks"
   '(define-key vc-prefix-map "=" 'vc-ediff)) ; so C-x v = will use ediff
 
@@ -1030,6 +1030,8 @@ is already narrowed."
 
 ;; * Org Mode
 ;; ** Org Basic Config
+
+(use-package org-plus-contrib); so won't be package-autoremoved
 
 (use-package org
   :ensure org-plus-contrib ; fewer clean install errors, still must restart 3X
