@@ -1029,8 +1029,6 @@ is already narrowed."
 ;; * Org Mode
 ;; ** Org Basic Config
 
-(use-package org-plus-contrib); so won't be package-autoremoved
-
 (use-package org
   :ensure org-plus-contrib ; fewer clean install errors, still must restart 3X
   :pin org
@@ -1056,8 +1054,7 @@ is already narrowed."
    '(("^ +\\(-\\) "
       (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "▬"))))
      ("^ +\\(*\\) "
-      (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "✤"))))))
-  (defcustom org-support-shift-select 'always'))
+      (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "✤")))))))
 
  (use-package org-bullets
   :init
