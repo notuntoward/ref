@@ -2,22 +2,6 @@
 *** *Emacs to try*
     My experiments, Emacs packages I've tried and installed (from Melpa repository). Also, some builtins I could try
 ***** *TRY*
-******* TRY escape ivy in dired mode R
-
-        Problem is that you can't rename a file with a filename that partially matches an existing filename e.g. in ~/.emacs, if there is already
-
-        ~/.emacs.d/elpa.older
-
-        I can't used =R= to create
-
-        ~/.emacs.d/elpa.old
-
-        because ivy takes over and forces the match to elpa.older
-
-        M-x describe-indings says =R= is mapped to dired-do-rename but I'm seeing an ivy-type display when I try to use it.
-
-        [[https://emacs.stackexchange.com/questions/28982/after-enabling-ivy-mode-dired-create-directory-does-not-allow-me-to-choose-an][This post]] is wrong for my example.
-
 ******* TRY Improve elpy python path: [[Better elpy path]]
 
         Use conda.el hooks?
@@ -45,6 +29,16 @@
 
   (defcustom conda-postdeactivate-hook nil
     "Hook run after a conda environment is deactivated.")
+
+******* TRY remove percent from mode-line
+
+        Problem with percent
+        1.) Percent is redundant with line count, and can see the same info on the scrollbar.  
+        2.) it blocks out clock when viewing .emacs on a normal-width emacs window
+        
+        This [[http://ergoemacs.org/emacs/modernization_mode_line.html][guy]] points out that scrollbar is not present in terminal mode.
+
+        So leave it there in terminal mode, remove it if GUI?
 
 ******* TRY virtual buffers: do I like them?
         I've turned it off to see if I care.
@@ -2096,6 +2090,18 @@ Strike-through: nil
 ******* So I stopped
 
 ******* also setting org mode heading 1 to "sans" caused probs, so I un-specified it
+
+*** Emacs terminals
+***** eshell
+      not much here right now...
+***** shell
+      not much here right now...
+***** term
+      
+******* emulates a real terminal
+******* so can use to run e.g. top without scrolling
+******* emacs ~C-x whatever~ keybinding becomes ~C-c whatever~ 
+******* _switch buffers_: C-c b
 
 *** <<Emacs color picking>>
 ***** [[https://julien.danjou.info/projects/emacs-packages#rainbow-mode][rainbow-mode.el]] would make it easier to sort color candidates    
