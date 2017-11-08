@@ -1215,6 +1215,41 @@ This function avoids making messed up targets by exiting without doing anything 
     ))
 (global-set-key "\em" 'create-and-link-dedicated-org-target)
 
+;; ** Org Mode Hide Properties Drawer
+
+;;There was one idea here but it only worked on startup:
+;;https://stackoverflow.com/questions/17478260/completely-hide-the-properties-drawer-in-org-mode
+
+;; This one almost does it except property drawer is also open (but see above?)
+;;From: https://emacs.stackexchange.com/questions/36232/org-mode-property-to-make-subtree-visibility-bimodal/36273
+
+(advice-add 'org-cycle :around #'my/org-cycle)
+
+(defun my/toggle-bimodal-cycling (&optional pos)
+  "Enable/disable bimodal cycling behavior for the current heading."
+  (interactive)
+  (let* ((enabled (org-entry-get pos "BIMODAL-CYCLING")))
+    (if enabled
+        (org-entry-delete pos "BIMODAL-CYCLING")
+      (org-entry-put pos "BIMODAL-CYCLING" "yes"))))
+
+(defun my/org-cycle (fn &optional arg)
+  "Make org outline cycling bimodal (FOLDED and SUBTREE) rather than trimodal (FOLDED, CHILDREN, and SUBTREE) when a heading has a :BIMODAL-CYCLING: property value."
+  (interactive)
+  (if (and (org-at-heading-p)
+           (org-entry-get nil "BIMODAL-CYCLING"))
+      (my/toggle-subtree)
+    (funcall fn arg)))
+
+(defun my/toggle-subtree ()
+  "Show or hide the current subtree depending on its current state."
+  (interactive)
+  (save-excursion
+    (outline-back-to-heading)
+    (if (not (outline-invisible-p (line-end-position)))
+        (outline-hide-subtree)
+      (outline-show-subtree))))
+
 ;; ** Org Export
 
 (use-package ox-minutes :defer 5) ; nice(er) ascii export, but slow start
@@ -1647,7 +1682,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (smart-mode-line smartscan artbollocks-mode highlight-thing try conda use-package counsel swiper-helm esup auctex auctex-latexmk ess ess-R-data-view ess-smart-equals ess-smart-underscore ess-view psvn igrep helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine highlight-indent-guides lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ ox-pandoc copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 undo-tree iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f org-ref writegood-mode auto-complete rainbow-delimiters smex matlab-mode popup parsebib org-plus-contrib org-cliplink org-bullets org-autolist org key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move cygwin-mount)))
+    (smart-mode-line smartscan artbollocks-mode highlight-thing try conda use-package counsel swiper-helm esup auctex auctex-latexmk ess ess-R-data-view ess-smart-equals ess-smart-underscore ess-view psvn igrep helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine highlight-indent-guides lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ ox-pandoc copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 undo-tree iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f org-ref writegood-mode auto-complete smex matlab-mode popup parsebib org-plus-contrib org-cliplink org-bullets org-autolist org key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move cygwin-mount)))
  '(paren-message-show-linenumber (quote absolute))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
