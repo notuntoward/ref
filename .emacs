@@ -1215,12 +1215,9 @@ This function avoids making messed up targets by exiting without doing anything 
     ))
 (global-set-key "\em" 'create-and-link-dedicated-org-target)
 
-;; ** Org Mode Hide Properties Drawer
+;; ** Display whole subtree using :PROPERTIES:
 
-;;There was one idea here but it only worked on startup:
-;;https://stackoverflow.com/questions/17478260/completely-hide-the-properties-drawer-in-org-mode
-
-;; This one almost does it except property drawer is also open (but see above?)
+;; Keeps tree open if property set, but property drawer is left hanging open (but see above?)
 ;;From: https://emacs.stackexchange.com/questions/36232/org-mode-property-to-make-subtree-visibility-bimodal/36273
 
 (advice-add 'org-cycle :around #'my/org-cycle)
@@ -1249,6 +1246,75 @@ This function avoids making messed up targets by exiting without doing anything 
     (if (not (outline-invisible-p (line-end-position)))
         (outline-hide-subtree)
       (outline-show-subtree))))
+
+;; this does hide the drawers on open but it doesn't close ANYTHING on the 2nd cycle
+(defun my/toggle-subtree-hide-drawers ()
+  "Show or hide the current subtree depending on its current state."
+  (interactive)
+  (save-excursion
+    (outline-back-to-heading)
+    (if (not (outline-invisible-p (line-end-position)))
+        (outline-hide-subtree)
+      (progn (outline-show-subtree)
+             (org-cycle-hide-drawers 'children)))))
+
+;;(global-set-key [C-f1] 'my/toggle-subtree) 
+;;(global-set-key [C-f2] 'my/toggle-subtree) 
+
+;; ** Hide :PROPERTIES: Drawer
+
+;; From:
+;;https://stackoverflow.com/questions/17478260/completely-hide-the-properties-drawer-in-org-mode
+
+;; The following answer completely hides everything from :PROPERTIES: through :END:. It can be tested by evaluating (org-cycle-hide-drawers 'children), or (org-cycle-hide-drawers 'all), or in conjunction with the other functions relating to cycling the outline views. The standard functions to unfold that are included within the org-mode family all work -- e.g., show-all; org-show-subtree; etc.
+
+(require 'org)
+
+(defun org-cycle-hide-drawers-all ()
+  "Rehide all drawers in buffer after a visibility state change."
+  (interactive)
+  (org-cycle-hide-drawers 'all))
+
+(defun org-cycle-hide-drawers-children ()
+  "Rehide drawers in children in this tree after a visibility state change."
+  (interactive)
+  (org-cycle-hide-drawers 'children))
+
+(defun org-cycle-hide-drawers (state)
+  "Re-hide all drawers after a visibility state change."
+  (when (and (derived-mode-p 'org-mode)
+             (not (memq state '(overview folded contents))))
+    (save-excursion
+      (let* ((globalp (memq state '(contents all)))
+             (beg (if globalp
+                    (point-min)
+                    (point)))
+             (end (if globalp
+                    (point-max)
+                    (if (eq state 'children)
+                      (save-excursion
+                        (outline-next-heading)
+                        (point))
+                      (org-end-of-subtree t)))))
+        (goto-char beg)
+        (while (re-search-forward org-drawer-regexp end t)
+          (save-excursion
+            (beginning-of-line 1)
+            (when (looking-at org-drawer-regexp)
+              (let* ((start (1- (match-beginning 0)))
+                     (limit
+                       (save-excursion
+                         (outline-next-heading)
+                           (point)))
+                     (msg (format
+                            (concat
+                              "org-cycle-hide-drawers:  "
+                              "`:END:`"
+                              " line missing at position %s")
+                            (1+ start))))
+                (if (re-search-forward "^[ \t]*:END:" limit t)
+                  (outline-flag-region start (point-at-eol) t)
+                  (user-error msg))))))))))
 
 ;; ** Org Export
 
@@ -1429,6 +1495,9 @@ This function avoids making messed up targets by exiting without doing anything 
   (which-key-mode)
   (which-key-setup-side-window-right-bottom)) ; do bottom if no room on side
 
+(use-package helm-descbinds)
+;;  :config (helm-descbinds-mode))
+
 (defhydra hydra-utils (:color blue :hint nil)
   "
 Utils:
@@ -1441,7 +1510,8 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
 --------------------------------------------------------------------------------
            _._: mark position _/_: jump to mark
 "
-  ("b" counsel-descbinds)
+;;  ("b" counsel-descbinds)
+  ("b" helm-descbinds)
   ("s" describe-symbol)
   ("k" describe-key)
   ("f" describe-face)
@@ -1682,7 +1752,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (smart-mode-line smartscan artbollocks-mode highlight-thing try conda use-package counsel swiper-helm esup auctex auctex-latexmk ess ess-R-data-view ess-smart-equals ess-smart-underscore ess-view psvn igrep helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine highlight-indent-guides lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ ox-pandoc copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 undo-tree iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f org-ref writegood-mode auto-complete smex matlab-mode popup parsebib org-plus-contrib org-cliplink org-bullets org-autolist org key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move cygwin-mount)))
+    (helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda use-package counsel swiper-helm esup auctex auctex-latexmk ess ess-R-data-view ess-smart-equals ess-smart-underscore ess-view psvn igrep helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine highlight-indent-guides lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ ox-pandoc copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 undo-tree iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f org-ref writegood-mode auto-complete smex matlab-mode popup parsebib org-plus-contrib org-cliplink org-bullets org-autolist org key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move cygwin-mount)))
  '(paren-message-show-linenumber (quote absolute))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
@@ -1771,6 +1841,4 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(sml/modified ((t (:inherit sml/not-modified :foreground "firebrick" :weight bold))))
  '(table-cell-face ((t (:background "honeydew1" :foreground "black" :inverse-video nil))))
  '(writegood-duplicates-face ((t (:underline (:color "orange" :style wave)))))
- '(writegood-passive-voice-face ((t (:underline (:color "MediumOrchid1" :style wave)))))
- '(writegood-weasels-face ((t (:underline (:color "olive drab" :style wave))))))
-
+ '(writegood-passive-voice-face ((t (:underline (:color "MediumOrchid1" :style wave))))))
