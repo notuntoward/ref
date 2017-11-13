@@ -2,6 +2,12 @@
 *** *Emacs to try*
     My experiments, Emacs packages I've tried and installed (from Melpa repository). Also, some builtins I could try
 ***** *TRY*
+******* TRY get git and ref out of TempoBox, leave papers there
+        - checkout ref dir in a folder not connected to TempoBox
+        - symbolically link 'papers' to inside of newly checked out ref dir
+          - papers too big for bitbucket (git)
+          - Symoblic link means that new ref dir can't be on OneDrive
+        - then, changes to .emacs/howto.org/... are ONLY transmitted with git
 ******* TRY Improve elpy python path: [[Better elpy path]]
 
         Use conda.el hooks?
@@ -1034,29 +1040,6 @@
 ******* Also: [[Knowledge as Graphs]]
 ***** org mode table math
       See: [[http://orgmode.org/org.html#Advanced-features][Advanced-features]]
-***** emacs setup so orgmode builds on Windows
-      <<windows emacs org-mode build>>
-
-      *OBSOLETE*: I'm now using the emacs packages in emacs 24.3
-
-      So can download new org mode unzip it in ~/lib/emacs and install it
-      with:
-
-      make
-      make install
-
-      Setup:
-
-      1. edit org mode Makefile to point to gemacs-compiled dir
-      2. put windows emacs _on front of Windows PATH_ environment variable, so
-         that the cygwin emacs is not seen first, which will cause
-         confusion.  This also allows you to avoid "spaces in path" problem
-         when pinning emacs to the Windows task bar (you can write
-         runemacs.exe, saving the space-protecting apostrophes for an extra
-         command.  See [[*Pinning%20emacs%20to%20taskbar][Pinning emacs to taskbar]].
-      3. delete old emacs stuff in gemacs compiled so make sure everything is
-         gone.
-
 ***** [[MoinMoin emacs]]
 ***** [[org-mode indentation]]
 ***** org-mode export
