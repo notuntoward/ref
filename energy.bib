@@ -3253,21 +3253,23 @@ IDEAS
   author      = {Sugiyama, Masashi},
   title       = {Density Ratio Estimation: A New Versatile Tool for Machine Learning},
   booktitle   = {Advances in Machine Learning},
+  publisher   = {Springer Berlin / Heidelberg},
   year        = {2009},
   editor      = {Zhou, Zhi-Hua and Washio, Takashi},
   volume      = {5828},
   series      = {Lecture Notes in Computer Science},
-  publisher   = {Springer Berlin / Heidelberg},
-  isbn        = {978-3-642-05223-1},
   pages       = {6--9},
-  doi         = {10.1007/978-3-642-05224-8_2},
+  isbn        = {978-3-642-05223-1},
   abstract    = {A new general framework of statistical data processing based on the ratio of probability densities has been proposed recently and gathers a great deal of attention in the machine learning and data mining communities [1?17]. This density ratio framework includes various statistical data processing tasks such as non-stationarity adaptation [18, 1, 2, 4, 13], outlier detection [19?21, 6], and conditional density estimation [22?24, 15]. Furthermore, mutual information?which plays a central role in information theory [25]?can also be estimated via density ratio estimation. Since mutual information is a measure of statistical independence between random variables [26?28], density ratio estimation can be used also for variable selection [29, 7, 11], dimensionality reduction [30, 16], and independent component analysis [31, 12]. Accurately estimating the density ratio is a key issue in the density ratio framework. A naive approach is to estimate each density separately and then take the ratio of the estimated densities. However, density estimation is known to be a hard problem and thus this two-step approach may not be accurate in practice. A promising approach would be to estimate the density ratio directly without going through density estimation. Several direct density ratio estimation methods have been proposed so far, including kernel mean matching [3], logistic regression [32, 33, 5], the Kullback-Leibler importance estimation procedure [8, 9], least-squares importance ?tting [10, 17], and unconstrained least-squares importance ?tting [10, 17]. Note that the importance refers to the density ratio, derived from importance sampling [34]. Furthermore, a density ratio estimation method incorporating dimensionality reduction has also be developed [35], which is shown to be useful in high-dimensional cases. A review of the density ratio framework is available in [36]. The density ratio approach was shown to be useful in various real-world applications including brain-computer interface [4, 37], robot control [38?41, 15], speaker identi?- cation [42, 43], natural language processing [14], bioinformatics [11], visual inspe},
   affiliation = {Department of Computer Science, Tokyo Institute of Technology},
+  doi         = {10.1007/978-3-642-05224-8_2},
   file        = {slides:Sugiyama09densRatEst_Slides.pdf:PDF;Abstract and Bibliography:Sugiyama09densRatEst_AbsAndBib.pdf:PDF},
   groups      = {Ensemble, doReadNonWPV_2},
   keyword     = {Computer Science},
   owner       = {sotterson},
   review      = {overview of the many applications of density ratio estimation e.g. mutual information. Good for prob forecast featsel?
+
+Useful for SPRT anomalie detection too, since it has a density ratio in it?
 
 I can't find the pdf, but have some slides
 
@@ -3815,6 +3817,26 @@ http://www.math.nyu.edu/faculty/majda/Submitted/CMS%20%28A%20Stochastic%20Multic
   publisher = {Elsevier Science Publishers B. V.},
   review    = {Picking lags with LASSO -- does 1\textsuperscript{st} order difference to remove non-stationarity -- HUH Ahmed07empCompForecast says differencing doesn't work for non-stationary signals -- but Bisgaard papers say to do it},
   timestamp = {2009.08.17},
+}
+
+@Patent{Mihnev16anomDetParamSysPtnt,
+  nationality = {US},
+  number      = {US 9,379,951 B2},
+  year        = {2016},
+  yearfiled   = {2014},
+  author      = {Aldimir Mihnev},
+  title       = {Method and Apparatus for Detection of Anomalies in Integrated Parameter Systems},
+  language    = {English},
+  assignee    = {Instep Software, LLC},
+  address     = {Chicago, IL (US)},
+  type        = {patentus},
+  day         = {28},
+  dayfiled    = {10},
+  month       = jun,
+  monthfiled  = {#jan#},
+  abstract    = {A system, method, and tang1ble computmg apparatus is disclosed for the detection of anomalies in an integrated data network. Said system, method and apparatus comprises the creation and construction of a mathematical model that utilizes multi-dimensional mutual information to detect interactions and interrelationships between pairs ofdata streams and among pluralities of data streams. Real-time analysis of the operations of an integrated data network is enhanced and expedited via use of locality sensitive hashing that relies on density detenninations ofclusters of data.},
+  file        = {:Mihnev16anomDetParamSysPtnt.pdf:PDF},
+  review      = {Peter Deeskow suggested I look at it.  It uses mutual information.  Peter says it's related to the STEAG SPRT approach.  Looks interesting.},
 }
 
 @Article{Huang14hrtfTensorPLS,
@@ -8536,6 +8558,41 @@ authors and Alice McQuillan for her help in proofreading.},
   URL                      = {http://www.springer.com/life+sciences/systems+biology+and+bioinformatics/book/978-0-387-47508-0}
 }
 
+@Article{Lang08neuralCloundMon,
+  author        = {Lang, B and Poppe, T and Minin, A and Mokhov, I and Kuperin, Y and Mekler, A and Liapakina, I},
+  title         = {Neural clouds for monitoring of complex systems},
+  journal       = {Optical memory \& neural networks},
+  year          = {2008},
+  volume        = {17},
+  number        = {3},
+  pages         = {183--192},
+  __markedentry = {[sotterson:6]},
+  abstract      = {Condition monitoring is an important and challenging task actual for many areas of industry,
+
+ 
+
+medicine and economics. Nowadays it is necessary to provide on-line monitoring of the complex sys-
+tems status, e.g. the steel production, in order to avoid faults, breakdowns or wrong diagnostics. In the
+present paper a novel machine learning method for the automated condition monitoring is presented.
+Neural Clouds (NC) is a novel data encapsulation method, which provides a confidence measure regard-
+ing classification of the complex system conditions. The presented adaptive algorithm requires only the
+data which corresponds to the normal system conditions, which is typically available. At the same time
+the fault related data acquisition is expensive and fault modeling is not always possible, especially in
+case one is dealing with steel production, power stations operation, human health condition or critical
+phenomena in financial markets. These real word applications are also presented in the paper.
+
+ 
+
+Key words: neural clouds, one side classification, on line monitoring, early fault detection, EEG classi-
+
+ 
+
+fication, fault analysis and prevention.},
+  file          = {:Lang08neuralCloundMon.pdf:PDF},
+  publisher     = {Springer},
+  review        = {Related to Brummel (Siemens) patent (Brummel16monEnrgProgSiePtnt).  Was contributed by Peter Deeskow, of STEAG, who must have considered it important.},
+}
+
 @TechReport{GE16predixArchSrvcTechNote,
   author      = {GE},
   title       = {Predix Architecture and Services},
@@ -11825,14 +11882,13 @@ DATA
 }
 
 @InProceedings{Bentzien14quantScrDecomp,
-  author        = {Bentzien, Sabrina and Friederichs, Petra},
-  title         = {The quantile score and its decomposition},
-  booktitle     = {EGU General Assembly Conference Abstracts},
-  year          = {2014},
-  volume        = {16},
-  pages         = {15691},
-  __markedentry = {[sotterson:1]},
-  abstract      = {Forecast verification for probabilistic weather and climate predictions gain more and more importance due to
+  author    = {Bentzien, Sabrina and Friederichs, Petra},
+  title     = {The quantile score and its decomposition},
+  booktitle = {EGU General Assembly Conference Abstracts},
+  year      = {2014},
+  volume    = {16},
+  pages     = {15691},
+  abstract  = {Forecast verification for probabilistic weather and climate predictions gain more and more importance due to
 the increasing number of ensemble prediction systems. The predictive performance of probabilistic forecasts is
 generally assessed using proper score functions, which are applied to a set of forecast-observation pairs. The
 propriety of a score guarantees honesty and prevents hedging. A variety of proper scores exist for different types
@@ -11849,17 +11905,17 @@ this framework is illustrated on precipitation forecasts derived from the mesosc
 COSMO-DE-EPS of the German Meteorological Service.
 
 (From: http://adsabs.harvard.edu/abs/2014EGUGA..1615691B#)},
-  file          = {Bentzien14quantScrDecomp.pdf:Bentzien14quantScrDecomp.pdf:PDF},
-  owner         = {sotterson},
-  review        = {Poster showoing that quantile score is the integral of the check loss function.  Can be estimated as the average of the check loss functions  over a sample.
+  file      = {Bentzien14quantScrDecomp.pdf:Bentzien14quantScrDecomp.pdf:PDF},
+  owner     = {sotterson},
+  review    = {Poster showoing that quantile score is the integral of the check loss function.  Can be estimated as the average of the check loss functions  over a sample.
 
 Can be decomposed into reliability and resolution, (as can CRPS, I guess)
 
 Quantile reliability plots (like DWD does).
 
 See also Bentzien13qntScrDecomp},
-  timestamp     = {2017.03.15},
-  url           = {http://www2.meteo.uni-bonn.de/staff/wahl/files/bentzien_poster_egu2014_qs.pdf},
+  timestamp = {2017.03.15},
+  url       = {http://www2.meteo.uni-bonn.de/staff/wahl/files/bentzien_poster_egu2014_qs.pdf},
 }
 
 @InBook{Aler15machLrnDAsolarFrcstNWP,
@@ -21335,15 +21391,16 @@ Related to Pinson06ProbFrcstPropsEval},
 @Article{Gallego11frcstRampANN,
   author    = {Gallego, C. and Costa, A. and Cuerva, A.},
   title     = {Improving short-term forecasting during ramp events by means of Regime-Switching Artificial Neural Networks},
+  journal   = {Advances in Science \& Research},
   year      = {2011},
   volume    = {6},
   pages     = {55--58},
   abstract  = {Ramp events are large rapid variations within wind power time series. Ramp forecasting can benefit from specific strategies so as to particularly take into account these shifts in the wind power output dynamic. In the short-term context (characterized by prediction horizons from minutes to a few days), a Regime-Switching (RS) model based on Artificial Neural Nets (ANN) is proposed. The objective is to identify three regimes in the wind power time series: Ramp-up, Ramp-down and No-ramp regime. An on-line regime assessment methodology is also proposed, based on a local gradient criterion. The RS-ANN model is compared to a single- ANN model (without regime discrimination), concluding that the regime-switching strategy leads to significant improvements for one-hour ahead forecasts, mainly due to the improvements obtained during ramp-up events. Including other explanatory variables (NWP outputs, local measurements) during the regime assessment could eventually improve forecasts for further horizons.},
   file      = {Gallego11frcstRampANN.pdf:Gallego11frcstRampANN.pdf:PDF},
-  journal   = {Advances in Science \& Research},
   owner     = {scot},
   review    = {Pierre says there are a lot of ramp definitions in here},
   timestamp = {2011.05.02},
+  url       = {https://www.adv-sci-res.net/6/55/2011/},
 }
 
 @Article{Sevlian13windRampDetStat,
@@ -22840,20 +22897,19 @@ compared against NWP ensembles in Girard10trajEvalWind (ensembles seem better?)
 }
 
 @Article{Zhou11conjFrcstMkts,
-  author        = {Q. Zhou and L. Tesfatsion and C. C. Liu},
-  title         = {Short-Term Congestion Forecasting in Wholesale Power Markets},
-  journal       = {IEEE Transactions on Power Systems},
-  year          = {2011},
-  volume        = {26},
-  number        = {4},
-  pages         = {2185--2196},
-  month         = nov,
-  issn          = {0885-8950},
-  __markedentry = {[sotterson:]},
-  abstract      = {Short-term congestion forecasting is highly important for market participants in wholesale power markets that use locational marginal prices (LMPs) to manage congestion. Accurate congestion forecasting facilitates market traders in bidding and trading activities and assists market operators in system planning. This study proposes a new short-term forecasting algorithm for congestion, LMPs, and other power system variables based on the concept of system patterns - combinations of status flags for generating units and transmission lines. The advantage of this algorithm relative to standard statistical forecasting methods is that structural aspects underlying power market operations are exploited to reduce forecast error. The advantage relative to previously proposed structural forecasting methods is that data requirements are substantially reduced. Forecasting results based on a NYISO case study demonstrate the feasibility and accuracy of the proposed algorithm.},
-  doi           = {10.1109/TPWRS.2011.2123118},
-  file          = {:Zhou11conjFrcstMkts.pdf:PDF},
-  keywords      = {load forecasting, power markets, power system economics, pricing, statistical analysis, LMP, NYISO case study, forecast error reduction, locational marginal prices, power system variables, short-term congestion forecasting, standard statistical forecasting methods, wholesale power markets, Algorithm design and analysis, Forecasting, Power markets, Power system planning, Probabilistic logic, Congestion forecasting, convex hull algorithm, load partitioning, locational marginal price, price forecasting, system patterns, wholesale power market},
+  author   = {Q. Zhou and L. Tesfatsion and C. C. Liu},
+  title    = {Short-Term Congestion Forecasting in Wholesale Power Markets},
+  journal  = {IEEE Transactions on Power Systems},
+  year     = {2011},
+  volume   = {26},
+  number   = {4},
+  pages    = {2185--2196},
+  month    = nov,
+  issn     = {0885-8950},
+  abstract = {Short-term congestion forecasting is highly important for market participants in wholesale power markets that use locational marginal prices (LMPs) to manage congestion. Accurate congestion forecasting facilitates market traders in bidding and trading activities and assists market operators in system planning. This study proposes a new short-term forecasting algorithm for congestion, LMPs, and other power system variables based on the concept of system patterns - combinations of status flags for generating units and transmission lines. The advantage of this algorithm relative to standard statistical forecasting methods is that structural aspects underlying power market operations are exploited to reduce forecast error. The advantage relative to previously proposed structural forecasting methods is that data requirements are substantially reduced. Forecasting results based on a NYISO case study demonstrate the feasibility and accuracy of the proposed algorithm.},
+  doi      = {10.1109/TPWRS.2011.2123118},
+  file     = {:Zhou11conjFrcstMkts.pdf:PDF},
+  keywords = {load forecasting, power markets, power system economics, pricing, statistical analysis, LMP, NYISO case study, forecast error reduction, locational marginal prices, power system variables, short-term congestion forecasting, standard statistical forecasting methods, wholesale power markets, Algorithm design and analysis, Forecasting, Power markets, Power system planning, Probabilistic logic, Congestion forecasting, convex hull algorithm, load partitioning, locational marginal price, price forecasting, system patterns, wholesale power market},
 }
 
 @Article{Couto14weathRegimeRamps,
@@ -23410,31 +23466,30 @@ this paper can be extended to systems issuing continuous probability forecasts, 
 }
 
 @Article{Hersbach00crpsDecomp,
-  author        = {Hersbach, Hans},
-  title         = {Decomposition of the continuous ranked probability score for ensemble prediction systems},
-  year          = {2000},
-  volume        = {15},
-  number        = {5},
-  pages         = {559--570},
-  issn          = {1520-0434},
-  __markedentry = {[sotterson:1]},
-  abstract      = {Some time ago, the continuous ranked probability score (CRPS) was proposed as a new verification tool for (probabilistic) forecast systems. Its focus is on the entire permissible range of a certain (weather) parameter. The CRPS can be seen as a ranked probability score with an infinite number of classes, each of zero width. Alternatively, it can be interpreted as the integral of the Brier score over all possible threshold values for the parameter under consideration. For a deterministic forecast system the CRPS reduces to the mean absolute error.
+  author    = {Hersbach, Hans},
+  title     = {Decomposition of the continuous ranked probability score for ensemble prediction systems},
+  year      = {2000},
+  volume    = {15},
+  number    = {5},
+  pages     = {559--570},
+  issn      = {1520-0434},
+  abstract  = {Some time ago, the continuous ranked probability score (CRPS) was proposed as a new verification tool for (probabilistic) forecast systems. Its focus is on the entire permissible range of a certain (weather) parameter. The CRPS can be seen as a ranked probability score with an infinite number of classes, each of zero width. Alternatively, it can be interpreted as the integral of the Brier score over all possible threshold values for the parameter under consideration. For a deterministic forecast system the CRPS reduces to the mean absolute error.
 
 In this paper it is shown that for an ensemble prediction system the CRPS can be decomposed into a reliability part and a resolution/uncertainty part, in a way that is similar to the decomposition of the Brier score. The reliability part of the CRPS is closely connected to the rank histogram of the ensemble, while the resolution/uncertainty part can be related to the average spread within the ensemble and the behavior of its outliers. The usefulness of such a decomposition is illustrated for the ensemble prediction system running at the European Centre for Medium-Range Weather Forecasts. The evaluation of the CRPS and its decomposition proposed in this paper can be extended to systems issuing continuous probability forecasts, by realizing that these can be interpreted as the limit of ensemble forecasts with an infinite number of members.},
-  booktitle     = {Weather and Forecasting},
-  doi           = {10.1175/1520-0434%282000%29015%3C0559:DOTCRP%3E2.0.CO;2},
-  file          = {Hersbach00crpsDecomp.pdf:Hersbach00crpsDecomp.pdf:PDF},
-  groups        = {Test, CitaviImport1, doReadWPV_1},
-  keywords      = {CPRSS},
-  ncite         = {224},
-  owner         = {sotterson},
-  review        = {Maybe the best ref. for CRPS. Explains discrete computation, how to compute for ensembles, decomposition... highly cited.
+  booktitle = {Weather and Forecasting},
+  doi       = {10.1175/1520-0434%282000%29015%3C0559:DOTCRP%3E2.0.CO;2},
+  file      = {Hersbach00crpsDecomp.pdf:Hersbach00crpsDecomp.pdf:PDF},
+  groups    = {Test, CitaviImport1, doReadWPV_1},
+  keywords  = {CPRSS},
+  ncite     = {224},
+  owner     = {sotterson},
+  review    = {Maybe the best ref. for CRPS. Explains discrete computation, how to compute for ensembles, decomposition... highly cited.
 
 Decomposition is analogous to the decomposition of the Brier score. Should probably understand why both decompositions matter.
 
 * the CRPS of a deterministic forecast is equal to the mean absolute error (MAE)
 * multidimensional CRPS is some kind of weighted average},
-  timestamp     = {2013.09.26},
+  timestamp = {2013.09.26},
 }
 
 @Article{Politis03btstrpTimeSer,
@@ -25288,22 +25343,21 @@ Try later?},
 }
 
 @Article{Broecker12rawEnsQntScrCRPS,
-  author        = {Br{\"o}cker, Jochen},
-  title         = {Evaluating raw ensembles with the continuous ranked probability score},
-  journal       = {Quarterly Journal of the Royal Meteorological Society},
-  year          = {2012},
-  volume        = {138},
-  number        = {667},
-  pages         = {1611--1617},
-  __markedentry = {[sotterson:1]},
-  abstract      = {The continuous ranked probability score (CRPS) is a frequently used scoring rule. In contrast with many other scoring rules, the CRPS evaluates cumulative distribution functions. An ensemble of forecasts can easily be converted into a piecewise constant cumulative distribution function with steps at the ensemble members. This renders the CRPS a convenient scoring rule for the evaluation of ?raw? ensembles, obviating the need for sophisticated ensemble model output statistics or dressing methods prior to evaluation. In this article, a relation between the CRPS score and the quantile score is established. The evaluation of ?raw? ensembles using the CRPS is discussed in this light. It is shown that latent in this evaluation is an interpretation of the ensemble as quantiles but with non-uniform levels. This needs to be taken into account if the ensemble is evaluated further, for example with rank histograms.},
-  doi           = {10.1002/qj.1891/full},
-  file          = {Broecker12rawEnsQntScrCRPS.pdf:Broecker12rawEnsQntScrCRPS.pdf:PDF},
-  groups        = {Read, Ensemble, Test, doReadNonWPV_1},
-  ncite         = {1},
-  owner         = {sotterson},
-  publisher     = {Wiley Online Library},
-  review        = {A way to evaluate wind speed ensembles against measured power without a power curve? At least avoids calibration or dressing.
+  author    = {Br{\"o}cker, Jochen},
+  title     = {Evaluating raw ensembles with the continuous ranked probability score},
+  journal   = {Quarterly Journal of the Royal Meteorological Society},
+  year      = {2012},
+  volume    = {138},
+  number    = {667},
+  pages     = {1611--1617},
+  abstract  = {The continuous ranked probability score (CRPS) is a frequently used scoring rule. In contrast with many other scoring rules, the CRPS evaluates cumulative distribution functions. An ensemble of forecasts can easily be converted into a piecewise constant cumulative distribution function with steps at the ensemble members. This renders the CRPS a convenient scoring rule for the evaluation of ?raw? ensembles, obviating the need for sophisticated ensemble model output statistics or dressing methods prior to evaluation. In this article, a relation between the CRPS score and the quantile score is established. The evaluation of ?raw? ensembles using the CRPS is discussed in this light. It is shown that latent in this evaluation is an interpretation of the ensemble as quantiles but with non-uniform levels. This needs to be taken into account if the ensemble is evaluated further, for example with rank histograms.},
+  doi       = {10.1002/qj.1891/full},
+  file      = {Broecker12rawEnsQntScrCRPS.pdf:Broecker12rawEnsQntScrCRPS.pdf:PDF},
+  groups    = {Read, Ensemble, Test, doReadNonWPV_1},
+  ncite     = {1},
+  owner     = {sotterson},
+  publisher = {Wiley Online Library},
+  review    = {A way to evaluate wind speed ensembles against measured power without a power curve? At least avoids calibration or dressing.
 
 * CRPS is a weighted sum of quantile scores (kinda like in Gneiting11compFrcstWgtQntSc)
   - but he doesn't really say what the weights are
@@ -25315,7 +25369,7 @@ Generates fake data for test
 an EMOS use: Schuhen12
 
 I actually didn't quite understand this paper after a quick skim. Should really read it.},
-  timestamp     = {2014.05.26},
+  timestamp = {2014.05.26},
 }
 
 @Article{Lorenz11RegionalPVpowFrcst,
@@ -25634,12 +25688,12 @@ Node types
 @Article{Zhu12shrtWindFrcstOp,
   author    = {Zhu, Xinxin and Genton, Marc G},
   title     = {Short-Term Wind Speed Forecasting for Power System Operations},
+  journal   = {International Statistical Review},
   year      = {2012},
   volume    = {80},
   number    = {1},
   pages     = {2--23},
   note      = {pdf from: http://www.stat.tamu.edu/~genton/2012.ZG.ISR.pdf},
-  doi       = {10.1111/j.1751-5823.2011.00168.x/abstract},
   abstract  = {The emphasis on renewable energy and concerns about the environment have led to large-scale
 wind energy penetration worldwide. However, there are also significant challenges associated with
 the use of wind energy due to the intermittent and unstable nature of wind. High-quality short-term
@@ -25651,9 +25705,9 @@ of forecast accuracy, in particular, the need for realistic loss functions. New 
 forecasting regarding ramp events and offshore wind farms are also presented.
 Key words: Evaluation; forecasting; loss function; ramp event; space???ime model; statistical model;
 time series model; wind speed; wind power.},
+  doi       = {10.1111/j.1751-5823.2011.00168.x/abstract},
   file      = {Zhu12shrtWindFrcstOp.pdf:Zhu12shrtWindFrcstOp.pdf:PDF},
   groups    = {ErrDistProps, doReadWPV_2},
-  journal   = {International Statistical Review},
   owner     = {sotterson},
   publisher = {Wiley Online Library},
   review    = {Loss functions, including probabilistic loss functions, spatio-temporal models, and regime switching. Also, periodic models. Useful for Eweline, etc.},
@@ -26992,6 +27046,34 @@ function for slow-starting conventional generators.},
   url       = {https://pdfs.semanticscholar.org/e561/b18450e6c7efd3af8e4a04384e4104c2dd63.pdf},
 }
 
+@Patent{Brummel16monEnrgProgSiePtnt,
+  nationality = {European Union},
+  number      = {EP 2 706 422 B1},
+  year        = {2016},
+  yearfiled   = {2012},
+  author      = {Brummel, Hans-Gerd and Heesche, Kai and Pfeifer, Uwe and Sterzing, Volkmar},
+  title       = {Method for computer-implemented monitoring of the operation of a technical system, in particular an electrical energy production assembly},
+  language    = {German},
+  assignee    = {Siemens Aktiengesellschaft},
+  address     = {80333 München (DE)},
+  type        = {patenteu},
+  day         = {27},
+  dayfiled    = {11},
+  month       = jul,
+  monthfiled  = {#sep#},
+  abstract    = {The invention relates to a method and a
+Device for computerized monitoring of the
+Operating a technical system, in particular a
+electric power generation plant. Further, concerns
+the invention is a corresponding technical system
+and a computer program product.},
+  file        = {:Brummel16monEnrgProgSiePtnt.pdf:PDF},
+  review      = {Siemens' patent, from Peter Deeskow of STEAG.  He thinks it's important.
+
+The paper they cite: Juricic06faultDetGaussProc
+Related, since authors are from Siemens? Lang08neuralCloundMon},
+}
+
 @Article{Barski14qntHdgShrtfllCtl,
   author    = {Barski, Micha{\l}},
   title     = {On the shortfall risk control-a refinement of the quantile hedging method},
@@ -28096,6 +28178,28 @@ the features common in both machine learning and statistics.},
   url       = {http://www.sciencedirect.com/science/article/pii/S0047259X05001260},
 }
 
+@Patent{Wegerich13predCondMonSmartSigPtnt,
+  nationality = {European Union},
+  number      = {EP 2 015 186 B1},
+  year        = {2013},
+  yearfiled   = {2002},
+  author      = {Wegerich, Stephan W. and Wolosewicz, Andre and Pipke, R. M.},
+  title       = {Diagnostic systems and methods for predictive condition monitoring},
+  language    = {English},
+  assignee    = {Smartsignal Corporation},
+  address     = {Lisle, IL 60532 (US)},
+  type        = {patenteu},
+  day         = {13},
+  dayfiled    = {11},
+  month       = mar,
+  monthfiled  = {#jan#},
+  abstract    = {The present invention relates generally to the field of early detection and diagnosis of incipient machine failure
+or process upset. More particularly, the invention is directed to model-based monitoring of processes and machines,
+and experience-based diagnostics.},
+  file        = {:Wegerich13predCondMonSmartSigPtnt.pdf:PDF},
+  review      = {GE (smartsignal) patent.  Peter of STEAG considers this his strongest competitor.},
+}
+
 @Article{Heim07spaceVaryCoeffs3D,
   author    = {Heim, S and Fahrmeir, L and Eilers, Paul HC and Marx, Brian D},
   title     = {{3D} space-varying coefficient models with application to diffusion tensor imaging},
@@ -28997,6 +29101,29 @@ Henry},
   journal   = {Journal of Computer Networks and Communications},
   publisher = {Hindawi Publishing Corporation},
   review    = {Adaptive Holt-Winters for multiple periodicity, here daily and weekly. Could be useful for adaptive price forecasting.},
+}
+
+@InProceedings{Juricic06faultDetGaussProc,
+  author        = {Juricic, Dj and Kocijan, J},
+  title         = {Fault detection based on Gaussian process model},
+  booktitle     = {Proceedings of the 5th Vienna Symposium on Mathematical Modeling (MathMod)},
+  year          = {2006},
+  organization  = {Vienna, Austria},
+  __markedentry = {[sotterson:]},
+  abstract      = {The traditional model-based fault detection and isolation (FDI) rely on tacit assumption
+that the validity of process model is out of question for current process data. However, it happens in
+practice that a process might end up in regions for which the underlying model is not validated. This
+can result in false alarms. To avoid the risk, a validity index is suggested as a measure of confidence
+assigned to the detection results. This measure is based on estimated distance of the current process
+data from data employed in the learning set. If the former is close to the latter, the detector output will
+be assigned high confidence. It is shown in this paper that the idea can be realized in a rather natural
+way when Gaussian Process models are used to describe the input-output behavior of nonlinear dynamic
+systems. This is a relatively recent modelling approach, which is probably for the first time adopted to
+the FDI problem domain. For a particular case of sensor faults it results in a statistical test in the form
+of a weighted sum of prediction errors. The effectiveness of the test is demonstrated on a simulated pH
+process.},
+  file          = {:Juricic06faultDetGaussProc.pdf:PDF},
+  review        = {Fault detect with confidence intervals.  Semi-probabilistic since based on GP's.  Seems to be what's patented in: Brummel16monEnrgProgSiePtnt},
 }
 
 @Article{Broecker08ensToPDF,
@@ -33641,18 +33768,17 @@ I've downloaded this to Eweline\frcst\common\contrib\PSQR},
 }
 
 @InProceedings{Oliveira16copulaEnsANNfrcstTS,
-  author        = {R. T. A. de Oliveira and T. F. O. de Assis and P. R. A. Firmino and T. A. E. Ferreira and A. L. I. Oliveira},
-  title         = {Copulas-based ensemble of Artificial Neural Networks for forecasting real world time series},
-  booktitle     = {Proc. Int. Joint Conf. Neural Networks (IJCNN)},
-  year          = {2016},
-  pages         = {4089--4096},
-  month         = jul,
-  __markedentry = {[sotterson:6]},
-  abstract      = {Time series combined forecasters have been superior to the respective single models in statistical terms. In this way, the linear combination functions, e.g. the simple average (SA) and the minimal variance (MV) approaches, have been the main alternatives for aggregation in the literature. In this work, it is proposed a copulas-based method for combining biased single models. Copulas are multivariate functions that operate on marginal probability distributions, allowing one to model the forecasters errors and then the dependence among them: a typical divide-and-conquer framework that can result in nonlinear accurate combined forecasters. The performance of the copulas-based combination method is assessed by means of a comparison with SA and MV models, based on two financial time series.},
-  doi           = {10.1109/IJCNN.2016.7727732},
-  file          = {:Oliveira16copulaEnsANNfrcstTS.pdf:PDF},
-  keywords      = {divide and conquer methods, neural nets, probability, time series, ANN, MV approaches, SA approaches, artificial neural networks, copulas-based ensemble, divide-and-conquer framework, financial time series, marginal probability distributions, minimal variance approaches, multivariate functions, real world time series forecasting, simple average approaches, statistical terms, Biological system modeling, Computational modeling, Forecasting, Mathematical model, Maximum likelihood estimation, Predictive models, Time series analysis},
-  review        = {For forecast aggregation and other copula forecasting.},
+  author    = {R. T. A. de Oliveira and T. F. O. de Assis and P. R. A. Firmino and T. A. E. Ferreira and A. L. I. Oliveira},
+  title     = {Copulas-based ensemble of Artificial Neural Networks for forecasting real world time series},
+  booktitle = {Proc. Int. Joint Conf. Neural Networks (IJCNN)},
+  year      = {2016},
+  pages     = {4089--4096},
+  month     = jul,
+  abstract  = {Time series combined forecasters have been superior to the respective single models in statistical terms. In this way, the linear combination functions, e.g. the simple average (SA) and the minimal variance (MV) approaches, have been the main alternatives for aggregation in the literature. In this work, it is proposed a copulas-based method for combining biased single models. Copulas are multivariate functions that operate on marginal probability distributions, allowing one to model the forecasters errors and then the dependence among them: a typical divide-and-conquer framework that can result in nonlinear accurate combined forecasters. The performance of the copulas-based combination method is assessed by means of a comparison with SA and MV models, based on two financial time series.},
+  doi       = {10.1109/IJCNN.2016.7727732},
+  file      = {:Oliveira16copulaEnsANNfrcstTS.pdf:PDF},
+  keywords  = {divide and conquer methods, neural nets, probability, time series, ANN, MV approaches, SA approaches, artificial neural networks, copulas-based ensemble, divide-and-conquer framework, financial time series, marginal probability distributions, minimal variance approaches, multivariate functions, real world time series forecasting, simple average approaches, statistical terms, Biological system modeling, Computational modeling, Forecasting, Mathematical model, Maximum likelihood estimation, Predictive models, Time series analysis},
+  review    = {For forecast aggregation and other copula forecasting.},
 }
 
 @INCOLLECTION{Bernecker11QualSimRank,
@@ -36964,6 +37090,20 @@ File came from: K:\Organisation\Kongresse\2014\2014-11_Wind_Integration_Workshop
   timestamp = {2017.03.08},
 }
 
+@InProceedings{Gutmann10noiseCntrstStatMdl,
+  author    = {Gutmann, Michael and Hyv{\"a}rinen, Aapo},
+  title     = {Noise-contrastive estimation: A new estimation principle for unnormalized statistical models},
+  booktitle = {Proceedings of the Thirteenth International Conference on Artificial Intelligence and Statistics},
+  year      = {2010},
+  pages     = {297--304},
+  abstract  = {We present a new estimation principle for parameterized statistical models. The idea is to perform nonlinear logistic regression to discriminate between the observed data and some artificially generated noise, using the model log-density function in the regression nonlinearity. We show that this leads to a consistent (convergent) estimator of the parameters, and analyze the asymptotic variance. In particular, the method is shown to directly work for unnormalized models, i.e. models where the density function does not integrate to one. The normalization constant can be estimated just like any other parameter. For a tractable ICA model, we compare the method with other estimation methods that can be used to learn unnormalized models, including score matching, contrastive divergence, and maximum-likelihood where the normalization constant is estimated with importance sampling. Simulations show that noise-contrastive estimation offers the best trade-off between computational and statistical efficiency. The method is then applied to the modeling of natural images: We show that the method can successfully estimate a large-scale two-layer model and a Markov random field.},
+  file      = {:Gutmann10noiseCntrstStatMdl.pdf:PDF},
+  review    = {Possibly another way to make a conditional prob. forecast.  Here, the conditionality comes from logistic regression, and the distribution learning comes from trying to distinguish the observed distribution from random noise.
+
+Tons of cites in Google Scholar of this paper, most from speech and language model but there was one for anomaly detection too.},
+  url       = {http://proceedings.mlr.press/v9/gutmann10a.html},
+}
+
 @Article{Maaten08VisualizingDataUsingTSNE,
   author   = {Maaten, Laurens van der and Hinton, Geoffrey},
   title    = {Visualizing data using t-SNE},
@@ -37449,14 +37589,13 @@ POSSIBLE IMPROVEMENTS
 }
 
 @Article{Gneiting11compFrcstWgtQntSc,
-  author        = {Gneiting, Tilmann and Ranjan, Roopesh},
-  title         = {Comparing density forecasts using threshold-and quantile-weighted scoring rules},
-  journal       = {Journal of Business \& Economic Statistics},
-  year          = {2011},
-  volume        = {29},
-  number        = {3},
-  __markedentry = {[sotterson:1]},
-  abstract      = {We propose a method for comparing density forecasts that is based on weighted versions of the continuous
+  author    = {Gneiting, Tilmann and Ranjan, Roopesh},
+  title     = {Comparing density forecasts using threshold-and quantile-weighted scoring rules},
+  journal   = {Journal of Business \& Economic Statistics},
+  year      = {2011},
+  volume    = {29},
+  number    = {3},
+  abstract  = {We propose a method for comparing density forecasts that is based on weighted versions of the continuous
 ranked probability score. The weighting emphasizes regions of interest, such as the tails or the center
 of a variable?s range, while retaining propriety, as opposed to a recently developed weighted likelihood
 ratio test, which can be hedged. Threshold- and quantile-based decompositions of the continuous ranked
@@ -37466,11 +37605,11 @@ density forecasts of quarterly inflation rates in the United Kingdom, and probab
 of wind resources in the Pacific Northwest.
 KEY WORDS: Continuous ranked probability score; Predictive ability testing; Probabilistic forecast;
 Proper scoring rule; Quantile; Weighted likelihood ratio test.},
-  doi           = {10.1198/jbes.2010.08110},
-  file          = {Paper 2011:Gneiting11compFrcstWgtQntSc.pdf:PDF;Tech Note 2008:Gneiting11compFrcstWgtQntSc_TechNote.pdf:PDF},
-  groups        = {Read, Test, doReadNonWPV_1},
-  owner         = {sotterson},
-  review        = {How to compare density forecasts with emphasis on tails or whatever while still being proper. Also, CRPS is just the quantile scores at alphas, integrated across those alphas (alpha a.ka. tau a.k.a. "quantile probability"). Useful for reserve planning forecast evaluation, I guess.
+  doi       = {10.1198/jbes.2010.08110},
+  file      = {Paper 2011:Gneiting11compFrcstWgtQntSc.pdf:PDF;Tech Note 2008:Gneiting11compFrcstWgtQntSc_TechNote.pdf:PDF},
+  groups    = {Read, Test, doReadNonWPV_1},
+  owner     = {sotterson},
+  review    = {How to compare density forecasts with emphasis on tails or whatever while still being proper. Also, CRPS is just the quantile scores at alphas, integrated across those alphas (alpha a.ka. tau a.k.a. "quantile probability"). Useful for reserve planning forecast evaluation, I guess.
 
 * Eq 22  says CRPS is Contin. Integral of quantile scores over probs [0,1]
    - equally spaced quantiles: multiply QS sum by delta_alpha (a.k.a. delta  "tau")  or Newton-Cotes 
@@ -37485,7 +37624,7 @@ Proper scoring rule; Quantile; Weighted likelihood ratio test.},
 * Note that Argonne paper Mendes11statWindFrcst had to kind of punt on evaluating their density forecasts for different applications. Maybe this is the solution.
 * Comparison of quantile score and expectile score: Ehm16quantileExpectileScrFrcst
 },
-  timestamp     = {2014.05.26},
+  timestamp = {2014.05.26},
 }
 
 @Article{Moller12multiCopulaBMA,
@@ -37768,6 +37907,26 @@ Keywords:
   owner     = {scotto},
   review    = {How Microsoft Kinect finds joint positions. Random forests, mean shift and interesting synthesized training data},
   timestamp = {2011.04.10},
+}
+
+@Article{Hido10outlierDetDensRat,
+  author    = {Shohei Hido and Yuta Tsuboi and Hisashi Kashima and Masashi Sugiyama and Takafumi Kanamori},
+  title     = {Statistical outlier detection using direct density ratio estimation},
+  journal   = {Knowledge and Information Systems},
+  year      = {2010},
+  volume    = {26},
+  number    = {2},
+  pages     = {309--336},
+  month     = {feb},
+  abstract  = {We propose a new statistical approach to the problem of inlier-based outlier detection, i.e., finding outliers in the test set based on the training set consisting only of inliers. Our key idea is to use the ratio of training and test data densities as an outlier score. This approach is expected to have better performance even in high-dimensional problems since methods for directly estimating the density ratio without going through density estimation are available. Among various density ratio estimation methods, we employ the method called unconstrained least-squares importance fitting (uLSIF) since it is equipped with natural cross-validation procedures, allowing us to objectively optimize the value of tuning parameters such as the regularization parameter and the kernel width. Furthermore, uLSIF offers a closed-form solution as well as a closed-form formula for the leave-one-out error, so it is computationally very efficient and is scalable to massive datasets. Simulations with benchmark and real-world datasets illustrate the usefulness of the proposed approach.
+
+Keywords
+
+Outlier detection Density ratio Importance Unconstrained least-squares importance fitting (uLSIF) },
+  doi       = {10.1007/s10115-010-0283-2},
+  file      = {:Hido10outlierDetDensRat.pdf:PDF},
+  publisher = {Springer Nature},
+  review    = {Somehow use this for SPRT, which has a density ratio in it?},
 }
 
 @Article{FerrariTrecate03clustPcwsAffine,
@@ -38969,17 +39128,17 @@ distribution},
 @Article{Alexiadis99windForecastSpatCorr,
   author    = {Alexiadis, M.C. and Dokopoulos, P.S. and Sahsamanoglou, H.S.},
   title     = {Wind speed and power forecasting based on spatial correlation models},
+  journal   = {Energy Conversion, IEEE Transactions on},
   year      = {1999},
   volume    = {14},
   number    = {3},
-  month     = sep,
   pages     = {836--842},
+  month     = sep,
   issn      = {1558-0059},
-  doi       = {10.1109/60.790962},
   abstract  = {Wind energy conversion systems (WECS) cannot be dispatched like conventional generators. This can pose problems for power system schedulers and dispatchers, especially if the schedule of wind power availability is not known in advance. However, if the wind speed can be reliably forecasted up to several hours ahead, the generating schedule can efficiently accommodate the wind generation. This paper illustrates a technique for forecasting wind speed and power output up to several hours ahead, based on cross correlation at neighboring sites. The authors develop an artificial neural network (ANN) that significantly improves forecasting accuracy comparing to the persistence forecasting model. The method is tested at different sites over a year},
-  file      = {Alexiadis99windForecastSpatCorr.pdf:Alexiadis99windForecastSpatCorr.pdf:PDF;Alexiadis99windForecastSpatCorr.pdf:Alexiadis99windForecastSpatCorr.pdf:PDF},
+  doi       = {10.1109/60.790962},
+  file      = {Alexiadis99windForecastSpatCorr.pdf:Alexiadis99windForecastSpatCorr.pdf:PDF},
   groups    = {Read},
-  journal   = {Energy Conversion, IEEE Transactions on},
   keywords  = {correlation methods, forecasting theory, neural nets, power generation planning, power generation scheduling, power system analysis computing, wind, wind power, wind power plantsartificial neural network, cross correlation, forecasting accuracy, power system dispatchers, power system schedulers, spatial correlation models, wind power availability schedule, wind power forecasting, wind power generation, wind speed forecasting},
   owner     = {sotterson},
   review    = {Wind forecast w/ neural net with lag vector of local and distant observations; setup is somewhat artificial
@@ -40152,17 +40311,17 @@ may provide a hint for probabilistic forecasts i.e. Z should be added to the lis
   timestamp = {2010.05.27},
 }
 
-@INPROCEEDINGS{Liangyou08windFrcstRecurNeural,
-  Author                   = {Hong Liangyou and Jiang Dongxiang and Huang Qian and Ding Yongshan},
-  Title                    = {Wind Speed Forecasting Using Fully Recurrent Neural Network in Wind Power Plants},
-  Booktitle                = {World Wind Energy Conference},
-  Year                     = {2008},
-  Abstract                 = {Wind speed forecasting is very important to the operation of wind power plants and power systems. Because of its nonlinearity and non-stationary, wind forecasting is a severe task. This paper deals with the problem of short-term wind speed forecasting based on historical time-serial meteorological data. A kind of recurrent neural network called PRNN (pipelined recurrent neural network) is adopted here to make prediction. It is a NARMAX ANN model (nonlinear auto regressive moving average artificial neural network with external inputs). First, the raw wind speed data is processed to be steady using logarithm difference method. Then, the phase space reconstruction method of chaotic theory is adopted to determine embedded dimension and time delay. Third, based on the selected embedded dimension and time delay, we develop a PRNN+TDL (tapped-delay-line filter) ANN model. Several on-line learning and optimal algorithms are used to train network. Finally, the ANN predicted result is amended based on the statistic characteristic of wind speed. The model is tested at a wind power plant over one year period. The raw data interval is 1 minutes. And predication term is about five minutes to one hour. The result shows that forecasting accuracy was effectively improved by the proposed method. The average predication error is within 10\%. In additional, model parameters are very important factors affecting predication precision. Different type wind data need different parameters.},
-  File                     = {Liangyou08windFrcstRecurNeural.pdf:Liangyou08windFrcstRecurNeural.pdf:PDF;Liangyou08windFrcstRecurNeural.pdf:Liangyou08windFrcstRecurNeural.pdf:PDF},
-  Owner                    = {sotterson},
-  Review                   = {Delay embedding, neural nets for wind power forecastng - they warp wind speed with shifted sigmoid that fits between (0,1) -- but they are predicting speed, not power - then they calc a 1\textsuperscript{st} order difference of this, say this is necessary - select delay time (dynamical system lag) at 1\textsuperscript{st} zero of mutual information - a mix of linear tapped delay line and pipelined neural net},
-  Timestamp                = {2009.02.12},
-  URL                      = {http://www.ontario-sea.org/Page.asp?PageID=1209&ContentID=1094}
+@InProceedings{Liangyou08windFrcstRecurNeural,
+  author    = {Hong Liangyou and Jiang Dongxiang and Huang Qian and Ding Yongshan},
+  title     = {Wind Speed Forecasting Using Fully Recurrent Neural Network in Wind Power Plants},
+  booktitle = {World Wind Energy Conference},
+  year      = {2008},
+  abstract  = {Wind speed forecasting is very important to the operation of wind power plants and power systems. Because of its nonlinearity and non-stationary, wind forecasting is a severe task. This paper deals with the problem of short-term wind speed forecasting based on historical time-serial meteorological data. A kind of recurrent neural network called PRNN (pipelined recurrent neural network) is adopted here to make prediction. It is a NARMAX ANN model (nonlinear auto regressive moving average artificial neural network with external inputs). First, the raw wind speed data is processed to be steady using logarithm difference method. Then, the phase space reconstruction method of chaotic theory is adopted to determine embedded dimension and time delay. Third, based on the selected embedded dimension and time delay, we develop a PRNN+TDL (tapped-delay-line filter) ANN model. Several on-line learning and optimal algorithms are used to train network. Finally, the ANN predicted result is amended based on the statistic characteristic of wind speed. The model is tested at a wind power plant over one year period. The raw data interval is 1 minutes. And predication term is about five minutes to one hour. The result shows that forecasting accuracy was effectively improved by the proposed method. The average predication error is within 10\%. In additional, model parameters are very important factors affecting predication precision. Different type wind data need different parameters.},
+  file      = {Liangyou08windFrcstRecurNeural.pdf:Liangyou08windFrcstRecurNeural.pdf:PDF},
+  owner     = {sotterson},
+  review    = {Delay embedding, neural nets for wind power forecastng - they warp wind speed with shifted sigmoid that fits between (0,1) -- but they are predicting speed, not power - then they calc a 1\textsuperscript{st} order difference of this, say this is necessary - select delay time (dynamical system lag) at 1\textsuperscript{st} zero of mutual information - a mix of linear tapped delay line and pipelined neural net},
+  timestamp = {2009.02.12},
+  url       = {http://www.ontario-sea.org/Page.asp?PageID=1209&ContentID=1094},
 }
 
 @InProceedings{Khodayar15RobustDeepNNwindSpdPred,

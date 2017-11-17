@@ -1,4 +1,4 @@
-#+OPTIONS: H:0
+atent#+OPTIONS: H:0
 * SciCoffeeTalkWithSS
 *** Topics/outline
 ***** Persuasion: Adapt or DIE
@@ -901,6 +901,21 @@
 ********* [[file:energy.bib::Lai08Extensionsfirstand][Lai & Crassidis 2008: Extensions]] 2nd order journal paper
 ********* Matlab PMAD library and blog post: [[file:energy.bib::Shampine07AccNumerDiffMatlab][Shampine 2007: Accurate MATLAB]] CSD
 ********* Other related matlab (not free): [[http://matlabad.com/][matlabAD library]]
+***** <<Linear Regression in Matlab>>
+******* just matlab backslash
+******* features: past power, differential (so can get ramps)
+********* skip wind since known to be really nonlinear
+********* TODO does diff really help?
+
+***** Bayesian linear regression??
+******* compare w/ [[Adaptive Linear NN in Matlab]] (if can update sequentially)
+******* a Bayesian refresher
+******* maybe useful for gaussian process forecasting (later) and other stuff
+******* [[file:energy.bib::Minka01BayesLinRegress][Minka 2001: Bayesian Linear Regression]]
+******* [[file:energy.bib::Selen08layLinRgrOrder][Selen & Larsson 2008: Empirical Bayes linear]]
+******* hetero linear rgrssn: [[file:energy.bib::Leslie07genHeteroLinRegr][Leslie et al. 2007: general approach to]] (w/ feature selection, model averaging)
+******* Related to Gaussian Processes: [[file:energy.bib::Williams97predictLin2GaussProc][Williams 1998: Prediction with Gaussian processes]]
+
 ***** Matlab NN toolbox
 ******* excellent [[http://www.phonetik.uni-muenchen.de/~reichelu/kurse/machine_learning/matlab_nn_toolbox.txt][Uwe Reichel's notes]]
 ******* different v.s application
@@ -992,13 +1007,8 @@
 ******* postreg() finds best line fit between targets and actual outputs
 ********* is this better than just rmsE?
           * Experiments
-******* <<Linear Regression in Matlab>>
-********* just matlab backslash
-********* features: past power, differential (so can get ramps)
-*********** skip wind since known to be really nonlinear
-*********** TODO does diff really help?
 ******* Single linear network
-********* sanity check against linear regression
+********* sanity check against [[Linear Regression in Matlab]]
 ********* can try simple LMS adaptation
 ********* [[http://www.mathworks.com/access/helpdesk/help/toolbox/nnet/index.html%3F/access/helpdesk/help/toolbox/nnet/newlin.html&http://www.mathworks.com/cgi-bin/texis/webinator/search/%3Fdb%3DMSS&prox%3Dpage&rorder%3D750&rprox%3D750&rdfreq%3D500&rwfreq%3D500&rlead%3D250&sufs%3D0&order%3Dr&is_summary_on%3D1&ResultCount%3D10&query%3Dnewlin&submitButtonName%3DSearch][often used]] for sig proc and prediciton adaptive filters
 ********* Matlab
@@ -1067,7 +1077,7 @@
 ********* simulate power clipping w/ nonlinear output layer?
 *********** [[http://www.mathworks.com/access/helpdesk/help/toolbox/nnet/index.html%3F/access/helpdesk/help/toolbox/nnet/logsig.html&http://www.mathworks.com/cgi-bin/texis/webinator/search/%3Fdb%3DMSS&prox%3Dpage&rorder%3D750&rprox%3D750&rdfreq%3D500&rwfreq%3D500&rlead%3D250&sufs%3D0&order%3Dr&is_summary_on%3D1&ResultCount%3D10&query%3Dlogsig&submitButtonName%3DSearch][logsig]] or [[http://www.mathworks.com/access/helpdesk/help/toolbox/nnet/tansig.html][tansig]] output layers
 *********** both are kinda linear in the middle, could work w/ correct [[http://www.mathworks.com/access/helpdesk/help/toolbox/nnet/minmax.html][minmax]] map
-******* Adaptive Linear
+******* <<Adaptive Linear NN in Matlab>>
 ********* Matlab
 *********** just call [[http://www.mathworks.com/access/helpdesk/help/toolbox/nnet/adapt.html][adapt()]], on [[http://www.mathworks.com/access/helpdesk/help/toolbox/nnet/index.html%3F/access/helpdesk/help/toolbox/nnet/newlind.html&http://www.mathworks.com/cgi-bin/texis/webinator/search/%3Fdb%3DMSS&prox%3Dpage&rorder%3D750&rprox%3D750&rdfreq%3D500&rwfreq%3D500&rlead%3D250&sufs%3D0&order%3Dr&is_summary_on%3D1&ResultCount%3D10&query%3Dnewlind&submitButtonName%3DSearch][newlind()]], I think
 *********** Networks w/ memory require [[http://www.mathworks.com/access/helpdesk/help/toolbox/nnet/index.html%3F/access/helpdesk/help/toolbox/nnet/newlind.html&http://www.mathworks.com/cgi-bin/texis/webinator/search/%3Fdb%3DMSS&prox%3Dpage&rorder%3D750&rprox%3D750&rdfreq%3D500&rwfreq%3D500&rlead%3D250&sufs%3D0&order%3Dr&is_summary_on%3D1&ResultCount%3D10&query%3Dnewlind&submitButtonName%3DSearch][sequence data structures]] -- cell arrays of data
@@ -1085,14 +1095,6 @@
 *********** [[http://matlab.izmiran.ru/help/toolbox/nnet/revert.html][revert()]] might be handy for restarting at segment boundaries
 *********** [[http://www.kxcad.net/cae_MATLAB/toolbox/nnet/adapti12.html][prediction example]] (TDL-->linear) and another [[http://www.mathworks.com/access/helpdesk/help/toolbox/nnet/index.html%3F/access/helpdesk/help/toolbox/nnet/revert.html&http://www.mathworks.com/access/helpdesk/help/toolbox/nnet/adapt.html][prediction example]]
 *********** [[http://www.kxcad.net/cae_MATLAB/toolbox/nnet/adapti14.html][mulitple neuron example]] (joint prediction of all turbine powers?)
-******* Bayesian linear regression??
-********* compare w/ NN adaptive linear regression (if can update sequentially)
-********* a Bayesian refresher
-********* maybe useful for gaussian process forecasting (later) and other stuff
-********* [[file:energy.bib::Minka01BayesLinRegress][Minka 2001: Bayesian Linear Regression]]
-********* [[file:energy.bib::Selen08layLinRgrOrder][Selen & Larsson 2008: Empirical Bayes linear]]
-********* hetero linear rgrssn: [[file:energy.bib::Leslie07genHeteroLinRegr][Leslie et al. 2007: general approach to]] (w/ feature selection, model averaging)
-********* Related to Gaussian Processes: [[file:energy.bib::Williams97predictLin2GaussProc][Williams 1998: Prediction with Gaussian processes]]
 ******* Adaptive non-linear (feedforward)
         (matlab calls these "dynamic" even though they are only feedforward)
 ********* 3 layer MLP w/ time delays at input layer
@@ -2321,7 +2323,8 @@ Scott
 ******* [[cite:Tondel11locLinClustPLS][Toendel et al. 2011: Hierarchical Cluster Partial Least Squares]]
 ******* [[cite:Allen13regPLSnmr][Allen et al. 2013: Regularized PLSR NMR]]
 ******* PLSR doesn't preserve full predictive info
-        [[cite:Li09predInfSuffDimRed][Li 2009: Exploiting preictor domain info in sufficient dim red]]
+        [[cite:Li09predInfSuffDimRed][Li 2009: Exploiting predictor domain info in sufficient dim red]]
+        See also: [[Sufficient Dimension Reduction]]
 ******* <<PLSR for Graph Learning>>
         PLSR not good for graph learning
 ********* [[cite:Kramer09gaussGraphModelsLasso][Kraemer et al. 2009: Regularized Gaussian Graph LASSO]]
@@ -5335,431 +5338,683 @@ sera
 *** [[file:energy.bib::Clifton13machLrnPowCurvTurbShear][Clifton et al. 2013: Using]] mach lrn pow curve: turb & shear & dec. tree
 
 *** [[cite:SaintDrenan17probRgnlPVfrcst][Saint-Drenan et al. 2017 prob PV frcst]] 
-* <<Quantile Regression>>
-*** [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006]] QR compared
-*** [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]] QR (spline)
-*** [[file:energy.bib::Moller08adaptQuantRegr][Moeller et al. 2008: Time]] (DTU guy)
-***** more detailed tech note also included in this ref
-*** [[file:d:/Users/sotterson/Dropbox/DTU/doc/energy.bib::Jonsson13elecPriceQR][Jonsson et al.: Predictive]] (another adaptive spline or same as moeller?)
-*** [[file:energy.bib::Baier11mqrnn][Baier 2011: MQRNN Umsetzung Java]] (Andre's approach)
-*** [[file:d:/Users/sotterson/Dropbox/DTU/doc/energy.bib::Horowitz05nonParQRadd][Horowitz & Lee 2005: Nonparametric Estimation Additive]] (QR w/ additive splines, in R)
-*** [[file:d:/Users/sotterson/Dropbox/DTU/doc/energy.bib::Kim06quantRgrsnShapeConstr][Kim 2006: Quantile Regression With]] multivariate quantile regression, constrained splines
-*** [[file:energy.bib::Marzban08quantRgrsn][Marzban 2008: Quantile Regression]] friendly overview
-*** [[file:energy.bib::Mendes11statWindFrcst][Mendes et al. 2011: Development Testing Improved]] QR comparison for wind
-*** [[file:energy.bib::Meinshausen06qrForests][Meinshausen 2006: Quantile Regression Forests]]
-*** [[file:energy.bib::Bacher12solarIntegPhd][Bacher 2012: Models]] solar integration
-*** [[file:energy.bib::Madsen08toolsWindIntegrate][Madsen et al. 2008: Tools Integrating Large]] (sketch of ENFOR's first QR forecasting system)
-*** [[file:energy.bib::Kuan11quantRgrsnIntro][Kuan 2011: Introduction Quantile Regression]] (course notes w/ hints for feature selection)
-*** [[BARS: Bayesian adaptive spline]] for periodic spline
-*** The [[http://support.sas.com/documentation/cdl/en/statug/63962/HTML/default/viewer.htm#statug_qreg_sect016.htm][QUANTREG Procedure]]
-
-    QR can have different or the same dependences between the inputs and
-    the output quantiles.  So can have a more complex, switching model or
-    a sparse one.
-
-    From their manual:
-
-      In quantile regression analysis, you might be interested in testing
-      whether a covariate effect is statistically signficant for a given
-      quantile. In other situations, you might be interested in testing
-      whether the coeficients of a covariate are the same across a set of
-      quantiles. You can use the TEST Statement to perform these tests.
-
-*** [[file:energy.bib::Yao10simplexQRfeatSel][Yao 2010: Simplex Techniques Quantile]] (slides, possible adapt, featsel)
-*** [[file:energy.bib::Taylor12locRgrsnStrat][Taylor 2012: Strategies]] local models (how to avoid additive models like [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]])
-*** [[file:energy.bib::Reich12spatTempQR][Reich 2012: Spatiotemporal]] QR
-*** [[file:energy.bib::Smith13quantRgrsBSquare][Smith & Reich 2013: BSquare]] : basis function QR: could use for wavelet aggregation idea?)
-*** [[file:energy.bib::Sherwood13wgtQRmiss][Sherwood et al. 2013: Weighted]] QR for missing features
-*** [[file:energy.bib::GalvaoJr11dynPanQR][Galvao 2011: Quantile]] dynamic multivariate time series (with lags)
-*** [[file:energy.bib::Harrell13rmsRpkg][Harrell 2013]] rms R package (quantile regression feature selection)
-*** [[file:energy.bib::Koenker12quantregVig][Koenker 2012: Quantile R]] (R lib overview w/ loc lin QR and much more)
-*** [[file:energy.bib::Koenker11addQRfeatsel][Koenker & others 2011: Additive]] featsel, automatically chosen sparsity penalty
-*** [[file:energy.bib::Koenker05QuantRgrssnBook][Koenker 2005: Quantile]] Regression Book
-*** [[file:energy.bib::Koenker94QuantSmthSplns][Koenker et al. 1994: Quantile]] smth splns
-*** [[file:energy.bib::Eilers15twentyYrsPspline][Eilers et al. 2015: Twenty P]]psline years: mono, QR, ...
-*** [[file:energy.bib::Dette08quantRgrsNonCross][Dette & Volgushev 2008: Non]]
-*** [[file:energy.bib::Li08quantRgrsnLasso][Li & Zhu 2008: L1 Norm Quantile Regression]] (Lasso QR)
-*** [[file:energy.bib::Hyndman96estCondDens][Hyndman et al. 1996: Estimating Visualizing Conditional Densities]]: kernel bandwidth picker
-    used in [[file:energy.bib::Mendes11statWindFrcst][Mendes et al. 2011: Development Testing Improved]]
-*** [[file:energy.bib::Jonsson13elecPriceQR][Jonsson et al. 2013: Predictive]]
-*** [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]]: "probablistic persistence" spline based quantile regression
-*** [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: Systematic Integration Large (prob. persist & more)]]
-*** [[file:energy.bib::Marzban08quantRgrsn][Matheny & Goldgof 2008: Quantile Regression]]
-*** [[file:energy.bib::Cannon11quantRgrsnNNprecip][Cannon 2011: Quantile]] NN reqression
-*** [[file:energy.bib::Langford12qrViaClassif][Langford et al. 2012: Predicting]] quantiles via classification
-*** [[file:energy.bib::Quadrianto09kernQRreducRevis][Quadrianto et al. 2009: Kernel Conditional Quantile]] (Gaussian Process, no cross)
-*** [[file:energy.bib::Zheng20121687][Zheng 2012: QBoost]] quantile regression/classif/highdim
-*** [[file:energy.bib::Yu99quantregLocLinKNN][Yu 1999: Smoothing NN]] knn locLin: two step local cdf --> locLin smooth
-*** [[file:energy.bib::Reich12spatTempQR][Reich 2012: Spatiotemporal]] QR
-*** [[file:energy.bib::Bremen07windDetProbModelComb][Bremen 2007: Combination Deterministic Probabilistic]] (multi NWP spread as QR input?)
-*** [[file:energy.bib::Oh11fastSmthQuantreg][Oh et al. 2011: Fast Nonparametric Quantile]] (really fast, has R)
-*** [[file:energy.bib::][Alessandrini et al. 2013: WIRE COST Action]] NW + copulas wins again
-*** [[file:energy.bib::Methaprayoon05neuralWindFrcstUncert][Methaprayoon et al. 2005: integration of ANN]]: prob ANN wind frcst
-*** [[file:energy.bib::Nissen12analogEnsPowFrcst][Nissen et al. 2012: Analog Ensemble]] determ. KNN regrsn windpower frcst.
-*** [[file:energy.bib::Gerlach11bayesTimVarQR][Gerlach et al. 2011: Bayesian Value Risk]]: skewed Laplace dist optimizes check func, allows MCMC
-
-*** [[file:energy.bib::Tokdar11simulLinQR][Tokdar & Kadane 2011: Simultaneous]] Bayesian QR across all taus, no crossover?
-*** [[file:energy.bib::Koenker10bayesBanoQR][Koenker 2010: Bayes In Bano]] complaints about Bayesian QR crossover-avoidance algs.
-*** [[file:energy.bib::Hunter00qrMMalg][Hunter & Lange 2000: Quantile MM]] method, better for nonlinear
-*** [[file:energy.bib::Hunter04mmQRtutorial][Hunter & Lange 2004: MM]] tutorial
-*** [[file:energy.bib::Sohn08svmQR][Sohn et al. 2008: Support]] SVM QR, very high dim
-*** [[file:energy.bib::Schnabel13quantSheets][Schnabel & Eilers 2013: Simultaneous]] quantile sheets
-*** [[file:energy.bib::Portnoy97gaussLapQRspeedup][Portnoy et al. 1997: Gaussian Laplacian]] Hare preproc speedup
-*** [[file:energy.bib::Christmann14lrnRateSVMaddQR][Christmann & Zhou 2014: Learning]] SVM QR add: SVM RBF QR models exist but slower than additive
-*** [[file:energy.bib::Villani12GenSmthFinMix][Villani et al. 2012: Generalized]] smooth mixtures
-*** [[file:energy.bib::Gallego11spdDirWindPowDyn][Gallego et al. 2011: Influence]] spd/dir on variability
-*** [[file:energy.bib::Pinson12vShrtWndPowLogitNorm][Pinson 2012: Very]] short term prob frcst logit-normal
-*** [[file:energy.bib::Calderon10psplineDerivSDE][Calderon et al. 2010: P]]-spline using derivatives (could be used for SDE's)
-*** [[file:energy.bib::Lamarche10MultiQRlambda][Lamarche 2010: Robust]] panel QR sparse
-*** [[file:energy.bib::Yoshida13asympPenSplnQR][Yoshida 2013: Asymptotics]] for penalized spline QR
-*** [[file:energy.bib::Reiss12smthPenSplnQR][Reiss & Huang 2012: Smoothness]] pen spln QR: picking smoothness
-*** [[file:energy.bib::Pratesi09mQRpenSpln][Pratesi et al. 2009: Nonparametric M]] quantile spline penalty (for QR too)
-*** [[file:energy.bib::Mauch13windPowFrcstLogitNorm][Mauch et al. 2013]] logit norm quantile wind power
-*** TODO [[file:energy.bib::Fenske11idRiskBoostAddQR][Fenske et al. 2011: Identifying]] risk boost QR
-*** [[file:energy.bib::Shenoy15stochOptLdFrcstRgrssn][Shenoy et al. 2015: Non Parametric Regression]] QR for day ahead Mkt. opt.
-*** [[file:energy.bib::Jonathan14nonStatCondXtrmPenSpln][Jonathan et al. 2014: Non North Sea]] 3D tensor pen. bspline extrm quantile
-*** [[file:energy.bib::Pinson07nonParamProbFrcsEval][Pinson et al. 2007: Non]] param prob frcst eval tails
-*** [[file:energy.bib::Sun15lassoSpatTempQR][Sun et al. 2015: Fused Adaptive Lasso]] spatio temporal quantile
-*** [[file:energy.bib::Shenoy15stochOptLdFrcstRgrssn][Shenoy et al. 2015: Non Parametric Regression]] stoch opt: Boyd's paper on quant rgrssn, quad (convex) prog. & stoch. opt
-*** [[file:energy.bib::Cook10distFromQuant][Cook 2010: Determining]] distributions from quantiles
-*** [[cite:Zhang16detProbIntrvVari][Zhang et al. 2016: Deterministic]] interval, variational. Uses ELM
-*** [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]
-*** <<Autoregressive Quantile Regression>>
-
-    Lots of algorithms, maybe good for Henry Martin's limit order book models
-***** [[cite:Chen09copulaARQR][Chen et al. 2009: Copula]] AR QR
-*** TODO <<Quantile Mixtures>>
-***** TODO [[file:energy.bib::Geweke07smoothMixRegress][Geweke & Keane 2007: Smoothly]] quantile mixture (conditional switching)
-***** [[file:energy.bib::Villani12GenSmthFinMix][Villani et al. 2012: Generalized]] smooth mixtures
-***** [[file:energy.bib::Karvanen06quanMixLmomTrim][Karvanen 2006: Estimation L1 mixtures]]
-***** See [[Mixtures of regressors]]
-*** Partial derivatives for Jacobian based optimization (as in QR)
-***** simple algorithm: [[Complex Step Derivative (CSD) Approximation]]
-***** iprq and mmqr want Jacobians (code from  [[file:energy.bib::Hunter00qrMMalg][Hunter & Lange 2000: Quantile MM]])
-***** ipqr.m: [[file:energy.bib::Koenker96intPtQR][Koenker & Park 1996]] interior point
-***** mmqr.m: [[file:energy.bib::Hunter00qrMMalg][Hunter & Lange 2000: Quantile MM]] method
-*** <<Dimension Reduction for Quantile Regression>>
-***** <<Partial Quantile Regression>>
-******* [[file:energy.bib::Dodge09partialQR][Dodge & Whittaker 2009: Partial]] (PLS for QR?)
-******* [[file:energy.bib::Giglio13riskPartialQR][Giglio et al. 2013: Systemic]] (kinda PLS for QR, but really?)
-******* [[cite:Kelly12threePssRgrssn][Kelly & Pruitt 2012 3 pass forecast many predictors]]
-******* [[file:energy.bib::Angrist06Quantileregressionunder][Angrist et al. 2006: Quantile US]]  partial quantile regression
-******* see also: [[Partial Least Squares Regression]]
-***** [[file:energy.bib::Cai12quantRgrsnSemiParamVC][Cai & Xiao 2012: Semiparametric]] semiparam VC
-***** [[file:energy.bib::Horowitz05nonParQRadd][Horowitz & Lee 2005: Nonparametric Estimation Additive]]
-*** Feature Selection for Quantile Regression
-    <<Feature Selection for Quantile Regression>>
-***** [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]] QR for wind pow (hand wavy, ad hoc feature sel)
-***** [[file:energy.bib::Li08quantRgrsnLasso][Li & Zhu 2008: L1 Norm Quantile Regression]]
+* <<Conditional Density Estimation>>
+*** <<Quantile Regression>>
+***** [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006]] QR compared
+***** [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]] QR (spline)
+***** [[file:energy.bib::Moller08adaptQuantRegr][Moeller et al. 2008: Time]] (DTU guy)
+******* more detailed tech note also included in this ref
+***** [[file:d:/Users/sotterson/Dropbox/DTU/doc/energy.bib::Jonsson13elecPriceQR][Jonsson et al.: Predictive]] (another adaptive spline or same as moeller?)
+***** [[file:energy.bib::Baier11mqrnn][Baier 2011: MQRNN Umsetzung Java]] (Andre's approach)
+***** [[file:d:/Users/sotterson/Dropbox/DTU/doc/energy.bib::Horowitz05nonParQRadd][Horowitz & Lee 2005: Nonparametric Estimation Additive]] (QR w/ additive splines, in R)
+***** [[file:d:/Users/sotterson/Dropbox/DTU/doc/energy.bib::Kim06quantRgrsnShapeConstr][Kim 2006: Quantile Regression With]] multivariate quantile regression, constrained splines
+***** [[file:energy.bib::Marzban08quantRgrsn][Marzban 2008: Quantile Regression]] friendly overview
+***** [[file:energy.bib::Mendes11statWindFrcst][Mendes et al. 2011: Development Testing Improved]] QR comparison for wind
+***** [[file:energy.bib::Meinshausen06qrForests][Meinshausen 2006: Quantile Regression Forests]]
+***** [[file:energy.bib::Bacher12solarIntegPhd][Bacher 2012: Models]] solar integration
+***** [[file:energy.bib::Madsen08toolsWindIntegrate][Madsen et al. 2008: Tools Integrating Large]] (sketch of ENFOR's first QR forecasting system)
 ***** [[file:energy.bib::Kuan11quantRgrsnIntro][Kuan 2011: Introduction Quantile Regression]] (course notes w/ hints for feature selection)
-***** [[file:energy.bib::Belloni11sparseQRl1][Belloni et al. 2011]] L1-penalized QR
-***** [[file:energy.bib::Hirose12NNRMLknnLocLin][Hirose et al. 2012: NNRMLR]] KNN MLR weight (not MLR xform)
-***** [[file:energy.bib::Zheng13sparseQR][Zheng et al. 2013: Adaptive]]
-***** [[file:energy.bib::Harrell13rmsRpkg][Harrell 2013]] rms R package (quantile regression feature selection)
-***** [[file:energy.bib::Koenker11addQRfeatsel][Koenker & others 2011: Additive]] autopenalty for L-1 norm additive QR
+***** [[BARS: Bayesian adaptive spline]] for periodic spline
+***** The [[http://support.sas.com/documentation/cdl/en/statug/63962/HTML/default/viewer.htm#statug_qreg_sect016.htm][QUANTREG Procedure]]
+
+      QR can have different or the same dependences between the inputs and
+      the output quantiles.  So can have a more complex, switching model or
+      a sparse one.
+
+      From their manual:
+
+        In quantile regression analysis, you might be interested in testing
+        whether a covariate effect is statistically signficant for a given
+        quantile. In other situations, you might be interested in testing
+        whether the coeficients of a covariate are the same across a set of
+        quantiles. You can use the TEST Statement to perform these tests.
+
 ***** [[file:energy.bib::Yao10simplexQRfeatSel][Yao 2010: Simplex Techniques Quantile]] (slides, possible adapt, featsel)
-***** [[file:energy.bib::Wu09featSelQR][Wu & Liu 2009: Variable]] sel for QR
-***** [[file:energy.bib::Fenske11idRiskBoostAddQR][Fenske et al. 2011: Identifying]] risk boost QR
-***** Chi-square quantile binary test
-******* [[file:energy.bib::Bremnes04windLocQR][Bremnes 2004: Probabilistic]] loc lin QR test
-******* [[file:energy.bib::Bremnes04precipQuantsVerif][Bjoernar 2004: Probabilistic NWP]] precip verif
-******* [[file:energy.bib::Bremnes04quantFrcstVerif][Bremnes 2004: Methods]] for prob verif
-***** See also: [[Feature selection for probabilistic forecasts]]
-*** Adaptive Quantile Regression
-    <<Adaptive Quantile Regression>>
-***** [[file:energy.bib::Taylor07frcstSprMktPriceQR][Taylor 2007: Forecasting]] sprMkt price exponential weighting
-***** [[file:energy.bib::Moller08adaptQuantRegr][Moeller et al. 2008: Time]] (DTU guy) (2006 tech note in that bibtex entrance is better than paper?)
-***** [[file:energy.bib::Jonsson13elecPriceQR][Jonsson et al. 2013: Predictive]]
-***** [[file:energy.bib::Botterud11windPowFrcstOpUse][Botterud et al. 2011: Use Wind Power]] Argonne study
-***** [[file:energy.bib::Gerlach11bayesTimVarQR][Gerlach et al. 2011: Bayesian Value Risk]]: adaptive Bayesian due to skewed Laplace dist
-***** [[file:energy.bib::Yao10simplexQRfeatSel][Yao 2010: Simplex Techniques Quantile]] (slides, possible adapt, featsel)
-***** [[file:energy.bib::Pardoe10BoostRgrsnXfer][Pardoe & Stone 2010: Boosting]] transfer or [[file:energy.bib::Pan10xferLrnSurvey][Pan & Yang 2010: Survey Transfer Learning]]
-***** [[file:energy.bib::Kou13sprsOnlineWrpGausProc][Kou et al. 2013: Sparse Gaussian]]
-***** Any approach that uses local linear methods can adapt c.f. [[file:energy.bib::Garcia10cmpltLazyLrn][Garcia et al. 2010: Completely Lazy Learning]]
-***** see also: [[Adaptive Training / Updating]]
-***** [[file:energy.bib::Calderon10psplineDerivSDE][Calderon et al. 2010: P]]-spline: LSQ but spline & easy to make adaptive
-***** [[file:energy.bib::Pinson07nonParamProbFrcsEval][Pinson et al. 2007: Non]] param prob frcst eval tails
-***** TODO [[Concept Drift Detection]]
-*** Quantile Crossover
-    <<Quantile Crossover>>
-***** how to avoid linear and spline QR crossover: [[file:energy.bib::Dette08quantRgrsNonCross][Dette & Volgushev 2008: Non]]
-***** TODO [[file:energy.bib::Shenoy15stochOptLdFrcstRgrssn][Shenoy et al. 2015: Non Parametric Regression]] stoch opt: Boyd's paper on quant rgrssn, quad (convex) prog. & stoch. opt
-***** TODO [[file:energy.bib::Schmidt13noCrossQRspacing][Schmidt 2013: Quantile]] spacing construction (worth reading)
-***** TODO sorting method used on R quantreg package: [[file:energy.bib::Chernozhukov10qrNoCross][Chernozhukov et al. 2010: Quantile Probability Curves Without Crossing]]
-***** [[file:energy.bib::Quadrianto09kernQRreducRevis][Quadrianto et al. 2009: Kernel Conditional Quantile]] (Gaussian Process no cross)
-***** [[file:energy.bib::Tokdar11simulLinQR][Tokdar & Kadane 2011: Simultaneous]] Bayesian QR across all taus, no crossover, I think
-***** [[file:energy.bib::Koenker10bayesBanoQR][Koenker 2010: Bayes In Bano]] complaints about Bayesian QR crossover-avoidance algs.
-***** [[file:energy.bib::LopezLopez14altConfigQRnoCross][Lopez et al. 2014: Alternative Severn River]]: 4 non-cross algs compared, some post-process
-***** [[file:energy.bib::Bondell10nonCrossQR][Bondell et al. 2010: Noncrossing]]: noncrossing QR optimization
-***** [[file:energy.bib::Dette06nonParamMonoRgrssn][Dette et al. 2006]] nonparam mono rgrssn: rearrangement method that can uncross
-***** [[file:energy.bib::Dette08quantRgrsNonCross][Dette & Volgushev 2008: Non]] crossing quantile curves
-***** [[file:energy.bib::Keelin11QuantParamDist][Keelin & Powley 2011: Quantile]] param dist
-***** [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]] (deep meth. for quantiles or DR thresh probs?)
-***** see also: [[Learning montonicity]] (for smoothing out quantile crossover)
-***** see also: [[Distributions from quantile forecasts]]
-*** Quantile regression and ABC
-    <<Quantile regression and ABC>>
-    Improve QR high dim probs w/ ABC?
-***** [[http://en.wikipedia.org/wiki/Approximate_Bayesian_computation][Approximate Bayesian Computation]] (ABC)
-
-      - General monte-carlo-type way of doing any Bayesian thing, I think
-      - But more efficient than plain monte carlo:
-         - instead of the usual distribution estimation, works on summary
-           statistics, like mean, variance
-         - and maybe quantiles?
-         - paper below (R package) has trick to make it more efficient
-      - good for high dimensions
-      - could use this for spinning reserve optimization, also, mabye
-      - optimal bidding (given forecast distribution)
-      - better/adaptive forecasting? (see [[Adaptive Training / Updating]])
-
-      - *R package* has non-linear correction making ABC much more efficient
-        [[file:energy.bib::Blum10nonlinApproxBayesComp][Blum & Francois 2010: Non Approximate Bayesian Computation]]
-
-********* [[file:energy.bib::Liu09crvRegisClustFunc][Liu & Yang 2009: Simultaneous]]  (curv reg. and func dat clustering)
-
-*** Local linear quantile regression
-    <<Local linear quantile regression>>
-***** [[file:energy.bib::Bremnes04windLocQR][Bremnes 2004: Probabilistic]] loc lin QR
-***** [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006]]: quantile forecasts compared
-***** [[file:energy.bib::Koenker12quantregVig][Koenker 2012: Quantile R]] (R lib overview w/ loc lin QR and much more)
-***** [[Quantile regression and ABC]] for High dims
-***** [[file:energy.bib::Biau11seqQuantRgrsnTS][Biau & Patra 2011: Sequential Quantile Prediction Time Series]] (related?)
-***** [[file:energy.bib::Yu99quantregLocLinKNN][Yu 1999: Smoothing NN]] knn quantreg locLin: two step local cdf --> locLin smooth
-******* see also: [[KNN neighborhood functions for local linear regression]]
-***** [[file:energy.bib::FerrariTrecate02pcsWiseLR][Ferrari-Trecate & Muselli 2002: New Learning Method]] (related point rgrsn method)
+***** [[file:energy.bib::Taylor12locRgrsnStrat][Taylor 2012: Strategies]] local models (how to avoid additive models like [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]])
+***** [[file:energy.bib::Reich12spatTempQR][Reich 2012: Spatiotemporal]] QR
+***** [[file:energy.bib::Smith13quantRgrsBSquare][Smith & Reich 2013: BSquare]] : basis function QR: could use for wavelet aggregation idea?)
 ***** [[file:energy.bib::Sherwood13wgtQRmiss][Sherwood et al. 2013: Weighted]] QR for missing features
-***** [[file:energy.bib::Taylor13dimCurseLocRgrsn][Taylor & Einbeck 2013: Challenging]] curse of dim
-***** see also: [[Local Linear Regression]]
-***** see also: [[KNN neighborhood functions for local linear regression]]
-***** see also: [[Curse of Dimensionality and Local Linear Regression]]
-*** Boosted Quantile Regression
-    <<Boosted Quantile Regression>>
-***** [[file:energy.bib::Fenske11idRiskBoostAddQR][Fenske et al. 2011: Identifying]] risk boost QR
-***** [[file:energy.bib::Fenske12strctAddQRthesis][Fenske 2012: Structured]] QR and boosting (PhD thesis)
-***** [[file:energy.bib::Biau11seqQuantRgrsnTS][Biau & Patra 2011: Sequential Quantile Prediction Time Series]] (starts w/ a collection of QR's, like adaboost)
-***** [[file:energy.bib::Hofner12mboostR][Hofner et al. 2012: Model R]]  boosted QR with splines, I think
-***** [[file:energy.bib::Meinshausen06qrForests][Meinshausen 2006: Quantile Regression Forests]] (weight trees to get quantiles)
-***** [[file:energy.bib::Bhat11quantRgrsnTrees][Bhat et al. 2011: Quantile Regression Trees]]
-***** [[file:energy.bib::Zheng12qboost][Zheng 2012: QBoost]] (a way to predict max quantile in high dim?)
-***** [[file:energy.bib::Mayr12Generalizedadditivemodels][Mayr et al. 2012: Generalized]] quantile regression: gamboostLSS R pkg
-***** [[file:energy.bib::Mayr14ExtStatBoost][Mayr et al. 2014: Extending]]
-***** [[file:energy.bib::Hofner14mboostTutorial][Hofner et al. 2014: Model R]] mboost tutorial (used by gamboostLSS for boosting)
-***** [[file:energy.bib::Hothorn14CondTransfMdls][Hothorn et al. 2014: Conditional]] xform: from Goettingen!
-***** [[file:energy.bib::][Taieb & Hyndman 2014: Boosting]] multistep (not QR but maybe could be)
-***** Beta regression can be boosted by (I think) [[http://cran.r-project.org/web/packages/gamboostLSS/index.html][gamboostLSS]] R package
-***** [[file:energy.bib::Meinshausen10Stabilityselection][Meinshausen & Buehlmann 2010: Stability]] selection (mentioned in [[file:energy.bib::Fenske11idRiskBoostAddQR][Fenske et al. 2011: Identifying]])
-***** Pinson boosting paper
-***** new Moeller paper
-***** Treed Gaussian processes paper
-***** Random forest quantile regression paper
-***** see also [[Boosted Regression]]
-***** see also [[Continuous Output Boosting]] (more specific)
-***** see also: [[Feature selection for varying coefficient models]]
-*** Multiple output quantile regresson
-    <<Multiple output quantile regresson>>
+***** [[file:energy.bib::GalvaoJr11dynPanQR][Galvao 2011: Quantile]] dynamic multivariate time series (with lags)
+***** [[file:energy.bib::Harrell13rmsRpkg][Harrell 2013]] rms R package (quantile regression feature selection)
+***** [[file:energy.bib::Koenker12quantregVig][Koenker 2012: Quantile R]] (R lib overview w/ loc lin QR and much more)
+***** [[file:energy.bib::Koenker11addQRfeatsel][Koenker & others 2011: Additive]] featsel, automatically chosen sparsity penalty
+***** [[file:energy.bib::Koenker05QuantRgrssnBook][Koenker 2005: Quantile]] Regression Book
+***** [[file:energy.bib::Koenker94QuantSmthSplns][Koenker et al. 1994: Quantile]] smth splns
+***** [[file:energy.bib::Eilers15twentyYrsPspline][Eilers et al. 2015: Twenty P]]psline years: mono, QR, ...
+***** [[file:energy.bib::Dette08quantRgrsNonCross][Dette & Volgushev 2008: Non]]
+***** [[file:energy.bib::Li08quantRgrsnLasso][Li & Zhu 2008: L1 Norm Quantile Regression]] (Lasso QR)
+***** [[file:energy.bib::Hyndman96estCondDens][Hyndman et al. 1996: Estimating Visualizing Conditional Densities]]: kernel bandwidth picker
+      used in [[file:energy.bib::Mendes11statWindFrcst][Mendes et al. 2011: Development Testing Improved]]
+***** [[file:energy.bib::Jonsson13elecPriceQR][Jonsson et al. 2013: Predictive]]
+***** [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]]: "probablistic persistence" spline based quantile regression
+***** [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: Systematic Integration Large (prob. persist & more)]]
+***** [[file:energy.bib::Marzban08quantRgrsn][Matheny & Goldgof 2008: Quantile Regression]]
+***** [[file:energy.bib::Cannon11quantRgrsnNNprecip][Cannon 2011: Quantile]] NN reqression
+***** [[file:energy.bib::Langford12qrViaClassif][Langford et al. 2012: Predicting]] quantiles via classification
+***** [[file:energy.bib::Quadrianto09kernQRreducRevis][Quadrianto et al. 2009: Kernel Conditional Quantile]] (Gaussian Process, no cross)
+***** [[file:energy.bib::Zheng20121687][Zheng 2012: QBoost]] quantile regression/classif/highdim
+***** [[file:energy.bib::Yu99quantregLocLinKNN][Yu 1999: Smoothing NN]] knn locLin: two step local cdf --> locLin smooth
+***** [[file:energy.bib::Reich12spatTempQR][Reich 2012: Spatiotemporal]] QR
+***** [[file:energy.bib::Bremen07windDetProbModelComb][Bremen 2007: Combination Deterministic Probabilistic]] (multi NWP spread as QR input?)
+***** [[file:energy.bib::Oh11fastSmthQuantreg][Oh et al. 2011: Fast Nonparametric Quantile]] (really fast, has R)
+***** [[file:energy.bib::][Alessandrini et al. 2013: WIRE COST Action]] NW + copulas wins again
+***** [[file:energy.bib::Methaprayoon05neuralWindFrcstUncert][Methaprayoon et al. 2005: integration of ANN]]: prob ANN wind frcst
+***** [[file:energy.bib::Nissen12analogEnsPowFrcst][Nissen et al. 2012: Analog Ensemble]] determ. KNN regrsn windpower frcst.
+***** [[file:energy.bib::Gerlach11bayesTimVarQR][Gerlach et al. 2011: Bayesian Value Risk]]: skewed Laplace dist optimizes check func, allows MCMC
 
-    Good for:
-     - multiple horizon quantiles e.g. for markets?
-     - scenarios (given input, sample the quantile dist to get scenario)
-     - joint solar/wind?
-     - wind speed AND dir? Or U and V
-     - outlier detection
-
-***** [[http://homepages.ulb.ac.be/~dpaindav/research/code.html][multiple-output regression quantile regions]] (has Matlab)
-***** [[http://www.sciencedirect.com/science/article/pii/S0047259X10001636][On directional multiple-output quantile regression]]
-***** [[http://www.biomedcentral.com/1756-0500/5/236][Outlier Detection using Projection Quantile Regression for Mass Spectrometry Data with Low Replication]]
-*** Point forecasts from quantile forecasts
-***** [[file:energy.bib::Taylor07frcstSprMktPriceQR][Taylor 2007: Forecasting]] Q frcst-->point, expon. wgt., adapt is best, good paper
-
-*** Distributions from quantile forecasts
-    <<Distributions from quantile forecasts>>
+***** [[file:energy.bib::Tokdar11simulLinQR][Tokdar & Kadane 2011: Simultaneous]] Bayesian QR across all taus, no crossover?
+***** [[file:energy.bib::Koenker10bayesBanoQR][Koenker 2010: Bayes In Bano]] complaints about Bayesian QR crossover-avoidance algs.
+***** [[file:energy.bib::Hunter00qrMMalg][Hunter & Lange 2000: Quantile MM]] method, better for nonlinear
+***** [[file:energy.bib::Hunter04mmQRtutorial][Hunter & Lange 2004: MM]] tutorial
+***** [[file:energy.bib::Sohn08svmQR][Sohn et al. 2008: Support]] SVM QR, very high dim
+***** [[file:energy.bib::Schnabel13quantSheets][Schnabel & Eilers 2013: Simultaneous]] quantile sheets
+***** [[file:energy.bib::Portnoy97gaussLapQRspeedup][Portnoy et al. 1997: Gaussian Laplacian]] Hare preproc speedup
+***** [[file:energy.bib::Christmann14lrnRateSVMaddQR][Christmann & Zhou 2014: Learning]] SVM QR add: SVM RBF QR models exist but slower than additive
+***** [[file:energy.bib::Villani12GenSmthFinMix][Villani et al. 2012: Generalized]] smooth mixtures
+***** [[file:energy.bib::Gallego11spdDirWindPowDyn][Gallego et al. 2011: Influence]] spd/dir on variability
+***** [[file:energy.bib::Pinson12vShrtWndPowLogitNorm][Pinson 2012: Very]] short term prob frcst logit-normal
+***** [[file:energy.bib::Calderon10psplineDerivSDE][Calderon et al. 2010: P]]-spline using derivatives (could be used for SDE's)
+***** [[file:energy.bib::Lamarche10MultiQRlambda][Lamarche 2010: Robust]] panel QR sparse
+***** [[file:energy.bib::Yoshida13asympPenSplnQR][Yoshida 2013: Asymptotics]] for penalized spline QR
+***** [[file:energy.bib::Reiss12smthPenSplnQR][Reiss & Huang 2012: Smoothness]] pen spln QR: picking smoothness
+***** [[file:energy.bib::Pratesi09mQRpenSpln][Pratesi et al. 2009: Nonparametric M]] quantile spline penalty (for QR too)
+***** [[file:energy.bib::Mauch13windPowFrcstLogitNorm][Mauch et al. 2013]] logit norm quantile wind power
+***** TODO [[file:energy.bib::Fenske11idRiskBoostAddQR][Fenske et al. 2011: Identifying]] risk boost QR
+***** [[file:energy.bib::Shenoy15stochOptLdFrcstRgrssn][Shenoy et al. 2015: Non Parametric Regression]] QR for day ahead Mkt. opt.
+***** [[file:energy.bib::Jonathan14nonStatCondXtrmPenSpln][Jonathan et al. 2014: Non North Sea]] 3D tensor pen. bspline extrm quantile
+***** [[file:energy.bib::Pinson07nonParamProbFrcsEval][Pinson et al. 2007: Non]] param prob frcst eval tails
+***** [[file:energy.bib::Sun15lassoSpatTempQR][Sun et al. 2015: Fused Adaptive Lasso]] spatio temporal quantile
+***** [[file:energy.bib::Shenoy15stochOptLdFrcstRgrssn][Shenoy et al. 2015: Non Parametric Regression]] stoch opt: Boyd's paper on quant rgrssn, quad (convex) prog. & stoch. opt
 ***** [[file:energy.bib::Cook10distFromQuant][Cook 2010: Determining]] distributions from quantiles
+***** [[cite:Zhang16detProbIntrvVari][Zhang et al. 2016: Deterministic]] interval, variational. Uses ELM
+***** [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]
+***** <<Autoregressive Quantile Regression>>
 
-***** [[file:energy.bib::Keelin11QuantParamDist][Keelin & Powley 2011: Quantile]] param dist
-***** see also: [[Quantile Crossover]]
-*** Matlab code for Quantile regression
+      Lots of algorithms, maybe good for Henry Martin's limit order book models
+******* [[cite:Chen09copulaARQR][Chen et al. 2009: Copula]] AR QR
+***** TODO <<Quantile Mixtures>>
+******* TODO [[file:energy.bib::Geweke07smoothMixRegress][Geweke & Keane 2007: Smoothly]] quantile mixture (conditional switching)
+******* [[file:energy.bib::Villani12GenSmthFinMix][Villani et al. 2012: Generalized]] smooth mixtures
+******* [[file:energy.bib::Karvanen06quanMixLmomTrim][Karvanen 2006: Estimation L1 mixtures]]
+******* See [[Mixtures of regressors]]
+***** Partial derivatives for Jacobian based optimization (as in QR)
+******* simple algorithm: [[Complex Step Derivative (CSD) Approximation]]
+******* iprq and mmqr want Jacobians (code from  [[file:energy.bib::Hunter00qrMMalg][Hunter & Lange 2000: Quantile MM]])
+******* ipqr.m: [[file:energy.bib::Koenker96intPtQR][Koenker & Park 1996]] interior point
+******* mmqr.m: [[file:energy.bib::Hunter00qrMMalg][Hunter & Lange 2000: Quantile MM]] method
+***** <<Dimension Reduction for Quantile Regression>>
+******* <<Partial Quantile Regression>>
+********* [[file:energy.bib::Dodge09partialQR][Dodge & Whittaker 2009: Partial]] (PLS for QR?)
+********* [[file:energy.bib::Giglio13riskPartialQR][Giglio et al. 2013: Systemic]] (kinda PLS for QR, but really?)
+********* [[cite:Kelly12threePssRgrssn][Kelly & Pruitt 2012 3 pass forecast many predictors]]
+********* [[file:energy.bib::Angrist06Quantileregressionunder][Angrist et al. 2006: Quantile US]]  partial quantile regression
+********* see also: [[Partial Least Squares Regression]]
+******* [[file:energy.bib::Cai12quantRgrsnSemiParamVC][Cai & Xiao 2012: Semiparametric]] semiparam VC
+******* [[file:energy.bib::Horowitz05nonParQRadd][Horowitz & Lee 2005: Nonparametric Estimation Additive]]
+***** Feature Selection for Quantile Regression
+      <<Feature Selection for Quantile Regression>>
+******* [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]] QR for wind pow (hand wavy, ad hoc feature sel)
+******* [[file:energy.bib::Li08quantRgrsnLasso][Li & Zhu 2008: L1 Norm Quantile Regression]]
+******* [[file:energy.bib::Kuan11quantRgrsnIntro][Kuan 2011: Introduction Quantile Regression]] (course notes w/ hints for feature selection)
+******* [[file:energy.bib::Belloni11sparseQRl1][Belloni et al. 2011]] L1-penalized QR
+******* [[file:energy.bib::Hirose12NNRMLknnLocLin][Hirose et al. 2012: NNRMLR]] KNN MLR weight (not MLR xform)
+******* [[file:energy.bib::Zheng13sparseQR][Zheng et al. 2013: Adaptive]]
+******* [[file:energy.bib::Harrell13rmsRpkg][Harrell 2013]] rms R package (quantile regression feature selection)
+******* [[file:energy.bib::Koenker11addQRfeatsel][Koenker & others 2011: Additive]] autopenalty for L-1 norm additive QR
+******* [[file:energy.bib::Yao10simplexQRfeatSel][Yao 2010: Simplex Techniques Quantile]] (slides, possible adapt, featsel)
+******* [[file:energy.bib::Wu09featSelQR][Wu & Liu 2009: Variable]] sel for QR
+******* [[file:energy.bib::Fenske11idRiskBoostAddQR][Fenske et al. 2011: Identifying]] risk boost QR
+******* Chi-square quantile binary test
+********* [[file:energy.bib::Bremnes04windLocQR][Bremnes 2004: Probabilistic]] loc lin QR test
+********* [[file:energy.bib::Bremnes04precipQuantsVerif][Bjoernar 2004: Probabilistic NWP]] precip verif
+********* [[file:energy.bib::Bremnes04quantFrcstVerif][Bremnes 2004: Methods]] for prob verif
+******* See also: [[Feature selection for probabilistic forecasts]]
+***** Adaptive Quantile Regression
+      <<Adaptive Quantile Regression>>
+******* [[file:energy.bib::Taylor07frcstSprMktPriceQR][Taylor 2007: Forecasting]] sprMkt price exponential weighting
+******* [[file:energy.bib::Moller08adaptQuantRegr][Moeller et al. 2008: Time]] (DTU guy) (2006 tech note in that bibtex entrance is better than paper?)
+******* [[file:energy.bib::Jonsson13elecPriceQR][Jonsson et al. 2013: Predictive]]
+******* [[file:energy.bib::Botterud11windPowFrcstOpUse][Botterud et al. 2011: Use Wind Power]] Argonne study
+******* [[file:energy.bib::Gerlach11bayesTimVarQR][Gerlach et al. 2011: Bayesian Value Risk]]: adaptive Bayesian due to skewed Laplace dist
+******* [[file:energy.bib::Yao10simplexQRfeatSel][Yao 2010: Simplex Techniques Quantile]] (slides, possible adapt, featsel)
+******* [[file:energy.bib::Pardoe10BoostRgrsnXfer][Pardoe & Stone 2010: Boosting]] transfer or [[file:energy.bib::Pan10xferLrnSurvey][Pan & Yang 2010: Survey Transfer Learning]]
+******* [[file:energy.bib::Kou13sprsOnlineWrpGausProc][Kou et al. 2013: Sparse Gaussian]]
+******* Any approach that uses local linear methods can adapt c.f. [[file:energy.bib::Garcia10cmpltLazyLrn][Garcia et al. 2010: Completely Lazy Learning]]
+******* see also: [[Adaptive Training / Updating]]
+******* [[file:energy.bib::Calderon10psplineDerivSDE][Calderon et al. 2010: P]]-spline: LSQ but spline & easy to make adaptive
+******* [[file:energy.bib::Pinson07nonParamProbFrcsEval][Pinson et al. 2007: Non]] param prob frcst eval tails
+******* TODO [[Concept Drift Detection]]
+***** Quantile Crossover
+      <<Quantile Crossover>>
+******* how to avoid linear and spline QR crossover: [[file:energy.bib::Dette08quantRgrsNonCross][Dette & Volgushev 2008: Non]]
+******* TODO [[file:energy.bib::Shenoy15stochOptLdFrcstRgrssn][Shenoy et al. 2015: Non Parametric Regression]] stoch opt: Boyd's paper on quant rgrssn, quad (convex) prog. & stoch. opt
+******* TODO [[file:energy.bib::Schmidt13noCrossQRspacing][Schmidt 2013: Quantile]] spacing construction (worth reading)
+******* TODO sorting method used on R quantreg package: [[file:energy.bib::Chernozhukov10qrNoCross][Chernozhukov et al. 2010: Quantile Probability Curves Without Crossing]]
+******* [[file:energy.bib::Quadrianto09kernQRreducRevis][Quadrianto et al. 2009: Kernel Conditional Quantile]] (Gaussian Process no cross)
+******* [[file:energy.bib::Tokdar11simulLinQR][Tokdar & Kadane 2011: Simultaneous]] Bayesian QR across all taus, no crossover, I think
+******* [[file:energy.bib::Koenker10bayesBanoQR][Koenker 2010: Bayes In Bano]] complaints about Bayesian QR crossover-avoidance algs.
+******* [[file:energy.bib::LopezLopez14altConfigQRnoCross][Lopez et al. 2014: Alternative Severn River]]: 4 non-cross algs compared, some post-process
+******* [[file:energy.bib::Bondell10nonCrossQR][Bondell et al. 2010: Noncrossing]]: noncrossing QR optimization
+******* [[file:energy.bib::Dette06nonParamMonoRgrssn][Dette et al. 2006]] nonparam mono rgrssn: rearrangement method that can uncross
+******* [[file:energy.bib::Dette08quantRgrsNonCross][Dette & Volgushev 2008: Non]] crossing quantile curves
+******* [[file:energy.bib::Keelin11QuantParamDist][Keelin & Powley 2011: Quantile]] param dist
+******* [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]] (deep meth. for quantiles or DR thresh probs?)
+******* see also: [[Learning montonicity]] (for smoothing out quantile crossover)
+******* see also: [[Distributions from quantile forecasts]]
+***** Quantile regression and ABC
+      <<Quantile regression and ABC>>
+      Improve QR high dim probs w/ ABC?
+******* [[http://en.wikipedia.org/wiki/Approximate_Bayesian_computation][Approximate Bayesian Computation]] (ABC)
 
-    http://www.econ.psu.edu/~suj14/programs/rq.m
-    http://homepages.ulb.ac.be/~dpaindav/research/code.html
-    http://web.missouri.edu/~kaplandm/code/ivqr_see.m
-    http://sites.stat.psu.edu/~dhunter/code/qrmatlab/
-    http://www.mathworks.com/matlabcentral/fileexchange/32115-quantreg-m-quantile-regression
-    [[file:energy.bib::baier11mqrnn][baier 2011: mqrnn umsetzung java]] (andre's approach)
+        - General monte-carlo-type way of doing any Bayesian thing, I think
+        - But more efficient than plain monte carlo:
+           - instead of the usual distribution estimation, works on summary
+             statistics, like mean, variance
+           - and maybe quantiles?
+           - paper below (R package) has trick to make it more efficient
+        - good for high dimensions
+        - could use this for spinning reserve optimization, also, mabye
+        - optimal bidding (given forecast distribution)
+        - better/adaptive forecasting? (see [[Adaptive Training / Updating]])
 
-***** [[file:energy.bib::Koenker96intPtQR][Koenker & Park 1996]] interior pt QR (has matlab)
-***** [[http://www.econ.psu.edu/~suj14/programs/rq.m][rq_fnm.m]] (Frisch-Newton interior point, by [[file:energy.bib::Koenker05ineqConstrQR][Koenker & Ng 2005: Inequality]] constrained Frisch-Newton QR
-********* constraints for roughness, mono, etc.
-***** [[http://www.mathworks.com/matlabcentral/answers/93062-is-there-a-routine-to-perform-quantile-regression-or-lad-least-absolute-deviations-in-matlab][Recommends fminunc()]] in Matlab optimization toolbox, or robustfit() (stats toolbox)
+        - *R package* has non-linear correction making ABC much more efficient
+          [[file:energy.bib::Blum10nonlinApproxBayesComp][Blum & Francois 2010: Non Approximate Bayesian Computation]]
 
-      but fminunc() is unconstrained optimization; you'd want a
-      constrained interior point algorithm, right?
+*********** [[file:energy.bib::Liu09crvRegisClustFunc][Liu & Yang 2009: Simultaneous]]  (curv reg. and func dat clustering)
 
-***** Matlab's [[http://www.mathworks.com/products/optimization/features.html][constrained interior point]] algorithms
-******* [[http://www.mathworks.com/help/optim/ug/constrained-nonlinear-optimization-algorithms.html][introduction]]
-******* [[http://www.mathworks.com/help/optim/ug/fmincon-interior-point-algorithm-with-analytic-hessian.html][fmincon()]]: with or without a Hessian (faster with)
-******* Hessian could come from [[*Complex%20Step%20Derivative%20(CSD)%20Approximation][Complex Step Derivative (CSD) Approximation]]?
-***** [[http://www.mathworks.com/matlabcentral/fileexchange/32115-quantreg-x-y-tau-order-nboot-][quantreg.m]] Matlab Central function.
+***** Local linear quantile regression
+      <<Local linear quantile regression>>
+******* [[file:energy.bib::Bremnes04windLocQR][Bremnes 2004: Probabilistic]] loc lin QR
+******* [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006]]: quantile forecasts compared
+******* [[file:energy.bib::Koenker12quantregVig][Koenker 2012: Quantile R]] (R lib overview w/ loc lin QR and much more)
+******* [[Quantile regression and ABC]] for High dims
+******* [[file:energy.bib::Biau11seqQuantRgrsnTS][Biau & Patra 2011: Sequential Quantile Prediction Time Series]] (related?)
+******* [[file:energy.bib::Yu99quantregLocLinKNN][Yu 1999: Smoothing NN]] knn quantreg locLin: two step local cdf --> locLin smooth
+********* see also: [[KNN neighborhood functions for local linear regression]]
+******* [[file:energy.bib::FerrariTrecate02pcsWiseLR][Ferrari-Trecate & Muselli 2002: New Learning Method]] (related point rgrsn method)
+******* [[file:energy.bib::Sherwood13wgtQRmiss][Sherwood et al. 2013: Weighted]] QR for missing features
+******* [[file:energy.bib::Taylor13dimCurseLocRgrsn][Taylor & Einbeck 2013: Challenging]] curse of dim
+******* see also: [[Local Linear Regression]]
+******* see also: [[KNN neighborhood functions for local linear regression]]
+******* see also: [[Curse of Dimensionality and Local Linear Regression]]
+***** Boosted Quantile Regression
+      <<Boosted Quantile Regression>>
+******* [[file:energy.bib::Fenske11idRiskBoostAddQR][Fenske et al. 2011: Identifying]] risk boost QR
+******* [[file:energy.bib::Fenske12strctAddQRthesis][Fenske 2012: Structured]] QR and boosting (PhD thesis)
+******* [[file:energy.bib::Biau11seqQuantRgrsnTS][Biau & Patra 2011: Sequential Quantile Prediction Time Series]] (starts w/ a collection of QR's, like adaboost)
+******* [[file:energy.bib::Hofner12mboostR][Hofner et al. 2012: Model R]]  boosted QR with splines, I think
+******* [[file:energy.bib::Meinshausen06qrForests][Meinshausen 2006: Quantile Regression Forests]] (weight trees to get quantiles)
+******* [[file:energy.bib::Bhat11quantRgrsnTrees][Bhat et al. 2011: Quantile Regression Trees]]
+******* [[file:energy.bib::Zheng12qboost][Zheng 2012: QBoost]] (a way to predict max quantile in high dim?)
+******* [[file:energy.bib::Mayr12Generalizedadditivemodels][Mayr et al. 2012: Generalized]] quantile regression: gamboostLSS R pkg
+******* [[file:energy.bib::Mayr14ExtStatBoost][Mayr et al. 2014: Extending]]
+******* [[file:energy.bib::Hofner14mboostTutorial][Hofner et al. 2014: Model R]] mboost tutorial (used by gamboostLSS for boosting)
+******* [[file:energy.bib::Hothorn14CondTransfMdls][Hothorn et al. 2014: Conditional]] xform: from Goettingen!
+******* [[file:energy.bib::][Taieb & Hyndman 2014: Boosting]] multistep (not QR but maybe could be)
+******* Beta regression can be boosted by (I think) [[http://cran.r-project.org/web/packages/gamboostLSS/index.html][gamboostLSS]] R package
+******* [[file:energy.bib::Meinshausen10Stabilityselection][Meinshausen & Buehlmann 2010: Stability]] selection (mentioned in [[file:energy.bib::Fenske11idRiskBoostAddQR][Fenske et al. 2011: Identifying]])
+******* Pinson boosting paper
+******* new Moeller paper
+******* Treed Gaussian processes paper
+******* Random forest quantile regression paper
+******* see also [[Boosted Regression]]
+******* see also [[Continuous Output Boosting]] (more specific)
+******* see also: [[Feature selection for varying coefficient models]]
+***** Multiple output quantile regresson
+      <<Multiple output quantile regresson>>
 
-      Does an unconstrained optimization of the quantile loss function.
-      Seems like it would be buggy.
+      Good for:
+       - multiple horizon quantiles e.g. for markets?
+       - scenarios (given input, sample the quantile dist to get scenario)
+       - joint solar/wind?
+       - wind speed AND dir? Or U and V
+       - outlier detection
 
-      Says it requires Optimization and Stats toolboxes, but it only uses
-      fminsearch() which is standard.
+******* [[http://homepages.ulb.ac.be/~dpaindav/research/code.html][multiple-output regression quantile regions]] (has Matlab)
+******* [[http://www.sciencedirect.com/science/article/pii/S0047259X10001636][On directional multiple-output quantile regression]]
+******* [[http://www.biomedcentral.com/1756-0500/5/236][Outlier Detection using Projection Quantile Regression for Mass Spectrometry Data with Low Replication]]
+***** Point forecasts from quantile forecasts
+******* [[file:energy.bib::Taylor07frcstSprMktPriceQR][Taylor 2007: Forecasting]] Q frcst-->point, expon. wgt., adapt is best, good paper
 
-***** Matlab [[http://www.econ.uiuc.edu/~roger/research/rq/rq.m][code for interior point method]]
+***** Distributions from quantile forecasts
+      <<Distributions from quantile forecasts>>
+******* [[file:energy.bib::Cook10distFromQuant][Cook 2010: Determining]] distributions from quantiles
 
-      From [[http://www.econ.uiuc.edu/~roger/research/rq/rq.html][here]]:
+******* [[file:energy.bib::Keelin11QuantParamDist][Keelin & Powley 2011: Quantile]] param dist
+******* see also: [[Quantile Crossover]]
+***** Matlab code for Quantile regression
 
-      A basic version of the interior point (Frisch-Newton) algorithm for
-      quantile regression developed for the R quantreg package is also
-      available for matlab. A C++ translation of the algorithm is also
-      available from Ron Gallant's libcpp library. This algorithm is
-      described in Koenker and Portnoy (Statistical Science, 1997).
+      http://www.econ.psu.edu/~suj14/programs/rq.m
+      http://homepages.ulb.ac.be/~dpaindav/research/code.html
+      http://web.missouri.edu/~kaplandm/code/ivqr_see.m
+      http://sites.stat.psu.edu/~dhunter/code/qrmatlab/
+      http://www.mathworks.com/matlabcentral/fileexchange/32115-quantreg-m-quantile-regression
+      [[file:energy.bib::baier11mqrnn][baier 2011: mqrnn umsetzung java]] (andre's approach)
 
-***** [[http://sites.stat.psu.edu/~dhunter/code/qrmatlab/][Dhunter Generic QR Matlab Code]] (linear, polynomial,...) (Dhunter of PSU)
-      <<Dhunter Generic QR Matlab Code>>
+******* [[file:energy.bib::Koenker96intPtQR][Koenker & Park 1996]] interior pt QR (has matlab)
+******* [[http://www.econ.psu.edu/~suj14/programs/rq.m][rq_fnm.m]] (Frisch-Newton interior point, by [[file:energy.bib::Koenker05ineqConstrQR][Koenker & Ng 2005: Inequality]] constrained Frisch-Newton QR
+*********** constraints for roughness, mono, etc.
+******* [[http://www.mathworks.com/matlabcentral/answers/93062-is-there-a-routine-to-perform-quantile-regression-or-lad-least-absolute-deviations-in-matlab][Recommends fminunc()]] in Matlab optimization toolbox, or robustfit() (stats toolbox)
 
-      you input a handle to a regression function and its derivative, and
-      dhunter's code estimates the regression parameters.
+        but fminunc() is unconstrained optimization; you'd want a
+        constrained interior point algorithm, right?
 
-      could be an easy way to do spline basis.  not sure about local
-      linear, seems like you still have to put a loop around that.
+******* Matlab's [[http://www.mathworks.com/products/optimization/features.html][constrained interior point]] algorithms
+********* [[http://www.mathworks.com/help/optim/ug/constrained-nonlinear-optimization-algorithms.html][introduction]]
+********* [[http://www.mathworks.com/help/optim/ug/fmincon-interior-point-algorithm-with-analytic-hessian.html][fmincon()]]: with or without a Hessian (faster with)
+********* Hessian could come from [[*Complex%20Step%20Derivative%20(CSD)%20Approximation][Complex Step Derivative (CSD) Approximation]]?
+******* [[http://www.mathworks.com/matlabcentral/fileexchange/32115-quantreg-x-y-tau-order-nboot-][quantreg.m]] Matlab Central function.
 
-      ipqr.m is interior point algorithm: [[file:energy.bib::koenker96intptqr][koenker & park 1996]] interior qr
+        Does an unconstrained optimization of the quantile loss function.
+        Seems like it would be buggy.
 
-***** polynomial qr ([[http://www.mathworks.de/matlabcentral/fileexchange/32115-quantreg-m-quantile-regression][quantreg.m]] from matlab central)
-***** [[http://ideas.repec.org/c/boc/bocode/t741504.html][quantilereg]] (not sure if this is anything special)
-***** [[http://homepages.ulb.ac.be/~dpaindav/research/code.html][multiple-output regression quantile regions]] (good multiple horizon qunatiles? joint solar/wind?)
-***** [[http://web.missouri.edu/~kaplandm/code/ivqr_see.m][ivqr_see.m]] smoothed instrumental variable qr.  i didn't quite understand
-***** [[file:energy.bib::baier11mqrnn][baier 2011: mqrnn umsetzung java]] (andre's approach)
-***** [[http://stackoverflow.com/questions/21657158/quantile-regression-with-linprog-in-matlab][qr w/ matlab's linprog()]] (w/ [[http://faculty.arts.ubc.ca/pschrimpf/628/hw5-quantile.pdf][explanatory pdf]], you [[http://www.mathworks.de/de/help/optim/ug/linprog.html][need optimization toolbox]])
+        Says it requires Optimization and Stats toolboxes, but it only uses
+        fminsearch() which is standard.
 
-*** See also: [[Extreme Quantile Forecasting]]
-*** See also: [[Probabilistic Deep Learning]]
-*** see also: [[Learning montonicity]] (for smoothing out quantile crossover)
-*** see also: [[Feature Selection For Probabilistic Forecasts]]
-*** see also: [[file:energytop.org::*Scenario%20Generation][Scenario Generation]]
-*** see also: [[Probabilistic Forecasting]]
-*** see also: [[Copulas]]
-*** see also: [[Uncertainty Estimation]]
-*** see also: [[Penalized Splines]]
-*** see also: [[Distribution Regression]] (better @ extreme quantile regresion?)
-*** see also: [[Extreme Quantile Forecasting]]
-*** see also: [[Distribution to Distribution Regression]]
-*** see also: [[Counterfactual Distributions]]
-*** see also: [[Ensemble Forecasting]]
-*** see also: [[Portfolio Optimization and Forecasting]]
-* <<Counterfactual Distributions>>
-*** [[file:energy.bib::Chernozhukov13infCntrFactDist][Chernozhukov et al. 2013: Inference]]
-*** see also: [[Distribution to Distribution Regression]]
+******* Matlab [[http://www.econ.uiuc.edu/~roger/research/rq/rq.m][code for interior point method]]
 
-* <<Distribution to Distribution Regression>>
+        From [[http://www.econ.uiuc.edu/~roger/research/rq/rq.html][here]]:
 
-  Predict a distribution conditional on some other distribution.  The
-  input and output distributions don't have to have the same number of
-  samples.  Useful, for example, when you get many samples in one time
-  frame and want to predict the distribution of the samples in the next
-  time frame.
+        A basic version of the interior point (Frisch-Newton) algorithm for
+        quantile regression developed for the R quantreg package is also
+        available for matlab. A C++ translation of the algorithm is also
+        available from Ron Gallant's libcpp library. This algorithm is
+        described in Koenker and Portnoy (Statistical Science, 1997).
 
-  Potential uses: 1) ensemble calibration (inputs are ensemble wind
-                     speeds, outputs are ensemble wind powers
-                     - would only make sense for single farm since speeds
-                       don't add
-                     - would be a kind of [[Power Curve Learning]]
-                  2) quantile persistence forecast, as in [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]] or [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: Systematic Integration Large (prob. persist & more)]]
-                     - similar to Markov time-dependence for prob forecast
-                  3.) could be used for analog ensembles (forecast from
-                      past distributions)
+******* [[http://sites.stat.psu.edu/~dhunter/code/qrmatlab/][Dhunter Generic QR Matlab Code]] (linear, polynomial,...) (Dhunter of PSU)
+        <<Dhunter Generic QR Matlab Code>>
 
-*** [[file:energy.bib::Oliva13dist2distRgrssn][Oliva et al. 2013: Distribution]] to dist rgrssn: must for market prices?
-*** [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]] (a kind of quantile persistence, but not as fancy)
-*** [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: Systematic Integration Large (prob. persist & more)]]
+        you input a handle to a regression function and its derivative, and
+        dhunter's code estimates the regression parameters.
 
-*** see also: [[Counterfactual Distributions]]
-*** see also: [[Learning montonicity]] (for smoothing out cdf crossover)
-*** see also: [[Quantile Regression]] (the inverse problem)
-* <<Bootstrapping>>
-*** [[file:energy.bib::politis03btstrptimeser][politis 2003]]
-*** [[file:energy.bib::politis01asympsubsamp][politis et al. 2001]]
-*** freq domain bootstrap
-***** [[file:energy.bib::kirch11timefreqbtstrp][kirch & politis 2011: tft]] bootstrap
-***** [[file:energy.bib::jornsten07btstrpclassnotes][jornsten 2007: bootstrap class stat rutgers university]]
-***** [[fourier based missing value fill-in]] maybe could be done w/ bootstrap
-*** "k-fold resamp" (naive subsamp btstrp) fran[[file:energy.bib::francois07resampparamfreefeatsel][cois et al. 2007: resampling]]
-*** subsampling bootstrap (m out of n bootstrap)
-    <<subsampling bootstrap (m out of n bootstrap)>>
-***** [[file:energy.bib::berg10subsampbspval][berg et al. 2010: subsampling]]
-***** [[file:energy.bib::bertail99subsampbsunkcnvrg][bertail et al. 1999: subsampling estimators unknown rate convergence]]
-***** [[file:energy.bib::bickel08choiceofmsubsampbtstrp][bickel & sakov 2008]]
-***** [[file:energy.bib::jach11subsampinfts][jach et al. 2011: subsampling long tailed]]
-***** [[file:energy.bib::geyer06subsampbootstrap][geyer 2006: notes]]
-***** [[file:energy.bib::politis99subsampbook][politis et al. 1999: subsampling]]
-***** [[file:energy.bib::simar10mofnbtstrp][simar & wilson 2010: inference]]
-***** done read: [[file:~/doc/energy.bib::geyer06subsampbootstrap][geyer 2006: notes]] (subsamp boostrap)
-***** done [[file:~/work/dtu/doc/energy.bib::simar10mofnbtstrp][simar & wilson 2010: inference]] (m of n boostrap) how to pick m
-******* paper comes from [[http://www.colorado.edu/econ/seminars/][here]], and maybe also [[http://scholar.google.dk/scholar?hl%3den&q%3dinference%2bby%2bthe%2bm%2bout%2bof%2bn%2bbootstrap%2bin%2bnonparametric%2bfrontier%2bmodels&btng%3dsearch&as_sdt%3d0%252c5&as_ylo%3d&as_vis%3d0][here]]
-******* i'm not sure that it's exactly the same problem
-******* may be implemented in r [[http://www.sciencedirect.com/science/article/pii/s0038012107000109][here]].
-***** todo simar seems to use: [[file:~/doc/energy.bib::politis01asympsubsamp][politis et al. 2001]]
-***** todo but also mentions: [[file:~/doc/energy.bib::bickel08choiceofmsubsampbtstrp][bickel & sakov 2008]]
-***** todo seems related: [[file:~/work/dtu/doc/energy.bib::bertail99subsampbsunkcnvrg][bertail et al. 1999: subsampling estimators unknown rate convergence]]
-***** todo don't need to use all subsamples, can use for hypothesis testing.  berg10subsampbspval
-***** todo [[file:~/work/dtu/doc/energy.bib::berg10subsampbspval][berg et al. 2010: subsampling]] p-values
-***** todo [[file:~/work/dtu/doc/energy.bib::goebel05apprxmidist][goebel et al. 2005]] finite sample mi est distribution
-***** subsamp is usually less accurate than full bs
-******* subsamp usually less accurate than full bs: [[file:~/work/dtu/doc/energy.bib::politis03btstrptimeser][politis 2003]], subsamp impact
-******* rate of convergence [[http://fedc.wiwi.hu-berlin.de/xplore/ebooks/html/csa/node132.html#section019141000000000000000][worse]] than for normal approx
-***** subsamp equiv. to delete-d jackknife in some cases (this one?)
-      [[file:~/work/dtu/doc/energy.bib::politis03btstrptimeser][politis 2003]], subsamp impact
+        could be an easy way to do spline basis.  not sure about local
+        linear, seems like you still have to put a loop around that.
 
-*** [[File:energy.bib::honaker10missvaltseries][Honaker & King 2010: What Do Missing]] Values (bootstrapped em)
-*** [[file:energy.bib::pinson10reldiagsercorr][pinson et al. 2010: reliability]] (boostrap test)
-*** [[http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber%3d04286565][bootstrap inspired techniques in computational intelligence]]
-    <<bootstrap missing features fusion, and incremental learning>>
-*** is a way to ensure monotonicity: [[file:energy.bib::Chernozhukov10qrNoCross][Chernozhukov et al. 2010: Quantile Probability Curves Without Crossing]]
-*** Bootstrap vs. cross-validation
-    <<Bootstrap vs. cross-validation>>
+        ipqr.m is interior point algorithm: [[file:energy.bib::koenker96intptqr][koenker & park 1996]] interior qr
 
-    Opinion seems to be that CV (low bias, high variance) is for model
-    selection and measurement of predictive accuracy while BS is for
-    measuring output uncertainty (high (pessimistic) bias, low
-    uncertainty), once you have a model. (but [[file:energy.bib::Harrell15rgrssnMdlStrtgyBook][Harrell 2015: Regression]]
-    thinks BS requires fewer samples)
+******* polynomial qr ([[http://www.mathworks.de/matlabcentral/fileexchange/32115-quantreg-m-quantile-regression][quantreg.m]] from matlab central)
+******* [[http://ideas.repec.org/c/boc/bocode/t741504.html][quantilereg]] (not sure if this is anything special)
+******* [[http://homepages.ulb.ac.be/~dpaindav/research/code.html][multiple-output regression quantile regions]] (good multiple horizon qunatiles? joint solar/wind?)
+******* [[http://web.missouri.edu/~kaplandm/code/ivqr_see.m][ivqr_see.m]] smoothed instrumental variable qr.  i didn't quite understand
+******* [[file:energy.bib::baier11mqrnn][baier 2011: mqrnn umsetzung java]] (andre's approach)
+******* [[http://stackoverflow.com/questions/21657158/quantile-regression-with-linprog-in-matlab][qr w/ matlab's linprog()]] (w/ [[http://faculty.arts.ubc.ca/pschrimpf/628/hw5-quantile.pdf][explanatory pdf]], you [[http://www.mathworks.de/de/help/optim/ug/linprog.html][need optimization toolbox]])
 
-    Also BS is good when have little data, although bias is worse then
-    when it's used on large datasets.
+***** See also: [[Extreme Quantile Forecasting]]
+***** See also: [[Probabilistic Deep Learning]]
+***** see also: [[Learning montonicity]] (for smoothing out quantile crossover)
+***** see also: [[Feature Selection For Probabilistic Forecasts]]
+***** see also: [[file:energytop.org::*Scenario%20Generation][Scenario Generation]]
+***** see also: [[Probabilistic Forecasting]]
+***** see also: [[Copulas]]
+***** see also: [[Uncertainty Estimation]]
+***** see also: [[Penalized Splines]]
+***** see also: [[Distribution Regression]] (better @ extreme quantile regresion?)
+***** see also: [[Extreme Quantile Forecasting]]
+***** see also: [[Distribution to Distribution Regression]]
+***** see also: [[Counterfactual Distributions]]
+***** see also: [[Ensemble Forecasting]]
+***** see also: [[Portfolio Optimization and Forecasting]]
+*** <<Noise-contrastive estimation>>
+***** [[cite:Gutmann10noiseCntrstStatMdl][Gutmann & Hyvaerinen 2010: Noise-constrastive est. unnormed models]]
+*** <<Counterfactual Distributions>>
+***** [[file:energy.bib::Chernozhukov13infCntrFactDist][Chernozhukov et al. 2013: Inference]]
+***** see also: [[Distribution to Distribution Regression]]
 
-    Also, it seems to me that CV is better when have non-IID data
-    e.g. forecasts w/ temporal dependence.
+*** <<Distribution to Distribution Regression>>
 
-    Leave-one-out cross-validation is unloved b/c the variance isn't reduced.
+    Predict a distribution conditional on some other distribution.  The
+    input and output distributions don't have to have the same number of
+    samples.  Useful, for example, when you get many samples in one time
+    frame and want to predict the distribution of the samples in the next
+    time frame.
 
-***** commenter has [[http://stats.stackexchange.com/questions/18348/differences-between-cross-validation-and-bootstrapping-to-estimate-the-predictio][nice summary]] w/ many refs, likes repeated CV, but some don't elsewhere)
-***** neual FAQ: [[ftp://ftp.sas.com/pub/neural/FAQ3.html#A_cross][What are cross-validation and bootstrapping? ]]
-***** see also: [[Train/test partitioning schemes]]
+    Potential uses: 1) ensemble calibration (inputs are ensemble wind
+                       speeds, outputs are ensemble wind powers
+                       - would only make sense for single farm since speeds
+                         don't add
+                       - would be a kind of [[Power Curve Learning]]
+                    2) quantile persistence forecast, as in [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]] or [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: Systematic Integration Large (prob. persist & more)]]
+                       - similar to Markov time-dependence for prob forecast
+                    3.) could be used for analog ensembles (forecast from
+                        past distributions)
 
-* <<Cumulative distribution estimation and sampling>>
-*** generating samples from estimated cdf ([[https://inlieuofabettertitle.wordpress.com/2013/11/30/cant-invert-the-cdf-perhaps-interpolation-is-a-good-idea/][in Python]])
-*** monotonic cubic interpolation
-***** [[http://mathematica.stackexchange.com/questions/5929/%25CE%2597ow-to-create-an-interpolated-cdf-from-its-samples][from]] Stackexchange
-***** [[https://en.wikipedia.org/wiki/Monotone_cubic_interpolation][montonic cubic interpolation]] (Wikipedia)
-***** more cdf interpolation ideas ([[http://stats.stackexchange.com/questions/4909/interpolating-the-empirical-cumulative-function][Cross Validated]])
-***** [[https://books.google.de/books?id=qkGlfJRuRs8C&pg=PA130&lpg=PA130&dq=inverse+of+noisy+samples+of+a+monotonic+function&source=bl&ots=iOzwIL5LmR&sig=X-e9QiR67gJPwaS-YL_5lTMzibI&hl=en&sa=X&redir_esc=y#v=onepage&q=inverse%2520of%2520noisy%2520samples%2520of%2520a%2520monotonic%2520function&f=false][monotone interpolating splines]] (google books)
-* <<Distribution Regression>>
-*** TODO original paper (and clearest?): [[file:energy.bib::Foresi95condDistRetDR][Foresi & Peracchi 1995]] cond dist DR
-*** Replace DR logit with [[Invertible Neural Net]], or avoiding cdf inverting
-*** TODO [[file:energy.bib::Koenker13DistributionalvsQuantile][Koenker et al. 2013: Distributional]] vs. QR: DR better @ extremes
-*** [[file:energy.bib::Chernozhukov13infCntrFactDist][Chernozhukov et al. 2013: Inference]] counterfactual and dist rgrssn
-*** [[file:energy.bib::Dette06nonParamMonoRgrssn][Dette et al. 2006]] nonparam mono rgrssn: can make a density from quantiles ests
-*** [[file:energy.bib::Foresi95condDistRetDR][Foresi & Peracchi 1995]] cond dist returns: dist regression
-*** [[file:energy.bib::Baird05oneStepInvrtNN][Baird et al. 2005: One PDF]] invertible: maybe good to get pdf from cdf
-*** [[file:energy.bib::Rippel13highDimProbDeepNN][Rippel & Adams 2013: High Dimensional Probability]]: invertible, deep learning
-*** [[file:energy.bib::Szabo16LrnDistRgrssn][Szabo et al. 2016: Learning Theory Distribution Regression]]
-*** [[cite:Belloni13progEvalHiDim][Belloni et al. 2013: Program]] eval high dim (use LASSO)
-*** [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]] (deep meth. for thresh probs, no crossover?)
-*** An NN w/ LSE cost function [[https://books.google.de/books?id=U_b2BwAAQBAJ&pg=PA5&lpg=PA5&dq=neural+network+for+estimating+conditional+mean&source=bl&ots=hLZiI0M6Tp&sig=hljm-efcyj4eiRoXF9KVHzsgZP0&hl=en&sa=X&redir_esc=y#v=onepage&q=neural%2520network%2520for%2520estimating%2520conditional%2520mean&f=false][estimates conditional mean]] (needed for dist rgrssn)
-*** also see: [[Probabilistic Deep Learning]]
+***** [[file:energy.bib::Oliva13dist2distRgrssn][Oliva et al. 2013: Distribution]] to dist rgrssn: must for market prices?
+***** [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]] (a kind of quantile persistence, but not as fancy)
+***** [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: Systematic Integration Large (prob. persist & more)]]
+
+***** see also: [[Counterfactual Distributions]]
+***** see also: [[Learning montonicity]] (for smoothing out cdf crossover)
+***** see also: [[Quantile Regression]] (the inverse problem)
+*** <<Bootstrapping>>
+***** [[file:energy.bib::politis03btstrptimeser][politis 2003]]
+***** [[file:energy.bib::politis01asympsubsamp][politis et al. 2001]]
+***** freq domain bootstrap
+******* [[file:energy.bib::kirch11timefreqbtstrp][kirch & politis 2011: tft]] bootstrap
+******* [[file:energy.bib::jornsten07btstrpclassnotes][jornsten 2007: bootstrap class stat rutgers university]]
+******* [[fourier based missing value fill-in]] maybe could be done w/ bootstrap
+***** "k-fold resamp" (naive subsamp btstrp) fran[[file:energy.bib::francois07resampparamfreefeatsel][cois et al. 2007: resampling]]
+***** subsampling bootstrap (m out of n bootstrap)
+      <<subsampling bootstrap (m out of n bootstrap)>>
+******* [[file:energy.bib::berg10subsampbspval][berg et al. 2010: subsampling]]
+******* [[file:energy.bib::bertail99subsampbsunkcnvrg][bertail et al. 1999: subsampling estimators unknown rate convergence]]
+******* [[file:energy.bib::bickel08choiceofmsubsampbtstrp][bickel & sakov 2008]]
+******* [[file:energy.bib::jach11subsampinfts][jach et al. 2011: subsampling long tailed]]
+******* [[file:energy.bib::geyer06subsampbootstrap][geyer 2006: notes]]
+******* [[file:energy.bib::politis99subsampbook][politis et al. 1999: subsampling]]
+******* [[file:energy.bib::simar10mofnbtstrp][simar & wilson 2010: inference]]
+******* done read: [[file:~/doc/energy.bib::geyer06subsampbootstrap][geyer 2006: notes]] (subsamp boostrap)
+******* done [[file:~/work/dtu/doc/energy.bib::simar10mofnbtstrp][simar & wilson 2010: inference]] (m of n boostrap) how to pick m
+********* paper comes from [[http://www.colorado.edu/econ/seminars/][here]], and maybe also [[http://scholar.google.dk/scholar?hl%3den&q%3dinference%2bby%2bthe%2bm%2bout%2bof%2bn%2bbootstrap%2bin%2bnonparametric%2bfrontier%2bmodels&btng%3dsearch&as_sdt%3d0%252c5&as_ylo%3d&as_vis%3d0][here]]
+********* i'm not sure that it's exactly the same problem
+********* may be implemented in r [[http://www.sciencedirect.com/science/article/pii/s0038012107000109][here]].
+******* todo simar seems to use: [[file:~/doc/energy.bib::politis01asympsubsamp][politis et al. 2001]]
+******* todo but also mentions: [[file:~/doc/energy.bib::bickel08choiceofmsubsampbtstrp][bickel & sakov 2008]]
+******* todo seems related: [[file:~/work/dtu/doc/energy.bib::bertail99subsampbsunkcnvrg][bertail et al. 1999: subsampling estimators unknown rate convergence]]
+******* todo don't need to use all subsamples, can use for hypothesis testing.  berg10subsampbspval
+******* todo [[file:~/work/dtu/doc/energy.bib::berg10subsampbspval][berg et al. 2010: subsampling]] p-values
+******* todo [[file:~/work/dtu/doc/energy.bib::goebel05apprxmidist][goebel et al. 2005]] finite sample mi est distribution
+******* subsamp is usually less accurate than full bs
+********* subsamp usually less accurate than full bs: [[file:~/work/dtu/doc/energy.bib::politis03btstrptimeser][politis 2003]], subsamp impact
+********* rate of convergence [[http://fedc.wiwi.hu-berlin.de/xplore/ebooks/html/csa/node132.html#section019141000000000000000][worse]] than for normal approx
+******* subsamp equiv. to delete-d jackknife in some cases (this one?)
+        [[file:~/work/dtu/doc/energy.bib::politis03btstrptimeser][politis 2003]], subsamp impact
+
+***** [[File:energy.bib::honaker10missvaltseries][Honaker & King 2010: What Do Missing]] Values (bootstrapped em)
+***** [[file:energy.bib::pinson10reldiagsercorr][pinson et al. 2010: reliability]] (boostrap test)
+***** [[http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber%3d04286565][bootstrap inspired techniques in computational intelligence]]
+      <<bootstrap missing features fusion, and incremental learning>>
+***** is a way to ensure monotonicity: [[file:energy.bib::Chernozhukov10qrNoCross][Chernozhukov et al. 2010: Quantile Probability Curves Without Crossing]]
+***** Bootstrap vs. cross-validation
+      <<Bootstrap vs. cross-validation>>
+
+      Opinion seems to be that CV (low bias, high variance) is for model
+      selection and measurement of predictive accuracy while BS is for
+      measuring output uncertainty (high (pessimistic) bias, low
+      uncertainty), once you have a model. (but [[file:energy.bib::Harrell15rgrssnMdlStrtgyBook][Harrell 2015: Regression]]
+      thinks BS requires fewer samples)
+
+      Also BS is good when have little data, although bias is worse then
+      when it's used on large datasets.
+
+      Also, it seems to me that CV is better when have non-IID data
+      e.g. forecasts w/ temporal dependence.
+
+      Leave-one-out cross-validation is unloved b/c the variance isn't reduced.
+
+******* commenter has [[http://stats.stackexchange.com/questions/18348/differences-between-cross-validation-and-bootstrapping-to-estimate-the-predictio][nice summary]] w/ many refs, likes repeated CV, but some don't elsewhere)
+******* neual FAQ: [[ftp://ftp.sas.com/pub/neural/FAQ3.html#A_cross][What are cross-validation and bootstrapping? ]]
+******* see also: [[Train/test partitioning schemes]]
+
+*** <<Cumulative distribution estimation and sampling>>
+***** generating samples from estimated cdf ([[https://inlieuofabettertitle.wordpress.com/2013/11/30/cant-invert-the-cdf-perhaps-interpolation-is-a-good-idea/][in Python]])
+***** monotonic cubic interpolation
+******* [[http://mathematica.stackexchange.com/questions/5929/%25CE%2597ow-to-create-an-interpolated-cdf-from-its-samples][from]] Stackexchange
+******* [[https://en.wikipedia.org/wiki/Monotone_cubic_interpolation][montonic cubic interpolation]] (Wikipedia)
+******* more cdf interpolation ideas ([[http://stats.stackexchange.com/questions/4909/interpolating-the-empirical-cumulative-function][Cross Validated]])
+******* [[https://books.google.de/books?id=qkGlfJRuRs8C&pg=PA130&lpg=PA130&dq=inverse+of+noisy+samples+of+a+monotonic+function&source=bl&ots=iOzwIL5LmR&sig=X-e9QiR67gJPwaS-YL_5lTMzibI&hl=en&sa=X&redir_esc=y#v=onepage&q=inverse%2520of%2520noisy%2520samples%2520of%2520a%2520monotonic%2520function&f=false][monotone interpolating splines]] (google books)
+*** <<Distribution Regression>>
+***** TODO original paper (and clearest?): [[file:energy.bib::Foresi95condDistRetDR][Foresi & Peracchi 1995]] cond dist DR
+***** Replace DR logit with [[Invertible Neural Net]], or avoiding cdf inverting
+***** TODO [[file:energy.bib::Koenker13DistributionalvsQuantile][Koenker et al. 2013: Distributional]] vs. QR: DR better @ extremes
+***** [[file:energy.bib::Chernozhukov13infCntrFactDist][Chernozhukov et al. 2013: Inference]] counterfactual and dist rgrssn
+***** [[file:energy.bib::Dette06nonParamMonoRgrssn][Dette et al. 2006]] nonparam mono rgrssn: can make a density from quantiles ests
+***** [[file:energy.bib::Foresi95condDistRetDR][Foresi & Peracchi 1995]] cond dist returns: dist regression
+***** [[file:energy.bib::Baird05oneStepInvrtNN][Baird et al. 2005: One PDF]] invertible: maybe good to get pdf from cdf
+***** [[file:energy.bib::Rippel13highDimProbDeepNN][Rippel & Adams 2013: High Dimensional Probability]]: invertible, deep learning
+***** [[file:energy.bib::Szabo16LrnDistRgrssn][Szabo et al. 2016: Learning Theory Distribution Regression]]
+***** [[cite:Belloni13progEvalHiDim][Belloni et al. 2013: Program]] eval high dim (use LASSO)
+***** [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]] (deep meth. for thresh probs, no crossover?)
+***** An NN w/ LSE cost function [[https://books.google.de/books?id=U_b2BwAAQBAJ&pg=PA5&lpg=PA5&dq=neural+network+for+estimating+conditional+mean&source=bl&ots=hLZiI0M6Tp&sig=hljm-efcyj4eiRoXF9KVHzsgZP0&hl=en&sa=X&redir_esc=y#v=onepage&q=neural%2520network%2520for%2520estimating%2520conditional%2520mean&f=false][estimates conditional mean]] (needed for dist rgrssn)
+***** also see: [[Probabilistic Deep Learning]]
+*** <<Beta Regression>>
+***** [[file:energy.bib::CribariNeto09betaRgrssnR][Cribari-Neto & Zeileis 2009: Beta R]]egression in R
+***** [[file:energy.bib::Gruen12ExtBetaInR][Gruen et al. 2012: Extended Beta Regression R]]
+***** [[file:energy.bib::Ferrari04betaRgrssnRateProp][Ferrari & Cribari-Neto 2004: Beta]] regression, rates, props
+***** [[file:energy.bib::Ferrari13Betaregressionmodeling][Ferrari 2013: Beta]] regression research updates
+***** [[file:energy.bib::Guolo14betaRgrsTseries][Guolo et al. 2014: Beta Canada Google Flu Trends]] (auto regressive beta)
+***** [[file:energy.bib::Villani12GenSmthFinMix][Villani et al. 2012: Generalized]] smooth mixtures (including beta)
+***** [[file:energy.bib::Verkuilen12mixRgrsBoundBeta][Verkuilen & Smithson 2012: Mixed]] and mixture bound beta regression
+***** [[http://www.r-bloggers.com/better-living-through-zero-one-inflated-beta-regression/][Better living through zero-one inflated beta regression]] (there's also a paper)
+***** [[http://cran.r-project.org/web/packages/gamlss.dist/][R gamlss.dist package]] does 2 and 4 parameter conditional beta distributions
+******* I can be boosted by (I think) [[http://cran.r-project.org/web/packages/gamboostLSS/index.html][gamboostLSS]] R package
+***** [[file:energy.bib::Schmid13betaBoostRgrssn][Schmid et al. 2013: Boosted]] beta
+***** also see: [[Bounding by output transformation]]
+*** <<Copulas>>
+***** normal dist is poor fit for wind power forecasts: [[File:energy.bib::hodge11frcsterrdisttime][Hodge & Milligan 2011: Wind]] frcst error dist
+***** TODO What can go wrong: [[cite:Kousky09cplaFatTailTailDepMicCorr][Kousky & Cooke 2009 Fat/Dep Tail, Micro Corr Copula]]
+***** [[cite:Furman16gaussCopulaTailDep][Furman et al. 2016: Tail Dep Gaussian Copula Revisited]]
+***** My Lame Thinking
+******* <<Copulas in Matlab>>
+        From: [[https://www.mathworks.com/matlabcentral/newsreader/view_thread/51600][MATLAB Central - matlabcode for copulas]]
+
+        _Basic Gaussian Idea_
+        1: Generate /normal multivariate random/ w/ desired linear covariance (rho)
+           z: an MVN w/ desired linear correlation structure
+
+        2: Convert MVN numbers, z, to uniform
+           u = invGaussianCdf(z):
+
+        3: Convert uniform numbers to the final marginal distributions, x
+
+           x(:,1) = gaminv(u(:,1)) ; dim 1 has gamma distribution
+           x(:,2) = gaminv(u(:,2)) ; dim 2 has t distribution
+
+
+        _Basic Student t distribution idea_
+
+        1: Generate /t multivariate random/ w/ desired linear covariance (rho)
+
+        2: Convert T distributed data to uniform
+           u = invTcdf(z):
+
+        3: same as for Gaussian
+
+        _Example Code_
+
+        % Gaussian Copula
+        n = 500;
+        tau = .8; % specify the rank correlation
+        rho = 2*asin(tau)/pi; % get the required linear correlation for the MVN
+        z = mvnrnd([0 0], [1 rho; rho 1], n);
+        u = normcdf(z); % correlated uniforms
+        x = [gaminv(u(:,1),2,1) tinv(u(:,2),5)];
+
+        % Students T copula
+        n = 500;
+        tau = .8; % specify the rank correlation
+        rho = 2*asin(tau)/pi; % get the required linear correlation for the MVT
+        nu = 1;
+        z = mvtrnd([1 rho; rho 1], nu, n);
+        u = tcdf(z,nu); % correlated uniforms
+        x = [gaminv(u(:,1),2,1) tinv(u(:,2),5)];
+
+        See [[T-Distribution]]
+
+******* Linear correlation in original space not preserved; rank correlations are
+        From: [[https://www.mathworks.com/matlabcentral/newsreader/view_thread/314203][MATLAB Central - Copulas to simulate gaussian and binary data.]]
+
+        /Peter Perkins says/:
+
+        Linear correlation is something you pretty much have to give up on with copulas. It just _isn't preserved_ under nonlinear transformations like inverse CDFs. Sometimes you _can choose the copula parameters to get the right linear correlation_ on the marginals, but then if you change the marginals by something _other than a scale/shift, you lose the_ desired linear correlation. What's worse, there are simple examples out there (google this) that demonstrate that for some marginals, some linear correlation values are _not achievable_ at all.
+
+        So I think most people think instead about rank correlations, which are preserved under inverse CDF transformations. The _CORR function will happily compute either Spearman's or Kendall's_ rank correlation, and the _COPULAPARAM function will give you the copula parameter (your rho)_ to get the desired rank correlation.
+
+        So, [[https://www.mathworks.com/help/stats/copulaparam.html][COPULAPARAM]], given a Spearman/Kendall corr. gives you the Normal or "t" copula linear correlation.
+
+***** [[http://www.evernote.com/l/AA01lPeyBkhCdZxo6KIvsNGxcoTfapZMQ1M/][Deconstructing The Gaussian Copula]] (Non-technical intro)
+***** [[file:energy.bib::Gneiting14ProbFrcsting][Gneiting & Katzfuss 2014: Probabilistic Forecasting]] overview
+***** Monte Carlo w/ Multivariate Normal Dist [[Http://www.thisisthegreenroom.com/2009/monte-carlo-house-of-cards/][Is A Discrete Gaussian Copula]]
+***** [[cite:Bai16condCplaWindPowCrvFeat][Bai et al. 2016 Cond. Copula wind Pow curve and feats]]
+***** TODO [[cite:Zhang16copulaConvPowSys][Zhang et al. 2016: Copula Based Dependent Convoltion Pow Sys]]
+***** [[File:energy.bib::genest07copulaeverything][Genest & Favre 2007: Everything You Always]] (+ friendly slides)
+***** Nice Writeup: [[Http://www.mathworks.de/company/newsletters/news_notes/win03/monte_carlo.html][Monte-Carlo Simulation In Matlab Using Copulas]]
+***** [[Http://www.mathworks.de/products/statistics/demos.html?file%3d/products/demos/shipping/stats/copulademo.html][Simulating Dependent Random Variables Using Copulas]]
+***** Nice Marginal Xform writeup: [[https://www.mathworks.com/help/stats/examples/nonparametric-estimates-of-cumulative-distribution-functions-and-their-inverses.html][Nonparametric Estimates Of Cumulative Distribution Functions And Their Inverses]]
+***** [[file:energy.bib::Mendes11devTstStatFrcst][Mendes et al. 2011: Development Testing Improved, Beta Copula]]
+***** [[cite:Charpentier15copulaFinTimSerFreak][Charpenteir 2015: Copulas Financial Time Series]] (nice bivariate plots)
+***** [[cite:Donnat16genericRVrep][Donnat et al. 2016: Toward generic RV representation for ML]]
+***** [[cite:Kraus17copulaDvineQR][Kraus & Czado 2017: D-vine QR, "high dim"]]
+***** [[cite:Gao15copulaDensPenExpSeries][Gao et al. 2015: Roughness Penalized Expon Series Copulas]]
+***** [[file:energy.bib::Schefzik13ensCplaCpla][Schefzik et al. 2013: Uncertainty]] (ensemble copula copula)
+***** TODO [[cite:Elidan12copulaMachLrnTut][Elidan 2012: Copulas Machine Learning]] (Bcopulas, vines, GM's, GP's)
+      Good tutorial on high dim stuff.
+***** TODO [[cite:Elidan13copulasMachLrn][Elidan 2013: Copulas]] Mach Learng
+***** TODO [[cite:arbenz11fastsumdeprvsaep][Arbenz et al. 2011: AEP Dist Of Sum Of Dep RVs]]
+***** TODO [[cite:arbenz12fastcompfuncrvsgaep][Arbenz et al. 2012: GAEP Dist Of Func. Of Dep RV's]]
+***** TODO [[https://www.mathworks.com/help/econ/examples/using-extreme-value-theory-and-copulas-to-evaluate-market-risk.html][Matlab: Using Extreme Value Theory and Copulas to Evaluate Market Risk]]
+***** [[cite:Hashemi16multivarCopulaBaysNet][Hashemi et al. 2016: Multivariate Copula Bayesian Network]]
+***** [[cite:Tastu13scenSpatTimeCpla][Tastu et al. 2013: Space-time Gaussian copula wind]]
+***** [[cite:Tastu15spcTimeTrajGaussCpla][Tastu et al. 2015: Space Time Trajectories Gaus Cpla Prec Mtrx]]
+***** [[cite:Hollenbach14missDatImpCopula][Hollenbach et al. 2014: Fast Easy Imputation Copula]]
+***** [[cite:Patton13copulaMVtimeSerFrcstBkCh][Patton 2013: Chapter Copula Methods for Time Series Frcst]]
+***** [[cite:Pircalabu17Jointpricevolumetric][Pircalabu et al. 2017: Joint Price/Vol Wind Trade Copula]] 
+***** [[cite:Munkhammar17solarIrradSpatCpla][Munkhammar et al. 2017 solar irrad copula]]
+***** [[cite:Wu15pvGenPairCpla][Wu et al. 2015: Versatile Probability Model PV Copula]]
+***** [[cite:Ding16gaussCopulaMissDatEM][Ding & Song 2016: Gaussian Copula Miss Dat EM]]
+***** [[cite:Mai14financeEngCopulasExpln][Mai & Scherer 2014: Financial Eng Copulas Explnd Book]] 
+***** [[cite:Cherubini04CopulaMethodsInFinance][Cherubini et al. 2004: Copula Methods Finance Book]]
+***** [[cite:Cherubini11dynCopulaFinanceBk][Cherubini et al. 2011: Dynamic Copula Methods Finance Book]]
+***** [[cite:Joe14DepModelCopulasBk][Joe 2014: Dependence Copulas Chapman Hall Book]]
+***** [[cite:Gijbels14distSumCopulaDep][Gijbels & Herrmann 2014: Sum of RVS w/ Copula Dep.]]
+***** <<Mixed Continuous and Discrete Copulas>>
+******* [[cite:Zilko16mixedDscrtContinCopula][Zilko & Kurowicka 2016: Copula mixed Dscrt/Contin, Normal OK]]
+******* [[cite:Suh16GaussCopulaVarMixDat][Suh & Choi 2016: Gauss Copula Variatnl mixture, disc/cont, autoenc]]
+******* [[cite:Hoff07rankLikSemiParCplaMixed][Hoff 2007: Extending Rank Liklihood Gauss Mixed Copula MCMC]]
+***** <<Copula Mixtures>>
+******* [[cite:Suh16GaussCopulaVarMixDat][Suh & Choi 2016: Gauss Copula Variatnl mixture, disc/cont, autoenc]]
+******* [[cite:Yu13gmixGPcplaWindFrcst][Yu et al. 2013: Gaussian Mixture Copula]]
+******* [[cite:Lageras10copulaMarkov][Lageras 2010: Copulas Markovian hard to do mixture]]
+******* [[cite:Kim16sprsCondCplaMultiOut][Kim 2016: Sparse Cond. Copula Multi Out]]
+******* [[cite:Lageras10copulaMarkov][Lageras 2010: Copulas Markovian]]
+******* [[cite:Anderlucci15covPatMix][Anderlucci et al. 2015: Covariance Pattern Mixture]] (copulalizable?)
+******* [[cite:Vrac12CopulaAnalysisMixModels][Vrac et al. 2012: Copula analysis of Mixture Models]]
+******* [[Conditional Gaussian Scale Mixture]] (copulaizable?)
+***** TODO <<Normal Copula>>
+******* [[File:energy.bib::calsaverini09copulainfo][Calsaverini & Vicente 2009]] (Copula Info: when corr. in gaussian copula 
+******* [[cite:Tastu15spcTimeTrajGaussCpla][Tastu et al. 2015: Space Time Trajectories Gaus Cpla Prec Mtrx]]
+******* [[cite:Tastu13scenSpatTimeCpla][Tastu et al. 2013: Space time Gaussian copula scenario]] (actually, just wind)
+******* [[cite:Shah14studentTprocAltGauss][Shah et al. 2014: Student Processes Alternatives Gaussian Processes]]
+******* [[cite:Bessa16gaussCplaDcsns][Bessa 2016: Gaussian Copulas Wind Farm Scenarios]]
+******* [[cite:Pinson09probFrcstStatScenWind][Pinson et al. 2009: From prob forecasts to scenarios]]
+******* [[cite:Hagspiel12copulaWindPowEur][Hagspiel et al. 2012: Copula Europe Swiss Wind Pow]]
+******* [[cite:Veeramachaneni13CopulaBasedWind][Veeramachaneni et al. 2013: Copula Based Wind Resource Assessment]]
+******* [[cite:Furman16gaussCopulaTailDep][Furman et al. 2016: Tail Dep Gaussian Copula Revisited]]
+******* [[http://www.evernote.com/l/AA01lPeyBkhCdZxo6KIvsNGxcoTfapZMQ1M/][Deconstructing The Gaussian Copula]] (Non-technical intro)
+******* Monte Carlo w/ Multivariate Normal Dist [[Http://www.thisisthegreenroom.com/2009/monte-carlo-house-of-cards/][Is A Discrete Gaussian Copula]]
+******* [[cite:Guolo14betaRgrsTseries][Guolo et al. 2014: Beta Flu Bounded Var Est. w/ Gaussian Copula]]
+******* [[cite:Ding16gaussCopulaMissDatEM][Ding & Song 2016: Gaussian Copula Miss Dat EM]]
+******* [[cite:Kanter15deepFeatSyntCpla][Kanter & Veeramachaneni 2015: Deep Feat Synth Gauss Copula]]
+******* [[file:energy.bib::Sutiene07scenCopula][Sutiene & Pranevicius 2007: Scenario Generation Employing Copulas]] (compares Gaussian to T-Copula)
+******* [[cite:Bessa16gaussCplaDcsns][Bessa 2016: Gaussian Copula multitemporal decision]]
+******* <<Normal Copula can't model everything>>
+********* Normal copula has tail correlation problems
+*********** [[cite:Kousky09cplaFatTailTailDepMicCorr][Kousky & Cooke 2009 unholy: fat tails, tail dep, micro-corr]]
+*********** [[cite:Papaefthymiou09copulaPowUncert][Papaefthymiou & Kurowicka 2009: Using Copulas Modeling Wind Pow]]
+*********** [[cite:Fonseca15modelDepCopulaCrsNts][Fonseca 2015: Modeling Dependencies Lecture]]
+********* Normal copula provably can't model some distributions
+************* [[cite:Owen13monteCarloBook][Owen 2013: Monte Carlo Methods Book]]
+************* [[cite:Ghosh03nortaCorrRVdimNoGaussCpla][Ghosh & Henderson 2003: Behavior NORTA can't match normal]]
+************* [[cite:Ghosh02cbDistMargCovNoGaussCpla][Ghosh & Henderson 2002: Chessboard can't match normal]]
+********* [[T-Copula vs. Normal Copula]]
+******* [[Conditional Normal Distribution]]
+******* [[Covariance sparseness]] (much of it is Gaussian)
+******* [[T-Copula vs. Normal Copula]]
+******* [[Normal Distribution]]
+******* [[Conditional Gaussian Scale Mixture]]
+***** TODO [[T-Copula]]
+***** <<Graph Copula Models>>
+******* [[cite:Elidan12copulaMachLrnTut][Elidan 2012: Copulas Machine Learning]]
+******* [[cite:Veeramachaneni15cplaGrphMdlsWindRsrcEst][Veeramachaneni et al. 2015: Copula Graphical Models wind farm site]]
+******* [[cite:Hardesty15windFarmSiteCopula][Hardesty 2015: Siting Wind Farms Graph Copula]]
+******* see [[Copula Processes]]
+***** [[Dependence Learning]]
+***** <<Copula vs. Gaussian or Student-T Regression>>
+******* [[cite:Solin15StateSpaceStudentTprocR][Solin & Saerkkae 2015: State Space Methods Efficent Student-T Rgrssn]]
+******* one or two papers I've already put in .bib talk about SDE and Gaussian copulas.  Something about Gaussian Markov Random Fields GMRF
+***** see [[Copula Processes]]
+***** see [[Copulas for wind dir dependence]]
+***** see [[Factor/Vine Copulas]]
+***** see [[Copula changepont detection]]
+***** see [[Johnson System Distributions]] for a copula-like thing w/ no rank transform
+***** [[cite:Kaut14copulaMultiVarHeurist][Kaut 2014]] copula heuristic scen gen, multivar
+***** <<Time-varying Copulas>>
+******* [[cite:Pircalabu17priceVolRiskWndTrdCpla][Pircalabu et al. 2017: Joint Price/Vol Wind Trade Copula]]
+******* [[cite:Bessa12adaptQuantCopulaFrcst][Bessa et al. 2012: Time-adaptive quantile-copula wind]]
+******* TODO search for adaptive QR in energytop.org
+***** <<Copulas modeling temporal dependence>>
+******* [[cite:Anderlucci15covPatMix][Anderlucci et al. 2015: Cov pattern mixture model]] (copulalizable)
+******* [[cite:Bessa16gaussCplaDcsns][Bessa 2016: Gaussian multi-temporal decision wind]]
+******* Papaefthymiou09copulaPowUncert
+******* [[cite:Pinson09probFrcstStatScenWind][Pinson et al. 2009: From point to scenarios]]
+******* [[cite:Tastu15spcTimeTrajGaussCpla][Tastu et al. 2015: Space Time Trajectories]]
+******* [[Covariance Sparseness]] for spatio-temporal processes
+***** TODO <<Conditional Copulas>>
+******* [[cite:Bai16condCplaWindPowCrvFeat][Bai et al. 2016 Cond. Copula wind Pow curve and feats]]
+******* [[cite:HernandezLobato13gaussProceCondTS][Hernandez-Lobato et al. 2013: Gaussian Process Conditional Copula]]
+******* TODO [[cite:Remillard17cplaCondQuantile][Remillard et al. 2017 2 kinds of cond. copula, btstrp conf intrvl]]
+******* TODO [[cite:Kim16sprsCondCplaMultiOut][Kim 2016: Sparse Cond. Copula Multi Out]]
+******* [[cite:Pircalabu17priceVolRiskWndTrdCpla][Pircalabu et al. 2017: Joint wind pow price w/ cond. copula]]
+******* [[cite:Remillard17cplaCondQuantile][Remillard et al. 2017 copula conditional quantile w/ conf. band]]
+******* [[cite:Kraus17copulaDvineQR][Kraus & Czado 2017: D-vine copula, cond. quantile]] 
+******* [[cite:Oliveira16copulaEnsANNfrcstTS][Oliveira et al. 2016: Copulas Artificial Neural Frcst Aggr. combine]]
+******* Alessandrini13wireCostFrcstResults: best prob frcst was norwegian copula
+******* [[Conditional Normal Distribution]]
+***** <<Factor/Vine Copulas>>
+******* [[file:energy.bib::][Cooke et al. 2007: Vines]]
+******* [[file:energy.bib::Cooke10vinesArise][Cooke & Aas 2010: Vine Copula Method Handbook]]
+******* [[file:energy.bib::Graler12timeSpaceVnCopula][Graeler & Pebesma 2012: Modelling Dependence Space]]
+******* relation to high dimension tensor netorks e.g.
+******* [[file:energy.bib::Gong14extrmQRvineCopula][Gong et al. 2014: Estimation]] extreme values, vine copula
+******* [[file:energy.bib::Becker16spatTempWndFrcstErrGrid][Becker & Weber 2016: Spatio Temporal Modelling]] (Grid frcst error!)
+******* [[cite:Lu14pairCopulaSpatWindPow][Lu et al. 2014: Wind Pair Copula]]
+******* [[cite:Oh15mdlDepHiDimFactrCopula][Oh & Patton 2015: Modelling Dependence High]] Dim Factor Copulas
+******* [[cite:Wu15pvGenPairCpla][Wu et al. 2015: Versatile Probability Model PV Copula]]
+******* [[cite:Munkhammar17solarIrradSpatCpla][Munkhammar et al. 2017 solar irrad copula]]
+******* [[http://maltekurz.github.io/VineCopulaMatlab/DemoVineCPP/][VineCopulaMatlab toolbox]]
+******* [[https://www.mathworks.com/matlabcentral/fileexchange/46412-vine-copulas-with-matlab][Vine Copulas with Matlab - File Exchange - MATLAB Central]]
+******* TODO [[cite:Elidan12copulaMachLrnTut][Elidan 2012: Copulas Machine Learning]] (Bcopulas, vines, GM's, GP's)
+******* TODO [[cite:Elidan13copulasMachLrn][Elidan 2013: Copulas]] Mach Learng
+******* see [[Copulas]]
+******* see [[Tensors]]
+******* see [[Quantile Differential Equations]] (related to bivariate copulas)
+******* see 
+***** <<Copula Quantile regression>>
+******* [[cite:Chen09copulaARQR][Chen et al. 2009: Copula]] AR QR
+******* [[cite:Bessa12adaptQuantCopulaFrcst][Bessa et al. 2012: Time-adaptive quantile-copula wind]]
+***** <<Autoregressive Copulas>>
+******* [[cite:Chen09copulaARQR][Chen et al. 2009: Copula]] AR QR
+***** <<Trend Copulas>>
+******* [[cite:Li11trendSVD][Li et al. 2011: Trend SST]] trend SVD
+******* [[cite:Lageras10copulaMarkov][Lageras 2010: Copulas Markovian]]
+***** see [[Non-stationary covariance]]
+***** [[file:energy.bib::calsaverini09copulainfo][Calsaverini & Vicente 2009]] (copula info: when corr. in gaussian copula won't work)
+***** why errors may have lag dependence: [[file:energy.bib::lu07lagensemble][lu et al. 2007: short range numerical]]
+*** <<Copula Processes>>
+
+  - Can [[cite:Elidan12copulaMachLrnTut][handle huge # of dimensions]]
+  - Can [[cite:Wilson10copulaProc][handle missing data]]
+  - Can maybe [[cite:HernandezLobato13gaussProceCondTS][handle conditional distributions]]
+  - Code: [[cite:Dubois15deepMineCopulaHyper][Python available]]
+
+***** TODO [[cite:Elidan13copulasMachLrn][Elidan 2013: Copulas in Mach Learning]]
+***** TODO [[cite:Wilson10copulaProc][Wilson & Ghahramani 2010: Copula Processes]]
+***** TODO [[cite:Dubois15deepMineCopulaHyper][Dubois 2015: Deep Mining Copula-based Hyper-Parameter Opt.]]
+***** TODO [[cite:HernandezLobato13gaussProceCondTS][Hernandez-Lobato et al. 2013: Gaussian Process Conditional Copula]]
+***** TODO [[cite:Elidan12copulaMachLrnTut][Elidan 2012: Copulas Machine Learning]] (Bcopulas, vines, GM's, GP's)
+***** TODO [[cite:Hashemi16multivarCopulaBaysNet][Hashemi et al. 2016: Multivariate Copula Bayesian Network]]
+***** TODO [[cite:Liu17multDatFusCplaProc][Liu et al. 2017: Multimodal Data Fusion Sens. Net Copula Proc]]
+***** TODO [[cite:Ng10kernCopulaProcThesis][Ng 2010: Kernel Copula Processes: space/time/Stoch DiffyQ]]
+***** TODO [[cite:Jaimungal09KernCopulaPhD][Jaimungal & Ng 2009: Kernel Based Copula Processes PhD]]
+***** TODO [[cite:Ng10kernCopulaProcThesis][Ng 2010: Kernel Based Copula Proc PhD]]
+***** TODO [[cite:Karra17CopulaIdxDepMono][Karra & Mili 2017: Copula Index Detecting]]
+***** TODO [[cite:Liu17multDatFusCplaProc][Liu et al. 2017: Multimodal Data Fusion]]
+***** [[cite:Shah14studentTprocAltGauss][Shah et al. 2014: Student Processes Alternatives Gaussian Processes]]
+***** Also: [[Copulas]]
+***** Also: [[Graph Copula Models]]
+***** Also: [[Dependence learning]]
+***** Also: [[Non-stationary covariance]]
+*** also [[Forecasting]]
+*** also [[Uncertainty estimation]]
 * <<Regime Learning>>
 *** <<Regime Detection Criteria>>
 ***** [[generic%20change%20point%20detection][generic change point detection]]
@@ -6335,20 +6590,6 @@ variables will be preferred, when possible.
 ***** # params over time
 ***** best, least redundant weather models (related to [[feature selection for point regression]])
 ***** best model for MAE (finance), ramps (ramp prediction for planning), etc.
-* <<Beta Regression>>
-*** [[file:energy.bib::CribariNeto09betaRgrssnR][Cribari-Neto & Zeileis 2009: Beta R]]egression in R
-*** [[file:energy.bib::Gruen12ExtBetaInR][Gruen et al. 2012: Extended Beta Regression R]]
-*** [[file:energy.bib::Ferrari04betaRgrssnRateProp][Ferrari & Cribari-Neto 2004: Beta]] regression, rates, props
-*** [[file:energy.bib::Ferrari13Betaregressionmodeling][Ferrari 2013: Beta]] regression research updates
-*** [[file:energy.bib::Guolo14betaRgrsTseries][Guolo et al. 2014: Beta Canada Google Flu Trends]] (auto regressive beta)
-*** [[file:energy.bib::Villani12GenSmthFinMix][Villani et al. 2012: Generalized]] smooth mixtures (including beta)
-*** [[file:energy.bib::Verkuilen12mixRgrsBoundBeta][Verkuilen & Smithson 2012: Mixed]] and mixture bound beta regression
-*** [[http://www.r-bloggers.com/better-living-through-zero-one-inflated-beta-regression/][Better living through zero-one inflated beta regression]] (there's also a paper)
-*** [[http://cran.r-project.org/web/packages/gamlss.dist/][R gamlss.dist package]] does 2 and 4 parameter conditional beta distributions
-***** I can be boosted by (I think) [[http://cran.r-project.org/web/packages/gamboostLSS/index.html][gamboostLSS]] R package
-*** [[file:energy.bib::Schmid13betaBoostRgrssn][Schmid et al. 2013: Boosted]] beta
-*** also see: [[Bounding by output transformation]]
-
 * <<Forecasting>>
 *** <<German Data: RES production and forecasts>>
 
@@ -7634,7 +7875,7 @@ Scott
 ***** [[file:energy.bib::Cheng08semiSupCalibForecast][Cheng & Tan 2008: Semi supervised learning]]
 ***** [[file:energy.bib::Chapados08augFrcstGaussProc][Chapados & Bengio 2008: Augmented Functional Time]]
 ***** [[file:energy.bib::SalcedoSanz09frcstBankNN][Salcedo-Sanz et al. 2009: Accurate]]: combo different global models, downscale res)
-*** TODO Uncertainty estimation (MERGE with prob forecasting)
+*** TODO <<Uncertainty estimation>> (MERGE with [[Conditional Density Estimation]])
 
     Merge under [[Probabilistic Forecasting]]?
 
@@ -7658,6 +7899,7 @@ Scott
 *** [[Ensuring bounded regression outputs]]
 *** [[Regressor types]]
 *** [[Time delay estimation]]
+*** [[Conditional Density Estimation]]
 *** [[Quantile Regression]]
 *** [[Counterfactual Distributions]]
 *** [[Distribution to Distribution Regression]]
@@ -8187,216 +8429,7 @@ Scott
         | marginal distribution    | weird power dist.      | weibull                |
         |                          |                        |                        |
 
-******* <<Copulas>>
-********* normal dist is poor fit for wind power forecasts: [[File:energy.bib::hodge11frcsterrdisttime][Hodge & Milligan 2011: Wind]] frcst error dist
-********* TODO What can go wrong: [[cite:Kousky09cplaFatTailTailDepMicCorr][Kousky & Cooke 2009 Fat/Dep Tail, Micro Corr Copula]]
-********* [[cite:Furman16gaussCopulaTailDep][Furman et al. 2016: Tail Dep Gaussian Copula Revisited]]
-********* My Lame Thinking
-*********** <<Copulas in Matlab>>
-            From: [[https://www.mathworks.com/matlabcentral/newsreader/view_thread/51600][MATLAB Central - matlabcode for copulas]]
-
-            _Basic Gaussian Idea_
-            1: Generate /normal multivariate random/ w/ desired linear covariance (rho)
-               z: an MVN w/ desired linear correlation structure
-
-            2: Convert MVN numbers, z, to uniform
-               u = invGaussianCdf(z):
-
-            3: Convert uniform numbers to the final marginal distributions, x
-
-               x(:,1) = gaminv(u(:,1)) ; dim 1 has gamma distribution
-               x(:,2) = gaminv(u(:,2)) ; dim 2 has t distribution
-
-
-            _Basic Student t distribution idea_
-
-            1: Generate /t multivariate random/ w/ desired linear covariance (rho)
-
-            2: Convert T distributed data to uniform
-               u = invTcdf(z):
-
-            3: same as for Gaussian
-
-            _Example Code_
-
-            % Gaussian Copula
-            n = 500;
-            tau = .8; % specify the rank correlation
-            rho = 2*asin(tau)/pi; % get the required linear correlation for the MVN
-            z = mvnrnd([0 0], [1 rho; rho 1], n);
-            u = normcdf(z); % correlated uniforms
-            x = [gaminv(u(:,1),2,1) tinv(u(:,2),5)];
-
-            % Students T copula
-            n = 500;
-            tau = .8; % specify the rank correlation
-            rho = 2*asin(tau)/pi; % get the required linear correlation for the MVT
-            nu = 1;
-            z = mvtrnd([1 rho; rho 1], nu, n);
-            u = tcdf(z,nu); % correlated uniforms
-            x = [gaminv(u(:,1),2,1) tinv(u(:,2),5)];
-
-            See [[T-Distribution]]
-
-*********** Linear correlation in original space not preserved; rank correlations are
-            From: [[https://www.mathworks.com/matlabcentral/newsreader/view_thread/314203][MATLAB Central - Copulas to simulate gaussian and binary data.]]
-
-            /Peter Perkins says/:
-
-            Linear correlation is something you pretty much have to give up on with copulas. It just _isn't preserved_ under nonlinear transformations like inverse CDFs. Sometimes you _can choose the copula parameters to get the right linear correlation_ on the marginals, but then if you change the marginals by something _other than a scale/shift, you lose the_ desired linear correlation. What's worse, there are simple examples out there (google this) that demonstrate that for some marginals, some linear correlation values are _not achievable_ at all.
-
-            So I think most people think instead about rank correlations, which are preserved under inverse CDF transformations. The _CORR function will happily compute either Spearman's or Kendall's_ rank correlation, and the _COPULAPARAM function will give you the copula parameter (your rho)_ to get the desired rank correlation.
-
-            So, [[https://www.mathworks.com/help/stats/copulaparam.html][COPULAPARAM]], given a Spearman/Kendall corr. gives you the Normal or "t" copula linear correlation.
-
-********* [[http://www.evernote.com/l/AA01lPeyBkhCdZxo6KIvsNGxcoTfapZMQ1M/][Deconstructing The Gaussian Copula]] (Non-technical intro)
-********* [[file:energy.bib::Gneiting14ProbFrcsting][Gneiting & Katzfuss 2014: Probabilistic Forecasting]] overview
-********* Monte Carlo w/ Multivariate Normal Dist [[Http://www.thisisthegreenroom.com/2009/monte-carlo-house-of-cards/][Is A Discrete Gaussian Copula]]
-********* [[cite:Bai16condCplaWindPowCrvFeat][Bai et al. 2016 Cond. Copula wind Pow curve and feats]]
-********* TODO [[cite:Zhang16copulaConvPowSys][Zhang et al. 2016: Copula Based Dependent Convoltion Pow Sys]]
-********* [[File:energy.bib::genest07copulaeverything][Genest & Favre 2007: Everything You Always]] (+ friendly slides)
-********* Nice Writeup: [[Http://www.mathworks.de/company/newsletters/news_notes/win03/monte_carlo.html][Monte-Carlo Simulation In Matlab Using Copulas]]
-********* [[Http://www.mathworks.de/products/statistics/demos.html?file%3d/products/demos/shipping/stats/copulademo.html][Simulating Dependent Random Variables Using Copulas]]
-********* Nice Marginal Xform writeup: [[https://www.mathworks.com/help/stats/examples/nonparametric-estimates-of-cumulative-distribution-functions-and-their-inverses.html][Nonparametric Estimates Of Cumulative Distribution Functions And Their Inverses]]
-********* [[file:energy.bib::Mendes11devTstStatFrcst][Mendes et al. 2011: Development Testing Improved, Beta Copula]]
-********* [[cite:Charpentier15copulaFinTimSerFreak][Charpenteir 2015: Copulas Financial Time Series]] (nice bivariate plots)
-********* [[cite:Donnat16genericRVrep][Donnat et al. 2016: Toward generic RV representation for ML]]
-********* [[cite:Kraus17copulaDvineQR][Kraus & Czado 2017: D-vine QR, "high dim"]]
-********* [[cite:Gao15copulaDensPenExpSeries][Gao et al. 2015: Roughness Penalized Expon Series Copulas]]
-********* [[file:energy.bib::Schefzik13ensCplaCpla][Schefzik et al. 2013: Uncertainty]] (ensemble copula copula)
-********* TODO [[cite:Elidan12copulaMachLrnTut][Elidan 2012: Copulas Machine Learning]] (Bcopulas, vines, GM's, GP's)
-          Good tutorial on high dim stuff.
-********* TODO [[cite:Elidan13copulasMachLrn][Elidan 2013: Copulas]] Mach Learng
-********* TODO [[cite:arbenz11fastsumdeprvsaep][Arbenz et al. 2011: AEP Dist Of Sum Of Dep RVs]]
-********* TODO [[cite:arbenz12fastcompfuncrvsgaep][Arbenz et al. 2012: GAEP Dist Of Func. Of Dep RV's]]
-********* TODO [[https://www.mathworks.com/help/econ/examples/using-extreme-value-theory-and-copulas-to-evaluate-market-risk.html][Matlab: Using Extreme Value Theory and Copulas to Evaluate Market Risk]]
-********* [[cite:Hashemi16multivarCopulaBaysNet][Hashemi et al. 2016: Multivariate Copula Bayesian Network]]
-********* [[cite:Tastu13scenSpatTimeCpla][Tastu et al. 2013: Space-time Gaussian copula wind]]
-********* [[cite:Tastu15spcTimeTrajGaussCpla][Tastu et al. 2015: Space Time Trajectories Gaus Cpla Prec Mtrx]]
-********* [[cite:Hollenbach14missDatImpCopula][Hollenbach et al. 2014: Fast Easy Imputation Copula]]
-********* [[cite:Patton13copulaMVtimeSerFrcstBkCh][Patton 2013: Chapter Copula Methods for Time Series Frcst]]
-********* [[cite:Pircalabu17Jointpricevolumetric][Pircalabu et al. 2017: Joint Price/Vol Wind Trade Copula]] 
-********* [[cite:Munkhammar17solarIrradSpatCpla][Munkhammar et al. 2017 solar irrad copula]]
-********* [[cite:Wu15pvGenPairCpla][Wu et al. 2015: Versatile Probability Model PV Copula]]
-********* [[cite:Ding16gaussCopulaMissDatEM][Ding & Song 2016: Gaussian Copula Miss Dat EM]]
-********* [[cite:Mai14financeEngCopulasExpln][Mai & Scherer 2014: Financial Eng Copulas Explnd Book]] 
-********* [[cite:Cherubini04CopulaMethodsInFinance][Cherubini et al. 2004: Copula Methods Finance Book]]
-********* [[cite:Cherubini11dynCopulaFinanceBk][Cherubini et al. 2011: Dynamic Copula Methods Finance Book]]
-********* [[cite:Joe14DepModelCopulasBk][Joe 2014: Dependence Copulas Chapman Hall Book]]
-********* [[cite:Gijbels14distSumCopulaDep][Gijbels & Herrmann 2014: Sum of RVS w/ Copula Dep.]]
-********* <<Mixed Continuous and Discrete Copulas>>
-*********** [[cite:Zilko16mixedDscrtContinCopula][Zilko & Kurowicka 2016: Copula mixed Dscrt/Contin, Normal OK]]
-*********** [[cite:Suh16GaussCopulaVarMixDat][Suh & Choi 2016: Gauss Copula Variatnl mixture, disc/cont, autoenc]]
-*********** [[cite:Hoff07rankLikSemiParCplaMixed][Hoff 2007: Extending Rank Liklihood Gauss Mixed Copula MCMC]]
-********* <<Copula Mixtures>>
-*********** [[cite:Suh16GaussCopulaVarMixDat][Suh & Choi 2016: Gauss Copula Variatnl mixture, disc/cont, autoenc]]
-*********** [[cite:Yu13gmixGPcplaWindFrcst][Yu et al. 2013: Gaussian Mixture Copula]]
-*********** [[cite:Lageras10copulaMarkov][Lageras 2010: Copulas Markovian hard to do mixture]]
-*********** [[cite:Kim16sprsCondCplaMultiOut][Kim 2016: Sparse Cond. Copula Multi Out]]
-*********** [[cite:Lageras10copulaMarkov][Lageras 2010: Copulas Markovian]]
-*********** [[cite:Anderlucci15covPatMix][Anderlucci et al. 2015: Covariance Pattern Mixture]] (copulalizable?)
-*********** [[cite:Vrac12CopulaAnalysisMixModels][Vrac et al. 2012: Copula analysis of Mixture Models]]
-*********** [[Conditional Gaussian Scale Mixture]] (copulaizable?)
-********* TODO <<Normal Copula>>
-*********** [[File:energy.bib::calsaverini09copulainfo][Calsaverini & Vicente 2009]] (Copula Info: when corr. in gaussian copula 
-*********** [[cite:Tastu15spcTimeTrajGaussCpla][Tastu et al. 2015: Space Time Trajectories Gaus Cpla Prec Mtrx]]
-*********** [[cite:Tastu13scenSpatTimeCpla][Tastu et al. 2013: Space time Gaussian copula scenario]] (actually, just wind)
-*********** [[cite:Shah14studentTprocAltGauss][Shah et al. 2014: Student Processes Alternatives Gaussian Processes]]
-*********** [[cite:Bessa16gaussCplaDcsns][Bessa 2016: Gaussian Copulas Wind Farm Scenarios]]
-*********** [[cite:Pinson09probFrcstStatScenWind][Pinson et al. 2009: From prob forecasts to scenarios]]
-*********** [[cite:Hagspiel12copulaWindPowEur][Hagspiel et al. 2012: Copula Europe Swiss Wind Pow]]
-*********** [[cite:Veeramachaneni13CopulaBasedWind][Veeramachaneni et al. 2013: Copula Based Wind Resource Assessment]]
-*********** [[cite:Furman16gaussCopulaTailDep][Furman et al. 2016: Tail Dep Gaussian Copula Revisited]]
-*********** [[http://www.evernote.com/l/AA01lPeyBkhCdZxo6KIvsNGxcoTfapZMQ1M/][Deconstructing The Gaussian Copula]] (Non-technical intro)
-*********** Monte Carlo w/ Multivariate Normal Dist [[Http://www.thisisthegreenroom.com/2009/monte-carlo-house-of-cards/][Is A Discrete Gaussian Copula]]
-*********** [[cite:Guolo14betaRgrsTseries][Guolo et al. 2014: Beta Flu Bounded Var Est. w/ Gaussian Copula]]
-*********** [[cite:Ding16gaussCopulaMissDatEM][Ding & Song 2016: Gaussian Copula Miss Dat EM]]
-*********** [[cite:Kanter15deepFeatSyntCpla][Kanter & Veeramachaneni 2015: Deep Feat Synth Gauss Copula]]
-*********** [[file:energy.bib::Sutiene07scenCopula][Sutiene & Pranevicius 2007: Scenario Generation Employing Copulas]] (compares Gaussian to T-Copula)
-*********** [[cite:Bessa16gaussCplaDcsns][Bessa 2016: Gaussian Copula multitemporal decision]]
-*********** <<Normal Copula can't model everything>>
-************* Normal copula has tail correlation problems
-*************** [[cite:Kousky09cplaFatTailTailDepMicCorr][Kousky & Cooke 2009 unholy: fat tails, tail dep, micro-corr]]
-*************** [[cite:Papaefthymiou09copulaPowUncert][Papaefthymiou & Kurowicka 2009: Using Copulas Modeling Wind Pow]]
-*************** [[cite:Fonseca15modelDepCopulaCrsNts][Fonseca 2015: Modeling Dependencies Lecture]]
-************* Normal copula provably can't model some distributions
-**************** [[cite:Owen13monteCarloBook][Owen 2013: Monte Carlo Methods Book]]
-**************** [[cite:Ghosh03nortaCorrRVdimNoGaussCpla][Ghosh & Henderson 2003: Behavior NORTA can't match normal]]
-**************** [[cite:Ghosh02cbDistMargCovNoGaussCpla][Ghosh & Henderson 2002: Chessboard can't match normal]]
-************* [[T-Copula vs. Normal Copula]]
-*********** [[Conditional Normal Distribution]]
-*********** [[Covariance sparseness]] (much of it is Gaussian)
-*********** [[T-Copula vs. Normal Copula]]
-*********** [[Normal Distribution]]
-*********** [[Conditional Gaussian Scale Mixture]]
-********* TODO [[T-Copula]]
-********* <<Graph Copula Models>>
-*********** [[cite:Elidan12copulaMachLrnTut][Elidan 2012: Copulas Machine Learning]]
-*********** [[cite:Veeramachaneni15cplaGrphMdlsWindRsrcEst][Veeramachaneni et al. 2015: Copula Graphical Models wind farm site]]
-*********** [[cite:Hardesty15windFarmSiteCopula][Hardesty 2015: Siting Wind Farms Graph Copula]]
-*********** see [[Copula Processes]]
-********* [[Dependence Learning]]
-********* <<Copula vs. Gaussian or Student-T Regression>>
-*********** [[cite:Solin15StateSpaceStudentTprocR][Solin & Saerkkae 2015: State Space Methods Efficent Student-T Rgrssn]]
-*********** one or two papers I've already put in .bib talk about SDE and Gaussian copulas.  Something about Gaussian Markov Random Fields GMRF
-********* see [[Copula Processes]]
-********* see [[Copulas for wind dir dependence]]
-********* see [[Factor/Vine Copulas]]
-********* see [[Copula changepont detection]]
-********* see [[Johnson System Distributions]] for a copula-like thing w/ no rank transform
-********* [[cite:Kaut14copulaMultiVarHeurist][Kaut 2014]] copula heuristic scen gen, multivar
-********* <<Time-varying Copulas>>
-*********** [[cite:Pircalabu17priceVolRiskWndTrdCpla][Pircalabu et al. 2017: Joint Price/Vol Wind Trade Copula]]
-*********** [[cite:Bessa12adaptQuantCopulaFrcst][Bessa et al. 2012: Time-adaptive quantile-copula wind]]
-*********** TODO search for adaptive QR in energytop.org
-********* <<Copulas modeling temporal dependence>>
-*********** [[cite:Anderlucci15covPatMix][Anderlucci et al. 2015: Cov pattern mixture model]] (copulalizable)
-*********** [[cite:Bessa16gaussCplaDcsns][Bessa 2016: Gaussian multi-temporal decision wind]]
-*********** Papaefthymiou09copulaPowUncert
-*********** [[cite:Pinson09probFrcstStatScenWind][Pinson et al. 2009: From point to scenarios]]
-*********** [[cite:Tastu15spcTimeTrajGaussCpla][Tastu et al. 2015: Space Time Trajectories]]
-*********** [[Covariance Sparseness]] for spatio-temporal processes
-********* TODO <<Conditional Copulas>>
-*********** [[cite:Bai16condCplaWindPowCrvFeat][Bai et al. 2016 Cond. Copula wind Pow curve and feats]]
-*********** [[cite:HernandezLobato13gaussProceCondTS][Hernandez-Lobato et al. 2013: Gaussian Process Conditional Copula]]
-*********** TODO [[cite:Remillard17cplaCondQuantile][Remillard et al. 2017 2 kinds of cond. copula, btstrp conf intrvl]]
-*********** TODO [[cite:Kim16sprsCondCplaMultiOut][Kim 2016: Sparse Cond. Copula Multi Out]]
-*********** [[cite:Pircalabu17priceVolRiskWndTrdCpla][Pircalabu et al. 2017: Joint wind pow price w/ cond. copula]]
-*********** [[cite:Remillard17cplaCondQuantile][Remillard et al. 2017 copula conditional quantile w/ conf. band]]
-*********** [[cite:Kraus17copulaDvineQR][Kraus & Czado 2017: D-vine copula, cond. quantile]] 
-*********** [[cite:Oliveira16copulaEnsANNfrcstTS][Oliveira et al. 2016: Copulas Artificial Neural Frcst Aggr. combine]]
-*********** Alessandrini13wireCostFrcstResults: best prob frcst was norwegian copula
-*********** [[Conditional Normal Distribution]]
-********* <<Factor/Vine Copulas>>
-*********** [[file:energy.bib::][Cooke et al. 2007: Vines]]
-*********** [[file:energy.bib::Cooke10vinesArise][Cooke & Aas 2010: Vine Copula Method Handbook]]
-*********** [[file:energy.bib::Graler12timeSpaceVnCopula][Graeler & Pebesma 2012: Modelling Dependence Space]]
-*********** relation to high dimension tensor netorks e.g.
-*********** [[file:energy.bib::Gong14extrmQRvineCopula][Gong et al. 2014: Estimation]] extreme values, vine copula
-*********** [[file:energy.bib::Becker16spatTempWndFrcstErrGrid][Becker & Weber 2016: Spatio Temporal Modelling]] (Grid frcst error!)
-*********** [[cite:Lu14pairCopulaSpatWindPow][Lu et al. 2014: Wind Pair Copula]]
-*********** [[cite:Oh15mdlDepHiDimFactrCopula][Oh & Patton 2015: Modelling Dependence High]] Dim Factor Copulas
-*********** [[cite:Wu15pvGenPairCpla][Wu et al. 2015: Versatile Probability Model PV Copula]]
-*********** [[cite:Munkhammar17solarIrradSpatCpla][Munkhammar et al. 2017 solar irrad copula]]
-*********** [[http://maltekurz.github.io/VineCopulaMatlab/DemoVineCPP/][VineCopulaMatlab toolbox]]
-*********** [[https://www.mathworks.com/matlabcentral/fileexchange/46412-vine-copulas-with-matlab][Vine Copulas with Matlab - File Exchange - MATLAB Central]]
-*********** TODO [[cite:Elidan12copulaMachLrnTut][Elidan 2012: Copulas Machine Learning]] (Bcopulas, vines, GM's, GP's)
-*********** TODO [[cite:Elidan13copulasMachLrn][Elidan 2013: Copulas]] Mach Learng
-*********** see [[Copulas]]
-*********** see [[Tensors]]
-*********** see [[Quantile Differential Equations]] (related to bivariate copulas)
-*********** see 
-********* <<Copula Quantile regression>>
-*********** [[cite:Chen09copulaARQR][Chen et al. 2009: Copula]] AR QR
-*********** [[cite:Bessa12adaptQuantCopulaFrcst][Bessa et al. 2012: Time-adaptive quantile-copula wind]]
-********* <<Autoregressive Copulas>>
-*********** [[cite:Chen09copulaARQR][Chen et al. 2009: Copula]] AR QR
-********* <<Trend Copulas>>
-*********** [[cite:Li11trendSVD][Li et al. 2011: Trend SST]] trend SVD
-*********** [[cite:Lageras10copulaMarkov][Lageras 2010: Copulas Markovian]]
-********* see [[Non-stationary covariance]]
-********* [[file:energy.bib::calsaverini09copulainfo][Calsaverini & Vicente 2009]] (copula info: when corr. in gaussian copula won't work)
-********* why errors may have lag dependence: [[file:energy.bib::lu07lagensemble][lu et al. 2007: short range numerical]]
+******* also [[Copulas]]
 ******* [[cite:Wang16evalStochMethScen][Wang et al. 2016: Evaluating Stoch Scen Frcst]]
 ******* scenario tree reduction
 
@@ -8801,8 +8834,9 @@ sera
 
 ***** Google Scholar: [[http://www.google.com/search?gcx%3Dc&sourceid%3Dchrome&ie%3DUTF-8&q%3Dasymmetric%2Bparametric%2Bdistribution#sclient%3Dpsy-ab&hl%3Den&safe%3Doff&source%3Dhp&q%3Dasymmetric%2Bparametric%2Bdistribution%2Binstead%2Bof%2Bcensoring&pbx%3D1&oq%3Dasymmetric%2Bparametric%2Bdistribution%2Binstead%2Bof%2Bcensoring&aq%3Df&aqi%3D&aql%3D&gs_sm%3De&gs_upl%3D20447l23633l0l23990l21l17l0l0l0l0l402l4531l0.1.11.4.1l17l0&bav%3Don.2,or.r_gc.r_pw.,cf.osb&fp%3D3a8e0190eb5a90d2&biw%3D1068&bih%3D937][asymmetric parametric distribution instead of censoring]]*****
 
-***** See [[Quantile Regression]]
-***** See: [[Uncertainty estimation]]
+***** also [[Conditional Density Estimation]]
+***** also [[Quantile Regression]]
+***** also [[Uncertainty estimation]]
 *** Variability Forecasting
 ***** [[http://econ.duke.edu/~ap172/code.html][matlab and r code for running variance estimator block length]]
       politis and white's (2004) automatic block-length selection procedure
@@ -10795,12 +10829,17 @@ Erika
 ******* [[cite:Microsoft16predMaintPlaybook][Microsoft 2016: Cortana Intelligence Solution]] pred. maint playbook
 ******* [[cite:Gowdar16reasonWindTurbFail][Gowdar & Gowda 2016: Reasons for wind turb fail]]
 ******* [[cite:GE16predixArchSrvcTechNote][GE 2016: Predix Architecture Services]]
+******* [[file:energy.bib::Wegerich13predCondMonSmartSigPtnt][Wegerich et al. 2013: smartsignal cond mon patent]] 
+******* [[file:energy.bib::Brummel16monEnrgProgSiePtnt][Brummel et al. 2016: Siemens cond mon energy patent]] 
+******* [[cite:Juricic06faultDetGaussProc][Juricic & Kocijan 2006: Fault det. Gaussian Proc. Siemens idea.]]
+******* [[cite:Lang08neuralCloundMon][Lang et al. 2008: Neural Clouds Monitor (Siemens?)]]
+******* [[file:energy.bib::Mihnev16anomDetParamSysPtnt][Mihnev et al. 2016: Anom Det in Param Sys (like SPRT?)]] 
 ******* [[https://onedrive.live.com/edit.aspx/work/IWES?cid=4bbd96b3698748f8&id=documents&wd=target%2528Tutorials.one%257C93389E1B-FCE1-4F63-9068-1B49828D94D3%252FPredictive%2520Maintenance%2520with%2520Matlab%257CF90A03D9-B2A1-49F5-97FD-A5E26BFE11C0%252F%2529][Predictive Maintenance with Matlab (my OneNote notes on tutorial)]]
 ***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (discusses ROC stats, learning)
 ***** also [[Class Imbalance Handling]]
 ***** also [[Fault Prediction]]
 ***** also [[State Change Detection][State Change Detection]] (for flaw detection)
-*** Smart Grid <<Smart Grid>>
+*** TODO <<Smart Grid>> (PUT THIS UNDER OPTIMIZATION or merge with other related things?)
 ***** Grid semantic web
 ******* [[http://cordis.europa.eu/ictresults/index.cfm/section/news/tpl/article/id/90399][Semantic web promises a smarter electricity grid]]
 ***** Needs [[http://www.netl.doe.gov/moderngrid/docs/Improved%20Interfaces%20and%20Decision%20Support_FINAL_v2.0.pdf][AI based data reduction]] for operator-comprehensible displays (p. B5-9)
@@ -11059,6 +11098,8 @@ Erika
 ******* [[file:energy.bib::FerrariTrecate02pcsWiseLR][Ferrari-Trecate & Muselli 2002: New Learning Method]] pcswise LR
 ******* [[file:energy.bib::Kirch11timeFreqBtStrp][Kirch & Politis 2011: TFT]] bootstrap
 ******* [[http://mlg.eng.cam.ac.uk/pub/pdf/Tur11.pdf][Gaussian Processes for State Space Models and Change Point Detection]]
+******* [[cite:Juricic06faultDetGaussProc][Juricic & Kocijan 2006: Fault det. Gaussian Proc. Siemens idea.]]
+
 ******* [[MARS]] (multivariate adaptive regression splines)
 ******* [[file:energy.bib::Lemire07alterPieceLinSeg][Lemire 2007: Linear Time Series Segmentation]]
 ******* [[cite:Minka01BayesLinRegress][Minka 2001: Bayesian Linear Regression Changepoint det]]
@@ -11226,13 +11267,18 @@ Erika
 ***** also [[Novelty Detection]]
 ***** also [[Streamwise processing]]
 *** <<Fault Prediction>>
-***** [[cite:Premraj17coOccrAlarmsWindTurb][Premraj & Wigbers 2017: Discovering co-occur alarms wind turn analytics]]
+***** [[cite:Premraj17coOccrAlarmsWindTurb][Premraj & Wigbers 2017: Discovering co-occur alarms wind turbine analytics]]
 *** <<State Change Alarm Criteria>>
-***** SPRT, the standard: [[cite:Gross02earlyDetSPRT][Gross & Lu 2002: Early Detection Signal SPRT]]
-***** SPRT, non-Gaussian, spec of H1 (from STEAG): [[cite:Deeskow17modNotesSPRT][Deeskow 2017: SPRT mods]]
-***** [[cite:Davarifar14realtimePVdiagSPRT][Davarifar et al. 2014: Realtime PV diag SPRT]] (from Ahmed)
+***** <<Sequential Probability Ratio Test (SPRT)>>
+******* SPRT, the standard: [[cite:Gross02earlyDetSPRT][Gross & Lu 2002: Early Detection Signal SPRT]]
+******* SPRT, non-Gaussian, spec of H1 (from STEAG): [[cite:Deeskow17modNotesSPRT][Deeskow 2017: SPRT mods]]
+******* [[cite:Davarifar14realtimePVdiagSPRT][Davarifar et al. 2014: Realtime PV diag SPRT]] (from Ahmed)
+******* [[cite:Sugiyama09densRatEst][Sugiyama 2009: Density Ratio Estimation]] 
+******* [[cite:Hido10outlierDetDensRat][Hido et al. 2010: Statistical outlier det. Density Ratio]]
 ***** <<Copula Based State Change Alarm Criteria>>
 ******* [[cite:Malhotra15lstmAnomDetTS][Malhotra et al. 2015: LSTM TimeSer Anom. Det: Kalman could be Copula]]
+******* [[file:energy.bib::Gill12powCurvCopula][Gill et al. 2012: Wind Turbine Condition]] wind/pow copula detects turbine faults
+******* [[cite:Bai16condCplaWindPowCrvFeat][Bai et al. 2016: Copula Wind Power Curve Feats]]
 ***** [[Stopping Criteria]]
 *** Also [[Class Imbalance Handling]]
 *** Also [[Automatic bad data detection]]
@@ -11402,30 +11448,6 @@ TOTO: read Fan16* for an overview
 *** [[cite:Laskey14fastFrugalTreesVsBayesNetsRisk][Laskey & Martignon 2014: Fast Frugal Trees vs. Bayes Net Risk Assessmnt]]
 *** [[https://www.nsf.gov/awardsearch/showAward?AWD_ID=1652131][NSF Award Search: Award 1652131-CAREER: Hashing and Sketching Algorithms for Resource-Frugal Algorithms]]
 *** Also [[Auto Machine Learning]]
-* <<Copula Processes>>
-
-  - Can [[cite:Elidan12copulaMachLrnTut][handle huge # of dimensions]]
-  - Can [[cite:Wilson10copulaProc][handle missing data]]
-  - Can maybe [[cite:HernandezLobato13gaussProceCondTS][handle conditional distributions]]
-  - Code: [[cite:Dubois15deepMineCopulaHyper][Python available]]
-
-*** TODO [[cite:Elidan13copulasMachLrn][Elidan 2013: Copulas in Mach Learning]]
-*** TODO [[cite:Wilson10copulaProc][Wilson & Ghahramani 2010: Copula Processes]]
-*** TODO [[cite:Dubois15deepMineCopulaHyper][Dubois 2015: Deep Mining Copula-based Hyper-Parameter Opt.]]
-*** TODO [[cite:HernandezLobato13gaussProceCondTS][Hernandez-Lobato et al. 2013: Gaussian Process Conditional Copula]]
-*** TODO [[cite:Elidan12copulaMachLrnTut][Elidan 2012: Copulas Machine Learning]] (Bcopulas, vines, GM's, GP's)
-*** TODO [[cite:Hashemi16multivarCopulaBaysNet][Hashemi et al. 2016: Multivariate Copula Bayesian Network]]
-*** TODO [[cite:Liu17multDatFusCplaProc][Liu et al. 2017: Multimodal Data Fusion Sens. Net Copula Proc]]
-*** TODO [[cite:Ng10kernCopulaProcThesis][Ng 2010: Kernel Copula Processes: space/time/Stoch DiffyQ]]
-*** TODO [[cite:Jaimungal09KernCopulaPhD][Jaimungal & Ng 2009: Kernel Based Copula Processes PhD]]
-*** TODO [[cite:Ng10kernCopulaProcThesis][Ng 2010: Kernel Based Copula Proc PhD]]
-*** TODO [[cite:Karra17CopulaIdxDepMono][Karra & Mili 2017: Copula Index Detecting]]
-*** TODO [[cite:Liu17multDatFusCplaProc][Liu et al. 2017: Multimodal Data Fusion]]
-*** [[cite:Shah14studentTprocAltGauss][Shah et al. 2014: Student Processes Alternatives Gaussian Processes]]
-*** Also: [[Copulas]]
-*** Also: [[Graph Copula Models]]
-*** Also: [[Dependence learning]]
-*** Also: [[Non-stationary covariance]]
 * <<Reinforcement Learning>>
 *** [[cite:Busoniu10multiAgntReinfLrnOvrview][Busoniu et al. 2010: Multi]] agent reinforcement lrn
 *** [[cite:Sutton17reinfLrnIntroBook][Sutton & Barto 2017: Reinforcement]] Lrn Intro Book (recommended [[http://videolectures.net/deeplearning2016_pineau_reinforcement_learning/][here]])

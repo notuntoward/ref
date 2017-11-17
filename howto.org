@@ -46,6 +46,7 @@
 
         So leave it there in terminal mode, remove it if GUI?
 
+
 ******* TRY virtual buffers: do I like them?
         I've turned it off to see if I care.
 
@@ -2776,8 +2777,7 @@ For a public browser link. Share the note and copy the share url.
 *** latest dev build: https://builds.jabref.org/master/
 *** [[https://github.com/JabRef/jabref/blob/master/CHANGELOG.md#unreleased][What's new in latest dev build]] 
 *** setting up multiple previews: =Options-> Preferences-> Entry preview=
-*** setup so JabRef can push latex cites to Emacs
-    <<Setting JabRef setup so it can push latex cites to Emacs>>
+*** <<Setting JabRef setup so it can push latex cites to Emacs>>
 
 =Options -> Preferences -> External programs -> "Settings for Emacs" -> "Path to Emacs (gnuclient or emacsclient)":=
 
@@ -5334,11 +5334,11 @@ table rows in previous examples.
 ***** shading areas under line plot lines using area
       From [[http://stackoverflow.com/questions/6245626/matlab-filling-in-the-area-between-two-sets-of-data-lines-in-one-figure][here]]:
 
-      Use a functino like this:
+      Use a function like this:
 
       fill_between_lines = @(X,Y1,Y2,C) fill( [X fliplr(X)],  [Y1 fliplr(Y2)], C );
 
-      and if want overlapping lines to blend decrese their tranparency
+      and if want overlapping lines to blend decrease their tranparency
 
       set(h2,'FaceAlpha',0.5);
 
