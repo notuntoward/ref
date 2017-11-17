@@ -1063,6 +1063,12 @@ is already narrowed."
   (setq org-bullets-bullet-list
         '("●" "●" "￭" "￭" "￮" "￮" "▪" "▪" "▸" "▸" "•" "•")))
 
+(use-package org-autolist ; new - or -[ ] w/ return
+  :after org
+  :diminish org-autolist-mode
+  :config
+  (add-hook 'org-mode-hook #'org-autolist-mode)) 
+
 ;; Quick org emphasis:  Select text & hit key below. smart-region pkg helps.
 (use-package wrap-region
   :diminish wrap-region-mode
@@ -1111,11 +1117,7 @@ is already narrowed."
   (org-link-set-parameters "cite" :display nil)
 )
 
-(use-package org-autolist
-  :after org
-  :diminish org-autolist-mode
-  :config
-  (add-hook 'org-mode-hook #'org-autolist-mode)) ; new - or -[ ] w/ return
+(bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
 
 ;; ** Org Mode Dedicated Targets
 (require 'org)
