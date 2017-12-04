@@ -678,6 +678,21 @@
 ;; Overwrites ido-list-directory, which was less useful than this
 (global-set-key (kbd "C-x C-d") 'bjm/ivy-dired-recent-dirs)
 
+;; ** another recent directory: puts dir history in in 'C' and 'R'
+;; https://github.com/jixiuf/ivy-dired-history
+;; (use-package ivy-dired-history
+;;   :config
+;;   (require 'savehist)
+;;   (add-to-list 'savehist-additional-variables 'ivy-dired-history-variable)
+;;   (savehist-mode 1)
+;;   ;; or if you use desktop-save-mode
+;;   ;; (add-to-list 'desktop-globals-to-save 'ivy-dired-history-variable)
+;;   (with-eval-after-load 'dired
+;;     (require 'ivy-dired-history)
+;;     ;; if you are using ido,you'd better disable ido for dired
+;;     ;; (define-key (cdr ido-minor-mode-map-entry) [remap dired] nil) ;in ido-setup-hook
+;;     (define-key dired-mode-map "," 'dired)))
+
 ;;* Function key bindings
 ;; ** functions run by function keys
 (defun indent-buffer ()

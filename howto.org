@@ -1278,7 +1278,7 @@ Many text editors have access to these in some simple way, so before thinking ab
 ********* can't edit issues inside of org-mode? See [[https://github.com/gongo/org-redmine/issues/19][bug #19]]
 ******* [[https://github.com/kametoku/orgmine][kametoku/orgmine: Emacs minor mode for org-mode with redmine integration]]
 ***** [[Orgmode latex editing]]
-***** [[Org Element API]] (for elisp programming)
+***** [[http://orgmode.org/worg/dev/org-element-api.html][Org Element API]] (for org-mode elisp programming)
 ***** <<Org-mode interface to trello>>: [[https://github.com/org-trello/org-trello][org-trello]]
 ***** <<Presentation slides from org-mode>>
 ******* [[https://github.com/coldnew/org-ioslide][org-ioslide: Export org-mode to Google I/O HTML5 slide.]]
@@ -1386,6 +1386,11 @@ Many text editors have access to these in some simple way, so before thinking ab
   o   outshine-open-at-point
   ?   outshine-speed-command-help
 
+***** Org-mode on phones and cloud
+******* Android: [[https://github.com/orgzly/orgzly-android][orgzly/orgzly-android]]
+********* [[https://github.com/orgzly/orgzly-android/issues/47][cut but no copy]] (I also submitted a [[https://github.com/orgzly/documentation/issues/10#issuecomment-346615891][bug]] but that was to [[https://github.com/orgzly/documentation][documentation]])
+********* [[https://github.com/orgzly/orgzly-android/commits/master][commits are very active]], as of Nov. 23, 2017
+******* [[Org-mode interface to trello]]
 *** Dired operations
 ***** file marking
       From [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Marks-vs-Flags.html][here]]:
@@ -8541,4 +8546,6 @@ ERROR: Cannot run texhash command. Please run manually.
     Linux/Windows/Android dropbox-like thing but it's all on your computers, no cloud.  Has file versions.  Reviewer found setup confusing.
 *** Open TempoBox 
 
-    What Fraunhofer IWES had.  Slow, lots of sync failures, freezups.  I lost data with it.
+    What Fraunhofer IWES had.  Slow, lots of sync failures, freezups.  I lost data with it.  But I am using it for now...
+
+    Fraunhofer [[http://confluence.iwes.fraunhofer.de/display/Programme/TempoBox+-+Tool+zum+Datenaustausch+ohne+dropbox+und+co][page on TempoBox]]

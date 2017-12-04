@@ -8559,15 +8559,14 @@ authors and Alice McQuillan for her help in proofreading.},
 }
 
 @Article{Lang08neuralCloundMon,
-  author        = {Lang, B and Poppe, T and Minin, A and Mokhov, I and Kuperin, Y and Mekler, A and Liapakina, I},
-  title         = {Neural clouds for monitoring of complex systems},
-  journal       = {Optical memory \& neural networks},
-  year          = {2008},
-  volume        = {17},
-  number        = {3},
-  pages         = {183--192},
-  __markedentry = {[sotterson:6]},
-  abstract      = {Condition monitoring is an important and challenging task actual for many areas of industry,
+  author    = {Lang, B and Poppe, T and Minin, A and Mokhov, I and Kuperin, Y and Mekler, A and Liapakina, I},
+  title     = {Neural clouds for monitoring of complex systems},
+  journal   = {Optical memory \& neural networks},
+  year      = {2008},
+  volume    = {17},
+  number    = {3},
+  pages     = {183--192},
+  abstract  = {Condition monitoring is an important and challenging task actual for many areas of industry,
 
  
 
@@ -8588,9 +8587,9 @@ Key words: neural clouds, one side classification, on line monitoring, early fau
  
 
 fication, fault analysis and prevention.},
-  file          = {:Lang08neuralCloundMon.pdf:PDF},
-  publisher     = {Springer},
-  review        = {Related to Brummel (Siemens) patent (Brummel16monEnrgProgSiePtnt).  Was contributed by Peter Deeskow, of STEAG, who must have considered it important.},
+  file      = {:Lang08neuralCloundMon.pdf:PDF},
+  publisher = {Springer},
+  review    = {Related to Brummel (Siemens) patent (Brummel16monEnrgProgSiePtnt).  Was contributed by Peter Deeskow, of STEAG, who must have considered it important.},
 }
 
 @TechReport{GE16predixArchSrvcTechNote,
@@ -10338,6 +10337,22 @@ Subject:14 SOLAR ENERGY; 32 ENERGY CONSERVATION, CONSUMPTION, AND UTILIZATION; S
   owner       = {sotterson},
   review      = {Peder Bacher's PhD thesis (DTU). Solar forecating w/ quantile regression. Some discussion of modeling dynamics with stochastic differential equations.},
   timestamp   = {2014.02.04},
+}
+
+@InProceedings{Wilamowski99redMemLevMarq1hidLayer,
+  author        = {B. M. Wilamowski and Yixin Chen and A. Malinowski},
+  title         = {Efficient algorithm for training neural networks with one hidden layer},
+  booktitle     = {Proc. Int. Joint Conf. Neural Networks IJCNN '99},
+  year          = {1999},
+  volume        = {3},
+  pages         = {1725--1728 vol.3},
+  __markedentry = {[sotterson:6]},
+  abstract      = {Efficient second order algorithm for training feedforward neural networks is presented. The algorithm has a similar convergence rate as the Lavenberg-Marquardt (LM) method and it is less computationally intensive and requires less memory. This is especially important for large neural networks where the LM algorithm becomes impractical. Algorithm was verified with several examples},
+  doi           = {10.1109/IJCNN.1999.832636},
+  file          = {:Wilamowski99redMemLevMarq1hidLayer.pdf:PDF},
+  issn          = {1098-7576},
+  keywords      = {computational complexity, convergence, feedforward neural nets, learning (artificial intelligence), multilayer perceptrons, computational complexity, convergence rate, efficient second-order algorithm, feedforward neural network training, hidden neural layer, modified Lavenberg-Marquardt method, modified Levenberg-Marquardt method, Backpropagation algorithms, Convergence, Equations, Feedforward neural networks, Jacobian matrices, Neural networks, Neurons, Performance analysis, Stability, Stochastic processes},
+  review        = {How to reduce memory for Levenburg Marquart algorithm when have one hidden layer NN.  Is this the algorithm used by Matlab?  See:  Mathworks05redMemLevMarq},
 }
 
 @InProceedings{Pinson06ProbFrcstPropsEval,
@@ -17382,6 +17397,22 @@ electricity market, market integration},
   timestamp = {2014.12.13},
 }
 
+@InProceedings{Arif09onlineLevMarqPowSys,
+  author        = {J. Arif and N. Ray Chaudhuri and S. Ray and B. Chaudhuri},
+  title         = {Online Levenberg-Marquardt algorithm for neural network based estimation and control of power systems},
+  booktitle     = {Proc. Int. Joint Conf. Neural Networks},
+  year          = {2009},
+  pages         = {199--206},
+  month         = jun,
+  __markedentry = {[sotterson:]},
+  abstract      = {Levenberg-Marquardt (LM) algorithm, a powerful off-line batch training method for neural networks, is adapted here for online estimation of power system dynamic behavior. A special form of neural network compatible with the feedback linearization framework is used to enable non-linear self-tuning control. Use of LM is shown to yield better closed-loop performance compared to conventional recursive least square (RLS) approach. For successive disturbance use of LM in conjunction with non-linear neural network structure yields faster convergence compared to RLS. A case study on a test system demonstrates the effectiveness of the online LM method for both linear and nonlinear estimation over RLS estimation (linear).},
+  doi           = {10.1109/IJCNN.2009.5179071},
+  file          = {:Arif09onlineLevMarqPowSys.pdf:PDF},
+  issn          = {2161-4393},
+  keywords      = {adaptive control, closed loop systems, convergence of numerical methods, feedback, learning (artificial intelligence), learning systems, least squares approximations, linearisation techniques, neurocontrollers, nonlinear control systems, nonlinear dynamical systems, nonlinear estimation, power system control, recursive estimation, self-adjusting systems, variable structure systems, RLS, closed-loop system, convergence, feedback linearization framework, linear estimation, neural network, nonlinear estimation, nonlinear self-tuning control, off-line batch training method, online Levenberg-Marquardt algorithm, power system dynamic behavior control, recursive least square approach, sliding window mode, Control systems, Convergence, Least squares methods, Linear feedback control systems, Neural networks, Neurofeedback, Power system control, Power system dynamics, Power systems, Resonance light scattering, Damping, Feedback linearization, Levenberg-Marquardt, Power system oscillations, Self-tuning controller},
+  review        = {Yes, Levenburg Marquardt can be run in online mode, not just batch.  Could be used for NN adaptiation.},
+}
+
 @Article{Gould13limitOrderBks,
   author    = {Gould, Martin D and Porter, Mason A and Williams, Stacy and McDonald, Mark and Fenn, Daniel J and Howison, Sam D},
   title     = {Limit order books},
@@ -23339,6 +23370,28 @@ multiway kernel PLS model.},
   URL                      = {http://www.nt.ntnu.no/users/skoge/prost/proceedings/adchem-2012/files/0086.pdf}
 }
 
+@Article{Manikandan16designTseriesANN,
+  author    = {Narayanan Manikandan and Srinivasan Subha},
+  title     = {Software Design Challenges in Time Series Prediction Systems Using Parallel Implementation of Artificial Neural Networks},
+  journal   = {The Scientific World Journal},
+  year      = {2016},
+  volume    = {2016},
+  pages     = {1--10},
+  abstract  = {Software development life cycle has been characterized by destructive disconnects between activities like planning, analysis, design, and programming. Particularly software developed with prediction based results is always a big challenge for designers. Time series data forecasting like currency exchange, stock prices, and weather report are some of the areas where an extensive research is going on for the last three decades. In the initial days, the problems with financial analysis and prediction were solved by statistical models and methods. For the last two decades, a large number of Artificial Neural Networks based learning models have been proposed to solve the problems of financial data and get accurate results in prediction of the future trends and prices. This paper addressed some architectural design related issues for performance improvement through vectorising the strengths of multivariate econometric time series models and Artificial Neural Networks. It provides an adaptive approach for predicting exchange rates and it can be called hybrid methodology for predicting exchange rates. This framework is tested for finding the accuracy and performance of parallel algorithms used.},
+  doi       = {http://dx.doi.org/10.1155/2016/6709352},
+  file      = {:Manikandan16designTseriesANN.pdf:PDF},
+  publisher = {Hindawi Limited},
+  review    = {Explains how Levenberg-Marquardt can be implemented in parallel.  Maybe this is how Matlab does it?
+
+Seems like it's a divide the data by N algorithm that would not increase memory use.
+
+From Mathworks05redMemLevMarq, basic LM memory use is npts*nWeightsAndBiases
+
+If you split the data up, the total use would be 
+
+Sum(k=1:Q/K)  Q/K*nWeightsAndBiases = nWeightsAndBiases * K*Q/K = the same thing.},
+}
+
 @Book{Kleissl13SolarEnrgyFrcstBk,
   title     = {Solar Energy Forecasting and Resource Assessment},
   publisher = {Elsevier LTD, Oxford},
@@ -27277,6 +27330,32 @@ This book introduces readers to the use of copula functions to represent the dyn
   timestamp = {2009.04.17},
 }
 
+@Article{Mathworks05redMemLevMarq,
+  author   = {MathWorks},
+  title    = {Reduced Memory Levenberg-Marquardt (trainlm)},
+  journal  = {Matlab Neural Network Toolbox},
+  year     = {2005},
+  abstract = {The main drawback of the Levenberg-Marquardt algorithm is that it requires the storage of some matrices that
+can be quite large for certain problems. The size of the Jacobian matrix is , where Q is the number of
+training sets and n is the number of weights and biases in the network. It turns out that this matrix does not have
+to be computed and stored as a whole. For example, if we were to divide the Jacobian into two equal
+submatrices we could compute the approximate Hessian matrix as follows},
+  file     = {:Mathworks05redMemLevMarq.pdf:PDF},
+  review   = {The reduced memory Levenberg-Marquardt algorithm can reduce memory down to the size of an approximation to the Hessian matrix, at the cost of "significant" computational overhead.  Is this like Wilamowski99redMemLevMarq1hidLayer?
+
+The algorithm requires that  a huge Jacobian be calculated, of size
+
+Q x n;   
+
+Q = # of training points
+n = # weights and biases in the net
+
+In Matlab, if set mem_reduc ('reduction' after Matlab 2016a or so) to 2, then cut the memory in half, and so on...
+
+But min memory required will have size n X n, for the Hessian.},
+  url      = {http://matlab.izmiran.ru/help/toolbox/nnet/backpr13.html},
+}
+
 @Article{Hagan94nnTrnLevMarq,
   author   = {M. T. Hagan and M. B. Menhaj},
   title    = {Training feedforward networks with the Marquardt algorithm},
@@ -29104,13 +29183,12 @@ Henry},
 }
 
 @InProceedings{Juricic06faultDetGaussProc,
-  author        = {Juricic, Dj and Kocijan, J},
-  title         = {Fault detection based on Gaussian process model},
-  booktitle     = {Proceedings of the 5th Vienna Symposium on Mathematical Modeling (MathMod)},
-  year          = {2006},
-  organization  = {Vienna, Austria},
-  __markedentry = {[sotterson:]},
-  abstract      = {The traditional model-based fault detection and isolation (FDI) rely on tacit assumption
+  author       = {Juricic, Dj and Kocijan, J},
+  title        = {Fault detection based on Gaussian process model},
+  booktitle    = {Proceedings of the 5th Vienna Symposium on Mathematical Modeling (MathMod)},
+  year         = {2006},
+  organization = {Vienna, Austria},
+  abstract     = {The traditional model-based fault detection and isolation (FDI) rely on tacit assumption
 that the validity of process model is out of question for current process data. However, it happens in
 practice that a process might end up in regions for which the underlying model is not validated. This
 can result in false alarms. To avoid the risk, a validity index is suggested as a measure of confidence
@@ -29122,8 +29200,8 @@ systems. This is a relatively recent modelling approach, which is probably for t
 the FDI problem domain. For a particular case of sensor faults it results in a statistical test in the form
 of a weighted sum of prediction errors. The effectiveness of the test is demonstrated on a simulated pH
 process.},
-  file          = {:Juricic06faultDetGaussProc.pdf:PDF},
-  review        = {Fault detect with confidence intervals.  Semi-probabilistic since based on GP's.  Seems to be what's patented in: Brummel16monEnrgProgSiePtnt},
+  file         = {:Juricic06faultDetGaussProc.pdf:PDF},
+  review       = {Fault detect with confidence intervals.  Semi-probabilistic since based on GP's.  Seems to be what's patented in: Brummel16monEnrgProgSiePtnt},
 }
 
 @Article{Broecker08ensToPDF,
@@ -37755,15 +37833,47 @@ For a generalized function of dependent RVs, see: Arbenz12fastCompFuncRVsGAEP},
   booktitle = {International Conference on Computational Science},
   year      = {2006},
   pages     = {308--315},
-  doi       = {10.1007/11758549},
-  url       = {http://www.springerlink.com/content/38969r3587811486/},
   abstract  = {We propose a new computational method of input selection for stock market forecasting with neural networks. The method results from synthetically considering the special feature of input variables of neural networks and the special feature of stock market time series. We conduct the experiments to compare the prediction performance of the neural networks based on the different input variables by using the different input selection methods for forecasting S\&P 500 and NIKKEI 225. The experiment results show that our method performs best in selecting the appropriate input variables of neural networks.},
   bibsource = {DBLP, http://dblp.uni-trier.de},
+  doi       = {10.1007/11758549},
   file      = {Huang06inputSelStockForecast.pdf:Huang06inputSelStockForecast.pdf:PDF},
   groups    = {Read},
   owner     = {sotterson},
-  review    = {Simple NN lagged feature sel filter method w/ correlation \& relevance/redundancy tradeoff. Better than BIC/AIC/CAC Neural network, forecasting stock markets * one step ahead MLP or RBFN * sliding FIR structure, only past values; not multivariate * max lag is 8-12 (3 experiments) * for stocks, NN found to be better than ARIMA (so maybe skip feedback forecasting?) Problem w/ correlated inputs * NN's OK for noisy or meaningless inputs but not correlated -- correlated inputs confuse training, cause oscillations b/c of ambiguous cost func ==> overtraining -- IDEA: couldn't I just do PCA or ICA to decorrelatie? * information theoretic (AIC/BIC) criteria don't deselect correlated inputs -- another paper says that correlated inputs screw up linear regression (independent noise model is then wrong) * Chaos analysis criterion (CAC) -- the embedded delay stuff -- doesn't remove correlated inputs either * BIC/AIC/CAC explained in Qi01modelSelNNforecas This method: Filter technique (no knowledge of forecaster) * simple redundancy remover based on xcorr product * Relevance and Redundancy tradeoff handled by output and selected set correlation ratio. * Scan towards higher lags until hit max. Scour to max lag at each iteration allows lags to be skipped. * Weakness is that still doing single-variable relevance measurement (unlike joint MI approaches). So may miss important combinations. * Also, danger that noise (zero denominator) variables easy to select (like w/ Peng mRMR). But maybe OK if NN can reject irrelevant inputs? Results * Proposed correlation method is best. * CAC worse than persistence! * BIC closest to proposed method. * Not compared w/ selecting ALL lags, though, so I'm not sure if this was a hard problem...},
+  review    = {Simple NN lagged feature sel filter method w/ correlation \& relevance/redundancy tradeoff. Better than BIC/AIC/CAC Neural network, forecasting stock markets 
+* one step ahead MLP or RBFN 
+* sliding FIR structure, only past values; not multivariate 
+* max lag is 8-12 (3 experiments) 
+* for stocks, NN found to be better than ARIMA (so maybe skip feedback forecasting?) 
+
+Problem w/ correlated inputs 
+* NN's OK for noisy or meaningless inputs but not correlated
+ -- correlated inputs confuse training, cause oscillations b/c of ambiguous cost func ==> overtraining
+ -- IDEA: couldn't I just do PCA or ICA to decorrelatie? 
+* information theoretic (AIC/BIC) criteria don't deselect correlated inputs
+ -- another paper says that correlated inputs screw up linear regression (independent noise model is then wrong) 
+* Chaos analysis criterion (CAC)
+ -- the embedded delay stuff
+ -- doesn't remove correlated inputs either 
+* BIC/AIC/CAC explained in Qi01modelSelNNforecas 
+
+This method: 
+
+Filter technique (no knowledge of forecaster) 
+* simple redundancy remover based on xcorr product 
+* Relevance and Redundancy tradeoff handled by output and selected set correlation ratio. 
+* Scan towards higher lags until hit max. 
+
+Scour to max lag at each iteration allows lags to be skipped. 
+* Weakness is that still doing single-variable relevance measurement (unlike joint MI approaches). So may miss important combinations. 
+* Also, danger that noise (zero denominator) variables easy to select (like w/ Peng mRMR). But maybe OK if NN can reject irrelevant inputs? 
+
+Results 
+* Proposed correlation method is best. 
+* CAC worse than persistence! 
+* BIC closest to proposed method. 
+* Not compared w/ selecting ALL lags, though, so I'm not sure if this was a hard problem...},
   timestamp = {2009.01.29},
+  url       = {http://www.springerlink.com/content/38969r3587811486/},
   volumen   = {4},
 }
 
@@ -38931,6 +39041,21 @@ https://faculty.washington.edu/ezivot/econ424/portfoliotheorymatrixslides.pdf
 },
   timestamp = {2017.07.03},
   url       = {https://faculty.washington.edu/ezivot/econ424/econ424.htm},
+}
+
+@InProceedings{Glorot10undrstndDiffDpLrnFFnets,
+  author        = {Glorot, Xavier and Bengio, Yoshua},
+  title         = {Understanding the difficulty of training deep feedforward neural networks},
+  booktitle     = {Proceedings of the Thirteenth International Conference on Artificial Intelligence and Statistics},
+  year          = {2010},
+  pages         = {249--256},
+  __markedentry = {[Scott Otterson:6]},
+  abstract      = {Whereas before 2006 it appears that deep multi-layer neural networks were not successfully trained, since then several algorithms have been shown to successfully train them, with experimental results showing the superiority of deeper vs less deep architectures. All these experimental results were obtained with new initialization or training mechanisms. Our objective here is to understand better why standard gradient descent from random initialization is doing so poorly with deep neural networks, to better understand these recent relative successes and help design better algorithms in the future. We first observe the influence of the non-linear activations functions. We find that the logistic sigmoid activation is unsuited for deep networks with random initialization because of its mean value, which can drive especially the top hidden layer into saturation. Surprisingly, we find that saturated units can move out of saturation by themselves, albeit slowly, and explaining the plateaus sometimes seen when training neural networks. We find that a new non-linearity that saturates less can often be beneficial. Finally, we study how activations and gradients vary across layers and during training, with the idea that training may be more difficult when the singular values of the Jacobian associated with each layer are far from 1. Based on these considerations, we propose a new initialization scheme that brings substantially faster convergence.},
+  file          = {:Glorot10undrstndDiffDpLrnFFnets.pdf:PDF},
+  review        = {The reference people use when talking about Xavier Initialization for neural net training.
+
+                   Simple blog post summarizing Xavier init: Jones15xavierInitBlog},
+  url           = {http://proceedings.mlr.press/v9/glorot10a.html},
 }
 
 @Article{Pinson06qualValProbFrcst,
@@ -41728,6 +41853,16 @@ C:\Users\scott\OneDrive\shareHW\school\lectures_misc\DeepLearningSchool2016},
   url       = {https://www.bayareadlschool.org/},
 }
 
+@Misc{Deesko15digFingerPrintFaultSlides,
+  author       = {Peter Deesko and F. Bärmann},
+  title        = {The Digital Fingerprint of Equipment Faults -- an Idea for Expanding the SR::SPC Module},
+  howpublished = {Presentation Slides},
+  month        = mar,
+  year         = {2015},
+  file         = {:Deesko15digFingerPrintFaultSlides.pdf:PDF},
+  review       = {Peter Deeskow's presentation on his proposed improvements to the STEAG Fault Monitoring system.},
+}
+
 @Article{Deeskow17modNotesSPRT,
   author    = {Peter Deeskow},
   title     = {SPRT modification notes},
@@ -43202,6 +43337,37 @@ The KDE approach for probabilistic forecasts was taken from: Bowman97smthKDE},
   Review                   = {Combined physical and data driven models. Neural Nets, etc. capture model error statistics. Looks applicable to wind too.},
   Timestamp                = {2008.07.03},
   URL                      = {http://books.google.com/books?id=eoSwda604XYC&printsec=frontcover&source=gbs_summary_r&cad=0}
+}
+
+@Book{Johnson10elmMatlabStyleBk,
+  title     = {The elements of MATLAB style},
+  publisher = {Cambridge University Press},
+  year      = {2010},
+  author    = {Johnson, Richard K},
+  review    = {The Fraunhofer IWES matlab style book.
+
+Updated here: Johnson14matlabStyle20Bk},
+  url       = {https://www.amazon.com/Elements-MATLAB-Style-Richard-Johnson/dp/0521732581},
+}
+
+@Book{Johnson14matlabStyle20Bk,
+  title     = {MATLAB Style Guidelines 2.0},
+  publisher = {Datatool},
+  year      = {2014},
+  author    = {Richard Johnson},
+  file      = {:Johnson14matlabStyle20Bk.pdf:PDF},
+  review    = {Updated version of Johnson10elmMatlabStyleBk},
+  url       = {http://datatool.com/index.html},
+}
+
+@Article{Jones15xavierInitBlog,
+  author  = {Andy Jones},
+  title   = {An Explanation of Xavier Initialization},
+  journal = {andy's blog},
+  year    = {2015},
+  review  = {Simple explanation of Xaviar init, and how the classic algorithm differs from the one in Cafe.  Commenters not that the biases are not initialized in this way because they are constant (which I don't quite get, since weights are too, during initilization).
+
+The original paper on Xavier init is: Glorot10undrstndDiffDpLrnFFnets},
 }
 
 @Standard{juris10VerordnungzurAusfuhrung,

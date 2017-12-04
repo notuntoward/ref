@@ -1,4 +1,4 @@
-atent#+OPTIONS: H:0
+#+OPTIONS: H:0
 * SciCoffeeTalkWithSS
 *** Topics/outline
 ***** Persuasion: Adapt or DIE
@@ -137,6 +137,8 @@ atent#+OPTIONS: H:0
 *** [[cite:Cherubini04CopulaMethodsInFinance][Cherubini et al. 2004: Copula Methods Finance Book]]
 *** [[cite:Cherubini11dynCopulaFinanceBk][Cherubini et al. 2011: Dynamic Copula Methods Finance Book]]
 *** [[cite:Joe14DepModelCopulasBk][Joe 2014: Dependence Copulas Chapman Hall Book]]
+*** [[cite:Johnson10elmMatlabStyleBk][Johnson 2010: Elem. MATLAB Style]]
+*** [[cite:Johnson14matlabStyle20Bk][Johnson 2014: MATLAB Style Guidelines 2.0]]
 *** [[http://www.neurosolutions.com/products/nsbook/][Interactive Neural Network Book]] explains recurrent NN's, has demos
 *** [[Books w/ source code]]
 *** Wind energy books I could buy
@@ -1713,287 +1715,12 @@ Scott
 ********* partitioning into forecasting is data-driven, not hand tuned
 ********* a mixture model would make the bootstrap subsample weight "principled"
 ********* Google Scholar for: [[http://www.google.com/search?aq%3Df&gcx%3Dc&sourceid%3Dchrome&ie%3DUTF-8&q%3Dexpectation%2Bmaximization%2Bbootstrap][Expectation Maximization Bootstrap]]
-*** Neural Nets
-***** picking layer types [[file:energy.bib::LeCun98effBkprp][LeCun et al. 1998: Efficient]] (easy to read)
-***** Points from Ch. 6 of "Pattern Recognition" by DHS
-******* more weights ==> fewer local minima (surprise!, p. 299)
-******* local minima not necessarily a problem, heuristics help (6.8)
-******* good explanation of output probs (6.2.2)
-******* neural nets supersede projection persuit, generalized additive models, [[MARS]] (splines) (p. 306)
-******* weight decay (p. 314) looks like ridge regression (is [[http://www.mpi-inf.mpg.de/departments/d3/teaching/SL04/course/lecture20040428.pdf][analagous]], slide 21)
-******* weight initialization: p. 311
-******* learning rate from Hessian: p. 312, 318
-******* momentum p. 314
-******* batch learning slower than <<<stochastic learning>>> (DHS, p. 316)
-********* but stochastic might jump around but use <<<momentum>>> to filter (p. 314)
-********* maybe this is why Quicknet uses kindabatch (bunches)?
-******* alternatives to lsq cost
-********* cross entropy
-********* Minkowski error (reduces long tail influence since exponent < 2)
-******* training methods other than backprop
-********* Hessian
-********* Newton
-********* Quickprop
-********* Conjugate Gradient Descent
-******* convolutional or time delay nets: for recog. time shifting waveform (p. 326)
-********* main idea is tied weights
-******* recurrent neural networks (p. 328)
-********* outputs fed to input (recursive)
-********* good for "time dependent signals whose structure varies over fairly short periods"
-********* train: blow out net for a few recursions (not infinite?)      :lookup:
-********* test: let it iterate until settle: how know if will settle?   :lookup:
-******* cascade correlation (p. 329)
-********* a greedy, iterative way of deciding how many hidden nodes to include
-********* additional nodes encode error from previous set
-******* Pruning (p. 331)
-********* derivative-based way of removing "weights that don't matter"
-***** Multiple layers for power curve/wind
-******* >3 layers in NN for rotation/scale (DHS, p. 317), one layer for trans/rot
-******* could a 2nd hidden layer be for translating wind to power?
-******* could use actual power output as a hint, as in cons/vowel (DHS ch 6)
-******* [[http://www.awea.org/standards/iec_stds.html#WG6][IEC 61400-12 standard]] defines how power curves are measured
-********* Garrard Hassan (Bristol, England) sells software the does the work
-***** TODO <<Deep Learning>>
-******* is related to the adaboost+ ideas, I think, also random forests, I think
-******* What is Deep Learning?
-********* Siemens: 100K NN nodes ([[http://www.evernote.com/l/AA05QepHHVlLMJiB6pxDMLuP_nI41T8nlMk/][Machine Learning: Getting Machines to Mimic Intuition]])
-******* What Deep Learning is good,bad,used for
-        <<What Deep Learning is good,bad,used for>>
-        From [[http://www.evernote.com/l/AA1nXiMh5_dITrJxTp7r95xFwAZVaKGm0nM/][here]]:
 
-        Good:
-
-	1. Its ability to detect complex interactions among features
-	2. Its ability to learn low-level features from minimally processed raw data
-	3. Its ability to work with high-cardinality class memberships
-	4. Its ability to work with unlabeled data
-
-        Bad:
-
-        1. Hard to interpret,
-        2. Cause/effect hard to know. /But/ it can rank inputs based on importance (all that LASSO did for ModerWindABS).
-        3. Lot's of data and CPU power
-        4. "for simpler problems with small data sets, deep learning may not produce sufficient added benefit over simpler methods to justify the cost and time"
-
-        Used for:
-
-	1. Identify suspicious transactions in real time.
-	2. Mine log files and detect threats.
-	3. Mine sensor data to predict part and vehicle failure (/ModernWindABS!/)
-	4. Predict delays and bottlenecks in production.
-
-******* <<Why Deep Learning Works>>
-********* Allows more complexity with fewer nodes?
-*********** TODO [[http://neuralnetworksanddeeplearning.com/chap5.html][Is informal]]: [[cite:Bengio09lrnDeepArchAI][Bengio 2009: Learning Deep Architectures AI]]
-*********** [[cite:Pascanu2013numRespRgnsDeepNNpieceLin][Pascanu et al. 2013 Num response regions picewise deep]] 
-*********** [[cite:Montufar2014numLinRegnDeepNN][Montufar et al. 2014: Number Linear Regions piecewise deep]]
-******* <<Deep Learning Classes/Tutorials/Videos>>
-********* TODO [[http://www.evernote.com/l/AA2KD9DttQRPEZaXZ10OCCcdQBUaeIoa39I/][A Brief Overview of Deep Learning]]
-          mark up evernote doc and copy to here
-********* TODO [[http://www.bayareadlschool.org/][Deep Learning School, Stanford]] on (9/24-25, 2016)
-          <<Deep Learning School, Stanford, 2016>>
-*********** [[cite:DeepLrnSchool2016_slides][Deep Learning School 2016: Slides]]
-*********** Full-day talk videos (see below for individual talks)
-************* [[https://www.youtube.com/watch?v=eyovmAtoUx0][Deep Learning School Day 1]]
-************* [[https://www.youtube.com/watch?v=9dXiAecyJrY][Deep Learning School Day 2]]
-*********** Individual talk videos (from [[https://www.youtube.com/watch?v=11rsu_WwZTc&t=2121s][comments in youtube]]). My notes are in OneNote
-            These are the full-session videos (above) split into talks
-************* DONE [[https://youtu.be/zij_FTbJHsk][Foundations of Deep Learning]] (Hugo Larochelle, Twitter)
-************* DONE [[https://youtu.be/u6aEYuemt0M][Deep Learning for Computer Vision]] (Andrej Karpathy, OpenAI)
-************* DONE [[https://youtu.be/oGk1v1jQITw][Deep Learning for Natural Language Processing]] (Richard Socher, Salesforce)
-************* DONE [[https://youtu.be/Ejec3ID_h0w][TensorFlow Tutorial]] (Sherry Moore, Google Brain)
-************* TODO [[https://youtu.be/rK6bchqeaN8][Foundations of Unsupervised Deep Learning]] (Ruslan Salakhutdinov, CMU)
-************* DONE [[https://youtu.be/PtAIh9KSnjo][Deep Reinforcement Learning]] (John Schulman, OpenAI)
-************* DONE [[https://youtu.be/F1ka6a13S9I][Nuts and Bolts of Applying Deep Learning]] (Andrew Ng)
-************* DONE [[https://youtu.be/OU8I1oJ9HhI][Theano Tutorial]] (Pascal Lamblin, MILA)
-************* DONE [[https://youtu.be/g-sndkf7mCs][Deep Learning for Speech Recognition]] (Adam Coates, Baidu)
-************* DONE [[https://youtu.be/L1sHcj3qDNc][Torch Tutorial]] (Alex Wiltschko, Twitter)
-************* TODO [[https://youtu.be/G5RY_SUJih4][Sequence to Sequence Deep Learning]] (Quoc Le, Google)
-************* TODO [[https://youtu.be/11rsu_WwZTc][Foundations and Challenges of Deep Learning]] (Yoshua Bengio)
-********* TODO [[https://www.youtube.com/playlist?list=PLoRl3Ht4JOcdU872GhiYWf6jwrk_SNhz9][{Coursera} Neural Networks for Machine Learning — Geoffrey Hinton 2016]]
-********* DONE [[cite:Boney16introSemiSupLadderBlog][Boney 2016: Introduction Semi Supervised Ladder Network]]
-********* DONE [[https://www.youtube.com/watch?v=CLSy5WlaWKc][Tutorial: Deep Learning - YouTube]] (my notes are in OneNote)
-********* DONE Swiss HPC 2016 Conf Deep Learning Tutorials
-          (course notes in OneNote)
-*********** DONE [[https://www.youtube.com/watch?v=gtdxIP49pzo][Tutorial Part I: Deep Learning - YouTube]]
-*********** DONE [[https://www.youtube.com/watch?v=4m1SwOZppq4][Tutorial Part 2: Deep Learning - YouTube]]
-********* DONE [[cite:Ng16nutsBoltsDeepLrn][Ng 2016: Nuts Bolts Applying Deep Learning]]
-********* TODO [[https://indico.io/blog/general-sequence-learning-using-recurrent-neural-nets/][indico.io | General Sequence Learning Using Recurrent Neural Nets]] (nice video)
-********* TODO Video [[http://techtalks.tv/talks/small-data-deep-learning/63006/][Small Data Deep Learning - TechTalks.tv]]
-          also see [[Deep Learning with Small Data]]
-********* TODO [[http://www.evernote.com/l/AA26S0xp779BbJMeg25Itv1mXTamk4BeWDY/][Deep Learning, Pachinko, and James Watt: Efficiency is the Driver of Uncertainty]]
-          Mark up and put in ModernWindABS.org
-********* TODOo [[cite:LeCun12deepLrnInvarFeatHier][LeCun 2012: Deep Learning invar. hier feats]]
-********* [[http://course.fast.ai/index.html][Practical Deep Learning For Coders—18 hours of lessons for free]]
-********* [[http://deeplearning.net/software_links/][deeplearning.net]]: software and papers, and [[http://deeplearning.net/reading-list/tutorials/][tutorials]]
-********* [[cite:Karpathy16convNNcourseNotes][Karpathy 2016: Course Notes CS231n]] conv NN's (used for ModernWindABS kickoff)
-********* [[cite:Freitas15MachLrnClass][Freitas 2015: Machine Learning Class (basic + RNN LSTM, Reinf Lrn)]]
-********* [[cite:Fridman17deepLrnSelfDrvCarClass][Fridman 2017 Deep Learn Self-drive Cars Class.  Nice RNN slides, etc.]]
-********* TODO [[cite:Lipton15critRevRNNseq][Lipton et al. 2015 Critical Review RNN Seq. Lrn.]]
-********* [[cite:Goodfellow16DeepLrnBook][Goodfellow et al. 2016: Deep Learning]] (with lectures and exercises)
-********* [[cite:Deng12deepLnr3arch][Deng 2012: Three Deep Learning Architectures, autoenc, DBN, CNN]]
-********* DONE [[https://wiki.tut.fi/DENIS/CoursesandSchools][Deep Learning summer school 2015: 8/17-19, Aalto U., Espoo, Finland]]
-          I got  [[cite:Raiko15supUnsupCombLadder][Raiko 2015: Combining Supervised Unsupervised]], which I should read.
-******* TODO [[cite:Raiko15supUnsupCombLadder][Raiko 2015: Combining Supervised Unsupervised]]
-******* TODO go through links in chrome bookmarks called "Deep/Reinforcement learning overview ModernWindABS"
-******* TODO go through Google Keep "Run notes" checklist
-******* [[http://neuralnetworksanddeeplearning.com/][Neural Networks and Deep Learning (work in progress)]] (free online book)
-********* online book, has Python but could write in something else
-******* [[file:energy.bib::Bengio13RepresentationLearningReview][Bengio et al. 2013: Representation Learning]]: deep feat learn & PCA
-******* TODO [[cite:Sogabe16optRESdpLrn][Sogabe et al. 2016: Optimization]] RES deep learning (net demand?)
-******* [[cite:Zeiler14vizUnderstandConvNN][Zeiler & Fergus 2014: Visualizing]] conv NN feat learn
-******* [[cite:Karpathy14featLrnEscpdsBlog][Karpathy 2014: Feature Learning Escapades]] (Feature and Transfer learning)
-******* [[cite:Karpathy16convNNcourseNotes][Karpathy 2016: Course Notes CS231n]] conv NN's (used for ModerWindABS kickoff)
-******* [[cite:Ambati15deepLrnGuidePract][Ambati 2015: Deep]] Learn practical guide (intro & use of deep learn)
-******* [[cite:Ramanathan14PPfraunDetDeepLrn][Ramanathan 2014: PayPals Fraud Detection Deep Learning]] practical slides.  How big, etc.
-******* [[cite:Lv16faultDiagDeepLrn][Lv et al. 2016: Fault detect deep learn (has benchmark database)]]
-******* [[cite:Long15fullConvNNsemSeg][Long et al. 2015: Fully conv NN for sem. image seg]]
-******* [[cite:Britz15tutorialRNN][Britz 2015: Recurrent Neural Networks Tutorial]]
-******* [[cite:Busseti12deepLrnTimeSer][Busseti et al. 2012: Deep Learning Time Series Modeling (Demand frcst, RNN best)]]
-******* [[cite:Perera14machLrnTechRES][Perera et al. 2014: Machine Learning Techniques RES]] (really deep?)
-******* <<Deep Learning Tensors>>
-********* [[cite:Che17neuralNetTensorRnk1][Che et al. 2017: Neural Tensor learn Rank 1]]
-******* <<Deep Learning Regularization>>
-********* [[cite:Gal16nnDropoutBayesApprox][Gal & Ghahramani 2016: Dropout Bayesian Approximation]]
-******* [[Deep Learning School, Stanford, 2016]]
-******* TODO [[http://lamda.nju.edu.cn/weixs/project/CNNTricks/CNNTricks.html][Must Know Tips/Tricks in Deep Neural Networks]]
-******* TODO Ladder networks
-
-        Useful because it combines unsupervised and supervised learning.  Seems to be faster than plain unsupervised and also more compact.  Also, it's not just for classification but for continuous regression.
-
-********* DONE [[cite:Boney16introSemiSupLadderBlog][Boney 2016: Introduction Semi Supervised Ladder Network]]
-********* TODO [[cite:Raiko15supUnsupCombLadder][Raiko 2015: Combining Supervised Unsupervised]]
-********* [[cite:Valpola15neurPCA2deepUnsupLrnBk][Valpola 2015: From neural PCA to deep unsupervised learning (ladder)]]
-********* [[cite:Rasmus15semiSupLadder][Rasmus et al. 2015: Semi sup ladder deep learn]]
-********* [[cite:Pezeshki16dcnstrLadderNet][Pezeshki et al. 2016: Deconstructing Ladder Network Architecture]]
-******* Deep Speech Recognition
-        <<Deep Speech Recognition>>
-********* TODO [[https://www.youtube.com/watch?v=9dXiAecyJrY&feature=youtu.be&t=13874][Deep Learning and Speech Recognition - Adam Coates]]
-********* TODO [[cite:Deng15deepLrnSpchLang][Deng 2015: Deep Learning Speech Language Processing]]  (everything's gone!)
-********* [[cite:Trigeorgis16adieuFeatsSpchEmotRecog][Trigeorgis et al. 2016: Adieu features? spch emot. lrn CNN]]
-********* [[cite:Song15end2endDeepLnSpchRecog][Song & Cai 2015: End 2 end spch recog. CNN, no MFCC]]
-******* TODO Probabilistic Deep Learning
-        <<Probabilistic Deep Learning>>
-********* TODO [[file:energy.bib::Rippel13highDimProbDeepNN][Rippel & Adams 2013: High Dimensional Probability]]: invertible, deep learning
-********* [[cite:Pathak15cnstrnStructCNN][Pathak et al. 2015: Constrained conv NN prob output]]
-********* DONE [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]
-********* [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]]
-********* [[cite:Wu16probSTwindPowRNNlstmr][Wu et al. 2016: Probabilistic Wind Pow Frcst RNN LSTM regimes via clust(?)]]
-********* [[cite:Zhang15windSpdFrcstPDBM][Zhang et al. 2015: Predictive Deep Boltzmann Mach. Wind Spd Frcst]]
-********* [[cite:Yu17gnrcTrafFrcstExtrnRNNlstm][Yu et al. 2017: Deep Learning Generic Extrm Traffic RNN LSTM]]
-
-******* TODO <<Deep Learning Time Series Prediction>>
-********* [[cite:Sergio15DeepLrnWindFrcst][Sergio & Ludermir 2015: Deep Learning Wind DBN]]
-********* [[cite:Zhang15windSpdFrcstPDBM][Zhang et al. 2015: Predictive Deep Boltzmann Mach. Wind Spd Frcst]]
-********* DONE [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]
-********* [[cite:Bianchi15ShortTermElectric][Bianchi et al. 2015: Short Term Electric Load Echo State PCA]]
-********* [[cite:Tao14WindPowPredPattrnDeepLrn][Tao et al. 2014: Wind pow prediction pattern deep learn]]
-********* TODO Recurrent Neural Net time series prediction
-          <<Recurrent Neural Net time series prediction>>
-*********** TODO [[http://karpathy.github.io/2015/05/21/rnn-effectiveness/][The Unreasonable Effectiveness of Recurrent Neural Networks]] (Karpathy)
-*********** TODO [[https://indico.io/blog/general-sequence-learning-using-recurrent-neural-nets/][indico.io | General Sequence Learning Using Recurrent Neural Nets]] (nice video)
-*********** TODO [[cite:Lipton15critRevRNNseq][Lipton et al. 2015 Critical Review RNN Seq. Lrn.]]
-*********** code example (weather prediction): [[https://hub.docker.com/r/claytantor/tensorflow-lstm-regression/][tensorflow-lstm-regression]]
-*********** [[cite:Zaytar16wthFrcstWeq2seqRNNlstm][Zaytar & Amrani 2016: Sequence Sequence Weather RNN LSTM (but fake journal?)]]
-*********** [[cite:Wu16probSTwindPowRNNlstm][Wu et al. 2016: Probabilistic Wind Pow Frcst RNN LSTM regimes via clust(?)]]
-*********** [[cite:Zheng17loadFrcstRNNlstm][Zheng et al. 2017: Electric Load Forecasting RNN LSATM]]
-*********** [[cite:Yu17gnrcTrafFrcstExtrnRNNlstm][Yu et al. 2017: Deep Learning Generic Extrm Traffic RNN LSTM]]
-*********** [[cite:Gensler16autoEncLSTMsolFrcst][Gensler et al. 2016: Deep Learning Solar: LSTM and Autoenc.]]
-*********** [[cite:Chen15stockPredRNNlstm][Chen et al. 2015: Stock pred RNN LSTM]]
-*********** [[cite:Zhou16recurCNNcntinPain][Zhou et al. 2016: Recurrent Convolutional Neural Pain Est.]]
-*********** [[cite:Goodfellow16DeepLrnBook][Goodfellow et al. 2016: Deep Learning]] (book w/ RNN in it)
-*********** Deep Learning for Natural Language Processing (Richard Socher), tutorial video
-            In: [[Deep Learning School, Stanford, 2016]]
-            Slides w/ my Notes: [[cite:DeepLrnSchool2016_slides][Deep Learning School 2016: Slides]]
-*********** DONE [[cite:Freitas15MachLrnClass][Freitas 2015: Machine Learning Class (basic + RNN LSTM, Reinf Lrn)]]
-*********** DONE [[cite:Marino16bldngLdFrcstDeepNN][Marino et al. 2016: Building Load Frcst, LSTM RNN]]
-*********** TODO [[cite:Fridman17deepLrnSelfDrvCarClass][Fridman 2017 Deep Lrn SelfDrv Cars Class. Nice RNN slides, etc.]]
-*********** TODO Sequence to Sequence Deep Learning (Quoc Le), tutorial video
-            In: [[Deep Learning School, Stanford, 2016]]
-            Slides: [[cite:DeepLrnSchool2016_slides][Deep Learning School 2016: Slides]], video
-*********** Recurrent Neural Networks (multistep, old style)
-************* [[http://www.sciencedirect.com/science?_ob=ArticleURL&_udi=B6T08-41XM62K-8&_user=10&_rdoc=1&_fmt=&_orig=search&_sort=d&view=c&_version=1&_urlVersion=0&_userid=10&md5=5d26ffa18a11a073c4a9cbb307d6d0f4][Multi-step-ahead prediction using dynamic recurrent neural networks (2000, I think)]]
-************* Duda&Hart Pattern Recog Book: recurrent neural networks (p. 328)
-************* [[http://www.amazon.com/Recurrent-Neural-Networks-Prediction-Architectures/dp/0471495174][Recurrent Neural Networks for Prediction: Learning Algorithms, Architectures and Stability (2001, Hardcover)]]
-************* [[file:energy.bib::Barbounis2007locRecurrentNeuralWind][Barbounis & Theocharis 2007: Locally recurrent neural]]
-************* [[file:energy.bib::Trentin01mixRecurrNeuralSpkrNorm][Trentin & Giuliani 2001: Mixture Recurrent Neural]]
-************* [[http://www.neurosolutions.com/products/nsbook/][Interactive Neural Network Book]] explains recurrent NN's, has demos
-*********** Many in [[Deep Learning in Energy Systems]]
-********* Convolutional Neural Net Time Series Prediction, some Recurrent NN
-          <<Convolutional Neural Net Time Series Prediction, some Recurrent NN>>
-*********** [[cite:Zhou16recurCNNcntinPain][Zhou et al. 2016: Recurrent Convolutional Neural Pain Est.]]
-*********** [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]] (pools weather stations)
-*********** [[cite:Shi15confLSTMprecipNow][Shi et al. 2015: Convolutional LSTM RNN precip Nowcast]]
-*********** [[cite:Klein15dynCNNweathPred][Klein et al. 2015: Dynamic Convolutional Layer Weather Pred]]
-
-******* TODO [[cite:LeCun15deepLearnRev][LeCun et al. 2015: Deep]] Learning
-******* <<Deep Feature Learning>>
-********* [[cite:Karpathy14featLrnEscpdsBlog][Karpathy 2014: Feature Learning Escapades]] (Transfer learning)
-********* [[cite:Zeiler14vizUnderstandConvNN][Zeiler & Fergus 2014: Visualizing]] conv NN feat learn
-******* Deep Learning Code
-********* Matlab: [[http://www.mathworks.com/matlabcentral/fileexchange/38310-deep-learning-toolbox][Deep Learning Toolbox]]
-********* [[http://deeplearning.net/software_links/][deeplearning.net]]: software and papers, and [[http://deeplearning.net/reading-list/tutorials/][tutorials]]
-******* TODO Deep Learning with Small Data
-        <<Deep Learning with Small Data>>
-********* [[cite:ERCIMnews16spclIssueMachLrn][ERCIM News 2016: Special endition on machine learn]] Micro-data Learning: the Other End of the Spectrum
-********* [[cite:Lawrence16deepLrnEffic][Lawrence 2016: Deep Learning Pachinko James Watt]] Efficiency, GP
-********* TODO Video [[http://techtalks.tv/talks/small-data-deep-learning/63006/][Small Data Deep Learning - TechTalks.tv]]
-********* [[https://sites.google.com/site/dlworkshop16/session-1---deep-learning-with-small-data][Session 1 - Deep Learning with Small Data - ICML'16]]
-********* [[https://sites.google.com/site/dlworkshop16/session-2---simulation-based-learning-or-not][Session 2 - Simulation-based Learning or Not? ICML'16]]
-******* see also [[Deep Learning in Energy Systems]]
-******* see also [[Deep Reinforcement Learning]]
-******* TODO Extreme Learning Machines
-        <<Extreme Learning Machines>>
-********* DONE [[cite:Huang15extrmLrnMachGap][Huang 2015: What Extreme Learning Machines]]?
-********* [[cite:Tian10elmAdaboost_RT][Tian & Mao 2010: Ensemble ELM Based Modified AdaBoost]] ensemble
-********* [[cite:Braun16windFrcstRadGrad][Braun 2016: Multi Regional Wind]]
-********* [[cite:Zhang16detProbIntrvVari][Zhang et al. 2016: Deterministic]] interval, variational
-********* [[cite:Song16elecCnsmptFrcstELM][Song et al. 2016: Multivariate Extreme Learning Machine]]
-******* [[Deep Regime Learning]]
-******* see also: [[Feature Construction]]
-******* see also: [[Interactions and Deep Learning]]
-******* see [[Tensors]]
-***** <<Neural Network Training Algorithms>>
-******* [[file:energy.bib::Hagan94nnTrnLevMarq][Hagan & Menhaj 1994: Training Marquardt]] (Levenberg-Marquardt backprop reference, I think)
-* <<Deep Learning in Energy Systems>>
-*** [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]    :DpLrn:FrcstDmd:
-*** TODO [[cite:Busseti12deepLrnTimeSer][Busseti et al. 2012: Deep Learning Time Series Modeling (Demand frcst, RNN best)]] :DpLrn:RNN:FrcstDmd:
-*** TODO [[cite:Sogabe16optRESdpLrn][Sogabe et al. 2016: Optimization RES Deep Frcst Net]] :DpLrn:FrcstNtDmd:RBMC:Opt:
-*** [[cite:Vu15solarFrcstIBMmachLrn][Vu 2015: Machine IBM US DOE solar/demand/wind frcst Deep]] :DpLrn:FrcstNtDmd:SlfCnsmpt:MltiNWP:OffstObs:
-*** [[cite:Wu16probSTwindPowRNNlstm][Wu et al. 2016: Probabilistic Wind Pow Frcst RNN LSTM regimes via clust(?)]] :DpLrn:RNN:LSTM:FrcstProb:RgmLrn:
-*** [[cite:Zhang15windSpdFrcstPDBM][Zhang et al. 2015: Predictive Deep Boltzmann Mach. Wind Spd Frcst]] :DpLrn:PDBM:FrcstWndSpd:FtLrn:FrcstProb:
-*** [[cite:Tao14WindPowPredPattrnDeepLrn][Tao et al. 2014: Wind pow prediction pattern deep learn]] :DpLrn:FrcstWndPow:PDBM:FtLrn:FrcstProb:
-*** [[cite:Khodayar17RoughDeepNNShrtWndSpdFrcst][Khodayar et al. 2017: Rough Deep Neural Wind Spd Frcst]]
-*** [[cite:Khodayar15RobustDeepNNwindSpdPred][Khodayar & Teshnehlab 2015: Robust Deep NN Wind Spd Frcst]]
-*** TODO [[cite:Ghaderi17DeepLrnSpatTempFrcstWindPow][Ghaderi et al. 2017: Deep Wind Pow Spat Temp Frcst TensorFlow code]]
-*** code example (weather prediction): [[https://hub.docker.com/r/claytantor/tensorflow-lstm-regression/][tensorflow-lstm-regression]] what weather?
-
-*** [[cite:Wan16WindSpdDAfrcstDeepFeatLrn][Wan et al. 2016: Day Ahead Prediction Wind Speed Deep Feat Lrn]]
-*** TODO [[cite:DiazVico17deepNNwindSolEnrgyPred][Diaz--Vico et al. 2017: Deep NN Wind and Solar Energy Frcst]]
-*** [[cite:Diaz15DeepNNwindEnrgyPred][Diaz et al. 2015: Deep Neural Networks Wind Energy Frcst]]
-*** [[cite:Hu15ContinRBMdeepNNWindSpdFrcstHK][Hu et al. 2015: Continuous RBM Based deep NN Wind Spd Frst]]
-*** [[cite:Dalto15deepNNultraShrtWindSpdPred][Dalto et al. 2015: RBM deep NN wind spd frcst Hong Kong]]
-*** Generally: [[Probabilistic Deep Learning]]
-*** Generally: [[Deep Learning Time Series Prediction]]
-*** [[cite:Kusiak16shareDataWind][Kusiak 2016: Share data on wind energy]]
-*** [[cite:openEnergi15machLrnSmrtGrid][openEnergi 2016: How Can Machine Lrn Smart Grid Deep Reinf Lrn]] :DpLrn:DmdRspns:Opt:ReinfLrnDp:SlfCnsmpt:
-*** [[cite:Sergio15DeepLrnWindFrcst][Sergio & Ludermir 2015: Deep Learning Wind DBN]] :DpLrn:DpBlfNtwrk:FrcstProb:FrcstWndSpd:
-*** [[cite:Bianchi15ShortTermElectric][Bianchi et al. 2015: Short Term Electric Load Echo State PCA]] :DpLrn:FrcstWndSpd:FrcstProb:
-*** [[cite:Zaytar16wthFrcstWeq2seqRNNlstm][Zaytar & Amrani 2016: Sequence Sequence Weather RNN LSTM (but fake journal?)]]
-*** [[cite:Zheng17loadFrcstRNNlstm][Zheng et al. 2017: Electric Load Forecasting RNN LSTM]] :DpLrn:FrcstDmd:RNN:LSTM:
-*** [[cite:Shi15confLSTMprecipNow][Shi et al. 2015: Convolutional LSTM RNN precip Nowcast]] (kind of RES...)
-*** [[cite:Klein15dynCNNweathPred][Klein et al. 2015: Dynamic Convolutional Layer Weather Pred]] :DpLrn:CNN:FrcstCloud:
-*** [[cite:Gensler16autoEncLSTMsolFrcst][Gensler et al. 2016: Deep Learning Solar: LSTM and Autoenc.]]       :DpLrn:RNN:LSTM:FrcstPV:AutoEnc:
-*** StephanV says: MS student deep learning beat 20 years of past work (steering system)
-
-*** [[cite:Perera14machLrnTechRES][Perera et al. 2014: Machine Learning Techniques RES]] (really deep?)
-*** [[cite:Aler15machLrnDAsolarFrcstNWP][Aler et al. 2015: Study Machine Learning Solar Frcst (Deep?)]]
-*** [[cite:Siemens14sennFrcstsRES][Siemens 2014: Better Forecast RES Wnd/Solar/netDmd/xmssn/Deep]] :DpLrn:FrcstNtDmd:FrcstTrnsmssn:
-*** [[cite:Murgia17googleDeepMindUKgrid][Murgia & Thomas 2017: Google DeepMind National Grid AI Demand Frcst DpLrn]] :DpLrn:ReinfLrnDp:FrcstDmd:
-*** Google Blog confirms: [[http://www.evernote.com/l/AA1eARHrE_xCOo3ECrYKuPVecoNiK0ElIZk/][DeepMind next step is energy conservation]]
-*** [[cite:Veeramachaneni15cplaGrphMdlsWindRsrcEst][Veeramachaneni et al. 2015: Copula Graphical Models wind farm site]] :FrcstWndSpd:CplaGrph:
-* <<Neural Nets>>
+* Neural Nets
 *** picking layer types [[file:energy.bib::LeCun98effBkprp][LeCun et al. 1998: Efficient]] (easy to read)
+*** <<Neural Net Weights Initialization>>
+***** [[cite:Jones15xavierInitBlog][Jones 2015: Explanation Xavier Initialization (simple blog post)]]
+***** [[cite:Glorot10undrstndDiffDpLrnFFnets][Glorot & Bengio 2010: Understanding Diff Deep NN Lrn: Xavier Initialization]]
 *** Points from Ch. 6 of "Pattern Recognition" by DHS
 ***** more weights ==> fewer local minima (surprise!, p. 299)
 ***** local minima not necessarily a problem, heuristics help (6.8)
@@ -2063,7 +1790,12 @@ Scott
       3. Mine sensor data to predict part and vehicle failure (/ModernWindABS!/)
       4. Predict delays and bottlenecks in production.
 
-***** Classes/Tutorials/Videos
+***** <<Why Deep Learning Works>>
+******* Allows more complexity with fewer nodes?
+********* TODO [[http://neuralnetworksanddeeplearning.com/chap5.html][Is informal]]: [[cite:Bengio09lrnDeepArchAI][Bengio 2009: Learning Deep Architectures AI]]
+********* [[cite:Pascanu2013numRespRgnsDeepNNpieceLin][Pascanu et al. 2013 Num response regions picewise deep]] 
+********* [[cite:Montufar2014numLinRegnDeepNN][Montufar et al. 2014: Number Linear Regions piecewise deep]]
+***** <<Deep Learning Classes/Tutorials/Videos>>
 ******* TODO [[http://www.evernote.com/l/AA2KD9DttQRPEZaXZ10OCCcdQBUaeIoa39I/][A Brief Overview of Deep Learning]]
         mark up evernote doc and copy to here
 ******* TODO [[http://www.bayareadlschool.org/][Deep Learning School, Stanford]] on (9/24-25, 2016)
@@ -2086,6 +1818,7 @@ Scott
 *********** DONE [[https://youtu.be/L1sHcj3qDNc][Torch Tutorial]] (Alex Wiltschko, Twitter)
 *********** TODO [[https://youtu.be/G5RY_SUJih4][Sequence to Sequence Deep Learning]] (Quoc Le, Google)
 *********** TODO [[https://youtu.be/11rsu_WwZTc][Foundations and Challenges of Deep Learning]] (Yoshua Bengio)
+******* TODO [[https://www.youtube.com/playlist?list=PLoRl3Ht4JOcdU872GhiYWf6jwrk_SNhz9][{Coursera} Neural Networks for Machine Learning — Geoffrey Hinton 2016]]
 ******* DONE [[cite:Boney16introSemiSupLadderBlog][Boney 2016: Introduction Semi Supervised Ladder Network]]
 ******* DONE [[https://www.youtube.com/watch?v=CLSy5WlaWKc][Tutorial: Deep Learning - YouTube]] (my notes are in OneNote)
 ******* DONE Swiss HPC 2016 Conf Deep Learning Tutorials
@@ -2120,11 +1853,17 @@ Scott
 ***** [[cite:Karpathy14featLrnEscpdsBlog][Karpathy 2014: Feature Learning Escapades]] (Feature and Transfer learning)
 ***** [[cite:Karpathy16convNNcourseNotes][Karpathy 2016: Course Notes CS231n]] conv NN's (used for ModerWindABS kickoff)
 ***** [[cite:Ambati15deepLrnGuidePract][Ambati 2015: Deep]] Learn practical guide (intro & use of deep learn)
-***** [[cite:Ramanathan14PPfraudDetDeepLrn][Ramanathan 2014: PayPals Fraud Detection Deep Learning]] practical slides.  How big, et.
+***** [[cite:Ramanathan14PPfraunDetDeepLrn][Ramanathan 2014: PayPals Fraud Detection Deep Learning]] practical slides.  How big, etc.
 ***** [[cite:Lv16faultDiagDeepLrn][Lv et al. 2016: Fault detect deep learn (has benchmark database)]]
 ***** [[cite:Long15fullConvNNsemSeg][Long et al. 2015: Fully conv NN for sem. image seg]]
 ***** [[cite:Britz15tutorialRNN][Britz 2015: Recurrent Neural Networks Tutorial]]
 ***** [[cite:Busseti12deepLrnTimeSer][Busseti et al. 2012: Deep Learning Time Series Modeling (Demand frcst, RNN best)]]
+***** [[cite:Perera14machLrnTechRES][Perera et al. 2014: Machine Learning Techniques RES]] (really deep?)
+***** <<Deep Learning Tensors>>
+******* [[cite:Che17neuralNetTensorRnk1][Che et al. 2017: Neural Tensor learn Rank 1]]
+***** <<Deep Learning Regularization>>
+******* [[cite:Gal16nnDropoutBayesApprox][Gal & Ghahramani 2016: Dropout Bayesian Approximation]]
+***** [[Deep Learning School, Stanford, 2016]]
 ***** TODO [[http://lamda.nju.edu.cn/weixs/project/CNNTricks/CNNTricks.html][Must Know Tips/Tricks in Deep Neural Networks]]
 ***** TODO Ladder networks
 
@@ -2154,6 +1893,7 @@ Scott
 ******* [[cite:Zhang15windSpdFrcstPDBM][Zhang et al. 2015: Predictive Deep Boltzmann Mach. Wind Spd Frcst]]
 ******* DONE [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]
 ******* [[cite:Bianchi15ShortTermElectric][Bianchi et al. 2015: Short Term Electric Load Echo State PCA]]
+******* [[cite:Tao14WindPowPredPattrnDeepLrn][Tao et al. 2014: Wind pow prediction pattern deep learn]]
 ******* TODO <<Recurrent Neural Net time series prediction>>
 ********* TODO [[http://karpathy.github.io/2015/05/21/rnn-effectiveness/][The Unreasonable Effectiveness of Recurrent Neural Networks]] (Karpathy)
 ********* TODO [[https://indico.io/blog/general-sequence-learning-using-recurrent-neural-nets/][indico.io | General Sequence Learning Using Recurrent Neural Nets]] (nice video)
@@ -2163,6 +1903,7 @@ Scott
 ********* [[cite:Wu16probSTwindPowRNNlstm][Wu et al. 2016: Probabilistic Wind Pow Frcst RNN LSTM regimes via clust(?)]]
 ********* [[cite:Zheng17loadFrcstRNNlstm][Zheng et al. 2017: Electric Load Forecasting RNN LSATM]]
 ********* [[cite:Yu17gnrcTrafFrcstExtrnRNNlstm][Yu et al. 2017: Deep Learning Generic Extrm Traffic RNN LSTM]]
+********* [[cite:Gensler16autoEncLSTMsolFrcst][Gensler et al. 2016: Deep Learning Solar: LSTM and Autoenc.]]
 ********* [[cite:Chen15stockPredRNNlstm][Chen et al. 2015: Stock pred RNN LSTM]]
 ********* [[cite:Malhotra15lstmAnomDetTS][Malhotra et al. 2015: LSTM TimeSer Anom. Det: Kalman could be Copula]]
 ********* [[cite:Zhou16recurCNNcntinPain][Zhou et al. 2016: Recurrent Convolutional Neural Pain Est.]]
@@ -2185,6 +1926,7 @@ Scott
 *********** [[file:energy.bib::Barbounis2007locRecurrentNeuralWind][Barbounis & Theocharis 2007: Locally recurrent neural]]
 *********** [[file:energy.bib::Trentin01mixRecurrNeuralSpkrNorm][Trentin & Giuliani 2001: Mixture Recurrent Neural]]
 *********** [[http://www.neurosolutions.com/products/nsbook/][Interactive Neural Network Book]] explains recurrent NN's, has demos
+********* Many in [[Deep Learning in Energy Systems]]
 ******* <<Convolutional Neural Net Time Series Prediction, some Recurrent NN>>
 ********* [[cite:Zhou16recurCNNcntinPain][Zhou et al. 2016: Recurrent Convolutional Neural Pain Est.]]
 ********* [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]] (pools weather stations)
@@ -2208,7 +1950,7 @@ Scott
 ******* TODO Video [[http://techtalks.tv/talks/small-data-deep-learning/63006/][Small Data Deep Learning - TechTalks.tv]]
 ******* [[https://sites.google.com/site/dlworkshop16/session-1---deep-learning-with-small-data][Session 1 - Deep Learning with Small Data - ICML'16]]
 ******* [[https://sites.google.com/site/dlworkshop16/session-2---simulation-based-learning-or-not][Session 2 - Simulation-based Learning or Not? ICML'16]]
-***** see also [[Deep Reinforcement Learning]]
+******* see also [[Deep Reinforcement Learning]]
 ***** TODO <<Extreme Learning Machines>>
 ******* DONE [[cite:Huang15extrmLrnMachGap][Huang 2015: What Extreme Learning Machines]]?
 ******* [[cite:Tian10elmAdaboost_RT][Tian & Mao 2010: Ensemble ELM Based Modified AdaBoost]] ensemble
@@ -2221,8 +1963,12 @@ Scott
 ***** see also: [[Interactions and Deep Learning]]
 ***** see [[Tensors]]
 *** <<Neural Network Training Algorithms>>
-***** [[file:energy.bib::Hagan94nnTrnLevMarq][Hagan & Menhaj 1994: Training Marquardt]] (Levenberg-Marquardt backprop reference, I think)
-
+***** Levenberg-Marquardt Algorithm
+******* [[file:energy.bib::Hagan94nnTrnLevMarq][Hagan & Menhaj 1994: Training Marquardt]] (Levenberg-Marquardt backprop reference, I think)
+******* [[cite:Mathworks05redMemLevMarq][MathWorks 2005: Reduced Memory Levenberg Marquardt]]
+******* [[cite:Arif09onlineLevMarqPowSys][Arif et al. 2009: Online Levenberg Marquardt]]
+******* [[cite:Wilamowski99redMemLevMarq1hidLayer][Wilamowski et al. 1999: Efficient Lev Marq One Layer (reduced mem)]]
+******* [[cite:Manikandan16designTseriesANN][Manikandan & Subha 2016: Software Design Challenges (parallel lev-marq)]]
 *** <<Invertible Neural Net>>
 
     Can be inverted so ouput can be used to predict input.  Useful in
@@ -2233,6 +1979,43 @@ Scott
 ***** [[file:energy.bib::Baird05oneStepInvrtNN][Baird et al. 2005: One PDF]] step pdf learn invertible NN
 ******* See also: [[Wind spatio-temporal patterns]]
 
+* <<Deep Learning in Energy Systems>>
+*** [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]    :DpLrn:FrcstDmd:
+*** TODO [[cite:Busseti12deepLrnTimeSer][Busseti et al. 2012: Deep Learning Time Series Modeling (Demand frcst, RNN best)]] :DpLrn:RNN:FrcstDmd:
+*** TODO [[cite:Sogabe16optRESdpLrn][Sogabe et al. 2016: Optimization RES Deep Frcst Net]] :DpLrn:FrcstNtDmd:RBMC:Opt:
+*** [[cite:Vu15solarFrcstIBMmachLrn][Vu 2015: Machine IBM US DOE solar/demand/wind frcst Deep]] :DpLrn:FrcstNtDmd:SlfCnsmpt:MltiNWP:OffstObs:
+*** [[cite:Wu16probSTwindPowRNNlstm][Wu et al. 2016: Probabilistic Wind Pow Frcst RNN LSTM regimes via clust(?)]] :DpLrn:RNN:LSTM:FrcstProb:RgmLrn:
+*** [[cite:Zhang15windSpdFrcstPDBM][Zhang et al. 2015: Predictive Deep Boltzmann Mach. Wind Spd Frcst]] :DpLrn:PDBM:FrcstWndSpd:FtLrn:FrcstProb:
+*** [[cite:Tao14WindPowPredPattrnDeepLrn][Tao et al. 2014: Wind pow prediction pattern deep learn]] :DpLrn:FrcstWndPow:PDBM:FtLrn:FrcstProb:
+*** [[cite:Khodayar17RoughDeepNNShrtWndSpdFrcst][Khodayar et al. 2017: Rough Deep Neural Wind Spd Frcst]]
+*** [[cite:Khodayar15RobustDeepNNwindSpdPred][Khodayar & Teshnehlab 2015: Robust Deep NN Wind Spd Frcst]]
+*** TODO [[cite:Ghaderi17DeepLrnSpatTempFrcstWindPow][Ghaderi et al. 2017: Deep Wind Pow Spat Temp Frcst TensorFlow code]]
+*** code example (weather prediction): [[https://hub.docker.com/r/claytantor/tensorflow-lstm-regression/][tensorflow-lstm-regression]] what weather?
+
+*** [[cite:Wan16WindSpdDAfrcstDeepFeatLrn][Wan et al. 2016: Day Ahead Prediction Wind Speed Deep Feat Lrn]]
+*** TODO [[cite:DiazVico17deepNNwindSolEnrgyPred][Diaz--Vico et al. 2017: Deep NN Wind and Solar Energy Frcst]]
+*** [[cite:Diaz15DeepNNwindEnrgyPred][Diaz et al. 2015: Deep Neural Networks Wind Energy Frcst]]
+*** [[cite:Hu15ContinRBMdeepNNWindSpdFrcstHK][Hu et al. 2015: Continuous RBM Based deep NN Wind Spd Frst]]
+*** [[cite:Dalto15deepNNultraShrtWindSpdPred][Dalto et al. 2015: RBM deep NN wind spd frcst Hong Kong]]
+*** Generally: [[Probabilistic Deep Learning]]
+*** Generally: [[Deep Learning Time Series Prediction]]
+*** [[cite:Kusiak16shareDataWind][Kusiak 2016: Share data on wind energy]]
+*** [[cite:openEnergi15machLrnSmrtGrid][openEnergi 2016: How Can Machine Lrn Smart Grid Deep Reinf Lrn]] :DpLrn:DmdRspns:Opt:ReinfLrnDp:SlfCnsmpt:
+*** [[cite:Sergio15DeepLrnWindFrcst][Sergio & Ludermir 2015: Deep Learning Wind DBN]] :DpLrn:DpBlfNtwrk:FrcstProb:FrcstWndSpd:
+*** [[cite:Bianchi15ShortTermElectric][Bianchi et al. 2015: Short Term Electric Load Echo State PCA]] :DpLrn:FrcstWndSpd:FrcstProb:
+*** [[cite:Zaytar16wthFrcstWeq2seqRNNlstm][Zaytar & Amrani 2016: Sequence Sequence Weather RNN LSTM (but fake journal?)]]
+*** [[cite:Zheng17loadFrcstRNNlstm][Zheng et al. 2017: Electric Load Forecasting RNN LSTM]] :DpLrn:FrcstDmd:RNN:LSTM:
+*** [[cite:Shi15confLSTMprecipNow][Shi et al. 2015: Convolutional LSTM RNN precip Nowcast]] (kind of RES...)
+*** [[cite:Klein15dynCNNweathPred][Klein et al. 2015: Dynamic Convolutional Layer Weather Pred]] :DpLrn:CNN:FrcstCloud:
+*** [[cite:Gensler16autoEncLSTMsolFrcst][Gensler et al. 2016: Deep Learning Solar: LSTM and Autoenc.]]       :DpLrn:RNN:LSTM:FrcstPV:AutoEnc:
+*** StephanV says: MS student deep learning beat 20 years of past work (steering system)
+
+*** [[cite:Perera14machLrnTechRES][Perera et al. 2014: Machine Learning Techniques RES]] (really deep?)
+*** [[cite:Aler15machLrnDAsolarFrcstNWP][Aler et al. 2015: Study Machine Learning Solar Frcst (Deep?)]]
+*** [[cite:Siemens14sennFrcstsRES][Siemens 2014: Better Forecast RES Wnd/Solar/netDmd/xmssn/Deep]] :DpLrn:FrcstNtDmd:FrcstTrnsmssn:
+*** [[cite:Murgia17googleDeepMindUKgrid][Murgia & Thomas 2017: Google DeepMind National Grid AI Demand Frcst DpLrn]] :DpLrn:ReinfLrnDp:FrcstDmd:
+*** Google Blog confirms: [[http://www.evernote.com/l/AA1eARHrE_xCOo3ECrYKuPVecoNiK0ElIZk/][DeepMind next step is energy conservation]]
+*** [[cite:Veeramachaneni15cplaGrphMdlsWindRsrcEst][Veeramachaneni et al. 2015: Copula Graphical Models wind farm site]] :FrcstWndSpd:CplaGrph:
 * <<Feature reduction>>
 
   Making feature dimension smaller, either w/ feature selection or
@@ -10833,6 +10616,7 @@ Erika
 ******* [[file:energy.bib::Brummel16monEnrgProgSiePtnt][Brummel et al. 2016: Siemens cond mon energy patent]] 
 ******* [[cite:Juricic06faultDetGaussProc][Juricic & Kocijan 2006: Fault det. Gaussian Proc. Siemens idea.]]
 ******* [[cite:Lang08neuralCloundMon][Lang et al. 2008: Neural Clouds Monitor (Siemens?)]]
+******* [[cite:TautzWeinert16scadaWindTurbCondMon][Tautz-Weinert & Watson 2016: Using SCADA Data wind turbine]]
 ******* [[file:energy.bib::Mihnev16anomDetParamSysPtnt][Mihnev et al. 2016: Anom Det in Param Sys (like SPRT?)]] 
 ******* [[https://onedrive.live.com/edit.aspx/work/IWES?cid=4bbd96b3698748f8&id=documents&wd=target%2528Tutorials.one%257C93389E1B-FCE1-4F63-9068-1B49828D94D3%252FPredictive%2520Maintenance%2520with%2520Matlab%257CF90A03D9-B2A1-49F5-97FD-A5E26BFE11C0%252F%2529][Predictive Maintenance with Matlab (my OneNote notes on tutorial)]]
 ***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (discusses ROC stats, learning)
@@ -10850,6 +10634,8 @@ Erika
 ******* [[Could do submodular optimization]]
 ******* [[http://www.oe.energy.gov/DocumentsandMedia/Smart_Grid_Eric_Lightner_Presentation_05072008.pdf][Self-healing and resilience from attacks]]
 ******* [[file:energy.bib::Ma09compIntSmartGrid][Ma et al. 2009]] (computational Int. in smart grid)
+******* [[cite:Haibach17predMaintWndSemiAnomDet][Haibach & Treiber 2017: Predictive Maint. Offshore Windparks]]
+******* [[cite:Deesko15digFingerPrintFaultSlides][Deesko & Bärmann 2015: Digital Fingerprint Equipment Faults (STEAG)]]
 * <<Random Variable Generation>>
 *** [[cite:Hardin13genRealisticCorrMat][Hardin et al. 2013 Gen Realistic Random Corr Matrix has Rcode]]
 *** [[http://math.stackexchange.com/questions/357980/how-to-generate-random-symmetric-positive-definite-matrices-using-matlab][How to generate random symmetric positive definite matrices using MATLAB?]]
