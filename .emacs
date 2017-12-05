@@ -23,9 +23,18 @@
 (package-initialize)
 
 (unless (package-installed-p 'use-package) ;; for totally clean start
-  (message "Installing use-package and refreshing")
+  (message "Installing use-package, diminish and refreshing")
   (package-refresh-contents)
-  (package-install 'use-package))
+  (package-install 'use-package)
+  ;; Used by use-package but not autoinstalled for some reason (unlike bind-key)
+  (package-install 'diminish))
+
+;; from: http://cachestocaches.com/2015/8/getting-started-use-package/
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
+
 (setq use-package-always-ensure t) ; so use-package always installs missing pkgs
 
 ;; * Computer-specific setup
@@ -470,6 +479,7 @@
 
 (add-hook  'dired-mode-hook
 	   (lambda ()
+             (dired-hide-details-mode) ; less junk.  ) restores orig format
              ;; make dired search case insensitive (default is case sensitive)
 	     (setq case-fold-search t)
              ;; override for dired, where this is annoying, for some reason
@@ -502,6 +512,41 @@
 
 (setq dired-recursive-copies t)
 (setq dired-recursive-deletes t)
+
+;; *** dired+
+
+;; ;; http://www.emacswiki.org/DiredPlus
+;; (use-package dired+
+;;   :init
+;;   ;; Details toggling is bound to "(" in `dired-mode' by default
+;;   (setq diredp-hide-details-initially-flag t)) ; the default
+;; ;;:config
+;; ;; (progn
+;; ;;   ;; Privilege indicator faces
+;; ;;   (defun modi/dired-update-privilege-faces ()
+;; ;;     (set-face-attribute 'diredp-dir-priv nil
+;; ;;                         :foreground "#7474FFFFFFFF"
+;; ;;                         :background (face-background 'default))
+;; ;;     (set-face-attribute 'diredp-exec-priv nil
+;; ;;                         :foreground "dodger blue"
+;; ;;                         :background (face-background 'default))
+;; ;;     (set-face-attribute 'diredp-other-priv nil
+;; ;;                         :background (face-background 'default))
+;; ;;     (set-face-attribute 'diredp-write-priv nil
+;; ;;                         :foreground "#25258F8F2929"
+;; ;;                         :background (face-background 'default))
+;; ;;     (set-face-attribute 'diredp-read-priv nil
+;; ;;                         :foreground "#999932325555"
+;; ;;                         :background (face-background 'default))
+;; ;;     (set-face-attribute 'diredp-no-priv nil
+;; ;;                         :foreground "#2C2C2C2C2C2C"
+;; ;;                         :background (face-background 'default))
+;; ;;     (set-face-attribute 'diredp-rare-priv nil
+;; ;;                         :foreground "Green"
+;; ;;                         :background (face-background 'default))
+;; ;;     (set-face-attribute 'diredp-link-priv nil
+;; ;;                         :foreground "#00007373FFFF"))
+;; ;;   (add-hook 'dired-mode-hook #'modi/dired-update-privilege-faces)))
 
 ;; ** Find-file and URL
 ;; Avoid extra "file or url" text in minibuf; use ffap only @ valid URL or path
@@ -1562,6 +1607,8 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
 ;; ("R" helm-recentf)
 (global-set-key (kbd "<M-apps>") 'hydra-utils/body)
 
+(use-package helpful) ; improvment over emacs info?
+
 ;; * Appearance
 
 (global-set-key (kbd "C->") 'text-scale-increase)
@@ -1769,7 +1816,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda use-package counsel swiper-helm esup auctex auctex-latexmk ess ess-R-data-view ess-smart-equals ess-smart-underscore ess-view psvn igrep helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine highlight-indent-guides lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ ox-pandoc copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 undo-tree iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f org-ref writegood-mode auto-complete smex matlab-mode popup parsebib org-plus-contrib org-cliplink org-bullets org-autolist org key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move cygwin-mount)))
+    (helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda use-package counsel swiper-helm esup auctex auctex-latexmk ess ess-R-data-view ess-smart-equals ess-smart-underscore ess-view psvn igrep helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine highlight-indent-guides lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ ox-pandoc copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 undo-tree iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f org-ref writegood-mode auto-complete smex matlab-mode popup parsebib org-plus-contrib org-cliplink org-bullets org-autolist org key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move cygwin-mount)))
  '(paren-message-show-linenumber (quote absolute))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
