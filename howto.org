@@ -4922,6 +4922,7 @@ won't work if you close and immediately open onenote again.
 ***** [[http://rogerdudler.github.io/git-guide/][git - the simple guide - no deep shit!]]
 ***** [[https://confluence.atlassian.com/bitbucket/use-the-ssh-protocol-with-bitbucket-cloud-221449711.html][bitbucket SSH key]]
 ***** [[https://help.cloudforge.com/hc/en-us/articles/215243143-Configure-TortoiseGIT-client-to-work-with-SSH-keys-on-Windows][tortoiseGIT ssh key]]
+***** tortoiseGIT [[https://stackoverflow.com/questions/14000173/tortoisegit-save-user-authentication-credentials][avoid typing in password]] each time
 ***** [[https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud?team_source=header&utm_source=special-offer-email&utm_medium=email&utm_campaign=EP-124][Learn Git with Bitbucket Cloud | Atlassian Git Tutorial]]
 ***** [[https://developer.atlassian.com/blog/2016/02/6-secret-bitbucket-features/?team_source=header&utm_source=special-offer-email&utm_medium=email&utm_campaign=EP-124][6 Bitbucket secrets - Atlassian Developers]]
 ***** <<git in emacs>>
