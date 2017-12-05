@@ -792,6 +792,7 @@
 	 ("\\.cpp$"  . c++-mode)
 	 ("\\.h$"    . c++-mode)
 	 ("\\.java$" . java-mode)
+	 ("\\.m$" . matlab-mode)
 	 ) auto-mode-alist))
 
 ;; When saving files, set execute permission if #! is in first line.
@@ -850,16 +851,43 @@
 
 ;; When I put this in packages, stuff stopped working. Also, abo-abo says that this package is no longer maintained.  But he has a new one, that maybe I could try.
 
-(setq auto-mode-alist (cons '("\\.m\\'" . matlab-mode) auto-mode-alist))
-(defun my-matlab-mode-hook ()
-  (setq fill-column 80)		; where auto-fill should wrap
-  (define-key matlab-mode-map [f1] 'matlab-fill-paragraph) ; override global
-  (define-key matlab-mode-map "\e;" 'comment-dwim) ; override matlab's commenter
-  )
-(setq matlab-mode-hook 'my-matlab-mode-hook)
-(setq matlab-indent-end-before-return t)
-;;so matlab R12 runs in emacs and don't get a splash over remote connections prevents error messages from starting GUI but then plots don't work
-(setq matlab-shell-command-switches '("-nodesktop -nosplash"))
+;; started from: https://github.com/thisirs/dotemacs/blob/master/lisp/init-matlab.el
+(use-package matlab 
+  :ensure matlab-mode
+  :mode ("\\.m$" . matlab-mode)
+  :commands (matlab-shell)
+  :config
+  (setq matlab-shell-command "matlab")
+  (setq matlab-shell-command-switches '("-nodesktop" "-nosplash"))
+
+  ;; Don't switch to figure window
+  (setenv "WINDOWID" (frame-parameter (selected-frame) 'outer-window-id))
+
+  (setq-default matlab-change-current-directory t)
+  (setq-default matlab-functions-have-end t)
+  (setq-default matlab-indent-function-body 'guess)
+  (setq matlab-indent-end-before-return t)
+
+  ;;(setq auto-mode-alist (cons '("\\.m\\'" . matlab-mode) auto-mode-alist)) ; in big list already
+  (defun my-matlab-mode-hook ()
+    (local-set-key "\M-j" #'join-to-next-line)
+    (local-set-key "\M-;" 'comment-dwim)
+    (auto-fill-mode -1)
+    (setq fill-column 80)		; where auto-fill should wrap
+    (define-key matlab-mode-map [f1] 'matlab-fill-paragraph) ; override global
+    (define-key matlab-mode-map "\e;" 'comment-dwim) ; override matlab's commenter
+    )
+  (setq matlab-mode-hook 'my-matlab-mode-hook)
+
+  ;;so matlab R12 runs in emacs and don't get a splash over remote connections prevents error messages from starting GUI but then plots don't work
+  (setq matlab-shell-command-switches '("-nodesktop -nosplash"))
+
+  (defun matlab-shell-fix-slowness ()
+    (remove-hook 'comint-output-filter-functions 'matlab-shell-render-html-anchor t)
+    (remove-hook 'comint-output-filter-functions 'matlab-shell-render-errors-as-anchor t))
+  (add-hook 'matlab-shell-mode-hook #'matlab-shell-fix-slowness))
+
+(provide 'init-matlab)
 
 ;; ** elisp
 (add-hook 'emacs-lisp-mode-hook
