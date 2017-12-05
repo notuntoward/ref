@@ -849,7 +849,7 @@
 
 ;; ** Matlab mode
 
-;; When I put this in packages, stuff stopped working. Also, abo-abo says that this package is no longer maintained.  But he has a new one, that maybe I could try.
+;; Got errors about obsolete code when I first isntalled this in packages. Note that abo-abo says that this package is no longer maintained (but did he meant THIS package or is THIS package actually his package? the 'matlab' package below is 'matlab-emacs' in sourceforge).  Anyway, abo-abo has a new matlab package, maybe worth trying.
 
 ;; started from: https://github.com/thisirs/dotemacs/blob/master/lisp/init-matlab.el
 (use-package matlab 
