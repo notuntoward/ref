@@ -4908,8 +4908,10 @@ won't work if you close and immediately open onenote again.
   changes, and all.
 
 *** git
-***** [[http://git.or.cz/course/svn.html][Git vs. SVN Crash Course]]
-***** initializing a git repository from scratch
+***** Git tutorials
+******* [[http://git.or.cz/course/svn.html][Git vs. SVN Crash Course]]
+******* [[http://rogerdudler.github.io/git-guide/][git - the simple guide - no deep shit!]]
+***** Initializing a git repository from scratch
       From: https://bitbucket.org/
 
       git clone https://urwald@bitbucket.org/urwald/ref.git
@@ -4918,13 +4920,13 @@ won't work if you close and immediately open onenote again.
       git add README.md
       git commit -m "Initial commit"
       git push -u origin master      
-      
-***** [[http://rogerdudler.github.io/git-guide/][git - the simple guide - no deep shit!]]
-***** [[https://confluence.atlassian.com/bitbucket/use-the-ssh-protocol-with-bitbucket-cloud-221449711.html][bitbucket SSH key]]
-***** [[https://help.cloudforge.com/hc/en-us/articles/215243143-Configure-TortoiseGIT-client-to-work-with-SSH-keys-on-Windows][tortoiseGIT ssh key]]
-***** tortoiseGIT [[https://stackoverflow.com/questions/14000173/tortoisegit-save-user-authentication-credentials][avoid typing in password]] each time
-***** [[https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud?team_source=header&utm_source=special-offer-email&utm_medium=email&utm_campaign=EP-124][Learn Git with Bitbucket Cloud | Atlassian Git Tutorial]]
-***** [[https://developer.atlassian.com/blog/2016/02/6-secret-bitbucket-features/?team_source=header&utm_source=special-offer-email&utm_medium=email&utm_campaign=EP-124][6 Bitbucket secrets - Atlassian Developers]]
+***** Tortoise GIT
+******* [[https://help.cloudforge.com/hc/en-us/articles/215243143-Configure-TortoiseGIT-client-to-work-with-SSH-keys-on-Windows][tortoiseGIT ssh key]]
+******* tortoiseGIT [[https://stackoverflow.com/questions/14000173/tortoisegit-save-user-authentication-credentials][avoid typing in password]] each time
+***** Bitbucket 
+******* [[https://confluence.atlassian.com/bitbucket/use-the-ssh-protocol-with-bitbucket-cloud-221449711.html][bitbucket SSH key]]
+******* [[https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud?team_source=header&utm_source=special-offer-email&utm_medium=email&utm_campaign=EP-124][Learn Git with Bitbucket Cloud | Atlassian Git Tutorial]]
+******* [[https://developer.atlassian.com/blog/2016/02/6-secret-bitbucket-features/?team_source=header&utm_source=special-offer-email&utm_medium=email&utm_campaign=EP-124][6 Bitbucket secrets - Atlassian Developers]]
 ***** <<git in emacs>>
       From: [[https://stackoverflow.com/questions/5925372/how-to-use-git-from-emacs][How to use git from emacs - Stack Overflow]]
 
