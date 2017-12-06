@@ -25,15 +25,14 @@
 (unless (package-installed-p 'use-package) ;; for totally clean start
   (message "Installing use-package, diminish and refreshing")
   (package-refresh-contents)
-  (package-install 'use-package)
-  ;; Used by use-package but not autoinstalled for some reason (unlike bind-key)
-  (package-install 'diminish))
+  (package-install 'use-package))
 
 ;; from: http://cachestocaches.com/2015/8/getting-started-use-package/
 (eval-when-compile
   (require 'use-package))
-(require 'diminish)
-(require 'bind-key)
+
+(use-package bind-key) ; for use-package :bind-key
+(use-package diminish) ; for use-package :diminish
 
 (setq use-package-always-ensure t) ; so use-package always installs missing pkgs
 
