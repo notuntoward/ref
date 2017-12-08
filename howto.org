@@ -121,7 +121,7 @@
         It's included in smart-regions somehow, and I can see the function, but how to bind it?
 
 ******* TRY right justify mode-line clock
-********* Modeline is controlled by the variable: =mode-line-format= 
+********* Mode line is controlled by the variable: =mode-line-format= 
 
           _My current =mode-line-format= settings_
 
@@ -144,6 +144,8 @@
         mode-line-modes 
         mode-line-misc-info 
         mode-line-end-spaces)
+
+********* can see which modes are putting stuff on mode-line with =M-x describe-mode=
 
 ********* current mode-line-format suggests clock is in: =mode-line-misc-info=
 ********* [[help:mode-line-misc-info]] contains =global-mode-string=
@@ -2521,12 +2523,12 @@ Strike-through: nil
 ***** include the libraries that are now in my .emacs or _emacs
 ***** must [[Proxy environment variable for emacs, wget, anki, and others]]
 
-*** <<use-package>>
-***** :init vs :config
-      From: https://github.com/jwiegley/use-package/issues/394
+***** <<use-package>>
+******* :init vs :config
+        From: https://github.com/jwiegley/use-package/issues/394
 
-      *:init*   stuff that doesn't run if the package is not availabel
-      *:config* code that means something (works) only after the pkg is loaded
+        *:init*   stuff that doesn't run if the package is not availabel
+        *:config* code that means something (works) only after the pkg is loaded
 
 *** Remember cursor position, last file visit
     ;; for emacs 25.1 or later

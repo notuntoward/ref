@@ -10207,6 +10207,7 @@ Scott
 ***** [[file:~/doc/energy.bib::Lu10unitCommCnstrnt][Lu et al. 2010: Unit]] commitment flexibility
 ***** [[file:energy.bib::Focken10extrmEvRampFrcst][Focken 2010: Experiences Extreme Event]] (ramp need)
 ***** [[file:energy.bib::Bristol09swingDoorTrend][Bristol 1990: Swinging]] Door Trend (orig paper)
+***** [[cite:CAISO10caisoRnwblIntegSwngDr][CAISO 2010: Integ. Rnwbl Swing Door Tech Rep]]
 ***** [[file:energy.bib::Florita13idWindSolarRamps][Florita et al. 2013: Identifying Wind Solar Ramping Events]] (swingdoor plots)
 ***** [[cite:Sevlian13windRampDetStat][Sevlian & Rajagopal 2013: Detection Statistics Wind Power Ramps]]
 ***** [[file:energy.bib::Lew11valWindFrcst][Lew et al. 2011]] val wind frcst (discusses ramps)

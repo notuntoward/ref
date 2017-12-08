@@ -27807,25 +27807,27 @@ See also: Zhang13RobustoptPowFlwVaR},
 @Article{Makarov09OperWindCA,
   author    = {Makarov, Y.V. and Loutan, C. and Jian Ma and de Mello, P.},
   title     = {Operational Impacts of Wind Generation on California Power Systems},
+  journal   = {Power Systems, IEEE Transactions on},
   year      = {2009},
   volume    = {24},
   number    = {2},
-  month     = may,
   pages     = {1039--1050},
+  month     = may,
   issn      = {0885-8950},
-  doi       = {10.1109/TPWRS.2009.2016364},
   abstract  = {The paper analyzes the impact of integrating wind generation on the regulation and load following requirements of the California Independent System Operator (CAISO). These requirements are simulated and compared for the study cases with and without wind generation impacts included into the study for the years 2006 and 2010. Regulation and load following models were built based on hour-ahead and five-minute ahead load and wind generation forecasts. In 2006, the CAISO system peaked at 50 270 MW. Wind generation (at the installed capacity of 2600 MW) had limited impact on the requirement of load following and regulation in the CAISO Balancing Authority. However, in 2010 (with an expected installed capacity of approximately 6700 MW), this impact will significantly increase. The results provide very useful information for the CAISO to adjust its scheduling and real-time dispatch systems to reliably accommodate future wind generation additions within the CAISO Balancing Authority.},
+  doi       = {10.1109/TPWRS.2009.2016364},
   file      = {Makarov09OperWindCA.pdf:Makarov09OperWindCA.pdf:PDF},
   groups    = {Ensemble, Use, doReadWPV_2},
-  journal   = {Power Systems, IEEE Transactions on},
   keywords  = {CAISO Balancing Authority;California Independent System Operator;load following models;operational impacts;power 2600 MW;power 50270 MW;power systems;realtime dispatch systems;regulation following models;scheduling systems;wind generation forecasts;load forecasting;power generation dispatch;power generation scheduling;wind power plants;},
   owner     = {scot},
   review    = {How to set ramp requirements w/ swinging door (separates regulation from load following)
 * ref 29 seems like the original algo ref.
 -- orig ref for swingdoor in Bristol09swingDoorTrend
 * swinging door also mentioned in:
-"Integration of Renewable Resources: Technical Appendices for California ISO Renewable Integration Studies", Version 1 www.caiso.com/282d/282d85c9391b0.pdf},
+"Integration of Renewable Resources: Technical Appendices for California ISO Renewable Integration Studies", Version 1 www.caiso.com/282d/282d85c9391b0.pdf
+},
   timestamp = {2011.06.20},
+  url       = {www.caiso.com/282d/282d85c9391b0.pdf},
 }
 
 @InProceedings{Shenoy15StochOptPowMktRgrssn,
@@ -32632,10 +32634,10 @@ QUESTION: what does this do for time continuity? Should sorting be done over mul
   title     = {Unit commitment considering generation flexibility and environmental constraints},
   booktitle = {IEEE Power \& Energy Society (PES)},
   year      = {2010},
-  month     = jul,
   pages     = {1--11},
-  doi       = {10.1109/PES.2010.5589501},
+  month     = jul,
   abstract  = {This paper proposes a new framework for the power system unit commitment process, incorporating generation flexibility requirements and environmental constraints into the existing unit commitment algorithm. The generation flexibility requirements are to address the uncertainty and variability associated with large amounts of intermittent resources as well as with load, which cause real-time balancing requirements to be variable and less predictable. The proposed flexibility requirements include capacity, ramp-rate and energy (or ramp duration) for both upward and downward balancing reserves. The environmental constraints include emission limits for fossil fuel-fired generators and ecological regulations for hydro power plants. The calculation of emission rates is formulated. Unit commitment under this new framework will be critical to the economic and reliable operation of the power grid and the minimization of its negative environmental impacts, especially when high penetration levels of intermittent resources are being approached, as required by the renewable portfolio standards in many states.},
+  doi       = {10.1109/PES.2010.5589501},
   file      = {paper:Lu10unitCommCnstrnt.pdf:PDF;slides:Lu10unitCommCnstrnt_Slides.pdf:PDF},
   groups    = {Use, doReadNonWPV_1},
   issn      = {1944-9925},
@@ -32648,7 +32650,12 @@ QUESTION: what does this do for time continuity? Should sorting be done over mul
 * describes emissions costs of turning plants on and off
 * include hydro plant environmental constraints
 * slides have nice table of current practice for max deviation vs. lookahead and response time (bottom of slide 10)
-* slides also show how expensive it is to turn off or on a coal gas power plant: $15K-$80K (slide 8)},
+* slides also show how expensive it is to turn off or on a coal gas power plant: $15K-$80K (slide 8)
+
+Also: Makarov09OperWindCA
+CAISO10caisoRnwblIntegSwngDr
+
+},
   timestamp = {2011.06.20},
 }
 
@@ -40159,7 +40166,6 @@ Conclusions
   booktitle = {Transmission and Distribution Conference, IEEE},
   year      = {2008},
   number    = {315},
-  location  = {Houston, TX},
   month     = jun,
   abstract  = {Wind power is growing in a very fast pace as an
 alternative generating resource. As the ratio of wind power over
@@ -40184,10 +40190,13 @@ Index Terms?Wind Integration, Ancillary Service, Load
 Following, Regulation, Hour-ahead Schedule, Real-time Schedule},
   file      = {Makarov08futureImpactWindBPA.pdf:Makarov08futureImpactWindBPA.pdf:PDF},
   groups    = {DOE-PNL09},
+  location  = {Houston, TX},
   owner     = {sotterson},
   review    = {detailed descriptions of regulation and load following requirments (as used in simulation of BPA). could use this for optimization.
 
-Uses swinging doors ramp definition.},
+Uses swinging doors ramp definition.
+
+CAISO10caisoRnwblIntegSwngDr},
   timestamp = {2009.03.05},
 }
 
@@ -41474,6 +41483,22 @@ They also have a demand forecast: Cabrera14genQuantFrcstDemandFuncD
 Maybe that's joint?  Since they mention the effect of renewables, they must have somehow done a net demand forecast, it seems},
   timestamp = {2016.12.21},
   url       = {http://econpapers.repec.org/paper/humwpaper/sfb649dp2016-035.htm},
+}
+
+@TechReport{CAISO10caisoRnwblIntegSwngDr,
+  author      = {CAISO},
+  title       = {Integration of Renewable Resources: Technical Appendices for California ISO Renewable Integration. Version 1},
+  institution = {California ISO},
+  year        = {2010},
+  file        = {:CAISO10caisoRnwblIntegSwngDr.pdf:PDF},
+  review      = {Description of CAISO's use of ramp metrics (swinging door) in grid integration of renewable energy.
+
+See also: 
+Lu10unitCommCnstrnt
+CAISO10caisoRnwblIntegSwngDr
+Makarov09OperWindCA
+
+},
 }
 
 @Article{Cama16TrumpWindpowKillBirds,
@@ -44337,7 +44362,6 @@ work in unit committment and ramp warnings, of some kind.},
   title     = {Mitigating the Operational Impacts of Wind Energy Resources in the {BPA} Control Area},
   booktitle = {International Wind Forecast Techniques and Methodologies Workshop},
   year      = {2008},
-  url       = {http://www.bpa.gov/corporate/business/innovation/iwftm.cfm},
   file      = {Makarov08windMitigateBPA.pdf:Makarov08windMitigateBPA.pdf:PDF},
   groups    = {IWFTM08, Read},
   owner     = {sotterson},
@@ -44352,8 +44376,12 @@ work in unit committment and ramp warnings, of some kind.},
 -- hydro for down (easy to turn off?)
 -- flywheel reduces stress on hydro (do these wear out when you turn them up?)
 * need to take into account interdependencies between ramp speed, capacity and ramp duration (but not well explained)
-* Ramps calculated w/ swinging door algorithm ("calculated?")},
+* Ramps calculated w/ swinging door algorithm ("calculated?")
+
+See also: CAISO10caisoRnwblIntegSwngDr
+},
   timestamp = {2008.09.19},
+  url       = {http://www.bpa.gov/corporate/business/innovation/iwftm.cfm},
 }
 
 @TechReport{Mandel07tutEnsembKalman,
