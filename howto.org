@@ -46,7 +46,6 @@
 
         So leave it there in terminal mode, remove it if GUI?
 
-
 ******* TRY virtual buffers: do I like them?
         I've turned it off to see if I care.
 

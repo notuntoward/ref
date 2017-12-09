@@ -25,14 +25,14 @@
 (unless (package-installed-p 'use-package) ;; for totally clean start
   (message "Installing use-package, diminish and refreshing")
   (package-refresh-contents)
-  (package-install 'use-package))
+  (package-install 'use-package)
+  (package-install 'diminish)) ;; wouldn't install w/ use-package, for some reason
 
 ;; from: http://cachestocaches.com/2015/8/getting-started-use-package/
 (eval-when-compile
   (require 'use-package))
 
 (use-package bind-key) ; for use-package :bind-key
-(use-package diminish) ; for use-package :diminish
 
 (setq use-package-always-ensure t) ; so use-package always installs missing pkgs
 
@@ -1119,6 +1119,7 @@ is already narrowed."
 (use-package org
   :ensure org-plus-contrib ; fewer clean install errors, still must restart 3X
   :pin org
+  :diminish org-mode  ;; doesn't hide the "Org" in modeline, for some reason
   :config
   (define-key global-map "\C-cl" 'org-store-link)
   (global-set-key (kbd "C-c L") 'org-insert-link-global) ; insert in any buffer
@@ -1706,11 +1707,12 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
 ;; However, it doesn't indent 2nd line numbered or lettered lists
 (use-package adaptive-wrap ; required for visual line mode hook below?
   :diminish adaptive-wrap-prefix-mode
+;;  :config (add-hook 'visual-line-mode-hook (adaptive-wrap-prefix-mode +1)))
   :config (add-hook 'visual-line-mode-hook
-		    (lambda ()
-		      (adaptive-wrap-prefix-mode +1)
-		      (diminish 'visual-line-mode))))
-;; Other adaptive-wrap settings I could use but
+  		    (lambda ()
+  		      (adaptive-wrap-prefix-mode +1)
+  		      (diminish 'visual-line-mode))))
+;;Other adaptive-wrap settings I could use but
 ;; don't want extra indent after bullet
 ;; (with-eval-after-load 'adaptive-wrap
 ;;   (setq-default adaptive-wrap-extra-indent 0))
