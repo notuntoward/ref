@@ -584,7 +584,7 @@
 ;; ** Name of file in current buffer (kind of the opposite of ffap)
 
 ;; From: http://emacsredux.com/blog/2013/03/27/copy-filename-to-the-clipboard/  and https://github.com/bbatsov/prelude
-(defun copy-current-file-name-to-clipboard ()
+(codefun copy-current-file-name-to-clipboard ()
   "Copy the current buffer file name to the clipboard."
   (interactive)
   (let ((filename (if (equal major-mode 'dired-mode)
@@ -593,6 +593,8 @@
     (when filename
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
+
+(global-set-key (kbd "C-c c") 'copy-current-file-name-to-clipboard) 
 
 ;; ** Find recent files
 ;; *** recentf exclusion of uninteresting files
