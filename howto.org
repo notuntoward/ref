@@ -2,6 +2,8 @@
 *** *Emacs to try*
     My experiments, Emacs packages I've tried and installed (from Melpa repository). Also, some builtins I could try
 ***** *TRY*
+******* TRY nicer colors/fonts in modeline
+        Look for clues in other people's settings.  Also try rainbow.el in [[Emacs color picking]]
 ******* TRY get git and ref out of TempoBox, leave papers there
         - checkout ref dir in a folder not connected to TempoBox
         - symbolically link 'papers' to inside of newly checked out ref dir
@@ -35,16 +37,6 @@
 
   (defcustom conda-postdeactivate-hook nil
     "Hook run after a conda environment is deactivated.")
-
-******* TRY remove percent from mode-line
-
-        Problem with percent
-        1.) Percent is redundant with line count, and can see the same info on the scrollbar.  
-        2.) it blocks out clock when viewing .emacs on a normal-width emacs window
-        
-        This [[http://ergoemacs.org/emacs/modernization_mode_line.html][guy]] points out that scrollbar is not present in terminal mode.
-
-        So leave it there in terminal mode, remove it if GUI?
 
 ******* TRY virtual buffers: do I like them?
         I've turned it off to see if I care.
@@ -518,6 +510,20 @@
 ********* [[http://guides.lib.berkeley.edu/information-studies/apis][APIs for scholarly resources]]
 ********* See also: [[BibTex and Emacs]]
 ***** *ACCEPTED*
+******* ACCEPTED remove percent from mode-line
+
+        *Done*: in customize set sml/position-percentage-format to nil. In order to do this, I had to set it to nil in customize (this made it the string "nil" in ([[https://github.com/Malabarba/smart-mode-line/issues/211][bug report]]). The workaround was hand editing the customization in .emacs.
+
+        Problem with percent
+        1.) Percent is redundant with line count, and can see the same info on the scrollbar.  
+        2.) it blocks out clock when viewing .emacs on a normal-width emacs window
+        
+        This [[http://ergoemacs.org/emacs/modernization_mode_line.html][guy]] points out that scrollbar is not present in terminal mode.
+
+        So leave it there in terminal mode, remove it if GUI?
+
+        Related: [[http://www.holgerschurig.de/en/emacs-tayloring-the-built-in-mode-line/][Tayloring the built-in Emacs Mode line · Holger's Computer Calisthenics and O...]]
+
 ******* ACCEPTED enable shift-arrow select, for uniformity with Windows/Linux
 
         *Conclusions*: 
@@ -4930,10 +4936,16 @@ won't work if you close and immediately open onenote again.
 ******* [[https://developer.atlassian.com/blog/2016/02/6-secret-bitbucket-features/?team_source=header&utm_source=special-offer-email&utm_medium=email&utm_campaign=EP-124][6 Bitbucket secrets - Atlassian Developers]]
 ***** <<git in emacs>>
       From: [[https://stackoverflow.com/questions/5925372/how-to-use-git-from-emacs][How to use git from emacs - Stack Overflow]]
+      And: [[https://www.emacswiki.org/emacs/GitQuickStartForEmacsDevs][EmacsWiki: Git Quick Start For Emacs Devs]]
 
-      viewing a diff (C-x v =)
-      getting the file's history (C-x v l)
-      reverting the file to a pristine state (C-x v u).
+      =C-x v === : ediff
+      =C-x v v= : next logical action (register, commit, but not push, see below)
+      =C-x v l= : getting the file's history
+      =C-x v u= : reverting the file to a pristine state
+      =C-x v d= OR =F2= : examine git state of dir like vnc-dir ([[help:vc-dir]])
+
+      Emacs VC [[https://www.emacswiki.org/emacs/GitQuickStartForEmacsDevs][doesn't support push]] yet - so do from cmdline, TortoiseGIT or magit.
+
 * HTML
 *** tables
 ***** Easy visual [[http://www.quackit.com/html/html_table_generator.cfm][Table Generator]]
