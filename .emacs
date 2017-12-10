@@ -1865,6 +1865,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(search-default-mode (quote char-fold-to-regexp))
  '(show-paren-mode t)
  '(sml/modified-char "•")
+ '(sml/position-percentage-format nil)
  '(sml/vc-mode-show-backend t)
  '(swiper-action-recenter nil)
  '(tool-bar-mode nil)
