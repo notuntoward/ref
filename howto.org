@@ -136,7 +136,7 @@
         mode-line-misc-info 
         mode-line-end-spaces)
 
-********* can see which modes are putting stuff on mode-line with =M-x describe-mode=
+********* can see which modes are putting stuff on mode-line with =M-x describe-mode= (for the standard emacs mode line)
 
 ********* current mode-line-format suggests clock is in: =mode-line-misc-info=
 ********* [[help:mode-line-misc-info]] contains =global-mode-string=
@@ -2101,6 +2101,7 @@ Strike-through: nil
 
 *** <<Emacs color picking>>
 ***** [[https://julien.danjou.info/projects/emacs-packages#rainbow-mode][rainbow-mode.el]] would make it easier to sort color candidates    
+***** =C-x c c=: bound to (helm-colors)
 *** Emacs Macros
     <<Emacs Macros>>
 
@@ -2507,9 +2508,24 @@ Strike-through: nil
 ***** Can play audio but I haven't configured it
 ***** Tons of other configurations
 
-*** Version control in emacs
+*** <<Version control in emacs>>
+***** <<VC: emacs's builtin version control meta interface>>
+      From: [[https://stackoverflow.com/questions/5925372/how-to-use-git-from-emacs][How to use git from emacs - Stack Overflow]]
+      And: [[https://www.emacswiki.org/emacs/GitQuickStartForEmacsDevs][EmacsWiki: Git Quick Start For Emacs Devs]]
+
+      /Works for SVN, GIT (and others, I think)/
+
+      =C-x v === : ediff
+      =C-x v v= : next logical action (register, commit, but not push, see below)
+      =C-x v l= : getting the file's history
+      =C-x v u= : reverting the file to a pristine state
+      =C-x v d= OR =F2= : examine git state of dir like vnc-dir ([[help:vc-dir]])
+
+      Emacs VC [[https://www.emacswiki.org/emacs/GitQuickStartForEmacsDevs][doesn't support git push]] yet.   Alternatives are at least [[magit]], command line, and TortoiseGIT.
+
 ***** [[svn in emacs]]
-***** [[git in emacs]]
+***** [[git in emacs]] 
+***** [[Version Control Systems]]
 *** Inline images
 ***** in any file: use M-x [[http://www.netlaputa.ne.jp/~kose/Emacs/iimage.html][iimage-mode]]
 ***** this [[http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.php][works in org-mode]] (note C-c C-l links don't work? use double sq. brkts)
@@ -4658,7 +4674,7 @@ won't work if you close and immediately open onenote again.
           chmod 600 ~/.ssh/authorized_key
 
           That's it!
-***** rename/move a file
+***** svn rename/move a file
       svn move SRC DEST
 ***** svn and proxies
       [[http://www.mikepot.com/1544.html][Special config]] on a system that uses a proxy.  At IWES:
@@ -4935,17 +4951,18 @@ won't work if you close and immediately open onenote again.
 ******* [[https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud?team_source=header&utm_source=special-offer-email&utm_medium=email&utm_campaign=EP-124][Learn Git with Bitbucket Cloud | Atlassian Git Tutorial]]
 ******* [[https://developer.atlassian.com/blog/2016/02/6-secret-bitbucket-features/?team_source=header&utm_source=special-offer-email&utm_medium=email&utm_campaign=EP-124][6 Bitbucket secrets - Atlassian Developers]]
 ***** <<git in emacs>>
-      From: [[https://stackoverflow.com/questions/5925372/how-to-use-git-from-emacs][How to use git from emacs - Stack Overflow]]
-      And: [[https://www.emacswiki.org/emacs/GitQuickStartForEmacsDevs][EmacsWiki: Git Quick Start For Emacs Devs]]
+******* [[VC: emacs's builtin version control meta interface]]
+******* Built-in VC
+******* Emacs VC [[https://www.emacswiki.org/emacs/GitQuickStartForEmacsDevs][doesn't support git push]] yet.  Alternative
+******* git push (works fine from cmdline, fast and convenient)
+******* TortoiseGIT
+******* [[magit]] (should consider this)
+******* <<magit>>
+        From: [[http://jr0cket.co.uk/2012/12/driving-git-with-emacs-pure-magic-with.html][Driving Git With Emacs - Pure Magic With Magit - Part One]]
 
-      =C-x v === : ediff
-      =C-x v v= : next logical action (register, commit, but not push, see below)
-      =C-x v l= : getting the file's history
-      =C-x v u= : reverting the file to a pristine state
-      =C-x v d= OR =F2= : examine git state of dir like vnc-dir ([[help:vc-dir]])
+        Note: Many [[https://www.reddit.com/r/emacs/comments/2h7s6z/vc_as_an_alternative_to_magit/][use VC and magit simultaneously]].
 
-      Emacs VC [[https://www.emacswiki.org/emacs/GitQuickStartForEmacsDevs][doesn't support push]] yet - so do from cmdline, TortoiseGIT or magit.
-
+*** [[https://github.com/caldwell/commit-patch][caldwell/commit-patch: Commit patches to Darcs, Git, Mercurial, Baza...]]
 * HTML
 *** tables
 ***** Easy visual [[http://www.quackit.com/html/html_table_generator.cfm][Table Generator]]
@@ -7651,6 +7668,25 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
     "pip installs python packages within any environment; conda installs any package within conda environments"
 
 *** [[Python in Emacs]]
+* Android
+*** Commandline
+***** Termux app
+      A linux-like terminal for an android phone
+******* [[https://termux.com/help.html][Termux help]]
+******* <<Termux and Keyboards>>
+********* [[https://termux.com/hardware-keyboard.html][Using a hardware keyboard]] in Termux, shows its shortcuts
+********* [[https://play.google.com/store/apps/details?id=com.apedroid.hwkeyboardhelper&hl=en][External Keyboard Helper App]] (buggy, it seems)
+          A keyboard remapper So far (Dec, 2017), I've been able to swap capslock and control.  But this broke the keyboard's left alt key
+********* Right Alt is AltGr; left Alt is "Alt" (from [[https://mail.google.com/_/scs/mail-static/_/js/k=gmail.main.en.gNJGSxrCYso.O/m=pds,pdl,pdit,m_i,pdt,t,it/am=dxfYA3L9QAAuZchBlEYQZv_nk0vLlTPm_z8HAFAFgCugvbkP6OMAAAAAAAAAAAAAAAAAAAAAC4pP/rt=h/d=1/rs=AHGWq9DANqMotdUI54oqiKtSINNfBwjgHg][here]])
+********* Keyboard bug mapping [[https://mail.google.com/_/scs/mail-static/_/js/k=gmail.main.en.gNJGSxrCYso.O/m=pds,pdl,pdit,m_i,pdt,t,it/am=dxfYA3L9QAAuZchBlEYQZv_nk0vLlTPm_z8HAFAFgCugvbkP6OMAAAAAAAAAAAAAAAAAAAAAC4pP/rt=h/d=1/rs=AHGWq9DANqMotdUI54oqiKtSINNfBwjgHg][bug report]]
+********* An [[https://www.howtogeek.com/175267/the-htg-guide-to-using-a-bluetooth-keyboard-with-your-android-device/][old list]] of Android keyboard shortcuts: partial, not totally right
+********* [[https://play.google.com/store/apps/details?id=aws.apps.keyeventdisplay&hl=en][KeyEventDisplay]] app might work to see what keyboard is outputting
+********* Manual for the [[1byone Bluetooth Keyboard]] I bought has more shortcuts
+*** <<1byone Bluetooth Keyboard>>
+***** Manual in [[https://mail.google.com/mail/u/0/?shva=1#inbox/1603c41a8b774fce][this email]] (with shortcuts)
+***** Company site: [[https://www.1byone.com/Accessories/Wireless-Bluetooth-Keyboard/O0000-0714][1byone Foldable Bluetooth Keyboard]]
+***** I [[https://mail.google.com/mail/u/0/?shva=1#search/1byone/16005b00e70e9b75][bought it]] for 26 EUR, $31 at the time.
+***** See also [[Termux and Keyboards]]
 * Browser config
 *** Firefox
 ***** prevent adblockplus from blocking unformatted paste
@@ -8487,81 +8523,3 @@ ERROR: Cannot run texhash command. Please run manually.
 
     o *Remove DRM*: download and run [[https://www.epubconverter.com/DownloadSoftware/download.aspx?type=ebook-removal-win][EpubSoft Ultimate DRM Remover]]
 
-    o *Convert de-DRMed Kindle file to pdf*: download/use [[https://www.epubconverter.com/DownloadSoftware/download.aspx?type=epub-converter-win][Anicesoft EPUB Converter]]
-
-      Settings (under output format, or something like that, icon) 
-      o margins: L/R=60 and T/B=75 seemed OK
-      o 16pt font matched IEEE paper size the best (IEEE is OK on my SP4)
-
-      Note: I didn't use the online [[https://www.epubconverter.com/kindle-to-pdf-converter/][Epub Converter Kindle To PDF Converter]] because it didn't work immediately, probably [[https://www.epubconverter.com/failed.html][because of the .amz file DRM]], which I don't get b/c I thought I had de-DRM'ed that already...
-
-* Cross-platform sharing
-*** DTU
-    How to set up file share between solaris and 2 laptops
-
-***** same dir stuct everywhere, rooted at ~
-******* what is homedir (~) on DTU laptop?
-******* currently, it's rooted off my desktop.  Good enough?
-***** move dropbox to same place too?
-******* under homedir, which doesn't exist on DTU laptop
-***** on DTU laptop, made symbolic link to dropbox DTU directory:
-      open cmd.exe as administrator
-      mklink /D DTU "c:/Users/scot/Desktop/scotto/My Dropbox/DTU"
-
-      I did similar on my own laptop
-
-***** need to have separate emacs compiles 
-      solaris, 32bit, 64bit
-***** version control on .emacs
-******* moved them to c:/Data/scotto_vista/Desktop/My Dropbox/config
-******* symlinked to EMACSHOME
-
-      open cmd.exe as administrator
-
-      ;; on X60T
-      e:
-      cd scotto
-      mklink .emacs "c:/Data/scotto_vista/Desktop/My Dropbox/config/.emacs"
-      mklink .emacs.gnu "c:/Data/scotto_vista/Desktop/My Dropbox/config/.emacs.gnu"
-      mklink .emacs.xemacs "c:/Data/scotto_vista/Desktop/My Dropbox/config/.emacs.xemacs"
-    
-***** drop source in anywhere; shows up everywhere
-******* rsync to DTU but would have to rsync back every time
-******* drop box
-********* OK for laptops
-******* DTU rsync
-********* can get everything on everything
-********* not as convenient as dropbox
-******* version control
-********* could handle .emacs, etc.
-********* but not papers, unless check them in too
-******* a mix of dropping rsyncing and VC: error-prone
-******* but do want VC anyway (esp. for .bib and .org files)
-***** use onenote 2010 on DTU laptop?
-******* 2007 currently installed
-***** Security
-******* TODO need to encrypt passwords, etc.
-******* TODO get digital signature on DTU notebook
-***** DONE version control on bibfiles, (papers?)
-******* checked them into svn: DTU unix can see them
-******* checked them out into "Dropbox"/DTU/doc: shared across windows laptops
-***** DONE share bookmarks, etc. across computers
-******* DONE set up bookmark sync (using Xmarks)
-********* DONE xmarks @ DTU Sun
-********* DONE firefox (laptops)
-********* DONE chrome (laptops)
-******* firefox can share pwd's but I didn't enable it
-******* chrome can sync stuff too but I didn't enable it to avoid xmarks confusion
-***** DONE want to share onenote files
-******* DropBox folder works
-******* *BUT* must make sure to close onenote on computers to avoid concurrency probs
-*** [[OneDrive]]
-*** SugarSync
-***** [[http://www.sugarsync.com/online-help/Syncing_a_Subfolder.htm][Syncing a subfolder]] of an already synced folder to another computer
-*** [[https://www.bestvpn.com/syncthing-review/][Syncthing]]
-    Linux/Windows/Android dropbox-like thing but it's all on your computers, no cloud.  Has file versions.  Reviewer found setup confusing.
-*** Open TempoBox 
-
-    What Fraunhofer IWES had.  Slow, lots of sync failures, freezups.  I lost data with it.  But I am using it for now...
-
-    Fraunhofer [[http://confluence.iwes.fraunhofer.de/display/Programme/TempoBox+-+Tool+zum+Datenaustausch+ohne+dropbox+und+co][page on TempoBox]]
