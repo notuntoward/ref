@@ -1140,6 +1140,14 @@ is already narrowed."
   (define-key org-mode-map (kbd "<C-S-left>")  nil) ; was switch TODO set
   (define-key org-mode-map (kbd "<C-S-right>") nil) ; was switch TODO set
 
+  ;; open docx files in default application (ie msword)
+  (setq org-file-apps
+      '(("\\.docx\\'" . default)
+        ("\\.mm\\'" . default)
+        ("\\.x?html?\\'" . default)
+        ("\\.pdf\\'" . default)
+        
+        (auto-mode . emacs)))
   ;; Nicer bullets for non-headline lists (does this slow down org mode?)
   ;; others: https://www.w3schools.com/charsets/ref_utf_symbols.asp
   ;; ◇ ▷ ◈ ◎ ☆ ★ ☉ ♢ ♦ ━ ─ ⊣ ▬ ⊲ ✔ ✤ ✥ ✩ ✦ ✪ ✱ ✸ ✽ ➜ ➤
@@ -1851,7 +1859,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda use-package counsel swiper-helm esup auctex auctex-latexmk ess ess-R-data-view ess-smart-equals ess-smart-underscore ess-view psvn igrep helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine highlight-indent-guides lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ ox-pandoc copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 undo-tree iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f org-ref writegood-mode auto-complete smex matlab-mode popup parsebib org-plus-contrib org-cliplink org-bullets org-autolist org key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move cygwin-mount)))
+    (powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda use-package counsel swiper-helm esup auctex auctex-latexmk ess ess-R-data-view ess-smart-equals ess-smart-underscore ess-view psvn igrep helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine highlight-indent-guides lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ ox-pandoc copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 undo-tree iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f org-ref writegood-mode auto-complete smex matlab-mode popup parsebib org-cliplink org-bullets org-autolist org key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move cygwin-mount)))
  '(paren-message-show-linenumber (quote absolute))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)

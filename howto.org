@@ -1,10 +1,11 @@
 * Emacs
 *** *Emacs to try*
     My experiments, Emacs packages I've tried and installed (from Melpa repository). Also, some builtins I could try
+
 ***** *TRY*
 ******* TRY nicer colors/fonts in modeline
+******* TRY move git and ref out of TempoBox, leave papers there
         Look for clues in other people's settings.  Also try rainbow.el in [[Emacs color picking]]
-******* TRY get git and ref out of TempoBox, leave papers there
         - checkout ref dir in a folder not connected to TempoBox
         - symbolically link 'papers' to inside of newly checked out ref dir
           - papers too big for bitbucket (git)
@@ -38,6 +39,10 @@
   (defcustom conda-postdeactivate-hook nil
     "Hook run after a conda environment is deactivated.")
 
+******* TRY Use context key for hyper keybindings
+
+        The argument for it is [[http://kundeveloper.com/hyper/][here]]; this guy's config for that is [[https://gitlab.com/fiachetti/i3][her]].
+
 ******* TRY virtual buffers: do I like them?
         I've turned it off to see if I care.
 
@@ -51,6 +56,9 @@
 
         Right now, I don't use this from shorcuts -- I'm using ibuffer
 
+******* TRY in eshell cd to ssh connection
+        See: [[https://www.youtube.com/watch?v=pjhRFMUxBB4][Using emacs 27 - shell and eshell - YouTube]] (at about 4:30)
+******* TRY [[https://github.com/killdash9/better-shell][better-shell: Emacs shell management]]
 ******* TRY decide on <<highlight symbol>>
 
         _Three alternatives, neither perfect_
@@ -88,6 +96,7 @@
 *********** =ahs-edit-mode= does symbol editing but across defuns ([[https://github.com/tuhdo/emacs-proglang/issues/1][bug report]])
 *********** last commit was in 2012
 ******* TRY <<smartscan>>
+
         Like [[iedit]] but no highlighting.  Also can replace like iedit, M-' globally and C-u M-' within defun (after M-n or M-p, replace is just a string, something like iedit)
         
         https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
@@ -110,104 +119,6 @@
         expand has er/mark-org-parent, which I don't see in smart-region, but might be handy
 
         It's included in smart-regions somehow, and I can see the function, but how to bind it?
-
-******* TRY right justify mode-line clock
-********* Mode line is controlled by the variable: =mode-line-format= 
-
-          _My current =mode-line-format= settings_
-
-          This is with the clock already in there somewhere, as set by (display-time-mode 1) in my .emacs and customized.a
-         
-        M-x describe-symbol mode-line-format
-
-        ("%e" 
-        mode-line-front-space 
-        mode-line-mule-info 
-        mode-line-client
-        mode-line-modified 
-        mode-line-remote 
-        mode-line-frame-identification 
-        mode-line-buffer-identification
-        "   " 
-        mode-line-position
-        (vc-mode vc-mode)
-        "  "
-        mode-line-modes 
-        mode-line-misc-info 
-        mode-line-end-spaces)
-
-********* can see which modes are putting stuff on mode-line with =M-x describe-mode= (for the standard emacs mode line)
-
-********* current mode-line-format suggests clock is in: =mode-line-misc-info=
-********* [[help:mode-line-misc-info]] contains =global-mode-string=
-********* [[help:global-mode-string]] contains =display-time-string=
-********* [[help:display-time-string]] is processed by func [[help:display-time]]
-********* [[https://stackoverflow.com/questions/16775855/how-to-fixate-value-on-the-right-side-of-the-modeline][code]] for adding arbitrary fixed text, justified to modeline right
-
-          Seems like I could easily do this by just copying my current settings but I don't want to do all this manually in my .emacs file -- seems like it would interfere with other things that might want to change the mode-line.
-
-          Also, this text is fixed, not updated.
-
-          Also, emacs seems to deal with =mode-line-misc-info=, which contains the time string and other stuff, as a variable. I don't see how to break it up.
-
-********* TODO Using [[https://github.com/Malabarba/smart-mode-line][smart-mode-line]]
-*********** =smart-mode-line= pkg aligns =mode-line-misc-info= 
-            From [[https://emacs.stackexchange.com/questions/5529/can-i-align-items-in-the-modeline-to-the-right][here]]
- 
-            Comment: 
-            Since you asked for a specific mode-line-format this isn't a proper answer, but smart-mode-line right-aligns the mode-line-misc-info by default, and it can right-align the list of minor-modes by setting sml/mode-width to 'right. – Malabarba Dec 18 '14 at 21:51
-
-*********** This puts the clock on the RHS but obliterates my modeline faces
-            From [[https://github.com/Malabarba/smart-mode-line/issues/116][here]]
-
-            I added to my .emacs
-
-            (use-package smart-mode-line
-            :ensure t
-            :config
-            (setq sml/theme 'respectful)
-            (setq sml/no-confirm-load-theme t)
-            (add-hook 'after-init-hook 'sml/setup)
-            (add-hook 'after-init-hook 'display-time)  
-            (setq display-time-24hr-format t))
-
-            *Unfortunately*, 'respectful wasn't that respectful, and changed fonts to black and green so they're invisible on my dark blue modeline, and it also messed up the 'inactive' face.
-
-            I commented out the sml/theme line so that the fonts were picked automatically: Better, and mostly legible but I don't love it.
-
-*********** TODO *Fix* with: =sml/customize= and =sml/customize-faces= ?
-************* setting sml/theme to "don't use a theme." fixes color problems
-              Actually, you have to
-
-              (setq sml/theme nil)
-
-              in order for this to work across emacs sessions.
-
-(use-package smart-mode-line
-  :ensure t
-  :config
-;;  (setq sml/theme 'respectful) ;; let it figure it out
-;;  (setq sml/theme 'light)
-(setq sml/theme nil)
-  (setq sml/no-confirm-load-theme t)
-  (add-hook 'after-init-hook 'sml/setup)
-  (add-hook 'after-init-hook 'display-time)  
-  (setq display-time-24hr-format t))
-              
-************* DONE don't slighly smaller font, or maybe not bold (customize)
-              actually, it's the same font if you compare screenshots of w/ and w/o sml
-************* DONE what is that red x when have modifed a file? do I care?
-
-              It's 
-              Sml/Modified Char 
-
-              in customization 
-              Smart Mode Line Others group:
-
-*************** DONE I like it better as a little '•'
-************** DONE better color?: Yes, I changed it to firebrick
-
-************* TODO I prefer the uniquified buffername, not the full path (or truncated)
 
 ******* TRY put '#' in dedicated target link 
 
@@ -237,18 +148,16 @@
 
         Note: it already works for opening pdfs in bibtext mode (from C-c j p)
 
-******* TRY try out [[http://orgmode.org/worg/org-contrib/org-choose.html][org-choose]] module
 ******* TRY different scrollbar color for window in focus (like modeline behavior)
       
         https://www.gnu.org/software/emacs/manual/html_node/elisp/Scroll-Bars.html
 
-******* TRY [[https://github.com/sigma/org-s5][ox-s5]] export, an org-->[[https://meyerweb.com/eric/tools/s5/][s5 slides in html/pdf]] (also try [[https://github.com/cybercode/org-slides][ox-deck]])
 ******* TRY [[https://github.com/emacsmirror/org/blob/master/contrib/lisp/ox-confluence.el][org-confluence]] export
 ******* TRY use setup file for every org file (like a template)
 
         Inspired by [[https://mail.google.com/mail/u/0/?shva=1#inbox/15f336bd15ceba8c][this]] email, the documentation is [[http://orgmode.org/manual/In_002dbuffer-settings.html][here]].
 
-******* TRY try to use ~org-iswitchb~ (=bound to C-c b=)
+******* TRY remember to use ~org-iswitchb~ (=bound to C-c b=)
 ******* TRY improve hydra
 ********* org: counsel-org-goto
 ********* org: counsel-org-tag
@@ -493,7 +402,8 @@
 ********* still being heavily revised, as of April 15, 2017.  Wait for it to settle down?
 ********* I still want to create a new headline if return or M-return in middle of line
 ******* TRY [[https://github.com/tbanel/orgaggregate][orgtbl-aggregate]]
-******* TRY [[https://github.com/wolray/symbol-overlay][wolray/symbol-overlay: would be nice for programming e.g. in python or something]]
+******* TRY [[https://github.com/wolray/symbol-overlay][wolray/symbol-overlay: would be nice for programming e.g. in python or something]]*
+******* TRY [[Presentation slides from org-mode]]
 ******* TRY [[help:re-builder]]*
 
         Can also use [[swiper]], which matches on regex (split into groups with a space).  Each group is highlighted with a different face.
@@ -510,6 +420,107 @@
 ********* [[http://guides.lib.berkeley.edu/information-studies/apis][APIs for scholarly resources]]
 ********* See also: [[BibTex and Emacs]]
 ***** *ACCEPTED*
+******* ACCEPTED right justify mode-line clock
+
+        DONE: the smart-mode-line does this and I now have it installed.
+
+********* Mode line is controlled by the variable: =mode-line-format= 
+
+          _My current =mode-line-format= settings_
+
+          This is with the clock already in there somewhere, as set by (display-time-mode 1) in my .emacs and customized.a
+         
+        M-x describe-symbol mode-line-format
+
+        ("%e" 
+        mode-line-front-space 
+        mode-line-mule-info 
+        mode-line-client
+        mode-line-modified 
+        mode-line-remote 
+        mode-line-frame-identification 
+        mode-line-buffer-identification
+        "   " 
+        mode-line-position
+        (vc-mode vc-mode)
+        "  "
+        mode-line-modes 
+        mode-line-misc-info 
+        mode-line-end-spaces)
+
+********* can see which modes are putting stuff on mode-line with =M-x describe-mode= (for the standard emacs mode line)
+
+********* current mode-line-format suggests clock is in: =mode-line-misc-info=
+********* [[help:mode-line-misc-info]] contains =global-mode-string=
+********* [[help:global-mode-string]] contains =display-time-string=
+********* [[help:display-time-string]] is processed by func [[help:display-time]]
+********* [[https://stackoverflow.com/questions/16775855/how-to-fixate-value-on-the-right-side-of-the-modeline][code]] for adding arbitrary fixed text, justified to modeline right
+
+          Seems like I could easily do this by just copying my current settings but I don't want to do all this manually in my .emacs file -- seems like it would interfere with other things that might want to change the mode-line.
+
+          Also, this text is fixed, not updated.
+
+          Also, emacs seems to deal with =mode-line-misc-info=, which contains the time string and other stuff, as a variable. I don't see how to break it up.
+
+********* TODO Using [[https://github.com/Malabarba/smart-mode-line][smart-mode-line]]
+*********** =smart-mode-line= pkg aligns =mode-line-misc-info= 
+            From [[https://emacs.stackexchange.com/questions/5529/can-i-align-items-in-the-modeline-to-the-right][here]]
+ 
+            Comment: 
+            Since you asked for a specific mode-line-format this isn't a proper answer, but smart-mode-line right-aligns the mode-line-misc-info by default, and it can right-align the list of minor-modes by setting sml/mode-width to 'right. – Malabarba Dec 18 '14 at 21:51
+
+*********** This puts the clock on the RHS but obliterates my modeline faces
+            From [[https://github.com/Malabarba/smart-mode-line/issues/116][here]]
+
+            I added to my .emacs
+
+            (use-package smart-mode-line
+            :ensure t
+            :config
+            (setq sml/theme 'respectful)
+            (setq sml/no-confirm-load-theme t)
+            (add-hook 'after-init-hook 'sml/setup)
+            (add-hook 'after-init-hook 'display-time)  
+            (setq display-time-24hr-format t))
+
+            *Unfortunately*, 'respectful wasn't that respectful, and changed fonts to black and green so they're invisible on my dark blue modeline, and it also messed up the 'inactive' face.
+
+            I commented out the sml/theme line so that the fonts were picked automatically: Better, and mostly legible but I don't love it.
+
+*********** TODO *Fix* with: =sml/customize= and =sml/customize-faces= ?
+************* setting sml/theme to "don't use a theme." fixes color problems
+              Actually, you have to
+
+              (setq sml/theme nil)
+
+              in order for this to work across emacs sessions.
+
+(use-package smart-mode-line
+  :ensure t
+  :config
+;;  (setq sml/theme 'respectful) ;; let it figure it out
+;;  (setq sml/theme 'light)
+(setq sml/theme nil)
+  (setq sml/no-confirm-load-theme t)
+  (add-hook 'after-init-hook 'sml/setup)
+  (add-hook 'after-init-hook 'display-time)  
+  (setq display-time-24hr-format t))
+              
+************* DONE don't slighly smaller font, or maybe not bold (customize)
+              actually, it's the same font if you compare screenshots of w/ and w/o sml
+************* DONE what is that red x when have modifed a file? do I care?
+
+              It's 
+              Sml/Modified Char 
+
+              in customization 
+              Smart Mode Line Others group:
+
+*************** DONE I like it better as a little '•'
+************** DONE better color?: Yes, I changed it to firebrick
+
+************* TODO I prefer the uniquified buffername, not the full path (or truncated)
+
 ******* ACCEPTED remove percent from mode-line
 
         *Done*: in customize set sml/position-percentage-format to nil. In order to do this, I had to set it to nil in customize (this made it the string "nil" in ([[https://github.com/Malabarba/smart-mode-line/issues/211][bug report]]). The workaround was hand editing the customization in .emacs.
@@ -971,6 +982,9 @@
       which has many other align functions too.
 
 ***** *REJECTED*
+******* REJECTED try out [[http://orgmode.org/worg/org-contrib/org-choose.html][org-choose]] module
+        Too hard to figure out what it does, and built-in TODO's are OK
+
 ******* REJECTED [[https://github.com/steckerhalter/helm-google][helm-google]]
         does nothing
 ******* REJECTED ivy-bibtex
@@ -1041,7 +1055,7 @@
         I'd like to do do that for (display-time-mode 1), where time would go on left side of modeline.
         
 *** Org Mode
-***** [[http://orgmode.org/w/org-mode.git][org-mode git repository]].  I think this goes to the melpa package
+***** [[https://code.orgmode.org/bzg/org-mode][org-mode git repository]] (according to [[https://orgmode.org/worg/dev/index.html][this]])
 ***** <<org-brain>>
       Concept mapping in emacs, new project in March, 2017
 ******* [[https://github.com/Kungsgeten/org-brain][GitHub - Kungsgeten/org-brain: Org-mode wiki + concept-mapping]]
@@ -1056,8 +1070,7 @@
 
         This does show up in the dispatcher, and works OK.
 
-******* Org to/from Word
-        <<Org to/from MS Word>>
+******* <<Org to/from MS Word>>
 
 ********* Using [[Pandoc]]
 *********** Manually
@@ -1098,6 +1111,10 @@
 
         This is supposed to show up in the C-c C-e menu, and I have seen it there.  But for some reason, it's not there now.  *Fix!*
 
+        *Hack* 
+           M-x org-pandoc-export-to-docx-and-open 
+        /(from [[https://github.com/kawabata/ox-pandoc][here]])/
+
 ********* which uses [[Pandoc]]
 ********* [[http://www.rousette.org.uk/blog/archives/org-mode-and-pandoc/][a guy]] exports his org files to it, and then to whatever
 ********* pandoc-citeproc seems important for citations
@@ -1122,7 +1139,6 @@
 
         Only numbers on 1st level, this doc
           - #+options: num:1
-
 
 ******* ox-confluence (exists)
 
@@ -1289,6 +1305,8 @@ Many text editors have access to these in some simple way, so before thinking ab
 ***** <<Org-mode interface to trello>>: [[https://github.com/org-trello/org-trello][org-trello]]
 ***** <<Presentation slides from org-mode>>
 ******* [[https://github.com/coldnew/org-ioslide][org-ioslide: Export org-mode to Google I/O HTML5 slide.]]
+******* TRY [[https://github.com/sigma/org-s5][ox-s5]] export, an org-->[[https://meyerweb.com/eric/tools/s5/][s5 slides in html/pdf]] (also try [[https://github.com/cybercode/org-slides][ox-deck]])
+
 ******* I had found several before. were lost.  Should search again
 ***** Org-mode parsers
 ******* [[http://orgmode.org/worg/org-tools/][Org Mode tools!]] (parsers in many languages)
@@ -2121,6 +2139,8 @@ Strike-through: nil
         Using [[Chocolatey]] package manager
         From: [[https://www.reddit.com/r/emacs/comments/5xoga4/what_is_the_current_best_way_to_set_up_emacs_on/][What is the current best way to set up emacs on Windows?]] 
 
+        2/01/2018: I updated emacs64  (not "emacs")
+                   (experimental version that I think I installed before too)
         9/16/2017: I installed it on SP4 (10/23/17, on work laptop).  
 
         It was installed to:
@@ -2135,7 +2155,6 @@ Strike-through: nil
           In Windows 10, search "default app settings" , then go to default by file type
 
           But it still created a new, separate emacs window, rather than putting it in existing emacs window.
-
 
         *Problems*
 
@@ -3051,11 +3070,10 @@ gestures for "show charm" and "switch apps"
 *** [[http://stackoverflow.com/questions/4481573/how-to-override-windows-convert-command-by-imagemagicks-one][How to override Windows' convert command by ImageMagick's one? - Stack Overflow]]
 * <<Pandoc>>
 *** [[http://pandoc.org/MANUAL.html][Pandoc - Pandoc User’s Guide]]
-*** Pandoc docx output formatting
-    <<Pandoc docx output formatting>>
+*** <<Pandoc docx output formatting>>
 ***** [[https://github.com/jgm/pandoc-templates/issues/20][how to create docx template · Issue #20 · jgm/pandoc-templates · GitHub]]
 ***** See also [[Org to/from MS Word]]
-*** <<Path to Windows pandoc install>> c:\Users\scott\AppData\Local\Pandoc\pandoc
+*** I installed pandoc from [[Chocolatey]]
 *** [[http://pandoc.org/installing.html][MikTex recommended for Windows]], (not TexLive, which is supposed to handle unicode?)
 *** [[Org to/from MS Word]]
 *** Pandoc bibs specified by .csl files (not .sty).  Latest are [[https://www.zotero.org/styles?q=ieee][here]].
@@ -4233,8 +4251,7 @@ you've select to view hidden folders) and delete IconCache.db.
 ********* [[https://www.adobe.com/support/downloads/thankyou.jsp?ftpID=5495&fileID=5491][DNG Codec 2.0]], for OLD Windows Photo Viewer, commenters say it's not updated
 ***** [[http://www.faststone.org/FSViewerDetail.htm][Fast Stone Image Viewer]]: free, works on Panasonic RW2, Adobe DNG, and othe
 * MS Office
-*** Word Bibliography
-    <<Word Bibliography>>
+*** <<Word Bibliography>>
     (how to use bibtex/JabRef for Word citations)
 ***** [[http://www.ee.ic.ac.uk/hp/staff/dmb/perl/index.html][BibTex4Word:]] addin, to be installed in MS Word: /works great/ on Windows 7
 ******* must also install MikTex and stuff (doable in MacOS?)
@@ -7734,6 +7751,34 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
       4. Find Portable Document Format (PDF) in the list and click on it to select it.
       5. Click on the drop-down arrow in the Action column for the above
          entry and select the PDF viewer you wish to use or not
+
+***** switch between tabs like alt-Tab does in windows, with icon display
+      From: [[https://support.mozilla.org/en-US/questions/955292][How do I toggle between Tabs in Firefox like Windows Alt+Tab?]]
+
+      I decided to disable this because of the 6 window limit.  Then standard Firefox, cycles through /all/ tabs.
+
+      _Limitations_
+
+      * only cycles foreward
+      * only 6 tabs shown
+
+      The below does the same thing as clicking options-->tabls-->ctrl-tab cycles... 
+
+      (1) In a new tab, type or paste about:config in the address bar and press Enter. Click the button promising to be careful.
+
+      (2) In the filter box, type or paste ctrl and pause while the list is filtered
+
+      (3) Double-click browser.ctrlTab.previews to set its value to true.
+
+***** make pdf files open in external pdf reader instead of Firefox internal
+
+      Options -> General -> Applications
+      
+      Search 'pdf' and click the external pdf browser application
+
+***** Duplicate tab
+******* middle or ctrl-click on the Reload Button (circular arrow)
+******* ctrl-click on tab and drag
 
 *** <<Google Search>>
 ***** get rid of annoying pdf url mangling

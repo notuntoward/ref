@@ -8668,6 +8668,7 @@ sera
       ground theory.  But [[file:energy.bib::Yu14extrmValGrpMdlThinMemb][Yu et al. 2014: Extreme]] says it's slow.
 
 ***** TODO [[file:energy.bib::Yu14extrmValGrpMdlThinMemb][Yu et al. 2014: Extreme]] val graph model thin membrane, copula
+***** [[file:energy.bib::][Allen et al. 2002: Utilizing SPRT.. (sprt review and extreme vals)]]
 ***** [[file:energy.bib::Wang13extrmQRpowTranf][Wang & Li 2013: Estimation Extreme Conditional]] lin w/ nonlinear tails, tail test
 ***** [[file:energy.bib::Gong14extrmQRvineCopula][Gong et al. 2014: Estimation]] extreme values, vine copula
 ***** [[file:energy.bib::Wong14extrmValRgrssnPkOvThrsh][Wong & Li 2014: Extreme]] val pk over thresh
@@ -8834,6 +8835,7 @@ al. 2012: Current]])
 ***** If can assume independence, there formulas for sums independent stable distributions: [[file:energy.bib::Nolan15StableDistBootCh1][Nolan 2015: Stable Distributions Models]]
       this is a generalized central limit theorem
 ***** I found some hard to understand stuff about sums of dependent stable distributions: not clear if it's usable
+***** [[file:energy.bib::Cutululis13interconOptEERA-DTOC][Cutululis et al. 2013 EERA-DTOC Report]]
 ***** [[cite:Zhao16nnSkewTcopulaPortfolioOpt][Zhao et al. 2016: Neural Network skew T Copula Prtflio Opt]]
 ***** [[cite:Martin15varWindLenTime][Martin et al. 2015: Variability wind len time has great table]]
 ***** [[cite:Zivot13portTheoryMatrixEcon424][Zivot 2013: Portfolio Theory Matrix Algebra]]
@@ -11059,6 +11061,7 @@ Erika
 ***** <<Sequential Probability Ratio Test (SPRT)>>
 ******* SPRT, the standard: [[cite:Gross02earlyDetSPRT][Gross & Lu 2002: Early Detection Signal SPRT]]
 ******* SPRT, non-Gaussian, spec of H1 (from STEAG): [[cite:Deeskow17modNotesSPRT][Deeskow 2017: SPRT mods]]
+******* [[file:energy.bib::][Allen et al. 2002: Utilizing SPRT.. (sprt review and extreme vals)]]
 ******* [[cite:Davarifar14realtimePVdiagSPRT][Davarifar et al. 2014: Realtime PV diag SPRT]] (from Ahmed)
 ******* [[cite:Sugiyama09densRatEst][Sugiyama 2009: Density Ratio Estimation]] 
 ******* [[cite:Hido10outlierDetDensRat][Hido et al. 2010: Statistical outlier det. Density Ratio]]
