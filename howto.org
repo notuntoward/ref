@@ -3333,16 +3333,16 @@ gestures for "show charm" and "switch apps"
 *** Windows package manager
 ***** <<Chocolatey>> ([[https://chocolatey.org/][Chocolatey - The package manager for Windows]])
 
-      Installing a package, in a powershell[[ (see [[Installing Chocolatey]])
+      Installing a package, in a powershell (in admin mode, see [[Installing Chocolatey]])
 
         choco install <package name>
 
-******* Packages: [[https://chocolatey.org/packages][Chocolatey Gallery | Packages]]
+******* Packages: [[https://chocolatey.org/packages][Chocolatey Gallery | Pack ages]]
 ******* <<Installing Chocolatey>>
         From: [[https://mspoweruser.com/windows-10-tip-using-package-manager/][Windows 10 Tip: Using a package manager]]
               [[https://chocolatey.org/install][Chocolatey Installation]]
 
-        /In admin powershell/
+        In *admin* powershell
 
         _Set permissions by running_
 
@@ -3714,6 +3714,14 @@ taskkill -im iexplore.exe
 ******* see [[http://www.askvg.com/how-to-show-add-accidentally-removed-bluetooth-icon-in-system-tray/][this]]
 ***** [[http://www.eightforums.com/tutorials/36102-bluetooth-devices-shortcut-create-windows-8-a.html][Desktop shortcut]] to bluetooth devices control panel (for on/off, etc.)
 ***** also see: [[Connecting%20w/%20Logitech%20Audio%20Adapter%20(Bluetooth)][Connecting w/ Logitech Audio Adapter (Bluetooth)]]
+*** Finding which program has a particular file or directory open (and blocks access)
+
+    Use [[https://chocolatey.org/packages/procexp][Chocolatey Gallery | Process Explorer 16.21.0.20170716]]
+    
+    choco install procexp
+
+    Somehow, it's supposed to be able to find the file, but I didn't see how, looking for maybe 5 minutes.
+
 *** TRY Pairing MS Comfort Sculpt Mouse to multiple computers
     
     I haven't tried this yet but but is [[https://answers.microsoft.com/en-us/windows/forum/windows_7-hardware/pairing-sculpt-comfort-mouse-to-multiple-computers/8da3698c-d593-4ae7-92b8-4c48fd4ec3d0][said]] to be a solution (was on a Windows 7 website, not sure if it works on Windows 10):
