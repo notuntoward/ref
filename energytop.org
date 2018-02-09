@@ -139,6 +139,7 @@
 *** [[cite:Joe14DepModelCopulasBk][Joe 2014: Dependence Copulas Chapman Hall Book]]
 *** [[cite:Johnson10elmMatlabStyleBk][Johnson 2010: Elem. MATLAB Style]]
 *** [[cite:Johnson14matlabStyle20Bk][Johnson 2014: MATLAB Style Guidelines 2.0]]
+*** [[file:energy.bib::Manly16multivarPrimrBk][Manly & Alberto 2016: Multivariate Primer Book]]
 *** [[http://www.neurosolutions.com/products/nsbook/][Interactive Neural Network Book]] explains recurrent NN's, has demos
 *** [[Books w/ source code]]
 *** Wind energy books I could buy
@@ -2097,7 +2098,9 @@ Scott
 ********* [[cite:Minka00AutoPCAdimTechNote][Minka 2000: Automatic PCA dim choice Tech Note]]
 ********* [[cite:North82sampErrEstOrthogPCAnumCmps][North et al. 1982: Sampling Errors Estimation PCA num dim]]
 ********* [[cite:Frank11svdRankInfo][Frank & Buhmann 2011: Selecting truncated SVD rank Max Approx Cap]]
-********* [[Effective Dependence]]
+********* [[file:energy.bib::Nathans12mlrVarImp][Nathans et al. 2012: Interpreting var imp, MLR and PCA]]
+********* [[file:energy.bib::Zuber10varImpSelDecorr][Zuber & Strimmer 2010: Variable sel, related to PCA dim sel]]
+********* [[Effective Dependence]] (a way of doing PCA dim choice)
 ***** <<Partial Least Squares Regression>>
 ******* [[cite:Lee07rbstAdaptPLS][Lee et al. 2007: Robust Adaptive Partial]]
 ******* [[cite:Xu07optWgtPLS][Xu et al. 2007: Optimized sample-weighted PLSR]]
@@ -3526,7 +3529,7 @@ Hope that helps,
 ******* [[file:energy.bib::Wibral15BitsBrainsTE][Wibral et al. 2015: Bits Brains Biologically Inspired Computing]] (TE featsel)
 ******* [[cite:Song16elecCnsmptFrcstELM][Song et al. 2016: Multivariate Extreme Learning Machine]]
 
-******* Matlab: [[http://www.eecs.berkeley.edu/~yang/][Sparse PCA via Augmented Lagrangian Methods and Application to Informaitve Feature Selection]]
+******* Matlab: [[http://www.eecs.berkeley.edu/~yang/][Sparse PCA via Augmented Lagrangian Methods and Application to Informative Feature Selection]]
 ******* Matlab: [[http://people.sutd.edu.sg/~stefano_galelli/software.html][several algs.]] from the Resilient Water Systems Group
 ******* Matlab: [[https://en.wikipedia.org/wiki/Neighbourhood_components_analysis][neighborhood component analysis]] (NCA)
 ********* built into R2016b
@@ -11814,7 +11817,7 @@ optimization to be a generalization of linear programming.
     12/09/16 [[cite:Dienst16AnomOffshrWnd][Dienst & Beseler 2016: Automatic Anomaly Detection]] offshore SCADA
     12/18/16 [[cite:Cameron13instrVarEconCrsNotes][Cameron: Instrumental Variables]] in Econ.
     01/06/17 [[cite:Huang15extrmLrnMachGap][Huang 2015: What Extreme Learning Machines]]
-    01/25/17 [[cite:Karpathy14featLrnEscpdsBlog][Karpathy 2014: Feature Learning Escapades]] (Transfer learning)
+    01/25/17 [[cite:Karpathy14featLrnEscpdsBlog][Karpathy 2014: Feature Learning Escapades]] Transfer learning)
              [[cite:Ambati15deepLrnGuidePract][Ambati 2015: Deep]] Learn practial guide
              [[cite:Zeiler14vizUnderstandConvNN][Zeiler & Fergus 2014: Visualizing]] conv nn
              [[cite:Ng16nutsBoltsDeepLrn][Ng 2016: Nuts Bolts Applying Deep Learning]]
@@ -11860,6 +11863,8 @@ optimization to be a generalization of linear programming.
     07/08/17 [[cite:Wikipedia17matrixNormDist][Wikipedia 2017: Matrix Normal Dist]]
              [[cite:Wikipedia17WishartDist][Wikipedia 2017: Wishart]]
     10/13/17 [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing weighted CRPS]]
+    02/07/18 [[file:energy.bib::Nathans12mlrVarImp][Nathans et al. 2012: Interpreting var imp, MLR and PCA]]
+
 * Bibliography
 bibliographystyle:unsrt
 bibliography:./energy.bib
