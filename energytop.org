@@ -9140,6 +9140,7 @@ later corrected by greg heath:
 ***** Manhattan, k=1, is proved to have best discrim. in high dim space
 ***** Likes k<1 (fractional) norms, also called "Lf norms," which don't satisfy triangle inequalities
 *** [[file:energy.bib::Kraskov08MIChierClustMutInf][Kraskov & Grassberger 2008: MIC]] MI distance measure
+*** [[Distance Covariance]]
 *** See also: [[lp spaces and norms]]
 * <<Stopping Criteria>>
 
@@ -9152,12 +9153,9 @@ later corrected by greg heath:
 ***** [[file:energy.bib::Frenzel07partMutInfo][Frenzel & Pompe 2007: Partial Mutual Information]]: commentor say no easy stopping criterion
 ***** [[file:energy.bib::Lizier12compNetsTransEnt][Lizier et al. 2012: Multivariate]] TE: permuted TE
 ***** [[File:energy.bib::zheng11featselhimdimmi][Zheng & Kwoh 2011: Feature Subset Selection]]: MI==Entropy (also for clustering)
-<<<<<<< HEAD
 ***** [[file:energy.bib::Akaike92infoThryMaxLik][Akaike 1992: Information theory Max Lik (the AIC criterion)]]
 ***** BIC: I must have a ton of references on this.
-=======
 ***** [[file:energy.bib::Hansen01mdlSelMDL][Hansen & Yu 2001: Model Selection Principle]]
->>>>>>> f940820b044baf9f3f20ba27e436140bb1471cfa
 *** [[Number of clusters determination]] (a stopping Criterion)
 *** Lasso-like algorithm Stopping
 ***** [[Lasso Stopping Criterion in tutorial video]]
