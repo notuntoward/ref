@@ -107,6 +107,11 @@
 
         Related to [[highlight symbol]]
 
+******* TRY Search for 'ß' with 's'
+        See StackXchange answer to my question [[https://emacs.stackexchange.com/questions/32321/char-fold-search-match-for-german-eszett-%25c3%259f/38696][here]].
+
+        Also, I promised to report this as an emacs bug.
+
 ******* TRY figure out how to activate tensorflow environment inside of elpy
 ******* TRY bookmarks
         remembers places in files or even on remote machines

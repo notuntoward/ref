@@ -3556,8 +3556,9 @@ Hope that helps,
 ******* see also: [[mutual information estimation]]
 ******* see also: [[model selection]]
 ******* see also: [[Feature selection for varying coefficient models]]
+******* see also: [[PCA Dimension Determination]]
 ******* see also: [[Linear Feature Selection]]
-********* [[cite:Dienst16AnomOffshrWnd][Dienst & Beseler 2016: Automatic Anomaly Detection]] uses LASSO
+******* [[cite:Dienst16AnomOffshrWnd][Dienst & Beseler 2016: Automatic Anomaly Detection]] uses LASSO
 ***** <<Feature selection for probabilistic forecasts>>
 
       Most (all?) feature selection papers are about feature selection for
@@ -6236,6 +6237,8 @@ variables will be preferred, when possible.
 ******* maybe after have mi feat sel?
 ******* time-dependent bias correction had diurnal pattern: [[file:energy.bib::sweeney11frcstcombo][sweeney et al. 2011: reducing]] frcst err combo
 ***** use [[circular statistics]] regression for wind velocity?
+***** [[PCA Dimension Determination]]
+***** [[file:energy.bib::Nathans12mlrVarImp][Nathans et al. 2012: Interpreting var imp, MLR]]
 ***** find regimes
 ******* weather modes vs. forecast error clustering: [[file:energy.bib::beaver06clustwindregime][beaver & palazoglu 2006: cluster analysis of]]
 ******* [[file:energy.bib::vasko02estnumsegsperm][vasko & toivonen 2002: estimating number of]]
@@ -9149,8 +9152,12 @@ later corrected by greg heath:
 ***** [[file:energy.bib::Frenzel07partMutInfo][Frenzel & Pompe 2007: Partial Mutual Information]]: commentor say no easy stopping criterion
 ***** [[file:energy.bib::Lizier12compNetsTransEnt][Lizier et al. 2012: Multivariate]] TE: permuted TE
 ***** [[File:energy.bib::zheng11featselhimdimmi][Zheng & Kwoh 2011: Feature Subset Selection]]: MI==Entropy (also for clustering)
+<<<<<<< HEAD
 ***** [[file:energy.bib::Akaike92infoThryMaxLik][Akaike 1992: Information theory Max Lik (the AIC criterion)]]
 ***** BIC: I must have a ton of references on this.
+=======
+***** [[file:energy.bib::Hansen01mdlSelMDL][Hansen & Yu 2001: Model Selection Principle]]
+>>>>>>> f940820b044baf9f3f20ba27e436140bb1471cfa
 *** [[Number of clusters determination]] (a stopping Criterion)
 *** Lasso-like algorithm Stopping
 ***** [[Lasso Stopping Criterion in tutorial video]]
