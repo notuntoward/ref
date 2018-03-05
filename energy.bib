@@ -9923,6 +9923,40 @@ Key words. total least squares, discrete ill-posed problems, regularization, bid
   review    = {How to regularize like with ridge regression but with an arbitrary penalty matrix.  Can be solved with a least-squares approach.  Related to pspline, and maybe good for multivariate pspline or maybe even regularized quantile regression.},
 }
 
+@Article{Szekely09brownDistCov,
+  author        = {Sz{\'e}kely, G{\'a}bor J and Rizzo, Maria L and others},
+  title         = {Brownian distance covariance},
+  journal       = {The annals of applied statistics},
+  year          = {2009},
+  volume        = {3},
+  number        = {4},
+  pages         = {1236--1265},
+  __markedentry = {[sotterson:]},
+  abstract      = {Distance correlation is a new class of multivariate dependence coefficients applicable to random vectors of arbitrary and not necessarily equal dimension. Distance covariance and distance correlation are analogous to product-moment covariance and correlation, but generalize and extend these classical bivariate measures of dependence. Distance correlation characterizes independence: it is zero if and only if the random vectors are independent. The notion of covariance with respect to a stochastic process is introduced, and it is shown that population distance covariance coincides with the covariance with respect to Brownian motion; thus, both can be called Brownian distance covariance. In the bivariate case, Brownian covariance is the natural extension of product-moment covariance, as we obtain Pearson product-moment covariance by replacing the Brownian motion in the definition with identity. The corresponding statistic has an elegantly simple computing formula. Advantages of applying Brownian covariance and correlation vs the classical Pearson covariance and correlation are discussed and illustrated.},
+  file          = {:Szekely09brownDistCov.pdf:PDF},
+  publisher     = {Institute of Mathematical Statistics},
+  review        = {A  nonlinear, multivariate dependence test that is fast to compute, perhaps a faster, cheaper version of mutual information, possibly without dimension bias?
+
+LNEG used this to select principal components for NWP undertainty features in IRPWIND WP82.3.
+
+Szekely12distCovUniq shows that it's unique.},
+  url           = {https://projecteuclid.org/euclid.aoas/1267453933},
+}
+
+@Article{Szekely12distCovUniq,
+  author        = {Sz{\'e}kely, G{\'a}bor J and Rizzo, Maria L},
+  title         = {On the uniqueness of distance covariance},
+  journal       = {Statistics \& Probability Letters},
+  year          = {2012},
+  volume        = {82},
+  number        = {12},
+  pages         = {2278--2282},
+  __markedentry = {[sotterson:]},
+  abstract      = {Distance covariance and distance correlation are non-negative real numbers that characterize the independence of random vectors in arbitrary dimensions. In this work we prove that distance covariance is unique, starting from a definition of a covariance as a weighted L2 norm that measures the distance between the joint characteristic function of two random vectors and the product of their marginal characteristic functions. Rigid motion invariance and scale equivariance of these weighted L2 norms imply that the weight function of distance covariance is unique.},
+  publisher     = {Elsevier},
+  review        = {See also Szekely09brownDistCov},
+}
+
 @Article{Polasek90vecDistLagSmooth,
   author    = {Wolfgang Polasek},
   title     = {Vector distributed lag models with smoothness priors},
@@ -10340,19 +10374,18 @@ Subject:14 SOLAR ENERGY; 32 ENERGY CONSERVATION, CONSUMPTION, AND UTILIZATION; S
 }
 
 @InProceedings{Wilamowski99redMemLevMarq1hidLayer,
-  author        = {B. M. Wilamowski and Yixin Chen and A. Malinowski},
-  title         = {Efficient algorithm for training neural networks with one hidden layer},
-  booktitle     = {Proc. Int. Joint Conf. Neural Networks IJCNN '99},
-  year          = {1999},
-  volume        = {3},
-  pages         = {1725--1728 vol.3},
-  __markedentry = {[sotterson:]},
-  abstract      = {Efficient second order algorithm for training feedforward neural networks is presented. The algorithm has a similar convergence rate as the Lavenberg-Marquardt (LM) method and it is less computationally intensive and requires less memory. This is especially important for large neural networks where the LM algorithm becomes impractical. Algorithm was verified with several examples},
-  doi           = {10.1109/IJCNN.1999.832636},
-  file          = {:Wilamowski99redMemLevMarq1hidLayer.pdf:PDF},
-  issn          = {1098-7576},
-  keywords      = {computational complexity, convergence, feedforward neural nets, learning (artificial intelligence), multilayer perceptrons, computational complexity, convergence rate, efficient second-order algorithm, feedforward neural network training, hidden neural layer, modified Lavenberg-Marquardt method, modified Levenberg-Marquardt method, Backpropagation algorithms, Convergence, Equations, Feedforward neural networks, Jacobian matrices, Neural networks, Neurons, Performance analysis, Stability, Stochastic processes},
-  review        = {How to reduce memory for Levenburg Marquart algorithm when have one hidden layer NN.  Is this the algorithm used by Matlab?  See:  Mathworks05redMemLevMarq},
+  author    = {B. M. Wilamowski and Yixin Chen and A. Malinowski},
+  title     = {Efficient algorithm for training neural networks with one hidden layer},
+  booktitle = {Proc. Int. Joint Conf. Neural Networks IJCNN '99},
+  year      = {1999},
+  volume    = {3},
+  pages     = {1725--1728 vol.3},
+  abstract  = {Efficient second order algorithm for training feedforward neural networks is presented. The algorithm has a similar convergence rate as the Lavenberg-Marquardt (LM) method and it is less computationally intensive and requires less memory. This is especially important for large neural networks where the LM algorithm becomes impractical. Algorithm was verified with several examples},
+  doi       = {10.1109/IJCNN.1999.832636},
+  file      = {:Wilamowski99redMemLevMarq1hidLayer.pdf:PDF},
+  issn      = {1098-7576},
+  keywords  = {computational complexity, convergence, feedforward neural nets, learning (artificial intelligence), multilayer perceptrons, computational complexity, convergence rate, efficient second-order algorithm, feedforward neural network training, hidden neural layer, modified Lavenberg-Marquardt method, modified Levenberg-Marquardt method, Backpropagation algorithms, Convergence, Equations, Feedforward neural networks, Jacobian matrices, Neural networks, Neurons, Performance analysis, Stability, Stochastic processes},
+  review    = {How to reduce memory for Levenburg Marquart algorithm when have one hidden layer NN.  Is this the algorithm used by Matlab?  See:  Mathworks05redMemLevMarq},
 }
 
 @InProceedings{Pinson06ProbFrcstPropsEval,
@@ -11928,7 +11961,9 @@ Can be decomposed into reliability and resolution, (as can CRPS, I guess)
 
 Quantile reliability plots (like DWD does).
 
-See also Bentzien13qntScrDecomp},
+See also Bentzien13qntScrDecomp
+
+I think that Malte wrote Eweline's QuantileScoreDecom.m based on this.},
   timestamp = {2017.03.15},
   url       = {http://www2.meteo.uni-bonn.de/staff/wahl/files/bentzien_poster_egu2014_qs.pdf},
 }
@@ -18867,20 +18902,19 @@ penalized spline quantile regression
 }
 
 @Article{Nathans12,
-  author        = {Nathans, Laura L and Oswald, Frederick L and Nimon, Kim},
-  title         = {Interpreting multiple linear regression: A guidebook of variable importance},
-  journal       = {Practical Assessment, Research \& Evaluation},
-  year          = {2012},
-  volume        = {17},
-  number        = {9},
-  __markedentry = {[sotterson:6]},
-  abstract      = {Multiple regression (MR) analyses are commonly employed in social science fields. It is also common for interpretation of results to typically reflect overreliance on beta weights (cf. Courville & Thompson, 2001; Nimon, Roberts, & Gavrilova, 2010; Zientek, Capraro, & Capraro, 2008), often resulting in very limited interpretations of variable importance. It appears that few researchers employ other methods to obtain a fuller understanding of what and how independent variables contribute to a regression equation. Thus, this paper presents a guidebook of variable importance measures that inform MR results, linking measures to a theoretical framework that demonstrates the complementary roles they play when interpreting regression findings. We also provide a data-driven example of how to publish MR results that demonstrates how to present a more complete picture of the contributions variables make to a regression equation. We end with several recommendations for practice regarding how to integrate multiple variable importance measures into MR analyses},
-  publisher     = {Practical Assessment, Research \& Evaluation},
-  review        = {Assessing the importance of a variable in linear regression.  Best method is case specific and depends upon the data condition.
+  author    = {Nathans, Laura L and Oswald, Frederick L and Nimon, Kim},
+  title     = {Interpreting multiple linear regression: A guidebook of variable importance},
+  journal   = {Practical Assessment, Research \& Evaluation},
+  year      = {2012},
+  volume    = {17},
+  number    = {9},
+  abstract  = {Multiple regression (MR) analyses are commonly employed in social science fields. It is also common for interpretation of results to typically reflect overreliance on beta weights (cf. Courville & Thompson, 2001; Nimon, Roberts, & Gavrilova, 2010; Zientek, Capraro, & Capraro, 2008), often resulting in very limited interpretations of variable importance. It appears that few researchers employ other methods to obtain a fuller understanding of what and how independent variables contribute to a regression equation. Thus, this paper presents a guidebook of variable importance measures that inform MR results, linking measures to a theoretical framework that demonstrates the complementary roles they play when interpreting regression findings. We also provide a data-driven example of how to publish MR results that demonstrates how to present a more complete picture of the contributions variables make to a regression equation. We end with several recommendations for practice regarding how to integrate multiple variable importance measures into MR analyses},
+  publisher = {Practical Assessment, Research \& Evaluation},
+  review    = {Assessing the importance of a variable in linear regression.  Best method is case specific and depends upon the data condition.
 
 
 },
-  url           = {https://scholarship.rice.edu/handle/1911/71096},
+  url       = {https://scholarship.rice.edu/handle/1911/71096},
 }
 
 @INPROCEEDINGS{Sutiene07scenCopula,
@@ -22736,6 +22770,39 @@ Compare with Hart and Jacobsen's 80\% C02 reduction scenario for California (Har
   timestamp = {2013.03.13},
 }
 
+@Article{Zanakis98multiAttrDcsnCmpr,
+  author    = {Zanakis, Stelios H and Solomon, Anthony and Wishart, Nicole and Dublish, Sandipa},
+  title     = {Multi-attribute decision making: a simulation comparison of select methods},
+  journal   = {European journal of operational research},
+  year      = {1998},
+  volume    = {107},
+  number    = {3},
+  pages     = {507--529},
+  abstract  = {Several methods have been proposed for solving multi-attribute decision making problems (MADM). A major criticism
+of MADM is that different techniques may yield different results when applied to the same problem. The problem
+considered in this study consists of a decision matrix input of N criteria weights and ratings of L alternatives on each
+criterion. The comparative performance of some methods has been investigated in a few, mostly field, studies. In this
+simulation experiment we investigate the performance of eight methods: ELECTRE, TOPSIS, Multiplicative Exponential-
+Weighting (MEW), Simple Additive Weighting (SAW), and four versions of AHP (original vs. geometric scale and right
+eigenvector vs. mean transformation solution). Simulation parameters are the number of alternatives, criteria and their
+distribution. The solutions are analyzed using twelve measures of similarity of performance. Similarities and differences in
+the behavior of these methods are investigated. Dissimilarities in weights produced by these methods become stronger in
+problems with few alternatives; however, the corresponding final rankings of the alternatives vary across methods more in
+problems with many alternatives. Although less significant, the distribution of criterion weights affects the methods
+differently. In general, all AHP versions behave similarly and closer to SAW than the other methods. ELECTRE is the least
+similar to SAW (except for closer matching the top-ranked alternative), followed by MEW. TOPSIS behaves closer to AHP
+and differently from ELECTRE and MEW, except for problems with few criteria. A similar rank-reversal experiment
+produced the following performance order of methods: SAW and MEW (best), followed by TOPSIS, AHPs and ELECTRE.
+It should be noted that the ELECTRE version used was adapted to the common MADM problem and therefore it did not
+take advantage of the method’s capabilities in handling problems with ordinal or imprecise information. © 1998 Elsevier
+Science B.V.
+Keywords: Multiple criteria analysis; Decision theory; Utility theory; Simulation},
+  file      = {:Zanakis98multiAttrDcsnCmpr.pdf:PDF},
+  publisher = {Elsevier},
+  review    = {The main reference a lot of people use in predictive maintenance.  I thought it has sometime to do with the Wishart charts that Peter Deeskow (STEAG, and ModernWindABS) uses, but now I'm not sure.},
+  url       = {https://www.researchgate.net/publication/215653478_Multi-attribute_decision_making_A_simulation_comparison_of_select_methods},
+}
+
 @Article{Mofrad10wavletShape,
   author    = {Mofrad, B. and Tehrani-Fard, A. and Zoroofi, A. and Akhlaghpoor, S. and Chen, Y.W.},
   title     = {A Novel Wavelet Based Multi-Scale Statistical Shape Model-Analysis for the Liver Application: Segmentation and Classification},
@@ -23557,7 +23624,8 @@ In this paper it is shown that for an ensemble prediction system the CRPS can be
 Decomposition is analogous to the decomposition of the Brier score. Should probably understand why both decompositions matter.
 
 * the CRPS of a deterministic forecast is equal to the mean absolute error (MAE)
-* multidimensional CRPS is some kind of weighted average},
+* multidimensional CRPS is some kind of weighted average
+* in practice, I think I've found that it's insensitive to quantile crossover (this is the algorithm used in the R verification package that I ported to crpsDecomposition.m, for the Eweline project.  I've since written my own CRPS code which uses weighted quantile scores.  Also, Malte, wrote Quanti9leScoreDecom.m, based on Bentzien14quantScrDecomp)},
   timestamp = {2013.09.26},
 }
 
@@ -27215,6 +27283,22 @@ Also see: Valpola15neurPCA2deepUnsupLrnBk
 Note that there was also a 2015 ArXiv paper with the same title.},
   timestamp = {2017.02.01},
   url       = {http://jmlr.org/proceedings/papers/v48/pezeshki16.html},
+}
+
+@Article{Zhang17rampSpatTempWindP,
+  author        = {Jie Zhang and Mingjian Cui and Bri-Mathias Hodge and Anthony Florita and Jeffrey Freedman},
+  title         = {Ramp forecasting performance from improved short-term wind power forecasting over multiple spatial and temporal scales},
+  journal       = {Energy},
+  year          = {2017},
+  volume        = {122},
+  pages         = {528 - 541},
+  issn          = {0360-5442},
+  __markedentry = {[sotterson:6]},
+  abstract      = {The large variability and uncertainty in wind power generation present a concern to power system operators, especially given the increasing amounts of wind power being integrated into the electric power system. Large ramps, one of the biggest concerns, can significantly influence system economics and reliability. The Wind Forecast Improvement Project (WFIP) was to improve the accuracy of forecasts and to evaluate the economic benefits of these improvements to grid operators. This paper evaluates the ramp forecasting accuracy gained by improving the performance of short-term wind power forecasting. This study focuses on the WFIP southern study region, which encompasses most of the Electric Reliability Council of Texas (ERCOT) territory, to compare the experimental WFIP forecasts to the existing short-term wind power forecasts (used at ERCOT) at multiple spatial and temporal scales. The study employs four significant wind power ramping definitions according to the power change magnitude, direction, and duration. The optimized swinging door algorithm is adopted to extract ramp events from actual and forecasted wind power time series. The results show that the experimental WFIP forecasts improve the accuracy of the wind power ramp forecasting. This improvement can result in substantial costs savings and power system reliability enhancements.},
+  doi           = {https://doi.org/10.1016/j.energy.2017.01.104},
+  file          = {:Zhang17rampSpatTempWindP.pdf:PDF},
+  keywords      = {Wind forecasting, Grid integration, Ramp forecasting, ERCOT, Optimized swinging door algorithm},
+  url           = {http://www.sciencedirect.com/science/article/pii/S0360544217301111},
 }
 
 @TechReport{Nardi08autoRegrLASSO,
@@ -33369,7 +33453,7 @@ among other factors, the turbulence intensity of the wind speed.},
 }
 
 @TechReport{Andrade17ercotRsrvLessMore,
-  author      = {Juan Andrade, and Yingzhang Dong and Ross Baldick},
+  author      = {Juan Andrade and Yingzhang Dong and Ross Baldick},
   title       = {Impact of Renewable Generation on Operational Reserves Requirements: When More Could be Less},
   institution = {University of Texas at Austin},
   year        = {2017},
@@ -41039,6 +41123,17 @@ Alg. not really described here: must see: Agarwal10UnivMDS (I think)},
   url       = {http://www.springer.com/us/book/9781461463955},
 }
 
+@InCollection{Akaike92infoThryMaxLik,
+  author    = {Akaike, Hirotogu},
+  title     = {Information theory and an extension of the maximum likelihood principle},
+  booktitle = {Breakthroughs in statistics},
+  publisher = {Springer},
+  year      = {1992},
+  pages     = {610--624},
+  review    = {What seems to be the fundamental reference for AIC stopping criteria.},
+  url       = {https://link.springer.com/chapter/10.1007/978-1-4612-0919-5_38},
+}
+
 @Misc{Allen12bpaHyProM,
   author       = {Chris Allen},
   title        = {TIP 259: Short-Term Hydropower Production and Marketing Optimization (HyProM)},
@@ -46699,6 +46794,7 @@ also described in: AbdulRahman12flexRampCAISO and Xu12flexRamp2ndFprpsl},
   year      = {2015},
   file      = {Yang15UncertaintyForecastNetLd.pdf:Yang15UncertaintyForecastNetLd.pdf:PDF},
   owner     = {sotterson},
+  review    = {Measurures error of deterministic demand and RES forecasts, and calculates ramps from them.  These are fit to unconditional parametric Gaussian and Normal distributions, and it's not clear to me that the fiit that well.},
   timestamp = {2017.05.02},
   url       = {https://dukespace.lib.duke.edu/dspace/bitstream/handle/10161/9622/Uncertainty%20in%20the%20Forecast%20of%20Net%20Load%20Ramp%20in%20CAISO-Peizhi.pdf?sequence=1},
 }
