@@ -3721,6 +3721,9 @@ Hope that helps,
 *** [[Multi-Model NWP]]
 *** [[*Ensemble forecasting][Ensemble forecasting]]
 *** [[file:energytop.org::*Boosted%20regression][Boosted regression]]
+* <<KNN Regression>>
+*** [[file:energy.bib::Altman92kernKNNrgrssn][Altman 1992 Intro to Kernel and KNN Regression]]
+*** [[KNN neighborhood functions for local linear regression]]
 * <<Boosted Regression>>
 *** Blasso (boosted lasso: could this be continuous or discrete?)
 *** Discreet boosting
@@ -5032,8 +5035,7 @@ sera
 ******* [[file:energy.bib::Lemke09dynFrcstComboDiv][Lemke et al. 2009: Dynamic]] (almost switching combination)
 ******* [[file:energy.bib::Selen08layLinRgrOrder][Selen & Larsson 2008: Empirical Bayes]]
 ******* see: [[Quantile Mixtures]]
-******* Local Linear Regression
-        <<Local Linear Regression>>
+******* <<Local Linear Regression>>
 
         Note that local techniques are criticized, and are being replaces
         with deep learning, apparently.
@@ -5046,6 +5048,8 @@ sera
 ********* [[file:energy.bib::Ormoneit99optKernLocLinRgrsn][Ormoneit & Hastie 1999: Optimal]] kernal shapes, loca linear
 ********* [[file:energy.bib::Atkeson99LocalLrn][Atkeson et al. 1999: Locally]] (another very friendly local learning intro)
 ********* <<KNN neighborhood functions for local linear regression>>
+*********** [[KNN Regression]]
+*********** [[file:energy.bib::Altman92kernKNNrgrssn][Altman 1992 Intro to Kernel and KNN regression]]
 *********** TODO [[file:energy.bib::Zhang12rflctLocLinKNN][Zhang et al. 2012: Reflectance]] locLin with KNN neighbhorhoods
 *********** [[file:energy.bib::GutierrezOsuna11kdnnLecNotes][Gutierrez-Osuna 2011: Kernel Nearest Neighbors]] maybe KNN not good for neighborhoods?
 *********** [[file:energy.bib::Gupta08adaptLocLinKNN][Gupta et al. 2008: Adaptive Local Linear]] (KNN loclin, use convex hull, no CV, low dim but high dim refs)
@@ -5073,8 +5077,7 @@ sera
 *********** [[file:energy.bib::Witten13ClusterElasticNet][Witten et al. 2013: Cluster Elastic Net]]
 *********** [[file:energy.bib::Hirose12NNRMLknnLocLin][Hirose et al. 2012: NNRMLR]] (kinda: weighted KNN w/ dist from global linear regression)
 *********** see also: [[Feature Selection]]
-********* Curse of Dimensionality and Local Linear Regression
-          <<Curse of Dimensionality and Local Linear Regression>>
+********* <<Curse of Dimensionality and Local Linear Regression>>
 *********** the curse: [[file:energy.bib::Verleysen05cursDimMinTser][Verleysen & Francois 2005: Curse Dimensionality Data]]
 *********** density thresh + special cross-validation: [[file:energy.bib::Taylor12locRgrsnStrat][Taylor 2012: Strategies]] local
 *********** [[file:energy.bib::Hirose12NNRMLknnLocLin][Hirose et al. 2012: NNRMLR]] (mix of KNN and local linear, maybe could use high dim tricks)
@@ -9155,7 +9158,7 @@ later corrected by greg heath:
 ***** [[File:energy.bib::zheng11featselhimdimmi][Zheng & Kwoh 2011: Feature Subset Selection]]: MI==Entropy (also for clustering)
 ***** [[file:energy.bib::Akaike92infoThryMaxLik][Akaike 1992: Information theory Max Lik (the AIC criterion)]]
 ***** BIC: I must have a ton of references on this.
-***** [[file:energy.bib::Hansen01mdlSelMDL][Hansen & Yu 2001: Model Selection Principle]]
+***** [[file:energy.bib::Hansen01mdlSelMDL][Hansen & Yu 2001: Model Selection Principle]] (AIC and BIC in terms of MDL)
 *** [[Number of clusters determination]] (a stopping Criterion)
 *** Lasso-like algorithm Stopping
 ***** [[Lasso Stopping Criterion in tutorial video]]

@@ -59,15 +59,26 @@
 ******* TRY in eshell cd to ssh connection
         See: [[https://www.youtube.com/watch?v=pjhRFMUxBB4][Using emacs 27 - shell and eshell - YouTube]] (at about 4:30)
 ******* TRY [[https://github.com/killdash9/better-shell][better-shell: Emacs shell management]]
+******* TRY [[https://github.com/Wilfred/emacs-refactor][emacs-refactor]]
+
+        Replaces variables, etc., like the matlab and other IDE's do. But as of March 2018, was not implemented for either R, Matlab, or Python.  Only for:
+          C
+          Lisps
+          Elisp
+          JavaScript
+          Ruby
+          Scheme
+ 
 ******* TRY decide on <<highlight symbol>>
 
-        _Three alternatives, neither perfect_
+        _Three alternatives, none perfect_
 
         highlight-thing is actively maintained, more flexible, [[https://github.com/emacs-tw/awesome-emacs#interface-enhancement][more popular?]] faster? (no fontlock), can be restricted to defun.  The change it needs is to query "describe-symbol" or something when it's in "symbol" mode and then only highlight if it's a symbol. Better yet, only if it's a variable, so "describe-variable", if that exists.
 
         Related to [[smartscan]] and [[iedit]]
 
 ********* highlight-symbol
+
 ;; /doesn't restrict to defun/, has nav keys, also highlights words in comments
 ;; alternative, only in defun: https://github.com/fgeller/highlight-thing.el
 ;; prog-mode-hook could be  
@@ -97,7 +108,7 @@
 *********** last commit was in 2012
 ******* TRY <<smartscan>>
 
-        Like [[iedit]] but no highlighting.  Also can replace like iedit, M-' globally and C-u M-' within defun (after M-n or M-p, replace is just a string, something like iedit)
+        Like [[iedit]] but no highlighting.  Also can replace like iedit, M-' globally and C-u M-' within defun (after M-n or M-p, replace is just a string, something like iedit) i.e. replace is stupid: just replaces strings, whether they are symbols or not, and it will replace inside of substrings
         
         https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
           From https://github.com/itsjeyd/emacs-config/blob/emacs24/init.el, this makes M-n and M-p look for the symbol at point.
@@ -3356,8 +3367,9 @@ gestures for "show charm" and "switch apps"
         _Install_
 
           iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+
 ***** Windows package management overviews
-******* Chocolately says use Chocolately, not OneGet:  [[https://chocolatey.org/faq#how-is-chocolatey-different-than-onegetpowershell-package-management][ChocolateyFAQs]]
+******* Chocolatey says use Chocolatey, not OneGet:  [[https://chocolatey.org/faq#how-is-chocolatey-different-than-onegetpowershell-package-management][ChocolateyFAQs]]
 ******* [[https://stackoverflow.com/questions/37823964/whats-the-difference-between-chocolatey-oneget-psget-nuget][powershell - What's the difference between Chocolatey, OneGet, PsGet, NuGet, ...]]
 ******* [[https://www.hanselman.com/blog/AptGetForWindowsOneGetAndChocolateyOnWindows10.aspx][Apt-Get for Windows - OneGet and Chocolatey on Windows 10 - Scott Hanselman]]
 ******* could use it to install ripgrep: [[https://github.com/BurntSushi/ripgrep][GitHub - BurntSushi/ripgrep: ripgrep combines the usability of The Silver Sea...]]
@@ -5779,9 +5791,8 @@ warning(s); % restore the warning state
     <check tmp.txt>
     mv tmp.txt pathdef.m
 
-* R
-*** Matlab and R
-    <<Matlab and R>>
+* R Language
+*** <<Matlab and R>>
 ***** [[http://www.math.umaine.edu/~hiebeler/comp/matlabR.html][MATLAB R / R  Reference]]
 ***** [[http://mathesaurus.sourceforge.net/octave-r.html][R for MATLAB users]]
 ***** [[http://cran.r-project.org/doc/contrib/R-and-octave.txt][R For Octave Users]]
@@ -5873,8 +5884,7 @@ warning(s); % restore the warning state
     Proceed with package selection and installation, making sure to install
     any indicated dependencies.
 
-*** R for windows
-    <<R for windows>>
+*** <<R for windows>>
 
 ***** problems finding Rscript.exe and Rgui.exe
 
