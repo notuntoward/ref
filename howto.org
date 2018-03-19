@@ -5689,13 +5689,13 @@ end
 ***** distributed servers at other labs that look usable
 ******* http://www.hpc.maths.unsw.edu.au/tensor/matlab
 ******* http://www.pik-potsdam.de/members/linstead/guides/matlab-on-the-cluster
-*** Matlab density plot functions
-    <<Matlab density plot functions>>
+*** <<Matlab density plot functions>>
 ***** Matlab [[http://www.mathworks.de/matlabcentral/fx_files/27702/3/Example_FanChart..png][FanChart]]
-***** high density scatter plot
+***** <<Matlab high density scatter plots>>
 ******* [[http://www.mathworks.com/matlabcentral/fileexchange/48157-artemyk-scatter-patches][scatter_patches.m]] works but can be quite slow
 ******* [[http://www.mathworks.com/matlabcentral/fileexchange/23238-cloudplot][cloudPlot.m]] (can set alpha but can't see individual points b/c binned)
 ******* [[http://www.mathworks.com/matlabcentral/fileexchange/8577-scatplot][scatplot.m]]
+******* also: [[R high density scatter plots]]
 ***** see also: [[R density plot functions]]
 *** automatically adding semicolons to line ends to quiet them
 
@@ -6041,12 +6041,11 @@ axis(2,at=tickUnits*yTickNums,labels=sprintf('%g',yTickNums),ylab='Euros (millio
         text(location, "text to place", pos, ...) # location=coords, for mouse, use locator()
         mtext("text to place", side, line=n, ...) # text in margin
 
-***** R density plots
-      <<R density plot functions>>
-******* better scatter plots
-        <<better scatter plots>>
+***** <<R density plot functions>>
+******* <<better scatter plots>>
 ********* [[http://www.statmethods.net/graphs/scatterplot.html][Quick-R scatterplot overview]]
-********* high density plots
+********* <<R high density scatter plots>>
+*********** [[https://rpubs.com/stephenmoore56/265589][RPubs - R Graphics - High-Density Scatterplots]]
 *********** hexbin ([[http://www.statmethods.net/graphs/images/hexbin.jpg][picture]]) [good b/c gives counts and seems linear in counts]
 
 # High Density Scatterplot with Binning
@@ -6088,6 +6087,7 @@ xy.mat<-cbind(sample(1:10,200,TRUE),sample(1:10,200,TRUE))
 
 *********** both transparency and jitter: [[http://cran.r-project.org/web/packages/Rcell/vignettes/cplot.pdf][rCell example]]
 *********** [[http://www.inside-r.org/r-doc/graphics/sunflowerplot][sunflower]] plot ([[http://1.bp.blogspot.com/-R94VkPiNMzQ/TZDVGrTAeLI/AAAAAAAACyw/mk9UyJ0XP8c/s1600/galton+sunflower.png][picture]], I think it is)
+*********** also [[Matlab high density scatter plots]]
 ********* 3D scattter plots
 *********** [[http://www.ats.ucla.edu/stat/r/gbe/scatter.htm][using plot() point symbols]] (simple)
 *********** [[http://www.r-bloggers.com/quick-introduction-to-ggplot2/][qplot]] (ggplot2) examples
@@ -6253,6 +6253,10 @@ sub-figure to draw into.  Note that the above methods are all incompatible
 with each other.
 
 ***** zoom plot gui's
+******* overviews
+********* [[https://community.rstudio.com/t/best-package-for-interactive-graphs-in-shiny/1731/5][Best package for interactive graphs in Shiny - shiny - RStudio Community]]
+********* [[https://www.r-bloggers.com/interactive-visualizations-with-r-a-minireview/][Interactive visualizations with R – a minireview | R-bloggers]]
+******* [[https://github.com/ropensci/plotly][plotly: An interactive graphing library for R]]: zooms, dynamic ticks, ... can use w/ ggplot2()
 ******* [[http://cran.r-project.org/web/views/Graphics.html][advice]] on R graphics (see interactive graphics section)
 ******* [[http://cran.r-project.org/web/packages/zoom/][zoom]]: works on standard R graphs, simple mouse clicks, keyboard, SLOW
 
@@ -6270,23 +6274,6 @@ p               :             print to file
 r               :              reset limits
 s               :               show limits
 q on the graphic window to quit
-******* [[http://code.google.com/p/playwith/][playwith]] is pretty cool but SLOW, seems to be zooming a jpeg image
-********* was hard to get working in 2010 hard to get working
-*********** DTU linux box
-************* fixed on Linux when they upgraded Ubuntu: it gets confused about gtk2.0
-*********** Windows 32 bit fixes (works on my x60 laptop)
-************* fix missing libcairo-2.dll
-              - it was already in the contrib package, Cairo_1.4.5.zip, [[http://cran.r-project.org/][here]]
-                (Cairo/libs/libcairo-2.dll)
-              - I installed the zip file using the Rgui, installing from zip file
-              - it seems that it's just not pointing to it, somehow
-              - fixed up some possible confusion w/ R_LIBS_USER and still had
-                probs w/ libgtk
-            - fix missing libgdk-win32*dll prob
-              download gtk+ bundle to:
-              e:/scotto/lib/gtk+-bundle_2.20/bin
-              and put it in PATH
-            - then it works!  is pretty nice!
 ******* [[http://bm2.genes.nig.ac.jp/RGM2/R_current/library/Hmisc/man/Overview.html][Hmisc]]
 
         Has a zoom function (for any graphic) but I can't figure it out
@@ -6298,7 +6285,6 @@ q on the graphic window to quit
         supposed to be called by user so I think I'm missing something.
 
         see also: [[Hmisc: handy functions]]
-
 ******* [[http://code.google.com/p/latticist/][latticist]] cool but is specifically for creating marginal plots
          (not obvious how to plot a single time series w/ it; not clear how
          to zoom)
@@ -6321,10 +6307,26 @@ q on the graphic window to quit
 
 ******* [[http://cran.r-project.org/web/packages/aplpack/aplpack.pdf][aplpack]]
         has a slider.zoom.plot.ts function but it looks clumsy
-
 ******* [[http://cran.r-project.org/web/packages/RnavGraph/index.html][RnavGraph]]: some kinda tk graphics interface.
 ******* [[http://cran.r-project.org/web/packages/rgl/index.html][igl]] links somehow to plot() etc, but zoom only mentioned on 3D stuff
 ******* [[http://cran.r-project.org/web/packages/bpca/bpca.pdf][bpca]] overloads plot() w/ it's own plot func, which zooms
+******* [[https://github.com/floybix/playwith][playwith]] I used to use it but it's SLOW and now unmaintained
+********* was hard to get working in 2010
+*********** DTU linux box
+************* fixed on Linux when they upgraded Ubuntu: it gets confused about gtk2.0
+*********** Windows 32 bit fixes (works on my x60 laptop)
+************* fix missing libcairo-2.dll
+              - it was already in the contrib package, Cairo_1.4.5.zip, [[http://cran.r-project.org/][here]]
+                (Cairo/libs/libcairo-2.dll)
+              - I installed the zip file using the Rgui, installing from zip file
+              - it seems that it's just not pointing to it, somehow
+              - fixed up some possible confusion w/ R_LIBS_USER and still had
+                probs w/ libgtk
+            - fix missing libgdk-win32*dll prob
+              download gtk+ bundle to:
+              e:/scotto/lib/gtk+-bundle_2.20/bin
+              and put it in PATH
+            - then it works!  is pretty nice!
 ***** [[http://bm2.genes.nig.ac.jp/RGM2/R_current/library/plotrix/man/staircase.plot.html][staircase.plot()]]: nice way to display where something was distributed, esp. losses?
 ***** stair plots
       [[http://www.statmethods.net/graphs/line.html][lines(*, type='s' or
@@ -6688,6 +6690,11 @@ barplot(y, log = "y", xlab='x', ylab='count(x)')
 ******* supposed to be easy to [[http://www.r-bloggers.com/building-a-package-in-rstudio-is-actually-very-easy/][build them in RStudio]]
 ***** also see [[Upgrading R]]
 ***** also see [[*My basic R packages][My basic R packages]]
+*** set working directory to script dir
+
+    library(here)
+    here()
+
 *** uncategorized but cool
 
 Correlelogram
