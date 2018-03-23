@@ -1146,7 +1146,6 @@ is already narrowed."
         ("\\.mm\\'" . default)
         ("\\.x?html?\\'" . default)
         ("\\.pdf\\'" . default)
-        
         (auto-mode . emacs)))
   ;; Nicer bullets for non-headline lists (does this slow down org mode?)
   ;; others: https://www.w3schools.com/charsets/ref_utf_symbols.asp
