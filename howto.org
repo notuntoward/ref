@@ -5460,6 +5460,102 @@ end
 ***** extracting a plot from a subplot
 
       Use ~/lib/matlab/scottlib/unsubplot.m
+***** save figure to match page width or fill page (or powerpoint slide)
+
+      See [[https://www.mathworks.com/help/matlab/creating_plots/save-figure-at-specific-size-and-resolution.html][Save Figure at Specific Size and Resolution]]
+
+***** plot font sizes
+******* Whole plot 
+
+          set(gca,'FontSize',14); 
+
+        *OR*
+        
+          set(findall(gcf,'-property','FontSize'),'FontSize',12) ; for existing text
+
+        *OR*
+
+           set(0, 'DefaultAxesFontSize', 30) ; only for text created after this command
+           
+******* Axis Labels
+
+          h=xlabel('mylabel') %or h=get(gca,'xlabel')
+          set(h, 'FontSize', 30) 
+          set(h,'FontWeight','bold') %bold font
+
+        *OR*
+
+          plot((1:10).^2)
+          xlabel('Population','FontSize',12,'FontWeight','bold','Color','r')
+
+******* Tick labels (remove them and replace):
+
+        h = plot(g,'NodeLabel',[])
+        for i=1:length
+          text(h.XData(i)+0.1,h.YData(i),num2str(i),'fontsize',16);
+        end
+
+******* Just title
+
+        hTitle = title('This is sin(x) vs x');
+        set(hTitle,'FontSize',30)
+
+******* Programatically after figure resizing
+        From: [[https://www.mathworks.com/matlabcentral/answers/203564-proportional-text-font-size-or-editing-font-size-when-figure-resize-occurs][Proportional text font size, or editing font size when figure resize occurs? ...]]
+
+        fun = @newfig;
+        figure('ResizeFcn' , fun);
+
+        function newfig(src , event)
+        % Your Code
+        end
+        
+
+        % maybe useful
+        get(0 , 'ScreenSize')         % Gives the default screen size in pixels
+        get(0 , 'ScreenPixelsPerInch')  % Gives the default Resolution
+        set(0 , 'Units' , 'Inch') % set to inches
+
+******* Separately for x and y axes        
+        From: [[https://www.mathworks.com/matlabcentral/answers/293473-setting-font-size-separately-for-x-y-axes][Setting font size separately for x&y axes - MATLAB Answers - MATLAB Central]]
+
+x = 1:10;
+y = rand(1, 10);
+
+figure(1)
+plot(x, y)
+xt = get(gca, 'XTick');
+set(gca, 'XTickLabel','')                                           % Turn Off X-Labels
+xts = regexp(sprintf('%.1f ', xt), ' ','split');
+fntsz = 18;                                                         % Font Size
+text(xt, -(1/(10*fntsz))*diff(ylim)*ones(size(xt)), xts(1:end-1), 'FontSize', fntsz, 'HorizontalAlignment','center', 'VerticalAlignment','top')
+
+
+******* Polar axes and plots
+
+        t = 0:.01:2*pi;
+        ax = polaraxes;
+        polarplot(ax, t, sin(2*t).*cos(2*t), '--r');
+        ax.FontSize = 18;
+
+******* Contour plot labels
+
+        Use Matlab's ~clabel~ command
+
+******* Graph edge and node labels
+
+s = [1 1 1 2 2 3 3 4 5 5 6 7];
+t = [2 4 8 3 7 4 6 5 6 8 7 8];
+weights = [10 10 1 10 1 10 1 1 12 12 12 12];
+names = {'A' 'B' 'C' 'D' 'E' 'F' 'G' 'H'};
+G = graph(s,t,weights,names);
+figure(1)
+h = plot(G,'EdgeLabel',G.Edges.Weight);
+nl = h.NodeLabel;
+h.NodeLabel = '';
+xd = get(h, 'XData');
+yd = get(h, 'YData');
+text(xd, yd, nl, 'FontSize',20, 'FontWeight','bold', 'HorizontalAlignment','left', 'VerticalAlignment','middle')
 
 *** matlab-ruby
 
