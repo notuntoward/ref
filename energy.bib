@@ -1189,7 +1189,7 @@ Obviously, this could be a Gaussian Copula or whatever...  The coolness of this 
   volume        = {96},
   number        = {454},
   pages         = {746-774},
-  __markedentry = {[sotterson:6]},
+  __markedentry = {[sotterson:]},
   abstract      = { This article reviews the principle of minimum description length (MDL) for problems of model selection. By viewing statistical modeling as a means of generating descriptions of observed data, the MDL framework discriminates between competing models based on the complexity of each description. This approach began with Kolmogorov's theory of algorithmic complexity, matured in the literature on information theory, and has recently received renewed attention within the statistics community. Here we review both the practical and the theoretical aspects of MDL as a tool for model selection, emphasizing the rich connections between information theory and statistics. At the boundary between these two disciplines we find many interesting interpretations of popular frequentist and Bayesian procedures. As we show, MDL provides an objective umbrella under which rather disparate approaches to statistical modeling can coexist and be compared. We illustrate the MDL principle by considering problems in regression, nonparametric curve estimation, cluster analysis, and time series analysis. Because model selection in linear regression is an extremely common problem that arises in many applications, we present detailed derivations of several MDL criteria in this context and discuss their properties through a number of examples. Our emphasis is on the practical application of MDL, and hence we make extensive use of real datasets. In writing this review, we tried to make the descriptive philosophy of MDL natural to a statistics audience by examining classical problems in model selection. In the engineering literature, however, MDL is being applied to ever more exotic modeling situations. As a principle for statistical modeling in general, one strength of MDL is that it can be intuitively extended to provide useful tools for new problems. },
   doi           = {10.1198/016214501753168398},
   eprint        = {https://doi.org/10.1198/016214501753168398},
@@ -9947,6 +9947,40 @@ Key words. total least squares, discrete ill-posed problems, regularization, bid
   review    = {How to regularize like with ridge regression but with an arbitrary penalty matrix.  Can be solved with a least-squares approach.  Related to pspline, and maybe good for multivariate pspline or maybe even regularized quantile regression.},
 }
 
+@Article{Szekely09brownDistCov,
+  author    = {Sz{\'e}kely, G{\'a}bor J and Rizzo, Maria L and others},
+  title     = {Brownian distance covariance},
+  journal   = {The annals of applied statistics},
+  year      = {2009},
+  volume    = {3},
+  number    = {4},
+  pages     = {1236--1265},
+  abstract  = {Distance correlation is a new class of multivariate dependence coefficients applicable to random vectors of arbitrary and not necessarily equal dimension. Distance covariance and distance correlation are analogous to product-moment covariance and correlation, but generalize and extend these classical bivariate measures of dependence. Distance correlation characterizes independence: it is zero if and only if the random vectors are independent. The notion of covariance with respect to a stochastic process is introduced, and it is shown that population distance covariance coincides with the covariance with respect to Brownian motion; thus, both can be called Brownian distance covariance. In the bivariate case, Brownian covariance is the natural extension of product-moment covariance, as we obtain Pearson product-moment covariance by replacing the Brownian motion in the definition with identity. The corresponding statistic has an elegantly simple computing formula. Advantages of applying Brownian covariance and correlation vs the classical Pearson covariance and correlation are discussed and illustrated.},
+  file      = {:Szekely09brownDistCov.pdf:PDF},
+  publisher = {Institute of Mathematical Statistics},
+  review    = {A  nonlinear, multivariate dependence test that is fast to compute, perhaps a faster, cheaper version of mutual information, possibly without dimension bias?
+
+LNEG used this to select principal components for NWP undertainty features in IRPWIND WP82.3.
+
+Szekely12distCovUniq shows that it's unique.},
+  url       = {https://projecteuclid.org/euclid.aoas/1267453933},
+}
+
+@Article{Szekely12distCovUniq,
+  author    = {Sz{\'e}kely, G{\'a}bor J and Rizzo, Maria L},
+  title     = {On the uniqueness of distance covariance},
+  journal   = {Statistics \& Probability Letters},
+  year      = {2012},
+  volume    = {82},
+  number    = {12},
+  pages     = {2278--2282},
+  abstract  = {Distance covariance and distance correlation are non-negative real numbers that characterize the independence of random vectors in arbitrary dimensions. In this work we prove that distance covariance is unique, starting from a definition of a covariance as a weighted L2 norm that measures the distance between the joint characteristic function of two random vectors and the product of their marginal characteristic functions. Rigid motion invariance and scale equivariance of these weighted L2 norms imply that the weight function of distance covariance is unique.},
+  file      = {:Szekely12distCovUniq.pdf:PDF},
+  publisher = {Elsevier},
+  review    = {See also Szekely09brownDistCov},
+  url       = {https://www.sciencedirect.com/science/article/pii/S0167715212003124},
+}
+
 @Article{Polasek90vecDistLagSmooth,
   author    = {Wolfgang Polasek},
   title     = {Vector distributed lag models with smoothness priors},
@@ -11951,7 +11985,9 @@ Can be decomposed into reliability and resolution, (as can CRPS, I guess)
 
 Quantile reliability plots (like DWD does).
 
-See also Bentzien13qntScrDecomp},
+See also Bentzien13qntScrDecomp
+
+I think that Malte wrote Eweline's QuantileScoreDecom.m based on this.},
   timestamp = {2017.03.15},
   url       = {http://www2.meteo.uni-bonn.de/staff/wahl/files/bentzien_poster_egu2014_qs.pdf},
 }
@@ -18890,17 +18926,16 @@ penalized spline quantile regression
 }
 
 @Article{Nathans12mlrVarImp,
-  author        = {Nathans, Laura L and Oswald, Frederick L and Nimon, Kim},
-  title         = {Interpreting multiple linear regression: A guidebook of variable importance},
-  journal       = {Practical Assessment, Research \& Evaluation},
-  year          = {2012},
-  volume        = {17},
-  number        = {9},
-  __markedentry = {[sotterson:]},
-  abstract      = {Multiple regression (MR) analyses are commonly employed in social science fields. It is also common for interpretation of results to typically reflect overreliance on beta weights (cf. Courville & Thompson, 2001; Nimon, Roberts, & Gavrilova, 2010; Zientek, Capraro, & Capraro, 2008), often resulting in very limited interpretations of variable importance. It appears that few researchers employ other methods to obtain a fuller understanding of what and how independent variables contribute to a regression equation. Thus, this paper presents a guidebook of variable importance measures that inform MR results, linking measures to a theoretical framework that demonstrates the complementary roles they play when interpreting regression findings. We also provide a data-driven example of how to publish MR results that demonstrates how to present a more complete picture of the contributions variables make to a regression equation. We end with several recommendations for practice regarding how to integrate multiple variable importance measures into MR analyses},
-  file          = {:Nathans12mlrVarImp.pdf:PDF},
-  publisher     = {Practical Assessment, Research \& Evaluation},
-  review        = {Assessing the importance of a variable in linear regression.  Best method and depends upon the goal and the data.  But surprisingly, stepwise regression is strongly unrecommended.
+  author    = {Nathans, Laura L and Oswald, Frederick L and Nimon, Kim},
+  title     = {Interpreting multiple linear regression: A guidebook of variable importance},
+  journal   = {Practical Assessment, Research \& Evaluation},
+  year      = {2012},
+  volume    = {17},
+  number    = {9},
+  abstract  = {Multiple regression (MR) analyses are commonly employed in social science fields. It is also common for interpretation of results to typically reflect overreliance on beta weights (cf. Courville & Thompson, 2001; Nimon, Roberts, & Gavrilova, 2010; Zientek, Capraro, & Capraro, 2008), often resulting in very limited interpretations of variable importance. It appears that few researchers employ other methods to obtain a fuller understanding of what and how independent variables contribute to a regression equation. Thus, this paper presents a guidebook of variable importance measures that inform MR results, linking measures to a theoretical framework that demonstrates the complementary roles they play when interpreting regression findings. We also provide a data-driven example of how to publish MR results that demonstrates how to present a more complete picture of the contributions variables make to a regression equation. We end with several recommendations for practice regarding how to integrate multiple variable importance measures into MR analyses},
+  file      = {:Nathans12mlrVarImp.pdf:PDF},
+  publisher = {Practical Assessment, Research \& Evaluation},
+  review    = {Assessing the importance of a variable in linear regression.  Best method and depends upon the goal and the data.  But surprisingly, stepwise regression is strongly unrecommended.
 
 Stepwise
 * prone to selecting too many variables.
@@ -18916,7 +18951,7 @@ But for picking the most important PCA components in a regression problem, where
 * Related to Zuber10varImpSelDecorr
 
 },
-  url           = {https://scholarship.rice.edu/handle/1911/71096},
+  url       = {https://scholarship.rice.edu/handle/1911/71096},
 }
 
 @INPROCEEDINGS{Sutiene07scenCopula,
@@ -19389,6 +19424,31 @@ heteroscedastic ensemble post-processing, censored distribution, maximum likelih
   Owner                    = {scot},
   Review                   = {spinning reserves. shows how to invert a gaussianization transform? Erdogmus06gaussianiz is the update},
   Timestamp                = {2010.12.07}
+}
+
+@Article{Altman92kernKNNrgrssn,
+  author        =
+  {Altman, Naomi S},
+  title         = {An introduction to kernel and nearest-neighbor nonparametric regression},
+  journal       = {The American Statistician},
+  year          = {1992},
+  volume        = {46},
+  number        = {3},
+  pages         = {175--185},
+  __markedentry = {[sotterson:6]},
+  abstract      = {Nonparametric regression is a set of techniques for estimating a regression curve
+without making strong assumptions about the shape of the true regression function. These
+techniques are therefore useful for building and checking parametric models, as well as for
+data description. Kernel and nearest neighbor regression estimators are local versions
+of univariate location estimators, and so they can readily be introduced to beginning
+students, and consulting clients who are familiar with such summaries as the sample
+mean and median.
+
+Key Words: Confidence intervals; Local linear regression; Model building; Model check-
+ing; Smoothing.},
+  file          = {:Altman92kernKNNrgrssn.pdf:PDF},
+  publisher     = {Taylor \& Francis},
+  url           = {https://www.tandfonline.com/doi/abs/10.1080/00031305.1992.10475879},
 }
 
 @Article{Pimentel14revNovDet,
@@ -22772,6 +22832,39 @@ Compare with Hart and Jacobsen's 80\% C02 reduction scenario for California (Har
   timestamp = {2013.03.13},
 }
 
+@Article{Zanakis98multiAttrDcsnCmpr,
+  author    = {Zanakis, Stelios H and Solomon, Anthony and Wishart, Nicole and Dublish, Sandipa},
+  title     = {Multi-attribute decision making: a simulation comparison of select methods},
+  journal   = {European journal of operational research},
+  year      = {1998},
+  volume    = {107},
+  number    = {3},
+  pages     = {507--529},
+  abstract  = {Several methods have been proposed for solving multi-attribute decision making problems (MADM). A major criticism
+of MADM is that different techniques may yield different results when applied to the same problem. The problem
+considered in this study consists of a decision matrix input of N criteria weights and ratings of L alternatives on each
+criterion. The comparative performance of some methods has been investigated in a few, mostly field, studies. In this
+simulation experiment we investigate the performance of eight methods: ELECTRE, TOPSIS, Multiplicative Exponential-
+Weighting (MEW), Simple Additive Weighting (SAW), and four versions of AHP (original vs. geometric scale and right
+eigenvector vs. mean transformation solution). Simulation parameters are the number of alternatives, criteria and their
+distribution. The solutions are analyzed using twelve measures of similarity of performance. Similarities and differences in
+the behavior of these methods are investigated. Dissimilarities in weights produced by these methods become stronger in
+problems with few alternatives; however, the corresponding final rankings of the alternatives vary across methods more in
+problems with many alternatives. Although less significant, the distribution of criterion weights affects the methods
+differently. In general, all AHP versions behave similarly and closer to SAW than the other methods. ELECTRE is the least
+similar to SAW (except for closer matching the top-ranked alternative), followed by MEW. TOPSIS behaves closer to AHP
+and differently from ELECTRE and MEW, except for problems with few criteria. A similar rank-reversal experiment
+produced the following performance order of methods: SAW and MEW (best), followed by TOPSIS, AHPs and ELECTRE.
+It should be noted that the ELECTRE version used was adapted to the common MADM problem and therefore it did not
+take advantage of the method’s capabilities in handling problems with ordinal or imprecise information. © 1998 Elsevier
+Science B.V.
+Keywords: Multiple criteria analysis; Decision theory; Utility theory; Simulation},
+  file      = {:Zanakis98multiAttrDcsnCmpr.pdf:PDF},
+  publisher = {Elsevier},
+  review    = {The main reference a lot of people use in predictive maintenance.  I thought it has sometime to do with the Wishart charts that Peter Deeskow (STEAG, and ModernWindABS) uses, but now I'm not sure.},
+  url       = {https://www.researchgate.net/publication/215653478_Multi-attribute_decision_making_A_simulation_comparison_of_select_methods},
+}
+
 @Article{Mofrad10wavletShape,
   author    = {Mofrad, B. and Tehrani-Fard, A. and Zoroofi, A. and Akhlaghpoor, S. and Chen, Y.W.},
   title     = {A Novel Wavelet Based Multi-Scale Statistical Shape Model-Analysis for the Liver Application: Segmentation and Classification},
@@ -23593,7 +23686,8 @@ In this paper it is shown that for an ensemble prediction system the CRPS can be
 Decomposition is analogous to the decomposition of the Brier score. Should probably understand why both decompositions matter.
 
 * the CRPS of a deterministic forecast is equal to the mean absolute error (MAE)
-* multidimensional CRPS is some kind of weighted average},
+* multidimensional CRPS is some kind of weighted average
+* in practice, I think I've found that it's insensitive to quantile crossover (this is the algorithm used in the R verification package that I ported to crpsDecomposition.m, for the Eweline project.  I've since written my own CRPS code which uses weighted quantile scores.  Also, Malte, wrote Quanti9leScoreDecom.m, based on Bentzien14quantScrDecomp)},
   timestamp = {2013.09.26},
 }
 
@@ -26742,6 +26836,48 @@ This is Kraskov's PhD thesiz},
   timestamp = {2011.04.18},
 }
 
+@MastersThesis{Martin17intrdyMktThesis,
+  author   = {Henry Martin},
+  title    = {A Limit Order Book Model for the German Intraday Electricity Market},
+  school   = {Technical University Munich},
+  year     = {2017},
+  abstract = {The importance of the German intraday electricity market increased significantly
+over the past years, however there is limited research about intraday market models
+in Germany. In this thesis we examine the possibility of applying limit order book
+market models designed for stock markets to the German intraday electricity market.
+We find that the general approach may be suitable for modeling characteristics like
+liquidity, but that the specific models are a poor fit. Therefore we propose new models
+that are tailored to our application.
+
+We proceed by preparing the EPEX SPOT M7 order flow data, a data set containing
+all orders submitted to the German intraday electricity market. We present prepro-
+cessing steps and decision rules necessary to infer the identity of individual orders,
+information that is not directly available. Based on these rules, we implement a
+historical market simulator that reconstructs the complete state of the market for
+every point in time. The historic market simulator itself can be used as a simple,
+limit order book based market model. It allows modeling the influence of trade size
+and trading time on the available market price. Thus, this model can, when limited
+to small trade sizes, represent important dimensions of liquidity. We find that the
+historical EPEX SPOT order flow simulator can reproduce independent transaction
+records with a near-exact accuracy.
+
+The order flow is then used to create a stochastic market model. First, we introduce a
+horizon dependent power law model for the order submission intensity, which provides
+a very good fit to empirical data. We show that trading size is strongly clustered
+around integers, and propose a mixture model that can reproduce the preference of
+traders for rounded values. Order cancellation arrival intensity is indirectly modeled
+by a distribution of order lifetimes. We show that order lifetime does not follow
+the exponential distribution used for stock markets so we instead model it using a
+log-logistic model.
+
+Finally, we simulate the market model for the last two hours of trading for one month
+of unseen test data. For most of the variables, the simulated outcome matches the
+time independent distributions of the empirical data. The fit is especially close for
+the order arrival rate, order prices, the mid-price, the price at the best ask and the
+price of the best bid.},
+  review   = {Henry's Masters Thesis},
+}
+
 @Article{Olsson10modelBlncWindSDE,
   author    = {Magnus Olsson and Magnus Perninge and Lennart S{\"o}der},
   title     = {Modeling real-time balancing power demands in wind power systems using stochastic differential equations},
@@ -27251,6 +27387,22 @@ Also see: Valpola15neurPCA2deepUnsupLrnBk
 Note that there was also a 2015 ArXiv paper with the same title.},
   timestamp = {2017.02.01},
   url       = {http://jmlr.org/proceedings/papers/v48/pezeshki16.html},
+}
+
+@Article{Zhang17rampSpatTempWindP,
+  author        = {Jie Zhang and Mingjian Cui and Bri-Mathias Hodge and Anthony Florita and Jeffrey Freedman},
+  title         = {Ramp forecasting performance from improved short-term wind power forecasting over multiple spatial and temporal scales},
+  journal       = {Energy},
+  year          = {2017},
+  volume        = {122},
+  pages         = {528 - 541},
+  issn          = {0360-5442},
+  __markedentry = {[sotterson:]},
+  abstract      = {The large variability and uncertainty in wind power generation present a concern to power system operators, especially given the increasing amounts of wind power being integrated into the electric power system. Large ramps, one of the biggest concerns, can significantly influence system economics and reliability. The Wind Forecast Improvement Project (WFIP) was to improve the accuracy of forecasts and to evaluate the economic benefits of these improvements to grid operators. This paper evaluates the ramp forecasting accuracy gained by improving the performance of short-term wind power forecasting. This study focuses on the WFIP southern study region, which encompasses most of the Electric Reliability Council of Texas (ERCOT) territory, to compare the experimental WFIP forecasts to the existing short-term wind power forecasts (used at ERCOT) at multiple spatial and temporal scales. The study employs four significant wind power ramping definitions according to the power change magnitude, direction, and duration. The optimized swinging door algorithm is adopted to extract ramp events from actual and forecasted wind power time series. The results show that the experimental WFIP forecasts improve the accuracy of the wind power ramp forecasting. This improvement can result in substantial costs savings and power system reliability enhancements.},
+  doi           = {https://doi.org/10.1016/j.energy.2017.01.104},
+  file          = {:Zhang17rampSpatTempWindP.pdf:PDF},
+  keywords      = {Wind forecasting, Grid integration, Ramp forecasting, ERCOT, Optimized swinging door algorithm},
+  url           = {http://www.sciencedirect.com/science/article/pii/S0360544217301111},
 }
 
 @TechReport{Nardi08autoRegrLASSO,
@@ -30757,8 +30909,7 @@ Recommends also viewing
   publisher = {The Institute of Mathematical Statistics and the Bernoulli Society},
   review    = {Adaptive covaraince/precision matrix review paper.},
   url       = {http://dx.doi.org/10.1214/15-EJS1081},
-}
-,
+},
   timestamp    = {2017.01.17},
   url          = {http://karpathy.github.io/2016/05/31/rl/},
 }
@@ -33405,7 +33556,7 @@ among other factors, the turbulence intensity of the wind speed.},
 }
 
 @TechReport{Andrade17ercotRsrvLessMore,
-  author      = {Juan Andrade, and Yingzhang Dong and Ross Baldick},
+  author      = {Juan Andrade and Yingzhang Dong and Ross Baldick},
   title       = {Impact of Renewable Generation on Operational Reserves Requirements: When More Could be Less},
   institution = {University of Texas at Austin},
   year        = {2017},
@@ -41076,6 +41227,17 @@ Alg. not really described here: must see: Agarwal10UnivMDS (I think)},
   url       = {http://www.springer.com/us/book/9781461463955},
 }
 
+@InCollection{Akaike92infoThryMaxLik,
+  author    = {Akaike, Hirotogu},
+  title     = {Information theory and an extension of the maximum likelihood principle},
+  booktitle = {Breakthroughs in statistics},
+  publisher = {Springer},
+  year      = {1992},
+  pages     = {610--624},
+  review    = {What seems to be the fundamental reference for AIC stopping criteria.},
+  url       = {https://link.springer.com/chapter/10.1007/978-1-4612-0919-5_38},
+}
+
 @Misc{Allen12bpaHyProM,
   author       = {Chris Allen},
   title        = {TIP 259: Short-Term Hydropower Production and Marketing Optimization (HyProM)},
@@ -44467,7 +44629,7 @@ See also: CAISO10caisoRnwblIntegSwngDr
   publisher     = {CRC Press},
   year          = {2016},
   author        = {Manly, Bryan FJ and Alberto, Jorge A Navarro},
-  __markedentry = {[sotterson:6]},
+  __markedentry = {[sotterson:]},
   review        = {Easy to read reference for PCA and many other things.},
 }
 
@@ -44495,6 +44657,15 @@ See also: CAISO10caisoRnwblIntegSwngDr
   owner     = {sotterson},
   publisher = {Elsevier},
   timestamp = {2016.12.19},
+}
+
+@InProceedings{Martin18germanMktLOB,
+  author    = {Henry Martin and Scott Otterson},
+  title     = {German Intraday Electricity Market Analysis and Modeling based on the Limit Order Book},
+  booktitle = {International Conf. on the European Energy Market.},
+  year      = {2018},
+  address   = {Łódź, PL.},
+  review    = {Conf. paper on Henry's Master's thesis},
 }
 
 @Article{Mathiesen15solFrcstNWPslides,
@@ -46745,6 +46916,7 @@ also described in: AbdulRahman12flexRampCAISO and Xu12flexRamp2ndFprpsl},
   year      = {2015},
   file      = {Yang15UncertaintyForecastNetLd.pdf:Yang15UncertaintyForecastNetLd.pdf:PDF},
   owner     = {sotterson},
+  review    = {Measurures error of deterministic demand and RES forecasts, and calculates ramps from them.  These are fit to unconditional parametric Gaussian and Normal distributions, and it's not clear to me that the fiit that well.},
   timestamp = {2017.05.02},
   url       = {https://dukespace.lib.duke.edu/dspace/bitstream/handle/10161/9622/Uncertainty%20in%20the%20Forecast%20of%20Net%20Load%20Ramp%20in%20CAISO-Peizhi.pdf?sequence=1},
 }

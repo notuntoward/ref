@@ -1040,9 +1040,9 @@
       (call-interactively 'ess-eval-buffer)))
   (add-hook 'ess-mode-hook
             '(lambda()
-               (local-set-key [(shift return)] 'my-ess-eval)
+               (local-set-key [(shift return)] 'my-ess-eval)))
                ;; but flycheck does nothing if I vist an R file.  Need to do some extra config?
-               (flycheck-mode t)))
+;;               (flycheck-mode t)))
 
   (add-hook 'inferior-ess-mode-hook
             '(lambda()

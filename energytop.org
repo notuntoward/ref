@@ -534,6 +534,8 @@
 *** <<Wishart Distribution>>
 ***** [[cite:Wikipedia17WishartDist][Wikipedia 2017: Wishart]]
 ***** MLE est. of [[Normal Distribution]] cov. is Wishart: [[cite:Wikipedia17WishartDist][Wikipedia 2017: Wishart]]
+***** Related to Wishart Charts? [[file:energy.bib::Zanakis98multiAttrDcsnCmpr][Zanakis et al. 1998: Multi Attr. Decision Cmpr]]
+***** Also [[Wishart Charts]]
 *** <<Normal Distribution>>
 ***** [[file:energy.bib::Roweis99gaussIdentities][Roweis 1999: Gaussian Identities]]
 ***** <<Conditional Normal Distribution>> (cond. normal copula, Gauss Proc, etc.)
@@ -1849,7 +1851,7 @@ Scott
 ***** [[http://neuralnetworksanddeeplearning.com/][Neural Networks and Deep Learning (work in progress)]] (free online book)
 ******* online book, has Python but could write in something else
 ***** [[file:energy.bib::Bengio13RepresentationLearningReview][Bengio et al. 2013: Representation Learning]]: deep feat learn & PCA
-***** TODO [[cite:Sogabe16optRESdpLrn][Sogabe et al. 2016: Optimization]] RES deep learning (net demand?)
+***** TODO [[cite:Sogabe16optRESdpLrn][Sogabe et al. 2016: Optimization]] RES deep learning (net demandq?)
 ***** [[cite:Zeiler14vizUnderstandConvNN][Zeiler & Fergus 2014: Visualizing]] conv NN feat learn
 ***** [[cite:Karpathy14featLrnEscpdsBlog][Karpathy 2014: Feature Learning Escapades]] (Feature and Transfer learning)
 ***** [[cite:Karpathy16convNNcourseNotes][Karpathy 2016: Course Notes CS231n]] conv NN's (used for ModerWindABS kickoff)
@@ -2597,11 +2599,10 @@ Scott
 ************* Kraskov MI estimator with missing features
               <<Kraskov MI estimator with missing features>>
 *************** see [[File:energy.bib::doquire11mutinfmissdat][Doquire & Verleysen 2011: Mutual Info Miss Dat]]
-************* TODO reduce dimension bias in Kraskov's MI estimator     :idea:
+************* TODO  <<Reduce dimension bias in Kraskov's MI estimator>>    :idea:
               :properties:
               :id:       8fe6d642-37df-4c2c-a568-92b03c3a196f
               :end:
-              <<Reduce dimension bias in Kraskov's MI estimator>>
 *************** MI estimate decreases w/ increasing dimension even if MI is constant
 
                 o estimator:  [[file:energy.bib::kraskov05hierclustmutinfo][kraskov et al. 2005: hierarchical clustering using mutual information]]
@@ -2619,7 +2620,8 @@ Scott
 
 *************** MI neg. bias seems to also increase w/ fewer points
 ***************** empirical results in [[file:~/work/dtu/doc/energy.bib::kraskov04estmutinfknn][kraskov et al. 2004: estimating]] mi
-*************** _Use Different Distance Metric_: my notes on p. 16 of: [[file:energy.bib::Kraskov04syncIndepMeasMIphd][Kraskov 2004: Synchronization Interdependence Maesures]]
+*************** _Use Different Distance Metric?_: my notes on p. 16 of: [[file:energy.bib::Kraskov04syncIndepMeasMIphd][Kraskov 2004: Synchronization Interdependence Maesures]]
+*************** use [[Distance Covariance]] instead of Kraskov MI?
 *************** [[file:energy.bib::Vlachos10nonUnifStSpcMI][Vlachos & Kugiumtzis 2010: Nonuniform]] shows how Kraskov-like PMI/CMI has less dim bias than Kraskov MI
 *************** see also [[Curse of Dimensionality and Local Linear Regression]] (has high dim distance, KNN, etc. stuff)
 *************** especially see: [[High dimensional KNN hubs]]
@@ -2991,6 +2993,10 @@ Scott
 ************* [[file:energy.bib::Kraskov04EstMutInfKNN][Kraskov et al. 2004: Estimating]]
 ************* [[JIDT: Java Information Dynamics Toolkit]]: Kraskov extensions
 ************* [[file:energy.bib::Szabo13infoTheoEstTlbx][Szabo 2013: Information Theoretical Estimators ITE Toolbox]] I think.  Matlab, many, many info functions and subspace models
+********* <<Distance Covariance>>
+          Maybe as good as multivariate MI but faster and w/ no distance bias?
+*********** [[file:energy.bib::Szekely09brownDistCov][Szekely et al. 2009: Brownian Distance Covariance]]
+*********** [[file:energy.bib::Szekely12distCovUniq][Szekely & Rizzo 2012 Uniqueness Distance Covariance]]
 ********* Partial Mutual Information Estimation
           <<Partial Mutual Information Estimation>>
 
@@ -3715,6 +3721,9 @@ Hope that helps,
 *** [[Multi-Model NWP]]
 *** [[*Ensemble forecasting][Ensemble forecasting]]
 *** [[file:energytop.org::*Boosted%20regression][Boosted regression]]
+* <<KNN Regression>>
+*** [[file:energy.bib::Altman92kernKNNrgrssn][Altman 1992 Intro to Kernel and KNN Regression]]
+*** [[KNN neighborhood functions for local linear regression]]
 * <<Boosted Regression>>
 *** Blasso (boosted lasso: could this be continuous or discrete?)
 *** Discreet boosting
@@ -5026,8 +5035,7 @@ sera
 ******* [[file:energy.bib::Lemke09dynFrcstComboDiv][Lemke et al. 2009: Dynamic]] (almost switching combination)
 ******* [[file:energy.bib::Selen08layLinRgrOrder][Selen & Larsson 2008: Empirical Bayes]]
 ******* see: [[Quantile Mixtures]]
-******* Local Linear Regression
-        <<Local Linear Regression>>
+******* <<Local Linear Regression>>
 
         Note that local techniques are criticized, and are being replaces
         with deep learning, apparently.
@@ -5040,6 +5048,8 @@ sera
 ********* [[file:energy.bib::Ormoneit99optKernLocLinRgrsn][Ormoneit & Hastie 1999: Optimal]] kernal shapes, loca linear
 ********* [[file:energy.bib::Atkeson99LocalLrn][Atkeson et al. 1999: Locally]] (another very friendly local learning intro)
 ********* <<KNN neighborhood functions for local linear regression>>
+*********** [[KNN Regression]]
+*********** [[file:energy.bib::Altman92kernKNNrgrssn][Altman 1992 Intro to Kernel and KNN regression]]
 *********** TODO [[file:energy.bib::Zhang12rflctLocLinKNN][Zhang et al. 2012: Reflectance]] locLin with KNN neighbhorhoods
 *********** [[file:energy.bib::GutierrezOsuna11kdnnLecNotes][Gutierrez-Osuna 2011: Kernel Nearest Neighbors]] maybe KNN not good for neighborhoods?
 *********** [[file:energy.bib::Gupta08adaptLocLinKNN][Gupta et al. 2008: Adaptive Local Linear]] (KNN loclin, use convex hull, no CV, low dim but high dim refs)
@@ -5067,8 +5077,7 @@ sera
 *********** [[file:energy.bib::Witten13ClusterElasticNet][Witten et al. 2013: Cluster Elastic Net]]
 *********** [[file:energy.bib::Hirose12NNRMLknnLocLin][Hirose et al. 2012: NNRMLR]] (kinda: weighted KNN w/ dist from global linear regression)
 *********** see also: [[Feature Selection]]
-********* Curse of Dimensionality and Local Linear Regression
-          <<Curse of Dimensionality and Local Linear Regression>>
+********* <<Curse of Dimensionality and Local Linear Regression>>
 *********** the curse: [[file:energy.bib::Verleysen05cursDimMinTser][Verleysen & Francois 2005: Curse Dimensionality Data]]
 *********** density thresh + special cross-validation: [[file:energy.bib::Taylor12locRgrsnStrat][Taylor 2012: Strategies]] local
 *********** [[file:energy.bib::Hirose12NNRMLknnLocLin][Hirose et al. 2012: NNRMLR]] (mix of KNN and local linear, maybe could use high dim tricks)
@@ -6269,8 +6278,7 @@ variables will be preferred, when possible.
     <<regime clustering>>
 ***** Applications In Wind Power
 ******* wind dir. for power curve
-******* Regimes and Ramps
-        <<Regimes and Ramps>>
+******* <<Regimes and Ramps>>
 ********* [[file:energy.bib::grimit08frcstwndramp][Grimit & Potter 2008: Prototype Day Ahead]]
 ********* [[File:energy.bib::grimit08windstateofart][Grimit & Potter 2008: State Of Art]]
 ********* [[File:energy.bib::kusiak08dataminewind][Kusiak 2008: Prediction Of Wind]]
@@ -6294,6 +6302,7 @@ variables will be preferred, when possible.
 ********* [[File:energy.bib::sevlian13windrampdetstat][Sevlian & Rajagopal 2013: Detection Statistics Wind Power Ramps]]
 ********* Ramps Hard to forecast beyond 4.5-5.5 days: [[file:energy.bib::Cannon16skilRngProbFrcst][Cannon et al. 2016: Determining]]
 ********* [[cite:Cheung11smartDsptchRES][Cheung & Rios-Zalapa 2011: Smart Grid Dispatch Net Demand]] 
+********* [[file:energy.bib::Zhang17rampSpatTempWindP][Zhang et al. 2017: Ramp Forecast Spat. Temp. Wind]] 
 ********* also see: [[Ramps in Integration]]
 ********* also see [[Ramp Forecasting]]
 ********* also see: [[Ensembles and Ramps]]
@@ -7992,12 +8001,12 @@ Scott
 ***** [[File:energy.bib::jonsson10spinrsrv][Jonsson et al. 2010: allocation deployment spinning reserves]]
 ***** [[file:energy.bib::Schnabel13quantSheets][Schnabel & Eilers 2013: Simultaneous]] quantile sheets
 ***** [[file:energy.bib::Kristov14elecDS021st][Kristov & Martini 2014: Century Electric Distribution System Operations]] (CAISO net demand DSO)
-***** [[cite:Cabrera14genQuantFrcstDemandFuncD][Cabrera et al. 2014: Forecasting Generalized Quantiles Electricity Demand]]
-***** [[cite:Cabrera16adaptProbPriceFrcst][Cabrera et al. 2016: Time Adaptive Probabilistic]] price frcst
+***** [[cite:Cabrera14genQuantFrcstDemandFuncD][Cabrera et al. 2014: Forecasting Generalized Quantiles Electricity Demand]] (demand only)
+***** [[cite:Cabrera16adaptProbPriceFrcst][Cabrera et al. 2016: Time Adaptive Probabilistic]] (price frcst)
 ***** [[cite:Song16elecCnsmptFrcstELM][Song et al. 2016: Multivariate Extreme Learning Machine]]
 ***** [[cite:Cheung11smartDsptchRES][Cheung & Rios-Zalapa 2011: Smart Grid Dispatch Net Demand]] 
 ***** [[cite:Yang15UncertaintyForecastNetLd][Yang 2015: Uncertainty Forecast Net Load]]
-***** [[cite:Andrade17ercotRsrvLessMore][Juan et al. 2017: Impact Renewable Generation (only CAISO has ramp product)]]
+***** [[cite:Andrade17ercotRsrvLessMore][Andrade et al. 2017: Impact Renewable Generation (only CAISO has ramp product)]]
 ***** [[cite:Siemens14sennFrcstsRES][Siemens 2014: Better Forecast RES Wnd/Solar/netDmd/xmssn/Deep]]
 ***** [[File:energy.bib::soder93rsrvwindhydrothrm][Soder 1993: Reserve]] (wind/hydro/thermal.  considers net load uncertainty, ramps)
 ***** [[cite:Soares17distGridMgmtPowFlw][Soares et al. 2017: Active Distribution Grid pow flow scenarios]]
@@ -9133,6 +9142,7 @@ later corrected by greg heath:
 ***** Manhattan, k=1, is proved to have best discrim. in high dim space
 ***** Likes k<1 (fractional) norms, also called "Lf norms," which don't satisfy triangle inequalities
 *** [[file:energy.bib::Kraskov08MIChierClustMutInf][Kraskov & Grassberger 2008: MIC]] MI distance measure
+*** [[Distance Covariance]]
 *** See also: [[lp spaces and norms]]
 * <<Stopping Criteria>>
 
@@ -9145,7 +9155,9 @@ later corrected by greg heath:
 ***** [[file:energy.bib::Frenzel07partMutInfo][Frenzel & Pompe 2007: Partial Mutual Information]]: commentor say no easy stopping criterion
 ***** [[file:energy.bib::Lizier12compNetsTransEnt][Lizier et al. 2012: Multivariate]] TE: permuted TE
 ***** [[File:energy.bib::zheng11featselhimdimmi][Zheng & Kwoh 2011: Feature Subset Selection]]: MI==Entropy (also for clustering)
-***** [[file:energy.bib::Hansen01mdlSelMDL][Hansen & Yu 2001: Model Selection Principle]]
+***** [[file:energy.bib::Akaike92infoThryMaxLik][Akaike 1992: Information theory Max Lik (the AIC criterion)]]
+***** BIC: I must have a ton of references on this.
+***** [[file:energy.bib::Hansen01mdlSelMDL][Hansen & Yu 2001: Model Selection Principle]] (AIC and BIC in terms of MDL)
 *** [[Number of clusters determination]] (a stopping Criterion)
 *** Lasso-like algorithm Stopping
 ***** [[Lasso Stopping Criterion in tutorial video]]
@@ -9311,6 +9323,8 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 *** <<Power Markets>>
 ***** <<German Power Market>>
 ******* Great [[https://www.energy-charts.de/price.htm][price and other charts]] from Fraunhofer ISE
+******* [[file:energy.bib::][Martin 2017: Limit Order Book MS Thesis]]
+******* [[file:energy.bib::Martin18germanMktLOB][Martin & Otterson 2018: German Intraday Electricity]] conf paper
 ******* TODO [[file:energy.bib::Dionne15LiquidAdjIntraday][Dionne et al. 2015: Liquidity Intraday Value Risk]] models liquidity from order books
 ******* TODO [[file:energy.bib::Pape15fndmntlPriceVarDEpowMkt][Pape et al. 2015: Are Fundamentals Enough]]? DE pow mkt price var
 ******* TODO [[file:energy.bib::VonSelasinsky14intradayMktDE][Von Selasinsky 2014: Integration]] of renewables in DE intraday mkt.
@@ -11074,6 +11088,9 @@ Erika
 ******* [[cite:Malhotra15lstmAnomDetTS][Malhotra et al. 2015: LSTM TimeSer Anom. Det: Kalman could be Copula]]
 ******* [[file:energy.bib::Gill12powCurvCopula][Gill et al. 2012: Wind Turbine Condition]] wind/pow copula detects turbine faults
 ******* [[cite:Bai16condCplaWindPowCrvFeat][Bai et al. 2016: Copula Wind Power Curve Feats]]
+***** <<Wishart Charts>>
+      Peter Deeskow (STEAG, ModdernWindABS) uses them but I don't quite understand why.
+******* [[*Related to Wishart Charts? %5B%5Bfile:energy.bib::Zanakis98multiAttrDcsnCmpr%5D%5BZanakis et al. 1998: Multi%5D%5D][Related to Wishart Charts? Zanakis et al. 1998: Multi]]
 ***** [[Stopping Criteria]]
 *** Also [[Class Imbalance Handling]]
 *** Also [[Automatic bad data detection]]
