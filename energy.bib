@@ -19427,7 +19427,8 @@ heteroscedastic ensemble post-processing, censored distribution, maximum likelih
 }
 
 @Article{Altman92kernKNNrgrssn,
-  author        = {Altman, Naomi S},
+  author        =
+  {Altman, Naomi S},
   title         = {An introduction to kernel and nearest-neighbor nonparametric regression},
   journal       = {The American Statistician},
   year          = {1992},
@@ -26833,6 +26834,48 @@ This is Kraskov's PhD thesiz},
  -- Stochastic allocates more reserve units for same fixed reserve pct (S1 vs. D2), p. 6
  -- for same 10\% fixed reseve, stoch has much less load curtail cost than determ (D2/S1 in table 6)},
   timestamp = {2011.04.18},
+}
+
+@MastersThesis{Martin17intrdyMktThesis,
+  author   = {Henry Martin},
+  title    = {A Limit Order Book Model for the German Intraday Electricity Market},
+  school   = {Technical University Munich},
+  year     = {2017},
+  abstract = {The importance of the German intraday electricity market increased significantly
+over the past years, however there is limited research about intraday market models
+in Germany. In this thesis we examine the possibility of applying limit order book
+market models designed for stock markets to the German intraday electricity market.
+We find that the general approach may be suitable for modeling characteristics like
+liquidity, but that the specific models are a poor fit. Therefore we propose new models
+that are tailored to our application.
+
+We proceed by preparing the EPEX SPOT M7 order flow data, a data set containing
+all orders submitted to the German intraday electricity market. We present prepro-
+cessing steps and decision rules necessary to infer the identity of individual orders,
+information that is not directly available. Based on these rules, we implement a
+historical market simulator that reconstructs the complete state of the market for
+every point in time. The historic market simulator itself can be used as a simple,
+limit order book based market model. It allows modeling the influence of trade size
+and trading time on the available market price. Thus, this model can, when limited
+to small trade sizes, represent important dimensions of liquidity. We find that the
+historical EPEX SPOT order flow simulator can reproduce independent transaction
+records with a near-exact accuracy.
+
+The order flow is then used to create a stochastic market model. First, we introduce a
+horizon dependent power law model for the order submission intensity, which provides
+a very good fit to empirical data. We show that trading size is strongly clustered
+around integers, and propose a mixture model that can reproduce the preference of
+traders for rounded values. Order cancellation arrival intensity is indirectly modeled
+by a distribution of order lifetimes. We show that order lifetime does not follow
+the exponential distribution used for stock markets so we instead model it using a
+log-logistic model.
+
+Finally, we simulate the market model for the last two hours of trading for one month
+of unseen test data. For most of the variables, the simulated outcome matches the
+time independent distributions of the empirical data. The fit is especially close for
+the order arrival rate, order prices, the mid-price, the price at the best ask and the
+price of the best bid.},
+  review   = {Henry's Masters Thesis},
 }
 
 @Article{Olsson10modelBlncWindSDE,
@@ -44614,6 +44657,15 @@ See also: CAISO10caisoRnwblIntegSwngDr
   owner     = {sotterson},
   publisher = {Elsevier},
   timestamp = {2016.12.19},
+}
+
+@InProceedings{Martin18germanMktLOB,
+  author    = {Henry Martin and Scott Otterson},
+  title     = {German Intraday Electricity Market Analysis and Modeling based on the Limit Order Book},
+  booktitle = {International Conf. on the European Energy Market.},
+  year      = {2018},
+  address   = {Łódź, PL.},
+  review    = {Conf. paper on Henry's Master's thesis},
 }
 
 @Article{Mathiesen15solFrcstNWPslides,

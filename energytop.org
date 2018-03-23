@@ -9324,6 +9324,8 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 *** <<Power Markets>>
 ***** <<German Power Market>>
 ******* Great [[https://www.energy-charts.de/price.htm][price and other charts]] from Fraunhofer ISE
+******* [[file:energy.bib::][Martin 2017: Limit Order Book MS Thesis]]
+******* [[file:energy.bib::Martin18germanMktLOB][Martin & Otterson 2018: German Intraday Electricity]] conf paper
 ******* TODO [[file:energy.bib::Dionne15LiquidAdjIntraday][Dionne et al. 2015: Liquidity Intraday Value Risk]] models liquidity from order books
 ******* TODO [[file:energy.bib::Pape15fndmntlPriceVarDEpowMkt][Pape et al. 2015: Are Fundamentals Enough]]? DE pow mkt price var
 ******* TODO [[file:energy.bib::VonSelasinsky14intradayMktDE][Von Selasinsky 2014: Integration]] of renewables in DE intraday mkt.
