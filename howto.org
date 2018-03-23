@@ -7287,6 +7287,7 @@ cat('indexing works\n')
 ***** see: [[density plot functions]]
 *** [[http://mazamascience.com/WorkingWithData/?p%3D912][tryCatch]], trapping errors and warnings
 *** debugging
+
 ***** [[http://code.google.com/p/ess-tracebug/][ess-tracebug]] library a little similar to C debugger (*try it*)
 ***** library(debug)
 
@@ -7344,6 +7345,10 @@ ACTUALLY, THIS DOESN'T WORK
       options(warn = 2)
       debug(function with  the bug)
       run function with bug
+
+*** <<R for Python users>>
+***** [[http://swcarpentry.github.io/2014-04-14-pycon-r/][R for Python Programmers (Software Carpentry)]]
+*** [[Python for R users]]
 * <<Perl>>
 *** [[http://docstore.mik.ua/orelly/perl4/prog/ch19_02.htm][environment variables]]
 
@@ -7698,6 +7703,15 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
     "pip installs python packages within any environment; conda installs any package within conda environments"
 
 *** [[Python in Emacs]]
+*** <<Python for R users>>
+***** TRY [[https://www.r-bloggers.com/how-to-make-python-easier-for-the-r-user-revoscalepy/][How to make Python easier for the R user: revoscalepy | R-bloggers]]
+*** [[R for Python users]]
+*** Python for Matlab users
+***** [[https://www.youtube.com/watch?v=YkCegjtoHFQ][Webinar: Python for MATLAB Users, What You Need to Know]] (video)
+***** [[https://www.google.de/url?sa=t&rct=j&q=&esrc=s&source=web&cd=4&ved=0ahUKEwjw_LDhjf3ZAhVJjywKHd0EBTQQFghSMAM&url=http%253A%252F%252Fresearchcomputing.github.io%252Fmeetup_fall_2014%252Fpdfs%252Ffall2014_meetup13_python_matlab.pdf&usg=AOvVaw1seZcfMW2H3w09b_iNzFjC][Python for Matlab Users]] (slides)
+***** [[http://bastibe.de/2013-01-20-a-python-primer-for-matlab-users.html][A Python Primer for Matlab Users]]
+***** [[http://stsievert.com/blog/2015/09/01/matlab-to-python/][Stepping from Matlab to Python]]
+***** [[https://docs.scipy.org/doc/numpy-dev/user/numpy-for-matlab-users.html][NumPy for Matlab users — NumPy v1.13.dev0 Manual]]
 * Android
 *** Commandline
 ***** Termux app
