@@ -2656,10 +2656,14 @@ Strike-through: nil
 ******* emacs video guy says [[http://cestlaz.github.io/posts/using-emacs-12-python/][looks cool but is overkill for him]]
 ******* RealPython guy [[https://realpython.com/blog/python/emacs-the-best-python-editor/][likes elpy]] (with tips and screenshots)
 ******* [[https://github.com/jorgenschaefer/elpy/wiki/Configuration][elpy Configuration · jorgenschaefer/elpy]]
-******* elpy paths
+******* configuring elpy paths
 ********* depends upon how you install python: [[Windows Python]]
 ********* <<Better elpy path>>? See [[https://github.com/jorgenschaefer/elpy/issues/939][this]]
-********* fix for elpy path problem: [[https://github.com/jorgenschaefer/elpy/issues/1156][bug report]]
+********* my fix for elpy path problem: [[https://github.com/jorgenschaefer/elpy/issues/1156][bug report]]
+
+          Windows Emacs can't follow Windows links (IPython.lnk); I needed to follow the link myself and add this to my path instead.   
+          See [[Anaconda Paths]]
+
 ******* [[elpy pyenv interface]]
 ******* <<conda environments via elpy virtual environments>>
         From [[https://github.com/jorgenschaefer/elpy/issues/285][here]]:
@@ -2673,14 +2677,39 @@ Strike-through: nil
 ********* [[https://stackoverflow.com/questions/29809061/how-to-properly-setup-jedi-with-elpy-in-emacs][python - How to properly setup Jedi with elpy in emacs?]]
 ********* [[https://github.com/jorgenschaefer/elpy/wiki/Configuration][elpy Configuration · jorgenschaefer/elpy]]
 ******* [[elpy vs. anaconda-mode]]
+******* PROBLEM: elpy config, yapf and autopep8
+
+        After installing anaconda python 3.6 but /not yet setting up an environment/, I see this when I run elpy-config:
+
+        Autopep8..........: Not found (1.3.4 available)
+        Yapf..............: Not found (0.21.0 available)
+
+        conda says they're not in any channel that conda knows about.  If I follow advice from [[https://anaconda.org/conda-forge/yapf][here]], and do one of these:
+
+        conda install -c conda-forge autopep8
+        conda install -c conda-forge yapf
+
+        Then I see that conda and a bunch of other stuff will be downgraded.  I don't think that I want that.
+
+        /So, I'll just not use these in elpy?/
+
 ***** [[https://github.com/abo-abo/lpy][abo-abo/lpy: Minimal Python IDE for GNU Emacs]]
 ***** pyenv
-******* <<elpy pyenv interface>> 
+******* <<elpy pyenv interface>>         
 ********* [[https://stackoverflow.com/questions/37472595/how-to-activate-the-anancondas-env-python-in-emacs][how to activate the ananconda's env python in emacs? - Stack Overflow]]
 ********* [[https://smythp.com/emacs/python/2016/04/27/pyenv-elpy.html][Using Elpy with pyenv in Emacs]]
 ********* [[https://github.com/ssbb/pyenv-mode-auto][pyenv-mode-auto: Automatically activates pyenv version within E...]]
+          
+          a little gross: needs a .python-version file in source code or source code directory.  I'd rather have stock python with nothing especially for emacs in it.
 
-          a little gross: needs a .python-version file in source code directory.  I'd rather have stock python with nothing especially for emacs in it.
+          _For the file-local auto-setting_ ([[man:]])
+            o edit the python file
+            o M-x add-file-local-variable
+            o select pyenv-workon
+            o type in: c:/Users/scotto/Anaconda3/envs/tensorflow/ (tensorflow, on my SP4) 
+
+          _For the directory local auto-setting_
+            o I don't know what variable to set or what filename to put the settings in.  The help doesn't say.
 
 ********* [[elpy pyenv interface]]
 ******* [[https://emacs.stackexchange.com/questions/20092/using-conda-environments-in-emacs][Using conda environments in emacs - Emacs Stack Exchange]]
@@ -2690,6 +2719,10 @@ Strike-through: nil
         1. put cond envs into a file,
         2. hardcode a reference to that file in emacs,
         3. Run =M-x pyenv-workon= to switch
+
+           The venv file for for tensorflow (on my SP4) is:
+
+           c:/Users/scotto/Anaconda3/envs/tensorflow/
 
 ***** [[https://github.com/proofit404/anaconda-mode][anaconda-mode: Code navigation, documentation lookup and ...]]
 ******* is [[https://github.com/proofit404/anaconda-mode/issues/38][smaller than elpy]]
@@ -2710,6 +2743,8 @@ Strike-through: nil
         2. always prints "env not found": [[https://github.com/necaris/conda.el/issues/8][No conda environment for file · Issue #8]]
         3. when I run =C-c= (ipython) I get a warning b/c I'm running a hard-coded conda path (the wrong one, since I'm hard coded to root)
         4. This might be b/c of my hard coded path: (setq conda-anaconda-home conda-home-dir).  Could use env var ANACONDA_HOME ([[help:conda-anaconda-home]])
+           1. On my SP4, it's C:\Users\scotto\Anaconda3
+           2. On my Fraunhofer laptop, it's: 
         5. but then (elpy-use-ipython) would still crash since would not be in path.  letting conda.el autofind the path worked, and I think ipython was working because emacs ignores PATH changes but still had an ipython.exe in its path.  Maybe this is also an elpy problem?  Could pyenv help?  Also, on windows, python.exe is in the top env dir and ipython.exe is in topdir/Scripts.  Seems like conda.el doesn't handle that.
 
         Wait for this to get fixed before any more messing around: *just usd Spyder*
@@ -6348,11 +6383,16 @@ A third way to accomplish this is via the commands *par(mfrow=)* or
 sub-figure to draw into.  Note that the above methods are all incompatible
 with each other.
 
-***** zoom plot gui's
+***** interactive plot gui's
 ******* overviews
 ********* [[https://community.rstudio.com/t/best-package-for-interactive-graphs-in-shiny/1731/5][Best package for interactive graphs in Shiny - shiny - RStudio Community]]
 ********* [[https://www.r-bloggers.com/interactive-visualizations-with-r-a-minireview/][Interactive visualizations with R – a minireview | R-bloggers]]
-******* [[https://github.com/ropensci/plotly][plotly: An interactive graphing library for R]]: zooms, dynamic ticks, ... can use w/ ggplot2()
+******* <<plotly>>: zooms, dynamic ticks, has ggplot2(), in many languages
+********* [[https://github.com/ropensci/plotly][plotly: An interactive graphing library for R]]
+********* is [[https://plot.ly/][implemented in]] R, python, Dash, React, Java
+********* [[https://plot.ly/api/][has APIs]] for python, matlab, R, and Java
+********* [[R ggplot2]]
+********* [[https://plot.ly/python/][Python plotly]]
 ******* [[http://cran.r-project.org/web/views/Graphics.html][advice]] on R graphics (see interactive graphics section)
 ******* [[http://cran.r-project.org/web/packages/zoom/][zoom]]: works on standard R graphs, simple mouse clicks, keyboard, SLOW
 
@@ -6624,14 +6664,17 @@ barplot(y, log = "y", xlab='x', ylab='count(x)')
 ***** venn() in [[gplots]]: venn diagram w/ up to 5 members
 ***** hierarchical graphs
 ******* [[http://www.r-bloggers.com/plugging-hierarchical-data-from-r-into-d3/][topic graphs]]
-***** [[http://cran.r-project.org/web/packages/gplots/][gplots]]: many nice plotting functions, including color picking
-      <<gplots>>
-      was on [[Top 100 R packages]]
+***** <<gplots>>: many nice plotting functions, including color picking
+******* [[http://cran.r-project.org/web/packages/gplots/][gplots]]
+******* was on [[Top 100 R packages]]
 ***** [[http://cran.r-project.org/web/packages/gtools/gtools.pdf][gtools]]: gtools some nice programming tools, including something kind of like stackplot
       <<gtools>>
 ***** [[http://cran.r-project.org/web/packages/plotrix/][plotrix]]: many plot types, has legend and color picking stuff
       <<plotrix>>
-***** [[ggplot2]]: extremely popular
+***** <<R ggplot2>>
+******* [[ggplot2]]: extremely popular
+******* [[plotly]]: interactive graphs, works with ggplot2
+******* [[Python ggplot2]]
 *** [[http://www.inside-r.org/r-doc/utils/Rscript][Rscript]]: convenience utility for calling R funcs from cmdline
     <<Rscript>>
 
@@ -7641,6 +7684,10 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 
 *** also see [[Windows Perl]]
 * Python
+*** Python Learning tools
+***** [[Python for Matlab users]]
+***** [[Python ggplot2]]: also popular in R, has interactive multilanguage ports ([[plotly]])
+***** http://pythontutor.com/ (evals your code, with diagrams, helps clear up confusion with names, references, assignments)
 *** <<Windows Python>>
     Needed at least for org-mode ox-clip
 
@@ -7665,13 +7712,26 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
       _Start and Update Anaconda_ (from "anaconda prompt" on start menu)
         
         conda update conda
-        conda update anaconda
+        conda update anaconda # downgrades stuff that update conda upgraded!
 
         o [[https://groups.google.com/a/continuum.io/forum/#!topic/anaconda/KnZQBU8kd9Q][anaconda prompt is recommended]]
         o could also add python stuff to windows PATH (not recommended)
 
+      _Update everything_
+
+      conda update --all --alt-hint
+      
       _Add C:\Users\scotto\Anaconda3\Scripts to my Windows PATH_
       (not recommended (see above, but this allows emacs elpy to work)
+      
+      <<Anaconda Paths>> (so emacs elpy works.  See my [[https://github.com/jorgenschaefer/elpy/issues/1156][bug report]])
+      I made an environment variable: %ANACONDA_HOME% == %USERENV%\Anaconda3
+      
+      and put both 
+        %ANACONDA_HOME% 
+      and
+        %ANACONDA_HOME%\Scripts
+      in my path.  
 
       Do [[My SP4 TensorFlow install]]
 
@@ -7697,7 +7757,6 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 
       C:\Python36
       C:\Python36\Scripts
-
 *** <<TensorFlow>>
 ***** <<IWES Laptop TensorFlow install>>
 
@@ -7747,7 +7806,7 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 
           activate tensorflow
 
-      o Install the CPU-only version of TensorFlow (SP4 doesn't hare right GPU)
+      o Install the CPU-only version of TensorFlow (SP4 doesn't have right GPU)
 
           pip install --ignore-installed --upgrade tensorflow 
 
@@ -7759,10 +7818,25 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 2017-10-21 20:48:13.231634: W C:\tf_jenkins\home\workspace\rel-win\M\windows\PY\36\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
 2017-10-21 20:48:13.233221: W C:\tf_jenkins\home\workspace\rel-win\M\windows\PY\36\tensorflow\core\platform\cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
 
+***** warning: "...TensorFlow binary was not compiled to use: AVX2"
+      From [[https://github.com/tensorflow/tensorflow/issues/7778][here]], these are warnings.  Standard TG dist is generic, slower, doesn't used special CPU instructions.  But TF should still work
+
+******* hiding warnings
+        From [[https://github.com/tensorflow/tensorflow/issues/7778][here]]
+
+        import os
+        os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
+        import tensorflow as tf
+
+        or if you're on a Unix system simply do export TF_CPP_MIN_LOG_LEVEL=2.
+
+        TF_CPP_MIN_LOG_LEVEL is a TensorFlow environment variable responsible for the logs, to silence INFO logs set it to 1, to filter out WARNING 2 and to additionally silence ERROR logs (not recommended) set it to 3
+      
+******* building TF to use AVX commands on windows 10
+        See [[https://github.com/faisalthaheem/tensorflow-windows][here]]
 *** Machine learning Python libs
 ***** [[http://scikit-learn.org/stable/][scikit-learn]]
 ******* guy's [[http://www.google-melange.com/gsoc/proposal/review/google/gsoc2013/nicolastr/12001][plan]] to add missing feature fill-in using matrix completion
-
 *** <<python conda environments>>
     "conda environments" what anaconda makes e.g. the one for tensorflow
 
@@ -7809,7 +7883,6 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
         conda env export | grep -v "^prefix: " > environment.yml
       
 ***** Also [[activating conda environments in emacs]]
-
 *** pip vs. conda
     From: [[https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/][Conda: Myths and Misconceptions | Pythonic Perambulations]]
 
@@ -7819,12 +7892,44 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 *** <<Python for R users>>
 ***** TRY [[https://www.r-bloggers.com/how-to-make-python-easier-for-the-r-user-revoscalepy/][How to make Python easier for the R user: revoscalepy | R-bloggers]]
 *** [[R for Python users]]
-*** Python for Matlab users
+*** <<Python for Matlab users>>
+***** [[https://github.com/Technologicat/python-3-scicomp-intro][python-3-scicomp-intro: Lecture notes: Informal introd...]]
+******* Nice pdf: [[https://github.com/Technologicat/python-3-scicomp-intro/blob/master/python_scicomp_notes.pdf][Informal introduction to Python 3 for scientific computing]]
+******* slides
+******* code
 ***** [[https://www.youtube.com/watch?v=YkCegjtoHFQ][Webinar: Python for MATLAB Users, What You Need to Know]] (video)
 ***** [[https://www.google.de/url?sa=t&rct=j&q=&esrc=s&source=web&cd=4&ved=0ahUKEwjw_LDhjf3ZAhVJjywKHd0EBTQQFghSMAM&url=http%253A%252F%252Fresearchcomputing.github.io%252Fmeetup_fall_2014%252Fpdfs%252Ffall2014_meetup13_python_matlab.pdf&usg=AOvVaw1seZcfMW2H3w09b_iNzFjC][Python for Matlab Users]] (slides)
 ***** [[http://bastibe.de/2013-01-20-a-python-primer-for-matlab-users.html][A Python Primer for Matlab Users]]
 ***** [[http://stsievert.com/blog/2015/09/01/matlab-to-python/][Stepping from Matlab to Python]]
 ***** [[https://docs.scipy.org/doc/numpy-dev/user/numpy-for-matlab-users.html][NumPy for Matlab users — NumPy v1.13.dev0 Manual]]
+*** Python Graphics
+***** [[http://pythonplot.com/#intro][Python Plotting for Exploratory Analysis]] (shows same plots in different pkgs)
+***** Interactive graphics in python
+******* matplotlib can zoom, pan, but not much else
+******* Multilanguage [[plotly]] can make [[Python ggplot2]] interactive
+******* [[http://www.pyqtgraph.org/documentation/index.html][pyqtgraph]]: ver interactive/fast for large data, not as publishable as ggplot
+***** <<Python ggplot2>>
+
+      At least two packages are [[R ggplot2]] ports.
+
+******* ggpy ggplot (was ggplot, [[http://pltn.ca/plotnine-superior-python-ggplot/][now renamed]] to ggpy)
+********* [[http://ggplot.yhathq.com/][ggplot home]]
+********* [[https://github.com/yhat/ggpy][GitHub - yhat/ggpy: ggplot port for python]]
+******* plotnine ggplot
+********* [[http://pltn.ca/plotnine-superior-python-ggplot/][Plotnine is the best Python implementation of R's ggplot2]]
+********* [[https://github.com/has2k1/plotnine][GitHub - has2k1/plotnine: A grammar of graphics for Python]]
+******* Multilanguage [[plotly]] can make it interactive
+******* [[R ggplot2]]
+*** Speeding up python 
+***** vectorizing more important than in Matlab ([[https://github.com/Technologicat/python-3-scicomp-intro/blob/master/python_scicomp_notes.pdf][Informal introduction to Python 3 for scientific computing]])
+***** [[https://numba.pydata.org/][Numba]]: JIT makes for loops comparable to vectorization, like C/C++ [[https://hips.seas.harvard.edu/blog/2013/05/13/jit-compilation-in-matlab/][or Matlab]]
+***** [[https://github.com/pydata/numexpr][numexpr]]: compiles numeric expressions, keeps in them in cache, does multithread
+***** [[http://cython.readthedocs.io/en/latest/src/userguide/parallelism.html][Cython via OpenMP]]: compiles and calls the [[https://en.wikipedia.org/wiki/OpenMP][OpenMP job queuing system]]
+*** How to write Python documentation
+***** [[https://www.python.org/dev/peps/pep-0257/][PEP 257 -- Docstring Conventions]]: the overarching standard
+***** [[https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt][numpy/HOWTO_DOCUMENT]]: spyder displays this standard
+*** Code checkers: [[https://www.pylint.org/][Pylint]], [[https://github.com/davidfraser/pyan][pyan]], [[https://github.com/megies/pyflakes][Pyflakes]]
+*** Symbolic computation: [[http://www.sympy.org/de/index.html][SymPy]]
 * Android
 *** Commandline
 ***** Termux app
