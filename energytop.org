@@ -7917,8 +7917,7 @@ Scott
 ******* do feature selection over log and non-transformed data?
 ********* only makes sense for linear regression
 ********* only makes sense if forecaster regression is wrapped in feat sel iteration
-***** Multiplicative Process Estimation
-      <<Multiplicative Process Estimation>>
+***** <<Multiplicative Process Estimation>>
 ******* fractal dimension in wind forecasting: [[file:energy.bib::reikard08tempstaterampwind][reikard 2008: using temperature and]]
 ********* result of multiplicative processing
 ********* says no known alg. for this
