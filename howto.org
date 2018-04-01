@@ -7805,6 +7805,12 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
       
 ***** Also [[activating conda environments in emacs]]
 
+***** updating all packages installed by anaconda
+      
+      In powershell, maybe in admin mode:
+      
+        conda update --all --alt-hint
+
 *** pip vs. conda
     From: [[https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/][Conda: Myths and Misconceptions | Pythonic Perambulations]]
 
