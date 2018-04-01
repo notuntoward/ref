@@ -7687,7 +7687,7 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 *** Python Learning tools
 ***** [[Python for Matlab users]]
 ***** [[Python ggplot2]]: also popular in R, has interactive multilanguage ports ([[plotly]])
-***** http://pythontutor.com/ (evals your code, with diagrams, helps clear up confusion with names, references, assignments)
+***** [[http://pythontutor.com/visualize.html#mode=edit][pythontutor.com]]: evals your code, with diagrams, helps clear up confusion with names, references, assignments
 *** <<Windows Python>>
     Needed at least for org-mode ox-clip
 
