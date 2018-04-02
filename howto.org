@@ -6387,12 +6387,20 @@ with each other.
 ******* overviews
 ********* [[https://community.rstudio.com/t/best-package-for-interactive-graphs-in-shiny/1731/5][Best package for interactive graphs in Shiny - shiny - RStudio Community]]
 ********* [[https://www.r-bloggers.com/interactive-visualizations-with-r-a-minireview/][Interactive visualizations with R – a minireview | R-bloggers]]
-******* <<plotly>>: zooms, dynamic ticks, has ggplot2(), in many languages
-********* [[https://github.com/ropensci/plotly][plotly: An interactive graphing library for R]]
+******* <<Plotly>>: zooms, dynamic ticks, has ggplot2(), in many languages
 ********* is [[https://plot.ly/][implemented in]] R, python, Dash, React, Java
 ********* [[https://plot.ly/api/][has APIs]] for python, matlab, R, and Java
 ********* [[R ggplot2]]
-********* [[https://plot.ly/python/][Python plotly]]
+********* [[Python plotly]]
+********* [[R plotly]]
+********* plotly is [[https://stackoverflow.com/questions/35511111/plotly-python-totally-free?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa][confusingly free]], can be run offline
+******* <<Bokeh:>> interative, in at least R and python
+********* [[Python Bokeh]] 
+********* [[R Bokey]]
+******* <<R Bokey>>
+********* [[http://hafen.github.io/rbokeh/][rbokeh]]
+******* <<R plotly>>
+********* [[https://github.com/ropensci/plotly][plotly: An interactive graphing library for R]]
 ******* [[http://cran.r-project.org/web/views/Graphics.html][advice]] on R graphics (see interactive graphics section)
 ******* [[http://cran.r-project.org/web/packages/zoom/][zoom]]: works on standard R graphs, simple mouse clicks, keyboard, SLOW
 
@@ -6595,8 +6603,7 @@ par(op)
 
 dev.off()
 
-******* [[http://cran.at.r-project.org/web/packages/colorRamps/index.html][colorRamps package]]
-        <<colorRamps package>>
+******* <<colorRamps package>>
 
 ******* [[http://www.inside-r.org/r-doc/grDevices/colorRampPalette][colorRamp {grDevices}]]
 
@@ -6613,9 +6620,7 @@ dev.off()
 *********** bitmap (because it's a screenshot)
 *********** [[http://office.microsoft.com/en-us/help/choosing-the-best-graphic-format-for-the-job-HA001056305.aspx][gif, png]]
 *********** [[http://www.mathworks.com/help/matlab/creating_plots/choosing-a-graphics-format.html][24 bit tiff and jpeg]]
-***********
 ********* [[http://office.microsoft.com/en-us/help/choosing-the-best-graphic-format-for-the-job-HA001056305.aspx][emf doesn't have transparency]] (this is [[http://www.mathworks.com/help/matlab/creating_plots/choosing-a-graphics-format.html#f3-103417][because it's a vector format]])
-*********
 ******* saving to emf or pdf
 
       Saving to emf works best for powerpoint (but doesn't handle transparency)
@@ -6672,11 +6677,12 @@ barplot(y, log = "y", xlab='x', ylab='count(x)')
 ***** [[http://cran.r-project.org/web/packages/plotrix/][plotrix]]: many plot types, has legend and color picking stuff
       <<plotrix>>
 ***** <<R ggplot2>>
+******* [[https://mandymejia.wordpress.com/2013/11/13/10-reasons-to-switch-to-ggplot-7/][10 reasons to switch to ggplot – Mandy Mejia]]
 ******* [[ggplot2]]: extremely popular
-******* [[plotly]]: interactive graphs, works with ggplot2
+******* [[Plotly]]: interactive graphs, works with ggplot2
 ******* [[Python ggplot2]]
-*** [[http://www.inside-r.org/r-doc/utils/Rscript][Rscript]]: convenience utility for calling R funcs from cmdline
-    <<Rscript>>
+*** <<Rscript>>: convenience utility for calling R funcs from cmdline
+    See [[http://www.inside-r.org/r-doc/utils/Rscript][Rscript]]
 
     Could use "R CMD BATCH --args arg1 arg2 foo.R" but Rscript is [[http://cran.r-project.org/doc/manuals/R-intro.html#Scripting-with-R][easier]].
 
@@ -6711,7 +6717,7 @@ barplot(y, log = "y", xlab='x', ylab='count(x)')
 ********* argparse: not in CRAN yet, Python lib inspiration also [[http://docs.python.org/dev/library/argparse.html][looks verbose]]
           comparison of Python libs: [[http://argparse.googlecode.com/svn/trunk/doc/argparse-vs-optparse.html][argparse vs. optparse]]
 *** [[http://www.r-bloggers.com/abbreviations-of-r-commands-explained-250-r-abbreviations/][R command abbreviations explained]]
-*** Installing libraries (packages)
+*** Installing R libraries (packages)
 
       install.packages("dtw");
 
@@ -6719,8 +6725,7 @@ barplot(y, log = "y", xlab='x', ylab='count(x)')
 
       update.packages()
 
-***** Setup
-      <<R packages setup>>
+***** <<R packages setup>>
 ******* proxy (needed at IWES)
 
         So that R uses whatever proxy is used by IE.  Then will work in and
@@ -6813,8 +6818,7 @@ barplot(y, log = "y", xlab='x', ylab='count(x)')
       is invoked when R is called (a problem for the unmodified Rsge package
       (see below).
 
-***** controlling which R version is run
-      <<controlling which R version is run>>
+***** <<controlling which R version is run>>
 
       from [[http://stackoverflow.com/questions/12574738/how-can-i-specify-the-r-version-opened-by-ess-session-in-emacs][here]]:
 
@@ -6906,15 +6910,13 @@ http://addictedtor.free.fr/graphiques/graphcode.php?graph=155
 
 *** drop(): drops singleton dims, like Matlab's squeeze()
 *** useful packages
-***** see this [[http://www.r-statistics.com/2013/06/top-100-r-packages-for-2013-jan-may][list of popular top 100 R packages]]
-      <<Top 100 R packages>>
+***** <<Top 100 R packages>>: see this [[http://www.r-statistics.com/2013/06/top-100-r-packages-for-2013-jan-may][list of popular top 100 R packages]]
 ***** [[http://www.stat.ucl.ac.be/ISdidactique/Rhelp/library/combinat/html/00Index.html][combinat]]: combinatorics
 ***** [[http://code.google.com/p/sqldf/][sqldf]]: R language SQL connector
 ***** [[http://had.co.nz/ggplot2/][ggplot2]] : better plotting
       was on [[Top 100 R packages]]
 ***** [[http://gking.harvard.edu/zelig/][zelig]]: combined regression stuff.  Maybe quicker?
-***** [[http://bm2.genes.nig.ac.jp/RGM2/R_current/library/Hmisc/man/Overview.html][Hmisc]]: handy functions
-        <<Hmisc: handy functions>>
+***** <<Hmisc: handy functions>>
 
         Cs(): Kinda like perl's qw
         combine(): is like perl or ruby's hash merge
@@ -6949,8 +6951,7 @@ http://addictedtor.free.fr/graphiques/graphcode.php?graph=155
          issue options(Hverbose=FALSE) before library(Hmisc).
 ***** [[http://rgm2.lab.nig.ac.jp/RGM2/functions.php?show%3Dall&query%3Dpackage:plotrix][plotrix]]: nice plotting functions
 ***** [[http://bm2.genes.nig.ac.jp/RGM2/pkg.php?p%3Dplyr][plyr]]: tools for splitting, applying and combining data
-*** Upgrading R
-    <<Upgrading R>>
+*** <<Upgrading R>>
 ***** [[http://cran.r-project.org/bin/windows/base/rw-FAQ.html#How-do-I-install-R-for-Windows_003f][official upgrading advice]]
 ***** [[http://www.r-statistics.com/2011/04/how-to-upgrade-r-on-windows-7/][Upgrading R on Windows]] (this didn't seem to work, at least not for 2.15-->3.1)
 ***** Get a list of user-installed packages (useful for upgrading R version)
@@ -7006,8 +7007,7 @@ R.methodsS3"
  "gWidgetsRGtk2"
  "reshape"
 
-*** Feature Selection
-    <<Feature selection in R>>
+*** <<Feature selection in R>>
 ***** quick [[http://www.statmethods.net/stats/regression.html][overview]]
 ***** [[http://cran.r-project.org/web/packages/leaps/leaps.pdf][leaps]]: _exhaustive_ comparison of all models: do BIC or whatever afterwards
       example of use is [[http://www.statmethods.net/stats/regression.html][here]]
@@ -7035,8 +7035,7 @@ R.methodsS3"
 *** rewriting my useful Matlab, Perl and Ruby funcs in R
 ***** rangeStat.m
       see: Hmisc:xy.group()
-***** stackplot()
-      <<R functions like my Matlab stackplot()>>
+***** <<R functions like my Matlab stackplot()>>
 
       I wrote my own, but here are some other building blocks.
 
@@ -7047,6 +7046,7 @@ R.methodsS3"
 ******* stackPlot() in ifultools package
 ******* [[gtools]]: some nice programming tools, including something kind of like stackplot
 ******* overplot() in [[gplots]]: many Y's on same X axis; colored Y axis
+******* also [[stackplot() in python]]
 ***** dimMultiPlot.m: n2mfrow()
 ***** funcfilt
       whatever sliding window function you want
@@ -7686,8 +7686,8 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 * Python
 *** Python Learning tools
 ***** [[Python for Matlab users]]
-***** [[Python ggplot2]]: also popular in R, has interactive multilanguage ports ([[plotly]])
 ***** [[http://pythontutor.com/visualize.html#mode=edit][pythontutor.com]]: evals your code, with diagrams, helps clear up confusion with names, references, assignments
+***** [[https://www.youtube.com/watch?v=DEwgZNC-KyE][Preparing for a Python Interview: 10 Things You Should Know]]
 *** <<Windows Python>>
     Needed at least for org-mode ox-clip
 
@@ -7910,11 +7910,19 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 ***** [[http://bastibe.de/2013-01-20-a-python-primer-for-matlab-users.html][A Python Primer for Matlab Users]]
 ***** [[http://stsievert.com/blog/2015/09/01/matlab-to-python/][Stepping from Matlab to Python]]
 ***** [[https://docs.scipy.org/doc/numpy-dev/user/numpy-for-matlab-users.html][NumPy for Matlab users — NumPy v1.13.dev0 Manual]]
-*** Python Graphics
+*** <<Python Graphics>>
 ***** [[http://pythonplot.com/#intro][Python Plotting for Exploratory Analysis]] (shows same plots in different pkgs)
 ***** Interactive graphics in python
 ******* matplotlib can zoom, pan, but not much else
-******* Multilanguage [[plotly]] can make [[Python ggplot2]] interactive
+******* <<Python plotly>>
+********* Multilanguage [[Plotly]] can make [[Python ggplot2]] interactive
+********* [[Python ggplot2]]: also popular in R, has interactive multilanguage ports ([[Plotly]])
+********* python plotly offline:, [[https://github.com/SayaliSonawane/Plotly_Offline_Python][Plotly_Offline_Python Tutorial]]
+
+********* [[R plotly]]
+******* <<Python Bokeh>>
+********* [[http://nbviewer.jupyter.org/github/bokeh/bokeh-notebooks/blob/master/quickstart/quickstart.ipynb][Bokeh Jupyter Notebook Viewer]] (examples)
+********* [[R Bokey]]
 ******* [[http://www.pyqtgraph.org/documentation/index.html][pyqtgraph]]: ver interactive/fast for large data, not as publishable as ggplot
 ***** <<Python ggplot2>>
 
@@ -7928,6 +7936,10 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 ********* [[https://github.com/has2k1/plotnine][GitHub - has2k1/plotnine: A grammar of graphics for Python]]
 ******* Multilanguage [[plotly]] can make it interactive
 ******* [[R ggplot2]]
+******* [[Python plotly]] (does ggplot2)
+***** <<stackplot() in python>>
+******* plotly/pandas "time series subplots" is close: [[https://plot.ly/pandas/time-series/#pandas-time-series-subplots][Pandas Time Series]]
+******* also [[R functions like my Matlab stackplot()]]
 *** Speeding up python 
 ***** vectorizing more important than in Matlab ([[https://github.com/Technologicat/python-3-scicomp-intro/blob/master/python_scicomp_notes.pdf][Informal introduction to Python 3 for scientific computing]])
 ***** [[https://numba.pydata.org/][Numba]]: JIT makes for loops comparable to vectorization, like C/C++ [[https://hips.seas.harvard.edu/blog/2013/05/13/jit-compilation-in-matlab/][or Matlab]]
