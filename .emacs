@@ -954,33 +954,49 @@
   :defer t
   :init
   (elpy-enable)
-  ;;(elpy-use-ipython); in conda.el custom hook so set after python path known
+  ;; jypter recommended over ipython (how s/ this work w/ conda env switch?): https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
+  (setq python-shell-interpreter "jupyter"
+        python-shell-interpreter-args "console --simple-prompt")
 
   ;; use flycheck, not elpy's flymake (https://realpython.com/blog/python/emacs-the-best-python-editor/)
   (when (require 'flycheck nil t)
     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
     (add-hook 'elpy-mode-hook 'flycheck-mode)))
 
-;; working with python anaconda environments (is also customized)
-(setq conda-home-dir (getenv "ANACONDA_HOME"))
-(message "conda-home-dir = %s" conda-home-dir)
-(use-package conda
-  :defer t
-  :init
-  ;; if you want interactive shell support, include:
-  (conda-env-initialize-interactive-shells)
-  ;; if you want eshell support, include:
-  (conda-env-initialize-eshell)
-  ;; if you want auto-activation (see below for details), include:
-  ;; (conda-env-autoactivate-mode t) ;; avoid annoying messages, do by hand
-  ;; I have ~/.anaconda but conda.el looks for ~/.anaconda3 so I must set it
-  ;;(setq conda-anaconda-home conda-home-dir) ;; use env var instead
-  )
 
-(use-package python ; does this work w/ elpy?
-  :defer t
-  :config
-  (define-key python-mode-map (kbd "<backtab>") 'python-back-indent))
+;; (use-package anaconda-mode  ;; elpy alternative?
+;;   :config
+;;   (add-hook 'python-mode-hook 'anaconda-mode)
+;;   (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+
+
+;; ;; I haven't managed to get conda package to work, lately
+;; ;; working with python anaconda environments (is also customized)
+;; ;; my anaconda isn't at conda's expected place (~/.anaconda3) so here, I expect that I have set the ANACONDA_HOME environment variable to whatever anaconda is installed on this machine.
+;; (setq conda-home-dir (getenv "ANACONDA_HOME"))
+;; (message "conda-home-dir = %s" conda-home-dir)
+;; (use-package conda
+;;   :defer t
+;;   :init
+;;   ;; if you want interactive shell support, include:
+;;   (conda-env-initialize-interactive-shells)
+;;   ;; if you want eshell support, include:
+;;   (conda-env-initialize-eshell)
+;;   ;; auto activation causes the emacs startup error "Error: (error "elpy-use-ipython is deprecated; see https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup")"
+;;   ;; this is on elpy 1.18.0
+;;   ;; if you want auto-activation (see below for details), include:
+;;   ;; (conda-env-autoactivate-mode t) ;; avoid annoying messages, do by hand
+;;   )
+
+;; (use-package python ; does this work w/ elpy?
+;;   :defer t
+;;   :config
+;;   (define-key python-mode-map (kbd "<backtab>") 'python-back-indent))
+
+;; ;; conflicts with attempt to run jupyter?
+;; (use-package ein
+;;   :ensure t
+;;   :commands (ein:notebooklist-open))
 
 ;; ** Perl
 
@@ -1147,6 +1163,7 @@ is already narrowed."
         ("\\.x?html?\\'" . default)
         ("\\.pdf\\'" . default)
         (auto-mode . emacs)))
+  
   ;; Nicer bullets for non-headline lists (does this slow down org mode?)
   ;; others: https://www.w3schools.com/charsets/ref_utf_symbols.asp
   ;; ◇ ▷ ◈ ◎ ☆ ★ ☉ ♢ ♦ ━ ─ ⊣ ▬ ⊲ ✔ ✤ ✥ ✩ ✦ ✪ ✱ ✸ ✽ ➜ ➤
@@ -1187,6 +1204,10 @@ is already narrowed."
   :config (define-key org-mode-map (kbd "C-c y") 'org-cliplink))
 
 ;; ** Org-ref
+
+; packages required by org-ref but not picked up, for some reason
+(use-package helm-bibtex)
+(use-package pdf-tools)
 
 ;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
 (use-package org-ref
@@ -1760,13 +1781,14 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  ;; If there is more than one, they won't work right.
  '(aw-background t)
  '(blink-cursor-mode nil)
- '(conda-postactivate-hook (quote (elpy-use-ipython)))
+ '(column-number-mode t)
  '(counsel-grep-base-command "grep -nEi '%s' %s")
  '(delete-selection-mode nil)
  '(dired-dwim-target t)
  '(display-time-24hr-format t)
  '(display-time-default-load-average nil)
  '(display-time-load-average-threshold 100000000)
+ '(display-time-mode t)
  '(emacsw32-style-frame-title t)
  '(ess-default-style (quote OWN))
  '(ess-ido-flex-matching t)
