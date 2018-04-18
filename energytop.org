@@ -9304,6 +9304,8 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 ***** [[cite:Rebours07survCtlAncSrvII][Rebours et al. 2007 Survey Freq. Volt. II]]
 ***** [[file:energy.bib::Gutjahr13multiObjStochOptNonScl][Gutjahr & Pichler 2013: Stochastic]]
 ***** [[file:energy.bib::unknown15delivDownRegWind][2015: Delivery]] of downreg from wind farms tech rep.
+***** [[file:energy.bib::Jost16dynSizFreqResLen][Jost et al. 2016: Dynamic Reserve Sizing Prod Len]]
+***** [[file:energy.bib::Jost15dynDimFrqRsrvQR][Jost et al. 2015: Dynamic dim freq reserve w/ QR]]
 ***** see also: [[Optimal Reserve Allocation]]
 ***** see also: [[Possible Power]]
 *** Balancing at BPA

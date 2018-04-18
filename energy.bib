@@ -1182,24 +1182,23 @@ Obviously, this could be a Gaussian Copula or whatever...  The coolness of this 
 }
 
 @Article{Hansen01mdlSelMDL,
-  author        = {Mark H Hansen and Bin Yu},
-  title         = {Model Selection and the Principle of Minimum Description Length},
-  journal       = {Journal of the American Statistical Association},
-  year          = {2001},
-  volume        = {96},
-  number        = {454},
-  pages         = {746-774},
-  __markedentry = {[sotterson:]},
-  abstract      = { This article reviews the principle of minimum description length (MDL) for problems of model selection. By viewing statistical modeling as a means of generating descriptions of observed data, the MDL framework discriminates between competing models based on the complexity of each description. This approach began with Kolmogorov's theory of algorithmic complexity, matured in the literature on information theory, and has recently received renewed attention within the statistics community. Here we review both the practical and the theoretical aspects of MDL as a tool for model selection, emphasizing the rich connections between information theory and statistics. At the boundary between these two disciplines we find many interesting interpretations of popular frequentist and Bayesian procedures. As we show, MDL provides an objective umbrella under which rather disparate approaches to statistical modeling can coexist and be compared. We illustrate the MDL principle by considering problems in regression, nonparametric curve estimation, cluster analysis, and time series analysis. Because model selection in linear regression is an extremely common problem that arises in many applications, we present detailed derivations of several MDL criteria in this context and discuss their properties through a number of examples. Our emphasis is on the practical application of MDL, and hence we make extensive use of real datasets. In writing this review, we tried to make the descriptive philosophy of MDL natural to a statistics audience by examining classical problems in model selection. In the engineering literature, however, MDL is being applied to ever more exotic modeling situations. As a principle for statistical modeling in general, one strength of MDL is that it can be intuitively extended to provide useful tools for new problems. },
-  doi           = {10.1198/016214501753168398},
-  eprint        = {https://doi.org/10.1198/016214501753168398},
-  file          = {:Hansen01mdlSelMDL.pdf:PDF},
-  keywords      = {A IC; Bayesian methods; Bayes information criterion; Cluster analysis; Code length; Coding redundancy; Information theory; Model selection; Pointwise and minimax lower bounds; Regression; time series.},
-  publisher     = {Taylor \& Francis},
-  review        = {Information based model selection.  Describes AIC and BIC in terms of  MDL.  Has equations for linear regression selection.
+  author    = {Mark H Hansen and Bin Yu},
+  title     = {Model Selection and the Principle of Minimum Description Length},
+  journal   = {Journal of the American Statistical Association},
+  year      = {2001},
+  volume    = {96},
+  number    = {454},
+  pages     = {746-774},
+  abstract  = { This article reviews the principle of minimum description length (MDL) for problems of model selection. By viewing statistical modeling as a means of generating descriptions of observed data, the MDL framework discriminates between competing models based on the complexity of each description. This approach began with Kolmogorov's theory of algorithmic complexity, matured in the literature on information theory, and has recently received renewed attention within the statistics community. Here we review both the practical and the theoretical aspects of MDL as a tool for model selection, emphasizing the rich connections between information theory and statistics. At the boundary between these two disciplines we find many interesting interpretations of popular frequentist and Bayesian procedures. As we show, MDL provides an objective umbrella under which rather disparate approaches to statistical modeling can coexist and be compared. We illustrate the MDL principle by considering problems in regression, nonparametric curve estimation, cluster analysis, and time series analysis. Because model selection in linear regression is an extremely common problem that arises in many applications, we present detailed derivations of several MDL criteria in this context and discuss their properties through a number of examples. Our emphasis is on the practical application of MDL, and hence we make extensive use of real datasets. In writing this review, we tried to make the descriptive philosophy of MDL natural to a statistics audience by examining classical problems in model selection. In the engineering literature, however, MDL is being applied to ever more exotic modeling situations. As a principle for statistical modeling in general, one strength of MDL is that it can be intuitively extended to provide useful tools for new problems. },
+  doi       = {10.1198/016214501753168398},
+  eprint    = {https://doi.org/10.1198/016214501753168398},
+  file      = {:Hansen01mdlSelMDL.pdf:PDF},
+  keywords  = {A IC; Bayesian methods; Bayes information criterion; Cluster analysis; Code length; Coding redundancy; Information theory; Model selection; Pointwise and minimax lower bounds; Regression; time series.},
+  publisher = {Taylor \& Francis},
+  review    = {Information based model selection.  Describes AIC and BIC in terms of  MDL.  Has equations for linear regression selection.
 
 A partial entry for this article is in speakerClust.bib (hansenXXmdl).},
-  url           = { 
+  url       = { 
         https://doi.org/10.1198/016214501753168398
     
 },
@@ -12449,6 +12448,36 @@ I've also evernoted the press release and a Franfurt newspaper article about it.
   timestamp = {2014.02.11},
 }
 
+@InProceedings{Jost15dynDimFrqRsrvQR,
+  author        = {Jost, Dominik and Braun, Axel and Fritz, Rafael},
+  title         = {Dynamic dimensioning of frequency restoration reserve capacity based on quantile regression},
+  booktitle     = {European Energy Market (EEM), 2015 12th International Conference on the},
+  year          = {2015},
+  pages         = {1--5},
+  organization  = {IEEE},
+  __markedentry = {[sotterson:6]},
+  abstract      = {Frequency restoration reserve capacity is 
+traditionally dimensioned with the help of deterministic criteria 
+or by using probabilistic approaches that determine the capacity 
+for a long period (several months). These static approaches work 
+out quite well with traditional power systems. But increasing 
+shares of intermittent generation introduce higher volatility to 
+today’s and future power systems which leads to a more volatile 
+need for balancing. In this paper the main influences on the 
+occurrence of imbalances are identified. Subsequently a new 
+method for the dimensioning of reserve capacities is presented. 
+This method uses quantile regression based on artificial neural 
+networks to forecast the reserve capacities to meet the striven 
+security level. Subsequently the method is tested for the day-
+ahead dimensioning of frequency restoration reserve capacities 
+in Germany.  
+Index Terms—ancillary services, balancing capacity, capacity 
+dimensioning, frequency restoration reserve capacity, quantile 
+regression},
+  file          = {:Jost15dynDimFrqRsrvQR.pdf:PDF},
+  review        = {Dominik's first paper (I think) about using QR for frequency reserve allocation.  Newer version in  Jost16dynSizFreqResLen},
+}
+
 @Article{Genccay01xtrmValMatlabEVIM,
   author    = {Gen{\c{c}}ay, Ramazan and Sel{\c{c}}uk, Faruk and Ulug{\"u}lyagci, Abdurrahman},
   title     = {{EV}IM: a software package for extreme value analysis in Matlab},
@@ -19427,16 +19456,14 @@ heteroscedastic ensemble post-processing, censored distribution, maximum likelih
 }
 
 @Article{Altman92kernKNNrgrssn,
-  author        =
-  {Altman, Naomi S},
-  title         = {An introduction to kernel and nearest-neighbor nonparametric regression},
-  journal       = {The American Statistician},
-  year          = {1992},
-  volume        = {46},
-  number        = {3},
-  pages         = {175--185},
-  __markedentry = {[sotterson:6]},
-  abstract      = {Nonparametric regression is a set of techniques for estimating a regression curve
+  author    = {Altman, Naomi S},
+  title     = {An introduction to kernel and nearest-neighbor nonparametric regression},
+  journal   = {The American Statistician},
+  year      = {1992},
+  volume    = {46},
+  number    = {3},
+  pages     = {175--185},
+  abstract  = {Nonparametric regression is a set of techniques for estimating a regression curve
 without making strong assumptions about the shape of the true regression function. These
 techniques are therefore useful for building and checking parametric models, as well as for
 data description. Kernel and nearest neighbor regression estimators are local versions
@@ -19446,9 +19473,9 @@ mean and median.
 
 Key Words: Confidence intervals; Local linear regression; Model building; Model check-
 ing; Smoothing.},
-  file          = {:Altman92kernKNNrgrssn.pdf:PDF},
-  publisher     = {Taylor \& Francis},
-  url           = {https://www.tandfonline.com/doi/abs/10.1080/00031305.1992.10475879},
+  file      = {:Altman92kernKNNrgrssn.pdf:PDF},
+  publisher = {Taylor \& Francis},
+  url       = {https://www.tandfonline.com/doi/abs/10.1080/00031305.1992.10475879},
 }
 
 @Article{Pimentel14revNovDet,
@@ -19686,6 +19713,32 @@ Follow-on project ReWP: IWES14totProjDescReWPR},
   owner     = {sotterson},
   review    = {Adaptation of KDE via sliding windows.},
   timestamp = {2014.02.26},
+}
+
+@InProceedings{Jost16dynSizFreqResLen,
+  author        = {Jost, Dominik and Braun, Axel and Fritz, Rafael and Otterson, Scott},
+  title         = {Dynamic sizing of automatic and manual frequency restoration reserves for different product lengths},
+  booktitle     = {European Energy Market (EEM), 2016 13th International Conference on the},
+  year          = {2016},
+  pages         = {1--5},
+  organization  = {IEEE},
+  __markedentry = {[sotterson:]},
+  abstract      = {On last year’s EEM conference a method for the 
+dynamic sizing of frequency restoration reserve capacity based 
+on quantile regression was presented. Further research has 
+improved the method and has made it ready for use. It contains 
+the following new features, which will be presented in this 
+paper: an adaptive bias correction function, the allocation of 
+frequency restoration reserves (FRR) to automatic FRR (aFRR) 
+and manual FRR (mFRR) and the calculation of needed reserve 
+capacity for different product lengths. The results will show the 
+advantages of the adaptive bias correction, estimate the needed 
+reserves for aFRR and mFRR, and demonstrate the influence of 
+different product lengths on the needed reserve capacities.  
+Index Terms - Dynamic reserve sizing, frequency restoration 
+reserve, quantile regression, secondary control, tertiary control },
+  file          = {:Jost16dynSizFreqResLen.pdf:PDF},
+  review        = {Explains Dominik's dynamic freq resrv sizing algorithm.  Jost15dynDimFrqRsrvQR explains more of the details.},
 }
 
 @Article{Rippel13highDimProbDeepNN,
@@ -27390,19 +27443,18 @@ Note that there was also a 2015 ArXiv paper with the same title.},
 }
 
 @Article{Zhang17rampSpatTempWindP,
-  author        = {Jie Zhang and Mingjian Cui and Bri-Mathias Hodge and Anthony Florita and Jeffrey Freedman},
-  title         = {Ramp forecasting performance from improved short-term wind power forecasting over multiple spatial and temporal scales},
-  journal       = {Energy},
-  year          = {2017},
-  volume        = {122},
-  pages         = {528 - 541},
-  issn          = {0360-5442},
-  __markedentry = {[sotterson:]},
-  abstract      = {The large variability and uncertainty in wind power generation present a concern to power system operators, especially given the increasing amounts of wind power being integrated into the electric power system. Large ramps, one of the biggest concerns, can significantly influence system economics and reliability. The Wind Forecast Improvement Project (WFIP) was to improve the accuracy of forecasts and to evaluate the economic benefits of these improvements to grid operators. This paper evaluates the ramp forecasting accuracy gained by improving the performance of short-term wind power forecasting. This study focuses on the WFIP southern study region, which encompasses most of the Electric Reliability Council of Texas (ERCOT) territory, to compare the experimental WFIP forecasts to the existing short-term wind power forecasts (used at ERCOT) at multiple spatial and temporal scales. The study employs four significant wind power ramping definitions according to the power change magnitude, direction, and duration. The optimized swinging door algorithm is adopted to extract ramp events from actual and forecasted wind power time series. The results show that the experimental WFIP forecasts improve the accuracy of the wind power ramp forecasting. This improvement can result in substantial costs savings and power system reliability enhancements.},
-  doi           = {https://doi.org/10.1016/j.energy.2017.01.104},
-  file          = {:Zhang17rampSpatTempWindP.pdf:PDF},
-  keywords      = {Wind forecasting, Grid integration, Ramp forecasting, ERCOT, Optimized swinging door algorithm},
-  url           = {http://www.sciencedirect.com/science/article/pii/S0360544217301111},
+  author   = {Jie Zhang and Mingjian Cui and Bri-Mathias Hodge and Anthony Florita and Jeffrey Freedman},
+  title    = {Ramp forecasting performance from improved short-term wind power forecasting over multiple spatial and temporal scales},
+  journal  = {Energy},
+  year     = {2017},
+  volume   = {122},
+  pages    = {528 - 541},
+  issn     = {0360-5442},
+  abstract = {The large variability and uncertainty in wind power generation present a concern to power system operators, especially given the increasing amounts of wind power being integrated into the electric power system. Large ramps, one of the biggest concerns, can significantly influence system economics and reliability. The Wind Forecast Improvement Project (WFIP) was to improve the accuracy of forecasts and to evaluate the economic benefits of these improvements to grid operators. This paper evaluates the ramp forecasting accuracy gained by improving the performance of short-term wind power forecasting. This study focuses on the WFIP southern study region, which encompasses most of the Electric Reliability Council of Texas (ERCOT) territory, to compare the experimental WFIP forecasts to the existing short-term wind power forecasts (used at ERCOT) at multiple spatial and temporal scales. The study employs four significant wind power ramping definitions according to the power change magnitude, direction, and duration. The optimized swinging door algorithm is adopted to extract ramp events from actual and forecasted wind power time series. The results show that the experimental WFIP forecasts improve the accuracy of the wind power ramp forecasting. This improvement can result in substantial costs savings and power system reliability enhancements.},
+  doi      = {https://doi.org/10.1016/j.energy.2017.01.104},
+  file     = {:Zhang17rampSpatTempWindP.pdf:PDF},
+  keywords = {Wind forecasting, Grid integration, Ramp forecasting, ERCOT, Optimized swinging door algorithm},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0360544217301111},
 }
 
 @TechReport{Nardi08autoRegrLASSO,
@@ -44625,12 +44677,11 @@ See also: CAISO10caisoRnwblIntegSwngDr
 }
 
 @Book{Manly16multivarPrimrBk,
-  title         = {Multivariate statistical methods: a primer},
-  publisher     = {CRC Press},
-  year          = {2016},
-  author        = {Manly, Bryan FJ and Alberto, Jorge A Navarro},
-  __markedentry = {[sotterson:]},
-  review        = {Easy to read reference for PCA and many other things.},
+  title     = {Multivariate statistical methods: a primer},
+  publisher = {CRC Press},
+  year      = {2016},
+  author    = {Manly, Bryan FJ and Alberto, Jorge A Navarro},
+  review    = {Easy to read reference for PCA and many other things.},
 }
 
 @Article{Markou03Noveltydetectionreviewpart,
