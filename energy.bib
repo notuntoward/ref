@@ -12455,7 +12455,7 @@ I've also evernoted the press release and a Franfurt newspaper article about it.
   year          = {2015},
   pages         = {1--5},
   organization  = {IEEE},
-  __markedentry = {[sotterson:6]},
+  __markedentry = {[sotterson:]},
   abstract      = {Frequency restoration reserve capacity is 
 traditionally dimensioned with the help of deterministic criteria 
 or by using probabilistic approaches that determine the capacity 
@@ -15190,6 +15190,35 @@ are discussed and analyzed.},
   owner     = {sotterson},
   review    = {Adaptive wind generator plant estimator. Neural nets w/ wavelet nodes? * explanation of some of the dynamics * use for wind-to-power estimation? * This version from 2008 has a few more pictures: http://www.waset.org/pwaset/v27/v27-47.pdf},
   timestamp = {2008.08.21},
+}
+
+@Article{Stanisic15gitOrgWorkflow,
+  author        = {Stanisic, Luka and Legrand, Arnaud and Danjean, Vincent},
+  title         = {An effective git and org-mode based workflow for reproducible research},
+  journal       = {ACM SIGOPS Operating Systems Review},
+  year          = {2015},
+  volume        = {49},
+  number        = {1},
+  pages         = {61--70},
+  __markedentry = {[sotterson:6]},
+  abstract      = {In this paper we address the question of developing a
+lightweight and effective workflow for conducting experimen-
+tal research on modern parallel computer systems in a repro-
+ducible way. Our approach builds on two well-known tools
+(Git and Org-mode) and enables to address, at least par-
+tially, issues such as running experiments, provenance track-
+ing, experimental setup reconstruction or replicable analysis.
+We have been using such a methodology for two years now
+and it enabled us to recently publish a fully reproducible
+article [12]. To fully demonstrate the effectiveness of our
+proposal, we have opened our two year laboratory notebook
+with all the attached experimental data. This notebook and
+the underlying Git revision control system enable to illus-
+trate and to better understand the workflow we used.},
+  file          = {:Stanisic15gitOrgWorkflow.pdf:PDF},
+  publisher     = {ACM},
+  review        = {Maybe I should start using this to version my code and data.  Uses git, emacs and org-mode.  Not sure I want the "literate programming" stuff, but I should read the paper and consider it.},
+  url           = {https://hal.inria.fr/hal-01112795},
 }
 
 @InProceedings{Jonk95axiomLineClust,
@@ -19716,14 +19745,13 @@ Follow-on project ReWP: IWES14totProjDescReWPR},
 }
 
 @InProceedings{Jost16dynSizFreqResLen,
-  author        = {Jost, Dominik and Braun, Axel and Fritz, Rafael and Otterson, Scott},
-  title         = {Dynamic sizing of automatic and manual frequency restoration reserves for different product lengths},
-  booktitle     = {European Energy Market (EEM), 2016 13th International Conference on the},
-  year          = {2016},
-  pages         = {1--5},
-  organization  = {IEEE},
-  __markedentry = {[sotterson:]},
-  abstract      = {On last year’s EEM conference a method for the 
+  author       = {Jost, Dominik and Braun, Axel and Fritz, Rafael and Otterson, Scott},
+  title        = {Dynamic sizing of automatic and manual frequency restoration reserves for different product lengths},
+  booktitle    = {European Energy Market (EEM), 2016 13th International Conference on the},
+  year         = {2016},
+  pages        = {1--5},
+  organization = {IEEE},
+  abstract     = {On last year’s EEM conference a method for the 
 dynamic sizing of frequency restoration reserve capacity based 
 on quantile regression was presented. Further research has 
 improved the method and has made it ready for use. It contains 
@@ -19737,8 +19765,8 @@ reserves for aFRR and mFRR, and demonstrate the influence of
 different product lengths on the needed reserve capacities.  
 Index Terms - Dynamic reserve sizing, frequency restoration 
 reserve, quantile regression, secondary control, tertiary control },
-  file          = {:Jost16dynSizFreqResLen.pdf:PDF},
-  review        = {Explains Dominik's dynamic freq resrv sizing algorithm.  Jost15dynDimFrqRsrvQR explains more of the details.},
+  file         = {:Jost16dynSizFreqResLen.pdf:PDF},
+  review       = {Explains Dominik's dynamic freq resrv sizing algorithm.  Jost15dynDimFrqRsrvQR explains more of the details.},
 }
 
 @Article{Rippel13highDimProbDeepNN,
