@@ -46,6 +46,7 @@
 *********** [[cite:Ghaderi17DeepLrnSpatTempFrcstWindPow][Ghaderi et al. 2017: Deep Wind Pow Spat Temp Frcst TensorFlow code]]
 *********** [[https://hackaday.com/2017/04/11/introduction-to-tensorflow/][Introduction To TensorFlow | Hackaday]]
 *********** [[https://youtu.be/Ejec3ID_h0w][TensorFlow Tutorial]] (Sherry Moore, Google Brain)
+*********** [[https://www.amazon.de/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1491962291][Hands-On Machine Learning with Scikit-Learn and TensorFlow: Concepts, Tools]]: I have
 ********* Coffee in Matlab (stephan remembers?)
 ********* name some more...
 ******* Hardware
@@ -141,6 +142,7 @@
 *** [[cite:Johnson14matlabStyle20Bk][Johnson 2014: MATLAB Style Guidelines 2.0]]
 *** [[file:energy.bib::Manly16multivarPrimrBk][Manly & Alberto 2016: Multivariate Primer Book]]
 *** [[http://www.neurosolutions.com/products/nsbook/][Interactive Neural Network Book]] explains recurrent NN's, has demos
+*** [[https://www.amazon.de/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1491962291][Hands-On Machine Learning with Scikit-Learn and TensorFlow: Concepts, Tools]]: I have
 *** [[Books w/ source code]]
 *** Wind energy books I could buy
     these three looked good, looking at amazon.com on 9/6/2011
