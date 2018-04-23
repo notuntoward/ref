@@ -3,6 +3,7 @@
     My experiments, Emacs packages I've tried and installed (from Melpa repository). Also, some builtins I could try
 
 ***** *TRY*
+******* TRY [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
 ******* TRY nicer colors/fonts in modeline
 ******* TRY move git and ref out of TempoBox, leave papers there
         Look for clues in other people's settings.  Also try rainbow.el in [[Emacs color picking]]
@@ -2560,6 +2561,7 @@ Strike-through: nil
 
 ***** [[svn in emacs]]
 ***** [[git in emacs]] 
+***** [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
 ***** [[Version Control Systems]]
 *** Inline images
 ***** in any file: use M-x [[http://www.netlaputa.ne.jp/~kose/Emacs/iimage.html][iimage-mode]]
@@ -2869,6 +2871,8 @@ For a public browser link. Share the note and copy the share url.
 
 ***** Also add R to PATH so ESS can find it.  See: [[R for windows]]
 ***** [[Vincent Goulet Emacs]]
+*** <<Emacs for experiment logging>>
+***** TRY [[file:energy.bib::Stanisic15gitOrgWorkflow][Stanisic et al. 2015]]
 * JabRef
 *** News and feature requests go [[http://discourse.jabref.org][here]]
 *** bug reports go [[https://github.com/JabRef/jabref/issues][here]]
@@ -5007,7 +5011,7 @@ won't work if you close and immediately open onenote again.
   an exact snapshot of your working copy—mixed revisions, URLs, local
   changes, and all.
 
-*** git
+*** <<Git version control>>
 ***** Git tutorials
 ******* [[http://git.or.cz/course/svn.html][Git vs. SVN Crash Course]]
 ******* [[http://rogerdudler.github.io/git-guide/][git - the simple guide - no deep shit!]]
@@ -5039,6 +5043,9 @@ won't work if you close and immediately open onenote again.
 
         Note: Many [[https://www.reddit.com/r/emacs/comments/2h7s6z/vc_as_an_alternative_to_magit/][use VC and magit simultaneously]].
 
+******* [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
+******* [[Git version control]]
+***** [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
 *** [[https://github.com/caldwell/commit-patch][caldwell/commit-patch: Commit patches to Darcs, Git, Mercurial, Baza...]]
 * HTML
 *** tables
@@ -7684,10 +7691,12 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 
 *** also see [[Windows Perl]]
 * Python
-*** Python Learning tools
-***** [[Python for Matlab users]]
+*** TRY Python Learning tools
+***** TRY [[Python for Matlab users]]
 ***** [[http://pythontutor.com/visualize.html#mode=edit][pythontutor.com]]: evals your code, with diagrams, helps clear up confusion with names, references, assignments
-***** [[https://www.youtube.com/watch?v=DEwgZNC-KyE][Preparing for a Python Interview: 10 Things You Should Know]]
+***** TRY [[https://www.youtube.com/watch?v=DEwgZNC-KyE][Preparing for a Python Interview: 10 Things You Should Know]]
+***** TRY [[https://www.sololearn.com/Play/Python][SoloLearn: Learn to code for FREE!]] (has gamified python tutorials)
+***** TRY [[https://pythonprogramming.net/][Python Programming Tutorials]] (do after Sololearn, Stephan V's favorite)
 *** <<Windows Python>>
     Needed at least for org-mode ox-clip
 
@@ -7702,8 +7711,8 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
       _Install Anaconda_: 
         o click the buttons
         o _install for "Just for Me",_ not for "All Users."  Otherwise, to
-          install packages, etc. [[https://github.com/conda/conda/issues/3652][you'll need either]] 1) admin priveleges 2) to
-          change priveleges on the c:/ProgramData/Anaconda3 or 3) only use
+          install packages, etc. [[https://github.com/conda/conda/issues/3652][you'll need either]] 1) admin privileges 2) to
+          change privileges on the c:/ProgramData/Anaconda3 or 3) only use
           Anaconda Navigator 4) clone your anaconda environment.  
           All these are messy.
 
