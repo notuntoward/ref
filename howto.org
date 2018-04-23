@@ -7908,7 +7908,7 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 *** [[Python in Emacs]]
 *** <<Python for R users>>
 ***** TRY [[https://www.r-bloggers.com/how-to-make-python-easier-for-the-r-user-revoscalepy/][How to make Python easier for the R user: revoscalepy | R-bloggers]]
-*** [[R for Python users]]
+***** [[R for Python users]]
 *** <<Python for Matlab users>>
 ***** [[https://github.com/Technologicat/python-3-scicomp-intro][python-3-scicomp-intro: Lecture notes: Informal introd...]]
 ******* Nice pdf: [[https://github.com/Technologicat/python-3-scicomp-intro/blob/master/python_scicomp_notes.pdf][Informal introduction to Python 3 for scientific computing]]
@@ -7921,6 +7921,19 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 ***** [[https://docs.scipy.org/doc/numpy-dev/user/numpy-for-matlab-users.html][NumPy for Matlab users — NumPy v1.13.dev0 Manual]]
 *** <<Python Graphics>>
 ***** [[http://pythonplot.com/#intro][Python Plotting for Exploratory Analysis]] (shows same plots in different pkgs)
+***** Data vizualization tools on Anaconda poll
+ 
+What do you use to visualize data?
+Bokeh
+d3
+ggplot (R)
+Holoviews
+Matplotlib
+Pandas plotting
+Plotly
+Seaborn
+Tableau
+
 ***** Interactive graphics in python
 ******* matplotlib can zoom, pan, but not much else
 ******* <<Python plotly>>
@@ -7959,6 +7972,8 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 ***** [[https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt][numpy/HOWTO_DOCUMENT]]: spyder displays this standard
 *** Code checkers: [[https://www.pylint.org/][Pylint]], [[https://github.com/davidfraser/pyan][pyan]], [[https://github.com/megies/pyflakes][Pyflakes]]
 *** Symbolic computation: [[http://www.sympy.org/de/index.html][SymPy]]
+*** Tests in Python
+***** guy [[https://www.youtube.com/watch?v=k55d3ZUF3ZQ][says]] to use pytest pkg, not built-in unittest.  For sure, it's shorter.
 * Android
 *** Commandline
 ***** Termux app
