@@ -1968,6 +1968,7 @@ Many text editors have access to these in some simple way, so before thinking ab
     Guy [[https://emacs.stackexchange.com/questions/102/advantages-of-setting-variables-with-setq-instead-of-custom-el][convincingly recommends]] using customizations instead of setq.  Also putting customizations in a separate file (I'm not sure this matters).
 
 *** Fonts
+***** inc/dec displayed font size: =C-x C-+= or =C-x C--=
 ***** see available fonts: M-x list-fontsets
 ***** fonts I found in Windows 10
 
@@ -2137,8 +2138,7 @@ Strike-through: nil
 *** <<Emacs color picking>>
 ***** [[https://julien.danjou.info/projects/emacs-packages#rainbow-mode][rainbow-mode.el]] would make it easier to sort color candidates    
 ***** =C-x c c=: bound to (helm-colors)
-*** Emacs Macros
-    <<Emacs Macros>>
+*** <<Emacs Macros>>
 
     _Definition_
 
@@ -7697,6 +7697,40 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 ***** TRY [[https://www.youtube.com/watch?v=DEwgZNC-KyE][Preparing for a Python Interview: 10 Things You Should Know]]
 ***** TRY [[https://www.sololearn.com/Play/Python][SoloLearn: Learn to code for FREE!]] (has gamified python tutorials)
 ***** TRY [[https://pythonprogramming.net/][Python Programming Tutorials]] (do after Sololearn, Stephan V's favorite)
+***** [[https://www.sololearn.com/Profile/9085670][SoloLearn]]: Tutorials for Python and others.  Stephan Vogt recommended it.
+***** plotly tutorial in [[Python plotly]]
+***** [[https://www.amazon.de/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1491962291][Hands-On Machine Learning with Scikit-Learn and TensorFlow: Concepts, Tools]]: I have
+
+*** Tips for Python
+***** slices in Python
+      From: [[https://stackoverflow.com/a/509295/2591097][list - Understanding Python's slice notation - Stack Overflow]]
+
+a[start:end] # items start through end-1
+a[start:]    # items start through the rest of the array
+a[:end]      # items from the beginning through end-1
+a[:]         # a copy of the whole array
+
+There is also the step value, which can be used with any of the above:
+
+a[start:end:step] # start through not past end, by step
+
+The key point to remember is that the :end value represents the first value that is not in the selected slice. So, the difference beween end and start is the number of elements selected (if step is 1, the default).
+
+The other feature is that start or end may be a negative number, which means it counts from the end of the array instead of the beginning. So:
+
+a[-1]    # last item in the array
+a[-2:]   # last two items in the array
+a[:-2]   # everything except the last two items
+
+Similarly, step may be a negative number:
+
+a[::-1]    # all items in the array, reversed
+a[1::-1]   # the first two items, reversed
+a[:-3:-1]  # the last two items, reversed
+a[-3::-1]  # everything except the last two items, reversed
+
+Python is kind to the programmer if there are fewer items than you ask for. For example, if you ask for a[:-2] and a only contains one element, you get an empty list instead of an error. Sometimes you would prefer the error, so you have to be aware that this may happen.
+
 *** <<Windows Python>>
     Needed at least for org-mode ox-clip
 
@@ -7711,8 +7745,8 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
       _Install Anaconda_: 
         o click the buttons
         o _install for "Just for Me",_ not for "All Users."  Otherwise, to
-          install packages, etc. [[https://github.com/conda/conda/issues/3652][you'll need either]] 1) admin privileges 2) to
-          change privileges on the c:/ProgramData/Anaconda3 or 3) only use
+          install packages, etc. [[https://github.com/conda/conda/issues/3652][you'll need either]] 1) admin priveleges 2) to
+          change priveleges on the c:/ProgramData/Anaconda3 or 3) only use
           Anaconda Navigator 4) clone your anaconda environment.  
           All these are messy.
 
@@ -7940,7 +7974,6 @@ Tableau
 ********* Multilanguage [[Plotly]] can make [[Python ggplot2]] interactive
 ********* [[Python ggplot2]]: also popular in R, has interactive multilanguage ports ([[Plotly]])
 ********* python plotly offline:, [[https://github.com/SayaliSonawane/Plotly_Offline_Python][Plotly_Offline_Python Tutorial]]
-
 ********* [[R plotly]]
 ******* <<Python Bokeh>>
 ********* [[http://nbviewer.jupyter.org/github/bokeh/bokeh-notebooks/blob/master/quickstart/quickstart.ipynb][Bokeh Jupyter Notebook Viewer]] (examples)
@@ -8851,9 +8884,12 @@ ERROR: Cannot run texhash command. Please run manually.
 
     o *Download books to be converted*.  They'll be (*.amz) files in
     
-      D:\Users\sotterson\Documents\My Kindle Content
+
+      c:/Users/scotto/Documents/My Kindle Content
 
       (see Kindle Reader tools->options->content in case this changes)
 
-    o *Remove DRM*: download and run [[https://www.epubconverter.com/DownloadSoftware/download.aspx?type=ebook-removal-win][EpubSoft Ultimate DRM Remover]]
+      Filenames are serial #'s.  I ID'ed the one I wanted by the date.
 
+    o *Remove DRM*: download and run [[https://www.epubconverter.com/DownloadSoftware/download.aspx?type=ebook-removal-win][EpubSoft Ultimate DRM Remover]]
+***** *Epub --> PDF*: download & run [[https://www.anicesoft.com/?s=EPUBCONV1][AniceSoft – EPUB Converter & EBook Converter]]
