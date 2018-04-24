@@ -246,6 +246,23 @@
 
     How the result (effect) of the same treatment varies across sub-populations.
 
+*** R-squared
+    From: [[http://blog.minitab.com/blog/adventures-in-statistics-2/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit][Regression Analysis: How Do I Interpret R-squared and Assess the Goodness-of-...]]
+
+    varT = total variation of target variable
+    varTe = variation of target variable that is explained by the prediction
+
+    R-squared = varT / varTe
+
+*** F-statistic (and linear regression p-value)
+    From: [[http://blog.minitab.com/blog/adventures-in-statistics-2/what-is-the-f-test-of-overall-significance-in-regression-analysis][What Is the F-test of Overall Significance in Regression Analysis?]]
+
+    It's a test of the overall signficance of the regression.  If:
+
+       p-value < F-test    (both from, say, from Matlab's regress() function)
+
+    then the prediction is significant i.e. you can reject the null-hypothesis that the target could be just as well predicted by a single intercept term.
+
 *** inference vs. learning vs. estimation
 
     My quick answer 1:
