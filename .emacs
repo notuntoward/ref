@@ -954,7 +954,7 @@
   :defer t
   :init
   (elpy-enable)
-  ;; jypter recommended over ipython (how s/ this work w/ conda env switch?): https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
+  ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?): https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
   (setq python-shell-interpreter "jupyter"
         python-shell-interpreter-args "console --simple-prompt")
 
