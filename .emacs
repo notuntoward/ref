@@ -1649,10 +1649,11 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
 "
 ;;  ("b" counsel-descbinds)
   ("b" helm-descbinds)
-  ("s" describe-symbol)
-  ("k" describe-key)
+  ;;  ("s" describe-symbol)
+  ("s" helpful-at-point)
+  ;;  ("k" describe-key)
+  ("k" helpful-key)
   ("f" describe-face)
-
   ;;    ("m" manual-entry)
   ("m" describe-mode)
   ;; could add describe face
@@ -1682,7 +1683,58 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
 ;; ("R" helm-recentf)
 (global-set-key (kbd "<M-apps>") 'hydra-utils/body)
 
-(use-package helpful) ; improvment over emacs info?
+(use-package helpful ; better emacs info: https://github.com/Wilfred/helpful
+  :bind
+  ( ; Note that the built-in `describe-function' includes both functions
+   ;; and macros. `helpful-function' is functions only, so we provide
+   ;; `helpful-callable' as a drop-in replacement.
+   ("C-h f" .  #'helpful-callable)
+   ("C-h v" .  #'helpful-variable)
+   ("C-h k" .  #'helpful-key)
+   ;; Lookup the current symbol at point. C-c C-d is a common keybinding
+   ;; for this in lisp modes.
+   ("C-c C-d" .  #'helpful-at-point)
+   ;; Look up *F*unctions (excludes macros).
+   ;;
+   ;; By default, C-h F is bound to `Info-goto-emacs-command-node'. Helpful
+   ;; already links to the manual, if a function is referenced there.
+   ("C-h F" . #'helpful-function)
+   ;; Look up *C*ommands.
+   ;;
+   ;; By default, C-h C is bound to describe `describe-coding-system'. I
+   ;; don't find this very useful, but it's frequently useful to only
+   ;; look at interactive functions.
+   ("C-h C" . #'helpful-command)))
+
+;; ;;--------------------------------
+
+;; ;; Note that the built-in `describe-function' includes both functions
+;; ;; and macros. `helpful-function' is functions only, so we provide
+;; ;; `helpful-callable' as a drop-in replacement.
+;; (global-set-key (kbd "C-h f") #'helpful-callable)
+
+;; (global-set-key (kbd "C-h v") #'helpful-variable)
+;; (global-set-key (kbd "C-h k") #'helpful-key)
+
+;; I also recommend the following keybindings to get the most out of helpful:
+
+;; ;; Lookup the current symbol at point. C-c C-d is a common keybinding
+;; ;; for this in lisp modes.
+;; (global-set-key (kbd "C-c C-d") #'helpful-at-point)
+
+;; ;; Look up *F*unctions (excludes macros).
+;; ;;
+;; ;; By default, C-h F is bound to `Info-goto-emacs-command-node'. Helpful
+;; ;; already links to the manual, if a function is referenced there.
+;; (global-set-key (kbd "C-h F") #'helpful-function)
+
+;; ;; Look up *C*ommands.
+;; ;;
+;; ;; By default, C-h C is bound to describe `describe-coding-system'. I
+;; ;; don't find this very useful, but it's frequently useful to only
+;; ;; look at interactive functions.
+;; (global-set-key (kbd "C-h C") #'helpful-command)
+;; ;;--------------------------------
 
 ;; * Appearance
 
