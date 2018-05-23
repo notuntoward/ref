@@ -8684,7 +8684,7 @@ sera
 ***** [[file:energy.bib::Liu11confWgtKNNimbal][Liu & Chawla 2011: Class]] weighted KNN imbalance
 ***** [[file:energy.bib::Phung09lrnImbalSets][Phung et al. 2009: Learning]] imbalanced sets
 ***** TODO [[file:energy.bib::Pinson09dynStorSiz][Pinson et al. 2009: Dynamic]] (tails models w/ expon. dist.)
-***** [[file:energy.bib::Pinson07nonParamProbFrcsEval][Pinson et al. 2007: Non]] param prob frcst eval tails
+***** [[file:energy.bib::Pinson07nonParamProbFrcsEval][Pinson et al. 2007: Non]] param prob frcst eval tailsb
 ***** [[File:energy.bib::pascual13extrmwindwvlts][Pascual et al. 2013: wintertime spain]] extreme wavelet
 ***** [[file:energy.bib::Reiss12smthPenSplnQR][Reiss & Huang 2012: Smoothness]] pen spln QR: ACV and SIC overfit on extreme quantiles
 ***** [[file:energy.bib::Rockafellar14superQuantRgrssn][Rockafellar et al. 2014: Superquantile]] regression
@@ -8707,15 +8707,56 @@ sera
 ***** [[file:energy.bib::Wong14extrmValRgrssnPkOvThrsh][Wong & Li 2014: Extreme]] val pk over thresh
 ***** TODO [[file:energy.bib::Wang12hiCondQuantHeavyTail][Wang et al. 2012: Estimation]] (high quantiles, heavy tails, from Axel)
 ***** [[file:energy.bib::Schmidt13noCrossQRspacing][Schmidt 2013: Quantile]] spacing construction, non-crossing, maybe good on extremes
-***** [[Distribution Regression]] better than QR @ extremes: [[file:energy.bib::Koenker13DistributionalvsQuantile][Koenker et al. 2013: Distributional]]
+***** [[Distribution Regression]] better(?) than QR @ extremes: [[file:energy.bib::Koenker13DistributionalvsQuantile][Koenker et al. 2013: Distributional]]
 ***** [[file:energy.bib::Flynn06johnsonSBextrm][Flynn 2006: Fitting Johnson SB]] extreme
 
 ***** Must use ensembles for extreme events: [[file:energy.bib::Moehrlen12tradeStrtgyRESeeg2012][Moehrlen et al. 2012: Investigation EEG]]
 ***** See also: [[Forecast Error Distributions]]
 ***** See also: [[Quantile Regression]]
 ***** See also [[Numerical Weather Prediction (NWP)]] for extreme weather
-***** Extreme Quantile Clustering
-      <<Extreme Quantile Clustering>>
+***** <<Extreme Value Theory>> or <<Extreme Value Estimation>>
+
+      Starting from the short, clear video [[https://www.youtube.com/watch?v=o-cpu1IH3tM][here]], at about 1:45:
+
+******* Is about finding distribution tails, where there are few samples
+******* "tail": values > some threshold
+******* Assumes parent distribution tails have a known form of tail distribution 
+******* Two ways to estimate tail distribution: GEV and GPD
+********* <<Generalized Extreme Value Distribution>>: (GEV) Chunk Maximum
+          (An old fashioned method)
+
+*********** subsample data into chunks
+*********** find max value in each chunk
+*********** max values will fit GEV
+*********** <<Extreme value distributions>>: 
+            From: [[https://www.kdnuggets.com/2016/02/21-data-science-interview-questions-answers-part2.html/3][21 Must-Know Data Science Interview Questions and Answers, part 2]]
+************* 3 distributions can model extremes, according to EVT
+*************** Gumble
+*************** Frechet
+*************** Weibull distributions a.k.a.Extreme Value Distributions (EVD) 1, 2, and 3, respectively.
+************* EVT says
+*************** Have N data sets from a given distribution
+*************** create a new dataset containing only the maximum values of these N data sets
+*************** new dataset can only be described by one of the [[Extreme value distributions]]. 
+*************** <<Generalized Extreme Value Distribution>> (GEV): combines the 3 EVT models and EVD model.
+
+********* <<Generalized Pareto Distribution>> ([[https://www.actuaries.org.uk/documents/short-introduction-extreme-value-theory-slides][GPD]]): Peaks over threshold
+          (More modern that GEV)
+
+*********** collect values over a single threshold across whole distribution
+*********** values fit a Generalized Pareto Distribution (GPD)
+
+*********** GPD threshold choice: 
+            From: [[file:energy.bib::Langousis16threshPickGPD][Langousis et al. 2016: Threshold Pareto]]
+
+            Idea is to pick the lowest threshold that satisfies some criterion.  Options are:
+
+************* nonparametric change point between extreme and nonextreme regions of the data,
+************* graphical methods where one studies the dependence of GP-related metrics on threshold
+************* Goodness-of-Fit (GoF): for a certain level of significance, find lowest thresh where GPD fits            
+
+ 
+***** <<Extreme Quantile Clustering>>
 ******* storms or other extreme events ([[file:energy.bib::kariniotakis08anemoswindforecast][kariniotakis 2008: anemos leading european]])
 ******* [[advanced utility forecasting application]] (extreme events)
 ******* [[file:energy.bib::Tomasev11knnHubsHighDim][Tomasev & Mladenic 2011: Nearest Neighbor Voting]] extreme events related
@@ -9346,6 +9387,8 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 ******* Great [[https://www.energy-charts.de/price.htm][price and other charts]] from Fraunhofer ISE
 ******* [[file:energy.bib::][Martin 2017: Limit Order Book MS Thesis]]
 ******* [[file:energy.bib::Martin18germanMktLOB][Martin & Otterson 2018: German Intraday Electricity]] conf paper
+******* TODO [[file:energy.bib::Braun18priceSenseFeatsDEmkt][Braun & Brunner 2018: Price Sensitivity Hourly]]
+******* TODO [[file:energy.bib::Bikora18densFrcstDmdEconMdls][Bikcora et al. 2018: Density Dmd frcst ARMA GARCH]]
 ******* TODO [[file:energy.bib::Dionne15LiquidAdjIntraday][Dionne et al. 2015: Liquidity Intraday Value Risk]] models liquidity from order books
 ******* TODO [[file:energy.bib::Pape15fndmntlPriceVarDEpowMkt][Pape et al. 2015: Are Fundamentals Enough]]? DE pow mkt price var
 ******* TODO [[file:energy.bib::VonSelasinsky14intradayMktDE][Von Selasinsky 2014: Integration]] of renewables in DE intraday mkt.
