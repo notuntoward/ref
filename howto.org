@@ -1201,8 +1201,7 @@
           Can see this by running latex on the tex output file and then running bibtex.  Also, if I change journaltitle to journal, then org-ref works fine.
 
 ********* org-ref was written with bibtex in mind but there's supposed to be a [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/13/Using-org-ref-for-citations-and-references/#sec-2][way to customize it for biblatex]].
-******* How to make the org-ref latex compile: install TexLive
-        <<How to make the org-ref latex compile: install TexLive>>
+******* <<How to make the org-ref latex compile: install TexLive>>
 
         The solution for org-ref was to [[https://github.com/jkitchin/org-ref/issues/346#issuecomment-262874374][use latexmk]].  However, MikTex latexmk kept crashing on both home and work computers.  Since org-ref people were successfully using TexLive, I installed that instead (it can work with [[Lyx]], which is what it was using, but see the [[Lyx Tweaks for TexLive]]
 
@@ -1325,6 +1324,15 @@ Many text editors have access to these in some simple way, so before thinking ab
 ******* [[https://github.com/coldnew/org-ioslide][org-ioslide: Export org-mode to Google I/O HTML5 slide.]]
 ******* TRY [[https://github.com/sigma/org-s5][ox-s5]] export, an org-->[[https://meyerweb.com/eric/tools/s5/][s5 slides in html/pdf]] (also try [[https://github.com/cybercode/org-slides][ox-deck]])
 
+******* emacs guy (Jamile Zamanski) [[http://cestlaz.github.io/posts/using-emacs-50-presentations/][didn't love beamer]], preferred epresent and reveal-mode
+
+        Says org-based beamer can be pretty, based on latex, but he had a hard time figuring it out.
+        
+        epresent uses reveal.js, is org-based and simpler, I guess.
+
+        Has some way of serviing from github, but can do on USB stick or whatever.
+
+******* [[http://cestlaz.github.io/posts/using-emacs-50-presentations/][Using Emacs Episode 50 - presentations | C'est la Z]]
 ******* I had found several before. were lost.  Should search again
 ***** Org-mode parsers
 ******* [[http://orgmode.org/worg/org-tools/][Org Mode tools!]] (parsers in many languages)
@@ -2236,7 +2244,7 @@ Strike-through: nil
         2. Pin it to the taskbar (right click on taskbar icon)
         3. Right click on the emacs icon in the taskbar and edit Properties
         4. Target == "<path to emacs install just above bin>\bin\runemacs.exe"
-        5. set Start in: to %HOME%
+        5. set Start in: to %HOME%, assuming HOME was set to the emacs homedir, as emacs expects.
 
         _Historical Note_: Windows 10 had an [[9696
 
@@ -2247,7 +2255,7 @@ Strike-through: nil
 ********* Old stuff that didn't work
 *********** _This Windows 10 fix doesn't work:_
 
-        I downloaded Win7AppID1.1.exe, put itt in ~/bin, and ran:
+        I downloaded Win7AppID1.1.exe, put it in ~/bin, and ran:
         ./Win7AppId1.1.exe "C:\Users\scott\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\emacs.lnk" Gnu.Emacs
 
         The program it sound no appid and that it had added the one I asked
@@ -2788,12 +2796,12 @@ Strike-through: nil
 ******* [[elpy pyenv interface]]
 ******* [[anaconda-mode seems to use pyenv for conda environments]]
 ******* general: [[python conda environments]]
+***** [[https://vxlabs.com/2017/11/30/run-code-on-remote-ipython-kernels-with-emacs-and-orgmode/][Run code on remote ipython kernels with Emacs and orgmode. – vxlabs]]
 *** Ruby in Emacs
 ***** debugger
 
       M-x rubydb
       ruby -d <progname inluding '.rb'>
-
 *** [[MS Office and Emacs]]
 *** MacOS Emacs
 ***** Killing a MacOS task
@@ -2956,6 +2964,16 @@ C:\Program Files (x86)\GNU Emacs 25.1\bin\emacsclientw.exe
 
 *** Italics in article title: use =\em{}=
     From: [[https://sourceforge.net/p/jabref/discussion/318825/thread/6e71725d/][JabRef / Discussion / Help:Italics in titles?]]
+*** Fixing tiny fonts on Surface pro:
+    From: [[https://github.com/JabRef/jabref/issues/2885][Fonts are too small to read, inconsistent across the UI · Issue #2885 · JabRe...]]
+
+    For Windows 10, there is work-around to get a workable resolution (I wouldn't call it nice through):
+
+***** Find and Right click JabRef.exe in the installation folder -> Properties
+***** Go to Compatibility tab
+***** Check Override high DPI scaling behavior.
+***** Choose System for Scaling performed by
+
 * Old Computers
 *** Microsoft Surface Pro 3
 ***** Screenshots and snips
@@ -3308,8 +3326,7 @@ gestures for "show charm" and "switch apps"
 ******** must install the package
 ******** then rxvt is available on the windows menu, in native and x flavors
 ******* mintty (or something like that) now default, better than rxvt?
-***** turn off cygwin DOS warning
-      <<turn off cygwin DOS warning>>
+***** <<turn off cygwin DOS warning>>
 ******* fix
 
         set the Windows environment variable (System, not user):
@@ -3327,8 +3344,7 @@ gestures for "show charm" and "switch apps"
         CYGWIN environment variable option "nodosfilewarning" turns off this warning.
         Consult the user's guide for more details about POSIX paths:
         http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-***** force cygwin to make windows-understandable symlinks
-      <<windows-understandable symlinks>>
+***** force cygwin to make <<windows-understandable symlinks>>
 
       Add "winsymlinks" to CYGWIN environment variable.  This makes cygwin
       create symlinks differently, in a form that is understood both by it
@@ -3637,17 +3653,22 @@ that you get when you buy Office 365?
 ***** DelayLockInterval [[https://buzzantique.eu/windows-hello-is-preventing-some-options-from-being-shown/][regedit mod]] (gets wiped out, but works)
 
       o regedit
-      o HKEY_CURRENT_USER » Control Panel » Desktop and modify the value for DelayLockInterval. Tick decimal base 
-      o enter seconds of delay e.g. 300 for 5 minutes
-
-      This setting will be _wiped out every time you revisit  Sign-in options_ (Settings » Accounts » Sign-in options/
+      o HKEY_CURRENT_USER » Control Panel » Desktop and modify the value for DelayLockInterval. 
+        o Tick decimal base 
+        o enter seconds of delay e.g. 300 for 5 minutes
 
       _If there is some admin error message, do this (I didn't need to)_
-      o run gpedit.msc (admin priv)
-      o Computer Configuration » Administrative Templates » Windows Components » Data Collection and Preview Builds and open Allow Telemetry
-      o enable it
-      o select "3 - Full"
-      o re-allow 
+        o run gpedit.msc (admin priv)
+        o Computer Configuration » Administrative Templates » Windows Components » Data Collection and Preview Builds and open Allow Telemetry
+        o enable it
+        o select "3 - Full"
+        o re-allow 
+
+      _This setting gets wiped out is several circumstances_
+        o every time you revisit  Sign-in options (Settings » Accounts » Sign-in options.
+        o June Windows update wiped out this setting
+        o it wasn't transferred to my new Surface Pro, so I had to reset it
+
 
 *** window vertical maximize
 
@@ -3696,6 +3717,9 @@ taskkill -im iexplore.exe
     maximum password age: adust larger or set it to zero for no expiration
 
 *** single click opens stuff
+
+    *Windows 10*
+    Windows Explorer --> View tab --> Options ---> Change folder and search options
 
     *Windows 8*
     [[http://www.eightforums.com/tutorials/4067-folder-options-open-windows-8-a.html][How to Open Folder Options in Windows 8]]
@@ -4104,6 +4128,37 @@ Note that on very high-DPI displays, this may make screen elements very small, a
 *** Keyboard remapping (ctrl-capslock)
 ***** [[http://www.randyrants.com/category/sharpkeys/][Sharpkeys]]: works great, is what I use for Windows
 ***** [[http://www.techrepublic.com/article/how-to-remap-the-caps-lock-key-and-avoid-future-frustration/?ftag=TREe331754&bhid=22027677217996064763852163069924][Microsoft remapkey]]
+***** Using Authotkey, when don't have admin rights (like @ TenneT)
+
+make an autohotkey script that does it
+https://superuser.com/questions/909527/how-to-remap-caps-lock-to-ctrl-on-windows-7-with-no-admin-rights-and-no-third-pa
+and turn that into an executable
+(problems: doesn't swap, only replaces capslock)
+(problem: not clear that store this in startup folder, as promised)
+
+autohotkey
+download from here (don't install, just get zip file and put it in my bin directory):
+https://autohotkey.com/download/
+
+My ahk script (capsCtrlSwap.ahk):
+Capslock::Control   ; make Caps Lock the control button
+Control::Capslock   ; make Control Caps Lock
+
+ahk2exe.exe (exe file maker) is in Compiler directory of autohotkey download
+description: https://autohotkey.com/docs/Scripts.htm#ahk2exe
+
+Icon: I grabbed a jpg off of google
+then I converted it to an ico file with this: http://icoconvert.com/
+(size 96x96)
+
+Conversion command, having cd'ed to the Compiler dir:
+
+./Ahk2Exe.exe /in ../../capsCtrlSwap.ahk  /icon ../../emacs_icon_kfY_icon.ico
+
+Paste the result,  capsCtrlSwap.exe, to destkop
+
+Click it every time after rebooting or relogging in to swap capslock and control
+
 *** Touch gesture to bring up on screen keyboard, taskbar, and other gestures
 
     [[https://touchme.uservoice.com/][TouchMe Gesture Studio Beta]] works both in Desktop and Metro mode.  And
@@ -4377,6 +4432,29 @@ you've select to view hidden folders) and delete IconCache.db.
 ********* Commenters say [[http://www.pentaxforums.com/forums/58-troubleshooting-beginner-help/310854-cannot-view-raw-files-windows-10-a.html][Codec not necessary for Win10]]
 ********* [[https://www.adobe.com/support/downloads/thankyou.jsp?ftpID=5495&fileID=5491][DNG Codec 2.0]], for OLD Windows Photo Viewer, commenters say it's not updated
 ***** [[http://www.faststone.org/FSViewerDetail.htm][Fast Stone Image Viewer]]: free, works on Panasonic RW2, Adobe DNG, and othe
+* PC Performance Testing
+*** Computational
+***** PC Mag Computational Test Procedure
+      From: [[https://www.pcmag.com/article2/0,2817,1623939,00.asp][How We Test Laptops (they use PCMark 8)]]
+
+      Explains how they set up the computer and their software
+
+      They use:
+******* Heaven and Valley: for 3D tests 
+******* Cinibench R15: multi-CPU and threading
+******* Handbrake 0.9.9: video encoding
+
+*** Battery Test
+***** PC Mag Battery Test Procedure
+      From: [[https://www.pcmag.com/article2/0,2817,1623939,00.asp][How We Test Laptops (they use PCMark 8)]]
+
+      Explains how they set up the computer and their software
+
+      They use:
+******* [[https://benchmarks.ul.com/pcmark8?redirected=true#][PCMark 8]]: Overall performance, Productivity
+******* Heaven and Valley: for 3D tests 
+******* Cinibench R15: multi-CPU and threading
+******* Handbrake 0.9.9: video encoding
 * MS Office
 *** <<Word Bibliography>>
     (how to use bibtex/JabRef for Word citations)
@@ -5078,6 +5156,7 @@ won't work if you close and immediately open onenote again.
 ***** Git tutorials
 ******* [[http://git.or.cz/course/svn.html][Git vs. SVN Crash Course]]
 ******* [[http://rogerdudler.github.io/git-guide/][git - the simple guide - no deep shit!]]
+******* TODO (recommended for DevOps/Agile): [[https://www.atlassian.com/git/tutorials/advanced-overview][Advanced Git Tutorials Overview | Atlassian Git Tutorial]]
 ***** Initializing a git repository from scratch
       From: https://bitbucket.org/
 
@@ -5087,6 +5166,18 @@ won't work if you close and immediately open onenote again.
       git add README.md
       git commit -m "Initial commit"
       git push -u origin master      
+***** Git submodules
+
+      A way of making a meta version describing the versions of all packages/libraries used.  Solves the library problem, and makes it possible to work on chunks separately while still being able to version the whole.
+
+      TODO: [[https://git-scm.com/book/en/v2/Git-Tools-Submodules][Git - Submodules]]
+
+***** Git large file storage for test data
+
+      Git Large File Storage (LFS) _replaces_ large files such as audio samples, videos, datasets, and graphics with _text pointers inside Git_, while storing the file contents on a remote server like GitHub.com or GitHub Enterprise.
+
+      TODO [[https://git-lfs.github.com/][Git Large File Storage | Git Large File Storage (LFS) replaces large files su...]]
+
 ***** Tortoise GIT
 ******* [[https://help.cloudforge.com/hc/en-us/articles/215243143-Configure-TortoiseGIT-client-to-work-with-SSH-keys-on-Windows][tortoiseGIT ssh key]]
 ******* tortoiseGIT [[https://stackoverflow.com/questions/14000173/tortoisegit-save-user-authentication-credentials][avoid typing in password]] each time
@@ -6464,6 +6555,7 @@ with each other.
 ********* [[Python plotly]]
 ********* [[R plotly]]
 ********* plotly is [[https://stackoverflow.com/questions/35511111/plotly-python-totally-free?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa][confusingly free]], can be run offline
+********* has Dash, which is the best Python version of R-Shiny, a recommended eway to to dashboards (I read in several places)
 ******* <<Bokeh:>> interative, in at least R and python
 ********* [[Python Bokeh]] 
 ********* [[R Bokey]]
@@ -8058,6 +8150,14 @@ Tableau
 ***** <<stackplot() in python>>
 ******* plotly/pandas "time series subplots" is close: [[https://plot.ly/pandas/time-series/#pandas-time-series-subplots][Pandas Time Series]]
 ******* also [[R functions like my Matlab stackplot()]]
+*** <<Python Streaming>>
+***** Installing Pyspark in a docker
+******* Better: [[https://medium.com/@suci/running-pyspark-on-jupyter-notebook-with-docker-602b18ac4494][Running PySpark on Jupyter Notebook with Docker – Medium]]
+******* [[https://stackoverflow.com/questions/33109989/how-to-install-pyspark-spark-for-learning-purpose-on-a-laptop-with-limited-res][How to install pyspark & spark for learning purpose on a laptop with...]]
+******* Sparkling Water Deplooyment
+
+https://www.youtube.com/watch?v=jpzi0-1mKyA
+
 *** Speeding up python 
 ***** vectorizing more important than in Matlab ([[https://github.com/Technologicat/python-3-scicomp-intro/blob/master/python_scicomp_notes.pdf][Informal introduction to Python 3 for scientific computing]])
 ***** [[https://numba.pydata.org/][Numba]]: JIT makes for loops comparable to vectorization, like C/C++ [[https://hips.seas.harvard.edu/blog/2013/05/13/jit-compilation-in-matlab/][or Matlab]]
@@ -8070,6 +8170,59 @@ Tableau
 *** Symbolic computation: [[http://www.sympy.org/de/index.html][SymPy]]
 *** Tests in Python
 ***** guy [[https://www.youtube.com/watch?v=k55d3ZUF3ZQ][says]] to use pytest pkg, not built-in unittest.  For sure, it's shorter.
+*** <<Python IDEs>>
+***** Visual Studio Code (VSC)
+******* Syncing Visual Studio Code Settings
+        Use: [[https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync][Settings Sync - Visual Studio Marketplace]] (extension)
+
+        Works via git.  Need to make a personal github token (see extension description)
+
+        *My token*
+        name: vs-code-settings-sync
+        value: 4080663549b231b079fcbf8ac82399f49366694f
+***** Rodeo
+***** [[Python in Emacs]]
+***** <<PyCharm>>
+******* Showing graphs inside of PyCharm
+********* Use [[https://www.jetbrains.com/help/pycharm/matplotlib-support.html#sm][Scientific Mode in PyCharm]]
+*********** shows [[https://www.jetbrains.com/help/pycharm/matplotlib-support.html#sm][graphs in in separate window]], and has data viewer, somewhat like Matlab
+*********** also shows a Python console, somewhat like Matlab
+*********** compatible with Matplotlib and numpy
+*********** _[[https://www.jetbrains.com/help/pycharm/scientific-tools.html][only available on Pro]]_ version of Pycharm
+*********** somehow uses Anaconda, since a [[https://www.jetbrains.com/help/pycharm/matplotlib-tutorial.html][conda interpreter is required]]
+*********** [[https://www.jetbrains.com/help/pycharm/matplotlib-tutorial.html][Scientific Mode Tutorial - Help | PyCharm]]
+********* Use [[https://www.jetbrains.com/help/pycharm/using-ipython-notebook-with-product.html][IPython/Jupyter Notebook with PyCharm]]
+*********** shows graphs mixed with code, like IPython/Jupyter notebook but in console, not browser
+*********** [[https://confluence.jetbrains.com/display/PYH/Using+IPython+Notebook+with+PyCharm#UsingIPythonNotebookwithPyCharm-Writingformulae][can do symbolic calcs w/ rendered latex output]]
+*********** [[https://www.jetbrains.com/help/pycharm/run-debug-configuration-jupyter-notebook.html][can run/debug Jupyter Notebook]]
+********* X11 Setup (is slow, is it necessary for Scientific Mode)
+          From: [[https://stackoverflow.com/questions/39803373/python-plotting-on-remote-server-using-pycharm][Python plotting on remote server using PyCharm - Stack Overflow]]
+*********** Xserver on remote    
+*********** Ximg on local (Windows, I guess) machine
+*********** must set the usual environment variables
+*********** is slow: 10s for image to show up (how fast was his connection?)
+******* Remote debugging with PyCharm: works best w/ VNC?
+********* Running PyCharm in normal mode on remote machine seems best, probably w/ VNC
+*********** source code control is there
+*********** less configuration hell
+*********** VNC server/client seems better than X
+************* get whole desktop, with all the linux tools
+************* can interrupt w/o breaking process, run all night
+********* Using Pycharm Remote Debugging Facilities: [[https://www.jetbrains.com/help/pycharm/remote-debugging.html][Remote Interpreter or Python Debug Server]]
+*********** [[https://www.jetbrains.com/help/pycharm/remote-debugging-with-product.html#remote-interpreter][Remote Interpreter]] PyCharm Debugging (*not desirable*, no GIT)
+************* [[https://www.jetbrains.com/help/pycharm/remote-debugging-with-product.html#remote-interpreter][Uses SSH/SFTP]]
+************* [[https://www.jetbrains.com/help/pycharm/remote-debugging.html][Must configure]] a  a "remote interpreter": [[https://www.jetbrains.com/help/pycharm/configuring-remote-interpreters-via-ssh.html][Configuring Remote Interpreters via SSH]]
+************* [[Remote Interpreter example with Tensorflow]]
+************* *Bummer*: not git controlled. Must [[https://www.jetbrains.com/help/pycharm/remote-debugging-with-product.html#remote-interpreter][deploy code via SFTP]]
+*********** Remote Python Debug Server PyCharm Debugging
+********* Note: JupyterLab [[https://medium.com/@mukeshkumar_46704/encourage-you-to-switch-to-jupyter-lab-158d4225d114][claimed]] to be easier than PyCharm for remote running
+******* Virtual environments and Pycharm
+********* Warning: Pycharm .idea file in proj dir: has hardcoded Anaconda loc, not machine/OS indep.
+******* Tensorflow/Cuda and Pycharm
+********* LD_LIBRARY_PATH bug in PyCharm: [[https://github.com/tensorflow/tensorflow/issues/9530][PyCharm won't correctly import tensorflow]]
+********* <<Remote Interpreter example with Tensorflow>>: [[https://medium.com/@erikhallstrm/work-remotely-with-pycharm-tensorflow-and-ssh-c60564be862d][Work remotely with PyCharm, TensorFlow and SSH]]
+***** Atom
+***** Spyder
 * Android
 *** Commandline
 ***** Termux app
@@ -8103,7 +8256,13 @@ Tableau
       (and restart FF)
 
 ***** getting rid of autoplay
-******* *I'm trying this*: [[http://www.softpedia.com/get/Internet/Internet-Applications-Addons/Mozilla-Extensions/Stop-Autoplay.shtml][Stop Autoplay]]: plugin
+******* *I'm doing this*:  [[http://superuser.com/questions/370246/stop-automatic-video-play-in-firefox][media.autoplay.enabled]]: seems OK, but said to be unreliable
+********* Type about:config in the browser's address bar and hit enter.
+********* Confirm that you will be careful if the notification comes up.
+********* Use the search at the top to find the preference media.autoplay.enabled.
+********* Double-click on it.
+******* [[https://addons.mozilla.org/en-US/firefox/addon/flashblock/][Flashblock]]: blocks everything, but can whitelist: too much
+******* [[http://www.softpedia.com/get/Internet/Internet-Applications-Addons/Mozilla-Extensions/Stop-Autoplay.shtml][Stop Autoplay]]: plugin
 ********* doesn't stop some (all?) huffington post videos e.g. t[[http://www.huffingtonpost.com/2013/07/24/viking-jewelry-found-denmark-farm_n_3645016.html][his one]]
 ******* [[http://internet.wonderhowto.com/how-to/disable-annoying-autoplay-media-chrome-firefox-safari-and-internet-explorer-0139641/][about: config click to play]]: a bit annoying
         Annoying because have to click every time even if it wasn't
@@ -8117,8 +8276,6 @@ Tableau
         videos.
 
         *Chrome*: the link also describes how to do it in chrome.
-******* [[http://superuser.com/questions/370246/stop-automatic-video-play-in-firefox][media.autoplay.enabled]]: seems OK, but said to be unreliable
-******* [[https://addons.mozilla.org/en-US/firefox/addon/flashblock/][Flashblock]]: blocks everything, but can whitelist: too much
 ******* [[https://addons.mozilla.org/en-US/firefox/addon/noscript/][NoScript]]: nuclear option, stops all scripts
 ***** get rid of bogus search engines
 ******* Install [[https://addons.mozilla.org/en-US/firefox/addon/searchreset/][searchreset add-on]], which runs, cleans up, and uninstalles itself
@@ -8903,6 +9060,35 @@ ERROR: Cannot run texhash command. Please run manually.
 *** Sacha Chau's elisp for making a goal concept map (code at end of [[http://pages.sachachua.com/evil-plans/][this page]])
 *** [[http://orgmode.org/worg/org-contrib/org-wikinodes.html][org-wikinodes: CamelCase wiki-like links]] (kind of a graph)
 *** [[Concept map-like stuff: superlabel, dedicated targets, org-brain]]
+* <<Programming Practices>>
+*** Agile development
+***** Florian's Agile video links
+******* Agile Product Ownership in a Nutshell
+
+https://www.youtube.com/watch?v=502ILHjX9EE
+
+******* Story Points – Learn agile estimation in about 10 Minutes 
+
+https://www.youtube.com/watch?v=Hwu438QSb_g
+
+******* Introduction to Scrum in 7 Minutes
+
+https://www.youtube.com/watch?v=9TycLR0TqFA
+
+******* Kanban
+
+https://www.youtube.com/watch?v=R8dYLbJiTUE
+
+******* Scrum Vs. Kanban – What´s the difference
+
+https://www.youtube.com/watch?v=rIaz-l1Kf8w
+
+******* Adapt your Mindset - “Lost Generation”
+
+https://www.youtube.com/watch?v=42E2fAWM6rA
+
+
+
 * XML
 *** Translation tools
 * DTU
@@ -8981,3 +9167,24 @@ ERROR: Cannot run texhash command. Please run manually.
 
     o *Remove DRM*: download and run [[https://www.epubconverter.com/DownloadSoftware/download.aspx?type=ebook-removal-win][EpubSoft Ultimate DRM Remover]]
 ***** *Epub --> PDF*: download & run [[https://www.anicesoft.com/?s=EPUBCONV1][AniceSoft – EPUB Converter & EBook Converter]]
+*** Copying out of Kindle book
+
+    Best seems to be copying from Kindle Cloud Reader, viewed in Chrome.
+
+***** Copying from Kindle Cloud Reader (Browser)
+      
+      The chrome extension works.  I couldn't get things to work in Firefox.
+
+******* Chrome
+********* [[https://chrome.google.com/webstore/detail/kindle-optimizer/bjfeinekchekdofcdmnfcnbidjkpbgdh?hl=en][Kindle Optimizer add  on]]: puts text/images in a popup.  Copy from there
+********* <<Copy from Kindle Bookmarklet>>
+          From: [[https://github.com/ccimpoi/ACRExtensions][GitHub - ccimpoi/ACRExtensions: Amazon Cloud Reader extensions]]
+
+          I can't get it to work, though...  Not updated since 2014.
+
+          [[https://gist.github.com/Neurogami/cc4a2224632f491c18cfce782cd706f6/revisions][This]] is newer but I also can't get it to work either.
+
+******* Firefox
+********* [[Copy from Kindle Bookmarklet]]
+***** Copying from Kindle Reader (Desktop version)
+      You can do it, but it always puts pastes a citation too.  I can't figure out how to get rid of that.

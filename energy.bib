@@ -12572,6 +12572,21 @@ Uses Scenario Generator in:  Pinson09probFrcstStatScenWind},
   keywords = {Capacitors;Optimization;Real-time systems;Robustness;Uncertainty;Wind power generation;Decision-making;distribution system operator;robust optimization;solar power;uncertainty;wind power},
 }
 
+@Article{Jensen17euDatSimRE,
+  author        = {Jensen, Tue V and Pinson, Pierre},
+  title         = {RE-Europe, a large-scale dataset for modeling a highly renewable European electricity system},
+  journal       = {Scientific data},
+  year          = {2017},
+  volume        = {4},
+  pages         = {170175},
+  __markedentry = {[Scott Otterson:]},
+  abstract      = {Future highly renewable energy systems will couple to complex weather and climate dynamics. This coupling is generally not captured in detail by the open models developed in the power and energy system communities, where such open models exist. To enable modeling such a future energy system, we describe a dedicated large-scale dataset for a renewable electric power system. The dataset combines a transmission network model, as well as information for generation and demand. Generation includes conventional generators with their technical and economic characteristics, as well as weather-driven forecasts and corresponding realizations for renewable energy generation for a period of 3 years. These may be scaled according to the envisioned degrees of renewable penetration in a future European energy system. The spatial coverage, completeness and resolution of this dataset, open the door to the evaluation, scaling analysis and replicability check of a wealth of proposals in, e.g., market design, network actor coordination and forecasting of renewable power generation.},
+  comment       = {European simulated wind/solar/demand measurements and forecasts.  Used by Peder Bacher for WP82.3 of IRPWIND for his stochastic differential equation studies.  There are some problems with this data, some of which he mentioned during our lunch at that Roskilde Cafe -- maybe I wrote them down in OneNote.  The main one is that it's all based on weather model analysis/synthesis, and then power curves, etc. are simulated.  There was also some problem with the first X hours of a run being garbage, but I don't remember the issue right now.},
+  file          = {:Jensen17euDatSimRE.pdf:PDF},
+  publisher     = {Nature Publishing Group},
+  url           = {https://www.nature.com/articles/sdata2017175},
+}
+
 @InProceedings{Shaaban11Riskbasedsecurity,
   author    = {Shaaban, M.},
   title     = {Risk-based security assessment in smart power grids},
@@ -13899,15 +13914,14 @@ Mutual Information and Imbalance
 }
 
 @Article{Langousis16threshPickGPD,
-  author        = {Langousis, Andreas and Mamalakis, Antonios and Puliga, Michelangelo and Deidda, Roberto},
-  title         = {Threshold detection for the generalized Pareto distribution: Review of representative methods and application to the NOAA NCDC daily rainfall database},
-  journal       = {Water Resources Research},
-  year          = {2016},
-  volume        = {52},
-  number        = {4},
-  pages         = {2659--2681},
-  __markedentry = {[Scott Otterson:6]},
-  abstract      = {In extreme excess modeling, one fits a generalized Pareto (GP) distribution to rainfall excesses
+  author    = {Langousis, Andreas and Mamalakis, Antonios and Puliga, Michelangelo and Deidda, Roberto},
+  title     = {Threshold detection for the generalized Pareto distribution: Review of representative methods and application to the NOAA NCDC daily rainfall database},
+  journal   = {Water Resources Research},
+  year      = {2016},
+  volume    = {52},
+  number    = {4},
+  pages     = {2659--2681},
+  abstract  = {In extreme excess modeling, one fits a generalized Pareto (GP) distribution to rainfall excesses
 above a properly selected threshold u. The latter is generally determined using various approaches, such as
 nonparametric methods that are intended to locate the changing point between extreme and nonextreme
 regions of the data, graphical methods where one studies the dependence of GP-related metrics on the
@@ -13923,14 +13937,14 @@ on preasymptotic properties of the GP distribution. For daily rainfall, we find 
 range between 2 and 12 mm/d with a mean value of 6.5 mm/d, while the existence of quantization in the
 empirical records, as well as variations in their size, constitute the two most important factors that may
 significantly affect the accuracy of the obtained results.},
-  comment       = {Reviews methods for picking threshold for the Generalized Pareto Distribution (GPD), which is used to predict the tails of a distribution.
+  comment   = {Reviews methods for picking threshold for the Generalized Pareto Distribution (GPD), which is used to predict the tails of a distribution.
 
 Idea is to pick the lowest threshold that satisfies some criterion.  Options are:
 * nonparametric change point between extreme and nonextreme regions of the data,
 * graphical methods where one studies the dependence of GP-related metrics on threshold
 * Goodness-of-Fit (GoF): for a certain level of significance, find lowest thresh where GPD fits},
-  file          = {:Langousis16threshPickGPD.pdf:PDF},
-  publisher     = {Wiley Online Library},
+  file      = {:Langousis16threshPickGPD.pdf:PDF},
+  publisher = {Wiley Online Library},
 }
 
 @Misc{Wikipedia15cholesky,
@@ -14646,6 +14660,27 @@ Technote has much more discussion. See: Maaten09DimRedCmprTechNote},
   publisher = {Citeseer},
   timestamp = {2014.05.12},
   url       = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.125.6716&rep=rep1&type=pdf},
+}
+
+@Article{Schmidhuber15deepLrnOvrvw,
+  author    = {J{\"{u}}rgen Schmidhuber},
+  title     = {Deep learning in neural networks: An overview},
+  journal   = {Neural Networks},
+  year      = {2015},
+  volume    = {61},
+  pages     = {85--117},
+  abstract  = {In recent years, deep artificial neural networks (including recurrent ones) have won numerous contests in
+pattern recognition and machine learning. This historical survey compactly summarizes relevant work,
+much of it from the previous millennium. Shallow and Deep Learners are distinguished by the depth
+of their credit assignment paths, which are chains of possibly learnable, causal links between actions
+and effects. I review deep supervised learning (also recapitulating the history of backpropagation),
+unsupervised learning, reinforcement learning & evolutionary computation, and indirect search for short
+programs encoding deep and large networks.},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  biburl    = {https://dblp.org/rec/bib/journals/nn/Schmidhuber15},
+  comment   = {Another good overview: Bengio13repLrnOvrvw},
+  doi       = {10.1016/j.neunet.2014.09.003},
+  file      = {:Schmidhuber15deepLrnOvrvw.pdf:PDF},
 }
 
 @Article{VonLuxburg07specClustTut,
@@ -15570,6 +15605,58 @@ Scalar measures of coherence
   publisher = {Elsevier},
   timestamp = {2012.03.09},
   url       = {http://www.sciencedirect.com/science/article/pii/S0047259X02000611},
+}
+
+@InProceedings{Balkanski18adaptMaxSubMod,
+  author        = {Balkanski, Eric and Singer, Yaron},
+  title         = {The adaptive complexity of maximizing a submodular function},
+  booktitle     = {Proceedings of the 50th Annual ACM SIGACT Symposium on Theory of Computing},
+  year          = {2018},
+  pages         = {1138--1151},
+  organization  = {ACM},
+  __markedentry = {[Scott Otterson:6]},
+  abstract      = {In this paper we study the adaptive complexity of submodular optimization. Informally, the
+adaptive complexity of a problem is the minimal number of sequential rounds required to achieve
+a constant factor approximation when polynomially-many queries can be executed in parallel at
+each round. Adaptivity is a fundamental concept that is heavily studied in computer science,
+largely due to the need for parallelizing computation. Somewhat surprisingly, very little is
+known about adaptivity in submodular optimization. For the canonical problem of maximizing
+a monotone submodular function under a cardinality constraint, to the best of our knowledge,
+all that is known to date is that the adaptive complexity is between 1 and Ω(n).
+Our main result in this paper is a tight characterization showing that the adaptive complexity
+of maximizing a monotone submodular function under a cardinality constraint is
+
+˜
+
+Θ(log n):
+• We describe an algorithm which requires O(log n) sequential rounds and achieves an ap-
+proximation that is arbitrarily close to 1/3;
+• We show that no algorithm can achieve an approximation better than O(log1 n) with fewer
+than O( log n
+
+log log n) rounds.
+Thus, when allowing for parallelization, our algorithm achieves a constant factor approximation
+exponentially faster than any known existing algorithm for submodular maximization.
+Importantly, the approximation algorithm is achieved via adaptive sampling and comple-
+ments a recent line of work on optimization of functions learned from data. In many cases
+we do not know the functions we optimize and learn them from labeled samples. Recent
+results show that no algorithm can obtain a constant factor approximation guarantee using
+polynomially-many labeled samples as in the PAC and PMAC models, drawn from any distribu-
+tion [BRS17, BS17a]. Since learning with non-adaptive samples over any distribution results
+in a sharp impossibility, we consider learning with adaptive samples where the learner obtains
+poly(n) samples drawn from a distribution of her choice in every round. Our result implies that
+in the realizable case, where there is a true underlying function generating the data,
+
+˜
+
+Θ(log n)
+batches of adaptive samples are necessary and sufficient to approximately “learn to optimize”
+a monotone submodular function under a cardinality constraint.},
+  comment       = {A new method of submodular optimization.  Good for e.g. taxi routing and recommendation engines.  Is more than an order of mag. faster than existing methods (July 2018), "exponentially" according to quotes in this IEEE Spectrum article:
+
+https://spectrum.ieee.org/tech-talk/computing/software/new-optimization-algorithm-exponentially-speeds-computation?utm_source=techalert&utm_campaign=techalert-07-12-18&utm_medium=email},
+  file          = {:Balkanski18adaptMaxSubMod.pdf:PDF},
+  url           = {https://scholar.harvard.edu/files/ericbalkanski/files/the-adaptive-complexity-of-maximizing-a-submodular-function.pdf},
 }
 
 @Article{Chen84cmplxHarmSline,
@@ -27439,20 +27526,19 @@ function for slow-starting conventional generators.},
 }
 
 @Article{Braun18priceSenseFeatsDEmkt,
-  author        = {Braun, Sebastian M. and Brunner, Christoph},
-  title         = {Price Sensitivity of Hourly Day-ahead and Quarter-hourly Intraday Auctions in Germany},
-  journal       = {Zeitschrift für Energiewirtschaft},
-  year          = {2018},
-  pages         = {1},
-  month         = apr,
-  issn          = {1866-2765},
-  __markedentry = {[Scott Otterson:]},
-  abstract      = {The introduction of the quarter-hourly intraday auction in 2014 for the German market confirms a tendency towards short-term energy markets. The reason for the new market was the need to trade shorter periods than just hours a day-ahead to minimize open positions in the more volatile continuous intraday trading. The increased production capacity of solar power boosted this requirement for new short-term power products. The quarter-hourly market shows a distinctive zigzag price formation. We identify two influencing factors: first, the solar residual that combines the trading of solar power ramps around midday as well as the gradients of consumption and thermal power plant ramps throughout the course of the day, and second, a characteristic two stage market design with higher liquidity for the hourly than for the quarter-hourly auction. Therefore, demand, solar generation and inflexible ramps of thermal power plants are hedged at the hourly day-ahead auction and use the quarter-hourly auction only to balance the remaining differences. To prove this argument the price sensitivities of the hourly day-ahead and quarter-hourly intraday auctions in Germany are compared based on actual bid and ask curves from 2015 and 2016. Finally, the development of an adequate design of future spot markets is discussed.ZusammenfassungDie Einführung der viertelstündlichen Intraday-Auktion im Jahre 2014 für den deutschen Strommarkt untermauert die Bedeutung der kurzfristigen Energiemärkte. Der Grund für die Einführung war der Bedarf, bereits vortägig, viertelstündliche Mengen auszugleichen und offene Positionen im volatilen kontinuierlichen Intraday-Handel zu minimieren. Die gestiegene Stromproduktion aus Solarenergie verstärkte die Nachfrage nach neuen kurzfristigen Produkten. Der Viertelstundenmarkt zeigt eine ausgeprägte Zickzack-Preisbildung. Wir identifizieren zwei Einflussfaktoren: erstens, den Handel von Solarrampen um die Mittagszeit, sowie die Gradienten von Nachfrage und thermischer Erzeugung im Laufe des Tages und zweitens, ein charakteristisches zweistufiges Marktdesign mit höherer Liquidität an den stündlichen als auf der viertelstündlichen Auktion. Die unterschiedliche Liquidität lässt darauf schließen, dass bei der stündlichen Day-Ahead-Auktion die solare Erzeugung und die unflexiblen Rampen thermischer Kraftwerke abgesichert und die viertelstündliche Auktion genutzt, um die verbleibenden Differenzen auszugleichen. Um diese Aussage argumentativ zu verifizieren, werden die Preissensitivitäten der stündlichen Day-Ahead- und viertelstündlichen Intraday-Auktionen in Deutschland anhand der tatsächlichen Angebots- und Nachfragekurven von 2015 und 2016 verglichen. Abschließend wird die Entwicklung einer adäquaten Gestaltung zukünftiger Spotmärkte diskutiert.},
-  comment       = {Another measure of liquidity paper on German market.  ID's features that affect the market.},
-  date          = {2018-04-18},
-  doi           = {10.1007/s12398-018-0228-0},
-  publisher     = {Springer},
-  url           = {http://dx.doi.org/10.1007/s12398-018-0228-0},
+  author    = {Braun, Sebastian M. and Brunner, Christoph},
+  title     = {Price Sensitivity of Hourly Day-ahead and Quarter-hourly Intraday Auctions in Germany},
+  journal   = {Zeitschrift für Energiewirtschaft},
+  year      = {2018},
+  pages     = {1},
+  month     = apr,
+  issn      = {1866-2765},
+  abstract  = {The introduction of the quarter-hourly intraday auction in 2014 for the German market confirms a tendency towards short-term energy markets. The reason for the new market was the need to trade shorter periods than just hours a day-ahead to minimize open positions in the more volatile continuous intraday trading. The increased production capacity of solar power boosted this requirement for new short-term power products. The quarter-hourly market shows a distinctive zigzag price formation. We identify two influencing factors: first, the solar residual that combines the trading of solar power ramps around midday as well as the gradients of consumption and thermal power plant ramps throughout the course of the day, and second, a characteristic two stage market design with higher liquidity for the hourly than for the quarter-hourly auction. Therefore, demand, solar generation and inflexible ramps of thermal power plants are hedged at the hourly day-ahead auction and use the quarter-hourly auction only to balance the remaining differences. To prove this argument the price sensitivities of the hourly day-ahead and quarter-hourly intraday auctions in Germany are compared based on actual bid and ask curves from 2015 and 2016. Finally, the development of an adequate design of future spot markets is discussed.ZusammenfassungDie Einführung der viertelstündlichen Intraday-Auktion im Jahre 2014 für den deutschen Strommarkt untermauert die Bedeutung der kurzfristigen Energiemärkte. Der Grund für die Einführung war der Bedarf, bereits vortägig, viertelstündliche Mengen auszugleichen und offene Positionen im volatilen kontinuierlichen Intraday-Handel zu minimieren. Die gestiegene Stromproduktion aus Solarenergie verstärkte die Nachfrage nach neuen kurzfristigen Produkten. Der Viertelstundenmarkt zeigt eine ausgeprägte Zickzack-Preisbildung. Wir identifizieren zwei Einflussfaktoren: erstens, den Handel von Solarrampen um die Mittagszeit, sowie die Gradienten von Nachfrage und thermischer Erzeugung im Laufe des Tages und zweitens, ein charakteristisches zweistufiges Marktdesign mit höherer Liquidität an den stündlichen als auf der viertelstündlichen Auktion. Die unterschiedliche Liquidität lässt darauf schließen, dass bei der stündlichen Day-Ahead-Auktion die solare Erzeugung und die unflexiblen Rampen thermischer Kraftwerke abgesichert und die viertelstündliche Auktion genutzt, um die verbleibenden Differenzen auszugleichen. Um diese Aussage argumentativ zu verifizieren, werden die Preissensitivitäten der stündlichen Day-Ahead- und viertelstündlichen Intraday-Auktionen in Deutschland anhand der tatsächlichen Angebots- und Nachfragekurven von 2015 und 2016 verglichen. Abschließend wird die Entwicklung einer adäquaten Gestaltung zukünftiger Spotmärkte diskutiert.},
+  comment   = {Another measure of liquidity paper on German market.  ID's features that affect the market.},
+  date      = {2018-04-18},
+  doi       = {10.1007/s12398-018-0228-0},
+  publisher = {Springer},
+  url       = {http://dx.doi.org/10.1007/s12398-018-0228-0},
 }
 
 @Patent{Brummel16monEnrgProgSiePtnt,
@@ -29334,7 +29420,7 @@ Hyperparameter optimization Automatic machine learning Autonomous learning Deep 
   timestamp = {2016.06.18},
 }
 
-@Article{Bengio13RepLrnRev,
+@Article{Bengio13repLrnOvrvw,
   author    = {Bengio, Y. and Courville, A. and Vincent, P.5},
   title     = {Representation Learning: A Review and New Perspectives},
   journal   = {Pattern Analysis and Machine Intelligence, IEEE Transactions on},
@@ -29345,8 +29431,11 @@ Hyperparameter optimization Automatic machine learning Autonomous learning Deep 
   abstract  = {The success of machine learning algorithms generally depends on data representation, and we hypothesize that this is because different representations can entangle and hide more or less the different explanatory factors of variation behind the data. Although specific domain knowledge can be used to help design representations, learning with generic priors can also be used, and the quest for AI is motivating the design of more powerful representation-learning algorithms implementing such priors. This paper reviews recent work in the area of unsupervised feature learning and deep learning, covering advances in probabilistic models, autoencoders, manifold learning, and deep networks. This motivates longer term unanswered questions about the appropriate objectives for learning good representations, for computing representations (i.e., inference), and the geometrical connections between representation learning, density estimation, and manifold learning.},
   comment   = {Hints on what kind of features to learn in deep learning, mentions how PCA fits in.
 
-see also tensor decomp, which seems similar: Cichocki14TensorNetworksBigOpt},
+see also tensor decomp, which seems similar: Cichocki14TensorNetworksBigOpt
+
+Another good deep learn overview: Schmidhuber15deepLrnOvrvw},
   doi       = {10.1109/TPAMI.2013.50},
+  file      = {2014 ArXiv version:Bengio13RepLrnRev.pdf:PDF},
   owner     = {sotterson},
   timestamp = {2014.11.01},
   url       = {http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6472238},
@@ -32400,6 +32489,31 @@ This was the 2013 working paper abstract},
   owner     = {scot},
   timestamp = {2010.11.26},
   url       = {http://www.sciencedirect.com/science/article/B6V2T-4B4HBF9-3/2/9cfb6fef464883451623ee2e6684cfc8},
+}
+
+@InProceedings{Martin18germanMktLOB,
+  author    = {Henry Martin and Scott Otterson},
+  title     = {German Intraday Electricity Market Analysis and Modeling based on the Limit Order Book},
+  booktitle = {International Conf. on the European Energy Market.},
+  year      = {2018},
+  address   = {Łódź, PL.},
+  abstract  = {This paper presents a market model for the
+SPOT German continuous intraday market for electric
+trading based on the limit order book (LOB). We use
+EPEX SPOT M7 order book data, which contains all
+submitted to the German continuous intraday market, to
+the historic course of the market. Thereby, we reconstruct
+complete state of the LOB at every point in (trading
+We validate our simulation by comparing the transactions
+our simulation generated with the actual historical transactions
+available from a different data set. The LOB based market
+can be used to include price volatility risk and illiquidity
+when simulating trading at the EPEX SPOT continuous
+market. Furthermore, we present all preprocessing steps
+decision rules necessary to correctly identify orders from
+often ambiguous EPEX SPOT M7 order book data.},
+  comment   = {Conf. paper on Henry's Master's thesis},
+  file      = {:Martin18germanMktLOB.pdf:PDF},
 }
 
 @InProceedings{Sorjamaa05mutInfKNNpred,
@@ -43938,6 +44052,24 @@ I also wonder if this predicts meaninglessness even after hubness tricks or p-Ga
   url          = {http://web.mit.edu/windenergy/windweek/Presentations/Wind%20Energy%20101.pdf},
 }
 
+@Article{Kamburugamuve18antmySprkFlnkMPI,
+  author  = {Supun {Kamburugamuve} and Pulasthi {Wickramasinghe} and Saliya {Ekanayake} and Geoffrey C. {Fox}},
+  title   = {Anatomy of machine learning algorithm implementations in MPI, Spark, and Flink},
+  journal = {International Journal of High Performance Computing Applications},
+  year    = {2018},
+  volume  = {32},
+  number  = {1},
+  pages   = {61--73},
+  comment = {MPI is more efficient than Spark or Flink, largely due to its general control structures, in-place computational and broadcast-to-all-nodes ability, and efficient communicaton prototocols. They also have limited or no ability to nest loops, so you have to do that outside of them, and then create new processes on each iteration.
+
+Spark and Flink, which use simple data flow graphs, can be much easier to use, however, and can get nearly the same efficiency on simple algorithms like Terrasort and K-means.  But they did badly on MDS, especially Flink (which is also hard to program for that algorithm).
+
+Lots of current research is trying to improve ML job control like Spark and Flink, so that they can have performance comparable to MPI.
+
+Note that Spark is moving away from RDD interfaces to data frames:  Aug 2018 version of: 
+https://spark.apache.org/docs/latest/ml-guide.html},
+}
+
 @InProceedings{Kariniotakis08anemosWindForecast,
   author    = {George Kariniotakis},
   title     = {ANEMOS Leading {Europe}an Union Research on Wind Power Forecasting},
@@ -44881,15 +45013,6 @@ See also: CAISO10caisoRnwblIntegSwngDr
   owner     = {sotterson},
   publisher = {Elsevier},
   timestamp = {2016.12.19},
-}
-
-@InProceedings{Martin18germanMktLOB,
-  author    = {Henry Martin and Scott Otterson},
-  title     = {German Intraday Electricity Market Analysis and Modeling based on the Limit Order Book},
-  booktitle = {International Conf. on the European Energy Market.},
-  year      = {2018},
-  address   = {Łódź, PL.},
-  comment   = {Conf. paper on Henry's Master's thesis},
 }
 
 @Article{Mathiesen15solFrcstNWPslides,
