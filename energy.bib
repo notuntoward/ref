@@ -12573,18 +12573,18 @@ Uses Scenario Generator in:  Pinson09probFrcstStatScenWind},
 }
 
 @Article{Jensen17euDatSimRE,
-  author        = {Jensen, Tue V and Pinson, Pierre},
-  title         = {RE-Europe, a large-scale dataset for modeling a highly renewable European electricity system},
-  journal       = {Scientific data},
-  year          = {2017},
-  volume        = {4},
-  pages         = {170175},
-  __markedentry = {[Scott Otterson:]},
-  abstract      = {Future highly renewable energy systems will couple to complex weather and climate dynamics. This coupling is generally not captured in detail by the open models developed in the power and energy system communities, where such open models exist. To enable modeling such a future energy system, we describe a dedicated large-scale dataset for a renewable electric power system. The dataset combines a transmission network model, as well as information for generation and demand. Generation includes conventional generators with their technical and economic characteristics, as well as weather-driven forecasts and corresponding realizations for renewable energy generation for a period of 3 years. These may be scaled according to the envisioned degrees of renewable penetration in a future European energy system. The spatial coverage, completeness and resolution of this dataset, open the door to the evaluation, scaling analysis and replicability check of a wealth of proposals in, e.g., market design, network actor coordination and forecasting of renewable power generation.},
-  comment       = {European simulated wind/solar/demand measurements and forecasts.  Used by Peder Bacher for WP82.3 of IRPWIND for his stochastic differential equation studies.  There are some problems with this data, some of which he mentioned during our lunch at that Roskilde Cafe -- maybe I wrote them down in OneNote.  The main one is that it's all based on weather model analysis/synthesis, and then power curves, etc. are simulated.  There was also some problem with the first X hours of a run being garbage, but I don't remember the issue right now.},
-  file          = {:Jensen17euDatSimRE.pdf:PDF},
-  publisher     = {Nature Publishing Group},
-  url           = {https://www.nature.com/articles/sdata2017175},
+  author    = {Jensen, Tue V and Pinson, Pierre},
+  title     = {RE-Europe, a large-scale dataset for modeling a highly renewable European electricity system},
+  journal   = {Scientific data},
+  year      = {2017},
+  volume    = {4},
+  pages     = {170175},
+  abstract  = {Future highly renewable energy systems will couple to complex weather and climate dynamics. This coupling is generally not captured in detail by the open models developed in the power and energy system communities, where such open models exist. To enable modeling such a future energy system, we describe a dedicated large-scale dataset for a renewable electric power system. The dataset combines a transmission network model, as well as information for generation and demand. Generation includes conventional generators with their technical and economic characteristics, as well as weather-driven forecasts and corresponding realizations for renewable energy generation for a period of 3 years. These may be scaled according to the envisioned degrees of renewable penetration in a future European energy system. The spatial coverage, completeness and resolution of this dataset, open the door to the evaluation, scaling analysis and replicability check of a wealth of proposals in, e.g., market design, network actor coordination and forecasting of renewable power generation.},
+  comment   = {European simulated wind/solar/demand measurements and forecasts.  Used by Peder Bacher for WP82.3 of IRPWIND for his stochastic differential equation studies.  There are some problems with this data, some of which he mentioned during our lunch at that Roskilde Cafe -- maybe I wrote them down in OneNote.  The main one is that it's all based on weather model analysis/synthesis, and then power curves, etc. are simulated.  There was also some problem with the first X hours of a run being garbage, but I don't remember the issue right now.},
+  file      = {:Jensen17euDatSimRE.pdf:PDF},
+  groups    = {[Scott Otterson:]},
+  publisher = {Nature Publishing Group},
+  url       = {https://www.nature.com/articles/sdata2017175},
 }
 
 @InProceedings{Shaaban11Riskbasedsecurity,
@@ -15608,14 +15608,13 @@ Scalar measures of coherence
 }
 
 @InProceedings{Balkanski18adaptMaxSubMod,
-  author        = {Balkanski, Eric and Singer, Yaron},
-  title         = {The adaptive complexity of maximizing a submodular function},
-  booktitle     = {Proceedings of the 50th Annual ACM SIGACT Symposium on Theory of Computing},
-  year          = {2018},
-  pages         = {1138--1151},
-  organization  = {ACM},
-  __markedentry = {[Scott Otterson:6]},
-  abstract      = {In this paper we study the adaptive complexity of submodular optimization. Informally, the
+  author       = {Balkanski, Eric and Singer, Yaron},
+  title        = {The adaptive complexity of maximizing a submodular function},
+  booktitle    = {Proceedings of the 50th Annual ACM SIGACT Symposium on Theory of Computing},
+  year         = {2018},
+  pages        = {1138--1151},
+  organization = {ACM},
+  abstract     = {In this paper we study the adaptive complexity of submodular optimization. Informally, the
 adaptive complexity of a problem is the minimal number of sequential rounds required to achieve
 a constant factor approximation when polynomially-many queries can be executed in parallel at
 each round. Adaptivity is a fundamental concept that is heavily studied in computer science,
@@ -15652,11 +15651,12 @@ in the realizable case, where there is a true underlying function generating the
 Θ(log n)
 batches of adaptive samples are necessary and sufficient to approximately “learn to optimize”
 a monotone submodular function under a cardinality constraint.},
-  comment       = {A new method of submodular optimization.  Good for e.g. taxi routing and recommendation engines.  Is more than an order of mag. faster than existing methods (July 2018), "exponentially" according to quotes in this IEEE Spectrum article:
+  comment      = {A new method of submodular optimization.  Good for e.g. taxi routing and recommendation engines.  Is more than an order of mag. faster than existing methods (July 2018), "exponentially" according to quotes in this IEEE Spectrum article:
 
 https://spectrum.ieee.org/tech-talk/computing/software/new-optimization-algorithm-exponentially-speeds-computation?utm_source=techalert&utm_campaign=techalert-07-12-18&utm_medium=email},
-  file          = {:Balkanski18adaptMaxSubMod.pdf:PDF},
-  url           = {https://scholar.harvard.edu/files/ericbalkanski/files/the-adaptive-complexity-of-maximizing-a-submodular-function.pdf},
+  file         = {:Balkanski18adaptMaxSubMod.pdf:PDF},
+  groups       = {Scott Otterson:6},
+  url          = {https://scholar.harvard.edu/files/ericbalkanski/files/the-adaptive-complexity-of-maximizing-a-submodular-function.pdf},
 }
 
 @Article{Chen84cmplxHarmSline,
@@ -16093,6 +16093,22 @@ Keywords: visualization, embedding, online algorithms, feature discovery, unsupe
   owner     = {scot},
   timestamp = {2011.05.02},
   url       = {http://www.overspeed.de/2011-03-29_DEWEK2010.session20.Anemos.Rulez.Waldi.final.pdf},
+}
+
+@InProceedings{Rendle10factrMachns,
+  author        = {S. Rendle},
+  title         = {Factorization Machines},
+  booktitle     = {Proc. IEEE Int. Conf. Data Mining},
+  year          = {2010},
+  pages         = {995--1000},
+  month         = dec,
+  __markedentry = {[scotto:]},
+  abstract      = {In this paper, we introduce Factorization Machines (FM) which are a new model class that combines the advantages of Support Vector Machines (SVM) with factorization models. Like SVMs, FMs are a general predictor working with any real valued feature vector. In contrast to SVMs, FMs model all interactions between variables using factorized parameters. Thus they are able to estimate interactions even in problems with huge sparsity (like recommender systems) where SVMs fail. We show that the model equation of FMs can be calculated in linear time and thus FMs can be optimized directly. So unlike nonlinear SVMs, a transformation in the dual form is not necessary and the model parameters can be estimated directly without the need of any support vector in the solution. We show the relationship to SVMs and the advantages of FMs for parameter estimation in sparse settings. On the other hand there are many different factorization models like matrix factorization, parallel factor analysis or specialized models like SVD++, PITF or FPMC. The drawback of these models is that they are not applicable for general prediction tasks but work only with special input data. Furthermore their model equations and optimization algorithms are derived individually for each task. We show that FMs can mimic these models just by specifying the input data (i.e. the feature vectors). This makes FMs easily applicable even for users without expert knowledge in factorization models.},
+  comment       = {Powerful ML agorithm in H2O},
+  doi           = {10.1109/ICDM.2010.127},
+  file          = {:Rendle10factrMachns.pdf:PDF},
+  issn          = {2374-8486},
+  keywords      = {data mining, matrix decomposition, support vector machines, factorization machine, support vector machine, SVM, model parameters, parameter estimation, feature vector, sparse data, tensor factorization, Mathematical model, Support vector machines, Frequency modulation, Predictive models, Data models, Equations, Computational modeling, factorization machine, sparse data, tensor factorization, support vector machine},
 }
 
 @Article{Wang11windFrcstUncertUC,
@@ -19526,6 +19542,27 @@ recipes that may be useful in practical data analysis.},
   url       = {http://dx.doi.org/10.1007/978-1-4419-5675-0_2},
 }
 
+@Article{doi:10.1080/03610918.2015.1122048,
+  author    = {Hrishikesh D. Vinod},
+  title     = {Generalized correlation and kernel causality with applications in development economics},
+  journal   = {Communications in Statistics - Simulation and Computation},
+  year      = {2017},
+  volume    = {46},
+  number    = {6},
+  pages     = {4513-4534},
+  abstract  = {New generalized correlation measures of 2012, GMC(Y|X), use Kernel regressions to overcome the linearity of Pearson's correlation coefficients. A new matrix of generalized correlation coefficients is such that when |r*ij| > |r*ji|, it is more likely that the column variable Xj is what Granger called the “instantaneous cause” or what we call “kernel cause” of the row variable Xi. New partial correlations ameliorate confounding. Various examples and simulations support robustness of new causality. We include bootstrap inference, robustness checks based on the dependence between regressor and error, and on the out-of-sample forecasts. Data for 198 countries on nine development variables support growth policy over redistribution and Deaton's criticism of foreign aid. Potential applications include Big Data, since our R code is available in the online supplementary material. },
+  comment   = {A newish method of measuring causality and factoring out confounders.  Was used to determine cause of insect population drops here:
+
+https://www.washingtonpost.com/science/2018/10/15/hyperalarming-study-shows-massive-insect-loss/?utm_term=.4a8347112169},
+  doi       = {10.1080/03610918.2015.1122048},
+  eprint    = {https://doi.org/10.1080/03610918.2015.1122048},
+  publisher = {Taylor \& Francis},
+  url       = { 
+        https://doi.org/10.1080/03610918.2015.1122048
+    
+},
+}
+
 @Article{Hardesty15windFarmSiteCopula,
   author    = {Larry Hardesty},
   title     = {Siting wind farms more quickly, cheaply},
@@ -20309,6 +20346,103 @@ Keywords: Time series; Exponential smoothing; ARIMA models; State space models},
   groups    = {Read},
   owner     = {sotterson},
   timestamp = {2009.02.23},
+}
+
+@Book{Bengfort16hdoopIntroDSbook,
+  title         = {Data Analytics with Hadoop: An Introduction for Data Scientists},
+  publisher     = {" O'Reilly Media, Inc."},
+  year          = {2016},
+  author        = {Bengfort, Benjamin and Kim, Jenny},
+  __markedentry = {[scotto:6]},
+  abstract      = {Overview of Chapters
+This book is intended to be a guided walk through of the Hadoop ecosystem, and as
+such we’ve laid out the book in two broad parts split across the halves of the book.
+Part I (Chapters 1–5) introduces distributed computing at a very high level, discus‐
+sing how to run computations on a cluster. Part II (Chapters 6–10) focuses more
+specifically on tools and techniques that should be recognizable to data scientists, and
+intends to provide a motivation for a variety of analytics and large-scale data manage‐
+ment. (Chapter 5 serves as a transition from the broad discussion of distributed com‐
+puting to more specific tools and an implementation of the big data science pipeline.)
+The chapter break down is as follows:
+Chapter 1, The Age of the Data Product
+We begin the book with an introduction to the types of applications that big data
+and data science produce together: data products. This chapter discusses the
+workflow behind creating data products and specifies how the sequential model
+of data analysis fits into the distributed computing realm.
+Chapter 2, An Operating System for Big Data
+Here we provide an overview of the core concepts behind Hadoop and what
+makes cluster computing both beneficial and difficult. The Hadoop architecture
+is discussed in detail with a focus on both YARN and HDFS. Finally, this chapter
+discusses interacting with the distributed storage system in preparation for per‐
+forming analytics on large datasets.
+Chapter 3, A Framework for Python and Hadoop Streaming
+This chapter covers the fundamental programming abstraction for distributed
+computing: MapReduce. However, the MapReduce API is written in Java, a pro‐
+gramming language that is not popular for data scientists. Therefore, this chapter
+focuses on how to write MapReduce jobs in Python with Hadoop Streaming.
+Chapter 4, In-Memory Computing with Spark
+While understanding MapReduce is essential to understanding distributed com‐
+puting and writing high-performance batch jobs such as ETL, day-to-day interac‐
+tion and analysis on a Hadoop cluster is usually done with Spark. Here we
+introduce Spark and how to program Python Spark applications to run on YARN
+either in an interactive fashion using PySpark or in cluster mode.
+Chapter 5, Distributed Analysis and Patterns
+In this chapter, we take a practical look at how to write distributed data analysis
+jobs through the presentation of design patterns and parallel analytical algo‐
+rithms. Coming into this chapter you should understand the mechanics of writ‐
+ing Spark and MapReduce jobs and coming out of the chapter, you should feel
+comfortable actually implementing them.
+Chapter 6, Data Mining and Warehousing
+Here we present an introduction to data management, mining, and warehousing
+in a distributed context, particularly in relation to traditional database systems.
+This chapter will focus on Hadoop’s most popular SQL-based querying engine,
+Hive, as well as its most popular NoSQL database, HBase. Data wrangling is the
+second step in the data science pipeline, but data needs somewhere to be ingested
+to—and this chapter explores how to manage very large datasets.
+Chapter 7, Data Ingestion
+Getting data into a distributed system for computation may actually be one of the
+biggest challenges given the magnitude of both the volume and velocity of data.
+This chapter explores ingestion techniques from relational databases using Sqoop
+as a bulk loading tool, as well as the more flexible Apache Flume for ingesting
+logs and other unstructured data from network sources.
+Chapter 8, Analytics with Higher-Level APIs
+Here we offer a review of higher-order tools for programming complex Hadoop
+and Spark applications, in particular with Apache Pig and Spark’s DataFrames
+API. In Part I, we discussed the implementation of MapReduce and Spark for
+executing distributed jobs, and how to think of algorithms and data pipelines as
+data flows. Pig allows you to more easily describe the data flows without actually
+implementing the low-level details in MapReduce. Spark provides integrated
+modules that provide the ability to seamlessly mix procedural processing with
+relational queries and open the door to powerful analytic customizations.
+Chapter 9, Machine Learning
+Most of the benefits of big data are realized in a machine learning context: a
+greater variety of features and wider input space mean that pattern recognition
+techniques are much more effective and personalized. This chapter introduces
+classification, clustering, and collaborative filtering. Rather than discuss model‐
+ing in detail, we will instead get you started on scalable learning techniques using
+Spark’s MLlib.
+Chapter 10, Summary: Doing Distributed Data Science
+To conclude, we present a summary of doing distributed data science as a com‐
+plete view: integrating the tools and techniques that were discussed in isolation in
+the previous chapters. Data science is not a single activity but rather a lifecycle
+that involves data ingestion, wrangling, modeling, computation, and operational‐
+ization. This chapter discusses architectures and workflows for doing distributed
+data science at a 20,000-foot view.
+Appendix A, Creating a Hadoop Pseudo-Distributed Development Environment
+This appendix serves as a guide to setting up a development environment on
+your local machine in order to program distributed jobs. If you don’t have a clus‐
+ter available to you, this guide is essential in order to prepare to run the examples
+provided in the book.
+Appendix B, Installing Hadoop Ecosystem Products
+An extension to the guide found in Appendix A, this appendix offers instructions
+for installing the many ecosystem tools and products that we discuss in the book.
+Although a common methodology for installing services is proposed in Appen‐
+dix A, this appendix specifically looks at gotchas and caveats for installing the
+services to run the examples you will find as you read.
+As you can see, this is a lot of topics to cover in such a short book! },
+  comment       = {Book on Hadoop, Spark, etc.  Easy to read, and github site (URL for this entry) },
+  file          = {:Bengfort16hdoopIntroDSbook.pdf:PDF},
+  url           = {https://github.com/kishorevbhosale/Hadoop-Books/blob/master/Books/Data%20Analytics%20with%20Hadoop%20-%20An%20Introduction%20for%20Data%20Scientists.pdf},
 }
 
 @Article{Cannon10GEVcdn,
@@ -25862,6 +25996,29 @@ http://metaoptimize.com/qa/questions/9055/role-of-transfer-functions-in-neural-n
   timestamp = {2010.12.20},
 }
 
+@InProceedings{Vogt18multiDistLrnAnomDet,
+  author    = {Stephan Vogt and Scott Otterson and Volker Berkhout},
+  title     = {Multi-task distribution learning approach to anomaly detection of operational states of wind turbine},
+  booktitle = {Wind Europe},
+  year      = {2018},
+  address   = {Hamburg, DE},
+  abstract  = {The detection of abnormal operation modes is of fundamental importance for both 
+operational management and predictive maintenance of wind turbines. Anomaly detection 
+approaches in this context should consider the additional information content that probabilistic 
+models can provide. Instead of binary anomaly classification, the probabilistic information is 
+necessary for proper decision making and risk assessment. Common models, such as quantile 
+and distribution regression can provide probabilistic information. While they are appropriate in 
+predicting the cumulative distribution function, they struggle to accurately describe the 
+probability of an event to occur. In this article we present a new, multi-task learning based 
+approach for a continuous distribution regression with deep neural networks. Using real-world 
+data from an offshore wind turbine, we show that with this model we can better reflect the 
+probability of observed events than with conventional methods. While the predicted 
+cumulative distribution function has a similar quality and no significant differences are visible 
+in the continuous ranked probability score, the probability density function will be substantially 
+smoother. This is also reflected in a significantly lower ignorance score. },
+  comment   = {Single output NN distribution regression with random thresholds during training.  This is what I called dr1nn in the IRPWIND final report for WP 82.3 (2018).  Although, I implemented it with the Matlab NN toolbox and Stephan later reimplimented it for this paper with what I would guess were his own tools.},
+}
+
 @Article{Hao11visMultiDimSaX,
   author    = {Hao, M. and Marwah, M. and Janetzko, H. and Sharma, R. and Keim, D. A. and Dayal, U. and Patnaik, D. and Ramakrishnan, N.},
   title     = {Visualizing frequent patterns in large multivariate time series},
@@ -25974,6 +26131,37 @@ Causality is derived by two methods
   keywords  = {EEG data;Granger causality;adaptive multivariate estimators;directed transfer function;electroencephalography;foot-lips movement;human brain;information transfer pathway;multivariate autoregressive modelling;partial directed coherence;time series;time varying cortical connectivity patterns;adaptive estimation;electroencephalography;neurophysiology;time series;Adult;Algorithms;Brain Mapping;Electroencephalography;Evoked Potentials;Female;Humans;Male;Motor Cortex;Movement;Multivariate Analysis;Nerve Net;Neural Pathways;Pattern Recognition, Automated;},
   owner     = {scotto},
   timestamp = {2010.08.01},
+}
+
+@InProceedings{Chen15higgsBoostTr,
+  author    = {Chen, Tianqi and He, Tong},
+  title     = {Higgs boson discovery with boosted trees},
+  booktitle = {NIPS 2014 Workshop on High-energy Physics and Machine Learning},
+  year      = {2015},
+  pages     = {69--80},
+  abstract  = {The discovery of the Higgs boson is remarkable for its importance in modern Physics
+research. The next step for physicists is to discover more about the Higgs boson from the
+data of the Large Hadron Collider (LHC). A fundamental and challenging task is to extract
+the signal of Higgs boson from background noises. The machine learning technique is one
+important component in solving this problem.
+In this paper, we propose to solve the Higgs boson classification problem with a gradient
+boosting approach. Our model learns ensemble of boosted trees that makes careful tradeoff
+between classification error and model complexity. Physical meaningful features are further
+extracted to improve the classification accuracy. Our final solution obtained an AMS of
+3.71885 on the private leaderboard, making us the top 2% in the Higgs boson challenge.
+
+Keywords: Higgs Boson, Machine Learning, Gradient Boosting},
+  comment   = {Recommended friendly intro to Boosted Trees, like in H2O, I think.  A detailed technical report is also attached.
+
+More technical boosted trees paper is: Chen16xgboostSclbl
+
+General blog post
+https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/
+
+Video: Gradient Boosted Machine Learning (Trevor Hastie)
+https://youtu.be/wPqtzj5VZus},
+  file      = {Paper:Chen15higgsBoostTr.pdf:PDF;Detailed Tech Report:Chen15higgsBoostTr_TR.pdf:PDF},
+  url       = {http://proceedings.mlr.press/v42/chen14.pdf},
 }
 
 @TechReport{Corbus2011eastWindTrans,
@@ -34814,6 +35002,31 @@ localization and binary text classification.},
   owner     = {sotterson},
   timestamp = {2014.07.24},
   url       = {http://www.aaai.org/Papers/AAAI/2008/AAAI08-108.pdf},
+}
+
+@InProceedings{Chen16xgboostSclbl,
+  author       = {Chen, Tianqi and Guestrin, Carlos},
+  title        = {{XGB}oost: A scalable tree boosting system},
+  booktitle    = {Proceedings of the 22nd acm sigkdd international conference on knowledge discovery and data mining},
+  year         = {2016},
+  pages        = {785--794},
+  organization = {ACM},
+  abstract     = {Tree boosting is a highly effective and widely used machine
+learning method. In this paper, we describe a scalable end-
+to-end tree boosting system called XGBoost, which is used
+widely by data scientists to achieve state-of-the-art results
+on many machine learning challenges. We propose a novel
+sparsity-aware algorithm for sparse data and weighted quan-
+tile sketch for approximate tree learning. More importantly,
+we provide insights on cache access patterns, data compres-
+sion and sharding to build a scalable tree boosting system.
+By combining these insights, XGBoost scales beyond billions
+of examples using far fewer resources than existing systems.
+
+Keywords
+Large-scale Machine Learning},
+  comment      = {Friendlier intros in: Chen15higgsBoostTr},
+  file         = {:Chen16xgboostSclbl.pdf:PDF},
 }
 
 @InProceedings{Frank11svdRankInfo,
@@ -47433,6 +47646,9 @@ Related article: Zhu12multiVaryCfsFncResp},
 
 @Comment{jabref-meta: grouping:
 0 AllEntriesGroup:;
+1 StaticGroup:Markings\;2\;1\;\;\;\;;
+2 StaticGroup:Scott Otterson:6\;2\;1\;\;\;\;;
+2 StaticGroup:[Scott Otterson:]\;2\;1\;\;\;\;;
 1 StaticGroup:Markings\;2\;1\;\;\;\;;
 2 StaticGroup:Scott Otterson:6\;2\;1\;\;\;\;;
 2 StaticGroup:[sotterson:]\;2\;1\;\;\;\;;
