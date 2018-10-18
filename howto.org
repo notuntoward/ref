@@ -3164,6 +3164,13 @@ gestures for "show charm" and "switch apps"
 ***** [[https://github.com/jgm/pandoc-templates/issues/20][how to create docx template · Issue #20 · jgm/pandoc-templates · GitHub]]
 ***** See also [[Org to/from MS Word]]
 *** I installed pandoc from [[Chocolatey]]
+
+    This resulted in the <<Windows pandoc path>> (to executable):
+
+    'C:\Users\scotto\AppData\Local\Pandoc\'
+
+    And the program is also seen in the standard windows install/uninstall control panel thing.
+
 *** [[http://pandoc.org/installing.html][MikTex recommended for Windows]], (not TexLive, which is supposed to handle unicode?)
 *** [[Org to/from MS Word]]
 *** Pandoc bibs specified by .csl files (not .sty).  Latest are [[https://www.zotero.org/styles?q=ieee][here]].
@@ -3453,6 +3460,11 @@ gestures for "show charm" and "switch apps"
 
         choco install <package name>
 
+******* Where choco installs packages
+
+        pandoc goes, for example, here:
+
+        'C:\Users\scotto\AppData\Local\Pandoc\'
 ******* Packages: [[https://chocolatey.org/packages][Chocolatey Gallery | Pack ages]]
 ******* <<Installing Chocolatey>>
         From: [[https://mspoweruser.com/windows-10-tip-using-package-manager/][Windows 10 Tip: Using a package manager]]
@@ -3467,6 +3479,12 @@ gestures for "show charm" and "switch apps"
         _Install_
 
           iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+
+        Optionally run (in admin powershell):
+
+          choco feature enable -n allowGlobalConfirmation
+
+        This removes the need to confirm a bunch of things. The need to confirm seeemed to be hanging up installation of pandoc, for some reason.
 
 ***** Windows package management overviews
 ******* Chocolatey says use Chocolatey, not OneGet:  [[https://chocolatey.org/faq#how-is-chocolatey-different-than-onegetpowershell-package-management][ChocolateyFAQs]]
@@ -3608,7 +3626,7 @@ that you get when you buy Office 365?
    go to hotkeys
    click disable (for some video cards, maybe nVidia on IWES Lenovo laptop?)
 
-*** window focus follows mouse + autoraise
+*** Window focus follows mouse + autoraise
 
     _Windows 10_:
 
@@ -3616,10 +3634,15 @@ that you get when you buy Office 365?
 
       click: "Activate a window by hovering over it with the mouse".
 
-      Download: [[https://joelpurra.com/projects/X-Mouse_Controls/][X-Mouse Controls by Joel Purra]]
-      (different than [[https://www.highrez.co.uk/downloads/xmousebuttoncontrol.htm][X-mouse Button Control]], which only does buttons, and which I don't need)
-      - not installable: ON SP4, I have it in: ~\bin\x-mouse_controls_2010-04-03_1155_release
       - set autoraise delay: 750ms seemed OK
+        - Install: [[https://winaero.com/][Winaero]] 
+          
+          Go to =Xmouse Options= and set =Windows Activation Timeout=
+
+        - Obsolete: [[https://joelpurra.com/projects/X-Mouse_Controls/][X-Mouse Controls]] (works but not installable on SP4)
+          (different than [[https://www.highrez.co.uk/downloads/xmousebuttoncontrol.htm][X-mouse Button Control]], which only does buttons, and which I don't need)
+          Not installable: ON SP4, I put it in: ~\bin\x-mouse_controls_2010-04-03_1155_release
+
       - This also fixes the alt-Tab mouse focus problem too
         - Before:
           - mouse on fullscreen window, far away from window underneath
@@ -3636,7 +3659,9 @@ that you get when you buy Office 365?
     HKEY_CURRENT_USER\Control Panel\Mouse\ActiveWndTrkTimeout
 
     Change 'Base' to Decimal and put in 750 as the 'Value Data' (this is
-    miliseconds).   (WIN 10 creators: I tried making this variable since it wasn't there (there was another key w/ a similar name but this had no effect).
+    miliseconds).   
+
+    (WIN 10 creators: I tried to make this variable since it wasn't there (there was another key w/ a similar name but this had no effect).
 
     Then restart.
 
@@ -5201,6 +5226,8 @@ won't work if you close and immediately open onenote again.
 ******* [[Git version control]]
 ***** [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
 *** [[https://github.com/caldwell/commit-patch][caldwell/commit-patch: Commit patches to Darcs, Git, Mercurial, Baza...]]
+
+
 * HTML
 *** tables
 ***** Easy visual [[http://www.quackit.com/html/html_table_generator.cfm][Table Generator]]
@@ -8170,6 +8197,51 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
 *** Symbolic computation: [[http://www.sympy.org/de/index.html][SymPy]]
 *** Tests in Python
 ***** guy [[https://www.youtube.com/watch?v=k55d3ZUF3ZQ][says]] to use pytest pkg, not built-in unittest.  For sure, it's shorter.
+*** <<Parallelization in Python>>
+***** Can't parallelize Python in threads
+      From: [[https://accu.org/index.php/journals/2342][ACCU :: Multiprocessing and Clusters in Python]]
+***** <<Parallelizing Python with fork>>
+      From: [[https://towardsdatascience.com/heres-how-you-can-get-a-2-6x-speed-up-on-your-data-pre-processing-with-python-847887e63be5][Here’s how you can get a 2–6x speed-up on your data pre-processing with Python]]
+
+      Also does: import concurrent.futures ([[Parallelizing Python across cores and machines]])
+***** <<Parallelizing Python across cores and machines>>
+      From:  [[https://accu.org/index.php/journals/2342][ACCU :: Multiprocessing and Clusters in Python]]
+      *Using* 
+      import concurrent.futures (uses forks, apparently: [[Parallelizing Python with fork]])
+      import mpi4py.futures
+      import multiprocessing
+
+      (works for arbitrary code you write yourself)
+***** [[Parallelization for SciPy]]
+***** [[Hadoop]]
+*** SciPy
+***** <<Parallelization for SciPy>>
+******* SciPy and Spark
+********* [[https://databricks.com/blog/2016/02/08/auto-scaling-scikit-learn-with-apache-spark.html][Auto-scaling Scikit-learn with Apache Spark]]
+******* [[Parallelization in Python]]
+***** [[SciPy optimization]]
+*** Optimization in Python
+***** <<pyomo optimization>>
+******* pyomo installation with anaconda
+        From: [[https://stackoverflow.com/questions/19928878/installing-pyomo-on-windows-with-anaconda-python][Installing Pyomo on Windows with Anaconda (Python)]]
+
+        It is 2017 and pyomo can be easily installed via conda
+
+        conda install -c conda-forge pyomo pyomo.extras
+
+        To install LP and NLP solvers, conda can also be used.
+
+        conda install -c cachemeorg glpk ipopt_bin
+
+******* pyomo supposedly easier than scipy optimization, handles bigger probs
+        From: [[https://stackoverflow.com/questions/36016717/optimization-regarding-amp-pyomo-scipy-matlab][python - Optimization: regarding AMP (Pyomo), Scipy, Matlab]]
+
+        Can maybe also to auto differentiation via AMPL
+******* pyomo tutorials
+********* [[https://multithreaded.stitchfix.com/blog/2018/06/21/constrained-optimization/][Add Constrained Optimization To Your Toolbelt]]
+********* [[https://pyomocontrib-simplemodel.readthedocs.io/en/latest/knapsack.html#][Comparing SimpleModel, PuLP and Pyomo]]
+***** <<SciPy optimization>>
+      [[https://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html][Optimization (scipy.optimize) — SciPy v1.1.0 Reference Guide]]
 *** <<Python IDEs>>
 ***** Visual Studio Code (VSC)
 ******* Syncing Visual Studio Code Settings
@@ -8223,6 +8295,9 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
 ********* <<Remote Interpreter example with Tensorflow>>: [[https://medium.com/@erikhallstrm/work-remotely-with-pycharm-tensorflow-and-ssh-c60564be862d][Work remotely with PyCharm, TensorFlow and SSH]]
 ***** Atom
 ***** Spyder
+* <<Hadoop>>
+*** [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop Intro Book]]
+
 * Android
 *** Commandline
 ***** Termux app
@@ -8301,7 +8376,7 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
 
       _Limitations_
 
-      * only cycles foreward
+      * only cycles forward
       * only 6 tabs shown
 
       The below does the same thing as clicking options-->tabls-->ctrl-tab cycles... 
@@ -9060,7 +9135,7 @@ ERROR: Cannot run texhash command. Please run manually.
 *** Sacha Chau's elisp for making a goal concept map (code at end of [[http://pages.sachachua.com/evil-plans/][this page]])
 *** [[http://orgmode.org/worg/org-contrib/org-wikinodes.html][org-wikinodes: CamelCase wiki-like links]] (kind of a graph)
 *** [[Concept map-like stuff: superlabel, dedicated targets, org-brain]]
-* <<Programming Practices>>
+* TRY <<Programming Practices>>
 *** Agile development
 ***** Florian's Agile video links
 ******* Agile Product Ownership in a Nutshell
@@ -9086,9 +9161,7 @@ https://www.youtube.com/watch?v=rIaz-l1Kf8w
 ******* Adapt your Mindset - “Lost Generation”
 
 https://www.youtube.com/watch?v=42E2fAWM6rA
-
-
-
+* mization
 * XML
 *** Translation tools
 * DTU
@@ -9188,3 +9261,4 @@ https://www.youtube.com/watch?v=42E2fAWM6rA
 ********* [[Copy from Kindle Bookmarklet]]
 ***** Copying from Kindle Reader (Desktop version)
       You can do it, but it always puts pastes a citation too.  I can't figure out how to get rid of that.
+      
