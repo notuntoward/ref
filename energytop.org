@@ -143,6 +143,7 @@
 *** [[file:energy.bib::Manly16multivarPrimrBk][Manly & Alberto 2016: Multivariate Primer Book]]
 *** [[http://www.neurosolutions.com/products/nsbook/][Interactive Neural Network Book]] explains recurrent NN's, has demos
 *** [[file:energy.bib::Geron17HandsOnMachineLearningWithScikitLearnAndTensorFlowConceptsToolsAndTechniquesToBuildIntelligentSystems][Geron 2017: Hands On Scikit Learn TensorFlow Book]] (I have)
+*** [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop Intro Book]]
 *** [[Books w/ source code]]
 *** Wind energy books I could buy
     these three looked good, looking at amazon.com on 9/6/2011
@@ -3051,6 +3052,9 @@ Scott
           Maybe as good as multivariate MI but faster and w/ no distance bias?
 *********** [[file:energy.bib::Szekely09brownDistCov][Szekely et al. 2009: Brownian Distance Covariance]]
 *********** [[file:energy.bib::Szekely12distCovUniq][Szekely & Rizzo 2012 Uniqueness Distance Covariance]]
+********* <<Generalized Correlation>>
+*********** [[file:energy.bib::doi:10.1080/03610918.2015.1122048][Vinod 2017: Generalized Correlation and kernel Causality]]
+*********** 
 ********* Partial Mutual Information Estimation
           <<Partial Mutual Information Estimation>>
 
@@ -3143,8 +3147,7 @@ Scott
 *********** See also [[Mutual Information]]
 *********** See also [[Lag Selection Enablers]] (other lag picking methods)
 *********** See also [[Wavelet Time Series Model]] (not lags but wavlet bases projections)
-********* Local Transfer Entropy & Differential Entropy
-          <<Local Transfer Entropy & Differential Entropy>>
+********* <<Local Transfer Entropy & Differential Entropy>>
           From: [[file:energy.bib::Lizier14JIDTinfoToolkit_SupMat][Lizier 2014: Supplementary Material]] JIDT
 *********** these are instantaneous measures of dependence
 *********** Local TE: discrete symbols
@@ -3155,13 +3158,12 @@ Scott
 *********** claims to use interaction info: [[file:energy.bib::zhang11graphfeatsel][zhang & hancock 2011: graph based approach feature selection]]
 ********* Residual Mutual Information
 *********** [[file:energy.bib::schaffernicht11wgtmutinfofeatsel][schaffernicht & gross 2011: weighted]] mutual information featsel
-********* correntropy
-          <<correntropy>>
+********* <<correntropy>>
 *********** for forecasting: [[file:energy.bib::bessa10infowindpow][bessa et al. 2010: information]]
 *********** adaptive linear filter in non-gaussian data: [[file:energy.bib::singh10correntropyfilt][singh & principe 2010: maximum correntropy]]
 *********** there's also nonlinear correntropy pca
 *********** multichannel correntropy: [[file:energy.bib::xu08nonlinsimmulti][xu et al. 2008]]
-*********** generalized correlation coefficient: [[file:energy.bib::rao11indepgencorr][rao et al. 2011]]
+********* [[Generalized Correlation]]
 ********* total correlation
            is positive, takes into account all higher order interactions, and
            be related to mutual information
@@ -3180,8 +3182,7 @@ Scott
 *********** just matlab function correlation significance w/ target
 ********* [[Spearman's Rank Correlation]]
 ********* semblance:  [[file:energy.bib::oczeretko07uterinesynch][oczeretko et al. 2007: uterine contractility]]
-********* renyi's entropy
-          <<renyi's entropy>>
+********* <<renyi's entropy>>
 *********** [[file:energy.bib::xu03recursentestadaptfilt][xu et al. 2003: recursive renyis entropy]]
 *********** [[file:energy.bib::poczos10rankestreninfo][poczos et al. 2010: rego]]
 *********** quadratic mutual information
@@ -3218,11 +3219,11 @@ Scott
 ********* entropic, used in clustering
 *********** [[http://www.computer.org/portal/web/csdl/doi/10.1109/tpami.2007.1142][legclust—a clustering algorithm based on layered entropic subgraphs]]
 ********* see also: [[Distance metric learning]]
+********* see also: [[Causality determination]]
 ******* [[Stopping criteria]]
 ******* starting criteria (do you need featsel?)
 ********* [[file:energy.bib::Kaban12detNoMeaningDists][Kaban 2012: Non]] meaningful dist det in high dim
-******* Mutual Information Based Feature Selection
-        <<Mutual Information Based Feature Selection>>
+******* <<Mutual Information Based Feature Selection>>
         See also
 ********* [[file:energy.bib::Dijck06speedFeatSelMutInf][Dijck & Hulle 2006: Speeding Up Wrapper]] featsel
 ********* Markov blanket / high dim mutual information: [[File:energy.bib::zheng11featselhimdimmi][Zheng & Kwoh 2011: Feature Subset Selection]]
@@ -3253,8 +3254,7 @@ Scott
 ********* See also [[KNN feaure selection]]
 ********* See also [[Mutual Information Estimation]]
 ********* See also [[Stopping Criteria]]
-******* Partial Mutual Information Feature Selection
-        <<Partial Mutual Information Feature Selection>>
+******* Partial Mutual Information Feature Selection>>
 
         MI between features and output is maybe the ultimate for
         nonlinear feature selection: it approximates Bayes error rate
@@ -3388,8 +3388,7 @@ Hope that helps,
 *********** see also [[Stopping Criteria]]
 ********* See also: [[Partial Mutual Information Estimation]]
 ********* See also: [[Stopping Criteria]]
-******* KNN feature selection
-        <<KNN feaure selection>>
+******* <<KNN feaure selection>>
 ********* [[file:energy.bib::Mylonas04knnFeatSelClust][Mylonas et al. 2004: Using]] KNN featsel and clustering
 ********* [[file:energy.bib::Li11randKNNfeatSelVsRandFrst][Li et al. 2011: Random KNN Random Forests]] (has R)
 ********* [[file:energy.bib::Guo05knnFeatSel][Guo et al. 2005: Using]] KNN auto featsel
@@ -3397,8 +3396,7 @@ Hope that helps,
 ********* [[file:energy.bib::Goldberger04nbrhdCompAnal][Goldberger et al. 2004: Neighbourhood]]
 ********* KNN-based [[Partial Mutual Information Estimation]] is used for featsel
 ********* see also: [[Mutual Information Based Feature Selection]]
-******* *submodularity* for feature selection, targeted sampling
-        <<submodularity for feature selection, targeted sampling>>
+******* *<<submodularity for feature selection, targeted sampling>>
 ********* see also: [[submodular optimization]]
 ********* [[http://www.select.cs.cmu.edu/tutorials/icml08submodularity.html][tutorial]] video and slides (feature selection application, has matlab!)
 ********* [[file:energy.bib::krause08sensplacegaussproc][krause et al. 2008: near optimal sensor]]
@@ -3447,13 +3445,11 @@ Hope that helps,
 *************** or maybe use stepwise linear regression
 ***************** there was a submod way of doing that optimally ([[submodular tutorial slides]])
 ***************** linear rsquared is an mi bound (i've written this down somewhere)
-******* Constrained LASSO
-        <<Constrained LASSO>>
+******* <<Constrained LASSO>>
 ********* all coeffs>0
 ********* output always >0 (if inputs are)
 ********* see [[http://math.stackexchange.com/questions/175680/lasso-with-linear-constraints][this]]
-******* Lasso feature selection
-        <<lasso feature selection>>
+******* <<lasso feature selection>>
 ********* the original lasso paper: [[file:energy.bib::tibshirani96lasso][tibshirani 1996: regression]]
 *********** supposed to be stable, s/ make regime clustering work better
 *********** but [[file:energy.bib::bach08bolasso][bach 2008: bolasso]] video (i think) says that bolasso is more stable
@@ -3783,8 +3779,7 @@ Hope that helps,
 ***** [[http://www.springerlink.com/content/d64867213148830u/][a boosting algorithm for regression ]](multi dim binary, I think)
 ***** [[http://www.ingentaconnect.com/content/klu/mach/2002/00000047/f0020002/00391588][boosting methods for regression]]
 ***** [[file:energy.bib::Lillywhite13featCnstrct][Lillywhite et al. 2013]]
-*** Continuous Output Boosting
-    <<Continuous Output Boosting>>
+*** <<Continuous Output Boosting>>
 
     These could be used for feature construction as in [[file:energy.bib::Lillywhite13featCnstrct][Lillywhite et al. 2013]]
     but for continous outputs. These can split input space across
@@ -3854,8 +3849,21 @@ Hope that helps,
 ***** any relation to bootstrapped regression: [[file:energy.bib::Fox08btstrpRgrsnBookChap][Fox 2008: Applied Regression Analysis]]  bootstrap rgrssn chapter
 ***** see also: [[Ensemble selection]] (a boosting weighting criteria?)
 ***** see also: [[Clustering of regression models]]
+*** <<Gradient Boosting>>
+
+    Train a prediction algorithm, test, and then train a new model on the residual...
+
+***** [[file:energy.bib::Chen15higgsBoostTr][Chen & He 2015: Higgs Boson Boosted Trees]]
+***** [[file:energy.bib::Chen16xgboostSclbl][Chen & Guestrin 2016: XGBoost scalable tree boost]]       
+
 *** see also: [[Boosted Quantile Regression]]
 *** see also: [[Feature selection for varying coefficient models]]
+* <<Factorization Machines>>
+  
+  Related to support vector machines.  I think this is in Python H2O library.
+
+*** [[file:energy.bib::Rendle10factrMachns][Rendle 2010: Factorization Machines]]
+
 * <<Train/test partitioning schemes>>
 *** Why people pick 10-fold cross-validation: [[file:energy.bib::refaeilzadeh09crossval][liu & oezsu 2009: encyclopedia]] cross-validation
 *** use holdout cross validation to stop tuning (this would be hold out of holdout if use k-fold)
@@ -4751,6 +4759,8 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ***** [[http://www.afia-france.org/tiki-index.php%3Fpage%3DGroupeDeLecture090402JP][Detecting the arrow of time with independent noise models]]
 ***** [[file:energy.bib::UKONS08holtWintersARIMAreg][National 2008: From Holt Winters ARIMA Modelling]] : trend + multip/add seasonal
 *** [[Extreme Quantile Clustering]]
+*** [[file:energy.bib::doi:10.1080/03610918.2015.1122048][Vinod 2017: Generalized Correlation & Kernel Causality]]
+*** also: [[Types of dependence or similarity]]
 * <<Ensuring bounded regression outputs>>
   <<bounded regression outputs>>
 
@@ -5385,8 +5395,7 @@ sera
 ******* see also: [[Local Linear Regression]]
 ******* see also: [[KNN neighborhood functions for local linear regression]]
 ******* see also: [[Curse of Dimensionality and Local Linear Regression]]
-***** Boosted Quantile Regression
-      <<Boosted Quantile Regression>>
+***** <<Boosted Quantile Regression>>
 ******* [[file:energy.bib::Fenske11idRiskBoostAddQR][Fenske et al. 2011: Identifying]] risk boost QR
 ******* [[file:energy.bib::Fenske12strctAddQRthesis][Fenske 2012: Structured]] QR and boosting (PhD thesis)
 ******* [[file:energy.bib::Biau11seqQuantRgrsnTS][Biau & Patra 2011: Sequential Quantile Prediction Time Series]] (starts w/ a collection of QR's, like adaboost)
@@ -5408,8 +5417,8 @@ sera
 ******* see also [[Boosted Regression]]
 ******* see also [[Continuous Output Boosting]] (more specific)
 ******* see also: [[Feature selection for varying coefficient models]]
-***** Multiple output quantile regresson
-      <<Multiple output quantile regresson>>
+******* see also: [[Gradient Boosting]]
+***** <<Multiple output quantile regresson>>
 
       Good for:
        - multiple horizon quantiles e.g. for markets?
@@ -8789,7 +8798,6 @@ sera
 ************* nonparametric change point between extreme and nonextreme regions of the data,
 ************* graphical methods where one studies the dependence of GP-related metrics on threshold
 ************* Goodness-of-Fit (GoF): for a certain level of significance, find lowest thresh where GPD fits            
-
  
 ***** <<Extreme Quantile Clustering>>
 ******* storms or other extreme events ([[file:energy.bib::kariniotakis08anemoswindforecast][kariniotakis 2008: anemos leading european]])
