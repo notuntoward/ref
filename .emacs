@@ -71,6 +71,7 @@
        ps-lpr-switches (list "/p" "-sDEVICE=mswinpr" "-") )
       ;; So emacs recognizes Cygwin's path names
       ;; (http://www.khngai.com/emacs/cygwin.php)
+      ;; NOTE: now obsolete, so must copy it from .emacs.d/* to .emacs.d/elpa
       (use-package cygwin-mount 
 	:config (cygwin-mount-activate))
       (setq cygwin-bin-dir "c:/cygwin64/bin/")
@@ -87,6 +88,8 @@
    (setq shareDir "c:/Users/scotto/Tempo Box/shareHW"))
   ("nb-sotterson"     ; work laptop
    (progn (setq shareDir "~/shareHW/")))
+  ("desktop-tqs2o18" ; Surface Pro
+   (setq shareDir "c:/Users/scott/OneDrive/scotto/Tempo Box/shareHW"))
   (_
    (progn (warn "Can't assign shareDir for unknown computer: %s" computerNm)
 	  (setq shareDir (concat "unknown_computer_" computerNm "_shareDir"))))
@@ -186,6 +189,68 @@
 (winner-mode 1) ; Undo window config: C-c left; Redo window config: C-c right
 
 ;; ** Attempts at saving desktop
+
+;; Perspectives for emacs
+;; From: https://github.com/andresilva/emacs.d/blob/master/init.el
+
+;; Use one folder for all save/history/cache files (more than persp-mode uses it)
+(defconst !/savefile-dir (expand-file-name "savefile" user-emacs-directory))
+(unless (file-exists-p !/savefile-dir)
+  (make-directory !/savefile-dir))
+
+
+;; https://github.com/Bad-ptr/persp-mode.el  
+(use-package persp-mode
+  :ensure t
+  :diminish persp-mode
+  
+  :init
+  (setq wg-morph-on nil ;; switch off animation
+        persp-add-buffer-on-after-change-major-mode t
+        persp-auto-resume-time -1
+        persp-autokill-buffer-on-remove 'kill-weak
+        persp-save-dir (expand-file-name "persp-confs/" !/savefile-dir))
+
+  (add-hook 'after-init-hook (lambda () (persp-mode 1)))
+  
+  :config
+  (defvar !//persp-last-selected-perspective persp-nil-name
+    "Previously selected perspective.")
+  (defun !//persp-save-last-selected-perspective (_ _ &optional _)
+    (setq !//persp-last-selected-perspective persp-last-persp-name))
+  (advice-add 'persp-activate :before #'!//persp-save-last-selected-perspective))
+
+;; from: https://github.com/Bad-ptr/persp-mode.el/issues/93#issuecomment-392282950
+(with-eval-after-load "persp-mode"
+  (defvar persp-indirrect-buffers-to-restore nil)
+  
+  (persp-def-buffer-save/load
+   :tag-symbol 'def-indirect-buffer
+   :predicate #'buffer-base-buffer
+   :save-function
+   #'(lambda (buf tag vars)
+       (list tag (buffer-name buf) vars
+             (buffer-name (buffer-base-buffer))))
+   :load-function
+   #'(lambda (savelist)
+       (destructuring-bind
+           (buf-name vars base-buf-name &rest _rest) (cdr savelist)
+         (push (cons buf-name base-buf-name)
+               persp-indirrect-buffers-to-restore)
+         nil)))
+
+  (add-hook 'persp-after-load-state-functions
+            #'(lambda (&rest _args)
+                (dolist (ibc persp-indirrect-buffers-to-restore)
+                  (let* ((nbn (car ibc))
+                         (bbn (cdr ibc))
+                         (bb (get-buffer bbn)))
+                    (when bb
+                      (when (get-buffer nbn)
+                        (setq nbn (generate-new-buffer-name nbn)))
+                      (make-indirect-buffer bb nbn t))))
+                (setq persp-indirrect-buffers-to-restore nil))))
+
 ;; buggy, as of April 8, 2017
 ;;(require 'desktop+) ; needed?
 ;; experiment: does this save indirect buffers?
@@ -277,6 +342,11 @@
   :init
   (define-key prog-mode-map (kbd "C-;") 'iedit-within-defun))
 
+;; ** Expand-Region
+
+(use-package expand-region
+  :bind ("C-=" . er/expand-region))
+
 ;; * Swiper/Ivy
 
 (use-package swiper
@@ -366,6 +436,11 @@
 (global-set-key (kbd "M-[") 'scroll-down) ; page up
 (global-set-key (kbd "M-]") 'scroll-up)   ; page down
 
+;; horizontal scrolling
+;https://stackoverflow.com/questions/1042482/touchpad-horizontal-scrolling-in-emacs?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+;; (global-set-key [wheel-right] 'scroll-left) ; horizontal scrolling
+;; (global-set-key [wheel-left] 'scroll-right)
+
 ;;Return to mark: https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
 (bind-key "C-x p" 'pop-to-mark-command) 
 (setq set-mark-command-repeat-pop t) ; so C-x p keeps going backwards in marks
@@ -379,7 +454,7 @@
 	(linum-mode 1)                            ; only on current buffer
 	(goto-line (read-number "Goto line: ")))
     (linum-mode -1)))                             ; only on current buffer
-(global-set-key (kbd "C-=") 'goto-line-with-feedback)
+(global-set-key (kbd "M-=") 'goto-line-with-feedback)
 
 (global-set-key (kbd "C-M-=") 'global-linum-mode) ; toggles on all buffers
 
@@ -457,6 +532,22 @@
   (global-set-key (kbd "<C-S-down>")   'buf-move-down)
   (global-set-key (kbd "<C-S-left>")   'buf-move-left)
   (global-set-key (kbd "<C-S-right>")  'buf-move-right))
+
+;; tab keys work across buffers like browsers across tabs
+(global-set-key (kbd "<C-tab>")  'other-window) ; forwards
+
+;; ;; CAN'T GET THIS TO WORK: CYCLE BUFFERS BACKWARDS
+;; (global-set-key (kbd "<C-S-tab>") (lambda () (interactive) (other-window -1)))
+
+;; (defun other-window-backwards ()
+;;   (interactive "P") 
+;;   (other-window -1))
+;; (global-set-key (kbd "<C-S-tab>")  'other-window-backwards) ; backwards
+
+;; (defun other-window-backwards ()
+;;   (interactive "P") 
+;;   (call-interactively 'grep))
+;; (global-set-key (kbd "<C-S-tab>")  'other-window) ; backwards
 
 ;; ** Indirect buffers
 (defun sdo/clone-indirect-buffer-other-frame (newname display-flag &optional norecord)
@@ -946,7 +1037,8 @@
   (define-key cscope-list-entry-keymap "q" 'quit-window)) ; so quits like dired
 
 ;; ** Python
-;; Use Elpy instead of python-mode. Also requires some PYTHON LIBS, see: 
+;; Use Elpy instead of python-mode.
+;; ALSO REQUIRES SOME PYTHON LIBS, see: 
 ;; https://github.com/jorgenschaefer/elpy
 ;; docs: https://elpy.readthedocs.io/en/latest/index.html
 ;; run python in buffer with C-c C-c, once elpy-mode is enabled
@@ -956,13 +1048,20 @@
   (elpy-enable)
   ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?): https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
   (setq python-shell-interpreter "jupyter"
-        python-shell-interpreter-args "console --simple-prompt")
-
+        python-shell-interpreter-args "console --simple-prompt"
+        python-shell-prompt-detect-failure-warning nil)
+  (add-to-list 'python-shell-completion-native-disabled-interpreters
+               "jupyter")
+  
   ;; use flycheck, not elpy's flymake (https://realpython.com/blog/python/emacs-the-best-python-editor/)
   (when (require 'flycheck nil t)
     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-    (add-hook 'elpy-mode-hook 'flycheck-mode)))
+    (add-hook 'elpy-mode-hook 'flycheck-mode))
 
+  (define-key python-mode-map (kbd "C-c i") 'elpygen-implement))
+
+;; So C-c i generates a python function stub from symbol @ point, uses elpy
+(use-package elpygen)
 
 ;; (use-package anaconda-mode  ;; elpy alternative?
 ;;   :config
@@ -1157,6 +1256,7 @@ is already narrowed."
   (define-key org-mode-map (kbd "<C-S-right>") nil) ; was switch TODO set
 
   ;; open docx files in default application (ie msword)
+  ;; https://emacs.stackexchange.com/questions/22485/org-mode-pandoc-export-to-docx-and-open
   (setq org-file-apps
       '(("\\.docx\\'" . default)
         ("\\.mm\\'" . default)
@@ -1444,18 +1544,18 @@ This function avoids making messed up targets by exiting without doing anything 
 
 (use-package ox-minutes :defer 5) ; nice(er) ascii export, but slow start
 
-(use-package ox-pandoc
-  :ensure t
-  :after ox
-  :defer t
-  :config
-  ;; default options for all output formats
-  (setq org-pandoc-options '((standalone . t))
-        ;; cancel above settings only for 'docx' format
-        org-pandoc-options-for-docx '((standalone . nil))))
-;;        ;; special settings for beamer-pdf and latex-pdf exporters
-;;        org-pandoc-options-for-beamer-pdf '((pdf-engine . "xelatex"))
-;;        org-pandoc-options-for-latex-pdf '((pdf-engine . "xelatex"))))
+;; (use-package ox-pandoc
+;;   :ensure t
+;;   :after ox
+;;   :defer t
+;;   :config
+;;   ;; default options for all output formats
+;;   (setq org-pandoc-options '((standalone . t))
+;;         ;; cancel above settings only for 'docx' format
+;;         org-pandoc-options-for-docx '((standalone . nil))))
+;; ;;        ;; special settings for beamer-pdf and latex-pdf exporters
+;; ;;        org-pandoc-options-for-beamer-pdf '((pdf-engine . "xelatex"))
+;; ;;        org-pandoc-options-for-latex-pdf '((pdf-engine . "xelatex"))))
 
 ;; I couldn't get pandoc to work after converting .emacs to use-package.  I had two problems
 ;;
@@ -1464,22 +1564,21 @@ This function avoids making messed up targets by exiting without doing anything 
 ;;
 ;; ;; Pandoc
 ;; ;; default options for all output formats. Intially from: https://github.com/kawabata/ox-pandoc
-;; (use-package ox-pandoc
-;;   :init
-;;   (setq org-pandoc-options '((standalone . t)))
-;;   ;; cancel above settings only for 'docx' format
-;;   (setq org-pandoc-options-for-docx '((standalone . nil)))
-;;   ;; special settings for beamer-pdf and latex-pdf exporters
-;;   (setq org-pandoc-options-for-beamer-pdf '((latex-engine . "pdflatex")))
-;;   (setq org-pandoc-options-for-latex-pdf '((latex-engine . "pdflatex")))
-;;   ;; (setq org-pandoc-options-for-beamer-pdf '((latex-engine . "xelatex")))
-;;   ;; (setq org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")))
-;;   :config
-;;   ;; the below did not help after org-mode use of use-package, and may have messed up startup on a clean install
-;;   ;;
-;;   ;; Delay loading but let org-export-dispatch menu still see it.  Actually, unless I do this, I don't see pandoc in the menu at all.  From: https://github.com/kawabata/ox-pandoc/issues/7
-;;   ;;  (with-eval-after-load 'ox (require 'ox-pandoc)))
-;;   )
+(use-package ox-pandoc
+  :init
+  (setq org-pandoc-options '((standalone . t)))
+  ;; cancel above settings only for 'docx' format
+  (setq org-pandoc-options-for-docx '((standalone . nil)))
+  ;; special settings for beamer-pdf and latex-pdf exporters
+  (setq org-pandoc-options-for-beamer-pdf '((latex-engine . "pdflatex")))
+  (setq org-pandoc-options-for-latex-pdf '((latex-engine . "pdflatex")))
+  ;; (setq org-pandoc-options-for-beamer-pdf '((latex-engine . "xelatex")))
+  ;; (setq org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")))
+  :config
+  ;; the below did not help after org-mode use of use-package, and may have messed up startup on a clean install
+  ;;
+  ;; Delay loading but let org-export-dispatch menu still see it.  Actually, unless I do this, I don't see pandoc in the menu at all.  From https://github.com/kawabata/ox-pandoc/issues/7
+  (with-eval-after-load 'ox (require 'ox-pandoc)))
 
 ;; * Writing Tools
 ;; ** General Editing
@@ -1550,7 +1649,7 @@ This function avoids making messed up targets by exiting without doing anything 
 (defun find-find-word-word ()
   (interactive)
   (re-search-forward "\\b\\(\\w+\\)\\W+\\1\\b"))
-(global-set-key "\e=" 'find-find-word-word)
+;; (global-set-key "\e=" 'find-find-word-word) ; use this for goto-line-with-feedback
 
 (use-package writegood-mode
   :config
@@ -1945,7 +2044,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda use-package counsel swiper-helm esup auctex auctex-latexmk ess ess-R-data-view ess-smart-equals ess-smart-underscore ess-view psvn igrep helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine highlight-indent-guides lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 undo-tree iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f org-ref writegood-mode auto-complete smex matlab-mode popup parsebib org-cliplink org-bullets org-autolist org key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move cygwin-mount)))
+    (elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda use-package counsel swiper-helm esup auctex auctex-latexmk ess ess-R-data-view ess-smart-equals ess-smart-underscore ess-view psvn igrep helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine highlight-indent-guides lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 undo-tree iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f org-ref writegood-mode auto-complete smex matlab-mode popup parsebib org-cliplink org-bullets org-autolist org key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move cygwin-mount)))
  '(paren-message-show-linenumber (quote absolute))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
@@ -2036,3 +2135,4 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(table-cell-face ((t (:background "honeydew1" :foreground "black" :inverse-video nil))))
  '(writegood-duplicates-face ((t (:underline (:color "orange" :style wave)))))
  '(writegood-passive-voice-face ((t (:underline (:color "MediumOrchid1" :style wave))))))
+
