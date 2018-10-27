@@ -6639,6 +6639,29 @@ Keywords: wind energy; uncertainty; decision-making; quantiles; ensembles; forec
   publisher = {{MDPI} {AG}},
 }
 
+@Article{Battaglia18biasDpLrnGraphNet,
+  author        = {Peter W. Battaglia and Jessica B. Hamrick and Victor Bapst and Alvaro Sanchez-Gonzalez and Vinicius Zambaldi and Mateusz Malinowski and Andrea Tacchetti and David Raposo and Adam Santoro and Ryan Faulkner and Caglar Gulcehre and Francis Song and Andrew Ballard and Justin Gilmer and George Dahl and Ashish Vaswani and Kelsey Allen and Charles Nash and Victoria Langston and Chris Dyer and Nicolas Heess and Daan Wierstra and Pushmeet Kohli and Matt Botvinick and Oriol Vinyals and Yujia Li and Razvan Pascanu},
+  title         = {Relational inductive biases, deep learning, and graph networks},
+  __markedentry = {[scotto:6]},
+  abstract      = {Artificial intelligence (AI) has undergone a renaissance recently, making major progress in key domains such as vision, language, control, and decision-making. This has been due, in part, to cheap data and cheap compute resources, which have fit the natural strengths of deep learning. However, many defining characteristics of human intelligence, which developed under much different pressures, remain out of reach for current approaches. In particular, generalizing beyond one's experiences--a hallmark of human intelligence from infancy--remains a formidable challenge for modern AI. The following is part position paper, part review, and part unification. We argue that combinatorial generalization must be a top priority for AI to achieve human-like abilities, and that structured representations and computations are key to realizing this objective. Just as biology uses nature and nurture cooperatively, we reject the false choice between "hand-engineering" and "end-to-end" learning, and instead advocate for an approach which benefits from their complementary strengths. We explore how using relational inductive biases within deep learning architectures can facilitate learning about entities, relations, and rules for composing them. We present a new building block for the AI toolkit with a strong relational inductive bias--the graph network--which generalizes and extends various approaches for neural networks that operate on graphs, and provides a straightforward interface for manipulating structured knowledge and producing structured behaviors. We discuss how graph networks can support relational reasoning and combinatorial generalization, laying the foundation for more sophisticated, interpretable, and flexible patterns of reasoning. As a companion to this paper, we have released an open-source software library for building graph networks, with demonstrations of how to use them in practice.},
+  comment       = {Deep Learning doesn't represent the world; this paper talks about graph networdks as a way to represent reality and learn more efficiently, although this approach can't easily describe recursion, conditional iteration, or control flow.  The authors have a new graph networks library.
+
+* can't easily describe recursion, conditional iteration, or control flow :
+  (from https://www.zdnet.com/article/google-ponders-the-shortcomings-of-machine-learning)
+* Graph Nets Library (also has a nice intro on Github):
+  https://github.com/deepmind/graph_nets
+
+
+},
+  date          = {2018-06-04},
+  eprint        = {http://arxiv.org/abs/1806.01261v3},
+  eprintclass   = {cs.LG},
+  eprinttype    = {arXiv},
+  file          = {:Battaglia18biasDpLrnGraphNet.pdf:PDF},
+  keywords      = {cs.LG, cs.AI, stat.ML},
+  url           = {https://arxiv.org/abs/1806.01261},
+}
+
 @Article{May08varSelpartMutInfo,
   author    = {May,, Robert J. and Maier,, Holger R. and Dandy,, Graeme C. and Fernando,, T.M.K. Gayani},
   title     = {Non-linear variable selection for artificial neural networks using partial mutual information},
@@ -16096,19 +16119,18 @@ Keywords: visualization, embedding, online algorithms, feature discovery, unsupe
 }
 
 @InProceedings{Rendle10factrMachns,
-  author        = {S. Rendle},
-  title         = {Factorization Machines},
-  booktitle     = {Proc. IEEE Int. Conf. Data Mining},
-  year          = {2010},
-  pages         = {995--1000},
-  month         = dec,
-  __markedentry = {[scotto:]},
-  abstract      = {In this paper, we introduce Factorization Machines (FM) which are a new model class that combines the advantages of Support Vector Machines (SVM) with factorization models. Like SVMs, FMs are a general predictor working with any real valued feature vector. In contrast to SVMs, FMs model all interactions between variables using factorized parameters. Thus they are able to estimate interactions even in problems with huge sparsity (like recommender systems) where SVMs fail. We show that the model equation of FMs can be calculated in linear time and thus FMs can be optimized directly. So unlike nonlinear SVMs, a transformation in the dual form is not necessary and the model parameters can be estimated directly without the need of any support vector in the solution. We show the relationship to SVMs and the advantages of FMs for parameter estimation in sparse settings. On the other hand there are many different factorization models like matrix factorization, parallel factor analysis or specialized models like SVD++, PITF or FPMC. The drawback of these models is that they are not applicable for general prediction tasks but work only with special input data. Furthermore their model equations and optimization algorithms are derived individually for each task. We show that FMs can mimic these models just by specifying the input data (i.e. the feature vectors). This makes FMs easily applicable even for users without expert knowledge in factorization models.},
-  comment       = {Powerful ML agorithm in H2O},
-  doi           = {10.1109/ICDM.2010.127},
-  file          = {:Rendle10factrMachns.pdf:PDF},
-  issn          = {2374-8486},
-  keywords      = {data mining, matrix decomposition, support vector machines, factorization machine, support vector machine, SVM, model parameters, parameter estimation, feature vector, sparse data, tensor factorization, Mathematical model, Support vector machines, Frequency modulation, Predictive models, Data models, Equations, Computational modeling, factorization machine, sparse data, tensor factorization, support vector machine},
+  author    = {S. Rendle},
+  title     = {Factorization Machines},
+  booktitle = {Proc. IEEE Int. Conf. Data Mining},
+  year      = {2010},
+  pages     = {995--1000},
+  month     = dec,
+  abstract  = {In this paper, we introduce Factorization Machines (FM) which are a new model class that combines the advantages of Support Vector Machines (SVM) with factorization models. Like SVMs, FMs are a general predictor working with any real valued feature vector. In contrast to SVMs, FMs model all interactions between variables using factorized parameters. Thus they are able to estimate interactions even in problems with huge sparsity (like recommender systems) where SVMs fail. We show that the model equation of FMs can be calculated in linear time and thus FMs can be optimized directly. So unlike nonlinear SVMs, a transformation in the dual form is not necessary and the model parameters can be estimated directly without the need of any support vector in the solution. We show the relationship to SVMs and the advantages of FMs for parameter estimation in sparse settings. On the other hand there are many different factorization models like matrix factorization, parallel factor analysis or specialized models like SVD++, PITF or FPMC. The drawback of these models is that they are not applicable for general prediction tasks but work only with special input data. Furthermore their model equations and optimization algorithms are derived individually for each task. We show that FMs can mimic these models just by specifying the input data (i.e. the feature vectors). This makes FMs easily applicable even for users without expert knowledge in factorization models.},
+  comment   = {Powerful ML agorithm in H2O},
+  doi       = {10.1109/ICDM.2010.127},
+  file      = {:Rendle10factrMachns.pdf:PDF},
+  issn      = {2374-8486},
+  keywords  = {data mining, matrix decomposition, support vector machines, factorization machine, support vector machine, SVM, model parameters, parameter estimation, feature vector, sparse data, tensor factorization, Mathematical model, Support vector machines, Frequency modulation, Predictive models, Data models, Equations, Computational modeling, factorization machine, sparse data, tensor factorization, support vector machine},
 }
 
 @Article{Wang11windFrcstUncertUC,
@@ -20353,7 +20375,7 @@ Keywords: Time series; Exponential smoothing; ARIMA models; State space models},
   publisher     = {" O'Reilly Media, Inc."},
   year          = {2016},
   author        = {Bengfort, Benjamin and Kim, Jenny},
-  __markedentry = {[scotto:6]},
+  __markedentry = {[scotto:]},
   abstract      = {Overview of Chapters
 This book is intended to be a guided walk through of the Hadoop ecosystem, and as
 such we’ve laid out the book in two broad parts split across the halves of the book.

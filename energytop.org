@@ -1821,6 +1821,9 @@ Scott
 *** <<Neural Net Activation Functions>>
 ***** [[cite:Clevert15dpLrnELU][Clevert et al. 2015: Fast Accurate Deep Lrn ELU]]
 *** TODO <<Deep Learning>>
+
+    Many-layered NN's that are an alternative to three layer MLP's:  They're trainiable because they have smaller local minima, use new regulation ideas and lots of data.  [[Graph Networks]] may represent knowlege in a more interpretable, data-efficient way.
+
 ***** is related to the adaboost+ ideas, I think, also random forests, I think
 ***** What is Deep Learning?
 ******* Siemens: 100K NN nodes ([[http://www.evernote.com/l/AA05QepHHVlLMJiB6pxDMLuP_nI41T8nlMk/][Machine Learning: Getting Machines to Mimic Intuition]])
@@ -2011,6 +2014,7 @@ Scott
 ******* [[https://sites.google.com/site/dlworkshop16/session-1---deep-learning-with-small-data][Session 1 - Deep Learning with Small Data - ICML'16]]
 ******* [[https://sites.google.com/site/dlworkshop16/session-2---simulation-based-learning-or-not][Session 2 - Simulation-based Learning or Not? ICML'16]]
 ******* see also [[Deep Reinforcement Learning]]
+******* see also [[Graph Networks]] (more data efficient than plain deep learning?)
 ***** TODO <<Extreme Learning Machines>>
 ******* DONE [[cite:Huang15extrmLrnMachGap][Huang 2015: What Extreme Learning Machines]]?
 ******* [[cite:Tian10elmAdaboost_RT][Tian & Mao 2010: Ensemble ELM Based Modified AdaBoost]] ensemble
@@ -2022,6 +2026,7 @@ Scott
 ***** see also: [[Feature Construction]]
 ***** see also: [[Interactions and Deep Learning]]
 ***** see [[Tensors]]
+***** see [[Graph Networks]]
 *** <<Neural Network Training Algorithms>>
 ***** Levenberg-Marquardt Algorithm
 ******* [[file:energy.bib::Hagan94nnTrnLevMarq][Hagan & Menhaj 1994: Training Marquardt]] (Levenberg-Marquardt backprop reference, I think)
@@ -2038,6 +2043,12 @@ Scott
 ***** [[file:energy.bib::Rippel13highDimProbDeepNN][Rippel & Adams 2013: High Dimensional Probability]], invertible, deep lrn, I think
 ***** [[file:energy.bib::Baird05oneStepInvrtNN][Baird et al. 2005: One PDF]] step pdf learn invertible NN
 ******* See also: [[Wind spatio-temporal patterns]]
+
+* <<Graph Networks>>
+
+  Proposed way of representing knowlege in a more interpretable and data-efficient way than [[Deep Learning]] neural nets.
+
+*** TODO [[file:energy.bib::Battaglia18biasDpLrnGraphNet][Battaglia et al.: Relational bias, deep lrn, graph networks]] (perhaps, the big scene setting paper to read, has code)
 
 * <<Deep Learning in Energy Systems>>
 *** [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]    :DpLrn:FrcstDmd:
