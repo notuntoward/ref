@@ -87,7 +87,7 @@
 (pcase (eval 'computerNm)
   ("desktop-lkl5mc1"  ; Surface Pro 4
    (setq shareDir "c:/Users/scotto/Tempo Box/shareHW"))
-  ("nb-sotterson"     ; work laptop
+  ("lt492017"     ; Tennet work laptop
    (progn (setq shareDir "~/shareHW/")))
   ("desktop-tqs2o18" ; Surface Pro
    (setq shareDir "c:/Users/scott/OneDrive/scotto/Tempo Box/shareHW"))
@@ -604,7 +604,6 @@
 
 ;; so that dired automatically updates stale directory list when buffer revisted
 (setq dired-no-confirm `(revert-subdirs))
-
 (setq dired-recursive-copies t)
 (setq dired-recursive-deletes t)
 
@@ -644,6 +643,15 @@
 ;; ;;   (add-hook 'dired-mode-hook #'modi/dired-update-privilege-faces)))
 
 ;; ** Find-file and URL
+;;
+;; find-file is currently overwritten by ido, which is a pain about pasting in full file paths.  Kludge is to type c-f c-f so orig find-file is called, which handles full-paths fine.
+;;
+;; But ivy just handles it.
+;; https://emacs.stackexchange.com/questions/18128/quickly-open-file-by-full-path-in-clipboard
+;;
+;; TODO: I would like to use ivy but functions below use find-file-other-window and find-file-other-frame, which have no ivy analogs.
+;;
+
 ;; Avoid extra "file or url" text in minibuf; use ffap only @ valid URL or path
 (defun find-file-guessing (arg)
   "Call find-file with file at point if valid. With a universal argument,
