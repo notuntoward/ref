@@ -5227,7 +5227,6 @@ won't work if you close and immediately open onenote again.
 ***** [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
 *** [[https://github.com/caldwell/commit-patch][caldwell/commit-patch: Commit patches to Darcs, Git, Mercurial, Baza...]]
 
-
 * HTML
 *** tables
 ***** Easy visual [[http://www.quackit.com/html/html_table_generator.cfm][Table Generator]]
@@ -8331,7 +8330,16 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
       (and restart FF)
 
 ***** getting rid of autoplay
-******* *I'm doing this*:  [[http://superuser.com/questions/370246/stop-automatic-video-play-in-firefox][media.autoplay.enabled]]: seems OK, but said to be unreliable
+******* *I'm doing this*:  [[http://superuser.com/questions/370246/stop-automatic-video-play-in-firefox][media.autoplay.default]]: replacement for media.autoplay.enabled
+
+        Setting it to 2 works as intended on bloomberg.com, at least.  
+
+********* Type about:config in the browser's address bar and hit enter.
+********* Confirm that you will be careful if the notification comes up.
+********* Use the search at the top to find the preference media.autoplay.default.
+********* Set it to 1 (block by default) or 2 (prompt per domain).
+******* [[http://superuser.com/questions/370246/stop-automatic-video-play-in-firefox][media.autoplay.enabled]]: doesn't work anymore
+        Doesn't work as of FF version 63 (sometime around Oct. 2018).
 ********* Type about:config in the browser's address bar and hit enter.
 ********* Confirm that you will be careful if the notification comes up.
 ********* Use the search at the top to find the preference media.autoplay.enabled.
