@@ -18,6 +18,7 @@
   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
 (require 'package)
+;(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t) ; needed? doesn't work anyway
 (add-to-list   'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list   'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
@@ -1780,7 +1781,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
   ;; ("B" helm-buffers-list)
   )
 ;; ("R" helm-recentf)
-(global-set-key (kbd "<M-apps>") 'hydra-utils/body)
+(global-set-key (kbd "<M-lwindow>") 'hydra-utils/body)
 
 (use-package helpful ; better emacs info: https://github.com/Wilfred/helpful
   :bind
