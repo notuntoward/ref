@@ -1776,6 +1776,7 @@ Scott
 ********* Google Scholar for: [[http://www.google.com/search?aq%3Df&gcx%3Dc&sourceid%3Dchrome&ie%3DUTF-8&q%3Dexpectation%2Bmaximization%2Bbootstrap][Expectation Maximization Bootstrap]]
 
 * Neural Nets
+*** [[https://www.evernote.com/l/AA2JO1ths9tHbbpek2JKdO4_h9uc2_C14ro/][The Neural Network Zoo]] (visual guide to NN structures)
 *** picking layer types [[file:energy.bib::LeCun98effBkprp][LeCun et al. 1998: Efficient]] (easy to read)
 *** <<Neural Net Weights Initialization>>
 ***** [[cite:Jones15xavierInitBlog][Jones 2015: Explanation Xavier Initialization (simple blog post)]]
