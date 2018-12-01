@@ -2177,13 +2177,34 @@ Strike-through: nil
 
 *** <<Windows Emacs>>
 ***** Windows emacs builds
-******* <<Chocolatey Emacs>> choco install emacs64 (in admin powershell)
-        Using [[Chocolatey]] package manager
-        From: [[https://www.reddit.com/r/emacs/comments/5xoga4/what_is_the_current_best_way_to_set_up_emacs_on/][What is the current best way to set up emacs on Windows?]] 
+******* <<Chocolatey Emacs>> choco install  (in admin powershell)
+        Using [[Chocolatey]] package manager (see [[https://chocolatey.org/packages/Emacs][here]])
 
-        2/01/2018: I updated emacs64  (not "emacs")
-                   (experimental version that I think I installed before too)
-        9/16/2017: I installed it on SP4 (10/23/17, on work laptop).  
+        From admin powershell
+
+           choco install emacs 
+
+           OR
+
+           choco upgrade emacs 
+
+        It was installed to:
+
+        C:\ProgramData\chocolatey\lib\Emacs\tools\emacs\bin\
+
+        (can't see ProgramData by default in File Explorer but it will go there if you type the path into the top bar)
+
+        Associating runemacs w/ .org files, etc.
+          In Windows 10, search "default app settings" , then go to default by file type
+
+          But it still created a new, separate emacs window, rather than putting it in existing emacs window.
+
+********* Getting emacs 26 w/ the old emacs64 package (now obsolete).  
+          Inspired by: [[https://www.reddit.com/r/emacs/comments/5xoga4/what_is_the_current_best_way_to_set_up_emacs_on/][What is the current best way to set up emacs on Windows?]] 
+          On Oct. 2108, default emacs is also emacs 26
+          2/01/2018: I updated emacs64  (not "emacs")
+                     (experimental version that I think I installed before too)
+          9/16/2017: I installed it on SP4 (10/23/17, on work laptop).  
 
         It was installed to:
 
@@ -2193,12 +2214,7 @@ Strike-through: nil
 
         Installed extra packages (so would work like [[Vincent Goulet Emacs]])
 
-        Associating runemacs w/ .org files, etc.
-          In Windows 10, search "default app settings" , then go to default by file type
-
-          But it still created a new, separate emacs window, rather than putting it in existing emacs window.
-
-        *Problems*
+        *Problems* (some of which were eventually fixed, somehow)
 
         o had to install extra packages that [[Vincent Goulet Emacs]]
         o had rm ~/.emacs.d/elpa and reinstall due to unidentifiable lisp probs.
@@ -2206,7 +2222,7 @@ Strike-through: nil
           Not even this worked:
 
           C:\Path\To\emacsclientw.exe --alternate-editor="C:\Path\To\runemacs.exe" -c
-        
+
 ******* <<Vincent Goulet Emacs>>: Windows Emacs w/ latest R built-in 
         [[https://vigou3.github.io/emacs-modified-windows/][Emacs Modified for Windows]]
 
@@ -2879,8 +2895,7 @@ For a public browser link. Share the note and copy the share url.
 
 ***** some icons are [[https://www.emacswiki.org/emacs/EmacsIcons][here]]
 
-*** R in emacs
-    <<R in emacs>>
+*** <<R in emacs>>
 
 ***** install [[http://ess.r-project.org/Manual/ess.html][ESS]] (for latest version)
       to avoid putting ESS in emacs installation directory, can do this:
@@ -7867,7 +7882,8 @@ utf8::downgrade($utf8string) are the answers.
 
 Do not use them without careful thought, though: Perl may easily get very
 confused, angry, or even crash, if you suddenly change the 'nature' of
-scalar like that. Especially careful you have to be if you use the
+s
+calar like that. Especially careful you have to be if you use the
 utf8::upgrade(): any random byte string is not valid UTF-8.
 
 *** also see [[Windows Perl]]
@@ -8150,11 +8166,37 @@ Seaborn
 Tableau
 
 ***** Interactive graphics in python
-******* matplotlib can zoom, pan, but not much else
+******* matplotlib can zoom, pan, but not much else if outside of IConsole
+********* Documentation: [[https://matplotlib.org/users/navigation_toolbar.html][matplotlib interactive navigation]]
+********* [[https://stackoverflow.com/questions/36700083/in-spyder-plot-using-matplotlib-with-interactive-zoom-etc][In Spyder, plot using Matplotlib with interactive zoom, etc]]
+          Two ways:
+          1. type "%matplotlib qt" into Iconsole (doesn't work in code itself)
+          2. Select from the menu Tools > Preferences, then IPython console in the list of categories on the left, then the tab Graphics at the top, and change the Graphics backend from Inline to e.g. Qt. For me though, the figures then always pop up in the background.
+********* In Jupyter: insert %something, see nc5 demo
 ******* <<Python plotly>>
 ********* Multilanguage [[Plotly]] can make [[Python ggplot2]] interactive
 ********* [[Python ggplot2]]: also popular in R, has interactive multilanguage ports ([[Plotly]])
 ********* python plotly offline:, [[https://github.com/SayaliSonawane/Plotly_Offline_Python][Plotly_Offline_Python Tutorial]]
+********* initializing plotly
+          From [[https://plot.ly/python/getting-started/#initialization-for-online-plotting][here]]
+
+          Get an api key byn logging into plotly acct. [[https://plot.ly/settings/api#/][here]]
+
+          Then
+          import plotly          plotly.tools.set_credentials_file(username='zenf', api_key='cO8tnS0WlWAreOZwmPzX')
+
+********* installing cufflinks (plotyly sometimes wants this)
+
+          From [[https://stackoverflow.com/questions/43922570/trouble-installing-cufflinks-in-anaconda-in-windows-10][here]]
+
+            conda install -c dhirschfeld cufflinks
+
+              (works but downgrades anaconda packages:
+              conda install -c conda-forge cufflinks-py)
+
+          Example wanting cufflinks
+            [[https://plot.ly/pandas/time-series/#time-series-of-pandas-dateframe][Time Series of Pandas Dateframe]]
+
 ********* [[R plotly]]
 ******* <<Python Bokeh>>
 ********* [[http://nbviewer.jupyter.org/github/bokeh/bokeh-notebooks/blob/master/quickstart/quickstart.ipynb][Bokeh Jupyter Notebook Viewer]] (examples)
@@ -8175,7 +8217,19 @@ Tableau
 ******* [[Python plotly]] (does ggplot2)
 ***** <<stackplot() in python>>
 ******* plotly/pandas "time series subplots" is close: [[https://plot.ly/pandas/time-series/#pandas-time-series-subplots][Pandas Time Series]]
+******* pandas/series is closer: [[https://machinelearningmastery.com/time-series-data-visualization-with-python/][Time Series Data Visualization with Python]]
 ******* also [[R functions like my Matlab stackplot()]]
+***** multi-line plots in python
+******* multi-time series with range slider (plotly)
+        [[https://plot.ly/python/time-series/][Time Series With Rangeslider]]
+******* ggplot with auto legend
+        [[http://blog.yhat.com/posts/aggregating-and-plotting-time-series-in-python.html][ŷhat | Aggregating & plotting time series in python]]
+        See "trends over time"
+******* matlotlib with different time axes & annoying muliple plot() calls
+        [[https://stackoverflow.com/questions/30868707/how-can-i-plot-two-different-spaced-time-series-on-one-same-plot-in-python][How can I plot two different spaced time series on one same plot in Python]]
+
+***** zoomable python plots
+
 *** <<Python Streaming>>
 ***** Installing Pyspark in a docker
 ******* Better: [[https://medium.com/@suci/running-pyspark-on-jupyter-notebook-with-docker-602b18ac4494][Running PySpark on Jupyter Notebook with Docker – Medium]]
