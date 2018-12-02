@@ -9048,6 +9048,7 @@ al. 2012: Current]])
 *** periodicity measurement that handles missing features: [[file:energy.bib::Hocke08gapfillLombScarglePer][Hocke & Kämpfer 2008: Gap filling and]]
 
 *** [[https://www.mathworks.com/help/stats/pca.html][Matlab PCA handles missing values]] (docs have references to papers)
+***** some [[https://stackoverflow.com/questions/27804613/principal-component-analysis-w-alternating-least-squares-for-missing-data][StackOverflow Chatter]] on this: 
 *** [[file:energy.bib::Anagnostopoulos10streamCov][Anagnostopoulos et al.: Streaming Covariance Selection]] (lasso w/ missing feat handling)
 
 *** [[file:energy.bib::doquire11mutinfmissdat][Doquire & Verleysen 2011: Mutual]]
