@@ -9047,6 +9047,7 @@ al. 2012: Current]])
 *** [[http://www.google.de/search?hl%3Den&rlz%3D1C1CHFX_en-GBDE446DE446&q%3Dspectral%2Bclustering%2Bwith%2Bmissing%2Bvariables&oq%3Dspectral%2Bclustering%2Bwith%2Bmissing%2Bvariables&aq%3Df&aqi%3D&aql%3D&gs_sm%3De&gs_upl%3D19573l20207l0l20511l7l6l0l0l0l2l229l692l3.2.1l6l0][missing features and spectral clustering]]
 *** periodicity measurement that handles missing features: [[file:energy.bib::Hocke08gapfillLombScarglePer][Hocke & Kämpfer 2008: Gap filling and]]
 
+*** [[https://www.mathworks.com/help/stats/pca.html][Matlab PCA handles missing values]] (docs have references to papers)
 *** [[file:energy.bib::Anagnostopoulos10streamCov][Anagnostopoulos et al.: Streaming Covariance Selection]] (lasso w/ missing feat handling)
 
 *** [[file:energy.bib::doquire11mutinfmissdat][Doquire & Verleysen 2011: Mutual]]
