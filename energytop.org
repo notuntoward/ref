@@ -1330,7 +1330,7 @@
       Idea is to augment Dong windfarm data with surface met or other
       observations.  Could impose a structure on the correlation, possibly
       making it more meaningful.  The R [[http://bm2.genes.nig.ac.jp/RGM2/pkg.php?p%3Dncf][ncf]] package can do this, and it
-      also handles [[missing values]].
+      also handles [[Missing Features]].
 
       could build GP model as in [[file:energy.bib::Chapados08augFrcstGaussProc][Chapados & Bengio 2008: Augmented Functional Time]]
       and then adapt it w/ GP novelty/interesting input/subspace methods
@@ -2663,9 +2663,9 @@ Scott
 ************* [[file:energy.bib::Gao15mutInfoStrongDep][Gao et al. 2015: Efficient Estimation Mutual]]: Kraskov variant better w/ high dep. struct
 ************* [[file:energy.bib::Doquire11mutInfMissDat][Doquire & Verleysen 2011: Mutual]] inf featsel: set net KSG ests. to zero
 ************* [[file:energy.bib::Keller15EstMutualInfStrm][Keller et al. 2015: Estimating Mutual Information Data Streams]] (variable lag and window width)
-************* Kraskov MI estimator with missing features
-              <<Kraskov MI estimator with missing features>>
+************* <<Kraskov MI estimator with missing features>>
 *************** see [[File:energy.bib::doquire11mutinfmissdat][Doquire & Verleysen 2011: Mutual Info Miss Dat]]
+*************** also [[Missing Features]]
 ************* TODO  <<Reduce dimension bias in Kraskov's MI estimator>>    :idea:
               :properties:
               :id:       8fe6d642-37df-4c2c-a568-92b03c3a196f
@@ -3037,9 +3037,10 @@ Scott
 ************* [[id:d104d4d3-c0c2-4981-906c-38fc045a42f2][kraskov mi confidence intervals using m out of n bootstrap]]
 *********** discrete/differential entropy and mutual information [[http://www.ece.uic.edu/~devroye/courses/ece534/lectures/ch8.pdf][comparison]]
 *********** ex. of dependencies captured by mi but not by correlation: http://www.jsbi.org/pdfs/journal1/ibsb08/ibsb08010.pdf
-*********** mutual information and missing values
-************* [[kraskov%20mi%20estimator%20with%20missing%20data][Kraskov MI estimator with missing features]]
+*********** <<Mutual Information and Missing Values>>
+************* [[Kraskov MI estimator with missing features]]
 ************* [[file:energy.bib::][Asari 2005: Technical Notes Linear]] regression, mutual information, maybe fill-in trick
+************* also [[Missing Features]]
 *********** see also [[File:howto.org::*feature%20selection][feature selection in r]]
 *********** see also [[Streamwise Mutual Information]]
 *********** related to [[renyi's entropy]]
@@ -5392,8 +5393,7 @@ sera
 
 *********** [[file:energy.bib::Liu09crvRegisClustFunc][Liu & Yang 2009: Simultaneous]]  (curv reg. and func dat clustering)
 
-***** Local linear quantile regression
-      <<Local linear quantile regression>>
+***** <<Local linear quantile regression>>
 ******* [[file:energy.bib::Bremnes04windLocQR][Bremnes 2004: Probabilistic]] loc lin QR
 ******* [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006]]: quantile forecasts compared
 ******* [[file:energy.bib::Koenker12quantregVig][Koenker 2012: Quantile R]] (R lib overview w/ loc lin QR and much more)
@@ -5560,7 +5560,7 @@ sera
 ***** freq domain bootstrap
 ******* [[file:energy.bib::kirch11timefreqbtstrp][kirch & politis 2011: tft]] bootstrap
 ******* [[file:energy.bib::jornsten07btstrpclassnotes][jornsten 2007: bootstrap class stat rutgers university]]
-******* [[fourier based missing value fill-in]] maybe could be done w/ bootstrap
+******* [[fourier based missing value fill-in]] maybe could be done w/ bootstrap (also see [[Missing Features]])        
 ***** "k-fold resamp" (naive subsamp btstrp) fran[[file:energy.bib::francois07resampparamfreefeatsel][cois et al. 2007: resampling]]
 ***** subsampling bootstrap (m out of n bootstrap)
       <<subsampling bootstrap (m out of n bootstrap)>>
@@ -5590,8 +5590,8 @@ sera
 
 ***** [[File:energy.bib::honaker10missvaltseries][Honaker & King 2010: What Do Missing]] Values (bootstrapped em)
 ***** [[file:energy.bib::pinson10reldiagsercorr][pinson et al. 2010: reliability]] (boostrap test)
-***** [[http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber%3d04286565][bootstrap inspired techniques in computational intelligence]]
-      <<bootstrap missing features fusion, and incremental learning>>
+***** <<Bootstrap Missing Features Fusion, and Incremental Learning>>
+      From: [[http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber%3d04286565][bootstrap inspired techniques in computational intelligence]]
 ***** is a way to ensure monotonicity: [[file:energy.bib::Chernozhukov10qrNoCross][Chernozhukov et al. 2010: Quantile Probability Curves Without Crossing]]
 ***** <<Bootstrap vs. cross-validation>>
 
@@ -5890,8 +5890,7 @@ sera
 *** <<Regime Detection Criteria>>
 ***** [[generic%20change%20point%20detection][generic change point detection]]
 ***** [[Concept Drift Detection]]
-***** Bayesian model averaging (bma)
-      <<Bayesian Model Averaging>>
+***** <<Bayesian Model Averaging>> (BMA)
 
       If BMA model weights are adaptive, then this is kind of like
       regime learning.
@@ -5913,15 +5912,15 @@ sera
 ******* [[Http://becs.aalto.fi/en/research/bayes/gpstuff/gpstuffdoc31.pdf][Gaussian Processes: use for BMA]]?
 ******* [[Lasso and BMA]]
 ******* see also [[Ensemble forecasting]]
-***** wind speed cdf
+***** Wind speed cdf
 ******* as in [[file:energy.bib::reikard08tempstaterampwind][reikard 2008: using temperature and]]
 ******* but he's got shared variables that probably shouldn't be shared
 ********* either in binary version or in cdf version
-***** delay bin dependence
-******* clusters lags: [[file:energy.bib::puma-villanueva07predwrapselclust][puma-villanueva et al. 2007: long term time]]
-******* depedence might be noisy
-********* imp. since could have high corr or mi but it could be insignificant
-********* [[http://www.psychstat.missouristate.edu/multibook/mlt08.htm][effect of correlated variables on linear regression]]
+***** Delay bin dependence
+******* Clusters lags: [[file:energy.bib::puma-villanueva07predwrapselclust][puma-villanueva et al. 2007: long term time]]
+******* Dependence might be noisy
+********* Imp. since could have high corr or mi but it could be insignificant
+********* [[http://www.psychstat.missouristate.edu/multibook/mlt08.htm][Effect of correlated variables on linear regression]]
 
 *correlated and uncorrelated predictor variables*
 
@@ -5948,29 +5947,28 @@ for r2 change would always be .4. similarly, the r2 change value for x1
 would always be .3. because of this relationship, uncorrelated predictor
 variables will be preferred, when possible.
 
-********* wind autocorr could make false dependence
+********* Wind autocorr could make false dependence
 *********** simple dot prod fix? [[file:energy.bib::huang06inputselstockforecast][huang et al. 2006: new computational method]]
 *********** whitening or [[partial correlation]] fix?
 *********** structural equation modeling [[http://faculty.chass.ncsu.edu/garson/pa765/structur.htm][handles autocorrelated error]].
-********* significance threshold removes noise, makes smaller # features
-*********** special code for "insignficant" or a "missing feature"?
-*********** what do w/ significant bins?
+********* Significance threshold removes noise, makes smaller # features
+*********** Special code for "insignficant" or [[Missing Feature]]s?
+*********** What do w/ significant bins?
 ************* could leave corr/mi for significant bins
 *************** would see significant "zero correlation or mi" which seems useful
 ************* or just cluster binary "signficance mask"
 *************** is "certainly insignificant" information hidden?
 *************** if it is: could code zero be "insignificant" or low corr/mi?
-*********** what to do w/ insignificant bins?
-************* clustering w/ "missing features" for insignicant bins?
+*********** What to do w/ insignificant bins?
+************* <<Clustering with missing features for insignicant bins>>
+*************** constrained clustering: [[file:energy.bib::wagstaff04clustmissnoimp][wagstaff 2004: clustering with missing values]]
+***************** general field w/ many uses: [[http://books.google.com/books%3fhl%3den&lr%3d&id%3dgmakzewljzsc&oi%3dfnd&pg%3dpa1&dq%3dwagstaff%2bcluster%2bk-wagstaff&ots%3duedezzakru&sig%3dholehsziryycbeuqyn8qwygf170#ppa3,m1][constrained clustering]]
+*************** classifier ensembles of missing features: [[file:energy.bib::depasquale07randsubmissfeat][depasquale & polikar 2007: random feature subset]]
+*************** imputation (see [[Missing Features]])
 *************** remove all time slices where an xcorr has insig. lag?
 *************** remove any lag where any xcorr pair is insig?
 *************** analytical marginalization
-*************** imputation (see [[missing values]])
-*************** constrained clustering: [[file:energy.bib::wagstaff04clustmissnoimp][wagstaff 2004: clustering with missing values]]
-***************** general field w/ many uses: [[http://books.google.com/books%3fhl%3den&lr%3d&id%3dgmakzewljzsc&oi%3dfnd&pg%3dpa1&dq%3dwagstaff%2bcluster%2bk-wagstaff&ots%3duedezzakru&sig%3dholehsziryycbeuqyn8qwygf170#ppa3,m1][constrained clustering]]
-*************** ensemble clustering
-***************** classifier ensembles of missing features: [[file:energy.bib::depasquale07randsubmissfeat][depasquale & polikar 2007: random feature subset]]
-*********** todo "insignificant" vs. zero correlation or mi?
+*********** TODO "insignificant" vs. zero correlation or mi?
 ************* on actual lag data, how often does insignificance occur?
 ************* is zero mi/corr generally insignificant?
 ***** forecast error patterns
@@ -6044,8 +6042,7 @@ variables will be preferred, when possible.
       idea is to gradually learn different regimes by multiple
       hypothesis target tracking (mht).  this is probably nonlinear,
       must deal with "occlusion" when the regime isn't active, (and
-      probably must have a variable dimensional state model, for missing
-      data?).
+      probably must have a variable dimensional state model, for [[Missing Features]]?).
 
 ******* [[http://ieeexplore.ieee.org/stamp/stamp.jsp?tp%3d&arnumber%3d1683370&usertype%3dinst&tag%3d1][propagation parameter tracking using variable state dimension kalman filter]]
 ******* [[http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber%3d1048226&tag%3d1][interacting multiple model (imm) kalman filters for robust high speed human motion tracking]]
@@ -6120,7 +6117,7 @@ variables will be preferred, when possible.
 ***** [[file:energy.bib::Villani12GenSmthFinMix][Villani et al. 2012: Generalized]] smooth mixtures
 *** [[Clustering of regression models]]
 *** <<Linear feature selection>>
-***** matlab functions
+***** Matlab Functions
 ******* [[http://www.mathworks.com/access/helpdesk/help/toolbox/stats/brj0qbu.html][feature selection]]
 ********* overview: [[http://www.mathworks.com/access/helpdesk/help/toolbox/stats/brj0qbu.html#brkgtck][sequential feature selection]]
 ********* complexity control is crossvalidation (sequentialfs.m); nothing for sequentialfit.m
@@ -6132,7 +6129,8 @@ variables will be preferred, when possible.
 ************* prohibits permutation test?
 ************* did permutation test paper say cross-validation was bad?
 ************* mi increases w/ increasing dim, so cross-val couldn't detect?
-******* [[http://www.mathworks.com/access/helpdesk/help/toolbox/stats/bq_676m-2.html#bq_676m-19][stepwise regression]]
+******* <<Matlab stepwise regression>>
+        From: [[http://www.mathworks.com/access/helpdesk/help/toolbox/stats/bq_676m-2.html#bq_676m-19][stepwise regression]]
 ********* [[http://www.mathworks.com/access/helpdesk/help/toolbox/stats/stepwisefit.html][stepwisefit.m]]: does linear regression, calc's p-values, handles missing values
 *********** feature selection is order dependent
 ********* [[http://www.mathworks.com/access/helpdesk/help/toolbox/stats/stepwise.html][stepwise.m]]: interactive tool
@@ -6284,15 +6282,16 @@ variables will be preferred, when possible.
       - wind speed
       - direction?
       - missing features
-            - can have horrible missing features probs
-            - angular intperpolation?
-            - do different interpolation depending upon lag (spline ok
-              if already have received data)
+        - can have horrible missing features probs
+        - angular intperpolation?
+        - do different interpolation depending upon lag (spline ok
+          if already have received data)
+        - see [[Missing Features]]
       - different derivatives depending upon lag
-            - must used lopsided golay polynomial for derivs near ts(k)
-            - can use symmetric golay polynomial if lag big enough
-            - also need to fill in missing stuff b/f computing deriv
-              (derivs dangerous if filling in missing?)
+        - must used lopsided golay polynomial for derivs near ts(k)
+        - can use symmetric golay polynomial if lag big enough
+        - also need to fill in missing stuff b/f computing deriv
+          (derivs dangerous if filling in missing?)
 
 ***** predict sub-farm speed/power and sum predictions
       i.e. cluster turbines and then predict
@@ -7832,7 +7831,7 @@ Scott
 *********** Better than MLP for missing features (claim in: [[file:energy.bib::Wang06compGausProcNeuralForecast][Wang et al. 2006: Comparing Gaussian Processes]])
 *********** [[Copula vs. Gaussian or Student-T Regression]]
 *********** [[http://portal.acm.org/citation.cfm%3Fid%3D945369][The em algorithm for kernel matrix completion with auxiliary data]]
-*********** see also: [[missing values]]
+*********** see also: [[Missing Features]]
 *********** see also: [[Mixtures of regressors]]
 ********* always getting confidence intervals
 *********** [[http://en.wikipedia.org/wiki/Prediction_interval][Confidence intervals v.s Prediction Intervals]] (which do GP's give?)
@@ -7957,7 +7956,7 @@ Scott
 ********* Tech Report: [[file:energy.bib::Ralaivola04nonLinearKernelKalman][Ralaivola & dAlché-Buc 2004: Nonlinear Time series]]
 ********* NIPS: [[file:energy.bib::Ralaivola04dynamicModelKernel][Ralaivola & dAlche-Buc 2004: Dynamical Modeling with]]
 ********* Related to (?): [[http://books.nips.cc/papers/files/nips18/NIPS2005_0548.pdf][Gaussian Process Dynamical Models]]
-*********** these can handle missing features
+*********** these can handle missing features (<<Gaussian Processes and Missing/Uncertain Values>>)
 ***** [[Deep Learning Time Series Prediction]]
 ***** Least Squares: [[http://cat.inist.fr/%3FaModele%3DafficheN&cpsidt%3D16894802][Direct and recursive prediction of time series using mutual information selection]]
 ******* Polish electricity forecasting
@@ -8065,6 +8064,9 @@ Scott
 ***** see also [[file:energytop.org::*Net%20Demand%20Forecast][Net Demand Forecast]]
 
 *** <<Net Demand Forecast>>
+    :PROPERTIES:
+    :ORDERED:  t
+    :END:
 
     I mean a forecast of: =Demand - Solar - Wind=
 
@@ -9006,6 +9008,7 @@ al. 2012: Current]])
 ***** [[file:energy.bib::Sherwood13wgtQRmiss][Sherwood et al. 2013: Weighted]] missing QR
 
 *** [[file:energy.bib::honaker10missvaltseries][Honaker & King 2010: What Do Missing]] Values (bootstrapped em (Amelia II))
+*** [[file:energy.bib::Horton07adoMissDatComp][Horton et al. 2007: Much Ado About Nothing]]: missing features prog comparison
 *** [[cite:Ding16gaussCopulaMissDatEM][Ding & Song 2016: Gaussian Copula Miss Dat EM]] (better than Amelia II?)
 *** [[cite:Hollenbach14missDatImpCopula][Hollenbach et al. 2014: Fast Easy Imputation Copula]]
 *** GPs better than mlp for missing features (claim in: [[file:energy.bib::wang06compgausprocneuralforecast][wang et al. 2006: comparing gaussian processes]])
@@ -9022,10 +9025,10 @@ al. 2012: Current]])
 ***** could use part of this to fill separate test set e.g. giving cov matrix from amelia ii.
 ***** there are also r and java versions
 
-*** multiple imputation
+*** Multiple imputation
 ***** train a model on each imputation and then average
-***** estimation of uncertainty comes from rubin's rules
-******* one rubin's explation: [[file:energy.bib::drechsler11multiimputeslides][drechsler 2011: missing features imputation]]
+***** Estimation of uncertainty comes from Rubin's Rules
+******* One Rubin's explanation: [[file:energy.bib::drechsler11multiimputeslides][Drechsler 2011: Missing Features Imputation]]
 ***** multi imputation amelia ii seems to work.  see [[file:howto.org::r%20packages%20for%20missing%20data][r packages for missing features]]
 ***** could use the single imputation methods above, but bootstrap them, like amelia does
 ***** but amelia's constraint handling (w/ param priors) might be superior
@@ -9037,6 +9040,15 @@ al. 2012: Current]])
 *** [[Bootstrap Missing Features Fusion, and Incremental Learning]]
 *** [[mutual information and missing values]]
 *** [[http://perception.csl.illinois.edu/matrix-rank/introduction.html][matrix completion]] missing value fill-in (intro rlates it to pca)
+*** [[http://ir.uiowa.edu/etd/439/][model selection criteria in the presence of missing features based on the kullback-leibler discrepancy]]
+
+*** [[fourier based missing value fill-in]] maybe could be done w/ bootstrap
+*** [[file:energy.bib::Sherwood13wgtQRmiss][Sherwood et al. 2013: Weighted]] QR for missing features
+*** [[http://www.google.de/search?hl%3Den&rlz%3D1C1CHFX_en-GBDE446DE446&q%3Dspectral%2Bclustering%2Bwith%2Bmissing%2Bvariables&oq%3Dspectral%2Bclustering%2Bwith%2Bmissing%2Bvariables&aq%3Df&aqi%3D&aql%3D&gs_sm%3De&gs_upl%3D19573l20207l0l20511l7l6l0l0l0l2l229l692l3.2.1l6l0][missing features and spectral clustering]]
+*** periodicity measurement that handles missing features: [[file:energy.bib::Hocke08gapfillLombScarglePer][Hocke & Kämpfer 2008: Gap filling and]]
+
+*** [[file:energy.bib::Anagnostopoulos10streamCov][Anagnostopoulos et al.: Streaming Covariance Selection]] (lasso w/ missing feat handling)
+
 *** [[file:energy.bib::doquire11mutinfmissdat][Doquire & Verleysen 2011: Mutual]]
 *** [[file:energy.bib::barber10arhmmwindfrcst][Barber et al. 2010: Auto Regressive HMM]] (bockhorst, missing features)
 *** [[file:energy.bib::dereszynski12sensntwkmissdat][Dereszynski 2012: Probabilistic]] (bayesian, like barber)
@@ -9249,7 +9261,16 @@ later corrected by greg heath:
 ***** Fourier Methods For Forecast Time (extrapolation)
 ******* fourier transform forecasting (for forecast time prediction): [[http://www.nnea.net/index.php?option%3dcom_content&view%3darticle&id%3d38][trend predictor pro manual]]
 ******* [[https://www.google.com/search?rlz%3d1c1chpt_ende474de474&oq%3dfourier%2btransform%2b&sourceid%3dchrome&ie%3dutf-8&q%3dfourier%2btransform%2bextrapolation%2bperiodic%2bextension][fourier transform extrapolation periodic extension]] (problem @ edges)
+*** [[File:energy.bib::honaker10missvaltseries][Honaker & King 2010: What Do Missing]] Values (bootstrapped em)
+*** [[file:energy.bib::Kramer13SortHiDimNN][Kramer 2013: Sorting High Dimensional]] KNN noisy/missing feats
+
 *** [[cite:Liu97mleEstTdistEM][Liu 1997: ML Estimation Multivariate t Dist EM]]
+*** [[https://pypi.org/project/fancyimpute/][fancyimpute]]: A variety of matrix completion and imputation algorithms implemented in Python
+*** xcorr handling missing features w/ permutation sig. test: [[file:energy.bib::simpson01estsigxcorrmiss][simpson et al. 2001: estimation and significance]]
+*** [[http://www.ms.unimelb.edu.au/staff/publications.php%3fpub_id%3d1271][maximum likelihood estimation for linear regression models involving missing covariate observations]]
+*** [[Matlab stepwise regression]] handles missing values
+*** [[Clustering with missing features for insignicant bins]]
+*** [[Mutual Information and Missing Values]]
 * <<Distance Measures>>
 *** [[file:energy.bib::Kalpakis01distClustARIMA][Kalpakis et al. 2001: Distance measures for]]
 *** [[file:energy.bib::Domingos12afutkMachLrn][Domingos 2012: Few Useful Things]] to know about machine learning
