@@ -8813,34 +8813,33 @@ matlab-ruby-test.rb
         And then pdf making (and everything else that I checked) worked.
 
 *** <<Mac Lyx>>
-**** Installed [[http://www.ctan.org/tex-archive/systems/mac/mactex/][MacTex and MacTexExtras]]
-****** actually mactex installed on leopard was already newer than the MacTex pkg
-****** didn't install extras
-**** install the [[http://www.lyx.org/Download][lyx macosx binary]]
-****** error log:
+***** Installed [[http://www.ctan.org/tex-archive/systems/mac/mactex/][MacTex and MacTexExtras]]
+******* actually mactex installed on leopard was already newer than the MacTex pkg
+******* didn't install extras
+***** install the [[http://www.lyx.org/Download][lyx macosx binary]]
+******* error log:
 
-1. Removing obsolete files ....
-... Done removing obsolete files.
+ 1. Removing obsolete files ....
+ ... Done removing obsolete files.
 
-2. Testing to see if old LyX user's folder should be moved to new location ....
-... Done moving LyX user's directory to new location.
+ 2. Testing to see if old LyX user's folder should be moved to new location ....
+ ... Done moving LyX user's directory to new location.
 
-3. (No preferences file found at ~/Library/'Application Support'/LyX-1.5/.)
+ 3. (No preferences file found at ~/Library/'Application Support'/LyX-1.5/.)
 
-4. Installing default LyX templates ....
-... Done installing default LyX templates.
+ 4. Installing default LyX templates ....
+ ... Done installing default LyX templates.
 
-5. Installing LyX's special LaTeX files ....
-? Found TeX installation at .
-? Local TeX directory set to ~/Library/texmf.
-? Installed LyX's additional LaTeX .cls and .sty files.
+ 5. Installing LyX's special LaTeX files ....
+ ? Found TeX installation at .
+ ? Local TeX directory set to ~/Library/texmf.
+ ? Installed LyX's additional LaTeX .cls and .sty files.
 
-ERROR: Cannot run texhash command. Please run manually.
+ ERROR: Cannot run texhash command. Please run manually.
 
-... Done.
+ ... Done.
 
-****** and... texhash does not seem to be installed anywhere (can't find in finder)
-
+******* and... texhash does not seem to be installed anywhere (can't find in finder)
 * Mac-specific
 *** [[Mac Lyx]]
 *** Keyboard and Window Focus

@@ -26021,7 +26021,7 @@ http://metaoptimize.com/qa/questions/9055/role-of-transfer-functions-in-neural-n
 @InProceedings{Vogt18multiDistLrnAnomDet,
   author    = {Stephan Vogt and Scott Otterson and Volker Berkhout},
   title     = {Multi-task distribution learning approach to anomaly detection of operational states of wind turbine},
-  booktitle = {Wind Europe},
+  booktitle = {WindEurope},
   year      = {2018},
   address   = {Hamburg, DE},
   abstract  = {The detection of abnormal operation modes is of fundamental importance for both 
@@ -26039,6 +26039,7 @@ cumulative distribution function has a similar quality and no significant differ
 in the continuous ranked probability score, the probability density function will be substantially 
 smoother. This is also reflected in a significantly lower ignorance score. },
   comment   = {Single output NN distribution regression with random thresholds during training.  This is what I called dr1nn in the IRPWIND final report for WP 82.3 (2018).  Although, I implemented it with the Matlab NN toolbox and Stephan later reimplimented it for this paper with what I would guess were his own tools.},
+  file      = {:Vogt18multiDistLrnAnomDet.pdf:PDF},
 }
 
 @Article{Hao11visMultiDimSaX,
@@ -33180,6 +33181,25 @@ intraday markets.},
   owner     = {sotterson},
   publisher = {Elsevier},
   timestamp = {2012.02.09},
+}
+
+@InProceedings{Dreher18pooledFreqRsrvWndCtrl,
+  author    = {A. Dreher and D. Jost and S. Otterson and P. Hochloff},
+  title     = {Pooled Frequency Restoration Reserve Provision by Wind Farms and Controllable Energy Units},
+  booktitle = {International Conf. on the European Energy Market.},
+  year      = {2018},
+  address   = {Łódź, PL.},
+  abstract  = {This paper presents an approach to quantify the
+reliability or security level of a pool of flexibility providing
+controllable energy units (CEUs). In this pool, a backup
+unit secures the flexibility capacity of the largest flexibility
+providing unit. The security level is then applied to determine
+the flexibility capacity of a common pool of wind farms and
+CEUs, making use of probabilistic wind forecasts. The paper
+advances previous research conducted in a joint project with
+industry partners on Frequency Restoration Reserve (FRR)
+provision of pools of wind farms and controllable power plants.},
+  comment   = {Combo of controllable plants and wind farms for req. contol reserve.  Used my dr1nn code (multi-task distribution regression)},
 }
 
 @Article{Genest07copulaEverything,

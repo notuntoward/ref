@@ -9039,7 +9039,7 @@ al. 2012: Current]])
 *** [[Gaussian Processes And Missing/Uncertain Values]]?
 *** [[Bootstrap Missing Features Fusion, and Incremental Learning]]
 *** [[mutual information and missing values]]
-*** [[http://perception.csl.illinois.edu/matrix-rank/introduction.html][matrix completion]] missing value fill-in (intro rlates it to pca)
+*** [[http://perception.csl.illinois.edu/matrix-rank/introduction.html][matrix completion]] missing value fill-in (intro relates it to pca)
 *** [[http://ir.uiowa.edu/etd/439/][model selection criteria in the presence of missing features based on the kullback-leibler discrepancy]]
 
 *** [[fourier based missing value fill-in]] maybe could be done w/ bootstrap
@@ -9430,6 +9430,7 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
     <<Control Energy Provision>>
 ***** TODO [[file:energy.bib::Unknown15PilotProjectDelivery][Unknown 2015: Pilot Project]] Secondary Reserve
 ***** TODO [[file:energy.bib::Brauns14RegelWindLeist][Brauns et al. 2014: Regelenergie Durch Windkraftanlagen]]
+***** [[file:energy.bib::Dreher18pooledFreqRsrvWndCtrl][Dreher et al. 2018: Pooled Frequency Restoration]]
 ***** [[http://www.evernote.com/l/AA3lTGoghaBF0LgOUAos0jdCy0TXZsTK52Q/][E.ON is offering Wind Power neg. tertiary reserve on the DE market]] (2017)
 ***** [[file:energy.bib::IWES14totProjDescReWPR][IWES 2014: Gesamtvorhabensbeschreibung]]
 ***** [[https://www.regelleistung.net/ip/action/index][www.regelleistung.net]]: bidding and description of German ctl. pow (English)
