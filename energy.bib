@@ -19517,6 +19517,52 @@ Wind Power Forecast Error Regime Learing IDEA
   url       = {http://karpathy.github.io/2014/07/03/feature-learning-escapades/},
 }
 
+@TechReport{Gagnon17netMtrAdoptPV,
+  author      = {Pieter Gagnon and Ben Sigrin and Mike Gleason},
+  title       = {The Impacts of Changes to Nevada’s Net Metering Policy on the Financial Performance and Adoption of Distributed Photovoltaics},
+  institution = {NREL},
+  year        = {2017},
+  number      = {NREL/TP-6A20-66765},
+  month       = jan,
+  abstract    = {Net energy metering (NEM) is a billing mechanism that has historically compensated owners of 
+distributed generation systems at retail rates for any electricity that they export back to the grid 
+rather than consume on-site. NEM can significantly enhance the financial performance of 
+distributed generation systems from the owner’s perspective. For example, a large residential 
+rooftop photovoltaic (PV) system could have a payback period that is 4–8 years shorter if excess 
+generation were credited at the full-retail rate instead of a wholesale electricity rate (Barbose et 
+al. 2016). As of 2016, NEM policy is widespread in the United States—41 states and the District 
+of Columbia have passed legislation mandating full-retail net metering (North Carolina Clean 
+Energy Technology Center 2016). 
+NEM policies have contributed to the rapid growth of the distributed photovoltaic (DPV) 
+industry in the United States. However, as DPV has reached higher levels of market penetration, 
+a national conversation has begun about the efficacy of full-retail NEM as a means of achieving 
+the diverse objectives of electricity pricing (Hledik et al. 2016; Barbose et al. 2016). Utilities 
+have raised concerns about cost shifting to non-solar customers and utility shareholder 
+profitability. Solar advocates have countered by pointing to a portfolio of studies showing that, at 
+low penetrations and under certain sets of assumptions, the marginal value of solar can be 
+calculated as exceeding the retail rate in some areas (Muro and Saha 2016). Still others describe 
+NEM as a blunt instrument that sends inaccurate price signals to the demand side of the market 
+(King 2015; Kann 2016). Altogether, this conversation has commanded increasing regulatory 
+attention; in the first quarter of 2016 alone, regulators and legislatures revisited NEM policies in 
+22 states (North Carolina Clean Energy Technology Center 2016). 
+The following analysis was designed to illustrate the potential impact of NEM policy and tariff 
+changes on the financial performance and adoption of rooftop PV, where a tariff change 
+implemented in early 2016 in Nevada is taken as a case study. Although illustrative of the 
+potential impact that changes to NEM policy could have on the DPV sector, this analysis 
+provides only a partial picture of the context in which these changes are usually made. Other 
+considerations, such as the impacts of NEM policy on the utilities themselves, other electric 
+customers, total renewable energy deployment, and energy sector employment, are not addressed 
+in this study. Nonetheless, the relatively narrow focus of the study allows a more thorough 
+exploration of the interaction of distributed PV and retail electricity tariffs. This methodology 
+provides one component within a broader analytical framework that can be used to inform 
+ongoing and future decisions about NEM policy and the design of tariffs in other states. },
+  comment     = {NREL report possibly related to the PV and DER adoption study that Clean Power Research might want me to work on.
+
+See also: Dong17resPVdeployFrcst},
+  file        = {:Gagnon17netMtrAdoptPV.pdf:PDF},
+  url         = {https://www.nrel.gov/analysis/dgen/publications.html},
+}
+
 @PhdThesis{Dereszynski12sensNtwkMissDat,
   author      = {Dereszynski, Ethan W},
   title       = {Probabilistic models for quality control in environmental sensor networks},
@@ -22812,6 +22858,27 @@ Keywords: probabilistic forecasting, Energy score, discrimination, proper score,
   owner       = {sotterson},
   timestamp   = {2014.11.18},
   url         = {http://orbit.dtu.dk/fedora/objects/orbit:122326/datastreams/file_b919613a-9043-4240-bb6c-160c88270881/content},
+}
+
+@Article{Dong17resPVdeployFrcst,
+  author   = {Changgui Dong and Benjamin Sigrin and Gregory Brinkman},
+  title    = {Forecasting residential solar photovoltaic deployment in California},
+  journal  = {Technological Forecasting and Social Change},
+  year     = {2017},
+  volume   = {117},
+  pages    = {251 - 265},
+  issn     = {0040-1625},
+  abstract = {Residential distributed photovoltaic (PV) deployment in the United States has experienced robust growth, and policy changes impacting the value of solar are likely to occur at the federal and state levels. To establish a credible baseline and evaluate impacts of potential new policies, this analysis employs multiple methods to forecast residential PV deployment in California, including a time-series forecasting model, a threshold heterogeneity diffusion model, a Bass diffusion model, and National Renewable Energy Laboratory's dSolar model. As a baseline, the residential PV market in California is modeled to peak in the early 2020s, with a peak annual installation of 1.5–2GW across models. We then use the baseline results from the dSolar model and the threshold model to gauge the impact of the recent federal investment tax credit (ITC) extension, the newly approved California net energy metering (NEM) policy, and a hypothetical value-of-solar (VOS) compensation scheme. We find that the recent ITC extension may increase annual PV installations by 12%–18% (roughly 500MW) for the California residential sector in 2019–2020. The new NEM policy only has a negligible effect in California due to the relatively small new charges (<100MW in 2019–2020). Furthermore, impacts of the VOS compensation scheme ($0.12 per kilowatt-hour) are larger, reducing annual PV adoption by 32% (or 900–1300MW) in 2019–2020.},
+  comment  = {NREL PV adoption rate study that might be related to the stuff Clean Power Research might want me to do.
+
+The NREL group's publishing page is here:
+https://www.nrel.gov/analysis/dgen/publications.html
+
+See also:  Gagnon17netMtrAdoptPV},
+  doi      = {https://doi.org/10.1016/j.techfore.2016.11.021},
+  file     = {:Dong17resPVdeployFrcst.pdf:PDF},
+  keywords = {Solar PV, Forecasting, Diffusion models, Policy impact},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0040162516307569},
 }
 
 @InProceedings{Cannon16skilRngProbFrcst,
@@ -33189,6 +33256,7 @@ intraday markets.},
   booktitle = {International Conf. on the European Energy Market.},
   year      = {2018},
   address   = {Łódź, PL.},
+  file      = {Dreher18pooledFreqRsrvWndCtrl.pdf:Dreher18pooledFreqRsrvWndCtrl.pdf:PDF},
   abstract  = {This paper presents an approach to quantify the
 reliability or security level of a pool of flexibility providing
 controllable energy units (CEUs). In this pool, a backup
