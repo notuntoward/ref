@@ -10804,6 +10804,9 @@ Erika
 ******* [[file:energy.bib::Ma09compIntSmartGrid][Ma et al. 2009]] (computational Int. in smart grid)
 ******* [[cite:Haibach17predMaintWndSemiAnomDet][Haibach & Treiber 2017: Predictive Maint. Offshore Windparks]]
 ******* [[cite:Deesko15digFingerPrintFaultSlides][Deesko & Bärmann 2015: Digital Fingerprint Equipment Faults (STEAG)]]
+*** Adoption Rates
+***** [[file:energy.bib::][Gagnon et al. 2017: Impacts Changes Nevada PV Fin Adopt]] (NREL)
+***** [[file:energy.bib::Dong17resPVdeployFrcst][Dong et al. 2017: Forecasting California PV Adopt]] (NREL)
 * <<Random Variable Generation>>
 *** [[cite:Hardin13genRealisticCorrMat][Hardin et al. 2013 Gen Realistic Random Corr Matrix has Rcode]]
 *** [[http://math.stackexchange.com/questions/357980/how-to-generate-random-symmetric-positive-definite-matrices-using-matlab][How to generate random symmetric positive definite matrices using MATLAB?]]
