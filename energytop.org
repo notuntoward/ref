@@ -112,7 +112,7 @@
 *** [[file:energy.bib::Jolliffe03FrcstVerificationBook][Jolliffe & Stephenson 2003: Forecast]] verification: a practitioners guide
 *** [[file:energy.bib::Shalizi15datAnalElemViewBk][Shalizi 2015: Advanced]] data analysis from elementary perspective (logistic regression, ...)
 *** [[file:energy.bib::Ackermann05WindPowSysBook][Ackermann & others 2005: Wind Power in Power Systems]]
-*** [[file:energy.bib::Hyndman14Forecastingprinciplesand][Hyndman & Athanasopoulos 2014: Forecasting]]
+*** [[file:energy.bib::Hyndman14frcstPrincPractice][Hyndman & Athanasopoulos 2014: Forecasting Princ. & Pract.]] (exp. wght, ARIMA, etc).
 *** [[file:energy.bib::Nolan15StableDistBootCh1][Nolan 2015: Stable Distributions Models]]
 *** [[file:energy.bib::Harrell15rgrssnMdlStrtgyBook][Harrell 2015: Regression Strategies]]
 *** [[file:energy.bib::Markowski11mesoCh1][Markowski & Richardson 2011: Mesoscale]], Ch. 1: What is mesocale?
@@ -3908,7 +3908,7 @@ Hope that helps,
 ***** GP forecasts periodicities: [[file:energy.bib::Wang06compGausProcNeuralForecast][Wang et al. 2006: Comparing Gaussian Processes]]
 ******* standard seasonality method didn't work
 ***** Neural: Explictly modeling period for NN river forecast fails: [[file:energy.bib::Atiya99neuralForecastRiver][Atiya et al. 1999: comparison between neural]]
-***** AR/ARMA/ARIMA: [[http://www.uam.es/personal_pdi/economicas/amartin/bayes_forecasting_spectral.pdf][Bayesian time series analysis of periodic behaviour and spectral structure]]
+***** [[ARIMA Forecasting]]
 ***** [[Advances in Gaussian Processes]]
 ***** Uses standard tests/methods for correcting seasonality: [[file:energy.bib::Ahmed07empCompForecast][Ahmed et al. 008?: Empirical Comparison of]]
 ***** [[http://www.sciencedirect.com/science%3F_ob%3DArticleURL&_udi%3DB6VC0-4007D8M-8&_user%3D10&_rdoc%3D1&_fmt%3D&_orig%3Dsearch&_sort%3Dd&view%3Dc&_acct%3DC000050221&_version%3D1&_urlVersion%3D0&_userid%3D10&md5%3Dc8609214dbdf87de8b44dafbbcdd6de3][Bayesian long-run prediction in time series models]]
@@ -4597,7 +4597,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
     /Should be merged with [[Mixtures of regressors]]/ ?
 
 ***** [[file:energy.bib::Shi08curvePredClustGaussProcMix][Shi & Wang 2008: Curve prediction and]]
-***** ARMIMA model clustering: [[file:energy.bib::Kalpakis01distClustARIMA][Kalpakis et al. 2001: Distance measures for]]
+***** ARIMA model clustering: [[file:energy.bib::Kalpakis01distClustARIMA][Kalpakis et al. 2001: Distance measures for]]
 ***** clustered NN's by regime: [[file:energy.bib::Puma-Villanueva07predWrapSelClust][Puma-Villanueva et al. 2007: Long term time]]
 ***** periodic waveform clustering, like a regime clusterer: [[file:energy.bib::Vlachos06structPeriodicMeas][Vlachos et al. 2006: Structural Periodic Measures]]
 ***** [[file:energy.bib::Qin06clustRgrsnGene][Qin & Self 2006]] regrsn clust (linear model, in R)
@@ -4770,7 +4770,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 *** Via noise independence
 ***** a common sense approach, along w/ delays
 ***** [[http://www.afia-france.org/tiki-index.php%3Fpage%3DGroupeDeLecture090402JP][Detecting the arrow of time with independent noise models]]
-***** [[file:energy.bib::UKONS08holtWintersARIMAreg][National 2008: From Holt Winters ARIMA Modelling]] : trend + multip/add seasonal
+***** [[ARIMA Forecasting]]
 *** [[Extreme Quantile Clustering]]
 *** [[file:energy.bib::doi:10.1080/03610918.2015.1122048][Vinod 2017: Generalized Correlation & Kernel Causality]]
 *** also: [[Types of dependence or similarity]]
@@ -5340,8 +5340,7 @@ sera
 ********* [[file:energy.bib::Bremnes04precipQuantsVerif][Bjoernar 2004: Probabilistic NWP]] precip verif
 ********* [[file:energy.bib::Bremnes04quantFrcstVerif][Bremnes 2004: Methods]] for prob verif
 ******* See also: [[Feature selection for probabilistic forecasts]]
-***** Adaptive Quantile Regression
-      <<Adaptive Quantile Regression>>
+***** <<Adaptive Quantile Regression>>
 ******* [[file:energy.bib::Taylor07frcstSprMktPriceQR][Taylor 2007: Forecasting]] sprMkt price exponential weighting
 ******* [[file:energy.bib::Moller08adaptQuantRegr][Moeller et al. 2008: Time]] (DTU guy) (2006 tech note in that bibtex entrance is better than paper?)
 ******* [[file:energy.bib::Jonsson13elecPriceQR][Jonsson et al. 2013: Predictive]]
@@ -6719,6 +6718,7 @@ variables will be preferred, when possible.
 
         These are R built-in functions, do est. by least squares.  Confidence
         bounds included.  These are mostly Holt Winters techniques.
+******* [[file:energy.bib::Hyndman14frcstPrincPractice][Hyndman & Athanasopoulos 2014: Forecasting Princ. & Pract.]] (exp. wght, ARIMA, etc).
 ******* Holt exp linear: separate trend, bias smoothing: [[file:energy.bib::Nau15smoothMAexpHolt][Nau 2015: Moving]] avg exp smth
 ******* additive or multipicatative seasonal: [[file:energy.bib::UKONS08holtWintersARIMAreg][National 2008: From Holt Winters ARIMA Modelling]]
 ******* multi-periodicity (daily, weekly): [[file:energy.bib::Szmit12holtWinterMultiPeriod][Szmit & Szmit 2012: Usage Holt Winters]]
@@ -6726,8 +6726,20 @@ variables will be preferred, when possible.
 ******* exponential weighting (simple HW) for quantiles: [[file:energy.bib::Taylor07frcstSprMktPriceQR][Taylor 2007: Forecasting]]
 ******* trend damping is better, almost regime learn: [[file:energy.bib::McKenzie10expSmthDampTrnd][McKenzie & Gardner 2010: Damped]] trend
 ******* primary paper? [[file:energy.bib::Winters60exponMvAvgSalesFrcst][Winters 1960: Forecasting]]
-***** ARIMA, etc.
+***** <<ARIMA Forecasting>>
 ******* [[file:energy.bib::UKONS08holtWintersARIMAreg][National 2008: From Holt Winters ARIMA Modelling]] : trend + multip/add seasonal
+******* [[file:energy.bib::Hyndman14frcstPrincPractice][Hyndman & Athanasopoulos 2014: Forecasting Princ. & Pract.]] (exp. wght, ARIMA, etc).
+******* nice [[http://www.duke.edu/~rnau/411arim.htm][ARIMA lecture notes]]
+
+******* AR/ARMA/ARIMA [[http://www.uam.es/personal_pdi/economicas/amartin/bayes_forecasting_spectral.pdf][Bayesian time series analysis of periodic behaviour and spectral structure]]
+
+******* ARIMA model clustering: [[file:energy.bib::Kalpakis01distClustARIMA][Kalpakis et al. 2001: Distance measures for]]
+
+******* [[file:energy.bib::UKONS08holtWintersARIMAreg][National 2008: From Holt Winters ARIMA Modelling]] : trend + multip/add seasonal
+*** [[Extreme Quantile Clustering]]
+*** [[file:energy.bib::doi:10.1080/03610918.2015.1122048][Vinod 2017: Generalized Correlation & Kernel Causality]]
+*** also: [[Types of dependence or similarity]]
+
 ***** Caltech video: [[http://itunes.apple.com/us/podcast/where-wind-comes-from-on-earth/id422627541?i%3d91602098][where the wind comes from]]
 *** <<Numerical Weather Prediction (NWP)>>
 ***** TODO [[cite:Hamill04introNWPens_Slides][Hamill 2004: Introduction Numerical Weather & Ens Slides]]
@@ -7786,8 +7798,7 @@ Scott
 *** New models
 ***** Used in other systems
 ******* [[file:energy.bib::Zack08truewindOverview][Zack 2008: Overview of AWS]]
-******** ARIMA
-*********** nice [[http://www.duke.edu/~rnau/411arim.htm][ARIMA lecture notes]]
+******** [[ARIMA Forecasting]]
 ******** "state space"
 ******** [[http://www.cpc.ncep.noaa.gov/products/predictions/experimental/bulletin/Jun97/q27.html][Screening Multiple Linear Regressionf (SMLR)]].
 ********** related to [[file:energy.bib::Minka01BayesLinRegress][Minka 2001: Bayesian Linear Regression]] ?
@@ -8981,6 +8992,7 @@ al. 2012: Current]])
 ***** [[cite:Clifton13extrmFuncThNovDet][Clifton et al. 2013: Extreme Function Theory Novelty Detection]]
 ***** [[file:energy.bib::Gong14extrmQRvineCopula][Gong et al. 2014: Estimation]] extreme values, vine copula
 ***** also see [[Novelty Detection]]
+***** [[file:energy.bib::Hyndman14frcstPrincPractice][Hyndman & Athanasopoulos 2014: Forecasting Princ. & Pract.]] (exp. wght, ARIMA, etc).
 * <<Missing Features>>
 *** Probably OK to select features w/ spline fill-in?
 *** Train coeffs w/ something fancier?
