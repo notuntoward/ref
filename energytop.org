@@ -640,7 +640,7 @@
     - DNI :: Direct Normal irradiance: coming from a straight line to the sun
     - DHI :: Difuse Horizotal Irradiance: radiation not from a direct path from the sun (scattered by molecules and particles in the atmosphere, comes equally from all directions. (3Tier [[http://www.3tier.com/en/support/solar-prospecting-tools/what-global-horizontal-irradiance-solar-prospecting/][calls this DIF]])
     - GHI :: Global Horizontal Irradiance.  Total shortwave radiation received from above by a surface horizontal to the ground. Imp. for PV.  Includes both Direct Normal Irradiance (DNI) and Diffuse Horizontal Irradiance (DHI).
-    - GTI :: Global Tilted Irradiation/Irradiance (GTI), or total radiation received on a surface with defined tilt and azimuth, fixed or sun-tracking. This is the sum of the scattered radiation, direct and reflected. It is a reference for photovoltaic (PV) applications, and can be occasionally affected by shadow. (from [[http://solargis.com/support/knowledge-base/methodology/solar-radiation-modeling/][here]])o
+    - GTI :: Global Tilted Irradiation/Irradiance (GTI), or total radiation received on a surface with defined tilt and azimuth, fixed or sun-tracking. This is the sum of the scattered radiation, direct and reflected. It is a reference for photovoltaic (PV) applications, and can be occasionally affected by shadow. (from [[http://solargis.com/support/knowledge-base/methodology/solar-radiation-modeling/][here]])
 *** <<Boosting vs. Bagging vs. Bootstrapping>>
     From: [[https://stats.stackexchange.com/questions/27049/regarding-boosting-bagging-and-bootstrapping?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa][Regarding boosting, bagging and bootstrapping - Cross Vali...]]
 
@@ -1245,6 +1245,7 @@
 ********* [[http://radio.feld.cvut.cz/matlab/toolbox/nnet/backpr16.html][msereg]]: mse + large NN weight penalty
 ********* mae: [[Uwe Reichel's summary]] says it exists, but I haven't found it
 ********* dmsereg: [[Uwe Reichel's summary]] says it exists, but I haven't found it
+********* [[file:energy.bib::Eckersley18utilFuncImpossUncert][Eckersley 2018: Impossibility Uncertainty Theorems Util Func]] (for UI choices?)
 ******* [[file:energy.bib::][Asari 2005: Technical Notes Linear]]: Linear regression via SVD/ridge and fourire regreesion
 ******* [[Regularization]]
 ******* Normalization
@@ -1363,6 +1364,7 @@
 ******* [[file:energy.bib::Yang09featSelMLPrand][Yang et al. 2009: Feature Selection MLP Neural Network]]
 ******* [[file:energy.bib::Bessa10infoWindPow][Bessa et al. 2010: Information]]
 ******* [[stepwisefit.m]] let's you define your own cost function
+******* [[file:energy.bib::Eckersley18utilFuncImpossUncert][Eckersley 2018: Impossibility Uncertainty Theorems Util Func]] (for UI choices?)
 ***** Gaussianization
       <<Gaussianization>>
 
@@ -4456,8 +4458,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 *** use [[Dynamic PCA]] to notice mismatch (like fault detection)?
 *** [[http://www.smhi.se/hfa_coord/nordklim/task1/quality_control.pdf][Quality Control of Meteorological Observation]]
 *** [[file:energy.bib::Guo14WindPowCrvWRF][Guo & Xiao 2014: Wind Power Assessment]] (learning: dir and QA)
-*** Auto categorization of errors
-    <<Auto categorization of errors>>
+* <<Auto categorization of errors>>
 ***** wind prediction was off
 ***** power curve was off
 ***** bad met tower data (see meeting notes: 10/6/08)
@@ -4467,6 +4468,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ******* [[file:energy.bib::Kusiak09powerMonModel][Kusiak et al. 2009: Models]] pow mon
 ******* a QC meeting time saver, not an accuracy improvement
 ******* could use deviation from a single-turbine power curve, as in [[file:energy.bib::Li01neuralWindPowGen][Li et al. 2001: Using neural networks]]
+******* The flat spot and QR detector I wrote at Fraunhofer
 ******* also see [[Power Curve Learning]]
 ***** wind turbines cut off around [[http://www.gepower.com/prod_serv/products/wind_turbines/en/15mw/specs.htm][20-25 m/s]]
 ***** low bias or high bias (offset?)
@@ -6668,8 +6670,7 @@ variables will be preferred, when possible.
         forecast = a * persistence + (1-a) * climatology
 
         might want to remove diurnal comps too.
-***** Financial value/cost of forecasts
-      <<Financial value/cost of forecasts>>
+***** <<Financial value/cost of forecasts>>
 ******* [[file:energy.bib::Lew11valWindFrcst][Lew et al. 2011]] val wind frcst
 ******* see also: [[Forecast Error Cost]]
 ******* Value at Risk (VaR)
@@ -6920,8 +6921,7 @@ variables will be preferred, when possible.
       - [ ] [[file:energy.bib::lei07predwindpowphaserecons][lei et al. 2007: prediction of wind]]
       - [ ] [[file:energy.bib::alkhouli05gustfrntdettmplt][alkhouli & debrunner 2005: gust front detection]]
       - [ ] that japanese markov model spawner thing
-******* Summary of sensor location picking papers
-        <<Summary of sensor location picking papers>>
+******* <<Summary of sensor location picking papers>>
 ********* _temperature_ (forecasted) is good for wind ramp forecasting: [[file:energy.bib::reikard08tempstaterampwind][reikard 2008: using temperature and]]
 ********* _direction_
 *********** is good for power curves: [[file:energy.bib::li01neuralwindpowgen][li et al. 2001: using neural networks]]
@@ -6995,9 +6995,7 @@ variables will be preferred, when possible.
 ***** see: [[Ensembles and Ramps]]
 ***** see: [[Regimes and Ramps]]
 ***** see: [[Wind/Solar derivatives (ramps)]]
-*** Graphical forecasting model (Bayesian network)
-    <<Bayesian Network forecasting model>>
-
+*** <<Bayesian Network forecasting model>>
 ***** weather prediction BN (first?): [[file:energy.bib::Cofino02BNweathPred][Cofıño et al. 2002: Bayesian]]
 ***** [[file:energy.bib::Marttinen09graphVARlrnUlag][Marttinen & Corander 2009: Bayesian]]
 ***** adaptive lasso may not work well for correlated features
@@ -7472,6 +7470,7 @@ Scott
 ***** [[file:energy.bib::Kleissl10solarFrcstStateOfArt][Kleissl 2010: Current State Art Solar Forecasting]]
 ***** TODO [[file:energy.bib::Pelland13pvSolarFrcstStateOfArt][Pelland et al. 2013: Photovoltaic]] solar forecast state of art
 ***** [[file:energy.bib::Marquez13solarFrcstSatGrndNN][Marquez et al. 2013: Hybrid ANNs satellite/grnd solar]]
+***** [[file:energy.bib::Karpatne17physNNlakeT][Karpatne et al. 2017: Physics Neural Networks PGNN]] (mixed phys/ML NN)
 ***** [[file:energy.bib::Wu14solarFrcstShrtTermHybrid][Wu et al. 2014: Novel Hybrid Model]] PV forecast GA combo (boost?)
 ***** [[cite:Hodge16IntroWndSolrFrcstVal][Hodge 2016: Introduction Wind Solar Power Forecasting]]
 ***** [[cite:Siemens14sennFrcstsRES][Siemens 2014: Better Forecast Renewable Energy Sources Wnd/Solar/netDmd/xmssn/Deep]]
@@ -8434,8 +8433,11 @@ Scott
 ********* [[file:energy.bib::Lu07varyCoeffAdapt][Lu et al. 2007: Adaptive]] varying coeffs for linear stoch procs.
 ********* [[file:energy.bib::Lenzi16spatTempWndProbFrcst][Lenzi et al. 2016: Spatial]] temporal, probabilistic latent variables
 ********* [[cite:Ng10kernCopulaProcThesis][Ng 2010: Kernel Copula Processes: space/time/Stoch DiffyQ]]
+********* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012: Innovation diffusion SDEs]] 
 ********* see also: [[Quantile Differential Equations]] (related to bivariate copulas)
 ********* see also: SDE's in Optimization
+********* see also: IRPWIND WP82.3 Final Report, which has Peder Bacher's SDEs
+********* sometimes also used in [[Bass Innovation Diffusion Models]]
 ******* multi-step forecasting techniques
 ********* [[file:energy.bib::][Taieb & Hyndman 2014: Boosting]] Gaussian proces (other papers like this too)
 ******* [[cite:Soares17distGridMgmtPowFlw][Soares et al. 2017: Active Distribution Grid pow flow scenarios]]
@@ -8984,6 +8986,7 @@ al. 2012: Current]])
 ***** [[cite:Bandi16SpectrumWindPow][Bandi 2016: Spectrum Wind Power Fluctuations]]: limits to variance reduction with spatial averaging
 ***** [[cite:SantosAlamillos14windVarBsld][Santos-Alamillos et al. 2014 spat. var Wind Baseload]]
 ***** [[cite:Camargo15modelWindPVcmplmnt][Camargo et al. 2015: Spatiotemporal model wind+PV complimentarity]]
+***** [[file:energy.bib::Eckersley18utilFuncImpossUncert][Eckersley 2018: Impossibility Uncertainty Theorems Util Func]] (for UI choices?)
 ***** also see: [[Forecast aggregation]] (several more articles on summing RV's)
 ***** also see: [[Aggregation vs. Forecasting Accuracy]]
 ***** see also: [[Clustering for prediction]]
@@ -9438,8 +9441,7 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 ***** Physical better than NN model (IWES): [[file:d:/Users/sotterson/OneDrive/shareHW/DTU/doc/energy.bib::][Kuester et al.: Estimation Available Active]]
 ******* 3 sec data & paper: [[K:\Organisation\Diplomanden\Arbeiten\Sascha_Tietz][Dynamic spring mass turbine model]]
 ***** see also [[Control Energy Provision]]
-*** Control Energy Provision (reserve power)
-    <<Control Energy Provision>>
+*** <<Control Energy Provision>> (reserve power)
 ***** TODO [[file:energy.bib::Unknown15PilotProjectDelivery][Unknown 2015: Pilot Project]] Secondary Reserve
 ***** TODO [[file:energy.bib::Brauns14RegelWindLeist][Brauns et al. 2014: Regelenergie Durch Windkraftanlagen]]
 ***** [[file:energy.bib::Dreher18pooledFreqRsrvWndCtrl][Dreher et al. 2018: Pooled Frequency Restoration]]
@@ -9450,6 +9452,7 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 ***** [[file:energy.bib::Hirth13ctlPowRnwblGerman][Hirth & Ziegenhagen 2013: Control Power Variable Renewables]] Germany
 ***** [[file:energy.bib::Hirth13balPowRnwblGerman][Hirth & Ziegenhagen 2013: Balancing Power Variable Renewables]] Germany
 ***** [[file:energy.bib::Mills14integPVbalRsrv][Mills et al. 2014: Integrating Solar PV]] balance cost est, 1-hr errors most exp.
+***** [[file:energy.bib::Perez19ovrbldCurtailFirmPV_draft][Perez et al. 2019: Overbuilding Curtailment for Firm PV]]
 ***** [[file:energy.bib::Milligan10opRsrvWindPowCmpr][Milligan et al. 2010: Operating]] reserve comparison, has freq. domain
 ***** [[cite:Rebours07survVoltAncSrvc_I][Rebours et al. 2007: Survey Frequency Voltage I]]
 ***** [[cite:Rebours07survCtlAncSrvII][Rebours et al. 2007 Survey Freq. Volt. II]]
@@ -9519,6 +9522,7 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 ******* [[file:energy.bib::Hirth13ctlPowRnwblGerman][Hirth & Ziegenhagen 2013: Control Power Variable Renewables]] Germany
 ******* [[file:energy.bib::Hirth13balPowRnwblGerman][Hirth & Ziegenhagen 2013: Balancing Power Variable Renewables]] Germany
 ******* [[cite:Pineda12intrnlEnrgyMktEU][Pineda et al. 2012: Creating Internal Energy Market Europe]] (intraday illiquidity increases costs in general EU)
+******* [[file:energy.bib::][Crampes et al. 2018: Supply flex mkt, ramps]]
 ******* TODO [[file:energy.bib::Gould13limitOrderBks][Gould et al. 2013: Limit]] order books
 ******* <<German Power Market Data>> at IWES and some pricing explanations
 
@@ -10078,6 +10082,7 @@ Scott
 ***** <<Wind/Solar derivatives (ramps)>>
 ******* [[https://www.evernote.com/edit/686a2fba-ddae-4d62-b901-e648c223d0f0#n%3D686a2fba-ddae-4d62-b901-e648c223d0f0][NREL article]]
 ******* See: [[Ramp Forecasting]]
+******* [[file:energy.bib::][Crampes et al. 2018: Supply flex mkt, ramps]]
 ***** Control reserve
 ******* [[cite:Maurer09dimSTctlRsrvProb][Maurer et al. 2009: Dimensioning]] how DE does ctl. res dimensioning
 ******* [[cite:Zhang16copulaConvPowSys][Zhang et al. 2016: Copula Based Dependent Convoltion Pow Sys]] (better than Maurer)
@@ -10386,6 +10391,8 @@ Scott
 ***** [[file:~/doc/energy.bib::Lu10unitCommCnstrnt][Lu et al. 2010: Unit]] commitment flexibility
 ***** [[file:energy.bib::Focken10extrmEvRampFrcst][Focken 2010: Experiences Extreme Event]] (ramp need)
 ***** [[file:energy.bib::Bristol09swingDoorTrend][Bristol 1990: Swinging]] Door Trend (orig paper)
+***** [[file:energy.bib::][Crampes et al. 2018: Supply flex mkt, swing door ramps]]
+
 ***** [[cite:CAISO10caisoRnwblIntegSwngDr][CAISO 2010: Integ. Rnwbl Swing Door Tech Rep]]
 ***** [[file:energy.bib::Florita13idWindSolarRamps][Florita et al. 2013: Identifying Wind Solar Ramping Events]] (swingdoor plots)
 ***** [[cite:Sevlian13windRampDetStat][Sevlian & Rajagopal 2013: Detection Statistics Wind Power Ramps]]
@@ -10803,7 +10810,7 @@ Erika
 ***** also [[Class Imbalance Handling]]
 ***** also [[Fault Prediction]]
 ***** also [[State Change Detection][State Change Detection]] (for flaw detection)
-*** TODO <<Smart Grid>> (PUT THIS UNDER OPTIMIZATION or merge with other related things?)
+*** TODO <<Smart Grid>> (PUT THiS UNDER OPTIMIZATION or merge with other related things?)
 ***** Grid semantic web
 ******* [[http://cordis.europa.eu/ictresults/index.cfm/section/news/tpl/article/id/90399][Semantic web promises a smarter electricity grid]]
 ***** Needs [[http://www.netl.doe.gov/moderngrid/docs/Improved%20Interfaces%20and%20Decision%20Support_FINAL_v2.0.pdf][AI based data reduction]] for operator-comprehensible displays (p. B5-9)
@@ -10816,9 +10823,23 @@ Erika
 ******* [[file:energy.bib::Ma09compIntSmartGrid][Ma et al. 2009]] (computational Int. in smart grid)
 ******* [[cite:Haibach17predMaintWndSemiAnomDet][Haibach & Treiber 2017: Predictive Maint. Offshore Windparks]]
 ******* [[cite:Deesko15digFingerPrintFaultSlides][Deesko & Bärmann 2015: Digital Fingerprint Equipment Faults (STEAG)]]
-*** Adoption Rates
-***** [[file:energy.bib::][Gagnon et al. 2017: Impacts Changes Nevada PV Fin Adopt]] (NREL)
-***** [[file:energy.bib::Dong17resPVdeployFrcst][Dong et al. 2017: Forecasting California PV Adopt]] (NREL)
+*** <<Technology Adoption Rates>>
+***** Solar adoption rates
+******* [[file:energy.bib::][Gagnon et al. 2017: Impacts Changes Nevada PV Fin Adopt]]: NREL
+******* [[file:energy.bib::Dong17resPVdeployFrcst][Dong et al. 2017: Forecasting California PV Adopt]]: NREL, uses Bass, others
+******* [[file:energy.bib::Yu18deepSolarDB][Yu et al. 2018: DeepSolar Adopt]]
+***** [[file:energy.bib::Rogers83diffusInnovBk][Rogers 1983: Diffusion of Innovation Book]]
+***** <<Bass Innovation Diffusion Models>>
+******* [[file:energy.bib::Bass94bassWithoutDecVars][Bass et al. 1994: Why Bass Model w/o dec vars]] (with derivations. SDE?)
+******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012: Innovation diffusion SDEs]] (could get rate of change)
+******* [[file:energy.bib::][Cosguner et al. 2018: Dynamic Pricing New Products Dyn Bass]]
+******* [[file:energy.bib::Nafidi18inhomogDiffProcBassSDE][Nafidi et al. 2018 inhomog diffuse model Bass]]
+***** [[file:energy.bib::Eckersley18utilFuncImpossUncert][Eckersley 2018: Impossibility Uncertainty Theorems Util Func]] (for UI choices?)
+***** Also: [[Technology Learning Rates]]
+***** Also: [[Portfolio Optimization and Forecasting]]
+*** <<Technology Learning Rates>>
+***** [[file:energy.bib::Nagy13basPredTechProg][Nagy et al. 2013: Statistical]]
+***** Also: [[Technology Adoption Rates]]
 * <<Random Variable Generation>>
 *** [[cite:Hardin13genRealisticCorrMat][Hardin et al. 2013 Gen Realistic Random Corr Matrix has Rcode]]
 *** [[http://math.stackexchange.com/questions/357980/how-to-generate-random-symmetric-positive-definite-matrices-using-matlab][How to generate random symmetric positive definite matrices using MATLAB?]]
@@ -11473,7 +11494,7 @@ TOTO: read Fan16* for an overview
       (recommended in  [[cite:Karpathy16deepReinfLrnPongPix][Karpathy 2016: Deep Reinforcement Learning]])
 ***** TODO [[cite:Karpathy16deepReinfLrnPongPix][Karpathy 2016: Deep Reinforcement Learning]] Pong Pix Blog
 *** see also [[Deep Learning]]
-* <<My optimization learning path>>
+* <<My Optimization Learning Path>>
   Stuff I should learn about for electricity system optimization
 
   *Overall approach (thinking as of May 11, 2014)*
@@ -11663,6 +11684,7 @@ optimization to be a generalization of linear programming.
 
 ******* Slides and video lecture: [[file:energy.bib::Schraudolph05GradientMethsMachLrn][Schraudolph 2005: Gradient Methods Machine Learning]]
 
+***** [[file:energy.bib::Eckersley18utilFuncImpossUncert][Eckersley 2018: Impossibility Uncertainty Theorems Util Func]] (for UI choices?)
 *** Power Systems
 ***** [[German Power Market]], especially: [[file:energy.bib::Hochloff14GermanPowerMarket][Hochloff et al. 2014: German Power Market]]
 ***** Nice UWEE course slides: [[http://www.ee.washington.edu/research/real/power_system_economics.html][Power System Economics]]

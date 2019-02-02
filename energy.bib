@@ -1184,6 +1184,90 @@ Obviously, this could be a Gaussian Copula or whatever...  The coolness of this 
   url          = {https://www.elen.ucl.ac.be/Proceedings/esann/esannpdf/es2015-56.pdf},
 }
 
+@Article{Yu18deepSolarDB,
+  author        = {Yu, Jiafan and Wang, Zhecheng and Majumdar, Arun and Rajagopal, Ram},
+  title         = {DeepSolar: A Machine Learning Framework to Efficiently Construct a Solar Deployment Database in the United States},
+  journal       = {Joule},
+  year          = {2018},
+  volume        = {2},
+  number        = {12},
+  pages         = {2605--2617},
+  __markedentry = {[scotto:6]},
+  abstract      = {-- NIPS pdf abstract --
+We have developed DeepSolar, a deep learning framework that analyzes satellite
+imagery to identify the GPS locations and sizes of solar photovoltaic (PV) panels.
+Leveraging its high accuracy and scalability, we constructed a comprehensive high-
+fidelity solar deployment database for the contiguous U.S. We demonstrated its
+value by discovering that residential solar deployment density peaks at a population
+density of 1000 capita/mile2, increases with annual household income asymptoting
+at ∼\$150K, and has an inverse correlation with the Gini index representing income
+inequality. We uncovered a solar radiation threshold (4.5 kWh/m2/day) above
+which the solar deployment is “triggered”. Furthermore, we built an accurate
+machine learning-based predictive model to estimate the solar deployment density
+at the census-tract level. We offer DeepSolar database as a publicly-available
+resource for researchers, utilities, solar developers and policymakers to further
+uncover solar deployment patterns, build comprehensive economic and behavioral
+models, and ultimately support the adoption and management of solar electricity.
+
+-- From Joule website ---
+
+Highlights
+
+* An accurate deep learning model for detecting solar panel on satellite imagery
+* Built a nearly complete solar installation database for the contiguous US
+* Identified key socioeconomic factors correlating with solar deployment density
+* A predictive model to estimate solar deployment density at census tract level
+
+Context \& Scale
+
+We built a nearly complete solar installation database for the contiguous US utilizing a novel deep learning model applied to satellite imagery. The data are published as the first publicly available, high-fidelity solar installation database in the contiguous US. We plan to update it annually and add other countries and regions of the world. We demonstrated the value of this database by identifying key environmental and socioeconomic factors correlated with solar deployment. We also developed high-accuracy machine learning models to predict solar deployment density utilizing these factors as input. We hope the data produced by DeepSolar can aid researchers, policymakers, and the industry in gaining a better understanding of solar adoption and its impacts.
+Summary
+
+We developed DeepSolar, a deep learning framework analyzing satellite imagery to identify the GPS locations and sizes of solar photovoltaic panels. Leveraging its high accuracy and scalability, we constructed a comprehensive high-fidelity solar deployment database for the contiguous US. We demonstrated its value by discovering that residential solar deployment density peaks at a population density of 1,000 capita/mile2, increases with annual household income asymptoting at ∼\$150k, and has an inverse correlation with the Gini index representing income inequality. We uncovered a solar radiation threshold (4.5 kWh/m2/day) above which the solar deployment is “triggered.” Furthermore, we built an accurate machine learning-based predictive model to estimate the solar deployment density at the census tract level. We offer the DeepSolar database as a publicly available resource for researchers, utilities, solar developers, and policymakers to further uncover solar deployment patterns, build comprehensive economic and behavioral models, and ultimately support the adoption and management of solar electricity.},
+  comment       = {Satellite imagery finds 95\% of PV panels in US. Uses census-tract level to estimate what triggers solar adoption.   Their deep learning NN fits better than traditional log or log-linear models, like Clean Power Research is using.
+
+A paper I found from Google Scholar says that this paper was published in NIPS 2018 but I can't find it there.  So, I've attached it to this bibtex entry.
+
+Project Page: http://web.stanford.edu/group/deepsolar/home.html
+
+which has links to code and data on this page.
+
+Evernote: https://www.evernote.com/l/AA2LIbgfOqFKcZTCg4PTvSnwfS5f3fbyM7w/
+
+Quite relevant to Clean Power Research.},
+  file          = {NIPS 2018 Paper:Yu18deepSolarDB_conf.pdf:PDF},
+  publisher     = {Elsevier},
+  url           = {https://www.sciencedirect.com/science/article/pii/S2542435118305701},
+}
+
+@Article{Bass94bassWithoutDecVars,
+  author   = {Bass, Frank M. and Krishnan, Trichy V. and Jain, Dipak C.},
+  title    = {Why the Bass Model Fits without Decision Variables},
+  journal  = {Marketing Science},
+  year     = {1994},
+  volume   = {13},
+  number   = {3},
+  pages    = {203-223},
+  abstract = { Over a large number of new products and technological innovations, the Bass diffusion model (Bass 1969) describes the empirical adoption curve quite well. In this study, we generalize the Bass model to include decision variables such as price and advertising. The generalized model reduces to the Bass model as a special case and explains why the Bass model works so well without including decision variables. We compare our generalized Bass model to other approaches from the literature for including decision variables into diffusion models, and our results provide both theoretical and empirical support for the generalized Bass model. We also show how our generalized Bass model can be used for product planning purposes. },
+  comment  = {The Bass Model used in Dong17resPVdeployFrcst to predict PV adoption.  Generlizes it to (I think) multivariate inputs, but then finds that they don't matter.  Also has a decent derivation.  
+
+My first impression is that the original idea was that product adoption followed an S curve.  Then the guy decided to make it a diffy Q.  But I had better check this.
+
+Also see this homepage: http://www.bassbasement.org/BassModel/Default.aspx
+
+ANYWAY, maybe this could be cast as a stochastic differential equation problem??  Impose temporal smoothness or something?  
+SURE ENOUGH: It's been done: Kapur12bassDiffuseSDE, Nafidi18inhomogDiffProcBassSDE
+
+Spatial bass: Duggan17bassMetaSpace},
+  doi      = {10.1287/mksc.13.3.203},
+  eprint   = {https://doi.org/10.1287/mksc.13.3.203},
+  file     = {:Bass94bassWithoutDecVars.pdf:PDF},
+  url      = { 
+        https://doi.org/10.1287/mksc.13.3.203
+    
+},
+}
+
 @Article{Hansen01mdlSelMDL,
   author    = {Mark H Hansen and Bin Yu},
   title     = {Model Selection and the Principle of Minimum Description Length},
@@ -6640,11 +6724,10 @@ Keywords: wind energy; uncertainty; decision-making; quantiles; ensembles; forec
 }
 
 @Article{Battaglia18biasDpLrnGraphNet,
-  author        = {Peter W. Battaglia and Jessica B. Hamrick and Victor Bapst and Alvaro Sanchez-Gonzalez and Vinicius Zambaldi and Mateusz Malinowski and Andrea Tacchetti and David Raposo and Adam Santoro and Ryan Faulkner and Caglar Gulcehre and Francis Song and Andrew Ballard and Justin Gilmer and George Dahl and Ashish Vaswani and Kelsey Allen and Charles Nash and Victoria Langston and Chris Dyer and Nicolas Heess and Daan Wierstra and Pushmeet Kohli and Matt Botvinick and Oriol Vinyals and Yujia Li and Razvan Pascanu},
-  title         = {Relational inductive biases, deep learning, and graph networks},
-  __markedentry = {[scotto:6]},
-  abstract      = {Artificial intelligence (AI) has undergone a renaissance recently, making major progress in key domains such as vision, language, control, and decision-making. This has been due, in part, to cheap data and cheap compute resources, which have fit the natural strengths of deep learning. However, many defining characteristics of human intelligence, which developed under much different pressures, remain out of reach for current approaches. In particular, generalizing beyond one's experiences--a hallmark of human intelligence from infancy--remains a formidable challenge for modern AI. The following is part position paper, part review, and part unification. We argue that combinatorial generalization must be a top priority for AI to achieve human-like abilities, and that structured representations and computations are key to realizing this objective. Just as biology uses nature and nurture cooperatively, we reject the false choice between "hand-engineering" and "end-to-end" learning, and instead advocate for an approach which benefits from their complementary strengths. We explore how using relational inductive biases within deep learning architectures can facilitate learning about entities, relations, and rules for composing them. We present a new building block for the AI toolkit with a strong relational inductive bias--the graph network--which generalizes and extends various approaches for neural networks that operate on graphs, and provides a straightforward interface for manipulating structured knowledge and producing structured behaviors. We discuss how graph networks can support relational reasoning and combinatorial generalization, laying the foundation for more sophisticated, interpretable, and flexible patterns of reasoning. As a companion to this paper, we have released an open-source software library for building graph networks, with demonstrations of how to use them in practice.},
-  comment       = {Deep Learning doesn't represent the world; this paper talks about graph networdks as a way to represent reality and learn more efficiently, although this approach can't easily describe recursion, conditional iteration, or control flow.  The authors have a new graph networks library.
+  author      = {Peter W. Battaglia and Jessica B. Hamrick and Victor Bapst and Alvaro Sanchez-Gonzalez and Vinicius Zambaldi and Mateusz Malinowski and Andrea Tacchetti and David Raposo and Adam Santoro and Ryan Faulkner and Caglar Gulcehre and Francis Song and Andrew Ballard and Justin Gilmer and George Dahl and Ashish Vaswani and Kelsey Allen and Charles Nash and Victoria Langston and Chris Dyer and Nicolas Heess and Daan Wierstra and Pushmeet Kohli and Matt Botvinick and Oriol Vinyals and Yujia Li and Razvan Pascanu},
+  title       = {Relational inductive biases, deep learning, and graph networks},
+  abstract    = {Artificial intelligence (AI) has undergone a renaissance recently, making major progress in key domains such as vision, language, control, and decision-making. This has been due, in part, to cheap data and cheap compute resources, which have fit the natural strengths of deep learning. However, many defining characteristics of human intelligence, which developed under much different pressures, remain out of reach for current approaches. In particular, generalizing beyond one's experiences--a hallmark of human intelligence from infancy--remains a formidable challenge for modern AI. The following is part position paper, part review, and part unification. We argue that combinatorial generalization must be a top priority for AI to achieve human-like abilities, and that structured representations and computations are key to realizing this objective. Just as biology uses nature and nurture cooperatively, we reject the false choice between "hand-engineering" and "end-to-end" learning, and instead advocate for an approach which benefits from their complementary strengths. We explore how using relational inductive biases within deep learning architectures can facilitate learning about entities, relations, and rules for composing them. We present a new building block for the AI toolkit with a strong relational inductive bias--the graph network--which generalizes and extends various approaches for neural networks that operate on graphs, and provides a straightforward interface for manipulating structured knowledge and producing structured behaviors. We discuss how graph networks can support relational reasoning and combinatorial generalization, laying the foundation for more sophisticated, interpretable, and flexible patterns of reasoning. As a companion to this paper, we have released an open-source software library for building graph networks, with demonstrations of how to use them in practice.},
+  comment     = {Deep Learning doesn't represent the world; this paper talks about graph networdks as a way to represent reality and learn more efficiently, although this approach can't easily describe recursion, conditional iteration, or control flow.  The authors have a new graph networks library.
 
 * can't easily describe recursion, conditional iteration, or control flow :
   (from https://www.zdnet.com/article/google-ponders-the-shortcomings-of-machine-learning)
@@ -6653,13 +6736,13 @@ Keywords: wind energy; uncertainty; decision-making; quantiles; ensembles; forec
 
 
 },
-  date          = {2018-06-04},
-  eprint        = {http://arxiv.org/abs/1806.01261v3},
-  eprintclass   = {cs.LG},
-  eprinttype    = {arXiv},
-  file          = {:Battaglia18biasDpLrnGraphNet.pdf:PDF},
-  keywords      = {cs.LG, cs.AI, stat.ML},
-  url           = {https://arxiv.org/abs/1806.01261},
+  date        = {2018-06-04},
+  eprint      = {http://arxiv.org/abs/1806.01261v3},
+  eprintclass = {cs.LG},
+  eprinttype  = {arXiv},
+  file        = {:Battaglia18biasDpLrnGraphNet.pdf:PDF},
+  keywords    = {cs.LG, cs.AI, stat.ML},
+  url         = {https://arxiv.org/abs/1806.01261},
 }
 
 @Article{May08varSelpartMutInfo,
@@ -7463,6 +7546,23 @@ Keywords:
   owner     = {sotterson},
   publisher = {Wiley Online Library},
   timestamp = {2014.11.08},
+}
+
+@Article{Kapur12bassDiffuseSDE,
+  author   = {P.K. Kapur and Kuldeep Chaudhary and Anu G. Aggarwal and P.C. Jha},
+  title    = {On the development of innovation diffusion model using stochastic differential equation incorporating change in the adoption rate},
+  journal  = {Inderscience Online},
+  year     = {2012},
+  abstract = {Bass innovation and diffusion model and many of its extended forms have been reported in marketing literature and applied successfully for depicting and predicting adoption curve for products from different sectors of economy, segments of markets and strata of society. All these models assume the adoption process as a discrete counting process. However, if the potential adopter population is large and product is in the market with greater life cycle length, it is quite likely that adoption process is a stochastic process with continuous state space. In this paper, we propose a new innovation and diffusion model based on type of stochastic differential equation (SDE). It also incorporates the change-point concept, where the rate of product adoption per remaining potential adopter might change due shift in marketing/promotional strategy, entry/exit of some of the competitors in the market. The applicability and accuracy of the proposed model are illustrated using new product sales data. Predictive validity and mean squared error have been used to check the validity of the model. It has been shown that SDE-based model with change point performs comparatively better than Bass innovation and diffusion model.
+Keywords: innovation and diffusion model, promotional effort, SDEs, stochastic differential equations, change point},
+  comment  = {Mabye a way to improve the Bass Innovation diffusion model with SDEs, but see cautions about a model just slightly more complicated than classic Bass in Bass94bassWithoutDecVars.
+
+Could be useful b/c scenarios could get a rate of change of adoption.  A max rate you'd have to add distribution network gear to handle adoption rate.
+
+Bass models used to predict solar PV adoption in Dong17resPVdeployFrcst},
+  doi      = {https://doi.org/10.1504/IJOR.2012.047516},
+  file     = {Slides:Kapur12bassDiffuseSDE_slides.pdf:PDF},
+  url      = {https://www.inderscienceonline.com/doi/abs/10.1504/IJOR.2012.047516},
 }
 
 @InCollection{Cook10distFromQuant,
@@ -9874,6 +9974,32 @@ Belloni13progEvalHiDim says featsel (reduction too?) is hard when also doing inf
   url       = {http://www.engineering.uiowa.edu/~ankusiak/journal-papers/Renewable_Energy_1.pdf},
 }
 
+@Article{Duggan17bassMetaSpace,
+  author   = {Duggan, Jim},
+  title    = {Implementing a Metapopulation Bass Diffusion Model using the R Package deSolve.},
+  journal  = {R Journal},
+  year     = {2017},
+  volume   = {9},
+  number   = {1},
+  abstract = {Diffusion is a fundamental process in physical, biological, social and economic settings.
+Consumer products often go viral, with sales driven by the word of mouth effect, as their adoption
+spreads through a population. The classic diffusion model used for product adoption is the Bass
+diffusion model, and this divides a population into two groups of people: potential adopters who
+are likely to adopt a product, and adopters who have purchased the product, and influence others
+to adopt. The Bass diffusion model is normally captured in an aggregate form, where no significant
+consumer differences are modeled. This paper extends the Bass model to capture a spatial perspective,
+using metapopulation equations from the field of infectious disease modeling. The paper’s focus is on
+simulation of deterministic models by solving ordinary differential equations, and does not encompass
+parameter estimation. The metapopulation model in implemented in R using the deSolve package,
+and shows the potential of using the R framework to implement large-scale integral equation models,
+with applications in the field of marketing and consumer behaviour.},
+  comment  = {A spatial Bass diffusion model.
+
+Could be used in something like e.g. Dong17resPVdeployFrcst},
+  file     = {:Duggan17bassMetaSpace.pdf:PDF},
+  url      = {https://journal.r-project.org/archive/2017/RJ-2017-006/RJ-2017-006.pdf},
+}
+
 @Article{Adragni09suffDimRed,
   author    = {Adragni, Kofi P. and Cook, R. Dennis},
   title     = {Sufficient dimension reduction and prediction in regression},
@@ -12050,6 +12176,28 @@ I think that Malte wrote Eweline's QuantileScoreDecom.m based on this.},
   url       = {http://dx.doi.org/10.1007/978-3-319-10422-5_29},
 }
 
+@Article{Nagy13basPredTechProg,
+  author    = {Nagy, B{\'e}la and Farmer, J Doyne and Bui, Quan M and Trancik, Jessika E},
+  title     = {Statistical basis for predicting technological progress},
+  journal   = {PloS one},
+  year      = {2013},
+  volume    = {8},
+  number    = {2},
+  pages     = {e52669},
+  abstract  = {Forecasting technological progress is of great interest to engineers, policy makers, and private investors. Several models have been proposed for predicting technological improvement, but how well do these models perform? An early hypothesis made by Theodore Wright in 1936 is that cost decreases as a power law of cumulative production. An alternative hypothesis is Moore's law, which can be generalized to say that technologies improve exponentially with time. Other alternatives were proposed by Goddard, Sinclair et al., and Nordhaus. These hypotheses have not previously been rigorously tested. Using a new database on the cost and production of 62 different technologies, which is the most expansive of its kind, we test the ability of six different postulated laws to predict future costs. Our approach involves hindcasting and developing a statistical model to rank the performance of the postulated laws. Wright's law produces the best forecasts, but Moore's law is not far behind. We discover a previously unobserved regularity that production tends to increase exponentially. A combination of an exponential decrease in cost and an exponential increase in production would make Moore's law and Wright's law indistinguishable, as originally pointed out by Sahal. We show for the first time that these regularities are observed in data to such a degree that the performance of these two laws is nearly the same. Our results show that technological progress is forecastable, with the square root of the logarithmic error growing linearly with the forecasting horizon at a typical rate of 2.5% per year. These results have implications for theories of technological change, and assessments of candidate technologies and policies for climate change mitigation.},
+  comment   = {Many tech improvement rates can be predicted with exponential laws, and some other laws are sometimes equivalent to the exponential law.  
+
+Big comparison of various tech. improvement algs, and also gives their error bars.
+
+I've also evernoted this.
+
+Also
+* https://www.evernote.com/shard/s13/nl/1523219/628b6c62-2f3e-43e3-9181-fe4157603e49/},
+  file      = {:Nagy13basPredTechProg.pdf:PDF},
+  publisher = {Public Library of Science},
+  url       = {https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0052669},
+}
+
 @Article{Garnier14blncErrIntraday,
   author    = {Garnier, Ernesto and Madlener, Reinhard},
   title     = {Balancing forecast errors in continuous-trade intraday markets},
@@ -13708,7 +13856,9 @@ http://papers.ssrn.com/sol3/papers.cfm?abstract_id=1784445},
   volume    = {45},
   pages     = {749--753},
   abstract  = {In a world of Smart Measurements, Adaptive Control, and Expert System Alarm Managers, one might wonder if there is a place for traditional, stodgy, process control. Surely, Trend Recording will resist change. Not so: new data compression techniques permit computer trending to effectively store and analyze practically unlimited amounts of process history as Trend Records for later evaluation. They compress stored data by orders of magnitude, representing the data as sequences of predefined shapes. The Swinging Door Algorithm is a very simple, effective example of these techniques. It reduces data naturally, as it occurs, to a sequence of optimally chosen straight lines, with a core algorithm that takes, at most, 3 additions, 2 divisions, and 3 comparisons, per sample time, per trended variable. Not only does this allow reduced memory but, in the long run, it allows the computer to make helpful pattern inferences. When combined with the evermore unlimited capabilities of mass memory hardware, it will not only allow the storage of a complete plant history, but it will provide the ability to search that history for relevant phenomena.},
-  comment   = {Original reference for swinging door algorithm, used for unit commitment ramp constraints * picture explanations are fairly nice * used in Makarov09OperWindCA and Lu10unitCommCnstrnt},
+  comment   = {Original reference for swinging door algorithm, used for unit commitment ramp constraints
+  * picture explanations are fairly nice
+  * used in Makarov09OperWindCA and Lu10unitCommCnstrnt, kind of in Crampes18flexElecMktsRamp},
   file      = {Bristol09swingDoorTrend.pdf:Bristol09swingDoorTrend.pdf:PDF},
   groups    = {Read},
   owner     = {scot},
@@ -17290,6 +17440,20 @@ farm, wind power forecast.},
   url         = {https://str.llnl.gov/content/pages/april-2014/pdf/04.14.1.pdf},
 }
 
+@Article{Perez19ovrbldCurtailFirmPV_draft,
+  author   = {Marc Perez and Richard Perez and Karl R. R\'abago and Morgan Putnam},
+  title    = {Overbuilding \& Curtailment: The cost-effective enablers of firm PV generation},
+  journal  = {Solar Energy Journal},
+  year     = {2019},
+  abstract = {Key Words: photovoltaics; firm power generation, renewable intermittency mitigation; high PV penetration.
+Abstract: Current thinking considers that PV output curtailment is a last resort measure to be avoided. In this article, we argue that supply-shaping, achieved through proactive curtailment associated with PV oversupply, is actually critical to achieving intermittency mitigation and delivering firm PV generation at the lowest cost. 
+We investigate the premium to transform a low-cost, but intermittent solar kWh into a firm, effectively dispatchable kWh. We show that a fundamental ingredient of minimizing this premium is to optimally overbuild and, as necessary and appropriate, curtail PV generation. Drawing on a case study in the State of Minnesota, we show that firm, high-penetration-ready PV generation could be achieved at a production cost at or below current conventional generation, especially when optimally coupled with wind generation.
+We conclude with a recommendation that in order to achieve this lowest cost firm generation potential, proactive curtailment strategies should inform future transactional PV remuneration systems.
+},
+  file     = {Draft on Jan 6, 2019:Perez19ovrbldCurtailFirmPV_draft.docx:Word 2007+},
+  comment = {See also https://www.evernote.com/shard/s13/nl/1523219/84a7e829-a24f-4048-b05e-e5d4158f84ef/},
+}
+
 @Article{Hamill04introNWPens_Slides,
   author    = {Tom Hamill},
   title     = {Introduction to Numerical Weather Prediction and Ensemble Weather Forecasting},
@@ -19558,7 +19722,8 @@ provides one component within a broader analytical framework that can be used to
 ongoing and future decisions about NEM policy and the design of tariffs in other states. },
   comment     = {NREL report possibly related to the PV and DER adoption study that Clean Power Research might want me to work on.
 
-See also: Dong17resPVdeployFrcst},
+See also: Dong17resPVdeployFrcst
+Rogers83diffusInnovBk (cited as reference to diffusion of innovation models, but mabye not the Bass version that maybe was used here)},
   file        = {:Gagnon17netMtrAdoptPV.pdf:PDF},
   url         = {https://www.nrel.gov/analysis/dgen/publications.html},
 }
@@ -20417,12 +20582,11 @@ Keywords: Time series; Exponential smoothing; ARIMA models; State space models},
 }
 
 @Book{Bengfort16hdoopIntroDSbook,
-  title         = {Data Analytics with Hadoop: An Introduction for Data Scientists},
-  publisher     = {" O'Reilly Media, Inc."},
-  year          = {2016},
-  author        = {Bengfort, Benjamin and Kim, Jenny},
-  __markedentry = {[scotto:]},
-  abstract      = {Overview of Chapters
+  title     = {Data Analytics with Hadoop: An Introduction for Data Scientists},
+  publisher = {" O'Reilly Media, Inc."},
+  year      = {2016},
+  author    = {Bengfort, Benjamin and Kim, Jenny},
+  abstract  = {Overview of Chapters
 This book is intended to be a guided walk through of the Hadoop ecosystem, and as
 such we’ve laid out the book in two broad parts split across the halves of the book.
 Part I (Chapters 1–5) introduces distributed computing at a very high level, discus‐
@@ -20508,9 +20672,9 @@ Although a common methodology for installing services is proposed in Appen‐
 dix A, this appendix specifically looks at gotchas and caveats for installing the
 services to run the examples you will find as you read.
 As you can see, this is a lot of topics to cover in such a short book! },
-  comment       = {Book on Hadoop, Spark, etc.  Easy to read, and github site (URL for this entry) },
-  file          = {:Bengfort16hdoopIntroDSbook.pdf:PDF},
-  url           = {https://github.com/kishorevbhosale/Hadoop-Books/blob/master/Books/Data%20Analytics%20with%20Hadoop%20-%20An%20Introduction%20for%20Data%20Scientists.pdf},
+  comment   = {Book on Hadoop, Spark, etc.  Easy to read, and github site (URL for this entry) },
+  file      = {:Bengfort16hdoopIntroDSbook.pdf:PDF},
+  url       = {https://github.com/kishorevbhosale/Hadoop-Books/blob/master/Books/Data%20Analytics%20with%20Hadoop%20-%20An%20Introduction%20for%20Data%20Scientists.pdf},
 }
 
 @Article{Cannon10GEVcdn,
@@ -22868,13 +23032,20 @@ Keywords: probabilistic forecasting, Energy score, discrimination, proper score,
   volume   = {117},
   pages    = {251 - 265},
   issn     = {0040-1625},
-  abstract = {Residential distributed photovoltaic (PV) deployment in the United States has experienced robust growth, and policy changes impacting the value of solar are likely to occur at the federal and state levels. To establish a credible baseline and evaluate impacts of potential new policies, this analysis employs multiple methods to forecast residential PV deployment in California, including a time-series forecasting model, a threshold heterogeneity diffusion model, a Bass diffusion model, and National Renewable Energy Laboratory's dSolar model. As a baseline, the residential PV market in California is modeled to peak in the early 2020s, with a peak annual installation of 1.5–2GW across models. We then use the baseline results from the dSolar model and the threshold model to gauge the impact of the recent federal investment tax credit (ITC) extension, the newly approved California net energy metering (NEM) policy, and a hypothetical value-of-solar (VOS) compensation scheme. We find that the recent ITC extension may increase annual PV installations by 12%–18% (roughly 500MW) for the California residential sector in 2019–2020. The new NEM policy only has a negligible effect in California due to the relatively small new charges (<100MW in 2019–2020). Furthermore, impacts of the VOS compensation scheme ($0.12 per kilowatt-hour) are larger, reducing annual PV adoption by 32% (or 900–1300MW) in 2019–2020.},
+  abstract = {Residential distributed photovoltaic (PV) deployment in the United States has experienced robust growth, and policy changes impacting the value of solar are likely to occur at the federal and state levels. To establish a credible baseline and evaluate impacts of potential new policies, this analysis employs multiple methods to forecast residential PV deployment in California, including a time-series forecasting model, a threshold heterogeneity diffusion model, a Bass diffusion model, and National Renewable Energy Laboratory's dSolar model. As a baseline, the residential PV market in California is modeled to peak in the early 2020s, with a peak annual installation of 1.5–2GW across models. We then use the baseline results from the dSolar model and the threshold model to gauge the impact of the recent federal investment tax credit (ITC) extension, the newly approved California net energy metering (NEM) policy, and a hypothetical value-of-solar (VOS) compensation scheme. We find that the recent ITC extension may increase annual PV installations by 12\%–18\% (roughly 500MW) for the California residential sector in 2019–2020. The new NEM policy only has a negligible effect in California due to the relatively small new charges (<100MW in 2019–2020). Furthermore, impacts of the VOS compensation scheme (\$0.12 per kilowatt-hour) are larger, reducing annual PV adoption by 32\% (or 900–1300MW) in 2019–2020.},
   comment  = {NREL PV adoption rate study that might be related to the stuff Clean Power Research might want me to do.
 
 The NREL group's publishing page is here:
 https://www.nrel.gov/analysis/dgen/publications.html
 
-See also:  Gagnon17netMtrAdoptPV},
+See also:  
+Gagnon17netMtrAdoptPV  (also does PV)
+Rogers83diffusInnovBk (cited as reference to diffusion of innovation models, but mabye not the Bass version used here)
+Fancy Bass w/ derivation and multivariate inputs: Bass94bassWithoutDecVars
+Bass w/ SDE: Kapur12bassDiffuseSDE
+Another dynamic Bass:  Cosguner18dynPriceDynBass
+Spatial Bass: Duggan17bassMetaSpace
+Inhomog Bass: Nafidi18inhomogDiffProcBassSDE},
   doi      = {https://doi.org/10.1016/j.techfore.2016.11.021},
   file     = {:Dong17resPVdeployFrcst.pdf:PDF},
   keywords = {Solar PV, Forecasting, Diffusion models, Policy impact},
@@ -25683,6 +25854,41 @@ prediction; forecastability},
   timestamp = {2017.02.01},
 }
 
+@TechReport{Cosguner18dynPriceDynBass,
+  author   = {Cosguner, Koray and Seetharaman, PB Seethu and Wu, Chunhua},
+  title    = {Dynamic Pricing for New Products: Utility-Based Generalization of the Bass Diffusion Model},
+  year     = {2018},
+  abstract = {The Bass Model (BM) has an excellent track record in the realm of new product sales forecasting. However, 
+its use for optimal dynamic pricing or advertising is relatively limited. This is because the Generalized Bass Model 
+(GBM), which extends the BM to handle marketing variables, uses only percentage changes in marketing variables 
+and not the actual values of the marketing variables. This restricts the normative use of the GBM, for example, to 
+deriving the optimal price path for a new product, conditional on an assumed launch price, but not the launch price 
+itself. In this paper, we propose a utility-based generalization of the BM which can yield normative prescriptions 
+regarding both the introductory price, as well as the price path after launch, for the new product. We propose two 
+versions of our proposed diffusion model, namely the Bass-Gumbel Diffusion Model (BGDM) and the Bass-Logit 
+Diffusion Model (BLDM). Using empirical data from three product categories, we show that our proposed diffusion 
+models handily outperform the GBM and BM in forecasting new product sales both in sample and out of sample, with 
+the BLDM outperforming the BGDM. We derive optimal pricing policies for a new product that are implied by the 
+BLDM under various ranges of model parameters. We explain how managers can use our proposed diffusion model 
+to derive optimal marketing policies in a computationally convenient manner without having to explicitly solve a 
+dynamic optimization problem. 
+
+ 
+
+Keywords: Dynamic Pricing, Optimal Pricing, New Products, Diffusion Model, Bass Model (BM), Generalized Bass 
+Model (GBM), New Product Sales Forecasting. },
+  comment  = {A flexible Bass diffusion model that can be used w/o dynamic optimzation.
+
+Seems related to: 
+Bass94bassWithoutDecVars
+Kapur12bassDiffuseSDE
+Dong17resPVdeployFrcst
+
+},
+  file     = {:Cosguner18dynPriceDynBass.pdf:PDF},
+  url      = {https://www.researchgate.net/profile/Koray_Cosguner/publication/328736172_Dynamic_Pricing_for_New_Products_Utility-Based_Generalization_of_the_Bass_Diffusion_Model/links/5be0711a92851c6b27aa085e/Dynamic-Pricing-for-New-Products-Utility-Based-Generalization-of-the-Bass-Diffusion-Model.pdf},
+}
+
 @InBook{Dixon06bootstrpRsmpl,
   title     = {Bootstrap Resampling},
   publisher = {John Wiley \& Sons, Ltd},
@@ -26154,6 +26360,31 @@ I think there was one other NREL paper on this topic too.},
   owner     = {sotterson},
   timestamp = {2015.01.13},
   url       = {http://www.nrel.gov/docs/fy11osti/49019.pdf},
+}
+
+@TechReport{Crampes18flexElecMktsRamp,
+  author      = {Crampes, Claude and Renault, J{\'e}r{\^o}me and others},
+  title       = {Supply flexibility in electricity markets},
+  institution = {Toulouse School of Economics (TSE)},
+  year        = {2018},
+  abstract    = {The development of non-dispatchable renewable sources of energy requires more flexible
+reliable thermal equipment to match residual demand. We analyze the advantages of
+delaying production decisions to benefit from more precise information on states of the
+world, at the expense of higher production costs in a two-period framework where two
+technologies with different flexibility characteristics are available. We determine first-
+best production levels ex ante and ex post, that is, when demand is still random and
+is known with certainty respectively. We then show that, under perfect competition,
+first best can be implemented indifferently either by means of ex post state-contingent
+markets or by means of a day-ahead market followed by adjustment markets. By
+contrast, when the industry is imperfectly competitive, the two market designs are not
+equivalent.
+
+JEL codes: C72, D24, D47, L23, L94
+Key words: flexibility, electricity, production costs, day-ahead market, real-time
+market, perfect competition, imperfect competition},
+  comment     = {Says that day ahead markets are not necessary with renewable energy under certain circumstances.  Also has optimization (I think) approach that uses a swinging doors-like ramp and regulation definition.},
+  file        = {:Crampes18flexElecMktsRamp.pdf:PDF},
+  url         = {https://www.tse-fr.eu/sites/default/files/TSE/documents/doc/wp/2018/wp_tse_964.pdf},
 }
 
 @Article{Lei07predWindPowPhaseRecons,
@@ -26893,6 +27124,122 @@ when it was successfully applied to non-trivial classification problems unaltere
   owner     = {sotterson},
   timestamp = {2017.06.06},
   url       = {http://dx.doi.org/10.1007/978-3-642-04180-8_58},
+}
+
+@Book{Rogers83diffusInnovBk,
+  title     = {Diffusion of innovations},
+  publisher = {The Free Press},
+  year      = {1983},
+  author    = {Everett M. Rogers},
+  abstract  = {THE FIRST EDITION OF THIS BOOK, Dijflsion 0flnn0vati0ns, was
+published in 1962. At the time, there were 405 publications about this
+topic available. The second edition and revision, Communication of
+Innovations: A Cross-Cultuml Approach (CO-authored with F. Floyd
+Shoemaker), was published in 1971, nine years later. By then the
+number of diffusion publications had almost quadmpled t0 about
+1,500, ofwhich approximately 1,200 were empirical research reports,
+and the other 300 were bibliographies, syntheses, theoretical writings,
+and 0ther types of nonempirical publications.
+At present, 12 years later, the total number of diffusion publica-
+tions has more than doubled again, t0 3,085. And the number of em-
+pirical diffusion research reports has increased from 1,500 t0 2,297. I
+think there is almost n0 0ther field of behavior science research that
+represents more effort by more scholars in more nations.
+Because of this vast increase in the foundation of diffusion
+research on Which the present book is based, it is both (1) a revision of
+the theoretical frarnework, and the research evidence supporting this
+model ofdiffusion, and (2) a new intellectual venture, in the sense that
+new concepts and new theoretical Viewpoints are introduced. I
+estimate that this book represents about equally (1) a continuity with
+my two previous books on diffusion, and (2) differences and im-
+provements in the basic framework. So the reader can regard the pres-
+ent book as the third volume in a three-volume set on the diffusion of
+innovations. The stream of diffusion scholarship over the past forty
+years or so represents both similarities and differences, continuities
+and discontinuities, and so must my three books, each published ap-
+proximately a decade apart. By n0 means, however, d0 I seek only t0
+synthesize the important findings from past research; I also strive
+herein t0 criticize this work (including my own), and t0 Iay out direc-
+tions for the future that are different from the recent past.
+I have titled the present book Difl’usion oflnnovations t0 identify
+it with the forty-year sequential tradition ofdiffusion studies marked
+by my 1962 book of the same title. In any event, most people refer t0
+4. Persuasion (and diffusion) researchers often give allegiance t0
+the View that their dependent variable is to change attitudes rather
+than overt behavior. Diffusion researchers have been more oriented t0
+the dependent variable of adoption (a decision t0 use and implement a
+new idea), than t0 actual implemenlation itself (or t0 studying the con-
+sequences of innovation . , ,
+Most past d1ffus10n studies have been based upon a linear model
+of communication, defined as the process by which messages are
+transferred from a source t0 a receiver. Such a one-way View ofhuman
+cornrnunication describes certain types of communication; many
+kinds of diffusion d0 indeed consist of one individual, such as a
+change agent, informing a potential adopter about a new idea. But
+other types of diffusion are more accurately described by a con-
+vergence model, in which cornrnunication is defined as a process in
+which the participants create and share information with one another
+to reach a mutual understanding (Rogers and Kincaid, 1981, p. 63).
+In the present book we seek to show the improved understanding
+that can often be achieved by conceptualizing certain kinds of diffu-
+sion in light ofthis convergence model. This emphasis on diffusion as
+information exchange among participants in a cornrnunication proc-
+ess is found particularly in our Chapter 8 on diffusion networks.
+Conceptually, the present book makes use of the important con-
+cepts of uncertainty and information. Uncertainty is the degree t0
+which a nurnber of alternatives are perceived with respect to the occur-
+rence of an event and the relative probabilities of these alternatives.
+Uncertainty implies a lack ofpredictability ofthe future. lt motivates
+an individual to seek information. Information is a difference in
+matter-energy that affects uncertainty in a situation where a choice ex-
+ists among a set of alternatives (Rogers and Kincaid, 1981, p. 64). The
+concept of information is a favorite in the field of cornrnunication
+research, and in fact the field really began to grow as an intellectual
+enterprise once Claude Shannon and Warren Weaver (1949) had pro-
+posed a theory of communication that was organized around the no-
+tion ofinformation. , _ ‚
+ne 1nd of uncertainty 1s generated by an innovation, defined as
+an idea, practice, or object that is perceived as new by an individual or
+another unit of adoption. An innovation presents an individual or an
+organization with a new alternative or alternatives, with new rneans of
+solving problems. But the probabilities of the new alternatives being
+superior to previous practice are not exactly known by the individual
+problem solvers. Thus, they are motivated to seek further information
+
+xix
+
+Preface
+about the innovation in order to cope with the uncertainty that it
+creates.
+So the present book is cast in a theoretical framework involving
+the concepts of information and uncertainty. Information about in-
+novations is often sought from near-peers, especially information
+abouttheirsubjectiveevaluationsoftheinnovation.Thisinformation
+exchange about a new idea occurs through a convergence process in-
+volving interpersonal networks. The diffusion ofinnovations, thus, is
+essentially a social process in which subjectively perceived informa-
+tion about a new idea is cornrnunicated.
+The general field ofcommunication research has not been charac-
+terized by much "weed pulling," that is, the criticism ofour scientific
+activities so that the field's findings and fallacies can be publicly
+understood (Siebold, 1979). Thus, it may be a healthy turn of events
+that, beginning in the early 1970s, criticisrns of the diffusion frarne-
+work began t0 appear. Ofcourse, it would be a mistake to becorne so
+fond of weed pulling that the entire garden is destroyed (Reardon,
+1981, p. 261).
+Throughout the present book we seek t0 represent a healthily criti-
+cal stance. We d0 notjust need rnore-of-the-same diffusion research.
+The challenge for diffusion scholars ofthe future is t0 move beyond
+the proven methods and models ofthe past, to recognize their short-
+comings and limitations, and to broaden their conceptions ofthe dif-
+fusion ofinnovations. We offer this book as one step toward this goal.},
+  comment   = {Related to work Clean Energy Research would like me to do.  Is the 1983 version.  There's a newer version from 2010.  Is cited by Dong17resPVdeployFrcst as one review reference for diffusion of innovation models.
+
+See also:  
+Dong17resPVdeployFrcst which uses the Bose Diffusion equation
+Gagnon17netMtrAdoptPV which uses diffusion equations, I think},
+  file      = {:Rogers83diffusInnovBk.pdf:PDF},
+  url       = {http://www.experience-capitalization.net/bitstream/handle/123456789/83/diffusion-of-innovations.pdf?sequence=1&isAllowed=y},
 }
 
 @TechReport{Rogers11frcstingNorthAmTransmsn,
@@ -32494,6 +32841,43 @@ Keywords: copula, statistical dependency, monotonic, equitability, discrete},
   url       = {https://arxiv.org/abs/1703.06686},
 }
 
+@Article{Karpatne17physNNlakeT,
+  author   = {Karpatne, Anuj and Watkins, William and Read, Jordan and Kumar, Vipin},
+  title    = {Physics-guided Neural Networks (PGNN): An Application in Lake Temperature Modeling},
+  journal  = {arXiv preprint arXiv:1710.11431},
+  year     = {2017},
+  abstract = {This paper introduces a novel framework for combin-
+ing scientific knowledge of physics-based models with
+neural networks to advance scientific discovery. This
+framework, termed as physics-guided neural network
+(PGNN), leverages the output of physics-based model
+simulations along with observational features to gen-
+erate predictions using a neural network architecture.
+Further, this paper presents a novel framework for us-
+ing physics-based loss functions in the learning objective
+of neural networks, to ensure that the model predic-
+tions not only show lower errors on the training set but
+are also scientifically consistent with the known physics
+on the unlabeled set. We illustrate the effectiveness of
+PGNN for the problem of lake temperature modeling,
+where physical relationships between the temperature,
+density, and depth of water are used to design a physics-
+based loss function. By using scientific knowledge to
+guide the construction and learning of neural networks,
+we are able to show that the proposed framework en-
+sures better generalizability as well as scientific consis-
+tency of results.},
+  comment  = {NN model of lake temp with physical model derived input features and a simple penalty term for physical inconsistency.  Works better than plain NN or plain physical model.
+
+Could be useful for forecasting w/ mixed physical/NN models e.g. the PV model here: Marquez13solarFrcstSatGrndNN
+
+Authors have other related papers too.
+
+Was covered here: https://towardsdatascience.com/physics-guided-neural-networks-pgnns-8fe9dbad9414},
+  file     = {Paper V2 (2018):Karpatne17physNNlakeT.pdf:PDF},
+  url      = {https://arxiv.org/abs/1710.11431},
+}
+
 @InProceedings{Min08progCngstFrcstShrt,
   author    = {Liang Min and S. T. Lee and Pei Zhang and V. Rose and J. Cole},
   title     = {Short-term probabilistic transmission congestion forecasting},
@@ -33475,6 +33859,7 @@ QUESTION: what does this do for time continuity? Should sorting be done over mul
 
 Also: Makarov09OperWindCA
 CAISO10caisoRnwblIntegSwngDr
+Crampes18flexElecMktsRamp
 
 },
   doi       = {10.1109/PES.2010.5589501},
@@ -34486,7 +34871,9 @@ and image processing approaches for solar irradiance forecasting. We compare the
 quantify the forecasting skill for the several time horizons considered.
 
 Keywords: Solar forecasting; Hybrid methods; Stochastic learning; Remote sensing; Artificial neural networks},
-  comment   = {Irradiance 30-120min forecasting NN features: satellite cloud tracking and cloud "indexing". Hybrid between "stochastic learning" and image processing.},
+  comment   = {Irradiance 30-120min forecasting NN features: satellite cloud tracking and cloud "indexing". Hybrid between "stochastic learning" and image processing.
+
+Could maybe use physcial inspired features or const funcs, like in Karpatne17physNNlakeT},
   file      = {Marquez13solarFrcstSatGrndNN.pdf:Marquez13solarFrcstSatGrndNN.pdf:PDF},
   owner     = {sotterson},
   publisher = {Elsevier},
@@ -35511,6 +35898,43 @@ Actually, this could be used for ensembles too (the individual pdf's in BMA).},
   publisher = {Taylor \& Francis},
   timestamp = {2010.12.01},
   url       = {http://web.ebscohost.com.globalproxy.cvt.dk/ehost/detail?vid=1&hid=106&sid=8f2edbfe-7fdf-42df-b0c1-06e2bb4cecd6%40sessionmgr113&bdata=JnNpdGU9ZWhvc3QtbGl2ZQ%3d%3d#db=buh&AN=17132504},
+}
+
+@Article{Eckersley18utilFuncImpossUncert,
+  author        = {Eckersley, Peter},
+  title         = {Impossibility and Uncertainty Theorems in AI Value Alignment (or why your AGI should not have a utility function)},
+  journal       = {arXiv preprint arXiv:1901.00064},
+  year          = {2018},
+  __markedentry = {[scotto:]},
+  abstract      = {Utility functions or their equivalents (value functions, objective functions, loss
+functions, reward functions, preference orderings) are a central tool in most current
+machine learning systems. These mechanisms for defining goals and guiding
+optimization run into practical and conceptual difficulty when there are independent,
+multi-dimensional objectives that need to be pursued simultaneously and cannot be
+reduced to each other. Ethicists have proved several impossibility theorems that
+stem from this origin; those results appear to show that there is no way of formally
+specifying what it means for an outcome to be good for a population without
+violating strong human ethical intuitions (in such cases, the objective function
+is a social welfare function). We argue that this is a practical problem for any
+machine learning system (such as medical decision support systems or autonomous
+weapons) or rigidly rule-based bureaucracy that will make high stakes decisions
+about human lives: such systems should not use objective functions in the strict
+mathematical sense.
+We explore the alternative of using uncertain objectives, represented for instance
+as partially ordered preferences, or as probability distributions over total orders.
+We show that previously known impossibility theorems can be transformed into
+uncertainty theorems in both of those settings, and prove lower bounds on how
+much uncertainty is implied by the impossibility results. We close by proposing
+two conjectures about the relationship between uncertainty in objectives and severe
+unintended consequences from AI systems.},
+  comment       = {Ways of modeling tradeoffs between irreconcilable outcomes  Maybe good for energy optimization: max comfort vs. average comfort over time vs. money... etc.  Several kind of probabilistic rankings or orderings are mentioned, which could help optimize an AI machine -- based on human preferences which are uncertain
+
+Author's interest is in ethical delimmas but maybe this is good for something Clean Power Research will want me to do: cost vs. outage prob. vs. ... as chosen by operators twizzling some optimization knobs on a CPR user interface.
+
+Discussed here:
+https://www.technologyreview.com/s/612764/giving-algorithms-a-sense-of-uncertainty-could-make-them-more-ethical/},
+  file          = {:Eckersley18utilFuncImpossUncert.pdf:PDF},
+  url           = {https://arxiv.org/pdf/1901.00064.pdf?utm_campaign=the_algorithm.unpaid.engagement&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-8SQPvr8mh-ICrJzt0vJhRCEPzgIalY3fRUX7Q4iMwG1rNFf-v4-GR9BNEI_UB8R-0z08Jm},
 }
 
 @Electronic{Pyle10rampObsNet,
@@ -41628,7 +42052,7 @@ them to retrain models multiple times each year .},
   year        = {2004},
   number      = {454},
   month       = sep,
-  abstract    = {With the global proliferation of wind power, accurate short-term forecasts of wind resources at wind energy sites are becoming paramount. Regime-switching space-time (RST) models merge meteorological and statistical expertise to obtain accurate and calibrated, fully probabilistic forecasts of wind speed and wind power. The model formulation is parsimonious, yet takes account of all the salient features of wind speed: alternating atmospheric regimes, temporal and spatial correlation, diurnal and seasonal non-stationarity, conditional heteroscedasticity, and non-Gaussianity. The RST method identifies forecast regimes at the wind energy site and its a conditional predictive model for each regime. Geographically dispersed meteorological observations in the vicinity of the wind farm are used as on-site predictors. The RST technique was applied to 2-hour ahead forecasts of hourly average wind speed at the Stateline wind farm in the US Pacific Northwest. In July 2003, for instance, the RST forecasts had root-mean-square error (RMSE) 28.6{\%} less than the persistence forecasts. For each month in the test period, the RST forecasts had lower RMSE than forecasts using state-of-the-art vector time series techniques. The RST method provides probabilistic forecasts in the form of predictive cumulative distribution functions, and those were well calibrated and sharp. The RST prediction intervals were substantially shorter on average than prediction intervals derived from univariate time series techniques. These results suggest that quality meteorological data from sites upwind of wind farms can be eciently used to improve short-term forecasts of wind resources. It is anticipated that the RST technique can be successfully applied at wind energy sites all over the world.},
+  abstract    = {With the global proliferation of wind power, accurate short-term forecasts of wind resources at wind energy sites are becoming paramount. Regime-switching space-time (RST) models merge meteorological and statistical expertise to obtain accurate and calibrated, fully probabilistic forecasts of wind speed and wind power. The model formulation is parsimonious, yet takes account of all the salient features of wind speed: alternating atmospheric regimes, temporal and spatial correlation, diurnal and seasonal non-stationarity, conditional heteroscedasticity, and non-Gaussianity. The RST method identifies forecast regimes at the wind energy site and its a conditional predictive model for each regime. Geographically dispersed meteorological observations in the vicinity of the wind farm are used as on-site predictors. The RST technique was applied to 2-hour ahead forecasts of hourly average wind speed at the Stateline wind farm in the US Pacific Northwest. In July 2003, for instance, the RST forecasts had root-mean-square error (RMSE) 28.6\% less than the persistence forecasts. For each month in the test period, the RST forecasts had lower RMSE than forecasts using state-of-the-art vector time series techniques. The RST method provides probabilistic forecasts in the form of predictive cumulative distribution functions, and those were well calibrated and sharp. The RST prediction intervals were substantially shorter on average than prediction intervals derived from univariate time series techniques. These results suggest that quality meteorological data from sites upwind of wind farms can be eciently used to improve short-term forecasts of wind resources. It is anticipated that the RST technique can be successfully applied at wind energy sites all over the world.},
   comment     = {Tech note that led to Gneiting06calProbFrcst},
   file        = {Gneiting04calibProbWindForecast.pdf:Gneiting04calibProbWindForecast.pdf:PDF},
   groups      = {PointDerived, Test, doReadWPV_2},
@@ -42365,6 +42789,8 @@ See also:
 Lu10unitCommCnstrnt
 CAISO10caisoRnwblIntegSwngDr
 Makarov09OperWindCA
+Crampes18flexElecMktsRamp
+
 
 },
   file        = {:CAISO10caisoRnwblIntegSwngDr.pdf:PDF},
@@ -45282,7 +45708,8 @@ work in unit committment and ramp warnings, of some kind.},
 -- hydro for down (easy to turn off?)
 -- flywheel reduces stress on hydro (do these wear out when you turn them up?)
 * need to take into account interdependencies between ramp speed, capacity and ramp duration (but not well explained)
-* Ramps calculated w/ swinging door algorithm ("calculated?")
+* Ramps calculated w/ swinging door algorithm ("calculated?"
+* Swinging doors used here too: Crampes18flexElecMktsRamp)
 
 See also: CAISO10caisoRnwblIntegSwngDr
 },
@@ -45621,6 +46048,18 @@ PCA paper here: Aguilera13psplinePCA},
   owner     = {sotterson},
   publisher = {Wiley Online Library},
   timestamp = {2016.12.19},
+}
+
+@Article{Nafidi18inhomogDiffProcBassSDE,
+  author       = {Nafidi, Ahmed and J{\'a}imez, Ram{\'o}n Guti{\'e}rrez and S{\'a}nchez, Ram{\'o}n Guti{\'e}rrez},
+  title        = {A new inhomogeneous lognormal diffusion process with exogenous factors in diffusion coefficient},
+  year         = {2018},
+  volume       = {41},
+  pages        = {131--137},
+  booktitle    = {Fourteenth International Conference Zaragoza--Pau on Mathematics and its Applications: Jaca (Spain), September 12},
+  comment      = {Another SDE Bass diffusion model},
+  organization = {Prensas de la Universidad de Zaragoza},
+  url          = {https://books.google.de/books?hl=en&lr=&id=Mj5VDwAAQBAJ&oi=fnd&pg=PA131&dq=bass+diffusion+model+stochastic+differential+equations&ots=bqYuZ7QSEb&sig=-j6ndO0pdUC1eOeehhBK0f4Ms9Y&redir_esc=y#v=onepage&q=bass%20diffusion%20model%20stochastic%20differential%20equations&f=false},
 }
 
 @Article{NASA15dustMiddleEast,
