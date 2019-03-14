@@ -2341,7 +2341,7 @@ Scott
 ************* do all lags by doing in frequenc (partial coherence)
 *************** [[file:energy.bib::fried04parcorrgraphdynlatent][fried et al. 2004: partial correlation graphs]]
 *************** has c-code [[file:energy.bib::dahlhaus00graphintermultivar][dahlhaus 2000: graphical interaction models]]
-*************** remove trends and periodicities before using these?
+*************** <<remove trends and periodicities before using these?>>
                 - otherwise, could get spurious match on unrelated diurnal cycles
                 - but would that really be spurious and not predictive?
                 - just remove periodicity from thing to be forecast?
@@ -3240,6 +3240,8 @@ Scott
 ********* [[file:energy.bib::Kaban12detNoMeaningDists][Kaban 2012: Non]] meaningful dist det in high dim
 ******* <<Mutual Information Based Feature Selection>>
         See also
+********* [[file:energy.bib::10.1093/gigascience/giy032][Donati et al. 2018 Max Info Coeff Tool]] (has software)
+********* [[file:energy.bib::Kinney14mutMaxInfoEquit][Kinney & Atwal 2014: Equitability]] and max info coeff
 ********* [[file:energy.bib::Dijck06speedFeatSelMutInf][Dijck & Hulle 2006: Speeding Up Wrapper]] featsel
 ********* Markov blanket / high dim mutual information: [[File:energy.bib::zheng11featselhimdimmi][Zheng & Kwoh 2011: Feature Subset Selection]]
 ********* [[file:energy.bib::Juban07ProbWndFrcstFeatSelKDE][Juban et al. 2007: Probabilistic]] wind pow frcst: MI featsel --> KDE prob frcst
@@ -3269,7 +3271,7 @@ Scott
 ********* See also [[KNN feaure selection]]
 ********* See also [[Mutual Information Estimation]]
 ********* See also [[Stopping Criteria]]
-******* Partial Mutual Information Feature Selection>>
+******* <<Partial Mutual Information Feature Selection>>
 
         MI between features and output is maybe the ultimate for
         nonlinear feature selection: it approximates Bayes error rate
@@ -5858,6 +5860,7 @@ sera
 ***** <<Trend Copulas>>
 ******* [[cite:Li11trendSVD][Li et al. 2011: Trend SST]] trend SVD
 ******* [[cite:Lageras10copulaMarkov][Lageras 2010: Copulas Markovian]]
+******* [[Trend Detection]]
 ***** see [[Non-stationary covariance]]
 ***** [[file:energy.bib::calsaverini09copulainfo][Calsaverini & Vicente 2009]] (copula info: when corr. in gaussian copula won't work)
 ***** why errors may have lag dependence: [[file:energy.bib::lu07lagensemble][lu et al. 2007: short range numerical]]
@@ -6713,7 +6716,7 @@ variables will be preferred, when possible.
         estimate for each additional trick:
 
         o exponential weighting
-        o trend
+        o trend ([[Trend Detection]])
         o seasonal
         o multipliciative seasonal
 
@@ -6725,7 +6728,6 @@ variables will be preferred, when possible.
 ******* multi-periodicity (daily, weekly): [[file:energy.bib::Szmit12holtWinterMultiPeriod][Szmit & Szmit 2012: Usage Holt Winters]]
 ******* additive periodicity, conf. int., transforms: [[file:energy.bib::Bermudez07holtWintersAddPer][Bermudez et al. 2007: Holt]]
 ******* exponential weighting (simple HW) for quantiles: [[file:energy.bib::Taylor07frcstSprMktPriceQR][Taylor 2007: Forecasting]]
-******* trend damping is better, almost regime learn: [[file:energy.bib::McKenzie10expSmthDampTrnd][McKenzie & Gardner 2010: Damped]] trend
 ******* primary paper? [[file:energy.bib::Winters60exponMvAvgSalesFrcst][Winters 1960: Forecasting]]
 ***** <<ARIMA Forecasting>>
 ******* [[file:energy.bib::UKONS08holtWintersARIMAreg][National 2008: From Holt Winters ARIMA Modelling]] : trend + multip/add seasonal
@@ -7812,7 +7814,7 @@ Scott
 ********* spatial statistical interpolation ("kriging")
 ********* forecasting
 *********** no notion of "time" so how forecast ahead?
-*********** worry: GP's maybe not as good for monotonic trends
+*********** <<worry: GP's maybe not as good for monotonic trends>>
             From [[file:energy.bib::Tancret99CompNeuralGaussProcAlloy][Tancret et al. 1999: Comparison of artificial]] GP's will
             extend trends for a litle bit, but decay to a default b/c of
             Gaussian covariance decay w/ length scale.  So, NN's may BE
@@ -8996,6 +8998,20 @@ al. 2012: Current]])
 ***** [[file:energy.bib::Gong14extrmQRvineCopula][Gong et al. 2014: Estimation]] extreme values, vine copula
 ***** also see [[Novelty Detection]]
 ***** [[file:energy.bib::Hyndman14frcstPrincPractice][Hyndman & Athanasopoulos 2014: Forecasting Princ. & Pract.]] (exp. wght, ARIMA, etc).
+***** also [[Trend Detection]]
+*** <<Trend Detection>>
+***** [[file:energy.bib::Alexandrov12mdrnTrndExtrct][Alexandrov et al. 2012: Modern Trend Detection]]
+***** trend damping is better, almost regime learn: [[file:energy.bib::McKenzie10expSmthDampTrnd][McKenzie & Gardner 2010: Damped]] trend
+***** [[Trend Copulas]]
+***** [[Wind/Solar derivatives (ramps)]]
+***** [[Ramp Forecasting]]
+***** [[Ramps in Integration]]
+***** [[Regimes and Ramps]]
+***** [[remove trends and periodicities before using these?]]
+***** [[worry: GP's maybe not as good for monotonic trends]]
+***** [[file:energy.bib::Bristol09swingDoorTrend][Bristol 1990: Swinging]] Door Trend (orig paper)
+***** [[file:energy.bib::UKONS08holtWintersARIMAreg][National 2008: From Holt Winters ARIMA Modelling]] : trend + multip/add seasonal
+
 * <<Missing Features>>
 *** Probably OK to select features w/ spline fill-in?
 *** Train coeffs w/ something fancier?
@@ -10379,9 +10395,8 @@ Scott
 ***** see [[Learning montonicity]]
 ***** See Juan Miguel (and Tryggvi's?) papers in my email.  I bibtexed some of them, I think.
 ***** [[Functional Data Analysis]] can assure montonicity in bidding functions
-***** see [[Learning montonicity]]
-*** Ramps in Integration
-    <<Ramps in Integration>>
+***** see [[Learning  montonicity]]
+*** <<Ramps in Integration>>
 ***** [[file:energy.bib::Svoboda97schedRampConstr][Svoboda et al. 1997: Short]] (term schedule ramp)
 ***** [[file:energy.bib::Soder93rsrvWindHydroThrm][Soder 1993: Reserve]] (wind/hydro/thermal.  Considers net load uncertainty, ramps)
 ***** [[file:energy.bib::Wu99spinRsrvRampCnstr][Wu & Gooi 1999: Optimal]] (spin rsvr, ramp constraints, probababilistic)
@@ -10407,7 +10422,8 @@ Scott
 
 ***** TODO CAISO still only product w/ ramp reserve: [[cite:Andrade17ercotRsrvLessMore][Juan et al. 2017: Impact Renewable Generation, Propose Rsrv Mkt &Power, Joint]]
 ***** See also: [[Regimes and Ramps]]
-***** See also: [[Ramp Forecasting]]
+***** TODO See also: [[Ramp Forecasting]]
+***** See also: [[Trend Detection]]
 *** [[file:energy.bib::Delucchi11allRenewWorld][Delucchi 2011: Wind Water Solar Power World]]
 *** [[file:energy.bib::Sharman05whyWindDK][Sharman 2005: Why Denmark]] Wind
 *** [[file:energy.bib::Kristov14elecDS021st][Kristov & Martini 2014: Century Electric Distribution System Operations]] (CAISO net demand DSO)
@@ -10828,6 +10844,7 @@ Erika
 ******* [[file:energy.bib::][Gagnon et al. 2017: Impacts Changes Nevada PV Fin Adopt]]: NREL
 ******* [[file:energy.bib::Dong17resPVdeployFrcst][Dong et al. 2017: Forecasting California PV Adopt]]: NREL, uses Bass, others
 ******* [[file:energy.bib::Yu18deepSolarDB][Yu et al. 2018: DeepSolar Adopt]]
+******* [[https://www.evernote.com/l/AA1tIli7iahD3pWS5Dy2I_oEfuZUkGeswYs/][Energy Toolbase]]: RES simulation software company, relevant to CPR?
 ***** [[file:energy.bib::Rogers83diffusInnovBk][Rogers 1983: Diffusion of Innovation Book]]
 ***** <<Bass Innovation Diffusion Models>>
 ******* [[file:energy.bib::Bass94bassWithoutDecVars][Bass et al. 1994: Why Bass Model w/o dec vars]] (with derivations. SDE?)
@@ -10838,7 +10855,7 @@ Erika
 ***** Also: [[Technology Learning Rates]]
 ***** Also: [[Portfolio Optimization and Forecasting]]
 *** <<Technology Learning Rates>>
-***** [[file:energy.bib::Nagy13basPredTechProg][Nagy et al. 2013: Statistical]]
+***** [[file:energy.bib::Nagy13basPredTechProg][Nagy et al. 2013: Statistical]] + evernote [[Statistical Basis for Predicting Technological Progress][learning rate (tech)]] links
 ***** Also: [[Technology Adoption Rates]]
 * <<Random Variable Generation>>
 *** [[cite:Hardin13genRealisticCorrMat][Hardin et al. 2013 Gen Realistic Random Corr Matrix has Rcode]]
@@ -11066,8 +11083,8 @@ Erika
 ***** also see [[Fault Detection]]
 ***** also see [[Extreme Quantile Forecasting]]
 ***** also see [[Changepoint Detection]]
-***** also see [[Outlier Detection]]
-***** also see [[Trend Copulas]]
+***** also see [[Outlier Detectio [[Trend Copulas]]n]]
+***** also see
 ***** also see [[Concept Drift Detection]]
 ***** also see [[State Change Alarm Criteria]]
 *** <<Changepoint Detection>>
@@ -11198,7 +11215,6 @@ Erika
 ***** [[https://www.google.com/search?q%3Dknn%2Bwith%2Bconcept%2Bdrift&ie%3Dutf-8&oe%3Dutf-8&aq%3Dt&rls%3Dorg.mozilla:en-US:official&client%3Dfirefox-a#q%3Drecurring%2Bconcept%2Bdrift&rls%3Dorg.mozilla:en-US:official&spell%3D1][lots of papers]] on recurring concept drift (like regime learning)
 ***** [[file:c:/Users/sotterson/OneDrive/shareHW/DTU/doc/energy.bib::Gama14conceptDrftSurvey][Gama et al. 2014]] survey concept drift
 ***** see: [[Trend Copulas]]
-
 ***** Use [[Local Transfer Entropy & Differential Entropy]] to notice model change?
 ***** see also: [[Transfer Learning]]
 
