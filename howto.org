@@ -3406,6 +3406,29 @@ gestures for "show charm" and "switch apps"
       and changed the owner from admin to me.  This was the same procedure
       as for [[Windows .emacs.d problem]]
 
+*** Msys2
+
+    Alternative to cygwin, seems easier to install?
+
+    *Installation*
+
+
+
+
+
+    choco install msys2
+    
+    Add the following to PATH environment variable:
+
+      c:\tools\msys64\usr\bin
+      c:\tools\msys64\usr\local\bin
+
+      (choco inself adds c:\tools\msys64 , which allows you to start mingw64.exe
+
+   Install diff, etc. using msys2's package manager
+
+     pacman -S base-devel
+    
 *** [[Windows Emacs]]
 *** <<Windows links>>
 ***** <<Windows symbolic links>>
