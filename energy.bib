@@ -1154,6 +1154,27 @@ experiments confirm our claims},
   publisher = {Springer},
 }
 
+@Article{King02logistRgrssnMLvsExact,
+  author        = {Elizabeth N King and Thomas P Ryan},
+  title         = {A Preliminary Investigation of Maximum Likelihood Logistic Regression versus Exact Logistic Regression},
+  journal       = {The American Statistician},
+  year          = {2002},
+  volume        = {56},
+  number        = {3},
+  pages         = {163-170},
+  __markedentry = {[Scott:6]},
+  abstract      = { Logistic regression is used by practitioners and researchers in many fields, but is undoubtedly used most frequently in medical and biostatistical applications. Maximum likelihood is generally the estimation method of choice, but we show that maximum likelihood can produce very poor results under certain conditions. Specifically, the poor performance of maximum likelihood in the case of rare events is known and we review research on this topic. We primarily examine the performance of maximum likelihood in the presence of near separation, which has apparently not been studied. Exact logistic regression is the logical alternative to maximum likelihood. We offer a comparison of the two methods of estimation. },
+  comment       = {ML logistic regression fails for rare events.  An alternative is "exact" logistic regression.  This paper explains how and when to do exact instead of ML.},
+  doi           = {10.1198/00031300283},
+  eprint        = {https://doi.org/10.1198/00031300283},
+  file          = {:King02logistRgrssnMLvsExact.pdf:PDF},
+  publisher     = {Taylor \& Francis},
+  url           = { 
+        https://doi.org/10.1198/00031300283
+    
+},
+}
+
 @InProceedings{Malhotra15lstmAnomDetTS,
   author       = {Malhotra, Pankaj and Vig, Lovekesh and Shroff, Gautam and Agarwal, Puneet},
   title        = {Long short term memory networks for anomaly detection in time series},
@@ -1185,15 +1206,14 @@ Obviously, this could be a Gaussian Copula or whatever...  The coolness of this 
 }
 
 @Article{Yu18deepSolarDB,
-  author        = {Yu, Jiafan and Wang, Zhecheng and Majumdar, Arun and Rajagopal, Ram},
-  title         = {DeepSolar: A Machine Learning Framework to Efficiently Construct a Solar Deployment Database in the United States},
-  journal       = {Joule},
-  year          = {2018},
-  volume        = {2},
-  number        = {12},
-  pages         = {2605--2617},
-  __markedentry = {[scotto:6]},
-  abstract      = {-- NIPS pdf abstract --
+  author    = {Yu, Jiafan and Wang, Zhecheng and Majumdar, Arun and Rajagopal, Ram},
+  title     = {DeepSolar: A Machine Learning Framework to Efficiently Construct a Solar Deployment Database in the United States},
+  journal   = {Joule},
+  year      = {2018},
+  volume    = {2},
+  number    = {12},
+  pages     = {2605--2617},
+  abstract  = {-- NIPS pdf abstract --
 We have developed DeepSolar, a deep learning framework that analyzes satellite
 imagery to identify the GPS locations and sizes of solar photovoltaic (PV) panels.
 Leveraging its high accuracy and scalability, we constructed a comprehensive high-
@@ -1224,9 +1244,38 @@ We built a nearly complete solar installation database for the contiguous US uti
 Summary
 
 We developed DeepSolar, a deep learning framework analyzing satellite imagery to identify the GPS locations and sizes of solar photovoltaic panels. Leveraging its high accuracy and scalability, we constructed a comprehensive high-fidelity solar deployment database for the contiguous US. We demonstrated its value by discovering that residential solar deployment density peaks at a population density of 1,000 capita/mile2, increases with annual household income asymptoting at ∼\$150k, and has an inverse correlation with the Gini index representing income inequality. We uncovered a solar radiation threshold (4.5 kWh/m2/day) above which the solar deployment is “triggered.” Furthermore, we built an accurate machine learning-based predictive model to estimate the solar deployment density at the census tract level. We offer the DeepSolar database as a publicly available resource for researchers, utilities, solar developers, and policymakers to further uncover solar deployment patterns, build comprehensive economic and behavioral models, and ultimately support the adoption and management of solar electricity.},
-  comment       = {Satellite imagery finds 95\% of PV panels in US. Uses census-tract level to estimate what triggers solar adoption.   Their deep learning NN fits better than traditional log or log-linear models, like Clean Power Research is using.
+  comment   = {Satellite imagery finds 95\% of PV panels in US. Uses census-tract level to estimate what triggers solar adoption (existence of panels in one slice of time).   Their deep learning NN fits better than traditional log or log-linear models, like Clean Power Research is using.
 
-A paper I found from Google Scholar says that this paper was published in NIPS 2018 but I can't find it there.  So, I've attached it to this bibtex entry.
+POINTS FROM 4 PAGE SUMMARY
+
+CNN panel recognizer
+-  semi-supervised transfer learning: 
+    - initial CNN learns PV panel presence/absence (370K labeled images)
+    - branching new layer off middele extracts boundaries w/o supervision 
+    - activation map is thresholded to produce boundaries
+    - don't run segmentation on images predicted to have no panels
+- performance "comparable" to supervised, best is rural areas
+  - residential: 93/89\% precision/recall
+  - rural:       94/91\%
+  - lower error if aggregate to larger area (uncorrelated/unbiased errors, reported results on census tracts, I think)
+- targets are @ census tract, not zipcode, which is better: see my Evernote page for why)
+
+Features predicting solar adoption (# solar systems / household)
+- irradiation: sharp increase above 4.5-5 kWh/m^2/d
+   -- since was so imp. the binned by irradiance and report other facts layered by this
+- household income increases adoption, maybe plateauing \@ \$150K/yr
+- pop. density: very sharp peak at 10000/sqmi
+- education: increases adoption but redundant w/ income @ high irrad (yet has predictive value for low irrad)
+- econ. equalilty (GINI coeff): the more equal, the more panels
+- probably a lot more: I downloaded the tract data and there are a huge # of variables
+
+PV Deployment Prediction
+- traditional is linear or log-linear, < 10K samples
+- trained a random forest model on 70K census  tracts (SolarForest)
+- better 10-fold CV Rsq=0.72 than any other approach
+
+
+A paper I found from Google Scholar says that this paper was published in NIPS 2018 but I can't find it there.  So, I've attached it to this bibtex entry.  The paywalled version is probably here: https://www.cell.com/joule/pdfExtended/S2542-4351(18)30570-1
 
 Project Page: http://web.stanford.edu/group/deepsolar/home.html
 
@@ -1235,9 +1284,9 @@ which has links to code and data on this page.
 Evernote: https://www.evernote.com/l/AA2LIbgfOqFKcZTCg4PTvSnwfS5f3fbyM7w/
 
 Quite relevant to Clean Power Research.},
-  file          = {NIPS 2018 Paper:Yu18deepSolarDB_conf.pdf:PDF},
-  publisher     = {Elsevier},
-  url           = {https://www.sciencedirect.com/science/article/pii/S2542435118305701},
+  file      = {NIPS 2018 Paper:Yu18deepSolarDB_conf.pdf:PDF},
+  publisher = {Elsevier},
+  url       = {https://www.sciencedirect.com/science/article/pii/S2542435118305701},
 }
 
 @Article{Bass94bassWithoutDecVars,
@@ -7181,6 +7230,25 @@ deterministic forecasts and ensemble forecasts as input are given.},
   url       = {http://search.ebscohost.com/login.aspx?direct=true&amp;profile=ehost&amp;scope=site&amp;authtype=crawler&amp;jrnl=00270644&amp;AN=11912142&amp;h=%2FtKF7i6ozE7pnViVjg5bpsXbZfDi1HH1Oi18gbTSt%2FjydThGjXU7z4X4o67lD3y3KDIj984AOBVBiDuXJm7owQ%3D%3D&amp;crl=c},
 }
 
+@Article{Kinney14mutMaxInfoEquit,
+  author    = {Kinney, Justin B. and Atwal, Gurinder S.},
+  title     = {Equitability, mutual information, and the maximal information coefficient},
+  journal   = {Proceedings of the National Academy of Sciences},
+  year      = {2014},
+  volume    = {111},
+  number    = {9},
+  pages     = {3354--3359},
+  issn      = {0027-8424},
+  abstract  = {Attention has recently focused on a basic yet unresolved problem in statistics: How can one quantify the strength of a statistical association between two variables without bias for relationships of a specific form? Here we propose a way of mathematically formalizing this {\textquotedblleft}equitability{\textquotedblright} criterion, using core concepts from information theory. This criterion is naturally satisfied by a fundamental information-theoretic measure of dependence called {\textquotedblleft}mutual information.{\textquotedblright} By contrast, a recently introduced dependence measure called the {\textquotedblleft}maximal information coefficient{\textquotedblright} is seen to violate equitability. We conclude that estimating mutual information provides a natural and practical method for equitably quantifying associations in large datasets.How should one quantify the strength of association between two random variables without bias for relationships of a specific form? Despite its conceptual simplicity, this notion of statistical {\textquotedblleft}equitability{\textquotedblright} has yet to receive a definitive mathematical formalization. Here we argue that equitability is properly formalized by a self-consistency condition closely related to Data Processing Inequality. Mutual information, a fundamental quantity in information theory, is shown to satisfy this equitability criterion. These findings are at odds with the recent work of Reshef et al. [Reshef DN, et al. (2011) Science 334(6062):1518{\textendash}1524], which proposed an alternative definition of equitability and introduced a new statistic, the {\textquotedblleft}maximal information coefficient{\textquotedblright} (MIC), said to satisfy equitability in contradistinction to mutual information. These conclusions, however, were supported only with limited simulation evidence, not with mathematical arguments. Upon revisiting these claims, we prove that the mathematical definition of equitability proposed by Reshef et al. cannot be satisfied by any (nontrivial) dependence measure. We also identify artifacts in the reported simulation evidence. When these artifacts are removed, estimates of mutual information are found to be more equitable than estimates of MIC. Mutual information is also observed to have consistently higher statistical power than MIC. We conclude that estimating mutual information provides a natural (and often practical) way to equitably quantify statistical associations in large datasets.},
+  comment   = {Defines the strength of a pairwise variable association with "equitability", shows that the maximal info coeff (MIC) does not really have it, but that (apparently) plain on mutual info is more equitable.
+
+In 2018, Donati18maxInfCoeffTl may have come up with a better MIC coeff.},
+  doi       = {10.1073/pnas.1309933111},
+  eprint    = {https://www.pnas.org/content/111/9/3354.full.pdf},
+  publisher = {National Academy of Sciences},
+  url       = {https://www.pnas.org/content/111/9/3354},
+}
+
 @InProceedings{Zhou16recurCNNcntinPain,
   author    = {J. Zhou and X. Hong and F. Su and G. Zhao},
   title     = {Recurrent Convolutional Neural Network Regression for Continuous Pain Intensity Estimation in Video},
@@ -7826,6 +7894,32 @@ timated by the GoogleR Flu Trends project.},
   publisher = {Institute of Mathematical Statistics},
   timestamp = {2014.07.18},
   url       = {http://projecteuclid.org/euclid.aoas/1396966279},
+}
+
+@Book{Madsen11glmBook,
+  title     = {Introduction to general and generalized linear models},
+  publisher = {Chapman \& Hall/CRC},
+  year      = {2011},
+  author    = {Madsen, Henrik and Thyregod, Poul},
+  isbn      = {978-1420091557},
+  abstract  = {Bridging the gap between theory and practice for modern statistical model building, Introduction to General and Generalized Linear Models presents likelihood-based techniques for statistical modelling using various types of data. Implementations using R are provided throughout the text, although other software packages are also discussed. Numerous examples show how the problems are solved with R.
+
+After describing the necessary likelihood theory, the book covers both general and generalized linear models using the same likelihood-based methods. It presents the corresponding/parallel results for the general linear models first, since they are easier to understand and often more well known. The authors then explore random effects and mixed effects in a Gaussian context. They also introduce non-Gaussian hierarchical models that are members of the exponential family of distributions. Each chapter contains examples and guidelines for solving the problems via R.
+
+Providing a flexible framework for data analysis and model building, this book focuses on the statistical methods and models that can help predict the expected value of an outcome, dependent, or response variable. It offers a sound introduction to general and generalized linear models using the popular and powerful likelihood techniques.
+
+Ancillary materials are available at http://www.imm.dtu.dk/~hm/GLM. This material includes solutions to exercises, additional exercises and assignments, which are intended to be solved using a computer, and data used in the book.},
+  comment   = {The GLM book that Henrik game me (I have a  paper copy).
+
+Slides and Exercises are here:
+http://www.imm.dtu.dk/~hmad/GLM/
+
+Has invertible link functions on p. 103 (useful for bounded output regression, etc.)
+
+Fox08glmBookChap has nearly the same table, but w/ some plots},
+  owner     = {sotterson},
+  timestamp = {2014.02.08},
+  url       = {https://www.amazon.com/Introduction-General-Generalized-Chapman-Statistical/dp/1420091557},
 }
 
 @Article{Eilers96FlexSmthBsplnPnlty,
@@ -15108,6 +15202,23 @@ matrix of a multivariate-normal random-vector.},
   owner     = {sotterson},
   publisher = {World Scientific},
   timestamp = {2013.03.13},
+}
+
+@Article{Cole18impactSunShot2030,
+  author   = {Wesley Cole and Bethany Frew and Pieter Gagnon and Andrew Reimers and Jarett Zuboy and Robert Margolis},
+  title    = {Envisioning a low-cost solar future: Exploring the potential impact of Achieving the SunShot 2030 targets for photovoltaics},
+  journal  = {Energy},
+  year     = {2018},
+  volume   = {155},
+  pages    = {690 - 704},
+  issn     = {0360-5442},
+  abstract = {In the context of recent dramatic solar energy cost reductions, the U.S. Department of Energy set new levelized cost of energy goals for photovoltaics (PV) to achieve by 2030 to enable significantly greater PV adoption: \$0.03/kWh for utility-scale, \$0.04/kWh for commercial, and \$0.05/kWh for residential PV systems. We analyze the potential impacts of achieving these “SunShot 2030” cost targets for the contiguous United States using the Regional Energy Deployment System (ReEDS) and Distributed Generation (dGen) capacity expansion models. We consider the impacts under a wide range of future conditions. We find that PV could provide 13\%–18\% of U.S. electricity demand in 2030 and 28\%–64\% of demand if the SunShot 2030 goals are achieved, with PV deployment increasing in every state. The availability of low-cost storage has the largest impact on projected deployment, followed by natural gas prices and electricity demand. For comparison, PV deployed under a business-as-usual scenario could provide only 5\% of generation in 2030 and 17\% in 2050. We find that the high levels of PV deployment explored here lead to lower electricity prices and system costs, lower carbon dioxide emissions, lower water consumption, increased renewable energy curtailment, and increased storage deployment compared with the business-as-usual scenario.},
+  comment  = {
+
+Uses: Sigrin17mktDmdDgenDoc},
+  doi      = {https://doi.org/10.1016/j.energy.2018.04.166},
+  keywords = {SunShot, PV, ReEDS, Capacity expansion, Renewable energy, Energy storage},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0360544218307898},
 }
 
 @Article{Zheng12qboost,
@@ -25431,6 +25542,23 @@ as EEG, with much improved performance both in terms of memory and CPU time.},
   url       = {http://alricalthoff.com/sp12_honor_thesis_alric_althoff.pdf},
 }
 
+@Article{Donati18maxInfCoeffTl,
+  author   = {Donati, Claudio and Albanese, Davide and Riccadonna, Samantha and Franceschi, Pietro},
+  title    = {{A practical tool for maximal information coefficient analysis}},
+  journal  = {GigaScience},
+  year     = {2018},
+  volume   = {7},
+  number   = {4},
+  month    = {04},
+  issn     = {2047-217X},
+  abstract = {{The ability of finding complex associations in large omics datasets, assessing their significance, and prioritizing them according to their strength can be of great help in the data exploration phase. Mutual information-based measures of association are particularly promising, in particular after the recent introduction of the TICe and MICe estimators, which combine computational efficiency with superior bias/variance properties. An open-source software implementation of these two measures providing a complete procedure to test their significance would be extremely useful.Here, we present MICtools, a comprehensive and effective pipeline that combines TICe and MICe into a multistep procedure that allows the identification of relationships of various degrees of complexity. MICtools calculates their strength assessing statistical significance using a permutation-based strategy. The performances of the proposed approach are assessed by an extensive investigation in synthetic datasets and an example of a potential application on a metagenomic dataset is also illustrated.We show that MICtools, combining TICe and MICe, is able to highlight associations that would not be captured by conventional strategies.}},
+  comment  = {Feature ranking etc. with mutual info functions.  Is a two step info screening procedure that overcomes (they say) the limitations of the maximal information coeffecient (MIC) pointed out in Kinney14mutMaxInfoEquit.  This paper cites Kinney14mutMaxInfoEquit so maybe this approach as solved those problems. },
+  doi      = {10.1093/gigascience/giy032},
+  eprint   = {http://oup.prod.sis.lan/gigascience/article-pdf/7/4/giy032/24620151/giy032.pdf},
+  file     = {:Donati18maxInfCoeffTl.pdf:PDF},
+  url      = {https://dx.doi.org/10.1093/gigascience/giy032},
+}
+
 @InProceedings{Guo14WindPowCrvWRF,
   author       = {Guo, Zhenhai and Xiao, Xia},
   title        = {Wind Power Assessment Based on a WRF Wind Simulation with Developed Power Curve Modeling Methods},
@@ -26483,6 +26611,47 @@ Video: Gradient Boosted Machine Learning (Trevor Hastie)
 https://youtu.be/wPqtzj5VZus},
   file      = {Paper:Chen15higgsBoostTr.pdf:PDF;Detailed Tech Report:Chen15higgsBoostTr_TR.pdf:PDF},
   url       = {http://proceedings.mlr.press/v42/chen14.pdf},
+}
+
+@TechReport{Sigrin17mktDmdDgenDoc,
+  author      = {Benjamin Sigrin and Michael Gleason and Robert Preus and Ian Baring-Gould and Robert Margolis},
+  title       = {The Distributed Generation Market Demand Model (dGen): Documentation},
+  institution = {NREL (National Renewable Energy Laboratory)},
+  year        = {2017},
+  number      = {NREL/TP-6A20-65231},
+  abstract    = {The Distributed Generation Market Demand (dGen) model is a geospatially rich, bottom-up, 
+market-penetration model that simulates the potential adoption of distributed energy resources 
+(DERs) for residential, commercial, and industrial entities in the continental United States 
+through 2050. The National Renewable Energy Laboratory (NREL) developed dGen to analyze 
+the key factors that will affect future market demand for distributed solar, wind, storage, and 
+other DER technologies in the United States within a single modeling platform. The dGen model 
+builds on, extends, and provides significant advances (Table ES-1) over NREL’s SolarDS model 
+(Denholm et al. 2009), which is now deprecated. 
+Currently, dGen simulates the adoption of distributed solar (the dSolar module) and distributed 
+wind (the dWind module), as described in detail in Appendices A and B, respectively. The dGen 
+team will add modules in FY16 for behind-the-meter storage (dStorage) as well as a module for 
+evaluating distributed geothermal systems (dGeo), such as ground-source heat pumps and 
+geothermal direct use. The model is also configured to link with utility scale capacity expansion 
+models maintained and applied at NREL (see Appendix C). All technologies modeled within the 
+dGen framework leverage a database of highly resolved geospatial information (Figure ES-1), 
+along with algorithms for modeling DER economics, customer decision-making, and diffusion of 
+technology over time.},
+  comment     = {Recommended by Ben Norris, CPR Consulting
+
+Gavin Novotny wrote:
+
+NREL “generic adoption forecast”
+•	https://www.nrel.gov/analysis/dgen/
+•	“geospatially rich, bottom-up, market-penetration model”
+•	Used to assist Maine state legislature in forecasting DPV by 2021
+•	Successor to “SolarDS” model
+
+See also: 
+Dong17resPVdeployFrcst
+Gagnon17netMtrAdoptPV
+Cole18impactSunShot2030 (uses it)
+},
+  file        = {:Sigrin17mktDmdDgenDoc.pdf:PDF},
 }
 
 @TechReport{Corbus2011eastWindTrans,
@@ -31343,6 +31512,40 @@ to model fitting and forecasting.},
   timestamp = {2013.10.24},
 }
 
+@Article{Alexandrov12mdrnTrndExtrct,
+  author    = {Alexandrov, Theodore and Bianconcini, Silvia and Dagum, Estela Bee and Maass, Peter and McElroy, Tucker S},
+  title     = {A review of some modern approaches to the problem of trend extraction},
+  journal   = {Econometric Reviews},
+  year      = {2012},
+  volume    = {31},
+  number    = {6},
+  pages     = {593--624},
+  abstract  = {This article presents a review of some modern approaches to trend extraction for
+one-dimensional time series, which is one of the major tasks of time series analysis. The
+trend of a time series is usually defined as a smooth additive component which contains
+information about the time series global change, and we discuss this and other definitions
+of the trend. We do not aim to review all the novel approaches, but rather to observe the
+problem from different viewpoints and from different areas of expertise. The article contributes to
+understanding the concept of a trend and the problem of its extraction. We present an overview
+of advantages and disadvantages of the approaches under consideration, which are: the model-
+based approach (MBA), nonparametric linear filtering, singular spectrum analysis (SSA), and
+wavelets. The MBA assumes the specification of a stochastic time series model, which is usually
+either an autoregressive integrated moving average (ARIMA) model or a state space model. The
+nonparametric filtering methods do not require specification of model and are popular because of
+their simplicity in application. We discuss the Henderson, LOESS, and Hodrick–Prescott filters
+and their versions derived by exploiting the Reproducing Kernel Hilbert Space methodology.
+In addition to these prominent approaches, we consider SSA and wavelet methods. SSA is
+widespread in the geosciences; its algorithm is similar to that of principal components analysis,
+but SSA is applied to time series. Wavelet methods are the de facto standard for denoising in
+signal procession, and recent works revealed their potential in trend analysis.
+
+Keywords Model-based approach; Nonparametric linear filtering; Singular spectrum analysis;
+Time series; Trend; Wavelets.},
+  comment   = {An interesting paper found by Jan Vibann (sp?) of TenneT.  Seems more about denoising than trend detection but is that actually the same thing and I don't know it?},
+  file      = {:Alexandrov12mdrnTrndExtrct.pdf:PDF},
+  publisher = {Taylor \& Francis},
+}
+
 @TechReport{Cripps03varCovarSelRegress,
   author      = {Edward Cripps and Chris Carter and Robert Kohn},
   title       = {Variable selection and covariance selection in multivariate regression models.},
@@ -34754,6 +34957,19 @@ Odds ratio as a performance metric for binary events, like tornadoes. Probably r
   url       = {http://dx.doi.org/10.1175/1520-0434(2000)015<0221:UOTORF>2.0.CO;2},
 }
 
+@Article{Kwan212,
+  author    = {Kwan, Calvin Lee},
+  title     = {Influence of local environmental, social, economic and political variables on the spatial distribution of residential solar PV arrays across the United States},
+  journal   = {Energy Policy},
+  year      = {2012},
+  volume    = {47},
+  pages     = {332--344},
+  abstract  = {This study used ZIP code level data from the 2000 US Census to investigate the influence of local environmental, social, economic and political variables on the distribution of residential solar PV arrays across the United States. Current locations of residential solar PVs were documented using data from the National Renewable Energy Laboratory's Open PV project. A zero-inflated negative binomial reression model was run to evaluate the influence of selected variables. Using the same model, predicted residential solar PV shares were generated and illustrated using GIS software. The results of the model indicate solar insolation, cost of electricity and amount of available financial incentives are important factors influencing adoption of residential solar PV arrays. Results also indicate the Southwestern region of the United States and the state of Florida are currently underperforming in terms of number of housing units with solar PV installations},
+  comment   = {Also, many good references on RHS of journal web page.},
+  publisher = {Elsevier},
+  url       = {https://www.sciencedirect.com/science/article/pii/S0301421512003795},
+}
+
 @TechReport{Roth13multivarTdist,
   author      = {Roth, Michael},
   title       = {On the multivariate t distribution},
@@ -35901,12 +36117,11 @@ Actually, this could be used for ensembles too (the individual pdf's in BMA).},
 }
 
 @Article{Eckersley18utilFuncImpossUncert,
-  author        = {Eckersley, Peter},
-  title         = {Impossibility and Uncertainty Theorems in AI Value Alignment (or why your AGI should not have a utility function)},
-  journal       = {arXiv preprint arXiv:1901.00064},
-  year          = {2018},
-  __markedentry = {[scotto:]},
-  abstract      = {Utility functions or their equivalents (value functions, objective functions, loss
+  author   = {Eckersley, Peter},
+  title    = {Impossibility and Uncertainty Theorems in AI Value Alignment (or why your AGI should not have a utility function)},
+  journal  = {arXiv preprint arXiv:1901.00064},
+  year     = {2018},
+  abstract = {Utility functions or their equivalents (value functions, objective functions, loss
 functions, reward functions, preference orderings) are a central tool in most current
 machine learning systems. These mechanisms for defining goals and guiding
 optimization run into practical and conceptual difficulty when there are independent,
@@ -35927,14 +36142,14 @@ uncertainty theorems in both of those settings, and prove lower bounds on how
 much uncertainty is implied by the impossibility results. We close by proposing
 two conjectures about the relationship between uncertainty in objectives and severe
 unintended consequences from AI systems.},
-  comment       = {Ways of modeling tradeoffs between irreconcilable outcomes  Maybe good for energy optimization: max comfort vs. average comfort over time vs. money... etc.  Several kind of probabilistic rankings or orderings are mentioned, which could help optimize an AI machine -- based on human preferences which are uncertain
+  comment  = {Ways of modeling tradeoffs between irreconcilable outcomes  Maybe good for energy optimization: max comfort vs. average comfort over time vs. money... etc.  Several kind of probabilistic rankings or orderings are mentioned, which could help optimize an AI machine -- based on human preferences which are uncertain
 
 Author's interest is in ethical delimmas but maybe this is good for something Clean Power Research will want me to do: cost vs. outage prob. vs. ... as chosen by operators twizzling some optimization knobs on a CPR user interface.
 
 Discussed here:
 https://www.technologyreview.com/s/612764/giving-algorithms-a-sense-of-uncertainty-could-make-them-more-ethical/},
-  file          = {:Eckersley18utilFuncImpossUncert.pdf:PDF},
-  url           = {https://arxiv.org/pdf/1901.00064.pdf?utm_campaign=the_algorithm.unpaid.engagement&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-8SQPvr8mh-ICrJzt0vJhRCEPzgIalY3fRUX7Q4iMwG1rNFf-v4-GR9BNEI_UB8R-0z08Jm},
+  file     = {:Eckersley18utilFuncImpossUncert.pdf:PDF},
+  url      = {https://arxiv.org/pdf/1901.00064.pdf?utm_campaign=the_algorithm.unpaid.engagement&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-8SQPvr8mh-ICrJzt0vJhRCEPzgIalY3fRUX7Q4iMwG1rNFf-v4-GR9BNEI_UB8R-0z08Jm},
 }
 
 @Electronic{Pyle10rampObsNet,
@@ -38122,7 +38337,7 @@ variants of neural networks for phoneme recognition. In particular, we utilize
 convolutional for frame level classification and recurrent architecture with Con-
 nectionist Temporal Classification loss for decoding the frames into a sequence of
 phonemes. We carry out our experiments on the TIMIT dataset. We have managed
-to obtain 22.1% for the frame error rate with our CNN, which to our knowledge,
+to obtain 22.1\% for the frame error rate with our CNN, which to our knowledge,
 closely matches the state-of-the-art. Our decoded phone sequence achieves an
 error of 29.4%.},
   comment     = {Table 2 shows that get best results when conv. NN's entirely replace MFCCs in speech recog.
@@ -38212,6 +38427,29 @@ Stopping Criterion
   comment   = {Covariance matrices that change depending upon the data.  It seems like this is better than doing a non-stationary marginal transform, with a fixed (non-matching) covariance matrix, as in Tastu15spcTimeTrajGaussCpla, etc.},
   file      = {:Shah14studentTprocAltGauss.pdf:PDF},
   url       = {http://proceedings.mlr.press/v33/shah14.html},
+}
+
+@Article{Peduzzi96numEVvarLogRgrssn,
+  author        = {Peter Peduzzi and John Concato and Elizabeth Kemper and Theodore R. Holford and Alvan R. Feinstein},
+  title         = {A simulation study of the number of events per variable in logistic regression analysis},
+  journal       = {Journal of Clinical Epidemiology},
+  year          = {1996},
+  volume        = {49},
+  number        = {12},
+  pages         = {1373 - 1379},
+  issn          = {0895-4356},
+  __markedentry = {[Scott:]},
+  abstract      = {We performed a Monte Carlo study to evaluate the effect of the number of events per variable (EPV) analyzed in logistic regression analysis. The simulations were based on data from a cardiac trial of 673 patients in which 252 deaths occurred and seven variables were cogent predictors of mortality; the number of events per predictive variable was (2527 = 36) for the full sample. For the simulations, at values of EPV = 2, 5, 10, 15, 20, and 25, we randomly generated 500 samples of the 673 patients, chosen with replacement, according to a logistic model derived from the full sample. Simulation results for the regression coefficients for each variable in each group of 500 samples were compared for bias, precision, and significance testing against the results of the model fitted to the original sample. For EPV values of 10 or greater, no major problems occurred. For EPV values less than 10, however, the regression coefficients were biased in both positive and negative directions; the large sample variance estimates from the logistic model both overestimated and underestimated the sample variance of the regression coeffi-cients; the 90\% confidence limits about the estimated values did not have proper coverage; the Wald statistic was conservative under the null hypothesis; and paradoxical associations (significance in the wrong direction) were increased. Although other factors (such as the total number of events, or sample size) may influence the validity of the logistic model, our findings indicate that low EPV can lead to major problems.},
+  comment       = {Using random draws of real data, needed about 10 positive events per input variable for logistic regression -- can use to pick the maximum input feature dimension.  I'm not sure if this was "exact" logistic regression or not, but it was the 1st high for a google scholar search of "exact logistic regression"
+
+I wonder if it assumed that all variables were independent?
+
+Would the trick in King01logRgrssnRare be a help?
+Does this eliminate the need for Exact LR? (King02logistRgrssnMLvsExact)},
+  doi           = {https://doi.org/10.1016/S0895-4356(96)00236-3},
+  file          = {:Peduzzi96numEVvarLogRgrssn.pdf:PDF},
+  keywords      = {Monte Carlo, bias, precision, significance testing},
+  url           = {http://www.sciencedirect.com/science/article/pii/S0895435696002363},
 }
 
 @Article{deLuna05predictSpatioTemp,
@@ -38407,7 +38645,7 @@ from the wind farm forecasts a principal component analysis
 is applied before these data enter the AI model.
 Results show that combining times series methods and spatio-
 temporal information by integrating wind farm forecasts into
-an AI model leads not only to an improvement of about 30%
+an AI model leads not only to an improvement of about 30\%
 regarding persistence but also to significantly reduced extreme
 errors.
 
@@ -39864,6 +40102,40 @@ Oline implementation
   owner     = {sotterson},
   timestamp = {2013.10.24},
   url       = {http://www.sciencedirect.com/science/article/pii/S0304407611002065},
+}
+
+@Article{King01logRgrssnRare,
+  author    = {King, Gary and Zeng, Langche},
+  title     = {Logistic regression in rare events data},
+  journal   = {Political analysis},
+  year      = {2001},
+  volume    = {9},
+  number    = {2},
+  pages     = {137--163},
+  abstract  = {We study rare events data, binary dependent variables with dozens to thousands of times
+fewer ones (events, such as wars, vetoes, cases of political activism, or epidemiological
+infections) than zeros (“nonevents”). In many literatures, these variables have proven dif-
+ficult to explain and predict, a problem that seems to have at least two sources. First,
+popular statistical procedures, such as logistic regression, can sharply underestimate the
+probability of rare events. We recommend corrections that outperform existing methods
+and change the estimates of absolute and relative risks by as much as some estimated
+effects reported in the literature. Second, commonly used data collection strategies are
+grossly inefficient for rare events data. The fear of collecting data with too few events has
+led to data collections with huge numbers of observations but relatively few, and poorly
+measured, explanatory variables, such as in international conflict data with more than a
+quarter-million dyads, only a few of which are at war. As it turns out, more efficient sam-
+pling designs exist for making valid inferences, such as sampling all available events (e.g.,
+wars) and a tiny fraction of nonevents (peace). This enables scholars to save as much
+as 99% of their (nonfixed) data collection costs or to collect much more meaningful ex-
+planatory variables. We provide methods that link these two results, enabling both types of
+corrections to work simultaneously, and software that implements the methods developed.},
+  comment   = {It's OK to inflate the training data to include more rare events if you do a statistical correction afterwards.
+
+Maybe relaxes limit in: Peduzzi96numEVvarLogRgrssn
+Does eliminate the need for exact?  (King02logistRgrssnMLvsExact)},
+  file      = {:King01logRgrssnRare.pdf:PDF},
+  publisher = {Cambridge University Press},
+  url       = {https://gking.harvard.edu/files/0s.pdf},
 }
 
 @InCollection{Montufar2014numLinRegnDeepNN,
@@ -42306,6 +42578,16 @@ Alg. not really described here: must see: Agarwal10UnivMDS (I think)},
   url       = {http://www.springer.com/us/book/9781461463955},
 }
 
+@Book{Agresti07introCategDatAnl,
+  title     = {An Introduction to Categorical Data Analysis},
+  publisher = {Wiley-Interscience},
+  year      = {2007},
+  author    = {Alan Agresti},
+  edition   = {Second Edition},
+  comment   = {Looks like it would be a good book to scan for logistic regression, GLM stuff, mixed models, random effects, etc.},
+  file      = {:Agresti07introCategDatAnl.pdf:PDF},
+}
+
 @InCollection{Akaike92infoThryMaxLik,
   author    = {Akaike, Hirotogu},
   title     = {Information theory and an extension of the maximum likelihood principle},
@@ -43024,6 +43306,26 @@ Three approaches compared (nice flowchart explaining when to use what (Fig 1))
   owner     = {sotterson},
   timestamp = {2017.04.13},
   url       = {http://code.eng.buffalo.edu/cloud/index.html},
+}
+
+@TechReport{Coley17disChoicePVadopt,
+  author      = {S. Coley and N. Enbar and M. Bingham and J. Kinnell},
+  title       = {Applying Discrete Choice Experiment Modeling to Photovoltaic Adoption Forecasting},
+  institution = {EPRI},
+  year        = {2017},
+  number      = {3002011011},
+  address     = {Palo Alto, CA},
+  comment     = {Recommended by Ben Norris, CPR Consulting
+
+Gavin Novotny wrote:
+
+NREL “generic adoption forecast”
+•	https://www.nrel.gov/analysis/dgen/
+•	“geospatially rich, bottom-up, market-penetration model”
+•	Used to assist Maine state legislature in forecasting DPV by 2021
+•	Successor to “SolarDS” model
+},
+  file        = {:Coley17disChoicePVadopt.pdf:PDF},
 }
 
 @InProceedings{Collier08windForecastPowerModel,
@@ -45625,18 +45927,6 @@ See: http://www.mathworks.com/help/nnet/ref/trainbr.html},
   timestamp = {2010.07.05},
 }
 
-@Book{Madsen11glmBook,
-  title     = {Introduction to general and generalized linear models},
-  publisher = {CRC Press},
-  year      = {2011},
-  author    = {Madsen, Henrik and Thyregod, Poul},
-  comment   = {Henrik's GLM book. Has invertible link functions on p. 103 (useful for bounded output regression, etc.)
-
-Fox08glmBookChap has nearly the same table, but w/ some plots},
-  owner     = {sotterson},
-  timestamp = {2014.02.08},
-}
-
 @InCollection{Maggio11frcstExpERCOT,
   author    = {David Maggio},
   title     = {{ISO} Experiences with Wind Forecasting -- {ERCOT}},
@@ -46553,6 +46843,17 @@ PUT PDF on SP4 desktop in here.},
   url       = {http://www.physicalgeography.net/fundamentals/7p.html},
 }
 
+@Misc{Pillow16mathNeurTlsSlides,
+  author       = {Jonathan Pillow},
+  title        = {Mathematical Tools for Neuroscience NEU 314, Spring 2016},
+  howpublished = {Course Notes},
+  month        = feb,
+  year         = {2016},
+  comment      = {Relation between General Linear Model (GLM, old) and Generalized Linear Model (GLM, newish, what people usually mean) and Logistic and Poisson Regression (subclasses of Generalized Linear Models).  And many other things....},
+  file         = {:Pillow16mathNeurTlsSlides.pdf:PDF},
+  url          = {http://pillowlab.princeton.edu/teaching/mathtools16/},
+}
+
 @Article{Pinson13cwcNotProper,
   author    = {Pierre Pinson and Julija Tastu},
   title     = {Proper Evaluation of Neural Network and Learning Systems based Prediction Intervals},
@@ -46970,7 +47271,7 @@ Logistic Regression
  - IRLS (interative recursive least squares)
  -- goal is least squares fit to transformed output
  -- iterative weighted least squares regression gives higher weight to certain (low estimated variance) samples
- -- Talorize the output to avoid divide by zero at 0,1 boundaries
+ -- Taylorize the output to avoid divide by zero at 0,1 boundaries
  -- is actually equivalent to Newton's!
 
 Degrees of Freedom
@@ -47736,7 +48037,8 @@ At Peak, More:
   organization  = {Jet Propulsion Laboratory, California Institute of Technology},
   bdsk-file-1   = {YnBsaXN0MDDUAQIDBAUGBwpZJGFyY2hpdmVyWCR2ZXJzaW9uVCR0b3BYJG9iamVjdHNfEA9OU0tleWVkQXJjaGl2ZXISAAGGoNEICVRyb290gAGoCwwXGBkaHiVVJG51bGzTDQ4PEBMWWk5TLm9iamVjdHNXTlMua2V5c1YkY2xhc3OiERKABIAFohQVgAKAA4AHXHJlbGF0aXZlUGF0aFlhbGlhc0RhdGFfEFIuLi8uLi8uLi9QYXBlcnMvV2Fnc3RhZmYvQ2?1c3RlcmluZyB3aXRoIE1pc3NpbmcgVmFsdWVzIE5vIEltcHV0YXRpb24gUmVxdWlyZWQucGRm0hsPHB1XTlMuZGF0YU8RAkIAAAAAAkIAAgAACURvY3VtZW50cwAAAAAAAAAAAAAAAAAAAAAAAL7OeK5IKwAAAD+GUR9DbHVzdGVyaW5nIHdpdGggTWlzcyMzRjg2NjgucGRmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP4ZowuDo/1BERiBTS0lNAAMAAwAACQAAAAAAAAAAAAAAAAAAAAAIV2Fnc3RhZmYAEAAIAAC+zlyOAAAAEQAIAADC4MzfAAAAAQAUAD+GUQA3G4AAALLyAAASxgAAEq0AAgBTRG9jdW1lbnRzOm5lbW86RG9jdW1lbnRzOlVuaXZlcnNpdGE6UGFwZXJzOldhZ3N0YWZmOkNsdXN0ZXJpbmcgd2l0aCBNaXNzIzNGODY2OC5wZGYAAA4AdAA5AEMAbAB1AHMAdABlAHIAaQBuAGcAIAB3AGkAdABoACAATQBpAHMAcwBpAG4AZwAgAFYAYQBsAHUAZQBzACAATgBvACAASQBtAHAAdQB0AGEAdABpAG8AbgAgAFIAZQBxAHUAaQByAGUAZAAuAHAAZABmAA8AFAAJAEQAbwBjAHUAbQBlAG4AdABzABIAZC9uZW1vL0RvY3VtZW50cy9Vbml2ZXJzaXRhL1BhcGVycy9XYWdzdGFmZi9DbHVzdGVyaW5nIHdpdGggTWlzc2luZyBWYWx1ZXMgTm8gSW1wdXRhdGlvbiBSZXF1aXJlZC5wZGYAEwASL1ZvbHVtZXMvRG9jdW1lbnRzABUAAgAX//8AAIAG0h8gISJYJGNsYXNzZXNaJGNsYXNzbmFtZaMiIyRdTlNNdXRhYmxlRGF0YVZOU0RhdGFYTlNPYmplY3TSHyAmJ6InJFxOU0RpY3Rpb25hcnkACAARABsAJAApADIARABJAEwAUQBTAFwAYgBpAHQAfACDAIYAiACKAI0AjwCRAJMAoACqAP8BBAEMA1IDVANZA2IDbQNxA38DhgOPA5QDlwAAAAAAAAIBAAAAAAAAACgAAAAAAAAAAAAAAAAAAAOk},
   bdsk-url-1    = {http://www.litech.org/~wkiri/Papers/wagstaff-missing-ifcs04.pdf},
-  comment       = {constraint based clustering for missing values: n^2 comp load, where n is num. of vectors w/ missing features (I think) * related to general area of constrained clustering http://books.google.com/books?hl=en&lr=&id=GMAkzEWlJzsC&oi=fnd&pg=PA1&dq=wagstaff+cluster+k-wagstaff&ots=ueDeZzAKrU&sig=hOlEHszIrYyCBEuqYn8Qwygf170\#PPA3,M1},
+  comment       = {constraint based clustering for missing values: n^2 comp load, where n is num. of vectors w/ missing features (I think)
+  * related to general area of constrained clustering http://books.google.com/books?hl=en&lr=&id=GMAkzEWlJzsC&oi=fnd&pg=PA1&dq=wagstaff+cluster+k-wagstaff&ots=ueDeZzAKrU&sig=hOlEHszIrYyCBEuqYn8Qwygf170\#PPA3,M1},
   date-added    = {2007-08-09 15:53:52 +0200},
   date-modified = {2007-08-10 16:37:17 +0200},
   file          = {Wagstaff04clustMissNoImp.pdf:Wagstaff04clustMissNoImp.pdf:PDF;Wagstaff04clustMissNoImp.pdf:Wagstaff04clustMissNoImp.pdf:PDF},

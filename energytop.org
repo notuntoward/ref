@@ -144,6 +144,7 @@
 *** [[http://www.neurosolutions.com/products/nsbook/][Interactive Neural Network Book]] explains recurrent NN's, has demos
 *** [[file:energy.bib::Geron17HandsOnMachineLearningWithScikitLearnAndTensorFlowConceptsToolsAndTechniquesToBuildIntelligentSystems][Geron 2017: Hands On Scikit Learn TensorFlow Book]] (I have)
 *** [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop Intro Book]]
+*** [[file:energy.bib::Agresti07introCategDatAnl][Agresti 2007: Introduction Categorical Data Analysis]] (good)
 *** [[Books w/ source code]]
 *** Wind energy books I could buy
     these three looked good, looking at amazon.com on 9/6/2011
@@ -2053,6 +2054,25 @@ Scott
 
 *** TODO [[file:energy.bib::Battaglia18biasDpLrnGraphNet][Battaglia et al.: Relational bias, deep lrn, graph networks]] (perhaps, the big scene setting paper to read, has code)
 
+* <<Generalized Linear Models>>
+
+  [[file:energy.bib::Pillow16mathNeurTlsSlides][Not to be confused]] with "General Linear Models", is a [[file:energy.bib::Pillow16mathNeurTlsSlides][superset]] of things like Poisson and Logistic Regression.
+
+*** [[file:energy.bib::Fox08glmBookChap][Fox 2008: Chap 15 Generalized Linear Regression]]
+*** [[file:energy.bib::Madsen11glmBook][Madsen & Thyregod 2011: Intro Gen & Generalized Lin Models]]
+*** [[file:energy.bib::Agresti07introCategDatAnl][Agresti 2007: Introduction Categorical Data Analysis]] (good)
+*** [[file:energy.bib::Pillow16mathNeurTlsSlides][Pillow 2016: Mathematical Tools Neuroscience Course Notes]]: GLM vs. GLM vs. Poisson/Logistic Regression
+*** [[cite:Fox08btstrpRgrsnBookChap][Fox 2008: Chap 21: Bootstrapping Regrssn Models: Applied Regression Analysis]]
+
+*** Logistic Regression
+***** [[file:energy.bib::Shalizi15datAnalElemViewBk][Shalizi 2015: Advanced]] data analysis from elementary perspective (logistic regression, ...)
+***** [[file:energy.bib::][Nielsen et al. 2004: Wind Power Ensemble Forecasting]] (logistic shape pow curve)
+***** [[Bounding by output transformation or modeling]]
+***** <<Rare Events and Logistic Regression>>
+******* Logistic regression rare event oversamp: [[file:energy.bib::King01logRgrssnRare][King & Zeng 2001: Logistic]]
+******* [[cite:Xu16bndLogRgrssnImbal][Xu et al. 2016: Robust Logistic Regression class imbal. (for fault det)]]
+******* [[file:energy.bib::Peduzzi96numEVvarLogRgrssn][Peduzzi et al. 1996 num events per var]]: simulated, could pick max feat dim
+******* [[file:energy.bib::King02logistRgrssnMLvsExact][King & Ryan 2002: Prelim MaxLik vs. Exact Logistic Rgrssn]]
 * <<Deep Learning in Energy Systems>>
 *** [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]    :DpLrn:FrcstDmd:
 *** TODO [[cite:Busseti12deepLrnTimeSer][Busseti et al. 2012: Deep Learning Time Series Modeling (Demand frcst, RNN best)]] :DpLrn:RNN:FrcstDmd:
@@ -4795,7 +4815,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ******* [[file:energy.bib::Messner13probFrcstInvCensor][Messner et al. 2013: Probabilistic]]
 ******* [[file:energy.bib::Cannon11quantRgrsnNNprecip][Cannon 2011: Quantile]]
 ******* non-parametric regression w/ truncated learning: [[http://cran.r-project.org/web/packages/truncSP/truncSP.pdf][R's truncSP package]]
-*** bounding by output transformation or modeling
+*** <<Bounding by output transformation or modeling>>
     <<Bounding by output transformation>>
 
     For wind power, logit() seems popular and also settled on in
@@ -4934,7 +4954,7 @@ sera
 ********* TODO better than periodic splines?  What are periodic splines representing?
 ******* online subspace learning (adaptivity)
 ***** [[file:energy.bib::Corradi76distLagSpline][Corradi & Gambetta 1976: Estimation Distributed Lags Spline Functions]] (better than poly?)
-***** [[file:energy.bib::Zanobetti00addDistLagMort][Zanobetti et al. 2000: Generalized]] (L2-penalized spline, best explantion)
+***** [[file:energy.bib::Zanobetti00addDistLagMort][Zanobetti et al. 2000: Generalized]] (L2-penalized spline, best explanation)
 ******* best explanation of how splines work of the papers I've seen
 ******* lasso better than L2 penalty?
 ********* more sparse ==> more generalizable
@@ -6006,7 +6026,7 @@ variables will be preferred, when possible.
       multiple is)
 
 ******* measurements a kind of hierarchical model
-******* [[http://socserv.mcmaster.ca/jfox/courses/soc761/mixed-models-2.pdf][related to]] generalized linear models
+******* [[http://socserv.mcmaster.ca/jfox/courses/soc761/mixed-models-2.pdf][related]] to: [[Generalized Linear Models]]
 ******* nonlinear [[http://www4.stat.ncsu.edu/~davidian/nlmmtalk.pdf][tutorial]]
 ******* [[http://cran.r-project.org/doc/contrib/fox-companion/appendix-mixed-models.pdf][linear r/s-plus tutorial]]
 ******* [[http://www.sciencedirect.com/science%3f_ob%3darticleurl&_udi%3db6v92-4trhc0w-1&_user%3d10&_rdoc%3d1&_fmt%3d&_orig%3dsearch&_sort%3dd&_docanchor%3d&view%3dc&_searchstrid%3d963167530&_rerunorigin%3dgoogle&_acct%3dc000050221&_version%3d1&_urlversion%3d0&_userid%3d10&md5%3d1c7c0443b17035d26557361fc3559cae][a nonlinear mixed effects model for the prediction of natural gas consumption by individual customers]]
@@ -8784,6 +8804,8 @@ sera
 ***** [[file:energy.bib::Flynn06johnsonSBextrm][Flynn 2006: Fitting Johnson SB]] extreme
 
 ***** Must use ensembles for extreme events: [[file:energy.bib::Moehrlen12tradeStrtgyRESeeg2012][Moehrlen et al. 2012: Investigation EEG]]
+***** [[Class Imbalance Handling]] (a.k.a. rare events)
+***** [[Rare Events and Logistic Regression]]
 ***** See also: [[Forecast Error Distributions]]
 ***** See also: [[Quantile Regression]]
 ***** See also [[Numerical Weather Prediction (NWP)]] for extreme weather
@@ -9416,7 +9438,7 @@ later corrected by greg heath:
 ***** See also [[*ROC, AUC, F-measure, ...][ROC, AUC, F-measure, ...]] (for which metric to use for class-imbalanced problems)
 *** <<Learning Classifier under Class Imbalance>>
 ***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (recipie for learning under)
-***** [[cite:Xu16bndLogRgrssnImbal][Xu et al. 2016: Robust]] logistic rgrssn in class imbal. (also does cost-sensitive learning)
+***** [[Rare Events and Logistic Regression]]
 *** See also [[file:energytop.org::*Extreme%20Quantile%20Forecasting][Extreme Quantile Forecasting]]
 * <<Meteorology>>
 *** Wind Meteorology
@@ -10845,6 +10867,7 @@ Erika
 ******* [[file:energy.bib::Dong17resPVdeployFrcst][Dong et al. 2017: Forecasting California PV Adopt]]: NREL, uses Bass, others
 ******* [[file:energy.bib::Yu18deepSolarDB][Yu et al. 2018: DeepSolar Adopt]]
 ******* [[https://www.evernote.com/l/AA1tIli7iahD3pWS5Dy2I_oEfuZUkGeswYs/][Energy Toolbase]]: RES simulation software company, relevant to CPR?
+******* [[file:energy.bib::Kwan12varsSpatPVus][Kwan 2012: Influence PV United States]] (and its  related papers)
 ***** [[file:energy.bib::Rogers83diffusInnovBk][Rogers 1983: Diffusion of Innovation Book]]
 ***** <<Bass Innovation Diffusion Models>>
 ******* [[file:energy.bib::Bass94bassWithoutDecVars][Bass et al. 1994: Why Bass Model w/o dec vars]] (with derivations. SDE?)
@@ -11248,8 +11271,9 @@ Erika
 ***** [[cite:Blythe12FeatExtrctChngPtSubSpc][Blythe et al. 2012: Feature Extraction Change]]/Fault Stat. Subspace
 ***** [[cite:Abdollahi16grphMdlsFaultDiag][Abdollahi et al. 2016: Probabilistic Graphical Models]] fault diag.
 ***** [[https://github.com/SimonStreicher/FaultMap][FaultMap]]: fault detection software using JIDT tookit
-***** [[cite:Xu16bndLogRgrssnImbal][Xu et al. 2016: Robust Logistic Regression class imbal. (for fault det)]]
 ***** [[cite:Suh16GaussCopulaVarMixDat][Suh & Choi 2016: Gaussian Copula Variational mixed vars (for fault det)]]
+***** [[Class Imbalance Handling]] (a.k.a. rare events)
+***** [[cite:Xu16bndLogRgrssnImbal][Xu et al. 2016: Robust Logistic Regression class imbal. (for fault det)]]
 ***** <<Fault distributions>>
 ******* Weibull
 ********* [[cite:Abernethy06weibullAnlysCh1][Abernethy 2006: New Weibull Handbook]]
