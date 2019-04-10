@@ -10878,8 +10878,15 @@ Erika
 ***** Also: [[Technology Learning Rates]]
 ***** Also: [[Portfolio Optimization and Forecasting]]
 *** <<Technology Learning Rates>>
-***** [[file:energy.bib::Nagy13basPredTechProg][Nagy et al. 2013: Statistical]] + evernote [[Statistical Basis for Predicting Technological Progress][learning rate (tech)]] links
-***** Also: [[Technology Adoption Rates]]
+***** TODO Stat basis for learning rate: [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::Nagy13basPredTechProg][Nagy et al. 2013: Statistical]] (has confidence intervals)
+***** TODO Separate PV component learning rates: [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::][Trancik et al. 2015 Tech Improv Reinf Wind & Solar]]
+***** TODO [[file:energy.bib::Kavlak18causeCostRedPV][Kavlak et al. 2018: Evaluating cause of PV module cost red]] 
+***** TODO [[file:energy.bib::Elshurafa18lrnCrvPVbos][Elshurafa et al. 2018: Estimating PV bal of sys TV per country]] (time varying, BOS only)
+***** TODO [[file:energy.bib::Barbose18trackSunTrendInstPVprice][Barbose et al.: Tracking Sun US PV price Trends]]
+***** TODO [[file:energy.bib::Schmidt19LCOelecStrgProj][Schmidt et al. 2019: Projecting Future LCOS storage]]
+***** TODO [[file:energy.bib::Nykvist19bevPriceFrcst][Nykvist et al. 2019: Assessing BEV price forecast]]
+***** evernote [[Statistical Basis for Predicting Technological Progress][learning rate (tech)]]
+** *** Also: [[Technology Adoption Rates]]
 * <<Random Variable Generation>>
 *** [[cite:Hardin13genRealisticCorrMat][Hardin et al. 2013 Gen Realistic Random Corr Matrix has Rcode]]
 *** [[http://math.stackexchange.com/questions/357980/how-to-generate-random-symmetric-positive-definite-matrices-using-matlab][How to generate random symmetric positive definite matrices using MATLAB?]]
