@@ -70,32 +70,34 @@
       (setq
        ps-lpr-command "c:\\Program Files\\gstools\\gsview\\gsview32.exe"
        ps-lpr-switches (list "/p" "-sDEVICE=mswinpr" "-") )
-      ;; So emacs recognizes Cygwin's path names
-      ;; (http://www.khngai.com/emacs/cygwin.php)
-      ;; NOTE: now obsolete, so must copy it from .emacs.d/* to .emacs.d/elpa
-      (use-package cygwin-mount 
-	:config (cygwin-mount-activate))
-      (setq cygwin-bin-dir "c:/cygwin64/bin/")
-      (defun cygwin-shell ()
-        "Run cygwin bash in shell mode."
-        (interactive)
-        (let ((explicit-shell-file-name (concat cygwin-bin-dir "bash"))
-	      (call-interactively 'shell)))
-	(global-set-key [M-f11] 'cygwin-shell)))) ; cygwin bash
+      ))
+      ;; ;; So emacs recognizes Cygwin's path names
+      ;; ;; (http://www.khngai.com/emacs/cygwin.php)
+      ;; ;; NOTE: now obsolete, so must copy it from .emacs.d/* to .emacs.d/elpa
+      ;; (use-package cygwin-mount 
+      ;;   :config (cygwin-mount-activate))
+      ;; (setq cygwin-bin-dir "c:/cygwin64/bin/")
+      ;; (defun cygwin-shell ()
+      ;;   "Run cygwin bash in shell mode."
+      ;;   (interactive)
+      ;;   (let ((explicit-shell-file-name (concat cygwin-bin-dir "bash"))
+      ;;         (call-interactively 'shell)))
+      ;;   (global-set-key [M-f11] 'cygwin-shell)))) ; cygwin bash
 
 (setq computerNm (downcase system-name)) ; downcase: was getting random case
 (pcase (eval 'computerNm)
   ("desktop-lkl5mc1"  ; Surface Pro 4
    (setq shareDir "c:/Users/scotto/Tempo Box/shareHW"))
-  ("lt492017"     ; Tennet work laptop
-   (progn (setq shareDir "~/shareHW/")))
+  ("cpr-scotto"     ; Clean Power Research desktop
+   (progn (setq shareDir "c:/Users/Scott/OneDrive - Clean Power Research")))
   ("desktop-tqs2o18" ; Surface Pro
    (setq shareDir "c:/Users/scott/OneDrive/scotto/Tempo Box/shareHW"))
   (_
    (progn (warn "Can't assign shareDir for unknown computer: %s" computerNm)
 	  (setq shareDir (concat "unknown_computer_" computerNm "_shareDir"))))
   )
-(setq docDir (expand-file-name "../ref" shareDir))
+;(setq docDir (expand-file-name "../ref" shareDir))
+(setq docDir (expand-file-name "ref" shareDir))
 (message "computerNm %s shareDir %s docDir %s" computerNm shareDir docDir)
 
 (if window-system
@@ -590,15 +592,16 @@
 			;; put this in a global place, not just dired?
 			(define-key dired-mode-map (kbd "C-c C-o")
 			  'w32shell-explorer-here)
-			;; FIX so only run if CYGWIN so windows/cygwin
-			;; links properly.  Display is sensible but dired
-			;; can't follow either ordinary cygwin link or the
-			;; windows shortcut link that cygwin makes with
-			;; "winsymlinks" in the CYGWIN environment
-			;; variable
-			(setq ls-lisp-use-insert-directory-program t) ; ext. ls
-			(setq insert-directory-program (concat cygwin-bin-dir "ls"))
-			)
+                        )
+			;; ;; FIX so only run if CYGWIN so windows/cygwin
+			;; ;; links properly.  Display is sensible but dired
+			;; ;; can't follow either ordinary cygwin link or the
+			;; ;; windows shortcut link that cygwin makes with
+			;; ;; "winsymlinks" in the CYGWIN environment
+			;; ;; variable
+			;; (setq ls-lisp-use-insert-directory-program t) ; ext. ls
+			;; (setq insert-directory-program (concat cygwin-bin-dir "ls"))
+			;; )
 	       )
 	     ))
 
@@ -870,11 +873,13 @@
 (global-set-key [f2] 'vc-dir)
 (global-set-key [f3] 'ediff-files)
 (global-set-key [f4] 'indent-buffer)
-(use-package igrep
-  :config
-  (setq igrep-options "-i") ; -n is default for igrep
-  (global-set-key [f5] 'igrep)
-  (global-set-key [f6] 'igrep-find))
+;; (use-package igrep
+;;   :config
+;;   (setq igrep-options "-i") ; -n is default for igrep
+;;   (global-set-key [f5] 'igrep)
+;;   (global-set-key [f6] 'igrep-find))
+(global-set-key [f5] 'lgrep)
+(global-set-key [f6] 'rgrep)
 (global-set-key [f7] 'clear-buffer)
 (global-set-key [f8] 'compile)
 (global-set-key [f9] 'align-equals)
@@ -939,8 +944,8 @@
   :diminish outline-mode
   :diminish outline-minor-mode
   :config
-  (add-hook 'outline-minor-mode-hook 'outshine-hook-function) ; for outshine
-  (add-hook 'prog-mode-hook 'outline-minor-mode)              ; all prog modes
+  (add-hook 'outline-minor-mode-hook 'outshine-mode) ; for outshine itself
+  (add-hook 'prog-mode-hook 'outline-minor-mode)     ; all prog modes
   ;; from https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-outshine.el
   (bind-keys
    :map outline-minor-mode-map
@@ -1314,41 +1319,41 @@ is already narrowed."
 
 ;; ** Org-ref
 
-; packages required by org-ref but not picked up, for some reason
-(use-package helm-bibtex)
-(use-package pdf-tools)
+;; ; packages required by org-ref but not picked up, for some reason
+;; (use-package helm-bibtex)
+;; (use-package pdf-tools)
 
-;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
-(use-package org-ref
-  :after org
-  :init
-  (let ((default-directory docDir))
-    (setq org-ref-bibliography-notes (expand-file-name "notes.org")
-          org-ref-default-bibliography (expand-file-name "energy.bib")
-          org-ref-pdf-directory (expand-file-name "papers")
-          reftex-default-bibliography org-ref-default-bibliography
-          bibtex-completion-bibliography org-ref-default-bibliography
-          bibtex-completion-library-path org-ref-pdf-directory
-          bibtex-completion-notes-path org-ref-bibliography-notes))
-  ;; showing broken links slowed down energytop.org (but much less in Oct. 2017)
-  ;; https://github.com/jkitchin/org-ref/issues/468
-  (setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
-  :config
-  (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
-  ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
-  (setq bibtex-autokey-year-length 4
-        bibtex-autokey-name-year-separator "-"
-        bibtex-autokey-year-title-separator "-"
-        bibtex-autokey-titleword-separator "-"
-        bibtex-autokey-titlewords 2
-        bibtex-autokey-titlewords-stretch 1
-        bibtex-autokey-titleword-length 5)
-  ;; Make org-ref cite: link folded in emacs.  Messes up Latex export:
-  ;; https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
-  (org-link-set-parameters "cite" :display nil)
-)
+;; ;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
+;; (use-package org-ref
+;;   :after org
+;;   :init
+;;   (let ((default-directory docDir))
+;;     (setq org-ref-bibliography-notes (expand-file-name "notes.org")
+;;           org-ref-default-bibliography (expand-file-name "energy.bib")
+;;           org-ref-pdf-directory (expand-file-name "papers")
+;;           reftex-default-bibliography org-ref-default-bibliography
+;;           bibtex-completion-bibliography org-ref-default-bibliography
+;;           bibtex-completion-library-path org-ref-pdf-directory
+;;           bibtex-completion-notes-path org-ref-bibliography-notes))
+;;   ;; showing broken links slowed down energytop.org (but much less in Oct. 2017)
+;;   ;;  https://github.com/jkitchin/org-ref/issues/468
+;;   ;;(setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
+;;   :config
+;;   (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
+;;   ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
+;;   (setq bibtex-autokey-year-length 4
+;;         bibtex-autokey-name-year-separator "-"
+;;         bibtex-autokey-year-title-separator "-"
+;;         bibtex-autokey-titleword-separator "-"
+;;         bibtex-autokey-titlewords 2
+;;         bibtex-autokey-titlewords-stretch 1
+;;         bibtex-autokey-titleword-length 5)
+;;   ;; Make org-ref cite: link folded in emacs.  Messes up Latex export:
+;;   ;; https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
+;;   (org-link-set-parameters "cite" :display nil)
+;; )
 
-(bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
+;; (bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
 
 ;; ** Org Mode Dedicated Targets
 (require 'org)
@@ -1490,6 +1495,21 @@ This function avoids making messed up targets by exiting without doing anything 
         (outline-hide-subtree)
       (progn (outline-show-subtree)
              (org-cycle-hide-drawers 'children)))))
+
+;; Converts lines to checkboxes; convert them to TODO's with: C-c C-*
+;; https://stackoverflow.com/questions/18667385/convert-lines-of-text-into-todos-or-check-boxes-in-org-mode
+(defun org-set-line-checkbox (arg)
+  (interactive "P")
+  (let ((n (or arg 1)))
+    (when (region-active-p)
+      (setq n (count-lines (region-beginning)
+                           (region-end)))
+      (goto-char (region-beginning)))
+    (dotimes (i n)
+      (beginning-of-line)
+      (insert "- [ ] ")
+      (forward-line))
+    (beginning-of-line)))
 
 ;;(global-set-key [C-f1] 'my/toggle-subtree) 
 ;;(global-set-key [C-f2] 'my/toggle-subtree) 
@@ -1724,13 +1744,14 @@ This function avoids making messed up targets by exiting without doing anything 
 
 ;; * Emacs Command Execution
 
+;; undo-tree was useful once in a while, but it was buggy on 19.03.21 so I removed it.
 ;; C-/ is like old undo, C-? is redo.  C-x u visualizes an undo tree, q to exit
-(use-package undo-tree
-  :diminish undo-tree-mode
-  :config
-  (global-undo-tree-mode)
-  (setq undo-tree-visualizer-timestamps t)
-  (setq undo-tree-visualizer-diff t))
+;; (use-package undo-tree
+;;   :diminish undo-tree-mode
+;;   :config
+;;   (global-undo-tree-mode)
+;;   (setq undo-tree-visualizer-timestamps t)
+;;   (setq undo-tree-visualizer-diff t))
 
 (fset 'yes-or-no-p 'y-or-n-p) ; type just "y" instead of "yes"
 
@@ -1941,8 +1962,10 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  ;; If there is more than one, they won't work right.
  '(aw-background t)
  '(blink-cursor-mode nil)
+ '(calendar-week-start-day 1)
  '(column-number-mode t)
  '(counsel-grep-base-command "grep -nEi '%s' %s")
+ '(debug-on-error t)
  '(delete-selection-mode nil)
  '(dired-dwim-target t)
  '(display-time-24hr-format t)
@@ -1951,7 +1974,6 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(display-time-mode t)
  '(elpy-rpc-python-command "python3")
  '(emacsw32-style-frame-title t)
- '(ess-default-style (quote OWN))
  '(ess-ido-flex-matching t)
  '(ess-language "R" t)
  '(ess-own-style-list
@@ -1967,6 +1989,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
      (ess-arg-function-offset-new-line . 2)
      (ess-close-brace-offset . 0))))
  '(ess-ps-viewer-pref "gv")
+ '(ess-style (quote OWN))
  '(focus-follows-mouse t)
  '(gud-chdir-before-run nil)
  '(ido-auto-merge-work-directories-length -1)
@@ -2054,8 +2077,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn igrep helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 undo-tree iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-bullets org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move cygwin-mount)))
- '(paren-message-show-linenumber (quote absolute))
+    (smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-bullets org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
  '(recentf-max-saved-items 200)
@@ -2079,8 +2101,8 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(swiper-action-recenter nil)
  '(tool-bar-mode nil)
  '(visual-line-fringe-indicators (quote (nil top-right-angle)))
- '(w32-use-w32-font-dialog nil)
- '(w32shell-cygwin-bin "C:\\cygwin64\\bin"))
+ '(w32-use-w32-font-dialog nil))
+ ;; '(w32shell-cygwin-bin "C:\\cygwin64\\bin"))
 
 ;; ** Custom Set Faces
 
