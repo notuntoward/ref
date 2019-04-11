@@ -3809,6 +3809,11 @@ Hope that helps,
 * <<KNN Regression>>
 *** [[file:energy.bib::Altman92kernKNNrgrssn][Altman 1992 Intro to Kernel and KNN Regression]]
 *** [[KNN neighborhood functions for local linear regression]]
+* <<Random Forests>>
+
+  TODO: copy all RF papers to here
+
+*** [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
 * <<Boosted Regression>>
 *** Blasso (boosted lasso: could this be continuous or discrete?)
 *** Discreet boosting
