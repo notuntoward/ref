@@ -4509,22 +4509,46 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ***** Bayesian picker/weighting emphasising a bad model?
 ******* if parallel models
 ******* seems like they manually switch sources
-
 *** Also [[State Change Detection]]
 * <<Clustering for prediction>>
 *** clustering across farms, ramps: [[file:energy.bib::Guptay07symbDynFiltPatternRecog][Zoeller 2007: Pattern Recognition]] ?
 *** Ramps are "calculated" in [[file:energy.bib::Makarov08windMitigateBPA][Makarov 2008: Mitigating Operational Impacts]] w/ "swinging door"
 *** [[file:energy.bib::Jain10datClust50km][Jain 2010: Data]] clustering: 50 yrs beyond kmeans (award winning review)
 *** <<Time series clustering>>
-***** [[file:energy.bib::Fu11tseriesClustRev][Fu 2011]] time series mining review (2011)
+***** Time Series Clustering Reviews
+******* [[file:energy.bib::Aghabozorgi15tsClustDecRvw][Aghabozorgi et al. 2015: Time Series Clustering Decade Review]]
+******* [[file:energy.bib::Fu11tseriesClustRev][Fu 2011]] time series mining review (2011)
+******* [[http://www.sciencedirect.com.offcampus.lib.washington.edu/science%3F_ob%3DArticleURL&_udi%3DB6V14-4G7G4BP-2&_user%3D582538&_coverDate%3D11%2F30%2F2005&_alid%3D780508982&_rdoc%3D2&_fmt%3Dhigh&_orig%3Dsearch&_cdi%3D5664&_sort%3Dd&_docanchor%3D&view%3Dc&_ct%3D2&_acct%3DC000029718&_version%3D1&_urlVersion%3D0&_userid%3D582538&md5%3D8b515bdfa80cad03612e6d8b51edc5b4][Clustering of time series data -- a survey ]](2005)
 ***** [[file:energy.bib::Ding08tseriesMineRepDist][Ding et al. 2008: Querying]] tseries rep and distance (2008)
 ***** [[http://www.sciencedirect.com.offcampus.lib.washington.edu/science%3F_ob%3DArticleURL&_udi%3DB6V14-4MWGFBR-3&_user%3D582538&_coverDate%3D09%2F30%2F2007&_alid%3D780508982&_rdoc%3D1&_fmt%3Dhigh&_orig%3Dsearch&_cdi%3D5664&_sort%3Dd&_docanchor%3D&view%3Dc&_ct%3D2&_acct%3DC000029718&_version%3D1&_urlVersion%3D0&_userid%3D582538&md5%3D6f143746eccab4e0ad67ed0cbcbaef61][A clustering procedure for exploratory mining of vector time series ]](2007)
-***** [[http://www.sciencedirect.com.offcampus.lib.washington.edu/science%3F_ob%3DArticleURL&_udi%3DB6V14-4G7G4BP-2&_user%3D582538&_coverDate%3D11%2F30%2F2005&_alid%3D780508982&_rdoc%3D2&_fmt%3Dhigh&_orig%3Dsearch&_cdi%3D5664&_sort%3Dd&_docanchor%3D&view%3Dc&_ct%3D2&_acct%3DC000029718&_version%3D1&_urlVersion%3D0&_userid%3D582538&md5%3D8b515bdfa80cad03612e6d8b51edc5b4][Clustering of time series data -- a survey ]](2005)
 ***** [[http://www.mathematik.uni-marburg.de/forschung/publikationen/paper_info/bfi31.pdf][Online Clustering of Data Streams]]
 ***** Graphical Times series graphical model: [[https://www.youtube.com/watch?v=odRE21ksXQs&t=442s][Daniela Witten, UW-Stanford Big Data]]
 ***** [[cite:Pavlovski17skipTrainRgrssnTempNet][Pavlovski et al. 2017: Adaptive Skip Train regression temporal net (kind of cluster)]]
 ***** [[cite:Donnat16genericRVrep][Donnat et al. 2016: Toward generic RV representation for ML]]
-***** also see [[Regime learning]], especially SaX?
+***** <<Autoencoder Time Series Clustering>>
+******* [[file:energy.bib::Madiraju18deepUnsupTSclust][Madiraju et al. 2018: Deep Temporal Clustering Time Series]]
+******* [[file:energy.bib::Ryu18loadProfClustDpConvAutoEnc][Ryu et al. 2018: Residential Load Profile Clust Deep Conv AEC]]
+******* also [[Autoencoder]]
+******* also [[Time series clustering]]
+***** also [[Regime learning]], especially SaX?
+***** also [[Spectral time series clustering]]
+***** also [[Clustering of regression models]]
+***** also [[Mixtures of regressors]]
+***** <<Electrical Load Profile Clustering>>
+
+      Used for demand response control, load forecasting, grid planning like MN Solar Pathways.  Also for load foreacasting
+
+******* TODO [[file:energy.bib::Jin17cmprClustResidEnrgy][Jin et al. 2017: Comparison Clustering Techniques Resid. Energy Behavior]]
+******* TODO [[file:energy.bib::Kang15elecCustClustExpertDR][Kang & Lee 2015: Electricity Customer Clustering Expert Principle]]
+******* TODO [[file:energy.bib::Li16loadProfileClustMultiRes][Li et al. 2016: Multi Resolution Load Profile Clust GMM]] (spec clust, prob output)
+******* TODO [[file:energy.bib::Ryu18loadProfClustDpConvAutoEnc][Ryu et al. 2018: Residential Load Profile Clust Deep Conv AEC]]
+******* TODO [[file:energy.bib::Madiraju18deepUnsupTSclust][Madiraju et al. 2018: Deep Temporal Clustering Time Series]]
+******* TODO [[file:energy.bib::Gajowniczek18clustElecLoadFrcst][Gajowniczek & Z\kabkowski 2018: Sim Clust Algs for Elec Frcst]]
+******* TODO [[file:energy.bib::Huang18clustResidElecLdCmnty][Huang et al. 2018: Clustering Residential Electricity Community]]
+******* TODO [[file:energy.bib::Viola18clustElecProfileKmeansPython][Viola 2018: Clustering load profiles K]]-means (an easy baseline)
+******* also [[Spatial Load Forecast]]
+******* also [[Autoencoder Time Series Clustering]]
+******* also [[Clustering for prediction]]
 *** [[Time delay estimation]] (for inter-turbine wind lag)
 ***** use kNN MI across turbine pair lag sets, like clustering in [[file:energy.bib::Stogbauer04leastDepMutInfo][Stoegbauer et al. 2004: Least dependent component]]
 ***** clusters lags: [[file:energy.bib::Puma-Villanueva07predWrapSelClust][Puma-Villanueva et al. 2007: Long term time]]
@@ -4544,16 +4568,17 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ***** [[file:energy.bib::Maier10clustNhbds][Maier 2010: Clustering]] KNN-Rnn spectral clustering, # clusters
 ***** [[file:energy.bib::Bengio04OutOfSmplExt][Bengio et al. 2004: Out]] of sample ext. for MDS, spect clust, many others
 ***** try MP hub reduction instead of normal adjacency stuff: [[file:energy.bib::Schnitzer12Localandglobal][Schnitzer et al. 2012: Local]]
-***** KNN-based spectral clustering
-      <<KNN-based spectral clustering>>
+***** <<KNN-based spectral clustering>>
 ******* [[file:energy.bib::Lucinska12specClustKNN][Lucinska & Wierzchon 2012: Spectral]] clustering w/ KNN (a local QR neighborhood pre-proc step?)
 ******* [[file:energy.bib::Maier10clustNhbds][Maier 2010: Clustering]] KNN-Rnn spectral clustering, # clusters
 ******* [[http://cran.r-project.org/package%3Dkknn][R package kknn]] has KNN/spectral clustering and weighted spectral clustering
 
-***** Spectral time series clustering
+***** <<Spectral time series clustering>>
 ******* Spectral clustering with HMM's: [[http://www.sciencedirect.com/science/article/pii/S0031320310005455][State-space dynamics distance for clustering sequential data]]
 ******* Spectral clustering w/ a mother HMM: [[http://www.sciencedirect.com/science/article/pii/S0031320310005455][State-space dynamics distance for clustering sequential data]]
+******* [[file:energy.bib::Li16loadProfileClustMultiRes][Li et al. 2016: Multi Resolution Load Profile Clust GMM]]
 ******* [[http://www.anibalarias.name/docs/eupsi.pdf][Unsupervised Signal Segmentation Based On Temporal Spectral Clustering]]
+******* also [[Time series clustering]]
 *** MDS/GTM clustering
 ***** [[file:energy.bib::Aflalo13SpecMDS][Aflalo & Kimmel 2013: Spectral]] MDS few coeffs, high dim, clust
 ***** [[file:energy.bib::Bae10dimRedMDSinterp][Bae et al. 2010: Dimension]] red interp and GTM clust
@@ -4582,13 +4607,11 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ***** see also: [[KNN-based spectral clustering]]
 ***** see also: [[High dimensional KNN hubs]]
 ***** see also: [[KNN neighborhood functions for local linear regression]]
-*** Lasso clustering
-    <<Lasso clustering>>
+*** Lasso clustering>>
 ***** [[file:energy.bib::Witten13ClusterElasticNet][Witten et al. 2013: Cluster Elastic Net]] (group lasso(
 ***** [[file:energy.bib::Buehlmann13corrRgrsnClustGlasso][Buehlmann et al. 2013: Correlated]] (group lasso(
 ***** see [[lasso feature selection]]
-*** Number of clusters determination
-    <<Number of clusters determination>>
+*** <<Number of clusters determination>>
 ***** [[http://www.mathworks.com/help/stats/evalclusters.html?refresh%3Dtrue][Matlab evalclusters]] function
 ***** [[file:energy.bib::Sanguinetti05numSpectClust][Sanguinetti et al. 2005: Automatic Determination Number]]
 ***** [[http://www.cs.cmu.edu/~rgangadh/rashmi_eamt20.pdf][Automatic Determination of Number of clusters for creating templates in Example-Based Machine Translation]]
@@ -4623,7 +4646,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ***** see also [[Stopping Criteria]]
 *** <<Clustering of regression models>>
 
-    /Should be merged with [[Mixtures of regressors]]/ ?
+    /Should be merged with [[Mixtures of regressors]]/
 
 ***** [[file:energy.bib::Shi08curvePredClustGaussProcMix][Shi & Wang 2008: Curve prediction and]]
 ***** ARIMA model clustering: [[file:energy.bib::Kalpakis01distClustARIMA][Kalpakis et al. 2001: Distance measures for]]
@@ -4653,7 +4676,6 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ***** [[file:energy.bib::Luo08mixLasso][Luo et al. 2008: Mixture Regression Shrinkage]]
 ***** [[file:energy.bib::Meng06gradientNNensAgg][Meng & An 2006: Aggregating Regressive Estimators]]
 ***** [[file:energy.bib::Yang14knnClustPowCurv][Yang et al. 2014: Clustering Method Its]] KNN dir pow curve
-
 ***** [[file:energy.bib::Pinson13windPowFrcstOpDec][Pinson & others 2013: Wind]] frcst oper: forecast /correlated/ stuff??
 ******* But my EERA-DTOC work said lower error if distant (uncorrelated)
 ***** TODO [[file:energy.bib::Kano13virtSensLocPLA][Kano & Fujiwara 2013: Virtual]] (local PLS regression, I think)
@@ -4666,6 +4688,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ***** Application: [[Forecast aggregation]]
 ***** Application: [[Regime Learning]]
 ***** Application: [[Portfolio Optimization and Forecasting]]
+***** also [[Clustering for prediction]]
 *** Clustering & kriging: [[http://www.ucgis.org/summer03/studentpapers/shinglin.pdf][Optimization of Cluster Analysis Using Autocorrelatio]]n
 *** [[http://www.cs.man.ac.uk/~neill/fgplvm/][Fast GP-LVM]], handles uncertain inputs, dynamics, clustering
 *** Using information-theoretic distances
@@ -8065,13 +8088,11 @@ Scott
 ***** [[http://ieeexplore.ieee.org/Xplore/login.jsp%3Furl%3D/iel5/10658/33627/01599306.pdf%3Ftemp%3Dx][Probabilistic short-term load forecasting with Gaussian processes]]
 ***** [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]
 ***** [[cite:Hong15ldFrcstCaseStdy][Hong & Shahidehpour 2015: Load Case Std, time/space scales, feats, prob]]
-
 ***** [[cite:Busseti12deepLrnTimeSer][Busseti et al. 2012: Deep Learning Time Series Modeling (Demand frcst, RNN best)]]
 ***** [[cite:Hong15ldFrcstCaseStdy][Hong & Shahidehpour 2015: Load Frcst Case Stdy]]
 ***** [[cite:Hong16probEnrgyFrcstCompet14][Hong et al. 2016: Probabilistic Energy Frcsting Compet 14]] (lots on load forecast)
 ***** [[cite:Siemens14sennFrcstsRES][Siemens 2014: Better Forecast RES Wnd/Solar/netDmd/xmssn/Deep]]
 ***** [[http://www.jstage.jst.go.jp/article/ieejpes/126/2/126_202/_article][A Gaussian Processes Technique for Short-term Load Forecasting with Considerations of Uncertainty]]
-
 ***** [[File:energy.bib::guan09loadfrcstnnmultiwvlt][Guan et al. 2009: very]] short term load: wavelet spike remove
 ***** [[File:energy.bib::guan12loadfrcstwvltnnprefilt][Guan et al. 2012: very short term load forecasting]]: wavelet spike remove
 ***** [[file:energy.bib::BenTaieb14gradBoostLdFrcst][Ben & Hyndman 2014: Kaggle]] load forecast
@@ -8086,14 +8107,14 @@ Scott
 ***** [[cite:Marino16bldngLdFrcstDeepNN][Marino et al. 2016: Building Load Frcst, LSTM RNN]]
 ***** [[cite:Cheung11smartDsptchRES][Cheung & Rios-Zalapa 2011: Smart Grid Dispatch Net Demand]] 
 ***** [[cite:Sinn14EnergyDemandFrcst][Sinn 2014: Energy Demand Forecasting slides, maybe net demand]]
-***** TODO  <<Spatial Load Forecast>>
+***** [[file:energy.bib::Gajowniczek18clustElecLoadFrcst][Gajowniczek & Z\kabkowski 2018: Sim Clust Algs for Elec Frcst]]
+***** TODO <<Spatial Load Forecast>>
 ******** TODO [[cite:Crawford16loadFrcstERCOT][Crawford 2016: ERCOT Load Forecasting IBM NN]] (good results, good intro paper to read?)
 ******** TODO [[cite:Stevie12SpatiaFrcstLoad][Stevie 2012: Spatial Forecasting grid planning.  Feats for CNN?]]
-
 ******** [[cite:Lai13geoHierLdFrcst][Lai & Hong 2013: When 1 size not enough: load frcst geo hier]]
 ******** [[cite:Mirowski14loadFrcstFeatAlgAgg][Mirowski et al. 2014: Demand Frcst, algs, feats, aggregation]]
+***** TODO [[Electrical Load Profile Clustering]]
 ***** <<Data for German Load Forecast>>
-
 ******* [[http://open-power-system-data.org/data-sources#12_German_load_data][Open Power System Data (and German load data)]]
 ******* [[cite:Stevie12SpatiaFrcstLoad][Stevie 2012: Spatial Forecasting grid planning.  Feats for CNN?]]
 ******* [[cite:Hong15ldFrcstCaseStdy][Hong & Shahidehpour 2015: Load Case Std, time/space scales, feats, prob]]
@@ -10905,6 +10926,7 @@ Erika
 *** [[cite:Suh16GaussCopulaVarMixDat][Suh & Choi 2016: Gauss Copula Variatnl mixture, disc/cont, autoenc]]
 *** [[Stephan: concept building process]]
 *** Also: [[Dimension reduction]]
+*** [[Autoencoder Time Series Clustering]]
 * Wind farm planning
 *** interconnecting wind farm clusters
 ***** [[file:energy.bib::Archer07windBaseloadInterConn][Archer & Jacobson 2007: Supplying Baseload Power]]

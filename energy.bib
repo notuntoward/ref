@@ -1155,21 +1155,20 @@ experiments confirm our claims},
 }
 
 @Article{King02logistRgrssnMLvsExact,
-  author        = {Elizabeth N King and Thomas P Ryan},
-  title         = {A Preliminary Investigation of Maximum Likelihood Logistic Regression versus Exact Logistic Regression},
-  journal       = {The American Statistician},
-  year          = {2002},
-  volume        = {56},
-  number        = {3},
-  pages         = {163-170},
-  __markedentry = {[Scott:6]},
-  abstract      = { Logistic regression is used by practitioners and researchers in many fields, but is undoubtedly used most frequently in medical and biostatistical applications. Maximum likelihood is generally the estimation method of choice, but we show that maximum likelihood can produce very poor results under certain conditions. Specifically, the poor performance of maximum likelihood in the case of rare events is known and we review research on this topic. We primarily examine the performance of maximum likelihood in the presence of near separation, which has apparently not been studied. Exact logistic regression is the logical alternative to maximum likelihood. We offer a comparison of the two methods of estimation. },
-  comment       = {ML logistic regression fails for rare events.  An alternative is "exact" logistic regression.  This paper explains how and when to do exact instead of ML.},
-  doi           = {10.1198/00031300283},
-  eprint        = {https://doi.org/10.1198/00031300283},
-  file          = {:King02logistRgrssnMLvsExact.pdf:PDF},
-  publisher     = {Taylor \& Francis},
-  url           = { 
+  author    = {Elizabeth N King and Thomas P Ryan},
+  title     = {A Preliminary Investigation of Maximum Likelihood Logistic Regression versus Exact Logistic Regression},
+  journal   = {The American Statistician},
+  year      = {2002},
+  volume    = {56},
+  number    = {3},
+  pages     = {163-170},
+  abstract  = { Logistic regression is used by practitioners and researchers in many fields, but is undoubtedly used most frequently in medical and biostatistical applications. Maximum likelihood is generally the estimation method of choice, but we show that maximum likelihood can produce very poor results under certain conditions. Specifically, the poor performance of maximum likelihood in the case of rare events is known and we review research on this topic. We primarily examine the performance of maximum likelihood in the presence of near separation, which has apparently not been studied. Exact logistic regression is the logical alternative to maximum likelihood. We offer a comparison of the two methods of estimation. },
+  comment   = {ML logistic regression fails for rare events.  An alternative is "exact" logistic regression.  This paper explains how and when to do exact instead of ML.},
+  doi       = {10.1198/00031300283},
+  eprint    = {https://doi.org/10.1198/00031300283},
+  file      = {:King02logistRgrssnMLvsExact.pdf:PDF},
+  publisher = {Taylor \& Francis},
+  url       = { 
         https://doi.org/10.1198/00031300283
     
 },
@@ -1244,7 +1243,7 @@ We built a nearly complete solar installation database for the contiguous US uti
 Summary
 
 We developed DeepSolar, a deep learning framework analyzing satellite imagery to identify the GPS locations and sizes of solar photovoltaic panels. Leveraging its high accuracy and scalability, we constructed a comprehensive high-fidelity solar deployment database for the contiguous US. We demonstrated its value by discovering that residential solar deployment density peaks at a population density of 1,000 capita/mile2, increases with annual household income asymptoting at ∼\$150k, and has an inverse correlation with the Gini index representing income inequality. We uncovered a solar radiation threshold (4.5 kWh/m2/day) above which the solar deployment is “triggered.” Furthermore, we built an accurate machine learning-based predictive model to estimate the solar deployment density at the census tract level. We offer the DeepSolar database as a publicly available resource for researchers, utilities, solar developers, and policymakers to further uncover solar deployment patterns, build comprehensive economic and behavioral models, and ultimately support the adoption and management of solar electricity.},
-  comment   = {Satellite imagery finds 95\% of PV panels in US. Uses census-tract level to estimate what triggers solar adoption (existence of panels in one slice of time).   Their deep learning NN fits better than traditional log or log-linear models, like Clean Power Research is using.
+  comment   = {Satellite imagery and big CNN finds 95\% of PV panels in US. Uses census-tract level to estimate what triggers solar adoption (existence of panels in one slice of time).   Their random forest (I think) socio-economic factor panel predictor fits better than traditional log or log-linear models, like Clean Power Research is using.
 
 POINTS FROM 4 PAGE SUMMARY
 
@@ -1278,6 +1277,8 @@ PV Deployment Prediction
 A paper I found from Google Scholar says that this paper was published in NIPS 2018 but I can't find it there.  So, I've attached it to this bibtex entry.  The paywalled version is probably here: https://www.cell.com/joule/pdfExtended/S2542-4351(18)30570-1
 
 Project Page: http://web.stanford.edu/group/deepsolar/home.html
+
+Project page says it's better than OpenPV (https://openpv.nrel.gov/), which has worse data and relies on self-reports.
 
 which has links to code and data on this page.
 
@@ -3784,6 +3785,18 @@ data},
   timestamp = {2014.12.19},
 }
 
+@Article{Olson18sensRndFrstProbKern,
+  author   = {Olson, Matthew A and Wyner, Abraham J},
+  title    = {Making Sense of Random Forest Probabilities: a Kernel Perspective},
+  journal  = {arXiv:1812.05792v1},
+  year     = {2018},
+  month    = dec,
+  abstract = {A random forest is a popular tool for estimating probabilities in machine learning classification tasks. However, the means by which this is accomplished is unprincipled: one simply counts the fraction of trees in a forest that vote for a certain class. In this paper, we forge a connection between random forests and kernel regression. This places random forest probability estimation on more sound statistical footing. As part of our investigation, we develop a model for the proximity kernel and relate it to the geometry and sparsity of the estimation problem. We also provide intuition and recommendations for tuning a random forest to improve its probability estimates.},
+  comment  = {A way to get better (class?) probabilities from a random forest.  Getting random forest probabilities by counting leaves is a good classifier but not reliable as a source of proabilities.  This paper has a method for tuning.  Seems to be RMSE of probability instead of Breir Score, but I have only skimmed the paper so far.},
+  file     = {:Olson18sensRndFrstProbKern.pdf:PDF},
+  url      = {https://arxiv.org/abs/1812.05792v1},
+}
+
 @Article{Hill16lrgSclWindMaxPlanckMiss,
   author    = {Joshua S Hill},
   title     = {Max Planck Institute Study On Large-Scale Wind Energy Misses The Mark},
@@ -5559,6 +5572,29 @@ semiparametric, rate of convergence, support vector machine.},
   keywords    = {Statistics - Machine Learning},
   owner       = {sotterson},
   timestamp   = {2014.07.04},
+}
+
+@Article{Gajowniczek18clustElecLoadFrcst,
+  author    = {Gajowniczek, Krzysztof and Z{\k{a}}bkowski, Tomasz},
+  title     = {Simulation study on clustering approaches for short-term electricity forecasting},
+  journal   = {Complexity},
+  year      = {2018},
+  volume    = {2018},
+  abstract  = {Advanced metering infrastructures such as smart metering have begun to attract increasing attention; a considerable body of
+research is currently focusing on load profiling and forecasting at different scales on the grid. Electricity time series clustering
+is an effective tool for identifying useful information in various practical applications, including the forecasting of electricity usage,
+which is important for providing more data to smart meters. This paper presents a comprehensive study of clustering methods for
+residential electricity demand profiles and further applications focused on the creation of more accurate electricity forecasts for
+residential customers. The contributions of this paper are threefold: (1) using data from 46 homes in Austin, Texas, the similarity
+measures from different time series are analyzed; (2) the optimal number of clusters for representing residential electricity use
+profiles is determined; and (3) an extensive load forecasting study using different segmentation-enhanced forecasting algorithms
+is undertaken. Finally, from the operator’s perspective, the implications of the results are discussed in terms of the use of clustering
+methods for grouping electrical load patterns.},
+  comment   = {Load clustering algs,  # clustering picked compared for forecasting a large region. Similar to MNSP.  Many evaluation criteria.
+
+Could be a good guide for how to do load forecast aggregation.},
+  doi       = {https://doi.org/10.1155/2018/3683969},
+  publisher = {Hindawi},
 }
 
 @InCollection{Kitigawa08btstrpInfoCrit,
@@ -8308,6 +8344,22 @@ Variable selection.},
   timestamp = {2013.10.22},
 }
 
+@Article{Aghabozorgi15tsClustDecRvw,
+  author   = {Saeed Aghabozorgi and Ali Seyed Shirkhorshidi and Teh Ying Wah},
+  title    = {Time-series clustering – A decade review},
+  journal  = {Information Systems},
+  year     = {2015},
+  volume   = {53},
+  pages    = {16 - 38},
+  issn     = {0306-4379},
+  abstract = {Clustering is a solution for classifying enormous data when there is not any early knowledge about classes. With emerging new concepts like cloud computing and big data and their vast applications in recent years, research works have been increased on unsupervised solutions like clustering algorithms to extract knowledge from this avalanche of data. Clustering time-series data has been used in diverse scientific areas to discover patterns which empower data analysts to extract valuable information from complex and massive datasets. In case of huge datasets, using supervised classification solutions is almost impossible, while clustering can solve this problem using un-supervised approaches. In this research work, the focus is on time-series data, which is one of the popular data types in clustering problems and is broadly used from gene expression data in biology to stock market analysis in finance. This review will expose four main components of time-series clustering and is aimed to represent an updated investigation on the trend of improvements in efficiency, quality and complexity of clustering time-series approaches during the last decade and enlighten new paths for future works.},
+  comment  = {Good (many cites) top level 2015 review of TS clustering.  Read before starting on MNSP load profile clustering.  Paper to read after this one: Jin17cmprClustResidEnrgy},
+  doi      = {https://doi.org/10.1016/j.is.2015.04.007},
+  file     = {:Aghabozorgi15tsClustDecRvw.pdf:PDF},
+  keywords = {Clustering, Time-series, Distance measure, Evaluation measure, Representations},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0306437915000733},
+}
+
 @Article{Bubeck09knnClustArbitObj,
   author    = {Bubeck, S{\'e}bastien and Ulrike von Luxburg},
   title     = {Nearest neighbor clustering: A baseline method for consistent clustering with arbitrary objective functions},
@@ -9361,6 +9413,20 @@ probabilistic forecast, Schaake shuffle, Sklar?s theorem.},
   groups    = {Read},
   owner     = {sotterson},
   timestamp = {2009.05.15},
+}
+
+@InProceedings{Jin17cmprClustResidEnrgy,
+  author       = {Jin, Ling and Lee, Doris and Sim, Alex and Borgeson, Sam and Wu, Kesheng and Spurlock, C. Anna and Todd, Annika},
+  title        = {Comparison of Clustering Techniques for Residential Energy Behavior using Smart Meter Data},
+  booktitle    = {Workshops at the Thirty-First AAAI Conference on Artificial Intelligence},
+  year         = {2017},
+  month        = {3},
+  abstract     = {Current practice in whole time series clustering of residential meter data focuses on aggregated or subsampled load data at the customer level, which ignores day-to-day differences within customers. This information is critical to determine each customer’s suitability to various demand side management strategies that support intelligent power grids and smart energy management. Clustering daily load shapes provides fine-grained information on customer attributes and sources of variation for subsequent models and customer segmentation. In this paper, we apply 11 clustering methods to daily residential meter data. We evaluate their parameter settings and suitability based on 6 generic performance metrics and post-checking of resulting clusters. Finally, we recommend suitable techniques and parameters based on the goal of discovering diverse daily load patterns among residential customers. To the authors’ knowledge, this paper is the first robust comparative review of clustering techniques applied to daily residential load shape time series in the power systems’ literature.},
+  abstractnote = {Current practice in whole time series clustering of residential meter data focuses on aggregated or subsampled load data at the customer level, which ignores day-to-day differences within customers. This information is critical to determine each customer’s suitability to various demand side management strategies that support intelligent power grids and smart energy management. Clustering daily load shapes provides fine-grained information on customer attributes and sources of variation for subsequent models and customer segmentation. In this paper, we apply 11 clustering methods to daily residential meter data. We evaluate their parameter settings and suitability based on 6 generic performance metrics and post-checking of resulting clusters. Finally, we recommend suitable techniques and parameters based on the goal of discovering diverse daily load patterns among residential customers. To the authors’ knowledge, this paper is the first robust comparative review of clustering techniques applied to daily residential load shape time series in the power systems’ literature.},
+  comment      = {Rigorous comparison of a lot of load profile clustering algorithms, evaluated several ways.  Probably a good 1st read after Aghabozorgi15tsClustDecRvw},
+  file         = {:Jin17cmprClustResidEnrgy.pdf:PDF},
+  place        = {United States},
+  url          = {https://www.osti.gov/biblio/1398467},
 }
 
 @InProceedings{Shieh08iSaxDTW,
@@ -12286,7 +12352,8 @@ Big comparison of various tech. improvement algs, and also gives their error bar
 I've also evernoted this.
 
 Also
-* https://www.evernote.com/shard/s13/nl/1523219/628b6c62-2f3e-43e3-9181-fe4157603e49/},
+* https://www.evernote.com/shard/s13/nl/1523219/628b6c62-2f3e-43e3-9181-fe4157603e49/
+* Trancik2015imprvRinfSolWind},
   file      = {:Nagy13basPredTechProg.pdf:PDF},
   publisher = {Public Library of Science},
   url       = {https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0052669},
@@ -14152,6 +14219,22 @@ Use for probabilistic upscaling.},
   posted-at            = {2010-08-02 23:17:32},
   timestamp            = {2012.02.09},
   url                  = {http://www.sciencedirect.com/science/article/B6V30-50NGNVD-1/2/3359c4131ff2eae928347bd7ebfafa21},
+}
+
+@InProceedings{Ryu18loadProfClustDpConvAutoEnc,
+  author    = {S. {Ryu} and H. {Choi} and H. {Lee} and H. {Kim} and V. W. S. {Wong}},
+  title     = {Residential Load Profile Clustering via Deep Convolutional Autoencoder},
+  booktitle = {Proc. and Computing Technologies for Smart Grids (SmartGridComm) 2018 IEEE Int. Conf. Communications, Control},
+  year      = {2018},
+  pages     = {1--6},
+  month     = oct,
+  abstract  = {In energy data analytics, load profile clustering is essential for various smart grid applications such as demand response, load forecasting, and tariff design. Most of the conventional clustering techniques are based on a representative time domain load profile within a certain period, and the daily and seasonal variations are not well captured. In this paper, we propose a deep learning based customer load profile clustering framework that jointly captures daily and seasonal variations. By leveraging convolutional autoencoder (CAE), the yearly load profile in the time domain is converted into a representative vector in the smaller dimensional encoded space. The clusters are then determined based on the vectors encoded by the CAE. We apply the proposed framework to 1,405 households' yearly load profiles and verify that the trained CAE can encode those load profiles into approximately 100 times smaller dimensional space. The encoded load profiles can be decoded by the CAE with a negligible loss between 1-3\%. The clustered load images can visualize both daily and seasonal variations, and clustering in the encoded space speeds up the clustering process by almost three orders of magnitude.},
+  comment   = {Compresses entire year of load profiles (dim=8640),  capturing seasonal (and day of week?) dependence, then does k-means clustering in compressed space (dim=100).  Compare w/ AEC in Madiraju18deepUnsupTSclust, where clustering is built-in.
+
+Anyway, could make it probabilistic with the approach in Li16loadProfileClustMultiRes},
+  doi       = {10.1109/SmartGridComm.2018.8587454},
+  file      = {:Ryu18loadProfClustDpConvAutoEnc.pdf:PDF},
+  keywords  = {convolutional neural nets, data analysis, demand side management, learning (artificial intelligence), load forecasting, pattern clustering, power engineering computing, smart power grids, vectors, deep learning based customer load profile clustering, time domain load profile, convolutional autoencoder, energy data analytics, deep convolutional autoencoder, residential load profile clustering, representative vector, smart grid applications, Image reconstruction, Smart meters, Smart grids, Complexity theory, Load management, Encoding},
 }
 
 @Article{Straube14infreqPerfEstImbal,
@@ -18251,6 +18334,21 @@ and answers to common questions.},
   journal  = {Commun. {ACM}},
 }
 
+@Misc{Viola18clustElecProfileKmeansPython,
+  author       = {Luciano Guivant Viola},
+  title        = {Clustering electricity usage profiles with K-means},
+  howpublished = {Medium: Towards Data Science},
+  month        = sep,
+  year         = {2018},
+  abstract     = {Machine Learning has a wide range of applications for the energy sector. A very exciting one is extracting insights into electricity consumption behavior. The way in which an individual or family uses energy across the day is also known as “energy fingerprint”.
+
+In this article, we will go through how to find patterns in the daily load profiles of a single household with the K-means clustering algorithm.
+
+The dataset contains 2075259 measurements gathered between December 2006 and November 2010 (47 months). You can find it here.},
+  comment      = {Super short example of load profile clustering with Python.  A quick way to get a baseline.},
+  file         = {:Viola18clustElecProfileKmeansPython.pdf:PDF},
+}
+
 @Article{Giabardo10feedbackElecMkt,
   author    = {Paolo Giabardo and Marco Zugno and Pierre Pinson and Henrik Madsen},
   title     = {Feedback, competition and stochasticity in a day ahead electricity market},
@@ -19340,12 +19438,12 @@ compared to the existing approaches. This is helpful for the
 further research and application of RNN in processing of MI-
 EEG.
 
-
-
 Index Terms - Brain computer interface; Long Short-Term
 Memory; Recurrent Neural Network; Discrete Wavelet Transform;
 motor imagery EEG;},
-  comment   = {Wavelet decomp and LSTM is better for time series pattern recog than other things.  The LSTM is predicting a categorical variable.  Wavelet packet basis choice seems to be done by hand, rather than with an algorithm.},
+  comment   = {Wavelet decomp and LSTM is better for time series pattern recog than other things.  The LSTM is predicting a categorical variable.  Wavelet packet basis choice seems to be done by hand, rather than with an algorithm.
+
+Maybe related to: Madiraju18deepUnsupTSclust},
   doi       = {10.1109/ICMA.2016.7558868},
   file      = {:papers\\Li16waveletLSTMeegRecog.pdf:PDF},
   keywords  = {backpropagation, brain-computer interfaces, discrete wavelet transforms, electroencephalography, feature extraction, medical signal processing, neural nets, patient rehabilitation, signal classification, support vector machines, time-frequency analysis, BCI, BP network, DWT-LSTM, EEG classifiers, LDA, LSTM based RNN, MI-EEG data, MI-EEG recognition, Motor Imagery Electroencephalography, SVM, brain computer interface based rehabilitation robot, discrete wavelet transform, effective wavelet coefficients, linear discriminant analysis, long short-term memory based network, patten recognition, recognition performance, recurrent neural network, support vector machine, time sequence information, time-frequency feature extraction, Discrete wavelet transforms, Electroencephalography, Feature extraction, Logic gates, Recurrent neural networks, Time-frequency analysis, Brain computer interface, Discrete Wavelet Transform, Long Short-Term Memory, Recurrent Neural Network, motor imagery EEG},
@@ -21124,6 +21222,45 @@ Key Words: Additive models; Full search; Myopic search; P-spline; Smoothing.},
   timestamp = {2014.11.20},
 }
 
+@Article{Huang18clustResidElecLdCmnty,
+  author   = {Huang, Yunyou and Zhan, Jianfeng and Wang, Nana and Luo, Chunjie and Wang, Lei and Ren, Rui},
+  title    = {Clustering Residential Electricity Load Curves via Community Detection in Network},
+  journal  = {arXiv preprint arXiv:1811.10356},
+  year     = {2018},
+  abstract = {Performing analytic of household load curves (LCs) has significant value in predicting in-
+dividual electricity consumption patterns, and hence facilitate developing demand-response
+strategy, and finally achieve energy efficiency improvement and emission reduction. LC clus-
+tering is a widely used analytic technology, which discovers electricity consumption patterns
+by grouping similar LCs into same sub-groups. However, previous clustering methods treat
+each LC in the data set as an individual time series, ignoring the inherent relationship among
+different LCs, restraining the performance of the clustering methods. What’s more, due to the
+significant volatility and uncertainty of LCs, the previous LC clustering approaches inevitably
+result in either lager number of clusters or huge variances within a cluster, which is unaccept-
+able for actual application needs. In this paper, we proposed an integrated approach to address
+this issue. First, we converted the LC clustering task into the community detection task in
+network. Second, we proposed a clustering approach incorporated with community detection
+to improve the performance of LC clustering, which includes network construction, community
+detection and typical load profile extraction. The method convert the data set into a network
+in which the inherent relationship among LCs is represented by the edges of the network.
+Third, we construct a multi-layer typical load profile directory to make the trade-off between
+variances within a cluster and the number of the clusters, enabling the researchers to assess
+the LCs and the customers in different layers according to practical application requirements.
+The experiments demonstrate that our integrated approach outperform the state-of-the-art
+methods.},
+  comment  = {Perhaps a hacky paper but has some interesting aspects.
+
+DTW --> similarity (I think) --> graph edges from thresholded similarity (I think) --> community detection --> clusters
+
+Thresholding might make it a hack, but is interesting b/c
+* is evaluated with many methods
+* maybe community is a good idea (seems like I saw another community paper)
+* the graph edge is a bit like spectral clustering (if I remember correctly), so could borrow GMM at end to get cluster probs?  Like in Li16loadProfileClustMultiRes
+* has a way to pick #  clusters if given a desired range of # clusters.  Also, maybe a bit of a hack
+},
+  file     = {:Huang18clustResidElecLdCmnty.pdf:PDF},
+  url      = {https://arxiv.org/abs/1811.10356},
+}
+
 @Article{Walter99perWavltScrtch,
   author    = {Walter, Gilbert G. and Cai, Luchuan},
   title     = {Periodic Wavelets from Scratch},
@@ -21180,6 +21317,21 @@ See also: Munkhammar17solarIrradSpatCpla},
   doi      = {10.1109/TSTE.2015.2434934},
   file     = {Wu15pvGenPairCpla.pdf:Wu15pvGenPairCpla.pdf:PDF},
   keywords = {load flow;photovoltaic power systems;probability;PLF study;complex dependence;confidence levels;distributed PV sources;nonlinear dependence;optimal probability model;pair copula construction;photovoltaic generation;power systems;probabilistic load flow study;probability models;systematic simplification technique;versatile probability model;Computational modeling;Load flow;Load modeling;Photovoltaic systems;Power system modeling;Probabilistic logic;Multiple dependence;pair copula;photovoltaic (PV) generation;probabilistic load flow (PLF);simplification},
+}
+
+@Article{Kavlak18causeCostRedPV,
+  author   = {Goksin Kavlak and James McNerney and Jessika E. Trancik},
+  title    = {Evaluating the causes of cost reduction in photovoltaic modules},
+  journal  = {Energy Policy},
+  year     = {2018},
+  volume   = {123},
+  pages    = {700 - 710},
+  issn     = {0301-4215},
+  abstract = {Photovoltaic (PV) module costs have declined rapidly over forty years but the reasons remain elusive. Here we advance a conceptual framework and quantitative method for quantifying the causes of cost changes in a technology, and apply it to PV modules. Our method begins with a cost model that breaks down cost into variables that changed over time. Cost change equations are then derived to quantify each variable's contribution. We distinguish between changes observed in variables of the cost model – which we term low-level mechanisms of cost reduction – and research and development, learning-by-doing, and scale economies, which we refer to as high-level mechanisms. We find that increased module efficiency was the leading low-level cause of cost reduction in 1980–2012, contributing almost 25% of the decline. Government-funded and private R&D was the most important high-level mechanism over this period. After 2001, however, scale economies became a more significant cause of cost reduction, approaching R&D in importance. Policies that stimulate market growth have played a key role in enabling PV's cost reduction, through privately-funded R&D and scale economies, and to a lesser extent learning-by-doing. The method presented here can be adapted to retrospectively or prospectively study many technologies, and performance metrics besides cost.},
+  doi      = {https://doi.org/10.1016/j.enpol.2018.08.015},
+  file     = {:Kavlak18causeCostRedPV.pdf:PDF},
+  keywords = {Photovoltaics (PV), Solar energy, PV modules, Cost model, Technological change},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0301421518305196},
 }
 
 @InProceedings{Vasak05ClustPcwsAffineThrot,
@@ -24264,6 +24416,22 @@ Sum(k=1:Q/K)  Q/K*nWeightsAndBiases = nWeightsAndBiases * K*Q/K = the same thing
   publisher = {Hindawi Limited},
 }
 
+@Article{Elshurafa18lrnCrvPVbos,
+  author   = {Amro M. Elshurafa and Shahad R. Albardi and Simona Bigerna and Carlo Andrea Bollino},
+  title    = {Estimating the learning curve of solar PV balance–of–system for over 20 countries: Implications and policy recommendations},
+  journal  = {Journal of Cleaner Production},
+  year     = {2018},
+  volume   = {196},
+  pages    = {122 - 134},
+  issn     = {0959-6526},
+  abstract = {Solar photovoltaic systems installed on homes and commercial building rooftops are deemed central for a low-carbon future. As capital costs of photovoltaics continue to fall, its role towards making buildings more sustainable and environmentally-friendly will continue to grow. Capital costs of a photovoltaic system comprise the module and balance-of-system costs. The latter refers to everything-else needed to make the photovoltaic system functional including cables, mounts, labor, etc. While modules are priced internationally, the balance-of-system cost is country-specific. Price developments of modules, which have been thoroughly studied in literature, followed an 80% learning curve. Research on the balance-of-system learning curve however, has not been as extensive. In this paper, we estimate for the first time the learning curve of balance-of-system costs in photovoltaics for more than 20 countries via an extensive dataset. Our calculations yield a global learning curve for the balance-of-system of 89%, which corresponds to a progress ratio of 11% compared with 20% for modules. Understanding the rate at which capital costs of photovoltaics are falling with such detail will aid in more effective renewable energy policy planning and budgeting. Finally, some steps requiring no financial commitment but can bring down balance-of-system costs are discussed, which greatly contribute to a cleaner and more sustainable future.},
+  comment  = {A potentially time varying estimate of the PV balance of system costs vs. country.  Interesting b/c that cost is separated out.  Problem: where get the forecasts of the conditioning variables?},
+  doi      = {https://doi.org/10.1016/j.jclepro.2018.06.016},
+  file     = {:Elshurafa18lrnCrvPVbos.pdf:PDF},
+  keywords = {Solar photovoltaics, Learning curves, Balance of systems, Capital costs, Rooftop solar, Renewable energy policy},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0959652618316652},
+}
+
 @Book{Kleissl13SolarEnrgyFrcstBk,
   title     = {Solar Energy Forecasting and Resource Assessment},
   publisher = {Elsevier LTD, Oxford},
@@ -25219,6 +25387,24 @@ vector machine quantile regression},
   url       = {http://www.schattauer.de/de/magazine/uebersicht/zeitschriften-a-z/methods/contents/archivestandard/manuscript/10343.html},
 }
 
+@Article{Schmidt19LCOelecStrgProj,
+  author   = {Oliver Schmidt and Sylvain Melchior and Adam Hawkes and Iain Staffell},
+  title    = {Projecting the Future Levelized Cost of Electricity Storage Technologies},
+  journal  = {Joule},
+  year     = {2019},
+  volume   = {3},
+  number   = {1},
+  pages    = {81 - 100},
+  issn     = {2542-4351},
+  abstract = {Summary
+The future role of stationary electricity storage is perceived as highly uncertain. One reason is that most studies into the future cost of storage technologies focus on investment cost. An appropriate cost assessment must be based on the application-specific lifetime cost of storing electricity. We determine the levelized cost of storage (LCOS) for 9 technologies in 12 power system applications from 2015 to 2050 based on projected investment cost reductions and current performance parameters. We find that LCOS will reduce by one-third to one-half by 2030 and 2050, respectively, across the modeled applications, with lithium ion likely to become most cost efficient for nearly all stationary applications from 2030. Investments in alternative technologies may prove futile unless significant performance improvements can retain competitiveness with lithium ion. These insights increase transparency around the future competitiveness of electricity storage technologies and can help guide research, policy, and investment activities to ensure cost-efficient deployment.},
+  comment  = {LCOS forecast of stationary electricity storage over 2015-50 shows Li Ion on top.  Surprising.  References learning rate paper so must use one somehow.  Good for WattPlan Grid.},
+  doi      = {https://doi.org/10.1016/j.joule.2018.12.008},
+  file     = {:Schmidt19LCOelecStrgProj.pdf:PDF},
+  keywords = {electrical energy storage, levelized cost of storage, future cost, power, system applications, electricity storage competitiveness},
+  url      = {http://www.sciencedirect.com/science/article/pii/S254243511830583X},
+}
+
 @Article{Dette08quantRgrsNonCross,
   author    = {Dette, Holger and Volgushev, Stanislav},
   title     = {Non-crossing non-parametric estimates of quantile curves},
@@ -25409,75 +25595,6 @@ Simonoff09transfRegrsn},
   keywords  = {approximation theory;pattern clustering;signal processing;symbol manipulation;time series;ACA;Persist;SAX;aligned cluster analysis;amplitude domain;signal characteristics;signal periodicity;symbolic aggregate approximation;temporal domain;temporal pattern extraction;time-series symbolization;Approximation methods;Data mining;Databases;Educational institutions;Electrocardiography;Noise;Quantization},
   owner     = {sotterson},
   timestamp = {2013.03.15},
-}
-
-@Article{Gudmundsson02unwrap,
-  author    = {Gudmundsson, S. and Carstensen, J.M. and Sigmundsson, F.},
-  title     = {Unwrapping ground displacement signals in satellite radar interferograms with aid of {GPS} data and MRF regularization},
-  journal   = {Geoscience and Remote Sensing, IEEE Transactions on},
-  year      = {2002},
-  volume    = {40},
-  number    = {8},
-  pages     = {1743--1754},
-  issn      = {0196-2892},
-  abstract  = {Synthetic aperture radar (SAR) images acquired by radar satellites at different times can be combined into interferograms that reveal information about the change in range from ground to satellite, wrapped into phase fringes corresponding to half the radar wavelength. We describe a methodology that uses Markov random field (MRF) regularization and simulated annealing optimization to unwrap such differential interferograms. Often, repeated Global Positioning System (GPS) geodetic measurements are available in an area covered by interferograms. Here, such repeated GPS observations are used to provide a complementary measurement of the unwrapped change in range at sparse locations. The process of unwrapping interferograms can be initialized and guided with such sparsely located "correct" values. Both interferograms and GPS observations may include several error factors, which are reduced before combining the two observations. GPS-measured range change is used to eliminate residual orbital error. In the unwrapping procedure, a vectorized lowpass filter is used to gain temporarily increased smoother variation of the phase. For the purposes of initializing the unwrapping process, virtual unwrapped interferograms are created by ordinary kriging of GPS-measured range change. The initial interferograms are then optimized further by using MRF regularization that incorporate the assumption of a smoothly varying displacement field and the relationship of the unwrapped images to the GPS observations. A simulated annealing optimization algorithm is used to find an optimal solution of the MRF regularization. The smoothed unwrapped interferograms are then used to construct unwrapped versions of the unfiltered input interferogram. Several additional image analyses methods are used in the optimization process to make the unwrapping more efficient and faster. The unwrapping technique is applied to unwrap interferograms from the Reykjanes Peninsula, in southwest Iceland.},
-  comment   = {Simple 2D phase unwrap but useful for 1D too. Test case is an ugly, noisy SAR image, I think, but parts are general.
-
-Main ideas
-1. low pass smooth individual complex components (vector filtering), and use these to guess the "circle number" (the number of half wavelengths (pi) to add).
-2. Use the estimated circle numbers to initialize a Markov Random Field optimization of the unwrap. This enforces local smoothness but actually uses the unsmoothed signals
-3. various radio tricks (GPS, etc.).},
-  doi       = {10.1109/TGRS.2002.802516},
-  file      = {Gudmundsson02unwrap.pdf:Gudmundsson02unwrap.pdf:PDF},
-  keywords  = {Global Positioning System;Markov processes;geodesy;geophysical signal processing;radar imaging;radiowave interferometry;remote sensing by radar;simulated annealing;spaceborne radar;synthetic aperture radar;GPS;Global Positioning System;MRF regularization;Markov random field;Reykjanes: Peninsula;crustal deformation;differential interferograms;error factors;geodetic measurements;ground displacement signals;kriging;orbital error;phase fringes;radar satellites;remote sensing;satellite radar interferograms;simulated annealing optimization;smoothly varying displacement field;synthetic aperture radar images;unwrapping;vectorized lowpass filter;virtual unwrapped interferograms;Extraterrestrial measurements;Global Positioning System;Markov random fields;Optimization methods;Radar imaging;Satellites;Simulated annealing;Spaceborne radar;Synthetic aperture radar;Wavelength measurement},
-  owner     = {sotterson},
-  timestamp = {2013.06.24},
-}
-
-@Book{Goodfellow16DeepLrnBook,
-  title     = {Deep Learning},
-  publisher = {MIT Press},
-  year      = {2016},
-  author    = {Ian Goodfellow and Yoshua Bengio and Aaron Courville},
-  abstract  = {TABLE OF CONTENTS
-
-Cover
-Contents
-Acknowledgements
-Notation
-Part I. Applied Math and Machine Learning Basics
-  2. Linear Algebra
-  3. Probability and Information Theory
-  4. Numerical Computation
-  5. Machine Learning Basics
-Part II. Deep Networks: Modern Practices
-  6. Deep Feedforward Networks
-  7. Regularization for Deep Learning
-  8. Optimization for Training Deep Models
-  9. Convolutional Networks
-  10. Sequence Modeling: Recurrent and Recursive Nets
-  11. Practical Methodology
-  12. Applications
-Part III. Deep Learning Research
-  13. Linear Factor Models
-  14. Autoencoders
-  15. Representation Learning
-  16. Structured Probabilistic Models for Deep Learning
-  17. Monte Carlo Methods
-  18. Confronting the Partition Function
-  19. Approximate Inference
-  20. Deep Generative Models
-Bibliography
-Index},
-  comment   = {Has lecture slides and notes too.  A lot of people think this is THE text on the topic.
-
-Book and slides downloaded from website on March 3, 2010.
-
-Lecture: http://www.deeplearningbook.org/lecture_slides.html
-* slides are downloaded and attached
-* Exercises are here: http://www.deeplearningbook.org/exercises.html},
-  file      = {Book:Goodfellow16DeepLrnBook.pdf:PDF;Slides:Goodfellow16DeepLrnBook_Slides.pdf:PDF},
-  url       = {http://www.deeplearningbook.org},
 }
 
 @Article{Cichocki14TensorNetworksBigOpt,
@@ -25774,6 +25891,22 @@ Partial least squares.},
 * also explains how to do multi-output PLSR},
   file     = {Yeniay02plsrNcmpsCmpr.pdf:Yeniay02plsrNcmpsCmpr.pdf:PDF},
   url      = {http://www.hjms.hacettepe.edu.tr/uploads/ce7bdb8f-5f89-4f03-9822-a20e2ee35d03.pdf},
+}
+
+@Article{Nykvist19,
+  author   = {Björn Nykvist and Frances Sprei and Måns Nilsson},
+  title    = {Assessing the progress toward lower priced long range battery electric vehicles},
+  journal  = {Energy Policy},
+  year     = {2019},
+  volume   = {124},
+  pages    = {144 - 155},
+  issn     = {0301-4215},
+  abstract = {The aim of this study is to show the progress in attributes and prices of battery electric vehicles (BEV) and to analyse in which market segments long range BEV can be produced at comparable cost to conventional cars. We assess 48 models available to consumers since 1997, collecting data on attributes, weight and vehicle prices. We also provide an analysis of recent progress in battery pack costs. Based on this data, the share of BEV vehicle price that is related to the battery pack is modelled. To illustrate future progress we estimate when it is possible to produce a BEV with a 200 mile range in a given price percentile. We find that the price percentile where the price of a BEV is comparable to conventional cars changes in a nonlinear way when battery pack costs fall below 200–250 USD/kWh. Furthermore, we show that battery pack costs of 150 USD/kWh could imply that production costs of a BEV with a 200 mile range are cost competitive for almost 50% of the US car market segments by 2020. Finally, the most critical conditions for this development are discussed and assessed by sensitivity analysis applying conservative values to our model.},
+  comment  = {A learning-rate based price forecast for long range electric cars.  Quite a bit about learning rates, actually.},
+  doi      = {https://doi.org/10.1016/j.enpol.2018.09.035},
+  file     = {:Nykvist19bevPriceFrcst.pdf:PDF},
+  keywords = {Battery electric vehicle, Production, Attributes, Range, Market segments},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0301421518306487},
 }
 
 @Article{Feil05procTransKalmanSeg,
@@ -26230,6 +26363,22 @@ This article recommended here:
 http://stats.stackexchange.com/questions/35089/feature-selection-using-mutual-information-in-matlab},
   file      = {May11revVarSelNN.pdf:May11revVarSelNN.pdf:PDF},
   url       = {http://cdn.intechopen.com/pdfs/14882/InTech-Review_of_input_variable_selection_methods_for_artificial_neural_networks.pdf},
+}
+
+@Article{Kang15elecCustClustExpertDR,
+  author   = {Kang, Jimyung and Lee, Jee-Hyong},
+  title    = {Electricity Customer Clustering Following Experts’ Principle for Demand Response Applications},
+  journal  = {Energies},
+  year     = {2015},
+  volume   = {8},
+  number   = {10},
+  pages    = {12242--12265},
+  issn     = {1996-1073},
+  abstract = {The clustering of electricity customers might have an effective meaning if, and only if, it is verified by domain experts. Most of the previous studies on customer clustering, however, do not consider real applications, but only the structure of clusters. Therefore, there is no guarantee that the clustering results are applicable to real domains.  In other words, the results might not coincide with those of domain experts. In this paper, we focus on formulating clusters that are applicable to real applications based on domain expert knowledge. More specifically, we try to define a distance between customers that generates clusters that are applicable to demand response applications. First, the k-sliding distance, which is a new distance between two electricity customers, is proposed for customer clustering. The effect of k-sliding distance is verified by expert knowledge. Second, a genetic programming framework is proposed to automatically determine a more improved distance measure. The distance measure generated by our framework can be considered as a reflection of the clustering principles of domain experts. The results of the genetic programming demonstrate the possibility of deriving clustering principles.},
+  comment  = {What I like about this one, is that it explains what experts are looking for in load profile clustering.},
+  doi      = {10.3390/en81012242},
+  file     = {:Kang15elecCustClustExpertDR.pdf:PDF},
+  url      = {http://www.mdpi.com/1996-1073/8/10/12242},
 }
 
 @Article{Granata16intrinsDimGraphEst,
@@ -34165,6 +34314,24 @@ Simulated integration of 8 GW of wind into Dutch system
   url       = {http://www.sciencedirect.com/science/article/pii/S0378779610002816},
 }
 
+@Article{Li16loadProfileClustMultiRes,
+  author   = {R. {Li} and F. {Li} and N. D. {Smith}},
+  title    = {Multi-Resolution Load Profile Clustering for Smart Metering Data},
+  journal  = {IEEE Transactions on Power Systems},
+  year     = {2016},
+  volume   = {31},
+  number   = {6},
+  pages    = {4473--4482},
+  month    = nov,
+  issn     = {0885-8950},
+  abstract = {This paper proposes a novel multi-resolution clustering (MRC) method that for the first time classifies end customers directly from massive, volatile and uncertain smart metering data. It will firstly extract spectral features of load profiles by multi-resolution analysis (MRA), and then cluster and classify these features in the spectral-domain instead of time-domain. The key advantage is that the proposed method will allow a dynamic load profiling to be flexibly re-constructed from each spectral level. MRC addresses three key limitations in time-series based load profiling: i) large sample size: sample size is reduced by a novel two-stage clustering, which firstly clusters each customers' massive daily profiles into several Gaussian mixture models (GMMs) and then clusters all GMMs; ii) volatility: it avoids the interferences between different load features (e.g. magnitude, overall trend, spikes) by decomposing them onto different resolution levels, and then clustering separately; iii) uncertainties: as the GMM can give a probabilistic cluster membership instead of a deterministic one, an additive classification model based on the posterior probability is proposed to reflect the uncertainty between days. The proposed method is implemented on 6369 smart metered customers from Ireland, and compared with the load profiles used by the U.K. industry and traditional K-means clustering. The results show that the developed MRC outperformed the traditional methods in its ability in profiling load for big, volatile and uncertain smart metering data.},
+  comment  = {Has probabilistic cluster membership output.  Useful for MNSP.  Seems to be spectral clust --> GMM --> Gmm clust.
+
+If I don't find other easily probabilistic clustering algorithms, I could get this paper.},
+  doi      = {10.1109/TPWRS.2016.2536781},
+  keywords = {Gaussian processes, mixture models, probability, smart meters, spectral-domain analysis, time series, multi-resolution clustering method, MRC method, smart metering data, multi-resolution analysis, MRA, spectral-domain, dynamic load profiling, time-series based load profiling, sample size, Gaussian mixture models, GMM, load features, probabilistic cluster membership, additive classification model, posterior probability, Uncertainty, Feature extraction, Time-domain analysis, Market research, Smart meters, Multiresolution analysis, Shape, Big data, clustering, customer classification, GMM, load profiles, multi-resolution analysis, spectral analysis, X-means, smart grid, smart meter},
+}
+
 @Article{Ferrari04betaRgrssnRateProp,
   author    = {Ferrari, Silvia and Cribari-Neto, Francisco},
   title     = {Beta regression for modelling rates and proportions},
@@ -36091,6 +36258,38 @@ For regime learning, compare with adaboost methods, starting with Lillywhite13fe
   pages     = {1125--1133},
   timestamp = {2014.01.28},
   url       = {http://cs.stanford.edu/~jngiam/papers/NgiamKohChenBhaskarNg2011.pdf?},
+}
+
+@Article{Madiraju18deepUnsupTSclust,
+  author   = {Naveen Sai Madiraju and S. M. Nazmus Sadat and Dimitry Fisher and Homa Karimabadi},
+  title    = {Deep Temporal Clustering : Fully Unsupervised Learning of Time-Domain Features},
+  journal  = {CoRR},
+  year     = {2018},
+  volume   = {abs/1802.01059},
+  abstract = {Unsupervised learning of time series data, also known as temporal clustering, is
+a challenging problem in machine learning. Here we propose a novel algorithm,
+Deep Temporal Clustering (DTC), to naturally integrate dimensionality reduction
+and temporal clustering into a single end-to-end learning framework, fully un-
+supervised. The algorithm utilizes an autoencoder for temporal dimensionality
+reduction and a novel temporal clustering layer for cluster assignment. Then it
+jointly optimizes the clustering objective and the dimensionality reduction objec-
+tive. Based on requirement and application, the temporal clustering layer can
+be customized with any temporal similarity metric. Several similarity metrics
+and state-of-the-art algorithms are considered and compared. To gain insight into
+temporal features that the network has learned for its clustering, we apply a vi-
+sualization method that generates a region of interest heatmap for the time series.
+The viability of the algorithm is demonstrated using time series data from diverse
+domains, ranging from earthquakes to spacecraft sensor data. In each case, we
+show that the proposed algorithm outperforms traditional methods. The superior
+performance is attributed to the fully integrated temporal dimensionality reduction
+and clustering criterion},
+  comment  = {Autoencoder clustering but somehow, the AE dim reduction is learned jointly while optimizing a cluster critereon -- or at least two of its cites do that ((Xie et al. (2016), Yang et al. (2016))) but they're said to be for "static: data, not TS.  Huh?  Weren't they time series clustering too?  Anyway, it's interesting as it has an LSTM layer mixed in with the autoencoder.  So it seems to be doing temporal compression, or at least shape learning.
+
+Compare with Ryu18loadProfClustDpConvAutoEnc
+
+Maybe related to: Li16waveletLSTMeegRecog},
+  file     = {:Madiraju18deepUnsupTSclust.pdf:PDF},
+  url      = {https://arxiv.org/abs/1802.01059},
 }
 
 @Article{Feng05wavltBtstrp,
@@ -38430,26 +38629,25 @@ Stopping Criterion
 }
 
 @Article{Peduzzi96numEVvarLogRgrssn,
-  author        = {Peter Peduzzi and John Concato and Elizabeth Kemper and Theodore R. Holford and Alvan R. Feinstein},
-  title         = {A simulation study of the number of events per variable in logistic regression analysis},
-  journal       = {Journal of Clinical Epidemiology},
-  year          = {1996},
-  volume        = {49},
-  number        = {12},
-  pages         = {1373 - 1379},
-  issn          = {0895-4356},
-  __markedentry = {[Scott:]},
-  abstract      = {We performed a Monte Carlo study to evaluate the effect of the number of events per variable (EPV) analyzed in logistic regression analysis. The simulations were based on data from a cardiac trial of 673 patients in which 252 deaths occurred and seven variables were cogent predictors of mortality; the number of events per predictive variable was (2527 = 36) for the full sample. For the simulations, at values of EPV = 2, 5, 10, 15, 20, and 25, we randomly generated 500 samples of the 673 patients, chosen with replacement, according to a logistic model derived from the full sample. Simulation results for the regression coefficients for each variable in each group of 500 samples were compared for bias, precision, and significance testing against the results of the model fitted to the original sample. For EPV values of 10 or greater, no major problems occurred. For EPV values less than 10, however, the regression coefficients were biased in both positive and negative directions; the large sample variance estimates from the logistic model both overestimated and underestimated the sample variance of the regression coeffi-cients; the 90\% confidence limits about the estimated values did not have proper coverage; the Wald statistic was conservative under the null hypothesis; and paradoxical associations (significance in the wrong direction) were increased. Although other factors (such as the total number of events, or sample size) may influence the validity of the logistic model, our findings indicate that low EPV can lead to major problems.},
-  comment       = {Using random draws of real data, needed about 10 positive events per input variable for logistic regression -- can use to pick the maximum input feature dimension.  I'm not sure if this was "exact" logistic regression or not, but it was the 1st high for a google scholar search of "exact logistic regression"
+  author   = {Peter Peduzzi and John Concato and Elizabeth Kemper and Theodore R. Holford and Alvan R. Feinstein},
+  title    = {A simulation study of the number of events per variable in logistic regression analysis},
+  journal  = {Journal of Clinical Epidemiology},
+  year     = {1996},
+  volume   = {49},
+  number   = {12},
+  pages    = {1373 - 1379},
+  issn     = {0895-4356},
+  abstract = {We performed a Monte Carlo study to evaluate the effect of the number of events per variable (EPV) analyzed in logistic regression analysis. The simulations were based on data from a cardiac trial of 673 patients in which 252 deaths occurred and seven variables were cogent predictors of mortality; the number of events per predictive variable was (2527 = 36) for the full sample. For the simulations, at values of EPV = 2, 5, 10, 15, 20, and 25, we randomly generated 500 samples of the 673 patients, chosen with replacement, according to a logistic model derived from the full sample. Simulation results for the regression coefficients for each variable in each group of 500 samples were compared for bias, precision, and significance testing against the results of the model fitted to the original sample. For EPV values of 10 or greater, no major problems occurred. For EPV values less than 10, however, the regression coefficients were biased in both positive and negative directions; the large sample variance estimates from the logistic model both overestimated and underestimated the sample variance of the regression coeffi-cients; the 90\% confidence limits about the estimated values did not have proper coverage; the Wald statistic was conservative under the null hypothesis; and paradoxical associations (significance in the wrong direction) were increased. Although other factors (such as the total number of events, or sample size) may influence the validity of the logistic model, our findings indicate that low EPV can lead to major problems.},
+  comment  = {Using random draws of real data, needed about 10 positive events per input variable for logistic regression -- can use to pick the maximum input feature dimension.  I'm not sure if this was "exact" logistic regression or not, but it was the 1st high for a google scholar search of "exact logistic regression"
 
 I wonder if it assumed that all variables were independent?
 
 Would the trick in King01logRgrssnRare be a help?
 Does this eliminate the need for Exact LR? (King02logistRgrssnMLvsExact)},
-  doi           = {https://doi.org/10.1016/S0895-4356(96)00236-3},
-  file          = {:Peduzzi96numEVvarLogRgrssn.pdf:PDF},
-  keywords      = {Monte Carlo, bias, precision, significance testing},
-  url           = {http://www.sciencedirect.com/science/article/pii/S0895435696002363},
+  doi      = {https://doi.org/10.1016/S0895-4356(96)00236-3},
+  file     = {:Peduzzi96numEVvarLogRgrssn.pdf:PDF},
+  keywords = {Monte Carlo, bias, precision, significance testing},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0895435696002363},
 }
 
 @Article{deLuna05predictSpatioTemp,
@@ -42749,6 +42947,18 @@ code: http://fbisvn-01.iwes.fraunhofer.de/svn/matlab/Projekte/qrnn/},
   groups    = {PointDerived, doReadWPV_1},
   owner     = {sotterson},
   timestamp = {2013.10.15},
+}
+
+@TechReport{Barbose18trackSunTrendInstPVprice,
+  author      = {Galen Barbose and Na{\:i}m Darghouth and Kristina LaCommare and Dev Millstein and Joe Rand},
+  title       = {Tracking the Sun: Installed Price Trends for Distributed Photovoltaic Systems in the United States - 2018 Edition},
+  institution = {Lawrence Berkeley National Laboratory},
+  year        = {2018},
+  comment     = {Tracks installed PV costs and trends in US and subregions.  Prices vary widely.  Perhaps useful public data for MNSP because int knows about incentives, "soft costs" etc.  So could a separate learning rate model like in Trancik15imprvRinfSolWind
+
+Is maybe based on OpenPV data, which has been criticized in Yu18deepSolarDB},
+  file        = {:Barbose18trackSunTrendInstPVprice.pdf:PDF},
+  url         = {https://emp.lbl.gov/tracking-the-sun},
 }
 
 @InProceedings{Barton08windForecastNeedBPA,
@@ -47903,6 +48113,20 @@ RESULTS
 
 Slides URL:  https://energy.gov/sites/prod/files/2017/07/f35/8.%20TongCERTS2017_final.pdf},
   file    = {:Tong17probFrcstPowSysSlides.pdf:PDF},
+}
+
+@TechReport{Trancik15imprvRinfSolWind,
+  author      = {Trancik, Jessika E and Jean, Joel and Kavlak, Goksin and Klemun, Magdalena M and Edwards, Morgan R and McNerney, James and Miotti, Marco and Brown, Patrick R and Mueller, Joshua M and Needell, Zachary A},
+  title       = {Technology improvement and emissions reductions as mutually reinforcing efforts: Observations from the global development of solar and wind energy},
+  institution = {MIT},
+  year        = {2015},
+  comment     = {Has Wind and Solar component learning rates.  Separates out soft costs, etc.  Could get related data from: Barbose18trackSunTrendInstPVprice
+
+I think it uses techniques in Nagy13basPredTechProg
+
+Related evernote: https://www.evernote.com/l/AA1ii2xiLz5D45GB_kFXYD5JGp5rvYBvMtI/},
+  file        = {:Trancik15imprvRinfSolWind.pdf:PDF},
+  url         = {http://energy.mit.edu/publication/technology-improvement-and-emissions-reductions-as-mutually-reinforcing-efforts/},
 }
 
 @Misc{Tuohy06windUnitCommit,
