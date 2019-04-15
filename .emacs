@@ -1319,42 +1319,42 @@ is already narrowed."
 
 ;; ** Org-ref
 
-;; ; packages required by org-ref but not picked up, for some reason
-;; (use-package helm-bibtex)
-;; (use-package pdf-tools)
+; packages required by org-ref but not picked up, for some reason
+(use-package helm-bibtex)
+(use-package pdf-tools)
 
-;; ;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
-;; (use-package org-ref
-;;   :after org
-;;   :init
-;;   (let ((default-directory docDir))
-;;     (setq org-ref-bibliography-notes (expand-file-name "notes.org")
-;;           org-ref-default-bibliography (expand-file-name "energy.bib")
-;;           org-ref-pdf-directory (expand-file-name "papers")
-;;           reftex-default-bibliography org-ref-default-bibliography
-;;           bibtex-completion-bibliography org-ref-default-bibliography
-;;           bibtex-completion-library-path org-ref-pdf-directory
-;;           bibtex-completion-notes-path org-ref-bibliography-notes))
-;;   ;; showing broken links slowed down energytop.org (but much less in Oct. 2017)
-;;   ;;  https://github.com/jkitchin/org-ref/issues/468
-;;   ;;(setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
-;;   :config
-;;   (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
-;;   ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
-;;   (setq bibtex-autokey-year-length 4
-;;         bibtex-autokey-name-year-separator "-"
-;;         bibtex-autokey-year-title-separator "-"
-;;         bibtex-autokey-titleword-separator "-"
-;;         bibtex-autokey-titlewords 2
-;;         bibtex-autokey-titlewords-stretch 1
-;;         bibtex-autokey-titleword-length 5)
-;;   ;; Make org-ref cite: link folded in emacs.  Messes up Latex export:
-;;   ;; https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
-;;   (org-link-set-parameters "cite" :display nil)
-;; )
+;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
+(use-package org-ref
+  :after org
+  :init
+  (let ((default-directory docDir))
+    (setq org-ref-bibliography-notes (expand-file-name "notes.org")
+          org-ref-default-bibliography (expand-file-name "energy.bib")
+          org-ref-pdf-directory (expand-file-name "papers")
+          reftex-default-bibliography org-ref-default-bibliography
+          bibtex-completion-bibliography org-ref-default-bibliography
+          bibtex-completion-library-path org-ref-pdf-directory
+          bibtex-completion-notes-path org-ref-bibliography-notes))
+  ;; showing broken links slowed down energytop.org (but much less in Oct. 2017)
+  ;;  https://github.com/jkitchin/org-ref/issues/468
+  ;;(setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
+  :config
+  (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
+  ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
+  (setq bibtex-autokey-year-length 4
+        bibtex-autokey-name-year-separator "-"
+        bibtex-autokey-year-title-separator "-"
+        bibtex-autokey-titleword-separator "-"
+        bibtex-autokey-titlewords 2
+        bibtex-autokey-titlewords-stretch 1
+        bibtex-autokey-titleword-length 5)
+  ;; Make org-ref cite: link folded in emacs.  Messes up Latex export:
+  ;; https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
+  (org-link-set-parameters "cite" :display nil)
+)
 
-;; (bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
-
+(bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
+ 
 ;; ** Org Mode Dedicated Targets
 (require 'org)
 
@@ -1965,7 +1965,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(calendar-week-start-day 1)
  '(column-number-mode t)
  '(counsel-grep-base-command "grep -nEi '%s' %s")
- '(debug-on-error t)
+;; '(debug-on-error t)
  '(delete-selection-mode nil)
  '(dired-dwim-target t)
  '(display-time-24hr-format t)
