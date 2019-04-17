@@ -8260,6 +8260,42 @@ Tableau
 
 ***** zoomable python plots
 
+***** Map plotting
+******* [[Choropleth]]: any map w/ shaded areas portraying spatially aggredated data
+******* Plotly
+********* many plotly map types: [[https://plot.ly/python/maps/][Plotly Python Open Source Graphing Library Maps]]
+********* [[https://plot.ly/python/choropleth-maps/][Python Choropleth Maps | Plotly]]
+********* Apparently need external GeoJSON maps for zip code maps
+          [[https://community.plot.ly/t/choropleth-maps-at-zip-code-level/4882/6][Choropleth maps at zip code level - plotly.js - Plotly Forum]]
+********* [[https://github.com/OpenDataDE/State-zip-code-GeoJSON][OpenDataDE/State-zip-code-GeoJSON: Zip code boundaries, each State]]
+********* uses geopandas, or at least won't run without it, it seems
+******* folium / Leaflet.js
+********* folium is active: [[https://github.com/python-visualization/folium/commits/master][last commit]] was 2 days ago (April 2019)
+********* [[https://towardsdatascience.com/visualizing-data-at-the-zip-code-level-with-folium-d07ac983db20][Visualizing Data at the ZIP Code Level with Folium – Towards Data Science]]
+********* [[https://python-visualization.github.io/folium/][folium documentation]] is sparse
+********* [[https://dillonshook.com/leaflet-zip-code-map-part-1/][Leaflet Zip Code Map Part 1: Dillon Shook]] (looks nice, 2014 article)
+******* [[http://geopandas.org/][Geopandas]]
+        Can do maps fast and ugly, fix them up later.  Also does calcs, I think.
+********* [[http://darribas.org/gds15/content/labs/lab_03.html][lab_03: Mapping in Python with geopandas]]
+********* is up to date: [[https://github.com/geopandas/geopandas/commits/master][last commit]] was today (4/16/19)
+******* Matplotlib 
+********* [[https://www.christianpeccei.com/zipmap/][Drawing ZIP Code Boundaries]]
+********* [[http://www.jtrive.com/visualizing-population-density-by-zip-code-with-basemap.html][Visualizing Population Density by Zip Code with basemap - The Pleasure of Fin...]]
+******* [[https://medium.com/dataexplorations/map-this-comparing-choropleth-maps-in-folium-and-tableau-public-9c15f09f5e79][Map this… Comparing choropleth maps in Folium and Tableau Public]]
+******* Where to get shapes/spatial data
+********* formats: [[http://apprentice.craic.com/tutorials/28][Shapefiles, GeoJSON and KML]]
+********* [[https://pypi.org/project/uszipcode/][uszipcode · PyPI]] (current demo data, size, housing, pop dens., ....)
+********* [[https://github.com/OpenDataDE/State-zip-code-GeoJSON][OpenDataDE/State-zip-code-GeoJSON: Zip code boundaries, each State]]
+
+********* [[https://github.com/OpenDataDE][Open Data Delaware · GitHub]] (more than just DE)
+********* [[https://github.com/jgoodall/us-maps][GitHub - jgoodall/us-maps: GeoJSON and TopoJSON map files]]
+          Counties, zips, ZCTA, Census, States, others
+********* [[https://rdrr.io/cran/tigris/man/zctas.html][zctas: Download a Zip Code Tabulation Area (ZCTA) shapefile into R in tigris:...]]
+********* [[https://www.census.gov/mp/www/geo/tiger.html][TIGER/Line Files]]
+
+******* (DEAD) Vincent and Pandas
+********* [[https://github.com/wrobstory/vincent][Died in 2016]]
+********* [[http://wrobstory.github.io/2013/10/mapping-data-python.html][Mapping Data in Python with Pandas and Vincent | wrobstory.github.io]]
 *** <<Python Streaming>>
 ***** Installing Pyspark in a docker
 ******* Better: [[https://medium.com/@suci/running-pyspark-on-jupyter-notebook-with-docker-602b18ac4494][Running PySpark on Jupyter Notebook with Docker – Medium]]
