@@ -439,11 +439,6 @@
 (global-set-key (kbd "M-[") 'scroll-down) ; page up
 (global-set-key (kbd "M-]") 'scroll-up)   ; page down
 
-;; horizontal scrolling
-;https://stackoverflow.com/questions/1042482/touchpad-horizontal-scrolling-in-emacs?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
-;; (global-set-key [wheel-right] 'scroll-left) ; horizontal scrolling
-;; (global-set-key [wheel-left] 'scroll-right)
-
 ;;Return to mark: https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
 (bind-key "C-x p" 'pop-to-mark-command) 
 (setq set-mark-command-repeat-pop t) ; so C-x p keeps going backwards in marks
@@ -454,12 +449,12 @@
   (interactive)
   (unwind-protect
       (progn
-	(linum-mode 1)                            ; only on current buffer
+	(display-line-numbers-mode 1)               ; only on current buffer
 	(goto-line (read-number "Goto line: ")))
-    (linum-mode -1)))                             ; only on current buffer
+    (display-line-numbers-mode -1)))                 ; only on current buffer
 (global-set-key (kbd "M-=") 'goto-line-with-feedback)
 
-(global-set-key (kbd "C-M-=") 'global-linum-mode) ; toggles on all buffers
+(global-set-key (kbd "C-M-=") 'global-display-line-numbers-mode) ; toggles all
 
 ;; So C-arrow keys move cursor to different buffer (C-S-arrow moves buffers)
 (setq windmove-wrap-around t ) ; wrap windows around edge, like torus space
@@ -1960,12 +1955,12 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(auto-hscroll-mode (quote current-line))
  '(aw-background t)
  '(blink-cursor-mode nil)
  '(calendar-week-start-day 1)
  '(column-number-mode t)
  '(counsel-grep-base-command "grep -nEi '%s' %s")
-;; '(debug-on-error t)
  '(delete-selection-mode nil)
  '(dired-dwim-target t)
  '(display-time-24hr-format t)
@@ -2015,6 +2010,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(mouse-avoidance-nudge-dist 10)
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount (quote (1 ((shift) p\. 1) ((control)))))
+ '(mouse-wheel-tilt-scroll t)
  '(org-agenda-files
    (quote
     ("c:/Users/sotterson/OneDrive/shareHW/school/GIZcolombia/GIZcolombia.org")))
