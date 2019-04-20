@@ -1314,41 +1314,63 @@ is already narrowed."
 
 ;; ** Org-ref
 
-; packages required by org-ref but not picked up, for some reason
-(use-package helm-bibtex)
-(use-package pdf-tools)
+;; org-ref commented out b/c it produces and error as soon as the 1st cite: link is encounted (and this makes org-bullets not work)
 
-;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
-(use-package org-ref
-  :after org
-  :init
-  (let ((default-directory docDir))
-    (setq org-ref-bibliography-notes (expand-file-name "notes.org")
-          org-ref-default-bibliography (expand-file-name "energy.bib")
-          org-ref-pdf-directory (expand-file-name "papers")
-          reftex-default-bibliography org-ref-default-bibliography
-          bibtex-completion-bibliography org-ref-default-bibliography
-          bibtex-completion-library-path org-ref-pdf-directory
-          bibtex-completion-notes-path org-ref-bibliography-notes))
-  ;; showing broken links slowed down energytop.org (but much less in Oct. 2017)
-  ;;  https://github.com/jkitchin/org-ref/issues/468
-  ;;(setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
-  :config
-  (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
-  ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
-  (setq bibtex-autokey-year-length 4
-        bibtex-autokey-name-year-separator "-"
-        bibtex-autokey-year-title-separator "-"
-        bibtex-autokey-titleword-separator "-"
-        bibtex-autokey-titlewords 2
-        bibtex-autokey-titlewords-stretch 1
-        bibtex-autokey-titleword-length 5)
-  ;; Make org-ref cite: link folded in emacs.  Messes up Latex export:
-  ;; https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
-  (org-link-set-parameters "cite" :display nil)
-)
+;; --setup from org-ref website---------------------------------
 
-(bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
+;; the CRASH HAPPENS EVEN IF I HAVE ONLY THE LINE BELOW in my .init
+;; and the crash is on the 1st cite:link in my .bib
+;; (require 'org-ref)
+
+;; Adding this stuff from the org-ref page DOESN'T HELP
+;; (setq reftex-default-bibliography '("C:/Users/scotto/OneDrive - Clean Power Research/ref/energy.bib"))
+
+;; ;; see org-ref for use of these variables
+;; (setq org-ref-bibliography-notes "C:/Users/scotto/OneDrive - Clean Power Research/ref/notes.org"
+;;       org-ref-default-bibliography '("C:/Users/scotto/OneDrive - Clean Power Research/ref/energy.bib")
+;;       org-ref-pdf-directory "C:/Users/scotto/OneDrive - Clean Power Research/ref/papers")
+
+;; --original org-ref setup-------------------------------------
+;; org-ref causes an error when emacs reads the 1st org-ref cite: link.  The .org file is still read, but org-bullets fails then, for some reason.
+
+;; ; packages required by org-ref but not picked up, for some reason
+;; (use-package helm-bibtex)
+;; (use-package pdf-tools)
+
+;; ;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
+;; (use-package org-ref
+;;   :after org
+;;   :init
+;;   (let ((default-directory docDir))
+;;     (setq org-ref-bibliography-notes (expand-file-name "notes.org")
+;;           org-ref-default-bibliography (expand-file-name "energy.bib")
+;;           org-ref-pdf-directory (expand-file-name "papers")
+;;           reftex-default-bibliography org-ref-default-bibliography
+;;           bibtex-completion-bibliography org-ref-default-bibliography
+;;           bibtex-completion-library-path org-ref-pdf-directory
+;;           bibtex-completion-notes-path org-ref-bibliography-notes))
+;;   ;; showing broken links slowed down energytop.org (but much less in Oct. 2017)
+;;   ;;  https://github.com/jkitchin/org-ref/issues/468
+;;   (setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
+;;   :config
+;;   (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
+;;   ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
+;;   (setq bibtex-autokey-year-length 4
+;;         bibtex-autokey-name-year-separator "-"
+;;         bibtex-autokey-year-title-separator "-"
+;;         bibtex-autokey-titleword-separator "-"
+;;         bibtex-autokey-titlewords 2
+;;         bibtex-autokey-titlewords-stretch 1
+;;         bibtex-autokey-titleword-length 5)
+;;   ;; Make org-ref cite: link folded in emacs.  Messes up Latex export:
+;;   ;; https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
+;;   (org-link-set-parameters "cite" :display nil)
+;; )
+
+;; Unfortunately, this may screw up linking to techreports:
+;; https://github.com/jkitchin/org-ref/issues/205
+;; at least they work after I comment it out
+;;(bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
  
 ;; ** Org Mode Dedicated Targets
 (require 'org)
