@@ -94,8 +94,12 @@
    (progn (warn "Can't assign shareDir for unknown computer: %s" computerNm)
 	  (setq shareDir (concat "unknown_computer_" computerNm "_shareDir"))))
   )
-;(setq docDir (expand-file-name "../ref" shareDir))
+
+(unless (file-readable-p shareDir)
+  (warn "shareDir %s doesn't exist or not readable" shareDir))
 (setq docDir (expand-file-name "ref" shareDir))
+(unless (file-readable-p docDir)
+  (warn "shareDir %s doesn't exist or not readable" docDir))
 (message "computerNm %s shareDir %s docDir %s" computerNm shareDir docDir)
 
 (if window-system
