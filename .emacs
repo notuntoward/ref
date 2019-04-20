@@ -86,12 +86,10 @@
 
 (setq computerNm (downcase system-name)) ; downcase: was getting random case
 (pcase (eval 'computerNm)
-  ("desktop-lkl5mc1"  ; Surface Pro 4
-   (setq shareDir "c:/Users/scotto/Tempo Box/shareHW"))
   ("cpr-scotto"     ; Clean Power Research desktop
    (progn (setq shareDir "c:/Users/Scott/OneDrive - Clean Power Research")))
   ("desktop-tqs2o18" ; Surface Pro
-   (setq shareDir "c:/Users/scott/OneDrive/scotto/Tempo Box/shareHW"))
+   (setq shareDir "C:/Users/scotto/OneDrive - Clean Power Research"))
   (_
    (progn (warn "Can't assign shareDir for unknown computer: %s" computerNm)
 	  (setq shareDir (concat "unknown_computer_" computerNm "_shareDir"))))
@@ -1322,13 +1320,13 @@ is already narrowed."
 ;; and the crash is on the 1st cite:link in my .bib
 ;; (require 'org-ref)
 
-;; Adding this stuff from the org-ref page DOESN'T HELP
-;; (setq reftex-default-bibliography '("C:/Users/scotto/OneDrive - Clean Power Research/ref/energy.bib"))
+;;Adding this stuff from the org-ref page DOESN'T HELP
+(setq reftex-default-bibliography '("C:/Users/scotto/OneDrive - Clean Power Research/ref/energy.bib"))
 
-;; ;; see org-ref for use of these variables
-;; (setq org-ref-bibliography-notes "C:/Users/scotto/OneDrive - Clean Power Research/ref/notes.org"
-;;       org-ref-default-bibliography '("C:/Users/scotto/OneDrive - Clean Power Research/ref/energy.bib")
-;;       org-ref-pdf-directory "C:/Users/scotto/OneDrive - Clean Power Research/ref/papers")
+;; see org-ref for use of these variables
+(setq org-ref-bibliography-notes "C:/Users/scotto/OneDrive - Clean Power Research/ref/notes.org"
+      org-ref-default-bibliography '("C:/Users/scotto/OneDrive - Clean Power Research/ref/energy.bib")
+      org-ref-pdf-directory "C:/Users/scotto/OneDrive - Clean Power Research/ref/papers")
 
 ;; --original org-ref setup-------------------------------------
 ;; org-ref causes an error when emacs reads the 1st org-ref cite: link.  The .org file is still read, but org-bullets fails then, for some reason.
