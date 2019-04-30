@@ -2449,114 +2449,6 @@ networks but require retraining at each timestep},
   timestamp = {2009.05.14},
 }
 
-@Article{Ranaboldo12frcstMOSfeatSel,
-  author    = {Ranaboldo, Matteo and Giebel, Gregor and Codina, Bernat},
-  title     = {Implementation of a Model Output Statistics based on meteorological variable screening for short-term wind power forecast},
-  journal   = {Wind Energy},
-  year      = {2012},
-  issn      = {1099-1824},
-  abstract  = {A combination of physical and statistical treatments to post-process numerical weather predictions (NWP) outputs is needed for successful short-term wind power forecasts. One of the most promising and effective approaches for statistical treatment is the Model Output Statistics (MOS) technique. In this study, a MOS based on multiple linear regression is proposed: the model screens the most relevant NWP forecast variables and selects the best predictors to fit a regression equation that minimizes the forecast errors, utilizing wind farm power output measurements as input. The performance of the method is evaluated in two wind farms, located in different topographical areas and with different NWP grid spacing. Because of the high seasonal variability of NWP forecasts, it was considered appropriate to implement monthly stratified MOS. In both wind farms, the first predictors were always wind speeds (at different heights) or friction velocity. When friction velocity is the first predictor, the proposed MOS forecasts resulted to be highly dependent on the friction velocity -- wind speed correlation. Negligible improvements were encountered when including more than two predictors in the regression equation. The proposed MOS performed well in both wind farms, and its forecasts compare positively with an actual operative model in use at Ris{\o} DTU and other MOS types, showing minimum BIAS and improving NWP power forecast of around 15\% in terms of root mean square error. Further improvements could be obtained by the implementation of a more refined MOS stratification, e.g. fitting specific equations in different synoptic situations.},
-  comment   = {Feature selection for wind farms based on a linear model. DTU/Giebel did this so it's probably worth reading.},
-  doi       = {10.1002/we.1506},
-  file      = {Ranaboldo12frcstMOSfeatSel.pdf:Ranaboldo12frcstMOSfeatSel.pdf:PDF},
-  keywords  = {wind power forecast, short-term prediction, statistical treatment, Model Output Statistics, least-square fitting},
-  owner     = {sotterson},
-  publisher = {John Wiley \& Sons, Ltd},
-  timestamp = {2013.03.25},
-}
-
-@Article{Cannon12nnCaDENCE,
-  author    = {Alex J. Cannon},
-  title     = {Neural networks for probabilistic environmental prediction: Conditional Density Estimation Network Creation and Evaluation (CaDENCE) in R},
-  journal   = {Computers \& Geosciences},
-  year      = {2012},
-  volume    = {41},
-  number    = {0},
-  pages     = {126--135},
-  issn      = {0098-3004},
-  abstract  = {A conditional density estimation network (CDEN) is a probabilistic extension of the standard multilayer perceptron neural network (MLP). A \{CDEN\} model allows users to estimate parameters of a specified probability density function conditioned upon values of a set of predictors using the \{MLP\} architecture. The result is a flexible model for the mean, the variance, exceedance probabilities, prediction intervals, etc. from the specified conditional distribution. Because the \{CDEN\} is based on the MLP, nonlinear relationships, including those involving complicated interactions between predictors, can be described by the modeling framework. \{CDEN\} models have been applied to a wide range of environmental prediction tasks, such as precipitation downscaling, extreme value analysis in hydrology, wind retrievals from satellites, and air quality forecasting. This paper describes the CaDENCE (Conditional Density Estimation Network Creation and Evaluation) package, which provides routines for creating and evaluating \{CDEN\} models in the R programming language. CaDENCE routines are demonstrated on a dataset consisting of suspended sediment concentrations and discharge measurements from the Fraser River at Hope, British Columbia, Canada.},
-  comment   = {Assuming a certain parametric distribution, estimate the nonlinear dependence of its parameters on some inputs using a neural net.
-
-Maybe this is good because the model is simpler so it could be trained on less data, and also, embedded in BMA-style ensemble mixtures or whatever.
-
-This seems a little like Solomatine09errParamEst
-
-Distribution choices aren't great for wind, though:
-Normal
-Lognormal
-PoissonBernoulli?gamman
-Bernoulli?Weibulln dbweibull
-Bernoulli?lognormaln
-Bernoulli?Pareto
-Truncated normal
-library(msm) (Jackson, 2010) (some kinda Markov thing)
-
-But I wonder if it couldn't be easily modified to do a Beta (only mean and variance params), which kinda fits wind power (bofinger02windpowfrcstbeta, bludszuweit08frcsterrstats, chen99betakern)
-
-Anyway, it has its own R library:
-http://www.eos.ubc.ca/~acannon/CaDENCE/},
-  doi       = {10.1016/j.cageo.2011.08.023},
-  file      = {Cannon12nnCaDENCE.pdf:Cannon12nnCaDENCE.pdf:PDF},
-  groups    = {Ensemble, PointDerived, doReadNonWPV_2},
-  keywords  = {Probabilistic},
-  owner     = {sotterson},
-  timestamp = {2013.10.22},
-}
-
-@Article{Berg10subSampBSpval,
-  author    = {Arthur Berg and Timothy L. McMurry and Dimitris N. Politis},
-  title     = {Subsampling p-values},
-  journal   = {Statistics and Probability Letters},
-  year      = {2010},
-  volume    = {80},
-  number    = {17-18},
-  pages     = {1358--1364},
-  issn      = {0167-7152},
-  abstract  = {A construction of p -values for hypothesis tests based on subsampling and the related m out of n bootstrap is introduced. The p -values are based on a modification of the usual subsampling hypothesis tests that involves an appropriate centering of the subsampled or bootstrapped test statistics as in the construction of confidence intervals. This modification makes the hypothesis tests more powerful, and as a consequence provides meaningful p -values. The procedure is shown to apply for both i.i.d. and stationary data satisfying mixing conditions. The new p -values have the desired properties of being asymptotically uniform under the null hypothesis and converging to zero under the alternative.},
-  comment   = {Improved subsampling bootstrap for when it's used to compute p-values for hypothesis testing
-* say that (n choose b) samples can in practice can be huge so it's common to only use a lot of them. Politis is a coauthor so this must be OK.
-* has a full sample parameter estimate c.d.f. that's different than Geyer06subSampBootStrap, and maybe it makes more sense?
-* final b subample size is unclear/arbitrary:
-* a little more clear than the last couple pages of Geyer06subSampBootStrap
-
-* subsamp size chosen to make correct test. Couldn't use this in real life.
-
-Why this paper is needed: Standard subsampling doesn't approx. correct thresholdfor "true alternative hypothesis," whatever that is.
-
-Trick: Get rid of full-sample param estimate (which could be wrong) by assuming that null hypothesis est. is zero. True for e.g. noise but when else is this useful?},
-  doi       = {10.1016/j.spl.2010.04.018},
-  file      = {Berg10subSampBSpval.pdf:Berg10subSampBSpval.pdf:PDF},
-  groups    = {Read},
-  owner     = {sotterson},
-  timestamp = {2011.11.22},
-  url       = {http://www.sciencedirect.com/science/article/pii/S0167715210001276},
-}
-
-@Article{Welty09bayesDistLagSplPol,
-  author    = {L. J. Welty and R. D. Peng and S. L. Zeger and F. Dominici},
-  title     = {{Bayes}ian Distributed Lag Models: Estimating Effects of Particulate Matter Air Pollution on Daily Mortality},
-  journal   = {Biometrics},
-  year      = {2009},
-  volume    = {65},
-  number    = {1},
-  pages     = {282--291},
-  abstract  = {A distributed lag model (DLagM) is a regression model that includes lagged exposure variables as covariates; its corresponding distributed lag (DL) function describes the relationship between the lag and the coefficient of the lagged exposure variable. DLagMs have recently been used in environmental epidemiology for quantifying the cumulative effects of weather and air pollution on mortality and morbidity. Standard methods for formulating DLagMs include unconstrained, polynomial, and penalized spline DLagMs. These methods may fail to take full advantage of prior information about the shape of the DL function for environmental exposures, or for any other exposure with effects that are believed to smoothly approach zero as lag increases, and are therefore at risk of producing suboptimal estimates. In this article, we propose a Bayesian DLagM (BDLagM) that incorporates prior knowledge about the shape of the DL function and also allows the degree of smoothness of the DL function to be estimated from the data. We apply our BDLagM to its motivating data from the National Morbidity, Mortality, and Air Pollution Study to estimate the short-term health effects of particulate matter air pollution on mortality from 1987 to 2000 for Chicago, Illinois. In a simulation study, we compare our Bayesian approach with alternative methods that use unconstrained, polynomial, and penalized spline DLagMs. We also illustrate the connection between BDLagMs and penalized spline DLagMs. Software for fitting BDLagM models and the data used in this article are available online.},
-  comment   = {Gaussian prior on distributed lag by splines; fits their data better; supposed to have software
-* maybe I could use the idea for Bayesian delay adaptation as new data comes in?
-* could I think of my own prior?
-* slides are pretty clear
-* shows how to convert linear regression distribution into joint, w/ conjugate dist
-* sort-of multilinear, or at least non-lagged variables separated out
-* Prior not correct for what I want
--- they want it to be smooth (diurnal?) and monotonically decaying (diurnal?)
-* Poisson regressions: also not right for my wind data
-* BDLagM software is supposed to be available},
-  file      = {Paper:Welty09bayesDistLagSplPol.pdf:PDF;Slides:Welty09bayesDistLagSplPol_slides.pdf:PDF},
-  groups    = {Read},
-  owner     = {scot},
-  timestamp = {2010.08.04},
-}
-
 @Article{Estevez09normMutInfoFeatSel,
   author    = {Estevez, P.A. and Tesmer, M. and Perez, C.A. and Zurada, J.M.},
   title     = {Normalized Mutual Information Feature Selection},
@@ -5594,6 +5486,7 @@ methods for grouping electrical load patterns.},
 
 Could be a good guide for how to do load forecast aggregation.},
   doi       = {https://doi.org/10.1155/2018/3683969},
+  file      = {:Gajowniczek18clustElecLoadFrcst.pdf:PDF},
   publisher = {Hindawi},
 }
 
@@ -5720,6 +5613,20 @@ Maybe fancier stuff in: Abreu13genCmplxStepDiff},
   publisher = {Elsevier},
   timestamp = {2014.07.06},
   url       = {http://www.sciencedirect.com/science/article/pii/S0377042707004086},
+}
+
+@Article{Rai15agentEnrgyTechAdoptFactors,
+  author   = {Varun Rai and Scott A. Robinson},
+  title    = {Agent-based modeling of energy technology adoption: Empirical integration of social, behavioral, economic, and environmental factors},
+  journal  = {Environmental Modelling \& Software},
+  year     = {2015},
+  volume   = {70},
+  pages    = {163 - 177},
+  issn     = {1364-8152},
+  abstract = {Agent-based modeling (ABM) techniques for studying human-technical systems face two important challenges. First, agent behavioral rules are often ad hoc, making it difficult to assess the implications of these models within the larger theoretical context. Second, the lack of relevant empirical data precludes many models from being appropriately initialized and validated, limiting the value of such models for exploring emergent properties or for policy evaluation. To address these issues, in this paper we present a theoretically-based and empirically-driven agent-based model of technology adoption, with an application to residential solar photovoltaic (PV). Using household-level resolution for demographic, attitudinal, social network, and environmental variables, the integrated ABM framework we develop is applied to real-world data covering 2004–2013 for a residential solar PV program at the city scale. Two applications of the model focusing on rebate program design are also presented.},
+  doi      = {https://doi.org/10.1016/j.envsoft.2015.04.014},
+  keywords = {Agent-based modeling, Solar photovoltaic (PV), Complex systems, Technology adoption, Social networks, Bounded rationality},
+  url      = {http://www.sciencedirect.com/science/article/pii/S1364815215001231},
 }
 
 @InProceedings{Tian09newAdaboost_RT,
@@ -7650,6 +7557,20 @@ Keywords:
   owner     = {sotterson},
   publisher = {Wiley Online Library},
   timestamp = {2014.11.08},
+}
+
+@Article{Kapur12bassDiffSDEadopt,
+  author    = {Kapur, PK and Chaudhary, Kuldeep and Aggarwal, Anu G and Jha, PC},
+  title     = {On the development of innovation diffusion model using stochastic differential equation incorporating change in the adoption rate},
+  journal   = {International Journal of Operational Research},
+  year      = {2012},
+  volume    = {14},
+  number    = {4},
+  pages     = {472--484},
+  abstract  = {Bass innovation and diffusion model and many of its extended forms have been reported in marketing literature and applied successfully for depicting and predicting adoption curve for products from different sectors of economy, segments of markets and strata of society. All these models assume the adoption process as a discrete counting process. However, if the potential adopter population is large and product is in the market with greater life cycle length, it is quite likely that adoption process is a stochastic process with continuous state space. In this paper, we propose a new innovation and diffusion model based on type of stochastic differential equation (SDE). It also incorporates the change-point concept, where the rate of product adoption per remaining potential adopter might change due shift in marketing/promotional strategy, entry/exit of some of the competitors in the market. The applicability and accuracy of the proposed model are illustrated using new product sales data. Predictive validity and mean squared error have been used to check the validity of the model. It has been shown that SDE-based model with change point performs comparatively better than Bass innovation and diffusion model.
+Keywords: innovation and diffusion model, promotional effort, SDEs, stochastic differential equations, change point},
+  publisher = {Inderscience Publishers},
+  url       = {https://www.inderscienceonline.com/doi/pdf/10.1504/IJOR.2012.047516},
 }
 
 @Article{Kapur12bassDiffuseSDE,
@@ -13321,6 +13242,21 @@ Assumes error distributions are independent and then convolves them.  And improv
   timestamp = {2017.01.17},
 }
 
+@Article{Westacott16gisPVdeployUK,
+  author         = {Westacott, Paul and Candelise, Chiara},
+  title          = {A Novel Geographical Information Systems Framework to Characterize Photovoltaic Deployment in the UK: Initial Evidence},
+  journal        = {Energies},
+  year           = {2016},
+  volume         = {9},
+  number         = {1},
+  issn           = {1996-1073},
+  abstract       = {Globally, deployment of grid-connected photovoltaics (PV) has increased dramatically in recent years. The UK has seen rapid uptake reaching over 500,000 installations totalling 2.8 GWp by 2013. PV can be installed in different market segments (domestic rooftop, non-domestic rooftop and ground-mounted “solar-farms”) covering a broad range of system sizes in a high number of locations. It is important to gain detailed understanding of what grid-connected PV deployment looks like (e.g., how it deployed across different geographic areas and market segments), and identify the major drivers behind it. This paper answers these questions by developing a novel geographical information systems (GIS)-framework—the United Kingdom Photovoltaics Database (UKPVD)—to analyze temporal and spatial PV deployment trends at high resolution across all market segments. Results show how PV deployment changed over time with the evolution of governmental PV policy support. Then spatial trends as function of local irradiation, rurality (as a proxy of building and population density) and building footprint (as a proxy for roof-area) are analyzed. We find in all market segments, PV deployment is strongly correlated with the level of policy support. Furthermore, all markets show a preference to deploy in rural areas and those with higher irradiation. Finally, local clustering of PV in all market segments was observed, revealing that PV is not spread evenly across areas. This work reveals the complex nature of PV deployment, both spatially and by market segment, reinforcing the need capture this through mapping.},
+  article-number = {26},
+  doi            = {10.3390/en9010026},
+  file           = {:Westacott16gisPVdeployUK.pdf:PDF},
+  url            = {http://www.mdpi.com/1996-1073/9/1/26},
+}
+
 @TechReport{Crawford16loadFrcstERCOT,
   author      = {Todd Crawford},
   title       = {ERCOT Load Forecasting},
@@ -15296,10 +15232,11 @@ matrix of a multivariate-normal random-vector.},
   pages    = {690 - 704},
   issn     = {0360-5442},
   abstract = {In the context of recent dramatic solar energy cost reductions, the U.S. Department of Energy set new levelized cost of energy goals for photovoltaics (PV) to achieve by 2030 to enable significantly greater PV adoption: \$0.03/kWh for utility-scale, \$0.04/kWh for commercial, and \$0.05/kWh for residential PV systems. We analyze the potential impacts of achieving these “SunShot 2030” cost targets for the contiguous United States using the Regional Energy Deployment System (ReEDS) and Distributed Generation (dGen) capacity expansion models. We consider the impacts under a wide range of future conditions. We find that PV could provide 13\%–18\% of U.S. electricity demand in 2030 and 28\%–64\% of demand if the SunShot 2030 goals are achieved, with PV deployment increasing in every state. The availability of low-cost storage has the largest impact on projected deployment, followed by natural gas prices and electricity demand. For comparison, PV deployed under a business-as-usual scenario could provide only 5\% of generation in 2030 and 17\% in 2050. We find that the high levels of PV deployment explored here lead to lower electricity prices and system costs, lower carbon dioxide emissions, lower water consumption, increased renewable energy curtailment, and increased storage deployment compared with the business-as-usual scenario.},
-  comment  = {
+  comment  = {A user of NREL's generic adoption forecast, maybe the thing I'll want to do for MN SP, or the WattPlan Grid generic adopttion forecast.
 
-Uses: Sigrin17mktDmdDgenDoc},
+NREL generic adoption forecast: Sigrin17mktDmdDgenDoc},
   doi      = {https://doi.org/10.1016/j.energy.2018.04.166},
+  file     = {:Cole18impactSunShot2030.pdf:PDF},
   keywords = {SunShot, PV, ReEDS, Capacity expansion, Renewable energy, Energy storage},
   url      = {http://www.sciencedirect.com/science/article/pii/S0360544218307898},
 }
@@ -16392,6 +16329,25 @@ Other interesting methods mentioned:
   timestamp = {2009.03.02},
 }
 
+@Article{Lobel11cnsmrChoiceDmdFrcstSlr,
+  author    = {Lobel, Ruben and Perakis, Georgia},
+  title     = {Consumer choice model for forecasting demand and designing incentives for solar technology},
+  year      = {2011},
+  abstract  = {In this paper, we develop a model for the adoption of solar photovoltaic technology by residential consumers. In particular,
+we assume consumers purchase these solar panels according to a discrete choice model. The technology adoption process
+is reinforced by network externalities such as imitating customer behavior and cost improvements through learning-by-
+doing. Using this model, we develop a framework for policy makers to find optimal subsidies in order to achieve a desired
+adoption target with minimum cost for the system. We discuss the structure of the optimal subsidy policy and how the
+overall system cost changes with the adoption target. Furthermore, we validate the model through an empirical study of
+the German solar market, where we estimate the model parameters, generate adoption forecasts and demonstrate how to
+solve the policy design problem. We use this framework to show that the current policies in Germany are not efficient.
+In particular, our study suggests that their subsidies should be higher in the near future and the gradual phase-out of the
+subsidies should occur faster.},
+  file      = {:Lobel11cnsmrChoiceDmdFrcstSlr.pdf:PDF},
+  publisher = {MIT Sloan Research Paper},
+  url       = {https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1748424},
+}
+
 @InProceedings{Kanter15deepFeatSyntCpla,
   author    = {J. M. Kanter and K. Veeramachaneni},
   title     = {Deep feature synthesis: Towards automating data science endeavors},
@@ -16940,6 +16896,21 @@ Fernando05inputSelNNpmi may have a similar hack.},
   doi       = {10.1109/EEEIC-2.2013.6737928},
   file      = {Darudi13partMutInfoFeatSel.pdf:Darudi13partMutInfoFeatSel.pdf:PDF},
   keywords  = {forecasting theory, probability, redundancy, time series, IVS algorithm, credibility, information theory, input variable selection algorithm, nonlinear dependency evaluation, nonlinear problem handling, partial mutual information based algorithm, redundancy, time series forecasting, Algorithm design and analysis, Computational modeling, Forecasting, Input variables, Mutual information, Redundancy, Time series analysis, information theory, input variable selection, partial mutual information, time series forecasting},
+}
+
+@Article{Moons15selfBrandPersEV,
+  author   = {Moons, Ingrid and De Pelsmacker, Patrick},
+  title    = {Self-Brand Personality Differences and Attitudes towards Electric Cars},
+  journal  = {Sustainability},
+  year     = {2015},
+  volume   = {7},
+  number   = {9},
+  pages    = {12322--12339},
+  issn     = {2071-1050},
+  abstract = {In two representative Belgian samples, by means of an online survey, we investigate the effect of self-brand personality differences on car brand evaluation, the evaluation of an eco-friendly branded electric car extension and the evaluation of car brands after electric extension. We show that self-brand personality differences influence the attitude towards car brands. The relative importance of personality dimensions that drive extension judgment and parent brand attitudes after electric extension is different from that of brand evaluation without extension. More particularly, perceptions of a brand being more responsible than one’s self is a much more important driver of brand evaluation after electric extension than without extension. Car personality characteristics, such as activity and sophistication, drive brand evaluations before, as well as after electric extension.  These effects are moderated by brand ownership in that the relative importance of brand personality dimensions is different for brand owners than for consumers who do not own a specific brand. Car manufacturers can fine-tune their marketing approach when launching eco-friendly extensions, taking into account that, in this context, partly different  self-brand personality fit considerations are used by consumers than for car brands without electric extension.},
+  doi      = {10.3390/su70912322},
+  file     = {:Moons15selfBrandPersEV.pdf:PDF},
+  url      = {http://www.mdpi.com/2071-1050/7/9/12322},
 }
 
 @Article{Lerch13CmprProbWndFrcstNonHomogGR,
@@ -18595,6 +18566,22 @@ models, lag selection.},
   timestamp = {2009.02.27},
 }
 
+@Article{Manshadi16genBassNtwk,
+  author      = {Vahideh H. Manshadi and Sidhant Misra},
+  title       = {A Generalized Bass Model for Product Growth in Networks},
+  journal     = {arXiv},
+  year        = {2016},
+  number      = {arXiv:1606.03386 [cs.SI]},
+  abstract    = {Many products and innovations become well-known and widely adopted through the social interactions of individuals in a population. The Bass diffusion model has been widely used to model the temporal evolution of adoption in such social systems. In the model, the likelihood of a new adoption is proportional to the number of previous adopters, implicitly assuming a global (or homogeneous) interaction among all individuals in the network. Such global interactions do not exist in many large social networks, however. Instead, individuals typically interact with a small part of the larger population. To quantify the growth rate (or equivalently the adoption timing) in networks with limited interactions, we study a stochastic adoption process where the likelihood that each individual adopts is proportional to the number of adopters among the small group of persons he/she interacts with (and not the entire population of adopters). When the underlying network of interactions is a random $k$-regular graph, we compute the sample path limit of the fraction of adopters. We show the limit coincides with the solution of a differential equation which can viewed as a generalization of the Bass diffusion model. When the degree $k$ is bounded, we show the adoption curve differs significantly from the one corresponds to the Bass diffusion model. In particular, the adoption grows more slowly than what the Bass model projects. In addition, the adoption curve is asymmetric, unlike that of the Bass diffusion model. Such asymmetry has important consequences for the estimation of market potential. Finally, we calculate the timing of early adoptions at finer scales, e.g., logarithmic in the population size.},
+  date        = {2016-06-10},
+  eprint      = {http://arxiv.org/abs/1606.03386v1},
+  eprintclass = {cs.SI},
+  eprinttype  = {arXiv},
+  file        = {:Manshadi16genBassNtwk.pdf:PDF},
+  keywords    = {cs.SI, physics.soc-ph},
+  url         = {https://arxiv.org/abs/1606.03386},
+}
+
 @Article{Genest09copulaGoodFitPow,
   author    = {Genest, C. and R{\'e}millard, B. and Beaudoin, D.},
   title     = {Goodness-of-fit tests for copulas: A review and a power study},
@@ -18628,6 +18615,42 @@ Paper for the library: Pedregosa11ScikitlearnMachLrnPython},
   owner     = {sotterson},
   timestamp = {2017.06.14},
   url       = {http://scikit-learn.org/stable/modules/covariance.html},
+}
+
+@Article{Tayman11popFrcstAccRgrssn,
+  author        = {Tayman, Jeff and Smith, Stanley K and Rayer, Stefan},
+  title         = {Evaluating population forecast accuracy: A regression approach using county data},
+  journal       = {Population Research and Policy Review},
+  year          = {2011},
+  volume        = {30},
+  number        = {2},
+  pages         = {235--262},
+  __markedentry = {[Scott:6]},
+  abstract      = {Many studies have evaluated the impact of differences in population
+size and growth rate on population forecast accuracy. Virtually all these studies
+have been based on aggregate data; that is, they focused on average errors for places
+with particular size or growth rate characteristics. In this study, we take a different
+approach by investigating forecast accuracy using regression models based on data
+for individual places. Using decennial census data from 1900 to 2000 for 2,482
+counties in the US, we construct a large number of county population forecasts and
+calculate forecast errors for 10- and 20-year horizons. Then, we develop and
+evaluate several alternative functional forms of regression models relating popu-
+lation size and growth rate to forecast accuracy; investigate the impact of adding
+several other explanatory variables; and estimate the relative contributions of each
+variable to the discriminatory power of the models. Our results confirm several
+findings reported in previous studies but uncover several new findings as well. We
+believe regression models based on data for individual places provide powerful but
+under-utilized tools for investigating the determinants of population forecast
+accuracy.
+
+Keywords Forecast accuracy  Regression models  Panel data 
+Counties},
+  comment       = {Uses regression model to predict acccuracy of population forecasts.  Inputs are poplation size and growth rate, forecast horizon, and a bunch of other stuff.
+
+Is a bit like quantile regression.},
+  file          = {:Tayman11popFrcstAccRgrssn.pdf:PDF},
+  publisher     = {Springer},
+  url           = {https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3061008/},
 }
 
 @InProceedings{Cheng08semiSupCalibForecast,
@@ -22851,6 +22874,22 @@ Note that Koenker, himself, is not a Bayesian QR fan: Koenker10bayesBanoQR},
   timestamp = {2016.12.19},
 }
 
+@Article{Taherdoost18reviewTechAdopt,
+  author   = {Hamed Taherdoost},
+  title    = {A review of technology acceptance and adoption models and theories},
+  journal  = {Procedia Manufacturing},
+  year     = {2018},
+  volume   = {22},
+  pages    = {960 - 967},
+  issn     = {2351-9789},
+  note     = {11th International Conference Interdisciplinarity in Engineering, INTER-ENG 2017, 5-6 October 2017, Tirgu Mures, Romania},
+  abstract = {Recognition the needs and acceptance of individuals is the beginning stage of any businesses and this understanding would be helpful to find the way of future development, thus academicians are interested to realize the factors that drive users’ acceptance or rejection of technologies. A number of models and frameworks have been developed to explain user adoption of new technologies and these models introduce factors that can affect the user acceptance. In this paper, an overview of theories and models regarding user acceptance of technology has been provided. The existing review will emphasize literature that tries to show how developers and researchers presage the level of admission any information technology will attain.},
+  comment  = {Non-quantitive stuff.  Not useful for making predictive models.},
+  doi      = {https://doi.org/10.1016/j.promfg.2018.03.137},
+  keywords = {Acceptance Model, Acceptance Theory, Adoption Model, Adoption Theory, User Acceptance, User Adoption},
+  url      = {http://www.sciencedirect.com/science/article/pii/S2351978918304335},
+}
+
 @Article{Britz15tutorialRNN,
   author       = {Denny Britz},
   title        = {Recurrent Neural Networks Tutorial},
@@ -23805,6 +23844,20 @@ Online adaptation: would need to figure out how to subtract an old point that wa
   owner     = {sotterson},
   timestamp = {2014.06.26},
   url       = {http://books.google.com/books?hl=en&amp;lr=&amp;id=0F-9C7K8fQ8C&amp;oi=fnd&amp;pg=PA177&amp;dq=Out-of-sample+extensions+forLLE,+Isomap,+MDS,+Eigenmaps+and+spectral+clustering&amp;ots=THDtr0X93_&amp;sig=vOKWUzXLyFHOZ1-yZnGBmm8Fos4},
+}
+
+@Article{Gooding13cityPVinstallFactors,
+  author   = {James Gooding and Holly Edwards and Jannik Giesekam and Rolf Crook},
+  title    = {Solar City Indicator: A methodology to predict city level PV installed capacity by combining physical capacity and socio-economic factors},
+  journal  = {Solar Energy},
+  year     = {2013},
+  volume   = {95},
+  pages    = {325 - 335},
+  issn     = {0038-092X},
+  abstract = {Shifting to renewable sources of electricity is imperative in achieving global reductions in carbon emissions and ensuring future energy security. One technology, solar photovoltaics (PV), has begun to generate a noticeable contribution to the electricity mix in numerous countries. However, the upper limits of this contribution have not been explored in a way that combines both building-by-building solar resource appraisals with the city-scale socio-economic contexts that dictate PV uptake. This paper presents such a method, whereby a ‘Solar City Indicator’ is calculated and used to rank cities by their capacity to generate electricity from roof-mounted PV. Seven major UK cities were chosen for analysis based on available data; Dundee, Derby, Edinburgh, Glasgow, Leicester, Nottingham and Sheffield. The physical capacity of each city was established using a GIS-based methodology, exploiting digital surface models and LiDAR data, with distinct methodologies for large and small properties. Socio-economic factors (income, education, environmental consciousness, building stock and ownership) were chosen based on existing literature and correlation with current levels of PV installations. These factors were enumerated using data that was readily available across each city. Results show that Derby has the greatest potential of all the cities analysed, as it offers both good physical and socio-economic potential. In terms of physical capacity it was seen that over a 15year payback period there are two plateaus, showing a marked difference in viability between small and large PV arrays. It was found that both the physical and socio-economic potential of a city are strongly influenced by the nature of the local building stock. This study also identifies areas where policy needs to be focused in order to encourage uptake and highlights factors limiting maximum PV uptake. While this methodology has been demonstrated using UK cities, it is equally applicable to any country where city data is available.},
+  doi      = {https://doi.org/10.1016/j.solener.2013.06.027},
+  keywords = {Photovoltaics, Renewable energy, GIS, Potential quantification, Resource appraisal},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0038092X13002570},
 }
 
 @Article{Roy14perfPredPitchTurbineVar,
@@ -25894,7 +25947,7 @@ Partial least squares.},
 }
 
 @Article{Nykvist19,
-  author   = {Björn Nykvist and Frances Sprei and Måns Nilsson},
+  author   = {Bj{\:o}rn Nykvist and Frances Sprei and M{\aa}ns Nilsson},
   title    = {Assessing the progress toward lower priced long range battery electric vehicles},
   journal  = {Energy Policy},
   year     = {2019},
@@ -26148,6 +26201,21 @@ Dong17resPVdeployFrcst
 },
   file     = {:Cosguner18dynPriceDynBass.pdf:PDF},
   url      = {https://www.researchgate.net/profile/Koray_Cosguner/publication/328736172_Dynamic_Pricing_for_New_Products_Utility-Based_Generalization_of_the_Bass_Diffusion_Model/links/5be0711a92851c6b27aa085e/Dynamic-Pricing-for-New-Products-Utility-Based-Generalization-of-the-Bass-Diffusion-Model.pdf},
+}
+
+@Article{Bertotti16bassDiffusCorrInhomog,
+  author   = {M.L. Bertotti and J. Brunner and G. Modanese},
+  title    = {The Bass diffusion model on networks with correlations and inhomogeneous advertising},
+  journal  = {Chaos, Solitons \& Fractals},
+  year     = {2016},
+  volume   = {90},
+  pages    = {55 - 63},
+  issn     = {0960-0779},
+  note     = {Challenges in Data Science},
+  abstract = {The Bass model, which is an effective forecasting tool for innovation diffusion based on large collections of empirical data, assumes an homogeneous diffusion process. We introduce a network structure into this model and we investigate numerically the dynamics in the case of networks with link density P(k)=c/kγ, where k=1,…,N. The resulting curve of the total adoptions in time is qualitatively similar to the homogeneous Bass curve corresponding to a case with the same average number of connections. The peak of the adoptions, however, tends to occur earlier, particularly when γ and N are large (i.e., when there are few hubs with a large maximum number of connections). Most interestingly, the adoption curve of the hubs anticipates the total adoption curve in a predictable way, with peak times which can be, for instance when N=100, between 10% and 60% of the total adoptions peak. This may allow to monitor the hubs for forecasting purposes. We also consider the case of networks with assortative and disassortative correlations and a case of inhomogeneous advertising where the publicity terms are “targeted” on the hubs while maintaining their total cost constant.},
+  doi      = {https://doi.org/10.1016/j.chaos.2016.02.039},
+  keywords = {Innovation diffusion, Bass equation, scale-free networks, correlated networks},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0960077916300686},
 }
 
 @InBook{Dixon06bootstrpRsmpl,
@@ -27969,6 +28037,31 @@ This is Kraskov's PhD thesiz},
   url         = {http://elpub.bib.uni-wuppertal.de/servlets/DerivateServlet/Derivate-976/dc04f1.pdf},
 }
 
+@TechReport{Hoyt17usApartmentDemandFrcst,
+  author      = {Hoyt},
+  title       = {U.S. Apartment Demand – A Forward Look},
+  institution = {Hoyt Advisory Services, Dinn Focused Marketing, Inc. and Whitegate Real Estate Advisors, LLC},
+  year        = {2017},
+  abstract    = {The housing bubble fallout of 2007-2010 resulted in a paradigm shift in the U.S. among many 
+households.  Disillusioned by the bursting of the house price bubble that destroyed equity, many 
+former home owners continue to rent today.  Younger households, seeking more mobility and often 
+saddled with student loans, postpone home ownership or choose to have the flexibility of renting.  
+Demographic shifts also affect home ownership and the result has been a declining home ownership 
+rate and corresponding increase in the percentage of households that rent.  Some of this shift came 
+about in the same housing units, as owned units became part of the rental inventory and today some 
+one-third of all rental units are single-family units.  },
+  comment     = {Forecasts US rental housing demand out to 2030.  Methodology is described in Appendix 5.  May be useful for DER adoption forecasts.
+
+Also includes population growth forecast, age forecasts, and economic forecasts.
+
+Lots of maps w/ per state, even per-city data.
+
+mentions that data was aggregated or disaggregated across space but doesn't say much about, at least on p. 26
+
+Private data more accurate than census surveys; sometimes the census data is better, so they combine them.  p. 26.},
+  file        = {:Hoyt17usApartmentDemandFrcst.pdf:PDF},
+}
+
 @Article{Phan14stochOptPowFlow2stage,
   author    = {Phan, Dzung and Ghosh, Soumyadip},
   title     = {Two-stage stochastic optimization for optimal power flow under renewable generation uncertainty},
@@ -29366,7 +29459,7 @@ Could be use for estimating reserve requirements, which are a contional value at
   journal     = {ICML Time Series Workshop},
   year        = {2017},
   abstract    = {The paper presents a spatio-temporal wind speed forecasting algorithm using Deep Learning (DL)and in particular, Recurrent Neural Networks(RNNs). Motivated by recent advances in renewable energy integration and smart grids, we apply our proposed algorithm for wind speed forecasting. Renewable energy resources (wind and solar)are random in nature and, thus, their integration is facilitated with accurate short-term forecasts. In our proposed framework, we model the spatiotemporal information by a graph whose nodes are data generating entities and its edges basically model how these nodes are interacting with each other. One of the main contributions of our work is the fact that we obtain forecasts of all nodes of the graph at the same time based on one framework. Results of a case study on recorded time series data from a collection of wind mills in the north-east of the U.S. show that the proposed DL-based forecasting algorithm significantly improves the short-term forecasts compared to a set of widely-used benchmarks models.},
-  comment     = {Deep learnign spatio temporal wind power forecast, has TensorFlow code
+  comment     = {Deep learning spatio temporal wind power forecast, has TensorFlow code
 
 code
 https://github.com/amirstar/Deep-Forecast},
@@ -30468,6 +30561,32 @@ Still, this is the paper he recommended as the closest thing to automatic machin
   timestamp = {2009.01.08},
 }
 
+@Misc{Wikepedia19techAdoptLfCycl,
+  author   = {Wikipedia},
+  title    = {Technology adoption life cycle},
+  month    = apr,
+  year     = {2019},
+  abstract = {The technology adoption lifecycle is a sociological model that describes the adoption or acceptance of a new product or innovation, according to the demographic and psychological characteristics of defined adopter groups. The process of adoption over time is typically illustrated as a classical normal distribution or "bell curve". The model indicates that the first group of people to use a new product is called "innovators", followed by "early adopters". Next come the early majority and late majority, and the last group to eventually adopt a product are called "Laggards" or "phobics." For example, a phobic may only use a cloud service when it is the only remaining method of performing a required task, but the phobic may not have an in-depth technical knowledge of how to use the service.},
+  comment  = {Basic idea came from U of Iowa researchers, who split the population in to segments who were more to less eager to adopt a product.  They were able to find sociological categories for them:
+
+
+* innovators – had larger farms, were more educated, more prosperous and more risk-oriented 
+* early adopters – younger, more educated, tended to be community leaders, less prosperous 
+* early majority – more conservative but open to new ideas, active in community and influence to neighbours 
+* late majority – older, less educated, fairly conservative and less socially active 
+* laggards – very conservative, had small farms and capital, oldest and least educated
+
+Organized in counts of adoption vs. time, the approximated this as a normal density.  Integrate it to get total adoption and you get a normal cdf.
+
+Advancements on this:
+* discontinous adoption
+* s-curve instead of normal
+* disruption
+* network graph of neighbors/friends: more on close edges ==> more likelly to adopt},
+  file     = {:Wikepedia19techAdoptLfCycl.pdf:PDF},
+  url      = {https://en.wikipedia.org/wiki/Technology_adoption_life_cycle},
+}
+
 @InProceedings{Hering08spaceTimeWindFrcst,
   author    = {Amanda S. Hering and Marc G. Genton},
   title     = {Powering Up with Space-Time Wind Forecasting},
@@ -30571,6 +30690,34 @@ E-Mail: scott.otterson\@fraunhofer.iwes.de},
   groups       = {Read},
   owner        = {scot},
   timestamp    = {2011.06.08},
+}
+
+@TechReport{Treyz07housingPriceElasticityFrcst,
+  author      = {Frederick Treyz and George Treyz and Nicolas Mata},
+  title       = {Predicting Housing Price Changes in States and MSAs Using Area Specific Price Elasticities},
+  institution = {REMI},
+  year        = {2007},
+  abstract    = {The three most important aspects of understanding housing markets are: Location, 
+location, and location. As housing markets across the U.S. decline, state and local 
+differences in housing price responses are just as evident as during the boom. These 
+differences have wide-ranging implications in terms of regional economic growth and 
+responses to changes in policies. 
+
+Areas with relatively constrained land available for new development experience large 
+fluctuations in housing prices in response to changing income and population pressures. 
+Regions with more development potential can add or lose population and income with 
+relatively modest housing price responses. This means that states with relatively high 
+housing price responses tend to see economic growth mitigated as the cost of living 
+increases, reducing the willingness of people to live in the state. 
+
+This paper presents new state and MSA-specific housing price elasticities in the REMI 
+Policy Insight Version 9.5 model. In section II, we discuss state and MSA differences in 
+housing price changes, and present basic data. Section III shows the housing price 
+equations, and section IV shows the estimation results. Section V presents REMI Policy 
+Insight simulation results. },
+  comment     = {Froecasts area-specific housing prices out to 2050. Explains price sensitivity regression method and a lot of other stuff.  Price sensitivty inputs might help might help with adoption probability estimation.},
+  file        = {:Treyz07housingPriceElasticityFrcst.pdf:PDF},
+  url         = {https://www.remi.com/topics-and-studies/predicting-housing-price-changes-in-states-and-msas-using-area-specific-price-elasticities/},
 }
 
 @Article{Chen01decompBasisPurst,
@@ -30810,6 +30957,22 @@ Index Terms -- wind power, probabilistic forecasting, price forecasting, electri
   owner     = {sotterson},
   timestamp = {2016.11.18},
   url       = {http://windintegrationworkshop.org/vienna2016},
+}
+
+@Article{Lengyel19geoCmplxDfsnInnov,
+  author      = {Balázs Lengyel and Riccardo Di Clemente and János Kertész and Marta C. González},
+  title       = {The role of geography in the complex diffusion of innovations},
+  journal     = {arXiv},
+  year        = {2019},
+  number      = {arXiv:1804.01349 [physics.soc-ph]},
+  month       = feb,
+  abstract    = {The urban-rural divide is increasing in modern societies and is influencing economic and social inequality, and political radicalization. These observed trends are deeply rooted in the spatial patterns of society, and require geographical extensions in network models of social influence. improved understanding of the ways in which new technologies and new ideas diffuse across locations can provide us with new insights into the spread of information, technological progress and economic development. In this work, we uncover the role of geography in the spatial diffusion of innovations via a unique dataset from iWiW, which is an online social network (OSN) in Hungary. We analyze its entire life cycle from 2002 to 2012, reaching up to 300 million friendships at the peak of its popularity and the subsequent disappearance after its failed competition with international OSN platforms. By applying a complex diffusion model on the empirical spatial social network, we observe that the connections of individuals with similar tendency to adopt, or assortative mixing, is crucial in spatial spreading. However, predicting the likelihood of adoption is the aim of diffusion models and a priori labeling of individuals in these models would be a paradox. Alternatively, we reveal the scaling laws in the number of innovators and early adopters in towns as a function of their population and gravity laws on the distance of ties. These empirical features need to be included in models of complex contagion.},
+  date        = {2018-04-04},
+  eprint      = {http://arxiv.org/abs/1804.01349v2},
+  eprintclass = {physics.soc-ph},
+  eprinttype  = {arXiv},
+  file        = {:http\://arxiv.org/pdf/1804.01349v2:PDF;:Lengyel19geoCmplxDfsnInnov.pdf:PDF},
+  keywords    = {physics.soc-ph, cs.CY, cs.SI},
 }
 
 @InProceedings{Siefert14probWindFrcstCOSMODE_EPS,
@@ -34050,6 +34213,22 @@ This is a Fed Reserve report that was also publshed as an article in Oh15mdlDepH
   timestamp   = {2016.12.17},
 }
 
+@Article{Caird08enrgyEffAdoptUK,
+  author    = {Caird, Sally and Roy, Robin and Herring, Horace},
+  title     = {Improving the energy performance of UK households: Results from surveys of consumer adoption and use of low-and zero-carbon technologies},
+  journal   = {Energy Efficiency},
+  year      = {2008},
+  volume    = {1},
+  number    = {2},
+  pages     = {149},
+  abstract  = {This paper presents results from a UK Open University project which surveyed consumers’ reasons for adoption, and non-adoption, of energy efficiency measures and renewable energy systems—collectively called low- and zero-carbon technologies—and their experiences of using these technologies. Data were gathered during 2006 via an online questionnaire with nearly 400 responses, plus 111 in-depth telephone interviews. The respondents were mainly environmentally concerned, ‘green’ consumers and therefore these are purposive rather than representative surveys. The paper outlines results for four energy efficiency measures (loft insulation, condensing boilers, heating controls and energy-efficient lighting) and four household renewables (solar thermal water heating, solar photovoltaics, micro-wind turbines and wood-burning stoves). These green consumers typically adopted these technologies to save energy, money and/or the environment, which many considered they achieved despite rebound effects. The reasons for considering but rejecting these technologies include the familiar price barriers, but there were also other obstacles that varied according to the technology concerned. Nearly a third of the surveyed consumers had adopted household renewables, over half of which were wood stoves and 10\% solar thermal water heating systems. Most adopters of renewables had previously installed several energy efficiency measures, but only a fifth of those who seriously considered renewables actually installed a system. This suggests sell energy efficiency first, then renewables. There seems to be considerable interest in household renewables in the UK, especially among older, middle-class green consumers, but so far only relatively few pioneers have managed to overcome the barriers to adoption.
+Keywords
+Consumers Surveys Energy efficiency Renewable energy Low- and zero-carbon technologies Policies User-centred design improvements },
+  file      = {:Taherdoost18reviewTechAdopt.pdf:PDF},
+  publisher = {Springer},
+  url       = {https://link.springer.com/article/10.1007%2Fs12053-008-9013-y#citeas},
+}
+
 @InProceedings{Lai05NewCmplxStepDiff,
   author    = {Lai, Kok-Lam and Crassidis, John L and Cheng, Yang and Kim, Jongrae},
   title     = {New complex-step derivative approximations with application to second-order kalman filtering},
@@ -35079,6 +35258,22 @@ Forecast combination (ensembles)
   owner                = {scot},
   posted-at            = {2009-01-29 11:08:33},
   timestamp            = {2010.09.09},
+}
+
+@Article{Madadi17diffFrcstBrwnSpln,
+  author    = {Najmeh Madadi and Azanizawati Ma'aram and Kuan Yew Wong},
+  title     = {A simulation-based product diffusion forecasting method using geometric Brownian motion and spline interpolation},
+  journal   = {Cogent Business {\&} Management},
+  year      = {2017},
+  volume    = {4},
+  number    = {1},
+  month     = {mar},
+  abstract  = {This study addresses the problem of stochasticity in forecasting diffusion of a new product with scarce historical data. Demand uncertainties are calibrated using a geometric Brownian motion (GBM) process. The spline interpolation (SI) method and curve fitting process have been utilized to obtain parameters of the constructed GBM-based differential equation over the product’s life cycle (PLC). The constructed stochastic differential equation is coded as the forecast model and is simulated using MATLAB. The results are several sample demand paths generated from simulation of the forecast model. To evaluate the forecasting performance of the proposed method it is compared with Holt’s model, using actual data from the semiconductor industry. The comparison results confirm the applicability of the proposed method in the semiconductor industry. The method can be helpful for policy-makers who require the prediction of uncertain demand over a time horizon, such as decisions associated with aggregate production planning, capacity planning, and supply chain network design. Especially for the semiconductor industry with intensive capital investment the proposed approach can be useful for making decisions associated with capacity allocation and expansion.
+Keywords: demand forecast, stochastic differential equation, simulation, uncertainties, GBM, interpolation},
+  doi       = {10.1080/23311975.2017.1300992},
+  editor    = {Joseph Amankwah-Amoah},
+  file      = {:C\:/Users/scotto/OneDrive - Clean Power Research/ref/papers/Madadi17diffFrcstBrw.pdf:PDF},
+  publisher = {Informa {UK} Limited},
 }
 
 @Article{Bentzien13qntScrDecomp,
@@ -36804,6 +36999,21 @@ we develop a procedure which detects damages early in the sensor data stream.},
   url       = {http://garcke.ins.uni-bonn.de/research/pub.php?list=garcke},
 }
 
+@Article{Islam13pvAdoptTimeAttributes,
+  author   = {Towhidul Islam and Nigel Meade},
+  title    = {The impact of attribute preferences on adoption timing: The case of photo-voltaic (PV) solar cells for household electricity generation},
+  journal  = {Energy Policy},
+  year     = {2013},
+  volume   = {55},
+  pages    = {521 - 530},
+  issn     = {0301-4215},
+  note     = {Special section: Long Run Transitions to Sustainable Economic Structures in the European Union and Beyond},
+  abstract = {We are concerned with micro-generation, individual households generating electricity using a renewable technology. We focus on modeling the adoption probability of photo-voltaic solar panels by households. Using data from Ontario, Canada where a generous feed-in-tariff is available to households generating electricity from solar panels, we measure household level preferences for panels and use these preferences along with household characteristics to predict adoption time intentions. We use discrete choice experiments to measure household level preferences and establish a causal link between the attributes of the technology and adoption time intentions using discrete time survival mixture analysis. Significant preferences included lower cost, greater energy savings and lower fossil fuel inflation. The conditional (hazard) probability of adoption at a particular time given no previous adoption showed that the attribute preferences had intuitively reasonable effects. The hazard probabilities allow us to compute the cumulative probability of adoption over a 10-year period per household. Technology awareness has a significant effect on the adoption probability, reinforcing the need for effective education. Our approach indicates the level of heterogeneity in preferences, particularly high for investment criteria and CO2 emissions. These findings suggest that education campaigns should explain more about investment criteria, feed-in tariffs and environmental effects.},
+  doi      = {https://doi.org/10.1016/j.enpol.2012.12.041},
+  keywords = {Micro-generation technology, Attribute preferences, Adoption timing},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0301421512010944},
+}
+
 @InProceedings{Brochero13ensSelEvoMultipOpt,
   author    = {Brochero, Darwin and Gagn{\'e}, Christian and Anctil, Fran{\c{c}}ois},
   title     = {Evolutionary Multiobjective Optimization for Selecting Members of an Ensemble Streamflow Forecasting Model},
@@ -38107,6 +38317,21 @@ Or for QR boosting in Fenske11*},
   owner     = {sotterson},
   timestamp = {2014.11.04},
   url       = {http://papers.nips.cc/paper/4221-additive-gaussian-processes},
+}
+
+@Article{Bertotti16innovDiffusCorrNtwk,
+  author   = {M.L. Bertotti and J. Brunner and G. Modanese},
+  title    = {Innovation diffusion equations on correlated scale-free networks},
+  journal  = {Physics Letters A},
+  year     = {2016},
+  volume   = {380},
+  number   = {33},
+  pages    = {2475 - 2479},
+  issn     = {0375-9601},
+  abstract = {We introduce a heterogeneous network structure into the Bass diffusion model, in order to study the diffusion times of innovation or information in networks with a scale-free structure, typical of regions where diffusion is sensitive to geographic and logistic influences (like for instance Alpine regions). We consider both the diffusion peak times of the total population and of the link classes. In the familiar trickle-down processes the adoption curve of the hubs is found to anticipate the total adoption in a predictable way. In a major departure from the standard model, we model a trickle-up process by introducing heterogeneous publicity coefficients (which can also be negative for the hubs, thus turning them into stiflers) and a stochastic term which represents the erratic generation of innovation at the periphery of the network. The results confirm the robustness of the Bass model and expand considerably its range of applicability.},
+  doi      = {https://doi.org/10.1016/j.physleta.2016.06.003},
+  keywords = {Scale-free networks, Diffusion equations, Bass model, Stochastic equations},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0375960116303085},
 }
 
 @Article{Arbenz12fastCompFuncRVsGAEP,
@@ -42469,6 +42694,32 @@ is this better or worse than the "DFT from times where there is data" trick in e
   timestamp = {2012.12.05},
 }
 
+@Article{Grasman19stochBassMdl,
+  author    = {Grasman, Johan and Kornelis, Marcel},
+  title     = {Forecasting product sales with a stochastic Bass model},
+  journal   = {Journal of Mathematics in Industry},
+  year      = {2019},
+  volume    = {9},
+  number    = {1},
+  pages     = {2},
+  abstract  = {With the Bass model and data of previous sales a point estimate off uture sales can be
+madeforthepurposeofstockmanagement.Inordertoobtaininformationaboutthe
+accuracyofthatestimateaconfidenceintervalcanbeofuse.Inthisstudysuchan
+intervalisconstructedfromaBassmodelextendedwithanoiseterm.Thesizeofthe
+noiseisassumedtobeproportionalwiththeyearlysales.Itisalsoassumedthatthe
+deviationfromthedeterministicsolutionissufficientlysmalltomakeasmallnoise
+approximation.Thisperturbationtakestheformofatimedependent
+Ornstein–Uhlenbeckprocess.Forthevarianceoftheperturbationanexactexpression
+canbegivenwhichisneededinordertoobtainconfidenceintervals.
+Keywords: Bassmodel;Ornstein–Uhlenbeckprocess;Sensitivityofparameterto
+data;Confidencedomain
+
+},
+  file      = {:Grasman19stochBassMdl.pdf:PDF},
+  publisher = {Springer},
+  url       = {https://link.springer.com/article/10.1186/s13362-019-0059-6},
+}
+
 @Article{Tascikaraoglu14windFrstCombo,
   author    = {Tascikaraoglu, A and Uzunoglu, M},
   title     = {A review of combined approaches for prediction of short-term wind speed and power},
@@ -46473,6 +46724,16 @@ NOTE: was copied from speakerclust.bib},
   timestamp = {2008.08.29},
 }
 
+@TechReport{Mohrlen19selectRESfrcstRecmnd,
+  author      = {Corinna M{\:o}hrlen and John Zack and Jakob W. Messner and Jethro Browell and Craig Collier and Aidan Tuohy and Justin Sharp and Gregor Giebel},
+  title       = {Recommended practices for selecting renewable power forecasting solutions},
+  institution = {International Energy Agency},
+  year        = {2019},
+  note        = {Prepared as part of the IEA Wind Task 36, WP 2.1},
+  comment     = {How to pick an RES forecast.  Gregor emailed it to me.},
+  file        = {:Mohrlen19selectRESfrcstRecmnd.pdf:PDF},
+}
+
 @Article{Molina11WindFarmTechnical,
   author    = {Molina, MG and Alvarez, JG},
   title     = {Wind Farm-Technical Regulations, Potential Estimation and Siting Assessment},
@@ -48446,6 +48707,34 @@ The Basic Kalman Filter Idea: Predictor-Corrector
   owner     = {sotterson},
   timestamp = {2017.04.25},
   url       = {http://weather.ou.edu/~scavallo/classes/metr_5004/f2013/lectures/NWP_LecturesFall2013.pdf},
+}
+
+@Misc{Wikipedia19bassDiffus,
+  author  = {Wikipedia},
+  title   = {Bass diffusion model},
+  month   = apr,
+  year    = {2019},
+  comment = {A differential equation mdoel (Basic is Ricati w/ const. coeffs), assuming that there are two kinds of adopters: innovators and imitators (coeffs p and q)
+
+- simplifies this to two types: innovators and imitators
+- shows eqs. but doesn't explain
+- get an S-curve (cdf) w/ pre-defined max market, m
+- it fits well, w/ restricted range of innov. and imitation params
+- more pessimistic than X and Y
+- Super cited (>5K cites), recently used for spread of internet
+
+Extensions
+- include price: Generalized BDM
+- factor in "brand loyalty" (sucessive generations: is that what it is?)
+
+Relationship to other S-curves (their cdf?)
+- q=0: is exponential distribution
+- p=0: logistic distribution
+
+
+},
+  file    = {:Wikipedia19bassDiffus.pdf:PDF},
+  url     = {https://en.wikipedia.org/wiki/Bass_diffusion_model},
 }
 
 @Article{Williams92Simplestatisticalgradient,

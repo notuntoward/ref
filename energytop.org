@@ -1366,8 +1366,7 @@
 ******* [[file:energy.bib::Bessa10infoWindPow][Bessa et al. 2010: Information]]
 ******* [[stepwisefit.m]] let's you define your own cost function
 ******* [[file:energy.bib::Eckersley18utilFuncImpossUncert][Eckersley 2018: Impossibility Uncertainty Theorems Util Func]] (for UI choices?)
-***** Gaussianization
-      <<Gaussianization>>
+***** <<Gaussianization>>
 
       How to transform a collection of RV's into a multivariate, jointly
       Gaussian distribution.  The transform must be multivariate, which is
@@ -4304,7 +4303,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
           and only need cos term in fourier kernel expansion
 ********* Penalized, periodic splines [[file:energy.bib::Eilers10SplnsKntsPnlties][Eilers & Marx 2010: Splines]]
 ********* R [[http://ugrad.stat.ubc.ca/R/library/fda/html/create.bspline.basis.html][create.bspline.bassis{fda}]] says Fourier bases are better for periodic splines
-
+ 
           But how penalize or smooth them?  [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]] doesn't
           even try.
 
@@ -5351,6 +5350,7 @@ sera
 ***** [[file:energy.bib::Cook10distFromQuant][Cook 2010: Determining]] distributions from quantiles
 ***** [[cite:Zhang16detProbIntrvVari][Zhang et al. 2016: Deterministic]] interval, variational. Uses ELM
 ***** [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]
+***** [[file:energy.bib::Tayman11popFrcstAccRgrssn][Tayman et al. 2011: Evaluating pop frcst w/ regression model]]
 ***** <<Autoregressive Quantile Regression>>
 
       Lots of algorithms, maybe good for Henry Martin's limit order book models
@@ -6624,6 +6624,7 @@ variables will be preferred, when possible.
 ******* Also: [[Multidimensional CRPS]]
 ***** <<Forecast Expectiles>>
 ******* Expectile vs. quantile score: [[cite:Ehm16quantileExpectileScrFrcst][Ehm et al. 2016: Quantile, Expectile Score Forecasts]]
+***** [[file:energy.bib::Mohrlen19selectRESfrcstRecmnd][M\:ohrlen et al. 2019: Recommended Prctcs RES frcst select]]
 ***** [[cite:Bessa12adaptQuantCopulaFrcst][Bessa et al. 2012: Time Adaptive Quantile Copula]]
 ***** [[file:energytop.org::*Classification%20Metrics%20under%20Class%20Imbalance][Classification Metrics under Class Imbalance]]
 ***** [[cite:Chai14rmseOrMae][Chai & Draxler 2014: Root RMSE MAE]]: when RMSE is/isn't good
@@ -8482,6 +8483,7 @@ Scott
 ********* [[file:energy.bib::Lenzi16spatTempWndProbFrcst][Lenzi et al. 2016: Spatial]] temporal, probabilistic latent variables
 ********* [[cite:Ng10kernCopulaProcThesis][Ng 2010: Kernel Copula Processes: space/time/Stoch DiffyQ]]
 ********* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012: Innovation diffusion SDEs]] 
+********* [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]] (I /think/ it's an SDE)
 ********* see also: [[Quantile Differential Equations]] (related to bivariate copulas)
 ********* see also: SDE's in Optimization
 ********* see also: IRPWIND WP82.3 Final Report, which has Peder Bacher's SDEs
@@ -8934,8 +8936,7 @@ sera
 ***** see: [[Clustering%20of%20regression%20models][Clustering of regression models]]
 ***** see: [[Portfolio Optimization and Forecasting]]
 ***** see: [[Aggregation vs. Forecasting Accuracy]]
-*** Effect of precipitation
-    <<Effect of precipitation>>
+*** <<Effect of precipitation>>
 ***** rain
 ******* rain reduces wind speed
         from christof:
@@ -8973,8 +8974,7 @@ sera
 
 ***** probabilistic: Dist. regrssn instead of QR [[file:energy.bib::Koenker13DistributionalvsQuantile][Koenker et al. 2013: Distributional]]
 
-*** Wind power forecasting challenges, July 2015
-    <<Wind power forecasting challenges, July 2015>>
+*** <<Wind power forecasting challenges, July 2015>>
 
     For Patrick Hochloff's Ecofys Grid Optimization Task 1 Report
 
@@ -9060,6 +9060,9 @@ al. 2012: Current]])
 ***** [[file:energy.bib::Bristol09swingDoorTrend][Bristol 1990: Swinging]] Door Trend (orig paper)
 ***** [[file:energy.bib::UKONS08holtWintersARIMAreg][National 2008: From Holt Winters ARIMA Modelling]] : trend + multip/add seasonal
 
+*** also [[Technology Adoption Rates]]
+*** also [[Real Estate Forecasts]]
+*** also [[Economic Forecasts]]
 * <<Missing Features>>
 *** Probably OK to select features w/ spline fill-in?
 *** Train coeffs w/ something fancier?
@@ -10472,8 +10475,6 @@ Scott
 ***** See also: [[Regimes and Ramps]]
 ***** TODO See also: [[Ramp Forecasting]]
 ***** See also: [[Trend Detection]]
-*** [[file:energy.bib::Delucchi11allRenewWorld][Delucchi 2011: Wind Water Solar Power World]]
-*** [[file:energy.bib::Sharman05whyWindDK][Sharman 2005: Why Denmark]] Wind
 *** [[file:energy.bib::Kristov14elecDS021st][Kristov & Martini 2014: Century Electric Distribution System Operations]] (CAISO net demand DSO)
 *** EU System Operation Guidelines
 ***** Preliminary Version, Aug 16 2017, available [[https://ec.europa.eu/energy/sites/ener/files/documents/SystemOperationGuideline%2520final%2528provisional%252904052016.pdf][here]]
@@ -10802,6 +10803,109 @@ Erika
 ******* In Matlab:
 ********* nice writeup: [[http://www.mathworks.de/company/newsletters/news_notes/win03/monte_carlo.html][Monte-Carlo Simulation in MATLAB Using Copulas]]
 ********* the statistics toolbox has several copula functions
+*** <<Predictive Maintenance>>
+***** <<Overviews of Predictive Maintenance>>
+******* [[cite:Microsoft16predMaintPlaybook][Microsoft 2016: Cortana Intelligence Solution]] pred. maint playbook
+******* [[cite:Gowdar16reasonWindTurbFail][Gowdar & Gowda 2016: Reasons for wind turb fail]]
+******* [[cite:GE16predixArchSrvcTechNote][GE 2016: Predix Architecture Services]]
+******* [[file:energy.bib::Wegerich13predCondMonSmartSigPtnt][Wegerich et al. 2013: smartsignal cond mon patent]] 
+******* [[file:energy.bib::Brummel16monEnrgProgSiePtnt][Brummel et al. 2016: Siemens cond mon energy patent]] 
+******* [[cite:Juricic06faultDetGaussProc][Juricic & Kocijan 2006: Fault det. Gaussian Proc. Siemens idea.]]
+******* [[cite:Lang08neuralCloundMon][Lang et al. 2008: Neural Clouds Monitor (Siemens?)]]
+******* [[cite:TautzWeinert16scadaWindTurbCondMon][Tautz-Weinert & Watson 2016: Using SCADA Data wind turbine]]
+******* [[file:energy.bib::Mihnev16anomDetParamSysPtnt][Mihnev et al. 2016: Anom Det in Param Sys (like SPRT?)]] 
+******* [[https://onedrive.live.com/edit.aspx/work/IWES?cid=4bbd96b3698748f8&id=documents&wd=target%2528Tutorials.one%257C93389E1B-FCE1-4F63-9068-1B49828D94D3%252FPredictive%2520Maintenance%2520with%2520Matlab%257CF90A03D9-B2A1-49F5-97FD-A5E26BFE11C0%252F%2529][Predictive Maintenance with Matlab (my OneNote notes on tutorial)]]
+***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (discusses ROC stats, learning)
+***** also [[Class Imbalance Handling]]
+***** also [[Fault Prediction]]
+***** also [[State Change Detection][State Change Detection]] (for flaw detection)
+*** TODO <<Smart Grid>> (PUT THiS UNDER OPTIMIZATION or merge with other related things?)
+***** Grid semantic web
+******* [[http://cordis.europa.eu/ictresults/index.cfm/section/news/tpl/article/id/90399][Semantic web promises a smarter electricity grid]]
+***** Needs [[http://www.netl.doe.gov/moderngrid/docs/Improved%20Interfaces%20and%20Decision%20Support_FINAL_v2.0.pdf][AI based data reduction]] for operator-comprehensible displays (p. B5-9)
+***** Grid optimization: [[http://www.otii.com/pdf/Optimum-BT-redist060508_2.pdf][Optimal’s AEMPFAST software vaults past ‘smart grid’ -- to genius]]
+******* describes operators in the loop -- can't understand all the variables
+******* [[http://www.otii.com/index.htm][Optimal Technologies]] makes nonlinear optimizer, better than simulated annealing
+********* does [[http://www.otii.com/aempfast.htm][multiple objective]] optimization
+******* [[Could do submodular optimization]]
+******* [[http://www.oe.energy.gov/DocumentsandMedia/Smart_Grid_Eric_Lightner_Presentation_05072008.pdf][Self-healing and resilience from attacks]]
+******* [[file:energy.bib::Ma09compIntSmartGrid][Ma et al. 2009]] (computational Int. in smart grid)
+******* [[cite:Haibach17predMaintWndSemiAnomDet][Haibach & Treiber 2017: Predictive Maint. Offshore Windparks]]
+******* [[cite:Deesko15digFingerPrintFaultSlides][Deesko & Bärmann 2015: Digital Fingerprint Equipment Faults (STEAG)]]
+* Planning
+*** <<Technology Adoption Rates>>
+***** Tech Adoption Overviews
+******* [[file:energy.bib::Wikepedia19techAdoptLfCycl][Wikipedia 2019: Technology Adoption Lifecycle]]
+******* [[file:energy.bib::Rogers83diffusInnovBk][Rogers 1983: Diffusion of Innovation Book]]
+******* DONE [[file:energy.bib::Taherdoost18reviewTechAdopt][Taherdoost 2018 review tech accept/adopt]]
+***** Solar adoption rates
+******* [[file:energy.bib::Gagnon17netMtrAdoptPV][Gagnon et al. 2017: Impacts Changes Nevada PV Fin Adopt]]: NREL
+******* [[file:energy.bib::Dong17resPVdeployFrcst][Dong et al. 2017: Forecasting California PV Adopt]]: NREL, uses Bass, others
+******* [[file:energy.bib::Yu18deepSolarDB][Yu et al. 2018: DeepSolar Adopt]]
+******* [[https://www.evernote.com/l/AA1tIli7iahD3pWS5Dy2I_oEfuZUkGeswYs/][Energy Toolbase]]: RES simulation software company, relevant to CPR?
+******* [[file:energy.bib::Kwan12varsSpatPVus][Kwan 2012: Influence PV United States]] (and its  related papers)
+******* [[file:energy.bib::Westacott16gisPVdeployUK][Westacott & Candelise 2016: Novel GIS PV Deploy UK]]
+******* TODO [[file:energy.bib::Rai15agentEnrgyTechAdoptFactors][Rai & Robinson 2015: Agent Energy Tech Adopt Factors]]
+******* [[file:energy.bib::Gooding13cityPVinstallFactors][Gooding et al. 2013: Solar City Indicator PV install factors]]
+******* [[file:energy.bib::Islam13pvAdoptTimeAttributes][Islam & Meade 2013 PV isntall timing attribute pref]]
+******* [[file:energy.bib::Lobel11cnsmrChoiceDmdFrcstSlr][Lobel & Perakis 2011: Consumer choice model frcst solar demand]]
+******* [[file:energy.bib::Caird08enrgyEffAdoptUK][Caird et al. 2008: Improving UK energy perform adoption survey]]
+***** Electric vehicle adoption
+******* [[file:energy.bib::Moons15selfBrandPersEV][Moons & De 2015: Self Brand Personality Elec Cars]]
+***** <<Bass Innovation Diffusion Models>>
+******* DONE [[file:energy.bib::Wikipedia19bassDiffus][Wikipedia 2019: Bass Diffusion Model]]
+******* [[file:energy.bib::Bass94bassWithoutDecVars][Bass et al. 1994: Why Bass Model w/o dec vars]] (with derivations. SDE?)
+******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012: Innovation diffusion SDEs]] (could get rate of change)
+******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012 bass SDE rate of change (interscience online)]]
+******* [[file:energy.bib::][Cosguner et al. 2018: Dynamic Pricing New Products Dyn Bass]]
+******* [[file:energy.bib::Nafidi18inhomogDiffProcBassSDE][Nafidi et al. 2018 inhomog diffuse model Bass]]
+******* [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]]
+******* [[file:energy.bib::Manshadi16genBassNtwk][Manshadi & Misra 2016: Generalized Bass Model Networks]]
+******* [[file:energy.bib::Bertotti16bassDiffusCorrInhomog][Bertotti et al. 2016: Bass diffus corr inhomog advert]]
+******* [[file:energy.bib::Bertotti16innovDiffusCorrNtwk][Bertotti et al. 2016: Innovation diff corr networks]]
+***** Stochastic Adoption Forecasting
+******* TODO [[file:energy.bib::Madadi17diffFrcstBrwnSpln][Madadi et al. 2017: Diffuse Brownian spline, Small data]]
+******* [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]]
+******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012: Innovation diffusion SDEs]] (could get rate of change)
+******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012 bass SDE rate of change (interscience online)]]
+***** Tech Adoption and Space/Network
+******* [[file:energy.bib::Lengyel19geoCmplxDfsnInnov][Lengyel et al. 2019 Geography diffusion innov.]]
+******* [[file:energy.bib::Manshadi16genBassNtwk][Manshadi & Misra 2016: Generalized Bass Model Networks]]
+******* [[file:energy.bib::Bertotti16innovDiffusCorrNtwk][Bertotti et al. 2016: Innovation diff corr networks]]
+***** Agent based tech adoption
+******* TODO [[file:energy.bib::Rai15agentEnrgyTechAdoptFactors][Rai & Robinson 2015: Agent Energy Tech Adopt Factors]]
+
+***** [[file:energy.bib::Eckersley18utilFuncImpossUncert][Eckersley 2018: Impossibility Uncertainty Theorems Util Func]] (for UI choices?)
+***** also [[Technology Learning Rates]]
+***** also [[Portfolio Optimization and Forecasting]]
+***** also [[Real Estate Forecasts]]
+***** also [[Economic Forecasts]]
+***** also [[Population Forecasts]]
+*** <<Technology Learning Rates>>
+***** TODO Stat basis for learning rate: [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::Nagy13basPredTechProg][Nagy et al. 2013: Statistical]] (has confidence intervals)
+***** TODO Separate PV component learning rates: [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::][Trancik et al. 2015 Tech Improv Reinf Wind & Solar]]
+***** TODO [[file:energy.bib::Kavlak18causeCostRedPV][Kavlak et al. 2018: Evaluating cause of PV module cost red]] 
+***** TODO [[file:energy.bib::Elshurafa18lrnCrvPVbos][Elshurafa et al. 2018: Estimating PV bal of sys TV per country]] (time varying, BOS only)
+***** TODO [[file:energy.bib::Barbose18trackSunTrendInstPVprice][Barbose et al.: Tracking Sun US PV price Trends]]
+***** TODO [[file:energy.bib::Schmidt19LCOelecStrgProj][Schmidt et al. 2019: Projecting Future LCOS storage]]
+***** TODO [[file:energy.bib::Nykvist19bevPriceFrcst][Nykvist et al. 2019: Assessing BEV price forecast]]
+***** evernote [[Statistical Basis for Predicting Technological Progress][learning rate (tech)]]
+***** Also: [[Technology Adoption Rates]]
+*** Wind farm planning
+***** interconnecting wind farm clusters
+******* [[file:energy.bib::Archer07windBaseloadInterConn][Archer & Jacobson 2007: Supplying Baseload Power]]
+******* wakes
+********* [[file:energy.bib::Barthelmie07wakeModelMeasLargeWind][Barthelmie et al. 2007: Modelling]]
+***** Transmission studies
+******* [[file:energy.bib::Singh14incWindDEtrans][Singh et al. 2014: Increasing On-Shore Wind]]: data-sparse curtailment study, maybe useful for upscaling?
+*****  <<Portfolio Analysis>>
+******* [[file:energy.bib::Stephen13windSpdDirEMmix][Stephen et al. 2013: Statistical]] char wind/dir EM mixture
+******* [[file:energy.bib::Hart11genProfLrgVarRen][Hart & Jacobson 2011: Monte Carlo]] california generation portfolio
+******* [[file:energy.bib::Hart12co2reduceRenew][Hart & Jacobson 2012]]: The carbon abatement potential of high penetration intermittent renewables
+******* [[cite:Kaut14copulaMultiVarHeurist][Kaut 2014]] copula heuristic scen gen, multivar
+******* [[cite:Zivot13portTheoryMatrixEcon424][Zivot 2013: Portfolio Theory Matrix Algebra]]
+******* See also [[Portfolio Optimization and Forecasting]]
+***** [[file:energy.bib::Nikolakakis11optWindSolMix][Nikolakakis & Fthenakis 2011, Opt wind/PV mix NY State]]
 *** Wildlife/Land Impacts
 ***** Bats
 ******* [[http://www.sciam.com/article.cfm%3Fid%3Dwind-turbines-kill-bats][Pressure drop kills bats]]
@@ -10858,61 +10962,21 @@ Erika
       http://www.nrdc.org/land/sitingrenewables/default.asp
 ***** [[https://www.evernote.com/edit/40a1ace6-a520-4097-b492-5b813130455f#n%3D40a1ace6-a520-4097-b492-5b813130455f][Land-Use Requirements of  Modern Wind Power Plants  in the United States]]
       80% of US wind farms use less than 0.4 hectare/MW for "direct use"
-*** <<Predictive Maintenance>>
-***** <<Overviews of Predictive Maintenance>>
-******* [[cite:Microsoft16predMaintPlaybook][Microsoft 2016: Cortana Intelligence Solution]] pred. maint playbook
-******* [[cite:Gowdar16reasonWindTurbFail][Gowdar & Gowda 2016: Reasons for wind turb fail]]
-******* [[cite:GE16predixArchSrvcTechNote][GE 2016: Predix Architecture Services]]
-******* [[file:energy.bib::Wegerich13predCondMonSmartSigPtnt][Wegerich et al. 2013: smartsignal cond mon patent]] 
-******* [[file:energy.bib::Brummel16monEnrgProgSiePtnt][Brummel et al. 2016: Siemens cond mon energy patent]] 
-******* [[cite:Juricic06faultDetGaussProc][Juricic & Kocijan 2006: Fault det. Gaussian Proc. Siemens idea.]]
-******* [[cite:Lang08neuralCloundMon][Lang et al. 2008: Neural Clouds Monitor (Siemens?)]]
-******* [[cite:TautzWeinert16scadaWindTurbCondMon][Tautz-Weinert & Watson 2016: Using SCADA Data wind turbine]]
-******* [[file:energy.bib::Mihnev16anomDetParamSysPtnt][Mihnev et al. 2016: Anom Det in Param Sys (like SPRT?)]] 
-******* [[https://onedrive.live.com/edit.aspx/work/IWES?cid=4bbd96b3698748f8&id=documents&wd=target%2528Tutorials.one%257C93389E1B-FCE1-4F63-9068-1B49828D94D3%252FPredictive%2520Maintenance%2520with%2520Matlab%257CF90A03D9-B2A1-49F5-97FD-A5E26BFE11C0%252F%2529][Predictive Maintenance with Matlab (my OneNote notes on tutorial)]]
-***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (discusses ROC stats, learning)
-***** also [[Class Imbalance Handling]]
-***** also [[Fault Prediction]]
-***** also [[State Change Detection][State Change Detection]] (for flaw detection)
-*** TODO <<Smart Grid>> (PUT THiS UNDER OPTIMIZATION or merge with other related things?)
-***** Grid semantic web
-******* [[http://cordis.europa.eu/ictresults/index.cfm/section/news/tpl/article/id/90399][Semantic web promises a smarter electricity grid]]
-***** Needs [[http://www.netl.doe.gov/moderngrid/docs/Improved%20Interfaces%20and%20Decision%20Support_FINAL_v2.0.pdf][AI based data reduction]] for operator-comprehensible displays (p. B5-9)
-***** Grid optimization: [[http://www.otii.com/pdf/Optimum-BT-redist060508_2.pdf][Optimal’s AEMPFAST software vaults past ‘smart grid’ -- to genius]]
-******* describes operators in the loop -- can't understand all the variables
-******* [[http://www.otii.com/index.htm][Optimal Technologies]] makes nonlinear optimizer, better than simulated annealing
-********* does [[http://www.otii.com/aempfast.htm][multiple objective]] optimization
-******* [[Could do submodular optimization]]
-******* [[http://www.oe.energy.gov/DocumentsandMedia/Smart_Grid_Eric_Lightner_Presentation_05072008.pdf][Self-healing and resilience from attacks]]
-******* [[file:energy.bib::Ma09compIntSmartGrid][Ma et al. 2009]] (computational Int. in smart grid)
-******* [[cite:Haibach17predMaintWndSemiAnomDet][Haibach & Treiber 2017: Predictive Maint. Offshore Windparks]]
-******* [[cite:Deesko15digFingerPrintFaultSlides][Deesko & Bärmann 2015: Digital Fingerprint Equipment Faults (STEAG)]]
-*** <<Technology Adoption Rates>>
-***** Solar adoption rates
-******* [[file:energy.bib::][Gagnon et al. 2017: Impacts Changes Nevada PV Fin Adopt]]: NREL
-******* [[file:energy.bib::Dong17resPVdeployFrcst][Dong et al. 2017: Forecasting California PV Adopt]]: NREL, uses Bass, others
-******* [[file:energy.bib::Yu18deepSolarDB][Yu et al. 2018: DeepSolar Adopt]]
-******* [[https://www.evernote.com/l/AA1tIli7iahD3pWS5Dy2I_oEfuZUkGeswYs/][Energy Toolbase]]: RES simulation software company, relevant to CPR?
-******* [[file:energy.bib::Kwan12varsSpatPVus][Kwan 2012: Influence PV United States]] (and its  related papers)
-***** [[file:energy.bib::Rogers83diffusInnovBk][Rogers 1983: Diffusion of Innovation Book]]
-***** <<Bass Innovation Diffusion Models>>
-******* [[file:energy.bib::Bass94bassWithoutDecVars][Bass et al. 1994: Why Bass Model w/o dec vars]] (with derivations. SDE?)
-******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012: Innovation diffusion SDEs]] (could get rate of change)
-******* [[file:energy.bib::][Cosguner et al. 2018: Dynamic Pricing New Products Dyn Bass]]
-******* [[file:energy.bib::Nafidi18inhomogDiffProcBassSDE][Nafidi et al. 2018 inhomog diffuse model Bass]]
-***** [[file:energy.bib::Eckersley18utilFuncImpossUncert][Eckersley 2018: Impossibility Uncertainty Theorems Util Func]] (for UI choices?)
-***** Also: [[Technology Learning Rates]]
-***** Also: [[Portfolio Optimization and Forecasting]]
-*** <<Technology Learning Rates>>
-***** TODO Stat basis for learning rate: [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::Nagy13basPredTechProg][Nagy et al. 2013: Statistical]] (has confidence intervals)
-***** TODO Separate PV component learning rates: [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::][Trancik et al. 2015 Tech Improv Reinf Wind & Solar]]
-***** TODO [[file:energy.bib::Kavlak18causeCostRedPV][Kavlak et al. 2018: Evaluating cause of PV module cost red]] 
-***** TODO [[file:energy.bib::Elshurafa18lrnCrvPVbos][Elshurafa et al. 2018: Estimating PV bal of sys TV per country]] (time varying, BOS only)
-***** TODO [[file:energy.bib::Barbose18trackSunTrendInstPVprice][Barbose et al.: Tracking Sun US PV price Trends]]
-***** TODO [[file:energy.bib::Schmidt19LCOelecStrgProj][Schmidt et al. 2019: Projecting Future LCOS storage]]
-***** TODO [[file:energy.bib::Nykvist19bevPriceFrcst][Nykvist et al. 2019: Assessing BEV price forecast]]
-***** evernote [[Statistical Basis for Predicting Technological Progress][learning rate (tech)]]
-** *** Also: [[Technology Adoption Rates]]
+
+*** [[file:energy.bib::Delucchi11allRenewWorld][Delucchi 2011: Wind Water Solar Power World]]
+*** [[file:energy.bib::Sharman05whyWindDK][Sharman 2005: Why Denmark]] Wind
+
+*** <<Real Estate Forecasts>>
+    Maybe useful for grid planning, especially [[Technology Adoption Rates]]
+***** [[file:energy.bib::Hoyt17usApartmentDemandFrcst][Hoyt 2017: US Apartment Demand Forecast]]
+***** [[file:energy.bib::Treyz07housingPriceElasticityFrcst][Treyz et al. 2007: Predicting Housing Price, elasticity]] to 2050 
+*** <<Economic Forecasts>>
+    Maybe useful for grid planning, especially [[Technology Adoption Rates]]
+***** [[https://www.evernote.com/l/AA2llGPZ2zlMUbxX8etpyQzG9_2NrX7q4iQ/][GDP predictions are reliable only in the short term]] (worse in downturns)
+***** [[file:energy.bib::Hoyt17usApartmentDemandFrcst][Hoyt 2017: US Apartment Demand Forecast]] (mentions econ forecasts)
+*** <<Population Forecasts>>
+***** [[file:energy.bib::Tayman11popFrcstAccRgrssn][Tayman et al. 2011: Evaluating pop frcst w/ regression model]]
+***** [[file:energy.bib::Hoyt17usApartmentDemandFrcst][Hoyt 2017: US Apartment Demand Forecast]] (mentions pop forecasts)
 * <<Random Variable Generation>>
 *** [[cite:Hardin13genRealisticCorrMat][Hardin et al. 2013 Gen Realistic Random Corr Matrix has Rcode]]
 *** [[http://math.stackexchange.com/questions/357980/how-to-generate-random-symmetric-positive-definite-matrices-using-matlab][How to generate random symmetric positive definite matrices using MATLAB?]]
@@ -10927,21 +10991,6 @@ Erika
 *** [[Stephan: concept building process]]
 *** Also: [[Dimension reduction]]
 *** [[Autoencoder Time Series Clustering]]
-* Wind farm planning
-*** interconnecting wind farm clusters
-***** [[file:energy.bib::Archer07windBaseloadInterConn][Archer & Jacobson 2007: Supplying Baseload Power]]
-***** wakes
-******* [[file:energy.bib::Barthelmie07wakeModelMeasLargeWind][Barthelmie et al. 2007: Modelling]]
-*** Transmission studies
-***** [[file:energy.bib::Singh14incWindDEtrans][Singh et al. 2014: Increasing On-Shore Wind]]: data-sparse curtailment study, maybe useful for upscaling?
-***  <<Portfolio Analysis>>
-***** [[file:energy.bib::Stephen13windSpdDirEMmix][Stephen et al. 2013: Statistical]] char wind/dir EM mixture
-***** [[file:energy.bib::Hart11genProfLrgVarRen][Hart & Jacobson 2011: Monte Carlo]] california generation portfolio
-***** [[file:energy.bib::Hart12co2reduceRenew][Hart & Jacobson 2012]]: The carbon abatement potential of high penetration intermittent renewables
-***** [[cite:Kaut14copulaMultiVarHeurist][Kaut 2014]] copula heuristic scen gen, multivar
-***** [[cite:Zivot13portTheoryMatrixEcon424][Zivot 2013: Portfolio Theory Matrix Algebra]]
-***** See also [[Portfolio Optimization and Forecasting]]
-*** [[file:energy.bib::Nikolakakis11optWindSolMix][Nikolakakis & Fthenakis 2011, Opt wind/PV mix NY State]]
 * Reseach Initiatives
 *** Henrik's overview talk on my 1st day @ DTU (5/10/2010)
     General Topics  (see also notes written by Henrik)
@@ -12153,6 +12202,10 @@ optimization to be a generalization of linear programming.
     10/13/17 [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing weighted CRPS]]
     02/07/18 [[file:energy.bib::Nathans12mlrVarImp][Nathans et al. 2012: Interpreting var imp, MLR and PCA]]
     06/20/18 [[file:energy.bib::Geron17HandsOnMachineLearningWithScikitLearnAndTensorFlowConceptsToolsAndTechniquesToBuildIntelligentSystems][Geron 2017: Hands On Scikit Learn TensorFlow Book]]
+    04/20/19 [[file:energy.bib::Wikepedia19techAdoptLfCycl][Wikipedia 2019: Technology Adoption Lifecycle]]
+    04/21/19 [[file:energy.bib::Taherdoost18reviewTechAdopt][Taherdoost 2018 review tech accept/adopt]]
+    04/21/19 [[file:energy.bib::Wikipedia19bassDiffus][Wikipedia 2019: Bass Diffusion Model]]
+    04/30/19 [[file:energy.bib::Hoyt17usApartmentDemandFrcst][Hoyt 2017: US Apartment Demand Forecast]]
 
 * Bibliography
 bibliographystyle:unsrt

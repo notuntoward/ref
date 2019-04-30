@@ -6619,7 +6619,28 @@ with each other.
 ********* [[Python plotly]]
 ********* [[R plotly]]
 ********* plotly is [[https://stackoverflow.com/questions/35511111/plotly-python-totally-free?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa][confusingly free]], can be run offline
-********* has Dash, which is the best Python version of R-Shiny, a recommended eway to to dashboards (I read in several places)
+********* has Dash, which is the best Python version of R-Shiny, a recommended as a way to do dashboards (I read in several places)
+********* setup for plotly
+          From: [[https://plot.ly/python/getting-started/][Getting Started with Plotly for Python | plotly]]
+
+          o must get a plotly account (see gmail for mine)
+            I've already done that [[https://plot.ly/settings/api#/][here]]
+
+          o Run the following in Python (Spyder, Jypyter, ...)
+
+          # these are my credentials
+          import plotly
+          plotly.tools.set_credentials_file(username='zenf',api_key="cO8tnS0WlWAreOZwmPzX")
+          
+********* <<Plotly Map Plotting>>
+*********** many plotly map types: [[https://plot.ly/python/maps/][Plotly Python Open Source Graphing Library Maps]]
+*********** [[https://plot.ly/python/choropleth-maps/][Python Choropleth Maps | Plotly]]
+*********** Apparently need external GeoJSON maps for zip code maps
+            [[https://community.plot.ly/t/choropleth-maps-at-zip-code-level/4882/6][Choropleth maps at zip code level - plotly.js - Plotly Forum]]
+*********** [[https://github.com/OpenDataDE/State-zip-code-GeoJSON][OpenDataDE/State-zip-code-GeoJSON: Zip code boundaries, each State]]
+*********** uses geopandas, or at least won't run without it, it seems
+*********** plotly [[https://medium.com/@plotlygraphs/what-is-a-fips-code-county-level-charts-in-python-4eff383a4cf6][knows about FIPS codes]] (unique ID for every US county)
+*********** also [[Map plotting in Python]]
 ******* <<Bokeh:>> interative, in at least R and python
 ********* [[Python Bokeh]] 
 ********* [[R Bokey]]
@@ -8021,6 +8042,14 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
       C:\Python36
       C:\Python36\Scripts
 
+***** Install package only in pypi using conda
+      From: [[https://stackoverflow.com/questions/29286624/how-to-install-pypi-packages-using-anacaonda-conda-command][How to install PyPi packages using anacaonda conda command...]]
+
+      To install package "package":
+
+      conda skeleton pypi package
+      conda-build package
+
 *** <<TensorFlow>>
 ***** <<IWES Laptop TensorFlow install>>
 
@@ -8154,6 +8183,41 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
       
         conda update --all --alt-hint
 
+***** make exact copy of environment: conda create -n flowers --clone snowflakes
+***** list envs: conda info --envs
+***** list packages installed: conda list
+***** remove env: conda remove --name myenv --all
+***** adding channels
+
+Add channel "new_channel" to the top of the channel list as highest priority:
+
+  conda config --add channels new_channel
+  or
+  conda config --prepend channels new_channel
+
+Add new channel to the bottom of the channel list as lowest priority:
+
+  conda config --append channels new_channel
+
+***** clone conda env: write/reade environment.yml
+      From: [[https://datascience.stackexchange.com/questions/24093/how-to-clone-python-working-environment-on-another-machine][anaconda - How to clone Python working environment on another machine? - Data...]]
+
+export Anaconda environment:
+
+conda env export > environment.yml
+
+Recreate it on other machine:
+
+conda env create -f environment.yml
+
+Should have used virtual environments:
+
+conda create -n yourenvname python=x.x anaconda
+
+which you activate using:
+
+source activate yourenvname
+
 *** pip vs. conda
     From: [[https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/][Conda: Myths and Misconceptions | Pythonic Perambulations]]
 
@@ -8260,39 +8324,35 @@ Tableau
 
 ***** zoomable python plots
 
-***** Map plotting
+***** <<Map plotting in Python>>
 ******* [[Choropleth]]: any map w/ shaded areas portraying spatially aggredated data
-******* Plotly
-********* many plotly map types: [[https://plot.ly/python/maps/][Plotly Python Open Source Graphing Library Maps]]
-********* [[https://plot.ly/python/choropleth-maps/][Python Choropleth Maps | Plotly]]
-********* Apparently need external GeoJSON maps for zip code maps
-          [[https://community.plot.ly/t/choropleth-maps-at-zip-code-level/4882/6][Choropleth maps at zip code level - plotly.js - Plotly Forum]]
-********* [[https://github.com/OpenDataDE/State-zip-code-GeoJSON][OpenDataDE/State-zip-code-GeoJSON: Zip code boundaries, each State]]
-********* uses geopandas, or at least won't run without it, it seems
+******* [[Plotly Map Plotting]]
 ******* folium / Leaflet.js
+********* Folium [[https://medium.com/dataexplorations/map-this-comparing-choropleth-maps-in-folium-and-tableau-public-9c15f09f5e79][said to be easy to use]]
 ********* folium is active: [[https://github.com/python-visualization/folium/commits/master][last commit]] was 2 days ago (April 2019)
 ********* [[https://towardsdatascience.com/visualizing-data-at-the-zip-code-level-with-folium-d07ac983db20][Visualizing Data at the ZIP Code Level with Folium – Towards Data Science]]
 ********* [[https://python-visualization.github.io/folium/][folium documentation]] is sparse
 ********* [[https://dillonshook.com/leaflet-zip-code-map-part-1/][Leaflet Zip Code Map Part 1: Dillon Shook]] (looks nice, 2014 article)
 ******* [[http://geopandas.org/][Geopandas]]
-        Can do maps fast and ugly, fix them up later.  Also does calcs, I think.
+        Can draw maps fast and ugly, fix them up later, do spatial calcs
 ********* [[http://darribas.org/gds15/content/labs/lab_03.html][lab_03: Mapping in Python with geopandas]]
 ********* is up to date: [[https://github.com/geopandas/geopandas/commits/master][last commit]] was today (4/16/19)
-******* Matplotlib 
+********* reads shape files, GeoJSON, others
+********* can do [[http://darribas.org/gds15/content/labs/lab_03.html][interactive/zoomable]] maps
+******* Matplotlib map plotting
 ********* [[https://www.christianpeccei.com/zipmap/][Drawing ZIP Code Boundaries]]
 ********* [[http://www.jtrive.com/visualizing-population-density-by-zip-code-with-basemap.html][Visualizing Population Density by Zip Code with basemap - The Pleasure of Fin...]]
 ******* [[https://medium.com/dataexplorations/map-this-comparing-choropleth-maps-in-folium-and-tableau-public-9c15f09f5e79][Map this… Comparing choropleth maps in Folium and Tableau Public]]
-******* Where to get shapes/spatial data
+******* Where to get map shapes and spatial data
 ********* formats: [[http://apprentice.craic.com/tutorials/28][Shapefiles, GeoJSON and KML]]
-********* [[https://pypi.org/project/uszipcode/][uszipcode · PyPI]] (current demo data, size, housing, pop dens., ....)
+********* [[https://pypi.org/project/uszipcode/][uszipcode · PyPI]] (current demo data, size, "border polygon")
 ********* [[https://github.com/OpenDataDE/State-zip-code-GeoJSON][OpenDataDE/State-zip-code-GeoJSON: Zip code boundaries, each State]]
-
-********* [[https://github.com/OpenDataDE][Open Data Delaware · GitHub]] (more than just DE)
+********* [[https://github.com/OpenDataDE][Open Data Delaware · GitHub]] (more than just DE, e.g. has zip GeoJSONS for all US states)
 ********* [[https://github.com/jgoodall/us-maps][GitHub - jgoodall/us-maps: GeoJSON and TopoJSON map files]]
           Counties, zips, ZCTA, Census, States, others
 ********* [[https://rdrr.io/cran/tigris/man/zctas.html][zctas: Download a Zip Code Tabulation Area (ZCTA) shapefile into R in tigris:...]]
 ********* [[https://www.census.gov/mp/www/geo/tiger.html][TIGER/Line Files]]
-
+********* address/zip check: [[https://smartystreets.com/docs/cloud/us-zipcode-api][ZIP Code API - SmartyStreets]]
 ******* (DEAD) Vincent and Pandas
 ********* [[https://github.com/wrobstory/vincent][Died in 2016]]
 ********* [[http://wrobstory.github.io/2013/10/mapping-data-python.html][Mapping Data in Python with Pandas and Vincent | wrobstory.github.io]]
@@ -9288,7 +9348,6 @@ https://www.youtube.com/watch?v=rIaz-l1Kf8w
 ******* Adapt your Mindset - “Lost Generation”
 
 https://www.youtube.com/watch?v=42E2fAWM6rA
-* mization
 * XML
 *** Translation tools
 * DTU
