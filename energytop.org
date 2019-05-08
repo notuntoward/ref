@@ -41,7 +41,7 @@
 *********** can go in Matlab! via Python
 *********** [[https://hackaday.com/2017/03/24/ten-minute-tensorflow-speech-recognition/][Ten Minute TensorFlow Speech Recognition | Hackaday]] (very good)
 *********** [[https://youtu.be/eBbEDRsCmv4][Hands-on TensorBoard (TensorFlow Dev Summit 2017) - YouTube]]
-*********** [[https://esciencegroup.com/2016/02/08/tensorflow-meets-microsofts-cntk/][TensorFlow Meets Microsoft’s CNTK]]
+*********** [[https://esciencegroup.com/2016/02/08/tensorflow-meets-microsofts-cntk/][TensorFlow Meets Microsoft's CNTK]]
 *********** weather prediction: [[https://hub.docker.com/r/claytantor/tensorflow-lstm-regression/][tensorflow-lstm-regression]] what weather?
 *********** [[cite:Ghaderi17DeepLrnSpatTempFrcstWindPow][Ghaderi et al. 2017: Deep Wind Pow Spat Temp Frcst TensorFlow code]]
 *********** [[https://hackaday.com/2017/04/11/introduction-to-tensorflow/][Introduction To TensorFlow | Hackaday]]
@@ -851,15 +851,15 @@
 
 ***** Torch3 vs. FANN
 
-      | thing                   | Torch3 | FANN |
-      |-------------------------+--------+------|
-      | GUI aoidable            |      1 |    1 |
-      | GUI available           |      0 |    1 |
-      | cross-validation        |      1 |    0 |
-      | FIR inputs?             |        |    0 |
-      | other regression types? |      1 |    0 |
-      | supported/new           |    0.5 |    1 |
-      |                         |        |      |
+      | thing                   | Torch3 | FANN |   |
+      |-------------------------+--------+------+---|
+      | GUI aoidable            |      1 |    1 |   |
+      | GUI available           |      0 |    1 |   |
+      | cross-validation        |      1 |    0 |   |
+      | FIR inputs?             |        |    0 |   |
+      | other regression types? |      1 |    0 |   |
+      | supported/new           |    0.5 |    1 |   |
+      |                         |        |      |   |
 ***** [[http://annie.sourceforge.net/][annie]]
 ******* hooks to matlab NN toolbox
 ******* c++ library
@@ -979,13 +979,13 @@
 ******* excellent [[http://www.phonetik.uni-muenchen.de/~reichelu/kurse/machine_learning/matlab_nn_toolbox.txt][Uwe Reichel's notes]]
 ******* different v.s application
 
-        | Matlab command  | application                         |
-        |-----------------+-------------------------------------|
-        | newfit          | regression (static only, no memory) |
-        | newff           | new feed forward net (more general) |
-        | newfftd/newlind | for nets w/ delays                  |
-        | newpr           | pattern recognition                 |
-        | [[http://www.mathworks.com/access/helpdesk/help/toolbox/nnet/][newsom]]          | clustering (self organizing map)    |
+        | Matlab command  | application                         |   |
+        |-----------------+-------------------------------------+---|
+        | newfit          | regression (static only, no memory) |   |
+        | newff           | new feed forward net (more general) |   |
+        | newfftd/newlind | for nets w/ delays                  |   |
+        | newpr           | pattern recognition                 |   |
+        | [[http://www.mathworks.com/access/helpdesk/help/toolbox/nnet/][newsom]]          | clustering (self organizing map)    |   |
 
 ******* [[http://www.mathworks.com/access/helpdesk/help/toolbox/nnet/][init/train]]
 
@@ -2377,19 +2377,19 @@ Scott
 ************* _software_ for partial correlation
 *************** r
 
-                | package                | use? | p>>n | comments                              |
-                |------------------------+------+------+---------------------------------------|
-                | [[http://strimmerlab.org/software/corpcor/html/pcor.shrink.html][pcor.shrink {corpcor}]]  | y    | y    | better, shrinkage, also does regress  |
-                | [[http://bm2.genes.nig.ac.jp/rgm2/r_current/library/parcor/man/adalasso.net.html][adalasso.net {parcor}]]  |      | y    |                                       |
-                | [[http://bm2.genes.nig.ac.jp/rgm2/r_current/library/parcor/man/beta2parcor.html][beta2parcor {parcor}]]   |      | y    | use lin. regrsn coeffs from elsewhere |
-                | [[http://bm2.genes.nig.ac.jp/rgm2/r_current/library/parcor/man/pls.net.html][pls.net {parcor}]]       |      | ?    |                                       |
-                | [[http://bm2.genes.nig.ac.jp/rgm2/r_current/library/parcor/man/ridge.net.html][ridge.net {parcor}]]     |      | y    |                                       |
-                | [[http://bm2.genes.nig.ac.jp/rgm2/r_current/library/ggm/man/correlations.html][correlations {ggm}]]     |      | n?   |                                       |
-                | [[http://www.stat.ucl.ac.be/isdidactique/rhelp/library/ggm/html/parcor.html][parcor {ggm}]]           |      | n    | only pairs                            |
-                | [[http://bm2.genes.nig.ac.jp/rgm2/r_current/library/pcalg/man/pcororder.html][pcororder {pcalg}]]      |      | y    | cov matrix robust enough?             |
-                | [[http://www.rseek.org/?cx%3d010923144343702598753%3aboaz1reyxd4&newwindow%3d1&q%3dspace.joint%2bpartial%2bcorrelation&sa%3dsearch&cof%3dforid%3a11&siteurl%3dwww.rseek.org%252f#1200][space.joint {space}]]    | ?    |      | newer approach.  better?              |
-                | [[http://www.rseek.org/?cx%3d010923144343702598753%3aboaz1reyxd4&newwindow%3d1&q%3dspace.joint%2bpartial%2bcorrelation&sa%3dsearch&cof%3dforid%3a11&siteurl%3dwww.rseek.org%252f#1200][space.neighbor {space}]] |      |      | newer approach.  better?              |
-                |                        |      |      |                                       |
+                | package                | use? | p>>n | comments                              |   |
+                |------------------------+------+------+---------------------------------------+---|
+                | [[http://strimmerlab.org/software/corpcor/html/pcor.shrink.html][pcor.shrink {corpcor}]]  | y    | y    | better, shrinkage, also does regress  |   |
+                | [[http://bm2.genes.nig.ac.jp/rgm2/r_current/library/parcor/man/adalasso.net.html][adalasso.net {parcor}]]  |      | y    |                                       |   |
+                | [[http://bm2.genes.nig.ac.jp/rgm2/r_current/library/parcor/man/beta2parcor.html][beta2parcor {parcor}]]   |      | y    | use lin. regrsn coeffs from elsewhere |   |
+                | [[http://bm2.genes.nig.ac.jp/rgm2/r_current/library/parcor/man/pls.net.html][pls.net {parcor}]]       |      | ?    |                                       |   |
+                | [[http://bm2.genes.nig.ac.jp/rgm2/r_current/library/parcor/man/ridge.net.html][ridge.net {parcor}]]     |      | y    |                                       |   |
+                | [[http://bm2.genes.nig.ac.jp/rgm2/r_current/library/ggm/man/correlations.html][correlations {ggm}]]     |      | n?   |                                       |   |
+                | [[http://www.stat.ucl.ac.be/isdidactique/rhelp/library/ggm/html/parcor.html][parcor {ggm}]]           |      | n    | only pairs                            |   |
+                | [[http://bm2.genes.nig.ac.jp/rgm2/r_current/library/pcalg/man/pcororder.html][pcororder {pcalg}]]      |      | y    | cov matrix robust enough?             |   |
+                | [[http://www.rseek.org/?cx%3d010923144343702598753%3aboaz1reyxd4&newwindow%3d1&q%3dspace.joint%2bpartial%2bcorrelation&sa%3dsearch&cof%3dforid%3a11&siteurl%3dwww.rseek.org%252f#1200][space.joint {space}]]    | ?    |      | newer approach.  better?              |   |
+                | [[http://www.rseek.org/?cx%3d010923144343702598753%3aboaz1reyxd4&newwindow%3d1&q%3dspace.joint%2bpartial%2bcorrelation&sa%3dsearch&cof%3dforid%3a11&siteurl%3dwww.rseek.org%252f#1200][space.neighbor {space}]] |      |      | newer approach.  better?              |   |
+                |                        |      |      |                                       |   |
 
 ***************** [[http://strimmerlab.org/software/corpcor/][corpcor]]
                   - maybe better than parcor?
@@ -8351,16 +8351,16 @@ Scott
         Related project spinning reserve paper: [[file:c:/Users/sotterson/OneDrive/shareHW/DTU/proj/spinResrv/doc/ReserveAllocationTJ.pdf][ReserveAllocationTJ.pdf]]
 
 
-        | aspect                   | [[file:energy.bib::pinson09probfrcststatscenwind][pinson09]]               | [[file:energy.bib::morales10scenarios][morales10]]              |
-        |--------------------------+------------------------+------------------------|
-        | autocorrelation          | covar. matrix has lags | arma on marginals      |
-        | parm estimated           | power                  | wind speed             |
-        | dependence               | linear, multivar norm. | linear, multivar norm. |
-        | multi-var norm. mistake? | yes                    | yes                    |
-        | stationarity             | adaptive cov.          | ignored                |
-        | joint lag dependence     | full multi-var cov.    | arma noise input cov.  |
-        | marginal distribution    | weird power dist.      | weibull                |
-        |                          |                        |                        |
+        | aspect                   | [[file:energy.bib::pinson09probfrcststatscenwind][pinson09]]               | [[file:energy.bib::morales10scenarios][morales10]]              |   |
+        |--------------------------+------------------------+------------------------+---|
+        | autocorrelation          | covar. matrix has lags | arma on marginals      |   |
+        | parm estimated           | power                  | wind speed             |   |
+        | dependence               | linear, multivar norm. | linear, multivar norm. |   |
+        | multi-var norm. mistake? | yes                    | yes                    |   |
+        | stationarity             | adaptive cov.          | ignored                |   |
+        | joint lag dependence     | full multi-var cov.    | arma noise input cov.  |   |
+        | marginal distribution    | weird power dist.      | weibull                |   |
+        |                          |                        |                        |   |
 
 ******* also [[Copulas]]
 ******* [[cite:Wang16evalStochMethScen][Wang et al. 2016: Evaluating Stoch Scen Frcst]]
@@ -10819,7 +10819,7 @@ Erika
 ***** also [[Class Imbalance Handling]]
 ***** also [[Fault Prediction]]
 ***** also [[State Change Detection][State Change Detection]] (for flaw detection)
-*** TODO <<Smart Grid>> (PUT THiS UNDER OPTIMIZATION or merge with other related things?)
+*** TODO <<Smart Grid>> (PUT THIS UNDER OPTIMIZATION or merge with other related things?)
 ***** Grid semantic web
 ******* [[http://cordis.europa.eu/ictresults/index.cfm/section/news/tpl/article/id/90399][Semantic web promises a smarter electricity grid]]
 ***** Needs [[http://www.netl.doe.gov/moderngrid/docs/Improved%20Interfaces%20and%20Decision%20Support_FINAL_v2.0.pdf][AI based data reduction]] for operator-comprehensible displays (p. B5-9)
@@ -10835,10 +10835,18 @@ Erika
 * Planning
 *** <<Technology Adoption Rates>>
 ***** Tech Adoption Overviews
-******* [[file:energy.bib::Wikepedia19techAdoptLfCycl][Wikipedia 2019: Technology Adoption Lifecycle]]
+******* DONE [[file:energy.bib::Wikepedia19techAdoptLfCycl][Wikipedia 2019: Technology Adoption Lifecycle]]
 ******* [[file:energy.bib::Rogers83diffusInnovBk][Rogers 1983: Diffusion of Innovation Book]]
+******* TODO [[file:energy.bib::Taherdoost18reviewTechAdopt][Taherdoost 2018 review tech accept models]]
 ******* DONE [[file:energy.bib::Taherdoost18reviewTechAdopt][Taherdoost 2018 review tech accept/adopt]]
 ***** Solar adoption rates
+******* TODO [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market Model (dGen)]]: NREL
+******* [[file:energy.bib::Gagnon16distPVadoptMktFctr][Gagnon & Sigrin 2016: Distributed PV Adoption Mkt Factors]]
+******* [[file:energy.bib::Kwasnik19adoptDERagentRsltn][Kwasnik et al. 2019: PV Agent Adopt Resolution Implications]]
+******* [[file:energy.bib::Sigrin18uncertMktMdlPVmultiMdl][Sigrin et al. 2018: Market Modeling Uncertainty Distr. Solar]]
+******* [[file:energy.bib::Gagnon17retailTariffPVdply][Gagnon et al. 2017 retail Tariff PV deploy]]
+******* [[file:energy.bib::Gagnon17distPVprojKentucky2040][Gagnon & Das 2017: Projections Distributed Photovoltaic]]
+******* [[file:energy.bib::Coley17disChoicePVadopt][Coley et al. 2017: Applying Discrete Choice PV adopt]]: NEL
 ******* [[file:energy.bib::Gagnon17netMtrAdoptPV][Gagnon et al. 2017: Impacts Changes Nevada PV Fin Adopt]]: NREL
 ******* [[file:energy.bib::Dong17resPVdeployFrcst][Dong et al. 2017: Forecasting California PV Adopt]]: NREL, uses Bass, others
 ******* [[file:energy.bib::Yu18deepSolarDB][Yu et al. 2018: DeepSolar Adopt]]
@@ -10847,11 +10855,15 @@ Erika
 ******* [[file:energy.bib::Westacott16gisPVdeployUK][Westacott & Candelise 2016: Novel GIS PV Deploy UK]]
 ******* TODO [[file:energy.bib::Rai15agentEnrgyTechAdoptFactors][Rai & Robinson 2015: Agent Energy Tech Adopt Factors]]
 ******* [[file:energy.bib::Gooding13cityPVinstallFactors][Gooding et al. 2013: Solar City Indicator PV install factors]]
-******* [[file:energy.bib::Islam13pvAdoptTimeAttributes][Islam & Meade 2013 PV isntall timing attribute pref]]
-******* [[file:energy.bib::Lobel11cnsmrChoiceDmdFrcstSlr][Lobel & Perakis 2011: Consumer choice model frcst solar demand]]
+******* [[file:energy.bib::Islam13pvAdoptTimeAttributes][Islam & Meade 2013 PV install timing attribute pref]]
+******* TODO [[file:energy.bib::Lobel11cnsmrChoiceDmdFrcstSlr][Lobel & Perakis 2011: Consumer choice model frcst solar demand]]
 ******* [[file:energy.bib::Caird08enrgyEffAdoptUK][Caird et al. 2008: Improving UK energy perform adoption survey]]
+******* TODO [[file:energy.bib::Bernards18][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
+******* [[file:energy.bib::Cole18impactSunShot2030][Cole et al. 2018: Envisioning solar impact Sunshot 2030]]
 ***** Electric vehicle adoption
 ******* [[file:energy.bib::Moons15selfBrandPersEV][Moons & De 2015: Self Brand Personality Elec Cars]]
+******* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help.
+******* TODO [[file:energy.bib::Bernards18][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
 ***** <<Bass Innovation Diffusion Models>>
 ******* DONE [[file:energy.bib::Wikipedia19bassDiffus][Wikipedia 2019: Bass Diffusion Model]]
 ******* [[file:energy.bib::Bass94bassWithoutDecVars][Bass et al. 1994: Why Bass Model w/o dec vars]] (with derivations. SDE?)
@@ -10974,9 +10986,43 @@ Erika
     Maybe useful for grid planning, especially [[Technology Adoption Rates]]
 ***** [[https://www.evernote.com/l/AA2llGPZ2zlMUbxX8etpyQzG9_2NrX7q4iQ/][GDP predictions are reliable only in the short term]] (worse in downturns)
 ***** [[file:energy.bib::Hoyt17usApartmentDemandFrcst][Hoyt 2017: US Apartment Demand Forecast]] (mentions econ forecasts)
+***** Income Distribution
+******* [[file:energy.bib::Angrist06qrPQRmisspec][Angrist et al. 2006: Quantile Rgrssn US wage struct]]
+******* [[file:energy.bib::Bandourian02cmprParamIncDist][Bandourian et al. 2002 Income Dist Parametric Models Compare]]: Weibel good 2 param fit
+******* <<Income Fairness>>
+********* <<GINI Index>>
+*********** [[file:energy.bib::Tille12histoLorenzGini][Tillé & Langel 2012: Histogram Based Interpolation: Gini from Histo flat]]
+*********** [[file:energy.bib::Lyon16advtgsGrpMnLorenzGINI][Lyon et al. 2016: Advantages Using Group: Gini from histo slope]]
+*********** [[file:energy.bib::Prendergast16quantLorenzGINI][Prendergast & Staudte 2016: Quantile Lorenz: Gini from quantile, fancy]]
 *** <<Population Forecasts>>
 ***** [[file:energy.bib::Tayman11popFrcstAccRgrssn][Tayman et al. 2011: Evaluating pop frcst w/ regression model]]
 ***** [[file:energy.bib::Hoyt17usApartmentDemandFrcst][Hoyt 2017: US Apartment Demand Forecast]] (mentions pop forecasts)
+***** [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][Mapping America's Futures]] (regional, downloadable out to at least 2040)
+***** [[https://www.evernote.com/l/AA28ugeOLXtACq0FKq_uoa_wZIoffHehDeg/][National Population Projections Cooper Center]] (pop/demo State, downloadable to 2040)
+***** [[file:energy.bib::Geard13synthPopDyn][Geard et al. 2013: Synthetic Population Dynamics]]
+*** Energy Use Data
+***** [[https://www.eia.gov/consumption/residential/data/2015/index.php?view=microdata][EIA Residential Energy Consumption Survey (RECS)]]
+      Latest update as of May 2019 was in 2018
+******* US yearly energy use totals for coarse spatial and load type categories
+******* Latest update as of May 2019 was in 2018
+******* Is used by [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market]] (at least)
+
+***** [[https://www.eia.gov/consumption/commercial/][EIA Commercial Buildings Energy Consumption Survey (CBECS)]]
+      
+******* Yearly energy consumption by building category in US.
+******* Latest update as of May 2019 was in 2012
+******* Is used by [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market]] (at least)
+
+*** Land Use Data
+***** [[https://gii.dhs.gov/hifld/content/hifld-data-catalog][HIFLD Data Catalog]] large land use DB
+      Homeland Security land use DB.  Includes, for example, HSIP 2015 (HSIP 2012 was used in [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market]] to find large building locations and their types.
+***** [[https://landscan.ornl.gov/landscan-data-availability][ORNL LandScan]] day/night occupancy 
+      Used to ID residential locations in  [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market]]
+*** Electricity rates
+***** OpenEI Utility-Rate Database
+      Is used by [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market]] (at least)
+      
+*** Load Profile Data
 * <<Random Variable Generation>>
 *** [[cite:Hardin13genRealisticCorrMat][Hardin et al. 2013 Gen Realistic Random Corr Matrix has Rcode]]
 *** [[http://math.stackexchange.com/questions/357980/how-to-generate-random-symmetric-positive-definite-matrices-using-matlab][How to generate random symmetric positive definite matrices using MATLAB?]]
@@ -11189,13 +11235,12 @@ Erika
 ***** also see [[Fault Detection]]
 ***** also see [[Extreme Quantile Forecasting]]
 ***** also see [[Changepoint Detection]]
-***** also see [[Outlier Detectio [[Trend Copulas]]n]]
-***** also see
+***** also see [[Outlier detection]]
+***** also see [[Trend Copulas]]
 ***** also see [[Concept Drift Detection]]
 ***** also see [[State Change Alarm Criteria]]
 *** <<Changepoint Detection>>
-***** Generic Change Point Detection: when to switch; when to spawn new model
-      <<Generic change point detection>>
+***** <<Generic change point detection>>: when to switch; when to spawn new model
 ******* [[file:energy.bib::Saatcci10chngPtGausProc][Saatci et al. 2010: Gaussian Process Change Point Models]]
 ******* [[file:energy.bib::SantosTeixeira10anomSubSpcTrk][Santos & Milidiu 2010: Data]] (uses copied lags, like DPCA)
 ******* [[http://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1167.pdf][Macroeconomic Forecasting and Structural Change]]
@@ -11301,6 +11346,7 @@ Erika
 ***** Matlab [[https://www.mathworks.com/help/matlab/ref/ischange.html#mw_52a87b5c-9d25-446a-94f9-92c7e71d5206][ischange]] (2017b) function: 
 ***** also see [[State Change Alarm Criteria]]
 
+***** also [[Outlier Detection]]
 *** <<Outlier Detection>>
 ***** [[http://www.statisticsviews.com/details/feature/6597751/Outlier-Detection-Gets-a-Makeover---Surprise-Discovery-in-Scientific-Big-Data.html][Outlier Detection Gets a Makeover - Surprise Discovery in Scientific Big Data]]
 ***** [[file:energy.bib::Gupta14OutlierDetTempSurv][Gupta et al. 2014: Outlier Detection Temporal Data]] Survey (also has book)
@@ -11308,7 +11354,8 @@ Erika
 ***** see: [[Trend Copulas]]
 
 ***** [[https://www.amazon.com/Detection-Temporal-Synthesis-Knowledge-Discovery/dp/1627053751][Outlier Detection for Temporal Data (Synthesis Lectures on Data Mining and Knowledge Discovery)]] Book
-***** also see [[State Change Alarm Criteria]]
+***** also [[State Change Alarm Criteria]]
+***** also [[Changepoint Detection]]
 
 *** <<Concept Drift Detection>>
 
@@ -12204,8 +12251,11 @@ optimization to be a generalization of linear programming.
     06/20/18 [[file:energy.bib::Geron17HandsOnMachineLearningWithScikitLearnAndTensorFlowConceptsToolsAndTechniquesToBuildIntelligentSystems][Geron 2017: Hands On Scikit Learn TensorFlow Book]]
     04/20/19 [[file:energy.bib::Wikepedia19techAdoptLfCycl][Wikipedia 2019: Technology Adoption Lifecycle]]
     04/21/19 [[file:energy.bib::Taherdoost18reviewTechAdopt][Taherdoost 2018 review tech accept/adopt]]
+             [[file:energy.bib::Yu18deepSolarDB][Yu et al. 2018: DeepSolar Adopt]]
     04/21/19 [[file:energy.bib::Wikipedia19bassDiffus][Wikipedia 2019: Bass Diffusion Model]]
     04/30/19 [[file:energy.bib::Hoyt17usApartmentDemandFrcst][Hoyt 2017: US Apartment Demand Forecast]]
+    05/07/19 [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market]] (at least)
+      
 
 * Bibliography
 bibliographystyle:unsrt

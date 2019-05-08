@@ -56,7 +56,15 @@ Related?  Shi08curvePredClustGaussProcMix},
   month     = jun,
   issn      = {1558-0059},
   abstract  = {A method for establishing wind speed correlation between neighboring measuring stations is presented in this paper. The aim of this study is to develop a model, in which given the wind speed at a particular site to simulate the wind speed at another, nearby site, in order to estimate the wind power of an area. This method takes into account the evolution of the sample cross correlation function (SCCF) of wind speed in time domain and uses an artificial neural network to perform the wind speed simulation. Four separate pairs of wind data measuring stations at two different regions were examined. Tests showed that the higher the SCCF value between two sites, the better simulation achieved. Also, in a pair of stations under investigation the reference station must be the one that contains more information in its wind speed signal, in order to obtain the optimum simulation performance.},
-  comment   = {Crappy paper somehow using a neural net to predict wind speed from distant wind measurements * calc cross correlations between measurement sites * somehow train a neural net at the max correlation lag * not clear -- what the NN architecture was -- how many inputs and outputs there were -- what happens if station-to-station lag doesn't match training lag * I don't know if results are good (no baseline) * related to Barbounis2007locRecurrentNeuralWind?},
+  comment   = {Crappy paper somehow using a neural net to predict wind speed from distant wind measurements 
+* calc cross correlations between measurement sites 
+* somehow train a neural net at the max correlation lag 
+* not clear
+ -- what the NN architecture was
+ -- how many inputs and outputs there were
+ -- what happens if station-to-station lag doesn't match training lag 
+* I don't know if results are good (no baseline) 
+* related to Barbounis2007locRecurrentNeuralWind?},
   crossref  = {Barbounis2007locRecurrentNeuralWind},
   doi       = {10.1109/TEC.2004.827040},
   file      = {Bechrakis04windCorrNeighborStat.pdf:Bechrakis04windCorrNeighborStat.pdf:PDF;Bechrakis04windCorrNeighborStat.pdf:Bechrakis04windCorrNeighborStat.pdf:PDF},
@@ -1130,6 +1138,29 @@ Related: Kraskov08MIChierClustMutInf.Papana08EvalMutInfoDynSys},
   owner     = {sotterson},
   timestamp = {2008.10.03},
   url       = {http://www.msm.cam.ac.uk/phase-trans/abstracts/superalloy.gaussian.html},
+}
+
+@Article{Lyon16advtgsGrpMnLorenzGINI,
+  author    = {Merritt Lyon and Li C. Cheung and Joseph L. Gastwirth},
+  title     = {The Advantages of Using Group Means in Estimating the Lorenz Curve and Gini Index From Grouped Data},
+  journal   = {The American Statistician},
+  year      = {2016},
+  volume    = {70},
+  number    = {1},
+  pages     = {25-32},
+  abstract  = { A recent article proposed a histogram-based method for estimating the Lorenz curve and Gini index from grouped data that did not use the group means reported by government agencies. When comparing their method to one based on group means, the authors assume a uniform density in each grouping interval, which leads to an overestimate of the overall average income. After reviewing the additional information in the group means, it will be shown that as the number of groups increases, the bounds on the Gini index obtained from the group means become narrower. This is not necessarily true for the histogram method. Two simple interpolation methods using the group means are described and the accuracy of the estimated Gini index they yield and the histogram-based one are compared to the published Gini index for the 1967–2013 period. The average absolute errors of the estimated Gini index obtained from the two methods using group means are noticeably less than that of the histogram-based method. Supplementary materials for this article are available online.[Received August 2014. Revised September 2015.] },
+  comment   = {Calculating GINI coefficients from anonymized summary stats, like quantiles, interval means, etc.   Estimtimates pdf by line slope between bin means, right hand tail fit some some kind of exponential.
+
+See Fancier: Prendergast16quantLorenzGINI
+See Simpler: Tille12histoLorenzGini},
+  doi       = {10.1080/00031305.2015.1105152},
+  eprint    = {https://doi.org/10.1080/00031305.2015.1105152},
+  file      = {:Lyon16advtgsGrpMnLorenzGINI.pdf:PDF},
+  publisher = {Taylor \& Francis},
+  url       = { 
+        https://doi.org/10.1080/00031305.2015.1105152
+    
+},
 }
 
 @Article{Liu11confWgtKNNimbal,
@@ -5625,6 +5656,7 @@ Maybe fancier stuff in: Abreu13genCmplxStepDiff},
   issn     = {1364-8152},
   abstract = {Agent-based modeling (ABM) techniques for studying human-technical systems face two important challenges. First, agent behavioral rules are often ad hoc, making it difficult to assess the implications of these models within the larger theoretical context. Second, the lack of relevant empirical data precludes many models from being appropriately initialized and validated, limiting the value of such models for exploring emergent properties or for policy evaluation. To address these issues, in this paper we present a theoretically-based and empirically-driven agent-based model of technology adoption, with an application to residential solar photovoltaic (PV). Using household-level resolution for demographic, attitudinal, social network, and environmental variables, the integrated ABM framework we develop is applied to real-world data covering 2004–2013 for a residential solar PV program at the city scale. Two applications of the model focusing on rebate program design are also presented.},
   doi      = {https://doi.org/10.1016/j.envsoft.2015.04.014},
+  file     = {:Rai15agentEnrgyTechAdoptFactors.pdf:PDF},
   keywords = {Agent-based modeling, Solar photovoltaic (PV), Complex systems, Technology adoption, Social networks, Bounded rationality},
   url      = {http://www.sciencedirect.com/science/article/pii/S1364815215001231},
 }
@@ -8666,6 +8698,23 @@ of the John von Neumann Institute for Computing (John von Neumann Institute for 
   url       = {http://cs231n.stanford.edu/},
 }
 
+@Article{Geard13synthPopDyn,
+  author   = {Geard, Nicholas and McCaw, James M and Dorin, Alan and Korb, Kevin B and McVernon, Jodie},
+  title    = {Synthetic Population Dynamics: A Model of Household Demography},
+  journal  = {Journal of Artificial Societies and Social Simulation},
+  year     = {2013},
+  volume   = {16},
+  number   = {1},
+  pages    = {8},
+  issn     = {1460-7425},
+  abstract = {Computer-simulated synthetic populations are used by researchers and policy makers to help understand and predict the aggregate behaviour of large numbers of individuals.  Research aims include explaining the structural and dynamic characteristics of populations, and the implications of these characteristics for dynamic processes such as the spread of disease, opinions and social norms.  Policy makers planning for the future economic, healthcare or infrastructure needs of a population want to be able to evaluate the possible effects of their policies.  In both cases, it is desirable that the structure and dynamic behaviour of synthetic populations be statistically congruent to that of real populations.  Here, we present a parsimonious individual-based model for generating synthetic population dynamics that focuses on the effects that demographic change have on the structure and composition of households.},
+  comment  = {How to model population changes.  Is cited 7 times, including one (crappy, not bibtexed) paper on renewable energy potential of Russia.  Authors are from Surrey and Monash (usually good stuff).},
+  doi      = {10.18564/jasss.2098},
+  file     = {:Geard13synthPopDyn.pdf:PDF},
+  keywords = {Demography, Synthetic Populations, Household Dynamics, Individual-Based Models},
+  url      = {http://jasss.soc.surrey.ac.uk/16/1/8.html},
+}
+
 @Article{Gama14conceptDrftSurvey,
   author    = {Gama, Jo{\~a}o and {\v{Z}}liobait{\.e}, Indr{\.e} and Bifet, Albert and Pechenizkiy, Mykola and Bouchachia, Abdelhamid},
   title     = {A survey on concept drift adaptation},
@@ -10263,6 +10312,104 @@ Three kinds of parameter estimation:
   owner     = {scot},
   timestamp = {2010.08.05},
   url       = {http://www.sciencedirect.com/science/article/B6V8V-45D9T59-V/2/fe61140be78607c03ac9d23ca4e0b4b6},
+}
+
+@TechReport{Kwasnik19adoptDERagentRsltn,
+  author      = {Kwasnik, Ted and Sigrin, Benjamin O and Bielen, David A},
+  title       = {Quantifying Resolution Implications for Agent-based Distributed Energy Resource Customer Adoption Models},
+  institution = {National Renewable Energy Lab.(NREL), Golden, CO (United States)},
+  year        = {2019},
+  abstract    = {Distributed photovoltaics (DPV) are a growing source of electricity generation in the United 
+States, and with adoption driven by customer behavior and localized economics, projecting the 
+deployment of this technology is a challenging analytical problem. Moreover, understanding the 
+sources of uncertainty in customer adoption models and how they can be reduced is important to 
+a range of stakeholders that use their outputs, including grid planners, regulators, and industry. 
+Most prior studies have used top-down methods, such as the use of population central tendencies 
+to project aggregate adoption. In contrast, a growing field of work seeks to use bottom-up 
+methods (i.e., individual-level decision-making).  
+We explore trade-offs of top-down and bottom-up methods in their precision and computational 
+burden using the National Renewable Energy Laboratory’s (NREL’s) Distributed Generation 
+Market Demand (dGen) model, an agent-based model of residential and nonresidential 
+distributed PV adoption. In particular, we assess the role of agent resolution in instantiating 
+statistically-representative populations in the model—and the resulting variance of model 
+projections at the state, sector, and county levels. At low sampling rates, the model resembles a 
+top-down model, whereas as sampling rates increase dGen converges to a bottom-up structure 
+by simulating more unique customer types. Though sampling-based models such as dGen can 
+be operated with many agents to ensure accuracy, doing so greatly increases the computational 
+burden of the simulation. This report lends insight into whether high-resolution results can be 
+approximated sufficiently well using fewer computational resources. 
+At the state and sector levels, we find systematic differences in mean projected DPV capacity 
+adopted across different levels of agent resolution, namely that cumulative DPV adoption 
+estimates decrease with greater agent resolution. Following this, we conclude that sets of low 
+agent runs in dGen cannot be directly substituted for high-resolution runs. Moreover, we find 
+that the average size of installed DPV explains decreases in system sizes by agent resolution, and 
+we attribute this trend to a system-sizing mechanism that biases smaller sizes when agent annual 
+load and roof area suitable to PV are not positively correlated. Thus, associating suitable roof 
+area with annual load on an agent by agent basis in a manner more consistent with the 
+relationship inherent in input data sets is expected to improve the interpretability of results. 
+At the county level, we generally see similar trends to the state and sector levels; however, 
+we also note the rates at which DPV estimates actually increase with agent resolution.  
+We also find that the variance in projected DPV capacity adoption decreases substantially as 
+agent resolution increases. This trend holds at the state and sector levels and for most cases at the 
+county level. We find that precision improvements in both sectors are greatest at low levels of 
+agent resolution, which matches our intuition that estimates will differ less across model runs as 
+underlying samples increasingly resemble the full population. We also find reason to limit agent 
+resolution in that each additional agent adds about 3 minutes to a minimum solve time of 18 
+minutes. Also, significantly fewer than 100 iterations may be sufficient to achieve acceptable 
+levels of precision; state-level variance varies by less than 5% beyond about 50 runs relative to 
+the average of 100 runs. At the county level, we can explain most of the variance in the 
+nonresidential sector, yet this scale reveals trends that diverge from those observed at the state 
+and sector levels that are not fully explained. Therefore, we encourage further research into 
+sources of variance in both sectors at this more-refined resolution.  },
+  file        = {:Kwasnik19adoptDERagentRsltn.pdf:PDF},
+  url         = {https://www.nrel.gov/analysis/dgen/publications.html},
+}
+
+@TechReport{Sigrin18uncertMktMdlPVmultiMdl,
+  author      = {Sigrin, Benjamin O and Kwasnik, Ted and Spitsen, Paul and Fickling, Meera and Jarzomski, Kevin and Boedecker, Erin},
+  title       = {Market and Modeling Uncertainty in Distributed Solar Deployment Projections: A Multi-Model Comparison},
+  institution = {National Renewable Energy Lab.(NREL), Golden, CO (United States)},
+  year        = {2018},
+  abstract    = {Distributed solar photovoltaic (DPV) systems that generate energy in behind-the-meter 
+applications for residential, commercial, and other end-use sectors are a growing—and 
+potentially disruptive—development in the U.S. power system. While less than 1% of all 
+electricity generation in the United States came from DPV systems in 2016 (EIA 20171), this 
+technology has experienced rapid growth in recent years and, as of the end of 2017, over 1.6 
+million DPV systems had been installed (GTM 2017). Given this, projecting distributed solar 
+deployment is increasingly pertinent—yet remains highly uncertain. 
+The traditional U.S. power system has historically consisted of large, centralized baseload 
+generators connected to demand centers via a hub-and-spoke network of synchronized voltage 
+transmission and distribution lines. Utilities have also historically financed most infrastructure 
+with charges apportioned among customers on a volumetric basis. DPV systems disrupt both 
+prior foundations of the U.S. electric power system. Not only are DPV systems typically low 
+capacity, but their generation directly offsets on-site electricity consumption or is exported to the 
+grid in the case of excess, thereby reducing electricity sales. Recent declines in DPV costs has 
+prompted questions regarding the conditions in which consumers might find electricity sourced 
+from DPV more economically compelling than grid-sourced electricity. Sometimes termed “grid 
+parity”, this phenomenon could accelerate DPV adoption. Clarity about whether DPV might 
+achieve grid parity, the timing and extent of this transition, and future levels of DPV deployment 
+are important factors to consider for power system operational conditions, engineering and 
+financial risk, and long-term planning of the U.S. electric grid.  
+To address these issues, we project trends in the net present value of residential-scale solar 
+systems on a county-level basis from 2017 through 2050. Next, we combine the long-term 
+projections of three national DPV adoption models to examine their short and long-term outlooks 
+and sensitivities to future macroeconomic conditions. Finally, we also address the inherent 
+uncertainty in projections from two distinct perspectives: (1) economic uncertainty, or the set of 
+techno-economic factors that significantly impact the real world as well as our model 
+projections, and (2) modeling uncertainty, or the differing implications of choices made 
+regarding modeling methodology in computational simulations.  
+The analysis conducted for this report is relatively static and does not capture the full range of 
+factors influencing electricity markets. Nevertheless, it is intended to be instructive of the range 
+of potential DPV deployment should grid conditions remain similar to today’s. Future work 
+could consider other potentially disruptive factors, such as influence of electric vehicles, energy 
+storage, competition between utility-scale, community-scale and distributed-scale solar systems, 
+and impacts of integrating high levels of distributed solar into the electrical grid. For instance, 
+distribution grid integration limits could limit the actual deployable potential or introduce new 
+system integration costs not considered in this analysis. Perhaps most significant are 
+“endogenous” changes; that is, evolution in retail rate design, policy, and market structure as a 
+response to the expansion of DPV to better reflect the value of distributed generation.  },
+  file        = {:Sigrin18uncertMktMdlPVmultiMdl.pdf:PDF},
+  url         = {https://www.nrel.gov/analysis/dgen/publications.html},
 }
 
 @Article{Verkuilen12mixRgrsBoundBeta,
@@ -12063,6 +12210,22 @@ scenarios.},
   Owner                    = {sotterson},
   Timestamp                = {2014.12.08},
   URL                      = {https://e-reports-ext.llnl.gov/pdf/770804.pdf}
+}
+
+@Article{Bernards18,
+  author   = {R. {Bernards} and J. {Morren} and H. {Slootweg}},
+  title    = {Development and Implementation of Statistical Models for Estimating Diversified Adoption of Energy Transition Technologies},
+  journal  = {IEEE Transactions on Sustainable Energy},
+  year     = {2018},
+  volume   = {9},
+  number   = {4},
+  pages    = {1540--1554},
+  month    = oct,
+  issn     = {1949-3029},
+  abstract = {For efficient network investments, insight in the expected spatial spread of new load and generation units is of prime importance. This paper presents and applies a method to determine key factors for adoption of photovoltaics, electric vehicles, and heat pumps. Using a logistic regression analysis, the impact of geographical and socio-economic factors on adoption probabilities of these new energy technologies is quantified. Income level, average age, and household composition are shown to be important factors. Additionally, for photovoltaics, peer effects were also shown to significantly influence the likelihood of adoption. The implementation of the developed models and the achievable improvement in prediction accuracy is demonstrated by application to a scenario study based on historical data. The models can be incorporated in future energy scenarios to provide a probabilistic spatial forecast of future penetration levels of the mentioned technologies and identify key areas of interest.},
+  comment  = {Multi DER probabilistic forecast with peer effects for PV.},
+  doi      = {10.1109/TSTE.2018.2794579},
+  keywords = {electric vehicles, heat pumps, investment, photovoltaic power systems, power engineering computing, power system planning, probability, regression analysis, social aspects of automation, socio-economic effects, statistical models, energy transition technologies, expected spatial spread, load, generation units, photovoltaics, electric vehicles, heat pumps, logistic regression analysis, socio-economic factors, adoption probabilities, energy technologies, income level, household composition, peer effects, developed models, prediction accuracy, probabilistic spatial forecast, network investments, penetration levels, Predictive models, Forecast uncertainty, Probabilistic logic, Statistical learning, Power system planning, Forecast uncertainty, power system planning, statistical learning, technology adoption},
 }
 
 @Article{Bickel08choiceOfMsubsampBtstrp,
@@ -14233,6 +14396,24 @@ Idea is to pick the lowest threshold that satisfies some criterion.  Options are
   publisher = {Wiley Online Library},
 }
 
+@Article{Tille12histoLorenzGini,
+  author    = {Yves Tillé and Matti Langel},
+  title     = {Histogram-Based Interpolation of the Lorenz Curve and Gini Index for Grouped Data},
+  journal   = {The American Statistician},
+  year      = {2012},
+  volume    = {66},
+  number    = {4},
+  pages     = {225--231},
+  issn      = {00031305},
+  abstract  = {In grouped data, the estimation of the Lorenz curve without taking into account the within-class variability leads to an overestimation of the curve and an underestimation of the Gini index. We propose a new strictly convex estimator of the Lorenz curve derived from a linear interpolation-based approximation of the cumulative distribution function. Integrating the Lorenz curve, a correction can be derived for the Gini index that takes the intraclass variability into account.},
+  comment   = {Calculating GINI coefficients from anonymized summary stats, like quantiles, interval means, etc.   Uses only histograms.
+
+See Fancier: Prendergast16quantLorenzGINI, Lyon16advtgsGrpMnLorenzGINI},
+  file      = {:Tille12histoLorenzGini.pdf:PDF},
+  publisher = {[American Statistical Association, Taylor \& Francis, Ltd.]},
+  url       = {http://www.jstor.org/stable/23339499},
+}
+
 @Misc{Wikipedia15cholesky,
   author       = {Wikipedia},
   title        = {Cholesky decomposition},
@@ -16343,6 +16524,9 @@ the German solar market, where we estimate the model parameters, generate adopti
 solve the policy design problem. We use this framework to show that the current policies in Germany are not efficient.
 In particular, our study suggests that their subsidies should be higher in the near future and the gradual phase-out of the
 subsidies should occur faster.},
+  comment   = {A study of forecasted German PV adoption rates concludes that DE policies aren't efficient, and that they shoud have, in 2011, increased their PV incentives.
+
+Seems very close to what MN SP wants to do.  60 cites.},
   file      = {:Lobel11cnsmrChoiceDmdFrcstSlr.pdf:PDF},
   publisher = {MIT Sloan Research Paper},
   url       = {https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1748424},
@@ -18618,15 +18802,14 @@ Paper for the library: Pedregosa11ScikitlearnMachLrnPython},
 }
 
 @Article{Tayman11popFrcstAccRgrssn,
-  author        = {Tayman, Jeff and Smith, Stanley K and Rayer, Stefan},
-  title         = {Evaluating population forecast accuracy: A regression approach using county data},
-  journal       = {Population Research and Policy Review},
-  year          = {2011},
-  volume        = {30},
-  number        = {2},
-  pages         = {235--262},
-  __markedentry = {[Scott:6]},
-  abstract      = {Many studies have evaluated the impact of differences in population
+  author    = {Tayman, Jeff and Smith, Stanley K and Rayer, Stefan},
+  title     = {Evaluating population forecast accuracy: A regression approach using county data},
+  journal   = {Population Research and Policy Review},
+  year      = {2011},
+  volume    = {30},
+  number    = {2},
+  pages     = {235--262},
+  abstract  = {Many studies have evaluated the impact of differences in population
 size and growth rate on population forecast accuracy. Virtually all these studies
 have been based on aggregate data; that is, they focused on average errors for places
 with particular size or growth rate characteristics. In this study, we take a different
@@ -18645,12 +18828,12 @@ accuracy.
 
 Keywords Forecast accuracy  Regression models  Panel data 
 Counties},
-  comment       = {Uses regression model to predict acccuracy of population forecasts.  Inputs are poplation size and growth rate, forecast horizon, and a bunch of other stuff.
+  comment   = {Uses regression model to predict acccuracy of population forecasts.  Inputs are poplation size and growth rate, forecast horizon, and a bunch of other stuff.
 
 Is a bit like quantile regression.},
-  file          = {:Tayman11popFrcstAccRgrssn.pdf:PDF},
-  publisher     = {Springer},
-  url           = {https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3061008/},
+  file      = {:Tayman11popFrcstAccRgrssn.pdf:PDF},
+  publisher = {Springer},
+  url       = {https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3061008/},
 }
 
 @InProceedings{Cheng08semiSupCalibForecast,
@@ -22886,6 +23069,7 @@ Note that Koenker, himself, is not a Bayesian QR fan: Koenker10bayesBanoQR},
   abstract = {Recognition the needs and acceptance of individuals is the beginning stage of any businesses and this understanding would be helpful to find the way of future development, thus academicians are interested to realize the factors that drive users’ acceptance or rejection of technologies. A number of models and frameworks have been developed to explain user adoption of new technologies and these models introduce factors that can affect the user acceptance. In this paper, an overview of theories and models regarding user acceptance of technology has been provided. The existing review will emphasize literature that tries to show how developers and researchers presage the level of admission any information technology will attain.},
   comment  = {Non-quantitive stuff.  Not useful for making predictive models.},
   doi      = {https://doi.org/10.1016/j.promfg.2018.03.137},
+  file     = {:Taherdoost18reviewTechAdopt.pdf:PDF},
   keywords = {Acceptance Model, Acceptance Theory, Adoption Model, Adoption Theory, User Acceptance, User Adoption},
   url      = {http://www.sciencedirect.com/science/article/pii/S2351978918304335},
 }
@@ -26433,6 +26617,34 @@ http://stats.stackexchange.com/questions/35089/feature-selection-using-mutual-in
   url       = {http://cdn.intechopen.com/pdfs/14882/InTech-Review_of_input_variable_selection_methods_for_artificial_neural_networks.pdf},
 }
 
+@Article{Prendergast16quantLorenzGINI,
+  author    = {Prendergast, Luke A. and Staudte, Robert G.},
+  title     = {Quantile versions of the Lorenz curve},
+  journal   = {Electron. J. Statist.},
+  year      = {2016},
+  volume    = {10},
+  number    = {2},
+  pages     = {1896--1926},
+  abstract  = {The classical Lorenz curve is often used to depict inequality in
+a population of incomes, and the associated Gini coefficient is relied upon to
+make comparisons between different countries and other groups. The sam-
+ple estimates of these moment-based concepts are sensitive to outliers and
+so we investigate the extent to which quantile-based versions can capture
+income inequality and lead to robust procedures. Distribution-free interval
+estimates of the associated coefficients of inequality are obtained, as well
+as sample sizes required to estimate them to a given accuracy. Convexity,
+transference and robustness of the measures are examined and illustrated.
+Keywords and phra},
+  comment   = {Calculating GINI coefficients from anonymized summary stats, like quantiles, interval means, etc.  
+
+See Simpler: Tille12histoLorenzGini, Lyon16advtgsGrpMnLorenzGINI},
+  doi       = {10.1214/16-EJS1154},
+  file      = {:Prendergast16quantLorenzGINI.pdf:PDF},
+  fjournal  = {Electronic Journal of Statistics},
+  publisher = {The Institute of Mathematical Statistics and the Bernoulli Society},
+  url       = {https://doi.org/10.1214/16-EJS1154},
+}
+
 @Article{Kang15elecCustClustExpertDR,
   author   = {Kang, Jimyung and Lee, Jee-Hyong},
   title    = {Electricity Customer Clustering Following Experts’ Principle for Demand Response Applications},
@@ -26830,11 +27042,11 @@ https://youtu.be/wPqtzj5VZus},
   url       = {http://proceedings.mlr.press/v42/chen14.pdf},
 }
 
-@TechReport{Sigrin17mktDmdDgenDoc,
+@TechReport{Sigrin16mktDmdDgenDoc,
   author      = {Benjamin Sigrin and Michael Gleason and Robert Preus and Ian Baring-Gould and Robert Margolis},
   title       = {The Distributed Generation Market Demand Model (dGen): Documentation},
   institution = {NREL (National Renewable Energy Laboratory)},
-  year        = {2017},
+  year        = {2016},
   number      = {NREL/TP-6A20-65231},
   abstract    = {The Distributed Generation Market Demand (dGen) model is a geospatially rich, bottom-up, 
 market-penetration model that simulates the potential adoption of distributed energy resources 
@@ -26853,7 +27065,12 @@ models maintained and applied at NREL (see Appendix C). All technologies modeled
 dGen framework leverage a database of highly resolved geospatial information (Figure ES-1), 
 along with algorithms for modeling DER economics, customer decision-making, and diffusion of 
 technology over time.},
-  comment     = {Recommended by Ben Norris, CPR Consulting
+  comment     = {Divides US into 200m x 200m squares and classifies selects some as agents of some energy user category, who will adopt DER or not.  Adoption somehow controlled by adaptive Bass model that changes its coeffs each year.  Detailed land use.  Does both Wind and Solar.
+
+Assumptions 
+* most important adoption factors are location, energy consumption and cost: No demographics, but somehow does have population increase
+* no econ factors like GINI
+* imitation is captured by Bass, not by spatial relationships
 
 Gavin Novotny wrote:
 
@@ -26863,12 +27080,24 @@ NREL “generic adoption forecast”
 •	Used to assist Maine state legislature in forecasting DPV by 2021
 •	Successor to “SolarDS” model
 
+Data Sources
+* EIA RECS: Yearly energy consumption by building category in US.
+                   Latest update as of May 2019 was in 2018
+* EIA CBECS:   Yearly energy consumption by building category in US.
+                         Latest update as of May 2019 was in 2012
+* ORNL: day/night occupancy for classifying residential
+* HSIP: commercial buildings, large spaces and building types
+* OpenEI Utility-Rage Database
+* load profiles: a couple synthesized for commercial buildings.  I missed where residentials came from
+
+
+ 
 See also: 
 Dong17resPVdeployFrcst
 Gagnon17netMtrAdoptPV
 Cole18impactSunShot2030 (uses it)
 },
-  file        = {:Sigrin17mktDmdDgenDoc.pdf:PDF},
+  file        = {:Sigrin16mktDmdDgenDoc.pdf:PDF},
 }
 
 @TechReport{Corbus2011eastWindTrans,
@@ -27626,6 +27855,24 @@ Dong17resPVdeployFrcst which uses the Bose Diffusion equation
 Gagnon17netMtrAdoptPV which uses diffusion equations, I think},
   file      = {:Rogers83diffusInnovBk.pdf:PDF},
   url       = {http://www.experience-capitalization.net/bitstream/handle/123456789/83/diffusion-of-innovations.pdf?sequence=1&isAllowed=y},
+}
+
+@Article{Bandourian02cmprParamIncDist,
+  author    = {Bandourian, Ripsy and McDonald, James and Turley, Robert S},
+  title     = {A comparison of parametric models of income distribution across countries and over time},
+  year      = {2002},
+  abstract  = {The five-parameter generalized beta distribution and ten of its special cases are considered as 
+models fore the size distribution of income. The models are fit to income data for 23 countries 
+and various years—a total of 82 data sets. Of the models considered, the Weibull, Dagum and 
+generalized beta of the second kind are best fitting of the models with two, three and four 
+parameters for 62 percent, 84 percent, and 96 percent of the data sets, respectively. Increasing 
+inequality with respect to pre-tax income is observed in most of the countries considered. },
+  comment   = {Weibull (2 param) and Dagum (3 param) are clearly the best fitting across countries and time, Dagum better than Weibull.  Generalized Beta (4 param) must be better.
+
+Useful for filling out expected value tails of zip code based demo data (neeed to calc Gini coeff)},
+  file      = {:Bandourian02cmprParamIncDist.pdf:PDF},
+  publisher = {Luxembourg income study working paper},
+  url       = {https://papers.ssrn.com/sol3/papers.cfm?abstract_id=324900},
 }
 
 @TechReport{Rogers11frcstingNorthAmTransmsn,
@@ -31717,6 +31964,23 @@ and education public policy.},
   timestamp = {2011.05.05},
 }
 
+@Article{Gagnon17retailTariffPVdply,
+  author   = {Pieter Gagnon and Wesley J. Cole and Bethany Frew and Robert Margolis},
+  title    = {The impact of retail electricity tariff evolution on solar photovoltaic deployment},
+  journal  = {The Electricity Journal},
+  year     = {2017},
+  volume   = {30},
+  number   = {9},
+  pages    = {22 - 28},
+  issn     = {1040-6190},
+  note     = {Energy Policy Institute's Seventh Annual Energy Policy Research Conference},
+  abstract = {This analysis explores the impact that the evolution of retail electricity tariffs can have on the deployment of solar photovoltaics. It suggests that ignoring the evolution of tariffs resulted in up to a 36% higher prediction of the capacity of distributed PV in 2050, compared to scenarios that represented tariff evolution. Critically, the evolution of tariffs had a negligible impact on the total generation from PV—both utility-scale and distributed—in the scenarios that were examined.},
+  doi      = {https://doi.org/10.1016/j.tej.2017.10.003},
+  file     = {:Gagnon17retailTariffPVdply.pdf:PDF},
+  keywords = {Photovoltaics, Solar, Tariffs, Rates, Evolution, Distributed, Adoption, Projection, DGen, ReEDS},
+  url      = {http://www.sciencedirect.com/science/article/pii/S104061901730249X},
+}
+
 @Article{Demsar13spatialPCA,
   author    = {Dem{\v{s}}ar, Ur{\v{s}}ka and Harris, Paul and Brunsdon, Chris and Fotheringham, A Stewart and McLoone, Sean},
   title     = {Principal component analysis on spatial data: an overview},
@@ -35319,7 +35583,7 @@ Odds ratio as a performance metric for binary events, like tornadoes. Probably r
   url       = {http://dx.doi.org/10.1175/1520-0434(2000)015<0221:UOTORF>2.0.CO;2},
 }
 
-@Article{Kwan212,
+@Article{Kwan12varsSpatPVus,
   author    = {Kwan, Calvin Lee},
   title     = {Influence of local environmental, social, economic and political variables on the spatial distribution of residential solar PV arrays across the United States},
   journal   = {Energy Policy},
@@ -38863,12 +39127,12 @@ Stopping Criterion
   pages    = {1373 - 1379},
   issn     = {0895-4356},
   abstract = {We performed a Monte Carlo study to evaluate the effect of the number of events per variable (EPV) analyzed in logistic regression analysis. The simulations were based on data from a cardiac trial of 673 patients in which 252 deaths occurred and seven variables were cogent predictors of mortality; the number of events per predictive variable was (2527 = 36) for the full sample. For the simulations, at values of EPV = 2, 5, 10, 15, 20, and 25, we randomly generated 500 samples of the 673 patients, chosen with replacement, according to a logistic model derived from the full sample. Simulation results for the regression coefficients for each variable in each group of 500 samples were compared for bias, precision, and significance testing against the results of the model fitted to the original sample. For EPV values of 10 or greater, no major problems occurred. For EPV values less than 10, however, the regression coefficients were biased in both positive and negative directions; the large sample variance estimates from the logistic model both overestimated and underestimated the sample variance of the regression coeffi-cients; the 90\% confidence limits about the estimated values did not have proper coverage; the Wald statistic was conservative under the null hypothesis; and paradoxical associations (significance in the wrong direction) were increased. Although other factors (such as the total number of events, or sample size) may influence the validity of the logistic model, our findings indicate that low EPV can lead to major problems.},
-  comment  = {Using random draws of real data, needed about 10 positive events per input variable for logistic regression -- can use to pick the maximum input feature dimension.  I'm not sure if this was "exact" logistic regression or not, but it was the 1st high for a google scholar search of "exact logistic regression"
+  comment  = {Using random draws of real cardiovascular data, needed about 10 positive events per input variable for logistic regression -- can use to pick the maximum input feature dimension.  I believe that this was for "exact" logistic regression;  was the 1st hit for a google scholar search for "exact logistic regression"
 
 I wonder if it assumed that all variables were independent?
 
 Would the trick in King01logRgrssnRare be a help?
-Does this eliminate the need for Exact LR? (King02logistRgrssnMLvsExact)},
+Does King02logistRgrssnMLvsExact eliminate the need for Exact LR?},
   doi      = {https://doi.org/10.1016/S0895-4356(96)00236-3},
   file     = {:Peduzzi96numEVvarLogRgrssn.pdf:PDF},
   keywords = {Monte Carlo, bias, precision, significance testing},
@@ -42923,7 +43187,37 @@ KDE better than spline in some ways (spline QR compared to is: Nielsen06quantReg
   year        = {2005},
   number      = {2005-10977-3 R2},
   month       = aug,
-  comment     = {Dynamic line rating very advantageous with wind generation; good theory and tech overview for Dakota study * 15-20 pct increase in thermal rating if dyanamic Bigger rating increase if source is wind power (170 pct in one Dakota scenario on p. 11) * Wind power when blowing wind (wind power starts at > 3.5m/s) * convection cooling up to 85 pct of total cooling (2.12m/s at perfect angle) * this increases by 180 pct over 0.61 m/s in conductor rating tables * ==> rating increased by 170 pct over table ratings * equations for effect of wind speed and direction (p. 9) -- ampacity is solved for numerically: the current carrying capacity of the line (def'n from Wikipedia) -- wind direction correction factor ranges from about 0.1 to 1 (I checked in Matlab) -- this means that wind direction will be important When does dynamic thermal rating help? * when it's windy/cold * short lines: "security" or "stability" ratings are stricter than thermal for long lines, limit current first * nice graph of this on p. 6 * IEEE and CIGRE standards listed * common conservative steady state limits: Ambient temperature: 40 deg C Wind speed: 0.61 m/s (2 ft/sec) Solar Radiation: 1000 W/m2 Maximum conductor temperature: 80 deg C * new power lines have fiber optics builtin; can pass sag and temp information * latest advances do probabilistic conductor temp modeling * has table of conductor options ffect of wind speed * * presentation slides (tasks 1, 3 and 4, as well as 2, are also linked into this bibtex entry},
+  comment     = {Dynamic line rating very advantageous for wind generation; good theory and tech overview for Dakota study 
+
+* 15-20 pct increase in thermal rating if dyanamic 
+
+Bigger rating increase if source is wind power (170 pct in one Dakota scenario on p. 11) 
+* Wind power when blowing wind (wind power starts at > 3.5m/s) 
+* convection cooling up to 85 pct of total cooling (2.12m/s at perfect angle) 
+* this increases by 180 pct over 0.61 m/s in conductor rating tables 
+* ==> rating increased by 170 pct over table ratings 
+* equations for effect of wind speed and direction (p. 9)
+ -- ampacity is solved for numerically: the current carrying capacity of the line (def'n from Wikipedia)
+ -- wind direction correction factor ranges from about 0.1 to 1 (I checked in Matlab)
+ -- this means that wind direction will be important 
+
+When does dynamic thermal rating help? 
+* when it's windy/cold 
+* short lines: "security" or "stability" ratings are stricter than thermal for long lines, limit current first 
+* nice graph of this on p. 6 
+* IEEE and CIGRE standards listed 
+
+Common conservative steady state limits: 
+* Ambient temperature: 40 deg C 
+*Wind speed: 0.61 m/s (2 ft/sec) 
+* Solar Radiation: 1000 W/m2 
+* Maximum conductor temperature: 80 deg C 
+
+Other
+* new power lines have fiber optics builtin; can pass sag and temp information 
+* latest advances do probabilistic conductor temp modeling 
+* has table of conductor options effect of wind speed 
+* * presentation slides (tasks 1, 3 and 4, as well as 2, are also linked into this bibtex entry},
   file        = {ABB05DakotaTransIncr.pdf:ABB05DakotaTransIncr.pdf:PDF;ABB05DakotaTransIncr.ppt:ABB05DakotaTransIncr.ppt:PowerPoint;ABB05DakotaTransIncr.pdf:ABB05DakotaTransIncr.pdf:PDF},
   groups      = {Read},
   location    = {940 Main Campus Drive, Suite 300 Raleigh, NC 27606},
@@ -44642,6 +44936,29 @@ May need to use a score something like this for left AND right censored wind pow
   file      = {Fritz17windPVfrcstUMrbrgTalk.pptx:Fritz17windPVfrcstUMrbrgTalk.pptx:PowerPoint 2007+},
   owner     = {sotterson},
   timestamp = {2017.04.12},
+}
+
+@Article{Gagnon16distPVadoptMktFctr,
+  author       = {Gagnon, Pieter and Sigrin, Ben},
+  title        = {Distributed PV Adoption - Sensitivity to Market Factors},
+  year         = {2016},
+  month        = {2},
+  abstractnote = {NREL staff used the dSolar (distributed solar) model to forecast the adoption of distributed, behind-the-meter PV through the year 2050 for 9 different scenarios. The scenarios varied in their assumptions about a carbon tax, the cost of PV systems in the future, and what credit would be given for excess generation once current net metering policies expire.},
+  file         = {:Gagnon16distPVadoptMktFctr.pdf:PDF},
+  place        = {United States},
+  url          = {https://www.nrel.gov/docs/fy16osti/65984.pdf},
+}
+
+@Article{Gagnon17distPVprojKentucky2040,
+  author       = {Gagnon, Pieter and Das, Paritosh},
+  title        = {Projections of Distributed Photovoltaic Adoption in Kentucky through 2040},
+  year         = {2017},
+  month        = {6},
+  abstractnote = {NREL has used the dGen (Distributed Generation Market Demand Model) to project the adoption of distributed Photovoltaics in Kentucky through 2040. This analysis was conducted by the STAT Network at the request of the Kentucky Energy Office.},
+  doi          = {10.2172/1365709},
+  file         = {:Gagnon17distPVprojKentucky2040.pdf:PDF},
+  place        = {United States},
+  url          = {https://www.osti.gov/biblio/1365709},
 }
 
 @Article{Galanis06windKalmanNonLin,

@@ -8127,6 +8127,61 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
       
 ******* building TF to use AVX commands on windows 10
         See [[https://github.com/faisalthaheem/tensorflow-windows][here]]
+*** Jupyterlab
+***** Starting it: jupyter lab
+***** Emacs keybindings
+******* text editor: settings -> "text editor keymaps" -> emacs
+******* [[emacs bindings in cells]]
+***** matplotlib gui extension: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib]]
+
+      After installing (using conda), put this in your notebook:
+
+      %matplotlib widget
+
+***** integration w/ drawio block diagram drawer: [[https://github.com/QuantStack/jupyterlab-drawio][QuantStack/jupyterlab-drawio]]
+
+      Don't have to install anything other than the extension.  Runs in browser that Jupyter is running in.
+
+***** jump to definition: [[https://github.com/krassowski/jupyterlab-go-to-definition][krassowski/jupyterlab-go-to-definition]]
+      Goes to variable/function def w/
+
+        alt+mouseClick
+      or
+        ctrl+alt+b
+
+      and can be configured for others (see extension github page).
+
+      Nice and works.
+
+***** filetree file finder: [[https://github.com/youngthejames/jupyterlab_filetree][youngthejames/jupyterlab_filetree]]
+***** python creating convenience: [[https://github.com/jtpio/jupyterlab-python-file][jtpio/jupyterlab-python-file]]
+***** conda env switching, cloning, etc.: [[https://github.com/fcollonval/jupyter_conda][fcollonval/jupyter_conda]]
+
+      Similar to anaconda navigator but seems faster, and (I think) is more capable.
+
+      Works in basic Jupyter notebook too.
+
+***** extensions that are maybe nice but not working
+******* open file w/ part of name: [[https://github.com/parente/jupyterlab-quickopen][parente/jupyterlab-quickopen]]
+
+        Seems like it would be nice but has two-step install instructions, one of which is pip only.
+
+        Too complicated.
+
+******* non-git auto-versioning: [[https://github.com/timkpaine/jupyterlab_autoversion][timkpaine/jupyterlab_autoversion]]
+
+        It does [[https://github.com/timkpaine/jupyterlab_autoversion/issues/1][make its own git repo]], though.
+
+        However, it doesn't work for me.  I submitted a [[https://github.com/timkpaine/jupyterlab_autoversion/issues/11][bug]].
+
+******* <<emacs bindings in cells>>: install [[https://github.com/kpe/jupyterlab-emacskeys][kpe/jupyterlab-emacskeys]]
+
+        conda install nodejs
+        jupyter labextension install jupyterlab-emacskeys
+
+        Doesn't work very well.  Many emacs binding missing. I filed a bug.
+
+
 *** Machine learning Python libs
 ***** [[http://scikit-learn.org/stable/][scikit-learn]]
 ******* guy's [[http://www.google-melange.com/gsoc/proposal/review/google/gsoc2013/nicolastr/12001][plan]] to add missing feature fill-in using matrix completion
