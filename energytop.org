@@ -182,7 +182,6 @@
     - l2-norm: euclidean distance (not very sparse)
     - See also [[Distance Measures]]
 
-
 ***** p-Gaussians good for high dims
 ******* initial paper: [[file:energy.bib::Francois05locKernHiDim][Francois et al. 2005: About]] locality of kernels
 ******* [[file:energy.bib::Verleysen05cursDimMinTser][Verleysen & Francois 2005: Curse Dimensionality Data]] and norms
@@ -471,7 +470,7 @@
 ***** Includes Weibull and discrete distributions e.g. Poisson: see [[http://www.math.uah.edu/stat/special/GeneralExponential.html][list]]
 *** Poisson Process
 
-    Distribution often used to simulate arrival times.
+    Distribution often used to simulate arrival times and counts.
 
 ***** See [[cite:Smirni16cs426dscrtEvntSimCrsNotes][Smirni 2016: Discrete Event Sim. Course Notes]], does Poisson sim
 ***** See [[cite:Shinomoto10EstFireRatePoisson][Shinomoto 2010: Estimating Firing Rate Book Chapter]], Poisson rate est.
@@ -2047,6 +2046,15 @@ Scott
 ***** [[file:energy.bib::Baird05oneStepInvrtNN][Baird et al. 2005: One PDF]] step pdf learn invertible NN
 ******* See also: [[Wind spatio-temporal patterns]]
 
+* <<Multi-task Learning>>
+*** TODO [[file:energy.bib::Caruana97multiTaskLearninng][Caruana 1997: Multitask Learning]]
+*** TODO [[file:energy.bib::Ruder17multiTskDeepNN][Ruder 2017 multitask deep NN]]
+*** [[file:energy.bib::Bonilla08MultiTaskGaussProc][Bonilla et al. 2008: Multi task Gaussian Process Prediction]]
+*** [[file:energy.bib::Zou18multiTaskDisease][Zou et al. 2018: Multi Task Learning Disease Models]]: regularized GPs across regions
+*** [[file:energy.bib::Vogt18multiDistLrnAnomDet][Vogt et al. 2018: Multitask anomaly pred maint]]
+*** Multitask Software
+***** _Scikit-learn_ [[https://scikit-learn.org/stable/modules/linear_model.html#multi-task-lasso][has]] multitask Elastic Net and Lasso but not Poisson, general GLM, it seems
+***** [[http://spams-devel.gforge.inria.fr/][SPAMS]] (python,R) [[scholar.google.com/scholar?q=logistic+regression+mixed+categorical+and+continuous+inputs&hl=en&as_sdt=0&as_vis=1&oi=scholart][has]] Multitask, regularized linear/logistic/softmax rgrssn
 * <<Graph Networks>>
 
   Proposed way of representing knowlege in a more interpretable and data-efficient way than [[Deep Learning]] neural nets.
@@ -2063,6 +2071,7 @@ Scott
 *** [[file:energy.bib::Pillow16mathNeurTlsSlides][Pillow 2016: Mathematical Tools Neuroscience Course Notes]]: GLM vs. GLM vs. Poisson/Logistic Regression
 *** [[cite:Fox08btstrpRgrsnBookChap][Fox 2008: Chap 21: Bootstrapping Regrssn Models: Applied Regression Analysis]]
 
+*** [[file:energy.bib::Benjamin18mdrnMLvsGLMpoisson][Benjamin et al. 2018: Modern Machine Learning vs Poisson GLM]]
 *** Logistic Regression
 ***** [[file:energy.bib::Shalizi15datAnalElemViewBk][Shalizi 2015: Advanced]] data analysis from elementary perspective (logistic regression, ...)
 ***** [[file:energy.bib::][Nielsen et al. 2004: Wind Power Ensemble Forecasting]] (logistic shape pow curve)
@@ -4548,6 +4557,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ******* also [[Spatial Load Forecast]]
 ******* also [[Autoencoder Time Series Clustering]]
 ******* also [[Clustering for prediction]]
+******* also [[Load Profiles]]
 *** [[Time delay estimation]] (for inter-turbine wind lag)
 ***** use kNN MI across turbine pair lag sets, like clustering in [[file:energy.bib::Stogbauer04leastDepMutInfo][Stoegbauer et al. 2004: Least dependent component]]
 ***** clusters lags: [[file:energy.bib::Puma-Villanueva07predWrapSelClust][Puma-Villanueva et al. 2007: Long term time]]
@@ -7923,19 +7933,20 @@ Scott
 ********* automatic relevance determination
 ********* can do trees, like other techniques can do
 *********** eg. [[file:energy.bib::Kusiak08dataMineWind][Kusiak 2008: Prediction of Wind]], for ramp prediction
-********* multi-task learning (several regressions @ once, sharing common tasks)
+********* [[Multi-task Learning]] (several regressions @ once, sharing common tasks)
 *********** could use for learning individual turbine regressions and their independencies
 *********** a way of doing either offsite measurements
-************* another way?:  [[file:energy.bib::Csato01onlineLearnWindField][Csato & Opper 2001: Online Learning of]]
+************* [[file:energy.bib::Csato01onlineLearnWindField][Csato & Opper 2001: Online Learning of Wind Field Models]]
 *********** computationally efficient
-*********** see [[http://www.dcs.shef.ac.uk/ml/gprt/slides/kaiyu.pdf][slides]] and paper: [[file:energy.bib::Bonilla08MultiTaskGaussProc][Bonilla et al. 2008: Multi task Gaussian Process Prediction]]
+*********** works for GP's: *** see [[http://www.dcs.shef.ac.uk/ml/gprt/slides/kaiyu.pdf][slides]] and paper: [[file:energy.bib::Bonilla08MultiTaskGaussProc][Bonilla et al. 2008: Multi task Gaussian Process Prediction]]
+*********** [[file:energy.bib::Zou18multiTaskDisease][Zou et al. 2018: Multi Task Learning Disease Models]]
 ********* from nonuniformly sampled data @ arbitrary intervals: [[file:energy.bib::Chevillon07directMultiStep][Chevillon 2007: Direct Multi Step]] ( (but generic, not necess GP))
 ********* Bayesian Linear Regression ([[file:energy.bib::Williams97predictLin2GaussProc][Williams 1998: Prediction with Gaussian processes]])
 ********* can cluster regressor relationships
 *********** maybe [[Extreme Quantile Forecasting]], regimes ramps?
 *********** [[file:energy.bib::Shi08curvePredClustGaussProcMix][Shi & Wang 2008: Curve prediction and]]
 *********** [[file:energy.bib::Gregorcic07LocalIDgaussProc][Gregorcic & Lightbody 2007: Local Model Network]]
-*********** related to [[multi-task learning]]?
+*********** related to [[Multi-task Learning]]?
 ********* asymmetric loss functions ([[***********%20%5B%5BGaussian%20Process%20Dynamical%20Models%5D%5D
           ][Bayes Risk is separated from likelihood]])
 ********* sparse data
@@ -10837,10 +10848,9 @@ Erika
 ***** Tech Adoption Overviews
 ******* DONE [[file:energy.bib::Wikepedia19techAdoptLfCycl][Wikipedia 2019: Technology Adoption Lifecycle]]
 ******* [[file:energy.bib::Rogers83diffusInnovBk][Rogers 1983: Diffusion of Innovation Book]]
-******* TODO [[file:energy.bib::Taherdoost18reviewTechAdopt][Taherdoost 2018 review tech accept models]]
-******* DONE [[file:energy.bib::Taherdoost18reviewTechAdopt][Taherdoost 2018 review tech accept/adopt]]
+******* DONE [[file:energy.bib::Taherdoost18reviewTechAdopt][Taherdoost 2018 review tech accept models]]
 ***** Solar adoption rates
-******* TODO [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market Model (dGen)]]: NREL
+******* DONE [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market Model (dGen)]]: NREL
 ******* [[file:energy.bib::Gagnon16distPVadoptMktFctr][Gagnon & Sigrin 2016: Distributed PV Adoption Mkt Factors]]
 ******* [[file:energy.bib::Kwasnik19adoptDERagentRsltn][Kwasnik et al. 2019: PV Agent Adopt Resolution Implications]]
 ******* [[file:energy.bib::Sigrin18uncertMktMdlPVmultiMdl][Sigrin et al. 2018: Market Modeling Uncertainty Distr. Solar]]
@@ -10866,15 +10876,16 @@ Erika
 ******* TODO [[file:energy.bib::Bernards18][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
 ***** <<Bass Innovation Diffusion Models>>
 ******* DONE [[file:energy.bib::Wikipedia19bassDiffus][Wikipedia 2019: Bass Diffusion Model]]
-******* [[file:energy.bib::Bass94bassWithoutDecVars][Bass et al. 1994: Why Bass Model w/o dec vars]] (with derivations. SDE?)
+******* TODO [[file:energy.bib::Bass94bassWithoutDecVars][Bass et al. 1994: Why Bass Model w/o dec vars]] (with derivations. SDE?)
 ******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012: Innovation diffusion SDEs]] (could get rate of change)
 ******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012 bass SDE rate of change (interscience online)]]
-******* [[file:energy.bib::][Cosguner et al. 2018: Dynamic Pricing New Products Dyn Bass]]
+******* TODO [[file:energy.bib::][Cosguner et al. 2018: Dynamic Pricing New Products Dyn Bass]]
 ******* [[file:energy.bib::Nafidi18inhomogDiffProcBassSDE][Nafidi et al. 2018 inhomog diffuse model Bass]]
 ******* [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]]
 ******* [[file:energy.bib::Manshadi16genBassNtwk][Manshadi & Misra 2016: Generalized Bass Model Networks]]
 ******* [[file:energy.bib::Bertotti16bassDiffusCorrInhomog][Bertotti et al. 2016: Bass diffus corr inhomog advert]]
 ******* [[file:energy.bib::Bertotti16innovDiffusCorrNtwk][Bertotti et al. 2016: Innovation diff corr networks]]
+******* [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]]
 ***** Stochastic Adoption Forecasting
 ******* TODO [[file:energy.bib::Madadi17diffFrcstBrwnSpln][Madadi et al. 2017: Diffuse Brownian spline, Small data]]
 ******* [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]]
@@ -11018,11 +11029,15 @@ Erika
       Homeland Security land use DB.  Includes, for example, HSIP 2015 (HSIP 2012 was used in [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market]] to find large building locations and their types.
 ***** [[https://landscan.ornl.gov/landscan-data-availability][ORNL LandScan]] day/night occupancy 
       Used to ID residential locations in  [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market]]
+***** [[https://www.mrlc.gov/data][NLCD (National Land-Cover Database)]].  Used in [[file:energy.bib::Perez19ovrbldCurtailFirmPV_draft][Perez et al. 2019: Overbuilding Curtailment PV]] I think  
 *** Electricity rates
 ***** OpenEI Utility-Rate Database
       Is used by [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market]] (at least)
       
-*** Load Profile Data
+*** <<Load Profiles>>
+***** [[file:energy.bib::Hayn14loadPrfofilesHshldSeg][Hayn et al. 2014: Electricity Europe load profile socio]]: Factors affecting load profiles
+***** [[Electrical Load Profile Clustering]]
+***** TODO [[file:energy.bib::Nelson19mnEfcnyPot2020apdxA][Nelson & others 2019: Minnesota Energy Efficiency Potential Study Appendix A]]
 * <<Random Variable Generation>>
 *** [[cite:Hardin13genRealisticCorrMat][Hardin et al. 2013 Gen Realistic Random Corr Matrix has Rcode]]
 *** [[http://math.stackexchange.com/questions/357980/how-to-generate-random-symmetric-positive-definite-matrices-using-matlab][How to generate random symmetric positive definite matrices using MATLAB?]]
@@ -11202,6 +11217,17 @@ Erika
 * <<Discrete Events: Poisson arrivals, etc.>>
 *** [[cite:Smirni16cs426dscrtEvntSimCrsNotes][Smirni 2016: Discrete Event Sim. Course Notes]], does Poisson
 *** [[cite:Shinomoto10EstFireRatePoisson][Shinomoto 2010: Estimating Firing Rate Book Chapter]], Poisson rate est.
+*** Poisson (which uses exponentials) is a [[file:energy.bib::Weber16poissonExpClassNotesDS430][good model b/c exponentials are memoryless]]
+***** Proof that exponentials are memoryless: [[file:energy.bib::Myers12memorylessExpPropCS547][Myers 2012: CS Lecture]]
+*** Binomial vs. exponential vs. geometric vs. Poisson distributions vs. Erlang
+
+    For independent trials...
+
+***** binomial: [[file:energy.bib::Weber16poissonExpClassNotesDS430][# of successes in a fixed number of trials]]
+***** geometric:  [[file:energy.bib::Weber16poissonExpClassNotesDS430][time between successes in a series if trials]] 
+***** exponential: [[file:energy.bib::Weber16poissonExpClassNotesDS430][time between occurrences with continuous time]] 
+***** Poisson:  [[file:energy.bib::Weber16poissonExpClassNotesDS430][number of successes in a fixed period with continuous time]] 
+***** Erlang: [[file:energy.bib::Smirni16cs426dscrtEvntSimCrsNotes][sum of exponential]] RV's
 * <<State Change Detection>>
 
   /Novelty/, /anomaly/, /outlier/, and /change-point/ detection are either synonymous or "closely related" (change-point), says [[cite:Pimentel14revNovDet][Pimentel et al. 2014]].  So his proposed classification is instead: 
@@ -12255,8 +12281,8 @@ optimization to be a generalization of linear programming.
     04/21/19 [[file:energy.bib::Wikipedia19bassDiffus][Wikipedia 2019: Bass Diffusion Model]]
     04/30/19 [[file:energy.bib::Hoyt17usApartmentDemandFrcst][Hoyt 2017: US Apartment Demand Forecast]]
     05/07/19 [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market]] (at least)
-      
-
+    05/08/19 [[file:energy.bib::Weber16poissonExpClassNotesDS430][Weber 2016: Notes Poisson and Exponential]]
+             [[file:energy.bib::Myers12memorylessExpPropCS547][Myers 2012: CS Lecture Memoryless]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:./energy.bib

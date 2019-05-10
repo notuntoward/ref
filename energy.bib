@@ -15422,6 +15422,29 @@ NREL generic adoption forecast: Sigrin17mktDmdDgenDoc},
   url      = {http://www.sciencedirect.com/science/article/pii/S0360544218307898},
 }
 
+@Article{Hayn14loadPrfofilesHshldSeg,
+  author   = {Marian Hayn and Valentin Bertsch and Wolf Fichtner},
+  title    = {Electricity load profiles in Europe: The importance of household segmentation},
+  journal  = {Energy Research \& Social Science},
+  year     = {2014},
+  volume   = {3},
+  pages    = {30 - 45},
+  issn     = {2214-6296},
+  abstract = {In the current market design, the increasing use of renewable energy sources for electricity generation leads to new challenges in balancing supply and demand. While households are responsible for 29% of total electricity demand in Europe, a good understanding of their consumption and load profiles is missing. Similar to existing clustering methodologies from marketing science, this paper proposes an approach for the segmentation of households. The approach particularly focusses on the impact of socio-demographic factors and the equipment with electric appliances as well as new technologies for electricity and heat supply on residential load profiles. In addition to these three factors themselves, the dependencies between them are identified as crucial. Therefore, in order to adequately assess the future development of residential load profiles, on the one hand, a qualitative analysis of socio-demographic factors is carried out and, on the other hand, the influence of selected technologies is quantitatively modeled. Beyond the mere impact on households’ annual energy demand, in focus of most existing research in the field, particular emphasis will be given to the peak load development, which is considered increasingly relevant for balancing supply and demand and maintaining security of supply.},
+  comment  = {Factors found in several studies to affect total energy consumption of the shape of load profiles.
+
+Main factors are 
+1. household size
+2. net income
+3. age of "reference" person
+4. employment status
+5 other stuff},
+  doi      = {https://doi.org/10.1016/j.erss.2014.07.002},
+  file     = {:Hayn14loadPrfofilesHshldSeg.pdf:PDF},
+  keywords = {Household segmentation, Residential electricity demand and load profiles, Lifestyles and socio-demographic factors, Electric appliances and technologies for electricity and heat supply},
+  url      = {http://www.sciencedirect.com/science/article/pii/S2214629614000802},
+}
+
 @Article{Zheng12qboost,
   author    = {Songfeng Zheng},
   title     = {QBoost: Predicting quantiles with boosting for regression and binary classification},
@@ -19850,6 +19873,47 @@ Interaction terms might be selectable using: Duvenaud11AddGausProcIntrct},
   url         = {http://jmlr.org/proceedings/papers/v32/taieb14.pdf},
 }
 
+@Article{Ruder17multiTskDeepNN,
+  author   = {Ruder, Sebastian},
+  title    = {An overview of multi-task learning in deep neural networks},
+  journal  = {arXiv preprint arXiv:1706.05098},
+  year     = {2017},
+  abstract = {Multi-task learning (MTL) has led to successes in many applications of machine
+learning, from natural language processing and speech recognition to computer
+vision and drug discovery. This article aims to give a general overview of MTL,
+particularly in deep neural networks. It introduces the two most common methods
+for MTL in Deep Learning, gives an overview of the literature, and discusses
+recent advances. In particular, it seeks to help ML practitioners apply MTL
+by shedding light on how MTL works and providing guidelines for choosing
+appropriate auxiliary tasks.},
+  comment  = {An intro to deep learning but forcused on NN's.  Should read Caruana97multiTaskLearninng first.},
+  groups   = {Scott:1},
+}
+
+@Article{Caruana97multiTaskLearninng,
+  author   = {Caruana, Rich},
+  title    = {Multitask Learning},
+  journal  = {Machine Learning},
+  year     = {1997},
+  volume   = {28},
+  number   = {1},
+  pages    = {41--75},
+  month    = {Jul},
+  issn     = {1573-0565},
+  abstract = {Multitask Learning is an approach to inductive transfer that improves generalization by using the domain information contained in the training signals of related tasks as an inductive bias. It does this by learning tasks in parallel while using a shared representation; what is learned for each task can help other tasks be learned better. This paper reviews prior work on MTL, presents new evidence that MTL in backprop nets discovers task relatedness without the need of supervisory signals, and presents new results for MTL with k-nearest neighbor and kernel regression. In this paper we demonstrate multitask learning in three domains. We explain how multitask learning works, and show that there are many opportunities for multitask learning in real domains. We present an algorithm and results for multitask learning with case-based methods like k-nearest neighbor and kernel regression, and sketch an algorithm for multitask learning in decision trees. Because multitask learning works, can be applied to many different kinds of domains, and can be used with different learning algorithms, we conjecture there will be many opportunities for its use on real-world problems.
+
+Keywords: inductive transfer, parallel transfer, multitask learning, backpropagation, k-nearest neighbor, kernel
+regression, supervised learning, generalization},
+  comment  = {Seems to be the staring paper for multitask learning.  Useful for multi-DER adoption forecasting, probably, where there is way more PV dat than there is for, example, batteries (multitask learning helped with that in: Zou18multiTaskDisease)
+
+A follow on paper to read could be Ruder17multiTskDeepNN, which sounds like a similar paper but updated, and focuses on deep NN's},
+  day      = {01},
+  doi      = {10.1023/A:1007379606734},
+  file     = {:Caruana97multiTaskLearninng.pdf:PDF},
+  groups   = {Scott:1},
+  url      = {https://doi.org/10.1023/A:1007379606734},
+}
+
 @InProceedings{Bessa16gaussCplaDcsns,
   author    = {R. J. Bessa},
   title     = {On the quality of the Gaussian copula for multi-temporal decision-making problems},
@@ -20188,6 +20252,25 @@ recipes that may be useful in practical data analysis.},
   doi       = {10.1007/978-1-4419-5675-0_2},
   file      = {Shinomoto10EstFireRatePoisson.pdf:Shinomoto10EstFireRatePoisson.pdf:PDF},
   url       = {http://dx.doi.org/10.1007/978-1-4419-5675-0_2},
+}
+
+@Article{Benjamin18mdrnMLvsGLMpoisson,
+  author   = {Benjamin, Ari S. and Fernandes, Hugo L. and Tomlinson, Tucker and Ramkumar, Pavan and VerSteeg, Chris and Chowdhury, Raeed H. and Miller, Lee E. and Kording, Konrad P.},
+  title    = {Modern Machine Learning as a Benchmark for Fitting Neural Responses},
+  journal  = {Frontiers in Computational Neuroscience},
+  year     = {2018},
+  volume   = {12},
+  pages    = {56},
+  issn     = {1662-5188},
+  abstract = {Neuroscience has long focused on finding encoding models that effectively ask “what predicts neural spiking?” and generalized linear models (GLMs) are a typical approach. It is often unknown how much of explainable neural activity is captured, or missed, when fitting a model. Here we compared the predictive performance of simple models to three leading machine learning methods: feedforward neural networks, gradient boosted trees (using XGBoost), and stacked ensembles that combine the predictions of several methods. We predicted spike counts in macaque motor (M1) and somatosensory (S1) cortices from standard representations of reaching kinematics, and in rat hippocampal cells from open field location and orientation. Of these methods, XGBoost and the ensemble consistently produced more accurate spike rate predictions and were less sensitive to the preprocessing of features. These methods can thus be applied quickly to detect if feature sets relate to neural activity in a manner not captured by simpler methods. Encoding models built with a machine learning approach accurately predict spike rates and can offer meaningful benchmarks for simpler models.},
+  comment  = {Newer ML techniques are better at spike prediction than poisson GLM.  Has Python.  Could be a quick way to compare models for MN SP.
+
+One question: how make modern ML techniques predict a "probability of count" distribution like GLM poisson does.  I think the NN can do this but what about the others?
+
+Code is here: https://github.com/KordingLab/spykesML},
+  doi      = {10.3389/fncom.2018.00056},
+  file     = {:Benjamin18mdrnMLvsGLMpoisson.pdf:PDF},
+  url      = {https://www.frontiersin.org/article/10.3389/fncom.2018.00056},
 }
 
 @Article{doi:10.1080/03610918.2015.1122048,
@@ -26868,8 +26951,11 @@ probability of observed events than with conventional methods. While the predict
 cumulative distribution function has a similar quality and no significant differences are visible 
 in the continuous ranked probability score, the probability density function will be substantially 
 smoother. This is also reflected in a significantly lower ignorance score. },
-  comment   = {Single output NN distribution regression with random thresholds during training.  This is what I called dr1nn in the IRPWIND final report for WP 82.3 (2018).  Although, I implemented it with the Matlab NN toolbox and Stephan later reimplimented it for this paper with what I would guess were his own tools.},
+  comment   = {Single output NN distribution regression with random thresholds during training.  This is what I called dr1nn in the IRPWIND final report for WP 82.3 (2018).  Although, I implemented it with the Matlab NN toolbox and Stephan later reimplimented it for this paper with what I would guess were his own tools.
+
+Multitask intro: Caruana97multiTaskLearninng},
   file      = {:Vogt18multiDistLrnAnomDet.pdf:PDF},
+  groups    = {Scott:1},
 }
 
 @Article{Hao11visMultiDimSaX,
@@ -34488,7 +34574,6 @@ This is a Fed Reserve report that was also publshed as an article in Oh15mdlDepH
   abstract  = {This paper presents results from a UK Open University project which surveyed consumers’ reasons for adoption, and non-adoption, of energy efficiency measures and renewable energy systems—collectively called low- and zero-carbon technologies—and their experiences of using these technologies. Data were gathered during 2006 via an online questionnaire with nearly 400 responses, plus 111 in-depth telephone interviews. The respondents were mainly environmentally concerned, ‘green’ consumers and therefore these are purposive rather than representative surveys. The paper outlines results for four energy efficiency measures (loft insulation, condensing boilers, heating controls and energy-efficient lighting) and four household renewables (solar thermal water heating, solar photovoltaics, micro-wind turbines and wood-burning stoves). These green consumers typically adopted these technologies to save energy, money and/or the environment, which many considered they achieved despite rebound effects. The reasons for considering but rejecting these technologies include the familiar price barriers, but there were also other obstacles that varied according to the technology concerned. Nearly a third of the surveyed consumers had adopted household renewables, over half of which were wood stoves and 10\% solar thermal water heating systems. Most adopters of renewables had previously installed several energy efficiency measures, but only a fifth of those who seriously considered renewables actually installed a system. This suggests sell energy efficiency first, then renewables. There seems to be considerable interest in household renewables in the UK, especially among older, middle-class green consumers, but so far only relatively few pioneers have managed to overcome the barriers to adoption.
 Keywords
 Consumers Surveys Energy efficiency Renewable energy Low- and zero-carbon technologies Policies User-centred design improvements },
-  file      = {:Taherdoost18reviewTechAdopt.pdf:PDF},
   publisher = {Springer},
   url       = {https://link.springer.com/article/10.1007%2Fs12053-008-9013-y#citeas},
 }
@@ -35536,7 +35621,7 @@ Forecast combination (ensembles)
 Keywords: demand forecast, stochastic differential equation, simulation, uncertainties, GBM, interpolation},
   doi       = {10.1080/23311975.2017.1300992},
   editor    = {Joseph Amankwah-Amoah},
-  file      = {:C\:/Users/scotto/OneDrive - Clean Power Research/ref/papers/Madadi17diffFrcstBrw.pdf:PDF},
+  file      = {Madadi17diffFrcstBrw.pdf:PDF},
   publisher = {Informa {UK} Limited},
 }
 
@@ -39117,6 +39202,30 @@ Stopping Criterion
   url       = {http://proceedings.mlr.press/v33/shah14.html},
 }
 
+@InProceedings{Zou18multiTaskDisease,
+  author    = {Zou, Bin and Lampos, Vasileios and Cox, Ingemar},
+  title     = {Multi-Task Learning Improves Disease Models from Web Search},
+  booktitle = {Proceedings of the 2018 World Wide Web Conference},
+  year      = {2018},
+  series    = {WWW '18},
+  pages     = {87--96},
+  address   = {Republic and Canton of Geneva, Switzerland},
+  publisher = {International World Wide Web Conferences Steering Committee},
+  abstract  = {We investigate the utility of multi-task learning to disease surveillance using Web search data. Our motivation is two-fold. Firstly, we assess whether concurrently training models for various geographies - inside a country or across different countries - can improve accuracy. We also test the ability of such models to assist health systems that are producing sporadic disease surveillance reports that reduce the quantity of available training data. We explore both linear and nonlinear models, specifically a multi-task expansion of elastic net and a multi-task Gaussian Process, and compare them to their respective single task formulations. We use influenza-like illness as a case study and conduct experiments on the United States (US) as well as England, where both health and Google search data were obtained. Our empirical results indicate that multi-task learning improves regional as well as national models for the US. The percentage of improvement on mean absolute error increases up to 14.8% as the historical training data is reduced from 5 to 1 year(s), illustrating that accurate models can be obtained, even by training on relatively short time intervals. Furthermore, in simulated scenarios, where only a few health reports (training data) are available, we show that multi-task learning helps to maintain a stable performance across all the affected locations. Finally, we present results from a cross-country experiment, where data from the US improves the estimates for England. As the historical training data for England is reduced, the benefits of multi-task learning increase, reducing mean absolute error by up to 40%.},
+  acmid     = {3186050},
+  comment   = {Multitask learning improves both linear regression elastic net and Gaussian process models.  They help by jointly learning a country with lots of data (US) and one with restricted data (England), and by jointly predicting US regions.
+
+Multitask intro in Caruana97multiTaskLearninng},
+  doi       = {10.1145/3178876.3186050},
+  file      = {:Zou18multiTaskDisease.pdf:PDF},
+  groups    = {Scott:1},
+  isbn      = {978-1-4503-5639-8},
+  keywords  = {disease surveillance, gaussian processes, multi-task learning, regularized regression, user-generated content, web search},
+  location  = {Lyon, France},
+  numpages  = {10},
+  url       = {https://doi.org/10.1145/3178876.3186050},
+}
+
 @Article{Peduzzi96numEVvarLogRgrssn,
   author   = {Peter Peduzzi and John Concato and Elizabeth Kemper and Theodore R. Holford and Alvan R. Feinstein},
   title    = {A simulation study of the number of events per variable in logistic regression analysis},
@@ -40227,6 +40336,29 @@ Keywords:
   groups    = {Read},
   owner     = {scotto},
   timestamp = {2011.04.10},
+}
+
+@Article{Nafidi18inhomogDiffProcBassSDE,
+  author       = {Nafidi, Ahmed and J{\'a}imez, Ram{\'o}n Guti{\'e}rrez and S{\'a}nchez, Ram{\'o}n Guti{\'e}rrez},
+  title        = {A new inhomogeneous lognormal diffusion process with exogenous factors in diffusion coefficient},
+  year         = {2018},
+  volume       = {41},
+  pages        = {131--137},
+  abstract     = {We propose a new non-homogeneous one dimensional stochastic lognormal diffusion process,
+by introducing time function (Exogenous factors) in the diffusion coefficient of the process
+and which can be considered as an extension of the homogeneous lognormal process (see [1],
+[2] and [3] ). From the corresponding Ito’s stochastic differential equation, the probabilistic
+characteristics of the model are obtained such as the transition probability density function
+and the moments of the process. Finally, we develop the statistical inference of this model
+on the basis of maximum likelihood methodology with discrete sampling.
+
+Keywords: Lognormal diffusion process, Exogenous factors, Statistical inference in diffu-
+sion process, Trend function},
+  booktitle    = {Fourteenth International Conference Zaragoza--Pau on Mathematics and its Applications: Jaca (Spain), September 12},
+  comment      = {Another SDE Bass diffusion model},
+  file         = {:Nafidi18inhomogDiffProcBassSDE.pdf:PDF},
+  organization = {Prensas de la Universidad de Zaragoza},
+  url          = {https://books.google.de/books?hl=en&lr=&id=Mj5VDwAAQBAJ&oi=fnd&pg=PA131&dq=bass+diffusion+model+stochastic+differential+equations&ots=bqYuZ7QSEb&sig=-j6ndO0pdUC1eOeehhBK0f4Ms9Y&redir_esc=y#v=onepage&q=bass%20diffusion%20model%20stochastic%20differential%20equations&f=false},
 }
 
 @Article{Hido10outlierDetDensRat,
@@ -47103,6 +47235,16 @@ PCA paper here: Aguilera13psplinePCA},
   url         = {http://digibug.ugr.es/bitstream/10481/29831/1/2197066x.pdf},
 }
 
+@Misc{Myers12memorylessExpPropCS547,
+  author       = {Daniel Myers},
+  title        = {CS 547 Lecture 9: Conditional Probabilities and the Memoryless Property},
+  howpublished = {Course Notes, University of Wisconsin, Madison},
+  year         = {2012},
+  comment      = {Explains why exponential processes are memoryless and the consequences.  This matters for queing, etc. but I was looking for this info because Poisson regression assumes the exponential process because it's memoryless ()},
+  file         = {:Myers12memorylessExpPropCS547.pdf:PDF},
+  url          = {http://pages.cs.wisc.edu/~dsmyers/cs547/},
+}
+
 @Book{Nabney02NetlabBook,
   title     = {NETLAB: algorithms for pattern recognition},
   publisher = {Springer-Verlag New York, Inc.},
@@ -47126,18 +47268,6 @@ PCA paper here: Aguilera13psplinePCA},
   owner     = {sotterson},
   publisher = {Wiley Online Library},
   timestamp = {2016.12.19},
-}
-
-@Article{Nafidi18inhomogDiffProcBassSDE,
-  author       = {Nafidi, Ahmed and J{\'a}imez, Ram{\'o}n Guti{\'e}rrez and S{\'a}nchez, Ram{\'o}n Guti{\'e}rrez},
-  title        = {A new inhomogeneous lognormal diffusion process with exogenous factors in diffusion coefficient},
-  year         = {2018},
-  volume       = {41},
-  pages        = {131--137},
-  booktitle    = {Fourteenth International Conference Zaragoza--Pau on Mathematics and its Applications: Jaca (Spain), September 12},
-  comment      = {Another SDE Bass diffusion model},
-  organization = {Prensas de la Universidad de Zaragoza},
-  url          = {https://books.google.de/books?hl=en&lr=&id=Mj5VDwAAQBAJ&oi=fnd&pg=PA131&dq=bass+diffusion+model+stochastic+differential+equations&ots=bqYuZ7QSEb&sig=-j6ndO0pdUC1eOeehhBK0f4Ms9Y&redir_esc=y#v=onepage&q=bass%20diffusion%20model%20stochastic%20differential%20equations&f=false},
 }
 
 @Article{NASA15dustMiddleEast,
@@ -47207,6 +47337,19 @@ Statistical forecasting: notes on regression and time series analysis
 http://people.duke.edu/~rnau/411home.htm},
   file         = {Nau15smoothMAexpHolt.pdf:Nau15smoothMAexpHolt.pdf:PDF},
   url          = {http://people.duke.edu/~rnau/411avg.htm},
+}
+
+@TechReport{Nelson19mnEfcnyPot2020apdxA,
+  author      = {Carl Nelson and others},
+  title       = {Minnesota Energy Efficiency Potential Study: 2020–2029 Appendix A},
+  institution = {Minnesota Department of Commerce, Division of Energy Resources},
+  year        = {2019},
+  type        = {techreport},
+  number      = {Contract # 121430},
+  month       = mar,
+  comment     = {Appendix A (March 2019) describes the method Josh Quinnel will use to synthesize load profiles for the MN Solar Pathways project.},
+  file        = {:Nelson19mnEfcnyPot2020apdxA.pdf:PDF},
+  url         = {https://www.mncee.org/mnpotentialstudy/home/},
 }
 
 @TechReport{NERC08accomHiVarGen,
@@ -48984,6 +49127,16 @@ https://drive.google.com/file/d/0B9LZEwqBZcp4LVVNbUxmRV82blU/edit?usp=sharing},
   url          = {http://neonwatty.files.wordpress.com/2013/07/spectral_clustering_draft_33.pdf},
 }
 
+@Misc{Weber16poissonExpClassNotesDS430,
+  author       = {Bob Weber},
+  title        = {Notes on the Poisson and exponential distributions},
+  howpublished = {Course notes: Decision Sciences 430, Kellog School of Management},
+  month        = apr,
+  year         = {2016},
+  file         = {:Weber16poissonExpClassNotesDS430.pdf:PDF},
+  url          = {https://www.kellogg.northwestern.edu/faculty/weber/decs-430/},
+}
+
 @TechReport{Welch06kalmanIntro,
   author      = {Greg Welch and Gary Bishop},
   title       = {An Introduction to the {Kalman} Filter},
@@ -49332,6 +49485,8 @@ Related article: Zhu12multiVaryCfsFncResp},
 
 @Comment{jabref-meta: grouping:
 0 AllEntriesGroup:;
+1 StaticGroup:Markings\;2\;1\;\;\;\;;
+2 StaticGroup:Scott:1\;2\;1\;\;\;\;;
 1 StaticGroup:Markings\;2\;1\;\;\;\;;
 2 StaticGroup:Scott Otterson:6\;2\;1\;\;\;\;;
 2 StaticGroup:[Scott Otterson:]\;2\;1\;\;\;\;;
