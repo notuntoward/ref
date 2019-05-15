@@ -67,7 +67,7 @@ Related?  Shi08curvePredClustGaussProcMix},
 * related to Barbounis2007locRecurrentNeuralWind?},
   crossref  = {Barbounis2007locRecurrentNeuralWind},
   doi       = {10.1109/TEC.2004.827040},
-  file      = {Bechrakis04windCorrNeighborStat.pdf:Bechrakis04windCorrNeighborStat.pdf:PDF;Bechrakis04windCorrNeighborStat.pdf:Bechrakis04windCorrNeighborStat.pdf:PDF},
+  file      = {Bechrakis04windCorrNeighborStat.pdf:Bechrakis04windCorrNeighborStat.pdf:PDF},
   groups    = {Read},
   keywords  = { correlation methods, neural nets, power system simulation, wind power, wind power plants artificial neural network, neighboring measuring stations, sample cross correlation function, wind data measuring station, wind power, wind speed correlation},
   owner     = {sotterson},
@@ -90,7 +90,7 @@ Related?  Shi08curvePredClustGaussProcMix},
 -- see also Diebold98evalDens
 * Could be a criterion for probabilistic forecast feature selection, especially since it evalutates sharpness and calibration simultaneously, avoiding multi-critera optimization (I think)},
   crossref    = {Diebold98evalDens},
-  file        = {Carney06evalDensForecastPIThisto.pdf:Carney06evalDensForecastPIThisto.pdf:PDF;Carney06evalDensForecastPIThisto.pdf:Carney06evalDensForecastPIThisto.pdf:PDF},
+  file        = {Carney06evalDensForecastPIThisto.pdf:Carney06evalDensForecastPIThisto.pdf:PDF},
   groups      = {Ensemble, PointDerived},
   location    = {Dublin, Dublin 2, Ireland,},
   owner       = {sotterson},
@@ -298,7 +298,7 @@ They explain prewhitening and relate it to Box-Jenkins models in Bisgaard06study
   comment   = {Model mismatch causes slow convergence in num. pts, and overtraining if high dims.
 * asks if hyperparam max lik selection can improve. Answer is "yes" in Sollich05robustModMismatchGaussProc},
   crossref  = {Sollich05robustModMismatchGaussProc},
-  file      = {Sollich02modMismatchGaussProc.pdf:Sollich02modMismatchGaussProc.pdf:PDF;Sollich02modMismatchGaussProc.pdf:Sollich02modMismatchGaussProc.pdf:PDF},
+  file      = {Sollich02modMismatchGaussProc.pdf:Sollich02modMismatchGaussProc.pdf:PDF},
   groups    = {Read},
   location  = {Cambridge, MA},
   owner     = {scotto},
@@ -1149,7 +1149,7 @@ Related: Kraskov08MIChierClustMutInf.Papana08EvalMutInfoDynSys},
   number    = {1},
   pages     = {25-32},
   abstract  = { A recent article proposed a histogram-based method for estimating the Lorenz curve and Gini index from grouped data that did not use the group means reported by government agencies. When comparing their method to one based on group means, the authors assume a uniform density in each grouping interval, which leads to an overestimate of the overall average income. After reviewing the additional information in the group means, it will be shown that as the number of groups increases, the bounds on the Gini index obtained from the group means become narrower. This is not necessarily true for the histogram method. Two simple interpolation methods using the group means are described and the accuracy of the estimated Gini index they yield and the histogram-based one are compared to the published Gini index for the 1967–2013 period. The average absolute errors of the estimated Gini index obtained from the two methods using group means are noticeably less than that of the histogram-based method. Supplementary materials for this article are available online.[Received August 2014. Revised September 2015.] },
-  comment   = {Calculating GINI coefficients from anonymized summary stats, like quantiles, interval means, etc.   Estimtimates pdf by line slope between bin means, right hand tail fit some some kind of exponential.
+  comment   = {Calculating GINI coefficients from anonymized summary stats, like quantiles, interval means, etc.   Estimtimates pdf by line slope between bin means, right hand tail fit some some kind of exponential.  R-code attached at end of paper.
 
 See Fancier: Prendergast16quantLorenzGINI
 See Simpler: Tille12histoLorenzGini},
@@ -1157,8 +1157,7 @@ See Simpler: Tille12histoLorenzGini},
   eprint    = {https://doi.org/10.1080/00031305.2015.1105152},
   file      = {:Lyon16advtgsGrpMnLorenzGINI.pdf:PDF},
   publisher = {Taylor \& Francis},
-  url       = { 
-        https://doi.org/10.1080/00031305.2015.1105152
+  url       = {https://doi.org/10.1080/00031305.2015.1105152
     
 },
 }
@@ -2317,6 +2316,36 @@ Vladislav Akhmatov
   owner     = {sotterson},
   timestamp = {2015.01.28},
   url       = {http://iie.fing.edu.uy/simsee/curso2010/wind_power_in_power_systems.pdf},
+}
+
+@Article{Ohara2010noLogCountDat,
+  author        = {O’hara, Robert B and Kotze, D Johan},
+  title         = {Do not log-transform count data},
+  journal       = {Methods in ecology and Evolution},
+  year          = {2010},
+  volume        = {1},
+  number        = {2},
+  pages         = {118--122},
+  __markedentry = {[Scott:6]},
+  abstract      = {1. Ecological count data (e.g. number of individuals or species) are often log‐transformed to satisfy parametric test assumptions.
+
+2. Apart from the fact that generalized linear models are better suited in dealing with count data, a log‐transformation of counts has the additional quandary in how to deal with zero observations. With just one zero observation (if this observation represents a sampling unit), the whole data set needs to be fudged by adding a value (usually 1) before transformation.
+
+3. Simulating data from a negative binomial distribution, we compared the outcome of fitting models that were transformed in various ways (log, square root) with results from fitting models using quasi‐Poisson and negative binomial models to untransformed count data.
+
+4. We found that the transformations performed poorly, except when the dispersion was small and the mean counts were large. The quasi‐Poisson and negative binomial models consistently performed well, with little bias.
+
+5. We recommend that count data should not be analysed by log‐transforming it, but instead models based on Poisson and negative binomial distributions should be used.
+
+Key-words: generalized linear models, linear models, overdispersion, Poisson, transformation},
+  comment       = {It's better to model count data with a quasi-poission (has an adjustable over-dispersion param)  or a neg. binomial GLM than it is to log transform the data to make it normal and then (I think) use linear regression.  The log transform will blow up on zero-count-values, and even if it didn't, the resulting mean estimate will be biased (although where/how the bias is calcualted is not terribly clear).
+
+Estimating the mean of true count data -- here from a neg binomial dist -- is best done by a quasi-poisson or neg. binomial glm.  I guess what people might commonly do is to notice that the data is not normally distributed, and therefore, they would log transform it before estimating the mean (and then inverse transforming?)  Anyway, using the glms yield much better results.
+
+On this data a quasi poisson is just as good as a neg binomial, but the authors say that you can't expect that in real life.  Then the give a technique for chosing between the two models, as well as references to a couple of other papers on the topic.},
+  file          = {:Ohara2010noLogCountDat.pdf:PDF},
+  publisher     = {Wiley Online Library},
+  url           = {https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/j.2041-210X.2010.00021.x},
 }
 
 @Article{Gregorcic07LocalIDgaussProc,
@@ -43461,6 +43490,7 @@ Alg. not really described here: must see: Agarwal10UnivMDS (I think)},
   edition   = {Second Edition},
   comment   = {Looks like it would be a good book to scan for logistic regression, GLM stuff, mixed models, random effects, etc.},
   file      = {:Agresti07introCategDatAnl.pdf:PDF},
+  url       = {https://mregresion.files.wordpress.com/2012/08/agresti-introduction-to-categorical-data.pdf},
 }
 
 @InCollection{Akaike92infoThryMaxLik,
