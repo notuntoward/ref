@@ -2071,7 +2071,12 @@ Scott
 *** [[file:energy.bib::Pillow16mathNeurTlsSlides][Pillow 2016: Mathematical Tools Neuroscience Course Notes]]: GLM vs. GLM vs. Poisson/Logistic Regression
 *** [[cite:Fox08btstrpRgrsnBookChap][Fox 2008: Chap 21: Bootstrapping Regrssn Models: Applied Regression Analysis]]
 
-*** [[file:energy.bib::Benjamin18mdrnMLvsGLMpoisson][Benjamin et al. 2018: Modern Machine Learning vs Poisson GLM]]
+*** <<Poisson Regression>>
+***** TODO [[file:energy.bib::Agresti07introCategDatAnl][Agresti 2007: Introduction Categorical Data Analysis]] (for Poisson part)
+***** TODO [[file:energy.bib::Benjamin18mdrnMLvsGLMpoisson][Benjamin et al. 2018: Modern Machine Learning vs Poisson GLM]]
+***** [[https://examples.dask.org/machine-learning/glm.html][Generalized Linear Models — Dask]] (e.g. lasso poisson, big parallel graph)
+***** [[file:energy.bib::Pillow16mathNeurTlsSlides][Pillow 2016: Mathematical Tools Neuroscience Course Notes]]: GLM (old) vs. GLM (new), Poisson/Logistic Regression
+***** [[Discrete Events: Poisson arrivals, etc.]] 
 *** Logistic Regression
 ***** [[file:energy.bib::Shalizi15datAnalElemViewBk][Shalizi 2015: Advanced]] data analysis from elementary perspective (logistic regression, ...)
 ***** [[file:energy.bib::][Nielsen et al. 2004: Wind Power Ensemble Forecasting]] (logistic shape pow curve)
@@ -2081,6 +2086,7 @@ Scott
 ******* [[cite:Xu16bndLogRgrssnImbal][Xu et al. 2016: Robust Logistic Regression class imbal. (for fault det)]]
 ******* [[file:energy.bib::Peduzzi96numEVvarLogRgrssn][Peduzzi et al. 1996 num events per var]]: simulated, could pick max feat dim
 ******* [[file:energy.bib::King02logistRgrssnMLvsExact][King & Ryan 2002: Prelim MaxLik vs. Exact Logistic Rgrssn]]
+***** [[file:energy.bib::Ohara2010noLogCountDat][O’hara & Kotze 2010: Do not log counts]]: Poisson/Neg. binom best for counts
 * <<Deep Learning in Energy Systems>>
 *** [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]    :DpLrn:FrcstDmd:
 *** TODO [[cite:Busseti12deepLrnTimeSer][Busseti et al. 2012: Deep Learning Time Series Modeling (Demand frcst, RNN best)]] :DpLrn:RNN:FrcstDmd:
@@ -4841,8 +4847,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
   Note that the expected value of a perfect quantile forecast would do
   this.
 
-*** censored distributions
-    <<censored distributions>>
+*** <<censored distributions>>
 ***** occur for windspeed (can't go to zero) and power curves (sat. @ max pwr)
 ***** can lower and/or upper-bound density or regression estimates w/ log()
 
@@ -4853,7 +4858,6 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ******* [[file:energy.bib::Cannon11quantRgrsnNNprecip][Cannon 2011: Quantile]]
 ******* non-parametric regression w/ truncated learning: [[http://cran.r-project.org/web/packages/truncSP/truncSP.pdf][R's truncSP package]]
 *** <<Bounding by output transformation or modeling>>
-    <<Bounding by output transformation>>
 
     For wind power, logit() seems popular and also settled on in
     [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006]], where the author tried both.
@@ -4918,6 +4922,7 @@ sera
 ***** many link functions (p. 103): [[file:energy.bib::Madsen11glmBook][Madsen & Thyregod 2011: Introduction]]
 ***** link functions w/ good plots: [[file:energy.bib::Fox08glmBookChap][Fox 2008: Applied Regression Analysis]]
 ***** many: [[file:energy.bib::Simonoff09transfRegrsn][Simonoff 2009: Transformations]], plus what relationship is implied
+***** [[file:energy.bib::Ohara2010noLogCountDat][O’hara & Kotze 2010: Do not log counts]]: Poisson/Neg. binom best for counts
 ***** [[file:energy.bib::Wang13extrmQRpowTranf][Wang & Li 2013: Estimation Extreme Conditional]] lin w/ nonlinear tails, tail test
 ***** [[file:energy.bib::Gill01interpIntrctHierGLM][Gill 2001: Interpreting]] interactions, GLM
 ***** [[file:energy.bib::Granger76frcstXfrmSeries][Granger & Newbold 1976: Forecasting]]
@@ -11228,6 +11233,7 @@ Erika
 ***** exponential: [[file:energy.bib::Weber16poissonExpClassNotesDS430][time between occurrences with continuous time]] 
 ***** Poisson:  [[file:energy.bib::Weber16poissonExpClassNotesDS430][number of successes in a fixed period with continuous time]] 
 ***** Erlang: [[file:energy.bib::Smirni16cs426dscrtEvntSimCrsNotes][sum of exponential]] RV's
+*** [[Poisson Regression]]
 * <<State Change Detection>>
 
   /Novelty/, /anomaly/, /outlier/, and /change-point/ detection are either synonymous or "closely related" (change-point), says [[cite:Pimentel14revNovDet][Pimentel et al. 2014]].  So his proposed classification is instead: 
@@ -12283,6 +12289,7 @@ optimization to be a generalization of linear programming.
     05/07/19 [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market]] (at least)
     05/08/19 [[file:energy.bib::Weber16poissonExpClassNotesDS430][Weber 2016: Notes Poisson and Exponential]]
              [[file:energy.bib::Myers12memorylessExpPropCS547][Myers 2012: CS Lecture Memoryless]]
+    05/14/19 [[file:energy.bib::Ohara2010noLogCountDat][O’hara & Kotze 2010: Do not log counts]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:./energy.bib
