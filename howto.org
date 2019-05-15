@@ -1806,8 +1806,8 @@ Many text editors have access to these in some simple way, so before thinking ab
 ***** [[https://github.com/Bad-ptr/persp-mode.el][persp-mode.el]]: named perspe
 ******* does save window configs 
 ******* does reload files in conf
-******* doesn't handle indirect buffers (my [[https://github.com/Bad-ptr/persp-mode.el/issues/93][bug report]])
-******* somewhat maintained: on May 20, last commit was April 18, only 15 issues
+******* doesn't handle indirect buffers (my [[https://github.com/Bad-ptr/persp-mode.el/issues/93][bug report]], which was slightly followed up on)
+******* somewhat maintained: infrequent commits were made in May 2019
 ***** <<Saving windows/frames in registers>>
 ******* [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Configuration-Registers.html#Configuration-Registers][configuration registers]] for storing/retrieving windows config
 
@@ -8131,7 +8131,67 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 ***** Starting it: jupyter lab
 ***** Emacs keybindings
 ******* text editor: settings -> "text editor keymaps" -> emacs
+        This is only in JL's text editor -- not the cells.
 ******* [[emacs bindings in cells]]
+***** Manually setting bindings
+******* JL's [[https://jupyterlab.readthedocs.io/en/stable/user/interface.html][keyboard shortcut customization docs]]
+******* cell expand/collapse and move ([[https://stackoverflow.com/questions/49280261/jupyter-lab-shortcuts][code]])
+
+{
+  // One O to collapse selected outputs
+  "notebook:collapse-selected-outputs": {
+    "command": "notebook:hide-cell-outputs",
+    "keys": [
+      "O"
+    ],
+    "selector": ".jp-Notebook:focus"
+  },    
+
+  // Two O's to expand selected outputs
+  "notebook:expand-selected-outputs": {
+    "command": "notebook:show-cell-outputs",
+    "keys": [
+      "O", 
+      "O"
+    ],
+    "selector": ".jp-Notebook:focus"
+  },    
+
+  "notebook:clear-all-outputs": {
+    "command": "notebook:hide-all-cell-outputs",
+    "keys": [
+      "Ctrl L"
+    ],
+    "selector": ".jp-Notebook:focus"
+  },
+
+  "notebook:collapse-all-code": {
+    "command": "notebook:hide-all-cell-code",
+    "keys": [
+      "Shift O"
+    ],
+    "selector": ".jp-Notebook:focus"
+  }
+
+  // Move cell up (originally "Ctrl ArrowUp" but this didn't work on Chrome)
+  "notebook:move-cell-up": {
+    "selector": ".jp-Notebook:focus",
+    "command": "notebook:move-cell-up",
+    "keys": [
+      "P"
+    ]
+  },
+
+  // Move cell down (originally "Ctrl ArrowDown" but didn't work on Chrome)
+  "notebook:move-cell-down": {
+    "selector": ".jp-Notebook:focus",
+    "command": "notebook:move-cell-down",
+    "keys": [
+      "N"
+    ]
+  }
+}        
+******* a (broken as of 5/19) keybinding extension: 
 ***** matplotlib gui extension: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib]]
 
       After installing (using conda), put this in your notebook:
@@ -8174,13 +8234,20 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
         However, it doesn't work for me.  I submitted a [[https://github.com/timkpaine/jupyterlab_autoversion/issues/11][bug]].
 
-******* <<emacs bindings in cells>>: install [[https://github.com/kpe/jupyterlab-emacskeys][kpe/jupyterlab-emacskeys]]
+******* <<emacs bindings in cells>>: [[https://github.com/kpe/jupyterlab-emacskeys][kpe/jupyterlab-emacskeys]]
 
         conda install nodejs
         jupyter labextension install jupyterlab-emacskeys
 
-        Doesn't work very well.  Many emacs binding missing. I filed a bug.
+        Doesn't work.  Many emacs binding missing. I [[https://github.com/kpe/jupyterlab-emacskeys/issues/2][filed a bug]].
 
+***** Jupyter/Jupyterlab graphics
+
+******* matplotlib widgets
+        From: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib: Matplotlib Jupyter Extension]]
+
+        1. Install the extension (see page)
+        2. Put in Jupyter notebook/lab cell: %matplotlib widget
 
 *** Machine learning Python libs
 ***** [[http://scikit-learn.org/stable/][scikit-learn]]
