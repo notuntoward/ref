@@ -95,6 +95,8 @@
 ***** TODO where to put our files? (Stephan)
 * <<Books>>
 *** [[file:energy.bib::Hastie09elemStatLrnBook][Hastie et al. 2009]] Elements of Statistical Learning (the classic, w/ R code)
+*** [[file:energy.bib::Tibshirani15statLrnSprsLassoBk][Tibshirani et al. 2015: Statistical Lrn Sparsity Lasso]]
+
 *** [[file:energy.bib::Koenker05QuantRgrssnBook][Koenker 2005: Quantile]] Rgrsn Book
 *** [[file:energy.bib::Boyd04CnvxOptBook][Boyd & Vandenberghe 2004: Convex]] optimization book
 *** [[file:energy.bib::Chapelle06SemiSupLrnBook][Chapelle et al. 2006: Semi]] supervised learning
@@ -468,13 +470,14 @@
 *** Exponential Family of Distributions
 ***** Good web page: [[http://www.math.uah.edu/stat/special/GeneralExponential.html][General Exponential Families]]
 ***** Includes Weibull and discrete distributions e.g. Poisson: see [[http://www.math.uah.edu/stat/special/GeneralExponential.html][list]]
-*** Poisson Process
+*** <<Poisson Process>>
 
     Distribution often used to simulate arrival times and counts.
 
 ***** See [[cite:Smirni16cs426dscrtEvntSimCrsNotes][Smirni 2016: Discrete Event Sim. Course Notes]], does Poisson sim
 ***** See [[cite:Shinomoto10EstFireRatePoisson][Shinomoto 2010: Estimating Firing Rate Book Chapter]], Poisson rate est.
 ***** Assessing goodness of fit of the binned estimates by themselves.  Handwavy scatter plot is [[http://giantoak.github.io/MMPP_Tutorial/][here]]:
+***** also [[Poisson Regression]]
 
 *** <<Gaussian Mixture Model (GMM)>>
 ***** [[cite:Smyth07emAlgGaussMixMod][Smyth 2007: EM Algorithm Gaussian Mixtures]] (w/ discrete comp. notes)
@@ -2077,6 +2080,7 @@ Scott
 ***** [[https://examples.dask.org/machine-learning/glm.html][Generalized Linear Models — Dask]] (e.g. lasso poisson, big parallel graph)
 ***** [[file:energy.bib::Pillow16mathNeurTlsSlides][Pillow 2016: Mathematical Tools Neuroscience Course Notes]]: GLM (old) vs. GLM (new), Poisson/Logistic Regression
 ***** [[Discrete Events: Poisson arrivals, etc.]] 
+***** also [[Poisson Process]]
 *** Logistic Regression
 ***** [[file:energy.bib::Shalizi15datAnalElemViewBk][Shalizi 2015: Advanced]] data analysis from elementary perspective (logistic regression, ...)
 ***** [[file:energy.bib::][Nielsen et al. 2004: Wind Power Ensemble Forecasting]] (logistic shape pow curve)
@@ -2183,7 +2187,7 @@ Scott
 ********* [[http://www.di.ens.fr/~aspremon/DSPCA.html][DSPCA: Sparse PCA using semidefinite programming]] (matlab and mex)
 ********* Matlab: [[http://mloss.org/software/view/369/][Sparse PCA 1.0 (matlab)]]
 ********* Matlab: [[http://www.eecs.berkeley.edu/~yang/][Sparse PCA via Augmented Lagrangian Methods and Application to Informaitve Feature Selection]]
-
+********* [[file:energy.bib::Tibshirani15statLrnSprsLassoBk][Tibshirani et al. 2015: Statistical Lrn Sparsity Lasso]]
 ******* Online/adaptive PCA
 ********* Online PCA/CCA/MDS: [[file:energy.bib::Gower68addPtMultivar][Gower 1968: Adding]] a point
 ********* [[file:energy.bib::Brand02IncrSVDmissDat][Brand 2002: Incremental]] PCA with missing
@@ -2217,7 +2221,7 @@ Scott
         [[cite:Li09predInfSuffDimRed][Li 2009: Exploiting predictor domain info in sufficient dim red]]
         See also: [[Sufficient Dimension Reduction]]
 ******* <<PLSR for Graph Learning>>
-        PLSR not good for graph learning
+        PLSR (not?) good for graph learning
 ********* [[cite:Kramer09gaussGraphModelsLasso][Kraemer et al. 2009: Regularized Gaussian Graph LASSO]]
 ********* [[cite:Tondel11locLinClustPLS][Toendel et al. 2011: Hierarchical Cluster Partial Least Squares]]
 ******* [[cite:Xu07optWgtPLS][Xu et al. 2007: Optimized sample-weighted partial least squares]]
@@ -3587,8 +3591,7 @@ Hope that helps,
 ************* fused lasso is listed as one of the ways to handle correlated predictors
 *************** in [[http://irina.rish.googlepages.com/beyondlasso][beyond lasso: dealing with correlated predictors, etc.]]
 *************** in [[file:energy.bib::hesterberg08larslassoreview][hesterberg et al. 2008: least]]
-*************** Lasso for multivarite smoothness
-                <<Lasso for multivarite smoothness>>
+*************** <<Lasso for multivarite smoothness>>
 ***************** when coeff's from different dims butt against each other
                   see [[http://www-stat.stanford.edu/%7etibs/ftp/fuse0.pdf][sparsity and smoothness via the fused lasso]] eq. 22
 ***************** seems to be handled by elastic net, though
@@ -3601,6 +3604,9 @@ Hope that helps,
 *********** [[http://www-stat.stanford.edu/%7etibs/ftp/fuse0.pdf][sparsity and smoothness via the fused lasso]].  listed here
 ********* dual lagrangian lasso, can do groups, huge dim, has matlab: [[file:energy.bib::tomioka09dalsparserecons][tomioka & sugiyama 2009: dual augmented lagrangian]]
 *********** matlab: [[file:~/lib/matlab/dal_ver0.97]]
+********* [[file:energy.bib::Tibshirani15statLrnSprsLassoBk][Tibshirani et al. 2015: Statistical Lrn Sparsity Lasso]]
+
+********* [[file:energy.bib::Lim15lrnInteractHierGrpLasso][Lim & Hastie 2015: Learning Interactions Hierarchical]]
 ******* [[File:energy.bib::dhillon08featselfeatclass][Dhillon et al. 2008: Efficient Feature Selection]]
 ******* Matlab Netlab demo script demard.m does automatic relevance determination
 ******* [[File:energy.bib::das08sensselworstcase][Das & Kempe 2008: Sensor Selection Minimizing]]
@@ -9465,6 +9471,10 @@ later corrected by greg heath:
 *** a way to model wind direction in [[Power Curve Learning]]
 *** interaction terms probably important for wind pow curve: [[file:energy.bib::Lee14PowerCurveEstimation][Lee et al. 2014: Power Curve Estimation]]
 *** house price QR uses interactions: [[file:energy.bib::He99multiVarQRsplines][He & Ng 1999: Quantile]]
+*** [[file:energy.bib::Tibshirani15statLrnSprsLassoBk][Tibshirani et al. 2015: Statistical Lrn Sparsity Lasso]]
+    Has ref for picking interaction terms w/ lasso and hierarchy.
+    This one: [[file:energy.bib::Lim15lrnInteractHierGrpLasso][Lim & Hastie 2015: Learning Interactions Hierarchical]]
+*** [[file:energy.bib::Lim15lrnInteractHierGrpLasso][Lim & Hastie 2015: Learning Interactions Hierarchical]]
 *** also see: [[Multiplicative Process Estimation]]
 *** also see: [[Tensors]]
 *** also see: [[Varying coefficient models]]

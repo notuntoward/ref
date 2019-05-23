@@ -1371,6 +1371,29 @@ A partial entry for this article is in speakerClust.bib (hansenXXmdl).},
 },
 }
 
+@Article{Lim15lrnInteractHierGrpLasso,
+  author        = {Michael Lim and Trevor Hastie},
+  title         = {Learning Interactions via Hierarchical Group-Lasso Regularization},
+  journal       = {Journal of Computational and Graphical Statistics},
+  year          = {2015},
+  volume        = {24},
+  number        = {3},
+  pages         = {627-654},
+  note          = {PMID: 26759522},
+  __markedentry = {[Scott:6]},
+  abstract      = { We introduce a method for learning pairwise interactions in a linear regression or logistic regression model in a manner that satisfies strong hierarchy: whenever an interaction is estimated to be nonzero, both its associated main effects are also included in the model. We motivate our approach by modeling pairwise interactions for categorical variables with arbitrary numbers of levels, and then show how we can accommodate continuous variables as well. Our approach allows us to dispense with explicitly applying constraints on the main effects and interactions for identifiability, which results in interpretable interaction models. We compare our method with existing approaches on both simulated and real data, including a genome-wide association study, all using our R package glinternet. 
+
+Keywords
+hierarchical; interaction; computer intensive; regression; logistic},
+  doi           = {10.1080/10618600.2014.938812},
+  eprint        = {https://doi.org/10.1080/10618600.2014.938812},
+  file          = {:Lim15lrnInteractHierGrpLasso.pdf:PDF},
+  publisher     = {Taylor \& Francis},
+  url           = {https://doi.org/10.1080/10618600.2014.938812
+    
+},
+}
+
 @Article{Morshedizadeh17impPowCurvMon,
   author    = {Majid Morshedizadeh and Mojtaba Kordestani and Rupp Carriveau and David S-K Ting and Mehrdad Saif},
   title     = {Improved power curve monitoring of wind turbines},
@@ -2319,15 +2342,14 @@ Vladislav Akhmatov
 }
 
 @Article{Ohara2010noLogCountDat,
-  author        = {O’hara, Robert B and Kotze, D Johan},
-  title         = {Do not log-transform count data},
-  journal       = {Methods in ecology and Evolution},
-  year          = {2010},
-  volume        = {1},
-  number        = {2},
-  pages         = {118--122},
-  __markedentry = {[Scott:6]},
-  abstract      = {1. Ecological count data (e.g. number of individuals or species) are often log‐transformed to satisfy parametric test assumptions.
+  author    = {O’hara, Robert B and Kotze, D Johan},
+  title     = {Do not log-transform count data},
+  journal   = {Methods in ecology and Evolution},
+  year      = {2010},
+  volume    = {1},
+  number    = {2},
+  pages     = {118--122},
+  abstract  = {1. Ecological count data (e.g. number of individuals or species) are often log‐transformed to satisfy parametric test assumptions.
 
 2. Apart from the fact that generalized linear models are better suited in dealing with count data, a log‐transformation of counts has the additional quandary in how to deal with zero observations. With just one zero observation (if this observation represents a sampling unit), the whole data set needs to be fudged by adding a value (usually 1) before transformation.
 
@@ -2338,14 +2360,14 @@ Vladislav Akhmatov
 5. We recommend that count data should not be analysed by log‐transforming it, but instead models based on Poisson and negative binomial distributions should be used.
 
 Key-words: generalized linear models, linear models, overdispersion, Poisson, transformation},
-  comment       = {It's better to model count data with a quasi-poission (has an adjustable over-dispersion param)  or a neg. binomial GLM than it is to log transform the data to make it normal and then (I think) use linear regression.  The log transform will blow up on zero-count-values, and even if it didn't, the resulting mean estimate will be biased (although where/how the bias is calcualted is not terribly clear).
+  comment   = {It's better to model count data with a quasi-poission (has an adjustable over-dispersion param)  or a neg. binomial GLM than it is to log transform the data to make it normal and then (I think) use linear regression.  The log transform will blow up on zero-count-values, and even if it didn't, the resulting mean estimate will be biased (although where/how the bias is calcualted is not terribly clear).
 
 Estimating the mean of true count data -- here from a neg binomial dist -- is best done by a quasi-poisson or neg. binomial glm.  I guess what people might commonly do is to notice that the data is not normally distributed, and therefore, they would log transform it before estimating the mean (and then inverse transforming?)  Anyway, using the glms yield much better results.
 
 On this data a quasi poisson is just as good as a neg binomial, but the authors say that you can't expect that in real life.  Then the give a technique for chosing between the two models, as well as references to a couple of other papers on the topic.},
-  file          = {:Ohara2010noLogCountDat.pdf:PDF},
-  publisher     = {Wiley Online Library},
-  url           = {https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/j.2041-210X.2010.00021.x},
+  file      = {:Ohara2010noLogCountDat.pdf:PDF},
+  publisher = {Wiley Online Library},
+  url       = {https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/j.2041-210X.2010.00021.x},
 }
 
 @Article{Gregorcic07LocalIDgaussProc,
@@ -48779,6 +48801,21 @@ http://www.rerinfo.ca/english/publications/pubSESCI2003PVToolbox.html},
   owner     = {sotterson},
   timestamp = {2017.02.02},
   url       = {http://statweb.stanford.edu/~tibs/sta305files/Rudyregularization.pdf},
+}
+
+@Book{Tibshirani15statLrnSprsLassoBk,
+  title         = {Statistical learning with sparsity: the lasso and generalizations},
+  publisher     = {Chapman and Hall/CRC},
+  year          = {2015},
+  author        = {Tibshirani, Robert and Wainwright, Martin and Hastie, Trevor},
+  edition       = {Dec. 19, 2016 Corrections},
+  __markedentry = {[Scott:]},
+  comment       = {Updates on how to to Lasso, etc., with sampling, sparsity, etc.
+
+* Standardization is recommended for features in different units so that  lasso input selection doesn't depend upon input scaling.  Btu typically don't scale features in same units.
+* Discusses interaction terms (cited paper: Lim15lrnInteractHierGrpLasso)},
+  file          = {:Tibshirani15statLrnSprsLassoBk.pdf:PDF},
+  url           = {http://web.stanford.edu/~hastie/StatLearnSparsity/},
 }
 
 @Article{Tizhoosh06OppositionBasedReinforcement,
