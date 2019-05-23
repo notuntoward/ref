@@ -8249,6 +8249,12 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
         1. Install the extension (see page)
         2. Put in Jupyter notebook/lab cell: %matplotlib widget
 
+***** search and replace
+
+      Kind of missing in early JL version but...
+
+******* [[https://github.com/jupyterlab/jupyterlab/issues/2017][Ctrl+Shift+R]] will do find & replace within cell
+
 *** Machine learning Python libs
 ***** [[http://scikit-learn.org/stable/][scikit-learn]]
 ******* guy's [[http://www.google-melange.com/gsoc/proposal/review/google/gsoc2013/nicolastr/12001][plan]] to add missing feature fill-in using matrix completion
