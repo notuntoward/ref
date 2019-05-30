@@ -8602,6 +8602,65 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
 ********* <<Remote Interpreter example with Tensorflow>>: [[https://medium.com/@erikhallstrm/work-remotely-with-pycharm-tensorflow-and-ssh-c60564be862d][Work remotely with PyCharm, TensorFlow and SSH]]
 ***** Atom
 ***** Spyder
+*** Installing/debugging cloned github python packages within conda environment
+    From [[https://stackoverflow.com/questions/46076754/use-package-from-github-in-conda-virtual-environment][here]] and [[https://www.youtube.com/watch?v=5hq0Edi2Ou8][here]]
+
+    Taking the example of http://github.com/glm-tools/pyglmnet
+
+***** Activate the conda environment
+      
+      Windows: 
+      1. start a anaconda powershell prompt
+      2. cd to the directory you want to clone to
+      3. activate: for base, type "activate base"
+      4. Run the commands below from inside the andaconda prompt
+
+***** Install git in the virtual environment: (conda install git)
+
+      conda install git
+
+***** Clone the project. (git clone [URL])
+
+      git clone http://github.com/glm-tools/pyglmnet
+
+***** Install the package 
+******* cd to package directory that contains setup.py.
+******* python setup.py install
+***** To delete the package: pip uninstall pyglmnet
+***** Running and debugging
+
+      If the package is installed, I don't know how to debug or bugfix the code.
+
+      So, first, you have have to /delete the installed package/: 
+
+          pip uninstall pyglmnet
+
+      Then you can edit the code wherever you have cloned the package and it will take immediate effect (you won't have to install it after every code change).  There are at least three ways to do this:
+      
+      1. Hack paths to point to the cloned repository
+
+          In any script that imports the package, insert code like this:
+
+            import sys
+            srcPath = "c:\\Users/Scott\\OneDrive - Clean Power Research\\WattPlanGrid\\mnsp\\sandbox\\pyglmnet"
+            if srcPath not in sys.path:
+                sys.path.append(srcPath)
+
+          This would have to be before the statement which imports the package.
+
+          This is ugly b/c you have to remember to delete the path hack code above.
+
+      2. do an [[https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs][editable pip install]]: pip install -e PATH
+
+      3. run [[https://stackoverflow.com/questions/19048732/python-setup-py-develop-vs-install][python setup.py develop]]
+
+         Maybe this is the best way.
+
+         But is it?  The [[https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs][editable pip install]] says there are advantages to using pip, and a commenter [[https://stackoverflow.com/questions/19048732/python-setup-py-develop-vs-install][here]] says that he had problems w/ setup.py develop and so used pip install -e PATH
+
+* Data Versioning
+*** [[https://dvc.org/][Machine Learning Version Control System · DVC]]
+*** [[https://databricks.com/blog/2018/06/05/introducing-mlflow-an-open-source-machine-learning-platform.html][Introducing MLflow: an Open Source Machine Learning Platform - The Databricks...]]
 * <<Hadoop>>
 *** [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop Intro Book]]
 

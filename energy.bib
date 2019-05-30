@@ -1380,7 +1380,7 @@ A partial entry for this article is in speakerClust.bib (hansenXXmdl).},
   number        = {3},
   pages         = {627-654},
   note          = {PMID: 26759522},
-  __markedentry = {[Scott:6]},
+  __markedentry = {[Scott:]},
   abstract      = { We introduce a method for learning pairwise interactions in a linear regression or logistic regression model in a manner that satisfies strong hierarchy: whenever an interaction is estimated to be nonzero, both its associated main effects are also included in the model. We motivate our approach by modeling pairwise interactions for categorical variables with arbitrary numbers of levels, and then show how we can accommodate continuous variables as well. Our approach allows us to dispense with explicitly applying constraints on the main effects and interactions for identifiability, which results in interpretable interaction models. We compare our method with existing approaches on both simulated and real data, including a genome-wide association study, all using our R package glinternet. 
 
 Keywords
@@ -37538,6 +37538,27 @@ Tutorial slides: Raiko15supUnsupCombLadder},
   timestamp = {2014.12.05},
 }
 
+@InProceedings{Ng02discrimVsGenNBvsLogRgrsn,
+  author        = {Ng, Andrew Y and Jordan, Michael I},
+  title         = {On discriminative vs. generative classifiers: A comparison of logistic regression and naive bayes},
+  booktitle     = {Advances in neural information processing systems},
+  year          = {2002},
+  pages         = {841--848},
+  __markedentry = {[Scott:1]},
+  abstract      = {We compare discriminative and generative learning as typified by 
+logistic regression and naive Bayes. We show, contrary to a widely-
+held belief that discriminative classifiers are almost always to be 
+preferred, that there can often be two distinct regimes of per-
+formance as the training set size is increased, one in which each 
+algorithm does better. This stems from the observation- which 
+is borne out in repeated experiments- that while discriminative 
+learning has lower asymptotic error, a generative classifier may also 
+approach its (higher) asymptotic error much faster. },
+  comment       = {Naive Bayes classifier can converge faster on small data sets than logistic regression, even though logistic regression is discriminative.  Maybe NB is a start for electric car probs.  Does this paper do ridge regression or LASSO on LR?  Seems like that might matter.},
+  file          = {:Ng02discrimVsGenNBvsLogRgrsn.pdf:PDF},
+  url           = {http://papers.nips.cc/paper/2020-on-discriminative-vs-generative-classifiers-a-comparison-of-logistic-regression-and-naive-bayes.pdf},
+}
+
 @InProceedings{Ghoshal07clustRegressDirMix,
   author    = {Subhashis Ghoshal and Changku Kang},
   title     = {Clusterwise Regression Using Dirichlet Mixtures},
@@ -47225,6 +47246,19 @@ NOTE: was copied from speakerclust.bib},
   timestamp = {2008.08.29},
 }
 
+@InBook{Mitchell17nBayesLogRegBkCh,
+  chapter       = {Generative and Discriminative Classifiers: Naive Bayes and Logistic Regression},
+  title         = {Machine Learning},
+  publisher     = {McGraw Hill},
+  year          = {2017},
+  author        = {Tom Mitchell},
+  edition       = {2nd},
+  __markedentry = {[Scott:1]},
+  comment       = {For a possible 2nd edition of the book "Machine Learning"  Apparently there was no 2nd edition yet in 2017, when I downloaded this.},
+  file          = {:Mitchell17nBayesLogRegBkCh.pdf:PDF},
+  url           = {http://www.cs.cmu.edu/~tom/NewChapters.html},
+}
+
 @TechReport{Mohrlen19selectRESfrcstRecmnd,
   author      = {Corinna M{\:o}hrlen and John Zack and Jakob W. Messner and Jethro Browell and Craig Collier and Aidan Tuohy and Justin Sharp and Gregor Giebel},
   title       = {Recommended practices for selecting renewable power forecasting solutions},
@@ -48804,18 +48838,17 @@ http://www.rerinfo.ca/english/publications/pubSESCI2003PVToolbox.html},
 }
 
 @Book{Tibshirani15statLrnSprsLassoBk,
-  title         = {Statistical learning with sparsity: the lasso and generalizations},
-  publisher     = {Chapman and Hall/CRC},
-  year          = {2015},
-  author        = {Tibshirani, Robert and Wainwright, Martin and Hastie, Trevor},
-  edition       = {Dec. 19, 2016 Corrections},
-  __markedentry = {[Scott:]},
-  comment       = {Updates on how to to Lasso, etc., with sampling, sparsity, etc.
+  title     = {Statistical learning with sparsity: the lasso and generalizations},
+  publisher = {Chapman and Hall/CRC},
+  year      = {2015},
+  author    = {Tibshirani, Robert and Wainwright, Martin and Hastie, Trevor},
+  edition   = {Dec. 19, 2016 Corrections},
+  comment   = {Updates on how to to Lasso, etc., with sampling, sparsity, etc.
 
 * Standardization is recommended for features in different units so that  lasso input selection doesn't depend upon input scaling.  Btu typically don't scale features in same units.
 * Discusses interaction terms (cited paper: Lim15lrnInteractHierGrpLasso)},
-  file          = {:Tibshirani15statLrnSprsLassoBk.pdf:PDF},
-  url           = {http://web.stanford.edu/~hastie/StatLearnSparsity/},
+  file      = {:Tibshirani15statLrnSprsLassoBk.pdf:PDF},
+  url       = {http://web.stanford.edu/~hastie/StatLearnSparsity/},
 }
 
 @Article{Tizhoosh06OppositionBasedReinforcement,
