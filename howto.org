@@ -7966,8 +7966,7 @@ utf8::upgrade(): any random byte string is not valid UTF-8.
 ***** TRY [[https://pythonprogramming.net/][Python Programming Tutorials]] (do after Sololearn, Stephan V's favorite)
 ***** [[https://www.sololearn.com/Profile/9085670][SoloLearn]]: Tutorials for Python and others.  Stephan Vogt recommended it.
 ***** plotly tutorial in [[Python plotly]]
-***** [[https://www.amazon.de/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1491962291][Hands-On Machine Learning with Scikit-Learn and TensorFlow: Concepts, Tools]]: I have
-
+***** [[https://www.amazon.de/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1491962291][Hands-On Machine Learning with Scikit-Learn and TensorFlow: Concepts, Tools]]: I have it on Kindle 
 *** Tips for Python
 ***** slices in Python
       From: [[https://stackoverflow.com/a/509295/2591097][list - Understanding Python's slice notation - Stack Overflow]]
