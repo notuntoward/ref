@@ -10122,6 +10122,21 @@ Belloni13progEvalHiDim says featsel (reduction too?) is hard when also doing inf
   url      = {http://dx.doi.org/10.1002/we.1887},
 }
 
+@Misc{Altman09mdlDevAdeqLect11,
+  author       = {Rachel MacKay Altman},
+  title        = {Lecture 11: Model Adequacy, Deviance},
+  howpublished = {Course Notes Statistics 402: Generalized Linear and Nonlinear Modelling},
+  year         = {2009},
+  abstract     = {Deviance is an important idea associated with a fitted GLM. It can be used to test the fit of
+the link function and linear predictor to the data, or to test the significance of a particular
+predictor variable (or variables) in the model. The following discussion applies to GLMs
+where the random component is in the 1-parameter exponential family (e.g., Poisson and
+binomial).},
+  comment      = {Defines deviance performance metric for a generalized linear model.},
+  file         = {:Altman09mdlDevAdeqLect11.pdf:PDF},
+  url          = {http://people.stat.sfu.ca/~raltman/stat402.html},
+}
+
 @Article{Radovanovic10knnHubsSpc,
   author    = {Radovanovi{\'c}, Milo{\v{s}} and Nanopoulos, Alexandros and Ivanovi{\'c}, Mirjana},
   title     = {Hubs in space: Popular nearest neighbors in high-dimensional data},
@@ -37539,13 +37554,12 @@ Tutorial slides: Raiko15supUnsupCombLadder},
 }
 
 @InProceedings{Ng02discrimVsGenNBvsLogRgrsn,
-  author        = {Ng, Andrew Y and Jordan, Michael I},
-  title         = {On discriminative vs. generative classifiers: A comparison of logistic regression and naive bayes},
-  booktitle     = {Advances in neural information processing systems},
-  year          = {2002},
-  pages         = {841--848},
-  __markedentry = {[Scott:1]},
-  abstract      = {We compare discriminative and generative learning as typified by 
+  author    = {Ng, Andrew Y and Jordan, Michael I},
+  title     = {On discriminative vs. generative classifiers: A comparison of logistic regression and naive bayes},
+  booktitle = {Advances in neural information processing systems},
+  year      = {2002},
+  pages     = {841--848},
+  abstract  = {We compare discriminative and generative learning as typified by 
 logistic regression and naive Bayes. We show, contrary to a widely-
 held belief that discriminative classifiers are almost always to be 
 preferred, that there can often be two distinct regimes of per-
@@ -37554,9 +37568,11 @@ algorithm does better. This stems from the observation- which
 is borne out in repeated experiments- that while discriminative 
 learning has lower asymptotic error, a generative classifier may also 
 approach its (higher) asymptotic error much faster. },
-  comment       = {Naive Bayes classifier can converge faster on small data sets than logistic regression, even though logistic regression is discriminative.  Maybe NB is a start for electric car probs.  Does this paper do ridge regression or LASSO on LR?  Seems like that might matter.},
-  file          = {:Ng02discrimVsGenNBvsLogRgrsn.pdf:PDF},
-  url           = {http://papers.nips.cc/paper/2020-on-discriminative-vs-generative-classifiers-a-comparison-of-logistic-regression-and-naive-bayes.pdf},
+  comment   = {Naive Bayes classifier can converge faster on small data sets than logistic regression, even though logistic regression is discriminative.  Maybe NB is a start for electric car probs.  Does this paper do ridge regression or LASSO on LR?  Seems like that might matter.
+
+A possibly more readable chunk on this topic: Mitchell17nBayesLogRegBkCh},
+  file      = {:Ng02discrimVsGenNBvsLogRgrsn.pdf:PDF},
+  url       = {http://papers.nips.cc/paper/2020-on-discriminative-vs-generative-classifiers-a-comparison-of-logistic-regression-and-naive-bayes.pdf},
 }
 
 @InProceedings{Ghoshal07clustRegressDirMix,
@@ -47247,16 +47263,30 @@ NOTE: was copied from speakerclust.bib},
 }
 
 @InBook{Mitchell17nBayesLogRegBkCh,
-  chapter       = {Generative and Discriminative Classifiers: Naive Bayes and Logistic Regression},
-  title         = {Machine Learning},
-  publisher     = {McGraw Hill},
-  year          = {2017},
-  author        = {Tom Mitchell},
-  edition       = {2nd},
-  __markedentry = {[Scott:1]},
-  comment       = {For a possible 2nd edition of the book "Machine Learning"  Apparently there was no 2nd edition yet in 2017, when I downloaded this.},
-  file          = {:Mitchell17nBayesLogRegBkCh.pdf:PDF},
-  url           = {http://www.cs.cmu.edu/~tom/NewChapters.html},
+  chapter   = {Generative and Discriminative Classifiers: Naive Bayes and Logistic Regression},
+  title     = {Machine Learning},
+  publisher = {McGraw Hill},
+  year      = {2017},
+  author    = {Tom Mitchell},
+  edition   = {2nd},
+  comment   = {For a possible 2nd edition of the book "Machine Learning"  Apparently there was no 2nd edition yet in 2017, when I downloaded this.
+
+1997 edition: Mitchell97nBayesLogRegBk
+
+Original paper on this idea: Ng02discrimVsGenNBvsLogRgrsn},
+  file      = {:Mitchell17nBayesLogRegBkCh.pdf:PDF},
+  url       = {http://www.cs.cmu.edu/~tom/NewChapters.html},
+}
+
+@InBook{Mitchell97nBayesLogRegBk,
+  title     = {Machine Learning},
+  publisher = {McGraw Hill},
+  year      = {1997},
+  author    = {Tom Mitchell},
+  edition   = {1st},
+  comment   = {A machine learning book on some older-school models.  An updated chapter compares Naive Bayes with Logistic regression (Mitchell17nBayesLogRegBkCh)},
+  file      = {:MitchellnBayesLogRegBk.pdf:PDF},
+  url       = {http://www.cs.cmu.edu/~tom/NewChapters.html},
 }
 
 @TechReport{Mohrlen19selectRESfrcstRecmnd,

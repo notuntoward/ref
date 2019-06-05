@@ -3732,6 +3732,9 @@ that you get when you buy Office 365?
         o June Windows update wiped out this setting
         o it wasn't transferred to my new Surface Pro, so I had to reset it
 
+*** Display environment variables in powershell w/o truncation
+
+    gci env: | Format-Table -Wrap -AutoSize
 
 *** window vertical maximize
 
@@ -5263,6 +5266,29 @@ won't work if you close and immediately open onenote again.
 ******* [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
 ******* [[Git version control]]
 ***** [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
+***** point cloned repository to my github fork
+      Inspired by user IBwWG, here: [[https://gist.github.com/jagregory/710671][How to move to a fork after cloning]]
+
+      I cloned a repository (https://github.com/glm-tools/pyglmnet/), made a branch named dataset_and_ex_fixes, and then did some bugfixes
+
+      But I couldn't do a pull request for it back to /glm-tools/pyglmnet/ because that has to be done from a fork.  
+
+      So, on github, I made a fork with url:
+
+      https://github.com/notuntoward/pyglmnet
+
+      Then, in my local clone, I pointed it to my fork with:
+
+      git remote set-url origin git remote set-url origin https://github.com/notuntoward/pyglmnet.git
+
+      git push --set-upstream origin dataset_and_ex_fixes
+
+      Following instructions that were printed on the command line, I visited
+
+      https://github.com/notuntoward/pyglmnet/pull/new/dataset_and_ex_fixes
+
+      and made a pull request back to the original pyglmnet repository
+      
 *** [[https://github.com/caldwell/commit-patch][caldwell/commit-patch: Commit patches to Darcs, Git, Mercurial, Baza...]]
 
 * HTML
@@ -8497,6 +8523,11 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
 ***** [[https://numba.pydata.org/][Numba]]: JIT makes for loops comparable to vectorization, like C/C++ [[https://hips.seas.harvard.edu/blog/2013/05/13/jit-compilation-in-matlab/][or Matlab]]
 ***** [[https://github.com/pydata/numexpr][numexpr]]: compiles numeric expressions, keeps in them in cache, does multithread
 ***** [[http://cython.readthedocs.io/en/latest/src/userguide/parallelism.html][Cython via OpenMP]]: compiles and calls the [[https://en.wikipedia.org/wiki/OpenMP][OpenMP job queuing system]]
+*** Python debugging
+***** set a breakpoint by adding a line of code
+
+      import pdb; pdb.set_trace() # Pause execution here with the debugger active.
+
 *** How to write Python documentation
 ***** [[https://www.python.org/dev/peps/pep-0257/][PEP 257 -- Docstring Conventions]]: the overarching standard
 ***** [[https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt][numpy/HOWTO_DOCUMENT]]: spyder displays this standard
@@ -8602,61 +8633,75 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
 ********* <<Remote Interpreter example with Tensorflow>>: [[https://medium.com/@erikhallstrm/work-remotely-with-pycharm-tensorflow-and-ssh-c60564be862d][Work remotely with PyCharm, TensorFlow and SSH]]
 ***** Atom
 ***** Spyder
-*** Installing/debugging cloned github python packages within conda environment
-    From [[https://stackoverflow.com/questions/46076754/use-package-from-github-in-conda-virtual-environment][here]] and [[https://www.youtube.com/watch?v=5hq0Edi2Ou8][here]]
+*** Python Package installation
+***** XGboost on Windows
+      Hard to find on Windows.  Almost everything is on linux.  But this seems to work:
 
-    Taking the example of http://github.com/glm-tools/pyglmnet
+      [[https://www.youtube.com/watch?v=lxDEkTuaz_k][How to install and use XGBOOST library in anaconda on Windows 10 ? - YouTube]]
 
-***** Activate the conda environment
+      Results are not as good as show on this notebook website: Here:
+      https://www.kaggle.com/metadist/work-like-a-pro-with-pipelines-and-feature-unions
+      the log loss is shown as 0.5192380...  but using this xgboost install, I'm seeing 0.556257 (worse than the Bernoulli example)
+
+      Anway, the instructions are:
+      1. run: conda install -c anaconda py-xgboost  (from: [[https://anaconda.org/anaconda/py-xgboost][Py Xgboost :: Anaconda Cloud]])
+      2. In python shell, test with: import xgboost as xgb
+
+***** Installing/debugging cloned github python packages within conda environment
+      From [[https://stackoverflow.com/questions/46076754/use-package-from-github-in-conda-virtual-environment][here]] and [[https://www.youtube.com/watch?v=5hq0Edi2Ou8][here]]
+
+      Taking the example of http://github.com/glm-tools/pyglmnet
+
+******* Activate the conda environment
       
-      Windows: 
-      1. start a anaconda powershell prompt
-      2. cd to the directory you want to clone to
-      3. activate: for base, type "activate base"
-      4. Run the commands below from inside the andaconda prompt
+        Windows: 
+        1. start a anaconda powershell prompt
+        2. cd to the directory you want to clone to
+        3. activate: for base, type "activate base"
+        4. Run the commands below from inside the andaconda prompt
 
-***** Install git in the virtual environment: (conda install git)
+******* Install git in the virtual environment: (conda install git)
 
-      conda install git
+        conda install git
 
-***** Clone the project. (git clone [URL])
+******* Clone the project. (git clone [URL])
 
-      git clone http://github.com/glm-tools/pyglmnet
+        git clone http://github.com/glm-tools/pyglmnet
 
-***** Install the package 
-******* cd to package directory that contains setup.py.
-******* python setup.py install
-***** To delete the package: pip uninstall pyglmnet
-***** Running and debugging
+******* Install the package 
+********* cd to package directory that contains setup.py.
+********* run: python setup.py install
+******* To delete the package: pip uninstall pyglmnet
+******* Running and debugging
 
-      If the package is installed, I don't know how to debug or bugfix the code.
+        If the package is installed, I don't know how to debug or bugfix the code.
 
-      So, first, you have have to /delete the installed package/: 
+        So, first, you have have to /delete the installed package/: 
 
-          pip uninstall pyglmnet
+            pip uninstall pyglmnet
 
-      Then you can edit the code wherever you have cloned the package and it will take immediate effect (you won't have to install it after every code change).  There are at least three ways to do this:
+        Then you can edit the code wherever you have cloned the package and it will take immediate effect (you won't have to install it after every code change).  There are at least three ways to do this:
       
-      1. Hack paths to point to the cloned repository
+        1. Hack paths to point to the cloned repository
 
-          In any script that imports the package, insert code like this:
+            In any script that imports the package, insert code like this:
 
-            import sys
-            srcPath = "c:\\Users/Scott\\OneDrive - Clean Power Research\\WattPlanGrid\\mnsp\\sandbox\\pyglmnet"
-            if srcPath not in sys.path:
-                sys.path.append(srcPath)
+              import sys
+              srcPath = "c:\\Users/Scott\\OneDrive - Clean Power Research\\WattPlanGrid\\mnsp\\sandbox\\pyglmnet"
+              if srcPath not in sys.path:
+                  sys.path.append(srcPath)
 
-          This would have to be before the statement which imports the package.
+            This would have to be before the statement which imports the package.
 
-          This is ugly b/c you have to remember to delete the path hack code above.
+            This is ugly b/c you have to remember to delete the path hack code above.
 
-      2. do an [[https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs][editable pip install]]: pip install -e PATH
+        2. do an [[https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs][editable pip install]]: pip install -e PATH
 
-      3. run [[https://stackoverflow.com/questions/19048732/python-setup-py-develop-vs-install][python setup.py develop]]
+        3. run [[https://stackoverflow.com/questions/19048732/python-setup-py-develop-vs-install][python setup.py develop]]
 
-         Maybe this is the best way.
+           Maybe this is the best way.
 
-         But is it?  The [[https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs][editable pip install]] says there are advantages to using pip, and a commenter [[https://stackoverflow.com/questions/19048732/python-setup-py-develop-vs-install][here]] says that he had problems w/ setup.py develop and so used pip install -e PATH
+           But is it?  The [[https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs][editable pip install]] says there are advantages to using pip, and a commenter [[https://stackoverflow.com/questions/19048732/python-setup-py-develop-vs-install][here]] says that he had problems w/ setup.py develop and so used pip install -e PATH
 
 * Data Versioning
 *** [[https://dvc.org/][Machine Learning Version Control System · DVC]]
