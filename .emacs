@@ -388,6 +388,16 @@
    :map ivy-minibuffer-map
    ("M-y" . ivy-next-line))) ; needed?
 
+(defun org-toggle-outline-visibility ()
+  "Hides all subheadlines or restores original visibility before toggle.
+   Eventually use this to speed up ivy by showing everything, searching and then unshowing everything."
+
+  (interactive)
+
+  ;; NAH, need to call "hide everything on one call; save outline on next.  Also, apparently need for arguments for org-save-outline-visibility:  see emacs help. 
+
+  (org-save-outline-visibility nil))
+
 ;; * IDO Mode
 ;; Ido mode (a replacement for iswitchb and much else).  Much is in customizations
 ;; advice from: http://www.masteringemacs.org/article/introduction-to-ido-mode
@@ -1048,6 +1058,12 @@
   (define-key cscope-list-entry-keymap "q" 'quit-window)) ; so quits like dired
 
 ;; ** Python
+
+(setq autopep8bin (executable-find "autopep8"))
+(if autopep8bin
+    (use-package py-autopep8)
+  (message "autopep8 is not in path"))
+
 ;; Use Elpy instead of python-mode.
 ;; ALSO REQUIRES SOME PYTHON LIBS, see: 
 ;; https://github.com/jorgenschaefer/elpy
@@ -1057,19 +1073,24 @@
   :defer t
   :init
   (elpy-enable)
-  ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?): https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
+  ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?):
+  ;; https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
   (setq python-shell-interpreter "jupyter"
         python-shell-interpreter-args "console --simple-prompt"
         python-shell-prompt-detect-failure-warning nil)
   (add-to-list 'python-shell-completion-native-disabled-interpreters
                "jupyter")
   
-  ;; use flycheck, not elpy's flymake (https://realpython.com/blog/python/emacs-the-best-python-editor/)
+  ;; use flycheck, not elpy's flymake
+  ;; (https://realpython.com/blog/python/emacs-the-best-python-editor/)
   (when (require 'flycheck nil t)
     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
     (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-  (define-key python-mode-map (kbd "C-c i") 'elpygen-implement))
+  (define-key python-mode-map (kbd "C-c i") 'elpygen-implement)
+
+  (if autopep8bin
+      (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)))
 
 ;; So C-c i generates a python function stub from symbol @ point, uses elpy
 (use-package elpygen)
@@ -1103,10 +1124,13 @@
 ;;   :config
 ;;   (define-key python-mode-map (kbd "<backtab>") 'python-back-indent))
 
-;; ;; conflicts with attempt to run jupyter?
-;; (use-package ein
-;;   :ensure t
-;;   :commands (ein:notebooklist-open))
+;; conflicts with attempt to run jupyter?
+;; This doesn't seem to help make editing .ipynb files any better
+;; maybe babel is better, esp. w/ ob-ein ?
+;; https://www.reddit.com/r/emacs/comments/a43l0i/emacs_with_jupyter_notebooks/
+(use-package ein
+  :ensure t
+  :commands (ein:notebooklist-open))
 
 ;; ** Perl
 
@@ -1991,7 +2015,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(display-time-default-load-average nil)
  '(display-time-load-average-threshold 100000000)
  '(display-time-mode t)
- '(elpy-rpc-python-command "python3")
+ '(elpy-rpc-python-command "python")
  '(emacsw32-style-frame-title t)
  '(ess-ido-flex-matching t)
  '(ess-language "R" t)
@@ -2097,13 +2121,13 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-bullets org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-bullets org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
  '(recentf-max-saved-items 200)
  '(recentf-mode t)
  '(replace-char-fold t)
- '(require-final-newline t)
+ '(require-final-newline nil)
  '(safe-local-variable-values
    (quote
     ((org-todo-keyword-faces
@@ -2155,6 +2179,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(font-lock-keyword-face ((nil (:foreground "navy"))))
  '(font-lock-string-face ((t (:foreground "black" :slant italic))))
  '(fringe ((t (:background "grey95" :foreground "firebrick" :weight bold))))
+ '(highlight-indentation-face ((t (:foreground "light gray"))))
  '(hl-line ((t (:background "gray97"))))
  '(ido-first-match ((t (:background "antique white" :weight bold))))
  '(isearch ((t (:background "papaya whip" :foreground "black"))))
