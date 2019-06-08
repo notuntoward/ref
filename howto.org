@@ -5238,11 +5238,13 @@ won't work if you close and immediately open onenote again.
 
       TODO: [[https://git-scm.com/book/en/v2/Git-Tools-Submodules][Git - Submodules]]
 
-***** Git large file storage for test data
+***** <<Git large file storage for test data>>
 
       Git Large File Storage (LFS) _replaces_ large files such as audio samples, videos, datasets, and graphics with _text pointers inside Git_, while storing the file contents on a remote server like GitHub.com or GitHub Enterprise.
 
       TODO [[https://git-lfs.github.com/][Git Large File Storage | Git Large File Storage (LFS) replaces large files su...]]
+
+      Also: [[Data Versioning]]
 
 ***** Tortoise GIT
 ******* [[https://help.cloudforge.com/hc/en-us/articles/215243143-Configure-TortoiseGIT-client-to-work-with-SSH-keys-on-Windows][tortoiseGIT ssh key]]
@@ -5265,7 +5267,7 @@ won't work if you close and immediately open onenote again.
 
 ******* [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
 ******* [[Git version control]]
-***** [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
+******* [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
 ***** point cloned repository to my github fork
       Inspired by user IBwWG, here: [[https://gist.github.com/jagregory/710671][How to move to a fork after cloning]]
 
@@ -7376,12 +7378,13 @@ R.methodsS3"
 
       a starting point may be Options() in [[http://cran.r-project.org/web/packages/R.utils/R.utils.pdf][R.utils]].
 
-***** RunRouter
+***** <<RunRouter>>
 ******* [[http://cran.r-project.org/web/packages/digest/index.html][digest]] for data versions (hashes complex objects, which could be settings, files, etc.)
 ******* /space is where to write tmp objects ([[DTU linux cluster]])
 ******* maybe use mapReduce? ([[R cluster computing]])
 ******* package "batch" ([[R cluster computing]])
 ******* R [[http://cran.r-project.org/web/packages/proto/vignettes/proto.pdf][proto]] package was designed to store both algorithms /and settings/
+******* [[Data Versioning]]
 *** map function (like in Perl or ruby)
     something like perl map, or a flexible version of R's apply
 ***** [[http://cran.r-project.org/web/packages/foreach/][foreach]]
@@ -7925,8 +7928,7 @@ foreach my $item1 (@AOA){
   print "\n";
 }
 
-*** Perl Colors
-    <<Perl Colors>>
+*** <<Perl Colors>>
     * [[http://search.cpan.org/~sherzodr/Color-Rgb-1.4/Rgb.pm][Color::Rgb]] - Simple rgb.txt parsing class: does rgb hex --> rgb dec
 ***** [[http://search.cpan.org/~janert/Graphics-ColorUtils-0.17/lib/Graphics/ColorUtils.pm][Graphics::ColorUtils]] - color space transformations, name lookups
       <<Graphics::ColorUtils>>
@@ -8702,9 +8704,12 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
 
            But is it?  The [[https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs][editable pip install]] says there are advantages to using pip, and a commenter [[https://stackoverflow.com/questions/19048732/python-setup-py-develop-vs-install][here]] says that he had problems w/ setup.py develop and so used pip install -e PATH
 
-* Data Versioning
+* <<Data Versioning>>
 *** [[https://dvc.org/][Machine Learning Version Control System · DVC]]
 *** [[https://databricks.com/blog/2018/06/05/introducing-mlflow-an-open-source-machine-learning-platform.html][Introducing MLflow: an Open Source Machine Learning Platform - The Databricks...]]
+*** [[RunRouter]]
+*** [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
+*** [[Git large file storage for test data]]
 * <<Hadoop>>
 *** [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop Intro Book]]
 

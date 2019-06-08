@@ -3620,11 +3620,13 @@ Hope that helps,
           [[file:energy.bib::kramer09gaussgraphmodelslasso][kramer et al. 2009: regularized gaussian]]
 ********* [[http://irina.rish.googlepages.com/beyondlasso][beyond lasso: dealing with correlated predictors, etc.]]
 *********** [[http://www-stat.stanford.edu/%7etibs/ftp/fuse0.pdf][sparsity and smoothness via the fused lasso]].  listed here
+*********** [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feature Selection Algorithms]]
 ********* dual lagrangian lasso, can do groups, huge dim, has matlab: [[file:energy.bib::tomioka09dalsparserecons][tomioka & sugiyama 2009: dual augmented lagrangian]]
 *********** matlab: [[file:~/lib/matlab/dal_ver0.97]]
 ********* [[file:energy.bib::Tibshirani15statLrnSprsLassoBk][Tibshirani et al. 2015: Statistical Lrn Sparsity Lasso]]
 
 ********* [[file:energy.bib::Lim15lrnInteractHierGrpLasso][Lim & Hastie 2015: Learning Interactions Hierarchical]]
+********* [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feature Selection Algorithms]] (focus on LASSO and Elastic Net).
 ******* [[File:energy.bib::dhillon08featselfeatclass][Dhillon et al. 2008: Efficient Feature Selection]]
 ******* Matlab Netlab demo script demard.m does automatic relevance determination
 ******* [[File:energy.bib::das08sensselworstcase][Das & Kempe 2008: Sensor Selection Minimizing]]
@@ -3788,7 +3790,7 @@ Hope that helps,
 ********* [[adaptive covariance estimation and feature sel]]
 ******* multivariate Gaussianization
 ******* multivariate Weibull (for Juan Mi's wind speed)
-*****  <<Feature Construction>> (Point and Probabilistic, for now)
+***** <<Feature Construction>> (Point and Probabilistic, for now)
 ******* [[file:energy.bib::Lillywhite13featCnstrct][Lillywhite et al. 2013]] (and the methods in [[Continuous valued AdaBoost]])
 ******* probably includes PLS and other input/output preserving transforms
 ******* streaming/correlation clustering could make then [[regime learning]]
@@ -3800,6 +3802,13 @@ Hope that helps,
 
 ********* [[file:energy.bib::Coates11ntwkUnSupFtLrn][Coates et al. 2011]] NN tuning v.s basis learning
 ******* see also: [[Deep Learning]]
+***** <<Feature Selection Quality Metrics>>
+******* [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feature Selection Algorithms]]
+******* [[file:energy.bib::Meinshausen10Stabilityselection][Meinshausen & Buehlmann 2010: Stability]] selection
+******* [[file:energy.bib::Bennasar15jointMImaxFeatSel][Bennasar et al. 2015: Feature Joint Mutual Information Maximisation]] (trades w/ stabilty)
+******* [[file:energy.bib::Christiansen07autoTuneWind][Christiansen et al. 2007: Automatic tune param setting]] (improved stability)
+******* [[file:energy.bib::Guyon03introFeatSel][Guyon & Elisseeff 2003: Intro to var/feat sel]]
+******* also [[Forecast quality metrics]]
 *** Attribution of errors to features
     (maybe don't select it causes them?)
 ***** [[file:energy.bib::Gale08cholesky][Gale 2008: Cholesky Decomposition]] colinearity, forecast error attributiuon
@@ -3852,6 +3861,7 @@ Hope that helps,
   TODO: copy all RF papers to here
 
 *** [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
+*** [[file:energy.bib::Li11randKNNfeatSelVsRandFrst][Li et al. 2011: Random KNN Random Forests]] (more stable than plain RFs)
 * <<Boosted Regression>>
 *** Blasso (boosted lasso: could this be continuous or discrete?)
 *** Discreet boosting
@@ -6797,6 +6807,7 @@ variables will be preferred, when possible.
 ********* [[cite:USDOE16solFrcstMaxGridVal][USDOE 2016: Solar Forecasting val Grid Cost and Props]]
 ***** also [[Regime learning]]
 ***** also [[Deviance]] (for GLMs)
+***** also [[Feature Selection Quality Metrics]]
 *** Basic Forecasting Techniques
 ***** Holt Winters: simple, robust, & better know
 ******* nice review: [[File:energy.bib::meyer02naivefrcstmethr][Meyer 2002: Naive time series forecasting methods]]
@@ -9428,6 +9439,7 @@ later corrected by greg heath:
 *** [[Mutual Information Interaction Term Stopping]]
 *** [[Partial Information Feature Selection Stopping criteria]]
 *** [[State Change Alarm Criteria]]
+***** also [[Feature Selection Quality Metrics]]
 * <<Tensors>>
 
   Stuff that makes tensors easier, or uses them
@@ -11426,6 +11438,7 @@ Erika
 ***** Gaussian process can warn when unfamiliar point in training data
 ******* [[file:energy.bib::Kocijan03caseCompNeuralGaussProc][Kocijan et al. 2003: Gaussian]] (also require less train data so fast)
 ******* [[file:energy.bib::Tancret99CompNeuralGaussProcAlloy][Tancret et al. 1999: Comparison Gaussian]]
+******* [[file:energy.bib::Wang06compGausProcNeuralForecast][Wang et al. 2006: Comparing Gaussian Processes]]
 ***** [[https://www.google.com/search?q%3Dknn%2Bwith%2Bconcept%2Bdrift&ie%3Dutf-8&oe%3Dutf-8&aq%3Dt&rls%3Dorg.mozilla:en-US:official&client%3Dfirefox-a#q%3Drecurring%2Bconcept%2Bdrift&rls%3Dorg.mozilla:en-US:official&spell%3D1][lots of papers]] on recurring concept drift (like regime learning)
 ***** [[file:c:/Users/sotterson/OneDrive/shareHW/DTU/doc/energy.bib::Gama14conceptDrftSurvey][Gama et al. 2014]] survey concept drift
 ***** see: [[Trend Copulas]]

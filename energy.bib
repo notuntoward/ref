@@ -74,6 +74,40 @@ Related?  Shi08curvePredClustGaussProcMix},
   timestamp = {2008.12.05},
 }
 
+@Article{Fuentes05spaceTimeStructWind,
+  author    = {Montserrat Fuentes and Li Chen and Jerry M. Davis and Gary M. Lackmann},
+  title     = {Modeling and predicting complex space-time structures and patterns of coastal wind fields},
+  journal   = {Environmetrics},
+  year      = {2005},
+  volume    = {16},
+  pages     = {449--464},
+  abstract  = {A statistical technique is developed for wind field mapping that can be used to improve either the assimilation of
+surface wind observations into a model initial field or the accuracy of post-processing algorithms run on
+meteorological model output. The observed wind field at any particular location is treated as a function of the true
+(but unknown) wind and measurement error. The wind field from numerical weather prediction models is treated
+as a function of a linear and multiplicative bias and a term which represents random deviations with respect to the
+true wind process. A Bayesian approach is taken to provide information about the true underlying wind field,
+which is modeled as a stochastic process with a non-stationary and non-separable covariance. The method is
+applied to forecast wind fields from a widely used mesoscale numerical weather prediction (NWP) model (MM5).
+The statistical model tests are carried out for the wind speed over the Chesapeake Bay and the surrounding region
+for 21 July 2002. Coastal wind observations that have not been used in the MM5 initial conditions or forecasts are
+used in conjunction with the MM5 forecast wind field (valid at the same time that the observations were available)
+in a post-processing technique that combined these two sources of information to predict the true wind field. Based
+on the mean square error, this procedure provides a substantial correction to the MM5 wind field forecast over the
+Chesapeake Bay region. 
+
+key words: Bayesian inference; Fourier transform; geostatistics; meteorological mesoscale model (MM5);
+non-separable models; non-stationary models; wind fields},
+  comment   = {Data assimilarion: Combines numerical weather prediction w/ wind observations * could use this either for assessment or for picking met tower locations -- result would be a better estimate of wind fields in places where you haven't observed them -- could use this to pick good location for forecasting -- could use this to pick good location for wind farm * "stationarity" means in space and time * they find regions of stationarity w/ k-means clustering! -- features come from NWP (what and how picked is not explained but maybe they are "stability parameters" as in Nielsen07*?) -- AIC/BIC cluster stopping -- from this they build a mixture, w/ weights coming from spatio/temporal distances -- the model looks a tiny bit like a Gaussian Process (use Plagemann08nonStatGaussProcPoint) * models include -- overall trend in wind -- diurnal and half-diurnal variations * MCMC learning * is a lot better than the traditional Kalman 3D VAR assimilation technique * incorporates both additive and multiplicative bias estimation},
+  crossref  = {Plagemann08nonStatGaussProcPoint},
+  doi       = {10.1002/env.714},
+  file      = {:Fuentes05spaceTimeStructWind.pdf:PDF;Fuentes05spaceTimeStructWind.pdf:Fuentes05spaceTimeStructWind.pdf:PDF},
+  groups    = {Read},
+  owner     = {sotterson},
+  timestamp = {2008.08.21},
+  url       = {http://www4.stat.ncsu.edu/~fuentes/fuentesenv.pdf},
+}
+
 @TechReport{Carney06evalDensForecastPIThisto,
   author      = {Michael Carney and P\'{a}draig Cunningham},
   title       = {Evaluating Density Forecasting Models},
@@ -961,23 +995,6 @@ Related:  Fraser86indepCoordMutInfo},
   url       = {http://prola.aps.org.offcampus.lib.washington.edu/pdf/PRA/v33/i2/p1134_1},
 }
 
-@Article{Fuentes05spaceTimeStructWind,
-  author    = {Montserrat Fuentes and Li Chen and Jerry M. Davis and Gary M. Lackmann},
-  title     = {Modeling and predicting complex space-time structures and patterns of coastal wind fields},
-  journal   = {Environmetrics},
-  year      = {2005},
-  volume    = {16},
-  pages     = {449--464},
-  comment   = {Data assimilarion: Combines numerical weather prediction w/ wind observations * could use this either for assessment or for picking met tower locations -- result would be a better estimate of wind fields in places where you haven't observed them -- could use this to pick good location for forecasting -- could use this to pick good location for wind farm * "stationarity" means in space and time * they find regions of stationarity w/ k-means clustering! -- features come from NWP (what and how picked is not explained but maybe they are "stability parameters" as in Nielsen07*?) -- AIC/BIC cluster stopping -- from this they build a mixture, w/ weights coming from spatio/temporal distances -- the model looks a tiny bit like a Gaussian Process (use Plagemann08nonStatGaussProcPoint) * models include -- overall trend in wind -- diurnal and half-diurnal variations * MCMC learning * is a lot better than the traditional Kalman 3D VAR assimilation technique * incorporates both additive and multiplicative bias estimation},
-  crossref  = {Plagemann08nonStatGaussProcPoint},
-  doi       = {10.1002/env.714},
-  file      = {:Fuentes05spaceTimeStructWind.pdf:PDF;Fuentes05spaceTimeStructWind.pdf:Fuentes05spaceTimeStructWind.pdf:PDF},
-  groups    = {Read},
-  owner     = {sotterson},
-  timestamp = {2008.08.21},
-  url       = {http://www4.stat.ncsu.edu/~fuentes/fuentesenv.pdf},
-}
-
 @InProceedings{Grimit08windStateOfArt,
   author    = {Eric Grimit and Cameron Potter},
   title     = {State-of-the-Art Wind Energy Forecasting (and the Future of Forecasting)},
@@ -1372,24 +1389,23 @@ A partial entry for this article is in speakerClust.bib (hansenXXmdl).},
 }
 
 @Article{Lim15lrnInteractHierGrpLasso,
-  author        = {Michael Lim and Trevor Hastie},
-  title         = {Learning Interactions via Hierarchical Group-Lasso Regularization},
-  journal       = {Journal of Computational and Graphical Statistics},
-  year          = {2015},
-  volume        = {24},
-  number        = {3},
-  pages         = {627-654},
-  note          = {PMID: 26759522},
-  __markedentry = {[Scott:]},
-  abstract      = { We introduce a method for learning pairwise interactions in a linear regression or logistic regression model in a manner that satisfies strong hierarchy: whenever an interaction is estimated to be nonzero, both its associated main effects are also included in the model. We motivate our approach by modeling pairwise interactions for categorical variables with arbitrary numbers of levels, and then show how we can accommodate continuous variables as well. Our approach allows us to dispense with explicitly applying constraints on the main effects and interactions for identifiability, which results in interpretable interaction models. We compare our method with existing approaches on both simulated and real data, including a genome-wide association study, all using our R package glinternet. 
+  author    = {Michael Lim and Trevor Hastie},
+  title     = {Learning Interactions via Hierarchical Group-Lasso Regularization},
+  journal   = {Journal of Computational and Graphical Statistics},
+  year      = {2015},
+  volume    = {24},
+  number    = {3},
+  pages     = {627-654},
+  note      = {PMID: 26759522},
+  abstract  = { We introduce a method for learning pairwise interactions in a linear regression or logistic regression model in a manner that satisfies strong hierarchy: whenever an interaction is estimated to be nonzero, both its associated main effects are also included in the model. We motivate our approach by modeling pairwise interactions for categorical variables with arbitrary numbers of levels, and then show how we can accommodate continuous variables as well. Our approach allows us to dispense with explicitly applying constraints on the main effects and interactions for identifiability, which results in interpretable interaction models. We compare our method with existing approaches on both simulated and real data, including a genome-wide association study, all using our R package glinternet. 
 
 Keywords
 hierarchical; interaction; computer intensive; regression; logistic},
-  doi           = {10.1080/10618600.2014.938812},
-  eprint        = {https://doi.org/10.1080/10618600.2014.938812},
-  file          = {:Lim15lrnInteractHierGrpLasso.pdf:PDF},
-  publisher     = {Taylor \& Francis},
-  url           = {https://doi.org/10.1080/10618600.2014.938812
+  doi       = {10.1080/10618600.2014.938812},
+  eprint    = {https://doi.org/10.1080/10618600.2014.938812},
+  file      = {:Lim15lrnInteractHierGrpLasso.pdf:PDF},
+  publisher = {Taylor \& Francis},
+  url       = {https://doi.org/10.1080/10618600.2014.938812
     
 },
 }
@@ -7223,7 +7239,9 @@ Keywords: solar thermal, photovoltaic systems, energy, renewable, forecast, NWP,
   month      = nov,
   abstract   = {Assigning significance in high-dimensional regression is challenging. Most computationally efficient selection algorithms cannot guard against inclusion of noise variables. Asymptotically valid p-values are not available. An exception is a recent proposal by Wasserman and Roeder (2008) which splits the data into two parts. The number of variables is then reduced to a manageable size using the first split, while classical variable selection techniques can be applied to the remaining variables, using the data from the second split. This yields asymptotic error control under minimal conditions. It involves, however, a one-time random split of the data. Results are sensitive to this arbitrary choice: it amounts to a `p-value lottery' and makes it difficult to reproduce results. Here, we show that inference across multiple random splits can be aggregated, while keeping asymptotic control over the inclusion of noise variables. We show that the resulting p-values can be used for control of both family-wise error (FWER) and false discovery rate (FDR). In addition, the proposed aggregation is shown to improve power while reducing the number of falsely selected variables substantially.},
   comment    = {How to select p-values in order to use p-values to assess significance. Could be useful for matlab's stepwisefit.m
-  * this was version 3 of the paper, submitted in June 2009},
+  * this was version 3 of the paper, submitted in June 2009
+
+Compare with Nogueira18featSelStbl},
   eprint     = {0811.2177},
   eprinttype = {arXiv},
   file       = {Meinshausen08pValHiDim.pdf:Meinshausen08pValHiDim.pdf:PDF;Meinshausen08pValHiDim.pdf:Meinshausen08pValHiDim.pdf:PDF},
@@ -11491,7 +11509,9 @@ KEY WORDS: Downscaling; Extrapolation; Extreme value; High quantile; Quantile re
   number    = {4},
   pages     = {417--473},
   abstract  = {Estimation of structure, such as in variable selection, graphical modelling or cluster analysis, is notoriously difficult, especially for high dimensional data. We introduce stability selection. It is based on subsampling in combination with (high dimensional) selection algorithms. As such, the method is extremely general and has a very wide range of applicability. Stability selection provides finite sample control for some error rates of false discoveries and hence a transparent principle to choose a proper amount of regularization for structure estimation. Variable selection and structure estimation improve markedly for a range of selection methods if stability selection is applied. We prove for the randomized lasso that stability selection will be variable selection consistent even if the necessary conditions for consistency of the original lasso method are violated. We demonstrate stability selection for variable selection and Gaussian graphical modelling, using real and simulated data.},
-  comment   = {The feature selection algorithm used in Fenske11idRiskBoostAddQR},
+  comment   = {The feature selection algorithm used in Fenske11idRiskBoostAddQR
+
+Compare with Nogueira18featSelStbl},
   doi       = {10.1111/j.1467-9868.2010.00740.x/full},
   file      = {Meinshausen10Stabilityselection.pdf:Meinshausen10Stabilityselection.pdf:PDF},
   owner     = {sotterson},
@@ -11911,6 +11931,58 @@ behind that of the more complex Bayesian networks.},
   owner     = {sotterson},
   timestamp = {2012.03.25},
   url       = {http://www.i6doc.com/en/livre/?GCOI=28001100817300},
+}
+
+@Article{Nogueira18featSelStbl,
+  author        = {Nogueira, Sarah and Sechidis, Konstantinos and Brown, Gavin},
+  title         = {On the Stability of Feature Selection Algorithms.},
+  journal       = {Journal of Machine Learning Research},
+  year          = {2018},
+  volume        = {18(174)},
+  pages         = {1-54},
+  __markedentry = {[Scott:6]},
+  abstract      = {Feature Selection is central to modern data science, from exploratory data analysis to
+predictive model-building. The “stability” of a feature selection algorithm refers to the
+robustness of its feature preferences, with respect to data sampling and to its stochastic
+nature. An algorithm is ‘unstable’ if a small change in data leads to large changes in
+the chosen feature subset. Whilst the idea is simple, quantifying this has proven more
+challenging—we note numerous proposals in the literature, each with different motivation
+and justification. We present a rigorous statistical treatment for this issue. In particular,
+with this work we consolidate the literature and provide (1) a deeper understanding of
+existing work based on a small set of properties, and (2) a clearly justified statistical
+approach with several novel benefits. This approach serves to identify a stability measure
+obeying all desirable properties, and (for the first time in the literature) allowing confidence
+intervals and hypothesis tests on the stability, enabling rigorous experimental comparison
+of feature selection algorithms.
+Keywords: stability, feature selection},
+  comment       = {This paper develops an easy-to-comprehend metric for feature selection stability (same features selected regardless of small data perturbations).  It can also be used improve the choice of lambda (L1 penalty) so that the true features are selected more often, at little or no cost to classification error (synthetic data).  For pure LASSO there is zero false positive feature selection but a decent chance of missing true features (very little cost to classification error); elastic net is much better at stable feature selection, with no missed features, very few false postive features, and zero sacrifice in clasification error (with slighly worse classification error than LASSO on a highly redundant feature set). 
+
+The paper also develops rigorous hypothesis tests for comparing the stability of different feature selection algorithms.
+
+HAS CODE: Matlab, Python and R
+
+HOWEVER
+* The choice of lambda doesn't seem to be totally databased for elastic net, although I can imagine a hack that would make it fully automatic, and perhaps not much worse than in Figure 11.
+* The really good results were on elastic net, which had slightly worse classification error than LASSO on a redundant dataset where, perhaps, it should have had an advantage (since it can also do ridge).
+* How would this work on non-Guassian data?
+* How would this work for more complex algorithms -- and how would you search their many more parameters?
+* You have to run quite a few bootstraps in order to do the stability estimation:  100 repeated train/testings for 1000 data samples of 100 features, 50 of which are relevant.
+
+INTERESTING
+* Elastic net choice of "alpha," the L2 penalty in this paper didn't seem to matter
+* Would elastic net then be a good way to ID features for a more complex regression algorithm?
+Python, Matlab and R
+https://github.com/nogueirs/JMLR2018
+
+Video and Matlab (video proposes linear correlation but this paper is a bit fancier than that):
+http://www.cs.man.ac.uk/~nogueirs/publications.html
+
+Demo
+http://www.cs.man.ac.uk/~nogueirs/stabilityDemo.html
+
+COMPARE TO:  Meinshausen08pValHiDim, Meinshausen10Stabilityselection},
+  file          = {:Nogueira18featSelStbl.pdf:PDF},
+  url           = {http://jmlr.org/papers/v18/17-514.html},
 }
 
 @Article{Yang12nbrCompFeatSel,
@@ -13128,7 +13200,7 @@ to the distribution of data in high-dimensional problems. The use of such more
 flexible kernel may greatly improve the numerical stability of algorithms, and also
 the discriminative power of distance- and neighbor-based data analysis methods.
 Keywords: High dimensional spaces, Local Models, Gaussian Kernels.},
-  comment   = {Gaussian kernel distance not good in high dimensions; the proposed p-Gaussian kernel is argued to be better (other papers have experiments show it works), and is super easy to train. Maybe useful for neighborhood weighting in local linear quantile regression, especially since it's kind of self-tuning, maybe eliminating the cross-validation step? Is used in an R library (which seems to work, while the formula in this paper seems to have a bug).
+  comment   = {Gaussian kernel distance not good in high dimensions; the proposed p-Gaussian kernel is argued to be better (other papers have experiments that show it works), and is super easy to train. Maybe useful for neighborhood weighting in local linear quantile regression, especially since it's kind of self-tuning, maybe eliminating the cross-validation step? Is used in an R library (which seems to work, while the formula in this paper seems to have a bug).
 
 Gaussian Kernel Good:
 1. sum of indep vars is Gaussian (CLT)
@@ -37575,6 +37647,40 @@ A possibly more readable chunk on this topic: Mitchell17nBayesLogRegBkCh},
   url       = {http://papers.nips.cc/paper/2020-on-discriminative-vs-generative-classifiers-a-comparison-of-logistic-regression-and-naive-bayes.pdf},
 }
 
+@InProceedings{Wang06compGausProcNeuralForecast,
+  author    = {Tzai-Der Wang and Shang-Jen Chuang and Colin Fyfe},
+  title     = {Comparing {Gauss}ian Processes and Artificial Neural Networks for Forecasting},
+  booktitle = {Joint Conference on Information Sciences (JCIS)},
+  year      = {2006},
+  abstract  = {We compare the use of artificial neural networks and
+Gaussian processes for forecasting. We show that Ar-
+tificial Neural Networks have the advantage of being
+utilisable with greater volumes of data but Gaussian
+processes can more easily be utilised to deal with non-
+stationarity.},
+  comment   = {Special GP kernel helps w/ nonstationarity (captures trend) better than MLP, but GP is fiddly
+* is doing only one-step-ahead prediction (w/ 13 past samples in input)
+
+* add a scalar product kernel to normal exponential kernel to capture trend
+* extra bit in kernel -- causes covariance matrix instability, requiring use of less data
+-- adds an extra gradient wal to find an extra hyper parameter
+-- twiddling with learning weights
+-- on periodic data w/ trends, this allows GP to outperform an MLP
+
+* standard way of handling periodicities in GP doesn't work
+* they say trend was harder to model than periodic (surprising to me)
+* could trends be tracked just by including derivatives in input?
+
+* also mentioned computational cost of GP's, as usual.
+* claims that GP handles missing data better than MLP},
+  doi       = {10.2991/jcis.2006.7},
+  file      = {Wang06compGausProcNeuralForecast.pdf:Wang06compGausProcNeuralForecast.pdf:PDF},
+  groups    = {Read},
+  owner     = {sotterson},
+  timestamp = {2008.10.03},
+  url       = {http://www.csu.edu.tw/csitshow/Hmanager/95data/423.pdf},
+}
+
 @InProceedings{Ghoshal07clustRegressDirMix,
   author    = {Subhashis Ghoshal and Changku Kang},
   title     = {Clusterwise Regression Using Dirichlet Mixtures},
@@ -40383,7 +40489,7 @@ Keywords:
   abstract             = {We propose a new method for estimation in linear models. The "lasso" minimizes the residual sum of squares subject to the sum of the absolute value of the coefficients being less than a constant. Because of the nature of this constraint it tends to produce some coefficients that are exactly zero and hence gives interpretable models. Our simulation studies suggest that the lasso enjoys some of the favourable properties of both subset selection and ridge regression. It produces interpretable models like subset selection and exhibits the stability of ridge regression. There is also an interesting relationship with recent work in adaptive function estimation by Donoho and Johnstone. The lasso idea is quite general and can be applied in a variety of statistical models: extensions to generalized regression models},
   citeulike-article-id = {416068},
   citeulike-linkout-0  = {http://www.ams.org/mathscinet-getitem?mr=1379242},
-  comment              = {The original lasso paper *"leaps" cross-validation procedure (p. 279) -- 5-fold (4/5 train, 1/5 test, rotating) -- figure of merit is avg. prediction accuracy across folds -- isn't this standard?},
+  comment              = {The original lasso paper *"leaps" cross-validation procedure (p. 279) -- 5-fold (4/5 train, 1/5 test, rotating) -- figure of merit is avg. prediction accuracy across folds -- isn't this standard?  Note that it's claimed that LASSO has the stability of ridge regression but lately, it's famous that LASSO is unstable.  See for example Nogueira18featSelStbl},
   file                 = {Tibshirani96lasso.pdf:Tibshirani96lasso.pdf:PDF;Tibshirani96lasso.pdf:Tibshirani96lasso.pdf:PDF},
   keywords             = {feature-selection, lasso, regression, ridge-regression, shrinkage},
   mrnumber             = {MR1379242},
@@ -49122,34 +49228,6 @@ At Peak, More:
   owner         = {sotterson},
   timestamp     = {2009.01.30},
   url           = {http://www.litech.org/~wkiri/Papers/wagstaff-missing-ifcs04.pdf},
-}
-
-@InProceedings{Wang06compGausProcNeuralForecast,
-  author    = {Tzai-Der Wang and Shang-Jen Chuang and Colin Fyfe},
-  title     = {Comparing {Gauss}ian Processes and Artificial Neural Networks for Forecasting},
-  booktitle = {Joint Conference on Information Sciences (JCIS)},
-  year      = {2006},
-  comment   = {Special GP kernel helps w/ nonstationarity (captures trend) better than MLP, but GP is fiddly
-* is doing only one-step-ahead prediction (w/ 13 past samples in input)
-
-* add a scalar product kernel to normal exponential kernel to capture trend
-* extra bit in kernel -- causes covariance matrix instability, requiring use of less data
--- adds an extra gradient wal to find an extra hyper parameter
--- twiddling with learning weights
--- on periodic data w/ trends, this allows GP to outperform an MLP
-
-* standard way of handling periodicities in GP doesn't work
-* they say trend was harder to model than periodic (surprising to me)
-* could trends be tracked just by including derivatives in input?
-
-* also mentioned computational cost of GP's, as usual.
-* claims that GP handles missing data better than MLP},
-  doi       = {10.2991/jcis.2006.7},
-  file      = {Wang06compGausProcNeuralForecast.pdf:Wang06compGausProcNeuralForecast.pdf:PDF},
-  groups    = {Read},
-  owner     = {sotterson},
-  timestamp = {2008.10.03},
-  url       = {http://www.csu.edu.tw/csitshow/Hmanager/95data/423.pdf},
 }
 
 @Conference{Wang13lkAhdUCrobustOpt,
