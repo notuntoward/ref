@@ -1520,7 +1520,7 @@ Many text editors have access to these in some simple way, so before thinking ab
 
       Nice b/c it parses the langauage you're in to figure out what a symbol is.  If you're pointing at a string, it expands isearches for the word at point.
 
-***** C-s s will search for previous string (default emacs bindings)
+***** C-s s will search for previous string (default emacs bindings) 
 ***** search/replace German (and other chars)
 
       To u and o match German ü and ö, customize:
@@ -2913,6 +2913,12 @@ For a public browser link. Share the note and copy the share url.
 ***** [[Vincent Goulet Emacs]]
 *** <<Emacs for experiment logging>>
 ***** TRY [[file:energy.bib::Stanisic15gitOrgWorkflow][Stanisic et al. 2015]]
+***** Search for Symbol at Point
+******* =M-s .= is default emacs way to do [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Symbol-Search.html][Symbol Search]]
+
+        But I don't now how to go backwards and forwards inside of this search.
+
+******* I mapped C-s s to swiper-isearch-thing-at-point (supposed to be symbols search but it only extracts a symbol-like-thing and then search for string matches w/o knowing the language)
 * JabRef
 *** News and feature requests go [[http://discourse.jabref.org][here]]
 *** bug reports go [[https://github.com/JabRef/jabref/issues][here]]
@@ -3412,19 +3418,16 @@ gestures for "show charm" and "switch apps"
 
     *Installation*
 
-
-
-
-
     choco install msys2
     
-    Add the following to PATH environment variable:
+    Add the following to END of the PATH environment variable:
 
       c:\tools\msys64\usr\bin
       c:\tools\msys64\usr\local\bin
 
       (choco inself adds c:\tools\msys64 , which allows you to start mingw64.exe
-
+      (put it at the end so that anaconda python, etc. is the default executable)
+      
    Install diff, etc. using msys2's package manager
 
      pacman -S base-devel
@@ -8003,6 +8006,22 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
     Needed at least for org-mode ox-clip
 
 ***** <<Install Windows Python with Anaconda>>
+
+      *NOTE*: lately, I've been installing it with chocolately: 
+
+        choco install anaconda
+
+        Put base environment in path (so emacs, etc. will find it): 
+
+           C:\Users\scott\Anaconda3\
+           C:\Users\scott\Anaconda3\Scripts
+
+           (Make sure this is /above/ msys2 path. Otherwise, the msys2
+           python you get when installing diff, etc., will mess up emacs
+           elpy.)
+        
+******* Install from Windows .exe installer        
+
       Mostly following this [[https://machinelearningmastery.com/setup-python-environment-machine-learning-deep-learning-anaconda/][TensorFlow install advice]]
 
       The idea was to install everything with anaconda to avoid the "not compiled with AVX" warnings I got when I [[Install python with Chocolatey]]) but I still get them.
@@ -8030,7 +8049,7 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
       _Update everything_
 
-      conda update --all --alt-hint
+      conda update --all
       
       _Add C:\Users\scotto\Anaconda3\Scripts to my Windows PATH_
       (not recommended (see above, but this allows emacs elpy to work)
@@ -8248,18 +8267,18 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
       Works in basic Jupyter notebook too.
 
+***** non-git auto-versioning: [[https://github.com/timkpaine/jupyterlab_autoversion][timkpaine/jupyterlab_autoversion]]
+
+      It does [[https://github.com/timkpaine/jupyterlab_autoversion/issues/1][make its own git repo]], though.
+
+      However, it doesn't work for me.  I submitted a [[https://github.com/timkpaine/jupyterlab_autoversion/issues/11][bug]].
+
 ***** extensions that are maybe nice but not working
 ******* open file w/ part of name: [[https://github.com/parente/jupyterlab-quickopen][parente/jupyterlab-quickopen]]
 
         Seems like it would be nice but has two-step install instructions, one of which is pip only.
 
         Too complicated.
-
-******* non-git auto-versioning: [[https://github.com/timkpaine/jupyterlab_autoversion][timkpaine/jupyterlab_autoversion]]
-
-        It does [[https://github.com/timkpaine/jupyterlab_autoversion/issues/1][make its own git repo]], though.
-
-        However, it doesn't work for me.  I submitted a [[https://github.com/timkpaine/jupyterlab_autoversion/issues/11][bug]].
 
 ******* <<emacs bindings in cells>>: [[https://github.com/kpe/jupyterlab-emacskeys][kpe/jupyterlab-emacskeys]]
 
@@ -8269,7 +8288,6 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
         Doesn't work.  Many emacs binding missing. I [[https://github.com/kpe/jupyterlab-emacskeys/issues/2][filed a bug]].
 
 ***** Jupyter/Jupyterlab graphics
-
 ******* matplotlib widgets
         From: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib: Matplotlib Jupyter Extension]]
 
