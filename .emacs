@@ -88,8 +88,8 @@
 (pcase (eval 'computerNm)
   ("cpr-scotto"     ; Clean Power Research desktop
    (progn (setq shareDir "c:/Users/Scott/OneDrive - Clean Power Research")))
-  ("desktop-tqs2o18" ; Surface Pro
-   (setq shareDir "C:/Users/scotto/OneDrive - Clean Power Research"))
+  ("desktop-6bq3kmf" ; Surface Pro
+   (setq shareDir "C:/Users/scott/OneDrive - Clean Power Research"))
   (_
    (progn (warn "Can't assign shareDir for unknown computer: %s" computerNm)
 	  (setq shareDir (concat "unknown_computer_" computerNm "_shareDir"))))
@@ -1372,22 +1372,24 @@ is already narrowed."
 ;;           org-ref-default-bibliography (expand-file-name "energy.bib")
 ;;           org-ref-pdf-directory (expand-file-name "papers")
 ;;           reftex-default-bibliography org-ref-default-bibliography
-;;           bibtex-completion-bibliography org-ref-default-bibliography
-;;           bibtex-completion-library-path org-ref-pdf-directory
-;;           bibtex-completion-notes-path org-ref-bibliography-notes))
-;;   ;; showing broken links slowed down energytop.org (but much less in Oct. 2017)
-;;   ;;  https://github.com/jkitchin/org-ref/issues/468
-;;   (setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
-;;   :config
-;;   (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
-;;   ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
-;;   (setq bibtex-autokey-year-length 4
-;;         bibtex-autokey-name-year-separator "-"
-;;         bibtex-autokey-year-title-separator "-"
-;;         bibtex-autokey-titleword-separator "-"
-;;         bibtex-autokey-titlewords 2
-;;         bibtex-autokey-titlewords-stretch 1
-;;         bibtex-autokey-titleword-length 5)
+;;     ;;       bibtex-completion-bibliography org-ref-default-bibliography
+;;     ;;       bibtex-completion-library-path org-ref-pdf-directory
+;;     ;;       bibtex-completion-notes-path org-ref-bibliography-notes
+;;           ))
+;;   ;; ;; showing broken links slowed down energytop.org (but much less in Oct. 2017)
+;;   ;; ;;  https://github.com/jkitchin/org-ref/issues/468
+;;   ;; (setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
+;;   ;; :config
+;;   ;; (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
+;;   ;; ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
+;;   ;; (setq bibtex-autokey-year-length 4
+;;   ;;       bibtex-autokey-name-year-separator "-"
+;;   ;;       bibtex-autokey-year-title-separator "-"
+;;   ;;       bibtex-autokey-titleword-separator "-"
+;;   ;;       bibtex-autokey-titlewords 2
+;;   ;;       bibtex-autokey-titlewords-stretch 1
+;;   ;;       bibtex-autokey-titleword-length 5)
+;;   ;;  ;; org-ref causes an error when emacs reads the 1st org-ref cite: link.  The .org file is still read, but org-bullets fails then, for some reason.
 ;;   ;; Make org-ref cite: link folded in emacs.  Messes up Latex export:
 ;;   ;; https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
 ;;   (org-link-set-parameters "cite" :display nil)
