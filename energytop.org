@@ -2068,7 +2068,7 @@ Scott
 *** [[file:energy.bib::Bonilla08MultiTaskGaussProc][Bonilla et al. 2008: Multi task Gaussian Process Prediction]]
 *** [[file:energy.bib::Zou18multiTaskDisease][Zou et al. 2018: Multi Task Learning Disease Models]]: regularized GPs across regions
 *** [[file:energy.bib::Vogt18multiDistLrnAnomDet][Vogt et al. 2018: Multitask anomaly pred maint]]
-*** Multitask Software
+*** <<Multitask Learning Software>>
 ***** _Scikit-learn_ [[https://scikit-learn.org/stable/modules/linear_model.html#multi-task-lasso][has]] multitask Elastic Net and Lasso but not Poisson, general GLM, it seems
 ***** [[http://spams-devel.gforge.inria.fr/][SPAMS]] (python,R) [[scholar.google.com/scholar?q=logistic+regression+mixed+categorical+and+continuous+inputs&hl=en&as_sdt=0&as_vis=1&oi=scholart][has]] Multitask, regularized linear/logistic/softmax rgrssn
 * <<Graph Networks>>
@@ -2090,8 +2090,8 @@ Scott
 *** <<Poisson Regression>>
 ***** TODO [[file:energy.bib::Agresti07introCategDatAnl][Agresti 2007: Introduction Categorical Data Analysis]] (for Poisson part)
 ***** TODO [[file:energy.bib::Benjamin18mdrnMLvsGLMpoisson][Benjamin et al. 2018: Modern Machine Learning vs Poisson GLM]]
-***** [[https://examples.dask.org/machine-learning/glm.html][Generalized Linear Models — Dask]] (e.g. lasso poisson, big parallel graph)
-***** [[file:energy.bib::Pillow16mathNeurTlsSlides][Pillow 2016: Mathematical Tools Neuroscience Course Notes]]: GLM (old) vs. GLM (new), Poisson/Logistic Regression
+***** [[https://examples.dask.org/machine-learning/glm.html][Generalized Linear Models Dask]] (e.g. lasso poisson, big parallel graph)
+******* [[file:energy.bib::Pillow16mathNeurTlsSlides][Pillow 2016: Mathematical Tools Neuroscience Course Notes]]: GLM (old) vs. GLM (new), Poisson/Logistic Regression
 ***** [[Discrete Events: Poisson arrivals, etc.]] 
 ***** also [[Poisson Process]]
 *** <<Logistic Regression>>
@@ -2106,6 +2106,9 @@ Scott
 ******* also [[Data efficiency: Naive Bayes vs. Logistic Regression]]
 
 ***** [[file:energy.bib::Ohara2010noLogCountDat][Ohara & Kotze 2010: Do not log counts]]: Poisson/Neg. binom best for counts
+***** Confidence Intervals for logistic regression output probability
+      It's said that you can do this w/ bootstrap but there's one analytic method (below)
+******* Analytic LR conf interv: [[https://stats.stackexchange.com/questions/354098/calculating-confidence-intervals-for-a-logistic-regression][Calculating confidence intervals for a logistic regression]]
 ***** also [[Data efficiency: Naive Bayes vs. Logistic Regression]]
 *** <<GLM performance metrics>>
 ***** [[Deviance]]
@@ -6710,8 +6713,7 @@ variables will be preferred, when possible.
       *functions*: npdeneqtest, npunitest
 ***** [[http://iri.columbia.edu/~gonzalez/DPWG/matlab_code.html][Matlab code for CRPS]], etc
 ***** [[http://www.eumetcal.org/resources/ukmeteocal/verification/www/english/msg/ver_prob_forec/uos3b/uos3b_ko1.htm][CRPS == MAE]] for deterministic forecasts (see also [[file:energy.bib::Hersbach00crpsDecomp][Hersbach 2000: Decomposition]])
-***** SIC: BIC like penalized fit for quantile regression.  See...
-      <<SIC>>
+***** <<SIC>>: BIC like penalized fit for quantile regression.  See...
 ******* [[file:energy.bib::Koenker94QuantSmthSplns][Koenker et al. 1994: Quantile]]
 ******* [[file:energy.bib::Koenker05QuantRgrssnBook][Koenker 2005: Quantile]] Regression Book
 ******* SIC badly overfits for penalized spline QR: [[file:energy.bib::Reiss12smthPenSplnQR][Reiss & Huang 2012: Smoothness]]

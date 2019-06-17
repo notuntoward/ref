@@ -2863,7 +2863,7 @@ OVERVIEW
 
 OLS directly estimates y given x, computing dy/dx, and it does a good job of predicting y from x; it predicts the "total effect" in eq. (4.44).
 
-But if the goal is to estimate the linear effect of x on y, OLS gives a biased result.  In this example and the example in Section 4.8.8, y is effected by both x and u (u is the error that results if you model y using only x).  If x is correlated with u, then OLS can reduce the error making use of that correlation, but that exaggerates the effect of x alone.
+But if the goal is to estimate the linear effect of x on y, OLS gives a biased result.  In this example and the example in Section 4.8.8, y is effected by both x and u (u is the error that results if you model y using only x).  If x is correlated with u, then OLS can reduce the y prediction error making use of that correlation, but that exaggerates the effect of x alone.
 
 In order to improve the estimate of  the impact of x, you need to model the other variables that affect y and are correlated with x.  These are generally unknown, but their effect can be approximating by finding other variables that are both correlated with the x and uncorrelated with the error.  These are the instrumental variables.
 
@@ -11970,6 +11970,11 @@ HOWEVER
 
 INTERESTING
 * Elastic net choice of "alpha," the L2 penalty in this paper didn't seem to matter
+* On this data, Elastic Net is MUCH better than LASSO at not excluding true features.  
+  -  (at least when features are linearly correlated)
+  - would make it a good preprocessing featsel step for fancier algorithm?
+  - correct feature selection is either perfect or almost perfect at not excluding true features, 
+  - and if you select for stability, is almost as good at not selecting bad features as is LASSO (compare with figure 9).  
 * Would elastic net then be a good way to ID features for a more complex regression algorithm?
 Python, Matlab and R
 https://github.com/nogueirs/JMLR2018
