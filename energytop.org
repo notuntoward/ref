@@ -12337,5 +12337,5 @@ optimization to be a generalization of linear programming.
     06/04/19 [[file:energy.bib::Altman09mdlDevAdeqLect11][Altman 2009: Model Adequancy, Deviance, Lect 11]]
 * Bibliography
 bibliographystyle:unsrt
-bibliography:./energy.bib
+bibliography:energy.bib
 
