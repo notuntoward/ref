@@ -11934,14 +11934,13 @@ behind that of the more complex Bayesian networks.},
 }
 
 @Article{Nogueira18featSelStbl,
-  author        = {Nogueira, Sarah and Sechidis, Konstantinos and Brown, Gavin},
-  title         = {On the Stability of Feature Selection Algorithms.},
-  journal       = {Journal of Machine Learning Research},
-  year          = {2018},
-  volume        = {18(174)},
-  pages         = {1-54},
-  __markedentry = {[Scott:6]},
-  abstract      = {Feature Selection is central to modern data science, from exploratory data analysis to
+  author   = {Nogueira, Sarah and Sechidis, Konstantinos and Brown, Gavin},
+  title    = {On the Stability of Feature Selection Algorithms.},
+  journal  = {Journal of Machine Learning Research},
+  year     = {2018},
+  volume   = {18(174)},
+  pages    = {1-54},
+  abstract = {Feature Selection is central to modern data science, from exploratory data analysis to
 predictive model-building. The “stability” of a feature selection algorithm refers to the
 robustness of its feature preferences, with respect to data sampling and to its stochastic
 nature. An algorithm is ‘unstable’ if a small change in data leads to large changes in
@@ -11955,7 +11954,7 @@ obeying all desirable properties, and (for the first time in the literature) all
 intervals and hypothesis tests on the stability, enabling rigorous experimental comparison
 of feature selection algorithms.
 Keywords: stability, feature selection},
-  comment       = {This paper develops an easy-to-comprehend metric for feature selection stability (same features selected regardless of small data perturbations).  It can also be used improve the choice of lambda (L1 penalty) so that the true features are selected more often, at little or no cost to classification error (synthetic data).  For pure LASSO there is zero false positive feature selection but a decent chance of missing true features (very little cost to classification error); elastic net is much better at stable feature selection, with no missed features, very few false postive features, and zero sacrifice in clasification error (with slighly worse classification error than LASSO on a highly redundant feature set). 
+  comment  = {This paper develops an easy-to-comprehend metric for feature selection stability (same features selected regardless of small data perturbations).  It can also be used improve the choice of lambda (L1 penalty) so that the true features are selected more often, at little or no cost to classification error (synthetic data).  For pure LASSO there is zero false positive feature selection but a decent chance of missing true features (very little cost to classification error); elastic net is much better at stable feature selection, with no missed features, very few false postive features, and zero sacrifice in clasification error (with slighly worse classification error than LASSO on a highly redundant feature set). 
 
 The paper also develops rigorous hypothesis tests for comparing the stability of different feature selection algorithms.
 
@@ -11986,8 +11985,8 @@ Demo
 http://www.cs.man.ac.uk/~nogueirs/stabilityDemo.html
 
 COMPARE TO:  Meinshausen08pValHiDim, Meinshausen10Stabilityselection},
-  file          = {:Nogueira18featSelStbl.pdf:PDF},
-  url           = {http://jmlr.org/papers/v18/17-514.html},
+  file     = {:Nogueira18featSelStbl.pdf:PDF},
+  url      = {http://jmlr.org/papers/v18/17-514.html},
 }
 
 @Article{Yang12nbrCompFeatSel,
@@ -17365,6 +17364,22 @@ Multilinear pca is sped up here: Althoff12OnlnTnsrFactPCA},
   publisher = {SSRN},
   timestamp = {2009.08.17},
   type      = {Accepted Paper Series},
+}
+
+@Article{Rossetti17frcstAdoptEarlyData,
+  author    = {Rossetti, Giulio and Milli, Letizia and Giannotti, Fosca and Pedreschi, Dino},
+  title     = {Forecasting success via early adoptions analysis: A data-driven study},
+  journal   = {PloS one},
+  year      = {2017},
+  volume    = {12},
+  number    = {12},
+  pages     = {e0189096},
+  abstract  = {Innovations are continuously launched over markets, such as new products over the retail market or new artists over the music scene. Some innovations become a success; others don’t. Forecasting which innovations will succeed at the beginning of their lifecycle is hard. In this paper, we provide a data-driven, large-scale account of the existence of a special niche among early adopters, individuals that consistently tend to adopt successful innovations before they reach success: we will call them Hit-Savvy. Hit-Savvy can be discovered in very different markets and retain over time their ability to anticipate the success of innovations. As our second contribution, we devise a predictive analytical process, exploiting Hit-Savvy as signals, which achieves high accuracy in the early-stage prediction of successful innovations, far beyond the reach of state-of-the-art time series forecasting models. Indeed, our findings and predictive model can be fruitfully used to support marketing strategies and product placement.},
+  comment   = {Seems like WattPlan Grid in that it examines how good these forecasts are using early adoption data.  DAta is distributed with the paper on the paper homepage URL.},
+  doi       = {0.1371/journal.pone.0189096},
+  file      = {:Rossetti17frcstAdoptEarlyData.pdf:PDF},
+  publisher = {Public Library of Science},
+  url       = {https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5720712/},
 }
 
 @PhdThesis{Nassaj10modelLinNonLinPhD,
@@ -33584,6 +33599,29 @@ Keywords: Market design, intraday markets, wind forecasts, large-scale renewable
   timestamp = {2014.01.21},
 }
 
+@Article{Almeida08openTechInvoDevCntries,
+  author    = {Almeida, Rita and Fernandes, Ana Margarida},
+  title     = {Openness and technological innovations in developing countries: evidence from firm-level surveys},
+  journal   = {The Journal of Development Studies},
+  year      = {2008},
+  volume    = {44},
+  number    = {5},
+  pages     = {701--727},
+  abstract  = {This paper examines international technology transfers using firm-level data across 43 
+developing countries. Our findings show that exporting and importing activities are important 
+channels for the transfer of technology. Majority foreign-owned firms are less likely to engage 
+in technological innovations than minority foreign-owned firms or domestic firms. We interpret 
+this finding as evidence that the technology transferred from multinational parents to majority-
+owned subsidiaries is more mature than that transferred to minority-owned subsidiaries. Our 
+findings also suggest that foreign-owned subsidiaries rely mostly on the direct transfer of 
+technology from their parents and that firms that import intermediate inputs are more likely to 
+acquire new technology from their machinery suppliers. },
+  comment   = {A linear, probably logistic regression adoption somewhat like WattPlan Grid.  But is instantaneous, not over time, it seems.},
+  file      = {:Almeida08openTechInvoDevCntries.pdf:PDF},
+  publisher = {Taylor \& Francis},
+  url       = {https://www.tandfonline.com/doi/abs/10.1080/00220380802009217},
+}
+
 @Article{Leith04elecForecastGaussProc,
   author    = {Leith, D.J. and Heidl, M. and Ringwood, J.V.},
   title     = {{Gauss}ian process prior models for electrical load forecasting},
@@ -34008,6 +34046,39 @@ Probably need a varying coeff model of some kind for this to work, but I don't k
   url       = {http://www.sciencedirect.com/science/article/pii/S0304407610000850},
 }
 
+@Article{Faria03countMdlTechAdopt,
+  author    = {Faria, Ana and Fenn, Paul and Bruce, Alistair},
+  title     = {A count data model of technology adoption},
+  journal   = {The Journal of Technology Transfer},
+  year      = {2003},
+  volume    = {28},
+  number    = {1},
+  pages     = {63--79},
+  abstract  = {This paper investigates the main determinants 
+of the adoption of flexible production technologies (FPTs), 
+using a plant-level dataset of Portuguese manufacturing indus- 
+try. Besides using a new dataset, this paper extends the frame- 
+work of previous studies on technology adoption by taking 
+into account the effect of demand uncertainty as an additional 
+determinant of adoption. In order to examine this relation- 
+ship, several econometric models for count data are estimated. 
+These models deal with the discrete nature of the dependent 
+variable and firm specific unobservable characteristics arising 
+from the cross-section context. The main findings of the paper 
+are: (i) rank effects and technological regimes are important 
+determinants of technology adoption, as put forward in pre- 
+vious models of technology diffusion; (ii) demand uncertainty 
+has a significant positive impact on the likelihood of adopt- 
+ing FPTs, which suggests that technological heterogeneity is 
+important when modelling firms’ investment decisions; (iii) the 
+estimates were improved after controlling for excess zeros and 
+overdispersion that characterizes our data.},
+  comment   = {Has good table of various methods.  Like idea for MN Solar Pathways in that it's count based.},
+  file      = {:Faria03countMdlTechAdopt.pdf:PDF},
+  publisher = {Springer},
+  url       = {https://www.researchgate.net/profile/Paul_Fenn/publication/5152719_A_Count_Data_Model_of_Technology_Adoption/links/0deec51d49f511a573000000/A-Count-Data-Model-of-Technology-Adoption.pdf},
+}
+
 @InProceedings{Gronwald10carbonCopula,
   author       = {Marc Gronwald and Janina Ketterer and Stefan Tr\"{u}ck},
   title        = {The Dependence Structure Between Carbon Emission Allowances And Financial Markets - A Copula Analysis},
@@ -34250,6 +34321,25 @@ Training method is criticized in Cannon11quantRgrsnNNprecip},
   groups    = {PointDerived, doReadNonWPV_2},
   owner     = {sotterson},
   timestamp = {2013.10.22},
+}
+
+@Article{Comin06techDiffuse5facts,
+  author        = {Diego {Comin} and Bart {Hobijn} and Emilie {Rovito}},
+  title         = {Five Facts You Need to Know About Technology Diffusion},
+  journal       = {National Bureau of Economic Research},
+  year          = {2006},
+  __markedentry = {[Scott:6]},
+  abstract      = {This paper presents a new data set on the diffusion of about 115 technologies in over 150 countries
+over the last 200 years. We use this comprehensive data set to uncover general patterns of technology
+diffusion. Our main 5 findings are as follows: (i) Once the intensive margin is measured,
+technologies do not diffuse in a logistic way. (ii) Within a typical technology, the dispersion in the
+adoption levels across countries is about 5 times larger than the cross-country dispersion in income
+per capita. (iii) The rankings of countries by level of technology adoption are very highly correlated
+across technologies. (iv) Within a typical technology, there has been convergence at an average rate
+of 4 percent per year. (v) The speed of convergence for technologies developed since 1925 has been
+three times higher than the speed of convergence for technologies developed before 1925.},
+  file          = {:Comin06techDiffuse5facts.pdf:PDF},
+  url           = {https://www.nber.org/papers/w11928},
 }
 
 @Article{Kaut14copulaMultiVarHeurist,
@@ -38350,6 +38440,32 @@ Keywords
   timestamp = {2009.02.18},
 }
 
+@Article{Comin10explrTechDiffus,
+  author   = {Comin, Diego and Hobijn, Bart},
+  title    = {An Exploration of Technology Diffusion},
+  journal  = {American Economic Review},
+  year     = {2010},
+  volume   = {100},
+  number   = {5},
+  pages    = {2031-59},
+  month    = {December},
+  abstract = {We develop a model that, at the aggregate level, is similar to the one-sector 
+neoclassical growth model; at the disaggregate level, it has implications for the 
+path of observable measures of technology adoption. We estimate it using data 
+on the diffusion of 15 technologies in 166 countries over the last two centuries. 
+Our results reveal that, on average, countries have adopted technologies 45 
+years after their invention. There is substantial variation across technologies 
+and countries. Newer technologies have been adopted faster than old ones. The 
+cross-country variation in the adoption of technologies accounts for at least 25 
+percent of per capita income differences.},
+  comment  = {An aggregate and granular tech diffusion model based on time lags, and which is multisector (PV, ecars, batteries,...?)
+
+Has data on this page: https://www.aeaweb.org/articles?id=10.1257/aer.100.5.2031},
+  doi      = {10.1257/aer.100.5.2031},
+  file     = {:Comin10explrTechDiffus.pdf:PDF},
+  url      = {http://www.aeaweb.org/articles?id=10.1257/aer.100.5.2031},
+}
+
 @Article{Fuentes07bayesEntSpatSamp,
   author    = {Montserrat Fuentes and Arin Chaudhuri and David M. Holland},
   title     = {{Bayes}ian entropy for spatial sampling design of environmental data},
@@ -38654,6 +38770,23 @@ Keywords: Solar forecasting; Solar energy; Regression analysis; Stochastic learn
   publisher = {Elsevier},
   timestamp = {2015.02.19},
   url       = {http://www.sciencedirect.com/science/article/pii/S0038092X12001429},
+}
+
+@Article{Comin04crossCntryTheoryFact,
+  author   = {D. Comin and B. Hobijn},
+  title    = {Cross-country technology adoption: making the theories face the facts},
+  journal  = {Journal of Monetary Economics},
+  year     = {2004},
+  volume   = {51},
+  number   = {1},
+  pages    = {39 - 83},
+  issn     = {0304-3932},
+  abstract = {We examine the diffusion of more than 20 technologies across 23 of the world's leading industrial economies. Our evidence covers major technology classes such as textile production, steel manufacture, communications, information technology, transportation, and electricity for the period 1788–2001. We document the common patterns observed in the diffusion of this broad range of technologies. Our results suggest a pattern of trickle-down diffusion that is remarkably robust across technologies. Most of the technologies that we consider originate in advanced economies and are adopted there first. Subsequently, they trickle down to countries that lag economically. Our panel data analysis indicates that the most important determinants of the speed at which a country adopts technologies are the country's human capital endowment, type of government, degree of openness to trade, and adoption of predecessor technologies. We also find that the overall rate of diffusion has increased markedly since World War II because of the convergence in these variables across countries.},
+  comment  = {Imitator/Innovator model is explicit across time w/ lags and space (contries) and conditional (has other factors).  Interesting b/c doesn't assume S-curve (it leasts an a time curve) and solves the joint problem of cross-space and cross-time.},
+  doi      = {https://doi.org/10.1016/j.jmoneco.2003.07.003},
+  file     = {:Comin04crossCntryTheoryFact.pdf:PDF},
+  keywords = {Economic growth, Historical data, Technology adoption},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0304393203001247},
 }
 
 @Article{He99multiVarQRsplines,
@@ -41154,6 +41287,27 @@ Does eliminate the need for exact?  (King02logistRgrssnMLvsExact)},
   file      = {:King01logRgrssnRare.pdf:PDF},
   publisher = {Cambridge University Press},
   url       = {https://gking.harvard.edu/files/0s.pdf},
+}
+
+@Article{Comin13spatDiffTech,
+  author        = {Diego A. {Comin} and Mikhail {Dmitriev} and Esteban {Rossi-Hansberg}},
+  title         = {The Spatial Diffusion of Technology},
+  journal       = {National Bureau of Economic Research},
+  year          = {2013},
+  __markedentry = {[Scott:]},
+  abstract      = {We study technology di¤usion across countries and over time empirically. We nd signicant
+evidence that technology di¤uses slower to locations that are farther away from adoption leaders.
+This e¤ect is stronger across rich countries and also when measuring distance along the south-
+north dimension. A simple theory of human interactions can account for these empirical ndings.
+The theory suggests that the e¤ect of distance should vanish over time, a hypothesis that we
+conrm in the data, and that distinguishes technology from other ows like goods or investments.
+We then structurally estimate the model. The parameter governing the frequency of interactions
+is larger for newer and network-based technologies and for the median technology the frequency
+of interactions decays by 73% every 1000 Kms. Overall, we document the signicant role that
+geography plays in determining technology di¤usion across countries.},
+  comment       = {Estimates the spatial coefficient of technology diffusion using data from many countries (I think this data is available)},
+  file          = {:Comin13spatDiffTech.pdf:PDF},
+  url           = {https://academic.microsoft.com/search?q=The%20Spatial%20Diffusion%20of%20Technology&f=&orderBy=0&skip=0&take=10},
 }
 
 @InCollection{Montufar2014numLinRegnDeepNN,

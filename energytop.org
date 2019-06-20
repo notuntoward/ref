@@ -10893,10 +10893,14 @@ Erika
 ******* [[cite:Deesko15digFingerPrintFaultSlides][Deesko & Bärmann 2015: Digital Fingerprint Equipment Faults (STEAG)]]
 * Planning
 *** <<Technology Adoption Rates>>
-***** Tech Adoption Overviews
+***** <<Tech Adoption Overviews>>
 ******* DONE [[file:energy.bib::Wikepedia19techAdoptLfCycl][Wikipedia 2019: Technology Adoption Lifecycle]]
+******* TODO [[file:energy.bib::Comin06techDiffuse5facts][Comin et al. 2006: Five Facts Tech Diffusion]]
+******* TODO [[file:energy.bib::Faria03countMdlTechAdopt][Faria et al. 2003: Count data model Tech Adopt]] (intro and count like MNSP?)
 ******* [[file:energy.bib::Rogers83diffusInnovBk][Rogers 1983: Diffusion of Innovation Book]]
+******* TODO [[file:energy.bib::Rossetti17frcstAdoptEarlyData][Rossetti et al. 2017: Forecasting Early Adopt Analysis Data]] (has data, like WPG)
 ******* DONE [[file:energy.bib::Taherdoost18reviewTechAdopt][Taherdoost 2018 review tech accept models]]
+******* [[https://www.pewinternet.org/topics/technology-adoption/][Technology Adoption | Pew Research Center]] (general page, lots of articles, link to datasets)
 ***** Solar adoption rates
 ******* DONE [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market Model (dGen)]]: NREL
 ******* [[file:energy.bib::Gagnon16distPVadoptMktFctr][Gagnon & Sigrin 2016: Distributed PV Adoption Mkt Factors]]
@@ -10922,6 +10926,7 @@ Erika
 ******* [[file:energy.bib::Moons15selfBrandPersEV][Moons & De 2015: Self Brand Personality Elec Cars]]
 ******* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help.
 ******* TODO [[file:energy.bib::Bernards18][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
+******* needs a [[https://www.evernote.com/l/AA2mqLTTd-ZCdLwoiE5Mc4XFTrnNGwyUV5s/]["vehicle age" feature]], I think, somehow.
 ***** <<Bass Innovation Diffusion Models>>
 ******* DONE [[file:energy.bib::Wikipedia19bassDiffus][Wikipedia 2019: Bass Diffusion Model]]
 ******* TODO [[file:energy.bib::Bass94bassWithoutDecVars][Bass et al. 1994: Why Bass Model w/o dec vars]] (with derivations. SDE?)
@@ -10934,19 +10939,55 @@ Erika
 ******* [[file:energy.bib::Bertotti16bassDiffusCorrInhomog][Bertotti et al. 2016: Bass diffus corr inhomog advert]]
 ******* [[file:energy.bib::Bertotti16innovDiffusCorrNtwk][Bertotti et al. 2016: Innovation diff corr networks]]
 ******* [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]]
-***** Stochastic Adoption Forecasting
+***** Logistic Regression Based Tech Adoption
+******* [[file:energy.bib::Almeida08openTechInvoDevCntries][Almeida & Fernandes 2008: Openness Adopt Dev Countries]] 
+***** Explicit Space/Time modeling adoption
+******* TODO [[file:energy.bib::Comin04crossCntryTheoryFact][Comin & Hobijn 2004: Cross Country Adopt Theory Facts]]
+******* TODO [[file:energy.bib::Comin10explrTechDiffus][Comin & Hobijn 2010: Exploration Technology Diffusion]] (has data)
+***** Stochastic Tech Adoption Forecasting
+***** 
 ******* TODO [[file:energy.bib::Madadi17diffFrcstBrwnSpln][Madadi et al. 2017: Diffuse Brownian spline, Small data]]
 ******* [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]]
 ******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012: Innovation diffusion SDEs]] (could get rate of change)
 ******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012 bass SDE rate of change (interscience online)]]
-***** Tech Adoption and Space/Network
+***** TODO <<Space/Network and Tech Adoption>>
+******* TODO [[file:energy.bib::Comin13spatDiffTech][Comin et al. 2013: Spatial Diffusion Technology]] (estimates spatial coeff)
+******* TODO [[file:energy.bib::Manshadi16genBassNtwk][Manshadi & Misra 2016: Generalized Bass Model Networks]]
 ******* [[file:energy.bib::Lengyel19geoCmplxDfsnInnov][Lengyel et al. 2019 Geography diffusion innov.]]
-******* [[file:energy.bib::Manshadi16genBassNtwk][Manshadi & Misra 2016: Generalized Bass Model Networks]]
 ******* [[file:energy.bib::Bertotti16innovDiffusCorrNtwk][Bertotti et al. 2016: Innovation diff corr networks]]
 ***** Agent based tech adoption
 ******* TODO [[file:energy.bib::Rai15agentEnrgyTechAdoptFactors][Rai & Robinson 2015: Agent Energy Tech Adopt Factors]]
 
 ***** [[file:energy.bib::Eckersley18utilFuncImpossUncert][Eckersley 2018: Impossibility Uncertainty Theorems Util Func]] (for UI choices?)
+***** <<Data Sets for Technology Adoption>>
+******* [[https://www.nber.org/hccta/][Historical Cross-Country Technology Adoption (HCCTA) Dataset]]
+
+        Is described and crunched in code here:
+        [[https://github.com/datasets/registry/issues/156][datasets/registry#156 Historical Adoption of Technology]]
+
+        Also described here:
+        [[http://grantome.com/grant/NSF/SES-0742957][An Extensive Dataset on Historical Cross-Country Adoption - Diego Comin]]
+
+        Seems to have come from here
+        [[https://www.dartmouth.edu/~dcomin/indexdatasets.html][Diego's Personal Page]]
+ since 18th century
+******* [[https://ourworldindata.org/technology-adoption][Technology Adoption-Our World in Data]]: many techs, datalinks in plottabs
+******* [[https://www.pewinternet.org/?post_type=dataset][Datasets | Pew Research Center]] 
+
+        [[http://libguides.gatech.edu/c.php?g=54048&p=349552][Here]], it says:
+
+          Trend Data: Pew Internet and American Life Project
+          "Charts and Excel data files of a selection of the Pew Internet Project's latest findings." Includes demographics of online users, online activities, internet adoption, home broadband adoption, and more. Data is for the U.S.
+
+******* [[https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/BDGGCZ][Replication data for: "Technology Adoption under Uncertainty: Take-up and Sub...]]
+******* [[https://www.dartmouth.edu/~dcomin/indexdatasets.html][Primitive Technology: Diego Comin]]
+******* [[https://rdrr.io/cran/adoption/man/technology.html][technology: Technology Adoption: R dataframes for about 40 technologies]]
+******* [[https://www.osti.gov/dataexplorer/biblio/1461472-electric-technology-adoption-energy-consumption][Electric Technology Adoption and Energy Consumption (Dataset) | DOE]]
+******* [[https://healthdata.gov/dataset/electronic-prescribing-adoption-and-use-state][Electronic Prescribing Adoption and Use by State]]
+******* [[file:energy.bib::Rossetti17frcstAdoptEarlyData][Rossetti et al. 2017: Forecasting Early Adopt Analysis Data]] (has data)
+******* [[file:energy.bib::Comin10explrTechDiffus][Comin & Hobijn 2010: Exploration Technology Diffusion]] (has data)
+******* also [[Machine Learning Data Sets]]
+***** also [[Class Imbalance Handling]] (if tech adopt. is a rare event)
 ***** also [[Technology Learning Rates]]
 ***** also [[Portfolio Optimization and Forecasting]]
 ***** also [[Real Estate Forecasts]]
@@ -11947,6 +11988,7 @@ optimization to be a generalization of linear programming.
 *** [[https://www.reddit.com/r/datasets/][Reddit subreddit: r/datasets]]
 *** [[German Power Market Data]]
 *** [[file:energy.bib::Jensen17euDatSimRE][Jensen & Pinson 2017: RE Europe European Sim Reanalysis (IRPWIND WP82.3)]]
+*** also [[Data Sets for Technology Adoption]]
 * Papers
 *** TODO To read
 *** [[http://www.atmos.washington.edu/~justin/documents/][Cliff Mass Papers]] (maproom paper may be best)
