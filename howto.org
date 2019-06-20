@@ -8238,54 +8238,56 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
   }
 }        
 ******* a (broken as of 5/19) keybinding extension: 
-***** matplotlib gui extension: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib]]
+***** Jupyterlab extensions
+******* matplotlib gui extension: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib]]
 
-      After installing (using conda), put this in your notebook:
+        After installing (using conda), put this in your notebook:
 
-      %matplotlib widget
+        %matplotlib widget
 
-***** integration w/ drawio block diagram drawer: [[https://github.com/QuantStack/jupyterlab-drawio][QuantStack/jupyterlab-drawio]]
+******* integration w/ drawio block diagram drawer: [[https://github.com/QuantStack/jupyterlab-drawio][QuantStack/jupyterlab-drawio]]
 
-      Don't have to install anything other than the extension.  Runs in browser that Jupyter is running in.
+        Don't have to install anything other than the extension.  Runs in browser that Jupyter is running in.
 
-***** jump to definition: [[https://github.com/krassowski/jupyterlab-go-to-definition][krassowski/jupyterlab-go-to-definition]]
-      Goes to variable/function def w/
+******* jump to definition: [[https://github.com/krassowski/jupyterlab-go-to-definition][krassowski/jupyterlab-go-to-definition]]
+        Goes to variable/function def w/
 
-        alt+mouseClick
-      or
-        ctrl+alt+b
+          alt+mouseClick
+        or
+          ctrl+alt+b
 
-      and can be configured for others (see extension github page).
+        and can be configured for others (see extension github page).
 
-      Nice and works.
+        Nice and works.
 
-***** filetree file finder: [[https://github.com/youngthejames/jupyterlab_filetree][youngthejames/jupyterlab_filetree]]
-***** python creating convenience: [[https://github.com/jtpio/jupyterlab-python-file][jtpio/jupyterlab-python-file]]
-***** conda env switching, cloning, etc.: [[https://github.com/fcollonval/jupyter_conda][fcollonval/jupyter_conda]]
+******* filetree file finder: [[https://github.com/youngthejames/jupyterlab_filetree][youngthejames/jupyterlab_filetree]]
+******* python creating convenience: [[https://github.com/jtpio/jupyterlab-python-file][jtpio/jupyterlab-python-file]]
+******* conda env switching, cloning, etc.: [[https://github.com/fcollonval/jupyter_conda][fcollonval/jupyter_conda]]
 
-      Similar to anaconda navigator but seems faster, and (I think) is more capable.
+        Similar to anaconda navigator but seems faster, and (I think) is more capable.
 
-      Works in basic Jupyter notebook too.
+        Works in basic Jupyter notebook too.
 
-***** non-git auto-versioning: [[https://github.com/timkpaine/jupyterlab_autoversion][timkpaine/jupyterlab_autoversion]]
+******* non-git auto-versioning: [[https://github.com/timkpaine/jupyterlab_autoversion][timkpaine/jupyterlab_autoversion]]
 
-      It does [[https://github.com/timkpaine/jupyterlab_autoversion/issues/1][make its own git repo]], though.
+        It does [[https://github.com/timkpaine/jupyterlab_autoversion/issues/1][make its own git repo]], though.
 
-      However, it doesn't work for me.  I submitted a [[https://github.com/timkpaine/jupyterlab_autoversion/issues/11][bug]].
+        However, it doesn't work for me.  I submitted a [[https://github.com/timkpaine/jupyterlab_autoversion/issues/11][bug]].
 
-***** extensions that are maybe nice but not working
-******* open file w/ part of name: [[https://github.com/parente/jupyterlab-quickopen][parente/jupyterlab-quickopen]]
+******* <<Jupytlerlab plotly extension>>: [[https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension][jupyter-renderers/packages/plotly-extension]]
+******* Extensions that are maybe nice but not working
+********* open file w/ part of name: [[https://github.com/parente/jupyterlab-quickopen][parente/jupyterlab-quickopen]]
 
-        Seems like it would be nice but has two-step install instructions, one of which is pip only.
+          Seems like it would be nice but has two-step install instructions, one of which is pip only.
 
-        Too complicated.
+          Too complicated.
 
-******* <<emacs bindings in cells>>: [[https://github.com/kpe/jupyterlab-emacskeys][kpe/jupyterlab-emacskeys]]
+********* <<emacs bindings in cells>>: [[https://github.com/kpe/jupyterlab-emacskeys][kpe/jupyterlab-emacskeys]]
 
-        conda install nodejs
-        jupyter labextension install jupyterlab-emacskeys
+          conda install nodejs
+          jupyter labextension install jupyterlab-emacskeys
 
-        Doesn't work.  Many emacs binding missing. I [[https://github.com/kpe/jupyterlab-emacskeys/issues/2][filed a bug]].
+          Doesn't work.  Many emacs binding missing. I [[https://github.com/kpe/jupyterlab-emacskeys/issues/2][filed a bug]].
 
 ***** Jupyter/Jupyterlab graphics
 ******* matplotlib widgets
@@ -8444,15 +8446,18 @@ Tableau
 ********* Multilanguage [[Plotly]] can make [[Python ggplot2]] interactive
 ********* [[Python ggplot2]]: also popular in R, has interactive multilanguage ports ([[Plotly]])
 ********* python plotly offline:, [[https://github.com/SayaliSonawane/Plotly_Offline_Python][Plotly_Offline_Python Tutorial]]
+********* Note: [[Jupyterlab]] offline requires [[Jupytlerlab plotly extension]]
 ********* initializing plotly
           From [[https://plot.ly/python/getting-started/#initialization-for-online-plotting][here]]
 
-          Get an api key byn logging into plotly acct. [[https://plot.ly/settings/api#/][here]]
+          Get an api key by logging into plotly acct. [[https://plot.ly/settings/api#/][here]]
 
           Then
           import plotly          plotly.tools.set_credentials_file(username='zenf', api_key='cO8tnS0WlWAreOZwmPzX')
 
-********* installing cufflinks (plotyly sometimes wants this)
+********* installing cufflinks (plotly sometimes wants this)
+
+          IS CUFFLINKS OBSOLETE, as of 4/2019?
 
           From [[https://stackoverflow.com/questions/43922570/trouble-installing-cufflinks-in-anaconda-in-windows-10][here]]
 
@@ -8644,7 +8649,7 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
 ************* [[Remote Interpreter example with Tensorflow]]
 ************* *Bummer*: not git controlled. Must [[https://www.jetbrains.com/help/pycharm/remote-debugging-with-product.html#remote-interpreter][deploy code via SFTP]]
 *********** Remote Python Debug Server PyCharm Debugging
-********* Note: JupyterLab [[https://medium.com/@mukeshkumar_46704/encourage-you-to-switch-to-jupyter-lab-158d4225d114][claimed]] to be easier than PyCharm for remote running
+********* Note: [[Jupyterlab]] is [[https://medium.com/@mukeshkumar_46704/encourage-you-to-switch-to-jupyter-lab-158d4225d114][claimed]] to be easier than PyCharm for remote running
 ******* Virtual environments and Pycharm
 ********* Warning: Pycharm .idea file in proj dir: has hardcoded Anaconda loc, not machine/OS indep.
 ******* Tensorflow/Cuda and Pycharm
