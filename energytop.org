@@ -10896,6 +10896,7 @@ Erika
 ***** <<Tech Adoption Overviews>>
 ******* DONE [[file:energy.bib::Wikepedia19techAdoptLfCycl][Wikipedia 2019: Technology Adoption Lifecycle]]
 ******* TODO [[file:energy.bib::Comin06techDiffuse5facts][Comin et al. 2006: Five Facts Tech Diffusion]]
+******* TODO [[file:energy.bib::Vanston08tipsTechAdopt][Vanston 2008: Practical Tips Tech Adopt]]
 ******* TODO [[file:energy.bib::Faria03countMdlTechAdopt][Faria et al. 2003: Count data model Tech Adopt]] (intro and count like MNSP?)
 ******* [[file:energy.bib::Rogers83diffusInnovBk][Rogers 1983: Diffusion of Innovation Book]]
 ******* TODO [[file:energy.bib::Rossetti17frcstAdoptEarlyData][Rossetti et al. 2017: Forecasting Early Adopt Analysis Data]] (has data, like WPG)
@@ -10927,6 +10928,7 @@ Erika
 ******* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help.
 ******* TODO [[file:energy.bib::Bernards18][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
 ******* needs a [[https://www.evernote.com/l/AA2mqLTTd-ZCdLwoiE5Mc4XFTrnNGwyUV5s/]["vehicle age" feature]], I think, somehow.
+******* [[file:energy.bib::Manceau13techDiffusnPreannc][Manceau et al. 2013: Diffusion Model Preannounced Prods (2 phase Bass)]]
 ***** <<Bass Innovation Diffusion Models>>
 ******* DONE [[file:energy.bib::Wikipedia19bassDiffus][Wikipedia 2019: Bass Diffusion Model]]
 ******* TODO [[file:energy.bib::Bass94bassWithoutDecVars][Bass et al. 1994: Why Bass Model w/o dec vars]] (with derivations. SDE?)
@@ -10939,13 +10941,13 @@ Erika
 ******* [[file:energy.bib::Bertotti16bassDiffusCorrInhomog][Bertotti et al. 2016: Bass diffus corr inhomog advert]]
 ******* [[file:energy.bib::Bertotti16innovDiffusCorrNtwk][Bertotti et al. 2016: Innovation diff corr networks]]
 ******* [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]]
+******* [[file:energy.bib::Manceau13techDiffusnPreannc][Manceau et al. 2013: Diffusion Model Preannounced Prods (2 phase Bass)]]
 ***** Logistic Regression Based Tech Adoption
 ******* [[file:energy.bib::Almeida08openTechInvoDevCntries][Almeida & Fernandes 2008: Openness Adopt Dev Countries]] 
 ***** Explicit Space/Time modeling adoption
 ******* TODO [[file:energy.bib::Comin04crossCntryTheoryFact][Comin & Hobijn 2004: Cross Country Adopt Theory Facts]]
 ******* TODO [[file:energy.bib::Comin10explrTechDiffus][Comin & Hobijn 2010: Exploration Technology Diffusion]] (has data)
 ***** Stochastic Tech Adoption Forecasting
-***** 
 ******* TODO [[file:energy.bib::Madadi17diffFrcstBrwnSpln][Madadi et al. 2017: Diffuse Brownian spline, Small data]]
 ******* [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]]
 ******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012: Innovation diffusion SDEs]] (could get rate of change)
@@ -10959,6 +10961,12 @@ Erika
 ******* TODO [[file:energy.bib::Rai15agentEnrgyTechAdoptFactors][Rai & Robinson 2015: Agent Energy Tech Adopt Factors]]
 
 ***** [[file:energy.bib::Eckersley18utilFuncImpossUncert][Eckersley 2018: Impossibility Uncertainty Theorems Util Func]] (for UI choices?)
+***** <<Interaction: Technology Learning and Adoption Rates>>
+
+      This must be important for long horizon forecasts
+
+******* [[file:energy.bib::Edelenbosch18socTechLrnRate][Edelenbosch et al. 2018: Interaction Tech Adopt and Learn]]
+******* also [[Technology Learning Rates]]
 ***** <<Data Sets for Technology Adoption>>
 ******* [[https://www.nber.org/hccta/][Historical Cross-Country Technology Adoption (HCCTA) Dataset]]
 
@@ -10994,14 +11002,18 @@ Erika
 ***** also [[Economic Forecasts]]
 ***** also [[Population Forecasts]]
 *** <<Technology Learning Rates>>
-***** TODO Stat basis for learning rate: [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::Nagy13basPredTechProg][Nagy et al. 2013: Statistical]] (has confidence intervals)
+***** Introductions to Tech Learning Rates
+******* TODO [[file:energy.bib::Rubin15techLrnRateElecSply][Rubin et al. 2015: Review Tech Lrn Elec Supply]]
+******* TODO Stat basis for learning rate: [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::Nagy13basPredTechProg][Nagy et al. 2013: Statistical]] (has confidence intervals)
 ***** TODO Separate PV component learning rates: [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::][Trancik et al. 2015 Tech Improv Reinf Wind & Solar]]
 ***** TODO [[file:energy.bib::Kavlak18causeCostRedPV][Kavlak et al. 2018: Evaluating cause of PV module cost red]] 
 ***** TODO [[file:energy.bib::Elshurafa18lrnCrvPVbos][Elshurafa et al. 2018: Estimating PV bal of sys TV per country]] (time varying, BOS only)
 ***** TODO [[file:energy.bib::Barbose18trackSunTrendInstPVprice][Barbose et al.: Tracking Sun US PV price Trends]]
 ***** TODO [[file:energy.bib::Schmidt19LCOelecStrgProj][Schmidt et al. 2019: Projecting Future LCOS storage]]
 ***** TODO [[file:energy.bib::Nykvist19bevPriceFrcst][Nykvist et al. 2019: Assessing BEV price forecast]]
+***** [[file:energy.bib::Wiesenthal12enrgyTechLrnPolicy][Wiesenthal 2012: Technology Learn Rates Energy Policy]]
 ***** evernote [[Statistical Basis for Predicting Technological Progress][learning rate (tech)]]
+***** [[Interaction: Technology Learning and Adoption Rates]]
 ***** Also: [[Technology Adoption Rates]]
 *** Wind farm planning
 ***** interconnecting wind farm clusters
