@@ -447,6 +447,11 @@
   ;; This is your old M-x.
   (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
 
+;; * Company Mode
+;; Used in other packages.  Maybe put this section there instead of here.
+
+(use-package company)
+
 ;; * Scrolling, Cursor Movement and Selection
 
 (setq scroll-step 1)
@@ -1085,6 +1090,7 @@
   
   ;; use flycheck, not elpy's flymake
   ;; (https://realpython.com/blog/python/emacs-the-best-python-editor/)
+  ;; TODO don't use require.  Can't use-package do this?  Can use-package flycheck be inside this flycheck?
   (when (require 'flycheck nil t)
     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
     (add-hook 'elpy-mode-hook 'flycheck-mode))
@@ -1237,6 +1243,32 @@
 			       (if (comint-after-pmark-p)
 				   (comint-next-input 1)
 				 (forward-line 1))))))
+
+;; ** C#
+
+(use-package csharp-mode)
+(use-package omnisharp
+  :after csharp-mode
+  :after company)
+
+;; Inspired by: https://github.com/OmniSharp/omnisharp-emacs
+
+;; maybe this can go inside of use-package ominsharp?
+(eval-after-load
+  'company
+  '(add-to-list 'company-backends #'company-omnisharp))
+
+(defun my-csharp-mode-setup ()
+  (omnisharp-mode)
+  (company-mode)
+  (flycheck-mode)
+  (setq c-syntactic-indentation t)
+  (c-set-style "ellemtel")
+  (electric-pair-local-mode 1) ;; Emacs 25
+  (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
+  (local-set-key (kbd "C-c C-c") 'recompile))
+
+(add-hook 'csharp-mode-hook 'my-csharp-mode-setup t)
 
 ;; * Narrowing
 ;; Narrowing has too many keys: wipe them out and make it a toggle
@@ -2126,7 +2158,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
  '(recentf-max-saved-items 200)
@@ -2143,6 +2175,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(scroll-bar-mode (quote right))
  '(scroll-step 1)
  '(search-default-mode (quote char-fold-to-regexp))
+ '(send-mail-function (quote mailclient-send-it))
  '(show-paren-mode t)
  '(sml/modified-char "•")
  '(sml/position-percentage-format nil)
