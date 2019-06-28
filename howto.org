@@ -1463,6 +1463,20 @@ Many text editors have access to these in some simple way, so before thinking ab
       C-c C-c : save edits to really change filenames
       C-c ESC : undo all changes
 
+***** File copy to same dir when have a 2nd visible dired window open in a different dir
+
+      From ivy.el:
+
+      ivy.el (ivy-next-history-element): Use minibuffer-default for
+      dired-dwim-target
+
+      (setq dired-dwim-target t) is a nice productivity boost. Except for
+      the situation when you want to copy the file to the current directory,
+      and a different directory is preselected instead.
+
+      When this happens, you can now press "~M-n~" to select the current
+      directory.
+
 *** Searching/Replacing
 ***** <<Swiper>>
       From: [[http://pragmaticemacs.com/emacs/dont-search-swipe/][Don’t search, swipe | Pragmatic Emacs]]
@@ -2351,29 +2365,31 @@ Strike-through: nil
 
 ***** <<Windows Emacs File associations>>
 
-      I can't get this to work.  Maybe [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Windows-Startup.html#Windows-Startup][official Emacs Windows Tops]] would help?
+      This works as of June 2019 on Windows 10 and emacs 26.2:
 
-      Set up so [[https://www.gnu.org/software/emacs/manual/efaq-w32.html#Associate-files-with-Emacs][new emacs doesn't start]] if old one is already running
-      (the no-new-emacs part still doesn't work on emacs 25.1 and Windows 10)
-      1. ALTERNATE_EDITOR to runemacs.exe. /not emacslientw?/  I tried both, doesn't matter. (if add path to emacs bin, this will be simpler)
-      2. make sure .emacs has a (server-start)
-      3. associate files using emacsclientw.exe /below/
+      *Environment variables*
+      o PATH contains path to runemacs.exe, emacsclientw.exe, emacs.exe 
+      o ALTERNATE_EDITOR == runemacs.exe
 
-      emacsclientw association, for example, for org files:
+      *.emacs*
+      Contains 
+        (require 'server)
+      This may not be necessary anymore but I'm leaving it in there for now.
 
-      1. Right click on a .org file
-      2. Properties
+      *Associate a file type w/ emacs* & use running emacs if one exists, ow start
+      1. Right click on a .org file (or whatever type you want to associate)
+      2. Select "Open With"
       3. General tab
-      4. Click on "Change" button next to "opens with"
-      5. More Apps
-      6. Look for another app on pc
-      7. go to emacs dist bin and select emacsclientw.exe
+      4. Associate the file with emacslientw.exe
 
-      After this, other filetypes can be associated with emacs the normal way with OpenWith or properties (don't have to go "look for another app on pc")
-
-      *Windows 10 Fail*: On Windows 10, as of 2016-11-29, the procedure above still started a new emacs window when you click on a, for example, .org file.  But on Windows 7, it (correctly) uses an existing emacs window.  The problem was that the (server-running-p) check in .emacs wasn't working, so the servers was never started.
-
-      *Windows 10 Hack*: change .emacs to just always run (server-start)
+         
+         If new setup
+           (there will be no emacsclient.exe option, so...)
+           o click on "More Apps"
+           o click on "look for another app on this page"
+           o go to where emacsclientw.exe is and click on it.
+         else
+           o just click on emacsclientw.exe option
 
 ******* old fixes that aren't necessary anymore on Windows 10, as of 7/17/16.
 
@@ -8239,6 +8255,13 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 }        
 ******* a (broken as of 5/19) keybinding extension: 
 ***** Jupyterlab extensions
+******* <<Jupytlerlab plotly extension>>: [[https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension][jupyter-renderers/packages/plotly-extension]]
+
+        Do this first before following web page instructions:
+
+          conda install nodejs
+          pip install npm
+
 ******* matplotlib gui extension: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib]]
 
         After installing (using conda), put this in your notebook:
@@ -8274,7 +8297,6 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
         However, it doesn't work for me.  I submitted a [[https://github.com/timkpaine/jupyterlab_autoversion/issues/11][bug]].
 
-******* <<Jupytlerlab plotly extension>>: [[https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension][jupyter-renderers/packages/plotly-extension]]
 ******* Extensions that are maybe nice but not working
 ********* open file w/ part of name: [[https://github.com/parente/jupyterlab-quickopen][parente/jupyterlab-quickopen]]
 
@@ -8834,12 +8856,6 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
 
       (3) Double-click browser.ctrlTab.previews to set its value to true.
 
-***** make pdf files open in external pdf reader instead of Firefox internal
-
-      Options -> General -> Applications
-      
-      Search 'pdf' and click the external pdf browser application
-
 ***** Duplicate tab
 ******* middle or ctrl-click on the Reload Button (circular arrow)
 ******* ctrl-click on tab and drag
@@ -9333,7 +9349,7 @@ matlab-ruby-test.rb
 
     ./configure --prefix ~/contrib
 * Docbook
-** windows setup [[http://www.codeproject.com/KB/winhelp/docbook_howto.aspx][advice]]
+*** windows setup [[http://www.codeproject.com/KB/winhelp/docbook_howto.aspx][advice]]
 * Debian/Ubuntu local package install
   from [[http://linux.derkeiler.com/Mailing-Lists/Debian/2008-05/msg00938.html][here]] (almost):
 
