@@ -2365,7 +2365,7 @@ Strike-through: nil
 
 ***** <<Windows Emacs File associations>>
 
-      This works as of June 2019 on Windows 10 and emacs 26.2:
+      This works as of June 2019 on Windows 10 and emacs 26.2, although it still starts a new emacs every time you click on a file.  emacsclientw is supposed reuse an existing running emacs but that's not what happens right now:
 
       *Environment variables*
       o PATH contains path to runemacs.exe, emacsclientw.exe, emacs.exe 
@@ -2376,7 +2376,7 @@ Strike-through: nil
         (require 'server)
       This may not be necessary anymore but I'm leaving it in there for now.
 
-      *Associate a file type w/ emacs* & use running emacs if one exists, ow start
+      *Associate a file type w/ emacs* /supposed/ to use running emacs if one exists
       1. Right click on a .org file (or whatever type you want to associate)
       2. Select "Open With"
       3. General tab
