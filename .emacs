@@ -1890,7 +1890,8 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
   ;; ("B" helm-buffers-list)
   )
 ;; ("R" helm-recentf)
-(global-set-key (kbd "<M-lwindow>") 'hydra-utils/body)
+(global-set-key (kbd "<M-apps>") 'hydra-utils/body) ; for fullsize keyboard
+(global-set-key (kbd "<C-lwindow>") 'hydra-utils/body) ; no apps on Surface Go
 
 (use-package helpful ; better emacs info: https://github.com/Wilfred/helpful
   :bind
