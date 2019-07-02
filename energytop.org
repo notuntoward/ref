@@ -146,6 +146,7 @@
 *** [[file:energy.bib::Geron17HandsOnMachineLearningWithScikitLearnAndTensorFlowConceptsToolsAndTechniquesToBuildIntelligentSystems][Geron 2017: Hands On Scikit Learn TensorFlow Book]] (I have)
 *** [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop Intro Book]]
 *** [[file:energy.bib::Agresti07introCategDatAnl][Agresti 2007: Introduction Categorical Data Analysis]] (good)
+*** [[file:energy.bib::Legler19broadenGLMmultiLev][Legler & Roback 2019: Broadening, GLM and Multilev Models]]
 *** [[Books w/ source code]]
 *** Wind energy books I could buy
     these three looked good, looking at amazon.com on 9/6/2011
@@ -1301,6 +1302,8 @@
 ***** Should repeat 10-CV 50-100X v.s. 300 bootstraps ([[http://stats.stackexchange.com/questions/14516/understanding-bootstrapping-for-validation-and-model-selection][says Frank Harrel]] comment)
 ***** Should use nested CV (or double BS) for model selection ([[http://stats.stackexchange.com/questions/14516/understanding-bootstrapping-for-validation-and-model-selection][Frank Harrel]] comment)
 ***** See [[http://biostat.mc.vanderbilt.edu/wiki/Main/RmS][this]] for Frank Harrel's rational)
+***** Really limit complexity by min CV error? 
+      [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
 *** <<Reusable Holdout>>
 ***** A 2015 breakthrough (says [[https://www.kdnuggets.com/2016/02/21-data-science-interview-questions-answers-part2.html][KDD article]])
 ***** short video: [[https://www.kdnuggets.com/2015/08/feldman-avoid-overfitting-holdout-adaptive-data-analysis.html][Big Idea To Avoid Overfitting: Reusable Holdout to Preserve Validity in Adapt...]]
@@ -2087,9 +2090,13 @@ Scott
 *** [[file:energy.bib::Pillow16mathNeurTlsSlides][Pillow 2016: Mathematical Tools Neuroscience Course Notes]]: GLM vs. GLM vs. Poisson/Logistic Regression
 *** [[cite:Fox08btstrpRgrsnBookChap][Fox 2008: Chap 21: Bootstrapping Regrssn Models: Applied Regression Analysis]]
 
+*** [[file:energy.bib::Legler19broadenGLMmultiLev][Legler & Roback 2019: Broadening Horiz, GLM and Multilev Models]]
+
 *** <<Poisson Regression>>
 ***** TODO [[file:energy.bib::Agresti07introCategDatAnl][Agresti 2007: Introduction Categorical Data Analysis]] (for Poisson part)
 ***** TODO [[file:energy.bib::Benjamin18mdrnMLvsGLMpoisson][Benjamin et al. 2018: Modern Machine Learning vs Poisson GLM]]
+***** [[file:energy.bib::Legler19broadenGLMmultiLev][Legler & Roback 2019: Broadening Horiz, GLM and Multilev Models]]
+      Good "graphical look @ Poisson regression" section, used for MNSP talk
 ***** [[https://examples.dask.org/machine-learning/glm.html][Generalized Linear Models Dask]] (e.g. lasso poisson, big parallel graph)
 ******* [[file:energy.bib::Pillow16mathNeurTlsSlides][Pillow 2016: Mathematical Tools Neuroscience Course Notes]]: GLM (old) vs. GLM (new), Poisson/Logistic Regression
 ***** [[Discrete Events: Poisson arrivals, etc.]] 
@@ -3472,7 +3479,7 @@ Hope that helps,
 ********* [[file:energy.bib::Goldberger04nbrhdCompAnal][Goldberger et al. 2004: Neighbourhood]]
 ********* KNN-based [[Partial Mutual Information Estimation]] is used for featsel
 ********* see also: [[Mutual Information Based Feature Selection]]
-******* *<<submodularity for feature selection, targeted sampling>>
+******* <<Submodularity for feature selection, targeted sampling>>
 ********* see also: [[submodular optimization]]
 ********* [[http://www.select.cs.cmu.edu/tutorials/icml08submodularity.html][tutorial]] video and slides (feature selection application, has matlab!)
 ********* [[file:energy.bib::krause08sensplacegaussproc][krause et al. 2008: near optimal sensor]]
@@ -3630,6 +3637,7 @@ Hope that helps,
 
 ********* [[file:energy.bib::Lim15lrnInteractHierGrpLasso][Lim & Hastie 2015: Learning Interactions Hierarchical]]
 ********* [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feature Selection Algorithms]] (focus on LASSO and Elastic Net).
+********* worse than Rand FRst on Boston Housing data: [[file:energy.bib::Trevor04LAR][Trevor et al. 2004: Least Angle Regression]]
 ******* [[File:energy.bib::dhillon08featselfeatclass][Dhillon et al. 2008: Efficient Feature Selection]]
 ******* Matlab Netlab demo script demard.m does automatic relevance determination
 ******* [[File:energy.bib::das08sensselworstcase][Das & Kempe 2008: Sensor Selection Minimizing]]
@@ -3642,7 +3650,14 @@ Hope that helps,
 ******* [[File:energy.bib::yang09featselmlprand][Yang et al. 2009: Feature Selection Mlp Neural Network]]
 ********* maybe nicer than mrmr i used in my thesis ([[cite:peng05featSelMutInfo][Peng et al. 2005: MI feat sel: mRmR]])
 ******* nice tutorials on linear interactions: [[http://www.r-bloggers.com/r-tutorial-series-regression-with-interaction-variables/][here]] and [[http://math.uprm.edu/~wrolke/esma3102/discretepredict.htm][here]], and [[http://rtutorialseries.blogspot.com/2010/01/r-tutorial-series-basic-hierarchical.html][selecting them with anova]].
-******* Random forests are good for high dim: [[file:energy.bib::strobl09rcrspartforest][Strobl et al. 2009]] (tutorial)
+******* <<Random Forest feature selection>>
+********* RF featsel situated in broader featsel context: [[file:energy.bib::Saeys07reviewFeatSelBioInf][Saeys et al. 2007 feat sel review]]
+********* Random forests are good for high dim: [[file:energy.bib::strobl09rcrspartforest][Strobl et al. 2009]] (tutorial)
+********* RFs are more stable: [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feat Selection Algorithms]]
+********* Random KNN more stable, better than Random Forest: [[file:energy.bib::Li11randKNNfeatSelVsRandFrst][Li et al. 2011: Random KNN Random Forests]]
+********* used for boosted QR: [[file:energy.bib::Fenske12strctAddQRthesis][Fenske 2012: Structured additive QR]]
+********* Wind power feature selection, prob forecast: [[file:energy.bib::Fugon08dataMineFrcst][Fugon et al. 2008: Data]]
+********* Wind Power Ramp rates (SVM better than RF): [[file:energy.bib::Zheng09rampDataMine][Zheng & Kusiak 2009: Prediction Wind Farm]]
 ******* [[File:energy.bib::sales11parmutinfoest][Sales & Romualdi 2011]] Parmigene mut info est.
 ******* [[File:energy.bib::hering07modelshorttermwindpred][hering 2007: Models For Short]] (pre ordering of features)
 ******* [[file:energy.bib::Jursa07windPowVarSelParticle][Jursa 2007: Variable]] selection for wind power forecasting
@@ -3709,6 +3724,7 @@ Hope that helps,
 ******* [[file:energy.bib::Weigel08modelCombo][Weigel et al. 2008: Can]]  (when does ensemble averaging work?)
 ******* [[file:energy.bib::Hodge12entropyFrcstMetric][Hodge et al. 2012: Examining]]
 ******* [[file:energy.bib::Greybush08ensRegime][Greybush et al. 2008: Regime Dependence Optimally]]
+******* [[file:energy.bib::Fenske12strctAddQRthesis][Fenske 2012: Structured additive QR]]
 ******* [[file:energy.bib::Lemke09dynFrcstComboDiv][Lemke et al. 2009: Dynamic]]
 ******* [[file:energy.bib::Riedel09poolMultiFrcstCombo][Riedel & Gabrys 2009: Pooling Combination Multilevel Forecasts]]
 ******* [[file:energy.bib::Papaefthymiou09copulaPowUncert][Papaefthymiou & Kurowicka 2009: Using Copulas Modeling]]
@@ -3822,6 +3838,8 @@ Hope that helps,
 * <<Feature Learning>>
 *** [[Transfer Learning]]
 *** [[cite:Kanter15deepFeatSyntCpla][Kanter & Veeramachaneni 2015: Deep Feat Synth Gauss Copula]]
+*** <<Random Forest Feature Generation>>
+***** [[file:energy.bib::Kanter15deepFeatSyntCpla][Kanter & Veeramachaneni 2015: Deep]]
 * <<Model Selection>>
 *** [[http://projecteuclid.org/dpubs?service%3dui&version%3d1.0&verb%3ddisplay&handle%3deuclid.ejs/1245415825][model selection by resampling penalization]]
 *** [[http://ir.uiowa.edu/etd/439/][model selection criteria in the presence of missing features based on the kullback-leibler discrepancy]]
@@ -3861,10 +3879,46 @@ Hope that helps,
 *** [[KNN neighborhood functions for local linear regression]]
 * <<Random Forests>>
 
-  TODO: copy all RF papers to here
+  TODO: copy all Rand Forest papers to here
 
-*** [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
+*** Random Forest Books and Long Reports
+***** [[file:energy.bib::Hastie09elemStatLrnBook][Hastie et al. 2009: Elements Statistical Learning]] 
+*** TODO [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining ADABOOST and Random forest Interp]]
+*** TODO [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
 *** [[file:energy.bib::Li11randKNNfeatSelVsRandFrst][Li et al. 2011: Random KNN Random Forests]] (more stable than plain RFs)
+*** [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
+*** Trees have difficulties with
+***** non-straight lines, interactions: [[https://www.evernote.com/l/AA1nXiMh5_dITrJxTp7r95xFwAZVaKGm0nM/][Deep learning: A brief guide for practical problem solvers]]
+***** extrapolation beyond training outputs: [[https://www.evernote.com/l/AA0XaycItP9BVZXF7qqYp9wsnhQINsieAaw/][Extrapolation is tough for trees!]]
+***** Stability (or not?) See: [[Random Forest feature selection]]
+***** lots of class overlap (combined w/ high dims, I think): [[file:energy.bib::Tomasev13imbalKnnHubs][Tomasev & Mladenic 2013: Class]]
+*** Trees are good for ? ... (add something here)
+***** RFs give stable featsel: [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feat Selection Algorithms]]
+***** RFs better than Poisson GLM for neural spikes: [[file:energy.bib::Benjamin18mdrnMLvsGLMpoisson][Benjamin et al. 2018: Modern Machine Learning neural response]]
+***** hyperplane separable data: [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop]]
+***** better than LARS on Boston Housing data: [[file:energy.bib::Trevor04LAR][Trevor et al. 2004: Least Angle Regression]]
+***** random forests in autoML: [[file:energy.bib::Feurer15autoMLautoSkLrn][Feurer et al. 2015: Efficient Robust Automated Machine Learning]]
+***** high dim, few samples (n<<p): [[file:energy.bib::Strobl09rcrsPartForest][Strobl et al. 2009 intro recurs part.]]
+*** Random Forest Applications
+***** Load Forecasting: [[file:energy.bib::Gajowniczek18clustElecLoadFrcst][Gajowniczek & Z\kabkowski 2018: Simulation short term electricity]]
+***** Pose Estimation: [[File:energy.bib::shotton11poserecogdepth][Shotton et al. 2011: Real Time Human]] (random forest featsel for kinect)
+***** Price Forecast: [[file:energy.bib::Hong16probEnrgyFrcstCompet14][Hong et al. 2016: Probabilistic Energy Frcst]]
+***** <<Random Forest Wind Power Forecast>>
+******* [[file:energy.bib::Monteiro09windFrcstStArt][Monteiro et al. 2009: Wind]]: RF best non-lin forecast model
+******* [[file:energy.bib::Sohoni16critRevWindPowCrvModel][Sohoni et al. 2016: Critical Review Wind]]: Wind Power curve
+******* [[file:energy.bib::Fugon08dataMineFrcst][Fugon et al. 2008: Data]]: Wind power feature selection, prob forecast
+******* [[file:energy.bib::Girard10trajEvalWind][Girard & Pinson 2010: Evaluation App Wind]]: wind speed from NWP speed/dir ensemble
+***** Solar Adoption: [[file:energy.bib::Yu18deepSolarDB][Yu et al. 2018: DeepSolar]]
+*** [[Random Forest Ensemble Selection]]
+*** [[Random Forest feature selection]]
+*** [[Isolation Forest Anomaly Detection]] (a random forest type)
+*** Random Forest Probabilistic Forecast
+***** [[Random Forest Quantile Regression]]
+***** Random Forest Binary Probabilsitic Forecast
+******* [[file:energy.bib::Gagne12machnLrnEnhanceEns][Gagne et al. 2012: Machine Storm Scale Ensemble precip frcst]] (RF ~ middle of road)
+*** [[Random Forest Changepoint Detection]]
+*** [[Random Forest Feature Generation]]
+*** [[Random Forests in Reinforcement Learning]]
 * <<Boosted Regression>>
 *** Blasso (boosted lasso: could this be continuous or discrete?)
 *** Discreet boosting
@@ -3880,6 +3934,7 @@ Hope that helps,
 
 ***** [[file:energy.bib::Hibell04segNNadaboost][Hibell et al. 2004: Segmented Neural Network]] using AdaBoost
       <<Segmented neural network with AdaBoost>>
+***** [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining ADABOOST and Random forest Interp]]
 ***** [[file:energy.bib::Solomatine04adaBoostContin][Solomatine & Shrestha 2004: AdaBoost]].Rt
 ***** [[file:energy.bib::Kankanala14adaBoostPlus][Kankanala et al. 2014: AdaBoost]]+
 ***** [[file:energy.bib::Kenari13cmtteMchn][Kenari & Mashohor 2013: Robust]]
@@ -4646,6 +4701,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ***** [[file:energy.bib::Hirose12NNRMLknnLocLin][Hirose et al. 2012: NNRMLR]] global regresssion+dimReduce --> KNN distance function --> knn regression
 ***** [[file:energy.bib::Tomasev13imbalKnnHubs][Tomasev & Mladenic 2013: Class]] imbalance and hubs (for high end of power curve, w/ few points)
 ***** [[file:energy.bib::Liu11confWgtKNNimbal][Liu & Chawla 2011: Class]] weighted KNN imbalance
+***** [[file:energy.bib::Samworth12optWgtKNNclass][Samworth & others 2012: Optimal]] weighted KNN vs. non-weighted
 ***** [[file:energy.bib::Tomasev11probKNNhubNaiv][Tomasev et al. 2011]] prob KNN hub
 ***** [[file:energy.bib::Ding04KknnInKmeansClust][Ding & He 2004: K]]  really kmeans but uses (old) KNN.  Could this be updated?
 ***** [[file:energy.bib::Garcia10cmpltLazyLrn][Garcia et al. 2010: Completely Lazy Learning]] (KNN class, auto K)
@@ -4659,7 +4715,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ***** see also: [[KNN-based spectral clustering]]
 ***** see also: [[High dimensional KNN hubs]]
 ***** see also: [[KNN neighborhood functions for local linear regression]]
-*** Lasso clustering>>
+*** <<Lasso clustering>>
 ***** [[file:energy.bib::Witten13ClusterElasticNet][Witten et al. 2013: Cluster Elastic Net]] (group lasso(
 ***** [[file:energy.bib::Buehlmann13corrRgrsnClustGlasso][Buehlmann et al. 2013: Correlated]] (group lasso(
 ***** see [[lasso feature selection]]
@@ -5403,6 +5459,13 @@ sera
 ***** [[cite:Zhang16detProbIntrvVari][Zhang et al. 2016: Deterministic]] interval, variational. Uses ELM
 ***** [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]
 ***** [[file:energy.bib::Tayman11popFrcstAccRgrssn][Tayman et al. 2011: Evaluating pop frcst w/ regression model]]
+***** <<Random Forest Quantile Regression>>
+******* [[file:energy.bib::Fenske11idRiskBoostAddQR][Fenske et al. 2011: Risk additive QR]]: cite of random forest QR
+******* [[file:energy.bib::Bhat11quantRgrsnTrees][Bhat et al. 2011: Quantile Regression Trees]]
+******* [[file:energy.bib::Meinshausen06qrForests][Meinshausen 2006: Quantile Regression Forests]]
+******* [[file:energy.bib::Juban07ProbWndFrcstFeatSelKDE][Juban et al. 2007: Probabilistic Wind Power Kernel Forecasts]] (compared against kernels)
+******* [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
+******* [[file:energy.bib::Fugon08dataMineFrcst][Fugon et al. 2008: Data]]: Wind power feature selection, prob forecast
 ***** <<Autoregressive Quantile Regression>>
 
       Lots of algorithms, maybe good for Henry Martin's limit order book models
@@ -5426,8 +5489,7 @@ sera
 ********* see also: [[Partial Least Squares Regression]]
 ******* [[file:energy.bib::Cai12quantRgrsnSemiParamVC][Cai & Xiao 2012: Semiparametric]] semiparam VC
 ******* [[file:energy.bib::Horowitz05nonParQRadd][Horowitz & Lee 2005: Nonparametric Estimation Additive]]
-***** Feature Selection for Quantile Regression
-      <<Feature Selection for Quantile Regression>>
+***** <<Feature Selection for Quantile Regression>>
 ******* [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]] QR for wind pow (hand wavy, ad hoc feature sel)
 ******* [[file:energy.bib::Li08quantRgrsnLasso][Li & Zhu 2008: L1 Norm Quantile Regression]]
 ******* [[file:energy.bib::Kuan11quantRgrsnIntro][Kuan 2011: Introduction Quantile Regression]] (course notes w/ hints for feature selection)
@@ -5439,6 +5501,7 @@ sera
 ******* [[file:energy.bib::Yao10simplexQRfeatSel][Yao 2010: Simplex Techniques Quantile]] (slides, possible adapt, featsel)
 ******* [[file:energy.bib::Wu09featSelQR][Wu & Liu 2009: Variable]] sel for QR
 ******* [[file:energy.bib::Fenske11idRiskBoostAddQR][Fenske et al. 2011: Identifying]] risk boost QR
+******* [[file:energy.bib::Fenske12strctAddQRthesis][Fenske 2012: Structured additive QR]]
 ******* Chi-square quantile binary test
 ********* [[file:energy.bib::Bremnes04windLocQR][Bremnes 2004: Probabilistic]] loc lin QR test
 ********* [[file:energy.bib::Bremnes04precipQuantsVerif][Bjoernar 2004: Probabilistic NWP]] precip verif
@@ -5850,6 +5913,7 @@ sera
 ***** [[cite:Cherubini11dynCopulaFinanceBk][Cherubini et al. 2011: Dynamic Copula Methods Finance Book]]
 ***** [[cite:Joe14DepModelCopulasBk][Joe 2014: Dependence Copulas Chapman Hall Book]]
 ***** [[cite:Gijbels14distSumCopulaDep][Gijbels & Herrmann 2014: Sum of RVS w/ Copula Dep.]]
+***** [[file:energy.bib::Kanter15deepFeatSyntCpla][Kanter & Veeramachaneni 2015: Deep Feat Synth]] Copula tuning
 ***** <<Mixed Continuous and Discrete Copulas>>
 ******* [[cite:Zilko16mixedDscrtContinCopula][Zilko & Kurowicka 2016: Copula mixed Dscrt/Contin, Normal OK]]
 ******* [[cite:Suh16GaussCopulaVarMixDat][Suh & Choi 2016: Gauss Copula Variatnl mixture, disc/cont, autoenc]]
@@ -7605,6 +7669,7 @@ Scott
 ***** [[cite:Otterson16stochTrdTSO][Otterson et al. 2016: Stochastic German TSO]]
 ***** [[cite:Siemens14sennFrcstsRES][Siemens 2014: Better Forecast RES Wnd/Solar/netDmd/xmssn/Deep]]
 ***** [[cite:Bo09probLMPfrcstLdUncrt][Bo & Li 2009: Probabilistic LMP Price Forecasting]]
+***** [[file:energy.bib::Hong16probEnrgyFrcstCompet14][Hong et al. 2016: Probabilistic Energy Frcst]] (random forest)
 ***** see also: [[Distribution to Distribution Regression]]
 ***** see also: [[Power Markets]]
 ***** see also: [[Optimal Bidding]]
@@ -7710,6 +7775,7 @@ Scott
 
          A simple proxy for stability/wake effects:  [[cite:Mittelmeier17powStdRatioWake][Mittelmeier et al. 2017: SCADA data pow std ratio wake]]
 
+******* [[file:energy.bib::Sohoni16critRevWindPowCrvModel][Sohoni et al. 2016: Critical Review Wind]]: Wind Power curve
 ******* Learning montonicity
         <<Learning montonicity>>
 
@@ -8376,9 +8442,9 @@ Scott
 ********* [[file:energy.bib::Jorgensen08aesoFR][Joergensen & M\ohrlen 2008: AESO Wind Power]] (best ensembles, meteorology)
 ********* See: [[Regimes and Ramps]]
 ********* See: [[Ramp Forecasting]]
-******* Ensemble selection
-        <<Ensemble selection>>
-********* [[file:energy.bib::Lofstrom09ensmblSel][Lofstrom et al. 2009: Ensemble]] selection, classif
+*******  <<Ensemble selection>>
+********* <<Random Forest Ensemble Selection>>
+*********** [[file:energy.bib::Lofstrom09ensmblSel][Lofstrom et al. 2009: Ensemble]] selection, classif
 ********* [[file:energy.bib::Garaud11ensCalSel][Garaud & Mallet 2011: Automatic]] combo ens sel
 ********* [[file:energy.bib::Brochero11ensSelGreedy][Brochero et al. 2011: Simplifying]] backward greedy
 ********* [[file:energy.bib::Brochero13ensSelEvoMultipOpt][Brochero et al. 2013: Evolutionary Multiobjective Optimization]]
@@ -8386,6 +8452,7 @@ Scott
 ********* [[file:energy.bib::Bentzien13ensPostProcTlag][Bentzien & Friederichs 2013: Ensemble]] LASSO sel, time-lagged
 ********* [[file:energy.bib::Bright04bestEnsChllng][Bright & Nutter 2004]] removing met model ensembles is challenging
 ********* [[file:energy.bib::Caruana04ensLibSelGen][Caruana et al. 2004: Ensemble Selection Libraries Models]]
+********* [[file:energy.bib::Lofstrom09ensmblSel][Lofstrom et al. 2009: Ensemble]] selection, classif
 ********* [[file:energy.bib::Jose14TrimOpinPoolCal][Jose et al. 2014: Trimmed Opinion Pools]]
 ********* see also [[Continuous valued AdaBoost]] (which select (weight) ensembles)
 ******* Scenarios from ensembles: generated by machine learning
@@ -11357,6 +11424,9 @@ Erika
 ***** [[http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6786425][Highly Comparative Feature-Based Time-Series Classification]]
 ******* is its own Matlab thttps://www.gitbook.com/book/benfulcher/hctsa-manual/details
 ******* [[JIDT: Java Information Dynamics Toolkit]]
+***** <<Isolation Forest Anomaly Detection>>
+******* Ch5,6 of: [[file:energy.bib::Aggarwal17OutlierAnalysisBook][Aggarwal 2017: Outlier Analysis Book]]
+******* [[file:energy.bib::ERCIMnews16spclIssueMachLrn][News 2016: Special]] RF and Deep NN were best.
 ***** also see [[Concept drift detection]]
 ***** also see [[Generic change point detection]]
 ***** also see: [[https://www.gitbook.com/book/benfulcher/hctsa-manual/details][Transfer Learning]]
@@ -11472,6 +11542,8 @@ Erika
 ******* see [[Novelty Detection]]
 ******* see [[Copula Processes]]
 ***** Matlab [[https://www.mathworks.com/help/matlab/ref/ischange.html#mw_52a87b5c-9d25-446a-94f9-92c7e71d5206][ischange]] (2017b) function: 
+***** <<Random Forest Changepoint Detection>>
+******* [[file:energy.bib::Greybush08ensRegime][Greybush et al. 2008: Regime Dependence Optimally]] (cites RF)
 ***** also see [[State Change Alarm Criteria]]
 
 ***** also [[Outlier Detection]]
@@ -11782,6 +11854,9 @@ TOTO: read Fan16* for an overview
         (my notes are in OneNote)
 ***** DONE [[https://www.youtube.com/watch?v=UBiNzVfv3L4][Fast, flexible, and interpretable regression modeling, Daniela Witten]]
         Piecewise constant LASSO that's fast and good for high dim problems.
+
+*** <<Random Forests in Reinforcement Learning>>
+***** [[file:energy.bib::Sutton98reinfLrnIntroBook][Sutton & Barto 1998: Reinforcement]]
 
 *** TODO <<Deep Reinforcement Learning>>
 ***** [[cite:Karpathy16deepReinfLrnPongPix][Karpathy 2016: Deep Reinforcement Learning]]
@@ -12389,6 +12464,7 @@ optimization to be a generalization of linear programming.
              [[file:energy.bib::Myers12memorylessExpPropCS547][Myers 2012: CS Lecture Memoryless]]
     05/14/19 [[file:energy.bib::Ohara2010noLogCountDat][O'hara & Kotze 2010: Do not log counts]]
     06/04/19 [[file:energy.bib::Altman09mdlDevAdeqLect11][Altman 2009: Model Adequancy, Deviance, Lect 11]]
+    06/07/19 [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feature Selection Algorithms]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib

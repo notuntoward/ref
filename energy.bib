@@ -8012,6 +8012,20 @@ Fox08glmBookChap has nearly the same table, but w/ some plots},
   url       = {https://www.amazon.com/Introduction-General-Generalized-Chapman-Statistical/dp/1420091557},
 }
 
+@Book{Legler19broadenGLMmultiLev,
+  title        = {Broaden your statistical horizons: generalized linear models and multilevel models},
+  publisher    = {bookdown.org},
+  year         = {2019},
+  author       = {Legler, J and Roback, P},
+  month        = jan,
+  abstract     = {Broadening Your Statistical Horizons (BYSH): Generalized Linear Models and Multilevel Models is intended to be accessible to undergraduate students who have successfully completed a regression course through, for example, a textbook like Stat2 (Cannon et al. 2019). We started teaching this course at St. Olaf in 2003 so students would be able to deal with the non-normal, correlated world we live in. It has been offered at St. Olaf every year since; in fact, it is required for all statistics concentrators. Even though there is no mathematical prerequisite, we still introduce fairly sophisticated topics such as likelihood theory, zero-inflated Poisson, and parametric bootstrapping in an intuitive and applied manner. We believe strongly in case studies featuring real data and real research questions; thus, most of the data in the textbook and available at our GitHub repo arises from collaborative research conducted by the authors and their students, or from student projects. Our goal is that, after working through this material, students will not necessarily be expert in these methods and associated theory, but that they will develop an expanded toolkit and a greater appreciation for the wider world of data and statistical modeling.},
+  comment      = {Used for a picture reference in MNSP talk, June 2019.
+
+Also, maybe for MNSP, I should try zero-inflation.},
+  howpublished = {Online},
+  url          = {https://bookdown.org/roback/bookdown-bysh/},
+}
+
 @Article{Eilers96FlexSmthBsplnPnlty,
   author    = {Eilers, Paul HC and Marx, Brian D},
   title     = {Flexible smoothing with B-splines and penalties},
@@ -9846,7 +9860,14 @@ audio, whereas recurrent nets have shone light on sequential data such as text a
   year      = {2015},
   month     = nov,
   abstract  = {Deep learning has the potential to solve most of the problems in the field of machine learning and artificial intelligence, can be used to solve problems such as speech recognition, three-dimensional object recognition and natural language processing and other fields. This paper introduces the advantages and disadvantages of deep learning in solving practical problems.},
-  comment   = {Nice quick summary covering what Deep Learning is good for, and its problems.
+  comment   = {Nice quick summary covering what Deep Learning is good for, and its problems.  
+
+Examples show how:
+	1. GLMs single draw straight lines through data
+	2. Random and Bosted Forests draw many straight lines (better)
+	3. Deep neural net captures non-straight lines through the data -- good for complex interactions, I guess.
+
+Also, Deep learning is good for classifiers with a high number of classes (high cardinality, high dimension output).
 
 Applications
 * Payment systems providers use deep learning to identify suspicious transactions in real time.
@@ -11986,7 +12007,7 @@ obeying all desirable properties, and (for the first time in the literature) all
 intervals and hypothesis tests on the stability, enabling rigorous experimental comparison
 of feature selection algorithms.
 Keywords: stability, feature selection},
-  comment  = {This paper develops an easy-to-comprehend metric for feature selection stability (same features selected regardless of small data perturbations).  It can also be used improve the choice of lambda (L1 penalty) so that the true features are selected more often, at little or no cost to classification error (synthetic data).  For pure LASSO there is zero false positive feature selection but a decent chance of missing true features (very little cost to classification error); elastic net is much better at stable feature selection, with no missed features, very few false postive features, and zero sacrifice in clasification error (with slighly worse classification error than LASSO on a highly redundant feature set). 
+  comment  = {This paper develops an easy-to-comprehend metric for feature selection stability (same features selected regardless of small data perturbations).  It can also be used improve the choice of  lasso or elastic net lambda (L1 penalty) so that the true features are selected more often, at little or no cost to classification error (synthetic data).  For pure LASSO there is zero false positive feature selection but a decent chance of missing true features (very little cost to classification error); elastic net is much better at stable feature selection, with no missed features, very few false postive features, and zero sacrifice in clasification error (with slighly worse classification error than LASSO on a highly redundant feature set). 
 
 The paper also develops rigorous hypothesis tests for comparing the stability of different feature selection algorithms.
 
@@ -20094,9 +20115,13 @@ appropriate auxiliary tasks.},
 
 Keywords: inductive transfer, parallel transfer, multitask learning, backpropagation, k-nearest neighbor, kernel
 regression, supervised learning, generalization},
-  comment  = {Seems to be the staring paper for multitask learning.  Useful for multi-DER adoption forecasting, probably, where there is way more PV dat than there is for, example, batteries (multitask learning helped with that in: Zou18multiTaskDisease)
+  comment  = {Seems to be the seminal paper for multitask learning.  Useful for multi-DER adoption forecasting, probably, where there is way more PV dat than there is for, example, batteries (multitask learning helped with that in: Zou18multiTaskDisease)
 
-A follow on paper to read could be Ruder17multiTskDeepNN, which sounds like a similar paper but updated, and focuses on deep NN's},
+A follow on paper to read could be Ruder17multiTskDeepNN, which sounds like a similar paper but updated, and focuses on deep NN's
+
+Side notes from Andrew Ng online course on Youtube
+* transfer learning more popular (2018?), except in multiclasse image classificiation (I think he said)
+* only time it hurts is when the net is not complex enough (some my Fraunhofer DR1NN net was likely not complex enough!)},
   day      = {01},
   doi      = {10.1023/A:1007379606734},
   file     = {:Caruana97multiTaskLearninng.pdf:PDF},
@@ -30773,6 +30798,35 @@ http://www.eos.ubc.ca/~acannon/qrnn/},
   url       = {http://www.sciencedirect.com/science/article/pii/S009830041000292X},
 }
 
+@Article{Belkin18modernMachLrnBiasVar,
+  author        = {Belkin, Mikhail and Hsu, Daniel and Ma, Siyuan and Mandal, Soumik},
+  title         = {Reconciling modern machine learning and the bias-variance trade-off},
+  journal       = {arXiv preprint arXiv:1812.11118},
+  year          = {2018},
+  __markedentry = {[Scott:6]},
+  abstract      = {The question of generalization in machine learning—how algorithms are able to learn predictors
+from a training sample to make accurate predictions out-of-sample—is revisited in light of the recent
+breakthroughs in modern machine learning technology. The classical approach to understanding gener-
+alization is based on bias-variance trade-offs, where model complexity is carefully calibrated so that the
+fit on the training sample reflects performance out-of-sample. However, it is now common practice to fit
+highly complex models like deep neural networks to data with (nearly) zero training error, and yet these
+interpolating predictors are observed to have good out-of-sample accuracy even for noisy data. How
+can the classical understanding of generalization be reconciled with these observations from modern
+machine learning practice?
+In this paper, we bridge the two regimes by exhibiting a new “double descent” risk curve that extends
+the traditional U-shaped bias-variance curve beyond the point of interpolation. Specifically, the curve
+shows that as soon as the model complexity is high enough to achieve interpolation on the training
+sample—a point that we call the “interpolation threshold”—the risk of suitably chosen interpolating
+predictors from these models can, in fact, be decreasing as the model complexity increases, often below
+the risk achieved using non-interpolating models. The double descent risk curve is demonstrated for a
+broad range of models, including neural networks and random forests, and a mechanism for producing
+this behavior is posited.},
+  comment       = {How modern mach lrn techniques get zero error on train, yet generalize well on new data.
+
+Also: Wyner17adaboostRandFrstInterp},
+  file          = {:Belkin18modernMachLrnBiasVar.pdf:PDF},
+}
+
 @Article{Yang14knnClustPowCurv,
   author    = {Yang, Hejun and Hu, Bo and Yin, Lei and Chen, Ya and Liao, Qinglong},
   title     = {Clustering-interpolation Method and Its Application to Wind Turbine Generator Curve},
@@ -32309,6 +32363,40 @@ See also: Lave13solarVarWvlt},
   keywords  = {Haar transforms;data reduction;database management systems;dynamic programming;probability;wavelet transforms;Haar wavelet-based synopses;data reduction technique;database management;dynamic-programming;histogram-based synopses;probabilistic data;probability distribution;Histograms;probabilistic data.;wavelets},
   owner     = {sotterson},
   timestamp = {2014.03.21},
+}
+
+@Article{Wyner17adaboostRandFrstInterp,
+  author        = {Wyner, Abraham J and Olson, Matthew and Bleich, Justin and Mease, David},
+  title         = {Explaining the success of adaboost and random forests as interpolating classifiers},
+  journal       = {The Journal of Machine Learning Research},
+  year          = {2017},
+  volume        = {18},
+  number        = {1},
+  pages         = {1558--1590},
+  __markedentry = {[Scott:]},
+  abstract      = {There is a large literature explaining why AdaBoost is a successful classifier. The literature
+on AdaBoost focuses on classifier margins and boosting’s interpretation as the optimiza-
+tion of an exponential likelihood function. These existing explanations, however, have been
+pointed out to be incomplete. A random forest is another popular ensemble method for
+which there is substantially less explanation in the literature. We introduce a novel per-
+spective on AdaBoost and random forests that proposes that the two algorithms work for
+similar reasons. While both classifiers achieve similar predictive accuracy, random forests
+cannot be conceived as a direct optimization procedure. Rather, random forests is a self-
+averaging, interpolating algorithm which creates what we denote as a “spiked-smooth”
+classifier, and we view AdaBoost in the same light. We conjecture that both AdaBoost and
+random forests succeed because of this mechanism. We provide a number of examples to
+support this explanation. In the process, we question the conventional wisdom that sug-
+gests that boosting algorithms for classification require regularization or early stopping and
+should be limited to low complexity classes of learners, such as decision stumps. We con-
+clude that boosting should be used like random forests: with large decision trees, without
+regularization or early stopping.
+Keywords: AdaBoost, random forests, tree-ensembles, overfitting, classification},
+  comment       = {How adaboost and random forests can get increasingly lower training error yet generalize well
+
+Also: Belkin18modernMachLrnBiasVar},
+  file          = {:Wyner17adaboostRandFrstInterp.pdf:PDF},
+  publisher     = {JMLR. org},
+  url           = {http://www.jmlr.org/papers/volume18/15-240/15-240.pdf},
 }
 
 @InProceedings{Gill01interpIntrctHierGLM,
@@ -45241,6 +45329,8 @@ Copula Processes
 
 Good facts about how much data deep learning needs.
 
+Random forest and deep NN were best in anomaly detection
+
 Micro-data Learning: the Other End of the Spectrum
 
         "...the ImageNet data-base used in image recognition contains about 1.2 million labelled examples; DeepMinds's AlphaGo used more than 38 million positions to train their algorithm to play Go; and the same company used more than 38 days of play to train a neural network to play Atari 2600 games, such as Space Invaders or Breakout."},
@@ -49354,6 +49444,7 @@ High dimension
  --- example: only 5 bad points in a dataset of 2731 cases reduced accuracy from 90\% to 21.2\%
  --- hubness allows errors to propagate through the data
 * so, low dim methods that enhance minortity class are the wrong thing for high dim
+* random forests bad when lots of class overlap (combined w/ high dims, I think)
 
 HUBNESS AWARE KNN CLASSIFIERS
 * hw-KNN
