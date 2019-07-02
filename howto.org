@@ -5497,7 +5497,7 @@ table rows in previous examples.
     This works:
       https://www.pdf-online.com/osa/extract.aspx?o=outln
 
-* REJECTED Matlab
+* Matlab
 *** environment variables
 ***** for desktop, set them under file/setpath
 ***** MATLABPATH: needed for Linux, can I even do this on Windows anymore?
