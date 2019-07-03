@@ -688,6 +688,14 @@
 
     Also: [[Forecast quality metrics]]
 
+*** Bayes Error
+
+    [[https://en.wikipedia.org/wiki/Bayes_error_rate][Sounds like]] the classifier error you'd get if make a maximum likelihood classification decisio, knowing the class prior distribution and the true conditional distributions.  
+
+    Example: the error rate if you were given gaussian mixture samples, and make ML decisions knowing each class's mean/variance and prior probability.
+
+    
+
 * Code
 *** <<Books w/ source code>>
 ***** [[http://www.neurosolutions.com/products/nsbook/][Interactive Neural Network Book]] explains recurrent NN's, has demos
