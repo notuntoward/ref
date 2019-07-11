@@ -1101,12 +1101,9 @@
   ;; (https://realpython.com/blog/python/emacs-the-best-python-editor/)
   (use-package flycheck)
   (when (require 'flycheck nil t)
-    (message "found flycheck"))
-
-  (when (require 'flycheck nil t)
+    (progn (message "found flycheck")
     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-    (add-hook 'elpy-mode-hook 'flycheck-mode))
-
+    (add-hook 'elpy-mode-hook 'flycheck-mode)))
 
   (define-key python-mode-map (kbd "C-c i") 'elpygen-implement)
 
