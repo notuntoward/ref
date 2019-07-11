@@ -1068,14 +1068,23 @@
 
 (setq autopep8bin (executable-find "autopep8"))
 (if autopep8bin
-    (use-package py-autopep8)
-  (message "autopep8 is not in path"))
+    (progn (message "found autopep8")
+      (use-package py-autopep8))
+  (message "autopep8 not found: needed by elpy & py-autopep8 autofix-on-save"))
 
 ;; Use Elpy instead of python-mode.
-;; ALSO REQUIRES SOME PYTHON LIBS, see: 
+;; REQUIRES AT LEAST THESE PYTHON LIBS: jedi flake8 autopep8
+;; See: 
 ;; https://github.com/jorgenschaefer/elpy
 ;; docs: https://elpy.readthedocs.io/en/latest/index.html
 ;; run python in buffer with C-c C-c, once elpy-mode is enabled
+
+;; I don't know how to check for python jedi being installed
+
+(if (executable-find "flake8")
+    (message "found flake8")
+  (message "flake8 is not in path: needed by elpy for code checks"))
+
 (use-package elpy
   :defer t
   :init
@@ -1090,10 +1099,14 @@
   
   ;; use flycheck, not elpy's flymake
   ;; (https://realpython.com/blog/python/emacs-the-best-python-editor/)
-  ;; TODO don't use require.  Can't use-package do this?  Can use-package flycheck be inside this flycheck?
+  (use-package flycheck)
+  (when (require 'flycheck nil t)
+    (message "found flycheck"))
+
   (when (require 'flycheck nil t)
     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
     (add-hook 'elpy-mode-hook 'flycheck-mode))
+
 
   (define-key python-mode-map (kbd "C-c i") 'elpygen-implement)
 
@@ -2082,6 +2095,8 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(ido-use-filename-at-point (quote guess))
  '(ido-use-url-at-point t)
  '(indent-tabs-mode nil)
+ '(indicate-buffer-boundaries nil)
+ '(indicate-empty-lines t)
  '(ivy-mode t)
  '(ivy-wrap t)
  '(load-home-init-file t t)
@@ -2159,7 +2174,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
  '(recentf-max-saved-items 200)
@@ -2217,7 +2232,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(font-lock-function-name-face ((t (:foreground "navy" :weight bold))))
  '(font-lock-keyword-face ((nil (:foreground "navy"))))
  '(font-lock-string-face ((t (:foreground "black" :slant italic))))
- '(fringe ((t (:background "grey95" :foreground "firebrick" :weight bold))))
+ '(fringe ((t (:background "gray93" :foreground "light slate gray" :weight bold))))
  '(highlight-indentation-face ((t (:foreground "light gray"))))
  '(hl-line ((t (:background "gray97"))))
  '(ido-first-match ((t (:background "antique white" :weight bold))))
