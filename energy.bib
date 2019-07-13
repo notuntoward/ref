@@ -12012,6 +12012,7 @@ Keywords: stability, feature selection},
 The paper also develops rigorous hypothesis tests for comparing the stability of different feature selection algorithms.
 
 HAS CODE: Matlab, Python and R
+                    (sklearn implments some versionm of it for some models:  Saabas15featSelStabilRFE)
 
 HOWEVER
 * The choice of lambda doesn't seem to be totally databased for elastic net, although I can imagine a hack that would make it fully automatic, and perhaps not much worse than in Figure 11.
@@ -14199,6 +14200,48 @@ Reasons why the Bremnes algorith implmented by DTU (in IRPWIND)
 * German prices are symmetric; Dutch are asymmetric.},
   file      = {VanderVeen10imbalSettleDEvsND.pdf:VanderVeen10imbalSettleDEvsNL.pdf:PDF},
   url       = {https://www.sintef.no/globalassets/project/balance-management/paper/comparison-imbalance-settlement-germany-and-netherlands_van-der-veen_2010.pdf},
+}
+
+@Article{Lemaitre17imbalanced-learnPyLib,
+  author        = {Lema{\^\i}tre, Guillaume and Nogueira, Fernando and Aridas, Christos K},
+  title         = {Imbalanced-learn: A python toolbox to tackle the curse of imbalanced datasets in machine learning},
+  journal       = {The Journal of Machine Learning Research},
+  year          = {2017},
+  volume        = {18},
+  number        = {1},
+  pages         = {559--563},
+  __markedentry = {[Scott:6]},
+  abstract      = {imbalanced-learn is an open-source python toolbox aiming at providing a wide range of methods to cope with the problem of imbalanced dataset frequently encountered in machine learning and pattern recognition. The implemented state-of-the-art methods can be categorized into 4 groups: (i) under-sampling, (ii) over-sampling, (iii) combination of over and under-sampling, and (iv) ensemble learning methods. The proposed toolbox depends only on numpy, scipy, and scikit-learn and is distributed under MIT license. Furthermore, it is fully compatible with scikit-learn and is part of the scikit-learn-contrib supported project. Documentation, unit tests as well as integration tests are provided to ease usage and contribution. Source code, binaries, and documentation can be downloaded from https://github.com/scikit-learn-contrib/imbalanced-learn.
+Keywords: Imbalanced Dataset, Over-Sampling, Under-Sampling, Ensemble Learning, Machine Learning, Python.},
+  comment       = {Python library relevant to rare event prediction e.g. DER adoption forecasting.  
+
+Has 18 methods for binary and/or multi-class classification (see table).  Types are: 
+1. Undersampling: of most common class; 
+    a. fixed: get a certain class sample ratio
+    b. cleaning: clean based on empirical criteria (?)
+2. Oversampling: of least common class
+3. Combination: avoids overfitting due to oversampling
+    - Somehow it does this with cleaning undersampling (?)
+4. Ensemble: avoids loss of samples due to undersampling
+    - makes ensembles of balanced classifiers
+    - most samples should show up in some ensemble
+
+Can fit into a scikit learn pipeline
+- has methods: fit, sample, fit_sample
+- Pipeline class inherited from scikit-learn combines samplers, transformers, estimators.
+
+How to use the library
+https://towardsdatascience.com/building-a-logistic-regression-in-python-step-by-step-becd4d56c9c8
+
+On GitHub:
+https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/README.rst
+
+
+Nice graphs of the many methods and apparently case studies
+https://imbalanced-learn.readthedocs.io/en/stable/auto_examples/index.html},
+  file          = {:Lemaitre17imbalanced-learnPyLib.pdf:PDF},
+  publisher     = {JMLR. org},
+  url           = {http://jmlr.org/papers/volume18/16-365/16-365.pdf},
 }
 
 @TechReport{Lee12probCongestFrcst,
@@ -30803,7 +30846,7 @@ http://www.eos.ubc.ca/~acannon/qrnn/},
   title         = {Reconciling modern machine learning and the bias-variance trade-off},
   journal       = {arXiv preprint arXiv:1812.11118},
   year          = {2018},
-  __markedentry = {[Scott:6]},
+  __markedentry = {[Scott:]},
   abstract      = {The question of generalization in machine learning—how algorithms are able to learn predictors
 from a training sample to make accurate predictions out-of-sample—is revisited in light of the recent
 breakthroughs in modern machine learning technology. The classical approach to understanding gener-
@@ -32366,15 +32409,14 @@ See also: Lave13solarVarWvlt},
 }
 
 @Article{Wyner17adaboostRandFrstInterp,
-  author        = {Wyner, Abraham J and Olson, Matthew and Bleich, Justin and Mease, David},
-  title         = {Explaining the success of adaboost and random forests as interpolating classifiers},
-  journal       = {The Journal of Machine Learning Research},
-  year          = {2017},
-  volume        = {18},
-  number        = {1},
-  pages         = {1558--1590},
-  __markedentry = {[Scott:]},
-  abstract      = {There is a large literature explaining why AdaBoost is a successful classifier. The literature
+  author    = {Wyner, Abraham J and Olson, Matthew and Bleich, Justin and Mease, David},
+  title     = {Explaining the success of adaboost and random forests as interpolating classifiers},
+  journal   = {The Journal of Machine Learning Research},
+  year      = {2017},
+  volume    = {18},
+  number    = {1},
+  pages     = {1558--1590},
+  abstract  = {There is a large literature explaining why AdaBoost is a successful classifier. The literature
 on AdaBoost focuses on classifier margins and boosting’s interpretation as the optimiza-
 tion of an exponential likelihood function. These existing explanations, however, have been
 pointed out to be incomplete. A random forest is another popular ensemble method for
@@ -32391,12 +32433,12 @@ should be limited to low complexity classes of learners, such as decision stumps
 clude that boosting should be used like random forests: with large decision trees, without
 regularization or early stopping.
 Keywords: AdaBoost, random forests, tree-ensembles, overfitting, classification},
-  comment       = {How adaboost and random forests can get increasingly lower training error yet generalize well
+  comment   = {How adaboost and random forests can get increasingly lower training error yet generalize well
 
 Also: Belkin18modernMachLrnBiasVar},
-  file          = {:Wyner17adaboostRandFrstInterp.pdf:PDF},
-  publisher     = {JMLR. org},
-  url           = {http://www.jmlr.org/papers/volume18/15-240/15-240.pdf},
+  file      = {:Wyner17adaboostRandFrstInterp.pdf:PDF},
+  publisher = {JMLR. org},
+  url       = {http://www.jmlr.org/papers/volume18/15-240/15-240.pdf},
 }
 
 @InProceedings{Gill01interpIntrctHierGLM,
@@ -48697,6 +48739,33 @@ NOTE: was copied from speakerclust.bib},
   timestamp = {2016.12.24},
 }
 
+@Misc{Saabas15featSelStabilRFE,
+  author       = {Ando Saabas},
+  title        = {Selecting good features – Part IV: stability selection, RFE and everything side by side},
+  howpublished = {Blog Post: Diving into data},
+  month        = jan,
+  year         = {2015},
+  comment      = {Classifier feature selection (stability and recursive feature elimination (RFE)) in Python.  Is compared to several other techniques.
+
+Stability (see e.g. Nogueira18featSelStbl, not sure if this is exactly the same)
+* sklearn does it in randomized lasso and randomized logistics regression
+* must give it a regularization parameter so need to wrap in a crossvalidation pipeline that also selects this
+* maybe randomized logistic regresion contains that wrapper?
+* is good for both pure featsel and generalization
+* is built in to logistic regression
+* for pure featsel is among the best, in author's experience
+
+Recursive feature elimination (RFE)
+* sklearn does it: 
+   (https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html)
+* a greedy wrapper, where you eliminate either the best or worst feature (not sure what best/worst means)
+* feat ranking comes from this ordering
+* need a stopping criteria, so I guess it, too, needs to be in a cross-validating pipeline
+* RFECV function is that pipeline},
+  file         = {:Saabas15featSelStabilRFE.pdf:PDF},
+  url          = {https://blog.datadive.net/selecting-good-features-part-iv-stability-selection-rfe-and-everything-side-by-side/},
+}
+
 @Article{Saint-Drenan09pvSysTechClass,
   author    = {Yves-Marie Saint-Drenan and Stefan Bofinger},
   title     = {PV System technology: Introduction, Class Notes},
@@ -49110,6 +49179,52 @@ Has other countries too e.g. Colombia: solarGis17colombiaSolarMap},
   owner        = {sotterson},
   timestamp    = {2017.04.06},
   url          = {http://solargis.com/products/maps-and-gis-data/free/download/world},
+}
+
+@Standard{Sontag12introMLclass,
+  title       = {Introduction To Machine Learning (Class Notes)},
+  institution = {Massachusetts Institute of Technology},
+  author      = {David Sontag},
+  month       = sep,
+  year        = {2012},
+  url         = {http://people.csail.mit.edu/dsontag/courses/ml12/},
+  comment     = {Intro to ML course notes from MIT.  A good source of slides or a quick review
+*  Interesting that he delayed linear regression to way at the end...
+*  Decision Tree splitting quickly explained in Lecture 11.  Advocates splitting continuous values at midpoints
+
+LECTURE TOPICS (see  syllabus in pdf for more details)
+Overview
+Introduction to learning (Loss functions, Perceptron algorithm)
+Linear classifiers(Proof of perceptron mistake bound, introduction to Support vector machines)
+Support vector machines
+Derivation of SVM dual, introduction to kernels
+Kernel methods
+Kernel methods & optimization
+Mercer's theorem, convexity
+Learning theory
+Generalization of finite hypothesis spaces
+Learning theory
+VC-dimension
+Nearest neighbor methods
+Also margin-based generalization
+Decision trees
+Ensemble methods, Boosting
+Clustering
+K-means, Agglomerative clustering
+Spectral clustering
+Introduction to Bayesian methods
+Probability, decision theory
+Naive Bayes
+Logistic regression
+Linear Regression
+Mixture models, EM algorithm
+EM algorithm (continued)
+Hidden Markov models [Slides]
+Factor analysis
+Dimensionality reduction (incl. PCA)
+Latent Dirichlet allocation
+},
+  file        = {:Sontag12introMLclass_slides.pdf:PDF},
 }
 
 @Article{Spruyt14geomInterpCovMat,

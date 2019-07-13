@@ -690,12 +690,11 @@
 
 *** Bayes Error
 
-    [[https://en.wikipedia.org/wiki/Bayes_error_rate][Sounds like]] the classifier error you'd get if make a maximum likelihood classification decisio, knowing the class prior distribution and the true conditional distributions.  
+    [[https://en.wikipedia.org/wiki/Bayes_error_rate][Sounds like]] the classifier error you'd get if make a maximum likelihood classification decision, knowing the class prior distribution and the true conditional distributions.  
 
     Example: the error rate if you were given gaussian mixture samples, and make ML decisions knowing each class's mean/variance and prior probability.
 
     
-
 * Code
 *** <<Books w/ source code>>
 ***** [[http://www.neurosolutions.com/products/nsbook/][Interactive Neural Network Book]] explains recurrent NN's, has demos
@@ -2125,6 +2124,11 @@ Scott
       It's said that you can do this w/ bootstrap but there's one analytic method (below)
 ******* Analytic LR conf interv: [[https://stats.stackexchange.com/questions/354098/calculating-confidence-intervals-for-a-logistic-regression][Calculating confidence intervals for a logistic regression]]
 ***** also [[Data efficiency: Naive Bayes vs. Logistic Regression]]
+***** <<Feature Selection for Logistic Regression>>
+******* [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feature Selection Algorithms]]
+******* [[file:energy.bib::Saabas15featSelStabilRFE][Saabas 2015: Selecting Feats Stability, RFE & others]]
+
+******* [[Stability Feature Selection]]
 *** <<GLM performance metrics>>
 ***** [[Deviance]]
 * <<Deep Learning in Energy Systems>>
@@ -3645,7 +3649,8 @@ Hope that helps,
 
 ********* [[file:energy.bib::Lim15lrnInteractHierGrpLasso][Lim & Hastie 2015: Learning Interactions Hierarchical]]
 ********* [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feature Selection Algorithms]] (focus on LASSO and Elastic Net).
-********* worse than Rand FRst on Boston Housing data: [[file:energy.bib::Trevor04LAR][Trevor et al. 2004: Least Angle Regression]]
+********* [[file:energy.bib::Saabas15featSelStabilRFE][Saabas 2015: Selecting Feats Stability, RFE & others]]
+********* worse than Rand Forest on Boston Housing data: [[file:energy.bib::Trevor04LAR][Trevor et al. 2004: Least Angle Regression]]
 ******* [[File:energy.bib::dhillon08featselfeatclass][Dhillon et al. 2008: Efficient Feature Selection]]
 ******* Matlab Netlab demo script demard.m does automatic relevance determination
 ******* [[File:energy.bib::das08sensselworstcase][Das & Kempe 2008: Sensor Selection Minimizing]]
@@ -3695,6 +3700,12 @@ Hope that helps,
 ********* is a kind of [[Distance metric learning]] algorithm
 ********* basic paper: [[file:energy.bib::Goldberger04nbrhdCompAnal][Goldberger et al. 2004: Neighbourhood]] comp anal
 ********* Matlab help reference in R2016b: [[file:energy.bib::Yang12nbrCompFeatSel][Yang et al. 2012: Neighborhood Component Feature]]
+******* <<Recursive Feature Elimination>>
+********* [[file:energy.bib::Saabas15featSelStabilRFE][Saabas 2015: Selecting Feats Stability, RFE & others]]
+******* <<Stability Feature Selection>>
+********* [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feature Selection Algorithms]]
+********* [[file:energy.bib::Saabas15featSelStabilRFE][Saabas 2015: Selecting Feats Stability, RFE & others]]
+******* [[Feature Selection for Logistic Regression]]
 ******* see also: [[Feature selection for local linear regression]]
 ******* see also [[file:howto.org::feature%20selection%20in%20r][feature selection in r]]
 ******* see also: [[Streamwise Regression]]
@@ -3907,6 +3918,9 @@ Hope that helps,
 ***** better than LARS on Boston Housing data: [[file:energy.bib::Trevor04LAR][Trevor et al. 2004: Least Angle Regression]]
 ***** random forests in autoML: [[file:energy.bib::Feurer15autoMLautoSkLrn][Feurer et al. 2015: Efficient Robust Automated Machine Learning]]
 ***** high dim, few samples (n<<p): [[file:energy.bib::Strobl09rcrsPartForest][Strobl et al. 2009 intro recurs part.]]
+*** <<Simple Decision Trees>>
+***** [[file:energy.bib::Sontag12introMLclass][Sontag 2012: Introduction To Machine Learning (Lecture 11, Decision Trees)]]
+***** R package: [[https://cran.r-project.org/web/packages/FFTrees/vignettes/guide.html][FFTrees: Fast-and-frugal decision trees]]
 *** Random Forest Applications
 ***** Load Forecasting: [[file:energy.bib::Gajowniczek18clustElecLoadFrcst][Gajowniczek & Z\kabkowski 2018: Simulation short term electricity]]
 ***** Pose Estimation: [[File:energy.bib::shotton11poserecogdepth][Shotton et al. 2011: Real Time Human]] (random forest featsel for kinect)
@@ -9176,6 +9190,8 @@ al. 2012: Current]])
 ***** also see [[Novelty Detection]]
 ***** [[file:energy.bib::Hyndman14frcstPrincPractice][Hyndman & Athanasopoulos 2014: Forecasting Princ. & Pract.]] (exp. wght, ARIMA, etc).
 ***** also [[Trend Detection]]
+***** also [[Portfolio Optimization]]
+***** also [[Operation of Energy Storage]]
 *** <<Trend Detection>>
 ***** [[file:energy.bib::Alexandrov12mdrnTrndExtrct][Alexandrov et al. 2012: Modern Trend Detection]]
 ***** trend damping is better, almost regime learn: [[file:energy.bib::McKenzie10expSmthDampTrnd][McKenzie & Gardner 2010: Damped]] trend
@@ -9601,6 +9617,8 @@ later corrected by greg heath:
 ***** See also [[*ROC, AUC, F-measure, ...][ROC, AUC, F-measure, ...]] (for which metric to use for class-imbalanced problems)
 *** <<Learning Classifier under Class Imbalance>>
 ***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (recipie for learning under)
+***** TODO Python resampling library: [[file:energy.bib::Lemaitre17imbalanced-learnPyLib][Lemaitre et al. 2017: Imbalanced Lrn]]
+      Software: [[http://imbalanced-learn.org/en/stable/index.html][imbalanced-learn 0.5.0]]
 ***** [[Rare Events and Logistic Regression]]
 *** See also [[file:energytop.org::*Extreme%20Quantile%20Forecasting][Extreme Quantile Forecasting]]
 * <<Meteorology>>
@@ -10345,14 +10363,6 @@ Scott
 ***** see also: [[Price Forecasting]]
 *** Optimization/Integration
 ***** pierre pinson has many [[http://www.imm.dtu.dk/english/research/mathematical_statistics/publications.aspx][publications]] on this topic (and many other wind energy topics)
-***** energy storage
-******* batteries
-********* japanese [[http://www.sciam.com/article.cfm%3fid%3dstoring-the-breeze-new-battery-might-make-wind-power-reliable][ngk batteries]] used by xcel in mn
-******* excel's [[http://www.xcelenergy.com/sitecollectiondocuments/docs/appendixe.pdf][storage technology comparison]] (there's one from bpa, somewhere)
-******* [[http://ieeexplore.ieee.org/xpl/tocresult.jsp?asf_arn%3dnull&asf_iid%3d0&asf_pun%3d5&asf_in%3d2&asf_rpp%3dnull&asf_iv%3d100&asf_sp%3d&asf_pn%3d1][the intermittency challenge.  massive energy storage in a sustainable future.]]
-        special issue, ieee, 2012.
-******* power2gas
-********* [[file:energy.bib::sterner10pow2methslides][sterner et al. 2010: renewable]] e to methane
 ***** [[Development And Deployment Of An Advanced Wind Forecasting Technique]]
 ***** [[Energy Management System (EMS) Integration]]
 ***** [[File:energy.bib::das08sensselworstcase][Das & Kempe 2008: Sensor Selection Minimizing]] (worst case (for safety))
@@ -10382,10 +10392,10 @@ Scott
 ***** [[file:energy.bib::Shenoy15stochOptLdFrcstRgrssn][Shenoy et al. 2015: Non Parametric Regression]] QR for day ahead Mkt. opt.
 
 ***** [[file:energy.bib::Yao10simplexQRfeatSel][Yao 2010: Simplex Techniques Quantile]] feat sel, adaptive, interior point
-***** Wind farm or turbine operational optimization
-      <<Wind farm or turbine operational optimization>>
+***** <<Wind farm or turbine operational optimization>>
 ******* [[http://www.evernote.com/l/AA05QepHHVlLMJiB6pxDMLuP_nI41T8nlMk/][Siemens self-optimizing turbine: Getting Machines to Mimic Intuition]]
 ******* Foghorn mach lrn: [[http://www.evernote.com/l/AA2ELtyWhPhAF541dJAkbHoOev7tp0JABck/][Maximize wind power generation with optimized turbine settings]]
+***** [[Operation of Energy Storage]]
 ***** <<Optimal Reserve Allocation>>
 ******* [[Scenario Generation]]
 ******* Juan Mi's recommendations + DTU report
@@ -10433,8 +10443,7 @@ Scott
 ******* [[file:energy.bib::Barski14qntHdgShrtfllCtl][Barski 2014: Quant Hedge Shortfall Control]]
 ******* [[cite:Siemens14sennFrcstsRES][Siemens 2014: Better Forecast RES Wnd/Solar/netDmd/xmssn/Deep]]
 ******* See also: [[Control Energy Provision]]
-***** System Security
-      <<System Security>>
+***** <<System Security>>
 ******* [[file:energy.bib::LondonEcon13ValueLostLoad][Anoymous 2013: Value Lost Load]] cap. mkt. value via VaR
 ******* [[file:energy.bib::Shaaban11Riskbasedsecurity][Shaaban 2011: Risk]] VAR in grid simulation
 ***** <<Optimal Power flow>>
@@ -10504,14 +10513,15 @@ Scott
 ******* [[cite:Xu16adaptStrmAnomAnlysTsubmod][Xu et al. 2016: Adaptive Streaming Anomaly Analysis]]
 ******* Submodularity [[http://www.select.cs.cmu.edu/tutorials/icml08submodularity.html][can be used for active learning]] (see refs 6,11))
 ********* TODO [[file:energy.bib::GroweKuska03scenarioRedTree][Growe-Kuska et al. 2003: Scenario]] reduction, highly cited
-***** Portfolio Optimization
+***** <<Portfolio Optimization>>
 ******* [[Portfolio Optimization and Forecasting]]
-******* see also [[Portfolio Analysis]]
-***** SDE's in Optimization
-      <<SDE's in Optimization>>
+******* also [[Portfolio Analysis]]
+******* also [[Operation of Energy Storage]]
+***** <<SDE's in Optimization>>
 
       Henrik says stochastic differential equations make optimization
       tractible.  What evidence can I find of that?
+
 ******* Easy to handle? [[http://books.google.de/books?id%3D9lWjL2QLAkEC&pg%3DPA15&lpg%3DPA15&dq%3Dstochastic%2Bdifferential%2Bequations%2Boptimization&source%3Dbl&ots%3DX3U5_CWNgh&sig%3DHrah20au269LRsGbfL4e-ZA0q44&hl%3Den&sa%3DX&ei%3DfbZkVLW-Ls3faoLTgpAB&redir_esc%3Dy#v%3Donepage&q%3Dstochastic%2520differential%2520equations%2520optimization&f%3Dfalse][Passage]] from book "[[http://books.google.de/books?id%3D9lWjL2QLAkEC&dq%3Dstochastic%2Bdifferential%2Bequations%2Boptimization&source%3Dgbs_navlinks_s][Dynamic Economics : Optimization by the Lagrange Method]]"
 ******* They are used to model power systems: [[http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber%3D6547228][A Systematic Method to Model Power Systems as Stochastic Differential Algebraic Equations
         ]]But this seems to be electrical system transient analysis, not unit
@@ -10543,6 +10553,7 @@ Scott
 ******* Siemens estimates wind speed from nacelle, does opt.: [[http://www.evernote.com/l/AA05QepHHVlLMJiB6pxDMLuP_nI41T8nlMk/][Machine Learning: Getting Machines to Mimic Intuition]]
 
 ***** Optimization in general
+******* [[https://www.evernote.com/l/AA2Q2BisgYVLcpAilQnT88IWjYENpR0UiX8/][Best Algs to Make Solar Storage Profitable]] (linear, quadratic, dynamic)
 ******* [[file:energy.bib::Anitescu11hiOrdCIstochProgBS][Anitescu & Petra 2011: Higher Order Confidence]] (bootstrapping in optimization)
 ***** [[My optimization learning path]]
 ***** Optimization software
@@ -11070,7 +11081,7 @@ Erika
 ******* [[file:energy.bib::Rossetti17frcstAdoptEarlyData][Rossetti et al. 2017: Forecasting Early Adopt Analysis Data]] (has data)
 ******* [[file:energy.bib::Comin10explrTechDiffus][Comin & Hobijn 2010: Exploration Technology Diffusion]] (has data)
 ******* also [[Machine Learning Data Sets]]
-***** also [[Class Imbalance Handling]] (if tech adopt. is a rare event)
+***** TODO also [[Class Imbalance Handling]] (if tech adopt. is a rare event)
 ***** also [[Technology Learning Rates]]
 ***** also [[Portfolio Optimization and Forecasting]]
 ***** also [[Real Estate Forecasts]]
@@ -11390,6 +11401,21 @@ Erika
 ***** [[file:energy.bib::Pearce09solarNukeIns][Pearce 2009: Increasing PV]] (nuclear insurance subsidies are huge)
 ***** [[file:energy.bib::Abbott11nukeGlbScl][Abbott 2011: Is Nuclear Power Globally Scalable]] (it's not scalable)
 ***** [[file:energy.bib::Sovacool08nukeGHGs][Sovacool 2008: Valuing]] nuclear GHG emissions
+* Energy storage
+*** Need for energy storage
+***** [[http://ieeexplore.ieee.org/xpl/tocresult.jsp?asf_arn%3dnull&asf_iid%3d0&asf_pun%3d5&asf_in%3d2&asf_rpp%3dnull&asf_iv%3d100&asf_sp%3d&asf_pn%3d1][the intermittency challenge.  massive energy storage in a sustainable future.]]
+      special issue, ieee, 2012.
+*** Energy Storage Technology
+***** Batteries
+******* japanese [[http://www.sciam.com/article.cfm%3fid%3dstoring-the-breeze-new-battery-might-make-wind-power-reliable][ngk batteries]] used by xcel in mn
+***** excel's [[http://www.xcelenergy.com/sitecollectiondocuments/docs/appendixe.pdf][storage technology comparison]] (there's one from bpa, somewhere)
+
+***** power2gas
+******* [[file:energy.bib::sterner10pow2methslides][sterner et al. 2010: renewable]] e to methane
+
+*** <<Operation of Energy Storage>>
+***** Pierre's scenario-driven battery charging optimization
+***** [[https://www.evernote.com/l/AA2Q2BisgYVLcpAilQnT88IWjYENpR0UiX8/][Best Algorithms to Make Solar Power Storage Profitable]] (quadratic opt.)
 * <<Discrete Events: Poisson arrivals, etc.>>
 *** [[cite:Smirni16cs426dscrtEvntSimCrsNotes][Smirni 2016: Discrete Event Sim. Course Notes]], does Poisson
 *** [[cite:Shinomoto10EstFireRatePoisson][Shinomoto 2010: Estimating Firing Rate Book Chapter]], Poisson rate est.
@@ -11809,7 +11835,7 @@ TOTO: read Fan16* for an overview
   Automatically tweaking machine learning parameters, selecting algorithms, feature selection, outlier detection, ensemble building, etc.  A new field I discovered at ECML PKDD 2017
 *** [[cite:Feurer15autoMLautoSkLrn][Feurer et al. 2015: Efficient Robust Automated Machine Learning]] (code: auto-sklearn)
 *** Also [[Frugal Machine Learning]]
-* <<Frugal Machine Learning>>
+* <<Frugal Machine Learning>> ("big data on small data")
 
   At the ECML PKDD 2017 roundtable discussion, one of the researchers mentioned this area, as the place where academic researchers can make progress even if they don't have Google's gigantic computers.  I googled for the topic immediately after the conference but didn't see an overview paper or website, but did get some seeemingly related hits:
 
@@ -11820,6 +11846,7 @@ TOTO: read Fan16* for an overview
 *** R package: [[https://cran.r-project.org/web/packages/FFTrees/vignettes/guide.html][FFTrees: Fast-and-frugal decision trees]]
 *** [[cite:Laskey14fastFrugalTreesVsBayesNetsRisk][Laskey & Martignon 2014: Fast Frugal Trees vs. Bayes Net Risk Assessmnt]]
 *** [[https://www.nsf.gov/awardsearch/showAward?AWD_ID=1652131][NSF Award Search: Award 1652131-CAREER: Hashing and Sketching Algorithms for Resource-Frugal Algorithms]]
+*** [[Simple Decision Trees]]
 *** Also [[Auto Machine Learning]]
 * <<Reinforcement Learning>>
 *** [[cite:Busoniu10multiAgntReinfLrnOvrview][Busoniu et al. 2010: Multi]] agent reinforcement lrn
@@ -12473,6 +12500,9 @@ optimization to be a generalization of linear programming.
     05/14/19 [[file:energy.bib::Ohara2010noLogCountDat][O'hara & Kotze 2010: Do not log counts]]
     06/04/19 [[file:energy.bib::Altman09mdlDevAdeqLect11][Altman 2009: Model Adequancy, Deviance, Lect 11]]
     06/07/19 [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feature Selection Algorithms]]
+    07/09/19 [[file:energy.bib::Lemaitre17imbalanced-learnPyLib][Lemaitre et al. 2017: Imbalanced Learning Python Lib]]
+             [[file:energy.bib::Saabas15featSelStabilRFE][Saabas 2015: Selecting Feats Stability & RFE]]
+    07/12/19 [[file:energy.bib::Sontag12introMLclass][Sontag 2012: Introduction To Machine Learning Class]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
