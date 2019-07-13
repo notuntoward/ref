@@ -8349,11 +8349,24 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
       ... a .env file sets up the environment when you visit the dir 
       ... (needs "autoenv" installed by something)
 
-******* keeping your local install path out of environment.yml
-        From: [[https://stackoverflow.com/questions/41274007/anaconda-export-environment-file][python - Anaconda export Environment file - Stack Overflow]]
+********* keeping your local install path out of environment.yml
+          From: [[https://stackoverflow.com/questions/41274007/anaconda-export-environment-file][python - Anaconda export Environment file - Stack Overflow]]
 
-        conda env export | grep -v "^prefix: " > environment.yml
+          conda env export | grep -v "^prefix: " > environment.yml
       
+******* importing conda base environment from another machine
+
+        o  export base from the source machine [[
+           see:  documenting conda environment with environment.yml]]
+  
+        o update new machine's base environment to match old one
+
+          conda env update -n base -f base_old_environment.yml
+
+          Note that you can't import an environment of the same name as one that already exists on the new machine e.g. "base" so you have to give it a new name.  If you want to import to the name on the new machine, you can delete the old environment then rename the one you imported e.g.
+
+          
+
 ***** Also [[activating conda environments in emacs]]
 ***** updating all packages installed by anaconda
       
