@@ -2733,22 +2733,6 @@ Strike-through: nil
 ********* [[https://stackoverflow.com/questions/29809061/how-to-properly-setup-jedi-with-elpy-in-emacs][python - How to properly setup Jedi with elpy in emacs?]]
 ********* [[https://github.com/jorgenschaefer/elpy/wiki/Configuration][elpy Configuration · jorgenschaefer/elpy]]
 ******* [[elpy vs. anaconda-mode]]
-******* PROBLEM: elpy config, yapf and autopep8
-
-        After installing anaconda python 3.6 but /not yet setting up an environment/, I see this when I run elpy-config:
-
-        Autopep8..........: Not found (1.3.4 available)
-        Yapf..............: Not found (0.21.0 available)
-
-        conda says they're not in any channel that conda knows about.  If I follow advice from [[https://anaconda.org/conda-forge/yapf][here]], and do one of these:
-
-        conda install -c conda-forge autopep8
-        conda install -c conda-forge yapf
-
-        Then I see that conda and a bunch of other stuff will be downgraded.  I don't think that I want that.
-
-        /So, I'll just not use these in elpy?/
-
 ***** [[https://github.com/abo-abo/lpy][abo-abo/lpy: Minimal Python IDE for GNU Emacs]]
 ***** pyenv
 ******* <<elpy pyenv interface>>         
@@ -2926,12 +2910,12 @@ For a public browser link. Share the note and copy the share url.
 ***** [[Vincent Goulet Emacs]]
 *** <<Emacs for experiment logging>>
 ***** TRY [[file:energy.bib::Stanisic15gitOrgWorkflow][Stanisic et al. 2015]]
-***** Search for Symbol at Point
-******* =M-s .= is default emacs way to do [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Symbol-Search.html][Symbol Search]]
+*** Search for Symbol at Point
+***** =M-s .= is default emacs way to do [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Symbol-Search.html][Symbol Search]]
 
-        But I don't now how to go backwards and forwards inside of this search.
+      But I don't now how to go backwards and forwards inside of this search.
 
-******* I mapped C-s s to swiper-isearch-thing-at-point (supposed to be symbols search but it only extracts a symbol-like-thing and then search for string matches w/o knowing the language)
+***** I mapped C-s s to swiper-isearch-thing-at-point (supposed to be symbols search but it only extracts a symbol-like-thing and then search for string matches w/o knowing the language)
 * JabRef
 *** News and feature requests go [[http://discourse.jabref.org][here]]
 *** bug reports go [[https://github.com/JabRef/jabref/issues][here]]
