@@ -3634,26 +3634,114 @@ that you get when you buy Office 365?
 ***** See also: [[Linux/Unix]]
 *** OS and data partitions
 ***** [[http://www.zdnet.com/dont-move-your-windows-user-profiles-folder-to-another-drive-7000022142/?s_cid%3De064&ttag%3De064][Don't move your Windows user profiles folder to another drive]]
-*** multiple desktops
+*** Windows multi monitors, desktops and windows
+***** Multiple Desktops on Windows
 
-    Windows 10 has multiple deskopts built-in.
+      Windows 10 has multiple deskopts built-in.
 
-***** Windows 7 multiple desktops
+******* Windows 7 multiple desktops
 
-      Multiple desktops not built into Windows 7 but there are several free
-      hacks.  I tried [[http://dexpot.en.softonic.com/][dexpot]] (but be sure to let windows security essentials
-      remove the adware it installs).
+        Multiple desktops not built into Windows 7 but there are several free
+        hacks.  I tried [[http://dexpot.en.softonic.com/][dexpot]] (but be sure to let windows security essentials
+        remove the adware it installs).
 
-******* [[http://code.google.com/p/mdesktop/][mdesktop]] (most simple, well liked?)
-******* [[http://dexpot.en.softonic.com/][dexpot]] (seems to be the [[http://downloadsquad.switched.com/2010/04/19/dexpot-virtual-desktop-windows-7-taskbar-thumbnails-superbar/][most favored]], has aeropeek fancy stuff)
-******* [[http://www.sondle.com/resource/multiple-desktops-windows-7.asp][sondle]] (somewhat panned, a bit ugly)
-*** multiple monitors
-***** extend taskbar: right click on graphics properties
-******* [[http://zbar.en.softonic.com/][zbar]] (not needed b/c windows 7 just handles this?)
-        lets you extend taskbar across multiple monitors (might be nice?)
-***** move taskbar of laptop to big monitor
-      [[http://www.pcmag.com/article2/0,2817,1632004,00.asp][Supposedly]], you can unlock it and then drag it to the monitor.  This
-      worked once on Windows 7 and then my taskbar disappeared!
+********* [[http://code.google.com/p/mdesktop/][mdesktop]] (most simple, well liked?)
+********* [[http://dexpot.en.softonic.com/][dexpot]] (seems to be the [[http://downloadsquad.switched.com/2010/04/19/dexpot-virtual-desktop-windows-7-taskbar-thumbnails-superbar/][most favored]], has aeropeek fancy stuff)
+********* [[http://www.sondle.com/resource/multiple-desktops-windows-7.asp][sondle]] (somewhat panned, a bit ugly)
+***** Multiple monitors on Windows
+******* extend taskbar: right click on graphics properties
+********* [[http://zbar.en.softonic.com/][zbar]] (not needed b/c windows 7 just handles this?)
+          lets you extend taskbar across multiple monitors (might be nice?)
+******* move taskbar of laptop to big monitor
+        [[http://www.pcmag.com/article2/0,2817,1632004,00.asp][Supposedly]], you can unlock it and then drag it to the monitor.  This
+        worked once on Windows 7 and then my taskbar disappeared!
+***** Window manipulation on Windows
+******* window vertical maximize
+
+        Vertical maximize in one of two ways:
+
+        1. drag the top _edge_ of the window to the top of the screen
+        2. double click on _bottom_ edge of window.
+
+        Restore to previous size in one of two ways:
+
+        1. Double clicking on the top of the window
+        2. Drag window from top of screen
+
+******* Window focus follows mouse + autoraise
+
+        _Windows 10_:
+
+          Control Panel\Ease of Access\Ease of Access Center\Make the mouse easier to useControl Panel\Ease of Access\Ease of Access Center\Make the mouse easier to use
+
+          click: "Activate a window by hovering over it with the mouse".
+
+          - set autoraise delay: 750ms seemed OK
+            - Install: [[https://winaero.com/][Winaero]] 
+          
+              Go to =Xmouse Options= and set =Windows Activation Timeout=
+
+            - Obsolete: [[https://joelpurra.com/projects/X-Mouse_Controls/][X-Mouse Controls]] (works but not installable on SP4)
+              (different than [[https://www.highrez.co.uk/downloads/xmousebuttoncontrol.htm][X-mouse Button Control]], which only does buttons, and which I don't need)
+              Not installable: ON SP4, I put it in: ~\bin\x-mouse_controls_2010-04-03_1155_release
+
+          - This also fixes the alt-Tab mouse focus problem too
+            - Before:
+              - mouse on fullscreen window, far away from window underneath
+              - alt-Tab
+              - cursor not switched to underlying window, and therefore it immediately disappears
+            - After: cursor is correctly switched to new window after alt-Tab: no problems, no need to move mouse again.
+
+********* Windows 7 focus follows mouse + autoraise
+
+        *DELAY NO LONGER WORKS on Windows 10 (creators edition, April 2017):*
+
+        The delay requires reg tweaking (or a third party program). The key is:
+
+        HKEY_CURRENT_USER\Control Panel\Mouse\ActiveWndTrkTimeout
+
+        Change 'Base' to Decimal and put in 750 as the 'Value Data' (this is
+        miliseconds).   
+
+        (WIN 10 creators: I tried to make this variable since it wasn't there (there was another key w/ a similar name but this had no effect).
+
+        Then restart.
+
+        From [[http://superuser.com/questions/63999/setting-focus-auto-raise-and-focus-auto-raise-delay-in-windows-7][here]].
+
+        Also, 3 options in:
+        [[http://www.sevenforums.com/tutorials/9000-mouse-hover-makes-window-active-enable.html][How to Activate a Window by Hovering Over it with the Mouse Pointer]]
+
+******* Windows snapping
+        From: [[https://www.techrepublic.com/article/how-to-juggle-multiple-apps-in-windows/?ftag=TREe331754&bhid=22027677217996064763852163069924][How to juggle multiple apps in Windows]]
+
+        _Snap 2 Windows_
+
+        Mouse: Drag title bars to L and R
+        Keyboard: Win+R or Win+L
+
+        _Snap 3 Windows_ (2 short on R, 1 tall on L.  Can reverse for mirror img)
+
+        o start with either method to _Snap 2 Windows_
+          o use Win+up, Win+down on whichever window you want split vertically
+          o window 3: select from the thumbnais on the left.  Done.
+
+        OR
+
+        o pure keyboard approach
+          o select window 1: Win+right, Win+up
+          o select window 2: Win+right, Win+down
+          o select window 3: from the thumbnais on the left.  Done.
+
+        _Snap 4 Windows_ (4 equal sized rectangles)
+        Same as Snap 3 Windows, then...
+        Win+up on window 3
+        select window 4: from the thumbnais on the left.  Done.
+
+        _Undoing snap sizes_
+        o mouse: drag away
+        o keyboard: Win key in opposite direction of the last Win key used on window
+
 *** <<screen rotation shortcut undo>>
 
    right-alt arrow keys are used by emacs org mode, screws up emacs org
@@ -3663,50 +3751,6 @@ that you get when you buy Office 365?
    go to graphics properties
    go to hotkeys
    click disable (for some video cards, maybe nVidia on IWES Lenovo laptop?)
-
-*** Window focus follows mouse + autoraise
-
-    _Windows 10_:
-
-      Control Panel\Ease of Access\Ease of Access Center\Make the mouse easier to useControl Panel\Ease of Access\Ease of Access Center\Make the mouse easier to use
-
-      click: "Activate a window by hovering over it with the mouse".
-
-      - set autoraise delay: 750ms seemed OK
-        - Install: [[https://winaero.com/][Winaero]] 
-          
-          Go to =Xmouse Options= and set =Windows Activation Timeout=
-
-        - Obsolete: [[https://joelpurra.com/projects/X-Mouse_Controls/][X-Mouse Controls]] (works but not installable on SP4)
-          (different than [[https://www.highrez.co.uk/downloads/xmousebuttoncontrol.htm][X-mouse Button Control]], which only does buttons, and which I don't need)
-          Not installable: ON SP4, I put it in: ~\bin\x-mouse_controls_2010-04-03_1155_release
-
-      - This also fixes the alt-Tab mouse focus problem too
-        - Before:
-          - mouse on fullscreen window, far away from window underneath
-          - alt-Tab
-          - cursor not switched to underlying window, and therefore it immediately disappears
-        - After: cursor is correctly switched to new window after alt-Tab: no problems, no need to move mouse again.
-
-***** Windows 7 focus follows mouse + autoraise
-
-    *DELAY NO LONGER WORKS on Windows 10 (creators edition, April 2017):*
-
-    The delay requires reg tweaking (or a third party program). The key is:
-
-    HKEY_CURRENT_USER\Control Panel\Mouse\ActiveWndTrkTimeout
-
-    Change 'Base' to Decimal and put in 750 as the 'Value Data' (this is
-    miliseconds).   
-
-    (WIN 10 creators: I tried to make this variable since it wasn't there (there was another key w/ a similar name but this had no effect).
-
-    Then restart.
-
-    From [[http://superuser.com/questions/63999/setting-focus-auto-raise-and-focus-auto-raise-delay-in-windows-7][here]].
-
-    Also, 3 options in:
-    [[http://www.sevenforums.com/tutorials/9000-mouse-hover-makes-window-active-enable.html][How to Activate a Window by Hovering Over it with the Mouse Pointer]]
 
 *** Delay after sleep before requiring login
 
@@ -3735,18 +3779,6 @@ that you get when you buy Office 365?
 *** Display environment variables in powershell w/o truncation
 
     gci env: | Format-Table -Wrap -AutoSize
-
-*** window vertical maximize
-
-    Vertical maximize in one of two ways:
-
-    1. drag the top _edge_ of the window to the top of the screen
-    2. double click on _bottom_ edge of window.
-
-    Restore to previous size in one of two ways:
-
-    1. Double clicking on the top of the window
-    2. Drag window from top of screen
 
 *** tasklist/taskkill (like Unix 'ps', and 'kill')
 
@@ -8002,7 +8034,7 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 *** <<Windows Python>>
     Needed at least for org-mode ox-clip
 
-***** <<Install Windows Python with Anaconda>>
+***** <<Install Windows Python with Anaconda>> (what I've been doing)
 
       *NOTE*: lately, I've been installing it with chocolately: 
 
@@ -8015,7 +8047,7 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
            (Make sure this is /above/ msys2 path. Otherwise, the msys2
            python you get when installing diff, etc., will mess up emacs
-           elpy.)
+           elpy.  Also make sure that it's above %USERPROFILE%\AppData\Local\Microsoft\WindowsApps , which as of May 2019 suddenly holds a python.exe)
         
 ******* Install from Windows .exe installer        
 
@@ -8366,7 +8398,6 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
           Note that you can't import an environment of the same name as one that already exists on the new machine e.g. "base" so you have to give it a new name.  If you want to import to the name on the new machine, you can delete the old environment then rename the one you imported e.g.
 
           
-
 ***** Also [[activating conda environments in emacs]]
 ***** updating all packages installed by anaconda
       
