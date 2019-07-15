@@ -92,6 +92,8 @@
 
 ********* highlight-thing
 
+;; NOTE: iedit works better: jut put cursor in sumbol and hit C=;
+;;
 ;; /highlights more than symbols, no nav keys/: https://github.com/nschum/highlight-symbol.el
 ;; Highlights any word the cursor is on e.g. comments: too much!
 ;; highlight-thing-what-thing lets you hightlight a huge # of different things
@@ -3722,21 +3724,21 @@ that you get when you buy Office 365?
 
         _Snap 3 Windows_ (2 short on R, 1 tall on L.  Can reverse for mirror img)
 
-        o start with either method to _Snap 2 Windows_
+        o start with either method to _Snap 2 Windows_               
           o use Win+up, Win+down on whichever window you want split vertically
           o window 3: select from the thumbnais on the left.  Done.
-
-        OR
-
-        o pure keyboard approach
-          o select window 1: Win+right, Win+up
-          o select window 2: Win+right, Win+down
+                                                                   
+        OR                                                           
+                                                                   
+        o pure keyboard approach                                   
+          o select window 1: Win+right, Win+up                     
+          o select window 2: Win+right, Win+down                   
           o select window 3: from the thumbnais on the left.  Done.
 
         _Snap 4 Windows_ (4 equal sized rectangles)
-        Same as Snap 3 Windows, then...
-        Win+up on window 3
-        select window 4: from the thumbnais on the left.  Done.
+        o Same as Snap 3 Windows, then...                        
+        o Win+up on window 3                                     
+        o select window 4: from the thumbnais on the left.  Done.
 
         _Undoing snap sizes_
         o mouse: drag away
