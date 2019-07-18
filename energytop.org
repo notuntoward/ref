@@ -690,11 +690,12 @@
 
 *** Bayes Error
 
-    [[https://en.wikipedia.org/wiki/Bayes_error_rate][Sounds like]] the classifier error you'd get if make a maximum likelihood classification decision, knowing the class prior distribution and the true conditional distributions.  
+    [[https://en.wikipedia.org/wiki/Bayes_error_rate][Sounds like]] the classifier error you'd get if you make a maximum likelihood classification decision, knowing the class prior distribution and the true conditional distributions.  If classes overlap, it can't be zero.
 
     Example: the error rate if you were given gaussian mixture samples, and make ML decisions knowing each class's mean/variance and prior probability.
 
-    
+    Use for testing overfitting e.g. in [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining (I think)]]: Know true error distribution of synthetic data.  If, on the training set, a classifier gets better than the Bayes Error, then you know you've overtrained.
+
 * Code
 *** <<Books w/ source code>>
 ***** [[http://www.neurosolutions.com/products/nsbook/][Interactive Neural Network Book]] explains recurrent NN's, has demos
@@ -11046,6 +11047,9 @@ Erika
 ***** Agent based tech adoption
 ******* TODO [[file:energy.bib::Rai15agentEnrgyTechAdoptFactors][Rai & Robinson 2015: Agent Energy Tech Adopt Factors]]
 
+***** Distributions of a large population of adopters
+******* [[Bass Innovation Diffusion Models]]
+******* Adopter sum ~ Poisson: [[file:energy.bib::Hodges60poissonAprxPoissonBin][Hodges & Le 1960: Sum Bernoulli ~ Poisson]]
 ***** [[file:energy.bib::Eckersley18utilFuncImpossUncert][Eckersley 2018: Impossibility Uncertainty Theorems Util Func]] (for UI choices?)
 ***** <<Interaction: Technology Learning and Adoption Rates>>
 
@@ -12503,6 +12507,8 @@ optimization to be a generalization of linear programming.
     07/09/19 [[file:energy.bib::Lemaitre17imbalanced-learnPyLib][Lemaitre et al. 2017: Imbalanced Learning Python Lib]]
              [[file:energy.bib::Saabas15featSelStabilRFE][Saabas 2015: Selecting Feats Stability & RFE]]
     07/12/19 [[file:energy.bib::Sontag12introMLclass][Sontag 2012: Introduction To Machine Learning Class]]
+    07/15/19 [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining ADABOOST and Random forest Interp]]
+    07/16/19 [[file:energy.bib::Hodges60poissonAprxPoissonBin][Hodges & Le 1960: Poisson Poisson: Sum Bernoullis is ~ Poisson]] 
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib

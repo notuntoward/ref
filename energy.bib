@@ -14203,17 +14203,16 @@ Reasons why the Bremnes algorith implmented by DTU (in IRPWIND)
 }
 
 @Article{Lemaitre17imbalanced-learnPyLib,
-  author        = {Lema{\^\i}tre, Guillaume and Nogueira, Fernando and Aridas, Christos K},
-  title         = {Imbalanced-learn: A python toolbox to tackle the curse of imbalanced datasets in machine learning},
-  journal       = {The Journal of Machine Learning Research},
-  year          = {2017},
-  volume        = {18},
-  number        = {1},
-  pages         = {559--563},
-  __markedentry = {[Scott:6]},
-  abstract      = {imbalanced-learn is an open-source python toolbox aiming at providing a wide range of methods to cope with the problem of imbalanced dataset frequently encountered in machine learning and pattern recognition. The implemented state-of-the-art methods can be categorized into 4 groups: (i) under-sampling, (ii) over-sampling, (iii) combination of over and under-sampling, and (iv) ensemble learning methods. The proposed toolbox depends only on numpy, scipy, and scikit-learn and is distributed under MIT license. Furthermore, it is fully compatible with scikit-learn and is part of the scikit-learn-contrib supported project. Documentation, unit tests as well as integration tests are provided to ease usage and contribution. Source code, binaries, and documentation can be downloaded from https://github.com/scikit-learn-contrib/imbalanced-learn.
+  author    = {Lema{\^\i}tre, Guillaume and Nogueira, Fernando and Aridas, Christos K},
+  title     = {Imbalanced-learn: A python toolbox to tackle the curse of imbalanced datasets in machine learning},
+  journal   = {The Journal of Machine Learning Research},
+  year      = {2017},
+  volume    = {18},
+  number    = {1},
+  pages     = {559--563},
+  abstract  = {imbalanced-learn is an open-source python toolbox aiming at providing a wide range of methods to cope with the problem of imbalanced dataset frequently encountered in machine learning and pattern recognition. The implemented state-of-the-art methods can be categorized into 4 groups: (i) under-sampling, (ii) over-sampling, (iii) combination of over and under-sampling, and (iv) ensemble learning methods. The proposed toolbox depends only on numpy, scipy, and scikit-learn and is distributed under MIT license. Furthermore, it is fully compatible with scikit-learn and is part of the scikit-learn-contrib supported project. Documentation, unit tests as well as integration tests are provided to ease usage and contribution. Source code, binaries, and documentation can be downloaded from https://github.com/scikit-learn-contrib/imbalanced-learn.
 Keywords: Imbalanced Dataset, Over-Sampling, Under-Sampling, Ensemble Learning, Machine Learning, Python.},
-  comment       = {Python library relevant to rare event prediction e.g. DER adoption forecasting.  
+  comment   = {Python library relevant to rare event prediction e.g. DER adoption forecasting.  
 
 Has 18 methods for binary and/or multi-class classification (see table).  Types are: 
 1. Undersampling: of most common class; 
@@ -14239,9 +14238,9 @@ https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/README.rst
 
 Nice graphs of the many methods and apparently case studies
 https://imbalanced-learn.readthedocs.io/en/stable/auto_examples/index.html},
-  file          = {:Lemaitre17imbalanced-learnPyLib.pdf:PDF},
-  publisher     = {JMLR. org},
-  url           = {http://jmlr.org/papers/volume18/16-365/16-365.pdf},
+  file      = {:Lemaitre17imbalanced-learnPyLib.pdf:PDF},
+  publisher = {JMLR. org},
+  url       = {http://jmlr.org/papers/volume18/16-365/16-365.pdf},
 }
 
 @TechReport{Lee12probCongestFrcst,
@@ -30842,12 +30841,11 @@ http://www.eos.ubc.ca/~acannon/qrnn/},
 }
 
 @Article{Belkin18modernMachLrnBiasVar,
-  author        = {Belkin, Mikhail and Hsu, Daniel and Ma, Siyuan and Mandal, Soumik},
-  title         = {Reconciling modern machine learning and the bias-variance trade-off},
-  journal       = {arXiv preprint arXiv:1812.11118},
-  year          = {2018},
-  __markedentry = {[Scott:]},
-  abstract      = {The question of generalization in machine learning—how algorithms are able to learn predictors
+  author   = {Belkin, Mikhail and Hsu, Daniel and Ma, Siyuan and Mandal, Soumik},
+  title    = {Reconciling modern machine learning and the bias-variance trade-off},
+  journal  = {arXiv preprint arXiv:1812.11118},
+  year     = {2018},
+  abstract = {The question of generalization in machine learning—how algorithms are able to learn predictors
 from a training sample to make accurate predictions out-of-sample—is revisited in light of the recent
 breakthroughs in modern machine learning technology. The classical approach to understanding gener-
 alization is based on bias-variance trade-offs, where model complexity is carefully calibrated so that the
@@ -30864,10 +30862,10 @@ predictors from these models can, in fact, be decreasing as the model complexity
 the risk achieved using non-interpolating models. The double descent risk curve is demonstrated for a
 broad range of models, including neural networks and random forests, and a mechanism for producing
 this behavior is posited.},
-  comment       = {How modern mach lrn techniques get zero error on train, yet generalize well on new data.
+  comment  = {How modern machine learning techniques get zero error on train, yet generalize well on new data.
 
 Also: Wyner17adaboostRandFrstInterp},
-  file          = {:Belkin18modernMachLrnBiasVar.pdf:PDF},
+  file     = {:Belkin18modernMachLrnBiasVar.pdf:PDF},
 }
 
 @Article{Yang14knnClustPowCurv,
@@ -32433,7 +32431,13 @@ should be limited to low complexity classes of learners, such as decision stumps
 clude that boosting should be used like random forests: with large decision trees, without
 regularization or early stopping.
 Keywords: AdaBoost, random forests, tree-ensembles, overfitting, classification},
-  comment   = {How adaboost and random forests can get increasingly lower training error yet generalize well
+  comment   = {How adaboost and random forests can grow model complexity to get increasingly lower training error yet do a good job of generalization.  In this regard, random forests are at least as good as adaboosted trees, if not better.  Has some nice graphs to borrow for a talk.
+
+For random forests, the answer seems to be that an ensemble of deep deep trees, each of which "interpolates" (memorizes) its training data, has very tight decision bounds.  Yet the bootstrapping orients these boundaries in random directions across the ensemble, so that they cancel when averaging or taking the majority.  The parts that don't average are the narrow regions around the training points.  There are decent pictures of this, that could go into a talk.
+
+There is a different but related argument made for adaboosted trees but I didn't bother to understand it because, even for random forests, I was confused by the part of the reasoning thatwas dependent upon Bayesian error, and also about what was noise and what wasn't.
+
+Anyway, the author says that random forests are just as good as adaboosted trees, if not better.
 
 Also: Belkin18modernMachLrnBiasVar},
   file      = {:Wyner17adaboostRandFrstInterp.pdf:PDF},
@@ -46386,6 +46390,25 @@ Also 1000's of individual reservoirs, although I don't understand what "aggregat
   owner     = {sotterson},
   timestamp = {2017.04.13},
   url       = {https://cleanenergysolutions.org/sites/default/files/documents/greening-the-grid-webinar-intro-to-re-forecasting-21april2016.pdf},
+}
+
+@Article{Hodges60poissonAprxPoissonBin,
+  author        = {Hodges, Joseph L and Le Cam, Lucien},
+  title         = {The Poisson approximation to the Poisson binomial distribution},
+  journal       = {The Annals of Mathematical Statistics},
+  year          = {1960},
+  volume        = {31},
+  number        = {3},
+  pages         = {737--740},
+  __markedentry = {[scott:6]},
+  comment       = {The sum of bernoulli (1,0) variables with different probablitiies has, if they are independent, an approximate Poisson distribution with mean=lambda=SUM(p_i), where p_i is each variable's probability of success, and lambda is the mean of the  Poisson distribution. (even without this paper, you can also calculate the expected value simply from the sum of independent variables.  See my OneNote page)
+
+A coarse bound for this to be true: the probabilities are all mall, and n (# samps) is large.  Bothe are true for WattPlanGrid adoption probs.
+
+But there are much tighter bounds.  The approximate bound they finally arrive at is that the Poisson is valid, even if some of the p_i's are large, as long as their sum is small compared to SUM(p_i)},
+  file          = {:Hodges60poissonAprxPoissonBin.pdf:PDF},
+  publisher     = {JSTOR},
+  url           = {https://www.jstor.org/stable/pdf/2237582.pdf?seq=1#page_scan_tab_contents},
 }
 
 @Article{Hoffmann07KernelPCAnovelty,
