@@ -92,7 +92,8 @@
 
 ********* highlight-thing
 
-;; NOTE: iedit works better: jut put cursor in sumbol and hit C=;
+;; NOTE: iedit works better: just put cursor in sumbol and hit C-;
+;; ALSO NOTE that I've remaped er\iedit to iedit-within-defun in my .emacs
 ;;
 ;; /highlights more than symbols, no nav keys/: https://github.com/nschum/highlight-symbol.el
 ;; Highlights any word the cursor is on e.g. comments: too much!
@@ -168,7 +169,6 @@
         Note: it already works for opening pdfs in bibtext mode (from C-c j p)
 
 ******* TRY different scrollbar color for window in focus (like modeline behavior)
-      
         https://www.gnu.org/software/emacs/manual/html_node/elisp/Scroll-Bars.html
 
 ******* TRY [[https://github.com/emacsmirror/org/blob/master/contrib/lisp/ox-confluence.el][org-confluence]] export
@@ -2267,13 +2267,14 @@ Strike-through: nil
 ***** Pinning emacs to taskbar
 ******* <<Pinning emacs to Windows 10 Taskbar>>
 
-        How to pin it w/o getting the extra cmd window from showing up
+        How to pin it w/o getting the extra cmd window from showing up. By using emacsclintw.exe -a, it will only start a new emacs instance if one isn't already running.  This worked in July 2019.
 
-        1. Start emacs (click on emacs icon in windows start menu), this must be emacs.exe, not runemacs.exe or emacsclientw.exe
-        2. Pin it to the taskbar (right click on taskbar icon)
-        3. Right click on the emacs icon in the taskbar and edit Properties
-        4. Target == "<path to emacs install just above bin>\bin\runemacs.exe"
-        5. set Start in: to %HOME%, assuming HOME was set to the emacs homedir, as emacs expects.
+        1. Make sure path to emacsclientw.exe is in Windows path
+        2. Start emacs (click on emacs icon in windows start menu), this must be emacs.exe, not runemacs.exe or emacsclientw.exe
+        3. Pin it to the taskbar (right click on taskbar icon)
+        4. Right click on the emacs icon in the taskbar and edit Properties
+        5. Target == "emacsclientw.exe -c -n -a runemacs.exe"
+        6. set Start in: to %HOME%, assuming HOME was set to the emacs homedir, as emacs expects.
 
         _Historical Note_: Windows 10 had an [[9696
 
@@ -2380,7 +2381,6 @@ Strike-through: nil
       2. Select "Open With"
       3. General tab
       4. Associate the file with emacslientw.exe
-
          
          If new setup
            (there will be no emacsclient.exe option, so...)
@@ -2388,7 +2388,7 @@ Strike-through: nil
            o click on "look for another app on this page"
            o go to where emacsclientw.exe is and click on it.
          else
-           o just click on emacsclientw.exe option
+           o just click on emacsclientw.exe option if it exists
 
 ******* old fixes that aren't necessary anymore on Windows 10, as of 7/17/16.
 
@@ -3505,7 +3505,7 @@ gestures for "show charm" and "switch apps"
         pandoc goes, for example, here:
 
         'C:\Users\scotto\AppData\Local\Pandoc\'
-******* Packages: [[https://chocolatey.org/packages][Chocolatey Gallery | Pack ages]]
+******* Packages: [[https://chocolatey.org/packages][Chocolatey Gallery | Packages]]
 ******* <<Installing Chocolatey>>
         From: [[https://mspoweruser.com/windows-10-tip-using-package-manager/][Windows 10 Tip: Using a package manager]]
               [[https://chocolatey.org/install][Chocolatey Installation]]
@@ -3525,6 +3525,10 @@ gestures for "show charm" and "switch apps"
           choco feature enable -n allowGlobalConfirmation
 
         This removes the need to confirm a bunch of things. The need to confirm seeemed to be hanging up installation of pandoc, for some reason.
+
+******* Upgrading all Chocolatey packages
+
+        choco upgrade all
 
 ***** Windows package management overviews
 ******* Chocolatey says use Chocolatey, not OneGet:  [[https://chocolatey.org/faq#how-is-chocolatey-different-than-onegetpowershell-package-management][ChocolateyFAQs]]
