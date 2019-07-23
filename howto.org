@@ -8780,6 +8780,8 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
 
            But is it?  The [[https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs][editable pip install]] says there are advantages to using pip, and a commenter [[https://stackoverflow.com/questions/19048732/python-setup-py-develop-vs-install][here]] says that he had problems w/ setup.py develop and so used pip install -e PATH
 
+*** Probabilistic Programming in Python: [[https://pyro.ai/][Pyro]]
+    See energytop.org for more on probabilsitic programming
 * <<Data Versioning>>
 *** [[https://dvc.org/][Machine Learning Version Control System · DVC]]
 *** [[https://databricks.com/blog/2018/06/05/introducing-mlflow-an-open-source-machine-learning-platform.html][Introducing MLflow: an Open Source Machine Learning Platform - The Databricks...]]
