@@ -47,6 +47,8 @@
 *********** [[https://hackaday.com/2017/04/11/introduction-to-tensorflow/][Introduction To TensorFlow | Hackaday]]
 *********** [[https://youtu.be/Ejec3ID_h0w][TensorFlow Tutorial]] (Sherry Moore, Google Brain)
 *********** [[file:energy.bib::Geron17HandsOnMachineLearningWithScikitLearnAndTensorFlowConceptsToolsAndTechniquesToBuildIntelligentSystems][Geron 2017: Hands On Scikit Learn TensorFlow Book]] (I have)
+*********** Monotonic Neural Nets: [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning]]
+
 ********* Coffee in Matlab (stephan remembers?)
 ********* name some more...
 ******* Hardware
@@ -477,6 +479,7 @@
 ***** See [[cite:Smirni16cs426dscrtEvntSimCrsNotes][Smirni 2016: Discrete Event Sim. Course Notes]], does Poisson sim
 ***** See [[cite:Shinomoto10EstFireRatePoisson][Shinomoto 2010: Estimating Firing Rate Book Chapter]], Poisson rate est.
 ***** Assessing goodness of fit of the binned estimates by themselves.  Handwavy scatter plot is [[http://giantoak.github.io/MMPP_Tutorial/][here]]:
+***** Sum of Bernouilli variables is also Poission:  [[file:energy.bib::Hodges60poissonAprxPoissonBin][Hodges & Le 1960: Poisson Poisson: Sum Bernoullis is ~ Poisson]]
 ***** also [[Poisson Regression]]
 
 *** <<Gaussian Mixture Model (GMM)>>
@@ -2066,6 +2069,8 @@ Scott
 ***** [[file:energy.bib::Baird05oneStepInvrtNN][Baird et al. 2005: One PDF]] step pdf learn invertible NN
 ******* See also: [[Wind spatio-temporal patterns]]
 
+*** <<Monotonic Neural Nets>>
+***** [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning]] with [[Tensor Flow]]
 * <<Data Efficient Models>>
 ***** <<Data efficiency: Naive Bayes vs. Logistic Regression>>
 ******* [[file:energy.bib::Ng02discrimVsGenNBvsLogRgrsn][Ng & Jordan 2002 Discrim vs. Gen, Logistic Rgrssn vs. Naive Bayes]]
@@ -2108,6 +2113,7 @@ Scott
 ***** [[https://examples.dask.org/machine-learning/glm.html][Generalized Linear Models Dask]] (e.g. lasso poisson, big parallel graph)
 ******* [[file:energy.bib::Pillow16mathNeurTlsSlides][Pillow 2016: Mathematical Tools Neuroscience Course Notes]]: GLM (old) vs. GLM (new), Poisson/Logistic Regression
 ***** [[Discrete Events: Poisson arrivals, etc.]] 
+***** [[file:energy.bib::Hodges60poissonAprxPoissonBin][Hodges & Le 1960: Poisson Poisson: Sum Bernoullis is ~ Poisson]] 
 ***** also [[Poisson Process]]
 *** <<Logistic Regression>>
 ***** [[file:energy.bib::Shalizi15datAnalElemViewBk][Shalizi 2015: Advanced]] data analysis from elementary perspective (logistic regression, ...)
@@ -2121,6 +2127,7 @@ Scott
 ******* also [[Data efficiency: Naive Bayes vs. Logistic Regression]]
 
 ***** [[file:energy.bib::Ohara2010noLogCountDat][Ohara & Kotze 2010: Do not log counts]]: Poisson/Neg. binom best for counts
+***** [[file:energy.bib::Buskirk15propenseLRvsRandFrst][Buskirk & Kolenikov 2015: Finding Respondents Forest propens vs. LogRr]]
 ***** Confidence Intervals for logistic regression output probability
       It's said that you can do this w/ bootstrap but there's one analytic method (below)
 ******* Analytic LR conf interv: [[https://stats.stackexchange.com/questions/354098/calculating-confidence-intervals-for-a-logistic-regression][Calculating confidence intervals for a logistic regression]]
@@ -3897,52 +3904,66 @@ Hope that helps,
 * <<KNN Regression>>
 *** [[file:energy.bib::Altman92kernKNNrgrssn][Altman 1992 Intro to Kernel and KNN Regression]]
 *** [[KNN neighborhood functions for local linear regression]]
-* <<Random Forests>>
-
-  TODO: copy all Rand Forest papers to here
-
-*** Random Forest Books and Long Reports
-***** [[file:energy.bib::Hastie09elemStatLrnBook][Hastie et al. 2009: Elements Statistical Learning]] 
-*** TODO [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining ADABOOST and Random forest Interp]]
-*** TODO [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
-*** [[file:energy.bib::Li11randKNNfeatSelVsRandFrst][Li et al. 2011: Random KNN Random Forests]] (more stable than plain RFs)
-*** [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
-*** Trees have difficulties with
-***** non-straight lines, interactions: [[https://www.evernote.com/l/AA1nXiMh5_dITrJxTp7r95xFwAZVaKGm0nM/][Deep learning: A brief guide for practical problem solvers]]
-***** extrapolation beyond training outputs: [[https://www.evernote.com/l/AA0XaycItP9BVZXF7qqYp9wsnhQINsieAaw/][Extrapolation is tough for trees!]]
-***** Stability (or not?) See: [[Random Forest feature selection]]
-***** lots of class overlap (combined w/ high dims, I think): [[file:energy.bib::Tomasev13imbalKnnHubs][Tomasev & Mladenic 2013: Class]]
-*** Trees are good for ? ... (add something here)
-***** RFs give stable featsel: [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feat Selection Algorithms]]
-***** RFs better than Poisson GLM for neural spikes: [[file:energy.bib::Benjamin18mdrnMLvsGLMpoisson][Benjamin et al. 2018: Modern Machine Learning neural response]]
-***** hyperplane separable data: [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop]]
-***** better than LARS on Boston Housing data: [[file:energy.bib::Trevor04LAR][Trevor et al. 2004: Least Angle Regression]]
-***** random forests in autoML: [[file:energy.bib::Feurer15autoMLautoSkLrn][Feurer et al. 2015: Efficient Robust Automated Machine Learning]]
-***** high dim, few samples (n<<p): [[file:energy.bib::Strobl09rcrsPartForest][Strobl et al. 2009 intro recurs part.]]
+* <<Decision Tree Methods>>
 *** <<Simple Decision Trees>>
 ***** [[file:energy.bib::Sontag12introMLclass][Sontag 2012: Introduction To Machine Learning (Lecture 11, Decision Trees)]]
 ***** R package: [[https://cran.r-project.org/web/packages/FFTrees/vignettes/guide.html][FFTrees: Fast-and-frugal decision trees]]
-*** Random Forest Applications
-***** Load Forecasting: [[file:energy.bib::Gajowniczek18clustElecLoadFrcst][Gajowniczek & Z\kabkowski 2018: Simulation short term electricity]]
-***** Pose Estimation: [[File:energy.bib::shotton11poserecogdepth][Shotton et al. 2011: Real Time Human]] (random forest featsel for kinect)
-***** Price Forecast: [[file:energy.bib::Hong16probEnrgyFrcstCompet14][Hong et al. 2016: Probabilistic Energy Frcst]]
-***** <<Random Forest Wind Power Forecast>>
-******* [[file:energy.bib::Monteiro09windFrcstStArt][Monteiro et al. 2009: Wind]]: RF best non-lin forecast model
-******* [[file:energy.bib::Sohoni16critRevWindPowCrvModel][Sohoni et al. 2016: Critical Review Wind]]: Wind Power curve
-******* [[file:energy.bib::Fugon08dataMineFrcst][Fugon et al. 2008: Data]]: Wind power feature selection, prob forecast
-******* [[file:energy.bib::Girard10trajEvalWind][Girard & Pinson 2010: Evaluation App Wind]]: wind speed from NWP speed/dir ensemble
-***** Solar Adoption: [[file:energy.bib::Yu18deepSolarDB][Yu et al. 2018: DeepSolar]]
-*** [[Random Forest Ensemble Selection]]
-*** [[Random Forest feature selection]]
-*** [[Isolation Forest Anomaly Detection]] (a random forest type)
-*** Random Forest Probabilistic Forecast
-***** [[Random Forest Quantile Regression]]
-***** Random Forest Binary Probabilsitic Forecast
+*** <<Random Forests>>
+
+    TODO: copy all Rand Forest papers to here
+
+***** Random Forest Books and Long Reports
+******* [[file:energy.bib::Hastie09elemStatLrnBook][Hastie et al. 2009: Elements Statistical Learning]] 
+***** TODO [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining ADABOOST and Random forest Interp]]
+***** TODO [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
+***** [[file:energy.bib::Li11randKNNfeatSelVsRandFrst][Li et al. 2011: Random KNN Random Forests]] (more stable than plain RFs)
+***** [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
+***** Trees have difficulties with
+******* non-straight lines, interactions: [[https://www.evernote.com/l/AA1nXiMh5_dITrJxTp7r95xFwAZVaKGm0nM/][Deep learning: A brief guide for practical problem solvers]]
+******* extrapolation beyond training outputs: [[https://www.evernote.com/l/AA0XaycItP9BVZXF7qqYp9wsnhQINsieAaw/][Extrapolation is tough for trees!]]
+******* Stability (or not?) See: [[Random Forest feature selection]]
+******* lots of class overlap (combined w/ high dims, I think): [[file:energy.bib::Tomasev13imbalKnnHubs][Tomasev & Mladenic 2013: Class]]
+******* [[Learning montonicity]], although at [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][least boosted trees have a fix]]
+***** Trees are good for ? ... (add something here)
+******* RFs give stable featsel: [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feat Selection Algorithms]]
+******* RFs better than Poisson GLM for neural spikes: [[file:energy.bib::Benjamin18mdrnMLvsGLMpoisson][Benjamin et al. 2018: Modern Machine Learning neural response]]
+******* hyperplane separable data: [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop]]
+******* better than LARS on Boston Housing data: [[file:energy.bib::Trevor04LAR][Trevor et al. 2004: Least Angle Regression]]
+******* random forests in autoML: [[file:energy.bib::Feurer15autoMLautoSkLrn][Feurer et al. 2015: Efficient Robust Automated Machine Learning]]
+******* high dim, few samples (n<<p): [[file:energy.bib::Strobl09rcrsPartForest][Strobl et al. 2009 intro recurs part.]]
+***** Random Forest Applications
+******* Load Forecasting: [[file:energy.bib::Gajowniczek18clustElecLoadFrcst][Gajowniczek & Z\kabkowski 2018: Simulation short term electricity]]
+******* Pose Estimation: [[File:energy.bib::shotton11poserecogdepth][Shotton et al. 2011: Real Time Human]] (random forest featsel for kinect)
+******* Price Forecast: [[file:energy.bib::Hong16probEnrgyFrcstCompet14][Hong et al. 2016: Probabilistic Energy Frcst]]
+******* <<Random Forest Wind Power Forecast>>
+********* [[file:energy.bib::Monteiro09windFrcstStArt][Monteiro et al. 2009: Wind]]: RF best non-lin forecast model
+********* [[file:energy.bib::Sohoni16critRevWindPowCrvModel][Sohoni et al. 2016: Critical Review Wind]]: Wind Power curve
+********* [[file:energy.bib::Fugon08dataMineFrcst][Fugon et al. 2008: Data]]: Wind power feature selection, prob forecast
+********* [[file:energy.bib::Girard10trajEvalWind][Girard & Pinson 2010: Evaluation App Wind]]: wind speed from NWP speed/dir ensemble
+******* Solar Adoption: [[file:energy.bib::Yu18deepSolarDB][Yu et al. 2018: DeepSolar]]
+***** [[Random Forest Ensemble Selection]]
+***** [[Random Forest feature selection]]
+***** [[Isolation Forest Anomaly Detection]] (a random forest type)
+***** <<Random Forest Probabilistic Regression>>
+******* [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
 ******* [[file:energy.bib::Gagne12machnLrnEnhanceEns][Gagne et al. 2012: Machine Storm Scale Ensemble precip frcst]] (RF ~ middle of road)
-*** [[Random Forest Changepoint Detection]]
-*** [[Random Forest Feature Generation]]
-*** [[Random Forests in Reinforcement Learning]]
+******* [[file:energy.bib::Fenske11idRiskBoostAddQR][Fenske et al. 2011: Risk additive QR]]: cite of random forest QR
+******* [[file:energy.bib::Buskirk15propenseLRvsRandFrst][Buskirk & Kolenikov 2015: Finding Respondents Forest propens vs. LogRr]]
+******* also [[Tree-Based Probabilistic Regression]]
+***** [[Random Forest Changepoint Detection]]
+***** [[Random Forest Feature Generation]]
+***** [[Random Forests in Reinforcement Learning]]
+*** <<Boosted Decision Trees>>
+***** [[https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/][A Gentle Introduction to XGBoost for Applied Machine Learning]]
+***** Adaboost: [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining ADABOOST and Random forest Interp]]
+***** [[file:energy.bib::Chen15higgsBoostTr][Chen & He 2015: Higgs Boson Boosted Trees]]
+***** [[file:energy.bib::Chen16xgboostSclbl][Chen & Guestrin 2016: XGBoost scalable tree boost]]       
+***** <<Monotonic Boosted Trees>>
+******* [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning]]
 * <<Boosted Regression>>
+
+  Train a prediction algorithm, test, and then train a new model on the residual...
+
 *** Blasso (boosted lasso: could this be continuous or discrete?)
 *** Discreet boosting
 ***** [[http://ieeexplore.ieee.org/xpl/freeabs_all.jsp%3farnumber%3d1713209][a regression algorithm based on adaboost]] (svm)
@@ -4020,15 +4041,9 @@ Hope that helps,
 ***** any relation to bootstrapped regression: [[file:energy.bib::Fox08btstrpRgrsnBookChap][Fox 2008: Applied Regression Analysis]]  bootstrap rgrssn chapter
 ***** see also: [[Ensemble selection]] (a boosting weighting criteria?)
 ***** see also: [[Clustering of regression models]]
-*** <<Gradient Boosting>>
-
-    Train a prediction algorithm, test, and then train a new model on the residual...
-
-***** [[file:energy.bib::Chen15higgsBoostTr][Chen & He 2015: Higgs Boson Boosted Trees]]
-***** [[file:energy.bib::Chen16xgboostSclbl][Chen & Guestrin 2016: XGBoost scalable tree boost]]       
-
-*** see also: [[Boosted Quantile Regression]]
-*** see also: [[Feature selection for varying coefficient models]]
+*** also [[Boosted Quantile Regression]]
+*** also [[Feature selection for varying coefficient models]]
+*** also [[Boosted Decision Trees]]
 * <<Factorization Machines>>
   
   Related to support vector machines.  I think this is in Python H2O library.
@@ -5391,6 +5406,63 @@ sera
 *** [[file:energy.bib::Clifton13machLrnPowCurvTurbShear][Clifton et al. 2013: Using]] mach lrn pow curve: turb & shear & dec. tree
 
 *** [[cite:SaintDrenan17probRgnlPVfrcst][Saint-Drenan et al. 2017 prob PV frcst]] 
+* <<Learning montonicity>>
+
+  Maybe important for [[Power Curve Learning]], since an ideal power
+  curve is monotonic (/except for beyond cutoff/).  Also good for
+  [[Conditional Density Estimation][Conditional Density Estimation]], since cdfs must also be monotonic.
+
+*** montonicity with splines: [[http://www.psych.mcgill.ca/misc/fda/ex-growth-d1.html][intro]] text and [[http://www.psych.mcgill.ca/misc/fda/ex-growth-d2.html][example]]
+*** p. 11, [[file:energy.bib::Ramsay08funcAnalNotes][Ramsay 2008: Notes Functional]]
+*** smooth.monotone() in the [[http://cran.r-project.org/web/packages/fda/fda.pdf][R fda package]] should work for this
+*** use montonicity in [[Functional Data Analysis]] regression?
+***** (p. 23, [[file:energy.bib::Ramsay08funcAnalNotes][Ramsay 2008: Notes Functional]])
+***** example 2. in [[file:~/lib/R/x86_64-unknown-linux-gnu/2.12/fda/demo/growth.R::f%20x%20b_0%20b_1%20D%201%20exp%20W%20x][fda/demo/growth.R]]
+***** I don't know yet how to do this in regression, though
+
+*** Quantile Regression w/ monotonicity & other constraints: [[file:energy.bib::Kim06quantRgrsnShapeConstr][Kim 2006: Quantile Regression With]]
+    (note that there's a quantile regression component somewhere in
+    there, I think)
+*** [[file:energy.bib::Demetriou02lsqFitMonoConv][Demetriou 2002: Signs]] (Least squares fitting with monotonicity/convexity constraint)
+
+    Maybe relevant to optimal spinning reserves project, where we need to
+    estimate the cost of reserves.  The idea was to empirically derive
+    the cost curve market data.  This has to be monotonically increasing
+    with reserve size.  This method could enforce that.
+
+    He's written some fortran to do this.
+
+*** TODO I think I sent Tryggvi some other papers on montonic learning (check)
+*** Dispatch by learning montone functions: [[file:energy.bib::Lai05partSwarmDispNonSmth][Lai et al. 2005: Particle]] swarm non-smooth
+*** [[file:energy.bib::Bollaerts06psplineSimpMultiShape][Bollaerts et al. 2006: Simple P]] splines, multivariate, shape constr
+*** [[file:energy.bib::Eilers15twentyYrsPspline][Eilers et al. 2015: Twenty P]]splines review
+*** [[file:energy.bib::Lyche05SplineMethodsLecNts][Lyche & Moerken 2005: Spline Methods]]: UoOslo Spline course lectures
+*** [[http://www.mathworks.com/matlabcentral/fileexchange/24443-slm-shape-language-modeling][SLM - Shape Language Modeling]]: Matlab library
+***** has monotonic regression
+***** but requires optimization toolbox
+***** doesn't do penalized splines.  But can pick knots
+*** [[file:energy.bib::Pya15shapeCnstrAddMdl][Pya & Wood 2015: Shape]] constrained add models, multivar, mono, pnlty.
+*** [[file:energy.bib::Kagerer13splnLSQregrssnIntro][Kagerer 2013]] intro to splines has constraint matrix equs.
+*** [[http://www.mathworks.com/matlabcentral/fileexchange/25872-free-knot-spline-approximation][Free-knot spline approximation]]: matlab code
+***** it required [[http://sigpromu.org/projects.html#quadprog][QPC library]], and I couldn't get the mex files to work on my 64 bit laptop
+***** can specify lower and upper bounds on derivative
+***** seems to remove knots if not needed
+*** [[file:energy.bib::Meyer00degFreedomShpCnstr][Meyer & Woodroofe 2000: Degrees Freedom Shape Restricted Regression]]
+*** Linear quantile spline w/ mono/other constraints: p. 332, [[file:energy.bib::Koenker05QuantRgrssnBook][Koenker 2005: Quantile]]
+*** [[http://www.mai.liu.se/~olbur/PROJECTS/isot_regr.html][Isotonic Regression]] project
+*** [[http://www.mathworks.com/help/techdoc/ref/pchip.html][Matlab's builtin: pchip()]] is mono _if training data is purely monotonic_
+***** montonicity is ensured when the training data is monotonic
+******* won't get polynomial-type ringing at sharp edges
+***** from: [[file:energy.bib::Ableson12classNotesMonoSpline][Ableson: Applications Numerical Methods Lecture]] (monotone matlab, pchip)
+******* estimates ‘reasonable’ derivatives at each control point
+******* has a zero derivative if the control point is a local (data) max or min
+******* These two things guarantee that the interpolation will be locally monotone. The
+*** just sorting can work: [[file:energy.bib::Chernozhukov10qrNoCross][Chernozhukov et al. 2010: Quantile Probability Curves Without Crossing]]
+*** using erf() function and optimization toolbox
+***** [[http://www.mathworks.com/matlabcentral/newsreader/view_thread/34206][matlab code]], requires optimization toolbox
+
+*** [[Monotonic Neural Nets]]
+*** [[Monotonic Boosted Trees]]
 * <<Conditional Density Estimation>>
 *** <<Quantile Regression>>
 ***** [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006]] QR compared
@@ -5482,13 +5554,12 @@ sera
 ***** [[cite:Zhang16detProbIntrvVari][Zhang et al. 2016: Deterministic]] interval, variational. Uses ELM
 ***** [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]
 ***** [[file:energy.bib::Tayman11popFrcstAccRgrssn][Tayman et al. 2011: Evaluating pop frcst w/ regression model]]
-***** <<Random Forest Quantile Regression>>
-******* [[file:energy.bib::Fenske11idRiskBoostAddQR][Fenske et al. 2011: Risk additive QR]]: cite of random forest QR
+***** <<Tree-Based Probabilistic Regression>>
 ******* [[file:energy.bib::Bhat11quantRgrsnTrees][Bhat et al. 2011: Quantile Regression Trees]]
 ******* [[file:energy.bib::Meinshausen06qrForests][Meinshausen 2006: Quantile Regression Forests]]
 ******* [[file:energy.bib::Juban07ProbWndFrcstFeatSelKDE][Juban et al. 2007: Probabilistic Wind Power Kernel Forecasts]] (compared against kernels)
-******* [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
 ******* [[file:energy.bib::Fugon08dataMineFrcst][Fugon et al. 2008: Data]]: Wind power feature selection, prob forecast
+******* also [[Random Forest Probabilistic Regression]]
 ***** <<Autoregressive Quantile Regression>>
 
       Lots of algorithms, maybe good for Henry Martin's limit order book models
@@ -5561,27 +5632,8 @@ sera
 ******* [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]] (deep meth. for quantiles or DR thresh probs?)
 ******* see also: [[Learning montonicity]] (for smoothing out quantile crossover)
 ******* see also: [[Distributions from quantile forecasts]]
-***** Quantile regression and ABC
-      <<Quantile regression and ABC>>
-      Improve QR high dim probs w/ ABC?
-******* [[http://en.wikipedia.org/wiki/Approximate_Bayesian_computation][Approximate Bayesian Computation]] (ABC)
-
-        - General monte-carlo-type way of doing any Bayesian thing, I think
-        - But more efficient than plain monte carlo:
-           - instead of the usual distribution estimation, works on summary
-             statistics, like mean, variance
-           - and maybe quantiles?
-           - paper below (R package) has trick to make it more efficient
-        - good for high dimensions
-        - could use this for spinning reserve optimization, also, mabye
-        - optimal bidding (given forecast distribution)
-        - better/adaptive forecasting? (see [[Adaptive Training / Updating]])
-
-        - *R package* has non-linear correction making ABC much more efficient
-          [[file:energy.bib::Blum10nonlinApproxBayesComp][Blum & Francois 2010: Non Approximate Bayesian Computation]]
-
-*********** [[file:energy.bib::Liu09crvRegisClustFunc][Liu & Yang 2009: Simultaneous]]  (curv reg. and func dat clustering)
-
+***** <<Quantile regression and ABC>>
+      Improve QR high dim probs w/ [[Approximate Bayesian Computation (ABC)]]
 ***** <<Local linear quantile regression>>
 ******* [[file:energy.bib::Bremnes04windLocQR][Bremnes 2004: Probabilistic]] loc lin QR
 ******* [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006]]: quantile forecasts compared
@@ -5614,11 +5666,10 @@ sera
 ******* Pinson boosting paper
 ******* new Moeller paper
 ******* Treed Gaussian processes paper
-******* Random forest quantile regression paper
+******* <<Tree-Based Probabilistic Regression>>
 ******* see also [[Boosted Regression]]
 ******* see also [[Continuous Output Boosting]] (more specific)
 ******* see also: [[Feature selection for varying coefficient models]]
-******* see also: [[Gradient Boosting]]
 ***** <<Multiple output quantile regresson>>
 
       Good for:
@@ -6077,6 +6128,7 @@ sera
 ***** Also: [[Non-stationary covariance]]
 *** also [[Forecasting]]
 *** also [[Uncertainty estimation]]
+*** also [[Learning montonicity]]
 * <<Regime Learning>>
 *** <<Regime Detection Criteria>>
 ***** [[generic%20change%20point%20detection][generic change point detection]]
@@ -7798,63 +7850,8 @@ Scott
 
          A simple proxy for stability/wake effects:  [[cite:Mittelmeier17powStdRatioWake][Mittelmeier et al. 2017: SCADA data pow std ratio wake]]
 
+******* [[Learning montonicity]]
 ******* [[file:energy.bib::Sohoni16critRevWindPowCrvModel][Sohoni et al. 2016: Critical Review Wind]]: Wind Power curve
-******* Learning montonicity
-        <<Learning montonicity>>
-
-        Maybe important for power curve learning, since an ideal power
-        curve is monotonic (/except for beyond cutoff/).  Also good for
-        learning cdf's or quantiles, since they must also be monotonic.
-
-********* montonicity with splines: [[http://www.psych.mcgill.ca/misc/fda/ex-growth-d1.html][intro]] text and [[http://www.psych.mcgill.ca/misc/fda/ex-growth-d2.html][example]]
-********* p. 11, [[file:energy.bib::Ramsay08funcAnalNotes][Ramsay 2008: Notes Functional]]
-********* smooth.monotone() in the [[http://cran.r-project.org/web/packages/fda/fda.pdf][R fda package]] should work for this
-********* use montonicity in [[Functional Data Analysis]] regression?
-*********** (p. 23, [[file:energy.bib::Ramsay08funcAnalNotes][Ramsay 2008: Notes Functional]])
-*********** example 2. in [[file:~/lib/R/x86_64-unknown-linux-gnu/2.12/fda/demo/growth.R::f%20x%20b_0%20b_1%20D%201%20exp%20W%20x][fda/demo/growth.R]]
-*********** I don't know yet how to do this in regression, though
-
-********* Quantile Regression w/ monotonicity & other constraints: [[file:energy.bib::Kim06quantRgrsnShapeConstr][Kim 2006: Quantile Regression With]]
-          (note that there's a quantile regression component somewhere in
-          there, I think)
-********* [[file:energy.bib::Demetriou02lsqFitMonoConv][Demetriou 2002: Signs]] (Least squares fitting with monotonicity/convexity constraint)
-
-          Maybe relevant to optimal spinning reserves project, where we need to
-          estimate the cost of reserves.  The idea was to empirically derive
-          the cost curve market data.  This has to be monotonically increasing
-          with reserve size.  This method could enforce that.
-
-          He's written some fortran to do this.
-
-********* TODO I think I sent Tryggvi some other papers on montonic learning (check)
-********* Dispatch by learning montone functions: [[file:energy.bib::Lai05partSwarmDispNonSmth][Lai et al. 2005: Particle]] swarm non-smooth
-********* [[file:energy.bib::Bollaerts06psplineSimpMultiShape][Bollaerts et al. 2006: Simple P]] splines, multivariate, shape constr
-********* [[file:energy.bib::Eilers15twentyYrsPspline][Eilers et al. 2015: Twenty P]]splines review
-********* [[file:energy.bib::Lyche05SplineMethodsLecNts][Lyche & Moerken 2005: Spline Methods]]: UoOslo Spline course lectures
-********* [[http://www.mathworks.com/matlabcentral/fileexchange/24443-slm-shape-language-modeling][SLM - Shape Language Modeling]]: Matlab library
-*********** has monotonic regression
-*********** but requires optimization toolbox
-*********** doesn't do penalized splines.  But can pick knots
-********* [[file:energy.bib::Pya15shapeCnstrAddMdl][Pya & Wood 2015: Shape]] constrained add models, multivar, mono, pnlty.
-********* [[file:energy.bib::Kagerer13splnLSQregrssnIntro][Kagerer 2013]] intro to splines has constraint matrix equs.
-********* [[http://www.mathworks.com/matlabcentral/fileexchange/25872-free-knot-spline-approximation][Free-knot spline approximation]]: matlab code
-*********** it required [[http://sigpromu.org/projects.html#quadprog][QPC library]], and I couldn't get the mex files to work on my 64 bit laptop
-*********** can specify lower and upper bounds on derivative
-*********** seems to remove knots if not needed
-********* [[file:energy.bib::Meyer00degFreedomShpCnstr][Meyer & Woodroofe 2000: Degrees Freedom Shape Restricted Regression]]
-********* Linear quantile spline w/ mono/other constraints: p. 332, [[file:energy.bib::Koenker05QuantRgrssnBook][Koenker 2005: Quantile]]
-********* [[http://www.mai.liu.se/~olbur/PROJECTS/isot_regr.html][Isotonic Regression]] project
-********* [[http://www.mathworks.com/help/techdoc/ref/pchip.html][Matlab's builtin: pchip()]] is mono _if training data is purely monotonic_
-*********** montonicity is ensured when the training data is monotonic
-************* won't get polynomial-type ringing at sharp edges
-*********** from: [[file:energy.bib::Ableson12classNotesMonoSpline][Ableson: Applications Numerical Methods Lecture]] (monotone matlab, pchip)
-************* estimates ‘reasonable’ derivatives at each control point
-************* has a zero derivative if the control point is a local (data) max or min
-************* These two things guarantee that the interpolation will be locally monotone. The
-********* just sorting can work: [[file:energy.bib::Chernozhukov10qrNoCross][Chernozhukov et al. 2010: Quantile Probability Curves Without Crossing]]
-********* using erf() function and optimization toolbox
-*********** [[http://www.mathworks.com/matlabcentral/newsreader/view_thread/34206][matlab code]], requires optimization toolbox
-
 ******* estimate power curve online, from wind speed predictions and produced power
 ********* could be an additional step of wind forecasting errors corrections
 ********* could use WPPT or [[file:energy.bib::Pinson08locLinAdaptOrthog][Pinson et al. 2008: Local]]
@@ -10589,6 +10586,7 @@ Scott
 ***** [[file:energy.bib::Morales10shortWindTrade][Morales et al. 2010: Short Term Trading]]
 ***** [[file:energy.bib::Morales09valReservWind][Morales et al. 2009: Economic]]
 ***** [[file:energy.bib::Blum10nonlinApproxBayesComp][Blum & Francois 2010: Non Approximate Bayesian Computation]]
+***** see [[Approximate Bayesian Computation (ABC)]]
 ***** see [[Learning montonicity]]
 ***** See Juan Miguel (and Tryggvi's?) papers in my email.  I bibtexed some of them, I think.
 ***** [[Functional Data Analysis]] can assure montonicity in bidding functions
@@ -11372,6 +11370,30 @@ Erika
 ***** XCEL/NCAR/UCAR day ahead forecast collaboration, 2011
 ******* [[file:energy.bib::Parks11windFrcstXcelCAR][Parks et al. 2011: Wind Energy Forecasting]]
 ******* 2012 update [[https://www.evernote.com/view/91eabdfe-4189-485a-b28d-f1848aa8be5a#n%3D91eabdfe-4189-485a-b28d-f1848aa8be5a][here]] (also mention ramps)
+* <<Probabilistic Programming>>
+*** Python toolkit: [[https://pyro.ai/][Pyro]]
+*** [[file:energy.bib::Blum10nonlinApproxBayesComp][Blum & Francois 2010: Non Approximate Bayesian Computation]]
+*** <<Approximate Bayesian Computation (ABC)>>
+    Wikipedia: [[http://en.wikipedia.org/wiki/Approximate_Bayesian_computation][Approximate Bayesian Computation]] (ABC)
+
+    - General monte-carlo-type way of doing any Bayesian thing, I think
+    - But more efficient than plain monte carlo:
+       - instead of the usual distribution estimation, works on summary
+         statistics, like mean, variance
+       - and maybe quantiles?
+       - paper below (R package) has trick to make it more efficient
+    - good for high dimensions
+    - could use this for spinning reserve optimization, also, mabye
+    - optimal bidding (given forecast distribution)
+    - better/adaptive forecasting? (see [[Adaptive Training / Updating]])
+
+    - *R package* has non-linear correction making ABC much more efficient
+      [[file:energy.bib::Blum10nonlinApproxBayesComp][Blum & Francois 2010: Non Approximate Bayesian Computation]]
+
+******* [[file:energy.bib::Liu09crvRegisClustFunc][Liu & Yang 2009: Simultaneous]]  (curv reg. and func dat clustering)
+
+*** [[https://mlstat.wordpress.com/2018/05/09/slides-on-probabilistic-programming-and-variational-inference/][A Short Presentation on Probabilistic Programming and Variational Inference]]
+    Has an instrument example, maybe relevant to SolarAnywhere instrument drift and calibration.
 * Electricity in general
 *** Reactive power
 ***** [[file:energy.bib::Sauer05reacVoltPwr][Chow/Sauer et al. 2005: Applied Mathematics Restructured]] power systems
@@ -11429,10 +11451,15 @@ Erika
 
     For independent trials...
 
-***** binomial: [[file:energy.bib::Weber16poissonExpClassNotesDS430][# of successes in a fixed number of trials]]
+
+    "time" below is some parameter that the trials are accumulated over.  Could be time, space, etc.
+
+***** binomial: [[file:energy.bib::Weber16poissonExpClassNotesDS430][# of successes in a number of success/fail (Bernoulli) trials]]
 ***** geometric:  [[file:energy.bib::Weber16poissonExpClassNotesDS430][time between successes in a series if trials]] 
 ***** exponential: [[file:energy.bib::Weber16poissonExpClassNotesDS430][time between occurrences with continuous time]] 
-***** Poisson:  [[file:energy.bib::Weber16poissonExpClassNotesDS430][number of successes in a fixed period with continuous time]] 
+***** Poisson:  [[file:energy.bib::Weber16poissonExpClassNotesDS430][number of successes in a fixed time interval]], is... 
+******* [[file:energy.bib::Hodges60poissonAprxPoissonBin][The Sum of Bernoulli variables, different p's]] 
+******* [[file:energy.bib::Emory19poissonBinomCnnct][An approximation to Binomial the Binomial dist for large n, small p]]
 ***** Erlang: [[file:energy.bib::Smirni16cs426dscrtEvntSimCrsNotes][sum of exponential]] RV's
 *** [[Poisson Regression]]
 * <<State Change Detection>>
@@ -12509,6 +12536,7 @@ optimization to be a generalization of linear programming.
     07/12/19 [[file:energy.bib::Sontag12introMLclass][Sontag 2012: Introduction To Machine Learning Class]]
     07/15/19 [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining ADABOOST and Random forest Interp]]
     07/16/19 [[file:energy.bib::Hodges60poissonAprxPoissonBin][Hodges & Le 1960: Poisson Poisson: Sum Bernoullis is ~ Poisson]] 
+    07/22/19 [[file:energy.bib::Emory19poissonBinomCnnct][Emory 2019: Connection Between Poisson Binomial Distributions]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib

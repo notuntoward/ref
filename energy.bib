@@ -26194,6 +26194,36 @@ Simonoff09transfRegrsn},
   timestamp = {2011.05.16},
 }
 
+@Article{Buskirk15propenseLRvsRandFrst,
+  author   = {Buskirk, Trent D. and Kolenikov, Stanislav},
+  title    = {Finding Respondents in the Forest: A Comparison of Logistic Regression and Random Forest Models for Response Propensity Weighting and Stratification},
+  journal  = {Survey Methods: Insights from the Field},
+  year     = {2015},
+  pages    = {17},
+  issn     = {2296-4754},
+  abstract = {Survey response rates for modern surveys using many different modes are trending downward leaving the potential for nonresponse biases
+
+in estimates derived from using only the respondents. The reasons for nonresponse may be complex functions of known auxiliary variables or
+
+unknown latent variables not measured by practitioners. The degree to which the propensity to respond is associated with survey outcomes
+
+casts light on the overall potential for nonresponse biases for estimates of means and totals. The most common method for nonresponse
+
+adjustments to compensate for the potential bias in estimates has been logistic and probit regression models. However, for more complex
+
+nonresponse mechanisms that may be nonlinear or involve many interaction effects, these methods may fail to converge and thus fail to
+
+generate nonresponse adjustments for the sampling weights. In this paper we compare these traditional techniques to a relatively new data
+
+mining technique- random forests – under a simple and complex nonresponse propensity population model using both direct and propensity
+
+stratification nonresponse adjustments. Random forests appear to offer marginal improvements for the complex response model over logistic
+
+regression in direct propensity adjustment, but have some surprising results for propensity stratification across both response models.},
+  file     = {:Buskirk15propenseLRvsRandFrst.pdf:PDF},
+  urn      = {https://nbn-resolving.org/urn:nbn:de:0168-ssoar-427053},
+}
+
 @InProceedings{SantAnna11tsSymbSaxPerACA,
   author    = {Sant''Anna, A. and Wickstrom, N.},
   title     = {Symbolization of time-series: An evaluation of SAX, Persist, and {AC}A},
@@ -45351,6 +45381,17 @@ Copula Processes
   url       = {http://www.bpa.gov/corporate/business/innovation/iwftm.cfm},
 }
 
+@TechReport{Emory19poissonBinomCnnct,
+  author      = {Emory},
+  title       = {The Connection Between the Poisson and Binomial Distributions},
+  institution = {The Oxford Math Center, Emory University},
+  year        = {2019},
+  type        = {techreport},
+  comment     = {Derivation of the Poisson distribution as an approximation to the binomial distribution as the number of trials gets large and the probability of success is low.  For the beginning years of MNSP, adoption probabilities, p are certainly small, but n is not large.  However, it's also true that, when you are measuring the sum of Bernouli trials with varying probabilties, almost all small, then the best fit is a Poisson (Hodges60poissonAprxPoissonBin)},
+  file        = {:Emory19poissonBinomCnnct.pdf:PDF},
+  url         = {http://www.oxfordmathcenter.com/drupal7/node/297},
+}
+
 @InProceedings{Enyeart08largeWindImpact,
   author       = {Steve Enyeart},
   title        = {Large Wind Integration Impacts on Operations / System Reliability},
@@ -46370,7 +46411,7 @@ Also 1000's of individual reservoirs, although I don't understand what "aggregat
   timestamp = {2008.09.30},
 }
 
-@INPROCEEDINGS{Hibell04segNNadaboost,
+@Inproceedings{Hibell04segNNadaboost,
   Author                   = {Hibell, Lewis Eric and Wang, Xunxian and Brown, David J},
   Title                    = {Segmented Neural Network Modelling Using AdaBoost},
   Booktitle                = {IASTED International Conference on Neural Networks and Computational Intelligence},
@@ -46401,11 +46442,13 @@ Also 1000's of individual reservoirs, although I don't understand what "aggregat
   number        = {3},
   pages         = {737--740},
   __markedentry = {[scott:6]},
-  comment       = {The sum of bernoulli (1,0) variables with different probablitiies has, if they are independent, an approximate Poisson distribution with mean=lambda=SUM(p_i), where p_i is each variable's probability of success, and lambda is the mean of the  Poisson distribution. (even without this paper, you can also calculate the expected value simply from the sum of independent variables.  See my OneNote page)
+  comment       = {The sum of Bernoulli (1,0) variables with different probablitiies has, if they are independent, an approximate Poisson distribution with mean=lambda=SUM(p_i), where p_i is each variable's probability of success, and lambda is the mean of the  Poisson distribution. (even without this paper, you can also calculate the expected value simply from the sum of independent variables.  See my OneNote page (Expected number of adoptions across population per year). 
 
 A coarse bound for this to be true: the probabilities are all mall, and n (# samps) is large.  Bothe are true for WattPlanGrid adoption probs.
 
-But there are much tighter bounds.  The approximate bound they finally arrive at is that the Poisson is valid, even if some of the p_i's are large, as long as their sum is small compared to SUM(p_i)},
+But there are much tighter bounds.  The approximate bound they finally arrive at is that the Poisson is valid, even if some of the p_i's are large, as long as their sum is small compared to SUM(p_i)
+
+Note that the Poisson is also an approximation to the Binomial distribution for large n and small p (Emory19poissonBinomCnnct)},
   file          = {:Hodges60poissonAprxPoissonBin.pdf:PDF},
   publisher     = {JSTOR},
   url           = {https://www.jstor.org/stable/pdf/2237582.pdf?seq=1#page_scan_tab_contents},
