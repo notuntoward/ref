@@ -469,6 +469,20 @@
         {\displaystyle Y_{t-1:t-L}} Y_{t-1:t-L}
 
       in the cond
+*** <<Dataset Shift>>
+
+    Dataset shift refers to a phenomenon in supervised learning where the change of data source from training to testing causes a difference in the distributions of train and test data.  There are many reasons for this, as outlined in [[file:energy.bib::Kull14datasetDriftPttrn][Kull & Flach 2014: Patterns of Dataset Shift]].
+
+    Note that people used to say "drift" instead of "shift," as in "Concept Drift"; the current term now sees to be "Shift."  See [[Dataset Shift Detection]].
+
+    The types of Dataset Shift are: 
+    1. [[Concept Drift]]
+    2. 11 others...  Someday, read Kull14* and update this section
+
+*** <<Concept Drift>>: change in P(Y|X)
+
+    A type of [[Dataset Shift]], Concept Drift, means that the conditional distribution of Y given X changes; there are at least four reasons for this change ([[file:energy.bib::Kull14datasetDriftPttrn][Kull & Flach 2014: Patterns of Dataset Shift]]).  This is a problem when you've trained a model, and then the concept shifts.  See [[Concept Drift Detection]]
+
 *** Exponential Family of Distributions
 ***** Good web page: [[http://www.math.uah.edu/stat/special/GeneralExponential.html][General Exponential Families]]
 ***** Includes Weibull and discrete distributions e.g. Poisson: see [[http://www.math.uah.edu/stat/special/GeneralExponential.html][list]]
@@ -3914,10 +3928,10 @@ Hope that helps,
 
 ***** Random Forest Books and Long Reports
 ******* [[file:energy.bib::Hastie09elemStatLrnBook][Hastie et al. 2009: Elements Statistical Learning]] 
-***** TODO [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining ADABOOST and Random forest Interp]]
+***** [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining ADABOOST and Random forest Interp]]
 ***** TODO [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
+***** TODO [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
 ***** [[file:energy.bib::Li11randKNNfeatSelVsRandFrst][Li et al. 2011: Random KNN Random Forests]] (more stable than plain RFs)
-***** [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
 ***** Trees have difficulties with
 ******* non-straight lines, interactions: [[https://www.evernote.com/l/AA1nXiMh5_dITrJxTp7r95xFwAZVaKGm0nM/][Deep learning: A brief guide for practical problem solvers]]
 ******* extrapolation beyond training outputs: [[https://www.evernote.com/l/AA0XaycItP9BVZXF7qqYp9wsnhQINsieAaw/][Extrapolation is tough for trees!]]
@@ -3925,12 +3939,12 @@ Hope that helps,
 ******* lots of class overlap (combined w/ high dims, I think): [[file:energy.bib::Tomasev13imbalKnnHubs][Tomasev & Mladenic 2013: Class]]
 ******* [[Learning montonicity]], although at [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][least boosted trees have a fix]]
 ***** Trees are good for ? ... (add something here)
-******* RFs give stable featsel: [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feat Selection Algorithms]]
-******* RFs better than Poisson GLM for neural spikes: [[file:energy.bib::Benjamin18mdrnMLvsGLMpoisson][Benjamin et al. 2018: Modern Machine Learning neural response]]
-******* hyperplane separable data: [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop]]
-******* better than LARS on Boston Housing data: [[file:energy.bib::Trevor04LAR][Trevor et al. 2004: Least Angle Regression]]
-******* random forests in autoML: [[file:energy.bib::Feurer15autoMLautoSkLrn][Feurer et al. 2015: Efficient Robust Automated Machine Learning]]
 ******* high dim, few samples (n<<p): [[file:energy.bib::Strobl09rcrsPartForest][Strobl et al. 2009 intro recurs part.]]
+******* hyperplane separable data: [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop]]
+******* RFs better than Poisson GLM for neural spikes: [[file:energy.bib::Benjamin18mdrnMLvsGLMpoisson][Benjamin et al. 2018: Modern Machine Learning neural response]]
+******* better than LARS on Boston Housing data: [[file:energy.bib::Trevor04LAR][Trevor et al. 2004: Least Angle Regression]]
+******* RFs give stable featsel: [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feat Selection Algorithms]]
+******* random forests in autoML: [[file:energy.bib::Feurer15autoMLautoSkLrn][Feurer et al. 2015: Efficient Robust Automated Machine Learning]]
 ***** Random Forest Applications
 ******* Load Forecasting: [[file:energy.bib::Gajowniczek18clustElecLoadFrcst][Gajowniczek & Z\kabkowski 2018: Simulation short term electricity]]
 ******* Pose Estimation: [[File:energy.bib::shotton11poserecogdepth][Shotton et al. 2011: Real Time Human]] (random forest featsel for kinect)
@@ -7727,6 +7741,10 @@ Scott
 ***** [[file:energy.bib::Lave13solarVarWvlt][Lave et al. 2013: Wavelet Based Variability]]
 ***** [[cite:Newport17introSolarRad][Newport 2017: Introduction to Solar Radiation]] 
 ***** [[https://www.nrel.gov/midc/solpos/solpos.html][MIDC SOLPOS Calculator]]: time/place --> solar position and intensitytime/
+***** <<PV System Diagnostics>>
+******* [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::Meyers19pvDgrdAnlysisNoPhysMdl][Meyers et al. 2019: Signal Processing PV degrade no phys]] :SolarAnywhere:DataQual:
+******* [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::Meyers18statClearSkyFit][Meyers et al. 2018: Statistical Clear Sky Fitting Algorithm]] :SolarAnywhere:DataQual:
+******* [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::Meyers19toolsPVdatSci][Meyers 2019: Tools PV Data Sci]]
 ***** see also: [[file:energytop.org::*Wind%20and%20Solar%20Forecast%20Error%20Dependence][Wind and Solar Forecast Error Dependence]]
 *** <<Price Forecasting>>
 ***** couldn't do it on DE intraday mkt?: [[file:energy.bib::Moehrlen12tradeStrtgyRESeeg2012][Moehrlen et al. 2012: Investigation EEG]]
@@ -9058,6 +9076,12 @@ sera
 ******* see also: [[Copulas]]
 ******* see also: [[Quantile Regression]]
 ******* see also: [[Point forecast aggregation]]
+***** <<Classifier/Count aggregation>> 
+
+      How to estimate the sum of numbers of predicted classes.  Relevant for adoption forecasting.  Many papers consider these methods under [[Dataset Shift]]
+
+******* TODO [[file:energy.bib::Gonzalez17rvwQuantifLrn][Gonzalez et al. 2017: Review Quantification Learning]]
+******* TODO [[file:energy.bib::Tasche16quantifWOadjst][Tasche: Does quantification w/o Adjust work?]]
 ***** [[file:energy.bib::Choo12HeteroDatFuseMDS][Choo et al. 2012: Heterogeneous Data Fusion]] MDS
 ***** TODO go through energy.bib and dig out other papers on aggregation
 ***** [[file:energy.bib::Qin07rgrsnClustVSkmeans][Qin & Self 2007: K]] clustering of regression models
@@ -11084,6 +11108,7 @@ Erika
 ******* [[file:energy.bib::Comin10explrTechDiffus][Comin & Hobijn 2010: Exploration Technology Diffusion]] (has data)
 ******* also [[Machine Learning Data Sets]]
 ***** TODO also [[Class Imbalance Handling]] (if tech adopt. is a rare event)
+***** also [[Classifier/Count aggregation]] (for forecasting)
 ***** also [[Technology Learning Rates]]
 ***** also [[Portfolio Optimization and Forecasting]]
 ***** also [[Real Estate Forecasts]]
@@ -11437,8 +11462,7 @@ Erika
 ***** excel's [[http://www.xcelenergy.com/sitecollectiondocuments/docs/appendixe.pdf][storage technology comparison]] (there's one from bpa, somewhere)
 
 ***** power2gas
-******* [[file:energy.bib::sterner10pow2methslides][sterner et al. 2010: renewable]] e to methane
-
+******* [[File:energy.bib::sterner10pow2methslides][Sterner et al. 2010: Renewable]] energy to methane
 *** <<Operation of Energy Storage>>
 ***** Pierre's scenario-driven battery charging optimization
 ***** [[https://www.evernote.com/l/AA2Q2BisgYVLcpAilQnT88IWjYENpR0UiX8/][Best Algorithms to Make Solar Power Storage Profitable]] (quadratic opt.)
@@ -11622,22 +11646,28 @@ Erika
 ***** also [[State Change Alarm Criteria]]
 ***** also [[Changepoint Detection]]
 
-*** <<Concept Drift Detection>>
+*** <<Dataset Shift Detection>>
+    
+    An outlier could be any change in the input or output data distributions ([[Dataset Shift]])
 
-    ie. recognizing that a new test or train point was not in previous
-    training data. This would be a way to learn and store regimes
+***** [[file:energy.bib::Kull14datasetDriftPttrn][Kull & Flach 2014: Patterns of Dataset Shift]]: what a [[Dataset Shift]] is
+***** [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::Rabanser19empDatSetShiftDet][Rabanser et al. 2019: Failing Loudly Detect Dataset Shift]] :LongHoriz:WattPlan:MNSP:SolarAnywhere:
+***** <<Concept Drift Detection>>
 
-***** Gaussian process can warn when unfamiliar point in training data
-******* [[file:energy.bib::Kocijan03caseCompNeuralGaussProc][Kocijan et al. 2003: Gaussian]] (also require less train data so fast)
-******* [[file:energy.bib::Tancret99CompNeuralGaussProcAlloy][Tancret et al. 1999: Comparison Gaussian]]
-******* [[file:energy.bib::Wang06compGausProcNeuralForecast][Wang et al. 2006: Comparing Gaussian Processes]]
-***** [[https://www.google.com/search?q%3Dknn%2Bwith%2Bconcept%2Bdrift&ie%3Dutf-8&oe%3Dutf-8&aq%3Dt&rls%3Dorg.mozilla:en-US:official&client%3Dfirefox-a#q%3Drecurring%2Bconcept%2Bdrift&rls%3Dorg.mozilla:en-US:official&spell%3D1][lots of papers]] on recurring concept drift (like regime learning)
-***** [[file:c:/Users/sotterson/OneDrive/shareHW/DTU/doc/energy.bib::Gama14conceptDrftSurvey][Gama et al. 2014]] survey concept drift
-***** see: [[Trend Copulas]]
-***** Use [[Local Transfer Entropy & Differential Entropy]] to notice model change?
-***** see also: [[Transfer Learning]]
+      [[Concept Drift]] detection would help in ie. recognizing that a new test or train point was not in previous
+      training data. This would be a way to learn and store regimes.
 
-***** also see [[State Change Alarm Criteria]]
+******* Gaussian process can warn when unfamiliar point in training data
+********* [[file:energy.bib::Kocijan03caseCompNeuralGaussProc][Kocijan et al. 2003: Gaussian]] (also require less train data so fast)
+********* [[file:energy.bib::Tancret99CompNeuralGaussProcAlloy][Tancret et al. 1999: Comparison Gaussian]]
+********* [[file:energy.bib::Wang06compGausProcNeuralForecast][Wang et al. 2006: Comparing Gaussian Processes]]
+******* [[https://www.google.com/search?q%3Dknn%2Bwith%2Bconcept%2Bdrift&ie%3Dutf-8&oe%3Dutf-8&aq%3Dt&rls%3Dorg.mozilla:en-US:official&client%3Dfirefox-a#q%3Drecurring%2Bconcept%2Bdrift&rls%3Dorg.mozilla:en-US:official&spell%3D1][lots of papers]] on recurring concept drift (like regime learning)
+******* [[file:c:/Users/sotterson/OneDrive/shareHW/DTU/doc/energy.bib::Gama14conceptDrftSurvey][Gama et al. 2014]] survey concept drift
+******* see: [[Trend Copulas]]
+******* Use [[Local Transfer Entropy & Differential Entropy]] to notice model change?
+******* see also: [[Transfer Learning]]
+
+******* also see [[State Change Alarm Criteria]]
 
 *** <<Fault Detection>>
 ***** DONE [[cite:Leahy16windTurbFaultMachLrn][Leahy et al. 2016: Diagnosing]] wind turbine faults: diagnosis and list of.  Looks pretty useful
@@ -11692,6 +11722,7 @@ Erika
 ***** also [[Trend Copulas]]
 ***** also [[Novelty Detection]]
 ***** also [[Streamwise processing]]
+***** also [[PV System Diagnostics]]
 *** <<Fault Prediction>>
 ***** [[cite:Premraj17coOccrAlarmsWindTurb][Premraj & Wigbers 2017: Discovering co-occur alarms wind turbine analytics]]
 *** <<State Change Alarm Criteria>>
@@ -12143,7 +12174,6 @@ optimization to be a generalization of linear programming.
 *** [[file:energy.bib::Jensen17euDatSimRE][Jensen & Pinson 2017: RE Europe European Sim Reanalysis (IRPWIND WP82.3)]]
 *** also [[Data Sets for Technology Adoption]]
 * Papers
-*** TODO To read
 *** [[http://www.atmos.washington.edu/~justin/documents/][Cliff Mass Papers]] (maproom paper may be best)
 ***** Calibrated Probabilistic Forecasting... Gneiting, Larson ...
 ***** [[ftp://ftp.sas.com/pub/neural/FAQ.html][Neural Forecasting FAQ]]

@@ -2855,7 +2855,7 @@ sistent parameter estimates. This method, widely used in econometrics and rarely
 used elsewhere, is conceptually difficult and easily misused.
 We provide a lengthy expository treatment that defines an instrumental variable
 and explains how the instrumental variables method works in a simple setting.},
-  comment   = {Instrumental variables are a way of removing confounding due to correlated regression errors.  They don't necessarily improve upon OLS regression prediction accuracy (they might reduce "efficiency," the accuracy you get vs. # of samples) but it removes bias in the estimate of the linear causal effect of regression input variable on y.  It seems like Graphical Models do the same thing but better: they can be nonlinear, and are inherently probabilistic.
+  comment   = {Instrumental variables are a way of removing confounding due to correlated regression errors.  They don't necessarily improve upon OLS regression prediction accuracy (they might reduce "efficiency," the accuracy you get vs. # of samples) but they remove bias in the estimate of the linear causal effect of a regression input variable on y.  It seems like Graphical Models do the same thing but better: they can be nonlinear, and are inherently probabilistic.
 
 Anyway, if you stick to linear and LSQ, this could be useful for ModernWindABS, where root causes are being detected from linear functions (at least in Dienst16AnomOffshrWnd)
 
@@ -2868,11 +2868,11 @@ But if the goal is to estimate the linear effect of x on y, OLS gives a biased r
 In order to improve the estimate of  the impact of x, you need to model the other variables that affect y and are correlated with x.  These are generally unknown, but their effect can be approximating by finding other variables that are both correlated with the x and uncorrelated with the error.  These are the instrumental variables.
 
 OTHER DEFINITIONS
-* exogenous variable: seems to mean something that is being assesses in isolation
+* exogenous variable: seems to mean something that is being assessed in isolation
   - e.g.  predictor variable the effect of which on the prediction output is being measured.
    - on p. 40, it's defined as the regression in puts that aren't correlated with the regression error, u
 * endogenous variable: a thing you're not measuring that effects the system; a confounder, I think.
-   - on p. 40, it's defined as variabels that are correlated with u (not suitable for use as instruments)
+   - on p. 40, it's defined as variables that are correlated with u (not suitable for use as instruments)
 * instrumental variable: a variable indended to reduce to bias caused by endogenous variables
 * Wald Estimator: a regression done with a binary instrument.  also called the grouping estimator.  I guess it factors out categories.
 * just-identifed: have exactly as many instrumental variables as have endogenous variables
@@ -3683,6 +3683,33 @@ Referenced by: Leahy16windTurbFaultMachLrn},
   doi       = {10.1080/02664769823188},
   file      = {Taylor98cmbinFrcstQuants.pdf:Taylor98cmbinFrcstQuants.pdf:PDF},
   publisher = {Taylor \& Francis},
+}
+
+@InProceedings{Meyers19pvDgrdAnlysisNoPhysMdl,
+  author    = {Bennet Meyers and Michael Deceglie and Chris Deline, and Dirk Jordan},
+  title     = {Signal Processing on PV Time-Series Data: Robust Degradation Analysis without Physical Models},
+  booktitle = {{IEEE} Photovoltaic Specialists Conference (PSVC 46)},
+  year      = {2019},
+  address   = {Chicago, IL},
+  month     = jun,
+  abstract  = {A novel unsupervised machine learning approach
+for analyzing time-series data is applied to the topic of pho-
+tovoltaic (PV) system degradation rate estimation, sometimes
+referred to as energy-yield degradation analysis. This approach
+only requires a measured power signal as an input—no irra-
+diance data, temperature data, or system configuration infor-
+mation. We present results on a data set that was previously
+analyzed and presented by NREL using RdTools, validating the
+accuracy of the new approach and showing increased robustness
+to data anomalies while reducing the data requirements to carry
+out the analysis.
+Index Terms—photovoltaic systems, distributed power gener-
+ation, computer aided analysis, data analysis, statistical learning.},
+  comment   = {Estimation of PV degradation rates.  From Patrick Keelin
+
+Has both paper and slides},
+  file      = {Paper:Meyers19pvDgrdAnlysisNoPhysMdl.pdf:PDF;Slides:Meyers19pvDgrdAnlysisNoPhysMdl_slides.pdf:PDF},
+  url       = {https://www.ieee-pvsc.org/ePVSC/},
 }
 
 @Book{Orwig12EconEvalSTwindPowFrcstERCOT,
@@ -8412,6 +8439,20 @@ Variable selection.},
   timestamp = {2013.10.22},
 }
 
+@Article{Tasche16quantifWOadjst,
+  author      = {Dirk Tasche},
+  title       = {Does quantification without adjustments work?},
+  abstract    = {Classification is the task of predicting the class labels of objects based on the observation of their features. In contrast, quantification has been defined as the task of determining the prevalences of the different sorts of class labels in a target dataset. The simplest approach to quantification is Classify & Count where a classifier is optimised for classification on a training set and applied to the target dataset for the prediction of class labels. In the case of binary quantification, the number of predicted positive labels is then used as an estimate of the prevalence of the positive class in the target dataset. Since the performance of Classify & Count for quantification is known to be inferior its results typically are subject to adjustments. However, some researchers recently have suggested that Classify & Count might actually work without adjustments if it is based on a classifer that was specifically trained for quantification. We discuss the theoretical foundation for this claim and explore its potential and limitations with a numerical example based on the binormal model with equal variances. In order to identify an optimal quantifier in the binormal setting, we introduce the concept of local Bayes optimality. As a side remark, we present a complete proof of a theorem by Ye et al. (2012).},
+  comment     = {Very relevant to WattPlan Grid.  Predicting the number of true labels in a population could be done by predicting individual labels and summing ("Classify & Count") but this is known to be inaccurate (I think) especially if there is a dataset shift.  The results can be improved with adjustments, but one cited paper says that's not necessary.  This paper suggests that the applicatations where adjustments don't deliver better accuracy are rare.},
+  date        = {2016-02-28},
+  eprint      = {http://arxiv.org/abs/1602.08780v2},
+  eprintclass = {stat.ML},
+  eprinttype  = {arXiv},
+  file        = {:Tasche16quantifWOadjst.pdf:PDF},
+  keywords    = {stat.ML, cs.LG, math.ST, stat.TH, 62C10},
+  url         = {https://arxiv.org/abs/1602.08780},
+}
+
 @Article{Aghabozorgi15tsClustDecRvw,
   author   = {Saeed Aghabozorgi and Ali Seyed Shirkhorshidi and Teh Ying Wah},
   title    = {Time-series clustering – A decade review},
@@ -9735,6 +9776,34 @@ Keywords: * data streams; * dynamic regression; * partial least squares; * varia
   file      = {McWilliams10sprsPLSonlnVarSel.pdf:McWilliams10sprsPLSonlnVarSel.pdf:PDF},
   owner     = {scot},
   timestamp = {2010.09.27},
+}
+
+@InProceedings{Kull14datasetDriftPttrn,
+  author    = {Kull, Meelis and Flach, Peter},
+  title     = {Patterns of dataset shift},
+  booktitle = {First International Workshop on Learning over Multiple Contexts (LMCE) at ECML-PKDD},
+  year      = {2014},
+  abstract  = {Dataset shift is a frequent cause of failure of a predictor. A model
+which performs well in several contexts can give bad predictions in other con-
+texts where the data are shifted compared to the training context. Earlier work
+has revealed many different causes of shift systematised by Storkey [11] and
+three important types of effects of shift on probability distributions systematised
+by Moreno-Torres et al. [8]: covariate shift (distribution shift in attributes), prior
+probability shift (shift in labels) and concept shift (shift in the relationship be-
+tween attributes and labels). However, many causes lead to effects not covered
+by these three types, and hence are called ‘other types of shift’ by Moreno-Torres
+et al. [8]. We propose a formal notation for the effects of shift using graphical
+models. We identify 12 patterns of shift (6 of them novel), which cover the ef-
+fects of all 6 causes described by Storkey [11]. Furthermore, these patterns can
+be combined to describe effects of multiple or more complex reasons of shift.
+We see three avenues of work benefitting from our formalism. First, reviewing
+shift-adaptive methods regarding their applicability range could be done in our
+notation. Second, identifying patterns of shift in a practical task might aid in find-
+ing an existing method to solve the task. Finally, our novel patterns and pattern
+combinations suggest niches for new shift-adaptive methods.},
+  comment   = {The many ways that training data can shift away from test data, breaking ML algorithms.  Here, they're enumerated and explained as graphical models.  Seems like a good paper to read so that can anticipate problems in Wattplan Grid.},
+  file      = {:Kull14datasetDriftPttrn.pdf:PDF},
+  url       = {http://users.dsic.upv.es/~flip/LMCE2014/Papers/lmce2014_submission_10.pdf},
 }
 
 @Article{Wan16WindSpdDAfrcstDeepFeatLrn,
@@ -31270,6 +31339,30 @@ Still, this is the paper he recommended as the closest thing to automatic machin
   timestamp = {2009.02.23},
 }
 
+@Article{Gonzalez17rvwQuantifLrn,
+  author     = {Gonz\'{a}lez, Pablo and Casta\~{n}o, Alberto and Chawla, Nitesh V. and Coz, Juan Jos{\'e} Del},
+  title      = {A Review on Quantification Learning},
+  journal    = {ACM Comput. Surv.},
+  year       = {2017},
+  volume     = {50},
+  number     = {5},
+  pages      = {74:1--74:40},
+  month      = sep,
+  issn       = {0360-0300},
+  abstract   = {The task of quantification consists in providing an aggregate estimation (e.g., the class distribution in a classification problem) for unseen test sets, applying a model that is trained using a training set with a different data distribution. Several real-world applications demand this kind of method that does not require predictions for individual examples and just focuses on obtaining accurate estimates at an aggregate level. During the past few years, several quantification methods have been proposed from different perspectives and with different goals. This article presents a unified review of the main approaches with the aim of serving as an introductory tutorial for newcomers in the field.},
+  acmid      = {3117807},
+  address    = {New York, NY, USA},
+  articleno  = {74},
+  comment    = {Hyper-relevant to WattPlan Grid per-consumer logistic regression.  Predicting and aggregate of some population which is predicted at the individual level using some ML model.  But the ML model was trained on a dataset with different properties than now.  This is about how to handle that, and it apparently involves not predicting the individuals.},
+  doi        = {10.1145/3117807},
+  file       = {:Gonzalez17rvwQuantifLrn.pdf:PDF},
+  issue_date = {November 2017},
+  keywords   = {Class distribution estimation, prevalence estimation, quantification},
+  numpages   = {40},
+  publisher  = {ACM},
+  url        = {http://doi.acm.org/10.1145/3117807},
+}
+
 @Article{Tadeuchi07quickOnlineFeatSel,
   author    = {Tadeuchi, Y. and Oshima, R. and Nishida, K. and Yamauchi, K. and Omori, T.},
   title     = {Quick online feature selection method for regression - A feature selection method inspired by human behavior},
@@ -39864,6 +39957,39 @@ Multitask intro in Caruana97multiTaskLearninng},
   url       = {https://doi.org/10.1145/3178876.3186050},
 }
 
+@InProceedings{Rabanser19empDatSetShiftDet,
+  author    = {Stephan Rabanser and Stephan Günnemann and Zachary C. Lipton},
+  title     = {Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift},
+  booktitle = {ICLR Workshop on Debugging Machine Learning Models},
+  year      = {2019},
+  abstract  = {We might hope that when faced with unexpected
+inputs, well-designed software systems would fire
+off warnings. Machine learning (ML) systems,
+however, which depend strongly on properties of
+their inputs (e.g. the i.i.d. assumption), tend to
+fail silently. This paper explores the problem of
+building ML systems that fail loudly, investigating
+methods for detecting dataset shift and identify-
+ing exemplars that most typify the shift. We focus
+on several datasets and various perturbations to
+both covariates and label distributions with vary-
+ing magnitudes and fractions of data affected. In-
+terestingly, we show that while classifier-based
+methods designed to explicitly discriminate be-
+tween source and target domains perform well in
+high-data settings, they perform poorly in low-
+data settings. Moreover, across the dataset shifts
+that we explore, a two-sample-testing-based ap-
+proach using pre-trained classifiers for dimension-
+ality reduction performs best.},
+  comment   = {Ways of detecting when the data your ML algorithm was trained on no matches what you're testing on.
+
+Extended Version linked to by author: https://www.kdd.in.tum.de/en/publications/
+Has Python:  https://github.com/steverab/failing-loudly},
+  file      = {Extended version of ICLR paper:Rabanser19empDatSetShiftDet_extended.pdf:PDF;ICLR paper:Rabanser19empDatSetShiftDet_ICLR.pdf:PDF},
+  url       = {https://arxiv.org/abs/1810.11953},
+}
+
 @Article{Peduzzi96numEVvarLogRgrssn,
   author   = {Peter Peduzzi and John Concato and Elizabeth Kemper and Theodore R. Holford and Alvan R. Feinstein},
   title    = {A simulation study of the number of events per variable in logistic regression analysis},
@@ -40273,6 +40399,29 @@ Also, Axel's subsampling bootstrap algorithm is suspect. He sorta did what I did
   file      = {Pellet07parCorrCausal.pdf:Pellet07parCorrCausal.pdf:PDF},
   owner     = {sotterson},
   timestamp = {2009.03.06},
+}
+
+@InProceedings{Meyers18statClearSkyFit,
+  author    = {Bennet Meyers and Michaelangelo Tabone and Emre Can Kara},
+  title     = {Statistical Clear Sky Fitting Algorithm},
+  booktitle = {World Conference on Photovoltaic Energy Conversion (WCPEC-7)},
+  year      = {2018},
+  address   = {WAIKOLOA, HAWAII},
+  month     = jun,
+  abstract  = {We present an algorithm that estimates a clear sky
+performance signal from the measured power of a PV system.
+The algorithm uses only observed power output, and assumes no
+knowledge of weather, irradiance data, or system configuration
+metadata. This is a novel approach to understanding the clear
+sky behavior of an installed PV system, that does not rely on
+traditional atmospheric and geometric modeling techniques.
+Index Terms—photovoltaic systems, performance analysis,
+clear sky, data analysis, data-driven modeling, generalized low
+rank models, singular value decomposition, signal processing,
+convex optimization},
+  comment   = {Related to solaranywhere calibration.  From Patrick},
+  file      = {:Meyers18statClearSkyFit.pdf:PDF},
+  url       = {http://www.ieee-pvsc.org/WCPEC-7/},
 }
 
 @Article{Victor02binlessInfo,
@@ -46434,24 +46583,23 @@ Also 1000's of individual reservoirs, although I don't understand what "aggregat
 }
 
 @Article{Hodges60poissonAprxPoissonBin,
-  author        = {Hodges, Joseph L and Le Cam, Lucien},
-  title         = {The Poisson approximation to the Poisson binomial distribution},
-  journal       = {The Annals of Mathematical Statistics},
-  year          = {1960},
-  volume        = {31},
-  number        = {3},
-  pages         = {737--740},
-  __markedentry = {[scott:6]},
-  comment       = {The sum of Bernoulli (1,0) variables with different probablitiies has, if they are independent, an approximate Poisson distribution with mean=lambda=SUM(p_i), where p_i is each variable's probability of success, and lambda is the mean of the  Poisson distribution. (even without this paper, you can also calculate the expected value simply from the sum of independent variables.  See my OneNote page (Expected number of adoptions across population per year). 
+  author    = {Hodges, Joseph L and Le Cam, Lucien},
+  title     = {The Poisson approximation to the Poisson binomial distribution},
+  journal   = {The Annals of Mathematical Statistics},
+  year      = {1960},
+  volume    = {31},
+  number    = {3},
+  pages     = {737--740},
+  comment   = {The sum of Bernoulli (1,0) variables with different probablitiies has, if they are independent, an approximate Poisson distribution with mean=lambda=SUM(p_i), where p_i is each variable's probability of success, and lambda is the mean of the  Poisson distribution. (even without this paper, you can also calculate the expected value simply from the sum of independent variables.  See my OneNote page (Expected number of adoptions across population per year). 
 
 A coarse bound for this to be true: the probabilities are all mall, and n (# samps) is large.  Bothe are true for WattPlanGrid adoption probs.
 
 But there are much tighter bounds.  The approximate bound they finally arrive at is that the Poisson is valid, even if some of the p_i's are large, as long as their sum is small compared to SUM(p_i)
 
 Note that the Poisson is also an approximation to the Binomial distribution for large n and small p (Emory19poissonBinomCnnct)},
-  file          = {:Hodges60poissonAprxPoissonBin.pdf:PDF},
-  publisher     = {JSTOR},
-  url           = {https://www.jstor.org/stable/pdf/2237582.pdf?seq=1#page_scan_tab_contents},
+  file      = {:Hodges60poissonAprxPoissonBin.pdf:PDF},
+  publisher = {JSTOR},
+  url       = {https://www.jstor.org/stable/pdf/2237582.pdf?seq=1#page_scan_tab_contents},
 }
 
 @Article{Hoffmann07KernelPCAnovelty,
@@ -47795,6 +47943,16 @@ See also: exponential weighting vs. Holt-Winters: Taylor07frcstSprMktPriceQR},
   owner     = {scotto},
   timestamp = {2010.08.03},
   url       = {http://CRAN.R-project.org/doc/Rnews/},
+}
+
+@Misc{Meyers19toolsPVdatSci,
+  author       = {Bennet Meyers},
+  title        = {Tools for PV Data Science Applied math, statistics, and signal processing for gaining insight from PV data},
+  howpublished = {Technical Presentation Slides},
+  month        = feb,
+  year         = {2019},
+  comment      = {Related to SolarAnywhere degradation.  From Patrick.},
+  file         = {:Meyers19toolsPVdatSci.pdf:PDF},
 }
 
 @Conference{Milligan03statWindPowModels,
