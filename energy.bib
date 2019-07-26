@@ -13811,6 +13811,19 @@ Graph search
   timestamp = {2010.07.30},
 }
 
+@TechReport{Kubiniec19solarSatelliteTuneGrndTR,
+  author      = {Alex Kubiniec and Julie Chard and Patrick Keelin and Richard Perez},
+  title       = {Site-Specific Solar Resource Assessment: SolarAnywhere Satellite Data tuned to GroundWork Data},
+  institution = {Clean Power Research},
+  year        = {2019},
+  abstract    = {GroundWork Renewables, Inc. and Clean Power Research are pleased to provide this resource assessment for the 
+Athos solar monitoring station (SMS), in Imperial County, CA. This resource assessment reports overall quality of 
+the ground-based measurements, and pairs the ground-based irradiance measurements with historical satellite 
+data. Tuning of the historical data to the ground-based data results in a Typical Global Horizontal Irradiance Year 
+(TGY) dataset with reduced overall uncertainty relative to ground-based or satellite measurements alone. },
+  comment     = {One of 3 papers describing CPR's solar assessment tuning.  Sent by Patrick.},
+}
+
 @InProceedings{Choo12HeteroDatFuseMDS,
   author       = {Choo, Jaegul and Bohn, Shawn and Nakamura, Grant and White, Amanda M and Park, Haesun},
   title        = {Heterogeneous Data Fusion via Space Alignment Using Nonmetric Multidimensional Scaling.},
@@ -13865,6 +13878,21 @@ interesting visualization examples using space alignment.},
   owner        = {sotterson},
   timestamp    = {2014.04.04},
   url          = {http://dl.acm.org/citation.cfm?id=1553485},
+}
+
+@InProceedings{Alfi16uncertSatteliteGrnd,
+  author        = {J. {Alfi} and A. {Kubiniec} and G. {Mani} and J. {Christopherson} and Y. {He} and J. {Bosch}},
+  title         = {Importance of input data and uncertainty associated with tuning satellite to ground solar irradiation},
+  booktitle     = {Proc. IEEE 43rd Photovoltaic Specialists Conf. (PVSC)},
+  year          = {2016},
+  pages         = {0301--0305},
+  month         = jun,
+  __markedentry = {[Scott:1]},
+  abstract      = {High quality satellite solar irradiation data is used throughout the solar industry to perform energy estimates. The uncertainty of the raw satellite data has been shown to be low. Ground data is often used to correct satellite data but determining the uncertainty of the final dataset could be challenging since the traditional statistical uncertainty and error calculation methods have proven to be unrepresentative. In this paper the limitations of traditional statistical methods are explored along with alternative approaches to calculate a more representative uncertainty value for a long term dataset resulting from ground corrected satellite data.},
+  comment       = {One of 3 papers describing CPR's solar assessment tuning.  Sent by Patrick.},
+  doi           = {10.1109/PVSC.2016.7749598},
+  file          = {:Alfi16uncertSatteliteGrnd.pdf:PDF},
+  keywords      = {solar power satellites, solar power stations, statistical analysis, sunlight, solar industry, energy estimation, raw satellite data uncertainty, statistical uncertainty method, error calculation method, ground corrected satellite solar irradiation data, satellite tuning, Uncertainty, Tuning, Standards, Satellites, Meteorology, Correlation, Rocks},
 }
 
 @InProceedings{Tran03knnDensClust,
@@ -30961,10 +30989,60 @@ predictors from these models can, in fact, be decreasing as the model complexity
 the risk achieved using non-interpolating models. The double descent risk curve is demonstrated for a
 broad range of models, including neural networks and random forests, and a mechanism for producing
 this behavior is posited.},
-  comment  = {How modern machine learning techniques get zero error on train, yet generalize well on new data.
+  comment  = {How modern machine learning techniques get zero error on train, yet generalize well on new data.  Method is to way "over train"!  Also, nice plots
 
-Also: Wyner17adaboostRandFrstInterp},
+Old school ML
+1. complex models e.g with number of parameters >= number of training points, will memorize ("interpolate"  in this paper) the training data unless heavily regularized
+2. Interpolating the training data is bad because you will get bad performance on unseen test data
+
+New school ML
+* Anddrew Ng's talk said that it was regularization of super-complex deep networks that allowed good out of sample performance (Ng16nutsBoltsDeepLrn).  
+* But there's more to it that that: Interpolation is actually good (double descent risk curve in first figure):
+  - You actually want even MORE complexity thant is needed to Interpolate
+  - just enough complexity to interpolate is a worst case, but the test error drops as you go further than that
+  - you may get lower test error than you got in the Old School "sweet spot" between a too simple model, and the model just complex enough to interpolate
+* interpolation threshold: the minimum number of model parameters at which the training data is memorized
+   - LESSON of this paper: now keep making the model even more complex, and you may get lower error on test data
+   - how far to go is not clear to me, but maybe you can again do CV on a chunk of the training data?
+
+Why over-parameterized, super complex models work
+* Occam's rule: simplest thing that fits the data is the best (references to a couple ML papers that say this in math)
+* complex function classes contain functions with smaller norm that perfectly fit the data
+* as you increase complexity, you decrease the fucntion norm (I think, or this is possible somehow, I don't understand this, actually)
+
+Examples
+* Random Fourier Features Neural nets
+   - N random complex exponential projections of input vector (each called a "feature")
+   - prediction is a linear weighting of these features
+   - weight training
+      -- the resulting function is the one that interpolates the training data w/ minimal functional norm
+      -- I don't know how they do that -- some kinda ridge?  Maybe RFF references would explain?
+   - can approximate a reproducing kernel Hilber Space (RHKS), like used by SVM
+   - was originally used instead of kernels b/c if have a large # of training points, the model is still small, unlike a kernel which increases w/ npts * npts
+   - Figure 2 shows the error peak at the interpolation threshold, and how the error decreases when get way more complex than that
+* 2 layer NN, trained w/ SGD
+   - SGD seems to be an example of a common NN training approach producing small norm functions: Refs [14, 16] say this, it seems  
+   - Figure 3 clearly shows the double descent curve, w/ an error peak at the interpolation threshold, where npts == nParams, exactly
+   - on MNIST classifiation problem, which as only 4K points
+* Random Forests
+   - Figure 4 shows the interpolation point on MNIST (10K points), w/ the following MSE drop afterwards
+   - this is also true of L2 boosted trees (so works for XGBOOST?)
+
+Why has nobody noticed this before?
+1. classical work was done on linear settings -- not complex enough
+2. classical work was in regularization, which PREVENTS interpolation, so you'd never see the double convergence curve
+3. RFF models originally approximated kernels when there were too many points to make a kernel
+    -- they did this to reduce computation
+    -- making the model super complex is the opposite of what they were thinking
+4. the interpolation peak is hard to see for NNs, especially when regularized 
+    (Figure 9 of Appendix C is an example where they worked hard to make it visible)
+5. NN training was typicall stopped by an early stopping critereon, which hid the benefits of super-training a super-complex model
+
+Nice example plots in Appendices for many different algorithms (could put in talk).
+
+Also: Wyner17adaboostRandFrstInterp has more plots for decision trees, and a slightly different argument},
   file     = {:Belkin18modernMachLrnBiasVar.pdf:PDF},
+  url      = {https://arxiv.org/abs/1812.11118},
 }
 
 @Article{Yang14knnClustPowCurv,
@@ -33820,6 +33898,25 @@ on the quality of the underlying wind power forecast.},
   keywords  = {power generation protection, wind power plantscload management, cload protection, clocal weather measurements, cwind generation, dynamic line rating protection, voltage 132 kV, wind farm connections},
   owner     = {sotterson},
   timestamp = {2009.04.09},
+}
+
+@InProceedings{Kankiewicz14solarUncertRsrcTune,
+  author        = {Kankiewicz, Adam and Kirkland, Washington and Dise, John and Wu, Elynn and Perez, Richard},
+  title         = {Solar 2014: Reducing solar project uncertainty with an optimized resource assessment tuning methodology},
+  booktitle     = {Proc. ASES Annu. Conf.},
+  year          = {2014},
+  pages         = {1--6},
+  __markedentry = {[Scott:1]},
+  abstract      = {This paper describes procedures suitable for the optimal 
+combination of ground-based and satellite-based 
+irradiance data to reduce the overall uncertainty of the 
+solar resource assessment. It presents a case study 
+depicting the application of these approaches, and 
+illustrates the benefits of proper solar resource tuning 
+methods to ensure the production of a robust solar 
+resource dataset.},
+  comment       = {One of 3 papers describing CPR's solar assessment tuning.  Sent by Patrick.},
+  file          = {:Kankiewicz14solarUncertRsrcTune.pdf:PDF},
 }
 
 @Article{Huang04realtimeMarket,

@@ -12567,6 +12567,7 @@ optimization to be a generalization of linear programming.
     07/15/19 [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining ADABOOST and Random forest Interp]]
     07/16/19 [[file:energy.bib::Hodges60poissonAprxPoissonBin][Hodges & Le 1960: Poisson Poisson: Sum Bernoullis is ~ Poisson]] 
     07/22/19 [[file:energy.bib::Emory19poissonBinomCnnct][Emory 2019: Connection Between Poisson Binomial Distributions]]
+    07/26/19 [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
