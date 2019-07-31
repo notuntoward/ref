@@ -313,6 +313,11 @@
     individuals with the same /characteristics/
 
 *** [[http://en.wikipedia.org/wiki/Panel_data][time series]]: apparently this often means "1D time series"
+*** Inductive bias: is more or less assumptions and model choice 
+    From [[https://www.evernote.com/l/AA3EA8mpY51HtIgu_xhOuiWK22jPlgM1Ww4/][here]]:
+
+    "Inductive bias is the set of assumptions a learner uses to predict results given inputs it has not yet encountered." 
+
 *** [[http://en.wikipedia.org/wiki/Total_variation_denoising][total variation]]: summed absolute first difference: measures how much a function changes
 *** [[http://www.sosmath.com/calculus/diff/der11/der11.html][mean value theorem]]: the derivative at a point is the slope between some L/R nghbr pair
 
@@ -3685,14 +3690,7 @@ Hope that helps,
 ******* [[File:energy.bib::yang09featselmlprand][Yang et al. 2009: Feature Selection Mlp Neural Network]]
 ********* maybe nicer than mrmr i used in my thesis ([[cite:peng05featSelMutInfo][Peng et al. 2005: MI feat sel: mRmR]])
 ******* nice tutorials on linear interactions: [[http://www.r-bloggers.com/r-tutorial-series-regression-with-interaction-variables/][here]] and [[http://math.uprm.edu/~wrolke/esma3102/discretepredict.htm][here]], and [[http://rtutorialseries.blogspot.com/2010/01/r-tutorial-series-basic-hierarchical.html][selecting them with anova]].
-******* <<Random Forest feature selection>>
-********* RF featsel situated in broader featsel context: [[file:energy.bib::Saeys07reviewFeatSelBioInf][Saeys et al. 2007 feat sel review]]
-********* Random forests are good for high dim: [[file:energy.bib::strobl09rcrspartforest][Strobl et al. 2009]] (tutorial)
-********* RFs are more stable: [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feat Selection Algorithms]]
-********* Random KNN more stable, better than Random Forest: [[file:energy.bib::Li11randKNNfeatSelVsRandFrst][Li et al. 2011: Random KNN Random Forests]]
-********* used for boosted QR: [[file:energy.bib::Fenske12strctAddQRthesis][Fenske 2012: Structured additive QR]]
-********* Wind power feature selection, prob forecast: [[file:energy.bib::Fugon08dataMineFrcst][Fugon et al. 2008: Data]]
-********* Wind Power Ramp rates (SVM better than RF): [[file:energy.bib::Zheng09rampDataMine][Zheng & Kusiak 2009: Prediction Wind Farm]]
+******* [[Random Forest feature selection]]
 ******* [[File:energy.bib::sales11parmutinfoest][Sales & Romualdi 2011]] Parmigene mut info est.
 ******* [[File:energy.bib::hering07modelshorttermwindpred][hering 2007: Models For Short]] (pre ordering of features)
 ******* [[file:energy.bib::Jursa07windPowVarSelParticle][Jursa 2007: Variable]] selection for wind power forecasting
@@ -3922,14 +3920,17 @@ Hope that helps,
 *** <<Simple Decision Trees>>
 ***** [[file:energy.bib::Sontag12introMLclass][Sontag 2012: Introduction To Machine Learning (Lecture 11, Decision Trees)]]
 ***** R package: [[https://cran.r-project.org/web/packages/FFTrees/vignettes/guide.html][FFTrees: Fast-and-frugal decision trees]]
-*** <<Random Forests>>
+*** TODO <<Random Forests>>
 
     TODO: copy all Rand Forest papers to here
 
 ***** Random Forest Books and Long Reports
 ******* [[file:energy.bib::Hastie09elemStatLrnBook][Hastie et al. 2009: Elements Statistical Learning]] 
+***** TODO Tutorials on Random Forests
+******* TODO [[file:energy.bib::Biau16randFrstGuideTour][Biau & Scornet 2016 Random Forest Guided Tour]]
+******* [[file:energy.bib::Arlot16commentsRndFrstGuidTour][Arlot & Genuer 2016: comments on Biau & Scornet 2016 Rand Forest Guided]]
 ***** [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining ADABOOST and Random forest Interp]]
-***** TODO [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
+***** [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
 ***** TODO [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
 ***** [[file:energy.bib::Li11randKNNfeatSelVsRandFrst][Li et al. 2011: Random KNN Random Forests]] (more stable than plain RFs)
 ***** Trees have difficulties with
@@ -3956,14 +3957,22 @@ Hope that helps,
 ********* [[file:energy.bib::Girard10trajEvalWind][Girard & Pinson 2010: Evaluation App Wind]]: wind speed from NWP speed/dir ensemble
 ******* Solar Adoption: [[file:energy.bib::Yu18deepSolarDB][Yu et al. 2018: DeepSolar]]
 ***** [[Random Forest Ensemble Selection]]
-***** [[Random Forest feature selection]]
 ***** [[Isolation Forest Anomaly Detection]] (a random forest type)
-***** <<Random Forest Probabilistic Regression>>
-******* [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
+***** <<Random Forest feature selection>>
+********* RF featsel situated in broader featsel context: [[file:energy.bib::Saeys07reviewFeatSelBioInf][Saeys et al. 2007 feat sel review]]
+********* Random forests are good for high dim: [[file:energy.bib::strobl09rcrspartforest][Strobl et al. 2009]] (tutorial)
+********* RFs are more stable: [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feat Selection Algorithms]]
+********* Random KNN more stable, better than Random Forest: [[file:energy.bib::Li11randKNNfeatSelVsRandFrst][Li et al. 2011: Random KNN Random Forests]]
+********* used for boosted QR: [[file:energy.bib::Fenske12strctAddQRthesis][Fenske 2012: Structured additive QR]]
+********* Wind power feature selection, prob forecast: [[file:energy.bib::Fugon08dataMineFrcst][Fugon et al. 2008: Data]]
+********* Wind Power Ramp rates (SVM better than RF): [[file:energy.bib::Zheng09rampDataMine][Zheng & Kusiak 2009: Prediction Wind Farm]]
+
+***** TODO <<Random Forest Probabilistic Regression>>
+******* TODO [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
 ******* [[file:energy.bib::Gagne12machnLrnEnhanceEns][Gagne et al. 2012: Machine Storm Scale Ensemble precip frcst]] (RF ~ middle of road)
 ******* [[file:energy.bib::Fenske11idRiskBoostAddQR][Fenske et al. 2011: Risk additive QR]]: cite of random forest QR
-******* [[file:energy.bib::Buskirk15propenseLRvsRandFrst][Buskirk & Kolenikov 2015: Finding Respondents Forest propens vs. LogRr]]
-******* also [[Tree-Based Probabilistic Regression]]
+******* TODO [[file:energy.bib::Buskirk15propenseLRvsRandFrst][Buskirk & Kolenikov 2015: Finding Respondents Forest propens vs. LogRr]]
+******* TODO also [[Tree-Based Probabilistic Regression]]
 ***** [[Random Forest Changepoint Detection]]
 ***** [[Random Forest Feature Generation]]
 ***** [[Random Forests in Reinforcement Learning]]
@@ -9662,12 +9671,21 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 ******* [[cite:Adams13glblWindPowOvrEst][Adams & Keith 2013: Are wind power pot. overest]]?
 ******* An argument against this: [[http://www.evernote.com/l/AA0V1xHzL29PgYhOrFprhksnanhADGk1XAI/][Max Planck Institute Study On Large-Scale Wind Energy Misses The Mark]]
 ******* Another argument against this: [[http://www.evernote.com/l/AA0PmyllbtxLC52xav2ayetPfbCJM_0OfyI/][Wind could meet many times world's total power demand by 2030, Stanford researchers say]]
-*** Solar Meteorology
+*** Solar Meteorology and Solar Power Assessments
 ***** [[cite:Koehler17critWeathSolarPow][Koehler et al. 2017: Critical Weath for Solar Pow]]
 ***** [[cite:Newport17introSolarRad][Newport 2017: Introduction to Solar Radiation]] 
 ***** [[cite:Kleissl13SolarEnrgyFrcstBk][Kleissl 2013: Solar Energy Forecasting Resource Assessment Book]]      
-***** <<Solar power impactson climate changes and limits to solar power>>
+***** [[file:energy.bib.bak::Sengupta17bestPracticesSolarRsrc][Sengupta et al. 2017: Best Practices Handbook Solar Resource]]
+***** <<Solar Satellite Irradiance Calibration>>
+******* [[file:energy.bib::Alfi16uncertSatteliteGrnd][Alfi et al. 2016: Importance of input and uncert. Satellite Tune]] (CPR)
+******* [[file:energy.bib::Kankiewicz14solarUncertRsrcTune][Kankiewicz et al. 2014: Reduce Solar Project Uncert Tuning]] (CPR)
+******* [[file:energy.bib::Perez17grndCalDetSatIrrad][Perez et al. 2017: Detecting Calibration Drift w/ satellite]]  (CPR)
+******* [[file:energy.bib::Jaus19navSolarIradMeasIss][Jaus 2019: Navigating solar irrad meas issues]] (instrument tutorial)
+***** <<Solar power impacts on climate changes and limits to solar power>>
 ******* [[cite:Hu16solPnlClimImpct][Hu et al. 2016: Impact Solar power on climate]]
+***** PV Panel Efficiency in Low Light
+******* [[file:energy.bib::Grunow04weakLightPV][Grunow et al. 2004: Weak PV]]
+******* [[file:energy.bib::Aleo19pvPanelsLowLight][Solar 2019: All panels not equal low light]]
 *** Global Warming
 ***** [[Wind power impacts on climate change and limits to wind power]]
 ***** [[Solar power impacts on climate changes and limits to solar power]]
@@ -11005,6 +11023,7 @@ Erika
 ***** <<Tech Adoption Overviews>>
 ******* DONE [[file:energy.bib::Wikepedia19techAdoptLfCycl][Wikipedia 2019: Technology Adoption Lifecycle]]
 ******* TODO [[file:energy.bib::Comin06techDiffuse5facts][Comin et al. 2006: Five Facts Tech Diffusion]]
+******* TODO [[file:energy.bib::Comin14techDiffusMeasCausConseq][Comin & Mestieri 2014: Technology]] Diffus: Meas, Cause, Conseq
 ******* TODO [[file:energy.bib::Vanston08tipsTechAdopt][Vanston 2008: Practical Tips Tech Adopt]]
 ******* TODO [[file:energy.bib::Faria03countMdlTechAdopt][Faria et al. 2003: Count data model Tech Adopt]] (intro and count like MNSP?)
 ******* [[file:energy.bib::Rogers83diffusInnovBk][Rogers 1983: Diffusion of Innovation Book]]
@@ -11080,7 +11099,7 @@ Erika
 ******* [[file:energy.bib::Edelenbosch18socTechLrnRate][Edelenbosch et al. 2018: Interaction Tech Adopt and Learn]]
 ******* also [[Technology Learning Rates]]
 ***** <<Data Sets for Technology Adoption>>
-******* [[https://www.nber.org/hccta/][Historical Cross-Country Technology Adoption (HCCTA) Dataset]]
+******* [[https://www.nber.org/hccta/][Comin: Historical Cross-Country Technology Adoption (HCCTA) Dataset]]
 
         Is described and crunched in code here:
         [[https://github.com/datasets/registry/issues/156][datasets/registry#156 Historical Adoption of Technology]]
@@ -12568,7 +12587,17 @@ optimization to be a generalization of linear programming.
     07/16/19 [[file:energy.bib::Hodges60poissonAprxPoissonBin][Hodges & Le 1960: Poisson Poisson: Sum Bernoullis is ~ Poisson]] 
     07/22/19 [[file:energy.bib::Emory19poissonBinomCnnct][Emory 2019: Connection Between Poisson Binomial Distributions]]
     07/26/19 [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
+    07/29/19 [[file:energy.bib::Comin06techDiffuse5facts][Comin et al. 2006: Five Facts Tech Diffusion]]
+    07/30/19 [[file:energy.bib::Electropaedia19solarPower][Electropaedia 2018: Solar Power Technology Economics]]
+             [[file:energy.bib.bak::Sengupta17bestPracticesSolarRsrc][Sengupta et al. 2017: Best Practices Handbook Solar Resource]]
+             [[file:energy.bib::Grunow04weakLightPV][Grunow et al. 2004: Weak PV]]
+             [[file:energy.bib::Aleo19pvPanelsLowLight][Solar 2019: All panels not equal low light]]
+[[file:energy.bib::Alfi16uncertSatteliteGrnd][             Alfi et al. 2016: Imp. of input and uncert. Satellite Tune]] (CPR)
+             [[file:energy.bib::Kankiewicz14solarUncertRsrcTune][Kankiewicz et al. 2014: Reduce Solar Project Uncert Tuning]] (CPR) 
+             [[file:energy.bib::Perez17grndCalDetSatIrrad][Perez et al. 2017: Detecting Calibration Drift w/ satellite]] (CPR)
+             [[file:energy.bib::Jaus19navSolarIradMeasIss][Jaus 2019: Navigating solar irrad meas issues]]  (instrument tut.)
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
 
+ 

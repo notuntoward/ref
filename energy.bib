@@ -1365,6 +1365,36 @@ Spatial bass: Duggan17bassMetaSpace},
 },
 }
 
+@InProceedings{Grunow04weakLightPV,
+  author    = {Grunow, P and Lust, S and Sauter, D and Hoffmann, V and Beneking, C and Litzenburger, B and Podlowski, L},
+  title     = {Weak light performance and annual yields of PV modules and systems as a result of the basic parameter set of industrial solar cells},
+  booktitle = {19th European Photovoltaic Solar Energy Conference},
+  year      = {2004},
+  pages     = {2190--2193},
+  abstract  = { The weak light performance of multi- and mono-crystalline PV modules are known to be dependent on 
+the used cell type, but also vary from cell supplier to cell supplier using even the same cell type. It is shown, that this 
+is a result from the characteristic distribution of the parasitic resistances. This paper shows that these differences can 
+lead to 10% difference in annual energy yields of photovoltaic systems. This itself provides a major optimisation 
+opportunity. The corresponding energy yields of identical designed reference PV systems are differing in a range, 
+which is roughly of the same order as the efficiency variation for actual crystalline silicon modules found on the 
+market. This underlines the on-going need for an extension of the STC parameters to characterize the potential 
+energy yield of PV modules.  For practical use, state-of-the-art industrial cell and module testing equipment provides 
+reliable values for the parasitic resistances and currents by extracting the basic parameter set from the measured IV 
+curves at different intensity levels as well as in the dark, i.e. values for the shunt resistances, 2nd diode contributions 
+and series resistances in the cells and the European module efficiency for the modules. 
+Keywords: Multi-Crystalline, Performance, Shunts},
+  comment   = {Shows where low light drop in PV panel efficiency is, and what circuitry affects it.  Can see that nonlinearity of electrical watts vs. solar intensity starts at around 400 W/m^2.  Depends a lot upon circuitry, though.  At 200 W/m^2, see that best case efficiency loss is about 2.5%; worst case example given is about 7.5%
+
+Low light panel design can lead up to 10% difference in annual energy yields
+
+
+For schematic drawing of linearity, see Electropaedia19solarPower
+
+Can see some commercial modules in low light at:  Aleo19pvPanelsLowLight},
+  file      = {:Grunow04weakLightPV.pdf:PDF},
+  url       = {http://www.solon.com/export/sites/default/solonse.com/_downloads/global/article-pid/Grunow_et_al_Weak_Light_Performance.pdf},
+}
+
 @Article{Hansen01mdlSelMDL,
   author    = {Mark H Hansen and Bin Yu},
   title     = {Model Selection and the Principle of Minimum Description Length},
@@ -3809,7 +3839,9 @@ data},
   year     = {2018},
   month    = dec,
   abstract = {A random forest is a popular tool for estimating probabilities in machine learning classification tasks. However, the means by which this is accomplished is unprincipled: one simply counts the fraction of trees in a forest that vote for a certain class. In this paper, we forge a connection between random forests and kernel regression. This places random forest probability estimation on more sound statistical footing. As part of our investigation, we develop a model for the proximity kernel and relate it to the geometry and sparsity of the estimation problem. We also provide intuition and recommendations for tuning a random forest to improve its probability estimates.},
-  comment  = {A way to get better (class?) probabilities from a random forest.  Getting random forest probabilities by counting leaves is a good classifier but not reliable as a source of proabilities.  This paper has a method for tuning.  Seems to be RMSE of probability instead of Breir Score, but I have only skimmed the paper so far.},
+  comment  = {A way to get better (class?) probabilities from a random forest.  Getting random forest probabilities by counting leaves is a good classifier but not reliable as a source of proabilities.  This paper has a method for tuning.  Seems to be RMSE of probability instead of Breir Score, but I have only skimmed the paper so far.
+
+Recommends the tutorial in: Biau16randFrstGuideTour},
   file     = {:Olson18sensRndFrstProbKern.pdf:PDF},
   url      = {https://arxiv.org/abs/1812.05792v1},
 }
@@ -7259,6 +7291,22 @@ Keywords: solar thermal, photovoltaic systems, energy, renewable, forecast, NWP,
   owner     = {scot},
   publisher = {Multi-Science},
   timestamp = {2011.05.11},
+}
+
+@Article{Sengupta17bestPracticesSolarRsrc,
+  author   = {Sengupta, Manajit and Habte, Aron and Gueymard, Christian and Wilbert, Stefan and Renne, Dave},
+  title    = {Best Practices Handbook for the Collection and Use of Solar Resource Data for Solar Energy Applications: Second Edition},
+  year     = {2017},
+  month    = {12},
+  abstract = {As the world looks for low-carbon sources of energy, solar power stands out as the single most abundant energy resource on Earth. Harnessing this energy is the challenge for this century. Photovoltaics, solar heating and cooling, and concentrating solar power (CSP) are primary forms of energy applications using sunlight. These solar energy systems use different technologies, collect different fractions of the solar resource, and have different siting requirements and production capabilities. Reliable information about the solar resource is required for every solar energy application. This holds true for small installations on a rooftop as well as for large solar power plants; however, solar resource information is of particular interest for large installations, because they require substantial investment, sometimes exceeding 1 billion dollars in construction costs. Before such a project is undertaken, the best possible information about the quality and reliability of the fuel source must be made available. That is, project developers need reliable data about the solar resource available at specific locations, including historic trends with seasonal, daily, hourly, and (preferably) subhourly variability to predict the daily and annual performance of a proposed power plant. Without this data, an accurate financial analysis is not possible. Additionally, with the deployment of large amounts of distributed photovoltaics, there is an urgent need to integrate this source of generation to ensure the reliability and stability of the grid. Forecasting generation from the various sources will allow for larger penetrations of these generation sources because utilities and system operators can then ensure stable grid operations. Developed by the foremost experts in the field who have come together under the umbrella of the International Energy Agency's Solar Heating and Cooling Task 46, this handbook summarizes state-of-the-art information about all the above topics.},
+  comment  = {NREL's solar assessment handbook.
+
+Low light levels
+* Example shows that, in Arizona, ~20% of GHI is below 228 W/m^2.  
+* At that level, PV panel efficiency drops, is no longer linear w.r.t. GHI 
+   (Electropaedia19solarPower, Aleo19pvPanelsLowLight, Grunow04weakLightPV)},
+  doi      = {10.2172/1411856},
+  place    = {United States},
 }
 
 @TechReport{Crabtree14srvyCmrclCondMonWindTurb,
@@ -13881,18 +13929,61 @@ interesting visualization examples using space alignment.},
 }
 
 @InProceedings{Alfi16uncertSatteliteGrnd,
-  author        = {J. {Alfi} and A. {Kubiniec} and G. {Mani} and J. {Christopherson} and Y. {He} and J. {Bosch}},
-  title         = {Importance of input data and uncertainty associated with tuning satellite to ground solar irradiation},
-  booktitle     = {Proc. IEEE 43rd Photovoltaic Specialists Conf. (PVSC)},
-  year          = {2016},
-  pages         = {0301--0305},
-  month         = jun,
-  __markedentry = {[Scott:1]},
-  abstract      = {High quality satellite solar irradiation data is used throughout the solar industry to perform energy estimates. The uncertainty of the raw satellite data has been shown to be low. Ground data is often used to correct satellite data but determining the uncertainty of the final dataset could be challenging since the traditional statistical uncertainty and error calculation methods have proven to be unrepresentative. In this paper the limitations of traditional statistical methods are explored along with alternative approaches to calculate a more representative uncertainty value for a long term dataset resulting from ground corrected satellite data.},
-  comment       = {One of 3 papers describing CPR's solar assessment tuning.  Sent by Patrick.},
-  doi           = {10.1109/PVSC.2016.7749598},
-  file          = {:Alfi16uncertSatteliteGrnd.pdf:PDF},
-  keywords      = {solar power satellites, solar power stations, statistical analysis, sunlight, solar industry, energy estimation, raw satellite data uncertainty, statistical uncertainty method, error calculation method, ground corrected satellite solar irradiation data, satellite tuning, Uncertainty, Tuning, Standards, Satellites, Meteorology, Correlation, Rocks},
+  author    = {J. {Alfi} and A. {Kubiniec} and G. {Mani} and J. {Christopherson} and Y. {He} and J. {Bosch}},
+  title     = {Importance of input data and uncertainty associated with tuning satellite to ground solar irradiation},
+  booktitle = {Proc. IEEE 43rd Photovoltaic Specialists Conf. (PVSC)},
+  year      = {2016},
+  pages     = {0301--0305},
+  month     = jun,
+  abstract  = {High quality satellite solar irradiation data is used throughout the solar industry to perform energy estimates. The uncertainty of the raw satellite data has been shown to be low. Ground data is often used to correct satellite data but determining the uncertainty of the final dataset could be challenging since the traditional statistical uncertainty and error calculation methods have proven to be unrepresentative. In this paper the limitations of traditional statistical methods are explored along with alternative approaches to calculate a more representative uncertainty value for a long term dataset resulting from ground corrected satellite data.},
+  comment   = {
+CPR method (which Patrick later said is not actually used)
+* Inputs
+  - SURFRAD and ISIS groun dstations
+  - 10+ years
+  - good sensors, geographically dispersed
+* Data Preprocessing
+  - decimation: 1min --> 1hr
+  - remove data that's bad (doesn't agree w/ solar anywhere, in some sense)
+  - remove night
+* Sliding window calibration
+  - follows Kankiewicz14solarUncertRsrcTune
+  - a binned bias and histogram (I think) correction
+  - cloudy periods removed (I think they could stay, if a nonlinear calibration was used)
+* Accuracy
+  - I'm not clear here on in the test and what the training data was.  May be test on train?
+  - 11-12 months of ground data was the max length needed for something
+
+New Uncertainty Calculation (Proposed methodology)
+(seems to be a bootstrap estimate of P50 (median).  Should be subsampled bootstrap.  
+It is also unclear what the test and train data were)
+* "data pairs" chose at random (input/output pairs?)  
+   - If so, temporal autocorr will be bad
+   - should have done, at least, subsampling bootstrap
+* smaller sample sizes are given "linear weighting" whatever that means
+* groud corrections done on random samples
+  - correction done with OLS
+* correction done on "long term satellite data," which is not defined
+* long term mean of annual P50 (median) was generated.
+* do this 50K times or until convergence
+* Error is diff from annual PV across "entire dataset"
+  - is expresses as relative standard error, RSE
+  - is standard deviation / mean
+
+Addition of unknown instrument error
+* is estimated by EDF Renewable Energy (company)
+* assumes normal distribution and independence
+* normal distribution might be OK but could have used a normal copula instead
+* normal error variance is sum of ground and satellite error variance
+* which is not correct since a ground instrument error will produce a satellite error, since the ground value is used to correct the satellite.
+
+This was one of 3 papers describing CPR's solar assessment tuning.  Sent by Patrick, who later said he's not sure if CPR actually does this.
+
+
+},
+  doi       = {10.1109/PVSC.2016.7749598},
+  file      = {:Alfi16uncertSatteliteGrnd.pdf:PDF},
+  keywords  = {solar power satellites, solar power stations, statistical analysis, sunlight, solar industry, energy estimation, raw satellite data uncertainty, statistical uncertainty method, error calculation method, ground corrected satellite solar irradiation data, satellite tuning, Uncertainty, Tuning, Standards, Satellites, Meteorology, Correlation, Rocks},
 }
 
 @InProceedings{Tran03knnDensClust,
@@ -15924,6 +16015,48 @@ Such copulas are also implemented with vine copulas (time-varying? w/ SDE or not
   owner     = {sotterson},
   timestamp = {2014.02.07},
   url       = {https://www.researchgate.net/profile/Glenis_Crane/publications/},
+}
+
+@InProceedings{Perez17grndCalDetSatIrrad,
+  author        = {R. {Perez} and J. {Schlemmer} and A. {Kankiewicz} and J. {Dise} and A. {Tadese} and T. {Hoff}},
+  title         = {Detecting Calibration Drift at Ground Truth Stations A Demonstration of Satellite Irradiance Models' Accuracy},
+  booktitle     = {Proc. IEEE 44th Photovoltaic Specialist Conf. (PVSC)},
+  year          = {2017},
+  pages         = {1104--1109},
+  month         = jun,
+  __markedentry = {[Scott:6]},
+  abstract      = {In this article we show how a state-of-the-art satellite 
+irradiance model – SolarAnywhere – is capable of undetected 
+calibration issues at a trusted reference ground truth irradiance 
+measurement station. This evidence suggests that the best satellite 
+models have now achieved a degree of accuracy and versatility 
+that makes them an acceptable, if not a preferred choice, for solar 
+energy engineering applications ranging from long-term site 
+characterization and system monitoring.  
+Index Terms —solar resource, satellite, modeling, irradiance, 
+benchmarking. },
+  comment       = {CPR SolarAnywhere Satellite irradiance meas catches ground station instrument calibration drift.
+
+How ground station calibration drift was detected
+* year 2015 solaranywhere GHI was higher than ground station; OK fo 2013, though
+* apparently, GHI, DNI and DIS can be separate instruments but calculated GHI is often used instead (corroborated by Jaus19navSolarIradMeasIss).
+* the bias detected in thispaper must have been in the direct GHI sensor, since they later use DNI and DIF to compute GHI and check against it.
+
+Two lines of evidence pointed to a ground sensor error
+1.  If SA was underestimating turbidity (so too-high GHI), then DNI s/b even higher relative to the ground instrument, since DNI is direct radiation, which would have been scattered less.  But DNI matched ground station.
+2. Indepdendent DIF data and DNI ground meas were used to calculate GHI; this GHI matched SA.
+
+Conclusions
+1. SA is accurate enough to ID calibration errors in one of US's most trusted ground instruments
+2. It's accepted that indirect GHI meas (from DNI and DIF) is better than pyranometric GHI for ground truthing and climate.  Yet pyranometric might be more accurate b/c less calibrational uncertainty.  YET WASN'T and error in a direct measuring GHI pyroanometer what was detected here?  This statement seems illogical (See Jaus19navSolarIradMeasIss for a drawing of a pyrometer).
+3. SA can be used to sort out which ground instrument is bad -- it's a trusty common denominator
+4. satellite-tuning is only as good as the base station instruments used to do the tuning.  Need to cal. and maintain the ground stuff.
+
+},
+  doi           = {10.1109/PVSC.2017.8366469},
+  file          = {:Perez17grndCalDetSatIrrad.pdf:PDF},
+  keywords      = {atmospheric radiation, atmospheric techniques, calibration, solar power, satellite irradiance models, state-of-the-art satellite irradiance model, undetected calibration issues, trusted reference ground truth, measurement station, satellite models, calibration drift, ground truth stations, SolarAnywhere, Indexes, solar resource, satellite, modeling, irradiance, benchmarking},
+  url           = {https://www.cleanpower.com/wp-content/uploads/manuscript-85-perez-format-ok.pdf},
 }
 
 @Article{Killick12OptDetChngPtsLinCompMatlab,
@@ -25090,6 +25223,31 @@ Sum(k=1:Q/K)  Q/K*nWeightsAndBiases = nWeightsAndBiases * K*Q/K = the same thing
   publisher = {Hindawi Limited},
 }
 
+@Article{Jaus19navSolarIradMeasIss,
+  author   = {Joachim Jaus},
+  title    = {Navigating solar irradiance measurement issues},
+  journal  = {Power and Energy Solutions},
+  year     = {2019},
+  abstract = {Solar irradiance measurements provide valuable information 
+to select a site for the construction of a solar power plant, to 
+calculate the efficiency of the plant operation, or to determine 
+possibilities for improvements of the power plant setup. But 
+only precise measurements can do the job well. Dr Jaus 
+explores how to circumnavigate the potential pitfalls.},
+  comment  = {Describes the hardware and measurment practices needed for solar plant siting and operation.
+
+I was confused by the logic in Perez17grndCalDetSatIrrad regarding GHI: I used this paper to try to the understand the reasoning.   The relevant things I learned here were:
+
+1. DNI is the easier to measure than DIF or GHI.  
+2. The reason is that DIF and GHI must measure radiation fro the entire field, and so are vulnerable to glass dome and detector reflectance.  DNI has only a 2.5 degree range, and so has less problem w/ cosine reflection angle repsonse.
+3. Yet global irrad is the thing you want b/c that's what PV needs
+4. And yet, DNI measurements are especially susceptible to soiling by dust 
+
+This all argues for using calculated GHI, supposing DIF or DNI is easier to measure (I think you need only 2 of three to get all three, see Kankiewicz14solarUncertRsrcTune).},
+  file     = {:Jaus19navSolarIradMeasIss.pdf:PDF},
+  url      = {http://www.pes.eu.com/solar/navigating-solar-irradiance-measurement-issues/5029/},
+}
+
 @Article{Elshurafa18lrnCrvPVbos,
   author   = {Amro M. Elshurafa and Shahad R. Albardi and Simona Bigerna and Carlo Andrea Bollino},
   title    = {Estimating the learning curve of solar PV balance–of–system for over 20 countries: Implications and policy recommendations},
@@ -31045,6 +31203,26 @@ Also: Wyner17adaboostRandFrstInterp has more plots for decision trees, and a sli
   url      = {https://arxiv.org/abs/1812.11118},
 }
 
+@Article{Biau16randFrstGuideTour,
+  author   = {Biau, G{\'e}rard and Scornet, Erwan},
+  title    = {A random forest guided tour},
+  journal  = {TEST},
+  year     = {2016},
+  volume   = {25},
+  number   = {2},
+  pages    = {197--227},
+  month    = {Jun},
+  issn     = {1863-8260},
+  abstract = {The random forest algorithm, proposed by L. Breiman in 2001, has been extremely successful as a general-purpose classification and regression method. The approach, which combines several randomized decision trees and aggregates their predictions by averaging, has shown excellent performance in settings where the number of variables is much larger than the number of observations. Moreover, it is versatile enough to be applied to large-scale problems, is easily adapted to various ad hoc learning tasks, and returns measures of variable importance. The present article reviews the most recent theoretical and methodological developments for random forests. Emphasis is placed on the mathematical forces driving the algorithm, with special attention given to the selection of parameters, the resampling mechanism, and variable importance measures. This review is intended to provide non-experts easy access to the main ideas.},
+  comment  = {Tutorial recommended by Olson18sensRndFrstProbKern
+
+Espansion of this paper's ideas: Arlot16commentsRndFrstGuidTour},
+  day      = {01},
+  doi      = {10.1007/s11749-016-0481-7},
+  file     = {:Biau16randFrstGuideTour.pdf:PDF},
+  url      = {https://doi.org/10.1007/s11749-016-0481-7},
+}
+
 @Article{Yang14knnClustPowCurv,
   author    = {Yang, Hejun and Hu, Bo and Yin, Lei and Chen, Ya and Liao, Qinglong},
   title     = {Clustering-interpolation Method and Its Application to Wind Turbine Generator Curve},
@@ -31125,6 +31303,18 @@ I.5 [Pattern Recognition]: Miscellaneous},
   owner        = {sotterson},
   timestamp    = {2014.06.27},
   url          = {http://dl.acm.org/citation.cfm?id=1851501},
+}
+
+@Misc{Aleo19pvPanelsLowLight,
+  author   = {Aleo},
+  title    = {All solar panels are not equal - how low light behavior greatly impacts yields},
+  year     = {2019},
+  abstract = {The rise of the importance of solar panels energy yields has prompted the use of a new term within our industry and that you may have seen inside presentations or datasheets – “low light behavior”. In this post, we would like to address this issue to give our readership a better understanding of this phenomenon.},
+  comment  = {Shows how low level light design of commercial panels can greatly affect annual yields.  Nice graphs.
+
+See also Grunow04weakLightPV},
+  file     = {:Aleo19pvPanelsLowLight.pdf:PDF},
+  url      = {https://www.aleo-solar.com/all-solar-panels-are-not-equal/},
 }
 
 @TechReport{Jorgensen08aesoFR,
@@ -32939,6 +33129,28 @@ TOPICS
   timestamp = {2009.01.29},
 }
 
+@InCollection{Comin14techDiffusMeasCausConseq,
+  author    = {Comin, Diego and Mestieri, Marti},
+  title     = {Technology diffusion: Measurement, causes, and consequences},
+  booktitle = {Handbook of economic growth},
+  publisher = {Elsevier},
+  year      = {2014},
+  volume    = {2},
+  pages     = {565--622},
+  abstract  = {This chapter discusses different approaches pursued to explore three broad questions
+related to technology diffusion: what general patterns characterize the diffusion of tech-
+nologies, and how have they changed over time; what are the key drivers of technology,
+and what are the macroeconomic consequences of technology. We prioritize in our dis-
+cussion unified approaches to these three questions that are based on direct measures of
+technology.},
+  comment   = {
+
+
+Go back and finish Comin06techDiffuse5facts, which also introduces the DB, if something is unclear or undefined here.},
+  file      = {:Comin14techDiffusMeasCausConseq.pdf:PDF},
+  url       = {https://www.sciencedirect.com/science/article/pii/B9780444535405000021},
+}
+
 @InBook{Ramsay09registrAlignFDA,
   chapter     = {Chapter 8},
   pages       = {117--130},
@@ -33901,13 +34113,12 @@ on the quality of the underlying wind power forecast.},
 }
 
 @InProceedings{Kankiewicz14solarUncertRsrcTune,
-  author        = {Kankiewicz, Adam and Kirkland, Washington and Dise, John and Wu, Elynn and Perez, Richard},
-  title         = {Solar 2014: Reducing solar project uncertainty with an optimized resource assessment tuning methodology},
-  booktitle     = {Proc. ASES Annu. Conf.},
-  year          = {2014},
-  pages         = {1--6},
-  __markedentry = {[Scott:1]},
-  abstract      = {This paper describes procedures suitable for the optimal 
+  author    = {Kankiewicz, Adam and Kirkland, Washington and Dise, John and Wu, Elynn and Perez, Richard},
+  title     = {Solar 2014: Reducing solar project uncertainty with an optimized resource assessment tuning methodology},
+  booktitle = {Proc. ASES Annu. Conf.},
+  year      = {2014},
+  pages     = {1--6},
+  abstract  = {This paper describes procedures suitable for the optimal 
 combination of ground-based and satellite-based 
 irradiance data to reduce the overall uncertainty of the 
 solar resource assessment. It presents a case study 
@@ -33915,8 +34126,39 @@ depicting the application of these approaches, and
 illustrates the benefits of proper solar resource tuning 
 methods to ensure the production of a robust solar 
 resource dataset.},
-  comment       = {One of 3 papers describing CPR's solar assessment tuning.  Sent by Patrick.},
-  file          = {:Kankiewicz14solarUncertRsrcTune.pdf:PDF},
+  comment   = {The tuning method used in Alfi16uncertSatteliteGrnd, which is what CPR SolarAnywhere uses in July 2019. 
+
+* Satellite irradiance methods are more accurate than using ground measurements when the distance from ground instrument to site is > 25km.
+* Mean Bias Error is -4.63\% over 12 months; -4.18\% during clear sky
+* use only clear sky ground measurements to correct satellite measurements
+  - only calculate when ground meas are within 20\% of solarAnywhere "clear sky GHI data"  
+    - not clear what that means
+  - must be careful to not overcorrect in cloudy areas
+* somehow KSI goodness of fit is used to correct satellite GHI to match ground: both distribution and bias
+* seasonal sliding window subtracts and sinusoidal bias
+  - apparently has only 1 harmonic i.e. it's a pure sin
+  - is sliding window binning something?  Not explained
+* fixed GHI is used to reestimate DHI and DNI 
+   - method preserving GHI/DHI ratio doesn't work
+   - some other method (not explained) does work
+* wind and temp are also corrected
+  - NDFD and NARR (some kind of temp meas) are corrected w/ ground meas
+  - seems like they just bias it -- hard to tell from graph if you could do better
+
+POSSIBLE IMPROVEMENTS
+* use modern nonlinear technique: gaussian process, NN, ....
+* time of year has at least 2 harmonics (look again at Pritchard wind quantile persistence model)
+* same thing for wind and temp corrections
+* not clear what correction is applied during cloudy weather, or if it works linearly
+* P90 comes from quantile regression; either sampling QR determined distributions and summing, or using them directly, if actually care about short time horizions?
+* corrections should look for trends in remaining error (so can see Satellite or instrument degradation)
+
+
+
+
+One of 3 papers describing CPR's solar assessment tuning.  Sent by Patrick.
+},
+  file      = {:Kankiewicz14solarUncertRsrcTune.pdf:PDF},
 }
 
 @Article{Huang04realtimeMarket,
@@ -34833,6 +35075,9 @@ per capita. (iii) The rankings of countries by level of technology adoption are 
 across technologies. (iv) Within a typical technology, there has been convergence at an average rate
 of 4 percent per year. (v) The speed of convergence for technologies developed since 1925 has been
 three times higher than the speed of convergence for technologies developed before 1925.},
+  comment  = {Intro to big tech adoption database, also has some conclusions about the general tech adopt shapes.  Interesting bits about how they are normalized, and isoloated from confounders like GDP.  Also that "intensive" technologies don't follow a Bass-like S-shaped curve.
+
+But this paper is wordy yet confusing, and has the graphs annoyingly at the end.  I stopped reading it and moved on to Comin14techDiffusMeasCausConseq, which will have the latest stuff, is hopefully more fully developed, and since it's equally lengthy, I bet has much of the same info as is in this paper.},
   file     = {:Comin06techDiffuse5facts.pdf:PDF},
   groups   = {Scott:6},
   url      = {https://www.nber.org/papers/w11928},
@@ -44478,6 +44723,20 @@ Possibly related slides in Kelman12stochOptColRiv},
   url         = {http://www.risoe.dtu.dk/Knowledge_base/publications/Reports/ris-r-1410.aspx?sc_lang=en},
 }
 
+@Article{Arlot16commentsRndFrstGuidTour,
+  author    = {Arlot, Sylvain and Genuer, Robin},
+  title     = {Comments on: A random forest guided tour},
+  journal   = {Test},
+  year      = {2016},
+  volume    = {25},
+  number    = {2},
+  pages     = {228--238},
+  comment   = {Expansion of ideas in Biau16randFrstGuideTour},
+  file      = {:Arlot16commentsRndFrstGuidTour.pdf:PDF},
+  publisher = {Springer},
+  url       = {https://hal.archives-ouvertes.fr/hal-01297557/document},
+}
+
 @InProceedings{Armstrong07sagLidarNonContactTemp,
   author    = {Oisin Michael Armstrong},
   title     = {Transmission line conductor sag measurement with lidar survey and non-contact temperature determination},
@@ -45583,6 +45842,26 @@ Or, alternatively, use the covariance matrix to cluster farms into "groups with 
   file         = {Eisenbrand09optMethFin_CrsNotes.pdf:Eisenbrand09optMethFin_CrsNotes.pdf:PDF},
   groups       = {Read},
   url          = {http://disopt.epfl.ch/page-10555-en.html},
+}
+
+@Misc{Electropaedia19solarPower,
+  author       = {Electropaedia},
+  title        = {Solar Power (Technology and Economics)},
+  howpublished = {Web Page},
+  year         = {2018},
+  comment      = {Overview of Solar energy with lots of definitions, numbers, standards and facts.  A good source of graphs.
+
+Facts I've used from it
+* Temperature has a significant impact on PV efficiency: reduces about 0.5% for every C degree temp increased
+* PV power output vs. irradiance curve is almost linear above a low irradiance threshold.  
+   - The slope increases with decreasing module temperature.
+   - so high power saturation doesn't happen like it does with wind power
+   - nonlinearity starts at around 400 W/m^2 intensity (Grunow04weakLightPV)
+* PV module efficiency test standards
+   - STC:  irrad=1000 W/m^2, T=25 C, Air Mass = 1.5
+   - NOCT: irrad=800 W/m^2, T=20C, wind=1 m/s, rear side of panel is open (NOCT is considered more realistic)},
+  file         = {:Electropaedia19solarPower.pdf:PDF},
+  url          = {https://www.mpoweruk.com/solar_power.htm},
 }
 
 @Misc{Elidan12copulaMachLrnTut,
