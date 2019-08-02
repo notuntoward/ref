@@ -10310,18 +10310,34 @@ Belloni13progEvalHiDim says featsel (reduction too?) is hard when also doing inf
   url      = {http://dx.doi.org/10.1002/we.1887},
 }
 
-@Misc{Altman09mdlDevAdeqLect11,
+@Misc{Altman09glmNonlinMdlCourseNts,
   author       = {Rachel MacKay Altman},
-  title        = {Lecture 11: Model Adequacy, Deviance},
-  howpublished = {Course Notes Statistics 402: Generalized Linear and Nonlinear Modelling},
+  title        = {Generalized Linear and Nonlinear Modelling},
+  howpublished = {Course Notes: Statistics 402, Simon Fraser University, Canada},
   year         = {2009},
   abstract     = {Deviance is an important idea associated with a fitted GLM. It can be used to test the fit of
 the link function and linear predictor to the data, or to test the significance of a particular
 predictor variable (or variables) in the model. The following discussion applies to GLMs
 where the random component is in the 1-parameter exponential family (e.g., Poisson and
 binomial).},
-  comment      = {Defines deviance performance metric for a generalized linear model.},
-  file         = {:Altman09mdlDevAdeqLect11.pdf:PDF},
+  comment      = {Statistics Class Course notes.  Pretty good.
+
+Lecture 11: Deviance performance metric for a generalized linear model.
+
+Lecture 32: Survival and Hazard Functions
+* Definitions 
+   - survival function: probabilty of an event not having happened yet (1 - the cdf)
+   - hazard function: probability of an event happening in some time range
+      - it's stated that this isn't a probablity but it is, as Grace-Martin19hazardFunc makes clear
+      - so see Grace-Martin19hazardFunc for a more intuitive but less mathy definition.
+   - baseline hazard function (below)
+   - proportional hazards model
+      - can build one with a GLM
+      - here, it's a Weibull distribution with fixed lambda, and theta varying as a linear function of input variables, x
+      - baseline hazard: hazard predicted when all of x are zero
+      - maybe there are other kinds of proportional hazard models
+* How to determine if an exponential is a good fit using a Weibull model.},
+  file         = {:Altman09glmNonlinMdlCourseNts.pdf:PDF},
   url          = {http://people.stat.sfu.ca/~raltman/stat402.html},
 }
 
@@ -12951,7 +12967,9 @@ subject areas, but the latter is often used to denote a wider range of activitie
 simply judging skill or value see, for example, Altman and Royston (2000).
 
 ...},
-  comment   = {Verification book, has cost functions e.g. economic value of skill.  New addition came out in 2012.},
+  comment   = {Verification book, has cost functions e.g. economic value of skill.  New addition came out in 2012.  Is ther pdf version here just the 2013 version?
+
+Older version: Jolliffe03FrcstVerificationBook},
   file      = {Jolliffe12frcstVerif.pdf:Jolliffe12frcstVerif.pdf:PDF},
   owner     = {sotterson},
   publisher = {John Wiley \& Sons},
@@ -13870,6 +13888,7 @@ the ground-based measurements, and pairs the ground-based irradiance measurement
 data. Tuning of the historical data to the ground-based data results in a Typical Global Horizontal Irradiance Year 
 (TGY) dataset with reduced overall uncertainty relative to ground-based or satellite measurements alone. },
   comment     = {One of 3 papers describing CPR's solar assessment tuning.  Sent by Patrick.},
+  file        = {:Kubiniec19solarSatelliteTuneGrndTR.pdf:PDF},
 }
 
 @InProceedings{Choo12HeteroDatFuseMDS,
@@ -13963,7 +13982,8 @@ It is also unclear what the test and train data were)
 * smaller sample sizes are given "linear weighting" whatever that means
 * groud corrections done on random samples
   - correction done with OLS
-* correction done on "long term satellite data," which is not defined
+  - so have they abandoned Kankiewicz14solarUncertRsrcTune ?
+* correction done on "long term satellite data," which is not defined, but I suppose this means "backwards in time"
 * long term mean of annual P50 (median) was generated.
 * do this 50K times or until convergence
 * Error is diff from annual PV across "entire dataset"
@@ -16024,7 +16044,7 @@ Such copulas are also implemented with vine copulas (time-varying? w/ SDE or not
   year          = {2017},
   pages         = {1104--1109},
   month         = jun,
-  __markedentry = {[Scott:6]},
+  __markedentry = {[Scott:]},
   abstract      = {In this article we show how a state-of-the-art satellite 
 irradiance model – SolarAnywhere – is capable of undetected 
 calibration issues at a trusted reference ground truth irradiance 
@@ -20896,6 +20916,8 @@ mean and median.
 
 Key Words: Confidence intervals; Local linear regression; Model building; Model check-
 ing; Smoothing.},
+  comment   = {
+Newer (?) version here: Jolliffe12frcstVerif},
   file      = {:Altman92kernKNNrgrssn.pdf:PDF},
   publisher = {Taylor \& Francis},
   url       = {https://www.tandfonline.com/doi/abs/10.1080/00031305.1992.10475879},
@@ -21178,6 +21200,22 @@ reserve, quantile regression, secondary control, tertiary control },
   owner     = {sotterson},
   timestamp = {2015.07.11},
   url       = {http://arxiv.org/abs/1302.5125},
+}
+
+@Misc{Grace-Martin19hazardFunc,
+  author       = {Karen Grace-Martin},
+  title        = {What Is a Hazard Function in Survival Analysis?},
+  howpublished = {The Analysis Factor: Making Statistics Make Sense (web page)},
+  year         = {2019},
+  abstract     = {One of the key concepts in Survival Analysis is the Hazard Function.
+
+But like a lot of concepts in Survival Analysis, the concept of “hazard” is similar, but not exactly the same as, its meaning in everyday English. Since it’s so important, though, let’s take a look.},
+  comment      = {A hazard function is the probability of an event occuring in some time range, more or less, the number of events in the range divided by the number of candidates in the range.  Example given is PhD graduation, where the number of candidates changes over time (some drop out, some graduate,...).  For some reason Altman09glmNonlinMdlCourseNts says a hazard function is not a probability, but here, it's clear that it is.
+
+If the hazard function is in continuous time, you have to integrate in order to get the probability in some range.
+},
+  file         = {:Grace-Martin19hazardFunc.pdf:PDF},
+  url          = {https://www.theanalysisfactor.com/what-is-a-hazard-function-in-survival-analysis/},
 }
 
 @Article{Minku10ensDiversDrift,
@@ -25682,7 +25720,7 @@ This book describes the basic facts about univariate and multivariate stable dis
 
 Stable distributions have been proposed as a model for many types of physical and economic systems. There are several reasons for using a stable distribution to describe a system. The first is where there are solid theoretical reasons for expecting a non-Gaussian stable model, e.g. reflection off a rotating mirror yielding a Cauchy distribution, hitting times for a Brownian motion yielding a L'evy distribution, the gravitational field of stars yielding the Holtsmark distribution; see Feller (1971) and Uchaikin and Zolotarev (1999) for these and other examples. The second reason is the Generalized Central Limit Theorem which states that the only possible non-trivial limit of normalized sums of independent identically distributed terms is stable. It is argued that some observed quantities are the sum of many small terms - the price of a stock, the noise in a communication system, etc. and hence a stable model should be used to describe such systems. The third argument for
 modeling with stable distributions is empirical: many large data sets exhibit heavy tails and skewness. The strong empirical evidence for these features combined with the Generalized Central Limit Theorem is used by many to justify the use of stable models. Examples in finance and economics are given in Mandelbrot (1963), Fama (1965), Samuelson (1967), Roll (1970), Embrechts et al. (1997), Rachev and Mittnik (2000), McCulloch (1996); in communication systems by Stuck and Kleiner (1974), Zolotarev (1986), and Nikias and Shao (1995). Such data sets are poorly described by a Gaussian model, but can be well described by a stable distribution. Several recent monographs focus on stable models: Zolotarev (1986), Uchaikin and Zolotarev (1999), Christoph and Wolf (1992), Samorodnitsky and Taqqu (1994), Janicki and Weron (1994), and Nikias and Shao (1995). The related topic of modeling with the extremes of data and heavy tailed distributions is discussed in Embrechts et al. (1997), Adler et al. (1998), and in Reiss and Thomas (2001).},
-  comment   = {Introductory chapter to stable distributions (stable means the weighted sum of independent distributions has the same distribution shape but is shifted (and scaled?). Gaussians are one type of stable distribution but the focus here is on non-Gaussian, and heavy tailed (which I think means "extreme valued"). Axel used these to compute extreme values for some project, and he, I and Dominik had a meeting about them.
+  comment   = {Introductory chapter to stable distributions (stable means the weighted sum of independent distributions has the same distribution shape but is shifted (and scaled?). Gaussians are one type of stable distribution but the focus here is on non-Gaussian, and heavy tailed (which I think means "extreme valued"). Axel used these to compute extreme values for some project, and he, I and Dominik had a meeting about them.  I think he used this to get extreme values from bounded quantile regression cdfs.  Author of this book also provides code.
 
 * stable distributions are unbounded but so are Gaussians and people use them for bounded variables b/c they work well enough:
 https://books.google.de/books?id=sv8jGSVFra8C&pg=PA112&lpg=PA112&dq=bounded+stable+distribution&source=bl&ots=Yvk3pyE1Tx&sig=1B3Ee29QQrBft7cyT3yBgygDxJg&hl=en&sa=X&redir_esc=y\#v=onepage&q=bounded%20stable%20distribution&f=false
@@ -25692,6 +25730,8 @@ http://math.bu.edu/people/mveillet/html/alphastablepub.html\#14
 http://math.bu.edu/people/mveillet/html/alphastablepub.html\#7 (useful if want to convolve).
 * another kind of distribution that can be estimated from quantiles: Keelin11QuantParamDist
 * alpha-stable dist. applications PhD Thesis, including regression: Frain09alphaDistAppsThesis
+
+* TOC lists hazard functions as an application but that's in the unpublished Chapter 2 of this book.
 
 * chapter has a bunch of formulas for sums of stable distributions. Maybe good for ReWP?
 * truncated stable distribution here: Menn09smthTruncStblDist
@@ -27057,7 +27097,7 @@ Dong17resPVdeployFrcst
   pages    = {55 - 63},
   issn     = {0960-0779},
   note     = {Challenges in Data Science},
-  abstract = {The Bass model, which is an effective forecasting tool for innovation diffusion based on large collections of empirical data, assumes an homogeneous diffusion process. We introduce a network structure into this model and we investigate numerically the dynamics in the case of networks with link density P(k)=c/kγ, where k=1,…,N. The resulting curve of the total adoptions in time is qualitatively similar to the homogeneous Bass curve corresponding to a case with the same average number of connections. The peak of the adoptions, however, tends to occur earlier, particularly when γ and N are large (i.e., when there are few hubs with a large maximum number of connections). Most interestingly, the adoption curve of the hubs anticipates the total adoption curve in a predictable way, with peak times which can be, for instance when N=100, between 10% and 60% of the total adoptions peak. This may allow to monitor the hubs for forecasting purposes. We also consider the case of networks with assortative and disassortative correlations and a case of inhomogeneous advertising where the publicity terms are “targeted” on the hubs while maintaining their total cost constant.},
+  abstract = {The Bass model, which is an effective forecasting tool for innovation diffusion based on large collections of empirical data, assumes an homogeneous diffusion process. We introduce a network structure into this model and we investigate numerically the dynamics in the case of networks with link density P(k)=c/kγ, where k=1,…,N. The resulting curve of the total adoptions in time is qualitatively similar to the homogeneous Bass curve corresponding to a case with the same average number of connections. The peak of the adoptions, however, tends to occur earlier, particularly when γ and N are large (i.e., when there are few hubs with a large maximum number of connections). Most interestingly, the adoption curve of the hubs anticipates the total adoption curve in a predictable way, with peak times which can be, for instance when N=100, between 10\% and 60\% of the total adoptions peak. This may allow to monitor the hubs for forecasting purposes. We also consider the case of networks with assortative and disassortative correlations and a case of inhomogeneous advertising where the publicity terms are “targeted” on the hubs while maintaining their total cost constant.},
   doi      = {https://doi.org/10.1016/j.chaos.2016.02.039},
   keywords = {Innovation diffusion, Bass equation, scale-free networks, correlated networks},
   url      = {http://www.sciencedirect.com/science/article/pii/S0960077916300686},
@@ -34159,6 +34199,7 @@ POSSIBLE IMPROVEMENTS
 One of 3 papers describing CPR's solar assessment tuning.  Sent by Patrick.
 },
   file      = {:Kankiewicz14solarUncertRsrcTune.pdf:PDF},
+  url       = {https://www.cleanpower.com/resource/reducing-uncertainty-with-resource-assessment-tuning/},
 }
 
 @Article{Huang04realtimeMarket,
@@ -42423,6 +42464,21 @@ material.},
   timestamp = {2010.12.10},
 }
 
+@Misc{Essoe14oddsProbRisk,
+  author       = {Joey KaYee Essoe},
+  title        = {Odds Are: On the difference between odds, probability, and risk ratio},
+  howpublished = {Psychology in Action Blog},
+  month        = feb,
+  year         = {2014},
+  abstract     = {What does it mean to say “smokers are X times more likely to get lung cancer than non-smokers?” What about when the weather channel says, “there is a 10% chance of rain?” The odds of 1 to 10 of winning?
+
+These words are often used in casual conversations as somewhat interchangeable, and can be rather confusing. I remember being very excited to learn about them for the first time, so hopefully you will find this as interesting (or at least as clarifying!) as I did!},
+  comment      = {Some definite equations for Risk, Odds and their ratios.   Somewhat more clear than other things.
+
+Also: Ranganathan15oddsVsRisk},
+  url          = {https://www.psychologyinaction.org/psychology-in-action-1/2014/02/03/odds-are-on-the-difference-between-odds-probability-and-risk-ratio},
+}
+
 @Article{Kuncheva14PCAFeatureExtraction,
   author    = {L. I. Kuncheva and W. J. Faithfull},
   title     = {{PCA} Feature Extraction for Change Detection in Multidimensional Unlabeled Data},
@@ -49164,6 +49220,28 @@ Boney16introSemiSupLadderBlog lists a couple sources for code},
   url       = {http://gbi.agrsci.dk/~shd/public/FDA2008/},
 }
 
+@Article{Ranganathan15oddsVsRisk,
+  author        = {Ranganathan, Priya and Aggarwal, Rakesh and Pramesh, CS},
+  title         = {Common pitfalls in statistical analysis: Odds versus risk},
+  journal       = {Perspectives in clinical research},
+  year          = {2015},
+  volume        = {6},
+  number        = {4},
+  pages         = {222},
+  __markedentry = {[Scott:6]},
+  comment       = {Risk: prob(event): numEvents/numPopulation                       
+Odds: prob(event1)/prob(not event1)                              
+Risk Ratio (Relative Risk): Risk(event,group1)/Risk(event,group2)
+Odds Ratio (Relative Risk): Odds(event,group1)/Odds(event,group2)
+
+Must use odds ratio when using Restrospective (Case-Control) studies 
+
+Also Essoe14oddsProbRisk},
+  file          = {:Ranganathan15oddsVsRisk.pdf:PDF},
+  publisher     = {Wolters Kluwer--Medknow Publications},
+  url           = {https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4640017/},
+}
+
 @Article{Rebours07survCtlAncSrvII,
   author    = {Rebours, Y.G. and Kirschen, D.S. and Trotignon, M. and Rossignol, S.},
   title     = {A survey of frequency and voltage control ancillary services -- Part II: Economic features},
@@ -49838,6 +49916,42 @@ Latent Dirichlet allocation
   owner     = {sotterson},
   timestamp = {2017.06.15},
   url       = {http://www.visiondummy.com/2014/04/geometric-interpretation-covariance-matrix/},
+}
+
+@Misc{StatsDirect19prospectVsRetroStudies,
+  author       = {StatsDirect},
+  title        = {Prospective vs. Retrospective Studies},
+  howpublished = {www.statsdirect.com},
+  year         = {2019},
+  comment      = {    *Prospective*: 
+    o define a group and then watch for future outcomes vs. factors
+    o less prone to bias and confounders
+    o stat. sig. requires many outcomes (big # confounders or common outcome)
+    o usually Cohort
+    o can estimate true risk vs. factors
+
+    *Retrospecive*:
+    o look backwards in time for outcomes and see what the factors were
+    o prone to bias and confounding
+    o can be cheaper
+    o usually Case-Control
+    o can't calc true risk vs. factors b/c 
+
+    _Example (I think?)_
+
+    Find people who do and don't have heart attacks.  
+
+    See how many of each ate eggs.  Calc odds ratio:
+
+    R = (# attack / # ate eggs) /(# no attack / # ate eggs)
+
+    If R==1, then eggs have no effect.  
+    If R<1 eggs eating eggs is protective; 
+    If R>1 eating eggs increases risk of heart attack
+
+},
+  file         = {:StatsDirect19prospectVsRetroStudies.pdf:PDF},
+  url          = {https://www.statsdirect.com/help/basics/prospective.htm},
 }
 
 @InBook{Steel08bayesTimeSeriesAn,

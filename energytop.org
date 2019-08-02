@@ -706,7 +706,7 @@
 
     Is linearly related to the difference between the log likelihood of a maximally complex model, _saturated model_ and the log likelhood of an optimally tuned model given a set of hyperparameters. Is often used for [[Generalized Linear Models]].
 
-    _Saturated Model_: a maximally complicated model that comes as close as possible to memorizing the training data.  I think that this can mean that the predicted value exactly equals the true value.  For GLMs, it's the model with the same distribution and link function as the model being tested but which can have the best possible mean response for each input (more or less: [[file:energy.bib::Altman09mdlDevAdeqLect11][Altman 2009: Model Adequancy, Deviance, Lect 11]])
+    _Saturated Model_: a maximally complicated model that comes as close as possible to memorizing the training data.  I think that this can mean that the predicted value exactly equals the true value.  For GLMs, it's the model with the same distribution and link function as the model being tested but which can have the best possible mean response for each input (more or less: [[file:energy.bib::Altman09glmNonlinMdlCourseNts][Altman 2009: Model Adequancy, Deviance, Lect 11]])
 
     Also: [[Forecast quality metrics]]
 
@@ -717,6 +717,77 @@
     Example: the error rate if you were given gaussian mixture samples, and make ML decisions knowing each class's mean/variance and prior probability.
 
     Use for testing overfitting e.g. in [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining (I think)]]: Know true error distribution of synthetic data.  If, on the training set, a classifier gets better than the Bayes Error, then you know you've overtrained.
+
+*** Survival and Hazard Functions
+    From: [[file:energy.bib::Altman09glmNonlinMdlCourseNts][Altman 2009: Survival and Hazard Functions, Lect 32]]
+          [[file:energy.bib::Grace-Martin19hazardFunc][Grace-Martin 2019: What Is a Hazard Function]]?
+
+    *Survival function* 
+    The probability of an event not having happended yet at time y
+
+    *Hazard function* 
+
+    The probability of an event occuring in some time range, more or less, the number of events in the range divided by the number of candidates in the range.  For example, it could be the probablilty of PhD graduation in some year, where the number of candidates changes over time (some drop out, some graduate,...).  
+
+    For some reason Altman09glmNonlinMdlCourseNts says a hazard function is not a probability, but here, it's clear that it is.
+
+    o Maybe what she means is that, for a continuous hazard function, h(t) mayb not be zero, while for a probability density, it's always true that p(t)==0?? (you have to integrate it to get a non-zero value??).
+
+    o There's a simple relationship between survival and hazard functions.
+    o a hazard function is a measure of [[Risk vs. Odds][risk]]
+      
+
+*** Proportional Hazards Model
+    From: [[file:energy.bib::Altman09glmNonlinMdlCourseNts][Altman 2009: Survival and Hazard Functions, Lect 32]]
+
+     One example is a Weibull distribution with fixed lambda, and theta varying as a linear function of input variables, *x* (it's a GLM).
+
+     o maybe there are other kinds of proportional hazard models
+     o /baseline hazard/: hazard predicted when all of *x* are zero
+     o anyway the "Proportional" part is because the hazard function is a product of the baseline hazard and some function of *x*.
+
+*** <<Risk vs. Odds>>
+    From: [[file:energy.bib::Ranganathan15oddsVsRisk][Ranganathan et al. 2015: Common Pifalls Risk vs. Odds]]
+          [[file:energy.bib::Essoe14oddsProbRisk][Essoe 2014: Odds, Probability and Risk Ratio]]
+
+    *Risk*: prob(event): numEvents/numPopulation
+    *Odds*: prob(event1)/prob(not event1)
+    *Risk Ratio (Relative Risk)*: Risk(event,group1)/Risk(event,group2)
+    *Odds Ratio (Relative Risk)*: Odds(event,group1)/Odds(event,group2)
+
+    Must use odds ratio when using Restrospective (Case-Control) studies 
+    (see [[Prospective vs. Restrospective]])
+
+*** <<Prospective vs. Restrospective>>
+    From: [[file:energy.bib::StatsDirect19prospectVsRetroStudies][StatsDirect 2019: Prospective vs. Retrospective Studies]]
+
+    *Prospective*
+    o define a group and then watch for future outcomes vs. factors
+    o less prone to bias and confounders
+    o stat. sig. requires many outcomes (big # confounders or common outcome)
+    o usually /Cohort/
+    o can estimate true risk vs. factors
+
+    *Retrospecive*
+    o look backwards in time for outcomes and see what the factors were
+    o prone to bias and confounding
+    o can be cheaper
+    o usually /Case-Control/
+    o can't calc true risk vs. factors b/c 
+
+    _Example (I think?)_
+
+    Find people who do and don't have heart attacks.  
+
+    See how many of each ate eggs.  Calc odds ratio:
+
+    R = (# attack / # ate eggs) /(# no attack / # ate eggs)
+
+    If R==1, then eggs have no effect.  
+    If R<1 eggs eating eggs is protective; 
+    If R>1 eating eggs increases risk of heart attack
+
+    Also [[Risk vs. Odds]]
 
 * Code
 *** <<Books w/ source code>>
@@ -12578,7 +12649,7 @@ optimization to be a generalization of linear programming.
     05/08/19 [[file:energy.bib::Weber16poissonExpClassNotesDS430][Weber 2016: Notes Poisson and Exponential]]
              [[file:energy.bib::Myers12memorylessExpPropCS547][Myers 2012: CS Lecture Memoryless]]
     05/14/19 [[file:energy.bib::Ohara2010noLogCountDat][O'hara & Kotze 2010: Do not log counts]]
-    06/04/19 [[file:energy.bib::Altman09mdlDevAdeqLect11][Altman 2009: Model Adequancy, Deviance, Lect 11]]
+    06/04/19 [[file:energy.bib::Altman09glmNonlinMdlCourseNts][Altman 2009: Model Adequancy, Deviance, Lect 11]]
     06/07/19 [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feature Selection Algorithms]]
     07/09/19 [[file:energy.bib::Lemaitre17imbalanced-learnPyLib][Lemaitre et al. 2017: Imbalanced Learning Python Lib]]
              [[file:energy.bib::Saabas15featSelStabilRFE][Saabas 2015: Selecting Feats Stability & RFE]]
@@ -12596,6 +12667,12 @@ optimization to be a generalization of linear programming.
              [[file:energy.bib::Kankiewicz14solarUncertRsrcTune][Kankiewicz et al. 2014: Reduce Solar Project Uncert Tuning]] (CPR) 
              [[file:energy.bib::Perez17grndCalDetSatIrrad][Perez et al. 2017: Detecting Calibration Drift w/ satellite]] (CPR)
              [[file:energy.bib::Jaus19navSolarIradMeasIss][Jaus 2019: Navigating solar irrad meas issues]]  (instrument tut.)
+   08/01/19  [[file:energy.bib::Altman09glmNonlinMdlCourseNts][Altman 2009: Survival and Hazard Functions, Lect 32]]
+             [[file:energy.bib::Grace-Martin19hazardFunc][Grace-Martin 2019: What Is a Hazard Function]]?
+             [[file:energy.bib::StatsDirect19prospectVsRetroStudies][StatsDirect 2019: Prospective vs. Retrospective Studies]]
+             [[file:energy.bib::Ranganathan15oddsVsRisk][Ranganathan et al. 2015: Common Pifalls Risk vs. Odds]]
+             [[file:energy.bib::Essoe14oddsProbRisk][Essoe 2014: Odds, Probability and Risk Ratio]]
+             
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
