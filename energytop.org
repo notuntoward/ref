@@ -11097,8 +11097,12 @@ Erika
 ******* TODO [[file:energy.bib::Comin14techDiffusMeasCausConseq][Comin & Mestieri 2014: Technology]] Diffus: Meas, Cause, Conseq
 ******* TODO [[file:energy.bib::Vanston08tipsTechAdopt][Vanston 2008: Practical Tips Tech Adopt]]
 ******* TODO [[file:energy.bib::Faria03countMdlTechAdopt][Faria et al. 2003: Count data model Tech Adopt]] (intro and count like MNSP?)
-******* [[file:energy.bib::Rogers83diffusInnovBk][Rogers 1983: Diffusion of Innovation Book]]
+******* TODO [[file:energy.bib::Deepa07reviewDiffuseNewProd][Deepa & Tellis 2007: Critical Review Marketing Diffusion]]
 ******* TODO [[file:energy.bib::Rossetti17frcstAdoptEarlyData][Rossetti et al. 2017: Forecasting Early Adopt Analysis Data]] (has data, like WPG)
+******* TODO [[file:energy.bib::Jaakkola96cmprDiffsnMdlAdopt][Jaakkola 1996: Comparison Analysis Diffusion Models]]
+
+******* [[file:energy.bib::Fruchter02frcstNewProdBass][Fruchter 2002: Forcasting Sales New Prod Adopt Bass/Bass-like]]
+******* [[file:energy.bib::Rogers83diffusInnovBk][Rogers 1983: Diffusion of Innovation Book]]
 ******* DONE [[file:energy.bib::Taherdoost18reviewTechAdopt][Taherdoost 2018 review tech accept models]]
 ******* [[https://www.pewinternet.org/topics/technology-adoption/][Technology Adoption | Pew Research Center]] (general page, lots of articles, link to datasets)
 ***** Solar adoption rates
@@ -11125,21 +11129,32 @@ Erika
 ***** Electric vehicle adoption
 ******* [[file:energy.bib::Moons15selfBrandPersEV][Moons & De 2015: Self Brand Personality Elec Cars]]
 ******* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help.
+******* TODO [[file:energy.bib::Massiani2015useOfBassEV][Massiani & Gohs 2015: Bass EVs Don't Use]]
+
 ******* TODO [[file:energy.bib::Bernards18][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
+******* [[file:energy.bib::SantaEulalia11discrChoiceBassEV][Santa et al. 2011: EV adopt Disc Choice Bass]]
+******* [[file:energy.bib::Zarwi17discChoiceAdoptDiffTranspo][Zarwi et al. 2017: EV adopt Discr Choice Bass]]
 ******* needs a [[https://www.evernote.com/l/AA2mqLTTd-ZCdLwoiE5Mc4XFTrnNGwyUV5s/]["vehicle age" feature]], I think, somehow.
 ******* [[file:energy.bib::Manceau13techDiffusnPreannc][Manceau et al. 2013: Diffusion Model Preannounced Prods (2 phase Bass)]]
 ***** <<Bass Innovation Diffusion Models>>
 ******* DONE [[file:energy.bib::Wikipedia19bassDiffus][Wikipedia 2019: Bass Diffusion Model]]
 ******* TODO [[file:energy.bib::Bass94bassWithoutDecVars][Bass et al. 1994: Why Bass Model w/o dec vars]] (with derivations. SDE?)
+******* TODO [[file:energy.bib::Massiani2015useOfBassEV][Massiani & Gohs 2015: Bass EVs Don't Use]]
+******* TODO [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]]
+******* TODO [[file:energy.bib::][Cosguner et al. 2018: Dynamic Pricing New Products Dyn Bass]]
+******* TODO [[file:energy.bib::Deepa07reviewDiffuseNewProd][Deepa & Tellis 2007: Critical Review Marketing Diffusion]]
+******* TODO [[file:energy.bib::Jaakkola96cmprDiffsnMdlAdopt][Jaakkola 1996: Comparison Analysis Diffusion Models]]
+******* [[file:energy.bib::Fruchter02frcstNewProdBass][Fruchter 2002: Forcasting Sales New Prod Adopt Bass/Bass-like]]
+******* [[file:energy.bib::SantaEulalia11discrChoiceBassEV][Santa et al. 2011: EV adopt Disc Choice Bass]]
+
+******* [[file:energy.bib::Zarwi17discChoiceAdoptDiffTranspo][Zarwi et al. 2017: EV adopt Discr Choice Bass]]
+
 ******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012: Innovation diffusion SDEs]] (could get rate of change)
 ******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012 bass SDE rate of change (interscience online)]]
-******* TODO [[file:energy.bib::][Cosguner et al. 2018: Dynamic Pricing New Products Dyn Bass]]
 ******* [[file:energy.bib::Nafidi18inhomogDiffProcBassSDE][Nafidi et al. 2018 inhomog diffuse model Bass]]
-******* [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]]
 ******* [[file:energy.bib::Manshadi16genBassNtwk][Manshadi & Misra 2016: Generalized Bass Model Networks]]
 ******* [[file:energy.bib::Bertotti16bassDiffusCorrInhomog][Bertotti et al. 2016: Bass diffus corr inhomog advert]]
 ******* [[file:energy.bib::Bertotti16innovDiffusCorrNtwk][Bertotti et al. 2016: Innovation diff corr networks]]
-******* [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]]
 ******* [[file:energy.bib::Manceau13techDiffusnPreannc][Manceau et al. 2013: Diffusion Model Preannounced Prods (2 phase Bass)]]
 ***** Logistic Regression Based Tech Adoption
 ******* [[file:energy.bib::Almeida08openTechInvoDevCntries][Almeida & Fernandes 2008: Openness Adopt Dev Countries]] 
@@ -11148,7 +11163,7 @@ Erika
 ******* TODO [[file:energy.bib::Comin10explrTechDiffus][Comin & Hobijn 2010: Exploration Technology Diffusion]] (has data)
 ***** Stochastic Tech Adoption Forecasting
 ******* TODO [[file:energy.bib::Madadi17diffFrcstBrwnSpln][Madadi et al. 2017: Diffuse Brownian spline, Small data]]
-******* [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]]
+******* TODO [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]]
 ******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012: Innovation diffusion SDEs]] (could get rate of change)
 ******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012 bass SDE rate of change (interscience online)]]
 ***** TODO <<Space/Network and Tech Adoption>>

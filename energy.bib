@@ -1346,7 +1346,7 @@ Quite relevant to Clean Power Research.},
   number   = {3},
   pages    = {203-223},
   abstract = { Over a large number of new products and technological innovations, the Bass diffusion model (Bass 1969) describes the empirical adoption curve quite well. In this study, we generalize the Bass model to include decision variables such as price and advertising. The generalized model reduces to the Bass model as a special case and explains why the Bass model works so well without including decision variables. We compare our generalized Bass model to other approaches from the literature for including decision variables into diffusion models, and our results provide both theoretical and empirical support for the generalized Bass model. We also show how our generalized Bass model can be used for product planning purposes. },
-  comment  = {The Bass Model used in Dong17resPVdeployFrcst to predict PV adoption.  Generlizes it to (I think) multivariate inputs, but then finds that they don't matter.  Also has a decent derivation.  
+  comment  = {The Bass Model used in Dong17resPVdeployFrcst to predict PV adoption.  Generalizes it to (I think) multivariate inputs, but then finds that they don't matter.  Also has a decent derivation.    Cosguner18dynPriceDynBass says it is an improvment
 
 My first impression is that the original idea was that product adoption followed an S curve.  Then the guy decided to make it a diffy Q.  But I had better check this.
 
@@ -3844,6 +3844,24 @@ data},
 Recommends the tutorial in: Biau16randFrstGuideTour},
   file     = {:Olson18sensRndFrstProbKern.pdf:PDF},
   url      = {https://arxiv.org/abs/1812.05792v1},
+}
+
+@InBook{Jaakkola96cmprDiffsnMdlAdopt,
+  pages         = {65--82},
+  title         = {Comparison and Analysis of Diffusion Models},
+  publisher     = {Springer US},
+  year          = {1996},
+  author        = {Jaakkola, Hannu},
+  editor        = {Kautz, Karlheinz and Pries-Heje, Jan},
+  address       = {Boston, MA},
+  isbn          = {978-0-387-34982-4},
+  __markedentry = {[Scott:1]},
+  abstract      = {A real diffusion process consists of a huge amount of interrelated variables. This complexity can be modelled by diffusion models building a simplified mathematical representation of the main features of the process as a time series of indicators describing the phenomenon in interest. Mathematical models are mostly used for technological forecasting purposes; forecasting is based on the best fit of the empirical data to the model formula and trend extrapolation outside the empirical period. The fit gives numeric values to the parameters of the model. Some of the models include also explanative factors --- values of parameters describe behavioral properties of the process. The paper concentrates on mathematical diffusion models. The variety of models derived from the literature is introduced and analyzed. As an application of mathemat ical approach to the diffusion the diffusion of mobile phones is discussed. The focus of this paper is to point out problems in mathematical analysis and to discuss about alternative approaches.},
+  booktitle     = {Diffusion and Adoption of Information Technology: Proceedings of the first IFIP WG 8.6 working conference on the diffusion and adoption of information technology, Oslo, Norway, October 1995},
+  comment       = {Compares many Bass-like models, doesn't like them.  Thinks they're only useful for intuition and understanding.  Might be interesting to see how they help w/ intuition and understanding.},
+  doi           = {10.1007/978-0-387-34982-4_6},
+  file          = {:Jaakkola96cmprDiffsnMdlAdopt.pdf:PDF},
+  url           = {https://doi.org/10.1007/978-0-387-34982-4_6},
 }
 
 @Article{Hill16lrgSclWindMaxPlanckMiss,
@@ -7765,6 +7783,23 @@ Keywords:
   owner     = {sotterson},
   publisher = {Wiley Online Library},
   timestamp = {2014.11.08},
+}
+
+@Article{Massiani2015useOfBassEV,
+  author   = {Jérôme Massiani and Andreas Gohs},
+  title    = {The choice of Bass model coefficients to forecast diffusion for innovative products: An empirical investigation for new automotive technologies},
+  journal  = {Research in Transportation Economics},
+  year     = {2015},
+  volume   = {50},
+  pages    = {17 - 28},
+  issn     = {0739-8859},
+  note     = {Electric Vehicles: Modelling Demand and Market Penetration},
+  abstract = {Bass diffusion models are one of the competing paradigms to forecast the diffusion of innovative products or technologies. This approach posits that diffusion patterns can be modeled through two mechanisms: Innovators adopt the new product and imitators purchase the new product when getting in contact with existing users. Crucial for the implementation of the method are the values assigned to the two parameters, usually referred to as p and q, which mathematically describe innovation and imitation mechanisms. The present paper is based on the findings of a research project about policy measures to promote the diffusion of Electric Vehicles in Germany. It investigates how practitioners could choose adequate values for the Bass model parameters to forecast new automotive technologies diffusion with a focus on Electric Vehicles. It considers parameters provided by the literature as well as ad hoc parameter estimations based on real market data for Germany. Our investigation suggests that researchers may be in trouble in electing adequate parameter values since the different eligible parameter values exhibit dramatic variations. Literature values appear discussible and widely variable while ad hoc estimates appear poorly conclusive. A serious problem is that ad-hoc estimates of the Bass p value are highly sensitive to the assumed market potential M. So for plausible values of M, p varies on a high scale. Unless more consolidation takes place in this area, or more confidence can be placed on ad hoc estimates, these findings issue a warning for the users of such approaches and on the policy recommendations that would derive from their use.},
+  comment  = {Don't use Bass for EV adoption forecasting!},
+  doi      = {https://doi.org/10.1016/j.retrec.2015.06.003},
+  file     = {:Massiani2015useOfBassEV.pdf:PDF},
+  keywords = {Bass diffusion model, Innovation, Electric vehicles},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0739885915000220},
 }
 
 @Article{Kapur12bassDiffSDEadopt,
@@ -16038,14 +16073,13 @@ Such copulas are also implemented with vine copulas (time-varying? w/ SDE or not
 }
 
 @InProceedings{Perez17grndCalDetSatIrrad,
-  author        = {R. {Perez} and J. {Schlemmer} and A. {Kankiewicz} and J. {Dise} and A. {Tadese} and T. {Hoff}},
-  title         = {Detecting Calibration Drift at Ground Truth Stations A Demonstration of Satellite Irradiance Models' Accuracy},
-  booktitle     = {Proc. IEEE 44th Photovoltaic Specialist Conf. (PVSC)},
-  year          = {2017},
-  pages         = {1104--1109},
-  month         = jun,
-  __markedentry = {[Scott:]},
-  abstract      = {In this article we show how a state-of-the-art satellite 
+  author    = {R. {Perez} and J. {Schlemmer} and A. {Kankiewicz} and J. {Dise} and A. {Tadese} and T. {Hoff}},
+  title     = {Detecting Calibration Drift at Ground Truth Stations A Demonstration of Satellite Irradiance Models' Accuracy},
+  booktitle = {Proc. IEEE 44th Photovoltaic Specialist Conf. (PVSC)},
+  year      = {2017},
+  pages     = {1104--1109},
+  month     = jun,
+  abstract  = {In this article we show how a state-of-the-art satellite 
 irradiance model – SolarAnywhere – is capable of undetected 
 calibration issues at a trusted reference ground truth irradiance 
 measurement station. This evidence suggests that the best satellite 
@@ -16055,7 +16089,7 @@ energy engineering applications ranging from long-term site
 characterization and system monitoring.  
 Index Terms —solar resource, satellite, modeling, irradiance, 
 benchmarking. },
-  comment       = {CPR SolarAnywhere Satellite irradiance meas catches ground station instrument calibration drift.
+  comment   = {CPR SolarAnywhere Satellite irradiance meas catches ground station instrument calibration drift.
 
 How ground station calibration drift was detected
 * year 2015 solaranywhere GHI was higher than ground station; OK fo 2013, though
@@ -16073,10 +16107,10 @@ Conclusions
 4. satellite-tuning is only as good as the base station instruments used to do the tuning.  Need to cal. and maintain the ground stuff.
 
 },
-  doi           = {10.1109/PVSC.2017.8366469},
-  file          = {:Perez17grndCalDetSatIrrad.pdf:PDF},
-  keywords      = {atmospheric radiation, atmospheric techniques, calibration, solar power, satellite irradiance models, state-of-the-art satellite irradiance model, undetected calibration issues, trusted reference ground truth, measurement station, satellite models, calibration drift, ground truth stations, SolarAnywhere, Indexes, solar resource, satellite, modeling, irradiance, benchmarking},
-  url           = {https://www.cleanpower.com/wp-content/uploads/manuscript-85-perez-format-ok.pdf},
+  doi       = {10.1109/PVSC.2017.8366469},
+  file      = {:Perez17grndCalDetSatIrrad.pdf:PDF},
+  keywords  = {atmospheric radiation, atmospheric techniques, calibration, solar power, satellite irradiance models, state-of-the-art satellite irradiance model, undetected calibration issues, trusted reference ground truth, measurement station, satellite models, calibration drift, ground truth stations, SolarAnywhere, Indexes, solar resource, satellite, modeling, irradiance, benchmarking},
+  url       = {https://www.cleanpower.com/wp-content/uploads/manuscript-85-perez-format-ok.pdf},
 }
 
 @Article{Killick12OptDetChngPtsLinCompMatlab,
@@ -19049,6 +19083,24 @@ Tryggvi had a 2013 price forecasting paper (Jonsson13elecPriceQR). Did it use th
   owner     = {sotterson},
   timestamp = {2015.03.12},
   url       = {http://www.sciencedirect.com/science/article/pii/S0140988309001625},
+}
+
+@Article{Zarwi17discChoiceAdoptDiffTranspo,
+  author   = {Feras El Zarwi and Akshay Vij and Joan L. Walker},
+  title    = {A discrete choice framework for modeling and forecasting the adoption and diffusion of new transportation services},
+  journal  = {Transportation Research Part C: Emerging Technologies},
+  year     = {2017},
+  volume   = {79},
+  pages    = {207 - 223},
+  issn     = {0968-090X},
+  abstract = {Major technological and infrastructural changes over the next decades, such as the introduction of autonomous vehicles, implementation of mileage-based fees, carsharing and ridesharing are expected to have a profound impact on lifestyles and travel behavior. Current travel demand models are unable to predict long-range trends in travel behavior as they do not entail a mechanism that projects membership and market share of new modes of transport (Uber, Lyft, etc.). We propose integrating discrete choice and technology adoption models to address the aforementioned issue. In order to do so, we build on the formulation of discrete mixture models and specifically Latent Class Choice Models (LCCMs), which were integrated with a network effect model. The network effect model quantifies the impact of the spatial/network effect of the new technology on the utility of adoption. We adopted a confirmatory approach to estimating our dynamic LCCM based on findings from the technology diffusion literature that focus on defining two distinct types of adopters: innovator/early adopters and imitators. LCCMs allow for heterogeneity in the utility of adoption for the various market segments i.e. innovators/early adopters, imitators and non-adopters. We make use of revealed preference (RP) time series data from a one-way carsharing system in a major city in the United States to estimate model parameters. The data entails a complete set of member enrollment for the carsharing service for a time period of 2.5years after being launched. Consistent with the technology diffusion literature, our model identifies three latent classes whose utility of adoption have a well-defined set of preferences that are significant and behaviorally consistent. The technology adoption model predicts the probability that a certain individual will adopt the service at a certain time period, and is explained by social influences, network effect, socio-demographics and level-of-service attributes. Finally, the model was calibrated and then used to forecast adoption of the carsharing system for potential investment strategy scenarios. A couple of takeaways from the adoption forecasts were: (1) placing a new station/pod for the carsharing system outside a major technology firm induces the highest expected increase in the monthly number of adopters; and (2) no significant difference in the expected number of monthly adopters for the downtown region will exist between having a station or on-street parking.},
+  comment  = {Compares Bass diffusion model to their new model for electric vehicle (among other thrings) adoption.
+
+Sounds similar to SantaEulalia11discrChoiceBassEV},
+  doi      = {https://doi.org/10.1016/j.trc.2017.03.004},
+  file     = {:Zarwi17discChoiceAdoptDiffTranspo.pdf:PDF},
+  keywords = {Technology diffusion, Dynamics, Latent class choice models, Social influences, Spatial effect, Demand forecasting},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0968090X17300694},
 }
 
 @InProceedings{Mairal13stochMMlargeOpt,
@@ -27057,6 +27109,7 @@ prediction; forecastability},
   author   = {Cosguner, Koray and Seetharaman, PB Seethu and Wu, Chunhua},
   title    = {Dynamic Pricing for New Products: Utility-Based Generalization of the Bass Diffusion Model},
   year     = {2018},
+  month    = aug,
   abstract = {The Bass Model (BM) has an excellent track record in the realm of new product sales forecasting. However, 
 its use for optimal dynamic pricing or advertising is relatively limited. This is because the Generalized Bass Model 
 (GBM), which extends the BM to handle marketing variables, uses only percentage changes in marketing variables 
@@ -27076,12 +27129,13 @@ dynamic optimization problem.
 
 Keywords: Dynamic Pricing, Optimal Pricing, New Products, Diffusion Model, Bass Model (BM), Generalized Bass 
 Model (GBM), New Product Sales Forecasting. },
-  comment  = {A flexible Bass diffusion model that can be used w/o dynamic optimzation.
+  comment  = {A flexible Bass diffusion model that can be used w/o dynamic optimzation.  Says that Generalized Bass Model (GBM, Bass94bassWithoutDecVars) is severly deficient
+
 
 Seems related to: 
-Bass94bassWithoutDecVars
 Kapur12bassDiffuseSDE
 Dong17resPVdeployFrcst
+
 
 },
   file     = {:Cosguner18dynPriceDynBass.pdf:PDF},
@@ -33183,11 +33237,10 @@ nologies, and how have they changed over time; what are the key drivers of techn
 and what are the macroeconomic consequences of technology. We prioritize in our dis-
 cussion unified approaches to these three questions that are based on direct measures of
 technology.},
-  comment   = {
-
-
-Go back and finish Comin06techDiffuse5facts, which also introduces the DB, if something is unclear or undefined here.},
+  comment   = {Go back and finish Comin06techDiffuse5facts, which also introduces the DB, if something is unclear or undefined here.},
+  doi       = {10.1016/b978-0-444-53540-5.00002-1},
   file      = {:Comin14techDiffusMeasCausConseq.pdf:PDF},
+  issn      = {1574-0684},
   url       = {https://www.sciencedirect.com/science/article/pii/B9780444535405000021},
 }
 
@@ -36844,6 +36897,32 @@ Could maybe use physcial inspired features or const funcs, like in Karpatne17phy
   timestamp            = {2009.03.13},
 }
 
+@InProceedings{SantaEulalia11discrChoiceBassEV,
+  author       = {Santa Eulalia, Luis Antonio and Neumann, Donald and Klasen, J{\"o}rg},
+  title        = {A simulation-based innovation forecasting approach combining the bass diffusion model, the discrete choice model and system dynamics-an application in the german market for electric cars},
+  booktitle    = {The third international conference on advances in system simulation},
+  year         = {2011},
+  organization = {Citeseer},
+  abstract     = {This work presents a novel simulation-based 
+forecasting approach combining concepts from the Bass 
+Diffusion Model and the Discrete Choice Model from a System 
+Dynamics perspective. The proposed approach allows for the 
+forecasting of the adoption rate and its timing, by 
+understanding the underlying preferences of individual 
+customers and social forces influencing it. A real-scale 
+preliminary application in the German market for electric 
+cars, parameterized through a Conjoint Analysis, is provided. 
+Simulation results indicate that battery charging technology 
+and infrastructures are crucial for the success of electric cars 
+in Germany. 
+Keywords—Forecasting Innovation; System Dynamics; Bass 
+Diffusion Model; Discrete Choice Model; Conjoint Analysis; 
+Electric Vehicles (EV); German Electric Car Market.},
+  comment      = {Sounds similar to Zarwi17discChoiceAdoptDiffTranspo},
+  file         = {:SantaEulalia11discrChoiceBassEV.pdf:PDF},
+  url          = {https://www.semanticscholar.org/paper/A-Simulation-Based-Innovation-Forecasting-Approach-Santa-Eulalia-Neumann/521a46d7fa4d6f092158986c9f2a4c8871d34b61},
+}
+
 @InCollection{Hennig99clustLinRgrsn,
   author    = {Hennig, C.},
   title     = {Models and Methods for Clusterwise Linear Regression},
@@ -39058,6 +39137,29 @@ Superquantiles, which are "some kind of additive" might be a better way to expre
   owner     = {scotto},
   publisher = {Elsevier Science Publishers B. V.},
   timestamp = {2010.08.12},
+}
+
+@InCollection{Deepa07reviewDiffuseNewProd,
+  author    = {Deepa, Chandrasekaran and Tellis Gerard, J.},
+  title     = {A Critical Review of Marketing Research on Diffusion of New Products},
+  booktitle = {Review of Marketing Research},
+  publisher = {Emerald Group Publishing Limited},
+  year      = {2007},
+  editor    = {Malhotra, Naresh K.},
+  volume    = {3},
+  series    = {Review of Marketing Research},
+  pages     = {39--80},
+  month     = aug,
+  abstract  = {We critically examine alternate models of the diffusion of new products and the turning points of 
+the diffusion curve. On each of these topics, we focus on the drivers, specifications, and estima-
+tion methods researched in the literature. We discover important generalizations about the shape, 
+parameters, and turning points of the diffusion curve and the characteristics of diffusion across 
+early stages of the product life cycle. We point out directions for future research.},
+  comment   = {Examines Bass diffusion, it's extensions and its weaknesses.},
+  file      = {:Deepa07reviewDiffuseNewProd.pdf:PDF},
+  issn      = {978-0-7656-1306-6, 978-0-85724-725-4/1548-6435},
+  journal   = {Review of Marketing Research},
+  url       = {https://doi.org/10.1108/S1548-6435(2007)0000003006},
 }
 
 @InCollection{Wilson10copulaProc,
@@ -44317,6 +44419,7 @@ Keywords: Bassmodel;Ornstein–Uhlenbeckprocess;Sensitivityofparameterto
 data;Confidencedomain
 
 },
+  comment   = {Bass diffusion with confidence intervals},
   file      = {:Grasman19stochBassMdl.pdf:PDF},
   publisher = {Springer},
   url       = {https://link.springer.com/article/10.1186/s13362-019-0059-6},
@@ -46322,6 +46425,16 @@ May need to use a score something like this for left AND right censored wind pow
   file      = {Fritz17windPVfrcstUMrbrgTalk.pptx:Fritz17windPVfrcstUMrbrgTalk.pptx:PowerPoint 2007+},
   owner     = {sotterson},
   timestamp = {2017.04.12},
+}
+
+@Misc{Fruchter02frcstNewProdBass,
+  author       = {Gila E. Fruchter},
+  title        = {Forcasting the Sales of New Products and the Bass Model},
+  howpublished = {Course Notes: Mareting Models in Practice, Bar-Ilan University, Israel},
+  year         = {2002},
+  comment      = {Slides on Bass Diffusion extensions, more detailed derivations, and some sample coeffs from various products.},
+  file         = {:Fruchter02frcstNewProdBass.pdf:PDF},
+  url          = {https://faculty.biu.ac.il/~fruchtg/829/lec/6.pdf},
 }
 
 @Article{Gagnon16distPVadoptMktFctr,
@@ -49221,15 +49334,14 @@ Boney16introSemiSupLadderBlog lists a couple sources for code},
 }
 
 @Article{Ranganathan15oddsVsRisk,
-  author        = {Ranganathan, Priya and Aggarwal, Rakesh and Pramesh, CS},
-  title         = {Common pitfalls in statistical analysis: Odds versus risk},
-  journal       = {Perspectives in clinical research},
-  year          = {2015},
-  volume        = {6},
-  number        = {4},
-  pages         = {222},
-  __markedentry = {[Scott:6]},
-  comment       = {Risk: prob(event): numEvents/numPopulation                       
+  author    = {Ranganathan, Priya and Aggarwal, Rakesh and Pramesh, CS},
+  title     = {Common pitfalls in statistical analysis: Odds versus risk},
+  journal   = {Perspectives in clinical research},
+  year      = {2015},
+  volume    = {6},
+  number    = {4},
+  pages     = {222},
+  comment   = {Risk: prob(event): numEvents/numPopulation                       
 Odds: prob(event1)/prob(not event1)                              
 Risk Ratio (Relative Risk): Risk(event,group1)/Risk(event,group2)
 Odds Ratio (Relative Risk): Odds(event,group1)/Odds(event,group2)
@@ -49237,9 +49349,9 @@ Odds Ratio (Relative Risk): Odds(event,group1)/Odds(event,group2)
 Must use odds ratio when using Restrospective (Case-Control) studies 
 
 Also Essoe14oddsProbRisk},
-  file          = {:Ranganathan15oddsVsRisk.pdf:PDF},
-  publisher     = {Wolters Kluwer--Medknow Publications},
-  url           = {https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4640017/},
+  file      = {:Ranganathan15oddsVsRisk.pdf:PDF},
+  publisher = {Wolters Kluwer--Medknow Publications},
+  url       = {https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4640017/},
 }
 
 @Article{Rebours07survCtlAncSrvII,
