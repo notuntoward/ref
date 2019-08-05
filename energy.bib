@@ -3847,21 +3847,20 @@ Recommends the tutorial in: Biau16randFrstGuideTour},
 }
 
 @InBook{Jaakkola96cmprDiffsnMdlAdopt,
-  pages         = {65--82},
-  title         = {Comparison and Analysis of Diffusion Models},
-  publisher     = {Springer US},
-  year          = {1996},
-  author        = {Jaakkola, Hannu},
-  editor        = {Kautz, Karlheinz and Pries-Heje, Jan},
-  address       = {Boston, MA},
-  isbn          = {978-0-387-34982-4},
-  __markedentry = {[Scott:1]},
-  abstract      = {A real diffusion process consists of a huge amount of interrelated variables. This complexity can be modelled by diffusion models building a simplified mathematical representation of the main features of the process as a time series of indicators describing the phenomenon in interest. Mathematical models are mostly used for technological forecasting purposes; forecasting is based on the best fit of the empirical data to the model formula and trend extrapolation outside the empirical period. The fit gives numeric values to the parameters of the model. Some of the models include also explanative factors --- values of parameters describe behavioral properties of the process. The paper concentrates on mathematical diffusion models. The variety of models derived from the literature is introduced and analyzed. As an application of mathemat ical approach to the diffusion the diffusion of mobile phones is discussed. The focus of this paper is to point out problems in mathematical analysis and to discuss about alternative approaches.},
-  booktitle     = {Diffusion and Adoption of Information Technology: Proceedings of the first IFIP WG 8.6 working conference on the diffusion and adoption of information technology, Oslo, Norway, October 1995},
-  comment       = {Compares many Bass-like models, doesn't like them.  Thinks they're only useful for intuition and understanding.  Might be interesting to see how they help w/ intuition and understanding.},
-  doi           = {10.1007/978-0-387-34982-4_6},
-  file          = {:Jaakkola96cmprDiffsnMdlAdopt.pdf:PDF},
-  url           = {https://doi.org/10.1007/978-0-387-34982-4_6},
+  pages     = {65--82},
+  title     = {Comparison and Analysis of Diffusion Models},
+  publisher = {Springer US},
+  year      = {1996},
+  author    = {Jaakkola, Hannu},
+  editor    = {Kautz, Karlheinz and Pries-Heje, Jan},
+  address   = {Boston, MA},
+  isbn      = {978-0-387-34982-4},
+  abstract  = {A real diffusion process consists of a huge amount of interrelated variables. This complexity can be modelled by diffusion models building a simplified mathematical representation of the main features of the process as a time series of indicators describing the phenomenon in interest. Mathematical models are mostly used for technological forecasting purposes; forecasting is based on the best fit of the empirical data to the model formula and trend extrapolation outside the empirical period. The fit gives numeric values to the parameters of the model. Some of the models include also explanative factors --- values of parameters describe behavioral properties of the process. The paper concentrates on mathematical diffusion models. The variety of models derived from the literature is introduced and analyzed. As an application of mathemat ical approach to the diffusion the diffusion of mobile phones is discussed. The focus of this paper is to point out problems in mathematical analysis and to discuss about alternative approaches.},
+  booktitle = {Diffusion and Adoption of Information Technology: Proceedings of the first IFIP WG 8.6 working conference on the diffusion and adoption of information technology, Oslo, Norway, October 1995},
+  comment   = {Compares many Bass-like models, doesn't like them.  Thinks they're only useful for intuition and understanding.  Might be interesting to see how they help w/ intuition and understanding.},
+  doi       = {10.1007/978-0-387-34982-4_6},
+  file      = {:Jaakkola96cmprDiffsnMdlAdopt.pdf:PDF},
+  url       = {https://doi.org/10.1007/978-0-387-34982-4_6},
 }
 
 @Article{Hill16lrgSclWindMaxPlanckMiss,
@@ -3871,7 +3870,7 @@ Recommends the tutorial in: Biau16randFrstGuideTour},
   year      = {2016},
   abstract  = {A recent study from the Max Planck Institute investigating the efficiency of large-scale wind farms claims that large-scale wind energy deployment slows down winds in and around a wind farm, therefore reducing wind turbine efficiency.
 
-OLYMPUS DIGITAL CAMERAHowever, the assumptions made in this study bear little to no relation to the reality of future wind energy deployment, subsequently casting unnecessary doubt on the issue.},
+However, the assumptions made in this study bear little to no relation to the reality of future wind energy deployment, subsequently casting unnecessary doubt on the issue.},
   comment   = {A rebuttal of Miller16windSpdRedLargeScl
 
 Also see evernote:
@@ -13922,7 +13921,13 @@ Athos solar monitoring station (SMS), in Imperial County, CA. This resource asse
 the ground-based measurements, and pairs the ground-based irradiance measurements with historical satellite 
 data. Tuning of the historical data to the ground-based data results in a Typical Global Horizontal Irradiance Year 
 (TGY) dataset with reduced overall uncertainty relative to ground-based or satellite measurements alone. },
-  comment     = {One of 3 papers describing CPR's solar assessment tuning.  Sent by Patrick.},
+  comment     = {One of 3 papers describing CPR's solar assessment tuning.  Sent by Patrick.
+
+Uncertainty described in:
+Habte15radiometUncertGUM
+Perez02newMdllSatelliteIrrad (I think this is reference 2 in this paper)
+Perez04satelliteIrradTerrain (ref. 3)
+},
   file        = {:Kubiniec19solarSatelliteTuneGrndTR.pdf:PDF},
 }
 
@@ -23245,6 +23250,31 @@ Related to Pinson06ProbFrcstPropsEval},
   ncite     = {67},
   owner     = {sotterson},
   timestamp = {2013.09.26},
+}
+
+@TechReport{Habte15radiometUncertGUM,
+  author      = {Habte, Aron and Sengupta, Manajit and Reda, Ibrahim},
+  title       = {A Method to Estimate Uncertainty in Radiometric Measurement Using the Guide to the Expression of Uncertainty in Measurement (GUM) Method; NREL (National Renewable Energy Laboratory)},
+  institution = {National Renewable Energy Lab.(NREL), Golden, CO (United States)},
+  year        = {2015},
+  abstract    = {Radiometric data with known and traceable uncertainty is essential for climate 
+change studies to better understand cloud radiation interactions and the earth 
+radiation budget. Further, adopting a known and traceable method of estimating 
+uncertainty with respect to SI ensures that the uncertainty quoted for radiometric 
+measurements can be compared based on documented methods of derivation.  
+   Currently, most radiometric data users rely on manufacturers’ specifications of 
+calibration uncertainty to quantify the uncertainty of measurements. However, the 
+accuracy of solar radiation measured by radiometers depends not only on the 
+specifications of the instrument but also on (a) calibration procedure, (b) 
+measurement setup and maintenance, and (c) location and environmental conditions 
+[1]. Therefore, statements about the overall measurement uncertainty can only be 
+made on an individual basis, taking all relevant factors into account. This poster 
+provides guidelines and recommended procedures for estimating the uncertainty in 
+calibrations and measurements from radiometers. The approach follows the Guide to 
+the Expression of Uncertainty in Measurement (GUM)[2].  },
+  comment     = {Describes SolarAnywhere uncertainty estimate, accoding to Kubiniec19solarSatelliteTuneGrndTR},
+  file        = {:Habte15radiometUncertGUM.pdf:PDF},
+  url         = {https://www.osti.gov/biblio/1215171},
 }
 
 @Article{Gallego11frcstRampANN,
@@ -34085,6 +34115,23 @@ Optimization is done w/ dynamic programming and Lagrangian stuff.
   timestamp = {2011.05.26},
 }
 
+@Article{Perez04satelliteIrradTerrain,
+  author   = {Richard Perez and Pierre Ineichen and Marek Kmiecik and Kathleen Moore and David Renne and Ray George},
+  title    = {Producing satellite-derived irradiances in complex arid terrain},
+  journal  = {Solar Energy},
+  year     = {2004},
+  volume   = {77},
+  number   = {4},
+  pages    = {367 - 371},
+  issn     = {0038-092X},
+  note     = {The American Solar Energy Society's Solar 2003 Special Issue},
+  abstract = {This paper describes a methodology to correct satellite-derived irradiances over complex terrain for models that use the visible satellite channel as main input for cloud index determination. Complex terrain is characterized by high reflectance surface and or the juxtaposition of high and low reflectance surfaces (e.g., desert plains and forested ridges). The correction consists of (1) climate dependent post-model clear sky calibration and (2) singularity identification and removal.},
+  comment  = {Describes SolarAnywhere Irrac calcs, according to Kubiniec19solarSatelliteTuneGrndTR},
+  doi      = {https://doi.org/10.1016/j.solener.2003.12.016},
+  file     = {:Perez04satelliteIrradTerrain.pdf:PDF},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0038092X03004687},
+}
+
 @Article{Bacher09pvFrcstOnlineClrSky,
   author    = {Bacher, Peder and Madsen, Henrik and Nielsen, Henrik Aalborg},
   title     = {Online short-term solar power forecasting},
@@ -40748,6 +40795,22 @@ File came from: K:\Organisation\Kongresse\2014\2014-11_Wind_Integration_Workshop
 Tons of cites in Google Scholar of this paper, most from speech and language model but there was one for anomaly detection too.},
   file      = {:Gutmann10noiseCntrstStatMdl.pdf:PDF},
   url       = {http://proceedings.mlr.press/v9/gutmann10a.html},
+}
+
+@Article{Perez02newMdllSatelliteIrrad,
+  author   = {Richard Perez and Pierre Ineichen and Kathy Moore and Marek Kmiecik and Cyril Chain and Ray George and Frank Vignola},
+  title    = {A new operational model for satellite-derived irradiances: description and validation},
+  journal  = {Solar Energy},
+  year     = {2002},
+  volume   = {73},
+  number   = {5},
+  pages    = {307 - 317},
+  issn     = {0038-092X},
+  abstract = {We present a new simple model capable of exploiting geostationary satellite visible images for the production of site/time-specific global and direct irradiances The new model features new clear sky global and direct irradiance functions, a new cloud-index-to-irradiance index function, and a new global-to-direct-irradiance conversion model. The model can also exploit operationally available snow cover resource data, while deriving local ground specular reflectance characteristics from the stream of incoming satellite data. Validation against 10 US locations representing a wide range of climatic environments indicates that model performance is systematically improved, compared to current visible-channel-based modeling practice.},
+  comment  = {Decribes Solar Anywhere satellite calibration, I think, according to Kubiniec19solarSatelliteTuneGrndTR},
+  doi      = {https://doi.org/10.1016/S0038-092X(02)00122-6},
+  file     = {:Perez02newMdllSatelliteIrrad.pdf:PDF},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0038092X02001226},
 }
 
 @Article{Maaten08VisualizingDataUsingTSNE,

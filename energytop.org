@@ -9752,6 +9752,10 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 ******* [[file:energy.bib::Kankiewicz14solarUncertRsrcTune][Kankiewicz et al. 2014: Reduce Solar Project Uncert Tuning]] (CPR)
 ******* [[file:energy.bib::Perez17grndCalDetSatIrrad][Perez et al. 2017: Detecting Calibration Drift w/ satellite]]  (CPR)
 ******* [[file:energy.bib::Jaus19navSolarIradMeasIss][Jaus 2019: Navigating solar irrad meas issues]] (instrument tutorial)
+******* TODO [[file:energy.bib::Kubiniec19solarSatelliteTuneGrndTR][Kubiniec et al. 2019: Site Specific Solar Resource Assessment]]
+******* TODO [[file:energy.bib::Habte15radiometUncertGUM][Habte et al. 2015: Method Estimate Uncertainty Radiometric]]
+******* TODO [[file:energy.bib::Perez02newMdllSatelliteIrrad][Perez et al. 2002 New Model Satellie Irrad]]
+******* TODO [[file:energy.bib::Perez04satelliteIrradTerrain][Perez et al. 2004: Producing Satellite Irrad Complex Terrain]]
 ***** <<Solar power impacts on climate changes and limits to solar power>>
 ******* [[cite:Hu16solPnlClimImpct][Hu et al. 2016: Impact Solar power on climate]]
 ***** PV Panel Efficiency in Low Light
@@ -11139,15 +11143,15 @@ Erika
 ***** <<Bass Innovation Diffusion Models>>
 ******* DONE [[file:energy.bib::Wikipedia19bassDiffus][Wikipedia 2019: Bass Diffusion Model]]
 ******* TODO [[file:energy.bib::Bass94bassWithoutDecVars][Bass et al. 1994: Why Bass Model w/o dec vars]] (with derivations. SDE?)
-******* TODO [[file:energy.bib::Massiani2015useOfBassEV][Massiani & Gohs 2015: Bass EVs Don't Use]]
 ******* TODO [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]]
-******* TODO [[file:energy.bib::][Cosguner et al. 2018: Dynamic Pricing New Products Dyn Bass]]
-******* TODO [[file:energy.bib::Deepa07reviewDiffuseNewProd][Deepa & Tellis 2007: Critical Review Marketing Diffusion]]
 ******* TODO [[file:energy.bib::Jaakkola96cmprDiffsnMdlAdopt][Jaakkola 1996: Comparison Analysis Diffusion Models]]
-******* [[file:energy.bib::Fruchter02frcstNewProdBass][Fruchter 2002: Forcasting Sales New Prod Adopt Bass/Bass-like]]
-******* [[file:energy.bib::SantaEulalia11discrChoiceBassEV][Santa et al. 2011: EV adopt Disc Choice Bass]]
+******* TODO [[file:energy.bib::Deepa07reviewDiffuseNewProd][Deepa & Tellis 2007: Critical Review Marketing Diffusion]]
+******* TODO [[file:energy.bib::Massiani2015useOfBassEV][Massiani & Gohs 2015: Bass EVs Don't Use]]
+******* TODO [[file:energy.bib::Fruchter02frcstNewProdBass][Fruchter 2002: Forcasting Sales New Prod Adopt Bass/Bass-like]]
+******* TODO [[file:energy.bib::][Cosguner et al. 2018: Dynamic Pricing New Products Dyn Bass]]
+******* TODO [[file:energy.bib::SantaEulalia11discrChoiceBassEV][Santa et al. 2011: EV adopt Disc Choice Bass]]
 
-******* [[file:energy.bib::Zarwi17discChoiceAdoptDiffTranspo][Zarwi et al. 2017: EV adopt Discr Choice Bass]]
+******* TODO [[file:energy.bib::Zarwi17discChoiceAdoptDiffTranspo][Zarwi et al. 2017: EV adopt Discr Choice Bass]]
 
 ******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012: Innovation diffusion SDEs]] (could get rate of change)
 ******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012 bass SDE rate of change (interscience online)]]
