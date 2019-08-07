@@ -47,7 +47,7 @@
 *********** [[https://hackaday.com/2017/04/11/introduction-to-tensorflow/][Introduction To TensorFlow | Hackaday]]
 *********** [[https://youtu.be/Ejec3ID_h0w][TensorFlow Tutorial]] (Sherry Moore, Google Brain)
 *********** [[file:energy.bib::Geron17HandsOnMachineLearningWithScikitLearnAndTensorFlowConceptsToolsAndTechniquesToBuildIntelligentSystems][Geron 2017: Hands On Scikit Learn TensorFlow Book]] (I have)
-*********** Monotonic Neural Nets: [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning]]
+*********** Monotonic Lattice Neural Nets: [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning]]
 
 ********* Coffee in Matlab (stephan remembers?)
 ********* name some more...
@@ -3199,8 +3199,8 @@ Scott
 ***************** also eqs. 19,20 of [[file:energy.bib::srinivasa08mutinforeview][srinivasa 2008: review multivariate mutual information]]
 *************** [[file:energy.bib::brown09newinfofeatsel][brown 2009]]
 *************** [[file:energy.bib::stogbauer04leastdepmutinfo][stogbauer et al. 2004: least]]
-*************** lattice/non-neg factors: [[file:energy.bib::williams10nonnegmutinfdecomp][williams & beer 2010: nonnegative decomposition multivariate information]]
-*************** [[http://cvml.unige.ch/publications/postscript/2011/itw2011-voloshynovskiy.pdf][sign-magnitude decomposition of mutual information with polarization effect in digital identiﬁcation]]
+*************** lattice/non-neg factors: [[file:energy.bib::williams10nonnegmutinfdecomp][Williams & Beer 2010: Nonnegative decomposition multivariate information]]
+*************** [[http://cvml.unige.ch/publications/postscript/2011/itw2011-voloshynovskiy.pdf][sign-magnitude decomposition of mutual information with polarization effect in digital identification]]
 *************** [[http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber%3d5750013][empirical mode decomposition technique with conditional mutual information for denoising operational sensor data]]
 *********** Mutual Information Confidence Bounds
             <<Mutual Information Confidence Bounds>>
@@ -4053,7 +4053,8 @@ Hope that helps,
 ***** [[file:energy.bib::Chen15higgsBoostTr][Chen & He 2015: Higgs Boson Boosted Trees]]
 ***** [[file:energy.bib::Chen16xgboostSclbl][Chen & Guestrin 2016: XGBoost scalable tree boost]]       
 ***** <<Monotonic Boosted Trees>>
-******* [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning]]
+******* [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning (lightgbm, xgboost, TensorFLow)]] 
+******* [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonic Constraints — xgboost 1.0.0-SNAPSHOT documentation]]
 * <<Boosted Regression>>
 
   Train a prediction algorithm, test, and then train a new model on the residual...
@@ -9753,9 +9754,11 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 ******* [[file:energy.bib::Perez17grndCalDetSatIrrad][Perez et al. 2017: Detecting Calibration Drift w/ satellite]]  (CPR)
 ******* [[file:energy.bib::Jaus19navSolarIradMeasIss][Jaus 2019: Navigating solar irrad meas issues]] (instrument tutorial)
 ******* TODO [[file:energy.bib::Kubiniec19solarSatelliteTuneGrndTR][Kubiniec et al. 2019: Site Specific Solar Resource Assessment]]
-******* TODO [[file:energy.bib::Habte15radiometUncertGUM][Habte et al. 2015: Method Estimate Uncertainty Radiometric]]
-******* TODO [[file:energy.bib::Perez02newMdllSatelliteIrrad][Perez et al. 2002 New Model Satellie Irrad]]
-******* TODO [[file:energy.bib::Perez04satelliteIrradTerrain][Perez et al. 2004: Producing Satellite Irrad Complex Terrain]]
+******* TODO [[file:energy.bib::Perez02newMdllSatelliteIrrad][Perez et al. 2002 New Model Satellie Irrad]] (CPR)
+******* TODO [[file:energy.bib::Perez04satelliteIrradTerrain][Perez et al. 2004: Producing Satellite Irrad Complex Terrain]] (CPR)
+******* TODO [[file:energy.bib::Habte14calMeasUncertRadiometric][Habte et al. 2014: Calibration Measurement Uncertainty Radiometric]]
+******* TODO [[file:energy.bib::Habte15radiometUncertGUM][Habte et al. 2015: Method Estimate Uncertainty Radiometric]] (CPR)
+******* [[file:energy.bib::JCGM08guideUncertMeas][JCGM 2008: Guide Expression Uncertainty Measurement]]
 ***** <<Solar power impacts on climate changes and limits to solar power>>
 ******* [[cite:Hu16solPnlClimImpct][Hu et al. 2016: Impact Solar power on climate]]
 ***** PV Panel Efficiency in Low Light
@@ -11160,6 +11163,7 @@ Erika
 ******* [[file:energy.bib::Bertotti16bassDiffusCorrInhomog][Bertotti et al. 2016: Bass diffus corr inhomog advert]]
 ******* [[file:energy.bib::Bertotti16innovDiffusCorrNtwk][Bertotti et al. 2016: Innovation diff corr networks]]
 ******* [[file:energy.bib::Manceau13techDiffusnPreannc][Manceau et al. 2013: Diffusion Model Preannounced Prods (2 phase Bass)]]
+******* [[file:energy.bib::Tashiro16hierBassDiff][Tashiro 2016: Hierarchical Bass and pop est.]]
 ***** Logistic Regression Based Tech Adoption
 ******* [[file:energy.bib::Almeida08openTechInvoDevCntries][Almeida & Fernandes 2008: Openness Adopt Dev Countries]] 
 ***** Explicit Space/Time modeling adoption

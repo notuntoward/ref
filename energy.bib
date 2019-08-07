@@ -11763,6 +11763,49 @@ Keywords: Intraday market for electricity, fundamental price modeling},
   url         = {http://www.econstor.eu/bitstream/10419/113275/1/822013509.pdf},
 }
 
+@InProceedings{Habte14calMeasUncertRadiometric,
+  author    = {Aron Habte and Manajit Sengupta and Ibrahim Reda and A Neuber Andreas and Joep Konings},
+  title     = {Calibration and Measurement Uncertainty Estimation of Radiometric Data},
+  booktitle = {Solar},
+  year      = {2014},
+  address   = {Sand Fransisco, CA},
+  month     = jul,
+  abstract  = {Evaluating the performance of photovoltaic cells, modules, and 
+arrays that form large solar deployments relies on accurate 
+measurements of the available solar resource. Therefore, 
+determining the accuracy of these solar radiation measurements 
+provides a better understanding of investment risks. This 
+becomes especially important as deployment size and 
+investment costs grow to hundreds of millions of dollars. The 
+accuracy of measurements is also important for acceptance 
+testing and operations. 
+Radiometers such as pyranometers are used to measure global 
+horizontal irradiance or plane of array irradiance, whereas 
+pyrheliometers are used to measure direct normal irradiance. 
+Currently, most radiometric data users rely on manufacturers’ 
+specifications of calibration uncertainty to quantify the 
+uncertainty of measurements. However, the accuracy of solar 
+radiation measured by radiometers depends not only on the 
+specifications of the instrument but also on the (a) calibration 
+procedure, (b) measurement conditions and maintenance, and 
+(c) environmental conditions. Therefore, statements about the 
+overall measurement uncertainty can be made only on an 
+individual basis, taking all relevant factors into account. This 
+paper provides guidelines and recommended procedures for 
+estimating the uncertainty in calibrations and measurements by 
+radiometers using methods that follow the Guide to the 
+Expression of Uncertainty (GUM). Standardized analysis based 
+on these procedures ensures that the uncertainty quoted is well 
+documented. 
+Keywords: Global Horizontal Irradiance; Direct Normal 
+Irradiance; Type A; Type B; Uncertainty},
+  comment   = {Maybe this is what CPR uses to compute satellite irradiance uncertainty.  It's referenced by the slides in Habte15radiometUncertGUM
+
+Method: JCGM08guideUncertMeas},
+  file      = {:Habte14calMeasUncertRadiometric.pdf:PDF},
+  url       = {https://www.osti.gov/servlets/purl/1164884},
+}
+
 @TechReport{Dubois15deepMineCopulaHyper,
   author      = {S{\'e}bastien Dubois},
   title       = {Deep Mining : Copula-based Hyper-Parameter Optimization for Machine Learning Pipelines},
@@ -21192,7 +21235,7 @@ Follow-on project ReWP: IWES14totProjDescReWPR},
   title     = {Nonnegative Decomposition of Multivariate Information},
   journal   = {Arxiv preprint arXiv:1004.2515},
   year      = {2010},
-  abstract  = {Of the various attempts to generalize information theory to multiple variables, the most widely utilized, interaction information, suffers from the problem that it is sometimes negative. Here we reconsider from ?rst principles the general structure of the information that a set of sources provides about a given variable. We begin with a new de?nition of redundancy as the minimum information that any source provides about each possible outcome of the variable, averaged over all possible outcomes. We then show how this measure of redundancy induces a lattice over sets of sources that clari?es the general structure of multivariate information. Finally, we use this redundancy lattice to propose a de?nition of partial information atoms that exhaustively decompose the Shannon information in a multivariate system in terms of the redundancy between synergies of subsets of the sources. Unlike interaction information, the atoms of our partial information decomposition are never negative and always support a clear interpretation as informational quantities. Our analysis also demonstrates how the negativity of interaction information can be explained by its confounding of redundancy and synergy. Keywords: information theory, interaction information, redundancy, synergy, multivariate interactio},
+  abstract  = {Of the various attempts to generalize information theory to multiple variables, the most widely utilized, interaction information, suffers from the problem that it is sometimes negative. Here we reconsider from First principles the general structure of the information that a set of sources provides about a given variable. We begin with a new deenition of redundancy as the minimum information that any source provides about each possible outcome of the variable, averaged over all possible outcomes. We then show how this measure of redundancy induces a lattice over sets of sources that clarifies the general structure of multivariate information. Finally, we use this redundancy lattice to propose a definition of partial information atoms that exhaustively decompose the Shannon information in a multivariate system in terms of the redundancy between synergies of subsets of the sources. Unlike interaction information, the atoms of our partial information decomposition are never negative and always support a clear interpretation as informational quantities. Our analysis also demonstrates how the negativity of interaction information can be explained by its confounding of redundancy and synergy. Keywords: information theory, interaction information, redundancy, synergy, multivariate interactio},
   comment   = {Another mutual information decomposition but doesn't have negative values like McGill interaction information. I think it's 3-tuples, blown out on a lattice, which goes to infinity pretty fast. But maybe there are some useful bits in here...},
   file      = {Williams10nonNegMutInfDecomp.pdf:Williams10nonNegMutInfDecomp.pdf:PDF},
   owner     = {sotterson},
@@ -23272,7 +23315,10 @@ made on an individual basis, taking all relevant factors into account. This post
 provides guidelines and recommended procedures for estimating the uncertainty in 
 calibrations and measurements from radiometers. The approach follows the Guide to 
 the Expression of Uncertainty in Measurement (GUM)[2].  },
-  comment     = {Describes SolarAnywhere uncertainty estimate, accoding to Kubiniec19solarSatelliteTuneGrndTR},
+  comment     = {Slides describing SolarAnywhere uncertainty estimate, accoding to Kubiniec19solarSatelliteTuneGrndTR
+
+More details in the conference paper: Habte14calMeasUncertRadiometric
+Yet more details: JCGM08guideUncertMeas},
   file        = {:Habte15radiometUncertGUM.pdf:PDF},
   url         = {https://www.osti.gov/biblio/1215171},
 }
@@ -41696,6 +41742,22 @@ sion process, Trend function},
   url          = {https://books.google.de/books?hl=en&lr=&id=Mj5VDwAAQBAJ&oi=fnd&pg=PA131&dq=bass+diffusion+model+stochastic+differential+equations&ots=bqYuZ7QSEb&sig=-j6ndO0pdUC1eOeehhBK0f4Ms9Y&redir_esc=y#v=onepage&q=bass%20diffusion%20model%20stochastic%20differential%20equations&f=false},
 }
 
+@Article{Tashiro16hierBassDiff,
+  author   = {Tohru Tashiro},
+  title    = {Hierarchical Bass model: a product diffusion model considering a diversity of sensitivity to fashion},
+  journal  = {Physica A: Statistical Mechanics and its Applications},
+  year     = {2016},
+  volume   = {461},
+  pages    = {824 - 832},
+  issn     = {0378-4371},
+  abstract = {We propose a new product diffusion model including the number of how many adopters or advertisements a non-adopter met until he/she adopts the product, where (non-)adopters mean people (not) possessing it. By this effect not considered in the Bass model, we can depict a diversity of sensitivity to fashion. As an application, we utilize the model to fit the iPod and the iPhone unit sales data, and so the better agreement is obtained than the Bass model for the iPod data. We also present a new method to estimate the number of advertisements in a society from fitting parameters of the Bass model and this new model.},
+  comment  = {Bass model with an extra term intended to model slower adopters, doesn't seem better than ordinary Bass, but there is (I think) a new derivation for it that estimates population size.},
+  doi      = {https://doi.org/10.1016/j.physa.2016.06.032},
+  file     = {:Tashiro16hierBassDiff.pdf:PDF},
+  keywords = {Product diffusion model, Bass model, Diversity of sensitivity to fashion},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0378437116303004},
+}
+
 @Article{Hido10outlierDetDensRat,
   author    = {Shohei Hido and Yuta Tsuboi and Hisashi Kashima and Masashi Sugiyama and Takafumi Kanamori},
   title     = {Statistical outlier detection using direct density ratio estimation},
@@ -47338,6 +47400,22 @@ The KDE approach for probabilistic forecasts was taken from: Bowman97smthKDE},
   groups    = {Use, doReadWPV_2},
   owner     = {sotterson},
   timestamp = {2013.03.11},
+}
+
+@TechReport{JCGM08guideUncertMeas,
+  author      = {JCGM},
+  title       = {Guide to the Expression of Uncertainty in Measurement},
+  institution = {Joint Committee for Guides in Metrology Working Group 1},
+  year        = {2008},
+  number      = {JCGM 100:2008},
+  comment     = {The GUM method that I think CPR uses for satelllite irradiation meas. using ground instruments (probably: Habte14calMeasUncertRadiometric). 
+
+Referenced in: Habte15radiometUncertGUM
+
+In 2019, references indicated that this guide has or will be updated e.g.
+https://iopscience.iop.org/article/10.1088/0143-0807/37/2/025803/pdf , which mentions a Bayesian method.},
+  file        = {:JCGM08guideUncertMeas.pdf:PDF},
+  url         = {http://www.milliemicronanopico.com/uncertainnumbers/files/evaluating_un_metrologia_2008.pdf},
 }
 
 @Book{Jemberie04infoTheoryHydro,
