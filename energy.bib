@@ -5836,6 +5836,26 @@ Maybe fancier stuff in: Abreu13genCmplxStepDiff},
   url      = {http://www.sciencedirect.com/science/article/pii/S1364815215001231},
 }
 
+@InProceedings{Bhowmik19estimaggLrnAggDat,
+  author    = {Avradeep Bhowmik and Minmin Chen and Zhengming Xing and Suju Rajan},
+  title     = {{E}st{I}m{A}gg: A Learning Framework for Groupwise Aggregated Data},
+  booktitle = {Proc. SIAM International Conference on Data Mining},
+  year      = {2019},
+  pages     = {477-485},
+  abstract  = {Aggregation is a common technique in data-driven applications for handling issues like privacy, scalability and reliability in a vast range of domains including healthcare, sensor networks and web applications. However, despite the ubiquitousness, extending machine learning methods to the aggregation context is unfortunately not well-studied. In this work, we consider the problem of learning individual level predictive models when the target variables used for training are only available as aggregates. In particular, this problem is a critical bottleneck in designing effective bidding strategies in the context of online advertising where ground-truth cost-per-click (CPC) data is aggregated before being released to advertisers. We introduce a novel learning framework that can use aggregates computed at varying levels of granularity for building individual-level predictive models. We generalise our modelling and algorithmic framework to handle data from diverse domains, and extend our techniques to cover arbitrary aggregation paradigms like sliding windows and overlapping/non-uniform aggregation. We show empirical evidence for the efficacy of our techniques with experiments on both synthetic data and real data from the online advertising domain as well as healthcare to demonstrate the wider applicability of our framework.
+},
+  comment   = {Say you have a sum of outcomes from some population, and that you have a vector of predictors for each individual in the population.  This paper shows how to use the global sum and individual predictors to estimate the outcome of each individual, using a GLM.
+
+Does this with a histogram: Bhowmik15glmForAggDat
+
+Uses?
+* disaggregation problems: have total electricity consumption on a feeder.  Use this to estimate each customer's consumption.
+* imputation: for missing customer data},
+  doi       = {10.1137/1.9781611975673.54},
+  eprint    = {https://epubs.siam.org/doi/pdf/10.1137/1.9781611975673.54},
+  url       = {https://epubs.siam.org/doi/abs/10.1137/1.9781611975673.54},
+}
+
 @InProceedings{Tian09newAdaboost_RT,
   author    = {Huixin Tian and Wang, A. and Zhizhong Mao},
   title     = {A new soft sensor modeling method based on modified AdaBoost with incremental learning},
@@ -7794,9 +7814,33 @@ Keywords:
   issn     = {0739-8859},
   note     = {Electric Vehicles: Modelling Demand and Market Penetration},
   abstract = {Bass diffusion models are one of the competing paradigms to forecast the diffusion of innovative products or technologies. This approach posits that diffusion patterns can be modeled through two mechanisms: Innovators adopt the new product and imitators purchase the new product when getting in contact with existing users. Crucial for the implementation of the method are the values assigned to the two parameters, usually referred to as p and q, which mathematically describe innovation and imitation mechanisms. The present paper is based on the findings of a research project about policy measures to promote the diffusion of Electric Vehicles in Germany. It investigates how practitioners could choose adequate values for the Bass model parameters to forecast new automotive technologies diffusion with a focus on Electric Vehicles. It considers parameters provided by the literature as well as ad hoc parameter estimations based on real market data for Germany. Our investigation suggests that researchers may be in trouble in electing adequate parameter values since the different eligible parameter values exhibit dramatic variations. Literature values appear discussible and widely variable while ad hoc estimates appear poorly conclusive. A serious problem is that ad-hoc estimates of the Bass p value are highly sensitive to the assumed market potential M. So for plausible values of M, p varies on a high scale. Unless more consolidation takes place in this area, or more confidence can be placed on ad hoc estimates, these findings issue a warning for the users of such approaches and on the policy recommendations that would derive from their use.},
-  comment  = {Don't use Bass for EV adoption forecasting!},
+  comment  = {Recommends a two step approach to getting Bass diffusion adoption model coefficients using a mix of numeric and judgement-based parameter choice.  Several big tables of Bass parameters found in the literature and this paper -- maybe useful.  However, the overall negative tone  regarding the model is summarized in the conclusion: "there generally appears a warning to the prospective users of Bass parameters for the electric vehicles' diffusion."  
+
+Standard Bass Model overview with and without market size estimation
+* Using published Bass coefficients
+   - fouind in many papers (there's a good table of them
+    - seem to be inconsistent, and unsourced folklore
+* Using empirically ("ad hoc") estimated Bass coeffs
+   -  OLS solution w/ externally provided market size
+       - p very sensitive to choice of M
+       - q not so sensitive
+       -  NLS and MLE solutions: NLS seems best but does not seem better than OLS
+   - OLS solution w/ built-in market size estimate 
+      - pretty easy
+      - often get imaginary coeffs, or negative values that should be positive
+      - market tends to be underestimated, is size of final cumulative adoption in the training data
+   - says (or cites) that you can't get a good estimate until time has progressed beyond the peak of the density function (and then it's too late for the forecast to be useful) 
+
+Recommend two step approach
+1. estimate q using exogenously given market potential
+2. get p (and and optionally M)
+    a. Keep given M, estimate p,
+    b. OR... jointly (re)estimate p and M
+
+q could also come from the literature, as could all the other params, although, as the author notes, these values are often inconsistent and unsourced.
+},
   doi      = {https://doi.org/10.1016/j.retrec.2015.06.003},
-  file     = {:Massiani2015useOfBassEV.pdf:PDF},
+  file     = {:Massiani15useOfBassEV.pdf:PDF},
   keywords = {Bass diffusion model, Innovation, Electric vehicles},
   url      = {http://www.sciencedirect.com/science/article/pii/S0739885915000220},
 }
@@ -9180,6 +9224,27 @@ This could be a way to learn a power curve.},
   url       = {http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6648796},
 }
 
+@Article{Kruppa13cnsmrRiskProbRFnodesize,
+  author   = {Jochen Kruppa and Alexandra Schwarz and Gerhard Arminger and Andreas Ziegler},
+  title    = {Consumer credit risk: Individual probability estimates using machine learning},
+  journal  = {Expert Systems with Applications},
+  year     = {2013},
+  volume   = {40},
+  number   = {13},
+  pages    = {5125 - 5131},
+  issn     = {0957-4174},
+  abstract = {Consumer credit scoring is often considered a classification task where clients receive either a good or a bad credit status. Default probabilities provide more detailed information about the creditworthiness of consumers, and they are usually estimated by logistic regression. Here, we present a general framework for estimating individual consumer credit risks by use of machine learning methods. Since a probability is an expected value, all nonparametric regression approaches which are consistent for the mean are consistent for the probability estimation problem. Among others, random forests (RF), k-nearest neighbors (kNN), and bagged k-nearest neighbors (bNN) belong to this class of consistent nonparametric regression approaches. We apply the machine learning methods and an optimized logistic regression to a large dataset of complete payment histories of short-termed installment credits. We demonstrate probability estimation in Random Jungle, an RF package written in C++ with a generalized framework for fast tree growing, probability estimation, and classification. We also describe an algorithm for tuning the terminal node size for probability estimation. We demonstrate that regression RF outperforms the optimized logistic regression model, kNN, and bNN on the test data of the short-term installment credits.},
+  comment  = {Random forest is best probabilistic algorithm for predictin individual consumer risk, beats logistic regression.
+
+Also, Biau16randFrstGuideTour says this can pick random forest nodesize w/ simple algorithm
+
+Biau16randFrstGuideTour also says that this paper explains how to do a kind of CV ("out-of-bag" error estimate) while doing the tree.  No separate CV step, I think.},
+  doi      = {https://doi.org/10.1016/j.eswa.2013.03.019},
+  file     = {:Kruppa13cnsmrRiskProbRFnodesize.pdf:PDF},
+  keywords = {Probability estimation, Random forest, Credit scoring, Probability machines, Logistic regression, Machine learning},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0957417413001693},
+}
+
 @Article{Vrac12CopulaAnalysisMixModels,
   author   = {Vrac, M. and Billard, L. and Diday, E. and Ch{\'e}din, A.},
   title    = {Copula analysis of mixture models},
@@ -9860,6 +9925,56 @@ Keywords: * data streams; * dynamic regression; * partial least squares; * varia
   timestamp = {2010.09.27},
 }
 
+@InProceedings{Bhowmik15glmForAggDat,
+  author    = {Bhowmik, Avradeep and Ghosh, Joydeep and Koyejo, Oluwasanmi},
+  title     = {Generalized linear models for aggregated data},
+  booktitle = {Artificial Intelligence and Statistics},
+  year      = {2015},
+  pages     = {93--101},
+  abstract  = {Databases in domains such as healthcare are
+routinely released to the public in aggregated
+form. Unfortunately, na¨ıve modeling with
+aggregated data may significantly diminish
+the accuracy of inferences at the individ-
+ual level. This paper addresses the scenario
+where features are provided at the individual
+level, but the target variables are only avail-
+able as histogram aggregates or order statis-
+tics. We consider a limiting case of gener-
+alized linear modeling when the target vari-
+ables are only known up to permutation, and
+explore how this relates to permutation test-
+ing; a standard technique for assessing statis-
+tical dependency. Based on this relationship,
+we propose a simple algorithm to estimate
+the model parameters and individual level in-
+ferences via alternating imputation and stan-
+dard generalized linear model fitting. Our re-
+sults suggest the effectiveness of the proposed
+approach when, in the original data, permu-
+tation testing accurately ascertains the verac-
+ity of the linear relationship. The framework
+is extended to general histogram data with
+larger bins - with order statistics such as the
+median as a limiting case. Our experimen-
+tal results on simulated data and aggregated
+healthcare data suggest a diminishing returns
+property with respect to the granularity of
+the histogram - when a linear relationship
+holds in the original data, the targets can be
+predicted accurately given relatively coarse
+histograms.},
+  comment   = {Say you have a global histogram of outcomes from some population, and that you have a vector of predictors for each individual in the population.  This paper shows how to use the global histogram and individual predictors to estimate the outcome of each individual, using a GLM.
+
+This has privacy implications because aggregation (as in histograms) is sometimes used to preserve e.g. patient confidentiality.
+
+Uses?
+* disaggregation problems e.g. knowing the number of electric car owners on a feeder, predict which electricity customers have an EV.  Or, something like that -- I don't currently have a problem where you actually get a historgram and individual predictors (Bhowmik19estimaggLrnAggDat does it with sums instead of histograms, maybe more useful)
+* missing data fill-in?  This could be bent into an imputation problem.},
+  file      = {:Bhowmik15glmForAggDat.pdf:PDF},
+  url       = {http://proceedings.mlr.press/v38/bhowmik15.pdf},
+}
+
 @InProceedings{Kull14datasetDriftPttrn,
   author    = {Kull, Meelis and Flach, Peter},
   title     = {Patterns of dataset shift},
@@ -10234,6 +10349,87 @@ why KNN is not a good density estimator: GutierrezOsuna11kdnnLecNotes},
   abstract = {Dependence Modeling with Copulas covers the substantial advances that have taken place in the field during the last 15 years, including vine copula modeling of high-dimensional data. Vine copula models are constructed from a sequence of bivariate copulas. The book develops generalizations of vine copula models, including common and structured factor models that extend from the Gaussian assumption to copulas. It also discusses other multivariate constructions and parametric copula families that have different tail properties and presents extensive material on dependence and tail properties to assist in copula model selection.
 
 The author shows how numerical methods and algorithms for inference and simulation are important in high-dimensional copula applications. He presents the algorithms as pseudocode, illustrating their implementation for high-dimensional copula models. He also incorporates results to determine dependence and tail properties of multivariate distributions for future constructions of copula models},
+}
+
+@TechReport{Horowitz19ovrvwDERinterConnNREL,
+  author      = {Kelsey Horowitz and Zac Peterson and Michael Coddington and Fei Ding and Ben Sigrin and Danish Saleem and Sara E. Baldwin and Brian Lydic and Sky C. Stanfield and Nadav Enbar and Steven Coley and Aditya Sundararajan and Chris Schroeder},
+  title       = {An Overview of Distributed Energy Resource (DER) Interconnection: Current Practices and Emerging Solutions},
+  institution = {National Renewable Energy Laboratory (NREL)},
+  year        = {2019},
+  number      = {NREL/TP-6A20-72102},
+  month       = apr,
+  abstract    = {Deployment of distributed energy resources (DERs), in particular distributed photovoltaics 
+(DPV), has increased in recent years and is anticipated to continue increasing in the future (GTM 
+2017, Labastida 2017). The increase has been particularly significant on certain systems. Figure 
+1 shows an example of a rapid rise in the number and capacity of DER with net-energy metering 
+(NEM) for two different systems in Missouri and South Carolina. 
+
+ 
+Figure 1. Examples of rapidly accelerating DPV deployment on some U.S. systems: Missouri’s 
+Empire District Electric Company and South Carolina Electric & Gas Company (EIA 2017) 
+As DER deployment grows, there is a need for utilities and regulators to understand 
+considerations for interconnecting these resources to their systems as well as different solutions 
+that may be suitable given their DER penetration levels, system characteristics, capabilities, and 
+organizational structures. 
+This report from the Distributed Generation Interconnection Collaborative (DGIC) was 
+commissioned based on the need—identified through DGIC—for a central document 
+summarizing considerations, practices, and emerging solutions across a broad set of topics 
+related to DER interconnection. The report is targeted at a high-level, strategic-planning 
+audience at utilities who are seeking an overview of DER interconnection issues and approaches 
+and looking to understand how these may relate to their own situations. The audience includes a 
+broad set of utilities and situations, including investor-owned utilities (IOUs), municipal utilities 
+(munis), and cooperatives (co-ops) with a range of current DER penetration levels. 
+This report complements existing resources, including more detailed research reports on specific 
+interconnection-related topics (e.g., Coddington et al. 2012b; Parks, Woerner, and Ardani 2014), 
+in-depth handbooks or reports on a specific interconnection-related topic (Seguin et al. 2016), as 
+well as the recently published “New Approaches to Distributed PV Interconnection: 
+Implementation Considerations for Addressing Emerging Issues” (McAllister forthcoming), 
+which is geared more at a policymaker audience and provides a more detailed review of 
+interconnection practices at utilities and states. It also provides a broader perspective and some 
+forward-looking information not contained in interconnection handbooks or guidebooks 
+provided by some utilities (e.g., PG&E 2017b), which provide details of current interconnection 
+policies and procedures of individual utilities relevant to interconnection applicants.  
+
+Although some areas of interconnection have established standards, many are still nascent with 
+no clear or accepted best practice. Additionally, the practice most suitable for a given situation 
+will vary depending on the level of DER penetration; the utility, customer, and developer 
+characteristics and preferences; the attributes of the electrical power system; and other factors. 
+This report does not seek to recommend or dictate practices in any of these areas, but rather 
+provides an overview of the status of different aspects of interconnection, existing standards, and 
+emerging solutions currently being explored that can inform utility planning and decisions. Some 
+of this information may also be useful to regulators, policymakers, and DER developers seeking 
+to understand barriers to interconnection, potential solutions currently being explored, and ways 
+to work with utilities on interconnection policies. },
+  comment     = {Ch. 7, pp. 44-46 is a nice overview of DER adoption techniques
+
+Main Methods
+* Top-down: estimate whole regions, not individuals
+   - time-series: extrapolate historical, cyclic data (has a 2017 reference)
+   - econometric: techniques intended to explain adoption.  Less accurate but can be trained
+   - Bass diffusion: most frequently used, assumes S-shaped curve
+   - said to be good for low DER penetration (because errors are less costly?  Because not enough dat for Bottom up?)
+* Bottom-up: regional estimate starts w/ individual a.k.a. "agent" predictions   
+   - increasingly popular
+   - data driven, ML like
+   - said to be more accurate than theory-driven top down
+   - bad for small sample sizes   
+* Hybrid to-down/bottom-up
+   - top down forecast with disaggregation to smaller regions.  
+   - Not sure how disaggregation would work, though.
+
+Uncertainty
+* Should acknowledge it
+* Uncertainty types
+  - Economic: unknown techno-economic factors
+  - Modeling: "relates to the modeling choices made"
+* Says should run multiple scenarios, consider uncertainty, consider "interactive effects"
+
+Importance of DER adoption forecasting
+* bad DER adoption forecast could cast util as much as \$/MWh of served load (1/4 of current wholesale electricity price)
+* adoption forecast should be considered a strategic asset.
+},
+  file        = {:Horowitz19ovrvwDERinterConnNREL.pdf:PDF},
+  url         = {https://www.nrel.gov/dgic/},
 }
 
 @MastersThesis{Wildenhues13OptAlocSizDynStatcom,
@@ -16603,6 +16799,24 @@ Nice table of market operation and wind power forecasting in the Appendix},
   url       = {http://www.informatik.uni-trier.de/~ley/db/journals/informaticaSI/informaticaSI29.html},
 }
 
+@InProceedings{Bernard08forestRKmtry,
+  author    = {Simon {Bernard} and Laurent {Heutte} and Sébastien {Adam}},
+  title     = {Forest-RK: A New Random Forest Induction Method},
+  booktitle = {ICIC '08 Proceedings of the 4th international conference on Intelligent Computing: Advanced Intelligent Computing Theories and Applications - with Aspects of Artificial Intelligence},
+  year      = {2008},
+  pages     = {430--437},
+  abstract  = {In this paper we present our work on the parametrization of Random Forests (RF), and more particularly on the number K of features randomly selected at each node during the tree induction process. It has been shown that this hyperparameter can play a significant role on performance. However, the choice of the value of K is usually made either by a greedy search that tests every possible value to choose the optimal one, either by choosing a priori one of the three arbitrary values commonly used in the literature. With this work we show that none of those three values is always better than the others. We thus propose an alternative to those arbitrary choices of K with a new “push-button” RF induction method, called Forest-RK, for which K is not an hyperparameter anymore. Our experimentations show that this new method is at least as statistically accurate as the original RF method with a default K setting.
+Keywords
+Classification Classifier Ensemble Classifier Combination Random Forests Decision Trees Bagging },
+  comment   = {Biau16randFrstGuideTour says this can pick mtry, but what it actually does is randomizes it, thus avoiding the choice.
+
+This has been improved in: Bernard12dynRandForest
+
+Slides for this algorithm and the improvent are also attached.  From the slides it seems like there's a proof that this method works, and that the improvement, Dynamic Random Forests, is not (yet?) proven, but works better empirically.},
+  file      = {:Bernard08forestRKmtry.pdf:PDF;:Bernard12dynRandForest_slides.pdf:PDF},
+  url       = {https://link.springer.com/chapter/10.1007/978-3-540-85984-0_52},
+}
+
 @InProceedings{Mcwilliams09predOnlineVarSel,
   author       = {{M}cwilliams, {B}rian and {M}ontana, {G}iovanni},
   title        = {{P}redictive modeling with high-dimensional data streams: an on-line variable selection approach},
@@ -17192,6 +17406,29 @@ Keywords: visualization, embedding, online algorithms, feature discovery, unsupe
   owner     = {scot},
   timestamp = {2011.05.02},
   url       = {http://www.overspeed.de/2011-03-29_DEWEK2010.session20.Anemos.Rulez.Waldi.final.pdf},
+}
+
+@Article{Bernard12dynRandForest,
+  author   = {Simon Bernard and Sébastien Adam and Laurent Heutte},
+  title    = {Dynamic Random Forests},
+  journal  = {Pattern Recognition Letters},
+  year     = {2012},
+  volume   = {33},
+  number   = {12},
+  pages    = {1580 - 1586},
+  issn     = {0167-8655},
+  abstract = {In this paper, we introduce a new Random Forest (RF) induction algorithm called Dynamic Random Forest (DRF) which is based on an adaptative tree induction procedure. The main idea is to guide the tree induction so that each tree will complement as much as possible the existing trees in the ensemble. This is done here through a resampling of the training data, inspired by boosting algorithms, and combined with other randomization processes used in traditional RF methods. The DRF algorithm shows a significant improvement in terms of accuracy compared to the standard static RF induction algorithm.},
+  comment  = {Incrmentally builds trees in a kind of boosting, but instead of predicting error, it weights training samples that were bad on previous collection of trees.  Python scikit learn has sample-weighting, so this could be easily implemented.
+
+An improvement on Bernard08forestRKmtry
+
+Slides attached.
+
+Was used in Nami18cardFraudDynRandFrstKnn},
+  doi      = {https://doi.org/10.1016/j.patrec.2012.04.003},
+  file     = {:Bernard12dynRandForest.pdf:PDF;:Bernard12dynRandForest_slides.pdf:PDF},
+  keywords = {Random forests, Ensemble of classifiers, Random feature selection, Dynamic induction},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0167865512001274},
 }
 
 @InProceedings{Rendle10factrMachns,
@@ -19097,6 +19334,21 @@ and answers to common questions.},
   journal  = {Commun. {ACM}},
 }
 
+@Article{Coulston16approxUncertRandFrstRgrssn,
+  author    = {Coulston, John W and Blinn, Christine E and Thomas, Valerie A and Wynne, Randolph H},
+  title     = {Approximating prediction uncertainty for random forest regression models},
+  journal   = {Photogrammetric Engineering \& Remote Sensing},
+  year      = {2016},
+  volume    = {82},
+  number    = {3},
+  pages     = {189--197},
+  abstract  = {Machine learning approaches such as random forest have increased for the spatial modeling and mapping of continuous variables. Random forest is a non-parametric ensemble approach, and unlike traditional regression approaches there is no direct quantification of prediction error. Understanding prediction uncertainty is important when using model-based continuous maps as inputs to other modeling applications such as fire modeling. Here we use a Monte Carlo approach to quantify prediction uncertainty for random forest regression models. We test the approach by simulating maps of dependent and independent variables with known characteristics and comparing actual errors with prediction errors. Our approach produced conservative prediction intervals across most of the range of predicted values. However, because the Monte Carlo approach was data driven, prediction intervals were either too wide or too narrow in sparse parts of the prediction distribution. Overall, our approach provides reasonable estimates of prediction uncertainty for random forest regression models. },
+  comment   = {Somehow uses MCMC to make confidence intervals on random forest regression results.  Evaluation is heuristic and "look at plots," so it's not the best paper.},
+  file      = {:Coulston16approxUncertRandFrstRgrssn.pdf:PDF},
+  publisher = {American Society for Photogrammetry and Remote Sensing},
+  url       = {https://www.ingentaconnect.com/content/asprs/pers/2016/00000082/00000003/art00016},
+}
+
 @Misc{Viola18clustElecProfileKmeansPython,
   author       = {Luciano Guivant Viola},
   title        = {Clustering electricity usage profiles with K-means},
@@ -20029,6 +20281,72 @@ Possibly, the binary thing could be "which analog ensemble members would be good
   keywords  = {UCI data sets;affinity matrix;eigenvectors;self-adaptive spectral clustering algorithm;eigenvalues and eigenfunctions;pattern clustering;},
   owner     = {sotterson},
   timestamp = {2011.11.17},
+}
+
+@Article{Tomasev13imbalKnnHubs,
+  author    = {Toma{\v{s}}ev, Nenad and Mladeni{\'c}, Dunja},
+  title     = {Class imbalance and the curse of minority hubs},
+  journal   = {Knowledge-Based Systems},
+  year      = {2013},
+  volume    = {53},
+  pages     = {157--172},
+  abstract  = {Most machine learning tasks involve learning from high-dimensional data, which is often quite difficult
+to handle. Hubness is an aspect of the curse of dimensionality that was shown to be highly detrimental to
+k-nearest neighbor methods in high-dimensional feature spaces. Hubs, very frequent nearest neighbors,
+emerge as centers of influence within the data and often act as semantic singularities. This paper deals
+with evaluating the impact of hubness on learning under class imbalance with k-nearest neighbor meth-
+ods. Our results suggest that, contrary to the common belief, minority class hubs might be responsible for
+most misclassification in many high-dimensional datasets. The standard approaches to learning under
+class imbalance usually clearly favor the instances of the minority class and are not well suited for han-
+dling such highly detrimental minority points. In our experiments, we have evaluated several state-of-
+the-art hubness-aware kNN classifiers that are based on learning from the neighbor occurrence models
+calculated from the training data. The experiments included learning under severe class imbalance, class
+overlap and mislabeling and the results suggest that the hubness-aware methods usually achieve prom-
+ising results on the examined high-dimensional datasets. The improvements seem to be most pro-
+nounced when handling the difficult point types: borderline points, rare points and outliers. On most
+examined datasets, the hubness-aware approaches improve the classification precision of the minority
+classes and the recall of the majority class, which helps with reducing the negative impact of minority
+hubs. We argue that it might prove beneficial to combine the extensible hubness-aware voting frame-
+works with the existing class imbalanced kNN classifiers, in order to properly handle class imbalanced
+data in high-dimensional feature spaces.},
+  comment   = {How to improve KNN when data has class imbalance, especially in high dim. could this be used in regression mixtures or Extreme event ID? Maybe just rare production on the high end of the power curve? Some low dim techniques do the exact wrong thing. Tests done using algs. specifically designed for hubs, leaving me unsure about MP in Flexer13shrKNNhubRdc. Has a hubness visualization tool [ref, 77]
+
+THE LOW/HIGH DIM ERROR SWAP
+
+Low dimension
+* KNN has "high specificity bias" since it retains all training data, normally considered good with unbalanced data
+ - but KNN not good at estimating probabilities when the density is low, so somewhat sensitive
+* algs w/ high "generality bias bad on imbalanced data -- the overgeneralize majority, wiping out the miniority.
+
+High dimension
+* The minority class induces errors ON THE MAJORITY class!
+ - especially bad if minority are high dim hubs
+ --- example: only 5 bad points in a dataset of 2731 cases reduced accuracy from 90\% to 21.2\%
+ --- hubness allows errors to propagate through the data
+* so, low dim methods that enhance minortity class are the wrong thing for high dim
+* random forests bad when lots of class overlap (combined w/ high dims, I think)
+
+HUBNESS AWARE KNN CLASSIFIERS
+* hw-KNN
+* h-FNN
+* NHBNN:
+ - naive Bayes inference
+ - simple yet has especially good performance
+* HIKNN
+* none of these are the methods used in Schnitzer12Localandglobal
+
+RESULTS
+* on artificial test data
+* the methods do reduce classification error due to imbalanced, high dims
+* NHBNN was especially good at borderline examples, rare points, and outliers
+
+* Hubness visulazation tool, the "image hub explorer," ref 77 is available for download.},
+  file      = {Tomasev13imbalKnnHubs.pdf:Tomasev13imbalKnnHubs.pdf:PDF},
+  groups    = {Read},
+  owner     = {sotterson},
+  publisher = {Elsevier},
+  timestamp = {2014.04.04},
+  url       = {http://www.sciencedirect.com/science/article/pii/S0950705113002682},
 }
 
 @Article{Hunter04mmQRtutorial,
@@ -22045,6 +22363,25 @@ Giglio13riskPartialQR mentions this paper, says it proves consistency (if it's t
   timestamp = {2014.04.21},
 }
 
+@Article{Nami18cardFraudDynRandFrstKnn,
+  author   = {Sanaz Nami and Mehdi Shajari},
+  title    = {Cost-sensitive payment card fraud detection based on dynamic random forest and k-nearest neighbors},
+  journal  = {Expert Systems with Applications},
+  year     = {2018},
+  volume   = {110},
+  pages    = {381 - 392},
+  issn     = {0957-4174},
+  abstract = {Payment card fraud leads to heavy annual financial losses around the world, thus giving rise to the need for improvements to the fraud detection systems used by banks and financial institutions. In the academe, as well, payment card fraud detection has become an important research topic in recent years. With these considerations in mind, we developed a method that involves two stages of detecting fraudulent payment card transactions. The extraction of suitable transactional features is one of the key issues in constructing an effective fraud detection model. In this method, additional transaction features are derived from primary transactional data. A better understanding of cardholders’ spending behaviors is created by these features. After which the first stage of detection is initiated. A cardholder's spending behaviors vary over time so that new behavior of a cardholder is closer to his/her recent behaviors. Accordingly, a new similarity measure is established on the basis of transaction time in this stage. This measure assigns greater weight to recent transactions. In the second stage, the dynamic random forest algorithm is employed for the first time in initial detection, and the minimum risk model is applied in cost-sensitive detection. We tested the proposed method on a real transactional dataset obtained from a private bank. The results showed that the recent behavior of cardholders exerts a considerable effect on decision-making regarding the evaluation of transactions as fraudulent or legitimate. The findings also indicated that using both primary and derived transactional features increases the F-measure. Finally, an average 23% increase in prevention of damage (PoD) is achieved with the proposed cost-sensitive approach.},
+  comment  = {Dynamic RF w/ KNN and apparently data age weighting.  Maybe there is a trick here for WattPlanGrid?  Could at least de-emphasize older data points during training.
+
+I couldn't find a paper for this, but requested a copy on ResearchGate
+
+Dynamic Random forest: Bernard12dynRandForest},
+  doi      = {https://doi.org/10.1016/j.eswa.2018.06.011},
+  keywords = {Payment card fraud detection, Dynamic random forest, Cost-sensitive detection, Minimum risk},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0957417418303579},
+}
+
 @Article{VanDerLinde03pcaDimRedSpline,
   author    = {Van Der Linde, Angelika},
   title     = {{PCA}-based dimension reduction for splines},
@@ -23061,8 +23398,8 @@ Possible base learners
 
 Other models considered (but not compared, I think)
 * Expectiles
- -- quanitle regression cost function but w/ abs val replaced by squared
- -- squared term allows all the nice gradient following machinery developed for LSQ
+ -- quantile regression cost function but w/ abs val replaced by squared
+ -- squared term allows all the nice gradient-following machinery developed for LSQ
  -- produces a quantile-like thing, but for the general case, it's not easy to convert them to quantiles
 * Gaussian STAR
  -- Conditional quantile by adding deterministic prediction (ns(zs)) to a standard Guassian dist. quantile
@@ -23357,6 +23694,19 @@ These s/b probabilistic forecast algorithm features, somehow.},
   keywords  = {Detecting algorithms;dynamic programming;signal processing algorithms;software algorithms;wind energy;wind power generation},
   owner     = {sotterson},
   timestamp = {2013.10.16},
+}
+
+@InProceedings{Tang18whenRandFrstFail,
+  author    = {Tang, Cheng and Garreau, Damien and von Luxburg, Ulrike},
+  title     = {When do random forests fail?},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2018},
+  pages     = {2983--2993},
+  abstract  = {Random forests are learning algorithms that build large collections of random treesand make predictions by averaging the individual tree predictions.  In this paper,we consider various tree constructions and examine how the choice of parame-ters affects the generalization error of the resulting random forests as the samplesize goes to infinity.   We show that subsampling of data points during the treeconstruction phase is important:  Forests can become inconsistent with either nosubsampling or too severe subsampling.  As a consequence, even highly random-ized trees can lead to inconsistent forests if no subsampling is used, which impliesthat some of the commonly used setups for random forests can be inconsistent.As a second consequence we can show that trees that have good performance innearest-neighbor search can be a poor choice for random forests.},
+  comment   = {
+Compare tuning advice here with that in Biau16randFrstGuideTour},
+  file      = {:Tang18whenRandFrstFail.pdf:PDF},
+  url       = {https://papers.nips.cc/paper/7562-when-do-random-forests-fail.pdf},
 }
 
 @Article{Meinshausen06qrForests,
@@ -23914,6 +24264,24 @@ Key Words and Phrases: Regression clustering, Least squares estimation, Model se
   owner     = {sotterson},
   timestamp = {2014.03.31},
   url       = {http://ejpam.com/index.php/ejpam/article/viewArticle/1184},
+}
+
+@Article{FernandezDelgado19srvyRgrssnMeth,
+  author   = {M. Fernández-Delgado and M.S. Sirsat and E. Cernadas and S. Alawadi and S. Barro and M. Febrero-Bande},
+  title    = {An extensive experimental survey of regression methods},
+  journal  = {Neural Networks},
+  year     = {2019},
+  volume   = {111},
+  pages    = {11 - 34},
+  issn     = {0893-6080},
+  abstract = {Regression is a very relevant problem in machine learning, with many different available approaches. The current work presents a comparison of a large collection composed by 77 popular regression models which belong to 19 families: linear and generalized linear models, generalized additive models, least squares, projection methods, LASSO and ridge regression, Bayesian models, Gaussian processes, quantile regression, nearest neighbors, regression trees and rules, random forests, bagging and boosting, neural networks, deep learning and support vector regression. These methods are evaluated using all the regression datasets of the UCI machine learning repository (83 datasets), with some exceptions due to technical reasons. The experimental work identifies several outstanding regression models: the M5 rule-based model with corrections based on nearest neighbors (cubist), the gradient boosted machine (gbm), the boosting ensemble of regression trees (bstTree) and the M5 regression tree. Cubist achieves the best squared correlation ( R2) in 15.7% of datasets being very near to it, with difference below 0.2 for 89.1% of datasets, and the median of these differences over the dataset collection is very low (0.0192), compared e.g. to the classical linear regression (0.150). However, cubist is slow and fails in several large datasets, while other similar regression models as M5 never fail and its difference to the best R2 is below 0.2 for 92.8% of datasets. Other well-performing regression models are the committee of neural networks (avNNet), extremely randomized regression trees (extraTrees, which achieves the best R2 in 33.7% of datasets), random forest (rf) and ε-support vector regression (svr), but they are slower and fail in several datasets. The fastest regression model is least angle regression lars, which is 70 and 2,115 times faster than M5 and cubist, respectively. The model which requires least memory is non-negative least squares (nnls), about 2 GB, similarly to cubist, while M5 requires about 8 GB. For 97.6% of datasets there is a regression model among the 10 bests which is very near (difference below 0.1) to the best R2, which increases to 100% allowing differences of 0.2. Therefore, provided that our dataset and model collection are representative enough, the main conclusion of this study is that, for a new regression problem, some model in our top-10 should achieve R2 near to the best attainable for that problem.},
+  comment  = {Comparison of 77 popular regression models over 83  regression datasets.  Best overall is the rules-and-knn based cubist but the ranking varies with problem type.  See at least Table 16 and 17.  There are also graphs showing the effects of dimensionality, etc.
+
+I've never heard of some of these models.  This might be good for the CPR ML class, or just as a reference for me.  I imagine it would also be relevant to autoML.},
+  doi      = {https://doi.org/10.1016/j.neunet.2018.12.010},
+  file     = {:FernandezDelgado19srvyRgrssnMeth.pdf:PDF},
+  keywords = {Regression, UCI machine learning repository, Cubist, M5, Gradient boosted machine, Extremely randomized regression tree},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0893608018303411},
 }
 
 @InCollection{Zhang12rflctLocLinKNN,
@@ -26663,6 +27031,22 @@ regression in direct propensity adjustment, but have some surprising results for
   timestamp = {2013.03.15},
 }
 
+@Article{Meer18reviewProbPVfrcstNetDmd,
+  author   = {D.W. van der Meer and J. Widén and J. Munkhammar},
+  title    = {Review on probabilistic forecasting of photovoltaic power production and electricity consumption},
+  journal  = {Renewable and Sustainable Energy Reviews},
+  year     = {2018},
+  volume   = {81},
+  pages    = {1484 - 1512},
+  issn     = {1364-0321},
+  abstract = {tAccurate forecasting simultaneously becomes more important and more challenging due to the increasing penetration of photovoltaic (PV) systems in the built environment on the one hand, and the increasing stochastic nature of electricity consumption, e.g., through electric vehicles (EVs), on the other hand. Until recently, research has mainly focused on deterministic forecasting. However, such forecasts convey little information about the possible future state of a system and since a forecast is inherently erroneous, it is important to quantify this error. This paper therefore focuses on the recent advances in the area of probabilistic forecasting of solar power (PSPF) and load forecasting (PLF). The goal of a probabilistic forecast is to provide either a complete predictive density of the future state or to predict that the future state of a system will fall in an interval, defined by a confidence level. The aim of this paper is to analyze the state of the art and assess the different approaches in terms of their performance, but also to what extent these approaches can be generalized so that they not only perform best on the data set for which they were designed, but also on other data sets or different case studies. In addition, growing interest in net demand forecasting, i.e., demand less generation, is another important motivation to combine PSPF and PLF into one review paper and assess compatibility. One important finding is that there is no single preferred model that can be applied to any circumstance. In fact, a study has shown that the same model, with adapted parameters, applied to different case studies performed well but did not excel, when compared to models that were optimized for the specific task. Furthermore, there is need for standardization, in particular in terms of filtering night time data, normalizing results and performance metrics.},
+  comment  = {Big review of PV generation and elecricity consumption.  Useful for net demand forecasting.},
+  doi      = {https://doi.org/10.1016/j.rser.2017.05.212},
+  file     = {:Meer18reviewProbPVfrcstNetDmd.pdf:PDF},
+  keywords = {Probabilistic forecasting, Electricity consumption, Photovoltaic, Solar radiation, Irradiance, Prediction interval},
+  url      = {http://www.sciencedirect.com/science/article/pii/S1364032117308523},
+}
+
 @Article{Cichocki14TensorNetworksBigOpt,
   author    = {Cichocki, Andrzej},
   title     = {Tensor Networks for Big Data Analytics and Large-Scale Optimization Problems},
@@ -26935,6 +27319,19 @@ Networks, Recurrent Neural Networks},
   doi       = {10.1109/ICIT.2015.7125335},
   file      = {:Dalto15deepNNultraShrtWindSpdPred.pdf:PDF},
   keywords  = {neural nets, wind power, deep neural network training, input variable selection algorithm, ultrashort-term wind forecasting, ultrashort-term wind prediction, Artificial neural networks, Complexity theory, Input variables, Predictive models, Training, Wind forecasting},
+}
+
+@InProceedings{Latinne01limNtreesRandForest,
+  author    = {Patrice Latinne and Olivier Debeir and Christine Decaestecker},
+  title     = {Limiting the Number of Trees in Random Forests},
+  booktitle = {Multiple Classifier Systems},
+  year      = {2001},
+  abstract  = {The aim of this paper is to propose a simple procedure that a priori determines a minimum number of classifiers to combine in order to obtain a prediction accuracy level similar to the one obtained with the combination of larger ensembles. The procedure is based on the McNemar non-parametric test of significance. Knowing a priori the minimum size of the classifier ensemble giving the best prediction accuracy, constitutes a gain for time and memory costs especially for huge data bases and real-time applications. Here we applied this procedure to four multiple classifier systems with C4.5 decision tree (Breiman’s Bagging, Ho’s Random subspaces, their combination we labeled ’Bagfs’, and Breiman’s Random forests) and five large benchmark data bases. It is worth noticing that the proposed procedure may easily be extended to other base learning algorithms than a decision tree as well. The experimental results showed that it is possible to limit significantly the number of trees. We also showed that the minimum number of trees required for obtaining the best prediction accuracy may vary from one classifier combination method to another.},
+  comment   = {Biau16randFrstGuideTour kind-of recommends this as a way to pick # trees.  Supposed to be simple.
+
+Note that there's no penalty for picking too many trees, just for not picking enough:  Biau16randFrstGuideTour},
+  file      = {:Latinne01limNtreesRandForest.pdf:PDF},
+  url       = {https://link.springer.com/chapter/10.1007/3-540-48219-9_18},
 }
 
 @Article{Yeniay02plsrNcmpsCmpr,
@@ -31384,9 +31781,67 @@ Also: Wyner17adaboostRandFrstInterp has more plots for decision trees, and a sli
   month    = {Jun},
   issn     = {1863-8260},
   abstract = {The random forest algorithm, proposed by L. Breiman in 2001, has been extremely successful as a general-purpose classification and regression method. The approach, which combines several randomized decision trees and aggregates their predictions by averaging, has shown excellent performance in settings where the number of variables is much larger than the number of observations. Moreover, it is versatile enough to be applied to large-scale problems, is easily adapted to various ad hoc learning tasks, and returns measures of variable importance. The present article reviews the most recent theoretical and methodological developments for random forests. Emphasis is placed on the mathematical forces driving the algorithm, with special attention given to the selection of parameters, the resampling mechanism, and variable importance measures. This review is intended to provide non-experts easy access to the main ideas.},
-  comment  = {Tutorial recommended by Olson18sensRndFrstProbKern
+  comment  = {Good overview of the first Breiman, 2001 random forest algorithm.  How
+it works, how to tune tweakable parameters, and why the algorithm works
+(I skipped this last theoretical part, but I might want to go back to it
+if I ever reread and try to comprehend Wyner17adaboostRandFrstInterp)
 
-Espansion of this paper's ideas: Arlot16commentsRndFrstGuidTour},
+* Tutorial recommended by Olson18sensRndFrstProbKern
+* Compare tuning advice here with Tang18whenRandFrstFail
+* Expansion of this paper's ideas: Arlot16commentsRndFrstGuidTour
+
+Basic Random Forest Idea: Bagging (bootstrap-aggregating)
+* Boostrapping: Many decision trees are trained on different data (bootstrapped) w/ randomly chosen parmeters
+  + can be with or without replacement
+* Aggregating: decisions are either averaged (regression) or majority voted (classification)
+
+Decision trees used in Random Forest ensemble
+* Splitting
+  + every node is split at each training step
+  + candidate input variables for each split are chosen randomly, with the number chosen being a tweakable parameter, mtry
+  + Split Critereon
+    - Regression: CART Squared Error split critereon
+      * for each input variable, find a splitting threshold which minimizes the RMSE if the prediction is made by separately averaging y values on either side of the split
+      * split on the variable which reduces the RMSE the most at its optimal splitting threshold
+    - Classification: CART Gini impurity split critereon
+      * I didn't quite understand the equation given.
+      * Vincent17giniPurity has a (relvant?) explanation
+* Stopping
+  + stop growing trees when node has <= nodesize points
+
+Tuning of apparently most important parameters
+* M: # trees
+  + bigger M ==> more stability, more computation
+  + No penalty for picking too many trees, only one for not picking enough [says one ref]
+  + Latinne01limNtreesRandForest can pick M w/ smaller size, no loss in perf
+* nodesize: max # points in leaf nodes
+  + R library default for nodesize
+    - classification: 1
+    - regression: 5
+  + Kruppa13cnsmrRiskProbRFnodesize can pick nodesize w/ simple alg
+* mtry: # dimensions to test at each split
+  + R library default for mtry
+    - classification: mtry=sqrt(p); p=input dimension (recommended value in ref)
+    - regression: mtry=p/3 (R package default)
+  + [some refs] say make as large as computationally possible
+  + but I think I read that for probabilistic forecasts, it must be tuned
+  + Forest-RK [Bernard08forest-RKmtry] randomizes mtry, avoiding the choice.
+    - this has been further improved in Bernard12dynRandForest
+* a_n: number of bootstrap samples used to train each tree
+  + R library defaults for a_n: a_n == total # training points
+     Using the default, I guess you'd want to sample with replacement,
+     then, so there would be at least some randomness in the training set
+      (although note that Breiman04consistRandForest says that
+      bootstrapping not that important on his simple empirical tests)
+  +  no other advice than this, it seems
+
+    Tutorial recommended by Olson18sensRndFrstProbKern
+
+    Error estimation There's soine kind of out-of-bag error estimate
+    that is run internally which composes a disjoint test and train set
+    (for each tree?).  This part is not too clear.  But it's explained
+    in Kruppa13cnsmrRiskProbRFnodesize
+},
   day      = {01},
   doi      = {10.1007/s11749-016-0481-7},
   file     = {:Biau16randFrstGuideTour.pdf:PDF},
@@ -34172,7 +34627,28 @@ Optimization is done w/ dynamic programming and Lagrangian stuff.
   issn     = {0038-092X},
   note     = {The American Solar Energy Society's Solar 2003 Special Issue},
   abstract = {This paper describes a methodology to correct satellite-derived irradiances over complex terrain for models that use the visible satellite channel as main input for cloud index determination. Complex terrain is characterized by high reflectance surface and or the juxtaposition of high and low reflectance surfaces (e.g., desert plains and forested ridges). The correction consists of (1) climate dependent post-model clear sky calibration and (2) singularity identification and removal.},
-  comment  = {Describes SolarAnywhere Irrac calcs, according to Kubiniec19solarSatelliteTuneGrndTR},
+  comment  = {Describes SolarAnywhere Irrac calcs, according to Kubiniec19solarSatelliteTuneGrndTR.  The baseline for the improvements in this paper is Perez02newMdllSatelliteIrrad
+
+Irradiance estimate is mapped from min to of the range of satellite measurements, with low measurements indicating exposed ground and high values indicating highly reflective clouds.  There is a lot of normalization of this signal by time of day/year, the location specifics, ground measurements for snow, etc.
+
+This paper is about fixes to problems the algorithms in Perez02newMdllSatelliteIrrad have iwht high ground reflectance, namely:
+
+1. ground with very high specularity reults in small but significant underestimates of DNI.  Somehow, specular irradiance isn't measured correctly but is correct during some hours of the day.  Why this isn't explained.  
+
+Solution: in clear, arid areas, the lower bound for each pixel is defined by a low empirical quantile over a month.
+Validation: test at one ground measurment site shows improvement
+
+2. bright areas next to dark areas e.g. forests on a ridge, have big errors when there are satellite nav. errors.  This makes the lower bound of dynamic range too low for the bright areas.
+
+Solution:  detect holes in lower bound by visible spectrum 2D edge detection in space and rough vs. smooth difference in time.  Fill the holes by the neighborhood average, a little like a Photoshop acne remover.  It's not totally clear that this fix is only for problem 2 but anyway, it's enforcing smoothness.  They may also add the IR channel to this algorithm
+
+Validation: no test b/c no ground instruments at the areas where this occurs.
+
+Ideas for improvements
+* really use quantiles (instead of counts) to measure low bound of dynamic range.
+* do 3D smoothness enforcement (2D space + time), something like would be done for video processing
+* add IR channel and do a 4D smoother
+},
   doi      = {https://doi.org/10.1016/j.solener.2003.12.016},
   file     = {:Perez04satelliteIrradTerrain.pdf:PDF},
   url      = {http://www.sciencedirect.com/science/article/pii/S0038092X03004687},
@@ -34296,6 +34772,21 @@ on the quality of the underlying wind power forecast.},
   keywords  = {power generation protection, wind power plantscload management, cload protection, clocal weather measurements, cwind generation, dynamic line rating protection, voltage 132 kV, wind farm connections},
   owner     = {sotterson},
   timestamp = {2009.04.09},
+}
+
+@InProceedings{Tung14randFrstQRhighDim,
+  author       = {Tung, Nguyen Thanh and Huang, Joshua Zhexue and Khan, Imran and Li, Mark Junjie and Williams, Graham},
+  title        = {Extensions to quantile regression forests for very high-dimensional data},
+  booktitle    = {Pacific-Asia Conference on Knowledge Discovery and Data Mining},
+  year         = {2014},
+  pages        = {247--258},
+  organization = {Springer},
+  abstract     = {This paper describes new extensions to the state-of-the-art regression random forests Quantile Regression Forests (QRF) for applications to high-dimensional data with thousands of features. We propose a new subspace sampling method that randomly samples a subset of features from two separate feature sets, one containing important features and the other one containing less important features. The two feature sets partition the input data based on the importance measures of features. The partition is generated by using feature permutation to produce raw importance feature scores first and then applying p-value assessment to separate important features from the less important ones. The new subspace sampling method enables to generate trees from bagged sample data with smaller regression errors. For point regression, we choose the prediction value of Y from the range between two quantiles Q 0.05 and Q 0.95 instead of the conditional mean used in regression random forests. Our experiment results have shown that random forests with these extensions outperformed regression random forests and quantile regression forests in reduction of root mean square residuals.
+Keywords: Regression Random Forests, Quantile Regression Forests,
+Data Mining, High Dimensional Data},
+  comment      = {Random Forest QR where per-node splitting feature samples both important and unimportant features.  Supposed to be better for high dimensions.},
+  file         = {:Tung14randFrstQRhighDim.pdf:PDF},
+  url          = {https://link.springer.com/chapter/10.1007/978-3-319-06605-9_21},
 }
 
 @InProceedings{Kankiewicz14solarUncertRsrcTune,
@@ -40853,7 +41344,22 @@ Tons of cites in Google Scholar of this paper, most from speech and language mod
   pages    = {307 - 317},
   issn     = {0038-092X},
   abstract = {We present a new simple model capable of exploiting geostationary satellite visible images for the production of site/time-specific global and direct irradiances The new model features new clear sky global and direct irradiance functions, a new cloud-index-to-irradiance index function, and a new global-to-direct-irradiance conversion model. The model can also exploit operationally available snow cover resource data, while deriving local ground specular reflectance characteristics from the stream of incoming satellite data. Validation against 10 US locations representing a wide range of climatic environments indicates that model performance is systematically improved, compared to current visible-channel-based modeling practice.},
-  comment  = {Decribes Solar Anywhere satellite calibration, I think, according to Kubiniec19solarSatelliteTuneGrndTR},
+  comment  = {Decribes Solar Anywhere satellite calibration, I think, according to Kubiniec19solarSatelliteTuneGrndTR. 
+
+Idea is, I think, that the GHI and DNI at the surface can be calculated using satellite irradiance measured of sunlight bouncing back off the earth.
+
+A bunch of corrections are required.  The main ones are
+* how much sunlight would hit the earth w/o clouds (seasonal, daily, spatial geometry, atmospheric turbidity)
+* how reflective the earth is -- from earth bound snow measurements and a sliding window dynamic range estimation
+* terrain (updated in Perez04satelliteIrradTerrain, I think).
+* satelllite dynamic range decay over time and its calibration (I think)
+* etc.
+
+Some hacks are used and some geometric equations.
+
+Output is GHI and DNI at each satellite image pixel.
+
+},
   doi      = {https://doi.org/10.1016/S0038-092X(02)00122-6},
   file     = {:Perez02newMdllSatelliteIrrad.pdf:PDF},
   url      = {http://www.sciencedirect.com/science/article/pii/S0038092X02001226},
@@ -42131,6 +42637,21 @@ Could be a stopping criteria for a wrapper forecasting feature selection algorit
   timestamp = {2009.05.08},
 }
 
+@Article{Athey19generalizedRandFrst,
+  author    = {Athey, Susan and Tibshirani, Julie and Wager, Stefan and others},
+  title     = {Generalized random forests},
+  journal   = {The Annals of Statistics},
+  year      = {2019},
+  volume    = {47},
+  number    = {2},
+  pages     = {1148--1178},
+  abstract  = {We propose generalized random forests, a method for nonparametric statistical estimation based on random forests (Breiman [Mach. Learn. 45 (2001) 5–32]) that can be used to fit any quantity of interest identified as the solution to a set of local moment equations. Following the literature on local maximum likelihood estimation, our method considers a weighted set of nearby training examples; however, instead of using classical kernel weighting functions that are prone to a strong curse of dimensionality, we use an adaptive weighting function derived from a forest designed to express heterogeneity in the specified quantity of interest. We propose a flexible, computationally efficient algorithm for growing generalized random forests, develop a large sample theory for our method showing that our estimates are consistent and asymptotically Gaussian and provide an estimator for their asymptotic variance that enables valid confidence intervals. We use our approach to develop new methods for three statistical tasks: nonparametric quantile regression, conditional average partial effect estimation and heterogeneous treatment effect estimation via instrumental variables. A software implementation, grf for R and C++, is available from CRAN.},
+  comment   = {Random forest quantile regression and similar probabilistic problems using RFs.  Has R and C++},
+  file      = {:Athey19generalizedRandFrst.pdf:PDF},
+  publisher = {Institute of Mathematical Statistics},
+  url       = {https://projecteuclid.org/euclid.aos/1547197251#abstract},
+}
+
 @Article{Fleuret04binFeatSelCMI,
   author   = {Fleuret, Fran{\c{c}}ois},
   title    = {Fast binary feature selection with conditional mutual information},
@@ -43195,132 +43716,6 @@ statistics, engineering, earth and atmospheric science},
   Owner                    = {sotterson},
   Timestamp                = {2008.07.03},
   URL                      = {http://www.actapress.com/Abstract.aspx?paperId=20268}
-}
-
-@InProceedings{Tuohy08stochSchedWind,
-  author    = {Aidan Tuohy and Eleanor Denny and Peter Meibom and Mark O?Malley},
-  title     = {Benefits of Stochastic Scheduling for Power Systems with Significant Installed Wind Power},
-  booktitle = {Probabilistic Methods Applied to Power Systems (PMAPS)},
-  year      = {2008},
-  abstract  = {Wind energy on a power system alters the unit
-commitment and dispatch problem, as it adds a stochastic
-element due to the uncertainty of wind power forecasts. By
-explicitly taking into account the stochastic nature of wind power,
-it is expected that better schedules should be produced, thereby
-reducing costs on the system. This paper compares a stochastically
-optimised unit commitment and dispatch solution with a
-deterministically optimised solution. These are also compared to
-a case where perfect forecasting of wind and load is assumed.
-Using a planning model for the Irish system, it is shown that the
-schedules produced by stochastically optimising give a system
-cost less than that produced by deterministically optimising, if
-the same forecasts are used. The solution obtained when perfect
-forecasting is assumed is used as a base case for comparison. By
-examining unit operation, as well as interconnector usage, the
-reasons for the reduction in cost can be seen. It is also shown
-that using stochastic optimisation produces solutions which are
-better at meeting load and reserve targets.
-Index Terms?Wind power generation, Power system economics,
-Power generation dispatch, Unit Commitment, Wind
-Forecasting.},
-  comment   = {Shows benefit of stochastic optimization for unit commitment and dispatch
-
-* system cost is lower if use stoch optimization
-* ID's why stoch opt. is better
-* stochastic optimisation produces solutions which are better at meeting load and reserve targets},
-  file      = {Tuohy08stochSchedWind.pdf:Tuohy08stochSchedWind.pdf:PDF},
-  groups    = {DOE-PNL09, Use, doReadWPV_2},
-  location  = {Puerto Rico},
-  owner     = {sotterson},
-  timestamp = {2009.03.03},
-  url       = {http://www.risoe.dtu.dk/rispubl/art/2008_96.pdf},
-}
-
-@InProceedings{Hodge11frcstErrDistTime,
-  author    = {Hodge, B. and Milligan, M.},
-  title     = {Wind power forecasting error distributions over multiple timescales},
-  booktitle = {Power and Energy Society General Meeting, 2011 IEEE},
-  year      = {2011},
-  pages     = {1--8},
-  month     = jul,
-  abstract  = {Wind forecasting is an important consideration in integrating large amounts of wind power into the electricity grid. The wind power forecast error distribution assumed can have a large impact on the confidence intervals produced in wind power forecasting. In this work we examine the shape of the persistence model error distribution for ten different wind plants in the ERCOT system over multiple timescales. Comparisons are made between the experimental distribution shape and that of the normal distribution. The shape of the distribution is found to change significantly with the length of the forecasting timescale. The Cauchy distribution is proposed as a model distribution for the forecast errors and model parameters are fitted. Finally, the differences in confidence intervals obtained using the Cauchy distribution and the normal distribution are compared.},
-  comment   = {Normal distribution not a good fit for wind power persistence forecasts, info about how it changes w/ horizon. Normal fit especially bad since dist. kurtois changes w/ lookahead (which Gaussians don't). Cauchy is a better fit. Probably, the main finding is that error tails get fatter (kurtosis decreases) with forecast horizon, although this is with persistence forecasts, which may not be generalizable. BUT (I say) these are not conditional distributions, but distributions over long time periods, and Cauchy doesn't appear to be bounded ==> not so great for quantile regression (probabilistic forecasting)
-
-
-* refs for non-Gaussianinity of power forecast errors fo 6-48 hrs (and that NWP IS Gaussian)
-* very short horizons: 1min to 3 hours
-* forecast errors increase if persisting and measuring against time points instead of averages (no surprise)
-* 2005 study found that wind power forecast errors cost 15,000-18,000 Euros per MW of installed capacity!
--- how does this compare w/ num. given by the industry forecasting guy at the 2012 Norcowe workshop in Bergen?
-* NWP error dist actually is normally distributed but power forecasts arent, as several cited studies have found
-* Cauchy is a better fit for wind power forecast errors but..
-* Cauchy can't be estimated from mean and variance. Needs real data points and is messy (Wikipedia)
--- so why not just do kernel est? Does Fraunhofer do this already?
-* a way to fit Cauchy from quantiles: Cook10distFromQuant
-* matlab toolbox for alpha-stable (includes Cauchy Veillette10AlphaStableDistMatlab):
-* would Johnson also work: George11estJohnsonDistBnd: this distribution IS bounded.
-
-* distribution moments change with forecast horizon (peristence)
-
-Horizon == Kurtosis ======== Skew ===============
------------------------------------------------------------------------------
-low ===== high (skinny tail) == a little high (asymmetric)
-high ==== low (fat tail) =======low (symmetric)
-
-Effect:
-Normal distribution can overestimate the range of values for lower percentage confidence intervals, while underestimating the range for higher percentage confidence intervals.},
-  doi       = {10.1109/PES.2011.6039388},
-  file      = {Hodge11frcstErrDistTime.pdf:Hodge11frcstErrDistTime.pdf:PDF},
-  groups    = {Read, Test, ErrDistProps, doReadNonWPV_1},
-  issn      = {1944-9925},
-  keywords  = {Forecasting;Gaussian distribution;Histograms;Predictive models;Shape;Wind forecasting;Wind power generation;load forecasting;normal distribution;wind power plants;Cauchy distribution;electricity grid;experimental distribution shape;multiple timescales;normal distribution;wind plants;wind power forecasting error distributions;Wind power generation;error probability;forecasting;stochastic systems;wind energy;},
-  owner     = {sotterson},
-  timestamp = {2013.01.30},
-}
-
-@Article{Mauch13windPowFrcstLogitNorm,
-  author    = {Mauch, Brandon and Apt, Jay and Carvalho, Pedro MS and Small, Mitchell J},
-  title     = {An effective method for modeling wind power forecast uncertainty},
-  journal   = {Energy Systems},
-  year      = {2013},
-  volume    = {4},
-  number    = {4},
-  pages     = {393--417},
-  abstract  = {Wind forecasts are an important tool for electric system operators. Proper
-use of wind power forecasts to make operating decisions must account for the uncertainty
-associated with the forecast. Data from different regions in the USA with
-forecasts made by different vendors show the forecast error distribution is strongly
-dependent on the forecast level of wind power. For low wind power forecast, the forecasts
-tend to under-predict the actual wind power produced, whereas when the forecast
-is for high power, the forecast tends to over-predict the actual wind power. Most of
-the work in this field neglects the influence of wind forecast levels on wind forecast
-uncertainty and analyzes wind forecast errors as a whole. The few papers that account
-for this dependence, group wind forecasts by the value of the forecast and fit parametric
-distributions to actual wind power in each bin of data. In the latter case, different
-parameters and possibly different distributions are estimated for each data bin. We
-present a method to model wind power forecast uncertainty as a single closed-form
-solution using a logit transformation of historical wind power forecast and actual wind
-power data. Once transformed, the data become close to jointly normally distributed.
-We show the process of calculating confidence intervals of wind power forecast errors
-using the jointly normally distributed logit transformed data. This method has the
-advantage of fitting the entire dataset with five parameters while also providing the
-ability to make calculations conditioned on the value of the wind power forecast.
-
-Keywords Renewable energy ? Wind power forecasting ? Uncertainty ? Logit?normal distribution},
-  comment   = {Point->Quantile wind power forecasts derived by logit norm transform and Gaussian.
-
-* I think Pierre did something like this too: Pinson12vShrtWndPowLogitNorm
- -- but he extended for autocorrelation, very short term
- -- might be good for ReWP modeling?
-* how is the tail (extreme) behavior of this?
-* how to make this work for circular wind variable?
-* more than 1D input?
-* would this be a good preprocessor for a 1D spline quantile regression? Or boosting?},
-  doi       = {10.1007/s12667-013-0083-3},
-  file      = {Mauch13windPowFrcstLogitNorm.pdf:Mauch13windPowFrcstLogitNorm.pdf:PDF;Mauch13windPowFrcstLogitNorm.pdf:old\\Mauch13windPowFrcstLogitNorm.pdf:PDF},
-  owner     = {sotterson},
-  publisher = {Springer},
-  timestamp = {2015.04.08},
 }
 
 @Article{Archer07windBaseloadInterConn,
@@ -44630,6 +45025,24 @@ Earlier tech note: Gneiting04calibProbWindForecast},
   url       = {http://ideas.repec.org/a/bes/jnlasa/v101y2006p968-979.html},
 }
 
+@Article{Zhang18probLoadFrcstRandFrstQD,
+  author   = {Wenjie Zhang and Hao Quan and Dipti Srinivasan},
+  title    = {Parallel and reliable probabilistic load forecasting via quantile regression forest and quantile determination},
+  journal  = {Energy},
+  year     = {2018},
+  volume   = {160},
+  pages    = {810 - 819},
+  issn     = {0360-5442},
+  abstract = {With the rapidly increasing complexity of operational challenges in smart grid environment, the traditional load point forecasting methods are no longer adequate. Probabilistic load forecasting has been proven to be more suitable in these environments due to their superior ability to provide more advanced uncertainty quantification. Most of the probabilistic forecasting methods, however are either insufficiently accurate or take very long training time. While probabilistic forecasting using quantile forecasts has been popular in research, the industry has been adopting another form of probabilistic forecasts, namely prediction intervals (PIs). The direct PI construction (DPIC) method typically employed for deciding the corresponding upper and lower quantile pair in PIs, however cannot guarantee the reliability of constructed PIs. This paper not only proposes a parallel and improved load quantile forecasting method but also solves the reliability issue of DPIC by proposing an alternative quantile determination (QD) method. Case studies show that the proposed load quantile forecasting method is both more accurate and more computationally efficient than the state-of-the-art methods and the reliability issue of DPIC is considerably alleviated by QD.},
+  comment  = {A random forest load forecast, used to predict some kind of interval that's used in actual industry problems.  So maybe a "use of probabilistic forecast" paper too.
+
+paper wasn't available for free...},
+  doi      = {https://doi.org/10.1016/j.energy.2018.07.019},
+  file     = {:Latinne01limNtreesRandForest.pdf:PDF},
+  keywords = {Probabilistic forecasting, Quantile regression forest, Gradient boosting machine, Prediction interval, Uncertainty, Reliability, Electric load forecasting},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0360544218313148},
+}
+
 @Article{Smaragdis11timeFreqImpute,
   author    = {Smaragdis, P. and Raj, B. and Shashanka, M.},
   title     = {Missing data imputation for time-frequency representations of audio signals},
@@ -45197,6 +45610,19 @@ Three types mentioned here:
   url       = {http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf},
 }
 
+@Misc{Blah238_14_specularVsReflective,
+  author       = {blah238},
+  title        = {Difference between Albedo and Surface Reflectance},
+  howpublished = {gis.stackexchange.com},
+  month        = oct,
+  year         = {2014},
+  comment      = {Specular reflectance: is like what you get off a mirror; 
+
+Albedo:  is diffuse, going in many directions.},
+  file         = {:Blah238_14_specularVsReflective.pdf:PDF},
+  url          = {https://gis.stackexchange.com/questions/36726/difference-between-albedo-and-surface-reflectance},
+}
+
 @InProceedings{Blatchford08caisoRenewInteg,
   author    = {Jim Blatchford},
   title     = {CAISO Supporting Integration of Renewables},
@@ -45335,6 +45761,23 @@ My old thesis notes (README.org) pointed to a Matlab implementation of this but 
   file      = {Brand02IncrSVDmissDat.pdf:Brand02IncrSVDmissDat.pdf:PDF},
   owner     = {sotterson},
   timestamp = {2014.06.27},
+}
+
+@TechReport{Breiman04consistRandForest,
+  author      = {Leo Breiman},
+  title       = {Consistency for a simple model of random forests},
+  institution = {Statisticis Department, University of California, Berkeley},
+  year        = {2004},
+  number      = {670},
+  month       = sep,
+  comment     = {Biau16randFrstGuideTour says that this explains the GINI splitting criterion used in random forests.  I didn't find that here, but here are some empirical...
+
+... Tidbits about random forest _classification_
+1. bootrapping isn't that important
+2. splitting based on median of a variable (not using class labels) significantly increases error rate
+
+Understandable Gini impurity explanation is here: Vincent17giniPurity},
+  file        = {:Breiman04consistRandForest.pdf:PDF},
 }
 
 @InProceedings{Bright04bestEnsChllng,
@@ -50504,53 +50947,6 @@ But it's criticized in: Tomasev11knnHubsHighDim (same author)},
   url          = {http://dl.acm.org/citation.cfm?id=2063919},
 }
 
-@Article{Tomasev13imbalKnnHubs,
-  author    = {Toma{\v{s}}ev, Nenad and Mladeni{\'c}, Dunja},
-  title     = {Class imbalance and the curse of minority hubs},
-  journal   = {Knowledge-Based Systems},
-  year      = {2013},
-  volume    = {53},
-  pages     = {157--172},
-  comment   = {How to improve KNN when data has class imbalance, especially in high dim. could this be used in regression mixtures or Extreme event ID? Maybe just rare production on the high end of the power curve? Some low dim techniques do the exact wrong thing. Tests done using algs. specifically designed for hubs, leaving me unsure about MP in Flexer13shrKNNhubRdc. Has a hubness visualization tool [ref, 77]
-
-THE LOW/HIGH DIM ERROR SWAP
-
-Low dimension
-* KNN has "high specificity bias" since it retains all training data, normally considered good with unbalanced data
- - but KNN not good at estimating probabilities when the density is low, so somewhat sensitive
-* algs w/ high "generality bias bad on imbalanced data -- the overgeneralize majority, wiping out the miniority.
-
-High dimension
-* The minority class induces errors ON THE MAJORITY class!
- - especially bad if minority are high dim hubs
- --- example: only 5 bad points in a dataset of 2731 cases reduced accuracy from 90\% to 21.2\%
- --- hubness allows errors to propagate through the data
-* so, low dim methods that enhance minortity class are the wrong thing for high dim
-* random forests bad when lots of class overlap (combined w/ high dims, I think)
-
-HUBNESS AWARE KNN CLASSIFIERS
-* hw-KNN
-* h-FNN
-* NHBNN:
- - naive Bayes inference
- - simple yet has especially good performance
-* HIKNN
-* none of these are the methods used in Schnitzer12Localandglobal
-
-RESULTS
-* on artificial test data
-* the methods do reduce classification error due to imbalanced, high dims
-* NHBNN was especially good at borderline examples, rare points, and outliers
-
-* Hubness visulazation tool, the "image hub explorer," ref 77 is available for download.},
-  file      = {Tomasev13imbalKnnHubs.pdf:Tomasev13imbalKnnHubs.pdf:PDF},
-  groups    = {Read},
-  owner     = {sotterson},
-  publisher = {Elsevier},
-  timestamp = {2014.04.04},
-  url       = {http://www.sciencedirect.com/science/article/pii/S0950705113002682},
-}
-
 @Article{Tong17probFrcstPowSysSlides,
   author  = {Lang Tong},
   title   = {Probabilistic Forecasting for Power System Operations},
@@ -50665,6 +51061,17 @@ Time/space resolution:
   timestamp = {2016.12.19},
 }
 
+@Misc{Vincent17giniPurity,
+  author       = {Picaud Vincent},
+  title        = {A simple \& clear explanation of the Gini impurity?},
+  howpublished = {Comment on StackExchange},
+  month        = oct,
+  year         = {2017},
+  comment      = {Very simple explanation of the Gini Criterion used to do node splits in decision trees, better than the one in Breiman04consistRandForest or  Biau16randFrstGuideTour, if they are talking about the same thing.},
+  file         = {:Vincent17giniPurity.pdf:PDF},
+  url          = {https://stats.stackexchange.com/questions/308885/a-simple-clear-explanation-of-the-gini-impurity},
+}
+
 @Article{Voiland09sunFluctInstrmnt,
   author    = {Adam Voiland},
   title     = {New Sun-Watching Instrument to Monitor Sunlight Fluctuations},
@@ -50751,6 +51158,16 @@ Robust UC
   owner     = {sotterson},
   timestamp = {2014.01.23},
   url       = {http://www.ferc.gov/CalendarFiles/20120627085905-Wednesday_SessionA_Wang.pdf},
+}
+
+@Misc{Ward18sumPoissonsCourseNts,
+  author       = {Mark Daniel Ward},
+  title        = {Sums of independent Poisson random variables are Poisson random variables},
+  howpublished = {Course Notes: Probability STAT/MA 41600 (Fall). Purdue University},
+  year         = {2018},
+  comment      = {Proof that the sum of Poisson RV's is itself a Poisson RV.  Downloading the rest of these course notes might be worth it.},
+  file         = {:Ward18sumPoissonsCourseNts.pdf:PDF},
+  url          = {http://llc.stat.purdue.edu/2018/41600/},
 }
 
 @Conference{Watson12stochOptPowSys,
@@ -50863,6 +51280,21 @@ The Basic Kalman Filter Idea: Predictor-Corrector
   owner       = {sotterson},
   timestamp   = {2008.09.25},
   url         = {http://www.cs.unc.edu/~welch/media/pdf/kalman_intro.pdf},
+}
+
+@Misc{Whyzar16diffRadIrradLumIllum,
+  author       = {whyzar},
+  title        = {Difference between irradiance and radiance, remote sensing reflectance and water leaving radiance},
+  howpublished = {gis.stackexchange.com},
+  month        = dec,
+  year         = {2016},
+  comment      = {Difference between radiance, irradiance; luminance, illuminance
+
+Radiance:  Watts of radiation emitted in a solid angle from unit area of a source (W/m^2/sr)
+Irradiance: radiation flux per area (W/m^2)
+Luminance/Illuminance: seem to be flux projected on to a flat surface but this comment isn't too clear about that},
+  file         = {:Whyzar16diffRadIrradLumIllum.pdf:PDF},
+  url          = {https://gis.stackexchange.com/questions/222554/difference-between-irradiance-and-radiance-remote-sensing-reflectance-and-water},
 }
 
 @Article{Wicker13nwpEvrythng100min,

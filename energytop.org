@@ -253,6 +253,11 @@
 
     How the result (effect) of the same treatment varies across sub-populations.
 
+*** <<Gini Criterion>>
+    From: [[file:energy.bib::Vincent17giniPurity][Vincent 2017: simple and clear Gini impurity]]
+
+    Used for node splitting in random forest classifiers.  See the linked-to pdf.  This is different from the Gini equality coefficient.
+
 *** R-squared
     From: [[http://blog.minitab.com/blog/adventures-in-statistics-2/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit][Regression Analysis: How Do I Interpret R-squared and Assess the Goodness-of-...]]
 
@@ -718,6 +723,14 @@
 
     Use for testing overfitting e.g. in [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining (I think)]]: Know true error distribution of synthetic data.  If, on the training set, a classifier gets better than the Bayes Error, then you know you've overtrained.
 
+*** Standard Error vs. Standard Deviation
+    
+    *Standard error (of the mean, SE or SEM)* is how far the mean of the sample is from the total population mean. 
+
+    *Standard deviation (SD)* is how variable the sample population (usually) is.
+
+    Note that the distribution of the sample mean has a mean of the true population mean, and is normally distributed (from e.g. [[https://www.evernote.com/l/AA35GZhJAfdMKq7mq6VqKjEbLJ6AfOgp6sk/][here]]).
+
 *** Survival and Hazard Functions
     From: [[file:energy.bib::Altman09glmNonlinMdlCourseNts][Altman 2009: Survival and Hazard Functions, Lect 32]]
           [[file:energy.bib::Grace-Martin19hazardFunc][Grace-Martin 2019: What Is a Hazard Function]]?
@@ -736,7 +749,6 @@
     o There's a simple relationship between survival and hazard functions.
     o a hazard function is a measure of [[Risk vs. Odds][risk]]
       
-
 *** Proportional Hazards Model
     From: [[file:energy.bib::Altman09glmNonlinMdlCourseNts][Altman 2009: Survival and Hazard Functions, Lect 32]]
 
@@ -789,6 +801,20 @@
 
     Also [[Risk vs. Odds]]
 
+*** Radiance vs. Irradiance
+    From: [[file:energy.bib::Whyzar16diffRadIrradLumIllum][whyzar 2016: Difference Radiance / Irradiance]]
+
+    *Radiance*  
+    Watts of radiation emitted in a solid angle from unit area of a source (W/m^2/sr)
+
+    *Irradiance* 
+    Radiation flux per area (W/m^2)
+
+* Albedo vs. Specular Reflectance
+  From: [[file:energy.bib::Blah238_14_specularVsReflective][blah238 2014: Difference Albedo Surface Reflectance]]
+
+  /Specular reflectance/ is like what you get off a mirror; /albedo/ is diffuse, going in many directions.
+  
 * Code
 *** <<Books w/ source code>>
 ***** [[http://www.neurosolutions.com/products/nsbook/][Interactive Neural Network Book]] explains recurrent NN's, has demos
@@ -2195,6 +2221,9 @@ Scott
 
 *** [[file:energy.bib::Legler19broadenGLMmultiLev][Legler & Roback 2019: Broadening Horiz, GLM and Multilev Models]]
 
+*** <<Aggregated regression using GLMs>>
+******* [[file:energy.bib::Bhowmik19estimaggLrnAggDat][Bhowmik et al. 2019: EstImAgg learing groupwise aggregated data with GLMs]] 
+******* [[file:energy.bib::Bhowmik15glmForAggDat][Bhowmik et al. 2015: Generalized linear models for aggregated (histogram) data]]
 *** <<Poisson Regression>>
 ***** TODO [[file:energy.bib::Agresti07introCategDatAnl][Agresti 2007: Introduction Categorical Data Analysis]] (for Poisson part)
 ***** TODO [[file:energy.bib::Benjamin18mdrnMLvsGLMpoisson][Benjamin et al. 2018: Modern Machine Learning vs Poisson GLM]]
@@ -2218,6 +2247,7 @@ Scott
 
 ***** [[file:energy.bib::Ohara2010noLogCountDat][Ohara & Kotze 2010: Do not log counts]]: Poisson/Neg. binom best for counts
 ***** [[file:energy.bib::Buskirk15propenseLRvsRandFrst][Buskirk & Kolenikov 2015: Finding Respondents Forest propens vs. LogRr]]
+***** [[file:energy.bib::Kruppa13cnsmrRiskProbRFnodesize][Kruppa et al. 2013: Consumer indiv. prob consumer credit risk (RFs better)]]
 ***** Confidence Intervals for logistic regression output probability
       It's said that you can do this w/ bootstrap but there's one analytic method (below)
 ******* Analytic LR conf interv: [[https://stats.stackexchange.com/questions/354098/calculating-confidence-intervals-for-a-logistic-regression][Calculating confidence intervals for a logistic regression]]
@@ -3995,21 +4025,13 @@ Hope that helps,
 
     TODO: copy all Rand Forest papers to here
 
-***** Random Forest Books and Long Reports
-******* [[file:energy.bib::Hastie09elemStatLrnBook][Hastie et al. 2009: Elements Statistical Learning]] 
-***** TODO Tutorials on Random Forests
-******* TODO [[file:energy.bib::Biau16randFrstGuideTour][Biau & Scornet 2016 Random Forest Guided Tour]]
-******* [[file:energy.bib::Arlot16commentsRndFrstGuidTour][Arlot & Genuer 2016: comments on Biau & Scornet 2016 Rand Forest Guided]]
-***** [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining ADABOOST and Random forest Interp]]
-***** [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
-***** TODO [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
-***** [[file:energy.bib::Li11randKNNfeatSelVsRandFrst][Li et al. 2011: Random KNN Random Forests]] (more stable than plain RFs)
 ***** Trees have difficulties with
 ******* non-straight lines, interactions: [[https://www.evernote.com/l/AA1nXiMh5_dITrJxTp7r95xFwAZVaKGm0nM/][Deep learning: A brief guide for practical problem solvers]]
 ******* extrapolation beyond training outputs: [[https://www.evernote.com/l/AA0XaycItP9BVZXF7qqYp9wsnhQINsieAaw/][Extrapolation is tough for trees!]]
 ******* Stability (or not?) See: [[Random Forest feature selection]]
 ******* lots of class overlap (combined w/ high dims, I think): [[file:energy.bib::Tomasev13imbalKnnHubs][Tomasev & Mladenic 2013: Class]]
 ******* [[Learning montonicity]], although at [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][least boosted trees have a fix]]
+******* [[Most machine learning tasks involve learning from high-dimensional data, which is often quite difficult][Overlapping classes with imbalance]]
 ***** Trees are good for ? ... (add something here)
 ******* high dim, few samples (n<<p): [[file:energy.bib::Strobl09rcrsPartForest][Strobl et al. 2009 intro recurs part.]]
 ******* hyperplane separable data: [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop]]
@@ -4017,16 +4039,38 @@ Hope that helps,
 ******* better than LARS on Boston Housing data: [[file:energy.bib::Trevor04LAR][Trevor et al. 2004: Least Angle Regression]]
 ******* RFs give stable featsel: [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feat Selection Algorithms]]
 ******* random forests in autoML: [[file:energy.bib::Feurer15autoMLautoSkLrn][Feurer et al. 2015: Efficient Robust Automated Machine Learning]]
+***** Random Forest Books and Long Reports
+******* [[file:energy.bib::Hastie09elemStatLrnBook][Hastie et al. 2009: Elements Statistical Learning]] 
+***** TODO Tutorials on Random Forests
+******* TODO [[file:energy.bib::Biau16randFrstGuideTour][Biau & Scornet 2016 Random Forest Guided Tour, theory, tuning]]
+******* [[file:energy.bib::Arlot16commentsRndFrstGuidTour][Arlot & Genuer 2016: comments on Biau & Scornet 2016 Rand Forest Guided]]
+******* [[file:energy.bib::Tang18whenRandFrstFail][Tang et al. 2018: When Random Forests Fail]]
+***** [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining ADABOOST and Random forest Interp]]
+***** [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
+***** TODO [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
+***** [[file:energy.bib::Li11randKNNfeatSelVsRandFrst][Li et al. 2011: Random KNN Random Forests]] (more stable than plain RFs)
+***** [[file:energy.bib::Breiman04consistRandForest][Breiman 2004: Consistency of Random Forests TR]]
+***** [[Gini Criterion]] for classification random forests
+***** Random Forest Tuning
+******* [[file:energy.bib::Bernard08forestRKmtry][Bernard et al. 2008: Forest RK (avoids mtry tuning)]]
+******* [[file:energy.bib::Latinne01limNtreesRandForest][Latinne et al. 2001: Limiting Number Trees Random Forests]]
 ***** Random Forest Applications
 ******* Load Forecasting: [[file:energy.bib::Gajowniczek18clustElecLoadFrcst][Gajowniczek & Z\kabkowski 2018: Simulation short term electricity]]
 ******* Pose Estimation: [[File:energy.bib::shotton11poserecogdepth][Shotton et al. 2011: Real Time Human]] (random forest featsel for kinect)
 ******* Price Forecast: [[file:energy.bib::Hong16probEnrgyFrcstCompet14][Hong et al. 2016: Probabilistic Energy Frcst]]
+******* Credit Risk Probability
+********* [[file:energy.bib::Nami18cardFraudDynRandFrstKnn][Nami & Shajari 2018: Cost-sens payment card risk, DynRandFrst+KNN]]
+********* [[file:energy.bib::Kruppa13cnsmrRiskProbRFnodesize][Kruppa et al. 2013: Consumer indiv. prob consumer credit risk]]
 ******* <<Random Forest Wind Power Forecast>>
 ********* [[file:energy.bib::Monteiro09windFrcstStArt][Monteiro et al. 2009: Wind]]: RF best non-lin forecast model
 ********* [[file:energy.bib::Sohoni16critRevWindPowCrvModel][Sohoni et al. 2016: Critical Review Wind]]: Wind Power curve
 ********* [[file:energy.bib::Fugon08dataMineFrcst][Fugon et al. 2008: Data]]: Wind power feature selection, prob forecast
 ********* [[file:energy.bib::Girard10trajEvalWind][Girard & Pinson 2010: Evaluation App Wind]]: wind speed from NWP speed/dir ensemble
 ******* Solar Adoption: [[file:energy.bib::Yu18deepSolarDB][Yu et al. 2018: DeepSolar]]
+***** Dynamic Random Forest
+******* [[file:energy.bib::Bernard12dynRandForest][Bernard et al. 2012: Dynamic Random Forests]]
+******* [[file:energy.bib::Nami18cardFraudDynRandFrstKnn][Nami & Shajari 2018: Cost-sens payment card risk, DynRandFrst+KNN]]
+
 ***** [[Random Forest Ensemble Selection]]
 ***** [[Isolation Forest Anomaly Detection]] (a random forest type)
 ***** <<Random Forest feature selection>>
@@ -4040,8 +4084,18 @@ Hope that helps,
 
 ***** TODO <<Random Forest Probabilistic Regression>>
 ******* TODO [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
+******* [[file:energy.bib::Kruppa13cnsmrRiskProbRFnodesize][Kruppa et al. 2013: Consumer indiv. prob consumer credit risk]]
+******* [[file:energy.bib::Nami18cardFraudDynRandFrstKnn][Nami & Shajari 2018: Cost-sens payment card risk, DynRandFrst+KNN]]
+******* [[file:energy.bib::Athey19generalizedRandFrst][Athey et al. 2019: Generalized Random Forests]]
+******* [[file:energy.bib::Meinshausen06qrForests][Meinshausen 2006: Quantile Regression Forests]]
 ******* [[file:energy.bib::Gagne12machnLrnEnhanceEns][Gagne et al. 2012: Machine Storm Scale Ensemble precip frcst]] (RF ~ middle of road)
+******* [[file:energy.bib::Hong16probEnrgyFrcstCompet14][Hong et al. 2016: Probabilistic Energy Frcst]] (random forest)
+******* [[file:energy.bib::Coulston16approxUncertRandFrstRgrssn][Coulston et al. 2016: Approximating random forest regression uncert.]]
+******* [[file:energy.bib::Biau16randFrstGuideTour][Biau & Scornet 2016 Random Forest Guided Tour]] (a section on RF QR)
 ******* [[file:energy.bib::Fenske11idRiskBoostAddQR][Fenske et al. 2011: Risk additive QR]]: cite of random forest QR
+******* [[file:energy.bib::Meer18reviewProbPVfrcstNetDmd][Meer et al. 2018: Review Probabilistic PV and demand forecasting]] (tries QR RF)
+******* [[file:energy.bib::Tung14randFrstQRhighDim][Tung et al. 2014: Extensions Random Forest QR for high dimension]]
+******* [[file:energy.bib::Zhang18probLoadFrcstRandFrstQD][Zhang et al. 2018: Parallel Random Forest Load Forecast, Quant Det.]] 
 ******* TODO [[file:energy.bib::Buskirk15propenseLRvsRandFrst][Buskirk & Kolenikov 2015: Finding Respondents Forest propens vs. LogRr]]
 ******* TODO also [[Tree-Based Probabilistic Regression]]
 ***** [[Random Forest Changepoint Detection]]
@@ -4054,7 +4108,7 @@ Hope that helps,
 ***** [[file:energy.bib::Chen16xgboostSclbl][Chen & Guestrin 2016: XGBoost scalable tree boost]]       
 ***** <<Monotonic Boosted Trees>>
 ******* [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning (lightgbm, xgboost, TensorFLow)]] 
-******* [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonic Constraints — xgboost 1.0.0-SNAPSHOT documentation]]
+******* [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonic Constraints: xgboost 1.0.0-SNAPSHOT documentation]]
 * <<Boosted Regression>>
 
   Train a prediction algorithm, test, and then train a new model on the residual...
@@ -5148,7 +5202,7 @@ sera
 ***** many link functions (p. 103): [[file:energy.bib::Madsen11glmBook][Madsen & Thyregod 2011: Introduction]]
 ***** link functions w/ good plots: [[file:energy.bib::Fox08glmBookChap][Fox 2008: Applied Regression Analysis]]
 ***** many: [[file:energy.bib::Simonoff09transfRegrsn][Simonoff 2009: Transformations]], plus what relationship is implied
-***** [[file:energy.bib::Ohara2010noLogCountDat][O’hara & Kotze 2010: Do not log counts]]: Poisson/Neg. binom best for counts
+***** [[file:energy.bib::Ohara2010noLogCountDat][O'hara & Kotze 2010: Do not log counts]]: Poisson/Neg. binom best for counts
 ***** [[file:energy.bib::Wang13extrmQRpowTranf][Wang & Li 2013: Estimation Extreme Conditional]] lin w/ nonlinear tails, tail test
 ***** [[file:energy.bib::Gill01interpIntrctHierGLM][Gill 2001: Interpreting]] interactions, GLM
 ***** [[file:energy.bib::Granger76frcstXfrmSeries][Granger & Newbold 1976: Forecasting]]
@@ -7793,6 +7847,7 @@ Scott
 ***** See also [[Combined wind and load forecasting]]
 *** <<Solar forecasting and features>>
 ***** the slope thing for QR
+***** [[file:energy.bib::Meer18reviewProbPVfrcstNetDmd][Meer et al. 2018: Review Probabilistic PV and demand forecasting]]
 ***** [[cite:SaintDrenan17probRgnlPVfrcst][Saint-Drenan et al. 2017 prob. rgnl. solar frcst]] (intro might be a good read for GIZ class?)
 ***** [[cite:USDOE16solFrcstMaxGridVal][USDOE 2016: Solar Forecasting val Grid Cost and Props]]
 ***** [[cite:Vu15solarFrcstIBMmachLrn][Vu 2015: Machine IBM US DOE solar/demand/wind frcst Deep]]
@@ -8315,6 +8370,8 @@ Scott
 ******* also see: [[Varying coefficient models]]
 
 *** <<Load Forecasting (Demand Forecasting)>>
+***** TODO [[file:energy.bib::Meer18reviewProbPVfrcstNetDmd][Meer et al. 2018: Review Probabilistic PV and demand forecasting]]
+***** [[file:energy.bib::Zhang18probLoadFrcstRandFrstQD][Zhang et al. 2018: Parallel Random Forest Load Forecast, Quant Det.]] 
 ***** [[http://www.mathworks.com/videos/data-driven-fitting-with-matlab-81809.html?form_seq%3Dconf1092&confirmation_page&wfsid%3D5770029][Matlab load forecasting example]] video (code is [[http://www.mathworks.com/matlabcentral/fileexchange/31562-data-driven-fitting-with-matlab][here]], uses LSBoost)
 ***** [[https://www.mathworks.com/company/newsletters/articles/data-driven-insights-with-matlab-analytics-an-energy-load-forecasting-case-study.html?s_tid=conf_addres_DA_eb][Data-Driven Insights with MATLAB Analytics: An Energy Load Forecasting Case Study]]
 ***** TODO [[cite:Wang16loadFrcstRcncyBigDat][Wang et al. 2016: Electric Ld Frcst big dat, single model]]
@@ -8353,6 +8410,7 @@ Scott
 ******** TODO [[cite:Stevie12SpatiaFrcstLoad][Stevie 2012: Spatial Forecasting grid planning.  Feats for CNN?]]
 ******** [[cite:Lai13geoHierLdFrcst][Lai & Hong 2013: When 1 size not enough: load frcst geo hier]]
 ******** [[cite:Mirowski14loadFrcstFeatAlgAgg][Mirowski et al. 2014: Demand Frcst, algs, feats, aggregation]]
+******** [[Aggregated regression using GLMs]]
 ***** TODO [[Electrical Load Profile Clustering]]
 ***** <<Data for German Load Forecast>>
 ******* [[http://open-power-system-data.org/data-sources#12_German_load_data][Open Power System Data (and German load data)]]
@@ -8362,14 +8420,12 @@ Scott
 ***** see also [[file:energytop.org::*Net%20Demand%20Forecast][Net Demand Forecast]]
 
 *** <<Net Demand Forecast>>
-    :PROPERTIES:
-    :ORDERED:  t
-    :END:
 
     I mean a forecast of: =Demand - Solar - Wind=
 
 ***** TODO [[cite:Sogabe16optRESdpLrn][Sogabe et al. 2016: Optimization]] RES deep learning (net demand?)
 ***** TODO [[cite:Makarov09OperWindCA][Makarov et al. 2009: Operational Impacts Wind]] CAISO, swing door (simple use of net demand)
+***** TODO [[file:energy.bib::Meer18reviewProbPVfrcstNetDmd][Meer et al. 2018: Review Probabilistic PV and demand forecasting]]
 ***** [[cite:Lee12probCongestFrcst][Lee & Min 2012: Probabilistic Transmission Congestion Forecasting]]
 ***** [[cite:Liu12tsoLargeWind][Liu et al. 2012: Challenges TSO large Wind]]
 ***** [[cite:Min08progCngstFrcstShrt][Min et al. 2008: Short term prob congest forecast]]
@@ -8422,13 +8478,14 @@ Scott
 ******* [[file:energy.bib::Khan07perfMutInfoShortNoise][Khan et al. 2007: Relative]] (comparison of dependence metrics)
 ******* TODO add Axel/Rafael/Mine paper (2013, presented in London)
 ******* [[cite:DiazVico17deepNNwindSolEnrgyPred][Diaz--Vico et al. 2017: Deep Neural Networks Wind and Solar Energy Frcst]](?)
-******* see [[file:energytop.org::*Net%20Demand%20Forecast][Net Demand Forecast]]
+******* see [[Net Demand Forecast]]
 ******* see [[Solar forecasting and features]]
 
 ***** see also [[Forecast Error Distributions]], 
 ***** see also [[Load Forecasting (Demand Forecasting)]]
 *** <<Probabilistic Forecasting>>
     /collect or ref. all copula, scenario gen, prob frcst stuff here/
+***** [[file:energy.bib::Meer18reviewProbPVfrcstNetDmd][Meer et al. 2018: Review Probabilistic PV and demand forecasting]]
 ***** [[File:energy.bib::bessa12adaptquantcopulafrcst][Bessa et al. 2012: time]] adaptive quantile copula prob. frcst
 ***** see: [[Quantile Mixtures]]
 ***** [[File:energy.bib::mcgovern11multidimtsmotifweath][Mcgovern et al. 2011: identifying]] (sax multi time ts classification for weath)
@@ -8745,6 +8802,7 @@ Scott
 ******* [[File:~/work/dtu/doc/energy.bib::jansen13pvctlmkt][Jansen & Speckmann 2013: Participation Of Photovoltaic]] (Markets)
 ******* http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4385004&tag=1
 ******* [[File:energy.bib::maggio10frcstercot][Maggio et al. 2010: Utilization Wind Generation]] ("prob" frcst, ramps)
+******* [[file:energy.bib::Zhang18probLoadFrcstRandFrstQD][Zhang et al. 2018: Parallel Random Forest Load Forecast, Quant Det.]] 
 ******* CAISO Ramp Stuff
 ******* ERCOT Confidence Intervals
 ******* Ireland All Island Study
@@ -9133,6 +9191,7 @@ sera
 ******* [[file:energy.bib::Vogt15HybridPhysMLrgnFrcst][Vogt et al. 2015: Hybrid Physical Machine]] regional upscale
 ******* [[file:energy.bib::Torrez93JohnsonDistFitNeuron][Torrez & Durham 1993: Johnson Distributions Fitting]] sum of sigmoids
 ******* [[file:energy.bib::Frain09alphaDistAppsThesis][Frain 2009: Studies Application Alpha Distribution Economics]] incl. rgrssn. (stable dist instead of pow curve?)
+******* [[Aggregated regression using GLMs]]
 ******* TODO get LNEG wavelet upscaling paper (could use for [[Probabilistic forecast aggregation]])
 ******* see also: [[Probabilistic forecast aggregation]]
 ***** <<Probabilistic forecast aggregation>>
@@ -9154,6 +9213,7 @@ sera
 ******* [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]] (pools weather stations)
 ******* [[cite:Kim16sprsCondCplaMultiOut][Kim 2016: Sparse Cond. Copula Multi Out]]
 ******* [[cite:Gijbels14distSumCopulaDep][Gijbels & Herrmann 2014: Sum of RVS w/ Copula Dep.]]
+******* [[Aggregated regression using GLMs]]
 ******* see also: [[Copulas]]
 ******* see also: [[Quantile Regression]]
 ******* see also: [[Point forecast aggregation]]
@@ -9636,6 +9696,10 @@ later corrected by greg heath:
 *** [[Partial Information Feature Selection Stopping criteria]]
 *** [[State Change Alarm Criteria]]
 ***** also [[Feature Selection Quality Metrics]]
+* Disaggregation
+
+  You have and aggregation (sum, hisgtogram, etc.) of the outcomes of a bunch of individuals but not the individual outcomes.  You want the outcomes.  Example: you have all the power consumed on a feeder but not the individual power customer power consumption.  Getting the individual customer power is disaggregation (this is something like what Josh Quinnell did for MNSP and CPR)
+  *** [[Aggregated regression using GLMs]]
 * <<Tensors>>
 
   Stuff that makes tensors easier, or uses them
@@ -9754,8 +9818,8 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 ******* [[file:energy.bib::Perez17grndCalDetSatIrrad][Perez et al. 2017: Detecting Calibration Drift w/ satellite]]  (CPR)
 ******* [[file:energy.bib::Jaus19navSolarIradMeasIss][Jaus 2019: Navigating solar irrad meas issues]] (instrument tutorial)
 ******* TODO [[file:energy.bib::Kubiniec19solarSatelliteTuneGrndTR][Kubiniec et al. 2019: Site Specific Solar Resource Assessment]]
-******* TODO [[file:energy.bib::Perez02newMdllSatelliteIrrad][Perez et al. 2002 New Model Satellie Irrad]] (CPR)
-******* TODO [[file:energy.bib::Perez04satelliteIrradTerrain][Perez et al. 2004: Producing Satellite Irrad Complex Terrain]] (CPR)
+******* DONE [[file:energy.bib::Perez02newMdllSatelliteIrrad][Perez et al. 2002 New Model Satellie Irrad]] (CPR)
+******* DONE [[file:energy.bib::Perez04satelliteIrradTerrain][Perez et al. 2004: Producing Satellite Irrad Complex Terrain]] (CPR)
 ******* TODO [[file:energy.bib::Habte14calMeasUncertRadiometric][Habte et al. 2014: Calibration Measurement Uncertainty Radiometric]]
 ******* TODO [[file:energy.bib::Habte15radiometUncertGUM][Habte et al. 2015: Method Estimate Uncertainty Radiometric]] (CPR)
 ******* [[file:energy.bib::JCGM08guideUncertMeas][JCGM 2008: Guide Expression Uncertainty Measurement]]
@@ -10480,7 +10544,7 @@ Scott
 ***** see also: [[Juan Mi's Electricity Markets Class]]
 ***** see also: [[Price Forecasting]]
 *** Optimization/Integration
-***** pierre pinson has many [[http://www.imm.dtu.dk/english/research/mathematical_statistics/publications.aspx][publications]] on this topic (and many other wind energy topics)
+***** Pierre Pinson has many [[http://www.imm.dtu.dk/english/research/mathematical_statistics/publications.aspx][publications]] on this topic (and many other wind energy topics)
 ***** [[Development And Deployment Of An Advanced Wind Forecasting Technique]]
 ***** [[Energy Management System (EMS) Integration]]
 ***** [[File:energy.bib::das08sensselworstcase][Das & Kempe 2008: Sensor Selection Minimizing]] (worst case (for safety))
@@ -10510,6 +10574,7 @@ Scott
 ***** [[file:energy.bib::Shenoy15stochOptLdFrcstRgrssn][Shenoy et al. 2015: Non Parametric Regression]] QR for day ahead Mkt. opt.
 
 ***** [[file:energy.bib::Yao10simplexQRfeatSel][Yao 2010: Simplex Techniques Quantile]] feat sel, adaptive, interior point
+***** [[file:energy.bib::Zhang18probLoadFrcstRandFrstQD][Zhang et al. 2018: Parallel Random Forest Load Forecast, Quant Det.]] (QD is industrially used)
 ***** <<Wind farm or turbine operational optimization>>
 ******* [[http://www.evernote.com/l/AA05QepHHVlLMJiB6pxDMLuP_nI41T8nlMk/][Siemens self-optimizing turbine: Getting Machines to Mimic Intuition]]
 ******* Foghorn mach lrn: [[http://www.evernote.com/l/AA2ELtyWhPhAF541dJAkbHoOev7tp0JABck/][Maximize wind power generation with optimized turbine settings]]
@@ -10696,7 +10761,7 @@ Scott
 ***** [[file:energy.bib::Zhao12EconDsptchStochOptVar][Zhao & Tong 2012: Economic]] dispatch, stoch opt, VaR (related)
 *** [[file:energy.bib::Pinson13windPowFrcstOpDec][Pinson & others 2013: Wind]] en. frcst operational mgmt
 *** [[file:energy.bib::Madsen10optSpinResProj][Madsen 2010: DTU Optimal Spinning Reserve Project]]
-***** [[file:energy.bib::Jonsson10spinRsrv][J´onsson et al. 2010: Allocation Deployment Spinning Reserves]] (1st report)
+***** [[file:energy.bib::Jonsson10spinRsrv][Jonsson et al. 2010: Allocation Deployment Spinning Reserves]] (1st report)
 ***** [[file:energy.bib::OrtegaVazquez10windOpCost][Ortega-Vazquez & Kirschen 2010: Assessing Impact Wind]] (operational model)
 ***** [[file:energy.bib::Vassiliou10linDistLagRconv][Vassiliou & Demetriou 2010]]
 ***** [[file:energy.bib::Rohrig2006appWindPredTools][Rohrig & Lange 2006: Application]]
@@ -10909,7 +10974,7 @@ Erika
 ******* [[http://tdworld.com/mag/power_finding_hidden_capacity/][Sag is limiting factor]]
 ********* can be up to [[http://www.tntech.edu/publicaffairs/rel/2007/july07/sag07.html][16 feet]]
 ********* [[http://tdworld.com/mag/power_finding_hidden_capacity/][National Electrical Safety Code (NESC)-imposed minimum clearance]]
-********* Sag depends upon conductor design: p. 7,  [[http://www.compositetechcorp.com/Press%20Releases%20-%20PDF/EDF_Press%206-19-05_FINAL.pdf][Innovative Conductor Solutions For Power Transmission And Distribution Systems]]
+********* Sag depends upon conductor design: p. 7, [[http://www.compositetechcorp.com/Press%20Releases%20-%20PDF/EDF_Press%206-19-05_FINAL.pdf][Innovative Conductor Solutions For Power Transmission And Distribution Systems]]
 ********* Aluminum creeps @ normal temps so some sag not due to power heating: [[file:energy.bib::Muhr05SsagAgedLines][Muhr et al. 2005: Sag Calculation of]]
 ********* Sag calibration
 *********** characterize line by measuring sag w/ LIDAR and estimate cond. temp
@@ -11112,6 +11177,7 @@ Erika
 ******* [[file:energy.bib::Rogers83diffusInnovBk][Rogers 1983: Diffusion of Innovation Book]]
 ******* DONE [[file:energy.bib::Taherdoost18reviewTechAdopt][Taherdoost 2018 review tech accept models]]
 ******* [[https://www.pewinternet.org/topics/technology-adoption/][Technology Adoption | Pew Research Center]] (general page, lots of articles, link to datasets)
+******* DONE [[file:energy.bib::Horowitz19ovrvwDERinterConnNREL][Horowitz et al. 2019: Overview DER Interconn (as DER adopt frcst)]]
 ***** Solar adoption rates
 ******* DONE [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market Model (dGen)]]: NREL
 ******* [[file:energy.bib::Gagnon16distPVadoptMktFctr][Gagnon & Sigrin 2016: Distributed PV Adoption Mkt Factors]]
@@ -11136,20 +11202,22 @@ Erika
 ***** Electric vehicle adoption
 ******* [[file:energy.bib::Moons15selfBrandPersEV][Moons & De 2015: Self Brand Personality Elec Cars]]
 ******* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help.
-******* TODO [[file:energy.bib::Massiani2015useOfBassEV][Massiani & Gohs 2015: Bass EVs Don't Use]]
-
+******* DONE [[file:energy.bib::Massiani2015useOfBassEV][Massiani & Gohs 2015: Bass EV 2 step approach (but don't use?)]]
 ******* TODO [[file:energy.bib::Bernards18][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
 ******* [[file:energy.bib::SantaEulalia11discrChoiceBassEV][Santa et al. 2011: EV adopt Disc Choice Bass]]
 ******* [[file:energy.bib::Zarwi17discChoiceAdoptDiffTranspo][Zarwi et al. 2017: EV adopt Discr Choice Bass]]
 ******* needs a [[https://www.evernote.com/l/AA2mqLTTd-ZCdLwoiE5Mc4XFTrnNGwyUV5s/]["vehicle age" feature]], I think, somehow.
 ******* [[file:energy.bib::Manceau13techDiffusnPreannc][Manceau et al. 2013: Diffusion Model Preannounced Prods (2 phase Bass)]]
 ***** <<Bass Innovation Diffusion Models>>
+
+      The [[file:energy.bib::Horowitz19ovrvwDERinterConnNREL][most common]] tech adoption model.
+
 ******* DONE [[file:energy.bib::Wikipedia19bassDiffus][Wikipedia 2019: Bass Diffusion Model]]
 ******* TODO [[file:energy.bib::Bass94bassWithoutDecVars][Bass et al. 1994: Why Bass Model w/o dec vars]] (with derivations. SDE?)
 ******* TODO [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]]
 ******* TODO [[file:energy.bib::Jaakkola96cmprDiffsnMdlAdopt][Jaakkola 1996: Comparison Analysis Diffusion Models]]
 ******* TODO [[file:energy.bib::Deepa07reviewDiffuseNewProd][Deepa & Tellis 2007: Critical Review Marketing Diffusion]]
-******* TODO [[file:energy.bib::Massiani2015useOfBassEV][Massiani & Gohs 2015: Bass EVs Don't Use]]
+******* DONE [[file:energy.bib::Massiani2015useOfBassEV][Massiani & Gohs 2015: Bass EV 2 step approach (but don't use?)]]
 ******* TODO [[file:energy.bib::Fruchter02frcstNewProdBass][Fruchter 2002: Forcasting Sales New Prod Adopt Bass/Bass-like]]
 ******* TODO [[file:energy.bib::][Cosguner et al. 2018: Dynamic Pricing New Products Dyn Bass]]
 ******* TODO [[file:energy.bib::SantaEulalia11discrChoiceBassEV][Santa et al. 2011: EV adopt Disc Choice Bass]]
@@ -11184,7 +11252,9 @@ Erika
 
 ***** Distributions of a large population of adopters
 ******* [[Bass Innovation Diffusion Models]]
-******* Adopter sum ~ Poisson: [[file:energy.bib::Hodges60poissonAprxPoissonBin][Hodges & Le 1960: Sum Bernoulli ~ Poisson]]
+******* Adopter sum ~ Poisson
+********* [[file:energy.bib::Hodges60poissonAprxPoissonBin][Hodges & Le 1960: Sum Bernoulli ~ Poisson]]
+********* [[file:energy.bib::Ward18sumPoissonsCourseNts][Ward 2018: Course Notes: Sum Poissons ~ Poisson]]
 ***** [[file:energy.bib::Eckersley18utilFuncImpossUncert][Eckersley 2018: Impossibility Uncertainty Theorems Util Func]] (for UI choices?)
 ***** <<Interaction: Technology Learning and Adoption Rates>>
 
@@ -12009,6 +12079,8 @@ TOTO: read Fan16* for an overview
 * <<Auto Machine Learning>> (autoML or "meta learning")
   Automatically tweaking machine learning parameters, selecting algorithms, feature selection, outlier detection, ensemble building, etc.  A new field I discovered at ECML PKDD 2017
 *** [[cite:Feurer15autoMLautoSkLrn][Feurer et al. 2015: Efficient Robust Automated Machine Learning]] (code: auto-sklearn)
+*** [[file:energy.bib::FernandezDelgado19srvyRgrssnMeth][Fernández-Delgado et al. 2019: Extensive survey of regression methods]]
+*** [[file:energy.bib::Harrell15rgrssnMdlStrtgyBook][Harrell 2015: Regression Strategies]]
 *** Also [[Frugal Machine Learning]]
 * <<Frugal Machine Learning>> ("big data on small data")
 
@@ -12695,7 +12767,15 @@ optimization to be a generalization of linear programming.
              [[file:energy.bib::StatsDirect19prospectVsRetroStudies][StatsDirect 2019: Prospective vs. Retrospective Studies]]
              [[file:energy.bib::Ranganathan15oddsVsRisk][Ranganathan et al. 2015: Common Pifalls Risk vs. Odds]]
              [[file:energy.bib::Essoe14oddsProbRisk][Essoe 2014: Odds, Probability and Risk Ratio]]
-             
+   08/08/19  [[file:energy.bib::Horowitz19ovrvwDERinterConnNREL][Horowitz et al. 2019: Overview DER Interconn (as DER adopt frcst)]]
+             [[file:energy.bib::Massiani2015useOfBassEV][Massiani & Gohs 2015: Bass EV 2 step approach (but don't use?)]]
+   08/11/19  [[file:energy.bib::Ward18sumPoissonsCourseNts][Ward 2018: Course Notes: Sum Poissons ~ Poisson]]
+   08/12/19  [[file:energy.bib::Perez02newMdllSatelliteIrrad][Perez et al. 2002 New Model Satellie Irrad]] (CPR)
+   08/13/19  [[file:energy.bib::Whyzar16diffRadIrradLumIllum][whyzar 2016: Difference Radiance / Irradiance]]
+             [[file:energy.bib::Perez04satelliteIrradTerrain][Perez et al. 2004: Producing Satellite Irrad Complex Terrain]] (CPR)
+   08/15/19  [[file:energy.bib::Breiman04consistRandForest][Breiman 2004: Consistency of Random Forests TR]]
+             [[file:energy.bib::Vincent17giniPurity][Vincent 2017: simple and clear Gini impurity]]
+             [[file:energy.bib::Biau16randFrstGuideTour][Biau & Scornet 2016 Random Forest Guided Tour, theory, tuning]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
