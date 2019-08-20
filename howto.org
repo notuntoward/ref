@@ -2774,7 +2774,7 @@ Strike-through: nil
 ******* <<elpy vs. anaconda-mode>>
 ******* [[https://github.com/proofit404/anaconda-mode/issues/38][how does anaconda-mode compare to Elpy? · Issue #38 · proofit404/an...]]
 ***** EIN -- Emacs IPython Notebook
-*******  [[https://github.com/millejoh/emacs-ipython-notebook][GitHub - millejoh/emacs-ipython-notebook]]
+*******  [[https://github.com/millejoh/emacs-ipython-notebook][millejoh/emacs-ipython-notebook]]
 ******* works with both Jupyter and emacs org mode
 ***** <<activating conda environments in emacs>>
 ******* <<conda.el reads environmentl.yml>> (but still has problems)
@@ -8316,6 +8316,7 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
         However, it doesn't work for me.  I submitted a [[https://github.com/timkpaine/jupyterlab_autoversion/issues/11][bug]].
 
+******* graphical interface to git: [[https://github.com/jupyterlab/jupyterlab-git][jupyterlab/jupyterlab-git]]
 ******* Extensions that are maybe nice but not working
 ********* open file w/ part of name: [[https://github.com/parente/jupyterlab-quickopen][parente/jupyterlab-quickopen]]
 
@@ -8342,6 +8343,50 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
       Kind of missing in early JL version but...
 
 ******* [[https://github.com/jupyterlab/jupyterlab/issues/2017][Ctrl+Shift+R]] will do find & replace within cell
+
+***** <<Versioning Jupyter Notebooks>>
+******* [[https://nextjournal.com/schmudde/how-to-version-control-jupyter][Clear Output Manually]] before committing
+
+        Always clear the output before committing:
+
+        Cell → All Output → Clear → Save
+******* [[https://nextjournal.com/schmudde/how-to-version-control-jupyter][nbconvert to HTML]]: frozen,  distributable and archivable like a printout
+
+          jupyter nbconvert /jupyter-git/simple-nb.ipynb --output-dir="/results" --output="simple-nb.html"
+
+        This is what Patrick Sudowe at TenneT swore by.
+
+******* [[https://nextjournal.com/schmudde/how-to-version-control-jupyter][nbconvert to python]]: records the code cells, can be checked in
+
+        jupyter nbconvert /jupyter-git/simple-nb.ipynb --to="python"
+ --output-dir="/results" --output="simple-nb-nbconvert"
+
+******* [[https://nextjournal.com/schmudde/how-to-version-control-jupyter][nbdime]]: diffing and merging full notebooks (vs. git repository, has graphical functions)
+        More or less the vers of git diff and git merge that you use when dealing with .ipynb files
+        You don't process the notebooks in anyway, you just check them in.
+
+        Has command line commands as well as a browser based visual diff
+
+        *nbdiff*: command line merge
+
+          o can make an output like commandline diff.  Not graphical, or emacs ediff, etc.
+          o is smart about notebooks with data in them and non-meaningful changes in json structure.
+
+        *mnbmerg*: command line merge
+
+          nbmerge simple-nbdime-base.ipynb simple-nbdime-local.ipynb simple-nbdime-remote.ipynb  --decisions
+
+          o command-line merging like in a linux command line
+
+******* [[https://nextjournal.com/schmudde/how-to-version-control-jupyter][ReviewNB]]: visual diff/merge for when everything is in GitHub
+
+******* [[https://nextjournal.com/schmudde/how-to-version-control-jupyter][jupytext]]: sends single .py file to git; .ipynb not checked in
+
+        After some config, you can split Jupter notebook into:
+        o py file with some minimal metacommands in it.  I think it will almost run by itself.
+        o a .ipynb file that you don't check in.
+
+        If the .ipynb file survives, you can rescontruct the notebook only with what's check into git.
 
 *** Machine learning Python libs
 ***** [[http://scikit-learn.org/stable/][scikit-learn]]
@@ -8781,13 +8826,14 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
            But is it?  The [[https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs][editable pip install]] says there are advantages to using pip, and a commenter [[https://stackoverflow.com/questions/19048732/python-setup-py-develop-vs-install][here]] says that he had problems w/ setup.py develop and so used pip install -e PATH
 
 *** Probabilistic Programming in Python: [[https://pyro.ai/][Pyro]]
-    See energytop.org for more on probabilsitic programming
+    See energytop.org for more on probabilistic programming
 * <<Data Versioning>>
 *** [[https://dvc.org/][Machine Learning Version Control System · DVC]]
 *** [[https://databricks.com/blog/2018/06/05/introducing-mlflow-an-open-source-machine-learning-platform.html][Introducing MLflow: an Open Source Machine Learning Platform - The Databricks...]]
 *** [[RunRouter]]
 *** [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
 *** [[Git large file storage for test data]]
+*** [[Versioning Jupyter Notebooks]]
 * <<Hadoop>>
 *** [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop Intro Book]]
 
