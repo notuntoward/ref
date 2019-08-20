@@ -4037,7 +4037,9 @@ Hope that helps,
 ******* hyperplane separable data: [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop]]
 ******* RFs better than Poisson GLM for neural spikes: [[file:energy.bib::Benjamin18mdrnMLvsGLMpoisson][Benjamin et al. 2018: Modern Machine Learning neural response]]
 ******* better than LARS on Boston Housing data: [[file:energy.bib::Trevor04LAR][Trevor et al. 2004: Least Angle Regression]]
-******* RFs give stable featsel: [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feat Selection Algorithms]]
+******* Stability and Random Forests
+********* RFs give stable featsel: [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feat Selection Algorithms]]
+********* But Random KNN more stable, better than Random Forest: [[file:energy.bib::Li11randKNNfeatSelVsRandFrst][Li et al. 2011: Random KNN Random Forests]]
 ******* random forests in autoML: [[file:energy.bib::Feurer15autoMLautoSkLrn][Feurer et al. 2015: Efficient Robust Automated Machine Learning]]
 ***** Random Forest Books and Long Reports
 ******* [[file:energy.bib::Hastie09elemStatLrnBook][Hastie et al. 2009: Elements Statistical Learning]] 
@@ -4045,12 +4047,16 @@ Hope that helps,
 ******* TODO [[file:energy.bib::Biau16randFrstGuideTour][Biau & Scornet 2016 Random Forest Guided Tour, theory, tuning]]
 ******* [[file:energy.bib::Arlot16commentsRndFrstGuidTour][Arlot & Genuer 2016: comments on Biau & Scornet 2016 Rand Forest Guided]]
 ******* [[file:energy.bib::Tang18whenRandFrstFail][Tang et al. 2018: When Random Forests Fail]]
+******* Random forests are good for high dim: [[file:energy.bib::strobl09rcrspartforest][Strobl et al. 2009]] (tutorial)
 ***** [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining ADABOOST and Random forest Interp]]
 ***** [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
 ***** TODO [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
 ***** [[file:energy.bib::Li11randKNNfeatSelVsRandFrst][Li et al. 2011: Random KNN Random Forests]] (more stable than plain RFs)
 ***** [[file:energy.bib::Breiman04consistRandForest][Breiman 2004: Consistency of Random Forests TR]]
 ***** [[Gini Criterion]] for classification random forests
+***** RFs used for boosted QR: [[file:energy.bib::Fenske12strctAddQRthesis][Fenske 2012: Structured additive QR]]
+***** Wind Power Ramp rates (SVM better than RF): [[file:energy.bib::Zheng09rampDataMine][Zheng & Kusiak 2009: Prediction Wind Farm]]
+
 ***** Random Forest Tuning
 ******* [[file:energy.bib::Bernard08forestRKmtry][Bernard et al. 2008: Forest RK (avoids mtry tuning)]]
 ******* [[file:energy.bib::Latinne01limNtreesRandForest][Latinne et al. 2001: Limiting Number Trees Random Forests]]
@@ -4074,14 +4080,9 @@ Hope that helps,
 ***** [[Random Forest Ensemble Selection]]
 ***** [[Isolation Forest Anomaly Detection]] (a random forest type)
 ***** <<Random Forest feature selection>>
-********* RF featsel situated in broader featsel context: [[file:energy.bib::Saeys07reviewFeatSelBioInf][Saeys et al. 2007 feat sel review]]
-********* Random forests are good for high dim: [[file:energy.bib::strobl09rcrspartforest][Strobl et al. 2009]] (tutorial)
-********* RFs are more stable: [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feat Selection Algorithms]]
-********* Random KNN more stable, better than Random Forest: [[file:energy.bib::Li11randKNNfeatSelVsRandFrst][Li et al. 2011: Random KNN Random Forests]]
-********* used for boosted QR: [[file:energy.bib::Fenske12strctAddQRthesis][Fenske 2012: Structured additive QR]]
-********* Wind power feature selection, prob forecast: [[file:energy.bib::Fugon08dataMineFrcst][Fugon et al. 2008: Data]]
-********* Wind Power Ramp rates (SVM better than RF): [[file:energy.bib::Zheng09rampDataMine][Zheng & Kusiak 2009: Prediction Wind Farm]]
-
+******* RF featsel situated in broader featsel context: [[file:energy.bib::Saeys07reviewFeatSelBioInf][Saeys et al. 2007 feat sel review]]
+******* Featsel does improve RFs: [[https://www.evernote.com/l/AA3_Fvd1gbFID4N1S8TZnlgrCZphI269mOs/][Joel 2017: Is Romantic Desire Predictable?]]
+******* also [[Random Forests]]
 ***** TODO <<Random Forest Probabilistic Regression>>
 ******* TODO [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
 ******* [[file:energy.bib::Kruppa13cnsmrRiskProbRFnodesize][Kruppa et al. 2013: Consumer indiv. prob consumer credit risk]]
@@ -4096,6 +4097,7 @@ Hope that helps,
 ******* [[file:energy.bib::Meer18reviewProbPVfrcstNetDmd][Meer et al. 2018: Review Probabilistic PV and demand forecasting]] (tries QR RF)
 ******* [[file:energy.bib::Tung14randFrstQRhighDim][Tung et al. 2014: Extensions Random Forest QR for high dimension]]
 ******* [[file:energy.bib::Zhang18probLoadFrcstRandFrstQD][Zhang et al. 2018: Parallel Random Forest Load Forecast, Quant Det.]] 
+******* Wind power feature selection, prob forecast: [[file:energy.bib::Fugon08dataMineFrcst][Fugon et al. 2008: Data]]
 ******* TODO [[file:energy.bib::Buskirk15propenseLRvsRandFrst][Buskirk & Kolenikov 2015: Finding Respondents Forest propens vs. LogRr]]
 ******* TODO also [[Tree-Based Probabilistic Regression]]
 ***** [[Random Forest Changepoint Detection]]
