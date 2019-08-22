@@ -21636,6 +21636,26 @@ If the hazard function is in continuous time, you have to integrate in order to 
   url          = {https://www.theanalysisfactor.com/what-is-a-hazard-function-in-survival-analysis/},
 }
 
+@Article{Bergmeir18crossValARfrcst,
+  author        = {Christoph Bergmeir and Rob J. Hyndman and Bonsoo Koo},
+  title         = {A note on the validity of cross-validation for evaluating autoregressive time series prediction},
+  journal       = {Computational Statistics \& Data Analysis},
+  year          = {2018},
+  volume        = {120},
+  pages         = {70 - 83},
+  issn          = {0167-9473},
+  __markedentry = {[Scott:6]},
+  abstract      = {One of the most widely used standard procedures for model evaluation in classification and regression is K-fold cross-validation (CV). However, when it comes to time series forecasting, because of the inherent serial correlation and potential non-stationarity of the data, its application is not straightforward and often replaced by practitioners in favour of an out-of-sample (OOS) evaluation. It is shown that for purely autoregressive models, the use of standard K-fold CV is possible provided the models considered have uncorrelated errors. Such a setup occurs, for example, when the models nest a more appropriate model. This is very common when Machine Learning methods are used for prediction, and where CV can control for overfitting the data. Theoretical insights supporting these arguments are presented, along with a simulation study and a real-world example. It is shown empirically that K-fold CV performs favourably compared to both OOS evaluation and other time-series-specific techniques such as non-dependent cross-validation.
+
+Keywords: cross-validation, time series, autoregression.},
+  comment       = {Compares the idea k-fold cross validation with guard bands for AR model lags (like I've done in the past at Fraunhofer).  For a purely AR model (no exogenous variables, I guess).  5 fold CV error estimate is worse if you use the guard bands (purely AR model, small data set e.g. 289 points, AR lag ~ 9).  They say something about standard CV being OK when errors have no serial correlation (temporal dependence) -- say Ljung-Box test can check for this dependence.  But I haven't really read this paper, and so don't know what this all means in general real life problems.
+
+Note that this (forecasting) professor (Hyndemann) doesn't worry about causaility of train and test data, as does Cochrane18crossValTimeSer},
+  doi           = {https://doi.org/10.1016/j.csda.2017.11.003},
+  keywords      = {Cross-validation, Time series, Autoregression},
+  url           = {http://www.sciencedirect.com/science/article/pii/S0167947317302384},
+}
+
 @Article{Minku10ensDiversDrift,
   author    = {Minku, L.L. and White, A.P. and Xin Yao},
   title     = {The Impact of Diversity on Online Ensemble Learning in the Presence of Concept Drift},
@@ -33688,6 +33708,33 @@ Time series; Trend; Wavelets.},
   owner     = {sotterson},
   publisher = {Elsevier},
   timestamp = {2012.02.09},
+}
+
+@Misc{Cochrane18crossValTimeSer,
+  author       = {Courtney Cochrane},
+  title        = {Time Series Nested Cross-Validation},
+  howpublished = {Medium: Towards Data Science},
+  month        = may,
+  year         = {2018},
+  note         = {Blog Post},
+  abstract     = {This blog post discusses the pitfalls of using traditional cross-validation 
+with time series data. Specifically, we address 1) splitting a time series 
+without causing data leakage, 2) using nested cross-validation to obtain an 
+unbiased estimate of error on an independent test set, and 3) cross- 
+validation with datasets that contain multiple time series.},
+  comment      = {Cross validation that avoids anti-causal train/dev/test splits and also the choice of an arbitrary test period.  The most interesting idea is to assume that the time series of individuals in the test are independent (which seems like a big assumption).  Also, they pick test data from (almost) all times in the data but they way they do it is to use just  a tiny bit for train and then discard the tail ends of the data (e.g Figure 2).  This would exaggerate the error since the CV error average would include models which have used far less data than is available in the training set.  
+
+Note that Bergmeir18crossValARfrcst doesn't worry about test/train causality,.
+
+The explanations in this article are at best incomplete, so it would be a good idea to look at its three references.
+
+The poulation-informed ideas are in the author's masters thesis:
+populationInformedPredictSecondHalf() and populationInformedWPForwardChaining()
+https://github.com/cocochrane/MastersThesis/blob/master/DataCollection.ipynb
+
+},
+  file         = {:Cochrane18crossValTimeSer.pdf:PDF},
+  url          = {https://towardsdatascience.com/time-series-nested-cross-validation-76adba623eb9},
 }
 
 @Book{Moler08NmrclCompMatlab,

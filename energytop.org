@@ -1431,6 +1431,9 @@
 ***** See [[http://biostat.mc.vanderbilt.edu/wiki/Main/RmS][this]] for Frank Harrel's rational)
 ***** Really limit complexity by min CV error? 
       [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
+***** [[https://www.evernote.com/l/AA3SoUDUls5L364oW5_l0PB-1ntmcHZlRQ0/][Wikipedia: Cross-validation (statistics)]]
+***** [[file:energy.bib::Cochrane18crossValTimeSer][Cochrane 2018: Time Ser. Nested CrossVal: causal, good test, indep assume]]
+***** [[file:energy.bib::Bergmeir18crossValARfrcst][Bergmeir et al. 2018: Cross Val for Time Series Pred]]: "use normal CV"
 *** <<Reusable Holdout>>
 ***** A 2015 breakthrough (says [[https://www.kdnuggets.com/2016/02/21-data-science-interview-questions-answers-part2.html][KDD article]])
 ***** short video: [[https://www.kdnuggets.com/2015/08/feldman-avoid-overfitting-holdout-adaptive-data-analysis.html][Big Idea To Avoid Overfitting: Reusable Holdout to Preserve Validity in Adapt...]]
@@ -12778,6 +12781,7 @@ optimization to be a generalization of linear programming.
    08/15/19  [[file:energy.bib::Breiman04consistRandForest][Breiman 2004: Consistency of Random Forests TR]]
              [[file:energy.bib::Vincent17giniPurity][Vincent 2017: simple and clear Gini impurity]]
              [[file:energy.bib::Biau16randFrstGuideTour][Biau & Scornet 2016 Random Forest Guided Tour, theory, tuning]]
+   08/21/19  [[file:energy.bib::Cochrane18crossValTimeSer][Cochrane 2018: Time Ser. Nested XVal: causal, good test, indivIndep]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
