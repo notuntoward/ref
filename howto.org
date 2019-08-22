@@ -2773,9 +2773,14 @@ Strike-through: nil
 ******* also: [[activating conda environments in emacs]]
 ******* <<elpy vs. anaconda-mode>>
 ******* [[https://github.com/proofit404/anaconda-mode/issues/38][how does anaconda-mode compare to Elpy? · Issue #38 · proofit404/an...]]
-***** EIN -- Emacs IPython Notebook
+***** <<EIN -- Emacs IPython Notebook>>
 *******  [[https://github.com/millejoh/emacs-ipython-notebook][millejoh/emacs-ipython-notebook]]
 ******* works with both Jupyter and emacs org mode
+******* also, maybe a bit better: [[NEI -- Notebook Editor Interface]]
+*****  <<NEI -- Notebook Editor Interface>>
+      From: [[https://github.com/pyviz-dev/nei][pyviz-dev/nei: Notebook Editor Interface]]: Jupyter Notebook interface
+******* like emacs ein but can show javascript graphs, etc.
+******* also [[EIN -- Emacs IPython Notebook]]
 ***** <<activating conda environments in emacs>>
 ******* <<conda.el reads environmentl.yml>> (but still has problems)
         From: [[https://github.com/necaris/conda.el][conda.el: Emacs helper library (and minor mode) to work with]]
@@ -8208,7 +8213,7 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
       
 ******* building TF to use AVX commands on windows 10
         See [[https://github.com/faisalthaheem/tensorflow-windows][here]]
-*** Jupyterlab
+*** <<Jupyterlab>>
 ***** Starting it: jupyter lab
 ***** Emacs keybindings
 ******* text editor: settings -> "text editor keymaps" -> emacs
@@ -8274,6 +8279,14 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 }        
 ******* a (broken as of 5/19) keybinding extension: 
 ***** Jupyterlab extensions
+******* updating juypterlab extensions
+        
+        For many, [[https://github.com/jupyterlab/jupyterlab/pull/4410][you can do]]:
+
+          jupyter labextension update
+
+        but some extensions (jupyter_conda) failed b/c its maintainer hadn't yet updated is code on github.
+
 ******* <<Jupytlerlab plotly extension>>: [[https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension][jupyter-renderers/packages/plotly-extension]]
 
         Do this first before following web page instructions:
@@ -8344,8 +8357,20 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
 ******* [[https://github.com/jupyterlab/jupyterlab/issues/2017][Ctrl+Shift+R]] will do find & replace within cell
 
+***** Interesting Jupyter wrappers or Jupyter-like things
+******* [[https://atom.io/packages/hydrogen][hydrogen]] (runs in atom)
+********* [[https://blog.nteract.io/hydrogen-interactive-computing-in-atom-89d291bcc4dd][Hydrogen: Interactive computing in Atom - nteract]]
+******* [[https://github.com/nteract/nteract][nteract/nteract:  I think it's web based ]]
+******* [[http://lighttable.com/][Light Table]] (inspired hydrogen and nteract, I think)
+
 ***** <<Versioning Jupyter Notebooks>>
-******* [[https://nextjournal.com/schmudde/how-to-version-control-jupyter][Clear Output Manually]] before committing
+
+      Jupytext is the "[[https://nextjournal.com/schmudde/how-to-version-control-jupyter][most complete version control solution]]" and to me, it seems quite workable, esp. if you paired notebooks.  Maybe config so .py files are in subdir (or not?)?  
+
+      If want to version notebooks along with data, and do a RunRouter like thing, then the [[POC versioning Machine Learning pipeline]] looks pretty good.  Has DVC parameterization and Jupyter notebooks.  Worth looking into?
+
+
+******* [[https://nextjournal.com/schmudde/how-to-version-control-jupyter][Manually (standard Jupyter) Clear Output]] before committing
 
         Always clear the output before committing:
 
@@ -8354,9 +8379,9 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
           jupyter nbconvert /jupyter-git/simple-nb.ipynb --output-dir="/results" --output="simple-nb.html"
 
-        This is what Patrick Sudowe at TenneT swore by.
+        This is what Patrick Sudowe at TenneT swore by.  But the actual notebook isn't saved.
 
-******* [[https://nextjournal.com/schmudde/how-to-version-control-jupyter][nbconvert to python]]: records the code cells, can be checked in
+******* [[https://nextjournal.com/schmudde/how-to-version-control-jupyter][nbconvert to python]]: records the code cells, can be checked in, loses ntbk struct
 
         jupyter nbconvert /jupyter-git/simple-nb.ipynb --to="python"
  --output-dir="/results" --output="simple-nb-nbconvert"
@@ -8372,22 +8397,55 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
           o can make an output like commandline diff.  Not graphical, or emacs ediff, etc.
           o is smart about notebooks with data in them and non-meaningful changes in json structure.
 
-        *mnbmerg*: command line merge
+        *nbmerg*: command line merge
 
           nbmerge simple-nbdime-base.ipynb simple-nbdime-local.ipynb simple-nbdime-remote.ipynb  --decisions
 
           o command-line merging like in a linux command line
 
-******* [[https://nextjournal.com/schmudde/how-to-version-control-jupyter][ReviewNB]]: visual diff/merge for when everything is in GitHub
+******* [[https://nextjournal.com/schmudde/how-to-version-control-jupyter][ReviewNB]]: visual diff/merge but only when everything is in GitHub
 
-******* [[https://nextjournal.com/schmudde/how-to-version-control-jupyter][jupytext]]: sends single .py file to git; .ipynb not checked in
+******* <<jupytext>>: puts all formatting info in gitable .py file; .ipynb has data
 
-        After some config, you can split Jupter notebook into:
-        o py file with some minimal metacommands in it.  I think it will almost run by itself.
-        o a .ipynb file that you don't check in.
+        After [[https://nextjournal.com/schmudde/how-to-version-control-jupyter][some config]], you can split Jupter notebook into:
+        o .py file with commented out meta cell info in it.
+           o notebook can be reconstructed from .py file alone
+           o .py file runs by itself, as a .py file, too
+           o default metaformat is ## but #%% is more compatible w/ spyder, etc.
+             o default was in jupyter; it wasn't defaultable somewhere else I
+               didn't understand
+           o if edit .py file, a browser refresh brings it to the browser ntbk
+        o .ipynb file containing data, graphs, etc.  
+           o You don't have to it check in.
+           o jupytext will get graphs etc. from if don't conflict w/ .py file
 
-        If the .ipynb file survives, you can rescontruct the notebook only with what's check into git.
+********* 2017 Tutorial [[https://github.com/mwouts/jupytext_pyparis_2018/blob/master/README.md][video]] and [[https://github.com/mwouts/jupytext][github page (w/ tutorial and install instructions)]].  
+********* [[https://towardsdatascience.com/jupytext-1-0-highlights-a49dca9baa7b][There are]] jupytext extensions for both Jupyter & Jupyterlab
+********* 2019 Medium article: [[https://towardsdatascience.com/jupytext-1-0-highlights-a49dca9baa7b][Jupytext 1.0 highlights - Towards Data Science]]
+********* [[https://github.com/mwouts/jupytext/issues/298][instructions]] for enabling jupyterlab jupytext extension in bug report
+********* author [[https://github.com/mwouts/jupytext/issues/62][considers]] an org mode converter (2018, not done in 2019)
+********* simple install, as it's an [[https://anaconda.org/conda-forge/jupytext][anaconda package]]
+********* is [[POC versioning Machine Learning pipeline]] python extracter better?
+********* saves ipynb in a [[https://github.com/mwouts/jupytext/tree/master/demo][ton of different formats]] e.g. even pandoc
+********* inactivating .ipynb cells in .py file and vice versa
+          From the FAQ
+          
+          Mark a code cell with an "active": "ipynb" metadata or with an active-ipynb tag if you want it to be commented out in the paired script.
 
+          Mark a raw cell with an "active": "py" metadata or with an active-py tag if you want it to be inactive in the notebook but active in the script.
+
+******* <<Data versioning in Jupyter notebooks>>
+********* [[https://dagshub.com/DAGsHub-Official/Jupyter-Notebook-DVC][DAGsHub-Official/Jupyter-Notebook-DVC: A minimalistic integration of DVC]]
+*********** Is labelled "beta"
+*********** only two commits, 4 months old, as of Aug 19
+*********** has [[https://dagshub.com/][free and commercial plan]]s
+********* <<POC versioning Machine Learning pipeline>> ([[https://github.com/peopledoc/mlv-tools-tutorial][GitHub]])
+*********** Data x Code x Hyperparameters versioning
+*********** Also version controls Jupyter notebooks (they're assumed, I think)
+*********** last commit was on 5/24/19, when I visited [[https://github.com/peopledoc/mlv-tools-tutorial][GitHub]] on 8/20/19
+*********** has its own jupyter notebook python extracter.  Is [[jupytext]] better?
+******* also [[Data Versioning]]
+***** also [[Spyder Jupyter Notebooks]]
 *** Machine learning Python libs
 ***** [[http://scikit-learn.org/stable/][scikit-learn]]
 ******* guy's [[http://www.google-melange.com/gsoc/proposal/review/google/gsoc2013/nicolastr/12001][plan]] to add missing feature fill-in using matrix completion
@@ -8754,7 +8812,14 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
 ********* LD_LIBRARY_PATH bug in PyCharm: [[https://github.com/tensorflow/tensorflow/issues/9530][PyCharm won't correctly import tensorflow]]
 ********* <<Remote Interpreter example with Tensorflow>>: [[https://medium.com/@erikhallstrm/work-remotely-with-pycharm-tensorflow-and-ssh-c60564be862d][Work remotely with PyCharm, TensorFlow and SSH]]
 ***** Atom
-***** Spyder
+***** <<Spyder>>
+******* <<Spyder Jupyter Notebooks>>
+        Spyder can run  [[Jupyterlab]] (or Jupyter) Notebooks: 
+
+        [[https://github.com/spyder-ide/spyder-notebook][spyder-ide/spyder-notebook: Jupyter notebook integration with Spyder]]
+
+       However, as of Aug 2019, I couldn't get this to work.
+ 
 *** Python Package installation
 ***** XGboost on Windows
       Hard to find on Windows.  Almost everything is on linux.  But this seems to work:
@@ -8828,12 +8893,38 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
 *** Probabilistic Programming in Python: [[https://pyro.ai/][Pyro]]
     See energytop.org for more on probabilistic programming
 * <<Data Versioning>>
-*** [[https://dvc.org/][Machine Learning Version Control System · DVC]]
-*** [[https://databricks.com/blog/2018/06/05/introducing-mlflow-an-open-source-machine-learning-platform.html][Introducing MLflow: an Open Source Machine Learning Platform - The Databricks...]]
+
+  The [[POC versioning Machine Learning pipeline]] looks pretty good.  Has DVC parameterization and Jupyter notebooks.  Worth looking into?
+
+*** [[https://youtu.be/jkfh2PM5Sz8][Overview Talk]] re: MLflow, Git-LFS, DVC
+*** [[https://databricks.com/blog/2018/06/05/introducing-mlflow-an-open-source-machine-learning-platform.html][MLflow: an Open Source Machine Learning Platform - The Databricks...]]
+***** it's [[https://youtu.be/jkfh2PM5Sz8][like my ancient C++ prnvar]]: print statements are put in a log file
+***** tracks performance metrics & ML models but not data versions or pipelines
+*** Git-LFS (Git large file storage)
+***** [[https://youtu.be/jkfh2PM5Sz8][Does]]: model vers, kinda dataset vers, but not pipelines or metrics
+***** not great for huge files
+***** also [[Git large file storage for test data]]
+*** [[https://dvc.org/][DVC: Machine Learning Version Control System ]]
+***** dvc.org: [[https://dvc.org/doc/understanding-dvc/resources][videos]]
+******* [[https://www.youtube.com/watch?v=jkfh2PM5Sz8&feature=youtu.be][dvc versions]]: model, data, pipelines, ~metrics 
+********* says MLflow not bad, hints that could help metrics
+********* [[POC versioning Machine Learning pipeline]]: example of DVC+MLflow
+******* [[https://www.youtube.com/watch?v=jkfh2PM5Sz8&feature=youtu.be][DS/ML not Agile?]] say final slides from dvc.org, need something different
+********* more details [[https://www.youtube.com/watch?time_continue=201&v=BneW7jgB298][here]]
+***** what's missing in dvc.org
+******* no automatic dependency detection
+********* each dependency is a "-d <thing>" on the command line
+********* intermediate don't determine dependencies, as far as I can tell
+********* parameters aren't part of the data version
+*********** [[POC versioning Machine Learning pipeline]] might help
+******* no nice tools that show run status
+******* no easy way to make a table of parms vs. perf metric
+        [[https://dvc.org/doc/get-started/compare-experiments][dvc metrics show -T]] is pretty clunky
+*** [[https://qri.io/][qri:]] data versioning, can transform w/ python-like language
 *** [[RunRouter]]
 *** [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
-*** [[Git large file storage for test data]]
-*** [[Versioning Jupyter Notebooks]]
+*** [[Versioning Jupyter Notebooks]] (by themselves)
+*** [[Data versioning in Jupyter notebooks]]
 * <<Hadoop>>
 *** [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop Intro Book]]
 
@@ -9702,6 +9793,8 @@ https://www.youtube.com/watch?v=rIaz-l1Kf8w
 ******* Adapt your Mindset - “Lost Generation”
 
 https://www.youtube.com/watch?v=42E2fAWM6rA
+***** [[https://www.youtube.com/watch?v=jkfh2PM5Sz8&feature=youtu.be][DS/ML not Agile?]], say final slides from dvc.org, need something different
+******* more detail [[https://www.youtube.com/watch?time_continue=201&v=BneW7jgB298][here]]
 * XML
 *** Translation tools
 * DTU
