@@ -3435,6 +3435,7 @@ gestures for "show charm" and "switch apps"
    Install diff, etc. using msys2's package manager
 
      pacman -S base-devel
+     pacman -S unzip
     
 *** [[Windows Emacs]]
 *** <<Windows links>>
@@ -8435,15 +8436,32 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
           Mark a raw cell with an "active": "py" metadata or with an active-py tag if you want it to be inactive in the notebook but active in the script.
 
 ******* <<Data versioning in Jupyter notebooks>>
-********* [[https://dagshub.com/DAGsHub-Official/Jupyter-Notebook-DVC][DAGsHub-Official/Jupyter-Notebook-DVC: A minimalistic integration of DVC]]
-*********** Is labelled "beta"
-*********** only two commits, 4 months old, as of Aug 19
-*********** has [[https://dagshub.com/][free and commercial plan]]s
+
+********* <<Simple Jupyter + DVC>>
+
+          A [[https://dagshub.com/DAGsHub-Official/Jupyter-Notebook-DVC][Jupyter Notebook Example]] on DAGsHub, but don't need DAGsHub to run it.  The example is too limited, though.  
+          
+          _It's missing_
+          o Versions based on parameter changes
+          o Versions based on the python code in the notebook
+          o The ability to run repro (can only run notebook again)
+          o The ability to rerun the notebook, as it tries to make directories,
+            etc. every time and errors out.
+          o parallel processing: [[DVC data version control]] doesn't do that yet
+
+          _Anyway, if it worked, the differences from Plain DVC are_
+*********** Plain DVC: must partition stages into .py files w/ cmdline interface
+*********** DVC+Jupyter: whole thing in a notebook, more like [[RunRouter]]
+*********** DVC+Jupyter: has dvc commits in cells -- would work w/ plain DVC
+*********** also [[POC versioning Machine Learning pipeline]]
+
 ********* <<POC versioning Machine Learning pipeline>> ([[https://github.com/peopledoc/mlv-tools-tutorial][GitHub]])
 *********** Data x Code x Hyperparameters versioning
 *********** Also version controls Jupyter notebooks (they're assumed, I think)
 *********** last commit was on 5/24/19, when I visited [[https://github.com/peopledoc/mlv-tools-tutorial][GitHub]] on 8/20/19
 *********** has its own jupyter notebook python extracter.  Is [[jupytext]] better?
+*********** uses Git and [[DVC data version control]], and other stuff
+*********** also [[Simple Jupyter + DVC]]
 ******* also [[Data Versioning]]
 ***** also [[Spyder Jupyter Notebooks]]
 *** Machine learning Python libs
@@ -8904,14 +8922,19 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
 ***** [[https://youtu.be/jkfh2PM5Sz8][Does]]: model vers, kinda dataset vers, but not pipelines or metrics
 ***** not great for huge files
 ***** also [[Git large file storage for test data]]
-*** [[https://dvc.org/][DVC: Machine Learning Version Control System ]]
+*** <<DVC data version control>>
+
+    It's kinda cumbersome, as you have to manually declare dependencies between command line interfaced scripts (but see [[Simple Jupyter + DVC]]).  More importantly, it's not parallelizable ([[What's missing in DVC]]).
+
+***** [[https://dvc.org/][DVC: Machine Learning Version Control System ]]
 ***** dvc.org: [[https://dvc.org/doc/understanding-dvc/resources][videos]]
 ******* [[https://www.youtube.com/watch?v=jkfh2PM5Sz8&feature=youtu.be][dvc versions]]: model, data, pipelines, ~metrics 
 ********* says MLflow not bad, hints that could help metrics
 ********* [[POC versioning Machine Learning pipeline]]: example of DVC+MLflow
 ******* [[https://www.youtube.com/watch?v=jkfh2PM5Sz8&feature=youtu.be][DS/ML not Agile?]] say final slides from dvc.org, need something different
 ********* more details [[https://www.youtube.com/watch?time_continue=201&v=BneW7jgB298][here]]
-***** what's missing in dvc.org
+***** <<What's missing in DVC>>
+******* [[https://github.com/iterative/dvc/issues/755][NOT PARALLELIZED]] (in Aug 2019, planned for future, though)
 ******* no automatic dependency detection
 ********* each dependency is a "-d <thing>" on the command line
 ********* intermediate don't determine dependencies, as far as I can tell
@@ -8920,7 +8943,38 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
 ******* no nice tools that show run status
 ******* no easy way to make a table of parms vs. perf metric
         [[https://dvc.org/doc/get-started/compare-experiments][dvc metrics show -T]] is pretty clunky
-*** [[https://qri.io/][qri:]] data versioning, can transform w/ python-like language
+***** DVC installation
+      From [[https://anaconda.org/conda-forge/dvc][Dvc :: Anaconda Cloud]]
+
+      conda install -c conda-forge dvc
+***** TRY [[https://dvc.org/doc/tutorial][DVC tutorial]]
+
+      It's in C:\Users\Scott\OneDrive - Clean Power Research\Research\Re> 
+
+      To activate 
+
+      conda activate dvc_tutorial
+
+***** [[Simple Jupyter + DVC]]
+***** [[DAGsHub: "GitHub for DVC"]]
+*** <<DAGsHub: "GitHub for DVC">>: : built on top of DVC
+
+    DAGsHub is a GitHub-like repository for DVC data versioning.  A nice GUI, really nice graph showing DAG and maybe some other stuff.  Would be good for collaboration like GitHub is, but I'm not sure I need it, since as far as I can tell, anything that runs on it would run directly on my desktop, with no DAGsHub "install"
+
+***** [[https://dagshub.com/docs/faq/][DAGsHub FAQ]]
+***** Is labelled "beta"
+***** only two commits, 4 months old, as of Aug 19
+***** can [[https://dagshub.com/DAGsHub-Official/DAGsHub-Tutorial-MNIST][display your DAG]]: quite nice
+***** [[Simple Jupyter + DVC]] example on DAGsHub but doesn't need DagsHub
+***** [[https://dagshub.com/DAGsHub-Official/DAGsHub-Tutorial-MNIST][Pure Code Example]]
+***** Many example notebooks: [[https://dagshub.com/explore/repos][Explore · DAGsHub]]
+***** has [[https://dagshub.com/][free and commercial plan]]s (private repo: [[https://dagshub.com/docs/faq/#q-ok-but-i-like-github-and-thats-what-im-using-for-my-project-so-you-cant-help-me-right][free, <=2 collborators]])
+***** uses Git and [[DVC data version control]]
+ 
+*** [[https://qri.io/][qri:]] data versioning, IPFS, can transform w/ python-like language
+***** "git style" version control
+***** Transforms with "Python's cousin," Starlark
+***** Based on [[https://techcrunch.com/2015/10/04/why-the-internet-needs-ipfs-before-its-too-late/][IPFS]], a distributed thing that could replace http
 *** [[RunRouter]]
 *** [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
 *** [[Versioning Jupyter Notebooks]] (by themselves)
