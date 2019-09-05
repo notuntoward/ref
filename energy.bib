@@ -11959,6 +11959,57 @@ Keywords: Intraday market for electricity, fundamental price modeling},
   url         = {http://www.econstor.eu/bitstream/10419/113275/1/822013509.pdf},
 }
 
+@PhdThesis{Scolnik16binPredAccIncAndOpt_PhD,
+  author        = {Scolnik, Ryan},
+  title         = {Predictive Accuracy Measures for Binary Outcomes: Impact of Incidence Rate and Optimization Techniques},
+  school        = {Florida State University},
+  year          = {2016},
+  __markedentry = {[Scott:1]},
+  abstract      = {Evaluating the performance of models predicting a binary outcome can be done using a variety of
+measures. While some measures intend to describe the model’s overall fit, others more accurately
+describe the model’s ability to discriminate between the two outcomes. If a model fits well but
+doesn’t discriminate well, what does that tell us? Given two models, if one discriminates well
+but has poor fit while the other fits well but discriminates poorly, which of the two should we
+choose? The measures of interest for our research include the area under the ROC curve, Brier
+Score, discrimination slope, Log-Loss, R2 and Fbeta. To examine the underlying relationships among
+all of the measures, real data and simulation studies are used.
+The real data comes from multiple cardiovascular research studies and the simulation studies
+are run under general conditions and also for incidence rates ranging from 2% to 50%. The results
+of these analyses provide insight into the relationships among the measures and raise concern for
+scenarios when the measures may yield different conclusions. The impact of incidence rate on the
+relationships provides a basis for exploring alternative maximization routines to logistic regression.
+While most of the measures are easily optimized using the Newton-Raphson algorithm, the max-
+imization of the area under the ROC curve requires optimization of a non-linear, non-differentiable
+function. Usage of the Nelder-Mead simplex algorithm and close connections to economics research
+yield unique parameter estimates and general asymptotic conditions. Using real and simulated
+data to compare optimizing the area under the ROC curve to logistic regression further reveals the
+impact of incidence rate on the relationships, significant increases in achievable areas under the
+ROC curve and differences in conclusions about including a variable in a model.},
+  comment       = {Shows how incidence (rate of true positives) affects Brier score (see bookmarks, Section 3.4) and other metrics for probabilistic classification.  Also interesting in that it shows how many performance metrics are related, sometimes with equations.  .
+
+* "incidence" means number of positive cases
+
+* Rsquared vs. BS and incidence (Brier Score, eq. 3.6):  
+  - there's a simple equation
+  - incidence important in denominator
+* AUC vs. logloss and incidence (section 3.3.4)
+  - relationship is kinda linear
+  - AUC is lower than linear when there is low indidence or low logloss
+* BS and incidence (section 3.4.2)
+   - BS isn't independent of incidence: is biased high by high incidence
+
+AUC (area under ROC) vs. incidence
+* AUC doesn't have a unique solution
+* using for optimization can't rely on derivatives
+* when logistic regression fit with log lik and evaluated w/ AUC overall fit (must be AUC) and accuracy don't line up (p 81)
+* for low incidence cases, apparently suggest Nelder-Mead Simplex for logistic regression opt. or the method proposed in this thesis, I think AUCRanks
+
+
+},
+  file          = {:Scolnik16binPredAccIncAndOpt_PhD.pdf:PDF},
+  publisher     = {USA: Florida State University},
+}
+
 @InProceedings{Habte14calMeasUncertRadiometric,
   author    = {Aron Habte and Manajit Sengupta and Ibrahim Reda and A Neuber Andreas and Joep Konings},
   title     = {Calibration and Measurement Uncertainty Estimation of Radiometric Data},
@@ -18287,6 +18338,25 @@ Preprint submitted to International Journal of Forecasting
   timestamp = {2010.11.24},
 }
 
+@Article{Brownlee18whenRocPrecRec,
+  author        = {Jason Brownlee},
+  title         = {How and When to Use ROC Curves and Precision-Recall Curves for Classification in Python},
+  journal       = {Machine Learning Mastery Blog},
+  year          = {2018},
+  month         = aug,
+  __markedentry = {[Scott:1]},
+  abstract      = {It can be more flexible to predict probabilities of an observation belonging to each class in a classification problem rather than predicting classes directly.
+
+This flexibility comes from the way that probabilities may be interpreted using different thresholds that allow the operator of the model to trade-off concerns in the errors made by the model, such as the number of false positives compared to the number of false negatives. This is required when using models where the cost of one error outweighs the cost of other types of errors.
+
+Two diagnostic tools that help in the interpretation of probabilistic forecast for binary (two-class) classification predictive modeling problems are ROC Curves and Precision-Recall curves.
+
+In this tutorial, you will discover ROC Curves, Precision-Recall Curves, and when to use each to interpret the prediction of probabilities for binary classification problems.},
+  comment       = {A good reference for Precision Recall, ROC, and those terms I always confuse like "sentivity"},
+  file          = {:Brownlee18whenRocPrecRec.pdf:PDF},
+  url           = {https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/},
+}
+
 @Article{Bai16condCplaWindPowCrvFeat,
   author    = {Bai, Guanghan and Fleck, Brian and Zuo, Ming J.},
   title     = {A stochastic power curve for wind turbines with reduced variability using conditional copula},
@@ -21637,23 +21707,22 @@ If the hazard function is in continuous time, you have to integrate in order to 
 }
 
 @Article{Bergmeir18crossValARfrcst,
-  author        = {Christoph Bergmeir and Rob J. Hyndman and Bonsoo Koo},
-  title         = {A note on the validity of cross-validation for evaluating autoregressive time series prediction},
-  journal       = {Computational Statistics \& Data Analysis},
-  year          = {2018},
-  volume        = {120},
-  pages         = {70 - 83},
-  issn          = {0167-9473},
-  __markedentry = {[Scott:6]},
-  abstract      = {One of the most widely used standard procedures for model evaluation in classification and regression is K-fold cross-validation (CV). However, when it comes to time series forecasting, because of the inherent serial correlation and potential non-stationarity of the data, its application is not straightforward and often replaced by practitioners in favour of an out-of-sample (OOS) evaluation. It is shown that for purely autoregressive models, the use of standard K-fold CV is possible provided the models considered have uncorrelated errors. Such a setup occurs, for example, when the models nest a more appropriate model. This is very common when Machine Learning methods are used for prediction, and where CV can control for overfitting the data. Theoretical insights supporting these arguments are presented, along with a simulation study and a real-world example. It is shown empirically that K-fold CV performs favourably compared to both OOS evaluation and other time-series-specific techniques such as non-dependent cross-validation.
+  author   = {Christoph Bergmeir and Rob J. Hyndman and Bonsoo Koo},
+  title    = {A note on the validity of cross-validation for evaluating autoregressive time series prediction},
+  journal  = {Computational Statistics \& Data Analysis},
+  year     = {2018},
+  volume   = {120},
+  pages    = {70 - 83},
+  issn     = {0167-9473},
+  abstract = {One of the most widely used standard procedures for model evaluation in classification and regression is K-fold cross-validation (CV). However, when it comes to time series forecasting, because of the inherent serial correlation and potential non-stationarity of the data, its application is not straightforward and often replaced by practitioners in favour of an out-of-sample (OOS) evaluation. It is shown that for purely autoregressive models, the use of standard K-fold CV is possible provided the models considered have uncorrelated errors. Such a setup occurs, for example, when the models nest a more appropriate model. This is very common when Machine Learning methods are used for prediction, and where CV can control for overfitting the data. Theoretical insights supporting these arguments are presented, along with a simulation study and a real-world example. It is shown empirically that K-fold CV performs favourably compared to both OOS evaluation and other time-series-specific techniques such as non-dependent cross-validation.
 
 Keywords: cross-validation, time series, autoregression.},
-  comment       = {Compares the idea k-fold cross validation with guard bands for AR model lags (like I've done in the past at Fraunhofer).  For a purely AR model (no exogenous variables, I guess).  5 fold CV error estimate is worse if you use the guard bands (purely AR model, small data set e.g. 289 points, AR lag ~ 9).  They say something about standard CV being OK when errors have no serial correlation (temporal dependence) -- say Ljung-Box test can check for this dependence.  But I haven't really read this paper, and so don't know what this all means in general real life problems.
+  comment  = {Compares the idea k-fold cross validation with guard bands for AR model lags (like I've done in the past at Fraunhofer).  For a purely AR model (no exogenous variables, I guess).  5 fold CV error estimate is worse if you use the guard bands (purely AR model, small data set e.g. 289 points, AR lag ~ 9).  They say something about standard CV being OK when errors have no serial correlation (temporal dependence) -- say Ljung-Box test can check for this dependence.  But I haven't really read this paper, and so don't know what this all means in general real life problems.
 
 Note that this (forecasting) professor (Hyndemann) doesn't worry about causaility of train and test data, as does Cochrane18crossValTimeSer},
-  doi           = {https://doi.org/10.1016/j.csda.2017.11.003},
-  keywords      = {Cross-validation, Time series, Autoregression},
-  url           = {http://www.sciencedirect.com/science/article/pii/S0167947317302384},
+  doi      = {https://doi.org/10.1016/j.csda.2017.11.003},
+  keywords = {Cross-validation, Time series, Autoregression},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0167947317302384},
 }
 
 @Article{Minku10ensDiversDrift,
@@ -22398,6 +22467,7 @@ I couldn't find a paper for this, but requested a copy on ResearchGate
 
 Dynamic Random forest: Bernard12dynRandForest},
   doi      = {https://doi.org/10.1016/j.eswa.2018.06.011},
+  file     = {:Nami18cardFraudDynRandFrstKnn.pdf:PDF},
   keywords = {Payment card fraud detection, Dynamic random forest, Cost-sensitive detection, Minimum risk},
   url      = {http://www.sciencedirect.com/science/article/pii/S0957417418303579},
 }
@@ -22956,6 +23026,41 @@ But there are a lot of variants in this paper I kind of skimmed it quickly and d
   series      = {IMM-Technical Report-2007-02},
   timestamp   = {2011.04.12},
   url         = {http://www2.imm.dtu.dk/pubdb/p.php?5024},
+}
+
+@InProceedings{Ling03aucVsAccRank,
+  author        = {Ling, Charles X and Huang, Jin and Zhang, Harry and others},
+  title         = {AUC: a statistically consistent and more discriminating measure than accuracy},
+  booktitle     = {Ijcai},
+  year          = {2003},
+  volume        = {3},
+  pages         = {519--524},
+  __markedentry = {[Scott:1]},
+  abstract      = {Predictive accuracy has been used as the main and
+often only evaluation criterion for the predictive
+performance of classification learning algorithms.
+In recent years, the area under the ROC (Receiver
+Operating Characteristics) curve, or simply AUC,
+has been proposed as an alternative single-number
+measure for evaluating learning algorithms. In this
+paper, we prove that AUC is a better measure than
+accuracy. More specifically, we present rigourous
+definitions on consistency and discriminancy in
+comparing two evaluation measures for learning al-
+gorithms. We then present empirical evaluations
+and a formal proof to establish that AUC is indeed
+statistically consistent and more discriminating than
+accuracy. Our result is quite significant since we
+formally prove that, for the first time, AUC is a bet-
+ter measure than accuracy in the evaluation of learn-
+ing algorithms.},
+  comment       = {Classifier AUC is generally more informative than accuracy (proportion of correctly predicted outcomes, I think) about the value of probabilities coming from binary classifiers -- in fact classifies trained to predict AUC can produce not only better AUC than accuracy-tuned classifers, but better accuracy as well.  
+
+This is because AUC assesses the accuracy of the rankings of classifier probabilities (see the very simple eq. 1, which will make computing AUC really easy).  However, a larger AUC doesn't always imply a lower errorrate (Table 3).
+
+However, they have some way I didn't read explaining how AUC is more consistent and discriminating than accuracy.},
+  file          = {:Ling03aucVsAccRank.pdf:PDF},
+  url           = {https://cling.csd.uwo.ca/papers/ijcai03.pdf},
 }
 
 @Electronic{Microsoft16predMaintPlaybook,
@@ -23643,7 +23748,22 @@ form for the univariate marginal distributions of the data is not necessary.},
 Keywords: Probability forecasts, Statistics, Forecast verification},
   comment   = {Seems like a good review of what scores have to have. Fairly highly cited.
 
-Related to Pinson06ProbFrcstPropsEval},
+Proper Score
+A score is proper if it's lowest (best) if compute it using your best knowledge of the true distribution, q(x).
+
+Strictly Proper Score
+The term is used here to distinguish between two different scores but I don't know what it means.  I suspsect that it's defined in a 2014 Gneiting Tech report (in the refs)
+
+Local Score
+* Local: score depends only upon the predicted pdf value at the true answer, X
+* Therefore, CRPS (Hersbach00crpsDecomp) is non-local since it's integrating across whole predicted pdf at each instant.
+* Ignorance (Roulston02frcstInfoEval) is the only smooth, proper and local score, but fails if forecast has zero probs
+Related to Pinson06ProbFrcstPropsEval
+* locality "appears to be desirable" but being proper is more important
+
+Generalized Score
+* includes the uncertainty about the measurement used for verification (the "truth").
+* if original ungeneralized score is proper then so is the generalized version, but it's not necessarily strictly proper.},
   doi       = {10.1175/WAF966.1},
   file      = {Brocker07properScore.pdf:Brocker07properScore.pdf:PDF},
   groups    = {Test, CitaviImport1, doReadWPV_1},
@@ -24820,6 +24940,27 @@ Keywords: Python, supervised learning, unsupervised learning, model selection},
   url      = {http://jmlr.csail.mit.edu/papers/v12/pedregosa11a.html},
 }
 
+@Article{Byrn16aucForProbFrcst,
+  author        = {Byrne, Simon},
+  title         = {A note on the use of empirical AUC for evaluating probabilistic forecasts},
+  journal       = {Electron. J. Statist.},
+  year          = {2016},
+  volume        = {10},
+  number        = {1},
+  pages         = {380--393},
+  __markedentry = {[Scott:1]},
+  abstract      = {Scoring functions are used to evaluate and compare partially probabilistic forecasts. We investigate the use of rank-sum functions such as empirical Area Under the Curve (AUC), a widely used measure of classification performance, as a scoring function for the prediction of probabilities of a set of binary outcomes. It is shown that the AUC is not generally a proper scoring function, that is, under certain circumstances it is possible to improve on the expected AUC by modifying the quoted probabilities from their true values. However with some restrictions, or with certain modifications, it can be made proper. },
+  comment       = {In general, the AUC isn't proper, but can be improved by adjusting the score.  
+
+Under some constraints, it can be proper, though.
+* for example, if the forecaster knows the number of positive events, extreme tail events can be ruled out.},
+  doi           = {10.1214/16-EJS1109},
+  file          = {:Byrn16aucForProbFrcst.pdf:PDF},
+  fjournal      = {Electronic Journal of Statistics},
+  publisher     = {The Institute of Mathematical Statistics and the Bernoulli Society},
+  url           = {https://doi.org/10.1214/16-EJS1109},
+}
+
 @Article{Gneiting07strictPropScore,
   author    = {Gneiting, Tilmann and Raftery, Adrian E},
   title     = {Strictly Proper Scoring Rules, Prediction, and Estimation},
@@ -24837,10 +24978,12 @@ CRPS is the absolute error (average?) of a deterministic forecast: can use it to
 
 I have the tech report returned by google scholar, but not the final journal paper.
 
-Is hacked for censored quantiles in Friederichs07censQRprecip},
+Is hacked for censored quantiles in Friederichs07censQRprecip
+
+Also Hersbach00crpsDecomp},
   doi       = {10.1198/016214506000001437},
   eprint    = {http://amstat.tandfonline.com/doi/pdf/10.1198/016214506000001437},
-  file      = {Tech Report:Gneiting07strictPropScore_TR.pdf:PDF;Gneiting07strictPropScore.pdf:Gneiting07strictPropScore.pdf:PDF},
+  file      = {Tech Report:Gneiting07strictPropScore_TR.pdf:PDF},
   groups    = {Test, doReadWPV_1},
   owner     = {sotterson},
   timestamp = {2013.10.23},
@@ -24883,6 +25026,27 @@ Note that this paper is a 2013 version. I couldn't figure out where it was publi
   file      = {Vasko02estNumSegsPerm.pdf:Vasko02estNumSegsPerm.pdf:PDF;Vasko02estNumSegsPerm.pdf:Vasko02estNumSegsPerm.pdf:PDF},
   owner     = {sotterson},
   timestamp = {2009.03.02},
+}
+
+@Misc{Wikipedia19sensitivAndSpecif,
+  author       = {Wikipedia},
+  title        = {Sensitivity and specificity},
+  howpublished = {Wikipedia},
+  year         = {2019},
+  abstract     = {Sensitivity and specificity are statistical measures of the performance of a binary classification test, also known in statistics as a classification function, that are widely used in medicine:
+
+* Sensitivity (also called the true positive rate, the recall, or probability of detection[1] in some fields) measures the proportion of actual positives that are correctly identified as such (e.g., the percentage of sick people who are correctly identified as having the condition).
+
+* Specificity (also called the true negative rate) measures the proportion of actual negatives that are correctly identified as such (e.g., the percentage of healthy people who are correctly identified as not having the condition).},
+  comment      = {Sensitivity and Specificity are two binary classification metrics with a lot of aliases
+
+Sensitivity = proportion of actual positives correctly detected
+a.k.a. true postive rate = recall = probability of detection
+
+Specificity = proportion of actual negatives correctly detected
+a.k.a. true negative rate},
+  file         = {:Wikipedia19sensitivAndSpecif.pdf:PDF},
+  url          = {https://en.wikipedia.org/wiki/Sensitivity_and_specificity},
 }
 
 @InProceedings{Hinneburg06onlineDFT,
@@ -25961,8 +26125,10 @@ In this paper it is shown that for an ensemble prediction system the CRPS can be
 Decomposition is analogous to the decomposition of the Brier score. Should probably understand why both decompositions matter.
 
 * the CRPS of a deterministic forecast is equal to the mean absolute error (MAE)
+* it's a non-local score (see Brocker07properScore)
 * multidimensional CRPS is some kind of weighted average
-* in practice, I think I've found that it's insensitive to quantile crossover (this is the algorithm used in the R verification package that I ported to crpsDecomposition.m, for the Eweline project.  I've since written my own CRPS code which uses weighted quantile scores.  Also, Malte, wrote Quanti9leScoreDecom.m, based on Bentzien14quantScrDecomp)},
+* in practice, I think I've found that it's insensitive to quantile crossover (this is the algorithm used in the R verification package that I ported to crpsDecomposition.m, for the Eweline project.  I've since written my own CRPS code which uses weighted quantile scores.  Also, Malte, wrote Quanti9leScoreDecom.m, based on Bentzien14quantScrDecomp)
+* CRPS can be  interpreted as the integral of the Brier score over all possible threshold values},
   doi       = {10.1175/1520-0434%282000%29015%3C0559:DOTCRP%3E2.0.CO;2},
   file      = {Hersbach00crpsDecomp.pdf:Hersbach00crpsDecomp.pdf:PDF},
   groups    = {Test, CitaviImport1, doReadWPV_1},
@@ -27666,20 +27832,21 @@ Dong17resPVdeployFrcst
 }
 
 @Article{Todter12genIgnCRPS,
-  author    = {T{\"o}dter, Julian and Ahrens, Bodo},
-  title     = {Generalization of the Ignorance Score: Continuous Ranked Version and Its Decomposition.},
-  journal   = {Monthly Weather Review},
-  year      = {2012},
-  volume    = {140},
-  number    = {6},
-  abstract  = {The Brier score (BS) and its generalizations to the multicategory ranked probability score (RPS) and to the continuous ranked probability score (CRPS) are the prominent verification measures for probabilistic forecasts. Particularly, their decompositions into measures quantifying the reliability, resolution, and uncertainty of the forecasts are attractive. Information theory sets up the natural framework for forecast verification. Recently, it has been shown that the BS is a second-order approximation of the information-based ignorance score (IGN), which also contains easily interpretable components and can also be generalized to a ranked version (RIGN). Here, the IGN, its generalizations, and decompositions are systematically discussed in analogy to the variants of the BS. Additionally, a continuous ranked IGN (CRIGN) is introduced in analogy to the CRPS. The applicability and usefulness of the conceptually appealing CRIGN are illustrated, together with an algorithm to evaluate its components reliability, resolution, and uncertainty for ensemble-generated forecasts.},
-  comment   = {Another decomposition of CRPS. Matlab available here:
+  author        = {T{\"o}dter, Julian and Ahrens, Bodo},
+  title         = {Generalization of the Ignorance Score: Continuous Ranked Version and Its Decomposition.},
+  journal       = {Monthly Weather Review},
+  year          = {2012},
+  volume        = {140},
+  number        = {6},
+  __markedentry = {[Scott:1]},
+  abstract      = {The Brier score (BS) and its generalizations to the multicategory ranked probability score (RPS) and to the continuous ranked probability score (CRPS) are the prominent verification measures for probabilistic forecasts. Particularly, their decompositions into measures quantifying the reliability, resolution, and uncertainty of the forecasts are attractive. Information theory sets up the natural framework for forecast verification. Recently, it has been shown that the BS is a second-order approximation of the information-based ignorance score (IGN), which also contains easily interpretable components and can also be generalized to a ranked version (RIGN). Here, the IGN, its generalizations, and decompositions are systematically discussed in analogy to the variants of the BS. Additionally, a continuous ranked IGN (CRIGN) is introduced in analogy to the CRPS. The applicability and usefulness of the conceptually appealing CRIGN are illustrated, together with an algorithm to evaluate its components reliability, resolution, and uncertainty for ensemble-generated forecasts.},
+  comment       = {Another decomposition of CRPS. Matlab available here:
 https://github.com/itszootime/emulatorization-api/blob/master/matlab/validation/crps_ign.m},
-  doi       = {10.1175/MWR-D-11-00266.1},
-  file      = {Todter12genIgnCRPS.pdf:Todter12genIgnCRPS.pdf:PDF},
-  groups    = {Test, doReadWPV_1},
-  owner     = {sotterson},
-  timestamp = {2014.02.28},
+  doi           = {10.1175/MWR-D-11-00266.1},
+  file          = {Todter12genIgnCRPS.pdf:Todter12genIgnCRPS.pdf:PDF},
+  groups        = {Test, doReadWPV_1},
+  owner         = {sotterson},
+  timestamp     = {2014-02-28},
 }
 
 @Article{Oh11fastSmthQuantreg,
@@ -31485,26 +31652,29 @@ The idea was to use this for probabilistic upscaling, somehow.},
 }
 
 @Article{Roulston02frcstInfoEval,
-  author    = {Roulston, M. S. and Smith, L. A.},
-  title     = {Evaluating probabilistic forecasts using information theory},
-  year      = {2002},
-  volume    = {130},
-  number    = {6},
-  pages     = {1653--1660},
-  issn      = {0027-0644},
-  abstract  = {The problem of assessing the quality of an operational forecasting system that produces probabilistic forecasts is addressed using information theory. A measure of the quality of the forecasting scheme, based on the amount of a data compression it allows, is outlined. This measure, called ignorance, is a logarithmic scoring rule that is a modified version of relative entropy and can be calculated for real forecasts and realizations. It is equivalent to the expected returns that would be obtained by placing bets proportional to the forecast probabilities. Like the cost-loss score, ignorance is not equivalent to the Brier score, but, unlike cost-loss scores, ignorance easily generalizes beyond binary decision scenarios. The use of the skill score is illustrated by evaluating the ECMWF ensemble forecasts for temperature at London's Heathrow airport.},
-  booktitle = {Monthly Weather Review},
-  comment   = {Info theory eval of forecasted prob. dist; is equivalent to placing bets based on density (why not just calculate that number then?). Generalizes to non-binary decisions, so is possibly useful. Maybe the "equivalent to" is a binary decision?
+  author        = {Roulston, M. S. and Smith, L. A.},
+  title         = {Evaluating probabilistic forecasts using information theory},
+  year          = {2002},
+  volume        = {130},
+  number        = {6},
+  pages         = {1653--1660},
+  issn          = {0027-0644},
+  __markedentry = {[Scott:1]},
+  abstract      = {The problem of assessing the quality of an operational forecasting system that produces probabilistic forecasts is addressed using information theory. A measure of the quality of the forecasting scheme, based on the amount of a data compression it allows, is outlined. This measure, called ignorance, is a logarithmic scoring rule that is a modified version of relative entropy and can be calculated for real forecasts and realizations. It is equivalent to the expected returns that would be obtained by placing bets proportional to the forecast probabilities. Like the cost-loss score, ignorance is not equivalent to the Brier score, but, unlike cost-loss scores, ignorance easily generalizes beyond binary decision scenarios. The use of the skill score is illustrated by evaluating the ECMWF ensemble forecasts for temperature at London's Heathrow airport.},
+  booktitle     = {Monthly Weather Review},
+  comment       = {Info theory eval of forecasted prob. dist; is equivalent to placing bets based on density (why not just calculate that number then?). Generalizes to non-binary decisions, so is possibly useful. Maybe the "equivalent to" is a binary decision?
 
 Highly cited.
 
-Maybe worthwhile for optimizing day ahead and hour ahead forecast bidding?},
-  file      = {Roulston02frcstInfoEval.pdf:Roulston02frcstInfoEval.pdf:PDF},
-  groups    = {Test, CitaviImport1, doReadNonWPV_1},
-  keywords  = {probabilistic forecast},
-  ncite     = {176},
-  owner     = {sotterson},
-  timestamp = {2013.09.26},
+Maybe worthwhile for optimizing day ahead and hour ahead forecast bidding?
+
+Ignorance score was better at showing a difference in QR and DR in: Vogt18multiDistLrnAnomDet},
+  file          = {Roulston02frcstInfoEval.pdf:Roulston02frcstInfoEval.pdf:PDF},
+  groups        = {Test, CitaviImport1, doReadNonWPV_1},
+  keywords      = {probabilistic forecast},
+  ncite         = {176},
+  owner         = {sotterson},
+  timestamp     = {2013.09.26},
 }
 
 @Article{Saul03globLocLLE,
@@ -31547,6 +31717,23 @@ Both a quality of fit method and a way to estimate heavy tails in quantile regre
   owner     = {sotterson},
   publisher = {Taylor \& Francis},
   timestamp = {2015.04.17},
+}
+
+@Article{Benedetti10scoreFrcstVerifRare,
+  author        = {Benedetti, Riccardo},
+  title         = {Scoring rules for forecast verification},
+  journal       = {Monthly Weather Review},
+  year          = {2010},
+  volume        = {138},
+  number        = {1},
+  pages         = {203--211},
+  __markedentry = {[Scott:1]},
+  abstract      = {The problem of probabilistic forecast verification is approached from a theoretical point of view starting from three basic desiderata: additivity, exclusive dependence on physical observations (“locality”), and strictly proper behavior. By imposing such requirements and only using elementary mathematics, a univocal measure of forecast goodness is demonstrated to exist. This measure is the logarithmic score, based on the relative entropy between the observed occurrence frequencies and the predicted probabilities for the forecast events. Information theory is then used as a guide to choose the scoring-scale offset for obtaining meaningful and fair skill scores. Finally the Brier score is assessed and, for single-event forecasts, its equivalence to the second-order approximation of the logarithmic score is shown.
+
+The large part of the presented results are far from being new or original, nevertheless their use still meets with some resistance in the weather forecast community. This paper aims at providing a clear presentation of the main arguments for using the logarithmic score.
+Keywords: Forecast verification; Probability forecast/models; Quality assurance/controls },
+  file          = {:Benedetti10scoreFrcstVerifRare.pdf:PDF},
+  url           = {https://journals.ametsoc.org/doi/full/10.1175/2009MWR2945.1},
 }
 
 @Article{Andric96polarWvlt,
@@ -43215,6 +43402,43 @@ Good comparison of exponential weighting and ARIMA.  Lots of other stuff too.
   url       = {https://www.otexts.org/fpp},
 }
 
+@Article{Buja05lossFuncBinClassProb,
+  author        = {Buja, Andreas and Stuetzle, Werner and Shen, Yi},
+  title         = {Loss functions for binary class probability estimation and classification: Structure and applications},
+  journal       = {Working draft, November},
+  year          = {2005},
+  volume        = {3},
+  __markedentry = {[Scott:1]},
+  abstract      = {What are the natural loss functions or fitting criteria for binary class probability
+estimation? This question has a simple answer: so-called “proper scoring rules”, that
+is, functions that score probability estimates in view of data in a Fisher-consistent
+manner. Proper scoring rules comprise most loss functions currently in use: log-loss,
+squared error loss, boosting loss, and as limiting cases cost-weighted misclassification
+losses. Proper scoring rules have a rich structure:
+* Every proper scoring rules is a mixture (limit of sums) of cost-weighted misclassifi-
+cation losses. The mixture is specified by a weight function (or measure) that describes
+which misclassification cost weights are most emphasized by the proper scoring rule.
+* Proper scoring rules permit Fisher scoring and Iteratively Reweighted LS algo-
+rithms for model fitting. The weights are derived from a link function and the above
+weight function.
+* Proper scoring rules are in a 1-1 correspondence with information measures for
+tree-based classification.
+* Proper scoring rules are also in a 1-1 correspondence with Bregman distances that
+can be used to derive general approximation bounds for cost-weighted misclassification
+errors, as well as generalized bias-variance decompositions.
+We illustrate the use of proper scoring rules with novel criteria for 1) Hand and
+Vinciotti’s (2003) localized logistic regression and 2) for interpretable classification
+trees. We will also discuss connections with exponential loss used in boosting.
+
+Keywords: Boosting, stagewise regression, machine learning, proper scoring rules,
+proper score functions, information measures, entropy, Gini index, Bregman distances, link
+functions, binary response data, stumps, tree-based classification, CART, logistic regression,
+Fisher scoring, iteratively reweighted least squares, stagewise fitting.},
+  comment       = {What proper binary class prediction probability scoring rules have in common.},
+  file          = {:Buja05lossFuncBinClassProb.pdf:PDF},
+  url           = {http://www-stat.wharton.upenn.edu/~buja/PAPERS/paper-proper-scoring.pdf},
+}
+
 @Book{Mai14financeEngCopulasExpln,
   title     = {Financial engineering with copulas explained},
   publisher = {Springer},
@@ -44640,7 +44864,7 @@ believe are relevant to wind power system integration.},
   comment     = {Good info on copulas and other scenario generation methods and performance metrics that I wrote down for the OSRnordic project, while working at DTU.
 
 Use CRPSS but the reference forecast is not mentioned. Probably, it's an unconditional Gaussian based on price standard deviation, as in Jonsson13elecPriceQR. For wind, maybe it would be the unconditional quantile estimate, or climatology.},
-  file        = {Otterson11scenGenReview.pdf:Otterson11scenGenReview.pdf:PDF},
+  file        = {Otterson11scenGenReview.pdf:Otterson11scenGenReview.pdf:PDF;:Otterson11scenGenReview.docx:Word 2007+},
   groups      = {Ensemble, PointDerived, Test, doReadNonWPV_1},
   location    = {Kgs. Lyngby, Denmark},
   owner       = {sotterson},
