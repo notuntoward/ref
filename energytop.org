@@ -4268,8 +4268,7 @@ Hope that helps,
 ***** [[file:energy.bib::Vlachos06structPeriodicMeas][Vlachos et al. 2006: Structural Periodic Measures]]
 ***** [[file:energy.bib::Zhu12shrtWindFrcstOp][Zhu & Genton 2012: Short Term Wind]] pow sys operations, has periodic model
 ***** Gaussian Process [[http://mlg.eng.cam.ac.uk/duvenaud/cookbook/index.html][periodic kernel]]
-*** Angular in input (e.g. wind direction)
-    <<Angular In Input>>
+*** <<Angular In Input>> (e.g. wind direction)
 ***** why [spd*sin(dir), spd*cos(dir)] isn't good enough
       <<why not sin/cos?>>
       i.e. velocity basis must be more complex than sin(dir)/cos(dir)
@@ -4351,13 +4350,11 @@ Hope that helps,
 ********* [[file:energy.bib::Coates11ntwkUnSupFtLrn][Coates et al. 2011]] NN tuning v.s basis learning
 ******* See also: [[feature selection for point regression]]
 ******* See also: [[Basis projection for non-stationary covariance]]
-***** TODO Wavelet Basis
-      <<Wavelet Basis>>
+***** TODO <<Wavelet Basis>>
 ******* learning wavelet coeffs w/ LASSO
 ********* [[file:energy.bib::Chen01decompBasisPurst][Chen et al. 2001: Atomic Decomposition Basis Pursuit]] (wavelet, lasso?)
 ********* [[file:energy.bib::Tibshirani05fusedLasso][Tibshirani et al. 2005: Sparsity Smoothness Fused Lasso]] (wavelet, lasso)
-******* Periodic Wavelet
-        <<Periodic Wavelet>>
+******* <<Periodic Wavelet>>
 ********* TODO [[http://www.google.com/books?hl%3Den&lr%3D&id%3DYZkepjn2TLQC&oi%3Dfnd&pg%3DPA1&ots%3DN3SNNnQxYv&sig%3DthMfuI2C2CBysPGeMV_YP9QuM7c#v%3Donepage&q&f%3Dfalse][An introduction to frames and Riesz bases]] (book by [[http://www2.mat.dtu.dk/people/Ole.Christensen/][Ole Christensen]], DTU prof!, contact him)
 ********* [[file:energy.bib::Walter99perWavltScrtch][Walter & Cai 1999: Periodic Wavelets Scratch]]
 ********* [[file:energy.bib::Selsnick05dualTreeCmplxWvlts][Selesnick et al. 2005]] multidim, complex waveletsa
@@ -4707,8 +4704,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ********* [[file:energy.bib::Pya15shapeCnstrAddMdl][Pya & Wood 2015: Shape]] constrained add models, multivar, mono, pnlty.
 ********* [[file:energy.bib::Meyer12cnstrPenSpln][Meyer 2012: Constrained]] penalized spline, has R
 ********* see also [[Lasso for multivarite smoothness]]
-******* Thin plate splines
-        <<Thin plate splines>>
+******* <<Thin plate splines>>
 ********* good for multi-dimensional
 ********* multivariate psplines are now more popular
 *********** [[file:energy.bib::Xiao13FastbivarPsplinesSndwich][Xiao et al. 2013: Fast P]] spline bivariate (fast than thin plates)
@@ -7653,11 +7649,8 @@ Scott
 ********* a mixture model would make the bootstrap subsample weight "principled"
 ********* Google Scholar for: [[http://www.google.com/search?aq%3Df&gcx%3Dc&sourceid%3Dchrome&ie%3DUTF-8&q%3Dexpectation%2Bmaximization%2Bbootstrap][Expectation Maximization Bootstrap]]
 *** <<[[Periodicity]] and [[Circular statistics]]>>
-
-    Was this section accidentally lost?  
-
-***** TODO Check earliest Bitbucket git vers
-
+***** [[Periodicity]]
+***** [[Circular statistics]]
 *** [[Neural Nets]]
 *** [[http://repository.tudelft.nl/consumption/idcplg%3fidcservice%3dget_file&revisionselectionmethod%3dlatestreleased&ddocname%3d025320][kernel machines better than neural net]] ([[fann]]) for short term wind prediction
 ***** also, kernel machines easier to train
