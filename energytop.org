@@ -464,8 +464,17 @@
 ***** [[Quantile Confidence estimates]]
 ***** [[Continuous Ranked Probability Score (CRPS)]]
 *** [[Continuous Ranked Probability Score (CRPS)]]
-*** [[Transfer Entropy]]
-    <<Transfer Entropy>>
+*** <<Local Score>>
+
+    The property of a probabilistic forecast performance score.  A score is [[file:energy.bib::Brocker07properScore][local only if]] it depends only upon the predicted pdf value at the true answer, X.  This "appears" to be desirable but a [[Proper Score]] is [[file:energy.bib::Brocker07properScore][more important]].
+
+    Note that the [[Continuous Ranked Probability Score (CRPS)]] is not local.
+    
+*** <<Proper Score>>
+
+    The property of a probabilistic forecast performance score.  A score is [[file:energy.bib::Brocker07properScore][proper only if]] it's lowest (best) if compute it using your best knowledge of the true distribution, q(x). In addition, a proper score is the only score that is internally consistent.
+
+*** <<Transfer Entropy>>
 
     It's like an information theoretic ARX filter:  It's information about
     the output contained in its history and the history of other external
@@ -810,6 +819,15 @@
     *Irradiance* 
     Radiation flux per area (W/m^2)
 
+*** Sensitivity and Specificity
+    From: [[file:energy.bib::Wikipedia19sensitivAndSpecif][Wikipedia 2019: Sensitivity and Specificity]] 
+    Sensitivity and Specificity are two binary classification metrics with a lot of aliases
+
+***** Sensitivity = proportion of actual positives correctly detected
+******* a.k.a. true postive rate = recall = probability of detection
+***** Specificity = proportion of actual negatives correctly detected
+******* a.k.a. true negative rate
+        
 * Albedo vs. Specular Reflectance
   From: [[file:energy.bib::Blah238_14_specularVsReflective][blah238 2014: Difference Albedo Surface Reflectance]]
 
@@ -832,9 +850,6 @@
 ***** [[http://mloss.org/software/][mloss.org]]: many machine learning libraries, many [[http://mloss.org/software/language/matlab/][in matlab]]
 ***** see: [[Deep learning]]
 *** Code
-    :PROPERTIES:
-    :ID:       4f6a3c5a-3ff9-4f49-9f48-4f47875ff82e
-    :END:
 ***** MLP-MAP
       - Can't spec node type
       - not much control of training
@@ -2251,6 +2266,7 @@ Scott
 ***** [[file:energy.bib::Ohara2010noLogCountDat][Ohara & Kotze 2010: Do not log counts]]: Poisson/Neg. binom best for counts
 ***** [[file:energy.bib::Buskirk15propenseLRvsRandFrst][Buskirk & Kolenikov 2015: Finding Respondents Forest propens vs. LogRr]]
 ***** [[file:energy.bib::Kruppa13cnsmrRiskProbRFnodesize][Kruppa et al. 2013: Consumer indiv. prob consumer credit risk (RFs better)]]
+***** Random Forest maybe better for fraud: [[file:energy.bib::Nami18cardFraudDynRandFrstKnn][Nami & Shajari 2018: Cost-sens payment card risk, DynRandFrst+KNN]]
 ***** Confidence Intervals for logistic regression output probability
       It's said that you can do this w/ bootstrap but there's one analytic method (below)
 ******* Analytic LR conf interv: [[https://stats.stackexchange.com/questions/354098/calculating-confidence-intervals-for-a-logistic-regression][Calculating confidence intervals for a logistic regression]]
@@ -2878,9 +2894,6 @@ Scott
 *************** see [[File:energy.bib::doquire11mutinfmissdat][Doquire & Verleysen 2011: Mutual Info Miss Dat]]
 *************** also [[Missing Features]]
 ************* TODO  <<Reduce dimension bias in Kraskov's MI estimator>>    :idea:
-              :properties:
-              :id:       8fe6d642-37df-4c2c-a568-92b03c3a196f
-              :end:
 *************** MI estimate decreases w/ increasing dimension even if MI is constant
 
                 o estimator:  [[file:energy.bib::kraskov05hierclustmutinfo][kraskov et al. 2005: hierarchical clustering using mutual information]]
@@ -4020,6 +4033,7 @@ Hope that helps,
 * <<KNN Regression>>
 *** [[file:energy.bib::Altman92kernKNNrgrssn][Altman 1992 Intro to Kernel and KNN Regression]]
 *** [[KNN neighborhood functions for local linear regression]]
+*** [[file:energy.bib::Nami18cardFraudDynRandFrstKnn][Nami & Shajari 2018: Cost-sens payment card risk, DynRandFrst+KNN]]
 * <<Decision Tree Methods>>
 *** <<Simple Decision Trees>>
 ***** [[file:energy.bib::Sontag12introMLclass][Sontag 2012: Introduction To Machine Learning (Lecture 11, Decision Trees)]]
@@ -4079,7 +4093,6 @@ Hope that helps,
 ***** Dynamic Random Forest
 ******* [[file:energy.bib::Bernard12dynRandForest][Bernard et al. 2012: Dynamic Random Forests]]
 ******* [[file:energy.bib::Nami18cardFraudDynRandFrstKnn][Nami & Shajari 2018: Cost-sens payment card risk, DynRandFrst+KNN]]
-
 ***** [[Random Forest Ensemble Selection]]
 ***** [[Isolation Forest Anomaly Detection]] (a random forest type)
 ***** <<Random Forest feature selection>>
@@ -6937,10 +6950,12 @@ variables will be preferred, when possible.
 ********* See [[file:energy.bib::Hersbach00crpsDecomp][Hersbach 2000: Decomposition]]
 ********* [[http://www.eumetcal.org/resources/ukmeteocal/verification/www/english/msg/ver_prob_forec/uos3b/uos3b_ko1.htm][This link]] also used to say this, I think.
 ********* CRPS in same units as observations: [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing]]
+******* CRPS [[values][can be interpreted]] as integral of <<Brier Score>> over all thresholds
 ******* <<Multidimensional CRPS>>: a weighted average
 ********* [[file:energy.bib::Hersbach00crpsDecomp][Hersbach 2000: Decomposition]]
 ********* [[cite:Scheuerer14variogramProperScore][Scheuerer & Hamill 2014: Variogram]]
 ********* Also? [[Scenario/Ensemble quality metrics]]
+******* CRPS is nonlocal: [[file:energy.bib::Brocker07properScore][Broecker & Smith 2007: Score prob frcst: import proper]]
 ******* [[file:energy.bib::Todter12genIgnCRPS][Toedter & Ahrens 2012: Generalization Ignorance Score]] and CRPS decomp
 ******* <<Matlab for CRPS>>
 ********* [[http://iri.columbia.edu/~gonzalez/DPWG/matlab_code.html][Matlab code for CRPS]] (specifically [[https://github.com/itszootime/emulatorization-api/blob/master/matlab/validation/crps_ign.m][crps_ign.m]] (CRPS + ignorance score) *BUGGY*)
@@ -6960,6 +6975,20 @@ variables will be preferred, when possible.
 ***** <<Quantile Confidence estimates>>
 ******* [[cite:Remillard17cplaCondQuantile][Remillard et al. 2017 2 kinds of cond. copula, btstrp conf intrvl]]
 ******* Also [[Quantile Score]]
+***** <<Brier Score>>
+
+      For categorical forecasts, mainly binary
+
+******* Gambler [[file:energy.bib::Roulston02frcstInfoEval][optimizes returns w/ ignorance]], unlike w/ Brier
+******* Brier is non-local
+
+***** <<Ignorance Score>>
+
+      A probabistic forecast metric.
+
+******* main ref: [[file:energy.bib::Roulston02frcstInfoEval][Roulston & Smith 2002: Eval Prob Frcst Info Theory]]
+******* Gambler [[file:energy.bib::Roulston02frcstInfoEval][optimizes returns w/ ignorance]], unlike w/ [[Brier Score]]
+******* Is only smooth/proper/[[Local Score]]: [[file:energy.bib::Brocker07properScore][Broecker & Smith 2007: Scoring Proper]]
 ***** <<Scenario/Ensemble quality metrics>>
 ******* [[file:energy.bib::Pinson12scenQualWind][Pinson & Girard 2012: Evaluating]] (scenario quality, energy score)
 ******* [[file:energy.bib::Pinson13DiscrimAbilityEnrgyScr][Pinson & Tastu 2013: Discrimination Energy]] score ability
@@ -6969,7 +6998,7 @@ variables will be preferred, when possible.
 ******* Also: [[Multidimensional CRPS]]
 ***** <<Forecast Expectiles>>
 ******* Expectile vs. quantile score: [[cite:Ehm16quantileExpectileScrFrcst][Ehm et al. 2016: Quantile, Expectile Score Forecasts]]
-***** [[file:energy.bib::Mohrlen19selectRESfrcstRecmnd][M\:ohrlen et al. 2019: Recommended Prctcs RES frcst select]]
+***** [[file:energy.bib::Mohrlen19selectRESfrcstRecmnd][Mohrlen et al. 2019: Recommended Prctcs RES frcst select]]
 ***** [[cite:Bessa12adaptQuantCopulaFrcst][Bessa et al. 2012: Time Adaptive Quantile Copula]]
 ***** [[file:energytop.org::*Classification%20Metrics%20under%20Class%20Imbalance][Classification Metrics under Class Imbalance]]
 ***** [[cite:Chai14rmseOrMae][Chai & Draxler 2014: Root RMSE MAE]]: when RMSE is/isn't good
@@ -7623,7 +7652,12 @@ Scott
 ********* partitioning into forecasting is data-driven, not hand tuned
 ********* a mixture model would make the bootstrap subsample weight "principled"
 ********* Google Scholar for: [[http://www.google.com/search?aq%3Df&gcx%3Dc&sourceid%3Dchrome&ie%3DUTF-8&q%3Dexpectation%2Bmaximization%2Bbootstrap][Expectation Maximization Bootstrap]]
-*** <<[[Periodicity]] and [[Circular statistics]]
+*** <<[[Periodicity]] and [[Circular statistics]]>>
+
+    Was this section accidentally lost?  
+
+***** TODO Check earliest Bitbucket git vers
+
 *** [[Neural Nets]]
 *** [[http://repository.tudelft.nl/consumption/idcplg%3fidcservice%3dget_file&revisionselectionmethod%3dlatestreleased&ddocname%3d025320][kernel machines better than neural net]] ([[fann]]) for short term wind prediction
 ***** also, kernel machines easier to train
@@ -12782,6 +12816,10 @@ optimization to be a generalization of linear programming.
              [[file:energy.bib::Vincent17giniPurity][Vincent 2017: simple and clear Gini impurity]]
              [[file:energy.bib::Biau16randFrstGuideTour][Biau & Scornet 2016 Random Forest Guided Tour, theory, tuning]]
    08/21/19  [[file:energy.bib::Cochrane18crossValTimeSer][Cochrane 2018: Time Ser. Nested XVal: causal, good test, indivIndep]]
+   08/26/19  [[file:energy.bib::Wikipedia19sensitivAndSpecif][Wikipedia 2019: Sensitivity and Specificity]] 
+   09/04/19  [[file:energy.bib::Brocker07properScore][Broecker & Smith 2007: Scoring: Importance of Proper]]
+             [[file:energy.bib::Roulston02frcstInfoEval][Roulston & Smith 2002: Eval Prob Frcst Info Theory]]
+
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
