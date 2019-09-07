@@ -2706,6 +2706,7 @@ Strike-through: nil
           A bit gross: must look up packages in conda dist and then hard code them into .emacs
 
 ********* [[activating conda environments in emacs]]
+********* [[Virtual Environments And Emacs]]
 ***** rope
       From [[http://wikemacs.org/wiki/Python][here]]: it's good for renaming variables and much more, needs two python packages to be installed.
 ******* works with elpy: [[elpy and jedi and rope]]
@@ -2736,86 +2737,92 @@ Strike-through: nil
 ********* [[https://github.com/jorgenschaefer/elpy/wiki/Configuration][elpy Configuration · jorgenschaefer/elpy]]
 ******* [[elpy vs. anaconda-mode]]
 ***** [[https://github.com/abo-abo/lpy][abo-abo/lpy: Minimal Python IDE for GNU Emacs]]
-***** pyenv
-******* <<elpy pyenv interface>>         
-********* [[https://stackoverflow.com/questions/37472595/how-to-activate-the-anancondas-env-python-in-emacs][how to activate the ananconda's env python in emacs? - Stack Overflow]]
-********* [[https://smythp.com/emacs/python/2016/04/27/pyenv-elpy.html][Using Elpy with pyenv in Emacs]]
-********* [[https://github.com/ssbb/pyenv-mode-auto][pyenv-mode-auto: Automatically activates pyenv version within E...]]
+***** <<Virtual Environments And Emacs>>
+******* <<activating conda environments in emacs>>
+********* <<conda.el reads environmentl.yml>> (but still has problems)
+          From: [[https://github.com/necaris/conda.el][conda.el: Emacs helper library (and minor mode) to work with]]
+
+          *conda.el* has some problems to fix before I can use it
+          1. it's bin paths are wrong for windows: [[https://github.com/necaris/conda.el/issues/5][Doesn't work on Windows · Issue #5]]
+          2. always prints "env not found": [[https://github.com/necaris/conda.el/issues/8][No conda environment for file · Issue #8]]
+          3. when I run =C-c= (ipython) I get a warning b/c I'm running a hard-coded conda path (the wrong one, since I'm hard coded to root)
+          4. This might be b/c of my hard coded path: (setq conda-anaconda-home conda-home-dir).  Could use env var ANACONDA_HOME ([[help:conda-anaconda-home]])
+             1. On my SP4, it's C:\Users\scotto\Anaconda3
+             2. On my Fraunhofer laptop, it's: 
+          5. but then (elpy-use-ipython) would still crash since would not be in path.  letting conda.el autofind the path worked, and I think ipython was working because emacs ignores PATH changes but still had an ipython.exe in its path.  Maybe this is also an elpy problem?  Could pyenv help?  Also, on windows, python.exe is in the top env dir and ipython.exe is in topdir/Scripts.  Seems like conda.el doesn't handle that.
+
+          Wait for this to get fixed before any more messing around: *just use Spyder*
+
+          environment.yml: a [[documenting conda environment with environment.yml][recommended]] way to check anaconda environments into svn or git or whatever 
+
+*********** [[Can]] automatically read environment.yml. 
+*********** appears to also work with conda files other than environment.yml
           
-          a little gross: needs a .python-version file in source code or source code directory.  I'd rather have stock python with nothing especially for emacs in it.
+            says: " search up the directory tree for a file defining a conda environment, such as an environment.yml file, and try to activate the named environment"
+*********** hooks to eshell so can easily run conda commands from there          
+*********** =conda-anaconda-home= must be set to anaconda home unless have . file
 
-          _For the file-local auto-setting_ ([[man:]])
-            o edit the python file
-            o M-x add-file-local-variable
-            o select pyenv-workon
-            o type in: c:/Users/scotto/Anaconda3/envs/tensorflow/ (tensorflow, on my SP4) 
+            expected default is ~./.anaconda3
 
-          _For the directory local auto-setting_
-            o I don't know what variable to set or what filename to put the settings in.  The help doesn't say.
+            But I see that I have ~/.anaconda (on SP4)
 
+*********** See also: [[documenting conda environment with environment.yml]]
+
+********* [[conda environments via elpy virtual environments]]
+********* [[jedi and conda]]
 ********* [[elpy pyenv interface]]
-******* [[https://emacs.stackexchange.com/questions/20092/using-conda-environments-in-emacs][Using conda environments in emacs - Emacs Stack Exchange]]
-        
-        What I'd like is something automatic.  Here, it's a bit gross: 
+********* [[anaconda-mode seems to use pyenv for conda environments]]
+********* general: [[python conda environments]]
 
-        1. put cond envs into a file,
-        2. hardcode a reference to that file in emacs,
-        3. Run =M-x pyenv-workon= to switch
-
-           The venv file for for tensorflow (on my SP4) is:
-
-           c:/Users/scotto/Anaconda3/envs/tensorflow/
-
-***** [[https://github.com/proofit404/anaconda-mode][anaconda-mode: Code navigation, documentation lookup and ...]]
-******* is [[https://github.com/proofit404/anaconda-mode/issues/38][smaller than elpy]]
-******* [[https://github.com/proofit404/anaconda-mode/issues/38][has]] an interface to jedi
-******* <<anaconda-mode seems to use pyenv for conda environments>>
-******* also: [[activating conda environments in emacs]]
-******* <<elpy vs. anaconda-mode>>
-******* [[https://github.com/proofit404/anaconda-mode/issues/38][how does anaconda-mode compare to Elpy? · Issue #38 · proofit404/an...]]
-***** <<EIN -- Emacs IPython Notebook>>
-*******  [[https://github.com/millejoh/emacs-ipython-notebook][millejoh/emacs-ipython-notebook]]
-******* works with both Jupyter and emacs org mode
-******* also, maybe a bit better: [[NEI -- Notebook Editor Interface]]
-*****  <<NEI -- Notebook Editor Interface>>
-      From: [[https://github.com/pyviz-dev/nei][pyviz-dev/nei: Notebook Editor Interface]]: Jupyter Notebook interface
-******* like emacs ein but can show javascript graphs, etc.
-******* also [[EIN -- Emacs IPython Notebook]]
-***** <<activating conda environments in emacs>>
-******* <<conda.el reads environmentl.yml>> (but still has problems)
-        From: [[https://github.com/necaris/conda.el][conda.el: Emacs helper library (and minor mode) to work with]]
-
-        *conda.el* has some problems to fix before I can use it
-        1. it's bin paths are wrong for windows: [[https://github.com/necaris/conda.el/issues/5][Doesn't work on Windows · Issue #5]]
-        2. always prints "env not found": [[https://github.com/necaris/conda.el/issues/8][No conda environment for file · Issue #8]]
-        3. when I run =C-c= (ipython) I get a warning b/c I'm running a hard-coded conda path (the wrong one, since I'm hard coded to root)
-        4. This might be b/c of my hard coded path: (setq conda-anaconda-home conda-home-dir).  Could use env var ANACONDA_HOME ([[help:conda-anaconda-home]])
-           1. On my SP4, it's C:\Users\scotto\Anaconda3
-           2. On my Fraunhofer laptop, it's: 
-        5. but then (elpy-use-ipython) would still crash since would not be in path.  letting conda.el autofind the path worked, and I think ipython was working because emacs ignores PATH changes but still had an ipython.exe in its path.  Maybe this is also an elpy problem?  Could pyenv help?  Also, on windows, python.exe is in the top env dir and ipython.exe is in topdir/Scripts.  Seems like conda.el doesn't handle that.
-
-        Wait for this to get fixed before any more messing around: *just usd Spyder*
-
-        environment.yml: a [[documenting conda environment with environment.yml][recommended]] way to check anaconda environments into svn or git or whatever 
-
-********* [[Can]] automatically read environment.yml. 
-********* appears to also work with conda files other than environment.yml
+******* pyenv
+********* <<elpy pyenv interface>>         
+*********** [[https://stackoverflow.com/questions/37472595/how-to-activate-the-anancondas-env-python-in-emacs][how to activate the ananconda's env python in emacs? - Stack Overflow]]
+*********** [[https://smythp.com/emacs/python/2016/04/27/pyenv-elpy.html][Using Elpy with pyenv in Emacs]]
+*********** [[https://github.com/ssbb/pyenv-mode-auto][pyenv-mode-auto: Automatically activates pyenv version within E...]]
           
-          says: " search up the directory tree for a file defining a conda environment, such as an environment.yml file, and try to activate the named environment"
-********* hooks to eshell so can easily run conda commands from there          
-********* =conda-anaconda-home= must be set to anaconda home unless have . file
+            a little gross: needs a .python-version file in source code or source code directory.  I'd rather have stock python with nothing especially for emacs in it.
 
-          expected default is ~./.anaconda3
+            _For the file-local auto-setting_ ([[man:]])
+              o edit the python file
+              o M-x add-file-local-variable
+              o select pyenv-workon
+              o type in: c:/Users/scotto/Anaconda3/envs/tensorflow/ (tensorflow, on my SP4) 
 
-          But I see that I have ~/.anaconda (on SP4)
+            _For the directory local auto-setting_
+              o I don't know what variable to set or what filename to put the settings in.  The help doesn't say.
 
-********* See also: [[documenting conda environment with environment.yml]]
+*********** [[elpy pyenv interface]]
+********* [[https://emacs.stackexchange.com/questions/20092/using-conda-environments-in-emacs][Using conda environments in emacs - Emacs Stack Exchange]]
+        
+          What I'd like is something automatic.  Here, it's a bit gross: 
 
-******* [[conda environments via elpy virtual environments]]
+          1. put cond envs into a file,
+          2. hardcode a reference to that file in emacs,
+          3. Run =M-x pyenv-workon= to switch
+
+             The venv file for for tensorflow (on my SP4) is:
+
+             c:/Users/scotto/Anaconda3/envs/tensorflow/
+
+******* [[https://github.com/proofit404/anaconda-mode][anaconda-mode: Code navigation, documentation lookup and ...]]
+********* is [[https://github.com/proofit404/anaconda-mode/issues/38][smaller than elpy]]
+********* [[https://github.com/proofit404/anaconda-mode/issues/38][has]] an interface to jedi
+********* <<anaconda-mode seems to use pyenv for conda environments>>
+********* also: [[activating conda environments in emacs]]
+********* <<elpy vs. anaconda-mode>>
+********* [[https://github.com/proofit404/anaconda-mode/issues/38][how does anaconda-mode compare to Elpy? · Issue #38 · proofit404/an...]]
 ******* [[jedi and conda]]
-******* [[elpy pyenv interface]]
-******* [[anaconda-mode seems to use pyenv for conda environments]]
-******* general: [[python conda environments]]
+***** <<Emacs Jupyter Notebook editing>>
+******* <<EIN -- Emacs IPython Notebook>>
+*********  [[https://github.com/millejoh/emacs-ipython-notebook][millejoh/emacs-ipython-notebook]]
+********* works with both Jupyter and emacs org mode
+********* also, maybe a bit better: [[NEI -- Notebook Editor Interface]]
+******* <<NEI -- Notebook Editor Interface>>
+        From: [[https://github.com/pyviz-dev/nei][pyviz-dev/nei: Notebook Editor Interface]]: Jupyter Notebook interface
+********* like emacs ein but can show javascript graphs, etc.
+********* like [[https://atom.io/packages/hydrogen][hydrogen]] for the atom editor but only python for now
+********* also [[EIN -- Emacs IPython Notebook]]
+******* also [[Emacs and Jupyter Notebooks]]
 ***** [[https://vxlabs.com/2017/11/30/run-code-on-remote-ipython-kernels-with-emacs-and-orgmode/][Run code on remote ipython kernels with Emacs and orgmode. – vxlabs]]
 *** Ruby in Emacs
 ***** debugger
@@ -3209,6 +3216,7 @@ gestures for "show charm" and "switch apps"
     on the pandoc command line
 
 *** [[http://pandoc.org/getting-started.html][Pandoc - Getting started with pandoc]]
+*** also [[jupytext]] is a similar idea for programming languages
 * Redmine
 *** [[org-mode redmine interfaces]]
 * Airport Express
@@ -8216,11 +8224,113 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
         See [[https://github.com/faisalthaheem/tensorflow-windows][here]]
 *** <<Jupyterlab>>
 ***** Starting it: jupyter lab
-***** Emacs keybindings
-******* text editor: settings -> "text editor keymaps" -> emacs
-        This is only in JL's text editor -- not the cells.
-******* [[emacs bindings in cells]]
-***** Manually setting bindings
+***** Jupyterlab extensions
+******* updating juypterlab extensions
+        
+        For many, [[https://github.com/jupyterlab/jupyterlab/pull/4410][you can do]]:
+
+          jupyter labextension update
+
+        to update all
+
+          jupyter labextension update --all
+
+        but some extensions (jupyter_conda) failed b/c its maintainer hadn't yet updated its code on github.
+
+******* <<Jupytlerlab plotly extension>>:
+       
+       jupyter labextension install jupyterlab-plotly
+
+******** obsoleted plotly extension
+         [[https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension][jupyter-renderers/packages/plotly-extension]]
+
+         Do this first before following web page instructions:
+
+           conda install nodejs
+         pip install npm
+
+******* matplotlib gui extension: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib]]
+
+        After installing (using conda), put this in your notebook:
+
+        %matplotlib widget
+
+******* integration w/ drawio block diagram drawer: [[https://github.com/QuantStack/jupyterlab-drawio][QuantStack/jupyterlab-drawio]]
+
+        Don't have to install anything other than the extension.  Runs in browser that Jupyter is running in.
+
+******* jump to definition: [[https://github.com/krassowski/jupyterlab-go-to-definition][krassowski/jupyterlab-go-to-definition]]
+        Goes to variable/function def w/
+
+          alt+mouseClick
+
+        or
+          ctrl+alt+b
+
+        and can be configured for others (see extension github page).
+
+        Nice and works.
+
+******* filetree file finder: [[https://github.com/youngthejames/jupyterlab_filetree][youngthejames/jupyterlab_filetree]]
+******* python creating convenience: [[https://github.com/jtpio/jupyterlab-python-file][jtpio/jupyterlab-python-file]]
+******* conda env switching, cloning, etc.: [[https://github.com/fcollonval/jupyter_conda][fcollonval/jupyter_conda]]
+
+        Similar to anaconda navigator but seems faster, and (I think) is more capable.
+
+        Works in basic Jupyter notebook too.
+
+******* non-git auto-versioning: [[https://github.com/timkpaine/jupyterlab_autoversion][timkpaine/jupyterlab_autoversion]]
+
+        It does [[https://github.com/timkpaine/jupyterlab_autoversion/issues/1][make its own git repo]], though.
+
+        However, it doesn't work for me.  I submitted a [[https://github.com/timkpaine/jupyterlab_autoversion/issues/11][bug]].
+
+******* graphical interface to git: [[https://github.com/jupyterlab/jupyterlab-git][jupyterlab/jupyterlab-git]]
+******* open file w/ part of name: [[https://github.com/parente/jupyterlab-quickopen][parente/jupyterlab-quickopen]]
+
+        Start it by clicking the magnifying class icon on the LHS
+
+        Two-step install instructions, one of which is pip only.
+
+        A bit complicated but seems to work.
+
+******* [[jupytext extensions]]
+******* Extensions that are maybe nice but not working
+********* <<emacs bindings in cells>>: [[https://github.com/kpe/jupyterlab-emacskeys][kpe/jupyterlab-emacskeys]]
+
+          conda install nodejs
+          jupyter labextension install jupyterlab-emacskeys
+
+          Doesn't work.  Many emacs binding missing. I [[https://github.com/kpe/jupyterlab-emacskeys/issues/2][filed a bug]].
+
+********* TRY [[https://github.com/jupyterlab/jupyterlab-shortcutui][jupyterlab/jupyterlab-shortcutui: A JupyterLab extension for managing shortcuts]]
+          It's now been updated to Jupyterlab 1.0.  Maybe worth trying.
+***** Jupyter/Jupyterlab graphics
+******* matplotlib widgets
+        From: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib: Matplotlib Jupyter Extension]]
+
+        1. Install the extension (see page)
+        2. Put in Jupyter notebook/lab cell: %matplotlib widget
+
+***** search and replace
+
+      Kind of missing in early JL version but...
+
+******* [[https://github.com/jupyterlab/jupyterlab/issues/2017][Ctrl+Shift+R]] will do find & replace within cell
+
+***** Interesting Jupyter wrappers or Jupyter-like things
+******* [[https://atom.io/packages/hydrogen][hydrogen]] (runs in atom)
+********* [[https://blog.nteract.io/hydrogen-interactive-computing-in-atom-89d291bcc4dd][Hydrogen: Interactive computing in Atom - nteract]]
+******* [[https://github.com/nteract/nteract][nteract/nteract:  I think it's web based ]]
+******* [[http://lighttable.com/][Light Table]] (inspired hydrogen and nteract, I think)
+
+***** <<Emacs and Jupyter Notebooks>>
+******* <<Emacs keybindings for Jupyter>>
+********* text editor: settings -> "text editor keymaps" -> emacs
+          This is only in JL's text editor -- not the cells.
+********* [[emacs bindings in cells]]
+******* [[Emacs Jupyter Notebook editing]]
+***** Manually setting Jupyter key bindings
 ******* JL's [[https://jupyterlab.readthedocs.io/en/stable/user/interface.html][keyboard shortcut customization docs]]
 ******* cell expand/collapse and move ([[https://stackoverflow.com/questions/49280261/jupyter-lab-shortcuts][code]])
 
@@ -8279,97 +8389,12 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
   }
 }        
 ******* a (broken as of 5/19) keybinding extension: 
-***** Jupyterlab extensions
-******* updating juypterlab extensions
-        
-        For many, [[https://github.com/jupyterlab/jupyterlab/pull/4410][you can do]]:
-
-          jupyter labextension update
-
-        but some extensions (jupyter_conda) failed b/c its maintainer hadn't yet updated is code on github.
-
-******* <<Jupytlerlab plotly extension>>: [[https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension][jupyter-renderers/packages/plotly-extension]]
-
-        Do this first before following web page instructions:
-
-          conda install nodejs
-          pip install npm
-
-******* matplotlib gui extension: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib]]
-
-        After installing (using conda), put this in your notebook:
-
-        %matplotlib widget
-
-******* integration w/ drawio block diagram drawer: [[https://github.com/QuantStack/jupyterlab-drawio][QuantStack/jupyterlab-drawio]]
-
-        Don't have to install anything other than the extension.  Runs in browser that Jupyter is running in.
-
-******* jump to definition: [[https://github.com/krassowski/jupyterlab-go-to-definition][krassowski/jupyterlab-go-to-definition]]
-        Goes to variable/function def w/
-
-          alt+mouseClick
-        or
-          ctrl+alt+b
-
-        and can be configured for others (see extension github page).
-
-        Nice and works.
-
-******* filetree file finder: [[https://github.com/youngthejames/jupyterlab_filetree][youngthejames/jupyterlab_filetree]]
-******* python creating convenience: [[https://github.com/jtpio/jupyterlab-python-file][jtpio/jupyterlab-python-file]]
-******* conda env switching, cloning, etc.: [[https://github.com/fcollonval/jupyter_conda][fcollonval/jupyter_conda]]
-
-        Similar to anaconda navigator but seems faster, and (I think) is more capable.
-
-        Works in basic Jupyter notebook too.
-
-******* non-git auto-versioning: [[https://github.com/timkpaine/jupyterlab_autoversion][timkpaine/jupyterlab_autoversion]]
-
-        It does [[https://github.com/timkpaine/jupyterlab_autoversion/issues/1][make its own git repo]], though.
-
-        However, it doesn't work for me.  I submitted a [[https://github.com/timkpaine/jupyterlab_autoversion/issues/11][bug]].
-
-******* graphical interface to git: [[https://github.com/jupyterlab/jupyterlab-git][jupyterlab/jupyterlab-git]]
-******* Extensions that are maybe nice but not working
-********* open file w/ part of name: [[https://github.com/parente/jupyterlab-quickopen][parente/jupyterlab-quickopen]]
-
-          Seems like it would be nice but has two-step install instructions, one of which is pip only.
-
-          Too complicated.
-
-********* <<emacs bindings in cells>>: [[https://github.com/kpe/jupyterlab-emacskeys][kpe/jupyterlab-emacskeys]]
-
-          conda install nodejs
-          jupyter labextension install jupyterlab-emacskeys
-
-          Doesn't work.  Many emacs binding missing. I [[https://github.com/kpe/jupyterlab-emacskeys/issues/2][filed a bug]].
-
-***** Jupyter/Jupyterlab graphics
-******* matplotlib widgets
-        From: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib: Matplotlib Jupyter Extension]]
-
-        1. Install the extension (see page)
-        2. Put in Jupyter notebook/lab cell: %matplotlib widget
-
-***** search and replace
-
-      Kind of missing in early JL version but...
-
-******* [[https://github.com/jupyterlab/jupyterlab/issues/2017][Ctrl+Shift+R]] will do find & replace within cell
-
-***** Interesting Jupyter wrappers or Jupyter-like things
-******* [[https://atom.io/packages/hydrogen][hydrogen]] (runs in atom)
-********* [[https://blog.nteract.io/hydrogen-interactive-computing-in-atom-89d291bcc4dd][Hydrogen: Interactive computing in Atom - nteract]]
-******* [[https://github.com/nteract/nteract][nteract/nteract:  I think it's web based ]]
-******* [[http://lighttable.com/][Light Table]] (inspired hydrogen and nteract, I think)
-
+******* also [[Emacs keybindings for Jupyter]]
 ***** <<Versioning Jupyter Notebooks>>
 
-      Jupytext is the "[[https://nextjournal.com/schmudde/how-to-version-control-jupyter][most complete version control solution]]" and to me, it seems quite workable, esp. if you paired notebooks.  Maybe config so .py files are in subdir (or not?)?  
+      Conclusion: Jupytext is the "[[https://nextjournal.com/schmudde/how-to-version-control-jupyter][most complete version control solution]]" and to me, it seems quite workable, esp. if you paired notebooks.  Maybe config so .py files are in subdir (or not?)?  
 
       If want to version notebooks along with data, and do a RunRouter like thing, then the [[POC versioning Machine Learning pipeline]] looks pretty good.  Has DVC parameterization and Jupyter notebooks.  Worth looking into?
-
 
 ******* [[https://nextjournal.com/schmudde/how-to-version-control-jupyter][Manually (standard Jupyter) Clear Output]] before committing
 
@@ -8408,7 +8433,10 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
 ******* <<jupytext>>: puts all formatting info in gitable .py file; .ipynb has data
 
+        Jupytext is like [[pandoc]] for programming languages, with .ipynb as the intermediate language.
+
         After [[https://nextjournal.com/schmudde/how-to-version-control-jupyter][some config]], you can split Jupter notebook into:
+
         o .py file with commented out meta cell info in it.
            o notebook can be reconstructed from .py file alone
            o .py file runs by itself, as a .py file, too
@@ -8421,7 +8449,11 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
            o jupytext will get graphs etc. from if don't conflict w/ .py file
 
 ********* 2017 Tutorial [[https://github.com/mwouts/jupytext_pyparis_2018/blob/master/README.md][video]] and [[https://github.com/mwouts/jupytext][github page (w/ tutorial and install instructions)]].  
-********* [[https://towardsdatascience.com/jupytext-1-0-highlights-a49dca9baa7b][There are]] jupytext extensions for both Jupyter & Jupyterlab
+********* [[https://towardsdatascience.com/jupytext-1-0-highlights-a49dca9baa7b][There are]] <<jupytext extensions>> for both Jupyter & Jupyterlab
+*********** [[https://github.com/mwouts/jupytext/tree/master/packages/labextension][jupytext/packages/labextension at master · mwouts/jupytext]]
+
+            jupyter labextension install jupyterlab-jupytext
+
 ********* 2019 Medium article: [[https://towardsdatascience.com/jupytext-1-0-highlights-a49dca9baa7b][Jupytext 1.0 highlights - Towards Data Science]]
 ********* [[https://github.com/mwouts/jupytext/issues/298][instructions]] for enabling jupyterlab jupytext extension in bug report
 ********* author [[https://github.com/mwouts/jupytext/issues/62][considers]] an org mode converter (2018, not done in 2019)
@@ -8434,6 +8466,15 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
           Mark a code cell with an "active": "ipynb" metadata or with an active-ipynb tag if you want it to be commented out in the paired script.
 
           Mark a raw cell with an "active": "py" metadata or with an active-py tag if you want it to be inactive in the notebook but active in the script.
+
+********* <<papermill-jupytext plugin>> (an interface to [[papermill]])
+          From: [[https://pypi.org/project/papermill-jupytext/][papermill-jupytext]]
+
+          python/R/... script --> papermil-jupytext --> script_parameterized
+
+          Seems to be a way to parameterize scripts that aren't in .ipynb (papermill doesn't do that now?).  
+
+          I can possibly imagine this being useful...
 
 ******* <<Data versioning in Jupyter notebooks>>
 
@@ -8463,7 +8504,27 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 *********** uses Git and [[DVC data version control]], and other stuff
 *********** also [[Simple Jupyter + DVC]]
 ******* also [[Data Versioning]]
+******* also [[Externally Calling Jupyter Notebooks]]
+***** <<Externally Calling Jupyter Notebooks>>
+
+      How to call them from the command line or from a programming language as if they were functions.  This would make developing the notebooks in discrete chunks easy (just a notebook) and then you could call them later when making a system w/ minimal or no code changing.
+
+******* <<papermill>>
+        From: [[https://github.com/nteract/papermill][papermill GitHub]] and [[https://papermill.readthedocs.io/en/latest/][documentation]]
+
+********* makes a new notebook w/ parameters inserted, like [[RunRouter]]
+********* parameters on papermill command line, many formats
+********* many languages, not just Python
+********* can do this on remote clusters, many kinds
+********* Good article: [[https://pythonawesome.com/a-tool-for-parameterizing-and-analyzing-jupyter-notebooks/][A tool for parameterizing and analyzing Jupyter Notebooks]]
+********* also [[jupytext]]
+********* also [[papermill-jupytext plugin]]
+********* also [[Versioning Jupyter Notebooks]]
 ***** also [[Spyder Jupyter Notebooks]]
+***** <<Dashboarding with Jupyter Notebooks>>
+      From: [[https://www.youtube.com/watch?v=VtchVpoSdoQ][Dashboarding with Jupyter Notebooks, Voila and Widgets | SciPy 2019]]
+     
+***** Also [[Python Dashboarding]]      
 *** Machine learning Python libs
 ***** [[http://scikit-learn.org/stable/][scikit-learn]]
 ******* guy's [[http://www.google-melange.com/gsoc/proposal/review/google/gsoc2013/nicolastr/12001][plan]] to add missing feature fill-in using matrix completion
@@ -8675,7 +8736,6 @@ Tableau
         [[https://stackoverflow.com/questions/30868707/how-can-i-plot-two-different-spaced-time-series-on-one-same-plot-in-python][How can I plot two different spaced time series on one same plot in Python]]
 
 ***** zoomable python plots
-
 ***** <<Map plotting in Python>>
 ******* [[Choropleth]]: any map w/ shaded areas portraying spatially aggredated data
 ******* [[Plotly Map Plotting]]
@@ -8708,6 +8768,8 @@ Tableau
 ******* (DEAD) Vincent and Pandas
 ********* [[https://github.com/wrobstory/vincent][Died in 2016]]
 ********* [[http://wrobstory.github.io/2013/10/mapping-data-python.html][Mapping Data in Python with Pandas and Vincent | wrobstory.github.io]]
+***** <<Python Dashboarding>>
+******* [[Dashboarding with Jupyter Notebooks]]
 *** <<Python Streaming>>
 ***** Installing Pyspark in a docker
 ******* Better: [[https://medium.com/@suci/running-pyspark-on-jupyter-notebook-with-docker-602b18ac4494][Running PySpark on Jupyter Notebook with Docker – Medium]]
