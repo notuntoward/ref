@@ -468,8 +468,10 @@
 
     The property of a probabilistic forecast performance score.  A score is [[file:energy.bib::Brocker07properScore][local only if]] it depends only upon the predicted pdf value at the true answer, X.  This "appears" to be desirable but a [[Proper Score]] is [[file:energy.bib::Brocker07properScore][more important]].
 
+    Locality and Properness are used to derive the ignorance score in [[file:energy.bib::Roulston02frcstInfoEval][Roulston & Smith 2002: Evaluating]] and especially [[file:energy.bib::Benedetti10scoreFrcstVerifRare][Benedetti 2010: Scoring]].
+
     Note that the [[Continuous Ranked Probability Score (CRPS)]] is not local.
-    
+
 *** <<Proper Score>>
 
     The property of a probabilistic forecast performance score.  A score is [[file:energy.bib::Brocker07properScore][proper only if]] it's lowest (best) if compute it using your best knowledge of the true distribution, q(x). In addition, a proper score is the only score that is internally consistent.
@@ -6946,13 +6948,20 @@ variables will be preferred, when possible.
 ********* See [[file:energy.bib::Hersbach00crpsDecomp][Hersbach 2000: Decomposition]]
 ********* [[http://www.eumetcal.org/resources/ukmeteocal/verification/www/english/msg/ver_prob_forec/uos3b/uos3b_ko1.htm][This link]] also used to say this, I think.
 ********* CRPS in same units as observations: [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing]]
-******* CRPS [[values][can be interpreted]] as integral of <<Brier Score>> over all thresholds
+******* CRPS [[values][can be interpreted]] as integral of [[Brier Score]] over all thresholds
 ******* <<Multidimensional CRPS>>: a weighted average
 ********* [[file:energy.bib::Hersbach00crpsDecomp][Hersbach 2000: Decomposition]]
 ********* [[cite:Scheuerer14variogramProperScore][Scheuerer & Hamill 2014: Variogram]]
 ********* Also? [[Scenario/Ensemble quality metrics]]
 ******* CRPS is nonlocal: [[file:energy.bib::Brocker07properScore][Broecker & Smith 2007: Score prob frcst: import proper]]
 ******* [[file:energy.bib::Todter12genIgnCRPS][Toedter & Ahrens 2012: Generalization Ignorance Score]] and CRPS decomp
+******* <<Arguments against CRPS>>
+********* [[file:energy.bib::Vogt18multiDistLrnAnomDet][Vogt et al. 2018: Multitask anomaly pred maint]] (IGN better discrim)
+********* [[file:energy.bib::Jewson03likSkillFrcst][Jewson 2003: Likelihood Skill]]
+********* [[file:energy.bib::Brocker07properScore][Broecker & Smith 2007: Scoring: Importance of Proper, want local]]
+********* [[file:energy.bib::Roulston02frcstInfoEval][Roulston & Smith 2002: Eval Prob Frcst Info Theory]]
+********* also [[Arguments against Brier Score]]
+******* Says CRPS --> likelihood: [[file:energy.bib::Jewson03likSkillFrcst][Jewson 2003: Likelihood Skill]]
 ******* <<Matlab for CRPS>>
 ********* [[http://iri.columbia.edu/~gonzalez/DPWG/matlab_code.html][Matlab code for CRPS]] (specifically [[https://github.com/itszootime/emulatorization-api/blob/master/matlab/validation/crps_ign.m][crps_ign.m]] (CRPS + ignorance score) *BUGGY*)
 *********** paper is here: [[file:energy.bib::Todter12genIgnCRPS][Toedter & Ahrens 2012: Generalization Ignorance Score]]
@@ -6977,7 +6986,11 @@ variables will be preferred, when possible.
 
 ******* Gambler [[file:energy.bib::Roulston02frcstInfoEval][optimizes returns w/ ignorance]], unlike w/ Brier
 ******* Brier is non-local
-
+******* <<Arguments against Brier Score>>
+********* [[file:energy.bib::Jewson04problemBrierScore][Jewson: Problem with Brier: do likelihood]]
+********* [[file:energy.bib::Benedetti10scoreFrcstVerifRare][Benedetti 2010: Scoring rules: Brier --> log (IGN) score]]
+********* [[file:energy.bib::Roulston02frcstInfoEval][Roulston & Smith 2002: Evaluating]] (info theory, bidding, Brier)
+********* also [[Arguments against CRPS]]
 ***** <<Ignorance Score>>
 
       A probabistic forecast metric.
@@ -8562,8 +8575,7 @@ Scott
 ******* See also: [[Extreme Quantile Forecasting]]
 ***** TODO use hubness/orphannes as a prob forecast input: [[file:energy.bib::Schnitzer12Localandglobal][Schnitzer et al. 2012: Local]]
 ***** [[cite:Tastu13scenSpatTimeCpla][Tastu et al. 2013: Space time Gaussian copula scenario]]
-***** Ensemble forecasting
-      <<Ensemble forecasting>>
+***** <<Ensemble forecasting>>
 ******* analytical expression showing it can't be worse than best in ensemble: [[file:energy.bib::Nielsen07intelWindPowPred][Nielsen et al. 2007: Intelligent wind power]]
 ******* could be a kind of a mix of regime switch and adaptive
 ********* train models for different regimes
@@ -8574,7 +8586,6 @@ Scott
 ******* [[cite:Lynch06nwpIntroOverviewClass_Slides][Lynch 2006: Numerical Weather Prediction Class Notes Intro slides]]
 ******* [[cite:Evans15nwpIntroClassNotes][Evans 2015: Numerical Weather Prediction Intro Class Notes]]
 ******* [[file:energy.bib::Lerch13CmprProbWndFrcstNonHomogGR][Lerch & Thorarinsdottir: Comparison]] non homog
-
 ******* [[file:energy.bib::Presser16ImprvNonHomogProbFrcst][Presser et al.: Improving]] non homog regression
 ******* [[http://portal.acm.org/citation.cfm%3Fid%3D1166965][Combining forecasts with blind signal separation methods in electric load prediction framework]]
 ******* [[file:energy.bib::Weigel08modelCombo][Weigel et al. 2008: Can]]  (when does ensemble averaging work?)
@@ -11383,6 +11394,7 @@ Erika
 ******* Bats jam each other: [[https://www.evernote.com/view/notebook/3159b1e6-65be-4734-8fbb-e58732030aa6?locale%3Den#st%3Dp&n%3D3159b1e6-65be-4734-8fbb-e58732030aa6][BBC: Bats sabotage rivals' senses with sound in food race]]
 ******* Bat detectors
 ********* [[https://www.evernote.com/view/97b43fcc-e1f3-4b44-95c4-9629a9ff32bf][AnaBat]]
+********* [[https://asa.scitation.org/doi/abs/10.1121/1.4799403][Bat species identification from zero crossing and full spectrum echolocation calls using Hidden Markov Models, Fisher scores, unsupervised clustering and balanced winnow pairwise classifiers]]
 ***** Canadian bird/bat/radar [[http://www.acciona-na.com/Corporate-Responsibility/MASTER-ABPP-10-12--2010-final-draft][study]]
 
       Comment from [[http://www.greentechmedia.com/articles/read/winds-2010-top-ten-bust-and-building-coming-and-going][here]]: "The year also saw important research from Canada
@@ -12812,7 +12824,9 @@ optimization to be a generalization of linear programming.
    08/26/19  [[file:energy.bib::Wikipedia19sensitivAndSpecif][Wikipedia 2019: Sensitivity and Specificity]] 
    09/04/19  [[file:energy.bib::Brocker07properScore][Broecker & Smith 2007: Scoring: Importance of Proper]]
              [[file:energy.bib::Roulston02frcstInfoEval][Roulston & Smith 2002: Eval Prob Frcst Info Theory]]
-
+   09/06/19  [[file:energy.bib::Jewson03likSkillFrcst][Jewson 2003: Likelihood Skill]]
+             [[file:energy.bib::Jewson04problemBrierScore][Jewson: Problem with Brier: do likelihood]]
+             [[file:energy.bib::Benedetti10scoreFrcstVerifRare][Benedetti 2010: Scoring rules: Brier --> log (IGN) score]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib

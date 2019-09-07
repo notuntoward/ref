@@ -12008,6 +12008,7 @@ AUC (area under ROC) vs. incidence
 },
   file          = {:Scolnik16binPredAccIncAndOpt_PhD.pdf:PDF},
   publisher     = {USA: Florida State University},
+  url           = {https://fsu.digital.flvc.org/islandora/object/fsu%3A360437},
 }
 
 @InProceedings{Habte14calMeasUncertRadiometric,
@@ -26080,34 +26081,6 @@ The place where this was published needs to be checked: The pdf says it was subm
   url       = {http://www2.compute.dtu.dk/~ppin/docs/jonssonetal13_spprobfore.pdf},
 }
 
-@Article{Jewson03likSkillFrcst,
-  author    = {Jewson, Stephen},
-  title     = {Use of the likelihood for measuring the skill of probabilistic forecasts},
-  journal   = {arXiv preprint physics/0308046},
-  year      = {2003},
-  abstract  = {Some time ago, the continuous ranked probability score (CRPS) was proposed as a new verification tool for
-(probabilistic) forecast systems. Its focus is on the entire permissible range of a certain (weather) parameter.
-The CRPS can be seen as a ranked probability score with an infinite number of classes, each of zero width.
-Alternatively, it can be interpreted as the integral of the Brier score over all possible threshold values for the
-parameter under consideration. For a deterministic forecast system the CRPS reduces to the mean absolute error.
-In this paper it is shown that for an ensemble prediction system the CRPS can be decomposed into a reliability
-part and a resolution/uncertainty part, in a way that is similar to the decomposition of the Brier score. The
-reliability part of the CRPS is closely connected to the rank histogram of the ensemble, while the resolution/
-uncertainty part can be related to the average spread within the ensemble and the behavior of its outliers. The
-usefulness of such a decomposition is illustrated for the ensemble prediction system running at the European
-Centre for Medium-Range Weather Forecasts. The evaluation of the CRPS and its decomposition proposed in
-this paper can be extended to systems issuing continuous probability forecasts, by realizing},
-  booktitle = {arXiv preprint physics/0308046},
-  comment   = {Not highly cited, even though it's old. Possibly, this was an idea that didn't take off.},
-  file      = {Jewson03likSkillFrcst.pdf:Jewson03likSkillFrcst.pdf:PDF},
-  groups    = {Test, CitaviImport1, doReadNonWPV_2},
-  keywords  = {Likelihood},
-  ncite     = {7},
-  owner     = {sotterson},
-  timestamp = {2013.09.26},
-  url       = {http://arxiv.org/abs/physics/0308046v2},
-}
-
 @Article{Hersbach00crpsDecomp,
   author    = {Hersbach, Hans},
   title     = {Decomposition of the continuous ranked probability score for ensemble prediction systems},
@@ -27018,6 +26991,24 @@ The future role of stationary electricity storage is perceived as highly uncerta
   timestamp = {2013.10.23},
 }
 
+@Article{Johnstone12econValProbFrcstPortfolio,
+  author        = {Johnstone, D. J.},
+  title         = {Log-optimal economic evaluation of probability forecasts},
+  journal       = {Journal of the Royal Statistical Society: Series A (Statistics in Society)},
+  year          = {2012},
+  volume        = {175},
+  number        = {3},
+  pages         = {661-689},
+  __markedentry = {[Scott:1]},
+  abstract      = {Summary.  The commercial test of an expert's probability assessments is not that they are accurate in an abstract sense, but that they yield financial returns to decision makers. From this utilitarian standpoint, a model or forecaster is merely a font of cash pay-offs, like any other form of asset or security. The modern perspective in finance theory is that individual ‘securities’ (sources of cash pay-offs) must be valued in portfolio rather than of themselves. Applying portfolio methods to forecast evaluation, the theoretical worth of a forecast depends on its marginal contribution to the best available portfolio of securities. When considered within a log-optimal (maximum E[ log (wealth)]) portfolio, the value of an individual forecast (or forecaster) depends on both its expected cash pay-off and the covariance of its pay-off with those from all other available securities. In effect, portfolio theory rewards forecasters more for making accurate forecasts when other forecasters (or, more broadly, other sources of pay-offs) perform badly than when all or most forecasters do well. Conversely, the penalty for being wrong is reduced when other forecasters are right. This has the effect of promoting original thinking and unique (idiosyncratic) forecasting expertise. Herding by resort to industry standard models or routines is discouraged.},
+  comment       = {How compute the comparitive value of probabilistic forecasts within a portfolio of forecasts.},
+  doi           = {10.1111/j.1467-985X.2011.01011.x},
+  eprint        = {https://rss.onlinelibrary.wiley.com/doi/pdf/10.1111/j.1467-985X.2011.01011.x},
+  file          = {:Johnstone12econValProbFrcstPortfolio.pdf:PDF},
+  keywords      = {Economic forecast evaluation, Portfolio theory, Probability forecast},
+  url           = {https://rss.onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-985X.2011.01011.x},
+}
+
 @Article{Wang07autoRegrOrderLasso,
   author               = {Wang, Hansheng and Li, Guodong and Tsai, Chih-Ling},
   title                = {Regression coefficient and autoregressive order shrinkage and selection via the lasso},
@@ -27847,6 +27838,30 @@ https://github.com/itszootime/emulatorization-api/blob/master/matlab/validation/
   groups        = {Test, doReadWPV_1},
   owner         = {sotterson},
   timestamp     = {2014-02-28},
+}
+
+@Article{Jewson04problemBrierScore,
+  author      = {Stephen Jewson},
+  title       = {The problem with the Brier score},
+  abstract    = {The Brier score is frequently used by meteorologists to measure the skill of binary probabilistic forecasts. We show, however, that in simple idealised cases it gives counterintuitive results. We advocate the use of an alternative measure that has a more compelling intuitive justification.},
+  comment     = {Proposes banning the Brier Score and replacing it with a log likelihood score.  I'm not sure I buy the intuitive argument given here, although Benedetti10scoreFrcstVerifRare is more convincing.
+
+A binary probability forecast predicting zero probability is very wrong when there are ever any positive true outcomes.  But the Brier score is insensitive to the location (within the predicted density) of the prediction; if the true probability is 0.1 and there are two forecasts of f1=0 and f2=0.25, the Brier Score says that f1 is better because it's close to 0.1.  The author says that, intuitively, f2 is better.  
+
+Anyway, it's proposed to replace the Brier Score with the log likelihood score, which gives an infinite penalty whenever a 0 or 1 is forecasted -- so it won't let you ever rule out a positive or negative event.
+
+The copy I downloaded seems to have been updated in 2018, but there's noting on arXiv saying that.
+
+Also see Benedetti10scoreFrcstVerifRare, which cites this paper
+
+Jewson03likSkillFrcst wants to  replace CRPS with a likelyhood score too.},
+  date        = {2004-01-10},
+  eprint      = {http://arxiv.org/abs/physics/0401046v1},
+  eprintclass = {physics.ao-ph},
+  eprinttype  = {arXiv},
+  file        = {:Jewson04problemBrierScore.pdf:PDF},
+  keywords    = {physics.ao-ph},
+  url         = {https://arxiv.org/abs/physics/0401046},
 }
 
 @Article{Oh11fastSmthQuantreg,
@@ -31652,29 +31667,32 @@ The idea was to use this for probabilistic upscaling, somehow.},
 }
 
 @Article{Roulston02frcstInfoEval,
-  author        = {Roulston, M. S. and Smith, L. A.},
-  title         = {Evaluating probabilistic forecasts using information theory},
-  year          = {2002},
-  volume        = {130},
-  number        = {6},
-  pages         = {1653--1660},
-  issn          = {0027-0644},
-  __markedentry = {[Scott:1]},
-  abstract      = {The problem of assessing the quality of an operational forecasting system that produces probabilistic forecasts is addressed using information theory. A measure of the quality of the forecasting scheme, based on the amount of a data compression it allows, is outlined. This measure, called ignorance, is a logarithmic scoring rule that is a modified version of relative entropy and can be calculated for real forecasts and realizations. It is equivalent to the expected returns that would be obtained by placing bets proportional to the forecast probabilities. Like the cost-loss score, ignorance is not equivalent to the Brier score, but, unlike cost-loss scores, ignorance easily generalizes beyond binary decision scenarios. The use of the skill score is illustrated by evaluating the ECMWF ensemble forecasts for temperature at London's Heathrow airport.},
-  booktitle     = {Monthly Weather Review},
-  comment       = {Info theory eval of forecasted prob. dist; is equivalent to placing bets based on density (why not just calculate that number then?). Generalizes to non-binary decisions, so is possibly useful. Maybe the "equivalent to" is a binary decision?
+  author    = {Roulston, M. S. and Smith, L. A.},
+  title     = {Evaluating probabilistic forecasts using information theory},
+  year      = {2002},
+  volume    = {130},
+  number    = {6},
+  pages     = {1653--1660},
+  issn      = {0027-0644},
+  abstract  = {The problem of assessing the quality of an operational forecasting system that produces probabilistic forecasts is addressed using information theory. A measure of the quality of the forecasting scheme, based on the amount of a data compression it allows, is outlined. This measure, called ignorance, is a logarithmic scoring rule that is a modified version of relative entropy and can be calculated for real forecasts and realizations. It is equivalent to the expected returns that would be obtained by placing bets proportional to the forecast probabilities. Like the cost-loss score, ignorance is not equivalent to the Brier score, but, unlike cost-loss scores, ignorance easily generalizes beyond binary decision scenarios. The use of the skill score is illustrated by evaluating the ECMWF ensemble forecasts for temperature at London's Heathrow airport.},
+  booktitle = {Monthly Weather Review},
+  comment   = {Info theory eval of forecasted prob. dist; is equivalent to placing bets based on density (why not just calculate that number then?). Generalizes to non-binary decisions, so is possibly useful. Maybe the "equivalent to" is a binary decision?
+
+Criticizes Brier score b/c it has the same value for pairs of the ignorance score, and also because it would lose money of used for betting, unlike w/ ignorance.
+
+Proposed expected ignorance could be an alternative to CRPS
 
 Highly cited.
 
 Maybe worthwhile for optimizing day ahead and hour ahead forecast bidding?
 
 Ignorance score was better at showing a difference in QR and DR in: Vogt18multiDistLrnAnomDet},
-  file          = {Roulston02frcstInfoEval.pdf:Roulston02frcstInfoEval.pdf:PDF},
-  groups        = {Test, CitaviImport1, doReadNonWPV_1},
-  keywords      = {probabilistic forecast},
-  ncite         = {176},
-  owner         = {sotterson},
-  timestamp     = {2013.09.26},
+  file      = {Roulston02frcstInfoEval.pdf:Roulston02frcstInfoEval.pdf:PDF},
+  groups    = {Test, CitaviImport1, doReadNonWPV_1},
+  keywords  = {probabilistic forecast},
+  ncite     = {176},
+  owner     = {sotterson},
+  timestamp = {2013.09.26},
 }
 
 @Article{Saul03globLocLLE,
@@ -31732,6 +31750,22 @@ Both a quality of fit method and a way to estimate heavy tails in quantile regre
 
 The large part of the presented results are far from being new or original, nevertheless their use still meets with some resistance in the weather forecast community. This paper aims at providing a clear presentation of the main arguments for using the logarithmic score.
 Keywords: Forecast verification; Probability forecast/models; Quality assurance/controls },
+  comment       = {
+* Properties considered essential for a scoring rule (desiderata)
+   1. Additivity:  the score of a new forecast result adds (averages, I think) onto the total score of the past results, with the same weight, I think
+   2. Locality: The score depends only on the predicted probability of the actual outcome -- the rest of the distribution doesn't matter.  This means that, the Brier Score and CRPS are non-local.
+   3. Propriety: the score is "proper," meaning that the forecaster gets the best score only if he forecasts the probability he believes to be correct.
+
+* The three desiderata ==> are only satisfied b a logarithmic scoring rule
+   - for both the single event and the sequence of events.
+* Skill scores show the relationship between a "zero level" entropy and forecast/truth cross-entropy
+   - there's a climatology entropy
+   - there's also a max ignorance entropy, where the prob of an event is 1/m, where there are m possibilties
+
+
+
+
+For more about Brier Score problems: Jewson04problemBrierScore},
   file          = {:Benedetti10scoreFrcstVerifRare.pdf:PDF},
   url           = {https://journals.ametsoc.org/doi/full/10.1175/2009MWR2945.1},
 }
@@ -40000,6 +40034,27 @@ Is this used in Dubois15deepMineCopulaHyper, which has Python?},
   url       = {http://books.nips.cc/nips23.html},
 }
 
+@Article{Jewson03likSkillFrcst,
+  author    = {Jewson, Stephen},
+  title     = {Use of the likelihood for measuring the skill of probabilistic forecasts},
+  journal   = {arXiv preprint physics/0308046},
+  year      = {2003},
+  abstract  = {We define the likelihood and give a number of justifications for its use as a skill measure for
+probabilistic forecasts. We describe a number of different scores based on the likelihood, and briefly
+investigate the relationships between the likelihood, the mean square error and the ignorance.},
+  booktitle = {arXiv preprint physics/0308046},
+  comment   = {Wants to evaluate continuous forecasts with a likelihood score, apparently, instead of CRPS.  Not highly cited, even though it's old. Possibly, this was an idea that didn't take off.
+
+Jewson04problemBrierScore wants to replace Brier Score with a likelihood score too.  That paper did get cited at least once by an influential paper (Benedetti10scoreFrcstVerifRare)},
+  file      = {Jewson03likSkillFrcst.pdf:Jewson03likSkillFrcst.pdf:PDF},
+  groups    = {Test, CitaviImport1, doReadNonWPV_2},
+  keywords  = {Likelihood},
+  ncite     = {7},
+  owner     = {sotterson},
+  timestamp = {2013.09.26},
+  url       = {http://arxiv.org/abs/physics/0308046v2},
+}
+
 @InProceedings{Gao15mutInfoStrongDep,
   author    = {Gao, Shuyang and Ver Steeg, Greg and Galstyan, Aram},
   title     = {Efficient Estimation of Mutual Information for Strongly Dependent Variables.},
@@ -43434,7 +43489,12 @@ Keywords: Boosting, stagewise regression, machine learning, proper scoring rules
 proper score functions, information measures, entropy, Gini index, Bregman distances, link
 functions, binary response data, stumps, tree-based classification, CART, logistic regression,
 Fisher scoring, iteratively reweighted least squares, stagewise fitting.},
-  comment       = {What proper binary class prediction probability scoring rules have in common.},
+  comment       = {What proper binary class prediction probability scoring rules have in common and other intersting points:
+
+* Proper scoring rules can be taylored to tune algorithms with arbitrary costs e.g. for false or missed detect
+* It is shown how boosting can generalize well for classification even though its estimation of probabilities is poor
+* IRLS can be used for boosting
+* tailored proper scores can be used to estimate tree-based models.},
   file          = {:Buja05lossFuncBinClassProb.pdf:PDF},
   url           = {http://www-stat.wharton.upenn.edu/~buja/PAPERS/paper-proper-scoring.pdf},
 }
@@ -51140,6 +51200,26 @@ http://www.rerinfo.ca/english/publications/pubSESCI2003PVToolbox.html},
   series      = {IMM-Technical Report-2011-09},
   timestamp   = {2013.04.12},
   url         = {http://orbit.dtu.dk/en/publications/spatiotemporal-correction-of-dong-forecast-errors%282566efd8-9c80-4778-ab8c-6f22ef8495ff%29.html},
+}
+
+@PhdThesis{Thorey17ensProbPVfrcstCRPSphdthesis,
+  author        = {Thorey, Jean},
+  title         = {{Ensemble forecasting using sequential aggregation for photovoltaic power applications}},
+  school        = {{Universit{\'e} Pierre et Marie Curie - Paris VI}},
+  year          = {2017},
+  type          = {Theses},
+  month         = Sep,
+  __markedentry = {[Scott:1]},
+  comment       = {Produces a probabilistic PV forecast by aggregates an ensemble of determinsitic NWP-based PV forecasts and optimizing something w.r.t. CRPS.  Could be used for PV portfolio/ensemble forecasting or for converting decision tree forecasts to a calibrated probabilstic forecast.
+
+* notes that CRPS is not local, but justifies using it},
+  file          = {:Thorey17ensProbPVfrcstCRPSphdthesis.pdf:PDF},
+  hal_id        = {tel-01697133},
+  hal_version   = {v2},
+  keywords      = {Probabilistic forecasting ; Photovoltaic power ; Ensemble forecasting ; Sequential aggregation ; CRPS ; Machine learning ; Apprentissage statistique ; Photovolta{\"i}que ; Pr{\'e}vision d'ensemble ; Pr{\'e}vision probabilistique ; Ag{\'e}gation s{\'e}quentielle},
+  number        = {2017PA066526},
+  pdf           = {https://hal.inria.fr/tel-01697133/file/2017PA066526.pdf},
+  url           = {https://hal.inria.fr/tel-01697133},
 }
 
 @Article{Thrun00Reinforcementlearningintroduction,
