@@ -2700,6 +2700,7 @@ Strike-through: nil
 ******* [[https://www.masteringemacs.org/article/jedi-completion-library-python][Jedi: A completion library for Python - Mastering Emacs]]
 ******* what emacs video guy uses: [[Emacs and Python videos from C'est la Z]]
 ******* is compatible with elpy: [[elpy and jedi and rope]]
+********* In fact, as of Sept. 2019, elpy will try (and fail) to autoinstall it
 ******* <<jedi and conda>>
 ********* [[https://github.com/tkf/emacs-jedi/issues/154][How to tell emacs-jedi about conda environments · Issue #154 · tkf/emacs-jedi...]]
 
@@ -2710,7 +2711,7 @@ Strike-through: nil
 ***** rope
       From [[http://wikemacs.org/wiki/Python][here]]: it's good for renaming variables and much more, needs two python packages to be installed.
 ******* works with elpy: [[elpy and jedi and rope]]
-***** elpy 
+***** <<elpy>>
       So you can type =C-c= in a python script and emacs will run it
 ******* emacs video guy says [[http://cestlaz.github.io/posts/using-emacs-12-python/][looks cool but is overkill for him]]
 ******* RealPython guy [[https://realpython.com/blog/python/emacs-the-best-python-editor/][likes elpy]] (with tips and screenshots)
@@ -2732,10 +2733,28 @@ Strike-through: nil
         I'm not a fan because the environment spec. doesn't get checked into svn or git or whatever.
 
 ******* <<elpy and jedi and rope>>
+
+        As of Sept 9, elpy seems to require jedi.  It's getting into an infinite loop, apparently trying to download itself with pip, but that fails for some reason.
+
+        Problem goes away if I just install jedi myself:
+
+        conda install -c conda-forge jedi 
+
 ********* elpy [[http://wikemacs.org/wiki/Python][is said]] to make good use of jedi
 ********* [[https://stackoverflow.com/questions/29809061/how-to-properly-setup-jedi-with-elpy-in-emacs][python - How to properly setup Jedi with elpy in emacs?]]
 ********* [[https://github.com/jorgenschaefer/elpy/wiki/Configuration][elpy Configuration · jorgenschaefer/elpy]]
 ******* [[elpy vs. anaconda-mode]]
+******* <<Autopep8>> (GIT: [[https://github.com/hhatto/autopep8][hhatto/autopep8]])
+        This is a way to make emacs automatically force your code to the [[Python PEP8]] standard.
+
+********* configuring emacs autopep8
+        In my .emacs, inside of (use-package elp *), I have:
+
+        (if autopep8bin
+          (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+
+********* [[Preventing PEP8 from flagging a non-top-of-file import]]
+
 ***** [[https://github.com/abo-abo/lpy][abo-abo/lpy: Minimal Python IDE for GNU Emacs]]
 ***** <<Virtual Environments And Emacs>>
 ******* <<activating conda environments in emacs>>
@@ -8392,7 +8411,7 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 ******* also [[Emacs keybindings for Jupyter]]
 ***** <<Versioning Jupyter Notebooks>>
 
-      Conclusion: Jupytext is the "[[https://nextjournal.com/schmudde/how-to-version-control-jupyter][most complete version control solution]]" and to me, it seems quite workable, esp. if you paired notebooks.  Maybe config so .py files are in subdir (or not?)?  
+      Conclusion: [[https://github.com/mwouts/jupytext][Jupytext]] is the "[[https://nextjournal.com/schmudde/how-to-version-control-jupyter][most complete version control solution]]" and to me, it seems quite workable, esp. if you paired notebooks.  Maybe config so .py files are in subdir (or not?)?  
 
       If want to version notebooks along with data, and do a RunRouter like thing, then the [[POC versioning Machine Learning pipeline]] looks pretty good.  Has DVC parameterization and Jupyter notebooks.  Worth looking into?
 
@@ -8791,6 +8810,20 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
 *** How to write Python documentation
 ***** [[https://www.python.org/dev/peps/pep-0257/][PEP 257 -- Docstring Conventions]]: the overarching standard
 ***** [[https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt][numpy/HOWTO_DOCUMENT]]: spyder displays this standard
+*** Python coding standards
+***** <<Python PEP8>>
+
+      It seems like there's no escaping the [[https://www.python.org/dev/peps/pep-0008/][PEP 8 Style Guide for Python Code]], so most IDEs have a way of automatically formatting your code that standard.  
+
+  Emacs, and others, do it by calling [[Autopep8]] which you have to install first from pip or conda.
+
+  <<Preventing PEP8 from flagging a non-top-of-file import>>
+
+  PEP8 / Autopep8 have problem with imports: if you have to 
+
+  sys.path.append(r"..\lib\python")  # won't work on linux
+  import sutil as su  # noqa: E402
+
 *** Code checkers: [[https://www.pylint.org/][Pylint]], [[https://github.com/davidfraser/pyan][pyan]], [[https://github.com/megies/pyflakes][Pyflakes]]
 *** Symbolic computation: [[http://www.sympy.org/de/index.html][SymPy]]
 *** Tests in Python
