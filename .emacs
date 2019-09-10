@@ -349,7 +349,7 @@
   (define-key prog-mode-map (kbd "C-;") 'iedit-within-defun))
 
 ;; ** Expand-Region
-
+;; handy with, at least, wrap-region for italics, bold,... emphasis
 (use-package expand-region
   :bind ("C-=" . er/expand-region))
 
@@ -376,7 +376,8 @@
 
   (global-set-key "\C-s" 'sdo/swiper-region)
   (global-set-key (kbd "C-c s") 'swiper-isearch-thing-at-point)
-  ;; ivy-views integrate with ivy-switch-buffer (See https://oremacs.com/2016/06/27/ivy-push-view/).  That's probably nice but I'm still using ido-switch-buffer b/c of its rectangular view.  So, I've bound ivy-switch view to something close to switch-buffer.  
+  ;; ivy-views integrate with ivy-switch-buffer (See https://oremacs.com/2016/06/27/ivy-push-view/).  That's probably nice but I'm still using ido-switch-buffer b/c of its rectangular view.  So, I've bound ivy-switch view to something close to switch-buffer.
+  ;; NOTE, however, that somebody has posted an ivy-rectangle view.  I must have an email for that or something.
   (global-set-key (kbd "C-c v") 'ivy-push-view)
   (global-set-key (kbd "C-c V") 'ivy-pop-view) ; works like delete
   (global-set-key (kbd "C-x V") 'ivy-switch-view)
@@ -915,6 +916,7 @@
 	 ("\\.c$"    . c++-mode)
 	 ("\\.cpp$"  . c++-mode)
 	 ("\\.h$"    . c++-mode)
+	 ("\\.dvc$"  . yaml-mode)
 	 ("\\.java$" . java-mode)
 	 ("\\.m$" . matlab-mode)
 	 ) auto-mode-alist))
@@ -934,6 +936,7 @@
 
 ;; so M-n and M-p look for symbol at point.  Is redundant with highlight-thing
 ;; also can replace like iedit, M-' globally and C-u M-' within defun (after M-n or M-p)
+;; Note that I've remaped er\iedit to iedit-within-defun
 ;; From https://github.com/itsjeyd/emacs-config/blob/emacs24/init.el
 (use-package smartscan
   :defer t
@@ -1079,7 +1082,9 @@
 ;; docs: https://elpy.readthedocs.io/en/latest/index.html
 ;; run python in buffer with C-c C-c, once elpy-mode is enabled
 
-;; I don't know how to check for python jedi being installed
+;; TODO: verify that python jedi being installed (if not will elpy will look for it and hant itself (as of Sept 9, 2019)
+;;       pip show jedi
+;; seems to work even if pkg was installed by conda
 
 (if (executable-find "flake8")
     (message "found flake8")
@@ -1280,6 +1285,11 @@
 
 (add-hook 'csharp-mode-hook 'my-csharp-mode-setup t)
 
+;; ** YAML
+
+(use-package yaml-mode
+  :mode ("\\.yml$" "\\.dvc$"))
+
 ;; * Narrowing
 ;; Narrowing has too many keys: wipe them out and make it a toggle
 ;; from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html
@@ -1367,6 +1377,7 @@ is already narrowed."
   (add-hook 'org-mode-hook #'org-autolist-mode)) 
 
 ;; Quick org emphasis:  Select text & hit key below. smart-region pkg helps.
+;; Handy using er/expand, mapped to C-=
 (use-package wrap-region
   :diminish wrap-region-mode
   :diminish wrap-region-minor-mode
@@ -1392,13 +1403,18 @@ is already narrowed."
 ;; and the crash is on the 1st cite:link in my .bib
 ;; (require 'org-ref)
 
-;; see org-ref for use of these variables
-(setq org-ref-bibliography-notes (expand-file-name "notes.org" docDir)
-      org-ref-default-bibliography '((expand-file-name "energy.bib" docDir))
-      org-ref-pdf-directory '((expand-file-name "papers" docDir)))
+;; ;; see org-ref for use of these variables
+;; (setq org-ref-bibliography-notes (expand-file-name "notes.org" docDir)
+;;       org-ref-default-bibliography '((expand-file-name "energy.bib" docDir))
+;;       org-ref-pdf-directory '((expand-file-name "papers" docDir)))
 
-;;Adding this stuff from the org-ref page DOESN'T HELP
-(setq reftex-default-bibliography org-ref-default-bibliography)
+;; ;; for helm key completion
+;; ;; (setq bibtex-completion-bibliography "~/Dropbox/bibliography/references.bib"
+;; ;;       bibtex-completion-library-path "~/Dropbox/bibliography/bibtex-pdfs"
+;; ;;       bibtex-completion-notes-path (expand-file-name "notes.org" docDir))
+
+;; ;;Adding this stuff from the org-ref page DOESN'T HELP
+;; (setq reftex-default-bibliography org-ref-default-bibliography)
 
 ;; --original org-ref setup-------------------------------------
 ;; org-ref causes an error when emacs reads the 1st org-ref cite: link.  The .org file is still read, but org-bullets fails then, for some reason.
@@ -1407,7 +1423,7 @@ is already narrowed."
 ;; (use-package helm-bibtex)
 ;; (use-package pdf-tools)
 
-;; ;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
+;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
 ;; (use-package org-ref
 ;;   :after org
 ;;   :init
@@ -1422,20 +1438,20 @@ is already narrowed."
 ;;           ))
 ;;   ;; ;; showing broken links slowed down energytop.org (but much less in Oct. 2017)
 ;;   ;; ;;  https://github.com/jkitchin/org-ref/issues/468
-;;   ;; (setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
-;;   ;; :config
-;;   ;; (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
-;;   ;; ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
-;;   ;; (setq bibtex-autokey-year-length 4
-;;   ;;       bibtex-autokey-name-year-separator "-"
-;;   ;;       bibtex-autokey-year-title-separator "-"
-;;   ;;       bibtex-autokey-titleword-separator "-"
-;;   ;;       bibtex-autokey-titlewords 2
-;;   ;;       bibtex-autokey-titlewords-stretch 1
-;;   ;;       bibtex-autokey-titleword-length 5)
-;;   ;;  ;; org-ref causes an error when emacs reads the 1st org-ref cite: link.  The .org file is still read, but org-bullets fails then, for some reason.
-;;   ;; Make org-ref cite: link folded in emacs.  Messes up Latex export:
-;;   ;; https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
+;;   (setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
+;;   :config
+;;   (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
+;;   ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
+;;   (setq bibtex-autokey-year-length 4
+;;         bibtex-autokey-name-year-separator "-"
+;;         bibtex-autokey-year-title-separator "-"
+;;         bibtex-autokey-titleword-separator "-"
+;;         bibtex-autokey-titlewords 2
+;;         bibtex-autokey-titlewords-stretch 1
+;;         bibtex-autokey-titleword-length 5)
+;;    ;; org-ref causes an error when emacs reads the 1st org-ref cite: link.  The .org file is still read, but org-bullets fails then, for some reason.
+;; ;;   ;; Make org-ref cite: link folded in emacs.  Messes up Latex export:
+;; ;;   ;; https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
 ;;   (org-link-set-parameters "cite" :display nil)
 ;; )
 
@@ -2171,7 +2187,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
  '(recentf-max-saved-items 200)
