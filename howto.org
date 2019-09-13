@@ -6707,13 +6707,28 @@ A third way to accomplish this is via the commands *par(mfrow=)* or
 sub-figure to draw into.  Note that the above methods are all incompatible
 with each other.
 
-***** interactive plot gui's
+***** Interactive Plot GUIs
 ******* overviews
 ********* [[https://community.rstudio.com/t/best-package-for-interactive-graphs-in-shiny/1731/5][Best package for interactive graphs in Shiny - shiny - RStudio Community]]
 ********* [[https://www.r-bloggers.com/interactive-visualizations-with-r-a-minireview/][Interactive visualizations with R – a minireview | R-bloggers]]
 ******* <<Plotly>>: zooms, dynamic ticks, has ggplot2(), in many languages
-********* is [[https://plot.ly/][implemented in]] R, python, Dash, React, Java
+********* is [[https://plot.ly/][implemented in]] R, python, [[Dash]], React, Java
 ********* [[https://plot.ly/api/][has APIs]] for python, matlab, R, and Java
+********* <<Plotly Express>> (easier to use version of plotly)
+
+          A beginners interface to plotly, like seaborn is to matplotlib.  Many plots can be done in oneliners, yet can still be modified for full plotly style control.
+
+*********** Plot type Galleries
+************* [[https://plot.ly/python/plotly-express/][Plotly Express]] 
+************* [[https://medium.com/plotly/introducing-plotly-express-808df010143d][Introducing Plotly Express]]
+*********** [[https://medium.com/plotly/introducing-plotly-express-808df010143d][Has]] built-in connections to:
+************* [[Themes in Plotly]]
+************* [[Static Image Exprot for Plotly]]
+************* [[Plotly Figure Widgets]]
+************* [[Jupyterlab Chart Editor]]
+              
+************* [[Dash]]
+*********** Requires inputs in [[Tidy (Long) Tables]]
 ********* [[R ggplot2]]
 ********* [[Python plotly]]
 ********* [[R plotly]]
@@ -6740,6 +6755,19 @@ with each other.
 *********** uses geopandas, or at least won't run without it, it seems
 *********** plotly [[https://medium.com/@plotlygraphs/what-is-a-fips-code-county-level-charts-in-python-4eff383a4cf6][knows about FIPS codes]] (unique ID for every US county)
 *********** also [[Map plotting in Python]]
+
+********* <<Themes in Plotly>>
+
+          [[https://medium.com/plotly/introducing-plotly-py-theming-b644109ac9c7][Plotly Themes]] let you quickly change the overall look of a graph.
+
+********* <<Static Image Exprot for Plotly>>
+          From: [[https://plot.ly/python/static-image-export/][Static Image Export | plotly]]
+*********** Orca Plotly Figure Export
+            See [[https://plot.ly/python/orca-management/][Orca Management | Plotly]]
+          
+********* <<Plotly Figure Widgets>>
+          From: [[https://plot.ly/python/figurewidget/][Plotly FigureWidget Overview]]
+
 ******* <<Bokeh:>> interative, in at least R and python
 ********* [[Python Bokeh]] 
 ********* [[R Bokey]]
@@ -8313,6 +8341,12 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
         A bit complicated but seems to work.
 
+******* <<Jupyterlab Chart Editor>>
+
+        [[https://github.com/plotly/jupyterlab-chart-editor][Apparently]] does things that are implemented in [[https://github.com/plotly/react-chart-editor][plotly/react-chart-editor]]
+
+********* [[https://github.com/plotly/jupyterlab-chart-editor][GitHub - plotly/jupyterlab-chart-editor]]
+********* [[https://www.youtube.com/watch?v=zR7G2tNVo1Q][Introducing the JupyterLab Chart Editor - YouTube]]
 ******* [[jupytext extensions]]
 ******* Extensions that are maybe nice but not working
 ********* <<emacs bindings in cells>>: [[https://github.com/kpe/jupyterlab-emacskeys][kpe/jupyterlab-emacskeys]]
@@ -8647,6 +8681,38 @@ which you activate using:
 
 source activate yourenvname
 
+*** Preventing globals in python functions
+
+    Ways to avoid very mysterious bugs due to the guts of a function accidentally accessing a global variable.
+
+***** use main()
+      From: [[https://www.quora.com/How-do-you-use-a-main-function-in-Python][How to use a main function in Python]]
+
+      def f(x):
+    	# function code
+     
+      def main():
+    	# call funcs only inside of main(): vars in main() will be local to main
+     
+      if __name__ == '__main__':
+    	main() # so script runs as normal
+
+***** decorate function with @noglobal
+      Idea is to make it so you can't read any variable that wasn't in the
+      parameters or defined inside the function.
+
+      o [[https://gist.github.com/ax3l/59d92c6e1edefcef85ac2540eb056da3][@noglobal]] was introduced by commentor Ax3l here: 
+        [[https://stackoverflow.com/questions/31023060/disable-global-variable-lookup-in-python][Disable global variable lookup in Python - Stack Overflow]]
+
+      o commentor bers [[https://stackoverflow.com/a/54249582/2591097][modified @noglobal]] 
+        o so functions globals /defined above the function definition/ could be
+          accessed inside the function.
+        o useful when all imports and function definitions are at the top
+
+***** note: globals inside func [[https://stackoverflow.com/questions/423379/using-global-variables-in-a-function][can't be written w/o global declaration]]
+
+      ...but you can /read/ global variables w/o the global declaration, which is a bug magnet.
+
 *** pip vs. conda
     From: [[https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/][Conda: Myths and Misconceptions | Pythonic Perambulations]]
 
@@ -8789,6 +8855,9 @@ Tableau
 ********* [[http://wrobstory.github.io/2013/10/mapping-data-python.html][Mapping Data in Python with Pandas and Vincent | wrobstory.github.io]]
 ***** <<Python Dashboarding>>
 ******* [[Dashboarding with Jupyter Notebooks]]
+******* <<Dash>>
+********* [[https://dash.plot.ly/][Dash User Guide and Documentation - Dash by Plotly]]
+********* Connects to [[Plotly]] and [[Plotly Express]]
 *** <<Python Streaming>>
 ***** Installing Pyspark in a docker
 ******* Better: [[https://medium.com/@suci/running-pyspark-on-jupyter-notebook-with-docker-602b18ac4494][Running PySpark on Jupyter Notebook with Docker – Medium]]
@@ -8815,14 +8884,19 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
 
       It seems like there's no escaping the [[https://www.python.org/dev/peps/pep-0008/][PEP 8 Style Guide for Python Code]], so most IDEs have a way of automatically formatting your code that standard.  
 
-  Emacs, and others, do it by calling [[Autopep8]] which you have to install first from pip or conda.
+      Emacs, and others, do it by calling [[Autopep8]] which you have to install first from pip or conda.
 
-  <<Preventing PEP8 from flagging a non-top-of-file import>>
+      <<Preventing PEP8 from flagging a non-top-of-file import>>
 
-  PEP8 / Autopep8 have problem with imports: if you have to 
+      PEP8 / Autopep8 have problem with imports: if you have to insert
+      a path into thd python path.  This solution is the directive
 
-  sys.path.append(r"..\lib\python")  # won't work on linux
-  import sutil as su  # noqa: E402
+          # noqa: E402
+
+      It looks like this:
+
+          sys.path.append(r"..\lib\python")  # won't work on linux
+          import sutil as su  # noqa: E402
 
 *** Code checkers: [[https://www.pylint.org/][Pylint]], [[https://github.com/davidfraser/pyan][pyan]], [[https://github.com/megies/pyflakes][Pyflakes]]
 *** Symbolic computation: [[http://www.sympy.org/de/index.html][SymPy]]
@@ -8845,6 +8919,13 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
       (works for arbitrary code you write yourself)
 ***** [[Parallelization for SciPy]]
 ***** [[Hadoop]]
+*** <<Tidy (Long) Tables>> in Python
+
+    The way Patrick Sudowe suggested that all SQL data s/b organized.  I guess it's the same for Python dataframes or whatever
+
+***** [[http://www.jeannicholashould.com/tidy-data-in-python.html][Tidy Data in Python · Jean-Nicholas Hould]]
+***** Is required for [[Plotly Express]]
+
 *** SciPy
 ***** <<Parallelization for SciPy>>
 ******* SciPy and Spark
