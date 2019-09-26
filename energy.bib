@@ -8579,6 +8579,26 @@ Variable selection.},
   url         = {https://arxiv.org/abs/1602.08780},
 }
 
+@Article{Rolnick19climateChngMachLrn,
+  author        = {Rolnick, David and Donti, Priya L and Kaack, Lynn H and Kochanski, Kelly and Lacoste, Alexandre and Sankaran, Kris and Ross, Andrew Slavin and Milojevic-Dupont, Nikola and Jaques, Natasha and Waldman-Brown, Anna and others},
+  title         = {Tackling Climate Change with Machine Learning},
+  journal       = {arXiv preprint arXiv:1906.05433},
+  year          = {2019},
+  __markedentry = {[Scott:6]},
+  abstract      = {Climate change is one of the greatest challenges facing humanity, and we, as machine learning ex-
+perts, may wonder how we can help. Here we describe how machine learning can be a powerful tool in
+reducing greenhouse gas emissions and helping society adapt to a changing climate. From smart grids
+to disaster management, we identify high impact problems where existing gaps can be filled by machine
+learning, in collaboration with other fields. Our recommendations encompass exciting research ques-
+tions as well as promising business opportunities. We call on the machine learning community to join
+the global effort against climate change.},
+  comment       = {Perhaps a good way to priortize research, careers and companies.  Very prestigious authors and organizations.
+
+Evernote:  https://www.evernote.com/l/AA0GvMVKTKFPNIkcjMXb9S8Kria6Bmx1XIk/},
+  file          = {:Rolnick19climateChngMachLrn.pdf:PDF},
+  url           = {https://arxiv.org/abs/1906.05433},
+}
+
 @Article{Aghabozorgi15tsClustDecRvw,
   author   = {Saeed Aghabozorgi and Ali Seyed Shirkhorshidi and Teh Ying Wah},
   title    = {Time-series clustering – A decade review},
@@ -31751,18 +31771,24 @@ Both a quality of fit method and a way to estimate heavy tails in quantile regre
 The large part of the presented results are far from being new or original, nevertheless their use still meets with some resistance in the weather forecast community. This paper aims at providing a clear presentation of the main arguments for using the logarithmic score.
 Keywords: Forecast verification; Probability forecast/models; Quality assurance/controls },
   comment       = {
+Arguments for a logarithmic (ignorance) score
 * Properties considered essential for a scoring rule (desiderata)
-   1. Additivity:  the score of a new forecast result adds (averages, I think) onto the total score of the past results, with the same weight, I think
-   2. Locality: The score depends only on the predicted probability of the actual outcome -- the rest of the distribution doesn't matter.  This means that, the Brier Score and CRPS are non-local.
+   1. Additivity:  the score of a new forecast result adds (averages, I think) onto the total score of the past results, with equal weight across all samples, I think
+   2. Locality: The score depends only on the predicted probability of the actual outcome -- the rest of the predicted distribution doesn't matter.  This means that, the Brier Score and CRPS are non-local.
    3. Propriety: the score is "proper," meaning that the forecaster gets the best score only if he forecasts the probability he believes to be correct.
 
-* The three desiderata ==> are only satisfied b a logarithmic scoring rule
+* The three desiderata ==> are only satisfied by a logarithmic scoring rule
    - for both the single event and the sequence of events.
-* Skill scores show the relationship between a "zero level" entropy and forecast/truth cross-entropy
-   - there's a climatology entropy
-   - there's also a max ignorance entropy, where the prob of an event is 1/m, where there are m possibilties
+* Score Normalization, so you can tell what a "good" forecast is
+   - Skill scores show the relationship between a "zero level" entropy and forecast/truth cross-entropy
+   - Two "zero level" normalizations are discussed
+      - climatology entropy
+      - max ignorance entropy, where the prob of any event is 1/m, where there are m possibilties for each event
 
-
+Log Score (AS) vs. Brier Score (BS)
+* BS is compared to the Absolute Skill Score (AS), which I guess, must be a good log score
+* for perfect (in the sense of matching event probabilities), BS is about the same as AS
+* 
 
 
 For more about Brier Score problems: Jewson04problemBrierScore},
@@ -38256,6 +38282,17 @@ Missing features fill-in advantage?
   location     = {Long Island, NY},
   owner        = {sotterson},
   timestamp    = {2013.07.05},
+}
+
+@Article{Foley18bayesLinTSfrcst,
+  author   = {Daniel Foley},
+  title    = {A Bayesian Approach to Time Series Forecasting},
+  journal  = {Towards Data Science},
+  year     = {2018},
+  month    = nov,
+  abstract = {Today we are going to implement a Bayesian linear regression in R from scratch and use it to forecast US GDP growth. This post is based on a very informative manual from the Bank of England on Applied Bayesian Econometrics. I have translated the original Matlab code into R since its open source and widely used in data analysis/science. My main goal in this post is to try and give people a better understanding of Bayesian statistics, some of it’s advantages and also some scenarios where you might want to use it.},
+  comment  = {Bayesian linear regression for time series forecasting.   Simple enough that could be an example for the CPR ML class.  Has R, easily ported to Python.},
+  file     = {:Foley18bayesLinTSfrcst.pdf:PDF},
 }
 
 @Article{Boney16introSemiSupLadderBlog,
@@ -51218,7 +51255,6 @@ http://www.rerinfo.ca/english/publications/pubSESCI2003PVToolbox.html},
   hal_version   = {v2},
   keywords      = {Probabilistic forecasting ; Photovoltaic power ; Ensemble forecasting ; Sequential aggregation ; CRPS ; Machine learning ; Apprentissage statistique ; Photovolta{\"i}que ; Pr{\'e}vision d'ensemble ; Pr{\'e}vision probabilistique ; Ag{\'e}gation s{\'e}quentielle},
   number        = {2017PA066526},
-  pdf           = {https://hal.inria.fr/tel-01697133/file/2017PA066526.pdf},
   url           = {https://hal.inria.fr/tel-01697133},
 }
 

@@ -1119,15 +1119,7 @@
 ********* skip wind since known to be really nonlinear
 ********* TODO does diff really help?
 
-***** Bayesian linear regression??
-******* compare w/ [[Adaptive Linear NN in Matlab]] (if can update sequentially)
-******* a Bayesian refresher
-******* maybe useful for gaussian process forecasting (later) and other stuff
-******* [[file:energy.bib::Minka01BayesLinRegress][Minka 2001: Bayesian Linear Regression]]
-******* [[file:energy.bib::Selen08layLinRgrOrder][Selen & Larsson 2008: Empirical Bayes linear]]
-******* hetero linear rgrssn: [[file:energy.bib::Leslie07genHeteroLinRegr][Leslie et al. 2007: general approach to]] (w/ feature selection, model averaging)
-******* Related to Gaussian Processes: [[file:energy.bib::Williams97predictLin2GaussProc][Williams 1998: Prediction with Gaussian processes]]
-
+***** [[Bayesian Linear Regression]]
 ***** Matlab NN toolbox
 ******* excellent [[http://www.phonetik.uni-muenchen.de/~reichelu/kurse/machine_learning/matlab_nn_toolbox.txt][Uwe Reichel's notes]]
 ******* different v.s application
@@ -6870,6 +6862,17 @@ variables will be preferred, when possible.
 ***** # params over time
 ***** best, least redundant weather models (related to [[feature selection for point regression]])
 ***** best model for MAE (finance), ramps (ramp prediction for planning), etc.
+* <<Bayesian Linear Regression>>
+*** compare w/ [[Adaptive Linear NN in Matlab]] (if can update sequentially)
+*** a Bayesian refresher
+*** maybe useful for gaussian process forecasting (later) and other stuff
+*** [[file:energy.bib::Minka01BayesLinRegress][Minka 2001: Bayesian Linear Regression]]
+*** [[file:energy.bib::Selen08layLinRgrOrder][Selen & Larsson 2008: Empirical Bayes linear]]
+*** [[file:energy.bib::Foley18bayesLinTSfrcst][Foley 2018: Bayesian Approach Time Series Forecasting]]
+*** [[https://towardsdatascience.com/introduction-to-bayesian-linear-regression-e66e60791ea7][Introduction to Bayesian Linear Regression - Towards Data Science]]
+*** hetero linear rgrssn: [[file:energy.bib::Leslie07genHeteroLinRegr][Leslie et al. 2007: general approach to]] (w/ feature selection, model averaging)
+*** Related to Gaussian Processes: [[file:energy.bib::Williams97predictLin2GaussProc][Williams 1998: Prediction with Gaussian processes]]
+
 * <<Forecasting>>
 *** <<German Data: RES production and forecasts>>
 
@@ -9414,6 +9417,7 @@ al. 2012: Current]])
 *** also [[Technology Adoption Rates]]
 *** also [[Real Estate Forecasts]]
 *** also [[Economic Forecasts]]
+*** also [[Bayesian Linear Regression]]
 * <<Missing Features>>
 *** Probably OK to select features w/ spline fill-in?
 *** Train coeffs w/ something fancier?
@@ -9871,12 +9875,14 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 ***** PV Panel Efficiency in Low Light
 ******* [[file:energy.bib::Grunow04weakLightPV][Grunow et al. 2004: Weak PV]]
 ******* [[file:energy.bib::Aleo19pvPanelsLowLight][Solar 2019: All panels not equal low light]]
-*** Global Warming
-***** [[Wind power impacts on climate change and limits to wind power]]
-***** [[Solar power impacts on climate changes and limits to solar power]]
-***** [[file:energy.bib::Sovacool08nukeGHGs][Sovacool 2008: Valuing]] nuclear GHG emissions
-
-*** See also: [[Numerical Weather Prediction (NWP)]]
+*** also [[Numerical Weather Prediction (NWP)]]
+*** also [[Global Warming / Climate]]
+* TODO <<Global Warming / Climate>>
+*** [[Wind power impacts on climate change and limits to wind power]]
+*** [[Solar power impacts on climate changes and limits to solar power]]
+*** [[file:energy.bib::Sovacool08nukeGHGs][Sovacool 2008: Valuing]] nuclear GHG emissions
+*** TODO [[file:energy.bib::Rolnick19climateChngMachLrn][Rolnick et al. 2019: Tackling Climate Change Machine Learning]]
+*** also [[Meteorology]]
 * Operations
 *** <<Possible Power>>
 ***** [[file:energy.bib::][Giebel et al. 2014: Estimation Experimental Validation]] realtime wake model, needs pitch?
