@@ -936,7 +936,7 @@
 
 ;; so M-n and M-p look for symbol at point.  Is redundant with highlight-thing
 ;; also can replace like iedit, M-' globally and C-u M-' within defun (after M-n or M-p)
-;; Note that I've remaped er\iedit to iedit-within-defun
+;; Note that I've remapped er\iedit to iedit-within-defun
 ;; From https://github.com/itsjeyd/emacs-config/blob/emacs24/init.el
 (use-package smartscan
   :defer t
@@ -2170,7 +2170,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
               ("dvisvgm %f -n -b min -c %S -o %o%b.svg"))
      (imagemagick :programs
                   ("latex" "convert")
-                  :description "pdf > png" :message "you need to install the programs: latex and imagemagick." :use-xcolor t :image-input-type "pdf" :image-output-type "png" :image-size-adjust
+                  :description "pdf > png" :message "you need to install the programs: Latex and imagemagick." :use-xcolor t :image-input-type "pdf" :image-output-type "png" :image-size-adjust
                   (1.0 . 1.0)
                   :latex-compiler
                   ("pdflatex -interaction nonstopmode -output-directory %o %f")
