@@ -71,8 +71,10 @@
           Scheme
  
 ******* TRY decide on <<highlight symbol>>
+        
+        In python the best way is probably using [[refactoring in elpy]]
 
-        _Three alternatives, none perfect_
+        _Three highlighting only alternatives, none perfect_
 
         highlight-thing is actively maintained, more flexible, [[https://github.com/emacs-tw/awesome-emacs#interface-enhancement][more popular?]] faster? (no fontlock), can be restricted to defun.  The change it needs is to query "describe-symbol" or something when it's in "symbol" mode and then only highlight if it's a symbol. Better yet, only if it's a variable, so "describe-variable", if that exists.
 
@@ -2744,6 +2746,36 @@ Strike-through: nil
 ********* [[https://stackoverflow.com/questions/29809061/how-to-properly-setup-jedi-with-elpy-in-emacs][python - How to properly setup Jedi with elpy in emacs?]]
 ********* [[https://github.com/jorgenschaefer/elpy/wiki/Configuration][elpy Configuration · jorgenschaefer/elpy]]
 ******* [[elpy vs. anaconda-mode]]
+******* <<refactoring in elpy>>
+        From: [[https://elpy.readthedocs.io/en/latest/ide.html#refactoring][IDE Features — Elpy]]
+
+        _Symbol search and replace, like iedit, or Matlab_
+
+          C-c C-e (elpy-multiedit-python-symbol-at-point)
+
+          o C-c C-e to exit mode
+          o default backend can replace out-of-scope things (so install Jedi)
+          o will operate only in highlighed region, if there is one
+
+        _plain symbol search_
+
+          M-s _
+          If incremental search is active, toggle symbol search mode (isearch-toggle-symbol); otherwise, begin an incremental forward symbol search (isearch-forward-symbol).
+
+          M-s .
+          Start a symbol incremental search forward with the symbol found near point added to the search string initially.
+
+          M-s _ <RET> symbol <RET>
+          Search forward for symbol, nonincrementally.
+
+          M-s _ C-r <RET> symbol <RET>
+
+******* refactoring / code gen with pygen
+        From: [[https://github.com/jackcrawley/pygen][JackCrawley/pygen: Python code generation in Emacs]]
+
+        Handy: Caonverts selected expression to a variable, makes a variable an input parameter, makes a class, etc.
+        
+        o require elpy and python_mode packages
 ******* <<Autopep8>> (GIT: [[https://github.com/hhatto/autopep8][hhatto/autopep8]])
         This is a way to make emacs automatically force your code to the [[Python PEP8]] standard.
 
@@ -2949,6 +2981,7 @@ For a public browser link. Share the note and copy the share url.
       But I don't now how to go backwards and forwards inside of this search.
 
 ***** I mapped C-s s to swiper-isearch-thing-at-point (supposed to be symbols search but it only extracts a symbol-like-thing and then search for string matches w/o knowing the language)
+***** symbol search and replace: [[refactoring in elpy]]
 * JabRef
 *** News and feature requests go [[http://discourse.jabref.org][here]]
 *** bug reports go [[https://github.com/JabRef/jabref/issues][here]]
@@ -6729,6 +6762,7 @@ with each other.
               
 ************* [[Dash]]
 *********** Requires inputs in [[Tidy (Long) Tables]]
+*********** [[https://plot.ly/python/plotly-express/#plotly-express][Has]] ColorBrewer color picking and others
 ********* [[R ggplot2]]
 ********* [[Python plotly]]
 ********* [[R plotly]]
@@ -6876,8 +6910,7 @@ q on the graphic window to quit
 
 ********* char2dms {[[http://cran.r-project.org/web/packages/sp/sp.pdf][sp]]} string --> DMS object, flexible format, as.numeric() for degrees
 ********* [[http://cran.r-project.org/web/packages/gmt/gmt.pdf][deg2num {gmt}]] string --> decimal degrees, format: D:M:S[SWEN]
-***** R color picking
-      <<R color picking>>
+***** <<R color picking>>
 ******* [[http://cran.r-project.org/web/packages/colorspace/index.html][colorspace]]: categorical, map, etc. color maps.
 ********* good advice here: [[http://cran.r-project.org/web/packages/colorspace/vignettes/hcl-colors.pdf][HCL-Based Color Palettes in R]]
 ********* choose_palette(): a palette picking GUI
@@ -8098,6 +8131,29 @@ a[-3::-1]  # everything except the last two items, reversed
 
 Python is kind to the programmer if there are fewer items than you ask for. For example, if you ask for a[:-2] and a only contains one element, you get an empty list instead of an error. Sometimes you would prefer the error, so you have to be aware that this may happen.
 
+***** adding a dimension to a numpy array eg. (10,) --> (10,1)
+******* np.newaxis
+        From [[https://stackoverflow.com/questions/17394882/add-dimensions-to-a-numpy-array][python - Add dimensions to a Numpy Array - Stack Overflow]]
+
+        import numpy as np
+        movie = np.concatenate((img1[:,np.newaxis], img2[:,np.newaxis]), axis=3)
+
+        # or
+        image = image[..., np.newaxis].
+******* np.expand_dims()
+        From: [[https://docs.scipy.org/doc/numpy/reference/generated/numpy.expand_dims.html][numpy.expand_dims — NumPy v1.17 Manual]]
+
+        x = np.array([1,2])
+        x.shape # is (2,)
+        y = np.expand_dims(x, axis=0)
+        y.shape # is (1,2)
+
+******* sutil.as2Darray()
+        From: my sutil.py
+
+********* also does lists, etc.
+********* could be modified to use one of the other tricks above
+
 *** <<Windows Python>>
     Needed at least for org-mode ox-clip
 
@@ -8114,7 +8170,7 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
            (Make sure this is /above/ msys2 path. Otherwise, the msys2
            python you get when installing diff, etc., will mess up emacs
-           elpy.  Also make sure that it's above %USERPROFILE%\AppData\Local\Microsoft\WindowsApps , which as of May 2019 suddenly holds a python.exe)
+           [[elpy]].  Also make sure that it's above %USERPROFILE%\AppData\Local\Microsoft\WindowsApps , which as of May 2019 suddenly holds a python.exe)
         
 ******* Install from Windows .exe installer        
 
@@ -8320,7 +8376,7 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
 ******* filetree file finder: [[https://github.com/youngthejames/jupyterlab_filetree][youngthejames/jupyterlab_filetree]]
 ******* python creating convenience: [[https://github.com/jtpio/jupyterlab-python-file][jtpio/jupyterlab-python-file]]
-******* conda env switching, cloning, etc.: [[https://github.com/fcollonval/jupyter_conda][fcollonval/jupyter_conda]]
+******* conda package manager, cloning, etc.: [[https://github.com/fcollonval/jupyter_conda][fcollonval/jupyter_conda]]
 
         Similar to anaconda navigator but seems faster, and (I think) is more capable.
 
@@ -8348,6 +8404,7 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 ********* [[https://github.com/plotly/jupyterlab-chart-editor][GitHub - plotly/jupyterlab-chart-editor]]
 ********* [[https://www.youtube.com/watch?v=zR7G2tNVo1Q][Introducing the JupyterLab Chart Editor - YouTube]]
 ******* [[jupytext extensions]]
+******* [[Jupyter matplotlib widgets]]
 ******* Extensions that are maybe nice but not working
 ********* <<emacs bindings in cells>>: [[https://github.com/kpe/jupyterlab-emacskeys][kpe/jupyterlab-emacskeys]]
 
@@ -8359,7 +8416,7 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 ********* TRY [[https://github.com/jupyterlab/jupyterlab-shortcutui][jupyterlab/jupyterlab-shortcutui: A JupyterLab extension for managing shortcuts]]
           It's now been updated to Jupyterlab 1.0.  Maybe worth trying.
 ***** Jupyter/Jupyterlab graphics
-******* matplotlib widgets
+******* <<Jupyter matplotlib widgets>>
         From: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib: Matplotlib Jupyter Extension]]
 
         1. Install the extension (see page)
