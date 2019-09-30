@@ -1090,6 +1090,8 @@
     (message "found flake8")
   (message "flake8 is not in path: needed by elpy for code checks"))
 
+(use-package flycheck-pos-tip)
+
 (use-package elpy
   :defer t
   :init
@@ -1118,8 +1120,15 @@
   (if autopep8bin
       (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)))
 
-;; So C-c i generates a python function stub from symbol @ point, uses elpy
-(use-package elpygen)
+;; So C-c i generates a python function/method stub from symbol @ point
+(use-package elpygen) ; seems to be separate from elpy, despite the name
+
+;; for Python mode comment filling
+;; https://stackoverflow.com/questions/2214199/how-to-use-emacs-to-write-comments-with-proper-indentation-line-length-and-wra
+(require 'newcomment)
+(add-hook 'python-mode-hook (progn
+                              (setq comment-auto-fill-only-comments 1)
+                              (setq-default auto-fill-function 'do-auto-fill)))
 
 ;; (use-package anaconda-mode  ;; elpy alternative?
 ;;   :config
@@ -2173,7 +2182,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
               ("dvisvgm %f -n -b min -c %S -o %o%b.svg"))
      (imagemagick :programs
                   ("latex" "convert")
-                  :description "pdf > png" :message "you need to install the programs: Latex and imagemagick." :use-xcolor t :image-input-type "pdf" :image-output-type "png" :image-size-adjust
+                  :description "pdf > png" :message "you need to install the programs: latex and imagemagick." :use-xcolor t :image-input-type "pdf" :image-output-type "png" :image-size-adjust
                   (1.0 . 1.0)
                   :latex-compiler
                   ("pdflatex -interaction nonstopmode -output-directory %o %f")
