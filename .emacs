@@ -295,7 +295,7 @@
 
 ;; * Search and Replace (see also Swiper/Ivy)
 ;; ** Web Search
-(use-package google-this
+(use-package google-this      ;; TODO: compare with counsel-search
   :diminish google-this-mode
   :config
   (google-this-mode 1)) ; bound to C-c / g (and other bindings after '/')
@@ -389,7 +389,27 @@
   :bind
   (("M-y" . counsel-yank-pop)
    :map ivy-minibuffer-map
-   ("M-y" . ivy-next-line))) ; needed?
+   ("M-y" . ivy-next-line)) ; needed?
+   ("C-S" . counsel-search)) ; TODO: this doesn't work.  Figure out
+                             ; how to bind it (this is an internet
+                             ; search call).  Also, compare with
+                             ; google-this.  Also TODO: make it search
+                             ; for region if selected, like
+                             ; sdo/swiper-region and for thing at
+                             ; point, like c-c s
+                             ; (swiper-isearch-thing-at-point) does
+                             ; now.  There are many *-at-point
+                             ; functions already here.  Maybe one is
+                             ; an inspiration some call emac's symbol-at-point.
+
+(use-package ivy-explorer
+  :after swiper
+  :config
+  (require 'ivy-explorer) ; needed?
+  ;; use ivy explorer for all file dialogs
+  (ivy-explorer-mode 1)
+  ;; not strictly necessary
+  (counsel-mode 1))
 
 (defun org-toggle-outline-visibility ()
   "Hides all subheadlines or restores original visibility before toggle.
@@ -2065,6 +2085,10 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
 ;;   (setq-default adaptive-wrap-extra-indent 0))
 ;;  (setq-default adaptive-wrap-extra-indent 2))
 
+;; turn fill-paragraph into a fill/unfill toggle
+(use-package unfill
+  :bind ([remap fill-paragraph] . unfill-toggle))
+
 ;; turn off the bell
 (setq bell-volume 0)
 (setq sound-alist nil)
@@ -2199,7 +2223,7 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
  '(recentf-max-saved-items 200)
