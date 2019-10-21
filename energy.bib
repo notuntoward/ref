@@ -8580,23 +8580,23 @@ Variable selection.},
 }
 
 @Article{Rolnick19climateChngMachLrn,
-  author        = {Rolnick, David and Donti, Priya L and Kaack, Lynn H and Kochanski, Kelly and Lacoste, Alexandre and Sankaran, Kris and Ross, Andrew Slavin and Milojevic-Dupont, Nikola and Jaques, Natasha and Waldman-Brown, Anna and others},
-  title         = {Tackling Climate Change with Machine Learning},
-  journal       = {arXiv preprint arXiv:1906.05433},
-  year          = {2019},
-  __markedentry = {[Scott:6]},
-  abstract      = {Climate change is one of the greatest challenges facing humanity, and we, as machine learning ex-
+  author   = {Rolnick, David and Donti, Priya L and Kaack, Lynn H and Kochanski, Kelly and Lacoste, Alexandre and Sankaran, Kris and Ross, Andrew Slavin and Milojevic-Dupont, Nikola and Jaques, Natasha and Waldman-Brown, Anna and others},
+  journal  = {arXiv preprint arXiv:1906.05433},
+  title    = {Tackling Climate Change with Machine Learning},
+  year     = {2019},
+  abstract = {Climate change is one of the greatest challenges facing humanity, and we, as machine learning ex-
 perts, may wonder how we can help. Here we describe how machine learning can be a powerful tool in
 reducing greenhouse gas emissions and helping society adapt to a changing climate. From smart grids
 to disaster management, we identify high impact problems where existing gaps can be filled by machine
 learning, in collaboration with other fields. Our recommendations encompass exciting research ques-
 tions as well as promising business opportunities. We call on the machine learning community to join
 the global effort against climate change.},
-  comment       = {Perhaps a good way to priortize research, careers and companies.  Very prestigious authors and organizations.
+  comment  = {Perhaps a good way to priortize research, careers and companies.  Very prestigious authors and organizations.
 
 Evernote:  https://www.evernote.com/l/AA0GvMVKTKFPNIkcjMXb9S8Kria6Bmx1XIk/},
-  file          = {:Rolnick19climateChngMachLrn.pdf:PDF},
-  url           = {https://arxiv.org/abs/1906.05433},
+  file     = {:Rolnick19climateChngMachLrn.pdf:PDF},
+  groups   = {[Scott:]},
+  url      = {https://arxiv.org/abs/1906.05433},
 }
 
 @Article{Aghabozorgi15tsClustDecRvw,
@@ -11980,12 +11980,11 @@ Keywords: Intraday market for electricity, fundamental price modeling},
 }
 
 @PhdThesis{Scolnik16binPredAccIncAndOpt_PhD,
-  author        = {Scolnik, Ryan},
-  title         = {Predictive Accuracy Measures for Binary Outcomes: Impact of Incidence Rate and Optimization Techniques},
-  school        = {Florida State University},
-  year          = {2016},
-  __markedentry = {[Scott:1]},
-  abstract      = {Evaluating the performance of models predicting a binary outcome can be done using a variety of
+  author    = {Scolnik, Ryan},
+  school    = {Florida State University},
+  title     = {Predictive Accuracy Measures for Binary Outcomes: Impact of Incidence Rate and Optimization Techniques},
+  year      = {2016},
+  abstract  = {Evaluating the performance of models predicting a binary outcome can be done using a variety of
 measures. While some measures intend to describe the model’s overall fit, others more accurately
 describe the model’s ability to discriminate between the two outcomes. If a model fits well but
 doesn’t discriminate well, what does that tell us? Given two models, if one discriminates well
@@ -12005,7 +12004,7 @@ yield unique parameter estimates and general asymptotic conditions. Using real a
 data to compare optimizing the area under the ROC curve to logistic regression further reveals the
 impact of incidence rate on the relationships, significant increases in achievable areas under the
 ROC curve and differences in conclusions about including a variable in a model.},
-  comment       = {Shows how incidence (rate of true positives) affects Brier score (see bookmarks, Section 3.4) and other metrics for probabilistic classification.  Also interesting in that it shows how many performance metrics are related, sometimes with equations.  .
+  comment   = {Shows how incidence (rate of true positives) affects Brier score (see bookmarks, Section 3.4) and other metrics for probabilistic classification.  Also interesting in that it shows how many performance metrics are related, sometimes with equations.  .
 
 * "incidence" means number of positive cases
 
@@ -12022,13 +12021,11 @@ AUC (area under ROC) vs. incidence
 * AUC doesn't have a unique solution
 * using for optimization can't rely on derivatives
 * when logistic regression fit with log lik and evaluated w/ AUC overall fit (must be AUC) and accuracy don't line up (p 81)
-* for low incidence cases, apparently suggest Nelder-Mead Simplex for logistic regression opt. or the method proposed in this thesis, I think AUCRanks
-
-
-},
-  file          = {:Scolnik16binPredAccIncAndOpt_PhD.pdf:PDF},
-  publisher     = {USA: Florida State University},
-  url           = {https://fsu.digital.flvc.org/islandora/object/fsu%3A360437},
+* for low incidence cases, apparently suggest Nelder-Mead Simplex for logistic regression opt. or the method proposed in this thesis, I think AUCRanks},
+  file      = {:Scolnik16binPredAccIncAndOpt_PhD.pdf:PDF},
+  groups    = {Scott:1},
+  publisher = {USA: Florida State University},
+  url       = {https://fsu.digital.flvc.org/islandora/object/fsu%3A360437},
 }
 
 @InProceedings{Habte14calMeasUncertRadiometric,
@@ -18360,22 +18357,22 @@ Preprint submitted to International Journal of Forecasting
 }
 
 @Article{Brownlee18whenRocPrecRec,
-  author        = {Jason Brownlee},
-  title         = {How and When to Use ROC Curves and Precision-Recall Curves for Classification in Python},
-  journal       = {Machine Learning Mastery Blog},
-  year          = {2018},
-  month         = aug,
-  __markedentry = {[Scott:1]},
-  abstract      = {It can be more flexible to predict probabilities of an observation belonging to each class in a classification problem rather than predicting classes directly.
+  author   = {Jason Brownlee},
+  journal  = {Machine Learning Mastery Blog},
+  title    = {How and When to Use ROC Curves and Precision-Recall Curves for Classification in Python},
+  year     = {2018},
+  month    = aug,
+  abstract = {It can be more flexible to predict probabilities of an observation belonging to each class in a classification problem rather than predicting classes directly.
 
 This flexibility comes from the way that probabilities may be interpreted using different thresholds that allow the operator of the model to trade-off concerns in the errors made by the model, such as the number of false positives compared to the number of false negatives. This is required when using models where the cost of one error outweighs the cost of other types of errors.
 
 Two diagnostic tools that help in the interpretation of probabilistic forecast for binary (two-class) classification predictive modeling problems are ROC Curves and Precision-Recall curves.
 
 In this tutorial, you will discover ROC Curves, Precision-Recall Curves, and when to use each to interpret the prediction of probabilities for binary classification problems.},
-  comment       = {A good reference for Precision Recall, ROC, and those terms I always confuse like "sentivity"},
-  file          = {:Brownlee18whenRocPrecRec.pdf:PDF},
-  url           = {https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/},
+  comment  = {A good reference for Precision Recall, ROC, and those terms I always confuse like "sentivity"},
+  file     = {:Brownlee18whenRocPrecRec.pdf:PDF},
+  groups   = {Scott:1},
+  url      = {https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/},
 }
 
 @Article{Bai16condCplaWindPowCrvFeat,
@@ -20119,15 +20116,15 @@ COMPARISON
 
 @InCollection{Verleysen05cursDimMinTser,
   author    = {Verleysen, Michel and Fran\c{c}ois, Damien},
-  title     = {The Curse of Dimensionality in Data Mining and Time Series Prediction},
   booktitle = {Computational Intelligence and Bioinspired Systems},
   publisher = {Springer Berlin Heidelberg},
+  title     = {The Curse of Dimensionality in Data Mining and Time Series Prediction},
   year      = {2005},
   editor    = {Cabestany, Joan and Prieto, Alberto and Sandoval, Francisco},
-  volume    = {3512},
-  series    = {Lecture Notes in Computer Science},
-  pages     = {758--770},
   isbn      = {978-3-540-26208-4},
+  pages     = {758--770},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {3512},
   abstract  = {Modern data analysis tools have to work on high-dimensional data, whose components are not independently distributed. High-dimensional spaces show surprising, counter-intuitive geometrical properties that have a large influence on the performances of data analysis tools. Among these properties, the concentration of the norm phenomenon results in the fact that Euclidean norms and Gaussian kernels, both commonly used in models, become inappropriate in high-dimensional spaces. This papers presents alternative distance measures and kernels, together with geometrical methods to decrease the dimension of the space. The methodology is applied to a typical time series prediction example.},
   comment   = {Simple p-Gaussian kernel and several distance preserving dimension reduction methods improve discrimination in high dim kernels. The time series example wasn't convincing but many later papers use the p-Gaussian.
 
@@ -20139,7 +20136,7 @@ Most well known high dim problems
 * but this is only one of the high dim problems...
 
 Paper goals
-* account for high dim dependencies, this avoiding a lot of model params
+* account for high dim dependencies, thus avoiding a lot of model params
 * adapt model to high dim case
 * reduce dimensions
 
@@ -23050,14 +23047,13 @@ But there are a lot of variants in this paper I kind of skimmed it quickly and d
 }
 
 @InProceedings{Ling03aucVsAccRank,
-  author        = {Ling, Charles X and Huang, Jin and Zhang, Harry and others},
-  title         = {AUC: a statistically consistent and more discriminating measure than accuracy},
-  booktitle     = {Ijcai},
-  year          = {2003},
-  volume        = {3},
-  pages         = {519--524},
-  __markedentry = {[Scott:1]},
-  abstract      = {Predictive accuracy has been used as the main and
+  author    = {Ling, Charles X and Huang, Jin and Zhang, Harry and others},
+  booktitle = {Ijcai},
+  title     = {AUC: a statistically consistent and more discriminating measure than accuracy},
+  year      = {2003},
+  pages     = {519--524},
+  volume    = {3},
+  abstract  = {Predictive accuracy has been used as the main and
 often only evaluation criterion for the predictive
 performance of classification learning algorithms.
 In recent years, the area under the ROC (Receiver
@@ -23075,13 +23071,14 @@ accuracy. Our result is quite significant since we
 formally prove that, for the first time, AUC is a bet-
 ter measure than accuracy in the evaluation of learn-
 ing algorithms.},
-  comment       = {Classifier AUC is generally more informative than accuracy (proportion of correctly predicted outcomes, I think) about the value of probabilities coming from binary classifiers -- in fact classifies trained to predict AUC can produce not only better AUC than accuracy-tuned classifers, but better accuracy as well.  
+  comment   = {Classifier AUC is generally more informative than accuracy (proportion of correctly predicted outcomes, I think) about the value of probabilities coming from binary classifiers -- in fact classifies trained to predict AUC can produce not only better AUC than accuracy-tuned classifers, but better accuracy as well.  
 
 This is because AUC assesses the accuracy of the rankings of classifier probabilities (see the very simple eq. 1, which will make computing AUC really easy).  However, a larger AUC doesn't always imply a lower errorrate (Table 3).
 
 However, they have some way I didn't read explaining how AUC is more consistent and discriminating than accuracy.},
-  file          = {:Ling03aucVsAccRank.pdf:PDF},
-  url           = {https://cling.csd.uwo.ca/papers/ijcai03.pdf},
+  file      = {:Ling03aucVsAccRank.pdf:PDF},
+  groups    = {Scott:1},
+  url       = {https://cling.csd.uwo.ca/papers/ijcai03.pdf},
 }
 
 @Electronic{Microsoft16predMaintPlaybook,
@@ -24962,24 +24959,24 @@ Keywords: Python, supervised learning, unsupervised learning, model selection},
 }
 
 @Article{Byrn16aucForProbFrcst,
-  author        = {Byrne, Simon},
-  title         = {A note on the use of empirical AUC for evaluating probabilistic forecasts},
-  journal       = {Electron. J. Statist.},
-  year          = {2016},
-  volume        = {10},
-  number        = {1},
-  pages         = {380--393},
-  __markedentry = {[Scott:1]},
-  abstract      = {Scoring functions are used to evaluate and compare partially probabilistic forecasts. We investigate the use of rank-sum functions such as empirical Area Under the Curve (AUC), a widely used measure of classification performance, as a scoring function for the prediction of probabilities of a set of binary outcomes. It is shown that the AUC is not generally a proper scoring function, that is, under certain circumstances it is possible to improve on the expected AUC by modifying the quoted probabilities from their true values. However with some restrictions, or with certain modifications, it can be made proper. },
-  comment       = {In general, the AUC isn't proper, but can be improved by adjusting the score.  
+  author    = {Byrne, Simon},
+  journal   = {Electron. J. Statist.},
+  title     = {A note on the use of empirical AUC for evaluating probabilistic forecasts},
+  year      = {2016},
+  number    = {1},
+  pages     = {380--393},
+  volume    = {10},
+  abstract  = {Scoring functions are used to evaluate and compare partially probabilistic forecasts. We investigate the use of rank-sum functions such as empirical Area Under the Curve (AUC), a widely used measure of classification performance, as a scoring function for the prediction of probabilities of a set of binary outcomes. It is shown that the AUC is not generally a proper scoring function, that is, under certain circumstances it is possible to improve on the expected AUC by modifying the quoted probabilities from their true values. However with some restrictions, or with certain modifications, it can be made proper.},
+  comment   = {In general, the AUC isn't proper, but can be improved by adjusting the score.  
 
 Under some constraints, it can be proper, though.
 * for example, if the forecaster knows the number of positive events, extreme tail events can be ruled out.},
-  doi           = {10.1214/16-EJS1109},
-  file          = {:Byrn16aucForProbFrcst.pdf:PDF},
-  fjournal      = {Electronic Journal of Statistics},
-  publisher     = {The Institute of Mathematical Statistics and the Bernoulli Society},
-  url           = {https://doi.org/10.1214/16-EJS1109},
+  doi       = {10.1214/16-EJS1109},
+  file      = {:Byrn16aucForProbFrcst.pdf:PDF},
+  fjournal  = {Electronic Journal of Statistics},
+  groups    = {Scott:1},
+  publisher = {The Institute of Mathematical Statistics and the Bernoulli Society},
+  url       = {https://doi.org/10.1214/16-EJS1109},
 }
 
 @Article{Gneiting07strictPropScore,
@@ -27012,21 +27009,21 @@ The future role of stationary electricity storage is perceived as highly uncerta
 }
 
 @Article{Johnstone12econValProbFrcstPortfolio,
-  author        = {Johnstone, D. J.},
-  title         = {Log-optimal economic evaluation of probability forecasts},
-  journal       = {Journal of the Royal Statistical Society: Series A (Statistics in Society)},
-  year          = {2012},
-  volume        = {175},
-  number        = {3},
-  pages         = {661-689},
-  __markedentry = {[Scott:1]},
-  abstract      = {Summary.  The commercial test of an expert's probability assessments is not that they are accurate in an abstract sense, but that they yield financial returns to decision makers. From this utilitarian standpoint, a model or forecaster is merely a font of cash pay-offs, like any other form of asset or security. The modern perspective in finance theory is that individual ‘securities’ (sources of cash pay-offs) must be valued in portfolio rather than of themselves. Applying portfolio methods to forecast evaluation, the theoretical worth of a forecast depends on its marginal contribution to the best available portfolio of securities. When considered within a log-optimal (maximum E[ log (wealth)]) portfolio, the value of an individual forecast (or forecaster) depends on both its expected cash pay-off and the covariance of its pay-off with those from all other available securities. In effect, portfolio theory rewards forecasters more for making accurate forecasts when other forecasters (or, more broadly, other sources of pay-offs) perform badly than when all or most forecasters do well. Conversely, the penalty for being wrong is reduced when other forecasters are right. This has the effect of promoting original thinking and unique (idiosyncratic) forecasting expertise. Herding by resort to industry standard models or routines is discouraged.},
-  comment       = {How compute the comparitive value of probabilistic forecasts within a portfolio of forecasts.},
-  doi           = {10.1111/j.1467-985X.2011.01011.x},
-  eprint        = {https://rss.onlinelibrary.wiley.com/doi/pdf/10.1111/j.1467-985X.2011.01011.x},
-  file          = {:Johnstone12econValProbFrcstPortfolio.pdf:PDF},
-  keywords      = {Economic forecast evaluation, Portfolio theory, Probability forecast},
-  url           = {https://rss.onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-985X.2011.01011.x},
+  author   = {Johnstone, D. J.},
+  journal  = {Journal of the Royal Statistical Society: Series A (Statistics in Society)},
+  title    = {Log-optimal economic evaluation of probability forecasts},
+  year     = {2012},
+  number   = {3},
+  pages    = {661-689},
+  volume   = {175},
+  abstract = {Summary.  The commercial test of an expert's probability assessments is not that they are accurate in an abstract sense, but that they yield financial returns to decision makers. From this utilitarian standpoint, a model or forecaster is merely a font of cash pay-offs, like any other form of asset or security. The modern perspective in finance theory is that individual ‘securities’ (sources of cash pay-offs) must be valued in portfolio rather than of themselves. Applying portfolio methods to forecast evaluation, the theoretical worth of a forecast depends on its marginal contribution to the best available portfolio of securities. When considered within a log-optimal (maximum E[ log (wealth)]) portfolio, the value of an individual forecast (or forecaster) depends on both its expected cash pay-off and the covariance of its pay-off with those from all other available securities. In effect, portfolio theory rewards forecasters more for making accurate forecasts when other forecasters (or, more broadly, other sources of pay-offs) perform badly than when all or most forecasters do well. Conversely, the penalty for being wrong is reduced when other forecasters are right. This has the effect of promoting original thinking and unique (idiosyncratic) forecasting expertise. Herding by resort to industry standard models or routines is discouraged.},
+  comment  = {How compute the comparitive value of probabilistic forecasts within a portfolio of forecasts.},
+  doi      = {10.1111/j.1467-985X.2011.01011.x},
+  eprint   = {https://rss.onlinelibrary.wiley.com/doi/pdf/10.1111/j.1467-985X.2011.01011.x},
+  file     = {:Johnstone12econValProbFrcstPortfolio.pdf:PDF},
+  groups   = {Scott:1},
+  keywords = {Economic forecast evaluation, Portfolio theory, Probability forecast},
+  url      = {https://rss.onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-985X.2011.01011.x},
 }
 
 @Article{Wang07autoRegrOrderLasso,
@@ -27843,21 +27840,20 @@ Dong17resPVdeployFrcst
 }
 
 @Article{Todter12genIgnCRPS,
-  author        = {T{\"o}dter, Julian and Ahrens, Bodo},
-  title         = {Generalization of the Ignorance Score: Continuous Ranked Version and Its Decomposition.},
-  journal       = {Monthly Weather Review},
-  year          = {2012},
-  volume        = {140},
-  number        = {6},
-  __markedentry = {[Scott:1]},
-  abstract      = {The Brier score (BS) and its generalizations to the multicategory ranked probability score (RPS) and to the continuous ranked probability score (CRPS) are the prominent verification measures for probabilistic forecasts. Particularly, their decompositions into measures quantifying the reliability, resolution, and uncertainty of the forecasts are attractive. Information theory sets up the natural framework for forecast verification. Recently, it has been shown that the BS is a second-order approximation of the information-based ignorance score (IGN), which also contains easily interpretable components and can also be generalized to a ranked version (RIGN). Here, the IGN, its generalizations, and decompositions are systematically discussed in analogy to the variants of the BS. Additionally, a continuous ranked IGN (CRIGN) is introduced in analogy to the CRPS. The applicability and usefulness of the conceptually appealing CRIGN are illustrated, together with an algorithm to evaluate its components reliability, resolution, and uncertainty for ensemble-generated forecasts.},
-  comment       = {Another decomposition of CRPS. Matlab available here:
+  author    = {T{\"o}dter, Julian and Ahrens, Bodo},
+  journal   = {Monthly Weather Review},
+  title     = {Generalization of the Ignorance Score: Continuous Ranked Version and Its Decomposition.},
+  year      = {2012},
+  number    = {6},
+  volume    = {140},
+  abstract  = {The Brier score (BS) and its generalizations to the multicategory ranked probability score (RPS) and to the continuous ranked probability score (CRPS) are the prominent verification measures for probabilistic forecasts. Particularly, their decompositions into measures quantifying the reliability, resolution, and uncertainty of the forecasts are attractive. Information theory sets up the natural framework for forecast verification. Recently, it has been shown that the BS is a second-order approximation of the information-based ignorance score (IGN), which also contains easily interpretable components and can also be generalized to a ranked version (RIGN). Here, the IGN, its generalizations, and decompositions are systematically discussed in analogy to the variants of the BS. Additionally, a continuous ranked IGN (CRIGN) is introduced in analogy to the CRPS. The applicability and usefulness of the conceptually appealing CRIGN are illustrated, together with an algorithm to evaluate its components reliability, resolution, and uncertainty for ensemble-generated forecasts.},
+  comment   = {Another decomposition of CRPS. Matlab available here:
 https://github.com/itszootime/emulatorization-api/blob/master/matlab/validation/crps_ign.m},
-  doi           = {10.1175/MWR-D-11-00266.1},
-  file          = {Todter12genIgnCRPS.pdf:Todter12genIgnCRPS.pdf:PDF},
-  groups        = {Test, doReadWPV_1},
-  owner         = {sotterson},
-  timestamp     = {2014-02-28},
+  doi       = {10.1175/MWR-D-11-00266.1},
+  file      = {Todter12genIgnCRPS.pdf:Todter12genIgnCRPS.pdf:PDF},
+  groups    = {Test, doReadWPV_1, Scott:1},
+  owner     = {sotterson},
+  timestamp = {2014-02-28},
 }
 
 @Article{Jewson04problemBrierScore,
@@ -31758,20 +31754,18 @@ Both a quality of fit method and a way to estimate heavy tails in quantile regre
 }
 
 @Article{Benedetti10scoreFrcstVerifRare,
-  author        = {Benedetti, Riccardo},
-  title         = {Scoring rules for forecast verification},
-  journal       = {Monthly Weather Review},
-  year          = {2010},
-  volume        = {138},
-  number        = {1},
-  pages         = {203--211},
-  __markedentry = {[Scott:1]},
-  abstract      = {The problem of probabilistic forecast verification is approached from a theoretical point of view starting from three basic desiderata: additivity, exclusive dependence on physical observations (“locality”), and strictly proper behavior. By imposing such requirements and only using elementary mathematics, a univocal measure of forecast goodness is demonstrated to exist. This measure is the logarithmic score, based on the relative entropy between the observed occurrence frequencies and the predicted probabilities for the forecast events. Information theory is then used as a guide to choose the scoring-scale offset for obtaining meaningful and fair skill scores. Finally the Brier score is assessed and, for single-event forecasts, its equivalence to the second-order approximation of the logarithmic score is shown.
+  author   = {Benedetti, Riccardo},
+  journal  = {Monthly Weather Review},
+  title    = {Scoring rules for forecast verification},
+  year     = {2010},
+  number   = {1},
+  pages    = {203--211},
+  volume   = {138},
+  abstract = {The problem of probabilistic forecast verification is approached from a theoretical point of view starting from three basic desiderata: additivity, exclusive dependence on physical observations (“locality”), and strictly proper behavior. By imposing such requirements and only using elementary mathematics, a univocal measure of forecast goodness is demonstrated to exist. This measure is the logarithmic score, based on the relative entropy between the observed occurrence frequencies and the predicted probabilities for the forecast events. Information theory is then used as a guide to choose the scoring-scale offset for obtaining meaningful and fair skill scores. Finally the Brier score is assessed and, for single-event forecasts, its equivalence to the second-order approximation of the logarithmic score is shown.
 
 The large part of the presented results are far from being new or original, nevertheless their use still meets with some resistance in the weather forecast community. This paper aims at providing a clear presentation of the main arguments for using the logarithmic score.
-Keywords: Forecast verification; Probability forecast/models; Quality assurance/controls },
-  comment       = {
-Arguments for a logarithmic (ignorance) score
+Keywords: Forecast verification; Probability forecast/models; Quality assurance/controls},
+  comment  = {Arguments for a logarithmic (ignorance) score
 * Properties considered essential for a scoring rule (desiderata)
    1. Additivity:  the score of a new forecast result adds (averages, I think) onto the total score of the past results, with equal weight across all samples, I think
    2. Locality: The score depends only on the predicted probability of the actual outcome -- the rest of the predicted distribution doesn't matter.  This means that, the Brier Score and CRPS are non-local.
@@ -31792,8 +31786,9 @@ Log Score (AS) vs. Brier Score (BS)
 
 
 For more about Brier Score problems: Jewson04problemBrierScore},
-  file          = {:Benedetti10scoreFrcstVerifRare.pdf:PDF},
-  url           = {https://journals.ametsoc.org/doi/full/10.1175/2009MWR2945.1},
+  file     = {:Benedetti10scoreFrcstVerifRare.pdf:PDF},
+  groups   = {Scott:1},
+  url      = {https://journals.ametsoc.org/doi/full/10.1175/2009MWR2945.1},
 }
 
 @Article{Andric96polarWvlt,
@@ -36973,6 +36968,20 @@ The attached paper is a technote from 2005},
   publisher = {Taylor \& Francis},
 }
 
+@Article{Lindley00philOfStat,
+  author    = {Lindley, Dennis V},
+  title     = {The philosophy of statistics},
+  journal   = {Journal of the Royal Statistical Society: Series D (The Statistician)},
+  year      = {2000},
+  volume    = {49},
+  number    = {3},
+  pages     = {293--337},
+  abstract  = {This paper puts forward an overall view of statistics.  It is argued that statistics is the study of uncertainty.  The many demonstrations that uncertainties can only combine according to the rules of the probability calculus are summarized. The conclusion is that statistical inference is firmly based on probability alone. Progress is therefore dependent on the construction of a probability model; methods for doing this are considered. It is argued that the probabilities are personal. The roles of likelihood and exchangeability are explained. Inference is only of value if it can be used, so the extension to decision analysis, incorporating utility, is related to risk and to the use of statistics in science and law. The paper has been writtenin the hope that it will be intelligible to all who are interestedin statistics.  Keywords: Conglomerability; Data analysis; Decision analysis; Exchangeability; Law; Likelihood; Models; Personal probability; Risk; Scientific method; Utility},
+  comment   = {Well written overview of uncertainty, probability, risk, etc.  Maybe read before CPR class on probability.},
+  file      = {:Lindley00philOfStat.pdf:PDF},
+  publisher = {Wiley Online Library},
+}
+
 @InProceedings{Baccald07genParDirCoher,
   author    = {Baccald, L.A. and de Medicina, F.},
   title     = {Generalized Partial Directed Coherence},
@@ -38600,6 +38609,51 @@ http://www.evernote.com/l/AA0V1xHzL29PgYhOrFprhksnanhADGk1XAI/},
   publisher = {National Acad Sciences},
   timestamp = {2017.04.26},
   url       = {http://www.pnas.org/content/113/48/13570.abstract},
+}
+
+@InProceedings{Lundberg17interpModlPred,
+  author        = {Lundberg, Scott M and Lee, Su-In},
+  title         = {A unified approach to interpreting model predictions},
+  booktitle     = {Advances in Neural Information Processing Systems},
+  year          = {2017},
+  pages         = {4765--4774},
+  __markedentry = {[scott:6]},
+  abstract      = {Understanding why a model makes a certain
+                  prediction can be as crucial as the prediction’s
+                  accuracy in many applications. However, the highest
+                  accuracy for large modern datasets is often achieved
+                  by complex models that even experts struggle to
+                  interpret, such as ensemble or deep learning models,
+                  creating a tension between accuracy and
+                  interpretability. In response, various methods have
+                  recently been proposed to help users interpret the
+                  predictions of complex models, but it is often
+                  unclear how these methods are related and when one
+                  method is preferable over another. To address this
+                  problem, we present a unified framework for
+                  interpreting predictions, SHAP (SHapley Additive
+                  exPlanations). SHAP assigns each feature an
+                  importance value for a particular prediction. Its
+                  novel components include: (1) the identification of
+                  a new class of additive feature importance measures,
+                  and (2) theoretical results showing there is a
+                  unique solution in this class with a set of
+                  desirable properties. The new class unifies six
+                  existing methods, notable because several recent
+                  methods in the class lack the proposed desirable
+                  properties. Based on insights from this unification,
+                  we present new methods that show improved
+                  computational performance and/or better consistency
+                  with human intuition than previous approaches.},
+  comment       = {Explaining a complex model w/ a simpler one, also a review of current methods.  Has code and a couple Medium Towards DS articles.
+
+code: https://github.com/slundberg/shap
+Medum articles
+https://www.evernote.com/l/AA2l1dRm2WBJPY1j8w6RyoPyCAJk-xH5B0I/
+https://www.evernote.com/l/AA1sBGonQh1GDac8BlJJ9a0iWSDqMCZ4if0/
+},
+  file          = {:Lundberg17interpModlPred.pdf:PDF},
+  url           = {https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions},
 }
 
 @Article{Zhou14graphEstMatNormGEMNI,
@@ -43495,13 +43549,12 @@ Good comparison of exponential weighting and ARIMA.  Lots of other stuff too.
 }
 
 @Article{Buja05lossFuncBinClassProb,
-  author        = {Buja, Andreas and Stuetzle, Werner and Shen, Yi},
-  title         = {Loss functions for binary class probability estimation and classification: Structure and applications},
-  journal       = {Working draft, November},
-  year          = {2005},
-  volume        = {3},
-  __markedentry = {[Scott:1]},
-  abstract      = {What are the natural loss functions or fitting criteria for binary class probability
+  author   = {Buja, Andreas and Stuetzle, Werner and Shen, Yi},
+  journal  = {Working draft, November},
+  title    = {Loss functions for binary class probability estimation and classification: Structure and applications},
+  year     = {2005},
+  volume   = {3},
+  abstract = {What are the natural loss functions or fitting criteria for binary class probability
 estimation? This question has a simple answer: so-called “proper scoring rules”, that
 is, functions that score probability estimates in view of data in a Fisher-consistent
 manner. Proper scoring rules comprise most loss functions currently in use: log-loss,
@@ -43526,14 +43579,15 @@ Keywords: Boosting, stagewise regression, machine learning, proper scoring rules
 proper score functions, information measures, entropy, Gini index, Bregman distances, link
 functions, binary response data, stumps, tree-based classification, CART, logistic regression,
 Fisher scoring, iteratively reweighted least squares, stagewise fitting.},
-  comment       = {What proper binary class prediction probability scoring rules have in common and other intersting points:
+  comment  = {What proper binary class prediction probability scoring rules have in common and other intersting points:
 
 * Proper scoring rules can be taylored to tune algorithms with arbitrary costs e.g. for false or missed detect
 * It is shown how boosting can generalize well for classification even though its estimation of probabilities is poor
 * IRLS can be used for boosting
 * tailored proper scores can be used to estimate tree-based models.},
-  file          = {:Buja05lossFuncBinClassProb.pdf:PDF},
-  url           = {http://www-stat.wharton.upenn.edu/~buja/PAPERS/paper-proper-scoring.pdf},
+  file     = {:Buja05lossFuncBinClassProb.pdf:PDF},
+  groups   = {Scott:1},
+  url      = {http://www-stat.wharton.upenn.edu/~buja/PAPERS/paper-proper-scoring.pdf},
 }
 
 @Book{Mai14financeEngCopulasExpln,
@@ -45479,6 +45533,21 @@ KDE better than spline in some ways (spline QR compared to is: Nielsen06quantReg
   url         = {http://www.dis.anl.gov/projects/windpowerforecasting.html},
 }
 
+@Book{Davidson-Pilon15bayesMethHackers,
+  author    = {Davidson-Pilon, Cameron},
+  publisher = {Addison-Wesley Professional},
+  title     = {Bayesian methods for hackers: probabilistic programming and Bayesian inference},
+  year      = {2015},
+  abstract  = {You are a skilled programmer, but bugs still slip into your code. After a particularly difficult implementation of an algorithm, you decide to test your code on a trivial example. It passes. You test the code on a harder problem. It passes once again. And it passes the next, even more difficult, test too! You are starting to believe that there may be no bugs in this code...
+
+If you think this way, then congratulations, you already are thinking Bayesian! Bayesian inference is simply updating your beliefs after considering new evidence. A Bayesian can rarely be certain about a result, but he or she can be very confident. Just like in the example above, we can never be 100% sure that our code is bug-free unless we test it on every possible problem; something rarely possible in practice. Instead, we can test it on a large number of problems, and if it succeeds we can feel more confident about our code, but still not certain. Bayesian inference works identically: we update our beliefs about an outcome; rarely can we be absolutely sure unless we rule out all other alternatives.},
+  comment   = {Open source book on Bayesian Methods, with Python Code and Jupyter Notebooks.  Uses PyMC a lot.
+
+Book and Notebooks on GitHub
+https://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers},
+  groups    = {Scott:6},
+}
+
 @Standard{06IEEEcurrentTempOvrhdCond,
   title        = {Draft Standard for Calculating the Current-Temperature of Bare Overhead Conductors},
   organization = {IEEE},
@@ -46808,6 +46877,15 @@ http://blogs.msdn.com/b/johnguin/archive/2014/03/14/books-on-my-reading-list-rig
   owner     = {sotterson},
   timestamp = {2014.04.26},
   url       = {http://www.greenteapress.com/thinkbayes/},
+}
+
+@Article{Drakos18mlEvalMetrics,
+  author  = {Georgios Drakos},
+  title   = {How to select the Right Evaluation Metric for Machine Learning Models: Part 1 Regression Metrics},
+  journal = {Towards Data Science (Medium)},
+  year    = {2018},
+  file    = {:Drakos18mlEvalMetrics.pdf:PDF},
+  url     = {https://towardsdatascience.com/how-to-select-the-right-evaluation-metric-for-machine-learning-models-part-1-regrression-metrics-3606e25beae0},
 }
 
 @Misc{Drechsler11multiImputeSlides,
@@ -51240,22 +51318,22 @@ http://www.rerinfo.ca/english/publications/pubSESCI2003PVToolbox.html},
 }
 
 @PhdThesis{Thorey17ensProbPVfrcstCRPSphdthesis,
-  author        = {Thorey, Jean},
-  title         = {{Ensemble forecasting using sequential aggregation for photovoltaic power applications}},
-  school        = {{Universit{\'e} Pierre et Marie Curie - Paris VI}},
-  year          = {2017},
-  type          = {Theses},
-  month         = Sep,
-  __markedentry = {[Scott:1]},
-  comment       = {Produces a probabilistic PV forecast by aggregates an ensemble of determinsitic NWP-based PV forecasts and optimizing something w.r.t. CRPS.  Could be used for PV portfolio/ensemble forecasting or for converting decision tree forecasts to a calibrated probabilstic forecast.
+  author      = {Thorey, Jean},
+  school      = {{Universit{\'e} Pierre et Marie Curie - Paris VI}},
+  title       = {{Ensemble forecasting using sequential aggregation for photovoltaic power applications}},
+  year        = {2017},
+  month       = Sep,
+  type        = {Theses},
+  comment     = {Produces a probabilistic PV forecast by aggregates an ensemble of determinsitic NWP-based PV forecasts and optimizing something w.r.t. CRPS.  Could be used for PV portfolio/ensemble forecasting or for converting decision tree forecasts to a calibrated probabilstic forecast.
 
 * notes that CRPS is not local, but justifies using it},
-  file          = {:Thorey17ensProbPVfrcstCRPSphdthesis.pdf:PDF},
-  hal_id        = {tel-01697133},
-  hal_version   = {v2},
-  keywords      = {Probabilistic forecasting ; Photovoltaic power ; Ensemble forecasting ; Sequential aggregation ; CRPS ; Machine learning ; Apprentissage statistique ; Photovolta{\"i}que ; Pr{\'e}vision d'ensemble ; Pr{\'e}vision probabilistique ; Ag{\'e}gation s{\'e}quentielle},
-  number        = {2017PA066526},
-  url           = {https://hal.inria.fr/tel-01697133},
+  file        = {:Thorey17ensProbPVfrcstCRPSphdthesis.pdf:PDF},
+  groups      = {Scott:1},
+  hal_id      = {tel-01697133},
+  hal_version = {v2},
+  keywords    = {Probabilistic forecasting ; Photovoltaic power ; Ensemble forecasting ; Sequential aggregation ; CRPS ; Machine learning ; Apprentissage statistique ; Photovolta{\"i}que ; Pr{\'e}vision d'ensemble ; Pr{\'e}vision probabilistique ; Ag{\'e}gation s{\'e}quentielle},
+  number      = {2017PA066526},
+  url         = {https://hal.inria.fr/tel-01697133},
 }
 
 @Article{Thrun00Reinforcementlearningintroduction,
@@ -52002,6 +52080,10 @@ Related article: Zhu12multiVaryCfsFncResp},
 
 @Comment{jabref-meta: grouping:
 0 AllEntriesGroup:;
+1 StaticGroup:Markings\;2\;1\;\;\;\;;
+2 StaticGroup:Scott:1\;2\;1\;\;\;\;;
+2 StaticGroup:Scott:6\;2\;1\;\;\;\;;
+2 StaticGroup:[Scott:]\;2\;1\;\;\;\;;
 1 StaticGroup:Markings\;2\;1\;\;\;\;;
 2 StaticGroup:Scott:6\;2\;1\;\;\;\;;
 2 StaticGroup:[Scott:]\;2\;1\;\;\;\;;

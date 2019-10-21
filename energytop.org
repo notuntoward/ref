@@ -149,6 +149,8 @@
 *** [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop Intro Book]]
 *** [[file:energy.bib::Agresti07introCategDatAnl][Agresti 2007: Introduction Categorical Data Analysis]] (good)
 *** [[file:energy.bib::Legler19broadenGLMmultiLev][Legler & Roback 2019: Broadening, GLM and Multilev Models]]
+*** [[file:energy.bib::Davidson-Pilon15bayesMethHackers][Davidson-Pilon 2015: Bayesian Methods Hackers]]
+*** [[file:energy.bib::Lindley00philOfStat][Lindley 2000 Philosophy of Statistics]]
 *** [[Books w/ source code]]
 *** Wind energy books I could buy
     these three looked good, looking at amazon.com on 9/6/2011
@@ -258,7 +260,7 @@
 
     Used for node splitting in random forest classifiers.  See the linked-to pdf.  This is different from the Gini equality coefficient.
 
-*** R-squared
+*** <<R-squared>>
     From: [[http://blog.minitab.com/blog/adventures-in-statistics-2/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit][Regression Analysis: How Do I Interpret R-squared and Assess the Goodness-of-...]]
 
     varT = total variation of target variable
@@ -332,12 +334,15 @@
 
 *** [[http://en.wikipedia.org/wiki/Elementary_symmetric_polynomial][Elementary symmetric polynomial]]:  products expanded into sums
 *** [[http://www.investopedia.com/terms/b/bidprice.asp][bid]]: max price a buyer will pay
-*** ROC, AUC, F-measure, ...
+*** ROC, AUC, F-measure,.
     <<ROC, AUC, F-measure, ...>>
     From: [[cite:Fawcett06introROCanalysis][Fawcett 2006: ROC]] intro
      and: [[cite:Powers11evalPrecRecFrocEtc][Powers 2011: Evaluation]] prec/rec f-number, ROC, etc.
      and: [[cite:Davis06relationshipPrecisionRecall][Davis & Goadrich 2006: Precision Recall ROC]]
-     and: [[http://www.evernote.com/l/AA2H_ee0T0VHSKLRrTw3rwSReABMBCYbZgs/][Computing Classification Evaluation Metrics in R]]
+     and: [[http://www.evernote.com/l/AA2H_ee0T0VHSKLRrTw3rwSReABMBCYbZgs/][Computing Classification Evaluation Metrics in .. 
+
+    Which to use is partly problem-domain specific.  
+    See e.g [[https://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]]
 
 ***** ROC curve: precision vs. recall
 ***** AUC meaures (on ROC or PR curves)
@@ -843,6 +848,7 @@
 ***** [[http://www.amazon.com/Practical-Neural-Network-Recipes-C/dp/0124790402/ref%3Dpd_sim_b_3][Practical Neural Network Recipes in C++]]
 ***** [[http://www.amazon.com/Signal-Image-Processing-Neural-Networks/dp/0471049638/ref%3Dpd_sim_b_1][Signal and Image Processing With Neural Networks: A C++ Sourcebook/Book and 3 1/2 Disk]]
 ***** [[http://www.iau.dtu.dk/nnspringer.html][Modelling and Control of Dynamic Systems ]]
+***** [[file:energy.bib::Davidson-Pilon15bayesMethHackers][Davidson-Pilon 2015: Bayesian Methods Hackers]]
 ***** See also: [[Books]]
 *** Lists of source code
 ***** Good source code [[http://ad.informatik.uni-freiburg.de/lehre/ss97/neuronale-netze/faq/7.html#questions][list]]
@@ -7010,6 +7016,7 @@ variables will be preferred, when possible.
 ******* Also: [[Multidimensional CRPS]]
 ***** <<Forecast Expectiles>>
 ******* Expectile vs. quantile score: [[cite:Ehm16quantileExpectileScrFrcst][Ehm et al. 2016: Quantile, Expectile Score Forecasts]]
+***** [[file:energy.bib::Drakos18mlEvalMetrics][Drakos 2018: Select Right Evaluation Metrics]]
 ***** [[file:energy.bib::Mohrlen19selectRESfrcstRecmnd][Mohrlen et al. 2019: Recommended Prctcs RES frcst select]]
 ***** [[cite:Bessa12adaptQuantCopulaFrcst][Bessa et al. 2012: Time Adaptive Quantile Copula]]
 ***** [[file:energytop.org::*Classification%20Metrics%20under%20Class%20Imbalance][Classification Metrics under Class Imbalance]]
@@ -7141,6 +7148,10 @@ variables will be preferred, when possible.
 ********* [[cite:Hodge16IntroWndSolrFrcstVal][Hodge 2016: Introduction Wind Solar Power Forecasting]]
 ********* [[cite:Hodge15ValImprvShrtWndFrcst][Hodge et al. 2015: Value Improved Short]]
 ********* [[cite:USDOE16solFrcstMaxGridVal][USDOE 2016: Solar Forecasting val Grid Cost and Props]]
+***** <<Interpretable regression metrics>>
+******* [[R-squared]]
+******* [[Kendall vs. Spearman]]
+******* [[Partial Correlation]]
 ***** also [[Regime learning]]
 ***** also [[Deviance]] (for GLMs)
 ***** also [[Feature Selection Quality Metrics]]
@@ -9828,7 +9839,8 @@ later corrected by greg heath:
 ***** [[cite:Liu11confWgtKNNimbal][Liu & Chawla 2011: Class Imbal weighted KNN]]
 ***** [[http://www.evernote.com/l/AA2H_ee0T0VHSKLRrTw3rwSReABMBCYbZgs/][Computing Classification Evaluation Metrics in R]]
 ***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (discusses ROC stats)
-***** See also [[*ROC, AUC, F-measure, ...][ROC, AUC, F-measure, ...]] (for which metric to use for class-imbalanced problems)
+***** also [[*ROC, AUC, F-measure, ...][ROC, AUC, F-measure, ...]] (for which metric to use for class-imbalanced problems)
+***** also [[Learning Classifier under Class Imbalance]]
 *** <<Learning Classifier under Class Imbalance>>
 ***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (recipie for learning under)
 ***** TODO Python resampling library: [[file:energy.bib::Lemaitre17imbalanced-learnPyLib][Lemaitre et al. 2017: Imbalanced Lrn]]
@@ -12200,6 +12212,21 @@ TOTO: read Fan16* for an overview
       (recommended in  [[cite:Karpathy16deepReinfLrnPongPix][Karpathy 2016: Deep Reinforcement Learning]])
 ***** TODO [[cite:Karpathy16deepReinfLrnPongPix][Karpathy 2016: Deep Reinforcement Learning]] Pong Pix Blog
 *** see also [[Deep Learning]]
+* Interpretable Models
+*** Youtube: [[https://www.youtube.com/watch?v=UBiNzVfv3L4][Fast, flexible, and interpretable regression modeling, Daniela Witten]]
+    Piecewise constant LASSO that's fast and good for high dim problems.
+*** <<SHAP Interpretable Models>>
+
+    Explains the result of a complicated model with a simpler model, has code
+
+***** [[file:energy.bib::Lundberg17interpModlPred][Lundberg & Lee 2017: Unif Interp Models w/ code]]
+
+***** [[https://www.evernote.com/l/AA1sBGonQh1GDac8BlJJ9a0iWSDqMCZ4if0/][How to avoid the Machine Learning blackbox with SHAP]]
+***** [[https://www.evernote.com/l/AA2l1dRm2WBJPY1j8w6RyoPyCAJk-xH5B0I/][Interpretable Machine Learning with XGBoost]]
+*** [[Interpretable regression metrics]]
+*** [[Graph Networks]]
+*** [[file:energy.bib::Nathans12mlrVarImp][Nathans et al. 2012: Interpreting var imp, MLR and PCA]]
+*** [[file:energy.bib::Gill01interpIntrctHierGLM][Gill 2001: Interpreting]] interactions, GLM
 * <<My Optimization Learning Path>>
   Stuff I should learn about for electricity system optimization
 
