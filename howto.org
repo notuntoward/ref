@@ -196,6 +196,9 @@
 *********** it is said that visual line mode slows down swiper
 ********* TRY make an <<ivy gridmode>> like [[https://github.com/larkery/ido-grid-mode.el][ido-grid-mode]]
 
+          I [[https://github.com/abo-abo/swiper/issues/962][asked &]] commenter suggested that [[https://github.com/clemera/ivy-explorer][ivy-explorer]] might be what I want.
+          I couldn't get it to work after a brief try on 10/13/19
+          
           o ivy grid would be especially nice in M-x (although counsel-M-x does show keys).  I asked (see [[Swiper]]).
 
           gridmode is more efficient. I asked if ivy could do this, and abo-abo said [[https://github.com/abo-abo/swiper/issues/962]["No, but try ivy-format-function"]]
@@ -1080,6 +1083,7 @@
 ***** <<org-brain>>
       Concept mapping in emacs, new project in March, 2017
 ******* [[https://github.com/Kungsgeten/org-brain][GitHub - Kungsgeten/org-brain: Org-mode wiki + concept-mapping]]
+******* Inspired by the expensive: [[The Brain]]
 ******* Also: [[Knowledge as Graphs]]
 ***** org mode table math
       See: [[http://orgmode.org/org.html#Advanced-features][Advanced-features]]
@@ -2746,6 +2750,28 @@ Strike-through: nil
 ********* [[https://stackoverflow.com/questions/29809061/how-to-properly-setup-jedi-with-elpy-in-emacs][python - How to properly setup Jedi with elpy in emacs?]]
 ********* [[https://github.com/jorgenschaefer/elpy/wiki/Configuration][elpy Configuration · jorgenschaefer/elpy]]
 ******* [[elpy vs. anaconda-mode]]
+******* <<elpy snippets>>
+
+        elpy has lots of function/class/import templates that you can complete by typing TAB.  e.g.
+
+        ___init___
+        ___call___
+        ___add___
+        (and more)
+
+        As well as:
+
+        enc: Encoding statement
+        env: Hashbang statement
+        from: Import statement
+        pdb: Snippet to run pdb at the current script position
+        super: Super statement to call parent methods
+        def: Function definition
+        class: Class definition
+        defs: Class method definition
+
+        Compare with [[elpygen]]
+
 ******* <<refactoring in elpy>>
         From: [[https://elpy.readthedocs.io/en/latest/ide.html#refactoring][IDE Features — Elpy]]
 
@@ -2770,22 +2796,32 @@ Strike-through: nil
 
           M-s _ C-r <RET> symbol <RET>
 
-******* refactoring / code gen with pygen
-        From: [[https://github.com/jackcrawley/pygen][JackCrawley/pygen: Python code generation in Emacs]]
+********* also [[pygen code refactoring]]
+***** <<elpygen>>
+      From: [[https://github.com/vkazanov/elpygen][elpygen: Generate Python function/method stub]]...
+      
+      Makes a func or class method definition stub w/ one key press.  /Maybe/ I'd use this.
 
-        Handy: Caonverts selected expression to a variable, makes a variable an input parameter, makes a class, etc.
+      Compare with [[elpy snippets]]
+
+***** <<pygen code refactoring>>
+      From: [[https://github.com/jackcrawley/pygen][JackCrawley/pygen: Python code generation in Emacs]]
+
+      Handy: Converts selected expression to a variable, makes a variable an input parameter, makes a class, etc.
+
+      *However*: author migrated to PyCharm, [[https://github.com/jackcrawley/pygen][isn't updating it]] anymore.
         
-        o require elpy and python_mode packages
-******* <<Autopep8>> (GIT: [[https://github.com/hhatto/autopep8][hhatto/autopep8]])
-        This is a way to make emacs automatically force your code to the [[Python PEP8]] standard.
+      o requires [[elpy]] and python_mode packages
+***** <<Autopep8>> (GIT: [[https://github.com/hhatto/autopep8][hhatto/autopep8]])
+      This is a way to make emacs automatically force your code to the [[Python PEP8]] standard.
 
-********* configuring emacs autopep8
-        In my .emacs, inside of (use-package elp *), I have:
+******* configuring emacs autopep8
+      In my .emacs, inside of (use-package elp *), I have:
 
-        (if autopep8bin
-          (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+      (if autopep8bin
+        (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
 
-********* [[Preventing PEP8 from flagging a non-top-of-file import]]
+******* [[Preventing PEP8 from flagging a non-top-of-file import]]
 
 ***** [[https://github.com/abo-abo/lpy][abo-abo/lpy: Minimal Python IDE for GNU Emacs]]
 ***** <<Virtual Environments And Emacs>>
@@ -2875,6 +2911,20 @@ Strike-through: nil
 ********* also [[EIN -- Emacs IPython Notebook]]
 ******* also [[Emacs and Jupyter Notebooks]]
 ***** [[https://vxlabs.com/2017/11/30/run-code-on-remote-ipython-kernels-with-emacs-and-orgmode/][Run code on remote ipython kernels with Emacs and orgmode. – vxlabs]]
+***** Python comment wrapping in Emacs
+      From: [[https://stackoverflow.com/questions/2214199/how-to-use-emacs-to-write-comments-with-proper-indentation-line-length-and-wra][How to use Emacs to write comments with proper indentation ...]]
+      
+       In my .emacs file, I've done this, and it works automatically:
+
+       (require 'newcomment)
+       (add-hook 'python-mode-hook (progn
+                             (setq comment-auto-fill-only-comments 1)
+                             (setq-default auto-fill-function 'do-auto-fill)))
+
+       =M-q=: will then re-wrap either # or """ comments
+
+       I didn't need to enable auto-fill-mode but it seems like I should have.  Is this done by default or somewhere in elpy, etc. ?
+
 *** Ruby in Emacs
 ***** debugger
 
@@ -8153,6 +8203,11 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
 ********* also does lists, etc.
 ********* could be modified to use one of the other tricks above
+***** getting a full dimensioned column from a 2D numpy array
+
+      Problem:  If X an nXm 2D array, then X[:,k].shape is not (n,1) but instead (n,).  This makes X[:,k] fail in all kinds of functions, for example, plt.scatter().
+
+      Solution:  ???
 
 *** <<Windows Python>>
     Needed at least for org-mode ox-clip
@@ -8344,14 +8399,6 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
        
        jupyter labextension install jupyterlab-plotly
 
-******** obsoleted plotly extension
-         [[https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension][jupyter-renderers/packages/plotly-extension]]
-
-         Do this first before following web page instructions:
-
-           conda install nodejs
-         pip install npm
-
 ******* matplotlib gui extension: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib]]
 
         After installing (using conda), put this in your notebook:
@@ -8397,6 +8444,14 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
         A bit complicated but seems to work.
 
+******* run all button: [[https://github.com/jupyterlab/runall-extension][jupyterlab/runall-extension]]
+
+        Would be useful but it's not in the standard jupyterlab repository i.e. this doesn't work:
+
+           jupyter labextension install runall-extension
+
+        Instead, you have to [[https://jupyterlab.readthedocs.io/en/stable/user/extensions.html][build it yourself]].
+
 ******* <<Jupyterlab Chart Editor>>
 
         [[https://github.com/plotly/jupyterlab-chart-editor][Apparently]] does things that are implemented in [[https://github.com/plotly/react-chart-editor][plotly/react-chart-editor]]
@@ -8406,6 +8461,12 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 ******* [[jupytext extensions]]
 ******* [[Jupyter matplotlib widgets]]
 ******* Extensions that are maybe nice but not working
+********* paste image into markdown: [[https://github.com/Bamieh/jupyterlab-clipboard][Bamieh/jupyterlab-clipboard]]
+
+          It's not compatible with jupyterlab version
+
+          Bug report: [[https://github.com/Bamieh/jupyterlab-clipboard/issues/5][doesn't support latest version of jupyterlab]]
+
 ********* <<emacs bindings in cells>>: [[https://github.com/kpe/jupyterlab-emacskeys][kpe/jupyterlab-emacskeys]]
 
           conda install nodejs
@@ -8415,6 +8476,14 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
 ********* TRY [[https://github.com/jupyterlab/jupyterlab-shortcutui][jupyterlab/jupyterlab-shortcutui: A JupyterLab extension for managing shortcuts]]
           It's now been updated to Jupyterlab 1.0.  Maybe worth trying.
+******* obsoleted plotly extension
+         [[https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension][jupyter-renderers/packages/plotly-extension]]
+
+         Do this first before following web page instructions:
+
+           conda install nodejs
+         pip install npm
+
 ***** Jupyter/Jupyterlab graphics
 ******* <<Jupyter matplotlib widgets>>
         From: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib: Matplotlib Jupyter Extension]]
@@ -8639,105 +8708,6 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 ***** [[http://scikit-learn.org/stable/][scikit-learn]]
 ******* guy's [[http://www.google-melange.com/gsoc/proposal/review/google/gsoc2013/nicolastr/12001][plan]] to add missing feature fill-in using matrix completion
 
-*** <<python conda environments>>
-    "conda environments" what anaconda makes e.g. the one for tensorflow
-
-    List environments (on the command line)
-      conda info -e
-
-    Activating/deactivating (in conda)
-
-      activate tensorflow
-      deactivate tensorflow
-
-    installing packages from list
-     conda list --export          ; makes the list, given some environment
-     conda install --file         ; installs them
-
-    finding root anaconda environment (where perl.exe is installed)
-
-      conda info -e | grep root | gawk '{print $3}'
-
-***** <<documenting conda environment with environment.yml>>
-      From: [[https://tdhopper.com/blog/2015/Nov/24/my-python-environment-workflow-with-conda/][My Python Environment Workflow with Conda - tdhopper.com]]
-
-      The best way I've seen to check the whole anaconda environment into svn, git or whatever (as of Oct. 22, 2017).  I think the corresponding emacs package is also the nicest: [[conda.el reads environmentl.yml]]
-
-******* The steps done when you start a project
-        (could be from the command line, then after starting conda)
-
-        from anacondal console
-
-        conda env create
-        (install whatever)
-        conda env activate
-        conda env export | grep -v "^prefix: " > environment.yml
-
-      create  [[https://github.com/conda/conda-env][environment.yml]] 
-      ... and at some time, you can check something in
-      is read by [[https://github.com/conda/conda-env][conda env create]]
-      ... a .env file sets up the environment when you visit the dir 
-      ... (needs "autoenv" installed by something)
-
-********* keeping your local install path out of environment.yml
-          From: [[https://stackoverflow.com/questions/41274007/anaconda-export-environment-file][python - Anaconda export Environment file - Stack Overflow]]
-
-          conda env export | grep -v "^prefix: " > environment.yml
-      
-******* importing conda base environment from another machine
-
-        o  export base from the source machine [[
-           see:  documenting conda environment with environment.yml]]
-  
-        o update new machine's base environment to match old one
-
-          conda env update -n base -f base_old_environment.yml
-
-          Note that you can't import an environment of the same name as one that already exists on the new machine e.g. "base" so you have to give it a new name.  If you want to import to the name on the new machine, you can delete the old environment then rename the one you imported e.g.
-
-          
-***** Also [[activating conda environments in emacs]]
-***** updating all packages installed by anaconda
-      
-      In powershell, maybe in admin mode:
-      
-        conda update --all --alt-hint
-
-***** make exact copy of environment: conda create -n flowers --clone snowflakes
-***** list envs: conda info --envs
-***** list packages installed: conda list
-***** remove env: conda remove --name myenv --all
-***** adding channels
-
-Add channel "new_channel" to the top of the channel list as highest priority:
-
-  conda config --add channels new_channel
-  or
-  conda config --prepend channels new_channel
-
-Add new channel to the bottom of the channel list as lowest priority:
-
-  conda config --append channels new_channel
-
-***** clone conda env: write/reade environment.yml
-      From: [[https://datascience.stackexchange.com/questions/24093/how-to-clone-python-working-environment-on-another-machine][anaconda - How to clone Python working environment on another machine? - Data...]]
-
-export Anaconda environment:
-
-conda env export > environment.yml
-
-Recreate it on other machine:
-
-conda env create -f environment.yml
-
-Should have used virtual environments:
-
-conda create -n yourenvname python=x.x anaconda
-
-which you activate using:
-
-source activate yourenvname
-
 *** Preventing globals in python functions
 
     Ways to avoid very mysterious bugs due to the guts of a function accidentally accessing a global variable.
@@ -8770,10 +8740,117 @@ source activate yourenvname
 
       ...but you can /read/ global variables w/o the global declaration, which is a bug magnet.
 
-*** pip vs. conda
-    From: [[https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/][Conda: Myths and Misconceptions | Pythonic Perambulations]]
+*** Python install and package management
+***** <<python conda environments>>
+      "conda environments" what anaconda makes e.g. the one for tensorflow
 
-    "pip installs python packages within any environment; conda installs any package within conda environments"
+      List environments (on the command line)
+        conda info -e
+
+      Activating/deactivating (in conda)
+
+        activate tensorflow
+        deactivate tensorflow
+
+      installing packages from list
+       conda list --export          ; makes the list, given some environment
+       conda install --file         ; installs them
+
+      finding root anaconda environment (where perl.exe is installed)
+
+        conda info -e | grep root | gawk '{print $3}'
+
+******* <<documenting conda environment with environment.yml>>
+        From: [[https://tdhopper.com/blog/2015/Nov/24/my-python-environment-workflow-with-conda/][My Python Environment Workflow with Conda - tdhopper.com]]
+
+        The best way I've seen to check the whole anaconda environment into svn, git or whatever (as of Oct. 22, 2017).  I think the corresponding emacs package is also the nicest: [[conda.el reads environmentl.yml]]
+
+********* The steps done when you start a project
+          (could be from the command line, then after starting conda)
+
+          from anacondal console
+
+          conda env create
+          (install whatever)
+          conda env activate
+          conda env export | grep -v "^prefix: " > environment.yml
+
+        create  [[https://github.com/conda/conda-env][environment.yml]] 
+        ... and at some time, you can check something in
+        is read by [[https://github.com/conda/conda-env][conda env create]]
+        ... a .env file sets up the environment when you visit the dir 
+        ... (needs "autoenv" installed by something)
+
+*********** keeping your local install path out of environment.yml
+            From: [[https://stackoverflow.com/questions/41274007/anaconda-export-environment-file][python - Anaconda export Environment file - Stack Overflow]]
+
+            conda env export | grep -v "^prefix: " > environment.yml
+      
+********* importing conda base environment from another machine
+
+          o  export base from the source machine [[
+             see:  documenting conda environment with environment.yml]]
+  
+          o update new machine's base environment to match old one
+
+            conda env update -n base -f base_old_environment.yml
+
+            Note that you can't import an environment of the same name as one that already exists on the new machine e.g. "base" so you have to give it a new name.  If you want to import to the name on the new machine, you can delete the old environment then rename the one you imported e.g.
+
+          
+******* Also [[activating conda environments in emacs]]
+******* updating all packages installed by anaconda
+      
+        In powershell, maybe in admin mode:
+      
+          conda update --all --alt-hint
+
+******* make exact copy of environment: conda create -n flowers --clone snowflakes
+******* list envs: conda info --envs
+******* list packages installed: conda list
+******* remove env: conda remove --name myenv --all
+******* adding channels
+
+  Add channel "new_channel" to the top of the channel list as highest priority:
+
+    conda config --add channels new_channel
+    or
+    conda config --prepend channels new_channel
+
+  Add new channel to the bottom of the channel list as lowest priority:
+
+    conda config --append channels new_channel
+
+******* clone conda env: write/reade environment.yml
+        From: [[https://datascience.stackexchange.com/questions/24093/how-to-clone-python-working-environment-on-another-machine][anaconda - How to clone Python working environment on another machine? - Data...]]
+
+  export Anaconda environment:
+
+  conda env export > environment.yml
+
+  Recreate it on other machine:
+
+  conda env create -f environment.yml
+
+  Should have used virtual environments:
+
+  conda create -n yourenvname python=x.x anaconda
+
+  which you activate using:
+
+  source activate yourenvname
+
+***** pip vs. conda
+      From: [[https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/][Conda: Myths and Misconceptions | Pythonic Perambulations]]
+
+      "pip installs python packages within any environment; conda installs any package within conda environments"
+
+***** how to see all installed packages 
+
+      In a conda shell, or someplace that has a path to python
+        pip list
+      OR 
+        help("modules") # inside interpreter shell
 
 *** [[Python in Emacs]]
 *** <<Python for R users>>
@@ -8812,13 +8889,14 @@ Seaborn
 Tableau
 
 ***** Interactive graphics in python
-******* matplotlib can zoom, pan, but not much else if outside of IConsole
+******* <<Matplotlib>> can zoom, pan, but not much else if outside of IConsole
 ********* Documentation: [[https://matplotlib.org/users/navigation_toolbar.html][matplotlib interactive navigation]]
 ********* [[https://stackoverflow.com/questions/36700083/in-spyder-plot-using-matplotlib-with-interactive-zoom-etc][In Spyder, plot using Matplotlib with interactive zoom, etc]]
           Two ways:
           1. type "%matplotlib qt" into Iconsole (doesn't work in code itself)
           2. Select from the menu Tools > Preferences, then IPython console in the list of categories on the left, then the tab Graphics at the top, and change the Graphics backend from Inline to e.g. Qt. For me though, the figures then always pop up in the background.
 ********* In Jupyter: insert %something, see nc5 demo
+********* *Good*: [[https://dev.to/skotaro/artist-in-matplotlib---something-i-wanted-to-know-before-spending-tremendous-hours-on-googling-how-tos--31oo]["Artist" in Matplotlib - something I wanted to know...]]
 ******* <<Python plotly>>
 ********* Multilanguage [[Plotly]] can make [[Python ggplot2]] interactive
 ********* [[Python ggplot2]]: also popular in R, has interactive multilanguage ports ([[Plotly]])
@@ -8933,6 +9011,8 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
 
       import pdb; pdb.set_trace() # Pause execution here with the debugger active.
 
+***** Code checkers: [[https://www.pylint.org/][Pylint]], [[https://github.com/davidfraser/pyan][pyan]], [[https://github.com/megies/pyflakes][Pyflakes]]
+
 *** How to write Python documentation
 ***** [[https://www.python.org/dev/peps/pep-0257/][PEP 257 -- Docstring Conventions]]: the overarching standard
 ***** [[https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt][numpy/HOWTO_DOCUMENT]]: spyder displays this standard
@@ -8955,7 +9035,6 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
           sys.path.append(r"..\lib\python")  # won't work on linux
           import sutil as su  # noqa: E402
 
-*** Code checkers: [[https://www.pylint.org/][Pylint]], [[https://github.com/davidfraser/pyan][pyan]], [[https://github.com/megies/pyflakes][Pyflakes]]
 *** Symbolic computation: [[http://www.sympy.org/de/index.html][SymPy]]
 *** Tests in Python
 ***** guy [[https://www.youtube.com/watch?v=k55d3ZUF3ZQ][says]] to use pytest pkg, not built-in unittest.  For sure, it's shorter.
@@ -10050,6 +10129,11 @@ matlab-ruby-test.rb
 ***** [[http://alejandroerickson.com/j/2014/03/31/020-graph-your-bibtex-bibliography.html][Graph Your Bibtex Bibliography]] (authors-->papers only)
 ***** [[http://www.rubydoc.info/gems/bibtex-ruby/4.0.1/BibTeX/Bibliography/RDFConverter][Class: BibTeX::Bibliography::RDFConverter — Documentation for bibtex-ruby]]
 ***** [[DocEar]], kind-of...
+*** <<The Brain>>
+    Like that CMU Concept map think
+***** [[https://thebrain.com/][TheBrain: The Ultimate Digital Memory]]    
+***** emacs-clone: [[org-brain]]     
+***** examples of use: [[https://thebrain.com/big-thinkers][TheBrain Big Thinkers]]
 *** [[org-brain]]
 *** Sacha Chau's elisp for making a goal concept map (code at end of [[http://pages.sachachua.com/evil-plans/][this page]])
 *** [[http://orgmode.org/worg/org-contrib/org-wikinodes.html][org-wikinodes: CamelCase wiki-like links]] (kind of a graph)
