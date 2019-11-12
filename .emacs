@@ -355,6 +355,7 @@
 
 ;; * Swiper/Ivy
 
+;; TODO: evalulate https://github.com/Yevgnen/ivy-rich
 (use-package swiper
   :diminish ivy-mode
   :init
@@ -386,6 +387,7 @@
 
 (use-package counsel ; better kill-ring 2nd yanking
   :init
+  :diminish counsel-mode
   :bind
   (("M-y" . counsel-yank-pop)
    :map ivy-minibuffer-map
@@ -402,8 +404,9 @@
                              ; functions already here.  Maybe one is
                              ; an inspiration some call emac's symbol-at-point.
 
-(use-package ivy-explorer
-  :after swiper
+(use-package ivy-explorer ; ido-grid-mode for ivy
+  :after ivy
+  :diminish ivy-explorer-mode
   :config
   (require 'ivy-explorer) ; needed?
   ;; use ivy explorer for all file dialogs
@@ -1088,6 +1091,11 @@
   (define-key cscope-list-entry-keymap "q" 'quit-window)) ; so quits like dired
 
 ;; ** Python
+
+(setq pythonbin (executable-find "python"))
+(if  pythonbin
+    (message "found python at: %s" pythonbin)
+  (message "python not found: needed by elpy & py-python autofix-on-save"))
 
 (setq autopep8bin (executable-find "autopep8"))
 (if autopep8bin
@@ -1909,8 +1917,8 @@ Utils:
 --------------------------------------------------------------------------------
 _b_: bindings   _m_: mode        _h_: X headline in buffer  _w_: ace-window
 _s_: symbol     _i_: info        _a_: X heading in agenda   _p_: counsel-yank-pop
-_k_: key        _c_: cust-appr   _q_: swoop org buffers   _e_: ediff-buffers
-_f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
+_k_: key        _c_: cust-appr   _q_: swoop org buffers     _e_: ediff-buffers
+_f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
 --------------------------------------------------------------------------------
            _._: mark position _/_: jump to mark
 "
@@ -1936,7 +1944,8 @@ _f_: face       _C_: cust-mode   _H_: X helm-mini         _E_: ediff-files
   ("h" helm-org-headlines)
   ("a" helm-org-agenda-files-headings)
   ("q" helm-multi-swoop-org)
-  ("H" helm-mini) ; buffers & recent files: like ivy with "virtual buffers"
+  ("o" org-indent-mode) ; toggles org text to headline level & other stuff
+  ;;("H" helm-mini) ; buffers & recent files: like ivy with "virtual buffers"
 
   ("w" ace-window)
   ("p" counsel-yank-pop)
