@@ -1092,6 +1092,17 @@
 
 ;; ** Python
 
+;; TODO make a generic find-exec function (this one doesn't compile)
+;; (defun find-exec(cmd_name &optional notFoundMsg)
+;;   (let (((mstrNotFound (if notFoundMsg "")))
+;;         (cmd_path (executable-find "cmd")))
+;;     (unless  cmd_path
+;;       (message "%s not found %s" cmd_name mstrNotFound)
+;;       (progn message "found %s at: %s" cmd_name cmd_path
+;;              cmd_path)
+;;       )))
+
+;; needed by elpy & py-cmd autofix-on-save
 (setq pythonbin (executable-find "python"))
 (if  pythonbin
     (message "found python at: %s" pythonbin)
