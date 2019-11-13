@@ -1092,27 +1092,24 @@
 
 ;; ** Python
 
-;; TODO make a generic find-exec function (this one doesn't compile)
-;; (defun find-exec(cmd_name &optional notFoundMsg)
-;;   (let (((mstrNotFound (if notFoundMsg "")))
-;;         (cmd_path (executable-find "cmd")))
-;;     (unless  cmd_path
-;;       (message "%s not found %s" cmd_name mstrNotFound)
-;;       (progn message "found %s at: %s" cmd_name cmd_path
-;;              cmd_path)
-;;       )))
+(defun sdo/find-exec(cmd_name &optional notFoundMsg)
+  "Finds path to executable 'cmd_name' and returns it."
+  (let (cmd_path nfmsg retpathstr)
+         (setq cmd_path (executable-find cmd_name))
+         (if (not cmd_path)
+             (if notFoundMsg
+                 (message "%s not found. %s" cmd_name notFoundMsg)
+               (message "%s not found." cmd_name))
+           (progn (message "found %s at: %s" cmd_name cmd_path)
+                  (setq retpathstr cmd_path))))) ; there must be a better way...
 
 ;; needed by elpy & py-cmd autofix-on-save
-(setq pythonbin (executable-find "python"))
-(if  pythonbin
-    (message "found python at: %s" pythonbin)
-  (message "python not found: needed by elpy & py-python autofix-on-save"))
+(setq pythonbin (sdo/find-exec "python"
+                           "Is needed by elpy & py-python autofix-on-save"))
 
-(setq autopep8bin (executable-find "autopep8"))
-(if autopep8bin
-    (progn (message "found autopep8")
-      (use-package py-autopep8))
-  (message "autopep8 not found: needed by elpy & py-autopep8 autofix-on-save"))
+(setq autopep8bin (sdo/find-exec "autopep8"
+                             "Is needed by elpy & py-autopep8 autofix-on-save"))
+(when autopep8bin (use-package py-autopep8))
 
 ;; Use Elpy instead of python-mode.
 ;; REQUIRES AT LEAST THESE PYTHON LIBS: jedi flake8 autopep8
@@ -1125,9 +1122,7 @@
 ;;       pip show jedi
 ;; seems to work even if pkg was installed by conda
 
-(if (executable-find "flake8")
-    (message "found flake8")
-  (message "flake8 is not in path: needed by elpy for code checks"))
+(sdo/find-exec "flake8" "Is needed by elpy for code checks")
 
 (use-package flycheck-pos-tip)
 
@@ -1149,7 +1144,7 @@
   ;;   (global-flycheck-mode)
   (use-package flycheck)
   (when (require 'flycheck nil t)
-    (progn (message "found flycheck")
+    (progn (message "found flycheck package")
            (flycheck-pos-tip-mode)
            (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
            (add-hook 'elpy-mode-hook 'flycheck-mode)))
