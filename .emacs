@@ -392,7 +392,7 @@
   (("M-y" . counsel-yank-pop)
    :map ivy-minibuffer-map
    ("M-y" . ivy-next-line)) ; needed?
-   ("C-S" . counsel-search)) ; TODO: this doesn't work.  Figure out
+   ("C-S-s" . counsel-search)) ; TODO: this doesn't work.  Figure out
                              ; how to bind it (this is an internet
                              ; search call).  Also, compare with
                              ; google-this.  Also TODO: make it search
@@ -404,7 +404,7 @@
                              ; functions already here.  Maybe one is
                              ; an inspiration some call emac's symbol-at-point.
 
-(use-package ivy-explorer ; ido-grid-mode for ivy
+(use-package ivy-explorer ; ido-grid-mode for ivy: C-f/b/p/n/a/e navigate the grid
   :after ivy
   :diminish ivy-explorer-mode
   :config
@@ -428,7 +428,8 @@
 ;; Ido mode (a replacement for iswitchb and much else).  Much is in customizations
 ;; advice from: http://www.masteringemacs.org/article/introduction-to-ido-mode
 ;; See also sdo/get-recentf() in keybinding section, which (currently) uses ido
-;; Ivy is fancier but I'm keeping Ido around because it has a nice grid mode that isn't available for Ivy.
+;; Ivy is fancier but I'm keeping Ido around because it has a nice
+;; grid mode that isn't available for Ivy (but see ivy-explorer).
 ;;
 ;; Should be placed after ivy to avoid partial ivy overwrites of ido functions
 
