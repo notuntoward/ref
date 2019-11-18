@@ -319,6 +319,7 @@
 ;; ** Search/Replace within Buffer
 
 ;; Bindings for searching with currently highlighted string
+;; See also "C-c s") 'swiper-isearch-thing-at-point)
 (define-key isearch-mode-map "\M-s" 'isearch-repeat-forward)  ; word forward
 (define-key isearch-mode-map "\M-r" 'isearch-repeat-backward) ; word backward
 
@@ -326,9 +327,11 @@
   :config                    ; default was query-replace
   (global-set-key (kbd "M-%") 'query-replace-from-region))
 
-;; So isearch searces for selected region, if there is one.  From:
+;; So isearch searches for selected region, if there is one.  From:
 ;;http://stackoverflow.com/questions/202803/searching-for-marked-selected-text-in-emacs
 ;; NOTE: C-s C-w (extra C-w's expand region) also works well
+;; TODO: Replace with isearch with ivy search?
+;; See also "C-c s") 'swiper-isearch-thing-at-point)
 (defun jrh-isearch-with-region ()
   "Use region as the isearch text."
   (when mark-active
@@ -365,17 +368,31 @@
   ;; C-s C-w (extra C-w's expand region) also works well
   ;; I added -i to counsel-grep-base-command so grep is case-insensitive
   ;;  (fset 'swiper-func 'counsel-grep-or-swiper) ; uses grep for long files, esp. org
-  (fset 'swiper-func 'swiper) ; standard swiper, slow on large org files
-  (defun sdo/swiper-region ()
-    "If region selected, swipe for it, else do normal swiper call"
+  (fset 'swiper-func-forward 'swiper) ; standard swiper, slow on large org files
+  (fset 'swiper-func-backward 'swiper-backward) ; standard swiper, slow on large org files
+
+  ;; TODO: combine forward bacward into one function instead of this hack
+  (defun sdo/swiper-region-forward ()
+    "If region selected, swipe for it forward, else do normal swiper call"
     (interactive)
     (if mark-active
         (let ((region (funcall region-extract-function nil)))
           (deactivate-mark)
-          (swiper-func region))
-      (swiper-func)))
+          (swiper-func-forward region))
+      (swiper-func-forward)))
 
-  (global-set-key "\C-s" 'sdo/swiper-region)
+  (defun sdo/swiper-region-backward ()
+    "If region selected, swipe for it backwards, else do normal swiper call"
+    (interactive)
+    (if mark-active
+        (let ((region (funcall region-extract-function nil)))
+          (deactivate-mark)
+          (swiper-func-backward region))
+      (swiper-func-backward)))
+
+  (global-set-key "\C-s" 'sdo/swiper-region-forward)
+  (global-set-key "\C-r" 'sdo/swiper-region-backward)
+  ;; see also jrh-isearch-with-region
   (global-set-key (kbd "C-c s") 'swiper-isearch-thing-at-point)
   ;; ivy-views integrate with ivy-switch-buffer (See https://oremacs.com/2016/06/27/ivy-push-view/).  That's probably nice but I'm still using ido-switch-buffer b/c of its rectangular view.  So, I've bound ivy-switch view to something close to switch-buffer.
   ;; NOTE, however, that somebody has posted an ivy-rectangle view.  I must have an email for that or something.
@@ -392,17 +409,14 @@
   (("M-y" . counsel-yank-pop)
    :map ivy-minibuffer-map
    ("M-y" . ivy-next-line)) ; needed?
-   ("C-S-s" . counsel-search)) ; TODO: this doesn't work.  Figure out
-                             ; how to bind it (this is an internet
-                             ; search call).  Also, compare with
-                             ; google-this.  Also TODO: make it search
-                             ; for region if selected, like
-                             ; sdo/swiper-region and for thing at
-                             ; point, like c-c s
-                             ; (swiper-isearch-thing-at-point) does
-                             ; now.  There are many *-at-point
-                             ; functions already here.  Maybe one is
-                             ; an inspiration some call emac's symbol-at-point.
+   :config
+   ;; Internet search, compare w/ google-this
+   ;; TODO: make it search for region if selected, like
+   ;; sdo/swiper-region and for thing at point, like c-c s
+   ;; (swiper-isearch-thing-at-point) does now.  There are many
+   ;; *-at-point functions already here.  Maybe one is an inspiration.
+   ;; Some existing funcs call emac's symbol-at-point.
+   (global-set-key (kbd "C-S-s")  'counsel-search)) ; doesn't work in :bind
 
 (use-package ivy-explorer ; ido-grid-mode for ivy: C-f/b/p/n/a/e navigate the grid
   :after ivy
@@ -2239,7 +2253,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input ivy-hydra flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
  '(recentf-max-saved-items 200)
