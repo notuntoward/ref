@@ -121,6 +121,18 @@
  ps-bottom-margin (/ (* 72 2.0) 2.54))
 
 ;; * Operating System Interaction
+
+(defun sdo/find-exec(cmd_name &optional notFoundMsg)
+  "Finds path to executable 'cmd_name' and returns it."
+  (let (cmd_path nfmsg retpathstr)
+         (setq cmd_path (executable-find cmd_name))
+         (if (not cmd_path)
+             (if notFoundMsg
+                 (message "%s not found. %s" cmd_name notFoundMsg)
+               (message "%s not found." cmd_name))
+           (progn (message "found %s at: %s" cmd_name cmd_path)
+                  (setq retpathstr cmd_path))))) ; there must be a better way...
+
 ;; ** Shell Mode
 ;; Make up/down arrows search cmd history like tcsh
 (require 'shell)
@@ -359,6 +371,9 @@
 ;; * Swiper/Ivy
 
 ;; TODO: evalulate https://github.com/Yevgnen/ivy-rich
+;; Help while in ivy search:
+;;  hydra: C-o;
+;;  full help: C-h m
 (use-package swiper
   :diminish ivy-mode
   :init
@@ -427,6 +442,85 @@
   (ivy-explorer-mode 1)
   ;; not strictly necessary
   (counsel-mode 1))
+
+;;(use-package ivy-hydra) ; bound to C-o (is this helpful?)
+
+;; from: https://github.com/abo-abo/swiper/issues/2021
+;;; Ivy Hydra
+;; replace the ivy-hydra with this learning one
+;; uses regular ivy-mode keybindings to provide cleaner help and aid learning
+(defhydra hydra-ivy (:hint nil
+                     :color pink)
+"
+
+Navigation:
+_C-n_/_C-p_ next/previous  _M-<_/_M->_ begin/end  _C-v_/_M-v_ scroll up/down
+_C-'_ select with avy
+
+Use current selection to:
+_RET_,_C-m_ default action  _M-o_ choose from actions
+_C-M-j_ use current input not selection
+
+Do action with current selection and loop to choose more items:
+_C-M-m_ default action  _C-M-o_ choose action
+_C-M-n_/_C-M-p_ default action and select next/previous
+
+Insert into input field:
+_TAB_ complete input as far as possible
+_C-j_ or _TAB_ _TAB_ complete directory and search or complete filename and do action
+_M-n_/_M-p_ history next/previous  _M-i_ selection  _M-j_ word-at-point
+_C-r_ reverse search history  _C-s_ next line or last from history if empty 
+
+Other operations with current candidates:
+_S-SPC_ restrict to current matches  _M-w_ saves selections to kill ring
+_C-c C-o_ open candidates in ivy-occur buffer
+
+Other:
+_c_ toggle calling  _M-c_ toggle case folding  _M-r_ toggle regexp
+_C-c C-s_ rotate sort function if multiple defined
+_C-c C-a_ toggle user configured ignore lists
+_C-M-a_ change default action from list for this session
+"
+  ;; Navigation
+  ("M-<" ivy-beginning-of-buffer)
+  ("C-n" ivy-next-line)
+  ("C-p" ivy-previous-line)
+  ("M->" ivy-end-of-buffer)
+  ("C-v" ivy-scroll-up-command)
+  ("M-v" ivy-scroll-down-command)
+  ;; Single selection, action, exit
+  ("RET" ivy-done :exit t)
+  ("C-m" ivy-done :exit t)
+  ("M-o" ivy-dispatching-done :exit t)
+  ("C-j" ivy-alt-done :exit t)
+  ("TAB" ivy-partial-or-done :exit t)
+  ("C-M-j" ivy-immediate-done :exit t)
+  ("C-'" ivy-avy :exit nil)
+  ;; Multiple selections, actions, no exit
+  ("C-M-m" ivy-call)
+  ("C-M-o" ivy-dispatching-call)
+  ("C-M-n" ivy-next-line-and-call)
+  ("C-M-p" ivy-previous-line-and-call)
+  ;; alter input
+  ("M-n" ivy-next-history-element)
+  ("M-p" ivy-previous-history-element)
+  ("M-i" ivy-insert-current)
+  ("M-j" ivy-yank-word)
+  ("S-SPC" ivy-restrict-to-matches)
+  ("C-r" ivy-reverse-i-search)
+  ("C-s" ivy-next-line-or-history)
+  ;; other
+  ("M-w" ivy-kill-ring-save)
+  ;; non-standard utilities
+  ("c" ivy-toggle-calling)
+  ("M-c" ivy-toggle-case-fold)
+  ("M-r" ivy-toggle-regexp-quote)
+  ("C-c C-s" ivy-rotate-sort)
+  ("C-c C-a" ivy-toggle-ignore)
+  ("C-M-a" ivy-read-action)
+  ("C-c C-o" ivy-occur :exit t)
+  )
+(define-key ivy-minibuffer-map (kbd "C-o") 'hydra-ivy/body)
 
 (defun org-toggle-outline-visibility ()
   "Hides all subheadlines or restores original visibility before toggle.
@@ -626,6 +720,13 @@
 
 ;; * File Finding / Opening
 ;; ** Dired Mode
+;; *** Generic Dired and Win32 integration
+
+;; TODO: when I do this, dired-subtree doesn't work.  Figure out why, fix.
+;; So dired puts folders at top.  The discovered ls program must
+;; handle GNU switches (e.g. OSX doesn't)
+;; (setq insert-directory-program (sdo/find-exec "ls" "For dired folder ordering"))
+;; (setq dired-listing-switches "-lXGh --group-directories-first")
 
 (add-hook  'dired-mode-hook
 	   (lambda ()
@@ -660,8 +761,57 @@
 
 ;; so that dired automatically updates stale directory list when buffer revisted
 (setq dired-no-confirm `(revert-subdirs))
+;; I want to do these w/o interrupting emacs prompts
 (setq dired-recursive-copies t)
 (setq dired-recursive-deletes t)
+
+;; *** Dired subtree and project explorer
+
+;; From: https://mads-hartmann.com/2016/05/12/emacs-tree-view.html
+;; TODO: add the code for projectile/project explorer
+
+(defun mhj/dwim-toggle-or-open ()
+  "Toggle subtree or open the file."
+  (interactive)
+  (if (file-directory-p (dired-get-file-for-visit))
+      (progn
+    (dired-subtree-toggle)
+    (revert-buffer))
+    (dired-find-file)))
+
+;; TODO: Click both does tree and opens new dired window.  Get rid of
+;; the open.
+(defun mhj/mouse-dwim-to-toggle-or-open (event)
+  "Toggle subtree or the open file on mouse-click in dired."
+  (interactive "e")
+  (let* ((window (posn-window (event-end event)))
+     (buffer (window-buffer window))
+     (pos (posn-point (event-end event))))
+    (progn
+      (with-current-buffer buffer
+    (goto-char pos)
+    (mhj/dwim-toggle-or-open)))))
+
+(use-package dired-subtree
+  :demand
+  :bind
+  (:map dired-mode-map
+    ("<enter>" . mhj/dwim-toggle-or-open)
+    ("<return>" . mhj/dwim-toggle-or-open)
+    ("<tab>" . mhj/dwim-toggle-or-open)
+    ("<down-mouse-1>" . mhj/mouse-dwim-to-toggle-or-open))
+  :config
+  (progn
+    ;; Function to customize the line prefixes (I simply indent the lines a bit)
+    (setq dired-subtree-line-prefix (lambda (depth) (make-string (* 2 depth) ?\s)))
+    (setq dired-subtree-use-backgrounds nil)))
+
+;; *** Dired narrow: show only string matches,  then edit only narrowed part
+
+;; '/', type a narrowing string  starts it, 'g' ends the narrowing
+(use-package dired-narrow
+  :ensure t
+  :bind (:map dired-mode-map ("/" . dired-narrow)))
 
 ;; *** dired+
 
@@ -1106,17 +1256,6 @@
   (define-key cscope-list-entry-keymap "q" 'quit-window)) ; so quits like dired
 
 ;; ** Python
-
-(defun sdo/find-exec(cmd_name &optional notFoundMsg)
-  "Finds path to executable 'cmd_name' and returns it."
-  (let (cmd_path nfmsg retpathstr)
-         (setq cmd_path (executable-find cmd_name))
-         (if (not cmd_path)
-             (if notFoundMsg
-                 (message "%s not found. %s" cmd_name notFoundMsg)
-               (message "%s not found." cmd_name))
-           (progn (message "found %s at: %s" cmd_name cmd_path)
-                  (setq retpathstr cmd_path))))) ; there must be a better way...
 
 ;; needed by elpy & py-cmd autofix-on-save
 (setq pythonbin (sdo/find-exec "python"
@@ -1927,17 +2066,47 @@ This function avoids making messed up targets by exiting without doing anything 
   (which-key-mode)
   (which-key-setup-side-window-right-bottom)) ; do bottom if no room on side
 
+; setup ideas from: https://github.com/malb/emacs.d/blob/master/malb.org
+(use-package helm-org  
+  :config (progn
+            (setq helm-org-headings-fontify t)
+
+            (defun malb/helm-in-buffer ()
+              "The right kind™ of buffer menu."
+              (interactive)
+              (if (eq major-mode 'org-mode)
+                  (call-interactively #'helm-org-in-buffer-headings)
+                (call-interactively #'helm-semantic-or-imenu)))
+
+            (add-to-list 'helm-commands-using-frame 'helm-org-in-buffer-headings)
+            (add-to-list 'helm-commands-using-frame 'helm-semantic-or-imenu)))
+
 (use-package helm-descbinds)
 ;;  :config (helm-descbinds-mode))
+
+(use-package helm-swoop
+  :ensure t
+  :defer t
+  :bind
+  (;;("C-x c s" . helm-swoop)
+   ("M-i" . helm-swoop)
+   ("M-I" . helm-swoop-back-to-last-point)
+   ("C-c M-i" . helm-multi-swoop)
+   ("C-x M-i" . helm-multi-swoop-all))
+  :config
+  (progn
+    (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+    (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop))
+  )
 
 (use-package hydra) ; otherwise defhydra is unknown.  I'm not sure why.
 (defhydra hydra-utils (:color blue :hint nil)
   "
 Utils:
-^Info1^         ^Info/cust^       ^Org^                    ^Nav/Edit^
+^Info1^         ^Info2/cust^     ^Org^                      ^Misc^
 --------------------------------------------------------------------------------
-_b_: bindings   _m_: mode        _h_: X headline in buffer  _w_: ace-window
-_s_: symbol     _i_: info        _a_: X heading in agenda   _p_: counsel-yank-pop
+_b_: bindings   _m_: mode        _P_: parent headings       _a_: calc
+_s_: symbol     _i_: info        _A_: heading in agenda     _p_: counsel-yank-pop
 _k_: key        _c_: cust-appr   _q_: swoop org buffers     _e_: ediff-buffers
 _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
 --------------------------------------------------------------------------------
@@ -1962,13 +2131,13 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
   ;; 1st, 2nd level: all describe functions
   ;; 2nd, 2nd level: all customize
 
-  ("h" helm-org-headlines)
-  ("a" helm-org-agenda-files-headings)
+  ("P" helm-org-parent-headings)
+  ("A" helm-org-agenda-files-headings)
   ("q" helm-multi-swoop-org)
   ("o" org-indent-mode) ; toggles org text to headline level & other stuff
   ;;("H" helm-mini) ; buffers & recent files: like ivy with "virtual buffers"
 
-  ("w" ace-window)
+  ("a" calc)
   ("p" counsel-yank-pop)
   ("e" ediff-buffers)
   ("E" ediff-files)
@@ -2253,7 +2422,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
  '(recentf-max-saved-items 200)
@@ -2278,7 +2447,10 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(swiper-action-recenter nil)
  '(tool-bar-mode nil)
  '(visual-line-fringe-indicators (quote (nil top-right-angle)))
- '(w32-use-w32-font-dialog nil))
+ '(w32-use-w32-font-dialog nil)
+ '(window-divider-default-bottom-width 6)
+ '(window-divider-default-places t)
+ '(window-divider-mode t))
  ;; '(w32shell-cygwin-bin "C:\\cygwin64\\bin"))
 
 ;; ** Custom Set Faces
