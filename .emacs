@@ -1,6 +1,8 @@
 ;; * Emacs Startup Behavior
 
-(require 'server) ; so file association works on windows and emacsclient
+(require 'server) ; so file association works on windows and
+(server-start)  ; emacsclient (emacsclientw on windows)
+
 (add-to-list 'default-frame-alist '(fullscreen . fullheight)) ; startup at full height
 (save-place-mode 1) ; remember cursor position when returning to a file
 
