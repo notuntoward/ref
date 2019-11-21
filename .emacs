@@ -123,9 +123,11 @@
     (set-face-background 'region "pale turquoise"))) ;works on xterm
 
 ;; Adjust pixel-based values depending upon screen DPI
-;; Modified (use workingarea not geometry) unhammer's code at: https://emacs.stackexchange.com/questions/28390/quickly-adjusting-text-to-dpi-changes
+;; Modified (use workingarea not geometry) unhammer's code at:
+;; https://emacs.stackexchange.com/questions/28390/quickly-adjusting-text-to-dpi-changes
+;; Compare with http://dpi.lv/
 (defun my-dpi (&optional display)
-  "Get the DPI of DISPLAY.
+  "Get the DPI of DISPLAY. 
 DISPLAY is a display name, frame or terminal, as in
 `display-monitor-attributes-list'."
   (cl-flet ((pyth (lambda (w h)
@@ -142,9 +144,10 @@ DISPLAY is a display name, frame or terminal, as in
            (mm-d (pyth mm-w mm-h)))
       (/ pix-d (mm2in mm-d)))))
 
-;; desired display = max(1,   (nPixHigh-nPixLow)/(DPIhigh-DPIlow)*(DPInow -
-;; DPIlow) + nPixLow
-(defun divNpix ()
+(defun calcDivNpix ()
+  "Computes # pix for window divider based on screen DPI.
+TODO: make this a general function."
+
   (let* ((nPixHigh 6.0)
         (DPIhigh   185.0)
         (nPixLow   3.0)
@@ -155,19 +158,23 @@ DISPLAY is a display name, frame or terminal, as in
     (message "DPIthis %s" DPIthis)
     (setq nPixThis (max 1 (round (+ (* (/ (- nPixHigh nPixLow) (- DPIhigh DPIlow)) (- DPIthis DPIlow)) nPixLow))))))
 
-;;(message "nPixThis: %s" (divNpix))
 
 ;; set window divider width custom variables (setq is said to be the
 ;; way to do this in .emacs, instead of calling customize-set-variable).
-(setq nPixDiv (divNpix))
+(setq nPixDiv (calcDivNpix))
+(message "nPixDiv: %s" nPixDiv)
 (setq window-divider-default-bottom-width nPixDiv)
-(setq window-right-divider-width nPixDiv)
+(setq window-divider-default-right-width nPixDiv)
 
-;; compare with http://dpi.lv/
-;;(message "my DPI: %s" (my-dpi))
+;; (set-window-scroll-bars nil 11 t) ; currenT WINDOW
+;;(setq-default scroll-bar-width 50) ; default or all new windows and
+;;frames
+;; (modify-all-frames-parameters ) should change them all
+;; (message "%s" (frame-parameters)) prints frame params
+;;
+;; need to change both initial and default params:
+;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Emacs-ignores-frame-parameters.html
 
-;; TODO use the above to set a constant "inches" width for window-diver-mode pixel width (window-divider-default-bottom-width, window-divider-default-right-width).
-;;  default for each was 6; on work display, 3 looks OK
 ;; TODO also set pixel width of scrollbars, etc
 ;; TODO Use dispwatch, https://github.com/mnp/dispwatch, to change these things dynamically
 ;;      Also: https://emacs.stackexchange.com/questions/28390/quickly-adjusting-text-to-dpi-changes
@@ -864,7 +871,6 @@ _C-M-a_ change default action from list for this session
     (revert-buffer))
     (dired-find-file)))
 
-
 ;; TODO: Click both does tree and opens new dired window.  Get rid of
 ;; the open.
 (defun mhj/mouse-dwim-to-toggle-or-open (event)
@@ -1252,6 +1258,12 @@ _C-M-a_ change default action from list for this session
   ;;   (global-auto-highlight-symbol-mode))
 
 ;; *** Ediff
+
+;; TODO report ediff 'm' bug: Typing 'm' in ediff minibuffer spreads
+;; emacs across a width equal to both dual monitors, although emacs's
+;; left edge is always put on the left edge of the right monitor, even
+;; if it was originally in the left monitor
+
 ;; Do not pop up a separate window "frame" for ediff
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 ;; Avoid folding headlines when ediffing org-mode
@@ -2435,6 +2447,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(display-time-default-load-average nil)
  '(display-time-load-average-threshold 100000000)
  '(display-time-mode t)
+ '(ediff-split-window-function (quote split-window-horizontally))
  '(elpy-rpc-python-command "python")
  '(emacsw32-style-frame-title t)
  '(ess-ido-flex-matching t)
