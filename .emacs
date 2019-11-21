@@ -39,6 +39,8 @@
 
 (setq use-package-always-ensure t) ; so use-package always installs missing pkgs
 
+(use-package try) ; M-x try to test a pkg w/o installing it
+
 ;; * Computer-specific setup
 ;; ** OS-dependent settings
 (defvar running-ms-windows
@@ -139,6 +141,27 @@ DISPLAY is a display name, frame or terminal, as in
            (mm-h (cl-third (assoc 'mm-size atts)))
            (mm-d (pyth mm-w mm-h)))
       (/ pix-d (mm2in mm-d)))))
+
+;; desired display = max(1,   (nPixHigh-nPixLow)/(DPIhigh-DPIlow)*(DPInow -
+;; DPIlow) + nPixLow
+(defun divNpix ()
+  (let* ((nPixHigh 6.0)
+        (DPIhigh   185.0)
+        (nPixLow   3.0)
+        (DPIlow    94.0)
+        DPIthis nPixThis)
+
+    (setq DPIthis (my-dpi))
+    (message "DPIthis %s" DPIthis)
+    (setq nPixThis (max 1 (round (+ (* (/ (- nPixHigh nPixLow) (- DPIhigh DPIlow)) (- DPIthis DPIlow)) nPixLow))))))
+
+;;(message "nPixThis: %s" (divNpix))
+
+;; set window divider width custom variables (setq is said to be the
+;; way to do this in .emacs, instead of calling customize-set-variable).
+(setq nPixDiv (divNpix))
+(setq window-divider-default-bottom-width nPixDiv)
+(setq window-right-divider-width nPixDiv)
 
 ;; compare with http://dpi.lv/
 ;;(message "my DPI: %s" (my-dpi))
@@ -1581,7 +1604,7 @@ _C-M-a_ change default action from list for this session
 ;; ** YAML
 
 (use-package yaml-mode
-  :mode ("\\.yml$" "\\.dvc$"))
+  :mode ("\\.yml$" "\\.dvc$")) ;; data version control (DVC) files
 
 ;; * Narrowing
 ;; Default emacs narrowing has too many keys: wipe them out and make
@@ -2546,7 +2569,6 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(tool-bar-mode nil)
  '(visual-line-fringe-indicators (quote (nil top-right-angle)))
  '(w32-use-w32-font-dialog nil)
- '(window-divider-default-bottom-width 6)
  '(window-divider-default-places t)
  '(window-divider-mode t))
  ;; '(w32shell-cygwin-bin "C:\\cygwin64\\bin"))
