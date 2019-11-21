@@ -1,7 +1,7 @@
 ;; * Emacs Startup Behavior
 
 (require 'server) ; so file association works on windows and
-(server-start)  ; emacsclient (emacsclientw on windows)
+(server-start)  ; for emacsclient (emacsclientw on Windows)
 
 (add-to-list 'default-frame-alist '(fullscreen . fullheight)) ; startup at full height
 (save-place-mode 1) ; remember cursor position when returning to a file
@@ -25,22 +25,22 @@
 (add-to-list   'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 
-(unless (package-installed-p 'use-package) ;; for totally clean start
+(unless (package-installed-p 'use-package) ; so can do a totally clean start
   (message "Installing use-package, diminish and refreshing")
   (package-refresh-contents)
   (package-install 'use-package)
-  (package-install 'diminish)) ;; wouldn't install w/ use-package, for some reason
+  (package-install 'diminish)) ; wouldn't install w/ use-package for some reason
 
 ;; from: http://cachestocaches.com/2015/8/getting-started-use-package/
 (eval-when-compile
   (require 'use-package))
 
-(use-package bind-key) ; for use-package :bind-key
+(use-package bind-key) ; inside use-package invoke with :bind-key
 
 (setq use-package-always-ensure t) ; so use-package always installs missing pkgs
 
 ;; * Computer-specific setup
-
+;; ** OS-dependent settings
 (defvar running-ms-windows
   (eq system-type 'windows-nt))
 
@@ -49,7 +49,8 @@
 
 (if running-gnu-linux
     (progn (setq os-which-cmd "which")
-           (global-set-key [f11] 'shell) ; normal shell if not windows
+           (global-set-key [f11] 'eshell) ; almost Unix, consistent across OS's
+           (global-set-key [C-f11] 'shell) ; native shell
            ;; force chrome on Linux
            (setq browse-url-browser-function (quote browse-url-generic))
            (setq browse-url-generic-program "google-chrome")
@@ -65,8 +66,8 @@
       (global-set-key "\240" (quote iconify-frame))
       ;; menu key is M-x, like it is on Linux
       (global-set-key (kbd "<apps>") 'execute-extended-command)
-      (global-set-key [f11] 'eshell) ; emacs built-in, almost unix
-      (global-set-key [C-f11] 'cmd-shell) ; DOS
+      (global-set-key [f11] 'eshell) ; almost Unix, consistent across OS's
+      (global-set-key [C-f11] 'powershell) ; native shell
       (setq w32-use-w32-font-dialog nil)
       (setq os-which-cmd "where")
       (setq
@@ -86,6 +87,8 @@
       ;;         (call-interactively 'shell)))
       ;;   (global-set-key [M-f11] 'cygwin-shell)))) ; cygwin bash
 
+;; ** Individual Computer-dependent settings
+
 (setq computerNm (downcase system-name)) ; downcase: was getting random case
 (pcase (eval 'computerNm)
   ("cpr-scotto"     ; Clean Power Research desktop
@@ -102,8 +105,10 @@
   (warn "shareDir %s doesn't exist or not readable" shareDir))
 (setq docDir (expand-file-name "ref" shareDir))
 (unless (file-readable-p docDir)
-  (warn "shareDir %s doesn't exist or not readable" docDir))
+  (warn "docDir %s doesn't exist or not readable" docDir))
 (message "computerNm %s shareDir %s docDir %s" computerNm shareDir docDir)
+
+;; ** Screen/terminal dependent settings
 
 (if window-system
     (progn
@@ -114,6 +119,36 @@
     ;; on a term or cmdshell:
     (menu-bar-mode -1) ;menubar off when on an xterm (xemacs does automatically)
     (set-face-background 'region "pale turquoise"))) ;works on xterm
+
+;; Adjust pixel-based values depending upon screen DPI
+;; Modified (use workingarea not geometry) unhammer's code at: https://emacs.stackexchange.com/questions/28390/quickly-adjusting-text-to-dpi-changes
+(defun my-dpi (&optional display)
+  "Get the DPI of DISPLAY.
+DISPLAY is a display name, frame or terminal, as in
+`display-monitor-attributes-list'."
+  (cl-flet ((pyth (lambda (w h)
+                    (sqrt (+ (* w w)
+                             (* h h)))))
+            (mm2in (lambda (mm)
+                     (/ mm 25.4))))
+    (let* ((atts (frame-monitor-attributes))
+           (pix-w (cl-fourth (assoc 'workarea atts)))
+           (pix-h (cl-fifth (assoc 'workarea atts)))
+           (pix-d (pyth pix-w pix-h))
+           (mm-w (cl-second (assoc 'mm-size atts)))
+           (mm-h (cl-third (assoc 'mm-size atts)))
+           (mm-d (pyth mm-w mm-h)))
+      (/ pix-d (mm2in mm-d)))))
+
+;; compare with http://dpi.lv/
+;;(message "my DPI: %s" (my-dpi))
+
+;; TODO use the above to set a constant "inches" width for window-diver-mode pixel width (window-divider-default-bottom-width, window-divider-default-right-width).
+;;  default for each was 6; on work display, 3 looks OK
+;; TODO also set pixel width of scrollbars, etc
+;; TODO Use dispwatch, https://github.com/mnp/dispwatch, to change these things dynamically
+;;      Also: https://emacs.stackexchange.com/questions/28390/quickly-adjusting-text-to-dpi-changes
+;; TODO change font too?
 
 ;; to install it with the ps-print package, which I hadn't for 21.8, at least.
 (require 'ps-print)
@@ -130,8 +165,8 @@
          (setq cmd_path (executable-find cmd_name))
          (if (not cmd_path)
              (if notFoundMsg
-                 (message "%s not found. %s" cmd_name notFoundMsg)
-               (message "%s not found." cmd_name))
+                 (warn "%s not found. %s" cmd_name notFoundMsg)
+               (warn  "%s not found." cmd_name))
            (progn (message "found %s at: %s" cmd_name cmd_path)
                   (setq retpathstr cmd_path))))) ; there must be a better way...
 
@@ -165,6 +200,7 @@
 (setq eshell-where-to-jump 'begin)
 (setq eshell-review-quick-commands nil)
 (setq eshell-smart-space-goes-to-end t)
+
 ;; ** Powershell (Windows)
 
 (if running-ms-windows  ; could be in OS-specific section too
@@ -727,9 +763,10 @@ _C-M-a_ change default action from list for this session
 ;; TODO: when I do this, dired-subtree doesn't work.  Figure out why, fix.
 ;; So dired puts folders at top.  The discovered ls program must
 ;; handle GNU switches (e.g. OSX doesn't)
-;; (setq insert-directory-program (sdo/find-exec "ls" "For dired folder ordering"))
-;; (setq dired-listing-switches "-lXGh --group-directories-first")
-
+;(setq insert-directory-program (sdo/find-exec "ls" "For dired folder ordering"))
+;(setq dired-listing-switches "-laGh1v --group-directories-first")
+;(setq dired-listing-switches "-laGh1v")
+;(setq ls-lisp-dirs-first t) ; for Windows, when runs lisp ls by default
 (add-hook  'dired-mode-hook
 	   (lambda ()
              (dired-hide-details-mode) ; less junk.  ) restores orig format
@@ -770,7 +807,30 @@ _C-M-a_ change default action from list for this session
 ;; *** Dired subtree and project explorer
 
 ;; From: https://mads-hartmann.com/2016/05/12/emacs-tree-view.html
+;; TODO: if cursor on '.' do nothing.  If cursor on '..' pop a directory
 ;; TODO: add the code for projectile/project explorer
+
+;; PROBLEM with this is that once you go up a dir, it never toggles
+;; again, due to a saved state, I suppose
+;; (defun mhj/dwim-toggle-or-open ()
+;;   "Toggle subtree or open the file."
+;;   (interactive)
+;;   (if (file-directory-p
+;;        (dired-get-file-for-visit))
+;;       (let ((dir-at-point (file-name-nondirectory(dired-get-filename nil t))))
+;;         (if (string= dir-at-point "..")
+;;             (dired-find-file) ;; go up a dir
+;;           (if (not (string= dir-at-point ".")) ;; do nothing if on '.'
+;;               (progn
+;;                 (message "called toggle")
+;;                 ;; (message "%s string= '.': %s" raw (string= raw "."))
+;;                 ;; (message "%s string= '..': %s" raw (string= raw ".."))
+;;                 ;;                             (directory-file-name
+;;                 ;;                              (file-name-directory raw))))
+;;                 ;; (message "bottom 2dir: %s " (file-name-nondirectory raw))
+;;                 ;; (dired-subtree-toggle)
+;;                 (revert-buffer)))))
+;;     (dired-find-file)))
 
 (defun mhj/dwim-toggle-or-open ()
   "Toggle subtree or open the file."
@@ -780,6 +840,7 @@ _C-M-a_ change default action from list for this session
     (dired-subtree-toggle)
     (revert-buffer))
     (dired-find-file)))
+
 
 ;; TODO: Click both does tree and opens new dired window.  Get rid of
 ;; the open.
@@ -808,47 +869,77 @@ _C-M-a_ change default action from list for this session
     (setq dired-subtree-line-prefix (lambda (depth) (make-string (* 2 depth) ?\s)))
     (setq dired-subtree-use-backgrounds nil)))
 
-;; *** Dired narrow: show only string matches,  then edit only narrowed part
+;; Bugfixed version of the function in  dired-subtree.el
+;; (dired-subtree package)
+;; See my bug report https://github.com/Fuco1/dired-hacks/issues/164
+(defun dired-subtree-insert ()
+  "Insert subtree under this directory."
+  (interactive)
+  (when (and (dired-subtree--dired-line-is-directory-or-link-p)
+             (not (dired-subtree--is-expanded-p)))
+    (let* ((dir-name (dired-get-filename nil t))
+           (listing (dired-subtree--readin (file-name-as-directory dir-name)))
+           beg end)
+      (read-only-mode -1)
+      (move-end-of-line 1)
+      ;; this is pretty ugly, I'm sure it can be done better
+      (save-excursion
+        (insert listing)
+        (setq end (+ (point) 2)))
+      (newline)
+      (setq beg (point))
+      (let ((inhibit-read-only t))
+        (remove-text-properties (1- beg) beg '(dired-filename)))
+      (let* ((ov (make-overlay beg end))
+             (parent (dired-subtree--get-ov (1- beg)))
+             (depth (or (and parent (1+ (overlay-get parent 'dired-subtree-depth)))
+                        1))
+             (face (intern (format "dired-subtree-depth-%d-face" depth))))
+        (when dired-subtree-use-backgrounds
+          (overlay-put ov 'face face))
+        ;; refactor this to some function
+        (overlay-put ov 'line-prefix
+                     (if (stringp dired-subtree-line-prefix)
+                         (if (not dired-subtree-use-backgrounds)
+                             (apply 'concat (-repeat depth dired-subtree-line-prefix))
+                           (cond
+                            ((eq nil dired-subtree-line-prefix-face)
+                             (apply 'concat
+                                    (-repeat depth dired-subtree-line-prefix)))
+                            ((eq 'subtree dired-subtree-line-prefix-face)
+                             (concat
+                              dired-subtree-line-prefix
+                              (propertize
+                               (apply 'concat
+                                      (-repeat (1- depth) dired-subtree-line-prefix))
+                               'face face)))
+                            ((eq 'parents dired-subtree-line-prefix-face)
+                             (concat
+                              dired-subtree-line-prefix
+                              (apply 'concat
+                                     (--map
+                                      (propertize dired-subtree-line-prefix
+                                                  'face
+                                                  (intern (format "dired-subtree-depth-%d-face" it)))
+                                      (number-sequence 1 (1- depth))))))))
+                       (funcall dired-subtree-line-prefix depth)))
+        (overlay-put ov 'dired-subtree-name dir-name)
+        (overlay-put ov 'dired-subtree-parent parent)
+        (overlay-put ov 'dired-subtree-depth depth)
+        (overlay-put ov 'evaporate t)
+        (push ov dired-subtree-overlays))
+      (goto-char beg)
+      (dired-move-to-filename)
+      (read-only-mode 1)
+      (run-hooks 'dired-subtree-after-insert-hook))))
+
+;; *** Dired narrow: show only string matches, then edit only narrowed part
 
 ;; '/', type a narrowing string  starts it, 'g' ends the narrowing
+;; also see: narrow-or-widen-dwim
 (use-package dired-narrow
   :ensure t
   :bind (:map dired-mode-map ("/" . dired-narrow)))
-
-;; *** dired+
-
-;; ;; http://www.emacswiki.org/DiredPlus
-;; (use-package dired+
-;;   :init
-;;   ;; Details toggling is bound to "(" in `dired-mode' by default
-;;   (setq diredp-hide-details-initially-flag t)) ; the default
-;; ;;:config
-;; ;; (progn
-;; ;;   ;; Privilege indicator faces
-;; ;;   (defun modi/dired-update-privilege-faces ()
-;; ;;     (set-face-attribute 'diredp-dir-priv nil
-;; ;;                         :foreground "#7474FFFFFFFF"
-;; ;;                         :background (face-background 'default))
-;; ;;     (set-face-attribute 'diredp-exec-priv nil
-;; ;;                         :foreground "dodger blue"
-;; ;;                         :background (face-background 'default))
-;; ;;     (set-face-attribute 'diredp-other-priv nil
-;; ;;                         :background (face-background 'default))
-;; ;;     (set-face-attribute 'diredp-write-priv nil
-;; ;;                         :foreground "#25258F8F2929"
-;; ;;                         :background (face-background 'default))
-;; ;;     (set-face-attribute 'diredp-read-priv nil
-;; ;;                         :foreground "#999932325555"
-;; ;;                         :background (face-background 'default))
-;; ;;     (set-face-attribute 'diredp-no-priv nil
-;; ;;                         :foreground "#2C2C2C2C2C2C"
-;; ;;                         :background (face-background 'default))
-;; ;;     (set-face-attribute 'diredp-rare-priv nil
-;; ;;                         :foreground "Green"
-;; ;;                         :background (face-background 'default))
-;; ;;     (set-face-attribute 'diredp-link-priv nil
-;; ;;                         :foreground "#00007373FFFF"))
-;; ;;   (add-hook 'dired-mode-hook #'modi/dired-update-privilege-faces)))
 
 ;; ** Find-file and URL
 ;;
@@ -1493,10 +1584,15 @@ _C-M-a_ change default action from list for this session
   :mode ("\\.yml$" "\\.dvc$"))
 
 ;; * Narrowing
-;; Narrowing has too many keys: wipe them out and make it a toggle
-;; from http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html
-;; (has a bunch of other toggles, maybe handy but I'll stick w/ this for now)
-;; Could also try recursive-narrow: https://marmalade-repo.org/packages/recursive-narrow
+;; Default emacs narrowing has too many keys: wipe them out and make
+;; it a toggle from
+;; http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html (has
+;; a bunch of other toggles, maybe handy but I'll stick w/ this for
+;; now) Could also try recursive-narrow:
+;; https://marmalade-repo.org/packages/recursive-narrow
+;;
+;; Note that dired-narrow is different, narrows based on search terms
+
 (defun narrow-or-widen-dwim (p)
   "Widen if buffer is narrowed, narrow-dwim otherwise.
 Dwim means: region, org-src-block, org-subtree, or
