@@ -149,8 +149,8 @@ non-separable models; non-stationary models; wind fields},
 
 @InProceedings{Kocijan03caseCompNeuralGaussProc,
   author    = {Kocijan, J. and B. Banko and B. Likar and A. Girard and R. Murray-Smith and C. E. Rasmussen},
-  title     = {A case based comparison of identification with neural network and {Gauss}ian process models},
   booktitle = {Proceedings of the International Conference on Intelligent Control Systems and Signal Processing (ICONS)},
+  title     = {A case based comparison of identification with neural network and {Gauss}ian process models},
   year      = {2003},
   abstract  = {In this paper an alternative approach to black-box identification of non-linear dynamic systems is compared with the more established approach of using artificial neural networks. The Gaussian process prior approach is a representative of non-parametric modelling approaches. It was compared on a pH process modelling case study. The purpose of modelling was to use the model for control design. The comparison revealed that even though Gaussian process models can be effectively used for modelling dynamic systems caution has to be axercised when signals are selected.},
   comment   = {GP's easier to train w/ less data than NNARX neural nets and w/ less data; can warn about overtraining
@@ -161,7 +161,7 @@ non-separable models; non-stationary models; wind fields},
 -- however, GP output variance indicated when it was being asked to predict in a region beyond what it had seen during training. (agrees w/ Tancret99CompNeuralGaussProcAlloy) A good diagnostic.
 * With truncated training set, GP's worked much better than NN},
   crossref  = {Tancret99CompNeuralGaussProcAlloy},
-  file      = {:Kocijan03caseCompNeuralGaussProc.pdf:PDF;Kocijan03caseCompNeuralGaussProc.pdf:Kocijan03caseCompNeuralGaussProc.pdf:PDF},
+  file      = {:Kocijan03caseCompNeuralGaussProc - A Case Based Comparison of Identification with Neural Network and Gaussian Process Models.pdf:PDF;Kocijan03caseCompNeuralGaussProc.pdf:Kocijan03caseCompNeuralGaussProc.pdf:PDF;:1-s2.0-S0957417418303579-main2.pdf:PDF},
   groups    = {Read},
   owner     = {sotterson},
   timestamp = {2008.10.03},
@@ -7814,11 +7814,11 @@ Keywords:
   issn     = {0739-8859},
   note     = {Electric Vehicles: Modelling Demand and Market Penetration},
   abstract = {Bass diffusion models are one of the competing paradigms to forecast the diffusion of innovative products or technologies. This approach posits that diffusion patterns can be modeled through two mechanisms: Innovators adopt the new product and imitators purchase the new product when getting in contact with existing users. Crucial for the implementation of the method are the values assigned to the two parameters, usually referred to as p and q, which mathematically describe innovation and imitation mechanisms. The present paper is based on the findings of a research project about policy measures to promote the diffusion of Electric Vehicles in Germany. It investigates how practitioners could choose adequate values for the Bass model parameters to forecast new automotive technologies diffusion with a focus on Electric Vehicles. It considers parameters provided by the literature as well as ad hoc parameter estimations based on real market data for Germany. Our investigation suggests that researchers may be in trouble in electing adequate parameter values since the different eligible parameter values exhibit dramatic variations. Literature values appear discussible and widely variable while ad hoc estimates appear poorly conclusive. A serious problem is that ad-hoc estimates of the Bass p value are highly sensitive to the assumed market potential M. So for plausible values of M, p varies on a high scale. Unless more consolidation takes place in this area, or more confidence can be placed on ad hoc estimates, these findings issue a warning for the users of such approaches and on the policy recommendations that would derive from their use.},
-  comment  = {Recommends a two step approach to getting Bass diffusion adoption model coefficients using a mix of numeric and judgement-based parameter choice.  Several big tables of Bass parameters found in the literature and this paper -- maybe useful.  However, the overall negative tone  regarding the model is summarized in the conclusion: "there generally appears a warning to the prospective users of Bass parameters for the electric vehicles' diffusion."  
+  comment  = {Recommends a two step approach to getting Bass diffusion adoption model coefficients using a mix of numeric and judgement-based parameter choice.  Several big tables of Bass parameters found in the literature and in this paper -- maybe useful.  However, the overall negative tone regarding the model is summarized in the conclusion: "there generally appears a warning to the prospective users of Bass parameters for the electric vehicles' diffusion."  
 
 Standard Bass Model overview with and without market size estimation
 * Using published Bass coefficients
-   - fouind in many papers (there's a good table of them
+   - found in many papers (there's a good table of them)
     - seem to be inconsistent, and unsourced folklore
 * Using empirically ("ad hoc") estimated Bass coeffs
    -  OLS solution w/ externally provided market size
@@ -7837,7 +7837,7 @@ Recommend two step approach
     a. Keep given M, estimate p,
     b. OR... jointly (re)estimate p and M
 
-q could also come from the literature, as could all the other params, although, as the author notes, these values are often inconsistent and unsourced.
+q could also come from the literature, as could all the other params, although, as the author says, these values are often inconsistent and unsourced.
 },
   doi      = {https://doi.org/10.1016/j.retrec.2015.06.003},
   file     = {:Massiani15useOfBassEV.pdf:PDF},
@@ -21823,19 +21823,7 @@ Could be used for analog ensembles, regime detection, scenario tree reduction (m
   volume    = {86},
   number    = {7},
   pages     = {1326--1334},
-  abstract  = {Optimal management and trading of wind generation calls for the providing of uncertainty estimates
-along with the commonly provided short-term wind power point predictions. Alternative approaches
-for the use of probabilistic forecasting are introduced. More precisely, focus is given to prediction risk
-indices aiming to give a comprehensive signal on the expected level of forecast uncertainty. Ensemble
-predictions of wind generation are used as input. A proposal for the definition of prediction risk indices
-is given. Such skill forecasts are based on the spread of ensemble forecasts (i.e. a set of alternative scenarios
-for the coming period) for a single prediction horizon or over a look-ahead period. It is shown
-on the test case of a Danish offshore wind farm how these prediction risk indices may be related to several
-levels of forecast uncertainty (and potential energy imbalances). Wind power ensemble predictions
-are derived from the conversion of ECMWF and NCEP ensemble forecasts of meteorological variables to
-wind power ensemble forecasts, as well as by a lagged average approach alternative. The ability of prediction
-risk indices calculated from the various types of ensembles forecasts to resolve among situations
-with different levels of uncertainty is discussed.},
+  abstract  = {Optimal management and trading of wind generation calls for the providing of uncertainty estimates along with the commonly provided short-term wind power point predictions. Alternative approaches for the use of probabilistic forecasting are introduced. More precisely, focus is given to prediction risk indices aiming to give a comprehensive signal on the expected level of forecast uncertainty. Ensemble predictions of wind generation are used as input. A proposal for the definition of prediction risk indices is given. Such skill forecasts are based on the spread of ensemble forecasts (i.e. a set of alternative scenarios for the coming period) for a single prediction horizon or over a look-ahead period. It is shown on the test case of a Danish offshore wind farm how these prediction risk indices may be related to several levels of forecast uncertainty (and potential energy imbalances). Wind power ensemble predictions are derived from the conversion of ECMWF and NCEP ensemble forecasts of meteorological variables to wind power ensemble forecasts, as well as by a lagged average approach alternative. The ability of prediction risk indices calculated from the various types of ensembles forecasts to resolve among situations with different levels of uncertainty is discussed.},
   comment   = {Instantaneous ensemble spread not useful, but can use it over time (I think it was said in Geibel05*, which referenced a much older paper of Pierre's on the same topic as this one). That old one was on poor man's ensembles (I think Gregor said), and this one is on real ensembles (I think).},
   file      = {Pinson09skillEnsWndPow.pdf:Pinson09skillEnsWndPow.pdf:PDF},
   owner     = {sotterson},
@@ -21886,28 +21874,7 @@ Does better than ARIMA or SVN based models},
   year      = {2011},
   volume    = {106},
   number    = {494},
-  abstract  = {Ordinary linear and generalized linear regression models relate the mean of a
-response variable to a linear combination of covariate effects and, as a consequence,
-focus on average properties of the response. Analyzing childhood malnutrition in
-developing or transition countries based on such a regression model implies that
-the estimated effects describe the average nutritional status. However, it is of even
-larger interest to analyze quantiles of the response distribution such as the 5% or
-10pct quantile that relate to the risk of children for extreme malnutrition. In this
-paper, we analyze data on childhood malnutrition collected in the 2005/2006 India
-Demographic and Health Survey based on a semiparametric extension of quantile
-regression models where nonlinear effects are included in the model equation, leading
-to additive quantile regression. The variable selection and model choice problems
-associated with estimating an additive quantile regression model are addressed by a
-novel boosting approach. Based on this rather general class of statistical learning
-procedures for empirical risk minimization, we develop, evaluate and apply a boosting
-algorithm for quantile regression. Our proposal allows for data-driven determination
-of the amount of smoothness required for the nonlinear effects and combines model
-selection with an automatic variable selection property. The results of our empirical
-evaluation suggest that boosting is an appropriate tool for estimation in linear and
-additive quantile regression models and helps to identify yet unknown risk factors for
-childhood malnutrition.
-Keywords: functional gradient boosting, penalized splines, additive models, variable
-selection, model choice.},
+  abstract  = {Ordinary linear and generalized linear regression models relate the mean of a response variable to a linear combination of covariate effects and, as a consequence, focus on average properties of the response. Analyzing childhood malnutrition in developing or transition countries based on such a regression model implies that the estimated effects describe the average nutritional status. However, it is of even larger interest to analyze quantiles of the response distribution such as the 5\% or 10pct quantile that relate to the risk of children for extreme malnutrition. In this paper, we analyze data on childhood malnutrition collected in the 2005/2006 India Demographic and Health Survey based on a semiparametric extension of quantile regression models where nonlinear effects are included in the model equation, leading to additive quantile regression. The variable selection and model choice problems associated with estimating an additive quantile regression model are addressed by a novel boosting approach. Based on this rather general class of statistical learning procedures for empirical risk minimization, we develop, evaluate and apply a boosting algorithm for quantile regression. Our proposal allows for data-driven determination of the amount of smoothness required for the nonlinear effects and combines model selection with an automatic variable selection property. The results of our empirical evaluation suggest that boosting is an appropriate tool for estimation in linear and additive quantile regression models and helps to identify yet unknown risk factors for childhood malnutrition.  Keywords: functional gradient boosting, penalized splines, additive models, variable selection, model choice.},
   comment   = {Boosting high dim QR w/ featsel built in. Is additive but terms are nonlinear and can include interactions. The author's PhD thesis (Fenske12strctAddQRthesis) is more clear than this paper, so I have more notes there. Is implemented in R. The focus is on doing an interpretable, purely additive model, which doesn't inherently have constrained output; the related technique in Mayr12genAddModelsHiDimBoost might be more appropriate for wind power quantile regression.
 
 Basic Idea: the quantile prediction is a weighted sum of "base learners" -- simple regression models fed single inputs or simple interactions of them. At each iteration, the negative gradient of the overall quantile error cost function is computed, and then the base learners are trained to predict it; the coeffs of the base learner that predicts the cost function the best is updated by weighted averaging with the previous iteration's coeffs. This is a gradient boosting algorith, so unlike adaboost or whatever, it seems that there is no random resampling.
@@ -22049,39 +22016,7 @@ The tech report is attached, not the article},
   author      = {Roopesh Ranjan},
   title       = {Combining and Evaluating Probabilistic Forecasts},
   year        = {2009},
-  abstract    = {Over the past one to two decades, there has been a shift of paradigms from deterministic
-(or point) forecasts to probabilistic (or distributional) forecasts. Probabilistic forecasts take
-uncertainty in the prediction into account and forecast a probability distribution function
-(pdf ) for the unknown quantity of interest. In the case of binary events, the probabilistic
-forecast is the probability that the event will occur. In the case of continuous variables,
-the probabilistic forecast is the predictive density or distribution for the variable of interest.
-Calibration and sharpness are two important components of a probabilistic forecast. Cali-
-bration refers to statistical consistency between the forecasts and the realizations. Sharpness
-refers to the spread of the forecast pdf. The narrower the pdf, the sharper the forecast.
-Proper scoring rules combine calibration and sharpness together. They are a function of
-the probability forecast and observation that materializes. Using proper scoring rules a
-forecaster maximizes his expected gain by giving his true belief.
-We propose a method for comparing density forecasts which is based on weighted versions
-of the continuous ranked probability score (CRPS). The weighting emphasizes regions of
-interest, such as the tails or the center of a variable?s range, while encouraging the forecaster
-to give his true belief (propriety), as opposed to a recently developed weighted likelihood ra-
-tio test which encourages forecasters to deviate from their true beliefs (hedging). Threshold
-and quantile based decompositions of the CRPS can be illustrated graphically and prompt
-insights into the strengths and deficiencies of a forecasting method. We illustrate the use
-of the weighted CRPS and graphical tools in case studies on the Bank of England?s density
-forecasts of quarterly inflation rates in the United Kingdom, and probabilistic predictions
-of wind resources in the Pacific Northwest.
-We also consider the problem of combining probabilistic forecasts. Linear pooling is by
-far the most popular method for combining probabilistic forecasts. However, any nontriv-
-ial weighted average of two or more distinct calibrated probability or density forecasts is
-necessarily uncalibrated and lacks sharpness. In view of this, linear pooling requires recal-
-ibration, even in the ideal case in which the individual forecasts are calibrated. Toward
-this end, we propose a beta transformed linear opinion pool (BLP) for the aggregation of
-probability forecasts or densities from distinct, calibrated or uncalibrated sources. The BLP
-method fits an optimal nonlinearly recalibrated forecast combination, by compositing a beta
-transform and the traditional linear opinion pool. The technique is illustrated in simulation
-examples and case studies on probability of precipitation forecasts in the Pacific Northwest
-and density forecasts of temperature at the Sea-Tac Airport.},
+  abstract    = {Over the past one to two decades, there has been a shift of paradigms from deterministic (or point) forecasts to probabilistic (or distributional) forecasts. Probabilistic forecasts take uncertainty in the prediction into account and forecast a probability distribution function (pdf ) for the unknown quantity of interest. In the case of binary events, the probabilistic forecast is the probability that the event will occur. In the case of continuous variables, the probabilistic forecast is the predictive density or distribution for the variable of interest.  Calibration and sharpness are two important components of a probabilistic forecast. Cali- bration refers to statistical consistency between the forecasts and the realizations. Sharpness refers to the spread of the forecast pdf. The narrower the pdf, the sharper the forecast.  Proper scoring rules combine calibration and sharpness together. They are a function of the probability forecast and observation that materializes. Using proper scoring rules a forecaster maximizes his expected gain by giving his true belief.  We propose a method for comparing density forecasts which is based on weighted versions of the continuous ranked probability score (CRPS). The weighting emphasizes regions of interest, such as the tails or the center of a variable?s range, while encouraging the forecaster to give his true belief (propriety), as opposed to a recently developed weighted likelihood ra- tio test which encourages forecasters to deviate from their true beliefs (hedging). Threshold and quantile based decompositions of the CRPS can be illustrated graphically and prompt insights into the strengths and deficiencies of a forecasting method. We illustrate the use of the weighted CRPS and graphical tools in case studies on the Bank of England?s density forecasts of quarterly inflation rates in the United Kingdom, and probabilistic predictions of wind resources in the Pacific Northwest.  We also consider the problem of combining probabilistic forecasts. Linear pooling is by far the most popular method for combining probabilistic forecasts. However, any nontriv- ial weighted average of two or more distinct calibrated probability or density forecasts is necessarily uncalibrated and lacks sharpness. In view of this, linear pooling requires recal- ibration, even in the ideal case in which the individual forecasts are calibrated. Toward this end, we propose a beta transformed linear opinion pool (BLP) for the aggregation of probability forecasts or densities from distinct, calibrated or uncalibrated sources. The BLP method fits an optimal nonlinearly recalibrated forecast combination, by compositing a beta transform and the traditional linear opinion pool. The technique is illustrated in simulation examples and case studies on probability of precipitation forecasts in the Pacific Northwest and density forecasts of temperature at the Sea-Tac Airport.},
   comment     = {How to combine forecasts. Advocates recalibration. Good for ReWP?},
   file        = {Ranjan09CombEvalProbFrcsts.pdf:Ranjan09CombEvalProbFrcsts.pdf:PDF},
   institution = {University of Washington, Seattle},
@@ -22256,16 +22191,7 @@ http://cran.r-project.org/web/packages/GEVcdn/citation.html},
   volume    = {12},
   number    = {s1},
   pages     = {S50--S67},
-  abstract  = {Parametric copulas are shown to be attractive devices for specifying quantile
-autoregressive models for nonlinear time-series. Estimation of local, quantile-specific copula-
-based time series models offers some salient advantages over classical global parametric
-approaches. Consistency and asymptotic normality of the proposed quantile estimators are
-established under mild conditions, allowing for global misspecification of parametric copulas
-and marginals, and without assuming any mixing rate condition. These results lead to a general
-framework for inference and model specification testing of extreme conditional value-at-risk
-for financial time series data.
-
-Keywords: Copula, Ergodic nonlinear Markov models, Quantile autoregression.},
+  abstract  = {Parametric copulas are shown to be attractive devices for specifying quantile autoregressive models for nonlinear time-series. Estimation of local, quantile-specific copula- based time series models offers some salient advantages over classical global parametric approaches. Consistency and asymptotic normality of the proposed quantile estimators are established under mild conditions, allowing for global misspecification of parametric copulas and marginals, and without assuming any mixing rate condition. These results lead to a general framework for inference and model specification testing of extreme conditional value-at-risk for financial time series data.  Keywords: Copula, Ergodic nonlinear Markov models, Quantile autoregression.},
   comment   = {For Henry Martin's autoregressive Poisson model (Hawke's process in Toke11mktMkingOBsprd).  Could also be used for short term forecasting?  Better yet, grid node forecasting, since Malte has had luck with copulas and the Vine copula seems interesting.},
   file      = {Chen09copulaARQR.pdf:Chen09copulaARQR.pdf:PDF},
   owner     = {sotterson},
@@ -22586,26 +22512,7 @@ Key Words: Additive models; Full search; Myopic search; P-spline; Smoothing.},
   title    = {Clustering Residential Electricity Load Curves via Community Detection in Network},
   journal  = {arXiv preprint arXiv:1811.10356},
   year     = {2018},
-  abstract = {Performing analytic of household load curves (LCs) has significant value in predicting in-
-dividual electricity consumption patterns, and hence facilitate developing demand-response
-strategy, and finally achieve energy efficiency improvement and emission reduction. LC clus-
-tering is a widely used analytic technology, which discovers electricity consumption patterns
-by grouping similar LCs into same sub-groups. However, previous clustering methods treat
-each LC in the data set as an individual time series, ignoring the inherent relationship among
-different LCs, restraining the performance of the clustering methods. What’s more, due to the
-significant volatility and uncertainty of LCs, the previous LC clustering approaches inevitably
-result in either lager number of clusters or huge variances within a cluster, which is unaccept-
-able for actual application needs. In this paper, we proposed an integrated approach to address
-this issue. First, we converted the LC clustering task into the community detection task in
-network. Second, we proposed a clustering approach incorporated with community detection
-to improve the performance of LC clustering, which includes network construction, community
-detection and typical load profile extraction. The method convert the data set into a network
-in which the inherent relationship among LCs is represented by the edges of the network.
-Third, we construct a multi-layer typical load profile directory to make the trade-off between
-variances within a cluster and the number of the clusters, enabling the researchers to assess
-the LCs and the customers in different layers according to practical application requirements.
-The experiments demonstrate that our integrated approach outperform the state-of-the-art
-methods.},
+  abstract = {Performing analytic of household load curves (LCs) has significant value in predicting in- dividual electricity consumption patterns, and hence facilitate developing demand-response strategy, and finally achieve energy efficiency improvement and emission reduction. LC clus- tering is a widely used analytic technology, which discovers electricity consumption patterns by grouping similar LCs into same sub-groups. However, previous clustering methods treat each LC in the data set as an individual time series, ignoring the inherent relationship among different LCs, restraining the performance of the clustering methods. What’s more, due to the significant volatility and uncertainty of LCs, the previous LC clustering approaches inevitably result in either lager number of clusters or huge variances within a cluster, which is unaccept- able for actual application needs. In this paper, we proposed an integrated approach to address this issue. First, we converted the LC clustering task into the community detection task in network. Second, we proposed a clustering approach incorporated with community detection to improve the performance of LC clustering, which includes network construction, community detection and typical load profile extraction. The method convert the data set into a network in which the inherent relationship among LCs is represented by the edges of the network.  Third, we construct a multi-layer typical load profile directory to make the trade-off between variances within a cluster and the number of the clusters, enabling the researchers to assess the LCs and the customers in different layers according to practical application requirements.  The experiments demonstrate that our integrated approach outperform the state-of-the-art methods.},
   comment  = {Perhaps a hacky paper but has some interesting aspects.
 
 DTW --> similarity (I think) --> graph edges from thresholded similarity (I think) --> community detection --> clusters
@@ -28296,8 +28203,8 @@ http://metaoptimize.com/qa/questions/9055/role-of-transfer-functions-in-neural-n
 
 @InProceedings{Vogt18multiDistLrnAnomDet,
   author    = {Stephan Vogt and Scott Otterson and Volker Berkhout},
-  title     = {Multi-task distribution learning approach to anomaly detection of operational states of wind turbine},
   booktitle = {WindEurope},
+  title     = {Multi-task distribution learning approach to anomaly detection of operational states of wind turbine},
   year      = {2018},
   address   = {Hamburg, DE},
   abstract  = {The detection of abnormal operation modes is of fundamental importance for both 
@@ -28313,10 +28220,14 @@ data from an offshore wind turbine, we show that with this model we can better r
 probability of observed events than with conventional methods. While the predicted 
 cumulative distribution function has a similar quality and no significant differences are visible 
 in the continuous ranked probability score, the probability density function will be substantially 
-smoother. This is also reflected in a significantly lower ignorance score. },
+smoother. This is also reflected in a significantly lower ignorance score.},
   comment   = {Single output NN distribution regression with random thresholds during training.  This is what I called dr1nn in the IRPWIND final report for WP 82.3 (2018).  Although, I implemented it with the Matlab NN toolbox and Stephan later reimplimented it for this paper with what I would guess were his own tools.
 
-Multitask intro: Caruana97multiTaskLearninng},
+Ignorance score, which is local, showed benefit but not CRPS.
+
+Multitask intro: Caruana97multiTaskLearninng
+
+Lauret19verifIrradProbFrcst : compares CRPS and ignorance for probabilistic irradiation forecasts.},
   file      = {:Vogt18multiDistLrnAnomDet.pdf:PDF},
   groups    = {Scott:1},
 }
@@ -38612,13 +38523,12 @@ http://www.evernote.com/l/AA0V1xHzL29PgYhOrFprhksnanhADGk1XAI/},
 }
 
 @InProceedings{Lundberg17interpModlPred,
-  author        = {Lundberg, Scott M and Lee, Su-In},
-  title         = {A unified approach to interpreting model predictions},
-  booktitle     = {Advances in Neural Information Processing Systems},
-  year          = {2017},
-  pages         = {4765--4774},
-  __markedentry = {[scott:6]},
-  abstract      = {Understanding why a model makes a certain
+  author    = {Lundberg, Scott M and Lee, Su-In},
+  booktitle = {Advances in Neural Information Processing Systems},
+  title     = {A unified approach to interpreting model predictions},
+  year      = {2017},
+  pages     = {4765--4774},
+  abstract  = {Understanding why a model makes a certain
                   prediction can be as crucial as the prediction’s
                   accuracy in many applications. However, the highest
                   accuracy for large modern datasets is often achieved
@@ -38645,15 +38555,15 @@ http://www.evernote.com/l/AA0V1xHzL29PgYhOrFprhksnanhADGk1XAI/},
                   we present new methods that show improved
                   computational performance and/or better consistency
                   with human intuition than previous approaches.},
-  comment       = {Explaining a complex model w/ a simpler one, also a review of current methods.  Has code and a couple Medium Towards DS articles.
+  comment   = {Explaining a complex model w/ a simpler one, also a review of current methods.  Has code and a couple Medium Towards DS articles.
 
 code: https://github.com/slundberg/shap
 Medum articles
 https://www.evernote.com/l/AA2l1dRm2WBJPY1j8w6RyoPyCAJk-xH5B0I/
-https://www.evernote.com/l/AA1sBGonQh1GDac8BlJJ9a0iWSDqMCZ4if0/
-},
-  file          = {:Lundberg17interpModlPred.pdf:PDF},
-  url           = {https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions},
+https://www.evernote.com/l/AA1sBGonQh1GDac8BlJJ9a0iWSDqMCZ4if0/},
+  file      = {:Lundberg17interpModlPred.pdf:PDF},
+  groups    = {scott:6},
+  url       = {https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions},
 }
 
 @Article{Zhou14graphEstMatNormGEMNI,
@@ -42172,6 +42082,35 @@ POSSIBLE IMPROVEMENTS
   timestamp = {2014.11.07},
 }
 
+@Article{Lauret19verifIrradProbFrcst,
+  author    = {Philippe Lauret and Mathieu David and Pierre Pinson},
+  journal   = {Solar Energy},
+  title     = {Verification of solar irradiance probabilistic forecasts},
+  year      = {2019},
+  month     = {dec},
+  pages     = {254--271},
+  volume    = {194},
+  abstract  = {We propose a framework for evaluating the quality of solar irradiance probabilistic forecasts. The verification
+framework is based on visual diagnostic tools and a set of scoring rules mostly originating from the weather
+forecast verification community. Two types of probabilistic forecasts are used as a basis to illustrate the ap-
+plication of these verification approaches. The first one consists in ensemble forecasts commonly provided by
+national or international meteorological centres. The second one originates from statistical methods and pro-
+duces a set of discrete quantile forecasts, the nominal proportions of which span the unit interval. These
+probabilistic forecasts are evaluated for two selected sites that experience very different climatic conditions. The
+first site is located in the continental US while the second one is situated on La Réunion Island. Although visual
+diagnostic tools can help identify deficiencies in generated forecasts, it is recommended that a set of numerical
+scores be used to assess the quality of probabilistic forecasts. In particular, the Continuous Ranked Probability
+Score (CRPS) seems to have all the features needed to evaluate a probabilistic forecasting system and, as such,
+may become a standard for verifying solar irradiance probabilistic forecasts and by extension probabilistic
+forecasts of solar power generation.},
+  comment   = {Proposes CRPS, I think, for error metric.   Also looks at forms of ignorance score.
+
+Vogt18multiDistLrnAnomDet compares DRNN prob forecasts using CRPS and ignorance, seems like ignorance is better?},
+  doi       = {10.1016/j.solener.2019.10.041},
+  file      = {:Lauret19verifIrradProbFrcst.pdf:PDF},
+  publisher = {Elsevier {BV}},
+}
+
 @Article{Villani12GenSmthFinMix,
   author    = {Villani, Mattias and Kohn, Robert and Nott, David J},
   title     = {Generalized smooth finite mixtures},
@@ -43260,15 +43199,15 @@ Does eliminate the need for exact?  (King02logistRgrssnMLvsExact)},
   title    = {The Spatial Diffusion of Technology},
   journal  = {National Bureau of Economic Research},
   year     = {2013},
-  abstract = {We study technology di¤usion across countries and over time empirically. We nd signicant
-evidence that technology di¤uses slower to locations that are farther away from adoption leaders.
-This e¤ect is stronger across rich countries and also when measuring distance along the south-
-north dimension. A simple theory of human interactions can account for these empirical ndings.
-The theory suggests that the e¤ect of distance should vanish over time, a hypothesis that we
-conrm in the data, and that distinguishes technology from other ows like goods or investments.
+  abstract = {We study technology diffusion across countries and over time empirically. We find signifcant
+evidence that technology diffuses slower to locations that are farther away from adoption leaders.
+This effect is stronger across rich countries and also when measuring distance along the south-
+north dimension. A simple theory of human interactions can account for these empirical fndings.
+The theory suggests that the effect of distance should vanish over time, a hypothesis that we
+confrm in the data, and that distinguishes technology from other fows like goods or investments.
 We then structurally estimate the model. The parameter governing the frequency of interactions
 is larger for newer and network-based technologies and for the median technology the frequency
-of interactions decays by 73% every 1000 Kms. Overall, we document the signicant role that
+of interactions decays by 73% every 1000 Kms. Overall, we document the signifcant role that
 geography plays in determining technology di¤usion across countries.},
   comment  = {Estimates the spatial coefficient of technology diffusion using data from many countries (I think this data is available)},
   file     = {:Comin13spatDiffTech.pdf:PDF},
@@ -49643,6 +49582,27 @@ Original paper on this idea: Ng02discrimVsGenNBvsLogRgrsn},
   url       = {http://www.cs.cmu.edu/~tom/NewChapters.html},
 }
 
+@TechReport{MITenergyInit19insightFutMobil,
+  author      = {{MIT Energy Initiative}},
+  title       = {Insights into Future Mobility},
+  institution = {MIT Energy Initiative},
+  year        = {2019},
+  type        = {techreport},
+  address     = {Cambridge, MA. USA},
+  comment     = {Worth reading for the CPR EV forecast.
+
+MIT study predicts $124 per kWh price for electric car batteries by 2030. At that point, the total cost of ownership would equal that of a gas vehicle.
+But many researchers are predicting $100 per kWh by 2025, the point at which EV and gas vehicles would have the same RETAIL price.
+
+Article argues that consumers are very sensitve to upfront pricetag, not total cost of ownership.
+
+Lots of econometric modeling done here.  Could use as an example.
+
+Evernote Page:  https://www.evernote.com/l/AA1c4OwL589LmLSwrScZ8V5_i12v3lzSELw/},
+  file        = {:MITenergyInit19insightFutMobil.pdf:PDF},
+  url         = {http://energy.mit.edu/insightsintofuturemobility},
+}
+
 @TechReport{Mohrlen19selectRESfrcstRecmnd,
   author      = {Corinna M{\:o}hrlen and John Zack and Jakob W. Messner and Jethro Browell and Craig Collier and Aidan Tuohy and Justin Sharp and Gregor Giebel},
   title       = {Recommended practices for selecting renewable power forecasting solutions},
@@ -52080,6 +52040,8 @@ Related article: Zhu12multiVaryCfsFncResp},
 
 @Comment{jabref-meta: grouping:
 0 AllEntriesGroup:;
+1 StaticGroup:Markings\;2\;1\;\;\;\;;
+2 StaticGroup:scott:6\;2\;1\;\;\;\;;
 1 StaticGroup:Markings\;2\;1\;\;\;\;;
 2 StaticGroup:Scott:1\;2\;1\;\;\;\;;
 2 StaticGroup:Scott:6\;2\;1\;\;\;\;;
