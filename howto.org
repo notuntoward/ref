@@ -1450,6 +1450,8 @@ Many text editors have access to these in some simple way, so before thinking ab
 ********* [[https://github.com/orgzly/orgzly-android/issues/47][cut but no copy]] (I also submitted a [[https://github.com/orgzly/documentation/issues/10#issuecomment-346615891][bug]] but that was to [[https://github.com/orgzly/documentation][documentation]])
 ********* [[https://github.com/orgzly/orgzly-android/commits/master][commits are very active]], as of Nov. 23, 2017
 ******* [[Org-mode interface to trello]]
+******* [[https://github.com/200ok-ch/organice][organice: An implementation of Org mode without the dependence on Emacs]]
+        Maybe more complete than orgzly, but I'm not sure if it runs locally on the phone.
 *** Dired operations
 ***** file marking
       From [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Marks-vs-Flags.html][here]]:
@@ -3898,9 +3900,18 @@ that you get when you buy Office 365?
         o June Windows update wiped out this setting
         o it wasn't transferred to my new Surface Pro, so I had to reset it
 
-*** Display environment variables in powershell w/o truncation
+*** Display Windows environment variables in PowerShell w/o truncation
 
     gci env: | Format-Table -Wrap -AutoSize
+
+*** Emacs bash-style shortcuts in Powershell
+    From: [[https://stackoverflow.com/questions/43295639/update-powershell-keyboard-bindings-to-be-emacs-style-like-bash-shell][Update powershell keyboard bindings to be emacs style like bash shell]]
+
+    You can download [[https://github.com/PowerShell/PSReadLine][ PowerShell/PSReadLine]] to give emacs keybindings to powershell.  This would help for a bare Windows Powershell; it's not needed inside of emacs w/ powershell package.  
+
+    In PSReadLine readline setting: set the EditMode option to Emacs:
+
+    Set-PSReadLineOption -EditMode Emacs
 
 *** tasklist/taskkill (like Unix 'ps', and 'kill')
 
@@ -9053,6 +9064,24 @@ https://www.youtube.com/watch?v=jpzi0-1mKyA
       import multiprocessing
 
       (works for arbitrary code you write yourself)
+***** joblib + multiprocessing in Python
+From: [[https://blog.dominodatalab.com/simple-parallelization/][Easy parallel loops in Python, R, Matlab and Octave]]
+
+from joblib import Parallel, delayed
+import multiprocessing
+     
+# what are your inputs, and what operation do you want to 
+# perform on each input. For example...
+inputs = range(10) 
+def processInput(i):
+    return i * i
+ 
+num_cores = multiprocessing.cpu_count()
+     
+results = Parallel(n_jobs=num_cores)(delayed(processInput)(i) for i in inputs)
+
+# results is now [1, 4, 9 ... ]
+
 ***** [[Parallelization for SciPy]]
 ***** [[Hadoop]]
 *** <<Tidy (Long) Tables>> in Python
