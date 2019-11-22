@@ -148,9 +148,9 @@ DISPLAY is a display name, frame or terminal, as in
   "Computes # pix for window divider based on screen DPI.
 TODO: make this a general function."
 
-  (let* ((nPixHigh 6.0)
+  (let* ((nPixHigh 6.0)    # Surface Pro
         (DPIhigh   185.0)
-        (nPixLow   3.0)
+        (nPixLow   3.0)    # CPR monitor
         (DPIlow    94.0)
         DPIthis nPixThis)
 
