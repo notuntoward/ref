@@ -148,9 +148,11 @@ DISPLAY is a display name, frame or terminal, as in
   "Computes # pix for window divider based on screen DPI.
 TODO: make this a general function."
 
-  (let* ((nPixHigh 6.0)    # Home monior (Dell 4K)
-        (DPIhigh   185.0)
-        (nPixLow   3.0)    # CPR monitor
+  ;; (let* ((nPixHigh 6.0)    ; Home monior (Dell 4K)
+  ;;       (DPIhigh   185.0)
+  (let* ((nPixHigh 6.0)    ; Surface Pro
+        (DPIhigh   267)
+        (nPixLow   3.0)    ; CPR monitor
         (DPIlow    94.0)
         DPIthis nPixThis)
 
@@ -163,8 +165,9 @@ TODO: make this a general function."
 ;; way to do this in .emacs, instead of calling customize-set-variable).
 (setq nPixDiv (calcDivNpix))
 (message "nPixDiv: %s" nPixDiv)
-(setq window-divider-default-bottom-width nPixDiv)
 (setq window-divider-default-right-width nPixDiv)
+;; bottom hard to mouse on SP, hack is to add a pixel
+(setq window-divider-default-bottom-width (+ nPixDiv 1));
 
 ;; (set-window-scroll-bars nil 11 t) ; currenT WINDOW
 ;;(setq-default scroll-bar-width 50) ; default or all new windows and
