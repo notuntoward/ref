@@ -169,7 +169,7 @@ TODO: make this a general function."
 ;; bottom hard to mouse on SP, hack is to add a pixel
 (setq window-divider-default-bottom-width (+ nPixDiv 1));
 
-;; (set-window-scroll-bars nil 11 t) ; currenT WINDOW
+;; (set-window-scroll-bars nil 11 t) ; set current WINDOW
 ;;(setq-default scroll-bar-width 50) ; default or all new windows and
 ;;frames
 ;; (modify-all-frames-parameters ) should change them all
@@ -840,31 +840,10 @@ _C-M-a_ change default action from list for this session
 ;; *** Dired subtree and project explorer
 
 ;; From: https://mads-hartmann.com/2016/05/12/emacs-tree-view.html
-;; TODO: if cursor on '.' do nothing.  If cursor on '..' pop a directory
+;; TODO: consider using whole dired-subtree package, or dired-filter
 ;; TODO: add the code for projectile/project explorer
 
-;; PROBLEM with this is that once you go up a dir, it never toggles
-;; again, due to a saved state, I suppose
-;; (defun mhj/dwim-toggle-or-open ()
-;;   "Toggle subtree or open the file."
-;;   (interactive)
-;;   (if (file-directory-p
-;;        (dired-get-file-for-visit))
-;;       (let ((dir-at-point (file-name-nondirectory(dired-get-filename nil t))))
-;;         (if (string= dir-at-point "..")
-;;             (dired-find-file) ;; go up a dir
-;;           (if (not (string= dir-at-point ".")) ;; do nothing if on '.'
-;;               (progn
-;;                 (message "called toggle")
-;;                 ;; (message "%s string= '.': %s" raw (string= raw "."))
-;;                 ;; (message "%s string= '..': %s" raw (string= raw ".."))
-;;                 ;;                             (directory-file-name
-;;                 ;;                              (file-name-directory raw))))
-;;                 ;; (message "bottom 2dir: %s " (file-name-nondirectory raw))
-;;                 ;; (dired-subtree-toggle)
-;;                 (revert-buffer)))))
-;;     (dired-find-file)))
-
+;;(defun mhj/dwim-toggle-or-open ()
 (defun mhj/dwim-toggle-or-open ()
   "Toggle subtree or open the file."
   (interactive)
@@ -872,6 +851,19 @@ _C-M-a_ change default action from list for this session
       (progn
     (dired-subtree-toggle)
     (revert-buffer))
+    (dired-find-file)))
+
+(defun sdo/dwim-toggle-or-open ()
+  "Toggle subtree or open the file."
+  (interactive)
+  (if (file-directory-p (dired-get-file-for-visit))
+      (let ((dir-at-point (file-name-nondirectory(dired-get-filename nil t))))
+        (if (string= dir-at-point "..")
+            (dired-find-file) ;; go up a dir
+          (if (not (string= dir-at-point ".")) ;; do nothing if on '.'
+              (progn
+                (dired-subtree-toggle)
+                (revert-buffer)))))
     (dired-find-file)))
 
 ;; TODO: Click both does tree and opens new dired window.  Get rid of
@@ -891,9 +883,9 @@ _C-M-a_ change default action from list for this session
   :demand
   :bind
   (:map dired-mode-map
-    ("<enter>" . mhj/dwim-toggle-or-open)
-    ("<return>" . mhj/dwim-toggle-or-open)
-    ("<tab>" . mhj/dwim-toggle-or-open)
+    ("<enter>" . dired-find-file)
+    ("<return>" . dired-find-file)
+    ("<tab>" . sdo/dwim-toggle-or-open)
     ("<down-mouse-1>" . mhj/mouse-dwim-to-toggle-or-open))
   :config
   (progn
