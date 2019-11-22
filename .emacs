@@ -843,7 +843,19 @@ _C-M-a_ change default action from list for this session
 ;; TODO: consider using whole dired-subtree package, or dired-filter
 ;; TODO: add the code for projectile/project explorer
 
-;;(defun mhj/dwim-toggle-or-open ()
+;; (defun sdo/dwim-toggle-or-open ()
+;;   "Toggle subtree or open the file.  Do nothing on '.'; on '..', go up"
+;;   (interactive)
+;;   (if (file-directory-p (dired-get-file-for-visit))
+;;       (let ((dir-at-point (file-name-nondirectory(dired-get-filename nil t))))
+;;         (if (string= dir-at-point "..")
+;;             (dired-find-file) ;; go up a dir
+;;           (if (not (string= dir-at-point ".")) ;; do nothing if on '.'
+;;               (progn
+;;                 (dired-subtree-toggle)
+;;                 (revert-buffer)))))
+;;     (dired-find-file)))
+
 (defun mhj/dwim-toggle-or-open ()
   "Toggle subtree or open the file."
   (interactive)
@@ -851,19 +863,6 @@ _C-M-a_ change default action from list for this session
       (progn
     (dired-subtree-toggle)
     (revert-buffer))
-    (dired-find-file)))
-
-(defun sdo/dwim-toggle-or-open ()
-  "Toggle subtree or open the file."
-  (interactive)
-  (if (file-directory-p (dired-get-file-for-visit))
-      (let ((dir-at-point (file-name-nondirectory(dired-get-filename nil t))))
-        (if (string= dir-at-point "..")
-            (dired-find-file) ;; go up a dir
-          (if (not (string= dir-at-point ".")) ;; do nothing if on '.'
-              (progn
-                (dired-subtree-toggle)
-                (revert-buffer)))))
     (dired-find-file)))
 
 ;; TODO: Click both does tree and opens new dired window.  Get rid of
@@ -885,7 +884,7 @@ _C-M-a_ change default action from list for this session
   (:map dired-mode-map
     ("<enter>" . dired-find-file)
     ("<return>" . dired-find-file)
-    ("<tab>" . sdo/dwim-toggle-or-open)
+    ("<tab>" . mhj/dwim-toggle-or-open)
     ("<down-mouse-1>" . mhj/mouse-dwim-to-toggle-or-open))
   :config
   (progn
