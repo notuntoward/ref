@@ -2227,6 +2227,12 @@ Scott
 
 *** TODO [[file:energy.bib::Battaglia18biasDpLrnGraphNet][Battaglia et al.: Relational bias, deep lrn, graph networks]] (perhaps, the big scene setting paper to read, has code)
 
+* Categorical Encoding
+
+  One-hot ecoding and so on.
+
+*** Python lib w/ many types: [[https://github.com/scikit-learn-contrib/categorical-encoding][scikit-learn-contrib/categorical-encoding]]
+
 * <<Generalized Linear Models>>
 
   [[file:energy.bib::Pillow16mathNeurTlsSlides][Not to be confused]] with "General Linear Models", is a [[file:energy.bib::Pillow16mathNeurTlsSlides][superset]] of things like Poisson and Logistic Regression.
@@ -6964,6 +6970,7 @@ variables will be preferred, when possible.
 ********* Also? [[Scenario/Ensemble quality metrics]]
 ******* CRPS is nonlocal: [[file:energy.bib::Brocker07properScore][Broecker & Smith 2007: Score prob frcst: import proper]]
 ******* [[file:energy.bib::Todter12genIgnCRPS][Toedter & Ahrens 2012: Generalization Ignorance Score]] and CRPS decomp
+******* TODO [[file:energy.bib::Lauret19verifIrradProbFrcst][Lauret et al. 2019: Verif Irrad Prob Frcst]]: CRPS, ignorance others
 ******* <<Arguments against CRPS>>
 ********* [[file:energy.bib::Vogt18multiDistLrnAnomDet][Vogt et al. 2018: Multitask anomaly pred maint]] (IGN better discrim)
 ********* [[file:energy.bib::Jewson03likSkillFrcst][Jewson 2003: Likelihood Skill]]
@@ -9042,9 +9049,8 @@ http://www.tandfonline.com/doi/abs/10.1080/00207543.2011.636389
 ********* [[file:energy.bib::Messner13probFrcstInvCensor][Messner et al. 2013: Probabilistic]]
 ********* [[file:energy.bib::Cannon11quantRgrsnNNprecip][Cannon 2011: Quantile]]
 ********* non-parametric regression w/ truncated learning: [[http://cran.r-project.org/web/packages/truncSP/truncSP.pdf][R's truncSP package]]
-***** bounding by output transformation or modeling
-      <<Bounding by output transformation>>
-
+***** <<Bounding by output transformation>> or modeling
+     
       For wind power, logit() seems popular and also settled on in
       [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006]], where the author tried both.
 
