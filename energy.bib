@@ -2577,6 +2577,25 @@ networks but require retraining at each timestep},
   timestamp = {2009.05.14},
 }
 
+@Article{Cannon12nnCaDENCE,
+  author        = {Alex J. Cannon},
+  title         = {Neural networks for probabilistic environmental prediction: Conditional Density Estimation Network Creation and Evaluation (CaDENCE) in R},
+  journal       = {Computers \& Geosciences},
+  year          = {2012},
+  volume        = {41},
+  pages         = {126 - 135},
+  issn          = {0098-3004},
+  __markedentry = {[Scott:6]},
+  abstract      = {A conditional density estimation network (CDEN) is a probabilistic extension of the standard multilayer perceptron neural network (MLP). A CDEN model allows users to estimate parameters of a specified probability density function conditioned upon values of a set of predictors using the MLP architecture. The result is a flexible model for the mean, the variance, exceedance probabilities, prediction intervals, etc. from the specified conditional distribution. Because the CDEN is based on the MLP, nonlinear relationships, including those involving complicated interactions between predictors, can be described by the modeling framework. CDEN models have been applied to a wide range of environmental prediction tasks, such as precipitation downscaling, extreme value analysis in hydrology, wind retrievals from satellites, and air quality forecasting. This paper describes the CaDENCE (Conditional Density Estimation Network Creation and Evaluation) package, which provides routines for creating and evaluating CDEN models in the R programming language. CaDENCE routines are demonstrated on a dataset consisting of suspended sediment concentrations and discharge measurements from the Fraser River at Hope, British Columbia, Canada.},
+  comment       = {Uses an NN to predicts parametric distributions.  Cannon10GEVcdn does this with the generalized extreme value distribution.
+
+I don't have the paper yet but I've attached the R package documentation.},
+  doi           = {https://doi.org/10.1016/j.cageo.2011.08.023},
+  file          = {:Cannon12nnCaDENCE.pdf:PDF},
+  keywords      = {Probabilistic, Nonlinear, Artificial neural network, Interactions, Prediction interval, R programming language},
+  url           = {http://www.sciencedirect.com/science/article/pii/S0098300411002913},
+}
+
 @Article{Estevez09normMutInfoFeatSel,
   author    = {Estevez, P.A. and Tesmer, M. and Perez, C.A. and Zurada, J.M.},
   title     = {Normalized Mutual Information Feature Selection},
@@ -22172,6 +22191,8 @@ As you can see, this is a lot of topics to cover in such a short book! },
   abstract  = {Parameters in a generalized extreme value (GEV) distribution are specified as a function of covariates using a conditional density network (CDN), which is a probabilistic extension of the multilayer perceptron neural network. If the covariate is time or is dependent on time, then the GEV-CDN model can be used to perform nonlinear, nonstationary GEV analysis of hydrological or climatological time series. Owing to the flexibility of the neural network architecture, the model is capable of representing a wide range of nonstationary relationships. Model parameters are estimated by generalized maximum likelihood, an approach that is tailored to the estimation of GEV parameters from geophysical time series. Model complexity is identified using the Bayesian information criterion and the Akaike information criterion with small sample size correction. Monte Carlo simulations are used to validate GEV-CDN performance on four simple synthetic problems. The model is then demonstrated on precipitation data from southern California, a series that exhibits nonstationarity due to interannual/interdecadal climatic variability. Copyright: 2009 Her Majesty the Queen in right of Canada. Published by John Wiley & Sons, Ltd.},
   comment   = {A neural network tailored to predict the extreme value distirbution. Seems best for spinning reserves, where really only want the upper quantile?
 
+Same idea, I think, more parameteric distributions: 
+
 R library:
 http://cran.r-project.org/web/packages/GEVcdn/citation.html},
   doi       = {10.1002/hyp.7506},
@@ -36306,6 +36327,47 @@ Possible features from, Fig II, p. 19 and the neighborhood
   howpublished = {EWL Working Paper No. 17/2013},
   owner        = {sotterson},
   timestamp    = {2015.07.18},
+}
+
+@TechReport{Jordan97whyLogisticIRLS,
+  author      = {Jordan, Michael I and others},
+  title       = {Why the logistic function? A tutorial discussion on probabilities and neural networks},
+  institution = {Massachusetts Institute of Technology},
+  year        = {1995},
+  type        = {techreport},
+  number      = {9503},
+  month       = aug,
+  abstract    = {This paper presents a tutorial introduction to the logistic function as a
+
+statistical object. Beyond the discussion of the whys and wherefores of the
+
+logistic function, I also hope to illuminate the general distinction between the
+
+\generative/causal/class-conditional" and the \discriminative/diagnostic/
+
+predictive" directions for the modeling of data. Crudely put, the belief net-
+
+work community has tended to focus on the former while the neural network
+
+community has tended to focus on the latter (although there are numerous
+
+papers in both communities going against their respective grains). It is the
+
+author's view that these two directions are two sides of the same coin, a
+
+corollary of which is that the two network-based communities are in closer
+
+contact than one might otherwise think. To illustrate some of the issues in-
+
+volved, I discuss the simplest nonlinear neural network|a logistic function
+
+of a linear combination of the input variables (also known in statistics as a
+
+logistic regression).},
+  comment     = {Explains why the logistic function is good for a binary classifier and also the Newton-Raphson based Iterative Reweighted Least Squares (IRWLS) optimization algorithm.  Considered logistic regression to be the simplest form of neural net.},
+  file        = {:Jordan97whyLogisticIRLS.pdf:PDF},
+  publisher   = {Citeseer},
+  url         = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.379.718&rep=rep1&type=pdf},
 }
 
 @TechReport{Hagemann15volIntradayEurope,

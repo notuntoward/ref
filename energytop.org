@@ -1959,6 +1959,8 @@ Scott
 ******* Newton
 ******* Quickprop
 ******* Conjugate Gradient Descent
+******* Iterative Reweighted Least Squares: [[file:energy.bib::Jordan97whyLogisticIRLS][Jordan & others 1995: Why Logistic]]
+        Newton-Raphson based Iterative Reweighted Least Squares (IRWLS) optimization algorithm for [[Logistic Regression]], the simplest kind of neural net.
 ***** convolutional or time delay nets: for recog. time shifting waveform (p. 326)
 ******* main idea is tied weights
 ***** recurrent neural networks (p. 328)
@@ -2259,6 +2261,7 @@ Scott
 ***** [[file:energy.bib::Hodges60poissonAprxPoissonBin][Hodges & Le 1960: Poisson Poisson: Sum Bernoullis is ~ Poisson]] 
 ***** also [[Poisson Process]]
 *** <<Logistic Regression>>
+***** [[file:energy.bib::Jordan97whyLogisticIRLS][Jordan & others 1995: Why the Logistic]]
 ***** [[file:energy.bib::Shalizi15datAnalElemViewBk][Shalizi 2015: Advanced]] data analysis from elementary perspective (logistic regression, ...)
 ***** [[file:energy.bib::][Nielsen et al. 2004: Wind Power Ensemble Forecasting]] (logistic shape pow curve)
 ***** [[Bounding by output transformation or modeling]]
@@ -5156,6 +5159,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ******* google scholar: [[http://www.google.com/search?gcx%3dc&sourceid%3dchrome&ie%3dutf-8&q%3dasymmetric%2bparametric%2bdistribution#sclient%3dpsy-ab&hl%3den&safe%3doff&source%3dhp&q%3dasymmetric%2bparametric%2bdistribution%2binstead%2bof%2bcensoring&pbx%3d1&oq%3dasymmetric%2bparametric%2bdistribution%2binstead%2bof%2bcensoring&aq%3df&aqi%3d&aql%3d&gs_sm%3de&gs_upl%3d20447l23633l0l23990l21l17l0l0l0l0l402l4531l0.1.11.4.1l17l0&bav%3don.2,or.r_gc.r_pw.,cf.osb&fp%3d3a8e0190eb5a90d2&biw%3d1068&bih%3d937][asymmetric parametric distribution instead of censoring]]
 ******* [[file:energy.bib::Messner13probFrcstInvCensor][Messner et al. 2013: Probabilistic]]
 ******* [[file:energy.bib::Cannon11quantRgrsnNNprecip][Cannon 2011: Quantile]]
+******* [[file:energy.bib::Cannon12nnCaDENCE][Cannon 2012: Neural Net CaDENCE]]
 ******* non-parametric regression w/ truncated learning: [[http://cran.r-project.org/web/packages/truncSP/truncSP.pdf][R's truncSP package]]
 *** <<Bounding by output transformation or modeling>>
 
