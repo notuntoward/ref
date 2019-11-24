@@ -2832,7 +2832,7 @@ Strike-through: nil
           From: [[https://github.com/necaris/conda.el][conda.el: Emacs helper library (and minor mode) to work with]]
 
           *conda.el* has some problems to fix before I can use it
-          1. it's bin paths are wrong for windows: [[https://github.com/necaris/conda.el/issues/5][Doesn't work on Windows · Issue #5]]
+          1. its bin paths are wrong for windows: [[https://github.com/necaris/conda.el/issues/5][Doesn't work on Windows · Issue #5]]
           2. always prints "env not found": [[https://github.com/necaris/conda.el/issues/8][No conda environment for file · Issue #8]]
           3. when I run =C-c= (ipython) I get a warning b/c I'm running a hard-coded conda path (the wrong one, since I'm hard coded to root)
           4. This might be b/c of my hard coded path: (setq conda-anaconda-home conda-home-dir).  Could use env var ANACONDA_HOME ([[help:conda-anaconda-home]])
@@ -2862,7 +2862,6 @@ Strike-through: nil
 ********* [[elpy pyenv interface]]
 ********* [[anaconda-mode seems to use pyenv for conda environments]]
 ********* general: [[python conda environments]]
-
 ******* pyenv
 ********* <<elpy pyenv interface>>         
 *********** [[https://stackoverflow.com/questions/37472595/how-to-activate-the-anancondas-env-python-in-emacs][how to activate the ananconda's env python in emacs? - Stack Overflow]]
@@ -8816,7 +8815,28 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
       
           conda update --all --alt-hint
 
-******* make exact copy of environment: conda create -n flowers --clone snowflakes
+******* Cloning (exporting) the environment from one machine to another
+
+        Make and environment.yml file on the source machine
+
+          conda env export -no-builds > environment.yml       
+
+        Assuming that the env you want to clone is currently active, where
+        -no-builds [[https://stackoverflow.com/questions/55554431/conda-fails-to-create-environment-from-yml][partially solves]] machine-specifc incomatiblities.  
+
+        Then clone it on some other machine
+
+          conda env create -f environment.yml
+
+       If there are still machine-specific problems, you can delete the
+       troublesome lines in environment.yml
+
+******* Make exact copy of environment on same machine
+
+          conda create -n flowers --clone snowflakes
+
+        where snowflakes is the source being cloned and flowers is the copy.
+
 ******* list envs: conda info --envs
 ******* list packages installed: conda list
 ******* remove env: conda remove --name myenv --all
