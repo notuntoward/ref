@@ -687,6 +687,7 @@
     - DHI :: Difuse Horizotal Irradiance: radiation not from a direct path from the sun (scattered by molecules and particles in the atmosphere, comes equally from all directions. (3Tier [[http://www.3tier.com/en/support/solar-prospecting-tools/what-global-horizontal-irradiance-solar-prospecting/][calls this DIF]])
     - GHI :: Global Horizontal Irradiance.  Total shortwave radiation received from above by a surface horizontal to the ground. Imp. for PV.  Includes both Direct Normal Irradiance (DNI) and Diffuse Horizontal Irradiance (DHI).
     - GTI :: Global Tilted Irradiation/Irradiance (GTI), or total radiation received on a surface with defined tilt and azimuth, fixed or sun-tracking. This is the sum of the scattered radiation, direct and reflected. It is a reference for photovoltaic (PV) applications, and can be occasionally affected by shadow. (from [[http://solargis.com/support/knowledge-base/methodology/solar-radiation-modeling/][here]])
+*** [[Aerosol Optical Depth (AOD)]]
 *** <<Boosting vs. Bagging vs. Bootstrapping>>
     From: [[https://stats.stackexchange.com/questions/27049/regarding-boosting-bagging-and-bootstrapping?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa][Regarding boosting, bagging and bootstrapping - Cross Vali...]]
 
@@ -7947,6 +7948,11 @@ Scott
 ***** [[file:energy.bib::Lave13solarVarWvlt][Lave et al. 2013: Wavelet Based Variability]]
 ***** [[cite:Newport17introSolarRad][Newport 2017: Introduction to Solar Radiation]] 
 ***** [[https://www.nrel.gov/midc/solpos/solpos.html][MIDC SOLPOS Calculator]]: time/place --> solar position and intensitytime/
+***** <<Aerosol Optical Depth (AOD)>>
+
+      Wavelength-dependent attenuation of solar signal that can be measured by satellites near the horizon (so they look through the most atmosphere).
+******* [[file:energy.bib::UniWisconsin18aeroOptDepthQG][U Wisconsin 2018: Aerosol Optical Depth Quick Guide]]
+******* TODO [[http://cimss.ssec.wisc.edu/goes/goes-r/training/recordings/Aerosol/presentation_html5.html?lms=1][GOES-R Aerosols in AWIPS]] (online tutorial presentation)
 ***** <<PV System Diagnostics>>
 ******* [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::Meyers19pvDgrdAnlysisNoPhysMdl][Meyers et al. 2019: Signal Processing PV degrade no phys]] :SolarAnywhere:DataQual:
 ******* [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::Meyers18statClearSkyFit][Meyers et al. 2018: Statistical Clear Sky Fitting Algorithm]] :SolarAnywhere:DataQual:
@@ -10276,7 +10282,7 @@ Phone: +49 30 315 17 19 23 | Mobile + 49 151 17 22 80 31
 ************* [[https://www.epexspot.com/en/product-info/intradaycontinuous/germany][Trading rules]]
 *************** Power tick: min increment is 0.1 MW.
 *************** Price tick: minimum price increment is EUR 0.01 per MWh.
-*************** Price range:s -9999€ - 9999€.
+*************** Price range:s -9999 - 9999.
 *************** Horizons: This is actually not very clear...
 
                 Dominik Jost says: So horizons of max. 33 hours are
@@ -10308,8 +10314,11 @@ Phone: +49 30 315 17 19 23 | Mobile + 49 151 17 22 80 31
                o [[file:energy.bib::Gould13limitOrderBks][Limit orders]]
                o Market Sweep Orders
                o 10th MW Orders
-               o With execution restrictions: “Immediate-or-cancel” (IOC),
-                “Fill-or-kill” (FOK), “All-or-none” (AON) or “Iceberg”.
+               o With execution restrictions: 
+                 Immediate-or-cancel (IOC),
+                 Fill-or-kill (FOK), 
+                 All-or-none (AON) 
+                 or Iceberg.
 
 ************** Place of Delivery
 
@@ -12870,6 +12879,7 @@ optimization to be a generalization of linear programming.
    09/06/19  [[file:energy.bib::Jewson03likSkillFrcst][Jewson 2003: Likelihood Skill]]
              [[file:energy.bib::Jewson04problemBrierScore][Jewson: Problem with Brier: do likelihood]]
              [[file:energy.bib::Benedetti10scoreFrcstVerifRare][Benedetti 2010: Scoring rules: Brier --> log (IGN) score]]
+   11/25/19  [[file:energy.bib::UniWisconsin18aeroOptDepthQG][U Wisconsin 2018: Aerosol Optical Depth Quick Guide]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
