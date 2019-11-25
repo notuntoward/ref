@@ -41,6 +41,11 @@
 
 (use-package try) ; M-x try to test a pkg w/o installing it
 
+;; * Emacs Speed Test
+
+;; Find out what's slowing down emacs start by running M-x esup
+(use-package esup)
+
 ;; * Computer-specific setup
 ;; ** OS-dependent settings
 (defvar running-ms-windows
@@ -514,6 +519,7 @@ TODO: make this a general function."
   ;; not strictly necessary
   (counsel-mode 1))
 
+(use-package hydra) ; should probably put some hydra defs inside of it, or this inside of ivy
 ;;(use-package ivy-hydra) ; bound to C-o (is this helpful?)
 
 ;; from: https://github.com/abo-abo/swiper/issues/2021
@@ -865,8 +871,7 @@ _C-M-a_ change default action from list for this session
     (revert-buffer))
     (dired-find-file)))
 
-;; TODO: Click both does tree and opens new dired window.  Get rid of
-;; the open.
+;; TODO: Click both toggles directory and opens in a new dired window.  Get rid of the open.
 (defun mhj/mouse-dwim-to-toggle-or-open (event)
   "Toggle subtree or the open file on mouse-click in dired."
   (interactive "e")
@@ -1265,24 +1270,26 @@ _C-M-a_ change default action from list for this session
 (add-hook 'ediff-prepare-buffer-hook #'outline-show-all)
 
 ;; *** Outshine: org-mode like headlines in programming and other modes
-(use-package outshine
-;; this works if I run it from inside .emacs but not after a clean start  
-;;  :bind (:map outline-minor-mode-map ("S-<tab>" . outshine-cycle-buffer))
-  :diminish outline-mode
-  :diminish outline-minor-mode
-  :config
-  (add-hook 'outline-minor-mode-hook 'outshine-mode) ; for outshine itself
-  (add-hook 'prog-mode-hook 'outline-minor-mode)     ; all prog modes
-  ;; from https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-outshine.el
-  (bind-keys
-   :map outline-minor-mode-map
-   ("<backtab>" . outshine-cycle-buffer))) ;Global cycle using S-TAB
+;; Breaks ein inline images
+;; (use-package outshine
+;; ;; this works if I run it from inside .emacs but not after a clean start  
+;; ;;  :bind (:map outline-minor-mode-map ("S-<tab>" . outshine-cycle-buffer))
+;;   :diminish outline-mode
+;;   :diminish outline-minor-mode
+;;   :config
+;;   (add-hook 'outline-minor-mode-hook 'outshine-mode) ; for outshine itself
+;;   (add-hook 'prog-mode-hook 'outline-minor-mode)     ; all prog modes
+;;   ;; from https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-outshine.el
+;;   (bind-keys
+;;    :map outline-minor-mode-map
+;;    ("<backtab>" . outshine-cycle-buffer))) ;Global cycle using S-TAB
   
 ;; *** Vertical indent lines in programming modes
-(use-package highlight-indent-guides
-  :config
-  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-  (setq highlight-indent-guides-method 'character)) ; nicest, thinnest lines
+;; Breaks ein inline images
+;; (use-package highlight-indent-guides
+;;   :config
+;;   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+;;   (setq highlight-indent-guides-method 'character)) ; nicest, thinnest lines
 
 ;; ** Matlab mode
 
@@ -1378,29 +1385,63 @@ _C-M-a_ change default action from list for this session
   (define-key cscope-list-entry-keymap "q" 'quit-window)) ; so quits like dired
 
 ;; ** Python
+;; *** Python editing setup
 
-;; needed by elpy & py-cmd autofix-on-save
-(setq pythonbin (sdo/find-exec "python"
-                           "Is needed by elpy & py-python autofix-on-save"))
+;; TODO: My python setup expects that ananconda python is already installed,
+;; and has an environment named "stdso"  I should probably check this
+;; before calling the conda-env-activate that will crash if it isn't
+;; there.
+;; TODO: some of my calls to sdo/find-exec my no longer be necessary,
+;; as elpy now downloads its own python environement with some of
+;; these already in it.  I should see which of these I can remove.
 
-(setq autopep8bin (sdo/find-exec "autopep8"
-                             "Is needed by elpy & py-autopep8 autofix-on-save"))
+;; https://stackoverflow.com/questions/55175916/emacs-and-conda-workaround
+;; Put this on top of the other python stuff so that paths to python
+;; tools are initialized to some defaults by the time they need them.
+;; To change the env to something no-hardcoded, run:
+;; M-x conda-env-activate to activate
+(use-package conda
+  :ensure t
+  :init
+  (setq conda-anaconda-home (expand-file-name "~/.anaconda")) ; matters?
+  (setq conda-env-home-directory (expand-file-name "c:/Users/scott/Anaconda3"))
+  (conda-env-initialize-interactive-shells)
+  (conda-env-initialize-eshell)
+  (conda-env-activate "stdso") ; my expected default anaconda environment
+  ;; Use if projects have environments files indicating their conda envs
+  ;;(setq conda-project-env-name "environment.yml") ; needed by autoactivate
+  ;;(conda-env-autoactivate-mode t)
+  (setq-default mode-line-format (cons '(:exec conda-env-current-name) mode-line-format)))
+
+(sdo/find-exec "python" "Needed by autofix-on-save, REPL, elpy & py-python")
+
+(setq autopep8bin (sdo/find-exec "autopep8" "Needed by py-autopep8 autofix-on-save & elpy"))
 (when autopep8bin (use-package py-autopep8))
 
+;; So C-c i generates a python function/method stub from symbol @ point
+(use-package elpygen) ; seems to be separate from elpy, despite the name
+
+;; for Python mode comment filling
+;; https://stackoverflow.com/questions/2214199/how-to-use-emacs-to-write-comments-with-proper-indentation-line-length-and-wra
+(require 'newcomment)
+(add-hook 'python-mode-hook (progn
+                              (setq comment-auto-fill-only-comments 1)
+                              (setq-default auto-fill-function 'do-auto-fill)))
+
+(use-package flycheck-pos-tip)
+
 ;; Use Elpy instead of python-mode.
+;; run python in buffer with C-c C-c, once elpy-mode is enabled
+;;
 ;; REQUIRES AT LEAST THESE PYTHON LIBS: jedi flake8 autopep8
 ;; See: 
 ;; https://github.com/jorgenschaefer/elpy
 ;; docs: https://elpy.readthedocs.io/en/latest/index.html
-;; run python in buffer with C-c C-c, once elpy-mode is enabled
+;; HOWEVER, lately, it automatically downloads a lot of its own Python libraries.
+;; You can see what's going on with: M-x elpy-config
+;; You can force a reinstall with: M-x elpy-rpc-reinstall-virtualenv
 
-;; TODO: verify that python jedi being installed (if not will elpy will look for it and hant itself (as of Sept 9, 2019)
-;;       pip show jedi
-;; seems to work even if pkg was installed by conda
-
-(sdo/find-exec "flake8" "Is needed by elpy for code checks")
-
-(use-package flycheck-pos-tip)
+(sdo/find-exec "flake8" "Needed by elpy for code checks")
 
 (use-package elpy
   :defer t
@@ -1430,49 +1471,24 @@ _C-M-a_ change default action from list for this session
   (if autopep8bin
       (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)))
 
-;; So C-c i generates a python function/method stub from symbol @ point
-(use-package elpygen) ; seems to be separate from elpy, despite the name
+;; *** Python Mode and REPL
+;; WARNING: So far, this only works if started in an anaconda terminal
 
-;; for Python mode comment filling
-;; https://stackoverflow.com/questions/2214199/how-to-use-emacs-to-write-comments-with-proper-indentation-line-length-and-wra
-(require 'newcomment)
-(add-hook 'python-mode-hook (progn
-                              (setq comment-auto-fill-only-comments 1)
-                              (setq-default auto-fill-function 'do-auto-fill)))
+;; Use IPython for REPL
 
-;; (use-package anaconda-mode  ;; elpy alternative?
-;;   :config
-;;   (add-hook 'python-mode-hook 'anaconda-mode)
-;;   (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+(sdo/find-exec "jupyter-console" "Needed to use IPython for REPL")
 
+;; From:
+;; https://realpython.com/emacs-the-best-python-editor/#integration-with-jupyter-and-ipython
+(setq python-shell-interpreter "jupyter"
+      python-shell-interpreter-args "console --simple-prompt"
+      python-shell-prompt-detect-failure-warning nil)
 
-;; ;; I haven't managed to get conda package to work, lately
-;; ;; working with python anaconda environments (is also customized)
-;; ;; my anaconda isn't at conda's expected place (~/.anaconda3) so here, I expect that I have set the ANACONDA_HOME environment variable to whatever anaconda is installed on this machine.
-;; (setq conda-home-dir (getenv "ANACONDA_HOME"))
-;; (message "conda-home-dir = %s" conda-home-dir)
-;; (use-package conda
-;;   :defer t
-;;   :init
-;;   ;; if you want interactive shell support, include:
-;;   (conda-env-initialize-interactive-shells)
-;;   ;; if you want eshell support, include:
-;;   (conda-env-initialize-eshell)
-;;   ;; auto activation causes the emacs startup error "Error: (error "elpy-use-ipython is deprecated; see https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup")"
-;;   ;; this is on elpy 1.18.0
-;;   ;; if you want auto-activation (see below for details), include:
-;;   ;; (conda-env-autoactivate-mode t) ;; avoid annoying messages, do by hand
-;;   )
+(add-to-list 'python-shell-completion-native-disabled-interpreters
+             "jupyter")
 
-;; (use-package python ; does this work w/ elpy?
-;;   :defer t
-;;   :config
-;;   (define-key python-mode-map (kbd "<backtab>") 'python-back-indent))
-
-;; conflicts with attempt to run jupyter?
-;; This doesn't seem to help make editing .ipynb files any better
-;; maybe babel is better, esp. w/ ob-ein ?
-;; https://www.reddit.com/r/emacs/comments/a43l0i/emacs_with_jupyter_notebooks/
+;; *** EIN
+;; PASSWORD: until I can get rid of this, my jupyter pasword is: hearty
 (use-package ein
   :ensure t
   :commands (ein:notebooklist-open))
@@ -1506,56 +1522,59 @@ _C-M-a_ change default action from list for this session
   '(define-key vc-prefix-map "=" 'vc-ediff)) ; so C-x v = will use ediff
 
 ;; ** R language
-(use-package ess
-  :defer t ; avoid long init during emacs startup
-  :config
-  (setq ess-ask-for-ess-directory nil)
-  (setq ess-local-process-name "R")
 
-  ;; SO NOTE: a bug makes this not work when R isn't already started:
-  ;; error is: "> Error: unexpected '>' in ">"
-  (defun my-ess-start-R ()
-    (interactive)
-    (if (not (member "*R*" (mapcar (function buffer-name) (buffer-list))))
-        (progn
-          (delete-other-windows)
-          (setq w1 (selected-window))
-          (setq w1name (buffer-name))
-          (setq w2 (split-window w1 nil t))
-          (R)
-          (set-window-buffer w2 "*R*")
-          (set-window-buffer w1 w1name))))
+;; COMMENT OUT ALL ESS CONFIG SO THAT VINCENT GOULET EMACS DOESN'T CONFLICT
+;; WITH IT.
+;; (use-package ess
+;;   :defer t ; avoid long init during emacs startup
+;;   :config
+;;   (setq ess-ask-for-ess-directory nil)
+;;   (setq ess-local-process-name "R")
 
-  ;; almost works, but doesn't switch to R buffer like similar R func in C-ret
-  (defun my-ess-eval ()
-    (interactive)
-    (my-ess-start-R)
-    (if (and transient-mark-mode mark-active)
-        (call-interactively 'ess-eval-region)
-      (call-interactively 'ess-eval-buffer)))
-  (add-hook 'ess-mode-hook
-            '(lambda()
-               (local-set-key [(shift return)] 'my-ess-eval)))
-               ;; but flycheck does nothing if I vist an R file.  Need to do some extra config?
-;;               (flycheck-mode t)))
+;;   ;; SO NOTE: a bug makes this not work when R isn't already started:
+;;   ;; error is: "> Error: unexpected '>' in ">"
+;;   (defun my-ess-start-R ()
+;;     (interactive)
+;;     (if (not (member "*R*" (mapcar (function buffer-name) (buffer-list))))
+;;         (progn
+;;           (delete-other-windows)
+;;           (setq w1 (selected-window))
+;;           (setq w1name (buffer-name))
+;;           (setq w2 (split-window w1 nil t))
+;;           (R)
+;;           (set-window-buffer w2 "*R*")
+;;           (set-window-buffer w1 w1name))))
 
-  (add-hook 'inferior-ess-mode-hook
-            '(lambda()
-               ;; Make up/down arrows search cmd history like tcsh
-               (define-key inferior-ess-mode-map [up]
-                 'comint-previous-matching-input-from-input)
-               (define-key inferior-ess-mode-map [down]
-                 'comint-next-matching-input-from-input)))
+;;   ;; almost works, but doesn't switch to R buffer like similar R func in C-ret
+;;   (defun my-ess-eval ()
+;;     (interactive)
+;;     (my-ess-start-R)
+;;     (if (and transient-mark-mode mark-active)
+;;         (call-interactively 'ess-eval-region)
+;;       (call-interactively 'ess-eval-buffer)))
+;;   (add-hook 'ess-mode-hook
+;;             '(lambda()
+;;                (local-set-key [(shift return)] 'my-ess-eval)))
+;;                ;; but flycheck does nothing if I vist an R file.  Need to do some extra config?
+;; ;;               (flycheck-mode t)))
 
-  ;; ESS autocomplete support
-  ;; http://ess.r-project.org/Manual/ess.html#Auto_002dcomplete
-  ;; setup will take too much time?
-  (setq ess-use-auto-complete 'script-only))
+;;   (add-hook 'inferior-ess-mode-hook
+;;             '(lambda()
+;;                ;; Make up/down arrows search cmd history like tcsh
+;;                (define-key inferior-ess-mode-map [up]
+;;                  'comint-previous-matching-input-from-input)
+;;                (define-key inferior-ess-mode-map [down]
+;;                  'comint-next-matching-input-from-input)))
 
-(use-package ess-R-data-view :after ess)
-(use-package ess-smart-equals :after ess)
-(use-package ess-smart-underscore :after ess)
-(use-package ess-view :after ess)
+;;   ;; ESS autocomplete support
+;;   ;; http://ess.r-project.org/Manual/ess.html#Auto_002dcomplete
+;;   ;; setup will take too much time?
+;;   (setq ess-use-auto-complete 'script-only))
+
+;; (use-package ess-R-data-view :after ess)
+;; (use-package ess-smart-equals :after ess)
+;; (use-package ess-smart-underscore :after ess)
+;; (use-package ess-view :after ess)
 
 ;; ** Ruby
 (add-hook 'ruby-mode-hook
@@ -2005,26 +2024,8 @@ This function avoids making messed up targets by exiting without doing anything 
 
 (use-package ox-minutes :defer 5) ; nice(er) ascii export, but slow start
 
-;; (use-package ox-pandoc
-;;   :ensure t
-;;   :after ox
-;;   :defer t
-;;   :config
-;;   ;; default options for all output formats
-;;   (setq org-pandoc-options '((standalone . t))
-;;         ;; cancel above settings only for 'docx' format
-;;         org-pandoc-options-for-docx '((standalone . nil))))
-;; ;;        ;; special settings for beamer-pdf and latex-pdf exporters
-;; ;;        org-pandoc-options-for-beamer-pdf '((pdf-engine . "xelatex"))
-;; ;;        org-pandoc-options-for-latex-pdf '((pdf-engine . "xelatex"))))
-
-;; I couldn't get pandoc to work after converting .emacs to use-package.  I had two problems
-;;
-;; 1.) On my SP4 with a clean install, I got the error "ox-pandoc was not provided"
-;; 2.) on my work laptop, I somehow didn't see this, but no pandoc functions showed up on the org-export-dispatch list either.
-;;
-;; ;; Pandoc
-;; ;; default options for all output formats. Intially from: https://github.com/kawabata/ox-pandoc
+;; Pandoc
+;; default options for all output formats. Intially from: https://github.com/kawabata/ox-pandoc
 (use-package ox-pandoc
   :init
   (setq org-pandoc-options '((standalone . t)))
@@ -2644,4 +2645,3 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(table-cell-face ((t (:background "honeydew1" :foreground "black" :inverse-video nil))))
  '(writegood-duplicates-face ((t (:underline (:color "orange" :style wave)))))
  '(writegood-passive-voice-face ((t (:underline (:color "MediumOrchid1" :style wave))))))
-
