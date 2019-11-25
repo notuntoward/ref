@@ -1,3 +1,4 @@
+
 * Emacs
 *** *Emacs to try*
     My experiments, Emacs packages I've tried and installed (from Melpa repository). Also, some builtins I could try
@@ -8292,6 +8293,7 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
         which is in the anaconda root dir: either c:/ProgramData/Anaconda3 or C:\Users\username\Anaconda3 (when installed "just for me").
 
+***** my current (Nov. 2019) .emacs will crash if anaconda isn't there, and has an expected environment name (was 'stdso').  So make one when you get to a new machine.  See [[python conda environments]]
 ***** <<Install python with Chocolatey>>
 
     Problem with this was that I kept getting messages about this TensorFlow not being built for optimal performance on my SP4, was not compiled for some instruction set.   It did not sound like TensorFlow was going to fix this ever (some TF blog somewhere) so I decided to [[Install Windows Python with Anaconda]] instead, which seems to be recommended by a lot of people.
@@ -8763,8 +8765,8 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
         deactivate tensorflow
 
       installing packages from list
-       conda list --export          ; makes the list, given some environment
-       conda install --file         ; installs them
+        conda list --export          ; makes the list, given some environment
+        conda install --file         ; installs them
 
       finding root anaconda environment (where perl.exe is installed)
 
@@ -8815,7 +8817,8 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
       
           conda update --all --alt-hint
 
-******* Cloning (exporting) the environment from one machine to another
+******* Clone (export) conda environment from one machine to another
+        /Warning/:  I had weird path and DLL problems after making a new environment using the conda --clone commands and then deleting the orginal. I also had problems with the conda commands that used environment.yml files to export to a new machine. Therefore, I used my list-based *conda_evn_regen.ipynb*.
 
         Make and environment.yml file on the source machine
 
@@ -8831,7 +8834,8 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
        If there are still machine-specific problems, you can delete the
        troublesome lines in environment.yml
 
-******* Make exact copy of environment on same machine
+
+******* Make exact copy of conda environment on same machine
 
           conda create -n flowers --clone snowflakes
 
