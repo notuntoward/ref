@@ -1273,7 +1273,6 @@ _C-M-a_ change default action from list for this session
 (add-hook 'ediff-prepare-buffer-hook #'outline-show-all)
 
 ;; *** Outshine: org-mode like headlines in programming and other modes
-;; Breaks ein inline images
 (use-package outshine
 ;; this works if I run it from inside .emacs but not after a clean start  
 ;;  :bind (:map outline-minor-mode-map ("S-<tab>" . outshine-cycle-buffer))
@@ -1288,11 +1287,10 @@ _C-M-a_ change default action from list for this session
    ("<backtab>" . outshine-cycle-buffer))) ;Global cycle using S-TAB
   
 ;; *** Vertical indent lines in programming modes
-;; Breaks ein inline images
-;; (use-package highlight-indent-guides
-;;   :config
-;;   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-;;   (setq highlight-indent-guides-method 'character)) ; nicest, thinnest lines
+(use-package highlight-indent-guides
+  :config
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+  (setq highlight-indent-guides-method 'character)) ; nicest, thinnest lines
 
 ;; ** Matlab mode
 
@@ -1496,8 +1494,8 @@ _C-M-a_ change default action from list for this session
 (use-package ein
   :ensure t
   :init
-  ;; get right program mode in cells e.g. elpy (this fails in :config)
-  (setq ein:polymode t) 
+  ;; So outshine or highlight-indent-guides on prog-mode-hook don't break inline plots
+  (setq ein:polymode t) ;; Get right mode e.g. elpy in cells (fails in :config)
   :commands (ein:notebooklist-open))
 
 ;; ** Perl
