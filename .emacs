@@ -166,8 +166,8 @@ TODO: make this a general function."
     (setq nPixThis (max 1 (round (+ (* (/ (- nPixHigh nPixLow) (- DPIhigh DPIlow)) (- DPIthis DPIlow)) nPixLow))))))
 
 
-;; set window divider width custom variables (setq is said to be the
-;; way to do this in .emacs, instead of calling customize-set-variable).
+;; Set window divider width custom variables (setq is said to be the
+;; best way to do this in .emacs, instead of calling customize-set-variable).
 (setq nPixDiv (calcDivNpix))
 (message "nPixDiv: %s" nPixDiv)
 (setq window-divider-default-right-width nPixDiv)
@@ -257,7 +257,7 @@ TODO: make this a general function."
 ;; force su on other machines e.g. "/[su/orca]~"
 ;;(setq tramp-default-method "sm")
 
-;; * Backups, autosaves, autoloads
+;; * Backups, autosaves, autoloads, etc.
 ;; From: https://www.emacswiki.org/emacs/BackupDirectory
 ;; Do this especially since TempoBox gets confused w/ ~ @ filename front
 (message "Saving ~ backups to ~/.backups_emacs") 
@@ -481,6 +481,9 @@ TODO: make this a general function."
           (swiper-func-backward region))
       (swiper-func-backward)))
 
+  ;; TODO modify swiper-func-backward keymap so that another C-r
+  ;; continues in backwards direction, like C-s does in the forward direction.
+  
   (global-set-key "\C-s" 'sdo/swiper-region-forward)
   (global-set-key "\C-r" 'sdo/swiper-region-backward)
   ;; see also jrh-isearch-with-region
@@ -1271,18 +1274,18 @@ _C-M-a_ change default action from list for this session
 
 ;; *** Outshine: org-mode like headlines in programming and other modes
 ;; Breaks ein inline images
-;; (use-package outshine
-;; ;; this works if I run it from inside .emacs but not after a clean start  
-;; ;;  :bind (:map outline-minor-mode-map ("S-<tab>" . outshine-cycle-buffer))
-;;   :diminish outline-mode
-;;   :diminish outline-minor-mode
-;;   :config
-;;   (add-hook 'outline-minor-mode-hook 'outshine-mode) ; for outshine itself
-;;   (add-hook 'prog-mode-hook 'outline-minor-mode)     ; all prog modes
-;;   ;; from https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-outshine.el
-;;   (bind-keys
-;;    :map outline-minor-mode-map
-;;    ("<backtab>" . outshine-cycle-buffer))) ;Global cycle using S-TAB
+(use-package outshine
+;; this works if I run it from inside .emacs but not after a clean start  
+;;  :bind (:map outline-minor-mode-map ("S-<tab>" . outshine-cycle-buffer))
+  :diminish outline-mode
+  :diminish outline-minor-mode
+  :config
+  (add-hook 'outline-minor-mode-hook 'outshine-mode) ; for outshine itself
+  (add-hook 'prog-mode-hook 'outline-minor-mode)     ; all prog modes
+  ;; from https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-outshine.el
+  (bind-keys
+   :map outline-minor-mode-map
+   ("<backtab>" . outshine-cycle-buffer))) ;Global cycle using S-TAB
   
 ;; *** Vertical indent lines in programming modes
 ;; Breaks ein inline images
@@ -1488,9 +1491,13 @@ _C-M-a_ change default action from list for this session
              "jupyter")
 
 ;; *** EIN
+
 ;; PASSWORD: until I can get rid of this, my jupyter pasword is: hearty
 (use-package ein
   :ensure t
+  :init
+  ;; get right program mode in cells e.g. elpy (this fails in :config)
+  (setq ein:polymode t) 
   :commands (ein:notebooklist-open))
 
 ;; ** Perl
