@@ -462,7 +462,7 @@ TODO: make this a general function."
   (fset 'swiper-func-forward 'swiper) ; standard swiper, slow on large org files
   (fset 'swiper-func-backward 'swiper-backward) ; standard swiper, slow on large org files
 
-  ;; TODO: combine forward bacward into one function instead of this hack
+  ;; TODO: combine forward backward into one function instead of this hack
   (defun sdo/swiper-region-forward ()
     "If region selected, swipe for it forward, else do normal swiper call"
     (interactive)
@@ -1473,12 +1473,9 @@ _C-M-a_ change default action from list for this session
       (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)))
 
 ;; *** Python Mode and REPL
-;; WARNING: So far, this only works if started in an anaconda terminal
 
 ;; Use IPython for REPL
-
 (sdo/find-exec "jupyter-console" "Needed to use IPython for REPL")
-
 ;; From:
 ;; https://realpython.com/emacs-the-best-python-editor/#integration-with-jupyter-and-ipython
 (setq python-shell-interpreter "jupyter"
@@ -1497,6 +1494,11 @@ _C-M-a_ change default action from list for this session
   ;; So outshine or highlight-indent-guides on prog-mode-hook don't break inline plots
   (setq ein:polymode t) ;; Get right mode e.g. elpy in cells (fails in :config)
   :commands (ein:notebooklist-open))
+
+;; temporary hack to get rid of notebook save error
+;; https://github.com/millejoh/emacs-ipython-notebook/issues/623
+(defun request--goto-next-body (&optional noerror)
+  (re-search-forward "^[\r\n|\n]" nil noerror))
 
 ;; ** Perl
 
@@ -2387,7 +2389,11 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
 
 (display-time-mode 1) ; time on the modeline (is customized)
 
-;; Right justifies time & other stuff in mode-line-misc-info, but undoes prevous modeline buffer uniquification (maybe I want to fix that...)
+;; Right justifies time & other stuff in mode-line-misc-info, but
+;; undoes prevous modeline buffer uniquification (maybe I want to fix
+;; that...)
+;; TODO: this might fix it: https://www.reddit.com/r/emacs/comments/722t6w/in_smartlinemode_how_to_only_view_buffername_and/dnffnoq/
+;; TODO: try https://github.com/seagle0128/doom-modeline
 (use-package smart-mode-line 
   :config
   (setq sml/theme nil) ; don't change existing modeline faces
@@ -2449,6 +2455,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(display-time-mode t)
  '(ediff-split-window-function (quote split-window-horizontally))
  '(elpy-rpc-python-command "python")
+ '(elpy-shell-starting-directory (quote current-directory))
  '(emacsw32-style-frame-title t)
  '(ess-ido-flex-matching t)
  '(ess-language "R" t)
