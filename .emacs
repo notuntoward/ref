@@ -1308,8 +1308,9 @@ _C-M-a_ change default action from list for this session
 (use-package highlight-indent-guides
   :diminish highlight-indent-guides-mode ;; indicator: h-i-g (works here)
   :config
-  (setq highlight-indent-guides-method 'character)) ; nicest, thinnest lines
-
+  (setq highlight-indent-guides-method 'character) ; nicest, thinnest lines
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
+  
 ;; ** Matlab mode
 
 ;; Got errors about obsolete code when I first isntalled this in packages. Note that abo-abo says that this package is no longer maintained (but did he meant THIS package or is THIS package actually his package? the 'matlab' package below is 'matlab-emacs' in sourceforge).  Anyway, abo-abo has a new matlab package, maybe worth trying.
@@ -1440,8 +1441,10 @@ _C-M-a_ change default action from list for this session
 (setq autopep8bin (sdo/find-exec "autopep8" "Needed by py-autopep8 autofix-on-save & elpy"))
 (when autopep8bin (use-package py-autopep8))
 
-;; So C-c i generates a python function/method stub from symbol @ point
-(use-package elpygen) ; seems to be separate from elpy, despite the name
+;; So C-c i generates a python function/method stub from symbol at point
+(use-package elpygen ; seems to be separate from elpy, despite the name
+  :config
+  (define-key python-mode-map (kbd "C-c i") 'elpygen-implement))
 
 ;; for Python mode comment filling
 ;; https://stackoverflow.com/questions/2214199/how-to-use-emacs-to-write-comments-with-proper-indentation-line-length-and-wra
@@ -1492,13 +1495,12 @@ _C-M-a_ change default action from list for this session
   ;;  https://elpy.readthedocs.io/en/latest/customization_tips.html)
   ;; To use flycheck for over 40 languages, do this:
   ;;   (global-flycheck-mode)
-  (when (require 'flycheck nil t)
+  (if (require 'flycheck nil t)
     (progn (message "found flycheck package")
            (flycheck-pos-tip-mode)
            (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-           (add-hook 'elpy-mode-hook 'flycheck-mode)))
-
-  (define-key python-mode-map (kbd "C-c i") 'elpygen-implement)
+           (add-hook 'elpy-mode-hook 'flycheck-mode))
+    (warn "elpy didn't find flycheck package"))
 
    ;;Better "M-.": https://elpy.readthedocs.io/en/latest/customization_tips.html
   (defun elpy-goto-definition-or-rgrep ()
@@ -2675,7 +2677,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(send-mail-function (quote mailclient-send-it))
  '(show-paren-mode t)
  '(sml/modified-char "•")
- '(sml/name-width 35)
+ '(sml/name-width 34)
  '(sml/position-percentage-format nil)
  '(sml/vc-mode-show-backend t)
  '(swiper-action-recenter nil)
