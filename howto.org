@@ -2659,8 +2659,7 @@ Strike-through: nil
 
 *** Better indentation
 
-    Better than auto-fill and filladapt, which wrap when you hit space when
-    the cursor is beyond the margin.  This is OK, but it:
+Better than auto-fill and filladapt, which wrap when you hit space when the cursor is beyond the margin.  This is OK, but it:
 
     1. looks bad if the emacs frame is narrower than the margin
     2. inserts a CR into the file, which won't necessarily match future frames
@@ -2671,19 +2670,20 @@ Strike-through: nil
 ***** org-mode indentation
 ******* org-indent-mode
 
-    1. all lines are prefixed for display with the necessary amount of space2.
+    1. all lines are prefixed for display with the necessary amount of space
     2. Also headlines are prefixed with additional stars, so that the amount of
        indentation shifts by two spaces per level.
     3. All headline stars but the last one are made invisible using the
     org-hide face4; see below under ‘2.’
 
-********* indents text to match bullet.  Generally looks better
-********* but bad for wide tables or deep indent
+********* Adds enough leading spaces to match start of line to bullet
+*********** get same # of spaces whether or not line aleady starts w/ spaces
+*********** still, generally looks better
+*********** handles text virtual line wrapping just fine
+********* adds two extra spaces to headline indentation itself (_bad, don't want_)
+********* but bad for wide tables or deep indent ([[org-mode and visual-line-mode]])
 ********* org-startup-indented does it for all files
-******* what I really want is just virtual line wrapping of text to whaever indent I have?
-
-********* org-indent-mode. In this minor mode, all lines are prefixed for display with the necessary amount of space2. Also headlines are prefixed with additional stars, so that the amount of indentation shifts by two spaces per level. All headline stars but the last one are made invisible using the org-hide face4; see below under ¡®2.¡¯ for more information on how this works. You can turn on org-indent-mode for all files by customizing the variable org-startup-indented, or you can turn it on for individual files using
-******* org-mode and visual-line-mode
+******* <<org-mode and visual-line-mode>>
         This is almost perfect.  The only problem is that it mangles tables.
 ********* my [[http://stackoverflow.com/questions/39696806/visual-line-mode-except-in-tables][Stackoverflow question]]: tables are still a problem on 9/26/16
 ******* also see [[org mode]]
@@ -8394,6 +8394,14 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
         See [[https://github.com/faisalthaheem/tensorflow-windows][here]]
 *** <<Jupyterlab>>
 ***** Starting it: jupyter lab
+***** autoreload library functions
+From: [[https://medium.com/@rrfd/cookiecutter-data-science-organize-your-projects-atom-and-jupyter-2be7862f487e][Cookiecutter Data Science — Organize your Projects — Atom and Jupyter]]
+
+%load_ext autoreload
+%autoreload 2
+
+The suffix 2 is used after autoreload, to reload all modules every time before executing the Python code typed. This will enable us to edit functions in Atom, debug them, and quickly import the code into our notebook, rather than having to write out a debug the function directly in Jupyter.
+
 ***** Jupyterlab extensions
 ******* updating juypterlab extensions
         
@@ -8552,7 +8560,6 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 ********* [[https://blog.nteract.io/hydrogen-interactive-computing-in-atom-89d291bcc4dd][Hydrogen: Interactive computing in Atom - nteract]]
 ******* [[https://github.com/nteract/nteract][nteract/nteract:  I think it's web based ]]
 ******* [[http://lighttable.com/][Light Table]] (inspired hydrogen and nteract, I think)
-
 ***** <<Emacs and Jupyter Notebooks>>
 ******* <<Emacs keybindings for Jupyter>>
 ********* text editor: settings -> "text editor keymaps" -> emacs
@@ -8754,6 +8761,12 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
       From: [[https://www.youtube.com/watch?v=VtchVpoSdoQ][Dashboarding with Jupyter Notebooks, Voila and Widgets | SciPy 2019]]
      
 ***** Also [[Python Dashboarding]]      
+*** TRY Cookiecutter Data Science: notebook/data/code struct for DS projects
+
+    Project template describing how to organize code, Jupyter notebooks and data for maximum reproducibility.  Maybe I should try this.
+
+***** [[https://drivendata.github.io/cookiecutter-data-science/?source=post_page-----2be7862f487e----------------------#getting-started][Home - Cookiecutter Data Science]]
+***** [[https://cookiecutter.readthedocs.io/en/latest/installation.html][Installation — cookiecutter 1.6.0 documentation]]
 *** Machine learning Python libs
 ***** [[http://scikit-learn.org/stable/][scikit-learn]]
 ******* guy's [[http://www.google-melange.com/gsoc/proposal/review/google/gsoc2013/nicolastr/12001][plan]] to add missing feature fill-in using matrix completion
