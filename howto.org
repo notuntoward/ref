@@ -8741,6 +8741,7 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
 *********** also [[Simple Jupyter + DVC]]
 ******* also [[Data Versioning]]
 ******* also [[Externally Calling Jupyter Notebooks]]
+******* also [[Cookiecutter Data Science]]
 ***** <<Externally Calling Jupyter Notebooks>>
 
       How to call them from the command line or from a programming language as if they were functions.  This would make developing the notebooks in discrete chunks easy (just a notebook) and then you could call them later when making a system w/ minimal or no code changing.
@@ -8761,12 +8762,16 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
       From: [[https://www.youtube.com/watch?v=VtchVpoSdoQ][Dashboarding with Jupyter Notebooks, Voila and Widgets | SciPy 2019]]
      
 ***** Also [[Python Dashboarding]]      
-*** TRY Cookiecutter Data Science: notebook/data/code struct for DS projects
+*** TRY <<Cookiecutter Data Science>>: notebook/data/code struct for DS projects
 
     Project template describing how to organize code, Jupyter notebooks and data for maximum reproducibility.  Maybe I should try this.
 
 ***** [[https://drivendata.github.io/cookiecutter-data-science/?source=post_page-----2be7862f487e----------------------#getting-started][Home - Cookiecutter Data Science]]
 ***** [[https://cookiecutter.readthedocs.io/en/latest/installation.html][Installation — cookiecutter 1.6.0 documentation]]
+***** also [[Python install and package management]]
+***** also [[jupytext]]
+***** also [[Emacs keybindings for Jupyter]]
+***** also [[Data Versioning]]
 *** Machine learning Python libs
 ***** [[http://scikit-learn.org/stable/][scikit-learn]]
 ******* guy's [[http://www.google-melange.com/gsoc/proposal/review/google/gsoc2013/nicolastr/12001][plan]] to add missing feature fill-in using matrix completion
@@ -8803,7 +8808,7 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
 
       ...but you can /read/ global variables w/o the global declaration, which is a bug magnet.
 
-*** Python install and package management
+*** <<Python install and package management>>
 ***** <<python conda environments>>
       "conda environments" what anaconda makes e.g. the one for tensorflow
 
@@ -8938,6 +8943,7 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
       OR 
         help("modules") # inside interpreter shell
 
+***** also [[Cookiecutter Data Science]]
 *** [[Python in Emacs]]
 *** <<Python for R users>>
 ***** TRY [[https://www.r-bloggers.com/how-to-make-python-easier-for-the-r-user-revoscalepy/][How to make Python easier for the R user: revoscalepy | R-bloggers]]
@@ -9395,6 +9401,7 @@ results = Parallel(n_jobs=num_cores)(delayed(processInput)(i) for i in inputs)
 *** [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
 *** [[Versioning Jupyter Notebooks]] (by themselves)
 *** [[Data versioning in Jupyter notebooks]]
+*** [[Cookiecutter Data Science]]
 * <<Hadoop>>
 *** [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop Intro Book]]
 
