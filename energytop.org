@@ -4226,7 +4226,6 @@ Hope that helps,
   Related to support vector machines.  I think this is in Python H2O library.
 
 *** [[file:energy.bib::Rendle10factrMachns][Rendle 2010: Factorization Machines]]
-
 * <<Train/test partitioning schemes>>
 *** Why people pick 10-fold cross-validation: [[file:energy.bib::refaeilzadeh09crossval][liu & oezsu 2009: encyclopedia]] cross-validation
 *** use holdout cross validation to stop tuning (this would be hold out of holdout if use k-fold)

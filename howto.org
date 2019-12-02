@@ -8411,15 +8411,26 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
        
        jupyter labextension install jupyterlab-plotly
 
-******* matplotlib gui extension: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib]]
+******* <<Jupyter matplotlib widgets>>
+        From: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib]]
+
+        Notebook
+          conda install -c conda-forge widgetsnbextension
+
+        JupyterLab
+          conda install nodejs
+          jupyter labextension install @jupyter-widgets/jupyterlab-manager
+          jupyter labextension install jupyter-matplotlib
 
         After installing (using conda), put this in your notebook:
 
-        %matplotlib widget
+          %matplotlib widget
 
 ******* integration w/ drawio block diagram drawer: [[https://github.com/QuantStack/jupyterlab-drawio][QuantStack/jupyterlab-drawio]]
 
         Don't have to install anything other than the extension.  Runs in browser that Jupyter is running in.
+
+        jupyter labextension install jupyterlab-drawio
 
 ******* jump to definition: [[https://github.com/krassowski/jupyterlab-go-to-definition][krassowski/jupyterlab-go-to-definition]]
         Goes to variable/function def w/
@@ -8433,7 +8444,17 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
         Nice and works.
 
+        Install:
+          jupyter labextension install @krassowski/jupyterlab_go_to_definition
+
+        To update already installed extension:
+
+          jupyter labextension update @krassowski/jupyterlab_go_to_definition
+
 ******* filetree file finder: [[https://github.com/youngthejames/jupyterlab_filetree][youngthejames/jupyterlab_filetree]]
+
+        jupyter labextension install jupyterlab_filetree
+
 ******* python creating convenience: [[https://github.com/jtpio/jupyterlab-python-file][jtpio/jupyterlab-python-file]]
 ******* conda package manager, cloning, etc.: [[https://github.com/fcollonval/jupyter_conda][fcollonval/jupyter_conda]]
 
@@ -8441,13 +8462,27 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
         Works in basic Jupyter notebook too.
 
+        To install in the classical notebook:
+
+          conda install -c conda-forge jupyter_conda
+
+        To install in the JupyterLab:
+
+        conda install -c conda-forge jupyterlab jupyter_conda
+        jupyter labextension install jupyterlab_toastify jupyterlab_conda
+
 ******* non-git auto-versioning: [[https://github.com/timkpaine/jupyterlab_autoversion][timkpaine/jupyterlab_autoversion]]
 
         It does [[https://github.com/timkpaine/jupyterlab_autoversion/issues/1][make its own git repo]], though.
 
-        However, it doesn't work for me.  I submitted a [[https://github.com/timkpaine/jupyterlab_autoversion/issues/11][bug]].
+        jupyter labextension install jupyterlab_autoversion
+        jupyter serverextension enable --py jupyterlab_autoversion
 
 ******* graphical interface to git: [[https://github.com/jupyterlab/jupyterlab-git][jupyterlab/jupyterlab-git]]
+
+        pip install --upgrade jupyterlab-git
+        jupyter lab build
+
 ******* open file w/ part of name: [[https://github.com/parente/jupyterlab-quickopen][parente/jupyterlab-quickopen]]
 
         Start it by clicking the magnifying class icon on the LHS
@@ -8458,7 +8493,7 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
 ******* run all button: [[https://github.com/jupyterlab/runall-extension][jupyterlab/runall-extension]]
 
-        Would be useful but it's not in the standard jupyterlab repository i.e. this doesn't work:
+        Would be useful but it's not in the standard jupyterlab repository i.e. /this doesn't work/:
 
            jupyter labextension install runall-extension
 
@@ -8468,10 +8503,17 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
         [[https://github.com/plotly/jupyterlab-chart-editor][Apparently]] does things that are implemented in [[https://github.com/plotly/react-chart-editor][plotly/react-chart-editor]]
 
+        jupyter labextension install jupyterlab-chart-editor
+
 ********* [[https://github.com/plotly/jupyterlab-chart-editor][GitHub - plotly/jupyterlab-chart-editor]]
 ********* [[https://www.youtube.com/watch?v=zR7G2tNVo1Q][Introducing the JupyterLab Chart Editor - YouTube]]
 ******* [[jupytext extensions]]
-******* [[Jupyter matplotlib widgets]]
+***** jupyter-widgets a.k.a. ipywidgets: [[https://github.com/jupyter-widgets/ipywidgets/blob/master/docs/source/examples/Index.ipynb][ipywidgets]]
+
+      See the demo on the page in the headline
+
+      I'm not sure if this is installed by default or not.
+
 ******* Extensions that are maybe nice but not working
 ********* paste image into markdown: [[https://github.com/Bamieh/jupyterlab-clipboard][Bamieh/jupyterlab-clipboard]]
 
@@ -8497,11 +8539,7 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
          pip install npm
 
 ***** Jupyter/Jupyterlab graphics
-******* <<Jupyter matplotlib widgets>>
-        From: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib: Matplotlib Jupyter Extension]]
-
-        1. Install the extension (see page)
-        2. Put in Jupyter notebook/lab cell: %matplotlib widget
+******* [[Jupyter matplotlib widgets]]
 
 ***** search and replace
 
