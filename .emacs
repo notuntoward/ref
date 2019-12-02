@@ -661,7 +661,7 @@ _C-M-a_ change default action from list for this session
   (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
 
 ;; * Company Mode
-;; Used in other packages.  Maybe put this section there instead of here.
+;; Used in other packages.  Maybe put this section there instead of here?
 
 (use-package company)
 
@@ -1214,6 +1214,17 @@ _C-M-a_ change default action from list for this session
 ;;(global-set-key [f11] 'shell) (make OS-dependent, above)
 (global-set-key [f12] 'repeat-complex-command)
 
+;; * Version Control
+
+(use-package magit
+;;  :bind (("C-x g" . magit-status))
+  :config
+  ;; seems to bring up the 2 panel ediff instead of standard 3 panel
+  ;; 2vs3 panel discussion:
+  ;; https://github.com/magit/magit/issues/1743
+  ;; However one of the panels ("index") is read-only
+  (setq magit-ediff-dwim-show-on-hunks t))
+
 ;; * Programming Modes
 ;; ** General purpose programming config
 
@@ -1276,20 +1287,27 @@ _C-M-a_ change default action from list for this session
 (use-package outshine
 ;; this works if I run it from inside .emacs but not after a clean start  
 ;;  :bind (:map outline-minor-mode-map ("S-<tab>" . outshine-cycle-buffer))
+;; diminish doesn't work
   :diminish outline-mode
   :diminish outline-minor-mode
   :config
   (add-hook 'outline-minor-mode-hook 'outshine-mode) ; for outshine itself
   (add-hook 'prog-mode-hook 'outline-minor-mode)     ; all prog modes
-  ;; from https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-outshine.el
+  ;; can only diminish outshine mode here, like this, for some reason
+  (eval-after-load "outshine" '(diminish 'outshine-mode)) 
+  ;; works here
   (bind-keys
    :map outline-minor-mode-map
    ("<backtab>" . outshine-cycle-buffer))) ;Global cycle using S-TAB
-  
+
 ;; *** Vertical indent lines in programming modes
+
+(use-package highlight-indentation
+  :diminish highlight-indentation-mode) ; indicator: ||
+
 (use-package highlight-indent-guides
+  :diminish highlight-indent-guides-mode ;; indicator: h-i-g (works here)
   :config
-  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
   (setq highlight-indent-guides-method 'character)) ; nicest, thinnest lines
 
 ;; ** Matlab mode
@@ -1388,10 +1406,12 @@ _C-M-a_ change default action from list for this session
 ;; ** Python
 ;; *** Python editing setup
 
+;; TODO: get rid of hardcoded path to conda-env-home-directory
 ;; TODO: My python setup expects that ananconda python is already installed,
 ;; and has an environment named "stdso"  I should probably check this
 ;; before calling the conda-env-activate that will crash if it isn't
-;; there.
+;; there.  Try using the use-package :if directive?  example is here:
+;; https://emacs.stackexchange.com/questions/35416/how-can-a-use-package-stanza-be-configured-a-setting-depending-on-another-packag
 ;; TODO: some of my calls to sdo/find-exec my no longer be necessary,
 ;; as elpy now downloads its own python environement with some of
 ;; these already in it.  I should see which of these I can remove.
@@ -1412,7 +1432,8 @@ _C-M-a_ change default action from list for this session
   ;; Use if projects have environments files indicating their conda envs
   ;;(setq conda-project-env-name "environment.yml") ; needed by autoactivate
   ;;(conda-env-autoactivate-mode t)
-  (setq-default mode-line-format (cons '(:exec conda-env-current-name) mode-line-format)))
+  ;;conda environment is set on the modeline in custom variables
+)
 
 (sdo/find-exec "python" "Needed by autofix-on-save, REPL, elpy & py-python")
 
@@ -1429,7 +1450,7 @@ _C-M-a_ change default action from list for this session
                               (setq comment-auto-fill-only-comments 1)
                               (setq-default auto-fill-function 'do-auto-fill)))
 
-(use-package flycheck-pos-tip)
+(diminish 'auto-fill-function) ; only works here, for some reason
 
 ;; Use Elpy instead of python-mode.
 ;; run python in buffer with C-c C-c, once elpy-mode is enabled
@@ -1444,8 +1465,18 @@ _C-M-a_ change default action from list for this session
 
 (sdo/find-exec "flake8" "Needed by elpy for code checks")
 
+(use-package flycheck
+  :config
+  (eval-after-load "flycheck-mode" '(diminish 'flycheck-mode)))
+(diminish 'flycheck-mode) ;; only works outside of use-package flycheck
+
+(use-package flycheck-pos-tip)
+
+;; TODO: explore suggested (by elpy) tweaks
+;; https://elpy.readthedocs.io/en/latest/customization_tips.html
 (use-package elpy
   :defer t
+  :diminish elpy-mode
   :init
   (elpy-enable)
   ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?):
@@ -1457,10 +1488,10 @@ _C-M-a_ change default action from list for this session
                "jupyter")
   
   ;; use flycheck, not elpy's flymake
-  ;; (https://realpython.com/blog/python/emacs-the-best-python-editor/)
+  ;; (https://realpython.com/blog/python/emacs-the-best-python-editor/
+  ;;  https://elpy.readthedocs.io/en/latest/customization_tips.html)
   ;; To use flycheck for over 40 languages, do this:
   ;;   (global-flycheck-mode)
-  (use-package flycheck)
   (when (require 'flycheck nil t)
     (progn (message "found flycheck package")
            (flycheck-pos-tip-mode)
@@ -1469,25 +1500,39 @@ _C-M-a_ change default action from list for this session
 
   (define-key python-mode-map (kbd "C-c i") 'elpygen-implement)
 
+   ;;Better "M-.": https://elpy.readthedocs.io/en/latest/customization_tips.html
+  (defun elpy-goto-definition-or-rgrep ()
+    "Go to the definition of the symbol at point, if found. Otherwise, run `elpy-rgrep-symbol'."
+    (interactive)
+    (ring-insert find-tag-marker-ring (point-marker))
+    (condition-case nil (elpy-goto-definition)
+      (error (elpy-rgrep-symbol
+              (concat "\\(def\\|class\\)\s" (thing-at-point 'symbol) "(")))))
+  (define-key elpy-mode-map (kbd "M-.") 'elpy-goto-definition-or-rgrep)
+  
   (if autopep8bin
       (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)))
 
 ;; *** Python Mode and REPL
 
-;; Use IPython for REPL
+;; Use IPython for REPL (rest of repl config is in (use package elpy), above)
 (sdo/find-exec "jupyter-console" "Needed to use IPython for REPL")
-;; From:
-;; https://realpython.com/emacs-the-best-python-editor/#integration-with-jupyter-and-ipython
-(setq python-shell-interpreter "jupyter"
-      python-shell-interpreter-args "console --simple-prompt"
-      python-shell-prompt-detect-failure-warning nil)
 
-(add-to-list 'python-shell-completion-native-disabled-interpreters
-             "jupyter")
 
 ;; *** EIN
-
-;; PASSWORD: until I can get rid of this, my jupyter pasword is: hearty
+;; TODO: figure out plot scaling.  Once imagemagick hack is here:
+;;       https://github.com/syl20bnr/spacemacs/issues/8770
+;;       Emacs w/ imagemagick: https://github.com/m-parashar/emax64
+;;       but choco might have it already.
+;;       See C-h v system-configuration-features  and
+;;           C-h v system-configuration-options
+;;       I isntalled emax64 and its plots looked the same.  I ran
+;; (image-type-available-p 'imagemagick) and got 'nil, just as will
+;; the other programs.  What am I missing?
+;;       But this post: https://emacs.stackexchange.com/questions/26205/elisp-resize-displayed-images-programmatically
+;;       expects non-nil from: (image-type-available-p 'imagemagick)
+;;       and that's what I see in choco
+;; TODO: PASSWORD: until I can get rid of this, my jupyter pasword is: hearty
 (use-package ein
   :ensure t
   :init
@@ -1678,6 +1723,11 @@ is already narrowed."
 
 ;; * Org Mode
 ;; ** Org Basic Config
+
+;; TODO for inline images, (setq org-image-actual-width
+;; SIZE_IN_PIXELS) appropriate to screen DPI?
+;; This sets frame width based on screen and char size.  Might help:
+;; https://gitlab.msu.edu/joshia/celta-vm-home-config/commit/f34b238c7a7eb5da2130b1a337e83f5940f086ae?w=1
 
 (use-package org
   :ensure org-plus-contrib ; fewer clean install errors, still must restart 3X
@@ -2308,6 +2358,9 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
    ;; look at interactive functions.
    ("C-h C" . #'helpful-command)))
 
+;;" Guru mode disables some common keybindings and suggests the use of the established Emacs alternatives instead."
+;;(use-package guru-mode) ; nudges you to use
+
 ;; ;;--------------------------------
 
 ;; ;; Note that the built-in `describe-function' includes both functions
@@ -2340,6 +2393,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
 
 ;; * Appearance
 
+;; ** Fonts
 (global-set-key (kbd "C->") 'text-scale-increase)
 (global-set-key (kbd "C-<") 'text-scale-decrease)
 
@@ -2358,6 +2412,9 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
 (set-face-foreground 'font-lock-type-face "blue3")
 
 (global-font-lock-mode t) ;so fontlocking is always turned on (diff for xemacs)
+
+;; ** Cursor
+
 ;; color the cursor red if in overwrite mode
 ;; https://www.emacswiki.org/emacs/EmacsNiftyTricks
 (setq hcz-set-cursor-color-color "")
@@ -2381,23 +2438,53 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
   :config
   (beacon-mode 1))
 
-(show-paren-mode 1) ; turn on blinking parens
-
-;; visual line mode messes up org-tables but is GREAT for everything else
-(global-visual-line-mode +1) ; soft line wrapping
-(global-set-key (kbd "C-c w") 'toggle-truncate-lines) ; e.g. to view org-mode tables
-
+;; ** Modeline
 (display-time-mode 1) ; time on the modeline (is customized)
 
 ;; Right justifies time & other stuff in mode-line-misc-info, but
 ;; undoes prevous modeline buffer uniquification (maybe I want to fix
 ;; that...)
-;; TODO: this might fix it: https://www.reddit.com/r/emacs/comments/722t6w/in_smartlinemode_how_to_only_view_buffername_and/dnffnoq/
-;; TODO: try https://github.com/seagle0128/doom-modeline
+;; TODO: this might fix it:
+;; https://www.reddit.com/r/emacs/comments/722t6w/in_smartlinemode_how_to_only_view_buffername_and/dnffnoq/
 (use-package smart-mode-line 
   :config
   (setq sml/theme nil) ; don't change existing modeline faces
   (sml/setup))
+
+;; modeline filename is something like uniquified buffer name but has
+;; project info.  I don't quite understand the logic for '|' vs. '/'
+;; From:
+;; https://www.reddit.com/r/emacs/comments/8xobt3/tip_in_modeline_show_buffer_file_path_relative_to/
+
+(with-eval-after-load 'subr-x
+  (setq-default mode-line-buffer-identification
+                '(:eval (format-mode-line (propertized-buffer-identification (or (when-let* ((buffer-file-truename buffer-file-truename)
+                                                                                             (prj (cdr-safe (project-current)))
+                                                                                             (prj-parent (file-name-directory (directory-file-name (expand-file-name prj)))))
+                                                                                   (concat (file-relative-name (file-name-directory buffer-file-truename) prj-parent) (file-name-nondirectory buffer-file-truename)))
+                                                                                 "%b"))))))
+
+;; attempt to get just the unquified buffer name.  Didn't work.
+;; (with-eval-after-load 'subr-x
+;;   (setq-default mode-line-buffer-identification
+;;                 'buffername))
+                                                                                
+
+;; ;; TODO: try https://github.com/seagle0128/doom-modeline
+;;Not pretty out of the box, but is good for long filenames: uses
+;;buffer-name, which I have set to be uniquified.
+;; (use-package doom-modeline
+;;   :config
+;;   (setq doom-modeline-buffer-file-name-style 'buffer-name)
+;;   :hook (after-init . doom-modeline-mode))
+
+;; ** Other
+
+(show-paren-mode 1) ; turn on blinking parens
+
+;; visual line mode messes up org-tables but is GREAT for everything else
+(global-visual-line-mode +1) ; soft line wrapping
+(global-set-key (kbd "C-c w") 'toggle-truncate-lines) ; e.g. to view org-mode tables
 
 (column-number-mode 1) ; in mode-line
 (mouse-avoidance-mode 'animate)  ; get mouse out of way of cursor, is customized
@@ -2496,6 +2583,11 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(matlab-fill-strings-flag 0)
  '(matlab-indent-function-body nil)
  '(matlab-indent-level 2)
+ '(mode-line-format
+   (quote
+    (("%e" mode-line-front-space mode-line-mule-info mode-line-client mode-line-modified mode-line-remote mode-line-frame-identification "   " mode-line-buffer-identification mode-line-position
+      (vc-mode vc-mode)
+      "  " :exec conda-env-current-name "   " mode-line-modes "  " mode-line-misc-info mode-line-end-spaces))))
  '(mouse-autoselect-window 0.5)
  '(mouse-avoidance-nudge-dist 10)
  '(mouse-wheel-progressive-speed nil)
@@ -2583,6 +2675,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(send-mail-function (quote mailclient-send-it))
  '(show-paren-mode t)
  '(sml/modified-char "•")
+ '(sml/name-width 35)
  '(sml/position-percentage-format nil)
  '(sml/vc-mode-show-backend t)
  '(swiper-action-recenter nil)
