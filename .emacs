@@ -2253,21 +2253,6 @@ This function avoids making messed up targets by exiting without doing anything 
   (which-key-mode)
   (which-key-setup-side-window-right-bottom)) ; do bottom if no room on side
 
-; setup ideas from: https://github.com/malb/emacs.d/blob/master/malb.org
-(use-package helm-org  
-  :config (progn
-            (setq helm-org-headings-fontify t)
-
-            (defun malb/helm-in-buffer ()
-              "The right kind™ of buffer menu."
-              (interactive)
-              (if (eq major-mode 'org-mode)
-                  (call-interactively #'helm-org-in-buffer-headings)
-                (call-interactively #'helm-semantic-or-imenu)))
-
-            (add-to-list 'helm-commands-using-frame 'helm-org-in-buffer-headings)
-            (add-to-list 'helm-commands-using-frame 'helm-semantic-or-imenu)))
-
 (use-package helm-descbinds)
 ;;  :config (helm-descbinds-mode))
 
