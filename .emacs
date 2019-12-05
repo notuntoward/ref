@@ -174,14 +174,19 @@ TODO: make this a general function."
       (when (fboundp 'goto-address) (add-hook 'find-file-hooks 'goto-address))
       (define-key global-map [S-down-mouse-3] 'imenu)
 
-      ;; Set window divider width custom variables (setq is said to be the
-      ;; best way to do this in .emacs, instead of calling customize-set-variable).
+      ;; Set window dividers (mouse grab lines for moving window boundaries)
       (setq nPixDiv (calcDivNpix))
       (message "nPixDiv: %s" nPixDiv)
+      ;; setq said to best best way, even though this is customizable
       (setq window-divider-default-right-width nPixDiv)
-      ;; bottom hard to mouse on SP, hack is to add a pixel
+      ;; bottom hard to mouse on SP; hack is to add a pixel (TODO: improve)
       (setq window-divider-default-bottom-width (+ nPixDiv 1))
 
+      ;; TODO also set pixel width of scrollbars, etc
+      ;; TODO Use dispwatch, https://github.com/mnp/dispwatch, to change these things dynamically
+      ;;      Also:
+      ;; https://emacs.stackexchange.com/questions/28390/quickly-adjusting-text-to-dpi-changes
+      ;; Scroll bar width/height
       ;; (set-window-scroll-bars nil 11 t) ; set current WINDOW
       ;;(setq-default scroll-bar-width 50) ; default or all new windows and
       ;;frames
@@ -191,9 +196,6 @@ TODO: make this a general function."
       ;; need to change both initial and default params:
       ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Emacs-ignores-frame-parameters.html
 
-      ;; TODO also set pixel width of scrollbars, etc
-      ;; TODO Use dispwatch, https://github.com/mnp/dispwatch, to change these things dynamically
-      ;;      Also: https://emacs.stackexchange.com/questions/28390/quickly-adjusting-text-to-dpi-changes
       ;; TODO change font too?
       )
   (progn
