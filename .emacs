@@ -131,7 +131,19 @@
 ;; Modified (use workingarea not geometry) unhammer's code at:
 ;; https://emacs.stackexchange.com/questions/28390/quickly-adjusting-text-to-dpi-changes
 ;; Compare with http://dpi.lv/
-(defun my-dpi (&optional display)
+(defun dpi-hv (&optional display)
+  "Returns the horizontal and vertical DPI of DISPLAY. 
+DISPLAY is a display name, frame or terminal, as in
+`display-monitor-attributes-list'.  Seems like they are almost identical on my CPR work monitor, though."
+  (cl-flet ((mm2in (lambda (mm) (/ mm 25.4))))
+    (let* ((atts (frame-monitor-attributes))
+           (pix-w (cl-fourth (assoc 'workarea atts)))
+           (pix-h (cl-fifth (assoc 'workarea atts)))
+           (mm-w (cl-second (assoc 'mm-size atts)))
+           (mm-h (cl-third (assoc 'mm-size atts))))
+      (cons (/ pix-w (mm2in mm-w)) (/ pix-h (mm2in mm-h))))))
+
+(defun dpi-avg (&optional display)
   "Get the DPI of DISPLAY. 
 DISPLAY is a display name, frame or terminal, as in
 `display-monitor-attributes-list'."
@@ -161,7 +173,7 @@ TODO: make this a general function."
         (DPIlow    94.0)
         DPIthis nPixThis)
 
-    (setq DPIthis (my-dpi))
+    (setq DPIthis (dpi-avg))
     (message "DPIthis %s" DPIthis)
     (setq nPixThis (max 1 (round (+ (* (/ (- nPixHigh nPixLow) (- DPIhigh DPIlow)) (- DPIthis DPIlow)) nPixLow))))))
 
@@ -459,8 +471,16 @@ TODO: make this a general function."
   ;; C-s C-w (extra C-w's expand region) also works well
   ;; I added -i to counsel-grep-base-command so grep is case-insensitive
   ;;  (fset 'swiper-func 'counsel-grep-or-swiper) ; uses grep for long files, esp. org
-  (fset 'swiper-func-forward 'swiper) ; standard swiper, slow on large org files
-  (fset 'swiper-func-backward 'swiper-backward) ; standard swiper, slow on large org files
+
+  ;; swiper-isearch is much faster than plain swiper:
+  ;; https://oremacs.com/2019/04/07/swiper-isearch/
+  ;; Are the matches different?
+  ;; (fset 'swiper-func-forward 'swiper) ; standard swiper, slow on large org files
+  ;; (fset 'swiper-func-backward 'swiper-backward) ; standard swiper,
+  ;; slow on large org files
+  ;; Note: could also experiment w/ swiper-isearch-toggle
+  (fset 'swiper-func-forward 'swiper-isearch) ; standard swiper, slow on large org files
+  (fset 'swiper-func-backward 'swiper-isearch-backward) ; standard swiper, slow on large org files
 
   ;; TODO: combine forward backward into one function instead of this hack
   (defun sdo/swiper-region-forward ()
@@ -481,9 +501,6 @@ TODO: make this a general function."
           (swiper-func-backward region))
       (swiper-func-backward)))
 
-  ;; TODO modify swiper-func-backward keymap so that another C-r
-  ;; continues in backwards direction, like C-s does in the forward direction.
-  
   (global-set-key "\C-s" 'sdo/swiper-region-forward)
   (global-set-key "\C-r" 'sdo/swiper-region-backward)
   ;; see also jrh-isearch-with-region
@@ -494,7 +511,11 @@ TODO: make this a general function."
   (global-set-key (kbd "C-c V") 'ivy-pop-view) ; works like delete
   (global-set-key (kbd "C-x V") 'ivy-switch-view)
   ;; actually, this seems to do the (nearly) same thing as C-s s
-  (global-set-key (kbd "C-c C-r") 'ivy-resume)) ;Resume last ivy completion sess
+  (global-set-key (kbd "C-c C-r") 'ivy-resume) ;Resume last ivy completion sess
+  :config
+  ;; for consistent backwards search binding within ivy minibuffer
+  (bind-key "C-r" 'ivy-previous-line-or-history ivy-minibuffer-map)
+  )
 
 (use-package counsel ; better kill-ring 2nd yanking
   :init
@@ -706,6 +727,7 @@ _C-M-a_ change default action from list for this session
 
 ;; * Buffer Handling
 ;; ** Buffer naming
+
 ;; Renames buffers containing same file names, different dirs
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward)
@@ -780,6 +802,7 @@ _C-M-a_ change default action from list for this session
 ;; (global-set-key (kbd "<C-S-tab>")  'other-window) ; backwards
 
 ;; ** Indirect buffers
+
 (defun sdo/clone-indirect-buffer-other-frame (newname display-flag &optional norecord)
   "Like `clone-indirect-buffer' but display in another frame."
   (interactive
@@ -2592,10 +2615,10 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(org-export-with-broken-links (quote mark))
  '(org-fontify-done-headline t)
  '(org-fontify-emphasized-text t)
- '(org-from-is-user-regexp nil)
  '(org-hide-emphasis-markers t)
  '(org-hide-leading-stars t)
  '(org-latex-pdf-process (quote ("latexmk -pdf -output-directory=%o -f %f")))
+ '(org-link-from-user-regexp nil)
  '(org-list-allow-alphabetical t)
  '(org-list-empty-line-terminates-plain-lists t)
  '(org-modules
@@ -2642,7 +2665,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
  '(recentf-max-saved-items 200)
