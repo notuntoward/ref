@@ -460,8 +460,8 @@ TODO: make this a general function."
 
 ;; TODO: evalulate https://github.com/Yevgnen/ivy-rich
 ;; Help while in ivy search:
-;;  hydra: C-o;
-;;  full help: C-h m
+;;  ivy hydra: C-o;
+;;  ivy full help: C-h m
 (use-package swiper
   :diminish ivy-mode
   :init
@@ -505,8 +505,11 @@ TODO: make this a general function."
   (global-set-key "\C-r" 'sdo/swiper-region-backward)
   ;; see also jrh-isearch-with-region
   (global-set-key (kbd "C-c s") 'swiper-isearch-thing-at-point)
-  ;; ivy-views integrate with ivy-switch-buffer (See https://oremacs.com/2016/06/27/ivy-push-view/).  That's probably nice but I'm still using ido-switch-buffer b/c of its rectangular view.  So, I've bound ivy-switch view to something close to switch-buffer.
-  ;; NOTE, however, that somebody has posted an ivy-rectangle view.  I must have an email for that or something.
+  ;; ivy-views integrate with ivy-switch-buffer (See
+  ;; https://oremacs.com/2016/06/27/ivy-push-view/).  That's probably
+  ;; nice but I'm still using ido-switch-buffer b/c of its rectangular
+  ;; grid view.  So, I've bound ivy-switch view to something close to switch-buffer.
+  ;; NOTE: there is now an "ivy-grid" view: ivy-explorer, below.
   (global-set-key (kbd "C-c v") 'ivy-push-view)
   (global-set-key (kbd "C-c V") 'ivy-pop-view) ; works like delete
   (global-set-key (kbd "C-x V") 'ivy-switch-view)
@@ -623,14 +626,12 @@ _C-M-a_ change default action from list for this session
   )
 (define-key ivy-minibuffer-map (kbd "C-o") 'hydra-ivy/body)
 
+;; Is this needed anymore, since ivy-isearch is now (Apr 2019) so much faster?
 (defun org-toggle-outline-visibility ()
   "Hides all subheadlines or restores original visibility before toggle.
    Eventually use this to speed up ivy by showing everything, searching and then unshowing everything."
-
   (interactive)
-
   ;; NAH, need to call "hide everything on one call; save outline on next.  Also, apparently need for arguments for org-save-outline-visibility:  see emacs help. 
-
   (org-save-outline-visibility nil))
 
 ;; * IDO Mode
@@ -682,7 +683,7 @@ _C-M-a_ change default action from list for this session
   (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
 
 ;; * Company Mode
-;; Used in other packages.  Maybe put this section there instead of here?
+;; Used in other packages.  Maybe put this section in one of those places instead of here?
 
 (use-package company)
 
@@ -1280,18 +1281,7 @@ _C-M-a_ change default action from list for this session
   :diminish auto-complete-minor-mode
   :config (global-auto-complete-mode))
 
-;; so M-n and M-p look for symbol at point.  Is redundant with highlight-thing
-;; also can replace like iedit, M-' globally and C-u M-' within defun (after M-n or M-p)
 ;; Note that I've remapped er\iedit to iedit-within-defun
-;; From https://github.com/itsjeyd/emacs-config/blob/emacs24/init.el
-(use-package smartscan
-  :defer t
-  :config (global-smartscan-mode t))
-
-;; works but not narrowed to defun, can't edit symbol by just typing, like in Matlab
-;; (use-package auto-highlight-symbol
-;;   :init
-  ;;   (global-auto-highlight-symbol-mode))
 
 ;; *** Ediff
 
@@ -1334,6 +1324,31 @@ _C-M-a_ change default action from list for this session
   (setq highlight-indent-guides-method 'character) ; nicest, thinnest lines
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
   
+;; *** Debuggers
+;; **** realgud
+;; TODO try getting this to work
+;; Seems to have a semi-GUI in emacs: https://github.com/realgud/realgud
+
+(use-package realgud)
+
+;; **** gud debugger
+(add-hook 'gud-mode-hook
+	  '(lambda ()
+             ;; conflicts w/ other home bindings...
+	     (local-set-key [home]   ; move to beginning of line, after prompt
+			    'comint-bol)
+	     (local-set-key [up]     ; cycle backward through command history
+			    '(lambda () (interactive)
+			       (if (comint-after-pmark-p)
+				   (comint-previous-input 1)
+				 (previous-line 1))))
+	     (local-set-key [down]    ; cycle forward through command history
+			    '(lambda () (interactive)
+			       (if (comint-after-pmark-p)
+				   (comint-next-input 1)
+				 (forward-line 1))))))
+
+
 ;; ** Matlab mode
 
 ;; Got errors about obsolete code when I first isntalled this in packages. Note that abo-abo says that this package is no longer maintained (but did he meant THIS package or is THIS package actually his package? the 'matlab' package below is 'matlab-emacs' in sourceforge).  Anyway, abo-abo has a new matlab package, maybe worth trying.
@@ -1660,23 +1675,6 @@ _C-M-a_ change default action from list for this session
 		 (format "ruby -cw %s"
 			 (file-name-nondirectory buffer-file-name)))))
 
-;; ** gud debugger
-(add-hook 'gud-mode-hook
-	  '(lambda ()
-             ;; conflicts w/ other home bindings...
-	     (local-set-key [home]   ; move to beginning of line, after prompt
-			    'comint-bol)
-	     (local-set-key [up]     ; cycle backward through command history
-			    '(lambda () (interactive)
-			       (if (comint-after-pmark-p)
-				   (comint-previous-input 1)
-				 (previous-line 1))))
-	     (local-set-key [down]    ; cycle forward through command history
-			    '(lambda () (interactive)
-			       (if (comint-after-pmark-p)
-				   (comint-next-input 1)
-				 (forward-line 1))))))
-
 ;; ** C#
 
 (use-package csharp-mode)
@@ -1890,6 +1888,9 @@ is already narrowed."
  
 ;; ** Org Mode Dedicated Targets
 (require 'org)
+
+;; TODO: now (Dec 4, 2019) my dedicated target code breaks because
+;; org-at-target-p and maybe other funcs are no longer in distributed org.el
 
 ;; --- Hide org-mode dedicated targets -----------------------------------------
 ;; Hides the <<>> around dedicated targets; the face of the remaining visible text is set by customizing the face: org-target
