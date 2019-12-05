@@ -8402,7 +8402,7 @@ From: [[https://medium.com/@rrfd/cookiecutter-data-science-organize-your-project
 
 The suffix 2 is used after autoreload, to reload all modules every time before executing the Python code typed. This will enable us to edit functions in Atom, debug them, and quickly import the code into our notebook, rather than having to write out a debug the function directly in Jupyter.
 
-***** Jupyterlab extensions
+***** Jupyterlab extensions (good)
 ******* updating juypterlab extensions
         
         For many, [[https://github.com/jupyterlab/jupyterlab/pull/4410][you can do]]:
@@ -8418,6 +8418,14 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
 ******* <<Jupytlerlab plotly extension>>:
        
        jupyter labextension install jupyterlab-plotly
+
+********* obsoleted plotly extension
+           [[https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension][jupyter-renderers/packages/plotly-extension]]
+
+           Do this first before following web page instructions:
+
+             conda install nodejs
+           pip install npm
 
 ******* <<Jupyter matplotlib widgets>>
         From: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib]]
@@ -8516,13 +8524,11 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
 ********* [[https://github.com/plotly/jupyterlab-chart-editor][GitHub - plotly/jupyterlab-chart-editor]]
 ********* [[https://www.youtube.com/watch?v=zR7G2tNVo1Q][Introducing the JupyterLab Chart Editor - YouTube]]
 ******* [[jupytext extensions]]
-***** jupyter-widgets a.k.a. ipywidgets: [[https://github.com/jupyter-widgets/ipywidgets/blob/master/docs/source/examples/Index.ipynb][ipywidgets]]
+******* manages keyboard shortcuts[[https://github.com/jupyterlab/jupyterlab-shortcutui][ jupyterlab-shortcutui]]
 
-      See the demo on the page in the headline
+        jupyter labextension install @jupyterlab/shortcutui
 
-      I'm not sure if this is installed by default or not.
-
-******* Extensions that are maybe nice but not working
+******* Jupyterlab extensions (not working but maybe nice) 
 ********* paste image into markdown: [[https://github.com/Bamieh/jupyterlab-clipboard][Bamieh/jupyterlab-clipboard]]
 
           It's not compatible with jupyterlab version
@@ -8536,15 +8542,11 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
 
           Doesn't work.  Many emacs binding missing. I [[https://github.com/kpe/jupyterlab-emacskeys/issues/2][filed a bug]].
 
-********* TRY [[https://github.com/jupyterlab/jupyterlab-shortcutui][jupyterlab/jupyterlab-shortcutui: A JupyterLab extension for managing shortcuts]]
-          It's now been updated to Jupyterlab 1.0.  Maybe worth trying.
-******* obsoleted plotly extension
-         [[https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension][jupyter-renderers/packages/plotly-extension]]
+***** jupyter-widgets a.k.a. ipywidgets: [[https://github.com/jupyter-widgets/ipywidgets/blob/master/docs/source/examples/Index.ipynb][ipywidgets]]
 
-         Do this first before following web page instructions:
+      See the demo on the page in the headline
 
-           conda install nodejs
-         pip install npm
+      I'm not sure if this is installed by default or not.
 
 ***** Jupyter/Jupyterlab graphics
 ******* [[Jupyter matplotlib widgets]]
@@ -10209,10 +10211,11 @@ matlab-ruby-test.rb
 
       A powerful general reference framework, like a super-jabref.  Did interesting topic clustering (some good, some not meaningful) but I didn't like the way it ate my pdfs and insisted on editing them within the tool (no Drawboard ink, etc.).
 
-***** Bibliograph visualizaton using [[Gephi]]
-      <<Bibliography visualizaton using Gephi>>
-******* [[https://abhishekkathuria.wordpress.com/2014/07/01/visualizing-your-co-author-network/][Gephi & Sci2 Co-author graph]]
-        <<Gephi & Sci2 co-author graph>>
+***** <<Bibliography visualizaton using Gephi>>
+      From: [[Gephi]]
+     
+******* <<Gephi & Sci2 co-author graph>>
+        From: [[https://abhishekkathuria.wordpress.com/2014/07/01/visualizing-your-co-author-network/][Gephi & Sci2 Co-author graph]]
 
         _This wasn't useful._  Took forever and the network wasn't topic-based but co-author based.  And then, you couldn't see authors or paper titles on the graph when you cliked on them.
 
