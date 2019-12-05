@@ -117,16 +117,6 @@
 
 ;; ** Screen/terminal dependent settings
 
-(if window-system
-    (progn
-      ;; middle mouse click on url starts browser in every file
-      (when (fboundp 'goto-address) (add-hook 'find-file-hooks 'goto-address))
-      (define-key global-map [S-down-mouse-3] 'imenu))
-  (progn
-    ;; on a term or cmdshell:
-    (menu-bar-mode -1) ;menubar off when on an xterm (xemacs does automatically)
-    (set-face-background 'region "pale turquoise"))) ;works on xterm
-
 ;; Adjust pixel-based values depending upon screen DPI
 ;; Modified (use workingarea not geometry) unhammer's code at:
 ;; https://emacs.stackexchange.com/questions/28390/quickly-adjusting-text-to-dpi-changes
@@ -178,27 +168,38 @@ TODO: make this a general function."
     (setq nPixThis (max 1 (round (+ (* (/ (- nPixHigh nPixLow) (- DPIhigh DPIlow)) (- DPIthis DPIlow)) nPixLow))))))
 
 
-;; Set window divider width custom variables (setq is said to be the
-;; best way to do this in .emacs, instead of calling customize-set-variable).
-(setq nPixDiv (calcDivNpix))
-(message "nPixDiv: %s" nPixDiv)
-(setq window-divider-default-right-width nPixDiv)
-;; bottom hard to mouse on SP, hack is to add a pixel
-(setq window-divider-default-bottom-width (+ nPixDiv 1));
+(if window-system
+    (progn
+      ;; middle mouse click on url starts browser in every file
+      (when (fboundp 'goto-address) (add-hook 'find-file-hooks 'goto-address))
+      (define-key global-map [S-down-mouse-3] 'imenu)
 
-;; (set-window-scroll-bars nil 11 t) ; set current WINDOW
-;;(setq-default scroll-bar-width 50) ; default or all new windows and
-;;frames
-;; (modify-all-frames-parameters ) should change them all
-;; (message "%s" (frame-parameters)) prints frame params
-;;
-;; need to change both initial and default params:
-;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Emacs-ignores-frame-parameters.html
+      ;; Set window divider width custom variables (setq is said to be the
+      ;; best way to do this in .emacs, instead of calling customize-set-variable).
+      (setq nPixDiv (calcDivNpix))
+      (message "nPixDiv: %s" nPixDiv)
+      (setq window-divider-default-right-width nPixDiv)
+      ;; bottom hard to mouse on SP, hack is to add a pixel
+      (setq window-divider-default-bottom-width (+ nPixDiv 1))
 
-;; TODO also set pixel width of scrollbars, etc
-;; TODO Use dispwatch, https://github.com/mnp/dispwatch, to change these things dynamically
-;;      Also: https://emacs.stackexchange.com/questions/28390/quickly-adjusting-text-to-dpi-changes
-;; TODO change font too?
+      ;; (set-window-scroll-bars nil 11 t) ; set current WINDOW
+      ;;(setq-default scroll-bar-width 50) ; default or all new windows and
+      ;;frames
+      ;; (modify-all-frames-parameters ) should change them all
+      ;; (message "%s" (frame-parameters)) prints frame params
+      ;;
+      ;; need to change both initial and default params:
+      ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Emacs-ignores-frame-parameters.html
+
+      ;; TODO also set pixel width of scrollbars, etc
+      ;; TODO Use dispwatch, https://github.com/mnp/dispwatch, to change these things dynamically
+      ;;      Also: https://emacs.stackexchange.com/questions/28390/quickly-adjusting-text-to-dpi-changes
+      ;; TODO change font too?
+      )
+  (progn
+    ;; on a term or cmdshell:
+    (menu-bar-mode -1) ;menubar off when on an xterm (xemacs does automatically)
+    (set-face-background 'region "pale turquoise"))) ;works on xterm
 
 ;; to install it with the ps-print package, which I hadn't for 21.8, at least.
 (require 'ps-print)
@@ -1004,7 +1005,6 @@ _C-M-a_ change default action from list for this session
 ;; https://emacs.stackexchange.com/questions/18128/quickly-open-file-by-full-path-in-clipboard
 ;;
 ;; TODO: I would like to use ivy but functions below use find-file-other-window and find-file-other-frame, which have no ivy analogs.
-;;
 
 ;; Avoid extra "file or url" text in minibuf; use ffap only @ valid URL or path
 (defun find-file-guessing (arg)
@@ -1747,9 +1747,7 @@ is already narrowed."
 ;; * Org Mode
 ;; ** Org Basic Config
 
-;; TODO for inline images, (setq org-image-actual-width
-;; SIZE_IN_PIXELS) appropriate to screen DPI?
-;; This sets frame width based on screen and char size.  Might help:
+;; TODO This sets frame width based on screen and char size.  Might help:
 ;; https://gitlab.msu.edu/joshia/celta-vm-home-config/commit/f34b238c7a7eb5da2130b1a337e83f5940f086ae?w=1
 
 (use-package org
@@ -2545,6 +2543,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(calendar-week-start-day 1)
  '(column-number-mode t)
  '(counsel-grep-base-command "grep -nEi '%s' %s")
+ '(counsel-search-engine (quote google))
  '(delete-selection-mode nil)
  '(dired-dwim-target t)
  '(display-time-24hr-format t)
