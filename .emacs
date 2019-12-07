@@ -461,7 +461,7 @@ TODO: make this a general function."
 
 ;; * Swiper/Ivy
 
-;; TODO: evalulate https://github.com/Yevgnen/ivy-rich
+;; TODO: evaluate https://github.com/Yevgnen/ivy-rich
 ;; Help while in ivy search:
 ;;  ivy hydra: C-o;
 ;;  ivy full help: C-h m
@@ -1452,6 +1452,8 @@ _C-M-a_ change default action from list for this session
 ;; and has an environment named "stdso"  I should probably check this
 ;; before calling the conda-env-activate that will crash if it isn't
 ;; there.  Try using the use-package :if directive?  example is here:
+;; NOTE: I've submitted a bug and the conda maintainer thinks it
+;; should be fixed.
 ;; https://emacs.stackexchange.com/questions/35416/how-can-a-use-package-stanza-be-configured-a-setting-depending-on-another-packag
 ;; TODO: some of my calls to sdo/find-exec my no longer be necessary,
 ;; as elpy now downloads its own python environement with some of
@@ -1506,7 +1508,7 @@ _C-M-a_ change default action from list for this session
 ;; You can see what's going on with: M-x elpy-config
 ;; You can force a reinstall with: M-x elpy-rpc-reinstall-virtualenv
 
-(sdo/find-exec "flake8" "Needed by elpy for code checks")
+(sdo/find-exec "flake8" "Needed for elpy & Jupyterlab code checks")
 
 (use-package flycheck
   :config
@@ -1515,8 +1517,6 @@ _C-M-a_ change default action from list for this session
 
 (use-package flycheck-pos-tip)
 
-;; TODO: explore suggested (by elpy) tweaks
-;; https://elpy.readthedocs.io/en/latest/customization_tips.html
 (use-package elpy
   :defer t
   :diminish elpy-mode
@@ -1575,6 +1575,14 @@ _C-M-a_ change default action from list for this session
 ;;       expects non-nil from: (image-type-available-p 'imagemagick)
 ;;       and that's what I see in choco
 ;; TODO: PASSWORD: until I can get rid of this, my jupyter pasword is: hearty
+;; TODO: use new EIN plot scaling code in some kind of autoload function
+;;       ein:pytools-matplotlib-dpi-correction (requires %matplotlib
+;; inline call before it will work)
+;;       (see
+;; https://github.com/millejoh/emacs-ipython-notebook/issues/625)
+;;       ein:pytools-set-figure-dpi',ein:pytools-set-matplotlib-parameter
+;;       (https://github.com/millejoh/emacs-ipython-notebook/pull/627)
+;;       maybe these two other calls work before %matplotlib inline is called?
 (use-package ein
   :ensure t
   :init
@@ -1707,6 +1715,13 @@ _C-M-a_ change default action from list for this session
 
 (use-package yaml-mode
   :mode ("\\.yml$" "\\.dvc$")) ;; data version control (DVC) files
+
+;; ** elisp and dot emacs
+
+(defun dot-emacs-diff (p)
+  (interactive "p")
+  (ediff-files "~/.emacs"
+               "c:/Users/scott/OneDrive - Clean Power Research/ref/.emacs"))
 
 ;; * Narrowing
 ;; Default emacs narrowing has too many keys: wipe them out and make
@@ -2403,7 +2418,6 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
 ;; ;;--------------------------------
 
 ;; * Appearance
-
 ;; ** Fonts
 (global-set-key (kbd "C->") 'text-scale-increase)
 (global-set-key (kbd "C-<") 'text-scale-decrease)
