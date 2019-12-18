@@ -486,6 +486,21 @@ TODO: make this a general function."
   (fset 'swiper-func-backward 'swiper-isearch-backward) ; standard swiper, slow on large org files
 
   ;; TODO: combine forward backward into one function instead of this hack
+  ;; (defun sdo/swiper-region (isForward)
+  ;;   "If region selected, swipe for it, else do normal swiper call"
+  ;;   (interactive)
+  ;;   (let ((swiper-func (if isForward swiper-func-forward swiper-func-backward)))
+  ;;     (if mark-active
+  ;;         (let ((region (funcall region-extract-function nil)))
+  ;;           (deactivate-mark)
+  ;;           (funcall swiper-func region))
+  ;;       (funcall swiper-func))))
+  ;;
+  ;; (defun sdo/swiper-region-forward ()
+  ;;   "If region selected, swipe for it forward, else do normal swiper call"
+  ;;   (interactive)
+  ;;   (sdo/swiper-region t))
+
   (defun sdo/swiper-region-forward ()
     "If region selected, swipe for it forward, else do normal swiper call"
     (interactive)
@@ -1242,14 +1257,15 @@ _C-M-a_ change default action from list for this session
 
 ;; * Version Control
 
-(use-package magit
-;;  :bind (("C-x g" . magit-status))
-  :config
-  ;; seems to bring up the 2 panel ediff instead of standard 3 panel
-  ;; 2vs3 panel discussion:
-  ;; https://github.com/magit/magit/issues/1743
-  ;; However one of the panels ("index") is read-only
-  (setq magit-ediff-dwim-show-on-hunks t))
+;; was this turning org-links into org-git-links?
+;; (use-package magit
+;; ;;  :bind (("C-x g" . magit-status))
+;;   :config
+;;   ;; seems to bring up the 2 panel ediff instead of standard 3 panel
+;;   ;; 2vs3 panel discussion:
+;;   ;; https://github.com/magit/magit/issues/1743
+;;   ;; However one of the panels ("index") is read-only
+;;   (setq magit-ediff-dwim-show-on-hunks t))
 
 ;; * Programming Modes
 ;; ** General purpose programming config
@@ -1524,6 +1540,7 @@ _C-M-a_ change default action from list for this session
   (elpy-enable)
   ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?):
   ;; https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
+  (sdo/find-exec "jupyter-console" "Elpy is set up to use this")
   (setq python-shell-interpreter "jupyter"
         python-shell-interpreter-args "console --simple-prompt"
         python-shell-prompt-detect-failure-warning nil)
@@ -1554,12 +1571,6 @@ _C-M-a_ change default action from list for this session
   
   (if autopep8bin
       (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)))
-
-;; *** Python Mode and REPL
-
-;; Use IPython for REPL (rest of repl config is in (use package elpy), above)
-(sdo/find-exec "jupyter-console" "Needed to use IPython for REPL")
-
 
 ;; *** EIN
 ;; TODO: figure out plot scaling.  Once imagemagick hack is here:
@@ -1618,7 +1629,7 @@ _C-M-a_ change default action from list for this session
 		 (format "perl -cw %s"
 			 (file-name-nondirectory buffer-file-name)))))
 
-;; ** VC source code control
+;; ** VC source code control (also see "Org and Git")
 
 (eval-after-load "vc-hooks"
   '(define-key vc-prefix-map "=" 'vc-ediff)) ; so C-x v = will use ediff
@@ -1834,6 +1845,25 @@ is already narrowed."
 (use-package org-cliplink ; make hyper link from URL in clipboard
   :config (define-key org-mode-map (kbd "C-c y") 'org-cliplink))
 
+;; ** Org and Git
+;;For magit buffers https://github.com/magit/orgit
+;;(use-package orgit)
+
+;; This is nice, but it ALWAYS stores git links if the file is in a
+;;git repository -- screws up links across energytop.org and
+;;howto.org, because they would point to certain git versions instead
+;;of the CURRENT git version.
+;;
+;; My issue report:
+;;https://github.com/ReimarFinken/org-git-link/issues/5
+;; Author's introduction:
+;;https://lists.gnu.org/archive/html/emacs-orgmode/2009-10/msg00730.html
+;; somebody has same problem:
+;;https://stackoverflow.com/questions/56158827/how-do-i-disable-or-rein-in-org-git-link-org-plus-contrib-20190513
+;;
+;;All git links https://orgmode.org/worg/org-contrib/org-git-link.html
+;;(if (sdo/find-exec "git") (add-to-list 'org-modules 'org-git-link))
+
 ;; ** Org-ref
 
 ;; org-ref commented out b/c it produces and error as soon as the 1st cite: link is encounted (and this makes org-bullets not work)
@@ -1904,13 +1934,19 @@ is already narrowed."
 ;; ** Org Mode Dedicated Targets
 (require 'org)
 
-;; TODO: now (Dec 4, 2019) my dedicated target code breaks because
-;; org-at-target-p and maybe other funcs are no longer in distributed org.el
-
 ;; --- Hide org-mode dedicated targets -----------------------------------------
 ;; Hides the <<>> around dedicated targets; the face of the remaining visible text is set by customizing the face: org-target
 ;; Inspiration: https://emacs.stackexchange.com/questions/19230/how-to-hide-targets
 ;; but regexp there worked only for all :alnum: targets.  I tried to invert org-target-regexp but couldn't get that to work, so here, I'm just matching printable chars in the middle.
+
+;; From: Nicolas Goaziou: https://mail.google.com/mail/u/0/#inbox/QgrcJHsNmtZZNZFRdHZBqCqcmZVLJkSdzJq
+;; He also suggested this bit of code as another alternative:
+;;         (org-element-lineage (org-element-context) '(target radio-target) t)
+(defun org-at-target-p ()
+  "Return true if cursor is on a dedicated target.  
+This is a replacement for org-mode's buggy, and now-deleted, function"
+  (memq (org-element-type (org-element-context)) '(target radio-target)))
+
 (defcustom org-hidden-links-additional-re "\\(<<\\)[[:print:]]+?\\(>>\\)"
   "Regular expression that matches strings where the invisible-property of the sub-matches 1 and 2 is set to org-link."
   :type '(choice (const :tag "Off" nil) regexp)
@@ -2639,7 +2675,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(org-list-empty-line-terminates-plain-lists t)
  '(org-modules
    (quote
-    (org-bibtex org-info org-inlinetask org-mouse org-protocol org-choose org-man)))
+    (ol-bibtex org-mouse ol-eshell ol-git-link ol-man org-bibtex org-info org-inlinetask org-mouse org-protocol org-choose)))
  '(org-occur-case-fold-search (quote (quote smart)))
  '(org-odd-levels-only t)
  '(org-outline-path-complete-in-steps nil)
