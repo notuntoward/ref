@@ -1463,7 +1463,6 @@ _C-M-a_ change default action from list for this session
 ;; ** Python
 ;; *** Python editing setup
 
-;; TODO: get rid of hardcoded path to conda-env-home-directory
 ;; TODO: My python setup expects that ananconda python is already installed,
 ;; and has an environment named "stdso"  I should probably check this
 ;; before calling the conda-env-activate that will crash if it isn't
@@ -1480,131 +1479,135 @@ _C-M-a_ change default action from list for this session
 ;; tools are initialized to some defaults by the time they need them.
 ;; To change the env to something no-hardcoded, run:
 ;; M-x conda-env-activate to activate
-(use-package conda
-  :ensure t
-  :init
-  (setq conda-anaconda-home (expand-file-name "~/.anaconda")) ; matters?
-  (setq conda-env-home-directory (expand-file-name "c:/Users/scott/Anaconda3"))
-  (conda-env-initialize-interactive-shells)
-  (conda-env-initialize-eshell)
-  (conda-env-activate "stdso") ; my expected default anaconda environment
-  ;; Use if projects have environments files indicating their conda envs
-  ;;(setq conda-project-env-name "environment.yml") ; needed by autoactivate
-  ;;(conda-env-autoactivate-mode t)
-  ;;conda environment is set on the modeline in custom variables
-)
+(if (setq conda_exe (sdo/find-exec "conda" "Needed for most python packages"))
+    (use-package conda
+      :ensure t
+      :init
+      (setq conda-anaconda-home (expand-file-name "~/.anaconda")) ; matters?
+      (setq conda-env-home-directory (expand-file-name
+                                      (concat (file-name-directory conda_exe)
+                                              "..")))
+      (conda-env-initialize-interactive-shells)
+      (conda-env-initialize-eshell)
+      (conda-env-activate "stdso") ; my expected default anaconda environment
+      ;; Use if projects have environments files indicating their conda envs
+      ;;(setq conda-project-env-name "environment.yml") ; needed by autoactivate
+      ;;(conda-env-autoactivate-mode t)
+      ;;conda environment is set on the modeline in custom variables
+      )
 
-(sdo/find-exec "python" "Needed by autofix-on-save, REPL, elpy & py-python")
+  (sdo/find-exec "python" "Needed by autofix-on-save, REPL, elpy & py-python")
 
-(setq autopep8bin (sdo/find-exec "autopep8" "Needed by py-autopep8 autofix-on-save & elpy"))
-(when autopep8bin (use-package py-autopep8))
+  (setq autopep8bin (sdo/find-exec "autopep8" "Needed by py-autopep8 autofix-on-save & elpy"))
+  (when autopep8bin (use-package py-autopep8))
 
-;; So C-c i generates a python function/method stub from symbol at point
-(use-package elpygen ; seems to be separate from elpy, despite the name
-  :config
-  (define-key python-mode-map (kbd "C-c i") 'elpygen-implement))
+  ;; So C-c i generates a python function/method stub from symbol at point
+  (use-package elpygen ; seems to be separate from elpy, despite the name
+    :config
+    (define-key python-mode-map (kbd "C-c i") 'elpygen-implement))
 
-;; for Python mode comment filling
-;; https://stackoverflow.com/questions/2214199/how-to-use-emacs-to-write-comments-with-proper-indentation-line-length-and-wra
-(require 'newcomment)
-(add-hook 'python-mode-hook (progn
-                              (setq comment-auto-fill-only-comments 1)
-                              (setq-default auto-fill-function 'do-auto-fill)))
+  ;; for Python mode comment filling
+  ;; https://stackoverflow.com/questions/2214199/how-to-use-emacs-to-write-comments-with-proper-indentation-line-length-and-wra
+  (require 'newcomment)
+  (add-hook 'python-mode-hook (progn
+                                (setq comment-auto-fill-only-comments 1)
+                                (setq-default auto-fill-function 'do-auto-fill)))
 
-(diminish 'auto-fill-function) ; only works here, for some reason
+  (diminish 'auto-fill-function) ; only works here, for some reason
 
-;; Use Elpy instead of python-mode.
-;; run python in buffer with C-c C-c, once elpy-mode is enabled
-;;
-;; REQUIRES AT LEAST THESE PYTHON LIBS: jedi flake8 autopep8
-;; See: 
-;; https://github.com/jorgenschaefer/elpy
-;; docs: https://elpy.readthedocs.io/en/latest/index.html
-;; HOWEVER, lately, it automatically downloads a lot of its own Python libraries.
-;; You can see what's going on with: M-x elpy-config
-;; You can force a reinstall with: M-x elpy-rpc-reinstall-virtualenv
+  ;; Use Elpy instead of python-mode.
+  ;; run python in buffer with C-c C-c, once elpy-mode is enabled
+  ;;
+  ;; REQUIRES AT LEAST THESE PYTHON LIBS: jedi flake8 autopep8
+  ;; See: 
+  ;; https://github.com/jorgenschaefer/elpy
+  ;; docs: https://elpy.readthedocs.io/en/latest/index.html
+  ;; HOWEVER, lately, it automatically downloads a lot of its own Python libraries.
+  ;; You can see what's going on with: M-x elpy-config
+  ;; You can force a reinstall with: M-x elpy-rpc-reinstall-virtualenv
 
-(sdo/find-exec "flake8" "Needed for elpy & Jupyterlab code checks")
+  (sdo/find-exec "flake8" "Needed for elpy & Jupyterlab code checks")
 
-(use-package flycheck
-  :config
-  (eval-after-load "flycheck-mode" '(diminish 'flycheck-mode)))
-(diminish 'flycheck-mode) ;; only works outside of use-package flycheck
+  (use-package flycheck
+    :config
+    (eval-after-load "flycheck-mode" '(diminish 'flycheck-mode)))
+  (diminish 'flycheck-mode) ;; only works outside of use-package flycheck
 
-(use-package flycheck-pos-tip)
+  (use-package flycheck-pos-tip)
 
-(use-package elpy
-  :defer t
-  :diminish elpy-mode
-  :init
-  (elpy-enable)
-  ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?):
-  ;; https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
-  (sdo/find-exec "jupyter-console" "Elpy is set up to use this")
-  (setq python-shell-interpreter "jupyter"
-        python-shell-interpreter-args "console --simple-prompt"
-        python-shell-prompt-detect-failure-warning nil)
-  (add-to-list 'python-shell-completion-native-disabled-interpreters
-               "jupyter")
-  
-  ;; use flycheck, not elpy's flymake
-  ;; (https://realpython.com/blog/python/emacs-the-best-python-editor/
-  ;;  https://elpy.readthedocs.io/en/latest/customization_tips.html)
-  ;; To use flycheck for over 40 languages, do this:
-  ;;   (global-flycheck-mode)
-  (if (require 'flycheck nil t)
-    (progn (message "found flycheck package")
-           (flycheck-pos-tip-mode)
-           (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-           (add-hook 'elpy-mode-hook 'flycheck-mode))
-    (warn "elpy didn't find flycheck package"))
+  (use-package elpy
+    :defer t
+    :diminish elpy-mode
+    :init
+    (elpy-enable)
+    ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?):
+    ;; https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
+    (sdo/find-exec "jupyter-console" "Elpy is set up to use this")
+    (setq python-shell-interpreter "jupyter"
+          python-shell-interpreter-args "console --simple-prompt"
+          python-shell-prompt-detect-failure-warning nil)
+    (add-to-list 'python-shell-completion-native-disabled-interpreters
+                 "jupyter")
+    
+    ;; use flycheck, not elpy's flymake
+    ;; (https://realpython.com/blog/python/emacs-the-best-python-editor/
+    ;;  https://elpy.readthedocs.io/en/latest/customization_tips.html)
+    ;; To use flycheck for over 40 languages, do this:
+    ;;   (global-flycheck-mode)
+    (if (require 'flycheck nil t)
+        (progn (message "found flycheck package")
+               (flycheck-pos-tip-mode)
+               (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+               (add-hook 'elpy-mode-hook 'flycheck-mode))
+      (warn "elpy didn't find flycheck package"))
 
-   ;;Better "M-.": https://elpy.readthedocs.io/en/latest/customization_tips.html
-  (defun elpy-goto-definition-or-rgrep ()
-    "Go to the definition of the symbol at point, if found. Otherwise, run `elpy-rgrep-symbol'."
-    (interactive)
-    (ring-insert find-tag-marker-ring (point-marker))
-    (condition-case nil (elpy-goto-definition)
-      (error (elpy-rgrep-symbol
-              (concat "\\(def\\|class\\)\s" (thing-at-point 'symbol) "(")))))
-  (define-key elpy-mode-map (kbd "M-.") 'elpy-goto-definition-or-rgrep)
-  
-  (if autopep8bin
-      (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)))
+    ;;Better "M-.": https://elpy.readthedocs.io/en/latest/customization_tips.html
+    (defun elpy-goto-definition-or-rgrep ()
+      "Go to the definition of the symbol at point, if found. Otherwise, run `elpy-rgrep-symbol'."
+      (interactive)
+      (ring-insert find-tag-marker-ring (point-marker))
+      (condition-case nil (elpy-goto-definition)
+        (error (elpy-rgrep-symbol
+                (concat "\\(def\\|class\\)\s" (thing-at-point 'symbol) "(")))))
+    (define-key elpy-mode-map (kbd "M-.") 'elpy-goto-definition-or-rgrep)
+    
+    (if autopep8bin
+        (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)))
 
-;; *** EIN
-;; TODO: figure out plot scaling.  Once imagemagick hack is here:
-;;       https://github.com/syl20bnr/spacemacs/issues/8770
-;;       Emacs w/ imagemagick: https://github.com/m-parashar/emax64
-;;       but choco might have it already.
-;;       See C-h v system-configuration-features  and
-;;           C-h v system-configuration-options
-;;       I isntalled emax64 and its plots looked the same.  I ran
-;; (image-type-available-p 'imagemagick) and got 'nil, just as will
-;; the other programs.  What am I missing?
-;;       But this post: https://emacs.stackexchange.com/questions/26205/elisp-resize-displayed-images-programmatically
-;;       expects non-nil from: (image-type-available-p 'imagemagick)
-;;       and that's what I see in choco
-;; TODO: PASSWORD: until I can get rid of this, my jupyter pasword is: hearty
-;; TODO: use new EIN plot scaling code in some kind of autoload function
-;;       ein:pytools-matplotlib-dpi-correction (requires %matplotlib
-;; inline call before it will work)
-;;       (see
-;; https://github.com/millejoh/emacs-ipython-notebook/issues/625)
-;;       ein:pytools-set-figure-dpi',ein:pytools-set-matplotlib-parameter
-;;       (https://github.com/millejoh/emacs-ipython-notebook/pull/627)
-;;       maybe these two other calls work before %matplotlib inline is called?
-(use-package ein
-  :ensure t
-  :init
-  ;; So outshine or highlight-indent-guides on prog-mode-hook don't break inline plots
-  (setq ein:polymode t) ;; Get right mode e.g. elpy in cells (fails in :config)
-  :commands (ein:notebooklist-open))
+  ;; *** EIN
+  ;; TODO: figure out plot scaling.  Once imagemagick hack is here:
+  ;;       https://github.com/syl20bnr/spacemacs/issues/8770
+  ;;       Emacs w/ imagemagick: https://github.com/m-parashar/emax64
+  ;;       but choco might have it already.
+  ;;       See C-h v system-configuration-features  and
+  ;;           C-h v system-configuration-options
+  ;;       I isntalled emax64 and its plots looked the same.  I ran
+  ;; (image-type-available-p 'imagemagick) and got 'nil, just as will
+  ;; the other programs.  What am I missing?
+  ;;       But this post: https://emacs.stackexchange.com/questions/26205/elisp-resize-displayed-images-programmatically
+  ;;       expects non-nil from: (image-type-available-p 'imagemagick)
+  ;;       and that's what I see in choco
+  ;; TODO: PASSWORD: until I can get rid of this, my jupyter pasword is: hearty
+  ;; TODO: use new EIN plot scaling code in some kind of autoload function
+  ;;       ein:pytools-matplotlib-dpi-correction (requires %matplotlib
+  ;; inline call before it will work)
+  ;;       (see
+  ;; https://github.com/millejoh/emacs-ipython-notebook/issues/625)
+  ;;       ein:pytools-set-figure-dpi',ein:pytools-set-matplotlib-parameter
+  ;;       (https://github.com/millejoh/emacs-ipython-notebook/pull/627)
+  ;;       maybe these two other calls work before %matplotlib inline is called?
+  (use-package ein
+    :ensure t
+    :init
+    ;; So outshine or highlight-indent-guides on prog-mode-hook don't break inline plots
+    (setq ein:polymode t) ;; Get right mode e.g. elpy in cells (fails in :config)
+    :commands (ein:notebooklist-open))
 
-;; temporary hack to get rid of notebook save error
-;; https://github.com/millejoh/emacs-ipython-notebook/issues/623
-(defun request--goto-next-body (&optional noerror)
-  (re-search-forward "^[\r\n|\n]" nil noerror))
+  ;; temporary hack to get rid of notebook save error
+  ;; https://github.com/millejoh/emacs-ipython-notebook/issues/623
+  (defun request--goto-next-body (&optional noerror)
+    (re-search-forward "^[\r\n|\n]" nil noerror))
+  )
 
 ;; ** Perl
 
@@ -2717,7 +2720,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag ein company elpy anaconda-mode dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
  '(recentf-max-saved-items 200)
