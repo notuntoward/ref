@@ -21,8 +21,8 @@
 
 (require 'package)
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t) 
-(add-to-list   'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list   'package-archives '("org" . "http://orgmode.org/elpa/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 
 (unless (package-installed-p 'use-package) ; so can do a totally clean start
@@ -1479,7 +1479,7 @@ _C-M-a_ change default action from list for this session
 ;; tools are initialized to some defaults by the time they need them.
 ;; To change the env to something no-hardcoded, run:
 ;; M-x conda-env-activate to activate
-(if (setq conda_exe (sdo/find-exec "conda" "Needed for most python packages"))
+(when (setq conda_exe (sdo/find-exec "conda" "Needed for most python packages"))
     (use-package conda
       :ensure t
       :init
