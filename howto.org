@@ -2750,6 +2750,17 @@ Better than auto-fill and filladapt, which wrap when you hit space when the curs
       So you can type =C-c= in a python script and emacs will run it
 ******* emacs video guy says [[http://cestlaz.github.io/posts/using-emacs-12-python/][looks cool but is overkill for him]]
 ******* RealPython guy [[https://realpython.com/blog/python/emacs-the-best-python-editor/][likes elpy]] (with tips and screenshots)
+******* elpy first time install or reinstall
+        
+        install python, conda, etc. first.  .emacs assumes:
+          conda env named stdso is present
+          the path to condas base and base/Scripts is in Windows PATH
+          
+
+        after python, conda, etc. are installed,
+          run elpy-config and/or elpy-rpc-reinstall-virtualenv
+          and maybe both
+
 ******* [[https://github.com/jorgenschaefer/elpy/wiki/Configuration][elpy Configuration · jorgenschaefer/elpy]]
 ******* configuring elpy paths
 ********* depends upon how you install python: [[Windows Python]]
@@ -5326,24 +5337,24 @@ won't work if you close and immediately open onenote again.
 
     root
     +---common
-    |   +---lib1
-    |   |   \---trunk
-    |   |       +---include
-    |   |       \---src
-    |   \---lib2
-    |       \---trunk
-    |           +---include
-    |           \---src
+    | +---lib1    |             |
+    |             | \---trunk   |
+    |             | +---include |
+    |             | \---src     |
+    | \---lib2    |             |
+    | \---trunk   |             |
+    | +---include |             |
+    | \---src     |             |
     +---proj1
-    |   \---trunk
-    |       +---include
-    |       |   \---common
-    |       \---src
-    |           \---common
+    | \---trunk   |            |
+    | +---include |            |
+    |             | \---common |
+    | \---src     |            |
+    | \---common  |            |
     \---proj2
         \---trunk
             +---include
-            |   \---common
+            | \---common |
             \---src
                 \---common
 
