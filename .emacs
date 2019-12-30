@@ -1301,6 +1301,16 @@ _C-M-a_ change default action from list for this session
 
 ;; Note that I've remapped er\iedit to iedit-within-defun
 
+;; syntax checkers for many languages
+;; To use flycheck for over 40 languages, do this:
+;;   (global-flycheck-mode)
+(use-package flycheck
+  :config
+  (eval-after-load "flycheck-mode" '(diminish 'flycheck-mode)))
+(diminish 'flycheck-mode) ;; only works outside of use-package flycheck
+
+(use-package flycheck-pos-tip)
+
 ;; *** Ediff
 
 ;; TODO report ediff 'm' bug: Typing 'm' in ediff minibuffer spreads
@@ -1516,24 +1526,12 @@ _C-M-a_ change default action from list for this session
   (diminish 'auto-fill-function) ; only works here, for some reason
 
   ;; Use Elpy instead of python-mode.
-  ;; run python in buffer with C-c C-c, once elpy-mode is enabled
-  ;;
-  ;; REQUIRES AT LEAST THESE PYTHON LIBS: jedi flake8 autopep8
-  ;; See: 
-  ;; https://github.com/jorgenschaefer/elpy
-  ;; docs: https://elpy.readthedocs.io/en/latest/index.html
-  ;; HOWEVER, lately, it automatically downloads a lot of its own Python libraries.
+  ;;   run python in buffer with C-c C-c, once elpy-mode is enabled
+  ;; elpy automatically downloads a lot of the Python libraries it requires.
   ;; You can see what's going on with: M-x elpy-config
   ;; You can force a reinstall with: M-x elpy-rpc-reinstall-virtualenv
 
   (sdo/find-exec "flake8" "Needed for elpy & Jupyterlab code checks")
-
-  (use-package flycheck
-    :config
-    (eval-after-load "flycheck-mode" '(diminish 'flycheck-mode)))
-  (diminish 'flycheck-mode) ;; only works outside of use-package flycheck
-
-  (use-package flycheck-pos-tip)
 
   (use-package elpy
     :defer t
@@ -1552,14 +1550,12 @@ _C-M-a_ change default action from list for this session
     ;; use flycheck, not elpy's flymake
     ;; (https://realpython.com/blog/python/emacs-the-best-python-editor/
     ;;  https://elpy.readthedocs.io/en/latest/customization_tips.html)
-    ;; To use flycheck for over 40 languages, do this:
-    ;;   (global-flycheck-mode)
     (if (require 'flycheck nil t)
-        (progn (message "found flycheck package")
+        (progn (message "found emacs flycheck package")
                (flycheck-pos-tip-mode)
                (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
                (add-hook 'elpy-mode-hook 'flycheck-mode))
-      (warn "elpy didn't find flycheck package"))
+      (warn "elpy didn't find flycheck emacs package"))
 
     ;;Better "M-.": https://elpy.readthedocs.io/en/latest/customization_tips.html
     (defun elpy-goto-definition-or-rgrep ()
@@ -2161,23 +2157,25 @@ This function avoids making messed up targets by exiting without doing anything 
 
 (use-package ox-minutes :defer 5) ; nice(er) ascii export, but slow start
 
-;; Pandoc
-;; default options for all output formats. Intially from: https://github.com/kawabata/ox-pandoc
-(use-package ox-pandoc
-  :init
-  (setq org-pandoc-options '((standalone . t)))
-  ;; cancel above settings only for 'docx' format
-  (setq org-pandoc-options-for-docx '((standalone . nil)))
-  ;; special settings for beamer-pdf and latex-pdf exporters
-  (setq org-pandoc-options-for-beamer-pdf '((latex-engine . "pdflatex")))
-  (setq org-pandoc-options-for-latex-pdf '((latex-engine . "pdflatex")))
-  ;; (setq org-pandoc-options-for-beamer-pdf '((latex-engine . "xelatex")))
-  ;; (setq org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")))
-  :config
-  ;; the below did not help after org-mode use of use-package, and may have messed up startup on a clean install
-  ;;
-  ;; Delay loading but let org-export-dispatch menu still see it.  Actually, unless I do this, I don't see pandoc in the menu at all.  From https://github.com/kawabata/ox-pandoc/issues/7
-  (with-eval-after-load 'ox (require 'ox-pandoc)))
+;; *** Pandoc
+;; default options for all output formats. Intially from:
+;; https://github.com/kawabata/ox-pandoc
+(when (sdo/find-exec "pandoc" "Needed for org-mode export")
+  (use-package ox-pandoc
+    :init
+    (setq org-pandoc-options '((standalone . t)))
+    ;; cancel above settings only for 'docx' format
+    (setq org-pandoc-options-for-docx '((standalone . nil)))
+    ;; special settings for beamer-pdf and latex-pdf exporters
+    (setq org-pandoc-options-for-beamer-pdf '((latex-engine . "pdflatex")))
+    (setq org-pandoc-options-for-latex-pdf '((latex-engine . "pdflatex")))
+    ;; (setq org-pandoc-options-for-beamer-pdf '((latex-engine . "xelatex")))
+    ;; (setq org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")))
+    :config
+    ;; the below did not help after org-mode use of use-package, and may have messed up startup on a clean install
+    ;;
+    ;; Delay loading but let org-export-dispatch menu still see it.  Actually, unless I do this, I don't see pandoc in the menu at all.  From https://github.com/kawabata/ox-pandoc/issues/7
+    (with-eval-after-load 'ox (require 'ox-pandoc))))
 
 ;; * Writing Tools
 ;; ** General Editing
