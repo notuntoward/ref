@@ -3649,6 +3649,18 @@ gestures for "show charm" and "switch apps"
     o must 1st creat an icon for it on desktop e.g. by dragging from start menu
     o then follow procedure for traditional programs
 
+*** Remove startup cmdlets from powershell
+    
+    How to remove a cmdlet that runs everytime a powershell window starts.
+
+    Remove the offending command from 
+    
+    C:\Users\Scott\Documents\WindowsPowerShell\profile.ps1
+
+    or just remove the entire file.
+
+    *Why*: Anaconda somehow inserted a commandlet into powershell that runs whenever I started it.  When I reinstalled Anaconda, the script referred to stuff that was no longer there, causing a red text error message each time I started a powershell window.
+
 *** Windows package manager
 ***** <<Chocolatey>> ([[https://chocolatey.org/][Chocolatey - The package manager for Windows]])
 
@@ -10029,6 +10041,23 @@ matlab-ruby-test.rb
 *** 2nd best in [[http://www.techradar.com/news/the-best-free-vpn][TechRadar Review]], Free, 10GB/mo: [[https://windscribe.com/download][Windscribe]]
 ***** also has deal on 2 year subs. w/ TR coupon in article
 ***** Works on SNL links if I set it to "US West" I did the [[instructions for Chrome]], not sure if that was necessary.
+*** Pasting a VPN on desktop/taskbar/start menu
+***** VPN connection on Network slideout (usually wifi symbol) taskbar button
+
+      After you've created a VPN connection, it shows up on the right slideout bar, when you click the network taskbar button.
+
+      Click on it, and it will make the VPN connection.
+
+***** VPN settings on destop shortcut (general, not a specific connection)
+      From: [[https://www.computerworld.com/article/3218116/how-to-make-shortcuts-to-windows-10-settings-on-your-desktop.html][How to make shortcuts to Windows 10 settings on your Desktop]]
+
+      o right click on desktop --> Shortcut
+      o paste ms-settings:network-vpn as the location
+      o can change the link name too, if you want
+
+      See the web page for many other Settings shortcut codes
+***** VPN connection on taskbar
+******* [[https://vpnmyway.wordpress.com/version-history-download/][VPNMyWay is supposed to put the connection on the taskbar]]
 * <<Lyx>>
 *** Windows Lyx: use TexLive instead of MikTex: [[How to make the org-ref latex compile: install TexLive]]
 
