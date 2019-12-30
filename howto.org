@@ -1453,6 +1453,32 @@ Many text editors have access to these in some simple way, so before thinking ab
 ******* [[Org-mode interface to trello]]
 ******* [[https://github.com/200ok-ch/organice][organice: An implementation of Org mode without the dependence on Emacs]]
         Maybe more complete than orgzly, but I'm not sure if it runs locally on the phone.
+***** Org-mode and Python
+******* <<orgbabelhelper>>: org-mode tables, dates etc.  <--> Python dataframes, dates, etc
+
+        dfeich has many kinds of org-mode, org-babel, and other kinds of helpers [[https://github.com/dfeich][here]].
+
+********* [[https://anaconda.org/dfeich/orgbabelhelper][orgbabelhelper python package]] 
+*********** conda install currently not working
+
+            conda install -c dfeich orgbabelhelper
+            but conda can't find it
+
+            I filed an issue with the author on GitHub
+
+*********** package can be cloned from GitHub, [[https://github.com/dfeich/org-babel-examples][here]]
+********* <<org-tables to/from pandas dataframes (orgbabelhelper)>>
+          From: org-babel import/export tutorial: [[https://github.com/dfeich/org-babel-examples/blob/master/python/pythonbabel.org][dfeich/org-babel-examples]]
+
+          I've put them in sutil.py
+********* author [[https://github.com/dfeich/org-babel-examples/issues/8][says]] he's going to decommission some part of this, and put more work into [[emacs-jupyter]]
+********* <<org-diagram drawing with plantuml-babel.org>>: draw [[PlantUML]] graphs using 
+******* <<emacs-jupyter>> 
+        [[https://github.com/dzop/emacs-jupyter][dzop/emacs-jupyter: An interface to communicate with Jupyter kernels]]
+
+        Somehow talks to Jupyter through org-mode.  Is what the author of [[orgbabelhelper]] says he's going to work on instead of [[orgbabelhelper]].
+
+        
 *** Dired operations
 ***** file marking
       From [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Marks-vs-Flags.html][here]]:
@@ -3027,6 +3053,7 @@ For a public browser link. Share the note and copy the share url.
 ***** [[Vincent Goulet Emacs]]
 *** <<Emacs for experiment logging>>
 ***** TRY [[file:energy.bib::Stanisic15gitOrgWorkflow][Stanisic et al. 2015]]
+*** [[Knowledge Graphs in Emacs]]
 *** Search for Symbol at Point
 ***** =M-s .= is default emacs way to do [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Symbol-Search.html][Symbol Search]]
 
@@ -6806,11 +6833,16 @@ with each other.
 ********* [[https://community.rstudio.com/t/best-package-for-interactive-graphs-in-shiny/1731/5][Best package for interactive graphs in Shiny - shiny - RStudio Community]]
 ********* [[https://www.r-bloggers.com/interactive-visualizations-with-r-a-minireview/][Interactive visualizations with R – a minireview | R-bloggers]]
 ******* <<Plotly>>: zooms, dynamic ticks, has ggplot2(), in many languages
+
+        conda install -c plotly plotly
+
 ********* is [[https://plot.ly/][implemented in]] R, python, [[Dash]], React, Java
 ********* [[https://plot.ly/api/][has APIs]] for python, matlab, R, and Java
 ********* <<Plotly Express>> (easier to use version of plotly)
 
           A beginners interface to plotly, like seaborn is to matplotlib.  Many plots can be done in oneliners, yet can still be modified for full plotly style control.
+
+           conda install -c plotly plotly_express 
 
 *********** Plot type Galleries
 ************* [[https://plot.ly/python/plotly-express/][Plotly Express]] 
@@ -8225,7 +8257,7 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
 ***** <<Install Windows Python with Anaconda>> (what I've been doing)
 
-      *NOTE*: lately, I've been installing it with chocolately: 
+      *NOTE*: lately, I've been done: [[Install python with Chocolatey]]
 
         choco install anaconda
 
@@ -8237,6 +8269,14 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
            (Make sure this is /above/ msys2 path. Otherwise, the msys2
            python you get when installing diff, etc., will mess up emacs
            [[elpy]].  Also make sure that it's above %USERPROFILE%\AppData\Local\Microsoft\WindowsApps , which as of May 2019 suddenly holds a python.exe)
+
+      *NOTE*: suddenly it's not working.  Windows installer steps:
+      - don't install latest, which wouldn't install menus (was this the admin problem?).  [[https://stackoverflow.com/questions/42182477/issues-with-anaconda-install-failed-to-create-anaconda-menus][Instead install 2019.03]], from [[https://repo.continuum.io/archive/][here]]
+      - install as admin (idea was to avoid menu writing error)
+      - go to c:\ProgramData\Anaconda3
+      - change this directories permission so I have full permissions
+        - file explorer, right click on anaconda3
+        - properties --> security --> scroll to Users --> edit --> click on Full control
         
 ******* Install from Windows .exe installer        
 
@@ -8403,8 +8443,16 @@ From: [[https://medium.com/@rrfd/cookiecutter-data-science-organize-your-project
 The suffix 2 is used after autoreload, to reload all modules every time before executing the Python code typed. This will enable us to edit functions in Atom, debug them, and quickly import the code into our notebook, rather than having to write out a debug the function directly in Jupyter.
 
 ***** Jupyterlab extensions (good)
+******* building jupyterlab extensions
+
+       jupyter lab build
+
 ******* updating juypterlab extensions
         
+        List all installed extensions
+
+          jupyter labextension list
+
         For many, [[https://github.com/jupyterlab/jupyterlab/pull/4410][you can do]]:
 
           jupyter labextension update
@@ -8415,9 +8463,28 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
 
         but some extensions (jupyter_conda) failed b/c its maintainer hadn't yet updated its code on github.
 
+******* <<Jupyter matplotlib widgets>>
+        From: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib]]
+
+        First
+          conda install -c conda-forge ipympl
+
+        Notebook
+          conda install -c conda-forge widgetsnbextension
+
+        JupyterLab
+          (if needed)
+            conda install -c conda-forge nodejs  
+          (needed)
+            jupyter labextension install @jupyter-widgets/jupyterlab-manager
+            jupyter labextension install jupyter-matplotlib
+
+        After installing (using conda), put this in your notebook:
+
+          %matplotlib widget
 ******* <<Jupytlerlab plotly extension>>:
        
-       jupyter labextension install jupyterlab-plotly
+        conda install -c conda-forge jupyterlab-plotly-extension 
 
 ********* obsoleted plotly extension
            [[https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension][jupyter-renderers/packages/plotly-extension]]
@@ -8426,21 +8493,6 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
 
              conda install nodejs
            pip install npm
-
-******* <<Jupyter matplotlib widgets>>
-        From: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib]]
-
-        Notebook
-          conda install -c conda-forge widgetsnbextension
-
-        JupyterLab
-          conda install nodejs
-          jupyter labextension install @jupyter-widgets/jupyterlab-manager
-          jupyter labextension install jupyter-matplotlib
-
-        After installing (using conda), put this in your notebook:
-
-          %matplotlib widget
 
 ******* integration w/ drawio block diagram drawer: [[https://github.com/QuantStack/jupyterlab-drawio][QuantStack/jupyterlab-drawio]]
 
@@ -8491,6 +8543,7 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
 
         It does [[https://github.com/timkpaine/jupyterlab_autoversion/issues/1][make its own git repo]], though.
 
+        pip install jupyterlab_autoversion
         jupyter labextension install jupyterlab_autoversion
         jupyter serverextension enable --py jupyterlab_autoversion
 
@@ -8528,7 +8581,49 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
 
         jupyter labextension install @jupyterlab/shortcutui
 
-******* Jupyterlab extensions (not working but maybe nice) 
+******* python black formatting in Jupyter: [[https://pypi.org/project/nb-black/][nb-black · PyPI]]
+
+        Put this in notebook:
+
+          For Jupyter Lab
+            %load_ext lab_black
+        
+          For Jupyter Notebook
+            %load_ext nb_black
+
+        Installation:  
+
+          conda install -c conda-forge nb_black 
+
+******* TRY python flake8 (pep8) formatting in Jupyter: [[https://www.npmjs.com/package/jupyterlab-flake8][jupyterlab-flake8]]
+        
+        *EVALUATE*
+
+
+********* Configuration
+
+        jupyter labextension install jupyterlab-flake8
+
+        need (*??*) a .flake8 file in notebook directory
+
+********* Jupyterlab [[https://github.com/jupyterlab/jupyterlab/issues/5611][may have settled on]] [[jupypterlab_code_formatter]]
+******* TRY <<jupypterlab_code_formatter>> (pep8+ others): [[https://github.com/ryantam626/jupyterlab_code_formatter][jupyterlab_code_formatter]]
+        From Here: [[https://jupyterlab-code-formatter.readthedocs.io/en/latest/index.html][Welcome to Jupyterlab Code Formatter’s documentation!]]
+
+        *EVALUATE*
+
+********* Supports Black, YAPF, Autopep8, lsort
+********* Doesn't automatically format -- you have to run some keyboard shortcut
+********* installation
+
+        conda install -c conda-forge black
+        jupyter labextension install @ryantam626/jupyterlab_code_formatter
+        conda install -c conda-forge jupyterlab_code_formatter
+        jupyter serverextension enable --py jupyterlab_code_formatter
+
+        ... and some more
+
+******* Jupyterlab extensions (_not working but maybe nice_) 
 ********* paste image into markdown: [[https://github.com/Bamieh/jupyterlab-clipboard][Bamieh/jupyterlab-clipboard]]
 
           It's not compatible with jupyterlab version
@@ -8692,9 +8787,13 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
 
             jupyter labextension install jupyterlab-jupytext
 
+            Mmust also install the python package:
+            
+              conda install -c conda-forge jupytext
+
 ********* 2019 Medium article: [[https://towardsdatascience.com/jupytext-1-0-highlights-a49dca9baa7b][Jupytext 1.0 highlights - Towards Data Science]]
 ********* [[https://github.com/mwouts/jupytext/issues/298][instructions]] for enabling jupyterlab jupytext extension in bug report
-********* author [[https://github.com/mwouts/jupytext/issues/62][considers]] an org mode converter (2018, not done in 2019)
+********* jupytext author [[https://github.com/mwouts/jupytext/issues/62][considers]] an org mode converter (2018, not done in 2019)
 ********* simple install, as it's an [[https://anaconda.org/conda-forge/jupytext][anaconda package]]
 ********* is [[POC versioning Machine Learning pipeline]] python extracter better?
 ********* saves ipynb in a [[https://github.com/mwouts/jupytext/tree/master/demo][ton of different formats]] e.g. even pandoc
@@ -8866,7 +8965,6 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
             conda env update -n base -f base_old_environment.yml
 
             Note that you can't import an environment of the same name as one that already exists on the new machine e.g. "base" so you have to give it a new name.  If you want to import to the name on the new machine, you can delete the old environment then rename the one you imported e.g.
-
           
 ******* Also [[activating conda environments in emacs]]
 ******* updating all packages installed by anaconda
@@ -8892,16 +8990,31 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
        If there are still machine-specific problems, you can delete the
        troublesome lines in environment.yml
 
-
 ******* Make exact copy of conda environment on same machine
 
-          conda create -n flowers --clone snowflakes
+          conda create -n newEnv --clone sourceEnv
 
-        where snowflakes is the source being cloned and flowers is the copy.
+        where sourceEnv is the source being cloned and newEnv is the copy.
 
 ******* list envs: conda info --envs
 ******* list packages installed: conda list
 ******* remove env: conda remove --name myenv --all
+******* anaconda prompt starting environment
+
+        On Windows, pin a prompt to the task bar, right click on it and go to properties. Then edit the target to:
+
+        %windir%\System32\cmd.exe "/K" C:\Users\Scott\AppData\Local\Continuum\anaconda3\Scripts\activate.bat C:\Users\Scott\AppData\Local\Continuum\anaconda3\envs\stdso
+
+        If anaconda is installed in C:\Users\Scott\AppData\Local\Continuum\anaconda3
+and if the desired starting environment is stdso.
+
+You can also edit the "Start in:" text box to somewhere that will be convenient as a top level for Jupyter lab and git, for example:
+
+"%HOMEPATH%\OneDrive - Clean Power Research"
+
+The name of the icon is under the "General" tab of the properties window.
+
+
 ******* adding channels
 
   Add channel "new_channel" to the top of the channel list as highest priority:
@@ -8990,6 +9103,7 @@ Tableau
           1. type "%matplotlib qt" into Iconsole (doesn't work in code itself)
           2. Select from the menu Tools > Preferences, then IPython console in the list of categories on the left, then the tab Graphics at the top, and change the Graphics backend from Inline to e.g. Qt. For me though, the figures then always pop up in the background.
 ********* In Jupyter: insert %something, see nc5 demo
+********* [[https://stackoverflow.com/questions/4700614/how-to-put-the-legend-out-of-the-plot/43439132#43439132][matplotlib legend placement]]
 ********* *Good*: [[https://dev.to/skotaro/artist-in-matplotlib---something-i-wanted-to-know-before-spending-tremendous-hours-on-googling-how-tos--31oo]["Artist" in Matplotlib - something I wanted to know...]]
 ******* <<Python plotly>>
 ********* Multilanguage [[Plotly]] can make [[Python ggplot2]] interactive
@@ -9167,12 +9281,32 @@ results = Parallel(n_jobs=num_cores)(delayed(processInput)(i) for i in inputs)
 
 ***** [[Parallelization for SciPy]]
 ***** [[Hadoop]]
+***** [[https://dask.org/][Dask: Scalable analytics in Python]]
+******* [[https://towardsdatascience.com/why-every-data-scientist-should-use-dask-81b2b850e15b][Why every Data Scientist should use Dask?]]
+***** [[https://kubernetes.io/][Kubernetes]] (not jsut Pythong, more for containers)
 *** <<Tidy (Long) Tables>> in Python
 
     The way Patrick Sudowe suggested that all SQL data s/b organized.  I guess it's the same for Python dataframes or whatever
 
 ***** [[http://www.jeannicholashould.com/tidy-data-in-python.html][Tidy Data in Python · Jean-Nicholas Hould]]
 ***** Is required for [[Plotly Express]]
+
+*** sklearn
+***** Shortest syntax for LinearRegressor() and 1d arrays
+      Expects X to be a 2D column array.
+
+      For x as a list, series or (n,) np.array 
+        x = np.arange(5) # x.shape = (5,), is an np.array()
+        x=[1,2,3,4,5]
+        x=pd.Series([1,2,3,4,5])
+        # doesn't work for tuples
+
+      The shortest way is:
+        np.c_[x] # np.c_[x].shape == (5,1)
+
+      
+      
+
 
 *** SciPy
 ***** <<Parallelization for SciPy>>
@@ -9212,6 +9346,38 @@ results = Parallel(n_jobs=num_cores)(delayed(processInput)(i) for i in inputs)
         *My token*
         name: vs-code-settings-sync
         value: 4080663549b231b079fcbf8ac82399f49366694f
+******* setting os.curdir to Jupyter notebook dir
+
+        THIS IS STILL A BUG in VSC (Version: 1.40.2 (user setup)
+Commit: f359dd69833dd8800b54d458f6d37ab7c78df520
+Date: 2019-11-25T14:54:45.096Z
+Electron: 6.1.5
+Chrome: 76.0.3809.146
+Node.js: 12.4.0
+V8: 7.6.303.31-electron.0
+OS: Windows_NT x64 10.0.18362)
+
+        If you don't, then you can't import .py packages from current dir, and my path editing trick for importing sutil.py won't work either.
+
+        This is supposed to work automatically if, in VSC settings you set:
+
+        python.dataScience.notebookFileRoot = ${fileDirname}
+
+        ... but in fact, it doesn't work.  Yet MS has closed the two bug reports on it:
+
+        [[https://github.com/Microsoft/vscode-python/issues/4441][microsoft/vscode-python#4441 `python.dataScience.notebookFileRoot` needs an o...]]
+        [[https://github.com/microsoft/vscode-python/pull/7724][microsoft/vscode-python#7724 Add capability to support current file path for ...]]
+
+        documentation of variables is [[https://code.visualstudio.com/docs/editor/variables-reference][here]]; my GitHub comment is [[https://github.com/Microsoft/vscode-python/issues/5468][here]].
+
+******* VSC Emacs keybindings
+
+        I picked 
+
+        Emacs Friendly Keymap lfs.vscode-emacs-friendly Leaping Frog Studios
+
+        It had almost perfect stars, was a fork to another older, abandoned but popular emacs extension (from Hiro Sun), and had new updates (latest was 5/6/19 when viewed on 12/11/19).  Seems good.
+
 ***** Rodeo
 ***** [[Python in Emacs]]
 ***** <<PyCharm>>
@@ -9332,6 +9498,8 @@ results = Parallel(n_jobs=num_cores)(delayed(processInput)(i) for i in inputs)
 
            But is it?  The [[https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs][editable pip install]] says there are advantages to using pip, and a commenter [[https://stackoverflow.com/questions/19048732/python-setup-py-develop-vs-install][here]] says that he had problems w/ setup.py develop and so used pip install -e PATH
 
+*** Mutual Information
+***** Kraskov-like MI in Python (see energytop.org) 
 *** Probabilistic Programming in Python: [[https://pyro.ai/][Pyro]]
     See energytop.org for more on probabilistic programming
 * <<Data Versioning>>
@@ -10176,6 +10344,7 @@ matlab-ruby-test.rb
 ******* [[https://www.mindomo.com/pricing.htm][$35EUR/halfYear]]
 ******* lots of open file formats but I'm not sure if one is a DAG
 ***** [[https://github.com/CompendiumNG/CompendiumNG/graphs/contributors][CompendiumNG]]: Compendium was cool in 2013; opensourced vers. seems dead
+***** [[PlantUML]] can draw them from emacs
 ***** _Videos_ about concept maps
 ******* [[https://www.youtube.com/watch?v=DdHG66opp5Y][JosephineMcMurry: Concept Mapping for Learning, Reflection, and Evaluation]]
 ******* [[https://www.youtube.com/watch?v=S4SwSheh7TI&t=4012s][Concept mapping for time management and long term memory - YouTube]]
@@ -10206,6 +10375,10 @@ matlab-ruby-test.rb
 
 *** UML
 ***** [[http://argouml.tigris.org/][ArgoUML]]
+***** <<PlantUML>>
+******* [[https://plantuml.com/][PlantUML: Open-source tool that uses simple textual descriptions to draw beautiful UML]]
+******* Not just UML's.  Can draw DAGs, mindmaps, timing diagrams and a ton of other things
+******* Can draw diagrams from Emacs using [[orgbabelhelper]] ([[org-diagram drawing with plantuml-babel.org]])
 *** Visualizing Bibliographies
 ***** [[http://www.qiqqa.com/][qiqqa]]: biblio tool, does visualizations, imports bibtex, pdfs
 
@@ -10248,10 +10421,12 @@ matlab-ruby-test.rb
 ***** [[https://thebrain.com/][TheBrain: The Ultimate Digital Memory]]    
 ***** emacs-clone: [[org-brain]]     
 ***** examples of use: [[https://thebrain.com/big-thinkers][TheBrain Big Thinkers]]
-*** [[org-brain]]
-*** Sacha Chau's elisp for making a goal concept map (code at end of [[http://pages.sachachua.com/evil-plans/][this page]])
-*** [[http://orgmode.org/worg/org-contrib/org-wikinodes.html][org-wikinodes: CamelCase wiki-like links]] (kind of a graph)
-*** [[Concept map-like stuff: superlabel, dedicated targets, org-brain]]
+*** <<Knowledge Graphs in Emacs>>
+***** [[org-brain]]
+***** Sacha Chau's elisp for making a goal concept map (code at end of [[http://pages.sachachua.com/evil-plans/][this page]])
+***** [[org-diagram drawing with plantuml-babel.org]]
+***** [[http://orgmode.org/worg/org-contrib/org-wikinodes.html][org-wikinodes: CamelCase wiki-like links]] (kind of a graph)
+***** [[Concept map-like stuff: superlabel, dedicated targets, org-brain]]
 * TRY <<Programming Practices>>
 *** Agile development
 ***** Florian's Agile video links
