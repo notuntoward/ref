@@ -4028,6 +4028,26 @@ taskkill -im iexplore.exe
       regsvr32.exe vbscript.dll
 
    Then restart windows.
+*** <<Pasting a VPN on Windows desktop/taskbar/start menu>>
+***** VPN settings on start menu
+      settings --> Network & Internet 
+               --> right click on VPN (lhs of screen) --> Pin to Start
+***** VPN connection on Network slideout (usually wifi symbol) taskbar button
+
+      After you've created a VPN connection, it shows up on the right slideout bar, when you click the network taskbar button.
+
+      Click on it, and it will make the VPN connection.
+
+***** VPN settings on destop shortcut (general, not a specific connection)
+      From: [[https://www.computerworld.com/article/3218116/how-to-make-shortcuts-to-windows-10-settings-on-your-desktop.html][How to make shortcuts to Windows 10 settings on your Desktop]]
+
+      o right click on desktop --> Shortcut
+      o paste ms-settings:network-vpn as the location
+      o can change the link name too, if you want
+
+      See the web page for many other Settings shortcut codes
+***** VPN connection on taskbar
+******* [[https://vpnmyway.wordpress.com/version-history-download/][VPNMyWay is supposed to put the connection on the taskbar]]
 *** Windows Explorer tickboxes
     [[http://www.howtogeek.com/howto/7888/how-to-enable-check-boxes-in-explorer-in-windows-7/][How to add them]]:
     o windows key
@@ -8465,13 +8485,14 @@ From: [[https://medium.com/@rrfd/cookiecutter-data-science-organize-your-project
 
 The suffix 2 is used after autoreload, to reload all modules every time before executing the Python code typed. This will enable us to edit functions in Atom, debug them, and quickly import the code into our notebook, rather than having to write out a debug the function directly in Jupyter.
 
-***** Jupyterlab extensions (good)
+***** Jupyterlab extensions 
 ******* building jupyterlab extensions
 
        jupyter lab build
+******* listing/updating/uninstalling installed juypterlab extensions
 
-******* updating juypterlab extensions
-        
+        /Can also do it within Jupyterlab with extension manager/
+
         List all installed extensions
 
           jupyter labextension list
@@ -8486,179 +8507,211 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
 
         but some extensions (jupyter_conda) failed b/c its maintainer hadn't yet updated its code on github.
 
-******* <<Jupyter matplotlib widgets>>
-        From: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib]]
+        to uinstall
 
-        First
-          conda install -c conda-forge ipympl
+          jupyter labextension uninstall my-extension
 
-        Notebook
-          conda install -c conda-forge widgetsnbextension
+        to disable
 
-        JupyterLab
-          (if needed)
-            conda install -c conda-forge nodejs  
-          (needed)
-            jupyter labextension install @jupyter-widgets/jupyterlab-manager
-            jupyter labextension install jupyter-matplotlib
+          jupyter labextension disable my-extension
+******* specific jupyterlab extensions
+********* Using now
+*********** <<Jupyter matplotlib widgets>>
+            From: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib]]
 
-        After installing (using conda), put this in your notebook:
+            First
+              conda install -c conda-forge ipympl
 
-          %matplotlib widget
-******* <<Jupytlerlab plotly extension>>:
+            Notebook
+              conda install -c conda-forge widgetsnbextension
+
+            JupyterLab
+              (if needed)
+                conda install -c conda-forge nodejs  
+              (needed)
+                jupyter labextension install @jupyter-widgets/jupyterlab-manager
+                jupyter labextension install jupyter-matplotlib
+
+            After installing (using conda), put this in your notebook:
+
+              %matplotlib widget
+*********** <<Jupytlerlab plotly extension>>:
        
-        conda install -c conda-forge jupyterlab-plotly-extension 
+            conda install -c conda-forge jupyterlab-plotly-extension 
 
-********* obsoleted plotly extension
-           [[https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension][jupyter-renderers/packages/plotly-extension]]
+************* obsoleted plotly extension
+               [[https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension][jupyter-renderers/packages/plotly-extension]]
 
-           Do this first before following web page instructions:
+               Do this first before following web page instructions:
 
-             conda install nodejs
-           pip install npm
+                 conda install nodejs
+               pip install npm
 
-******* integration w/ drawio block diagram drawer: [[https://github.com/QuantStack/jupyterlab-drawio][QuantStack/jupyterlab-drawio]]
+*********** drawio block diagram drawer: [[https://github.com/QuantStack/jupyterlab-drawio][QuantStack/jupyterlab-drawio]]
 
-        Don't have to install anything other than the extension.  Runs in browser that Jupyter is running in.
+            Don't have to install anything other than the extension.  Runs in browser that Jupyter is running in.
 
-        jupyter labextension install jupyterlab-drawio
+            jupyter labextension install jupyterlab-drawio
 
-******* jump to definition: [[https://github.com/krassowski/jupyterlab-go-to-definition][krassowski/jupyterlab-go-to-definition]]
-        Goes to variable/function def w/
+*********** jump to definition: [[https://github.com/krassowski/jupyterlab-go-to-definition][krassowski/jupyterlab-go-to-definition]]
+            Goes to variable/function def w/
 
-          alt+mouseClick
+              alt+mouseClick
 
-        or
-          ctrl+alt+b
+            or
+              ctrl+alt+b
 
-        and can be configured for others (see extension github page).
+            and can be configured for others (see extension github page).
 
-        Nice and works.
+            Nice and works.
 
-        Install:
-          jupyter labextension install @krassowski/jupyterlab_go_to_definition
+            Install:
+              jupyter labextension install @krassowski/jupyterlab_go_to_definition
 
-        To update already installed extension:
+            To update already installed extension:
 
-          jupyter labextension update @krassowski/jupyterlab_go_to_definition
+              jupyter labextension update @krassowski/jupyterlab_go_to_definition
 
-******* filetree file finder: [[https://github.com/youngthejames/jupyterlab_filetree][youngthejames/jupyterlab_filetree]]
+*********** filetree file manager: [[https://github.com/youngthejames/jupyterlab_filetree][youngthejames/jupyterlab_filetree]]
 
-        jupyter labextension install jupyterlab_filetree
+            jupyter labextension install jupyterlab_filetree
 
-******* python creating convenience: [[https://github.com/jtpio/jupyterlab-python-file][jtpio/jupyterlab-python-file]]
-******* conda package manager, cloning, etc.: [[https://github.com/fcollonval/jupyter_conda][fcollonval/jupyter_conda]]
+*********** conda package manager, cloning, etc.: [[https://github.com/fcollonval/jupyter_conda][fcollonval/jupyter_conda]]
 
-        Similar to anaconda navigator but seems faster, and (I think) is more capable.
+            Similar to anaconda navigator but seems faster, and (I think) is more capable.
 
-        Works in basic Jupyter notebook too.
+            Works in basic Jupyter notebook too.
 
-        To install in the classical notebook:
+            To install in the classical notebook:
 
-          conda install -c conda-forge jupyter_conda
+              conda install -c conda-forge jupyter_conda
 
-        To install in the JupyterLab:
+            To install in the JupyterLab:
 
-        conda install -c conda-forge jupyterlab jupyter_conda
-        jupyter labextension install jupyterlab_toastify jupyterlab_conda
+            conda install -c conda-forge jupyterlab jupyter_conda
+            jupyter labextension install jupyterlab_toastify jupyterlab_conda
 
-******* non-git auto-versioning: [[https://github.com/timkpaine/jupyterlab_autoversion][timkpaine/jupyterlab_autoversion]]
+*********** graphical interface to git: [[https://github.com/jupyterlab/jupyterlab-git][jupyterlab/jupyterlab-git]]
 
-        It does [[https://github.com/timkpaine/jupyterlab_autoversion/issues/1][make its own git repo]], though.
+            pip install --upgrade jupyterlab-git
+            jupyter lab build
 
-        pip install jupyterlab_autoversion
-        jupyter labextension install jupyterlab_autoversion
-        jupyter serverextension enable --py jupyterlab_autoversion
+*********** <<Jupyterlab Chart Editor>>
 
-******* graphical interface to git: [[https://github.com/jupyterlab/jupyterlab-git][jupyterlab/jupyterlab-git]]
+            [[https://github.com/plotly/jupyterlab-chart-editor][Apparently]] does things that are implemented in [[https://github.com/plotly/react-chart-editor][plotly/react-chart-editor]]
 
-        pip install --upgrade jupyterlab-git
-        jupyter lab build
+            jupyter labextension install jupyterlab-chart-editor
 
-******* open file w/ part of name: [[https://github.com/parente/jupyterlab-quickopen][parente/jupyterlab-quickopen]]
+************* [[https://github.com/plotly/jupyterlab-chart-editor][GitHub - plotly/jupyterlab-chart-editor]]
+************* [[https://www.youtube.com/watch?v=zR7G2tNVo1Q][Introducing the JupyterLab Chart Editor - YouTube]]
+*********** git compatible jupyter notebooks: [[jupytext extensions]]
+*********** manages keyboard shortcuts[[https://github.com/jupyterlab/jupyterlab-shortcutui][ jupyterlab-shortcutui]]
 
-        Start it by clicking the magnifying class icon on the LHS
+            jupyter labextension install @jupyterlab/shortcutui
 
-        Two-step install instructions, one of which is pip only.
+*********** view .xlsx, CSV, etc.: [[https://github.com/quigleyj97/jupyterlab-spreadsheet#readme][quigleyj97/jupyterlab-spreadsheet]]
 
-        A bit complicated but seems to work.
+            jupyter labextension install jupyterlab-spreadsheet
 
-******* run all button: [[https://github.com/jupyterlab/runall-extension][jupyterlab/runall-extension]]
+*********** cells collapse, like in Matlab: [[https://github.com/aquirdTurtle/Collapsible_Headings][aquirdTurtle/Collapsible_Headings]]
 
-        Would be useful but it's not in the standard jupyterlab repository i.e. /this doesn't work/:
+            jupyter labextension install @aquirdturtle/collapsible_headings
 
-           jupyter labextension install runall-extension
+*********** file open recent list: [[https://github.com/tslaton/jupyterlab-recents][tslaton/jupyterlab-recents: tracks recent files]]
 
-        Instead, you have to [[https://jupyterlab.readthedocs.io/en/stable/user/extensions.html][build it yourself]].
+            jupyter labextension install jupyterlab-recents
 
-******* <<Jupyterlab Chart Editor>>
+********* Should try
+*********** TRY python black formatting in Jupyter: [[https://pypi.org/project/nb-black/][nb-black · PyPI]]
 
-        [[https://github.com/plotly/jupyterlab-chart-editor][Apparently]] does things that are implemented in [[https://github.com/plotly/react-chart-editor][plotly/react-chart-editor]]
+            Put this in notebook:
 
-        jupyter labextension install jupyterlab-chart-editor
-
-********* [[https://github.com/plotly/jupyterlab-chart-editor][GitHub - plotly/jupyterlab-chart-editor]]
-********* [[https://www.youtube.com/watch?v=zR7G2tNVo1Q][Introducing the JupyterLab Chart Editor - YouTube]]
-******* [[jupytext extensions]]
-******* manages keyboard shortcuts[[https://github.com/jupyterlab/jupyterlab-shortcutui][ jupyterlab-shortcutui]]
-
-        jupyter labextension install @jupyterlab/shortcutui
-
-******* python black formatting in Jupyter: [[https://pypi.org/project/nb-black/][nb-black · PyPI]]
-
-        Put this in notebook:
-
-          For Jupyter Lab
-            %load_ext lab_black
+              For Jupyter Lab
+                %load_ext lab_black
         
-          For Jupyter Notebook
-            %load_ext nb_black
+              For Jupyter Notebook
+                %load_ext nb_black
 
-        Installation:  
+            Installation:  
 
-          conda install -c conda-forge nb_black 
+              conda install -c conda-forge nb_black 
 
-******* TRY python flake8 (pep8) formatting in Jupyter: [[https://www.npmjs.com/package/jupyterlab-flake8][jupyterlab-flake8]]
+*********** TRY python flake8 (pep8) formatting in Jupyter: [[https://www.npmjs.com/package/jupyterlab-flake8][jupyterlab-flake8]]
         
-        *EVALUATE*
+            *EVALUATE*
 
 
-********* Configuration
+************* Configuration
 
-        jupyter labextension install jupyterlab-flake8
+            jupyter labextension install jupyterlab-flake8
 
-        need (*??*) a .flake8 file in notebook directory
+            need (*??*) a .flake8 file in notebook directory
 
-********* Jupyterlab [[https://github.com/jupyterlab/jupyterlab/issues/5611][may have settled on]] [[jupypterlab_code_formatter]]
-******* TRY <<jupypterlab_code_formatter>> (pep8+ others): [[https://github.com/ryantam626/jupyterlab_code_formatter][jupyterlab_code_formatter]]
-        From Here: [[https://jupyterlab-code-formatter.readthedocs.io/en/latest/index.html][Welcome to Jupyterlab Code Formatter’s documentation!]]
+************* Jupyterlab [[https://github.com/jupyterlab/jupyterlab/issues/5611][may have settled on]] [[jupypterlab_code_formatter]]
+*********** TRY <<jupypterlab_code_formatter>> (pep8+ others): [[https://github.com/ryantam626/jupyterlab_code_formatter][jupyterlab_code_formatter]]
+            From Here: [[https://jupyterlab-code-formatter.readthedocs.io/en/latest/index.html][Welcome to Jupyterlab Code Formatter’s documentation!]]
 
-        *EVALUATE*
+            *EVALUATE*
 
-********* Supports Black, YAPF, Autopep8, lsort
-********* Doesn't automatically format -- you have to run some keyboard shortcut
-********* installation
+************* Supports Black, YAPF, Autopep8, lsort
+************* Doesn't automatically format -- you have to run some keyboard shortcut
+************* installation
 
-        conda install -c conda-forge black
-        jupyter labextension install @ryantam626/jupyterlab_code_formatter
-        conda install -c conda-forge jupyterlab_code_formatter
-        jupyter serverextension enable --py jupyterlab_code_formatter
+            conda install -c conda-forge black
+            jupyter labextension install @ryantam626/jupyterlab_code_formatter
+            conda install -c conda-forge jupyterlab_code_formatter
+            jupyter serverextension enable --py jupyterlab_code_formatter
 
-        ... and some more
+            ... and some more
 
-******* Jupyterlab extensions (_not working but maybe nice_) 
-********* paste image into markdown: [[https://github.com/Bamieh/jupyterlab-clipboard][Bamieh/jupyterlab-clipboard]]
+*********** TRY [[https://github.com/pbugnion/jupyterlab-sql][pbugnion/jupyterlab-sql: SQL GUI for JupyterLab]]
+*********** TRY [[https://github.com/IBM/jupyterlab-s3-browser][IBM/jupyterlab-s3-browser]] (for Amazon data, etc.)
+*********** TRY [[https://github.com/timkpaine/jupyterlab_powerpoint][timkpaine/jupyterlab_powerpoint: Creating PowerPoints from jupyter]]
+*********** TRY [[https://github.com/krassowski/jupyterlab-lsp][krassowski/jupyterlab-lsp: Language Server Protocol integration]]
+*********** TRY [[https://github.com/lckr/jupyterlab-variableInspector][lckr/jupyterlab-variableInspector: Variable Inspector extension]]
+*********** TRY [[https://github.com/jupyterlab/jupyterlab-latex][jupyterlab/jupyterlab-latex: JupyterLab extension for live editing]]
+********* Tried but don't need
+*********** python creating convenience: [[https://github.com/jtpio/jupyterlab-python-file][jtpio/jupyterlab-python-file]]
+*********** non-git auto-versioning: [[https://github.com/timkpaine/jupyterlab_autoversion][timkpaine/jupyterlab_autoversion]]
 
-          It's not compatible with jupyterlab version
+            Has worked at times, but mostly, it doesn't.
 
-          Bug report: [[https://github.com/Bamieh/jupyterlab-clipboard/issues/5][doesn't support latest version of jupyterlab]]
+            It does [[https://github.com/timkpaine/jupyterlab_autoversion/issues/1][make its own git repo]], though.
 
-********* <<emacs bindings in cells>>: [[https://github.com/kpe/jupyterlab-emacskeys][kpe/jupyterlab-emacskeys]]
+            pip install jupyterlab_autoversion
+            jupyter labextension install jupyterlab_autoversion
+            jupyter serverextension enable --py jupyterlab_autoversion
 
-          conda install nodejs
-          jupyter labextension install jupyterlab-emacskeys
+********* Not working but maybe nice
+*********** paste image into markdown: [[https://github.com/Bamieh/jupyterlab-clipboard][Bamieh/jupyterlab-clipboard]]
 
-          Doesn't work.  Many emacs binding missing. I [[https://github.com/kpe/jupyterlab-emacskeys/issues/2][filed a bug]].
+            It's not compatible with jupyterlab version
+
+            Bug report: [[https://github.com/Bamieh/jupyterlab-clipboard/issues/5][doesn't support latest version of jupyterlab]]
+
+*********** <<emacs bindings in cells>>: [[https://github.com/kpe/jupyterlab-emacskeys][kpe/jupyterlab-emacskeys]]
+
+            conda install nodejs
+            jupyter labextension install jupyterlab-emacskeys
+
+            Doesn't work.  Many emacs binding missing. I [[https://github.com/kpe/jupyterlab-emacskeys/issues/2][filed a bug]].
+
+*********** open file w/ part of name: [[https://github.com/parente/jupyterlab-quickopen][parente/jupyterlab-quickopen]]
+
+            Seems to scan over entire GIT? repository?  Extremely slow to start, and almost stops Jupyterlab.
+
+            pip install jupyterlab-quickopen
+            jupyter labextension install @parente/jupyterlab-quickopen
+
+            Start it by clicking the magnifying class icon on the LHS
+
+*********** run all button: [[https://github.com/jupyterlab/runall-extension][jupyterlab/runall-extension]]
+
+            Would be useful but it's not in the standard jupyterlab repository i.e. /this doesn't work/:
+
+               jupyter labextension install runall-extension
+
+            Instead, you have to [[https://jupyterlab.readthedocs.io/en/stable/user/extensions.html][build it yourself]].
 
 ***** jupyter-widgets a.k.a. ipywidgets: [[https://github.com/jupyter-widgets/ipywidgets/blob/master/docs/source/examples/Index.ipynb][ipywidgets]]
 
@@ -10041,23 +10094,7 @@ matlab-ruby-test.rb
 *** 2nd best in [[http://www.techradar.com/news/the-best-free-vpn][TechRadar Review]], Free, 10GB/mo: [[https://windscribe.com/download][Windscribe]]
 ***** also has deal on 2 year subs. w/ TR coupon in article
 ***** Works on SNL links if I set it to "US West" I did the [[instructions for Chrome]], not sure if that was necessary.
-*** Pasting a VPN on desktop/taskbar/start menu
-***** VPN connection on Network slideout (usually wifi symbol) taskbar button
-
-      After you've created a VPN connection, it shows up on the right slideout bar, when you click the network taskbar button.
-
-      Click on it, and it will make the VPN connection.
-
-***** VPN settings on destop shortcut (general, not a specific connection)
-      From: [[https://www.computerworld.com/article/3218116/how-to-make-shortcuts-to-windows-10-settings-on-your-desktop.html][How to make shortcuts to Windows 10 settings on your Desktop]]
-
-      o right click on desktop --> Shortcut
-      o paste ms-settings:network-vpn as the location
-      o can change the link name too, if you want
-
-      See the web page for many other Settings shortcut codes
-***** VPN connection on taskbar
-******* [[https://vpnmyway.wordpress.com/version-history-download/][VPNMyWay is supposed to put the connection on the taskbar]]
+*** [[Pasting a VPN on Windows desktop/taskbar/start menu]]
 * <<Lyx>>
 *** Windows Lyx: use TexLive instead of MikTex: [[How to make the org-ref latex compile: install TexLive]]
 
