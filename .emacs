@@ -292,7 +292,7 @@ TODO: make this a general function."
 
 ;; * Window Config, Desktop Save and Restore
 ;; ** Adjusting Window Orientation
-(use-package transpose-frame ; tons of functions: I'm just picking this one
+(use-package transpose-frame ; tons of functions, this one is most general
   :config (global-set-key (kbd "C-|")  'rotate-frame-clockwise))
 
 (winner-mode 1) ; Undo window config: C-c left; Redo window config: C-c right
@@ -1311,6 +1311,15 @@ _C-M-a_ change default action from list for this session
 
 (use-package flycheck-pos-tip)
 
+;; Make interpreter shells do arrow prev/last matching, like linux
+;; shells.  I think this will be overwritten by some modes
+;; e.g. gud-debugger and RSS, which have their own maps in this emacs
+;; file. 
+(define-key comint-mode-map [up]
+  'comint-previous-matching-input-from-input)
+(define-key comint-mode-map [down]
+  'comint-next-matching-input-from-input)
+
 ;; *** Ediff
 
 ;; TODO report ediff 'm' bug: Typing 'm' in ediff minibuffer spreads
@@ -1540,13 +1549,14 @@ _C-M-a_ change default action from list for this session
     (elpy-enable)
     ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?):
     ;; https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
+    ;; conda install -c anaconda jupyter_console 
     (sdo/find-exec "jupyter-console" "Elpy is set up to use this")
     (setq python-shell-interpreter "jupyter"
           python-shell-interpreter-args "console --simple-prompt"
           python-shell-prompt-detect-failure-warning nil)
     (add-to-list 'python-shell-completion-native-disabled-interpreters
                  "jupyter")
-    
+
     ;; use flycheck, not elpy's flymake
     ;; (https://realpython.com/blog/python/emacs-the-best-python-editor/
     ;;  https://elpy.readthedocs.io/en/latest/customization_tips.html)
