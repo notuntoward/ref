@@ -2613,6 +2613,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(display-time-default-load-average nil)
  '(display-time-load-average-threshold 100000000)
  '(display-time-mode t)
+ '(ediff-keep-variants nil)
  '(ediff-split-window-function (quote split-window-horizontally))
  '(elpy-rpc-python-command "python")
  '(elpy-shell-starting-directory (quote current-directory))
