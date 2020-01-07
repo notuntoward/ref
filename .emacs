@@ -1333,6 +1333,19 @@ _C-M-a_ change default action from list for this session
 ;; from: https://emacs.stackexchange.com/questions/21335/prevent-folding-org-files-opened-by-ediff
 (add-hook 'ediff-prepare-buffer-hook #'outline-show-all)
 
+;; Restore window configuration after ediff quits
+;; https://emacs.stackexchange.com/questions/7482/restoring-windows-and-layout-after-an-ediff-session
+(defvar my-ediff-last-windows nil)
+
+(defun my-store-pre-ediff-winconfig ()
+  (setq my-ediff-last-windows (current-window-configuration)))
+
+(defun my-restore-pre-ediff-winconfig ()
+  (set-window-configuration my-ediff-last-windows))
+
+(add-hook 'ediff-before-setup-hook #'my-store-pre-ediff-winconfig)
+(add-hook 'ediff-quit-hook #'my-restore-pre-ediff-winconfig)
+
 ;; *** Outshine: org-mode like headlines in programming and other modes
 (use-package outshine
 ;; this works if I run it from inside .emacs but not after a clean start  
