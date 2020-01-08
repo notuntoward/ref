@@ -747,12 +747,26 @@ _C-M-a_ change default action from list for this session
 	(display-line-numbers-mode 1)               ; only on current buffer
 	(goto-line (read-number "Goto line: ")))
     (display-line-numbers-mode -1)))                 ; only on current buffer
-(global-set-key (kbd "M-=") 'goto-line-with-feedback)
 
+(global-set-key (kbd "M-=") 'goto-line-with-feedback)
 (global-set-key (kbd "C-M-=") 'global-display-line-numbers-mode) ; toggles all
+
+;; A better C-x o
+;; https://www.reddit.com/r/emacs/comments/7evidd/windmove_shortcuts/
+(defun other-window-and-beyond (count &optional all-frames)
+  (interactive "p")
+  (set-transient-map
+   (let ((map (make-sparse-keymap)))
+     (define-key map (kbd "o") 'other-window) map)
+   t)
+  (other-window count all-frames))
+
+(define-key (current-global-map) (kbd "C-x o") 'other-window-and-beyond)
 
 ;; So C-arrow keys move cursor to different buffer (C-S-arrow moves buffers)
 (setq windmove-wrap-around t ) ; wrap windows around edge, like torus space
+
+;; TODO: remove this bindings in favor of hyra?
 ;; Overwrites org keys I don't use (are inhibited in org setup)
 (global-set-key (kbd "<C-up>")     'windmove-up)
 (global-set-key (kbd "<C-down>")   'windmove-down)
@@ -761,15 +775,22 @@ _C-M-a_ change default action from list for this session
 
 ;; Window movement, since windmove mappings above are overwritten in elpy
 ;; https://www.reddit.com/r/emacs/comments/7evidd/windmove_shortcuts/
+;; TODO: is which-key good enough for this?  Only thing is how to keep
+;; it going until done, as hydra does it with _SPC_
+;; TODO: use better arrow symbols.  See:
+;; http://xahlee.info/comp/unicode_arrows.html
+;; TODO: shrink some more and put a bunch of other window functions on
+;; this hydra?  Maybe frames, buffers, ...
+;; TODO compare w/ ace-window and hydr: https://www.youtube.com/watch?v=_qZliI1BKzI
 (defhydra hydra-window (:color pink :hint nil :timeout 20)
   "
      Move          Swap             Resize         Split
 ╭─────────────────────────────────────────────────────────────┐
-      U             C-U               M-U          [_v_]ertical
-      ▲              ▲                 ▲           [_h_]orizontal
+      U             C-U               M-U          [v]ertical
+      ▲              ▲                 ▲           [h]orizontal
  L ◀   ▶ R   C-L ◀   ▶ C-R   M-L ◀   ▶ M-R
       ▼              ▼                 ▼           ╭──────────┐
-      D             C-D               M-D          quit : [_SPC_]
+      D             C-D               M-D          quit : [SPC]
 "
   ("<left>" windmove-left)
   ("<down>" windmove-down)
@@ -821,6 +842,21 @@ _C-M-a_ change default action from list for this session
         (windmove-find-other-window 'up))
       (shrink-window arg)
     (enlarge-window arg)))
+
+;; A different use for C-x w: works pretty well but does less than
+;; hydra above (could add all those keys, though)
+;; https://www.reddit.com/r/emacs/comments/7evidd/windmove_shortcuts/
+;; (defun windmove-prefix ()
+;;   (interactive)
+;;   (set-transient-map
+;;    (let ((map (make-sparse-keymap)))
+;;      (define-key map (kbd "<left>") 'windmove-left)
+;;      (define-key map (kbd "<right>") 'windmove-right)
+;;      (define-key map (kbd "<up>") 'windmove-up)
+;;      (define-key map (kbd "<down>") 'windmove-down) map)
+;;    t))
+;;
+;;(define-key (current-global-map) (kbd "C-x w") 'windmove-prefix)
 
 ;; Traverse cursor movement history across windows and frames using mouse buttons usually bound to browser forward/back.
 ;; On MS sculpt mouse, swipe down is 'back'; swipe up is 'forward'
