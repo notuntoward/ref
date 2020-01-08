@@ -538,6 +538,29 @@ TODO: make this a general function."
   (bind-key "C-r" 'ivy-previous-line-or-history ivy-minibuffer-map)
   )
 
+;; consider these counsel commands (from:
+;; https://dev.to/deciduously/how-i-emacs-and-so-can-you-packages-m9p)
+;; so far, I like: counsel-git, counsel-git-grep, 
+
+;; ;; Override the basic Emacs commands
+;; (use-package counsel
+;;   :bind* ; load when pressed
+;;   (("M-x"     . counsel-M-x)
+;;    ("C-s"     . swiper)
+;;    ("C-x C-f" . counsel-find-file)
+;;    ("C-x C-r" . counsel-recentf)  ; search for recently edited
+;;    ("C-c g"   . counsel-git)      ; search for files in git repo
+;;    ("C-c j"   . counsel-git-grep) ; search for regexp in git repo
+;;    ("C-c /"   . counsel-ag)       ; Use ag for regexp
+;;    ("C-x l"   . counsel-locate)
+;;    ("C-x C-f" . counsel-find-file)
+;;    ("<f1> f"  . counsel-describe-function)
+;;    ("<f1> v"  . counsel-describe-variable)
+;;    ("<f1> l"  . counsel-find-library)
+;;    ("<f2> i"  . counsel-info-lookup-symbol)
+;;    ("<f2> u"  . counsel-unicode-char)
+;;    ("C-c C-r" . ivy-resume)))     ; Resume last Ivy-based completion
+
 (use-package counsel ; better kill-ring 2nd yanking
   :init
   :diminish counsel-mode
@@ -735,6 +758,69 @@ _C-M-a_ change default action from list for this session
 (global-set-key (kbd "<C-down>")   'windmove-down)
 (global-set-key (kbd "<C-left>")   'windmove-left)
 (global-set-key (kbd "<C-right>")  'windmove-right)
+
+;; Window movement, since windmove mappings above are overwritten in elpy
+;; https://www.reddit.com/r/emacs/comments/7evidd/windmove_shortcuts/
+(defhydra hydra-window (:color pink :hint nil :timeout 20)
+  "
+     Move          Swap             Resize         Split
+╭─────────────────────────────────────────────────────────────┐
+      U             C-U               M-U          [_v_]ertical
+      ▲              ▲                 ▲           [_h_]orizontal
+ L ◀   ▶ R   C-L ◀   ▶ C-R   M-L ◀   ▶ M-R
+      ▼              ▼                 ▼           ╭──────────┐
+      D             C-D               M-D          quit : [_SPC_]
+"
+  ("<left>" windmove-left)
+  ("<down>" windmove-down)
+  ("<up>" windmove-up)
+  ("<right>" windmove-right)
+  ("h" split-window-below)
+  ("v" split-window-right)
+  ("M-<up>" hydra-move-splitter-up) 
+  ("M-<down>" hydra-move-splitter-down)
+  ("M-<left>" hydra-move-splitter-left)
+  ("M-<right>" hydra-move-splitter-right)
+  ("C-<up>" buf-move-up)
+  ("C-<down>" buf-move-down)
+  ("C-<left>" buf-move-left)
+  ("C-<right>" buf-move-right)
+  ("SPC" nil))
+
+(global-set-key (kbd "C-x w") 'hydra-window/body)
+
+;; splitter funcs from: https://github.com/abo-abo/hydra/blob/master/hydra-examples.el
+(defun hydra-move-splitter-left (arg)
+  "Move window splitter left."
+  (interactive "p")
+  (if (let ((windmove-wrap-around))
+        (windmove-find-other-window 'right))
+      (shrink-window-horizontally arg)
+    (enlarge-window-horizontally arg)))
+
+(defun hydra-move-splitter-right (arg)
+  "Move window splitter right."
+  (interactive "p")
+  (if (let ((windmove-wrap-around))
+        (windmove-find-other-window 'right))
+      (enlarge-window-horizontally arg)
+    (shrink-window-horizontally arg)))
+
+(defun hydra-move-splitter-up (arg)
+  "Move window splitter up."
+  (interactive "p")
+  (if (let ((windmove-wrap-around))
+        (windmove-find-other-window 'up))
+      (enlarge-window arg)
+    (shrink-window arg)))
+
+(defun hydra-move-splitter-down (arg)
+  "Move window splitter down."
+  (interactive "p")
+  (if (let ((windmove-wrap-around))
+        (windmove-find-other-window 'up))
+      (shrink-window arg)
+    (enlarge-window arg)))
 
 ;; Traverse cursor movement history across windows and frames using mouse buttons usually bound to browser forward/back.
 ;; On MS sculpt mouse, swipe down is 'back'; swipe up is 'forward'
