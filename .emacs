@@ -787,10 +787,10 @@ _C-M-a_ change default action from list for this session
      Move          Swap             Resize         Split
 ╭─────────────────────────────────────────────────────────────┐
       U             C-U               M-U          [v]ertical
-      ▲              ▲                 ▲           [h]orizontal
- L ◀   ▶ R   C-L ◀   ▶ C-R   M-L ◀   ▶ M-R
+      ▲              ▲                 ▲            [h]orizontal
+ L ◀   ▶ R   C-L ◀   ▶ C-R   M-L ◀   ▶ M-R     [s]ensibly
       ▼              ▼                 ▼           ╭──────────┐
-      D             C-D               M-D          quit : [SPC]
+      D             C-D               M-D          quit : [q]
 "
   ("<left>" windmove-left)
   ("<down>" windmove-down)
@@ -798,6 +798,7 @@ _C-M-a_ change default action from list for this session
   ("<right>" windmove-right)
   ("h" split-window-below)
   ("v" split-window-right)
+  ("s" (split-window-sensibly))
   ("M-<up>" hydra-move-splitter-up) 
   ("M-<down>" hydra-move-splitter-down)
   ("M-<left>" hydra-move-splitter-left)
@@ -806,7 +807,7 @@ _C-M-a_ change default action from list for this session
   ("C-<down>" buf-move-down)
   ("C-<left>" buf-move-left)
   ("C-<right>" buf-move-right)
-  ("SPC" nil))
+  ("q" nil))
 
 (global-set-key (kbd "C-x w") 'hydra-window/body)
 
