@@ -1696,14 +1696,27 @@ _C-M-a_ change default action from list for this session
     ;; use flycheck, not elpy's flymake
     ;; (https://realpython.com/blog/python/emacs-the-best-python-editor/
     ;;  https://elpy.readthedocs.io/en/latest/customization_tips.html)
+    ;; I don't think I'm seeing much flycheck output
     (if (require 'flycheck nil t)
         (progn (message "found emacs flycheck package")
+               (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+               (add-hook 'elpy-mode-hook 'flycheck-mode)
                (flycheck-pos-tip-mode)
                (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-               (add-hook 'elpy-mode-hook 'flycheck-mode))
+               )
       (warn "elpy didn't find flycheck emacs package"))
 
-    ;;Better "M-.": https://elpy.readthedocs.io/en/latest/customization_tips.html
+    ;; Enable emacs 26 flymake indicators in an otherwise light
+    ;; modeline
+    ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
+    (setq elpy-remove-modeline-lighter t)
+    (advice-add 'elpy-modules-remove-modeline-lighter
+                :around (lambda (fun &rest args)
+                          (unless (eq (car args) 'flymake-mode)
+                            (apply fun args))))
+
+    ;; Better "M-.":
+    ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
     (defun elpy-goto-definition-or-rgrep ()
       "Go to the definition of the symbol at point, if found. Otherwise, run `elpy-rgrep-symbol'."
       (interactive)
@@ -1712,7 +1725,28 @@ _C-M-a_ change default action from list for this session
         (error (elpy-rgrep-symbol
                 (concat "\\(def\\|class\\)\s" (thing-at-point 'symbol) "(")))))
     (define-key elpy-mode-map (kbd "M-.") 'elpy-goto-definition-or-rgrep)
-    
+
+    ;; Enable full font locking of inputs in the python shell
+    ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
+    ;; I can't see that this does anything
+    (advice-add 'elpy-shell--insert-and-font-lock
+                :around (lambda (f string face &optional no-font-lock)
+                          (if (not (eq face 'comint-highlight-input))
+                              (funcall f string face no-font-lock)
+                            (funcall f string face t)
+                            (python-shell-font-lock-post-command-hook))))
+
+    (advice-add 'comint-send-input
+                :around (lambda (f &rest args)
+                          (if (eq major-mode 'inferior-python-mode)
+                              (cl-letf ((g (symbol-function 'add-text-properties))
+                                        ((symbol-function 'add-text-properties)
+                                         (lambda (start end properties &optional object)
+                                           (unless (eq (nth 3 properties) 'comint-highlight-input)
+                                             (funcall g start end properties object)))))
+                                (apply f args))
+                            (apply f args))))    
+    ;; code tidy when save
     (if autopep8bin
         (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)))
 
