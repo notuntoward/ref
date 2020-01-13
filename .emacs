@@ -1694,7 +1694,9 @@ _C-M-a_ change default action from list for this session
   (use-package elpy
     :defer t
     :diminish elpy-mode
-    ;; bind global "make" key to "C-u the command below"
+    ;; Bind global "make" key to "C-u the command below" This is run
+    ;; the whole buffer and region in a (possibly newly made) *Python*
+    ;; buffer, and then move the cursor there.
     :bind ("<f8>" . (lambda () (interactive) (elpy-shell-send-region-or-buffer-and-go t)))
     :init
     (elpy-enable)
