@@ -787,8 +787,8 @@ _C-M-a_ change default action from list for this session
      Move          Swap             Resize         Split
 ╭─────────────────────────────────────────────────────────────┐
       U             C-U               M-U          [v]ertical
-      ▲              ▲                 ▲            [h]orizontal
- L ◀   ▶ R   C-L ◀   ▶ C-R   M-L ◀   ▶ M-R     [s]ensibly
+      ▲              ▲                 ▲           [h]orizontal
+ L ◀   ▶ R   C-L ◀   ▶ C-R   M-L ◀   ▶ M-R    [s]ensibly
       ▼              ▼                 ▼           ╭──────────┐
       D             C-D               M-D          quit : [q]
 "
@@ -856,8 +856,8 @@ _C-M-a_ change default action from list for this session
 ;;      (define-key map (kbd "<up>") 'windmove-up)
 ;;      (define-key map (kbd "<down>") 'windmove-down) map)
 ;;    t))
-;;
-;;(define-key (current-global-map) (kbd "C-x w") 'windmove-prefix)
+
+;; (define-key (current-global-map) (kbd "C-x w") 'windmove-prefix)
 
 ;; Traverse cursor movement history across windows and frames using mouse buttons usually bound to browser forward/back.
 ;; On MS sculpt mouse, swipe down is 'back'; swipe up is 'forward'
@@ -1616,6 +1616,16 @@ _C-M-a_ change default action from list for this session
   (define-key cscope-list-entry-keymap "q" 'quit-window)) ; so quits like dired
 
 ;; ** Python
+
+;; *Python* buffer doesn't start at home.  I tried conda updata --all
+;; *and also the hack below, but now, instead of an error message, the
+;; **Python* buffer opens but is frozen when I run, for example,
+;; *sutil.py from elpy (C-u C-c C-c).  But in a conda terminal, I can
+;; *start "jupyter console" so I'm not sure what's going on.
+
+;; hack:
+;; *https://stackoverflow.com/questions/59631663/jupyter-console-fails-to-start-but-jupyter-notebook-is-fine
+
 ;; *** Python editing setup
 
 ;; TODO: My python setup expects that ananconda python is already installed,
@@ -1672,6 +1682,9 @@ _C-M-a_ change default action from list for this session
 
   ;; Use Elpy instead of python-mode.
   ;;   run python in buffer with C-c C-c, once elpy-mode is enabled
+  ;; C-u C-c C-c to get past "main" in the python function.
+  ;; elpy-shell-send-region-or-buffer-and-go to do that and switch the
+  ;;   cursor there.
   ;; elpy automatically downloads a lot of the Python libraries it requires.
   ;; You can see what's going on with: M-x elpy-config
   ;; You can force a reinstall with: M-x elpy-rpc-reinstall-virtualenv
@@ -1681,6 +1694,8 @@ _C-M-a_ change default action from list for this session
   (use-package elpy
     :defer t
     :diminish elpy-mode
+    ;; bind global "make" key to "C-u the command below"
+    :bind ("<f8>" . (lambda () (interactive) (elpy-shell-send-region-or-buffer-and-go t)))
     :init
     (elpy-enable)
     ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?):
@@ -2786,6 +2801,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(ediff-keep-variants nil)
  '(ediff-split-window-function (quote split-window-horizontally))
  '(elpy-rpc-python-command "python")
+ '(elpy-shell-display-buffer-after-send t)
  '(elpy-shell-starting-directory (quote current-directory))
  '(emacsw32-style-frame-title t)
  '(ess-ido-flex-matching t)
