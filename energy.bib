@@ -2578,22 +2578,21 @@ networks but require retraining at each timestep},
 }
 
 @Article{Cannon12nnCaDENCE,
-  author        = {Alex J. Cannon},
-  title         = {Neural networks for probabilistic environmental prediction: Conditional Density Estimation Network Creation and Evaluation (CaDENCE) in R},
-  journal       = {Computers \& Geosciences},
-  year          = {2012},
-  volume        = {41},
-  pages         = {126 - 135},
-  issn          = {0098-3004},
-  __markedentry = {[Scott:6]},
-  abstract      = {A conditional density estimation network (CDEN) is a probabilistic extension of the standard multilayer perceptron neural network (MLP). A CDEN model allows users to estimate parameters of a specified probability density function conditioned upon values of a set of predictors using the MLP architecture. The result is a flexible model for the mean, the variance, exceedance probabilities, prediction intervals, etc. from the specified conditional distribution. Because the CDEN is based on the MLP, nonlinear relationships, including those involving complicated interactions between predictors, can be described by the modeling framework. CDEN models have been applied to a wide range of environmental prediction tasks, such as precipitation downscaling, extreme value analysis in hydrology, wind retrievals from satellites, and air quality forecasting. This paper describes the CaDENCE (Conditional Density Estimation Network Creation and Evaluation) package, which provides routines for creating and evaluating CDEN models in the R programming language. CaDENCE routines are demonstrated on a dataset consisting of suspended sediment concentrations and discharge measurements from the Fraser River at Hope, British Columbia, Canada.},
-  comment       = {Uses an NN to predicts parametric distributions.  Cannon10GEVcdn does this with the generalized extreme value distribution.
+  author   = {Alex J. Cannon},
+  title    = {Neural networks for probabilistic environmental prediction: Conditional Density Estimation Network Creation and Evaluation (CaDENCE) in R},
+  journal  = {Computers \& Geosciences},
+  year     = {2012},
+  volume   = {41},
+  pages    = {126 - 135},
+  issn     = {0098-3004},
+  abstract = {A conditional density estimation network (CDEN) is a probabilistic extension of the standard multilayer perceptron neural network (MLP). A CDEN model allows users to estimate parameters of a specified probability density function conditioned upon values of a set of predictors using the MLP architecture. The result is a flexible model for the mean, the variance, exceedance probabilities, prediction intervals, etc. from the specified conditional distribution. Because the CDEN is based on the MLP, nonlinear relationships, including those involving complicated interactions between predictors, can be described by the modeling framework. CDEN models have been applied to a wide range of environmental prediction tasks, such as precipitation downscaling, extreme value analysis in hydrology, wind retrievals from satellites, and air quality forecasting. This paper describes the CaDENCE (Conditional Density Estimation Network Creation and Evaluation) package, which provides routines for creating and evaluating CDEN models in the R programming language. CaDENCE routines are demonstrated on a dataset consisting of suspended sediment concentrations and discharge measurements from the Fraser River at Hope, British Columbia, Canada.},
+  comment  = {Uses an NN to predicts parametric distributions.  Cannon10GEVcdn does this with the generalized extreme value distribution.
 
 I don't have the paper yet but I've attached the R package documentation.},
-  doi           = {https://doi.org/10.1016/j.cageo.2011.08.023},
-  file          = {:Cannon12nnCaDENCE.pdf:PDF},
-  keywords      = {Probabilistic, Nonlinear, Artificial neural network, Interactions, Prediction interval, R programming language},
-  url           = {http://www.sciencedirect.com/science/article/pii/S0098300411002913},
+  doi      = {https://doi.org/10.1016/j.cageo.2011.08.023},
+  file     = {:Cannon12nnCaDENCE.pdf:PDF},
+  keywords = {Probabilistic, Nonlinear, Artificial neural network, Interactions, Prediction interval, R programming language},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0098300411002913},
 }
 
 @Article{Estevez09normMutInfoFeatSel,
@@ -5569,6 +5568,43 @@ Related to Dereszynski12sensNtwkMissDat},
   owner     = {sotterson},
   timestamp = {2012.10.08},
   url       = {http://books.nips.cc/papers/files/nips23/NIPS2010_1284.pdf},
+}
+
+@InProceedings{Laptev17tsExtrmFrcastNNuber,
+  author        = {Nikolay Laptev and 1 Jason and Yosinski and Li Erran and Li and Slawek Smyl and 1},
+  title         = {Time-series Extreme Event Forecasting with Neural Networks at Uber},
+  booktitle     = {International Conference on Machine Learning},
+  year          = {2017},
+  volume        = {34},
+  __markedentry = {[scott:]},
+  abstract      = {Accurate time-series forecasting during high
+variance segments (e.g., holidays), is critical for
+anomaly detection, optimal resource allocation,
+budget planning and other related tasks. At Uber
+accurate prediction for completed trips during
+special events can lead to a more efficient driver
+allocation resulting in a decreased wait time for
+the riders.
+State of the art methods for handling this task
+often rely on a combination of univariate fore-
+casting models (e.g., Holt-Winters) and machine
+learning methods (e.g., random forest). Such a
+system, however, is hard to tune, scale and add
+exogenous variables.
+Motivated by the recent resurgence of Long Short
+Term Memory networks we propose a novel end-
+to-end recurrent neural network architecture that
+outperforms the current state of the art event fore-
+casting methods on Uber data and generalizes
+well to a public M3 dataset used for time-series
+forecasting competitions.},
+  comment       = {LSTM Bayesian time series forecasting that somehow separates out model selection errors from parameter errors.  Highly cited, proably worth looking at the newer papers too.
+
+Uber web page might be better than the conference paper: https://www.evernote.com/l/AA26fzCsOZRPb5EbvOLm4aMbjZTbYbyiGzI/
+
+Also partitions uncertainty: Harang18princUncertDeepNN},
+  file          = {:Laptev17tsExtrmFrcastNNuber.pdf:PDF},
+  url           = {http://roseyu.com/time-series-workshop/submissions/TSW2017_paper_3.pdf},
 }
 
 @Article{Larson06shortTermWindOffSite,
@@ -13950,168 +13986,6 @@ detailed proposal here: Xu12flexRamp2ndFprpsl},
   timestamp = {2013.10.11},
 }
 
-@TechReport{Koenker13DistributionalvsQuantile,
-  author    = {Koenker, Roger and Leorato, Samantha and Peracchi, Franco},
-  title     = {Distributional vs. Quantile Regression},
-  year      = {2013},
-  type      = {CEIS Working Paper No. 300. Available at SSRN: http://ssrn.com/abstract=2368737 or http://dx.doi.org/10.2139/ssrn.2368737},
-  abstract  = {Given a scalar random variable Y and a random vector X defined on the same probability space,
-the conditional distribution of Y given X can be represented by either the conditional distribution
-function or the conditional quantile function. To these equivalent representations correspond two
-alternative approaches to estimation. One approach, distributional regression (DR), is based on
-direct estimation of the conditional distribution function; the other approach, quantile regression
-(QR), is instead based on direct estimation of the conditional quantile function. Indirect estimates
-of the conditional quantile function and the conditional distribution function may then be obtained
-by inverting the direct estimates obtained from either approach. Despite the growing attention to
-the DR approach, and the vast literature on the QR approach, the link between the two approaches
-has not been explored in detail. The aim of this paper is to fill-in this gap by providing a better
-understanding of the relative performance of the two approaches, both asymptotically and in finite
-samples, under the linear location model and certain types of heteroskedastic location-scale models.
-
-KEYWORDS. Quantile regression, distributional regression, functional Delta-method, asymptotic
-relative efficiency, linear location model, location-scale models},
-  comment   = {Can regress to estimate either quantiles (thresholds at given exceedance probabilities) or distributions (probabilities at given exceedance thresholds). The methods are mostly equivalent and can be interchanged. However, direct DISTRIBUTIONAL regression seems better at extreme quantiles.
-
-* original paper (clearer than this one): Foresi95condDistRetDR
-* Chernozhukov13infCntrFactDist also compares distribution regression vs. quantile regression
-* distribution regression can easily model point masses (ends of wind power curve. See
- Chernozhukov13infCntrFactDist)
-.  I think this is because CDF can have sharp derivatives, making point masses in a density.
-
-Implementation advantage: standard LSQ algorithms, high dims (I say)
-* DR predicts a binary threshold indicator so (I say) it can use the huge library of standard LSQ classification algorithms e.g. an NN.
-* this would also make it more suitable than splineQR or linear QR for high dimensional inputs
-* use invertible NN instead of logit?
- - e.g. Baird05oneStepInvrtNN or Rippel13highDimProbDeepNN
- - an NN w/ LSQ cost function estimates the mean of a binary value, which the logit used here does and which is required:
-https://books.google.de/books?id=U_b2BwAAQBAJ&pg=PA5&lpg=PA5&dq=neural+network+for+estimating+conditional+mean&source=bl&ots=hLZiI0M6Tp&sig=hljm-efcyj4eiRoXF9KVHzsgZP0&hl=en&sa=X&redir_esc=y\#v=onepage&q=neural%20network%20for%20estimating%20conditional%20mean&f=false
-
-From this paper:
-* DR is better for censored distributions (p. 2)
- - but what does that mean? Does it mean "outlies were removed" or that the distribution is bounded (like wind power)
- - If each quantile is separately estimated, can't it be as jaggy as needed?
-
-Estimating distribution of a vector random variable
-* DR can estimate a random vector
-* no obvious way for QR to estimate quantiles for non-scalar dependent variables
-* good for grid node probabilistic forecast, where vector elements are grid nodes?
-
-For linear location model
-* DR is better near (0,1) quantiles
-* for low R^2, QR same as DR but QR is "more efficient"
-* for high R^2, QR is better than DR
-
-Logistic regression for threshold probs.
-* what they use in this paper
-* I -think- they used Poisson link function (Eilers15twentyYrsPspline says CLM is better).
-
-See also: Chernozhukov13infCntrFactDist for more on DR},
-  doi       = {10.2139/ssrn.2368737},
-  file      = {Koenker13DistributionalvsQuantile.pdf:Koenker13DistributionalvsQuantile.pdf:PDF},
-  groups    = {Read},
-  owner     = {sotterson},
-  publisher = {CEIS Working Paper},
-  timestamp = {2015.07.03},
-  url       = {http://ssrn.com/abstract=2368737},
-}
-
-@Article{Higham02nearestCorrMat,
-  author    = {Higham, Nicholas J.},
-  title     = {Computing the nearest correlation matrix -- a problem from finance},
-  journal   = {IMA Journal of Numerical Analysis},
-  year      = {2002},
-  volume    = {22},
-  number    = {3},
-  pages     = {329--343},
-  abstract  = {Given a symmetric matrix, what is the nearest correlation matrix -- that is, the nearest symmetric positive semidefinite matrix with unit diagonal? This problem arises in the finance industry, where the correlations are between stocks. For distance measured in two weighted Frobenius norms we characterize the solution using convex analysis. We show how the modified alternating projections method can be used to compute the solution for the more commonly used of the weighted Frobenius norms. In the finance application the original matrix has many zero or negative eigenvalues; we show that for a certain class of weights the nearest correlation matrix has correspondingly many zero eigenvalues and that this fact can be exploited in the computation.},
-  comment   = {Given a symmetric matrix, how to compute the nearest valid correlation matrix. Has Matlab.
-
-Useful for:
-* empirical correlations of large, low rank matrices.
-* simulating random Gaussian systems, where correlations are random realizations that must be fixed up to work
-* possibly for agglomeratively weather regimes based on sliding window correlation matrices.
-* possibly for spatio-temporal analog ensemble selection (but may want to do something w/ PLS or equivalent first, so there's a relationship w/ the predictand).
-
-Matlab: http://www.mathworks.com/matlabcentral/fileexchange/21486-finding-a-similar-valid-correlation-matrix
-https://nickhigham.wordpress.com/2013/02/13/the-nearest-correlation-matrix/},
-  doi       = {10.1093/imanum/22.3.329},
-  eprint    = {http://imajna.oxfordjournals.org/content/22/3/329.full.pdf+html},
-  file      = {Higham02nearestCorrMat.pdf:Higham02nearestCorrMat.pdf:PDF},
-  groups    = {Ensemble, doReadNonWPV_1},
-  owner     = {sotterson},
-  timestamp = {2012.03.09},
-  url       = {http://imajna.oxfordjournals.org/content/22/3/329.abstract},
-}
-
-@Article{Li11trendSVD,
-  author    = {Li, Gen and Ren, Baohua and Zheng, Jianqiu and Yang, Chengyun},
-  title     = {Trend singular value decomposition analysis and its application to the global ocean surface latent heat flux and SST anomalies},
-  journal   = {Journal of Climate},
-  year      = {2011},
-  volume    = {24},
-  number    = {12},
-  pages     = {2931--2948},
-  abstract  = {Given the complexity of trends in the actual climate system, distinguishing between different trends and
-different trend modes is important for climate research. This study introduces a new method called ??trend
-singular value decomposition (TSVD) analysis,?? which is designed for systematically extracting coupled trend
-modes, albeit small, by performing an eigenanalysis of the inverse-rank covariance matrix between two fields.
-Applications to simple time series models and annual mean surface latent heat flux (LHF) and SST data for
-1958?2006 are presented and discussed. Results show that the TSVD analysis can capture different coherent
-trends into different leading modes. The first TSVD mode between the global LHF and SST anomalies,
-similar to the first conventional SVD mode, generally represents a large-scale increasing LHF trend induced
-by a warming SST trend; whereas, interestingly, unlike the second SVD mode that is mainly associated with
-the familiar ENSO, the second TSVD mode is mainly associated with the Pacific decadal oscillation (PDO).
-TSVD analysis casts the (global) long-term and (Pacific) decadal trends into the leading two modes, re-
-spectively. Compared to SVD analysis, the advantages of the TSVD analysis in detecting coupled low-fre-
-quency modes are even more evident in the tropical Pacific (TP), where the coherent trend signals (i.e., the
-long-term trends and the decadal trends) are smaller than the ENSO-related signals. Thus, TSVD analysis
-performs better than SVD analysis when focusing on trends rather than on maximum covariance patterns,
-particularly on relatively small coherent trend patterns, such as the coupled long-term trends and decadal
-trends in the TP.},
-  comment   = {Use to identify variables that trend together, as opposed to have maxium covariance together (this is because the rank transform enforces montonicity).  Maybe good for ModernWindABS (Dienst16AnomOffshrWnd), where the idea was to detect trends between measurements of different components.  This is also somehow related to a copula....
-
-Good idea to check articles that cite this one, since it's kinda old.},
-  file      = {Li11trendSVD.pdf:Li11trendSVD.pdf:PDF},
-  owner     = {sotterson},
-  timestamp = {2016.12.09},
-  url       = {http://journals.ametsoc.org/doi/full/10.1175/2010JCLI3743.1},
-}
-
-@Article{Maurer09dimSTctlRsrvProb,
-  author    = {Maurer, Christoph and Krahl, Simon and Weber, Holger},
-  title     = {Dimensioning of secondary and tertiary control reserve by probabilistic methods},
-  journal   = {European Transactions on Electrical Power},
-  year      = {2009},
-  volume    = {19},
-  number    = {4},
-  pages     = {544--552},
-  month     = {may},
-  abstract  = {Given the rising share of intermittent generation out of renewable energy sources on the one hand and the increased regulatory efforts to lower transmission costs and tariffs on the other hand, the optimal dimensioning of necessary control reserve has gained additional importance during the last years. Grid codes like the UCTE Operation Handbook do not provide definitive and unambiguous methods for dimensioning of secondary and tertiary control reserves. This paper therefore presents a method which calculates the necessary control reserve considering all important drivers for power imbalances like power plant outages, load variations and forecast error. For dimensioning, a probabilistic criterion, the accepted probability of insufficient control reserve, is used. Probability density functions of control area imbalances are calculated using a convolution algorithm. This paper provides analyses for a stylised example system to demonstrate the capabilities of the method. In a sensitivity analysis the impact of drivers like plant failures and forecast errors of load and generation is shown. The presented method is used by transmission system operators and regulatory authorities to determine and substantiate the necessary amount of control reserve.},
-  comment   = {How Germany allocates control reserve, according to Dominik J.
-
-Assumes error distributions are independent and then convolves them.  And improvement would be dependent convolution, as in: Zhang16copulaConvPowSys},
-  doi       = {10.1002/etep.326},
-  file      = {Maurer09dimSTctlRsrvProb.pdf:Maurer09dimSTctlRsrvProb.pdf:PDF},
-  owner     = {sotterson},
-  publisher = {Wiley Online Library},
-  timestamp = {2017.01.17},
-}
-
-@Article{Westacott16gisPVdeployUK,
-  author         = {Westacott, Paul and Candelise, Chiara},
-  title          = {A Novel Geographical Information Systems Framework to Characterize Photovoltaic Deployment in the UK: Initial Evidence},
-  journal        = {Energies},
-  year           = {2016},
-  volume         = {9},
-  number         = {1},
-  issn           = {1996-1073},
-  abstract       = {Globally, deployment of grid-connected photovoltaics (PV) has increased dramatically in recent years. The UK has seen rapid uptake reaching over 500,000 installations totalling 2.8 GWp by 2013. PV can be installed in different market segments (domestic rooftop, non-domestic rooftop and ground-mounted “solar-farms”) covering a broad range of system sizes in a high number of locations. It is important to gain detailed understanding of what grid-connected PV deployment looks like (e.g., how it deployed across different geographic areas and market segments), and identify the major drivers behind it. This paper answers these questions by developing a novel geographical information systems (GIS)-framework—the United Kingdom Photovoltaics Database (UKPVD)—to analyze temporal and spatial PV deployment trends at high resolution across all market segments. Results show how PV deployment changed over time with the evolution of governmental PV policy support. Then spatial trends as function of local irradiation, rurality (as a proxy of building and population density) and building footprint (as a proxy for roof-area) are analyzed. We find in all market segments, PV deployment is strongly correlated with the level of policy support. Furthermore, all markets show a preference to deploy in rural areas and those with higher irradiation. Finally, local clustering of PV in all market segments was observed, revealing that PV is not spread evenly across areas. This work reveals the complex nature of PV deployment, both spatially and by market segment, reinforcing the need capture this through mapping.},
-  article-number = {26},
-  doi            = {10.3390/en9010026},
-  file           = {:Westacott16gisPVdeployUK.pdf:PDF},
-  url            = {http://www.mdpi.com/1996-1073/9/1/26},
-}
-
 @TechReport{Crawford16loadFrcstERCOT,
   author      = {Todd Crawford},
   title       = {ERCOT Load Forecasting},
@@ -16255,6 +16129,23 @@ Main factors are
   file     = {:Hayn14loadPrfofilesHshldSeg.pdf:PDF},
   keywords = {Household segmentation, Residential electricity demand and load profiles, Lifestyles and socio-demographic factors, Electric appliances and technologies for electricity and heat supply},
   url      = {http://www.sciencedirect.com/science/article/pii/S2214629614000802},
+}
+
+@Article{Mohammadi18deepLrnIOTsurv,
+  author   = {M. {Mohammadi} and A. {Al-Fuqaha} and S. {Sorour} and M. {Guizani}},
+  title    = {Deep Learning for IoT Big Data and Streaming Analytics: A Survey},
+  journal  = {IEEE Communications Surveys Tutorials},
+  year     = {2018},
+  volume   = {20},
+  number   = {4},
+  pages    = {2923--2960},
+  month    = fou,
+  issn     = {2373-745X},
+  abstract = {In the era of the Internet of Things (IoT), an enormous amount of sensing devices collect and/or generate various sensory data over time for a wide range of fields and applications. Based on the nature of the application, these devices will result in big or fast/real-time data streams. Applying analytics over such data streams to discover new information, predict future insights, and make control decisions is a crucial process that makes IoT a worthy paradigm for businesses and a quality-of-life improving technology. In this paper, we provide a thorough overview on using a class of advanced machine learning techniques, namely deep learning (DL), to facilitate the analytics and learning in the IoT domain. We start by articulating IoT data characteristics and identifying two major treatments for IoT data from a machine learning perspective, namely IoT big data analytics and IoT streaming data analytics. We also discuss why DL is a promising approach to achieve the desired analytics in these types of data and applications. The potential of using emerging DL techniques for IoT data analytics are then discussed, and its promises and challenges are introduced. We present a comprehensive background on different DL architectures and algorithms. We also analyze and summarize major reported research attempts that leveraged DL in the IoT domain. The smart IoT devices that have incorporated DL in their intelligence background are also discussed. DL implementation approaches on the fog and cloud centers in support of IoT applications are also surveyed. Finally, we shed light on some challenges and potential directions for future research. At the end of each section, we highlight the lessons learned based on our experiments and review of the recent literature.},
+  comment  = {Algorithm, esp. deep learning trends.  Very nice graphs, which I borrowed for CPR talks.},
+  doi      = {10.1109/COMST.2018.2844341},
+  file     = {:Mohammadi18deepLrnIOTsurv.pdf:PDF},
+  keywords = {Big Data, data analysis, Internet of Things, learning (artificial intelligence), quality-of-life, DL implementation, fog centers, cloud centers, Internet of Things, fast/real-time data streams, sensory data, streaming analytics, IoT applications, smart IoT devices, IoT big data analytics, machine learning perspective, IoT data characteristics, IoT domain, deep learning, advanced machine learning techniques, Machine learning, Big Data, Data analysis, Economics, Internet of Things, Data mining, Tutorials, Deep learning, deep neural network, Internet of Things, on-device intelligence, IoT big data, fast data analytics, cloud-based analytics},
 }
 
 @Article{Zheng12qboost,
@@ -26421,6 +26312,34 @@ to continuous outcome models, i.e., models in which the dependent variable is a 
   url       = {http://learnitdaily.com/six-ways-to-address-collinearity-in-regression-models/},
 }
 
+@InProceedings{Vogt19windPowFrcstDpLrnXfer,
+  author    = {Stephan Vogt and Axel Braun and Jan Dobschinski and Bernhard Sick},
+  title     = {Wind Power Forecasting Based on Deep Neural Networks and Transfer Learning},
+  booktitle = {19th Wind Integration Workshop},
+  year      = {2019},
+  address   = {Dublin, Ireland},
+  abstract  = {State-of-the-art forecasting systems are often
+based on single machine learning models that have been trained
+for individual wind farms. The data of a each wind farm is
+typically used exclusively for its ”own” model. This article
+presents two approaches with deep neural networks to make
+the data usable across wind farms with transfer learning. In the
+first case, the adaptation to individual wind farms is achieved by
+an separate output layer for each wind farm. With the second
+approach, a Bayesian wind farm embedding is proposed.
+An experiment with realistic forecast conditions based on
+power measurements and weather forecasts of 19 wind farms
+is carried out. The proposed techniques are compared to
+established single wind farm models such as random forests,
+gradient boosted regression trees, and simple multi layer per-
+ceptrons. Our results indicate that a significant improvement
+in prediction quality can be achieved using multi-task learning,
+especially with a short time span of historical training data.},
+  comment   = {Steve's latest.  Looks like it's multitask and tries a lot of things.  Put this into CPR talk on wind power applications.},
+  file      = {:Vogt19windPowFrcstDpLrnXfer.pdf:PDF},
+  url       = {https://www.researchgate.net/publication/337898932_Wind_Power_Forecasting_Based_on_Deep_Neural_Networks_and_Transfer_Learning},
+}
+
 @Book{Hastie09elemStatLrnBook,
   title     = {The Elements of Statistical Learning},
   publisher = {Springer},
@@ -30473,6 +30392,20 @@ This book introduces readers to the use of copula functions to represent the dyn
   url       = {http://www.ebook.de/de/product/14834484/umberto_cherubini_sabrina_mulinacci_fabio_gobbi_dynamic_copula_methods_in_finance.html},
 }
 
+@Article{Pavlus20gaugeEquivNN,
+  author   = {John Pavulus},
+  title    = {An Idea From Physics Helps AI See in Higher Dimensions},
+  journal  = {Quanta Magazine},
+  year     = {2020},
+  month    = jan,
+  abstract = {The laws of physics stay the same no matter one’s perspective. Now this idea is allowing computers to detect features in curved and higher-dimensional space.},
+  comment  = {A "guage-equivalent" CNN is translation invariant in N-dimensions, instead of just 2D, like a CNN.  It gets MUCH better results recognizing extrememe weather patterns that other approaches, including one that is kind of similar in its approach.   It also does well on 3D or 4D image processing (d4 is time).  In addition, it needs MUCH less training data, even though it's a deep NN.
+
+The trick is that a gauge CNN must be given the manifold that the data is restricted to -- good for weather, which is on an oblate spheroid -- but not for a general purpose ML algorithm.  Manifold learning for this NN is left for future work.},
+  file     = {:Pavlus20guageEquivNN.pdf:PDF},
+  url      = {https://www.quantamagazine.org/an-idea-from-physics-helps-ai-see-in-higher-dimensions-20200109/},
+}
+
 @Article{Hocke08gapfillLombScarglePer,
   author    = {Hocke, K. and K?mpfer, N.},
   title     = {Gap filling and noise reduction of unevenly sampled data by means of the Lomb-Scargle periodogram},
@@ -32122,6 +32055,31 @@ I.5 [Pattern Recognition]: Miscellaneous},
   owner        = {sotterson},
   timestamp    = {2014.06.27},
   url          = {http://dl.acm.org/citation.cfm?id=1851501},
+}
+
+@Article{Willmott05maeVsRmse,
+  author   = {Willmott, Cort J and Matsuura, Kenji},
+  title    = {Advantages of the mean absolute error (MAE) over the root mean square error (RMSE) in assessing average model performance},
+  journal  = {Climate research},
+  year     = {2005},
+  volume   = {30},
+  number   = {1},
+  pages    = {79--82},
+  abstract = {The relative abilities of 2, dimensioned statistics — the root-mean-square error (RMSE)
+and the mean absolute error (MAE) — to describe average model-performance error are examined.
+The RMSE is of special interest because it is widely reported in the climatic and environmental liter-
+ature; nevertheless, it is an inappropriate and misinterpreted measure of average error. RMSE is
+inappropriate because it is a function of 3 characteristics of a set of errors, rather than of one (the
+average error). RMSE varies with the variability within the distribution of error magnitudes and with
+the square root of the number of errors (n1/2), as well as with the average-error magnitude (MAE).
+Our findings indicate that MAE is a more natural measure of average error, and (unlike RMSE) is
+unambiguous. Dimensioned evaluations and inter-comparisons of average model-performance error,
+therefore, should be based on MAE.
+
+KEY WORDS: Model-performance measures · Root-mean-square error · Mean absolute error},
+  comment  = {Climate researcher says that MAE is better for model comparison than RMSE},
+  file     = {:Willmott05maeVsRmse.pdf:PDF},
+  url      = {https://www.int-res.com/abstracts/cr/v30/n1/p79-82/},
 }
 
 @Misc{Aleo19pvPanelsLowLight,
@@ -43650,6 +43608,42 @@ Also: Ranganathan15oddsVsRisk},
   url          = {https://www.psychologyinaction.org/psychology-in-action-1/2014/02/03/odds-are-on-the-difference-between-odds-probability-and-risk-ratio},
 }
 
+@Book{Nielsen15nnDeepLrnBk,
+  title     = {Neural networks and deep learning},
+  publisher = {Determination press San Francisco, CA, USA:},
+  year      = {2015},
+  author    = {Nielsen, Michael A},
+  volume    = {25},
+  abstract  = {What this book is about
+
+Neural networks are one of the most beautiful programming paradigms ever invented. In
+the conventional approach to programming, we tell the computer what to do, breaking big
+problems up into many small, precisely defined tasks that the computer can easily perform.
+By contrast, in a neural network we don’t tell the computer how to solve our problem. Instead,
+it learns from observational data, figuring out its own solution to the problem at hand.
+Automatically learning from data sounds promising. However, until 2006 we didn’t
+know how to train neural networks to surpass more traditional approaches, except for
+a few specialized problems. What changed in 2006 was the discovery of techniques for
+learning in so-called deep neural networks. These techniques are now known as deep
+learning. They’ve been developed further, and today deep neural networks and deep learning
+achieve outstanding performance on many important problems in computer vision, speech
+recognition, and natural language processing. They’re being deployed on a large scale by
+companies such as Google, Microsoft, and Facebook.
+The purpose of this book is to help you master the core concepts of neural networks,
+including modern techniques for deep learning. After working through the book you will
+have written code that uses neural networks and deep learning to solve complex pattern
+recognition problems. And you will have a foundation to use neural networks and deep
+learning to attack problems of your own devising.},
+  comment   = {Intuitive book on neural nets and deep learning.  Has online interactive web page, allowing you to twiddle parameters and do guided experiments.
+
+I  used some of Chapter 4 for my CPR ML class, 2019 (marked up Ch4 is also attached)
+
+Interactive web page:  http://neuralnetworksanddeeplearning.com/
+(pdf source is the URL for this Bibtex entry)},
+  file      = {:Nielsen15nnDeepLrnBk.pdf:PDF;:Nielsen15nnDeepLrnBk_Ch4Markup.pdf:PDF},
+  url       = {http://static.latexstudio.net/article/2018/0912/neuralnetworksanddeeplearning.pdf},
+}
+
 @Article{Kuncheva14PCAFeatureExtraction,
   author    = {L. I. Kuncheva and W. J. Faithfull},
   title     = {{PCA} Feature Extraction for Change Detection in Multidimensional Unlabeled Data},
@@ -43728,6 +43722,26 @@ But what is needed in the future to allow us to continue improving our forecasts
   owner     = {sotterson},
   timestamp = {2017.04.25},
   url       = {https://www.earthmagazine.org/article/todays-weather-forecast-good-strong-chance-improvement},
+}
+
+@Article{Harang18princUncertDeepNN,
+  author        = {Richard Harang and Ethan M. Rudd},
+  title         = {Towards Principled Uncertainty Estimation for Deep Neural Networks},
+  journal       = {ArXiv},
+  year          = {2018},
+  __markedentry = {[scott:6]},
+  abstract      = {When the cost of misclassifying a sample is high, it is useful to have an accurate estimate of uncertainty in the prediction for that sample. There are also multiple types of uncertainty which are best estimated in different ways, for example, uncertainty that is intrinsic to the training set may be well-handled by a Bayesian approach, while uncertainty introduced by shifts between training and query distributions may be better-addressed by density/support estimation. In this paper, we examine three types of uncertainty: model capacity uncertainty, intrinsic data uncertainty, and open set uncertainty, and review techniques that have been derived to address each one. We then introduce a unified hierarchical model, which combines methods from Bayesian inference, invertible latent density inference, and discriminative classification in a single end-to-end deep neural network topology to yield efficient per-sample uncertainty estimation in a detection context. This approach addresses all three uncertainty types and can readily accommodate prior/base rates for binary detection. We then discuss how to extend this model to a more generic multiclass recognition context.},
+  comment       = {Separates errors into model capacity uncertainty, intrinsic data uncertainty, and open set uncertainty (train/test mismatch).  Applies it to deep learning classification.  Could maybe be used for tech adoption forecasts, where there are big problems with train/test mismatch (since the future hasn't happened yet).\
+
+
+Does a similar thing for LSTMs: Laptev17tsExtrmFrcastNNuber},
+  date          = {2018-10-29},
+  eprint        = {http://arxiv.org/abs/1810.12278v2},
+  eprintclass   = {cs.LG},
+  eprinttype    = {arXiv},
+  file          = {:http\://arxiv.org/pdf/1810.12278v2:PDF},
+  keywords      = {cs.LG, stat.ML},
+  url           = {http://arxiv.org/pdf/1810.12278v2},
 }
 
 @TechReport{Schaeffer14mkCovMatPosDef,
@@ -52102,6 +52116,17 @@ Related article: Zhu12multiVaryCfsFncResp},
   owner     = {sotterson},
   publisher = {Taylor \& Francis Group},
   timestamp = {2014.11.09},
+}
+
+@Article{Zwillinger00crcProbStatsTblBk,
+  author    = {Zwillinger, D and Kokoska, S},
+  title     = {Chp 2. Summarizing data},
+  journal   = {CRC Standard Probability and Statistics Tables and Formulae},
+  year      = {2000},
+  comment   = {Standard CRC probability and statistics tables e.g. Spearman correlation and its P-values.},
+  file      = {:Zwillinger00crcProbStatsTblBk.pdf:PDF},
+  publisher = {Chapman \& Hall/CRC},
+  url       = {http://tomlr.free.fr/Math%E9matiques/Math%20Complete/Probability%20and%20statistics/CRC%20-%20standard%20probability%20and%20Statistics%20tables%20and%20formulae%20-%20DANIEL%20ZWILLINGER.pdf},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

@@ -151,6 +151,8 @@
 *** [[file:energy.bib::Legler19broadenGLMmultiLev][Legler & Roback 2019: Broadening, GLM and Multilev Models]]
 *** [[file:energy.bib::Davidson-Pilon15bayesMethHackers][Davidson-Pilon 2015: Bayesian Methods Hackers]]
 *** [[file:energy.bib::Lindley00philOfStat][Lindley 2000 Philosophy of Statistics]]
+*** [[file:energy.bib::Nielsen15nnDeepLrnBk][Nielsen 2015: Neural Deep Lrn Bk]] (interactive web too)
+*** [[file:energy.bib::Zwillinger00crcProbStatsTblBk][Zwillinger & Kokoska 2000: CRC Prob & Stats Tables]]
 *** [[Books w/ source code]]
 *** Wind energy books I could buy
     these three looked good, looking at amazon.com on 9/6/2011
@@ -1539,6 +1541,7 @@
 ******* Does multivariate Gaussianization work better?
 ******* /Caution/: almost no hits when [[http://www.google.dk/search?hl%3Den&client%3Dfirefox-a&hs%3DafK&rls%3Dorg.mozilla%3Aen-US%3Aofficial&q%3D%2BGAUSSIANIZATION%2Bfor%2Bregression&aq%3Df&aqi%3D&aql%3D&oq%3D&gs_rfai%3D][googling gaussianization for regression]]
 ******* Software/papers
+********* Python lib: [[https://github.com/gregversteeg/gaussianize][gregversteeg/gaussianize: Transforms univariate data into normally d...]]
 ********* [[file:speakerClust.bib::gopinath00gaussSlide][Gopinath 2000: Gaussianization]] (easy to read slides: read 1st?)
 ********* [[file:energy.bib::chen00gaussianization][Chen & Gopinath 2000: Gaussianization]]
 ********* [[file:energy.bib::Erdogmus04gaussianizationICA][Erdogmus et al. 2004: Gaussianizing Transformations ICA]] (hint @ how to invert?)
@@ -1712,8 +1715,9 @@ STUFF SOME R CODE IN HERE
 ******* [[file:energy.bib::Astolfi08timeVarConnect][Astolfi et al. 2008: Tracking Time Varying]]
 ******* search for "graph" or "Bayesian network" in bib file
 ******* related?:  [[file:energy.bib::Sales11parMutInfoEst][Sales & Romualdi 2011]] parmigene mut info est.
-******* also see: [[CP-VAR conditioner discovery]]
-******* also see: [[Lasso structure learning]]
+******* also [[CP-VAR conditioner discovery]]
+******* also [[Lasso structure learning]]
+******* also [[Dependence Graph Learning]]
 ******* software
         - [[http://www.bnlearn.com/][bnlearn]] (R)
         - [[http://cran.r-project.org/web/views/gR.html][CRAN Task View: gRaphical Models in R]]
@@ -2065,6 +2069,7 @@ Scott
 ******* [[cite:Deng12deepLnr3arch][Deng 2012: Three Deep Learning Architectures, autoenc, DBN, CNN]]
 ******* DONE [[https://wiki.tut.fi/DENIS/CoursesandSchools][Deep Learning summer school 2015: 8/17-19, Aalto U., Espoo, Finland]]
         I got  [[cite:Raiko15supUnsupCombLadder][Raiko 2015: Combining Supervised Unsupervised]], which I should read.
+******* [[file:energy.bib::Nielsen15nnDeepLrnBk][Nielsen 2015: Neural Deep Lrn Bk]] (interactive web too)
 ***** TODO [[cite:Raiko15supUnsupCombLadder][Raiko 2015: Combining Supervised Unsupervised]]
 ***** TODO go through links in chrome bookmarks called "Deep/Reinforcement learning overview ModernWindABS"
 ***** TODO go through Google Keep "Run notes" checklist
@@ -2103,15 +2108,56 @@ Scott
 ******* TODO [[cite:Deng15deepLrnSpchLang][Deng 2015: Deep Learning Speech Language Processing]]  (everything's gone!)
 ******* [[cite:Trigeorgis16adieuFeatsSpchEmotRecog][Trigeorgis et al. 2016: Adieu features? spch emot. lrn CNN]]
 ******* [[cite:Song15end2endDeepLnSpchRecog][Song & Cai 2015: End 2 end spch recog. CNN, no MFCC]]
+***** <<Deep Learning in Energy Systems>>
+******* TODO [[file:energy.bib::Vogt19windPowFrcstDpLrnXfer][Vogt et al. 2019: Wind Pow Forecast Deep Lrn, Xfer Lrn]]
+******* [[file:energy.bib::Vogt19windPowFrcstDpLrnXfer][Vogt et al. 2019: Wind Pow Forecast Deep Lrn, Xfer Lrn]]
+******* 2017 entries
+********* [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]] :DpLrn:FrcstDmd:
+********* TODO [[cite:Busseti12deepLrnTimeSer][Busseti et al. 2012: Deep Learning Time Series Modeling (Demand frcst, RNN best)]] :DpLrn:RNN:FrcstDmd:
+********* TODO [[cite:Sogabe16optRESdpLrn][Sogabe et al. 2016: Optimization RES Deep Frcst Net]] :DpLrn:FrcstNtDmd:RBMC:Opt:
+********* [[cite:Vu15solarFrcstIBMmachLrn][Vu 2015: Machine IBM US DOE solar/demand/wind frcst Deep]] :DpLrn:FrcstNtDmd:SlfCnsmpt:MltiNWP:OffstObs:
+********* [[cite:Wu16probSTwindPowRNNlstm][Wu et al. 2016: Probabilistic Wind Pow Frcst RNN LSTM regimes via clust(?)]] :DpLrn:RNN:LSTM:FrcstProb:RgmLrn:
+********* [[cite:Zhang15windSpdFrcstPDBM][Zhang et al. 2015: Predictive Deep Boltzmann Mach. Wind Spd Frcst]] :DpLrn:PDBM:FrcstWndSpd:FtLrn:FrcstProb:
+********* [[cite:Tao14WindPowPredPattrnDeepLrn][Tao et al. 2014: Wind pow prediction pattern deep learn]] :DpLrn:FrcstWndPow:PDBM:FtLrn:FrcstProb:
+********* [[cite:Khodayar17RoughDeepNNShrtWndSpdFrcst][Khodayar et al. 2017: Rough Deep Neural Wind Spd Frcst]]
+********* [[cite:Khodayar15RobustDeepNNwindSpdPred][Khodayar & Teshnehlab 2015: Robust Deep NN Wind Spd Frcst]]
+********* TODO [[cite:Ghaderi17DeepLrnSpatTempFrcstWindPow][Ghaderi et al. 2017: Deep Wind Pow Spat Temp Frcst TensorFlow code]]
+********* code example (weather prediction): [[https://hub.docker.com/r/claytantor/tensorflow-lstm-regression/][tensorflow-lstm-regression]] what weather?
+
+********* [[cite:Wan16WindSpdDAfrcstDeepFeatLrn][Wan et al. 2016: Day Ahead Prediction Wind Speed Deep Feat Lrn]]
+********* TODO [[cite:DiazVico17deepNNwindSolEnrgyPred][Diaz--Vico et al. 2017: Deep NN Wind and Solar Energy Frcst]]
+********* [[cite:Diaz15DeepNNwindEnrgyPred][Diaz et al. 2015: Deep Neural Networks Wind Energy Frcst]]
+********* [[cite:Hu15ContinRBMdeepNNWindSpdFrcstHK][Hu et al. 2015: Continuous RBM Based deep NN Wind Spd Frst]]
+********* [[cite:Dalto15deepNNultraShrtWindSpdPred][Dalto et al. 2015: RBM deep NN wind spd frcst Hong Kong]]
+********* Generally: [[Probabilistic Deep Learning]]
+********* Generally: [[Deep Learning Time Series Prediction]]
+********* [[cite:Kusiak16shareDataWind][Kusiak 2016: Share data on wind energy]]
+********* [[cite:openEnergi15machLrnSmrtGrid][openEnergi 2016: How Can Machine Lrn Smart Grid Deep Reinf Lrn]] :DpLrn:DmdRspns:Opt:ReinfLrnDp:SlfCnsmpt:
+********* [[cite:Sergio15DeepLrnWindFrcst][Sergio & Ludermir 2015: Deep Learning Wind DBN]] :DpLrn:DpBlfNtwrk:FrcstProb:FrcstWndSpd:
+********* [[cite:Bianchi15ShortTermElectric][Bianchi et al. 2015: Short Term Electric Load Echo State PCA]] :DpLrn:FrcstWndSpd:FrcstProb:
+********* [[cite:Zaytar16wthFrcstWeq2seqRNNlstm][Zaytar & Amrani 2016: Sequence Sequence Weather RNN LSTM (but fake journal?)]]
+********* [[cite:Zheng17loadFrcstRNNlstm][Zheng et al. 2017: Electric Load Forecasting RNN LSTM]] :DpLrn:FrcstDmd:RNN:LSTM:
+********* [[cite:Shi15confLSTMprecipNow][Shi et al. 2015: Convolutional LSTM RNN precip Nowcast]] (kind of RES...)
+********* [[cite:Klein15dynCNNweathPred][Klein et al. 2015: Dynamic Convolutional Layer Weather Pred]] :DpLrn:CNN:FrcstCloud:
+********* [[cite:Gensler16autoEncLSTMsolFrcst][Gensler et al. 2016: Deep Learning Solar: LSTM and Autoenc.]] :DpLrn:RNN:LSTM:FrcstPV:AutoEnc:
+********* StephanV says: MS student deep learning beat 20 years of past work (steering system)
+********* [[cite:Perera14machLrnTechRES][Perera et al. 2014: Machine Learning Techniques RES]] (really deep?)
+********* [[cite:Aler15machLrnDAsolarFrcstNWP][Aler et al. 2015: Study Machine Learning Solar Frcst (Deep?)]]
+********* [[cite:Siemens14sennFrcstsRES][Siemens 2014: Better Forecast RES Wnd/Solar/netDmd/xmssn/Deep]] :DpLrn:FrcstNtDmd:FrcstTrnsmssn:
+********* [[cite:Murgia17googleDeepMindUKgrid][Murgia & Thomas 2017: Google DeepMind National Grid AI Demand Frcst DpLrn]] :DpLrn:ReinfLrnDp:FrcstDmd:
+********* Google Blog confirms: [[http://www.evernote.com/l/AA1eARHrE_xCOo3ECrYKuPVecoNiK0ElIZk/][DeepMind next step is energy conservation]]
+********* [[cite:Veeramachaneni15cplaGrphMdlsWindRsrcEst][Veeramachaneni et al. 2015: Copula Graphical Models wind farm site]] :FrcstWndSpd:CplaGrph:
 ***** TODO <<Probabilistic Deep Learning>>
 ******* TODO [[file:energy.bib::Rippel13highDimProbDeepNN][Rippel & Adams 2013: High Dimensional Probability]]: invertible, deep learning
 ******* [[cite:Pathak15cnstrnStructCNN][Pathak et al. 2015: Constrained conv NN prob output]]
-******* DONE [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]
+***** TODO [[http://lamda.nju.edu.cn/weixs/project/CNNTricks/CNNTricks.html][Must Know Tips/Tricks in Deep Neural Networks]]
+******* [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]
 ******* [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]]
 ******* [[cite:Wu16probSTwindPowRNNlstm][Wu et al. 2016: Probabilistic Wind Pow Frcst RNN LSTM regimes via clust(?)]]
 ******* [[cite:Zhang15windSpdFrcstPDBM][Zhang et al. 2015: Predictive Deep Boltzmann Mach. Wind Spd Frcst]]
 ******* [[cite:Malhotra15lstmAnomDetTS][Malhotra et al. 2015: LSTM TimeSer Anom. Det: Kalman could be Copula]]
 ******* [[cite:Yu17gnrcTrafFrcstExtrnRNNlstm][Yu et al. 2017: Deep Learning Generic Extrm Traffic RNN LSTM]]
+******* [[file:energy.bib::Laptev17tsExtrmFrcastNNuber][Laptev et al. 2017: Time Extreme Event LSTM Uber]]
 ***** TODO <<Deep Learning Time Series Prediction>>
 ******* [[cite:Sergio15DeepLrnWindFrcst][Sergio & Ludermir 2015: Deep Learning Wind DBN]]
 ******* [[cite:Zhang15windSpdFrcstPDBM][Zhang et al. 2015: Predictive Deep Boltzmann Mach. Wind Spd Frcst]]
@@ -2137,6 +2183,7 @@ Scott
 ********* Deep Learning for Natural Language Processing (Richard Socher), tutorial video
           In: [[Deep Learning School, Stanford, 2016]]
           Slides w/ my Notes: [[cite:DeepLrnSchool2016_slides][Deep Learning School 2016: Slides]]
+********* [[file:energy.bib::Laptev17tsExtrmFrcastNNuber][Laptev et al. 2017: Time Extreme Event LSTM Uber]]
 ********* DONE [[cite:Freitas15MachLrnClass][Freitas 2015: Machine Learning Class (basic + RNN LSTM, Reinf Lrn)]]
 ********* DONE [[cite:Marino16bldngLdFrcstDeepNN][Marino et al. 2016: Building Load Frcst, LSTM RNN]]
 ********* TODO [[cite:Fridman17deepLrnSelfDrvCarClass][Fridman 2017 Deep Lrn SelfDrv Cars Class. Nice RNN slides, etc.]]
@@ -2183,6 +2230,18 @@ Scott
 ******* [[cite:Braun16windFrcstRadGrad][Braun 2016: Multi Regional Wind]]
 ******* [[cite:Zhang16detProbIntrvVari][Zhang et al. 2016: Deterministic]] interval, variational
 ******* [[cite:Song16elecCnsmptFrcstELM][Song et al. 2016: Multivariate Extreme Learning Machine]]
+***** <<Convolutional Neural Networks>>
+******* [[cite:Klein15dynCNNweathPred][Klein et al. 2015: Dynamic Convolutional Layer Weather Pred]]
+******* [[file:energy.bib::Pavlus20gaugeEquivNN][Pavulus 2020: Gauge equivalent CNNs]] (understands manifolds)
+******* [[cite:Song15end2endDeepLnSpchRecog][Song & Cai 2015: End 2 end spch recog. CNN, no MFCC]]
+******* [[cite:Trigeorgis16adieuFeatsSpchEmotRecog][Trigeorgis et al. 2016: Adieu features? spch emot. lrn CNN]]
+******* [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]]
+******* [[cite:Zhou16recurCNNcntinPain][Zhou et al. 2016: Recurrent Convolutional Neural Pain Est.]]
+******* TODO [[cite:Stevie12SpatiaFrcstLoad][Stevie 2012: Spatial Forecasting grid planning.  Feats for CNN?]]
+******* [[cite:Deng12deepLnr3arch][Deng 2012: Three Deep Learning Architectures, autoenc, DBN, CNN]]
+******* TODO [[http://lamda.nju.edu.cn/weixs/project/CNNTricks/CNNTricks.html][Must Know Tips/Tricks in Deep Neural Networks]]
+******* TODO [[http://lamda.nju.edu.cn/weixs/project/CNNTricks/CNNTricks.html][Must Know Tips/Tricks in Deep Neural Networks]]
+******* [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]]
 ***** [[Deep Regime Learning]]
 ***** [[Neural Net Activation Functions]]
 ***** see also: [[Feature Construction]]
@@ -2229,6 +2288,8 @@ Scott
   Proposed way of representing knowlege in a more interpretable and data-efficient way than [[Deep Learning]] neural nets.
 
 *** TODO [[file:energy.bib::Battaglia18biasDpLrnGraphNet][Battaglia et al.: Relational bias, deep lrn, graph networks]] (perhaps, the big scene setting paper to read, has code)
+
+*** also [[Dependence Graph Learning]]
 
 * Categorical Encoding
 
@@ -2288,43 +2349,6 @@ Scott
 ******* [[Stability Feature Selection]]
 *** <<GLM performance metrics>>
 ***** [[Deviance]]
-* <<Deep Learning in Energy Systems>>
-*** [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]    :DpLrn:FrcstDmd:
-*** TODO [[cite:Busseti12deepLrnTimeSer][Busseti et al. 2012: Deep Learning Time Series Modeling (Demand frcst, RNN best)]] :DpLrn:RNN:FrcstDmd:
-*** TODO [[cite:Sogabe16optRESdpLrn][Sogabe et al. 2016: Optimization RES Deep Frcst Net]] :DpLrn:FrcstNtDmd:RBMC:Opt:
-*** [[cite:Vu15solarFrcstIBMmachLrn][Vu 2015: Machine IBM US DOE solar/demand/wind frcst Deep]] :DpLrn:FrcstNtDmd:SlfCnsmpt:MltiNWP:OffstObs:
-*** [[cite:Wu16probSTwindPowRNNlstm][Wu et al. 2016: Probabilistic Wind Pow Frcst RNN LSTM regimes via clust(?)]] :DpLrn:RNN:LSTM:FrcstProb:RgmLrn:
-*** [[cite:Zhang15windSpdFrcstPDBM][Zhang et al. 2015: Predictive Deep Boltzmann Mach. Wind Spd Frcst]] :DpLrn:PDBM:FrcstWndSpd:FtLrn:FrcstProb:
-*** [[cite:Tao14WindPowPredPattrnDeepLrn][Tao et al. 2014: Wind pow prediction pattern deep learn]] :DpLrn:FrcstWndPow:PDBM:FtLrn:FrcstProb:
-*** [[cite:Khodayar17RoughDeepNNShrtWndSpdFrcst][Khodayar et al. 2017: Rough Deep Neural Wind Spd Frcst]]
-*** [[cite:Khodayar15RobustDeepNNwindSpdPred][Khodayar & Teshnehlab 2015: Robust Deep NN Wind Spd Frcst]]
-*** TODO [[cite:Ghaderi17DeepLrnSpatTempFrcstWindPow][Ghaderi et al. 2017: Deep Wind Pow Spat Temp Frcst TensorFlow code]]
-*** code example (weather prediction): [[https://hub.docker.com/r/claytantor/tensorflow-lstm-regression/][tensorflow-lstm-regression]] what weather?
-
-*** [[cite:Wan16WindSpdDAfrcstDeepFeatLrn][Wan et al. 2016: Day Ahead Prediction Wind Speed Deep Feat Lrn]]
-*** TODO [[cite:DiazVico17deepNNwindSolEnrgyPred][Diaz--Vico et al. 2017: Deep NN Wind and Solar Energy Frcst]]
-*** [[cite:Diaz15DeepNNwindEnrgyPred][Diaz et al. 2015: Deep Neural Networks Wind Energy Frcst]]
-*** [[cite:Hu15ContinRBMdeepNNWindSpdFrcstHK][Hu et al. 2015: Continuous RBM Based deep NN Wind Spd Frst]]
-*** [[cite:Dalto15deepNNultraShrtWindSpdPred][Dalto et al. 2015: RBM deep NN wind spd frcst Hong Kong]]
-*** Generally: [[Probabilistic Deep Learning]]
-*** Generally: [[Deep Learning Time Series Prediction]]
-*** [[cite:Kusiak16shareDataWind][Kusiak 2016: Share data on wind energy]]
-*** [[cite:openEnergi15machLrnSmrtGrid][openEnergi 2016: How Can Machine Lrn Smart Grid Deep Reinf Lrn]] :DpLrn:DmdRspns:Opt:ReinfLrnDp:SlfCnsmpt:
-*** [[cite:Sergio15DeepLrnWindFrcst][Sergio & Ludermir 2015: Deep Learning Wind DBN]] :DpLrn:DpBlfNtwrk:FrcstProb:FrcstWndSpd:
-*** [[cite:Bianchi15ShortTermElectric][Bianchi et al. 2015: Short Term Electric Load Echo State PCA]] :DpLrn:FrcstWndSpd:FrcstProb:
-*** [[cite:Zaytar16wthFrcstWeq2seqRNNlstm][Zaytar & Amrani 2016: Sequence Sequence Weather RNN LSTM (but fake journal?)]]
-*** [[cite:Zheng17loadFrcstRNNlstm][Zheng et al. 2017: Electric Load Forecasting RNN LSTM]] :DpLrn:FrcstDmd:RNN:LSTM:
-*** [[cite:Shi15confLSTMprecipNow][Shi et al. 2015: Convolutional LSTM RNN precip Nowcast]] (kind of RES...)
-*** [[cite:Klein15dynCNNweathPred][Klein et al. 2015: Dynamic Convolutional Layer Weather Pred]] :DpLrn:CNN:FrcstCloud:
-*** [[cite:Gensler16autoEncLSTMsolFrcst][Gensler et al. 2016: Deep Learning Solar: LSTM and Autoenc.]]       :DpLrn:RNN:LSTM:FrcstPV:AutoEnc:
-*** StephanV says: MS student deep learning beat 20 years of past work (steering system)
-
-*** [[cite:Perera14machLrnTechRES][Perera et al. 2014: Machine Learning Techniques RES]] (really deep?)
-*** [[cite:Aler15machLrnDAsolarFrcstNWP][Aler et al. 2015: Study Machine Learning Solar Frcst (Deep?)]]
-*** [[cite:Siemens14sennFrcstsRES][Siemens 2014: Better Forecast RES Wnd/Solar/netDmd/xmssn/Deep]] :DpLrn:FrcstNtDmd:FrcstTrnsmssn:
-*** [[cite:Murgia17googleDeepMindUKgrid][Murgia & Thomas 2017: Google DeepMind National Grid AI Demand Frcst DpLrn]] :DpLrn:ReinfLrnDp:FrcstDmd:
-*** Google Blog confirms: [[http://www.evernote.com/l/AA1eARHrE_xCOo3ECrYKuPVecoNiK0ElIZk/][DeepMind next step is energy conservation]]
-*** [[cite:Veeramachaneni15cplaGrphMdlsWindRsrcEst][Veeramachaneni et al. 2015: Copula Graphical Models wind farm site]] :FrcstWndSpd:CplaGrph:
 * <<Feature reduction>>
 
   Making feature dimension smaller, either w/ feature selection or
@@ -2417,8 +2441,7 @@ Scott
 ******* PLSR doesn't preserve full predictive info
         [[cite:Li09predInfSuffDimRed][Li 2009: Exploiting predictor domain info in sufficient dim red]]
         See also: [[Sufficient Dimension Reduction]]
-******* <<PLSR for Graph Learning>>
-        PLSR (not?) good for graph learning
+******* <<PLSR for Graph Learning>> (not?) good for graph learning
 ********* [[cite:Kramer09gaussGraphModelsLasso][Kraemer et al. 2009: Regularized Gaussian Graph LASSO]]
 ********* [[cite:Tondel11locLinClustPLS][Toendel et al. 2011: Hierarchical Cluster Partial Least Squares]]
 ******* [[cite:Xu07optWgtPLS][Xu et al. 2007: Optimized sample-weighted partial least squares]]
@@ -2897,7 +2920,7 @@ Scott
 ************* [[File:energy.bib::stogbauer04leastdepmutinfo][Stoegbauer et al. 2004: least dependent component]]
 ************* [[JIDT: Java Information Dynamics Toolkit]]: Kraskov extensions, in Java
 ************* In Matlab: https://www.mathworks.com/matlabcentral/fileexchange/50818-kraskov-mutual-information-estimator
-************* [[file:energy.bib::Gao15mutInfoStrongDep][Gao et al. 2015: Efficient Estimation Mutual]]: Kraskov variant better w/ high dep. struct
+************* [[file:energy.bib::Gao15mutInfoStrongDep][Gao et al. 2015: Efficient Estimation Mutual]]: Good tutorial, Kraskov variant for high dep. struct
 ************* [[file:energy.bib::Doquire11mutInfMissDat][Doquire & Verleysen 2011: Mutual]] inf featsel: set net KSG ests. to zero
 ************* [[file:energy.bib::Keller15EstMutualInfStrm][Keller et al. 2015: Estimating Mutual Information Data Streams]] (variable lag and window width)
 ************* <<Kraskov MI estimator with missing features>>
@@ -2974,7 +2997,7 @@ Scott
 *********************** if use milca, then must relate mi(x,y,z) to mi(z;x,y)
 ********************* no dendrogram for spectral clust but easy #clust exhaust srch
 ********************* dominant mi clique used to partition: [[file:energy.bib::zhang11graphfeatsel][zhang & hancock 2011: graph based approach feature selection]]
-********************* markov blanket idea?  [[file:energy.bib::zheng11featselhimdimmi][zheng & kwoh 2011: feature subset selection]]
+********************* markov blanket idea?  [[File:energy.bib::zheng11featselhimdimmi][Zheng & Kwoh 2011: Feature Subset Selection]]
 ********************* test for max mi along all dendrogram frontiers
 *********************** can't overestimate if do right since assuming independence
 *********************** algorithm?
@@ -3179,6 +3202,7 @@ Scott
 *************** not too sensitive to k but matters for featsel: [[file:energy.bib::Doquire12compMutInfoFeatSel][Doquire et al. 2012: Comparison Multivariate Mutual]]
 *************** mentions 2 k selection algs for featsel: [[file:energy.bib::Doquire12compMutInfoFeatSel][Doquire et al. 2012: Comparison Multivariate Mutual]]
 ************* TODO see if MILCA ICA est uses eq. a3 in [[File:~/work/dtu/doc/energy.bib::kraskov04estmutinfknn][Kraskov et al. 2004: estimating]]
+************* also [[Kraskov-like MI in Python]]
 *********** [[file:energy.bib::Khan07perfMutInfoShortNoise][Khan et al. 2007: Relative]] (MI from KDE, Kraskov KNN and other dependence measures compared)
 *********** MI affected by class imbalance: [[cite:Straube14infreqPerfEstImbal][Straube & Krell 2014: How]] infreq. events perf. estimation
 *********** [[file:energy.bib::sales11parmutinfoest][sales & romualdi 2011]] parmigene mut info est.
@@ -3286,15 +3310,22 @@ Scott
               - [[file:~/doc/energy.bib::calsaverini09copulainfo][calsaverini & vicente 2009]]
               - [[file:~/doc/energy.bib::poczos10rankestreninfo][poczos et al. 2010: rego]]
 *********** TODO mutual information dimension reduction
-*********** R packages
-************* [[http://crantastic.org/packages/aami][aamin {aami}]]
-************* [[http://cran.r-project.org/web/packages/minet/][minet]]
-************* [[http://cran.r-project.org/web/packages/infotheo/index.html][infotheo]] (don't featsel but author's thesis about info theory featsel)
-*********** Matlab functions
-************* Matlab stat toolbox information function
-************* [[file:energy.bib::Kraskov04EstMutInfKNN][Kraskov et al. 2004: Estimating]]
-************* [[JIDT: Java Information Dynamics Toolkit]]: Kraskov extensions
-************* [[file:energy.bib::Szabo13infoTheoEstTlbx][Szabo 2013: Information Theoretical Estimators ITE Toolbox]] I think.  Matlab, many, many info functions and subspace models
+*********** <<Software for Mutual Information>>
+************* R packages
+*************** [[http://crantastic.org/packages/aami][aamin {aami}]]
+*************** [[http://cran.r-project.org/web/packages/minet/][minet]]
+*************** [[http://cran.r-project.org/web/packages/infotheo/index.html][infotheo]] (don't featsel but author's thesis about info theory featsel)
+************* Matlab functions
+*************** Matlab stat toolbox information function
+*************** [[file:energy.bib::Kraskov04EstMutInfKNN][Kraskov et al. 2004: Estimating]]
+*************** [[JIDT: Java Information Dynamics Toolkit]]: Kraskov extensions
+*************** [[file:energy.bib::Szabo13infoTheoEstTlbx][Szabo 2013: Information Theoretical Estimators ITE Toolbox]] I think.  Matlab, many, many info functions and subspace models
+************* <<Kraskov-like MI in Python>>
+*************** [[https://github.com/gregversteeg/NPEET][GitHub - gregversteeg/NPEET: Non-parametric Entropy Estimation Toolbox]]
+*************** [[https://github.com/BiuBiuBiLL/NPEET_LNC][GitHub - BiuBiuBiLL/NPEET_LNC: local non-uniformity correction for mutual inf...]]
+*************** [[https://github.com/pwollstadt/IDTxl][GitHub - pwollstadt/IDTxl]]
+*************** [[JIDT: Java Information Dynamics Toolkit]]
+
 ********* <<Distance Covariance>>
           Maybe as good as multivariate MI but faster and w/ no distance bias?
 *********** [[file:energy.bib::Szekely09brownDistCov][Szekely et al. 2009: Brownian Distance Covariance]]
@@ -3335,8 +3366,8 @@ Scott
 ***************** Reference: [[file:energy.bib::Brown12condLikInfoFeatSel][Brown et al. 2012: Conditional]] lik info feat sel
 ***************** is for discrete variables
 *************** [[https://code.google.com/p/information-dynamics-toolkit/wiki/ImplementedMeasures][information-dynamics-toolkit]] has a matlab interface to Java library
-*************** [[http://www.cs.tut.fi/~timhome/tim-1.0.2/tim.htm][TIM Information Theory Library]]
-                <<TIM Information Theory Library>>
+*************** <<TIM Information Theory Library>>
+                From: [[http://www.cs.tut.fi/~timhome/tim-1.0.2/tim.htm][TIM Information Theory Library]]
 
                 I'm not sure exactly how to use this because it expects
                 repeated measurement ensembles and matching x,Y,Z PMI
@@ -5062,6 +5093,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ***** [[file:energy.bib::AlStouhi11AdaptBoostXfrLrn][Al-Stouhi & Reddy 2011: Adaptive]] xfr lrn
 ***** [[cite:Karpathy14featLrnEscpdsBlog][Karpathy 2014: Feature Learning Escapades]] (Transfer learning)
 ***** [[cite:Sinn14EnergyDemandFrcst][Sinn 2014: Energy Demand Forecasting slides, maybe net demand]]
+***** [[file:energy.bib::Vogt19windPowFrcstDpLrnXfer][Vogt et al. 2019: Wind Pow Forecast Deep Lrn, Xfer Lrn]]
 ***** tons of papers on this...
 *** see: [[Adaptive varying coefficient models]]
 *** see: [[Adaptive Quantile Regression]]
@@ -6212,6 +6244,7 @@ sera
 ******* [[cite:Veeramachaneni15cplaGrphMdlsWindRsrcEst][Veeramachaneni et al. 2015: Copula Graphical Models wind farm site]]
 ******* [[cite:Hardesty15windFarmSiteCopula][Hardesty 2015: Siting Wind Farms Graph Copula]]
 ******* see [[Copula Processes]]
+******* see [[Dependence Graph Learning]]
 ***** [[Dependence Learning]]
 ***** <<Copula vs. Gaussian or Student-T Regression>>
 ******* [[cite:Solin15StateSpaceStudentTprocR][Solin & Saerkkae 2015: State Space Methods Efficent Student-T Rgrssn]]
@@ -6221,6 +6254,7 @@ sera
 ***** see [[Factor/Vine Copulas]]
 ***** see [[Copula changepont detection]]
 ***** see [[Johnson System Distributions]] for a copula-like thing w/ no rank transform
+***** see [[Gaussianization]] (for Gaussian copula intermediate processing)
 ***** [[cite:Kaut14copulaMultiVarHeurist][Kaut 2014]] copula heuristic scen gen, multivar
 ***** <<Time-varying Copulas>>
 ******* [[cite:Pircalabu17priceVolRiskWndTrdCpla][Pircalabu et al. 2017: Joint Price/Vol Wind Trade Copula]]
@@ -7031,6 +7065,7 @@ variables will be preferred, when possible.
 ***** [[file:energy.bib::Mohrlen19selectRESfrcstRecmnd][Mohrlen et al. 2019: Recommended Prctcs RES frcst select]]
 ***** [[cite:Bessa12adaptQuantCopulaFrcst][Bessa et al. 2012: Time Adaptive Quantile Copula]]
 ***** [[file:energytop.org::*Classification%20Metrics%20under%20Class%20Imbalance][Classification Metrics under Class Imbalance]]
+***** [[file:energy.bib::Willmott05maeVsRmse][Willmott & Matsuura 2005: Advantages MAE RMSE]] MAE better for climate model compare
 ***** [[cite:Chai14rmseOrMae][Chai & Draxler 2014: Root RMSE MAE]]: when RMSE is/isn't good
 ***** [[file:energy.bib::Gale08cholesky][Gale 2008: Cholesky Decomposition]] colinearity, forecast error attribution
 ***** [[http://www.eumetcal.org/resources/ukmeteocal/verification/www/english/msg/ver_prob_forec/index.htm][EU page]] on probabilistic forecasts (and [[http://www.eumetcal.org/resources/ukmeteocal/verification/www/english/courses/msgcrs/index.htm][on general forecast verification]])
@@ -7693,228 +7728,234 @@ Scott
 *** [[http://repository.tudelft.nl/consumption/idcplg%3fidcservice%3dget_file&revisionselectionmethod%3dlatestreleased&ddocname%3d025320][kernel machines better than neural net]] ([[fann]]) for short term wind prediction
 ***** also, kernel machines easier to train
 
-*** Wind forecasting features
-***** SODAR
-******* lawrence livermore study (llnl): [[tall turbine resource assessment & forecasting]]
-******* cost: $50k-$160k, depending upon model (a sales agreeement)
-******* [[file:energy.bib::antoniou03sodarmeas][antoniou et al. 2003: theory of sodar measurement techniques]]
-********* temporal sampling rate ~ 10 minutes
+*** TODO <<Wind Power Forecasting>>
+    
+    TODO: collect wind power forecasting stuff and put it in here
 
-          typically averaged over 10 minutes whereas in-situ instruments
-          (especially ultra-sonic anemometers) yield information with a
-          temporal resolution of down to 0.03 seconds
+***** [[file:energy.bib::Vogt19windPowFrcstDpLrnXfer][Vogt et al. 2019: Wind Pow Forecast Deep Lrn, Xfer Lrn]]
 
-******* [[http://www.boisestate.edu/news/update/2008/07232008/index.html][boise state sodar]]
-******* sodar/lidar used for power curves: [[http://www.iop.org/ej/abstract/1755-1315/1/1/012059][remote sensing used for power curves]]
-***** <<Forecasting Features>>
-******* <<Wind power features besides spd/dir>>
+***** <<Wind Power forecasting features>>
+******* SODAR
+********* lawrence livermore study (llnl): [[tall turbine resource assessment & forecasting]]
+********* cost: $50k-$160k, depending upon model (a sales agreeement)
+********* [[file:energy.bib::antoniou03sodarmeas][antoniou et al. 2003: theory of sodar measurement techniques]]
+*********** temporal sampling rate ~ 10 minutes
+
+            typically averaged over 10 minutes whereas in-situ instruments
+            (especially ultra-sonic anemometers) yield information with a
+            temporal resolution of down to 0.03 seconds
+
+********* [[http://www.boisestate.edu/news/update/2008/07232008/index.html][boise state sodar]]
+********* sodar/lidar used for power curves: [[http://www.iop.org/ej/abstract/1755-1315/1/1/012059][remote sensing used for power curves]]
+******* <<Forecasting Features>>
+********* <<Wind power features besides spd/dir>>
+*********** see, maybe merge: [[*Physics-based%20power%20curve%20features][Physics-based power curve features]]
+*********** see, maybe merge: [[Relationship between NWP forecast variables and forecast error]]
+*********** see, maybe merge: [[Feature selection for probabilistic forecasts]]
+*********** Met model stability params ([[File:energy.bib::hagemann09vextraptemp][Hagemann et al. 2009: uncertainty]] (temp,windspeed,stabilty param(z?)))
+*********** LIDAR turbulence measures
+*********** LIDAR @ different heights
+*********** [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]] QR wind pow
+*********** [[file:energy.bib::Gallego11spdDirWindPowDyn][Gallego et al. 2011: Influence]] spd/dir on variability
+*********** Stability/turbulence: [[file:energy.bib::Wharton12atmStabWindPow][Wharton & Lundquist 2012: Atmospheric]] stab wind pow
+*********** [[file:energy.bib::Heller14PredWindPowGtAcc][Heller 2014: Predicting Wind Power Greater Accuracy]] stability & power curve, shading
+*********** [[file:energy.bib::Juban07ProbWndFrcstFeatSelKDE][Juban et al. 2007: Probabilistic]] frcst: MI feat sel test humidity, etc.
+*********** Hagemann paper
+*********** [[file:energy.bib::Lee14PowerCurveEstimation][Lee et al. 2014: Power Curve Estimation]] like (density, turbulence intensity wind shear)
+*********** Erik Berg (Norsewind, Vindtekknikk) variance paper
+*********** [[file:energy.bib::Reikard08tempStateRampWind][Reikard 2008: Using]] temp and state trans: uses log-log transforms
+*********** see also: [[Relationship between NWP forecast variables and forecast error]]
+*********** [[file:energy.bib::Wan10equivWindPowCurve][Wan et al. 2010: Development Equivalent Wind]] (density didn't matter for NN)
+*********** [[cite:Sanusi16demandWindFrcstPttrn][Sanusi & Corne 2016: Improving Demand Wind Frcst Pattern Match]]
+*********** see: [[Effect of precipitation]]
+*********** see: [[Net Demand Forecast]]
+*********** see: [[Combined wind and load forecasting]]
+*********** 1st derivatives: may learn that there's a ramp near the end of the input window
+************* I used this for APG stuff (swinging doors ramps)
+************* [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006]] compare QR used it
+*********** median filtered derivatives?
+************* avoid confusion from dropouts?
+************* Sum of inputs still captures loss in average power from dropout
+*********** number of dropouts (roughly: sum(median(x)-x))
+*********** Weather PCA: [[file:energy.bib::Lange03uncertFrcstMetSit][Lange & Heinemann 2003: Relating]]
+*********** Risk index: [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]] QR
+*********** Friction velocity:  [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]]
+*********** Power std: [[cite:Mittelmeier17powStdRatioWake][Mittelmeier et al. 2017: SCADA data pow std ratio wake]]
+*********** Air Density (lots of papers)
+*********** Features for ramp forecasts: [[file:energy.bib::Ferreira11rampFrcstSurv][Ferreira et al. 2011]]
+*********** Weather regimes and ramps: [[file:energy.bib::Couto14weathRegimeRamps][Couto et al. shed: Impact Weather Regimes]] (LNEG, bogus)
+*********** Climatology best for complex terrain not resolved by NWP: [[file:energy.bib::Gneiting08multiVarEnsAssess][Gneiting et al. 2008: Assessing]]
+*********** Spread of time lagged ensembles: [[cite:Pinson04OonlinePredRiskWind][Pinson & Kariniotakis 2004]]
+*********** Ensemble mean and spread (prob. frcst)
+            param (prob. frcst): [[file:energy.bib::Hagemann09vExtrapTemp][Hagemann et al. 2009: Uncertainty]]
+*********** point forecast lags and empirical quantiles: [[file:energy.bib::Anastasiades13probFrcstWindVarIdxFeats][Anastasiades & McSharry 2013: Quantile]] variability features
+************* turbulence intensity: [[file:energy.bib::Kun14windIntrvlClustSOM][Kun & Jihong 2014: Wind SOM BP]]
+************* turbulence intensity: [[file:energy.bib::Roy14perfPredPitchTurbineVar][Roy 2014: Performance]] pred pitch turb var
+*********** [[Concept drift detection]] (so can broaden prob forecast uncertainty)
+*********** Stability/turbulence: [[file:energy.bib::Wharton12atmStabWindPow][Wharton & Lundquist 2012: Atmospheric]] stab wind pow
+*********** Pressure and power total variation: [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]] quantile pow frcst
+*********** Kalman filter
+************* input could be Kalman output
+************* NN could predict error from Kalman output or just total
+************* [[http://www.soe.ucsc.edu/~taoswap/GroupMeeting/UnscentedSeries_DanYuan_2004_11_17.ppt][Unscented Kalman Filter Slides]]
+*********** Autotrain of NN's
+************* [[file:energy.bib::Yan12autoNNtsFrcst][Yan 2012: Toward Automatic Time]] auto NN train
+*********** also: [[Physics-based power curve features]]
+*********** also: [[Relationship between NWP forecast variables and forecast error]]
+*********** also: [[Summary of sensor location picking papers]]
+*********** also: [[Power curve learning]]
+*********** also: [[Feature Selection]]
+******* <<Lag Selection Enablers>>
+********* another explanation for why lags might make sense: [[file:energy.bib::lu07lagensemble][lu et al. 2007: short range numerical]]
+********* wind speed
+          lags (delays) depend upon /wind speed/ and pressure difference: [[file:energy.bib::bpa07inhourbalancerqt][bpa: in hour balancing]]
+
+          ==> wind speed is a feature would help nn pick the right delay in
+          a delay window.
+
+*********** note bpa gorge/ lags in [[file:energy.bib::bpa07inhourbalancerqt][bpa: in hour balancing requirements wind]]
+*********** TODO is this forecasted wind, wind at site or wind at measurement?  ask mark
+********* pressure difference
+          lags (delays) depend upon wind speed and /pressure difference/: [[file:energy.bib::bpa07inhourbalancerqt][bpa: in hour balancing]]
+
+          ==> delta pressure as a feature would help nn pick the right delay in
+          a delay window.  it would also be a low-dim feature, unlike
+          correlation vs. lag
+********* correlation / mutual information vs. lag
+
+          the correlation/semblance/mi whatever for a given bin helps nn pick
+          the right delay in a delay window.  this could be a pretty high dim
+          feature unless subsample or just give correlation at forecast horizon
+          lag only (and maybe no other lagged wind speed measurements either?)
+
+********* wind direction?
+*********** if it's blowing the other direction, then no advection
+*********** but speed changes can move /opposite/ to wind dir: [[file:energy.bib::schlueter86windarraypred][schlueter et al. 1986: wind array power]]
+********* should there be a separate "lag estimator?"
+*********** output is either a vector of "lag confidences" or predicted lag
+*********** is observation location specific
+*********** train on "max mutual information between plant wind speed and obs"
+************* max correlation would be more temporally precise (shorter sliding window)
+************* mutual information lag selection, one of many examples:
+              [[file:~/work/dtu/doc/energy.bib::estevez09normmutinfofeatsel][estevez et al. 2009: normalized mutual information feature selection]] (classification)
+*********** could almost be "convolutive cca"
+************* delays adjusted jointly for max correlation w/ farm
+************* would bad observations screw up cca, though?
+********* [[lasso feature selection]]
+********* location ordering
+*********** [[file:energy.bib::deluna05predictspatiotemp][de luna & genton 2005: predictive spatio temporal]]
+*********** [[file:energy.bib::hering07modelshorttermwindpred][hering 2007: models for short]] (relevant to de luna and genton method)
+********* [[File:energy.bib::renaud05wvltfiltpred][Renaud et al. 2005: Wavelet]] uses Haar, good explanation of lag stuff
+********* [[file:energy.bib::Genton07spaceTimeCovMatrixApprox][2007: Separable]] (separable spatial and temporal covariance matrices)
+********* [[file:energy.bib::Ombao08evCoherNonStat][Ombao & Van 2008: Evolutionary Coherence Nonstationary Signals]]
+********* [[Partial Mutual Information Estimation]] often used to select lags
+********* [[file:energy.bib::Luna06partMutInfoNNfeatsel][Luna et al. 2006: Partial]] mutual info NN featsel
+********* [[file:energy.bib::Wibral15BitsBrainsTE][Wibral et al. 2015: Bits Brains Biologically Inspired Computing]] (TE featsel)
+
+********* Multivariate AR lag selection: [[File:energy.bib::winker00multivarlagsel][Winker 2000: Optimized Multivariate Lag Structure Selection]]
+********* xcorr handling missing features w/ permutation sig. test: [[file:energy.bib::simpson01estsigxcorrmiss][simpson et al. 2001: estimation and significance]]
+********* improve permutation test: [[file:energy.bib::francois07resampparamfreefeatsel][françois et al. 2007: resampling methods for]]
+********* Might want to do a [[Wavelet Time Series Model]]
+******* Wind spatio-temporal patterns
+        <<Wind spatio-temporal patterns>>
+********* [[file:energy.bib::alkhouli05gustfrntdettmplt][alkhouli & debrunner 2005: gust front detection]]
+********* [[file:energy.bib::Genton07spaceTimeCovMatrixApprox][2007: Separable]] (separable spatial and temporal covariance matrices)
+********* [[file:energy.bib::Ombao08evCoherNonStat][Ombao & Van 2008: Evolutionary Coherence Nonstationary Signals]]
+********* Spatio-temporal with uncertainty: [[file:energy.bib::Lave13solarVarWvlt][Lave et al. 2013: Wavelet Based Variability]]
+
+********* [[file:energy.bib::Keune14multivarProbEnsFrcst][Keune et al. 2014: Multivariate]] ens. weath forecast (spatio-temporal)
+
+********* [[file:energy.bib::Lenzi16spatTempWndProbFrcst][Lenzi et al. 2016: Spatial]] temporal, probabilistic latent variables
+********* [[file:energy.bib::Lave13solarVarWvlt][Lave et al. 2013: Wavelet Based Variability]] (spatio-temporal w/ uncertainty)
+********* [[file:energy.bib::Foley12methAdvWindPowFrcst][Foley et al. 2012: Current]] methods and adv in wind pow frcst
+********* [[file:energy.bib::Pinson13windPowFrcstOpDec][Pinson & others 2013: Wind]] en. frcst operational mgmt
+********* [[cite:Turbelin09wavletWindXcorrNeural][Turbelin et al. 2009: Wavelet ANN]]
+********* also see: [[PCA/PLS for spatio-temporal pattern recognition]]
+******* surface stations
+********* usa
+*********** asos
+************* 1 and 5 minute [[http://www.ncdc.noaa.gov/oa/climate/climatedata.html#asosminutedata][data]]
+************* iowa's [[http://mesonet.agron.iastate.edu/request/asos/1min.phtml][data]], they say in a better format
+************* [[http://www.itl.nist.gov/div898/winds/asos-wx/asos-wx.htm][matlab]] for reading asos-wx data
+************* [[http://www.nws.noaa.gov/asos/pdfs/aum-toc.pdf][asos user's guide]]
+************* nasa's asos [[http://gcmd.nasa.gov/records/gcmd_gov.noaa.ncdc.c00387.html][archive]]
+********* [[file:energy.bib::Genton07spaceTimeCovMatrixApprox][2007: Separable]] (separable spatial and temporal covariance matrices)
+******* satellite
+********* sar wind speed measurements
+*********** intro presentation: [[http://www.coaaweb.org/papers/coaa_032302_present_pablo.pdf][development of sar-derived ocean surface winds at noaa/nesdis]]
+************* is probably the answrs system
+************* uses "normalized radar cross section" (nrcs), the receive power from one angle
+************* mentions vv, which is one the mode used in norsewind ([[file:energy.bib::oldroyd08norsewindrep1][oldroyd 2008: norsewind year periodic report]])
+*********** sar fact sheet (good error explanation): [[file:energy.bib::cls09windsarfactsht][cls 2009: soprano cls wind]]
+************* implications for safewind and radar@sea?
+************* use radar@sea rain data to correct sar wind speed?       :idea:
+************* errors ==> need to 3 state regression for <2m/s, 2m/s<speed<20m/s, >20m/s
+************* atmoshperic stability affects accuracy
+*************** use nwp to generate sar confidence?                    :idea:
+************* bad near coast, where you'd want to use sar for wind!
+*************** spatially dependent sar confidence or feature selection :idea:
+************* confidence estimation (my thoughts)                      :idea:
+*************** can't know true answer for most of ocean (no met mast, lidar, etc.)
+*************** no truth ==> hard to estimate confidence or reliability
+*************** instead, must use mutual info or correlation w/ the thing you're predicting (partial corr?  joint?)
+*************** related to predictability predicition in safewind (but for sar, which isn't in there?)
+*********** answrs is used by riso for norsewind (p. 23, [[file:energy.bib::oldroyd08norsewindrep1][oldroyd 2008: norsewind year periodic report]])
+************* answrs white paper: [[file:energy.bib::monaldo03sarwindanswrs][monaldo et al. 2003: sar measurement ocean surface winds]]
+              the white paper describing theory in the software doc:
+              [[http://sd-www.jhuapl.edu/fermi/sar/stormwatch/answrs_v5.pdf][answrs: apl/noaa sar wind retrieval system software documentation version 5.0]]
+*********** asar from envisat used by cls for norsewind (p. 24 of  [[file:energy.bib::oldroyd08norsewindrep1][oldroyd 2008: norsewind year periodic report]])
+*********** [[http://earth.esa.int/ers/eeo4.10075/ers1.3.html][esa earthnet sar design]] (is wave mode same as wind measurement?)
+********* scatterometry for wind
+*********** used in norsewind ([[file:energy.bib::oldroyd08norsewindrep1][oldroyd 2008: norsewind year periodic report]])
+*********** good [[http://www.coaps.fsu.edu/scatterometry/about/overview.php][quick explanation]]
+*********** can detect direction (sar needs help from nwp or something)
+*********** how much power returned is a function of wind speed and direction
+*********** observe from multiple angles and find speed/dir that best fits data
+************* if one beam, incident beam angles span 90 deg in ~ 5 mins, as satellite moves
+            * ==> poor spatial resolution, i suppose
+************* can be ambiguous: fixing this is called "ambiguity selection"
+************* can also get 3 simultaneous angles w/ 3 antennae, as in the [[http://earth.esa.int/ers/eeo4.10075/scatt_design.html][esa earthnet design]]
+********* SAR vs. Scatterometry
+*********** sar has higher spatial resolution
+*********** sar doesn't retrieve direction (w/o extra tricks)
+*********** sar focuses on a tight square, one angle
+          * scatterometers sweep w/ wide beams, at multiple angles (3 in [[http://earth.esa.int/ers/eeo4.10075/scatt_design.html][esa earthnet design]])
+          * is wind /speed/ accuracy about the same?
+********* SAR and Scatterometry Combination
+*********** Spatial Res. Of SAR; Direction From Low Res. Scatterometer
+********* gnss (gps, etc.)
+*********** [[file:energy.bib::cardellach03gpsrblnocnwnd][cardellach et al. 2003: mediterranean]] balloon gpsr
+********* TODO read [[File:~/proj/norsewind/doc/norsewind.org::norsewind%20publications][Norsewind Publications]] to find out how satellite imaging is going
+******* <<Relationship between NWP forecast variables and forecast error>>
+********* see [[Feature selection for probabilistic forecasts]]
 ********* see, maybe merge: [[*Physics-based%20power%20curve%20features][Physics-based power curve features]]
-********* see, maybe merge: [[Relationship between NWP forecast variables and forecast error]]
+********* see, maybe merge: [[Wind power features besides spd/dir]]
 ********* see, maybe merge: [[Feature selection for probabilistic forecasts]]
-********* Met model stability params ([[File:energy.bib::hagemann09vextraptemp][Hagemann et al. 2009: uncertainty]] (temp,windspeed,stabilty param(z?)))
-********* LIDAR turbulence measures
-********* LIDAR @ different heights
-********* [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]] QR wind pow
+
+********* e.g. height of top of shallow convection (convection cells?)
+********* [[File:energy.bib::hagemann09vextraptemp][Hagemann et al. 2009: uncertainty]] (temp,windspeed,stabilty param(z?))
+********* [[File:energy.bib::bremen07winddetprobmodelcomb][Bremen 2007: combination deterministic probabilistic]] (multi nwp)
+********* [[file:energy.bib::Vindtekknikk12stblClassWindPow][Vindtekknikk 2012: NORSEWIND WP4]] Report (turbulence classes)
+********* [[file:energy.bib::Bremen07windDetProbModelComb][Bremen 2007: Combination Deterministic Probabilistic]] ensemble spread
+********* [[file:energy.bib::Kun14windIntrvlClustSOM][Kun & Jihong 2014: Wind SOM BP]] (turbulence intensity)
+********* [[file:energy.bib::Lange02windPowShrtTrmMetCond][Lange & Heinemann 2002: Accuracy]] weather cond (weath category, press)
+********* [[file:energy.bib::Giebel05windEnsemble][Giebel et al. 2005: Wind Power Prediction Ensembles]] (turbulence)
 ********* [[file:energy.bib::Gallego11spdDirWindPowDyn][Gallego et al. 2011: Influence]] spd/dir on variability
-********* Stability/turbulence: [[file:energy.bib::Wharton12atmStabWindPow][Wharton & Lundquist 2012: Atmospheric]] stab wind pow
-********* [[file:energy.bib::Heller14PredWindPowGtAcc][Heller 2014: Predicting Wind Power Greater Accuracy]] stability & power curve, shading
-********* [[file:energy.bib::Juban07ProbWndFrcstFeatSelKDE][Juban et al. 2007: Probabilistic]] frcst: MI feat sel test humidity, etc.
-********* Hagemann paper
+********* [[file:energy.bib::Anastasiades13probFrcstWindVarIdxFeats][Anastasiades & McSharry 2013: Quantile]] wind frcst var indices
 ********* [[file:energy.bib::Lee14PowerCurveEstimation][Lee et al. 2014: Power Curve Estimation]] like (density, turbulence intensity wind shear)
-********* Erik Berg (Norsewind, Vindtekknikk) variance paper
-********* [[file:energy.bib::Reikard08tempStateRampWind][Reikard 2008: Using]] temp and state trans: uses log-log transforms
-********* see also: [[Relationship between NWP forecast variables and forecast error]]
-********* [[file:energy.bib::Wan10equivWindPowCurve][Wan et al. 2010: Development Equivalent Wind]] (density didn't matter for NN)
-********* [[cite:Sanusi16demandWindFrcstPttrn][Sanusi & Corne 2016: Improving Demand Wind Frcst Pattern Match]]
-********* see: [[Effect of precipitation]]
-********* see: [[Net Demand Forecast]]
-********* see: [[Combined wind and load forecasting]]
-********* 1st derivatives: may learn that there's a ramp near the end of the input window
-*********** I used this for APG stuff (swinging doors ramps)
-*********** [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006]] compare QR used it
-********* median filtered derivatives?
-*********** avoid confusion from dropouts?
-*********** Sum of inputs still captures loss in average power from dropout
-********* number of dropouts (roughly: sum(median(x)-x))
-********* Weather PCA: [[file:energy.bib::Lange03uncertFrcstMetSit][Lange & Heinemann 2003: Relating]]
-********* Risk index: [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]] QR
-********* Friction velocity:  [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]]
+********* [[file:energy.bib::Gneiting08multiVarEnsAssess][Gneiting et al. 2008: Assessing]] climatology best for complex terrain not resolved by NWP
+********* [[cite:Pinson09skillEnsWndPow][Pinson et al. 2009: Skill ensembles]]
+********* [[cite:Nielsen06quantRegr][Nielsen et al. 2006: Using QR tried lagged ensembles]]
+********* 
+********* stability/turbulence: [[file:energy.bib::Wharton12atmStabWindPow][Wharton & Lundquist 2012: Atmospheric]] stab wind pow
 ********* Power std: [[cite:Mittelmeier17powStdRatioWake][Mittelmeier et al. 2017: SCADA data pow std ratio wake]]
-********* Air Density (lots of papers)
-********* Features for ramp forecasts: [[file:energy.bib::Ferreira11rampFrcstSurv][Ferreira et al. 2011]]
-********* Weather regimes and ramps: [[file:energy.bib::Couto14weathRegimeRamps][Couto et al. shed: Impact Weather Regimes]] (LNEG, bogus)
-********* Climatology best for complex terrain not resolved by NWP: [[file:energy.bib::Gneiting08multiVarEnsAssess][Gneiting et al. 2008: Assessing]]
-********* Spread of time lagged ensembles: [[cite:Pinson04OonlinePredRiskWind][Pinson & Kariniotakis 2004]]
-********* Ensemble mean and spread (prob. frcst)
-          param (prob. frcst): [[file:energy.bib::Hagemann09vExtrapTemp][Hagemann et al. 2009: Uncertainty]]
-********* point forecast lags and empirical quantiles: [[file:energy.bib::Anastasiades13probFrcstWindVarIdxFeats][Anastasiades & McSharry 2013: Quantile]] variability features
-*********** turbulence intensity: [[file:energy.bib::Kun14windIntrvlClustSOM][Kun & Jihong 2014: Wind SOM BP]]
-*********** turbulence intensity: [[file:energy.bib::Roy14perfPredPitchTurbineVar][Roy 2014: Performance]] pred pitch turb var
-********* [[Concept drift detection]] (so can broaden prob forecast uncertainty)
-********* Stability/turbulence: [[file:energy.bib::Wharton12atmStabWindPow][Wharton & Lundquist 2012: Atmospheric]] stab wind pow
-********* Pressure and power total variation: [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]] quantile pow frcst
-********* Kalman filter
-*********** input could be Kalman output
-*********** NN could predict error from Kalman output or just total
-*********** [[http://www.soe.ucsc.edu/~taoswap/GroupMeeting/UnscentedSeries_DanYuan_2004_11_17.ppt][Unscented Kalman Filter Slides]]
-********* Autotrain of NN's
-*********** [[file:energy.bib::Yan12autoNNtsFrcst][Yan 2012: Toward Automatic Time]] auto NN train
-********* also: [[Physics-based power curve features]]
-********* also: [[Relationship between NWP forecast variables and forecast error]]
-********* also: [[Summary of sensor location picking papers]]
-********* also: [[Power curve learning]]
-********* also: [[Feature Selection]]
-***** <<Lag Selection Enablers>>
-******* another explanation for why lags might make sense: [[file:energy.bib::lu07lagensemble][lu et al. 2007: short range numerical]]
-******* wind speed
-        lags (delays) depend upon /wind speed/ and pressure difference: [[file:energy.bib::bpa07inhourbalancerqt][bpa: in hour balancing]]
+********* also: [[Wind power features besides spd/dir]]
+********* also: [[Concept drift detection]]
+********* also: [[HTTP://confluence.iwes.fraunhofer.de/confluence/display/dabestand/cosmo%2bbackground][IWES COSMO variable list]]
+********* also: [[Forecasting Features]]
 
-        ==> wind speed is a feature would help nn pick the right delay in
-        a delay window.
-
-********* note bpa gorge/ lags in [[file:energy.bib::bpa07inhourbalancerqt][bpa: in hour balancing requirements wind]]
-********* TODO is this forecasted wind, wind at site or wind at measurement?  ask mark
-******* pressure difference
-        lags (delays) depend upon wind speed and /pressure difference/: [[file:energy.bib::bpa07inhourbalancerqt][bpa: in hour balancing]]
-
-        ==> delta pressure as a feature would help nn pick the right delay in
-        a delay window.  it would also be a low-dim feature, unlike
-        correlation vs. lag
-******* correlation / mutual information vs. lag
-
-        the correlation/semblance/mi whatever for a given bin helps nn pick
-        the right delay in a delay window.  this could be a pretty high dim
-        feature unless subsample or just give correlation at forecast horizon
-        lag only (and maybe no other lagged wind speed measurements either?)
-
-******* wind direction?
-********* if it's blowing the other direction, then no advection
-********* but speed changes can move /opposite/ to wind dir: [[file:energy.bib::schlueter86windarraypred][schlueter et al. 1986: wind array power]]
-******* should there be a separate "lag estimator?"
-********* output is either a vector of "lag confidences" or predicted lag
-********* is observation location specific
-********* train on "max mutual information between plant wind speed and obs"
-*********** max correlation would be more temporally precise (shorter sliding window)
-*********** mutual information lag selection, one of many examples:
-            [[file:~/work/dtu/doc/energy.bib::estevez09normmutinfofeatsel][estevez et al. 2009: normalized mutual information feature selection]] (classification)
-********* could almost be "convolutive cca"
-*********** delays adjusted jointly for max correlation w/ farm
-*********** would bad observations screw up cca, though?
-******* [[lasso feature selection]]
-******* location ordering
-********* [[file:energy.bib::deluna05predictspatiotemp][de luna & genton 2005: predictive spatio temporal]]
-********* [[file:energy.bib::hering07modelshorttermwindpred][hering 2007: models for short]] (relevant to de luna and genton method)
-******* [[File:energy.bib::renaud05wvltfiltpred][Renaud et al. 2005: Wavelet]] uses Haar, good explanation of lag stuff
-******* [[file:energy.bib::Genton07spaceTimeCovMatrixApprox][2007: Separable]] (separable spatial and temporal covariance matrices)
-******* [[file:energy.bib::Ombao08evCoherNonStat][Ombao & Van 2008: Evolutionary Coherence Nonstationary Signals]]
-******* [[Partial Mutual Information Estimation]] often used to select lags
-******* [[file:energy.bib::Luna06partMutInfoNNfeatsel][Luna et al. 2006: Partial]] mutual info NN featsel
-******* [[file:energy.bib::Wibral15BitsBrainsTE][Wibral et al. 2015: Bits Brains Biologically Inspired Computing]] (TE featsel)
-
-******* Multivariate AR lag selection: [[File:energy.bib::winker00multivarlagsel][Winker 2000: Optimized Multivariate Lag Structure Selection]]
-******* xcorr handling missing features w/ permutation sig. test: [[file:energy.bib::simpson01estsigxcorrmiss][simpson et al. 2001: estimation and significance]]
-******* improve permutation test: [[file:energy.bib::francois07resampparamfreefeatsel][françois et al. 2007: resampling methods for]]
-******* Might want to do a [[Wavelet Time Series Model]]
-***** Wind spatio-temporal patterns
-      <<Wind spatio-temporal patterns>>
-******* [[file:energy.bib::alkhouli05gustfrntdettmplt][alkhouli & debrunner 2005: gust front detection]]
-******* [[file:energy.bib::Genton07spaceTimeCovMatrixApprox][2007: Separable]] (separable spatial and temporal covariance matrices)
-******* [[file:energy.bib::Ombao08evCoherNonStat][Ombao & Van 2008: Evolutionary Coherence Nonstationary Signals]]
-******* Spatio-temporal with uncertainty: [[file:energy.bib::Lave13solarVarWvlt][Lave et al. 2013: Wavelet Based Variability]]
-
-******* [[file:energy.bib::Keune14multivarProbEnsFrcst][Keune et al. 2014: Multivariate]] ens. weath forecast (spatio-temporal)
-
-******* [[file:energy.bib::Lenzi16spatTempWndProbFrcst][Lenzi et al. 2016: Spatial]] temporal, probabilistic latent variables
-******* [[file:energy.bib::Lave13solarVarWvlt][Lave et al. 2013: Wavelet Based Variability]] (spatio-temporal w/ uncertainty)
-******* [[file:energy.bib::Foley12methAdvWindPowFrcst][Foley et al. 2012: Current]] methods and adv in wind pow frcst
-******* [[file:energy.bib::Pinson13windPowFrcstOpDec][Pinson & others 2013: Wind]] en. frcst operational mgmt
-******* [[cite:Turbelin09wavletWindXcorrNeural][Turbelin et al. 2009: Wavelet ANN]]
-******* also see: [[PCA/PLS for spatio-temporal pattern recognition]]
-***** surface stations
-******* usa
-********* asos
-*********** 1 and 5 minute [[http://www.ncdc.noaa.gov/oa/climate/climatedata.html#asosminutedata][data]]
-*********** iowa's [[http://mesonet.agron.iastate.edu/request/asos/1min.phtml][data]], they say in a better format
-*********** [[http://www.itl.nist.gov/div898/winds/asos-wx/asos-wx.htm][matlab]] for reading asos-wx data
-*********** [[http://www.nws.noaa.gov/asos/pdfs/aum-toc.pdf][asos user's guide]]
-*********** nasa's asos [[http://gcmd.nasa.gov/records/gcmd_gov.noaa.ncdc.c00387.html][archive]]
-******* [[file:energy.bib::Genton07spaceTimeCovMatrixApprox][2007: Separable]] (separable spatial and temporal covariance matrices)
-***** satellite
-******* sar wind speed measurements
-********* intro presentation: [[http://www.coaaweb.org/papers/coaa_032302_present_pablo.pdf][development of sar-derived ocean surface winds at noaa/nesdis]]
-*********** is probably the answrs system
-*********** uses "normalized radar cross section" (nrcs), the receive power from one angle
-*********** mentions vv, which is one the mode used in norsewind ([[file:energy.bib::oldroyd08norsewindrep1][oldroyd 2008: norsewind year periodic report]])
-********* sar fact sheet (good error explanation): [[file:energy.bib::cls09windsarfactsht][cls 2009: soprano cls wind]]
-*********** implications for safewind and radar@sea?
-*********** use radar@sea rain data to correct sar wind speed?         :idea:
-*********** errors ==> need to 3 state regression for <2m/s, 2m/s<speed<20m/s, >20m/s
-*********** atmoshperic stability affects accuracy
-************* use nwp to generate sar confidence?                      :idea:
-*********** bad near coast, where you'd want to use sar for wind!
-************* spatially dependent sar confidence or feature selection  :idea:
-*********** confidence estimation (my thoughts)                        :idea:
-************* can't know true answer for most of ocean (no met mast, lidar, etc.)
-************* no truth ==> hard to estimate confidence or reliability
-************* instead, must use mutual info or correlation w/ the thing you're predicting (partial corr?  joint?)
-************* related to predictability predicition in safewind (but for sar, which isn't in there?)
-********* answrs is used by riso for norsewind (p. 23, [[file:energy.bib::oldroyd08norsewindrep1][oldroyd 2008: norsewind year periodic report]])
-*********** answrs white paper: [[file:energy.bib::monaldo03sarwindanswrs][monaldo et al. 2003: sar measurement ocean surface winds]]
-            the white paper describing theory in the software doc:
-            [[http://sd-www.jhuapl.edu/fermi/sar/stormwatch/answrs_v5.pdf][answrs: apl/noaa sar wind retrieval system software documentation version 5.0]]
-********* asar from envisat used by cls for norsewind (p. 24 of  [[file:energy.bib::oldroyd08norsewindrep1][oldroyd 2008: norsewind year periodic report]])
-********* [[http://earth.esa.int/ers/eeo4.10075/ers1.3.html][esa earthnet sar design]] (is wave mode same as wind measurement?)
-******* scatterometry for wind
-********* used in norsewind ([[file:energy.bib::oldroyd08norsewindrep1][oldroyd 2008: norsewind year periodic report]])
-********* good [[http://www.coaps.fsu.edu/scatterometry/about/overview.php][quick explanation]]
-********* can detect direction (sar needs help from nwp or something)
-********* how much power returned is a function of wind speed and direction
-********* observe from multiple angles and find speed/dir that best fits data
-*********** if one beam, incident beam angles span 90 deg in ~ 5 mins, as satellite moves
-          * ==> poor spatial resolution, i suppose
-*********** can be ambiguous: fixing this is called "ambiguity selection"
-*********** can also get 3 simultaneous angles w/ 3 antennae, as in the [[http://earth.esa.int/ers/eeo4.10075/scatt_design.html][esa earthnet design]]
-******* SAR vs. Scatterometry
-********* sar has higher spatial resolution
-********* sar doesn't retrieve direction (w/o extra tricks)
-********* sar focuses on a tight square, one angle
-        * scatterometers sweep w/ wide beams, at multiple angles (3 in [[http://earth.esa.int/ers/eeo4.10075/scatt_design.html][esa earthnet design]])
-        * is wind /speed/ accuracy about the same?
-******* SAR and Scatterometry Combination
-********* Spatial Res. Of SAR; Direction From Low Res. Scatterometer
-******* gnss (gps, etc.)
-********* [[file:energy.bib::cardellach03gpsrblnocnwnd][cardellach et al. 2003: mediterranean]] balloon gpsr
-******* TODO read [[File:~/proj/norsewind/doc/norsewind.org::norsewind%20publications][Norsewind Publications]] to find out how satellite imaging is going
-***** <<Relationship between NWP forecast variables and forecast error>>
-******* see [[Feature selection for probabilistic forecasts]]
-******* see, maybe merge: [[*Physics-based%20power%20curve%20features][Physics-based power curve features]]
-******* see, maybe merge: [[Wind power features besides spd/dir]]
-******* see, maybe merge: [[Feature selection for probabilistic forecasts]]
-
-******* e.g. height of top of shallow convection (convection cells?)
-******* [[File:energy.bib::hagemann09vextraptemp][Hagemann et al. 2009: uncertainty]] (temp,windspeed,stabilty param(z?))
-******* [[File:energy.bib::bremen07winddetprobmodelcomb][Bremen 2007: combination deterministic probabilistic]] (multi nwp)
-******* [[file:energy.bib::Vindtekknikk12stblClassWindPow][Vindtekknikk 2012: NORSEWIND WP4]] Report (turbulence classes)
-******* [[file:energy.bib::Bremen07windDetProbModelComb][Bremen 2007: Combination Deterministic Probabilistic]] ensemble spread
-******* [[file:energy.bib::Kun14windIntrvlClustSOM][Kun & Jihong 2014: Wind SOM BP]] (turbulence intensity)
-******* [[file:energy.bib::Lange02windPowShrtTrmMetCond][Lange & Heinemann 2002: Accuracy]] weather cond (weath category, press)
-******* [[file:energy.bib::Giebel05windEnsemble][Giebel et al. 2005: Wind Power Prediction Ensembles]] (turbulence)
-******* [[file:energy.bib::Gallego11spdDirWindPowDyn][Gallego et al. 2011: Influence]] spd/dir on variability
-******* [[file:energy.bib::Anastasiades13probFrcstWindVarIdxFeats][Anastasiades & McSharry 2013: Quantile]] wind frcst var indices
-******* [[file:energy.bib::Lee14PowerCurveEstimation][Lee et al. 2014: Power Curve Estimation]] like (density, turbulence intensity wind shear)
-******* [[file:energy.bib::Gneiting08multiVarEnsAssess][Gneiting et al. 2008: Assessing]] climatology best for complex terrain not resolved by NWP
-******* [[cite:Pinson09skillEnsWndPow][Pinson et al. 2009: Skill ensembles]]
-******* [[cite:Nielsen06quantRegr][Nielsen et al. 2006: Using QR tried lagged ensembles]]
-******* 
-******* stability/turbulence: [[file:energy.bib::Wharton12atmStabWindPow][Wharton & Lundquist 2012: Atmospheric]] stab wind pow
-******* Power std: [[cite:Mittelmeier17powStdRatioWake][Mittelmeier et al. 2017: SCADA data pow std ratio wake]]
-******* also: [[Wind power features besides spd/dir]]
-******* also: [[Concept drift detection]]
-******* also: [[HTTP://confluence.iwes.fraunhofer.de/confluence/display/dabestand/cosmo%2bbackground][IWES COSMO variable list]]
-******* also: [[Forecasting Features]]
-
-***** NWP (should this be somewhere else?)
-***** See also [[Combined wind and load forecasting]]
+******* NWP (should this be somewhere else?)
+******* See also [[Combined wind and load forecasting]]
 *** <<Solar forecasting and features>>
 ***** the slope thing for QR
 ***** [[file:energy.bib::Meer18reviewProbPVfrcstNetDmd][Meer et al. 2018: Review Probabilistic PV and demand forecasting]]
@@ -8193,6 +8234,7 @@ Scott
 *** What forecasting composable building blocks to use?
 ***** example of blocks is WPPT in [[file:energy.bib::Madsen08toolsWindIntegrate][Madsen et al. 2008: Tools for Integrating]]
 ***** see also [[Stopping Criteria]]
+*** [[Deep Learning in Energy Systems]]
 *** [[Automatic bad data detection]]
 *** [[Clustering for prediction]]
 *** [[Adaptive Training / Updating]]
@@ -8479,6 +8521,7 @@ Scott
 ***** [[cite:Marino16bldngLdFrcstDeepNN][Marino et al. 2016: Building Load Frcst, LSTM RNN]]
 ***** [[cite:Cheung11smartDsptchRES][Cheung & Rios-Zalapa 2011: Smart Grid Dispatch Net Demand]] 
 ***** [[cite:Sinn14EnergyDemandFrcst][Sinn 2014: Energy Demand Forecasting slides, maybe net demand]]
+***** [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]
 ***** [[file:energy.bib::Gajowniczek18clustElecLoadFrcst][Gajowniczek & Z\kabkowski 2018: Sim Clust Algs for Elec Frcst]]
 ***** TODO <<Spatial Load Forecast>>
 ******** TODO [[cite:Crawford16loadFrcstERCOT][Crawford 2016: ERCOT Load Forecasting IBM NN]] (good results, good intro paper to read?)
@@ -9204,6 +9247,7 @@ sera
 ***** Must use ensembles for extreme events: [[file:energy.bib::Moehrlen12tradeStrtgyRESeeg2012][Moehrlen et al. 2012: Investigation EEG]]
 ***** [[Class Imbalance Handling]] (a.k.a. rare events)
 ***** [[Rare Events and Logistic Regression]]
+***** [[file:energy.bib::Laptev17tsExtrmFrcastNNuber][Laptev et al. 2017: Time Extreme Event LSTM Uber]]
 ***** See also: [[Forecast Error Distributions]]
 ***** See also: [[Quantile Regression]]
 ***** See also [[Numerical Weather Prediction (NWP)]] for extreme weather
@@ -11917,13 +11961,14 @@ Erika
 ***** [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::Rabanser19empDatSetShiftDet][Rabanser et al. 2019: Failing Loudly Detect Dataset Shift]] :LongHoriz:WattPlan:MNSP:SolarAnywhere:
 ***** <<Concept Drift Detection>>
 
-      [[Concept Drift]] detection would help in ie. recognizing that a new test or train point was not in previous
-      training data. This would be a way to learn and store regimes.
+      [[Concept Drift]] detection would help in ie. recognizing that a new test or train point was not in previous training data. This would be a way to learn and store regimes.  Synonym: [[Dataset Shift]]
 
 ******* Gaussian process can warn when unfamiliar point in training data
 ********* [[file:energy.bib::Kocijan03caseCompNeuralGaussProc][Kocijan et al. 2003: Gaussian]] (also require less train data so fast)
 ********* [[file:energy.bib::Tancret99CompNeuralGaussProcAlloy][Tancret et al. 1999: Comparison Gaussian]]
 ********* [[file:energy.bib::Wang06compGausProcNeuralForecast][Wang et al. 2006: Comparing Gaussian Processes]]
+******* [[file:energy.bib::Harang18princUncertDeepNN][Harang & Rudd 2018: Towards Principled Uncertainty]]
+******* [[file:energy.bib::Laptev17tsExtrmFrcastNNuber][Laptev et al. 2017: Time Extreme Event LSTM Uber]]
 ******* [[https://www.google.com/search?q%3Dknn%2Bwith%2Bconcept%2Bdrift&ie%3Dutf-8&oe%3Dutf-8&aq%3Dt&rls%3Dorg.mozilla:en-US:official&client%3Dfirefox-a#q%3Drecurring%2Bconcept%2Bdrift&rls%3Dorg.mozilla:en-US:official&spell%3D1][lots of papers]] on recurring concept drift (like regime learning)
 ******* [[file:c:/Users/sotterson/OneDrive/shareHW/DTU/doc/energy.bib::Gama14conceptDrftSurvey][Gama et al. 2014]] survey concept drift
 ******* see: [[Trend Copulas]]
@@ -12044,6 +12089,18 @@ Erika
 *** [[cite:Liu16rootCauseTSanomGrphMdl][Liu et al. 2016: Root Cause Anom Graphical Model]]
 *** see [[Graph Copula Models]]
 *** see also [[Copula Processes]]
+*** <<Dependence Graph Learning>>
+***** Python lib: [[https://github.com/gregversteeg/bio_corex/][GitHub - gregversteeg/bio_corex: A flexible version of CorEx developed for bi...]]
+***** [[cite:Zhou14graphEstMatNormGEMNI][Zhou 2014: Gemini matrix-norm precision graph sparse]]
+***** [[PLSR for Graph Learning]]
+***** [[cite:Kramer09gaussGraphModelsLasso][Kraemer et al. 2009: Regularized Gaussian Graph LASSO]]
+***** TODO [[cite:Chen13covPrecMatEstHiDimTseries][Chen et al. 2013: Covariance Prec. High Dim GLASSO Local adapt]]
+***** [[Graph Copula Models]]
+***** [[Bayesian Network forecasting model]]
+***** [[Graph Networks]]
+***** [[File:energy.bib::zhang11graphfeatsel][Zhang & Hancock 2011: Graph Based Approach Feature Selection]]
+***** [[file:energy.bib::Yu14extrmValGrpMdlThinMemb][Yu et al. 2014: Extreme]] val graph model thin membrane, copula
+***** [[cite:Hardesty15windFarmSiteCopula][Hardesty 2015: Siting Wind Farms Graph Copula]]
 * <<Dependence Learning>>
 
 TODO: search "covariance estimation" in bibtex to and classify hits by parameterization, shrinkage, spatio-temporal, PCA, PLS, Tensor, ....
@@ -12063,14 +12120,12 @@ TOTO: read Fan16* for an overview
 *** [[cite:Lindgren11linkGaussMMRFandSDE][Lindgren et al. 2011: Gaussian Gaussian Markov link SPDE and Prec. Mat]]
 *** [[cite:Pedregosa11ScikitlearnMachLrnPython][Pedregosa et al. 2011: Scikit Lrn Mach Lrn Python Library]]
 *** [[cite:Anderlucci15covPatMix][Anderlucci et al. 2015: Covariance patterns mixture]]
-*** [[cite:Zhou14graphEstMatNormGEMNI][Zhou 2014: Gemini matrix-norm precision graph sparse]]
 *** [[Adaptive covariance estimation and feature sel]]
 *** [[Frequency Domain Smoothed Covariance]]
 *** [[cite:Tsiligkaridis13covEstHiDimKrPrdExp][Tsiligkaridis & Hero 2013: Covariance Estimation High Dim PLSR wind speed]]
 *** [[cite:Yu12MultiWayGMMkernPLS][Yu 2012: Multiway Gaussian Mixture Kernel PLS batch process quality]]
 *** [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: Large Data Set Fault Detect Wind Forecast LIGHTNING]]
 *** [[Covariance Matrix Space-Time Separability, Normal Distribution]]
-*** [[PLSR for Graph Learning]]
 *** [[cite:Pena03descSctrLinDep][Pena & Rodriguez 2003: Meas multivar scatter and linear dependence]]
 *** [[Partial Correlation]]
 *** TODO <<Covariance sparseness>>
@@ -12125,7 +12180,6 @@ TOTO: read Fan16* for an overview
 ***** [[cite:Guo13GaussGraphStructLrnSlides][Guo 2013: Gaussian Graphical Models: struct est.]]
 ***** [[cite:Lindgren11linkGaussMMRFandSDE][Lindgren et al. 2011: Gaussian Gaussian Markov link SPDE and Prec. Mat]]
 ***** [[cite:Rue02fitGausMarkovRndFlds][Rue & Tjelmeland 2002: Fitting Gaussian Markov Gaussian]]
-***** [[cite:Kramer09gaussGraphModelsLasso][Kraemer et al. 2009: Regularized Gaussian Graph LASSO]]
 ***** TODO [[cite:Pedregosa16SckikitLearnUserCovEstChap][Pedregosa et al. 2016: Sckikit Learn User Guide Cov. Est Chapter]]
 ***** TODO [[cite:Cai16strctHiDimCovPrecAdapt][Cai et al. 2016: Estimating Cov/Prec Matrices Adapt]]
 ***** TODO [[cite:Chen13covPrecMatEstHiDimTseries][Chen et al. 2013: Covariance Prec. High Dim GLASSO Local adapt]]
@@ -12174,6 +12228,7 @@ TOTO: read Fan16* for an overview
 *** [[cite:Laskey14fastFrugalTreesVsBayesNetsRisk][Laskey & Martignon 2014: Fast Frugal Trees vs. Bayes Net Risk Assessmnt]]
 *** [[https://www.nsf.gov/awardsearch/showAward?AWD_ID=1652131][NSF Award Search: Award 1652131-CAREER: Hashing and Sketching Algorithms for Resource-Frugal Algorithms]]
 *** [[Simple Decision Trees]]
+*** [[file:energy.bib::Pavlus20gaugeEquivNN][Pavulus 2020: Gauge equivalent CNNs]] (understands manifolds)
 *** Also [[Auto Machine Learning]]
 * <<Reinforcement Learning>>
 *** [[cite:Busoniu10multiAgntReinfLrnOvrview][Busoniu et al. 2010: Multi]] agent reinforcement lrn
