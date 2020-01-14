@@ -1933,9 +1933,10 @@ _C-M-a_ change default action from list for this session
 ;; ** elisp and dot emacs
 
 (defun dot-emacs-diff (p)
+  "Ediff ~/.emacs with ref/.emacs.  When done, can undo the window config with winner-mode: C-c Left"
   (interactive "p")
   (ediff-files "~/.emacs"
-               (expand-file-name docDir "*.emacs")))
+               (expand-file-name ".emacs" docDir)))
 
 ;; * Narrowing
 ;; Default emacs narrowing has too many keys: wipe them out and make
@@ -2513,6 +2514,18 @@ This function avoids making messed up targets by exiting without doing anything 
 (use-package cdlatex
   :diminish org-cdlatex-mode
   :config (add-hook 'org-mode-hook 'turn-on-org-cdlatex))
+
+;; ** Bibtex
+;; SEE ALSO: org-ref
+
+(defun add-bibitem-org ()
+  "Opens energy.bib in one window and energytop.org in the other, so you can add a reference to either or both.  When done, can undo the window config with winner-mode: C-c Left"
+  (interactive)
+  (delete-other-windows)
+  (find-file (expand-file-name "energytop.org" docDir))
+  (split-window-horizontally)
+  (other-window 1)
+  (find-file (expand-file-name "energy.bib" docDir)))
 
 ;; * Emacs Command Execution
 
