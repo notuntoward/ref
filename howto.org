@@ -2943,6 +2943,10 @@ Better than auto-fill and filladapt, which wrap when you hit space when the curs
 *********  [[https://github.com/millejoh/emacs-ipython-notebook][millejoh/emacs-ipython-notebook]]
 ********* works with both Jupyter and emacs org mode
 ********* also, maybe a bit better: [[NEI -- Notebook Editor Interface]]
+********* jupyter-console is recommended, maybe
+
+          conda install -c anaconda jupyter_console 
+
 ******* <<NEI -- Notebook Editor Interface>>
         From: [[https://github.com/pyviz-dev/nei][pyviz-dev/nei: Notebook Editor Interface]]: Jupyter Notebook interface
 ********* like emacs ein but can show javascript graphs, etc.
@@ -8486,9 +8490,6 @@ From: [[https://medium.com/@rrfd/cookiecutter-data-science-organize-your-project
 The suffix 2 is used after autoreload, to reload all modules every time before executing the Python code typed. This will enable us to edit functions in Atom, debug them, and quickly import the code into our notebook, rather than having to write out a debug the function directly in Jupyter.
 
 ***** Jupyterlab extensions 
-******* building jupyterlab extensions
-
-       jupyter lab build
 ******* listing/updating/uninstalling installed juypterlab extensions
 
         /Can also do it within Jupyterlab with extension manager/
@@ -8514,8 +8515,8 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
         to disable
 
           jupyter labextension disable my-extension
-******* specific jupyterlab extensions
-********* Using now
+******* jupyterlab extensions of note
+********* Ones I'm using now
 *********** <<Jupyter matplotlib widgets>>
             From: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib]]
 
@@ -8713,6 +8714,10 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
 
             Instead, you have to [[https://jupyterlab.readthedocs.io/en/stable/user/extensions.html][build it yourself]].
 
+******* building jupyterlab extensions
+       For after you've installed some new ones or updated.  jupyterlab will also do this when you start it.
+
+       jupyter lab build
 ***** jupyter-widgets a.k.a. ipywidgets: [[https://github.com/jupyter-widgets/ipywidgets/blob/master/docs/source/examples/Index.ipynb][ipywidgets]]
 
       See the demo on the page in the headline
@@ -9050,6 +9055,7 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
           conda update --all --alt-hint
 
 ******* Clone (export) conda environment from one machine to another
+
         /Warning/:  I had weird path and DLL problems after making a new environment using the conda --clone commands and then deleting the orginal. I also had problems with the conda commands that used environment.yml files to export to a new machine. Therefore, I used my list-based *conda_evn_regen.ipynb*.
 
         Make and environment.yml file on the source machine
@@ -9066,7 +9072,7 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
        If there are still machine-specific problems, you can delete the
        troublesome lines in environment.yml
 
-******* Make exact copy of conda environment on same machine
+******* Clone (make exact copy of conda environment on same machine)
 
           conda create -n newEnv --clone sourceEnv
 
