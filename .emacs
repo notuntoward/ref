@@ -1694,9 +1694,9 @@ _C-M-a_ change default action from list for this session
   (use-package elpy
     :defer t
     :diminish elpy-mode
-    ;; Bind global "make" key to "C-u the command below" This is run
-    ;; the whole buffer and region in a (possibly newly made) *Python*
-    ;; buffer, and then move the cursor there.
+    ;; Bind global "make" key to "C-u the command below" This runs
+    ;; the region or whole .py buffer in a (possibly newly made) *Python*
+    ;; console buffer, and then moves the cursor there.
     :bind ("<f8>" . (lambda () (interactive) (elpy-shell-send-region-or-buffer-and-go t)))
     :init
     (elpy-enable)
@@ -1765,7 +1765,14 @@ _C-M-a_ change default action from list for this session
                             (apply f args))))    
     ;; code tidy when save
     (if autopep8bin
-        (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)))
+        (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+    
+    ;; Undo ely's override of C-arrowkeys
+    ;; https://github.com/jorgenschaefer/elpy/issues/1188
+    (eval-after-load "elpy"
+      '(cl-dolist (key '("C-<up>" "C-<down>" "C-<left>" "C-<right>"))
+         (define-key elpy-mode-map (kbd key) nil)))
+    )
 
   ;; *** EIN
   ;; TODO: figure out plot scaling.  Once imagemagick hack is here:
