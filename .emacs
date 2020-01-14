@@ -1935,7 +1935,7 @@ _C-M-a_ change default action from list for this session
 (defun dot-emacs-diff (p)
   (interactive "p")
   (ediff-files "~/.emacs"
-               "c:/Users/scott/OneDrive - Clean Power Research/ref/.emacs"))
+               (expand-file-name docDir "*.emacs")))
 
 ;; * Narrowing
 ;; Default emacs narrowing has too many keys: wipe them out and make
