@@ -2571,7 +2571,7 @@ Utils:
 ^Info1^         ^Info2/cust^     ^Org^                      ^Misc^
 --------------------------------------------------------------------------------
 _b_: bindings   _m_: mode        _P_: parent headings       _a_: calc
-_s_: symbol     _i_: info        _A_: heading in agenda     _p_: counsel-yank-pop
+_s_: symbol     _i_: info        _B_: add bibitem org      _p_: counsel-yank-pop
 _k_: key        _c_: cust-appr   _q_: swoop org buffers     _e_: ediff-buffers
 _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
 --------------------------------------------------------------------------------
@@ -2597,7 +2597,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
   ;; 2nd, 2nd level: all customize
 
   ("P" helm-org-parent-headings)
-  ("A" helm-org-agenda-files-headings)
+  ("B" add-bibitem-org)
   ("q" helm-multi-swoop-org)
   ("o" org-indent-mode) ; toggles org text to headline level & other stuff
   ;;("H" helm-mini) ; buffers & recent files: like ivy with "virtual buffers"
