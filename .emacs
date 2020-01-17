@@ -728,6 +728,13 @@ _C-M-a_ change default action from list for this session
 
 (use-package company)
 
+;; Sorter like smex.  Doesn't seem to do anything, probably b/c ido is
+;; overriding ivy where it might matter.
+;; (use-package ivy-prescient
+;;   :after ivy
+;;   :config
+;;   (ivy-prescient-mode))
+
 ;; * Scrolling, Cursor Movement and Selection
 
 (setq scroll-step 1)
@@ -1436,7 +1443,7 @@ _C-M-a_ change default action from list for this session
 
 ;; Make interpreter shells do arrow prev/last matching, like linux
 ;; shells.  I think this will be overwritten by some modes
-;; e.g. gud-debugger and RSS, which have their own maps in this emacs
+;; e.g. gud-debugger, inferior-python-mode, and RSS, which have their own maps in this emacs
 ;; file. 
 (define-key comint-mode-map [up]
   'comint-previous-matching-input-from-input)
@@ -1691,6 +1698,29 @@ _C-M-a_ change default action from list for this session
 
   (sdo/find-exec "flake8" "Needed for elpy & Jupyterlab code checks")
 
+  (defun sdo/kill-python-console ()
+       "Kill python console unconditionally, if it exists."
+       (interactive)
+       (setq pyBuffNm "*Python*")
+       (if (member pyBuffNm (mapcar (function buffer-name) (buffer-list)))
+           (progn
+             (switch-to-buffer pyBuffNm)
+             (set-buffer-modified-p nil)
+             (setq pproc (get-buffer-process pyBuffNm))
+             (if pproc
+                 (set-process-query-on-exit-flag pproc nil))
+             (kill-buffer))))
+
+  (defun sdo/run-python-clean-as-possible ()
+    "Saves current buffer (if region not active), then runs it new *Python* console, killing old console; if region *is* active, then just runs elpy-shell-send-region-or-buffer-and-go."
+    (interactive)
+    (if (region-active-p)
+        (elpy-shell-send-region-or-buffer-and-go t)
+      (progn
+        (sdo/kill-python-console)
+        (elpy-shell-send-region-or-buffer-and-go t))))
+    
+  
   (use-package elpy
     :defer t
     :diminish elpy-mode
@@ -1698,6 +1728,7 @@ _C-M-a_ change default action from list for this session
     ;; the region or whole .py buffer in a (possibly newly made) *Python*
     ;; console buffer, and then moves the cursor there.
     :bind ("<f8>" . (lambda () (interactive) (elpy-shell-send-region-or-buffer-and-go t)))
+    :bind ("<S-f8>" . sdo/run-python-clean-as-possible)
     :init
     (elpy-enable)
     ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?):
