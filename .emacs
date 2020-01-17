@@ -1712,15 +1712,15 @@ _C-M-a_ change default action from list for this session
              (kill-buffer))))
 
   (defun sdo/run-python-clean-as-possible ()
-    "Saves current buffer (if region not active), then runs it new *Python* console, killing old console; if region *is* active, then just runs elpy-shell-send-region-or-buffer-and-go."
+    "If region is active, then call elpy-shell-send-region-or-buffer-and-go; otherwise, save current buffer and runs it in new *Python* console, killing any existing console; "
     (interactive)
     (if (region-active-p)
         (elpy-shell-send-region-or-buffer-and-go t)
       (progn
+        (save-buffer)
         (sdo/kill-python-console)
         (elpy-shell-send-region-or-buffer-and-go t))))
     
-  
   (use-package elpy
     :defer t
     :diminish elpy-mode
