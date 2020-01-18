@@ -1688,10 +1688,12 @@ _C-M-a_ change default action from list for this session
   (diminish 'auto-fill-function) ; only works here, for some reason
 
   ;; Use Elpy instead of python-mode.
-  ;;   run python in buffer with C-c C-c, once elpy-mode is enabled
-  ;; C-u C-c C-c to get past "main" in the python function.
-  ;; elpy-shell-send-region-or-buffer-and-go to do that and switch the
-  ;;   cursor there.
+  ;;
+  ;; I've remapped keys and functions so that it's easiest to run an
+  ;; entire Python file (including any __main__).  Now, F8 runs a
+  ;; script or region reusing an existing, if possible; S-F8 does the
+  ;; run in a new *Python* console.
+  ;;
   ;; elpy automatically downloads a lot of the Python libraries it requires.
   ;; You can see what's going on with: M-x elpy-config
   ;; You can force a reinstall with: M-x elpy-rpc-reinstall-virtualenv
@@ -1699,7 +1701,7 @@ _C-M-a_ change default action from list for this session
   (sdo/find-exec "flake8" "Needed for elpy & Jupyterlab code checks")
 
   (defun sdo/kill-python-console ()
-       "Kill python console unconditionally, if it exists."
+       "Kill python console if it exists -- immediately no questions asked."
        (interactive)
        (setq pyBuffNm "*Python*")
        (if (member pyBuffNm (mapcar (function buffer-name) (buffer-list)))
