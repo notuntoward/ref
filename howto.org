@@ -8622,8 +8622,59 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
 
             jupyter labextension install jupyterlab-recents
 
+*********** <<jupypterlab_code_formatter>> (pep8+ others): [[https://github.com/ryantam626/jupyterlab_code_formatter][jupyterlab_code_formatter]]
+            From Here: [[https://jupyterlab-code-formatter.readthedocs.io/en/latest/index.html][Welcome to Jupyterlab Code Formatter’s documentation!]]
+
+************* Supports Black, YAPF, Autopep8, lsort
+************* Doesn't automatically format: toobar button, right-menu keyboard shortcut
+************* Could do google python format if use yapf formatter
+************* Can configure formatting options
+************* [[https://jupyterlab-code-formatter.readthedocs.io/en/latest/installation.html#installation-step-1-installing-the-plugin-itself][installation]]
+
+            if you want black (can only install one?  DOcs are unclear)
+              conda install -c conda-forge black 
+            if you want autopep8
+              conda install autopep8
+
+            jupyter labextension install @ryantam626/jupyterlab_code_formatter
+            conda install -c conda-forge jupyterlab_code_formatter
+            jupyter serverextension enable --py jupyterlab_code_formatter
+
+            Add this line to the user prefereces section of Jupyterlab
+            Code Formatter (User Preferences side of pane):
+
+            {
+            "preferences": {
+                "default_formatter": {
+                "python": "autopep8",
+                "R": "styler"
+              }
+             }
+            }
+
+            Add the below in the shortcuts part of the Keyboard Shortcuts "user prferences" window (RHS).  After that, when the cursor is in a call C-k C-m will format that cell
+
+            {
+              "command": "jupyterlab_code_formatter:autopep8",
+              "keys": [
+                  "Ctrl K",
+                  "Ctrl M"
+              ],
+              "selector": ".jp-Notebook.jp-mod-editMode"
+            }
+
+            I don't know how to format a whole notebook w/ a shortcut but there is a toolboar button for it, so it seems like it could be configured to do that.
+
 ********* Should try
-*********** TRY python black formatting in Jupyter: [[https://pypi.org/project/nb-black/][nb-black · PyPI]]
+*********** TRY multilanguage code formatter: [[https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/nbextensions/code_prettify/README_code_prettify.html][Code Prettifier jupyter_contrib_nbextensions]]
+
+            formats python, R, javascript if you click a button
+
+            based on yapf, which I think came out worse than autopep8 or black in reviews.
+
+*********** TRY python black formatting in Jupyter: [[https://github.com/dnanhkhoa/nb_black][dnanhkhoa/nb_black]]
+
+            Automatically black formats as you type.  Only works if you invoke it with a magic, so it's easy to not use it if its too annoying
 
             Put this in notebook:
 
@@ -8649,28 +8700,16 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
             need (*??*) a .flake8 file in notebook directory
 
 ************* Jupyterlab [[https://github.com/jupyterlab/jupyterlab/issues/5611][may have settled on]] [[jupypterlab_code_formatter]]
-*********** TRY <<jupypterlab_code_formatter>> (pep8+ others): [[https://github.com/ryantam626/jupyterlab_code_formatter][jupyterlab_code_formatter]]
-            From Here: [[https://jupyterlab-code-formatter.readthedocs.io/en/latest/index.html][Welcome to Jupyterlab Code Formatter’s documentation!]]
-
-            *EVALUATE*
-
-************* Supports Black, YAPF, Autopep8, lsort
-************* Doesn't automatically format -- you have to run some keyboard shortcut
-************* installation
-
-            conda install -c conda-forge black
-            jupyter labextension install @ryantam626/jupyterlab_code_formatter
-            conda install -c conda-forge jupyterlab_code_formatter
-            jupyter serverextension enable --py jupyterlab_code_formatter
-
-            ... and some more
-
 *********** TRY [[https://github.com/pbugnion/jupyterlab-sql][pbugnion/jupyterlab-sql: SQL GUI for JupyterLab]]
 *********** TRY [[https://github.com/IBM/jupyterlab-s3-browser][IBM/jupyterlab-s3-browser]] (for Amazon data, etc.)
 *********** TRY [[https://github.com/timkpaine/jupyterlab_powerpoint][timkpaine/jupyterlab_powerpoint: Creating PowerPoints from jupyter]]
 *********** TRY [[https://github.com/krassowski/jupyterlab-lsp][krassowski/jupyterlab-lsp: Language Server Protocol integration]]
 *********** TRY [[https://github.com/lckr/jupyterlab-variableInspector][lckr/jupyterlab-variableInspector: Variable Inspector extension]]
 *********** TRY [[https://github.com/jupyterlab/jupyterlab-latex][jupyterlab/jupyterlab-latex: JupyterLab extension for live editing]]
+*********** TRY variable value window: [[https://github.com/lckr/jupyterlab-variableInspector][lckr/jupyterlab-variableInspector]]
+            
+            For install have to clone a GitHub repository, etc. (Jan 2020).  Too messy.
+
 ********* Tried but don't need
 *********** python creating convenience: [[https://github.com/jtpio/jupyterlab-python-file][jtpio/jupyterlab-python-file]]
 *********** non-git auto-versioning: [[https://github.com/timkpaine/jupyterlab_autoversion][timkpaine/jupyterlab_autoversion]]
@@ -8682,8 +8721,31 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
             pip install jupyterlab_autoversion
             jupyter labextension install jupyterlab_autoversion
             jupyter serverextension enable --py jupyterlab_autoversion
+*
+*********** markdown spellchecker: [[https://github.com/ijmbarr/jupyterlab_spellchecker][GitHub - ijmbarr/jupyterlab_spellchecker]]
+
+            jupyter labextension install @ijmbarr/jupyterlab_spellchecker
+
+            I uninstalled it b/c I have a lot of variable names, etc. in markdown and there's no way to modify the spellchecker's dictionary.
 
 ********* Not working but maybe nice
+*********** rename, hover docs ...: [[https://github.com/krassowski/jupyterlab-lsp][krassowski/jupyterlab-lsp]]
+
+            _Buggy_
+            o error messages b/c wasn't locating the directory the script was in
+            o flagging synax errors in some comments (but not most)
+            o crashes
+
+            pip install --pre jupyter-lsp
+            jupyter labextension install @krassowski/jupyterlab-lsp
+
+            conda install -c conda-forge python-language-server
+
+            _For R support_, I think, add:
+               pip install python-language-server[all]
+               R -e 'install.packages("languageserver")'
+               conda install -c conda-forge r-languageserver
+      
 *********** paste image into markdown: [[https://github.com/Bamieh/jupyterlab-clipboard][Bamieh/jupyterlab-clipboard]]
 
             It's not compatible with jupyterlab version
