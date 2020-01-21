@@ -26517,6 +26517,22 @@ Diffusion and adoption processes},
   url       = {http://arxiv.org/abs/1111.6453},
 }
 
+@InProceedings{Jin19physInvNN,
+  author        = {Y. {Jin} and X. {Wu} and J. {Chen} and Y. {Huang}},
+  title         = {A Physics-Driven Deep Learning Network for Subsurface Inversion},
+  booktitle     = {Proc. United States National Committee of URSI National Radio Science Meeting (USNC-URSI NRSM)},
+  year          = {2019},
+  pages         = {1--2},
+  month         = jan,
+  __markedentry = {[Scott:6]},
+  abstract      = {Subsurface inversion is an essential technique for many applications including seismic processing, oilfield well logging an geosteering. Conventional inverse methods based on optimization are time-consuming and sensitive to initial values. The traditional lookup table approach which is limited by the table size could reduce the computational time but only achieves low accuracy. To solve these issues, we propose a physics-driven Deep Neural Network (PhDNN) for solving non-linear inverse problems. In this framework, the physical forward model is utilized to produce a data misfit. Both the model misfit and data misfit are used to train the network. As an example, we use this framework to solve a geosteering problem which enables the drilling direction adjusted by collected resistivity well logging measurements. Numerical tests indicate that the proposed network could improve the quality of the prediction significantly.},
+  comment       = {Invertible model, useable maybe for both quantile and distribution regression, or for some kind of probabilistic forecasting assuming a parsimonious parametric distribution model, like the metalog (Keelin16metalogDist)},
+  doi           = {10.23919/USNC-URSI-NRSM.2019.8712940},
+  file          = {:Jin19physInvNN.pdf:PDF},
+  issn          = {null},
+  keywords      = {hydrocarbon reservoirs, learning (artificial intelligence), neural nets, seismology, well logging, traditional lookup table approach, table size, computational time, low accuracy, nonlinear inverse problems, physical forward model, data misfit, model misfit, geosteering problem, physics-driven Deep learning Network, subsurface inversion, essential technique, seismic processing, conventional inverse methods, time-consuming, oilfield well logging, Data models, Inverse problems, Neural networks, Conductivity, Earth, Predictive models, Deep learning},
+}
+
 @TechReport{Akbarinia11sumRcrsProb,
   author      = {Akbarinia, Reza and Valduriez, Patrick and Verger, Guillaume},
   title       = {{SUM} Query Processing over Probabilistic Data},
@@ -30453,7 +30469,7 @@ code for generating the distribution is given in the second Appendix.},
   volume        = {13},
   pages         = {243-277},
   issn          = {1545-8490},
-  __markedentry = {[Scott:6]},
+  __markedentry = {[Scott:]},
   abstract      = {The metalog distributions constitute a new system of continuous univariate probability distributions designed for flexibility, simplicity, and ease/speed of use in practice. The system is comprised of unbounded, semibounded, and bounded distributions, each of which offers nearly unlimited shape flexibility compared to previous systems of distributions. Explicit shape-flexibility comparisons are provided. Unlike other distributions that require nonlinear optimization for parameter estimation, the metalog quantile functions and probability density functions have simple closed-form expressions that are quantile parameterized linearly by cumulative-distribution-function data. Applications in fish biology and hydrology show how metalogs may aid data and distribution research by imposing fewer shape constraints than other commonly used distributions. Applications in decision analysis show how the metalog system can be specified with three assessed quantiles, how it facilities Monte Carlo simulation, and how applying it aided an actual decision that would have been made wrongly based on commonly used discrete methods.},
   comment       = {Basis functions for cdfs.  Fitting is a matter of estimating linear coefficients on linear quantiles -- maybe useful for cleaning up distribution regression, and for doing conditional probabilistic forecasts like Mauch13windPowFrcstLogitNorm and Pinson12vShrtWndPowLogitNorm.  Has R and Python.
 
@@ -30477,7 +30493,7 @@ Or, maybe there's a way to make the coefficients conditional with some kind of s
 
 Taking the distribution regression approach, you could have fixed levels of  cdf trhesholds, x_g, and a layer estimating a set of "inverse a" coefficients, a_i; for each x_g, the expected value the x_true being < x_g is estimated by y_h = x_g dot a_i (there's really no inverse dot product, but having the same number of coeffs as the dimension of x_g seems fair.  The ).  The regression target vector is the set of binary exceedance indicators (instead of the single output SteveV and I used in multitask distribution); the loss function is LSQ, or maybe the ignorance score?  Anyway, again, the form of the equation guarantees monotonicity and boundedness.
 
-There also might be a trick using an invertible NN, like in Baird05oneStepInvrtNN or Rippel13highDimProbDeepNN.  In this way, you could simultaneously estimate the transformed probability matrix F, and the inverse transform of the probabilities, the threshold exceedance targets.
+There also might be a trick using an invertible NN, like in [Baird05oneStepInvrtNN, Rippel13highDimProbDeepNN, Jin19physInvNN].  In this way, you could simultaneously estimate the transformed probability matrix F, and the inverse transform of the probabilities, the threshold exceedance targets.
 
 3. A better extreme value distribution estimator than GEV
 

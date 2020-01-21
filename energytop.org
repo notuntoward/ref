@@ -2261,6 +2261,7 @@ Scott
     varational algorithms, maybe in probabilistic forecasting (my pet idea
     is to use it to replace logit in [[file:energy.bib::Koenker13DistributionalvsQuantile][Koenker et al. 2013: Distributional]])
 
+***** [[file:energy.bib::Jin19physInvNN][Jin et al. 2019: Physics Driven Deep Invertible NN]]
 ***** [[file:energy.bib::Rippel13highDimProbDeepNN][Rippel & Adams 2013: High Dimensional Probability]], invertible, deep lrn, I think
 ***** [[file:energy.bib::Baird05oneStepInvrtNN][Baird et al. 2005: One PDF]] step pdf learn invertible NN
 ******* See also: [[Wind spatio-temporal patterns]]
