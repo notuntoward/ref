@@ -30465,7 +30465,7 @@ POTENTIAL USES (for me)
 
 1. Distribution Regression Coeff cleanup
 
-Could be a faster, better behaved way of smoothing distribution regression cdfs than the spline and nonlinear optimization trickes I used at Fraunhofer.  
+Could be a faster, better behaved way of smoothing distribution regression cdfs than the spline and nonlinear optimization tricks I used at Fraunhofer.  
 
 2. Direct probablistic Forecasting
 
@@ -30476,6 +30476,8 @@ But maybe you could modify linear QR somehow.  The y's for metalog are probabili
 Or, maybe there's a way to make the coefficients conditional with some kind of special TensorFlow NN.     If you have a fixed grid of transformed probabilities, y_g, then you could predict predict quantiles, x_hat=y_g dot a, where the input layer takes in the independent variables, z, and eventually, some network layer outputs the vector a,; the rest of the network does a fixed transform to x_hat, and then there is a quantile loss function.  Forcing this form would guarantee boundedness and monotonicity.
 
 Taking the distribution regression approach, you could have fixed levels of  cdf trhesholds, x_g, and a layer estimating a set of "inverse a" coefficients, a_i; for each x_g, the expected value the x_true being < x_g is estimated by y_h = x_g dot a_i (there's really no inverse dot product, but having the same number of coeffs as the dimension of x_g seems fair.  The ).  The regression target vector is the set of binary exceedance indicators (instead of the single output SteveV and I used in multitask distribution); the loss function is LSQ, or maybe the ignorance score?  Anyway, again, the form of the equation guarantees monotonicity and boundedness.
+
+There also might be a trick using an invertible NN, like in Baird05oneStepInvrtNN or Rippel13highDimProbDeepNN.  In this way, you could simultaneously estimate the transformed probability matrix F, and the inverse transform of the probabilities, the threshold exceedance targets.
 
 3. A better extreme value distribution estimator than GEV
 
