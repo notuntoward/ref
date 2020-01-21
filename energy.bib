@@ -5571,13 +5571,12 @@ Related to Dereszynski12sensNtwkMissDat},
 }
 
 @InProceedings{Laptev17tsExtrmFrcastNNuber,
-  author        = {Nikolay Laptev and 1 Jason and Yosinski and Li Erran and Li and Slawek Smyl and 1},
-  title         = {Time-series Extreme Event Forecasting with Neural Networks at Uber},
-  booktitle     = {International Conference on Machine Learning},
-  year          = {2017},
-  volume        = {34},
-  __markedentry = {[scott:]},
-  abstract      = {Accurate time-series forecasting during high
+  author    = {Nikolay Laptev and 1 Jason and Yosinski and Li Erran and Li and Slawek Smyl and 1},
+  title     = {Time-series Extreme Event Forecasting with Neural Networks at Uber},
+  booktitle = {International Conference on Machine Learning},
+  year      = {2017},
+  volume    = {34},
+  abstract  = {Accurate time-series forecasting during high
 variance segments (e.g., holidays), is critical for
 anomaly detection, optimal resource allocation,
 budget planning and other related tasks. At Uber
@@ -5598,13 +5597,13 @@ outperforms the current state of the art event fore-
 casting methods on Uber data and generalizes
 well to a public M3 dataset used for time-series
 forecasting competitions.},
-  comment       = {LSTM Bayesian time series forecasting that somehow separates out model selection errors from parameter errors.  Highly cited, proably worth looking at the newer papers too.
+  comment   = {LSTM Bayesian time series forecasting that somehow separates out model selection errors from parameter errors.  Highly cited, proably worth looking at the newer papers too.
 
 Uber web page might be better than the conference paper: https://www.evernote.com/l/AA26fzCsOZRPb5EbvOLm4aMbjZTbYbyiGzI/
 
 Also partitions uncertainty: Harang18princUncertDeepNN},
-  file          = {:Laptev17tsExtrmFrcastNNuber.pdf:PDF},
-  url           = {http://roseyu.com/time-series-workshop/submissions/TSW2017_paper_3.pdf},
+  file      = {:Laptev17tsExtrmFrcastNNuber.pdf:PDF},
+  url       = {http://roseyu.com/time-series-workshop/submissions/TSW2017_paper_3.pdf},
 }
 
 @Article{Larson06shortTermWindOffSite,
@@ -12764,7 +12763,7 @@ maybe an alternative to Frenzel07partMutInfo},
 
 @Article{George11estJohnsonDistBnd,
   author   = {George, Florence and Ramachandran, KM},
-  title    = {Estimation of Parameters of Johnson?s System of Distributions},
+  title    = {Estimation of Parameters of Johnson's System of Distributions},
   journal  = {Journal of Modern Applied Statistical Methods},
   year     = {2011},
   volume   = {10},
@@ -12795,7 +12794,8 @@ johnsrnd() generates random numbers given a set of quantiles. Can also return th
 Matlab Central Johnson toolbox, looks more complete and flexible than Matlab's stats toolbox johnsrnd():
 http://www.mathworks.com/matlabcentral/fileexchange/46123-johnson-curve-toolbox
 * copula-like multivariate distribution estimation using Johnson (handy analytical expressions too: Xiao14genCorrRVjohnson
-* parameters estimated from quantiles, then some kind of stoch. opt.: Torrez93JohnsonDistFitNeuron},
+* parameters estimated from quantiles, then some kind of stoch. opt.: Torrez93JohnsonDistFitNeuron
+* fancier, better?  Keelin19metalogCloseFrm},
   file     = {George11estJohnsonDistBnd.pdf:George11estJohnsonDistBnd.pdf:PDF},
   url      = {http://digitalcommons.wayne.edu/cgi/viewcontent.cgi?article=1326&context=jmasm},
 }
@@ -16842,145 +16842,6 @@ Ref. in Matlab help is: Yang12nbrCompFeatSel},
   url       = {http://www.cs.nyu.edu/~roweis/publications.html},
 }
 
-@Article{Pena03descSctrLinDep,
-  author    = {Pe{\~n}a, D. and Rodr{\'\i}guez, J.},
-  title     = {Descriptive measures of multivariate scatter and linear dependence},
-  journal   = {Journal of Multivariate Analysis},
-  year      = {2003},
-  volume    = {85},
-  number    = {2},
-  pages     = {361--374},
-  abstract  = {In this paper we propose two new descriptive measures for multivariate data: the effective variance and the effective dependence. These measures have a direct geometric and statistical interpretation and can be used to compare groups with different number of variables. The contribution of these measures to understanding multivariate data is illustrated by several examples},
-  comment   = {Describes a scalar measure of multivariate linear dependence. Description of generalized variance. Also a way to compare clusters of different dimensions.
-
-Scalar measures of coherence
-* total variance: sum of eigenvectors
-* generalied variance
--- determinant of correlation matrix
--- product of eigenvectors, only for same-dim comparisons
--- need to standardize first, or is that fixed by eigenvecs?
-* effective variance: genVar^(1/p) (p=dimension)
--- can compare across different dims
-* effective standard deviation: genVar^(1/(2p))
-* effective dependence: function of the determinant of the CORR. matrix
--- strongly related to num. of PCA comps needed to explain something
--- can be used to est. num. PCA comps needed to explain 90\% of var.
--- see also: Minka00AutoPCAdim
--- why not just use num. of PCA comps instead?
-* Is this related to Henriks generalized correlation idea in Nielsen01genClassicTimeSer ?},
-  doi       = {10.1016/S0047-259X(02)00061-1},
-  file      = {Pena03descSctrLinDep.pdf:Pena03descSctrLinDep.pdf:PDF},
-  groups    = {Read},
-  owner     = {sotterson},
-  publisher = {Elsevier},
-  timestamp = {2012.03.09},
-  url       = {http://www.sciencedirect.com/science/article/pii/S0047259X02000611},
-}
-
-@InProceedings{Balkanski18adaptMaxSubMod,
-  author       = {Balkanski, Eric and Singer, Yaron},
-  title        = {The adaptive complexity of maximizing a submodular function},
-  booktitle    = {Proceedings of the 50th Annual ACM SIGACT Symposium on Theory of Computing},
-  year         = {2018},
-  pages        = {1138--1151},
-  organization = {ACM},
-  abstract     = {In this paper we study the adaptive complexity of submodular optimization. Informally, the
-adaptive complexity of a problem is the minimal number of sequential rounds required to achieve
-a constant factor approximation when polynomially-many queries can be executed in parallel at
-each round. Adaptivity is a fundamental concept that is heavily studied in computer science,
-largely due to the need for parallelizing computation. Somewhat surprisingly, very little is
-known about adaptivity in submodular optimization. For the canonical problem of maximizing
-a monotone submodular function under a cardinality constraint, to the best of our knowledge,
-all that is known to date is that the adaptive complexity is between 1 and Ω(n).
-Our main result in this paper is a tight characterization showing that the adaptive complexity
-of maximizing a monotone submodular function under a cardinality constraint is
-
-˜
-
-Θ(log n):
-• We describe an algorithm which requires O(log n) sequential rounds and achieves an ap-
-proximation that is arbitrarily close to 1/3;
-• We show that no algorithm can achieve an approximation better than O(log1 n) with fewer
-than O( log n
-
-log log n) rounds.
-Thus, when allowing for parallelization, our algorithm achieves a constant factor approximation
-exponentially faster than any known existing algorithm for submodular maximization.
-Importantly, the approximation algorithm is achieved via adaptive sampling and comple-
-ments a recent line of work on optimization of functions learned from data. In many cases
-we do not know the functions we optimize and learn them from labeled samples. Recent
-results show that no algorithm can obtain a constant factor approximation guarantee using
-polynomially-many labeled samples as in the PAC and PMAC models, drawn from any distribu-
-tion [BRS17, BS17a]. Since learning with non-adaptive samples over any distribution results
-in a sharp impossibility, we consider learning with adaptive samples where the learner obtains
-poly(n) samples drawn from a distribution of her choice in every round. Our result implies that
-in the realizable case, where there is a true underlying function generating the data,
-
-˜
-
-Θ(log n)
-batches of adaptive samples are necessary and sufficient to approximately “learn to optimize”
-a monotone submodular function under a cardinality constraint.},
-  comment      = {A new method of submodular optimization.  Good for e.g. taxi routing and recommendation engines.  Is more than an order of mag. faster than existing methods (July 2018), "exponentially" according to quotes in this IEEE Spectrum article:
-
-https://spectrum.ieee.org/tech-talk/computing/software/new-optimization-algorithm-exponentially-speeds-computation?utm_source=techalert&utm_campaign=techalert-07-12-18&utm_medium=email},
-  file         = {:Balkanski18adaptMaxSubMod.pdf:PDF},
-  groups       = {Scott Otterson:6},
-  url          = {https://scholar.harvard.edu/files/ericbalkanski/files/the-adaptive-complexity-of-maximizing-a-submodular-function.pdf},
-}
-
-@Article{Chen84cmplxHarmSline,
-  author              = {Chen, Han-Lin and Tron Hvaring},
-  title               = {Approximation of Complex Harmonic Functions by Complex Harmonic Splines},
-  journal             = {Mathematics of Computation},
-  year                = {1984},
-  volume              = {42},
-  number              = {165},
-  pages               = {151--164},
-  issn                = {0025-5718},
-  abstract            = {In this paper, a class of complex harmonic spline functions (C.H.S.) are defined on the unit disc $U$. We use the C.H.S. to approximate the complex harmonic function on $U$, showing that C.H.S. may be represented by elementary functions. If the maximum step tends to zero and the mesh ratio is bounded, then C.H.S. converge uniformly to the interpolated function $F$ on the closed disc $\bar U$. If the interpolated function $F$ is a conformal mapping, then the C.H.S. is a quasi-conformal mapping.},
-  comment             = {Complex-valued splines interpolate harmonics; for lagged wind vel. basis?
-
-Quick read: I'm not sure if this is relevant, but maybe could use something about complex valued splines if I read it more carefully. I thought this might provide a hint towards deriving a 3D spline basis that has wind velocity as a periodic function. The other 2 dims aren't periodic, which I believe means that the solution can be a linear sum of cylindrical harmonics -- useful for joint regression and approximation like you can do with a 1D distributed lag basis. There is a solution of a linear set of equations in eq. (61) requiring equality of the function to be approximated, F(Z), with the approximation at N points. Equality probably OK b/c it's approximating known harmonic functions.},
-  copyright           = {Copyright ?? 1984 American Mathematical Society},
-  file                = {Chen84cmplxHarmSline.pdf:Chen84cmplxHarmSline.pdf:PDF},
-  jstor_articletype   = {primary_article},
-  jstor_formatteddate = {Jan., 1984},
-  owner               = {scotto},
-  publisher           = {American Mathematical Society},
-  timestamp           = {2010.08.20},
-  url                 = {http://www.jstor.org/stable/2007565},
-}
-
-@InProceedings{Jian08volCylBspln,
-  author    = {{Ting-ting} Jiang and Chen, S.Y. and Yiqiang Xu},
-  title     = {{3-D} Representation and Volumetric Measurement of Human Heart from a Cylindrical B-Spline Surface Model},
-  booktitle = {BioMedical Engineering and Informatics (BEMI)},
-  year      = {2008},
-  volume    = {1},
-  pages     = {765--769},
-  month     = may,
-  abstract  = {In this paper, a cylindrical 3-D B-Spline model of heart's surfaces is proposed. Since volume is a basic parameter in cardiac image analysis, an effectively integral algorithm for volumetric measurement of the B-Spline surface model represented by matrix forms is presented in this article as well. This method makes the volumetric measurement convenient and its result is more accurate than the results counted by the traditional methods. In order to validate B-Spine surface fitting and advantage of our method for volumetric measurement, several experiments were done. Finally, the results show that the cylindrical B- Spline with a given number of control points can well fit the surfaces of the heart and left ventricle. Experiments also show the algorithm can get satisfactory measurement accuracy and efficiency.},
-  comment   = {matrix rep of 3D cylindrical spline. Looks all linear.
-* could almost use for lagged wind velocity basis
--- estimates f(t,w)
--- could be regressionInput(spd,dir)
--- lags still not in there
-* nice that it goes into a matrix (looks all linear)
-* is poorly written: hard to understand equation notation
--- are refs 10, 11 or Deng04cylindSpln3D more readable?
-* adopt eigen structure used in Tewfik87eigCylindHarm for matrix in here?
-* add lag w/ 4D technique?
--- use this matrix technique for 4D?
--- refs 10 or 11?
--- 4D splines in Ozturk00spline4D},
-  doi       = {10.1109/BMEI.2008.182},
-  file      = {Jian08volCylBspln.pdf:Jian08volCylBspln.pdf:PDF},
-  keywords  = {3D heart representation;cardiac image analysis;cylindrical B-spline surface model;human heart;volumetric measurement;cardiology;splines (mathematics);volume measurement;},
-  owner     = {scot},
-  timestamp = {2010.08.30},
-}
-
 @Article{Damousis04fuzzWindSpatCorr,
   author    = {Damousis, I.G. and Alexiadis, M.C. and Theocharis, J.B. and Dokopoulos, P.S.},
   title     = {A fuzzy model for wind speed prediction and power generation in wind parks using spatial correlation},
@@ -17081,7 +16942,8 @@ Upscaling use?
 * sums of weighted sigmoids looks like capacity weighted power production giving wind speed input
 * could this be like Stefan's "PGM"? Vogt15HybridPhysMLrgnFrcst
 
-* main Johnson Dist paper: George11estJohnsonDistBnd},
+* main Johnson Dist paper: George11estJohnsonDistBnd
+* also Keelin19metalogCloseFrm},
   file        = {Torrez93JohnsonDistFitNeuron.pdf:Torrez93JohnsonDistFitNeuron.pdf:PDF},
   url         = {http://www.researchgate.net/publication/235145247_Johnson_Distributions_for_Fitting_Weighted_Sums_of_Sigmoided_Neuron_Outputs},
 }
@@ -26231,7 +26093,7 @@ The author's stable distribution page has some nice illustrations and extensions
 http://academic2.american.edu/~jpnolan/stable/stable.html
 
 Other ways of estimating a distribution from quantiles
-* general: Cook10distFromQuant
+* general: Cook10distFromQuant and fancier Keelin19metalogCloseFrm
 * Johnson System: George11estJohnsonDistBnd},
   file      = {Nolan15StableDistBootCh1.pdf:Nolan15StableDistBootCh1.pdf:PDF},
   location  = {Boston},
@@ -30581,6 +30443,117 @@ code for generating the distribution is given in the second Appendix.},
   owner     = {sotterson},
   publisher = {Elsevier},
   timestamp = {2012.07.09},
+}
+
+@Article{Keelin16metalogDist,
+  author        = {Thomas W. Keelin},
+  title         = {The Metalog Distributions},
+  journal       = {Decision Analysis},
+  year          = {2016},
+  volume        = {13},
+  pages         = {243-277},
+  issn          = {1545-8490},
+  __markedentry = {[Scott:6]},
+  abstract      = {The metalog distributions constitute a new system of continuous univariate probability distributions designed for flexibility, simplicity, and ease/speed of use in practice. The system is comprised of unbounded, semibounded, and bounded distributions, each of which offers nearly unlimited shape flexibility compared to previous systems of distributions. Explicit shape-flexibility comparisons are provided. Unlike other distributions that require nonlinear optimization for parameter estimation, the metalog quantile functions and probability density functions have simple closed-form expressions that are quantile parameterized linearly by cumulative-distribution-function data. Applications in fish biology and hydrology show how metalogs may aid data and distribution research by imposing fewer shape constraints than other commonly used distributions. Applications in decision analysis show how the metalog system can be specified with three assessed quantiles, how it facilities Monte Carlo simulation, and how applying it aided an actual decision that would have been made wrongly based on commonly used discrete methods.},
+  comment       = {Basis functions for cdfs.  Fitting is a matter of estimating linear coefficients on linear quantiles -- maybe useful for cleaning up distribution regression, and for doing conditional probabilistic forecasts like Mauch13windPowFrcstLogitNorm and Pinson12vShrtWndPowLogitNorm.  Has R and Python.
+
+THE IDEA
+
+Estimates a cdf from a few points on an empirical cdf, with a guaranteed smooth pdf.  Kind of like polynomical regression for cdfs, in that, you project data onto  a basis function and then estimate linear coeffs -- examples of some kind of regularization so it's smooth.  More detail  in Keelin11QuantParamDist.
+
+POTENTIAL USES (for me)
+
+1. Distribution Regression Coeff cleanup
+
+Could be a faster, better behaved way of smoothing distribution regression cdfs than the spline and nonlinear optimization trickes I used at Fraunhofer.  
+
+2. Direct probablistic Forecasting
+
+Or, could directly estimate the conditional distribution coeffs.  For example, Mauch13windPowFrcstLogitNorm and Pinson12vShrtWndPowLogitNorm do bounded probabilistic wind power forecasts with (bounded logit-norm) distributions.  Metalog dists can estimate logit-norm, and more, so maybe these papers provide hints on how to estimate conditional metalog parameters.  How to do this is not immediately obvious, as Mauch just does a log transform, does scalar linear regression, and then assumes Gaussianinity to get the (transformed) quantiles; metalogs directly estimate the smoothed distribution from already existing quantiles.  
+
+But maybe you could modify linear QR somehow.  The y's for metalog are probabilities -- could be the probabilities at the grid of quantiles you're trying to estimate.  The x's are the quantiles, and they are a linear function of these fixed probabilties; the parameters you'd fit conditionally are the a's.
+
+Or, maybe there's a way to make the coefficients conditional with some kind of special TensorFlow NN.     If you have a fixed grid of transformed probabilities, y_g, then you could predict predict quantiles, x_hat=y_g dot a, where the input layer takes in the independent variables, z, and eventually, some network layer outputs the vector a,; the rest of the network does a fixed transform to x_hat, and then there is a quantile loss function.  Forcing this form would guarantee boundedness and monotonicity.
+
+Taking the distribution regression approach, you could have fixed levels of  cdf trhesholds, x_g, and a layer estimating a set of "inverse a" coefficients, a_i; for each x_g, the expected value the x_true being < x_g is estimated by y_h = x_g dot a_i (there's really no inverse dot product, but having the same number of coeffs as the dimension of x_g seems fair.  The ).  The regression target vector is the set of binary exceedance indicators (instead of the single output SteveV and I used in multitask distribution); the loss function is LSQ, or maybe the ignorance score?  Anyway, again, the form of the equation guarantees monotonicity and boundedness.
+
+3. A better extreme value distribution estimator than GEV
+
+Could also be a better way of handling extreme values (it fits the GEV).  Example of it being better is (I think) on p. 17 of  Keelin16metalogDist slides)  In Jan 2019, it had ridge regression, given commit comment in python library here: https://github.com/tjefferies/pymetalog/commit/bf0dbf4b7e3314007e81165f05300263ed7c7bc5.  Not clear how lambda is chosen, though.  The author has plans to do LASSO and elastic net, according to the repository issues.  But again, how to CV?
+
+Question: can the pdf implied by the cdf matching be discontinous e.g. can it have a point probability mass at zero power?  Slides show that it can (page 12, beta distribution)
+
+The author is the father of Patrick Keelin (SA manager @ CPR)
+
+OTHER CDF EQUATION FORM OPTIONS
+Some of these are discussed on the author's website
+* Johnson Distributions
+  - e.g. George11estJohnsonDistBnd (I've bibtexted several others)
+* Stable Distributions
+  - e.g  Nolan15StableDistBootCh1
+  - Axel used them
+* Peason System
+  - limitations of this are mentioned in this paper
+
+SOFTWARE
+
+* R library: https://github.com/isaacfab/RMetalog
+* Python: https://github.com/tjefferies/pymetalog
+   can pip it: https://pypi.org/project/pymetalog/
+* On the other hand, it's so simple, maybe I don't need a library.
+
+Much more at:
+http://www.metalogdistributions.com/publications.html
+
+
+
+Earlier version is here: Keelin11QuantParamDist
+This version was used here: Keelin19metalogCloseFrm
+
+Attached author's draft came from here: http://www.metalogdistributions.com/images/TheMetalogDistributions.pdf
+
+Slides also attached},
+  doi           = {10.1287/deca.2016.0338},
+  file          = {:Keelin16metalogDist.pdf:PDF;:Keelin16metalogDist_Slides.pdf:PDF},
+  url           = {https://pubsonline.informs.org/doi/10.1287/deca.2016.0338},
+}
+
+@InProceedings{Keelin19metalogCloseFrm,
+  author    = {Tom Keelin and Lonnie Chrisman and Sam Savage},
+  title     = {The Metalog Distributions And Extremely Accurate Sums of Lognormals in Closed Form},
+  booktitle = {Winter Simulation Conference},
+  year      = {2019},
+  abstract  = {The metalog probability distributions can represent virtually any continuous shape with a single family 
+of equations, making them far more flexible for representing data than the Pearson and other 
+distributions.  Moreover, the metalogs are easy to parameterize with data without non-linear parameter 
+estimation, have simple closed-form equations, and offer a choice of boundedness. Their closed-form 
+quantile functions (F-1) enable fast and convenient simulation. The previously unsolved problem of a 
+closed-form analytical expression for the sum of lognormals is one application. Uses include 
+simulating total impact of an uncertain number N of risk events (each with iid [independent, 
+identically distributed] individual lognormal impact), noise in wireless communications networks and 
+many others. Beyond sums of lognormals, the approach may be directly applied to represent and 
+subsequently simulate sums of iid variables from virtually any continuous distribution, and, more 
+broadly, to products, extreme values, or other many-to-one change of iid or correlated variables. },
+  comment   = {A use of the metalog distribution (Keelin16metalogDist), which is probably more interesting than the details of this paper.  Here, the cdf of the sum of lognormal distributions is modeled as a metalog, the coefficients of which are estimated with a semi-brute force monte carlo and interpolation approach.  The sum of lognormals is an important problem without an analytic solution.  This approach promises a closed form solution but it's not so much that as an interpolated lookup table, derived from heavy precomputation; I'm not sure this is a great time saver, if you're not solving this exact problem.
+
+THIS PAPER'S ALGORITHM
+
+Brute force fit of summed Monte Carlo iid lognormal components.  There is a grid of N (# components) and sigma (standard deviations), and 9 empirical cdf points are computed for each combo.  
+To use it:
+1, Specify N and sigma
+2. look up the quantile, x, at each of nine stored probabilities, y, doing a 2D interpolation if your N and sigma aren't in the table.
+3. given x and y, solve for the nine metalog coeffs, a
+4. the cdf of your sum is the metalog distribution with coefficients a, plus the sum of the means of each of the components being summed
+
+The main contribution of this paper is probably the proof in the appendix showing that the interpolation produces a valid set of coeffcients.
+
+See  Keelin16metalogDist for much more on metalog distributions, which could probably do probabilistic, data-conditional forecasts -- some of my ideas are there.  Also see Keelin11QuantParamDist
+
+Paper and slides attached.  There is more at:  http://www.metalogdistributions.com/home.html
+
+},
+  file      = {:Keelin19metalogCloseFrm.pdf:PDF;:Keelin19metalogCloseFrm_Slides.pptx:PowerPoint 2007+},
+  url       = {http://www.metalogdistributions.com/home.html},
 }
 
 @Misc{White01normalEquNotes,
@@ -35434,10 +35407,11 @@ Over voltage * circuit shorts, EMI, customer equipment damage * seems like handl
 Keywords : continuous probability distribution ; probability encoding ; decision analysis ; quantile function ; inverse cumulative distribution function ; basis function},
   comment   = {A set of distributions that can be estimated from quantiles. Explains what to do if those quantiles are inconsistent (I think it means "are crossed over").
 
-Unfortunately, I couldn't find the paper.
+This idea has been updated in: Keelin16metalogDist and Keelin19metalogCloseFrm
 
 I wonder how these are related to Johnson System Distributions (George11estJohnsonDistBnd) or Stable distributions (Nolan15StableDistBootCh1), both of which can be estimated from quantiles.},
   doi       = {10.1287/deca.1110.0213},
+  file      = {:Keelin11QuantParamDist.pdf:PDF},
   publisher = {INFORMS},
 }
 
@@ -39206,7 +39180,9 @@ very short-term load forecasting.},
   pages     = {555--576},
   issn      = {1467-9876},
   abstract  = {Very-short-term probabilistic forecasts, which are essential for an optimal management of wind generation, ought to account for the non-linear and double-bounded nature of that stochastic process. They take here the form of discrete?continuous mixtures of generalized logit?normal distributions and probability masses at the bounds. Both auto-regressive and conditional parametric auto-regressive models are considered for the dynamics of their location and scale parameters. Estimation is performed in a recursive least squares framework with exponential forgetting. The superiority of this proposal over classical assumptions about the shape of predictive densities, e.g. normal and beta, is demonstrated on the basis of 10-min-ahead point and probabilistic forecasting at the Horns Rev wind farm in Denmark.},
-  comment   = {10 minutes aheady, bounded output, dir. sensitiviity, autocorrelation... the works.. Current paper is the tech note, not the journal paper.
+  comment   = {10 minutes ahead, bounded output, dir. sensitiviity, autocorrelation... the works.. Current paper is the tech note, not the journal paper.
+
+Could use a metalog distribution (Keelin16metalogDist) to model the logit normal distribution.
 
 Related idea: Mauch13windPowFrcstLogitNorm},
   doi       = {10.1111/j.1467-9876.2011.01026.x},
@@ -43725,23 +43701,22 @@ But what is needed in the future to allow us to continue improving our forecasts
 }
 
 @Article{Harang18princUncertDeepNN,
-  author        = {Richard Harang and Ethan M. Rudd},
-  title         = {Towards Principled Uncertainty Estimation for Deep Neural Networks},
-  journal       = {ArXiv},
-  year          = {2018},
-  __markedentry = {[scott:6]},
-  abstract      = {When the cost of misclassifying a sample is high, it is useful to have an accurate estimate of uncertainty in the prediction for that sample. There are also multiple types of uncertainty which are best estimated in different ways, for example, uncertainty that is intrinsic to the training set may be well-handled by a Bayesian approach, while uncertainty introduced by shifts between training and query distributions may be better-addressed by density/support estimation. In this paper, we examine three types of uncertainty: model capacity uncertainty, intrinsic data uncertainty, and open set uncertainty, and review techniques that have been derived to address each one. We then introduce a unified hierarchical model, which combines methods from Bayesian inference, invertible latent density inference, and discriminative classification in a single end-to-end deep neural network topology to yield efficient per-sample uncertainty estimation in a detection context. This approach addresses all three uncertainty types and can readily accommodate prior/base rates for binary detection. We then discuss how to extend this model to a more generic multiclass recognition context.},
-  comment       = {Separates errors into model capacity uncertainty, intrinsic data uncertainty, and open set uncertainty (train/test mismatch).  Applies it to deep learning classification.  Could maybe be used for tech adoption forecasts, where there are big problems with train/test mismatch (since the future hasn't happened yet).\
+  author      = {Richard Harang and Ethan M. Rudd},
+  title       = {Towards Principled Uncertainty Estimation for Deep Neural Networks},
+  journal     = {ArXiv},
+  year        = {2018},
+  abstract    = {When the cost of misclassifying a sample is high, it is useful to have an accurate estimate of uncertainty in the prediction for that sample. There are also multiple types of uncertainty which are best estimated in different ways, for example, uncertainty that is intrinsic to the training set may be well-handled by a Bayesian approach, while uncertainty introduced by shifts between training and query distributions may be better-addressed by density/support estimation. In this paper, we examine three types of uncertainty: model capacity uncertainty, intrinsic data uncertainty, and open set uncertainty, and review techniques that have been derived to address each one. We then introduce a unified hierarchical model, which combines methods from Bayesian inference, invertible latent density inference, and discriminative classification in a single end-to-end deep neural network topology to yield efficient per-sample uncertainty estimation in a detection context. This approach addresses all three uncertainty types and can readily accommodate prior/base rates for binary detection. We then discuss how to extend this model to a more generic multiclass recognition context.},
+  comment     = {Separates errors into model capacity uncertainty, intrinsic data uncertainty, and open set uncertainty (train/test mismatch).  Applies it to deep learning classification.  Could maybe be used for tech adoption forecasts, where there are big problems with train/test mismatch (since the future hasn't happened yet).\
 
 
 Does a similar thing for LSTMs: Laptev17tsExtrmFrcastNNuber},
-  date          = {2018-10-29},
-  eprint        = {http://arxiv.org/abs/1810.12278v2},
-  eprintclass   = {cs.LG},
-  eprinttype    = {arXiv},
-  file          = {:http\://arxiv.org/pdf/1810.12278v2:PDF},
-  keywords      = {cs.LG, stat.ML},
-  url           = {http://arxiv.org/pdf/1810.12278v2},
+  date        = {2018-10-29},
+  eprint      = {http://arxiv.org/abs/1810.12278v2},
+  eprintclass = {cs.LG},
+  eprinttype  = {arXiv},
+  file        = {:http\://arxiv.org/pdf/1810.12278v2:PDF},
+  keywords    = {cs.LG, stat.ML},
+  url         = {http://arxiv.org/pdf/1810.12278v2},
 }
 
 @TechReport{Schaeffer14mkCovMatPosDef,
@@ -43913,114 +43888,6 @@ the high resolution ensemble COSMO-DE-EPS of the German Weather Service.},
   url       = {http://www.datamineit.com/J.D.%20Opdyke%20-%20JMASM%20Vol2%20No1.pdf},
 }
 
-@InProceedings{Coates11encodeTrnVQ,
-  author    = {Coates, Adam and Ng, Andrew},
-  title     = {The importance of encoding versus training with sparse coding and vector quantization},
-  booktitle = {Proceedings of the 28\textsuperscript{th} International Conference on Machine Learning (ICML-11)},
-  year      = {2011},
-  pages     = {921--928},
-  abstract  = {While vector quantization (VQ) has been applied
-widely to generate features for visual
-recognition problems, much recent work has
-focused on more powerful methods. In particular,
-sparse coding has emerged as a strong
-alternative to traditional VQ approaches and
-has been shown to achieve consistently higher
-performance on benchmark datasets. Both
-approaches can be split into a training phase,
-where the system learns a dictionary of basis
-functions, and an encoding phase, where
-the dictionary is used to extract features from
-new inputs. In this work, we investigate
-the reasons for the success of sparse coding
-over VQ by decoupling these phases, allowing
-us to separate out the contributions of
-training and encoding in a controlled way.
-Through extensive experiments on CIFAR,
-NORB and Caltech 101 datasets, we compare
-several training and encoding schemes, including
-sparse coding and a form of VQ with
-a soft threshold activation function. Our results
-show not only that we can use fast VQ
-algorithms for training, but that we can just
-as well use randomly chosen exemplars from
-the training set. Rather than spend resources
-on training, we find it is more important to
-choose a good encoder?which can often be
-a simple feed forward non-linearity. Our results
-include state-of-the-art performance on
-both CIFAR and NORB.},
-  comment   = {Basis learning not so important as encoding, as long as bases more or less tile the input space -- said to obsolete deep autoencoding, can be merged with deep learning. Good for regime learning?
-
-Blogger who said it obsoleted deep learning: http://danluu.com/linear-hammer/
-2 other papers he said obsoleted deep autoencoding:
-Ngiam11sparseFiltFtLrn, Coates11ntwkUnSupFtLrn
-
-
-For regime learning, compare with adaboost methods, starting with Lillywhite13featCnstrct and the papers it references.},
-  file      = {Coates11encodeTrnVQ.pdf:Coates11encodeTrnVQ.pdf:PDF},
-  owner     = {sotterson},
-  timestamp = {2014.01.28},
-  url       = {http://machinelearning.wustl.edu/mlpapers/paper_files/ICML2011Coates_485.pdf},
-}
-
-@InProceedings{Florita13idWindSolarRamps,
-  author    = {Florita, A. and Hodge, B.-M. and Orwig, K.},
-  title     = {Identifying Wind and Solar Ramping Events},
-  booktitle = {Green Technologies Conference, 2013 IEEE},
-  year      = {2013},
-  pages     = {147--152},
-  abstract  = {Wind and solar power are playing an increasing role in the electrical grid, but their inherent power variability can augment uncertainties in the operation of power systems. One solution to help mitigate the impacts and provide more flexibility is enhanced wind and solar power forecasting; however, its relative utility is also uncertain. Within the variability of solar and wind power, repercussions from large ramping events are of primary concern. At the same time, there is no clear definition of what constitutes a ramping event, with various criteria used in different operational areas. Here, the swinging door algorithm, originally used for data compression in trend logging, is applied to identify variable generation ramping events from historic operational data. The identification of ramps in a simple and automated fashion is a critical task that feeds into a larger work of 1) defining novel metrics for wind and solar power forecasting that attempt to capture the true impact of forecast errors on system operations and economics, and 2) informing various power system models in a data-driven manner for superior exploratory simulation research. Both allow inference on sensitivities and meaningful correlations, as well as quantify the value of probabilistic approaches for future use in practice.},
-  comment   = {Uses swinging doors to calc ramp slopes and boundaries then makes some summary graphs. There seems to be one mistake in them (see comments). Otherwise, not too interesting.},
-  doi       = {10.1109/GreenTech.2013.30},
-  file      = {Florita13idWindSolarRamps.pdf:Florita13idWindSolarRamps.pdf:PDF},
-  groups    = {Read},
-  owner     = {sotterson},
-  timestamp = {2014.10.07},
-  url       = {http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6520043},
-}
-
-@InProceedings{Zhang13windPVcorr,
-  author    = {Zhang, J and Hodge, BM and Florita, A},
-  title     = {Investigating the Correlation Between Wind and Solar Power Forecast Errors in the Western Interconnection},
-  booktitle = {ASME 7\textsuperscript{th} International Conference on Energy Sustainability and the 11\textsuperscript{th} Fuel Cell Science, Engineering, and Technology Conference},
-  year      = {2013},
-  abstract  = {Wind and solar power generation differ from conventional energy generation because of the variable and uncertain nature
-of their power output. This variability and uncertainty can have significant impacts on grid operations. Thus, short-term forecasting of wind and solar power generation is uniquely helpful for balancing supply and demand in an electric power system. This paper investigates the correlation between wind
-and solar power forecast errors. The forecast and the actual data were obtained from the Western Wind and Solar Integration Study. Both the day-ahead and 4-hour-ahead
-forecast errors for the Western Interconnection of the United States were analyzed. A joint distribution of wind and solar power forecast errors was estimated using a kernel density
-estimation method; the Pearson?s correlation coefficient between wind and solar forecast errors was also evaluated. The
-results showed that wind and solar power forecast errors were
-weakly correlated. The absolute Pearson?s correlation
-coefficient between wind and solar power forecast errors
-increased with the size of the analyzed region. The study is also
-useful for assessing the ability of balancing areas to integrate wind and solar power generation.
-Keywords: Grid integration, correlation, solar forecasting, western interconnection, wind forecasting, forecasting error
-distribution},
-  comment   = {These guys DO find correlation between wind and PV forecast errors!},
-  file      = {Zhang13windPVcorr.pdf:Zhang13windPVcorr.pdf:PDF},
-  groups    = {ErrDistProps, doReadNonWPV_1, PV, Wind},
-  owner     = {sotterson},
-  timestamp = {2013.09.27},
-  url       = {htp://www.nrel.gov/docs/fy13osti/57816.pdf?},
-}
-
-@Article{Zhang14jointProbDistWndSolWest,
-  author    = {Zhang, Jie and Hodge, Bri-Mathias and Florita, Anthony},
-  title     = {Joint probability distribution and correlation analysis of wind and solar power forecast errors in the western interconnection},
-  journal   = {Journal of Energy Engineering},
-  year      = {2014},
-  volume    = {141},
-  number    = {1},
-  pages     = {B4014008},
-  abstract  = {Wind and solar power generation differ from conventional power generation because of the variable and uncertain nature of their power output. This can have significant impacts on grid operations. Short-term forecasting of wind and solar power generation is uniquely helpful for planning the balance of supply and demand in the electric power system because it allows for a reduction in the uncertainty associated with their output. As a step toward assessing the simultaneous integration of large amounts of wind and solar power, this article investigates the spatial and temporal correlation between wind and solar power forecast errors. The forecast and actual data analyzed are obtained from one of the world?s largest regional variable generation integration studies to date. Multiple spatial and temporal scales (day ahead, 4 h ahead, and 1 h ahead) of forecast errors for the Western Interconnection in the United States are analyzed. A joint probability distribution of wind and solar power forecast errors is estimated using kernel density estimation. The Pearson?s correlation coefficient and mutual information between wind and solar power forecast errors are also evaluated. The results show that wind and solar power forecast errors are inversely correlated, and the correlation between wind and solar power forecast errors becomes stronger as the geographic size of the analyzed region increases. The absolute value of the correlation coefficient is generally less than 0.1 in the case of small geographic regions, while it is generally between 0.15 and 0.6 in the case of large geographic regions. The forecast errors are less correlated on the day-ahead timescale, which influences economic operations more than reliability, and more correlated on the 4-h-ahead timescale, where reliability is more impacted by the forecasts. It is also found that the correlation between wind and solar power forecast errors in summer (July) is relatively stronger than in winter (January). The inverse correlation implies that in systems with high penetrations of both wind and solar power, reserves that are held to accommodate the variability of wind or solar power can be at least partially shared. In addition, interesting results are found through time and seasonal variation analyses of wind and solar power forecast errors, and these insights may be uniquely useful to operators who maintain the reliability of the electric power system.},
-  file      = {Zhang14jointProbDistWndSolWest.pdf:Zhang14jointProbDistWndSolWest.pdf:PDF},
-  owner     = {sotterson},
-  publisher = {American Society of Civil Engineers},
-  timestamp = {2017.04.13},
-  url       = {http://ascelibrary.org/doi/abs/10.1061/(ASCE)EY.1943-7897.0000189},
-}
-
 @Article{Alexiadis99windForecastSpatCorr,
   author    = {Alexiadis, M.C. and Dokopoulos, P.S. and Sahsamanoglou, H.S.},
   title     = {Wind speed and power forecasting based on spatial correlation models},
@@ -44153,6 +44020,37 @@ statistics, engineering, earth and atmospheric science},
   Owner                    = {sotterson},
   Timestamp                = {2008.07.03},
   URL                      = {http://www.actapress.com/Abstract.aspx?paperId=20268}
+}
+
+@Article{Mauch13windPowFrcstLogitNorm,
+  author   = {Brandon Mauch and Jay Apt and Pedro M. S. Carvalho and Mitchell J. Small},
+  title    = {An effective method for modeling wind power forecast and uncertainty},
+  journal  = {Energy Syst},
+  year     = {2013},
+  volume   = {4},
+  pages    = {393-417},
+  abstract = {Wind forecasts are an important tool for electric system operators. Proper
+use of wind power forecasts to make operating decisions must account for the uncer-
+tainty associated with the forecast. Data from different regions in the USA with 
+forecasts made by different vendors show the forecast error distribution is strongly 
+dependent on the forecast level of wind power. For low wind power forecast, the fore-
+casts tend to under-predict the actual wind power produced, whereas when the forecast 
+is for high power, the forecast tends to over-predict the actual wind power. Most of 
+the work in this field neglects the influence of wind forecast levels on wind forecast 
+uncertainty and analyzes wind forecast errors as a whole. The few papers that account 
+for this dependence, group wind forecasts by the value of the forecast and fit paramet-
+ric distributions to actual wind power in each bin of data. In the latter case, different 
+parameters and possibly different distributions are estimated for each data bin. We 
+present a method to model wind power forecast uncertainty as a single closed-form 
+solution using a logit transformation of historical wind power forecast and actual wind},
+  comment  = {Probabilistic wind power forecasts, assuring boundedness with the logit-normal distribution.  Ultra simple: log transform a wind power forecast and then do linear regression between logged power forecast and measured forecast.  Linear regression errors assumed to be Gaussian, which is inverse-transformed to get quantiles -- which look not-too-different than what I got with spline regression while @ Fraunhofer.
+
+Could this somehow be made better use a metalog distribution? Keelin16metalogDist can model a logit normal distribution, which is a start, and then it can do more fancy things.
+
+Very related: Pinson12vShrtWndPowLogitNorm
+},
+  doi      = {IO.I007/sl2667-013-0083-3},
+  file     = {:Mauch13windPowFrcstLogitNorm.pdf:PDF},
 }
 
 @Article{Archer07windBaseloadInterConn,

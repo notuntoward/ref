@@ -5265,6 +5265,7 @@ sera
 ***** [[file:energy.bib::Ahmed10empCompForecast][Ahmed et al. 2010]] machine time series
 ***** [[file:energy.bib::Pinson12vShrtWndPowLogitNorm][Pinson 2012: Very]] short term prob frcst logit-normal
 ***** [[file:energy.bib::Mauch13windPowFrcstLogitNorm][Mauch et al. 2013]] logit norm quantile wind power
+***** [[Metalog Distributions]] can model logit-normal distributions
 ***** [[http://en.wikipedia.org/wiki/Truncated_normal_distribution][Truncated Normal Distribution]]
 ***** Truncated normal distribution can be created w/ a Power transformation
 ******* i.e. can produce the [[http://en.wikipedia.org/wiki/Box%25E2%2580%2593Cox_distribution][Box-Cox distribution]] (where f=1)
@@ -6071,6 +6072,10 @@ sera
 ***** TODO [[file:energy.bib::Koenker13DistributionalvsQuantile][Koenker et al. 2013: Distributional]] vs. QR: DR better @ extremes
 ***** [[file:energy.bib::Chernozhukov13infCntrFactDist][Chernozhukov et al. 2013: Inference]] counterfactual and dist rgrssn
 ***** [[file:energy.bib::Dette06nonParamMonoRgrssn][Dette et al. 2006]] nonparam mono rgrssn: can make a density from quantiles ests
+***** Smooth with appropriate basis functions such as:
+******* [[Metalog Distributions]]
+******* [[Johnson System Distributions]]
+******* [[Stable Distributions]]
 ***** [[file:energy.bib::Foresi95condDistRetDR][Foresi & Peracchi 1995]] cond dist returns: dist regression
 ***** [[file:energy.bib::Baird05oneStepInvrtNN][Baird et al. 2005: One PDF]] invertible: maybe good to get pdf from cdf
 ***** [[file:energy.bib::Rippel13highDimProbDeepNN][Rippel & Adams 2013: High Dimensional Probability]]: invertible, deep learning
@@ -6980,6 +6985,8 @@ variables will be preferred, when possible.
 ********* [[file:energy.bib::Xiao14genCorrRVjohnson][Xiao 2014: Generating Johnson]] random vectors (kind of a copula)
 ********* [[file:energy.bib::Torrez93JohnsonDistFitNeuron][Torrez & Durham 1993: Johnson Distributions Fitting]] from quantiles (neural net)
 ********* [[file:energy.bib::Flynn06johnsonSBextrm][Flynn 2006: Fitting Johnson SB]] extreme
+********* also [[Stable Distributions]]
+********* also [[Metalog Distributions]]
 ******* <<Stable Distributions>>
         Axel used an alpha-stable distribution to compute extreme values
 ********* [[file:energy.bib::Nolan15StableDistBootCh1][Nolan 2015: Stable Distributions Models]]
@@ -6987,6 +6994,14 @@ variables will be preferred, when possible.
 ********* [[file:energy.bib::Borak05stableDist][Borak et al. 2005: Stable]] Distributions (intro)
 ********* [[file:energy.bib::Veillette10AlphaStableDistMatlab][Veillette 2010: Alpha Stable MATLAB]]
 ********* [[file:energy.bib::Frain09alphaDistAppsThesis][Frain 2009: Studies Application Alpha Distribution Economics]] incl. rgrssn.
+********* also [[Johnson System Distributions]]
+********* also [[Metalog Distributions]]
+******* <<Metalog Distributions>>
+********* [[file:energy.bib::Keelin19metalogCloseFrm][Keelin et al. 2019: Metalog Distribution Lognormal Sum, Closed Form]]
+********* [[file:energy.bib::Keelin16metalogDist][Keelin 2016: Metalog Distributions]]
+********* [[file:energy.bib::Keelin11QuantParamDist][Keelin & Powley 2011: Quantile Param Dist]]
+********* also [[Johnson System Distributions]]
+********* also [[Stable Distributions]]
 ***** <<Continuous Ranked Probability Score (CRPS)>>
 ******* 3 CRPS def's:  [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing dens. frcst score rules]]
 ******* <<CRPS is a weighted sum of quantile scores>>
@@ -9251,14 +9266,14 @@ sera
 ***** See also: [[Forecast Error Distributions]]
 ***** See also: [[Quantile Regression]]
 ***** See also [[Numerical Weather Prediction (NWP)]] for extreme weather
-***** <<Extreme Value Theory>> or <<Extreme Value Estimation>>
+***** TODO <<Extreme Value Theory>> or <<Extreme Value Estimation>>
 
       Starting from the short, clear video [[https://www.youtube.com/watch?v=o-cpu1IH3tM][here]], at about 1:45:
 
 ******* Is about finding distribution tails, where there are few samples
 ******* "tail": values > some threshold
 ******* Assumes parent distribution tails have a known form of tail distribution 
-******* Two ways to estimate tail distribution: GEV and GPD
+******* Two traditional ways to estimate tail distribution: GEV and GPD
 ********* <<Generalized Extreme Value Distribution>>: (GEV) Chunk Maximum
           (An old fashioned method)
 
@@ -9292,6 +9307,9 @@ sera
 ************* graphical methods where one studies the dependence of GP-related metrics on threshold
 ************* Goodness-of-Fit (GoF): for a certain level of significance, find lowest thresh where GPD fits            
  
+******* [[Metalog Distributions]] also work, are more general
+        e.g. slides, p. 17 of [[file:energy.bib::Keelin16metalogDist][Keelin 2016: Metalog Distributions]]
+
 ***** <<Extreme Quantile Clustering>>
 ******* storms or other extreme events ([[file:energy.bib::kariniotakis08anemoswindforecast][kariniotakis 2008: anemos leading european]])
 ******* [[advanced utility forecasting application]] (extreme events)
@@ -12934,6 +12952,8 @@ optimization to be a generalization of linear programming.
              [[file:energy.bib::Jewson04problemBrierScore][Jewson: Problem with Brier: do likelihood]]
              [[file:energy.bib::Benedetti10scoreFrcstVerifRare][Benedetti 2010: Scoring rules: Brier --> log (IGN) score]]
    11/25/19  [[file:energy.bib::UniWisconsin18aeroOptDepthQG][U Wisconsin 2018: Aerosol Optical Depth Quick Guide]]
+   01/20/20  [[file:energy.bib::Keelin19metalogCloseFrm][Keelin et al. 2019: Metalog Distribution Lognormal Sum, Closed Form]]
+             [[file:energy.bib::Mauch13windPowFrcstLogitNorm][Mauch et al. 2013 logit norm quantile wind power]] 
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
