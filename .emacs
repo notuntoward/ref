@@ -1553,18 +1553,17 @@ _C-M-a_ change default action from list for this session
   
 ;; *** Debuggers
 ;; **** realgud
-;; TODO try getting this to work
-;; Seems to have a semi-GUI in emacs: https://github.com/realgud/realgud
+;; Has  a semi-GUI in emacs: https://github.com/realgud/realgud
 ;; best docs I can find: https://github.com/realgud/realgud
 ;; middle mouse shows variable
 ;;  (in tooltip if M-x gud-tooltip-mode )
 ;; M-x gud-goto-info brings up gud docs
 
-;; Would be impoortant if I knew how to start gdb or readgud:gdb
+;; Lines below would be impoortant if I knew how to start gdb or readgud:gdb
 ;; (sdo/find-exec "gdb" "Needed for debugging: pacman -Ss gdb")
 ;; (sdo/find-exec "gcc" "gdb needs libstdc (& others?) from gcc: pacman -Ss gcc")
 
-;; would be important if I understood what ipdb was good for
+;; Line below would be important if I understood what ipdb was good for
 ;;(use-package realgud-ipdb)
 
 (use-package realgud
@@ -1572,7 +1571,7 @@ _C-M-a_ change default action from list for this session
               realgud:ipdb
               realgud:pdb))
 
-;; **** gud debugger
+
 (add-hook 'gud-mode-hook
 	  '(lambda ()
              ;; conflicts w/ other home bindings...
@@ -1589,6 +1588,46 @@ _C-M-a_ change default action from list for this session
 				   (comint-next-input 1)
 				 (forward-line 1))))))
 
+;; realgud author's color customizations:  I'm not sure I see a
+;; difference, probably because of the ansi term thing I've never been
+;; able to figure out.
+;; https://github.com/realgud/realgud/wiki/Customizing-Colors
+(defface term-color-darkgreen
+  '((t :foreground "DarkGreen" :background "DarkGreen"))
+  "Face used to render dark green color code."
+  :group 'term)
+
+
+(defface term-color-cadetblue
+  '((t :foreground "CadetBlue" :background "CadetBAlue"))
+  "Face used to render dark cadet blue color code."
+  :group 'term)
+
+(defface term-color-purple
+  '((t :foreground "Purple" :background "Purple"))
+  "Face used to render dark Purple color code."
+  :group 'term)
+
+(defface term-color-darkgoldenrod
+  '((t :foreground "Darkgoldenrod" :background "Darkgoldenrod"))
+  "Face used to render dark Darkgoldenrod color code."
+  :group 'term)
+
+(defface term-color-ivory4
+  '((t :foreground "Ivory4" :background "Ivory4"))
+  "Face used to render dark Ivory4 color code."
+  :group 'term)
+
+(setq ansi-term-color-vector
+      [term
+       term-color-black
+       term-color-red
+       term-color-darkgreen
+       term-color-cadetblue
+       term-color-blue
+       term-color-purple
+       term-color-darkgoldenrod
+       term-color-ivory4])
 
 ;; ** Matlab mode
 
