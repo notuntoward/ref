@@ -166,7 +166,6 @@
           To this:
 	    (kill-new (concat "[#" targBdy "]")) ;'#' for dedicated targ match
 
-******* TRY get .emacs, etc. unified across machines.
 ******* TRY get Windows file associations working again, esp. pdf reader
 
         Note: it already works for opening pdfs in bibtext mode (from C-c j p)
@@ -1477,7 +1476,6 @@ Many text editors have access to these in some simple way, so before thinking ab
         [[https://github.com/dzop/emacs-jupyter][dzop/emacs-jupyter: An interface to communicate with Jupyter kernels]]
 
         Somehow talks to Jupyter through org-mode.  Is what the author of [[orgbabelhelper]] says he's going to work on instead of [[orgbabelhelper]].
-
         
 *** Dired operations
 ***** file marking
@@ -2278,6 +2276,10 @@ Strike-through: nil
         
         I used this list to pick extra packages for [[Chocolatey Emacs]]
 
+******* <<Anaconda Emacs>>
+
+        [[https://anaconda.org/conda-forge/emacs][conda-forge emacs]] could be Windows, Linux or whatever.
+
 ***** Installing
 
       1. Run the emacs windows installer e.g. Chocolatey or Vincent Goulet
@@ -2938,6 +2940,7 @@ Better than auto-fill and filladapt, which wrap when you hit space when the curs
 ********* <<elpy vs. anaconda-mode>>
 ********* [[https://github.com/proofit404/anaconda-mode/issues/38][how does anaconda-mode compare to Elpy? · Issue #38 · proofit404/an...]]
 ******* [[jedi and conda]]
+******* emacs itself could be in a virtual environment ([[Anaconda Emacs]])
 ***** <<Emacs Jupyter Notebook editing>>
 ******* <<EIN -- Emacs IPython Notebook>>
 *********  [[https://github.com/millejoh/emacs-ipython-notebook][millejoh/emacs-ipython-notebook]]
@@ -8866,6 +8869,23 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
 }        
 ******* a (broken as of 5/19) keybinding extension: 
 ******* also [[Emacs keybindings for Jupyter]]
+***** Jupyter prints all statements/variables on their own line
+      From: [[https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/][28 Jupyter Notebook Tips, Tricks, and Shortcuts for Data Science]]
+
+      For a certain notebook, add these lines in a cell
+
+        from IPython.core.interactiveshell import InteractiveShell
+        InteractiveShell.ast_node_interactivity = "all"
+
+      To make it default behavior for all notebooks, create a file ~/.ipython/profile_default/ipython_config.py with the lines below:
+
+      c = get_config()
+
+      # Run all nodes interactively
+      c.InteractiveShell.ast_node_interactivity = "all"
+
+      This will make matplotlib functions print all the time.  See [[Silencing Matplotlib]]
+        
 ***** <<Versioning Jupyter Notebooks>>
 
       Conclusion: [[https://github.com/mwouts/jupytext][Jupytext]] is the "[[https://nextjournal.com/schmudde/how-to-version-control-jupyter][most complete version control solution]]" and to me, it seems quite workable, esp. if you paired notebooks.  Maybe config so .py files are in subdir (or not?)?  
@@ -9006,6 +9026,13 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
       From: [[https://www.youtube.com/watch?v=VtchVpoSdoQ][Dashboarding with Jupyter Notebooks, Voila and Widgets | SciPy 2019]]
      
 ***** Also [[Python Dashboarding]]      
+***** <<Jupyter notebooks as markdown, latex, etc....>>
+******* <<Pandoc converts notebooks to markdown, latex, etc>>
+        From: [[https://predictablynoisy.com/pandoc-jupyter-notebooks][Testing Pandoc and Jupyter Notebooks - Predictably Noisy]]
+
+******* [[jupytext]] also does a lot of notebook format conversion, including to markdown
+
+******* [[https://gist.github.com/jplsightm/c7df5cd2bc62dc84c5158a80cf0af6df][Convert a Pandas Dataframe to Markdown]]
 *** TRY <<Cookiecutter Data Science>>: notebook/data/code struct for DS projects
 
     Project template describing how to organize code, Jupyter notebooks and data for maximum reproducibility.  Maybe I should try this.
@@ -9158,7 +9185,6 @@ You can also edit the "Start in:" text box to somewhere that will be convenient 
 
 The name of the icon is under the "General" tab of the properties window.
 
-
 ******* adding channels
 
   Add channel "new_channel" to the top of the channel list as highest priority:
@@ -9190,12 +9216,13 @@ The name of the icon is under the "General" tab of the properties window.
 
   source activate yourenvname
 
+******* emacs could be in a conda environment ([[Anaconda Emacs]])
 ***** pip vs. conda
       From: [[https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/][Conda: Myths and Misconceptions | Pythonic Perambulations]]
 
       "pip installs python packages within any environment; conda installs any package within conda environments"
 
-***** how to see all installed packages 
+***** how to see all installed pip packages 
 
       In a conda shell, or someplace that has a path to python
         pip list
@@ -9249,6 +9276,10 @@ Tableau
 ********* In Jupyter: insert %something, see nc5 demo
 ********* [[https://stackoverflow.com/questions/4700614/how-to-put-the-legend-out-of-the-plot/43439132#43439132][matplotlib legend placement]]
 ********* *Good*: [[https://dev.to/skotaro/artist-in-matplotlib---something-i-wanted-to-know-before-spending-tremendous-hours-on-googling-how-tos--31oo]["Artist" in Matplotlib - something I wanted to know...]]
+********* <<Silencing Matplotlib>>
+
+          In order to stop matplotlib prints after each matplotlib command that returns a value, put a ';' at the end of the matplotlib function calls
+
 ******* <<Python plotly>>
 ********* Multilanguage [[Plotly]] can make [[Python ggplot2]] interactive
 ********* [[Python ggplot2]]: also popular in R, has interactive multilanguage ports ([[Plotly]])
@@ -9436,8 +9467,8 @@ results = Parallel(n_jobs=num_cores)(delayed(processInput)(i) for i in inputs)
 ***** Is required for [[Plotly Express]]
 
 *** sklearn
-***** Shortest syntax for LinearRegressor() and 1d arrays
-      Expects X to be a 2D column array.
+***** <<Concise LinearRegressor()>>
+      LinearRegressor() expects X to be a 2D column array.
 
       For x as a list, series or (n,) np.array 
         x = np.arange(5) # x.shape = (5,), is an np.array()
@@ -9448,9 +9479,7 @@ results = Parallel(n_jobs=num_cores)(delayed(processInput)(i) for i in inputs)
       The shortest way is:
         np.c_[x] # np.c_[x].shape == (5,1)
 
-      
-      
-
+      Also: [[Concise numpy column or row vector create]]
 
 *** SciPy
 ***** <<Parallelization for SciPy>>
@@ -10162,7 +10191,23 @@ matlab-ruby-test.rb
 *** 2nd best in [[http://www.techradar.com/news/the-best-free-vpn][TechRadar Review]], Free, 10GB/mo: [[https://windscribe.com/download][Windscribe]]
 ***** also has deal on 2 year subs. w/ TR coupon in article
 ***** Works on SNL links if I set it to "US West" I did the [[instructions for Chrome]], not sure if that was necessary.
-*** [[Pasting a VPN on Windows desktop/taskbar/start menu]]
+*** Pasting a VPN on desktop/taskbar/start menu
+***** VPN connection on Network slideout (usually wifi symbol) taskbar button
+
+      After you've created a VPN connection, it shows up on the right slideout bar, when you click the network taskbar button.
+
+      Click on it, and it will make the VPN connection.
+
+***** VPN settings on destop shortcut (general, not a specific connection)
+      From: [[https://www.computerworld.com/article/3218116/how-to-make-shortcuts-to-windows-10-settings-on-your-desktop.html][How to make shortcuts to Windows 10 settings on your Desktop]]
+
+      o right click on desktop --> Shortcut
+      o paste ms-settings:network-vpn as the location
+      o can change the link name too, if you want
+
+      See the web page for many other Settings shortcut codes
+***** VPN connection on taskbar
+******* [[https://vpnmyway.wordpress.com/version-history-download/][VPNMyWay is supposed to put the connection on the taskbar]]
 * <<Lyx>>
 *** Windows Lyx: use TexLive instead of MikTex: [[How to make the org-ref latex compile: install TexLive]]
 
@@ -10368,6 +10413,7 @@ matlab-ruby-test.rb
     scotto@sharpleaf.org is registered with this site
 *** [[Word Bibliography]]
 *** [[org-ref]]
+*** [[Jupyter notebooks as markdown, latex, etc....]]
 * <<Knowledge as Graphs>>
 *** Tree / Mindmaps
 ***** MindMeister
