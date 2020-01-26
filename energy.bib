@@ -26518,19 +26518,18 @@ Diffusion and adoption processes},
 }
 
 @InProceedings{Jin19physInvNN,
-  author        = {Y. {Jin} and X. {Wu} and J. {Chen} and Y. {Huang}},
-  title         = {A Physics-Driven Deep Learning Network for Subsurface Inversion},
-  booktitle     = {Proc. United States National Committee of URSI National Radio Science Meeting (USNC-URSI NRSM)},
-  year          = {2019},
-  pages         = {1--2},
-  month         = jan,
-  __markedentry = {[Scott:6]},
-  abstract      = {Subsurface inversion is an essential technique for many applications including seismic processing, oilfield well logging an geosteering. Conventional inverse methods based on optimization are time-consuming and sensitive to initial values. The traditional lookup table approach which is limited by the table size could reduce the computational time but only achieves low accuracy. To solve these issues, we propose a physics-driven Deep Neural Network (PhDNN) for solving non-linear inverse problems. In this framework, the physical forward model is utilized to produce a data misfit. Both the model misfit and data misfit are used to train the network. As an example, we use this framework to solve a geosteering problem which enables the drilling direction adjusted by collected resistivity well logging measurements. Numerical tests indicate that the proposed network could improve the quality of the prediction significantly.},
-  comment       = {Invertible model, useable maybe for both quantile and distribution regression, or for some kind of probabilistic forecasting assuming a parsimonious parametric distribution model, like the metalog (Keelin16metalogDist)},
-  doi           = {10.23919/USNC-URSI-NRSM.2019.8712940},
-  file          = {:Jin19physInvNN.pdf:PDF},
-  issn          = {null},
-  keywords      = {hydrocarbon reservoirs, learning (artificial intelligence), neural nets, seismology, well logging, traditional lookup table approach, table size, computational time, low accuracy, nonlinear inverse problems, physical forward model, data misfit, model misfit, geosteering problem, physics-driven Deep learning Network, subsurface inversion, essential technique, seismic processing, conventional inverse methods, time-consuming, oilfield well logging, Data models, Inverse problems, Neural networks, Conductivity, Earth, Predictive models, Deep learning},
+  author    = {Y. {Jin} and X. {Wu} and J. {Chen} and Y. {Huang}},
+  title     = {A Physics-Driven Deep Learning Network for Subsurface Inversion},
+  booktitle = {Proc. United States National Committee of URSI National Radio Science Meeting (USNC-URSI NRSM)},
+  year      = {2019},
+  pages     = {1--2},
+  month     = jan,
+  abstract  = {Subsurface inversion is an essential technique for many applications including seismic processing, oilfield well logging an geosteering. Conventional inverse methods based on optimization are time-consuming and sensitive to initial values. The traditional lookup table approach which is limited by the table size could reduce the computational time but only achieves low accuracy. To solve these issues, we propose a physics-driven Deep Neural Network (PhDNN) for solving non-linear inverse problems. In this framework, the physical forward model is utilized to produce a data misfit. Both the model misfit and data misfit are used to train the network. As an example, we use this framework to solve a geosteering problem which enables the drilling direction adjusted by collected resistivity well logging measurements. Numerical tests indicate that the proposed network could improve the quality of the prediction significantly.},
+  comment   = {Invertible model, useable maybe for both quantile and distribution regression, or for some kind of probabilistic forecasting assuming a parsimonious parametric distribution model, like the metalog (Keelin16metalogDist)},
+  doi       = {10.23919/USNC-URSI-NRSM.2019.8712940},
+  file      = {:Jin19physInvNN.pdf:PDF},
+  issn      = {null},
+  keywords  = {hydrocarbon reservoirs, learning (artificial intelligence), neural nets, seismology, well logging, traditional lookup table approach, table size, computational time, low accuracy, nonlinear inverse problems, physical forward model, data misfit, model misfit, geosteering problem, physics-driven Deep learning Network, subsurface inversion, essential technique, seismic processing, conventional inverse methods, time-consuming, oilfield well logging, Data models, Inverse problems, Neural networks, Conductivity, Earth, Predictive models, Deep learning},
 }
 
 @TechReport{Akbarinia11sumRcrsProb,
@@ -30462,20 +30461,19 @@ code for generating the distribution is given in the second Appendix.},
 }
 
 @Article{Keelin16metalogDist,
-  author        = {Thomas W. Keelin},
-  title         = {The Metalog Distributions},
-  journal       = {Decision Analysis},
-  year          = {2016},
-  volume        = {13},
-  pages         = {243-277},
-  issn          = {1545-8490},
-  __markedentry = {[Scott:]},
-  abstract      = {The metalog distributions constitute a new system of continuous univariate probability distributions designed for flexibility, simplicity, and ease/speed of use in practice. The system is comprised of unbounded, semibounded, and bounded distributions, each of which offers nearly unlimited shape flexibility compared to previous systems of distributions. Explicit shape-flexibility comparisons are provided. Unlike other distributions that require nonlinear optimization for parameter estimation, the metalog quantile functions and probability density functions have simple closed-form expressions that are quantile parameterized linearly by cumulative-distribution-function data. Applications in fish biology and hydrology show how metalogs may aid data and distribution research by imposing fewer shape constraints than other commonly used distributions. Applications in decision analysis show how the metalog system can be specified with three assessed quantiles, how it facilities Monte Carlo simulation, and how applying it aided an actual decision that would have been made wrongly based on commonly used discrete methods.},
-  comment       = {Basis functions for cdfs.  Fitting is a matter of estimating linear coefficients on linear quantiles -- maybe useful for cleaning up distribution regression, and for doing conditional probabilistic forecasts like Mauch13windPowFrcstLogitNorm and Pinson12vShrtWndPowLogitNorm.  Has R and Python.
+  author   = {Thomas W. Keelin},
+  title    = {The Metalog Distributions},
+  journal  = {Decision Analysis},
+  year     = {2016},
+  volume   = {13},
+  pages    = {243-277},
+  issn     = {1545-8490},
+  abstract = {The metalog distributions constitute a new system of continuous univariate probability distributions designed for flexibility, simplicity, and ease/speed of use in practice. The system is comprised of unbounded, semibounded, and bounded distributions, each of which offers nearly unlimited shape flexibility compared to previous systems of distributions. Explicit shape-flexibility comparisons are provided. Unlike other distributions that require nonlinear optimization for parameter estimation, the metalog quantile functions and probability density functions have simple closed-form expressions that are quantile parameterized linearly by cumulative-distribution-function data. Applications in fish biology and hydrology show how metalogs may aid data and distribution research by imposing fewer shape constraints than other commonly used distributions. Applications in decision analysis show how the metalog system can be specified with three assessed quantiles, how it facilities Monte Carlo simulation, and how applying it aided an actual decision that would have been made wrongly based on commonly used discrete methods.},
+  comment  = {Basis functions for cdfs.  Fitting is a matter of estimating linear coefficients over probability basis functions -- maybe useful for cleaning up distribution regression, and for doing conditional probabilistic forecasts, even extreme value prediction.  Has R and Python.
 
 THE IDEA
 
-Estimates a cdf from a few points on an empirical cdf, with a guaranteed smooth pdf.  Kind of like polynomical regression for cdfs, in that, you project data onto  a basis function and then estimate linear coeffs -- examples of some kind of regularization so it's smooth.  More detail  in Keelin11QuantParamDist.
+Estimates a cdf from a few points on an empirical cdf, with a guaranteed smooth, monotonic pdf.  Kind of like polynomical regression for cdfs, in that, you project data onto  a basis function and then estimate linear coeffs -- examples of some kind of regularization so it's smooth.  More detail  in Keelin11QuantParamDist, is used in Keelin19metalogCloseFrm.
 
 POTENTIAL USES (for me)
 
@@ -30485,9 +30483,9 @@ Could be a faster, better behaved way of smoothing distribution regression cdfs 
 
 2. Direct probablistic Forecasting
 
-Or, could directly estimate the conditional distribution coeffs.  For example, Mauch13windPowFrcstLogitNorm and Pinson12vShrtWndPowLogitNorm do bounded probabilistic wind power forecasts with (bounded logit-norm) distributions.  Metalog dists can estimate logit-norm, and more, so maybe these papers provide hints on how to estimate conditional metalog parameters.  How to do this is not immediately obvious, as Mauch just does a log transform, does scalar linear regression, and then assumes Gaussianinity to get the (transformed) quantiles; metalogs directly estimate the smoothed distribution from already existing quantiles.  
+Or, could directly estimate the conditional distribution coeffs.  For example, Mauch13windPowFrcstLogitNorm and Pinson12vShrtWndPowLogitNorm do bounded probabilistic wind power forecasts with (bounded logit-norm) distributions.  Metalog dists can estimate logit-norm, and more, so maybe these papers provide hints on how to estimate conditional metalog parameters.  How to do this is not immediately obvious, as Mauch just does a logit transform, does scalar linear regression, and then assumes Gaussianinity to get the (transformed) quantiles; metalogs directly estimate the smoothed distribution from already existing quantiles.  
 
-But maybe you could modify linear QR somehow.  The y's for metalog are probabilities -- could be the probabilities at the grid of quantiles you're trying to estimate.  The x's are the quantiles, and they are a linear function of these fixed probabilties; the parameters you'd fit conditionally are the a's.
+But maybe you could modify linear QR somehow.  The y's for metalog are probabilities -- could be the probabilities at the grid of quantiles you're trying to estimate.  The x's are the quantiles, and they are a linear function of these fixed probabilties; the parameters you'd fit conditionally are the a's.  Hmm...
 
 Or, maybe there's a way to make the coefficients conditional with some kind of special TensorFlow NN.     If you have a fixed grid of transformed probabilities, y_g, then you could predict predict quantiles, x_hat=y_g dot a, where the input layer takes in the independent variables, z, and eventually, some network layer outputs the vector a,; the rest of the network does a fixed transform to x_hat, and then there is a quantile loss function.  Forcing this form would guarantee boundedness and monotonicity.
 
@@ -30499,7 +30497,7 @@ There also might be a trick using an invertible NN, like in [Baird05oneStepInvrt
 
 Could also be a better way of handling extreme values (it fits the GEV).  Example of it being better is (I think) on p. 17 of  Keelin16metalogDist slides)  In Jan 2019, it had ridge regression, given commit comment in python library here: https://github.com/tjefferies/pymetalog/commit/bf0dbf4b7e3314007e81165f05300263ed7c7bc5.  Not clear how lambda is chosen, though.  The author has plans to do LASSO and elastic net, according to the repository issues.  But again, how to CV?
 
-Question: can the pdf implied by the cdf matching be discontinous e.g. can it have a point probability mass at zero power?  Slides show that it can (page 12, beta distribution)
+Question: can the pdf implied by the matching cdf be discontinous e.g. can it have a point probability mass at zero power?  Slides show that it can, at least at the beginning (page 12, beta distribution)
 
 The author is the father of Patrick Keelin (SA manager @ CPR)
 
@@ -30531,9 +30529,9 @@ This version was used here: Keelin19metalogCloseFrm
 Attached author's draft came from here: http://www.metalogdistributions.com/images/TheMetalogDistributions.pdf
 
 Slides also attached},
-  doi           = {10.1287/deca.2016.0338},
-  file          = {:Keelin16metalogDist.pdf:PDF;:Keelin16metalogDist_Slides.pdf:PDF},
-  url           = {https://pubsonline.informs.org/doi/10.1287/deca.2016.0338},
+  doi      = {10.1287/deca.2016.0338},
+  file     = {:Keelin16metalogDist.pdf:PDF;:Keelin16metalogDist_Slides.pdf:PDF},
+  url      = {https://pubsonline.informs.org/doi/10.1287/deca.2016.0338},
 }
 
 @InProceedings{Keelin19metalogCloseFrm,
@@ -40236,6 +40234,32 @@ Has data on this page: https://www.aeaweb.org/articles?id=10.1257/aer.100.5.2031
   doi      = {10.1257/aer.100.5.2031},
   file     = {:Comin10explrTechDiffus.pdf:PDF},
   url      = {http://www.aeaweb.org/articles?id=10.1257/aer.100.5.2031},
+}
+
+@Article{Williams20parsDiffResSolar,
+  author        = {Eric Williams and Rexon Carvalho and Eric Hittinger and Matthew Ronnenberg},
+  title         = {Empirical development of parsimonious model for international diffusion of residential solar},
+  journal       = {Renewable Energy},
+  year          = {2020},
+  volume        = {150},
+  pages         = {570 - 577},
+  issn          = {0960-1481},
+  __markedentry = {[scott:6]},
+  abstract      = {We develop a new parsimonious model of residential solar diffusion that, with only two regression parameters and one independent variable, reasonably explains empirical observations. Additional solar customers resulting from an increase in Net Present Value (NPV) are modeled as a normal distribution. This leads to adoption as a function of NPV being the integral of the Gaussian, producing the error function, which demonstrates S-curve behavior commonly seen in technology diffusion. Empirical analysis for five regions (three U.S. states: Arizona, California, and Massachusetts; and two countries: Germany and Japan) from 2005 to 2016 shows a consistent relationship between annual adoption per million households and NPV. Non-linear regression indicates good agreement between data and the error function model, the adoption rate peaking at an NPV of $7100/kW with standard deviation of $4110/kW. Consumer purchases of rooftop solar across multiple regions are explained with a single variable, making this model simpler than traditional diffusion approaches. A novel implication of the model is that the subsidy cost to stimulate additional solar adoption increases as the technology becomes cheaper. This is because the same subsidy is paid to all consumers, including those who would have purchased solar without subsidy.},
+  comment       = {Seems like the CPR payback feature should be net present value:  Residential solar power adoption across 4 US states, Germany and Japan, is predicted by a simple integrated Gaussian thing.  Hawaii  The only input is Net Present Value in $ per kW.  
+
+At $7,100 per kilowatt half of population would be financially motivated to get a solar system -- Hawaii is already close to this point, and the rush to buy solar panels has caused the state to change policies in order to discourage PV growth.
+
+Uses of this work
+* can be used to estimate the social cost of carbon (how much it will cost in subsidies to reduce carbon by this amount)
+* solar installer pricing.  Can set your price to get the amount of installs you desire.
+
+Evernote: https://www.evernote.com/l/AA3gIHC9W6JIhYnPKA45ifYJiMrCYIT92t0/
+
+},
+  doi           = {https://doi.org/10.1016/j.renene.2019.12.101},
+  keywords      = {Solar power, Technology diffusion, Subsidy, Empirical model},
+  url           = {http://www.sciencedirect.com/science/article/pii/S0960148119319731},
 }
 
 @Article{Fuentes07bayesEntSpatSamp,

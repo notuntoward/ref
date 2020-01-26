@@ -11322,6 +11322,7 @@ Erika
 ******* DONE [[file:energy.bib::Horowitz19ovrvwDERinterConnNREL][Horowitz et al. 2019: Overview DER Interconn (as DER adopt frcst)]]
 ***** Solar adoption rates
 ******* DONE [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market Model (dGen)]]: NREL
+******* TODO [[file:energy.bib::Williams20parsDiffResSolar][Williams et al. 2020: Empirical Diffusion Res Solar]]
 ******* [[file:energy.bib::Gagnon16distPVadoptMktFctr][Gagnon & Sigrin 2016: Distributed PV Adoption Mkt Factors]]
 ******* [[file:energy.bib::Kwasnik19adoptDERagentRsltn][Kwasnik et al. 2019: PV Agent Adopt Resolution Implications]]
 ******* [[file:energy.bib::Sigrin18uncertMktMdlPVmultiMdl][Sigrin et al. 2018: Market Modeling Uncertainty Distr. Solar]]
@@ -11366,6 +11367,7 @@ Erika
 
 ******* TODO [[file:energy.bib::Zarwi17discChoiceAdoptDiffTranspo][Zarwi et al. 2017: EV adopt Discr Choice Bass]]
 
+******* TODO Not Bass, but diffusion: [[file:energy.bib::Williams20parsDiffResSolar][Williams et al. 2020: Empirical Diffusion Res Solar]]
 ******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012: Innovation diffusion SDEs]] (could get rate of change)
 ******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012 bass SDE rate of change (interscience online)]]
 ******* [[file:energy.bib::Nafidi18inhomogDiffProcBassSDE][Nafidi et al. 2018 inhomog diffuse model Bass]]
