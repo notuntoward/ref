@@ -19,10 +19,47 @@
 (when (display-graphic-p)
   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
+;; A way of bootstrapping packages.
+;; Unfortunately, it causes a "Wrong type argument: package-desc, nil" error.
+;; Googling this problem suggests that it's a big time sink.
+;';
+;; I looked at it b/c I wanted
+;; to use the now-obsolete frame-cmds package, required by some nice modifications to the wettrin package.  Somebody used quelpa to get that.
+;; But there are no errors w/o frame-cmds so I'll skip this quelpa bit for now
+;;
+;;  ;; quelpa allows you to build packages directly from source
+;; ;; https://benaiah.me/posts/bootstrapping-emacs-config-quelpa-use-package/
+;; ;; https://github.com/benaiah/quelpa-use-package-bootstrap-config
+
+;; ;; Initialize the emacs packaging system
+;; (package-initialize)
+
+;; ;; Bootstrap quelpa
+;; (if (require 'quelpa nil t)
+;;     (quelpa-self-upgrade)
+;;   (with-temp-buffer
+;;     (url-insert-file-contents
+;;      "https://framagit.org/steckerhalter/quelpa/raw/master/bootstrap.el")
+;;     (eval-buffer)))
+
+;; ;; Make Quelpa prefer MELPA-stable over melpa. This is optional but
+;; ;; highly recommended.
+;; ;;
+;; ;; (setq quelpa-stable-p t)
+
+;; ;; Install quelpa-use-package, which will install use-package as well
+;; (quelpa
+;;  '(quelpa-use-package
+;;    :fetcher git
+;;    :url "https://framagit.org/steckerhalter/quelpa-use-package.git"
+;;    :stable nil))
+;; (require 'quelpa-use-package)
+
 (require 'package)
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t) 
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+;; remove if use quelpa package-initialize above
 (package-initialize)
 
 (unless (package-installed-p 'use-package) ; so can do a totally clean start
@@ -971,6 +1008,11 @@ _C-M-a_ change default action from list for this session
 (global-set-key (kbd "C-x 5 c") 'sdo/clone-indirect-buffer-other-frame)
 
 ;; * File Finding / Opening
+;; ** TODO: pdf-tools
+
+;;    It would be nice to get pdftools working on windows.  See demo:
+;;    http://tuhdo.github.io/static/emacs-read-pdf.gif
+
 ;; ** Dired Mode
 ;; *** Generic Dired and Win32 integration
 
@@ -1143,6 +1185,11 @@ _C-M-a_ change default action from list for this session
 (use-package dired-narrow
   :ensure t
   :bind (:map dired-mode-map ("/" . dired-narrow)))
+
+;; *** TODO: open pdf with system pdf reader
+
+;; This used to work (type & in dired on pdf file) and does work
+;; inside a bib file.  
 
 ;; ** Find-file and URL
 ;;
@@ -1508,8 +1555,22 @@ _C-M-a_ change default action from list for this session
 ;; **** realgud
 ;; TODO try getting this to work
 ;; Seems to have a semi-GUI in emacs: https://github.com/realgud/realgud
+;; best docs I can find: https://github.com/realgud/realgud
+;; middle mouse shows variable
+;;  (in tooltip if M-x gud-tooltip-mode )
+;; M-x gud-goto-info brings up gud docs
 
-(use-package realgud)
+;; Would be impoortant if I knew how to start gdb or readgud:gdb
+;; (sdo/find-exec "gdb" "Needed for debugging: pacman -Ss gdb")
+;; (sdo/find-exec "gcc" "gdb needs libstdc (& others?) from gcc: pacman -Ss gcc")
+
+;; would be important if I understood what ipdb was good for
+;;(use-package realgud-ipdb)
+
+(use-package realgud
+   :commands (realgud:gdb
+              realgud:ipdb
+              realgud:pdb))
 
 ;; **** gud debugger
 (add-hook 'gud-mode-hook
@@ -2568,10 +2629,10 @@ This function avoids making messed up targets by exiting without doing anything 
 Utils:
 ^Info1^         ^Info2/cust^     ^Org^                      ^Misc^
 --------------------------------------------------------------------------------
-_b_: bindings   _m_: mode        _P_: parent headings       _a_: calc
+_b_: bindings   _m_: mode        _P_: parent headings      _a_: calc
 _s_: symbol     _i_: info        _B_: add bibitem org      _p_: counsel-yank-pop
-_k_: key        _c_: cust-appr   _q_: swoop org buffers     _e_: ediff-buffers
-_f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
+_k_: key        _c_: cust-appr   _w_: weather              _e_: ediff-buffers
+_f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
 --------------------------------------------------------------------------------
            _._: mark position _/_: jump to mark
 "
@@ -2596,7 +2657,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
 
   ("P" helm-org-parent-headings)
   ("B" add-bibitem-org)
-  ("q" helm-multi-swoop-org)
+  ("w" bjm/wttrin)
   ("o" org-indent-mode) ; toggles org text to headline level & other stuff
   ;;("H" helm-mini) ; buffers & recent files: like ivy with "virtual buffers"
 
@@ -2798,6 +2859,68 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
 ;; turn off the annoying alarm bell (is this redundant?)
 (setq ring-bell-function 'ignore)
 
+;; * Outside World
+;; ** Weather
+;;
+
+;; From: http://pragmaticemacs.com/emacs/weather-in-emacs/
+;; And: https://sriramkswamy.github.io/dotemacs/
+;; M-x wttrin to start, 'g' to next city, 'q' qo quit
+;; weather from wttr.in
+(use-package wttrin
+  :ensure t
+  :commands (wttrin wttrin-query wttrin-exit)
+  :init
+  (setq wttrin-default-cities '("Seattle"
+                                "Minneapolis"
+                                "New York")))
+
+;; The below works for looking @ Seattle and qutting but fails if pick
+;; the next city with 'g'
+;;
+;; Hacked by sdo in Jan 2020:
+;; advise wttrin to save frame arrangement
+;; requires frame-cmds package
+(defun bjm/wttrin-save-frame ()
+  "Save frame and window configuration and then expand frame for wttrin."
+  ;;save window arrangement to a register
+  (window-configuration-to-register :pre-wttrin)
+  (delete-other-windows)
+  ;;save frame setup and resize
+  ;;  (save-frame-config)
+  (frameset-to-register :pre-wttrin-frame)
+  (set-frame-width (selected-frame) 130)
+  (set-frame-height (selected-frame) 48)
+  )
+(advice-add 'wttrin :before #'bjm/wttrin-save-frame)
+
+(defun bjm/wttrin-restore-frame ()
+  "Restore frame and window configuration saved prior to launching wttrin."
+  (interactive)
+  ;;(jump-to-frame-config-register)
+  (jump-to-register :pre-wttrin-frame)
+  (jump-to-register :pre-wttrin)
+  )
+(advice-add 'wttrin-exit :after #'bjm/wttrin-restore-frame)
+
+;; So opens pre-selects 1st city on list
+;;
+;; function to open wttrin with first city on list
+(defun bjm/wttrin ()
+    "Open `wttrin' without prompting, using first city in `wttrin-default-cities'"
+    (interactive)
+    ;; save window arrangement to register 
+    (window-configuration-to-register :pre-wttrin)
+    (delete-other-windows)
+    ;; save frame setup
+    ;;(save-frame-config)
+    (frameset-to-register :pre-wttrin-frame)
+    (set-frame-width (selected-frame) 130)
+    (set-frame-height (selected-frame) 48)
+    ;; call wttrin
+    (wttrin-query (car wttrin-default-cities))
+    )
+
 ;; * Variables Set By Emacs's built-in Customization Interface 
 ;; ** Custom Set Variables
 (custom-set-variables
@@ -2841,7 +2964,11 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(ess-ps-viewer-pref "gv")
  '(ess-style (quote OWN))
  '(focus-follows-mouse t)
- '(gud-chdir-before-run nil)
+ '(gdb-many-windows t)
+ '(gud-chdir-before-run t)
+ '(gud-pdb-command-name "python -m pdb")
+ '(gud-tooltip-echo-area t)
+ '(gud-tooltip-mode t)
  '(ido-auto-merge-work-directories-length -1)
  '(ido-cannot-complete-command (quote ido-grid-mode-tab))
  '(ido-create-new-buffer (quote always))
@@ -2935,7 +3062,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode       _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
  '(recentf-max-saved-items 200)
