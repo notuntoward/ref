@@ -1834,7 +1834,7 @@ _C-M-a_ change default action from list for this session
     ;; console buffer, and then moves the cursor there.
     :bind ("<f8>" . (lambda () (interactive) (elpy-shell-send-region-or-buffer-and-go t)))
     :bind ("<S-f8>" . sdo/run-python-clean-as-possible)
-    :bind ("<M-f8>" . (lambda () (interactive) (realgud:pdb)))
+    :bind ("<M-f8>" . (lambda () (interactive) (realgud:pdb))) ; :ipdb, :trepan, :gdb ?
     :init
     (elpy-enable)
     ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?):
