@@ -821,8 +821,6 @@ _C-M-a_ change default action from list for this session
 ;; https://www.reddit.com/r/emacs/comments/7evidd/windmove_shortcuts/
 ;; TODO: is which-key good enough for this?  Only thing is how to keep
 ;; it going until done, as hydra does it with _SPC_
-;; TODO: use better arrow symbols.  See:
-;; http://xahlee.info/comp/unicode_arrows.html
 ;; TODO: shrink some more and put a bunch of other window functions on
 ;; this hydra?  Maybe frames, buffers, ...
 ;; TODO compare w/ ace-window and hydr: https://www.youtube.com/watch?v=_qZliI1BKzI
@@ -1016,6 +1014,9 @@ _C-M-a_ change default action from list for this session
 ;; ** Dired Mode
 ;; *** Generic Dired and Win32 integration
 
+;; Reminder: in dired, type "W" on a file to open w/ Windows default
+;; browser.
+
 ;; TODO: when I do this, dired-subtree doesn't work.  Figure out why, fix.
 ;; So dired puts folders at top.  The discovered ls program must
 ;; handle GNU switches (e.g. OSX doesn't)
@@ -1185,11 +1186,6 @@ _C-M-a_ change default action from list for this session
 (use-package dired-narrow
   :ensure t
   :bind (:map dired-mode-map ("/" . dired-narrow)))
-
-;; *** TODO: open pdf with system pdf reader
-
-;; This used to work (type & in dired on pdf file) and does work
-;; inside a bib file.  
 
 ;; ** Find-file and URL
 ;;
@@ -2713,6 +2709,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
 (global-set-key (kbd "<M-apps>") 'hydra-utils/body) ; for fullsize keyboard
 (global-set-key (kbd "<C-lwindow>") 'hydra-utils/body) ; no apps on Surface Go
 
+;; TODO: an org link to helpful pages like you can get for C-l in info or man page
 (use-package helpful ; better emacs info: https://github.com/Wilfred/helpful
   :bind
   ( ; Note that the built-in `describe-function' includes both functions
