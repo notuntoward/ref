@@ -713,6 +713,14 @@ _C-M-a_ change default action from list for this session
   (org-save-outline-visibility nil))
 
 ;; * IDO Mode
+
+;; TODO: find a new file that's like something already existing but shorter (so you can create a new file w/ a shorter name.  eg.s C-x C-x tmp   and there
+;; is already a file named tmp.txt
+;; I can't do this.
+;; TODO: how to open a pdf with ido (mapped to C-x C-f).  Currently,
+;; it doesn't use the system default (PDF Xchange editor) but instead
+;; opens it in an emacs buffer.  Is Ivy any better?
+
 ;; Ido mode (a replacement for iswitchb and much else).  Much is in customizations
 ;; advice from: http://www.masteringemacs.org/article/introduction-to-ido-mode
 ;; See also sdo/get-recentf() in keybinding section, which (currently) uses ido
@@ -1563,9 +1571,10 @@ _C-M-a_ change default action from list for this session
 ;;(use-package realgud-ipdb)
 
 (use-package realgud
-   :commands (realgud:gdb
-              realgud:ipdb
-              realgud:pdb))
+  :init (load-library "realgud") ; avoid M-x load-library on every startup
+  :commands (realgud:gdb
+             realgud:ipdb
+             realgud:pdb))
 
 
 (add-hook 'gud-mode-hook
@@ -1825,6 +1834,7 @@ _C-M-a_ change default action from list for this session
     ;; console buffer, and then moves the cursor there.
     :bind ("<f8>" . (lambda () (interactive) (elpy-shell-send-region-or-buffer-and-go t)))
     :bind ("<S-f8>" . sdo/run-python-clean-as-possible)
+    :bind ("<M-f8>" . (lambda () (interactive) (realgud:pdb)))
     :init
     (elpy-enable)
     ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?):
