@@ -716,10 +716,16 @@ _C-M-a_ change default action from list for this session
 
 ;; TODO: find a new file that's like something already existing but shorter (so you can create a new file w/ a shorter name.  eg.s C-x C-x tmp   and there
 ;; is already a file named tmp.txt
-;; I can't do this.
+;; I can't do this.  Ido and counsel-find-file both
+;; have a problem in this situation.
+;;
 ;; TODO: how to open a pdf with ido (mapped to C-x C-f).  Currently,
 ;; it doesn't use the system default (PDF Xchange editor) but instead
 ;; opens it in an emacs buffer.  Is Ivy any better?
+;; Nope. counsel-find-file does it too.
+;; In dired, I can open a pdf with the sytem pdf reader with 'W' key.
+;; This calls browse-url-of-dired-file; hitting RETURN of 'f' calls
+;; dired-find-file
 
 ;; Ido mode (a replacement for iswitchb and much else).  Much is in customizations
 ;; advice from: http://www.masteringemacs.org/article/introduction-to-ido-mode
@@ -2702,7 +2708,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
 
   ("P" helm-org-parent-headings)
   ("B" add-bibitem-org)
-  ("w" bjm/wttrin)
+  ("w" sdo/wttrin)
   ("o" org-indent-mode) ; toggles org text to headline level & other stuff
   ;;("H" helm-mini) ; buffers & recent files: like ivy with "virtual buffers"
 
@@ -2924,48 +2930,39 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
 ;; The below works for looking @ Seattle and qutting but fails if pick
 ;; the next city with 'g'
 ;;
-;; Hacked by sdo in Jan 2020:
+;; Based on: http://pragmaticemacs.com/emacs/weather-in-emacs/
+;; Hacked to remove dependence on obsolete frame-cmds pkg by sdo in Jan 2020:
 ;; advise wttrin to save frame arrangement
-;; requires frame-cmds package
-(defun bjm/wttrin-save-frame ()
-  "Save frame and window configuration and then expand frame for wttrin."
-  ;;save window arrangement to a register
-  (window-configuration-to-register :pre-wttrin)
-  (delete-other-windows)
-  ;;save frame setup and resize
-  ;;  (save-frame-config)
-  (frameset-to-register :pre-wttrin-frame)
-  (set-frame-width (selected-frame) 130)
-  (set-frame-height (selected-frame) 48)
-  )
-(advice-add 'wttrin :before #'bjm/wttrin-save-frame)
 
-(defun bjm/wttrin-restore-frame ()
+;; this function is called after 'g' once wttrin is started but it
+;; uses the wrong # of wttrn args, according to error messages, and so
+;; 'g' doesn't work.
+;; TODO fix the following (very low priority, since I rarely look at more
+;; than one city):  if I comment it out, and then run 'g', the wttrin buffer is
+;; still there after 'q'.  If I only start wttrin and then 'q', the
+;; the buffer is not there.
+;; (defun sdo/wttrin-save-frame ()
+;;   "Save frame and window configuration and then expand frame for wttrin."
+;;   (setq pre-wttrin-frame-config (current-frame-configuration))
+;;   (set-frame-width (selected-frame) 130)
+;;   (set-frame-height (selected-frame) 48))
+;; (advice-add 'wttrin :before #'sdo/wttrin-save-frame)
+
+(defun sdo/wttrin-restore-frame ()
   "Restore frame and window configuration saved prior to launching wttrin."
   (interactive)
-  ;;(jump-to-frame-config-register)
-  (jump-to-register :pre-wttrin-frame)
-  (jump-to-register :pre-wttrin)
-  )
-(advice-add 'wttrin-exit :after #'bjm/wttrin-restore-frame)
+  (set-frame-configuration pre-wttrin-frame-config))
+(advice-add 'wttrin-exit :after #'sdo/wttrin-restore-frame)
 
-;; So opens pre-selects 1st city on list
-;;
-;; function to open wttrin with first city on list
-(defun bjm/wttrin ()
-    "Open `wttrin' without prompting, using first city in `wttrin-default-cities'"
+;; Function to open wttrin with first city on list
+(defun sdo/wttrin ()
+    "Open `wttrin' without prompting, using first city in `wttrin-default-cities'.  Window is sized to fit wttrn display."
     (interactive)
-    ;; save window arrangement to register 
-    (window-configuration-to-register :pre-wttrin)
+    (setq pre-wttrin-frame-config (current-frame-configuration))
     (delete-other-windows)
-    ;; save frame setup
-    ;;(save-frame-config)
-    (frameset-to-register :pre-wttrin-frame)
     (set-frame-width (selected-frame) 130)
     (set-frame-height (selected-frame) 48)
-    ;; call wttrin
-    (wttrin-query (car wttrin-default-cities))
-    )
+    (wttrin-query (car wttrin-default-cities)))
 
 ;; * Variables Set By Emacs's built-in Customization Interface 
 ;; ** Custom Set Variables
