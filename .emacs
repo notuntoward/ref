@@ -2915,10 +2915,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
 ;; ** Weather
 ;;
 
-;; From: http://pragmaticemacs.com/emacs/weather-in-emacs/
-;; And: https://sriramkswamy.github.io/dotemacs/
 ;; M-x wttrin to start, 'g' to next city, 'q' qo quit
-;; weather from wttr.in
 (use-package wttrin
   :ensure t
   :commands (wttrin wttrin-query wttrin-exit)
@@ -2926,33 +2923,24 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
   (setq wttrin-default-cities '("Seattle"
                                 "Minneapolis"
                                 "New York")))
-
-;; The below works for looking @ Seattle and qutting but fails if pick
-;; the next city with 'g'
-;;
-;; Based on: http://pragmaticemacs.com/emacs/weather-in-emacs/
-;; Hacked to remove dependence on obsolete frame-cmds pkg by sdo in Jan 2020:
-;; advise wttrin to save frame arrangement
-
-;; this function is called after 'g' once wttrin is started but it
-;; uses the wrong # of wttrn args, according to error messages, and so
-;; 'g' doesn't work.
-;; TODO fix the following (very low priority, since I rarely look at more
-;; than one city):  if I comment it out, and then run 'g', the wttrin buffer is
-;; still there after 'q'.  If I only start wttrin and then 'q', the
-;; the buffer is not there.
-;; (defun sdo/wttrin-save-frame ()
-;;   "Save frame and window configuration and then expand frame for wttrin."
-;;   (setq pre-wttrin-frame-config (current-frame-configuration))
-;;   (set-frame-width (selected-frame) 130)
-;;   (set-frame-height (selected-frame) 48))
-;; (advice-add 'wttrin :before #'sdo/wttrin-save-frame)
-
+;; Originally from: http://pragmaticemacs.com/emacs/weather-in-emacs/
+;; Rewritten to remove dependence on obsolete frame-cmds pkg, and to
+;; clean up after itself at quit (sdo in Jan 2020)
 (defun sdo/wttrin-restore-frame ()
-  "Restore frame and window configuration saved prior to launching wttrin."
+  "Remove all *wttr.in buffers, then restore frame and window configuration saved prior to launching wttrin."
   (interactive)
+  (kill-matching-buffers "*wttr.in - *" nil t)
   (set-frame-configuration pre-wttrin-frame-config))
 (advice-add 'wttrin-exit :after #'sdo/wttrin-restore-frame)
+
+;; doesn't work
+;; (defun sdo/wttrn-colorize ()
+;;   ;; (set (make-local-variable 'face-remapping-alist)
+;;   ;;      '((default :background "#303030")))
+;;   (set-foreground-color "gray")
+;;   (set-background-color "black")
+;;   )
+;; (advice-add 'wttrn-query :after #'sdo/wttrn-colorize)
 
 ;; Function to open wttrin with first city on list
 (defun sdo/wttrin ()
@@ -2962,7 +2950,11 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
     (delete-other-windows)
     (set-frame-width (selected-frame) 130)
     (set-frame-height (selected-frame) 48)
+    (set-background-color "black") ;; goes away after do wttrn 'q'
+    (set-foreground-color "gray")
     (wttrin-query (car wttrin-default-cities)))
+
+;;special-display-buffer-names
 
 ;; * Variables Set By Emacs's built-in Customization Interface 
 ;; ** Custom Set Variables
