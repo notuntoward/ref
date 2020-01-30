@@ -2238,6 +2238,8 @@ is already narrowed."
   ;; Make org-ref cite: link folded in emacs.  Messes up Latex export:
   ;; https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
   (org-link-set-parameters "cite" :display nil)
+  ;; org-ref-bibtex-store-link is siad to be the same as org-bibtex
+  ;; link storing, but I can't figure out how to call it interactively
 )
 
 ;; Unfortunately, this may screw up linking to techreports:
@@ -2921,8 +2923,11 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
   :commands (wttrin wttrin-query wttrin-exit)
   :init
   (setq wttrin-default-cities '("Seattle"
+                                "Alexandria, MN"
                                 "Minneapolis"
-                                "New York")))
+                                "New York"
+                                "Copenhagen, Denmark"
+                                "Bayreuth, Germany")))
 ;; Originally from: http://pragmaticemacs.com/emacs/weather-in-emacs/
 ;; Rewritten to remove dependence on obsolete frame-cmds pkg, and to
 ;; clean up after itself at quit (sdo in Jan 2020)
@@ -2943,6 +2948,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
 ;; (advice-add 'wttrn-query :after #'sdo/wttrn-colorize)
 
 ;; Function to open wttrin with first city on list
+;; Could avoid background coloring problem by starting it in a new frame.
 (defun sdo/wttrin ()
     "Open `wttrin' without prompting, using first city in `wttrin-default-cities'.  Window is sized to fit wttrn display."
     (interactive)
@@ -2953,8 +2959,6 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
     (set-background-color "black") ;; goes away after do wttrn 'q'
     (set-foreground-color "gray")
     (wttrin-query (car wttrin-default-cities)))
-
-;;special-display-buffer-names
 
 ;; * Variables Set By Emacs's built-in Customization Interface 
 ;; ** Custom Set Variables
@@ -3037,7 +3041,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(mouse-wheel-tilt-scroll t)
  '(org-agenda-files
    (quote
-    ("c:/Users/sotterson/OneDrive/shareHW/school/GIZcolombia/GIZcolombia.org")))
+    ("~/OneDrive - Clean Power Research/ref/energytop.org" "c:/Users/sotterson/OneDrive/shareHW/school/GIZcolombia/GIZcolombia.org")))
  '(org-confirm-shell-links (quote y-or-n-p))
  '(org-ctrl-k-protect-subtree t)
  '(org-cycle-include-plain-lists (quote integrate))
