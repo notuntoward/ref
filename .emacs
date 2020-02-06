@@ -1196,10 +1196,29 @@ _C-M-a_ change default action from list for this session
 ;; *** Dired narrow: show only string matches, then edit only narrowed part
 
 ;; '/', type a narrowing string  starts it, 'g' ends the narrowing
+;; is somewhat redundant w/ just doing swiper search of dired buffer
 ;; also see: narrow-or-widen-dwim
 (use-package dired-narrow
   :ensure t
   :bind (:map dired-mode-map ("/" . dired-narrow)))
+
+;; *** Better org-links from dired
+
+;; From:
+;; https://emacs.stackexchange.com/questions/13093/get-org-link-to-insert-link-description-automatically
+;; (defun my//dired-store-link (orig-fun &rest args)
+;;   (if (derived-mode-p 'dired-mode)
+;;       (let ((file (dired-get-filename nil t)))
+;;         (setf file (if file
+;;                        (abbreviate-file-name (expand-file-name file))
+;;                      default-directory))
+;;         (let ((link (concat "file:" file))
+;;               (desc (file-name-nondirectory file)))
+;;           (push (list link desc) org-stored-links)
+;;           (car org-stored-links)))
+;;     (apply orig-fun args)))
+;; (advice-add 'org-store-link :around #'my//dired-store-link)
+
 
 ;; ** Find-file and URL
 ;;
@@ -2116,7 +2135,8 @@ is already narrowed."
 	((derived-mode-p 'latex-mode)
 	 (LaTeX-narrow-to-environment))
 	(t (narrow-to-defun))))
-;; Wipes out Emacs' entire narrowing keymap. Now there's only a toggle.
+;; TODO Idea is to have only a toggle.  Wipes out Emacs' entire
+;; narrowing keymap but not in org-mode, which overwrites this.
 (define-key ctl-x-map "n" #'narrow-or-widen-dwim)
 
 ;; * Org Mode
@@ -2240,7 +2260,18 @@ is already narrowed."
   (org-link-set-parameters "cite" :display nil)
   ;; org-ref-bibtex-store-link is siad to be the same as org-bibtex
   ;; link storing, but I can't figure out how to call it interactively
-)
+  ;; TODO: make it interactive.  I can call org-ref-bibtex-store-link
+  ;; by typing it into the org-store-link path.  I just can't get it
+  ;; to bring this up as an option. Maybe do something like my//dired-store-link ?
+  )
+
+;; doesn't work
+(defun sdo/org-ref-bibtex-store-link ()
+  (interactive)
+;;  (call-interactively 'org-ref-bibtex-store-link))
+;;  (org-bibtex-store-link))
+  (org-ref-bibtex-store-link)) ;; doesn't work
+
 
 ;; Unfortunately, this may screw up linking to techreports:
 ;; https://github.com/jkitchin/org-ref/issues/205
@@ -2253,7 +2284,13 @@ is already narrowed."
 ;; --- Hide org-mode dedicated targets -----------------------------------------
 ;; Hides the <<>> around dedicated targets; the face of the remaining visible text is set by customizing the face: org-target
 ;; Inspiration: https://emacs.stackexchange.com/questions/19230/how-to-hide-targets
-;; but regexp there worked only for all :alnum: targets.  I tried to invert org-target-regexp but couldn't get that to work, so here, I'm just matching printable chars in the middle.
+;; but regexp there worked only for all :alnum: targets.  I tried to
+;; invert org-target-regexp but couldn't get that to work, so here,
+;; I'm just matching printable chars in the middle.
+
+;; TODO: modify internal org-links code here:
+;; http://pragmaticemacs.com/emacs/insert-internal-org-mode-links-the-ivy-way/
+;; to get dedicated links plus the list of headlines which aren't dedicated?
 
 ;; From: Nicolas Goaziou: https://mail.google.com/mail/u/0/#inbox/QgrcJHsNmtZZNZFRdHZBqCqcmZVLJkSdzJq
 ;; He also suggested this bit of code as another alternative:
@@ -2411,7 +2448,6 @@ This function avoids making messed up targets by exiting without doing anything 
       (insert "- [ ] ")
       (forward-line))
     (beginning-of-line)))
-
 ;;(global-set-key [C-f1] 'my/toggle-subtree) 
 ;;(global-set-key [C-f2] 'my/toggle-subtree) 
 
@@ -2931,6 +2967,20 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
 ;; Originally from: http://pragmaticemacs.com/emacs/weather-in-emacs/
 ;; Rewritten to remove dependence on obsolete frame-cmds pkg, and to
 ;; clean up after itself at quit (sdo in Jan 2020)
+
+;; Function to open wttrin with first city on list
+;; TODO: Could make new frame to avoid background coloring of non-wttrin frames
+(defun sdo/wttrin ()
+    "Open `wttrin' without prompting, using first city in `wttrin-default-cities'.  Window is sized to fit wttrn display."
+    (interactive)
+    (setq pre-wttrin-frame-config (current-frame-configuration))
+    (delete-other-windows)
+    (set-frame-width (selected-frame) 130)
+    (set-frame-height (selected-frame) 48)
+    (set-background-color "black") ;; goes away after do wttrn 'q'
+    (set-foreground-color "gray")
+    (wttrin-query (car wttrin-default-cities)))
+
 (defun sdo/wttrin-restore-frame ()
   "Remove all *wttr.in buffers, then restore frame and window configuration saved prior to launching wttrin."
   (interactive)
@@ -2946,19 +2996,6 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
 ;;   (set-background-color "black")
 ;;   )
 ;; (advice-add 'wttrn-query :after #'sdo/wttrn-colorize)
-
-;; Function to open wttrin with first city on list
-;; Could avoid background coloring problem by starting it in a new frame.
-(defun sdo/wttrin ()
-    "Open `wttrin' without prompting, using first city in `wttrin-default-cities'.  Window is sized to fit wttrn display."
-    (interactive)
-    (setq pre-wttrin-frame-config (current-frame-configuration))
-    (delete-other-windows)
-    (set-frame-width (selected-frame) 130)
-    (set-frame-height (selected-frame) 48)
-    (set-background-color "black") ;; goes away after do wttrn 'q'
-    (set-foreground-color "gray")
-    (wttrin-query (car wttrin-default-cities)))
 
 ;; * Variables Set By Emacs's built-in Customization Interface 
 ;; ** Custom Set Variables
@@ -3039,9 +3076,6 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount (quote (1 ((shift) p\. 1) ((control)))))
  '(mouse-wheel-tilt-scroll t)
- '(org-agenda-files
-   (quote
-    ("~/OneDrive - Clean Power Research/ref/energytop.org" "c:/Users/sotterson/OneDrive/shareHW/school/GIZcolombia/GIZcolombia.org")))
  '(org-confirm-shell-links (quote y-or-n-p))
  '(org-ctrl-k-protect-subtree t)
  '(org-cycle-include-plain-lists (quote integrate))
