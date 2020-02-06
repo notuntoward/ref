@@ -153,6 +153,7 @@
 *** [[file:energy.bib::Lindley00philOfStat][Lindley 2000 Philosophy of Statistics]]
 *** [[file:energy.bib::Nielsen15nnDeepLrnBk][Nielsen 2015: Neural Deep Lrn Bk]] (interactive web too)
 *** [[file:energy.bib::Zwillinger00crcProbStatsTblBk][Zwillinger & Kokoska 2000: CRC Prob & Stats Tables]]
+*** [[cite:Molnar19interpMLbk][Molnar 2019: Interpretable ML Book]]
 *** [[Books w/ source code]]
 *** Wind energy books I could buy
     these three looked good, looking at amazon.com on 9/6/2011
@@ -2348,6 +2349,7 @@ Scott
 ******* [[file:energy.bib::Saabas15featSelStabilRFE][Saabas 2015: Selecting Feats Stability, RFE & others]]
 
 ******* [[Stability Feature Selection]]
+******* usable? [[cite:Wei15varImpCmpr][Wei 2015: Compare Var Imp High Dim (RF permutation tests)]]
 *** <<GLM performance metrics>>
 ***** [[Deviance]]
 * <<Feature reduction>>
@@ -4026,6 +4028,7 @@ Hope that helps,
 ******* [[file:energy.bib::Christiansen07autoTuneWind][Christiansen et al. 2007: Automatic tune param setting]] (improved stability)
 ******* [[file:energy.bib::Guyon03introFeatSel][Guyon & Elisseeff 2003: Intro to var/feat sel]]
 ******* also [[Forecast quality metrics]]
+[[Interpretable Models]] often include feature importance measures
 *** Attribution of errors to features
     (maybe don't select it causes them?)
 ***** [[file:energy.bib::Gale08cholesky][Gale 2008: Cholesky Decomposition]] colinearity, forecast error attributiuon
@@ -4138,8 +4141,11 @@ Hope that helps,
 ***** [[Random Forest Ensemble Selection]]
 ***** [[Isolation Forest Anomaly Detection]] (a random forest type)
 ***** <<Random Forest feature selection>>
-******* RF featsel situated in broader featsel context: [[file:energy.bib::Saeys07reviewFeatSelBioInf][Saeys et al. 2007 feat sel review]]
-******* Featsel does improve RFs: [[https://www.evernote.com/l/AA3_Fvd1gbFID4N1S8TZnlgrCZphI269mOs/][Joel 2017: Is Romantic Desire Predictable?]]
+******* Feature selection for random forests
+********* RF featsel situated in broader featsel context: [[file:energy.bib::Saeys07reviewFeatSelBioInf][Saeys et al. 2007 feat sel review]]
+********* Featsel does improve RFs: [[https://www.evernote.com/l/AA3_Fvd1gbFID4N1S8TZnlgrCZphI269mOs/][Joel 2017: Is Romantic Desire Predictable?]]
+******* Random forests as a feature selection method
+********* [[cite:Wei15varImpCmpr][Wei 2015: Compare Var Imp High Dim (RF permutation tests)]]
 ******* also [[Random Forests]]
 ***** TODO <<Random Forest Probabilistic Regression>>
 ******* TODO [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
@@ -6929,6 +6935,20 @@ variables will be preferred, when possible.
 *** hetero linear rgrssn: [[file:energy.bib::Leslie07genHeteroLinRegr][Leslie et al. 2007: general approach to]] (w/ feature selection, model averaging)
 *** Related to Gaussian Processes: [[file:energy.bib::Williams97predictLin2GaussProc][Williams 1998: Prediction with Gaussian processes]]
 
+* <<Ripley's K>>
+  (move this under a spatial correlation section, same as kriging, etc. )
+*** [[file:energy.bib::Rai15agentEnrgyTechAdoptFactors][Rai & Robinson 2015: Agent PV adopt]] (uses it)
+*** [[file:energy.bib::Wilschut15spatDistPtPattGerbil][Wilschut et al. 2015: Spatial Gerbil K]] (uses it)
+*** [[file:energy.bib::Gillan12ripleyK][Gillan & Gonzalez 2012: Ripleys K Function]]
+*** [[file:energy.bib::Dixon14ripleyK][Dixon 2014: Ripleys K Function]]
+*** Ripley's K software
+***** [[https://docs.astropy.org/en/stable/stats/ripley.html][astropy]] Python library ([[https://docs.astropy.org/en/stable/api/astropy.stats.RipleysKEstimator.html#astropy.stats.RipleysKEstimator][RipleysKEstimator — Astropy v4.0]])
+***** [[https://research.csiro.au/software/r-workshop-notes/][Analysing spatial point patterns in R (workshop notes and slides)]]
+***** [[https://rpy.sourceforge.io/][rpy2]] : how to use R from Python
+***** [[https://pro.arcgis.com/en/pro-app/tool-reference/spatial-statistics/multi-distance-spatial-cluster-analysis.htm][Multi-Distance Spatial Cluster Analysis (Ripley's K Function) ArcGIS Pro]]
+***** [[https://developers.arcgis.com/python/][ArcGIS API for Python]]
+
+*** Ripley's K is used here: [[Technology Adoption Rates]]
 * <<Forecasting>>
 *** <<German Data: RES production and forecasts>>
 
@@ -9973,6 +9993,12 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 *** [[file:energy.bib::Sovacool08nukeGHGs][Sovacool 2008: Valuing]] nuclear GHG emissions
 *** TODO [[file:energy.bib::Rolnick19climateChngMachLrn][Rolnick et al. 2019: Tackling Climate Change Machine Learning]]
 *** also [[Meteorology]]
+* <<Agent Based Modeling>>
+*** [[file:energy.bib::Grimm10oddProtcol][Grimm et al. 2010: ODD Protocol]]
+*** [[file:energy.bib::Grimm17docSocSimODD_BkCh][Grimm et al. 2017: Documenting Social Simulation Models]]
+*** [[file:energy.bib::Rai15agentEnrgyTechAdoptFactors][Rai & Robinson 2015: Agent]]
+*** also [[Market Modeling]]
+*** also [[Technology Adoption Rates]]
 * Operations
 *** <<Possible Power>>
 ***** [[file:energy.bib::][Giebel et al. 2014: Estimation Experimental Validation]] realtime wake model, needs pitch?
@@ -10666,7 +10692,7 @@ Scott
 ******* Using [[Quantile regression and ABC]]?
 ******* [[file:energy.bib::GonzalezAparicio15windPowFrcstUncertMktSpain][Gonzalez-Aparicio & Zucker 2015: Impact Spain]] frcst uncert. mkt
 ******* [[cite:Pircalabu17Jointpricevolumetric][Pircalabu et al. 2017: Joint Price/Vol Wind Trade Copula]] 
-***** TODO Market Modeling (multi-agent, feedback, ...)
+***** <<Market Modeling>> (multi-agent, feedback, ...)
 ******* TODO Market energy/price feedback loop: [[file:energy.bib::Giabardo10feedbackElecMkt][Giabardo et al. 2010: Feedback]] elec market
 ******* [[file:energy.bib::Santos15Multiagentsimulation][Santos et al. 2015: Multi]] agent
 ******* [[file:energy.bib::Gallo16multiAgentElecMkt][Gallo 2016: Electricity]] multi agent
@@ -10678,6 +10704,7 @@ Scott
 ******* TODO [[cite:Toke16modelIntsLimOrdrBk][Toke & Yoshida 2016: Modelling intensity limit order book]]
 ******* TODO [[file:energy.bib::Toke11mktMkingOBsprd][Toke 2011: Market]] move OB spread: Hawkes Process
 ******* TODO [[file:energy.bib::Mathieu13enrgArbtrgThrmCtlLds][Mathieu et al. 2013: Energy]] arbitrage: Best mkt. paper from HenryM
+******* also [[Agent Based Modeling]]
 ***** [[file:energy.bib::Weber10AdqtMktDsngEur][Weber 2010: Adequate European]] (intraday not used much in 2010)
 ***** [[file:energy.bib::Dionne15LiquidAdjIntraday][Dionne et al. 2015: Liquidity Intraday Value Risk]] models liquidity from order books
 ***** <<Nordpool Market>>
@@ -11441,6 +11468,8 @@ Erika
 ***** also [[Real Estate Forecasts]]
 ***** also [[Economic Forecasts]]
 ***** also [[Population Forecasts]]
+***** also [[Agent Based Modeling]]
+***** also [[Ripley's K]] (proxmity feature)
 *** <<Technology Learning Rates>>
 ***** Introductions to Tech Learning Rates
 ******* TODO [[file:energy.bib::Rubin15techLrnRateElecSply][Rubin et al. 2015: Review Tech Lrn Elec Supply]]
@@ -12306,7 +12335,7 @@ TOTO: read Fan16* for an overview
       (recommended in  [[cite:Karpathy16deepReinfLrnPongPix][Karpathy 2016: Deep Reinforcement Learning]])
 ***** TODO [[cite:Karpathy16deepReinfLrnPongPix][Karpathy 2016: Deep Reinforcement Learning]] Pong Pix Blog
 *** see also [[Deep Learning]]
-* Interpretable Models
+* <<Interpretable Models>>
 *** Youtube: [[https://www.youtube.com/watch?v=UBiNzVfv3L4][Fast, flexible, and interpretable regression modeling, Daniela Witten]]
     Piecewise constant LASSO that's fast and good for high dim problems.
 *** <<SHAP Interpretable Models>>
@@ -12321,6 +12350,7 @@ TOTO: read Fan16* for an overview
 *** [[Graph Networks]]
 *** [[file:energy.bib::Nathans12mlrVarImp][Nathans et al. 2012: Interpreting var imp, MLR and PCA]]
 *** [[file:energy.bib::Gill01interpIntrctHierGLM][Gill 2001: Interpreting]] interactions, GLM
+*** [[cite:Molnar19interpMLbk][Molnar 2019: Interpretable ML Book]]
 * <<My Optimization Learning Path>>
   Stuff I should learn about for electricity system optimization
 
@@ -12957,6 +12987,7 @@ optimization to be a generalization of linear programming.
    11/25/19  [[file:energy.bib::UniWisconsin18aeroOptDepthQG][U Wisconsin 2018: Aerosol Optical Depth Quick Guide]]
    01/20/20  [[file:energy.bib::Keelin19metalogCloseFrm][Keelin et al. 2019: Metalog Distribution Lognormal Sum, Closed Form]]
              [[file:energy.bib::Mauch13windPowFrcstLogitNorm][Mauch et al. 2013 logit norm quantile wind power]] 
+   02/03/20  [[cite:Gillan12ripleyK][Gillan 2012: Ripley's K Function and Pair Correlation Function]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib

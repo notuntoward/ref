@@ -4910,6 +4910,24 @@ See also: Hollenbach14missDatImpCopula},
   url      = {http://www.sciencedirect.com/science/article/pii/S0167715217301530},
 }
 
+@InBook{Dixon14ripleyK,
+  title     = {Ripley's K Function},
+  publisher = {American Cancer Society},
+  year      = {2014},
+  author    = {Dixon, Philip M.},
+  isbn      = {9781118445112},
+  abstract  = {Abstract Ripley's K function summarizes spatial point process data. It can be used to describe a set of locations, test hypotheses about patterns, and estimate parameters in a spatial point process model. For a stationary point process, K(t) is the expected number of additional points within distance t of a focal point divided by the intensity of the process. A univariate version is used for one set of locations and a multivariate version is used when points can be labeled by a small number of groups. This article reviews the properties of Ripley's K function and two related functions, then illustrates the computation and interpretation using data on the locations of trees in a swamp hardwood forest.},
+  booktitle = {Wiley StatsRef: Statistics Reference Online},
+  comment   = {A measure used to describe spatial clustering social networks.
+
+Used in: Rai15agentEnrgyTechAdoptFactors},
+  doi       = {10.1002/9781118445112.stat07751},
+  eprint    = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781118445112.stat07751},
+  file      = {:Dixon14ripleyK.pdf:PDF},
+  keywords  = {spatial point process, spatial point pattern, clustering, spatial scale, spatial segregation, edge effect corrections},
+  url       = {https://onlinelibrary.wiley.com/doi/abs/10.1002/9781118445112.stat07751},
+}
+
 @Article{Kaur16benefitsSolPowFrcstImbalMkt,
   author   = {Amanpreet Kaur and Lukas Nonnenmacher and Hugo T.C. Pedro and Carlos F.M. Coimbra},
   title    = {Benefits of solar forecasting for energy imbalance markets},
@@ -5884,6 +5902,10 @@ Maybe fancier stuff in: Abreu13genCmplxStepDiff},
   pages    = {163 - 177},
   issn     = {1364-8152},
   abstract = {Agent-based modeling (ABM) techniques for studying human-technical systems face two important challenges. First, agent behavioral rules are often ad hoc, making it difficult to assess the implications of these models within the larger theoretical context. Second, the lack of relevant empirical data precludes many models from being appropriately initialized and validated, limiting the value of such models for exploring emergent properties or for policy evaluation. To address these issues, in this paper we present a theoretically-based and empirically-driven agent-based model of technology adoption, with an application to residential solar photovoltaic (PV). Using household-level resolution for demographic, attitudinal, social network, and environmental variables, the integrated ABM framework we develop is applied to real-world data covering 2004–2013 for a residential solar PV program at the city scale. Two applications of the model focusing on rebate program design are also presented.},
+  comment  = {
+Use of Ripley's K is unclear.  Maybe Wilschut15spatDistPtPattGerbil is what they meant.
+
+ODD protocol: Grimm10oddProtcol},
   doi      = {https://doi.org/10.1016/j.envsoft.2015.04.014},
   file     = {:Rai15agentEnrgyTechAdoptFactors.pdf:PDF},
   keywords = {Agent-based modeling, Solar photovoltaic (PV), Complex systems, Technology adoption, Social networks, Bounded rationality},
@@ -5908,6 +5930,33 @@ Uses?
   doi       = {10.1137/1.9781611975673.54},
   eprint    = {https://epubs.siam.org/doi/pdf/10.1137/1.9781611975673.54},
   url       = {https://epubs.siam.org/doi/abs/10.1137/1.9781611975673.54},
+}
+
+@Article{Wilschut15spatDistPtPattGerbil,
+  author        = {Wilschut, Liesbeth I. and Laudisoit, Anne and Hughes, Nelika K. and Addink, Elisabeth A. and de Jong, Steven M. and Heesterbeek, Hans A. P. and Reijniers, Jonas and Eagle, Sally and Dubyanskiy, Vladimir M. and Begon, Mike},
+  title         = {Spatial distribution patterns of plague hosts: point pattern analysis of the burrows of great gerbils in Kazakhstan},
+  journal       = {Journal of biogeography},
+  year          = {2015},
+  volume        = {42},
+  number        = {26877580},
+  pages         = {1281--1292},
+  month         = jul,
+  issn          = {1365-2699},
+  __markedentry = {[Scott:6]},
+  abstract      = {AIM: The spatial structure of a population can strongly influence the dynamics of infectious diseases, yet rarely is the underlying structure quantified. A case in point is plague, an infectious zoonotic disease caused by the bacterium Yersinia pestis. Plague dynamics within the Central Asian desert plague focus have been extensively modelled in recent years, but always with strong uniformity assumptions about the distribution of its primary reservoir host, the great gerbil (Rhombomys opimus). Yet, while clustering of this species' burrows due to social or ecological processes could have potentially significant effects on model outcomes, there is currently nothing known about the spatial distribution of inhabited burrows. Here, we address this knowledge gap by describing key aspects of the spatial patterns of great gerbil burrows in Kazakhstan. LOCATION: Kazakhstan. METHODS: Burrows were classified as either occupied or empty in 98 squares of four different sizes: 200 m (side length), 250 m, 500 m and 590-1020 m. We used Ripley's K statistic to determine whether and at what scale there was clustering of occupied burrows, and semi-variograms to quantify spatial patterns in occupied burrows at scales of 250 m to 9 km. RESULTS: Significant spatial clustering of occupied burrows occurred in 25% and 75% of squares of 500 m and 590-1020 m, respectively, but not in smaller squares. In clustered squares, the clustering criterion peaked around 250 m. Semi-variograms showed that burrow density was auto-correlated up to a distance of 7 km and occupied density up to 2.5 km. MAIN CONCLUSIONS: These results demonstrate that there is statistically significant spatial clustering of occupied burrows and that the uniformity assumptions of previous plague models should be reconsidered to assess its significance for plague transmission. This field evidence will allow for more realistic approaches to disease ecology models for both this system and for other structured host populations.},
+  comment       = {A decent explanation of how to find the average cluster size using Ripley's K.  Seems like the method is close to what Rai15agentEnrgyTechAdoptFactors meant to write in eq. 9b
+
+
+
+26877580[pmid]
+PMC4737218[pmcid]},
+  database      = {PubMed},
+  edition       = {2015/05/19},
+  file          = {:Wilschut15spatDistPtPattGerbil.pdf:PDF},
+  keywords      = {Bubonic plague, GIS, Rhombomys opimus, Yersinia pestis, clustering, desert, infectious disease, landscape epidemiology, rodents, spatial point pattern analysis},
+  language      = {eng},
+  publisher     = {John Wiley and Sons Inc.},
+  url           = {https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4737218/},
 }
 
 @InProceedings{Tian09newAdaboost_RT,
@@ -22319,6 +22368,28 @@ Thresholding might make it a hack, but is interesting b/c
   timestamp = {2010.08.12},
 }
 
+@Article{Wei15varImpCmpr,
+  author   = {Pengfei Wei and Zhenzhou Lu and Jingwen Song},
+  title    = {A comprehensive comparison of two variable importance analysis techniques in high dimensions: Application to an environmental multi-indicators system},
+  journal  = {Environmental Modelling \& Software},
+  year     = {2015},
+  volume   = {70},
+  pages    = {178 - 190},
+  issn     = {1364-8152},
+  abstract = {Permutation variable importance measure (PVIM) based on random forest and Morris' screening design are two effective techniques for measuring the variable importance in high dimensions. The former technique is developed in the machine learning discipline and widely used in bioinformatics, while the latter technique is popular in scientific computing. We present three main contributions to variable importance analysis (VIA). First, through theoretical derivation, we show that the PVIM converges to double the non-standardized Sobol' total effect index. This observation indicates that the PVIM is especially useful for variable screening as it captures both the individual and interaction effects. Second, three numerical examples with different types of model behavior are presented for comparing the performances of these two techniques. The main conclusions are as follows. For high-dimensional additive or approximately additive models, the PVIM is much more efficient than Morris' screening design when used for both variable importance ranking and variable screening. For high-dimensional models mainly governed by interaction effects, the performance of PVIM degrades, but it is still a competitive technique. Finally, the two techniques are applied to an environmental multi-indicators system for improving the robustness of the partial order structure of this system.},
+  comment  = {Random forest permutation measure (PVIM) is good for ranking feature importance for polynomial regression -- weighted sum of exponentiated inputs with interaction terms.  Theoretical proof and empirical evidence.  Also, it's better than Morris screening (PVIM?).  Once caution is that RF PVIM breaks down for high-dim systems dominated by interaction terms, but is still competitive.
+
+This paper might do this for logistic regression but the server was down when I tried to look at it:
+Computing random forests variable importance measures (vim) on mixed numerical and categorical data.  A Hjerpe 2016.
+
+https://scholar.google.com/scholar?q=Computing%20random%20forests%20variable%20importance%20measures%20%28vim%29%20on%20mixed%20numerical%20and%20categorical%20data
+
+},
+  doi      = {https://doi.org/10.1016/j.envsoft.2015.04.015},
+  keywords = {High-dimensional model, Random forest, Permutation variables importance measure, Morris' screening design},
+  url      = {http://www.sciencedirect.com/science/article/pii/S1364815215001243},
+}
+
 @Article{Matheson76,
   author    = {Matheson, James E. and Winkler, Robert L.},
   title     = {Scoring rules for continuous probability distributions},
@@ -27815,6 +27886,24 @@ See Simpler: Tille12histoLorenzGini, Lyon16advtgsGrpMnLorenzGINI},
   url       = {https://doi.org/10.1214/16-EJS1154},
 }
 
+@InBook{Grimm17docSocSimODD_BkCh,
+  pages     = {349--365},
+  title     = {Documenting Social Simulation Models: The ODD Protocol as a Standard},
+  publisher = {Springer International Publishing},
+  year      = {2017},
+  author    = {Grimm, Volker and Polhill, Gary and Touza, Julia},
+  editor    = {Edmonds, Bruce and Meyer, Ruth},
+  address   = {Cham},
+  isbn      = {978-3-319-66948-9},
+  abstract  = {The clear documentation of simulations is important for their communication, replication, and comprehension. It is thus helpful for such documentation to follow minimum standards. The `overview, design concepts, and details' document protocol (ODD) is specifically designed to guide the description of individual- and agent-based simulation models (ABMs) in journal articles. Popular among ecologists, it is also increasingly used in the social simulation community. Here, we describe the protocol and give an annotated example of its use, with a view in facilitating its wider adoption and encouraging higher standards in simulation description.},
+  booktitle = {Simulating Social Complexity: A Handbook},
+  comment   = {A way of describing/classifying agent based models (ABM).  This is more (useful) detail on the ODD protocol in: Grimm10oddProtcol
+
+The pdf is actually the whole book, which might be interesting further reading.},
+  doi       = {10.1007/978-3-319-66948-9_15},
+  url       = {https://doi.org/10.1007/978-3-319-66948-9_15},
+}
+
 @Article{Kang15elecCustClustExpertDR,
   author   = {Kang, Jimyung and Lee, Jee-Hyong},
   title    = {Electricity Customer Clustering Following Experts’ Principle for Demand Response Applications},
@@ -32071,6 +32160,21 @@ KEY WORDS: Model-performance measures · Root-mean-square error · Mean absolute
   url      = {https://www.int-res.com/abstracts/cr/v30/n1/p79-82/},
 }
 
+@Article{Gillan12ripleyK,
+  author   = {Jeff Gillan and Leandro Gonzalez},
+  title    = {Ripley's K Function and Pair Correlation Function},
+  journal  = {The Landscape Toolbox},
+  year     = {2012},
+  abstract = {The Ripley’s K function (Eq. 1) is a spatial analysis method used to describe how point patterns occur over a given area of interest. Ripley’s K allows
+researchers to determine if the phenomenon of interest (e.g. trees,) appears to be dispersed, clustered, or randomly distributed throughout the study area. This
+method is similar to the Moran’s I function but is able to describe point patterns at multiple user defined scales.},
+  comment  = {Ripley's K function used to detect whether or not the presence of objects over space are clustered or not.   Univariate form describes pattern of one set of objects; bivariate form compares two objects (this is not clear).  There's a significance test to compare clustered-ness vs. the amount of correlation expected if objects were distributed at random.
+
+There is also a pair correlation function (PCF) variant of Ripley's that can compare coorelations within a radius band, instead of across a disk, as in ordinary Ripley/s.},
+  file     = {:Gillan12ripleyK.pdf:PDF},
+  url      = {https://wiki.landscapetoolbox.org/doku.php/spatial_analysis_methods:ripley_s_k_and_pair_correlation_function},
+}
+
 @Misc{Aleo19pvPanelsLowLight,
   author   = {Aleo},
   title    = {All solar panels are not equal - how low light behavior greatly impacts yields},
@@ -32919,7 +33023,7 @@ mathematical analysis.
 on a continuous variable, and construct an
 admissible scoring system as the net pay-off to
 a forecaster who takes all bets (and only those
-bets) which appear favorable on the basss of
+bets) which appear favorable on the basis of
 his reported distribution. This is an exact
 analogue to the "gambling house" construction
 method which may be used to discover discrete
@@ -33305,6 +33409,27 @@ http://www.evernote.com/l/AA1BJb_Z2o5DBqwmnLpB6TH9Q0woSl4jYEw/},
   owner       = {sotterson},
   timestamp   = {2017.03.26},
   url         = {http://www.ren21.net/status-of-renewables/global-status-report/},
+}
+
+@Article{Grimm10oddProtcol,
+  author   = {Volker Grimm and Uta Berger and Donald L. DeAngelis and J. Gary Polhill and Jarl Giske and Steven F. Railsback},
+  title    = {The ODD protocol: A review and first update},
+  journal  = {Ecological Modelling},
+  year     = {2010},
+  volume   = {221},
+  number   = {23},
+  pages    = {2760 - 2768},
+  issn     = {0304-3800},
+  abstract = {The ‘ODD’ (Overview, Design concepts, and Details) protocol was published in 2006 to standardize the published descriptions of individual-based and agent-based models (ABMs). The primary objectives of ODD are to make model descriptions more understandable and complete, thereby making ABMs less subject to criticism for being irreproducible. We have systematically evaluated existing uses of the ODD protocol and identified, as expected, parts of ODD needing improvement and clarification. Accordingly, we revise the definition of ODD to clarify aspects of the original version and thereby facilitate future standardization of ABM descriptions. We discuss frequently raised critiques in ODD but also two emerging, and unanticipated, benefits: ODD improves the rigorous formulation of models and helps make the theoretical foundations of large models more visible. Although the protocol was designed for ABMs, it can help with documenting any large, complex model, alleviating some general objections against such models.},
+  comment  = {A set of standards for describing agent based models, like PV adoption, I guess.  Has about 1.8K cites, so maybe it's work standardizing on this @ CPR.
+
+PV adoption that cites th ODD protocal described in this paper: Rai15agentEnrgyTechAdoptFactors
+
+More detail, explaining the concepts of this paper:  Grimm17docSocSimODD},
+  doi      = {https://doi.org/10.1016/j.ecolmodel.2010.08.019},
+  file     = {:Grimm10oddProtcol.pdf:PDF},
+  keywords = {Model description, Model formulation, Model replication, Scientific communication, Standardization},
+  url      = {http://www.sciencedirect.com/science/article/pii/S030438001000414X},
 }
 
 @Misc{Veillette10AlphaStableDistMatlab,
@@ -40237,16 +40362,15 @@ Has data on this page: https://www.aeaweb.org/articles?id=10.1257/aer.100.5.2031
 }
 
 @Article{Williams20parsDiffResSolar,
-  author        = {Eric Williams and Rexon Carvalho and Eric Hittinger and Matthew Ronnenberg},
-  title         = {Empirical development of parsimonious model for international diffusion of residential solar},
-  journal       = {Renewable Energy},
-  year          = {2020},
-  volume        = {150},
-  pages         = {570 - 577},
-  issn          = {0960-1481},
-  __markedentry = {[scott:6]},
-  abstract      = {We develop a new parsimonious model of residential solar diffusion that, with only two regression parameters and one independent variable, reasonably explains empirical observations. Additional solar customers resulting from an increase in Net Present Value (NPV) are modeled as a normal distribution. This leads to adoption as a function of NPV being the integral of the Gaussian, producing the error function, which demonstrates S-curve behavior commonly seen in technology diffusion. Empirical analysis for five regions (three U.S. states: Arizona, California, and Massachusetts; and two countries: Germany and Japan) from 2005 to 2016 shows a consistent relationship between annual adoption per million households and NPV. Non-linear regression indicates good agreement between data and the error function model, the adoption rate peaking at an NPV of $7100/kW with standard deviation of $4110/kW. Consumer purchases of rooftop solar across multiple regions are explained with a single variable, making this model simpler than traditional diffusion approaches. A novel implication of the model is that the subsidy cost to stimulate additional solar adoption increases as the technology becomes cheaper. This is because the same subsidy is paid to all consumers, including those who would have purchased solar without subsidy.},
-  comment       = {Seems like the CPR payback feature should be net present value:  Residential solar power adoption across 4 US states, Germany and Japan, is predicted by a simple integrated Gaussian thing.  Hawaii  The only input is Net Present Value in $ per kW.  
+  author   = {Eric Williams and Rexon Carvalho and Eric Hittinger and Matthew Ronnenberg},
+  title    = {Empirical development of parsimonious model for international diffusion of residential solar},
+  journal  = {Renewable Energy},
+  year     = {2020},
+  volume   = {150},
+  pages    = {570 - 577},
+  issn     = {0960-1481},
+  abstract = {We develop a new parsimonious model of residential solar diffusion that, with only two regression parameters and one independent variable, reasonably explains empirical observations. Additional solar customers resulting from an increase in Net Present Value (NPV) are modeled as a normal distribution. This leads to adoption as a function of NPV being the integral of the Gaussian, producing the error function, which demonstrates S-curve behavior commonly seen in technology diffusion. Empirical analysis for five regions (three U.S. states: Arizona, California, and Massachusetts; and two countries: Germany and Japan) from 2005 to 2016 shows a consistent relationship between annual adoption per million households and NPV. Non-linear regression indicates good agreement between data and the error function model, the adoption rate peaking at an NPV of $7100/kW with standard deviation of $4110/kW. Consumer purchases of rooftop solar across multiple regions are explained with a single variable, making this model simpler than traditional diffusion approaches. A novel implication of the model is that the subsidy cost to stimulate additional solar adoption increases as the technology becomes cheaper. This is because the same subsidy is paid to all consumers, including those who would have purchased solar without subsidy.},
+  comment  = {Seems like the CPR payback feature should be net present value:  Residential solar power adoption across 4 US states, Germany and Japan, is predicted by a simple integrated Gaussian thing.  Hawaii  The only input is Net Present Value in $ per kW.  
 
 At $7,100 per kilowatt half of population would be financially motivated to get a solar system -- Hawaii is already close to this point, and the rush to buy solar panels has caused the state to change policies in order to discourage PV growth.
 
@@ -40257,9 +40381,9 @@ Uses of this work
 Evernote: https://www.evernote.com/l/AA3gIHC9W6JIhYnPKA45ifYJiMrCYIT92t0/
 
 },
-  doi           = {https://doi.org/10.1016/j.renene.2019.12.101},
-  keywords      = {Solar power, Technology diffusion, Subsidy, Empirical model},
-  url           = {http://www.sciencedirect.com/science/article/pii/S0960148119319731},
+  doi      = {https://doi.org/10.1016/j.renene.2019.12.101},
+  keywords = {Solar power, Technology diffusion, Subsidy, Empirical model},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0960148119319731},
 }
 
 @Article{Fuentes07bayesEntSpatSamp,
@@ -49638,6 +49762,17 @@ Evernote Page:  https://www.evernote.com/l/AA1c4OwL589LmLSwrScZ8V5_i12v3lzSELw/}
   owner     = {sotterson},
   timestamp = {2017.05.02},
   url       = {https://www.intechopen.com/books/wind-farm-technical-regulations-potential-estimation-and-siting-assessment/technical-and-regulatory-exigencies-for-grid-connection-of-wind-generation},
+}
+
+@Book{Molnar19interpMLbk,
+  title     = {Interpretable Machine Learning: A Guide for Making Black Box Models Explainable},
+  publisher = {Self Published},
+  year      = {2019},
+  author    = {Christoph Molnar},
+  comment   = {A free online, self-published book.  As of Jan 2020, the neural net section was a work in progress, but there were chapters on linear regression, logistic regression, GLM/GAM, Decision Trees, Decision Rules and something else.
+
+Can be printed.  Instructions are here:  https://github.com/christophM/interpretable-ml-book},
+  url       = {https://christophm.github.io/interpretable-ml-book/},
 }
 
 @InProceedings{Monaldo03sarWindANSWRS,
