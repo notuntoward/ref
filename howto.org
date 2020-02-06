@@ -1,4 +1,3 @@
-
 * Emacs
 *** *Emacs to try*
     My experiments, Emacs packages I've tried and installed (from Melpa repository). Also, some builtins I could try
@@ -2401,6 +2400,7 @@ Strike-through: nil
          ~/.emacs.d/server/serve
 
 ***** <<Windows Emacs File associations>>
+******* Associating files with emacs e.g. when click them in Windows Explorer
 
       This works as of June 2019 on Windows 10 and emacs 26.2, although it still starts a new emacs every time you click on a file.  emacsclientw is supposed reuse an existing running emacs but that's not what happens right now:
 
@@ -2427,88 +2427,113 @@ Strike-through: nil
          else
            o just click on emacsclientw.exe option if it exists
 
-******* old fixes that aren't necessary anymore on Windows 10, as of 7/17/16.
+********* old fixes that aren't necessary anymore on Windows 10, as of 7/17/16.
 
-      Works almost perfectly except for flashing black window in Goulet
-      emacs 24.5.  Mostly inspired by the article [[https://yoo2080.wordpress.com/2014/02/05/how-to-associate-file-types-with-emacs-on-windows-8/][here]]:
+        Works almost perfectly except for flashing black window in Goulet
+        emacs 24.5.  Mostly inspired by the article [[https://yoo2080.wordpress.com/2014/02/05/how-to-associate-file-types-with-emacs-on-windows-8/][here]]:
 
-      1. make sure runemacs.exe is _on front of Windows PATH_ environment
-         variable, so that the cygwin emacs is not seen first, which will
-         cause confusion.
+        1. make sure runemacs.exe is _on front of Windows PATH_ environment
+           variable, so that the cygwin emacs is not seen first, which will
+           cause confusion.
 
-      2. create a batch file "Gnu Emacs Batch.bat" containing:
+        2. create a batch file "Gnu Emacs Batch.bat" containing:
 
-         emacsclientw.exe -na runemacs.exe %*
+           emacsclientw.exe -na runemacs.exe %*
 
-         I put this in ~/shareHW/config (which can be a symbolic link from
-         OneDrive)
+           I put this in ~/shareHW/config (which can be a symbolic link from
+           OneDrive)
 
-      3. Associate it with filetypes using windows explorer "open with"
-         - in Windows Explorer, right click on file file you want to associate
-         - "open with" (or "open" for 1st time: and then tick "installed
-           program...", go there, and then step below)
-         - make sure none of the standard programs e.g. Adobe Reader are
-           not highlighted. If the are, right click to unhighlight
-         - Seach button --> go to the location of the batch file and click "open"
+        3. Associate it with filetypes using windows explorer "open with"
+           - in Windows Explorer, right click on file file you want to associate
+           - "open with" (or "open" for 1st time: and then tick "installed
+             program...", go there, and then step below)
+           - make sure none of the standard programs e.g. Adobe Reader are
+             not highlighted. If the are, right click to unhighlight
+           - Seach button --> go to the location of the batch file and click "open"
 
-      4. Change the icon for files of this extension
-         - download [[http://www.nirsoft.net/utils/file_types_manager.html][FileTypesMan]]
-         - run it from the zip file (no install)
-         - double click on the .org extension entry
-         - in the default icon window, put: C:\Program Files (x86)\GNU
-           Emacs 24.5\bin\runemacs.exe
-         - might as well type in a description for that file type
-         - OK
+        4. Change the icon for files of this extension
+           - download [[http://www.nirsoft.net/utils/file_types_manager.html][FileTypesMan]]
+           - run it from the zip file (no install)
+           - double click on the .org extension entry
+           - in the default icon window, put: C:\Program Files (x86)\GNU
+             Emacs 24.5\bin\runemacs.exe
+           - might as well type in a description for that file type
+           - OK
 
-      *Troubleshooting*
-      - [[Fix connection actively refused error]]
-      - get rid of flashing black window. From [[https://yoo2080.wordpress.com/2014/02/05/how-to-associate-file-types-with-emacs-on-windows-8/][here]], under "how to
-        eliminate that temporary window and why does it show up?"
+        *Troubleshooting*
+        - [[Fix connection actively refused error]]
+        - get rid of flashing black window. From [[https://yoo2080.wordpress.com/2014/02/05/how-to-associate-file-types-with-emacs-on-windows-8/][here]], under "how to
+          eliminate that temporary window and why does it show up?"
 
-        either replace the .bat file w/ an executable or replace it w/ a
-        change made in regedit with [[http://www.nirsoft.net/utils/file_types_manager.html][FileTypesMan]].
+          either replace the .bat file w/ an executable or replace it w/ a
+          change made in regedit with [[http://www.nirsoft.net/utils/file_types_manager.html][FileTypesMan]].
 
-        I haven't tried either fix, and still have a flashing window
+          I haven't tried either fix, and still have a flashing window
 
 
-********* THIS ALSO DOESN'T WORK ANYMORE W/ Goulet emacs 24.5 / windows 7
+*********** THIS ALSO DOESN'T WORK ANYMORE W/ Goulet emacs 24.5 / windows 7
 
-        /NOTE/ You first have to make Gnu EmacsClient an option by
-        associating the first file type with it by manually specififying
-        the path to emacsclientw.exe.  After that, it will know that emacs is
-        an option for opening files.
+          /NOTE/ You first have to make Gnu EmacsClient an option by
+          associating the first file type with it by manually specififying
+          the path to emacsclientw.exe.  After that, it will know that emacs is
+          an option for opening files.
 
-        For me, this changed the associations for all files of that type, not
-        just the file I first right clicked on.
+          For me, this changed the associations for all files of that type, not
+          just the file I first right clicked on.
 
-        For accidentally screwed up file extensions see: [[Remove bad file association]]
+          For accidentally screwed up file extensions see: [[Remove bad file association]]
 
-********* stuff that used to work but doesn't in Goulet emacs 24.5, windows 7
-*********** solution 1 (problem: "Gnu EmacsClient" doesn't exist)
+*********** stuff that used to work but doesn't in Goulet emacs 24.5, windows 7
+************* solution 1 (problem: "Gnu EmacsClient" doesn't exist)
 
-            By default, you get an extra black command window popup when you
-            start emacs via a file association. Here's how to get rid of it (on
-            Windows 8.1)
+              By default, you get an extra black command window popup when you
+              start emacs via a file association. Here's how to get rid of it (on
+              Windows 8.1)
 
-            o in File Explorer, right click on the file
-            o properties
-            o in the "general" tab, click "change" next to "Opens with"
-            o click icon next to "Gnu EmacsClient"
-*********** solution 2
-           o (server-start) in .emacs
-           o [[http://www.emacswiki.org/emacs/EmacsClient][associate them with]] emacsclientw.exe -na runemacs.exe
-             - make ~/bin/emacsBatch.bat, containing the line:
-               emacsclientw.exe -na runemacs.exe "%1"
-             - then associate it with filetypes using windows explorer "open with"
-             - the above /did/ work and then I messed it up w/ some crappy shareware
-             - stuff that doesn't work
-               - setting environment variable ALTERNATE_EDITOR to runemacs.exe is
-                 also supposed to work, but I couldn't get it to
-               - [[http://www.emacswiki.org/emacs/EmacsMsWindowsIntegration#toc3][command lines]] are supposed to work (and [[http://emacs.1067599.n5.nabble.com/Usign-emacs-as-default-program-in-windows-7-td268764.html][one guy]] (Brian
-                 Elmegaard-2) says they do after old emacsw32 stuff is
-                 removed) but I can't get it to work.  I [[https://mail.google.com/mail/u/0/?shva%3D1#inbox/13c5d929961bd808][posted a question]] to
-                 him.
+              o in File Explorer, right click on the file
+              o properties
+              o in the "general" tab, click "change" next to "Opens with"
+              o click icon next to "Gnu EmacsClient"
+************* solution 2
+             o (server-start) in .emacs
+             o [[http://www.emacswiki.org/emacs/EmacsClient][associate them with]] emacsclientw.exe -na runemacs.exe
+               - make ~/bin/emacsBatch.bat, containing the line:
+                 emacsclientw.exe -na runemacs.exe "%1"
+               - then associate it with filetypes using windows explorer "open with"
+               - the above /did/ work and then I messed it up w/ some crappy shareware
+               - stuff that doesn't work
+                 - setting environment variable ALTERNATE_EDITOR to runemacs.exe is
+                   also supposed to work, but I couldn't get it to
+                 - [[http://www.emacswiki.org/emacs/EmacsMsWindowsIntegration#toc3][command lines]] are supposed to work (and [[http://emacs.1067599.n5.nabble.com/Usign-emacs-as-default-program-in-windows-7-td268764.html][one guy]] (Brian
+                   Elmegaard-2) says they do after old emacsw32 stuff is
+                   removed) but I can't get it to work.  I [[https://mail.google.com/mail/u/0/?shva%3D1#inbox/13c5d929961bd808][posted a question]] to
+                   him.
 
+******* Making emacs/dired open files w/ the Windows default app e.g. pdfreader
+        From here: [[https://emacs.stackexchange.com/a/47522/14273][dired - Windows: Open files by default application - Emacs Stack Exchange]]
+
+        _Dired_ 
+        
+          type "W" and the MS Windows build of emacs will use the default app.  This works for pdfs, .docx, etc.
+
+        _org-mode_
+
+          clicking on a link will often open the default app.  See [[org-mode links open with the default Windows app]]
+
+********* <<org-mode links open with the default Windows app>>
+
+        My .emacs [[file:~/.emacs::(setq org-file-apps][sets up org]] to use the default system app for pdf files
+Org is set up to open pdfs 
+
+        (setq org-file-apps
+          '(("\\.docx\\'" . default)
+          ("\\.mm\\'" . default)
+          ("\\.x?html?\\'" . default)
+          ("\\.pdf\\'" . default)
+          (auto-mode . emacs)))
+
+(but helpful says that was alredy the default.  I think this setting was mainly to get .docx files to open correctly.  Anwyay, org uses this somehow to call the system default app)
+        
 ***** <<Windows .emacs.d problem>>
 
       Get ".emacs.d is unsafe" error message when have a user account w/
@@ -2948,7 +2973,10 @@ Better than auto-fill and filladapt, which wrap when you hit space when the curs
 ********* also, maybe a bit better: [[NEI -- Notebook Editor Interface]]
 ********* jupyter-console is recommended, maybe
 
-          conda install -c anaconda jupyter_console 
+          conda install -c conda-forge jupyter_console 
+
+          # maybe causes problems?
+          # conda install -c anaconda jupyter_console 
 
 ******* <<NEI -- Notebook Editor Interface>>
         From: [[https://github.com/pyviz-dev/nei][pyviz-dev/nei: Notebook Editor Interface]]: Jupyter Notebook interface
@@ -8307,27 +8335,24 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
 ***** <<Install Windows Python with Anaconda>> (what I've been doing)
 
-      *NOTE*: lately, I've been done: [[Install python with Chocolatey]]
+      *NOTE*: I had been doing [[Install python with Chocolatey]] but this started failing in late 2019.
 
-        choco install anaconda
-
-        Put base environment in path (so emacs, etc. will find it): 
-
-           C:\Users\scott\Anaconda3\
-           C:\Users\scott\Anaconda3\Scripts
-
-           (Make sure this is /above/ msys2 path. Otherwise, the msys2
-           python you get when installing diff, etc., will mess up emacs
-           [[elpy]].  Also make sure that it's above %USERPROFILE%\AppData\Local\Microsoft\WindowsApps , which as of May 2019 suddenly holds a python.exe)
-
-      *NOTE*: suddenly it's not working.  Windows installer steps:
-      - don't install latest, which wouldn't install menus (was this the admin problem?).  [[https://stackoverflow.com/questions/42182477/issues-with-anaconda-install-failed-to-create-anaconda-menus][Instead install 2019.03]], from [[https://repo.continuum.io/archive/][here]]
-      - install as admin (idea was to avoid menu writing error)
-      - go to c:\ProgramData\Anaconda3
-      - change this directories permission so I have full permissions
-        - file explorer, right click on anaconda3
-        - properties --> security --> scroll to Users --> edit --> click on Full control
-        
+      - if reinstalling, make sure to run ~/lib/python/conda_env_regen.ipynb first, so can easily reinstall duplicate past environments
+      - download from here
+      - override install default: put it in c:\Anaconda to avoid [[https://github.com/ContinuumIO/anaconda-issues/issues/11594#issuecomment-582135204][long path issue]]
+        - you have to install as admin
+      - after completion, make it writeable by non-admin:
+        - go to c:\ProgramData\Anaconda3
+        - change this directory's permission so I have full permissions
+          - file explorer, right click on anaconda3
+          - properties --> security --> scroll to Users --> edit --> click on Full control
+      - point PATH towards the install (for emacs, among others)
+        (Make sure this is /above/ msys2 path. Otherwise, the msys2
+         python you get when installing diff, etc., will mess up emacs
+         [[elpy]].  Also make sure that it's above %USERPROFILE%\AppData\Local\Microsoft\WindowsApps , which as of May 2019 suddenly holds a python.exe)
+      - install everything necessary in the base environment first
+      - create stdso environment
+        - conda create -n stdso --clone base
 ******* Install from Windows .exe installer        
 
       Mostly following this [[https://machinelearningmastery.com/setup-python-environment-machine-learning-deep-learning-anaconda/][TensorFlow install advice]]
@@ -8385,6 +8410,21 @@ Python is kind to the programmer if there are fewer items than you ask for. For 
 
 ***** my current (Nov. 2019) .emacs will crash if anaconda isn't there, and has an expected environment name (was 'stdso').  So make one when you get to a new machine.  See [[python conda environments]]
 ***** <<Install python with Chocolatey>>
+
+      _Most recent attempt: worked for a while, then failed in late 2019_
+
+        choco install anaconda
+
+        Put base environment in path (so emacs, etc. will find it): 
+
+           C:\Users\scott\Anaconda3\
+           C:\Users\scott\Anaconda3\Scripts
+
+           (Make sure this is /above/ msys2 path. Otherwise, the msys2
+           python you get when installing diff, etc., will mess up emacs
+           [[elpy]].  Also make sure that it's above %USERPROFILE%\AppData\Local\Microsoft\WindowsApps , which as of May 2019 suddenly holds a python.exe)
+
+_Comments from my first attempt_
 
     Problem with this was that I kept getting messages about this TensorFlow not being built for optimal performance on my SP4, was not compiled for some instruction set.   It did not sound like TensorFlow was going to fix this ever (some TF blog somewhere) so I decided to [[Install Windows Python with Anaconda]] instead, which seems to be recommended by a lot of people.
 
@@ -8520,6 +8560,13 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
           jupyter labextension disable my-extension
 ******* jupyterlab extensions of note
 ********* Ones I'm using now
+
+          *nodejs warning*: Anaconda3-2019.10-Windows-x86_64.exe
+
+          gets messed up if you install its default nodejs.  Instead install the conda_forge version:
+
+            conda install -c conda-forge nodejs  
+
 *********** <<Jupyter matplotlib widgets>>
             From: [[https://github.com/matplotlib/jupyter-matplotlib][matplotlib/jupyter-matplotlib]]
 
@@ -8548,7 +8595,7 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
 
                Do this first before following web page instructions:
 
-                 conda install nodejs
+                 conda install -c conda-forge nodejs
                pip install npm
 
 *********** drawio block diagram drawer: [[https://github.com/QuantStack/jupyterlab-drawio][QuantStack/jupyterlab-drawio]]
@@ -8715,7 +8762,7 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
 
 ********* Tried but don't need
 *********** python creating convenience: [[https://github.com/jtpio/jupyterlab-python-file][jtpio/jupyterlab-python-file]]
-*********** non-git auto-versioning: [[https://github.com/timkpaine/jupyterlab_autoversion][timkpaine/jupyterlab_autoversion]]
+********* non-git auto-versioning: [[https://github.com/timkpaine/jupyterlab_autoversion][timkpaine/jupyterlab_autoversion]]
 
             Has worked at times, but mostly, it doesn't.
 
@@ -8725,64 +8772,64 @@ The suffix 2 is used after autoreload, to reload all modules every time before e
             jupyter labextension install jupyterlab_autoversion
             jupyter serverextension enable --py jupyterlab_autoversion
 *
-*********** markdown spellchecker: [[https://github.com/ijmbarr/jupyterlab_spellchecker][GitHub - ijmbarr/jupyterlab_spellchecker]]
+********* markdown spellchecker: [[https://github.com/ijmbarr/jupyterlab_spellchecker][GitHub - ijmbarr/jupyterlab_spellchecker]]
 
-            jupyter labextension install @ijmbarr/jupyterlab_spellchecker
+          jupyter labextension install @ijmbarr/jupyterlab_spellchecker
 
-            I uninstalled it b/c I have a lot of variable names, etc. in markdown and there's no way to modify the spellchecker's dictionary.
+          I uninstalled it b/c I have a lot of variable names, etc. in markdown and there's no way to modify the spellchecker's dictionary.
 
-********* Not working but maybe nice
-*********** rename, hover docs ...: [[https://github.com/krassowski/jupyterlab-lsp][krassowski/jupyterlab-lsp]]
+******* Not working but maybe nice
+********* rename, hover docs ...: [[https://github.com/krassowski/jupyterlab-lsp][krassowski/jupyterlab-lsp]]
 
-            _Buggy_
-            o error messages b/c wasn't locating the directory the script was in
-            o flagging synax errors in some comments (but not most)
-            o crashes
+          _Buggy_
+          o error messages b/c wasn't locating the directory the script was in
+          o flagging synax errors in some comments (but not most)
+          o crashes
 
-            pip install --pre jupyter-lsp
-            jupyter labextension install @krassowski/jupyterlab-lsp
+          pip install --pre jupyter-lsp
+          jupyter labextension install @krassowski/jupyterlab-lsp
 
-            conda install -c conda-forge python-language-server
+          conda install -c conda-forge python-language-server
 
-            _For R support_, I think, add:
-               pip install python-language-server[all]
-               R -e 'install.packages("languageserver")'
-               conda install -c conda-forge r-languageserver
+          _For R support_, I think, add:
+             pip install python-language-server[all]
+             R -e 'install.packages("languageserver")'
+             conda install -c conda-forge r-languageserver
       
-*********** paste image into markdown: [[https://github.com/Bamieh/jupyterlab-clipboard][Bamieh/jupyterlab-clipboard]]
+********* paste image into markdown: [[https://github.com/Bamieh/jupyterlab-clipboard][Bamieh/jupyterlab-clipboard]]
 
-            It's not compatible with jupyterlab version
+          It's not compatible with jupyterlab version
 
-            Bug report: [[https://github.com/Bamieh/jupyterlab-clipboard/issues/5][doesn't support latest version of jupyterlab]]
+          Bug report: [[https://github.com/Bamieh/jupyterlab-clipboard/issues/5][doesn't support latest version of jupyterlab]]
 
-*********** <<emacs bindings in cells>>: [[https://github.com/kpe/jupyterlab-emacskeys][kpe/jupyterlab-emacskeys]]
+********* <<emacs bindings in cells>>: [[https://github.com/kpe/jupyterlab-emacskeys][kpe/jupyterlab-emacskeys]]
 
-            conda install nodejs
-            jupyter labextension install jupyterlab-emacskeys
+          conda install -c conda-forge nodejs
+          jupyter labextension install jupyterlab-emacskeys
 
-            Doesn't work.  Many emacs binding missing. I [[https://github.com/kpe/jupyterlab-emacskeys/issues/2][filed a bug]].
+          Doesn't work.  Many emacs binding missing. I [[https://github.com/kpe/jupyterlab-emacskeys/issues/2][filed a bug]].
 
-*********** open file w/ part of name: [[https://github.com/parente/jupyterlab-quickopen][parente/jupyterlab-quickopen]]
+********* open file w/ part of name: [[https://github.com/parente/jupyterlab-quickopen][parente/jupyterlab-quickopen]]
 
-            Seems to scan over entire GIT? repository?  Extremely slow to start, and almost stops Jupyterlab.
+          Seems to scan over entire GIT? repository?  Extremely slow to start, and almost stops Jupyterlab.
 
-            pip install jupyterlab-quickopen
-            jupyter labextension install @parente/jupyterlab-quickopen
+          pip install jupyterlab-quickopen
+          jupyter labextension install @parente/jupyterlab-quickopen
 
-            Start it by clicking the magnifying class icon on the LHS
+          Start it by clicking the magnifying class icon on the LHS
 
-*********** run all button: [[https://github.com/jupyterlab/runall-extension][jupyterlab/runall-extension]]
+********* run all button: [[https://github.com/jupyterlab/runall-extension][jupyterlab/runall-extension]]
 
-            Would be useful but it's not in the standard jupyterlab repository i.e. /this doesn't work/:
+          Would be useful but it's not in the standard jupyterlab repository i.e. /this doesn't work/:
 
-               jupyter labextension install runall-extension
+             jupyter labextension install runall-extension
 
-            Instead, you have to [[https://jupyterlab.readthedocs.io/en/stable/user/extensions.html][build it yourself]].
+          Instead, you have to [[https://jupyterlab.readthedocs.io/en/stable/user/extensions.html][build it yourself]].
 
-******* building jupyterlab extensions
-       For after you've installed some new ones or updated.  jupyterlab will also do this when you start it.
+***** building jupyterlab extensions
+     For after you've installed some new ones or updated.  jupyterlab will also do this when you start it.
 
-       jupyter lab build
+     jupyter lab build
 ***** jupyter-widgets a.k.a. ipywidgets: [[https://github.com/jupyter-widgets/ipywidgets/blob/master/docs/source/examples/Index.ipynb][ipywidgets]]
 
       See the demo on the page in the headline
