@@ -11371,7 +11371,7 @@ Erika
 ******* [[file:energy.bib::Cole18impactSunShot2030][Cole et al. 2018: Envisioning solar impact Sunshot 2030]]
 ***** Electric vehicle adoption
 ******* [[file:energy.bib::Moons15selfBrandPersEV][Moons & De 2015: Self Brand Personality Elec Cars]]
-******* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help.
+******* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help. .  Also, have population projections.
 ******* DONE [[file:energy.bib::Massiani2015useOfBassEV][Massiani & Gohs 2015: Bass EV 2 step approach (but don't use?)]]
 ******* TODO [[file:energy.bib::Bernards18][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
 ******* [[file:energy.bib::SantaEulalia11discrChoiceBassEV][Santa et al. 2011: EV adopt Disc Choice Bass]]
@@ -12988,6 +12988,7 @@ optimization to be a generalization of linear programming.
    01/20/20  [[file:energy.bib::Keelin19metalogCloseFrm][Keelin et al. 2019: Metalog Distribution Lognormal Sum, Closed Form]]
              [[file:energy.bib::Mauch13windPowFrcstLogitNorm][Mauch et al. 2013 logit norm quantile wind power]] 
    02/03/20  [[cite:Gillan12ripleyK][Gillan 2012: Ripley's K Function and Pair Correlation Function]]
+   02/06/20  [[cite:Moons15selfBrandPersEV][Moons & De 2015: Self Brand Personality]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
