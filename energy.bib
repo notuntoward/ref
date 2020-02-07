@@ -7985,8 +7985,7 @@ Bass models used to predict solar PV adoption in Dong17resPVdeployFrcst},
   publisher = {bepress},
   year      = {2010},
   month     = jan,
-  abstract  = {Bayesian statistics often requires eliciting prior probabilities from sub-
-ject matter experts who are unfamiliar with statistics. While most people
+  abstract  = {Bayesian statistics often requires eliciting prior probabilities from subject matter experts who are unfamiliar with statistics. While most people
 an intuitive understanding of the mean of a probability distribution, fewer
 people understand variance as well, particularly in the context of asym-
 metric distributions. Prior beliefs may be more accurately captured by
@@ -17811,6 +17810,7 @@ Fernando05inputSelNNpmi may have a similar hack.},
   pages    = {12322--12339},
   issn     = {2071-1050},
   abstract = {In two representative Belgian samples, by means of an online survey, we investigate the effect of self-brand personality differences on car brand evaluation, the evaluation of an eco-friendly branded electric car extension and the evaluation of car brands after electric extension. We show that self-brand personality differences influence the attitude towards car brands. The relative importance of personality dimensions that drive extension judgment and parent brand attitudes after electric extension is different from that of brand evaluation without extension. More particularly, perceptions of a brand being more responsible than one’s self is a much more important driver of brand evaluation after electric extension than without extension. Car personality characteristics, such as activity and sophistication, drive brand evaluations before, as well as after electric extension.  These effects are moderated by brand ownership in that the relative importance of brand personality dimensions is different for brand owners than for consumers who do not own a specific brand. Car manufacturers can fine-tune their marketing approach when launching eco-friendly extensions, taking into account that, in this context, partly different  self-brand personality fit considerations are used by consumers than for car brands without electric extension.},
+  comment    = {Evidence that self-assessed personality traits can predict attitudes to car brands, that the association is different if the person already owns a brand, and if they're looking for an electric car.},
   doi      = {10.3390/su70912322},
   file     = {:Moons15selfBrandPersEV.pdf:PDF},
   url      = {http://www.mdpi.com/2071-1050/7/9/12322},
@@ -19303,7 +19303,7 @@ Tryggvi had a 2013 price forecasting paper (Jonsson13elecPriceQR). Did it use th
   pages    = {207 - 223},
   issn     = {0968-090X},
   abstract = {Major technological and infrastructural changes over the next decades, such as the introduction of autonomous vehicles, implementation of mileage-based fees, carsharing and ridesharing are expected to have a profound impact on lifestyles and travel behavior. Current travel demand models are unable to predict long-range trends in travel behavior as they do not entail a mechanism that projects membership and market share of new modes of transport (Uber, Lyft, etc.). We propose integrating discrete choice and technology adoption models to address the aforementioned issue. In order to do so, we build on the formulation of discrete mixture models and specifically Latent Class Choice Models (LCCMs), which were integrated with a network effect model. The network effect model quantifies the impact of the spatial/network effect of the new technology on the utility of adoption. We adopted a confirmatory approach to estimating our dynamic LCCM based on findings from the technology diffusion literature that focus on defining two distinct types of adopters: innovator/early adopters and imitators. LCCMs allow for heterogeneity in the utility of adoption for the various market segments i.e. innovators/early adopters, imitators and non-adopters. We make use of revealed preference (RP) time series data from a one-way carsharing system in a major city in the United States to estimate model parameters. The data entails a complete set of member enrollment for the carsharing service for a time period of 2.5years after being launched. Consistent with the technology diffusion literature, our model identifies three latent classes whose utility of adoption have a well-defined set of preferences that are significant and behaviorally consistent. The technology adoption model predicts the probability that a certain individual will adopt the service at a certain time period, and is explained by social influences, network effect, socio-demographics and level-of-service attributes. Finally, the model was calibrated and then used to forecast adoption of the carsharing system for potential investment strategy scenarios. A couple of takeaways from the adoption forecasts were: (1) placing a new station/pod for the carsharing system outside a major technology firm induces the highest expected increase in the monthly number of adopters; and (2) no significant difference in the expected number of monthly adopters for the downtown region will exist between having a station or on-street parking.},
-  comment  = {Compares Bass diffusion model to their new model for electric vehicle (among other thrings) adoption.
+  comment  = {A sort of statistical mixture of Bass-like models, allowing specific modeling of the effect of spatial and policy configurations on different EV (and other things) adopter classes. Results show that plain Bass is insensitive to differences in some policy options that their model can capture.  Fit with historical data looks good (at a regional level) but as usual, there's no way to evaluate the forecast performance.
 
 Sounds similar to SantaEulalia11discrChoiceBassEV},
   doi      = {https://doi.org/10.1016/j.trc.2017.03.004},
@@ -26532,7 +26532,7 @@ planning horizon.
 
 Keywords Preannounced products . Credibility of firms .
 Diffusion and adoption processes},
-  comment   = {Related to pent up EV demand, where people are holding on their old gas cars, waiting for EVs to get a little better?},
+  comment   = {A Bass two-stage Bass-like model which can model pent-up demand, something like the owners of old gas-powered cars anticipated in (Trabish 2019)},
   doi       = {10.1007/s40547-013-0003-7},
   file      = {:Manceau13techDiffusnPreannc.pdf:PDF},
   publisher = {Springer Science and Business Media {LLC}},
@@ -37832,7 +37832,7 @@ Could maybe use physcial inspired features or const funcs, like in Karpatne17phy
 
 @InProceedings{SantaEulalia11discrChoiceBassEV,
   author       = {Santa Eulalia, Luis Antonio and Neumann, Donald and Klasen, J{\"o}rg},
-  title        = {A simulation-based innovation forecasting approach combining the bass diffusion model, the discrete choice model and system dynamics-an application in the german market for electric cars},
+  title        = {A simulation-based innovation forecasting approach combining the {B}ass diffusion model, the discrete choice model and system dynamics-an application in the german market for electric cars},
   booktitle    = {The third international conference on advances in system simulation},
   year         = {2011},
   organization = {Citeseer},
