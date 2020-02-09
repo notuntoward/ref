@@ -1206,18 +1206,18 @@ _C-M-a_ change default action from list for this session
 
 ;; From:
 ;; https://emacs.stackexchange.com/questions/13093/get-org-link-to-insert-link-description-automatically
-;; (defun my//dired-store-link (orig-fun &rest args)
-;;   (if (derived-mode-p 'dired-mode)
-;;       (let ((file (dired-get-filename nil t)))
-;;         (setf file (if file
-;;                        (abbreviate-file-name (expand-file-name file))
-;;                      default-directory))
-;;         (let ((link (concat "file:" file))
-;;               (desc (file-name-nondirectory file)))
-;;           (push (list link desc) org-stored-links)
-;;           (car org-stored-links)))
-;;     (apply orig-fun args)))
-;; (advice-add 'org-store-link :around #'my//dired-store-link)
+(defun my//dired-store-link (orig-fun &rest args)
+  (if (derived-mode-p 'dired-mode)
+      (let ((file (dired-get-filename nil t)))
+        (setf file (if file
+                       (abbreviate-file-name (expand-file-name file))
+                     default-directory))
+        (let ((link (concat "file:" file))
+              (desc (file-name-nondirectory file)))
+          (push (list link desc) org-stored-links)
+          (car org-stored-links)))
+    (apply orig-fun args)))
+(advice-add 'org-store-link :around #'my//dired-store-link)
 
 
 ;; ** Find-file and URL
@@ -2258,11 +2258,16 @@ is already narrowed."
   ;; Make org-ref cite: link folded in emacs.  Messes up Latex export:
   ;; https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
   (org-link-set-parameters "cite" :display nil)
-  ;; org-ref-bibtex-store-link is siad to be the same as org-bibtex
-  ;; link storing, but I can't figure out how to call it interactively
+  ;; fix to make the cite: link type available when C-c l on a bibtex
+  ;; entry
+  ;; https://github.com/jkitchin/org-ref/issues/345
+  (let ((lnk (assoc "bibtex" org-link-parameters)))
+    (setq org-link-parameters (delq lnk org-link-parameters))
+    (push lnk org-link-parameters))
   ;; TODO: make it interactive.  I can call org-ref-bibtex-store-link
   ;; by typing it into the org-store-link path.  I just can't get it
-  ;; to bring this up as an option. Maybe do something like my//dired-store-link ?
+  ;; to bring this up as an option. Maybe do something like
+  ;; my//dired-store-link ?
   )
 
 ;; doesn't work
@@ -2448,6 +2453,7 @@ This function avoids making messed up targets by exiting without doing anything 
       (insert "- [ ] ")
       (forward-line))
     (beginning-of-line)))
+
 ;;(global-set-key [C-f1] 'my/toggle-subtree) 
 ;;(global-set-key [C-f2] 'my/toggle-subtree) 
 
@@ -2511,24 +2517,12 @@ This function avoids making messed up targets by exiting without doing anything 
 (use-package ox-minutes :defer 5) ; nice(er) ascii export, but slow start
 
 ;; *** Pandoc
-;; default options for all output formats. Intially from:
-;; https://github.com/kawabata/ox-pandoc
-(when (sdo/find-exec "pandoc" "Needed for org-mode export")
+
+(when (sdo/find-exec "pandoc" "Needed for org-mode export to .docx, etc.")
   (use-package ox-pandoc
-    :init
-    (setq org-pandoc-options '((standalone . t)))
-    ;; cancel above settings only for 'docx' format
-    (setq org-pandoc-options-for-docx '((standalone . nil)))
-    ;; special settings for beamer-pdf and latex-pdf exporters
-    (setq org-pandoc-options-for-beamer-pdf '((latex-engine . "pdflatex")))
-    (setq org-pandoc-options-for-latex-pdf '((latex-engine . "pdflatex")))
-    ;; (setq org-pandoc-options-for-beamer-pdf '((latex-engine . "xelatex")))
-    ;; (setq org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")))
+    :defer
     :config
-    ;; the below did not help after org-mode use of use-package, and may have messed up startup on a clean install
-    ;;
-    ;; Delay loading but let org-export-dispatch menu still see it.  Actually, unless I do this, I don't see pandoc in the menu at all.  From https://github.com/kawabata/ox-pandoc/issues/7
-    (with-eval-after-load 'ox (require 'ox-pandoc))))
+    (require 'ox-pandoc)))
 
 ;; * Writing Tools
 ;; ** General Editing
