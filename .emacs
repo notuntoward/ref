@@ -498,7 +498,6 @@ TODO: make this a general function."
 
 ;; * Swiper/Ivy
 
-;; TODO: evaluate https://github.com/Yevgnen/ivy-rich
 ;; Help while in ivy search:
 ;;  ivy hydra: C-o;
 ;;  ivy full help: C-h m
@@ -1765,20 +1764,10 @@ _C-M-a_ change default action from list for this session
 
 ;; *** Python editing setup
 
-;; TODO: My python setup expects that ananconda python is already installed,
-;; and has an environment named "stdso"  I should probably check this
-;; before calling the conda-env-activate that will crash if it isn't
-;; there.  Try using the use-package :if directive?  example is here:
-;; NOTE: I've submitted a bug and the conda maintainer thinks it
-;; should be fixed.
-;; https://emacs.stackexchange.com/questions/35416/how-can-a-use-package-stanza-be-configured-a-setting-depending-on-another-packag
 ;; TODO: some of my calls to sdo/find-exec my no longer be necessary,
 ;; as elpy now downloads its own python environement with some of
 ;; these already in it.  I should see which of these I can remove.
 
-;; https://stackoverflow.com/questions/55175916/emacs-and-conda-workaround
-;; Put this on top of the other python stuff so that paths to python
-;; tools are initialized to some defaults by the time they need them.
 ;; To change the env to something no-hardcoded, run:
 ;; M-x conda-env-activate to activate
 (when (setq conda_exe (sdo/find-exec "conda" "Needed for most python packages"))
@@ -2531,7 +2520,7 @@ This function avoids making messed up targets by exiting without doing anything 
 ;; use spaces instead of tabs so other programs see indentation correctly
 (setq-default indent-tabs-mode nil)
 
-;; handy gnu things which for some reason are disabled by default for some reason
+;; handy gnu things which for some reason are disabled by default
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
@@ -2963,7 +2952,6 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
 ;; clean up after itself at quit (sdo in Jan 2020)
 
 ;; Function to open wttrin with first city on list
-;; TODO: Could make new frame to avoid background coloring of non-wttrin frames
 (defun sdo/wttrin ()
     "Open `wttrin' without prompting, using first city in `wttrin-default-cities'.  Window is sized to fit wttrn display."
     (interactive)
@@ -2981,15 +2969,6 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
   (kill-matching-buffers "*wttr.in - *" nil t)
   (set-frame-configuration pre-wttrin-frame-config))
 (advice-add 'wttrin-exit :after #'sdo/wttrin-restore-frame)
-
-;; doesn't work
-;; (defun sdo/wttrn-colorize ()
-;;   ;; (set (make-local-variable 'face-remapping-alist)
-;;   ;;      '((default :background "#303030")))
-;;   (set-foreground-color "gray")
-;;   (set-background-color "black")
-;;   )
-;; (advice-add 'wttrn-query :after #'sdo/wttrn-colorize)
 
 ;; * Variables Set By Emacs's built-in Customization Interface 
 ;; ** Custom Set Variables
