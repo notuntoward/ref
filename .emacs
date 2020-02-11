@@ -1460,6 +1460,34 @@ _C-M-a_ change default action from list for this session
 ;;(global-set-key [f11] 'shell) (make OS-dependent, above)
 (global-set-key [f12] 'repeat-complex-command)
 
+;; ** CSV mode
+
+;; aligns columns (on: C-c C-a , off: C-c C-u), prints header, etc.
+;; Need to toggle-truncate-lines (C-c w) for wide files
+(use-package csv-mode
+  :ensure t
+  :config
+  (setq csv-align-padding 2)
+
+  ;; From: https://tinyurl.com/trtrmau
+  (defun csv-align-visible ()
+    "Align only visible entries in csv-mode. C-c C-a is already bound to align all fields, but is slow."
+    (interactive)
+    (csv-align-fields nil
+     (window-start (selected-window))
+     (window-end (selected-window)))
+    (message "Aligned visible fields only. Press C-c C-w to align again."))
+
+  :bind (:map csv-mode-map
+              ("C-c C-w" . 'csv-align-visible)
+              ("C-c C-h" . csv-header-line))
+  ;; 1st page only, must redo 
+  :hook (csv-mode . csv-align-visible) 
+  ;; show header: bad for long colnames, narrow colvals
+  :hook (csv-mode . csv-header-line)
+  ;; doesn't seem to work
+  :hook (csv-mode . toggle-truncate-lines)) 
+
 ;; * Version Control
 
 ;; was this turning org-links into org-git-links?
@@ -2247,25 +2275,12 @@ is already narrowed."
   ;; Make org-ref cite: link folded in emacs.  Messes up Latex export:
   ;; https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
   (org-link-set-parameters "cite" :display nil)
-  ;; fix to make the cite: link type available when C-c l on a bibtex
-  ;; entry
+  ;; Make the 'cite:' link type available when C-c l on a bibtex entry
   ;; https://github.com/jkitchin/org-ref/issues/345
   (let ((lnk (assoc "bibtex" org-link-parameters)))
     (setq org-link-parameters (delq lnk org-link-parameters))
     (push lnk org-link-parameters))
-  ;; TODO: make it interactive.  I can call org-ref-bibtex-store-link
-  ;; by typing it into the org-store-link path.  I just can't get it
-  ;; to bring this up as an option. Maybe do something like
-  ;; my//dired-store-link ?
   )
-
-;; doesn't work
-(defun sdo/org-ref-bibtex-store-link ()
-  (interactive)
-;;  (call-interactively 'org-ref-bibtex-store-link))
-;;  (org-bibtex-store-link))
-  (org-ref-bibtex-store-link)) ;; doesn't work
-
 
 ;; Unfortunately, this may screw up linking to techreports:
 ;; https://github.com/jkitchin/org-ref/issues/205
