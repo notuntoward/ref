@@ -1095,7 +1095,6 @@
         This does show up in the dispatcher, and works OK.
 
 ******* <<Org to/from MS Word>>
-
 ********* Using [[Pandoc]]
 *********** Manually
 
@@ -1107,7 +1106,7 @@
             This really works!  The org-mode outline structure shows up as an outline structure in Word, and on the docx-->org step, the org structure is retained.
 
             Problems
-            - I had was a syntax error when I tried to convert my whole howto.org file.
+            - a syntax error when I tried to convert my whole howto.org file.
             - the docx-->org version has those annoying :PROPERTIES: drawers, which weren't there before.  I guess I could just delete them.
             - Heading fonts, etc. are
             - How to control the appearance of headlines, etc. in Word output? (See  [[Pandoc docx output formatting]])
