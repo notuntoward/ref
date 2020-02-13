@@ -22,7 +22,7 @@
 ********* lots of data
 *********** making fake
 *********** some arch. data e.g. conv. net
-*********** and some small data Deep Learning
+*********** and some [[Deep Learning with Small Data]]
 ******* Why no explosions?
 ********* regularization!
 ********* tied params
@@ -2350,6 +2350,7 @@ Scott
 
 ******* [[Stability Feature Selection]]
 ******* usable? [[cite:Wei15varImpCmpr][Wei 2015: Compare Var Imp High Dim (RF permutation tests)]]
+***** [[Logistic Regression Based Tech Adoption]]
 *** <<GLM performance metrics>>
 ***** [[Deviance]]
 * <<Feature reduction>>
@@ -6939,6 +6940,7 @@ variables will be preferred, when possible.
   (move this under a spatial correlation section, same as kriging, etc. )
 *** [[file:energy.bib::Rai15agentEnrgyTechAdoptFactors][Rai & Robinson 2015: Agent PV adopt]] (uses it)
 *** [[file:energy.bib::Wilschut15spatDistPtPattGerbil][Wilschut et al. 2015: Spatial Gerbil K]] (uses it)
+*** TODO [[cite:Fonton11pltSizeSpatSudTrees][Fonton et al. 2011: Plot Sudanian]]
 *** [[file:energy.bib::Gillan12ripleyK][Gillan & Gonzalez 2012: Ripleys K Function]]
 *** [[file:energy.bib::Dixon14ripleyK][Dixon 2014: Ripleys K Function]]
 *** Ripley's K software
@@ -6949,6 +6951,7 @@ variables will be preferred, when possible.
 ***** [[https://developers.arcgis.com/python/][ArcGIS API for Python]]
 
 *** Ripley's K is used here: [[Technology Adoption Rates]]
+*** also [[Social (spatial) influence for EVs]]
 * <<Forecasting>>
 *** <<German Data: RES production and forecasts>>
 
@@ -7077,7 +7080,7 @@ variables will be preferred, when possible.
 ******* Gambler [[file:energy.bib::Roulston02frcstInfoEval][optimizes returns w/ ignorance]], unlike w/ Brier
 ******* Brier is non-local
 ******* <<Arguments against Brier Score>>
-********* [[file:energy.bib::Jewson04problemBrierScore][Jewson: Problem with Brier: do likelihood]]
+********* [[file:energy.bib::Jewson04problemBrierScore][Jewson 2004: Problem with Brier: do likelihood]]
 ********* [[file:energy.bib::Benedetti10scoreFrcstVerifRare][Benedetti 2010: Scoring rules: Brier --> log (IGN) score]]
 ********* [[file:energy.bib::Roulston02frcstInfoEval][Roulston & Smith 2002: Evaluating]] (info theory, bidding, Brier)
 ********* also [[Arguments against CRPS]]
@@ -9284,6 +9287,7 @@ sera
 ***** [[Class Imbalance Handling]] (a.k.a. rare events)
 ***** [[Rare Events and Logistic Regression]]
 ***** [[file:energy.bib::Laptev17tsExtrmFrcastNNuber][Laptev et al. 2017: Time Extreme Event LSTM Uber]]
+***** [[cite:Bickel08choiceOfMsubsampBtstrp][Bickel & Sakov 2008: Bootstrap size for extrema conf bound]]
 ***** See also: [[Forecast Error Distributions]]
 ***** See also: [[Quantile Regression]]
 ***** See also [[Numerical Weather Prediction (NWP)]] for extreme weather
@@ -11367,17 +11371,158 @@ Erika
 ******* [[file:energy.bib::Islam13pvAdoptTimeAttributes][Islam & Meade 2013 PV install timing attribute pref]]
 ******* TODO [[file:energy.bib::Lobel11cnsmrChoiceDmdFrcstSlr][Lobel & Perakis 2011: Consumer choice model frcst solar demand]]
 ******* [[file:energy.bib::Caird08enrgyEffAdoptUK][Caird et al. 2008: Improving UK energy perform adoption survey]]
-******* TODO [[file:energy.bib::Bernards18][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
+******* TODO [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
 ******* [[file:energy.bib::Cole18impactSunShot2030][Cole et al. 2018: Envisioning solar impact Sunshot 2030]]
 ***** Electric vehicle adoption
 ******* [[file:energy.bib::Moons15selfBrandPersEV][Moons & De 2015: Self Brand Personality Elec Cars]]
 ******* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help. .  Also, have population projections.
-******* DONE [[file:energy.bib::Massiani2015useOfBassEV][Massiani & Gohs 2015: Bass EV 2 step approach (but don't use?)]]
-******* TODO [[file:energy.bib::Bernards18][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
+******* [[file:energy.bib::Massiani2015useOfBassEV][Massiani & Gohs 2015: Bass EV 2 step approach (but don't use?)]]
+******* TODO [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
 ******* [[file:energy.bib::SantaEulalia11discrChoiceBassEV][Santa et al. 2011: EV adopt Disc Choice Bass]]
 ******* [[file:energy.bib::Zarwi17discChoiceAdoptDiffTranspo][Zarwi et al. 2017: EV adopt Discr Choice Bass]]
 ******* needs a [[https://www.evernote.com/l/AA2mqLTTd-ZCdLwoiE5Mc4XFTrnNGwyUV5s/]["vehicle age" feature]], I think, somehow.
 ******* [[file:energy.bib::Manceau13techDiffusnPreannc][Manceau et al. 2013: Diffusion Model Preannounced Prods (2 phase Bass)]]
+******* [[cite:Pedrosa18secondHandEVs][Pedrosa & Nobre 2018: Second Hand EV Survey]]
+******* <<Social (spatial) influence for EVs>>
+********* [[cite:Jansson17adoptAltFuelInflnc][Jansson et al. 2017: Adoption alt fuel influence social]]
+********* [[cite:Rai15agentEnrgyTechAdoptFactors][Rai & Robinson 2015: Agent PV adopt]] (sociological spatial influcence)
+********* [[cite:Zhu13nbrhdEffectHybridVehicl][Zhu & Liu 2013: Investigating Neighborhood Effect Hybrids]]
+********* different used cars sold in different counties: [[cite:Biglaiser19intermUsedCarMkt][Biglaiser et al. 2019: Used car Intermediaries Product Quality]]
+********* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help. .  Also, have population projections.
+********* [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
+********* also [[Ripley's K]] (proxmity feature)
+******* Individual owner influences on 
+********* income (dominant), ownership, house struct, education, neighbors
+          From: [[cite:Zhu13nbrhdEffectHybridVehicl][Zhu & Liu 2013: Investigating Neighborhood Effect Hybrids]]
+********* past car ownership
+*********** previous car ownership is most important feature: [[cite:Bjoerner05dynMdlCarOwn][Bjoerner & Leth-Petersen 2005: Dynamic Models Car Ownership]]
+********* Past ownership is dominant: [[cite:Bjoerner05dynMdlCarOwn][Bjoerner & Leth-Petersen 2005: Dynamic Models Car Ownership]]
+********* List: [[cite:Danielis19evDriveRngMetaAnlys][Danielis et al. 2019 meta-analyis range BEVs]] 
+********* Huge list: [[cite:Oliveira19altFuelVhclDemogReview][Oliveira & Dias 2019: Demographics Consumer Choice Alt Fuel]]
+********* [[cite:Coffman17reviewEVadoptFactors][Coffman et al. 2017: EV adoption factors review]]
+********* [[cite:Farkas18evOwnersMD][Farkas et al. 2018: Environmental Attributes Electric]]
+********* [[file:energy.bib::Moons15selfBrandPersEV][Moons & De 2015: Self Brand Personality Elec Cars]]
+******* Multiple cars per household
+********* cost-based multi car model: [[cite:Gavazza14][Gavazza et al. 2014: Quantitative Analysis Used Car]]
+********* [[cite:Glerum13carOwnDynDscrtChoice][Glerum et al. 2013: Modeling Car Own Dscrt Choice]]
+********* 50% of Danish households had no car over 10 years: [[cite:Bjoerner05dynMdlCarOwn][Bjørner & Leth-Petersen 2005: Dynamic Models Car]]
+********* 8.6% Sacramento households had no car, avg cars/HH=1.65: [[https://www.evernote.com/l/AA0eJBD_1-FH945vd8kTnUhL2Rr1ex9GRko/][Vehicle Ownership in U.S. Cities Data and Map]]
+********* US has roughly 1 car per household driver or adult: [[https://www.evernote.com/l/AA2gJTYhG15NA5jICHU_ulMX2HrzpR8P8-Q/][US Bureau of Transportation Statistics]]
+********* Vehicles vs. Household size, census tract: [[cite:USsurvey17householdsNumVehiclesDB][Survey 2017: Household Size Vehicles Available]]
+******* <<Vehicle Travel Distance>>
+********* created by linking: [[cite:Dong20commuteDepTimeSpaceTime][Dong & Cirillo 2020: Space-Time Commute Time]]
+******* <<Mixed car type forecast>>
+********* [[cite:Glerum13carOwnDynDscrtChoice][Glerum et al. 2013: Modeling Car Own Dscrt Choice]]
+********* [[cite:Liu17genDynDscrtGrnVhclAdpt][Liu & Cirillo 2017: Gen. Dynamic Discrete Choice Grn Vhcl]]
+********* [[cite:Jansson17adoptAltFuelInflnc][Jansson et al. 2017: Adoption alt fuel influence social]]
+********* [[cite:Oliveira19altFuelVhclDemogReview][Oliveira & Dias 2019: Demographics Consumer Choice Alt Fuel]]
+********* [[cite:Bastin18vhclTypePrefDiscChoiceLink-Based][Bastin et al. 2018: Time Ser. Disc Choice Link Vehicle Time]]
+********* [[cite:Shahan19evDreamDmdDesrPrev][Shahan 2019: Electric Car Driver Dreams]]
+********* Gas-->EV adopt may be abrupt: [[https://www.evernote.com/l/AA2mqLTTd-ZCdLwoiE5Mc4XFTrnNGwyUV5s/][The rise of EVs could overwhelm the grid, but PG&E has a better plan]]
+*********** would this help? [[cite:Manceau13techDiffusnPreannc][Manceau et al. 2013: Diffusion Model Preannounced Products]]
+********* [[EV Unadoption Model]]
+******* <<EV Unadoption Model>>
+********* [[cite:Gillingham19eqAutoTrade][Gillingham et al. 2019: Equilibrium Trade Automobile Markets]]
+********* Brittany: 24-26 months rental time for incentives in CA (typical)
+********* Leaf was avail. for $99/mo once, in CA
+********* Car kept times
+*********** Kept time (owned and least cars)
+************* Per Brand [[https://www.evernote.com/l/AA1j9XKgbOJEh6eXClz_wjWBwofqrtEKpbs/][4.9 to 9 yrs or]] 5.6 (avg. bottom 5) to 7.6 avg. top 5
+************* [[https://www.evernote.com/l/AA1j9XKgbOJEh6eXClz_wjWBwofqrtEKpbs/][Leased vehicles are more frequently traded]]
+************* [[IHS Markit Market Reports]] (zip level)
+************* Avg kept time is about 6 years (71.4 months)
+              From: [[https://www.autotrader.com/car-shopping/buying-car-how-long-can-you-expect-car-last-240725][Buying a Car: How Long Can You Expect a Car to Last? - Autotrader]] (example of the many articles citing a 2012 report by H. Polk, now IHS Markit)
+********* TODO deal w/ lease model
+********* car unadoption is rare: [[cite:Bjoerner05dynMdlCarOwn][Bjoerner & Leth-Petersen 2005: Dynamic Models Car Ownership]]
+********* EV-->Gas car unadoption very unlikely: [[cite:Shahan19evDreamDmdDesrPrev][Shahan 2019: Electric Car Driver Dreams]]
+********* [[cite:Glerum13carOwnDynDscrtChoice][Glerum et al. 2013: Modeling Car Own Dscrt Choice]]
+********* [[Used EVs]]
+********* [[Mixed car type forecast]]
+******* Model availability
+********* historical data from [[FuelEconomy.gov]]
+********* [[cite:Biglaiser19intermUsedCarMkt][Biglaiser et al. 2019: Used car Intermediaries Product Quality]]
+******* Driving Range
+********* [[cite:Danielis19evDriveRngMetaAnlys][Danielis et al. 2019 meta-analyis range BEVs]] 
+******* Charging
+********* [[CPR charger joins]] (has info)
+********* [[cite:Danielis19evDriveRngMetaAnlys][Danielis et al. 2019 meta-analyis range BEVs]] 
+******* Sensitivity to economics, total cost of ownership
+********* fuel savings
+*********** 50% too little: [[cite:Gillingham19cnsmrMyopiaVehic][Gillingham et al. 2019: Consumer Myopia Vehicle Fuel]]
+********* purchase price
+********* incentives
+********* Early EV owners mostly [[cite:Shahan19evDreamDmdDesrPrev][didn't compare w/ fuel cars]]
+********* TODO EV total cost of ownership
+*********** TODO [[cite:Fulton18evHybridOwnCost][Fulton 2018: Ownership cost EV vs. Hybid]]
+*********** TODO [[cite:Farkas18evOwnersMD][Farkas et al. 2018: EV owners Environmental Commute]]
+*********** EV car prices/availability
+************* [[cite:Biglaiser19intermUsedCarMkt][Biglaiser et al. 2019: Used car Intermediaries Product Quality]]
+*********** <<EV charging cost>>
+************* Gas vs kWh costs
+*************** gas price inflation predicted to oustrip kHh inflation ([[cite:Fulton18evHybridOwnCost][Fulton 2018: Ownership cost EV Hybid]])
+*************** gas/kWh price modeled: [[cite:Liu17genDynDscrtGrnVhclAdpt][Liu & Cirillo 2017: Gen. Dynamic Discrete Choice Grn Vhcl]]
+*************** also [[EV charging model]]
+************* [[Vehicle Travel Distance]]
+*********** EV Maintenance costs
+********* Conventional car total cost of ownership
+*********** [[cite:Glerum13carOwnDynDscrtChoice][Glerum et al. 2013: Modeling Car Own Dscrt Choice]]
+******* <<Used EVs>>
+********* Used Cars in general
+*********** [[cite:Biglaiser19intermUsedCarMkt][Biglaiser et al. 2019: Used car Intermediaries Product Quality]]
+*********** [[cite:Gavazza14][Gavazza et al. 2014: Quantitative Analysis Used Car]]
+*********** [[cite:Glerum13carOwnDynDscrtChoice][Glerum et al. 2013: Modeling Car Own Dscrt Choice]]
+********* Used EVs specifically
+*********** [[cite:Pedrosa18secondHandEVs][Pedrosa & Nobre 2018: Second Hand EV Survey]]
+********* [[EV Unadoption Model]]
+******* <<EV charging model>>
+********* Used by [[cite:Dong20commuteDepTimeSpaceTime][Dong & Cirillo 2020: Space-Time Commute Time]]
+********* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help. .  Also, have population projections.
+********* also [[EV charging cost]]
+******* <<EV data sources>>
+********* <<FuelEconomy.gov>>
+          From: [[https://www.fueleconomy.gov/feg/ws/][Fuel Economy Web Services]]
+*********** has make and model from way back
+*********** field meanings are described on the web page
+********* <<CPR charger joins>>: Brittany joins [[FuelEconomy.gov]] with battery, charger info
+************* Brittany email
+
+From: Brittany Farrell <brittanyf@cleanpower.com> 
+Sent: Monday, February 10, 2020 12:21
+To: Scott Otterson <sotterson@cleanpower.com>; Andy Whitaker <awhitaker@cleanpower.com>
+Subject: CPR added EV data (MSRP, Battery Size)
+
+Hi Scott and Andy, 
+
+Below is a link to where I keep the CSV files with the additional vehicle data (for EVs as well as gasoline vehicles), going back to Model Year 2015.  One thing to note about these files is that we remove the MSRP data from Teslas that are not in the current year.  This is because Tesla does model years strangely, and changes the names of the models frequently, which creates confusion for WattPlan.  Files for each release are available, so that data isn’t gone, it’s just not included in the most recent file.  
+
+Vehicles that don’t have MSRP data are either not yet available for sale from the manufacturer, or are vehicles that we do not want to show up in Wattplan. I add the data in as I find it.  
+
+https://cleanpower1-portal1.sharepoint.com/productmanagement/Energy%20Valuation/Forms/AllItems.aspx?viewid=c9488f3b%2D87fa%2D45da%2Daed5%2Dfe9a34666db3&id=%2Fproductmanagement%2FEnergy%20Valuation%2FData%20Operations%2FWattPlan%20Datasets%2FVehicle%20Spreadsheets
+
+Let me know if you have questions about these files.  We do collect this data by hand, and we do not go back and correct old files when we find errors, we just fix it in the newest data set.  
+
+Thanks, 
+Brittany
+
+********* <<IHS Markit Market Reports>> (zip level car info)
+          From: [[https://ihsmarkit.com/products/automotive-market-reports-data-feeds.html][IHS Markit Market Reports]]
+*********** per-zip
+*********** per-make/model
+*********** new/used
+*********** US Bureau of Transportation Statistics [[https://www.bts.gov/content/average-age-automobiles-and-trucks-operation-united-states][cites]] IHS Markit as a source
+********* [[https://www.evernote.com/l/AA3wKEQwuLRBaZ8l8erQ1wQGmGF3g5-Heh0/][Used Car Portal Web Scraping and Exploratory Data Analysis Project]]
+********* Google Maps API
+*********** Used by [[cite:Dong20commuteDepTimeSpaceTime][Dong & Cirillo 2020: Space-Time Commute Time]]
+*********** Google Maps API relevant to EVs
+************* [[https://developers.google.com/maps/documentation/distance-matrix/start][Gmaps Distance Matrix]]
+************* [[https://www.traveltimeplatform.com/blog/google-distance-matrix-api-traveltime-search-api][Google Distance Matrix API vs. the TravelTime Search API]]
+************* C# code: [[https://stackoverflow.com/questions/1042885/using-google-maps-api-to-get-travel-time-data][Gmaps point to point travel time]]
+************* Python: [[https://www.geeksforgeeks.org/python-calculate-distance-duration-two-places-using-google-distance-matrix-api/][Calc dist & dur between two places using google dist]]
+********* Maryland DB
+*********** used in e.g.:[[cite:Farkas18evOwnersMD][Farkas et al. 2018: Environmental Attributes Electric]]
+********* [[cite:Shahan19evDreamDmdDesrPrev][Shahan 2019: Electric Car Driver Dreams]]
+********* [[cite:USsurvey17householdsNumVehiclesDB][Survey 2017: Household Size Vehicles Available]]
+********* also [[Data Sets for Technology Adoption]]
 ***** <<Bass Innovation Diffusion Models>>
 
       The [[file:energy.bib::Horowitz19ovrvwDERinterConnNREL][most common]] tech adoption model.
@@ -11403,8 +11548,11 @@ Erika
 ******* [[file:energy.bib::Bertotti16innovDiffusCorrNtwk][Bertotti et al. 2016: Innovation diff corr networks]]
 ******* [[file:energy.bib::Manceau13techDiffusnPreannc][Manceau et al. 2013: Diffusion Model Preannounced Prods (2 phase Bass)]]
 ******* [[file:energy.bib::Tashiro16hierBassDiff][Tashiro 2016: Hierarchical Bass and pop est.]]
-***** Logistic Regression Based Tech Adoption
+***** <<Logistic Regression Based Tech Adoption>>
 ******* [[file:energy.bib::Almeida08openTechInvoDevCntries][Almeida & Fernandes 2008: Openness Adopt Dev Countries]] 
+******* [[cite:Bjoerner05dynMdlCarOwn][Bjørner & Leth-Petersen 2005: Dynamic Models Car Ownership]]
+******* [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
+******* also [[Logistic Regression]]
 ***** Explicit Space/Time modeling adoption
 ******* TODO [[file:energy.bib::Comin04crossCntryTheoryFact][Comin & Hobijn 2004: Cross Country Adopt Theory Facts]]
 ******* TODO [[file:energy.bib::Comin10explrTechDiffus][Comin & Hobijn 2010: Exploration Technology Diffusion]] (has data)
@@ -11460,6 +11608,7 @@ Erika
 ******* [[https://healthdata.gov/dataset/electronic-prescribing-adoption-and-use-state][Electronic Prescribing Adoption and Use by State]]
 ******* [[file:energy.bib::Rossetti17frcstAdoptEarlyData][Rossetti et al. 2017: Forecasting Early Adopt Analysis Data]] (has data)
 ******* [[file:energy.bib::Comin10explrTechDiffus][Comin & Hobijn 2010: Exploration Technology Diffusion]] (has data)
+******* [[EV data sources]]
 ******* also [[Machine Learning Data Sets]]
 ***** TODO also [[Class Imbalance Handling]] (if tech adopt. is a rare event)
 ***** also [[Classifier/Count aggregation]] (for forecasting)
@@ -12982,13 +13131,21 @@ optimization to be a generalization of linear programming.
    09/04/19  [[file:energy.bib::Brocker07properScore][Broecker & Smith 2007: Scoring: Importance of Proper]]
              [[file:energy.bib::Roulston02frcstInfoEval][Roulston & Smith 2002: Eval Prob Frcst Info Theory]]
    09/06/19  [[file:energy.bib::Jewson03likSkillFrcst][Jewson 2003: Likelihood Skill]]
-             [[file:energy.bib::Jewson04problemBrierScore][Jewson: Problem with Brier: do likelihood]]
+             [[file:energy.bib::Jewson04problemBrierScore][Jewson 2004: Problem with Brier: do likelihood]]
              [[file:energy.bib::Benedetti10scoreFrcstVerifRare][Benedetti 2010: Scoring rules: Brier --> log (IGN) score]]
    11/25/19  [[file:energy.bib::UniWisconsin18aeroOptDepthQG][U Wisconsin 2018: Aerosol Optical Depth Quick Guide]]
    01/20/20  [[file:energy.bib::Keelin19metalogCloseFrm][Keelin et al. 2019: Metalog Distribution Lognormal Sum, Closed Form]]
              [[file:energy.bib::Mauch13windPowFrcstLogitNorm][Mauch et al. 2013 logit norm quantile wind power]] 
    02/03/20  [[cite:Gillan12ripleyK][Gillan 2012: Ripley's K Function and Pair Correlation Function]]
    02/06/20  [[cite:Moons15selfBrandPersEV][Moons & De 2015: Self Brand Personality]]
+   02/10/20  [[cite:Gillingham19cnsmrMyopiaVehic][Gillingham et al. 2019: Consumer Myopia Vehicle Fuel]]
+             [[cite:Biglaiser19intermUsedCarMkt][Biglaiser et al. 2019: Used car Intermediaries Product Quality]]
+             [[cite:Bjoerner05dynMdlCarOwn][Bjoerner & Leth-Petersen 2005: Dynamic Models Car Ownership]]
+             [[cite:Pedrosa18secondHandEVs][Pedrosa & Nobre 2018: Second Hand EV Survey]]
+   02/11/20  [[cite:Danielis19evDriveRngMetaAnlys][Danielis et al. 2019 meta-analysis range BEVs]] 
+   02/12/20  [[cite:Shahan19evDreamDmdDesrPrev][Shahan 2019: Electric Car Driver Dreams]]
+             [[cite:USsurvey17householdsNumVehiclesDB][Survey 2017: Household Size Vehicles Available]]
+
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
