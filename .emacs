@@ -2250,6 +2250,7 @@ is already narrowed."
 
 ;; ** Org-ref
 
+;; Store links in bibtex: C-c l; in .org files C-c ]
 ;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
 (use-package org-ref
   :after org
