@@ -3112,6 +3112,7 @@
 
 ***** I mapped C-s s to swiper-isearch-thing-at-point (supposed to be symbols search but it only extracts a symbol-like-thing and then search for string matches w/o knowing the language)
 ***** symbol search and replace: [[refactoring in elpy]]
+******* [[https://github.com/m-parashar/emax64/releases][emax64: has pdf-tools built-in]]
 * JabRef
 *** News and feature requests go [[http://discourse.jabref.org][here]]
 *** bug reports go [[https://github.com/JabRef/jabref/issues][here]]
