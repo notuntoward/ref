@@ -6938,18 +6938,28 @@ variables will be preferred, when possible.
 
 * <<Ripley's K>>
   (move this under a spatial correlation section, same as kriging, etc. )
+*** Good review: [[cite:Wiegand04ringsRipleyK][Wiegand & A. 2004: Rings Ripley K]]
 *** [[file:energy.bib::Rai15agentEnrgyTechAdoptFactors][Rai & Robinson 2015: Agent PV adopt]] (uses it)
 *** [[file:energy.bib::Wilschut15spatDistPtPattGerbil][Wilschut et al. 2015: Spatial Gerbil K]] (uses it)
-*** TODO [[cite:Fonton11pltSizeSpatSudTrees][Fonton et al. 2011: Plot Sudanian]]
-*** [[file:energy.bib::Gillan12ripleyK][Gillan & Gonzalez 2012: Ripleys K Function]]
+*** [[cite:Fonton11pltSizeSpatSudTrees][Fonton et al. 2011: Plot Sudanian]]
+*** [[file:energy.bib::Gillan12ripleyK][Gillan & Gonzalez 2012: The Landscape Toolbox, Ripley's K]]
 *** [[file:energy.bib::Dixon14ripleyK][Dixon 2014: Ripleys K Function]]
+*** Random Null tests: [[cite:Goreaud03randLabelK12][Goreaud & Pelissier 2003: K12 interp indep vs. random]]
+*** 1D and multivariate Ripley's K: [[cite:Gavin10riplyK1Dmultivar][Gavin 2010: K1D and multivar]]
+*** Nsims, 2 group Ripley K [[cite:Martens97spatCompAbvBlw][Martens et al. 1997: Scales Compete Above Below Nsim]]
+*** Boundary edge treatments for Ripley's K
+***** [[cite:Ripley77modelSpatPttrn][Ripley 1977: Modelling Spatial Patterns]]
+***** Ripley's edge scheme: [[cite:Goreaud99edgCrrctRipleyK][Goreaud & Pelissier 1999: Ripleys K edge formulas]]
+***** Implements many other schemes: [[cite:astropy18pythonLib][Price-Whelan et al. 2018: Astropy Project]]
 *** Ripley's K software
-***** [[https://docs.astropy.org/en/stable/stats/ripley.html][astropy]] Python library ([[https://docs.astropy.org/en/stable/api/astropy.stats.RipleysKEstimator.html#astropy.stats.RipleysKEstimator][RipleysKEstimator — Astropy v4.0]])
+***** [[cite:astropy18pythonLib][Price-Whelan et al. 2018: Astropy Project]]
+      [[https://docs.astropy.org/en/stable/stats/ripley.html][astropy]] Python library ([[https://docs.astropy.org/en/stable/api/astropy.stats.RipleysKEstimator.html#astropy.stats.RipleysKEstimator][RipleysKEstimator Astropy v4.0]])
 ***** [[https://research.csiro.au/software/r-workshop-notes/][Analysing spatial point patterns in R (workshop notes and slides)]]
 ***** [[https://rpy.sourceforge.io/][rpy2]] : how to use R from Python
 ***** [[https://pro.arcgis.com/en/pro-app/tool-reference/spatial-statistics/multi-distance-spatial-cluster-analysis.htm][Multi-Distance Spatial Cluster Analysis (Ripley's K Function) ArcGIS Pro]]
 ***** [[https://developers.arcgis.com/python/][ArcGIS API for Python]]
 
+***** [[cite:Gillan12ripleyK][Gillan & Gonzalez 2012: The Landscape Toolbox, Ripley's K]]
 *** Ripley's K is used here: [[Technology Adoption Rates]]
 *** also [[Social (spatial) influence for EVs]]
 * <<Forecasting>>
@@ -11522,6 +11532,14 @@ Brittany
 *********** used in e.g.:[[cite:Farkas18evOwnersMD][Farkas et al. 2018: Environmental Attributes Electric]]
 ********* [[cite:Shahan19evDreamDmdDesrPrev][Shahan 2019: Electric Car Driver Dreams]]
 ********* [[cite:USsurvey17householdsNumVehiclesDB][Survey 2017: Household Size Vehicles Available]]
+*********** Is moving to www.census.gov (as of March 30, 2020), probably to [[https://www.census.gov/data/developers/data-sets/acs-1year.html][here]]
+*********** census.gov [[https://www.census.gov/content/dam/Census/data/developers/api-user-guide/api-guide.pdf][API documentation]]
+*********** Request API key from [[https://www.census.gov/developers/][here]] (broken on 13/02/2020)
+*********** Software for reading census data
+************* Python API: [[https://pypi.org/project/CensusData/][CensusData]] ([[https://jtleider.github.io/censusdata/][documentation]])
+************* Python API: [[https://github.com/datamade/census][census]]
+************* [[https://towardsdatascience.com/getting-census-data-in-5-easy-steps-a08eeb63995d][Getting Census Data in 5 Easy Steps - Towards Data Science]]
+************* [[https://atcoordinates.info/2019/09/24/examples-of-using-the-census-bureaus-api-with-python/][Examples of using the Census Bureau’s API with Python]]
 ********* also [[Data Sets for Technology Adoption]]
 ***** <<Bass Innovation Diffusion Models>>
 
@@ -11550,7 +11568,7 @@ Brittany
 ******* [[file:energy.bib::Tashiro16hierBassDiff][Tashiro 2016: Hierarchical Bass and pop est.]]
 ***** <<Logistic Regression Based Tech Adoption>>
 ******* [[file:energy.bib::Almeida08openTechInvoDevCntries][Almeida & Fernandes 2008: Openness Adopt Dev Countries]] 
-******* [[cite:Bjoerner05dynMdlCarOwn][Bjørner & Leth-Petersen 2005: Dynamic Models Car Ownership]]
+******* [[cite:Bjoerner05dynMdlCarOwn][Bjoerner & Leth-Petersen 2005: Dynamic Models Car Ownership]]
 ******* [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
 ******* also [[Logistic Regression]]
 ***** Explicit Space/Time modeling adoption
@@ -13145,7 +13163,9 @@ optimization to be a generalization of linear programming.
    02/11/20  [[cite:Danielis19evDriveRngMetaAnlys][Danielis et al. 2019 meta-analysis range BEVs]] 
    02/12/20  [[cite:Shahan19evDreamDmdDesrPrev][Shahan 2019: Electric Car Driver Dreams]]
              [[cite:USsurvey17householdsNumVehiclesDB][Survey 2017: Household Size Vehicles Available]]
-
+   02/13/20  [[cite:Fonton11pltSizeSpatSudTrees][Fonton et al. 2011: Plot Sudanian]]
+             [[cite:astropy18pythonLib][Price-Whelan et al. 2018: Astropy Project]]
+             [[cite:Goreaud03randLabelK12][Goreaud & Pelissier 2003: K12 interp indep vs. random]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
