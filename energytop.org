@@ -2269,6 +2269,7 @@ Scott
 
 *** <<Monotonic Neural Nets>>
 ***** [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning]] with [[Tensor Flow]]
+***** [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (built-in montonic)
 * <<Data Efficient Models>>
 ***** <<Data efficiency: Naive Bayes vs. Logistic Regression>>
 ******* [[file:energy.bib::Ng02discrimVsGenNBvsLogRgrsn][Ng & Jordan 2002 Discrim vs. Gen, Logistic Rgrssn vs. Naive Bayes]]
@@ -4176,6 +4177,7 @@ Hope that helps,
 ***** <<Monotonic Boosted Trees>>
 ******* [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning (lightgbm, xgboost, TensorFLow)]] 
 ******* [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonic Constraints: xgboost 1.0.0-SNAPSHOT documentation]]
+******* [[Monotonic Neural Nets]]
 * <<Boosted Regression>>
 
   Train a prediction algorithm, test, and then train a new model on the residual...
@@ -5843,6 +5845,7 @@ sera
 ******* [[file:energy.bib::Dette06nonParamMonoRgrssn][Dette et al. 2006]] nonparam mono rgrssn: rearrangement method that can uncross
 ******* [[file:energy.bib::Dette08quantRgrsNonCross][Dette & Volgushev 2008: Non]] crossing quantile curves
 ******* [[file:energy.bib::Keelin11QuantParamDist][Keelin & Powley 2011: Quantile]] param dist
+******* [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]]
 ******* [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]] (deep meth. for quantiles or DR thresh probs?)
 ******* see also: [[Learning montonicity]] (for smoothing out quantile crossover)
 ******* see also: [[Distributions from quantile forecasts]]
@@ -5899,6 +5902,8 @@ sera
 ***** Point forecasts from quantile forecasts
 ******* [[file:energy.bib::Taylor07frcstSprMktPriceQR][Taylor 2007: Forecasting]] Q frcst-->point, expon. wgt., adapt is best, good paper
 
+******* [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]]
+******* [[Copulas]]
 ***** Distributions from quantile forecasts
       <<Distributions from quantile forecasts>>
 ******* [[file:energy.bib::Cook10distFromQuant][Cook 2010: Determining]] distributions from quantiles
@@ -6091,6 +6096,8 @@ sera
 ***** [[cite:Belloni13progEvalHiDim][Belloni et al. 2013: Program]] eval high dim (use LASSO)
 ***** [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]] (deep meth. for thresh probs, no crossover?)
 ***** An NN w/ LSE cost function [[https://books.google.de/books?id=U_b2BwAAQBAJ&pg=PA5&lpg=PA5&dq=neural+network+for+estimating+conditional+mean&source=bl&ots=hLZiI0M6Tp&sig=hljm-efcyj4eiRoXF9KVHzsgZP0&hl=en&sa=X&redir_esc=y#v=onepage&q=neural%2520network%2520for%2520estimating%2520conditional%2520mean&f=false][estimates conditional mean]] (needed for dist rgrssn)
+***** [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (built-in montonic)
+***** also [[Metalog Distributions]] (parameterized monotonic distributions)
 ***** also see: [[Probabilistic Deep Learning]]
 *** <<Beta Regression>>
     
@@ -6205,6 +6212,8 @@ sera
 ***** [[cite:Cherubini11dynCopulaFinanceBk][Cherubini et al. 2011: Dynamic Copula Methods Finance Book]]
 ***** [[cite:Joe14DepModelCopulasBk][Joe 2014: Dependence Copulas Chapman Hall Book]]
 ***** [[cite:Gijbels14distSumCopulaDep][Gijbels & Herrmann 2014: Sum of RVS w/ Copula Dep.]]
+***** [[cite:Bernards19botUpNtwrkTool][Bernards et al. 2019: Bottom up statistical Network Scenario]]
+***** [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (neural copula)
 ***** [[file:energy.bib::Kanter15deepFeatSyntCpla][Kanter & Veeramachaneni 2015: Deep Feat Synth]] Copula tuning
 ***** <<Mixed Continuous and Discrete Copulas>>
 ******* [[cite:Zilko16mixedDscrtContinCopula][Zilko & Kurowicka 2016: Copula mixed Dscrt/Contin, Normal OK]]
@@ -6268,6 +6277,7 @@ sera
 ***** see [[Copula changepont detection]]
 ***** see [[Johnson System Distributions]] for a copula-like thing w/ no rank transform
 ***** see [[Gaussianization]] (for Gaussian copula intermediate processing)
+***** see [[Multiple output quantile regresson]]
 ***** [[cite:Kaut14copulaMultiVarHeurist][Kaut 2014]] copula heuristic scen gen, multivar
 ***** <<Time-varying Copulas>>
 ******* [[cite:Pircalabu17priceVolRiskWndTrdCpla][Pircalabu et al. 2017: Joint Price/Vol Wind Trade Copula]]
@@ -6315,6 +6325,7 @@ sera
 ******* [[cite:Bessa12adaptQuantCopulaFrcst][Bessa et al. 2012: Time-adaptive quantile-copula wind]]
 ***** <<Autoregressive Copulas>>
 ******* [[cite:Chen09copulaARQR][Chen et al. 2009: Copula]] AR QR
+******* [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (does autoregression)
 ***** <<Trend Copulas>>
 ******* [[cite:Li11trendSVD][Li et al. 2011: Trend SST]] trend SVD
 ******* [[cite:Lageras10copulaMarkov][Lageras 2010: Copulas Markovian]]
@@ -7011,6 +7022,7 @@ variables will be preferred, when possible.
 ******* [[cite:Hagemann09vExtrapTemp][Hagemann et al. 2009: Uncertainty frcst errs stable low wind]]
 ******* [[cite:Nielsen06quantRegr][Nielsen et al. 2006: Using QR Wind Frcst: NWP w/ autocorr lags]]
 ******* [[cite:Sevlian13windRampDetStat][Sevlian & Rajagopal 2013: Detection Statistics Wind Power Ramps]]
+******* [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]]
 ******* See: [[Wind and Solar Forecast Error Dependence]]
 ******* See: [[Solar and Load Forecast Error Dependence]]
 ******* See: [[Combined wind and load forecasting]]
@@ -8613,6 +8625,8 @@ Scott
 ***** [[cite:Zhou11conjFrcstMkts][Zhou et al. 2011: Short Term Congestion Frcst Pow Mkt]]
 ***** [[cite:Tong17probFrcstPowSysSlides][Tong 2017: Probabilistic Forecasting Power Systems Slides]]
 ***** [[cite:Zhang09][Zhang et al. 2009: Ultra Short Prob Cngstion Wind Frcst]]
+***** [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
+***** [[cite:Bernards19botUpNtwrkTool][Bernards et al. 2019: Bottom up statistical Network Scenario]]
 ***** <<Combined wind and load forecasting>>
 ******* [[EPRI Predictive Thermal Circuit Ratings Technology Project]]
 ******* [[PNNL Energy Management System (EMS) Integration]]
@@ -9406,11 +9420,16 @@ sera
 ***** [[cite:Zhou16recurCNNcntinPain][Zhou et al. 2016: Recurrent Convolutional Neural Pain Est.]]
 ***** [[file:energy.bib::Lichtendahl13probOrQuantAvg][Lichtendahl et al. 2013: Is It Better]] to sum quantiles?
 
+***** see: [[Forecast aggregation]]
+***** see: [[Aggregation vs. Forecasting Accuracy]]
+***** see: [[forecast aggregation by submodular optimization]]
+***** see: [[Probabilistic forecast aggregation]]
 ***** see: [[forecast aggregation by submodular optimization]]
 ***** see: [[Spatial Load Forecast]]
 ***** see: [[Clustering%20of%20regression%20models][Clustering of regression models]]
 ***** see: [[Portfolio Optimization and Forecasting]]
 ***** see: [[Aggregation vs. Forecasting Accuracy]]
+***** see: [[Copulas]] (predict joint multivariate probabilities)
 *** <<Effect of precipitation>>
 ***** rain
 ******* rain reduces wind speed
@@ -11361,7 +11380,7 @@ Erika
 ******* DONE [[file:energy.bib::Taherdoost18reviewTechAdopt][Taherdoost 2018 review tech accept models]]
 ******* [[https://www.pewinternet.org/topics/technology-adoption/][Technology Adoption | Pew Research Center]] (general page, lots of articles, link to datasets)
 ******* DONE [[file:energy.bib::Horowitz19ovrvwDERinterConnNREL][Horowitz et al. 2019: Overview DER Interconn (as DER adopt frcst)]]
-***** Solar adoption rates
+***** Solar Power adoption rates
 ******* DONE [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market Model (dGen)]]: NREL
 ******* TODO [[file:energy.bib::Williams20parsDiffResSolar][Williams et al. 2020: Empirical Diffusion Res Solar]]
 ******* [[file:energy.bib::Gagnon16distPVadoptMktFctr][Gagnon & Sigrin 2016: Distributed PV Adoption Mkt Factors]]
@@ -11383,7 +11402,13 @@ Erika
 ******* [[file:energy.bib::Caird08enrgyEffAdoptUK][Caird et al. 2008: Improving UK energy perform adoption survey]]
 ******* TODO [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
 ******* [[file:energy.bib::Cole18impactSunShot2030][Cole et al. 2018: Envisioning solar impact Sunshot 2030]]
+******* [[cite:Bernards18stochDistNtwkPlan_PhD][Bernards 2018: Stochastic Distribution Planning PhD Thesis]]
 ***** Electric vehicle adoption
+******* TODO ALL THE EV PAPERS INSPIRED BY NORWAY
+        On work computer:
+
+        [[file:~/Desktop/EV adoption papers inspired by Norway][EV adoption papers inspired by Norway]]
+
 ******* [[file:energy.bib::Moons15selfBrandPersEV][Moons & De 2015: Self Brand Personality Elec Cars]]
 ******* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help. .  Also, have population projections.
 ******* [[file:energy.bib::Massiani2015useOfBassEV][Massiani & Gohs 2015: Bass EV 2 step approach (but don't use?)]]
@@ -11400,6 +11425,8 @@ Erika
 ********* different used cars sold in different counties: [[cite:Biglaiser19intermUsedCarMkt][Biglaiser et al. 2019: Used car Intermediaries Product Quality]]
 ********* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help. .  Also, have population projections.
 ********* [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
+********* [[cite:Rodrigues19evDemandSpatRgrssn][Rodrigues et al. 2019: Estimation Electric Demand Spat Rgrssn]]
+********* [[cite:Rodrigues19evAdoptSpatTemp][Rodrigues et al. 2019: Spatiotemporal EV Adopt]]
 ********* also [[Ripley's K]] (proxmity feature)
 ******* Individual owner influences on 
 ********* income (dominant), ownership, house struct, education, neighbors
@@ -11412,15 +11439,23 @@ Erika
 ********* [[cite:Coffman17reviewEVadoptFactors][Coffman et al. 2017: EV adoption factors review]]
 ********* [[cite:Farkas18evOwnersMD][Farkas et al. 2018: Environmental Attributes Electric]]
 ********* [[file:energy.bib::Moons15selfBrandPersEV][Moons & De 2015: Self Brand Personality Elec Cars]]
+********* [[cite:Bunt19imaginariesNonSolarAdopt][Bunt 2019: PV non-adopters MSthesis]]
+********* [[cite:Bernards18stochDistNtwkPlan_PhD][Bernards 2018: Stochastic Distribution Planning PhD Thesis]]
+********* per-household varialbes for probable late adopters: [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
 ******* Multiple cars per household
 ********* cost-based multi car model: [[cite:Gavazza14][Gavazza et al. 2014: Quantitative Analysis Used Car]]
 ********* [[cite:Glerum13carOwnDynDscrtChoice][Glerum et al. 2013: Modeling Car Own Dscrt Choice]]
-********* 50% of Danish households had no car over 10 years: [[cite:Bjoerner05dynMdlCarOwn][Bjørner & Leth-Petersen 2005: Dynamic Models Car]]
+********* 50% of Danish households had no car over 10 years: [[cite:Bjoerner05dynMdlCarOwn][Bjoerner & Leth-Petersen 2005: Dynamic Models Car]]
 ********* 8.6% Sacramento households had no car, avg cars/HH=1.65: [[https://www.evernote.com/l/AA0eJBD_1-FH945vd8kTnUhL2Rr1ex9GRko/][Vehicle Ownership in U.S. Cities Data and Map]]
 ********* US has roughly 1 car per household driver or adult: [[https://www.evernote.com/l/AA2gJTYhG15NA5jICHU_ulMX2HrzpR8P8-Q/][US Bureau of Transportation Statistics]]
 ********* Vehicles vs. Household size, census tract: [[cite:USsurvey17householdsNumVehiclesDB][Survey 2017: Household Size Vehicles Available]]
+********* Almost all EV owners had >= 2 cars: [[cite:SacPEVC17evReadyInfraPlan][Collaborative 2017: Electric Vehicle Readiness & Infra (Sac)]]
+********* found no effect of multicar: [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
 ******* <<Vehicle Travel Distance>>
 ********* created by linking: [[cite:Dong20commuteDepTimeSpaceTime][Dong & Cirillo 2020: Space-Time Commute Time]]
+********* vehicle type vs. VMT: [[cite:CARB17cleanCarMidRvw][CARB 2017: CA Adv. Clean Car Midterm Rvw]]
+********* uses NREL travel behavior model: [[cite:CEC18plugInEVinfraProj][CEC 2018: California Plug Infra 2017-2025]]
+********* [[https://www.sacog.org/modeling][SACOG Travel demand Model (SACSIM)]]
 ******* <<Mixed car type forecast>>
 ********* [[cite:Glerum13carOwnDynDscrtChoice][Glerum et al. 2013: Modeling Car Own Dscrt Choice]]
 ********* [[cite:Liu17genDynDscrtGrnVhclAdpt][Liu & Cirillo 2017: Gen. Dynamic Discrete Choice Grn Vhcl]]
@@ -11430,6 +11465,8 @@ Erika
 ********* [[cite:Shahan19evDreamDmdDesrPrev][Shahan 2019: Electric Car Driver Dreams]]
 ********* Gas-->EV adopt may be abrupt: [[https://www.evernote.com/l/AA2mqLTTd-ZCdLwoiE5Mc4XFTrnNGwyUV5s/][The rise of EVs could overwhelm the grid, but PG&E has a better plan]]
 *********** would this help? [[cite:Manceau13techDiffusnPreannc][Manceau et al. 2013: Diffusion Model Preannounced Products]]
+********* CA projected/scenario overall and clean mix: [[cite:CARB17cleanCarMidRvw][CARB 2017: CA Adv. Clean Car Midterm Rvw]]
+********* Predicted different car types: [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
 ********* [[EV Unadoption Model]]
 ******* <<EV Unadoption Model>>
 ********* [[cite:Gillingham19eqAutoTrade][Gillingham et al. 2019: Equilibrium Trade Automobile Markets]]
@@ -11448,23 +11485,31 @@ Erika
 ********* [[cite:Glerum13carOwnDynDscrtChoice][Glerum et al. 2013: Modeling Car Own Dscrt Choice]]
 ********* [[Used EVs]]
 ********* [[Mixed car type forecast]]
+******* Regulatory compliance
+********* TODO enter CA reports still in my email
 ******* Model availability
 ********* historical data from [[FuelEconomy.gov]]
 ********* [[cite:Biglaiser19intermUsedCarMkt][Biglaiser et al. 2019: Used car Intermediaries Product Quality]]
 ******* Driving Range
 ********* [[cite:Danielis19evDriveRngMetaAnlys][Danielis et al. 2019 meta-analyis range BEVs]] 
-******* Charging
-********* [[CPR charger joins]] (has info)
-********* [[cite:Danielis19evDriveRngMetaAnlys][Danielis et al. 2019 meta-analyis range BEVs]] 
+********* range an EV concern:  [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
+******* EV sales projections
+********* Projected EV sales to 2025, scenario to 2050: [[cite:CARB17cleanCarMidRvw][CARB 2017: CA Adv. Clean Car Midterm Rvw]]
+********* Straight line projection: [[cite:CEC18plugInEVinfraProj][CEC 2018: California Plug Infra 2017-2025]]
 ******* Sensitivity to economics, total cost of ownership
 ********* fuel savings
 *********** 50% too little: [[cite:Gillingham19cnsmrMyopiaVehic][Gillingham et al. 2019: Consumer Myopia Vehicle Fuel]]
+*********** fuel savings was significant for likely late adopters:  [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
 ********* purchase price
+*********** fuel savings was significant for late adopters:  [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
 ********* incentives
-********* Early EV owners mostly [[cite:Shahan19evDreamDmdDesrPrev][didn't compare w/ fuel cars]]
+*********** effects of incentives ranked (late adopters):  [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
+********* Early EV adopters mostly [[cite:Shahan19evDreamDmdDesrPrev][didn't compare w/ fuel cars]]
 ********* TODO EV total cost of ownership
 *********** TODO [[cite:Fulton18evHybridOwnCost][Fulton 2018: Ownership cost EV vs. Hybid]]
 *********** TODO [[cite:Farkas18evOwnersMD][Farkas et al. 2018: EV owners Environmental Commute]]
+*********** Incremental EV price vs. ICE: [[cite:CARB17cleanCarMidRvw][CARB 2017: CA Adv. Clean Car Midterm Rvw]]
+*********** Incermental clean car price vs. ICE:  [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
 *********** EV car prices/availability
 ************* [[cite:Biglaiser19intermUsedCarMkt][Biglaiser et al. 2019: Used car Intermediaries Product Quality]]
 *********** <<EV charging cost>>
@@ -11487,7 +11532,22 @@ Erika
 ******* <<EV charging model>>
 ********* Used by [[cite:Dong20commuteDepTimeSpaceTime][Dong & Cirillo 2020: Space-Time Commute Time]]
 ********* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help. .  Also, have population projections.
+********* [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
+********* [[cite:Bernards19botUpNtwrkTool][Bernards et al. 2019: Bottom up statistical Network Scenario]]
+********* [[cite:Rodrigues19evDemandSpatRgrssn][Rodrigues et al. 2019: Estimation Electric Demand Spat Rgrssn]]
+********* [[CPR charger joins]] (has info)
+********* [[cite:Danielis19evDriveRngMetaAnlys][Danielis et al. 2019 meta-analyis range BEVs]] 
+********* [[cite:Bernards18stochDistNtwkPlan_PhD][Bernards 2018: Stochastic Distribution Planning PhD Thesis]]
+********* frac of clean car types that are all EV: [[cite:CARB17cleanCarMidRvw][CARB 2017: CA Adv. Clean Car Midterm Rvw]]
+********* projected charging infra in time & space (NREL model): [[cite:CEC18plugInEVinfraProj][CEC 2018: California Plug Infra 2017-2025]]
+********* self-reported charger choice & behavior: [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
 ********* also [[EV charging cost]]
+********* also [[Load Profiles]]
+******* External wide-range forecasts, mapped to smaller spatial regions
+********* [[cite:Bernards19botUpNtwrkTool][Bernards et al. 2019: Bottom up statistical Network Scenario]]
+********* [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
+********* [[cite:Rodrigues19evDemandSpatRgrssn][Rodrigues et al. 2019: Estimation Electric Demand Spat Rgrssn]]
+********* TODO An external forecast: [[https://about.bnef.com/electric-vehicle-outlook/][EV Outlook 2019 | Bloomberg NEF]] (Bass)
 ******* <<EV data sources>>
 ********* <<FuelEconomy.gov>>
           From: [[https://www.fueleconomy.gov/feg/ws/][Fuel Economy Web Services]]
@@ -11540,7 +11600,56 @@ Brittany
 ************* Python API: [[https://github.com/datamade/census][census]]
 ************* [[https://towardsdatascience.com/getting-census-data-in-5-easy-steps-a08eeb63995d][Getting Census Data in 5 Easy Steps - Towards Data Science]]
 ************* [[https://atcoordinates.info/2019/09/24/examples-of-using-the-census-bureaus-api-with-python/][Examples of using the Census Bureau’s API with Python]]
+********* Sacramento area & California EV adoption-relevant data
+*********** [[http://data.sacog.org/datasets/93efdbcdbc744210848dd7f601e622e3_0][SACOG charging station locations]] (something else was better, according to SMUD)
+*********** [[https://www.sacog.org/tools-data][SACOG tools & data]]
+*********** <<DOF-E5-E8 Population and Housing Estimates 1980-2019>>
+            From: [[https://www.sacog.org/data-library][DOF-E5-E8 Population and Housing Estimates 1980-2019]] 
+
+            Areas around SMUD not exact SMUD boundaries.  Related /forecasts/ in: [[SACOG 2016 MTP/SCS Modeling Projections for 2012, 2020 and 2036]]
+
+            Click blue outlined buttons to reach this page & download
+
+************* housing types
+************* population
+************* households
+************* persons per houseold
+
+            Kind of matches up w/ [[SACOG 2016 MTP/SCS Modeling Projections for 2012, 2020 and 2036]]
+
+*********** <<SACOG 2016 MTP/SCS Modeling Projections for 2012, 2020 and 2036>>
+            From: [[https://www.sacog.org/data-library][SACOG 2016 MTP/SCS Modeling Projections for 2012, 2020 and 2036]]
+
+            Click blue outlined buttons to reach this page & download
+
+************* Total Household Pop., Total Dwelling Units, and Total Employment
+************* would want to somehow map pop/dwell/emp to better historical household data in [[DOF-E5-E8 Population and Housing Estimates 1980-2019]]
+************* Spatial precision: 
+*************** county
+*************** Traffic Analysis Zone (TAZ)
+*************** Regional Analysis District (RAD)
+*************** Jurisdiction
+*************** Census Designated Place (CDP)
+                (CDPs:  geographic entity used by the U.S. Census Bureau)
+*************** ZIP Code Tabulation Areas (ZCTA)
+                Totals are only for the SACOG portions of the ZCTA listed.  We do not have estimates or projections for areas outside of the SACOG Region
+*********** Source for names of SMUD area census tracts
+            [[http://data.sacog.org/datasets/census-block-2010-regional/data][Census Block 2010- Regional]]
+
+            But still don't know which are SMUD
+
+*********** [[https://www.sacog.org/modeling][SACOG Travel demand Model (SACSIM)]]
+*********** <<ZEV Regulatory Calculator (CARB)>>
+            From: [[https://ww2.arb.ca.gov/resources/documents/zev-regulatory-calculator][ZEV Regulatory Calculator | California Air Resources Board]]
+            
+************* % EV vehicles min CA regulations are to be met: 2018-2026
+************* estimates of over-compliance to the minimums over years 2018-2021.
+************* has some kind credits that I guess are bought and sold
+********* [[cite:CARB17cleanCarMidRvw][CARB 2017: CA Adv. Clean Car Midterm Rvw]]
+********* TODO [[https://about.bnef.com/electric-vehicle-outlook/][Electric Vehicle Outlook 2019 | Bloomberg NEF]] (uses Bass)
 ********* also [[Data Sets for Technology Adoption]]
+***** Electric heating adoption
+******* [[cite:Bernards18stochDistNtwkPlan_PhD][Bernards 2018: Stochastic Distribution Planning PhD Thesis]]
 ***** <<Bass Innovation Diffusion Models>>
 
       The [[file:energy.bib::Horowitz19ovrvwDERinterConnNREL][most common]] tech adoption model.
@@ -11566,10 +11675,13 @@ Brittany
 ******* [[file:energy.bib::Bertotti16innovDiffusCorrNtwk][Bertotti et al. 2016: Innovation diff corr networks]]
 ******* [[file:energy.bib::Manceau13techDiffusnPreannc][Manceau et al. 2013: Diffusion Model Preannounced Prods (2 phase Bass)]]
 ******* [[file:energy.bib::Tashiro16hierBassDiff][Tashiro 2016: Hierarchical Bass and pop est.]]
+******* TODO [[https://about.bnef.com/electric-vehicle-outlook/][Electric Vehicle Outlook 2019 | Bloomberg NEF]] (uses Bass)
 ***** <<Logistic Regression Based Tech Adoption>>
 ******* [[file:energy.bib::Almeida08openTechInvoDevCntries][Almeida & Fernandes 2008: Openness Adopt Dev Countries]] 
 ******* [[cite:Bjoerner05dynMdlCarOwn][Bjoerner & Leth-Petersen 2005: Dynamic Models Car Ownership]]
-******* [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
+******* TODO [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
+******* TODO [[cite:Bernards19botUpNtwrkTool][Bernards et al. 2019: Bottom up statistical Network Scenario]]
+******* [[cite:Bernards18stochDistNtwkPlan_PhD][Bernards 2018: Stochastic Distribution Planning PhD Thesis]]
 ******* also [[Logistic Regression]]
 ***** Explicit Space/Time modeling adoption
 ******* TODO [[file:energy.bib::Comin04crossCntryTheoryFact][Comin & Hobijn 2004: Cross Country Adopt Theory Facts]]
@@ -11592,6 +11704,7 @@ Brittany
 ******* Adopter sum ~ Poisson
 ********* [[file:energy.bib::Hodges60poissonAprxPoissonBin][Hodges & Le 1960: Sum Bernoulli ~ Poisson]]
 ********* [[file:energy.bib::Ward18sumPoissonsCourseNts][Ward 2018: Course Notes: Sum Poissons ~ Poisson]]
+******* [[cite:Bernards18stochDistNtwkPlan_PhD][Bernards 2018: Stochastic Distribution Planning PhD Thesis]]
 ***** [[file:energy.bib::Eckersley18utilFuncImpossUncert][Eckersley 2018: Impossibility Uncertainty Theorems Util Func]] (for UI choices?)
 ***** <<Interaction: Technology Learning and Adoption Rates>>
 
@@ -11629,6 +11742,7 @@ Brittany
 ******* [[EV data sources]]
 ******* also [[Machine Learning Data Sets]]
 ***** TODO also [[Class Imbalance Handling]] (if tech adopt. is a rare event)
+***** also [[Probabilistic forecast aggregation]]
 ***** also [[Classifier/Count aggregation]] (for forecasting)
 ***** also [[Technology Learning Rates]]
 ***** also [[Portfolio Optimization and Forecasting]]
@@ -11776,6 +11890,7 @@ Brittany
 ***** [[file:energy.bib::Hayn14loadPrfofilesHshldSeg][Hayn et al. 2014: Electricity Europe load profile socio]]: Factors affecting load profiles
 ***** [[Electrical Load Profile Clustering]]
 ***** TODO [[file:energy.bib::Nelson19mnEfcnyPot2020apdxA][Nelson & others 2019: Minnesota Energy Efficiency Potential Study Appendix A]]
+***** [[EV charging model]]
 * <<Random Variable Generation>>
 *** [[cite:Hardin13genRealisticCorrMat][Hardin et al. 2013 Gen Realistic Random Corr Matrix has Rcode]]
 *** [[http://math.stackexchange.com/questions/357980/how-to-generate-random-symmetric-positive-definite-matrices-using-matlab][How to generate random symmetric positive definite matrices using MATLAB?]]
@@ -12386,6 +12501,7 @@ TOTO: read Fan16* for an overview
 ******* [[cite:Lindgren11linkGaussMMRFandSDE][Lindgren et al. 2011: Gaussian Gaussian Markov link SPDE and Prec. Mat]]
 ******* [[cite:Zhou14graphEstMatNormGEMNI][Zhou 2014: Gemini matrix-norm precision graph sparse]]
 ******* [[cite:Tsiligkaridis13covEstHiDimKrPrdExp][Tsiligkaridis & Hero 2013: Covariance Estimation High Dim PLSR wind speed]]
+******* [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (param est by NN)
 ******* [[Varying coefficient models]] (some are covariance models)
 ******* [[Covariance Matrix Space-Time Separability, Normal Distribution]]
 ******* [[Matrix Normal Distribution]]
@@ -13166,6 +13282,8 @@ optimization to be a generalization of linear programming.
    02/13/20  [[cite:Fonton11pltSizeSpatSudTrees][Fonton et al. 2011: Plot Sudanian]]
              [[cite:astropy18pythonLib][Price-Whelan et al. 2018: Astropy Project]]
              [[cite:Goreaud03randLabelK12][Goreaud & Pelissier 2003: K12 interp indep vs. random]]
+   02/17/20  [[cite:CEC18plugInEVinfraProj][CEC 2018: California Plug Infra 2017-2025]]
+   02/18/20  [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
