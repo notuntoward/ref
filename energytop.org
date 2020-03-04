@@ -5682,6 +5682,7 @@ sera
 * <<Conditional Density Estimation>>
 *** <<Quantile Regression>>
 ***** [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006]] QR compared
+***** [[cite:Taylor15windPowQuantKern][Taylor & Jeon 2015: Win Pow Quants NadarayaWatson + QR]]
 ***** [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]] QR (spline)
 ***** [[file:energy.bib::Moller08adaptQuantRegr][Moeller et al. 2008: Time]] (DTU guy)
 ******* more detailed tech note also included in this ref
@@ -5831,8 +5832,7 @@ sera
 ******* [[file:energy.bib::Calderon10psplineDerivSDE][Calderon et al. 2010: P]]-spline: LSQ but spline & easy to make adaptive
 ******* [[file:energy.bib::Pinson07nonParamProbFrcsEval][Pinson et al. 2007: Non]] param prob frcst eval tails
 ******* TODO [[Concept Drift Detection]]
-***** Quantile Crossover
-      <<Quantile Crossover>>
+***** <<Quantile Crossover>>
 ******* how to avoid linear and spline QR crossover: [[file:energy.bib::Dette08quantRgrsNonCross][Dette & Volgushev 2008: Non]]
 ******* TODO [[file:energy.bib::Shenoy15stochOptLdFrcstRgrssn][Shenoy et al. 2015: Non Parametric Regression]] stoch opt: Boyd's paper on quant rgrssn, quad (convex) prog. & stoch. opt
 ******* TODO [[file:energy.bib::Schmidt13noCrossQRspacing][Schmidt 2013: Quantile]] spacing construction (worth reading)
@@ -5847,6 +5847,8 @@ sera
 ******* [[file:energy.bib::Keelin11QuantParamDist][Keelin & Powley 2011: Quantile]] param dist
 ******* [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]]
 ******* [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]] (deep meth. for quantiles or DR thresh probs?)
+******* [[cite:Waltrup15expectileQuantile][Waltrup et al. 2015: Expectile/Quantile DavidGoliath]]: cross, expect loss
+******* expectile vs quantile: [[cite:Koenker13expectileLivByndMn][Koenker 2013: Expectile Live Beyond Means]]
 ******* see also: [[Learning montonicity]] (for smoothing out quantile crossover)
 ******* see also: [[Distributions from quantile forecasts]]
 ***** <<Quantile regression and ABC>>
@@ -7121,7 +7123,9 @@ variables will be preferred, when possible.
         (Logarithmic Score and Energy Score)
 ******* Also: [[Multidimensional CRPS]]
 ***** <<Forecast Expectiles>>
-******* Expectile vs. quantile score: [[cite:Ehm16quantileExpectileScrFrcst][Ehm et al. 2016: Quantile, Expectile Score Forecasts]]
+******* [[cite:Ehm16quantileExpectileScrFrcst][Ehm et al. 2016: Quantile, Expectile Score Forecasts]]
+******* [[cite:Waltrup15expectileQuantile][Waltrup et al. 2015: Expectile/Quantile DavidGoliath]]: cross, expect loss
+******* expectile vs quantile: [[cite:Koenker13expectileLivByndMn][Koenker 2013: Expectile Live Beyond Means]]
 ***** [[file:energy.bib::Drakos18mlEvalMetrics][Drakos 2018: Select Right Evaluation Metrics]]
 ***** [[file:energy.bib::Mohrlen19selectRESfrcstRecmnd][Mohrlen et al. 2019: Recommended Prctcs RES frcst select]]
 ***** [[cite:Bessa12adaptQuantCopulaFrcst][Bessa et al. 2012: Time Adaptive Quantile Copula]]
@@ -9514,7 +9518,7 @@ al. 2012: Current]])
 *********** conditional on all variables known to affect density shape
 *********** account for sample size, spatial or temporal correlation
 *********** new verification methods for high dimensional forecasts
-*********** better link between skill scores (quality) and decsion impact (value)
+*********** need better link between skill scores (quality) and decsion impact (value)
 
 *** TODO <<Portfolio Optimization and Forecasting>>
 ***** TODO [[file:energy.bib::Taylor98cmbinFrcstQuants][Taylor & Bunn 1998: Combining quantile forecasts]] (expert quantile forecasts combined to single est. by weighted sum from QR)
@@ -10505,15 +10509,14 @@ Phone: +49 30 315 17 19 23 | Mobile + 49 151 17 22 80 31
 
 ********* TSO intraday purchases (fixing DA forecast errors)
           https://www.netztransparenz.de/de/Strommengen.htm
-******* Why Bremnes/DTU quantile trading doesn't work for Germany
-        <<Why Bremnes/DTU quantile trading doesn't work for Germany>>
+******* <<Why Bremnes/DTU quantile trading doesn't work for Germany>>
 
 Email to LNEG IRPWIND WP82.4 partner, CC'ed to Peder Bacher (DTU), IWES
 people,...  The Bremnes algorithm is here: [[file:energy.bib::Bremnes04precipQuantsVerif][Bremnes 2004: Probabilistic NWP]]
 
 >>> Scott Otterson 1/21/2016 2:54 PM >>>
 
-Hi António,
+Hi Antonio,
 
 Here's a quick note explaining why the Bremnes algorithm -- implemented in the DTU code -- isn't appropriate for the German market:
 
@@ -11409,7 +11412,7 @@ Erika
 
         [[file:~/Desktop/EV adoption papers inspired by Norway][EV adoption papers inspired by Norway]]
 
-******* [[file:energy.bib::Moons15selfBrandPersEV][Moons & De 2015: Self Brand Personality Elec Cars]]
+******* [[https://www.evernote.com/l/AA3OTjWInMlMBLwu7w5JCfzISfUIfOg708I/][Researchers have no idea when electric cars are going to take over]]
 ******* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help. .  Also, have population projections.
 ******* [[file:energy.bib::Massiani2015useOfBassEV][Massiani & Gohs 2015: Bass EV 2 step approach (but don't use?)]]
 ******* TODO [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
@@ -11436,12 +11439,16 @@ Erika
 ********* Past ownership is dominant: [[cite:Bjoerner05dynMdlCarOwn][Bjoerner & Leth-Petersen 2005: Dynamic Models Car Ownership]]
 ********* List: [[cite:Danielis19evDriveRngMetaAnlys][Danielis et al. 2019 meta-analyis range BEVs]] 
 ********* Huge list: [[cite:Oliveira19altFuelVhclDemogReview][Oliveira & Dias 2019: Demographics Consumer Choice Alt Fuel]]
+********* Past PV adoption
+*********** [[https://www.evernote.com/l/AA2koPA9lmdFC4CFIAp8fNw2Oqa1kOMtls8/][EV Ownership + Rooftop Solar Ownership — New Report & Charts]]
+*********** PV owners are only early adopters: [[https://www.evernote.com/l/AA3lhwMTWeFK9YVUTgtqAqWjPLE9h8z0Gnw/][Electric Car Owners man not love solar panels so much after all]]
 ********* [[cite:Coffman17reviewEVadoptFactors][Coffman et al. 2017: EV adoption factors review]]
 ********* [[cite:Farkas18evOwnersMD][Farkas et al. 2018: Environmental Attributes Electric]]
 ********* [[file:energy.bib::Moons15selfBrandPersEV][Moons & De 2015: Self Brand Personality Elec Cars]]
 ********* [[cite:Bunt19imaginariesNonSolarAdopt][Bunt 2019: PV non-adopters MSthesis]]
 ********* [[cite:Bernards18stochDistNtwkPlan_PhD][Bernards 2018: Stochastic Distribution Planning PhD Thesis]]
 ********* per-household varialbes for probable late adopters: [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
+********* [[file:energy.bib::Moons15selfBrandPersEV][Moons & De 2015: Self Brand Personality Elec Cars]]
 ******* Multiple cars per household
 ********* cost-based multi car model: [[cite:Gavazza14][Gavazza et al. 2014: Quantitative Analysis Used Car]]
 ********* [[cite:Glerum13carOwnDynDscrtChoice][Glerum et al. 2013: Modeling Car Own Dscrt Choice]]
@@ -11451,6 +11458,7 @@ Erika
 ********* Vehicles vs. Household size, census tract: [[cite:USsurvey17householdsNumVehiclesDB][Survey 2017: Household Size Vehicles Available]]
 ********* Almost all EV owners had >= 2 cars: [[cite:SacPEVC17evReadyInfraPlan][Collaborative 2017: Electric Vehicle Readiness & Infra (Sac)]]
 ********* found no effect of multicar: [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
+********* early adopters have multiple cars: [[https://www.evernote.com/l/AA3OTjWInMlMBLwu7w5JCfzISfUIfOg708I/][Researchers have no idea when electric cars are going to take over]]
 ******* <<Vehicle Travel Distance>>
 ********* created by linking: [[cite:Dong20commuteDepTimeSpaceTime][Dong & Cirillo 2020: Space-Time Commute Time]]
 ********* vehicle type vs. VMT: [[cite:CARB17cleanCarMidRvw][CARB 2017: CA Adv. Clean Car Midterm Rvw]]
@@ -11519,6 +11527,8 @@ Erika
 *************** also [[EV charging model]]
 ************* [[Vehicle Travel Distance]]
 *********** EV Maintenance costs
+********* Consumers more sensitive to upfront price than TCO
+          [[https://www.evernote.com/l/AA1c4OwL589LmLSwrScZ8V5_i12v3lzSELw/][Why the electric-car revolution may take a lot longer than expected]]
 ********* Conventional car total cost of ownership
 *********** [[cite:Glerum13carOwnDynDscrtChoice][Glerum et al. 2013: Modeling Car Own Dscrt Choice]]
 ******* <<Used EVs>>
