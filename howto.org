@@ -8451,6 +8451,26 @@
       conda skeleton pypi package
       conda-build package
 
+*** Anaconda
+    Package sysem for Python and R
+***** revert conda install
+      From: [[http://blog.rtwilson.com/conda-revisions-letting-you-rollback-to-a-previous-version-of-your-environment/][Conda revisions: letting you ‘rollback’ to a previous version of your environ...]]
+
+      _Get list of past conda install actions_
+      i.e. revisions kth conda update marked with "(rev k)"
+
+      conda list --revisions
+
+      _Install conca revisions k_
+
+      conda install --revision k
+
+      Then, if you run ~conda list --revisions~, you'll see a new
+      revision, (rev N+1), where the latest previous revision number
+      was N, and where (rev N+1) is the result of bringing you back to
+      (rev k), and where (rev k) is also still shown.
+
+      
 *** <<TensorFlow>>
 ***** <<IWES Laptop TensorFlow install>>
 
@@ -9003,7 +9023,7 @@
 
             jupyter labextension install jupyterlab-jupytext
 
-            Mmust also install the python package:
+            Must also install the python package:
             
             conda install -c conda-forge jupytext
 
