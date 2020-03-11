@@ -11386,6 +11386,7 @@ Erika
 ***** Solar Power adoption rates
 ******* DONE [[file:energy.bib::Sigrin16mktDmdDgenDoc][Sigrin et al. 2016: Distributed Generation Market Model (dGen)]]: NREL
 ******* TODO [[file:energy.bib::Williams20parsDiffResSolar][Williams et al. 2020: Empirical Diffusion Res Solar]]
+******* TODO [[cite:Alipour20pvAdoptFeatTaxon][Alipour et al. 2020: Taxonomy Solar & Battery Adopt Feat Review]]
 ******* [[file:energy.bib::Gagnon16distPVadoptMktFctr][Gagnon & Sigrin 2016: Distributed PV Adoption Mkt Factors]]
 ******* [[file:energy.bib::Kwasnik19adoptDERagentRsltn][Kwasnik et al. 2019: PV Agent Adopt Resolution Implications]]
 ******* [[file:energy.bib::Sigrin18uncertMktMdlPVmultiMdl][Sigrin et al. 2018: Market Modeling Uncertainty Distr. Solar]]
@@ -11491,6 +11492,7 @@ Erika
 ********* car unadoption is rare: [[cite:Bjoerner05dynMdlCarOwn][Bjoerner & Leth-Petersen 2005: Dynamic Models Car Ownership]]
 ********* EV-->Gas car unadoption very unlikely: [[cite:Shahan19evDreamDmdDesrPrev][Shahan 2019: Electric Car Driver Dreams]]
 ********* [[cite:Glerum13carOwnDynDscrtChoice][Glerum et al. 2013: Modeling Car Own Dscrt Choice]]
+********* [[cite:Zhao18resPriceEvoImpBass][Zhao et al. 2018: Renewable Improved Bass Wind]] (Bass for used EV?)
 ********* [[Used EVs]]
 ********* [[Mixed car type forecast]]
 ******* Regulatory compliance
@@ -11686,6 +11688,7 @@ Brittany
 ******* [[file:energy.bib::Manceau13techDiffusnPreannc][Manceau et al. 2013: Diffusion Model Preannounced Prods (2 phase Bass)]]
 ******* [[file:energy.bib::Tashiro16hierBassDiff][Tashiro 2016: Hierarchical Bass and pop est.]]
 ******* TODO [[https://about.bnef.com/electric-vehicle-outlook/][Electric Vehicle Outlook 2019 | Bloomberg NEF]] (uses Bass)
+******* [[cite:Zhao18resPriceEvoImpBass][Zhao et al. 2018: Renewable Improved Bass Wind]]
 ***** <<Logistic Regression Based Tech Adoption>>
 ******* [[file:energy.bib::Almeida08openTechInvoDevCntries][Almeida & Fernandes 2008: Openness Adopt Dev Countries]] 
 ******* [[cite:Bjoerner05dynMdlCarOwn][Bjoerner & Leth-Petersen 2005: Dynamic Models Car Ownership]]
