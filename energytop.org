@@ -9864,6 +9864,7 @@ later corrected by greg heath:
 ***** Likes k<1 (fractional) norms, also called "Lf norms," which don't satisfy triangle inequalities
 *** [[file:energy.bib::Kraskov08MIChierClustMutInf][Kraskov & Grassberger 2008: MIC]] MI distance measure
 *** [[Distance Covariance]]
+*** [[cite:Li11tensoCovMatObjTrck][Li & Sun 2011: Tensor Covariance Matrix Obj Track]]
 *** See also: [[lp spaces and norms]]
 * <<Stopping Criteria>>
 
@@ -11668,7 +11669,7 @@ Brittany
 
 ******* DONE [[file:energy.bib::Wikipedia19bassDiffus][Wikipedia 2019: Bass Diffusion Model]]
 ******* TODO [[file:energy.bib::Bass94bassWithoutDecVars][Bass et al. 1994: Why Bass Model w/o dec vars]] (with derivations. SDE?)
-******* TODO [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]]
+******* TODO [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]] (Bass w/ conf intervs)
 ******* TODO [[file:energy.bib::Jaakkola96cmprDiffsnMdlAdopt][Jaakkola 1996: Comparison Analysis Diffusion Models]]
 ******* TODO [[file:energy.bib::Deepa07reviewDiffuseNewProd][Deepa & Tellis 2007: Critical Review Marketing Diffusion]]
 ******* DONE [[file:energy.bib::Massiani2015useOfBassEV][Massiani & Gohs 2015: Bass EV 2 step approach (but don't use?)]]
