@@ -3870,6 +3870,22 @@
 ******* move taskbar of laptop to big monitor
         [[http://www.pcmag.com/article2/0,2817,1632004,00.asp][Supposedly]], you can unlock it and then drag it to the monitor.  This
         worked once on Windows 7 and then my taskbar disappeared!
+******* using Surface Go as extra monitor
+        From: [[https://www.youtube.com/watch?v=K3WaeHpipwk&feature=emb_rel_end][Use your Surface as a second screen]]
+
+        Using built-in Surface Miracast
+
+        _Surface Go setup_
+        o Win+k (or connect action center button)
+        o Project to this PC
+        o make sure "available everywhere...." is selected
+
+        Surface Pro
+        o Win+k
+        o connect to the Surface Go, which should be listed
+
+        DOESN'T WORK, as of March 2020, although it used to.  I don't see the Surface Go icon.
+
 ***** Window manipulation on Windows
 ******* window vertical maximize
 
