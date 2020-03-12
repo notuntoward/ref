@@ -714,9 +714,19 @@ _C-M-a_ change default action from list for this session
 ;; * IDO Mode
 
 ;; TODO: find a new file that's like something already existing but shorter (so you can create a new file w/ a shorter name.  eg.s C-x C-x tmp   and there
-;; is already a file named tmp.txt
+;; is already a file named tmp.txt.  Or, renane a file to a shorter
+;; version of its name e.g. rename tmp.txt to tmp.
 ;; I can't do this.  Ido and counsel-find-file both
 ;; have a problem in this situation.
+;; Note: ido on find-file supposedly can be overriden with C-j (to validate) or
+;; C-F (after you've narrowed options).  However, Evernote is
+;; currently bound to C-F.
+;; https://stackoverflow.com/questions/21007014/not-selecting-what-emacs-ido-is-suggesting
+;; But neither option works. in the case of shorter name.
+;;
+;; Commentining out (ido-mode 1) and (ido-everywhere 1) fixes file
+;; visiting but not file renaming.  Ivy is getting in the
+;; way with naming: can force it to accept your shorter choice with C-M-j
 ;;
 ;; TODO: how to open a pdf with ido (mapped to C-x C-f).  Currently,
 ;; it doesn't use the system default (PDF Xchange editor) but instead
@@ -734,13 +744,17 @@ _C-M-a_ change default action from list for this session
 ;;
 ;; Should be placed after ivy to avoid partial ivy overwrites of ido functions
 
-(ido-mode 1) ; https://github.com/DarwinAwardWinner/ido-completing-read-plus
-(ido-everywhere 1)
+;; Commenting out  these fixed renaming a file to a shorter but similar name
+;(ido-mode 1) ; https://github.com/DarwinAwardWinner/ido-completing-read-plus
+;(ido-everywhere 1)
 
 ;; From: http://stackoverflow.com/questions/17986194/emacs-disable-automatic-file-search-in-ido-mode
 ;; so it doesn't search for file completions in other directories.  Really
 ;; hoses up dired directory create, for example.
 (setq ido-auto-merge-work-directories-length -1)
+
+;; replaces emacs w/ ido in as many places as possible
+;; https://github.com/DarwinAwardWinner/ido-completing-read-plus
 (use-package ido-completing-read+
   :config (ido-ubiquitous-mode 1)) ; run it (almost) everywhere
 
@@ -3208,7 +3222,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(org-level-7 ((((class color) (background light)) (:foreground "black"))))
  '(org-level-8 ((((class color) (background light)) (:foreground "black"))))
  '(org-link ((t (:foreground "blue3"))))
- '(org-table ((((class color) (background light)) (:background "honeydew1" :foreground "black"))))
+ '(org-table ((t (:background "honeydew1" :foreground "gray0"))))
  '(org-tag ((nil (:foreground "dark green" :slant italic :weight bold))))
  '(org-target ((t (:foreground "dark slate blue" :weight bold))))
  '(org-todo ((t (:foreground "Firebrick" :weight normal))))
