@@ -8630,6 +8630,9 @@
             %matplotlib widget
 *********** <<Jupytlerlab plotly extension>>:
        
+            jupyter labextension install @jupyterlab/plotly-extension
+            
+            Is this still needed?
             conda install -c conda-forge jupyterlab-plotly-extension 
 
 ************* obsoleted plotly extension
