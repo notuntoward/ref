@@ -78,6 +78,35 @@
 
 (use-package try) ; M-x try to test a pkg w/o installing it
 
+;; updated package interface.  Start with M-x paradox-list-packages
+;; TODO: paradox modeline faces aren't visible when window is in use
+;; (i.e. the modeline background is dark blue)
+;; can customize paradox-modeline-face (try M-x paradox-customize)
+;; but other modelines are automatically inverted when the modeline is
+;; darkened.  Is that controlled by installed pkg: smart-mode-line ?
+(use-package paradox
+  :ensure t
+  :commands (paradox-list-packages)
+  :bind (:map paradox-menu-mode-map ("g" . paradox--refresh-remote-data))
+  :config (paradox-enable))
+
+;; |----------+---------------------------------------|
+;; | Shortcut | Description                           |
+;; |----------+---------------------------------------|
+;; | v        | Visit the package's homepage          |
+;; | l        | View a list of recent commits         |
+;; | f r      | filters by regexp (occur);            |
+;; | f u      | display only packages with upgrades;  |
+;; | f k      | filters by keyword (emacs 24.4 only). |
+;; | f c      | clear filters                         |
+;; | h        | See all keys                          |
+;; | s        | Star/unstar package                   |
+;; | g        | Refresh package list                  |
+;; |----------+---------------------------------------|
+;;
+;; Use paradox-require instead of require to automatically install absent packages.
+
+
 ;; * Emacs Speed Test
 
 ;; Find out what's slowing down emacs start by running M-x esup
@@ -435,10 +464,12 @@ TODO: make this a general function."
 
 ;; * Search and Replace (see also Swiper/Ivy)
 ;; ** Web Search
-(use-package google-this      ;; TODO: compare with counsel-search
-  :diminish google-this-mode
-  :config
-  (google-this-mode 1)) ; bound to C-c / g (and other bindings after '/')
+
+;; overrides org-mode bindings e.g. sparse-tree: C-c /
+;; (use-package google-this      ;; TODO: compare with counsel-search
+;;   :diminish google-this-mode
+;;   :config
+;;   (google-this-mode 1)) ; bound to C-c / g (and other bindings after '/')
 
 ;; ** File System Search
 
@@ -2213,6 +2244,11 @@ is already narrowed."
      ("^ +\\(*\\) "
       (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "✤")))))))
 
+;; TODO org-bullets is obsolete:
+;; https://github.com/integral-dw/org-bullets/commit/b98464165cfa1e41301bfe256a98eef1c264c57b
+;; update to named successor package: org-superstar-mode
+;; https://github.com/integral-dw/org-superstar-mode
+;; maybe start with org-superstar-configure-like-org-bullets
  (use-package org-bullets
   :init
   (add-hook 'org-mode-hook #'org-bullets-mode)
@@ -3138,7 +3174,9 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+ '(paradox-automatically-star t)
+ '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
  '(paren-message-truncate-lines nil)
  '(recentf-max-menu-items 60)
  '(recentf-max-saved-items 200)
