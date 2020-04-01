@@ -853,6 +853,8 @@
 ***** [[http://www.amazon.com/Signal-Image-Processing-Neural-Networks/dp/0471049638/ref%3Dpd_sim_b_1][Signal and Image Processing With Neural Networks: A C++ Sourcebook/Book and 3 1/2 Disk]]
 ***** [[http://www.iau.dtu.dk/nnspringer.html][Modelling and Control of Dynamic Systems ]]
 ***** [[file:energy.bib::Davidson-Pilon15bayesMethHackers][Davidson-Pilon 2015: Bayesian Methods Hackers]]
+***** [[https://jakevdp.github.io/PythonDataScienceHandbook/][Python Data Science Handbook | Python Data Science Handbook]]
+      Source code: [[https://github.com/jakevdp/PythonDataScienceHandbook][GitHub - jakevdp/PythonDataScienceHandbook]]
 ***** See also: [[Books]]
 *** Lists of source code
 ***** Good source code [[http://ad.informatik.uni-freiburg.de/lehre/ss97/neuronale-netze/faq/7.html#questions][list]]
@@ -2283,9 +2285,12 @@ Scott
 *** [[file:energy.bib::Bonilla08MultiTaskGaussProc][Bonilla et al. 2008: Multi task Gaussian Process Prediction]]
 *** [[file:energy.bib::Zou18multiTaskDisease][Zou et al. 2018: Multi Task Learning Disease Models]]: regularized GPs across regions
 *** [[file:energy.bib::Vogt18multiDistLrnAnomDet][Vogt et al. 2018: Multitask anomaly pred maint]]
+*** [[cite:Jayaram16tranfLrnBrainCompInt][Jayaram et al. 2016: Transfer Learning Brain Interface Log Reg]]
+*** [[cite:Fiebig16multiTaskLogRgrssnBrainHum][Fiebig et al. 2016: Multi task logistic regression]]
 *** <<Multitask Learning Software>>
 ***** _Scikit-learn_ [[https://scikit-learn.org/stable/modules/linear_model.html#multi-task-lasso][has]] multitask Elastic Net and Lasso but not Poisson, general GLM, it seems
 ***** [[http://spams-devel.gforge.inria.fr/][SPAMS]] (python,R) [[scholar.google.com/scholar?q=logistic+regression+mixed+categorical+and+continuous+inputs&hl=en&as_sdt=0&as_vis=1&oi=scholart][has]] Multitask, regularized linear/logistic/softmax rgrssn
+***** has code: [[cite:Jayaram16tranfLrnBrainCompInt][Jayaram et al. 2016: Transfer Learning Brain Interface Log Reg]]
 * <<Graph Networks>>
 
   Proposed way of representing knowlege in a more interpretable and data-efficient way than [[Deep Learning]] neural nets.
@@ -2312,6 +2317,7 @@ Scott
 
 *** [[file:energy.bib::Legler19broadenGLMmultiLev][Legler & Roback 2019: Broadening Horiz, GLM and Multilev Models]]
 
+*** [[cite:Jas20pyGLMnet][Jas et al. 2020: Pyglmnet elastic net GLM]]
 *** <<Aggregated regression using GLMs>>
 ******* [[file:energy.bib::Bhowmik19estimaggLrnAggDat][Bhowmik et al. 2019: EstImAgg learing groupwise aggregated data with GLMs]] 
 ******* [[file:energy.bib::Bhowmik15glmForAggDat][Bhowmik et al. 2015: Generalized linear models for aggregated (histogram) data]]
@@ -2324,7 +2330,8 @@ Scott
 ******* [[file:energy.bib::Pillow16mathNeurTlsSlides][Pillow 2016: Mathematical Tools Neuroscience Course Notes]]: GLM (old) vs. GLM (new), Poisson/Logistic Regression
 ***** [[Discrete Events: Poisson arrivals, etc.]] 
 ***** [[file:energy.bib::Hodges60poissonAprxPoissonBin][Hodges & Le 1960: Poisson Poisson: Sum Bernoullis is ~ Poisson]] 
-***** also [[Poisson Process]]
+***** [[cite:Jas20pyGLMnet][Jas et al. 2020: Pyglmnet elastic net GLM]]
+***** TODO also [[Poisson Process]]
 *** <<Logistic Regression>>
 ***** [[file:energy.bib::Jordan97whyLogisticIRLS][Jordan & others 1995: Why the Logistic]]
 ***** [[file:energy.bib::Shalizi15datAnalElemViewBk][Shalizi 2015: Advanced]] data analysis from elementary perspective (logistic regression, ...)
@@ -2351,6 +2358,8 @@ Scott
 
 ******* [[Stability Feature Selection]]
 ******* usable? [[cite:Wei15varImpCmpr][Wei 2015: Compare Var Imp High Dim (RF permutation tests)]]
+***** [[cite:Jayaram16tranfLrnBrainCompInt][Jayaram et al. 2016: Transfer Learning Brain Interface Log Reg]]
+***** [[cite:Fiebig16multiTaskLogRgrssnBrainHum][Fiebig et al. 2016: Multi task logistic regression]]
 ***** [[Logistic Regression Based Tech Adoption]]
 *** <<GLM performance metrics>>
 ***** [[Deviance]]
@@ -6952,7 +6961,7 @@ variables will be preferred, when possible.
 * <<Ripley's K>>
   (move this under a spatial correlation section, same as kriging, etc. )
 *** Good review: [[cite:Wiegand04ringsRipleyK][Wiegand & A. 2004: Rings Ripley K]]
-*** [[file:energy.bib::Rai15agentEnrgyTechAdoptFactors][Rai & Robinson 2015: Agent PV adopt]] (uses it)
+*** [[file:energy.bib::Rai15agentEnrgyTechAdoptFactors][Rai & Robinson 2015: Agent PV adopt]] (PV adopt: uses it)
 *** [[file:energy.bib::Wilschut15spatDistPtPattGerbil][Wilschut et al. 2015: Spatial Gerbil K]] (uses it)
 *** [[cite:Fonton11pltSizeSpatSudTrees][Fonton et al. 2011: Plot Sudanian]]
 *** [[file:energy.bib::Gillan12ripleyK][Gillan & Gonzalez 2012: The Landscape Toolbox, Ripley's K]]
@@ -6974,7 +6983,7 @@ variables will be preferred, when possible.
 
 ***** [[cite:Gillan12ripleyK][Gillan & Gonzalez 2012: The Landscape Toolbox, Ripley's K]]
 *** Ripley's K is used here: [[Technology Adoption Rates]]
-*** also [[Social (spatial) influence for EVs]]
+*** also [[Spatial (social) influence for EVs]]
 * <<Forecasting>>
 *** <<German Data: RES production and forecasts>>
 
@@ -8801,7 +8810,7 @@ Scott
 ********* [[file:energy.bib::Jorgensen08aesoFR][Joergensen & M\ohrlen 2008: AESO Wind Power]] (best ensembles, meteorology)
 ********* See: [[Regimes and Ramps]]
 ********* See: [[Ramp Forecasting]]
-*******  <<Ensemble selection>>
+******* <<Ensemble selection>>
 ********* <<Random Forest Ensemble Selection>>
 *********** [[file:energy.bib::Lofstrom09ensmblSel][Lofstrom et al. 2009: Ensemble]] selection, classif
 ********* [[file:energy.bib::Garaud11ensCalSel][Garaud & Mallet 2011: Automatic]] combo ens sel
@@ -8823,7 +8832,7 @@ Scott
 ********* see [[Boosted Quantile Regression]]
 ******* See also [[Numerical Weather Prediction (NWP)]]
 ******* See also [[Bayesian Model Averaging]]
-******* See also [[file:energytop.org::*Forecast%20combination][Forecast combination]]
+******* See also [[Forecast combination]]
 ***** <<Scenario Generation>>
 ******* my scenario generation literature review
 
@@ -11408,6 +11417,12 @@ Erika
 ******* TODO [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
 ******* [[file:energy.bib::Cole18impactSunShot2030][Cole et al. 2018: Envisioning solar impact Sunshot 2030]]
 ******* [[cite:Bernards18stochDistNtwkPlan_PhD][Bernards 2018: Stochastic Distribution Planning PhD Thesis]]
+******* TODO <<Spatial (social) influence for PV adoption>>
+********* [[cite:Bollinger12pvAdptPeer][Bollinger & Gillingham 2012: Peer Effects Diffusion PV Adopt]]
+********* TODO [[cite:Graziano14pvAdoptNeighbors][Graziano & Gillingham 2014: Spatial PV adopt neighbors]]
+********* [[file:energy.bib::Rai15agentEnrgyTechAdoptFactors][Rai & Robinson 2015: Agent PV adopt]] (PV adopt: uses it)
+********* also [[Spatial (social) influence for EVs]]
+********* also [[Ripley's K]]
 ***** Electric vehicle adoption
 ******* TODO ALL THE EV PAPERS INSPIRED BY NORWAY
         On work computer:
@@ -11423,15 +11438,18 @@ Erika
 ******* needs a [[https://www.evernote.com/l/AA2mqLTTd-ZCdLwoiE5Mc4XFTrnNGwyUV5s/]["vehicle age" feature]], I think, somehow.
 ******* [[file:energy.bib::Manceau13techDiffusnPreannc][Manceau et al. 2013: Diffusion Model Preannounced Prods (2 phase Bass)]]
 ******* [[cite:Pedrosa18secondHandEVs][Pedrosa & Nobre 2018: Second Hand EV Survey]]
-******* <<Social (spatial) influence for EVs>>
+******* <<Spatial (social) influence for EVs>>
+********* PV adopt: r=610m: [[cite:Rai15agentEnrgyTechAdoptFactors][Rai & Robinson 2015: Agent PV Adopt]]
 ********* [[cite:Jansson17adoptAltFuelInflnc][Jansson et al. 2017: Adoption alt fuel influence social]]
 ********* [[cite:Rai15agentEnrgyTechAdoptFactors][Rai & Robinson 2015: Agent PV adopt]] (sociological spatial influcence)
 ********* [[cite:Zhu13nbrhdEffectHybridVehicl][Zhu & Liu 2013: Investigating Neighborhood Effect Hybrids]]
 ********* different used cars sold in different counties: [[cite:Biglaiser19intermUsedCarMkt][Biglaiser et al. 2019: Used car Intermediaries Product Quality]]
-********* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help. .  Also, have population projections.
+********* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help. Also, has population projections.
 ********* [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
 ********* [[cite:Rodrigues19evDemandSpatRgrssn][Rodrigues et al. 2019: Estimation Electric Demand Spat Rgrssn]]
 ********* [[cite:Rodrigues19evAdoptSpatTemp][Rodrigues et al. 2019: Spatiotemporal EV Adopt]]
+********* TODO rings? :  [[cite:Graziano14pvAdoptNeighbors][Graziano & Gillingham 2014: Spatial PV adopt neighbors]]
+********* also [[Spatial (social) influence for PV adoption]]
 ********* also [[Ripley's K]] (proxmity feature)
 ******* Individual owner influences on 
 ********* income (dominant), ownership, house struct, education, neighbors
@@ -11442,8 +11460,8 @@ Erika
 ********* List: [[cite:Danielis19evDriveRngMetaAnlys][Danielis et al. 2019 meta-analyis range BEVs]] 
 ********* Huge list: [[cite:Oliveira19altFuelVhclDemogReview][Oliveira & Dias 2019: Demographics Consumer Choice Alt Fuel]]
 ********* Past PV adoption
-*********** [[https://www.evernote.com/l/AA2koPA9lmdFC4CFIAp8fNw2Oqa1kOMtls8/][EV Ownership + Rooftop Solar Ownership — New Report & Charts]]
-*********** PV owners are only early adopters: [[https://www.evernote.com/l/AA3lhwMTWeFK9YVUTgtqAqWjPLE9h8z0Gnw/][Electric Car Owners man not love solar panels so much after all]]
+*********** [[https://www.evernote.com/l/AA2koPA9lmdFC4CFIAp8fNw2Oqa1kOMtls8/][EV Ownership + Rooftop Solar Ownership New Report & Charts]]
+*********** PV owners are only early adopters: [[https://www.evernote.com/l/AA3lhwMTWeFK9YVUTgtqAqWjPLE9h8z0Gnw/][Electric Car Owners may not love solar panels so much after all]]
 ********* [[cite:Coffman17reviewEVadoptFactors][Coffman et al. 2017: EV adoption factors review]]
 ********* [[cite:Farkas18evOwnersMD][Farkas et al. 2018: Environmental Attributes Electric]]
 ********* [[file:energy.bib::Moons15selfBrandPersEV][Moons & De 2015: Self Brand Personality Elec Cars]]
@@ -11659,6 +11677,8 @@ Brittany
 ************* estimates of over-compliance to the minimums over years 2018-2021.
 ************* has some kind credits that I guess are bought and sold
 ********* [[cite:CARB17cleanCarMidRvw][CARB 2017: CA Adv. Clean Car Midterm Rvw]]
+********* [[https://cleanvehiclerebate.org/eng/rebate-statistics][CVRP Rebate Statistics | Clean Vehicle Rebate Project]]  
+          Tom Hoff suggested this, as rebate info, leases too, I think.
 ********* TODO [[https://about.bnef.com/electric-vehicle-outlook/][Electric Vehicle Outlook 2019 | Bloomberg NEF]] (uses Bass)
 ********* also [[Data Sets for Technology Adoption]]
 ***** Electric heating adoption
@@ -11755,6 +11775,13 @@ Brittany
 ******* [[file:energy.bib::Rossetti17frcstAdoptEarlyData][Rossetti et al. 2017: Forecasting Early Adopt Analysis Data]] (has data)
 ******* [[file:energy.bib::Comin10explrTechDiffus][Comin & Hobijn 2010: Exploration Technology Diffusion]] (has data)
 ******* [[EV data sources]]
+******* <<WattBuy/NREL Utility database>>
+*********  [[https://electrek.co/2020/03/11/former-google-ceo-funds-updated-us-electricity-price-database/][Former Google CEO funds updated US electricity-price database - Electrek]]
+********* s/w more comprehensinve than [[NREL Utility Database]], will replace it?
+******* <<NREL Utility Database>>
+        In 2020, this has [[https://electrek.co/2020/03/11/former-google-ceo-funds-updated-us-electricity-price-database/][150 largest utilities, 70% US load, <10% all providers]]
+********* [[https://openei.org/wiki/Utility_Rate_Database][Utility Rate Database | Open Energy Information]]
+********* more comprehensive or a replacement: [[WattBuy/NREL Utility database]]
 ******* also [[Machine Learning Data Sets]]
 ***** TODO also [[Class Imbalance Handling]] (if tech adopt. is a rare event)
 ***** also [[Probabilistic forecast aggregation]]
