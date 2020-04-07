@@ -9649,8 +9649,8 @@ plt.show()
 ***** [[Hadoop]]
 ***** [[https://dask.org/][Dask: Scalable analytics in Python]]
 ******* [[https://towardsdatascience.com/why-every-data-scientist-should-use-dask-81b2b850e15b][Why every Data Scientist should use Dask?]]
-***** [[https://kubernetes.io/][Kubernetes]] (not jsut Pythong, more for containers)
-***** [[https://github.com/d6t/d6tflow][d6t/d6tflow: Python library for building highly effective data science]]
+***** [[https://kubernetes.io/][Kubernetes]] (not just Python, more for containers)
+***** [[https://github.com/d6t/d6tflow][d6t/d6tflow: Python library for building highly effective data science]] (versioning & parallel, I think)
 *** <<Tidy (Long) Tables>> in Python
 
     The way Patrick Sudowe suggested that all SQL data s/b organized.  I guess it's the same for Python dataframes or whatever
