@@ -2307,7 +2307,7 @@ Scott
 
 * <<Generalized Linear Models>>
 
-  [[file:energy.bib::Pillow16mathNeurTlsSlides][Not to be confused]] with "General Linear Models", is a [[file:energy.bib::Pillow16mathNeurTlsSlides][superset]] of things like Poisson and Logistic Regression.
+ [[file:energy.bib::Pillow16mathNeurTlsSlides][Not to be confused]] with "General Linear Models", is a [[file:energy.bib::Pillow16mathNeurTlsSlides][superset]] of things like Poisson and Logistic Regression.
 
 *** [[file:energy.bib::Fox08glmBookChap][Fox 2008: Chap 15 Generalized Linear Regression]]
 *** [[file:energy.bib::Madsen11glmBook][Madsen & Thyregod 2011: Intro Gen & Generalized Lin Models]]
@@ -2321,6 +2321,8 @@ Scott
 *** <<Aggregated regression using GLMs>>
 ******* [[file:energy.bib::Bhowmik19estimaggLrnAggDat][Bhowmik et al. 2019: EstImAgg learing groupwise aggregated data with GLMs]] 
 ******* [[file:energy.bib::Bhowmik15glmForAggDat][Bhowmik et al. 2015: Generalized linear models for aggregated (histogram) data]]
+******* Disagg: [[cite:Bernards19botUpNtwrkTool][Bernards et al. 2019: Bottom up statistical Network Scenario]]
+******* Disagg: [[cite:Bernards18stochDistNtwkPlan_PhD][Bernards 2018: Stochastic Distribution Planning PhD Thesis]]
 *** <<Poisson Regression>>
 ***** TODO [[file:energy.bib::Agresti07introCategDatAnl][Agresti 2007: Introduction Categorical Data Analysis]] (for Poisson part)
 ***** TODO [[file:energy.bib::Benjamin18mdrnMLvsGLMpoisson][Benjamin et al. 2018: Modern Machine Learning vs Poisson GLM]]
@@ -2546,10 +2548,10 @@ Scott
 
               ie.
 
-              x1r = prediction of x1 based on x2, ... , xk
-              yr = prediction of y based on x2, ... , xk
+              x1r                                                                                                                  = prediction of x1 based on x2, ... , xk
+              yr                                                                                                                   = prediction of y based on x2, ... , xk
 
-              partial correlation == correlation(y-yr,x1-x1r)
+              partial correlation                                                                                                  == correlation(y-yr,x1-x1r)
 
               another [[http://plato.acadiau.ca/courses/psyc/mcleod/2023research/partial-semi.html][course page]]:
 
@@ -2564,7 +2566,7 @@ Scott
               - any number of measured variables can be partialed out as if
                 controlled for experimentally
               - partial correlation can be tested for statistical
-                significance with n-j d.f. (where j= number of variables)"
+                significance with n-j d.f. (where j                                                                                = number of variables)"
 
 ************* a linear way of doing full conditional mutual information?
 *************** Peng (relevance/redundancy) kludge
@@ -2617,7 +2619,7 @@ Scott
                 - otherwise, could get spurious match on unrelated diurnal cycles
                 - but would that really be spurious and not predictive?
                 - just remove periodicity from thing to be forecast?
-                - maybe just knock out fft bins @ t=1,2 days?
+                - maybe just knock out fft bins @ t                                                                                =1,2 days?
                 - note that the same would apply to mutual information
 ************* [[http://faculty.chass.ncsu.edu/garson/pa765/partialr.htm][recommends only 3-5 variables]] if doing causal modeling!
 *************** otherwise use [[http://faculty.chass.ncsu.edu/garson/pa765/path.htm][path analysis]] or [[http://faculty.chass.ncsu.edu/garson/pa765/structur.htm][structural equation modeling]]
@@ -2766,9 +2768,9 @@ Scott
 
               /ie. don't regress on y/:
 
-              x1r = prediction of x1 based on x2, ... , xk
+              x1r                                                                                                                  = prediction of x1 based on x2, ... , xk
 
-              partial correlation == correlation(y,x1-x1r)
+              partial correlation                                                                                                  == correlation(y,x1-x1r)
 
               another [[http://plato.acadiau.ca/courses/psyc/mcleod/2023research/partial-semi.html][course page]]:
 
@@ -2792,7 +2794,7 @@ Scott
                 be different, even though same regression result for final
                 selection
 
-                ==> “it would be better to simply concede that the notion
+                                                                                                                                   ==> “it would be better to simply concede that the notion
                 of ’independent contribution to variance’ has no
                 meaning when predictor variables are intercorrelated”
                 (darlington, 1968, p. 179)
@@ -2854,16 +2856,16 @@ Scott
 ************* a measure of overall covariance, includes covariance terms
 ************* is volume of space filled by dist in a hypercube
               [[file:energy.bib::pena03descsctrlindep][pena & rodriguez 2003: descriptive]] meas, multivar scat, lindep
-************* is <=1, 1.0 for perfectly uncorrelated
-              since [[http://www.tulane.edu/~psycstat/dunlap/psyc613/ri2.html][det(corr mat)==1 if everything uncorr]], else <1
-              i think it's also >=0, but i lost the ref to that and am too
+************* is <                                                                                                                 =1, 1.0 for perfectly uncorrelated
+              since [[http://www.tulane.edu/~psycstat/dunlap/psyc613/ri2.html][det(corr mat)                                       ==1 if everything uncorr]], else <1
+              i think it's also >                                                                                                  =0, but i lost the ref to that and am too
               lazy to figure it out.
 
 ************* can be misleading: different cov matrics yield same gen. var
               see Johnson and Wichern (1998) ref. in [[file:energy.bib::khattree99multivarcncpt][khattree & naik 1999: applied multivariate statistics]]: ch 1
 ************* [[file:energy.bib::khattree99multivarcncpt][khattree & naik 1999: applied multivariate statistics]]: ch 1
 
-*********** effective variance: genvar^(1/p)  (p=dimension)
+*********** effective variance: genvar^(1/p)  (p                                                                                   =dimension)
             -- can compare across different dims
             [[file:energy.bib::pena03descsctrlindep][pena & rodriguez 2003: descriptive]] meas, multivar scat, lindep
 
@@ -3019,7 +3021,7 @@ Scott
 
                     from: [[file:energy.bib::brown09newinfofeatsel][brown 2009]], a new perspective on information...
 
-                    i(y(1:n);x(1:m)) =    i({all pairwise combos})
+                    i(y(1:n);x(1:m))                                                                                               =    i({all pairwise combos})
                                         + i({all triplet combos})
                                         + i({all quad combos})
                                         + ...
@@ -3134,12 +3136,12 @@ Scott
                     - however,
 
 ******************* ahmed and th
-******************* mi: i(x;y) = h(y) - h(y|x) ([[http://en.wikipedia.org/wiki/mutual_information][wikipedia]]), so need normal conditional dist
+******************* mi: i(x;y)                                                                                                     = h(y) - h(y|x) ([[http://en.wikipedia.org/wiki/mutual_information][wikipedia]]), so need normal conditional dist
 ******************* [[Conditional Normal Distribution]]
 ******************* todo cover&thomas is supposed to have mi expressions for multivariate normal dist
 ******************* [[http://www.scholarpedia.org/article/mutual_information][mi is additive]] for independent variables
 
-                    i(x,w;,y,z) = i(x;y) + i(w;z)  when [xy] indep. [wz]
+                    i(x,w;,y,z)                                                                                                    = i(x;y) + i(w;z)  when [xy] indep. [wz]
 
                     *so*... doesn't this mean that it's not dimension dependent?
 
@@ -3147,10 +3149,10 @@ Scott
                     xa: input, has some mi w/ output
                     xb: input, has no mi w/ xa or y
 
-                    xc=[xa xb] (concat)
+                    xc                                                                                                             =[xa xb] (concat)
 
-                    i(xc;y) = i(xc,y) = i(xa;y) + i(xb;y)
-                            = i(xa;y) ??
+                    i(xc;y)                                                                                                        = i(xc,y) = i(xa;y) + i(xb;y)
+                                                                                                                                   = i(xa;y) ??
 
 ***************** todo why normalize mutual information when clustering
                   not clear that it's done in milca code but then why not?
@@ -3179,7 +3181,7 @@ Scott
                 from the page:
 
                   why might this not work? suppose x is binary, and both outcomes are
-                  equally likely. then h[x] = 1, which is the maximum value. hence
+                  equally likely. then h[x]                                                                                        = 1, which is the maximum value. hence
                   empirical entropies will be less than or equal to the true
                   entropy. suppose our empirical distribution has less than maximum
                   entropy, i.e., it's not completely fair. but if we resample the
@@ -3210,7 +3212,7 @@ Scott
               dist w/ 2 moments, or something like that, right?
 
               bias is a funciton of k/npts for 2d: [[file:~/work/dtu/doc/energy.bib::kraskov04estmutinfknn][kraskov et al. 2004:
-              estimating]], fig 4.  they like k=2-4 when not looking for zero-valued
+              estimating]], fig 4.  they like k                                                                                    =2-4 when not looking for zero-valued
               strict dependence.
 
 *************** not too sensitive to k but matters for featsel: [[file:energy.bib::Doquire12compMutInfoFeatSel][Doquire et al. 2012: Comparison Multivariate Mutual]]
@@ -3251,7 +3253,7 @@ Scott
             <<Mutual Information Properties>>
 ************* mi independence additivity
 
-                i(x,w;,y,z) = i(x;y) + i(w;z)  when [xy] indep. [wz]
+                i(x,w;,y,z)                                                                                                        = i(x;y) + i(w;z)  when [xy] indep. [wz]
 
                 from: [[http://www.scholarpedia.org/article/mutual_information][scholarpedia: mutual information]]
 
@@ -3497,7 +3499,7 @@ Scott
 *********** [[file:energy.bib::Lizier14JIDTinfoToolkit][Lizier 2014: JIDT]] (cond or PMI?)
 *********** [[file:energy.bib::Lizier14JIDTinfoToolkit_SupMat][Lizier 2014: Supplementary Material]] (cond or PMI?)
             says F&P07 extends Kraskov to "conditional MI" but does it?
-*********** JIDT Google Group [[https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/jidt-discuss/PU3cZsqkP2U/UgTEl_Z4AQAJ][discussion list]]
+*********** JIDT Google Group [[https://groups.google.com/forum/?utm_medium                                                        =email&utm_source=footer#!msg/jidt-discuss/PU3cZsqkP2U/UgTEl_Z4AQAJ][discussion list]]
 *********** [[https://github.com/SimonStreicher/FaultMap][FaultMap]]: fault detection software using JIDT tookit
 ********* converting distance to similarity: [[file:energy.bib::Houle09sharedKNNdimCurs][Houle et al. 2009: Can]] shared neighbor
 ********* [[http://orff.uc3m.es/handle/10016/11863][similarity measures for clustering sequences and sets of data]]
@@ -3778,7 +3780,7 @@ Hope that helps,
 ************* did he say could use nn for stopping criteria, near the end? <<Bolasso Stopping Criterion>>
 *********** [[http://www.mathworks.com/matlabcentral/fileexchange/%3fterm%3dtag%3a%22bolasso%22][matlab]] (does lars/lasso w/ bootstrap)
 *********** assumes a sparseness-enforcing linear regression
-*********** based on intersection of many bootstrapped runs ==> _easy to parallelize_
+*********** based on intersection of many bootstrapped runs                                                                        ==> _easy to parallelize_
 ********* bayesian adaptive lasso
 *********** http://www.kent.ac.uk/ims/personal/jeg28/balasso.pdf
 ********* where linearity makes lasso fail: [[file:energy.bib::li05lasso2featvecmach][li et al. 2006: from lasso feature]]
@@ -4289,7 +4291,7 @@ Hope that helps,
 
 *** Recommends 5-fold CV for penalized spline QR: [[file:energy.bib::Reiss12smthPenSplnQR][Reiss & Huang 2012: Smoothness]]
 *** Generally recommends 5 or 10 fold CV: [[file:energy.bib::Hastie09elemStatLrnBook][Hastie et al. 2009]] elem. stat. lrn. book
-*** Says 10-fold CV must be nested ==> more model evals that BS [[file:energy.bib::Harrell15rgrssnMdlStrtgyBook][Harrell 2015: Regression]]
+*** Says 10-fold CV must be nested                                                                                                 ==> more model evals that BS [[file:energy.bib::Harrell15rgrssnMdlStrtgyBook][Harrell 2015: Regression]]
 *** stratifying across clusters: [[file:energy.bib::May10datSplitNN][May et al. 2010: Data SOM]] data split
 *** see also: [[Bootstrap vs. cross-validation]]
 
@@ -4349,14 +4351,14 @@ Hope that helps,
         source('~/lib/R/sutil.R')
         library(R.utils)
 
-        dir=seq(0,2*pi,0.1)
-        spd=1.0
-        A = vvcombo(1:3,1:3)
-        lims = sqrt(max(A[,1] * A[,2])) * c(-1,1)
+        dir                                                                                                                        =seq(0,2*pi,0.1)
+        spd                                                                                                                        =1.0
+        A                                                                                                                          = vvcombo(1:3,1:3)
+        lims                                                                                                                       = sqrt(max(A[,1] * A[,2])) * c(-1,1)
 
-        subplots(nrow=3, ncol=3)
+        subplots(nrow                                                                                                              =3, ncol=3)
         for(i in 1:nrow(A)) {
-          plot(A[i,1]*cos(dir),A[i,2]*sin(dir),xlim=lims,ylim=lims,main=paste('A:',A[i,1],A[i,2]),asp=1,pty='s')
+          plot(A[i,1]*cos(dir),A[i,2]*sin(dir),xlim                                                                                =lims,ylim=lims,main=paste('A:',A[i,1],A[i,2]),asp=1,pty='s')
         }
 ******* cos(dir) and sin(dir) inputs can only do additive power/dir relationship
 
@@ -4369,7 +4371,7 @@ Hope that helps,
         (has R and Matlab)
 ******* [[file:energy.bib::Boydstun80comp3DmaxReach][Boydstun et al. 1980]] explains well how to build periodic spline basis
 ******* only need cos(dir) for angular kernel: [[file:energy.bib::Kaufman05perSplnRgrsn][Kaufman et al. 2005: Spline]]
-******* k=2 Fourier coeffs is enough (he does sin/cos): [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]]
+******* k                                                                                                                          =2 Fourier coeffs is enough (he does sin/cos): [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]]
 ******* see also: [[Physics-based power curve features]]
 ******* see [[Harmonic Periodic Bases]]
 ***** see also [[Circular Statistics]]
@@ -4436,10 +4438,10 @@ Volumetric wavelet Data Processing
 http://www.ceremade.dauphine.fr/~peyre/numerical-tour/tours/multidim_2_volumetric/#17
 
 IEEE Xplore - Wavelet-based volume morphing
-http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=346333&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D346333
+http://ieeexplore.ieee.org/xpl/login.jsp?tp                                                                                        =&arnumber=346333&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D346333
 
 IEEE Xplore - Wavelet coding of volumetric medical datasets
-http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload=true&arnumber=1199644&contentType=Journals+%26+Magazines
+http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload                                                                           =true&arnumber=1199644&contentType=Journals+%26+Magazines
 
 Wavelet Software at Brooklyn Poly
 http://eeweb.poly.edu/iselesni/WaveletSoftware/
@@ -4459,8 +4461,8 @@ http://stef2cnrs.wordpress.com/2008/07/27/matlab-m-wavelet-transform-on-3d-meshe
 BMC Research Notes | Abstract | WAVOS: a MATLAB toolkit for wavelet analysis and visualization of oscillatory systems
 http://www.biomedcentral.com/1756-0500/5/163/abstract
 
-www.dspace.rice.edu/bitstream/handle/1911/20355/Sel2005Nov1TheDualTre.PDF?sequence=1
-http://www.dspace.rice.edu/bitstream/handle/1911/20355/Sel2005Nov1TheDualTre.PDF?sequence=1
+www.dspace.rice.edu/bitstream/handle/1911/20355/Sel2005Nov1TheDualTre.PDF?sequence                                                 =1
+http://www.dspace.rice.edu/bitstream/handle/1911/20355/Sel2005Nov1TheDualTre.PDF?sequence                                          =1
 
 www.ubicc.org/files/pdf/UBICC-455-kjayapriya_455.pdf
 http://www.ubicc.org/files/pdf/UBICC-455-kjayapriya_455.pdf
@@ -4477,10 +4479,10 @@ Multiresolution forecasting for futur... [IEEE Trans Neural Netw. 2001] - PubMed
 http://www.ncbi.nlm.nih.gov/pubmed/18249912
 
 Multi Resolution Genetic Programming Approach for Stream Flow Forecasting - Springer
-http://link.springer.com/chapter/10.1007%2F978-3-642-27172-4_84?LI=true
+http://link.springer.com/chapter/10.1007%2F978-3-642-27172-4_84?LI                                                                 =true
 
 DOAJ: Directory of Open Access Journals
-http://www.doaj.org/doaj?func=abstract&id=1213391
+http://www.doaj.org/doaj?func                                                                                                      =abstract&id=1213391
 
 Wavelet-Based Denoising for Traffic Volume Time Series Forecasting with Self-Organizing Neural Networks - Boto-Giralda - 2010 - Computer-Aided Civil and Infrastructure Engineering - Wiley Online Library
 http://onlinelibrary.wiley.com/doi/10.1111/j.1467-8667.2010.00668.x/full
@@ -4492,13 +4494,13 @@ Taylor & Francis Online :: Nonstationary Time Series Forecasting Using Wavelets 
 http://www.tandfonline.com/doi/abs/10.1080/03610926.2010.529532
 
 IEEE Xplore - A wavelet-based approach for time series pattern detection and events prediction applied to telemoni...
-http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6091492
+http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                                                                               =6091492
 
 ScienceDirect.com - Ocean Engineering - Discrete wavelet neural network approach in significant wave height forecasting for multistep lead time
 http://www.sciencedirect.com/science/article/pii/S0029801812000327
 
 IEEE Xplore - State of the art of electricity demand forecasting based on wavelet analisys and a nonlinear autoreg...
-http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6220078
+http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                                                                               =6220078
 
 ScienceDirect.com - Engineering Applications of Artificial Intelligence - A review on time series data mining
 http://www.sciencedirect.com/science/article/pii/S0952197610001727
@@ -4513,7 +4515,7 @@ www.iaeng.org/publication/WCECS2012/WCECS2012_pp577-582.pdf
 http://www.iaeng.org/publication/WCECS2012/WCECS2012_pp577-582.pdf
 
 IEEE Xplore - Toward Automatic Time-Series Forecasting Using Neural Networks
-http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
+http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                                                                               =6210391
 ******* Spatio-temporal with uncertainty: [[file:energy.bib::Lave13solarVarWvlt][Lave et al. 2013: Wavelet Based Variability]]
 ******* See also: [[Wavelet time series model]]
 ***** TODO <<Harmonic Periodic Bases>>
@@ -4565,7 +4567,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 
       Circular harmonics can already project speed onto a directional basis:
 
-        regression contribution = SUM a(k) * circBasis(k,theta)
+        regression contribution                                                                                                    = SUM a(k) * circBasis(k,theta)
 
         circBasis(k,theta) is a function of wind direction
 
@@ -4813,7 +4815,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
           i've downloaded it to [[file:~/lib/matlab/contrib/fcrbf][~/lib/matlab/contrib/fcrbf]] (at iwes)
 ********* also, there are several books on complex nn's e.g.
           http://www.springer.com/engineering/computational+intelligence+and+complexity/book/978-3-540-33456-9
-          http://books.google.de/books?hl=en&lr=&id=4ctqtiip2q0c&oi=fnd&pg=pr5&dq=missing+inputs+complex+valued&ots=x3pzkoz214&sig=4dg8kaol4c7p_akmng85wtrrvks#v=onepage&q&f=false
+          http://books.google.de/books?hl                                                                                          =en&lr=&id=4ctqtiip2q0c&oi=fnd&pg=pr5&dq=missing+inputs+complex+valued&ots=x3pzkoz214&sig=4dg8kaol4c7p_akmng85wtrrvks#v=onepage&q&f=false
 ***** [[file:energy.bib::vlasova07windshortspatiotemp][vlasova et al. 2007: spatio temporal modelling]]
 ***** circular statistics: [[file:energy.bib::grimit06continrankprobcircvar][grimit et al. 2006: continuous ranked probability]]
 ***** circular modeling: [[file:energy.bib::hering08spacetimewindfrcstslides][hering 2008: powering up with]]
@@ -4888,7 +4890,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
 ***** [[file:energy.bib::Ding08tseriesMineRepDist][Ding et al. 2008: Querying]] tseries rep and distance (2008)
 ***** [[http://www.sciencedirect.com.offcampus.lib.washington.edu/science%3F_ob%3DArticleURL&_udi%3DB6V14-4MWGFBR-3&_user%3D582538&_coverDate%3D09%2F30%2F2007&_alid%3D780508982&_rdoc%3D1&_fmt%3Dhigh&_orig%3Dsearch&_cdi%3D5664&_sort%3Dd&_docanchor%3D&view%3Dc&_ct%3D2&_acct%3DC000029718&_version%3D1&_urlVersion%3D0&_userid%3D582538&md5%3D6f143746eccab4e0ad67ed0cbcbaef61][A clustering procedure for exploratory mining of vector time series ]](2007)
 ***** [[http://www.mathematik.uni-marburg.de/forschung/publikationen/paper_info/bfi31.pdf][Online Clustering of Data Streams]]
-***** Graphical Times series graphical model: [[https://www.youtube.com/watch?v=odRE21ksXQs&t=442s][Daniela Witten, UW-Stanford Big Data]]
+***** Graphical Times series graphical model: [[https://www.youtube.com/watch?v                                                    =odRE21ksXQs&t=442s][Daniela Witten, UW-Stanford Big Data]]
 ***** [[cite:Pavlovski17skipTrainRgrssnTempNet][Pavlovski et al. 2017: Adaptive Skip Train regression temporal net (kind of cluster)]]
 ***** [[cite:Donnat16genericRVrep][Donnat et al. 2016: Toward generic RV representation for ML]]
 ***** <<Autoencoder Time Series Clustering>>
@@ -5142,7 +5144,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6210391
       ." -shift <ifilt_frmShiftT opt> -preemph <ifilt_preemph opt>"
       ." $bpfOutVar -o <lpcoefs tmp>"); # get coeffs
 
-      $xcInVar[$pI]="<xcinput_$pI tmp>";
+      $xcInVar[$pI]                                                                                                                ="<xcinput_$pI tmp>";
       $step->cmd("$speech_tools_dir/sigfilter -inv_filter "
       . " -lpcfilter <lpcoefs tmp> $bpfOutVar"
       . " -o $xcInVar[$pI]"); # filter it
@@ -5287,7 +5289,7 @@ sera
 ***** [[Metalog Distributions]] can model logit-normal distributions
 ***** [[http://en.wikipedia.org/wiki/Truncated_normal_distribution][Truncated Normal Distribution]]
 ***** Truncated normal distribution can be created w/ a Power transformation
-******* i.e. can produce the [[http://en.wikipedia.org/wiki/Box%25E2%2580%2593Cox_distribution][Box-Cox distribution]] (where f=1)
+******* i.e. can produce the [[http://en.wikipedia.org/wiki/Box%25E2%2580%2593Cox_distribution][Box-Cox distribution]] (where f    =1)
 ******* Box-Cox dist is nice b/c it's continuous (easy to learn?)
 ******* Do xform w/ [[http://en.wikipedia.org/wiki/Power_transform][Power Transform]], one instance of which is the Box-Cox transform
         Box-Cox transform is often used to make things more
@@ -5333,7 +5335,7 @@ sera
 ***** [[http://www.slidefinder.net/t/time_series_econometrics_distributed_lag/14500547][Time Series Econometrics - Distributed Lag Modeling]]  (overview, includes geometric DL)
 ***** [[file:energy.bib::McDowell04polyDistLag][McDowell 2004: From]] (a better explanation of distributed poly lags)
 ***** Advantage of staying linear: <<linear hooks>>
-******* linear least squares sol'n [[http://en.wikipedia.org/wiki/Least_squares][is unique]] ==> clustering coeffs might work
+******* linear least squares sol'n [[http://en.wikipedia.org/wiki/Least_squares][is unique]]                                       ==> clustering coeffs might work
 ******* [[Covariance Shrinkage ]]
 ******* [[Dynamic PCA]]
 ******* [[gaussianization]]
@@ -5355,7 +5357,7 @@ sera
 ***** [[file:energy.bib::Zanobetti00addDistLagMort][Zanobetti et al. 2000: Generalized]] (L2-penalized spline, best explanation)
 ******* best explanation of how splines work of the papers I've seen
 ******* lasso better than L2 penalty?
-********* more sparse ==> more generalizable
+********* more sparse                                                                                                              ==> more generalizable
 ********* if have too many knots, would that drive unnecess coeffs to zero?
 ********* or would that just drive down the average spline size?
 ********* might want Group Lasso ("group" is all coeffs for a variable)
@@ -5416,33 +5418,33 @@ sera
 
       For polynomials, this is simple.  Consider a 2nd order poly:
 
-         y = a*x^2 + b*x + c
+         y                                                                                                                         = a*x^2 + b*x + c
 
       Here, y is the distributed lag basis value for different lags, x.
-      For the most recent lag, x=0, so:
+      For the most recent lag, x                                                                                                   =0, so:
 
-        y = x*0 + b*0 + c
+        y                                                                                                                          = x*0 + b*0 + c
 
-        ==> y = c
+                                                                                                                                   ==> y = c
 
-        ==> y = a*x^2 + b*x + y0
+                                                                                                                                   ==> y = a*x^2 + b*x + y0
 
       Where y0 is the latest measurement; where a and b are solved for
       using lags of y; and where x is scaled to model N discretely
       lagged input samples:
 
-        x = 1/N;  N>=2
+        x                                                                                                                          = 1/N;  N>=2
 
       For a polynomial of order p, the reduction in inputs to the
       regression model that takes the lagged basis coefficients as input
       is then:
 
-        fracNumInputs = p/(N+1);
+        fracNumInputs                                                                                                              = p/(N+1);
 
       e.g. for a 15 minute sample period; a 2 hour max lag; and a 2nd
       order poly, the reduction in inputs is:
 
-        frac15s_2hr = 2 / (2*4 + 1) = 2/9 = 0.22
+        frac15s_2hr                                                                                                                = 2 / (2*4 + 1) = 2/9 = 0.22
 
       _Colinearity_: Polynomial lag bases are said to cause collinearity
       problems ([[file:energy.bib::McDowell04polyDistLag][McDowell 2004: From]]), blowing up linear regression, and I
@@ -5691,7 +5693,33 @@ sera
 * <<Conditional Density Estimation>>
 *** <<Quantile Regression>>
 ***** [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006]] QR compared
-***** [[cite:Taylor15windPowQuantKern][Taylor & Jeon 2015: Win Pow Quants NadarayaWatson + QR]]
+***** [[cite:Taylor15windPowQuantKern][Taylor & Jeon 2015: Win Pow Quants KDE, exp forget, Qscore tune]]
+***** <<The many ways to use Nadaraya-Watson kernels to predict conditional probs>>
+******* [[Distribution Regression]] with NW kernel classifier
+
+        Idea: use kernel classifier to predict a class probability,
+        where the class is really an indicator variable indicating
+        whether or not the predictand is below a threshold.  From
+        there, you can do [[Distribution Regression]], like DR1NN but with
+        a model simpler than the NN I used for IRPWIND final report.
+
+********* [[cite:Bremnes06compQuantileWind][Bremnes 2006 compare quantile models wind]] (simplest)
+********* [[cite:Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest]]: my notes near eq. 9
+********* [[cite:Dette08quantRgrsNonCross][Dette & Volgushev 2008: Non-cross quantile nonparam kernel]]
+
+******* Joint density estimate from NW, cond. w/ Bayes Rule, integrate for CDF
+********* [[cite:Hyndman96estCondDens][Hyndman et al. 1996: Estimating Visualizing Conditional Densities]]
+********* [[cite:Bessa12adaptKernWndFrcst][Bessa et al. 2012: Time Adaptive Conditional Kern Wind]]
+********* [[cite:Juban07probFrcstOptMgmtWnd][Juban et al. 2007: Probabilistic Frcst Short Wind]]
+********* [[cite:Juban07probFrcstOptMgmtWnd][Juban et al. 2007: Probabilistic Short Wind KDE]]
+******* Quantile Copula w/ NW joint and marginals
+********* [[cite:Bessa12adaptQuantCopulaFrcst][Bessa et al. 2012: Time adapt quantile copula wind pow]]
+
+******* Weighted NW QR
+********* [[cite:Cai02qrTimsSerWgtNW][Cai 2002: QR for time series wgt NW]]
+********* [[cite:Dette08quantRgrsNonCross][Dette & Volgushev 2008: Non-cross quantile nonparam kernel]]
+******* Other ways
+********* [[cite:Huang18nonParamQRnw][Huang & Nguyen 2018 non param QR NW]]
 ***** [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]] QR (spline)
 ***** [[file:energy.bib::Moller08adaptQuantRegr][Moeller et al. 2008: Time]] (DTU guy)
 ******* more detailed tech note also included in this ref
@@ -5873,6 +5901,7 @@ sera
 ******* [[file:energy.bib::FerrariTrecate02pcsWiseLR][Ferrari-Trecate & Muselli 2002: New Learning Method]] (related point rgrsn method)
 ******* [[file:energy.bib::Sherwood13wgtQRmiss][Sherwood et al. 2013: Weighted]] QR for missing features
 ******* [[file:energy.bib::Taylor13dimCurseLocRgrsn][Taylor & Einbeck 2013: Challenging]] curse of dim
+******* [[cite:Dette08quantRgrsNonCross][Dette & Volgushev 2008: Non-cross quantile nonparam kernel]]
 ******* see also: [[Local Linear Regression]]
 ******* see also: [[KNN neighborhood functions for local linear regression]]
 ******* see also: [[Curse of Dimensionality and Local Linear Regression]]
@@ -6089,7 +6118,7 @@ sera
 ******* [[http://mathematica.stackexchange.com/questions/5929/%25CE%2597ow-to-create-an-interpolated-cdf-from-its-samples][from]] Stackexchange
 ******* [[https://en.wikipedia.org/wiki/Monotone_cubic_interpolation][montonic cubic interpolation]] (Wikipedia)
 ******* more cdf interpolation ideas ([[http://stats.stackexchange.com/questions/4909/interpolating-the-empirical-cumulative-function][Cross Validated]])
-******* [[https://books.google.de/books?id=qkGlfJRuRs8C&pg=PA130&lpg=PA130&dq=inverse+of+noisy+samples+of+a+monotonic+function&source=bl&ots=iOzwIL5LmR&sig=X-e9QiR67gJPwaS-YL_5lTMzibI&hl=en&sa=X&redir_esc=y#v=onepage&q=inverse%2520of%2520noisy%2520samples%2520of%2520a%2520monotonic%2520function&f=false][monotone interpolating splines]] (google books)
+******* [[https://books.google.de/books?id                                                                                         =qkGlfJRuRs8C&pg=PA130&lpg=PA130&dq=inverse+of+noisy+samples+of+a+monotonic+function&source=bl&ots=iOzwIL5LmR&sig=X-e9QiR67gJPwaS-YL_5lTMzibI&hl=en&sa=X&redir_esc=y#v=onepage&q=inverse%2520of%2520noisy%2520samples%2520of%2520a%2520monotonic%2520function&f=false][monotone interpolating splines]] (google books)
 *** <<Distribution Regression>>
 ***** TODO original paper (and clearest?): [[file:energy.bib::Foresi95condDistRetDR][Foresi & Peracchi 1995]] cond dist DR
 ***** Replace DR logit with [[Invertible Neural Net]], or avoiding cdf inverting
@@ -6106,8 +6135,10 @@ sera
 ***** [[file:energy.bib::Szabo16LrnDistRgrssn][Szabo et al. 2016: Learning Theory Distribution Regression]]
 ***** [[cite:Belloni13progEvalHiDim][Belloni et al. 2013: Program]] eval high dim (use LASSO)
 ***** [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]] (deep meth. for thresh probs, no crossover?)
-***** An NN w/ LSE cost function [[https://books.google.de/books?id=U_b2BwAAQBAJ&pg=PA5&lpg=PA5&dq=neural+network+for+estimating+conditional+mean&source=bl&ots=hLZiI0M6Tp&sig=hljm-efcyj4eiRoXF9KVHzsgZP0&hl=en&sa=X&redir_esc=y#v=onepage&q=neural%2520network%2520for%2520estimating%2520conditional%2520mean&f=false][estimates conditional mean]] (needed for dist rgrssn)
+***** An NN w/ LSE cost function [[https://books.google.de/books?id                                                                =U_b2BwAAQBAJ&pg=PA5&lpg=PA5&dq=neural+network+for+estimating+conditional+mean&source=bl&ots=hLZiI0M6Tp&sig=hljm-efcyj4eiRoXF9KVHzsgZP0&hl=en&sa=X&redir_esc=y#v=onepage&q=neural%2520network%2520for%2520estimating%2520conditional%2520mean&f=false][estimates conditional mean]] (needed for dist rgrssn)
 ***** [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (built-in montonic)
+***** [[The many ways to use Nadaraya-Watson kernels to predict conditional probs]]
+***** Nadaraya-Watson for random forest probs: [[cite:Olson18sensRndFrstProbKern][Olson & Wyner 2018: Sense Rand Frst Prob]]
 ***** also [[Metalog Distributions]] (parameterized monotonic distributions)
 ***** also see: [[Probabilistic Deep Learning]]
 *** <<Beta Regression>>
@@ -6139,12 +6170,12 @@ sera
            z: an MVN w/ desired linear correlation structure
 
         2: Convert MVN numbers, z, to uniform
-           u = invGaussianCdf(z):
+           u                                                                                                                       = invGaussianCdf(z):
 
         3: Convert uniform numbers to the final marginal distributions, x
 
-           x(:,1) = gaminv(u(:,1)) ; dim 1 has gamma distribution
-           x(:,2) = gaminv(u(:,2)) ; dim 2 has t distribution
+           x(:,1)                                                                                                                  = gaminv(u(:,1)) ; dim 1 has gamma distribution
+           x(:,2)                                                                                                                  = gaminv(u(:,2)) ; dim 2 has t distribution
 
 
         _Basic Student t distribution idea_
@@ -6152,28 +6183,28 @@ sera
         1: Generate /t multivariate random/ w/ desired linear covariance (rho)
 
         2: Convert T distributed data to uniform
-           u = invTcdf(z):
+           u                                                                                                                       = invTcdf(z):
 
         3: same as for Gaussian
 
         _Example Code_
 
         % Gaussian Copula
-        n = 500;
-        tau = .8; % specify the rank correlation
-        rho = 2*asin(tau)/pi; % get the required linear correlation for the MVN
-        z = mvnrnd([0 0], [1 rho; rho 1], n);
-        u = normcdf(z); % correlated uniforms
-        x = [gaminv(u(:,1),2,1) tinv(u(:,2),5)];
+        n                                                                                                                          = 500;
+        tau                                                                                                                        = .8; % specify the rank correlation
+        rho                                                                                                                        = 2*asin(tau)/pi; % get the required linear correlation for the MVN
+        z                                                                                                                          = mvnrnd([0 0], [1 rho; rho 1], n);
+        u                                                                                                                          = normcdf(z); % correlated uniforms
+        x                                                                                                                          = [gaminv(u(:,1),2,1) tinv(u(:,2),5)];
 
         % Students T copula
-        n = 500;
-        tau = .8; % specify the rank correlation
-        rho = 2*asin(tau)/pi; % get the required linear correlation for the MVT
-        nu = 1;
-        z = mvtrnd([1 rho; rho 1], nu, n);
-        u = tcdf(z,nu); % correlated uniforms
-        x = [gaminv(u(:,1),2,1) tinv(u(:,2),5)];
+        n                                                                                                                          = 500;
+        tau                                                                                                                        = .8; % specify the rank correlation
+        rho                                                                                                                        = 2*asin(tau)/pi; % get the required linear correlation for the MVT
+        nu                                                                                                                         = 1;
+        z                                                                                                                          = mvtrnd([1 rho; rho 1], nu, n);
+        u                                                                                                                          = tcdf(z,nu); % correlated uniforms
+        x                                                                                                                          = [gaminv(u(:,1),2,1) tinv(u(:,2),5)];
 
         See [[T-Distribution]]
 
@@ -6417,14 +6448,14 @@ provide only a slightly better prediction, while in other cases, a much
 better prediction than expected will be the outcome of combining two
 correlated variables.
 
-if the additional predictor variables are uncorrelated (r = 0) with the
+if the additional predictor variables are uncorrelated (r                                                                          = 0) with the
 predictor variables already in the model, then the result of adding
 additional variables to the regression model is easy to predict. namely the
 r2 change will be equal to the correlation coefficient squared between the
 added variable and predicted variable. in this case it makes no difference
 what order the predictor variables are entered into the prediction
-model. for example, if x1 and x2 were uncorrelated (r12 = 0) and r1y2 = .3
-and r2y2 = .4, then r2 for x1 and x2 would equal .3 + .4 = .7. the value
+model. for example, if x1 and x2 were uncorrelated (r12                                                                            = 0) and r1y2 = .3
+and r2y2                                                                                                                           = .4, then r2 for x1 and x2 would equal .3 + .4 = .7. the value
 for r2 change for x2 given x1 was in the model would be .4. the value for
 r2 change for x2 given no variable was in the model would be .4. it would
 make no difference at what stage x2 was entered into the model, the value
@@ -7074,10 +7105,11 @@ variables will be preferred, when possible.
 ********* [[http://www.eumetcal.org/resources/ukmeteocal/verification/www/english/msg/ver_prob_forec/uos3b/uos3b_ko1.htm][This link]] also used to say this, I think.
 ********* CRPS in same units as observations: [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing]]
 ******* CRPS [[values][can be interpreted]] as integral of [[Brier Score]] over all thresholds
-******* <<Multidimensional CRPS>>: a weighted average
+******* TODO <<Multidimensional CRPS>>: a weighted average
 ********* [[file:energy.bib::Hersbach00crpsDecomp][Hersbach 2000: Decomposition]]
 ********* [[cite:Scheuerer14variogramProperScore][Scheuerer & Hamill 2014: Variogram]]
 ********* Also? [[Scenario/Ensemble quality metrics]]
+********* TODO merge with [[Energy Score]]
 ******* CRPS is nonlocal: [[file:energy.bib::Brocker07properScore][Broecker & Smith 2007: Score prob frcst: import proper]]
 ******* [[file:energy.bib::Todter12genIgnCRPS][Toedter & Ahrens 2012: Generalization Ignorance Score]] and CRPS decomp
 ******* TODO [[file:energy.bib::Lauret19verifIrradProbFrcst][Lauret et al. 2019: Verif Irrad Prob Frcst]]: CRPS, ignorance others
@@ -7099,6 +7131,16 @@ variables will be preferred, when possible.
 ******* Multidimensional CRPS is wgt'ed average: [[cite:Hersbach00crpsDecomp][Hersbach 2000: Decomp. of CRPS]]
 ******* relation between CRPS and Energy Score: [[file:energy.bib::Gneiting08multiVarEnsAssess][Gneiting et al. 2008: Assessing]]
 ******* Also [[Quantile Score]]
+******* Also [[Energy Score]]
+***** TODO <<Energy Score>>
+
+      Energy Score is the multivariate extension of CRPS (UPSULA IEA
+      talk giving on 4/3/2020). This talk also had tips about
+      detecting errors in calibration and correlation.  Tried normal
+      copula, Students-t, and others.
+
+******* TODO Merge with [[Multidimensional CRPS]]
+******* also [[Continuous Ranked Probability Score (CRPS)]]
 ***** <<Quantile score & DWD style per-quantile reliability plots>>
 ******* [[cite:Bentzien14quantScrDecomp][Bentzien & Friederichs 2014 The quantile score and decomp.]]
 ******* [[cite:Bentzien13qntScrDecomp][Bentzien & Friederichs 2013: Decomposition graphical portray]]
@@ -9901,7 +9943,10 @@ later corrected by greg heath:
 ***** also [[Feature Selection Quality Metrics]]
 * Disaggregation
 
-  You have and aggregation (sum, hisgtogram, etc.) of the outcomes of a bunch of individuals but not the individual outcomes.  You want the outcomes.  Example: you have all the power consumed on a feeder but not the individual power customer power consumption.  Getting the individual customer power is disaggregation (this is something like what Josh Quinnell did for MNSP and CPR)
+  You have and aggregation (sum, hisgtogram, etc.) of the outcomes of a bunch of individuals but not the individual outcomes.  You want the outcomes.  Example: you have all the power consumed on a feeder but not the individual power customer power consumption.  Getting the individual customer power is disaggregation (this is something like what Josh Quinnell did for MNSP and CPR).
+
+There is also that Dutch PhD thesis where the guy did this Dutch-wide assumed PV adoption; he deaggregated that using logistic regression outputs as weights.
+
   *** [[Aggregated regression using GLMs]]
 * <<Tensors>>
 
@@ -11448,6 +11493,7 @@ Erika
 ********* [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
 ********* [[cite:Rodrigues19evDemandSpatRgrssn][Rodrigues et al. 2019: Estimation Electric Demand Spat Rgrssn]]
 ********* [[cite:Rodrigues19evAdoptSpatTemp][Rodrigues et al. 2019: Spatiotemporal EV Adopt]]
+********* TODO nonlin/timefade? :  [[cite:Graziano14pvAdoptNeighbors][Graziano & Gillingham 2014: Spatial PV adopt neighbors]]
 ********* TODO rings? :  [[cite:Graziano14pvAdoptNeighbors][Graziano & Gillingham 2014: Spatial PV adopt neighbors]]
 ********* also [[Spatial (social) influence for PV adoption]]
 ********* also [[Ripley's K]] (proxmity feature)
@@ -13326,6 +13372,7 @@ optimization to be a generalization of linear programming.
              [[cite:Goreaud03randLabelK12][Goreaud & Pelissier 2003: K12 interp indep vs. random]]
    02/17/20  [[cite:CEC18plugInEVinfraProj][CEC 2018: California Plug Infra 2017-2025]]
    02/18/20  [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
+   04/07/20  [[cite:Taylor15windPowQuantKern][Taylor & Jeon 2015: Win Pow Quants KDE, exp forget, Qscore tune]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
