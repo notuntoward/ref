@@ -8294,6 +8294,8 @@
 ***** [[https://www.sololearn.com/Profile/9085670][SoloLearn]]: Tutorials for Python and others.  Stephan Vogt recommended it.
 ***** plotly tutorial in [[Python plotly]]
 ***** [[https://www.amazon.de/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1491962291][Hands-On Machine Learning with Scikit-Learn and TensorFlow: Concepts, Tools]]: I have it on Kindle 
+***** [[https://jakevdp.github.io/PythonDataScienceHandbook/][Python Data Science Handbook | Python Data Science Handbook]]
+      Source code: [[https://github.com/jakevdp/PythonDataScienceHandbook][GitHub - jakevdp/PythonDataScienceHandbook]]
 *** Tips for Python
 ***** slices in Python
       From: [[https://stackoverflow.com/a/509295/2591097][list - Understanding Python's slice notation - Stack Overflow]]
@@ -8373,7 +8375,7 @@
         python you get when installing diff, etc., will mess up emacs
         [[elpy]].  Also make sure that it's above %USERPROFILE%\AppData\Local\Microsoft\WindowsApps , which as of May 2019 suddenly holds a python.exe)
       - install everything necessary in the base environment first
-      - create stdso environment
+      - <<create stdso environment>>
         - conda create -n stdso --clone base
 ******* Install from Windows .exe installer        
 
@@ -8467,26 +8469,86 @@
       conda skeleton pypi package
       conda-build package
 
-*** Anaconda
-    Package sysem for Python and R
-***** revert conda install
-      From: [[http://blog.rtwilson.com/conda-revisions-letting-you-rollback-to-a-previous-version-of-your-environment/][Conda revisions: letting you ‘rollback’ to a previous version of your environ...]]
+*** Data Quality Checks (Python)
+***** [[https://benjaminberhault.com//post/2018/10/27/data-profiling-in-python.html][Data profiling in Python]] (package and other advice)
+***** pandas builtins
 
-      _Get list of past conda install actions_
-      i.e. revisions kth conda update marked with "(rev k)"
+      df.info()
+      df.describe()
+      df.isnull().sum()
+      df.isnull().any()
 
-      conda list --revisions
+      # nulls in each col
+      null_columns=df.columns[df.isnull().any()]
+      df[null_columns].isnull().sum()
 
-      _Install conca revisions k_
+      # are there any nulls anywhere?
+      df.isnull().any().any()
 
-      conda install --revision k
+***** Relatedness of variables
+******* Hierarchical clustering dendrogram relatedness
+        From: [[https://benjaminberhault.com//post/2018/10/27/data-profiling-in-python.html][Data profiling in Python]]
 
-      Then, if you run ~conda list --revisions~, you'll see a new
-      revision, (rev N+1), where the latest previous revision number
-      was N, and where (rev N+1) is the result of bringing you back to
-      (rev k), and where (rev k) is also still shown.
+%matplotlib notebook
+import matplotlib.pyplot as plt
+from scipy.cluster import hierarchy as hc
 
-      
+corr = 1 - df.corr() 
+corr_condensed = hc.distance.squareform(corr) # convert to condensed
+z = hc.linkage(corr_condensed, method='average')
+dendrogram = hc.dendrogram(z, labels=corr.columns)
+
+******* PCA relatedness
+        From: [[https://benjaminberhault.com//post/2018/10/27/data-profiling-in-python.html][Data profiling in Python]]
+
+%matplotlib notebook
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import datasets
+from sklearn.decomposition import PCA
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+          
+iris = datasets.load_iris()
+X = iris.data
+y = iris.target
+X = iris.data
+y = iris.target
+#In general a good idea is to scale the data
+scaler = StandardScaler()
+scaler.fit(X)
+X=scaler.transform(X)    
+          
+pca = PCA()
+x_new = pca.fit_transform(X)
+          
+def myplot(score,coeff,labels=None):
+    xs = score[:,0]
+    ys = score[:,1]
+    n = coeff.shape[0]
+    scalex = 1.0/(xs.max() - xs.min())
+    scaley = 1.0/(ys.max() - ys.min())
+    plt.scatter(xs * scalex,ys * scaley, c = y)
+    for i in range(n):
+        plt.arrow(0, 0, coeff[i,0], coeff[i,1],color = 'r',alpha = 0.5)
+        if labels is None:
+            plt.text(coeff[i,0]* 1.15, coeff[i,1] * 1.15, "Var"+str(i+1), color = 'g', ha = 'center', va = 'center')
+        else:
+            plt.text(coeff[i,0]* 1.15, coeff[i,1] * 1.15, labels[i], color = 'g', ha = 'center', va = 'center')
+plt.xlim(-1,1)
+plt.ylim(-1,1)
+plt.xlabel("PC{}".format(1))
+plt.ylabel("PC{}".format(2))
+plt.grid()
+          
+#Call the function. Use only the 2 PCs.
+myplot(x_new[:,0:2],np.transpose(pca.components_[0:2, :]))
+plt.show()
+
+******* Panel scatter plots
+
+        From somewhere...
+
 *** <<TensorFlow>>
 ***** <<IWES Laptop TensorFlow install>>
 
@@ -9228,6 +9290,26 @@
 
           Note that you can't import an environment of the same name as one that already exists on the new machine e.g. "base" so you have to give it a new name.  If you want to import to the name on the new machine, you can delete the old environment then rename the one you imported e.g.
           
+******* CPR workstation install
+
+********* anaconda prompt taskbar icon settings
+
+        Target: 
+        %windir%\System32\cmd.exe "/K" C:\Anaconda\Scripts\activate.bat C:\Anaconda\envs\stdso
+
+        Start in: 
+        "C:\Users\Scott\OneDrive - Clean Power Research"
+
+        Comment:
+        Anaconda Prompt (stdso)
+
+********* env vars
+
+          Path:
+          c:\Anaconda
+          c:\Anaconda\scripts
+
+********* [[create stdso environment]]
 ******* Also [[activating conda environments in emacs]]
 ******* updating all packages installed by anaconda
       
@@ -9261,6 +9343,23 @@
 
 ******* list envs: conda info --envs
 ******* list packages installed: conda list
+******* revert conda install
+        From: [[http://blog.rtwilson.com/conda-revisions-letting-you-rollback-to-a-previous-version-of-your-environment/][Conda revisions: letting you ‘rollback’ to a previous version of your environ...]]
+
+        _Get list of past conda install actions_
+        i.e. revisions kth conda update marked with "(rev k)"
+
+        conda list --revisions
+
+        _Install conca revisions k_
+
+        conda install --revision k
+
+        Then, if you run ~conda list --revisions~, you'll see a new
+        revision, (rev N+1), where the latest previous revision number
+        was N, and where (rev N+1) is the result of bringing you back to
+        (rev k), and where (rev k) is also still shown.
+
 ******* remove env: conda remove --name myenv --all
 ******* anaconda prompt starting environment
 
@@ -9551,6 +9650,7 @@
 ***** [[https://dask.org/][Dask: Scalable analytics in Python]]
 ******* [[https://towardsdatascience.com/why-every-data-scientist-should-use-dask-81b2b850e15b][Why every Data Scientist should use Dask?]]
 ***** [[https://kubernetes.io/][Kubernetes]] (not jsut Pythong, more for containers)
+***** [[https://github.com/d6t/d6tflow][d6t/d6tflow: Python library for building highly effective data science]]
 *** <<Tidy (Long) Tables>> in Python
 
     The way Patrick Sudowe suggested that all SQL data s/b organized.  I guess it's the same for Python dataframes or whatever
