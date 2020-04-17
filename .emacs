@@ -84,11 +84,25 @@
 ;; can customize paradox-modeline-face (try M-x paradox-customize)
 ;; but other modelines are automatically inverted when the modeline is
 ;; darkened.  Is that controlled by installed pkg: smart-mode-line ?
+
+;; config started from: https://www.reddit.com/r/emacs/comments/94t6p6/tip_packages_to_include_in_your_workflow_part_i/
 (use-package paradox
-  :ensure t
-  :commands (paradox-list-packages)
+  :defer 1
+  :custom
+  (paradox-column-width-package 27)
+  (paradox-column-width-version 13)
+  (paradox-execute-asynchronously t)
+  (paradox-hide-wiki-packages t)
   :bind (:map paradox-menu-mode-map ("g" . paradox--refresh-remote-data))
-  :config (paradox-enable))
+  :config
+  (paradox-enable)
+  (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-print))
+
+;; (use-package paradox
+;;   :ensure t
+;;   :commands (paradox-list-packages)
+;;   :bind (:map paradox-menu-mode-map ("g" . paradox--refresh-remote-data))
+;;   :config (paradox-enable))
 
 ;; |----------+---------------------------------------|
 ;; | Shortcut | Description                           |
@@ -2154,7 +2168,7 @@ _C-M-a_ change default action from list for this session
 (use-package yaml-mode
   :mode ("\\.yml$" "\\.dvc$")) ;; data version control (DVC) files
 
-;; ** elisp and dot emacs
+;; ** elisp programming and dot emacs
 
 (defun dot-emacs-diff (p)
   "Ediff ~/.emacs with ref/.emacs.  When done, can undo the window config with winner-mode: C-c Left"
@@ -2171,6 +2185,8 @@ _C-M-a_ change default action from list for this session
 ;; https://marmalade-repo.org/packages/recursive-narrow
 ;;
 ;; Note that dired-narrow is different, narrows based on search terms
+;;
+;; TODO: include org-mode narrowing done separately now for org-toggle-narrow-to-subtree
 
 (defun narrow-or-widen-dwim (p)
   "Widen if buffer is narrowed, narrow-dwim otherwise.
@@ -2224,6 +2240,7 @@ is already narrowed."
   (define-key org-mode-map (kbd "<C-S-down>") nil) ; was timestamp clck dwn sync
   (define-key org-mode-map (kbd "<C-S-left>")  nil) ; was switch TODO set
   (define-key org-mode-map (kbd "<C-S-right>") nil) ; was switch TODO set
+  (define-key org-mode-map (kbd "C-x n <return>") 'org-toggle-narrow-to-subtree) ; was switch TODO set
 
   ;; open docx files in default application (ie msword)
   ;; https://emacs.stackexchange.com/questions/22485/org-mode-pandoc-export-to-docx-and-open
@@ -2954,6 +2971,48 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
 ;;   :config
 ;;   (setq doom-modeline-buffer-file-name-style 'buffer-name)
 ;;   :hook (after-init . doom-modeline-mode))
+
+;; ** Shell Look (xterm, eshell, etc.)
+
+;; ANSI & XTERM 256 color support
+;; From: https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-shell.el
+(use-package xterm-color
+  :defines (compilation-environment
+            eshell-preoutput-filter-functions
+            eshell-output-filter-functions)
+  :functions (compilation-filter my-advice-compilation-filter)
+  :init
+  ;; For shell and interpreters
+  (setenv "TERM" "xterm-256color")
+  (setq comint-output-filter-functions
+        (remove 'ansi-color-process-output comint-output-filter-functions))
+  (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter)
+  (add-hook 'shell-mode-hook
+            (lambda ()
+              ;; Disable font-locking to improve performance
+              (font-lock-mode -1)
+              ;; Prevent font-locking from being re-enabled
+              (make-local-variable 'font-lock-function)
+              (setq font-lock-function #'ignore)))
+
+  ;; For eshell
+  (with-eval-after-load 'esh-mode
+    (add-hook 'eshell-before-prompt-hook
+              (lambda ()
+                (setq xterm-color-preserve-properties t)))
+    (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
+    (setq eshell-output-filter-functions
+          (remove 'eshell-handle-ansi-color eshell-output-filter-functions)))
+
+  ;; For compilation buffers
+  (setq compilation-environment '("TERM=xterm-256color"))
+  (defun my-advice-compilation-filter (f proc string)
+    (funcall f proc
+             (if (eq major-mode 'rg-mode) ; compatible with `rg'
+                 string
+               (xterm-color-filter string))))
+  (advice-add 'compilation-filter :around #'my-advice-compilation-filter)
+  (advice-add 'gud-filter :around #'my-advice-compilation-filter))
 
 ;; ** Other
 
