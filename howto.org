@@ -4896,7 +4896,7 @@
 ******* scripts: bib2xml --> xml2wordbib
 ***** [[Latex/Bibtex]]
 *** [[http://www.veodin.com/blog/2013/01/12/case-study-3-custom-shortcuts-insert-formula-in-word-2013-with-a-keyboard-shortcut/word_custom_shortcut_2/][Word keyboard shortcuts]]
-***** insert new equation:  I [[http://www.veodin.com/2013/01/12/case-study-3-custom-shortcuts-insert-formula-in-word-2013-with-a-keyboard-shortcut/][mapped]] this to Ctrl-shift-e
+***** insert new equation:  Alt + =
 *** [[https://social.technet.microsoft.com/Forums/en-US/408a3c27-792f-4dce-8ddc-14f38955b75a/equation-editor-argmin-and-argmax-parameter?forum%3Dword][argmin and argmax in Word equations]]
 
     Type:
@@ -9175,11 +9175,6 @@ plt.show()
 ********* also [[jupytext]]
 ********* also [[papermill-jupytext plugin]]
 ********* also [[Versioning Jupyter Notebooks]]
-***** also [[Spyder Jupyter Notebooks]]
-***** <<Dashboarding with Jupyter Notebooks>>
-      From: [[https://www.youtube.com/watch?v=VtchVpoSdoQ][Dashboarding with Jupyter Notebooks, Voila and Widgets | SciPy 2019]]
-     
-***** Also [[Python Dashboarding]]      
 ***** <<Jupyter notebooks as markdown, latex, etc....>>
 ******* <<Pandoc converts notebooks to markdown, latex, etc>>
         From: [[https://predictablynoisy.com/pandoc-jupyter-notebooks][Testing Pandoc and Jupyter Notebooks - Predictably Noisy]]
@@ -9187,6 +9182,13 @@ plt.show()
 ******* [[jupytext]] also does a lot of notebook format conversion, including to markdown
 
 ******* [[https://gist.github.com/jplsightm/c7df5cd2bc62dc84c5158a80cf0af6df][Convert a Pandas Dataframe to Markdown]]
+***** <<Dashboarding with Jupyter Notebooks>>
+      From: [[https://www.youtube.com/watch?v=VtchVpoSdoQ][Dashboarding with Jupyter Notebooks, Voila and Widgets | SciPy 2019]]
+     
+***** also [[Spyder Jupyter Notebooks]]
+***** also [[Python Dashboarding]]      
+***** [[SoS]]: Jupyter DAG runner
+***** [[d6t/d6tflow]] Jupyter data versioning and parallelization
 *** TRY <<Cookiecutter Data Science>>: notebook/data/code struct for DS projects
 
     Project template describing how to organize code, Jupyter notebooks and data for maximum reproducibility.  Maybe I should try this.
@@ -9650,7 +9652,10 @@ plt.show()
 ***** [[https://dask.org/][Dask: Scalable analytics in Python]]
 ******* [[https://towardsdatascience.com/why-every-data-scientist-should-use-dask-81b2b850e15b][Why every Data Scientist should use Dask?]]
 ***** [[https://kubernetes.io/][Kubernetes]] (not just Python, more for containers)
-***** [[https://github.com/d6t/d6tflow][d6t/d6tflow: Python library for building highly effective data science]] (versioning & parallel, I think)
+***** [[d6t/d6tflow]] (data versioning and parallelization)
+***** [[https://github.com/spotify/luigi][spotify/luigi is a Python module that helps you build complex...]] (dep run)
+***** [[https://airflow.apache.org/][Apache Airflow]]
+***** also [[Data Versioning]]
 *** <<Tidy (Long) Tables>> in Python
 
     The way Patrick Sudowe suggested that all SQL data s/b organized.  I guess it's the same for Python dataframes or whatever
@@ -9867,6 +9872,7 @@ plt.show()
 ***** Kraskov-like MI in Python (see energytop.org) 
 *** Probabilistic Programming in Python: [[https://pyro.ai/][Pyro]]
     See energytop.org for more on probabilistic programming
+
 * <<Data Versioning>>
 
   The [[POC versioning Machine Learning pipeline]] looks pretty good.  Has DVC parameterization and Jupyter notebooks.  Worth looking into?
@@ -9937,6 +9943,18 @@ plt.show()
 *** [[Versioning Jupyter Notebooks]] (by themselves)
 *** [[Data versioning in Jupyter notebooks]]
 *** [[Cookiecutter Data Science]]
+*** <<d6t/d6tflow>> (data versioning and parallelization)
+***** Jupyter: [[https://medium.com/analytics-vidhya/hands-on-tutorial-to-wrapping-your-scikit-learn-workflow-in-a-d6tflow-dag-3e4cca8d7479][Tutorial to Wrapping your Scikit-learn Workflow in a d6tflow DAG]]
+***** [[https://www.evernote.com/l/AA2fQVM7WCpKs5ngc6O7n06xEGtTW0YR2NY/][4 Reasons Why Your Machine Learning Code is Probably Bad]]
+***** see [[https://github.com/d6t/d6tflow][d6t/d6tflow: Python library for building highly effective data sci...]] 
+***** can at least use AWS as online storage: [[https://github.com/d6t/d6tpipe][d6t/d6tpipe]]
+***** Is freeware from company: [[https://www.databolt.tech/index-python-pro.html#flow][databolt.tech]]
+*** <<SoS>>
+***** Juptyer: [[https://vatlab.github.io/blog/post/sos-workflow-engine/][SoS: a cure to pipelineitis]]
+***** author says it's easier to use in a Jupyter notebook
+***** Article: [[https://vatlab.github.io/blog/post/sos-workflow-engine/][SoS: a cure to pipelineitis]]
+***** video: [[https://www.youtube.com/watch?v=U75eKosFbp8][SoS: A polyglot notebook and workflow system]]
+*** also [[Parallelization in Python]]
 * <<Hadoop>>
 *** [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop Intro Book]]
 
