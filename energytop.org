@@ -337,17 +337,19 @@
 
 *** [[http://en.wikipedia.org/wiki/Elementary_symmetric_polynomial][Elementary symmetric polynomial]]:  products expanded into sums
 *** [[http://www.investopedia.com/terms/b/bidprice.asp][bid]]: max price a buyer will pay
-*** ROC, AUC, F-measure,.
-    <<ROC, AUC, F-measure, ...>>
+*** <<ROC, AUC, F-measure, ...>>
     From: [[cite:Fawcett06introROCanalysis][Fawcett 2006: ROC]] intro
      and: [[cite:Powers11evalPrecRecFrocEtc][Powers 2011: Evaluation]] prec/rec f-number, ROC, etc.
      and: [[cite:Davis06relationshipPrecisionRecall][Davis & Goadrich 2006: Precision Recall ROC]]
-     and: [[http://www.evernote.com/l/AA2H_ee0T0VHSKLRrTw3rwSReABMBCYbZgs/][Computing Classification Evaluation Metrics in .. 
+     and: [[http://www.evernote.com/l/AA2H_ee0T0VHSKLRrTw3rwSReABMBCYbZgs/][Computing Classification Evaluation Metrics in]]
 
     Which to use is partly problem-domain specific.  
     See e.g [[https://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]]
-
+***** Precision: nDetTruePos / nTruePos
+***** False Positive Rate: nDetFalsePos / nTrueNeg
 ***** ROC curve: precision vs. recall
+      
+      Perfect graph is vertical line @ x=0
 ***** AUC meaures (on ROC or PR curves)
       From [[https://www.kaggle.com/general/7517][commenter]] here and [[cite:Davis06relationshipPrecisionRecall][Davis & Goadrich 2006: Precision Recall ROC]]
 
@@ -3932,6 +3934,8 @@ Hope that helps,
 ******* [[cite:Belloni13progEvalHiDim][Belloni et al. 2013: Program]] eval high dim (use LASSO)
 ******* [[file:energy.bib::Lu07lagEnsemble][Lu et al. 2007: Short Range Numerical]] time lagged ensembles good for wind prob. frcst
 ******* [[file:energy.bib::Wang13extrmQRpowTranf][Wang & Li 2013: Estimation Extreme Conditional]] lin w/ nonlinear tails, tail test
+******* [[cite:Li08condCDFcatContin][Li & Racine 2008: Nonparametric CDF contin/disc]] (Nadaraya-Watson-like)
+******* [[cite:Li08quantRgrsnLasso][Li & Zhu 2008: L1 Norm Quantile Regression]]
 ******* [[file:energy.bib::Lange03uncertFrcstMetSit][Lange & Heinemann 2003: Relating]] PCA of met stations vs. error
 ******* [[file:energy.bib::Papaefthymiou08spatioTempModel][Papaefthymiou & Pinson 2008: Modeling Spatial Dependence]] (*really read?*)
 ******* [[file:energy.bib::Weigel08modelCombo][Weigel et al. 2008: Can]]  (when does ensemble averaging work?)
@@ -5115,6 +5119,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                            
 ***** [[cite:Karpathy14featLrnEscpdsBlog][Karpathy 2014: Feature Learning Escapades]] (Transfer learning)
 ***** [[cite:Sinn14EnergyDemandFrcst][Sinn 2014: Energy Demand Forecasting slides, maybe net demand]]
 ***** [[file:energy.bib::Vogt19windPowFrcstDpLrnXfer][Vogt et al. 2019: Wind Pow Forecast Deep Lrn, Xfer Lrn]]
+***** Sentiment analyis transfer learning: [[https://www.evernote.com/l/AA2a0yjJPBlJWrqAZT86uQ0vK28m-TAp3HE/][Coronavirus climbs up keyword block lists, squeezing news publishers' programmatic revenues]]
 ***** tons of papers on this...
 *** see: [[Adaptive varying coefficient models]]
 *** see: [[Adaptive Quantile Regression]]
@@ -6139,6 +6144,8 @@ sera
 ***** [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (built-in montonic)
 ***** [[The many ways to use Nadaraya-Watson kernels to predict conditional probs]]
 ***** Nadaraya-Watson for random forest probs: [[cite:Olson18sensRndFrstProbKern][Olson & Wyner 2018: Sense Rand Frst Prob]]
+***** [[cite:Li08condCDFcatContin][Li & Racine 2008: Nonparametric CDF contin/disc]] (Nadaraya-Watson-like)
+***** [[cite:Li08quantRgrsnLasso][Li & Zhu 2008: L1 Norm Quantile Regression]]
 ***** also [[Metalog Distributions]] (parameterized monotonic distributions)
 ***** also see: [[Probabilistic Deep Learning]]
 *** <<Beta Regression>>
@@ -7094,6 +7101,7 @@ variables will be preferred, when possible.
 ******* 3 CRPS def's:  [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing dens. frcst score rules]]
 ******* <<CRPS is a weighted sum of quantile scores>>
         "weighted sum of [[Quantile Score]]s" according to:
+********* Eq. 22 of [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Compar Dens Frcsts: thrsh & quant wts]]
 ********* Contin. Integral of QS's [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing]] (eq. 22)
 ********* [[cite:Broecker12rawEnsQntScrCRPS][Broecker 2012: Evaluating]]
 ********* [[cite:Pritchard10varQuantProbFrcst][Pritchard 2010: Short term wind quantile]]
@@ -7104,6 +7112,12 @@ variables will be preferred, when possible.
 ********* See [[file:energy.bib::Hersbach00crpsDecomp][Hersbach 2000: Decomposition]]
 ********* [[http://www.eumetcal.org/resources/ukmeteocal/verification/www/english/msg/ver_prob_forec/uos3b/uos3b_ko1.htm][This link]] also used to say this, I think.
 ********* CRPS in same units as observations: [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing]]
+******* Three ways to express CRPS
+        From: [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing Dens Frcsts]]
+        CRPS can be expressed in three (at least) ways:
+        - Traditional/Threshold Decomp.
+        - Quantile Score Rep.
+        - Kernel Score Rep
 ******* CRPS [[values][can be interpreted]] as integral of [[Brier Score]] over all thresholds
 ******* TODO <<Multidimensional CRPS>>: a weighted average
 ********* [[file:energy.bib::Hersbach00crpsDecomp][Hersbach 2000: Decomposition]]
@@ -7133,13 +7147,14 @@ variables will be preferred, when possible.
 ******* Also [[Quantile Score]]
 ******* Also [[Energy Score]]
 ***** TODO <<Energy Score>>
-
       Energy Score is the multivariate extension of CRPS (UPSULA IEA
       talk giving on 4/3/2020). This talk also had tips about
       detecting errors in calibration and correlation.  Tried normal
       copula, Students-t, and others.
 
 ******* TODO Merge with [[Multidimensional CRPS]]
+******* TODO collect papers here that contain "energy score" eg. [[cite:Gneiting07strictPropScore][Gneiting & Raftery 2007: Strictly Proper Scoring]]
+******* [[file:energy.bib::Gneiting08multiVarEnsAssess][Gneiting et al. 2008: Assessing]]
 ******* also [[Continuous Ranked Probability Score (CRPS)]]
 ***** <<Quantile score & DWD style per-quantile reliability plots>>
 ******* [[cite:Bentzien14quantScrDecomp][Bentzien & Friederichs 2014 The quantile score and decomp.]]
@@ -7177,6 +7192,13 @@ variables will be preferred, when possible.
 ******* [[cite:Ehm16quantileExpectileScrFrcst][Ehm et al. 2016: Quantile, Expectile Score Forecasts]]
 ******* [[cite:Waltrup15expectileQuantile][Waltrup et al. 2015: Expectile/Quantile DavidGoliath]]: cross, expect loss
 ******* expectile vs quantile: [[cite:Koenker13expectileLivByndMn][Koenker 2013: Expectile Live Beyond Means]]
+***** <<Forecast Scoring Software>>
+******* [[cite:Barrett15properScorePython][Barrett et al. 2015: properscoring: Proper scoring rules in Python]]
+******* [[cite:Hansen19solarFrstArbiterEvalFrmwrk][Hansen et al. 2019: Solar Forecast Arbiter]] API
+******* R package [[http://cran.r-project.org/web/packages/np/vignettes/entropy_np.pdf][np]]:  nonparametric test for equality of densities (for prob. frcst evaluation)
+        *functions*: npdeneqtest, npunitest
+******* [[http://iri.columbia.edu/~gonzalez/DPWG/matlab_code.html][Matlab code for CRPS]], etc
+******* [[https://cran.r-project.org/web/packages/scoringRules/vignettes/article.pdf][Evaluating Probabilistic Forecasts with scoringRules (R package)]]
 ***** [[file:energy.bib::Drakos18mlEvalMetrics][Drakos 2018: Select Right Evaluation Metrics]]
 ***** [[file:energy.bib::Mohrlen19selectRESfrcstRecmnd][Mohrlen et al. 2019: Recommended Prctcs RES frcst select]]
 ***** [[cite:Bessa12adaptQuantCopulaFrcst][Bessa et al. 2012: Time Adaptive Quantile Copula]]
@@ -7212,9 +7234,6 @@ variables will be preferred, when possible.
 ***** [[file:energy.bib::Wang13extrmQRpowTranf][Wang & Li 2013: Estimation Extreme Conditional]] lin w/ nonlinear tails, tail test
 
 ***** [[file:energy.bib::Kuan11quantRgrsnIntro][Kuan 2011: Introduction Quantile Regression]]
-***** R package [[http://cran.r-project.org/web/packages/np/vignettes/entropy_np.pdf][np]]:  nonparametric test for equality of densities (for prob. frcst evaluation)
-      *functions*: npdeneqtest, npunitest
-***** [[http://iri.columbia.edu/~gonzalez/DPWG/matlab_code.html][Matlab code for CRPS]], etc
 ***** [[http://www.eumetcal.org/resources/ukmeteocal/verification/www/english/msg/ver_prob_forec/uos3b/uos3b_ko1.htm][CRPS == MAE]] for deterministic forecasts (see also [[file:energy.bib::Hersbach00crpsDecomp][Hersbach 2000: Decomposition]])
 ***** <<SIC>>: BIC like penalized fit for quantile regression.  See...
 ******* [[file:energy.bib::Koenker94QuantSmthSplns][Koenker et al. 1994: Quantile]]
@@ -7223,7 +7242,7 @@ variables will be preferred, when possible.
 ***** Logarithmic Score: [[file:energy.bib::Gneiting08multiVarEnsAssess][Gneiting et al. 2008: Assessing]]
 ***** Quadratic Score: [[file:energy.bib::Gneiting08multiVarEnsAssess][Gneiting et al. 2008: Assessing]]
 ***** Spherical Score: [[file:energy.bib::Gneiting08multiVarEnsAssess][Gneiting et al. 2008: Assessing]]
-***** Energy Score: [[file:energy.bib::Gneiting08multiVarEnsAssess][Gneiting et al. 2008: Assessing]]
+***** [[Energy Score]]: e.g [[file:energy.bib::Gneiting08multiVarEnsAssess][Gneiting et al. 2008: Assessing]]
 ***** [[file:energy.bib::Bremnes04windLocQR][Bremnes 2004: Probabilistic]]: probs w/ sharpness, binary reliabity, cost derivation
 ***** [[file:energy.bib::Sevlian13windRampDetStat][Sevlian & Rajagopal 2013: Detection Statistics Wind Power Ramps]]
 ***** [[file:energy.bib::Bouffard04probSpinRes][Bouffard & Galiana 2004]] spin rerv, mkts
@@ -7408,9 +7427,11 @@ variables will be preferred, when possible.
 ******* [[file:energy.bib::Marvuglia11lrnFarmPowCrvGMR][Marvuglia & Messineo 2011: Learning]] farm pow curve GMR instead of MLP
 ***** [[file:energy.bib::Bel16gridFluctwndErr][Bel et al. 2016: Grid]] scale forecast errors
 ***** [[cite:Mirowski14loadFrcstFeatAlgAgg][Mirowski et al. 2014: Demand Frcst, algs, feats, aggregation]]
-***** <<Summing Quantiles>>
-******* [[file:energy.bib::Jose14TrimOpinPoolCal][Jose et al. 2014: Trimmed Opinion Pools]]
-******* [[file:energy.bib::Lichtendahl13probOrQuantAvg][Lichtendahl et al. 2013: Is It Better]] to sum quantiles?
+***** <<Combining Probabilistic Forecasts>>
+******* <<Summing Quantiles>>
+********* [[file:energy.bib::Jose14TrimOpinPoolCal][Jose et al. 2014: Trimmed Opinion Pools]]
+********* [[file:energy.bib::Lichtendahl13probOrQuantAvg][Lichtendahl et al. 2013: Is It Better]] to sum quantiles?
+******* [[file:energy.bib::Ranjan09CombEvalProbFrcsts][Ranjan 2009: Combining Evaluating Probabilistic Forecasts]] (weighted CRPS)
 ******* TODO see: [[Quantile Mixtures]]
 ***** see also: [[Clustering for prediction]]
 ***** also see: [[Forecast aggregation]]
@@ -9475,16 +9496,16 @@ sera
 ***** [[cite:Zhou16recurCNNcntinPain][Zhou et al. 2016: Recurrent Convolutional Neural Pain Est.]]
 ***** [[file:energy.bib::Lichtendahl13probOrQuantAvg][Lichtendahl et al. 2013: Is It Better]] to sum quantiles?
 
-***** see: [[Forecast aggregation]]
-***** see: [[Aggregation vs. Forecasting Accuracy]]
-***** see: [[forecast aggregation by submodular optimization]]
-***** see: [[Probabilistic forecast aggregation]]
-***** see: [[forecast aggregation by submodular optimization]]
-***** see: [[Spatial Load Forecast]]
-***** see: [[Clustering%20of%20regression%20models][Clustering of regression models]]
-***** see: [[Portfolio Optimization and Forecasting]]
-***** see: [[Aggregation vs. Forecasting Accuracy]]
-***** see: [[Copulas]] (predict joint multivariate probabilities)
+***** also [[Combining Probabilistic Forecasts]]
+***** also [[Aggregation vs. Forecasting Accuracy]]
+***** also [[forecast aggregation by submodular optimization]]
+***** also [[Probabilistic forecast aggregation]]
+***** also [[forecast aggregation by submodular optimization]]
+***** also [[Spatial Load Forecast]]
+***** also [[Clustering%20of%20regression%20models][Clustering of regression models]]
+***** also [[Portfolio Optimization and Forecasting]]
+***** also [[Aggregation vs. Forecasting Accuracy]]
+***** also [[Copulas]] (predict joint multivariate probabilities)
 *** <<Effect of precipitation>>
 ***** rain
 ******* rain reduces wind speed
@@ -9597,6 +9618,7 @@ al. 2012: Current]])
 ***** [[file:energy.bib::Hyndman14frcstPrincPractice][Hyndman & Athanasopoulos 2014: Forecasting Princ. & Pract.]] (exp. wght, ARIMA, etc).
 ***** also [[Trend Detection]]
 ***** also [[Portfolio Optimization]]
+***** also [[Combining Probabilistic Forecasts]]
 ***** also [[Operation of Energy Storage]]
 *** <<Trend Detection>>
 ***** [[file:energy.bib::Alexandrov12mdrnTrndExtrct][Alexandrov et al. 2012: Modern Trend Detection]]
@@ -10029,12 +10051,17 @@ There is also that Dutch PhD thesis where the guy did this Dutch-wide assumed PV
 ***** [[cite:Liu11confWgtKNNimbal][Liu & Chawla 2011: Class Imbal weighted KNN]]
 ***** [[http://www.evernote.com/l/AA2H_ee0T0VHSKLRrTw3rwSReABMBCYbZgs/][Computing Classification Evaluation Metrics in R]]
 ***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (discusses ROC stats)
+***** [[https://www.evernote.com/l/AA1BDeJz4s1IEJuin_xL9KnpJ2-6uKTUdEk/][Selecting the Right Metric for Skewed Classification Problems]]
 ***** also [[*ROC, AUC, F-measure, ...][ROC, AUC, F-measure, ...]] (for which metric to use for class-imbalanced problems)
 ***** also [[Learning Classifier under Class Imbalance]]
 *** <<Learning Classifier under Class Imbalance>>
 ***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (recipie for learning under)
-***** TODO Python resampling library: [[file:energy.bib::Lemaitre17imbalanced-learnPyLib][Lemaitre et al. 2017: Imbalanced Lrn]]
+***** Python resampling library: [[file:energy.bib::Lemaitre17imbalanced-learnPyLib][Lemaitre et al. 2017: Imbalanced Lrn]]
       Software: [[http://imbalanced-learn.org/en/stable/index.html][imbalanced-learn 0.5.0]]
+***** [[cite:Bowyer11smoteOverSamp][Bowyer et al. 2011: SMOTE oversample]]
+***** [[cite:Han05borderSMOTEoversamp][Han et al. 2005: Borderline SMOTE oversample]]
+***** [[file:energy.bib::Li11randKNNfeatSelVsRandFrst][Li et al. 2011: Random KNN Random Forests]] (has R)
+***** [[file:energy.bib::Tomasev13imbalKnnHubs][Tomasev & Mladenic 2013: Class]] imbalanced high dim hub KNN
 ***** [[Rare Events and Logistic Regression]]
 *** See also [[file:energytop.org::*Extreme%20Quantile%20Forecasting][Extreme Quantile Forecasting]]
 * <<Meteorology>>
@@ -11726,6 +11753,10 @@ Brittany
 ********* [[https://cleanvehiclerebate.org/eng/rebate-statistics][CVRP Rebate Statistics | Clean Vehicle Rebate Project]]  
           Tom Hoff suggested this, as rebate info, leases too, I think.
 ********* TODO [[https://about.bnef.com/electric-vehicle-outlook/][Electric Vehicle Outlook 2019 | Bloomberg NEF]] (uses Bass)
+********* [[https://www.evernote.com/l/AA3KLvME2ENPC7xVofLnwcxedOEo2eRzOzQ/][Bloomberg 2016 EV forecast]]
+********* [[https://www.woodmac.com/research/products/global-energy-markets-trends/electric-vehicle-service/][Wood Mackenzie Electric Vehicle Service]]
+*********** [[https://www.woodmac.com/our-expertise/capabilities/electric-vehicles/][Wood Makenzie Electric Vehicle Research]]
+*********** [[https://www.woodmac.com/our-expertise/capabilities/electric-vehicles/industry-insights/][Wood Mackenzie Electric Vehicle Industry Insights]]
 ********* also [[Data Sets for Technology Adoption]]
 ***** Electric heating adoption
 ******* [[cite:Bernards18stochDistNtwkPlan_PhD][Bernards 2018: Stochastic Distribution Planning PhD Thesis]]
@@ -13373,6 +13404,10 @@ optimization to be a generalization of linear programming.
    02/17/20  [[cite:CEC18plugInEVinfraProj][CEC 2018: California Plug Infra 2017-2025]]
    02/18/20  [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
    04/07/20  [[cite:Taylor15windPowQuantKern][Taylor & Jeon 2015: Win Pow Quants KDE, exp forget, Qscore tune]]
+   04/26/20  [[file:energy.bib::Lemaitre17imbalanced-learnPyLib][Lemaitre et al. 2017: Imbalanced Lrn (Python lib)]]
+      Software: [[http://imbalanced-learn.org/en/stable/index.html][imbalanced-learn 0.5
+             [[cite:Bowyer11smoteOverSamp][Bowyer et al. 2011: SMOTE overample]]]]
+
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
