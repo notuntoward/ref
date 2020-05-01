@@ -3814,6 +3814,49 @@
         that you get when you buy Office 365?
 
 ******* [[http://blogs.technet.com/b/wbaer/archive/2014/05/24/file-and-folder-considerations-with-onedrive-for-business.aspx][Download FileChecker.exe]] to find problem file and folder names
+*** <<Remote Desktop Connection (RDP)>>
+***** getting rid of floating connection bar at top of screen
+      From [[https://answers.microsoft.com/en-us/windows/forum/all/change-windows-rdp-connection-bar-position/d1c3e9cd-36e0-4b94-9cde-b2f7f44b7224][here]]:
+      
+      On remote connection popup, go to display tab, go to bottom, untick "display the connection bar when I use the full screen"
+      
+***** local/remote switching keys (when connection bar hidden)
+
+    From [[https://docs.microsoft.com/en-us/windows/win32/termserv/terminal-services-shortcut-keys][here]]
+    | Shortcut key      | Description                                                   |
+    |-------------------+---------------------------------------------------------------|
+    | CTRL+ALT+HOME     | Activates the connection bar.                                 |
+    |-------------------+---------------------------------------------------------------|
+    | CTRL+ALT+BREAK    | Switches the client between full-screen mode and window mode. |
+    | CTRL+ALT+PAUSE    | alternative                                                   |
+    | CTRL+ALT+PRTSCN   | alternative                                                   |
+    | CTRL+ALT+FN+SCRLK | alternative                                                   |
+
+    If none of the alternatives work, press CTRL+ALT+HOME, TAB, TAB, TAB, TAB, TAB, ENTER. This activates the connection bar, and then presses the Restore down button.
+
+***** rebooting remote machine
+
+    From [[https://docs.microsoft.com/en-us/windows/win32/termserv/terminal-services-shortcut-keys][here]]
+    | Shortcut key | Description |
+    |--------------+-------------|
+    | CTRL+ALT+END | like CTRL+ALT+DEL on local machine |
+
+***** Hack to fix hanging remote connection (UDP disable)
+      From [[https://superuser.com/questions/1481191/remote-desktop-intermittently-freezing][here]]
+
+The recommended one of the three possible ways to do it:
+
+ On client: Local Group Policy Editor
+ → Local Computer Policy
+ → Computer Configuration
+ → Administrative Templates
+ → Windows Components
+ → Remote Desktop Services
+ → Remote Desktop Connection Client
+ → Turn Off UDP On Client
+       → Enabled
+       → Use only TDP
+
 *** Consoles
 ***** Better than cmd.exe: [[https://github.com/Maximus5/ConEmu][ConEmu: Customizable Windows terminal with tabs, splits...]]
 ***** Enhanced ConEmu, easy to install: [[http://cmder.net/][cmder | Console Emulator]]
@@ -8655,7 +8698,7 @@ plt.show()
 
         but some extensions (jupyter_conda) failed b/c its maintainer hadn't yet updated its code on github.
 
-        to uinstall
+        to uninstall
 
         jupyter labextension uninstall my-extension
 
@@ -9353,7 +9396,7 @@ plt.show()
 
         conda list --revisions
 
-        _Install conca revisions k_
+        _Install conda revisions k_
 
         conda install --revision k
 
@@ -9390,7 +9433,7 @@ plt.show()
 
         conda config --append channels new_channel
 
-******* clone conda env: write/reade environment.yml
+******* clone conda env: write/read environment.yml
         From: [[https://datascience.stackexchange.com/questions/24093/how-to-clone-python-working-environment-on-another-machine][anaconda - How to clone Python working environment on another machine? - Data...]]
 
         export Anaconda environment:
@@ -9957,7 +10000,6 @@ plt.show()
 *** also [[Parallelization in Python]]
 * <<Hadoop>>
 *** [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop Intro Book]]
-
 * Android
 *** Commandline
 ***** Termux app
