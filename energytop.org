@@ -345,15 +345,37 @@
 
     Which to use is partly problem-domain specific.  
     See e.g [[https://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]]
-***** Precision: nDetTruePos / nTruePos
-***** False Positive Rate: nDetFalsePos / nTrueNeg
-***** ROC curve: precision vs. recall
+***** <<True Positive Rate>>, <<Hit Rate>>, <<Recall>>, <<Sensitivity>>: tpr
+
+      tpr = nDetPosTrue / (nDetPosTrue + nDetNegFalse) = nDetPosTrue/nPosTrue
+
+***** <<False Positive Rate>> a.k.a. <<False Alarm Rate>>: fpr
+
+      fpr = nDetPosFalse / nNegTrue  =  nDetPosFalse / (nDetPosFalse + nDetNegTrue)
+
+***** <<Precision>> a.k.a. <<True Positive Accuracy>>: tpa
+
+      tpa = nDetPosTrue / (nDetPosTrue + nDetPosFalse)
+
+***** <<Specificity>>
+
+      specificity = nDetNegTrue / (nDetPosFalse + nDetNegTrue) = nDetNegTrue/nNegTrue
+
+***** <<ROC curve>>: True Positive Rate vs. False Postive Rate
       
+      x-axis: fpr
+      y-axis: tpr
+
       Perfect graph is vertical line @ x=0
+***** <<Precision-Recall Curve>>: precision vs. recall
+
+      x-axis: fpr ?
+      y-axis: tpa ?
+
 ***** AUC meaures (on ROC or PR curves)
       From [[https://www.kaggle.com/general/7517][commenter]] here and [[cite:Davis06relationshipPrecisionRecall][Davis & Goadrich 2006: Precision Recall ROC]]
 
-      - PR AUC :: (area under PR curve) Use when imp. to catch true pos.  Here, it suggests tuning to "high AUC"
+      - PR AUC :: (area under PR curve) Use when important to catch true pos.  Here, it suggests tuning to "high AUC"
       - ROC AUC :: (area under ROC curve) Use when both pos. and neg. are imp.
 
       (also see: [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]], which also as advice for classifier tuning)
@@ -10052,7 +10074,7 @@ There is also that Dutch PhD thesis where the guy did this Dutch-wide assumed PV
 ***** [[http://www.evernote.com/l/AA2H_ee0T0VHSKLRrTw3rwSReABMBCYbZgs/][Computing Classification Evaluation Metrics in R]]
 ***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (discusses ROC stats)
 ***** [[https://www.evernote.com/l/AA1BDeJz4s1IEJuin_xL9KnpJ2-6uKTUdEk/][Selecting the Right Metric for Skewed Classification Problems]]
-***** also [[*ROC, AUC, F-measure, ...][ROC, AUC, F-measure, ...]] (for which metric to use for class-imbalanced problems)
+***** also [[ROC, AUC, F-measure, ...]] (for which metric to use for class-imbalanced problems)
 ***** also [[Learning Classifier under Class Imbalance]]
 *** <<Learning Classifier under Class Imbalance>>
 ***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (recipie for learning under)
