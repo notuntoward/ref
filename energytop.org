@@ -341,6 +341,7 @@
     From: [[cite:Fawcett06introROCanalysis][Fawcett 2006: ROC]] intro
      and: [[cite:Powers11evalPrecRecFrocEtc][Powers 2011: Evaluation]] prec/rec f-number, ROC, etc.
      and: [[cite:Davis06relationshipPrecisionRecall][Davis & Goadrich 2006: Precision Recall ROC]]
+     and: [[cite:Brownlee18whenRocPrecRec][Brownlee 2018: How & when Use ROC & Prec-Rec Curves]] 
      and: [[http://www.evernote.com/l/AA2H_ee0T0VHSKLRrTw3rwSReABMBCYbZgs/][Computing Classification Evaluation Metrics in]]
 
     Which to use is partly problem-domain specific.  
@@ -5747,6 +5748,7 @@ sera
 ********* [[cite:Dette08quantRgrsNonCross][Dette & Volgushev 2008: Non-cross quantile nonparam kernel]]
 ******* Other ways
 ********* [[cite:Huang18nonParamQRnw][Huang & Nguyen 2018 non param QR NW]]
+******* A common NW ref: [[cite:Hall99methCondDistEst][Hall et al. 1999: Methods Estimating Conditional]]
 ***** [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]] QR (spline)
 ***** [[file:energy.bib::Moller08adaptQuantRegr][Moeller et al. 2008: Time]] (DTU guy)
 ******* more detailed tech note also included in this ref
@@ -5898,6 +5900,7 @@ sera
 ******* TODO [[Concept Drift Detection]]
 ***** <<Quantile Crossover>>
 ******* how to avoid linear and spline QR crossover: [[file:energy.bib::Dette08quantRgrsNonCross][Dette & Volgushev 2008: Non]]
+******* Nadaraya-Watson immune? [[cite:Hall99methCondDistEst][Hall et al. 1999: Methods Estimating Conditional]]
 ******* TODO [[file:energy.bib::Shenoy15stochOptLdFrcstRgrssn][Shenoy et al. 2015: Non Parametric Regression]] stoch opt: Boyd's paper on quant rgrssn, quad (convex) prog. & stoch. opt
 ******* TODO [[file:energy.bib::Schmidt13noCrossQRspacing][Schmidt 2013: Quantile]] spacing construction (worth reading)
 ******* TODO sorting method used on R quantreg package: [[file:energy.bib::Chernozhukov10qrNoCross][Chernozhukov et al. 2010: Quantile Probability Curves Without Crossing]]
@@ -11482,7 +11485,8 @@ Erika
 ******* TODO [[file:energy.bib::Rossetti17frcstAdoptEarlyData][Rossetti et al. 2017: Forecasting Early Adopt Analysis Data]] (has data, like WPG)
 ******* TODO [[file:energy.bib::Jaakkola96cmprDiffsnMdlAdopt][Jaakkola 1996: Comparison Analysis Diffusion Models]]
 
-******* [[file:energy.bib::Fruchter02frcstNewProdBass][Fruchter 2002: Forcasting Sales New Prod Adopt Bass/Bass-like]]
+******* TODO [[cite:Fruchter03mktingModelsBassCnotes][Fruchter 2003: Marketing Models Course Notes: Bass Diff in Lect. 6]]
+******* TODO [[cite:Meade06reviewInnovDiffusionMdls][Meade & Islam 2006: Review Innov Diffusion Models (Bass-like)]]
 ******* [[file:energy.bib::Rogers83diffusInnovBk][Rogers 1983: Diffusion of Innovation Book]]
 ******* DONE [[file:energy.bib::Taherdoost18reviewTechAdopt][Taherdoost 2018 review tech accept models]]
 ******* [[https://www.pewinternet.org/topics/technology-adoption/][Technology Adoption | Pew Research Center]] (general page, lots of articles, link to datasets)
@@ -11609,6 +11613,12 @@ Erika
 ********* [[cite:Zhao18resPriceEvoImpBass][Zhao et al. 2018: Renewable Improved Bass Wind]] (Bass for used EV?)
 ********* [[Used EVs]]
 ********* [[Mixed car type forecast]]
+******* EV replacing conventional car model
+
+        How to model Bass Diffusion when EVs are displacing gas cars.  [[cite:Lilien13bassTechNoteMktEng][Lilien et al. 2013: Bass Model (how to est. Generalized Bass)]] hints that this can be done but is very vague. Maybe:
+********* TODO [[cite:Guidolin18invProductCanibalDiff][Guidolin & Guseo 2018: inv product cannibal: Lotka-Volterra]]
+
+********* TODO [[cite:Kainuma17cannibalizationRemanufac][Kainuma et al. 2017: Impact Cannibalization Remanufac Diff]]
 ******* Regulatory compliance
 ********* TODO enter CA reports still in my email
 ******* Model availability
@@ -11655,6 +11665,7 @@ Erika
 ********* Used EVs specifically
 *********** [[cite:Pedrosa18secondHandEVs][Pedrosa & Nobre 2018: Second Hand EV Survey]]
 ********* [[EV Unadoption Model]]
+********* [[cite:Lee17techFrcstDiffnReplace][Lee & Huh 2017: Technology adopt frcst diffusion with replacement]]
 ******* <<EV charging model>>
 ********* Used by [[cite:Dong20commuteDepTimeSpaceTime][Dong & Cirillo 2020: Space-Time Commute Time]]
 ********* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help. .  Also, have population projections.
@@ -11787,14 +11798,20 @@ Brittany
       The [[file:energy.bib::Horowitz19ovrvwDERinterConnNREL][most common]] tech adoption model.
 
 ******* DONE [[file:energy.bib::Wikipedia19bassDiffus][Wikipedia 2019: Bass Diffusion Model]]
-******* TODO [[file:energy.bib::Bass94bassWithoutDecVars][Bass et al. 1994: Why Bass Model w/o dec vars]] (with derivations. SDE?)
+******* TODO [[cite:Fruchter03mktingModelsBassCnotes][Fruchter 2003: Marketing Models Course Notes: Bass Diff in Lect. 6]]
+******* TODO [[file:energy.bib::Deepa07reviewDiffuseNewProd][Deepa & Tellis 2007: Critical Review Marketing Diffusion]]
+******* TODO [[file:energy.bib::][Cosguner et al. 2018: Dynamic Pricing New Products Dyn Bass]]
+******* TODO [[cite:Meade06reviewInnovDiffusionMdls][Meade & Islam 2006: Review Innov Diffusion Models (Bass-like)]]
+******* [[cite:Guidolin18invProductCanibalDiff][Guidolin & Guseo 2018: inv product cannibal: Lotka-Volterra]]
+******* [[cite:Kainuma17cannibalizationRemanufac][Kainuma et al. 2017: Impact Cannibalization Remanufac Diff]]
 ******* TODO [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]] (Bass w/ conf intv)
 ******* TODO [[cite:Boswijk05econMetBass][Boswijk & Franses 2005: Econometrics Bass Diffusion Model]] (Bass /w conf)
+******* [[cite:Lilien13bassTechNoteMktEng][Lilien et al. 2013: Bass Model (how to est. Generalized Bass)]]
+******* TODO [[file:energy.bib::Bass94bassWithoutDecVars][Bass et al. 1994: Why Bass Model w/o dec vars]] (with derivations. SDE?)
 ******* TODO [[file:energy.bib::Jaakkola96cmprDiffsnMdlAdopt][Jaakkola 1996: Comparison Analysis Diffusion Models]]
-******* TODO [[file:energy.bib::Deepa07reviewDiffuseNewProd][Deepa & Tellis 2007: Critical Review Marketing Diffusion]]
 ******* DONE [[file:energy.bib::Massiani2015useOfBassEV][Massiani & Gohs 2015: Bass EV 2 step approach (but don't use?)]]
-******* TODO [[file:energy.bib::Fruchter02frcstNewProdBass][Fruchter 2002: Forcasting Sales New Prod Adopt Bass/Bass-like]]
-******* TODO [[file:energy.bib::][Cosguner et al. 2018: Dynamic Pricing New Products Dyn Bass]]
+******* TODO [[cite:Kumar15bassDiffNotDiff][Kumar et al. 2015: Bass Diff Model not explain Diffusion]]
+******* [[cite:Fruchter03mktingModelsBassCnotes][Fruchter 2003: Marketing Models Course Notes: Bass Diff in Lecture 6]]
 ******* TODO [[file:energy.bib::SantaEulalia11discrChoiceBassEV][Santa et al. 2011: EV adopt Disc Choice Bass]]
 
 ******* TODO [[file:energy.bib::Zarwi17discChoiceAdoptDiffTranspo][Zarwi et al. 2017: EV adopt Discr Choice Bass]]
@@ -11809,6 +11826,7 @@ Brittany
 ******* [[file:energy.bib::Manceau13techDiffusnPreannc][Manceau et al. 2013: Diffusion Model Preannounced Prods (2 phase Bass)]]
 ******* [[file:energy.bib::Tashiro16hierBassDiff][Tashiro 2016: Hierarchical Bass and pop est.]]
 ******* TODO [[https://about.bnef.com/electric-vehicle-outlook/][Electric Vehicle Outlook 2019 | Bloomberg NEF]] (uses Bass)
+******* [[cite:Lee17techFrcstDiffnReplace][Lee & Huh 2017: Technology adopt frcst diffusion with replacement]]
 ******* [[cite:Zhao18resPriceEvoImpBass][Zhao et al. 2018: Renewable Improved Bass Wind]]
 ***** <<Logistic Regression Based Tech Adoption>>
 ******* [[file:energy.bib::Almeida08openTechInvoDevCntries][Almeida & Fernandes 2008: Openness Adopt Dev Countries]] 
@@ -13426,10 +13444,11 @@ optimization to be a generalization of linear programming.
    02/17/20  [[cite:CEC18plugInEVinfraProj][CEC 2018: California Plug Infra 2017-2025]]
    02/18/20  [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
    04/07/20  [[cite:Taylor15windPowQuantKern][Taylor & Jeon 2015: Win Pow Quants KDE, exp forget, Qscore tune]]
-   04/26/20  [[file:energy.bib::Lemaitre17imbalanced-learnPyLib][Lemaitre et al. 2017: Imbalanced Lrn (Python lib)]]
-      Software: [[http://imbalanced-learn.org/en/stable/index.html][imbalanced-learn 0.5
-             [[cite:Bowyer11smoteOverSamp][Bowyer et al. 2011: SMOTE overample]]]]
-
+   04/26/20  [[file:energy.bib::Lemaitre17imbalanced-learnPyLib][Lemaitre et al. 2017: Imbalanced Lrn (Python lib)]] Software: [[http://imbalanced-learn.org/en/stable/index.html][imbalanced-learn 0.5]]
+             [[cite:Bowyer11smoteOverSamp][Bowyer et al. 2011: SMOTE overample]]
+   05/07/20  [[cite:Fruchter03mktingModelsBassCnotes][Fruchter 2003: Marketing Models Course Notes: Bass Diff in Lect. 6]]
+             [[cite:Lilien13bassTechNoteMktEng][Lilien et al. 2013: Bass Model (how to est. Generalized Bass)]] 
+   05/09/20  [[cite:Taylor15windPowQuantKern][Taylor & Jeon 2015: Forecasting cond KDE wind pow]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
