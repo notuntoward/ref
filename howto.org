@@ -2614,8 +2614,7 @@
 ******* [[http://manas.tungare.name/software/isbn-to-bibtex/][ISBN to BibTex Converter]] (not Emacs, also broken as of 2016-12-05)
 ******* also see [[*JabRef][JabRef]]
 ******* [[Latex/Bibtex]]
-******* [[https://github.com/cute-jumper/gscholar-bibtex][gscholar-bibtex]]
-        <<gscholar-bibtex>>
+******* <<gscholar-bibtex>>
 
         I guess I might use it sometime, although JabRef is more powerful.
 
@@ -3113,7 +3112,7 @@
 ***** I mapped C-s s to swiper-isearch-thing-at-point (supposed to be symbols search but it only extracts a symbol-like-thing and then search for string matches w/o knowing the language)
 ***** symbol search and replace: [[refactoring in elpy]]
 ******* [[https://github.com/m-parashar/emax64/releases][emax64: has pdf-tools built-in]]
-* JabRef
+* <<JabRef>>
 *** News and feature requests go [[http://discourse.jabref.org][here]]
 *** bug reports go [[https://github.com/JabRef/jabref/issues][here]]
 *** latest dev build: https://builds.jabref.org/master/
@@ -3129,6 +3128,9 @@
     =Additional parameters  :=       -n -e
     =Use Emacs 23 insertion string:= checked
 
+*** [[Pinning Jabref to Windows 7 taskbar]]
+*** [[Export JabRef bibtex to Office 2007 citation source]]
+*** [[http://www.ademcan.net/index.php?2012/01/30/15/23/05-using-jabref-references-in-word-documents][Using JabRef references in Word documents]]
 *** How I'd like to make JabRef more like emacs org mode
     (response to a JabRef web survey on 11/12/15)
 
@@ -3179,7 +3181,7 @@
 
 *** Italics in article title: use =\em{}=
     From: [[https://sourceforge.net/p/jabref/discussion/318825/thread/6e71725d/][JabRef / Discussion / Help:Italics in titles?]]
-*** Fixing tiny fonts on Surface pro:
+*** <<Fixing tiny fonts on Surface pro:>>
     From: [[https://github.com/JabRef/jabref/issues/2885][Fonts are too small to read, inconsistent across the UI · Issue #2885 · JabRe...]]
 
     For Windows 10, there is work-around to get a workable resolution (I wouldn't call it nice through):
@@ -3189,6 +3191,8 @@
 ***** Check Override high DPI scaling behavior.
 ***** Choose System for Scaling performed by
 
+*** [[Visualizing Bibliographies]]
+*** [[Fixing tiny fonts on Surface pro]] (a problem older JabRef had)
 * Old Computers
 *** Microsoft Surface Pro 3
 ***** Screenshots and snips
@@ -3837,8 +3841,8 @@
 ***** rebooting remote machine
 
     From [[https://docs.microsoft.com/en-us/windows/win32/termserv/terminal-services-shortcut-keys][here]]
-    | Shortcut key | Description |
-    |--------------+-------------|
+    | Shortcut key | Description                        |
+    |--------------+------------------------------------|
     | CTRL+ALT+END | like CTRL+ALT+DEL on local machine |
 
 ***** Hack to fix hanging remote connection (UDP disable)
@@ -4320,7 +4324,7 @@ The recommended one of the three possible ways to do it:
 
 ***** see also [[Perl]]
 *** [[Windows Python]]
-*** Pinning Jabref to Windows 7 taskbar
+*** <<Pinning Jabref to Windows 7 taskbar>>
 
     Seems to be a netbeans bug.  There's a hack fix and a fix where you
     install SevenBeans.  See [[http://brianreiter.org/2011/02/04/pin-netbeans-6-9-to-windows-7-x64-taskbar/][here]].
@@ -4868,7 +4872,7 @@ The recommended one of the three possible ways to do it:
       Unfortunately, it doesn't use the BibTex4Word stuff already entered
       into a Word doc.
 
-***** Export JabRef bibtex to Office 2007 citation source
+***** <<Export JabRef bibtex to Office 2007 citation source>>
 ******* Works in Mac Office 2007 (view menu --> citations)
 ********* Creating a citation source by exporting from JabRef
 
@@ -9174,7 +9178,7 @@ plt.show()
           I can possibly imagine this being useful...
 
 ******* <<Data versioning in Jupyter notebooks>>
-
+********* [[https://github.com/peopledoc/mlvtools][mlvtools: Public repository for versioning machine learnin...]]
 ********* <<Simple Jupyter + DVC>>
 
           A [[https://dagshub.com/DAGsHub-Official/Jupyter-Notebook-DVC][Jupyter Notebook Example]] on DAGsHub, but don't need DAGsHub to run it.  The example is too limited, though.  
@@ -9981,6 +9985,7 @@ plt.show()
 ***** "git style" version control
 ***** Transforms with "Python's cousin," Starlark
 ***** Based on [[https://techcrunch.com/2015/10/04/why-the-internet-needs-ipfs-before-its-too-late/][IPFS]], a distributed thing that could replace http
+*** [[https://github.com/peopledoc/mlvtools][mlvtools: Public repository for versioning machine learnin...]]
 *** [[RunRouter]]
 *** [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
 *** [[Versioning Jupyter Notebooks]] (by themselves)
@@ -10106,7 +10111,7 @@ plt.show()
 ***** get rid of annoying pdf url mangling
 
       Note: JabRef, as of R2.11.b2 can unmangle google links if you paste
-      them into the URL spot.
+      them into the URL spot (is this still true, as of 2020?)
 
       *Solution:* only one I've found is to search for the same thing in
       bing.com, which doesn't mangle URL's.
@@ -10822,7 +10827,7 @@ plt.show()
 ******* [[https://plantuml.com/][PlantUML: Open-source tool that uses simple textual descriptions to draw beautiful UML]]
 ******* Not just UML's.  Can draw DAGs, mindmaps, timing diagrams and a ton of other things
 ******* Can draw diagrams from Emacs using [[orgbabelhelper]] ([[org-diagram drawing with plantuml-babel.org]])
-*** Visualizing Bibliographies
+*** <<Visualizing Bibliographies>>
 ***** [[http://www.qiqqa.com/][qiqqa]]: biblio tool, does visualizations, imports bibtex, pdfs
 
       A powerful general reference framework, like a super-jabref.  Did interesting topic clustering (some good, some not meaningful) but I didn't like the way it ate my pdfs and insisted on editing them within the tool (no Drawboard ink, etc.).
@@ -10870,6 +10875,7 @@ plt.show()
 ***** [[org-diagram drawing with plantuml-babel.org]]
 ***** [[http://orgmode.org/worg/org-contrib/org-wikinodes.html][org-wikinodes: CamelCase wiki-like links]] (kind of a graph)
 ***** [[Concept map-like stuff: superlabel, dedicated targets, org-brain]]
+***** [[JabRef]]
 * TRY <<Programming Practices>>
 *** Agile development
 ***** Florian's Agile video links
