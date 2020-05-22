@@ -165,11 +165,15 @@
    (progn (setq shareDir "c:/Users/Scott/OneDrive - Clean Power Research")))
   ("desktop-6bq3kmf" ; Surface Pro
    (setq shareDir "C:/Users/scott/OneDrive - Clean Power Research"))
+  ("desktop-89vlrqe" ; Surface Book 2
+   (setq shareDir "C:/Users/scott/OneDrive - Clean Power Research"))
   ("desktop-rvtj6ua" ; Surface Go
    (setq shareDir "C:/Users/scott/OneDrive - Clean Power Research"))
    (progn (warn "Can't assign shareDir for unknown computer: %s" computerNm)
 	  (setq shareDir (concat "unknown_computer_" computerNm "_shareDir")))
-  )
+   )
+;; Dad's computers: Desktop-2L6G237 (Surface), Desktop-IOS9UTJ (Compaq) 
+
 
 (unless (file-readable-p shareDir)
   (warn "shareDir %s doesn't exist or not readable" shareDir))
@@ -1061,10 +1065,48 @@ _C-M-a_ change default action from list for this session
 (global-set-key (kbd "C-x 5 c") 'sdo/clone-indirect-buffer-other-frame)
 
 ;; * File Finding / Opening
-;; ** TODO: pdf-tools
+;; ** pdf-tools
+;; Read and annotate pdfs.  
+;; See demo: http://tuhdo.github.io/static/emacs-read-pdf.gif
+;; Also used by org-roam (I think) and some latext stuff (I think)
+;;
+;; On Windows, requires msys2 packages, as described here:
+;;  https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
+;; Must do steps 1,2, the melpa package install and then run step
+;;  (done in use-package call below.) 
+;; note: if this rebuilds, it will ask for msys2 dir: it's
+;; c:/tools/msys64
 
-;;    It would be nice to get pdftools working on windows.  See demo:
-;;    http://tuhdo.github.io/static/emacs-read-pdf.gif
+;; use-package inspired by: http://pragmaticemacs.com/emacs/more-pdf-tools-tweaks/
+;;   and: http://pragmaticemacs.com/emacs/view-and-annotate-pdfs-in-emacs-with-pdf-tools/
+(use-package pdf-tools
+ :pin manual ;; avoid frequent updates so not rebuilding all the time
+ :config
+ ;; initialise
+ (pdf-tools-install)
+ ;; open pdfs scaled to fit page
+ (setq-default pdf-view-display-size 'fit-page)
+ ;; automatically annotate highlights: Nah, I don't like to type extra text
+ ;; (setq pdf-annot-activate-created-annotations t)
+ ;; use normal isearch
+ (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+ ;; more fine-grained zooming (default is 25%)
+ (setq pdf-view-resize-factor 1.1)
+ ;; shorter keyboard shortcuts.  These act on text selected with mouse
+ ;; instead of e.g. C-c C-a h to highlight
+ (define-key pdf-view-mode-map (kbd "h") 'pdf-annot-add-highlight-markup-annotation)
+ (define-key pdf-view-mode-map (kbd "t") 'pdf-annot-add-text-annotation)
+ (define-key pdf-view-mode-map (kbd "u") 'pdf-annot-add-underline-markup-annotation)
+ (define-key pdf-view-mode-map (kbd "D") 'pdf-annot-delete))
+ ;; uniform navigation: can also use M-< and M-> as normal
+ ;; Note: M-g l x is "go to page number x", as is M-g g (the normal <goto-line>)
+ ;; history-back: B; history-forward: N
+ ;; pdf-occur is nice, has same mapping as <occur>: M-s o
+ (define-key pdf-view-mode-map (kbd "C-<home>") 'pdf-view-first-page)
+ (define-key pdf-view-mode-map (kbd "C-<end>") 'pdf-view-last-page)
+ ;; Grab rectangular images (equations, graphs) w/ M-mouse, then
+ ;; C-c TAB or right-mouse & "create image"
+)
 
 ;; ** Dired Mode
 ;; *** Generic Dired and Win32 integration
@@ -1843,11 +1885,21 @@ _C-M-a_ change default action from list for this session
 (when (setq conda_exe (sdo/find-exec "conda" "Needed for most python packages"))
     (use-package conda
       :ensure t
-      :init
-      (setq conda-anaconda-home (expand-file-name "~/.anaconda")) ; matters?
+      :config
+      ;;(setq conda-anaconda-home (expand-file-name "~/.anaconda")) ; matters?
+      (message "conda_exe: %s" conda_exe)
+      ;; (setq my-conda-anaconda-home (expand-file-name
+      ;;                            (concat (file-name-directory conda_exe)
+      ;;                                    "..")))
       (setq conda-env-home-directory (expand-file-name
                                       (concat (file-name-directory conda_exe)
                                               "..")))
+      (message "conda-env-home-directory: %s" conda-env-home-directory)
+;;      (setq conda-anaconda-home conda-env-home-directory)
+      (custom-set-variables
+       '(conda-anaconda-home conda-env-home-directory))
+      (message "conda-anaconda-home: %s" conda-anaconda-home)
+      
       (conda-env-initialize-interactive-shells)
       (conda-env-initialize-eshell)
       (conda-env-activate "stdso") ; my expected default anaconda environment
@@ -2338,6 +2390,39 @@ is already narrowed."
 ;; at least they work after I comment it out
 ;;(bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
  
+;; ** Org-noter
+
+;; From: https://write.as/dani/notes-on-org-noter
+(use-package org-noter
+  :after org
+  :ensure t)
+
+(use-package org-noter
+    :after org
+    :ensure t
+    :config (setq org-noter-default-notes-file-names '("notes.org")
+                  org-noter-notes-search-path '("~/org/Research-Notes")
+                  org-noter-separate-notes-from-heading t))
+
+(defun org-ref-noter-at-point ()
+      "Open the pdf for bibtex key under point if it exists."
+      (interactive)
+      (let* ((results (org-ref-get-bibtex-key-and-file))
+             (key (car results))
+             (pdf-file (funcall org-ref-get-pdf-filename-function key)))
+        (if (file-exists-p pdf-file)
+            (progn
+              (find-file-other-window pdf-file)
+              (org-noter))
+          (message "no pdf found for %s" key))))
+
+(add-to-list 'org-ref-helm-user-candidates 
+             '("Org-Noter notes" . org-ref-noter-at-point))
+
+(setq org-ref-bibliography-notes "~/org/Research-Notes/notes.org")
+(setq org-ref-notes-function #'org-ref-notes-function-one-file)
+
+
 ;; ** Org Mode Dedicated Targets
 (require 'org)
 
@@ -3090,6 +3175,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(blink-cursor-mode nil)
  '(calendar-week-start-day 1)
  '(column-number-mode t)
+ '(conda-anaconda-home conda-env-home-directory)
  '(counsel-grep-base-command "grep -nEi '%s' %s")
  '(counsel-search-engine (quote google))
  '(delete-selection-mode nil)
@@ -3157,6 +3243,9 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount (quote (1 ((shift) p\. 1) ((control)))))
  '(mouse-wheel-tilt-scroll t)
+ '(org-agenda-files
+   (quote
+    ("c:/Users/scott/OneDrive - Clean Power Research/ref/tmp.org")))
  '(org-confirm-shell-links (quote y-or-n-p))
  '(org-ctrl-k-protect-subtree t)
  '(org-cycle-include-plain-lists (quote integrate))
@@ -3216,7 +3305,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
