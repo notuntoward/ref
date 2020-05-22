@@ -1097,7 +1097,7 @@ _C-M-a_ change default action from list for this session
  (define-key pdf-view-mode-map (kbd "h") 'pdf-annot-add-highlight-markup-annotation)
  (define-key pdf-view-mode-map (kbd "t") 'pdf-annot-add-text-annotation)
  (define-key pdf-view-mode-map (kbd "u") 'pdf-annot-add-underline-markup-annotation)
- (define-key pdf-view-mode-map (kbd "D") 'pdf-annot-delete))
+ (define-key pdf-view-mode-map (kbd "D") 'pdf-annot-delete)
  ;; uniform navigation: can also use M-< and M-> as normal
  ;; Note: M-g l x is "go to page number x", as is M-g g (the normal <goto-line>)
  ;; history-back: B; history-forward: N
