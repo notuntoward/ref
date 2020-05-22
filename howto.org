@@ -188,6 +188,7 @@
 ********* abo-abo window switching, etc. w/ setup: [[https://www.youtube.com/watch?v=_qZliI1BKzI][Switching Emacs windows with hydra and ace-window]]
 ******* TRY [[https://github.com/abo-abo/swiper][ivy/swiper/counsel]]
         For some things, I like ido better:
+        - Emacs27 isearch repaces swiper: [[org-roam author migrated to Doom Emacs]]
         - See [[Swiper]]
         - compunaut [[https://www.reddit.com/r/emacs/comments/51lqn9/helm_or_ivy/][says]] that [[https://github.com/compunaut/helm-ido-like-guide][setting helm up like ido]] makes it match ivy better, if want to use helm chunks
 ********* TRY speed up swiper on energy.bib and energytop.org
@@ -2225,8 +2226,54 @@
     C-x e
     OR  F4
 
+*** Emacs builds
+***** [[Windows emacs builds]]
+***** <<Doom Emacs>>
+
+This started much faster than my standard .emacs (on 5/21/20) and also opened energytop.org and howto.org much faster.  But this was the basic doom install, and I'm not sure how much faster things would be if I added my other things, like epy and org-mode dedicated targets, to it.
+
+******* [[https://github.com/hlissner/doom-emacs][hlissner/doom-emacs: An Emacs framework for the stubborn martian hacker]]
+******* Initial doom emacs install
+
+        external libs:
+          choco install git llvm emacs ripgrep   (from [[https://www.reddit.com/r/emacs/comments/d5hbhl/doom_emacs_on_windows/][here]])
+        OR
+          choco install git emacs ripgrep fd llvm  (from [[https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#on-windows][here]])
+
+********* Overall Doom Emacs install instructions
+*********** [[https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#on-windows][doom-emacs/getting_started.org at develop · hlissner/doom-emacs]]
+*********** [[https://www.reddit.com/r/emacs/comments/d5hbhl/doom_emacs_on_windows/][Doom emacs on windows : emacs]]
+********* TRY [[https://emacs.stackexchange.com/questions/53319/how-to-disable-evil-mode-everywhere][disabling doom emacs evil-mode]]
+
+        Do 1 and 2 below to simply remove Evil but _need to do more (below)_.
+
+          1. Remove =:editor evil= from =~/.doom.d/init.el=,
+          2. Run ~doom refresh~ to clean up lingering dependencies and refresh your autoloads files.
+
+          _Extra steps I haven't done yet_
+
+          1. You may want to assign new values to ~doom-leader-alt-key~ and ~doom-localleader-alt-key~. These are bound to =C-c= and =C-c l= by default.
+          2. READ .emacs.d/modules/editor/evil/README.org:  "you must make effort to implement Emacs keybinding everywhere."
+
+********* making doom emacs fonts readable
+          From: [[https://github.com/hlissner/doom-emacs/issues/3194][hlissner/doom-emacs#3194 Unreadably tiny fonts on Windows 10]]
+
+          In ~/.doom.d/config.el, just comment out line that says:
+
+          (setq doom-font (font-spec :family "monospace" :size 14))
+
+********* installing icon fonts need by Doom's [[https://github.com/domtronn/all-the-icons.el][all-the-icons]] package
+*********** [[https://www.digitaltrends.com/computing/how-to-install-fonts-in-windows-10/][How to Install Fonts in Windows 10]]
+*********** probably easier in Linux...
+******* [[org-roam author migrated to Doom Emacs]]
+******* doom uses [[https://github.com/raxod502/straight.el][straight.el]] instead of standard package.el
+        Why straight.el /might/ be better
+********* [[https://github.crookster.org/switching-to-straight.el-from-emacs-26-builtin-package.el/][Switching to straight.el from Emacs 26 builtin package.el | David Crook]]
+********* 
+******* [[https://github.com/hlissner/emacs-doom-themes/tree/screenshots#doom-Iosvkem][doom theme screenshots]]
+
 *** <<Windows Emacs>>
-***** Windows emacs builds
+***** <<Windows emacs builds>>
 ******* <<Chocolatey Emacs>> choco install  (in admin powershell)
         Using [[Chocolatey]] package manager (see [[https://chocolatey.org/packages/Emacs][here]])
 
@@ -2284,6 +2331,8 @@
 
         [[https://anaconda.org/conda-forge/emacs][conda-forge emacs]] could be Windows, Linux or whatever.
 
+******* [[https://github.com/m-parashar/emax64/releases][Releases · m-parashar/emax64 · GitHub]]
+******* [[https://alpha.gnu.org/gnu/emacs/pretest/windows/emacs-27/][Gnu Emacs 27 windows alpha builds]]
 ***** Installing
 
       1. Run the emacs windows installer e.g. Chocolatey or Vincent Goulet
@@ -2359,8 +2408,7 @@
 
             C:\Users\scott\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar
 
-******* Pinning emacs to Windows 7 Taskbar
-        <<Pinning emacs to Windows 7 Taskbar>>
+******* <<Pinning emacs to Windows 7 Taskbar>>
 
         See: [[Pinning emacs to Windows 10 Taskbar]]
 
@@ -2571,7 +2619,7 @@
 
         helm-w32-launcher  20141223.1214 available  melpa      Start Menu entry launcher using Helm
 
-***** Installing GnuTLS for windows emacs
+***** Installing GnuTLS for Windows Emacs
 
       *Summary*: I didn't get this to work but maybe it doesn't matter.
 
@@ -2583,6 +2631,9 @@
 
       Also, Vincent Goulet's email address no longer works...
 
+***** Viewing pdfs in Windows Emacs
+******* pdf-tools on Windows
+********* [[https://github.com/politza/pdf-tools#compilation-and-installation-on-windows][GitHub - politza/pdf-tools: Emacs support library for PDF files.]]
 ***** [[Emacs 25 on Ubunto 16.10]]
 *** get rid of non-ascii chars
     (useful for cleaning up bibfiles, etc.)
@@ -2605,7 +2656,7 @@
       and save the file
 
 *** <<Latex/Bibtex and Emacs>>
-***** [[*Latex and Emacs][Latex and Emacs]]
+***** [[Latex and Emacs][Latex and Emacs]]
 ***** <<BibTex and Emacs>>
 ******* <<Org-ref operations on .bib file>>
 ********* =C-c C-l= is supposed to create a link instead looks up URL, as of 2016-12-05
@@ -3172,8 +3223,7 @@
 ***** II. Paper Relationship Discovery
 
       I would love something like Evernote's approach.  Every time I save
-      a web article, Evernote tells me about related articles I've already saved.  Restricting the search to stuff I've already
-      saved is better than telling me about all the articles in the
+      a web article, Evernote tells me about related articles I've already saved.  Restricting the search to stuff I've already saved is better than telling me about all the articles in the
       world that are related.  I haven't tried Docear's recommender
       system.  If it's searching the world, well, I already have google;
       if it's searching my own references first, then I'm really
@@ -3432,206 +3482,238 @@
 
     Get-ChildItem Env:PATH
 
-*** Cygwin
-    must install cygwin first, of course
-***** if install 64 bit, make symbolic link:  c:/cygwin64 --> c:/cygwin
+*** <<Linux on Windows>>
+***** Msys2
 
-      cd c:/
-      mklink /D cygwin cygwin64
+      Alternative to cygwin, seems easier to install?
 
-***** mount drive letters (do this first)
+      *Installation*
 
-      In cygwin term:
-
-      mkdir /b; mount b: /b
-      mkdir /c; mount c: /c
-      mkdir /d; mount d: /d
-      mkdir /e; mount e: /e
-
-      and so on....
-
-      Some of this was already done by the installer.  To cd in cygwin:
-
-      $ cd c:
-
-      $ ls
-      $Recycle.Bin                 PerfLogs                   Windows
-      DRIVERS                      Program Files              cygwin
-      Documents and Settings       Program Files (x86)        hiberfil.sys
-      Dokumente und Einstellungen  ProgramData                msdia80.dll
-      IDE                          Programme                  pagefile.sys
-      ITMTranslation.txt           Recovery                   setup.log
-      Intel                        SWTOOLS                    spin
-      MSOCache                     System Volume Information
-      Novell                       Users
-
-      Can see this was done by installer.  Just after cygwin install,
-      go to cygwin window and type:
-
-      $ mount
-      C:/cygwin/bin on /usr/bin type ntfs (binary,auto)
-      C:/cygwin/lib on /usr/lib type ntfs (binary,auto)
-      C:/cygwin on / type ntfs (binary,auto)
-      B: on /cygdrive/b type ntfs (binary,posix=0,user,noumount,auto)
-      C: on /cygdrive/c type ntfs (binary,posix=0,user,noumount,auto)
-      I: on /cygdrive/i type ncfsd (binary,posix=0,user,noumount,auto)
-      J: on /cygdrive/j type ncfsd (binary,posix=0,user,noumount,auto)
-      K: on /cygdrive/k type ncfsd (binary,posix=0,user,noumount,auto)
-      N: on /cygdrive/n type ncfsd (binary,posix=0,user,noumount,auto)
-      Q: on /cygdrive/q type ncfsd (binary,posix=0,user,noumount,auto)
-      R: on /cygdrive/r type ncfsd (binary,posix=0,user,noumount,auto)
-
-      _However_ ls /c: and stuff doesn't work so need to run mount
-      commands above, after which it looks like this:
-
-      $ mount
-      C:/cygwin/bin on /usr/bin type ntfs (binary,auto)
-      C:/cygwin/lib on /usr/lib type ntfs (binary,auto)
-      C:/cygwin on / type ntfs (binary,auto)
-      B: on /b type ntfs (binary,user)
-      C: on /c type ntfs (binary,user)
-      I: on /i type ncfsd (binary,notexec,user)
-      J: on /j type ncfsd (binary,notexec,user)
-      K: on /k type ncfsd (binary,notexec,user)
-      N: on /n type ncfsd (binary,notexec,user)
-      Q: on /q type ncfsd (binary,notexec,user)
-      R: on /r type ncfsd (binary,notexec,user)
-
-***** windows path points to cygwin bins
-
-      Control Panel|System|Advanced|Environment Variables
-      set PATH to C:\cygwin\bin (can add others later, separated by ';')
-
-***** emacs points to windows home (do _after_ drive letter mount)
-
-      Control Panel|System|Advanced|Environment Variables
-      set user env var HOME to C:\Users\sotterson\home
-
-***** make cygwin homedir same as Windows homedir
-
-      *MAYBE THIS ISN'T NECESSARY ANYMORE*
-      (on windows8, setting HOME was enough)
-
-      on my 1st IWES laptop (necessary on others??)
-
-      edit /etc/passwd to point to /c/Users/sotterson/home
-
-      On my 2nd IWES laptop, it was already set up correctly i.e.
-
-      /etc/passwd was pointing to /home/sotterson
-
-      which seemed to do the right thing.  Maybe because I had the
-      HOME environment variable set?
-
-***** cygwin xterminal
-******* must install X11 (not installed by default)
-******* xterm
-
-        install term package
-        in cygwin term"
-        $ mkpasswd -l > /etc/passwd
-        $ mkgroup -l > /etc/group
-        $ /etc/postinstall/man.sh.done
-
-
-        Install Xming and start it (on my own laptop, I might have xwin32?)
-
-        Start xterm either like this:
-
-        $ xterm -display localhost:0
-
-        or by creating a desktop shortcut with this target (then clicking on
-        it)
-
-        C:\cygwin\bin\run.exe -p /usr/X11R6/bin xterm -display 127.0.0.1:0.0 -ls
-
-        Inside the xterm, start your X-based program (lyx, texmacs,...).  Emacs
-        still starts up in text mode, though... not sure why.
-
-******* rxvt (latest cygwin terminal might be as good as this one)
-******** [[http://c2.com/cgi/wiki%3FBetterCygwinTerminal][rxvt]] was nicer than cygwin window (but not better than xterm?)
-******** must install the package
-******** then rxvt is available on the windows menu, in native and x flavors
-******* mintty (or something like that) now default, better than rxvt?
-***** <<turn off cygwin DOS warning>>
-******* fix
-
-        set the Windows environment variable (System, not user):
-
-        CYGWIN=nodosfilewarning
-
-        Another CYGWIN fix to do: [[windows-understandable%20symlinks][windows-understandable symlinks]]
-
-******* See this warning when do ediff from emacs:
-
-        Cygwin warning which screws up emacs:
-
-        MS-DOS style path detected: c:\Users\SOTTER~1\AppData\Local\Temp\.emacs.gnu
-        Preferred POSIX equivalent is: /cygdrive/c/Users/SOTTER~1/AppData/Local/Temp/.emacs.gnu
-        CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-        Consult the user's guide for more details about POSIX paths:
-        http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-***** force cygwin to make <<windows-understandable symlinks>>
-
-      Add "winsymlinks" to CYGWIN environment variable.  This makes cygwin
-      create symlinks differently, in a form that is understood both by it
-      and by Windows.  What it really does is make cygwin ln -s commands
-      produce the
-
-      *.lnk
-
-      shortcut files that windows knows how to understand.  This works for
-      windows and cygwin but not for emacsw32, which sees the .lnk
-      extension and can't figure out how to follow it.  I can add a couple
-      hacks in my .emacs files so that info from cygwin ls is used to
-      properly display the link, but again, emacs can't follow it.  Since
-      emacs couldn't follow the orignal cygwin link either, there's no
-      loss, and this is a small step forward.
-
-      o I added it to the windows system CYGWIN enviroment variable (which
-      also had nodosfilewarning in it, see [[turn off cygwin DOS warning]])
-
-      o But could also do it in .bashrc
-      export CYGWIN="nodosfilewarning winsymlinks"
-
-      From: http://blog.zzamboni.org/making-cygwin-windows-and-emacs-understand-th
-
-***** fix unable to remap to same address as parent
-      Showed up when I tried to do an svn checkout with an ssh tunnel.
-
-      The fix ([[http://www.mylifestartingup.com/2009/04/fatal-error-unable-to-remap-to-same.html][semi-complete inspiration]]):
-
-      1. kill all cygwin windows and procs (I just rebooted)
-      2. windows search for ash, then run as admin
-      3. /bin/rebaseall -v
-      4. reboot
-
-      There was a problem w/ some Temp file in my userdir not being
-      writeable.  To fix, I right clicked on the folder in windows explorer
-      and changed the owner from admin to me.  This was the same procedure
-      as for [[Windows .emacs.d problem]]
-
-*** Msys2
-
-    Alternative to cygwin, seems easier to install?
-
-    *Installation*
-
-    choco install msys2
+      choco install msys2
     
-    Add the following to END of the PATH environment variable:
+      Add the following to END of the PATH environment variable:
 
-    c:\tools\msys64\usr\bin
-    c:\tools\msys64\usr\local\bin
+      c:\tools\msys64\usr\bin
+      c:\tools\msys64\usr\local\bin
 
-    (choco inself adds c:\tools\msys64 , which allows you to start mingw64.exe
-    (put it at the end so that anaconda python, etc. is the default executable)
+      (choco inself adds c:\tools\msys64 , which allows you to start mingw64.exe
+      (put it at the end so that anaconda python, etc. is the default executable)
       
-    Install diff, etc. using msys2's package manager
+      Install diff, etc. using msys2's package manager
 
-    pacman -S base-devel
-    pacman -S unzip
+      pacman -S base-devel
+      pacman -S unzip
     
+***** <<WSL>>: Windows System Linux
+      This is about using Windows 10 with e.g. Ubuntu Bash
+******* Install wsl2
+        From: [[https://docs.microsoft.com/en-us/windows/wsl/install-win10][Windows Subsystem for Linux Installation Guide for Windows 10]]
+******* [[https://www.howtogeek.com/265900/everything-you-can-do-with-windows-10s-new-bash-shell/][Everything You Can Do With Windows 10’s New Bash Shell]]
+******* Emacs on WSL
+********* [[https://github.com/hubisan/emacs-wsl][hubisan/emacs-wsl: Install and run emacs with the Windows Subsystem]]
+********* [[https://utf9k.net/blog/emacs-wsl2-install/][Setting up Emacs inside of a WSL2 distribution]]
+********* <<Emacs 25 on Ubunto 16.10>> (what's available on LoW in May, 2017)
+          From: [[https://askubuntu.com/questions/851633/emacs-25-on-ubuntu-16-10][apt - Emacs 25 on Ubuntu 16.10? - Ask Ubuntu]]
+
+          sudo add-apt-repository ppa:kelleyk/emacs
+          sudo apt-get update
+          sudo apt-get install emacs25
+******* [[https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/][How to Run Graphical Linux Desktop Applications from Windows 10’s Bash Shell]]
+******* Running Linux window mgr. on windows, .bashrc for DISPLAY env var
+        From: [[http://www.zdnet.com/article/how-to-run-run-the-native-ubuntu-desktop-on-windows-10/][​How to run the native Ubuntu desktop on Windows 10 | ZDNet]]
+
+        Put in .bashrc so can run X-version of emacs
+      
+        echo "export DISPLAY=:0.0" >> ~/.bashrc
+
+******* how to run linux commands from windows: bash -c "ls"
+        From: [[https://www.howtogeek.com/262086/how-to-run-linux-commands-from-outside-the-bash-shell-on-windows-10/][How to Run Linux Commands From Outside the Bash Shell on Windows 10]]
+
+        bash -c "DISPLAY=:0 emacs"
+
+******* Shared Windows/WSL project folder
+********* WSL2 perf. penalty for Windows folders: [[https://docs.microsoft.com/en-us/windows/wsl/compare-versions][Comparing WSL 2 and WSL 1]]
+********* [[https://dev.to/vetswhocode/sharing-your-project-folder-with-windows-and-wsl-cg][Sharing your project folder with Windows and WSL (has perf. penalty?)]] 
+
+******* See also: [[Linux/Unix]]
+***** Cygwin
+      must install cygwin first, of course
+******* if install 64 bit, make symbolic link:  c:/cygwin64 --> c:/cygwin
+
+        cd c:/
+        mklink /D cygwin cygwin64
+
+******* mount drive letters (do this first)
+
+        In cygwin term:
+
+        mkdir /b; mount b: /b
+        mkdir /c; mount c: /c
+        mkdir /d; mount d: /d
+        mkdir /e; mount e: /e
+
+        and so on....
+
+        Some of this was already done by the installer.  To cd in cygwin:
+
+        $ cd c:
+
+        $ ls
+        $Recycle.Bin                 PerfLogs                   Windows
+        DRIVERS                      Program Files              cygwin
+        Documents and Settings       Program Files (x86)        hiberfil.sys
+        Dokumente und Einstellungen  ProgramData                msdia80.dll
+        IDE                          Programme                  pagefile.sys
+        ITMTranslation.txt           Recovery                   setup.log
+        Intel                        SWTOOLS                    spin
+        MSOCache                     System Volume Information
+        Novell                       Users
+
+        Can see this was done by installer.  Just after cygwin install,
+        go to cygwin window and type:
+
+        $ mount
+        C:/cygwin/bin on /usr/bin type ntfs (binary,auto)
+        C:/cygwin/lib on /usr/lib type ntfs (binary,auto)
+        C:/cygwin on / type ntfs (binary,auto)
+        B: on /cygdrive/b type ntfs (binary,posix=0,user,noumount,auto)
+        C: on /cygdrive/c type ntfs (binary,posix=0,user,noumount,auto)
+        I: on /cygdrive/i type ncfsd (binary,posix=0,user,noumount,auto)
+        J: on /cygdrive/j type ncfsd (binary,posix=0,user,noumount,auto)
+        K: on /cygdrive/k type ncfsd (binary,posix=0,user,noumount,auto)
+        N: on /cygdrive/n type ncfsd (binary,posix=0,user,noumount,auto)
+        Q: on /cygdrive/q type ncfsd (binary,posix=0,user,noumount,auto)
+        R: on /cygdrive/r type ncfsd (binary,posix=0,user,noumount,auto)
+
+        _However_ ls /c: and stuff doesn't work so need to run mount
+        commands above, after which it looks like this:
+
+        $ mount
+        C:/cygwin/bin on /usr/bin type ntfs (binary,auto)
+        C:/cygwin/lib on /usr/lib type ntfs (binary,auto)
+        C:/cygwin on / type ntfs (binary,auto)
+        B: on /b type ntfs (binary,user)
+        C: on /c type ntfs (binary,user)
+        I: on /i type ncfsd (binary,notexec,user)
+        J: on /j type ncfsd (binary,notexec,user)
+        K: on /k type ncfsd (binary,notexec,user)
+        N: on /n type ncfsd (binary,notexec,user)
+        Q: on /q type ncfsd (binary,notexec,user)
+        R: on /r type ncfsd (binary,notexec,user)
+
+******* windows path points to cygwin bins
+
+        Control Panel|System|Advanced|Environment Variables
+        set PATH to C:\cygwin\bin (can add others later, separated by ';')
+
+******* emacs points to windows home (do _after_ drive letter mount)
+
+        Control Panel|System|Advanced|Environment Variables
+        set user env var HOME to C:\Users\sotterson\home
+
+******* make cygwin homedir same as Windows homedir
+
+        *MAYBE THIS ISN'T NECESSARY ANYMORE*
+        (on windows8, setting HOME was enough)
+
+        on my 1st IWES laptop (necessary on others??)
+
+        edit /etc/passwd to point to /c/Users/sotterson/home
+
+        On my 2nd IWES laptop, it was already set up correctly i.e.
+
+        /etc/passwd was pointing to /home/sotterson
+
+        which seemed to do the right thing.  Maybe because I had the
+        HOME environment variable set?
+
+******* cygwin xterminal
+********* must install X11 (not installed by default)
+********* xterm
+
+          install term package
+          in cygwin term"
+          $ mkpasswd -l > /etc/passwd
+          $ mkgroup -l > /etc/group
+          $ /etc/postinstall/man.sh.done
+
+
+          Install Xming and start it (on my own laptop, I might have xwin32?)
+
+          Start xterm either like this:
+
+          $ xterm -display localhost:0
+
+          or by creating a desktop shortcut with this target (then clicking on
+          it)
+
+          C:\cygwin\bin\run.exe -p /usr/X11R6/bin xterm -display 127.0.0.1:0.0 -ls
+
+          Inside the xterm, start your X-based program (lyx, texmacs,...).  Emacs
+          still starts up in text mode, though... not sure why.
+
+********* rxvt (latest cygwin terminal might be as good as this one)
+********* [[http://c2.com/cgi/wiki%3FBetterCygwinTerminal][rxvt]] was nicer than cygwin window (but not better than xterm?)
+********* must install the package
+********* then rxvt is available on the windows menu, in native and x flavors
+********* mintty (or something like that) now default, better than rxvt?
+******* <<turn off cygwin DOS warning>>
+********* fix
+
+          set the Windows environment variable (System, not user):
+
+          CYGWIN=nodosfilewarning
+
+          Another CYGWIN fix to do: [[windows-understandable%20symlinks][windows-understandable symlinks]]
+
+********* See this warning when do ediff from emacs:
+
+          Cygwin warning which screws up emacs:
+
+          MS-DOS style path detected: c:\Users\SOTTER~1\AppData\Local\Temp\.emacs.gnu
+          Preferred POSIX equivalent is: /cygdrive/c/Users/SOTTER~1/AppData/Local/Temp/.emacs.gnu
+          CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+          Consult the user's guide for more details about POSIX paths:
+          http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+******* force cygwin to make <<windows-understandable symlinks>>
+
+        Add "winsymlinks" to CYGWIN environment variable.  This makes cygwin
+        create symlinks differently, in a form that is understood both by it
+        and by Windows.  What it really does is make cygwin ln -s commands
+        produce the
+
+        *.lnk
+
+        shortcut files that windows knows how to understand.  This works for
+        windows and cygwin but not for emacsw32, which sees the .lnk
+        extension and can't figure out how to follow it.  I can add a couple
+        hacks in my .emacs files so that info from cygwin ls is used to
+        properly display the link, but again, emacs can't follow it.  Since
+        emacs couldn't follow the orignal cygwin link either, there's no
+        loss, and this is a small step forward.
+
+        o I added it to the windows system CYGWIN enviroment variable (which
+        also had nodosfilewarning in it, see [[turn off cygwin DOS warning]])
+
+        o But could also do it in .bashrc
+        export CYGWIN="nodosfilewarning winsymlinks"
+
+        From: http://blog.zzamboni.org/making-cygwin-windows-and-emacs-understand-th
+
+******* fix unable to remap to same address as parent
+        Showed up when I tried to do an svn checkout with an ssh tunnel.
+
+        The fix ([[http://www.mylifestartingup.com/2009/04/fatal-error-unable-to-remap-to-same.html][semi-complete inspiration]]):
+
+        1. kill all cygwin windows and procs (I just rebooted)
+        2. windows search for ash, then run as admin
+        3. /bin/rebaseall -v
+        4. reboot
+
+        There was a problem w/ some Temp file in my userdir not being
+        writeable.  To fix, I right clicked on the folder in windows explorer
+        and changed the owner from admin to me.  This was the same procedure
+        as for [[Windows .emacs.d problem]]
 *** [[Windows Emacs]]
 *** <<Windows links>>
 ***** <<Windows symbolic links>>
@@ -3871,29 +3953,6 @@ The recommended one of the three possible ways to do it:
 
       And I was not able to set a path directly to the executable in its origional directory.  I don't understand why, because I was able to set a path to %HOME%\bin
 
-*** <<Linux on Windows>> (Windows 10 builtin)
-    This is about using Windows 10  Ubuntu Bash
-***** [[https://www.howtogeek.com/265900/everything-you-can-do-with-windows-10s-new-bash-shell/][Everything You Can Do With Windows 10’s New Bash Shell]]
-***** <<Emacs 25 on Ubunto 16.10>> (what's available on LoW in May, 2017)
-      From: [[https://askubuntu.com/questions/851633/emacs-25-on-ubuntu-16-10][apt - Emacs 25 on Ubuntu 16.10? - Ask Ubuntu]]
-
-      sudo add-apt-repository ppa:kelleyk/emacs
-      sudo apt-get update
-      sudo apt-get install emacs25
-***** [[https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/][How to Run Graphical Linux Desktop Applications from Windows 10’s Bash Shell]]
-***** Running Linux window mgr. on windows, .bashrc for DISPLAY env var
-      From: [[http://www.zdnet.com/article/how-to-run-run-the-native-ubuntu-desktop-on-windows-10/][​How to run the native Ubuntu desktop on Windows 10 | ZDNet]]
-
-      Put in .bashrc so can run X-version of emacs
-      
-      echo "export DISPLAY=:0.0" >> ~/.bashrc
-
-***** how to run linux commands from windows: bash -c "ls"
-      From: [[https://www.howtogeek.com/262086/how-to-run-linux-commands-from-outside-the-bash-shell-on-windows-10/][How to Run Linux Commands From Outside the Bash Shell on Windows 10]]
-
-      bash -c "DISPLAY=:0 emacs"
-
-***** See also: [[Linux/Unix]]
 *** OS and data partitions
 ***** [[http://www.zdnet.com/dont-move-your-windows-user-profiles-folder-to-another-drive-7000022142/?s_cid%3De064&ttag%3De064][Don't move your Windows user profiles folder to another drive]]
 *** Windows multi monitors, desktops and windows
@@ -8412,7 +8471,7 @@ The recommended one of the three possible ways to do it:
       - download from here
       - override install default: put it in c:\Anaconda to avoid [[https://github.com/ContinuumIO/anaconda-issues/issues/11594#issuecomment-582135204][long path issue]]
         - you have to install as admin
-      - after completion, make it writeable by non-admin:
+      - after completion, make it writeable by non-admin
         - go to c:\ProgramData\Anaconda3
         - change this directory's permission so I have full permissions
           - file explorer, right click on anaconda3
@@ -10636,11 +10695,16 @@ plt.show()
 ***** [[http://www.michaels-website.de/gedit-latex-plugin/][gedit-latex-plugin]] (not so useful)
 ***** [[http://ftp.math.utah.edu/pub//bibclean/][bibclean]]
 *** converting [[http://www.see-out.com/sandramau/bibpat.html][patent info to bibtex entries]] (google scholar also works)
-*** TODO <<Latex and Emacs>>
+*** <<Latex and Emacs>>
 ***** emacs [[https://www.emacswiki.org/emacs/LaTeXPreviewPane][latex-preview-pane]] is handy for finding org-mode export problems
 ***** Orgmode latex editing
 ******* =cdlatex= bindings, starting with =C-c {=
 ******* see also: [[org-ref]]
+***** smooth SVG equations in org mode
+      From: [[https://www.guilhermesalome.com/posts/making-emacs-look-good.html][Making Emacs Look Good]]
+
+
+      See the section: "Nice Looking LaTeX Equations in Org-Mode"
 ***** TODO Orgmode latex eporting
 
       Org-mode Latex export is HELL.  Lots of picky Latex crashes that are inconsistent with other exports, eg. the fact that you must escape any '#' in a URL for Latex, but if you do this, your html export URL will be wrong (you'll get a 404 error).
@@ -10664,6 +10728,8 @@ plt.show()
 ******* must have [[http://stackoverflow.com/questions/28474736/how-to-open-pdf-file-in-emacs][dvipdf or dvipdfm]] & gs installed
 ********* dvipdfm came was in texlive bin directory
 ********* gs (pkg ghostscript) came from cygwin (cygwin/bin should be in path)
+***** [[Mathpix Emacs Plugin: mathpix.el]]
+*** [[BibTex and Emacs]]
 *** [[Visualizing Bibliographies]]
 *** How to get a DOI for a paper: [[http://www.crossref.org/SimpleTextQuery][Simple Text Query Version 1.4.6]]
 
@@ -10671,6 +10737,12 @@ plt.show()
 *** [[Word Bibliography]]
 *** [[org-ref]]
 *** [[Jupyter notebooks as markdown, latex, etc....]]
+*** Writing latex math equations
+***** Mathpix: equations from screenshots
+******* [[https://mathpix.com/][Mathpix site]]
+******* [[https://mathpix.com/#pricing][Free: 50 snips/month or student; Pro: $5/mo]]
+******* <<Mathpix Emacs Plugin: mathpix.el>>
+********* [[https://github.com/jethrokuan/mathpix.el][jethrokuan/mathpix.el: Mathpix Emacs Plugin]]
 * <<Knowledge as Graphs>>
 *** Tree / Mindmaps
 ***** MindMeister
@@ -10699,6 +10771,12 @@ plt.show()
 ******* has [[https://www.mind-mapping.org/interoperability-of-mind-mapping-software/XMIND.php][decent file interchangeablity]]
 
 *** DAG / Concept maps
+***** <<Roam Research>>
+******* home: [[https://roamresearch.com/][Roam Research – A note taking tool for networked thought.]]
+******* [[org-roam]]: emacs clone of Roam
+******* Book: [[https://smile.amazon.com/How-Take-Smart-Notes-Nonfiction-ebook-dp-B06WVYW33Y/dp/B06WVYW33Y/ref=mt_kindle?_encoding=UTF8&me=&qid=][How to Take Smart Notes: One Simple Technique to Boost Writing]]
+******* [[Readwise]] service [[https://www.bsoundarya.com/part-iii-building-a-second-brain%E2%80%8A-%E2%80%8Ausing-notion-and-roam-research/][can]] sync Roam to [[Kindle]]
+***** [[https://nesslabs.com/roam-research-alternatives][Roam Research free, open source, and self-hosted alternatives]]
 ***** VUE
 ******* complete but ugly
 ******* paths are kind of interesting for display and presentation
@@ -10870,6 +10948,48 @@ plt.show()
 ***** emacs-clone: [[org-brain]]     
 ***** examples of use: [[https://thebrain.com/big-thinkers][TheBrain Big Thinkers]]
 *** <<Knowledge Graphs in Emacs>>
+***** <<org-roam>>: org-mode based, inspired by [[Roam Research]]
+******* [[https://github.com/org-roam][org-roam/org-roam: Rudimentary Roam replica with Org-mode]]
+******* might want to try [[Doom Emacs]] first
+******* main author: Jethrown Kuan
+********* blog:[[https://blog.jethro.dev/][Jethrow Kuan]]
+********* git: [[https://github.com/jethrokuan][jethrokuan (Jethro Kuan) · GitHub]]
+******* example: [[https://github.com/jethrokuan/braindump][JK's braindump]]: many org files, pdfs, 
+******* org-roam tutorials
+********* [[https://org-roam.readthedocs.io/en/master/][org-roam home]]
+********* [[https://blog.jethro.dev/posts/how_to_take_smart_notes_org/][How To Take Smart Notes With Org-mode]]
+********* [[https://rgoswami.me/posts/org-note-workflow/][An Orgmode Note Workflow]]
+******* <<org-roam on Windows>>
+********* [[https://org-roam.readthedocs.io/en/master/installation/][org-roam official install instructions]] mentions Windows
+********* [[https://www.reddit.com/r/emacs/comments/f97twk/using_orgroam_on_windows_10/][Using org-roam on windows 10 : emacs]] (messy)
+******* <<org-roam author migrated to Doom Emacs>>
+********* [[https://blog.jethro.dev/posts/migrating_to_doom_emacs/][Migrating to Doom Emacs]] (partly b/c emacs 27 has fancier isearch)
+********* also [[Doom Emacs]]
+******* has [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][bibtex interface]] to [[https://github.com/weirdNox/org-noter][org-noter]] pdf, etc. annotator (need Linux?)
+******* TRY things to think about before migrating to org-roam
+********* is it going to last?
+********* install Doom Emacs since [[org-roam author migrated to Doom Emacs]]
+********* install emacs 27 first, since org-roam likes it?
+*********** also doesn't require imagemagic anymore.  Does that make pdf-tools easier?
+********* .emacs --> .emacs.d (or init.el?) so comply w/ new, standard emacs setup
+********* get latex working on Windows 1st?
+********* install emacs+org-roam in [[WSL]] to avoid all the windows problems 
+*********** 1st thing would be to install wsl2, whenever that's available 
+*********** can I call emacs in wsl2 from windows?  Associate files, on taskbar, etc.?
+*********** could still have windows emacs for simpler workflows
+********* can I install everything needed for [[org-roam on Windows]]
+********* do I want to migrate comment out of energytop.org
+*********** would break current "everything in one place" that I have now in JabRef
+*********** would need to write a script to make individual .org note files for each bibtex entry
+*********** can I get the nice pdf-in-emacs thing in org-noter? 
+********* would 5k+ little org files be slower or faster than athat I have now? 
+********* can I tolerate the Drawer thing?
+********* is there a way to capture graphics and images?
+********* get info out of books?
+********* get info out of evernote?
+********* [[Copying out of Kindle book]]?  
+          Also, is [[Kindle]] easier/better than books, and do I want to be locked into it?
+********* Will this get a "what's related" feature like [[Evernote]] clipper has?
 ***** [[org-brain]]
 ***** Sacha Chau's elisp for making a goal concept map (code at end of [[http://pages.sachachua.com/evil-plans/][this page]])
 ***** [[org-diagram drawing with plantuml-babel.org]]
@@ -10954,6 +11074,15 @@ plt.show()
 ***** */space*: where I'll have to put temp files if I port RunRouter
 ***** [[https://itswiki.imm.dtu.dk/How_do_I.../Use_the_Cluster_Facilities][matlab mini howto]]
 ***** also see: [[R cluster computing]]
+* <<Evernote>>
+*** Syncing Evernote with external sources
+***** [[Readwise]]
+***** <<Instapaper>>
+
+      I'm not sure why you'd want to use this.  Seems like Evernote does everything it can and more.  Costs [[https://www.instapaper.com/premium][$30/yr]]
+
+******* syncs w/ Evenote using API ([[https://blog.instapaper.com/post/122859293691][Updated Evernote Integration]])
+******* can also [[https://ifttt.com/connect/instapaper/evernote][sync Evernote and Instaper using IFTTT]]
 * Kindle
 *** Exporting Kindle files to pdf
     See partial overview [[http://www.digitaltrends.com/mobile/how-to-convert-kindle-to-pdf/#!LpAlh][here]].
@@ -10982,7 +11111,7 @@ plt.show()
 
     o *Remove DRM*: download and run [[https://www.epubconverter.com/DownloadSoftware/download.aspx?type=ebook-removal-win][EpubSoft Ultimate DRM Remover]]
 ***** *Epub --> PDF*: download & run [[https://www.anicesoft.com/?s=EPUBCONV1][AniceSoft – EPUB Converter & EBook Converter]]
-*** Copying out of Kindle book
+*** <<Copying out of Kindle book>>
 
     Best seems to be copying from Kindle Cloud Reader, viewed in Chrome.
 
@@ -11003,4 +11132,7 @@ plt.show()
 ********* [[Copy from Kindle Bookmarklet]]
 ***** Copying from Kindle Reader (Desktop version)
       You can do it, but it always puts pastes a citation too.  I can't figure out how to get rid of that.
-      
+***** <<Readwise>> can sync Kindle and many other things to [[Evernote]] and [[Roam Research]] but costs [[https://readwise.io/pricing][$8/mo]].
+      Can sync: Amazon Kindle, Apple iBooks, Instapaper, Highly, Medium articles, audiobooks, "and more"
+******* [[https://readwise.io/][Readwise]] can sync Kindle 
+******* [[https://blog.readwise.io/use-readwise-to-automatically-export-highlights-to-evernote/][How to Automatically Export Your Kindle Highlights to Evernote]]
