@@ -5732,6 +5732,7 @@ sera
         a model simpler than the NN I used for IRPWIND final report.
 
 ********* [[cite:Bremnes06compQuantileWind][Bremnes 2006 compare quantile models wind]] (simplest)
+********* explains Epanechnikov kernel?  [[cite:Epanechnikov69nonParamMVdensEst][Epanechnikov 1969: Nonparm Dens Est]]
 ********* [[cite:Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest]]: my notes near eq. 9
 ********* [[cite:Dette08quantRgrsNonCross][Dette & Volgushev 2008: Non-cross quantile nonparam kernel]]
 
@@ -11485,7 +11486,7 @@ Erika
 ******* TODO [[file:energy.bib::Rossetti17frcstAdoptEarlyData][Rossetti et al. 2017: Forecasting Early Adopt Analysis Data]] (has data, like WPG)
 ******* TODO [[file:energy.bib::Jaakkola96cmprDiffsnMdlAdopt][Jaakkola 1996: Comparison Analysis Diffusion Models]]
 
-******* TODO [[cite:Fruchter03mktingModelsBassCnotes][Fruchter 2003: Marketing Models Course Notes: Bass Diff in Lect. 6]]
+******* DONE [[cite:Fruchter03mktingModelsBassCnotes][Fruchter 2003: Marketing Models Course Notes: Bass Diff in Lect. 6]]
 ******* TODO [[cite:Meade06reviewInnovDiffusionMdls][Meade & Islam 2006: Review Innov Diffusion Models (Bass-like)]]
 ******* [[file:energy.bib::Rogers83diffusInnovBk][Rogers 1983: Diffusion of Innovation Book]]
 ******* DONE [[file:energy.bib::Taherdoost18reviewTechAdopt][Taherdoost 2018 review tech accept models]]
@@ -11546,6 +11547,7 @@ Erika
 ********* [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
 ********* [[cite:Rodrigues19evDemandSpatRgrssn][Rodrigues et al. 2019: Estimation Electric Demand Spat Rgrssn]]
 ********* [[cite:Rodrigues19evAdoptSpatTemp][Rodrigues et al. 2019: Spatiotemporal EV Adopt]]
+********* Chargers: [[cite:Brueckmann19evAdoptSpatDemo][Brueckmann et al. 2019: Spatial Individual Characateristics EV adopt]]
 ********* TODO nonlin/timefade? :  [[cite:Graziano14pvAdoptNeighbors][Graziano & Gillingham 2014: Spatial PV adopt neighbors]]
 ********* TODO rings? :  [[cite:Graziano14pvAdoptNeighbors][Graziano & Gillingham 2014: Spatial PV adopt neighbors]]
 ********* also [[Spatial (social) influence for PV adoption]]
@@ -11567,6 +11569,7 @@ Erika
 ********* [[cite:Bunt19imaginariesNonSolarAdopt][Bunt 2019: PV non-adopters MSthesis]]
 ********* [[cite:Bernards18stochDistNtwkPlan_PhD][Bernards 2018: Stochastic Distribution Planning PhD Thesis]]
 ********* per-household varialbes for probable late adopters: [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
+********* [[cite:Brueckmann19evAdoptSpatDemo][Brueckmann et al. 2019: Spatial Individual Characateristics EV adopt]]
 ********* [[file:energy.bib::Moons15selfBrandPersEV][Moons & De 2015: Self Brand Personality Elec Cars]]
 ******* Multiple cars per household
 ********* cost-based multi car model: [[cite:Gavazza14][Gavazza et al. 2014: Quantitative Analysis Used Car]]
@@ -11678,6 +11681,7 @@ Erika
 ********* frac of clean car types that are all EV: [[cite:CARB17cleanCarMidRvw][CARB 2017: CA Adv. Clean Car Midterm Rvw]]
 ********* projected charging infra in time & space (NREL model): [[cite:CEC18plugInEVinfraProj][CEC 2018: California Plug Infra 2017-2025]]
 ********* self-reported charger choice & behavior: [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
+********* [[cite:Brueckmann19evAdoptSpatDemo][Brueckmann et al. 2019: Spatial Individual Characateristics EV adopt]]
 ********* also [[EV charging cost]]
 ********* also [[Load Profiles]]
 ******* External wide-range forecasts, mapped to smaller spatial regions
@@ -11793,6 +11797,11 @@ Brittany
 ********* also [[Data Sets for Technology Adoption]]
 ***** Electric heating adoption
 ******* [[cite:Bernards18stochDistNtwkPlan_PhD][Bernards 2018: Stochastic Distribution Planning PhD Thesis]]
+***** <<Double-S tech diffusion models>>
+      Popularized by the book [[cite:Moore99crossChasm][Moore & McKenna 1999: Crossing the Chasm Double S]]
+******* Double-S in energy
+********* DONE clean coal and wind: [[cite:PIK19EUenergySectorsD1.3][WUT et al. 2019: D1.3 Sect Anlys EU Clean Energy]]
+******* double S equations: [[https://www.evernote.com/l/AA0rOJVVzltIR70l2wb7o8bGYxi7ekLJh_A/][DE202010017888U1 - Moisture-adaptive vapor barrier, especially for use in the...]]
 ***** <<Bass Innovation Diffusion Models>>
 
       The [[file:energy.bib::Horowitz19ovrvwDERinterConnNREL][most common]] tech adoption model.
@@ -11863,6 +11872,7 @@ Brittany
       This must be important for long horizon forecasts
 
 ******* [[file:energy.bib::Edelenbosch18socTechLrnRate][Edelenbosch et al. 2018: Interaction Tech Adopt and Learn]]
+******* [[cite:PIK19EUenergySectorsD1.3][WUT et al. 2019: D1.3 Sectorial Analysis EU Clean Energy]]
 ******* also [[Technology Learning Rates]]
 ***** <<Data Sets for Technology Adoption>>
 ******* [[https://www.nber.org/hccta/][Comin: Historical Cross-Country Technology Adoption (HCCTA) Dataset]]
@@ -11921,6 +11931,7 @@ Brittany
 ***** TODO [[file:energy.bib::Schmidt19LCOelecStrgProj][Schmidt et al. 2019: Projecting Future LCOS storage]]
 ***** TODO [[file:energy.bib::Nykvist19bevPriceFrcst][Nykvist et al. 2019: Assessing BEV price forecast]]
 ***** [[file:energy.bib::Wiesenthal12enrgyTechLrnPolicy][Wiesenthal 2012: Technology Learn Rates Energy Policy]]
+***** [[cite:PIK19EUenergySectorsD1.3][WUT et al. 2019: D1.3 Sectorial Analysis EU Clean Energy]]
 ***** evernote [[Statistical Basis for Predicting Technological Progress][learning rate (tech)]]
 ***** [[Interaction: Technology Learning and Adoption Rates]]
 ***** Also: [[Technology Adoption Rates]]
@@ -13449,6 +13460,8 @@ optimization to be a generalization of linear programming.
    05/07/20  [[cite:Fruchter03mktingModelsBassCnotes][Fruchter 2003: Marketing Models Course Notes: Bass Diff in Lect. 6]]
              [[cite:Lilien13bassTechNoteMktEng][Lilien et al. 2013: Bass Model (how to est. Generalized Bass)]] 
    05/09/20  [[cite:Taylor15windPowQuantKern][Taylor & Jeon 2015: Forecasting cond KDE wind pow]]
+   05/09/20  [[cite:Epanechnikov69nonParamMVdensEst][Epanechnikov 1969: Non-param cond. density estimation]]
+             [[cite:PIK19EUenergySectorsD1.3][WUT et al. 2019: D1.3 Sect Anlys EU Clean Energy]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
