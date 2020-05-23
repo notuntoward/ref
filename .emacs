@@ -280,13 +280,14 @@ TODO: make this a general function."
 ;; * Operating System Interaction
 
 (defun sdo/find-exec(cmd_name &optional notFoundMsg)
-  "Finds path to executable 'cmd_name' and returns it."
-  (let (cmd_path nfmsg retpathstr)
+  "Finds path to executable 'cmd_name' and returns it, or nil if not found."
+  (let (cmd_path retpathstr)
          (setq cmd_path (executable-find cmd_name))
          (if (not cmd_path)
-             (if notFoundMsg
-                 (warn "%s not found. %s" cmd_name notFoundMsg)
-               (warn  "%s not found." cmd_name))
+             (progn (if notFoundMsg
+			(warn "%s not found. %s" cmd_name notFoundMsg)
+		      (warn  "%s not found." cmd_name))
+		    (setq retpathstr nil))
            (progn (message "found %s at: %s" cmd_name cmd_path)
                   (setq retpathstr cmd_path))))) ; there must be a better way...
 
@@ -1707,13 +1708,10 @@ _C-M-a_ change default action from list for this session
 ;;(use-package realgud-ipdb)
 
 (use-package realgud
-  :init (load-library "realgud") ; avoid M-x load-library on every startup
-  :commands (realgud:gdb
-             realgud:ipdb
-             realgud:pdb))
-
-
-(add-hook 'gud-mode-hook
+  :defer t
+  :config
+  (load-library "realgud") ; avoid M-x load-library on every startup
+  (add-hook 'gud-mode-hook
 	  '(lambda ()
              ;; conflicts w/ other home bindings...
 	     (local-set-key [home]   ; move to beginning of line, after prompt
@@ -1728,6 +1726,9 @@ _C-M-a_ change default action from list for this session
 			       (if (comint-after-pmark-p)
 				   (comint-next-input 1)
 				 (forward-line 1))))))
+  :commands (realgud:gdb
+             realgud:ipdb
+             realgud:pdb))
 
 ;; realgud author's color customizations:  I'm not sure I see a
 ;; difference, probably because of the ansi term thing I've never been
@@ -1882,7 +1883,10 @@ _C-M-a_ change default action from list for this session
 
 ;; To change the env to something no-hardcoded, run:
 ;; M-x conda-env-activate to activate
-(when (setq conda_exe (sdo/find-exec "conda" "Needed for most python packages"))
+
+(when (setq conda_exe (sdo/find-exec "thisIsNotThere" "Needed for most python packages"))
+
+  ;;(when (setq conda_exe (sdo/find-exec "conda" "Needed for most python packages"))
     (use-package conda
       :ensure t
       :config
