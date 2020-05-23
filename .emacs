@@ -1071,42 +1071,44 @@ _C-M-a_ change default action from list for this session
 ;; See demo: http://tuhdo.github.io/static/emacs-read-pdf.gif
 ;; Also used by org-roam (I think) and some latext stuff (I think)
 ;;
-;; On Windows, requires msys2 packages, as described here:
+;; Installation:
+;; pdf-tools requires libraries so it can build itself.
+;; On Windows, from msys2 mingw64:
 ;;  https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
-;; Must do steps 1,2, the melpa package install and then run step
-;;  (done in use-package call below.) 
-;; note: if this rebuilds, it will ask for msys2 dir: it's
-;; c:/tools/msys64
+;;  Must do steps 1,2, the melpa package install, and then run step 7,
+;;  which is actually done in use-package call below.
+;;  Note: if pdf-tools rebuilds, it will ask for the msys2 dir. It is:
+;;  c:/tools/msys64
+;;  check with M-x pdf-info-check-epdinfo
 
-;; use-package inspired by: http://pragmaticemacs.com/emacs/more-pdf-tools-tweaks/
-;;   and: http://pragmaticemacs.com/emacs/view-and-annotate-pdfs-in-emacs-with-pdf-tools/
+;; use-package call inspired by: http://pragmaticemacs.com/emacs/more-pdf-tools-tweaks/
+;; and: http://pragmaticemacs.com/emacs/view-and-annotate-pdfs-in-emacs-with-pdf-tools/
 (use-package pdf-tools
- :pin manual ;; avoid frequent updates so not rebuilding all the time
+  :pin manual ;; manual updates only, to avoid repeated install and rebuilding below
  :config
+ ;; Ensure correct mingw64 libraries:
+ ;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
+ (setenv "PATH" (concat "C:\\msys64\\mingw64\\bin;" (getenv "PATH")))
  ;; initialise
  (pdf-tools-install)
  ;; open pdfs scaled to fit page
  (setq-default pdf-view-display-size 'fit-page)
- ;; automatically annotate highlights: Nah, I don't like to type extra text
- ;; (setq pdf-annot-activate-created-annotations t)
- ;; use normal isearch
- (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
- ;; more fine-grained zooming (default is 25%)
- (setq pdf-view-resize-factor 1.1)
- ;; shorter keyboard shortcuts.  These act on text selected with mouse
- ;; instead of e.g. C-c C-a h to highlight
+ ;; (setq pdf-annot-activate-created-annotations t) ; require annotation text
+ (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward) ; normal isearch
+ (setq pdf-view-resize-factor 1.1)   ; default is 25%
+ ;; Shorter shortcuts than e.g. C-c C-a h. These =mouse= selection.
  (define-key pdf-view-mode-map (kbd "h") 'pdf-annot-add-highlight-markup-annotation)
  (define-key pdf-view-mode-map (kbd "t") 'pdf-annot-add-text-annotation)
  (define-key pdf-view-mode-map (kbd "u") 'pdf-annot-add-underline-markup-annotation)
  (define-key pdf-view-mode-map (kbd "D") 'pdf-annot-delete)
- ;; uniform navigation: can also use M-< and M-> as normal
- ;; Note: M-g l x is "go to page number x", as is M-g g (the normal <goto-line>)
- ;; history-back: B; history-forward: N
- ;; pdf-occur is nice, has same mapping as <occur>: M-s o
+ ;; Navigation: can also use M-< and M-> as normal
  (define-key pdf-view-mode-map (kbd "C-<home>") 'pdf-view-first-page)
  (define-key pdf-view-mode-map (kbd "C-<end>") 'pdf-view-last-page)
- ;; Grab rectangular images (equations, graphs) w/ M-mouse, then
- ;; C-c TAB or right-mouse & "create image"
+ ;; - M-g l x is "go to page number x", as is M-g g (the normal <goto-line>)
+ ;; - history-back: B; history-forward: N
+ ;; - pdf-occur is nice, has same mapping as <occur>: M-s o
+ ;; - Grab rectangular images (equations, graphs) w/ M-mouse, then
+ ;;    C-c TAB or right-mouse & "create image"
 )
 
 ;; ** Dired Mode
@@ -1739,7 +1741,6 @@ _C-M-a_ change default action from list for this session
   "Face used to render dark green color code."
   :group 'term)
 
-
 (defface term-color-cadetblue
   '((t :foreground "CadetBlue" :background "CadetBAlue"))
   "Face used to render dark cadet blue color code."
@@ -2073,6 +2074,7 @@ _C-M-a_ change default action from list for this session
   ;;       ein:pytools-set-figure-dpi',ein:pytools-set-matplotlib-parameter
   ;;       (https://github.com/millejoh/emacs-ipython-notebook/pull/627)
   ;;       maybe these two other calls work before %matplotlib inline is called?
+
   (use-package ein
     :ensure t
     :init
@@ -2394,6 +2396,40 @@ is already narrowed."
 ;; at least they work after I comment it out
 ;;(bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
  
+;; ** Org-roam
+
+;; progfoli's 1st config suggestion
+;; https://github.com/org-roam/org-roam/issues/682
+;;
+;; (use-package emacsql-sqlite3
+;;   :custom (emacsql-sqlite-executable-path "C:/ProgramData/chocolatey/bin/sqlite3.exe"))
+;;
+;; (use-package org-roam
+;;   :custom
+;;   (org-roam-directory "~/tmp/org-roam")
+;;   (org-roam-list-files-commands nil)
+;;   :config (org-roam-mode))
+
+;; my config, bugfixed version of:
+;; https://org-roam.readthedocs.io/en/master/installation/
+
+(sdo/find-exec "sqlite3" "Needed org-roam")
+(use-package emacsql-sqlite3)
+(use-package org-roam
+  :custom
+  (org-roam-directory "~/tmp/org-roam")
+  ;;(org-roam-list-files-commands '(rg find))
+  (org-roam-list-files-commands nil)
+  :config (org-roam-mode)
+  :bind (:map org-roam-mode-map
+              (("C-c n l" . org-roam)
+               ("C-c n f" . org-roam-find-file)
+               ("C-c n j" . org-roam-jump-to-index)
+               ("C-c n b" . org-roam-switch-to-buffer)
+               ("C-c n g" . org-roam-graph))
+              :map org-mode-map
+              (("C-c n i" . org-roam-insert))))
+
 ;; ** Org-noter
 
 ;; From: https://write.as/dani/notes-on-org-noter
@@ -2783,6 +2819,10 @@ This function avoids making messed up targets by exiting without doing anything 
 (global-set-key (kbd "C-c W") 'toggle-writing-tools)
 
 ;; ** Latex
+
+;; Note: while debugging, I uninstalled imagemagick (choco) and then reinstalled it on SB2.  But now magick .exe doesn't exist.
+;; Skip it for now.
+;;(sdo/find-exec "magick" "Imagemagick binary required by ein & latex preview")
 
 ;; Hack: (use-package auctex) doesn;t work because, "once installed, auctex overrides the tex package":
 ;; http://cachestocaches.com/2015/8/getting-started-use-package/
@@ -3309,7 +3349,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
