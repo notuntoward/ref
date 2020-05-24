@@ -1072,22 +1072,18 @@ _C-M-a_ change default action from list for this session
 ;; Also used by org-roam (I think) and some latext stuff (I think)
 ;;
 ;; Installation:
-;; pdf-tools requires libraries so it can build itself.
-;; On Windows, from msys2 mingw64:
-;;  https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
-;;  Must do steps 1,2, the melpa package install, and then run step 7,
-;;  which is actually done in use-package call below.
-;;  Note: if pdf-tools rebuilds, it will ask for the msys2 dir. It is:
-;;  c:/tools/msys64
-;;  check with M-x pdf-info-check-epdinfo
+;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
+;; pdf-tools requires libraries (msys2 on Windows) so it can build itself.
+;; On Windows, from msys2 will download the libraries itself if you answer it's "where is mysys2?" problem with: c:/tools/msys64
+;; You can check install with M-x pdf-info-check-epdinfo
 
-;; use-package call inspired by: http://pragmaticemacs.com/emacs/more-pdf-tools-tweaks/
-;; and: http://pragmaticemacs.com/emacs/view-and-annotate-pdfs-in-emacs-with-pdf-tools/
+;; pdf-tools use-package call inspired by: http://pragmaticemacs.com/emacs/more-pdf-tools-tweaks/
 (use-package pdf-tools
   :pin manual ;; manual updates only, to avoid repeated install and rebuilding below
  :config
- ;; Ensure correct mingw64 libraries:
+ ;; Ensure correct mingw64 libraries are sucked up:
  ;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
+ ;; TODO: make msys2 a variable, check for it earlier and warn if not there
  (setenv "PATH" (concat "C:\\msys64\\mingw64\\bin;" (getenv "PATH")))
  ;; initialise
  (pdf-tools-install)
@@ -1105,10 +1101,10 @@ _C-M-a_ change default action from list for this session
  (define-key pdf-view-mode-map (kbd "C-<home>") 'pdf-view-first-page)
  (define-key pdf-view-mode-map (kbd "C-<end>") 'pdf-view-last-page)
  ;; - M-g l x is "go to page number x", as is M-g g (the normal <goto-line>)
- ;; - history-back: B; history-forward: N
- ;; - pdf-occur is nice, has same mapping as <occur>: M-s o
- ;; - Grab rectangular images (equations, graphs) w/ M-mouse, then
- ;;    C-c TAB or right-mouse & "create image"
+;;  - history-back: B; history-forward: N
+;;  - pdf-occur is nice, has same mapping as <occur>: M-s o
+;;  - Grab rectangular images (equations, graphs) w/ M-mouse, then
+;;     C-c TAB or right-mouse & "create image"
 )
 
 ;; ** Dired Mode
@@ -2410,14 +2406,19 @@ is already narrowed."
 ;;   (org-roam-list-files-commands nil)
 ;;   :config (org-roam-mode))
 
+(sdo/find-exec "rg" "ripgrep needed org-roam and others")
+
 ;; my config, bugfixed version of:
 ;; https://org-roam.readthedocs.io/en/master/installation/
 
-(sdo/find-exec "sqlite3" "Needed org-roam")
+;; If using sqlite3 (only thing I could get working on Windows), then, as of 5/23/20, must edit org-roam-db.el and recompile every time it org-roam updates: https://org-roam.readthedocs.io/en/master/installation/
+(sdo/find-exec "sqlite3" "sqlite3 needed by org-roam")
 (use-package emacsql-sqlite3)
+
 (use-package org-roam
   :custom
   (org-roam-directory "~/tmp/org-roam")
+  ;; Note that Windows "find" interferes with linux find, so use rg isteads
   ;;(org-roam-list-files-commands '(rg find))
   (org-roam-list-files-commands nil)
   :config (org-roam-mode)
@@ -2431,19 +2432,19 @@ is already narrowed."
               (("C-c n i" . org-roam-insert))))
 
 ;; ** Org-noter
+;; For keybindings, rudimentary explanation: https://github.com/weirdNox/org-noter#keys
 
-;; From: https://write.as/dani/notes-on-org-noter
+;; org-noter config inspired by: https://write.as/dani/notes-on-org-noter
 (use-package org-noter
   :after org
-  :ensure t)
+  :after pdf-tools
+  :config (setq org-noter-default-notes-file-names '("org-noter-notes.org")
+                org-noter-notes-search-path '("~/tmp/org-noter")
+                ))
+;;                  org-noter-separate-notes-from-heading t))
 
-(use-package org-noter
-    :after org
-    :ensure t
-    :config (setq org-noter-default-notes-file-names '("notes.org")
-                  org-noter-notes-search-path '("~/org/Research-Notes")
-                  org-noter-separate-notes-from-heading t))
-
+;; coordinating org-noter with org-notes
+;; https://write.as/dani/notes-on-org-noter
 (defun org-ref-noter-at-point ()
       "Open the pdf for bibtex key under point if it exists."
       (interactive)
@@ -3308,6 +3309,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(org-modules
    (quote
     (ol-bibtex org-mouse ol-eshell ol-git-link ol-man org-bibtex org-info org-inlinetask org-mouse org-protocol org-choose)))
+ '(org-noter-auto-save-last-location t)
  '(org-occur-case-fold-search (quote (quote smart)))
  '(org-odd-levels-only t)
  '(org-outline-path-complete-in-steps nil)
@@ -3436,6 +3438,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(org-level-7 ((((class color) (background light)) (:foreground "black"))))
  '(org-level-8 ((((class color) (background light)) (:foreground "black"))))
  '(org-link ((t (:foreground "blue3"))))
+ '(org-roam-link ((t (:foreground "dark goldenrod"))))
  '(org-table ((t (:background "honeydew1" :foreground "gray0"))))
  '(org-tag ((nil (:foreground "dark green" :slant italic :weight bold))))
  '(org-target ((t (:foreground "dark slate blue" :weight bold))))
