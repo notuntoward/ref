@@ -1074,6 +1074,8 @@ _C-M-a_ change default action from list for this session
 ;; Installation:
 ;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
 ;; pdf-tools requires libraries (msys2 on Windows) so it can build itself.
+;;
+;;  FIRST INSTALL on fresh machine: the pdf-tools code below will crash .emacs (don't know why), so must comment it out, start emacs gain, the uncomment it to finish install.
 ;; On Windows, from msys2 will download the libraries itself if you answer it's "where is mysys2?" problem with: c:/tools/msys64
 ;; You can check install with M-x pdf-info-check-epdinfo
 
@@ -2393,6 +2395,7 @@ is already narrowed."
 ;;(bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
  
 ;; ** Org-roam
+;; As of 5/23/20, the best docs are in emacs info or here: https://org-roam.github.io/org-roam/manual/
 
 ;; progfoli's 1st config suggestion
 ;; https://github.com/org-roam/org-roam/issues/682
@@ -2407,6 +2410,7 @@ is already narrowed."
 ;;   :config (org-roam-mode))
 
 (sdo/find-exec "rg" "ripgrep needed org-roam and others")
+(sdo/find-exec "dot" "graphviz needed by org-roam")
 
 ;; my config, bugfixed version of:
 ;; https://org-roam.readthedocs.io/en/master/installation/
