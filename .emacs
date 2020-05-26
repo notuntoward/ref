@@ -1079,35 +1079,51 @@ _C-M-a_ change default action from list for this session
 ;; On Windows, from msys2 will download the libraries itself if you answer it's "where is mysys2?" problem with: c:/tools/msys64
 ;; You can check install with M-x pdf-info-check-epdinfo
 
-;; pdf-tools use-package call inspired by: http://pragmaticemacs.com/emacs/more-pdf-tools-tweaks/
-(use-package pdf-tools
-  :pin manual ;; manual updates only, to avoid repeated install and rebuilding below
- :config
- ;; Ensure correct mingw64 libraries are sucked up:
- ;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
- ;; TODO: make msys2 a variable, check for it earlier and warn if not there
- (setenv "PATH" (concat "C:\\msys64\\mingw64\\bin;" (getenv "PATH")))
- ;; initialise
- (pdf-tools-install)
- ;; open pdfs scaled to fit page
- (setq-default pdf-view-display-size 'fit-page)
- ;; (setq pdf-annot-activate-created-annotations t) ; require annotation text
- (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward) ; normal isearch
- (setq pdf-view-resize-factor 1.1)   ; default is 25%
- ;; Shorter shortcuts than e.g. C-c C-a h. These =mouse= selection.
- (define-key pdf-view-mode-map (kbd "h") 'pdf-annot-add-highlight-markup-annotation)
- (define-key pdf-view-mode-map (kbd "t") 'pdf-annot-add-text-annotation)
- (define-key pdf-view-mode-map (kbd "u") 'pdf-annot-add-underline-markup-annotation)
- (define-key pdf-view-mode-map (kbd "D") 'pdf-annot-delete)
- ;; Navigation: can also use M-< and M-> as normal
- (define-key pdf-view-mode-map (kbd "C-<home>") 'pdf-view-first-page)
- (define-key pdf-view-mode-map (kbd "C-<end>") 'pdf-view-last-page)
- ;; - M-g l x is "go to page number x", as is M-g g (the normal <goto-line>)
-;;  - history-back: B; history-forward: N
-;;  - pdf-occur is nice, has same mapping as <occur>: M-s o
-;;  - Grab rectangular images (equations, graphs) w/ M-mouse, then
-;;     C-c TAB or right-mouse & "create image"
-)
+;; pdf-tools use-package call inspired by:
+;; http://pragmaticemacs.com/emacs/more-pdf-tools-tweaks/
+
+(defun sdo/popdir (dir)
+  "like unix popd.  Return parent directory of dir"
+  (unless (equal "/" dir)
+    (file-name-directory (directory-file-name dir))))
+
+(if (setq pacbin (sdo/find-exec "pacman" "Need MSYS2 for pdf-tools & more"))
+    (progn
+      ;; C:\tools\msys64\mingw64\bin
+      (use-package pdf-tools
+        :pin manual ;; manual updates only, avoids repeated install & build
+        :config
+        ;; Ensure mingw64 libraries  on front of PATH, not other tools' libs
+        ;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
+        (setq msys2dir (sdo/popdir (sdo/popdir (sdo/popdir pacbin))))
+        (setq msys2libdir (expand-file-name "mingw64\\bin" msys2dir))
+        (setenv "PATH" (concat msys2libdir ";" (getenv "PATH")))
+        ;; initialise (will download and build msys2 libs too, I think)
+        (pdf-tools-install)
+        ;; open pdfs scaled to fit page
+        (setq-default pdf-view-display-size 'fit-page)
+        ;; (setq pdf-annot-activate-created-annotations t) ; for annotation text
+        (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+        (setq pdf-view-resize-factor 1.1)   ; default is 25%
+        ;; Shorter shortcuts than e.g. C-c C-a h. These Work on =mouse= sel.
+        (define-key pdf-view-mode-map (kbd "h")
+          'pdf-annot-add-highlight-markup-annotation)
+        (define-key pdf-view-mode-map (kbd "t")
+          'pdf-annot-add-text-annotation)
+        (define-key pdf-view-mode-map (kbd "u")
+          'pdf-annot-add-underline-markup-annotation)
+        (define-key pdf-view-mode-map (kbd "D")
+          'pdf-annot-delete)
+        ;; Navigation: can also use M-< and M-> like normal
+        (define-key pdf-view-mode-map (kbd "C-<home>") 'pdf-view-first-page)
+        (define-key pdf-view-mode-map (kbd "C-<end>") 'pdf-view-last-page)
+        ;; - M-g l x: is "go to page number x", also M-g g
+        ;; - B, N: history-back and history-forward
+        ;; - M-s o: pdf-occur is nice, has same mapping as <occur>
+        ;; - Copy rectangular images (equations, graphs):
+        ;;   select w/ M-mouse, then (C-c TAB) or (right-mouse & "create image")
+        ))
+  (message "Can't find msys2 not installed so skipping pdf-tools init"))
 
 ;; ** Dired Mode
 ;; *** Generic Dired and Win32 integration
@@ -1876,12 +1892,12 @@ _C-M-a_ change default action from list for this session
 
 ;; *** Python editing setup
 
-;; TODO: some of my calls to sdo/find-exec my no longer be necessary,
+;; TODO: some of my calls to sdo/find-exec may no longer be necessary,
 ;; as elpy now downloads its own python environement with some of
 ;; these already in it.  I should see which of these I can remove.
 
-;; To change the env to something no-hardcoded, run:
-;; M-x conda-env-activate to activate
+;; To activate a non-hardcoded env, run:
+;; M-x conda-env-activate
 
 (when (setq conda_exe (sdo/find-exec "thisIsNotThere" "Needed for most python packages"))
 
@@ -2257,6 +2273,28 @@ is already narrowed."
 (define-key ctl-x-map "n" #'narrow-or-widen-dwim)
 
 ;; * Org Mode
+;; ** Org-download
+
+;; From: https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
+(use-package org-download
+  :config
+  ;; add support to dired
+  (add-hook 'dired-mode-hook 'org-download-enable))
+
+;; make drag-and-drop image save in the same name folder as org file
+;; ex: `aa-bb-cc.org' then save image test.png to `aa-bb-cc/test.png'
+(defun org-download-method-dirname-from-orgfile (link)
+  (let ((filename
+         (file-name-nondirectory
+          (car (url-path-and-query
+                (url-generic-parse-url link)))))
+        (dirname (file-name-sans-extension (buffer-name)) ))
+    ;; if directory not exist, create it
+    (unless (file-exists-p dirname)
+      (make-directory dirname))
+    ;; return the path to save the download files
+    (expand-file-name filename dirname)))
+
 ;; ** Org Basic Config
 
 ;; TODO This sets frame width based on screen and char size.  Might help:
@@ -2298,7 +2336,12 @@ is already narrowed."
    '(("^ +\\(-\\) "
       (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "▬"))))
      ("^ +\\(*\\) "
-      (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "✤")))))))
+      (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "✤"))))))
+
+  ;; TODO get this to work
+  ;; could do setq-local for dir or file-specific dirname:
+  ;; https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
+  (setq org-download-method 'org-download-method-dirname-from-orgfile))
 
 ;; TODO org-bullets is obsolete:
 ;; https://github.com/integral-dw/org-bullets/commit/b98464165cfa1e41301bfe256a98eef1c264c57b
@@ -2397,34 +2440,29 @@ is already narrowed."
 ;; ** Org-roam
 ;; As of 5/23/20, the best docs are in emacs info or here: https://org-roam.github.io/org-roam/manual/
 
-;; progfoli's 1st config suggestion
-;; https://github.com/org-roam/org-roam/issues/682
-;;
-;; (use-package emacsql-sqlite3
-;;   :custom (emacsql-sqlite-executable-path "C:/ProgramData/chocolatey/bin/sqlite3.exe"))
-;;
-;; (use-package org-roam
-;;   :custom
-;;   (org-roam-directory "~/tmp/org-roam")
-;;   (org-roam-list-files-commands nil)
-;;   :config (org-roam-mode))
-
 (sdo/find-exec "rg" "ripgrep needed org-roam and others")
 (sdo/find-exec "dot" "graphviz needed by org-roam")
 
-;; my config, bugfixed version of:
-;; https://org-roam.readthedocs.io/en/master/installation/
+;; If using sqlite3 (only thing I could get working on Windows), then, as of 5/23/20, must edit org-roam-db.el and recompile every time it org-roam updates.  Instructions are:
+;; 1. In Emacs, install the emacsql-sqlite3 package
+;; 2. Modify org-roam-db.el:
+;;    - Replace (require 'emacsql-sqlite) with (require 'emacsql-sqlite3)
+;;    - Comment/deactivate the complete (defconst org-roam-db--sqlite-available-p ... )
+;;    -In (defun org-roam-db ..., replace emacsql-sqlite with emacsql-sqlite3
+;; 3. Compile org-roam-db.el (keep modified .el file in same dir too)
+;; From: https://org-roam.readthedocs.io/en/master/installation/
 
-;; If using sqlite3 (only thing I could get working on Windows), then, as of 5/23/20, must edit org-roam-db.el and recompile every time it org-roam updates: https://org-roam.readthedocs.io/en/master/installation/
 (sdo/find-exec "sqlite3" "sqlite3 needed by org-roam")
 (use-package emacsql-sqlite3)
 
+;; my config, bugfixed version of:
+;; https://org-roam.readthedocs.io/en/master/installation/
 (use-package org-roam
   :custom
   (org-roam-directory "~/tmp/org-roam")
   ;; Note that Windows "find" interferes with linux find, so use rg isteads
-  ;;(org-roam-list-files-commands '(rg find))
-  (org-roam-list-files-commands nil)
+  (org-roam-list-files-commands '(rg find))
+  ;;(org-roam-list-files-commands nil)
   :config (org-roam-mode)
   :bind (:map org-roam-mode-map
               (("C-c n l" . org-roam)
@@ -2472,6 +2510,9 @@ is already narrowed."
 (require 'org)
 
 ;; --- Hide org-mode dedicated targets -----------------------------------------
+;;
+;; TODO: Fix M-m link saving. It picks sometimes picks up a headline star and then puts it into the stored link (I think).  I'm noticing this in bad links to dedicated links sprinked around energytop.org.  I don't know if these wer made when I initially created the dedicated target; if it was when I typed M-m when on an already existing dedicated target, or if I somehow just pasted this in erroneously myself, which seems unlikely, since I've seen many.  Additionally, examples of this error that I can remember made the mistake on dedicated links that in top level headlines e.g. "* Headine" and not "*** Headline"
+;;
 ;; Hides the <<>> around dedicated targets; the face of the remaining visible text is set by customizing the face: org-target
 ;; Inspiration: https://emacs.stackexchange.com/questions/19230/how-to-hide-targets
 ;; but regexp there worked only for all :alnum: targets.  I tried to
@@ -2845,6 +2886,9 @@ This function avoids making messed up targets by exiting without doing anything 
 (use-package cdlatex
   :diminish org-cdlatex-mode
   :config (add-hook 'org-mode-hook 'turn-on-org-cdlatex))
+
+;; TODO: does this work? https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
+;; (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
 
 ;; ** Bibtex
 ;; SEE ALSO: org-ref
