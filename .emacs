@@ -2461,8 +2461,8 @@ is already narrowed."
   :custom
   (org-roam-directory "~/tmp/org-roam")
   ;; Note that Windows "find" interferes with linux find, so use rg isteads
-  (org-roam-list-files-commands '(rg find))
-  ;;(org-roam-list-files-commands nil)
+  ;; (org-roam-list-files-commands '(rg)) ;; can't display graphs
+  (org-roam-list-files-commands nil) ;; default uses elisp
   :config (org-roam-mode)
   :bind (:map org-roam-mode-map
               (("C-c n l" . org-roam)
@@ -2473,8 +2473,14 @@ is already narrowed."
               :map org-mode-map
               (("C-c n i" . org-roam-insert))))
 
+;; I don't know how to activate it like the github animated git showsa
+;; (use-package company-org-roam
+;; ;;  :straight (:host github :repo "org-roam/company-org-roam")
+;;   :config
+;;   (push 'company-org-roam company-backends))
+
 ;; ** Org-noter
-;; For keybindings, rudimentary explanation: https://github.com/weirdNox/org-noter#keys
+;; For keybindings, basic explanation: https://github.com/weirdNox/org-noter#keys
 
 ;; org-noter config inspired by: https://write.as/dani/notes-on-org-noter
 (use-package org-noter
