@@ -1067,21 +1067,20 @@ _C-M-a_ change default action from list for this session
 
 ;; * File Finding / Opening
 ;; ** pdf-tools
-;; Read and annotate pdfs.  
+;; Open and annotate pdfs.  
 ;; See demo: http://tuhdo.github.io/static/emacs-read-pdf.gif
-;; Also used by org-roam (I think) and some latext stuff (I think)
+;; Also used by org-roam (I think) and some latex stuff (I think)
 ;;
 ;; Installation:
 ;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
 ;; pdf-tools requires libraries (msys2 on Windows) so it can build itself.
 ;;
-;;  FIRST INSTALL on fresh machine: the pdf-tools code below will crash .emacs (don't know why), so must comment it out, start emacs gain, the uncomment it to finish install.
-;; On Windows, from msys2 will download the libraries itself if you answer it's "where is mysys2?" problem with: c:/tools/msys64
+;;  FIRST INSTALL on fresh machine: On Windows, from msys2 will download the libraries itself if you answer it's "where is mysys2?" problem with: c:/tools/msys64
 ;; You can check install with M-x pdf-info-check-epdinfo
-
+;;
 ;; pdf-tools use-package call inspired by:
 ;; http://pragmaticemacs.com/emacs/more-pdf-tools-tweaks/
-
+;;
 (defun sdo/popdir (dir)
   "like unix popd.  Return parent directory of dir"
   (unless (equal "/" dir)
@@ -2461,8 +2460,8 @@ is already narrowed."
   :custom
   (org-roam-directory "~/tmp/org-roam")
   ;; Note that Windows "find" interferes with linux find, so use rg isteads
-  ;; (org-roam-list-files-commands '(rg)) ;; can't display graphs
-  (org-roam-list-files-commands nil) ;; default uses elisp
+  ;; (org-roam-list-files-commands '(rg)) ;; can't display graph
+  (org-roam-list-files-commands nil) ;; default is elisp, works on Windows
   :config (org-roam-mode)
   :bind (:map org-roam-mode-map
               (("C-c n l" . org-roam)
