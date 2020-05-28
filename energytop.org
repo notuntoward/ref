@@ -4627,8 +4627,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                            
 
 ***** TODO Splines
       <<Splines>>
-******* Spline Tutorials
-        <<Spline Tutorials>>
+******* <<Spline Tutorials>>
 ********* [[file:energy.bib::Racine12rgrsnSplnPrim][Racine 2012]] regression splines
 ********* [[file:energy.bib::McDowell04polyDistLag][McDowell 2004: From]] (polynomial distributed lag models)
 ********* [[http://www.cs.mtu.edu/~shene/COURSES/cs3621/NOTES/spline/B-spline/de-Boor.html][Explanation of DeBoor's]] spline construction algorithm
@@ -4905,10 +4904,46 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                            
 ******* if parallel models
 ******* seems like they manually switch sources
 *** Also [[State Change Detection]]
-* <<Clustering for prediction>>
-*** clustering across farms, ramps: [[file:energy.bib::Guptay07symbDynFiltPatternRecog][Zoeller 2007: Pattern Recognition]] ?
-*** Ramps are "calculated" in [[file:energy.bib::Makarov08windMitigateBPA][Makarov 2008: Mitigating Operational Impacts]] w/ "swinging door"
-*** [[file:energy.bib::Jain10datClust50km][Jain 2010: Data]] clustering: 50 yrs beyond kmeans (award winning review)
+* <<Clustering>>
+*** [[file:energy.bib::Jain10datClust50km][Jain 2010: Data]] clustering: 50 yrs beyond kmeans (awaord winning review)
+*** <<DBSCAN>>
+***** [[cite:Wikipedia20dbscan][Wikipedia 2020: DBSCAN]]
+***** DBSCAN is [[cite:Wikipedia20dbscan][related]] to [[Spectral clustering]]
+*** <<Number of clusters determination>>
+***** [[cite:Sarkar2019clustMetBetterThanElbow][Sarkar 2019: Clustering Metrics Better than Elbow]]: python, Silhouette good
+***** [[cite:Kingrani18numClustDivers][Kingrani et al. 2018: Estimating nClust Diversity]] (Silhouette like Elbow?)
+***** [[http://www.mathworks.com/help/stats/evalclusters.html?refresh%3Dtrue][Matlab evalclusters]] function
+***** [[file:energy.bib::Sanguinetti05numSpectClust][Sanguinetti et al. 2005: Automatic Determination Number]]
+***** [[http://www.cs.cmu.edu/~rgangadh/rashmi_eamt20.pdf][Automatic Determination of Number of clusters for creating templates in Example-Based Machine Translation]]
+***** stopping criterion: how many regimes: [[file:energy.bib::Vasko02estNumSegsPerm][Vasko & Toivonen 2002: Estimating number of]]
+***** 2004 class notes: [[http://www.bx.psu.edu/old/courses/bx-fall04/How_Many_Clusters.pdf][Methods to determine the number of clusters in a data set]]
+***** time series correlation stopping criterion: [[http://www.ucgis.org/summer03/studentpapers/shinglin.pdf][Optimization of Cluster Analysis Using Autocorrelation]]
+***** [[file:energy.bib::Xiaoyan08spectClustSelfAdapt][Xiaoyan et al. 2008]] self adapt spectral clust
+***** [[file:energy.bib::Milligan85numClust][Milligan & Cooper 1985]] (classic, highly cited)
+***** [[file:energy.bib::Tran03knnDensClust][Tran et al. 2003: Knn]] dens clust (auto #clusts)
+***** [[file:energy.bib::Tran06knnDensClustHiDim][Tran et al. 2006: KNN]] kernel dens clust, high dim, auto #clusts
+***** [[http://dl.acm.org/citation.cfm?id%3D1298945][Spectral clustering with eigenvector selection]]
+***** (2002) [[http://genomebiology.com/2002/3/7/research/0036/][A prediction-based resampling method for estimating the number of clusters in a dataset]]
+***** Methods compared, some insights.  Slides (2007?): [[http://pami.uwaterloo.ca/groups/ras/PAMI_presentation.pdf][Finding the Number of Clusters in a Dataset:  A Review and Simulation Study]]
+******* gap methods are generally good
+***** Markov blanket idea?  [[file:energy.bib::Zheng11featSelHimDimMI][Zheng & Kwoh 2011: Feature Subset Selection]]
+***** [[file:energy.bib::Maier10clustNhbds][Maier 2010: Clustering]] KNN-Rnn spectral clustering, # clusters
+***** [[file:energy.bib::Volkovich11resampClustModSel][Volkovich et al. 2011: Resampling]] clust model sel, has adjacency mat paper
+***** Wikipedia: [[http://en.wikipedia.org/wiki/Determining_the_number_of_clusters_in_a_data_set][Determining the number of clusters in a data set]]
+***** [[http://www.visionbib.com/bibliography/pattern620.html][14.2.8 Detecting Clusters and Number of Clusters]]
+***** Would [[Intrinsic dimension]] help?
+***** Would this help?: [[file:energy.bib::Strehl03clustEnsCombine][Strehl & Ghosh 2003: Cluster]] ensembles, combining
+***** Gap statistics
+
+      Classic method (2001), highly cited, compares favorably in the
+      slides mentioned in the previous bullet (2007).
+
+******* Original paper: [[file:energy.bib::Tibshirani01numClustGap][Tibshirani et al. 2001: Estimating]] (gap statistic)
+******* [[http://onlinelibrary.wiley.com/doi/10.1111/j.1541-0420.2007.00784.x/full][Determining the Number of Clusters Using the Weighted Gap Statistic]]
+***** Information-theoretic # of cluster determination
+******* 2004, highly cited in 2011: [[file:energy.bib::Still04numClustInfo][Still & Bialek 2004: How Many Clusters]] (information-theoretic)
+******* Robust information-theoretic clustering (2007, not so higly cited): [[http://dl.acm.org/citation.cfm?id%3D1297334][RIC: Parameter-free noise-robust clustering]]
+***** see also [[Stopping Criteria]]
 *** <<Time series clustering>>
 ***** Time Series Clustering Reviews
 ******* [[file:energy.bib::Aghabozorgi15tsClustDecRvw][Aghabozorgi et al. 2015: Time Series Clustering Decade Review]]
@@ -4945,12 +4980,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                            
 ******* also [[Autoencoder Time Series Clustering]]
 ******* also [[Clustering for prediction]]
 ******* also [[Load Profiles]]
-*** [[Time delay estimation]] (for inter-turbine wind lag)
-***** use kNN MI across turbine pair lag sets, like clustering in [[file:energy.bib::Stogbauer04leastDepMutInfo][Stoegbauer et al. 2004: Least dependent component]]
-***** clusters lags: [[file:energy.bib::Puma-Villanueva07predWrapSelClust][Puma-Villanueva et al. 2007: Long term time]]
-***** lag clustering for hour ahead forecasting: [[file:energy.bib::Schlueter86windArrayPred][Schlueter et al. 1986: Wind Array Power]]
-***** [[Partial Mutual Information Estimation]] parses out lags
-*** Spectral clustering
+*** <<Spectral clustering>>
 ***** [[file:speakerClust.bib::ng01specClust][Ng et al. 2001: Spectral Clustering]]
 ***** [[file:energy.bib::Watt13specClustIntroBlog][Watt 2013]] tutorial, spectral clust (Blog)
 ***** [[file:energy.bib::VonLuxburg07specClustTut][Luxburg 2007]]: spect clust tutorial, likes asymm. Laplace
@@ -4975,6 +5005,8 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                            
 ******* [[file:energy.bib::Li16loadProfileClustMultiRes][Li et al. 2016: Multi Resolution Load Profile Clust GMM]]
 ******* [[http://www.anibalarias.name/docs/eupsi.pdf][Unsupervised Signal Segmentation Based On Temporal Spectral Clustering]]
 ******* also [[Time series clustering]]
+***** [[DBSCAN]] is [[cite:Wikipedia20dbscan][related]] to [[Spectral clustering]]
+*** Clustering & kriging: [[http://www.ucgis.org/summer03/studentpapers/shinglin.pdf][Optimization of Cluster Analysis Using Autocorrelatio]]n
 *** MDS/GTM clustering
 ***** [[file:energy.bib::Aflalo13SpecMDS][Aflalo & Kimmel 2013: Spectral]] MDS few coeffs, high dim, clust
 ***** [[file:energy.bib::Bae10dimRedMDSinterp][Bae et al. 2010: Dimension]] red interp and GTM clust
@@ -5008,87 +5040,64 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                            
 ***** [[file:energy.bib::Witten13ClusterElasticNet][Witten et al. 2013: Cluster Elastic Net]] (group lasso(
 ***** [[file:energy.bib::Buehlmann13corrRgrsnClustGlasso][Buehlmann et al. 2013: Correlated]] (group lasso(
 ***** see [[lasso feature selection]]
-*** <<Number of clusters determination>>
-***** [[http://www.mathworks.com/help/stats/evalclusters.html?refresh%3Dtrue][Matlab evalclusters]] function
-***** [[file:energy.bib::Sanguinetti05numSpectClust][Sanguinetti et al. 2005: Automatic Determination Number]]
-***** [[http://www.cs.cmu.edu/~rgangadh/rashmi_eamt20.pdf][Automatic Determination of Number of clusters for creating templates in Example-Based Machine Translation]]
-***** stopping criterion: how many regimes: [[file:energy.bib::Vasko02estNumSegsPerm][Vasko & Toivonen 2002: Estimating number of]]
-***** 2004 class notes: [[http://www.bx.psu.edu/old/courses/bx-fall04/How_Many_Clusters.pdf][Methods to determine the number of clusters in a data set]]
-***** time series correlation stopping criterion: [[http://www.ucgis.org/summer03/studentpapers/shinglin.pdf][Optimization of Cluster Analysis Using Autocorrelation]]
-***** [[file:energy.bib::Xiaoyan08spectClustSelfAdapt][Xiaoyan et al. 2008]] self adapt spectral clust
-***** [[file:energy.bib::Milligan85numClust][Milligan & Cooper 1985]] (classic, highly cited)
-***** [[file:energy.bib::Tran03knnDensClust][Tran et al. 2003: Knn]] dens clust (auto #clusts)
-***** [[file:energy.bib::Tran06knnDensClustHiDim][Tran et al. 2006: KNN]] kernel dens clust, high dim, auto #clusts
-***** [[http://dl.acm.org/citation.cfm?id%3D1298945][Spectral clustering with eigenvector selection]]
-***** (2002) [[http://genomebiology.com/2002/3/7/research/0036/][A prediction-based resampling method for estimating the number of clusters in a dataset]]
-***** Methods compared, some insights.  Slides (2007?): [[http://pami.uwaterloo.ca/groups/ras/PAMI_presentation.pdf][Finding the Number of Clusters in a Dataset:  A Review and Simulation Study]]
-******* gap methods are generally good
-***** Markov blanket idea?  [[file:energy.bib::Zheng11featSelHimDimMI][Zheng & Kwoh 2011: Feature Subset Selection]]
-***** [[file:energy.bib::Maier10clustNhbds][Maier 2010: Clustering]] KNN-Rnn spectral clustering, # clusters
-***** [[file:energy.bib::Volkovich11resampClustModSel][Volkovich et al. 2011: Resampling]] clust model sel, has adjacency mat paper
-***** Wikipedia: [[http://en.wikipedia.org/wiki/Determining_the_number_of_clusters_in_a_data_set][Determining the number of clusters in a data set]]
-***** [[http://www.visionbib.com/bibliography/pattern620.html][14.2.8 Detecting Clusters and Number of Clusters]]
-***** Would [[Intrinsic dimension]] help?
-***** Would this help?: [[file:energy.bib::Strehl03clustEnsCombine][Strehl & Ghosh 2003: Cluster]] ensembles, combining
-***** Gap statistics
+*** <<Clustering for prediction>>
+***** clustering across farms, ramps: [[file:energy.bib::Guptay07symbDynFiltPatternRecog][Zoeller 2007: Pattern Recognition]] ?
+***** Ramps are "calculated" in [[file:energy.bib::Makarov08windMitigateBPA][Makarov 2008: Mitigating Operational Impacts]] w/ "swinging door"
+***** [[Time delay estimation]] (for inter-turbine wind lag)
+******* use kNN MI across turbine pair lag sets, like clustering in [[file:energy.bib::Stogbauer04leastDepMutInfo][Stoegbauer et al. 2004: Least dependent component]]
+******* clusters lags: [[file:energy.bib::Puma-Villanueva07predWrapSelClust][Puma-Villanueva et al. 2007: Long term time]]
+******* lag clustering for hour ahead forecasting: [[file:energy.bib::Schlueter86windArrayPred][Schlueter et al. 1986: Wind Array Power]]
+******* [[Partial Mutual Information Estimation]] parses out lags
+***** <<Clustering of regression models>>
 
-      Classic method (2001), highly cited, compares favorably in the
-      slides mentioned in the previous bullet (2007).
+      /Should be merged with [[Mixtures of regressors]]/
 
-******* Original paper: [[file:energy.bib::Tibshirani01numClustGap][Tibshirani et al. 2001: Estimating]] (gap statistic)
-******* [[http://onlinelibrary.wiley.com/doi/10.1111/j.1541-0420.2007.00784.x/full][Determining the Number of Clusters Using the Weighted Gap Statistic]]
-***** Information-theoretic # of cluster determination
-******* 2004, highly cited in 2011: [[file:energy.bib::Still04numClustInfo][Still & Bialek 2004: How Many Clusters]] (information-theoretic)
-******* Robust information-theoretic clustering (2007, not so higly cited): [[http://dl.acm.org/citation.cfm?id%3D1297334][RIC: Parameter-free noise-robust clustering]]
-***** see also [[Stopping Criteria]]
-*** <<Clustering of regression models>>
-
-    /Should be merged with [[Mixtures of regressors]]/
-
-***** [[file:energy.bib::Shi08curvePredClustGaussProcMix][Shi & Wang 2008: Curve prediction and]]
-***** ARIMA model clustering: [[file:energy.bib::Kalpakis01distClustARIMA][Kalpakis et al. 2001: Distance measures for]]
-***** clustered NN's by regime: [[file:energy.bib::Puma-Villanueva07predWrapSelClust][Puma-Villanueva et al. 2007: Long term time]]
-***** periodic waveform clustering, like a regime clusterer: [[file:energy.bib::Vlachos06structPeriodicMeas][Vlachos et al. 2006: Structural Periodic Measures]]
-***** [[file:energy.bib::Qin06clustRgrsnGene][Qin & Self 2006]] regrsn clust (linear model, in R)
-***** [[file:energy.bib::Qin07rgrsnClustVSkmeans][Qin & Self 2007: K]] kmeans vs. B-spline basis clust & others, in R
-***** [[file:energy.bib::Qin14geneRgrsnClustTime][Qin et al. 2014: Finding]] gene clust (kmeans vs. B-spline basis clust & others, in R)
-***** [[file:energy.bib::Kun14windIntrvlClustSOM][Kun & Jihong 2014: Wind SOM BP]]
-***** [[http://www.eio.uva.es/~langel/software/tclustReg.r][tclustReg.R]]:  R Code for robust clusterwise regression through trimming *([[http://www.eio.uva.es/~langel/software/][web page]])
-***** [[http://www.deti.ufc.br/~guilherme/PAPERS/tspsom.pdf][Time series prediction with the self-organizing map: A review]] (2007)
-***** [[file:energy.bib::Zhang03RgrsnClust][Zhang 2003: Regression]] clustering
-***** [[http://www.ncss.com/software/ncss/clustering-in-ncss/#Regression][Regression exchange algorithm]] (proprietary software manual, uses [[file:energy.bib::Spaeth86ClustLinRgrsnLED][Spaeth 1986: Clusterwise]])
-***** [[file:energy.bib::Bocharov13tseriesClustGeom][Bocharov & Thiesson 2013: Segmentation Nonstationary Time]] Time series regression model clustering
-***** [[file:energy.bib::Hennig99clustLinRgrsn][Hennig 1999: Models Methods Clusterwise Linear Regression]]
-***** [[file:energy.bib::Hennig00clustLinRgrsnID][Hennig 2000: Identifiablity]] of clustwise lin Rgrsn (it's hard)
-***** [[file:energy.bib::Tipping99MixProbPCA][Tipping & Bishop 1999: Mixtures]] of prob PCA
-***** [[file:energy.bib::FerrariTrecate02pcsWiseLR][Ferrari-Trecate & Muselli 2002: New Learning Method]] pcswise LR
-***** [[file:energy.bib::FerrariTrecate03clustPcwsAffine][Ferrari-Trecate et al. 2003]] piecewise affine clust
-***** [[file:energy.bib::AriasCastro13specClustLocPCA][Arias-Castro et al. 2013: Spectral PCA]] (local PCA curve clustering)
-***** [[file:energy.bib::Vasak05ClustPcwsAffineThrot][Vasak et al. 2005: Clustering]] affine regions
-***** [[file:energy.bib::Haralick07clustLinManLMCLUST][Haralick & Harpaz 2007: Linear]] Manifold clust (LMCLUST, has R)
-***** [[file:energy.bib::Spaeth86ClustLinRgrsnLED][Spaeth 1986: Clusterwise]] linear regression LED (has fortran)
-***** [[file:energy.bib::Qian11linRgrssnClustNclust][Qian & Wu 2011: Estimation Selection Regression Clustering]] (nclust too)
-***** [[file:energy.bib::Jonk95axiomLineClust][Jonk & Smeulders 1995]] line clust hierarchical, rot/offset
-***** [[file:energy.bib::Staedler10mixRgrsnL1pen][Staedler et al. 2010]] L1 mixture regression
-***** [[file:energy.bib::Luo08mixLasso][Luo et al. 2008: Mixture Regression Shrinkage]]
-***** [[file:energy.bib::Meng06gradientNNensAgg][Meng & An 2006: Aggregating Regressive Estimators]]
-***** [[file:energy.bib::Yang14knnClustPowCurv][Yang et al. 2014: Clustering Method Its]] KNN dir pow curve
-***** [[file:energy.bib::Pinson13windPowFrcstOpDec][Pinson & others 2013: Wind]] frcst oper: forecast /correlated/ stuff??
-******* But my EERA-DTOC work said lower error if distant (uncorrelated)
-***** TODO [[file:energy.bib::Kano13virtSensLocPLA][Kano & Fujiwara 2013: Virtual]] (local PLS regression, I think)
-***** TODO [[file:energy.bib::Tondel11locLinClustPLS][Toendel et al. 2011: Hierarchical Cluster Partial]] PLSR loc lin clust
-***** [[file:energy.bib::Tian13localPLSvoiceMap][Tian et al. 2013: Local]] KNN-PLS voice mapping
-***** See: [[Mixtures of regressors]]
-***** See: [[regime clustering]]
-***** See: [[Local Linear Regression]]
-***** See: [[Continuous Output Boosting]]
-***** Application: [[Forecast aggregation]]
-***** Application: [[Regime Learning]]
-***** Application: [[Portfolio Optimization and Forecasting]]
-***** also [[Clustering for prediction]]
-*** Clustering & kriging: [[http://www.ucgis.org/summer03/studentpapers/shinglin.pdf][Optimization of Cluster Analysis Using Autocorrelatio]]n
-*** [[http://www.cs.man.ac.uk/~neill/fgplvm/][Fast GP-LVM]], handles uncertain inputs, dynamics, clustering
-*** Using information-theoretic distances
+******* [[file:energy.bib::Shi08curvePredClustGaussProcMix][Shi & Wang 2008: Curve prediction and]]
+******* ARIMA model clustering: [[file:energy.bib::Kalpakis01distClustARIMA][Kalpakis et al. 2001: Distance measures for]]
+******* clustered NN's by regime: [[file:energy.bib::Puma-Villanueva07predWrapSelClust][Puma-Villanueva et al. 2007: Long term time]]
+******* periodic waveform clustering, like a regime clusterer: [[file:energy.bib::Vlachos06structPeriodicMeas][Vlachos et al. 2006: Structural Periodic Measures]]
+******* [[file:energy.bib::Qin06clustRgrsnGene][Qin & Self 2006]] regrsn clust (linear model, in R)
+******* [[file:energy.bib::Qin07rgrsnClustVSkmeans][Qin & Self 2007: K]] kmeans vs. B-spline basis clust & others, in R
+******* [[file:energy.bib::Qin14geneRgrsnClustTime][Qin et al. 2014: Finding]] gene clust (kmeans vs. B-spline basis clust & others, in R)
+******* [[file:energy.bib::Kun14windIntrvlClustSOM][Kun & Jihong 2014: Wind SOM BP]]
+******* [[http://www.eio.uva.es/~langel/software/tclustReg.r][tclustReg.R]]:  R Code for robust clusterwise regression through trimming *([[http://www.eio.uva.es/~langel/software/][web page]])
+******* [[http://www.deti.ufc.br/~guilherme/PAPERS/tspsom.pdf][Time series prediction with the self-organizing map: A review]] (2007)
+******* [[file:energy.bib::Zhang03RgrsnClust][Zhang 2003: Regression]] clustering
+******* [[http://www.ncss.com/software/ncss/clustering-in-ncss/#Regression][Regression exchange algorithm]] (proprietary software manual, uses [[file:energy.bib::Spaeth86ClustLinRgrsnLED][Spaeth 1986: Clusterwise]])
+******* [[file:energy.bib::Bocharov13tseriesClustGeom][Bocharov & Thiesson 2013: Segmentation Nonstationary Time]] Time series regression model clustering
+******* [[file:energy.bib::Hennig99clustLinRgrsn][Hennig 1999: Models Methods Clusterwise Linear Regression]]
+******* [[file:energy.bib::Hennig00clustLinRgrsnID][Hennig 2000: Identifiablity]] of clustwise lin Rgrsn (it's hard)
+******* [[file:energy.bib::Tipping99MixProbPCA][Tipping & Bishop 1999: Mixtures]] of prob PCA
+******* [[file:energy.bib::FerrariTrecate02pcsWiseLR][Ferrari-Trecate & Muselli 2002: New Learning Method]] pcswise LR
+******* [[file:energy.bib::FerrariTrecate03clustPcwsAffine][Ferrari-Trecate et al. 2003]] piecewise affine clust
+******* [[file:energy.bib::AriasCastro13specClustLocPCA][Arias-Castro et al. 2013: Spectral PCA]] (local PCA curve clustering)
+******* [[file:energy.bib::Vasak05ClustPcwsAffineThrot][Vasak et al. 2005: Clustering]] affine regions
+******* [[file:energy.bib::Haralick07clustLinManLMCLUST][Haralick & Harpaz 2007: Linear]] Manifold clust (LMCLUST, has R)
+******* [[file:energy.bib::Spaeth86ClustLinRgrsnLED][Spaeth 1986: Clusterwise]] linear regression LED (has fortran)
+******* [[file:energy.bib::Qian11linRgrssnClustNclust][Qian & Wu 2011: Estimation Selection Regression Clustering]] (nclust too)
+******* [[file:energy.bib::Jonk95axiomLineClust][Jonk & Smeulders 1995]] line clust hierarchical, rot/offset
+******* [[file:energy.bib::Staedler10mixRgrsnL1pen][Staedler et al. 2010]] L1 mixture regression
+******* [[file:energy.bib::Luo08mixLasso][Luo et al. 2008: Mixture Regression Shrinkage]]
+******* [[file:energy.bib::Meng06gradientNNensAgg][Meng & An 2006: Aggregating Regressive Estimators]]
+******* [[file:energy.bib::Yang14knnClustPowCurv][Yang et al. 2014: Clustering Method Its]] KNN dir pow curve
+******* [[file:energy.bib::Pinson13windPowFrcstOpDec][Pinson & others 2013: Wind]] frcst oper: forecast /correlated/ stuff??
+********* But my EERA-DTOC work said lower error if distant (uncorrelated)
+******* TODO [[file:energy.bib::Kano13virtSensLocPLA][Kano & Fujiwara 2013: Virtual]] (local PLS regression, I think)
+******* TODO [[file:energy.bib::Tondel11locLinClustPLS][Toendel et al. 2011: Hierarchical Cluster Partial]] PLSR loc lin clust
+******* [[file:energy.bib::Tian13localPLSvoiceMap][Tian et al. 2013: Local]] KNN-PLS voice mapping
+******* See: [[Mixtures of regressors]]
+******* See: [[regime clustering]]
+******* See: [[Local Linear Regression]]
+******* See: [[Continuous Output Boosting]]
+******* Application: [[Forecast aggregation]]
+******* Application: [[Regime Learning]]
+******* Application: [[Portfolio Optimization and Forecasting]]
+******* also [[Clustering for prediction]]
+***** [[http://www.cs.man.ac.uk/~neill/fgplvm/][Fast GP-LVM]], handles uncertain inputs, dynamics, clustering
+***** For partitioning into "regimes" to be modeled: See [[regime clustering]]
+***** also see [[Generic change point detection]]
+***** also see [[Aggregation vs. Forecasting Accuracy]]
+*** Clustering with information-theoretic distances
 ***** mutual information: hierarchical, agglomerative:
 ******* [[file:energy.bib::Kraskov05HierClustMutInfo][Kraskov et al. 2005: Hierarchical clustering using mutual information]]
 ******* [[file:energy.bib::Stogbauer04leastDepMutInfo][Stoegbauer et al. 2004: Least dependent component]]
@@ -5103,12 +5112,10 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                            
 ******* o/w end up with redundant features.
 ******* need to do Markov Blanket trick or use one of the other feat sel tricks in bib1
 *** [[http://www.google.de/search?rlz%3D1C1CHFX_en-GBDE446DE446&aq%3Df&gcx%3Dc&sourceid%3Dchrome&ie%3DUTF-8&q%3Dsemi%2Bsupervised%2Bclustering][Semi-supervised clustering]]
-*** For partitioning into "regimes" to be modeled: See [[regime clustering]]
-*** also see [[Generic change point detection]]
-*** also see [[Aggregation vs. Forecasting Accuracy]]
-*** R clustering packages
-***** [[http://wiki.math.yorku.ca/index.php/R:_Cluster_analysis][tons of them]]
-***** quick [[http://research.stowers-institute.org/efg/R/Visualization/cor-cluster/index.htm][demo]]
+*** Clustering Software
+***** R clustering packages
+******* [[http://wiki.math.yorku.ca/index.php/R:_Cluster_analysis][tons of them]]
+******* quick [[http://research.stowers-institute.org/efg/R/Visualization/cor-cluster/index.htm][demo]]
 * <<Adaptive Training / Updating>>
 *** TODO there are a ton of "adaptive" thinks in energytop.bib. Reference them here.
 *** Kalman filter training of Neural Nets
@@ -11802,6 +11809,15 @@ Brittany
 ******* Double-S in energy
 ********* DONE clean coal and wind: [[cite:PIK19EUenergySectorsD1.3][WUT et al. 2019: D1.3 Sect Anlys EU Clean Energy]]
 ******* double S equations: [[https://www.evernote.com/l/AA0rOJVVzltIR70l2wb7o8bGYxi7ekLJh_A/][DE202010017888U1 - Moisture-adaptive vapor barrier, especially for use in the...]]
+******* also [[Gompertz tech diffusion models]]
+******* also [[Bass Innovation Diffusion Models]]
+***** <<Gompertz tech diffusion models>>
+
+      Gompertz a combo of [[Bass Innovation Diffusion Models]] for initial sales and logistic models for replacements.  Has a less steep slope than Bass?
+
+******* [[cite:Kaldasch15prodLifeCycDur][Kaldasch 2015: Product Life Cycle Gompertz]]
+******* also [[Bass Innovation Diffusion Models]]
+******* also [[Double-S tech diffusion models]]
 ***** <<Bass Innovation Diffusion Models>>
 
       The [[file:energy.bib::Horowitz19ovrvwDERinterConnNREL][most common]] tech adoption model.
@@ -11837,6 +11853,8 @@ Brittany
 ******* TODO [[https://about.bnef.com/electric-vehicle-outlook/][Electric Vehicle Outlook 2019 | Bloomberg NEF]] (uses Bass)
 ******* [[cite:Lee17techFrcstDiffnReplace][Lee & Huh 2017: Technology adopt frcst diffusion with replacement]]
 ******* [[cite:Zhao18resPriceEvoImpBass][Zhao et al. 2018: Renewable Improved Bass Wind]]
+******* also [[Gompertz tech diffusion models]]
+******* also [[Double-S tech diffusion models]]
 ***** <<Logistic Regression Based Tech Adoption>>
 ******* [[file:energy.bib::Almeida08openTechInvoDevCntries][Almeida & Fernandes 2008: Openness Adopt Dev Countries]] 
 ******* [[cite:Bjoerner05dynMdlCarOwn][Bjoerner & Leth-Petersen 2005: Dynamic Models Car Ownership]]
@@ -13460,8 +13478,11 @@ optimization to be a generalization of linear programming.
    05/07/20  [[cite:Fruchter03mktingModelsBassCnotes][Fruchter 2003: Marketing Models Course Notes: Bass Diff in Lect. 6]]
              [[cite:Lilien13bassTechNoteMktEng][Lilien et al. 2013: Bass Model (how to est. Generalized Bass)]] 
    05/09/20  [[cite:Taylor15windPowQuantKern][Taylor & Jeon 2015: Forecasting cond KDE wind pow]]
-   05/09/20  [[cite:Epanechnikov69nonParamMVdensEst][Epanechnikov 1969: Non-param cond. density estimation]]
+             [[cite:Epanechnikov69nonParamMVdensEst][Epanechnikov 1969: Non-param cond. density estimation]]
              [[cite:PIK19EUenergySectorsD1.3][WUT et al. 2019: D1.3 Sect Anlys EU Clean Energy]]
+   05/25/20  [[cite:Sarkar2019clustMetBetterThanElbow][Sarkar 2019: Clustering Metrics Better than Elbow]] (python)
+             [[cite:Kingrani18numClustDivers][Kingrani et al. 2018: Estimating nClust Diversity]]
+
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
