@@ -475,6 +475,23 @@ TODO: make this a general function."
 
 ;; ** File System Search
 
+;; File search w/ nice interface, better than standard emacs lgrep, I think
+;; Alternative mentioned by deadgrep author is ivy-rg, for incremental results:
+;; https://www.reddit.com/r/emacs/comments/8x57ck/deadgrep_fast_friendly_searching_with_ripgrep_and/
+(if (sdo/find-exec "rg" "ripgrep needed org-roam and others")
+    ;; deadgrep bindings: https://github.com/Wilfred/deadgrep
+    (use-package deadgrep
+      :bind ("<f5>" . deadgrep)
+      :config
+      ;; start search in current working dir:
+      ;; https://github.com/Wilfred/deadgrep/issues/14
+      (defun wh/return-default-dir ()
+        default-directory)
+      (setq deadgrep-project-root-function #'wh/return-default-dir)
+      (global-set-key [f5] 'lgrep)))
+
+
+
 (use-package ag
   :after counsel
   :config
@@ -1090,7 +1107,7 @@ _C-M-a_ change default action from list for this session
     (progn
       ;; C:\tools\msys64\mingw64\bin
       (use-package pdf-tools
-        :pin manual ;; manual updates only, avoids repeated install & build
+;;        :pin manual ;; manual updates only, avoids repeated install & build
         :config
         ;; Ensure mingw64 libraries  on front of PATH, not other tools' libs
         ;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
@@ -1551,7 +1568,8 @@ _C-M-a_ change default action from list for this session
 ;;   (setq igrep-options "-i") ; -n is default for igrep
 ;;   (global-set-key [f5] 'igrep)
 ;;   (global-set-key [f6] 'igrep-find))
-(global-set-key [f5] 'lgrep)
+;; deadgrep if ripgrep installed, else 'lgrep (see above)
+;; (global-set-key [f5] 'lgrep)
 (global-set-key [f6] 'rgrep)
 (global-set-key [f7] 'clear-buffer)
 (global-set-key [f8] 'compile)
@@ -2439,7 +2457,6 @@ is already narrowed."
 ;; ** Org-roam
 ;; As of 5/23/20, the best docs are in emacs info or here: https://org-roam.github.io/org-roam/manual/
 
-(sdo/find-exec "rg" "ripgrep needed org-roam and others")
 (sdo/find-exec "dot" "graphviz needed by org-roam")
 
 ;; If using sqlite3 (only thing I could get working on Windows), then, as of 5/23/20, must edit org-roam-db.el and recompile every time it org-roam updates.  Instructions are:
@@ -2459,8 +2476,9 @@ is already narrowed."
 (use-package org-roam
   :custom
   (org-roam-directory "~/tmp/org-roam")
-  ;; Note that Windows "find" interferes with linux find, so use rg isteads
-  ;; (org-roam-list-files-commands '(rg)) ;; can't display graph
+  ;; Note that Windows "find" interferes with linux find, so use rg instead
+  ;; HOWEVER, the rg interface breaks the graph, as of 5/29/20
+  ;;(org-roam-list-files-commands '(rg)) ;; can't display graph
   (org-roam-list-files-commands nil) ;; default is elisp, works on Windows
   :config (org-roam-mode)
   :bind (:map org-roam-mode-map
@@ -2480,7 +2498,7 @@ is already narrowed."
 
 ;; ** Org-noter
 ;; For keybindings, basic explanation: https://github.com/weirdNox/org-noter#keys
-
+;;
 ;; org-noter config inspired by: https://write.as/dani/notes-on-org-noter
 (use-package org-noter
   :after org
@@ -3404,7 +3422,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (deadgrep emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
