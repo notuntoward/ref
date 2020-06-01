@@ -475,22 +475,68 @@ TODO: make this a general function."
 
 ;; ** File System Search
 
+;; *** deadgrep
+
+;; I'm using counsel-rg instead of this, or maybe helm-rg.
+;;
+;; HOWEVER deadgrep is kinda good for searching my huge papers .pdf dir
+;;
 ;; File search w/ nice interface, better than standard emacs lgrep, I think
 ;; Alternative mentioned by deadgrep author is ivy-rg, for incremental results:
 ;; https://www.reddit.com/r/emacs/comments/8x57ck/deadgrep_fast_friendly_searching_with_ripgrep_and/
-(if (sdo/find-exec "rg" "ripgrep needed org-roam and others")
+(if (setq rg_exe (sdo/find-exec "rg" "ripgrep needed org-roam and others"))
     ;; deadgrep bindings: https://github.com/Wilfred/deadgrep
     (use-package deadgrep
-      :bind ("<f5>" . deadgrep)
+;;      :bind ("<f5>" . deadgrep)
       :config
       ;; start search in current working dir:
       ;; https://github.com/Wilfred/deadgrep/issues/14
       (defun wh/return-default-dir ()
         default-directory)
-      (setq deadgrep-project-root-function #'wh/return-default-dir)
-      (global-set-key [f5] 'lgrep)))
+      (setq deadgrep-project-root-function #'wh/return-default-dir)))
+
+;; *** counsel-ag
+;; nice swiper like completion.  helm-rg might/might not be better
+(if rg_exe
+    (global-set-key [f5] 'counsel-rg)
+  (global-set-key [f5] 'lgrep))
+
+;; *** helm-rg
+;; Can't get this to work.  There are no search results, no matter what I type
+;; (use-package helm-rg
+;;   :bind
+;;   (("C-c r" . helm-rg)))
+
+;; *** Deft
+
+;; starter config from: https://github.com/TimPerry/.emacs.d/blob/master/init.el
+(use-package deft
+  :config  (setq deft-extensions '("txt" "tex" "org" ""))
+  (setq deft-directory "~/tmp/braindump-master/org")
+  :bind ("<f6>" . deft))
 
 
+;; ;; deft is Used by org-roam author
+;; ;; https://blog.jethro.dev/posts/zettelkasten_with_org/
+;; ;; and others from org-roam searching.
+;; ;; From: https://rgoswami.me/posts/org-note-workflow/#search
+;; (use-package deft
+;;   :commands deft
+;;   :init
+;;   (setq deft-default-extension "org"
+;;         ;; de-couples filename and note title:
+;;         deft-use-filename-as-title nil
+;;         deft-use-filter-string-for-filename t
+;;         ;; disable auto-save
+;;         deft-auto-save-interval -1.0
+;;         ;; converts the filter string into a readable file-name using kebab-case:
+;;         deft-file-naming-rules
+;;         '((noslash . "-")
+;;           (nospace . "-")
+;;           (case-fn . downcase)))
+;;   :config
+;;   (add-to-list 'deft-extensions "tex")
+;;   )
 
 (use-package ag
   :after counsel
@@ -1568,7 +1614,7 @@ _C-M-a_ change default action from list for this session
 ;;   (setq igrep-options "-i") ; -n is default for igrep
 ;;   (global-set-key [f5] 'igrep)
 ;;   (global-set-key [f6] 'igrep-find))
-;; deadgrep if ripgrep installed, else 'lgrep (see above)
+;; deadgrep, counsel-rg, etc. if ripgrep installed, else 'lgrep (see above)
 ;; (global-set-key [f5] 'lgrep)
 (global-set-key [f6] 'rgrep)
 (global-set-key [f7] 'clear-buffer)
@@ -2317,6 +2363,8 @@ is already narrowed."
 ;; TODO This sets frame width based on screen and char size.  Might help:
 ;; https://gitlab.msu.edu/joshia/celta-vm-home-config/commit/f34b238c7a7eb5da2130b1a337e83f5940f086ae?w=1
 
+;; TODO: experiment with C-c C-x C-b or M-x org-tree-to-indirect-buffer
+
 (use-package org
   :ensure org-plus-contrib ; fewer clean install errors, still must restart 3X
   :pin org
@@ -2371,6 +2419,18 @@ is already narrowed."
   :config
   (setq org-bullets-bullet-list
         '("●" "●" "￭" "￭" "￮" "￮" "▪" "▪" "▸" "▸" "•" "•")))
+
+;; From: https://emacs.stackexchange.com/a/41705/14273
+(defun org-fold-outer ()
+  ;; Fold org-headline that the cursor is inside of
+  (interactive)
+  (beginning-of-line)
+  (if (string-match "^*+" (thing-at-point 'line t))
+      (outline-up-heading 1))
+  (outline-hide-subtree))
+(define-key org-mode-map (kbd "C-c u") 'org-fold-outer)
+;; painful
+;;(define-key org-mode-map (kbd "C-c <C-tab>") 'org-fold-outer)
 
 (use-package org-autolist ; new - or -[ ] w/ return
   :after org
@@ -2475,7 +2535,8 @@ is already narrowed."
 ;; https://org-roam.readthedocs.io/en/master/installation/
 (use-package org-roam
   :custom
-  (org-roam-directory "~/tmp/org-roam")
+;;  (org-roam-directory "~/tmp/org-roam")
+  (org-roam-directory "~/tmp/braindump-master/org")
   ;; Note that Windows "find" interferes with linux find, so use rg instead
   ;; HOWEVER, the rg interface breaks the graph, as of 5/29/20
   ;;(org-roam-list-files-commands '(rg)) ;; can't display graph
@@ -2497,7 +2558,9 @@ is already narrowed."
 ;;   (push 'company-org-roam company-backends))
 
 ;; ** Org-noter
-;; For keybindings, basic explanation: https://github.com/weirdNox/org-noter#keys
+;; Keybindings, basic explanation: https://github.com/weirdNox/org-noter#keys
+;;
+;; Workflow w/ org-noter, org-roam org-roam-bibtex and org-ref.  Also plans for org-journal: https://rgoswami.me/posts/org-note-workflow/
 ;;
 ;; org-noter config inspired by: https://write.as/dani/notes-on-org-noter
 (use-package org-noter
@@ -2529,6 +2592,9 @@ is already narrowed."
 (setq org-ref-notes-function #'org-ref-notes-function-one-file)
 
 
+;; ** Org-rifle
+;; Search org-mode file(s) and get results and their place in the org-mode tree hierarchy
+;; TODO: Try it: https://github.com/alphapapa/org-rifle
 ;; ** Org Mode Dedicated Targets
 (require 'org)
 
@@ -2772,6 +2838,21 @@ This function avoids making messed up targets by exiting without doing anything 
     :defer
     :config
     (require 'ox-pandoc)))
+
+;; ** Org and Zotero
+
+;; For Zotero add-in "zutilo"  Conflicts/same-as zotxt?
+;; https://orgmode-exocortex.com/2020/05/13/linking-to-zotero-items-and-collections-from-org-mode/
+(org-link-set-parameters "zotero" :follow
+                         (lambda (zpath)
+                           (browse-url
+                            ;; we get the "zotero:"-less url, so we put it back.
+                            (format "zotero:%s" zpath))))
+
+;; For Zotero add-in "zotxt"  Conflicts/same-as zutilo?
+;; https://github.com/egh/zotxt-emacs
+;; Zotero links in org-mode, connects to org-noter
+(use-package zotxt)
 
 ;; * Writing Tools
 ;; ** General Editing
@@ -3381,6 +3462,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
    (quote
     (ol-bibtex org-mouse ol-eshell ol-git-link ol-man org-bibtex org-info org-inlinetask org-mouse org-protocol org-choose)))
  '(org-noter-auto-save-last-location t)
+ '(org-noter-doc-property-in-notes t)
  '(org-occur-case-fold-search (quote (quote smart)))
  '(org-odd-levels-only t)
  '(org-outline-path-complete-in-steps nil)
@@ -3422,7 +3504,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (deadgrep emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (deft zotxt zotxt-emacs deadgrep emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
