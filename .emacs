@@ -870,9 +870,10 @@ _C-M-a_ change default action from list for this session
   (setq ido-enable-flex-matching t)
   (setq ido-use-faces nil))
 
-;; I also have a hydra set up to do counsel bindings but ido-describe-bindings is here because it also shows unicode chars (that I don't know how to activate with my keyboard, but at least they're there...)
-(use-package ido-describe-bindings
-  :config (global-set-key (kbd "C-h b") 'ido-describe-bindings))
+;; This disappeard from melpa, and I gues I'm not using it anyway
+;; ;; I also have a hydra set up to do counsel bindings but ido-describe-bindings is here because it also shows unicode chars (that I don't know how to activate with my keyboard, but at least they're there...)
+;; (use-package ido-describe-bindings
+;;   :config (global-set-key (kbd "C-h b") 'ido-describe-bindings))
 
 ;; ido- matching for emacs commands: https://www.reddit.com/r/emacs/comments/1xnhws/speaking_of_emacs_modes_flx_flxido_ido_smex_helm/?st=iu1g56lu&sh=554484fb
 (use-package smex
@@ -1138,8 +1139,8 @@ _C-M-a_ change default action from list for this session
 ;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
 ;; pdf-tools requires libraries (msys2 on Windows) so it can build itself.
 ;;
-;;  FIRST INSTALL on fresh machine: On Windows, from msys2 will download the libraries itself if you answer it's "where is mysys2?" problem with: c:/tools/msys64
-;; You can check install with M-x pdf-info-check-epdinfo
+;; FIRST INSTALL on fresh machine: On Windows, msys2 will download the libraries itself if you answer it's "where is mysys2?" question with: c:/tools/msys64
+;; You can check the install with M-x pdf-info-check-epdinfo
 ;;
 ;; pdf-tools use-package call inspired by:
 ;; http://pragmaticemacs.com/emacs/more-pdf-tools-tweaks/
@@ -1605,6 +1606,14 @@ _C-M-a_ change default action from list for this session
 		(rx (group (zero-or-more (syntax whitespace))) "=") 1 1 ))
 
 ;; ** function key assignments
+
+;; Emacs binding conventions: https://www.emacswiki.org/emacs/ChoosingKeysToBind
+;; M-x describe-personal-keybindings to see what keys you have bound, although this is only keys you've bound in use-package.
+;;
+;; See what keys are unbound. To see what's left on e.g. C-c type 'p'
+;; and then the chars "C-c". Don't type the keycombo "C-c"
+(use-package free-keys)
+
 (global-set-key [f1] 'revert-buffer)
 (global-set-key [f2] 'vc-dir)
 (global-set-key [f3] 'ediff-files)
@@ -2501,7 +2510,10 @@ is already narrowed."
         bibtex-autokey-titleword-length 5)
   ;; Make org-ref cite: link folded in emacs.  Messes up Latex export:
   ;; https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
-  (org-link-set-parameters "cite" :display nil)
+  ;;  (org-link-set-parameters "cite" :display nil)
+  ;; Improvement, or at least more explicity setting from:
+  ;; https://org-roam.discourse.group/t/customize-display-of-cite-links/129/19
+  (org-link-set-parameters "cite" :display 'org-link)
   ;; Make the 'cite:' link type available when C-c l on a bibtex entry
   ;; https://github.com/jkitchin/org-ref/issues/345
   (let ((lnk (assoc "bibtex" org-link-parameters)))
@@ -2539,8 +2551,8 @@ is already narrowed."
   (org-roam-directory "~/tmp/braindump-master/org")
   ;; Note that Windows "find" interferes with linux find, so use rg instead
   ;; HOWEVER, the rg interface breaks the graph, as of 5/29/20
-  ;;(org-roam-list-files-commands '(rg)) ;; can't display graph
-  (org-roam-list-files-commands nil) ;; default is elisp, works on Windows
+  (org-roam-list-files-commands '(rg)) ;; use ripgrip, expand emacs to see graph
+  ;;(org-roam-list-files-commands nil) ;; elisp default, but rg now works on Windows
   :config (org-roam-mode)
   :bind (:map org-roam-mode-map
               (("C-c n l" . org-roam)
@@ -2551,7 +2563,7 @@ is already narrowed."
               :map org-mode-map
               (("C-c n i" . org-roam-insert))))
 
-;; I don't know how to activate it like the github animated git showsa
+;; I don't know how to activate it like the github animated git shows
 ;; (use-package company-org-roam
 ;; ;;  :straight (:host github :repo "org-roam/company-org-roam")
 ;;   :config
@@ -2851,7 +2863,7 @@ This function avoids making messed up targets by exiting without doing anything 
 
 ;; For Zotero add-in "zotxt"  Conflicts/same-as zutilo?
 ;; https://github.com/egh/zotxt-emacs
-;; Zotero links in org-mode, connects to org-noter
+;; Pastes biblio summary of Zotero entries in org-mode, connects to org-noter
 (use-package zotxt)
 
 ;; * Writing Tools
