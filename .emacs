@@ -2483,6 +2483,24 @@ is already narrowed."
 ;;All git links https://orgmode.org/worg/org-contrib/org-git-link.html
 ;;(if (sdo/find-exec "git") (add-to-list 'org-modules 'org-git-link))
 
+;; ** Org-rifle
+;; Search org-mode file(s) and get results and their place in the org-mode tree hierarchy
+;; TODO: Try it: https://github.com/alphapapa/org-rifle
+;; ** Org and Zotero
+
+;; For Zotero add-in "zutilo"  Conflicts/same-as zotxt?
+;; https://orgmode-exocortex.com/2020/05/13/linking-to-zotero-items-and-collections-from-org-mode/
+(org-link-set-parameters "zotero" :follow
+                         (lambda (zpath)
+                           (browse-url
+                            ;; we get the "zotero:"-less url, so we put it back.
+                            (format "zotero:%s" zpath))))
+
+;; For Zotero add-in "zotxt"  Conflicts/same-as zutilo?
+;; https://github.com/egh/zotxt-emacs
+;; Pastes biblio summary of Zotero entries in org-mode, connects to org-noter
+(use-package zotxt)
+
 ;; ** Org-ref
 
 ;; Store links in bibtex: C-c l; in .org files C-c ]
@@ -2524,10 +2542,10 @@ is already narrowed."
 ;; Unfortunately, this may screw up linking to techreports:
 ;; https://github.com/jkitchin/org-ref/issues/205
 ;; at least they work after I comment it out
-;;(bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
+;; (bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
  
-;; ** Org-roam
-;; As of 5/23/20, the best docs are in emacs info or here: https://org-roam.github.io/org-roam/manual/
+;;** Org-roam
+;;As of 5/23/20, the best docs are in emacs info or here: https://org-roam.github.io/org-roam/manual/
 
 (sdo/find-exec "dot" "graphviz needed by org-roam")
 
@@ -2604,9 +2622,220 @@ is already narrowed."
 (setq org-ref-notes-function #'org-ref-notes-function-one-file)
 
 
-;; ** Org-rifle
-;; Search org-mode file(s) and get results and their place in the org-mode tree hierarchy
-;; TODO: Try it: https://github.com/alphapapa/org-rifle
+;; ** Org-roam-rgoswami
+
+;; From: https://dotdoom.rgoswami.me/config.html#text-3
+;; More explanation: https://rgoswami.me/posts/org-note-workflow/
+
+;; 0.3.6 Variables
+
+;; (setq
+;;    org_roam_dir (expand-file-name "org_roam" docDir)
+;;    org_notes_dir (expand-file-name "org_notes" org_roam_dir)
+;;    zot_bib_fn (expand-file-name "zotlib.bib" org_roam_dir)
+;;    org_ref_notes_dir (expand-file-name "org_ref_notes" org_roam_dir)
+;;    org-directory org_notes_dir
+;;    deft-directory org_notes_dir
+;;    org-roam-directory org_notes_dir
+;;    )
+
+
+;; ;; 3.1.1 Org-Ref
+
+;; ;; This seems like an ubiquitous choice for working with org files and references, though quite a bit of the config here relates to helm-bibtex. Commented sections are set in my private config.
+
+;; (use-package org-ref
+;;     ;; :init
+;;     ; code to run before loading org-ref
+;;     :config
+;;     (setq
+;;          org-ref-completion-library 'org-ref-ivy-cite
+;;          org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
+;;          org-ref-default-bibliography (list zot_bib_fn)
+;;          org-ref-bibliography-notes (expand-file-name "bibnotes.bib" org_roam_dir)
+;;          org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
+;;          org-ref-notes-directory org_ref_notes_dir
+;;          org-ref-notes-function 'orb-edit-notes
+;;     ))
+
+;; ;; Apparently, org-ref is also able to fetch pdf files when DOI or URL links are dragged onto the .bib file. However, since zotero will handle the metadata, this remains to be considered.
+
+;; ;; Ivy is used exclusively throughout doom, makes sense to use it here too, but I recently switched to helm. Turns out helm is probably faster for larger collections since it can be asynchronous. Basically, this is because using the minibuffer, as ivy does is a blocking action while the helm buffer may be opened asynchronously. Name aside, helm-bibtex also works for ivy. Basically meant to interface with bibliographies in general. However, since I’m using org-ref, I won’t be configuring or loading that anymore.
+;; ;; 3.1.2 Helm Bibtex
+
+;; ;; For some reason, org-ref-notes isn’t working very nicely, so the setup above prioritizes the helm-bibtex note-taking setup.
+
+;; ;;(after org-ref
+;; (setq
+;;  bibtex-completion-notes-path org_ref_notes_dir
+;;  bibtex-completion-bibliography zot_bib_fn
+;;  bibtex-completion-pdf-field "file"
+;;  bibtex-completion-notes-template-multiple-files
+;;  (concat
+;;   "#+TITLE: ${title}\n"
+;;   "#+ROAM_KEY: cite:${=key=}\n"
+;;   "* TODO Notes\n"
+;;   ":PROPERTIES:\n"
+;;   ":Custom_ID: ${=key=}\n"
+;;   ":NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n"
+;;   ":AUTHOR: ${author-abbrev}\n"
+;;   ":JOURNAL: ${journaltitle}\n"
+;;   ":DATE: ${date}\n"
+;;   ":YEAR: ${year}\n"
+;;   ":DOI: ${doi}\n"
+;;   ":URL: ${url}\n"
+;;   ":END:\n\n"
+;;   )
+;;  )
+;; ;;)
+
+;; ;; 3.1.3 Org-Roam
+
+;; ;; actually copied from: https://rgoswami.me/posts/org-note-workflow/
+;; (use-package org-roam
+;;   :hook (org-load . org-roam-mode)
+;;   :commands (org-roam-buffer-toggle-display
+;;              org-roam-find-file
+;;              org-roam-graph
+;;              org-roam-insert
+;;              org-roam-switch-to-buffer
+;;              org-roam-dailies-date
+;;              org-roam-dailies-today
+;;              org-roam-dailies-tomorrow
+;;              org-roam-dailies-yesterday)
+;;   :preface
+;;   ;; Set this to nil so we can later detect whether the user has set a custom
+;;   ;; directory for it, and default to `org-directory' if they haven't.
+;;   (defvar org-roam-directory nil)
+;;   :init
+;;   :config
+;;   (setq org-roam-directory (expand-file-name (or org-roam-directory "roam")
+;;                                              org-directory)
+;;         org-roam-verbose nil  ; https://youtu.be/fn4jIlFwuLU
+;;         org-roam-buffer-no-delete-other-windows t ; make org-roam buffer sticky
+;;         org-roam-completion-system 'default ) ; rgoswami missed this paren
+
+;;   ;; Normally, the org-roam buffer doesn't open until you explicitly call
+;;   ;; `org-roam'. If `+org-roam-open-buffer-on-find-file' is non-nil, the
+;;   ;; org-roam buffer will be opened for you when you use `org-roam-find-file'
+;;   ;; (but not `find-file', to limit the scope of this behavior).
+;;   (add-hook 'find-file-hook
+;;     (defun +org-roam-open-buffer-maybe-h ()
+;;       (and +org-roam-open-buffer-on-find-file
+;;            (memq 'org-roam-buffer--update-maybe post-command-hook)
+;;            (not (window-parameter nil 'window-side)) ; don't proc for popups
+;;            (not (eq 'visible (org-roam-buffer--visibility)))
+;;            (with-current-buffer (window-buffer)
+;;              (org-roam-buffer--get-create)))))
+
+;;   ;; Hide the mode line in the org-roam buffer, since it serves no purpose. This
+;;   ;; makes it easier to distinguish among other org buffers.
+;;   (add-hook 'org-roam-buffer-prepare-hook #'hide-mode-line-mode))
+
+
+;; ;; NOT IN MELPA ANYMORE
+;; ;; Since the org module lazy loads org-protocol (waits until an org URL is
+;; ;; detected), we can safely chain `org-roam-protocol' to it.
+;; ;; (use-package org-roam-protocol
+;; ;;   :after org-protocol)
+
+
+;; ;; NOT IN MELPA ANYMORE
+;; ;; (use-package company-org-roam
+;; ;;   :after org-roam
+;; ;;   :config
+;; ;;   (set-company-backend! 'org-mode '(company-org-roam company-yasnippet company-dabbrev)))
+
+
+;; ;; Will also setup the org-roam-bibtex thing here. As foretold in the last line, there are more settings for ORB. The template is modified from here.
+
+;; (use-package org-roam-bibtex
+;;               :after (org-roam)
+;;               :hook (org-roam-mode . org-roam-bibtex-mode)
+;;               :config
+;;               (setq org-roam-bibtex-preformat-keywords
+;;                     '("=key=" "title" "url" "file" "author-or-editor" "keywords"))
+;;               (setq orb-templates
+;;                     '(("r" "ref" plain (function org-roam-capture--get-point)
+;;                        ""
+;;                        :file-name "${slug}"
+;;                        :head "#+TITLE: ${=key=}: ${title}\n#+ROAM_KEY: ${ref}
+
+;; - tags ::
+;; - keywords :: ${keywords}
+
+;; \n* ${title}\n  :PROPERTIES:\n  :Custom_ID: ${=key=}\n  :URL: ${url}\n  :AUTHOR: ${author-or-editor}\n  :NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n  :NOTER_PAGE: \n  :END:\n\n"
+
+;;                        :unnarrowed t)))
+;;               )
+
+;; ;; 3.1.4 Org-Noter
+
+;; ;; I decided to use org-noter over the more commonly described interleave because it has better support for working with multiple documents linked to one file.
+
+;; (use-package org-noter
+;;   :after (:any org pdf-view)
+;;   :config
+;;   (setq
+;;    ;; The WM can handle splits
+;;    org-noter-notes-window-location 'other-frame
+;;    ;; Please stop opening frames
+;;    org-noter-always-create-frame nil
+;;    ;; I want to see the whole file
+;;    org-noter-hide-other nil
+;;    ;; Everything is relative to the rclone mega
+;;    org-noter-notes-search-path (list org_notes_dir)
+;;    )
+;;   )
+
+;; ;; I have a rather involved setup in mind, so I have spun this section off from the rest. The basic idea is to use deft for short-to-long lookup notes, and org-capture templates with org-protocol for the rest. I am also considering notdeft since it might work better for what I want to achieve. Though it isn’t really part of a note taking workflow, I also intend to use michel2 to sync my tasks…
+;; ;; 3.2 Org Capture
+
+;; ;; I am not really sure how to use these correctly, but I have the bare minimum required for the Firefox browser extension (setup from here), and a random article thing.
+;; ;; 3.2.1 Functions
+
+;; ;; These are needed for org-capture alone for now.
+
+;; ;; Fix some link issues
+;; (defun transform-square-brackets-to-round-ones(string-to-transform)
+;;   "Transforms [ into ( and ] into ), other chars left unchanged."
+;;   (concat
+;;    (mapcar #'(lambda (c) (if (equal c ?\[) ?\( (if (equal c ?\]) ?\) c))) string-to-transform))
+;;   )
+
+;; ;; 3.2.2 Templates
+
+;; ;; This might get complicated but I am only trying to get the bare minimum for org-protocol right now.
+
+;; ;; Actually start using templates
+;; ;;(after! org-capture
+;; ;; Firefox
+;; (add-to-list 'org-capture-templates
+;;              '("P" "Protocol" entry
+;;                (file+headline +org-capture-notes-file "Inbox")
+;;                "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?"
+;;                :prepend t
+;;                :kill-buffer t))
+;; (add-to-list 'org-capture-templates
+;;              '("L" "Protocol Link" entry
+;;                (file+headline +org-capture-notes-file "Inbox")
+;;                "* %? [[%:link][%(transform-square-brackets-to-round-ones \"%:description\")]]\n"
+;;                :prepend t
+;;                :kill-buffer t))
+;; ;; Misc
+;; (add-to-list 'org-capture-templates
+;;              '("a"               ; key
+;;                "Article"         ; name
+;;                entry             ; type
+;;                (file+headline +org-capture-notes-file "Article")  ; target
+;;                "* %^{Title} %(org-set-tags)  :article: \n:PROPERTIES:\n:Created: %U\n:Linked: %a\n:END:\n%i\nBrief description:\n%?"  ; template
+;;                :prepend t        ; properties
+;;                :empty-lines 1    ; properties
+;;                :created t        ; properties
+;;                ))
+;; ;;)
+
+
 ;; ** Org Mode Dedicated Targets
 (require 'org)
 
@@ -2850,21 +3079,6 @@ This function avoids making messed up targets by exiting without doing anything 
     :defer
     :config
     (require 'ox-pandoc)))
-
-;; ** Org and Zotero
-
-;; For Zotero add-in "zutilo"  Conflicts/same-as zotxt?
-;; https://orgmode-exocortex.com/2020/05/13/linking-to-zotero-items-and-collections-from-org-mode/
-(org-link-set-parameters "zotero" :follow
-                         (lambda (zpath)
-                           (browse-url
-                            ;; we get the "zotero:"-less url, so we put it back.
-                            (format "zotero:%s" zpath))))
-
-;; For Zotero add-in "zotxt"  Conflicts/same-as zutilo?
-;; https://github.com/egh/zotxt-emacs
-;; Pastes biblio summary of Zotero entries in org-mode, connects to org-noter
-(use-package zotxt)
 
 ;; * Writing Tools
 ;; ** General Editing
@@ -3516,7 +3730,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (deft zotxt zotxt-emacs deadgrep emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (org-roam-bibtex deft zotxt zotxt-emacs deadgrep emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
