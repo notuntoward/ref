@@ -2345,6 +2345,38 @@ is already narrowed."
 (define-key ctl-x-map "n" #'narrow-or-widen-dwim)
 
 ;; * Org Mode
+
+;; ** Org-* dirs and files
+
+;; set up org and bib for old way of doing things and experimental org-roam, or a true org-roam setup
+(if t
+    (progn
+      (message "Old org/bib init with playground org-roam")
+      (setq
+       org_roam_dir "~/tmp/org-roam"
+       org_notes_dir "~/tmp/org-roam"
+       bibfile_nm (expand-file-name "energy.bib" docDir)
+       bibfile_pdf_dir (expand-file-name "papers" docDir)
+       org_ref_notes_dir "~/tmp/org-roam"
+       org_ref_notes_fn (expand-file-name "energytop.org" docDir)
+       org-directory org_notes_dir
+       deft-directory org_notes_dir
+       org-roam-directory org_notes_dir
+       ))
+  (progn
+    (message "org-roam style init")
+    ;; simillar ot idea in https://rgoswami.me/posts/org-note-workflow/
+    (setq
+     org_roam_dir (expand-file-name "org_roam" docDir)
+     org_notes_dir (expand-file-name "org_notes" org_roam_dir)
+     bibfile_nm (expand-file-name "zotlib.bib" org_roam_dir)
+     bibfile_pdf_dir (expand-file-name "papers" org_roam_dir)
+     org_ref_notes_dir (expand-file-name "org_ref_notes" org_roam_dir)
+     org-directory org_notes_dir
+     deft-directory org_notes_dir
+     org-roam-directory org_notes_dir
+     )))
+
 ;; ** Org-download
 
 ;; From: https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
@@ -2509,10 +2541,12 @@ is already narrowed."
   :after org
   :init
   (let ((default-directory docDir))
-    (setq org-ref-bibliography-notes (expand-file-name "notes.org")
-          org-ref-default-bibliography (expand-file-name "energy.bib")
-          org-ref-pdf-directory (expand-file-name "papers")
+
+    (setq org-ref-bibliography-notes org_ref_notes_fn
+          org-ref-default-bibliography bibfile_nm 
+          org-ref-pdf-directory bibfile_pdf_dir
           reftex-default-bibliography org-ref-default-bibliography))
+
   ;; ;; showing broken links slowed down energytop.org (but much less in Oct. 2017)
   ;; ;;  https://github.com/jkitchin/org-ref/issues/468
   (setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
@@ -2544,7 +2578,7 @@ is already narrowed."
 ;; at least they work after I comment it out
 ;; (bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
  
-;;** Org-roam
+;; ** Org-roam
 ;;As of 5/23/20, the best docs are in emacs info or here: https://org-roam.github.io/org-roam/manual/
 
 (sdo/find-exec "dot" "graphviz needed by org-roam")
@@ -2565,8 +2599,10 @@ is already narrowed."
 ;; https://org-roam.readthedocs.io/en/master/installation/
 (use-package org-roam
   :custom
-;;  (org-roam-directory "~/tmp/org-roam")
-  (org-roam-directory "~/tmp/braindump-master/org")
+  ;;  (org-roam-directory "~/tmp/org-roam")
+  ;; JK's OR brain
+  ;;  (org-roam-directory "~/tmp/braindump-master/org")
+  (org-roam-directory org_roam_dir)
   ;; Note that Windows "find" interferes with linux find, so use rg instead
   ;; HOWEVER, the rg interface breaks the graph, as of 5/29/20
   (org-roam-list-files-commands '(rg)) ;; use ripgrip, expand emacs to see graph
@@ -2586,6 +2622,22 @@ is already narrowed."
 ;; ;;  :straight (:host github :repo "org-roam/company-org-roam")
 ;;   :config
 ;;   (push 'company-org-roam company-backends))
+
+;; ** Org-roam-bibtex
+
+;; From github page: https://github.com/org-roam/org-roam-bibtex
+(use-package org-roam-bibtex
+  :after org-roam
+  :hook (org-roam-mode . org-roam-bibtex-mode)
+  :bind (:map org-mode-map
+              (("C-c n a" . orb-note-actions))))
+
+;; put citekey in title of bib notes
+(setq orb-templates
+      '(("r" "ref" plain (function org-roam-capture--get-point) ""
+         :file-name "${citekey}"
+         :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n" ; <--
+         :unnarrowed t)))
 
 ;; ** Org-noter
 ;; Keybindings, basic explanation: https://github.com/weirdNox/org-noter#keys
@@ -2632,7 +2684,7 @@ is already narrowed."
 ;; (setq
 ;;    org_roam_dir (expand-file-name "org_roam" docDir)
 ;;    org_notes_dir (expand-file-name "org_notes" org_roam_dir)
-;;    zot_bib_fn (expand-file-name "zotlib.bib" org_roam_dir)
+;;    bibfile_nm (expand-file-name "zotlib.bib" org_roam_dir)
 ;;    org_ref_notes_dir (expand-file-name "org_ref_notes" org_roam_dir)
 ;;    org-directory org_notes_dir
 ;;    deft-directory org_notes_dir
@@ -2651,7 +2703,7 @@ is already narrowed."
 ;;     (setq
 ;;          org-ref-completion-library 'org-ref-ivy-cite
 ;;          org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
-;;          org-ref-default-bibliography (list zot_bib_fn)
+;;          org-ref-default-bibliography (list bibfile_nm)
 ;;          org-ref-bibliography-notes (expand-file-name "bibnotes.bib" org_roam_dir)
 ;;          org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
 ;;          org-ref-notes-directory org_ref_notes_dir
@@ -2668,7 +2720,7 @@ is already narrowed."
 ;; ;;(after org-ref
 ;; (setq
 ;;  bibtex-completion-notes-path org_ref_notes_dir
-;;  bibtex-completion-bibliography zot_bib_fn
+;;  bibtex-completion-bibliography bibfile_nm
 ;;  bibtex-completion-pdf-field "file"
 ;;  bibtex-completion-notes-template-multiple-files
 ;;  (concat
@@ -3224,13 +3276,15 @@ This function avoids making messed up targets by exiting without doing anything 
 ;; SEE ALSO: org-ref
 
 (defun add-bibitem-org ()
-  "Opens energy.bib in one window and energytop.org in the other, so you can add a reference to either or both.  When done, can undo the window config with winner-mode: C-c Left"
+  "Opens main .bib file (was energy.bib) in one window and main .org (was energytop.org) in the other, 
+so you can add a reference to either or both.  
+When done, can undo the window config with winner-mode: C-c Left"
   (interactive)
   (delete-other-windows)
-  (find-file (expand-file-name "energytop.org" docDir))
+  (find-file org_ref_notes_fn)
   (split-window-horizontally)
   (other-window 1)
-  (find-file (expand-file-name "energy.bib" docDir)))
+  (find-file bibfile_nm))
 
 ;; * Emacs Command Execution
 
