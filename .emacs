@@ -1915,23 +1915,26 @@ is already narrowed."
 ;; * Org Mode
 ;; ** Org-* dirs and files
 
-;; set up org and bib for old way of doing things and experimental org-roam, or a true org-roam setup
+;; set up org and bib for old way of doing things and experimental org-roam, or a true org-roam, org-ref setup
+(setq bibfile_energy_nm (expand-file-name "energy.bib" docDir)
+      bibfile_energy_pdf_dir (expand-file-name "papers" docDir))
+
 (if t
     (progn
       (message "Old org/bib init with playground org-roam or DOE brainstorm")
       (setq
        org_roam_dir (expand-file-name "DOE_brainstorm" docDir)
        org_notes_dir (expand-file-name "org-notes" org_roam_dir)
-       bibfile_nm (expand-file-name "deepSolarDOE.bib" org_roam_dir)
-       bibfile_pdf_dir (expand-file-name "papers" org_roam_dir)
+       bibfile_roam_nm (expand-file-name "deepSolarDOE.bib" org_roam_dir)
+       bibfile_roam_pdf_dir (expand-file-name "papers" org_roam_dir)
        org_ref_notes_dir (expand-file-name "org-ref" org_roam_dir)
        org_ref_notes_fn (expand-file-name "DOE_brainstorm.org" org_roam_dir)
        org-directory org_notes_dir
        deft-directory org_notes_dir
        ;; org_roam_dir "~/tmp/org-roam"
        ;; org_notes_dir "~/tmp/org-roam"
-       ;; bibfile_nm (expand-file-name "energy.bib" docDir)
-       ;; bibfile_pdf_dir (expand-file-name "papers" docDir)
+       ;; bibfile_roam_nm (expand-file-name "energy.bib" docDir)
+       ;; bibfile_roam_pdf_dir (expand-file-name "papers" docDir)
        ;; org_ref_notes_dir "~/tmp/org-roam"
        ;; org_ref_notes_fn (expand-file-name "energytop.org" docDir)
        ;; org-directory org_notes_dir
@@ -1943,8 +1946,8 @@ is already narrowed."
     (setq
      org_roam_dir (expand-file-name "org_roam" docDir)
      org_notes_dir (expand-file-name "org_notes" org_roam_dir)
-     bibfile_nm (expand-file-name "zotlib.bib" org_roam_dir)
-     bibfile_pdf_dir (expand-file-name "papers" org_roam_dir)
+     bibfile_roam_nm (expand-file-name "zotlib.bib" org_roam_dir)
+     bibfile_roam_pdf_dir (expand-file-name "papers" org_roam_dir)
      org_ref_notes_dir (expand-file-name "org_ref_notes" org_roam_dir)
      org-directory org_notes_dir
      deft-directory org_notes_dir
@@ -2127,8 +2130,9 @@ is already narrowed."
   (let ((default-directory docDir))
 
     (setq org-ref-bibliography-notes org_ref_notes_fn
-          org-ref-default-bibliography bibfile_nm 
-          org-ref-pdf-directory bibfile_pdf_dir
+          org-ref-default-bibliography (list bibfile_roam_nm bibfile_energy_nm) 
+          ;; whatever looks at org-ref-pdf-directory seems to look only at 1st element of list, unlike user of bibtex-completion-bibliography in helm--bibtex.  This is even though user of org-ref-default-bibliography =does= look at lists.
+          org-ref-pdf-directory (list bibfile_roam_pdf_dir bibfile_energy_pdf_dir)
           reftex-default-bibliography org-ref-default-bibliography))
 
   ;; ;; showing broken links slowed down energytop.org (but much less in Oct. 2017)
@@ -2161,7 +2165,7 @@ is already narrowed."
 ;; https://github.com/jkitchin/org-ref/issues/205
 ;; at least they work after I comment it out
 ;; (bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
- 
+
 ;; ** Org-roam
 ;;As of 5/23/20, the best docs are in emacs info or here: https://org-roam.github.io/org-roam/manual/
 
@@ -2208,22 +2212,43 @@ is already narrowed."
 ;;   (push 'company-org-roam company-backends))
 
 ;; ** Org-roam-bibtex
+;; *** Helm-bibtex
+;; Seems to be rquired for org-roam-bibtex
 
-;; TOO MANY BUGS or at least the instructions are so bad that I can't figure out what to do.
+(use-package helm-bibtex)
 
-;; ;;From github page: https://github.com/org-roam/org-roam-bibtex
-;; (use-package org-roam-bibtex
-;;   :after org-roam
-;;   :hook (org-roam-mode . org-roam-bibtex-mode)
-;;   :bind (:map org-mode-map
-;;               (("C-c n a" . orb-note-actions))))
+;; setup mostly from: https://github.com/tmalsburg/helm-bibtex
+;;(setq bibtex-completion-bibliography '(bibfile_roam_nm bibfile_energy_nm))
+(setq bibtex-completion-bibliography (list bibfile_roam_nm bibfile_energy_nm))
+;; can also add .org bibfiles, but I don't understand this.  Do it like:
+;; (setq bibtex-completion-bibliography
+;;       '("/path/to/bibtex-file-1.bib"
+;;         "/path/to/org-bibtex-file.org"
+;;         ("/path/to/org-bibtex-file2.org" . "/path/to/bibtex-file.bib")))
 
-;; ;; put citekey in title of bib notes, title in note.  This can get much fancier and can have multiple templates
-;; (setq orb-templates
-;;       '(("r" "ref" plain (function org-roam-capture--get-point) ""
-;;          :file-name "${citekey}"
-;;          :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n" ; <--
-;;          :unnarrowed t)))
+(setq bibtex-completion-library-path (list bibfile_roam_pdf_dir bibfile_energy_pdf_dir))
+;; Find pdf w/ JabRef/Zotero fields
+(setq bibtex-completion-pdf-field "File")
+
+;; for global .org notes file for all pdfs
+;;(setq bibtex-completion-notes-path "/path/to/notes.org")
+;; for single org note file for each pdf (like org-roam-bibtex wants, I think)
+;;(setq bibtex-completion-notes-path "/path/to/notes")
+
+;; *** org-roam-bibtex
+;;From github page: https://github.com/org-roam/org-roam-bibtex
+(use-package org-roam-bibtex
+  :after org-roam
+  :hook (org-roam-mode . org-roam-bibtex-mode)
+  :bind (:map org-mode-map
+              (("C-c n a" . orb-note-actions))))
+
+;; put citekey in title of bib notes, title in note.  This can get much fancier and can have multiple templates
+(setq orb-templates
+      '(("r" "ref" plain (function org-roam-capture--get-point) ""
+         :file-name "${citekey}"
+         :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n" ; <--
+         :unnarrowed t)))
 
 
 ;; a better alternative?
@@ -2285,7 +2310,7 @@ is already narrowed."
 ;; (setq
 ;;    org_roam_dir (expand-file-name "org_roam" docDir)
 ;;    org_notes_dir (expand-file-name "org_notes" org_roam_dir)
-;;    bibfile_nm (expand-file-name "zotlib.bib" org_roam_dir)
+;;    bibfile_roam_nm (expand-file-name "zotlib.bib" org_roam_dir)
 ;;    org_ref_notes_dir (expand-file-name "org_ref_notes" org_roam_dir)
 ;;    org-directory org_notes_dir
 ;;    deft-directory org_notes_dir
@@ -2304,7 +2329,7 @@ is already narrowed."
 ;;     (setq
 ;;          org-ref-completion-library 'org-ref-ivy-cite
 ;;          org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
-;;          org-ref-default-bibliography (list bibfile_nm)
+;;          org-ref-default-bibliography (list bibfile_roam_nm)
 ;;          org-ref-bibliography-notes (expand-file-name "bibnotes.bib" org_roam_dir)
 ;;          org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
 ;;          org-ref-notes-directory org_ref_notes_dir
@@ -2321,7 +2346,7 @@ is already narrowed."
 ;; ;;(after org-ref
 ;; (setq
 ;;  bibtex-completion-notes-path org_ref_notes_dir
-;;  bibtex-completion-bibliography bibfile_nm
+;;  bibtex-completion-bibliography bibfile_roam_nm
 ;;  bibtex-completion-pdf-field "file"
 ;;  bibtex-completion-notes-template-multiple-files
 ;;  (concat
@@ -2781,7 +2806,7 @@ This function avoids making messed up targets by exiting without doing anything 
 ;; starter config from: https://github.com/TimPerry/.emacs.d/blob/master/init.el
 (use-package deft
   :config  (setq deft-extensions '("txt" "tex" "org" ""))
-  (setq deft-directory "~/tmp/braindump-master/org")
+  (setq deft-directory org_roam_dir)
   :bind ("<f6>" . deft))
 
 
@@ -3317,7 +3342,7 @@ When done, can undo the window config with winner-mode: C-c Left"
   (find-file org_ref_notes_fn)
   (split-window-horizontally)
   (other-window 1)
-  (find-file bibfile_nm))
+  (find-file bibfile_roam_nm))
 
 ;; * Emacs Command Execution
 
@@ -3682,6 +3707,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  ;; If there is more than one, they won't work right.
  '(auto-hscroll-mode (quote current-line))
  '(aw-background t)
+ '(bibtex-completion-pdf-open-function (quote helm-open-file-with-default-tool))
  '(blink-cursor-mode nil)
  '(calendar-week-start-day 1)
  '(column-number-mode t)
