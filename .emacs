@@ -464,438 +464,6 @@ TODO: make this a general function."
 ;; (winsav-save-mode 1);
 ;; (require 'winsav-save-configuration)
 
-;; * Search and Replace (see also Swiper/Ivy)
-;; ** Web Search
-
-;; overrides org-mode bindings e.g. sparse-tree: C-c /
-;; (use-package google-this      ;; TODO: compare with counsel-search
-;;   :diminish google-this-mode
-;;   :config
-;;   (google-this-mode 1)) ; bound to C-c / g (and other bindings after '/')
-
-;; ** File System Search
-
-;; *** deadgrep
-
-;; I'm using counsel-rg instead of this, or maybe helm-rg.
-;;
-;; HOWEVER deadgrep is kinda good for searching my huge papers .pdf dir
-;;
-;; File search w/ nice interface, better than standard emacs lgrep, I think
-;; Alternative mentioned by deadgrep author is ivy-rg, for incremental results:
-;; https://www.reddit.com/r/emacs/comments/8x57ck/deadgrep_fast_friendly_searching_with_ripgrep_and/
-(if (setq rg_exe (sdo/find-exec "rg" "ripgrep needed org-roam and others"))
-    ;; deadgrep bindings: https://github.com/Wilfred/deadgrep
-    (use-package deadgrep
-;;      :bind ("<f5>" . deadgrep)
-      :config
-      ;; start search in current working dir:
-      ;; https://github.com/Wilfred/deadgrep/issues/14
-      (defun wh/return-default-dir ()
-        default-directory)
-      (setq deadgrep-project-root-function #'wh/return-default-dir)))
-
-;; *** counsel-ag
-;; nice swiper like completion.  helm-rg might/might not be better
-(if rg_exe
-    (global-set-key [f5] 'counsel-rg)
-  (global-set-key [f5] 'lgrep))
-
-;; *** helm-rg
-;; Can't get this to work.  There are no search results, no matter what I type
-;; (use-package helm-rg
-;;   :bind
-;;   (("C-c r" . helm-rg)))
-
-;; *** Deft
-
-;; starter config from: https://github.com/TimPerry/.emacs.d/blob/master/init.el
-(use-package deft
-  :config  (setq deft-extensions '("txt" "tex" "org" ""))
-  (setq deft-directory "~/tmp/braindump-master/org")
-  :bind ("<f6>" . deft))
-
-
-;; ;; deft is Used by org-roam author
-;; ;; https://blog.jethro.dev/posts/zettelkasten_with_org/
-;; ;; and others from org-roam searching.
-;; ;; From: https://rgoswami.me/posts/org-note-workflow/#search
-;; (use-package deft
-;;   :commands deft
-;;   :init
-;;   (setq deft-default-extension "org"
-;;         ;; de-couples filename and note title:
-;;         deft-use-filename-as-title nil
-;;         deft-use-filter-string-for-filename t
-;;         ;; disable auto-save
-;;         deft-auto-save-interval -1.0
-;;         ;; converts the filter string into a readable file-name using kebab-case:
-;;         deft-file-naming-rules
-;;         '((noslash . "-")
-;;           (nospace . "-")
-;;           (case-fn . downcase)))
-;;   :config
-;;   (add-to-list 'deft-extensions "tex")
-;;   )
-
-(use-package ag
-  :after counsel
-  :config
-  ;; supposed to work on Windows: https://github.com/abo-abo/swiper/issues/672
-  (setq counsel-ag-base-command "ag --vimgrep --nocolor --nogroup %s")  
-  ;; DOESN'T WORK.  Neither does counsel-ag
-  ;; so can use ag inside of eshell. Installation: run alias ag 'ag-eshell $1' in eshell. This puts this elisp in emacs.d/eshell/alias, so need to do this for each install.
-  ;; from: https://github.com/tomjakubowski/.emacs.d/issues/3
-  (defun ag-eshell (string)
-    "Search with ag using the current eshell directory and a given string.
-   To be used from within an eshell alias
-   (`alias ag 'ag-eshell $1'` within eshell)"
-    (ag/search string (eshell/pwd))))
-
-;; ** Search/Replace within Buffer
-
-;; Bindings for searching with currently highlighted string
-;; See also "C-c s") 'swiper-isearch-thing-at-point)
-(define-key isearch-mode-map "\M-s" 'isearch-repeat-forward)  ; word forward
-(define-key isearch-mode-map "\M-r" 'isearch-repeat-backward) ; word backward
-
-(use-package replace-from-region
-  :config                    ; default was query-replace
-  (global-set-key (kbd "M-%") 'query-replace-from-region))
-
-;; So isearch searches for selected region, if there is one.  From:
-;;http://stackoverflow.com/questions/202803/searching-for-marked-selected-text-in-emacs
-;; NOTE: C-s C-w (extra C-w's expand region) also works well
-;; TODO: Replace with isearch with ivy search?
-;; See also "C-c s") 'swiper-isearch-thing-at-point)
-(defun jrh-isearch-with-region ()
-  "Use region as the isearch text."
-  (when mark-active
-    (let ((region (funcall region-extract-function nil)))
-      (deactivate-mark)
-      (isearch-push-state)
-      (isearch-yank-string region))))
-(add-hook 'isearch-mode-hook #'jrh-isearch-with-region)
-
-;; C-; on symbol/word edits all instances in scope & other things. C-; to exit
-(use-package iedit
-  :config
-  (defun iedit-within-defun ()
-    "Do iedit search and replace within current defun (equivalent to C-0 C-;)"
-    (interactive)
-    (let ((current-prefix-arg '(0))) (call-interactively 'iedit-mode)))
-  :init
-  (define-key prog-mode-map (kbd "C-;") 'iedit-within-defun))
-
-;; ** Expand-Region
-;; handy with, at least, wrap-region for italics, bold,... emphasis
-(use-package expand-region
-  :bind ("C-=" . er/expand-region))
-
-;; * Swiper/Ivy
-
-;; Help while in ivy search:
-;;  ivy hydra: C-o;
-;;  ivy full help: C-h m
-(use-package swiper
-  :diminish ivy-mode
-  :init
-  ;;(setq ivy-use-virtual-buffers t) ; ivy-switch-buffer also shows recent files
-  (setq ivy-count-format "(%d/%d) ") ; show candidate index/count in swiper
-  ;; Search with swiper, handles org-mode headline unfold much better than helm
-  ;; C-s C-w (extra C-w's expand region) also works well
-  ;; I added -i to counsel-grep-base-command so grep is case-insensitive
-  ;;  (fset 'swiper-func 'counsel-grep-or-swiper) ; uses grep for long files, esp. org
-
-  ;; swiper-isearch is much faster than plain swiper:
-  ;; https://oremacs.com/2019/04/07/swiper-isearch/
-  ;; Are the matches different?
-  ;; (fset 'swiper-func-forward 'swiper) ; standard swiper, slow on large org files
-  ;; (fset 'swiper-func-backward 'swiper-backward) ; standard swiper,
-  ;; slow on large org files
-  ;; Note: could also experiment w/ swiper-isearch-toggle
-  (fset 'swiper-func-forward 'swiper-isearch) ; standard swiper, slow on large org files
-  (fset 'swiper-func-backward 'swiper-isearch-backward) ; standard swiper, slow on large org files
-
-  ;; TODO: combine forward backward into one function instead of this hack
-  ;; (defun sdo/swiper-region (isForward)
-  ;;   "If region selected, swipe for it, else do normal swiper call"
-  ;;   (interactive)
-  ;;   (let ((swiper-func (if isForward swiper-func-forward swiper-func-backward)))
-  ;;     (if mark-active
-  ;;         (let ((region (funcall region-extract-function nil)))
-  ;;           (deactivate-mark)
-  ;;           (funcall swiper-func region))
-  ;;       (funcall swiper-func))))
-  ;;
-  ;; (defun sdo/swiper-region-forward ()
-  ;;   "If region selected, swipe for it forward, else do normal swiper call"
-  ;;   (interactive)
-  ;;   (sdo/swiper-region t))
-
-  (defun sdo/swiper-region-forward ()
-    "If region selected, swipe for it forward, else do normal swiper call"
-    (interactive)
-    (if mark-active
-        (let ((region (funcall region-extract-function nil)))
-          (deactivate-mark)
-          (swiper-func-forward region))
-      (swiper-func-forward)))
-
-  (defun sdo/swiper-region-backward ()
-    "If region selected, swipe for it backwards, else do normal swiper call"
-    (interactive)
-    (if mark-active
-        (let ((region (funcall region-extract-function nil)))
-          (deactivate-mark)
-          (swiper-func-backward region))
-      (swiper-func-backward)))
-
-  (global-set-key "\C-s" 'sdo/swiper-region-forward)
-  (global-set-key "\C-r" 'sdo/swiper-region-backward)
-  ;; see also jrh-isearch-with-region
-  (global-set-key (kbd "C-c s") 'swiper-isearch-thing-at-point)
-  ;; ivy-views integrate with ivy-switch-buffer (See
-  ;; https://oremacs.com/2016/06/27/ivy-push-view/).  That's probably
-  ;; nice but I'm still using ido-switch-buffer b/c of its rectangular
-  ;; grid view.  So, I've bound ivy-switch view to something close to switch-buffer.
-  ;; NOTE: there is now an "ivy-grid" view: ivy-explorer, below.
-  (global-set-key (kbd "C-c v") 'ivy-push-view)
-  (global-set-key (kbd "C-c V") 'ivy-pop-view) ; works like delete
-  (global-set-key (kbd "C-x V") 'ivy-switch-view)
-  ;; actually, this seems to do the (nearly) same thing as C-s s
-  (global-set-key (kbd "C-c C-r") 'ivy-resume) ;Resume last ivy completion sess
-  :config
-  ;; for consistent backwards search binding within ivy minibuffer
-  (bind-key "C-r" 'ivy-previous-line-or-history ivy-minibuffer-map)
-  )
-
-;; consider these counsel commands (from:
-;; https://dev.to/deciduously/how-i-emacs-and-so-can-you-packages-m9p)
-;; so far, I like: counsel-git, counsel-git-grep, 
-
-;; ;; Override the basic Emacs commands
-;; (use-package counsel
-;;   :bind* ; load when pressed
-;;   (("M-x"     . counsel-M-x)
-;;    ("C-s"     . swiper)
-;;    ("C-x C-f" . counsel-find-file)
-;;    ("C-x C-r" . counsel-recentf)  ; search for recently edited
-;;    ("C-c g"   . counsel-git)      ; search for files in git repo
-;;    ("C-c j"   . counsel-git-grep) ; search for regexp in git repo
-;;    ("C-c /"   . counsel-ag)       ; Use ag for regexp
-;;    ("C-x l"   . counsel-locate)
-;;    ("C-x C-f" . counsel-find-file)
-;;    ("<f1> f"  . counsel-describe-function)
-;;    ("<f1> v"  . counsel-describe-variable)
-;;    ("<f1> l"  . counsel-find-library)
-;;    ("<f2> i"  . counsel-info-lookup-symbol)
-;;    ("<f2> u"  . counsel-unicode-char)
-;;    ("C-c C-r" . ivy-resume)))     ; Resume last Ivy-based completion
-
-(use-package counsel ; better kill-ring 2nd yanking
-  :init
-  :diminish counsel-mode
-  :bind
-  (("M-y" . counsel-yank-pop)
-   :map ivy-minibuffer-map
-   ("M-y" . ivy-next-line)) ; needed?
-   :config
-   ;; Internet search, compare w/ google-this
-   ;; TODO: make it search for region if selected, like
-   ;; sdo/swiper-region and for thing at point, like c-c s
-   ;; (swiper-isearch-thing-at-point) does now.  There are many
-   ;; *-at-point functions already here.  Maybe one is an inspiration.
-   ;; Some existing funcs call emac's symbol-at-point.
-   (global-set-key (kbd "C-S-s")  'counsel-search)) ; doesn't work in :bind
-
-(use-package ivy-explorer ; ido-grid-mode for ivy: C-f/b/p/n/a/e navigate the grid
-  :after ivy
-  :diminish ivy-explorer-mode
-  :config
-  (require 'ivy-explorer) ; needed?
-  ;; use ivy explorer for all file dialogs
-  (ivy-explorer-mode 1)
-  ;; not strictly necessary
-  (counsel-mode 1))
-
-(use-package hydra) ; should probably put some hydra defs inside of it, or this inside of ivy
-;;(use-package ivy-hydra) ; bound to C-o (is this helpful?)
-
-;; from: https://github.com/abo-abo/swiper/issues/2021
-;;; Ivy Hydra
-;; replace the ivy-hydra with this learning one
-;; uses regular ivy-mode keybindings to provide cleaner help and aid learning
-(defhydra hydra-ivy (:hint nil
-                     :color pink)
-"
-
-Navigation:
-_C-n_/_C-p_ next/previous  _M-<_/_M->_ begin/end  _C-v_/_M-v_ scroll up/down
-_C-'_ select with avy
-
-Use current selection to:
-_RET_,_C-m_ default action  _M-o_ choose from actions
-_C-M-j_ use current input not selection
-
-Do action with current selection and loop to choose more items:
-_C-M-m_ default action  _C-M-o_ choose action
-_C-M-n_/_C-M-p_ default action and select next/previous
-
-Insert into input field:
-_TAB_ complete input as far as possible
-_C-j_ or _TAB_ _TAB_ complete directory and search or complete filename and do action
-_M-n_/_M-p_ history next/previous  _M-i_ selection  _M-j_ word-at-point
-_C-r_ reverse search history  _C-s_ next line or last from history if empty 
-
-Other operations with current candidates:
-_S-SPC_ restrict to current matches  _M-w_ saves selections to kill ring
-_C-c C-o_ open candidates in ivy-occur buffer
-
-Other:
-_c_ toggle calling  _M-c_ toggle case folding  _M-r_ toggle regexp
-_C-c C-s_ rotate sort function if multiple defined
-_C-c C-a_ toggle user configured ignore lists
-_C-M-a_ change default action from list for this session
-"
-  ;; Navigation
-  ("M-<" ivy-beginning-of-buffer)
-  ("C-n" ivy-next-line)
-  ("C-p" ivy-previous-line)
-  ("M->" ivy-end-of-buffer)
-  ("C-v" ivy-scroll-up-command)
-  ("M-v" ivy-scroll-down-command)
-  ;; Single selection, action, exit
-  ("RET" ivy-done :exit t)
-  ("C-m" ivy-done :exit t)
-  ("M-o" ivy-dispatching-done :exit t)
-  ("C-j" ivy-alt-done :exit t)
-  ("TAB" ivy-partial-or-done :exit t)
-  ("C-M-j" ivy-immediate-done :exit t)
-  ("C-'" ivy-avy :exit nil)
-  ;; Multiple selections, actions, no exit
-  ("C-M-m" ivy-call)
-  ("C-M-o" ivy-dispatching-call)
-  ("C-M-n" ivy-next-line-and-call)
-  ("C-M-p" ivy-previous-line-and-call)
-  ;; alter input
-  ("M-n" ivy-next-history-element)
-  ("M-p" ivy-previous-history-element)
-  ("M-i" ivy-insert-current)
-  ("M-j" ivy-yank-word)
-  ("S-SPC" ivy-restrict-to-matches)
-  ("C-r" ivy-reverse-i-search)
-  ("C-s" ivy-next-line-or-history)
-  ;; other
-  ("M-w" ivy-kill-ring-save)
-  ;; non-standard utilities
-  ("c" ivy-toggle-calling)
-  ("M-c" ivy-toggle-case-fold)
-  ("M-r" ivy-toggle-regexp-quote)
-  ("C-c C-s" ivy-rotate-sort)
-  ("C-c C-a" ivy-toggle-ignore)
-  ("C-M-a" ivy-read-action)
-  ("C-c C-o" ivy-occur :exit t)
-  )
-(define-key ivy-minibuffer-map (kbd "C-o") 'hydra-ivy/body)
-
-;; Is this needed anymore, since ivy-isearch is now (Apr 2019) so much faster?
-(defun org-toggle-outline-visibility ()
-  "Hides all subheadlines or restores original visibility before toggle.
-   Eventually use this to speed up ivy by showing everything, searching and then unshowing everything."
-  (interactive)
-  ;; NAH, need to call "hide everything on one call; save outline on next.  Also, apparently need for arguments for org-save-outline-visibility:  see emacs help. 
-  (org-save-outline-visibility nil))
-
-;; * IDO Mode
-
-;; TODO: find a new file that's like something already existing but shorter (so you can create a new file w/ a shorter name.  eg.s C-x C-x tmp   and there
-;; is already a file named tmp.txt.  Or, renane a file to a shorter
-;; version of its name e.g. rename tmp.txt to tmp.
-;; I can't do this.  Ido and counsel-find-file both
-;; have a problem in this situation.
-;; Note: ido on find-file supposedly can be overriden with C-j (to validate) or
-;; C-F (after you've narrowed options).  However, Evernote is
-;; currently bound to C-F.
-;; https://stackoverflow.com/questions/21007014/not-selecting-what-emacs-ido-is-suggesting
-;; But neither option works. in the case of shorter name.
-;;
-;; Commentining out (ido-mode 1) and (ido-everywhere 1) fixes file
-;; visiting but not file renaming.  Ivy is getting in the
-;; way with naming: can force it to accept your shorter choice with C-M-j
-;;
-;; TODO: how to open a pdf with ido (mapped to C-x C-f).  Currently,
-;; it doesn't use the system default (PDF Xchange editor) but instead
-;; opens it in an emacs buffer.  Is Ivy any better?
-;; Nope. counsel-find-file does it too.
-;; In dired, I can open a pdf with the sytem pdf reader with 'W' key.
-;; This calls browse-url-of-dired-file; hitting RETURN of 'f' calls
-;; dired-find-file
-
-;; Ido mode (a replacement for iswitchb and much else).  Much is in customizations
-;; advice from: http://www.masteringemacs.org/article/introduction-to-ido-mode
-;; See also sdo/get-recentf() in keybinding section, which (currently) uses ido
-;; Ivy is fancier but I'm keeping Ido around because it has a nice
-;; grid mode that isn't available for Ivy (but see ivy-explorer).
-;;
-;; Should be placed after ivy to avoid partial ivy overwrites of ido functions
-
-;; Commenting out  these fixed renaming a file to a shorter but similar name
-;(ido-mode 1) ; https://github.com/DarwinAwardWinner/ido-completing-read-plus
-;(ido-everywhere 1)
-
-;; From: http://stackoverflow.com/questions/17986194/emacs-disable-automatic-file-search-in-ido-mode
-;; so it doesn't search for file completions in other directories.  Really
-;; hoses up dired directory create, for example.
-(setq ido-auto-merge-work-directories-length -1)
-
-;; replaces emacs w/ ido in as many places as possible
-;; https://github.com/DarwinAwardWinner/ido-completing-read-plus
-(use-package ido-completing-read+
-  :config (ido-ubiquitous-mode 1)) ; run it (almost) everywhere
-
-;; how files are ordered in the ido mini-buffer
-(setq ido-file-extensions-order '(".org" ".m" ".R" "_emacs" ".emacs" ".txt" ".py" ".pl" ".pm" ".el" ".c" ".cpp" ".h" ".rb" ".xml"))
-
-(use-package ido-grid-mode ;; https://github.com/emacsmirror/ido-vertical-mode
-  :config (ido-grid-mode 1))
-
-(use-package flx-ido
-  :init
-  ;; copied from https://github.com/bdd/.emacs.d/blob/master/packages.el
-  (setq gc-cons-threshold (* 20 (expt 2 20)) ido-use-faces nil) ; megabytes
-  :config
-  (flx-ido-mode 1)
-  ;; disable ido faces to see flx highlights.
-  (setq ido-enable-flex-matching t)
-  (setq ido-use-faces nil))
-
-;; This disappeard from melpa, and I gues I'm not using it anyway
-;; ;; I also have a hydra set up to do counsel bindings but ido-describe-bindings is here because it also shows unicode chars (that I don't know how to activate with my keyboard, but at least they're there...)
-;; (use-package ido-describe-bindings
-;;   :config (global-set-key (kbd "C-h b") 'ido-describe-bindings))
-
-;; ido- matching for emacs commands: https://www.reddit.com/r/emacs/comments/1xnhws/speaking_of_emacs_modes_flx_flxido_ido_smex_helm/?st=iu1g56lu&sh=554484fb
-(use-package smex
-  :config
-  (smex-initialize)
-  (global-set-key (kbd "M-x") 'smex)
-  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-  ;; This is your old M-x.
-  (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
-
-;; * Company Mode
-;; Used in other packages.  Maybe put this section in one of those places instead of here?
-
-(use-package company)
-
-;; Sorter like smex.  Doesn't seem to do anything, probably b/c ido is
-;; overriding ivy where it might matter.
-;; (use-package ivy-prescient
-;;   :after ivy
-;;   :config
-;;   (ivy-prescient-mode))
-
 ;; * Scrolling, Cursor Movement and Selection
 
 (setq scroll-step 1)
@@ -2345,23 +1913,29 @@ is already narrowed."
 (define-key ctl-x-map "n" #'narrow-or-widen-dwim)
 
 ;; * Org Mode
-
 ;; ** Org-* dirs and files
 
 ;; set up org and bib for old way of doing things and experimental org-roam, or a true org-roam setup
 (if t
     (progn
-      (message "Old org/bib init with playground org-roam")
+      (message "Old org/bib init with playground org-roam or DOE brainstorm")
       (setq
-       org_roam_dir "~/tmp/org-roam"
-       org_notes_dir "~/tmp/org-roam"
-       bibfile_nm (expand-file-name "energy.bib" docDir)
-       bibfile_pdf_dir (expand-file-name "papers" docDir)
-       org_ref_notes_dir "~/tmp/org-roam"
-       org_ref_notes_fn (expand-file-name "energytop.org" docDir)
+       org_roam_dir (expand-file-name "DOE_brainstorm" docDir)
+       org_notes_dir (expand-file-name "org-notes" org_roam_dir)
+       bibfile_nm (expand-file-name "deepSolarDOE.bib" org_roam_dir)
+       bibfile_pdf_dir (expand-file-name "papers" org_roam_dir)
+       org_ref_notes_dir (expand-file-name "org-ref" org_roam_dir)
+       org_ref_notes_fn (expand-file-name "DOE_brainstorm.org" org_roam_dir)
        org-directory org_notes_dir
        deft-directory org_notes_dir
-       org-roam-directory org_notes_dir
+       ;; org_roam_dir "~/tmp/org-roam"
+       ;; org_notes_dir "~/tmp/org-roam"
+       ;; bibfile_nm (expand-file-name "energy.bib" docDir)
+       ;; bibfile_pdf_dir (expand-file-name "papers" docDir)
+       ;; org_ref_notes_dir "~/tmp/org-roam"
+       ;; org_ref_notes_fn (expand-file-name "energytop.org" docDir)
+       ;; org-directory org_notes_dir
+       ;; deft-directory org_notes_dir
        ))
   (progn
     (message "org-roam style init")
@@ -2518,6 +2092,16 @@ is already narrowed."
 ;; ** Org-rifle
 ;; Search org-mode file(s) and get results and their place in the org-mode tree hierarchy
 ;; TODO: Try it: https://github.com/alphapapa/org-rifle
+;;
+;; Is this better than org-deft b/c it limits its search to org files?
+;;
+;; From: https://dustinlacewell.github.io/emacs.d/
+(use-package helm-org-rifle
+:after (helm org)
+:commands helm-org-rifle-current-buffer
+:config
+(define-key org-mode-map (kbd "M-r") 'helm-org-rifle-current-buffer))
+
 ;; ** Org and Zotero
 
 ;; For Zotero add-in "zutilo"  Conflicts/same-as zotxt?
@@ -2625,19 +2209,36 @@ is already narrowed."
 
 ;; ** Org-roam-bibtex
 
-;; From github page: https://github.com/org-roam/org-roam-bibtex
-(use-package org-roam-bibtex
-  :after org-roam
-  :hook (org-roam-mode . org-roam-bibtex-mode)
-  :bind (:map org-mode-map
-              (("C-c n a" . orb-note-actions))))
+;; TOO MANY BUGS or at least the instructions are so bad that I can't figure out what to do.
 
-;; put citekey in title of bib notes
-(setq orb-templates
-      '(("r" "ref" plain (function org-roam-capture--get-point) ""
-         :file-name "${citekey}"
-         :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n" ; <--
-         :unnarrowed t)))
+;; ;;From github page: https://github.com/org-roam/org-roam-bibtex
+;; (use-package org-roam-bibtex
+;;   :after org-roam
+;;   :hook (org-roam-mode . org-roam-bibtex-mode)
+;;   :bind (:map org-mode-map
+;;               (("C-c n a" . orb-note-actions))))
+
+;; ;; put citekey in title of bib notes, title in note.  This can get much fancier and can have multiple templates
+;; (setq orb-templates
+;;       '(("r" "ref" plain (function org-roam-capture--get-point) ""
+;;          :file-name "${citekey}"
+;;          :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n" ; <--
+;;          :unnarrowed t)))
+
+
+;; a better alternative?
+;; https://org-roam.discourse.group/t/does-anyone-have-a-workflow-for-associating-notes-with-a-zotero-stored-pdf/112/10?u=scotto
+;;
+;; or pieces of this:
+;; https://rgoswami.me/posts/org-note-workflow/
+
+;; ** Org-roam-company
+
+;; Popup link name completion.  Without this, it seems like the default is swiper.  Must run M-x company-mode to run it with M-x company org-roam.
+;  When run it, just get a long list of completions, doesnt narrow as you type.
+;; (use-package company-org-roam
+;;   :config
+;;   (push 'company-org-roam company-backends))
 
 ;; ** Org-noter
 ;; Keybindings, basic explanation: https://github.com/weirdNox/org-noter#keys
@@ -3131,6 +2732,438 @@ This function avoids making messed up targets by exiting without doing anything 
     :defer
     :config
     (require 'ox-pandoc)))
+
+;; * Search and Replace (see also Swiper/Ivy)
+;; ** Web Search
+
+;; overrides org-mode bindings e.g. sparse-tree: C-c /
+;; (use-package google-this      ;; TODO: compare with counsel-search
+;;   :diminish google-this-mode
+;;   :config
+;;   (google-this-mode 1)) ; bound to C-c / g (and other bindings after '/')
+
+;; ** File System Search
+
+;; *** deadgrep
+
+;; I'm using counsel-rg instead of this, or maybe helm-rg.
+;;
+;; HOWEVER deadgrep is kinda good for searching my huge papers .pdf dir
+;;
+;; File search w/ nice interface, better than standard emacs lgrep, I think
+;; Alternative mentioned by deadgrep author is ivy-rg, for incremental results:
+;; https://www.reddit.com/r/emacs/comments/8x57ck/deadgrep_fast_friendly_searching_with_ripgrep_and/
+(if (setq rg_exe (sdo/find-exec "rg" "ripgrep needed org-roam and others"))
+    ;; deadgrep bindings: https://github.com/Wilfred/deadgrep
+    (use-package deadgrep
+;;      :bind ("<f5>" . deadgrep)
+      :config
+      ;; start search in current working dir:
+      ;; https://github.com/Wilfred/deadgrep/issues/14
+      (defun wh/return-default-dir ()
+        default-directory)
+      (setq deadgrep-project-root-function #'wh/return-default-dir)))
+
+;; *** counsel-ag
+;; nice swiper like completion.  helm-rg might/might not be better
+(if rg_exe
+    (global-set-key [f5] 'counsel-rg)
+  (global-set-key [f5] 'lgrep))
+
+;; *** helm-rg
+;; Can't get this to work.  There are no search results, no matter what I type
+;; (use-package helm-rg
+;;   :bind
+;;   (("C-c r" . helm-rg)))
+
+;; *** Deft
+
+;; starter config from: https://github.com/TimPerry/.emacs.d/blob/master/init.el
+(use-package deft
+  :config  (setq deft-extensions '("txt" "tex" "org" ""))
+  (setq deft-directory "~/tmp/braindump-master/org")
+  :bind ("<f6>" . deft))
+
+
+;; ;; deft is Used by org-roam author
+;; ;; https://blog.jethro.dev/posts/zettelkasten_with_org/
+;; ;; and others from org-roam searching.
+;; ;; From: https://rgoswami.me/posts/org-note-workflow/#search
+;; (use-package deft
+;;   :commands deft
+;;   :init
+;;   (setq deft-default-extension "org"
+;;         ;; de-couples filename and note title:
+;;         deft-use-filename-as-title nil
+;;         deft-use-filter-string-for-filename t
+;;         ;; disable auto-save
+;;         deft-auto-save-interval -1.0
+;;         ;; converts the filter string into a readable file-name using kebab-case:
+;;         deft-file-naming-rules
+;;         '((noslash . "-")
+;;           (nospace . "-")
+;;           (case-fn . downcase)))
+;;   :config
+;;   (add-to-list 'deft-extensions "tex")
+;;   )
+
+(use-package ag
+  :after counsel
+  :config
+  ;; supposed to work on Windows: https://github.com/abo-abo/swiper/issues/672
+  (setq counsel-ag-base-command "ag --vimgrep --nocolor --nogroup %s")  
+  ;; DOESN'T WORK.  Neither does counsel-ag
+  ;; so can use ag inside of eshell. Installation: run alias ag 'ag-eshell $1' in eshell. This puts this elisp in emacs.d/eshell/alias, so need to do this for each install.
+  ;; from: https://github.com/tomjakubowski/.emacs.d/issues/3
+  (defun ag-eshell (string)
+    "Search with ag using the current eshell directory and a given string.
+   To be used from within an eshell alias
+   (`alias ag 'ag-eshell $1'` within eshell)"
+    (ag/search string (eshell/pwd))))
+
+;; ** Search/Replace within Buffer
+
+;; Bindings for searching with currently highlighted string
+;; See also "C-c s") 'swiper-isearch-thing-at-point)
+(define-key isearch-mode-map "\M-s" 'isearch-repeat-forward)  ; word forward
+(define-key isearch-mode-map "\M-r" 'isearch-repeat-backward) ; word backward
+
+(use-package replace-from-region
+  :config                    ; default was query-replace
+  (global-set-key (kbd "M-%") 'query-replace-from-region))
+
+;; So isearch searches for selected region, if there is one.  From:
+;;http://stackoverflow.com/questions/202803/searching-for-marked-selected-text-in-emacs
+;; NOTE: C-s C-w (extra C-w's expand region) also works well
+;; TODO: Replace with isearch with ivy search?
+;; See also "C-c s") 'swiper-isearch-thing-at-point)
+(defun jrh-isearch-with-region ()
+  "Use region as the isearch text."
+  (when mark-active
+    (let ((region (funcall region-extract-function nil)))
+      (deactivate-mark)
+      (isearch-push-state)
+      (isearch-yank-string region))))
+(add-hook 'isearch-mode-hook #'jrh-isearch-with-region)
+
+;; C-; on symbol/word edits all instances in scope & other things. C-; to exit
+(use-package iedit
+  :config
+  (defun iedit-within-defun ()
+    "Do iedit search and replace within current defun (equivalent to C-0 C-;)"
+    (interactive)
+    (let ((current-prefix-arg '(0))) (call-interactively 'iedit-mode)))
+  :init
+  (define-key prog-mode-map (kbd "C-;") 'iedit-within-defun))
+
+;; ** Expand-Region
+;; handy with, at least, wrap-region for italics, bold,... emphasis
+(use-package expand-region
+  :bind ("C-=" . er/expand-region))
+
+;; * Swiper/Ivy
+
+;; Help while in ivy search:
+;;  ivy hydra: C-o;
+;;  ivy full help: C-h m
+(use-package swiper
+  :diminish ivy-mode
+  :init
+  ;;(setq ivy-use-virtual-buffers t) ; ivy-switch-buffer also shows recent files
+  (setq ivy-count-format "(%d/%d) ") ; show candidate index/count in swiper
+  ;; Search with swiper, handles org-mode headline unfold much better than helm
+  ;; C-s C-w (extra C-w's expand region) also works well
+  ;; I added -i to counsel-grep-base-command so grep is case-insensitive
+  ;;  (fset 'swiper-func 'counsel-grep-or-swiper) ; uses grep for long files, esp. org
+
+  ;; swiper-isearch is much faster than plain swiper:
+  ;; https://oremacs.com/2019/04/07/swiper-isearch/
+  ;; Are the matches different?
+  ;; (fset 'swiper-func-forward 'swiper) ; standard swiper, slow on large org files
+  ;; (fset 'swiper-func-backward 'swiper-backward) ; standard swiper,
+  ;; slow on large org files
+  ;; Note: could also experiment w/ swiper-isearch-toggle
+  (fset 'swiper-func-forward 'swiper-isearch) ; standard swiper, slow on large org files
+  (fset 'swiper-func-backward 'swiper-isearch-backward) ; standard swiper, slow on large org files
+
+  ;; TODO: combine forward backward into one function instead of this hack
+  ;; (defun sdo/swiper-region (isForward)
+  ;;   "If region selected, swipe for it, else do normal swiper call"
+  ;;   (interactive)
+  ;;   (let ((swiper-func (if isForward swiper-func-forward swiper-func-backward)))
+  ;;     (if mark-active
+  ;;         (let ((region (funcall region-extract-function nil)))
+  ;;           (deactivate-mark)
+  ;;           (funcall swiper-func region))
+  ;;       (funcall swiper-func))))
+  ;;
+  ;; (defun sdo/swiper-region-forward ()
+  ;;   "If region selected, swipe for it forward, else do normal swiper call"
+  ;;   (interactive)
+  ;;   (sdo/swiper-region t))
+
+  (defun sdo/swiper-region-forward ()
+    "If region selected, swipe for it forward, else do normal swiper call"
+    (interactive)
+    (if mark-active
+        (let ((region (funcall region-extract-function nil)))
+          (deactivate-mark)
+          (swiper-func-forward region))
+      (swiper-func-forward)))
+
+  (defun sdo/swiper-region-backward ()
+    "If region selected, swipe for it backwards, else do normal swiper call"
+    (interactive)
+    (if mark-active
+        (let ((region (funcall region-extract-function nil)))
+          (deactivate-mark)
+          (swiper-func-backward region))
+      (swiper-func-backward)))
+
+  (global-set-key "\C-s" 'sdo/swiper-region-forward)
+  (global-set-key "\C-r" 'sdo/swiper-region-backward)
+  ;; see also jrh-isearch-with-region
+  (global-set-key (kbd "C-c s") 'swiper-isearch-thing-at-point)
+  ;; ivy-views integrate with ivy-switch-buffer (See
+  ;; https://oremacs.com/2016/06/27/ivy-push-view/).  That's probably
+  ;; nice but I'm still using ido-switch-buffer b/c of its rectangular
+  ;; grid view.  So, I've bound ivy-switch view to something close to switch-buffer.
+  ;; NOTE: there is now an "ivy-grid" view: ivy-explorer, below.
+  (global-set-key (kbd "C-c v") 'ivy-push-view)
+  (global-set-key (kbd "C-c V") 'ivy-pop-view) ; works like delete
+  (global-set-key (kbd "C-x V") 'ivy-switch-view)
+  ;; actually, this seems to do the (nearly) same thing as C-s s
+  (global-set-key (kbd "C-c C-r") 'ivy-resume) ;Resume last ivy completion sess
+  :config
+  ;; for consistent backwards search binding within ivy minibuffer
+  (bind-key "C-r" 'ivy-previous-line-or-history ivy-minibuffer-map)
+  )
+
+;; consider these counsel commands (from:
+;; https://dev.to/deciduously/how-i-emacs-and-so-can-you-packages-m9p)
+;; so far, I like: counsel-git, counsel-git-grep, 
+
+;; ;; Override the basic Emacs commands
+;; (use-package counsel
+;;   :bind* ; load when pressed
+;;   (("M-x"     . counsel-M-x)
+;;    ("C-s"     . swiper)
+;;    ("C-x C-f" . counsel-find-file)
+;;    ("C-x C-r" . counsel-recentf)  ; search for recently edited
+;;    ("C-c g"   . counsel-git)      ; search for files in git repo
+;;    ("C-c j"   . counsel-git-grep) ; search for regexp in git repo
+;;    ("C-c /"   . counsel-ag)       ; Use ag for regexp
+;;    ("C-x l"   . counsel-locate)
+;;    ("C-x C-f" . counsel-find-file)
+;;    ("<f1> f"  . counsel-describe-function)
+;;    ("<f1> v"  . counsel-describe-variable)
+;;    ("<f1> l"  . counsel-find-library)
+;;    ("<f2> i"  . counsel-info-lookup-symbol)
+;;    ("<f2> u"  . counsel-unicode-char)
+;;    ("C-c C-r" . ivy-resume)))     ; Resume last Ivy-based completion
+
+(use-package counsel ; better kill-ring 2nd yanking
+  :init
+  :diminish counsel-mode
+  :bind
+  (("M-y" . counsel-yank-pop)
+   :map ivy-minibuffer-map
+   ("M-y" . ivy-next-line)) ; needed?
+   :config
+   ;; Internet search, compare w/ google-this
+   ;; TODO: make it search for region if selected, like
+   ;; sdo/swiper-region and for thing at point, like c-c s
+   ;; (swiper-isearch-thing-at-point) does now.  There are many
+   ;; *-at-point functions already here.  Maybe one is an inspiration.
+   ;; Some existing funcs call emac's symbol-at-point.
+   (global-set-key (kbd "C-S-s")  'counsel-search)) ; doesn't work in :bind
+
+(use-package ivy-explorer ; ido-grid-mode for ivy: C-f/b/p/n/a/e navigate the grid
+  :after ivy
+  :diminish ivy-explorer-mode
+  :config
+  (require 'ivy-explorer) ; needed?
+  ;; use ivy explorer for all file dialogs
+  (ivy-explorer-mode 1)
+  ;; not strictly necessary
+  (counsel-mode 1))
+
+(use-package hydra) ; should probably put some hydra defs inside of it, or this inside of ivy
+;;(use-package ivy-hydra) ; bound to C-o (is this helpful?)
+
+;; from: https://github.com/abo-abo/swiper/issues/2021
+;;; Ivy Hydra
+;; replace the ivy-hydra with this learning one
+;; uses regular ivy-mode keybindings to provide cleaner help and aid learning
+(defhydra hydra-ivy (:hint nil
+                     :color pink)
+"
+
+Navigation:
+_C-n_/_C-p_ next/previous  _M-<_/_M->_ begin/end  _C-v_/_M-v_ scroll up/down
+_C-'_ select with avy
+
+Use current selection to:
+_RET_,_C-m_ default action  _M-o_ choose from actions
+_C-M-j_ use current input not selection
+
+Do action with current selection and loop to choose more items:
+_C-M-m_ default action  _C-M-o_ choose action
+_C-M-n_/_C-M-p_ default action and select next/previous
+
+Insert into input field:
+_TAB_ complete input as far as possible
+_C-j_ or _TAB_ _TAB_ complete directory and search or complete filename and do action
+_M-n_/_M-p_ history next/previous  _M-i_ selection  _M-j_ word-at-point
+_C-r_ reverse search history  _C-s_ next line or last from history if empty 
+
+Other operations with current candidates:
+_S-SPC_ restrict to current matches  _M-w_ saves selections to kill ring
+_C-c C-o_ open candidates in ivy-occur buffer
+
+Other:
+_c_ toggle calling  _M-c_ toggle case folding  _M-r_ toggle regexp
+_C-c C-s_ rotate sort function if multiple defined
+_C-c C-a_ toggle user configured ignore lists
+_C-M-a_ change default action from list for this session
+"
+  ;; Navigation
+  ("M-<" ivy-beginning-of-buffer)
+  ("C-n" ivy-next-line)
+  ("C-p" ivy-previous-line)
+  ("M->" ivy-end-of-buffer)
+  ("C-v" ivy-scroll-up-command)
+  ("M-v" ivy-scroll-down-command)
+  ;; Single selection, action, exit
+  ("RET" ivy-done :exit t)
+  ("C-m" ivy-done :exit t)
+  ("M-o" ivy-dispatching-done :exit t)
+  ("C-j" ivy-alt-done :exit t)
+  ("TAB" ivy-partial-or-done :exit t)
+  ("C-M-j" ivy-immediate-done :exit t)
+  ("C-'" ivy-avy :exit nil)
+  ;; Multiple selections, actions, no exit
+  ("C-M-m" ivy-call)
+  ("C-M-o" ivy-dispatching-call)
+  ("C-M-n" ivy-next-line-and-call)
+  ("C-M-p" ivy-previous-line-and-call)
+  ;; alter input
+  ("M-n" ivy-next-history-element)
+  ("M-p" ivy-previous-history-element)
+  ("M-i" ivy-insert-current)
+  ("M-j" ivy-yank-word)
+  ("S-SPC" ivy-restrict-to-matches)
+  ("C-r" ivy-reverse-i-search)
+  ("C-s" ivy-next-line-or-history)
+  ;; other
+  ("M-w" ivy-kill-ring-save)
+  ;; non-standard utilities
+  ("c" ivy-toggle-calling)
+  ("M-c" ivy-toggle-case-fold)
+  ("M-r" ivy-toggle-regexp-quote)
+  ("C-c C-s" ivy-rotate-sort)
+  ("C-c C-a" ivy-toggle-ignore)
+  ("C-M-a" ivy-read-action)
+  ("C-c C-o" ivy-occur :exit t)
+  )
+(define-key ivy-minibuffer-map (kbd "C-o") 'hydra-ivy/body)
+
+;; Is this needed anymore, since ivy-isearch is now (Apr 2019) so much faster?
+(defun org-toggle-outline-visibility ()
+  "Hides all subheadlines or restores original visibility before toggle.
+   Eventually use this to speed up ivy by showing everything, searching and then unshowing everything."
+  (interactive)
+  ;; NAH, need to call "hide everything on one call; save outline on next.  Also, apparently need for arguments for org-save-outline-visibility:  see emacs help. 
+  (org-save-outline-visibility nil))
+
+;; * IDO Mode
+
+;; TODO: find a new file that's like something already existing but shorter (so you can create a new file w/ a shorter name.  eg.s C-x C-x tmp   and there
+;; is already a file named tmp.txt.  Or, renane a file to a shorter
+;; version of its name e.g. rename tmp.txt to tmp.
+;; I can't do this.  Ido and counsel-find-file both
+;; have a problem in this situation.
+;; Note: ido on find-file supposedly can be overriden with C-j (to validate) or
+;; C-F (after you've narrowed options).  However, Evernote is
+;; currently bound to C-F.
+;; https://stackoverflow.com/questions/21007014/not-selecting-what-emacs-ido-is-suggesting
+;; But neither option works. in the case of shorter name.
+;;
+;; Commentining out (ido-mode 1) and (ido-everywhere 1) fixes file
+;; visiting but not file renaming.  Ivy is getting in the
+;; way with naming: can force it to accept your shorter choice with C-M-j
+;;
+;; TODO: how to open a pdf with ido (mapped to C-x C-f).  Currently,
+;; it doesn't use the system default (PDF Xchange editor) but instead
+;; opens it in an emacs buffer.  Is Ivy any better?
+;; Nope. counsel-find-file does it too.
+;; In dired, I can open a pdf with the sytem pdf reader with 'W' key.
+;; This calls browse-url-of-dired-file; hitting RETURN of 'f' calls
+;; dired-find-file
+
+;; Ido mode (a replacement for iswitchb and much else).  Much is in customizations
+;; advice from: http://www.masteringemacs.org/article/introduction-to-ido-mode
+;; See also sdo/get-recentf() in keybinding section, which (currently) uses ido
+;; Ivy is fancier but I'm keeping Ido around because it has a nice
+;; grid mode that isn't available for Ivy (but see ivy-explorer).
+;;
+;; Should be placed after ivy to avoid partial ivy overwrites of ido functions
+
+;; Commenting out  these fixed renaming a file to a shorter but similar name
+;(ido-mode 1) ; https://github.com/DarwinAwardWinner/ido-completing-read-plus
+;(ido-everywhere 1)
+
+;; From: http://stackoverflow.com/questions/17986194/emacs-disable-automatic-file-search-in-ido-mode
+;; so it doesn't search for file completions in other directories.  Really
+;; hoses up dired directory create, for example.
+(setq ido-auto-merge-work-directories-length -1)
+
+;; replaces emacs w/ ido in as many places as possible
+;; https://github.com/DarwinAwardWinner/ido-completing-read-plus
+(use-package ido-completing-read+
+  :config (ido-ubiquitous-mode 1)) ; run it (almost) everywhere
+
+;; how files are ordered in the ido mini-buffer
+(setq ido-file-extensions-order '(".org" ".m" ".R" "_emacs" ".emacs" ".txt" ".py" ".pl" ".pm" ".el" ".c" ".cpp" ".h" ".rb" ".xml"))
+
+(use-package ido-grid-mode ;; https://github.com/emacsmirror/ido-vertical-mode
+  :config (ido-grid-mode 1))
+
+(use-package flx-ido
+  :init
+  ;; copied from https://github.com/bdd/.emacs.d/blob/master/packages.el
+  (setq gc-cons-threshold (* 20 (expt 2 20)) ido-use-faces nil) ; megabytes
+  :config
+  (flx-ido-mode 1)
+  ;; disable ido faces to see flx highlights.
+  (setq ido-enable-flex-matching t)
+  (setq ido-use-faces nil))
+
+;; This disappeard from melpa, and I gues I'm not using it anyway
+;; ;; I also have a hydra set up to do counsel bindings but ido-describe-bindings is here because it also shows unicode chars (that I don't know how to activate with my keyboard, but at least they're there...)
+;; (use-package ido-describe-bindings
+;;   :config (global-set-key (kbd "C-h b") 'ido-describe-bindings))
+
+;; ido- matching for emacs commands: https://www.reddit.com/r/emacs/comments/1xnhws/speaking_of_emacs_modes_flx_flxido_ido_smex_helm/?st=iu1g56lu&sh=554484fb
+(use-package smex
+  :config
+  (smex-initialize)
+  (global-set-key (kbd "M-x") 'smex)
+  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+  ;; This is your old M-x.
+  (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
+
+;; * Company Mode
+;; Used in other packages.  Maybe put this section in one of those places instead of here?
+
+(use-package company)
+
+;; Sorter like smex.  Doesn't seem to do anything, probably b/c ido is
+;; overriding ivy where it might matter.
+;; (use-package ivy-prescient
+;;   :after ivy
+;;   :config
+;;   (ivy-prescient-mode))
 
 ;; * Writing Tools
 ;; ** General Editing
@@ -3722,7 +3755,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(mouse-wheel-tilt-scroll t)
  '(org-agenda-files
    (quote
-    ("c:/Users/scott/OneDrive - Clean Power Research/ref/tmp.org")))
+    ("~/OneDrive - Clean Power Research/ref/DOE_brainstorm/20200605152244-test0.org" "c:/Users/scott/OneDrive - Clean Power Research/ref/tmp.org")))
  '(org-confirm-shell-links (quote y-or-n-p))
  '(org-ctrl-k-protect-subtree t)
  '(org-cycle-include-plain-lists (quote integrate))
@@ -3784,7 +3817,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (org-roam-bibtex deft zotxt zotxt-emacs deadgrep emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (helm-org-rifle company-org-roam org-roam-bibtex deft zotxt zotxt-emacs deadgrep emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
