@@ -2089,538 +2089,6 @@ is already narrowed."
 (use-package org-cliplink ; make hyper link from URL in clipboard
   :config (define-key org-mode-map (kbd "C-c y") 'org-cliplink))
 
-;; ** Org and Git
-;;For magit buffers https://github.com/magit/orgit
-;;(use-package orgit)
-
-;; This is nice, but it ALWAYS stores git links if the file is in a
-;;git repository -- screws up links across energytop.org and
-;;howto.org, because they would point to certain git versions instead
-;;of the CURRENT git version.
-;;
-;; My issue report:
-;;https://github.com/ReimarFinken/org-git-link/issues/5
-;; Author's introduction:
-;;https://lists.gnu.org/archive/html/emacs-orgmode/2009-10/msg00730.html
-;; somebody has same problem:
-;;https://stackoverflow.com/questions/56158827/how-do-i-disable-or-rein-in-org-git-link-org-plus-contrib-20190513
-;;
-;;All git links https://orgmode.org/worg/org-contrib/org-git-link.html
-;;(if (sdo/find-exec "git") (add-to-list 'org-modules 'org-git-link))
-
-;; ** Org-rifle
-;; Search org-mode file(s) and get results and their place in the org-mode tree hierarchy
-;; TODO: Try it: https://github.com/alphapapa/org-rifle
-;;
-;; Is this better than org-deft b/c it limits its search to org files?
-;;
-;; From: https://dustinlacewell.github.io/emacs.d/
-(use-package helm-org-rifle
-:after (helm org)
-:commands helm-org-rifle-current-buffer
-:config
-(define-key org-mode-map (kbd "M-r") 'helm-org-rifle-current-buffer))
-
-;; ** Org and Zotero
-
-;; For Zotero add-in "zutilo"  Conflicts/same-as zotxt?
-;; https://orgmode-exocortex.com/2020/05/13/linking-to-zotero-items-and-collections-from-org-mode/
-(org-link-set-parameters "zotero" :follow
-                         (lambda (zpath)
-                           (browse-url
-                            ;; we get the "zotero:"-less url, so we put it back.
-                            (format "zotero:%s" zpath))))
-
-;; For Zotero add-in "zotxt"  Conflicts/same-as zutilo?
-;; https://github.com/egh/zotxt-emacs
-;; Pastes biblio summary of Zotero entries in org-mode, connects to org-noter
-(use-package zotxt)
-
-;; ** Org-ref
-
-;; Store links in bibtex: C-c l; in .org files C-c ]
-;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
-(use-package org-ref
-  :after org
-  :init
-  (let ((default-directory docDir))
-
-    (setq org-ref-bibliography-notes org_ref_notes_fn
-          org-ref-default-bibliography bibfile_list 
-          ;; whatever looks at org-ref-pdf-directory seems to look only at 1st element of list, unlike user of bibtex-completion-bibliography in helm--bibtex.  This is even though user of org-ref-default-bibliography =does= look at lists.
-          org-ref-pdf-directory bibpdf_list
-          reftex-default-bibliography org-ref-default-bibliography))
-
-  ;; ;; showing broken links slowed down energytop.org (but much less in Oct. 2017)
-  ;; ;;  https://github.com/jkitchin/org-ref/issues/468
-  (setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
-  :config
-  (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
-  ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
-  (setq bibtex-autokey-year-length 4
-        bibtex-autokey-name-year-separator "-"
-        bibtex-autokey-year-title-separator "-"
-        bibtex-autokey-titleword-separator "-"
-        bibtex-autokey-titlewords 2
-        bibtex-autokey-titlewords-stretch 1
-        bibtex-autokey-titleword-length 5)
-  ;; Make org-ref cite: link folded in emacs.  Messes up Latex export:
-  ;; https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
-  ;;  (org-link-set-parameters "cite" :display nil)
-  ;; Improvement, or at least more explicity setting from:
-  ;; https://org-roam.discourse.group/t/customize-display-of-cite-links/129/19
-  (org-link-set-parameters "cite" :display 'org-link)
-  ;; Make the 'cite:' link type available when C-c l on a bibtex entry
-  ;; https://github.com/jkitchin/org-ref/issues/345
-  (let ((lnk (assoc "bibtex" org-link-parameters)))
-    (setq org-link-parameters (delq lnk org-link-parameters))
-    (push lnk org-link-parameters))
-  )
-
-;; Unfortunately, this may screw up linking to techreports:
-;; https://github.com/jkitchin/org-ref/issues/205
-;; at least they work after I comment it out
-;; (bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
-
-;; ** Org-roam
-;;As of 5/23/20, the best docs are in emacs info or here: https://org-roam.github.io/org-roam/manual/
-
-(sdo/find-exec "dot" "graphviz needed by org-roam")
-
-;; If using sqlite3 (only thing I could get working on Windows), then, as of 5/23/20, must edit org-roam-db.el and recompile every time it org-roam updates.  Instructions are:
-;; 1. In Emacs, install the emacsql-sqlite3 package
-;; 2. Modify org-roam-db.el:
-;;    - Replace (require 'emacsql-sqlite) with (require 'emacsql-sqlite3)
-;;    - Comment/deactivate the complete (defconst org-roam-db--sqlite-available-p ... )
-;;    -In (defun org-roam-db ..., replace emacsql-sqlite with emacsql-sqlite3
-;; 3. Compile org-roam-db.el (keep modified .el file in same dir too)
-;; From: https://org-roam.readthedocs.io/en/master/installation/
-
-(sdo/find-exec "sqlite3" "sqlite3 needed by org-roam")
-(use-package emacsql-sqlite3)
-
-;; my config, bugfixed version of:
-;; https://org-roam.readthedocs.io/en/master/installation/
-(use-package org-roam
-  :custom
-  ;;  (org-roam-directory "~/tmp/org-roam")
-  ;; JK's OR brain
-  ;;  (org-roam-directory "~/tmp/braindump-master/org")
-  (org-roam-directory org_roam_dir)
-  ;; Put org-roam.db outside of OneDrive, avoids sync problems across machines
-  (org-roam-db-location "~/org-roam.db")
-  ;; Note that Windows "find" interferes with linux find, so use rg instead
-  ;; HOWEVER, the rg interface broke the graph, as of 5/29/20
-  ;; But maybe 'rg' is always ignored when on Windows now?
-  (org-roam-list-files-commands '(rg)) ;; use ripgrip, expand emacs to see graph
-  ;;  (org-roam-list-files-commands nil) ;; elisp default, but rg now works on Windows
-  :config (org-roam-mode)
-  :bind (:map org-roam-mode-map
-              (("C-c n l" . org-roam)
-               ("C-c n f" . org-roam-find-file)
-               ("C-c n j" . org-roam-jump-to-index)
-               ("C-c n b" . org-roam-switch-to-buffer)
-               ("C-c n g" . org-roam-graph))
-              :map org-mode-map
-              (("C-c n i" . org-roam-insert))))
-
-;; I don't know how to activate it like the github animated git shows
-;; (use-package company-org-roam
-;; ;;  :straight (:host github :repo "org-roam/company-org-roam")
-;;   :config
-;;   (push 'company-org-roam company-backends))
-
-;; ** Org-roam-bibtex
-;; *** Helm-bibtex
-;; Seems to be rquired for org-roam-bibtex
-
-(use-package helm-bibtex)
-
-;; setup mostly from: https://github.com/tmalsburg/helm-bibtex
-;;(setq bibtex-completion-bibliography '(bibfile_roam_nm bibfile_energy_nm))
-(setq bibtex-completion-bibliography bibfile_list)
-;; can also add .org bibfiles, but I don't understand this.  Do it like:
-;; (setq bibtex-completion-bibliography
-;;       '("/path/to/bibtex-file-1.bib"
-;;         "/path/to/org-bibtex-file.org"
-;;         ("/path/to/org-bibtex-file2.org" . "/path/to/bibtex-file.bib")))
-
-(setq bibtex-completion-library-path bibpdf_list)
-;; Find pdf w/ JabRef/Zotero fields
-(setq bibtex-completion-pdf-field "file")
-
-;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
-(setq bibtex-completion-notes-path (expand-file-name "bib-notes" org_roam_dir))
-
-;; *** org-roam-bibtex
-
-;; Handy: to open a cite note's pdf: C-c n a RET
-;;From github page: https://github.com/org-roam/org-roam-bibtex
-(use-package org-roam-bibtex
-  :after org-roam
-  :hook (org-roam-mode . org-roam-bibtex-mode)
-  :bind (:map org-mode-map
-              (("C-c n a" . orb-note-actions))))
-
-
-;; NOTE the below don't take effect unless you've run M-x org-roam-bibtex-mode or customize it to ON
-;;
-;; BUG below: I removed the heading: "* {title}" or something like that from the orb-template, but org-noter must be started on a heading, for some stupid reason, so when I try to run it, it asks for some file and I don't what what it wants.  Didn't do that before I removed the heading.
-;;
-;;From github page: https://github.com/org-roam/org-roam-bibtex
-;; This works with org-noter.  If you're in the org-roam-cite note, and run org-noter, it will set things up correctly.  Two cautions
-;; 1. must put cursor in headline (required) before M-x org-noter
-;; 2. I =think= you have to save (C-c C-n?) the new helm-bibtex capture b/f running org-noter
-(setq orb-preformat-keywords
-   '(("citekey" . "=key=") "title" "url" "file" "author-or-editor" "keywords"))
-
-(setq orb-templates
-      '(("r" "ref" plain (function org-roam-capture--get-point)
-         ""
-         :file-name "${citekey}"
-         :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}
-
-- tags ::
-- keywords :: ${keywords}
-
-* Notes
-:PROPERTIES:
-:NOTER_DOCUMENT: %(orb-process-file-field \"${citekey}\")
-:NOTER_PAGE:
-:END:
-
-")))
-
-;; ;; put citekey in title of bib notes, title in note.  This can get much fancier and can have multiple templates
-;;  (setq orb-templates
-;;       '(("r" "ref" plain (function org-roam-capture--get-point) ""
-;;          :file-name "${citekey}"
-;;          :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n" ; <--
-;;          :unnarrowed t)))
-
-
-;; from:  https://rgoswami.me/posts/org-note-workflow/#helm-bibtex
-;; Copies in keywords, which I may or may not like
-;;  (use-package org-roam-bibtex
-;;   :after (org-roam)
-;;   :hook (org-roam-mode . org-roam-bibtex-mode)
-;;   :config
-;;   (setq org-roam-bibtex-preformat-keywords
-;;    '("=key=" "title" "url" "file" "author-or-editor" "keywords"))
-;;   (setq orb-templates
-;;         '(("r" "ref" plain (function org-roam-capture--get-point)
-;;            ""
-;;            :file-name "${citekey}"
-;;            :head "#+TITLE: ${=key=}: ${title}\n#+ROAM_KEY: ${ref}
-
-;; - tags ::
-;; - keywords :: ${keywords}
-
-;; \n* ${title}\n  :PROPERTIES:\n  :Custom_ID: ${=key=}\n  :URL: ${url}\n  :AUTHOR: ${author-or-editor}\n  :NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n  :NOTER_PAGE: \n  :END:\n\n"
-
-;;            :unnarrowed t))))
-
-;; These are for capturing stuff not in a bibtex file already, I think
-;;
-;; from: https://github.com/zaeph/org-roam-bibtex
-;; (setq orb-preformat-keywords
-;;       '(("citekey" . "=key=")
-;;         ("type" . "=type=")
-;;        "title"))
-;; (setq org-roam-capture-templates
-;;       '(("r" "reference" plain (function org-roam-capture--get-point)
-;;          "#+ROAM_KEY: %^{citekey}%? fullcite: %\1
-;;           #+TAGS: %^{type}
-;;           This %\2 deals with ..."
-;;          :file-name "references/%<%Y-%m-%d-%H%M%S>_${title}"
-;;          :head "#+TITLE: ${title}"
-;;          :unnarrowed t)))
-
-
-;; based on: https://dotdoom.rgoswami.me/config.html#text-3
-;;;;(after org-ref
-;; (setq
-;;  ;; bibtex-completion-notes-path org_ref_notes_dir
-;;  ;; bibtex-completion-bibliography bibfile_roam_nm
-;;  ;; bibtex-completion-pdf-field "file"
-;;  bibtex-completion-notes-template-multiple-files
-;;  (concat
-;;   "#+TITLE: ${title}\n"
-;;   "#+ROAM_KEY: cite:${=key=}\n"
-;;   "* TODO Notes\n"
-;;   ":PROPERTIES:\n"
-;;   ":Custom_ID: ${=key=}\n"
-;;   ":NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n"
-;;   ":AUTHOR: ${author-abbrev}\n"
-;;   ":JOURNAL: ${journaltitle}\n"
-;;   ":DATE: ${date}\n"
-;;   ":YEAR: ${year}\n"
-;;   ":DOI: ${doi}\n"
-;;   ":URL: ${url}\n"
-;;   ":END:\n\n"
-;;   )
-;;  )
-;; ;;)
-
-;; a better alternative?
-;; https://org-roam.discourse.group/t/does-anyone-have-a-workflow-for-associating-notes-with-a-zotero-stored-pdf/112/10?u=scotto
-;;
-;; or pieces of this:
-;; https://rgoswami.me/posts/org-note-workflow/
-
-;; ** Org-roam-company
-
-;; Popup link name completion.  Without this, it seems like the default is swiper.  Must run M-x company-mode to run it with M-x company org-roam.
-;  When run it, just get a long list of completions, doesnt narrow as you type.
-;; (use-package company-org-roam
-;;   :config
-;;   (push 'company-org-roam company-backends))
-
-;; ** Org-noter
-;; Keybindings, basic explanation: https://github.com/weirdNox/org-noter#keys
-;;
-;; Workflow w/ org-noter, org-roam org-roam-bibtex and org-ref.  Also plans for org-journal: https://rgoswami.me/posts/org-note-workflow/
-;;
-;; org-noter config inspired by: https://write.as/dani/notes-on-org-noter
-(use-package org-noter
-  :after org
-  :after pdf-tools
-  :config (setq org-noter-default-notes-file-names '("org-noter-notes.org")
-                org-noter-notes-search-path '("~/tmp/org-noter")
-                ))
-;;                  org-noter-separate-notes-from-heading t))
-
-;; coordinating org-noter with org-notes
-;; https://write.as/dani/notes-on-org-noter
-(defun org-ref-noter-at-point ()
-      "Open the pdf for bibtex key under point if it exists."
-      (interactive)
-      (let* ((results (org-ref-get-bibtex-key-and-file))
-             (key (car results))
-             (pdf-file (funcall org-ref-get-pdf-filename-function key)))
-        (if (file-exists-p pdf-file)
-            (progn
-              (find-file-other-window pdf-file)
-              (org-noter))
-          (message "no pdf found for %s" key))))
-
-(add-to-list 'org-ref-helm-user-candidates 
-             '("Org-Noter notes" . org-ref-noter-at-point))
-
-;; ** Org-roam-rgoswami
-
-;; From: https://dotdoom.rgoswami.me/config.html#text-3
-;; More explanation: https://rgoswami.me/posts/org-note-workflow/
-
-;; 0.3.6 Variables
-
-;; (setq
-;;    org_roam_dir (expand-file-name "org_roam" docDir)
-;;    org_notes_dir (expand-file-name "org_notes" org_roam_dir)
-;;    bibfile_roam_nm (expand-file-name "zotlib.bib" org_roam_dir)
-;;    org_ref_notes_dir (expand-file-name "org_ref_notes" org_roam_dir)
-;;    org-directory org_notes_dir
-;;    deft-directory org_notes_dir
-;;    org-roam-directory org_notes_dir
-;;    )
-
-
-;; ;; 3.1.1 Org-Ref
-
-;; ;; This seems like an ubiquitous choice for working with org files and references, though quite a bit of the config here relates to helm-bibtex. Commented sections are set in my private config.
-
-;; (use-package org-ref
-;;     ;; :init
-;;     ; code to run before loading org-ref
-;;     :config
-;;     (setq
-;;          org-ref-completion-library 'org-ref-ivy-cite
-;;          org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
-;;          org-ref-default-bibliography bibfile_list
-;;          org-ref-bibliography-notes (expand-file-name "bibnotes.bib" org_roam_dir)
-;;          org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
-;;          org-ref-notes-directory org_ref_notes_dir
-;;          org-ref-notes-function 'orb-edit-notes
-;;     ))
-
-;; ;; Apparently, org-ref is also able to fetch pdf files when DOI or URL links are dragged onto the .bib file. However, since zotero will handle the metadata, this remains to be considered.
-
-;; ;; Ivy is used exclusively throughout doom, makes sense to use it here too, but I recently switched to helm. Turns out helm is probably faster for larger collections since it can be asynchronous. Basically, this is because using the minibuffer, as ivy does is a blocking action while the helm buffer may be opened asynchronously. Name aside, helm-bibtex also works for ivy. Basically meant to interface with bibliographies in general. However, since I’m using org-ref, I won’t be configuring or loading that anymore.
-;; ;; 3.1.2 Helm Bibtex
-
-;; ;; For some reason, org-ref-notes isn’t working very nicely, so the setup above prioritizes the helm-bibtex note-taking setup.
-
-;; ;;(after org-ref
-;; (setq
-;;  bibtex-completion-notes-path org_ref_notes_dir
-;;  bibtex-completion-bibliography bibfile_roam_nm
-;;  bibtex-completion-pdf-field "file"
-;;  bibtex-completion-notes-template-multiple-files
-;;  (concat
-;;   "#+TITLE: ${title}\n"
-;;   "#+ROAM_KEY: cite:${=key=}\n"
-;;   "* TODO Notes\n"
-;;   ":PROPERTIES:\n"
-;;   ":Custom_ID: ${=key=}\n"
-;;   ":NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n"
-;;   ":AUTHOR: ${author-abbrev}\n"
-;;   ":JOURNAL: ${journaltitle}\n"
-;;   ":DATE: ${date}\n"
-;;   ":YEAR: ${year}\n"
-;;   ":DOI: ${doi}\n"
-;;   ":URL: ${url}\n"
-;;   ":END:\n\n"
-;;   )
-;;  )
-;; ;;)
-
-;; ;; 3.1.3 Org-Roam
-
-;; ;; actually copied from: https://rgoswami.me/posts/org-note-workflow/
-;; (use-package org-roam
-;;   :hook (org-load . org-roam-mode)
-;;   :commands (org-roam-buffer-toggle-display
-;;              org-roam-find-file
-;;              org-roam-graph
-;;              org-roam-insert
-;;              org-roam-switch-to-buffer
-;;              org-roam-dailies-date
-;;              org-roam-dailies-today
-;;              org-roam-dailies-tomorrow
-;;              org-roam-dailies-yesterday)
-;;   :preface
-;;   ;; Set this to nil so we can later detect whether the user has set a custom
-;;   ;; directory for it, and default to `org-directory' if they haven't.
-;;   (defvar org-roam-directory nil)
-;;   :init
-;;   :config
-;;   (setq org-roam-directory (expand-file-name (or org-roam-directory "roam")
-;;                                              org-directory)
-;;         org-roam-verbose nil  ; https://youtu.be/fn4jIlFwuLU
-;;         org-roam-buffer-no-delete-other-windows t ; make org-roam buffer sticky
-;;         org-roam-completion-system 'default ) ; rgoswami missed this paren
-
-;;   ;; Normally, the org-roam buffer doesn't open until you explicitly call
-;;   ;; `org-roam'. If `+org-roam-open-buffer-on-find-file' is non-nil, the
-;;   ;; org-roam buffer will be opened for you when you use `org-roam-find-file'
-;;   ;; (but not `find-file', to limit the scope of this behavior).
-;;   (add-hook 'find-file-hook
-;;     (defun +org-roam-open-buffer-maybe-h ()
-;;       (and +org-roam-open-buffer-on-find-file
-;;            (memq 'org-roam-buffer--update-maybe post-command-hook)
-;;            (not (window-parameter nil 'window-side)) ; don't proc for popups
-;;            (not (eq 'visible (org-roam-buffer--visibility)))
-;;            (with-current-buffer (window-buffer)
-;;              (org-roam-buffer--get-create)))))
-
-;;   ;; Hide the mode line in the org-roam buffer, since it serves no purpose. This
-;;   ;; makes it easier to distinguish among other org buffers.
-;;   (add-hook 'org-roam-buffer-prepare-hook #'hide-mode-line-mode))
-
-
-;; ;; NOT IN MELPA ANYMORE
-;; ;; Since the org module lazy loads org-protocol (waits until an org URL is
-;; ;; detected), we can safely chain `org-roam-protocol' to it.
-;; ;; (use-package org-roam-protocol
-;; ;;   :after org-protocol)
-
-
-;; ;; NOT IN MELPA ANYMORE
-;; ;; (use-package company-org-roam
-;; ;;   :after org-roam
-;; ;;   :config
-;; ;;   (set-company-backend! 'org-mode '(company-org-roam company-yasnippet company-dabbrev)))
-
-
-;; ;; Will also setup the org-roam-bibtex thing here. As foretold in the last line, there are more settings for ORB. The template is modified from here.
-
-;; (use-package org-roam-bibtex
-;;               :after (org-roam)
-;;               :hook (org-roam-mode . org-roam-bibtex-mode)
-;;               :config
-;;               (setq org-roam-bibtex-preformat-keywords
-;;                     '("=key=" "title" "url" "file" "author-or-editor" "keywords"))
-;;               (setq orb-templates
-;;                     '(("r" "ref" plain (function org-roam-capture--get-point)
-;;                        ""
-;;                        :file-name "${citekey}"
-;;                        :head "#+TITLE: ${=key=}: ${title}\n#+ROAM_KEY: ${ref}
-
-;; - tags ::
-;; - keywords :: ${keywords}
-
-;; \n* ${title}\n  :PROPERTIES:\n  :Custom_ID: ${=key=}\n  :URL: ${url}\n  :AUTHOR: ${author-or-editor}\n  :NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n  :NOTER_PAGE: \n  :END:\n\n"
-
-;;                        :unnarrowed t)))
-;;               )
-
-;; ;; 3.1.4 Org-Noter
-
-;; ;; I decided to use org-noter over the more commonly described interleave because it has better support for working with multiple documents linked to one file.
-
-;; (use-package org-noter
-;;   :after (:any org pdf-view)
-;;   :config
-;;   (setq
-;;    ;; The WM can handle splits
-;;    org-noter-notes-window-location 'other-frame
-;;    ;; Please stop opening frames
-;;    org-noter-always-create-frame nil
-;;    ;; I want to see the whole file
-;;    org-noter-hide-other nil
-;;    ;; Everything is relative to the rclone mega
-;;    org-noter-notes-search-path (list org_notes_dir)
-;;    )
-;;   )
-
-;; ;; I have a rather involved setup in mind, so I have spun this section off from the rest. The basic idea is to use deft for short-to-long lookup notes, and org-capture templates with org-protocol for the rest. I am also considering notdeft since it might work better for what I want to achieve. Though it isn’t really part of a note taking workflow, I also intend to use michel2 to sync my tasks…
-;; ;; 3.2 Org Capture
-
-;; ;; I am not really sure how to use these correctly, but I have the bare minimum required for the Firefox browser extension (setup from here), and a random article thing.
-;; ;; 3.2.1 Functions
-
-;; ;; These are needed for org-capture alone for now.
-
-;; ;; Fix some link issues
-;; (defun transform-square-brackets-to-round-ones(string-to-transform)
-;;   "Transforms [ into ( and ] into ), other chars left unchanged."
-;;   (concat
-;;    (mapcar #'(lambda (c) (if (equal c ?\[) ?\( (if (equal c ?\]) ?\) c))) string-to-transform))
-;;   )
-
-;; ;; 3.2.2 Templates
-
-;; ;; This might get complicated but I am only trying to get the bare minimum for org-protocol right now.
-
-;; ;; Actually start using templates
-;; ;;(after! org-capture
-;; ;; Firefox
-;; (add-to-list 'org-capture-templates
-;;              '("P" "Protocol" entry
-;;                (file+headline +org-capture-notes-file "Inbox")
-;;                "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?"
-;;                :prepend t
-;;                :kill-buffer t))
-;; (add-to-list 'org-capture-templates
-;;              '("L" "Protocol Link" entry
-;;                (file+headline +org-capture-notes-file "Inbox")
-;;                "* %? [[%:link][%(transform-square-brackets-to-round-ones \"%:description\")]]\n"
-;;                :prepend t
-;;                :kill-buffer t))
-;; ;; Misc
-;; (add-to-list 'org-capture-templates
-;;              '("a"               ; key
-;;                "Article"         ; name
-;;                entry             ; type
-;;                (file+headline +org-capture-notes-file "Article")  ; target
-;;                "* %^{Title} %(org-set-tags)  :article: \n:PROPERTIES:\n:Created: %U\n:Linked: %a\n:END:\n%i\nBrief description:\n%?"  ; template
-;;                :prepend t        ; properties
-;;                :empty-lines 1    ; properties
-;;                :created t        ; properties
-;;                ))
-;; ;;)
-
-
 ;; ** Org Mode Dedicated Targets
 (require 'org)
 
@@ -2864,6 +2332,540 @@ This function avoids making messed up targets by exiting without doing anything 
     :defer
     :config
     (require 'ox-pandoc)))
+
+;; ** Org and Git
+;;For magit buffers https://github.com/magit/orgit
+;;(use-package orgit)
+
+;; This is nice, but it ALWAYS stores git links if the file is in a
+;;git repository -- screws up links across energytop.org and
+;;howto.org, because they would point to certain git versions instead
+;;of the CURRENT git version.
+;;
+;; My issue report:
+;;https://github.com/ReimarFinken/org-git-link/issues/5
+;; Author's introduction:
+;;https://lists.gnu.org/archive/html/emacs-orgmode/2009-10/msg00730.html
+;; somebody has same problem:
+;;https://stackoverflow.com/questions/56158827/how-do-i-disable-or-rein-in-org-git-link-org-plus-contrib-20190513
+;;
+;;All git links https://orgmode.org/worg/org-contrib/org-git-link.html
+;;(if (sdo/find-exec "git") (add-to-list 'org-modules 'org-git-link))
+
+;; ** Org-rifle
+;; Search org-mode file(s) and get results and their place in the org-mode tree hierarchy
+;; TODO: Try it: https://github.com/alphapapa/org-rifle
+;;
+;; Is this better than org-deft b/c it limits its search to org files?
+;;
+;; From: https://dustinlacewell.github.io/emacs.d/
+(use-package helm-org-rifle
+:after (helm org)
+:commands helm-org-rifle-current-buffer
+:config
+(define-key org-mode-map (kbd "M-r") 'helm-org-rifle-current-buffer))
+
+;; ** Org and Zotero
+
+;; For Zotero add-in "zutilo"  Conflicts/same-as zotxt?
+;; https://orgmode-exocortex.com/2020/05/13/linking-to-zotero-items-and-collections-from-org-mode/
+(org-link-set-parameters "zotero" :follow
+                         (lambda (zpath)
+                           (browse-url
+                            ;; we get the "zotero:"-less url, so we put it back.
+                            (format "zotero:%s" zpath))))
+
+;; For Zotero add-in "zotxt"  Conflicts/same-as zutilo?
+;; https://github.com/egh/zotxt-emacs
+;; Pastes biblio summary of Zotero entries in org-mode, connects to org-noter
+(use-package zotxt)
+
+;; ** Org-ref
+
+;; Store links in bibtex: C-c l; in .org files C-c ]
+;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
+(use-package org-ref
+  :after org
+  :init
+  (let ((default-directory docDir))
+
+    (setq org-ref-bibliography-notes org_ref_notes_fn
+          org-ref-default-bibliography bibfile_list 
+          ;; whatever looks at org-ref-pdf-directory seems to look only at 1st element of list, unlike user of bibtex-completion-bibliography in helm--bibtex.  This is even though user of org-ref-default-bibliography =does= look at lists.
+          org-ref-pdf-directory bibpdf_list
+          reftex-default-bibliography org-ref-default-bibliography))
+
+  ;; ;; showing broken links slowed down energytop.org (but much less in Oct. 2017)
+  ;; ;;  https://github.com/jkitchin/org-ref/issues/468
+  (setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
+  :config
+  (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
+  ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
+  (setq bibtex-autokey-year-length 4
+        bibtex-autokey-name-year-separator "-"
+        bibtex-autokey-year-title-separator "-"
+        bibtex-autokey-titleword-separator "-"
+        bibtex-autokey-titlewords 2
+        bibtex-autokey-titlewords-stretch 1
+        bibtex-autokey-titleword-length 5)
+  ;; Make org-ref cite: link folded in emacs.  Messes up Latex export:
+  ;; https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
+  ;;  (org-link-set-parameters "cite" :display nil)
+  ;; Improvement, or at least more explicity setting from:
+  ;; https://org-roam.discourse.group/t/customize-display-of-cite-links/129/19
+  (org-link-set-parameters "cite" :display 'org-link)
+  ;; Make the 'cite:' link type available when C-c l on a bibtex entry
+  ;; https://github.com/jkitchin/org-ref/issues/345
+  (let ((lnk (assoc "bibtex" org-link-parameters)))
+    (setq org-link-parameters (delq lnk org-link-parameters))
+    (push lnk org-link-parameters))
+  )
+
+;; Unfortunately, this may screw up linking to techreports:
+;; https://github.com/jkitchin/org-ref/issues/205
+;; at least they work after I comment it out
+;; (bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
+
+;; ** Org-roam
+;; *** Org-roam basic config
+;;As of 5/23/20, the best docs are in emacs info or here: https://org-roam.github.io/org-roam/manual/
+
+(sdo/find-exec "dot" "graphviz needed by org-roam")
+
+;; If using sqlite3 (only thing I could get working on Windows), then, as of 5/23/20, must edit org-roam-db.el and recompile every time it org-roam updates.  Instructions are:
+;; 1. In Emacs, install the emacsql-sqlite3 package
+;; 2. Modify org-roam-db.el:
+;;    - Replace (require 'emacsql-sqlite) with (require 'emacsql-sqlite3)
+;;    - Comment/deactivate the complete (defconst org-roam-db--sqlite-available-p ... )
+;;    -In (defun org-roam-db ..., replace emacsql-sqlite with emacsql-sqlite3
+;; 3. Compile org-roam-db.el (keep modified .el file in same dir too)
+;; From: https://org-roam.readthedocs.io/en/master/installation/
+
+(sdo/find-exec "sqlite3" "sqlite3 needed by org-roam")
+(use-package emacsql-sqlite3)
+
+;; my config, bugfixed version of:
+;; https://org-roam.readthedocs.io/en/master/installation/
+(use-package org-roam
+  :custom
+  ;;  (org-roam-directory "~/tmp/org-roam")
+  ;; JK's OR brain
+  ;;  (org-roam-directory "~/tmp/braindump-master/org")
+  (org-roam-directory org_roam_dir)
+  ;; Put org-roam.db outside of OneDrive, avoids sync problems across machines
+  (org-roam-db-location "~/org-roam.db")
+  ;; Note that Windows "find" interferes with linux find, so use rg instead
+  ;; HOWEVER, the rg interface broke the graph, as of 5/29/20
+  ;; But maybe 'rg' is always ignored when on Windows now?
+  (org-roam-list-files-commands '(rg)) ;; use ripgrip, expand emacs to see graph
+  ;;  (org-roam-list-files-commands nil) ;; elisp default, but rg now works on Windows
+  :config (org-roam-mode)
+  :bind (:map org-roam-mode-map
+              (("C-c n l" . org-roam)
+               ("C-c n f" . org-roam-find-file)
+               ("C-c n j" . org-roam-jump-to-index)
+               ("C-c n b" . org-roam-switch-to-buffer)
+               ("C-c n g" . org-roam-graph))
+              :map org-mode-map
+              (("C-c n i" . org-roam-insert))))
+
+;; I don't know how to activate it like the github animated git shows
+;; (use-package company-org-roam
+;; ;;  :straight (:host github :repo "org-roam/company-org-roam")
+;;   :config
+;;   (push 'company-org-roam company-backends))
+
+;; *** Org-roam-bibtex
+;; *** Helm-bibtex
+;; Seems to be rquired for org-roam-bibtex
+
+(use-package helm-bibtex)
+
+;; setup mostly from: https://github.com/tmalsburg/helm-bibtex
+;;(setq bibtex-completion-bibliography '(bibfile_roam_nm bibfile_energy_nm))
+(setq bibtex-completion-bibliography bibfile_list)
+;; can also add .org bibfiles, but I don't understand this.  Do it like:
+;; (setq bibtex-completion-bibliography
+;;       '("/path/to/bibtex-file-1.bib"
+;;         "/path/to/org-bibtex-file.org"
+;;         ("/path/to/org-bibtex-file2.org" . "/path/to/bibtex-file.bib")))
+
+(setq bibtex-completion-library-path bibpdf_list)
+;; Find pdf w/ JabRef/Zotero fields
+(setq bibtex-completion-pdf-field "file")
+
+;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
+(setq bibtex-completion-notes-path (expand-file-name "bib-notes" org_roam_dir))
+
+;; *** org-roam-bibtex
+
+;; Handy: to open a cite note's pdf: C-c n a RET
+;;From github page: https://github.com/org-roam/org-roam-bibtex
+(use-package org-roam-bibtex
+  :after org-roam
+  :hook (org-roam-mode . org-roam-bibtex-mode)
+  :bind (:map org-mode-map
+              (("C-c n a" . orb-note-actions))))
+
+
+;; NOTE the below don't take effect unless you've run M-x org-roam-bibtex-mode or customize it to ON
+;;
+;; BUG below: I removed the heading: "* {title}" or something like that from the orb-template, but org-noter must be started on a heading, for some stupid reason, so when I try to run it, it asks for some file and I don't what what it wants.  Didn't do that before I removed the heading.
+;;
+;;From github page: https://github.com/org-roam/org-roam-bibtex
+;; This works with org-noter.  If you're in the org-roam-cite note, and run org-noter, it will set things up correctly.  Two cautions
+;; 1. must put cursor in headline (required) before M-x org-noter
+;; 2. I =think= you have to save (C-c C-n?) the new helm-bibtex capture b/f running org-noter
+(setq orb-preformat-keywords
+   '(("citekey" . "=key=") "title" "url" "file" "author-or-editor" "keywords"))
+
+(setq orb-templates
+      '(("r" "ref" plain (function org-roam-capture--get-point)
+         ""
+         :file-name "${citekey}"
+         :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}
+
+- tags ::
+- keywords :: ${keywords}
+
+* Notes
+:PROPERTIES:
+:NOTER_DOCUMENT: %(orb-process-file-field \"${citekey}\")
+:NOTER_PAGE:
+:END:
+
+")))
+
+;; ;; put citekey in title of bib notes, title in note.  This can get much fancier and can have multiple templates
+;;  (setq orb-templates
+;;       '(("r" "ref" plain (function org-roam-capture--get-point) ""
+;;          :file-name "${citekey}"
+;;          :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n" ; <--
+;;          :unnarrowed t)))
+
+
+;; from:  https://rgoswami.me/posts/org-note-workflow/#helm-bibtex
+;; Copies in keywords, which I may or may not like
+;;  (use-package org-roam-bibtex
+;;   :after (org-roam)
+;;   :hook (org-roam-mode . org-roam-bibtex-mode)
+;;   :config
+;;   (setq org-roam-bibtex-preformat-keywords
+;;    '("=key=" "title" "url" "file" "author-or-editor" "keywords"))
+;;   (setq orb-templates
+;;         '(("r" "ref" plain (function org-roam-capture--get-point)
+;;            ""
+;;            :file-name "${citekey}"
+;;            :head "#+TITLE: ${=key=}: ${title}\n#+ROAM_KEY: ${ref}
+
+;; - tags ::
+;; - keywords :: ${keywords}
+
+;; \n* ${title}\n  :PROPERTIES:\n  :Custom_ID: ${=key=}\n  :URL: ${url}\n  :AUTHOR: ${author-or-editor}\n  :NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n  :NOTER_PAGE: \n  :END:\n\n"
+
+;;            :unnarrowed t))))
+
+;; These are for capturing stuff not in a bibtex file already, I think
+;;
+;; from: https://github.com/zaeph/org-roam-bibtex
+;; (setq orb-preformat-keywords
+;;       '(("citekey" . "=key=")
+;;         ("type" . "=type=")
+;;        "title"))
+;; (setq org-roam-capture-templates
+;;       '(("r" "reference" plain (function org-roam-capture--get-point)
+;;          "#+ROAM_KEY: %^{citekey}%? fullcite: %\1
+;;           #+TAGS: %^{type}
+;;           This %\2 deals with ..."
+;;          :file-name "references/%<%Y-%m-%d-%H%M%S>_${title}"
+;;          :head "#+TITLE: ${title}"
+;;          :unnarrowed t)))
+
+
+;; based on: https://dotdoom.rgoswami.me/config.html#text-3
+;;;;(after org-ref
+;; (setq
+;;  ;; bibtex-completion-notes-path org_ref_notes_dir
+;;  ;; bibtex-completion-bibliography bibfile_roam_nm
+;;  ;; bibtex-completion-pdf-field "file"
+;;  bibtex-completion-notes-template-multiple-files
+;;  (concat
+;;   "#+TITLE: ${title}\n"
+;;   "#+ROAM_KEY: cite:${=key=}\n"
+;;   "* TODO Notes\n"
+;;   ":PROPERTIES:\n"
+;;   ":Custom_ID: ${=key=}\n"
+;;   ":NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n"
+;;   ":AUTHOR: ${author-abbrev}\n"
+;;   ":JOURNAL: ${journaltitle}\n"
+;;   ":DATE: ${date}\n"
+;;   ":YEAR: ${year}\n"
+;;   ":DOI: ${doi}\n"
+;;   ":URL: ${url}\n"
+;;   ":END:\n\n"
+;;   )
+;;  )
+;; ;;)
+
+;; a better alternative?
+;; https://org-roam.discourse.group/t/does-anyone-have-a-workflow-for-associating-notes-with-a-zotero-stored-pdf/112/10?u=scotto
+;;
+;; or pieces of this:
+;; https://rgoswami.me/posts/org-note-workflow/
+
+;; *** Org-roam-rgoswami
+
+;; From: https://dotdoom.rgoswami.me/config.html#text-3
+;; More explanation: https://rgoswami.me/posts/org-note-workflow/
+
+;; 0.3.6 Variables
+
+;; (setq
+;;    org_roam_dir (expand-file-name "org_roam" docDir)
+;;    org_notes_dir (expand-file-name "org_notes" org_roam_dir)
+;;    bibfile_roam_nm (expand-file-name "zotlib.bib" org_roam_dir)
+;;    org_ref_notes_dir (expand-file-name "org_ref_notes" org_roam_dir)
+;;    org-directory org_notes_dir
+;;    deft-directory org_notes_dir
+;;    org-roam-directory org_notes_dir
+;;    )
+
+
+;; ;; 3.1.1 Org-Ref
+
+;; ;; This seems like an ubiquitous choice for working with org files and references, though quite a bit of the config here relates to helm-bibtex. Commented sections are set in my private config.
+
+;; (use-package org-ref
+;;     ;; :init
+;;     ; code to run before loading org-ref
+;;     :config
+;;     (setq
+;;          org-ref-completion-library 'org-ref-ivy-cite
+;;          org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
+;;          org-ref-default-bibliography bibfile_list
+;;          org-ref-bibliography-notes (expand-file-name "bibnotes.bib" org_roam_dir)
+;;          org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
+;;          org-ref-notes-directory org_ref_notes_dir
+;;          org-ref-notes-function 'orb-edit-notes
+;;     ))
+
+;; ;; Apparently, org-ref is also able to fetch pdf files when DOI or URL links are dragged onto the .bib file. However, since zotero will handle the metadata, this remains to be considered.
+
+;; ;; Ivy is used exclusively throughout doom, makes sense to use it here too, but I recently switched to helm. Turns out helm is probably faster for larger collections since it can be asynchronous. Basically, this is because using the minibuffer, as ivy does is a blocking action while the helm buffer may be opened asynchronously. Name aside, helm-bibtex also works for ivy. Basically meant to interface with bibliographies in general. However, since I’m using org-ref, I won’t be configuring or loading that anymore.
+;; ;; 3.1.2 Helm Bibtex
+
+;; ;; For some reason, org-ref-notes isn’t working very nicely, so the setup above prioritizes the helm-bibtex note-taking setup.
+
+;; ;;(after org-ref
+;; (setq
+;;  bibtex-completion-notes-path org_ref_notes_dir
+;;  bibtex-completion-bibliography bibfile_roam_nm
+;;  bibtex-completion-pdf-field "file"
+;;  bibtex-completion-notes-template-multiple-files
+;;  (concat
+;;   "#+TITLE: ${title}\n"
+;;   "#+ROAM_KEY: cite:${=key=}\n"
+;;   "* TODO Notes\n"
+;;   ":PROPERTIES:\n"
+;;   ":Custom_ID: ${=key=}\n"
+;;   ":NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n"
+;;   ":AUTHOR: ${author-abbrev}\n"
+;;   ":JOURNAL: ${journaltitle}\n"
+;;   ":DATE: ${date}\n"
+;;   ":YEAR: ${year}\n"
+;;   ":DOI: ${doi}\n"
+;;   ":URL: ${url}\n"
+;;   ":END:\n\n"
+;;   )
+;;  )
+;; ;;)
+
+;; ;; 3.1.3 Org-Roam
+
+;; ;; actually copied from: https://rgoswami.me/posts/org-note-workflow/
+;; (use-package org-roam
+;;   :hook (org-load . org-roam-mode)
+;;   :commands (org-roam-buffer-toggle-display
+;;              org-roam-find-file
+;;              org-roam-graph
+;;              org-roam-insert
+;;              org-roam-switch-to-buffer
+;;              org-roam-dailies-date
+;;              org-roam-dailies-today
+;;              org-roam-dailies-tomorrow
+;;              org-roam-dailies-yesterday)
+;;   :preface
+;;   ;; Set this to nil so we can later detect whether the user has set a custom
+;;   ;; directory for it, and default to `org-directory' if they haven't.
+;;   (defvar org-roam-directory nil)
+;;   :init
+;;   :config
+;;   (setq org-roam-directory (expand-file-name (or org-roam-directory "roam")
+;;                                              org-directory)
+;;         org-roam-verbose nil  ; https://youtu.be/fn4jIlFwuLU
+;;         org-roam-buffer-no-delete-other-windows t ; make org-roam buffer sticky
+;;         org-roam-completion-system 'default ) ; rgoswami missed this paren
+
+;;   ;; Normally, the org-roam buffer doesn't open until you explicitly call
+;;   ;; `org-roam'. If `+org-roam-open-buffer-on-find-file' is non-nil, the
+;;   ;; org-roam buffer will be opened for you when you use `org-roam-find-file'
+;;   ;; (but not `find-file', to limit the scope of this behavior).
+;;   (add-hook 'find-file-hook
+;;     (defun +org-roam-open-buffer-maybe-h ()
+;;       (and +org-roam-open-buffer-on-find-file
+;;            (memq 'org-roam-buffer--update-maybe post-command-hook)
+;;            (not (window-parameter nil 'window-side)) ; don't proc for popups
+;;            (not (eq 'visible (org-roam-buffer--visibility)))
+;;            (with-current-buffer (window-buffer)
+;;              (org-roam-buffer--get-create)))))
+
+;;   ;; Hide the mode line in the org-roam buffer, since it serves no purpose. This
+;;   ;; makes it easier to distinguish among other org buffers.
+;;   (add-hook 'org-roam-buffer-prepare-hook #'hide-mode-line-mode))
+
+
+;; ;; NOT IN MELPA ANYMORE
+;; ;; Since the org module lazy loads org-protocol (waits until an org URL is
+;; ;; detected), we can safely chain `org-roam-protocol' to it.
+;; ;; (use-package org-roam-protocol
+;; ;;   :after org-protocol)
+
+
+;; ;; NOT IN MELPA ANYMORE
+;; ;; (use-package company-org-roam
+;; ;;   :after org-roam
+;; ;;   :config
+;; ;;   (set-company-backend! 'org-mode '(company-org-roam company-yasnippet company-dabbrev)))
+
+
+;; ;; Will also setup the org-roam-bibtex thing here. As foretold in the last line, there are more settings for ORB. The template is modified from here.
+
+;; (use-package org-roam-bibtex
+;;               :after (org-roam)
+;;               :hook (org-roam-mode . org-roam-bibtex-mode)
+;;               :config
+;;               (setq org-roam-bibtex-preformat-keywords
+;;                     '("=key=" "title" "url" "file" "author-or-editor" "keywords"))
+;;               (setq orb-templates
+;;                     '(("r" "ref" plain (function org-roam-capture--get-point)
+;;                        ""
+;;                        :file-name "${citekey}"
+;;                        :head "#+TITLE: ${=key=}: ${title}\n#+ROAM_KEY: ${ref}
+
+;; - tags ::
+;; - keywords :: ${keywords}
+
+;; \n* ${title}\n  :PROPERTIES:\n  :Custom_ID: ${=key=}\n  :URL: ${url}\n  :AUTHOR: ${author-or-editor}\n  :NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n  :NOTER_PAGE: \n  :END:\n\n"
+
+;;                        :unnarrowed t)))
+;;               )
+
+;; ;; 3.1.4 Org-Noter
+
+;; ;; I decided to use org-noter over the more commonly described interleave because it has better support for working with multiple documents linked to one file.
+
+;; (use-package org-noter
+;;   :after (:any org pdf-view)
+;;   :config
+;;   (setq
+;;    ;; The WM can handle splits
+;;    org-noter-notes-window-location 'other-frame
+;;    ;; Please stop opening frames
+;;    org-noter-always-create-frame nil
+;;    ;; I want to see the whole file
+;;    org-noter-hide-other nil
+;;    ;; Everything is relative to the rclone mega
+;;    org-noter-notes-search-path (list org_notes_dir)
+;;    )
+;;   )
+
+;; ;; I have a rather involved setup in mind, so I have spun this section off from the rest. The basic idea is to use deft for short-to-long lookup notes, and org-capture templates with org-protocol for the rest. I am also considering notdeft since it might work better for what I want to achieve. Though it isn’t really part of a note taking workflow, I also intend to use michel2 to sync my tasks…
+;; ;; 3.2 Org Capture
+
+;; ;; I am not really sure how to use these correctly, but I have the bare minimum required for the Firefox browser extension (setup from here), and a random article thing.
+;; ;; 3.2.1 Functions
+
+;; ;; These are needed for org-capture alone for now.
+
+;; ;; Fix some link issues
+;; (defun transform-square-brackets-to-round-ones(string-to-transform)
+;;   "Transforms [ into ( and ] into ), other chars left unchanged."
+;;   (concat
+;;    (mapcar #'(lambda (c) (if (equal c ?\[) ?\( (if (equal c ?\]) ?\) c))) string-to-transform))
+;;   )
+
+;; ;; 3.2.2 Templates
+
+;; ;; This might get complicated but I am only trying to get the bare minimum for org-protocol right now.
+
+;; ;; Actually start using templates
+;; ;;(after! org-capture
+;; ;; Firefox
+;; (add-to-list 'org-capture-templates
+;;              '("P" "Protocol" entry
+;;                (file+headline +org-capture-notes-file "Inbox")
+;;                "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?"
+;;                :prepend t
+;;                :kill-buffer t))
+;; (add-to-list 'org-capture-templates
+;;              '("L" "Protocol Link" entry
+;;                (file+headline +org-capture-notes-file "Inbox")
+;;                "* %? [[%:link][%(transform-square-brackets-to-round-ones \"%:description\")]]\n"
+;;                :prepend t
+;;                :kill-buffer t))
+;; ;; Misc
+;; (add-to-list 'org-capture-templates
+;;              '("a"               ; key
+;;                "Article"         ; name
+;;                entry             ; type
+;;                (file+headline +org-capture-notes-file "Article")  ; target
+;;                "* %^{Title} %(org-set-tags)  :article: \n:PROPERTIES:\n:Created: %U\n:Linked: %a\n:END:\n%i\nBrief description:\n%?"  ; template
+;;                :prepend t        ; properties
+;;                :empty-lines 1    ; properties
+;;                :created t        ; properties
+;;                ))
+;; ;;)
+
+
+
+;; *** Org-roam-company
+
+;; Popup link name completion.  Without this, it seems like the default is swiper.  Must run M-x company-mode to run it with M-x company org-roam.
+;  When run it, just get a long list of completions, doesnt narrow as you type.
+;; (use-package company-org-roam
+;;   :config
+;;   (push 'company-org-roam company-backends))
+
+;; ** Org-noter
+;; Keybindings, basic explanation: https://github.com/weirdNox/org-noter#keys
+;;
+;; Workflow w/ org-noter, org-roam org-roam-bibtex and org-ref.  Also plans for org-journal: https://rgoswami.me/posts/org-note-workflow/
+;;
+;; org-noter config inspired by: https://write.as/dani/notes-on-org-noter
+(use-package org-noter
+  :after org
+  :after pdf-tools
+  :config (setq org-noter-default-notes-file-names '("org-noter-notes.org")
+                org-noter-notes-search-path '("~/tmp/org-noter")
+                ))
+;;                  org-noter-separate-notes-from-heading t))
+
+;; coordinating org-noter with org-notes
+;; https://write.as/dani/notes-on-org-noter
+(defun org-ref-noter-at-point ()
+      "Open the pdf for bibtex key under point if it exists."
+      (interactive)
+      (let* ((results (org-ref-get-bibtex-key-and-file))
+             (key (car results))
+             (pdf-file (funcall org-ref-get-pdf-filename-function key)))
+        (if (file-exists-p pdf-file)
+            (progn
+              (find-file-other-window pdf-file)
+              (org-noter))
+          (message "no pdf found for %s" key))))
+
+(add-to-list 'org-ref-helm-user-candidates 
+             '("Org-Noter notes" . org-ref-noter-at-point))
 
 ;; * Search and Replace (see also Swiper/Ivy)
 ;; ** Web Search
