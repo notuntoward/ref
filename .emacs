@@ -464,13 +464,38 @@ TODO: make this a general function."
 ;; (winsav-save-mode 1);
 ;; (require 'winsav-save-configuration)
 
+;; ** Make a new *scratch* buffer right after killing it
+
+;; From: https://www.emacswiki.org/emacs/RecreateScratchBuffer
+;; If the *scratch* buffer is killed, recreate it automatically
+;; FROM: Morten Welind
+;;http://www.geocrawler.com/archives/3/338/1994/6/0/1877802/
+(save-excursion
+  (set-buffer (get-buffer-create "*scratch*"))
+  (lisp-interaction-mode)
+  (make-local-variable 'kill-buffer-query-functions)
+  (add-hook 'kill-buffer-query-functions 'kill-scratch-buffer))
+
+(defun kill-scratch-buffer ()
+  ;; The next line is just in case someone calls this manually
+  (set-buffer (get-buffer-create "*scratch*"))
+  ;; Kill the current (*scratch*) buffer
+  (remove-hook 'kill-buffer-query-functions 'kill-scratch-buffer)
+  (kill-buffer (current-buffer))
+  ;; Make a brand new *scratch* buffer
+  (set-buffer (get-buffer-create "*scratch*"))
+  (lisp-interaction-mode)
+  (make-local-variable 'kill-buffer-query-functions)
+  (add-hook 'kill-buffer-query-functions 'kill-scratch-buffer)
+  ;; Since we killed it, don't let caller do that.
+  nil)
+
 ;; * Scrolling, Cursor Movement and Selection
 
 (setq scroll-step 1)
 (global-set-key (kbd "M-[") 'scroll-down) ; page up
 (global-set-key (kbd "M-]") 'scroll-up)   ; page down
 
-;;Return to mark: https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
 (bind-key "C-x p" 'pop-to-mark-command) 
 (setq set-mark-command-repeat-pop t) ; so C-x p keeps going backwards in marks
 
@@ -1954,6 +1979,10 @@ is already narrowed."
      org-roam-directory org_notes_dir
      )))
 
+;; Users of this require that it really be a list, even if only one item
+(setq bibfile_list (list bibfile_roam_nm)) ;; helm-bibtex slow w/ energy.bib
+(setq bibpdf_list (list bibfile_roam_pdf_dir)) ;; helm-bibtex slow w/ energy.bib
+
 ;; ** Org-download
 
 ;; From: https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
@@ -2005,38 +2034,25 @@ is already narrowed."
   ;; open docx files in default application (ie msword)
   ;; https://emacs.stackexchange.com/questions/22485/org-mode-pandoc-export-to-docx-and-open
   (setq org-file-apps
-      '(("\\.docx\\'" . default)
-        ("\\.mm\\'" . default)
-        ("\\.x?html?\\'" . default)
-        ("\\.pdf\\'" . default)
-        (auto-mode . emacs)))
+        '(("\\.docx\\'" . default)
+          ("\\.mm\\'" . default)
+          ("\\.x?html?\\'" . default)
+          ("\\.pdf\\'" . default)
+          (auto-mode . emacs)))
   
-  ;; Nicer bullets for non-headline lists (does this slow down org mode?)
-  ;; others: https://www.w3schools.com/charsets/ref_utf_symbols.asp
-  ;; ◇ ▷ ◈ ◎ ☆ ★ ☉ ♢ ♦ ━ ─ ⊣ ▬ ⊲ ✔ ✤ ✥ ✩ ✦ ✪ ✱ ✸ ✽ ➜ ➤
-  (font-lock-add-keywords
-   'org-mode
-   '(("^ +\\(-\\) "
-      (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "▬"))))
-     ("^ +\\(*\\) "
-      (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "✤"))))))
-
   ;; TODO get this to work
   ;; could do setq-local for dir or file-specific dirname:
   ;; https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
   (setq org-download-method 'org-download-method-dirname-from-orgfile))
 
-;; TODO org-bullets is obsolete:
-;; https://github.com/integral-dw/org-bullets/commit/b98464165cfa1e41301bfe256a98eef1c264c57b
-;; update to named successor package: org-superstar-mode
-;; https://github.com/integral-dw/org-superstar-mode
-;; maybe start with org-superstar-configure-like-org-bullets
- (use-package org-bullets
+;; Show org-mode bullets as UTF-8 characters (org-bullets replacement).
+;; Nicer bullets: for others: https://www.w3schools.com/charsets/ref_utf_symbols.asp
+(use-package org-superstar
   :init
-  (add-hook 'org-mode-hook #'org-bullets-mode)
-  :config
-  (setq org-bullets-bullet-list
-        '("●" "●" "￭" "￭" "￮" "￮" "▪" "▪" "▸" "▸" "•" "•")))
+  ;; org-superstar github: loads faster
+  (setq inhibit-compacting-font-caches t)
+  :hook
+  (org-mode . (lambda () (org-superstar-mode 1))))
 
 ;; From: https://emacs.stackexchange.com/a/41705/14273
 (defun org-fold-outer ()
@@ -2130,9 +2146,9 @@ is already narrowed."
   (let ((default-directory docDir))
 
     (setq org-ref-bibliography-notes org_ref_notes_fn
-          org-ref-default-bibliography (list bibfile_roam_nm bibfile_energy_nm) 
+          org-ref-default-bibliography bibfile_list 
           ;; whatever looks at org-ref-pdf-directory seems to look only at 1st element of list, unlike user of bibtex-completion-bibliography in helm--bibtex.  This is even though user of org-ref-default-bibliography =does= look at lists.
-          org-ref-pdf-directory (list bibfile_roam_pdf_dir bibfile_energy_pdf_dir)
+          org-ref-pdf-directory bibpdf_list
           reftex-default-bibliography org-ref-default-bibliography))
 
   ;; ;; showing broken links slowed down energytop.org (but much less in Oct. 2017)
@@ -2191,10 +2207,13 @@ is already narrowed."
   ;; JK's OR brain
   ;;  (org-roam-directory "~/tmp/braindump-master/org")
   (org-roam-directory org_roam_dir)
+  ;; Put org-roam.db outside of OneDrive, avoids sync problems across machines
+  (org-roam-db-location "~/org-roam.db")
   ;; Note that Windows "find" interferes with linux find, so use rg instead
-  ;; HOWEVER, the rg interface breaks the graph, as of 5/29/20
+  ;; HOWEVER, the rg interface broke the graph, as of 5/29/20
+  ;; But maybe 'rg' is always ignored when on Windows now?
   (org-roam-list-files-commands '(rg)) ;; use ripgrip, expand emacs to see graph
-  ;;(org-roam-list-files-commands nil) ;; elisp default, but rg now works on Windows
+  ;;  (org-roam-list-files-commands nil) ;; elisp default, but rg now works on Windows
   :config (org-roam-mode)
   :bind (:map org-roam-mode-map
               (("C-c n l" . org-roam)
@@ -2219,23 +2238,23 @@ is already narrowed."
 
 ;; setup mostly from: https://github.com/tmalsburg/helm-bibtex
 ;;(setq bibtex-completion-bibliography '(bibfile_roam_nm bibfile_energy_nm))
-(setq bibtex-completion-bibliography (list bibfile_roam_nm bibfile_energy_nm))
+(setq bibtex-completion-bibliography bibfile_list)
 ;; can also add .org bibfiles, but I don't understand this.  Do it like:
 ;; (setq bibtex-completion-bibliography
 ;;       '("/path/to/bibtex-file-1.bib"
 ;;         "/path/to/org-bibtex-file.org"
 ;;         ("/path/to/org-bibtex-file2.org" . "/path/to/bibtex-file.bib")))
 
-(setq bibtex-completion-library-path (list bibfile_roam_pdf_dir bibfile_energy_pdf_dir))
+(setq bibtex-completion-library-path bibpdf_list)
 ;; Find pdf w/ JabRef/Zotero fields
-(setq bibtex-completion-pdf-field "File")
+(setq bibtex-completion-pdf-field "file")
 
-;; for global .org notes file for all pdfs
-;;(setq bibtex-completion-notes-path "/path/to/notes.org")
-;; for single org note file for each pdf (like org-roam-bibtex wants, I think)
-;;(setq bibtex-completion-notes-path "/path/to/notes")
+;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
+(setq bibtex-completion-notes-path (expand-file-name "bib-notes" org_roam_dir))
 
 ;; *** org-roam-bibtex
+
+;; Handy: to open a cite note's pdf: C-c n a RET
 ;;From github page: https://github.com/org-roam/org-roam-bibtex
 (use-package org-roam-bibtex
   :after org-roam
@@ -2243,13 +2262,105 @@ is already narrowed."
   :bind (:map org-mode-map
               (("C-c n a" . orb-note-actions))))
 
-;; put citekey in title of bib notes, title in note.  This can get much fancier and can have multiple templates
-(setq orb-templates
-      '(("r" "ref" plain (function org-roam-capture--get-point) ""
-         :file-name "${citekey}"
-         :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n" ; <--
-         :unnarrowed t)))
 
+;; NOTE the below don't take effect unless you've run M-x org-roam-bibtex-mode or customize it to ON
+;;
+;; BUG below: I removed the heading: "* {title}" or something like that from the orb-template, but org-noter must be started on a heading, for some stupid reason, so when I try to run it, it asks for some file and I don't what what it wants.  Didn't do that before I removed the heading.
+;;
+;;From github page: https://github.com/org-roam/org-roam-bibtex
+;; This works with org-noter.  If you're in the org-roam-cite note, and run org-noter, it will set things up correctly.  Two cautions
+;; 1. must put cursor in headline (required) before M-x org-noter
+;; 2. I =think= you have to save (C-c C-n?) the new helm-bibtex capture b/f running org-noter
+(setq orb-preformat-keywords
+   '(("citekey" . "=key=") "title" "url" "file" "author-or-editor" "keywords"))
+
+(setq orb-templates
+      '(("r" "ref" plain (function org-roam-capture--get-point)
+         ""
+         :file-name "${citekey}"
+         :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}
+
+- tags ::
+- keywords :: ${keywords}
+
+* Notes
+:PROPERTIES:
+:NOTER_DOCUMENT: %(orb-process-file-field \"${citekey}\")
+:NOTER_PAGE:
+:END:
+
+")))
+
+;; ;; put citekey in title of bib notes, title in note.  This can get much fancier and can have multiple templates
+;;  (setq orb-templates
+;;       '(("r" "ref" plain (function org-roam-capture--get-point) ""
+;;          :file-name "${citekey}"
+;;          :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n" ; <--
+;;          :unnarrowed t)))
+
+
+;; from:  https://rgoswami.me/posts/org-note-workflow/#helm-bibtex
+;; Copies in keywords, which I may or may not like
+;;  (use-package org-roam-bibtex
+;;   :after (org-roam)
+;;   :hook (org-roam-mode . org-roam-bibtex-mode)
+;;   :config
+;;   (setq org-roam-bibtex-preformat-keywords
+;;    '("=key=" "title" "url" "file" "author-or-editor" "keywords"))
+;;   (setq orb-templates
+;;         '(("r" "ref" plain (function org-roam-capture--get-point)
+;;            ""
+;;            :file-name "${citekey}"
+;;            :head "#+TITLE: ${=key=}: ${title}\n#+ROAM_KEY: ${ref}
+
+;; - tags ::
+;; - keywords :: ${keywords}
+
+;; \n* ${title}\n  :PROPERTIES:\n  :Custom_ID: ${=key=}\n  :URL: ${url}\n  :AUTHOR: ${author-or-editor}\n  :NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n  :NOTER_PAGE: \n  :END:\n\n"
+
+;;            :unnarrowed t))))
+
+;; These are for capturing stuff not in a bibtex file already, I think
+;;
+;; from: https://github.com/zaeph/org-roam-bibtex
+;; (setq orb-preformat-keywords
+;;       '(("citekey" . "=key=")
+;;         ("type" . "=type=")
+;;        "title"))
+;; (setq org-roam-capture-templates
+;;       '(("r" "reference" plain (function org-roam-capture--get-point)
+;;          "#+ROAM_KEY: %^{citekey}%? fullcite: %\1
+;;           #+TAGS: %^{type}
+;;           This %\2 deals with ..."
+;;          :file-name "references/%<%Y-%m-%d-%H%M%S>_${title}"
+;;          :head "#+TITLE: ${title}"
+;;          :unnarrowed t)))
+
+
+;; based on: https://dotdoom.rgoswami.me/config.html#text-3
+;;;;(after org-ref
+;; (setq
+;;  ;; bibtex-completion-notes-path org_ref_notes_dir
+;;  ;; bibtex-completion-bibliography bibfile_roam_nm
+;;  ;; bibtex-completion-pdf-field "file"
+;;  bibtex-completion-notes-template-multiple-files
+;;  (concat
+;;   "#+TITLE: ${title}\n"
+;;   "#+ROAM_KEY: cite:${=key=}\n"
+;;   "* TODO Notes\n"
+;;   ":PROPERTIES:\n"
+;;   ":Custom_ID: ${=key=}\n"
+;;   ":NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n"
+;;   ":AUTHOR: ${author-abbrev}\n"
+;;   ":JOURNAL: ${journaltitle}\n"
+;;   ":DATE: ${date}\n"
+;;   ":YEAR: ${year}\n"
+;;   ":DOI: ${doi}\n"
+;;   ":URL: ${url}\n"
+;;   ":END:\n\n"
+;;   )
+;;  )
+;; ;;)
 
 ;; a better alternative?
 ;; https://org-roam.discourse.group/t/does-anyone-have-a-workflow-for-associating-notes-with-a-zotero-stored-pdf/112/10?u=scotto
@@ -2296,10 +2407,6 @@ is already narrowed."
 (add-to-list 'org-ref-helm-user-candidates 
              '("Org-Noter notes" . org-ref-noter-at-point))
 
-(setq org-ref-bibliography-notes "~/org/Research-Notes/notes.org")
-(setq org-ref-notes-function #'org-ref-notes-function-one-file)
-
-
 ;; ** Org-roam-rgoswami
 
 ;; From: https://dotdoom.rgoswami.me/config.html#text-3
@@ -2329,7 +2436,7 @@ is already narrowed."
 ;;     (setq
 ;;          org-ref-completion-library 'org-ref-ivy-cite
 ;;          org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
-;;          org-ref-default-bibliography (list bibfile_roam_nm)
+;;          org-ref-default-bibliography bibfile_list
 ;;          org-ref-bibliography-notes (expand-file-name "bibnotes.bib" org_roam_dir)
 ;;          org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
 ;;          org-ref-notes-directory org_ref_notes_dir
@@ -2436,7 +2543,7 @@ is already narrowed."
 ;;               (setq orb-templates
 ;;                     '(("r" "ref" plain (function org-roam-capture--get-point)
 ;;                        ""
-;;                        :file-name "${slug}"
+;;                        :file-name "${citekey}"
 ;;                        :head "#+TITLE: ${=key=}: ${title}\n#+ROAM_KEY: ${ref}
 
 ;; - tags ::
@@ -3833,17 +3940,29 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
                   :image-converter
                   ("convert -density %D -trim -antialias %f -quality 100 %o%b.png")))))
  '(org-refile-targets (quote ((nil :maxlevel . 6))))
+ '(org-roam-bibtex-mode t)
  '(org-special-ctrl-k nil)
  '(org-speed-commands-user (quote (("s" . narrow-or-widen-dwim))))
  '(org-startup-align-all-tables t)
  '(org-startup-indented nil)
  '(org-startup-truncated t)
+ '(org-superstar-cycle-headline-bullets nil)
+ '(org-superstar-headline-bullets-list (quote ("●" "￭" "￮" "►" "•" "□" "▸" "▫" "▹")))
+ '(org-superstar-item-bullet-alist (quote ((42 . 10043) (43 . 10011) (45 . 9644))))
+ '(org-superstar-special-todo-items t)
+ '(org-superstar-todo-bullet-alist
+   (quote
+    (("TODO" . 9744)
+     ("DONE" . 9745)
+     ("TRY" . 9728)
+     ("REJECTED" . 10005)
+     ("ACCEPTED" . 10003))))
  '(org-use-speed-commands t)
  '(outshine-org-style-global-cycling-at-bob-p t)
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (helm-org-rifle company-org-roam org-roam-bibtex deft zotxt zotxt-emacs deadgrep emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (helm-org-rifle deft zotxt zotxt-emacs deadgrep emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
