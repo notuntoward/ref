@@ -180,7 +180,7 @@
 (setq docDir (expand-file-name "ref" shareDir))
 (unless (file-readable-p docDir)
   (warn "docDir %s doesn't exist or not readable" docDir))
-(message "computerNm %s shareDir %s docDir %s" computerNm shareDir docDir)
+(message "computerNm %s\nshareDir %s\ndocDir %s" computerNm shareDir docDir)
 
 ;; ** Screen/terminal dependent settings
 
@@ -2475,6 +2475,13 @@ This function avoids making messed up targets by exiting without doing anything 
 ;;   :config
 ;;   (push 'company-org-roam company-backends))
 
+;; *** Org-roam-tags
+
+;; From: https://gist.github.com/d12frosted/4a55f3d072a813159c1d7b31c21bac9a
+;; Docs: https://d12frosted.io/posts/2020-06-10-org-roam-tags.html
+;;
+;; Didn't work.  Calling +org-notes-tags-add inside a note gave the error: "user-error: Current buffer is not a note"
+
 ;; *** Org-roam-bibtex
 ;; *** Helm-bibtex
 ;; Seems to be rquired for org-roam-bibtex
@@ -2523,7 +2530,10 @@ This function avoids making messed up targets by exiting without doing anything 
       '(("r" "ref" plain (function org-roam-capture--get-point)
          ""
          :file-name "${citekey}"
-         :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}
+         :head "#+TITLE: ${citekey}\n#+ROAM_KEY: ${ref}
+
+*${title}*
+${author-or-editor}
 
 - tags ::
 - keywords :: ${keywords}
