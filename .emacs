@@ -1952,7 +1952,7 @@ is already narrowed."
        org_notes_dir (expand-file-name "org-notes" org_roam_dir)
        bibfile_roam_nm (expand-file-name "deepSolarDOE.bib" org_roam_dir)
        bibfile_roam_pdf_dir (expand-file-name "papers" org_roam_dir)
-       org_ref_notes_dir (expand-file-name "org-ref" org_roam_dir)
+       org_ref_notes_dir (expand-file-name "bib-notes" org_roam_dir)
        org_ref_notes_fn (expand-file-name "DOE_brainstorm.org" org_roam_dir)
        org-directory org_notes_dir
        deft-directory org_notes_dir
@@ -2205,48 +2205,99 @@ This function avoids making messed up targets by exiting without doing anything 
     ))
 (global-set-key "\em" 'create-and-link-dedicated-org-target)
 
+;; ** Hide :PROPERTIES: but allow cycling to expose them
+;; From: https://stackoverflow.com/questions/17478260/completely-hide-the-properties-drawer-in-org-mode
+;; Guy tried to get it included in official org-mode but it was rejected.
+
+;; (defun org-cycle-hide-drawers (state)
+;;   "Re-hide all drawers after a visibility state change."
+;;   (when (and (derived-mode-p 'org-mode)
+;;              (not (memq state '(overview folded contents))))
+;;     (save-excursion
+;;       (let* ((globalp (memq state '(contents all)))
+;;              (beg (if globalp
+;;                     (point-min)
+;;                     (point)))
+;;              (end (if globalp
+;;                     (point-max)
+;;                     (if (eq state 'children)
+;;                       (save-excursion
+;;                         (outline-next-heading)
+;;                         (point))
+;;                       (org-end-of-subtree t)))))
+;;         (goto-char beg)
+;;         (while (re-search-forward org-drawer-regexp end t)
+;;           (save-excursion
+;;             (beginning-of-line 1)
+;;             (when (looking-at org-drawer-regexp)
+;;               (let* ((start (1- (match-beginning 0)))
+;;                      (limit
+;;                        (save-excursion
+;;                          (outline-next-heading)
+;;                            (point)))
+;;                      (msg (format
+;;                             (concat
+;;                               "org-cycle-hide-drawers:  "
+;;                               "`:END:`"
+;;                               " line missing at position %s")
+;;                             (1+ start))))
+;;                 (if (re-search-forward "^[ \t]*:END:" limit t)
+;;                   (outline-flag-region start (point-at-eol) t)
+;;                   (user-error msg))))))))))
+
+;; Add property to TAB cycling
+;; ((eq org-cycle-subtree-status 'subtree)
+;;   (org-show-subtree)
+;;   (org-unlogged-message "ALL")
+;;   (setq org-cycle-subtree-status 'all))
+
 ;; ** Display whole subtree using :PROPERTIES:
+;;
+;; I never use this, so it's commented out
+;;
+;; ;; Keeps tree open if property set, but property drawer is left hanging open (but see above?)
+;; ;;From: https://emacs.stackexchange.com/questions/36232/org-mode-property-to-make-subtree-visibility-bimodal/36273
+;;
+;; (advice-add 'org-cycle :around #'my/org-cycle)
 
-;; Keeps tree open if property set, but property drawer is left hanging open (but see above?)
-;;From: https://emacs.stackexchange.com/questions/36232/org-mode-property-to-make-subtree-visibility-bimodal/36273
+;; (defun my/toggle-bimodal-cycling (&optional pos)
+;;   "Enable/disable bimodal cycling behavior for the current heading."
+;;   (interactive)
+;;   (let* ((enabled (org-entry-get pos "BIMODAL-CYCLING")))
+;;     (if enabled
+;;         (org-entry-delete pos "BIMODAL-CYCLING")
+;;       (org-entry-put pos "BIMODAL-CYCLING" "yes"))))
 
-(advice-add 'org-cycle :around #'my/org-cycle)
+;; (defun my/org-cycle (fn &optional arg)
+;;   "Make org outline cycling bimodal (FOLDED and SUBTREE) rather than trimodal (FOLDED, CHILDREN, and SUBTREE) when a heading has a :BIMODAL-CYCLING: property value."
+;;   (interactive)
+;;   (if (and (org-at-heading-p)
+;;            (org-entry-get nil "BIMODAL-CYCLING"))
+;;       (my/toggle-subtree)
+;;     (funcall fn arg)))
 
-(defun my/toggle-bimodal-cycling (&optional pos)
-  "Enable/disable bimodal cycling behavior for the current heading."
-  (interactive)
-  (let* ((enabled (org-entry-get pos "BIMODAL-CYCLING")))
-    (if enabled
-        (org-entry-delete pos "BIMODAL-CYCLING")
-      (org-entry-put pos "BIMODAL-CYCLING" "yes"))))
+;; (defun my/toggle-subtree ()
+;;   "Show or hide the current subtree depending on its current state."
+;;   (interactive)
+;;   (save-excursion
+;;     (outline-back-to-heading)
+;;     (if (not (outline-invisible-p (line-end-position)))
+;;         (outline-hide-subtree)
+;;       (outline-show-subtree))))
 
-(defun my/org-cycle (fn &optional arg)
-  "Make org outline cycling bimodal (FOLDED and SUBTREE) rather than trimodal (FOLDED, CHILDREN, and SUBTREE) when a heading has a :BIMODAL-CYCLING: property value."
-  (interactive)
-  (if (and (org-at-heading-p)
-           (org-entry-get nil "BIMODAL-CYCLING"))
-      (my/toggle-subtree)
-    (funcall fn arg)))
-
-(defun my/toggle-subtree ()
-  "Show or hide the current subtree depending on its current state."
-  (interactive)
-  (save-excursion
-    (outline-back-to-heading)
-    (if (not (outline-invisible-p (line-end-position)))
-        (outline-hide-subtree)
-      (outline-show-subtree))))
-
-;; this does hide the drawers on open but it doesn't close ANYTHING on the 2nd cycle
-(defun my/toggle-subtree-hide-drawers ()
-  "Show or hide the current subtree depending on its current state."
-  (interactive)
-  (save-excursion
-    (outline-back-to-heading)
-    (if (not (outline-invisible-p (line-end-position)))
-        (outline-hide-subtree)
-      (progn (outline-show-subtree)
-             (org-cycle-hide-drawers 'children)))))
+;; ;; this does hide the drawers on open but it doesn't close ANYTHING on the 2nd cycle
+;; (defun my/toggle-subtree-hide-drawers ()
+;;   "Show or hide the current subtree depending on its current state."
+;;   (interactive)
+;;   (save-excursion
+;;     (outline-back-to-heading)
+;;     (if (not (outline-invisible-p (line-end-position)))
+;;         (outline-hide-subtree)
+;;       (progn (outline-show-subtree)
+;;              (org-cycle-hide-drawers 'children)))))
+;;
+;;(global-set-key [C-f1] 'my/toggle-subtree) 
+;;(global-set-key [C-f2] 'my/toggle-subtree) 
 
 ;; Converts lines to checkboxes; convert them to TODO's with: C-c C-*
 ;; https://stackoverflow.com/questions/18667385/convert-lines-of-text-into-todos-or-check-boxes-in-org-mode
@@ -2262,9 +2313,6 @@ This function avoids making messed up targets by exiting without doing anything 
       (insert "- [ ] ")
       (forward-line))
     (beginning-of-line)))
-
-;;(global-set-key [C-f1] 'my/toggle-subtree) 
-;;(global-set-key [C-f2] 'my/toggle-subtree) 
 
 ;; ** Hide :PROPERTIES: Drawer
 
@@ -2486,23 +2534,24 @@ This function avoids making messed up targets by exiting without doing anything 
 ;; *** Helm-bibtex
 ;; Seems to be rquired for org-roam-bibtex
 
-(use-package helm-bibtex)
+(use-package helm-bibtex
+  :init
+  ;; setup mostly from: https://github.com/tmalsburg/helm-bibtex
+  ;;(setq bibtex-completion-bibliography '(bibfile_roam_nm bibfile_energy_nm))
+  (setq bibtex-completion-bibliography bibfile_list)
+  ;; can also add .org bibfiles, but I don't understand this.  Do it like:
+  ;; (setq bibtex-completion-bibliography
+  ;;       '("/path/to/bibtex-file-1.bib"
+  ;;         "/path/to/org-bibtex-file.org"
+  ;;         ("/path/to/org-bibtex-file2.org" . "/path/to/bibtex-file.bib")))
 
-;; setup mostly from: https://github.com/tmalsburg/helm-bibtex
-;;(setq bibtex-completion-bibliography '(bibfile_roam_nm bibfile_energy_nm))
-(setq bibtex-completion-bibliography bibfile_list)
-;; can also add .org bibfiles, but I don't understand this.  Do it like:
-;; (setq bibtex-completion-bibliography
-;;       '("/path/to/bibtex-file-1.bib"
-;;         "/path/to/org-bibtex-file.org"
-;;         ("/path/to/org-bibtex-file2.org" . "/path/to/bibtex-file.bib")))
+  (setq bibtex-completion-library-path bibpdf_list)
+  ;; Find pdf w/ JabRef/Zotero fields
+  (setq bibtex-completion-pdf-field "file")
 
-(setq bibtex-completion-library-path bibpdf_list)
-;; Find pdf w/ JabRef/Zotero fields
-(setq bibtex-completion-pdf-field "file")
+  ;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
+  (setq bibtex-completion-notes-path (expand-file-name "bib-notes" org_roam_dir)))
 
-;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
-(setq bibtex-completion-notes-path (expand-file-name "bib-notes" org_roam_dir))
 
 ;; *** org-roam-bibtex
 
@@ -2524,27 +2573,36 @@ This function avoids making messed up targets by exiting without doing anything 
 ;; 1. must put cursor in headline (required) before M-x org-noter
 ;; 2. I =think= you have to save (C-c C-n?) the new helm-bibtex capture b/f running org-noter
 (setq orb-preformat-keywords
-   '(("citekey" . "=key=") "title" "url" "file" "author-or-editor" "keywords"))
+      '(("citekey" . "=key=") "title" "url" "file" "author-or-editor" "keywords"
+        "year" "abstract"))
 
 (setq orb-templates
       '(("r" "ref" plain (function org-roam-capture--get-point)
          ""
-         :file-name "${citekey}"
-         :head "#+TITLE: ${citekey}\n#+ROAM_KEY: ${ref}
+         :file-name "bib-notes/${citekey}"
+         :head "#+TITLE: ${citekey}\n#+created: %u\n#+last_modified: %U\n#+ROAM_KEY: ${ref}
 
 *${title}*
-${author-or-editor}
+${author-or-editor} (${year})
 
-- tags ::
-- keywords :: ${keywords}
 
-* Notes
-:PROPERTIES:
-:NOTER_DOCUMENT: %(orb-process-file-field \"${citekey}\")
-:NOTER_PAGE:
-:END:
+
+* Abstract
+
+${abstract}
+
+- Keywords :: ${keywords}
 
 ")))
+
+;; If I wanted to include noter notes, I'd add this to template:
+;; * Noter Notes
+;; :PROPERTIES:
+;; :NOTER_DOCUMENT: %(orb-process-file-field \"${citekey}\")
+;; :NOTER_PAGE:
+;; :END:
+
+
 
 ;; ;; put citekey in title of bib notes, title in note.  This can get much fancier and can have multiple templates
 ;;  (setq orb-templates
@@ -3212,13 +3270,13 @@ _C-M-a_ change default action from list for this session
   )
 (define-key ivy-minibuffer-map (kbd "C-o") 'hydra-ivy/body)
 
-;; Is this needed anymore, since ivy-isearch is now (Apr 2019) so much faster?
-(defun org-toggle-outline-visibility ()
-  "Hides all subheadlines or restores original visibility before toggle.
-   Eventually use this to speed up ivy by showing everything, searching and then unshowing everything."
-  (interactive)
-  ;; NAH, need to call "hide everything on one call; save outline on next.  Also, apparently need for arguments for org-save-outline-visibility:  see emacs help. 
-  (org-save-outline-visibility nil))
+;; ;; Is this needed anymore, since ivy-isearch is now (Apr 2019) so much faster?
+;; (defun org-toggle-outline-visibility ()
+;;   "Hides all subheadlines or restores original visibility before toggle.
+;;    Eventually use this to speed up ivy by showing everything, searching and then unshowing everything."
+;;   (interactive)
+;;   ;; NAH, need to call "hide everything on one call; save outline on next.  Also, apparently need for arguments for org-save-outline-visibility:  see emacs help. 
+;;   (org-save-outline-visibility nil))
 
 ;; * IDO Mode
 
