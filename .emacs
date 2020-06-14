@@ -2105,6 +2105,10 @@ is already narrowed."
 ;; TODO: modify internal org-links code here:
 ;; http://pragmaticemacs.com/emacs/insert-internal-org-mode-links-the-ivy-way/
 ;; to get dedicated links plus the list of headlines which aren't dedicated?
+;; TODO: maybe this approach to dedicated targets is more robust?
+;;       https://emacs.stackexchange.com/questions/19230/how-to-hide-targets
+;;       or maybe the github library that resulted from that discussion?
+;;       https://github.com/talwrii/org-hide-targets
 
 ;; From: Nicolas Goaziou: https://mail.google.com/mail/u/0/#inbox/QgrcJHsNmtZZNZFRdHZBqCqcmZVLJkSdzJq
 ;; He also suggested this bit of code as another alternative:
@@ -2531,26 +2535,60 @@ This function avoids making messed up targets by exiting without doing anything 
 ;; Didn't work.  Calling +org-notes-tags-add inside a note gave the error: "user-error: Current buffer is not a note"
 
 ;; *** Org-roam-bibtex
+
+;; *** Bibfile files and directories
+
+;; init these here so helm-bibtex and ivy-bibtex can share them
+(setq bibtex-completion-bibliography bibfile_list)
+(setq bibtex-completion-library-path bibpdf_list)
+;; Find pdf w/ JabRef/Zotero fields
+(setq bibtex-completion-pdf-field "file")
+  ;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
+(setq bibtex-completion-notes-path (expand-file-name "bib-notes" org_roam_dir))
+
 ;; *** Helm-bibtex
 ;; Seems to be rquired for org-roam-bibtex
 
 (use-package helm-bibtex
-  :init
-  ;; setup mostly from: https://github.com/tmalsburg/helm-bibtex
-  ;;(setq bibtex-completion-bibliography '(bibfile_roam_nm bibfile_energy_nm))
-  (setq bibtex-completion-bibliography bibfile_list)
-  ;; can also add .org bibfiles, but I don't understand this.  Do it like:
-  ;; (setq bibtex-completion-bibliography
-  ;;       '("/path/to/bibtex-file-1.bib"
-  ;;         "/path/to/org-bibtex-file.org"
-  ;;         ("/path/to/org-bibtex-file2.org" . "/path/to/bibtex-file.bib")))
+  :bind*
+  ("C-c C-h" . helm-bibtex))
 
-  (setq bibtex-completion-library-path bibpdf_list)
-  ;; Find pdf w/ JabRef/Zotero fields
-  (setq bibtex-completion-pdf-field "file")
+;; *** ivy-bibtex
+;; BSAG uses this instead of helm.  This is part from her, and part from here:
+;; https://people.umass.edu/weikaichen/zh/post/emacs-academic-tools/
+(use-package ivy-bibtex
+  :ensure t
+  :bind*
+  ("C-c C-r" . ivy-bibtex)
+  :config
+  ;; https://github.com/tmalsburg/helm-bibtex
+  (setq bibtex-completion-additional-search-fields '(journal booktitle))
+  ;; TODO good extra info but makes entry list scraggly.  Fix that.
+  (setq bibtex-completion-display-formats
+        '((article       . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${journal:40}")
+          (inbook        . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
+          (incollection  . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+          (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+          (t             . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*}")))
+  (setq ivy-bibtex-default-action #'ivy-bibtex-insert-citation)
+  (ivy-set-actions
+   'ivy-bibtex
+   '(("p" ivy-bibtex-open-any "Open PDF, URL, or DOI")
+     ("e" ivy-bibtex-edit-notes "Edit notes")))
+  ;; from BSAG
+  (defun bibtex-completion-open-pdf-external (keys &optional fallback-action)
+    (let ((bibtex-completion-pdf-open-function
+           (lambda (fpath) (async-start-process "open" "open" "open" fpath))))
+      (bibtex-completion-open-pdf keys fallback-action)))
 
-  ;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
-  (setq bibtex-completion-notes-path (expand-file-name "bib-notes" org_roam_dir)))
+  (ivy-bibtex-ivify-action bibtex-completion-open-pdf-external ivy-bibtex-open-pdf-external)
+
+  (ivy-add-actions
+   'ivy-bibtex
+   '(("P" ivy-bibtex-open-pdf-external "Open PDF file in external viewer (if present)")))
+  ;; TODO too busy?
+  (setq bibtex-completion-pdf-symbol "⌘")
+  (setq bibtex-completion-notes-symbol "✎"))
 
 
 ;; *** org-roam-bibtex
@@ -2966,7 +3004,11 @@ ${abstract}
         default-directory)
       (setq deadgrep-project-root-function #'wh/return-default-dir)))
 
-;; *** counsel-ag
+;; *** counsel-rg
+;; TODO deadgrep vsl counsel-rg
+;; TODO combo of conusel-rg and fuzzy (fzf) searching
+;;  as in: https://protesilaos.com/dotemacs/
+;;  demo: https://www.youtube.com/watch?v=IDkx48JwDco
 ;; nice swiper like completion.  helm-rg might/might not be better
 (if rg_exe
     (global-set-key [f5] 'counsel-rg)
