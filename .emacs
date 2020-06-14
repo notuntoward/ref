@@ -2554,7 +2554,9 @@ This function avoids making messed up targets by exiting without doing anything 
   ("C-c C-h" . helm-bibtex))
 
 ;; *** ivy-bibtex
-;; BSAG uses this instead of helm.  This is part from her, and part from here:
+;; BSAG uses this instead of helm.  This is part from her:
+;; https://mail.google.com/mail/u/0/#sent/FFNDWMkpMkrFWrkjBSSGpHcJSdSZHJGb
+;; and part from:
 ;; https://people.umass.edu/weikaichen/zh/post/emacs-academic-tools/
 (use-package ivy-bibtex
   :ensure t
