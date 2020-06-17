@@ -6158,7 +6158,9 @@ sera
 ******* more cdf interpolation ideas ([[http://stats.stackexchange.com/questions/4909/interpolating-the-empirical-cumulative-function][Cross Validated]])
 ******* [[https://books.google.de/books?id                                                                                         =qkGlfJRuRs8C&pg=PA130&lpg=PA130&dq=inverse+of+noisy+samples+of+a+monotonic+function&source=bl&ots=iOzwIL5LmR&sig=X-e9QiR67gJPwaS-YL_5lTMzibI&hl=en&sa=X&redir_esc=y#v=onepage&q=inverse%2520of%2520noisy%2520samples%2520of%2520a%2520monotonic%2520function&f=false][monotone interpolating splines]] (google books)
 *** <<Distribution Regression>>
-***** TODO original paper (and clearest?): [[file:energy.bib::Foresi95condDistRetDR][Foresi & Peracchi 1995]] cond dist DR
+***** [[cite:Vogt18multiDistLrnAnomDet][Vogt et al. 2018: Multi Task Dist Anom Det DRNN1]]
+***** [[cite:Dreher18pooledFreqRsrvWndCtrl][Dreher et al. 2018: Pooled Frequency Restoration DRNN1]]
+***** TODO original DR paper (and clearest?): [[file:energy.bib::Foresi95condDistRetDR][Foresi & Peracchi 1995]] cond dist DR
 ***** Replace DR logit with [[Invertible Neural Net]], or avoiding cdf inverting
 ***** TODO [[file:energy.bib::Koenker13DistributionalvsQuantile][Koenker et al. 2013: Distributional]] vs. QR: DR better @ extremes
 ***** [[file:energy.bib::Chernozhukov13infCntrFactDist][Chernozhukov et al. 2013: Inference]] counterfactual and dist rgrssn
@@ -6167,7 +6169,6 @@ sera
 ******* [[Metalog Distributions]]
 ******* [[Johnson System Distributions]]
 ******* [[Stable Distributions]]
-***** [[file:energy.bib::Foresi95condDistRetDR][Foresi & Peracchi 1995]] cond dist returns: dist regression
 ***** [[file:energy.bib::Baird05oneStepInvrtNN][Baird et al. 2005: One PDF]] invertible: maybe good to get pdf from cdf
 ***** [[file:energy.bib::Rippel13highDimProbDeepNN][Rippel & Adams 2013: High Dimensional Probability]]: invertible, deep learning
 ***** [[file:energy.bib::Szabo16LrnDistRgrssn][Szabo et al. 2016: Learning Theory Distribution Regression]]
@@ -9072,7 +9073,7 @@ Scott
 ********* see also: [[Quantile Differential Equations]] (related to bivariate copulas)
 ********* see also: SDE's in Optimization
 ********* see also: IRPWIND WP82.3 Final Report, which has Peder Bacher's SDEs
-********* sometimes also used in [[Bass Innovation Diffusion Models]]
+********* sometimes also used in [[Bass Innovation Diffusion Model]]
 ******* multi-step forecasting techniques
 ********* [[file:energy.bib::][Taieb & Hyndman 2014: Boosting]] Gaussian proces (other papers like this too)
 ******* [[cite:Soares17distGridMgmtPowFlw][Soares et al. 2017: Active Distribution Grid pow flow scenarios]]
@@ -11802,23 +11803,23 @@ Brittany
 *********** [[https://www.woodmac.com/our-expertise/capabilities/electric-vehicles/][Wood Makenzie Electric Vehicle Research]]
 *********** [[https://www.woodmac.com/our-expertise/capabilities/electric-vehicles/industry-insights/][Wood Mackenzie Electric Vehicle Industry Insights]]
 ********* also [[Data Sets for Technology Adoption]]
+********* also [[Demographic Databases]]
 ***** Electric heating adoption
 ******* [[cite:Bernards18stochDistNtwkPlan_PhD][Bernards 2018: Stochastic Distribution Planning PhD Thesis]]
-***** <<Double-S tech diffusion models>>
+***** <<Double-S tech diffusion model>>
       Popularized by the book [[cite:Moore99crossChasm][Moore & McKenna 1999: Crossing the Chasm Double S]]
 ******* Double-S in energy
 ********* DONE clean coal and wind: [[cite:PIK19EUenergySectorsD1.3][WUT et al. 2019: D1.3 Sect Anlys EU Clean Energy]]
 ******* double S equations: [[https://www.evernote.com/l/AA0rOJVVzltIR70l2wb7o8bGYxi7ekLJh_A/][DE202010017888U1 - Moisture-adaptive vapor barrier, especially for use in the...]]
-******* also [[Gompertz tech diffusion models]]
-******* also [[Bass Innovation Diffusion Models]]
-***** <<Gompertz tech diffusion models>>
+******* also [[Gompertz tech diffusion model]]
+******* also [[Bass Innovation Diffusion Model]]
+***** <<Gompertz tech diffusion model>>
 
-      Gompertz a combo of [[Bass Innovation Diffusion Models]] for initial sales and logistic models for replacements.  Has a less steep slope than Bass?
+      Gompertz combines [[Bass Innovation Diffusion Model]] for initial sales and logistic models for replacements.  Has a less steep slope than Bass?
 
-******* [[cite:Kaldasch15prodLifeCycDur][Kaldasch 2015: Product Life Cycle Gompertz]]
-******* also [[Bass Innovation Diffusion Models]]
-******* also [[Double-S tech diffusion models]]
-***** <<Bass Innovation Diffusion Models>>
+******* also [[Bass Innovation Diffusion Model]]
+******* also [[Double-S tech diffusion model]]
+***** <<Bass Innovation Diffusion Model>>
 
       The [[file:energy.bib::Horowitz19ovrvwDERinterConnNREL][most common]] tech adoption model.
 
@@ -11842,6 +11843,7 @@ Brittany
 ******* TODO [[file:energy.bib::Zarwi17discChoiceAdoptDiffTranspo][Zarwi et al. 2017: EV adopt Discr Choice Bass]]
 
 ******* TODO Not Bass, but diffusion: [[file:energy.bib::Williams20parsDiffResSolar][Williams et al. 2020: Empirical Diffusion Res Solar]]
+******* DONE [[cite:Kaldasch15prodLifeCycDur][Kaldasch 2015: Product Life Cycle Replacement Price Supply]]
 ******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012: Innovation diffusion SDEs]] (could get rate of change)
 ******* [[file:energy.bib::Kapur12bassDiffuseSDE][Kapur et al. 2012 bass SDE rate of change (interscience online)]]
 ******* [[file:energy.bib::Nafidi18inhomogDiffProcBassSDE][Nafidi et al. 2018 inhomog diffuse model Bass]]
@@ -11853,8 +11855,16 @@ Brittany
 ******* TODO [[https://about.bnef.com/electric-vehicle-outlook/][Electric Vehicle Outlook 2019 | Bloomberg NEF]] (uses Bass)
 ******* [[cite:Lee17techFrcstDiffnReplace][Lee & Huh 2017: Technology adopt frcst diffusion with replacement]]
 ******* [[cite:Zhao18resPriceEvoImpBass][Zhao et al. 2018: Renewable Improved Bass Wind]]
-******* also [[Gompertz tech diffusion models]]
-******* also [[Double-S tech diffusion models]]
+******* also [[Gompertz tech diffusion model]]
+******* also [[Double-S tech diffusion model]]
+******* also [[Threshold-heterogeneity Diffusion Model]]
+***** TODO <<Threshold-heterogeneity Diffusion Model>>
+
+      The [[Bass Innovation Diffusion Model]] says the population with a bell-shaped distribution with varying price targets changes.  The Threshold-heterogeneity Model says that there is one population with a bell shaped price target, and that the price changes. More or less what's said [[cite:Dong17resPVdeployFrcst][here]], anyway.
+
+******* TODO [[cite:Dong17resPVdeployFrcst][Dong et al. 2017: Forecasting California PV]]: Bass and THD
+******* TODO continue reviewing "NREL Bass" papers
+
 ***** <<Logistic Regression Based Tech Adoption>>
 ******* [[file:energy.bib::Almeida08openTechInvoDevCntries][Almeida & Fernandes 2008: Openness Adopt Dev Countries]] 
 ******* [[cite:Bjoerner05dynMdlCarOwn][Bjoerner & Leth-Petersen 2005: Dynamic Models Car Ownership]]
@@ -11879,7 +11889,7 @@ Brittany
 ******* TODO [[file:energy.bib::Rai15agentEnrgyTechAdoptFactors][Rai & Robinson 2015: Agent Energy Tech Adopt Factors]]
 
 ***** Distributions of a large population of adopters
-******* [[Bass Innovation Diffusion Models]]
+******* [[Bass Innovation Diffusion Model]]
 ******* Adopter sum ~ Poisson
 ********* [[file:energy.bib::Hodges60poissonAprxPoissonBin][Hodges & Le 1960: Sum Bernoulli ~ Poisson]]
 ********* [[file:energy.bib::Ward18sumPoissonsCourseNts][Ward 2018: Course Notes: Sum Poissons ~ Poisson]]
@@ -11936,6 +11946,7 @@ Brittany
 ***** also [[Real Estate Forecasts]]
 ***** also [[Economic Forecasts]]
 ***** also [[Population Forecasts]]
+***** also [[Demographic Databases]]
 ***** also [[Agent Based Modeling]]
 ***** also [[Ripley's K]] (proxmity feature)
 *** <<Technology Learning Rates>>
@@ -12045,6 +12056,9 @@ Brittany
 *********** [[file:energy.bib::Tille12histoLorenzGini][Tillé & Langel 2012: Histogram Based Interpolation: Gini from Histo flat]]
 *********** [[file:energy.bib::Lyon16advtgsGrpMnLorenzGINI][Lyon et al. 2016: Advantages Using Group: Gini from histo slope]]
 *********** [[file:energy.bib::Prendergast16quantLorenzGINI][Prendergast & Staudte 2016: Quantile Lorenz: Gini from quantile, fancy]]
+*** <<Demographic Databases>>
+***** [[cite:Hu20uszipcode][Hu 2020: uszipcode Python Package]]
+***** [[https://www.esri.com/en-us/arcgis/products/tapestry-segmentation/overview][Tapestry Segmentation, ESRI]]
 *** <<Population Forecasts>>
 ***** [[file:energy.bib::Tayman11popFrcstAccRgrssn][Tayman et al. 2011: Evaluating pop frcst w/ regression model]]
 ***** [[file:energy.bib::Hoyt17usApartmentDemandFrcst][Hoyt 2017: US Apartment Demand Forecast]] (mentions pop forecasts)
@@ -13482,7 +13496,7 @@ optimization to be a generalization of linear programming.
              [[cite:PIK19EUenergySectorsD1.3][WUT et al. 2019: D1.3 Sect Anlys EU Clean Energy]]
    05/25/20  [[cite:Sarkar2019clustMetBetterThanElbow][Sarkar 2019: Clustering Metrics Better than Elbow]] (python)
              [[cite:Kingrani18numClustDivers][Kingrani et al. 2018: Estimating nClust Diversity]]
-
+   05/28/20  [[cite:Kaldasch15prodLifeCycDur][Kaldasch 2015: Product Life Cycle Replacement Price Supply]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
