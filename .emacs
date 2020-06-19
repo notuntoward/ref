@@ -773,6 +773,35 @@ TODO: make this a general function."
         ;; Navigation: can also use M-< and M-> like normal
         (define-key pdf-view-mode-map (kbd "C-<home>") 'pdf-view-first-page)
         (define-key pdf-view-mode-map (kbd "C-<end>") 'pdf-view-last-page)
+
+        ;; Custom annotation colors: https://github.com/politza/pdf-tools/issues/581#issuecomment-646370370
+        ;; Strike out
+        (defun pdftools-strikeout-gray (oldfun loe)
+          (apply oldfun loe '("gray")))
+        (advice-add 'pdf-annot-add-strikeout-markup-annotation :around 
+                    #'pdftools-strikeout-gray)
+        ;; Underline
+        (defun pdftools-underline-purple (oldfun loe)
+          (apply oldfun loe '("#8a1e8a")))
+        (advice-add 'pdf-annot-add-underline-markup-annotation :around 
+                    #'pdftools-underline-purple)
+        ;; Squiggly underline
+        (defun pdftools-squiggly-red (oldfun loe)
+          (apply oldfun loe '("#fe2500")))
+        (advice-add 'pdf-annot-add-squiggly-markup-annotation :around 
+                    #'pdftools-squiggly-red)
+        
+        ;; Default color for text highlight. 
+        ;; This will change the color of the Note.
+        (setq pdf-annot-default-markup-annotation-properties
+              '((color . "green")))
+
+        ;; Default color for text.
+        ;; This will change the color of the Note.
+        (setq pdf-annot-default-text-annotation-properties
+              '((color . "#90ee90")))
+
+        ;; Keybindings: https://github.com/politza/pdf-tools
         ;; - M-g l x: is "go to page number x", also M-g g
         ;; - B, N: history-back and history-forward
         ;; - M-s o: pdf-occur is nice, has same mapping as <occur>
@@ -2479,6 +2508,9 @@ This function avoids making messed up targets by exiting without doing anything 
 ;; (bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
 
 ;; ** Org-roam
+;;
+;; TODO remove leading date string from new note format 
+;;
 ;; *** Org-roam basic config
 ;;As of 5/23/20, the best docs are in emacs info or here: https://org-roam.github.io/org-roam/manual/
 
@@ -4076,7 +4108,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (helm-org-rifle deft zotxt zotxt-emacs deadgrep emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (org-roam-bibtex helm-org-rifle deft zotxt zotxt-emacs deadgrep emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
