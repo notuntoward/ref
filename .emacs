@@ -775,6 +775,7 @@ TODO: make this a general function."
         (define-key pdf-view-mode-map (kbd "C-<end>") 'pdf-view-last-page)
 
         ;; Custom annotation colors: https://github.com/politza/pdf-tools/issues/581#issuecomment-646370370
+        ;; Emacs color pickers: https://emacs.stackexchange.com/questions/5582/are-there-color-pickers-for-emacs
         ;; Strike out
         (defun pdftools-strikeout-gray (oldfun loe)
           (apply oldfun loe '("gray")))
