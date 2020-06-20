@@ -723,7 +723,9 @@ TODO: make this a general function."
 (global-set-key (kbd "C-x 5 c") 'sdo/clone-indirect-buffer-other-frame)
 
 ;; * File Finding / Opening
+
 ;; ** pdf-tools
+;;
 ;; Open and annotate pdfs.  
 ;; See demo: http://tuhdo.github.io/static/emacs-read-pdf.gif
 ;; Also used by org-roam (I think) and some latex stuff (I think)
@@ -745,11 +747,9 @@ TODO: make this a general function."
 
 (if (setq pacbin (sdo/find-exec "pacman" "Need MSYS2 for pdf-tools & more"))
     (progn
-      ;; C:\tools\msys64\mingw64\bin
       (use-package pdf-tools
-;;        :pin manual ;; manual updates only, avoids repeated install & build
         :config
-        ;; Ensure mingw64 libraries  on front of PATH, not other tools' libs
+        ;; Ensure mingw64 libraries on front of PATH, not other tools' libs
         ;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
         (setq msys2dir (sdo/popdir (sdo/popdir (sdo/popdir pacbin))))
         (setq msys2libdir (expand-file-name "mingw64\\bin" msys2dir))
@@ -1594,9 +1594,9 @@ TODO: make this a general function."
 ;; To activate a non-hardcoded env, run:
 ;; M-x conda-env-activate
 
-(when (setq conda_exe (sdo/find-exec "thisIsNotThere" "Needed for most python packages"))
+;; (when (setq conda_exe (sdo/find-exec "thisIsNotThere" "Needed for most python packages"))
 
-  ;;(when (setq conda_exe (sdo/find-exec "conda" "Needed for most python packages"))
+ (when (setq conda_exe (sdo/find-exec "conda" "Needed for most python packages"))
     (use-package conda
       :ensure t
       :config
@@ -1609,7 +1609,7 @@ TODO: make this a general function."
                                       (concat (file-name-directory conda_exe)
                                               "..")))
       (message "conda-env-home-directory: %s" conda-env-home-directory)
-;;      (setq conda-anaconda-home conda-env-home-directory)
+      ;; (setq conda-anaconda-home conda-env-home-directory)
       (custom-set-variables
        '(conda-anaconda-home conda-env-home-directory))
       (message "conda-anaconda-home: %s" conda-anaconda-home)
@@ -1622,6 +1622,30 @@ TODO: make this a general function."
       ;;(conda-env-autoactivate-mode t)
       ;;conda environment is set on the modeline in custom variables
       )
+
+    
+    ;; Fix conda's Windows path bug
+    ;; https://github.com/necaris/conda.el/issues/59
+    (with-eval-after-load 'conda
+      (defun conda--get-path-prefix (env-dir)
+        "Get a platform-specific path string to utilize the conda env in ENV-DIR.
+It's platform specific in that it uses the platform's native path separator."
+        (s-trim
+         (with-output-to-string
+           (with-current-buffer standard-output
+             (let* ((conda-executable-path
+                     (concat (file-name-as-directory conda-anaconda-home) (file-name-as-directory conda-env-executables-dir) "conda"))
+                    (command "\"%s\" ..activate \"%s\" \"%s\"")
+                    (formatted-command (format command
+                                               conda-executable-path
+                                               (if (eq system-type 'windows-nt)
+                                                   "cmd.exe"
+                                                 "bash")
+                                               env-dir))
+                    (return-code (process-file shell-file-name nil '(t nil) nil shell-command-switch formatted-command)))
+               (unless (= 0 return-code)
+                 (error (format "Error: executing command \"%s\" produced error code %d" formatted-command return-code)))))))))
+
 
   (sdo/find-exec "python" "Needed by autofix-on-save, REPL, elpy & py-python")
 
@@ -2978,6 +3002,7 @@ ${abstract}
 ;;   (push 'company-org-roam company-backends))
 
 ;; ** Org-noter
+;;
 ;; Keybindings, basic explanation: https://github.com/weirdNox/org-noter#keys
 ;;
 ;; Workflow w/ org-noter, org-roam org-roam-bibtex and org-ref.  Also plans for org-journal: https://rgoswami.me/posts/org-note-workflow/
@@ -3007,6 +3032,12 @@ ${abstract}
 
 (add-to-list 'org-ref-helm-user-candidates 
              '("Org-Noter notes" . org-ref-noter-at-point))
+
+;; ** Org-pdftools and org-noter-pdftools
+;;
+;; A fork/enhancement of defunct org-pdfview, has big future plans, recent commits (April 2020).  Has some kinda (temporary?) integrate with org-noter.
+;; TODO: try it
+;; https://github.com/fuxialexander/org-pdftools
 
 ;; * Search and Replace (see also Swiper/Ivy)
 ;; ** Web Search
