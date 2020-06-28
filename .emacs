@@ -1535,10 +1535,16 @@ TODO: make this a general function."
 ;; Other bindings: https://github.com/mhayashi1120/Emacs-erefactor
 (use-package erefactor
   :defer t
-  :hook
-  (emacs-lisp-mode-hook .
+  :init
+  (add-hook 'emacs-lisp-mode-hook
    (lambda ()
-     (define-key emacs-lisp-mode-map "\C-c\C-v" erefactor-map))))
+     (define-key emacs-lisp-mode-map "\C-c\C-v" erefactor-map)))
+
+  ;; TODO do this
+  ;;And set these variables correctly: erefactor-lint-path-alist, erefactor-lint-by-emacsen
+  ;; Highlight local variables: DOES THIS DO ANYTHING?  Need paths above?
+  (add-hook 'emacs-lisp-mode-hook 'erefactor-lazy-highlight-turn-on)
+  (add-hook 'lisp-interaction-mode-hook 'erefactor-lazy-highlight-turn-on))
 
 ;; ** C/C++
 ;; note: connect to common hook used by new cc-mode
