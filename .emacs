@@ -1530,6 +1530,16 @@ TODO: make this a general function."
 	     (set (make-local-variable 'dabbrev-case-fold-search) nil)
 	     (set (make-local-variable 'dabbrev-case-replace) nil)))
 
+;; Rename elisp symbols:
+;; C-c C-v r : Rename symbol in current buffer. Resolve let binding as long as i can.
+;; Other bindings: https://github.com/mhayashi1120/Emacs-erefactor
+(use-package erefactor
+  :defer t
+  :hook
+  (emacs-lisp-mode-hook .
+   (lambda ()
+     (define-key emacs-lisp-mode-map "\C-c\C-v" erefactor-map))))
+
 ;; ** C/C++
 ;; note: connect to common hook used by new cc-mode
 (add-hook 'c-mode-common-hook
@@ -1965,7 +1975,8 @@ is already narrowed."
 
 ;; set up org and bib for old way of doing things and experimental org-roam, or a true org-roam, org-ref setup
 (setq bibfile_energy_nm (expand-file-name "energy.bib" docDir)
-      bibfile_energy_pdf_dir (expand-file-name "papers" docDir))
+      bibfile_energy_pdf_dir (expand-file-name "papers" docDir)
+      bibfile_energytop_nm (expand-file-name "energytop.bib" docDir))
 
 (if t
     (progn
@@ -1973,20 +1984,13 @@ is already narrowed."
       (setq
        org_roam_dir (expand-file-name "DOE_brainstorm" docDir)
        org_notes_dir (expand-file-name "org-notes" org_roam_dir)
-       bibfile_roam_nm (expand-file-name "deepSolarDOE.bib" org_roam_dir)
+       bibfile_roam_fnms (list (expand-file-name "deepSolarDOE.bib" org_roam_dir)
+                               (expand-file-name "deepSolarDOE.bib" org_roam_dir))
        bibfile_roam_pdf_dir (expand-file-name "papers" org_roam_dir)
        org_ref_notes_dir (expand-file-name "bib-notes" org_roam_dir)
        org_ref_notes_fn (expand-file-name "DOE_brainstorm.org" org_roam_dir)
        org-directory org_notes_dir
        deft-directory org_notes_dir
-       ;; org_roam_dir "~/tmp/org-roam"
-       ;; org_notes_dir "~/tmp/org-roam"
-       ;; bibfile_roam_nm (expand-file-name "energy.bib" docDir)
-       ;; bibfile_roam_pdf_dir (expand-file-name "papers" docDir)
-       ;; org_ref_notes_dir "~/tmp/org-roam"
-       ;; org_ref_notes_fn (expand-file-name "energytop.org" docDir)
-       ;; org-directory org_notes_dir
-       ;; deft-directory org_notes_dir
        ))
   (progn
     (message "org-roam style init")
@@ -1994,7 +1998,7 @@ is already narrowed."
     (setq
      org_roam_dir (expand-file-name "org_roam" docDir)
      org_notes_dir (expand-file-name "org_notes" org_roam_dir)
-     bibfile_roam_nm (expand-file-name "zotlib.bib" org_roam_dir)
+     bibfile_roam_fnms (list (expand-file-name "zotlib.bib" org_roam_dir))
      bibfile_roam_pdf_dir (expand-file-name "papers" org_roam_dir)
      org_ref_notes_dir (expand-file-name "org_ref_notes" org_roam_dir)
      org-directory org_notes_dir
@@ -2003,7 +2007,7 @@ is already narrowed."
      )))
 
 ;; Users of this require that it really be a list, even if only one item
-(setq bibfile_list (list bibfile_roam_nm)) ;; helm-bibtex slow w/ energy.bib
+(setq bibfile_list bibfile_roam_fnms) ;; helm-bibtex slow w/ energy.bib
 (setq bibpdf_list (list bibfile_roam_pdf_dir)) ;; helm-bibtex slow w/ energy.bib
 
 ;; ** Org-download
@@ -2720,7 +2724,7 @@ ${abstract}
 ;;;;(after org-ref
 ;; (setq
 ;;  ;; bibtex-completion-notes-path org_ref_notes_dir
-;;  ;; bibtex-completion-bibliography bibfile_roam_nm
+;;  ;; bibtex-completion-bibliography bibfile_roam_fnms
 ;;  ;; bibtex-completion-pdf-field "file"
 ;;  bibtex-completion-notes-template-multiple-files
 ;;  (concat
@@ -2757,7 +2761,7 @@ ${abstract}
 ;; (setq
 ;;    org_roam_dir (expand-file-name "org_roam" docDir)
 ;;    org_notes_dir (expand-file-name "org_notes" org_roam_dir)
-;;    bibfile_roam_nm (expand-file-name "zotlib.bib" org_roam_dir)
+;;    bibfile_roam_fnms (list (expand-file-name "zotlib.bib" org_roam_dir))
 ;;    org_ref_notes_dir (expand-file-name "org_ref_notes" org_roam_dir)
 ;;    org-directory org_notes_dir
 ;;    deft-directory org_notes_dir
@@ -2793,7 +2797,7 @@ ${abstract}
 ;; ;;(after org-ref
 ;; (setq
 ;;  bibtex-completion-notes-path org_ref_notes_dir
-;;  bibtex-completion-bibliography bibfile_roam_nm
+;;  bibtex-completion-bibliography bibfile_roam_fnms
 ;;  bibtex-completion-pdf-field "file"
 ;;  bibtex-completion-notes-template-multiple-files
 ;;  (concat
@@ -3593,10 +3597,10 @@ so you can add a reference to either or both.
 When done, can undo the window config with winner-mode: C-c Left"
   (interactive)
   (delete-other-windows)
-  (find-file org_ref_notes_fn)
+  (find-file bibfile_energytop_nm)
   (split-window-horizontally)
   (other-window 1)
-  (find-file bibfile_roam_nm))
+  (find-file bibfile_energy_nm))
 
 ;; * Emacs Command Execution
 
@@ -4109,7 +4113,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (org-roam-bibtex helm-org-rifle deft zotxt zotxt-emacs deadgrep emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (erefactor org-roam-bibtex helm-org-rifle deft zotxt zotxt-emacs deadgrep emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
