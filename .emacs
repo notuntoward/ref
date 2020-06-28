@@ -527,7 +527,7 @@ TODO: make this a general function."
 ;; So C-arrow keys move cursor to different buffer (C-S-arrow moves buffers)
 (setq windmove-wrap-around t ) ; wrap windows around edge, like torus space
 
-;; TODO: remove this bindings in favor of hyra?
+;; TODO: remove these bindings in favor of hyra?
 ;; Overwrites org keys I don't use (are inhibited in org setup)
 (global-set-key (kbd "<C-up>")     'windmove-up)
 (global-set-key (kbd "<C-down>")   'windmove-down)
@@ -618,8 +618,9 @@ TODO: make this a general function."
 
 ;; (define-key (current-global-map) (kbd "C-x w") 'windmove-prefix)
 
-;; Traverse cursor movement history across windows and frames using mouse buttons usually bound to browser forward/back.
-;; On MS sculpt mouse, swipe down is 'back'; swipe up is 'forward'
+;; Do an emacs Back buttion, traversing cursor movement history across
+;; windows and frames using mouse buttons usually bound to browser
+;; forward/back.  On MS sculpt mouse, swipe down is 'back'; up is 'forward'
 (define-key global-map [mouse-4] 'next-multiframe-window)
 (define-key global-map [mouse-5] 'previous-multiframe-window)
 
@@ -634,7 +635,7 @@ TODO: make this a general function."
 (setq uniquify-buffer-name-style 'post-forward)
 (setq uniquify-after-kill-buffer-p 1)
 
-(global-set-key "n" 'rename-buffer)
+(global-set-key "n" 'rename-buffer) ; TODO does this work?
 
 ;; ** List Buffers w/ ctl-mouse1
 (defun cw-build-buffers ()
@@ -1600,19 +1601,11 @@ TODO: make this a general function."
     (use-package conda
       :ensure t
       :config
-      ;;(setq conda-anaconda-home (expand-file-name "~/.anaconda")) ; matters?
-      (message "conda_exe: %s" conda_exe)
-      ;; (setq my-conda-anaconda-home (expand-file-name
-      ;;                            (concat (file-name-directory conda_exe)
-      ;;                                    "..")))
       (setq conda-env-home-directory (expand-file-name
                                       (concat (file-name-directory conda_exe)
                                               "..")))
-      (message "conda-env-home-directory: %s" conda-env-home-directory)
-      ;; (setq conda-anaconda-home conda-env-home-directory)
       (custom-set-variables
        '(conda-anaconda-home conda-env-home-directory))
-      (message "conda-anaconda-home: %s" conda-anaconda-home)
       
       (conda-env-initialize-interactive-shells)
       (conda-env-initialize-eshell)
@@ -1622,30 +1615,6 @@ TODO: make this a general function."
       ;;(conda-env-autoactivate-mode t)
       ;;conda environment is set on the modeline in custom variables
       )
-
-    
-    ;; Fix conda's Windows path bug
-    ;; https://github.com/necaris/conda.el/issues/59
-    (with-eval-after-load 'conda
-      (defun conda--get-path-prefix (env-dir)
-        "Get a platform-specific path string to utilize the conda env in ENV-DIR.
-It's platform specific in that it uses the platform's native path separator."
-        (s-trim
-         (with-output-to-string
-           (with-current-buffer standard-output
-             (let* ((conda-executable-path
-                     (concat (file-name-as-directory conda-anaconda-home) (file-name-as-directory conda-env-executables-dir) "conda"))
-                    (command "\"%s\" ..activate \"%s\" \"%s\"")
-                    (formatted-command (format command
-                                               conda-executable-path
-                                               (if (eq system-type 'windows-nt)
-                                                   "cmd.exe"
-                                                 "bash")
-                                               env-dir))
-                    (return-code (process-file shell-file-name nil '(t nil) nil shell-command-switch formatted-command)))
-               (unless (= 0 return-code)
-                 (error (format "Error: executing command \"%s\" produced error code %d" formatted-command return-code)))))))))
-
 
   (sdo/find-exec "python" "Needed by autofix-on-save, REPL, elpy & py-python")
 
