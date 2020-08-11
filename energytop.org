@@ -107,6 +107,7 @@
 *** [[http://www.amazon.com/Neural-Novel-Hybrid-Algorithms-Prediction/dp/0471130419/ref%3Dpd_sim_b_2][Neural, Novel & Hybrid Algorithms for Time Series Prediction]]
 *** [[http://www.amazon.com/Recurrent-Neural-Networks-Prediction-Architectures/dp/0471495174][Recurrent Neural Networks for Prediction: Learning Algorithms, Architectures and Stability (Hardcover)]]
 *** "Neural networks: Tricks of the trade", chapter: [[file:energy.bib::LeCun98effBkprp][LeCun et al. 1998: Efficient]]
+*** [[cite:duda01pattClassBook][Duda et al. 2001: Pattern Classification]] (I have in paper)
 *** [[file:energy.bib::Dubitzky07datMinGenBook][Dubitzky et al. 2007: Fundamentals]] data mining genomics: good for high dim?
 *** [[http:books.google.de/books?hl%3Den&lr%3D&id%3DDtV4RBEW0GYC&oi%3Dfnd&pg%3DPR7&ots%3DtvgzPkKY1j&sig%3DDsr0Xv98xlApSmDor72nRNOIEng&redir_esc%3Dy#v%3Donepage&q&f%3Dfalse][Statistical Learning from a Regression Perspective]] (Richard A. Berk).  Looked good.
 *** [[file:energy.bib::Ackermann05WindPowSysBook][Ackermann & others 2005: Wind Power in Power Systems]]
@@ -1498,7 +1499,6 @@
 ***** [[file:energy.bib::Hansen08RegularizationToolsManualV4][Hansen 2008: Regularization Tools Manual Version]] V4 (eigs low/high freq)
 ***** [[file:energy.bib::Elden77AlgRegIllCond][Elden 1977: Algorithms]] reg. ill-cond: gen Tikhonov --> standard form
 ***** [[file:energy.bib::Golub99tikhRegTotLSQ][Golub et al. 1999: Tikhonov]] reg. total LSQ (multivariate pspline?)
-
 * Ideas
 *** Ideas for DTU
 ***** non-contiguous lags in CP-VAR coeffs
@@ -1967,8 +1967,15 @@ Scott
 ********* Google Scholar for: [[http://www.google.com/search?aq%3Df&gcx%3Dc&sourceid%3Dchrome&ie%3DUTF-8&q%3Dexpectation%2Bmaximization%2Bbootstrap][Expectation Maximization Bootstrap]]
 
 * Neural Nets
-*** [[https://www.evernote.com/l/AA2JO1ths9tHbbpek2JKdO4_h9uc2_C14ro/][The Neural Network Zoo]] (visual guide to NN structures)
-*** picking layer types [[file:energy.bib::LeCun98effBkprp][LeCun et al. 1998: Efficient]] (easy to read)
+*** <<Neural Net Topology>>
+***** <<Multiple layers for power curve/wind>>
+******* >3 layers in NN for rotation/scale ([[cite:Duda01pattClassBook][Duda et al. 2001: Pattern Classification]] p. 317"), one layer for trans/rot
+******* could a 2nd hidden layer be for translating wind to power?
+******* could use actual power output as a hint, as in cons/vowel (DHS ch 6)
+******* [[http://www.awea.org/standards/iec_stds.html#WG6][IEC 61400-12 standard]] defines how power curves are measured
+********* Garrard Hassan (Bristol, England) sells software the does the work
+***** [[https://www.evernote.com/l/AA2JO1ths9tHbbpek2JKdO4_h9uc2_C14ro/][The Neural Network Zoo]] (visual guide to NN structures)
+***** also [[Neural Net Activation Functions]]
 *** <<Neural Net Weights Initialization>>
 ***** [[cite:Jones15xavierInitBlog][Jones 2015: Explanation Xavier Initialization (simple blog post)]]
 ***** [[cite:Glorot10undrstndDiffDpLrnFFnets][Glorot & Bengio 2010: Understanding Diff Deep NN Lrn: Xavier Initialization]]
@@ -2006,14 +2013,31 @@ Scott
 ******* additional nodes encode error from previous set
 ***** Pruning (p. 331)
 ******* derivative-based way of removing "weights that don't matter"
-*** Multiple layers for power curve/wind
-***** >3 layers in NN for rotation/scale (DHS, p. 317), one layer for trans/rot
-***** could a 2nd hidden layer be for translating wind to power?
-***** could use actual power output as a hint, as in cons/vowel (DHS ch 6)
-***** [[http://www.awea.org/standards/iec_stds.html#WG6][IEC 61400-12 standard]] defines how power curves are measured
-******* Garrard Hassan (Bristol, England) sells software the does the work
 *** <<Neural Net Activation Functions>>
 ***** [[cite:Clevert15dpLrnELU][Clevert et al. 2015: Fast Accurate Deep Lrn ELU]]
+***** Why ReLU works better
+      From: [[https://sea-adl.org/2019/12/03/lstm-is-dead-long-live-transformers/][LSTM is dead, long live Transformers – Seattle Applied Deep Learning]]
+******* ReLU  advantages over e.g. sigmoid or tanh
+********* RHS goes to inf, allows neuron to express stronger opinion than others
+********* Gradient doesn't saturate on high end
+********* less sensitve to random init (easy to randomly hit a spot that has non-zero slope)
+********* runs on low precision hardware e.g. 8 bit integer math
+********* gradient comp. is trivial (slope == 1)
+******* ReLU  disadvantages
+********* Dead neurons always output zero (leaky ReLU fixes this)
+********* Discontinuous gradient at origin (GELU fixes this)
+
+***** In Deep Nets different activations don't matter
+      From: [[https://sea-adl.org/2019/12/03/lstm-is-dead-long-live-transformers/][LSTM is dead, long live Transformers – Seattle Applied Deep Learning]]
+******* as long as you don't use tanh/sigmoid
+******* But optimizers do matter
+********* Adam: fast, but tends to overfit
+********* SGD: slow, but gives good results
+********* RMSProp is often
+********* SWA can improve quality
+********* AdaTune automatically sets learning rate (was from Amazon)
+***** picking layer types [[file:energy.bib::LeCun98effBkprp][LeCun et al. 1998: Efficient]] (easy to read)
+***** also [[Neural Net Topology]]
 *** TODO <<Deep Learning>>
 
     Many-layered NN's that are an alternative to three layer MLP's:  They're trainiable because they have smaller local minima, use new regulation ideas and lots of data.  [[Graph Networks]] may represent knowledge in a more interpretable, data-efficient way.
@@ -2098,6 +2122,7 @@ Scott
 ******* DONE [[https://wiki.tut.fi/DENIS/CoursesandSchools][Deep Learning summer school 2015: 8/17-19, Aalto U., Espoo, Finland]]
         I got  [[cite:Raiko15supUnsupCombLadder][Raiko 2015: Combining Supervised Unsupervised]], which I should read.
 ******* [[file:energy.bib::Nielsen15nnDeepLrnBk][Nielsen 2015: Neural Deep Lrn Bk]] (interactive web too)
+***** [[https://end-to-end-machine-learning.teachable.com/p/complete-course-library-full-end-to-end-machine-learning-catalog][End-to-End Machine Learning]] (~free, [[https://www.youtube.com/watch?v=WCUNPb-5EYI][LSTM tutorial]] was good)
 ***** TODO [[cite:Raiko15supUnsupCombLadder][Raiko 2015: Combining Supervised Unsupervised]]
 ***** TODO go through links in chrome bookmarks called "Deep/Reinforcement learning overview ModernWindABS"
 ***** TODO go through Google Keep "Run notes" checklist
@@ -2120,6 +2145,44 @@ Scott
 ******* [[cite:Che17neuralNetTensorRnk1][Che et al. 2017: Neural Tensor learn Rank 1]]
 ***** <<Deep Learning Regularization>>
 ******* [[cite:Gal16nnDropoutBayesApprox][Gal & Ghahramani 2016: Dropout Bayesian Approximation]]
+***** <<Deep Sequence/TimeSeries Learning>>
+******* <<Recurrent Neural Networks (RNN)>>
+
+        Fill Me in
+
+******* <<Long Short Term Memory (LSTM)>>
+
+        Fill Me In.  
+
+        Might have been supplanted by [[Transformer Networks]]
+
+********* good [[https://www.youtube.com/watch?v=WCUNPb-5EYI][RNN and LSTM video tutorial, Brandom Rohrer]] (and links to more)
+
+******* <<Transformer Networks>> [0/1]
+
+        Do same job as LSTMS and then some.  Seem to be mainly about language models, but maybe they can somehow do continuous time series forecasts, as LSTMs do.
+
+        Differences from [[Long Short Term Memory (LSTM)]]
+        - Easier to train, more efficient ([[https://youtu.be/TQQlZhbC5ps][training is parallelizable]])
+        - Can do transfer learning, use giant pre-trained models e.g. language translation (Hard for LSTM). /Really important./
+        - Relevance scores are interpretable (at least in BERT predecessor ntwk)
+        - Unsupervised training possible e.g. unsupervised text
+        - Clever position dependence (position-dependent Fourier Series input)
+        - [ ] Are LSTMs really position independent?  Are they just neighbhor detectors?  Look up.
+        - GPU needed b/c (for doc of len N), there are N^2 multiplies
+        - Not as good as LSTM when
+          - Inifinite or long sequence (Transformers are NxN, N = seq len)
+          - low latency (NxN) e.g. Robotics
+
+********* above is from tutorial video: [[https://www.youtube.com/watch?v=S27pHKBEp30][LSTM is dead. Long Live Transformers!]]
+********* Transformer Network Software
+*********** [[https://github.com/huggingface/transformers][GitHub - huggingface/transformers: Transformers: State-of-the-art Natural La...]]
+********* also [[Probabilistic Deep Learning]]
+
+******* <<Deep Sequence Learning for Time Series Forecasting>>
+
+        Seems like LSTMs, Transformers, ... are mainly binary or classifier outputs.  But the binary output can be a threshold indicator bit, like in [[Distribution Regression]].  So could do multitask DR ( [[cite:Vogt18multiDistLrnAnomDet][Vogt et al. 2018: Multi Task Dist Anom Det DRNN1]]) on each sequence element.  Position dependence seems like maybe you'd want a Transformer network.
+        
 ***** [[Deep Learning School, Stanford, 2016]]
 ***** TODO [[http://lamda.nju.edu.cn/weixs/project/CNNTricks/CNNTricks.html][Must Know Tips/Tricks in Deep Neural Networks]]
 ***** TODO Ladder networks
@@ -2139,6 +2202,7 @@ Scott
 ***** <<Deep Learning in Energy Systems>>
 ******* TODO [[file:energy.bib::Vogt19windPowFrcstDpLrnXfer][Vogt et al. 2019: Wind Pow Forecast Deep Lrn, Xfer Lrn]]
 ******* [[file:energy.bib::Vogt19windPowFrcstDpLrnXfer][Vogt et al. 2019: Wind Pow Forecast Deep Lrn, Xfer Lrn]]
+******* [[Multiple layers for power curve/wind]]
 ******* 2017 entries
 ********* [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]] :DpLrn:FrcstDmd:
 ********* TODO [[cite:Busseti12deepLrnTimeSer][Busseti et al. 2012: Deep Learning Time Series Modeling (Demand frcst, RNN best)]] :DpLrn:RNN:FrcstDmd:
@@ -2178,6 +2242,7 @@ Scott
 ***** TODO <<Probabilistic Deep Learning>>
 ******* TODO [[file:energy.bib::Rippel13highDimProbDeepNN][Rippel & Adams 2013: High Dimensional Probability]]: invertible, deep learning
 ******* [[cite:Pathak15cnstrnStructCNN][Pathak et al. 2015: Constrained conv NN prob output]]
+******* also [[Deep Sequence Learning for Time Series Forecasting]]
 ***** TODO [[http://lamda.nju.edu.cn/weixs/project/CNNTricks/CNNTricks.html][Must Know Tips/Tricks in Deep Neural Networks]]
 ******* [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]
 ******* [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]]
@@ -2220,7 +2285,7 @@ Scott
           Slides: [[cite:DeepLrnSchool2016_slides][Deep Learning School 2016: Slides]], video
 ********* Recurrent Neural Networks (multistep, old style)
 *********** [[http://www.sciencedirect.com/science?_ob=ArticleURL&_udi=B6T08-41XM62K-8&_user=10&_rdoc=1&_fmt=&_orig=search&_sort=d&view=c&_version=1&_urlVersion=0&_userid=10&md5=5d26ffa18a11a073c4a9cbb307d6d0f4][Multi-step-ahead prediction using dynamic recurrent neural networks (2000, I think)]]
-*********** Duda&Hart Pattern Recog Book: recurrent neural networks (p. 328)
+*********** [[cite:duda01pattClassBook][Duda et al. 2001: Pattern Classification]]: RNNs (p. 328)
 *********** [[http://www.amazon.com/Recurrent-Neural-Networks-Prediction-Architectures/dp/0471495174][Recurrent Neural Networks for Prediction: Learning Algorithms, Architectures and Stability (2001, Hardcover)]]
 *********** [[file:energy.bib::Barbounis2007locRecurrentNeuralWind][Barbounis & Theocharis 2007: Locally recurrent neural]]
 *********** [[file:energy.bib::Trentin01mixRecurrNeuralSpkrNorm][Trentin & Giuliani 2001: Mixture Recurrent Neural]]
@@ -2235,6 +2300,7 @@ Scott
 ***** <<Deep Feature Learning>>
 ******* [[cite:Karpathy14featLrnEscpdsBlog][Karpathy 2014: Feature Learning Escapades]] (Transfer learning)
 ******* [[cite:Zeiler14vizUnderstandConvNN][Zeiler & Fergus 2014: Visualizing]] conv NN feat learn
+******* also [["Deep" Feature Synthesis (Featuretools)]]
 ***** Deep Learning Code
 ******* Matlab: [[http://www.mathworks.com/matlabcentral/fileexchange/38310-deep-learning-toolbox][Deep Learning Toolbox]]
 ******* [[http://deeplearning.net/software_links/][deeplearning.net]]: software and papers, and [[http://deeplearning.net/reading-list/tutorials/][tutorials]]
@@ -2272,10 +2338,11 @@ Scott
 ******* [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]]
 ***** [[Deep Regime Learning]]
 ***** [[Neural Net Activation Functions]]
-***** see also: [[Feature Construction]]
-***** see also: [[Interactions and Deep Learning]]
-***** see [[Tensors]]
-***** see [[Graph Networks]]
+***** also [[PCA for Deep Learning]]
+***** also [[Feature Construction]]
+***** also [[Interactions and Deep Learning]]
+***** also [[Tensors]]
+***** also [[Graph Networks]]
 *** <<Neural Network Training Algorithms>>
 ***** Levenberg-Marquardt Algorithm
 ******* [[file:energy.bib::Hagan94nnTrnLevMarq][Hagan & Menhaj 1994: Training Marquardt]] (Levenberg-Marquardt backprop reference, I think)
@@ -2463,7 +2530,7 @@ Scott
 ********* [[file:energy.bib::Althoff12OnlnTnsrFactPCA][Althoff 2012: Online Tensor Factorization]] (featsel faster multilinear tensor PCA)
 ********* [[cite:Lu11multiLinSubspaceLrnSurvey][Lu et al. 2011 surve of multlinear subspace learning for tensor data]]
 ********* [[cite:Zhao14MultiNonLinPLSoverview][Zhao et al. 2014: Multilinear generalization of PLS, tensors]]
-********* See also: [[Tensors]]
+********* also [[Tensors]]
 ******* <<PCA Dimension Determination>>
 ********* [[cite:Minka00AutoPCAdim][Minka 2000: Automatic Choice Dimensionality PCA]]
 ********* [[cite:Minka00AutoPCAdimTechNote][Minka 2000: Automatic PCA dim choice Tech Note]]
@@ -2472,6 +2539,15 @@ Scott
 ********* [[file:energy.bib::Nathans12mlrVarImp][Nathans et al. 2012: Interpreting var imp, MLR and PCA]]
 ********* [[file:energy.bib::Zuber10varImpSelDecorr][Zuber & Strimmer 2010: Variable sel, related to PCA dim sel]]
 ********* [[Effective Dependence]] (a way of doing PCA dim choice)
+******* <<PCA for Deep Learning>>
+        From: [[https://www.evernote.com/l/AA0lCt38TQpMgpZ0MQC8uexMM2AqpnigZp0/][Are dimensionality reduction techniques useful in deep learning?]]
+
+PCA is still useful for deep learning, at least for its whitening, according to at least a couple papers.  This agrees with my own non-deep NN experience, and that paper from the UW EE prof, who said that "neural nets beat senselessly" or something like that.  Additional benefits are the whitening and centering done by PCA, and if you do truncation, you'll decrease the number of parameters.
+
+But whitening is not really done for computer vision, as it transforms the image in a way that (I guess) makes it impossible for e.g. CNNs to do spatial feature learning.
+
+But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature learning?
+
 ***** <<Partial Least Squares Regression>>
 ******* [[cite:Lee07rbstAdaptPLS][Lee et al. 2007: Robust Adaptive Partial]]
 ******* [[cite:Xu07optWgtPLS][Xu et al. 2007: Optimized sample-weighted PLSR]]
@@ -4068,19 +4144,33 @@ Hope that helps,
 ******* [[file:energy.bib::Christiansen07autoTuneWind][Christiansen et al. 2007: Automatic tune param setting]] (improved stability)
 ******* [[file:energy.bib::Guyon03introFeatSel][Guyon & Elisseeff 2003: Intro to var/feat sel]]
 ******* also [[Forecast quality metrics]]
-[[Interpretable Models]] often include feature importance measures
+******* [[Interpretable Models]] often include feature importance measures
 *** Attribution of errors to features
     (maybe don't select it causes them?)
 ***** [[file:energy.bib::Gale08cholesky][Gale 2008: Cholesky Decomposition]] colinearity, forecast error attributiuon
 ***** This is a kind of causality inference
 ***** [[cite:Belloni13progEvalHiDim][Belloni et al. 2013: Program]]
-*** See also: [[Distance metric learning]] (sometimes included in these methods)
-*** See also: [[Dimension Reduction For Changepoint Detection]]
+*** also [[Distance metric learning]] (sometimes included in these methods)
+*** also [[Dimension Reduction For Changepoint Detection]]
+*** also [[Feature Generation]]
+*** also [[Feature Learning]]
+********* also [[PCA for Deep Learning]]
 * <<Feature Learning>>
 *** [[Transfer Learning]]
 *** [[cite:Kanter15deepFeatSyntCpla][Kanter & Veeramachaneni 2015: Deep Feat Synth Gauss Copula]]
+*** also [[Feature Generation]]
+* <<Feature Generation>>
+*** <<"Deep" Feature Synthesis (Featuretools)>>
+    
+    Builds a big feature set by applying "primitive" operators like /sum/, /max/ and so on to columns of a database.  Can build features upon these features, I think using the same primitives -- this makes it "deep"; it's not [[Deep Feature Learning]].
+
+    But the features are human understandable, and so if you train a model on them and can assess feature importance, this can sort-of yield [[Interpretable Models]]
+
+*Python lib*: [[https://docs.featuretools.com/en/stable/index.html][Featuretools]]
+
 *** <<Random Forest Feature Generation>>
 ***** [[file:energy.bib::Kanter15deepFeatSyntCpla][Kanter & Veeramachaneni 2015: Deep]]
+*** also [[Feature Learning]]
 * <<Model Selection>>
 *** [[http://projecteuclid.org/dpubs?service%3dui&version%3d1.0&verb%3ddisplay&handle%3deuclid.ejs/1245415825][model selection by resampling penalization]]
 *** [[http://ir.uiowa.edu/etd/439/][model selection criteria in the presence of missing features based on the kullback-leibler discrepancy]]
@@ -6182,6 +6272,7 @@ sera
 ***** [[cite:Li08quantRgrsnLasso][Li & Zhu 2008: L1 Norm Quantile Regression]]
 ***** also [[Metalog Distributions]] (parameterized monotonic distributions)
 ***** also see: [[Probabilistic Deep Learning]]
+***** also [[Deep Sequence Learning for Time Series Forecasting]]
 *** <<Beta Regression>>
     
     Useful when the output target variable is continuous, limited to (0,1)
@@ -7197,6 +7288,11 @@ variables will be preferred, when possible.
 ***** <<Quantile Confidence estimates>>
 ******* [[cite:Remillard17cplaCondQuantile][Remillard et al. 2017 2 kinds of cond. copula, btstrp conf intrvl]]
 ******* Also [[Quantile Score]]
+***** *Interval Score*
+      For measuring confidence band quality. See for example (there are many papers covering this):
+******* [[cite:Brocker07properScore][Broecker & Smith 2007: Scoring imp. proper]]
+******* [[cite:Pinson07frcstEval][Pinson et al. 2007: Evaluation Nonparametric Probabilistic]]
+******* [[cite:Gneiting07strictPropScore][Gneiting & Raftery 2007: Strictly Proper Scoring]]
 ***** <<Brier Score>>
 
       For categorical forecasts, mainly binary
@@ -7233,6 +7329,8 @@ variables will be preferred, when possible.
         *functions*: npdeneqtest, npunitest
 ******* [[http://iri.columbia.edu/~gonzalez/DPWG/matlab_code.html][Matlab code for CRPS]], etc
 ******* [[https://cran.r-project.org/web/packages/scoringRules/vignettes/article.pdf][Evaluating Probabilistic Forecasts with scoringRules (R package)]]
+***** Solar Irradiance Error Metrics
+******* [[cite:Hoff12rprtIrradRelErrs][Hoff et al. 2012: Reporting Irradiance Model]]
 ***** [[file:energy.bib::Drakos18mlEvalMetrics][Drakos 2018: Select Right Evaluation Metrics]]
 ***** [[file:energy.bib::Mohrlen19selectRESfrcstRecmnd][Mohrlen et al. 2019: Recommended Prctcs RES frcst select]]
 ***** [[cite:Bessa12adaptQuantCopulaFrcst][Bessa et al. 2012: Time Adaptive Quantile Copula]]
@@ -8127,10 +8225,12 @@ Scott
 
 ******* NWP (should this be somewhere else?)
 ******* See also [[Combined wind and load forecasting]]
+***** [[Multiple layers for power curve/wind]]
 *** <<Solar forecasting and features>>
 ***** the slope thing for QR
 ***** [[file:energy.bib::Meer18reviewProbPVfrcstNetDmd][Meer et al. 2018: Review Probabilistic PV and demand forecasting]]
 ***** [[cite:SaintDrenan17probRgnlPVfrcst][Saint-Drenan et al. 2017 prob. rgnl. solar frcst]] (intro might be a good read for GIZ class?)
+***** [[cite:Perez11paramIrradVar][Perez et al. 2011: Parame Site-spec Variability]]
 ***** [[cite:USDOE16solFrcstMaxGridVal][USDOE 2016: Solar Forecasting val Grid Cost and Props]]
 ***** [[cite:Vu15solarFrcstIBMmachLrn][Vu 2015: Machine IBM US DOE solar/demand/wind frcst Deep]]
 ***** [[cite:codeLab17solFrcstTypesWeb][codeLab 2017: Solar Forecast Types Web]] (nice frcst types table)
@@ -8159,7 +8259,10 @@ Scott
 ***** [[file:energy.bib::Lave13solarVarWvlt][Lave et al. 2013: Wavelet Based Variability]]
 ***** [[cite:Newport17introSolarRad][Newport 2017: Introduction to Solar Radiation]] 
 ***** [[https://www.nrel.gov/midc/solpos/solpos.html][MIDC SOLPOS Calculator]]: time/place --> solar position and intensitytime/
+***** Satellite to Irradiance
+******* [[cite:Ponsukcharoen12irradFrcstSat][Ponsukcharoen 2012: Solar Irradiance Forecast Class Notes]]
 ***** <<Aerosol Optical Depth (AOD)>>
+***** 
 
       Wavelength-dependent attenuation of solar signal that can be measured by satellites near the horizon (so they look through the most atmosphere).
 ******* [[file:energy.bib::UniWisconsin18aeroOptDepthQG][U Wisconsin 2018: Aerosol Optical Depth Quick Guide]]
@@ -9960,9 +10063,11 @@ later corrected by greg heath:
 *** [[https://pypi.org/project/fancyimpute/][fancyimpute]]: A variety of matrix completion and imputation algorithms implemented in Python
 *** xcorr handling missing features w/ permutation sig. test: [[file:energy.bib::simpson01estsigxcorrmiss][simpson et al. 2001: estimation and significance]]
 *** [[http://www.ms.unimelb.edu.au/staff/publications.php%3fpub_id%3d1271][maximum likelihood estimation for linear regression models involving missing covariate observations]]
-*** [[Matlab stepwise regression]] handles missing values
-*** [[Clustering with missing features for insignicant bins]]
-*** [[Mutual Information and Missing Values]]
+*** also [[Missing Features and AutoML]]
+*** also [[Matlab stepwise regression]] handles missing values
+*** also [[Clustering with missing features for insignicant bins]]
+*** also [[Mutual Information and Missing Values]]
+*** also AutoML With Missing Features 
 * <<Distance Measures>>
 *** [[file:energy.bib::Kalpakis01distClustARIMA][Kalpakis et al. 2001: Distance measures for]]
 *** [[file:energy.bib::Domingos12afutkMachLrn][Domingos 2012: Few Useful Things]] to know about machine learning
@@ -11827,7 +11932,7 @@ Brittany
 ******* TODO [[cite:Fruchter03mktingModelsBassCnotes][Fruchter 2003: Marketing Models Course Notes: Bass Diff in Lect. 6]]
 ******* TODO [[file:energy.bib::Deepa07reviewDiffuseNewProd][Deepa & Tellis 2007: Critical Review Marketing Diffusion]]
 ******* TODO [[file:energy.bib::][Cosguner et al. 2018: Dynamic Pricing New Products Dyn Bass]]
-******* TODO [[cite:Meade06reviewInnovDiffusionMdls][Meade & Islam 2006: Review Innov Diffusion Models (Bass-like)]]
+******* TODO [[cite:Meade06reviewInnovDiffusionMdls][Meade & Islam 2006: Review Innov Diffusion Mdls (Bass-like, NREL)]]
 ******* [[cite:Guidolin18invProductCanibalDiff][Guidolin & Guseo 2018: inv product cannibal: Lotka-Volterra]]
 ******* [[cite:Kainuma17cannibalizationRemanufac][Kainuma et al. 2017: Impact Cannibalization Remanufac Diff]]
 ******* TODO [[file:energy.bib::Grasman19stochBassMdl][Grasman & Kornelis 2019: Forecasting Bass Stochastic]] (Bass w/ conf intv)
@@ -12747,9 +12852,12 @@ TOTO: read Fan16* for an overview
 ***** Can [[Copula Processes]] do this? 
 * <<Auto Machine Learning>> (autoML or "meta learning")
   Automatically tweaking machine learning parameters, selecting algorithms, feature selection, outlier detection, ensemble building, etc.  A new field I discovered at ECML PKDD 2017
+*** [[file:energy.bib::FernandezDelgado19srvyRgrssnMeth][Fernandez-Delgado et al. 2019: Extensive survey of regression methods]]
+*** [[cite:Feurer20autoSklearn20][Feurer et al. 2020: Auto Sklearn 2.0]]
 *** [[cite:Feurer15autoMLautoSkLrn][Feurer et al. 2015: Efficient Robust Automated Machine Learning]] (code: auto-sklearn)
-*** [[file:energy.bib::FernandezDelgado19srvyRgrssnMeth][Fernández-Delgado et al. 2019: Extensive survey of regression methods]]
 *** [[file:energy.bib::Harrell15rgrssnMdlStrtgyBook][Harrell 2015: Regression Strategies]]
+*** <<Missing Features and AutoML>>
+***** built-in handling: [[cite:Feurer20autoSklearn20][Feurer et al. 2020: Auto Sklearn 2.0]]
 *** Also [[Frugal Machine Learning]]
 * <<Frugal Machine Learning>> ("big data on small data")
 
@@ -12825,7 +12933,7 @@ TOTO: read Fan16* for an overview
     Piecewise constant LASSO that's fast and good for high dim problems.
 *** <<SHAP Interpretable Models>>
 
-    Explains the result of a complicated model with a simpler model, has code
+    Explains the result of a complicated model with a simpler model, has python
 
 ***** [[file:energy.bib::Lundberg17interpModlPred][Lundberg & Lee 2017: Unif Interp Models w/ code]]
 
@@ -12836,6 +12944,8 @@ TOTO: read Fan16* for an overview
 *** [[file:energy.bib::Nathans12mlrVarImp][Nathans et al. 2012: Interpreting var imp, MLR and PCA]]
 *** [[file:energy.bib::Gill01interpIntrctHierGLM][Gill 2001: Interpreting]] interactions, GLM
 *** [[cite:Molnar19interpMLbk][Molnar 2019: Interpretable ML Book]]
+*** [[Transformer Networks]]: relevance scores are interpretable?)
+*** also [["Deep" Feature Synthesis (Featuretools)]]
 * <<My Optimization Learning Path>>
   Stuff I should learn about for electricity system optimization
 
@@ -13131,13 +13241,13 @@ optimization to be a generalization of linear programming.
     05/21/10 [[file:energy.bib::DTU07RadarAtSeaAppB][DTU 2007: Appendix B]] (Radar@Sea description)
              [[file:energy.bib::DTU07safeWind][DTU 2007: SafeWind]] (SafeWind description)
     05/27/10 [[file:energy.bib::Dobschinski19ensOffshore][Dobschinski et al. 2010: Calibration]]
-             [[file:~/doc/energy.bib::Hagemann09vExtrapTemp][Hagemann et al. 2009: Uncertainty]]
+             [[file:energy.bib::Hagemann09vExtrapTemp][Hagemann et al. 2009: Uncertainty]]
              [[file:energy.bib::CLS09windSarFactSht][CLS 2009: Soprano CLS Wind]]
     05/28/10 [[file:energy.bib::Oldroyd08norseWindRep1][Oldroyd 2008: NORSEWInD Year Periodic Report]]
     05/31/10 [[file:energy.bib::Tastu10mVarCondParam][Tastu et al. 2010: Multivariate]]
     06/02/10 [[file:energy.bib::Tastu10spatTempErr][Tastu et al. 2010: Spatio]]
     06/10/10 [[file:energy.bib::Pinson10probForcast][Pinson 2010]]
-             [[file:~/doc/energy.bib::Crawley10longDat_2_12][Crawley 2010: NORSEWIND DELIVERABLE]]
+             [[file:energy.bib::Crawley10longDat_2_12][Crawley 2010: NORSEWIND DELIVERABLE]]
     06/15/10 [[file:energy.bib::Hasager09satNrsWnd][Hasager et al. 2009: Satellite EU Norsewind]]
     06/23/10 [[file:energy.bib::Nielsen00trackTimeVarCoeffFuncs][Nielsen et al. 2000: Tracking]]
     07/20/10 [[file:energy.bib::Giorgino09dtwRpkg][Giorgino 2009: Computing Visualizing Dynamic]]
@@ -13198,10 +13308,11 @@ optimization to be a generalization of linear programming.
     05/01/11 [[file:energy.bib::Pinson09dynStorSiz][Pinson et al. 2009: Dynamic]] (storage w/ scenarios)
              [[file:energy.bib::Kamath10statHistRamps][Kamath 2010: Using Simple Statistical]] (ramps, too simple)
     05/02/11 [[file:energy.bib::][Botterud et al. 2009: Wind]] (markets in US)
-             [[file:~/work/DTU/doc/energy.bib::Enyeart07largeWindImpact][Enyeart 2007: Large Wind Integration]] (ramps are unscheduled)
+             [[file:energy.bib::Enyeart07largeWindImpact
+][Enyeart 2007: Large Wind Integration]] (ramps are unscheduled)
     05/03/11 [[file:energy.bib::Pappenberger06blissNotUncert][Pappenberger & Beven 2006: Ignorance]] is bliss (uncertainty modeling)
     [[file:energy.bib::Roark10rampFrcstPressRls][         Roark 2010: ERCOT Using New]] ramp tool by AWS
-    [[file:~/work/DTU/doc/energy.bib::Rogers11frcstingNorthAmTransmsn][         Rogers & Porter 2011: Central Wind Forecasting]]: inspiration for ramp alarms? forecast alarms for icing, etc. sent on ntwrk
+             [[file:energy.bib::Rogers11frcstingNorthAmTransmsn][Rogers & Porter 2011: Central Wind Forecasting]]: inspiration for ramp alarms? forecast alarms for icing, etc. sent on ntwrk
     05/04/11 [[file:energy.bib::Maggio10frcstERCOT][Maggio et al. 2010: Utilization Wind Generation]] ("prob" frcst, ramps)
     05/05/11 [[file:energy.bib::Waldl10rulezRampAlarm][Waldl & Brandt 2010: Anemos]] rulez
     05/06/11 [[file:energy.bib::Milligan08subHrRampBal][Milligan & Kirby 2008: Analysis Sub Ramping]] (costs)
@@ -13209,12 +13320,12 @@ optimization to be a generalization of linear programming.
              [[file:energy.bib::Alfonso10monMutInfoOpt][Alfonso et al. 2010: Optimization]]
     05/16/11 [[file:energy.bib::Brown09newInfoFeatSel][Brown 2009]] (generalized MI info feat sel)
     05/17/11 [[file:energy.bib::Peirolo11infoGainFrcstScore][Peirolo 2011: Information]] gain score
-    05/18/11 [[file:~/doc/energy.bib::Ahmed89entropyMultiVar][Ahmed & Gokhale 1989: Entropy]] for multivar dist
+    05/18/11 [[file:energy.bib::Ahmed89entropyMultiVar][Ahmed & Gokhale 1989: Entropy]] for multivar dist
     05/22/11 [[file:energy.bib::][Suzuki & Sugiyama]] 2010, suff. dim reduction squared MI
     05/26/11 [[file:energy.bib::Poczos10rankEstRenInfo][Poczos et al. 2010: REGO]] (mut info est via copula)
              [[file:energy.bib::Calsaverini09copulaInfo][Calsaverini & Vicente 2009]] (info theory copula)
              [[File:energy.bib::Ahrens08infoSkillProbFrcst][Ahrens & Walser 2008: Information Based Skill]]
-             [[file:~/doc/energy.bib::Zheng09rampDataMine][Zheng & Kusiak 2009: Prediction Wind Farm]] ramps (predicting rates, not binary)
+             [[file:energy.bib::Zheng09rampDataMine][Zheng & Kusiak 2009: Prediction Wind Farm]] ramps (predicting rates, not binary)
     06/07/11 [[file:energy.bib::Mann11smoothDerivInfo][Mann et al. 2011: Using]] (info to smooth derivative)
     06/08/11 [[file:energy.bib::Svoboda97schedRampConstr][Svoboda et al. 1997: Short]] (term schedule ramp)
     06/10/11 [[file:energy.bib::Ummels07windGenCommitDisp][Ummels et al. 2007: Impacts Wind Power]] (ramp constraints. Forecasts not valuable)
@@ -13227,7 +13338,7 @@ optimization to be a generalization of linear programming.
     10/10/11 [[file:energy.bib::Pinson10condPredInt][Pinson & Kariniotakis 2010: Conditional Prediction Intervals]]: prob frcst
     10/17/11 [[file:energy.bib::Simon06lagSelRgrsnMutInf][Simon & Verleysen 2006: Lag Selection Regression]]
     11/05/11 [[file:energy.bib::Simar10mofnBtstrp][Simar & Wilson 2010: Inference]] (uses subsampling bootstrap)
-    11/23/11 [[file:~/work/DTU/doc/energy.bib::Berg10subSampBSpval][Berg et al. 2010: Subsampling]] p-values
+    11/23/11 [[file:energy.bib::Berg10subSampBSpval][Berg et al. 2010: Subsampling]] p-values
     11/24/11 [[file:energy.bib::Jach11subSampInfTS][Jach et al. 2011 Subsampling Time Series]]
              [[file:energy.bib::Bickel08choiceOfMsubsampBtstrp][Bickel & Sakov 2008]] choice m out of n on bootstrap
              [[file:energy.bib::Bertail99subsampBSunkCnvrg][Bertail et al. 1999: Subsampling Estimators Unknown Rate Convergence]]
@@ -13270,7 +13381,7 @@ optimization to be a generalization of linear programming.
     01/17/14 [[file:energy.bib::Singh14incWindDEtrans][Singh et al. 2014: Increasing On-Shore Wind]]: data-sparse curtailment study, maybe useful for upscaling?
     02/05/14 [[file:energy.bib::Bremnes04windLocQR][Bremnes 2004: Probabilistic]] local linear QR + many ideas
     02/06/14 [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006]] QR methods compared
-             [[file:d:/Users/sotterson/Dropbox/DTU/doc/energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]] QR spline, has R
+             [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using]] QR spline, has R
     02/07/14 [[file:energy.bib::Friedrich00extMdlEqsSDE][Friedrich et al. 2000: Extracting]] SDE coeffs, data
     03/08/14 [[file:energy.bib::FerrariTrecate02pcsWiseLR][Ferrari-Trecate & Muselli 2002: New Learning Method]] pcswise LR
     03/10/14 [[file:energy.bib::Watt13specClustIntroBlog][Watt 2013]] tutorial, spectral clust (Blog)
@@ -13364,7 +13475,7 @@ optimization to be a generalization of linear programming.
              [[file:energy.bib::Brown12condLikInfoFeatSel][Brown et al. 2012: Conditional]] lik. max for info one-to-one featsel
              [[file:energy.bib::Bennasar15jointMImaxFeatSel][Bennasar et al. 2015: Feature Joint Mutual Information Maximisation]]
     07/22/16 [[file:energy.bib::Lizier12compNetsTransEnt][Lizier et al. 2012: Multivariate]]
-    11/12/16 [[file:c:/Users/sotterson/OneDrive/shareHW/DTU/doc/energy.bib::Braun16windFrcstRadGrad][Braun 2016: Multi Regional Wind grad extrm]]
+    11/12/16 [[file:energy.bib::Braun16windFrcstRadGrad][Braun 2016: Multi Regional Wind grad extrm]]
     11/12/16 [[file:energy.bib::Yang12nbrCompFeatSel][Yang et al. 2012: Neighborhood Component Feature]]
     11/18/16 [[file:energy.bib::Gill12powCurvCopula][Gill et al. 2012: Wind Turbine Condition]]
     11/18/16 [[file:energy.bib::Becker16spatTempWndFrcstErrGrid][Becker & Weber 2016: Spatio Temporal Modelling]] copula
@@ -13441,7 +13552,7 @@ optimization to be a generalization of linear programming.
     07/26/19 [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
     07/29/19 [[file:energy.bib::Comin06techDiffuse5facts][Comin et al. 2006: Five Facts Tech Diffusion]]
     07/30/19 [[file:energy.bib::Electropaedia19solarPower][Electropaedia 2018: Solar Power Technology Economics]]
-             [[file:energy.bib.bak::Sengupta17bestPracticesSolarRsrc][Sengupta et al. 2017: Best Practices Handbook Solar Resource]]
+             [[file:energy.bib::Sengupta17bestPracticesSolarRsrc][Sengupta et al. 2017: Best Practices Handbook Solar Resource]]
              [[file:energy.bib::Grunow04weakLightPV][Grunow et al. 2004: Weak PV]]
              [[file:energy.bib::Aleo19pvPanelsLowLight][Solar 2019: All panels not equal low light]]
 [[file:energy.bib::Alfi16uncertSatteliteGrnd][             Alfi et al. 2016: Imp. of input and uncert. Satellite Tune]] (CPR)
