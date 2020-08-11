@@ -452,7 +452,7 @@
 ***** Spline effective degrees of freedom
       <<Spline effective degrees of freedom>>
 ******* [[file:energy.bib::Shalizi15datAnalElemViewBk][Shalizi 2015: Advanced]]: how to set it for splines, other stuff (see bibtex)
-******* TODO [[file:~/lib/matlab/iwes/matlab/Utilities/Utilities_so/matlab/contrib/srs/srsknots.m::%25%20df%20=%20effective%20degrees%20of%20freedom][srsknots.m]] computes efd from spline basis, coeffs
+******* TODO ...Utilities_so/matlab/contrib/srs/srsknots.m computes efd from spline basis, coeffs
 ********* TODO find source of this code and bibtex it
 ********* TODO move code to svn library
 ********* Source (I think): http://www.ecsdn.com/d-aGA3.html
@@ -976,7 +976,7 @@
 
 ******* _Building my own, debuggable version_
 
-        in ~/NowCaster/pred, see the [[file:~/NowCaster/pred/Makefile][Makefile]]
+        in ~/NowCaster/pred, see the ~/NowCaster/pred/Makefile
 
         Test:
 
@@ -1443,11 +1443,11 @@
 ******* mlp-related functions
 ******* a classic, based on a book, but [[http://www1.aston.ac.uk/eas/research/groups/ncrg/resources/netlab/downloads/][last update in 2004]]
 ******* relevant demos
-********* [[file:~/lib/matlab/netlab/demard.m::DEMARD%20Automatic%20relevance%20determination%20using%20the%20MLP][demard]]   -  Automatic relevance determination using the MLP.
-********* [[file:~/lib/matlab/netlab/demev1.m::DEMEV1%20Demonstrate%20Bayesian%20regression%20for%20the%20MLP][demev1]]   -  Demonstrate Bayesian regression for the MLP.
-********* [[file:~/lib/matlab/netlab/demmlp1.m::DEMMLP1%20Demonstrate%20simple%20regression%20using%20a%20multi%20layer%20perceptron][demmlp1]]  -  Demonstrate simple regression using a multi-layer perceptron
-********* [[file:~/lib/matlab/netlab/demolgd1.m::DEMOLGD1%20Demonstrate%20simple%20MLP%20optimisation%20with%20on%20line%20gradient%20descent][demolgd1]] -  Demonstrate simple MLP optimisation with on-line gradient descent
-********* [[file:~/lib/matlab/netlab/demtrain.m::function%20demtrain%20action][demtrain]] -  Demonstrate training of MLP network.
+********* ~/lib/matlab/netlab/demard.m -  Automatic relevance determination using the MLP.  
+********* ~/lib/matlab/netlab/demev1.m -  Demonstrate Bayesian regression for the MLP.
+********* ~/lib/matlab/netlab/demmlp1.m -  Demonstrate simple regression using a multi-layer perceptron
+********* ~/lib/matlab/netlab/demolgd1.m -  Demonstrate simple MLP optimisation with on-line gradient descent
+********* ~/lib/matlab/netlab/demtrain.m -  Demonstrate training of MLP network.
 ***** [[http://www.lce.hut.fi/research/mm/mcmcstuff/][MCMC Methods for MLP and GP and Stuff (for Matlab) ]]
 ***** Data Munging
 ******* KML software
@@ -1605,7 +1605,7 @@
 ******* detecting phase errror
 ********* dynamic time warping
 *********** I tried several methods but DTW seems to be too flexible
-            see, for example: [[file:~/proj/dongSpatTemp/frcstplots.R::aligned%20dtw%20bothInT%202%20bothInT%201%20keep%20TRUE][frcstplots.R]]
+            see, for example: ~/proj/dongSpatTemp/frcstplots.R
 *********** just a couple papers
             [[file:energy.bib::Giorgino09dtwRpkg][Giorgino 2009: Computing Visualizing Dynamic]]
             [[file:energy.bib::Keogh01derivDTW][Keogh & Pazzani 2001: Derivative Dynamic Time Warping]]
@@ -2472,7 +2472,7 @@ Scott
 
 ******* [[http://lvdmaaten.github.io/drtoolbox/][Matlab Toolbox for Dimensionality Reduction]]
 
-        The intrinsic dimension function, intrinsic_dim.m, was copied to the [[http://hub-toolbox-python3.readthedocs.io/en/latest/user/matlab_vs_python.html#hub-toolbox-matlab][Hub Toolbox]], which I have downloaded here: [[C:\Users\sotterson\home\work\IWES\proj\Eweline\frcst\common\contrib\hub_toolbox-2.0][hub_toolbox-2.0]]
+        The intrinsic dimension function, intrinsic_dim.m, was copied to the [[http://hub-toolbox-python3.readthedocs.io/en/latest/user/matlab_vs_python.html#hub-toolbox-matlab][Hub Toolbox]], which I have downloaded here: ~\work\IWES\proj\Eweline\frcst\common\contrib\hub_toolbox-2.0
 
 ******* [[cite:Granata16intrinsDimGraphEst][Granata & Carnevale 2016: Accurate Estimation Intrinsic Dimension]]
 ******* See also: [[Intrinsic Dimension Estimation]]
@@ -2649,10 +2649,10 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 
               ie.
 
-              x1r                                                                                                                  = prediction of x1 based on x2, ... , xk
-              yr                                                                                                                   = prediction of y based on x2, ... , xk
+              x1r = prediction of x1 based on x2, ... , xk
+              yr  = prediction of y based on x2, ... , xk
 
-              partial correlation                                                                                                  == correlation(y-yr,x1-x1r)
+              partial correlation == correlation(y-yr,x1-x1r)
 
               another [[http://plato.acadiau.ca/courses/psyc/mcleod/2023research/partial-semi.html][course page]]:
 
@@ -2667,7 +2667,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
               - any number of measured variables can be partialed out as if
                 controlled for experimentally
               - partial correlation can be tested for statistical
-                significance with n-j d.f. (where j                                                                                = number of variables)"
+                significance with n-j d.f. (where j = number of variables)"
 
 ************* a linear way of doing full conditional mutual information?
 *************** Peng (relevance/redundancy) kludge
@@ -2869,9 +2869,9 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 
               /ie. don't regress on y/:
 
-              x1r                                                                                                                  = prediction of x1 based on x2, ... , xk
+              x1r = prediction of x1 based on x2, ... , xk
 
-              partial correlation                                                                                                  == correlation(y,x1-x1r)
+              partial correlation == correlation(y,x1-x1r)
 
               another [[http://plato.acadiau.ca/courses/psyc/mcleod/2023research/partial-semi.html][course page]]:
 
@@ -2895,10 +2895,10 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
                 be different, even though same regression result for final
                 selection
 
-                                                                                                                                   ==> “it would be better to simply concede that the notion
-                of ’independent contribution to variance’ has no
-                meaning when predictor variables are intercorrelated”
-                (darlington, 1968, p. 179)
+                   ==> it would be better to simply concede that the notion
+
+                of independent contribution to variance has no meaning when 
+                predictor variables are intercorrelated      (darlington, 1968, p. 179)
 
 *************** uniqueness
 
@@ -2939,7 +2939,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 *************** code
 ***************** matlab
 ******************* [[http://biosig.sourceforge.net/download.html][biosig]]
-                    - see [[file:~/proj/regime/contrib/biosig4octmat-2.22/tsa/mvar.m][mvar]], [[file:~/proj/regime/contrib/biosig4octmat-2.22/tsa/mvfreqz.m][mvfreqz]] (outputs pdc and pc), [[file:~/proj/regime/contrib/biosig4octmat-2.22/biosig/demo/demo7.m][demo7]]
+                    - see ~/proj/regime/contrib/biosig4octmat-2.22/tsa/: mvar, mvfreqz (outputs pdc and pc), demo7
                     - http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/126244
                     - also has a nice toolbox for doing basic calcs on nan-missing values ([[nan]])
 ******************* [[http://www.koders.com/matlab/fidee75956c3cde43f7f5eabd9444fa3e74a4986986.aspx][tfmvar.m]] has pdc
@@ -2957,16 +2957,16 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 ************* a measure of overall covariance, includes covariance terms
 ************* is volume of space filled by dist in a hypercube
               [[file:energy.bib::pena03descsctrlindep][pena & rodriguez 2003: descriptive]] meas, multivar scat, lindep
-************* is <                                                                                                                 =1, 1.0 for perfectly uncorrelated
-              since [[http://www.tulane.edu/~psycstat/dunlap/psyc613/ri2.html][det(corr mat)                                       ==1 if everything uncorr]], else <1
-              i think it's also >                                                                                                  =0, but i lost the ref to that and am too
+************* is < =1, 1.0 for perfectly uncorrelated
+              since [[http://www.tulane.edu/~psycstat/dunlap/psyc613/ri2.html][det(corr mat) ==1 if everything uncorr]], else <1
+              i think it's also >=0, but i lost the ref to that and am too
               lazy to figure it out.
 
 ************* can be misleading: different cov matrics yield same gen. var
               see Johnson and Wichern (1998) ref. in [[file:energy.bib::khattree99multivarcncpt][khattree & naik 1999: applied multivariate statistics]]: ch 1
 ************* [[file:energy.bib::khattree99multivarcncpt][khattree & naik 1999: applied multivariate statistics]]: ch 1
 
-*********** effective variance: genvar^(1/p)  (p                                                                                   =dimension)
+*********** effective variance: genvar^(1/p)  (p=dimension)
             -- can compare across different dims
             [[file:energy.bib::pena03descsctrlindep][pena & rodriguez 2003: descriptive]] meas, multivar scat, lindep
 
@@ -2999,9 +2999,9 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 *********** [[file:energy.bib::francois06permtestmutinf][françois et al. 2006: permutation test for]]
 ********* <<Mutual Information Estimation>>
 *********** Why does MI matter?
-************* done read [[file:~/work/dtu/doc/energy.bib::srinivasa05mutinforeview][srinivasa 2005: review multivariate mutual information]]
-************* [[file:~/work/dtu/doc/energy.bib::brown09newinfofeatsel][brown 2009]] (mut info) esp. appendix a uses fano's to say it does
-************* because [[file:~/work/dtu/doc/energy.bib::brown09newinfofeatsel][brown 2009]] says it does (via fano's inequality)
+************* done read [[file:energy.bib::srinivasa05mutinforeview][srinivasa 2005: review multivariate mutual information]]
+************* [[file:energy.bib::brown09newinfofeatsel][brown 2009]] (mut info) esp. appendix a uses fano's to say it does
+************* because [[file:energy.bib::brown09newinfofeatsel][brown 2009]] says it does (via fano's inequality)
               this is ok for discrete output (classifier output) where the code size
               is defined, as needed for standard fano's
 ************* discrete/differential entropy and mutual information [[http://www.ece.uic.edu/~devroye/courses/ece534/lectures/ch8.pdf][comparison]]
@@ -3009,14 +3009,14 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 *************** shannon restricted to finite sets of values, isn't continuous
               * differential entropy is not not shannon w/ infinite quantization
                 see: [[http://en.wikipedia.org/wiki/entropy_(information_theory)#extending_discrete_entropy_to_the_continuous_case:_differential_entropy][extending discrete entropy to the continuous case: differential entropy]]
-                has a log(0) blowup, similar to mi blowup mentioned in [[file:~/work/dtu/doc/energy.bib::kraskov03hierclustmutinf][kraskov et al. 2003: hierarchical clustering based mutual information]]
+                has a log(0) blowup, similar to mi blowup mentioned in [[file:energy.bib::kraskov03hierclustmutinf][kraskov et al. 2003: hierarchical clustering based mutual information]]
 *************** diff ent can be negative
                 see: [[http://en.wikipedia.org/wiki/entropy_(information_theory)#extending_discrete_entropy_to_the_continuous_case:_differential_entropy][extending discrete entropy to the continuous case: differential entropy]]
 *************** diff. ent. not in general a good measure of uncertainty or information.
                 see: [[http://en.wikipedia.org/wiki/entropy_(information_theory)#extending_discrete_entropy_to_the_continuous_case:_differential_entropy][extending discrete entropy to the continuous case: differential entropy]]
 *************** discrete, esp. w/ the fano's inequality argument.
-************* todo rationale from [[file:~/doc/energy.bib::ahrens08infoskillprobfrcst][ahrens & walser 2008: information based skill]] ?
-************* todo continuous fano's gets turned into rms error limit
+************* TODO rationale from [[file:energy.bib::ahrens08infoskillprobfrcst][ahrens & walser 2008: information based skill]] ?
+************* TODO continuous fano's gets turned into rms error limit
               - continuous, multivariate fano's: [[http://ieeexplore.ieee.org.globalproxy.cvt.dk/search/srchabstract.jsp?tp%3d&arnumber%3d5571873&querytext%253dinformation%2btheoretic%2bbounds%2bfor%2bcompressed%2bsensing%2526openedrefinements%253d*%2526searchfield%253dsearch%2ball][information theoretic bounds for compressed sensing]]
               - see lecture note [[http://www.ece.uic.edu/~devroye/courses/ece534/lectures/ch8.pdf][comparison]] (see why can't we use fano's?)
               - another continuous fano's thing ([[http://www.isi.ee.ethz.ch/teaching/courses/it2/it2_material][course exercises]])
@@ -3025,11 +3025,11 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
               - maybe i should look @ this guy's book or papers
               - maybe i should store these notes into jabref
               but there's some stuff about it being binary.  would need to read.
-************* todo fano's for renyi's?
-              - yup, here's one: [[http://citeseerx.ist.psu.edu/viewdoc/download?doi%3d10.1.1.93.1355&rep%3drep1&type%3dpdf][lower and upper bounds for misclassification probability based on renyi’s information]]
+************* TODO fano's for renyi's?
+              - yup, here's one: [[http://citeseerx.ist.psu.edu/viewdoc/download?doi%3d10.1.1.93.1355&rep%3drep1&type%3dpdf][lower and upper bounds for misclassification probability based on renyi's information]]
               and has many [[http://scholar.google.com/scholar?cites%3d4062187107169798582&as_sdt%3d2005&sciodt%3d0,5&hl%3den][cites]]
               - could use this for renyi's estimator
-                [[http://www.ualberta.ca/~dpal/papers/nn/renyi-rates-nips-camera-ready-final.pdf][estimation of r´enyi entropy and mutual information based on generalized nearest-neighbor graphs]]
+                [[http://www.ualberta.ca/~dpal/papers/nn/renyi-rates-nips-camera-ready-final.pdf][estimation of renyi entropy and mutual information based on generalized nearest-neighbor graphs]]
 *********** <<Kraskov MI Estimator>>
 ************* [[File:energy.bib::kraskov04estmutinfknn][Kraskov et al. 2004: estimating]] mutual information
 ************* [[file:energy.bib::Ross14MutInfoCntnAndDscrt][Ross 2014: Mutual Information Discrete:]] Kraskov doesn't work for mix of disc/contin variables!
@@ -3056,11 +3056,11 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 
                 experiments stored in ramps.org:
 
-***************** [[id:d5341b87-df71-4059-9f0d-30733daff621][mi decreases w/ dim, regardless of info content]]
-***************** [[id:99f90f01-69a5-49c3-b0d0-ae3697ea3946][mi additivity fails w/ dim diff {0/1}]]
+***************** mi decreases w/ dim, regardless of info content
+***************** mi additivity fails w/ dim diff {0/1}
 
 *************** MI neg. bias seems to also increase w/ fewer points
-***************** empirical results in [[file:~/work/dtu/doc/energy.bib::kraskov04estmutinfknn][kraskov et al. 2004: estimating]] mi
+***************** empirical results in [[file:energy.bib::kraskov04estmutinfknn][kraskov et al. 2004: estimating]] mi
 *************** _Use Different Distance Metric?_: my notes on p. 16 of: [[file:energy.bib::Kraskov04syncIndepMeasMIphd][Kraskov 2004: Synchronization Interdependence Measures]]
 *************** use [[Distance Covariance]] instead of Kraskov MI?
 *************** [[file:energy.bib::Vlachos10nonUnifStSpcMI][Vlachos & Kugiumtzis 2010: Nonuniform]] shows how Kraskov-like PMI/CMI has less dim bias than Kraskov MI
@@ -3105,7 +3105,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 ******************* mi calc on subsets s/ have less dim-based bias
 ******************* clustering-based
 ********************* get dendrogram from mi clustering
-********************* milca-based ica clustering might be good: [[file:~/doc/energy.bib::stogbauer04leastdepmutinfo][stogbauer et al. 2004: least]]
+********************* milca-based ica clustering might be good: [[file:energy.bib::stogbauer04leastdepmutinfo][stogbauer et al. 2004: least]]
 ********************* i wrote an mi clustering alg. @ uw
 ********************* todo "residual information" in partitioning "mixtures": see [[file:energy.bib::stogbauer04leastdepmutinfo][stogbauer et al. 2004: least]]
 
@@ -3156,8 +3156,8 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 ******************* bayesian network based: [[http://code.google.com/p/globalmit/][globalmit]]
                     (i think this partitions a fully-connected graph into cliques)
 ******************* TODO formual for recombining mi subsets?
-********************* Recombination of a rigid recombo: [[File:~/doc/energy.bib::brown09newinfofeatsel][Brown 2009]] A New Perspective
-********************* Recombining AR Models: [[File:~/doc/energy.bib::galka06whitemutinfospatiotemp][Galka et al. 2006: Whitening Tool Estimating]]
+********************* Recombination of a rigid recombo: [[file:energy.bib::brown09newinfofeatsel][Brown 2009]] A New Perspective
+********************* Recombining AR Models: [[file:energy.bib::galka06whitemutinfospatiotemp][Galka et al. 2006: Whitening Tool Estimating]]
 ********************* can it be upper or lower bounded?
 ******************* todo partion jointly w/ output or separately for input and output
 ***************** <<Subspace MI>>: in/out dims xformed into smaller, orthog subspaces
@@ -3202,7 +3202,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 ***************** [[http://www.nature.com/nature/journal/v467/n7312/extref/nature09333-s1.pdf][doi: 10.1038/nature09333 supplementary information]] (has hill functions)
 ***************** subspace (copula) [[file:energy.bib::pal10entmiestgnngraph][pal et al. 2010: estimation renyi entropy]]
 ***************** Also See <<Maximum Mutual Information Dimension Reduction>> e.g.
-                  [[File:~/work/dtu/doc/energy.bib::suzuki10suffdimredsqmutinf][Suzuki & Sugiyama 2010: Sufficient]] (squared mi)
+                  [[file:energy.bib::suzuki10suffdimredsqmutinf][Suzuki & Sugiyama 2010: Sufficient]] (squared mi)
 ***************** [[Effective Dependence]]: total linear dependence
 ******************* comparable across different dims
 ******************* tightly related to # pca comps needed to describe something
@@ -3210,16 +3210,16 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 *************** TODO deal with MI scaling
 ***************** why/do i need scaling
 ******************* kraskov seems to think so:
-                    - [[file:~/work/dtu/doc/energy.bib::kraskov03hierclustmutinf][kraskov et al. 2003: hierarchical clustering based mutual information]]
+                    - [[file:energy.bib::kraskov03hierclustmutinf][kraskov et al. 2003: hierarchical clustering based mutual information]]
                       see s(x,y) on p. 6 and preceding argument
-                    - [[file:~/work/dtu/doc/energy.bib::stogbauer04leastdepmutinfo][stogbauer et al. 2004: least]] dep comp anal., eq 25)
+                    - [[file:energy.bib::stogbauer04leastdepmutinfo][stogbauer et al. 2004: least]] dep comp anal., eq 25)
 ******************* root argument comes for algorithmic information
                     - kraskov mentions it, says the argument is same for shannon ent.
                     - universal similarity [[www.nvti.nl/slides/paulv.pdf][slides]] have a genome codelength example (p.5)
 ******************* todo todo ask gavin brown if it's really eas for different dims
-                    [[file:~/work/dtu/doc/energy.bib::brown09newinfofeatsel][brown 2009]] a new perspective...
-******************* kraskov scaling related to: [[file:~/desktop/my%20dropbox/dtu/doc/energy.bib::ho10condentroperr][ho & verdu? 2010: interplay between conditional]] ?
-******************* [[file:~/work/dtu/doc/energy.bib::estevez09normmutinfofeatsel][estevez et al. 2009: normalized mutual information feature selection]]
+                    [[file:energy.bib::brown09newinfofeatsel][brown 2009]] a new perspective...
+******************* kraskov scaling related to: [[file:energy.bib::ho10condentroperr][ho & verdu? 2010: interplay between conditional]] ?
+******************* [[file:energy.bib::estevez09normmutinfofeatsel][estevez et al. 2009: normalized mutual information feature selection]]
                     explains why normalize mi for discrete variables
 ********************* mi is between min(hx,hy) & max(hx,hy)
                       -- so it's biased towards variables w/ more possible values
@@ -3229,10 +3229,10 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 ***************** done done experiment: calc mi b/f and after adding extra dims containing random data
                   see: [[mi decreases w/ dim, regardless of info content]]
 ***************** todo analytical evidence that mi is dim dependent, from the normal dist
-******************* differential /entropy/ of normal dist: [[file:~/doc/energy.bib::ahmed89entropymultivar][ahmed & gokhale 1989: entropy]]
+******************* differential /entropy/ of normal dist: [[file:energy.bib::ahmed89entropymultivar][ahmed & gokhale 1989: entropy]]
                     or differential entropy: [[http://en.wikipedia.org/wiki/multivariate_normal_distribution][wikipedia, normal dist]]
-******************* differential /mutual information/ and entropy of normal dist: [[file:~/work/dtu/doc/energy.bib::arellano-valle11mutinfomultivar][arellano-valle et al. 2011: shannon entropy mutual]]
-                    - p.7: entropy has both cov. matrix and dim dep. same as [[file:~/doc/energy.bib::ahmed89entropymultivar][ahmed & gokhale 1989: entropy]]
+****************** differential /mutual information/ and entropy of normal dist: [[file:energy.bib::arellano-valle11mutinfomultivar][arellano-valle et al. 2011: shannon entropy mutual]]
+                    - p.7: entropy has both cov. matrix and dim dep. same as [[file:energy.bib::ahmed89entropymultivar][ahmed & gokhale 1989: entropy]]
                     - but no im dependence in mi
                     - however,
 
@@ -3262,19 +3262,19 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
                     tiny clusters.
 
 ***************** todo see if entropy norm works
-                  entropy code: [[file:~/doc/energy.bib::stowell09multidentropykdpart][stowell & plumbley 2009: fast multidimensional entropy estimation partitioning]] (has software)
+                  entropy code: [[file:energy.bib::stowell09multidentropykdpart][stowell & plumbley 2009: fast multidimensional entropy estimation partitioning]] (has software)
 ***************** TODO just force the dims to be the same
 ******************* pca
 ******************* [[PLS/PLSR]]
 ******************* [[Sufficient Dimension Reduction]]
-***************** TODO ubias tricks from refs in [[file:~/doc/energy.bib::ahrens08infoskillprobfrcst][ahrens & walser 2008: information based skill]] ?3
+***************** TODO ubias tricks from refs in [[file:energy.bib::ahrens08infoskillprobfrcst][ahrens & walser 2008: information based skill]] ?3
 ************* TODO Kraskov MI confidence intervals using m out of n bootstrap
               :properties:
               :id:       d104d4d3-c0c2-4981-906c-38fc045a42f2
               :end:
 
               necessary for knn-mi estimator b/c bootstrap w/ replacement screws up
-              Kraskov MI Estimator.  see [[File:~/work/dtu/doc/energy.bib::francois06permtestmutinf][Francois et al. 2006]] MI perm test.
+              Kraskov MI Estimator.  see [[file:energy.bib::francois06permtestmutinf][Francois et al. 2006]] MI perm test.
 
 *************** [[subsampling bootstrap (m out of n bootstrap)]]
 *************** [[http://cscs.umich.edu/~crshalizi/notabene/bootstrap-entropy.html][doubt]] about whether bootstrapping works for entropy, etc.
@@ -3299,7 +3299,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
               [[file:energy.bib::Maier10clustNhbds][Maier 2010: Clustering]] KNN-Rnn spectral clustering, # clusters
               (kraskov must pick KNN k)
 
-              [[file:~/work/dtu/doc/energy.bib::francois07resampparamfreefeatsel][francois et al. 2007: resampling]] has a featsel bootstrap trick, maybe
+              [[file:energy.bib::francois07resampparamfreefeatsel][francois et al. 2007: resampling]] has a featsel bootstrap trick, maybe
               can't use.  but it, and others, say that bias increases w/ k; variance
               decreases.  if have too much data, then running on a lot of random subsets
               (chosen w/o replacement so bootstrap doesn't screw up the knn mi est.)
@@ -3312,13 +3312,13 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
               theoretical mi on the gaussian data?  normal dist is minimal entropy
               dist w/ 2 moments, or something like that, right?
 
-              bias is a funciton of k/npts for 2d: [[file:~/work/dtu/doc/energy.bib::kraskov04estmutinfknn][kraskov et al. 2004:
+              bias is a funciton of k/npts for 2d: [[file:energy.bib::kraskov04estmutinfknn][kraskov et al. 2004:
               estimating]], fig 4.  they like k                                                                                    =2-4 when not looking for zero-valued
               strict dependence.
 
 *************** not too sensitive to k but matters for featsel: [[file:energy.bib::Doquire12compMutInfoFeatSel][Doquire et al. 2012: Comparison Multivariate Mutual]]
 *************** mentions 2 k selection algs for featsel: [[file:energy.bib::Doquire12compMutInfoFeatSel][Doquire et al. 2012: Comparison Multivariate Mutual]]
-************* TODO see if MILCA ICA est uses eq. a3 in [[File:~/work/dtu/doc/energy.bib::kraskov04estmutinfknn][Kraskov et al. 2004: estimating]]
+************* TODO see if MILCA ICA est uses eq. a3 in [[file:energy.bib::kraskov04estmutinfknn][Kraskov et al. 2004: estimating]]
 ************* also [[Kraskov-like MI in Python]]
 *********** [[file:energy.bib::Khan07perfMutInfoShortNoise][Khan et al. 2007: Relative]] (MI from KDE, Kraskov KNN and other dependence measures compared)
 *********** MI affected by class imbalance: [[cite:Straube14infreqPerfEstImbal][Straube & Krell 2014: How]] infreq. events perf. estimation
@@ -3421,11 +3421,11 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 *********** related to [[renyi's entropy]]
 
 *********** TODO Shannon MI from total MI estimators and Brown trick
-            brown trick: eq. 3 of [[file:~/doc/energy.bib::brown09newinfofeatsel][brown 2009]] new info perspective
+            brown trick: eq. 3 of [[file:energy.bib::brown09newinfofeatsel][brown 2009]] new info perspective
             * total mi calculators:
               - the one in milca dist
-              - [[file:~/doc/energy.bib::calsaverini09copulainfo][calsaverini & vicente 2009]]
-              - [[file:~/doc/energy.bib::poczos10rankestreninfo][poczos et al. 2010: rego]]
+              - [[file:energy.bib::calsaverini09copulainfo][calsaverini & vicente 2009]]
+              - [[file:energy.bib::poczos10rankestreninfo][poczos et al. 2010: rego]]
 *********** TODO mutual information dimension reduction
 *********** <<Software for Mutual Information>>
 ************* R packages
@@ -3625,7 +3625,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 ********* [[file:energy.bib::Dijck06speedFeatSelMutInf][Dijck & Hulle 2006: Speeding Up Wrapper]] featsel
 ********* Markov blanket / high dim mutual information: [[File:energy.bib::zheng11featselhimdimmi][Zheng & Kwoh 2011: Feature Subset Selection]]
 ********* [[file:energy.bib::Juban07ProbWndFrcstFeatSelKDE][Juban et al. 2007: Probabilistic]] wind pow frcst: MI featsel --> KDE prob frcst
-********* [[File:~/work/dtu/doc/energy.bib::estevez09normmutinfofeatsel][Estevez et al. 2009: Normalized Mutual Information Feature Selection]] (classification, why normalize discrete)
+********* [[file:energy.bib::estevez09normmutinfofeatsel][Estevez et al. 2009: Normalized Mutual Information Feature Selection]] (classification, why normalize discrete)
 ********* [[Partial Mutual Information Feature Selection]] is [[http://stats.stackexchange.com/questions/35089/feature-selection-using-mutual-information-in-matlab][prefered]] over normal MI for NN featsel
           other say this too:  Also see papers under: [[Partial Mutual Information Estimation]]
 ********* [[File:energy.bib::brown09newinfofeatsel][Brown 2009]] (new mi perspectives): explains why mi maximization good for featsel
@@ -3799,7 +3799,7 @@ Hope that helps,
 ********* [[file:energy.bib::krause08sensplacegaussproc][krause et al. 2008: near optimal sensor]]
 ********* [[file:energy.bib::krause08robustsubmodobssel][krause et al. 2008: robust submodular observation selection]]
 ********* [[http://mloss.org/software/view/201/][matlab toolbox for submodular function optimization 1.0]]
-********* submodularity ratio: [[file:~/work/dtu/doc/energy.bib::das11submodspectgreedslct][das & kempe 2011: submodular]] subset sel
+********* submodularity ratio: [[file:energy.bib::das11submodspectgreedslct][das & kempe 2011: submodular]] subset sel
 ********* one submodular approach comes close to lar-lasso but doesn't beat it:
 *********** [[http://www.cis.hut.fi/mlg08/papers/session1/paper9.pdf][combining near-optimal feature selection with gspan]]
 *********** similar papers:
@@ -6198,22 +6198,22 @@ sera
 ******* [[file:energy.bib::geyer06subsampbootstrap][geyer 2006: notes]]
 ******* [[file:energy.bib::politis99subsampbook][politis et al. 1999: subsampling]]
 ******* [[file:energy.bib::simar10mofnbtstrp][simar & wilson 2010: inference]]
-******* done read: [[file:~/doc/energy.bib::geyer06subsampbootstrap][geyer 2006: notes]] (subsamp boostrap)
-******* done [[file:~/work/dtu/doc/energy.bib::simar10mofnbtstrp][simar & wilson 2010: inference]] (m of n boostrap) how to pick m
+******* done read: [[file:energy.bib::geyer06subsampbootstrap][geyer 2006: notes]] (subsamp boostrap)
+******* done [[file:energy.bib::simar10mofnbtstrp][simar & wilson 2010: inference]] (m of n boostrap) how to pick m
 ********* paper comes from [[http://www.colorado.edu/econ/seminars/][here]], and maybe also [[http://scholar.google.dk/scholar?hl%3den&q%3dinference%2bby%2bthe%2bm%2bout%2bof%2bn%2bbootstrap%2bin%2bnonparametric%2bfrontier%2bmodels&btng%3dsearch&as_sdt%3d0%252c5&as_ylo%3d&as_vis%3d0][here]]
 ********* i'm not sure that it's exactly the same problem
 ********* may be implemented in r [[http://www.sciencedirect.com/science/article/pii/s0038012107000109][here]].
-******* todo simar seems to use: [[file:~/doc/energy.bib::politis01asympsubsamp][politis et al. 2001]]
-******* todo but also mentions: [[file:~/doc/energy.bib::bickel08choiceofmsubsampbtstrp][bickel & sakov 2008]]
-******* todo seems related: [[file:~/work/dtu/doc/energy.bib::bertail99subsampbsunkcnvrg][bertail et al. 1999: subsampling estimators unknown rate convergence]]
+******* todo simar seems to use: [[file:energy.bib::politis01asympsubsamp][politis et al. 2001]]
+******* todo but also mentions: [[file:energy.bib::bickel08choiceofmsubsampbtstrp][bickel & sakov 2008]]
+******* todo seems related: [[file:energy.bib::bertail99subsampbsunkcnvrg][bertail et al. 1999: subsampling estimators unknown rate convergence]]
 ******* todo don't need to use all subsamples, can use for hypothesis testing.  berg10subsampbspval
-******* todo [[file:~/work/dtu/doc/energy.bib::berg10subsampbspval][berg et al. 2010: subsampling]] p-values
-******* todo [[file:~/work/dtu/doc/energy.bib::goebel05apprxmidist][goebel et al. 2005]] finite sample mi est distribution
+******* todo [[file:energy.bib::berg10subsampbspval][berg et al. 2010: subsampling]] p-values
+******* todo [[file:energy.bib::goebel05apprxmidist][goebel et al. 2005]] finite sample mi est distribution
 ******* subsamp is usually less accurate than full bs
-********* subsamp usually less accurate than full bs: [[file:~/work/dtu/doc/energy.bib::politis03btstrptimeser][politis 2003]], subsamp impact
+********* subsamp usually less accurate than full bs: [[file:energy.bib::politis03btstrptimeser][politis 2003]], subsamp impact
 ********* rate of convergence [[http://fedc.wiwi.hu-berlin.de/xplore/ebooks/html/csa/node132.html#section019141000000000000000][worse]] than for normal approx
 ******* subsamp equiv. to delete-d jackknife in some cases (this one?)
-        [[file:~/work/dtu/doc/energy.bib::politis03btstrptimeser][politis 2003]], subsamp impact
+        [[file:energy.bib::politis03btstrptimeser][politis 2003]], subsamp impact
 
 ***** [[File:energy.bib::honaker10missvaltseries][Honaker & King 2010: What Do Missing]] Values (bootstrapped em)
 ***** [[file:energy.bib::pinson10reldiagsercorr][pinson et al. 2010: reliability]] (boostrap test)
@@ -7169,7 +7169,7 @@ variables will be preferred, when possible.
 
       I wrote a script to download this:
 
-        [[file:~/work/IWES/proj/Eweline/Market/tsoIntradayBid/getDEnowcastAndDAfrcst.m][Eweline/Market/tsoIntradayBid/getDEnowcastAndDAfrcst.m]]
+        ~/work/IWES/proj/Eweline/Market/tsoIntradayBid/getDEnowcastAndDAfrcst.m
 
 *** <<Forecast quality metrics>>
 ***** <<Forecast Error Distributions>>
@@ -7179,7 +7179,7 @@ variables will be preferred, when possible.
 ******* [[cite:Bessa11quantCplaWindPow][Bessa et al. 2011: Quantile copula dens. uses beta kernel]]
 ******* [[cite:Hering08spaceTimeWindFrcst][Hering & Genton 2008: Powering Up Space wind err dep, skew T]]
 ******* [[cite:Papaefthymiou08spatioTempModel][Papaefthymiou & Pinson 2008: Modeling Spatial Dependence wind]]
-******* TODO Todo [[File:~/work/dtu/doc/energy.bib::hodge11frcsterrdisttime][Hodge & Milligan 2011: wind]] (cauchy dist for wind errors)
+******* TODO Todo [[file:energy.bib::hodge11frcsterrdisttime][Hodge & Milligan 2011: wind]] (cauchy dist for wind errors)
 ******* TODO Pierre's Prob. Frcst I used for EWEA 2012 ramps paper
 ******* TODO [[File:energy.bib::giebel07erraggregwindpow][Giebel et al. 2007: Forecast]] err dist aggregate
 ******* TODO [[File:energy.bib::hodge11frcsterrdisttime][Hodge & Milligan 2011: Wind]] err dist multiple time scales
@@ -7511,7 +7511,7 @@ variables will be preferred, when possible.
 ***** TODO [[cite:Koehler17critWeathSolarPow][Koehler et al. 2017: Critical Weath for Solar Pow]]
 ***** TODO [[cite:Steiner17critWeathWindPow][Steiner et al. 2017: Critical Weath for Wind Pow]]
 ***** [[file:energy.bib::Focken10extrmEvRampFrcst][Focken 2010: Experiences Extreme Event]] (ramp need)
-***** [[file:~/work/DTU/doc/energy.bib::DeGiorgi11nwpStatWavltNN][Giorgi et al. 2011: Assessment]] (also wind, wavelet, 24hr, inverse op.)
+***** [[file:energy.bib::DeGiorgi11nwpStatWavltNN][Giorgi et al. 2011: Assessment]] (also wind, wavelet, 24hr, inverse op.)
 ***** [[file:energy.bib::SalcedoSanz09frcstBankNN][Salcedo-Sanz et al. 2009: Accurate:]] combo different global models, downscale res)
 ***** [[file:energy.bib::Davidson15InsideDOEsWindFrcst][Davidson 2015: Inside DOE]] wind frcsting effort
 ***** [[file:energy.bib::Theis14cosomDEeps][Theis et al. 2014: Beschreibung COSMO DE EPS]]: Latest description from DWD
@@ -7626,8 +7626,8 @@ variables will be preferred, when possible.
       - [x] [[file:energy.bib::fuentes05spacetimestructwind][fuentes et al. 2005: modeling and predicting]]
       - [x] [[file:energy.bib::siebert08regpowforecast][siebert 2008: development of methods]]
       - [x] [[file:energy.bib::dijck06speedfeatselmutinf][dijck & hulle 2006: speeding up wrapper]]
-      - [x] [[file:energy.bib::francois06permtestmutinf][françois et al. 2006: permutation test for]]
-      - [x] [[file:energy.bib::francois07resampparamfreefeatsel][françois et al. 2007: resampling methods for]]
+      - [x] [[file:energy.bib::francois06permtestmutinf][francois et al. 2006: permutation test for]]
+      - [x] [[file:energy.bib::francois07resampparamfreefeatsel][francois et al. 2007: resampling methods for]]
       - [x] [[file:energy.bib::elgohary07causwhitecorr][el-gohary & mcnames 2007: establishing causality with]]
       - [x] [[file:energy.bib::winker00multivarlagsel][winker 2000: optimized multivariate lag structure selection]]
       - [x] [[file:energy.bib::huang06inputselstockforecast][huang et al. 2006: new computational method]]
@@ -7669,7 +7669,7 @@ variables will be preferred, when possible.
       - [ ] [[file:energy.bib::porcu07covarstatspacetime][porcu et al. 2007: covariance functions that]]
       - [ ] [[http://www.clopinet.com/isabelle/projects/nips2008/slides/tillman_nips08_causality_slides.pdf][when causality matters for prediction:investigating the practical tradeoffs]]
       - [ ] [[file:energy.bib::krause07nonmyopicactivelrn][krause & guestrin 2007: nonmyopic active learning]]
-      - [ ] [[file:~/desktop/feature%20selection%20papers][file:~/desktop/feature selection papers]]
+      - [ ] ~/desktop/feature selection papers
       - [ ] [[some good model switching/mixture papers]]
       - [ ] [[file:energy.bib::mandel07tutensembkalman][mandel 2007: brief tutorial ensemble kalman filter]] ?
       - [ ] [[file:energy.bib::galka06whitemutinfospatiotemp][galka et al. 2006: whitening as tool]]
@@ -7746,11 +7746,11 @@ variables will be preferred, when possible.
 ***** [[File:energy.bib::maggio10frcstercot][Maggio et al. 2010: Utilization Wind Generation]] ("prob" frcst, ramps)
 ***** [[file:energy.bib::Potter09benProbRampFrcst][Potter et al. 2009: Potential]] (ramp forecasting benefits, is garbage)
 ***** [[file:energy.bib::Kamath10statHistRamps][Kamath 2010: Using Simple Statistical]] (ramps, too simple)
-***** [[file:~/work/DTU/doc/energy.bib::Enyeart07largeWindImpact][Enyeart 2007: Large Wind Integration]] (ramps are unscheduled)
+***** [[file:energy.bib::Enyeart07largeWindImpact][Enyeart 2007: Large Wind Integration]] (ramps are unscheduled)
 ***** [[file:energy.bib::Roark10rampFrcstPressRls][Roark 2010: ERCOT Using New]] ramp tool by AWS
-***** [[file:~/work/DTU/doc/energy.bib::Rogers11frcstingNorthAmTransmsn][Rogers & Porter 2011: Central Wind Forecasting]]: inspiration for ramp alarms? forecast alarms 
+***** [[file:energy.bib::Rogers11frcstingNorthAmTransmsn][Rogers & Porter 2011: Central Wind Forecasting]]: inspiration for ramp alarms? forecast alarms 
 ***** [[file:energy.bib::Milligan08subHrRampBal][Milligan & Kirby 2008: Analysis Sub Ramping]] (costs)
-***** [[file:~/doc/energy.bib::Zheng09rampDataMine][Zheng & Kusiak 2009: Prediction Wind Farm]] ramps (predicting rates, not binary)
+***** [[file:energy.bib::Zheng09rampDataMine][Zheng & Kusiak 2009: Prediction Wind Farm]] ramps (predicting rates, not binary)
 ***** [[file:energy.bib::Svoboda97schedRampConstr][Svoboda et al. 1997: Short]] (term schedule ramp)
 ***** [[file:energy.bib::Potter06vShortWindFrcstTas][Potter & Negnevitsky 2006: Very Tasmanian]] (supposed to have ramps, I don't see them)
 ***** [[file:energy.bib::Florita13idWindSolarRamps][Florita et al. 2013: Identifying Wind Solar Ramping Events]] (swing door plots)
@@ -7760,7 +7760,7 @@ variables will be preferred, when possible.
 ***** see: [[Regimes and Ramps]]
 ***** see: [[Wind/Solar derivatives (ramps)]]
 *** <<Bayesian Network forecasting model>>
-***** weather prediction BN (first?): [[file:energy.bib::Cofino02BNweathPred][Cofıño et al. 2002: Bayesian]]
+***** weather prediction BN (first?): [[file:energy.bib::Cofino02BNweathPred][Cofo et al. 2002: Bayesian]]
 ***** [[file:energy.bib::Marttinen09graphVARlrnUlag][Marttinen & Corander 2009: Bayesian]]
 ***** adaptive lasso may not work well for correlated features
       shrinkage better?
@@ -7791,7 +7791,7 @@ variables will be preferred, when possible.
 ***** [[Streamwise Feature Selection]] sounds good
 ***** [[file:energy.bib::Clyde10bayesAdaptSampVarSelAvg][Clyde et al. 2010: Bayesian]] (adaptive sampling)
 ***** maybe incremental sparsification (but I'm don't not sure how to handle dim change)
-      [[file:energy.bib::Nguyen_Tuong10incSparse][Nguyen–Tuong & Peters 2010: Incremental Sparsification Real]]
+      [[file:energy.bib::Nguyen_Tuong10incSparse][Nguyen-Tuong & Peters 2010: Incremental Sparsification Real]]
 *** Lagged wind velocity basis
     <<Lagged wind velocity basis>>
 ***** [[Angular In Input]] / [[Basis Learning]]
@@ -7804,7 +7804,7 @@ variables will be preferred, when possible.
 
       _I got several hits when I googled this but lost all but the one below_
 
-******* [[http://www.cliffsnotes.com/math/trigonometry/trigonometric-identities/product-sum-and-sum-product-identities][Product‐Sum and Sum‐Product Identities]]
+******* [[http://www.cliffsnotes.com/math/trigonometry/trigonometric-identities/product-sum-and-sum-product-identities][Product Sum and Sum Product Identities]]
 ******* Retain 2d relationships in pca w/ tensor approximation: angle/lag?
         http://zoonek2.free.fr/UNIX/48_R/05.html
 ******* [[file:energy.bib::He99multiVarQRsplines][He & Ng 1999: Quantile]] sums of 2D interaction tensor splines
@@ -8106,7 +8106,7 @@ Scott
 *********** train on "max mutual information between plant wind speed and obs"
 ************* max correlation would be more temporally precise (shorter sliding window)
 ************* mutual information lag selection, one of many examples:
-              [[file:~/work/dtu/doc/energy.bib::estevez09normmutinfofeatsel][estevez et al. 2009: normalized mutual information feature selection]] (classification)
+              [[file:energy.bib::estevez09normmutinfofeatsel][estevez et al. 2009: normalized mutual information feature selection]] (classification)
 *********** could almost be "convolutive cca"
 ************* delays adjusted jointly for max correlation w/ farm
 ************* would bad observations screw up cca, though?
@@ -8268,9 +8268,9 @@ Scott
 ******* [[file:energy.bib::UniWisconsin18aeroOptDepthQG][U Wisconsin 2018: Aerosol Optical Depth Quick Guide]]
 ******* TODO [[http://cimss.ssec.wisc.edu/goes/goes-r/training/recordings/Aerosol/presentation_html5.html?lms=1][GOES-R Aerosols in AWIPS]] (online tutorial presentation)
 ***** <<PV System Diagnostics>>
-******* [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::Meyers19pvDgrdAnlysisNoPhysMdl][Meyers et al. 2019: Signal Processing PV degrade no phys]] :SolarAnywhere:DataQual:
-******* [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::Meyers18statClearSkyFit][Meyers et al. 2018: Statistical Clear Sky Fitting Algorithm]] :SolarAnywhere:DataQual:
-******* [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::Meyers19toolsPVdatSci][Meyers 2019: Tools PV Data Sci]]
+******* [[file:energy.bib::Meyers19pvDgrdAnlysisNoPhysMdl][Meyers et al. 2019: Signal Processing PV degrade no phys]] :SolarAnywhere:DataQual:
+******* [[file:energy.bib::Meyers18statClearSkyFit][Meyers et al. 2018: Statistical Clear Sky Fitting Algorithm]] :SolarAnywhere:DataQual:
+******* [[file:energy.bib::Meyers19toolsPVdatSci][Meyers 2019: Tools PV Data Sci]]
 ***** see also: [[file:energytop.org::*Wind%20and%20Solar%20Forecast%20Error%20Dependence][Wind and Solar Forecast Error Dependence]]
 *** <<Price Forecasting>>
 ***** couldn't do it on DE intraday mkt?: [[file:energy.bib::Moehrlen12tradeStrtgyRESeeg2012][Moehrlen et al. 2012: Investigation EEG]]
@@ -9191,7 +9191,7 @@ Scott
 
 ******* [[cite:Bessa17imprvUnderstandUncertFrcstPow][Bessa et al. 2017: Towards Improved Understand Uncert Frcst Industry]]
 ******* [[File:energy.bib::zhou12prbfrcstmkts][Zhou et al. 2012: Application]] Of Prob Frcsts
-******* [[File:~/work/dtu/doc/energy.bib::jansen13pvctlmkt][Jansen & Speckmann 2013: Participation Of Photovoltaic]] (Markets)
+******* [[file:energy.bib::jansen13pvctlmkt][Jansen & Speckmann 2013: Participation Of Photovoltaic]] (Markets)
 ******* http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4385004&tag=1
 ******* [[File:energy.bib::maggio10frcstercot][Maggio et al. 2010: Utilization Wind Generation]] ("prob" frcst, ramps)
 ******* [[file:energy.bib::Zhang18probLoadFrcstRandFrstQD][Zhang et al. 2018: Parallel Random Forest Load Forecast, Quant Det.]] 
@@ -10226,7 +10226,7 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 ***** [[cite:Koehler17critWeathSolarPow][Koehler et al. 2017: Critical Weath for Solar Pow]]
 ***** [[cite:Newport17introSolarRad][Newport 2017: Introduction to Solar Radiation]] 
 ***** [[cite:Kleissl13SolarEnrgyFrcstBk][Kleissl 2013: Solar Energy Forecasting Resource Assessment Book]]      
-***** [[file:energy.bib.bak::Sengupta17bestPracticesSolarRsrc][Sengupta et al. 2017: Best Practices Handbook Solar Resource]]
+***** [[file:energy.bib::Sengupta17bestPracticesSolarRsrc][Sengupta et al. 2017: Best Practices Handbook Solar Resource]]
 ***** <<Solar Satellite Irradiance Calibration>>
 ******* [[file:energy.bib::Alfi16uncertSatteliteGrnd][Alfi et al. 2016: Importance of input and uncert. Satellite Tune]] (CPR)
 ******* [[file:energy.bib::Kankiewicz14solarUncertRsrcTune][Kankiewicz et al. 2014: Reduce Solar Project Uncert Tuning]] (CPR)
@@ -10262,8 +10262,8 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 ***** [[file:energy.bib::][Giebel et al. 2014: Estimation Experimental Validation]] realtime wake model, needs pitch?
 ***** [[file:energy.bib::Giebel13possiblePowOfshrWind][Giebel et al. 2013: POSSPOW]] wind offshore
 ***** Dynamic spring mass wake model (IWES): [[file:energy.bib::Tietz13modelDynWkTurbSprngMss][Tietz 2013: Modeling]]
-***** Physical better than NN model (IWES): [[file:d:/Users/sotterson/OneDrive/shareHW/DTU/doc/energy.bib::][Kuester et al.: Estimation Available Active]]
-******* 3 sec data & paper: [[K:\Organisation\Diplomanden\Arbeiten\Sascha_Tietz][Dynamic spring mass turbine model]]
+***** Physical better than NN model (IWES): [[file:energy.bib::][Kuester et al.: Estimation Available Active]]
+******* 3 sec data & paper: K:\Organisation\Diplomanden\Arbeiten\Sascha_Tietz
 ***** see also [[Control Energy Provision]]
 *** <<Control Energy Provision>> (reserve power)
 ***** TODO [[file:energy.bib::Unknown15PilotProjectDelivery][Unknown 2015: Pilot Project]] Secondary Reserve
@@ -10561,7 +10561,7 @@ If you have got questions do not hesitate to ask me!
 
 Dominik
 
-************* Downloaded AEP prices from Dominik: [[file:~/work/IWES/proj/Eweline/Market/dwdQ/dat/orig/imbal/AEP_neu.mat][Eweline/Market/dwdQ/dat/orig/imbal/AEP_neu.mat]]
+************* Downloaded AEP prices from Dominik: ~/work/IWES/proj/Eweline/Market/dwdQ/dat/orig/imbal/AEP_neu.mat
                 <<Dominik AEP Imbalance Price Download>>
 *************** Explanation of the data: [[Dominik Jost AEP 15 min imbal price email]]
 *************** Dominik downloaded it from Amprion: [[http://www.amprion.net/ausgleichsenergiepreis][here]]
@@ -10582,7 +10582,7 @@ Dominik
 ************* My download (using Dominik's Amprion site)
 ********* German load (consumption) data
           <<German load (consumption) data>>
-*********** I've downloaded it to: [[file:~/work/IWES/proj/Eweline/Market/tsoIntradayBid/dat/orig/load]]
+*********** I've downloaded it to: ~/work/IWES/proj/Eweline/Market/tsoIntradayBid/dat/orig/load
 *********** Dominik emails
 
 >>> Dominik Jost 7/21/2015 4:57 PM >>>
@@ -10690,8 +10690,8 @@ Phone: +49 30 315 17 19 23 | Mobile + 49 151 17 22 80 31
 ************* If no prices at at a time, how simulate?
 *********** Using downloaded data
 ************* Where can we download [[http://www.epexspot.com/en/market-data/intradaycontinuous/intraday-table/-/DE][this website]] 15 minute data?
-************* 2015: price/volumne/horizon from [[K:\tmp\mjansen\MarketData\power\spot\xls\2015\20150207\auction_aggregated_curves_germany_austria_20150207.xlsx][instantaneous downloaded data]]?
-
+************* 2015: price/volumne/horizon from K:\tmp\mjansen\MarketData\power\spot\xls\2015\20150207\auction_aggregated_curves_germany_austria_20150207.xlsx
+              ?
               Here, some bids are labeled in 15 minute blocks:
 
                 K:\tmp\mjansen\MarketData\power\spot\xls\2015\20150207\intraday_auction_aggregated_curves_15-call_germany_20150131.xlsx
@@ -10700,7 +10700,7 @@ Phone: +49 30 315 17 19 23 | Mobile + 49 151 17 22 80 31
 *************** Includes Austria? (filename doesn't have it)
 *************** If there was a purchase, then there must have been a sale, so why are there separate rows labeled "Purchase" and "Sell?"
 
-************* pre-2015 downloads([[K:\tmp\mjansen\MarketData\power\spot\xls\2014\energy_intraday_history_2014.xls][2014)]]: how get horizon & 15 min time/price?
+************* pre-2015 downloads(K:\tmp\mjansen\MarketData\power\spot\xls\2014\energy_intraday_history_2014.xls): how get horizon & 15 min time/price?
               K:\tmp\mjansen\MarketData\power\spot\xls\2014\energy_intraday_history_2014.xls
 ********* Interday
 *********** a true auction w/ crossing supply demand curves ==> 1 price
@@ -10712,7 +10712,7 @@ Phone: +49 30 315 17 19 23 | Mobile + 49 151 17 22 80 31
             one hour blocks.  The filename suggests that this is merged
             German and Austrian data.
 
-*********** pre-2015 downloads ([[K:\tmp\mjansen\MarketData\power\spot\xls\2014\energy_spot_historie_2014.xls][2014]]) Is this really day-ahead YES
+*********** pre-2015 downloads (K:\tmp\mjansen\MarketData\power\spot\xls\2014\energy_spot_historie_2014.xls) Is this really day-ahead YES
             K:\tmp\mjansen\MarketData\power\spot\xls\2014\energy_spot_historie_2014.xls
 ********* Downloaded csv's: No Germany?
 
@@ -10974,7 +10974,7 @@ Scott
 ***** [[Development And Deployment Of An Advanced Wind Forecasting Technique]]
 ***** [[Energy Management System (EMS) Integration]]
 ***** [[File:energy.bib::das08sensselworstcase][Das & Kempe 2008: Sensor Selection Minimizing]] (worst case (for safety))
-***** [[File:~/work/dtu/doc/energy.bib::enyeart07largewindimpact][Enyeart 2007: Large Wind Integration]] (Ramps are unscheduled errors)
+***** [[file:energy.bib::enyeart07largewindimpact][Enyeart 2007: Large Wind Integration]] (Ramps are unscheduled errors)
 ***** [[File:energy.bib::maggio10frcstercot][Maggio Et Al. 2010: Utilization Wind Generation]] ("prob" frcst, ramps)
 ***** [[File:energy.bib::ummels07windgencommitdisp][Ummels Et Al. 2007: Impacts Wind Power]] (Ramp constraints. forecasts not valuable)
 ***** [[File:energy.bib::waldl10rulezrampalarm][Waldl & Brandt 2010: Anemos]] rulez
@@ -11206,10 +11206,10 @@ Scott
 ***** [[file:energy.bib::Svoboda97schedRampConstr][Svoboda et al. 1997: Short]] (term schedule ramp)
 ***** [[file:energy.bib::Soder93rsrvWindHydroThrm][Soder 1993: Reserve]] (wind/hydro/thermal.  Considers net load uncertainty, ramps)
 ***** [[file:energy.bib::Wu99spinRsrvRampCnstr][Wu & Gooi 1999: Optimal]] (spin rsvr, ramp constraints, probababilistic)
-***** [[file:~/doc/energy.bib::Potter06vShortWindFrcstTas][Potter & Negnevitsky 2006: Very Tasmanian]]
+***** [[file:energy.bib::Potter06vShortWindFrcstTas][Potter & Negnevitsky 2006: Very Tasmanian]]
 ***** [[file:energy.bib::Ummels07windGenCommitDisp][Ummels et al. 2007: Impacts Wind Power]] (ramp constraints. Forecasts not valuable)
-***** [[file:~/doc/energy.bib::Makarov09OperWindCA][Makarov et al. 2009: Operational Impacts Wind]] CA (ramp swing door ref)
-***** [[file:~/doc/energy.bib::Lu10unitCommCnstrnt][Lu et al. 2010: Unit]] commitment flexibility
+***** [[file:energy.bib::Makarov09OperWindCA][Makarov et al. 2009: Operational Impacts Wind]] CA (ramp swing door ref)
+***** [[file:energy.bib::Lu10unitCommCnstrnt][Lu et al. 2010: Unit]] commitment flexibility
 ***** [[file:energy.bib::Focken10extrmEvRampFrcst][Focken 2010: Experiences Extreme Event]] (ramp need)
 ***** [[file:energy.bib::Bristol09swingDoorTrend][Bristol 1990: Swinging]] Door Trend (orig paper)
 ***** [[file:energy.bib::][Crampes et al. 2018: Supply flex mkt, swing door ramps]]
@@ -11224,7 +11224,7 @@ Scott
 ***** [[cite:Cheung11smartDsptchRES][Cheung & Rios-Zalapa 2011: Smart Grid Dispatch Net Demand]] 
 ***** [[HTTP://www.caiso.com/informed/pages/stakeholderprocesses/completedstakeholderprocesses/flexiblerampingconstraint.aspx][CAISO Flexible Ramping Constraint]] (a new market)
 
-***** [[File:~/work/dtu/doc/energy.bib::enyeart07largewindimpact][Enyeart 2007: Large Wind Integration]] (Ramps are unscheduled errors)
+***** [[file:energy.bib::enyeart07largewindimpact][Enyeart 2007: Large Wind Integration]] (Ramps are unscheduled errors)
 
 ***** TODO CAISO still only product w/ ramp reserve: [[cite:Andrade17ercotRsrvLessMore][Juan et al. 2017: Impact Renewable Generation, Propose Rsrv Mkt &Power, Joint]]
 ***** See also: [[Regimes and Ramps]]
@@ -11235,18 +11235,18 @@ Scott
 ***** Preliminary Version, Aug 16 2017, available [[https://ec.europa.eu/energy/sites/ener/files/documents/SystemOperationGuideline%2520final%2528provisional%252904052016.pdf][here]]
 ***** email about it
 ******* EN
->>> Erika Kämpf 8/14/2017 9:44 AM >>>
+>>> Erika Kampf 8/14/2017 9:44 AM >>>
 Hello everybody,
 
 The Guideline system operation will be valid throughout Europe and will mainly concern:
 
-◾TSOs,
+o TSOs,
 
 
-◾Transmission connected DSOs,
+o Transmission connected DSOs,
 
 
-◾Significant grid users, i.e. All generating plants> 0.8 kW and consumers or aggregators with the possibility of affecting more than 50 MVA, as well as all consumers connected to the transmission network.
+o Significant grid users, i.e. All generating plants> 0.8 kW and consumers or aggregators with the possibility of affecting more than 50 MVA, as well as all consumers connected to the transmission network.
 
 
 It contains regulations, inter alia. to:
@@ -11292,42 +11292,42 @@ heatherHello everybody,
 
 The Guideline system operation will be valid throughout Europe and will mainly concern:
 
-◾TSOs,
+TSOs,
 
 
-◾Transmission connected DSOs,
+Transmission connected DSOs,
 
 
-◾Significant grid users, i.e. All generating plants> 0.8 kW and consumers or aggregators with the possibility of affecting more than 50 MVA, as well as all consumers connected to the transmission network.
+Significant grid users, i.e. All generating plants> 0.8 kW and consumers or aggregators with the possibility of affecting more than 50 MVA, as well as all consumers connected to the transmission network.
 
 
 It contains regulations, inter alia. to:
 
-◦Operation planning
+o Operation planning
 
 
-◦Operational safety
+o Operational safety
 
 
-◦Leistungs frequency control
+o Leistungs frequency control
 
 
-◦Spannungs- / reactive power management
+o Spannungs- / reactive power management
 
 
-◦Kurzschlussleistung
+o Kurzschlussleistung
 
 
-◦Netzschutz
+o Netzschutz
 
 
-◦N-1 cases
+o N-1 cases
 
 
-◦Reserve management
+o Reserve management
 
 
-◦TSO / DSO interface
+o TSO / DSO interface
 
 
 The preliminary version is available here:
@@ -11345,24 +11345,24 @@ heather
   >>> Erika Kämpf 8/14/2017 9:44 AM >>>
  Hallo zusammen,
 die System Operation Guideline wird europaweit gelten und betrifft vor allem: 
-◾TSOs, 
-◾Transmission connected DSOs, 
-◾Significant grid users, d.h. alle Erzeugungsanlagen > 0.8 kW und Verbraucher oder Aggregatoren mit der Möglichkeit mehr als 50 MVA zu beeinflussen, sowie alle an das Übertragungsnetz angeschlossenen Verbraucher.
-Sie enthält Vorschriften u.a. zu:
-◦Betrieblicher Planung
-◦Betrieblicher Sicherheit
-◦Leistungs-Frequenzregelung
-◦Spannungs-/Blindleistungsmanagement
-◦Kurzschlussleistung
-◦Netzschutz
-◦N-1 Fällen
-◦Reserve-Management
-◦TSO/DSO interface
-Die vorläufige Fassung gibt es hier: 
+TSOs, 
+Transmission connected DSOs, 
+Significant grid users, d.h. alle Erzeugungsanlagen > 0.8 kW und Verbraucher oder Aggregatoren mit der Möglichkeit mehr als 50 MVA zu beeinflussen, sowie alle an das Übertragungsnetz angeschlossenen Verbraucher.
+Sie enthalt Vorschriften u.a. zu:
+o Betrieblicher Planung
+o Betrieblicher Sicherheit
+o Leistungs-Frequenzregelung
+o Spannungs-/Blindleistungsmanagement
+o Kurzschlussleistung
+o Netzschutz
+o N-1 Fallen
+o Reserve-Management
+o TSO/DSO interface
+Die vorlufige Fassung gibt es hier: 
 https://ec.europa.eu/energy/sites/ener/files/documents/SystemOperationGuideline%20final%28provisional%2904052016.pdf
 Zusatz-Info: Ebenfalls am 25. August erscheint der Entwurf zur Kommentierung der deutschen Anwendungsregel AR 4141-1 
-Technische Regeln für den Betrieb und die Planung von Netzbetreibern: Teil1 – Schnittstelle Übertragungs- und Verteilnetze
-Viele Grüße,
+Technische Regeln far den Betrieb und die Planung von Netzbetreibern: Teil1  Schnittstelle bertragungs- und Verteilnetze
+Viele Gruess,
 Erika
 *** Transmission Line Rating
 ***** Thermal/Current Constraints
@@ -11410,7 +11410,7 @@ Erika
 ********* enviro params for thermal limits
 *********** regs [[http://tdworld.com/mag/power_finding_hidden_capacity/][assume 2 ft/sec wind]] (0.3m/s): PNM found that could increase beyond this
 *********** thermal accuracy betlow 1.5m/s crucial: [[file:energy.bib::Daconti03incrPowTrans][Daconti & Lawry 2003: Increasing power transfer]]
-*********** EU regs limit line current for combo of 35°C, 0.6m/s: [[file:energy.bib::Muhr08weathParamLineMon][Muhr et al. 2008: Experiences with Weather]]
+*********** EU regs limit line current for combo of 35C, 0.6m/s: [[file:energy.bib::Muhr08weathParamLineMon][Muhr et al. 2008: Experiences with Weather]]
 *********** common conservative utility practice: [[file:energy.bib::ABB05DakotaTransIncr][ABB 2005: Dakotas Wind Transmission]]
             Ambient temperature: 40 deg C
             Wind speed: 0.61 m/s (2 ft/sec)
@@ -11586,7 +11586,7 @@ Erika
 ******* [[http://www.oe.energy.gov/DocumentsandMedia/Smart_Grid_Eric_Lightner_Presentation_05072008.pdf][Self-healing and resilience from attacks]]
 ******* [[file:energy.bib::Ma09compIntSmartGrid][Ma et al. 2009]] (computational Int. in smart grid)
 ******* [[cite:Haibach17predMaintWndSemiAnomDet][Haibach & Treiber 2017: Predictive Maint. Offshore Windparks]]
-******* [[cite:Deesko15digFingerPrintFaultSlides][Deesko & Bärmann 2015: Digital Fingerprint Equipment Faults (STEAG)]]
+******* [[cite:Deesko15digFingerPrintFaultSlides][Deesko & Boermann 2015: Digital Fingerprint Equipment Faults (STEAG)]]
 * Planning
 *** <<Technology Adoption Rates>>
 ***** <<Tech Adoption Overviews>>
@@ -11639,7 +11639,7 @@ Erika
 ******* TODO ALL THE EV PAPERS INSPIRED BY NORWAY
         On work computer:
 
-        [[file:~/Desktop/EV adoption papers inspired by Norway][EV adoption papers inspired by Norway]]
+        ~/Desktop/EV adoption papers inspired by Norway
 
 ******* [[https://www.evernote.com/l/AA3OTjWInMlMBLwu7w5JCfzISfUIfOg708I/][Researchers have no idea when electric cars are going to take over]]
 ******* Commuting zone designation clustering (from [[https://www.ers.usda.gov/data-products/commuting-zones-and-labor-market-areas.aspx][here]] and used [[https://www.evernote.com/l/AA1oOwoS0p5H17AgX_0OKBVUigrI73VBNFw/][here]]) might help. .  Also, have population projections.
@@ -12057,8 +12057,8 @@ Brittany
 *** <<Technology Learning Rates>>
 ***** Introductions to Tech Learning Rates
 ******* TODO [[file:energy.bib::Rubin15techLrnRateElecSply][Rubin et al. 2015: Review Tech Lrn Elec Supply]]
-******* TODO Stat basis for learning rate: [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::Nagy13basPredTechProg][Nagy et al. 2013: Statistical]] (has confidence intervals)
-***** TODO Separate PV component learning rates: [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::][Trancik et al. 2015 Tech Improv Reinf Wind & Solar]]
+******* TODO Stat basis for learning rate: [[file:energy.bib::Nagy13basPredTechProg][Nagy et al. 2013: Statistical]] (has confidence intervals)
+***** TODO Separate PV component learning rates: [[file:energy.bib::][Trancik et al. 2015 Tech Improv Reinf Wind & Solar]]
 ***** TODO [[file:energy.bib::Kavlak18causeCostRedPV][Kavlak et al. 2018: Evaluating cause of PV module cost red]] 
 ***** TODO [[file:energy.bib::Elshurafa18lrnCrvPVbos][Elshurafa et al. 2018: Estimating PV bal of sys TV per country]] (time varying, BOS only)
 ***** TODO [[file:energy.bib::Barbose18trackSunTrendInstPVprice][Barbose et al.: Tracking Sun US PV price Trends]]
@@ -12303,7 +12303,8 @@ Brittany
 ***** [[file:energy.bib::Das08sensSelWorstCase][Das & Kempe 2008: Sensor Selection Minimizing]]
 *** Radar@Sea: [[file:energy.bib::DTU07RadarAtSeaAppB][DTU 2007: Appendix B]]
 ***** look @ [[file:energy.bib::Yiou10precipRegimeCCA][Yiou 2010: Weather]] ?
-*** [[file:~/proj/norsewind/doc/norsewind.org::*%20http%20www%20norsewind%20eu%20public%20index%20html%20NORSEWInD%20website][NORSEWInD]]
+*** NORSEWInD
+    Was in: ~/proj/norsewind/doc/norsewind.org
 *** [[Optimal Spinning Reserve Project]]
 *** US Research initiatives
 ***** DOE labs, 2009
@@ -12393,7 +12394,7 @@ Brittany
 
 ***** CA renewable plans using geothermal backup: [[file:energy.bib::Hart11genProfLrgVarRen][Hart & Jacobson 2011: Monte Carlo]]
 ***** Geothermal cost-efficient for up to 20% of CA C02 reductions: [[file:energy.bib::Hart12co2reduceRenew][Hart & Jacobson 2012]]: The carbon abatement potential of high penetration intermittent renewables
-***** [[https://www.evernote.com/view/112a8f7a-e9b3-44d0-a8d4-98bd2562229f?locale%3Den_US#x%3Dtag:%2522geothermal%2520power%2522][Geothermal Energy’s Promise and Problems]]
+***** [[https://www.evernote.com/view/112a8f7a-e9b3-44d0-a8d4-98bd2562229f?locale%3Den_US#x%3Dtag:%2522geothermal%2520power%2522][Geothermal Energys Promise and Problems]]
 *** Nuclear
 ***** [[file:energy.bib::Pearce09solarNukeIns][Pearce 2009: Increasing PV]] (nuclear insurance subsidies are huge)
 ***** [[file:energy.bib::Abbott11nukeGlbScl][Abbott 2011: Is Nuclear Power Globally Scalable]] (it's not scalable)
@@ -12443,9 +12444,9 @@ Brittany
   - information theoretic :: est. entropy, etc.: /novel/ data increases info content
 
 *** <<Novelty Detection>>
-***** [[https://www.mapr.com/blog/n-novelty-detection-and-news-few-my-favorite-data-science-things][N is for Novelty Detection​]] (books and overview)
+***** [[https://www.mapr.com/blog/n-novelty-detection-and-news-few-my-favorite-data-science-things][N is for Novelty Detection]] (books and overview)
 ***** [[cite:Pimentel14revNovDet][Pimentel et al. 2014]] novelty det. review, mentions graphical models
-***** [[file:c:/Users/sotterson/OneDrive/shareHW/DTU/doc/energy.bib::Gama14conceptDrftSurvey][Gama et al. 2014]] survey concept drift
+***** [[file:energy.bib::Gama14conceptDrftSurvey][Gama et al. 2014]] survey concept drift
 ***** [[file:energy.bib::Dunning14practMachLrnAnom][Dunning & Friedman 2014: Practical Machine Learning]] Anomaly Book
 ***** [[file:energy.bib::Chandola09anomalyDetSurv][Chandola et al. 2009: Anomaly]] det. survey
 ***** [[file:energy.bib::SantosTeixeira10anomSubSpcTrk][Santos & Milidiu 2010: Data]] anomaly detection
@@ -12512,7 +12513,7 @@ Brittany
 
 ********* [[http://cran.r-project.org/web/packages/segmented/segmented.pdf][segmented]]: changes in (generalized) _multivariate regression models_
 *********** *check it out*!
-*********** quick test in [[file:~/proj/dongSpatTemp/segmented_test.R::##%20finding%20breakpoints%20by%20piecewise%20fitting][dongSpatTemp/segmented_test.R]]
+*********** quick test in: ~/proj/dongSpatTemp/segmented_test.R
 *********** no Markov constraints
 ********* [[http://rgm2.lab.nig.ac.jp/RGM2/packages.php?show%3Dall&query%3Dpackage:strucchange][strucchange]]: structural changes in (linear) regression models
 *********** overview paper: [[file:energy.bib::Kleiber02strucchange][Kleiber et al. 2002]]
@@ -12553,7 +12554,7 @@ Brittany
             covariate. _Does this mean linear effects on transition?_
 ********* there may be one related R package for [[Correlation Clustering]]
 ********* [[http://cran.r-project.org/web/packages/ifultools/ifultools.pdf][linearSegmentation {ifultools}]]: straight line seg, angle based
-*********** example [[file:~/proj/dongSpatTemp/plotSegs.R::##%20take%20a%20little%20chunk%20of%20plotRamps.R%20output][dongSpatTemp/plotSegs.R]] (svnRev 352)             :svnRev:
+*********** example ~/proj/dongSpatTemp/plotSegs.R (svnRev 352)      :svnRev:
 *********** monovariate, don't know if I like the angle thing...
 ********* [[http://cran.r-project.org/web/packages/cumSeg/cumSeg.pdf][cumSeg:]] change in multivariate mean
 ********* [[http://cran.r-project.org/web/packages/changepoint/][changepoint]]: mainstream and specialized approaches
@@ -12597,7 +12598,7 @@ Brittany
     An outlier could be any change in the input or output data distributions ([[Dataset Shift]])
 
 ***** [[file:energy.bib::Kull14datasetDriftPttrn][Kull & Flach 2014: Patterns of Dataset Shift]]: what a [[Dataset Shift]] is
-***** [[file:~/OneDrive%20-%20Clean%20Power%20Research/ref/energy.bib::Rabanser19empDatSetShiftDet][Rabanser et al. 2019: Failing Loudly Detect Dataset Shift]] :LongHoriz:WattPlan:MNSP:SolarAnywhere:
+***** [[file:energy.bib::Rabanser19empDatSetShiftDet][Rabanser et al. 2019: Failing Loudly Detect Dataset Shift]] :LongHoriz:WattPlan:MNSP:SolarAnywhere:
 ***** <<Concept Drift Detection>>
 
       [[Concept Drift]] detection would help in ie. recognizing that a new test or train point was not in previous training data. This would be a way to learn and store regimes.  Synonym: [[Dataset Shift]]
@@ -12609,7 +12610,7 @@ Brittany
 ******* [[file:energy.bib::Harang18princUncertDeepNN][Harang & Rudd 2018: Towards Principled Uncertainty]]
 ******* [[file:energy.bib::Laptev17tsExtrmFrcastNNuber][Laptev et al. 2017: Time Extreme Event LSTM Uber]]
 ******* [[https://www.google.com/search?q%3Dknn%2Bwith%2Bconcept%2Bdrift&ie%3Dutf-8&oe%3Dutf-8&aq%3Dt&rls%3Dorg.mozilla:en-US:official&client%3Dfirefox-a#q%3Drecurring%2Bconcept%2Bdrift&rls%3Dorg.mozilla:en-US:official&spell%3D1][lots of papers]] on recurring concept drift (like regime learning)
-******* [[file:c:/Users/sotterson/OneDrive/shareHW/DTU/doc/energy.bib::Gama14conceptDrftSurvey][Gama et al. 2014]] survey concept drift
+******* [[file:energy.bib::Gama14conceptDrftSurvey][Gama et al. 2014]] survey concept drift
 ******* see: [[Trend Copulas]]
 ******* Use [[Local Transfer Entropy & Differential Entropy]] to notice model change?
 ******* see also: [[Transfer Learning]]
@@ -13097,12 +13098,12 @@ optimization to be a generalization of linear programming.
 ********* I think the matlab CVX toolbox is [[http://cvxr.com/cvx/][here]], including a [[http://cvxr.com/news/2014/02/cvx-demo-video/][video demo]]
 ******* [[https://class.stanford.edu/courses/Engineering/CVX101/Winter2014/courseware/7206c57866504e83821d00b5d3f80793/a87df9fb325c4bf49c3cd10a1681a6eb/][video lectures]] w/ quizzes here
 ******* [[http://www.stanford.edu/class/ee364a/lectures.html][EE364a slides]] are [[https://class.stanford.edu/courses/Engineering/CVX101/Winter2014/discussion/forum/i4x-edx-templates-course-Empty/threads/52dd6109e37bb299e100000b][said to be identical]] to the [[https://class.stanford.edu/courses/Engineering/CVX101/Winter2014/pdfbook/1/][CVX101 slides]]
-        I've put them my Dropbox [[file:d:/Users/sotterson/OneDrive/shareHW/school/EE364-CVX101][here]]
+        I've put them my Dropbox here: d:/Users/sotterson/OneDrive/shareHW/school/EE364-CVX101
 ******* homework solutions [[https://class.stanford.edu/courses/Engineering/CVX101/Winter2014/discussion/forum/i4x-Engineering-CVX101-course-material/threads/532d5859aacd7bb967000008][supposedly]] are on coursware page ([[https://class.stanford.edu/courses/Engineering/CVX101/Winter2014/progress][they are]], search for Homework)
 ******* reading assignments are in 1st tab of homework e.g. [[https://class.stanford.edu/courses/Engineering/CVX101/Winter2014/courseware/996fc6463eed4bce9c972cf07aa308e3/c7294df06bda4449a6d7fe035ae648b2/][here]]
 ******* login info [[https://mail.google.com/mail/u/0/?shva%3D1#inbox/145f15cf0e60b5f8][here]]
 ******* My CVX101 Progress
-        Slides are in my Dropbox [[file:d:/Users/sotterson/OneDrive/shareHW/school/EE364-CVX101][here]]
+        Slides are in my Dropbox here: d:/Users/sotterson/OneDrive/shareHW/school/EE364-CVX101
         Chapter 1
 ***** Book: [[http://www.amazon.com/exec/obidos/tg/detail/-/0521833787?tag%3Drealtimecolli-20][Convex Optimization]]
       Stephen Boyd and Lieven Vandenberghe.  2004
@@ -13207,8 +13208,8 @@ optimization to be a generalization of linear programming.
              [[file:energy.bib::Fuentes05spaceTimeStructWind][Fuentes et al. 2005: Modeling and predicting]]
              [[file:energy.bib::Siebert08regPowForecast][Siebert 2008: Development of methods]]
     01/28/09 [[file:energy.bib::Dijck06speedFeatSelMutInf][Dijck & Hulle 2006: Speeding Up Wrapper]]
-    02/10/09 [[file:energy.bib::Francois06permTestMutInf][François et al. 2006: permutation test for]]
-             [[file:energy.bib::Francois07resampParamFreeFeatSel][François et al. 2007: Resampling methods for]]
+    02/10/09 [[file:energy.bib::Francois06permTestMutInf][Francois et al. 2006: permutation test for]]
+             [[file:energy.bib::Francois07resampParamFreeFeatSel][Francois et al. 2007: Resampling methods for]]
              [[file:energy.bib::ElGohary07causWhiteCorr][El-Gohary & McNames 2007: Establishing Causality With]]
     02/12/09 [[file:energy.bib::Winker00multiVarLagSel][Winker 2000: Optimized Multivariate Lag Structure Selection]]
     [[file:energy.bib::Huang06inputSelStockForecast][         Huang et al. 2006: New Computational Method]]
@@ -13234,7 +13235,7 @@ optimization to be a generalization of linear programming.
     03/31/09 [[file:energy.bib::BPA09gapsPrelimNeedAssmnt][BPA 2009: Checking for gaps]]
     04/08/09 [[file:energy.bib::Hering08spaceTimeWindFrcstSlides][Hering & Genton 2008: Powering Up with]]
     05/15/09 [[file:energy.bib::Simpson01estSigXcorrMiss][Simpson et al. 2001: Estimation and significance]]
-    06/18/09 [[file:energy.bib::Selen08layLinRgrOrder][Selén & Larsson 2008: Empirical Bayes linear]]
+    06/18/09 [[file:energy.bib::Selen08layLinRgrOrder][Selen & Larsson 2008: Empirical Bayes linear]]
     08/13/09 [[file:energy.bib::Guyon03introFeatSel][Guyon & Elisseeff 2003]]
     09/01/09 [[file:energy.bib::Simonoff09transfRegrsn][Simonoff 2009: Transformations]]
     05/20/10 [[file:energy.bib::Oldroyd07norsewindProp][Oldroyd 2007: Northern Seas Wind]] (NORSEWInD description)
@@ -13274,7 +13275,7 @@ optimization to be a generalization of linear programming.
              [[file:energy.bib::SenGupta106asymmCircLinRgrsn][SenGupta & Ugwuowo 2006: Asymmetric]] (asymmetric angular regression)
     09/18/10 [[file:energy.bib::Sernelius10laplacePoisson][Sernelius 2010: Laplaces Poissons]] (cylindrical/spherical harmonics)
     [[file:energy.bib::Padoan083dHarmLect2][         Padoan 2008: Laplaces]] (3D cylindrical/spherical harmonics)
-    11/04/10 [[file:energy.bib::Jonsson10spinRsrv][J´onsson et al. 2010: Allocation Deployment Spinning Reserves]]
+    11/04/10 [[file:energy.bib::Jonsson10spinRsrv][Jonsson et al. 2010: Allocation Deployment Spinning Reserves]]
     11/16/10 [[file:energy.bib::Ramsay09registrAlignFDA][Ramsay et al. 2009: Registration]] (alignment w/ sep. phase, amp errs)
              [[file:energy.bib::Kneip08regFitFuncMod][Kneip & Ramsay 2008: Combining]]
              [[file:energy.bib::Ramsay08funcAnalNotes][Ramsay 2008: Notes Functional]]
