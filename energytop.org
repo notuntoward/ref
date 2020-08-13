@@ -1493,6 +1493,9 @@
       > net = newff(PR,[S1 S2...SNl],{TF1 TF2...TFNl},'trainbr')
 *** [[Penalized%20Splines][Penalized Splines]]
 *** Slope based regularization (not in toolbox): [[file:energy.bib::Razavi11newFormNN][Razavi & Tolson 2011: New Formulation Feedforward Neural Networks]]
+*** Dropout Regularization
+***** <<LSTM dropout for conf intervals>>
+      See [[https://www.evernote.com/l/AA3e22epgj1PkI8f_ccoc09bWo9rtV2sEpk/][How to generate neural network confidence intervals with Keras]]
 *** [[Ridge Regression]]
 *** <<Tikhonov Regularization>>
 ***** [[file:energy.bib::Wikipedia15tikhreg][Wikipedia 2015: Tikhonov]] reg.
@@ -2242,6 +2245,9 @@ Scott
 ***** TODO <<Probabilistic Deep Learning>>
 ******* TODO [[file:energy.bib::Rippel13highDimProbDeepNN][Rippel & Adams 2013: High Dimensional Probability]]: invertible, deep learning
 ******* [[cite:Pathak15cnstrnStructCNN][Pathak et al. 2015: Constrained conv NN prob output]]
+******* [[LSTM dropout for conf intervals]]
+******* [[file:energy.bib::Laptev17tsExtrmFrcastNNuber][Laptev et al. 2017: Time Extreme Event LSTM Uber]]
+        Also: [[https://www.evernote.com/l/AA26fzCsOZRPb5EbvOLm4aMbjZTbYbyiGzI/][Engineering Uncertainty Estimation in Neural Networks for Time Series Predict...]]
 ******* also [[Deep Sequence Learning for Time Series Forecasting]]
 ***** TODO [[http://lamda.nju.edu.cn/weixs/project/CNNTricks/CNNTricks.html][Must Know Tips/Tricks in Deep Neural Networks]]
 ******* [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]
@@ -2250,7 +2256,6 @@ Scott
 ******* [[cite:Zhang15windSpdFrcstPDBM][Zhang et al. 2015: Predictive Deep Boltzmann Mach. Wind Spd Frcst]]
 ******* [[cite:Malhotra15lstmAnomDetTS][Malhotra et al. 2015: LSTM TimeSer Anom. Det: Kalman could be Copula]]
 ******* [[cite:Yu17gnrcTrafFrcstExtrnRNNlstm][Yu et al. 2017: Deep Learning Generic Extrm Traffic RNN LSTM]]
-******* [[file:energy.bib::Laptev17tsExtrmFrcastNNuber][Laptev et al. 2017: Time Extreme Event LSTM Uber]]
 ***** TODO <<Deep Learning Time Series Prediction>>
 ******* [[cite:Sergio15DeepLrnWindFrcst][Sergio & Ludermir 2015: Deep Learning Wind DBN]]
 ******* [[cite:Zhang15windSpdFrcstPDBM][Zhang et al. 2015: Predictive Deep Boltzmann Mach. Wind Spd Frcst]]
@@ -3438,6 +3443,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 *************** [[JIDT: Java Information Dynamics Toolkit]]: Kraskov extensions
 *************** [[file:energy.bib::Szabo13infoTheoEstTlbx][Szabo 2013: Information Theoretical Estimators ITE Toolbox]] I think.  Matlab, many, many info functions and subspace models
 ************* <<Kraskov-like MI in Python>>
+*************** [[https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.mutual_info_classif.html][sklearn.feature_selection.mutual_info_classif]] (Kraskov exactly, I think)
 *************** [[https://github.com/gregversteeg/NPEET][GitHub - gregversteeg/NPEET: Non-parametric Entropy Estimation Toolbox]]
 *************** [[https://github.com/BiuBiuBiLL/NPEET_LNC][GitHub - BiuBiuBiLL/NPEET_LNC: local non-uniformity correction for mutual inf...]]
 *************** [[https://github.com/pwollstadt/IDTxl][GitHub - pwollstadt/IDTxl]]
