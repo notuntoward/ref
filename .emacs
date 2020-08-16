@@ -1638,9 +1638,9 @@ TODO: make this a general function."
   (when autopep8bin (use-package py-autopep8))
 
   ;; So C-c i generates a python function/method stub from symbol at point
-  (use-package elpygen ; seems to be separate from elpy, despite the name
-    :config
-    (define-key python-mode-map (kbd "C-c i") 'elpygen-implement))
+  ;; (use-package elpygen ; seems to be separate from elpy, despite the name
+  ;;   :config
+  ;;   (define-key python-mode-map (kbd "C-c i") 'elpygen-implement))
 
   ;; for Python mode comment filling
   ;; https://stackoverflow.com/questions/2214199/how-to-use-emacs-to-write-comments-with-proper-indentation-line-length-and-wra
@@ -1685,90 +1685,91 @@ TODO: make this a general function."
       (sdo/kill-python-console))
     (elpy-shell-send-region-or-buffer-and-go t))
     
-  (use-package elpy
-    :defer t
-    :diminish elpy-mode
-    ;; Bind global "make" key to "C-u the command below" This runs
-    ;; the region or whole .py buffer in a (possibly newly made) *Python*
-    ;; console buffer, and then moves the cursor there.
-    :bind ("<f8>" . (lambda () (interactive) (elpy-shell-send-region-or-buffer-and-go t)))
-    :bind ("<S-f8>" . sdo/run-python-clean-as-possible)
-    :bind ("<M-f8>" . (lambda () (interactive) (realgud:pdb))) ; :ipdb, :trepan, :gdb ?
-    :init
-    (elpy-enable)
-    ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?):
-    ;; https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
-    ;; conda install -c anaconda jupyter_console 
-    (sdo/find-exec "jupyter-console" "Elpy is set up to use this")
-    (setq python-shell-interpreter "jupyter"
-          python-shell-interpreter-args "console --simple-prompt"
-          python-shell-prompt-detect-failure-warning nil)
-    (add-to-list 'python-shell-completion-native-disabled-interpreters
-                 "jupyter")
+  ;; (use-package elpy
+  ;;   :defer t
+  ;;   :diminish elpy-mode
+  ;;   ;; Bind global "make" key to "C-u the command below" This runs
+  ;;   ;; the region or whole .py buffer in a (possibly newly made) *Python*
+  ;;   ;; console buffer, and then moves the cursor there.
+  ;;   :bind ("<f8>" . (lambda () (interactive) (elpy-shell-send-region-or-buffer-and-go t)))
+  ;;   :bind ("<S-f8>" . sdo/run-python-clean-as-possible)
+  ;;   :bind ("<M-f8>" . (lambda () (interactive) (realgud:pdb))) ; :ipdb, :trepan, :gdb ?
+  ;;   :init
+  ;;   (elpy-enable)
+  ;;   ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?):
+  ;;   ;; https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
+  ;;   ;; conda install -c anaconda jupyter_console 
+  ;;   (sdo/find-exec "jupyter-console" "Elpy is set up to use this")
+  ;;   (setq python-shell-interpreter "jupyter"
+  ;;         python-shell-interpreter-args "console --simple-prompt"
+  ;;         python-shell-prompt-detect-failure-warning nil)
+  ;;   (add-to-list 'python-shell-completion-native-disabled-interpreters
+  ;;                "jupyter")
 
-    ;; use flycheck, not elpy's flymake
-    ;; (https://realpython.com/blog/python/emacs-the-best-python-editor/
-    ;;  https://elpy.readthedocs.io/en/latest/customization_tips.html)
-    ;; I don't think I'm seeing much flycheck output
-    (if (require 'flycheck nil t)
-        (progn (message "found emacs flycheck package")
-               (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-               (add-hook 'elpy-mode-hook 'flycheck-mode)
-               (flycheck-pos-tip-mode)
-               (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-               )
-      (warn "elpy didn't find flycheck emacs package"))
+  ;;   ;; use flycheck, not elpy's flymake
+  ;;   ;; (https://realpython.com/blog/python/emacs-the-best-python-editor/
+  ;;   ;;  https://elpy.readthedocs.io/en/latest/customization_tips.html)
+  ;;   ;; I don't think I'm seeing much flycheck output
+  ;;   (if (require 'flycheck nil t)
+  ;;       (progn (message "found emacs flycheck package")
+  ;;              (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  ;;              (add-hook 'elpy-mode-hook 'flycheck-mode)
+  ;;              (flycheck-pos-tip-mode)
+  ;;              (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  ;;              )
+  ;;     (warn "elpy didn't find flycheck emacs package"))
 
-    ;; Enable emacs 26 flymake indicators in an otherwise light
-    ;; modeline
-    ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
-    (setq elpy-remove-modeline-lighter t)
-    (advice-add 'elpy-modules-remove-modeline-lighter
-                :around (lambda (fun &rest args)
-                          (unless (eq (car args) 'flymake-mode)
-                            (apply fun args))))
+  ;;   ;; Enable emacs 26 flymake indicators in an otherwise light
+  ;;   ;; modeline
+  ;;   ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
+  ;;   (setq elpy-remove-modeline-lighter t)
+  ;;   (advice-add 'elpy-modules-remove-modeline-lighter
+  ;;               :around (lambda (fun &rest args)
+  ;;                         (unless (eq (car args) 'flymake-mode)
+  ;;                           (apply fun args))))
 
-    ;; Better "M-.":
-    ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
-    (defun elpy-goto-definition-or-rgrep ()
-      "Go to the definition of the symbol at point, if found. Otherwise, run `elpy-rgrep-symbol'."
-      (interactive)
-      (ring-insert find-tag-marker-ring (point-marker))
-      (condition-case nil (elpy-goto-definition)
-        (error (elpy-rgrep-symbol
-                (concat "\\(def\\|class\\)\s" (thing-at-point 'symbol) "(")))))
-    (define-key elpy-mode-map (kbd "M-.") 'elpy-goto-definition-or-rgrep)
+  ;;   ;; Better "M-.":
+  ;;   ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
+  ;;   (defun elpy-goto-definition-or-rgrep ()
+  ;;     "Go to the definition of the symbol at point, if found. Otherwise, run `elpy-rgrep-symbol'."
+  ;;     (interactive)
+  ;;     (ring-insert find-tag-marker-ring (point-marker))
+  ;;     (condition-case nil (elpy-goto-definition)
+  ;;       (error (elpy-rgrep-symbol
+  ;;               (concat "\\(def\\|class\\)\s" (thing-at-point 'symbol) "(")))))
+  ;;   (define-key elpy-mode-map (kbd "M-.") 'elpy-goto-definition-or-rgrep)
 
-    ;; Enable full font locking of inputs in the python shell
-    ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
-    ;; I can't see that this does anything
-    (advice-add 'elpy-shell--insert-and-font-lock
-                :around (lambda (f string face &optional no-font-lock)
-                          (if (not (eq face 'comint-highlight-input))
-                              (funcall f string face no-font-lock)
-                            (funcall f string face t)
-                            (python-shell-font-lock-post-command-hook))))
+  ;;   ;; Enable full font locking of inputs in the python shell
+  ;;   ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
+  ;;   ;; I can't see that this does anything
+  ;;   (advice-add 'elpy-shell--insert-and-font-lock
+  ;;               :around (lambda (f string face &optional no-font-lock)
+  ;;                         (if (not (eq face 'comint-highlight-input))
+  ;;                             (funcall f string face no-font-lock)
+  ;;                           (funcall f string face t)
+  ;;                           (python-shell-font-lock-post-command-hook))))
 
-    (advice-add 'comint-send-input
-                :around (lambda (f &rest args)
-                          (if (eq major-mode 'inferior-python-mode)
-                              (cl-letf ((g (symbol-function 'add-text-properties))
-                                        ((symbol-function 'add-text-properties)
-                                         (lambda (start end properties &optional object)
-                                           (unless (eq (nth 3 properties) 'comint-highlight-input)
-                                             (funcall g start end properties object)))))
-                                (apply f args))
-                            (apply f args))))    
-    ;; code tidy when save
-    (if autopep8bin
-        (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+  ;;   (advice-add 'comint-send-input
+  ;;               :around (lambda (f &rest args)
+  ;;                         (if (eq major-mode 'inferior-python-mode)
+  ;;                             (cl-letf ((g (symbol-function 'add-text-properties))
+  ;;                                       ((symbol-function 'add-text-properties)
+  ;;                                        (lambda (start end properties &optional object)
+  ;;                                          (unless (eq (nth 3 properties) 'comint-highlight-input)
+  ;;                                            (funcall g start end properties object)))))
+  ;;                               (apply f args))
+  ;;                           (apply f args))))    
+
+  ;; ;; code tidy when save
+  ;;   (if autopep8bin
+  ;;       (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
     
-    ;; Undo ely's override of C-arrowkeys
-    ;; https://github.com/jorgenschaefer/elpy/issues/1188
-    (eval-after-load "elpy"
-      '(cl-dolist (key '("C-<up>" "C-<down>" "C-<left>" "C-<right>"))
-         (define-key elpy-mode-map (kbd key) nil)))
-    )
+  ;;   ;; Undo ely's override of C-arrowkeys
+  ;;   ;; https://github.com/jorgenschaefer/elpy/issues/1188
+  ;;   (eval-after-load "elpy"
+  ;;     '(cl-dolist (key '("C-<up>" "C-<down>" "C-<left>" "C-<right>"))
+  ;;        (define-key elpy-mode-map (kbd key) nil)))
+  ;;   )
 
   ;; *** EIN
   ;; TODO: figure out plot scaling.  Once imagemagick hack is here:
@@ -1990,8 +1991,10 @@ is already narrowed."
       (setq
        org_roam_dir (expand-file-name "DOE_brainstorm" docDir)
        org_notes_dir (expand-file-name "org-notes" org_roam_dir)
-       bibfile_roam_fnms (list (expand-file-name "deepSolarDOE.bib" org_roam_dir)
-                               (expand-file-name "deepSolarDOE.bib" org_roam_dir))
+       bibfile_roam_fnms (list (expand-file-name
+                                "deepSolarDOE.bib" org_roam_dir)
+                               (expand-file-name
+                                "newTechAdopt.bib" org_roam_dir))
        bibfile_roam_pdf_dir (expand-file-name "papers" org_roam_dir)
        org_ref_notes_dir (expand-file-name "bib-notes" org_roam_dir)
        org_ref_notes_fn (expand-file-name "DOE_brainstorm.org" org_roam_dir)
@@ -2000,7 +2003,7 @@ is already narrowed."
        ))
   (progn
     (message "org-roam style init")
-    ;; simillar ot idea in https://rgoswami.me/posts/org-note-workflow/
+    ;; simillar to idea in https://rgoswami.me/posts/org-note-workflow/
     (setq
      org_roam_dir (expand-file-name "org_roam" docDir)
      org_notes_dir (expand-file-name "org_notes" org_roam_dir)
@@ -2014,7 +2017,8 @@ is already narrowed."
 
 ;; Users of this require that it really be a list, even if only one item
 (setq bibfile_list bibfile_roam_fnms) ;; helm-bibtex slow w/ energy.bib
-(setq bibpdf_list (list bibfile_roam_pdf_dir)) ;; helm-bibtex slow w/ energy.bib
+;; but include pdfs in energy.bib so it can find pdfs if visited manually
+(setq bibpdf_list (list bibfile_energy_pdf_dir bibfile_roam_pdf_dir)) 
 
 ;; ** Org-download
 
@@ -2482,7 +2486,7 @@ This function avoids making messed up targets by exiting without doing anything 
 
   ;; ;; showing broken links slowed down energytop.org (but much less in Oct. 2017)
   ;; ;;  https://github.com/jkitchin/org-ref/issues/468
-  (setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
+  ;;(setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
   :config
   (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
   ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
