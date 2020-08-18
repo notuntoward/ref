@@ -1685,91 +1685,91 @@ TODO: make this a general function."
       (sdo/kill-python-console))
     (elpy-shell-send-region-or-buffer-and-go t))
     
-  ;; (use-package elpy
-  ;;   :defer t
-  ;;   :diminish elpy-mode
-  ;;   ;; Bind global "make" key to "C-u the command below" This runs
-  ;;   ;; the region or whole .py buffer in a (possibly newly made) *Python*
-  ;;   ;; console buffer, and then moves the cursor there.
-  ;;   :bind ("<f8>" . (lambda () (interactive) (elpy-shell-send-region-or-buffer-and-go t)))
-  ;;   :bind ("<S-f8>" . sdo/run-python-clean-as-possible)
-  ;;   :bind ("<M-f8>" . (lambda () (interactive) (realgud:pdb))) ; :ipdb, :trepan, :gdb ?
-  ;;   :init
-  ;;   (elpy-enable)
-  ;;   ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?):
-  ;;   ;; https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
-  ;;   ;; conda install -c anaconda jupyter_console 
-  ;;   (sdo/find-exec "jupyter-console" "Elpy is set up to use this")
-  ;;   (setq python-shell-interpreter "jupyter"
-  ;;         python-shell-interpreter-args "console --simple-prompt"
-  ;;         python-shell-prompt-detect-failure-warning nil)
-  ;;   (add-to-list 'python-shell-completion-native-disabled-interpreters
-  ;;                "jupyter")
+  (use-package elpy
+    :defer t
+    :diminish elpy-mode
+    ;; Bind global "make" key to "C-u the command below" This runs
+    ;; the region or whole .py buffer in a (possibly newly made) *Python*
+    ;; console buffer, and then moves the cursor there.
+    :bind ("<f8>" . (lambda () (interactive) (elpy-shell-send-region-or-buffer-and-go t)))
+    :bind ("<S-f8>" . sdo/run-python-clean-as-possible)
+    :bind ("<M-f8>" . (lambda () (interactive) (realgud:pdb))) ; :ipdb, :trepan, :gdb ?
+    :init
+    (elpy-enable)
+    ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?):
+    ;; https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
+    ;; conda install -c anaconda jupyter_console 
+    (sdo/find-exec "jupyter-console" "Elpy is set up to use this")
+    (setq python-shell-interpreter "jupyter"
+          python-shell-interpreter-args "console --simple-prompt"
+          python-shell-prompt-detect-failure-warning nil)
+    (add-to-list 'python-shell-completion-native-disabled-interpreters
+                 "jupyter")
 
-  ;;   ;; use flycheck, not elpy's flymake
-  ;;   ;; (https://realpython.com/blog/python/emacs-the-best-python-editor/
-  ;;   ;;  https://elpy.readthedocs.io/en/latest/customization_tips.html)
-  ;;   ;; I don't think I'm seeing much flycheck output
-  ;;   (if (require 'flycheck nil t)
-  ;;       (progn (message "found emacs flycheck package")
-  ;;              (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  ;;              (add-hook 'elpy-mode-hook 'flycheck-mode)
-  ;;              (flycheck-pos-tip-mode)
-  ;;              (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  ;;              )
-  ;;     (warn "elpy didn't find flycheck emacs package"))
+    ;; use flycheck, not elpy's flymake
+    ;; (https://realpython.com/blog/python/emacs-the-best-python-editor/
+    ;;  https://elpy.readthedocs.io/en/latest/customization_tips.html)
+    ;; I don't think I'm seeing much flycheck output
+    (if (require 'flycheck nil t)
+        (progn (message "found emacs flycheck package")
+               (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+               (add-hook 'elpy-mode-hook 'flycheck-mode)
+               (flycheck-pos-tip-mode)
+               (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+               )
+      (warn "elpy didn't find flycheck emacs package"))
 
-  ;;   ;; Enable emacs 26 flymake indicators in an otherwise light
-  ;;   ;; modeline
-  ;;   ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
-  ;;   (setq elpy-remove-modeline-lighter t)
-  ;;   (advice-add 'elpy-modules-remove-modeline-lighter
-  ;;               :around (lambda (fun &rest args)
-  ;;                         (unless (eq (car args) 'flymake-mode)
-  ;;                           (apply fun args))))
+    ;; Enable emacs 26 flymake indicators in an otherwise light
+    ;; modeline
+    ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
+    (setq elpy-remove-modeline-lighter t)
+    (advice-add 'elpy-modules-remove-modeline-lighter
+                :around (lambda (fun &rest args)
+                          (unless (eq (car args) 'flymake-mode)
+                            (apply fun args))))
 
-  ;;   ;; Better "M-.":
-  ;;   ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
-  ;;   (defun elpy-goto-definition-or-rgrep ()
-  ;;     "Go to the definition of the symbol at point, if found. Otherwise, run `elpy-rgrep-symbol'."
-  ;;     (interactive)
-  ;;     (ring-insert find-tag-marker-ring (point-marker))
-  ;;     (condition-case nil (elpy-goto-definition)
-  ;;       (error (elpy-rgrep-symbol
-  ;;               (concat "\\(def\\|class\\)\s" (thing-at-point 'symbol) "(")))))
-  ;;   (define-key elpy-mode-map (kbd "M-.") 'elpy-goto-definition-or-rgrep)
+    ;; Better "M-.":
+    ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
+    (defun elpy-goto-definition-or-rgrep ()
+      "Go to the definition of the symbol at point, if found. Otherwise, run `elpy-rgrep-symbol'."
+      (interactive)
+      (ring-insert find-tag-marker-ring (point-marker))
+      (condition-case nil (elpy-goto-definition)
+        (error (elpy-rgrep-symbol
+                (concat "\\(def\\|class\\)\s" (thing-at-point 'symbol) "(")))))
+    (define-key elpy-mode-map (kbd "M-.") 'elpy-goto-definition-or-rgrep)
 
-  ;;   ;; Enable full font locking of inputs in the python shell
-  ;;   ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
-  ;;   ;; I can't see that this does anything
-  ;;   (advice-add 'elpy-shell--insert-and-font-lock
-  ;;               :around (lambda (f string face &optional no-font-lock)
-  ;;                         (if (not (eq face 'comint-highlight-input))
-  ;;                             (funcall f string face no-font-lock)
-  ;;                           (funcall f string face t)
-  ;;                           (python-shell-font-lock-post-command-hook))))
+    ;; Enable full font locking of inputs in the python shell
+    ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
+    ;; I can't see that this does anything
+    (advice-add 'elpy-shell--insert-and-font-lock
+                :around (lambda (f string face &optional no-font-lock)
+                          (if (not (eq face 'comint-highlight-input))
+                              (funcall f string face no-font-lock)
+                            (funcall f string face t)
+                            (python-shell-font-lock-post-command-hook))))
 
-  ;;   (advice-add 'comint-send-input
-  ;;               :around (lambda (f &rest args)
-  ;;                         (if (eq major-mode 'inferior-python-mode)
-  ;;                             (cl-letf ((g (symbol-function 'add-text-properties))
-  ;;                                       ((symbol-function 'add-text-properties)
-  ;;                                        (lambda (start end properties &optional object)
-  ;;                                          (unless (eq (nth 3 properties) 'comint-highlight-input)
-  ;;                                            (funcall g start end properties object)))))
-  ;;                               (apply f args))
-  ;;                           (apply f args))))    
+    (advice-add 'comint-send-input
+                :around (lambda (f &rest args)
+                          (if (eq major-mode 'inferior-python-mode)
+                              (cl-letf ((g (symbol-function 'add-text-properties))
+                                        ((symbol-function 'add-text-properties)
+                                         (lambda (start end properties &optional object)
+                                           (unless (eq (nth 3 properties) 'comint-highlight-input)
+                                             (funcall g start end properties object)))))
+                                (apply f args))
+                            (apply f args))))    
 
-  ;; ;; code tidy when save
-  ;;   (if autopep8bin
-  ;;       (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+  ;; code tidy when save
+    (if autopep8bin
+        (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
     
-  ;;   ;; Undo ely's override of C-arrowkeys
-  ;;   ;; https://github.com/jorgenschaefer/elpy/issues/1188
-  ;;   (eval-after-load "elpy"
-  ;;     '(cl-dolist (key '("C-<up>" "C-<down>" "C-<left>" "C-<right>"))
-  ;;        (define-key elpy-mode-map (kbd key) nil)))
-  ;;   )
+    ;; Undo ely's override of C-arrowkeys
+    ;; https://github.com/jorgenschaefer/elpy/issues/1188
+    (eval-after-load "elpy"
+      '(cl-dolist (key '("C-<up>" "C-<down>" "C-<left>" "C-<right>"))
+         (define-key elpy-mode-map (kbd key) nil)))
+    )
 
   ;; *** EIN
   ;; TODO: figure out plot scaling.  Once imagemagick hack is here:
