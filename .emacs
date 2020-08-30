@@ -2519,53 +2519,53 @@ This function avoids making messed up targets by exiting without doing anything 
 ;;
 ;; TODO remove leading date string from new note format 
 ;;
-;; *** Org-roam basic config
-;;As of 5/23/20, the best docs are in emacs info or here: https://org-roam.github.io/org-roam/manual/
+;; ;; *** Org-roam basic config
+;; ;;As of 5/23/20, the best docs are in emacs info or here: https://org-roam.github.io/org-roam/manual/
 
-(sdo/find-exec "dot" "graphviz needed by org-roam")
+;; (sdo/find-exec "dot" "graphviz needed by org-roam")
 
-;; If using sqlite3 (only thing I could get working on Windows), then, as of 5/23/20, must edit org-roam-db.el and recompile every time it org-roam updates.  Instructions are:
-;; 1. In Emacs, install the emacsql-sqlite3 package
-;; 2. Modify org-roam-db.el:
-;;    - Replace (require 'emacsql-sqlite) with (require 'emacsql-sqlite3)
-;;    - Comment/deactivate the complete (defconst org-roam-db--sqlite-available-p ... )
-;;    -In (defun org-roam-db ..., replace emacsql-sqlite with emacsql-sqlite3
-;; 3. Compile org-roam-db.el (keep modified .el file in same dir too)
-;; From: https://org-roam.readthedocs.io/en/master/installation/
+;; ;; If using sqlite3 (only thing I could get working on Windows), then, as of 5/23/20, must edit org-roam-db.el and recompile every time it org-roam updates.  Instructions are:
+;; ;; 1. In Emacs, install the emacsql-sqlite3 package
+;; ;; 2. Modify org-roam-db.el:
+;; ;;    - Replace (require 'emacsql-sqlite) with (require 'emacsql-sqlite3)
+;; ;;    - Comment/deactivate the complete (defconst org-roam-db--sqlite-available-p ... )
+;; ;;    -In (defun org-roam-db ..., replace emacsql-sqlite with emacsql-sqlite3
+;; ;; 3. Compile org-roam-db.el (keep modified .el file in same dir too)
+;; ;; From: https://org-roam.readthedocs.io/en/master/installation/
 
-(sdo/find-exec "sqlite3" "sqlite3 needed by org-roam")
-(use-package emacsql-sqlite3)
+;; (sdo/find-exec "sqlite3" "sqlite3 needed by org-roam")
+;; (use-package emacsql-sqlite3)
 
-;; my config, bugfixed version of:
-;; https://org-roam.readthedocs.io/en/master/installation/
-(use-package org-roam
-  :custom
-  ;;  (org-roam-directory "~/tmp/org-roam")
-  ;; JK's OR brain
-  ;;  (org-roam-directory "~/tmp/braindump-master/org")
-  (org-roam-directory org_roam_dir)
-  ;; Put org-roam.db outside of OneDrive, avoids sync problems across machines
-  (org-roam-db-location "~/org-roam.db")
-  ;; Note that Windows "find" interferes with linux find, so use rg instead
-  ;; HOWEVER, the rg interface broke the graph, as of 5/29/20
-  ;; But maybe 'rg' is always ignored when on Windows now?
-  (org-roam-list-files-commands '(rg)) ;; use ripgrip, expand emacs to see graph
-  ;;  (org-roam-list-files-commands nil) ;; elisp default, but rg now works on Windows
-  :config (org-roam-mode)
-  :bind (:map org-roam-mode-map
-              (("C-c n l" . org-roam)
-               ("C-c n f" . org-roam-find-file)
-               ("C-c n j" . org-roam-jump-to-index)
-               ("C-c n b" . org-roam-switch-to-buffer)
-               ("C-c n g" . org-roam-graph))
-              :map org-mode-map
-              (("C-c n i" . org-roam-insert))))
+;; ;; my config, bugfixed version of:
+;; ;; https://org-roam.readthedocs.io/en/master/installation/
+;; (use-package org-roam
+;;   :custom
+;;   ;;  (org-roam-directory "~/tmp/org-roam")
+;;   ;; JK's OR brain
+;;   ;;  (org-roam-directory "~/tmp/braindump-master/org")
+;;   (org-roam-directory org_roam_dir)
+;;   ;; Put org-roam.db outside of OneDrive, avoids sync problems across machines
+;;   (org-roam-db-location "~/org-roam.db")
+;;   ;; Note that Windows "find" interferes with linux find, so use rg instead
+;;   ;; HOWEVER, the rg interface broke the graph, as of 5/29/20
+;;   ;; But maybe 'rg' is always ignored when on Windows now?
+;;   (org-roam-list-files-commands '(rg)) ;; use ripgrip, expand emacs to see graph
+;;   ;;  (org-roam-list-files-commands nil) ;; elisp default, but rg now works on Windows
+;;   :config (org-roam-mode)
+;;   :bind (:map org-roam-mode-map
+;;               (("C-c n l" . org-roam)
+;;                ("C-c n f" . org-roam-find-file)
+;;                ("C-c n j" . org-roam-jump-to-index)
+;;                ("C-c n b" . org-roam-switch-to-buffer)
+;;                ("C-c n g" . org-roam-graph))
+;;               :map org-mode-map
+;;               (("C-c n i" . org-roam-insert))))
 
-;; I don't know how to activate it like the github animated git shows
-;; (use-package company-org-roam
-;; ;;  :straight (:host github :repo "org-roam/company-org-roam")
-;;   :config
-;;   (push 'company-org-roam company-backends))
+;; ;; I don't know how to activate it like the github animated git shows
+;; ;; (use-package company-org-roam
+;; ;; ;;  :straight (:host github :repo "org-roam/company-org-roam")
+;; ;;   :config
+;; ;;   (push 'company-org-roam company-backends))
 
 ;; *** Org-roam-tags
 
@@ -2633,47 +2633,47 @@ This function avoids making messed up targets by exiting without doing anything 
   (setq bibtex-completion-notes-symbol "✎"))
 
 
-;; *** org-roam-bibtex
+;; ;; *** org-roam-bibtex
 
-;; Handy: to open a cite note's pdf: C-c n a RET
-;;From github page: https://github.com/org-roam/org-roam-bibtex
-(use-package org-roam-bibtex
-  :after org-roam
-  :hook (org-roam-mode . org-roam-bibtex-mode)
-  :bind (:map org-mode-map
-              (("C-c n a" . orb-note-actions))))
-
-
-;; NOTE the below don't take effect unless you've run M-x org-roam-bibtex-mode or customize it to ON
-;;
-;; BUG below: I removed the heading: "* {title}" or something like that from the orb-template, but org-noter must be started on a heading, for some stupid reason, so when I try to run it, it asks for some file and I don't what what it wants.  Didn't do that before I removed the heading.
-;;
-;;From github page: https://github.com/org-roam/org-roam-bibtex
-;; This works with org-noter.  If you're in the org-roam-cite note, and run org-noter, it will set things up correctly.  Two cautions
-;; 1. must put cursor in headline (required) before M-x org-noter
-;; 2. I =think= you have to save (C-c C-n?) the new helm-bibtex capture b/f running org-noter
-(setq orb-preformat-keywords
-      '(("citekey" . "=key=") "title" "url" "file" "author-or-editor" "keywords"
-        "year" "abstract"))
-
-(setq orb-templates
-      '(("r" "ref" plain (function org-roam-capture--get-point)
-         ""
-         :file-name "bib-notes/${citekey}"
-         :head "#+TITLE: ${citekey}\n#+created: %u\n#+last_modified: %U\n#+ROAM_KEY: ${ref}
-
-*${title}*
-${author-or-editor} (${year})
+;; ;; Handy: to open a cite note's pdf: C-c n a RET
+;; ;;From github page: https://github.com/org-roam/org-roam-bibtex
+;; (use-package org-roam-bibtex
+;;   :after org-roam
+;;   :hook (org-roam-mode . org-roam-bibtex-mode)
+;;   :bind (:map org-mode-map
+;;               (("C-c n a" . orb-note-actions))))
 
 
+;; ;; NOTE the below don't take effect unless you've run M-x org-roam-bibtex-mode or customize it to ON
+;; ;;
+;; ;; BUG below: I removed the heading: "* {title}" or something like that from the orb-template, but org-noter must be started on a heading, for some stupid reason, so when I try to run it, it asks for some file and I don't what what it wants.  Didn't do that before I removed the heading.
+;; ;;
+;; ;;From github page: https://github.com/org-roam/org-roam-bibtex
+;; ;; This works with org-noter.  If you're in the org-roam-cite note, and run org-noter, it will set things up correctly.  Two cautions
+;; ;; 1. must put cursor in headline (required) before M-x org-noter
+;; ;; 2. I =think= you have to save (C-c C-n?) the new helm-bibtex capture b/f running org-noter
+;; (setq orb-preformat-keywords
+;;       '(("citekey" . "=key=") "title" "url" "file" "author-or-editor" "keywords"
+;;         "year" "abstract"))
 
-* Abstract
+;; (setq orb-templates
+;;       '(("r" "ref" plain (function org-roam-capture--get-point)
+;;          ""
+;;          :file-name "bib-notes/${citekey}"
+;;          :head "#+TITLE: ${citekey}\n#+created: %u\n#+last_modified: %U\n#+ROAM_KEY: ${ref}
 
-${abstract}
+;; *${title}*
+;; ${author-or-editor} (${year})
 
-- Keywords :: ${keywords}
 
-")))
+
+;; * Abstract
+
+;; ${abstract}
+
+;; - Keywords :: ${keywords}
+
+;; ")))
 
 ;; If I wanted to include noter notes, I'd add this to template:
 ;; * Noter Notes
@@ -4123,7 +4123,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (erefactor org-roam-bibtex helm-org-rifle deft zotxt zotxt-emacs deadgrep emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (erefactor helm-org-rifle deft zotxt zotxt-emacs deadgrep emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
