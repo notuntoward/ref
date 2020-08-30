@@ -3,6 +3,21 @@
     My experiments, Emacs packages I've tried and installed (from Melpa repository). Also, some builtins I could try
 
 ***** *TRY*
+******* TRY <<org-capture>>
+********* Tutorial Video: [[https://www.youtube.com/watch?v=qCdScs4YO8k][Emacs: Introduction to ORG-CAPTURE]]
+********* [[bookmarklet for org-roam capture]]
+******* TRY Ivy 
+         From: [[https://www.youtube.com/watch?v=QcPenVmmQyM][Emacs: Ivy tips and tricks]]
+         also seee: https://protesilaos.com/dotemacs/
+
+********** AMX: smex for ivy
+************ (amx-backend 'auto)
+************ can get commands with one key
+************ based you your usage history
+********** ivy-occur
+********** ivy-rich (more info about emacs commands, AMX)
+********** ivy-posframe: lists you put frame in different places
+******* TRY [[https://orgmode.org/manual/Link-Abbreviations.html#Link-Abbreviations][link abbreviations]] e.g. "google" and [[https://orgmode.org/manual/Completion.html#Completion][completion]]
 ******* TRY [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
 ******* TRY nicer colors/fonts in modeline
 ******* TRY move git and ref out of TempoBox, leave papers there
@@ -141,6 +156,11 @@
         expand has er/mark-org-parent, which I don't see in smart-region, but might be handy
 
         It's included in smart-regions somehow, and I can see the function, but how to bind it?
+
+        *expand-region-bug*: 
+        - /in org-mode/ expand region (C==) causes the error: er/save-org-mode-excursion: Symbol’s function definition is void: org-outline-overlay-data
+        - Fix is [[https://github.com/syl20bnr/spacemacs/issues/12099][said to be]] to deleting: ~/.emacs.d/elpa/*/develop/expand-region*
+        - I tried deleting ~/.emacs.d/elpa/expand-region but this did not help.
 
 ******* TRY put '#' in dedicated target link 
 
@@ -402,9 +422,14 @@
           | highlight-indent-guides    | ?       | ?           | in kaolin, has slim lines  |
           |----------------------------+---------+-------------+----------------------------|
 ******* Syntax for try/accepted/reject todo things
+
+        The two TODO sets will be available in the whole file (above and below this line). If you have multiple [[https://orgmode.org/manual/Per_002dfile-keywords.html][per-file keywords]] or if have multiple
+ [[https://orgmode.org/manual/Multiple-sets-in-one-file.html#Multiple-sets-in-one-file][keyword sets in elisp]], you can switch between the sets by [[https://orgmode.org/manual/Completion.html#Completion][completion]] using =ESC-TAB= when the cursor is at start of empty headling (there are other methods too).
+
         # -*- org-todo-keyword-faces: (("ACCEPTED" . "green") ("TRY" . "red") ("REJECTED" . "gray")) ; -*-
         #+TODO: TRY | REJECTED | ACCEPTED
-******* TRY [[https://github.com/abo-abo/org-download][abo-abo/org-download: Drag and drop images to Emacs org-mode]]
+        #+TODO: TODO | DONE
+******* TRY [[org-download]]
 ******* TRY [[https://github.com/abo-abo/lispy][abo-abo/lispy: short and sweet LISP editing]]
 ******* TRY [[https://github.com/abo-abo/lpy][abo-abo/lpy: Minimal Python IDE for GNU Emacs]]
 ******* TRY [[https://github.com/abo-abo/ace-window][abo-abo/ace-window: Quickly switch windows in Emacs]]
@@ -1079,12 +1104,205 @@
         I'd like to do do that for (display-time-mode 1), where time would go on left side of modeline.
         
 *** Org Mode
-***** [[https://code.orgmode.org/bzg/org-mode][org-mode git repository]] (according to [[https://orgmode.org/worg/dev/index.html][this]])
+***** <<org-roam>>: org-mode based, inspired by [[Roam Research]]
+******* [[https://github.com/org-roam][org-roam/org-roam: Rudimentary Roam replica with Org-mode]]
+******* might want to try [[Doom Emacs]] first
+******* main author: Jethrown Kuan
+********* blog:[[https://blog.jethro.dev/][Jethrow Kuan]]
+********* git: [[https://github.com/jethrokuan][jethrokuan (Jethro Kuan) · GitHub]]
+******* example: [[https://github.com/jethrokuan/braindump][JK's braindump]]: many org files, pdfs, 
+******* TODO org-roam tutorials & manual
+********* [[https://org-roam.github.io/org-roam/manual/][Org-roam User Manual]]: as up-to-date as info
+********* [[https://org-roam.readthedocs.io/en/master/][org-roam home]]
+********* [[https://blog.jethro.dev/posts/how_to_take_smart_notes_org/][How To Take Smart Notes With Org-mode]]
+********* TODO <<org-roam workflow with Zotero, org-ref, org-noter, deft>>
+          From: [[https://rgoswami.me/posts/org-note-workflow/][An Orgmode Note Workflow]] also discourse: [[https://org-roam.discourse.group/t/workflow-for-working-with-pdfs/103][Workflow for working with PDFs]] 
+********* code doesn't work, maybe out of date)
+*********** prefers one org-note per paper
+*********** ... although he picked [[org-noter]] b/c it was better at multiple documents linked to one file
+*********** [[helm-bibtex]] is configured to deal with single-pdf notes 
+*********** TODO does search with deft, not e.g. deadgrep.  Why?
+*********** .bib file auto-exported to [[Zotero]] seems like a temporary file.  Everything stays in Zotero
+*********** seems that he only gits notes, but not zotero references
+*********** Firefox and Chrome capture templates for web pages
+*********** also [[Zotero]], [[org-ref]], and [[org-noter]]
+******* <<org-roam on Windows>>
+********* [[https://org-roam.readthedocs.io/en/master/installation/][org-roam official install instructions]] mentions Windows
+********* [[https://www.reddit.com/r/emacs/comments/f97twk/using_orgroam_on_windows_10/][Using org-roam on windows 10 : emacs]] (messy)
+********* sqlite3 now on all platforms: [[https://github.com/org-roam/org-roam/issues/682][org-roam/org-roam#682 Need maintainable Windows 10 install]]
+********* ripgrep and find on Windows org-roam
+*********** 'rg' should work: [[https://github.com/org-roam/org-roam/issues/724][org-roam/org-roam#724 `rg` returns bad paths for Windows users]]
+*********** 'find' gets confused w/ Windows find: [[https://github.com/org-roam/org-roam/issues/682][org-roam/org-roam#682 maintainable Windows 10 install]]
+******* [[org-roam]] + [[org-noter]] + [[Zotero]]
+
+        Guy uses all three: [[https://github.com/org-roam/org-roam/issues/258][Supplying a title to `org-roam-find-file`]]
+
+******* tools used by org-roam author
+********* <<org-roam author migrated to Doom Emacs>>
+*********** [[https://blog.jethro.dev/posts/migrating_to_doom_emacs/][Migrating to Doom Emacs]] (partly b/c emacs 27 has fancier isearch)
+*********** also [[Doom Emacs]]
+********* <<org-roam author likes org-download for inserting images>>
+*********** likes org-download: [[https://blog.jethro.dev/posts/zettelkasten_with_org/][Org-mode Workflow Part 3: Zettelkasten w/ orgmode]]
+*********** [[org-download]]
+********* <<org-roam author likes org-journal>>
+          From: [[https://blog.jethro.dev/posts/how_to_take_smart_notes_org/][How To Take Smart Notes With Org-mode]]
+******* <<org-roam and bibtex>>
+********* the mode: [[org-roam-bibtex]]
+********* has [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][bibtex interface]] to [[https://github.com/weirdNox/org-noter][org-noter]] pdf, etc. annotator (need Linux?)
+********* [[all bibtex entries inside of org-mode file]]?
+********* OR is bibtext based, relegates [[Zotero]] to reference and pdf capture
+*********** [[OR cite notes + org-roam-bibtex + org-noter: Zotero not main ref DB]]
+*********** [[org-ref]] is used in org-roam somehow by other org-roam fans
+***********  [[https://org-roam.discourse.group/t/does-anyone-have-a-workflow-for-associating-notes-with-a-zotero-stored-pdf/112/10?u=scotto][Advice]] on syncing Zotero and bibtex/pdfs (also other ideas thread)
+******* <<org-roam tags>>
+        So far, I can't get this to work.  And anyway [[https://org-roam.discourse.group/t/tags-and-links-and-tags-oh-my/181/11][tags are way more limited now]] (6/5/20) than JK hopes to make them in the future.
+
+********* recommendation for directory tagging: [[https://github.com/org-roam/org-roam/pull/604#issuecomment-633777601][org-roam/org-roam#604 (feat): Add a tagging system by jethrokuan]]
+********* [[https://github.com/org-roam/org-roam/pull/604#issue-416808067][directory tagging]] in org-roam
+********* [[https://org-roam.github.io/org-roam/manual/Tags.html#Tags][Tags (Org-roam User Manual)]] (not that helpful as of 6/5/20)
+********* Recommended tagging system: [[https://fortelabs.co/blog/para/][The PARA Method: A Universal System for Organizing Digital Information]]
+******* TODO Issues to resolve before migrating to org-roam
+********* figure out how to use [[helm-bibtex]]
+*********** [[org-roam-bibtex]] seeems to be based on these
+********* is it going to last?
+********* install Doom Emacs since [[org-roam author migrated to Doom Emacs]]
+********* install emacs 27 first, since org-roam likes it?
+*********** also doesn't require imagemagic anymore.  Does that make pdf-tools easier?
+********* .emacs --> .emacs.d (or init.el?) so comply w/ new, standard emacs setup
+********* get latex working on Windows 1st?
+********* install emacs+org-roam in [[WSL]] to avoid all the windows problems 
+*********** 1st thing would be to install wsl2, whenever that's available 
+*********** can I call emacs in wsl2 from windows?  Associate files, on taskbar, etc.?
+*********** could still have windows emacs for simpler workflows
+********* can I install everything needed for [[org-roam on Windows]]
+********* do I want to migrate comment out of energytop.org
+*********** would break current "everything in one place" that I have now in JabRef
+*********** would need to write a script to make individual .org note files for each bibtex entry
+*********** can I get the nice pdf-in-emacs thing in org-noter? 
+********* would 5k+ little org files be slower or faster than athat I have now? 
+*********** it's possibly OK: [[https://org-roam.discourse.group/t/what-does-it-feel-like-to-work-with-10-000-notes-in-org-roam-benchmarking-org-roams-search-methods/227/3][what-does-it-feel-like-to-work-with-10-000-notes-in-org-roam]]
+********* link target searching
+
+          At least two problems:
+*********** how search throuh thousands of links when trying to make one?
+*********** how distinguish between paper (bibtex) links and general idea links?
+
+********* can I tolerate the Drawer thing?
+********* is there a way to capture graphics and images?
+********* get info out of books?
+********* get info out of evernote?
+********* [[Copying out of Kindle book]]?  
+          Also, is [[Kindle]] easier/better than books, and do I want to be locked into it?
+********* Is there one cite note per bibtex item?  *Probably*, maybe not for JK
+
+*********** Seems like one note per paper is common ([[https://github.com/org-roam/org-roam/issues/474][#474]]), but that people also want to be able so selectively link to citation notes or idea notes.  This function was added in [[https://github.com/org-roam/org-roam/pull/481][#481]], but I didn't read it carefully enough to understand how it works.  It may also have wound up in org-roam-bibtex.
+
+*********** [[org-roam workflow with Zotero, org-ref, org-noter, deft]] a full (but very buggy) is *one-note per pdf*.         
+*********** [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][video]]  on [[org-roam-bibtex]] demonstrates one note per bib entry.  One note per cite key looks nice b/c the back links uniquely tell you where it was cited.  Maybe nice because note backlinks and and <<backlinks from other cites notes are segregated>>.  I guess I also would like to segregate relationships between papers and relationships between notes.  Seems like notes would be more for collecting ideas, while papers might be more the raw ideas, which can be related, so that when you're writing a note (your own paper) and you make a cite, you see what other papers you should look at?.  
+
+*********** Yet Jethro Kuan himself, in his public braindump,  has multiple bibliography cite links in many notes.  It's not clear to me that he puts individual paper notes into org-roam, since he [[https://github.com/org-roam/org-roam/pull/481#issuecomment-615174636][considers the use case in PR481 to be niche]].  Seems like a note is instead an idea, which may be supported by papers and their citations.
+
+********* TODO is cite note name the bibtex key?   
+
+          I couldn't tell what people are naming their bib item cite notes.
+
+********* Will this get a "what's related" feature like [[Evernote]] clipper ha
+********* Do I want to start making an [[org-journal]]?
+******* TODO how put paper abstracts into notes?
+        
+        I want search to see abstracts so I can search like I do now in energy.bib.  But if there are tons of little org notes, it won't be able to do that?
+
+******* multiple org-roam directories
+        See: [[https://org-roam.readthedocs.io/en/master/configuration/][org-roam >> Having More Than One Org-roam Directory]]
+******* <<org-roam-bibtex>>
+        Mostly From: org-roam-bibtex [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][video]]
+********* reference collection seems to come from [[helm-bibtex]]
+********* can create org-cite pages directly from bibtex entry
+*********** templates for new cite pages e.g. "ref" or "ref + [[org-noter]]"
+*********** seems to require using helm-bibtex or ivy-bibtex (don't directly visit .bib)
+********* Is there a way to extract notes to cite note when marks have come from Drawboard or PDF-Xchange Editor?
+*********** extracting annotations from pdf
+            From [[https://org-roam.discourse.group/t/does-anyone-have-a-workflow-for-associating-notes-with-a-zotero-stored-pdf/112/9?u=scotto][here]]:
+************* [[org-noter]]: org-noter-create-skeleton gets pdf annotations
+************* [[zotfile]]: gets pdf annotations, puts in zotero note
+********* <<OR cite notes + org-roam-bibtex + org-noter: Zotero not main ref DB>>
+          From: org-roam-bibtex [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][video]] 
+
+          Best org-roam integration requires that reference links come
+          from a .bib file.  This means that, for best OR setup,
+          Zotero can't be the main reference DB.  Although it could be
+          an exporter, or it can automatically export to a bibfile
+          (complex, sync issues, version control?)
+
+*********** [[org-noter]] looks very useful, so you'd like to have a .bib out of Zotero.
+*********** org-roam-bibtex can modify .bib file e.g. "add pdf"
+*********** <<OR cite note title is org-ref link>>: key/title: from org-roam-bibtex [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][video]]
+*********** cite: links required, not Zotero, b/c [[backlinks from other cites notes are segregated]]
+*********** *Would Zotero autosync overwrite those ORB mods?*
+********* <<make org-roam-bibtex put bib notes in separate dir>>
+
+          I think this is supposed to work but I can't get org-roam-bibtex to put refs in a recursive dir.  It work for a second, then failed somehow.
+
+*********** [[make org-roam scan recursive directories]]
+********* also [[org-roam and bibtex]]
+******* <<org-roam graph visualization>>
+********* [[https://org-roam.discourse.group/t/application-of-graph-theory-to-roam-link-network/61][Application of Graph Theory to Roam link network]]
+
+******* <<bookmarklet for org-roam capture>>
+********* Is this just for storing web pages?
+********* JK's own [[https://github.com/org-roam/org-roam/issues/217#issuecomment-595313500][bookmarklet and capture template]]
+********* [[https://org-roam.discourse.group/t/how-would-i-log-resources-like-articles-youtube-videos-etc/71/6][more on captures]] w/ code from JK @ end
+********* potential [[https://org-roam.discourse.group/t/linking-to-new-notes-from-the-capture-buffer/108][bookmarklet problem]] and workaround, until OR bug is fixed.
+
+********* also [[org-capture]]
+******* TODO <<syncing org-roam across multiple machines>>
+        From [[https://org-roam.discourse.group/t/org-roam-db-across-multiple-machines/332/2][here]] 
+********* Exclude org-roam.db from OneDrive synching
+********* sync org-files with [[git-sync]]
+*********** exclude org-roam.db from git with .gitignore
+********* chrontab reruns org-roam db rebuild after a git-sync
+******* [[https://org-roam.readthedocs.io/en/master/comparison/][org-roam comparison with similar packages]]
+******* deleting an org-roam file
+        See: [[https://org-roam.discourse.group/t/any-recommended-methodology-to-delete-an-org-roam-file/54/2?u=scotto][this]] and [[https://org-roam.discourse.group/t/any-recommended-methodology-to-delete-an-org-roam-file/54/4?u=scotto][this]]
+******* get contents of org-roam notes linked to by this one, and other things
+
+        To get the list of notes, you [[https://org-roam.discourse.group/t/viewing-all-the-notes-not-a-graph-of-them-linked-to-this-note/126/2?u=scotto][run some sql]] e.g. 
+
+        (org-roam-db-query 
+        [:select [from] :from links :where (= to $s1)] (expand-file-name org-roam-directory "topic.org"))
+
+        and then you write some other code to paste them together...
+
+******* <<file and directory setups for org-roam>>
+********* org-file setup w/ agenda/todo, etc. uses OR just as a wiki: [[https://org-roam.discourse.group/t/separation-of-notes/475/3?u=scotto][Separation of notes?]]
+********* also [[complete org-roam setups]]
+******* <<complete org-roam setups>>
+********* [[https://github.com/org-roam/org-roam-bibtex][org-roam/org-roam-bibtex: Connector between Org-roam, BibTeX-completion]]
+********* [[https://www.rousette.org.uk/archives/extending-org-roam/][BSAG » Extending org-roam]]
+********* [[https://www.ianjones.us/2020-05-05-doom-emacs#org7ef714a][Own Your Second Brain: Set Up org-roam on Your Own Machine]]
+********* <<org-roam, deft and org-download (setup)>>
+*********** From: [[https://zzamboni.org/post/my-emacs-configuration-with-commentary/][My Emacs Configuration, With Commentary]]
+*********** Pretty basic, no hints about bibtex, citelinks, etc.
+*********** also [[org-download]]
+********* <<org-roam, compendium-style interactive graph, org-journal but doom/mac>>
+
+          Fantastic clickable, graph that zooms in on cliques like [[Compendium]] did.  Can also move the nodes with your mouse.  Works through SVG graphs fed ot chrome via org-roam-server,  The setup for that part isn't explained in text but is mentioned [[https://youtu.be/gDAbpz98ooU?t=150][in the video]].
+
+          Those fancy graphs are a nice-to-have, but maybe getting citelinks and [[org-roam-bibtex]] to work is more important.
+
+*********** Config: [[https://www.ianjones.us/2020-05-05-doom-emacs][Own Your Second Brain: Set Up org-roam on Your Own Machine]]
+*********** Demo video: [[https://www.youtube.com/watch?v=gDAbpz98ooU&feature=youtu.be][A Tour of Org Roam]]
+*********** Also [[Compendium]]
+********* [[org-roam workflow with Zotero, org-ref, org-noter, deft]]
+********* also [[file and directory setups for org-roam]]
+******* back/forward in org-roam file history: [[info:org-roam#Browsing History with winner-mode][use built-in winner mode]]
+******* [[Orger]]: org mode python interface to generic APIs e.g. roam research
 ***** <<org-brain>>
       Concept mapping in emacs, new project in March, 2017
 ******* [[https://github.com/Kungsgeten/org-brain][GitHub - Kungsgeten/org-brain: Org-mode wiki + concept-mapping]]
 ******* Inspired by the expensive: [[The Brain]]
 ******* Also: [[Knowledge as Graphs]]
+***** [[https://code.orgmode.org/bzg/org-mode][org-mode git repository]] (according to [[https://orgmode.org/worg/dev/index.html][this]])
 ***** org mode table math
       See: [[http://orgmode.org/org.html#Advanced-features][Advanced-features]]
 ***** [[MoinMoin emacs]]
@@ -1214,6 +1432,7 @@
 
         _IWES TexLive Problem_: The proxy was a problem, even if I disabled it in Chrome and deleted by http_proxy env var.  And I was unable to customize the TexLive environment to use a proxy because it insists upon using a URL proxy and IWES has only a numerical IP address.
 
+
         _IWES TexLive Solution_: Disable the proxy stuff in Chrome, delete
         http_proxy (not sure if necess.) & then hook up with the IWES guest Wifi.  Finally, I was able to do a normal TexLive internet install. I also had to add the path to the TexLive latexmk binary (C:\texlive\2016\bin\win32) to the PATH environment variable.  I don't remember needing to do this at home.
 
@@ -1251,6 +1470,34 @@
 
 ******* how another guy got org_ref [[https://github.com/jkitchin/org-ref/issues/165][to find the citations]] (see kitchin's linked-to setup)
 ******* [[better org-links from dired]]
+******* also [[how to do interesting stuff in org-mode/org-ref]]
+******* [[org-mode native citaton support]] (not ready yet in May 2020)
+******* [[org-roam workflow with Zotero, org-ref, org-noter, deft]]
+***** <<org-noter>>
+
+      Opens papers in emacs, syncs your pdf annotation w/ org-mode doc.  
+
+******* My test of org-noter: works but not sure I'll use it
+********* To start, put cursor on an org-mode headline and M-x org-noter. I tried it and
+********* org-noter-create-skeleton extracts existing annotations
+*********** extracs what you underlined, and I think highlighted, puts it into org-mode
+********* can directly enter annotations on pdf: highlights or hidden text blobs
+********* I'm not clear on when those show up in org-noter buffer, though
+********* Can even annotate ink lines
+******* [[https://github.com/weirdNox/org-noter][org-noter GitHub]]
+******* [[org-zotxt-noter]] lets you take notes on [[Zotero]] / [[zotxt]] attachment (pdf)
+******* [[org-roam workflow with Zotero, org-ref, org-noter, deft]]
+******* org-noter-create-skeleton gets pdf annotations
+***** <<all bibtex entries inside of org-mode file>>
+      From: [[http://cachestocaches.com/2020/3/org-mode-annotated-bibliography/][Managing my Annotated Bibliography with Emacs' Org Mode]]
+
+******* Uses [[https://github.com/alphapapa/org-rifle][org-rifle]] to search his org-file
+******* *CAUTION* energytop.org already very slow; this would make it impossible
+******* *BUT*: Could be a way to use [[org-roam]] for all paper notes?
+
+***** Org-mode and [[Zotero]]
+******* [[zotxt-emacs]]: interfaces [[Zotero]] with [[https://github.com/egh/zotxt-emacs][org-mode and org-noter]]
+******* [[zutilo]]: also adds links?  what's the diff?
 ***** [[http://kitchingroup.cheme.cmu.edu/blog/archive/][KitchinGroup Blog]]: <<how to do interesting stuff in org-mode/org-ref>>
 ******* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/04/New-link-features-in-org-9/][New link features in org 9]]
         - store-my-headline :: a headline line that could replace those crappy dedicated-targets!
@@ -1262,6 +1509,7 @@
 ******* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/10/Persistent-highlighting-in-Emacs/][Persistent highlighting in Emacs]] (not a top priority)
 ******* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/08/New-color-link-in-org-9-0-using-font-lock-to-color-the-text/][New color link in org 9.0 using font-lock to color the text]] (not a top priority)
 ******* [[http://kitchingroup.cheme.cmu.edu/blog/2016/06/16/Copy-formatted-org-mode-text-from-Emacs-to-other-applications/][Copy formatted org-mode text from Emacs to other applications]] (Mac only for now)
+******* also [[org-ref]]
 ***** [[https://www.gnu.org/software/emacs/manual/html_node/org/Previewing-LaTeX-fragments.html][The Org Manual: Previewing LaTeX fragments]]
       Can do it with commands in org text:
 
@@ -1327,7 +1575,22 @@
 ***** <<Save org file folding state>>: [[https://github.com/dandavison/org-fold/blob/master/org-fold.el][org-fold/org-fold.el at master · dandavison/org-fold]]
 ***** [[Orgmode latex editing]]
 ***** [[http://orgmode.org/worg/dev/org-element-api.html][Org Element API]] (for org-mode elisp programming)
-***** <<Org-mode interface to trello>>: [[https://github.com/org-trello/org-trello][org-trello]]
+***** Org interface to online databases, PIM's etc.
+******* <<Orger>>: org mode python interface to generic APIs e.g. roam research
+        Python library to download from large number of online services
+
+********* [[https://github.com/karlicoss/orger][karlicoss/orger: Tool to convert data into searchable and interactiv]]
+********* tutorial: [[https://beepb00p.xyz/orger.html][Orger: plaintext reflection of your digital self | beepb00p]]
+********* YouTube: [[https://www.youtube.com/watch?time_continue=30&v=ib_PDJpTh-Q&feature=emb_logo][Using Orger with Roam Research]]
+******* <<Org-mode interface to trello>>: [[https://github.com/org-trello/org-trello][org-trello]]
+***** Hiding/Closing org :PROPERTIES: drawer
+******* completely hiding them
+        See: [[https://stackoverflow.com/questions/17478260/completely-hide-the-properties-drawer-in-org-mode][Completely hide the :PROPERTIES: drawer in org-mode]]
+        Can add "show" properties to the headline exposure cycling
+******* always starting them closed
+
+        This is probably what I really want, but I can't find it.
+
 ***** <<Presentation slides from org-mode>>
 ******* [[https://github.com/coldnew/org-ioslide][org-ioslide: Export org-mode to Google I/O HTML5 slide.]]
 ******* TRY [[https://github.com/sigma/org-s5][ox-s5]] export, an org-->[[https://meyerweb.com/eric/tools/s5/][s5 slides in html/pdf]] (also try [[https://github.com/cybercode/org-slides][ox-deck]])
@@ -1347,10 +1610,20 @@
 
         Doesn't copy whole filename as is default, just the main file.  May be what's needed to get a better cite: link
 
+***** <<make org-roam scan recursive directories>>
+      This is so I can have a separate folder (bib-notes) for paper entries yet org-roam will find them.
+
+******* Seems there: [[https://github.com/org-roam/org-roam/issues/736][org-roam/org-roam#736 (wrong-number-of-arguments) from org-roam--list-files-e...]]
+******* Tags can be built of recursive dirs: [[help:org-roam-tag-sources]] 
+
+        So I customized it to ‘all-directories’
+
+******* [[make org-roam-bibtex put bib notes in separate dir]]
 ***** Org-mode parsers
 ******* [[http://orgmode.org/worg/org-tools/][Org Mode tools!]] (parsers in many languages)
 ******* [[https://common-lisp.net/project/cl-org-mode/][CL-ORG-MODE : A Lisp Parser of org-mode outlines]]
 ******* [[Elisp]]
+******* [[org-mode parsers in Python]]
 ***** Org-mode in non-org buffers
 ******* <<outshine-mode>>
         From: [[https://github.com/alphapapa/outshine][alphapapa/outshine: {Emacs} outline with outshine outshines outline]]
@@ -1482,6 +1755,39 @@
 
         Somehow talks to Jupyter through org-mode.  Is what the author of [[orgbabelhelper]] says he's going to work on instead of [[orgbabelhelper]].
         
+******* Orger python interface to org-mode, external APIs
+******* <<org-mode parsers in Python>>
+
+        orgparse had commits only a couple months old in June 2018, is pipable
+
+********* [[https://github.com/karlicoss/orgparse][orgparse: Python module for reading Emacs org-mode files]]
+********* [[https://github.com/nasa9084/py-org][py-org: The Org-mode Parser for Python]]
+********* a couple fairly python funcs in here [[http://orgmode.org/worg/org-tools/][Org Mode tools!]]
+*** <<Neuron Zettelkasten>>
+    Home: [[https://neuron.zettel.page/][Neuron Zettelkasten]]
+
+    A plaintext zettelkasten system with emacs and vim interfaces.  As of June 2020, is MacOS or Linux only.  Git interface seem built-in.  Not org-mode based and markup is kinda ugly.  Makes graphs somehow, though.
+
+***** [[https://github.com/srid/neuron][GitHub neuron: Haskell meets Zettelkasten, for your plain-text delight.]]
+***** [[Knowledge as Graphs]]
+***** [[Knowledge Graphs in Emacs]]
+
+*** Viewing pdfs in Emacs
+***** [[https://youtu.be/LFO2UbzbZhA?t=360][DocViewer works in plain emacs]] (probably Linux, though)
+***** [[Viewing pdfs in Windows Emacs]]
+***** <<pdf-tools>>
+      
+      Searching, occur (nice!) and marking up pdfs in Emacs.  
+
+******* [[https://www.youtube.com/watch?v=LFO2UbzbZhA&feature=youtu.be&t=371][Using Emacs 44 - An Org mode and PDF-tools workflow]] (org-pdfview now gone, though)
+
+******* org-mode links to pdf-tools: use =pdftools=: link type
+
+Originally, org-pdview was the way to do this. e.g. [[https://youtu.be/LFO2UbzbZhA?t=673][make pdfview: links]].  But now [[https://github.com/markus1189/org-pdfview][org-pdfview package is unmaintained]], and GitHub points to pdf-tools GitHub.)
+
+So, [[https://www.reddit.com/r/emacs/comments/clxa9p/orgpdftools_a_custom_org_link_type_for_pdftools/][now use link type pdftools:]]
+******* [[pdf-tools on Windows]]
+***** [[org-noter]]
 *** Dired operations
 ***** file marking
       From [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Marks-vs-Flags.html][here]]:
@@ -1799,9 +2105,9 @@
       Packages: seem simpler than [[company-math]] but maybe not as capable?)
 
       See [[https://emacs.stackexchange.com/questions/20472/fast-unicode-symbol-insertion][fast-unicode-symbol-insertion]]
-*** TRY Hydras for window movement, moving cursor to windows, other window management
+**** TRY Hydras for window movement, moving cursor to windows, other window management
     https://github.com/abo-abo/hydra/wiki/Window-Management
-*** TRY <<Saving/restoring window sessions>>
+**** TRY <<Saving/restoring window sessions>>
 
     For now, I've bound ~ivy-push-view~, ~ivy-pop-view~ and ~ivy-switch-view~ (see [[ivy-push-view]]).  These push/pop store or remove window configs from a stack; switch just switches views in any order and can maintain indirect buffers (clones).  Similar to [[winner-mode]].   
 
@@ -2218,13 +2524,13 @@
 
     _Definition_
 
-    C-x (do your stuff) C-x
-    OR  F3  (do your stuff) F4
+    =C-x (=  do your stuff  =C-x =)= 
+    OR =F3= do your stuff =F4=
 
     _Execution_
 
-    C-x e
-    OR  F4
+    =C-x e=
+    OR  =F4=
 
 *** Emacs builds
 ***** [[Windows emacs builds]]
@@ -2271,6 +2577,8 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ********* [[https://github.crookster.org/switching-to-straight.el-from-emacs-26-builtin-package.el/][Switching to straight.el from Emacs 26 builtin package.el | David Crook]]
 ********* 
 ******* [[https://github.com/hlissner/emacs-doom-themes/tree/screenshots#doom-Iosvkem][doom theme screenshots]]
+
+******* [[https://www.ianjones.us/2020-05-05-doom-emacs][recommended]] Windows Install: [[https://github.com/earvingad/configfiles/blob/master/emacs/DoomEmacsWindows.org][configfiles/DoomEmacsWindows.org]]
 
 *** <<Windows Emacs>>
 ***** <<Windows emacs builds>>
@@ -2631,11 +2939,12 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 
       Also, Vincent Goulet's email address no longer works...
 
-***** Viewing pdfs in Windows Emacs
-******* pdf-tools on Windows
+***** <<Viewing pdfs in Windows Emacs>>
+******* <<pdf-tools on Windows>>
 ********* [[https://github.com/politza/pdf-tools#compilation-and-installation-on-windows][GitHub - politza/pdf-tools: Emacs support library for PDF files.]]
+********* [[pdf-tools on Windows]]
 ***** [[Emacs 25 on Ubunto 16.10]]
-*** get rid of non-ascii chars
+[[https://github.com/weirdNox/org-noter/actions][Actions · weirdNox/org-noter · GitHub]]*** get rid of non-ascii chars
     (useful for cleaning up bibfiles, etc.)
 
 ***** terse way
@@ -2663,7 +2972,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ********* supposed to be able to add a paper by dragging a URL but it's [[https://github.com/jkitchin/org-ref/issues/347#issuecomment-263023007][broken]]
 ********* dragging pdf w/ a doi works
 ******* [[http://manas.tungare.name/software/isbn-to-bibtex/][ISBN to BibTex Converter]] (not Emacs, also broken as of 2016-12-05)
-******* also see [[*JabRef][JabRef]]
+******* also see [[JabRef][JabRef]]
 ******* [[Latex/Bibtex]]
 ******* <<gscholar-bibtex>>
 
@@ -2674,12 +2983,24 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
         Google scholar works
         IEEE lookup works after I submitted a [[https://github.com/cute-jumper/gscholar-bibtex/issues/19][bug report]].  But it doesn't get abstracts and the author [[https://github.com/cute-jumper/gscholar-bibtex/issues/19][wants]] me to write that.
 
+******* <<org-mode native citaton support>>
+        From [[https://org-roam.discourse.group/t/workflow-for-working-with-pdfs/103/7?u=scotto][here]] and [[https://org-roam.discourse.group/t/customize-display-of-cite-links/129/20][here]]: 
+
+        It is [[https://org-roam.discourse.group/t/workflow-for-working-with-pdfs/103/7?u=scotto][implied]] that native citation is in the [[https://code.orgmode.org/bzg/org-mode/src/wip-cite-new][wip-cite-new]] org-mode branch; apparently it wasn't yet in main branch in May 2020
+
 ***** [[Setting JabRef setup so it can push latex cites to Emacs]]
 ***** says you can edit the entries locally, and submit the changes to Redmine.
 ***** See [[Get IEEE & ScienceDirect with abstracts in emacs]]
+***** <<helm-bibtex>>
+******* [[https://github.com/tmalsburg/helm-bibtex][tmalsburg/helm-bibtex: Search and manage bibliographies in Emacs]]
+******* somehow helm-bibtex does [[ivy-bibtex]] (figure this out later...)
+***** <<ivy-bibtex>>
+******* example setup here
+******* [[helm-bibtex]] has some way of doing ivy-bibtex too
+
 ***** <<Jumping to papers from inside of org-mode and bibtex files>>
 
-      org-ref now does this!
+      [[org-ref]] now does this, as do ordinary org-mode bibtex links, [[helm-bibtex]] and [[ivy-bibtex]]
 
 ******* in bibtex file, open paper in file field w/ a key combo
 ******* also do it from inside of org-mode
@@ -2749,6 +3070,14 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ***** _However_, if you attach the image to org and then use iimage, the img displays!
 ***** opening pdf files from dired will open them directly in docview
 ***** opening an attachment from inside org-mode will open acroread
+***** <<org-download>>
+******* [[org-roam author likes org-download for inserting images]]
+******* GitHub: [[https://github.com/abo-abo/org-download][Drag and drop images to Emacs org-mode]]
+******* Tutorials/Help
+********* YouTube: [[https://www.youtube.com/watch?v=dAojpHR-6Uo][org-download.el: drag images from the browser to org-mode]]
+********* [[https://www.reddit.com/r/orgmode/comments/6x5ulb/longterm_use_of_orgattach_and_orgdownload/][Longterm use of Org-attach and Org-download : orgmode]]
+********* [[https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/][Use org-download to drag image to emacs | hexo-org-example]]
+******* [[org-roam, deft and org-download (setup)]]
 ***** also: TRY [[https://github.com/abo-abo/org-download][abo-abo/org-download: Drag and drop images to Emacs org-mode]]
 *** Emacs packages
 ***** include the libraries that are now in my .emacs or _emacs
@@ -2760,6 +3089,14 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 
         *:init*   stuff that doesn't run if the package is not availabel
         *:config* code that means something (works) only after the pkg is loaded
+
+***** paradox package manager
+
+      It's a shell over the standard emacs package manager with many nice additional features, like viewing git log files for a packages that will be updated.
+
+******* [[https://github.com/Malabarba/paradox][Malabarba/paradox: Project for modernizing Emacs' Package Menu. With...]]
+******* If when paradox can't find logfile: M-x paradox--refresh-remote-data
+        From: [[https://github.com/Malabarba/paradox/issues/176#issuecomment-642432799][paradox#176 paradox-menu-view-commit-list says "Package nil is not]]
 
 *** Remember cursor position, last file visit
     ;; for emacs 25.1 or later
@@ -3054,6 +3391,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 
       I didn't need to enable auto-fill-mode but it seems like I should have.  Is this done by default or somewhere in elpy, etc. ?
 
+***** [[org-mode parsers in Python]]
 *** Ruby in Emacs
 ***** debugger
 
@@ -3154,6 +3492,10 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ***** [[Vincent Goulet Emacs]]
 *** <<Emacs for experiment logging>>
 ***** TRY [[file:energy.bib::Stanisic15gitOrgWorkflow][Stanisic et al. 2015]]
+***** <<org-journal>>:
+******* [[https://github.com/bastibe/org-journal][GitHub: bastibe/org-journal: A simple org-mode based journaling mode]]
+******* [[https://www.reddit.com/r/emacs/comments/8kz8dv/tip_how_i_use_orgjournal_to_improve_my/][TIP: How I use org-journal to improve my productivity : emacs]]
+******* [[org-roam author likes org-journal]]
 *** [[Knowledge Graphs in Emacs]]
 *** Search for Symbol at Point
 ***** =M-s .= is default emacs way to do [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Symbol-Search.html][Symbol Search]]
@@ -3163,86 +3505,21 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ***** I mapped C-s s to swiper-isearch-thing-at-point (supposed to be symbols search but it only extracts a symbol-like-thing and then search for string matches w/o knowing the language)
 ***** symbol search and replace: [[refactoring in elpy]]
 ******* [[https://github.com/m-parashar/emax64/releases][emax64: has pdf-tools built-in]]
-* <<JabRef>>
-*** News and feature requests go [[http://discourse.jabref.org][here]]
-*** bug reports go [[https://github.com/JabRef/jabref/issues][here]]
-*** latest dev build: https://builds.jabref.org/master/
-*** [[https://github.com/JabRef/jabref/blob/master/CHANGELOG.md#unreleased][What's new in latest dev build]] 
-*** setting up multiple previews: =Options-> Preferences-> Entry preview=
-*** <<Setting JabRef setup so it can push latex cites to Emacs>>
+* Surface Book 2
+*** Slow WiFi
+    From: [[https://windowsreport.com/surface-book-2-slow-wifi/][Surface Book 2 slow Wi-Fi issues {BEST SOLUTIONS}]]
 
-    =Options -> Preferences -> External programs -> "Settings for Emacs" -> "Path to Emacs (gnuclient or emacsclient)":=
+    This has worked at least once (Aug 2020):
 
-    C:\Program Files (x86)\GNU Emacs 25.1\bin\emacsclientw.exe
-    (or whatever emacs location is)
+    In admin cmd promp:
 
-    =Additional parameters  :=       -n -e
-    =Use Emacs 23 insertion string:= checked
+      netsh int ip reset
+      netsh int tcp set heuristics disabled
+      netsh int tcp set global autotuninglevel=disabled
+      netsh int tcp set global rss=enabled
 
-*** [[Pinning Jabref to Windows 7 taskbar]]
-*** [[Export JabRef bibtex to Office 2007 citation source]]
-*** [[http://www.ademcan.net/index.php?2012/01/30/15/23/05-using-jabref-references-in-word-documents][Using JabRef references in Word documents]]
-*** How I'd like to make JabRef more like emacs org mode
-    (response to a JabRef web survey on 11/12/15)
+    Then restart
 
-    /Please, if you have anything else to suggest regarding the next versions of/
-    /JabRef, use the following field./
-
-    Make it easier to find the relationships between papers.  I've
-    accumulated a couple thousand references and often forget how ideas
-    I've seen before have something to do with what I'm looking at now.
-    I think two things are needed: A better way to express these
-    relationships; and a way to automatically discover them.
-
-***** I. Paper Relationship Expression:
-
-      I've reduced the problem of forgetting paper relationships by
-      maintaining a giant topic file in emacs org mode; every time I
-      enter a new paper in Jabref, I go to emacs and sprinkle the topic
-      file with links to it.  Since a paper might be related to many
-      topics, I often add many links -- the fact that there are many links
-      unfortunately does not fit well into the hierarchical mindmap
-      structure like that used in Docear.  Docear does have a cross-link
-      capability but it doesn't work well when there are many cross-links.
-
-      Better would be a "many-to-one" and "one-to-many" structure like
-      that in a Concept Map.  Concept Maps allow both hierarchy and
-      arbitrary relationship links -- they're really just directed graphs
-      with a nice interface for grouping nodes and redrawing.  The best
-      program I've found is at http://cmap.ihmc.us/ but it doesn't work
-      well with BibTex).
-
-      Anyway, Docear is mindmap based, so I'm sticking with org mode.  Org mode
-      can do the same thing as concept maps, is simple plain text, is
-      super flexible, and has hooks to every publishing tool I use.  It's
-      clunky and not graphical but it works.  Docear is going in the
-      right direction but the mindmap structure isn't expressive enough;
-      maybe Jabref could build an interface to a concept map tool, or an
-      arbitrary graph editor.
-
-***** II. Paper Relationship Discovery
-
-      I would love something like Evernote's approach.  Every time I save
-      a web article, Evernote tells me about related articles I've already saved.  Restricting the search to stuff I've already saved is better than telling me about all the articles in the
-      world that are related.  I haven't tried Docear's recommender
-      system.  If it's searching the world, well, I already have google;
-      if it's searching my own references first, then I'm really
-      interested.
-
-*** Italics in article title: use =\em{}=
-    From: [[https://sourceforge.net/p/jabref/discussion/318825/thread/6e71725d/][JabRef / Discussion / Help:Italics in titles?]]
-*** <<Fixing tiny fonts on Surface pro:>>
-    From: [[https://github.com/JabRef/jabref/issues/2885][Fonts are too small to read, inconsistent across the UI · Issue #2885 · JabRe...]]
-
-    For Windows 10, there is work-around to get a workable resolution (I wouldn't call it nice through):
-
-***** Find and Right click JabRef.exe in the installation folder -> Properties
-***** Go to Compatibility tab
-***** Check Override high DPI scaling behavior.
-***** Choose System for Scaling performed by
-
-*** [[Visualizing Bibliographies]]
-*** [[Fixing tiny fonts on Surface pro]] (a problem older JabRef had)
 * Old Computers
 *** Microsoft Surface Pro 3
 ***** Screenshots and snips
@@ -3468,6 +3745,38 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ***** in utility, add it to existing network as a client
 ***** I had to manually enter my existing WiFi modem name b/c it couldn't find it
 * Windows
+*** Configuring Windows on a new machine
+
+    For the username 'scott', the starting points are:
+
+      c:\Users\scott\
+      c:\Users\scott\OneDrive
+
+    After signing up for the work OneDrive for business
+
+      c:\Users\scott\OneDrive - Clean Power Research
+
+    This folder should have shared stuff in its 'ref' dir
+
+    Make c:\Users\scott emacs HOME and make the corresponding symb links.     
+    In a cmd.exe w/ admin permissions:
+
+      cd C:\Users\scott
+      mklink scotto /D OneDrive\scotto
+
+      mklink "//D ref c:\Users\scott\OneDrive - Clean Power Research\ref"
+      mklink .emacs ref/.emacs
+      mklink /D Desktop OneDrive\Desktop
+      mklink /D Downloads OneDrive\Downloads
+
+    Install choco to get emacs, basic progs, and MSYS2 linux tools
+    Firefox setup
+    Install MSYS2 tools and progs
+    Sharpkeys (or new Windows thing in powertoys?)
+    autoraise delay
+    Windows Terminal
+    Drawboard
+
 *** [[http://www.burningcutlery.com/derek/winsetup/][Making Windows usable]]
 *** <<Windows environment variables: displaying>>
     From: [[http://windowsitpro.com/powershell/powershell-one-liner-getting-local-environment-variables][here]]
@@ -3507,7 +3816,8 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ***** <<WSL>>: Windows System Linux
       This is about using Windows 10 with e.g. Ubuntu Bash
 ******* Install wsl2
-        From: [[https://docs.microsoft.com/en-us/windows/wsl/install-win10][Windows Subsystem for Linux Installation Guide for Windows 10]]
+********* TODO [[https://medium.com/@maurogiusti/running-ubuntu-on-windows-10-with-wsl2-c4f06b3c353][Running Ubuntu on Windows 10 with WSL2]]
+********* also: [[https://docs.microsoft.com/en-us/windows/wsl/install-win10][Windows Subsystem for Linux Installation Guide for Windows 10]]
 ******* [[https://www.howtogeek.com/265900/everything-you-can-do-with-windows-10s-new-bash-shell/][Everything You Can Do With Windows 10’s New Bash Shell]]
 ******* Emacs on WSL
 ********* [[https://github.com/hubisan/emacs-wsl][hubisan/emacs-wsl: Install and run emacs with the Windows Subsystem]]
@@ -5029,41 +5339,46 @@ The recommended one of the three possible ways to do it:
     /Can't/: turn off tracking changes and then erase.  Can turn tracking
     changes on again.
 
-*** Capturing screen video for PowerPoint
-***** try [[http://www.techsmith.com/download/jing/][Jing]] (can save a macromedia shockwave file)
-***** look @ MS [[http://office.microsoft.com/en-us/powerpoint-help/play-a-macromedia-flash-animation-in-powerpoint-HA001034807.aspx][hints]] for playing shockwave (what Jing produces) in powerpoint
-*** Powerpoint Animations --> pdf
+*** <<Powerpoint>>
+***** Powerpoint Animations --> pdf
 
-    From [[http://superuser.com/questions/602209/create-a-pdf-from-powerpoint-with-animations][here]]:
+      From [[http://superuser.com/questions/602209/create-a-pdf-from-powerpoint-with-animations][here]]:
 
-****** use [[http://www.dia.uniroma3.it/~rimondin/downloads.php][PPspliT]] powerpoint add-in
-****** this makes a new powerpoint w/ animations blown out
-****** can make a pdf out of the blown-out ppt
-****** installation/deinstallation
-********* said to work on office 2013
-********* remove like a normal program, not from inside of Powerpoint
+******* use [[http://www.dia.uniroma3.it/~rimondin/downloads.php][PPspliT]] powerpoint add-in
+******* this makes a new powerpoint w/ animations blown out
+******* can make a pdf out of the blown-out ppt
+******* installation/deinstallation
+*********** said to work on office 2013
+*********** remove like a normal program, not from inside of Powerpoint
 
-*** Copying slide master template from one presentation to another
+***** Copying slide master template from one presentation to another
 
-    - make a copy of the source presentation
-    - delete its slides
-    - paste in slides from the new presentation
+      - make a copy of the source presentation
+      - delete its slides
+      - paste in slides from the new presentation
 
-***** The hard way
-      From [[http://office.microsoft.com/en-001/powerpoint-help/apply-multiple-slide-masters-to-a-new-or-existing-presentation-HA010251353.aspx][here]]:
+******* The hard way
+        From [[http://office.microsoft.com/en-001/powerpoint-help/apply-multiple-slide-masters-to-a-new-or-existing-presentation-HA010251353.aspx][here]]:
 
-      copy from source presentation
-      1. open both presentations
-      2. view->Presentation Views on the source presentation
-      3. click Slide master
-      4. rightclick->copy the thumbnail in pane
+        copy from source presentation
+        1. open both presentations
+        2. view->Presentation Views on the source presentation
+        3. click Slide master
+        4. rightclick->copy the thumbnail in pane
 
-      appy to destination presentation (maybe get to dest w/ view menu or
-      separate window)
-      1. view->Presentation Views->slide master
-      2. paste @ end of list of existing master slides, if there are any
-      3.
+        appy to destination presentation (maybe get to dest w/ view menu or
+        separate window)
+        1. view->Presentation Views->slide master
+        2. paste @ end of list of existing master slides, if there are any
+        3.
 
+***** Capturing screen video for PowerPoint
+******* try [[http://www.techsmith.com/download/jing/][Jing]] (can save a macromedia shockwave file)
+******* look @ MS [[http://office.microsoft.com/en-us/powerpoint-help/play-a-macromedia-flash-animation-in-powerpoint-HA001034807.aspx][hints]] for playing shockwave (what Jing produces) in powerpoint
+***** <<Programmatic PowerPoint>>
+******* [[Powerpoint and Python]]
+******* [[Powerpoint and R]]
+******* [[Powerpoint and Jupyterlab]]
 *** OneNote
 ***** [[http://blogs.msdn.com/b/johnguin/archive/2014/02/03/onenote-tip-making-tables-from-pasted-text.aspx][modestly quick way to create tables]] in OneNote from pasted text
 ***** [[OneNote and SkyDrive]]
@@ -5226,6 +5541,7 @@ The recommended one of the three possible ways to do it:
 *** <<MS Office and Emacs>>
 ***** [[Org to/from MS Word]]
 ***** Viewing MS Office or OpenDocument in Emacs adocs: [[http://stackoverflow.com/questions/28474736/how-to-open-pdf-file-in-emacs][need unoconv]] & gs
+*** [[Importing pdf tables into Excel/Word]]
 *** Excel
 ***** Interpolate function
 ******* with vlookup, offset, match and forecast
@@ -5245,7 +5561,13 @@ The recommended one of the three possible ways to do it:
 ******* vlookup and int (shorter)
 ********* [[http://www.ozgrid.com/forum/showthread.php?t=69973][A Formula To Lookup And Interpolate]]
 ******* [[https://support.office.com/en-us/article/TREND-function-e2f135f0-8827-4096-9873-9a7cf7b51ef1][trend]] function (still linear... but can use polynomials)
+***** <<Importing pdf tables into Excel/Word>>
+******* [[https://www.pdftoexcelonline.com/][www.pdftoexcelonline.com]] makes an Excel file, worked for me on 6/18/20
 *** [[Getting rid of Microsoft Office Upload Center]]
+*** Visio
+***** Pasting Equation into Visio
+******* [[https://social.technet.microsoft.com/Forums/office/en-US/2126bb8d-b179-4bdf-b490-7eef1981a7a6/visio-2019-equations?forum=visiogeneral][Equations were removed from Visio 2019]], suggest pasting screenshots
+******* [[http://www.visguy.com/2019/02/01/word-equation-to-visio-to-svg/][A Very Simple Solution!]] which is not so simple
 * Version Control Systems
 *** svn
 ***** [[http://www.systhread.net/texts/200607subver.php][creating a repository]]
@@ -5689,8 +6011,15 @@ The recommended one of the three possible ways to do it:
 
       and made a pull request back to the original pyglmnet repository
       
-*** [[https://github.com/caldwell/commit-patch][caldwell/commit-patch: Commit patches to Darcs, Git, Mercurial, Baza...]]
+***** sending a git patch
 
+      If you've cloned a reporitory and made changes, here's [[https://thoughtbot.com/blog/send-a-patch-to-someone-using-git-format-patch][how to email a patch]].  This makes separate patches for each change in your clone, I think.
+
+***** <<git-sync>>
+******* [[https://github.com/simonthum/git-sync][simonthum/git-sync: Safe and simple one-script git synchronization]]
+******* I could use this to sync all kinds of things
+******* Is recommended for [[syncing org-roam across multiple machines]]
+*** [[https://github.com/caldwell/commit-patch][caldwell/commit-patch: Commit patches to Darcs, Git, Mercurial, Baza...]]
 * HTML
 *** tables
 ***** Easy visual [[http://www.quackit.com/html/html_table_generator.cfm][Table Generator]]
@@ -5878,6 +6207,15 @@ The recommended one of the three possible ways to do it:
 
     This works:
     https://www.pdf-online.com/osa/extract.aspx?o=outln
+
+*** printing web pages to pdf
+***** [[https://www.printfriendly.com/extensions/firefox][PrintFriendly & PDF FireFox ExtensionPrint Friendly & PDF Button for FireFox,...]]
+
+******* Cleans up web page, removing ads, and shows it to you.  You can edit what it will finally print in a decent UI.  Then you print to pdf
+******* I tried it on an NYT page, and it looked OK, except that it saved two of every image.  You could delete it in the UI before printing, but this was annoying.  Also annoying was the giant pdf filename, although it did ID what was in the article.
+******* Also has Chrome extension.
+******* Not sure if you pay for this services after X docs or what...
+******* Can't print [[https://www.google.com/maps/dir/10604+NE+38th+Pl,+Kirkland,+WA+98033,+USA/2836+NW+63rd+St,+Seattle,+WA+98107-2563,+USA/@47.6576141,-122.3662738,12z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x54906cda9fd92be7:0xa5d6a0d3376fd61e!2m2!1d-122.1978953!2d47.6451431!1m5!1m1!1s0x549015dbb2e13e67:0x45e41e25fdcb3c07!2m2!1d-122.3945787!2d47.6746202!3e0][Google Maps directions]].  Just get text, not the map
 
 * Matlab
 *** environment variables
@@ -6244,12 +6582,12 @@ The recommended one of the three possible ways to do it:
         text(xd, yd, nl, 'FontSize',20, 'FontWeight','bold', 'HorizontalAlignment','left', 'VerticalAlignment','middle')
 
 *** matlab-ruby
-
+    
     from: http://rubyforge.org/projects/matlab-ruby/
     docs: http://matlab-ruby.rubyforge.org/matlab-ruby/
 
     but there's an installation bug, which I've reported on rubyforge
-
+    
 *** input parameter parsing
 ***** Matlab [[http://blogs.mathworks.com/loren/2009/05/05/nice-way-to-set-function-defaults/%3Fs_cid%3DMLD0709naBL&s_v1%3D1-A23VP9_1-6MDK3W][article]] on several methods, including one builtin
 ***** use to fortify or replace [[file:~/lib/matlab/scottlib/chkArgs.m][chkArgs.m]]?
@@ -7327,7 +7665,7 @@ The recommended one of the three possible ways to do it:
 *********** [[http://office.microsoft.com/en-us/help/choosing-the-best-graphic-format-for-the-job-HA001056305.aspx][gif, png]]
 *********** [[http://www.mathworks.com/help/matlab/creating_plots/choosing-a-graphics-format.html][24 bit tiff and jpeg]]
 ********* [[http://office.microsoft.com/en-us/help/choosing-the-best-graphic-format-for-the-job-HA001056305.aspx][emf doesn't have transparency]] (this is [[http://www.mathworks.com/help/matlab/creating_plots/choosing-a-graphics-format.html#f3-103417][because it's a vector format]])
-******* saving to emf or pdf
+******* <<Saving to emf or pdf from R>>
 
         Saving to emf works best for powerpoint (but doesn't handle transparency)
         savePlot("tmp.emf",type='emf')
@@ -7336,18 +7674,22 @@ The recommended one of the three possible ways to do it:
         Pdf's are not so nice for powerpoint but good for latex
         dev.print(device=pdf,file=prntOutFNm)
 
-******* saving directly to powerpoint
+        Also: [[Powerpoint and R]]
 
-        This was a great time saver for matlab; still don't know how in R.
+******* <<Powerpoint and R>>
+********* saving directly to powerpoint
 
-********* [[http://cran.r-project.org/web/packages/R2PPT/index.html][R2PPT]] seems perfect but I can't get it to work
+          This was a great time saver for matlab; still don't know how in R.
 
-          It installs w/o dependent packages, some of which don't build on
-          Windows 7, for R 3.02.  One or the other of the two below are required:
+*********** [[http://cran.r-project.org/web/packages/R2PPT/index.html][R2PPT]] seems perfect but I can't get it to work
 
-*********** [[http://www.omegahat.org/RDCOMClient/][RDCOMClient]]
-*********** [[http://crantastic.org/packages/rcom][rcom]]
-********* Guys [[http://mcfromnz.wordpress.com/2013/09/03/ggplot-powerpoint-wall-head-solution/#comments][asks]] how for Mac.  Seems smart. Maybe he'll get an answer
+            It installs w/o dependent packages, some of which don't build on
+            Windows 7, for R 3.02.  One or the other of the two below are required:
+
+************* [[http://www.omegahat.org/RDCOMClient/][RDCOMClient]]
+************* [[http://crantastic.org/packages/rcom][rcom]]
+*********** Guys [[http://mcfromnz.wordpress.com/2013/09/03/ggplot-powerpoint-wall-head-solution/#comments][asks]] how for Mac.  Seems smart. Maybe he'll get an answer
+********* [[Saving to emf or pdf from R]]
 ***** bar plots
 ******* grouped bar plot w/ staggered/angled x-axis labels
         - staggered only: barp{plotrix}
@@ -8655,6 +8997,11 @@ plt.show()
 
         From somewhere...
 
+***** Python missing data summarizing
+******* [[https://github.com/ResidentMario/missingno][missingno: Missing data visualization module for Python.]]
+********* counts missing stuff in dataframe and displays
+********* can make a several kinds of missingness graph
+
 *** <<TensorFlow>>
 ***** <<IWES Laptop TensorFlow install>>
 
@@ -8742,7 +9089,7 @@ plt.show()
 
       The suffix 2 is used after autoreload, to reload all modules every time before executing the Python code typed. This will enable us to edit functions in Atom, debug them, and quickly import the code into our notebook, rather than having to write out a debug the function directly in Jupyter.
 
-***** Jupyterlab extensions 
+***** TRY Jupyterlab extensions 
 ******* listing/updating/uninstalling installed juypterlab extensions
 
         /Can also do it within Jupyterlab with extension manager/
@@ -8768,6 +9115,17 @@ plt.show()
         to disable
 
         jupyter labextension disable my-extension
+******* TRY Jupyterlab extensions to try
+********* TRY [[https://github.com/jupyterlab/jupyterlab-git][GitHub - jupyterlab/jupyterlab-git: A Git extension for JupyterLab]]
+
+          Somehow makes GIT diffing better.  I'm not sure what it actually checks in.  Is it really a /better notebook diff/?
+
+          Recommended here: [[https://towardsdatascience.com/3-must-have-jupyterlab-2-0-extensions-41024fe455cc][3 Must-have JupyterLab 2.0 extensions]]
+********* TRY [[https://github.com/krassowski/jupyterlab-lsp][GitHub - krassowski/jupyterlab-lsp: Language Server Protocol integration for ...]]
+
+          Rename variable/function and a bunch of autocompletes.  
+
+          Recommended here: [[https://towardsdatascience.com/3-must-have-jupyterlab-2-0-extensions-41024fe455cc][3 Must-have JupyterLab 2.0 extensions]]
 ******* jupyterlab extensions of note
 ********* Ones I'm using now
 
@@ -9291,6 +9649,9 @@ plt.show()
 ***** <<Dashboarding with Jupyter Notebooks>>
       From: [[https://www.youtube.com/watch?v=VtchVpoSdoQ][Dashboarding with Jupyter Notebooks, Voila and Widgets | SciPy 2019]]
      
+***** <<Powerpoint and Jupyterlab>>
+******* TRY [[https://github.com/timkpaine/jupyterlab_powerpoint][timkpaine/jupyterlab_powerpoint: Creating PowerPoints from jupyter]]
+
 ***** also [[Spyder Jupyter Notebooks]]
 ***** also [[Python Dashboarding]]      
 ***** [[SoS]]: Jupyter DAG runner
@@ -9628,6 +9989,7 @@ plt.show()
 ******* plotly/pandas "time series subplots" is close: [[https://plot.ly/pandas/time-series/#pandas-time-series-subplots][Pandas Time Series]]
 ******* pandas/series is closer: [[https://machinelearningmastery.com/time-series-data-visualization-with-python/][Time Series Data Visualization with Python]]
 ******* also [[R functions like my Matlab stackplot()]]
+***** [[https://medium.com/analytics-vidhya/how-to-do-a-sankey-plot-in-python-5298869f5e8e][Process Flow Plots: How to do a Sankey Plot in Python]]
 ***** multi-line plots in python
 ******* multi-time series with range slider (plotly)
         [[https://plot.ly/python/time-series/][Time Series With Rangeslider]]
@@ -9675,6 +10037,7 @@ plt.show()
 ******* <<Dash>>
 ********* [[https://dash.plot.ly/][Dash User Guide and Documentation - Dash by Plotly]]
 ********* Connects to [[Plotly]] and [[Plotly Express]]
+***** [[Powerpoint and Python]]
 *** <<Python Streaming>>
 ***** Installing Pyspark in a docker
 ******* Better: [[https://medium.com/@suci/running-pyspark-on-jupyter-notebook-with-docker-602b18ac4494][Running PySpark on Jupyter Notebook with Docker – Medium]]
@@ -9720,48 +10083,69 @@ plt.show()
 *** Symbolic computation: [[http://www.sympy.org/de/index.html][SymPy]]
 *** Tests in Python
 ***** guy [[https://www.youtube.com/watch?v=k55d3ZUF3ZQ][says]] to use pytest pkg, not built-in unittest.  For sure, it's shorter.
-*** <<Parallelization in Python>>
-***** Can't parallelize Python in threads
-      From: [[https://accu.org/index.php/journals/2342][ACCU :: Multiprocessing and Clusters in Python]]
-***** <<Parallelizing Python with fork>>
-      From: [[https://towardsdatascience.com/heres-how-you-can-get-a-2-6x-speed-up-on-your-data-pre-processing-with-python-847887e63be5][Here’s how you can get a 2–6x speed-up on your data pre-processing with Python]]
+*** Speeding up Python
+***** <<Speeding up Pandas>>
+******* <<Pandas Parallelization>>
+********* <<modin>>: parallelization
 
-      Also does: import concurrent.futures ([[Parallelizing Python across cores and machines]])
-***** <<Parallelizing Python across cores and machines>>
-      From:  [[https://accu.org/index.php/journals/2342][ACCU :: Multiprocessing and Clusters in Python]]
-      *Using* 
-      import concurrent.futures (uses forks, apparently: [[Parallelizing Python with fork]])
-      import mpi4py.futures
-      import multiprocessing
+          Parallelizes most commonly used pandas functions (most common is read_csv()) across cores, apparently knows about your job control (?).
 
-      (works for arbitrary code you write yourself)
-***** joblib + multiprocessing in Python
-      From: [[https://blog.dominodatalab.com/simple-parallelization/][Easy parallel loops in Python, R, Matlab and Octave]]
+*********** [[https://modin.readthedocs.io/en/latest/][MODIN readthdocs.io]]
+*********** [[https://towardsdatascience.com/get-faster-pandas-with-modin-even-on-your-laptops-b527a2eeda74][Get faster pandas with Modin, even on your laptops]]
+********* <<Hand-coded Pandas Parallel Apply>>
+*********** [[https://medium.com/@30mb1/6-ways-to-significantly-speed-up-pandas-with-a-couple-lines-of-code-part-1-2c2dfb0de230][6 ways to significantly speed up Pandas with a couple lines of code. P1]]
+*********** [[Pandarallel]] probably better
+********* <<Pandarallel>> (probably better that)
+*********** [[https://medium.com/@30mb1/6-ways-to-significantly-speed-up-pandas-with-a-couple-lines-of-code-part-1-2c2dfb0de230][6 ways to significantly speed up Pandas with a couple lines of code. P1]]
+*********** Probably [[https://medium.com/@30mb1/6-ways-to-significantly-speed-up-pandas-with-a-couple-lines-of-code-part-1-2c2dfb0de230][better]] than [[Hand-coded Pandas Parallel Apply]]
 
-      from joblib import Parallel, delayed
-      import multiprocessing
+******* <<Numba: JIT compiler>>
+********* [[https://medium.com/@30mb1/6-ways-to-significantly-speed-up-pandas-with-a-couple-lines-of-code-part-1-2c2dfb0de230][6 ways to significantly speed up Pandas with a couple lines of code. P1]]
+******* [[https://towardsdatascience.com/heres-how-to-make-pandas-iteration-150x-faster-20ccb5477128][Use itertuples() instead of iterrows()]]
+***** <<Parallelization in Python>>
+******* Can't parallelize Python in threads
+        From: [[https://accu.org/index.php/journals/2342][ACCU :: Multiprocessing and Clusters in Python]]
+******* <<Parallelizing Python with fork>>
+        From: [[https://towardsdatascience.com/heres-how-you-can-get-a-2-6x-speed-up-on-your-data-pre-processing-with-python-847887e63be5][Here’s how you can get a 2–6x speed-up on your data pre-processing with Python]]
+
+        Also does: import concurrent.futures ([[Parallelizing Python across cores and machines]])
+******* <<Parallelizing Python across cores and machines>>
+        From:  [[https://accu.org/index.php/journals/2342][ACCU :: Multiprocessing and Clusters in Python]]
+        *Using* 
+        import concurrent.futures (uses forks, apparently: [[Parallelizing Python with fork]])
+        import mpi4py.futures
+        import multiprocessing
+
+        (works for arbitrary code you write yourself)
+******* [[Pandas Parallelization]]
+******* joblib + multiprocessing in Python
+        From: [[https://blog.dominodatalab.com/simple-parallelization/][Easy parallel loops in Python, R, Matlab and Octave]]
+
+        from joblib import Parallel, delayed
+        import multiprocessing
      
-      # what are your inputs, and what operation do you want to 
-      # perform on each input. For example...
-      inputs = range(10) 
-      def processInput(i):
-      return i * i
+        # what are your inputs, and what operation do you want to 
+        # perform on each input. For example...
+        inputs = range(10) 
+        def processInput(i):
+        return i * i
  
-      num_cores = multiprocessing.cpu_count()
+        num_cores = multiprocessing.cpu_count()
      
-      results = Parallel(n_jobs=num_cores)(delayed(processInput)(i) for i in inputs)
+        results = Parallel(n_jobs=num_cores)(delayed(processInput)(i) for i in inputs)
 
-      # results is now [1, 4, 9 ... ]
+        # results is now [1, 4, 9 ... ]
 
-***** [[Parallelization for SciPy]]
-***** [[Hadoop]]
-***** [[https://dask.org/][Dask: Scalable analytics in Python]]
-******* [[https://towardsdatascience.com/why-every-data-scientist-should-use-dask-81b2b850e15b][Why every Data Scientist should use Dask?]]
-***** [[https://kubernetes.io/][Kubernetes]] (not just Python, more for containers)
-***** [[d6t/d6tflow]] (data versioning and parallelization)
-***** [[https://github.com/spotify/luigi][spotify/luigi is a Python module that helps you build complex...]] (dep run)
-***** [[https://airflow.apache.org/][Apache Airflow]]
-***** also [[Data Versioning]]
+******* [[Parallelization for SciPy]]
+******* [[Hadoop]]
+******* [[https://dask.org/][Dask: Scalable analytics in Python]]
+********* [[https://towardsdatascience.com/why-every-data-scientist-should-use-dask-81b2b850e15b][Why every Data Scientist should use Dask?]]
+******* [[https://kubernetes.io/][Kubernetes]] (not just Python, more for containers)
+******* [[d6t/d6tflow]] (data versioning and parallelization)
+******* [[https://github.com/spotify/luigi][spotify/luigi is a Python module that helps you build complex...]] (dep run)
+******* [[https://airflow.apache.org/][Apache Airflow]]
+******* also [[Data Versioning]]
+***** Func value caching: [[https://medium.com/better-programming/every-python-programmer-should-know-lru-cache-from-the-standard-library-8e6c20c6bc49][Every Python Programmer Should Know LRU_cache From the Standard Library]]
 *** <<Tidy (Long) Tables>> in Python
 
     The way Patrick Sudowe suggested that all SQL data s/b organized.  I guess it's the same for Python dataframes or whatever
@@ -9979,6 +10363,17 @@ plt.show()
 *** Probabilistic Programming in Python: [[https://pyro.ai/][Pyro]]
     See energytop.org for more on probabilistic programming
 
+*** <<Powerpoint and Python>>
+***** [[https://towardsdatascience.com/creating-presentations-with-python-3f5737824f61][Creating Presentations with Python]]
+***** [[Powerpoint and Jupyterlab]]
+***** also [[Programmatic PowerPoint]]
+*** <<PDF processing in Python>>
+
+    PyPDF2 seems to be the simplest one, based on the articles below.  But I haven't tried the others.
+
+***** [[https://medium.com/@umerfarooq_26378/python-for-pdf-ef0fac2808b0][Python for Pdf]] (many libraries, different and overlapping skills)
+***** [[https://www.geeksforgeeks.org/working-with-pdf-files-in-python/][Working with PDF files in Python]]
+***** [[https://levelup.gitconnected.com/modifying-pdf-files-using-python-64374fd0da2c][Modifying PDF Files Using Python]]
 * <<Data Versioning>>
 
   The [[POC versioning Machine Learning pipeline]] looks pretty good.  Has DVC parameterization and Jupyter notebooks.  Worth looking into?
@@ -10281,14 +10676,14 @@ plt.show()
 *** [[matlab-ruby]]
 ***** install instructions
 ******* Mac
-
+        
         sudo gem install matlab-ruby -- --with-matlab-include=/Applications/MATLAB_R2008a/extern/include/ \
         --with-matlab-lib=/Applications/MATLAB_R2008a/bin/maci
 
         *HOWEVER*
-
+        
         My test code, [[file:~/lib/ruby/test/matlab-ruby-test.rb]], gets this error message:
-
+        
         matlab-ruby-test.rb
         /opt/local/lib/ruby/gems/1.8/gems/matlab-ruby-2.0.3/lib/matlab/engine.rb:104:in `load_driver': no driver for matlab found (RuntimeError)
 	from /opt/local/lib/ruby/gems/1.8/gems/matlab-ruby-2.0.3/lib/matlab/engine.rb:34:in `initialize'
@@ -10687,6 +11082,390 @@ plt.show()
   (sometimes, this doesn't work b/c package expects config file in /usr)
 
 * <<Latex/Bibtex>>
+*** Bibtex Managers
+***** <<JabRef>>
+******* News and feature requests go [[http://discourse.jabref.org][here]]
+******* bug reports go [[https://github.com/JabRef/jabref/issues][here]]
+******* latest dev build: https://builds.jabref.org/master/
+******* [[https://github.com/JabRef/jabref/blob/master/CHANGELOG.md#unreleased][What's new in latest dev build]] 
+******* setting up multiple previews: =Options-> Preferences-> Entry preview=
+******* <<Setting JabRef setup so it can push latex cites to Emacs>>
+
+        =Options -> Preferences -> External programs -> "Settings for Emacs" -> "Path to Emacs (gnuclient or emacsclient)":=
+
+        C:\Program Files (x86)\GNU Emacs 25.1\bin\emacsclientw.exe
+        (or whatever emacs location is)
+
+        =Additional parameters  :=       -n -e
+        =Use Emacs 23 insertion string:= checked
+
+******* [[Pinning Jabref to Windows 7 taskbar]]
+******* [[Export JabRef bibtex to Office 2007 citation source]]
+******* [[http://www.ademcan.net/index.php?2012/01/30/15/23/05-using-jabref-references-in-word-documents][Using JabRef references in Word documents]]
+******* How I'd like to make JabRef more like emacs org mode
+        (response to a JabRef web survey on 11/12/15)
+
+        /Please, if you have anything else to suggest regarding the next versions of/
+        /JabRef, use the following field./
+
+        Make it easier to find the relationships between papers.  I've
+        accumulated a couple thousand references and often forget how ideas
+        I've seen before have something to do with what I'm looking at now.
+        I think two things are needed: A better way to express these
+        relationships; and a way to automatically discover them.
+
+********* I. Paper Relationship Expression:
+
+          I've reduced the problem of forgetting paper relationships by
+          maintaining a giant topic file in emacs org mode; every time I
+          enter a new paper in Jabref, I go to emacs and sprinkle the topic
+          file with links to it.  Since a paper might be related to many
+          topics, I often add many links -- the fact that there are many links
+          unfortunately does not fit well into the hierarchical mindmap
+          structure like that used in Docear.  Docear does have a cross-link
+          capability but it doesn't work well when there are many cross-links.
+
+          Better would be a "many-to-one" and "one-to-many" structure like
+          that in a Concept Map.  Concept Maps allow both hierarchy and
+          arbitrary relationship links -- they're really just directed graphs
+          with a nice interface for grouping nodes and redrawing.  The best
+          program I've found is at http://cmap.ihmc.us/ but it doesn't work
+          well with BibTex).
+
+          Anyway, Docear is mindmap based, so I'm sticking with org mode.  Org mode
+          can do the same thing as concept maps, is simple plain text, is
+          super flexible, and has hooks to every publishing tool I use.  It's
+          clunky and not graphical but it works.  Docear is going in the
+          right direction but the mindmap structure isn't expressive enough;
+          maybe Jabref could build an interface to a concept map tool, or an
+          arbitrary graph editor.
+
+********* II. Paper Relationship Discovery
+
+          I would love something like Evernote's approach.  Every time I save
+          a web article, Evernote tells me about related articles I've already saved.  Restricting the search to stuff I've already saved is better than telling me about all the articles in the
+          world that are related.  I haven't tried Docear's recommender
+          system.  If it's searching the world, well, I already have google;
+          if it's searching my own references first, then I'm really
+          interested.
+
+******* Italics in article title: use =\em{}=
+        From: [[https://sourceforge.net/p/jabref/discussion/318825/thread/6e71725d/][JabRef / Discussion / Help:Italics in titles?]]
+******* <<Fixing tiny fonts on Surface pro:>>
+        From: [[https://github.com/JabRef/jabref/issues/2885][Fonts are too small to read, inconsistent across the UI · Issue #2885 · JabRe...]]
+
+        For Windows 10, there is work-around to get a workable resolution (I wouldn't call it nice through):
+
+********* Find and Right click JabRef.exe in the installation folder -> Properties
+********* Go to Compatibility tab
+********* Check Override high DPI scaling behavior.
+********* Choose System for Scaling performed by
+
+******* [[Visualizing Bibliographies]]
+******** [[Fixing tiny fonts on Surface pro]] (a problem older JabRef had)
+***** <<Zotero>>
+
+The main reasons for trying Zotero are that some [[org-roam]] users say they use it, and that [[Zotero + Word]] is convenient.  Another is that it's quite good at extracting bibliography data from pdfs, which save a lot of time.  I could use merge that with energy.bib.
+
+But I would like it better if there was no export merge step.  Export is kind of handled by [[BetterBibtex]], which [[BBT automatically exports to bib file]], but there is still the problem of the Zotero attachment file structure, and also the possiblity that the exported bibtex file changes on every export, making [[Zotero + GIT]] problematic.
+
+Other problem is that JabRef uses "comments" and Zotero uses "notes"
+
+******* TODO first experiment
+
+********* import pile of Bass diffusion papers I haven't put in energy.bib yet
+
+*********** make a temporary directories
+*************  for exported bibtex
+*************  papers below it, like ref is now
+*********** set up staging area for paper import (see one of my linked-to articles)
+*********** link to papers dir
+*********** define where bibtex file goes
+*********** make a collection
+*********** import papers to Zotero
+*********** get one using FF extension too
+*********** export bibtex
+*********** fix keys
+*********** can I rename papers from keys?
+************* in Jabref?
+************* in Emacs?
+*************** try [[https://github.com/egh/zotxt-emacs][GitHub - egh/zotxt-emacs]]
+************* in Zotero after import?
+********* TODO figure out what to do about Notes/Comment
+*********** In Zotero?
+*********** In Bibtex (Emacs bib mode / JabRef)
+************* try [[https://github.com/egh/zotxt-emacs][GitHub - egh/zotxt-emacs]]
+*********** In Org-mode?
+******* [[https://www.zotero.org/download/][Zotero App Download]]
+******* <<Zotero + Bibtex>>
+
+        Zotero add-ons that help w/ zotero bibtex interface, for compatibility with Jabref and Emacs, Overleaf, plain Latex
+
+********* <<zotxt>>: org-mode and org-noter integration
+*********** guy uses it: [[https://github.com/org-roam/org-roam/issues/258][Supplying a title to `org-roam-find-file`]]
+*********** zotxt in: [[http://www.mkbehr.com/posts/a-research-workflow-with-zotero-and-org-mode/][A research workflow with Zotero and Org mode]]
+*********** has [[https://github.com/egh/zotxt-emacs][org-mode and org-noter]] support
+*********** [[https://whk.name/cookbook/zoteroPandoc/][requires]] that Zotero be running, either deskop or browser, I think
+*********** alternative [[https://whk.name/cookbook/zoteroPandoc/][apparently]] is [[BetterBibtex]] but seems like s/ use both?
+*********** also [[zotxt-emacs]] melpa extension
+********* <<zotfile>>: attach/rename/mv PDFs, hook to mobile, extract annotations
+          Can sync Zotero pdfs w/ annotations with another dir accessible by e.g. tablets (or, I suppose git, OneDrive, ...)
+
+*********** [[http://zotfile.com/#how-to-install--set-up-zotfile][ZotFile - Advanced PDF management for Zotero]]
+*********** <<rename pdfs to bibtex key with zotfile>>
+
+            _Configuration_
+
+            *I.* In [[BetterBibtex]] (BBT) define a ibtex citekey in "Extra" field.
+
+            *II.* From [[https://github.com/retorquere/zotero-better-bibtex/issues/768https://github.com/retorquere/zotero-better-bibtex/issues/768][here]] and, and somehow, but I can't quite fig out how,  [[http://zotfile.com/#user-defined-wildcards][here]]
+            
+            Zotero->Tools->Zotfile Preferences->Renaming Rules
+                  -> "Format for all item Types except Patents"
+                     AND "Format for patents"
+
+            put {"b": "citekey"} in these fields
+
+            _Warning_: this only works of the Extra field has been filled, 
+            and if the bibtex key has been "pinned' in BBT, I read somewhere
+
+*********** <<zotfile can put pdfs in a single cloud-shared folder>>
+
+            Configuration
+            1. Zotero->Tools->ZotfilePrefernces->GeneralSettings-> "Source Folder for Attaching New Files"
+            2. Set to folder where new pdfs&docs go for Zotero insertion.  I used "C:\Users\scott\OneDrive - Clean Power Research\ref\papers_staging"
+            3. ...Location of Files -> Custom Location.  I used "C:\Users\scott\OneDrive - Clean Power Research\ref\papers_zotero"
+            4. If check "use subfolder defined by..." then get subfolders underneath. So don't check it.
+            5. Ensure that [[BetterBibtex]] exports .bib file w/ BibTex citekeys you have defined (in all papers): [[define exported bibtex citekey with BBT]]
+            6. Ensure moved pdf names match bibtex key:  [[rename pdfs to bibtex key with zotfile]]
+            7. Stop Zotero could sync, so pdfs go where you want them:  Zotero->Edit->Preferences->sync->settings->untick "Sync attachment files in My LIbrary using xxx" (*Note*: could have synced w/ WebDAV but there is a bug with [[Sync with OneDrive and WebDAV]])
+
+************* [[https://www.nrel.colostate.edu/set-up-best-reference-manager/][This is how I did it: created the best reference manager...]]
+************* <<Link pdfs to single directory, use collections to sync bibtex>>
+*************** [[https://richardzach.org/2019/02/09/bibtex-friendly-pdf-management-with-zotero/][BibTeX-friendly PDF management with Zotero]]
+*************** [[https://www.researchgate.net/publication/325828616_Tutorial_The_Best_Reference_Manager_Setup_Zotero_ZotFile_Cloud_Storage/comments][The Best Reference Manager Setup (Zotero + ZotFile + Cloud St...]]
+
+********* <<BetterBibtex>>: citekeys, char encoding... 
+
+          /On export/, names [[https://retorque.re/zotero-better-bibtex/citing/][citkeys like the JabRef]] automatic key generator.  If you reimport them, they are preserved inside of Zotero -- it "pins" them so they aren't changed (can see this in the Zotero info pane).  If you want to make your own citekey, do this.  In additon, you can [[rename pdfs to bibtex key with zotfile]]
+
+*********** [[https://retorque.re/zotero-better-bibtex/][Better Bibtex for Zotero]]
+*********** [[https://github.com/retorquere/zotero-better-bibtex#zotero-better-biblatex-bbt-][GitHub - retorquere/zotero-better-bibtex: Make Zotero effective for us LaTeX ...]]
+*********** alternative [[https://whk.name/cookbook/zoteroPandoc/][apparently]] is [[zotxt]] (and guy likes Better Bibtex better)
+*********** <<BBT automatically exports to bib file>>, makes Emacs interface easier
+************* either upon zotero change or in the background, when idle
+************* a recommended enabling of the auto update of bibtex file
+              From: [[https://unimelb.libguides.com/c.php?g=565734&p=3897111][Zotero - LaTeX and BibTeX - Library Guides at U of Melbourne]]
+************* <<define exported bibtex citekey with BBT>>
+
+              right click on the paper->Better BibTex->Pin BibTex key
+
+              This copies the "Citation Key" field generated by Zotero
+              (top of field pane to right) to "Extra" field (bottom of
+              pane).
+
+              The you can edit the Citation Key to be what you want.
+
+              This key will then be the key used in the exported .bib file.  It will also be the paper file name, if you [[rename pdfs to bibtex key with zotfile]].
+
+
+              3. 
+*********** [[Link pdfs to single directory, use collections to sync bibtex]]
+            1. For both the web and standalone version [of Zotero], Export the required references similar to the simple method
+            2. This time however the Export pop up box will have a fourth option for you to tick Keep Updated. 
+            3. Tick both the Keep updated box and the Export notes box and save as a .bib file in the same folder as your LaTeX document
+
+************* /no way to sync, that I can find/, must manually reload .bib back into Zotero if you change an entry there.
+************* BUT then what about [[Zotero + GIT]]?
+************* <<BBT + git>>
+              From: [[https://retorque.re/zotero-better-bibtex/exporting/auto/][Better BibTeX for Zotero>Exporting items>Automatic export]]
+
+              BBT + Git pushes to Overleaf ([[https://github.com/retorquere/zotero-better-bibtex/projects/2][Overleaf setup]]).  What it does:
+
+                git pull
+                Performs the export
+                git add <your library file>
+                git commit -m <your library file>
+                git push
+                
+********* <<zotxt-emacs>> interfaces [[Zotero]] with [[https://github.com/egh/zotxt-emacs][org-mode and org-noter]]
+   
+          A bibliography entry paster (w/ hidden link) and interace to org-noter.  Can also open attachment of that link. [[zutilo]] pastes links instead, but you do the paste and org-link editing.
+
+*********** emacs lib for using  [[Zotero]] addon [[zotxt]]
+*********** [[https://github.com/egh/zotxt-emacs][zotxt melpa package]] provides org-zotxt-mode, etc.
+*********** package name is actually "zotxt"
+*********** what it does (works! instructions [[https://github.com/egh/zotxt-emacs][here]])
+************* inserts reference, a bibliio summary of Zotero entry, not link
+************* lets you open [[zotxt]] attachment (pdf, I suppose)
+************* <<org-zotxt-noter>> for taking [[org-noter]] notes on the attachment (what does this do?)
+*************** org-zotxt-noter is [[https://github.com/emacsmirror/zotxt/blob/master/org-zotxt.el][like `org-noter', but use Zotero]]
+*************** However, M-x org-zotxt-noter doesn't work, function not present in emacs. 
+*********** emacs lisp called to make a reference for: =C-" i=
+            
+            org-zotxt-insert-reference-link
+
+********* <<zutilo>>: links in org-mode to Zotero app + editing functions
+          Mainly from:  [[https://github.com/willsALMANJ/Zutilo][Zotero plugin providing some additional editing]]
+
+          Direct, Bibtex-less Zotero links inside of org_mode.  And other stuff. 
+
+Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and then edit link to make an org-mode link).  This is different than [[zotxt-emacs]] which pastes a bibliographic entry instead, although zutilo can copy a text version of what [[zotxt-emacs]] gets.  Note that zutilo and zotxt-emacs get the same underlying link to zotero.  Also, zutilo /can/ get the entry selected inside of Zotero if you give it a prefix argument (org-zotxt-insert-reference-link)
+
+*********** what it can do (works!)
+************* Zotero links inside of org-mode, both entries and collections (works!)
+              From: [[https://orgmode-exocortex.com/2020/05/13/linking-to-zotero-items-and-collections-from-org-mode/][Linking to Zotero items and collections from Org mode]]
+               and: [[https://www.researchgate.net/post/What_reference_manager_is_used_for_Emacs_users][What reference manager is used for Emacs users?]]
+              
+              Making a link in Zotero that can be copied to org-mode: 
+
+                In Zotero, right click on the collection, or on the
+                item, and then select /Copy select collection link/ or
+                /Copy select item links/.
+
+                When you paste this in Org mode, you’ll get a link that looks like:    
+                  zotero://select/library/collections/DY4K5MSJ for collections or like zotero://select/library/items/F8AFZ7YL for specific items.
+
+              When you C-c C-o (M-x org-open-at-point) with your
+              cursor on the link, your zotero will open up with the
+              relevant collection or item in focus, ready for you to
+              consult it.
+
+************* copy, delete and remove sets of tags
+************* create a book section item from a book reference, or a book item from a book reference
+************* relate several selected items
+************* copy path to attachment (configure in preferences)
+************* additional keyboard shortcuts
+************* TODO what is a link to a /collection/?
+*********** option link collections, not just single articles, is kind of cool
+*********** Documentation
+************* command refernce [[https://github.com/willsALMANJ/Zutilo/blob/master/docs/COMMANDS.md][Zutilo/COMMANDS.md· GitHub]]
+************* usage: [[https://github.com/willsALMANJ/Zutilo/blob/master/docs/USAGE.md][Zutilo/USAGE.md · GitHub]]
+
+*********** Installation: [[https://orgmode-exocortex.com/2020/05/13/linking-to-zotero-items-and-collections-from-org-mode/][Linking to Zotero items and collections from Org mode]]
+*********** Example of bibtex-less org_mode+Zotero? [[https://cpbotha.net/2019/09/21/note-taking-strategy-2019/#web-pages-and-articles][Note-taking strategy 2019. voices in my head]]
+*********** how different from [[zotxt-emacs]] ?
+********* A link paster better than [[zotxt-emacs]] or [[zutilo]]
+
+          Seems like you could just do what helm-bibtex or swiper-bibtex(?) do.  But get link from Zutilo instead.  In [[zotxt-emacs]], you'd by default search "everything" with the option of narrowing search to titles or whatever (oh, actually, this can be set with cut customization org-zotxt-default-search-method)
+
+          But there's no code for that right now.  Maybe I could write it?  /Seems easy/.
+
+*********** It would be mostly based on [[zotxt-emacs]], since that one doesn't require me to click something in Zotero.  
+*********** Maybe copy something from [[org-ref]] to build the full link with description.
+
+******* <<Zotero + GIT>>
+
+        Want to check in zotero data into git -- either zotero format or, preferably, bibtex.  
+
+********* Problems with zotero and direct use of git
+*********** messy zotero attachment structure 
+*********** Are zotero files even human readalbe, so can see changes?
+*********** zotero cloud is redundnant, [[https://forums.zotero.org/discussion/72835/using-git-in-combination-with-zotero-for-version-control-and-collaboration][possibly causing conflicts]]
+********* Problems with exporting a .bib file and using that
+*********** This workflow is possible
+************* [[BBT automatically exports to bib file]] 
+************* [[BBT + git]]
+*********** BUT it's mostly one-way: Zotero --> .bib
+************* Can export .bib, use it in org-mode or whatever
+************* and can change bibfile and reimport to zotero
+************* BUT reimport is an extra step (and super slow!)
+************* BUT are bibtex fields mangled/reordered?
+************* TODO
+******* <<Zotero + Word>>
+
+        This works quite well on Office 365, 5/30/20
+
+********* [[https://www.zotero.org/support/word_processor_plugin_usage][word processor plugin usage {Zotero Documentation}]]
+********* If problem: [[https://www.youtube.com/watch?v=aU1CyYzh3E0][Zotero Plugin Add-on Pc Microsoft Word Missing]]
+********* Other plugins: Open Office, Google Docs, Overleaf (kinda: [[BBT + git]])
+******* Zotero as only a reference downloader, pdf grabber
+********* [[http://disq.us/p/1ec7xqs][Muad Abd El Hay]] did Zotero --> [[org-ref]], but kept Zotero around
+******* Syncing Zotero across multiple machines
+********* Zotero syncing
+          From: [[https://www.zotero.org/support/sync][sync {Zotero Documentation}]]
+        
+********* Zotero Storage
+          From: [[https://www.zotero.org/storage][Zotero Storage]]
+
+          Can sync up to 300MB free to online [[https://www.zotero.org/storage][Zotero Storage]].  I'd pay $60/yr as of 5/30/20, and very soon, it would have been $120/yr for unlimited.
+********* <<Sync with OneDrive and WebDAV>>
+
+*********** *Supposedly*, [[zotfile can put pdfs in a single cloud-shared folder]].
+
+            *But* one guy somewhere said that it was dangerous to store the zotero database on cloud storage other than Zotero storage.  
+
+            *Yet* it seems that Zotero has the option of syncing with WebDav.  And, there is a way to sync to OneDrive using WebDAV: [[https://winscp.net/eng/docs/guide_microsoft_onedrive][Connecting Securely to Microsoft OneDrive with WebDAV]].
+
+            *So*, could put Zotero DB in my Windows account, above OneDrive and then Sync to there on any machine.  Or something like that.
+
+            *HOWEVER, THERE IS STILL AN [[https://forums.zotero.org/discussion/72411/how-to-sync-zotero-files-with-onedrive-via-webdav][MS BUG with WebDAV, as of 4/10/20]].*
+
+********* pdfs where everybody can find them easily
+*********** [[https://libanswers.caltech.edu/faq/204182][Where does Zotero store PDFs?]]
+*********** Storing pdfs on a non-Zotero cloud server 
+************* One way is explained [[https://www.researchgate.net/publication/325828616_Tutorial_The_Best_Reference_Manager_Setup_Zotero_ZotFile_Cloud_Storage/comments][here]].
+************* [[Sync with OneDrive and WebDAV]]
+
+
+*********** controlling pdf renaming is explained [[https://www.researchgate.net/publication/325828616_Tutorial_The_Best_Reference_Manager_Setup_Zotero_ZotFile_Cloud_Storage/comments][here]].
+
+******* <<Relations and Visualization in Zotero>>
+********* [[https://www.zotero.org/support/related][collections, tags and relations]]
+********* <<zotnet>>: can draw graphs of relations
+          From: [[https://www.exitsantacruz.com/zotnet/zotnet.php][ZotNet]]
+********* <<Zotero Voyant Export>>: visualized collections, but is _unmaintained_
+          From: [[https://github.com/corajr/zotero-voyant-export][corajr/zotero-voyant-export: Export a Zotero collecti]]ons
+******* [[org-roam workflow with Zotero, org-ref, org-noter, deft]]
+******* [[OR cite notes + org-roam-bibtex + org-noter: Zotero not main ref DB]]
+******* crazily complicated Zotero/BibTex/Emacs workflow 
+        From: [[https://www.researchgate.net/post/What_reference_manager_is_used_for_Emacs_users][What reference manager is used for Emacs users?]]
+********* See Bingwei Tian's answer (a graph in .jpg)
+********* Has Zotero, Mendely, Bibtex, Emacs, Latex, R...
+******* think about [[org-roam and bibtex]]
+******* Mobile apps for viewing Zotero
+
+        Not sure I care about this, but...
+
+********* [[https://play.google.com/store/apps/details?id=com.mickstarify.zooforzotero][Zoo for Zotero]] android app.  syncs w/ Official Zotero, eventually OneDrive, etc.
+
+          I installed it on my phone, and at least at first glance, it stores only the references, and not the pdfs
+
+********* People also use [[zotfile]] for syncing w/ Android and iPad tablets
+
+******* Turn off automatic snapshots
+        By default Zotero stores a screenshot of the page you got the reference from.  This clutters things up.  How to turn it off is explained [[https://www.researchgate.net/publication/325828616_Tutorial_The_Best_Reference_Manager_Setup_Zotero_ZotFile_Cloud_Storage/comments][here]].
+******* Paper getting sources
+        From:  [[https://www.researchgate.net/publication/325828616_Tutorial_The_Best_Reference_Manager_Setup_Zotero_ZotFile_Cloud_Storage/comments][here]]
+
+        There's a json file of places to look up papers, and, I guess pdfs.  But by default, there are only two.  You can change that by adding sources to the json file at:
+
+        C:\Users\scott\Zotero\locate\engines.json
+
+        Here is a [[https://mega.nz/file/fzRjgQxY#zKqKoDw2P6iia1VSV02cw-YNoylajYRAIkcZrE65EqM][more comprehensive search enginesjson file]], although it looks like the syntax may be out of date, comparing it to the default engines.json I find on my PC on 5/31/20
+
+******* Fixing Zotero database problems
+********* Purging zotero database
+
+*********** <<Delete local copy of Zotero DB>>
+
+            Select --> all
+            Go to reference pane and Middle --> "move items to trash
+            Go to collections, etc. pane and Middle --> "move items to trash"
+            Got to Trash (left pane) and "empty trash" or something like that
+
+*********** Delete online copy of Zotero DB
+            From: [[https://forums.zotero.org/discussion/47051/cannot-purge-server-items/][Cannot purge server items - Zotero Forums]]
+
+            First, you must [[Delete local copy of Zotero DB]].
+
+            Then, in desktop zotero:
+
+            Edit -> Preferences -> Sync -> Reset -> Replace online library
+********* [[https://github.com/retorquere/zotero-storage-scanner][zotero-storage-scanner: A Zotero plugin to remove the broken...]]
+
+***** [[org-ref]]
+***** [[BibTex and Emacs]]
 *** lint-like latex/bibtex syntax checkers
 ***** [[http://linux.die.net/man/1/lacheck][lacheck]]
 ***** [[http://baruch.ev-en.org/proj/chktex/][ChkTex]]
@@ -10743,6 +11522,7 @@ plt.show()
 ******* [[https://mathpix.com/#pricing][Free: 50 snips/month or student; Pro: $5/mo]]
 ******* <<Mathpix Emacs Plugin: mathpix.el>>
 ********* [[https://github.com/jethrokuan/mathpix.el][jethrokuan/mathpix.el: Mathpix Emacs Plugin]]
+*** [[PDF processing in Python]]
 * <<Knowledge as Graphs>>
 *** Tree / Mindmaps
 ***** MindMeister
@@ -10869,7 +11649,10 @@ plt.show()
 ***** [[https://www.mindomo.com/][Mindomo]]: DAG, commercial, online only
 ******* [[https://www.mindomo.com/pricing.htm][$35EUR/halfYear]]
 ******* lots of open file formats but I'm not sure if one is a DAG
-***** [[https://github.com/CompendiumNG/CompendiumNG/graphs/contributors][CompendiumNG]]: Compendium was cool in 2013; opensourced vers. seems dead
+***** <<Compendium>>
+******* Compendium was cool in 2013; opensourced vers. seems dead
+******* open source: [[https://github.com/CompendiumNG/CompendiumNG/graphs/contributors][CompendiumNG]]
+******* [[org-roam, compendium-style interactive graph, org-journal but doom/mac]]
 ***** [[PlantUML]] can draw them from emacs
 ***** _Videos_ about concept maps
 ******* [[https://www.youtube.com/watch?v=DdHG66opp5Y][JosephineMcMurry: Concept Mapping for Learning, Reflection, and Evaluation]]
@@ -10942,60 +11725,23 @@ plt.show()
 ***** [[http://alejandroerickson.com/j/2014/03/31/020-graph-your-bibtex-bibliography.html][Graph Your Bibtex Bibliography]] (authors-->papers only)
 ***** [[http://www.rubydoc.info/gems/bibtex-ruby/4.0.1/BibTeX/Bibliography/RDFConverter][Class: BibTeX::Bibliography::RDFConverter — Documentation for bibtex-ruby]]
 ***** [[DocEar]], kind-of...
+***** [[org-roam]]
+***** [[Roam Research]]
 *** <<The Brain>>
     Like that CMU Concept map think
 ***** [[https://thebrain.com/][TheBrain: The Ultimate Digital Memory]]    
 ***** emacs-clone: [[org-brain]]     
 ***** examples of use: [[https://thebrain.com/big-thinkers][TheBrain Big Thinkers]]
 *** <<Knowledge Graphs in Emacs>>
-***** <<org-roam>>: org-mode based, inspired by [[Roam Research]]
-******* [[https://github.com/org-roam][org-roam/org-roam: Rudimentary Roam replica with Org-mode]]
-******* might want to try [[Doom Emacs]] first
-******* main author: Jethrown Kuan
-********* blog:[[https://blog.jethro.dev/][Jethrow Kuan]]
-********* git: [[https://github.com/jethrokuan][jethrokuan (Jethro Kuan) · GitHub]]
-******* example: [[https://github.com/jethrokuan/braindump][JK's braindump]]: many org files, pdfs, 
-******* org-roam tutorials
-********* [[https://org-roam.readthedocs.io/en/master/][org-roam home]]
-********* [[https://blog.jethro.dev/posts/how_to_take_smart_notes_org/][How To Take Smart Notes With Org-mode]]
-********* [[https://rgoswami.me/posts/org-note-workflow/][An Orgmode Note Workflow]]
-******* <<org-roam on Windows>>
-********* [[https://org-roam.readthedocs.io/en/master/installation/][org-roam official install instructions]] mentions Windows
-********* [[https://www.reddit.com/r/emacs/comments/f97twk/using_orgroam_on_windows_10/][Using org-roam on windows 10 : emacs]] (messy)
-******* <<org-roam author migrated to Doom Emacs>>
-********* [[https://blog.jethro.dev/posts/migrating_to_doom_emacs/][Migrating to Doom Emacs]] (partly b/c emacs 27 has fancier isearch)
-********* also [[Doom Emacs]]
-******* has [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][bibtex interface]] to [[https://github.com/weirdNox/org-noter][org-noter]] pdf, etc. annotator (need Linux?)
-******* TRY things to think about before migrating to org-roam
-********* is it going to last?
-********* install Doom Emacs since [[org-roam author migrated to Doom Emacs]]
-********* install emacs 27 first, since org-roam likes it?
-*********** also doesn't require imagemagic anymore.  Does that make pdf-tools easier?
-********* .emacs --> .emacs.d (or init.el?) so comply w/ new, standard emacs setup
-********* get latex working on Windows 1st?
-********* install emacs+org-roam in [[WSL]] to avoid all the windows problems 
-*********** 1st thing would be to install wsl2, whenever that's available 
-*********** can I call emacs in wsl2 from windows?  Associate files, on taskbar, etc.?
-*********** could still have windows emacs for simpler workflows
-********* can I install everything needed for [[org-roam on Windows]]
-********* do I want to migrate comment out of energytop.org
-*********** would break current "everything in one place" that I have now in JabRef
-*********** would need to write a script to make individual .org note files for each bibtex entry
-*********** can I get the nice pdf-in-emacs thing in org-noter? 
-********* would 5k+ little org files be slower or faster than athat I have now? 
-********* can I tolerate the Drawer thing?
-********* is there a way to capture graphics and images?
-********* get info out of books?
-********* get info out of evernote?
-********* [[Copying out of Kindle book]]?  
-          Also, is [[Kindle]] easier/better than books, and do I want to be locked into it?
-********* Will this get a "what's related" feature like [[Evernote]] clipper has?
+***** [[org-roam]]
 ***** [[org-brain]]
+***** [[Neuron Zettelkasten]]
 ***** Sacha Chau's elisp for making a goal concept map (code at end of [[http://pages.sachachua.com/evil-plans/][this page]])
 ***** [[org-diagram drawing with plantuml-babel.org]]
 ***** [[http://orgmode.org/worg/org-contrib/org-wikinodes.html][org-wikinodes: CamelCase wiki-like links]] (kind of a graph)
 ***** [[Concept map-like stuff: superlabel, dedicated targets, org-brain]]
 ***** [[JabRef]]
+*** [[Relations and Visualization in Zotero]]
 * TRY <<Programming Practices>>
 *** Agile development
 ***** Florian's Agile video links
