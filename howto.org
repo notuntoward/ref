@@ -10103,8 +10103,6 @@ plt.show()
 ********* [[https://medium.com/@30mb1/6-ways-to-significantly-speed-up-pandas-with-a-couple-lines-of-code-part-1-2c2dfb0de230][6 ways to significantly speed up Pandas with a couple lines of code. P1]]
 ******* [[https://towardsdatascience.com/heres-how-to-make-pandas-iteration-150x-faster-20ccb5477128][Use itertuples() instead of iterrows()]]
 ***** <<Parallelization in Python>>
-******* Can't parallelize Python in threads
-        From: [[https://accu.org/index.php/journals/2342][ACCU :: Multiprocessing and Clusters in Python]]
 ******* <<Parallelizing Python with fork>>
         From: [[https://towardsdatascience.com/heres-how-you-can-get-a-2-6x-speed-up-on-your-data-pre-processing-with-python-847887e63be5][Here’s how you can get a 2–6x speed-up on your data pre-processing with Python]]
 
@@ -10117,29 +10115,109 @@ plt.show()
         import multiprocessing
 
         (works for arbitrary code you write yourself)
+******* <<Parallelization by process vs. threads in Python>>
+********* <<Can't parallelize Python in threads>>
+          From: [[https://accu.org/index.php/journals/2342][ACCU :: Multiprocessing and Clusters in Python]]
+********* TODO fill this in e.g. GIL, 
 ******* [[Pandas Parallelization]]
-******* joblib + multiprocessing in Python
-        From: [[https://blog.dominodatalab.com/simple-parallelization/][Easy parallel loops in Python, R, Matlab and Octave]]
+******* <<Python Parallelization Libraries>>
+        Overview: [[https://www.infoworld.com/article/3542595/6-python-libraries-for-parallel-processing.html][6 Python libraries for parallel processing | InfoWorld]]
+        Jupyterlab TestNotebooks: ..../Research/lib/python/sandbox/parallel/*
 
-        from joblib import Parallel, delayed
-        import multiprocessing
+        *Conclusion*: joblib seems best choice for effort/performance/deadline
+          o easiest
+          o'loki' allows escape from threads
+          o works on all platforms and is already sckikit learn default
+          o runs on Sagemaker easily.
+
+********* Ray
+          From: [[https://www.infoworld.com/article/3542595/6-python-libraries-for-parallel-processing.html][6 Python libraries for parallel processing | InfoWorld]]
+*********** [[https://github.com/werner-duvaud/muzero-general/issues/4][doesn't work on windows]] but [[https://github.com/ray-project/ray/issues/6900][WSL problems are maybe fixed]] 
+*********** minimal syntax
+*********** used for [[https://github.com/awslabs/amazon-sagemaker-examples/issues/1075][ML/RL on SageMaker]]
+*********** can spec CPU/GPU numbers
+*********** copying data is "kept to a minimum"
+*********** can do cluster management
+*********** can run on local hardware or cloud computing platform
+*********** [[https://medium.com/distributed-computing-with-ray/easy-distributed-scikit-learn-training-with-ray-54ff8b643b33][works w/ scikit-learn]] 
+*********** [[https://docs.ray.io/en/latest/using-ray-with-tensorflow.html][works w/ keras/tensorflow]] 
+*********** [[https://docs.ray.io/en/master/using-ray-with-pytorch.html][works w/ pytorch]] 
+*********** each machine runs it's own ray scheduler, so scheduled task probs can be handled @ machine level, not whole cluster
+********* Dask
+          From: [[https://www.infoworld.com/article/3542595/6-python-libraries-for-parallel-processing.html][6 Python libraries for parallel processing | InfoWorld]]
+*********** looks like ray
+*********** does its own task scheduling but it's centralized, unlike ray's
+*********** understands python data frameworks
+*********** parallelizes data structures
+*********** schedules tasks @ cluster level
+*********** actor model: sounds like a job that dask starts once on a machine, waits for other nodes to call it
+*********** [[https://dask.org/][Dask: Scalable analytics in Python]]
+*********** [[https://towardsdatascience.com/why-every-data-scientist-should-use-dask-81b2b850e15b][Why every Data Scientist should use Dask?]]
+********* Dispy
+          From: [[https://www.infoworld.com/article/3542595/6-python-libraries-for-parallel-processing.html][6 Python libraries for parallel processing | InfoWorld]]
+*********** Linux/MacOS/Windows machines "work equally well"
+*********** looks a little lik python's "multiprocessing" built-in
+*********** precise job control, but a bit more work
+*********** input/output file transfers handled as part of job distribution
+********* Pandaral-lel
+          From: [[https://www.infoworld.com/article/3542595/6-python-libraries-for-parallel-processing.html][6 Python libraries for parallel processing | InfoWorld]]
+*********** only parallelizes pandas
+*********** doesn't work on Windows, but does work on WSL, Liunx, MacOS
+********* lpyparallel
+          From: [[https://www.infoworld.com/article/3542595/6-python-libraries-for-parallel-processing.html][6 Python libraries for parallel processing | InfoWorld]]
+*********** focus on parallelizing Jupyter notebooks
+*********** works w/ map() or notebook maginc commands e.g. %px to parallelize a python statement, somehow
+********* Joblib
+          From: [[https://www.infoworld.com/article/3542595/6-python-libraries-for-parallel-processing.html][6 Python libraries for parallel processing | InfoWorld]]
+*********** simple
+*********** uses threads or processes
+*********** transparent disk cache, helps avoid repeating work, somehow
+*********** job suspend/resume is possible
+*********** data shares w/ numpy.memmap
+*********** mananging across multi-computers is hard
+************* standard use is single host only
+************* Joblib pipeline can dod multi computers but might be more complex
+           than other frameworks for this
+*********** joblib on Sagemaker: [[https://medium.com/@rbmsingh/using-96-cores-on-aws-sagemaker-9524b71bb21d][Using 96 Cores on AWS SageMaker]]
+*********** joblib + multiprocessing in Python
+************* [[https://scikit-learn.org/stable/modules/generated/sklearn.utils.parallel_backend.html][Sckit-learn parallization default]] is [[joblib('loky')]]
+************* v. good /basic/ tutorial: [[https://coderzcolumn.com/tutorials/python/joblib-parallel-processing-in-python#4.1][joblib - Parallel Processing in Python]]
+************* simple joblib example code
+              From: [[https://blog.dominodatalab.com/simple-parallelization/][Easy parallel loops in Python, R, Matlab and Octave]]
+
+              from joblib import Parallel, delayed
+              import multiprocessing
      
-        # what are your inputs, and what operation do you want to 
-        # perform on each input. For example...
-        inputs = range(10) 
-        def processInput(i):
-        return i * i
+              # what are your inputs, and what operation do you want to 
+              # perform on each input. For example...
+              inputs = range(10) 
+              def processInput(i):
+              return i * i
  
-        num_cores = multiprocessing.cpu_count()
+              num_cores = multiprocessing.cpu_count()
      
-        results = Parallel(n_jobs=num_cores)(delayed(processInput)(i) for i in inputs)
+              results = Parallel(n_jobs=num_cores)(delayed(processInput)(i) for i in inputs)
 
-        # results is now [1, 4, 9 ... ]
+              # results is now [1, 4, 9 ... ]
+
+************* <<joblib('loky')>>
+*************** 'loky' is [[https://scikit-learn.org/stable/modules/generated/sklearn.utils.parallel_backend.html][single-host, process-based parallelism]] (skl default)
+*************** process-based is good 
+***************** [[Can't parallelize Python in threads]]
+***************** [[Parallelization by process vs. threads in Python]]
+
+*************** single-host is maybe bad: doesn't run on cluster
+*************** example of bare joblib('loky')
+                From: [[https://coderzcolumn.com/tutorials/python/joblib-parallel-processing-in-python#4.1][joblib - Parallel Processing in Python]]
+
+                %%time
+
+                with joblib.parallel_backend(backend="loky"):
+                  parallel = Parallel(verbose=100)
+                  print(parallel([delayed(slow_power)(i, 5) for i in range(10)]))
 
 ******* [[Parallelization for SciPy]]
 ******* [[Hadoop]]
-******* [[https://dask.org/][Dask: Scalable analytics in Python]]
-********* [[https://towardsdatascience.com/why-every-data-scientist-should-use-dask-81b2b850e15b][Why every Data Scientist should use Dask?]]
 ******* [[https://kubernetes.io/][Kubernetes]] (not just Python, more for containers)
 ******* [[d6t/d6tflow]] (data versioning and parallelization)
 ******* [[https://github.com/spotify/luigi][spotify/luigi is a Python module that helps you build complex...]] (dep run)
