@@ -541,6 +541,7 @@ TODO: make this a general function."
 ;; TODO: shrink some more and put a bunch of other window functions on
 ;; this hydra?  Maybe frames, buffers, ...
 ;; TODO compare w/ ace-window and hydr: https://www.youtube.com/watch?v=_qZliI1BKzI
+(use-package hydra) ; should probably put some hydra defs inside of it, or this inside of ivy
 (defhydra hydra-window (:color pink :hint nil :timeout 20)
   "
      Move          Swap             Resize         Split
@@ -3281,9 +3282,6 @@ This function avoids making messed up targets by exiting without doing anything 
   ;; not strictly necessary
   (counsel-mode 1))
 
-(use-package hydra) ; should probably put some hydra defs inside of it, or this inside of ivy
-;;(use-package ivy-hydra) ; bound to C-o (is this helpful?)
-
 ;; from: https://github.com/abo-abo/swiper/issues/2021
 ;;; Ivy Hydra
 ;; replace the ivy-hydra with this learning one
@@ -4123,7 +4121,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (erefactor helm-org-rifle deft zotxt zotxt-emacs deadgrep emacsql-sqlite3 cask paradox wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+    (deadgrep erefactor helm-org-rifle deft zotxt zotxt-emacs emacsql-sqlite3 cask wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
