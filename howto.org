@@ -3530,6 +3530,32 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 
     Then restart
 
+*** Internet and maybe Power fix
+    Reinstalling all hardware drivers from [[https://support.microsoft.com/en-us/help/4023482/surface-download-drivers-and-firmware][here]] was recommended for fixing the randomly failing ethernet and WiFi problem.  I think I remember that it was also the fix for the problem with the Surface Dock disconnecting and reconnecting.
+
+    The driver I installed on 9/22/20 was: SurfaceBook2_Win10_ 18362_*_*.msi
+
+    This was on Win10 build 19041; according to the [[https://support.microsoft.com/en-us/help/4023482/surface-download-drivers-and-firmware][instructions]], I should have installed SurfaceBook2_Win10_ 19041_*_*.msi.  But the tech support said 18362, and never answered my question about the discrepancy.
+
+    _I don't know yet if this actually worked_
+
+    *Randomly failing ethernet and WiFi problem*: where the connection randomly switched from ethernet (via Surface dock) to WiFi but then showed that there was no internet connection on the taskbar icon; in fact, the internet connection was actually working (I could browse the web on FireFox) but parts of the OS thought it wasn't, e.g. logging into teams or outlook.  The fix was recommended by MS support (SRX1509219786ID - TS).  Follow the many messages on this [[https://mail.google.com/mail/u/0/#sent/FMfcgxwJXxrwFRzCNVmKbJPKJXqnPfdH][looonnngg email chain]].
+
+* Computer Devices
+*** Webcam
+***** Logitech C920e Pro HD
+      Bought here: [[https://mail.google.com/mail/u/0/#search/in%3Ashop+logitech/FMfcgxwJXpQsskDvGSSQMDDdVdmjzBKq][Ebay order]].  The "e" in C920e means environmentally friendly, compact packaging" but the camera is supposed to be the same as the C920.
+
+      Problem was, it came w/o drivers, and I can't find them on the logitech website.  A discussion of this problem is [[https://answers.microsoft.com/en-us/skype/forum/all/how-can-i-adjust-settings-for-logitech-c920-hd-pro/b9662044-81f1-4d72-8046-e9ca579d16d1][here]], apparently w/o a solution.
+
+******* [[https://en.softonic.com/download/logitech-webcam-software/windows/post-download][driver download]] from softonic
+
+        During install, said driver ws incompatible w/ my camera.  When I try to use other logitech program for camera (in this download), it says I'm using a generic UWP camera driver w/ limited functionality. And sure enough, I can't zoom, pan, adjust the resolution, whatever.  The camera looks at what you point it at mechanically, and no adjustments are possible.
+
+*** Monitors
+***** Monitors by size, resolution, ...: [[https://pcpartpicker.com/products/monitor/#r=256001440&F=381000000,660400000&C=0][Choose A Monitor - PCPartPicker]]
+***** [[https://www.urtech.ca/2019/04/solved-complete-list-of-screen-resolution-names-sizes-and-aspect-ratios/][Complete List of Screen Resolution Names, Sizes and Aspect Ratios]]
+*** [[https://pcpartpicker.com/][Pick parts. Build your PC. Compare and share. - PCPartPicker]]
 * Old Computers
 *** Microsoft Surface Pro 3
 ***** Screenshots and snips
@@ -3812,16 +3838,24 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
     
       Add the following to END of the PATH environment variable:
 
-      c:\tools\msys64\usr\bin
-      c:\tools\msys64\usr\local\bin
+        c:\tools\msys64\usr\bin
+        c:\tools\msys64\usr\local\bin
 
       (choco inself adds c:\tools\msys64 , which allows you to start mingw64.exe
       (put it at the end so that anaconda python, etc. is the default executable)
       
       Install diff, etc. using msys2's package manager
 
-      pacman -S base-devel
-      pacman -S unzip
+        pacman -S base-devel
+        pacman -S unzip
+
+      To _update all packages_, in an admin command shell:
+
+        pacman -Syu  [may need to do it several times until everything is rebuilt]
+
+      If it can't unlock databases, do:
+
+        del C:\tools\msys64\var\lib\pacman\db.lck
     
 ***** <<WSL>>: Windows System Linux
       This is about using Windows 10 with e.g. Ubuntu Bash
@@ -4144,6 +4178,14 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ******* Upgrading all Chocolatey packages
 
         choco upgrade all
+
+******* LIst installed packages
+
+          choco list --local-only
+
+        Or:
+
+          clist -l
 
 ***** Windows package management overviews
 ******* Chocolatey says use Chocolatey, not OneGet:  [[https://chocolatey.org/faq#how-is-chocolatey-different-than-onegetpowershell-package-management][ChocolateyFAQs]]
@@ -5962,6 +6004,18 @@ The recommended one of the three possible ways to do it:
       git add README.md
       git commit -m "Initial commit"
       git push -u origin master      
+***** Git branches
+******* Making a branch
+********* making a branch within an already checked out repositoryu
+
+          git checkout -b <branch name>
+******* updating a git branch
+        From: [[https://remarkablemark.org/blog/2017/06/02/git-update-branch/][How to update a Git branch]]
+
+        while in the branch
+
+        git pull
+        
 ***** Git submodules
 
       A way of making a meta version describing the versions of all packages/libraries used.  Solves the library problem, and makes it possible to work on chunks separately while still being able to version the whole.
@@ -5998,7 +6052,7 @@ The recommended one of the three possible ways to do it:
 ******* [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
 ******* [[Git version control]]
 ******* [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
-***** point cloned repository to my github fork
+***** Point cloned repository to my github fork
       Inspired by user IBwWG, here: [[https://gist.github.com/jagregory/710671][How to move to a fork after cloning]]
 
       I cloned a repository (https://github.com/glm-tools/pyglmnet/), made a branch named dataset_and_ex_fixes, and then did some bugfixes
@@ -9906,6 +9960,50 @@ plt.show()
 ********* [[http://nbviewer.jupyter.org/github/bokeh/bokeh-notebooks/blob/master/quickstart/quickstart.ipynb][Bokeh Jupyter Notebook Viewer]] (examples)
 ********* [[R Bokey]]
 ******* [[http://www.pyqtgraph.org/documentation/index.html][pyqtgraph]]: ver interactive/fast for large data, not as publishable as ggplot
+***** pandas graphics in python
+      Default support is a shell around matplotlib, but lately, it has added support for [[https://pandas.pydata.org/pandas-docs/stable/ecosystem.html?highlight=filter][other libraries]], some interactive.  These implement a [[https://plotly.com/python/pandas-backend/][subset of the default]] matlplotlib functionality, at least for plotly e.g. it doesn't do =suplots=True=.
+
+******* plotly support in pandas
+********* plotly installation for pandas plots
+          From: https://plotly.com/python/getting-started/
+
+          Article gives version nums, but no version nums worked fine on 9/30/20, python v3.7.7
+
+          conda install plotly 
+          conda install jupyterlab ipywidgets
+          # Jupyter widgets extension
+          jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget
+
+          In addition, from here: https://binnisb.github.io/blog/datascience/2020/04/02/Plotly-in-lab.html
+
+          # jupyterlab renderer support
+          jupyter labextension install jupyterlab-plotly --no-build
+
+          # FigureWidget support
+          jupyter labextension install plotlywidget --no-build
+
+          # Build extensions (must be done to activate extensions since --no-build is used above)
+          jupyter lab build
+
+********* using plotly backend in pandas
+          From: https://plotly.com/python/pandas-backend/
+
+          import pandas as pd
+          pd.options.plotting.backend = "plotly"
+
+          Then, for plot kind M, run as df.plot.M()
+
+          kinds (methods): scatter, line, area, bar, barh, hist and box.
+
+          plotly call to use kind M:
+            df.plot(kind='M')  OR df.plot.M()
+    
+          hist and box can also be called a bit more compactly:
+          
+            df.hist()
+            df.boxplot()
+
+******* bokeh support in pandas
 ***** <<Python ggplot2>>
 
       At least two packages are [[R ggplot2]] ports.
