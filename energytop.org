@@ -435,7 +435,7 @@
 ***** [[File:energy.bib::stackexchange15cholRandGen][Commenter 2015: Generating]] RV's with cholesky: how it works
 *** <<Intrinsic Dimension>>
 
-    - [[https://en.wikipedia.org/wiki/Intrinsic_dimension][Intrinsic Dimension]] :: how many variables are needed to represent the signal. For a signal of N variables, its intrinsic dimension M satisfies 0 ≤ M ≤ N.
+    - [[https://en.wikipedia.org/wiki/Intrinsic_dimension][Intrinsic Dimension]] :: how many variables are needed to represent the signal. For a signal of N variables, its intrinsic dimension M satisfies 0  M  N.
 
     See also [[Degrees of Freedom]]
 
@@ -1496,6 +1496,8 @@
 *** <<Dropout Regularization>>
 ***** [[cite:Srivastava14dropoutSmpl][Srivastava et al. 2014: Dropout]] (seems to be main ref.)
 ***** [[Dropout Regularization for Deep Learning]]
+***** <<LSTM dropout for conf intervals>>
+      See [[https://www.evernote.com/l/AA3e22epgj1PkI8f_ccoc09bWo9rtV2sEpk/][How to generate neural network confidence intervals with Keras]]
 *** [[Ridge Regression]]
 *** <<Tikhonov Regularization>>
 ***** [[file:energy.bib::Wikipedia15tikhreg][Wikipedia 2015: Tikhonov]] reg.
@@ -6543,6 +6545,8 @@ sera
 ******* [[cite:Li11trendSVD][Li et al. 2011: Trend SST]] trend SVD
 ******* [[cite:Lageras10copulaMarkov][Lageras 2010: Copulas Markovian]]
 ******* [[Trend Detection]]
+***** <<Markov to Copula>>
+******* [[cite:Zhuang20pvProbSkyState][Zhuang et al. 2020: simple solar prob frcst Markov sky state]]
 ***** see [[Non-stationary covariance]]
 ***** [[file:energy.bib::calsaverini09copulainfo][Calsaverini & Vicente 2009]] (copula info: when corr. in gaussian copula won't work)
 ***** why errors may have lag dependence: [[file:energy.bib::lu07lagensemble][lu et al. 2007: short range numerical]]
@@ -8268,6 +8272,7 @@ Scott
 *** <<Solar forecasting and features>>
 ***** the slope thing for QR
 ***** [[file:energy.bib::Meer18reviewProbPVfrcstNetDmd][Meer et al. 2018: Review Probabilistic PV and demand forecasting]]
+***** [[cite:Zhuang20pvProbSkyState][Zhuang et al. 2020: simple solar prob frcst Markov sky state]]
 ***** [[cite:SaintDrenan17probRgnlPVfrcst][Saint-Drenan et al. 2017 prob. rgnl. solar frcst]] (intro might be a good read for GIZ class?)
 ***** [[cite:Perez11paramIrradVar][Perez et al. 2011: Parame Site-spec Variability]]
 ***** [[cite:USDOE16solFrcstMaxGridVal][USDOE 2016: Solar Forecasting val Grid Cost and Props]]
@@ -8295,21 +8300,32 @@ Scott
 ***** [[cite:BrancucciMartinezAnido16valDAsolPowFrcstImp][Martinez-Anido et al. 2016 val sol pow DA frcst]]
 ***** [[cite:Munkhammar17solarIrradSpatCpla][Munkhammar et al. 2017 solar irrad copula]]
 ***** [[cite:Wu15pvGenPairCpla][Wu et al. 2015: Versatile Probability Model PV Copula]]
+***** [[cite:Zhuang20pvProbSkyState][Zhuang et al. 2020: simple solar prob frcst Markov sky state]]
 ***** [[file:energy.bib::Lave13solarVarWvlt][Lave et al. 2013: Wavelet Based Variability]]
 ***** [[cite:Newport17introSolarRad][Newport 2017: Introduction to Solar Radiation]] 
 ***** [[https://www.nrel.gov/midc/solpos/solpos.html][MIDC SOLPOS Calculator]]: time/place --> solar position and intensitytime/
 ***** Satellite to Irradiance
 ******* [[cite:Ponsukcharoen12irradFrcstSat][Ponsukcharoen 2012: Solar Irradiance Forecast Class Notes]]
 ***** <<Aerosol Optical Depth (AOD)>>
-***** 
-
       Wavelength-dependent attenuation of solar signal that can be measured by satellites near the horizon (so they look through the most atmosphere).
 ******* [[file:energy.bib::UniWisconsin18aeroOptDepthQG][U Wisconsin 2018: Aerosol Optical Depth Quick Guide]]
 ******* TODO [[http://cimss.ssec.wisc.edu/goes/goes-r/training/recordings/Aerosol/presentation_html5.html?lms=1][GOES-R Aerosols in AWIPS]] (online tutorial presentation)
+***** Solar Forecast Software
+******* [[https://pvlib-python.readthedocs.io/en/stable/index.html][pvlib]]: comprehensive PV stuff
+********* especially [[https://pvlib-python.readthedocs.io/en/stable/forecasts.html][pvlib foreasting module]]
+*********** downloads NWP and computes forecasted power & other things
+*********** [[https://pvlib-python.readthedocs.io/en/stable/installation.html#standardrelease][conda install]] for using forecasting module
+********* pvlib solar time functions
+*********** [[https://pvlib-python.readthedocs.io/en/stable/generated/pvlib.location.Location.html][pvlib.location.Location]]: returns time zone of a location
+********* [[https://pvlib-python.readthedocs.io/en/latest/generated/pvlib.solarposition.sun_rise_set_transit_ephem.html][pvlib.solarposition.sun_rise_set_transit_ephem]]: rets sun rise/set xit
+******* [[https://pypi.org/project/suntime/][suntime]]: really simple.  have the option to do everything in UTC, but can do local time too.
+******* [[https://astral.readthedocs.io/en/latest/][Astral]]: almost as simple as suntime for sunset/sunrise, get them with one call instead of 2
+******* [[https://pypi.org/project/solartime/][solartime]]
 ***** <<PV System Diagnostics>>
 ******* [[file:energy.bib::Meyers19pvDgrdAnlysisNoPhysMdl][Meyers et al. 2019: Signal Processing PV degrade no phys]] :SolarAnywhere:DataQual:
 ******* [[file:energy.bib::Meyers18statClearSkyFit][Meyers et al. 2018: Statistical Clear Sky Fitting Algorithm]] :SolarAnywhere:DataQual:
 ******* [[file:energy.bib::Meyers19toolsPVdatSci][Meyers 2019: Tools PV Data Sci]]
+******* [[https://pvlib-python.readthedocs.io/en/stable/index.html][pvlib]] might be useful for diagnostics
 ***** see also: [[file:energytop.org::*Wind%20and%20Solar%20Forecast%20Error%20Dependence][Wind and Solar Forecast Error Dependence]]
 *** <<Price Forecasting>>
 ***** couldn't do it on DE intraday mkt?: [[file:energy.bib::Moehrlen12tradeStrtgyRESeeg2012][Moehrlen et al. 2012: Investigation EEG]]
@@ -10934,11 +10950,11 @@ Scott
 
       Some recent papers, but they have a ton on their page:
 
-      Florian Ziel (Viadrina): Electricity price forecasting using sale and purchase curves: The X-Model
-      •Philip Beran (Uni Duisburg-Essen): The Fukushima-Effect and Plunge in German Electricity Wholesale Spot Prices - Analysis with a Parsimonious Fundamental Electricity Market Model
-      •Franziska Schulz (HU Berlin): Assessing the Impact of Wind Energy on Electricity Prices in Germany using Markov-Switching models with time-varying probabilities
-      •Arne Vogler (Uni Duisburg-Essen): Forecasting the Distribution of Hourly Electricity Spot Prices
-      •Raik Becker (UFZ): Räumlich und zeitlich hochaufgelöster Erneuerbareneinspeise- und Lastzeitreihen von 1990 bis 2015
+******* Florian Ziel (Viadrina): Electricity price forecasting using sale and purchase curves: The X-Model
+******* Philip Beran (Uni Duisburg-Essen): The Fukushima-Effect and Plunge in German Electricity Wholesale Spot Prices - Analysis with a Parsimonious Fundamental Electricity Market Model
+******* Franziska Schulz (HU Berlin): Assessing the Impact of Wind Energy on Electricity Prices in Germany using Markov-Switching models with time-varying probabilities
+******* Arne Vogler (Uni Duisburg-Essen): Forecasting the Distribution of Hourly Electricity Spot Prices
+******* Raik Becker (UFZ): Rauumlich und zeitlich hochaufgelster Erneuerbareneinspeise- und Lastzeitreihen von 1990 bis 2015
 
 ***** Bad design can make wind actually increase GHG's
       (ref's from Pierre)
@@ -11067,7 +11083,7 @@ Scott
           o a very interesting theme is: what mistake is responsible for
           which kind of frequency control (does the wind forecast error
           increase the amout of tertiary control or secondary
-          control). There hasn´t been down so much research on this topic
+          control). There hasn't been down so much research on this topic
           yet (I think due to the missing of data with such a high time
           resoution). Frunt deals with this question. (Frunt)
 
@@ -11290,32 +11306,15 @@ o Significant grid users, i.e. All generating plants> 0.8 kW and consumers or ag
 
 It contains regulations, inter alia. to:
 
-◦Operation planning
-
-
-◦Operational safety
-
-
-◦Leistungs frequency control
-
-
-◦Spannungs- / reactive power management
-
-
-◦Kurzschlussleistung
-
-
-◦Netzschutz
-
-
-◦N-1 cases
-
-
-◦Reserve management
-
-
-◦TSO / DSO interface
-
+  -Operation planning
+  -Operational safety
+  -Leistungs frequency control
+  -Spannungs- / reactive power management
+  -Kurzschlussleistung
+  -Netzschutz
+  -N-1 cases
+  -Reserve management
+  -TSO / DSO interface
 
 The preliminary version is available here:
 
@@ -11342,31 +11341,15 @@ Significant grid users, i.e. All generating plants> 0.8 kW and consumers or aggr
 
 It contains regulations, inter alia. to:
 
-o Operation planning
-
-
-o Operational safety
-
-
-o Leistungs frequency control
-
-
-o Spannungs- / reactive power management
-
-
-o Kurzschlussleistung
-
-
-o Netzschutz
-
-
-o N-1 cases
-
-
-o Reserve management
-
-
-o TSO / DSO interface
+  o Operation planning
+  o Operational safety
+  o Leistungs frequency control
+  o Spannungs- / reactive power management
+  o Kurzschlussleistung
+  o Netzschutz
+  o N-1 cases
+  o Reserve management
+  o TSO / DSO interface
 
 
 The preliminary version is available here:
@@ -11381,12 +11364,12 @@ Best regards,
 
 heather
 ******* DE
-  >>> Erika Kämpf 8/14/2017 9:44 AM >>>
+  >>> Erika Kampf 8/14/2017 9:44 AM >>>
  Hallo zusammen,
 die System Operation Guideline wird europaweit gelten und betrifft vor allem: 
 TSOs, 
 Transmission connected DSOs, 
-Significant grid users, d.h. alle Erzeugungsanlagen > 0.8 kW und Verbraucher oder Aggregatoren mit der Möglichkeit mehr als 50 MVA zu beeinflussen, sowie alle an das Übertragungsnetz angeschlossenen Verbraucher.
+Significant grid users, d.h. alle Erzeugungsanlagen > 0.8 kW und Verbraucher oder Aggregatoren mit der Moeglichkeit mehr als 50 MVA zu beeinflussen, sowie alle an das Ubertragungsnetz angeschlossenen Verbraucher.
 Sie enthalt Vorschriften u.a. zu:
 o Betrieblicher Planung
 o Betrieblicher Sicherheit
@@ -11483,10 +11466,10 @@ Erika
 ********* params needed at line
           [[file:energy.bib::Daconti03incrPowTrans][Daconti & Lawry 2003: Increasing power transfer]]
 
-          • Ambient Temperature
-          • Wind Speed
-          • Wind Diraection
-          • Solar raadiation
+          o Ambient Temperature
+          o Wind Speed
+          o Wind Diraection
+          o Solar raadiation
 
 ********* must account for shading and topography: [[file:energy.bib::Muhr08weathParamLineMon][Muhr et al. 2008: Experiences with Weather]]
 ******* [[http://www.isprs.org/congresses/beijing2008/proceedings/8_pdf/1_WG-VIII-1/04.pdf][Lidar measures sag]]
@@ -11501,7 +11484,7 @@ Erika
 ******* resisive wires:  [[file:energy.bib::Yang07SurvPowSensNet][Yang et al. 2007: Survey Technologies for]]
 ******* FODTS:  [[file:energy.bib::Yang07SurvPowSensNet][Yang et al. 2007: Survey Technologies for]]
 ******* IR-based:  [[file:energy.bib::Yang07SurvPowSensNet][Yang et al. 2007: Survey Technologies for]]
-******* PLC–SAG: /average/ over whole line via CW waveform meas: [[file:energy.bib::Villiers08sagCarrierSig][Villiers et al. 2008: Real Time Sag]]
+******* PLCSAG: /average/ over whole line via CW waveform meas: [[file:energy.bib::Villiers08sagCarrierSig][Villiers et al. 2008: Real Time Sag]]
 ***** <<Dynamic thermal ratings for wind power>>
 ******* normal dynamic ratings  [[http://tdworld.com/mag/power_finding_hidden_capacity/][5-20%]] increase in thermal rating if dyanamic
 ******* for wind power: 170% in one Dakota scenario: [[file:energy.bib::ABB05DakotaTransIncr][ABB 2005: Dakotas Wind Transmission]]
@@ -11535,7 +11518,7 @@ Erika
 
       A separate concern is line sag. As demand increases during hot weather, transmission
       line conductor temperatures increase, which causes the lines to stretch and sag. If a line sags
-      into an object such as a tree, the current can be discharged to the ground, causing a short‐circuit
+      into an object such as a tree, the current can be discharged to the ground, causing a short-circuit
       36
       that could initiate a major power outage. However, it is conductor temperature (a function of
       load) that is the main cause of sagging power lines. Currently, there are insufficient data to
@@ -11568,15 +11551,15 @@ Erika
 ***** [[http://www.thefederalregister.com/d.p/2009-03-26-E9-6471][New FERC rule]] (3/26/09) allows utilities to adjust electricty rates to recoup Smart Grid investments such as dynamic line rating
 ***** Horizon wants dynamic line rating: [[http://www.wapa.gov/recovery/Comments/HorizonWindEnergy_comment_4-3-09.pdf][Horizon Wind Energy Comments on Western Area Power Administration Stimulus Proposal]]
 
-      Western should take steps in the near‐term to implement dynamic line
+      Western should take steps in the near-term to implement dynamic line
       rating, establish a conditional firm service product, forecast wind
-      regionally, and allow intra‐hour scheduling.
+      regionally, and allow intra-hour scheduling.
 
 ***** Horizon wants conditional firm xmisn prod, like BPA's : [[http://www.wapa.gov/recovery/Comments/HorizonWindEnergy_comment_4-3-09.pdf][Horizon Wind Energy Comments on Western Area Power Administration Stimulus Proposal]]
 
-      Western should take steps in the near‐term to implement dynamic line
+      Western should take steps in the near-term to implement dynamic line
       rating, establish a conditional firm service product, forecast wind
-      regionally, and allow intra‐hour scheduling.
+      regionally, and allow intra-hour scheduling.
 
 ***** [[http://www.bpa.gov/Energy/n/smart_grid/index.cfm][BPA's proposal]] for AARA 1304 funding
 ***** Lloyd's tech. alternatives for increasing transmsn capacity
@@ -11617,7 +11600,7 @@ Erika
 ***** Grid semantic web
 ******* [[http://cordis.europa.eu/ictresults/index.cfm/section/news/tpl/article/id/90399][Semantic web promises a smarter electricity grid]]
 ***** Needs [[http://www.netl.doe.gov/moderngrid/docs/Improved%20Interfaces%20and%20Decision%20Support_FINAL_v2.0.pdf][AI based data reduction]] for operator-comprehensible displays (p. B5-9)
-***** Grid optimization: [[http://www.otii.com/pdf/Optimum-BT-redist060508_2.pdf][Optimal’s AEMPFAST software vaults past ‘smart grid’ -- to genius]]
+***** Grid optimization: [[http://www.otii.com/pdf/Optimum-BT-redist060508_2.pdf][Optimals AEMPFAST software vaults past smart grid -- to genius]]
 ******* describes operators in the loop -- can't understand all the variables
 ******* [[http://www.otii.com/index.htm][Optimal Technologies]] makes nonlinear optimizer, better than simulated annealing
 ********* does [[http://www.otii.com/aempfast.htm][multiple objective]] optimization
@@ -11856,9 +11839,9 @@ Subject: CPR added EV data (MSRP, Battery Size)
 
 Hi Scott and Andy, 
 
-Below is a link to where I keep the CSV files with the additional vehicle data (for EVs as well as gasoline vehicles), going back to Model Year 2015.  One thing to note about these files is that we remove the MSRP data from Teslas that are not in the current year.  This is because Tesla does model years strangely, and changes the names of the models frequently, which creates confusion for WattPlan.  Files for each release are available, so that data isn’t gone, it’s just not included in the most recent file.  
+Below is a link to where I keep the CSV files with the additional vehicle data (for EVs as well as gasoline vehicles), going back to Model Year 2015.  One thing to note about these files is that we remove the MSRP data from Teslas that are not in the current year.  This is because Tesla does model years strangely, and changes the names of the models frequently, which creates confusion for WattPlan.  Files for each release are available, so that data isn't gone, it's just not included in the most recent file.  
 
-Vehicles that don’t have MSRP data are either not yet available for sale from the manufacturer, or are vehicles that we do not want to show up in Wattplan. I add the data in as I find it.  
+Vehicles that don't have MSRP data are either not yet available for sale from the manufacturer, or are vehicles that we do not want to show up in Wattplan. I add the data in as I find it.  
 
 https://cleanpower1-portal1.sharepoint.com/productmanagement/Energy%20Valuation/Forms/AllItems.aspx?viewid=c9488f3b%2D87fa%2D45da%2Daed5%2Dfe9a34666db3&id=%2Fproductmanagement%2FEnergy%20Valuation%2FData%20Operations%2FWattPlan%20Datasets%2FVehicle%20Spreadsheets
 
@@ -11892,7 +11875,7 @@ Brittany
 ************* Python API: [[https://pypi.org/project/CensusData/][CensusData]] ([[https://jtleider.github.io/censusdata/][documentation]])
 ************* Python API: [[https://github.com/datamade/census][census]]
 ************* [[https://towardsdatascience.com/getting-census-data-in-5-easy-steps-a08eeb63995d][Getting Census Data in 5 Easy Steps - Towards Data Science]]
-************* [[https://atcoordinates.info/2019/09/24/examples-of-using-the-census-bureaus-api-with-python/][Examples of using the Census Bureau’s API with Python]]
+************* [[https://atcoordinates.info/2019/09/24/examples-of-using-the-census-bureaus-api-with-python/][Examples of using the Census Bureau's API with Python]]
 ********* Sacramento area & California EV adoption-relevant data
 *********** [[http://data.sacog.org/datasets/93efdbcdbc744210848dd7f601e622e3_0][SACOG charging station locations]] (something else was better, according to SMUD)
 *********** [[https://www.sacog.org/tools-data][SACOG tools & data]]
@@ -11946,7 +11929,7 @@ Brittany
 ********* [[https://www.woodmac.com/research/products/global-energy-markets-trends/electric-vehicle-service/][Wood Mackenzie Electric Vehicle Service]]
 *********** [[https://www.woodmac.com/our-expertise/capabilities/electric-vehicles/][Wood Makenzie Electric Vehicle Research]]
 *********** [[https://www.woodmac.com/our-expertise/capabilities/electric-vehicles/industry-insights/][Wood Mackenzie Electric Vehicle Industry Insights]]
-********* TODO [[https://www.atlasevhub.com/][Atlas EV Hub – A one-stop shop to learn more about what’s going on in transpo...]]
+********* TODO [[https://www.atlasevhub.com/][Atlas EV Hub... learn about what's going on in transpo...]]
 
           The TODO here is to look at it.  Tell Andy when I'm ready, and he'll buy a license for  it.
 
@@ -13212,16 +13195,16 @@ optimization to be a generalization of linear programming.
 ******* TODO [[file:energy.bib::Hering07modelShortTermWindPred][Hering 2007: Models for Short]] (relevant to de Luna and Genton method)
 ******* TODO [[file:energy.bib::Diebold95comparePredAcc][Diebold & Mariano 1995: Comparing Predictive Accuracy]] (relevant to de Luna and Genton method)
 ***** Probabalistic forecasting and trading
-      - [X] [[file:energy.bib::NERC08accomHiVarGen][NERC 2008: Accommodating High Levels]]: NERC Report, 2008: IVGTF (NERC task force) – “Accommodating high levels of variable generation”
+      - [X] [[file:energy.bib::NERC08accomHiVarGen][NERC 2008: Accommodating High Levels]]: NERC Report, 2008: IVGTF (NERC task force)   “Accommodating high levels of variable generation”
       - [X] [[file:energy.bib::Baldick95genUnitCommit][Baldick 1995: generalized unit commitment problem]]: Baldick, R. The generalized unit commitment problem. IEEE Transactions on Power Systems, 1995, 10(1): 465-475.
       - [X] [[file:energy.bib::Tuohy08stochSchedWind][Tuohy et al. 2008: Benefits of Stochastic]]: Tuohy, A.; Denny, E.; Meibom, P.; O'Malley, M., Benefits of stochastic scheduling for power systems with significant installed wind power. In: Conference proceedings. 10. International conference on probabilistic methods applied to power systems (Pmaps 2008), Rincon (PR), 25-29 May 2008. (PMAPS, Rincon, 2008)
-      - [X] [[file:energy.bib::Doherty05resrvDemandWind][Doherty & OMalley 2005: new approach to]]: Doherty, R., O’Malley, M. A new approach to quantify reserve demand in systems with significant installed wind capacity. IEEE Transactions on Power Systems, 2005, 20: 587-595.
+      - [X] [[file:energy.bib::Doherty05resrvDemandWind][Doherty & OMalley 2005: new approach to]]: Doherty, R., O'Malley, M. A new approach to quantify reserve demand in systems with significant installed wind capacity. IEEE Transactions on Power Systems, 2005, 20: 587-595.
       - [X] [[file:energy.bib::Castronuovo04optimDailyWindHydro][Castronuovo & Lopes 2004: optimization of daily]]: Castronuovo, E. D., Pecas Lopes, J. A. On the optimization of the daily operation of a windhydro power plant. IEEE Transactions on Power Systems, 2004, 19: 1599-1606.
       - [X] [[file:energy.bib::Weber08stochProgWindInteg][Weber & Meibom 2008: Optimization in Energy Industry]]: Weber, C.; Meibom, P.; Barth, R.; Brand, H., WILMAR: A stochastic programming tool to analyze the large-scale integration of wind energy. In: Optimization in the Energy Industry. Kallrath, J.; Pardalos, P.M.; Rebennack, S.; Scheidt, M. (eds.), (Energy Systems) p. 437-460
       - [X] [[file:energy.bib::Methaprayoon05neuralWindFrcstUncert][Methaprayoon et al. 2005: integration of ANN]]: Methaprayoon, K.; Lee, W.; Yingvivatanapong, C. & Liao, J. An integration of ANN wind power estimation into UC considering the forecasting uncertainty. Industrial and Commercial Power Systems Technical Conference, 2005 IEEE, 2005, 116-124.
       - [X] [[file:energy.bib::Giebel03shortWindStateOfArtOverview][Giebel 2003: State Of Art]]: Giebel, G., R. Brownsword, and G. Kariniotakis.  The state-of-the-art in short-term prediction of wind power. ANEMOS Report D1.1, available online: http://anemos.cma.fr, 2003.
       - [X] [[file:energy.bib::Costa08revYngHistWindPred][Costa et al. 2008: review young history]]: Costa, A., A. Crespo, J. Navarro, G. Lizcano, H. Madsen, and E. Feitona. A review on the young history of wind power short-term prediction.  Renewable Sustainable Energy Rev 2008, 12: 1725-1744.
-      - [X] [[file:energy.bib::Bremnes04probWindQuantRegr][Bremnes 2004: Probabilistic wind power]]: Bremnes J. B. Probabilistic wind power forecasts using local quantile regression. Wind Energy, 7(1):47–54, 2004.
+      - [X] [[file:energy.bib::Bremnes04probWindQuantRegr][Bremnes 2004: Probabilistic wind power]]: Bremnes J. B. Probabilistic wind power forecasts using local quantile regression. Wind Energy, 7(1):47 54, 2004.
       - [X] [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006: comparison of few]]: Bremnes, J. B. A comparison of a few statistical models for making quantile wind power forecasts. Wind Energy, 9: 3-11, 2006.
       - [X] [[file:energy.bib::Nielsen06quantRegr][Nielsen et al. 2006: Using quantile regression]]: Nielsen, H. A., H. Madsen, T. S. Nielsen, J. Badger, G. Giebel, L. Landberg, K. Sattler, and H. Feddersen. Using quantile regression to extend and existing wind power forecasting system with probabilistic forecasts.  Wind Energy, 2006, 9: 95-108.
       - [X] [[file:energy.bib::Moller08adaptQuantRegr][Moeller et al. 2008: Time adaptive quantile regression]]: Moller, J. K., H. A. Nielsen, and H. Madsen.  .  Computational Statistics & Data Analysis, 2008, 52: 1292-1303.
@@ -13230,7 +13213,7 @@ optimization to be a generalization of linear programming.
       - [X] [[file:energy.bib::Sloughter08probWindEnsBayesModAvg][Sloughter et al. 2008: Probabilistic Wind Speed]]: Sloughter, J. M., T. Gneiting, and A. E. Raftery.  Probabilistic wind speed forecasting using ensembles and Bayesian model averaging.  Technical Report No. 544, Department of Statistics, University of Washington, available online: http://www.stat.washington.edu/research/reports, 2008.
       - [ ] [[file:energy.bib::Skamarock08advRsrchWRFv3][Skamarock et al. 2008: Description of Advanced]]: Skamarock, W.C., J.B. Klemp, J., Dudhia, D.O., Gill, D.M., Barker, M.G., Duda, X.-Y., Huang, W., Wang, and J.G. Powers, 2008: A description of the advanced research WRF version 3, Ncar Technical Note, NCAR/TN-475+STR, 113 pp.
       - [ ] [[file:energy.bib::Grell95descMesoMM5][Grell et al. 1995: Description of Fifth]]: Grell, G. A., J. Dudhia and D. R. Stauffer, 1994: A description of the fifth-generation Penn State NCAR mesoscale model (MM5). NCAR Technical Note, NCAR/TN-398+STR, 117 pp.
-      - [ ] [[file:energy.bib::Glahn72modelOutStatWeath][Glahn 1972: Use of Model]]: Glahn, H. R., and D. A. Lowry, 1972: The use of Model Output Statistics (MOS) in objective weather forecasting. J. Appl. Meteor., 11, 1203–1211.
+      - [ ] [[file:energy.bib::Glahn72modelOutStatWeath][Glahn 1972: Use of Model]]: Glahn, H. R., and D. A. Lowry, 1972: The use of Model Output Statistics (MOS) in objective weather forecasting. J. Appl. Meteor., 11, 1203 1211.
 *** Read
     Many before this and then...
     12/16/08 [[file:energy.bib::Schrauwen07reservCompOverview][Schrauwen et al. 2007: overview of reservoir computing]]
