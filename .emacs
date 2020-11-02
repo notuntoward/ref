@@ -58,9 +58,8 @@
 (require 'package)
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t) 
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+;; TODO: Do I need separate org archive?  Boots faster if I remove it?
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-;; remove if use quelpa package-initialize above
-(package-initialize)
 
 (unless (package-installed-p 'use-package) ; so can do a totally clean start
   (message "Installing use-package, diminish and refreshing")
@@ -77,6 +76,19 @@
 (setq use-package-always-ensure t) ; so use-package always installs missing pkgs
 
 (use-package try) ; M-x try to test a pkg w/o installing it
+
+;; Fixes elpa 27.1 gpg key error:
+;; https://www.reddit.com/r/emacs/comments/d9rchm/emacs_archivecontentssig_not_verifying/
+;;  If not even this package can't download
+;; then the key is really old.  Fix for that is to temporariliy
+;; customize 'package-check-signature' to nil
+;; From here:
+;; http://elpa.gnu.org/packages/gnu-elpa-keyring-update.html ...
+;; this might help, if I knew what keys to put in there:
+;;   gpg --homedir ~/.emacs.d/elpa/gnupg --receive-keys 066DAFCB81E42C40
+;;   gpg --homedir ~/.emacs.d/elpa/gnupg --quick-set-expire 474F05837FBDEF9B 1y
+;; Note: my 1st install had to be manual: M-x package install
+(use-package gnu-elpa-keyring-update)
 
 ;; updated package interface.  Start with M-x paradox-list-packages
 ;; TODO: paradox modeline faces aren't visible when window is in use
@@ -165,7 +177,7 @@
    (progn (setq shareDir "c:/Users/Scott/OneDrive - Clean Power Research")))
   ("desktop-6bq3kmf" ; Surface Pro
    (setq shareDir "C:/Users/scott/OneDrive - Clean Power Research"))
-  ("desktop-89vlrqe" ; Surface Book 2
+  ("desktop-qegmu0d" ; Surface Book 2
    (setq shareDir "C:/Users/scott/OneDrive - Clean Power Research"))
   ("desktop-rvtj6ua" ; Surface Go
    (setq shareDir "C:/Users/scott/OneDrive - Clean Power Research"))
@@ -188,6 +200,7 @@
 ;; Modified (use workingarea not geometry) unhammer's code at:
 ;; https://emacs.stackexchange.com/questions/28390/quickly-adjusting-text-to-dpi-changes
 ;; Compare with http://dpi.lv/
+(require 'cl-lib) ; the updated package for 'cl' functions
 (defun dpi-hv (&optional display)
   "Returns the horizontal and vertical DPI of DISPLAY. 
 DISPLAY is a display name, frame or terminal, as in
@@ -366,67 +379,74 @@ TODO: make this a general function."
 (winner-mode 1) ; Undo window config: C-c left; Redo window config: C-c right
 
 ;; ** Attempts at saving desktop
+;; *** Burly
 
-;; Perspectives for emacs
-;; From: https://github.com/andresilva/emacs.d/blob/master/init.el
+;; looks promising, ran into stupid emacs 27.1 GPG key thing.
+;; TODO: come back to this later
+;; (use-package quelpa)
+;;(use-package quelp-use-package)  ;; had gpg problem on this line
 
-;; Use one folder for all save/history/cache files (more than persp-mode uses it)
-(defconst !/savefile-dir (expand-file-name "savefile" user-emacs-directory))
-(unless (file-exists-p !/savefile-dir)
-  (make-directory !/savefile-dir))
+;; I don't think I ever got perspectives to work
+;; ;; Perspectives for emacs
+;; ;; From: https://github.com/andresilva/emacs.d/blob/master/init.el
+
+;; ;; Use one folder for all save/history/cache files (more than persp-mode uses it)
+;; (defconst !/savefile-dir (expand-file-name "savefile" user-emacs-directory))
+;; (unless (file-exists-p !/savefile-dir)
+;;   (make-directory !/savefile-dir))
 
 
-;; https://github.com/Bad-ptr/persp-mode.el  
-(use-package persp-mode
-  :ensure t
-  :diminish persp-mode
+;; ;; https://github.com/Bad-ptr/persp-mode.el  
+;; (use-package persp-mode
+;;   :ensure t
+;;   :diminish persp-mode
   
-  :init
-  (setq wg-morph-on nil ;; switch off animation
-        persp-add-buffer-on-after-change-major-mode t
-        persp-auto-resume-time -1
-        persp-autokill-buffer-on-remove 'kill-weak
-        persp-save-dir (expand-file-name "persp-confs/" !/savefile-dir))
+;;   :init
+;;   (setq wg-morph-on nil ;; switch off animation
+;;         persp-add-buffer-on-after-change-major-mode t
+;;         persp-auto-resume-time -1
+;;         persp-autokill-buffer-on-remove 'kill-weak
+;;         persp-save-dir (expand-file-name "persp-confs/" !/savefile-dir))
 
-  (add-hook 'after-init-hook (lambda () (persp-mode 1)))
+;;   (add-hook 'after-init-hook (lambda () (persp-mode 1)))
   
-  :config
-  (defvar !//persp-last-selected-perspective persp-nil-name
-    "Previously selected perspective.")
-  (defun !//persp-save-last-selected-perspective (_ _ &optional _)
-    (setq !//persp-last-selected-perspective persp-last-persp-name))
-  (advice-add 'persp-activate :before #'!//persp-save-last-selected-perspective))
+;;   :config
+;;   (defvar !//persp-last-selected-perspective persp-nil-name
+;;     "Previously selected perspective.")
+;;   (defun !//persp-save-last-selected-perspective (_ _ &optional _)
+;;     (setq !//persp-last-selected-perspective persp-last-persp-name))
+;;   (advice-add 'persp-activate :before #'!//persp-save-last-selected-perspective))
 
-;; from: https://github.com/Bad-ptr/persp-mode.el/issues/93#issuecomment-392282950
-(with-eval-after-load "persp-mode"
-  (defvar persp-indirrect-buffers-to-restore nil)
+;; ;; from: https://github.com/Bad-ptr/persp-mode.el/issues/93#issuecomment-392282950
+;; (with-eval-after-load "persp-mode"
+;;   (defvar persp-indirrect-buffers-to-restore nil)
   
-  (persp-def-buffer-save/load
-   :tag-symbol 'def-indirect-buffer
-   :predicate #'buffer-base-buffer
-   :save-function
-   #'(lambda (buf tag vars)
-       (list tag (buffer-name buf) vars
-             (buffer-name (buffer-base-buffer))))
-   :load-function
-   #'(lambda (savelist)
-       (destructuring-bind
-           (buf-name vars base-buf-name &rest _rest) (cdr savelist)
-         (push (cons buf-name base-buf-name)
-               persp-indirrect-buffers-to-restore)
-         nil)))
+;;   (persp-def-buffer-save/load
+;;    :tag-symbol 'def-indirect-buffer
+;;    :predicate #'buffer-base-buffer
+;;    :save-function
+;;    #'(lambda (buf tag vars)
+;;        (list tag (buffer-name buf) vars
+;;              (buffer-name (buffer-base-buffer))))
+;;    :load-function
+;;    #'(lambda (savelist)
+;;        (destructuring-bind
+;;            (buf-name vars base-buf-name &rest _rest) (cdr savelist)
+;;          (push (cons buf-name base-buf-name)
+;;                persp-indirrect-buffers-to-restore)
+;;          nil)))
 
-  (add-hook 'persp-after-load-state-functions
-            #'(lambda (&rest _args)
-                (dolist (ibc persp-indirrect-buffers-to-restore)
-                  (let* ((nbn (car ibc))
-                         (bbn (cdr ibc))
-                         (bb (get-buffer bbn)))
-                    (when bb
-                      (when (get-buffer nbn)
-                        (setq nbn (generate-new-buffer-name nbn)))
-                      (make-indirect-buffer bb nbn t))))
-                (setq persp-indirrect-buffers-to-restore nil))))
+;;   (add-hook 'persp-after-load-state-functions
+;;             #'(lambda (&rest _args)
+;;                 (dolist (ibc persp-indirrect-buffers-to-restore)
+;;                   (let* ((nbn (car ibc))
+;;                          (bbn (cdr ibc))
+;;                          (bb (get-buffer bbn)))
+;;                     (when bb
+;;                       (when (get-buffer nbn)
+;;                         (setq nbn (generate-new-buffer-name nbn)))
+;;                       (make-indirect-buffer bb nbn t))))
+;;                 (setq persp-indirrect-buffers-to-restore nil))))
 
 ;; buggy, as of April 8, 2017
 ;;(require 'desktop+) ; needed?
@@ -1258,33 +1278,36 @@ TODO: make this a general function."
 ;;(global-set-key [f11] 'shell) (make OS-dependent, above)
 (global-set-key [f12] 'repeat-complex-command)
 
-;; ** CSV mode
+;; emacs 27.1 has some gpg change.  I think I fixed this on the SP but
+;; not on the GO.  Skip this for now since I don't use it anyway.
+;;
+;; ;; ** CSV mode
 
-;; aligns columns (on: C-c C-a , off: C-c C-u), prints header, etc.
-;; Need to toggle-truncate-lines (C-c w) for wide files
-(use-package csv-mode
-  :ensure t
-  :config
-  (setq csv-align-padding 2)
+;; ;; aligns columns (on: C-c C-a , off: C-c C-u), prints header, etc.
+;; ;; Need to toggle-truncate-lines (C-c w) for wide files
+;; (use-package csv-mode
+;;   :ensure t
+;;   :config
+;;   (setq csv-align-padding 2)
+;;
+  ;; ;; From: https://tinyurl.com/trtrmau
+  ;; (defun csv-align-visible ()
+  ;;   "Align only visible entries in csv-mode. C-c C-a is already bound to align all fields, but is slow."
+  ;;   (interactive)
+  ;;   (csv-align-fields nil
+  ;;    (window-start (selected-window))
+  ;;    (window-end (selected-window)))
+  ;;   (message "Aligned visible fields only. Press C-c C-w to align again."))
 
-  ;; From: https://tinyurl.com/trtrmau
-  (defun csv-align-visible ()
-    "Align only visible entries in csv-mode. C-c C-a is already bound to align all fields, but is slow."
-    (interactive)
-    (csv-align-fields nil
-     (window-start (selected-window))
-     (window-end (selected-window)))
-    (message "Aligned visible fields only. Press C-c C-w to align again."))
-
-  :bind (:map csv-mode-map
-              ("C-c C-w" . 'csv-align-visible)
-              ("C-c C-h" . csv-header-line))
-  ;; 1st page only, must redo 
-  :hook (csv-mode . csv-align-visible) 
-  ;; show header: bad for long colnames, narrow colvals
-  :hook (csv-mode . csv-header-line)
-  ;; doesn't seem to work
-  :hook (csv-mode . toggle-truncate-lines)) 
+  ;; :bind (:map csv-mode-map
+  ;;             ("C-c C-w" . 'csv-align-visible)
+  ;;             ("C-c C-h" . csv-header-line))
+  ;; ;; 1st page only, must redo 
+  ;; :hook (csv-mode . csv-align-visible) 
+  ;; ;; show header: bad for long colnames, narrow colvals
+  ;; :hook (csv-mode . csv-header-line)
+  ;; ;; doesn't seem to work
+  ;; :hook (csv-mode . toggle-truncate-lines)) 
 
 ;; * Version Control
 
@@ -1526,6 +1549,19 @@ TODO: make this a general function."
 (provide 'init-matlab)
 
 ;; ** elisp
+
+;; Get rid of message "Package cl is deprecated".
+(setq byte-compile-warnings '(cl-functions))
+
+;; (https://github.com/kiwanami/emacs-epc/issues/35)
+;; cl is obsolete and shouldn't be used anymore:
+;; (https://github.com/kiwanami/emacs-epc/issues/35)
+;; Running 
+;;   (require 'loadhist)
+;;  (file-dependents (feature-file 'cl))
+;; shows that the folling still depend upon clib
+;; ("c:/Users/scott/.emacs.d/elpa/omnisharp-20201002.1600/omnisharp.elc" "c:/Users/scott/.emacs.d/elpa/writegood-mode-20180525.1343/writegood-mode.el" "c:/Users/scott/.emacs.d/elpa/org-plus-contrib-20201102/org-choose.elc")
+
 (add-hook 'emacs-lisp-mode-hook
 	  '(lambda ()
 	     (set (make-local-variable 'dabbrev-case-fold-search) nil)
@@ -1553,11 +1589,6 @@ TODO: make this a general function."
 	  '(lambda ()
 	     (set (make-local-variable 'dabbrev-case-fold-search) nil)
 	     (set (make-local-variable 'dabbrev-case-replace) nil)))
-
-;;; cc-mode.el Customizations for both c-mode and c++-mode
-(require 'cc-mode)  ; needed so c-default-style (below) is defined
-(setq c-default-style "stroustrup") ; good but overwrites c-basic-offset to 4
-(setq c-basic-offset 2)  ; indents are multiples of this
 
 (defun my-c-mode-common-hook ()
   (c-toggle-auto-hungry-state 1) ; not sure what this does
@@ -1626,7 +1657,8 @@ TODO: make this a general function."
       
       (conda-env-initialize-interactive-shells)
       (conda-env-initialize-eshell)
-      (conda-env-activate "stdso") ; my expected default anaconda environment
+      (conda-env-activate "base")
+;;      (conda-env-activate "stdso") ; my expected default anaconda environment
       ;; Use if projects have environments files indicating their conda envs
       ;;(setq conda-project-env-name "environment.yml") ; needed by autoactivate
       ;;(conda-env-autoactivate-mode t)
@@ -3971,15 +4003,22 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(auto-hscroll-mode (quote current-line))
+ '(auto-hscroll-mode 'current-line)
  '(aw-background t)
- '(bibtex-completion-pdf-open-function (quote helm-open-file-with-default-tool))
+ '(bibtex-completion-pdf-open-function 'helm-open-file-with-default-tool)
  '(blink-cursor-mode nil)
+ '(c-basic-offset 2)
+ '(c-default-style
+   '((c-mode . "stroustrup")
+     (c++-mode . "stroustrup")
+     (java-mode . "java")
+     (awk-mode . "awk")
+     (other . "gnu")))
  '(calendar-week-start-day 1)
  '(column-number-mode t)
  '(conda-anaconda-home conda-env-home-directory)
  '(counsel-grep-base-command "grep -nEi '%s' %s")
- '(counsel-search-engine (quote google))
+ '(counsel-search-engine 'google)
  '(delete-selection-mode nil)
  '(dired-dwim-target t)
  '(display-time-24hr-format t)
@@ -3987,16 +4026,15 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(display-time-load-average-threshold 100000000)
  '(display-time-mode t)
  '(ediff-keep-variants nil)
- '(ediff-split-window-function (quote split-window-horizontally))
+ '(ediff-split-window-function 'split-window-horizontally)
  '(elpy-rpc-python-command "python")
  '(elpy-shell-display-buffer-after-send t)
- '(elpy-shell-starting-directory (quote current-directory))
+ '(elpy-shell-starting-directory 'current-directory)
  '(emacsw32-style-frame-title t)
  '(ess-ido-flex-matching t)
  '(ess-language "R" t)
  '(ess-own-style-list
-   (quote
-    ((ess-indent-level . 2)
+   '((ess-indent-level . 2)
      (ess-continued-statement-offset . 2)
      (ess-brace-offset . 0)
      (ess-expression-offset . 2)
@@ -4005,9 +4043,9 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
      (ess-continued-brace-offset . 0)
      (ess-arg-function-offset . 2)
      (ess-arg-function-offset-new-line . 2)
-     (ess-close-brace-offset . 0))))
+     (ess-close-brace-offset . 0)))
  '(ess-ps-viewer-pref "gv")
- '(ess-style (quote OWN))
+ '(ess-style 'OWN)
  '(focus-follows-mouse t)
  '(gdb-many-windows t)
  '(gud-chdir-before-run t)
@@ -4015,12 +4053,12 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(gud-tooltip-echo-area t)
  '(gud-tooltip-mode t)
  '(ido-auto-merge-work-directories-length -1)
- '(ido-cannot-complete-command (quote ido-grid-mode-tab))
- '(ido-create-new-buffer (quote always))
+ '(ido-cannot-complete-command 'ido-grid-mode-tab)
+ '(ido-create-new-buffer 'always)
  '(ido-everywhere t)
  '(ido-grid-mode t)
- '(ido-mode (quote both) nil (ido))
- '(ido-use-filename-at-point (quote guess))
+ '(ido-mode 'both nil (ido))
+ '(ido-use-filename-at-point 'guess)
  '(ido-use-url-at-point t)
  '(indent-tabs-mode nil)
  '(indicate-buffer-boundaries nil)
@@ -4036,45 +4074,41 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(matlab-indent-function-body nil)
  '(matlab-indent-level 2)
  '(mode-line-format
-   (quote
-    (("%e" mode-line-front-space mode-line-mule-info mode-line-client mode-line-modified mode-line-remote mode-line-frame-identification "   " mode-line-buffer-identification mode-line-position
+   '(("%e" mode-line-front-space mode-line-mule-info mode-line-client mode-line-modified mode-line-remote mode-line-frame-identification "   " mode-line-buffer-identification mode-line-position
       (vc-mode vc-mode)
-      "  " :exec conda-env-current-name "   " mode-line-modes "  " mode-line-misc-info mode-line-end-spaces))))
+      "  " :exec conda-env-current-name "   " mode-line-modes "  " mode-line-misc-info mode-line-end-spaces)))
  '(mouse-autoselect-window 0.5)
  '(mouse-avoidance-nudge-dist 10)
  '(mouse-wheel-progressive-speed nil)
- '(mouse-wheel-scroll-amount (quote (1 ((shift) p\. 1) ((control)))))
+ '(mouse-wheel-scroll-amount '(1 ((shift) p\. 1) ((control))))
  '(mouse-wheel-tilt-scroll t)
  '(org-agenda-files
-   (quote
-    ("~/OneDrive - Clean Power Research/ref/DOE_brainstorm/20200605152244-test0.org" "c:/Users/scott/OneDrive - Clean Power Research/ref/tmp.org")))
- '(org-confirm-shell-links (quote y-or-n-p))
+   '("~/OneDrive - Clean Power Research/ref/DOE_brainstorm/20200605152244-test0.org" "c:/Users/scott/OneDrive - Clean Power Research/ref/tmp.org"))
+ '(org-confirm-shell-links 'y-or-n-p)
  '(org-ctrl-k-protect-subtree t)
- '(org-cycle-include-plain-lists (quote integrate))
+ '(org-cycle-include-plain-lists 'integrate)
  '(org-directory "~/")
  '(org-ellipsis "…")
- '(org-export-backends (quote (ascii html latex odt org confluence freemind s5)))
- '(org-export-with-broken-links (quote mark))
+ '(org-export-backends '(ascii html latex odt org confluence freemind s5))
+ '(org-export-with-broken-links 'mark)
  '(org-fontify-done-headline t)
  '(org-fontify-emphasized-text t)
  '(org-hide-emphasis-markers t)
  '(org-hide-leading-stars t)
- '(org-latex-pdf-process (quote ("latexmk -pdf -output-directory=%o -f %f")))
+ '(org-latex-pdf-process '("latexmk -pdf -output-directory=%o -f %f"))
  '(org-link-from-user-regexp nil)
  '(org-list-allow-alphabetical t)
  '(org-list-empty-line-terminates-plain-lists t)
  '(org-modules
-   (quote
-    (ol-bibtex org-mouse ol-eshell ol-git-link ol-man org-bibtex org-info org-inlinetask org-mouse org-protocol org-choose)))
+   '(ol-bibtex org-mouse ol-eshell ol-git-link ol-man org-inlinetask org-mouse org-protocol org-choose))
  '(org-noter-auto-save-last-location t)
  '(org-noter-doc-property-in-notes t)
- '(org-occur-case-fold-search (quote (quote smart)))
+ '(org-occur-case-fold-search ''smart)
  '(org-odd-levels-only t)
  '(org-outline-path-complete-in-steps nil)
  '(org-pretty-entities nil)
  '(org-preview-latex-process-alist
-   (quote
-    ((dvipng :programs
+   '((dvipng :programs
              ("latex" "dvipng")
              :description "dvi > png" :message "you need to install the programs: latex and dvipng." :image-input-type "dvi" :image-output-type "png" :image-size-adjust
              (1.0 . 1.0)
@@ -4097,31 +4131,30 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
                   :latex-compiler
                   ("pdflatex -interaction nonstopmode -output-directory %o %f")
                   :image-converter
-                  ("convert -density %D -trim -antialias %f -quality 100 %o%b.png")))))
- '(org-refile-targets (quote ((nil :maxlevel . 6))))
+                  ("convert -density %D -trim -antialias %f -quality 100 %o%b.png"))))
+ '(org-refile-targets '((nil :maxlevel . 6)))
  '(org-roam-bibtex-mode t)
  '(org-special-ctrl-k nil)
- '(org-speed-commands-user (quote (("s" . narrow-or-widen-dwim))))
+ '(org-speed-commands-user '(("s" . narrow-or-widen-dwim)))
  '(org-startup-align-all-tables t)
  '(org-startup-indented nil)
  '(org-startup-truncated t)
  '(org-superstar-cycle-headline-bullets nil)
- '(org-superstar-headline-bullets-list (quote ("●" "￭" "￮" "►" "•" "□" "▸" "▫" "▹")))
- '(org-superstar-item-bullet-alist (quote ((42 . 10043) (43 . 10011) (45 . 9644))))
+ '(org-superstar-headline-bullets-list '("●" "￭" "￮" "►" "•" "□" "▸" "▫" "▹"))
+ '(org-superstar-item-bullet-alist '((42 . 10043) (43 . 10011) (45 . 9644)))
  '(org-superstar-special-todo-items t)
  '(org-superstar-todo-bullet-alist
-   (quote
-    (("TODO" . 9744)
+   '(("TODO" . 9744)
      ("DONE" . 9745)
      ("TRY" . 9728)
      ("REJECTED" . 10005)
-     ("ACCEPTED" . 10003))))
+     ("ACCEPTED" . 10003)))
  '(org-use-speed-commands t)
  '(outshine-org-style-global-cycling-at-bob-p t)
  '(outshine-use-speed-commands t)
+ '(package-check-signature 'allow-unsigned)
  '(package-selected-packages
-   (quote
-    (deadgrep erefactor helm-org-rifle deft zotxt zotxt-emacs emacsql-sqlite3 cask wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move)))
+   '(elpy quelpa paradox gnu-elpa-keyring-update deadgrep erefactor helm-org-rifle deft zotxt zotxt-emacs emacsql-sqlite3 cask wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
@@ -4132,16 +4165,15 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(replace-char-fold t)
  '(require-final-newline nil)
  '(safe-local-variable-values
-   (quote
-    ((org-todo-keyword-faces
+   '((org-todo-keyword-faces
       ("ACCEPTED" . "green")
       ("TRY" . "red")
-      ("REJECTED" . "gray")))))
+      ("REJECTED" . "gray"))))
  '(save-interprogram-paste-before-kill t)
- '(scroll-bar-mode (quote right))
+ '(scroll-bar-mode 'right)
  '(scroll-step 1)
- '(search-default-mode (quote char-fold-to-regexp))
- '(send-mail-function (quote mailclient-send-it))
+ '(search-default-mode 'char-fold-to-regexp)
+ '(send-mail-function 'mailclient-send-it)
  '(show-paren-mode t)
  '(sml/modified-char "•")
  '(sml/name-width 34)
@@ -4149,7 +4181,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(sml/vc-mode-show-backend t)
  '(swiper-action-recenter nil)
  '(tool-bar-mode nil)
- '(visual-line-fringe-indicators (quote (nil top-right-angle)))
+ '(visual-line-fringe-indicators '(nil top-right-angle))
  '(w32-use-w32-font-dialog nil)
  '(window-divider-default-places t)
  '(window-divider-mode t))
