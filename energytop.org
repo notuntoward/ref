@@ -8326,7 +8326,8 @@ Scott
 ******* [[file:energy.bib::Meyers18statClearSkyFit][Meyers et al. 2018: Statistical Clear Sky Fitting Algorithm]] :SolarAnywhere:DataQual:
 ******* [[file:energy.bib::Meyers19toolsPVdatSci][Meyers 2019: Tools PV Data Sci]]
 ******* [[https://pvlib-python.readthedocs.io/en/stable/index.html][pvlib]] might be useful for diagnostics
-***** see also: [[file:energytop.org::*Wind%20and%20Solar%20Forecast%20Error%20Dependence][Wind and Solar Forecast Error Dependence]]
+***** also [[file:energytop.org::*Wind%20and%20Solar%20Forecast%20Error%20Dependence][Wind and Solar Forecast Error Dependence]]
+***** also [[Solar Variability Forecasting]]
 *** <<Price Forecasting>>
 ***** couldn't do it on DE intraday mkt?: [[file:energy.bib::Moehrlen12tradeStrtgyRESeeg2012][Moehrlen et al. 2012: Investigation EEG]]
 ***** [[file:energy.bib::Giabardo10feedbackElecMkt][Giabardo et al. 2010: Feedback]] elec market energy/price feedback loop
@@ -8927,9 +8928,9 @@ Scott
 ******* [[file:energy.bib::Khan07perfMutInfoShortNoise][Khan et al. 2007: Relative]] (comparison of dependence metrics)
 ******* TODO add Axel/Rafael/Mine paper (2013, presented in London)
 ******* [[cite:DiazVico17deepNNwindSolEnrgyPred][Diaz--Vico et al. 2017: Deep Neural Networks Wind and Solar Energy Frcst]](?)
-******* see [[Net Demand Forecast]]
-******* see [[Solar forecasting and features]]
-
+******* [[Net Demand Forecast]]
+******* [[Solar forecasting and features]]
+******* also [[Variability Forecasting]]
 ***** see also [[Forecast Error Distributions]], 
 ***** see also [[Load Forecasting (Demand Forecasting)]]
 *** <<Probabilistic Forecasting>>
@@ -9518,13 +9519,26 @@ sera
 ***** also [[Conditional Density Estimation]]
 ***** also [[Quantile Regression]]
 ***** also [[Uncertainty estimation]]
-*** Variability Forecasting
+***** also [[Variability Forecasting]]
+*** <<Variability Forecasting>>
 ***** [[http://econ.duke.edu/~ap172/code.html][matlab and r code for running variance estimator block length]]
       politis and white's (2004) automatic block-length selection procedure
 ******* [[file:energy.bib::kitigawa08btstrpinfocrit][konishi & kitagawa 2008: bootstrap information criterion]]
 ******* [[file:energy.bib::kitigawa09bivarredbtstrpic][kitagawa & konishi 2010: bias]] and var correct btstrp info crit
 ***** [[file:energy.bib::Gneiting13CombinPredDist][Gneiting et al. 2013: Combining]] prob forecasts
 ***** [[file:energy.bib::Dobschinski14howGdFrcstVrblty][Dobschinski 2014: How]] good is my forecast variabilty
+***** <<Solar Variability Forecasting>>
+******* TODO [[cite:Bradford19irradVarIntraHr][Bradford et al. 2019: Regression Model Correct]]
+******* TODO [[cite:Perez11solarSpatTempVar][Perez et al. 2011: Spatial Temp Var Solar]] 
+******* TODO [[cite:Perez11paramIrradVar][Perez et al. 2011: Parameterization]]
+******* TODO [[cite:Lauret16irradIntradayVarRegimeLoc][Lauret et al. 2016: Irrad Intraday Var Regime Location]]
+******* TODO [[cite:Allen18pvInvertSatPerfMdl][Allen et al. 2018: Effect Short Term PV Sat Perf]]
+******* TODO Tom's patent (Hoff17*)
+******* also [[Variability Forecasting]]
+******* also [[Solar forecasting and features]]
+***** also [[Wind and Solar Forecast Error Dependence]]
+***** also [[Portfolio Optimization and Forecasting]]
+***** also [[Probabilistic Forecasting]]
 *** <<Extreme Quantile Forecasting>>
 ***** See also [[Class Imbalance Handling]]
 ***** TODO Review: [[file:energy.bib::Scarrott12ExtrmValThrshUncrtReview][Scarrott & MacDonald 2012: Review Extreme Value]] est/uncert.
@@ -9698,6 +9712,7 @@ sera
 ***** also [[Portfolio Optimization and Forecasting]]
 ***** also [[Aggregation vs. Forecasting Accuracy]]
 ***** also [[Copulas]] (predict joint multivariate probabilities)
+***** also [[Variability Forecasting]]
 *** <<Effect of precipitation>>
 ***** rain
 ******* rain reduces wind speed
@@ -9812,6 +9827,7 @@ al. 2012: Current]])
 ***** also [[Portfolio Optimization]]
 ***** also [[Combining Probabilistic Forecasts]]
 ***** also [[Operation of Energy Storage]]
+***** also [[Variability Forecasting]]
 *** <<Trend Detection>>
 ***** [[file:energy.bib::Alexandrov12mdrnTrndExtrct][Alexandrov et al. 2012: Modern Trend Detection]]
 ***** trend damping is better, almost regime learn: [[file:energy.bib::McKenzie10expSmthDampTrnd][McKenzie & Gardner 2010: Damped]] trend
