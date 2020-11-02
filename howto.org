@@ -1,4 +1,4 @@
-* Emacs
+* <<Emacs>>
 *** *Emacs to try*
     My experiments, Emacs packages I've tried and installed (from Melpa repository). Also, some builtins I could try
 
@@ -1103,7 +1103,7 @@
 
         I'd like to do do that for (display-time-mode 1), where time would go on left side of modeline.
         
-*** Org Mode
+*** <<Org Mode>>
 ***** <<org-roam>>: org-mode based, inspired by [[Roam Research]]
 ******* [[https://github.com/org-roam][org-roam/org-roam: Rudimentary Roam replica with Org-mode]]
 ******* might want to try [[Doom Emacs]] first
@@ -1297,6 +1297,27 @@
 ********* also [[file and directory setups for org-roam]]
 ******* back/forward in org-roam file history: [[info:org-roam#Browsing History with winner-mode][use built-in winner mode]]
 ******* [[Orger]]: org mode python interface to generic APIs e.g. roam research
+******* org-roam interface with roam-research
+
+        Roam research can [[https://roamresearch.freshdesk.com/support/solutions/articles/64000247585-how-to-import-your-notes-into-roam][export/import jason and markdown json]] 
+
+********* Also: [[https://davidbieber.com/snippets/2020-04-25-roam-json-export/][roam-research json format & DB merge in python]]
+********* roam-research to org-roam
+*********** markdown-based [[https://github.com/fabioberger/roam-migration][fabioberger/roam-migration]] (in golang)
+*********** markdown-based [[https://github.com/org-roam/org-roam/issues/411][org-roam/org-roam#411]] (links to python code, json seems unimplemented)
+********* org-roam to roam-research
+*********** [[ox-json]]: writes org-mode to json (written in elisp)
+
+            I guess could be converted to [[https://davidbieber.com/snippets/2020-04-25-roam-json-export/][roam-research json format]].  Assuming that this format is the same one as roam-research reads.
+
+************* is used by [[pyorg]]
+*********** [[https://www.reddit.com/r/orgmode/comments/7wjmwr/orga_the_ultimate_orgmode_parser_in_javascript/du2cui3/][ox-hugo]] writes org-mode to markdown (but so does [[pandoac]])
+********* roam-research API
+*********** [[https://www.npmjs.com/package/roam-research-private-api][roam-research-private-api - npm]]
+*********** [[https://github.com/shanrauf/roam-research-python][GitHub - shanrauf/roam-research-python]]
+********* related
+***********  [[Org interface to online databases, PIM's etc.]]
+*********** [[Org-mode parsers]]
 ***** <<org-brain>>
       Concept mapping in emacs, new project in March, 2017
 ******* [[https://github.com/Kungsgeten/org-brain][GitHub - Kungsgeten/org-brain: Org-mode wiki + concept-mapping]]
@@ -1575,14 +1596,16 @@
 ***** <<Save org file folding state>>: [[https://github.com/dandavison/org-fold/blob/master/org-fold.el][org-fold/org-fold.el at master · dandavison/org-fold]]
 ***** [[Orgmode latex editing]]
 ***** [[http://orgmode.org/worg/dev/org-element-api.html][Org Element API]] (for org-mode elisp programming)
-***** Org interface to online databases, PIM's etc.
-******* <<Orger>>: org mode python interface to generic APIs e.g. roam research
+***** <<Org interface to online databases, PIM's etc.>>
+******* <<Orger>>: org mode python interface to generic APIs e.g. roam research (read only from roam-research)
         Python library to download from large number of online services
 
 ********* [[https://github.com/karlicoss/orger][karlicoss/orger: Tool to convert data into searchable and interactiv]]
 ********* tutorial: [[https://beepb00p.xyz/orger.html][Orger: plaintext reflection of your digital self | beepb00p]]
 ********* YouTube: [[https://www.youtube.com/watch?time_continue=30&v=ib_PDJpTh-Q&feature=emb_logo][Using Orger with Roam Research]]
+********* also [[Org-mode parsers]] 
 ******* <<Org-mode interface to trello>>: [[https://github.com/org-trello/org-trello][org-trello]]
+******* [[https://orgmode.org/worg/org-tools/index.html][Org Mode tools!]]
 ***** Hiding/Closing org :PROPERTIES: drawer
 ******* completely hiding them
         See: [[https://stackoverflow.com/questions/17478260/completely-hide-the-properties-drawer-in-org-mode][Completely hide the :PROPERTIES: drawer in org-mode]]
@@ -1619,11 +1642,15 @@
         So I customized it to ‘all-directories’
 
 ******* [[make org-roam-bibtex put bib notes in separate dir]]
-***** Org-mode parsers
+***** <<Org-mode parsers>>
 ******* [[http://orgmode.org/worg/org-tools/][Org Mode tools!]] (parsers in many languages)
 ******* [[https://common-lisp.net/project/cl-org-mode/][CL-ORG-MODE : A Lisp Parser of org-mode outlines]]
 ******* [[Elisp]]
 ******* [[org-mode parsers in Python]]
+******* [[Orger]]
+******* <<ox-json>>: org-mode to json
+        From: [[https://github.com/jlumpe/ox-json/][jlumpe/ox-json: JSON export back end for Emacs Org mode]]
+********* is used by [[pyorg]]
 ***** Org-mode in non-org buffers
 ******* <<outshine-mode>>
         From: [[https://github.com/alphapapa/outshine][alphapapa/outshine: {Emacs} outline with outshine outshines outline]]
@@ -1755,14 +1782,28 @@
 
         Somehow talks to Jupyter through org-mode.  Is what the author of [[orgbabelhelper]] says he's going to work on instead of [[orgbabelhelper]].
         
-******* Orger python interface to org-mode, external APIs
+******* [[Orger]] python interface to org-mode, external APIs
 ******* <<org-mode parsers in Python>>
 
-        orgparse had commits only a couple months old in June 2018, is pipable
+        I pip'ed orgparse into stdso environment
+        
+********* pyorg
+          From: [[https://github.com/jlumpe/pyorg][jlumpe/pyorg]]
 
+          Python communicate w/ emacs client using [[https://github.com/jlumpe/python-emacs][python-emacs]] library; pyorg works specifically w/ org-files.  Install is a bit complcated.
+*********** deeper parse than orgparse e.g. undestands links
+*********** must also install a pyorg.el package in emacs to get server interaction, which needs [[ox-json]]
 ********* [[https://github.com/karlicoss/orgparse][orgparse: Python module for reading Emacs org-mode files]]
-********* [[https://github.com/nasa9084/py-org][py-org: The Org-mode Parser for Python]]
+
+          [[https://github.com/karlicoss/orgparse][orgparse]] had commits up to June 2020 in Oct 2020, is pipable.  Was recommended by the author of [[https://github.com/bjonnh/PyOrgMode][PyOrgMode]] instead of his own package.
+
+          But doesn't parse links, targets other things...
+
+********* [[https://github.com/nasa9084/py-org][py-org: The Org-mode Parser for Python]] (last commit was nearly 3 years old in Oct 2020)
 ********* a couple fairly python funcs in here [[http://orgmode.org/worg/org-tools/][Org Mode tools!]]
+********* [[http://members.optusnet.com.au/~charles57/GTD/orgnode.html][Orgnode - reading org-mode in Python]]: cmdlline tool from 2010
+********* [[Orger]]
+******* [[https://pandoc.org/org.html][Pandoc - Org-mode features and differences]]
 *** <<Neuron Zettelkasten>>
     Home: [[https://neuron.zettel.page/][Neuron Zettelkasten]]
 
@@ -2125,6 +2166,13 @@ So, [[https://www.reddit.com/r/emacs/comments/clxa9p/orgpdftools_a_custom_org_li
     [[https://github.com/abo-abo/swiper/pull/587][  Store full window-configuration with ivy-push-view by alfaromurillo · Pull Re...]]
 
     Also: [[ivy-push-view]]
+    
+***** <<Burly>> (looks promising!)
+
+******* [[https://github.com/alphapapa/burly.el][GitHub - alphapapa/burly.el: Access buffers and window configs via URLs]]
+******* [[https://www.youtube.com/watch?v=JVFnaQVNEE0][Using Emacs 76 - Bookmarks and Burly - YouTube]]
+******* [[https://github.com/alphapapa/burly.el][stores narrowed and indirect buffers]]
+******* stores [[https://www.youtube.com/watch?v=JVFnaQVNEE0][configs in a bookmarks file in .emacs.d]]
 ***** A big list of [[https://www.emacswiki.org/emacs/SessionManagement][Emacs Session Management Packages]]
 ***** builtin desktop saver (workable, but indirect buffer problem)
 
@@ -2202,7 +2250,8 @@ So, [[https://www.reddit.com/r/emacs/comments/clxa9p/orgpdftools_a_custom_org_li
 ******* Correctly save/restores org-mode indirect buffers (the only thing I've found that does)
 ******* But has errors after restoring anything once, even after restarting emacs several times.  It's like restoring a desktop corrupts some database permanently.
 ***** [[https://github.com/nex3/perspective-el][GitHub - nex3/perspective-el: Perspectives for Emacs.]]
-      Somebody preferred it in comments on eyebrowse [[http://pragmaticemacs.com/emacs/easily-manage-emacs-workspaces-with-eyebrowse/][here]].
+      Somebody preferred it in comments on eyebrowse [[http://pragmaticemacs.com/emacs/easily-manage-emacs-workspaces-with-eyebrowse/][here]]. 
+******* MikeZ [[https://www.youtube.com/watch?v=JVFnaQVNEE0][gave up on it]], tried [[Burly]] instead.
 ***** [[https://oremacs.com/2016/06/27/ivy-push-view/][Bookmark the current window layout with Ivy · (or emacs]]
       Was still broken in May 2017 (I commented): 
       [[https://github.com/abo-abo/swiper/pull/587][Store full window-configuration with ivy-push-view by alfaromurillo · Pull Re...]]
@@ -2681,7 +2730,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
         2. Start emacs (click on emacs icon in windows start menu), this must be emacs.exe, not runemacs.exe or emacsclientw.exe
         3. Pin it to the taskbar (right click on taskbar icon)
         4. Right click on the emacs icon in the taskbar and edit Properties
-        5. Target == "emacsclientw.exe -c -n -a runemacs.exe"
+        5. Target == C:\ProgramData\chocolatey\bin\emacsclientw.exe -c -n -a runemacs.exe
         6. set Start in: to %HOME%, assuming HOME was set to the emacs homedir, as emacs expects.
 
         _Historical Note_: Windows 10 had an [[9696
@@ -2795,6 +2844,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
            o click on "More Apps"
            o click on "look for another app on this page"
            o go to where emacsclientw.exe is and click on it.
+             (c:/ProgramData/chocolatey/bin/emacsclientw.exe) # if choco
            else
            o just click on emacsclientw.exe option if it exists
 
@@ -3414,7 +3464,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
       2.) Command+Option+Escape, choose process, kill it
       3.) Right click the dock icon, hold down option, choose Force Quit
 ***** [[http://groups.google.com/group/carbon-emacs%3Fhl%3Den][carbon emacs forum]]
-*** Evernote and Emacs
+*** <<Evernote and Emacs>>
 ***** [[http://code.google.com/p/emacs-evernote-mode/][Evernote mode]]
 ******* [[file:~/lib/emacs/evernote-mode-0_41/][installation]]
 ***** Getting a [[http://discussion.evernote.com/topic/23917-access-note-links-via-evernote-web/page__p__125018__hl__links__fromsearch__1#entry125018][private URL to an evernote note]]
@@ -3426,6 +3476,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 
       For a public browser link. Share the note and copy the share url.
 
+***** also [[Evernote]]
 *** Emacs speed up
 ***** TODO profilers
 ******* [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Profiling.html][GNU Emacs Lisp Reference Manual: Profiling]]
@@ -3506,6 +3557,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ******* [[https://github.com/bastibe/org-journal][GitHub: bastibe/org-journal: A simple org-mode based journaling mode]]
 ******* [[https://www.reddit.com/r/emacs/comments/8kz8dv/tip_how_i_use_orgjournal_to_improve_my/][TIP: How I use org-journal to improve my productivity : emacs]]
 ******* [[org-roam author likes org-journal]]
+*** [[Emacs writing tools]]
 *** [[Knowledge Graphs in Emacs]]
 *** Search for Symbol at Point
 ***** =M-s .= is default emacs way to do [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Symbol-Search.html][Symbol Search]]
@@ -3794,24 +3846,31 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 
     This folder should have shared stuff in its 'ref' dir
 
-    Make c:\Users\scott emacs HOME and make the corresponding symb links.     
+    Make c:\Users\scott emacs HOME and make the corresponding symb links:     
     In a cmd.exe w/ admin permissions:
 
       cd C:\Users\scott
       mklink scotto /D OneDrive\scotto
 
-      mklink "//D ref c:\Users\scott\OneDrive - Clean Power Research\ref"
-      mklink .emacs ref/.emacs
-      mklink /D Desktop OneDrive\Desktop
+      mklink //D ref "c:\Users\scott\OneDrive - Clean Power Research\ref"
+      mklink .emacs ref\/.emacs
+      # really? mklink /D Desktop OneDrive\Desktop
       mklink /D Downloads OneDrive\Downloads
 
     Install choco to get emacs, basic progs, and MSYS2 linux tools
     Firefox setup
     Install MSYS2 tools and progs
-    Sharpkeys (or new Windows thing in powertoys?)
+    Remap ctrl/capslock in powertoys (from choco)
     autoraise delay
     Windows Terminal
     Drawboard
+
+    Put msys2 binaries on front of user path:
+    
+    C:\tools\msys64
+    C:\tools\msys64\usr\bin
+
+    After installing anaconda put it on the front of path. See [[Anaconda Paths]]
 
 *** [[http://www.burningcutlery.com/derek/winsetup/][Making Windows usable]]
 *** <<Windows environment variables: displaying>>
@@ -8875,8 +8934,6 @@ The recommended one of the three possible ways to do it:
 
       - if reinstalling, make sure to run ~/lib/python/conda_env_regen.ipynb first, so can easily reinstall duplicate past environments
       - download from here
-      - override install default: put it in c:\Anaconda to avoid [[https://github.com/ContinuumIO/anaconda-issues/issues/11594#issuecomment-582135204][long path issue]]
-        - you have to install as admin
       - after completion, make it writeable by non-admin
         - go to c:\ProgramData\Anaconda3
         - change this directory's permission so I have full permissions
@@ -8906,7 +8963,8 @@ The recommended one of the three possible ways to do it:
         Anaconda Navigator 4) clone your anaconda environment.  
         All these are messy.
 
-        So I installed "Just for Me."  In this case, python.exe is installed in %USERPROFILE%\Anaconda3 and %USERPROFILE%\Anaconda3\Scripts (C:\Users\scotto\Anaconda3 and C:\Users\scotto\Anaconda3\Scripts)
+        So I installed "Just for Me."  
+        In this case, python.exe is installed in %USERPROFILE%\Anaconda3 and %USERPROFILE%\Anaconda3\Scripts (C:\Users\scotto\Anaconda3 and C:\Users\scotto\Anaconda3\Scripts)
 
         _Start and Update Anaconda_ (from "anaconda prompt" on start menu)
         
@@ -9141,6 +9199,7 @@ plt.show()
             After installing (using conda), put this in your notebook:
 
             %matplotlib widget
+
 *********** <<Jupytlerlab plotly extension>>:
        
             jupyter labextension install @jupyterlab/plotly-extension
@@ -9553,12 +9612,11 @@ plt.show()
 ********* [[https://towardsdatascience.com/jupytext-1-0-highlights-a49dca9baa7b][There are]] <<jupytext extensions>> for both Jupyter & Jupyterlab
 *********** [[https://github.com/mwouts/jupytext/tree/master/packages/labextension][jupytext/packages/labextension at master · mwouts/jupytext]]
 
-            jupyter labextension install jupyterlab-jupytext
-
-            Must also install the python package:
+            Install the python package & then the extension:
             
-            conda install -c conda-forge jupytext
-
+              conda install -c conda-forge jupytext
+              jupyter labextension install jupyterlab-jupytext
+   
 ********* 2019 Medium article: [[https://towardsdatascience.com/jupytext-1-0-highlights-a49dca9baa7b][Jupytext 1.0 highlights - Towards Data Science]]
 ********* [[https://github.com/mwouts/jupytext/issues/298][instructions]] for enabling jupyterlab jupytext extension in bug report
 ********* jupytext author [[https://github.com/mwouts/jupytext/issues/62][considers]] an org mode converter (2018, not done in 2019)
@@ -11773,6 +11831,13 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ******* <<Mathpix Emacs Plugin: mathpix.el>>
 ********* [[https://github.com/jethrokuan/mathpix.el][jethrokuan/mathpix.el: Mathpix Emacs Plugin]]
 *** [[PDF processing in Python]]
+* Writing tools
+*** [[http://www.hemingwayapp.com/][Hemingway Editor]]: simplifications, improvements.  Free online or paid app
+*** <<Emacs writing tools>>
+***** [[http://bnbeckwith.com/code/writegood-mode.html][WriteGood Mode]]: Weasel words, passive voice dupes
+***** [[Org Mode]]
+***** [[org-roam]]
+***** also [[Emacs]]
 * <<Knowledge as Graphs>>
 *** Tree / Mindmaps
 ***** MindMeister
@@ -11992,6 +12057,14 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ***** [[Concept map-like stuff: superlabel, dedicated targets, org-brain]]
 ***** [[JabRef]]
 *** [[Relations and Visualization in Zotero]]
+* Document Annotation
+*** [[https://beepb00p.xyz/annotating.html][How to annotate literally everything]]
+*** [[https://readwise.io/][Readwise]]: [[Kindle]], Instapaper, Pocket, iBooks, and more
+*** <<Hypothesis>> web page annotation
+    From: [[https://web.hypothes.is/][Hypothesis]] 
+***** [[https://www.reddit.com/r/RoamResearch/comments/emgob2/how_do_you_personally_integrate/][said]] to be a good way to get web pages into roam-research
+***** could also be an [[Evernote]] alternative for web page capture
+*** [[Alternatives to Evernote for web page capture/annotation]]
 * TRY <<Programming Practices>>
 *** Agile development
 ***** Florian's Agile video links
@@ -12079,7 +12152,14 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 
 ******* syncs w/ Evenote using API ([[https://blog.instapaper.com/post/122859293691][Updated Evernote Integration]])
 ******* can also [[https://ifttt.com/connect/instapaper/evernote][sync Evernote and Instaper using IFTTT]]
-* Kindle
+*** [[https://github.com/exomut/evernote-dump][exomut/evernote-dump: Convert Evernote .enex files to markdown and files]]
+*** [[Evernote and Emacs]]
+*** <<Alternatives to Evernote for web page capture/annotation>>
+***** [[Hypothesis]]
+***** [[https://getpocket.com/][Pocket]]
+***** [[https://www.instapaper.com/][Instapaper]]
+
+* <<Kindle>>
 *** Exporting Kindle files to pdf
     See partial overview [[http://www.digitaltrends.com/mobile/how-to-convert-kindle-to-pdf/#!LpAlh][here]].
 
@@ -12132,3 +12212,5 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
       Can sync: Amazon Kindle, Apple iBooks, Instapaper, Highly, Medium articles, audiobooks, "and more"
 ******* [[https://readwise.io/][Readwise]] can sync Kindle 
 ******* [[https://blog.readwise.io/use-readwise-to-automatically-export-highlights-to-evernote/][How to Automatically Export Your Kindle Highlights to Evernote]]
+*** Syncing Kindle Annotations
+***** [[https://readwise.io/][Readwise]]: Kindle, Instapaper, Pocket, iBooks, and more
