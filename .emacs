@@ -177,9 +177,9 @@
    (setq shareDir "C:/Users/scott/OneDrive - Clean Power Research"))
   ("desktop-rvtj6ua" ; Surface Go
    (setq shareDir "C:/Users/scott/OneDrive - Clean Power Research"))
-   (progn (warn "Can't assign shareDir for unknown computer: %s" computerNm)
-	  (setq shareDir (concat "unknown_computer_" computerNm "_shareDir")))
-   )
+  (progn (warn "Can't assign shareDir for unknown computer: %s" computerNm)
+	 (setq shareDir (concat "unknown_computer_" computerNm "_shareDir")))
+  )
 ;; Dad's computers: Desktop-2L6G237 (Surface), Desktop-IOS9UTJ (Compaq) 
 
 
@@ -234,10 +234,10 @@ TODO: make this a general function."
   ;; (let* ((nPixHigh 6.0)    ; Home monior (Dell 4K)
   ;;       (DPIhigh   185.0)
   (let* ((nPixHigh 6.0)    ; Surface Pro
-        (DPIhigh   267)
-        (nPixLow   3.0)    ; CPR monitor
-        (DPIlow    94.0)
-        DPIthis nPixThis)
+         (DPIhigh   267)
+         (nPixLow   3.0)    ; CPR monitor
+         (DPIlow    94.0)
+         DPIthis nPixThis)
 
     (setq DPIthis (dpi-avg))
     (message "DPIthis %s" DPIthis)
@@ -291,14 +291,14 @@ TODO: make this a general function."
 (defun sdo/find-exec(cmd_name &optional notFoundMsg)
   "Finds path to executable 'cmd_name' and returns it, or nil if not found."
   (let (cmd_path retpathstr)
-         (setq cmd_path (executable-find cmd_name))
-         (if (not cmd_path)
-             (progn (if notFoundMsg
-			(warn "%s not found. %s" cmd_name notFoundMsg)
-		      (warn  "%s not found." cmd_name))
-		    (setq retpathstr nil))
-           (progn (message "found %s at: %s" cmd_name cmd_path)
-                  (setq retpathstr cmd_path))))) ; there must be a better way...
+    (setq cmd_path (executable-find cmd_name))
+    (if (not cmd_path)
+        (progn (if notFoundMsg
+		   (warn "%s not found. %s" cmd_name notFoundMsg)
+		 (warn  "%s not found." cmd_name))
+	       (setq retpathstr nil))
+      (progn (message "found %s at: %s" cmd_name cmd_path)
+             (setq retpathstr cmd_path))))) ; there must be a better way...
 
 ;; ** Shell Mode
 ;; Make up/down arrows search cmd history like tcsh
@@ -396,7 +396,7 @@ TODO: make this a general function."
 ;; (use-package persp-mode
 ;;   :ensure t
 ;;   :diminish persp-mode
-  
+
 ;;   :init
 ;;   (setq wg-morph-on nil ;; switch off animation
 ;;         persp-add-buffer-on-after-change-major-mode t
@@ -405,7 +405,7 @@ TODO: make this a general function."
 ;;         persp-save-dir (expand-file-name "persp-confs/" !/savefile-dir))
 
 ;;   (add-hook 'after-init-hook (lambda () (persp-mode 1)))
-  
+
 ;;   :config
 ;;   (defvar !//persp-last-selected-perspective persp-nil-name
 ;;     "Previously selected perspective.")
@@ -416,7 +416,7 @@ TODO: make this a general function."
 ;; ;; from: https://github.com/Bad-ptr/persp-mode.el/issues/93#issuecomment-392282950
 ;; (with-eval-after-load "persp-mode"
 ;;   (defvar persp-indirrect-buffers-to-restore nil)
-  
+
 ;;   (persp-def-buffer-save/load
 ;;    :tag-symbol 'def-indirect-buffer
 ;;    :predicate #'buffer-base-buffer
@@ -838,10 +838,10 @@ TODO: make this a general function."
 ;; TODO: when I do this, dired-subtree doesn't work.  Figure out why, fix.
 ;; So dired puts folders at top.  The discovered ls program must
 ;; handle GNU switches (e.g. OSX doesn't)
-;(setq insert-directory-program (sdo/find-exec "ls" "For dired folder ordering"))
-;(setq dired-listing-switches "-laGh1v --group-directories-first")
-;(setq dired-listing-switches "-laGh1v")
-;(setq ls-lisp-dirs-first t) ; for Windows, when runs lisp ls by default
+;;(setq insert-directory-program (sdo/find-exec "ls" "For dired folder ordering"))
+;;(setq dired-listing-switches "-laGh1v --group-directories-first")
+;;(setq dired-listing-switches "-laGh1v")
+;;(setq ls-lisp-dirs-first t) ; for Windows, when runs lisp ls by default
 (add-hook  'dired-mode-hook
 	   (lambda ()
              (dired-hide-details-mode) ; less junk.  ) restores orig format
@@ -903,8 +903,8 @@ TODO: make this a general function."
   (interactive)
   (if (file-directory-p (dired-get-file-for-visit))
       (progn
-    (dired-subtree-toggle)
-    (revert-buffer))
+        (dired-subtree-toggle)
+        (revert-buffer))
     (dired-find-file)))
 
 ;; TODO: Click both toggles directory and opens in a new dired window.  Get rid of the open.
@@ -912,21 +912,21 @@ TODO: make this a general function."
   "Toggle subtree or the open file on mouse-click in dired."
   (interactive "e")
   (let* ((window (posn-window (event-end event)))
-     (buffer (window-buffer window))
-     (pos (posn-point (event-end event))))
+         (buffer (window-buffer window))
+         (pos (posn-point (event-end event))))
     (progn
       (with-current-buffer buffer
-    (goto-char pos)
-    (mhj/dwim-toggle-or-open)))))
+        (goto-char pos)
+        (mhj/dwim-toggle-or-open)))))
 
 (use-package dired-subtree
   :demand
   :bind
   (:map dired-mode-map
-    ("<enter>" . dired-find-file)
-    ("<return>" . dired-find-file)
-    ("<tab>" . mhj/dwim-toggle-or-open)
-    ("<down-mouse-1>" . mhj/mouse-dwim-to-toggle-or-open))
+        ("<enter>" . dired-find-file)
+        ("<return>" . dired-find-file)
+        ("<tab>" . mhj/dwim-toggle-or-open)
+        ("<down-mouse-1>" . mhj/mouse-dwim-to-toggle-or-open))
   :config
   (progn
     ;; Function to customize the line prefixes (I simply indent the lines a bit)
@@ -1160,10 +1160,10 @@ TODO: make this a general function."
                                               nil
                                               t)))
     (if (and short-filename (not (equal "" short-filename)))
-      (let ((longish-filename (cadr (assoc short-filename filename-map))))
-        (if longish-filename
-            (funcall find-file-func longish-filename)
-          (message "Quit")))
+        (let ((longish-filename (cadr (assoc short-filename filename-map))))
+          (if longish-filename
+              (funcall find-file-func longish-filename)
+            (message "Quit")))
       (message "Quit"))))
 
 (defun sdo/find-recentf ()
@@ -1286,24 +1286,24 @@ TODO: make this a general function."
 ;;   :config
 ;;   (setq csv-align-padding 2)
 ;;
-  ;; ;; From: https://tinyurl.com/trtrmau
-  ;; (defun csv-align-visible ()
-  ;;   "Align only visible entries in csv-mode. C-c C-a is already bound to align all fields, but is slow."
-  ;;   (interactive)
-  ;;   (csv-align-fields nil
-  ;;    (window-start (selected-window))
-  ;;    (window-end (selected-window)))
-  ;;   (message "Aligned visible fields only. Press C-c C-w to align again."))
+;; ;; From: https://tinyurl.com/trtrmau
+;; (defun csv-align-visible ()
+;;   "Align only visible entries in csv-mode. C-c C-a is already bound to align all fields, but is slow."
+;;   (interactive)
+;;   (csv-align-fields nil
+;;    (window-start (selected-window))
+;;    (window-end (selected-window)))
+;;   (message "Aligned visible fields only. Press C-c C-w to align again."))
 
-  ;; :bind (:map csv-mode-map
-  ;;             ("C-c C-w" . 'csv-align-visible)
-  ;;             ("C-c C-h" . csv-header-line))
-  ;; ;; 1st page only, must redo 
-  ;; :hook (csv-mode . csv-align-visible) 
-  ;; ;; show header: bad for long colnames, narrow colvals
-  ;; :hook (csv-mode . csv-header-line)
-  ;; ;; doesn't seem to work
-  ;; :hook (csv-mode . toggle-truncate-lines)) 
+;; :bind (:map csv-mode-map
+;;             ("C-c C-w" . 'csv-align-visible)
+;;             ("C-c C-h" . csv-header-line))
+;; ;; 1st page only, must redo 
+;; :hook (csv-mode . csv-align-visible) 
+;; ;; show header: bad for long colnames, narrow colvals
+;; :hook (csv-mode . csv-header-line)
+;; ;; doesn't seem to work
+;; :hook (csv-mode . toggle-truncate-lines)) 
 
 ;; * Version Control
 
@@ -1318,190 +1318,6 @@ TODO: make this a general function."
 ;;   (setq magit-ediff-dwim-show-on-hunks t))
 
 ;; * Programming Modes
-;; ** General purpose programming config
-
-;; determines what mode is entered, based on file extension
-(setq auto-mode-alist
-      (append
-       '(("\\.C$"    . c++-mode)
-	 ("\\.H$"    . c++-mode)
-	 ("\\.cc$"   . c++-mode)
-	 ("\\.cpp$"  . c++-mode)
-	 ("\\.hh$"   . c++-mode)
-	 ("\\.c$"    . c++-mode)
-	 ("\\.cpp$"  . c++-mode)
-	 ("\\.h$"    . c++-mode)
-	 ("\\.dvc$"  . yaml-mode)
-	 ("\\.java$" . java-mode)
-	 ("\\.m$" . matlab-mode)
-	 ) auto-mode-alist))
-
-;; When saving files, set execute permission if #! is in first line.
-(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
-
-(put 'eval-expression 'disabled nil) ; disabled by default
-(global-set-key "\e;" 'comment-line) ; like dwim but better: no region, cmmnt repeats
-
-;; does this make org-mode slower?  If so, disable it like this: http://stackoverflow.com/questions/24814988/emacs-disable-auto-complete-in-python-mode
-(use-package auto-complete
-  :diminish auto-complete-mode
-  :diminish global-auto-complete-mode
-  :diminish auto-complete-minor-mode
-  :config (global-auto-complete-mode))
-
-;; Note that I've remapped er\iedit to iedit-within-defun
-
-;; syntax checkers for many languages
-;; To use flycheck for over 40 languages, do this:
-;;   (global-flycheck-mode)
-(use-package flycheck
-  :config
-  (eval-after-load "flycheck-mode" '(diminish 'flycheck-mode)))
-(diminish 'flycheck-mode) ;; only works outside of use-package flycheck
-
-(use-package flycheck-pos-tip)
-
-;; Make interpreter shells do arrow prev/last matching, like linux
-;; shells.  I think this will be overwritten by some modes
-;; e.g. gud-debugger, inferior-python-mode, and RSS, which have their own maps in this emacs
-;; file. 
-(define-key comint-mode-map [up]
-  'comint-previous-matching-input-from-input)
-(define-key comint-mode-map [down]
-  'comint-next-matching-input-from-input)
-
-;; *** Ediff
-
-;; TODO report ediff 'm' bug: Typing 'm' in ediff minibuffer spreads
-;; emacs across a width equal to both dual monitors, although emacs's
-;; left edge is always put on the left edge of the right monitor, even
-;; if it was originally in the left monitor
-
-;; Do not pop up a separate window "frame" for ediff
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
-;; Avoid folding headlines when ediffing org-mode
-;; from: https://emacs.stackexchange.com/questions/21335/prevent-folding-org-files-opened-by-ediff
-(add-hook 'ediff-prepare-buffer-hook #'outline-show-all)
-
-;; Restore window configuration after ediff quits
-;; https://emacs.stackexchange.com/questions/7482/restoring-windows-and-layout-after-an-ediff-session
-(defvar my-ediff-last-windows nil)
-
-(defun my-store-pre-ediff-winconfig ()
-  (setq my-ediff-last-windows (current-window-configuration)))
-
-(defun my-restore-pre-ediff-winconfig ()
-  (set-window-configuration my-ediff-last-windows))
-
-(add-hook 'ediff-before-setup-hook #'my-store-pre-ediff-winconfig)
-(add-hook 'ediff-quit-hook #'my-restore-pre-ediff-winconfig)
-
-;; *** Outshine: org-mode like headlines in programming and other modes
-(use-package outshine
-;; this works if I run it from inside .emacs but not after a clean start  
-;;  :bind (:map outline-minor-mode-map ("S-<tab>" . outshine-cycle-buffer))
-;; diminish doesn't work
-  :diminish outline-mode
-  :diminish outline-minor-mode
-  :config
-  (add-hook 'outline-minor-mode-hook 'outshine-mode) ; for outshine itself
-  (add-hook 'prog-mode-hook 'outline-minor-mode)     ; all prog modes
-  ;; can only diminish outshine mode here, like this, for some reason
-  (eval-after-load "outshine" '(diminish 'outshine-mode)) 
-  ;; works here
-  (bind-keys
-   :map outline-minor-mode-map
-   ("<backtab>" . outshine-cycle-buffer))) ;Global cycle using S-TAB
-
-;; *** Vertical indent lines in programming modes
-
-(use-package highlight-indentation
-  :diminish highlight-indentation-mode) ; indicator: ||
-
-(use-package highlight-indent-guides
-  :diminish highlight-indent-guides-mode ;; indicator: h-i-g (works here)
-  :config
-  (setq highlight-indent-guides-method 'character) ; nicest, thinnest lines
-  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
-  
-;; *** Debuggers
-;; **** realgud
-;; Has  a semi-GUI in emacs: https://github.com/realgud/realgud
-;; best docs I can find: https://github.com/realgud/realgud
-;; middle mouse shows variable
-;;  (in tooltip if M-x gud-tooltip-mode )
-;; M-x gud-goto-info brings up gud docs
-
-;; Lines below would be impoortant if I knew how to start gdb or readgud:gdb
-;; (sdo/find-exec "gdb" "Needed for debugging: pacman -Ss gdb")
-;; (sdo/find-exec "gcc" "gdb needs libstdc (& others?) from gcc: pacman -Ss gcc")
-
-;; Line below would be important if I understood what ipdb was good for
-;;(use-package realgud-ipdb)
-
-(use-package realgud
-  :defer t
-  :config
-  (load-library "realgud") ; avoid M-x load-library on every startup
-  (add-hook 'gud-mode-hook
-	  '(lambda ()
-             ;; conflicts w/ other home bindings...
-	     (local-set-key [home]   ; move to beginning of line, after prompt
-			    'comint-bol)
-	     (local-set-key [up]     ; cycle backward through command history
-			    '(lambda () (interactive)
-			       (if (comint-after-pmark-p)
-				   (comint-previous-input 1)
-				 (previous-line 1))))
-	     (local-set-key [down]    ; cycle forward through command history
-			    '(lambda () (interactive)
-			       (if (comint-after-pmark-p)
-				   (comint-next-input 1)
-				 (forward-line 1))))))
-  :commands (realgud:gdb
-             realgud:ipdb
-             realgud:pdb))
-
-;; realgud author's color customizations:  I'm not sure I see a
-;; difference, probably because of the ansi term thing I've never been
-;; able to figure out.
-;; https://github.com/realgud/realgud/wiki/Customizing-Colors
-(defface term-color-darkgreen
-  '((t :foreground "DarkGreen" :background "DarkGreen"))
-  "Face used to render dark green color code."
-  :group 'term)
-
-(defface term-color-cadetblue
-  '((t :foreground "CadetBlue" :background "CadetBAlue"))
-  "Face used to render dark cadet blue color code."
-  :group 'term)
-
-(defface term-color-purple
-  '((t :foreground "Purple" :background "Purple"))
-  "Face used to render dark Purple color code."
-  :group 'term)
-
-(defface term-color-darkgoldenrod
-  '((t :foreground "Darkgoldenrod" :background "Darkgoldenrod"))
-  "Face used to render dark Darkgoldenrod color code."
-  :group 'term)
-
-(defface term-color-ivory4
-  '((t :foreground "Ivory4" :background "Ivory4"))
-  "Face used to render dark Ivory4 color code."
-  :group 'term)
-
-(setq ansi-term-color-vector
-      [term
-       term-color-black
-       term-color-red
-       term-color-darkgreen
-       term-color-cadetblue
-       term-color-blue
-       term-color-purple
-       term-color-darkgoldenrod
-       term-color-ivory4])
-
 ;; ** Matlab mode
 
 ;; Got errors about obsolete code when I first isntalled this in packages. Note that abo-abo says that this package is no longer maintained (but did he meant THIS package or is THIS package actually his package? the 'matlab' package below is 'matlab-emacs' in sourceforge).  Anyway, abo-abo has a new matlab package, maybe worth trying.
@@ -1575,8 +1391,8 @@ TODO: make this a general function."
   :defer t
   :init
   (add-hook 'emacs-lisp-mode-hook
-   (lambda ()
-     (define-key emacs-lisp-mode-map "\C-c\C-v" erefactor-map)))
+            (lambda ()
+              (define-key emacs-lisp-mode-map "\C-c\C-v" erefactor-map)))
 
   ;; TODO do this
   ;;And set these variables correctly: erefactor-lint-path-alist, erefactor-lint-by-emacsen
@@ -1646,27 +1462,25 @@ TODO: make this a general function."
 
 ;; (when (setq conda_exe (sdo/find-exec "thisIsNotThere" "Needed for most python packages"))
 
- (when (setq conda_exe (sdo/find-exec "conda" "Needed for most python packages"))
-    (use-package conda
-      :ensure t
-      :config
-      (setq conda-env-home-directory (expand-file-name
-                                      (concat (file-name-directory conda_exe)
-                                              "..")))
-      (custom-set-variables
-       '(conda-anaconda-home conda-env-home-directory))
-      
-      (conda-env-initialize-interactive-shells)
-      (conda-env-initialize-eshell)
-      (conda-env-activate "base")
-;;      (conda-env-activate "stdso") ; my expected default anaconda environment
-      ;; Use if projects have environments files indicating their conda envs
-      ;;(setq conda-project-env-name "environment.yml") ; needed by autoactivate
-      ;;(conda-env-autoactivate-mode t)
-      ;;conda environment is set on the modeline in custom variables
-      )
-
-  (sdo/find-exec "python" "Needed by autofix-on-save, REPL, elpy & py-python")
+(when (setq conda_exe (sdo/find-exec "conda" "Needed for most python packages"))
+  (use-package conda
+    :ensure t
+    :config
+    (setq conda-env-home-directory (expand-file-name
+                                    (concat (file-name-directory conda_exe)
+                                            "..")))
+    (custom-set-variables
+     '(conda-anaconda-home conda-env-home-directory))
+    
+    (conda-env-initialize-interactive-shells)
+    (conda-env-initialize-eshell)
+    (conda-env-activate "base")
+    ;;      (conda-env-activate "stdso") ; my expected default anaconda environment
+    ;; Use if projects have environments files indicating their conda envs
+    ;;(setq conda-project-env-name "environment.yml") ; needed by autoactivate
+    ;;(conda-env-autoactivate-mode t)
+    ;;conda environment is set on the modeline in custom variables
+    )
 
   (setq autopep8bin (sdo/find-exec "autopep8" "Needed by py-autopep8 autofix-on-save & elpy"))
   (when autopep8bin (use-package py-autopep8))
@@ -1699,17 +1513,17 @@ TODO: make this a general function."
   (sdo/find-exec "flake8" "Needed for elpy & Jupyterlab code checks")
 
   (defun sdo/kill-python-console ()
-       "Kill python console if it exists -- immediately no questions asked."
-       (interactive)
-       (setq pyBuffNm "*Python*")
-       (if (member pyBuffNm (mapcar (function buffer-name) (buffer-list)))
-           (progn
-             (switch-to-buffer pyBuffNm)
-             (set-buffer-modified-p nil)
-             (setq pproc (get-buffer-process pyBuffNm))
-             (if pproc
-                 (set-process-query-on-exit-flag pproc nil))
-             (kill-buffer))))
+    "Kill python console if it exists -- immediately no questions asked."
+    (interactive)
+    (setq pyBuffNm "*Python*")
+    (if (member pyBuffNm (mapcar (function buffer-name) (buffer-list)))
+        (progn
+          (switch-to-buffer pyBuffNm)
+          (set-buffer-modified-p nil)
+          (setq pproc (get-buffer-process pyBuffNm))
+          (if pproc
+              (set-process-query-on-exit-flag pproc nil))
+          (kill-buffer))))
 
   (defun sdo/run-python-clean-as-possible ()
     "If region is active, then call elpy-shell-send-region-or-buffer-and-go; otherwise, save current buffer and run its contents in new *Python* console, killing any existing console; "
@@ -1718,7 +1532,7 @@ TODO: make this a general function."
       (save-buffer)
       (sdo/kill-python-console))
     (elpy-shell-send-region-or-buffer-and-go t))
-    
+  
   (use-package elpy
     :defer t
     :diminish elpy-mode
@@ -1794,7 +1608,7 @@ TODO: make this a general function."
                                 (apply f args))
                             (apply f args))))    
 
-  ;; code tidy when save
+    ;; code tidy when save
     (if autopep8bin
         (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
     
@@ -1942,7 +1756,7 @@ TODO: make this a general function."
 
 ;; maybe this can go inside of use-package ominsharp?
 (eval-after-load
-  'company
+    'company
   '(add-to-list 'company-backends #'company-omnisharp))
 
 (defun my-csharp-mode-setup ()
@@ -1970,6 +1784,196 @@ TODO: make this a general function."
   (ediff-files "~/.emacs"
                (expand-file-name ".emacs" docDir)))
 
+;; ** General purpose programming config
+
+;; determines what mode is entered, based on file extension
+(setq auto-mode-alist
+      (append
+       '(("\\.C$"    . c++-mode)
+	 ("\\.H$"    . c++-mode)
+	 ("\\.cc$"   . c++-mode)
+	 ("\\.cpp$"  . c++-mode)
+	 ("\\.hh$"   . c++-mode)
+	 ("\\.c$"    . c++-mode)
+	 ("\\.cpp$"  . c++-mode)
+	 ("\\.h$"    . c++-mode)
+	 ("\\.dvc$"  . yaml-mode)
+	 ("\\.java$" . java-mode)
+	 ("\\.m$" . matlab-mode)
+	 ) auto-mode-alist))
+
+;; When saving files, set execute permission if #! is in first line.
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+
+(put 'eval-expression 'disabled nil) ; disabled by default
+(global-set-key "\e;" 'comment-line) ; like dwim but better: no region, cmmnt repeats
+
+;; does this make org-mode slower?  If so, disable it like this: http://stackoverflow.com/questions/24814988/emacs-disable-auto-complete-in-python-mode
+(use-package auto-complete
+  :diminish auto-complete-mode
+  :diminish global-auto-complete-mode
+  :diminish auto-complete-minor-mode
+  :config (global-auto-complete-mode))
+
+;; Note that I've remapped er\iedit to iedit-within-defun
+
+;; syntax checkers for many languages
+;; To use flycheck for over 40 languages, do this:
+;;   (global-flycheck-mode)
+
+;; Set flycheck python path: must do this for after conda to it
+;; pythonbin points to the conda python, and not the default non-working Windows python3
+(setq pythonbin (sdo/find-exec "python" "Needed by autofix-on-save, REPL, flycheck, elpy & py-python"))
+(custom-set-variables
+ '(flycheck-python-pycompile-executable pythonbin))
+
+(use-package flycheck
+  :config
+  (eval-after-load "flycheck-mode" '(diminish 'flycheck-mode)))
+(diminish 'flycheck-mode) ;; only works outside of use-package flycheck
+
+(use-package flycheck-pos-tip)
+
+;; Make interpreter shells do arrow prev/last matching, like linux
+;; shells.  I think this will be overwritten by some modes
+;; e.g. gud-debugger, inferior-python-mode, and RSS, which have their own maps in this emacs
+;; file. 
+(define-key comint-mode-map [up]
+  'comint-previous-matching-input-from-input)
+(define-key comint-mode-map [down]
+  'comint-next-matching-input-from-input)
+
+;; *** Ediff
+
+;; TODO report ediff 'm' bug: Typing 'm' in ediff minibuffer spreads
+;; emacs across a width equal to both dual monitors, although emacs's
+;; left edge is always put on the left edge of the right monitor, even
+;; if it was originally in the left monitor
+
+;; Do not pop up a separate window "frame" for ediff
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+;; Avoid folding headlines when ediffing org-mode
+;; from: https://emacs.stackexchange.com/questions/21335/prevent-folding-org-files-opened-by-ediff
+(add-hook 'ediff-prepare-buffer-hook #'outline-show-all)
+
+;; Restore window configuration after ediff quits
+;; https://emacs.stackexchange.com/questions/7482/restoring-windows-and-layout-after-an-ediff-session
+(defvar my-ediff-last-windows nil)
+
+(defun my-store-pre-ediff-winconfig ()
+  (setq my-ediff-last-windows (current-window-configuration)))
+
+(defun my-restore-pre-ediff-winconfig ()
+  (set-window-configuration my-ediff-last-windows))
+
+(add-hook 'ediff-before-setup-hook #'my-store-pre-ediff-winconfig)
+(add-hook 'ediff-quit-hook #'my-restore-pre-ediff-winconfig)
+
+;; *** Outshine: org-mode like headlines in programming and other modes
+(use-package outshine
+  ;; this works if I run it from inside .emacs but not after a clean start  
+  ;;  :bind (:map outline-minor-mode-map ("S-<tab>" . outshine-cycle-buffer))
+  ;; diminish doesn't work
+  :diminish outline-mode
+  :diminish outline-minor-mode
+  :config
+  (add-hook 'outline-minor-mode-hook 'outshine-mode) ; for outshine itself
+  (add-hook 'prog-mode-hook 'outline-minor-mode)     ; all prog modes
+  ;; can only diminish outshine mode here, like this, for some reason
+  (eval-after-load "outshine" '(diminish 'outshine-mode)) 
+  ;; works here
+  (bind-keys
+   :map outline-minor-mode-map
+   ("<backtab>" . outshine-cycle-buffer))) ;Global cycle using S-TAB
+
+;; *** Vertical indent lines in programming modes
+
+(use-package highlight-indentation
+  :diminish highlight-indentation-mode) ; indicator: ||
+
+(use-package highlight-indent-guides
+  :diminish highlight-indent-guides-mode ;; indicator: h-i-g (works here)
+  :config
+  (setq highlight-indent-guides-method 'character) ; nicest, thinnest lines
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
+
+;; *** Debuggers
+;; **** realgud
+;; Has  a semi-GUI in emacs: https://github.com/realgud/realgud
+;; best docs I can find: https://github.com/realgud/realgud
+;; middle mouse shows variable
+;;  (in tooltip if M-x gud-tooltip-mode )
+;; M-x gud-goto-info brings up gud docs
+
+;; Lines below would be impoortant if I knew how to start gdb or readgud:gdb
+;; (sdo/find-exec "gdb" "Needed for debugging: pacman -Ss gdb")
+;; (sdo/find-exec "gcc" "gdb needs libstdc (& others?) from gcc: pacman -Ss gcc")
+
+;; Line below would be important if I understood what ipdb was good for
+;;(use-package realgud-ipdb)
+
+(use-package realgud
+  :defer t
+  :config
+  (load-library "realgud") ; avoid M-x load-library on every startup
+  (add-hook 'gud-mode-hook
+	    '(lambda ()
+               ;; conflicts w/ other home bindings...
+	       (local-set-key [home]   ; move to beginning of line, after prompt
+			      'comint-bol)
+	       (local-set-key [up]     ; cycle backward through command history
+			      '(lambda () (interactive)
+			         (if (comint-after-pmark-p)
+				     (comint-previous-input 1)
+				   (previous-line 1))))
+	       (local-set-key [down]    ; cycle forward through command history
+			      '(lambda () (interactive)
+			         (if (comint-after-pmark-p)
+				     (comint-next-input 1)
+				   (forward-line 1))))))
+  :commands (realgud:gdb
+             realgud:ipdb
+             realgud:pdb))
+
+;; realgud author's color customizations:  I'm not sure I see a
+;; difference, probably because of the ansi term thing I've never been
+;; able to figure out.
+;; https://github.com/realgud/realgud/wiki/Customizing-Colors
+(defface term-color-darkgreen
+  '((t :foreground "DarkGreen" :background "DarkGreen"))
+  "Face used to render dark green color code."
+  :group 'term)
+
+(defface term-color-cadetblue
+  '((t :foreground "CadetBlue" :background "CadetBAlue"))
+  "Face used to render dark cadet blue color code."
+  :group 'term)
+
+(defface term-color-purple
+  '((t :foreground "Purple" :background "Purple"))
+  "Face used to render dark Purple color code."
+  :group 'term)
+
+(defface term-color-darkgoldenrod
+  '((t :foreground "Darkgoldenrod" :background "Darkgoldenrod"))
+  "Face used to render dark Darkgoldenrod color code."
+  :group 'term)
+
+(defface term-color-ivory4
+  '((t :foreground "Ivory4" :background "Ivory4"))
+  "Face used to render dark Ivory4 color code."
+  :group 'term)
+
+(setq ansi-term-color-vector
+      [term
+       term-color-black
+       term-color-red
+       term-color-darkgreen
+       term-color-cadetblue
+       term-color-blue
+       term-color-purple
+       term-color-darkgoldenrod
+       term-color-ivory4])
 ;; * Narrowing
 ;; Default emacs narrowing has too many keys: wipe them out and make
 ;; it a toggle from
@@ -2415,14 +2419,14 @@ This function avoids making messed up targets by exiting without doing anything 
     (save-excursion
       (let* ((globalp (memq state '(contents all)))
              (beg (if globalp
-                    (point-min)
+                      (point-min)
                     (point)))
              (end (if globalp
-                    (point-max)
+                      (point-max)
                     (if (eq state 'children)
-                      (save-excursion
-                        (outline-next-heading)
-                        (point))
+                        (save-excursion
+                          (outline-next-heading)
+                          (point))
                       (org-end-of-subtree t)))))
         (goto-char beg)
         (while (re-search-forward org-drawer-regexp end t)
@@ -2431,17 +2435,17 @@ This function avoids making messed up targets by exiting without doing anything 
             (when (looking-at org-drawer-regexp)
               (let* ((start (1- (match-beginning 0)))
                      (limit
-                       (save-excursion
-                         (outline-next-heading)
-                           (point)))
+                      (save-excursion
+                        (outline-next-heading)
+                        (point)))
                      (msg (format
-                            (concat
-                              "org-cycle-hide-drawers:  "
-                              "`:END:`"
-                              " line missing at position %s")
-                            (1+ start))))
+                           (concat
+                            "org-cycle-hide-drawers:  "
+                            "`:END:`"
+                            " line missing at position %s")
+                           (1+ start))))
                 (if (re-search-forward "^[ \t]*:END:" limit t)
-                  (outline-flag-region start (point-at-eol) t)
+                    (outline-flag-region start (point-at-eol) t)
                   (user-error msg))))))))))
 
 ;; ** Org Export
@@ -2483,10 +2487,10 @@ This function avoids making messed up targets by exiting without doing anything 
 ;;
 ;; From: https://dustinlacewell.github.io/emacs.d/
 (use-package helm-org-rifle
-:after (helm org)
-:commands helm-org-rifle-current-buffer
-:config
-(define-key org-mode-map (kbd "M-r") 'helm-org-rifle-current-buffer))
+  :after (helm org)
+  :commands helm-org-rifle-current-buffer
+  :config
+  (define-key org-mode-map (kbd "M-r") 'helm-org-rifle-current-buffer))
 
 ;; ** Org and Zotero
 
@@ -2617,7 +2621,7 @@ This function avoids making messed up targets by exiting without doing anything 
 (setq bibtex-completion-library-path bibpdf_list)
 ;; Find pdf w/ JabRef/Zotero fields
 (setq bibtex-completion-pdf-field "file")
-  ;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
+;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
 (setq bibtex-completion-notes-path (expand-file-name "bib-notes" org_roam_dir))
 
 ;; *** Helm-bibtex
@@ -3013,7 +3017,7 @@ This function avoids making messed up targets by exiting without doing anything 
 ;; *** Org-roam-company
 
 ;; Popup link name completion.  Without this, it seems like the default is swiper.  Must run M-x company-mode to run it with M-x company org-roam.
-;  When run it, just get a long list of completions, doesnt narrow as you type.
+;;  When run it, just get a long list of completions, doesnt narrow as you type.
 ;; (use-package company-org-roam
 ;;   :config
 ;;   (push 'company-org-roam company-backends))
@@ -3036,16 +3040,16 @@ This function avoids making messed up targets by exiting without doing anything 
 ;; coordinating org-noter with org-notes
 ;; https://write.as/dani/notes-on-org-noter
 (defun org-ref-noter-at-point ()
-      "Open the pdf for bibtex key under point if it exists."
-      (interactive)
-      (let* ((results (org-ref-get-bibtex-key-and-file))
-             (key (car results))
-             (pdf-file (funcall org-ref-get-pdf-filename-function key)))
-        (if (file-exists-p pdf-file)
-            (progn
-              (find-file-other-window pdf-file)
-              (org-noter))
-          (message "no pdf found for %s" key))))
+  "Open the pdf for bibtex key under point if it exists."
+  (interactive)
+  (let* ((results (org-ref-get-bibtex-key-and-file))
+         (key (car results))
+         (pdf-file (funcall org-ref-get-pdf-filename-function key)))
+    (if (file-exists-p pdf-file)
+        (progn
+          (find-file-other-window pdf-file)
+          (org-noter))
+      (message "no pdf found for %s" key))))
 
 (add-to-list 'org-ref-helm-user-candidates 
              '("Org-Noter notes" . org-ref-noter-at-point))
@@ -3079,7 +3083,7 @@ This function avoids making messed up targets by exiting without doing anything 
 (if (setq rg_exe (sdo/find-exec "rg" "ripgrep needed org-roam and others"))
     ;; deadgrep bindings: https://github.com/Wilfred/deadgrep
     (use-package deadgrep
-;;      :bind ("<f5>" . deadgrep)
+      ;;      :bind ("<f5>" . deadgrep)
       :config
       ;; start search in current working dir:
       ;; https://github.com/Wilfred/deadgrep/issues/14
@@ -3296,14 +3300,14 @@ This function avoids making messed up targets by exiting without doing anything 
   (("M-y" . counsel-yank-pop)
    :map ivy-minibuffer-map
    ("M-y" . ivy-next-line)) ; needed?
-   :config
-   ;; Internet search, compare w/ google-this
-   ;; TODO: make it search for region if selected, like
-   ;; sdo/swiper-region and for thing at point, like c-c s
-   ;; (swiper-isearch-thing-at-point) does now.  There are many
-   ;; *-at-point functions already here.  Maybe one is an inspiration.
-   ;; Some existing funcs call emac's symbol-at-point.
-   (global-set-key (kbd "C-S-s")  'counsel-search)) ; doesn't work in :bind
+  :config
+  ;; Internet search, compare w/ google-this
+  ;; TODO: make it search for region if selected, like
+  ;; sdo/swiper-region and for thing at point, like c-c s
+  ;; (swiper-isearch-thing-at-point) does now.  There are many
+  ;; *-at-point functions already here.  Maybe one is an inspiration.
+  ;; Some existing funcs call emac's symbol-at-point.
+  (global-set-key (kbd "C-S-s")  'counsel-search)) ; doesn't work in :bind
 
 (use-package ivy-explorer ; ido-grid-mode for ivy: C-f/b/p/n/a/e navigate the grid
   :after ivy
@@ -3320,8 +3324,8 @@ This function avoids making messed up targets by exiting without doing anything 
 ;; replace the ivy-hydra with this learning one
 ;; uses regular ivy-mode keybindings to provide cleaner help and aid learning
 (defhydra hydra-ivy (:hint nil
-                     :color pink)
-"
+                           :color pink)
+  "
 
 Navigation:
 _C-n_/_C-p_ next/previous  _M-<_/_M->_ begin/end  _C-v_/_M-v_ scroll up/down
@@ -3434,8 +3438,8 @@ _C-M-a_ change default action from list for this session
 ;; Should be placed after ivy to avoid partial ivy overwrites of ido functions
 
 ;; Commenting out  these fixed renaming a file to a shorter but similar name
-;(ido-mode 1) ; https://github.com/DarwinAwardWinner/ido-completing-read-plus
-;(ido-everywhere 1)
+;;(ido-mode 1) ; https://github.com/DarwinAwardWinner/ido-completing-read-plus
+;;(ido-everywhere 1)
 
 ;; From: http://stackoverflow.com/questions/17986194/emacs-disable-automatic-file-search-in-ido-mode
 ;; so it doesn't search for file completions in other directories.  Really
@@ -3600,7 +3604,7 @@ _C-M-a_ change default action from list for this session
   (flyspell-mode)
   (writegood-mode)
   (artbollocks-mode)) ;; do I like this?
-  
+
 (global-set-key (kbd "C-c W") 'toggle-writing-tools)
 
 ;; ** Latex
@@ -3693,7 +3697,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
 --------------------------------------------------------------------------------
            _._: mark position _/_: jump to mark
 "
-;;  ("b" counsel-descbinds)
+  ;;  ("b" counsel-descbinds)
   ("b" helm-descbinds)
   ;;  ("s" describe-symbol)
   ("s" helpful-at-point)
@@ -3864,7 +3868,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
 ;; (with-eval-after-load 'subr-x
 ;;   (setq-default mode-line-buffer-identification
 ;;                 'buffername))
-                                                                                
+
 
 ;; ;; TODO: try https://github.com/seagle0128/doom-modeline
 ;;Not pretty out of the box, but is good for long filenames: uses
@@ -3937,7 +3941,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
 ;; However, it doesn't indent 2nd line numbered or lettered lists
 (use-package adaptive-wrap ; required for visual line mode hook below?
   :diminish adaptive-wrap-prefix-mode
-;;  :config (add-hook 'visual-line-mode-hook (adaptive-wrap-prefix-mode +1)))
+  ;;  :config (add-hook 'visual-line-mode-hook (adaptive-wrap-prefix-mode +1)))
   :config (add-hook 'visual-line-mode-hook
   		    (lambda ()
   		      (adaptive-wrap-prefix-mode +1)
@@ -3980,15 +3984,15 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
 
 ;; Function to open wttrin with first city on list
 (defun sdo/wttrin ()
-    "Open `wttrin' without prompting, using first city in `wttrin-default-cities'.  Window is sized to fit wttrn display."
-    (interactive)
-    (setq pre-wttrin-frame-config (current-frame-configuration))
-    (delete-other-windows)
-    (set-frame-width (selected-frame) 130)
-    (set-frame-height (selected-frame) 48)
-    (set-background-color "black") ;; goes away after do wttrn 'q'
-    (set-foreground-color "gray")
-    (wttrin-query (car wttrin-default-cities)))
+  "Open `wttrin' without prompting, using first city in `wttrin-default-cities'.  Window is sized to fit wttrn display."
+  (interactive)
+  (setq pre-wttrin-frame-config (current-frame-configuration))
+  (delete-other-windows)
+  (set-frame-width (selected-frame) 130)
+  (set-frame-height (selected-frame) 48)
+  (set-background-color "black") ;; goes away after do wttrn 'q'
+  (set-foreground-color "gray")
+  (wttrin-query (car wttrin-default-cities)))
 
 (defun sdo/wttrin-restore-frame ()
   "Remove all *wttr.in buffers, then restore frame and window configuration saved prior to launching wttrin."
@@ -4186,7 +4190,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
  '(w32-use-w32-font-dialog nil)
  '(window-divider-default-places t)
  '(window-divider-mode t))
- ;; '(w32shell-cygwin-bin "C:\\cygwin64\\bin"))
+;; '(w32shell-cygwin-bin "C:\\cygwin64\\bin"))
 
 ;; ** Custom Set Faces
 
