@@ -77,17 +77,13 @@
 
 (use-package try) ; M-x try to test a pkg w/o installing it
 
-;; Fixes elpa 27.1 gpg key error:
+;; Just these things skip elpa 27.1 gpg key error:
+;;
+;; Install gnupg package w/ choco.  Seems that was using gpg program
+;; in windows git, and this was mixing up windows/linux paths
+;;
+;; This updates some keyring thing
 ;; https://www.reddit.com/r/emacs/comments/d9rchm/emacs_archivecontentssig_not_verifying/
-;;  If not even this package can't download
-;; then the key is really old.  Fix for that is to temporariliy
-;; customize 'package-check-signature' to nil
-;; From here:
-;; http://elpa.gnu.org/packages/gnu-elpa-keyring-update.html ...
-;; this might help, if I knew what keys to put in there:
-;;   gpg --homedir ~/.emacs.d/elpa/gnupg --receive-keys 066DAFCB81E42C40
-;;   gpg --homedir ~/.emacs.d/elpa/gnupg --quick-set-expire 474F05837FBDEF9B 1y
-;; Note: my 1st install had to be manual: M-x package install
 (use-package gnu-elpa-keyring-update)
 
 ;; updated package interface.  Start with M-x paradox-list-packages
@@ -1570,6 +1566,11 @@ TODO: make this a general function."
 ;; Rename elisp symbols:
 ;; C-c C-v r : Rename symbol in current buffer. Resolve let binding as long as i can.
 ;; Other bindings: https://github.com/mhayashi1120/Emacs-erefactor
+;; As of 11/5/20, the elpa version causes a compile warning.  Fix is
+;; to manually edit: ./elpa/erefactor-20200513.1252/erefactor.el:922,
+;; replacing preceding-sexp with elisp--preceding-sexp, then
+;; recompiling.
+;; My erefactor issue: https://github.com/mhayashi1120/Emacs-erefactor/issues/5
 (use-package erefactor
   :defer t
   :init
