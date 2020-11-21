@@ -1825,7 +1825,193 @@ TODO: make this a general function."
 ;; pythonbin points to the conda python, and not the default non-working Windows python3
 (setq pythonbin (sdo/find-exec "python" "Needed by autofix-on-save, REPL, flycheck, elpy & py-python"))
 (custom-set-variables
- '(flycheck-python-pycompile-executable pythonbin))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(auto-hscroll-mode 'current-line)
+ '(aw-background t)
+ '(bibtex-completion-pdf-open-function 'helm-open-file-with-default-tool)
+ '(blink-cursor-mode nil)
+ '(c-basic-offset 2)
+ '(c-default-style
+   '((c-mode . "stroustrup")
+     (c++-mode . "stroustrup")
+     (java-mode . "java")
+     (awk-mode . "awk")
+     (other . "gnu")))
+ '(calendar-week-start-day 1)
+ '(column-number-mode t)
+ '(conda-anaconda-home conda-env-home-directory)
+ '(counsel-grep-base-command "grep -nEi '%s' %s")
+ '(counsel-search-engine 'google)
+ '(delete-selection-mode nil)
+ '(dired-dwim-target t)
+ '(display-time-24hr-format t)
+ '(display-time-default-load-average nil)
+ '(display-time-load-average-threshold 100000000)
+ '(display-time-mode t)
+ '(ediff-keep-variants nil)
+ '(ediff-split-window-function 'split-window-horizontally)
+ '(elpy-rpc-python-command "python")
+ '(elpy-shell-display-buffer-after-send t)
+ '(elpy-shell-starting-directory 'current-directory)
+ '(emacsw32-style-frame-title t)
+ '(ess-ido-flex-matching t)
+ '(ess-language "R" t)
+ '(ess-own-style-list
+   '((ess-indent-level . 2)
+     (ess-continued-statement-offset . 2)
+     (ess-brace-offset . 0)
+     (ess-expression-offset . 2)
+     (ess-else-offset . 0)
+     (ess-brace-imaginary-offset . 0)
+     (ess-continued-brace-offset . 0)
+     (ess-arg-function-offset . 2)
+     (ess-arg-function-offset-new-line . 2)
+     (ess-close-brace-offset . 0)))
+ '(ess-ps-viewer-pref "gv")
+ '(ess-style 'OWN)
+ '(flycheck-python-pycompile-executable pythonbin)
+ '(focus-follows-mouse t)
+ '(gdb-many-windows t)
+ '(gud-chdir-before-run t)
+ '(gud-pdb-command-name "python -m pdb")
+ '(gud-tooltip-echo-area t)
+ '(gud-tooltip-mode t)
+ '(ido-auto-merge-work-directories-length -1)
+ '(ido-cannot-complete-command 'ido-grid-mode-tab)
+ '(ido-create-new-buffer 'always)
+ '(ido-everywhere t)
+ '(ido-grid-mode t)
+ '(ido-mode 'both nil (ido))
+ '(ido-use-filename-at-point 'guess)
+ '(ido-use-url-at-point t)
+ '(indent-tabs-mode nil)
+ '(indicate-buffer-boundaries nil)
+ '(indicate-empty-lines t)
+ '(ivy-mode t)
+ '(ivy-wrap t)
+ '(load-home-init-file t t)
+ '(load-prefer-newer t)
+ '(matlab-comment-column 0)
+ '(matlab-comment-region-s "% ")
+ '(matlab-cont-level 2)
+ '(matlab-fill-strings-flag 0)
+ '(matlab-indent-function-body nil)
+ '(matlab-indent-level 2)
+ '(mode-line-format
+   '(("%e" mode-line-front-space mode-line-mule-info mode-line-client mode-line-modified mode-line-remote mode-line-frame-identification "   " mode-line-buffer-identification mode-line-position
+      (vc-mode vc-mode)
+      "  " :exec conda-env-current-name "   " mode-line-modes "  " mode-line-misc-info mode-line-end-spaces)))
+ '(mouse-autoselect-window 0.5)
+ '(mouse-avoidance-nudge-dist 10)
+ '(mouse-wheel-progressive-speed nil)
+ '(mouse-wheel-scroll-amount '(1 ((shift) p\. 1) ((control))))
+ '(mouse-wheel-tilt-scroll t)
+ '(org-agenda-files
+   '("~/OneDrive - Clean Power Research/ref/DOE_brainstorm/20200605152244-test0.org" "c:/Users/scott/OneDrive - Clean Power Research/ref/tmp.org"))
+ '(org-confirm-shell-links 'y-or-n-p)
+ '(org-ctrl-k-protect-subtree t)
+ '(org-cycle-include-plain-lists 'integrate)
+ '(org-directory "~/")
+ '(org-ellipsis "…")
+ '(org-export-backends '(ascii html latex odt org confluence freemind s5))
+ '(org-export-with-broken-links 'mark)
+ '(org-fontify-done-headline t)
+ '(org-fontify-emphasized-text t)
+ '(org-hide-emphasis-markers t)
+ '(org-hide-leading-stars t)
+ '(org-latex-pdf-process '("latexmk -pdf -output-directory=%o -f %f"))
+ '(org-link-from-user-regexp nil)
+ '(org-list-allow-alphabetical t)
+ '(org-list-empty-line-terminates-plain-lists t)
+ '(org-modules
+   '(ol-bibtex org-mouse ol-eshell ol-git-link ol-man org-inlinetask org-mouse org-protocol org-choose))
+ '(org-noter-auto-save-last-location t)
+ '(org-noter-doc-property-in-notes t)
+ '(org-occur-case-fold-search ''smart)
+ '(org-odd-levels-only t)
+ '(org-outline-path-complete-in-steps nil)
+ '(org-pretty-entities nil)
+ '(org-preview-latex-process-alist
+   '((dvipng :programs
+             ("latex" "dvipng")
+             :description "dvi > png" :message "you need to install the programs: latex and dvipng." :image-input-type "dvi" :image-output-type "png" :image-size-adjust
+             (1.0 . 1.0)
+             :latex-compiler
+             ("latex -interaction nonstopmode -output-directory %o %f")
+             :image-converter
+             ("dvipng -fg %F -bg %B -D %D -T tight -o \"%o%b.png\" %f"))
+     (dvisvgm :programs
+              ("latex" "dvisvgm")
+              :description "dvi > svg" :message "you need to install the programs: latex and dvisvgm." :use-xcolor t :image-input-type "dvi" :image-output-type "svg" :image-size-adjust
+              (1.7 . 1.5)
+              :latex-compiler
+              ("latex -interaction nonstopmode -output-directory %o %f")
+              :image-converter
+              ("dvisvgm %f -n -b min -c %S -o %o%b.svg"))
+     (imagemagick :programs
+                  ("latex" "convert")
+                  :description "pdf > png" :message "you need to install the programs: latex and imagemagick." :use-xcolor t :image-input-type "pdf" :image-output-type "png" :image-size-adjust
+                  (1.0 . 1.0)
+                  :latex-compiler
+                  ("pdflatex -interaction nonstopmode -output-directory %o %f")
+                  :image-converter
+                  ("convert -density %D -trim -antialias %f -quality 100 %o%b.png"))))
+ '(org-refile-targets '((nil :maxlevel . 6)))
+ '(org-roam-bibtex-mode t)
+ '(org-special-ctrl-k nil)
+ '(org-speed-commands-user '(("s" . narrow-or-widen-dwim)))
+ '(org-startup-align-all-tables t)
+ '(org-startup-indented nil)
+ '(org-startup-truncated t)
+ '(org-superstar-cycle-headline-bullets nil)
+ '(org-superstar-headline-bullets-list '("●" "￭" "￮" "►" "•" "□" "▸" "▫" "▹"))
+ '(org-superstar-item-bullet-alist '((42 . 10043) (43 . 10011) (45 . 9644)))
+ '(org-superstar-special-todo-items t)
+ '(org-superstar-todo-bullet-alist
+   '(("TODO" . 9744)
+     ("DONE" . 9745)
+     ("TRY" . 9728)
+     ("REJECTED" . 10005)
+     ("ACCEPTED" . 10003)))
+ '(org-use-speed-commands t)
+ '(outshine-org-style-global-cycling-at-bob-p t)
+ '(outshine-use-speed-commands t)
+ '(package-check-signature 'allow-unsigned)
+ '(package-selected-packages
+   '(recursive-narrow org-superstar ivy-todo ivy-explorer counsel ivy-bibtex org-ref unfill xterm-color org-noter org-plus-contrib realgud highlight-indent-guides org-web-tools org-roam elpy quelpa paradox gnu-elpa-keyring-update deadgrep erefactor helm-org-rifle deft zotxt zotxt-emacs emacsql-sqlite3 cask wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing conda swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move))
+ '(paradox-automatically-star t)
+ '(paradox-execute-asynchronously t)
+ '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
+ '(paren-message-truncate-lines nil)
+ '(recentf-max-menu-items 60)
+ '(recentf-max-saved-items 200)
+ '(recentf-mode t)
+ '(replace-char-fold t)
+ '(require-final-newline nil)
+ '(safe-local-variable-values
+   '((org-todo-keyword-faces
+      ("ACCEPTED" . "green")
+      ("TRY" . "red")
+      ("REJECTED" . "gray"))))
+ '(save-interprogram-paste-before-kill t)
+ '(scroll-bar-mode 'right)
+ '(scroll-step 1)
+ '(search-default-mode 'char-fold-to-regexp)
+ '(send-mail-function 'mailclient-send-it)
+ '(show-paren-mode t)
+ '(sml/modified-char "•")
+ '(sml/name-width 34)
+ '(sml/position-percentage-format nil)
+ '(sml/vc-mode-show-backend t)
+ '(swiper-action-recenter nil)
+ '(tool-bar-mode nil)
+ '(visual-line-fringe-indicators '(nil top-right-angle))
+ '(w32-use-w32-font-dialog nil)
+ '(window-divider-default-places t)
+ '(window-divider-mode t))
 
 (use-package flycheck
   :config
@@ -1974,47 +2160,6 @@ TODO: make this a general function."
        term-color-purple
        term-color-darkgoldenrod
        term-color-ivory4])
-;; * Narrowing
-;; Default emacs narrowing has too many keys: wipe them out and make
-;; it a toggle from
-;; http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html (has
-;; a bunch of other toggles, maybe handy but I'll stick w/ this for
-;; now) Could also try recursive-narrow:
-;; https://marmalade-repo.org/packages/recursive-narrow
-;;
-;; Note that dired-narrow is different, narrows based on search terms
-;;
-;; TODO: include org-mode narrowing done separately now for org-toggle-narrow-to-subtree
-
-(defun narrow-or-widen-dwim (p)
-  "Widen if buffer is narrowed, narrow-dwim otherwise.
-Dwim means: region, org-src-block, org-subtree, or
-defun, whichever applies first. Narrowing to
-org-src-block actually calls `org-edit-src-code'.
-
-With prefix P, don't widen, just narrow even if buffer
-is already narrowed."
-  (interactive "P")
-  (declare (interactive-only))
-  (cond ((and (buffer-narrowed-p) (not p)) (widen))
-	((region-active-p)
-	 (narrow-to-region (region-beginning)
-			   (region-end)))
-	((derived-mode-p 'org-mode)
-	 ;; `org-edit-src-code' is not a real narrowing
-	 ;; command. Remove this first conditional if
-	 ;; you don't want it.
-	 (cond ((ignore-errors (org-edit-src-code) t)
-		(delete-other-windows))
-	       ((ignore-errors (org-narrow-to-block) t))
-	       (t (org-narrow-to-subtree))))
-	((derived-mode-p 'latex-mode)
-	 (LaTeX-narrow-to-environment))
-	(t (narrow-to-defun))))
-;; TODO Idea is to have only a toggle.  Wipes out Emacs' entire
-;; narrowing keymap but not in org-mode, which overwrites this.
-(define-key ctl-x-map "n" #'narrow-or-widen-dwim)
-
 ;; * Org Mode
 ;; ** Org-* dirs and files
 
@@ -2104,7 +2249,12 @@ is already narrowed."
   (define-key org-mode-map (kbd "<C-S-down>") nil) ; was timestamp clck dwn sync
   (define-key org-mode-map (kbd "<C-S-left>")  nil) ; was switch TODO set
   (define-key org-mode-map (kbd "<C-S-right>") nil) ; was switch TODO set
-  (define-key org-mode-map (kbd "C-x n <return>") 'org-toggle-narrow-to-subtree) ; was switch TODO set
+  ;; (define-key org-mode-map (kbd "C-x n <return>") 'org-toggle-narrow-to-subtree) ; was switch TODO set
+  ;;(define-key org-mode-map (kbd "C-x n")
+  ;;'org-toggle-narrow-to-subtree) ; was switch TODO set
+
+  ;; Match narrow/widen binding in other modes (below)
+  (define-key org-mode-map (kbd "C-x n n") 'recursive-narrow-or-widen-dwim)
 
   ;; open docx files in default application (ie msword)
   ;; https://emacs.stackexchange.com/questions/22485/org-mode-pandoc-export-to-docx-and-open
@@ -2164,7 +2314,35 @@ is already narrowed."
 (use-package org-cliplink ; make hyper link from URL in clipboard
   :config (define-key org-mode-map (kbd "C-c y") 'org-cliplink))
 
-;; ** Org Mode Dedicated Targets
+;; I can't get this to do anything but duplicate existing org-cliplink
+;; functionality.  Other stuff seems broken or just doesn't do much.
+;;
+;; ;; The archive site (https://archive.is/E14FW) this uses to get a
+;; ;; zipped webfile doesn't actually make he zip file, even if I
+;; ;; manually type the original URL into the site's URL page.  See:
+;; ;; https://archive.is/E14FW and try to download the zipfile on the page.
+
+;; ;; From: https://github.com/jwiegley/dot-emacs/blob/master/dot-org.el
+;; (use-package org-web-tools
+;;  :bind (("C-, C-y" . my-org-insert-url) ;; like org-cliplink
+;;         ("C-, C-M-y" . org-web-tools-insert-web-page-as-entry))
+;;  :functions (org-web-tools--org-link-for-url
+;;             org-web-tools--get-first-url)
+;;  :preface
+;;   (declare-function org-web-tools--org-link-for-url "org-web-tools")
+;;   (declare-function org-web-tools--get-first-url "org-web-tools")
+;;   (defun my-org-insert-url (&optional arg)
+;;     (interactive "P")
+;;     (require' org-web-tools)
+;;     (let ((link (org-web-tools--org-link-for-url
+;;                  (org-web-tools--get-first-url))))
+;;       (if arg
+;;           (progn
+;;             (org-set-property "URL" link)
+;;             (message "Added pasteboard link to URL property"))
+;;         (insert link)))))
+
+;; ** org Mode Dedicated Targets
 (require 'org)
 
 ;; --- Hide org-mode dedicated targets -----------------------------------------
@@ -2588,22 +2766,26 @@ This function avoids making messed up targets by exiting without doing anything 
 ;;   ;; HOWEVER, the rg interface broke the graph, as of 5/29/20
 ;;   ;; But maybe 'rg' is always ignored when on Windows now?
 ;;   (org-roam-list-files-commands '(rg)) ;; use ripgrip, expand emacs to see graph
-;;   ;;  (org-roam-list-files-commands nil) ;; elisp default, but rg now works on Windows
+;;   ;;  (org-roam-list-files-commands nil) ;; elisp default, but rg now
+;;   ;;  works on Windows
+
 ;;   :config (org-roam-mode)
 ;;   :bind (:map org-roam-mode-map
 ;;               (("C-c n l" . org-roam)
 ;;                ("C-c n f" . org-roam-find-file)
+;;                ("C-c n d" . org-roam-find-directory)
 ;;                ("C-c n j" . org-roam-jump-to-index)
 ;;                ("C-c n b" . org-roam-switch-to-buffer)
-;;                ("C-c n g" . org-roam-graph))
+;;                ("C-c n g" . org-roam-graph)
+;;                ("C-c n r" . org-roam-buffer-toggle-display))
 ;;               :map org-mode-map
 ;;               (("C-c n i" . org-roam-insert))))
 
-;; ;; I don't know how to activate it like the github animated git shows
-;; ;; (use-package company-org-roam
-;; ;; ;;  :straight (:host github :repo "org-roam/company-org-roam")
-;; ;;   :config
-;; ;;   (push 'company-org-roam company-backends))
+;; I don't know how to activate it like the github animated git shows
+;; (use-package company-org-roam
+;; ;;  :straight (:host github :repo "org-roam/company-org-roam")
+;;   :config
+;;   (push 'company-org-roam company-backends))
 
 ;; *** Org-roam-tags
 
@@ -2632,43 +2814,48 @@ This function avoids making messed up targets by exiting without doing anything 
   ("C-c C-h" . helm-bibtex))
 
 ;; *** ivy-bibtex
-;; BSAG uses this instead of helm.  This is part from her:
-;; https://mail.google.com/mail/u/0/#sent/FFNDWMkpMkrFWrkjBSSGpHcJSdSZHJGb
-;; and part from:
-;; https://people.umass.edu/weikaichen/zh/post/emacs-academic-tools/
-(use-package ivy-bibtex
-  :ensure t
-  :bind*
-  ("C-c C-r" . ivy-bibtex)
-  :config
-  ;; https://github.com/tmalsburg/helm-bibtex
-  (setq bibtex-completion-additional-search-fields '(journal booktitle))
-  ;; TODO good extra info but makes entry list scraggly.  Fix that.
-  (setq bibtex-completion-display-formats
-        '((article       . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${journal:40}")
-          (inbook        . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
-          (incollection  . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-          (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-          (t             . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*}")))
-  (setq ivy-bibtex-default-action #'ivy-bibtex-insert-citation)
-  (ivy-set-actions
-   'ivy-bibtex
-   '(("p" ivy-bibtex-open-any "Open PDF, URL, or DOI")
-     ("e" ivy-bibtex-edit-notes "Edit notes")))
-  ;; from BSAG
-  (defun bibtex-completion-open-pdf-external (keys &optional fallback-action)
-    (let ((bibtex-completion-pdf-open-function
-           (lambda (fpath) (async-start-process "open" "open" "open" fpath))))
-      (bibtex-completion-open-pdf keys fallback-action)))
 
-  (ivy-bibtex-ivify-action bibtex-completion-open-pdf-external ivy-bibtex-open-pdf-external)
+;; BSAG has dropped org-roam now.  I thought removing migh fix my ivy
+;; problem but it didn't.  Anyway, maybe there are newer ivy-bibtex
+;; setups that I could revisit if I revisitorg-roam.
 
-  (ivy-add-actions
-   'ivy-bibtex
-   '(("P" ivy-bibtex-open-pdf-external "Open PDF file in external viewer (if present)")))
-  ;; TODO too busy?
-  (setq bibtex-completion-pdf-symbol "⌘")
-  (setq bibtex-completion-notes-symbol "✎"))
+;; ;; BSAG uses this instead of helm.  This is part from her:
+;; ;; https://mail.google.com/mail/u/0/#sent/FFNDWMkpMkrFWrkjBSSGpHcJSdSZHJGb
+;; ;; and part from:
+;; ;; https://people.umass.edu/weikaichen/zh/post/emacs-academic-tools/
+;; (use-package ivy-bibtex
+;;   :ensure t
+;;   :bind*
+;;   ("C-c C-r" . ivy-bibtex)
+;;   :config
+;;   ;; https://github.com/tmalsburg/helm-bibtex
+;;   (setq bibtex-completion-additional-search-fields '(journal booktitle))
+;;   ;; TODO good extra info but makes entry list scraggly.  Fix that.
+;;   (setq bibtex-completion-display-formats
+;;         '((article       . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${journal:40}")
+;;           (inbook        . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
+;;           (incollection  . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+;;           (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+;;           (t             . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*}")))
+;;   (setq ivy-bibtex-default-action #'ivy-bibtex-insert-citation)
+;;   (ivy-set-actions
+;;    'ivy-bibtex
+;;    '(("p" ivy-bibtex-open-any "Open PDF, URL, or DOI")
+;;      ("e" ivy-bibtex-edit-notes "Edit notes")))
+;;   ;; from BSAG
+;;   (defun bibtex-completion-open-pdf-external (keys &optional fallback-action)
+;;     (let ((bibtex-completion-pdf-open-function
+;;            (lambda (fpath) (async-start-process "open" "open" "open" fpath))))
+;;       (bibtex-completion-open-pdf keys fallback-action)))
+
+;;   (ivy-bibtex-ivify-action bibtex-completion-open-pdf-external ivy-bibtex-open-pdf-external)
+
+;;   (ivy-add-actions
+;;    'ivy-bibtex
+;;    '(("P" ivy-bibtex-open-pdf-external "Open PDF file in external viewer (if present)")))
+;;   ;; TODO too busy?
+;;   (setq bibtex-completion-pdf-symbol "⌘")
+;;   (setq bibtex-completion-notes-symbol "✎"))
 
 
 ;; ;; *** org-roam-bibtex
@@ -2705,22 +2892,58 @@ This function avoids making messed up targets by exiting without doing anything 
 
 
 
-;; * Abstract
+;; * Narrowing
 
-;; ${abstract}
+;; Default emacs narrowing has too many keys: Could wipe them out and
+;; make it a toggle as in  http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html (has
+;; a bunch of other toggles, maybe handy but I'll stick w/ this for
+;; now) Or could just addd a toggle and leave the old keys in place,
+;; as I'm doing.  Also, toggling with recursive-narrow instead of
+;; endlessparens narrow-or-widen function:
+;;
+;; Note that dired-narrow is different, narrows based on search terms
+;;
+;; endlessparens' toggler.  Seems like commenters like
+;; recursive-narrow better
+;;
+;; (defun narrow-or-widen-dwim (p)
+;;   "Widen if buffer is narrowed, narrow-dwim otherwise.
+;; Dwim means: region, org-src-block, org-subtree, or
+;; defun, whichever applies first. Narrowing to
+;; org-src-block actually calls `org-edit-src-code'.
 
-;; - Keywords :: ${keywords}
+;; With prefix P, don't widen, just narrow even if buffer
+;; is already narrowed."
+;;   (interactive "P")
+;;   (declare (interactive-only))
+;;   (cond ((and (buffer-narrowed-p) (not p)) (widen))
+;; 	((region-active-p)
+;; 	 (narrow-to-region (region-beginning)
+;; 			   (region-end)))
+;; 	((derived-mode-p 'org-mode)
+;; 	 ;; `org-edit-src-code' is not a real narrowing
+;; 	 ;; command. Remove this first conditional if
+;; 	 ;; you don't want it.
+;; 	 (cond ((ignore-errors (org-edit-src-code) t)
+;; 		(delete-other-windows))
+;; 	       ((ignore-errors (org-narrow-to-block) t))
+;; 	       (t (org-narrow-to-subtree))))
+;; 	((derived-mode-p 'latex-mode)
+;; 	 (LaTeX-narrow-to-environment))
+;; 	(t (narrow-to-defun))))
+;; ;; TODO Idea is to have only a toggle.  Wipes out Emacs' entire
+;; ;; narrowing keymap but not in org-mode, which overwrites this, somehow.
+;; (define-key ctl-x-map "n" #'narrow-or-widen-dwim)
 
-;; ")))
+;; Commenters act like recursive-narrow is an improvement over endlessparens'
+;; narrow-or-widen-dwim but I'm not sure why.  Maybe narrowed result maintains top headline indent?
+(use-package recursive-narrow)
 
-;; If I wanted to include noter notes, I'd add this to template:
-;; * Noter Notes
-;; :PROPERTIES:
-;; :NOTER_DOCUMENT: %(orb-process-file-field \"${citekey}\")
-;; :NOTER_PAGE:
-;; :END:
-
-
+;; Global narrowing binding is same as in org-mode
+(global-set-key (kbd "C-x n n") 'recursive-narrow-or-widen-dwim)
+;; Could have wiped out all Ctl-x n funcs (below) but this would have
+;; wiped out some org-roam funcs that I haven't tried yet.
+;;(define-key ctl-x-map "n" #'recursive-narrow-or-widen-dwim)
 
 ;; ;; put citekey in title of bib notes, title in note.  This can get much fancier and can have multiple templates
 ;;  (setq orb-templates
@@ -3309,15 +3532,16 @@ This function avoids making messed up targets by exiting without doing anything 
   ;; Some existing funcs call emac's symbol-at-point.
   (global-set-key (kbd "C-S-s")  'counsel-search)) ; doesn't work in :bind
 
-(use-package ivy-explorer ; ido-grid-mode for ivy: C-f/b/p/n/a/e navigate the grid
+;; This causes find-file to crash when in a scratch buffer, dired, and
+;; a few other places.  It works fine or .org, .emacs and other
+;; programming files.
+;; Bug Report: https://github.com/clemera/ivy-explorer/issues/16
+ ; ido-grid-mode for ivy: C-f/b/p/n/a/e navigate 
+(use-package ivy-explorer
   :after ivy
   :diminish ivy-explorer-mode
-  :config
-  (require 'ivy-explorer) ; needed?
-  ;; use ivy explorer for all file dialogs
-  (ivy-explorer-mode 1)
-  ;; not strictly necessary
-  (counsel-mode 1))
+  :init
+  (ivy-explorer-mode 1))
 
 ;; from: https://github.com/abo-abo/swiper/issues/2021
 ;;; Ivy Hydra
@@ -4003,193 +4227,7 @@ _f_: face       _C_: cust-mode   _o_: org-indent-mode      _E_: ediff-files
 
 ;; * Variables Set By Emacs's built-in Customization Interface 
 ;; ** Custom Set Variables
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(auto-hscroll-mode 'current-line)
- '(aw-background t)
- '(bibtex-completion-pdf-open-function 'helm-open-file-with-default-tool)
- '(blink-cursor-mode nil)
- '(c-basic-offset 2)
- '(c-default-style
-   '((c-mode . "stroustrup")
-     (c++-mode . "stroustrup")
-     (java-mode . "java")
-     (awk-mode . "awk")
-     (other . "gnu")))
- '(calendar-week-start-day 1)
- '(column-number-mode t)
- '(conda-anaconda-home conda-env-home-directory)
- '(counsel-grep-base-command "grep -nEi '%s' %s")
- '(counsel-search-engine 'google)
- '(delete-selection-mode nil)
- '(dired-dwim-target t)
- '(display-time-24hr-format t)
- '(display-time-default-load-average nil)
- '(display-time-load-average-threshold 100000000)
- '(display-time-mode t)
- '(ediff-keep-variants nil)
- '(ediff-split-window-function 'split-window-horizontally)
- '(elpy-rpc-python-command "python")
- '(elpy-shell-display-buffer-after-send t)
- '(elpy-shell-starting-directory 'current-directory)
- '(emacsw32-style-frame-title t)
- '(ess-ido-flex-matching t)
- '(ess-language "R" t)
- '(ess-own-style-list
-   '((ess-indent-level . 2)
-     (ess-continued-statement-offset . 2)
-     (ess-brace-offset . 0)
-     (ess-expression-offset . 2)
-     (ess-else-offset . 0)
-     (ess-brace-imaginary-offset . 0)
-     (ess-continued-brace-offset . 0)
-     (ess-arg-function-offset . 2)
-     (ess-arg-function-offset-new-line . 2)
-     (ess-close-brace-offset . 0)))
- '(ess-ps-viewer-pref "gv")
- '(ess-style 'OWN)
- '(focus-follows-mouse t)
- '(gdb-many-windows t)
- '(gud-chdir-before-run t)
- '(gud-pdb-command-name "python -m pdb")
- '(gud-tooltip-echo-area t)
- '(gud-tooltip-mode t)
- '(ido-auto-merge-work-directories-length -1)
- '(ido-cannot-complete-command 'ido-grid-mode-tab)
- '(ido-create-new-buffer 'always)
- '(ido-everywhere t)
- '(ido-grid-mode t)
- '(ido-mode 'both nil (ido))
- '(ido-use-filename-at-point 'guess)
- '(ido-use-url-at-point t)
- '(indent-tabs-mode nil)
- '(indicate-buffer-boundaries nil)
- '(indicate-empty-lines t)
- '(ivy-mode t)
- '(ivy-wrap t)
- '(load-home-init-file t t)
- '(load-prefer-newer t)
- '(matlab-comment-column 0)
- '(matlab-comment-region-s "% ")
- '(matlab-cont-level 2)
- '(matlab-fill-strings-flag 0)
- '(matlab-indent-function-body nil)
- '(matlab-indent-level 2)
- '(mode-line-format
-   '(("%e" mode-line-front-space mode-line-mule-info mode-line-client mode-line-modified mode-line-remote mode-line-frame-identification "   " mode-line-buffer-identification mode-line-position
-      (vc-mode vc-mode)
-      "  " :exec conda-env-current-name "   " mode-line-modes "  " mode-line-misc-info mode-line-end-spaces)))
- '(mouse-autoselect-window 0.5)
- '(mouse-avoidance-nudge-dist 10)
- '(mouse-wheel-progressive-speed nil)
- '(mouse-wheel-scroll-amount '(1 ((shift) p\. 1) ((control))))
- '(mouse-wheel-tilt-scroll t)
- '(org-agenda-files
-   '("~/OneDrive - Clean Power Research/ref/DOE_brainstorm/20200605152244-test0.org" "c:/Users/scott/OneDrive - Clean Power Research/ref/tmp.org"))
- '(org-confirm-shell-links 'y-or-n-p)
- '(org-ctrl-k-protect-subtree t)
- '(org-cycle-include-plain-lists 'integrate)
- '(org-directory "~/")
- '(org-ellipsis "…")
- '(org-export-backends '(ascii html latex odt org confluence freemind s5))
- '(org-export-with-broken-links 'mark)
- '(org-fontify-done-headline t)
- '(org-fontify-emphasized-text t)
- '(org-hide-emphasis-markers t)
- '(org-hide-leading-stars t)
- '(org-latex-pdf-process '("latexmk -pdf -output-directory=%o -f %f"))
- '(org-link-from-user-regexp nil)
- '(org-list-allow-alphabetical t)
- '(org-list-empty-line-terminates-plain-lists t)
- '(org-modules
-   '(ol-bibtex org-mouse ol-eshell ol-git-link ol-man org-inlinetask org-mouse org-protocol org-choose))
- '(org-noter-auto-save-last-location t)
- '(org-noter-doc-property-in-notes t)
- '(org-occur-case-fold-search ''smart)
- '(org-odd-levels-only t)
- '(org-outline-path-complete-in-steps nil)
- '(org-pretty-entities nil)
- '(org-preview-latex-process-alist
-   '((dvipng :programs
-             ("latex" "dvipng")
-             :description "dvi > png" :message "you need to install the programs: latex and dvipng." :image-input-type "dvi" :image-output-type "png" :image-size-adjust
-             (1.0 . 1.0)
-             :latex-compiler
-             ("latex -interaction nonstopmode -output-directory %o %f")
-             :image-converter
-             ("dvipng -fg %F -bg %B -D %D -T tight -o \"%o%b.png\" %f"))
-     (dvisvgm :programs
-              ("latex" "dvisvgm")
-              :description "dvi > svg" :message "you need to install the programs: latex and dvisvgm." :use-xcolor t :image-input-type "dvi" :image-output-type "svg" :image-size-adjust
-              (1.7 . 1.5)
-              :latex-compiler
-              ("latex -interaction nonstopmode -output-directory %o %f")
-              :image-converter
-              ("dvisvgm %f -n -b min -c %S -o %o%b.svg"))
-     (imagemagick :programs
-                  ("latex" "convert")
-                  :description "pdf > png" :message "you need to install the programs: latex and imagemagick." :use-xcolor t :image-input-type "pdf" :image-output-type "png" :image-size-adjust
-                  (1.0 . 1.0)
-                  :latex-compiler
-                  ("pdflatex -interaction nonstopmode -output-directory %o %f")
-                  :image-converter
-                  ("convert -density %D -trim -antialias %f -quality 100 %o%b.png"))))
- '(org-refile-targets '((nil :maxlevel . 6)))
- '(org-roam-bibtex-mode t)
- '(org-special-ctrl-k nil)
- '(org-speed-commands-user '(("s" . narrow-or-widen-dwim)))
- '(org-startup-align-all-tables t)
- '(org-startup-indented nil)
- '(org-startup-truncated t)
- '(org-superstar-cycle-headline-bullets nil)
- '(org-superstar-headline-bullets-list '("●" "￭" "￮" "►" "•" "□" "▸" "▫" "▹"))
- '(org-superstar-item-bullet-alist '((42 . 10043) (43 . 10011) (45 . 9644)))
- '(org-superstar-special-todo-items t)
- '(org-superstar-todo-bullet-alist
-   '(("TODO" . 9744)
-     ("DONE" . 9745)
-     ("TRY" . 9728)
-     ("REJECTED" . 10005)
-     ("ACCEPTED" . 10003)))
- '(org-use-speed-commands t)
- '(outshine-org-style-global-cycling-at-bob-p t)
- '(outshine-use-speed-commands t)
- '(package-check-signature 'allow-unsigned)
- '(package-selected-packages
-   '(elpy quelpa paradox gnu-elpa-keyring-update deadgrep erefactor helm-org-rifle deft zotxt zotxt-emacs emacsql-sqlite3 cask wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich ivy-explorer flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line org-ref yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm ivy elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing try conda counsel swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy ivy-bibtex google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move))
- '(paradox-automatically-star t)
- '(paradox-execute-asynchronously t)
- '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
- '(paren-message-truncate-lines nil)
- '(recentf-max-menu-items 60)
- '(recentf-max-saved-items 200)
- '(recentf-mode t)
- '(replace-char-fold t)
- '(require-final-newline nil)
- '(safe-local-variable-values
-   '((org-todo-keyword-faces
-      ("ACCEPTED" . "green")
-      ("TRY" . "red")
-      ("REJECTED" . "gray"))))
- '(save-interprogram-paste-before-kill t)
- '(scroll-bar-mode 'right)
- '(scroll-step 1)
- '(search-default-mode 'char-fold-to-regexp)
- '(send-mail-function 'mailclient-send-it)
- '(show-paren-mode t)
- '(sml/modified-char "•")
- '(sml/name-width 34)
- '(sml/position-percentage-format nil)
- '(sml/vc-mode-show-backend t)
- '(swiper-action-recenter nil)
- '(tool-bar-mode nil)
- '(visual-line-fringe-indicators '(nil top-right-angle))
- '(w32-use-w32-font-dialog nil)
- '(window-divider-default-places t)
- '(window-divider-mode t))
+
 ;; '(w32shell-cygwin-bin "C:\\cygwin64\\bin"))
 
 ;; ** Custom Set Faces
