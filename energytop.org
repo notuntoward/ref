@@ -3475,9 +3475,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 *********** [[file:energy.bib::Szekely12distCovUniq][Szekely & Rizzo 2012 Uniqueness Distance Covariance]]
 ********* <<Generalized Correlation>>
 *********** [[file:energy.bib::doi:10.1080/03610918.2015.1122048][Vinod 2017: Generalized Correlation and kernel Causality]]
-*********** 
-********* Partial Mutual Information Estimation
-          <<Partial Mutual Information Estimation>>
+********* <<Partial Mutual Information Estimation>>
 
           Is sometimes called [[Conditional Mutual Information]] e.g. the
           [[https://code.google.com/p/information-dynamics-toolkit/wiki/ImplementedMeasures][information-dynamics-toolkit]] seems to call it both things.  But
@@ -3528,8 +3526,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 *************** [[http://users.auth.gr/dkugiu/Software_en.html][PMIME]] (paper: [[file:energy.bib::Kugiumtzis13directCplngPMI][Kugiumtzis 2013: Direct]])
 *************** [[JIDT: Java Information Dynamics Toolkit]]: Kraskov PMI extension, Java/Matlab interface
 *************** [[https://bitbucket.org/szzoli/ite/][Information Theoretical Estimators (ITE) Toolbox]] (many infotheory functions)
-********* Conditional Mutual Information
-          <<Conditional Mutual Information>>
+********* <<Conditional Mutual Information>>
 
           Conditional MI is sometimes called "Partial Mutual Information"
           but it's not the same thing:
@@ -3540,8 +3537,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 *********** [[file:energy.bib::Frenzel07partMutInfo][Frenzel & Pompe 2007: Partial Mutual Information]] (_cond v.s. PMI_)
 *********** [[file:energy.bib::Fleuret04binFeatSelCMI][Fleuret 2004: Fast]] binary CMI classification
 *********** see also: [[Partial Mutual Information Estimation]]
-********* Transfer Entropy
-          <<Transfer Entropy>>
+********* <<Transfer Entropy>>
 
           It's like R^2 for an information theoretic ARX filter: It's
           information about the output contained in its history and the
@@ -3559,8 +3555,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 
 *********** good intro: [[file:energy.bib::Wibral15BitsBrainsTE][Wibral et al. 2015: Bits Brains Biologically Inspired Computing]] ()
 *********** [[file:energy.bib::Lizier12compNetsTransEnt][Lizier et al. 2012: Multivariate]] constr. TE
-*********** Transfer Entropy Code
-            <<Transfer Entropy Code>>
+*********** <<Transfer Entropy Code>>
 ************* [[JIDT: Java Information Dynamics Toolkit]]: Matlab/Phython...
 ************* [[https://code.google.com/archive/p/transfer-entropy-toolbox/][Transfer Entropy Toolbox]]: Matlab/C++ (fast, but not continuous)
 *********** See also [[Conditional Mutual Information]]
@@ -3614,8 +3609,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 *********** [[http://www.cs.man.ac.uk/~pococka4/mitoolbox.html][mitoolbox]] (matlab toolbox, shannon and renyi's entropy for featsel)
 ********* many correlation types & significance tests: [[http://www.nyu.edu/its/statistics/docs/correlate.html][common correlation and reliability analysis with spss for windows]]
 ********* r package [[http://cran.r-project.org/web/packages/np/vignettes/entropy_np.pdf][np]]:  several nonparametric entropy dependence tests
-********* JIDT: Java Information Dynamics Toolkit
-          <<JIDT: Java Information Dynamics Toolkit>>
+********* <<JIDT: Java Information Dynamics Toolkit>>
 
           Implements a ton of information theoretic calculations: mutual
           information, partial/conditional mutual information, entroy (I
@@ -3832,7 +3826,7 @@ Hope that helps,
             http://agbs.kyb.tuebingen.mpg.de/wikis/bg/bna-6.pdf
             http://carbon.videolectures.net/2008/pascal2/mlg08_helsinki/thoma_cnofs/mlg08_thoma_cnofs_01.pdf
 
-********* todo nice “lazy” greedy algorithm [minoux ’78] in [[submodular tutorial slides]]
+********* todo nice lazy greedy algorithm [minoux 78] in [[submodular tutorial slides]]
 *********** for submodular functions, greedy approach is fairly close to optimal
 *********** can avoid avoid evaluating every combo at each greedy step w/ lazy eval
 *********** todo related things that are submodular?
@@ -8265,7 +8259,6 @@ Scott
 ********* also: [[Concept drift detection]]
 ********* also: [[HTTP://confluence.iwes.fraunhofer.de/confluence/display/dabestand/cosmo%2bbackground][IWES COSMO variable list]]
 ********* also: [[Forecasting Features]]
-
 ******* NWP (should this be somewhere else?)
 ******* See also [[Combined wind and load forecasting]]
 ***** [[Multiple layers for power curve/wind]]
