@@ -11815,9 +11815,9 @@ Erika
 ******* <<Used EVs>>
 ********* Used Cars in general
 *********** [[cite:Biglaiser19intermUsedCarMkt][Biglaiser et al. 2019: Used car Intermediaries Product Quality]]
-*********** [[cite:Gavazza14][Gavazza et al. 2014: Quantitative Analysis Used Car]]
+*********** [[cite:Gavazza14quantAnalUsedCar][Gavazza et al. 2014: Quantitative Analysis Used Car]]
 *********** [[cite:Glerum13carOwnDynDscrtChoice][Glerum et al. 2013: Modeling Car Own Dscrt Choice]]
-********* Used EVs specifically
+********* Used EqVs specifically
 *********** [[cite:Pedrosa18secondHandEVs][Pedrosa & Nobre 2018: Second Hand EV Survey]]
 ********* [[EV Unadoption Model]]
 ********* [[cite:Lee17techFrcstDiffnReplace][Lee & Huh 2017: Technology adopt frcst diffusion with replacement]]
