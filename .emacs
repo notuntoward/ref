@@ -1981,7 +1981,7 @@ TODO: make this a general function."
  '(outshine-use-speed-commands t)
  '(package-check-signature 'allow-unsigned)
  '(package-selected-packages
-   '(recursive-narrow org-superstar ivy-todo ivy-explorer counsel ivy-bibtex org-ref unfill xterm-color org-noter org-plus-contrib realgud highlight-indent-guides org-web-tools org-roam elpy quelpa paradox gnu-elpa-keyring-update deadgrep erefactor helm-org-rifle deft zotxt zotxt-emacs emacsql-sqlite3 cask wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing conda swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move))
+   '(helm-org-ql recursive-narrow org-ql org-superstar ivy-todo ivy-explorer counsel ivy-bibtex org-ref unfill xterm-color org-noter org-plus-contrib realgud highlight-indent-guides org-web-tools org-roam elpy quelpa paradox gnu-elpa-keyring-update deadgrep erefactor helm-org-rifle deft zotxt zotxt-emacs emacsql-sqlite3 cask wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing conda swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
@@ -2670,6 +2670,39 @@ This function avoids making messed up targets by exiting without doing anything 
   :config
   (define-key org-mode-map (kbd "M-r") 'helm-org-rifle-current-buffer))
 
+;; ** org-ql
+
+;; From https://github.com/novoid/dot-emacs/blob/master/config.org
+;; Used by: org-ql
+;; Completion package for Org mode: https://github.com/emacs-helm/helm-org
+(use-package helm-org
+  ;;:defer 90
+  :ensure t
+  :config
+  ;; (add-to-list 'helm-completing-read-handlers-alist '(org-capture . helm-org-completing-read-tags))
+  ;; (add-to-list 'helm-completing-read-handlers-alist '(org-set-tags . helm-org-completing-read-tags))
+  )
+
+(use-package org-ql
+  :after helm-org
+  :config
+  (require 'org-ql-search) ;; workaround for https://github.com/alphapapa/org-ql/issues/53
+)
+
+(use-package helm-org-ql
+  :after org-ql
+  :config
+  (require 'helm-org-ql) ;; so it's available
+)
+
+;; Dedicated target search (in non-expq query, use dt:Name)
+;; https://github.com/alphapapa/org-ql/issues/158
+;; Doesn't compile
+;; (org-ql-defpred (dedicated-target dt) (name)
+;;   "Search for a dedicated target named NAME (i.e. \"<<NAME>>\")."
+;;   :normalizers ((`(, predicate-names ,name)
+;;                  `(regexp ,(concat "<<" name ">>")))))
+
 ;; ** Org and Zotero
 
 ;; For Zotero add-in "zutilo"  Conflicts/same-as zotxt?
@@ -2782,8 +2815,11 @@ This function avoids making messed up targets by exiting without doing anything 
 ;;               (("C-c n i" . org-roam-insert))))
 
 ;; I don't know how to activate it like the github animated git shows
+;; (here: https://github.com/org-roam/company-org-roam)
 ;; (use-package company-org-roam
-;; ;;  :straight (:host github :repo "org-roam/company-org-roam")
+;;   :ensure t
+;;   ;; You may want to pin in case the version from stable.melpa.org is not working 
+;;   ; :pin melpa
 ;;   :config
 ;;   (push 'company-org-roam company-backends))
 
@@ -2937,7 +2973,8 @@ This function avoids making messed up targets by exiting without doing anything 
 
 ;; Commenters act like recursive-narrow is an improvement over endlessparens'
 ;; narrow-or-widen-dwim but I'm not sure why.  Maybe narrowed result maintains top headline indent?
-(use-package recursive-narrow)
+(use-package recursive-narrow
+  :after org)
 
 ;; Global narrowing binding is same as in org-mode
 (global-set-key (kbd "C-x n n") 'recursive-narrow-or-widen-dwim)
