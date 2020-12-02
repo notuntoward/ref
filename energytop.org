@@ -5009,7 +5009,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                            
 ***** [[cite:Urraca17satelliteSolarQC][Urraca et al. 2017: Quality Ctrl Sattelite Solar Rad]]
 ***** [[cite:Yang18solarIrradQC][Yang et al. 2018: Quality Control Solar]]
 ***** [[cite:Schwandt14soRadQC][Schwandt et al. 2014: Quality Indian SRRA Irrad QC]]
-
+***** [[cite:Forstinger20satNWPradBnch][Forstinger et al. 2020: Satellite and NWP benchmark]]
 * <<Auto categorization of errors>>
 ***** wind prediction was off
 ***** power curve was off
@@ -11784,7 +11784,7 @@ Erika
 ******* EV sales projections
 ********* Projected EV sales to 2025, scenario to 2050: [[cite:CARB17cleanCarMidRvw][CARB 2017: CA Adv. Clean Car Midterm Rvw]]
 ********* Straight line projection: [[cite:CEC18plugInEVinfraProj][CEC 2018: California Plug Infra 2017-2025]]
-******* Sensitivity to economics, total cost of ownership
+******* Sensitivity to economics, total cost of ownership (TCO)
 ********* fuel savings
 *********** 50% too little: [[cite:Gillingham19cnsmrMyopiaVehic][Gillingham et al. 2019: Consumer Myopia Vehicle Fuel]]
 *********** fuel savings was significant for likely late adopters:  [[cite:Kurani16newValZEVca][Kurani et al. 2016: New Car Buyers Valuation Zero-Emissions]]
@@ -11809,8 +11809,9 @@ Erika
 *********** EV Maintenance costs
 ********* Consumers more sensitive to upfront price than TCO
           [[https://www.evernote.com/l/AA1c4OwL589LmLSwrScZ8V5_i12v3lzSELw/][Why the electric-car revolution may take a lot longer than expected]]
-********* Conventional car total cost of ownership
+********* Conventional car TCO
 *********** [[cite:Glerum13carOwnDynDscrtChoice][Glerum et al. 2013: Modeling Car Own Dscrt Choice]]
+********* EV TCO: [[https://www.woodmac.com/news/editorial/electric-vehicles-can-help-save-the-environment-but-can-they-save-the-owner-money?utm_campaign=EVs&utm_medium=email&utm_source=pardot][Wood Mackenzie's Total Cost of Ownership (TCOO) Model]]
 ******* <<Used EVs>>
 ********* Used Cars in general
 *********** [[cite:Biglaiser19intermUsedCarMkt][Biglaiser et al. 2019: Used car Intermediaries Product Quality]]
