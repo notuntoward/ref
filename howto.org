@@ -1105,55 +1105,88 @@
         
 *** <<Org Mode>>
 ***** <<org-roam>>: org-mode based, inspired by [[Roam Research]]
-******* [[https://github.com/org-roam][org-roam/org-roam: Rudimentary Roam replica with Org-mode]]
-******* might want to try [[Doom Emacs]] first
-******* main author: Jethrown Kuan
-********* blog:[[https://blog.jethro.dev/][Jethrow Kuan]]
-********* git: [[https://github.com/jethrokuan][jethrokuan (Jethro Kuan) · GitHub]]
-******* example: [[https://github.com/jethrokuan/braindump][JK's braindump]]: many org files, pdfs, 
-******* TODO org-roam tutorials & manual
-********* [[https://org-roam.github.io/org-roam/manual/][Org-roam User Manual]]: as up-to-date as info
-********* [[https://org-roam.readthedocs.io/en/master/][org-roam home]]
-********* [[https://blog.jethro.dev/posts/how_to_take_smart_notes_org/][How To Take Smart Notes With Org-mode]]
-********* TODO <<org-roam workflow with Zotero, org-ref, org-noter, deft>>
-          From: [[https://rgoswami.me/posts/org-note-workflow/][An Orgmode Note Workflow]] also discourse: [[https://org-roam.discourse.group/t/workflow-for-working-with-pdfs/103][Workflow for working with PDFs]] 
-********* code doesn't work, maybe out of date)
-*********** prefers one org-note per paper
-*********** ... although he picked [[org-noter]] b/c it was better at multiple documents linked to one file
-*********** [[helm-bibtex]] is configured to deal with single-pdf notes 
-*********** TODO does search with deft, not e.g. deadgrep.  Why?
-*********** .bib file auto-exported to [[Zotero]] seems like a temporary file.  Everything stays in Zotero
-*********** seems that he only gits notes, but not zotero references
-*********** Firefox and Chrome capture templates for web pages
-*********** also [[Zotero]], [[org-ref]], and [[org-noter]]
+******* Intro, basic org-roam info
+********* [[https://github.com/org-roam][org-roam/org-roam: Rudimentary Roam replica with Org-mode]]
+********* example: [[https://github.com/jethrokuan/braindump][author's's braindump]]: many org files, pdfs, 
+********* related tools used by org-roam author
+*********** <<org-roam author migrated to Doom Emacs>>
+************* [[https://blog.jethro.dev/posts/migrating_to_doom_emacs/][Migrating to Doom Emacs]] (partly b/c emacs 27 has fancier isearch)
+************* also [[Doom Emacs]]
+*********** <<org-roam author likes org-download for inserting images>>
+************* likes org-download: [[https://blog.jethro.dev/posts/zettelkasten_with_org/][Org-mode Workflow Part 3: Zettelkasten w/ orgmode]]
+************* [[org-download]]
+*********** <<org-roam author likes org-journal>>
+            From: [[https://blog.jethro.dev/posts/how_to_take_smart_notes_org/][How To Take Smart Notes With Org-mode]]
+  [[Zotero + Org Roam]]
+********* TODO org-roam tutorials & manual
+*********** [[https://org-roam.github.io/org-roam/manual/][Org-roam User Manual]]: as up-to-date as info
+*********** [[https://org-roam.readthedocs.io/en/master/][org-roam home]]
+*********** [[https://blog.jethro.dev/posts/how_to_take_smart_notes_org/][How To Take Smart Notes With Org-mode]]
+*********** TODO <<org-roam workflow with Zotero, org-ref, org-noter, deft>>
+            From: [[https://rgoswami.me/posts/org-note-workflow/][An Orgmode Note Workflow]] also discourse: [[https://org-roam.discourse.group/t/workflow-for-working-with-pdfs/103][Workflow for working with PDFs]] 
+*********** code doesn't work, maybe out of date)
+************* prefers one org-note per paper
+************* ... although he picked [[org-noter]] b/c it was better at multiple documents linked to one file
+************* [[helm-bibtex]] is configured to deal with single-pdf notes 
+************* TODO does search with deft, not e.g. deadgrep.  Why?
+************* .bib file auto-exported to [[Zotero]] seems like a temporary file.  Everything stays in Zotero
+************* seems that he only gits notes, but not zotero references
+************* Firefox and Chrome capture templates for web pages
+************* also [[Zotero]], [[org-ref]], and [[org-noter]]
+********* Comparison to similar packages
+*********** [[https://org-roam.readthedocs.io/en/master/comparison/][org-roam comparison with similar packages]]
+*********** [[BSAG moved from org-roam to Obsidian]]
+*********** [[Knowledge as Graphs]]
 ******* <<org-roam on Windows>>
+********* [[https://github.com/nobiot/Zero-to-Emacs-and-Org-roam/blob/main/40.Qol.md][Zero-to-Emacs-and-Org-roam on Windows (nobiot)]]
 ********* [[https://org-roam.readthedocs.io/en/master/installation/][org-roam official install instructions]] mentions Windows
 ********* [[https://www.reddit.com/r/emacs/comments/f97twk/using_orgroam_on_windows_10/][Using org-roam on windows 10 : emacs]] (messy)
 ********* sqlite3 now on all platforms: [[https://github.com/org-roam/org-roam/issues/682][org-roam/org-roam#682 Need maintainable Windows 10 install]]
 ********* ripgrep and find on Windows org-roam
 *********** 'rg' should work: [[https://github.com/org-roam/org-roam/issues/724][org-roam/org-roam#724 `rg` returns bad paths for Windows users]]
 *********** 'find' gets confused w/ Windows find: [[https://github.com/org-roam/org-roam/issues/682][org-roam/org-roam#682 maintainable Windows 10 install]]
-******* [[org-roam]] + [[org-noter]] + [[Zotero]]
-
-        Guy uses all three: [[https://github.com/org-roam/org-roam/issues/258][Supplying a title to `org-roam-find-file`]]
-
-******* tools used by org-roam author
-********* <<org-roam author migrated to Doom Emacs>>
-*********** [[https://blog.jethro.dev/posts/migrating_to_doom_emacs/][Migrating to Doom Emacs]] (partly b/c emacs 27 has fancier isearch)
-*********** also [[Doom Emacs]]
-********* <<org-roam author likes org-download for inserting images>>
-*********** likes org-download: [[https://blog.jethro.dev/posts/zettelkasten_with_org/][Org-mode Workflow Part 3: Zettelkasten w/ orgmode]]
-*********** [[org-download]]
-********* <<org-roam author likes org-journal>>
-          From: [[https://blog.jethro.dev/posts/how_to_take_smart_notes_org/][How To Take Smart Notes With Org-mode]]
 ******* <<org-roam and bibtex>>
 ********* the mode: [[org-roam-bibtex]]
 ********* has [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][bibtex interface]] to [[https://github.com/weirdNox/org-noter][org-noter]] pdf, etc. annotator (need Linux?)
 ********* [[all bibtex entries inside of org-mode file]]?
-********* OR is bibtext based, relegates [[Zotero]] to reference and pdf capture
-*********** [[OR cite notes + org-roam-bibtex + org-noter: Zotero not main ref DB]]
-*********** [[org-ref]] is used in org-roam somehow by other org-roam fans
-***********  [[https://org-roam.discourse.group/t/does-anyone-have-a-workflow-for-associating-notes-with-a-zotero-stored-pdf/112/10?u=scotto][Advice]] on syncing Zotero and bibtex/pdfs (also other ideas thread)
+********* <<org-roam-bibtex>>
+          Mostly From: org-roam-bibtex [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][video]]
+*********** reference collection seems to come from [[helm-bibtex]]
+*********** can create org-cite pages directly from bibtex entry
+************* templates for new cite pages e.g. "ref" or "ref + [[org-noter]]"
+************* seems to require using helm-bibtex or ivy-bibtex (don't directly visit .bib)
+*********** Is there a way to extract notes to cite note when marks have come from Drawboard or PDF-Xchange Editor?
+************* extracting annotations from pdf
+              From [[https://org-roam.discourse.group/t/does-anyone-have-a-workflow-for-associating-notes-with-a-zotero-stored-pdf/112/9?u=scotto][here]]:
+*************** [[org-noter]]: org-noter-create-skeleton gets pdf annotations
+*************** [[zotfile]]: gets pdf annotations, puts in zotero note
+*********** <<OR cite notes + org-roam-bibtex + org-noter: Zotero not main ref DB>>
+            From: org-roam-bibtex [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][video]] 
+
+            Best org-roam integration requires that reference links come
+            from a .bib file.  This means that, for best OR setup,
+            Zotero can't be the main reference DB.  Although it could be
+            an exporter, or it can automatically export to a bibfile
+            (complex, sync issues, version control?)
+
+************* [[org-noter]] looks very useful, so you'd like to have a .bib out of Zotero.
+************* org-roam-bibtex can modify .bib file e.g. "add pdf"
+************* <<OR cite note title is org-ref link>>: key/title: from org-roam-bibtex [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][video]]
+************* cite: links required, not Zotero, b/c [[backlinks from other cites notes are segregated]]
+************* *Would Zotero autosync overwrite those ORB mods?*
+*********** <<make org-roam-bibtex put bib notes in separate dir>>
+
+            I think this is supposed to work but I can't get org-roam-bibtex to put refs in a recursive dir.  It work for a second, then failed somehow.
+
+************* bib notes in <org-roam-topdir>/<bibdir>: [[https://org-roam.discourse.group/t/org-roam-bibtex-in-a-sub-directory/649][Org Roam Bibtex in a Sub Dir]]
+************* [[make org-roam scan recursive directories]]
+************* [[https://org-roam.discourse.group/t/filtering-by-tags-aka-do-not-show-literature-notes/357/5][Filtering by tags (aka do not show literature notes)]]
+
+              I think directories become some sort of tag but I've lost track of this topic.
+
+*********** also [[org-roam and bibtex]]
+*********** also [[Zotero + Org Roam]]
+********* [[Zotero + Org Roam]]
 ******* <<org-roam tags>>
         So far, I can't get this to work.  And anyway [[https://org-roam.discourse.group/t/tags-and-links-and-tags-oh-my/181/11][tags are way more limited now]] (6/5/20) than JK hopes to make them in the future.
 
@@ -1161,6 +1194,7 @@
 ********* [[https://github.com/org-roam/org-roam/pull/604#issue-416808067][directory tagging]] in org-roam
 ********* [[https://org-roam.github.io/org-roam/manual/Tags.html#Tags][Tags (Org-roam User Manual)]] (not that helpful as of 6/5/20)
 ********* Recommended tagging system: [[https://fortelabs.co/blog/para/][The PARA Method: A Universal System for Organizing Digital Information]]
+********* Utility funcs for [[https://d12frosted.io/posts/2020-06-10-org-roam-tags.html][Org-roam tags]], now merged w/ org-roam?
 ******* TODO Issues to resolve before migrating to org-roam
 ********* figure out how to use [[helm-bibtex]]
 *********** [[org-roam-bibtex]] seeems to be based on these
@@ -1212,42 +1246,45 @@
         
         I want search to see abstracts so I can search like I do now in energy.bib.  But if there are tons of little org notes, it won't be able to do that?
 
+******* <<Finding org-roam notes>>
+
+        How to find your note again in a huge pile of OR notes?
+
+        Main ideas are
+        o some kind of search
+          o title search (org-find-file?)
+          o fuzzy search through all titles and note content
+            o helm-grep-do-git-grep
+            o helm-org-rifle (only on open files?)
+            o counsel-rg
+            o [[org-roam, deft and org-download (setup)]]
+            o [[https://github.com/org-roam/company-org-roam][company-org-roam]]: completion backend for creating links to notes
+        o linking
+          o structure notes (notes whose purpose is to link other notes)
+          o lots of direct cross linking of noes
+        o looking at not graph
+        o [[https://org-roam.discourse.group/t/how-to-browse-your-notes-efficiently/1001/2?u=scotto][functions connecting]] to [[org-brain]]
+        o topic & related note discovery like in Evernote
+
+********* [[org-ql]] (org search and query language)
+*********** it's very easy to add [[https://github.com/alphapapa/org-ql/issues/158#issuecomment-735299197][search for dedicated targets]]
+********* [[https://org-roam.discourse.group/t/how-to-browse-your-notes-efficiently/1001/3][How to browse your notes efficiently]] (org-roam discourse topic)
+********* topic discovery and link suggestion in org-roam
+
+          11/2020: people had thought about this but no firm idea had emerged.
+          
+*********** [[https://org-roam.discourse.group/t/application-of-graph-theory-to-roam-link-network/61/8][Application of Graph Theory to Roam link network - Graphing]]
+*********** [[https://org-roam.discourse.group/t/analysing-the-semantic-network/56][Analysing the semantic network - Graphing Capabilities - Org-roam]]
+*********** [[https://org-roam.discourse.group/t/rfc-interactive-visualization-and-explorer-tool/87/6][{RFC} Interactive Visualization and Explorer Tool]]
+********* [[How to take Notes]]
 ******* multiple org-roam directories
         See: [[https://org-roam.readthedocs.io/en/master/configuration/][org-roam >> Having More Than One Org-roam Directory]]
-******* <<org-roam-bibtex>>
-        Mostly From: org-roam-bibtex [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][video]]
-********* reference collection seems to come from [[helm-bibtex]]
-********* can create org-cite pages directly from bibtex entry
-*********** templates for new cite pages e.g. "ref" or "ref + [[org-noter]]"
-*********** seems to require using helm-bibtex or ivy-bibtex (don't directly visit .bib)
-********* Is there a way to extract notes to cite note when marks have come from Drawboard or PDF-Xchange Editor?
-*********** extracting annotations from pdf
-            From [[https://org-roam.discourse.group/t/does-anyone-have-a-workflow-for-associating-notes-with-a-zotero-stored-pdf/112/9?u=scotto][here]]:
-************* [[org-noter]]: org-noter-create-skeleton gets pdf annotations
-************* [[zotfile]]: gets pdf annotations, puts in zotero note
-********* <<OR cite notes + org-roam-bibtex + org-noter: Zotero not main ref DB>>
-          From: org-roam-bibtex [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][video]] 
-
-          Best org-roam integration requires that reference links come
-          from a .bib file.  This means that, for best OR setup,
-          Zotero can't be the main reference DB.  Although it could be
-          an exporter, or it can automatically export to a bibfile
-          (complex, sync issues, version control?)
-
-*********** [[org-noter]] looks very useful, so you'd like to have a .bib out of Zotero.
-*********** org-roam-bibtex can modify .bib file e.g. "add pdf"
-*********** <<OR cite note title is org-ref link>>: key/title: from org-roam-bibtex [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][video]]
-*********** cite: links required, not Zotero, b/c [[backlinks from other cites notes are segregated]]
-*********** *Would Zotero autosync overwrite those ORB mods?*
-********* <<make org-roam-bibtex put bib notes in separate dir>>
-
-          I think this is supposed to work but I can't get org-roam-bibtex to put refs in a recursive dir.  It work for a second, then failed somehow.
-
-*********** [[make org-roam scan recursive directories]]
-********* also [[org-roam and bibtex]]
 ******* <<org-roam graph visualization>>
 ********* [[https://org-roam.discourse.group/t/application-of-graph-theory-to-roam-link-network/61][Application of Graph Theory to Roam link network]]
 
+********* [[https://org-roam.discourse.group/t/edge-direction-in-graph/923/6][Edge direction in graph - How To - Org-roam]]
+********* make graph nodes clickable: [[https://org-roam.discourse.group/t/zero-to-emacs-and-org-roam-a-step-by-step-guide-on-windows-10/400/70?u=scotto][nobiot post]] 
+********* [[org-roam, compendium-style interactive graph, org-journal but doom/mac]]
 ******* <<bookmarklet for org-roam capture>>
 ********* Is this just for storing web pages?
 ********* JK's own [[https://github.com/org-roam/org-roam/issues/217#issuecomment-595313500][bookmarklet and capture template]]
@@ -1255,13 +1292,20 @@
 ********* potential [[https://org-roam.discourse.group/t/linking-to-new-notes-from-the-capture-buffer/108][bookmarklet problem]] and workaround, until OR bug is fixed.
 
 ********* also [[org-capture]]
-******* TODO <<syncing org-roam across multiple machines>>
-        From [[https://org-roam.discourse.group/t/org-roam-db-across-multiple-machines/332/2][here]] 
+******* <<syncing org-roam across multiple machines>>
+
+        Putting org-roam notes on OneDrive worked fine except that there were often sync conflicts in org-roam.db, the sqlite3 file generated by org-roam.
+
+        Easiest solution was to put this outside of OneDrive so it's machine specific -- there's a customization for this file's location.  Since then, the default behavior was changed to put this file in .emacs.d, but I don't like that much b/c I frequently blow away my .emacs.d while debugging other problems.
+
 ********* Exclude org-roam.db from OneDrive synching
-********* sync org-files with [[git-sync]]
-*********** exclude org-roam.db from git with .gitignore
-********* chrontab reruns org-roam db rebuild after a git-sync
-******* [[https://org-roam.readthedocs.io/en/master/comparison/][org-roam comparison with similar packages]]
+
+          Just move it above OneDrive and point customization to it.
+          
+********* syncing if you don't use OneDrive
+*********** sync org-files with [[git-sync]]
+************* exclude org-roam.db from git with .gitignore
+*********** chrontab reruns org-roam db rebuild after a git-sync
 ******* deleting an org-roam file
         See: [[https://org-roam.discourse.group/t/any-recommended-methodology-to-delete-an-org-roam-file/54/2?u=scotto][this]] and [[https://org-roam.discourse.group/t/any-recommended-methodology-to-delete-an-org-roam-file/54/4?u=scotto][this]]
 ******* get contents of org-roam notes linked to by this one, and other things
@@ -1273,6 +1317,8 @@
 
         and then you write some other code to paste them together...
 
+******* list of notes linked to this one
+        See: [[https://org-roam.discourse.group/t/viewing-all-the-notes-not-a-graph-of-them-linked-to-this-note/126/4][Viewing all the notes (not a graph of them) linked to this note?]]
 ******* <<file and directory setups for org-roam>>
 ********* org-file setup w/ agenda/todo, etc. uses OR just as a wiki: [[https://org-roam.discourse.group/t/separation-of-notes/475/3?u=scotto][Separation of notes?]]
 ********* also [[complete org-roam setups]]
@@ -1283,6 +1329,7 @@
 ********* <<org-roam, deft and org-download (setup)>>
 *********** From: [[https://zzamboni.org/post/my-emacs-configuration-with-commentary/][My Emacs Configuration, With Commentary]]
 *********** Pretty basic, no hints about bibtex, citelinks, etc.
+*********** *Caution*: [[https://org-roam.discourse.group/t/create-org-roam-note-using-deft-filter/477/4?u=scotto][Deft slows down @ a few hundred files]]
 *********** also [[org-download]]
 ********* <<org-roam, compendium-style interactive graph, org-journal but doom/mac>>
 
@@ -1296,38 +1343,97 @@
 ********* [[org-roam workflow with Zotero, org-ref, org-noter, deft]]
 ********* also [[file and directory setups for org-roam]]
 ******* back/forward in org-roam file history: [[info:org-roam#Browsing History with winner-mode][use built-in winner mode]]
-******* [[Orger]]: org mode python interface to generic APIs e.g. roam research
-******* org-roam interface with roam-research
+******* <<convert 1 org file to many org-roam notes>> (energytop.org --> org-roam)
+********* my discourse Q: [[https://org-roam.discourse.group/t/interoperability-between-org-roam-and-regular-org/715/8?u=scotto][Interoperability between Org Roam and regular Org]]
+********* my algorithm for energytop.org --> org-roam note conversion
 
-        Roam research can [[https://roamresearch.freshdesk.com/support/solutions/articles/64000247585-how-to-import-your-notes-into-roam][export/import jason and markdown json]] 
+          Two jobs:  outline hierarchy to notes, and dedicated targets to notes.
 
-********* Also: [[https://davidbieber.com/snippets/2020-04-25-roam-json-export/][roam-research json format & DB merge in python]]
-********* roam-research to org-roam
-*********** markdown-based [[https://github.com/fabioberger/roam-migration][fabioberger/roam-migration]] (in golang)
-*********** markdown-based [[https://github.com/org-roam/org-roam/issues/411][org-roam/org-roam#411]] (links to python code, json seems unimplemented)
-********* org-roam to roam-research
-*********** [[ox-json]]: writes org-mode to json (written in elisp)
+          notes based solely on dedicated tags
 
-            I guess could be converted to [[https://davidbieber.com/snippets/2020-04-25-roam-json-export/][roam-research json format]].  Assuming that this format is the same one as roam-research reads.
+          
+          notes based soley on outine conversion
 
-************* is used by [[pyorg]]
-*********** [[https://www.reddit.com/r/orgmode/comments/7wjmwr/orga_the_ultimate_orgmode_parser_in_javascript/du2cui3/][ox-hugo]] writes org-mode to markdown (but so does [[pandoac]])
-********* roam-research API
-*********** [[https://www.npmjs.com/package/roam-research-private-api][roam-research-private-api - npm]]
-*********** [[https://github.com/shanrauf/roam-research-python][GitHub - shanrauf/roam-research-python]]
-********* related
-***********  [[Org interface to online databases, PIM's etc.]]
-*********** [[Org-mode parsers]]
+********* [[ox-json]]
+
+********* [[org-ql]] (query langauge and search org-mode)
+********* [[https://org-roam.discourse.group/t/creating-an-org-roam-note-from-an-existing-headline/978][Creating an org-roam note from an existing headline]]
+********* [[https://ag91.github.io/blog/2020/11/12/write-org-roam-notes-via-elisp/][org-mode TODO to org-roam note file via Elisp]]
+********* [[Org-roam APIs]]
+******* <<Org-roam APIs>>
+********* [[Orger]]: org mode python interface to generic APIs e.g. roam research
+********* org-roam interface with roam-research
+
+          Roam research can [[https://roamresearch.freshdesk.com/support/solutions/articles/64000247585-how-to-import-your-notes-into-roam][export/import jason and markdown json]] 
+
+*********** Also: [[https://davidbieber.com/snippets/2020-04-25-roam-json-export/][roam-research json format & DB merge in python]]
+*********** roam-research to org-roam
+************* markdown-based [[https://github.com/fabioberger/roam-migration][fabioberger/roam-migration]] (in golang)
+************* markdown-based [[https://github.com/org-roam/org-roam/issues/411][org-roam/org-roam#411]] (links to python code, json seems unimplemented)
+*********** org-roam to roam-research
+************* [[ox-json]]: writes org-mode to json (written in elisp)
+
+              I guess could be converted to [[https://davidbieber.com/snippets/2020-04-25-roam-json-export/][roam-research json format]].  Assuming that this format is the same one as roam-research reads.
+
+*************** is used by [[pyorg]]
+************* [[https://www.reddit.com/r/orgmode/comments/7wjmwr/orga_the_ultimate_orgmode_parser_in_javascript/du2cui3/][ox-hugo]] writes org-mode to markdown (but so does [[pandoac]])
+*********** roam-research API
+************* [[https://www.npmjs.com/package/roam-research-private-api][roam-research-private-api - npm]]
+************* [[https://github.com/shanrauf/roam-research-python][GitHub - shanrauf/roam-research-python]]
+*********** related
+*************  [[Org interface to online databases, PIM's etc.]]
+************* [[Org-mode parsers]]
+********* [[convert 1 org file to many org-roam notes]]
+********* [[Org-mode parsers]]
+******* <<make org-roam scan recursive directories>>
+        This is so I can have a separate folder (bib-notes) for paper entries yet org-roam will find them.
+
+********* Seems there: [[https://github.com/org-roam/org-roam/issues/736][org-roam/org-roam#736 (wrong-number-of-arguments) from org-roam--list-files-e...]]
+********* Tags can be built of recursive dirs: [[help:org-roam-tag-sources]] 
+
+          So I customized it to ‘all-directories’
+
+********* [[make org-roam-bibtex put bib notes in separate dir]]
+******* also [[org-transclusion]]
+******* also [[gkroam]]
+******* also [[org-brain]]
 ***** <<org-brain>>
       Concept mapping in emacs, new project in March, 2017
 ******* [[https://github.com/Kungsgeten/org-brain][GitHub - Kungsgeten/org-brain: Org-mode wiki + concept-mapping]]
 ******* Inspired by the expensive: [[The Brain]]
 ******* Also: [[Knowledge as Graphs]]
+***** <<gkroam>>
+      A [[Roam Research]] clone based on emacs [[Org Mode]]
+******* also [[org-roam]]
+******* also [[org-brain]] 
 ***** [[https://code.orgmode.org/bzg/org-mode][org-mode git repository]] (according to [[https://orgmode.org/worg/dev/index.html][this]])
 ***** org mode table math
       See: [[http://orgmode.org/org.html#Advanced-features][Advanced-features]]
 ***** [[MoinMoin emacs]]
 ***** [[org-mode indentation]]
+***** <<org-tree operations>>
+      From: [[https://orgmode.org/manual/Structure-Editing.html][Structure Editing (The Org Manual)]]]
+
+      *Tree Copy/Cut/Paste/Move*
+        C-c C-x C-w   org-cut-subtree
+        C-c C-x M-w   org-copy-subtree
+        C-c C-x C-y   org-paste-subtree
+        C-c C-w       org-refile (move)
+
+      *Tree & Block Narrowing* (hide other trees, limit scope of search/replace)
+
+        C-x n n      recursive-narrow-or-widen-dwim 
+                     (done in my .emacs.  Works in non-org modes like code too)
+
+        _standard org-mode tree operations_
+          C-x n s       org-narrow-to-subtree
+          C-x n b       org-narrow-to-block
+          C-x n w       widen
+
+      *Headline/List Conversion*
+        C-c * (org-toggle-heading)
+
+******* also [[Narrowing/Widening: narrow-or-widen-dwim]]
 ***** org-mode export
 ******* A plain text file
         For some reason, I can't see ascii in the export dispatcher, so I installed ox-minutes
@@ -1379,7 +1485,8 @@
         /(from [[https://github.com/kawabata/ox-pandoc][here]])/
 
 ********* which uses [[Pandoc]]
-********* [[http://www.rousette.org.uk/blog/archives/org-mode-and-pandoc/][a guy]] exports his org files to it, and then to whatever
+********* [[http://www.rousette.org.uk/blog/archives/org-mode-and-pandoc/][a gal]] exports her org files to it, and then to whatever 
+*********** she also [[https://www.rousette.org.uk/archives/obsidian/][moved]] from [[org-roam]] to [[obsidian]] b/c of Dropbox sync probs
 ********* pandoc-citeproc seems important for citations
 ********* inspiration: Keeping a lab notebook with org-mode, git, Papers, and Pandoc: ([[https://erikclarke.net/2014/10/04/keeping-a-lab-notebook-with-org-mode-git-papers-and-pandoc-part-i/][Part I]] and [[https://erikclarke.net/2014/10/21/keeping-a-lab-notebook-with-org-mode-git-papers-and-pandoc-part-ii/][Part II]])
 ********* =cite:= partly lost: [[http://kitchingroup.cheme.cmu.edu/blog/category/pandoc/][jkitchin's org-cite test/modifications for pandoc]]
@@ -1494,6 +1601,7 @@
 ******* also [[how to do interesting stuff in org-mode/org-ref]]
 ******* [[org-mode native citaton support]] (not ready yet in May 2020)
 ******* [[org-roam workflow with Zotero, org-ref, org-noter, deft]]
+******* [[Zotero + org-ref]]
 ***** <<org-noter>>
 
       Opens papers in emacs, syncs your pdf annotation w/ org-mode doc.  
@@ -1595,7 +1703,6 @@
 ******* [[https://github.com/kametoku/orgmine][kametoku/orgmine: Emacs minor mode for org-mode with redmine integration]]
 ***** <<Save org file folding state>>: [[https://github.com/dandavison/org-fold/blob/master/org-fold.el][org-fold/org-fold.el at master · dandavison/org-fold]]
 ***** [[Orgmode latex editing]]
-***** [[http://orgmode.org/worg/dev/org-element-api.html][Org Element API]] (for org-mode elisp programming)
 ***** <<Org interface to online databases, PIM's etc.>>
 ******* <<Orger>>: org mode python interface to generic APIs e.g. roam research (read only from roam-research)
         Python library to download from large number of online services
@@ -1633,24 +1740,39 @@
 
         Doesn't copy whole filename as is default, just the main file.  May be what's needed to get a better cite: link
 
-***** <<make org-roam scan recursive directories>>
-      This is so I can have a separate folder (bib-notes) for paper entries yet org-roam will find them.
+***** <<org-transclusion>>
+      From: [[https://github.com/nobiot/org-transclusion][nobiot/org-transclusion: (alpha) Emacs package to enable transclusio]]
 
-******* Seems there: [[https://github.com/org-roam/org-roam/issues/736][org-roam/org-roam#736 (wrong-number-of-arguments) from org-roam--list-files-e...]]
-******* Tags can be built of recursive dirs: [[help:org-roam-tag-sources]] 
+      Includes chunks of one org-doc in another.  Can also transclude text and markdown files.  Looks pretty slick in [[https://www.youtube.com/watch?v=nO_JEXUeGkI&feature=youtu.be][demo video]] by the author.
 
-        So I customized it to ‘all-directories’
-
-******* [[make org-roam-bibtex put bib notes in separate dir]]
+      Seems like this would be esp. useful for [[org-roam]]
+      
 ***** <<Org-mode parsers>>
+******* [[http://orgmode.org/worg/dev/org-element-api.html][Org Element API]] (for org-mode elisp programming)
 ******* [[http://orgmode.org/worg/org-tools/][Org Mode tools!]] (parsers in many languages)
+******* [[http://ergoemacs.org/emacs/elisp_parse_org_mode.html][Xah Elisp: Parse Org Mode Tutorial]]
+******* [[https://github.com/ndwarshuis/org-ml][org-ml: functional org lib]]: slow IO but fast graph manip once read
 ******* [[https://common-lisp.net/project/cl-org-mode/][CL-ORG-MODE : A Lisp Parser of org-mode outlines]]
 ******* [[Elisp]]
+******* [[https://github.com/daitangio/org-mode-parser][daitangio/org-mode-parser]]: javascript nodejs
 ******* [[org-mode parsers in Python]]
 ******* [[Orger]]
+******* [[https://gitlab.com/cgenie/org-parse][CGenie / org-parse]]: org --> [[https://gitlab.com/cgenie/org-parse][S-expressions]] (readable by other lisps)
 ******* <<ox-json>>: org-mode to json
         From: [[https://github.com/jlumpe/ox-json/][jlumpe/ox-json: JSON export back end for Emacs Org mode]]
 ********* is used by [[pyorg]]
+******* <<org-ql>>: query based org-searching
+        From: [[https://github.com/alphapapa/org-ql][alphapapa/org-ql: An Org-mode query language, including search]]
+
+        Could use this for searching org-mode in general (maybe even better than swiper) or for parsing org-mode for export.  May be useful for exporting my giant energytop.org to org-roam.
+        
+******* [[Org-roam APIs]]
+***** org-mode graphics
+******* emacs artist mode
+********* [[https://www.youtube.com/watch?v=cIuX87Xo8Fc][Poor Man's UML / Emacs Artist Mode and Ditaa Demo - YouTube]]
+********* [[https://www.emacswiki.org/emacs/ArtistMode#toc3][Artist Mode and Org Mode]]
+******* [[Emacs PlantUML]]
+******* [[Emacs Mermaid]]
 ***** Org-mode in non-org buffers
 ******* <<outshine-mode>>
         From: [[https://github.com/alphapapa/outshine][alphapapa/outshine: {Emacs} outline with outshine outshines outline]]
@@ -1751,12 +1873,19 @@
           ?   outshine-speed-command-help
 
 ***** Org-mode on phones and cloud
-******* Android: [[https://github.com/orgzly/orgzly-android][orgzly/orgzly-android]]
+******* <<orgzly>> (Android)
+        From: [[https://github.com/orgzly/orgzly-android][orgzly/orgzly-android]]
 ********* [[https://github.com/orgzly/orgzly-android/issues/47][cut but no copy]] (I also submitted a [[https://github.com/orgzly/documentation/issues/10#issuecomment-346615891][bug]] but that was to [[https://github.com/orgzly/documentation][documentation]])
 ********* [[https://github.com/orgzly/orgzly-android/commits/master][commits are very active]], as of Nov. 23, 2017
+********* also [[organice]]
 ******* [[Org-mode interface to trello]]
-******* [[https://github.com/200ok-ch/organice][organice: An implementation of Org mode without the dependence on Emacs]]
-        Maybe more complete than orgzly, but I'm not sure if it runs locally on the phone.
+******* <<organice>>
+      From: [[https://github.com/200ok-ch/organice][organice: An implementation of Org mode without the dependence on Emacs]]  
+
+        Edit/View your desktop org files on your phone via its web browser.  The file [[https://organice.200ok.ch/][needs to be on Dropbox, Google Drive, or WebDAV]].
+
+        I'm guessing this is more complete than [[orgzly]], but since it runs in a browser, the keyboard shortcuts, etc. can't be the same.
+********* also [[orgzly]]
 ***** Org-mode and Python
 ******* <<orgbabelhelper>>: org-mode tables, dates etc.  <--> Python dataframes, dates, etc
 
@@ -2051,8 +2180,13 @@ So, [[https://www.reddit.com/r/emacs/comments/clxa9p/orgpdftools_a_custom_org_li
     *Note*: Only need to type =+ -= = after =C-x C-+= or =C-x C--=
 
 *** <<Narrowing/Widening: narrow-or-widen-dwim>>
-***** good for org-mode
-***** good for programming and other stuff too
+
+    This worked but since [[https://endlessparentheses.com/emacs-narrow-or-widen-dwim.html][commenters]] acted as if [[https://github.com/nflath/recursive-narrow][recursive-narrow]]
+was better, I started using that instead.  See [[org-tree operations]].
+
+    Multi-mode narrow/widener, works on org-mode for tree narrowing, programming modes and other stuff.
+
+***** org-specific operations: [[org-tree operations]]
 *** <<Emacs key binding conventions>>
 
     *Conclusions* 
@@ -2595,7 +2729,7 @@ So, [[https://www.reddit.com/r/emacs/comments/clxa9p/orgpdftools_a_custom_org_li
 ***** [[Windows emacs builds]]
 ***** <<Doom Emacs>>
 
-This started much faster than my standard .emacs (on 5/21/20) and also opened energytop.org and howto.org much faster.  But this was the basic doom install, and I'm not sure how much faster things would be if I added my other things, like epy and org-mode dedicated targets, to it.
+This started much faster than my standard .emacs (on 5/21/20) and also opened energytop.org and howto.org much faster.  But this was the basic doom install, and I'm not sure how much faster things would be if I added my other things, like elpy and org-mode dedicated targets, to it.
 
 ******* [[https://github.com/hlissner/doom-emacs][hlissner/doom-emacs: An Emacs framework for the stubborn martian hacker]]
 ******* Initial doom emacs install
@@ -4162,7 +4296,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ******* Downloads dir link in homedir
 ******* Desktop dir link in homedir
 
-******* <<SkyShellEx>>, a SkyDrive specific symbolic linker
+******* <<SkyShellEx>>, a [[SkyDrive]] specific symbolic linker
 
         From:  [[http://www.techrepublic.com/blog/smbit/how-skyshellex-makes-the-skydrive-cloud-desktop-client-easier-to-use/841?tag%3Dnl.e064&s_cid%3De064&ttag%3De064][SkyShellEx]]
 
@@ -4278,49 +4412,6 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
     [[http://www.askvg.com/fix-internet-explorer-tile-missing-from-windows-8-start-screen-or-metro-ie-doesnt-start/][Solution]]: just set the file association back to IE.  Apparently, the
     metro tile disappears when you install some other browser.
 
-*** <<OneDrive>>
-***** <<Getting rid of Microsoft Office Upload Center>>
-      From: [[https://onedrive.uservoice.com/forums/262982-onedrive/suggestions/7160258-remove-the-need-for-office-upload-center-if-you-ar?page=2&per_page=20][Remove the need for Office Upload Center if you are using OneDrive.]]
-
-      Upload center seems to make a separate copy of Office files and uploads them by itself -- redundant with OneDrive and worse, it crashes constantly at work.
-
-      To get rid of it
-
-      1. right click the onedrive icon in the system tray
-      2. properties
-      3. Office tab
-      4. unclick the two boxes under
-
-      _Title is something like (see German below)_
-      Work with other people at the same time to work with Office files by synchronizing files with Office.
-
-      UNCLICK: Office files synchronize with Office
-      UNCLICK: Office files that I open, synchronize with Office 2016.
-
-      After a reboot, this is supposed to stop the Upload center uploads (and errors).  But in 2017, on Windows 7, the reboot did not seem to be necessary.
-
-***** German writing for stuff to unclick
-
-      Mit anderen Personen gleichzeitig an Office-Dateien arbeiten, indem Sie die Dateien mit Office synchronisieren.
-
-      Offfice-Dateien mit Office synchronisieren
-
-      Office-Dateien, die ich oeffne, mit Office 2016 synchronisieren.
-
-***** Finding filenames that OneDrive isn't happy with
-
-      I see hangs with .emacs .julia, etc.
-
-******* MS doc [[http://blogs.technet.com/b/wbaer/archive/2014/05/24/file-and-folder-considerations-with-onedrive-for-business.aspx][banning files starting with (.)]] is crossed out (so OK?)
-******* but does that apply only to OneDrive for business?
-******* I tried to comment (below) but couldn't
-
-        The section banning Files and Folders preceded or followed with (.) is
-        crossed out.  Does this mean that they were banned but are now allowed?
-        Also, are names starting with (.) allowed in the standard OneDrive, the one
-        that you get when you buy Office 365?
-
-******* [[http://blogs.technet.com/b/wbaer/archive/2014/05/24/file-and-folder-considerations-with-onedrive-for-business.aspx][Download FileChecker.exe]] to find problem file and folder names
 *** <<Remote Desktop Connection (RDP)>>
 ***** getting rid of floating connection bar at top of screen
       From [[https://answers.microsoft.com/en-us/windows/forum/all/change-windows-rdp-connection-bar-position/d1c3e9cd-36e0-4b94-9cde-b2f7f44b7224][here]]:
@@ -4397,15 +4488,19 @@ The recommended one of the three possible ways to do it:
 ******* move taskbar of laptop to big monitor
         [[http://www.pcmag.com/article2/0,2817,1632004,00.asp][Supposedly]], you can unlock it and then drag it to the monitor.  This
         worked once on Windows 7 and then my taskbar disappeared!
-******* using Surface Go as extra monitor
-        From: [[https://www.youtube.com/watch?v=K3WaeHpipwk&feature=emb_rel_end][Use your Surface as a second screen]]
+******* using Surface Go/Pro as extra monitor connected by WiFi
+        From: [[https://www.youtube.com/watch?v=K3WaeHpipwk&feature=emb_rel_end][Use your Surface as a second screen]] and experimentation
 
         Using built-in Surface Miracast
 
-        _Surface Go setup_
+        _Surface Go/Pro setup_
+        o install Wireless Display Feature
+          o settings:Projecting to this PC
+          o follow link/instructions to install optional "Wireless Display" function
         o Win+k (or connect action center button)
         o Project to this PC
         o make sure "available everywhere...." is selected
+
 
         Surface Pro
         o Win+k
@@ -4435,7 +4530,7 @@ The recommended one of the three possible ways to do it:
         click: "Activate a window by hovering over it with the mouse".
 
         - set autoraise delay: 750ms seemed OK
-          - Install: [[https://winaero.com/][Winaero]] 
+          - Install: [[https://winaero.com/][Winaero Tweaker]] 
 
             Go to =Xmouse Options= and set =Windows Activation Timeout=
 
@@ -4443,7 +4538,9 @@ The recommended one of the three possible ways to do it:
             (different than [[https://www.highrez.co.uk/downloads/xmousebuttoncontrol.htm][X-mouse Button Control]], which only does buttons, and which I don't need)
             Not installable: ON SP4, I put it in: ~\bin\x-mouse_controls_2010-04-03_1155_release
 
-        - This also fixes the alt-Tab mouse focus problem too
+        - This also fixes the alt-Tab mouse focus proble
+
+        - m too
           - Before:
             - mouse on fullscreen window, far away from window underneath
             - alt-Tab
@@ -4847,7 +4944,52 @@ The recommended one of the three possible ways to do it:
 ******* [[http://sourceforge.net/projects/winmerge/?source%3Ddlp][WinMerge]]: integrates w/ explorer, tortoise SVN, seems a little nicer
 *** Win8: should [[http://www.techrepublic.com/blog/window-on-windows/enable-windows-8-file-history-to-protect-your-data-revisited/7171?tag%3Dnl.e064&s_cid%3De064][enable file history]] on external drive (and SD card, I suppose)
 *** Microsoft Cloud File Sharing
-***** SkyDrive
+***** <<OneDrive>>
+******* <<Getting rid of Microsoft Office Upload Center>>
+        From: [[https://onedrive.uservoice.com/forums/262982-onedrive/suggestions/7160258-remove-the-need-for-office-upload-center-if-you-ar?page=2&per_page=20][Remove the need for Office Upload Center if you are using OneDrive.]]
+
+        Upload center seems to make a separate copy of Office files and uploads them by itself -- redundant with OneDrive and worse, it crashes constantly at work.
+
+        To get rid of it
+
+        1. right click the onedrive icon in the system tray
+        2. properties
+        3. Office tab
+        4. unclick the two boxes under
+
+        _Title is something like (see German below)_
+        Work with other people at the same time to work with Office files by synchronizing files with Office.
+
+        UNCLICK: Office files synchronize with Office
+        UNCLICK: Office files that I open, synchronize with Office 2016.
+
+        After a reboot, this is supposed to stop the Upload center uploads (and errors).  But in 2017, on Windows 7, the reboot did not seem to be necessary.
+
+******* German writing for stuff to unclick
+
+        Mit anderen Personen gleichzeitig an Office-Dateien arbeiten, indem Sie die Dateien mit Office synchronisieren.
+
+        Offfice-Dateien mit Office synchronisieren
+
+        Office-Dateien, die ich oeffne, mit Office 2016 synchronisieren.
+
+******* Finding filenames that OneDrive isn't happy with
+
+        I see hangs with .emacs .julia, etc.
+
+********* MS doc [[http://blogs.technet.com/b/wbaer/archive/2014/05/24/file-and-folder-considerations-with-onedrive-for-business.aspx][banning files starting with (.)]] is crossed out (so OK?)
+********* but does that apply only to OneDrive for business?
+********* I tried to comment (below) but couldn't
+
+          The section banning Files and Folders preceded or followed with (.) is
+          crossed out.  Does this mean that they were banned but are now allowed?
+          Also, are names starting with (.) allowed in the standard OneDrive, the one
+          that you get when you buy Office 365?
+
+********* [[http://blogs.technet.com/b/wbaer/archive/2014/05/24/file-and-folder-considerations-with-onedrive-for-business.aspx][Download FileChecker.exe]] to find problem file and folder names
+******* also [[SkyDrive]]
+
+***** <<SkyDrive>>
 ******* [[http://www.howtogeek.com/56096/how-to-use-skydrives-25-gb-as-a-mapped-drive-for-easy-access/][How to Use SkyDrive’s 25 GB as a Mapped Drive for Easy Access]]
 
         Skdrive location: https://d.docs.live.net/4bbd96b3698748f8/work
@@ -4859,35 +5001,7 @@ The recommended one of the three possible ways to do it:
 ******* [[http://winsupersite.com/skydrive/skydrive-now-selective-sync-and-shared-content][Selective sync]]
 ******* stopping/pausing sync
 	just declare a connections e.g. my phone's wireless [[http://windows.microsoft.com/en-us/windows-8/metered-internet-connections-frequently-asked-questions][as metered]]
-******* OneNote
-        <<OneNote and SkyDrive>>
-******** [[http://answers.microsoft.com/en-us/skydrive/forum/sdfiles-sdother/can-i-move-my-onenote-web-files-to-a-new-folder/3dc03ed6-c69f-421d-bd05-daa97dd1be0f][Moving Notebooks]] on Skydrive
-	 Brian Perrin wrote:
-
-         In OneNote:
-
-         1) Close the notebook you want to move. I did this by right clicking on the notebook's name in the Notebooks panel, on the left side of the screen by default.
-
-         On SkyDrive website:
-
-         2) Go to your Documents folder and create the new folder you want to store notebooks in.
-
-         3) If you're in the thumbnail view (everything shows up as a large rectangle), change to the details view (everything shows up as a list of files with checkboxes). You do this by clicking the second button to the right of the search box.
-
-         4) Select the notebook you want to move by checking its checkbox.
-
-         5) Move them by selecting the "Move to" command on the right side of the screen, picking the new folder from the popup that appears (you'll need to expand the Documents folder to see its subfolders), and clicking Move.
-
-         6) Go to your new folder.
-
-         7) Select the notebook by its checkbox again, and then select the "Open in OneNote" option on the right.
-
-
-
-         Your notebook should open in OneNote and be back to syncing properly.
-
-******** [[http://omeratay.com/onetastic/?i%3Donenote-sync][OneNote explanation]]
-******** [[http://answers.microsoft.com/en-us/skydrive/forum/sdfiles-sdsync/skydrive-syncs-onenote-notebook-to-pc-as-single/1f20bf3a-2191-4ef5-9fe2-620abd529f07][OneNote explanation]], which I don't quite get
+******* [[OneNote and SkyDrive]]
 ******* Command line and SkyDrive specific links: [[Windows symbolic links]]
 ******* [[http://www.hongkiat.com/blog/ms-skydrive-tips/][Using libraries to merge local]] Documents, etc. folders to Skydrive
 ******* Skydrive install @ IWES: *fix proxy problem* with Windows 7 online ID provider
@@ -4925,6 +5039,7 @@ The recommended one of the three possible ways to do it:
 
           but this didn't help...
 
+******* also [[OneDrive]]
 ***** Android app: FolderSync Lite:  seemed to work but I uninstalled it to save space
 ***** Android app: There's now a MS SkyDrive app (but my Legend is too old)
 ***** Old Windows sync services
@@ -4950,6 +5065,7 @@ The recommended one of the three possible ways to do it:
           with). On old one, it's just on the main parition.
 
 ******* [[http://www.labnol.org/internet/compare-windows-live-sync-mesh-and-skydrive/6166/][Windows Live Sync vs. Live Mesh vs. SkyDrive: Which is Right for You?]]
+***** also syncthing (I had this set up, didn't put it in org-mode, I guess)
 *** Fixing blurred fonts in Win 8
 
     From [[http://forums.lenovo.com/t5/W-Series-ThinkPad-Laptops/Blurred-display-after-upgrade-to-Windows-8-1/ta-p/1282781][here]], this worked for emacs
@@ -5490,7 +5606,7 @@ The recommended one of the three possible ways to do it:
 ******* [[Powerpoint and Python]]
 ******* [[Powerpoint and R]]
 ******* [[Powerpoint and Jupyterlab]]
-*** OneNote
+*** <<OneNote>>
 ***** [[http://blogs.msdn.com/b/johnguin/archive/2014/02/03/onenote-tip-making-tables-from-pasted-text.aspx][modestly quick way to create tables]] in OneNote from pasted text
 ***** [[OneNote and SkyDrive]]
 ***** Clip from browser to OneNote
@@ -5631,6 +5747,38 @@ The recommended one of the three possible ways to do it:
 ***** [[https://support.office.com/en-us/article/Create-links-to-notebooks-sections-pages-and-paragraphs-35a2c5e3-87fd-400a-a4f5-ef82e778c208][Links to OneNote notebooks, sections, pages, and paragraphs]]
 
       Note: the paragraph links don't work if they are used outside of OneNote.  But they will at least bring you to the right page.
+
+***** OneNote/Wacom Tablet setup
+******* erase button, others: [[https://www.reddit.com/r/OneNote/comments/gf3hgz/wacom_pen_side_button_config_to_erase/][wacom pen side button config to erase? : OneNote]]
+
+***** <<OneNote and SkyDrive>>
+******* [[http://answers.microsoft.com/en-us/skydrive/forum/sdfiles-sdother/can-i-move-my-onenote-web-files-to-a-new-folder/3dc03ed6-c69f-421d-bd05-daa97dd1be0f][Moving Notebooks]] on Skydrive
+	 Brian Perrin wrote:
+
+         In OneNote:
+
+         1) Close the notebook you want to move. I did this by right clicking on the notebook's name in the Notebooks panel, on the left side of the screen by default.
+
+         On SkyDrive website:
+
+         2) Go to your Documents folder and create the new folder you want to store notebooks in.
+
+         3) If you're in the thumbnail view (everything shows up as a large rectangle), change to the details view (everything shows up as a list of files with checkboxes). You do this by clicking the second button to the right of the search box.
+
+         4) Select the notebook you want to move by checking its checkbox.
+
+         5) Move them by selecting the "Move to" command on the right side of the screen, picking the new folder from the popup that appears (you'll need to expand the Documents folder to see its subfolders), and clicking Move.
+
+         6) Go to your new folder.
+
+         7) Select the notebook by its checkbox again, and then select the "Open in OneNote" option on the right.
+
+
+
+         Your notebook should open in OneNote and be back to syncing properly.
+
+******* [[http://omeratay.com/onetastic/?i%3Donenote-sync][OneNote explanation]]
+******* [[http://answers.microsoft.com/en-us/skydrive/forum/sdfiles-sdsync/skydrive-syncs-onenote-notebook-to-pc-as-single/1f20bf3a-2191-4ef5-9fe2-620abd529f07][OneNote explanation]], which I don't quite get
 
 *** [[https://support.office.com/en-us/article/How-do-I-reinstall-Office-2013-after-an-Office-2016-upgrade-a6ca92f4-cbb4-4609-9fdb-f8d3dd6812f3][Reverting from Office 2016 to Office 2013]]
 *** Fixing "File Failed To Upload" error in Office Upload Center
@@ -9639,6 +9787,21 @@ plt.show()
 
           I can possibly imagine this being useful...
 
+********* installing jupytext on AWS
+          From: [[https://forums.aws.amazon.com/message.jspa?messageID=899413]]
+
+          start jupyterlab
+          open a terminal from jupyterlab launcher
+          
+          in terminal type
+ 
+          source activate JupyterSystemEnv
+          pip install jupytext --upgrade
+          echo c.NotebookApp.contents_manager_class="jupytext.TextFileContentsManager" >> ~/.jupyter/jupyter_notebook_config.py
+          jupyter labextension install jupyterlab-jupytext
+ 
+          Restart the Jupyter Server
+          
 ******* <<Data versioning in Jupyter notebooks>>
 ********* [[https://github.com/peopledoc/mlvtools][mlvtools: Public repository for versioning machine learnin...]]
 ********* <<Simple Jupyter + DVC>>
@@ -10218,10 +10381,10 @@ plt.show()
           o easiest
           o'loki' does some kind of process(?) (core multiproc. fails on Win) w/o thread (GIL probs?)
           o works on all platforms and is already scikit learn default
-          o easily runs on Sagemaker
+          o easily runs on [[Sagemaker]]
           o BUT I HAVEN'T GOTTEN IT TO WORK W/ KERAS QR MODELS
 
-********* Ray
+********* <<Ray>>
           From: [[https://www.infoworld.com/article/3542595/6-python-libraries-for-parallel-processing.html][6 Python libraries for parallel processing | InfoWorld]]
 *********** multinode [[https://github.com/werner-duvaud/muzero-general/issues/4][doesn't work on windows]] 
 *********** but [[https://github.com/ray-project/ray/issues/6900][WSL problems are maybe fixed]]
@@ -10256,7 +10419,7 @@ ERROR: tensorflow 2.1.0 has requirement tensorboard<2.2.0,>=2.1.0, but you'll ha
 *********** [[https://docs.ray.io/en/master/using-ray-with-pytorch.html][works w/ pytorch]] 
 *********** each machine runs it's own ray scheduler, so scheduled task probs can be handled @ machine level, not whole cluster
 *********** [[https://zhangmpy.top/blog/2019/Multiporcessing-in-Python/][doesn't have to pickle]] (problem w/ Keras models)
-*********** [[https://medium.com/distributed-computing-with-ray/how-to-scale-python-multiprocessing-to-a-cluster-with-one-line-of-code-d19f242f60ff][works on Amazon AWS]]
+*********** [[https://medium.com/distributed-computing-with-ray/how-to-scale-python-multiprocessing-to-a-cluster-with-one-line-of-code-d19f242f60ff][works on Amazon AWS]] (also see [[Amazon AWS/S3]])
 ********* Dask
           From: [[https://www.infoworld.com/article/3542595/6-python-libraries-for-parallel-processing.html][6 Python libraries for parallel processing | InfoWorld]]
 *********** looks like ray
@@ -10458,6 +10621,8 @@ file_name.parent.mkdir(parents=True, exist_ok=True)
 
         It had almost perfect stars, was a fork to another older, abandoned but popular emacs extension (from Hiro Sun), and had new updates (latest was 5/6/19 when viewed on 12/11/19).  Seems good.
 
+******* Getting a console like Spyder, Rstudio and Matlab
+********* [[https://www.r-bloggers.com/2020/07/setting-up-vs-code-for-python-development-like-rstudio/][Setting up VS Code for Python Development like RStudio | R-bloggers]]
 ***** Rodeo
 ***** [[Python in Emacs]]
 ***** <<PyCharm>>
@@ -10765,8 +10930,38 @@ file_name.parent.mkdir(parents=True, exist_ok=True)
 ***** video: [[https://www.youtube.com/watch?v=U75eKosFbp8][SoS: A polyglot notebook and workflow system]]
 *** [[Dask can compute on graphs]]
 *** also [[Parallelization in Python]]
-* <<Hadoop>>
-*** [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop Intro Book]]
+* Cloud Computing
+*** <<Hadoop>>
+***** [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop Intro Book]]
+*** <<Amazon AWS/S3>>
+***** CPR AWS/S3 setup
+      From  Mike Newman, on Teams, 11/18/20
+******* AWS [[https://us-east-1.signin.aws.amazon.com/oauth?SignatureVersion=4&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJMOATPLHVSJ563XQ&X-Amz-Date=2020-11-20T02%3A57%3A20.454Z&X-Amz-Signature=bd7781acd4a2906fe6fe12344191892074069831d0875830305ce974add4902a&X-Amz-SignedHeaders=host&client_id=arn%3Aaws%3Aiam%3A%3A015428540659%3Auser%2Fhomepage&code_challenge=JYJIIGPIw25r4inUnMWA9hSVK2q6wqtvAa7iBbRi0ys&code_challenge_method=SHA-256&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3Fstate%3DhashArgs%2523%26isauthcode%3Dtrue&response_type=code&state=hashArgs%23][login page]] (I am sotterson@250657904178)
+        sotterson is the IAM account name
+        250657904178 is the account ID
+******* click on create notebook instance, LHS menu
+******* [[https://us-west-2.console.aws.amazon.com/sagemaker/home?region=us-west-2#/landing][AWS Sagemaker sign in page]]
+******* *S3 bucket*: datascience.dev.cleanpower.com
+******* *Role*: CPR-Sagemaker-DataScience (what I enter into instance role field)
+********* full role spec:
+
+          arn:aws:iam::250657904178:role/CPR-Sagemaker-DataScience
+
+***** Tutorials
+******* Amazon re:invent [[https://mail.google.com/mail/u/0/#inbox/FMfcgxwKjTWcXDZQTPxgjGCQQpKnTKTl][conference prep email]]
+
+***** Works with AWS
+******* [[Ray]]
+***** <<Sagemaker>>
+******* Sam's list of Sagemaker/AWS tutorials
+        https://aws.amazon.com/blogs/machine-learning/train-and-host-scikit-learn-models-in-amazon-sagemaker-by-building-a-scikit-docker-container/
+
+https://aws.amazon.com/blogs/machine-learning/performing-batch-inference-with-tensorflow-serving-in-amazon-sagemaker/
+
+https://aws.amazon.com/blogs/machine-learning/deploy-trained-keras-or-tensorflow-models-using-amazon-sagemaker/
+
+https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn-support/
+
 * Android
 *** Commandline
 ***** Termux app
@@ -11505,6 +11700,12 @@ Other problem is that JabRef uses "comments" and Zotero uses "notes"
 ************* try [[https://github.com/egh/zotxt-emacs][GitHub - egh/zotxt-emacs]]
 *********** In Org-mode?
 ******* [[https://www.zotero.org/download/][Zotero App Download]]
+******* Alternatives to Zotero
+
+        Zotero is very useful for downloading paper bibs and pdfs directly from a website but it stores stuff in its own proprietary format, with files embedded in a complicated directory structure.  You can export this to a bib file and rename papers with zotero plugins noted in [[Zotero + Bibtex]], but I haven't figured out how to do this without writing extra post-processing scripts, which require more steps, code maintenance..., and are perhaps less [[git]]able.
+
+********* TRY [[https://org-roam.discourse.group/t/workflow-for-working-with-pdfs/103/24?u=scotto][helm-bibtex and ivy-bibtex can do what zotero does]] (true?)
+          
 ******* <<Zotero + Bibtex>>
 
         Zotero add-ons that help w/ zotero bibtex interface, for compatibility with Jabref and Emacs, Overleaf, plain Latex
@@ -11613,6 +11814,7 @@ Other problem is that JabRef uses "comments" and Zotero uses "notes"
             
             org-zotxt-insert-reference-link
 
+*********** Seems to be bibtex based, since requireds [[Better BibTeX]]
 ********* <<zutilo>>: links in org-mode to Zotero app + editing functions
           Mainly from:  [[https://github.com/willsALMANJ/Zutilo][Zotero plugin providing some additional editing]]
 
@@ -11661,6 +11863,7 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 
 *********** It would be mostly based on [[zotxt-emacs]], since that one doesn't require me to click something in Zotero.  
 *********** Maybe copy something from [[org-ref]] to build the full link with description.
+********* also [[Zotero + Org Roam]]
 
 ******* <<Zotero + GIT>>
 
@@ -11687,6 +11890,30 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ********* [[https://www.zotero.org/support/word_processor_plugin_usage][word processor plugin usage {Zotero Documentation}]]
 ********* If problem: [[https://www.youtube.com/watch?v=aU1CyYzh3E0][Zotero Plugin Add-on Pc Microsoft Word Missing]]
 ********* Other plugins: Open Office, Google Docs, Overleaf (kinda: [[BBT + git]])
+******* <<Zotero + Org Roam>>
+********* think about [[org-roam and bibtex]]
+********* [[org-roam]] + [[org-noter]] + [[Zotero]]
+          Guy uses all three: [[https://github.com/org-roam/org-roam/issues/258][Supplying a title to `org-roam-find-file`]]
+********* [[org-roam workflow with Zotero, org-ref, org-noter, deft]]
+********* [[OR cite notes + org-roam-bibtex + org-noter: Zotero not main ref DB]]
+********* [[https://org-roam.discourse.group/t/automated-workflow-for-pulling-pdfs-into-org-ref-org-roam-bibtex/611/2][Automated workflow for pulling PDFs into org-ref + org-roam-bibtex]]
+********* OR is bibtext based, relegates [[Zotero]] to reference and pdf capture
+*********** [[OR cite notes + org-roam-bibtex + org-noter: Zotero not main ref DB]]
+*********** [[org-ref]] is used in org-roam somehow by other org-roam fans
+*********** [[https://org-roam.discourse.group/t/does-anyone-have-a-workflow-for-associating-notes-with-a-zotero-stored-pdf/112/10?u=scotto][Advice]] on syncing Zotero and bibtex/pdfs (also other ideas thread)
+********* [[Zotero + Bibtex]]
+********* [[Zotero + org-ref]]
+******* <<Zotero + org-ref>>
+********* make [[org-ref]] not clobber zotero full pdf path
+          From: [[https://github.com/jkitchin/org-ref/issues/815][jkitchin/org-ref#815 Pulling PDF absolute path from bibtex before attempting ...]]
+
+          This guy uses zotero to capture pdfs, and wants to keep the full path into the messy zotero structure.  jkitchen adds a fix or option to (hopefully) prevent org-ref from clobbering that path.
+
+          For me, I'd rather just have all pdfs in a single directory, but maybe there is something relevant here...
+          
+******* Direct DB sync between Emacs and Zotero
+********* [[https://github.com/whacked/zotero-query.el][whacked/zotero-query.el: query local zotero database from emacs]]
+********* [[https://github.com/vspinu/zotelo][vspinu/zotelo: Manage zotero collections from emacsemacs.]]
 ******* Zotero as only a reference downloader, pdf grabber
 ********* [[http://disq.us/p/1ec7xqs][Muad Abd El Hay]] did Zotero --> [[org-ref]], but kept Zotero around
 ******* Syncing Zotero across multiple machines
@@ -11724,13 +11951,10 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
           From: [[https://www.exitsantacruz.com/zotnet/zotnet.php][ZotNet]]
 ********* <<Zotero Voyant Export>>: visualized collections, but is _unmaintained_
           From: [[https://github.com/corajr/zotero-voyant-export][corajr/zotero-voyant-export: Export a Zotero collecti]]ons
-******* [[org-roam workflow with Zotero, org-ref, org-noter, deft]]
-******* [[OR cite notes + org-roam-bibtex + org-noter: Zotero not main ref DB]]
 ******* crazily complicated Zotero/BibTex/Emacs workflow 
         From: [[https://www.researchgate.net/post/What_reference_manager_is_used_for_Emacs_users][What reference manager is used for Emacs users?]]
 ********* See Bingwei Tian's answer (a graph in .jpg)
 ********* Has Zotero, Mendely, Bibtex, Emacs, Latex, R...
-******* think about [[org-roam and bibtex]]
 ******* Mobile apps for viewing Zotero
 
         Not sure I care about this, but...
@@ -11771,6 +11995,58 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 
             Edit -> Preferences -> Sync -> Reset -> Replace online library
 ********* [[https://github.com/retorquere/zotero-storage-scanner][zotero-storage-scanner: A Zotero plugin to remove the broken...]]
+
+******* <<Replacing Evernote with Zotero>>
+********* [[Ton Zijlstra replaced Evernote and much else with Obsidian and Zotero]]
+********* <<Highlighting stored Zotero web page snapshots>>
+*********** [[https://addons.mozilla.org/en-US/firefox/addon/highlighter-notes/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search][Firefox Highlighter + Notes]]: saves to / reads from html, can re-edit, slightly clunky
+
+            Zotero will save the highlights made with this extension, and if you read the saved html, the annotations will reappear.  You can modify them, add new highlights, and save again.
+
+            The only catch is that, when saving new edits, you must copy the saved html path, and then run "Save As," and deal with the annoying "overwrite" popup warning.
+
+            Nice that there are multiple colors, erase, total clear, and typewritten notes (not sure how they're supposed to work, though).
+
+*********** highlighting extensions _almost_ worked
+************* Firefox Textmarker for snapshot marking
+
+              Can open the stored snapshot by clicking inside of Zotero.  This loads the page into firefox.  From there it's easy to highlight, and this works when offline.
+
+              *However*, the markups appear to be stored in a json file, somwhere in the guts of Firefox, I guess see textmarker "history", not in the html itself. Textmarker can sync this to someplace on the web, but I can't find a way to merge it with the html.  This means that you're locked into textmarker/Firefox, which I definitely don't want.
+
+************* [[https://chrome.google.com/webstore/detail/beanote-note-taking-on-we/nikccehomlnjkmgmhnieecolhgdafajb/related][Chrome Beanote]]: onetime note markup which Zotero stores
+
+              If mark first, then Beanote markup is stored by Zotero.  But if you open the stored html file again (in Chrome), you can't add new Beanote markups, or edit old ones.
+
+************* [[https://chrome.google.com/webstore/detail/singlefile/mpiodijhokgodhhofbcjdecpffjipkle?hl=en][Single File]] (Chrome & Firefox) 
+*************** saves 1st (to Downloads, regardless of "annotate first" option); 
+*************** annotates later, 
+*************** so Zotero can't get in the middle.  
+*************** Also can't annotate if reread the saved file.
+*************** Is [[https://news.ycombinator.com/item?id=25228089][said]] to be what [[Zotero]] uses to save web pages
+              
+************* Firefox [[https://addons.mozilla.org/en-US/firefox/addon/page-hacker/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search][Page Hacker]]: saved and restored in Zotero, just like I'd want but only bolds, underlines... no highlights
+************* [[https://chrome.google.com/webstore/detail/save-page-we/dhhpefjklgkmgeafimnjhojgjamoafof?hl=en-US][Save Page WE]] (Both Firefox & Chrome): 
+
+*************** Saves single local html file but doesn't annotate.  
+
+*************** Must tick a couple of options to get the Save As dialog (instead of default Download).
+
+***************** These are "use new save method" and "always show browser 'save as' dialog"  
+
+***************** May also want to tick "Saved Items --> HTML image files (all)" in order to get expanded views of images.  Maybe the "object and embed files too," in order to get interactive stuff like WAPO sometimes saves.  
+
+*************** Also has keyboard shortcuts.
+*************** The catch is knowing where Zotero has actually saved the file.  The Zotero 
+*************** Dangerous b/c FF "Hilighter + Notes" always saves highlights as metadata somewhere, makes it look like you have saved the raw html that Zotero looks at, even if you have actually saved in some random location.
+************* Chrome [[https://hypothes.is/users/scotto][hypothes.is annotator]] marks up and Zotero saves but can't re-edit saved html file Zotero makes in hypothes.is. /Can/ re-edit in hypothes.is web page, though. Also: [[Hypothesis]]
+******* Misc. Zotero Plugins I've tried, may want to use
+********* [[https://github.com/retorquere/zotero-auto-index][retorquere/zotero-auto-index]]
+********* <<ZotNet>>: bib ref relations graph drawer by Christy M. Byrd
+*********** [[https://www.exitsantacruz.com/zotnet/zotnet.php][ZotNet bib ref relations graph drawer by Christy M. Byrd]]
+*********** requires you to [[https://www.zotero.org/support/related][manually create the reference relations]]
+
+********* [[https://marketplace.visualstudio.com/items?itemName=mblode.zotero][Citation Picker for Zotero - Visual Studio Marketplace]]
 
 ***** [[org-ref]]
 ***** [[BibTex and Emacs]]
@@ -11831,12 +12107,26 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ******* <<Mathpix Emacs Plugin: mathpix.el>>
 ********* [[https://github.com/jethrokuan/mathpix.el][jethrokuan/mathpix.el: Mathpix Emacs Plugin]]
 *** [[PDF processing in Python]]
-* Writing tools
+* <<How to take Notes>>
+*** [[https://www.amazon.com/How-Take-Smart-Notes-Nonfiction-ebook/dp/B06WVYW33Y][Ahrens 2017: How to Take Smart Notes]] (it's on my [[Kindle]])
+*** [[https://notes.andymatuschak.org/About_these_notes][AndyM: about these notes]]: home page to thoughts about notes
+***** [[https://notes.andymatuschak.org/z3SjnvsB5aR2ddsycyXofbYR7fCxo7RmKW2be][Evergreen note-writing as fundamental unit of knowledge work]]
+*** [[https://notes.azlen.me/g3tibyfv/][AzlenE: about these notes]]
+*** [[https://org-roam.discourse.group/t/organizing-different-types-of-notes-with-file-names/612][Organizing Different Types of Notes with File Names]]
+*** [[Finding org-roam notes]]
+*** also [[org-roam]]
+*** also [[Org Mode]]
+*** also [[Writing tools]]
+*** also [[Knowledge as Graphs]]
+*** [[also Document Annotation]]
+*** also [[Evernote]]
+*** also [[Kindle]] 
+* <<Writing tools>>
 *** [[http://www.hemingwayapp.com/][Hemingway Editor]]: simplifications, improvements.  Free online or paid app
 *** <<Emacs writing tools>>
-***** [[http://bnbeckwith.com/code/writegood-mode.html][WriteGood Mode]]: Weasel words, passive voice dupes
 ***** [[Org Mode]]
 ***** [[org-roam]]
+***** [[http://bnbeckwith.com/code/writegood-mode.html][WriteGood Mode]]: Weasel words, passive voice dupes
 ***** also [[Emacs]]
 * <<Knowledge as Graphs>>
 *** Tree / Mindmaps
@@ -11871,7 +12161,75 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ******* [[org-roam]]: emacs clone of Roam
 ******* Book: [[https://smile.amazon.com/How-Take-Smart-Notes-Nonfiction-ebook-dp-B06WVYW33Y/dp/B06WVYW33Y/ref=mt_kindle?_encoding=UTF8&me=&qid=][How to Take Smart Notes: One Simple Technique to Boost Writing]]
 ******* [[Readwise]] service [[https://www.bsoundarya.com/part-iii-building-a-second-brain%E2%80%8A-%E2%80%8Ausing-notion-and-roam-research/][can]] sync Roam to [[Kindle]]
+******* also [[obsidian]]
+***** <<Foam>> Personal knowledge manager
+      See: [[https://foambubble.github.io/foam/][Foam | A personal knowledge management and sharing system for VSCode]]
+
+      Also built on VScode: [[dendron]]
+
+******* [[https://www.zylstra.org/blog/][Said]] to be a potential open source alternative to [[Obsidian]] (a clone?)
 ***** [[https://nesslabs.com/roam-research-alternatives][Roam Research free, open source, and self-hosted alternatives]]
+***** [[org-roam]]
+***** [[https://logseq.com/][logseq]]
+
+      Is [[https://github.com/logseq/logseq/issues/672][said]] to be compatible with [[org-roam]]
+
+***** <<obsidian>>
+      From: [[https://obsidian.md/][Obsidian]]
+
+      Very similar to Roam Research.  
+
+******* [[Foam]]: a clone of Obsidan?
+******* People who have switched to Obsidian
+********* <<BSAG moved from org-roam to Obsidian>>
+
+          Gal who shared her [[org-roam]] setup with me has [[https://www.rousette.org.uk/archives/obsidian/][moved]] from org-roam to Obsidian b/c of Dropbox sync probs.  But I wonder if the sync problems might have been fixed either by moving the DB out of Dropbox (or OneNote) as I did.
+
+          On the other hand, she says that getting rid of org-roam and org-ref has made her emacs much faster, and that she can store her ideas with "less friction" than with org-roam.
+
+********* <<Ton Zijlstra replaced Evernote and much else with Obsidian and Zotero>>
+
+            His descriptions of how he made the gradual migration to a Zettlekasten style -- "Evergreen Notes", or "Notions," as he calls them -- is intersting and also quite quantitative.  
+
+*********** From a long series of his posts
+************* [[https://www.zylstra.org/blog/2020/10/100-days-in-obsidian-pt-1/][100 Days in Obsidian, Pt. 1 – Interdependent Thoughts]]
+************* [[https://www.zylstra.org/blog/2020/10/100-days-in-obsidian-pt-2-hierarchy-and-logs/][100 Days in Obsidian Pt 2: Hierarchy and Logs – Interdependent Thoughts]]
+************* [[https://www.zylstra.org/blog/2020/10/100-days-in-obsidian-pt3-tracking-tasks/][100 Days in Obsidian Pt3: Tracking Tasks – Interdependent Thoughts]]
+************* [[https://www.zylstra.org/blog/2020/11/100-days-in-obsidian-pt-4-writing-notes/][100 Days in Obsidian Pt 4: Writing Notes – Interdependent Thoughts]]
+************* [[https://www.zylstra.org/blog/2020/11/100-days-in-obsidian-pt-5-flow-and-workspaces/][100 Days in Obsidian Pt 5: Flow and Workspaces – Interdependent Thoughts]]
+************* [[https://www.zylstra.org/blog/2020/11/100-days-in-obsidian-pt-6-final-observations/][100 Days in Obsidian Pt 6: Final Observations – Interdependent Thoughts]]
+************* [[https://www.zylstra.org/blog/2016/11/how-to-leave-evernote/][How to Leave Evernote? – Interdependent Thoughts]]
+*********** [[Evernote]] replaced by [[Zotero]] web capture
+************* [[https://www.zylstra.org/blog/2020/10/100-days-in-obsidian-pt-1/][100 Days in Obsidian, Pt. 1 – Interdependent Thoughts]]
+************* [[https://www.zylstra.org/blog/2016/11/how-to-leave-evernote/][How to Leave Evernote? – Interdependent Thoughts]]
+************* also [[Alternatives to Evernote for web page capture/annotation]]
+
+******* [[Obsidian Mermaid]]
+***** <<dendron>>
+      From: [[https://www.dendron.so/][Dendron]]
+
+      "hierarchy first" note system that has backlinks and other arbitrary links between notes.  Graphs and backlinks like [[Roam Research]], hierarchy like [[org-mode]].  Text based (markdown), open source, non necessarily web-served, like [[org-roam]] and [[obsidian]].  Built on VScode like [[Foam]].
+
+      Is "1% finished" on Nov 29, 2020.  Has several intro videos on [[https://www.dendron.so/][main page]].
+
+      Has the two window markdown and rendered markdown windows, like [[obsidian]] does at the moment (although obsidian plans to change this). 
+
+      Similar to the obsidian, and roam reasearch but not as polished as of yet.
+
+      Has some org-mode-esque structure editing
+
+      Image embedding is easy.
+
+      clicking on graph nodes bring you to note.
+
+***** <<Trilium>>
+      From: [[https://github.com/zadam/trilium/][trilium: Build your personal knowledge base with Trilium Notes]]
+      
+      Free software comparable perhps to [[Joplin]] but w/ more graph features.  Has Evernote import, FF and Chrome web clipper, markup based w/ rich editor, synchronization (a bit do-it-yourself, not convenient like [[Joplin]] OneDrive etc. syncing).
+
+      Windows/Linux and (unsupported) MacOS
+
+***** [[ZotNet]]
 ***** VUE
 ******* complete but ugly
 ******* paths are kind of interesting for display and presentation
@@ -11968,6 +12326,25 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ******* Compendium was cool in 2013; opensourced vers. seems dead
 ******* open source: [[https://github.com/CompendiumNG/CompendiumNG/graphs/contributors][CompendiumNG]]
 ******* [[org-roam, compendium-style interactive graph, org-journal but doom/mac]]
+***** Mermaid Diagrams
+
+      Simple markup for creating nicely rendered flow diagrams, etc.
+
+******* Language: [[https://medium.com/better-programming/mermaid-create-charts-and-diagrams-with-markdown-88a9e639ab14][Mermaid — Create Charts and Diagrams With Markdown-like Syntax.]]
+******* Very nice web editor w/ exports: [[https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbiAgQVtDaHJpc3RtYXNdIC0tPnxHZXQgbW9uZXl8IEIoR28gc2hvcHBpbmcpXG4gIEIgLS0-IEN7TGV0IG1lIHRoaW5rfVxuICBDIC0tPnxPbmV8IERbTGFwdG9wXVxuICBDIC0tPnxUd298IEVbaVBob25lXVxuICBDIC0tPnxUaHJlZXwgRltmYTpmYS1jYXIgQ2FyXVxuXHRcdCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In19][Mermaid live editor]]
+******* <<Emacs Mermaid>>
+
+        Bummer that you must install extra command line program: [[https://github.com/mermaid-js/mermaid-cli][GitHub mermaid-js/mermaid-cli]], which is [[https://github.com/mermaidjs/mermaid.cli/issues/73][problematic for Windows]].
+
+********* Emacs: [[https://github.com/abrochard/mermaid-mode][abrochard/mermaid-mode: Emacs major mode for working with mermaid graphs]]
+********* org mode: [[https://github.com/arnm/ob-mermaid][arnm/ob-mermaid: Generate mermaid diagrams within Emacs org-mode babel]]
+******* VScode Mermaid
+********* [[https://marketplace.visualstudio.com/items?itemName=vstirbu.vscode-mermaid-preview][Mermaid Preview - Visual Studio Marketplace]]
+
+******* <<Obsidian Mermaid>>
+
+        [[https://twitter.com/obsdmd/status/1281301410890551296?lang=en][Obsidian supports Mermaid Diagrams]]
+
 ***** [[PlantUML]] can draw them from emacs
 ***** _Videos_ about concept maps
 ******* [[https://www.youtube.com/watch?v=DdHG66opp5Y][JosephineMcMurry: Concept Mapping for Learning, Reflection, and Evaluation]]
@@ -11984,6 +12361,7 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
           2. group by moving them around
           3. compare by draw lines
 ********* But he says some people are faster on computers
+***** Emacs [[Concept map-like stuff: superlabel, dedicated targets, org-brain]]
 *** Model Driven Development (MDD)
 ***** [[http://dsmforum.org/events/MDD-TIF07/][MDD Forum]]
 ***** [[http://www.metacase.com/products.html][MetaEdit+]] Domain-specific modeling (DSM) environment
@@ -12002,7 +12380,12 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ***** <<PlantUML>>
 ******* [[https://plantuml.com/][PlantUML: Open-source tool that uses simple textual descriptions to draw beautiful UML]]
 ******* Not just UML's.  Can draw DAGs, mindmaps, timing diagrams and a ton of other things
-******* Can draw diagrams from Emacs using [[orgbabelhelper]] ([[org-diagram drawing with plantuml-babel.org]])
+******* <<Emacs PlantUML>>
+********* Can draw diagrams from Emacs using [[orgbabelhelper]] ([[org-diagram drawing with plantuml-babel.org]])
+******* VScode PlantUML
+
+        [[https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml][PlantUML - Visual Studio Marketplace]]
+
 *** <<Visualizing Bibliographies>>
 ***** [[http://www.qiqqa.com/][qiqqa]]: biblio tool, does visualizations, imports bibtex, pdfs
 
@@ -12057,13 +12440,14 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ***** [[Concept map-like stuff: superlabel, dedicated targets, org-brain]]
 ***** [[JabRef]]
 *** [[Relations and Visualization in Zotero]]
-* Document Annotation
+* <<Document Annotation>>
 *** [[https://beepb00p.xyz/annotating.html][How to annotate literally everything]]
 *** [[https://readwise.io/][Readwise]]: [[Kindle]], Instapaper, Pocket, iBooks, and more
 *** <<Hypothesis>> web page annotation
     From: [[https://web.hypothes.is/][Hypothesis]] 
 ***** [[https://www.reddit.com/r/RoamResearch/comments/emgob2/how_do_you_personally_integrate/][said]] to be a good way to get web pages into roam-research
 ***** could also be an [[Evernote]] alternative for web page capture
+***** [[Highlighting stored Zotero web page snapshots]]
 *** [[Alternatives to Evernote for web page capture/annotation]]
 * TRY <<Programming Practices>>
 *** Agile development
@@ -12158,7 +12542,32 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ***** [[Hypothesis]]
 ***** [[https://getpocket.com/][Pocket]]
 ***** [[https://www.instapaper.com/][Instapaper]]
+***** [[Replacing Evernote with Zotero]]
+***** <<Joplin>>
+      From: [[https://joplinapp.org/][Joplin - an open source note taking and to-do application with synchronisatio...]]
 
+      Emacs is probably a better notetaker, but Joplin does have a webclipper w/ Firefox and Chrome extensions.  These kind of work:
+
+      o can store full web page (but this can get messed up as w/ EN these days)
+      o syncs w/ OneDrive or other stuff
+      o has tags
+      o can import Evernote notes as markdown or html.  Works, even removing extra html cruft.  Cross-note links still go to Evernote, though.
+      o plain text markdown web pages in: C:\Users\scott\OneDrive\Apps\Joplin
+      o [[https://discourse.joplinapp.org/t/can-you-annotate-clipped-web-pages/2745/10][WYSIWYG highlighting not forthcoming]], can do manually in markdown
+      o There is an [[https://www.patreon.com/posts/34246624][experimental WYSIWYG editor]], but it doesn't highlight
+      o can also edit in external editor vscode seems to be default.  Emacs w/ dabbrevs could do the [[https://stackoverflow.com/questions/25104738/text-highlight-in-markdown][highlighting w/ html <mark> tags]], or if edit markdown notes, use built-in \==text==\ markdown notation (yellow only unless you add css or something)
+
+******* links/backlinks kinda but not quite there yet
+********* links to other notes [[https://joplinapp.org/markdown/#links-to-other-notes][possible but clunky]] (12/01/20)
+********* this was [[https://discourse.joplinapp.org/t/syntax-to-link-notes/5264/43][a work in progress]] on 12/01/20
+
+******* video: [[https://www.youtube.com/watch?v=0I_OPQQiYVU][Joplin Is An Open Source Alternative To Evernote - YouTube]]
+******* video: [[https://www.youtube.com/watch?v=oWvJOnFIigM&feature=emb_logo][Joplin Desktop: Take Notes With A Rich Markdown Editor - YouTube]]
+******* has dual markdown/rendered screens
+******* has desktop/mobile/terminal app
+******* video reviewer guy says you won't use this if you use [[Emacs]] and [[org-mode]]
+***** [[Trilium]]
+***** [[Replacing Evernote with Zotero]]
 * <<Kindle>>
 *** Exporting Kindle files to pdf
     See partial overview [[http://www.digitaltrends.com/mobile/how-to-convert-kindle-to-pdf/#!LpAlh][here]].
@@ -12178,7 +12587,6 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 
     o *Download books to be converted*.  They'll be (*.amz) files in
     
-
     c:/Users/scotto/Documents/My Kindle Content
 
     (see Kindle Reader tools->options->content in case this changes)
