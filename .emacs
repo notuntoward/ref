@@ -1981,7 +1981,7 @@ TODO: make this a general function."
  '(outshine-use-speed-commands t)
  '(package-check-signature 'allow-unsigned)
  '(package-selected-packages
-   '(helm-org-ql recursive-narrow org-ql org-superstar ivy-todo ivy-explorer counsel ivy-bibtex org-ref unfill xterm-color org-noter org-plus-contrib realgud highlight-indent-guides org-web-tools org-roam elpy quelpa paradox gnu-elpa-keyring-update deadgrep erefactor helm-org-rifle deft zotxt zotxt-emacs emacsql-sqlite3 cask wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing conda swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move))
+   '(org-roam-bibtex org-roam-server helm-org-ql recursive-narrow org-ql org-superstar ivy-todo ivy-explorer counsel ivy-bibtex org-ref unfill xterm-color org-noter org-plus-contrib realgud highlight-indent-guides org-web-tools org-roam elpy quelpa paradox gnu-elpa-keyring-update deadgrep erefactor helm-org-rifle deft zotxt zotxt-emacs emacsql-sqlite3 cask wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm elpygen ox-pandoc powershell helpful dired+ helm-descbinds smart-mode-line smartscan artbollocks-mode highlight-thing conda swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key smart-region beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-math-preview latex-pretty-symbols latex-preview-pane latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
@@ -2177,7 +2177,8 @@ TODO: make this a general function."
        bibfile_roam_fnms (list (expand-file-name
                                 "deepSolarDOE.bib" org_roam_dir)
                                (expand-file-name
-                                "newTechAdopt.bib" org_roam_dir))
+                                "newTechAdoption.bib"
+                                (expand-file-name "newTechAdoption" org_roam_dir)))
        bibfile_roam_pdf_dir (expand-file-name "papers" org_roam_dir)
        org_ref_notes_dir (expand-file-name "bib-notes" org_roam_dir)
        org_ref_notes_fn (expand-file-name "DOE_brainstorm.org" org_roam_dir)
@@ -2765,6 +2766,85 @@ This function avoids making messed up targets by exiting without doing anything 
 ;; (bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
 
 ;; ** Org-roam
+
+
+;; *** Org-roam basic config
+
+;; Started from:
+;; http://www.cesarolea.com/posts/taking-smart-notes/index.html
+
+(sdo/find-exec "dot" "graphviz needed by org-roam")
+
+(use-package org-roam
+  :hook (after-init . org-roam-mode) ; really slows down emacs startup
+  :config
+  (setq org-roam-db-location "~/org-roam.db")
+  ;;  (setq org-roam-db-location "~/Sync/Org/org-roam.db")
+  (require 'org-roam-protocol)
+  :custom (org-roam-directory org_roam_dir)
+  ;;:custom (org-roam-directory "~/Sync/Org/roam/")
+  :bind (:map org-roam-mode-map
+              (("C-c n l" . org-roam)
+               ("C-c n f" . org-roam-find-file)
+               ("C-c n g" . org-roam-graph)
+               ("C-c n c" . org-roam-capture))
+              :map org-mode-map
+              (("C-c n i" . org-roam-insert))
+              (("C-c n I" . org-roam-insert-immediate))))
+
+;; Much fancier than OR default graph viewer.  Clickable links, etc.
+;; To use you use:
+;;   M-x org-roam-server-mode
+;;   open browser to 127.0.0.1:8080
+(use-package org-roam-server
+  :config
+  (setq org-roam-server-host "127.0.0.1"
+        org-roam-server-port 8080
+        org-roam-server-authenticate nil
+        org-roam-server-export-inline-images t
+        org-roam-server-serve-files nil
+        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+        org-roam-server-network-poll t
+        org-roam-server-network-arrows nil
+        org-roam-server-network-label-truncate t
+        org-roam-server-network-label-truncate-length 60
+        org-roam-server-network-label-wrap-length 20))
+
+;; *** Deft
+
+;; starter config from: https://github.com/TimPerry/.emacs.d/blob/master/init.el
+(use-package deft
+  :bind ("<f6>" . deft)
+  :commands (deft)
+    :config
+    (setq deft-extensions '("org") ;; ignore anything but .org (good idea?)
+          deft-directory org_roam_dir
+          deft-recursive t))
+
+;; ;; deft as Used by org-roam author
+;; ;; https://blog.jethro.dev/posts/zettelkasten_with_org/
+;; ;; and others from org-roam searching.
+;; ;; From: https://rgoswami.me/posts/org-note-workflow/#search
+;; (use-package deft
+;;   :commands deft
+;;   :init
+;;   (setq deft-default-extension "org"
+;;         ;; de-couples filename and note title:
+;;         deft-use-filename-as-title nil
+;;         deft-use-filter-string-for-filename t
+;;         ;; disable auto-save
+;;         deft-auto-save-interval -1.0
+;;         ;; converts the filter string into a readable file-name using kebab-case:
+;;         deft-file-naming-rules
+;;         '((noslash . "-")
+;;           (nospace . "-")
+;;           (case-fn . downcase)))
+;;   :config
+;;   (add-to-list 'deft-extensions "tex")
+;;   )
+
+
+;; ** Org-roam (OLD, ORIGINAL)
 ;;
 ;; TODO remove leading date string from new note format 
 ;;
@@ -2830,9 +2910,9 @@ This function avoids making messed up targets by exiting without doing anything 
 ;;
 ;; Didn't work.  Calling +org-notes-tags-add inside a note gave the error: "user-error: Current buffer is not a note"
 
-;; *** Org-roam-bibtex
-
 ;; *** Bibfile files and directories
+
+;; see also Org-roam-bibtex
 
 ;; init these here so helm-bibtex and ivy-bibtex can share them
 (setq bibtex-completion-bibliography bibfile_list)
@@ -2894,15 +2974,15 @@ This function avoids making messed up targets by exiting without doing anything 
 ;;   (setq bibtex-completion-notes-symbol "✎"))
 
 
-;; ;; *** org-roam-bibtex
+;; *** Org-roam-bibtex
 
-;; ;; Handy: to open a cite note's pdf: C-c n a RET
-;; ;;From github page: https://github.com/org-roam/org-roam-bibtex
-;; (use-package org-roam-bibtex
-;;   :after org-roam
-;;   :hook (org-roam-mode . org-roam-bibtex-mode)
-;;   :bind (:map org-mode-map
-;;               (("C-c n a" . orb-note-actions))))
+;; Handy: to open a cite note's pdf: C-c n a RET
+;;From github page: https://github.com/org-roam/org-roam-bibtex
+(use-package org-roam-bibtex
+  :after org-roam
+  :hook (org-roam-mode . org-roam-bibtex-mode)
+  :bind (:map org-mode-map
+              (("C-c n a" . orb-note-actions))))
 
 
 ;; ;; NOTE the below don't take effect unless you've run M-x org-roam-bibtex-mode or customize it to ON
@@ -3367,36 +3447,7 @@ This function avoids making messed up targets by exiting without doing anything 
 ;;   :bind
 ;;   (("C-c r" . helm-rg)))
 
-;; *** Deft
-
-;; starter config from: https://github.com/TimPerry/.emacs.d/blob/master/init.el
-(use-package deft
-  :config  (setq deft-extensions '("txt" "tex" "org" ""))
-  (setq deft-directory org_roam_dir)
-  :bind ("<f6>" . deft))
-
-
-;; ;; deft is Used by org-roam author
-;; ;; https://blog.jethro.dev/posts/zettelkasten_with_org/
-;; ;; and others from org-roam searching.
-;; ;; From: https://rgoswami.me/posts/org-note-workflow/#search
-;; (use-package deft
-;;   :commands deft
-;;   :init
-;;   (setq deft-default-extension "org"
-;;         ;; de-couples filename and note title:
-;;         deft-use-filename-as-title nil
-;;         deft-use-filter-string-for-filename t
-;;         ;; disable auto-save
-;;         deft-auto-save-interval -1.0
-;;         ;; converts the filter string into a readable file-name using kebab-case:
-;;         deft-file-naming-rules
-;;         '((noslash . "-")
-;;           (nospace . "-")
-;;           (case-fn . downcase)))
-;;   :config
-;;   (add-to-list 'deft-extensions "tex")
-;;   )
+;; see also: Deft in org-roam section
 
 (use-package ag
   :after counsel
