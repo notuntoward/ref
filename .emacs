@@ -2832,6 +2832,7 @@ This function avoids making messed up targets by exiting without doing anything 
 (sdo/find-exec "dot" "graphviz needed by org-roam")
 
 (use-package org-roam
+  :diminish org-roam-mode
   :hook (after-init . org-roam-mode) ; really slows down emacs startup
   :config
   (setq org-roam-db-location "~/org-roam.db")
@@ -2904,6 +2905,7 @@ This function avoids making messed up targets by exiting without doing anything 
 ;; Handy: to open a cite note's pdf: C-c n a RET
 ;;From github page: https://github.com/org-roam/org-roam-bibtex
 (use-package org-roam-bibtex
+  :diminish org-roam-bibtex-mode
   :after org-roam
   :hook (org-roam-mode . org-roam-bibtex-mode)
   :bind (:map org-mode-map
