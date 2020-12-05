@@ -6,6 +6,12 @@
 ******* TRY <<org-capture>>
 ********* Tutorial Video: [[https://www.youtube.com/watch?v=qCdScs4YO8k][Emacs: Introduction to ORG-CAPTURE]]
 ********* [[bookmarklet for org-roam capture]]
+******* TRY <<orca>>
+        From: [[https://github.com/abo-abo/orca][GitHub - abo-abo/orca: ORg CApture]]
+
+********* capture web pages into emacs org-mode.
+********* Sorts capture destination by URL
+********* is use in [[org-roam]] example by [[org-roam workflow with Zotero, org-ref, org-noter, deft]]
 ******* TRY Ivy 
          From: [[https://www.youtube.com/watch?v=QcPenVmmQyM][Emacs: Ivy tips and tricks]]
          also seee: https://protesilaos.com/dotemacs/
@@ -1124,15 +1130,16 @@
 *********** [[https://blog.jethro.dev/posts/how_to_take_smart_notes_org/][How To Take Smart Notes With Org-mode]]
 *********** TODO <<org-roam workflow with Zotero, org-ref, org-noter, deft>>
             From: [[https://rgoswami.me/posts/org-note-workflow/][An Orgmode Note Workflow]] also discourse: [[https://org-roam.discourse.group/t/workflow-for-working-with-pdfs/103][Workflow for working with PDFs]] 
-*********** code doesn't work, maybe out of date)
-************* prefers one org-note per paper
-************* ... although he picked [[org-noter]] b/c it was better at multiple documents linked to one file
-************* [[helm-bibtex]] is configured to deal with single-pdf notes 
-************* TODO does search with deft, not e.g. deadgrep.  Why?
-************* .bib file auto-exported to [[Zotero]] seems like a temporary file.  Everything stays in Zotero
-************* seems that he only gits notes, but not zotero references
-************* Firefox and Chrome capture templates for web pages
-************* also [[Zotero]], [[org-ref]], and [[org-noter]]
+************* web capture to org-mode: [[orca]]
+************* code doesn't work, maybe out of date)
+*************** prefers one org-note per paper
+*************** ... although he picked [[org-noter]] b/c it was better at multiple documents linked to one file
+*************** [[helm-bibtex]] is configured to deal with single-pdf notes 
+*************** TODO does search with deft, not e.g. deadgrep.  Why?
+*************** .bib file auto-exported to [[Zotero]] seems like a temporary file.  Everything stays in Zotero
+*************** seems that he only gits notes, but not zotero references
+*************** Firefox and Chrome capture templates for web pages
+*************** also [[Zotero]], [[org-ref]], and [[org-noter]]
 ********* Comparison to similar packages
 *********** [[https://org-roam.readthedocs.io/en/master/comparison/][org-roam comparison with similar packages]]
 *********** [[BSAG moved from org-roam to Obsidian]]
@@ -1159,7 +1166,7 @@
 ************* extracting annotations from pdf
               From [[https://org-roam.discourse.group/t/does-anyone-have-a-workflow-for-associating-notes-with-a-zotero-stored-pdf/112/9?u=scotto][here]]:
 *************** [[org-noter]]: org-noter-create-skeleton gets pdf annotations
-*************** [[zotfile]]: gets pdf annotations, puts in zotero note
+*************** [[zotfile]]: gets pdf annotations, puts in zotero note, can mv pdf
 *********** <<OR cite notes + org-roam-bibtex + org-noter: Zotero not main ref DB>>
             From: org-roam-bibtex [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][video]] 
 
@@ -1187,6 +1194,7 @@
 *********** also [[org-roam and bibtex]]
 *********** also [[Zotero + Org Roam]]
 ********* [[Zotero + Org Roam]]
+********* [[how put paper abstracts into notes?]]
 ******* <<org-roam tags>>
         So far, I can't get this to work.  And anyway [[https://org-roam.discourse.group/t/tags-and-links-and-tags-oh-my/181/11][tags are way more limited now]] (6/5/20) than JK hopes to make them in the future.
 
@@ -1195,57 +1203,6 @@
 ********* [[https://org-roam.github.io/org-roam/manual/Tags.html#Tags][Tags (Org-roam User Manual)]] (not that helpful as of 6/5/20)
 ********* Recommended tagging system: [[https://fortelabs.co/blog/para/][The PARA Method: A Universal System for Organizing Digital Information]]
 ********* Utility funcs for [[https://d12frosted.io/posts/2020-06-10-org-roam-tags.html][Org-roam tags]], now merged w/ org-roam?
-******* TODO Issues to resolve before migrating to org-roam
-********* figure out how to use [[helm-bibtex]]
-*********** [[org-roam-bibtex]] seeems to be based on these
-********* is it going to last?
-********* install Doom Emacs since [[org-roam author migrated to Doom Emacs]]
-********* install emacs 27 first, since org-roam likes it?
-*********** also doesn't require imagemagic anymore.  Does that make pdf-tools easier?
-********* .emacs --> .emacs.d (or init.el?) so comply w/ new, standard emacs setup
-********* get latex working on Windows 1st?
-********* install emacs+org-roam in [[WSL]] to avoid all the windows problems 
-*********** 1st thing would be to install wsl2, whenever that's available 
-*********** can I call emacs in wsl2 from windows?  Associate files, on taskbar, etc.?
-*********** could still have windows emacs for simpler workflows
-********* can I install everything needed for [[org-roam on Windows]]
-********* do I want to migrate comment out of energytop.org
-*********** would break current "everything in one place" that I have now in JabRef
-*********** would need to write a script to make individual .org note files for each bibtex entry
-*********** can I get the nice pdf-in-emacs thing in org-noter? 
-********* would 5k+ little org files be slower or faster than athat I have now? 
-*********** it's possibly OK: [[https://org-roam.discourse.group/t/what-does-it-feel-like-to-work-with-10-000-notes-in-org-roam-benchmarking-org-roams-search-methods/227/3][what-does-it-feel-like-to-work-with-10-000-notes-in-org-roam]]
-********* link target searching
-
-          At least two problems:
-*********** how search throuh thousands of links when trying to make one?
-*********** how distinguish between paper (bibtex) links and general idea links?
-
-********* can I tolerate the Drawer thing?
-********* is there a way to capture graphics and images?
-********* get info out of books?
-********* get info out of evernote?
-********* [[Copying out of Kindle book]]?  
-          Also, is [[Kindle]] easier/better than books, and do I want to be locked into it?
-********* Is there one cite note per bibtex item?  *Probably*, maybe not for JK
-
-*********** Seems like one note per paper is common ([[https://github.com/org-roam/org-roam/issues/474][#474]]), but that people also want to be able so selectively link to citation notes or idea notes.  This function was added in [[https://github.com/org-roam/org-roam/pull/481][#481]], but I didn't read it carefully enough to understand how it works.  It may also have wound up in org-roam-bibtex.
-
-*********** [[org-roam workflow with Zotero, org-ref, org-noter, deft]] a full (but very buggy) is *one-note per pdf*.         
-*********** [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][video]]  on [[org-roam-bibtex]] demonstrates one note per bib entry.  One note per cite key looks nice b/c the back links uniquely tell you where it was cited.  Maybe nice because note backlinks and and <<backlinks from other cites notes are segregated>>.  I guess I also would like to segregate relationships between papers and relationships between notes.  Seems like notes would be more for collecting ideas, while papers might be more the raw ideas, which can be related, so that when you're writing a note (your own paper) and you make a cite, you see what other papers you should look at?.  
-
-*********** Yet Jethro Kuan himself, in his public braindump,  has multiple bibliography cite links in many notes.  It's not clear to me that he puts individual paper notes into org-roam, since he [[https://github.com/org-roam/org-roam/pull/481#issuecomment-615174636][considers the use case in PR481 to be niche]].  Seems like a note is instead an idea, which may be supported by papers and their citations.
-
-********* TODO is cite note name the bibtex key?   
-
-          I couldn't tell what people are naming their bib item cite notes.
-
-********* Will this get a "what's related" feature like [[Evernote]] clipper ha
-********* Do I want to start making an [[org-journal]]?
-******* TODO how put paper abstracts into notes?
-        
-        I want search to see abstracts so I can search like I do now in energy.bib.  But if there are tons of little org notes, it won't be able to do that?
-
 ******* <<Finding org-roam notes>>
 
         How to find your note again in a huge pile of OR notes?
@@ -1264,7 +1221,7 @@
           o lots of direct cross linking of noes
         o looking at not graph
         o [[https://org-roam.discourse.group/t/how-to-browse-your-notes-efficiently/1001/2?u=scotto][functions connecting]] to [[org-brain]]
-        o topic & related note discovery like in Evernote
+        o <<org-roam topic & related note discovery>> like in Evernote
 
 ********* [[org-ql]] (org search and query language)
 *********** it's very easy to add [[https://github.com/alphapapa/org-ql/issues/158#issuecomment-735299197][search for dedicated targets]]
@@ -1273,18 +1230,20 @@
 
           11/2020: people had thought about this but no firm idea had emerged.
           
+*********** _Very close_: [[https://hugocisneros.com/notes/][org-roam graph w/ machine-learned node size/color]] 
 *********** [[https://org-roam.discourse.group/t/application-of-graph-theory-to-roam-link-network/61/8][Application of Graph Theory to Roam link network - Graphing]]
 *********** [[https://org-roam.discourse.group/t/analysing-the-semantic-network/56][Analysing the semantic network - Graphing Capabilities - Org-roam]]
 *********** [[https://org-roam.discourse.group/t/rfc-interactive-visualization-and-explorer-tool/87/6][{RFC} Interactive Visualization and Explorer Tool]]
+*********** [[org-roam graph visualization]]
 ********* [[How to take Notes]]
 ******* multiple org-roam directories
         See: [[https://org-roam.readthedocs.io/en/master/configuration/][org-roam >> Having More Than One Org-roam Directory]]
 ******* <<org-roam graph visualization>>
 ********* [[https://org-roam.discourse.group/t/application-of-graph-theory-to-roam-link-network/61][Application of Graph Theory to Roam link network]]
-
 ********* [[https://org-roam.discourse.group/t/edge-direction-in-graph/923/6][Edge direction in graph - How To - Org-roam]]
 ********* make graph nodes clickable: [[https://org-roam.discourse.group/t/zero-to-emacs-and-org-roam-a-step-by-step-guide-on-windows-10/400/70?u=scotto][nobiot post]] 
 ********* [[org-roam, compendium-style interactive graph, org-journal but doom/mac]]
+********* [[org-roam topic & related note discovery]]
 ******* <<bookmarklet for org-roam capture>>
 ********* Is this just for storing web pages?
 ********* JK's own [[https://github.com/org-roam/org-roam/issues/217#issuecomment-595313500][bookmarklet and capture template]]
@@ -1333,7 +1292,7 @@
 *********** also [[org-download]]
 ********* <<org-roam, compendium-style interactive graph, org-journal but doom/mac>>
 
-          Fantastic clickable, graph that zooms in on cliques like [[Compendium]] did.  Can also move the nodes with your mouse.  Works through SVG graphs fed ot chrome via org-roam-server,  The setup for that part isn't explained in text but is mentioned [[https://youtu.be/gDAbpz98ooU?t=150][in the video]].
+          Fantastic clickable, graph that zooms in on cliques like [[Compendium]] did.  Can also move the nodes with your mouse.  Works through SVG graphs fed to chrome via org-roam-server,  The setup for that part isn't explained in text but is mentioned [[https://youtu.be/gDAbpz98ooU?t=150][in the video]].
 
           Those fancy graphs are a nice-to-have, but maybe getting citelinks and [[org-roam-bibtex]] to work is more important.
 
@@ -1341,21 +1300,20 @@
 *********** Demo video: [[https://www.youtube.com/watch?v=gDAbpz98ooU&feature=youtu.be][A Tour of Org Roam]]
 *********** Also [[Compendium]]
 ********* [[org-roam workflow with Zotero, org-ref, org-noter, deft]]
+********* [[http://www.cesarolea.com/posts/taking-smart-notes/index.html][Free Your Brain, Free Yourself and Become a Better Professional]]
 ********* also [[file and directory setups for org-roam]]
 ******* back/forward in org-roam file history: [[info:org-roam#Browsing History with winner-mode][use built-in winner mode]]
-******* <<convert 1 org file to many org-roam notes>> (energytop.org --> org-roam)
+******* <<Split 1 org file to many org-roam notes>> (energytop.org --> org-roam)
 ********* my discourse Q: [[https://org-roam.discourse.group/t/interoperability-between-org-roam-and-regular-org/715/8?u=scotto][Interoperability between Org Roam and regular Org]]
-********* my algorithm for energytop.org --> org-roam note conversion
+********* my plans for energytop.org --> org-roam note conversion
 
           Two jobs:  outline hierarchy to notes, and dedicated targets to notes.
 
           notes based solely on dedicated tags
-
           
           notes based soley on outine conversion
 
 ********* [[ox-json]]
-
 ********* [[org-ql]] (query langauge and search org-mode)
 ********* [[https://org-roam.discourse.group/t/creating-an-org-roam-note-from-an-existing-headline/978][Creating an org-roam note from an existing headline]]
 ********* [[https://ag91.github.io/blog/2020/11/12/write-org-roam-notes-via-elisp/][org-mode TODO to org-roam note file via Elisp]]
@@ -1383,7 +1341,7 @@
 *********** related
 *************  [[Org interface to online databases, PIM's etc.]]
 ************* [[Org-mode parsers]]
-********* [[convert 1 org file to many org-roam notes]]
+********* [[Split 1 org file to many org-roam notes]]
 ********* [[Org-mode parsers]]
 ******* <<make org-roam scan recursive directories>>
         This is so I can have a separate folder (bib-notes) for paper entries yet org-roam will find them.
@@ -1397,6 +1355,62 @@
 ******* also [[org-transclusion]]
 ******* also [[gkroam]]
 ******* also [[org-brain]]
+******* TODO Issues to resolve before migrating to org-roam
+********* figure out how to use [[helm-bibtex]]
+*********** [[org-roam-bibtex]] seeems to be based on these
+********* is it going to last?
+********* install Doom Emacs since [[org-roam author migrated to Doom Emacs]]
+********* install emacs 27 first, since org-roam likes it?
+*********** also doesn't require imagemagic anymore.  Does that make pdf-tools easier?
+********* .emacs --> .emacs.d (or init.el?) so comply w/ new, standard emacs setup
+********* get latex working on Windows 1st?
+********* install emacs+org-roam in [[WSL]] to avoid all the windows problems 
+*********** 1st thing would be to install wsl2, whenever that's available 
+*********** can I call emacs in wsl2 from windows?  Associate files, on taskbar, etc.?
+*********** could still have windows emacs for simpler workflows
+********* can I install everything needed for [[org-roam on Windows]]
+********* do I want to migrate comment out of energytop.org
+*********** would break current "everything in one place" that I have now in JabRef
+*********** would need to write a script to make individual .org note files for each bibtex entry
+*********** can I get the nice pdf-in-emacs thing in org-noter? 
+*********** also [[Split 1 org file to many org-roam notes]]
+********* would 5k+ little org files be slower or faster than athat I have now? 
+*********** it's possibly OK: [[https://org-roam.discourse.group/t/what-does-it-feel-like-to-work-with-10-000-notes-in-org-roam-benchmarking-org-roams-search-methods/227/3][what-does-it-feel-like-to-work-with-10-000-notes-in-org-roam]]
+********* link target searching
+
+          At least two problems:
+*********** how search throuh thousands of links when trying to make one?
+*********** how distinguish between paper (bibtex) links and general idea links?
+
+********* can I tolerate the Drawer thing?
+********* is there a way to capture graphics and images?
+********* get info out of books?
+********* get info out of evernote?
+********* [[Copying out of Kindle book]]?  
+          Also, is [[Kindle]] easier/better than books, and do I want to be locked into it?
+********* Is there one cite note per bibtex item?  *Probably*, maybe not for JK
+
+*********** Seems like one note per paper is common ([[https://github.com/org-roam/org-roam/issues/474][#474]]), but that people also want to be able so selectively link to citation notes or idea notes.  This function was added in [[https://github.com/org-roam/org-roam/pull/481][#481]], but I didn't read it carefully enough to understand how it works.  It may also have wound up in org-roam-bibtex.
+
+*********** [[org-roam workflow with Zotero, org-ref, org-noter, deft]] a full (but very buggy) is *one-note per pdf*.         
+*********** [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][video]]  on [[org-roam-bibtex]] demonstrates one note per bib entry.  One note per cite key looks nice b/c the back links uniquely tell you where it was cited.  Maybe nice because note backlinks and and <<backlinks from other cites notes are segregated>>.  I guess I also would like to segregate relationships between papers and relationships between notes.  Seems like notes would be more for collecting ideas, while papers might be more the raw ideas, which can be related, so that when you're writing a note (your own paper) and you make a cite, you see what other papers you should look at?.  
+
+*********** Yet Jethro Kuan himself, in his public braindump,  has multiple bibliography cite links in many notes.  It's not clear to me that he puts individual paper notes into org-roam, since he [[https://github.com/org-roam/org-roam/pull/481#issuecomment-615174636][considers the use case in PR481 to be niche]].  Seems like a note is instead an idea, which may be supported by papers and their citations.
+
+********* TODO is cite note name the bibtex key?   
+
+          I couldn't tell what people are naming their bib item cite notes.
+
+********* Will this get a "what's related" feature like [[Evernote]] clipper ha
+********* Do I want to start making an [[org-journal]]?
+********* also [[Split 1 org file to many org-roam notes]]
+********* TODO <<how put paper abstracts into notes?>>
+        
+          I want search to see abstracts so I can search like I do now in energy.bib.  But if there are tons of little org notes, it won't be able to do that?
+
+************ also [[org-roam and bibtex]]
+************ also [[org-roam-bibtex]]
+
 ***** <<org-brain>>
       Concept mapping in emacs, new project in March, 2017
 ******* [[https://github.com/Kungsgeten/org-brain][GitHub - Kungsgeten/org-brain: Org-mode wiki + concept-mapping]]
@@ -1492,7 +1506,7 @@
 ********* =cite:= partly lost: [[http://kitchingroup.cheme.cmu.edu/blog/category/pandoc/][jkitchin's org-cite test/modifications for pandoc]]
 ********* [[https://sylvaindeville.net/2015/07/17/writing-academic-papers-in-plain-text-with-markdown-and-jupyter-notebook/][This fellow]] makes [[http://iopscience.iop.org/1468-6996/16/4/043501][perfect papers]] with Pandoc.
 ********* TODO READ: [[https://kieranhealy.org/blog/archives/2014/01/23/plain-text/][Detailed description of a pandoc workflow]] using emacs (not orgmode)
-*********** has clickable links to bot figures and citations
+*********** has clickable links to both figures and citations
 *********** bib is nicely formated: he uses CSL; IEEE CSL is [[https://github.com/citation-style-language/styles][here]]
 ********* bibliography
 *********** style file (.csl)
@@ -1702,7 +1716,7 @@
 ********* can't edit issues inside of org-mode? See [[https://github.com/gongo/org-redmine/issues/19][bug #19]]
 ******* [[https://github.com/kametoku/orgmine][kametoku/orgmine: Emacs minor mode for org-mode with redmine integration]]
 ***** <<Save org file folding state>>: [[https://github.com/dandavison/org-fold/blob/master/org-fold.el][org-fold/org-fold.el at master · dandavison/org-fold]]
-***** [[Orgmode latex editing]]
+***** [[Org-mode latex editing]]
 ***** <<Org interface to online databases, PIM's etc.>>
 ******* <<Orger>>: org mode python interface to generic APIs e.g. roam research (read only from roam-research)
         Python library to download from large number of online services
@@ -1713,6 +1727,7 @@
 ********* also [[Org-mode parsers]] 
 ******* <<Org-mode interface to trello>>: [[https://github.com/org-trello/org-trello][org-trello]]
 ******* [[https://orgmode.org/worg/org-tools/index.html][Org Mode tools!]]
+********* [[org-mode parsers in Python]]
 ***** Hiding/Closing org :PROPERTIES: drawer
 ******* completely hiding them
         See: [[https://stackoverflow.com/questions/17478260/completely-hide-the-properties-drawer-in-org-mode][Completely hide the :PROPERTIES: drawer in org-mode]]
@@ -1720,6 +1735,11 @@
 ******* always starting them closed
 
         This is probably what I really want, but I can't find it.
+
+***** Lowercasing :PROPERTIES: and all the other keyword
+      Uppercase is OK now, in both [[https://scripter.co/org-keywords-lower-case][org-mode]] and [[https://github.com/org-roam/org-roam/issues/768][org-roam]]
+
+      Here's a [[https://scripter.co/org-keywords-lower-case][function]] to lower them in your org buffer
 
 ***** <<Presentation slides from org-mode>>
 ******* [[https://github.com/coldnew/org-ioslide][org-ioslide: Export org-mode to Google I/O HTML5 slide.]]
@@ -1761,10 +1781,11 @@
 ******* <<ox-json>>: org-mode to json
         From: [[https://github.com/jlumpe/ox-json/][jlumpe/ox-json: JSON export back end for Emacs Org mode]]
 ********* is used by [[pyorg]]
+********* may be useful to [[Split 1 org file to many org-roam notes]]
 ******* <<org-ql>>: query based org-searching
         From: [[https://github.com/alphapapa/org-ql][alphapapa/org-ql: An Org-mode query language, including search]]
 
-        Could use this for searching org-mode in general (maybe even better than swiper) or for parsing org-mode for export.  May be useful for exporting my giant energytop.org to org-roam.
+        Could use this for searching org-mode in general (maybe even better than swiper) or for parsing org-mode for export.  Has callable libraries which may be useful to [[Split 1 org file to many org-roam notes]]
         
 ******* [[Org-roam APIs]]
 ***** org-mode graphics
@@ -1932,6 +1953,7 @@
 ********* a couple fairly python funcs in here [[http://orgmode.org/worg/org-tools/][Org Mode tools!]]
 ********* [[http://members.optusnet.com.au/~charles57/GTD/orgnode.html][Orgnode - reading org-mode in Python]]: cmdlline tool from 2010
 ********* [[Orger]]
+********* [[Org interface to online databases, PIM's etc.]]
 ******* [[https://pandoc.org/org.html][Pandoc - Org-mode features and differences]]
 *** <<Neuron Zettelkasten>>
     Home: [[https://neuron.zettel.page/][Neuron Zettelkasten]]
@@ -11718,7 +11740,12 @@ Other problem is that JabRef uses "comments" and Zotero uses "notes"
 *********** alternative [[https://whk.name/cookbook/zoteroPandoc/][apparently]] is [[BetterBibtex]] but seems like s/ use both?
 *********** also [[zotxt-emacs]] melpa extension
 ********* <<zotfile>>: attach/rename/mv PDFs, hook to mobile, extract annotations
-          Can sync Zotero pdfs w/ annotations with another dir accessible by e.g. tablets (or, I suppose git, OneDrive, ...)
+          Can sync Zotero pdfs w/ annotations with another dir accessible by e.g. tablets (or, I suppose git, OneDrive, ...).
+
+          I belive this could get all pdfs into a single dir
+          o could zotero still see them then?  Could
+          o possible to put zotero-captured html in a different dir than pdfs?
+          o would this eliminate viewing pdfs in Android on zoo?  Do I care?
 
 *********** [[http://zotfile.com/#how-to-install--set-up-zotfile][ZotFile - Advanced PDF management for Zotero]]
 *********** <<rename pdfs to bibtex key with zotfile>>
@@ -12060,8 +12087,12 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 *** converting [[http://www.see-out.com/sandramau/bibpat.html][patent info to bibtex entries]] (google scholar also works)
 *** <<Latex and Emacs>>
 ***** emacs [[https://www.emacswiki.org/emacs/LaTeXPreviewPane][latex-preview-pane]] is handy for finding org-mode export problems
-***** Orgmode latex editing
+***** <<Org-mode latex editing>>
 ******* =cdlatex= bindings, starting with =C-c {=
+******* <<org-fragtog>>: auto latex display/edit
+        From: [[https://github.com/io12/org-fragtog/][org-fragtog: Automatically toggle org-mode latex fragment previ]]
+
+        Inline latex autorender, shows bare latex when the cursor is over it
 ******* see also: [[org-ref]]
 ***** smooth SVG equations in org mode
       From: [[https://www.guilhermesalome.com/posts/making-emacs-look-good.html][Making Emacs Look Good]]
@@ -12326,7 +12357,7 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ******* Compendium was cool in 2013; opensourced vers. seems dead
 ******* open source: [[https://github.com/CompendiumNG/CompendiumNG/graphs/contributors][CompendiumNG]]
 ******* [[org-roam, compendium-style interactive graph, org-journal but doom/mac]]
-***** Mermaid Diagrams
+***** <<Mermaid Diagrams>>
 
       Simple markup for creating nicely rendered flow diagrams, etc.
 
@@ -12564,7 +12595,8 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ******* video: [[https://www.youtube.com/watch?v=0I_OPQQiYVU][Joplin Is An Open Source Alternative To Evernote - YouTube]]
 ******* video: [[https://www.youtube.com/watch?v=oWvJOnFIigM&feature=emb_logo][Joplin Desktop: Take Notes With A Rich Markdown Editor - YouTube]]
 ******* has dual markdown/rendered screens
-******* has desktop/mobile/terminal app
+******* has desktop/mobile/terminal app.  Android app works.
+******* does [[Mermaid Diagrams]]
 ******* video reviewer guy says you won't use this if you use [[Emacs]] and [[org-mode]]
 ***** [[Trilium]]
 ***** [[Replacing Evernote with Zotero]]
