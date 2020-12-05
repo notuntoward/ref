@@ -722,6 +722,8 @@ TODO: make this a general function."
 
 ;; ** Indirect buffers
 
+;; *** Buffer Cloning
+
 (defun sdo/clone-indirect-buffer-other-frame (newname display-flag &optional norecord)
   "Like `clone-indirect-buffer' but display in another frame."
   (interactive
@@ -736,9 +738,65 @@ TODO: make this a general function."
 	 (value (clone-indirect-buffer newname nil norecord)))
     (switch-to-buffer-other-frame value)))
 
-(global-set-key (kbd "C-x c")   'clone-indirect-buffer) ; C-x C-c kills emacs
+;; I don't understand the difference between clone-indirect-buffer and clone-indirect-buffer-other-window
 (global-set-key (kbd "C-x 4 c") 'clone-indirect-buffer-other-window)
 (global-set-key (kbd "C-x 5 c") 'sdo/clone-indirect-buffer-other-frame)
+
+;; *** Org subtree Cloning
+
+;; common name for indirect org-tree buffers
+;; originally from: https://github.com/alphapapa/bufler.el/issues/13
+(defun sdo/org-tree-to-indirect-buffer-name ()
+  (let* ((heading (org-get-heading t t))
+         (level (org-outline-level))
+         (face (intern (concat "outline-" (number-to-string level))))
+         (heading-string (propertize (org-link-display-format heading)
+                                     'face face)))
+    (concat heading-string "::" (buffer-name))))
+
+;; Modifed version of: 
+;; https://github.com/alphapapa/bufler.el/issues/13
+(defun sdo/org-tree-to-indirect-buffer (&optional arg)
+  "Create indirect buffer and narrow it to current subtree.
+The buffer is named after the subtree heading, with the filename
+appended.  If a buffer by that name already exists, it is
+selected instead of creating a new buffer."
+  (interactive "P")
+  (let* ((new-buffer-p)
+         (pos (point))
+         (buffer-name (sdo/org-tree-to-indirect-buffer-name))
+         (new-buffer (or (get-buffer buffer-name)
+                         (prog1 (condition-case nil
+                                    (make-indirect-buffer
+                                     (current-buffer) buffer-name 'clone)
+                                  (error (make-indirect-buffer
+                                          (current-buffer) buffer-name)))
+                           (setq new-buffer-p t)))))
+    (switch-to-buffer new-buffer)
+    (when new-buffer-p
+      ;; I don't understand why setting the point again is necessary, but it is.
+      (goto-char pos)
+      (rename-buffer buffer-name)
+      (org-narrow-to-subtree))))
+
+(defun sdo/org-tree-to-indirect-buffer-new-frame (&optional arg)
+  "Create indirect buffer and narrow it to current subtree, put it in new frame.
+The buffer is named after the subtree heading, with the filename
+appended.  If a buffer by that name already exists, just print name (unless cursor is already on a cloned headline (TODO: fix this slight bug))."
+  (interactive "P")
+  
+  (let ((buffer-name (sdo/org-tree-to-indirect-buffer-name)))
+    (if (get-buffer buffer-name)
+        ;;(funcall-interactively 'switch-to-buffer buffer-name)
+        (message "Tree already cloned to buffer named: '%s'" buffer-name)
+      (progn                        
+        (call-interactively 'split-window-below)
+        (call-interactively 'sdo/org-tree-to-indirect-buffer)
+        (call-interactively 'tear-off-window)))))
+
+;; Emacs default is C-c C-x b; this extra binding mirrors buffer clones above
+(global-set-key (kbd "C-x 4 t") 'sdo/org-tree-to-indirect-buffer)
+(global-set-key (kbd "C-x 5 t") 'sdo/org-tree-to-indirect-buffer-new-frame)
 
 ;; * File Finding / Opening
 
@@ -1912,7 +1970,7 @@ TODO: make this a general function."
  '(org-agenda-files
    '("~/OneDrive - Clean Power Research/ref/DOE_brainstorm/20200605152244-test0.org" "c:/Users/scott/OneDrive - Clean Power Research/ref/tmp.org"))
  '(org-confirm-shell-links 'y-or-n-p)
- '(org-ctrl-k-protect-subtree t)
+ '(org-ctrl-k-protect-subtree 'error)
  '(org-cycle-include-plain-lists 'integrate)
  '(org-directory "~/")
  '(org-ellipsis "…")
@@ -2631,7 +2689,7 @@ This function avoids making messed up targets by exiting without doing anything 
 
 (use-package ox-minutes :defer 5) ; nice(er) ascii export, but slow start
 
-;; *** Pandoc
+;; *** Pandoc helper for org export
 
 (when (sdo/find-exec "pandoc" "Needed for org-mode export to .docx, etc.")
   (use-package ox-pandoc
@@ -2766,8 +2824,6 @@ This function avoids making messed up targets by exiting without doing anything 
 ;; (bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
 
 ;; ** Org-roam
-
-
 ;; *** Org-roam basic config
 
 ;; Started from:
@@ -2843,163 +2899,6 @@ This function avoids making messed up targets by exiting without doing anything 
 ;;   (add-to-list 'deft-extensions "tex")
 ;;   )
 
-
-;; ** Org-roam API
-
-;; From: https://org-roam.discourse.group/t/creating-an-org-roam-note-from-an-existing-headline/978
-(defun org-roam-create-note-from-headline ()
-  "Create an Org-roam note from the current headline and jump to it.
-
-Normally, insert the headline’s title using the ’#title:’ file-level property
-and delete the Org-mode headline. However, if the current headline has a
-Org-mode properties drawer already, keep the headline and don’t insert
-‘#+title:'. Org-roam can extract the title from both kinds of notes, but using
-‘#+title:’ is a bit cleaner for a short note, which Org-roam encourages."
-  (interactive)
-  (let ((title (nth 4 (org-heading-components)))
-        (has-properties (org-get-property-block)))
-    (org-cut-subtree)
-    (org-roam-find-file title nil nil 'no-confirm)
-    (org-paste-subtree)
-    (unless has-properties
-      (kill-line)
-      (while (outline-next-heading)
-        (org-promote)))
-    (goto-char (point-min))
-    (when has-properties
-      (kill-line)
-      (kill-line))))
-
-;; ** Org-roam (OLD, ORIGINAL)
-;;
-;; TODO remove leading date string from new note format 
-;;
-;; ;; *** Org-roam basic config
-;; ;;As of 5/23/20, the best docs are in emacs info or here: https://org-roam.github.io/org-roam/manual/
-
-;; (sdo/find-exec "dot" "graphviz needed by org-roam")
-
-;; ;; If using sqlite3 (only thing I could get working on Windows), then, as of 5/23/20, must edit org-roam-db.el and recompile every time it org-roam updates.  Instructions are:
-;; ;; 1. In Emacs, install the emacsql-sqlite3 package
-;; ;; 2. Modify org-roam-db.el:
-;; ;;    - Replace (require 'emacsql-sqlite) with (require 'emacsql-sqlite3)
-;; ;;    - Comment/deactivate the complete (defconst org-roam-db--sqlite-available-p ... )
-;; ;;    -In (defun org-roam-db ..., replace emacsql-sqlite with emacsql-sqlite3
-;; ;; 3. Compile org-roam-db.el (keep modified .el file in same dir too)
-;; ;; From: https://org-roam.readthedocs.io/en/master/installation/
-
-;; (sdo/find-exec "sqlite3" "sqlite3 needed by org-roam")
-;; (use-package emacsql-sqlite3)
-
-;; ;; my config, bugfixed version of:
-;; ;; https://org-roam.readthedocs.io/en/master/installation/
-;; (use-package org-roam
-;;   :custom
-;;   ;;  (org-roam-directory "~/tmp/org-roam")
-;;   ;; JK's OR brain
-;;   ;;  (org-roam-directory "~/tmp/braindump-master/org")
-;;   (org-roam-directory org_roam_dir)
-;;   ;; Put org-roam.db outside of OneDrive, avoids sync problems across machines
-;;   (org-roam-db-location "~/org-roam.db")
-;;   ;; Note that Windows "find" interferes with linux find, so use rg instead
-;;   ;; HOWEVER, the rg interface broke the graph, as of 5/29/20
-;;   ;; But maybe 'rg' is always ignored when on Windows now?
-;;   (org-roam-list-files-commands '(rg)) ;; use ripgrip, expand emacs to see graph
-;;   ;;  (org-roam-list-files-commands nil) ;; elisp default, but rg now
-;;   ;;  works on Windows
-
-;;   :config (org-roam-mode)
-;;   :bind (:map org-roam-mode-map
-;;               (("C-c n l" . org-roam)
-;;                ("C-c n f" . org-roam-find-file)
-;;                ("C-c n d" . org-roam-find-directory)
-;;                ("C-c n j" . org-roam-jump-to-index)
-;;                ("C-c n b" . org-roam-switch-to-buffer)
-;;                ("C-c n g" . org-roam-graph)
-;;                ("C-c n r" . org-roam-buffer-toggle-display))
-;;               :map org-mode-map
-;;               (("C-c n i" . org-roam-insert))))
-
-;; I don't know how to activate it like the github animated git shows
-;; (here: https://github.com/org-roam/company-org-roam)
-;; (use-package company-org-roam
-;;   :ensure t
-;;   ;; You may want to pin in case the version from stable.melpa.org is not working 
-;;   ; :pin melpa
-;;   :config
-;;   (push 'company-org-roam company-backends))
-
-;; *** Org-roam-tags
-
-;; From: https://gist.github.com/d12frosted/4a55f3d072a813159c1d7b31c21bac9a
-;; Docs: https://d12frosted.io/posts/2020-06-10-org-roam-tags.html
-;;
-;; Didn't work.  Calling +org-notes-tags-add inside a note gave the error: "user-error: Current buffer is not a note"
-
-;; *** Bibfile files and directories
-
-;; see also Org-roam-bibtex
-
-;; init these here so helm-bibtex and ivy-bibtex can share them
-(setq bibtex-completion-bibliography bibfile_list)
-(setq bibtex-completion-library-path bibpdf_list)
-;; Find pdf w/ JabRef/Zotero fields
-(setq bibtex-completion-pdf-field "file")
-;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
-(setq bibtex-completion-notes-path (expand-file-name "bib-notes" org_roam_dir))
-
-;; *** Helm-bibtex
-;; Seems to be rquired for org-roam-bibtex
-
-(use-package helm-bibtex
-  :bind*
-  ("C-c C-h" . helm-bibtex))
-
-;; *** ivy-bibtex
-
-;; BSAG has dropped org-roam now.  I thought removing migh fix my ivy
-;; problem but it didn't.  Anyway, maybe there are newer ivy-bibtex
-;; setups that I could revisit if I revisitorg-roam.
-
-;; ;; BSAG uses this instead of helm.  This is part from her:
-;; ;; https://mail.google.com/mail/u/0/#sent/FFNDWMkpMkrFWrkjBSSGpHcJSdSZHJGb
-;; ;; and part from:
-;; ;; https://people.umass.edu/weikaichen/zh/post/emacs-academic-tools/
-;; (use-package ivy-bibtex
-;;   :ensure t
-;;   :bind*
-;;   ("C-c C-r" . ivy-bibtex)
-;;   :config
-;;   ;; https://github.com/tmalsburg/helm-bibtex
-;;   (setq bibtex-completion-additional-search-fields '(journal booktitle))
-;;   ;; TODO good extra info but makes entry list scraggly.  Fix that.
-;;   (setq bibtex-completion-display-formats
-;;         '((article       . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${journal:40}")
-;;           (inbook        . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
-;;           (incollection  . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-;;           (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-;;           (t             . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*}")))
-;;   (setq ivy-bibtex-default-action #'ivy-bibtex-insert-citation)
-;;   (ivy-set-actions
-;;    'ivy-bibtex
-;;    '(("p" ivy-bibtex-open-any "Open PDF, URL, or DOI")
-;;      ("e" ivy-bibtex-edit-notes "Edit notes")))
-;;   ;; from BSAG
-;;   (defun bibtex-completion-open-pdf-external (keys &optional fallback-action)
-;;     (let ((bibtex-completion-pdf-open-function
-;;            (lambda (fpath) (async-start-process "open" "open" "open" fpath))))
-;;       (bibtex-completion-open-pdf keys fallback-action)))
-
-;;   (ivy-bibtex-ivify-action bibtex-completion-open-pdf-external ivy-bibtex-open-pdf-external)
-
-;;   (ivy-add-actions
-;;    'ivy-bibtex
-;;    '(("P" ivy-bibtex-open-pdf-external "Open PDF file in external viewer (if present)")))
-;;   ;; TODO too busy?
-;;   (setq bibtex-completion-pdf-symbol "⌘")
-;;   (setq bibtex-completion-notes-symbol "✎"))
-
-
 ;; *** Org-roam-bibtex
 
 ;; Handy: to open a cite note's pdf: C-c n a RET
@@ -3032,61 +2931,6 @@ Org-mode properties drawer already, keep the headline and don’t insert
 ;; *${title}*
 ;; ${author-or-editor} (${year})
 
-
-
-;; * Narrowing
-
-;; Default emacs narrowing has too many keys: Could wipe them out and
-;; make it a toggle as in  http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html (has
-;; a bunch of other toggles, maybe handy but I'll stick w/ this for
-;; now) Or could just addd a toggle and leave the old keys in place,
-;; as I'm doing.  Also, toggling with recursive-narrow instead of
-;; endlessparens narrow-or-widen function:
-;;
-;; Note that dired-narrow is different, narrows based on search terms
-;;
-;; endlessparens' toggler.  Seems like commenters like
-;; recursive-narrow better
-;;
-;; (defun narrow-or-widen-dwim (p)
-;;   "Widen if buffer is narrowed, narrow-dwim otherwise.
-;; Dwim means: region, org-src-block, org-subtree, or
-;; defun, whichever applies first. Narrowing to
-;; org-src-block actually calls `org-edit-src-code'.
-
-;; With prefix P, don't widen, just narrow even if buffer
-;; is already narrowed."
-;;   (interactive "P")
-;;   (declare (interactive-only))
-;;   (cond ((and (buffer-narrowed-p) (not p)) (widen))
-;; 	((region-active-p)
-;; 	 (narrow-to-region (region-beginning)
-;; 			   (region-end)))
-;; 	((derived-mode-p 'org-mode)
-;; 	 ;; `org-edit-src-code' is not a real narrowing
-;; 	 ;; command. Remove this first conditional if
-;; 	 ;; you don't want it.
-;; 	 (cond ((ignore-errors (org-edit-src-code) t)
-;; 		(delete-other-windows))
-;; 	       ((ignore-errors (org-narrow-to-block) t))
-;; 	       (t (org-narrow-to-subtree))))
-;; 	((derived-mode-p 'latex-mode)
-;; 	 (LaTeX-narrow-to-environment))
-;; 	(t (narrow-to-defun))))
-;; ;; TODO Idea is to have only a toggle.  Wipes out Emacs' entire
-;; ;; narrowing keymap but not in org-mode, which overwrites this, somehow.
-;; (define-key ctl-x-map "n" #'narrow-or-widen-dwim)
-
-;; Commenters act like recursive-narrow is an improvement over endlessparens'
-;; narrow-or-widen-dwim but I'm not sure why.  Maybe narrowed result maintains top headline indent?
-(use-package recursive-narrow
-  :after org)
-
-;; Global narrowing binding is same as in org-mode
-(global-set-key (kbd "C-x n n") 'recursive-narrow-or-widen-dwim)
-;; Could have wiped out all Ctl-x n funcs (below) but this would have
-;; wiped out some org-roam funcs that I haven't tried yet.
-;;(define-key ctl-x-map "n" #'recursive-narrow-or-widen-dwim)
 
 ;; ;; put citekey in title of bib notes, title in note.  This can get much fancier and can have multiple templates
 ;;  (setq orb-templates
@@ -3164,6 +3008,124 @@ Org-mode properties drawer already, keep the headline and don’t insert
 ;;
 ;; or pieces of this:
 ;; https://rgoswami.me/posts/org-note-workflow/
+
+
+;; *** Org-roam-tags
+
+;; From: https://gist.github.com/d12frosted/4a55f3d072a813159c1d7b31c21bac9a
+;; Docs: https://d12frosted.io/posts/2020-06-10-org-roam-tags.html
+;;
+;; Didn't work.  Calling +org-notes-tags-add inside a note gave the error: "user-error: Current buffer is not a note"
+
+;; *** Org-roam-company
+
+;; Popup link name completion.  Without this, it seems like the default is swiper.  Must run M-x company-mode to run it with M-x company org-roam.
+;;  When run it, just get a long list of completions, doesnt narrow as you type.
+;; (use-package company-org-roam
+;;   :config
+;;   (push 'company-org-roam company-backends))
+
+;; *** Org-roam debugging code
+
+;; The "Selecting deleted buffer" error I see.
+;; issue: https://github.com/org-roam/org-roam/issues/1289
+
+;; (defun emacsql-sqlite3--proc-sentinel (proc _change)
+;;   "Called each time when PROC status changed."
+;;   (unless (process-live-p proc)
+;;     (let ((buf (process-buffer proc)))
+;;       (when (buffer-live-p buf)
+;;         (switch-to-buffer buf)))))
+
+;; *** Org-roam API
+;;
+;; From:
+;; https://org-roam.discourse.group/t/creating-an-org-roam-note-from-an-existing-headline/978
+;; This works!
+(defun org-roam-create-note-from-headline ()
+  "Create an Org-roam note from the current headline and jump to it.
+
+Normally, insert the headline’s title using the ’#title:’ file-level property
+and delete the Org-mode headline. However, if the current headline has a
+Org-mode properties drawer already, keep the headline and don’t insert
+‘#+title:'. Org-roam can extract the title from both kinds of notes, but using
+‘#+title:’ is a bit cleaner for a short note, which Org-roam encourages."
+  (interactive)
+  (let ((title (nth 4 (org-heading-components)))
+        (has-properties (org-get-property-block)))
+    (org-cut-subtree)
+    (org-roam-find-file title nil nil 'no-confirm)
+    (org-paste-subtree)
+    (unless has-properties
+      (kill-line)
+      (while (outline-next-heading)
+        (org-promote)))
+    (goto-char (point-min))
+    (when has-properties
+      (kill-line)
+      (kill-line))))
+
+
+
+
+;; ** Org-roam (OLD, ORIGINAL)
+;;
+;; TODO remove leading date string from new note format 
+;;
+;; ;; *** Org-roam basic config
+;; ;;As of 5/23/20, the best docs are in emacs info or here: https://org-roam.github.io/org-roam/manual/
+
+;; (sdo/find-exec "dot" "graphviz needed by org-roam")
+
+;; ;; If using sqlite3 (only thing I could get working on Windows), then, as of 5/23/20, must edit org-roam-db.el and recompile every time it org-roam updates.  Instructions are:
+;; ;; 1. In Emacs, install the emacsql-sqlite3 package
+;; ;; 2. Modify org-roam-db.el:
+;; ;;    - Replace (require 'emacsql-sqlite) with (require 'emacsql-sqlite3)
+;; ;;    - Comment/deactivate the complete (defconst org-roam-db--sqlite-available-p ... )
+;; ;;    -In (defun org-roam-db ..., replace emacsql-sqlite with emacsql-sqlite3
+;; ;; 3. Compile org-roam-db.el (keep modified .el file in same dir too)
+;; ;; From: https://org-roam.readthedocs.io/en/master/installation/
+
+;; (sdo/find-exec "sqlite3" "sqlite3 needed by org-roam")
+;; (use-package emacsql-sqlite3)
+
+;; ;; my config, bugfixed version of:
+;; ;; https://org-roam.readthedocs.io/en/master/installation/
+;; (use-package org-roam
+;;   :custom
+;;   ;;  (org-roam-directory "~/tmp/org-roam")
+;;   ;; JK's OR brain
+;;   ;;  (org-roam-directory "~/tmp/braindump-master/org")
+;;   (org-roam-directory org_roam_dir)
+;;   ;; Put org-roam.db outside of OneDrive, avoids sync problems across machines
+;;   (org-roam-db-location "~/org-roam.db")
+;;   ;; Note that Windows "find" interferes with linux find, so use rg instead
+;;   ;; HOWEVER, the rg interface broke the graph, as of 5/29/20
+;;   ;; But maybe 'rg' is always ignored when on Windows now?
+;;   (org-roam-list-files-commands '(rg)) ;; use ripgrip, expand emacs to see graph
+;;   ;;  (org-roam-list-files-commands nil) ;; elisp default, but rg now
+;;   ;;  works on Windows
+
+;;   :config (org-roam-mode)
+;;   :bind (:map org-roam-mode-map
+;;               (("C-c n l" . org-roam)
+;;                ("C-c n f" . org-roam-find-file)
+;;                ("C-c n d" . org-roam-find-directory)
+;;                ("C-c n j" . org-roam-jump-to-index)
+;;                ("C-c n b" . org-roam-switch-to-buffer)
+;;                ("C-c n g" . org-roam-graph)
+;;                ("C-c n r" . org-roam-buffer-toggle-display))
+;;               :map org-mode-map
+;;               (("C-c n i" . org-roam-insert))))
+
+;; I don't know how to activate it like the github animated git shows
+;; (here: https://github.com/org-roam/company-org-roam)
+;; (use-package company-org-roam
+;;   :ensure t
+;;   ;; You may want to pin in case the version from stable.melpa.org is not working 
+;;   ; :pin melpa
+;;   :config
+;;   (push 'company-org-roam company-backends))
 
 ;; *** Org-roam-rgoswami
 
@@ -3378,15 +3340,69 @@ Org-mode properties drawer already, keep the headline and don’t insert
 ;;                ))
 ;; ;;)
 
+;; ** Bibfile files and directories
 
+;; see also Org-roam-bibtex
 
-;; *** Org-roam-company
+;; init these here so helm-bibtex and ivy-bibtex can share them
+(setq bibtex-completion-bibliography bibfile_list)
+(setq bibtex-completion-library-path bibpdf_list)
+;; Find pdf w/ JabRef/Zotero fields
+(setq bibtex-completion-pdf-field "file")
+;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
+(setq bibtex-completion-notes-path (expand-file-name "bib-notes" org_roam_dir))
 
-;; Popup link name completion.  Without this, it seems like the default is swiper.  Must run M-x company-mode to run it with M-x company org-roam.
-;;  When run it, just get a long list of completions, doesnt narrow as you type.
-;; (use-package company-org-roam
+;; *** Helm-bibtex
+;; Seems to be rquired for org-roam-bibtex
+
+(use-package helm-bibtex
+  :bind*
+  ("C-c C-h" . helm-bibtex))
+
+;; *** ivy-bibtex
+
+;; BSAG has dropped org-roam now.  I thought removing migh fix my ivy
+;; problem but it didn't.  Anyway, maybe there are newer ivy-bibtex
+;; setups that I could revisit if I revisitorg-roam.
+
+;; ;; BSAG uses this instead of helm.  This is part from her:
+;; ;; https://mail.google.com/mail/u/0/#sent/FFNDWMkpMkrFWrkjBSSGpHcJSdSZHJGb
+;; ;; and part from:
+;; ;; https://people.umass.edu/weikaichen/zh/post/emacs-academic-tools/
+;; (use-package ivy-bibtex
+;;   :ensure t
+;;   :bind*
+;;   ("C-c C-r" . ivy-bibtex)
 ;;   :config
-;;   (push 'company-org-roam company-backends))
+;;   ;; https://github.com/tmalsburg/helm-bibtex
+;;   (setq bibtex-completion-additional-search-fields '(journal booktitle))
+;;   ;; TODO good extra info but makes entry list scraggly.  Fix that.
+;;   (setq bibtex-completion-display-formats
+;;         '((article       . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${journal:40}")
+;;           (inbook        . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
+;;           (incollection  . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+;;           (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+;;           (t             . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*}")))
+;;   (setq ivy-bibtex-default-action #'ivy-bibtex-insert-citation)
+;;   (ivy-set-actions
+;;    'ivy-bibtex
+;;    '(("p" ivy-bibtex-open-any "Open PDF, URL, or DOI")
+;;      ("e" ivy-bibtex-edit-notes "Edit notes")))
+;;   ;; from BSAG
+;;   (defun bibtex-completion-open-pdf-external (keys &optional fallback-action)
+;;     (let ((bibtex-completion-pdf-open-function
+;;            (lambda (fpath) (async-start-process "open" "open" "open" fpath))))
+;;       (bibtex-completion-open-pdf keys fallback-action)))
+
+;;   (ivy-bibtex-ivify-action bibtex-completion-open-pdf-external ivy-bibtex-open-pdf-external)
+
+;;   (ivy-add-actions
+;;    'ivy-bibtex
+;;    '(("P" ivy-bibtex-open-pdf-external "Open PDF file in external viewer (if present)")))
+;;   ;; TODO too busy?
+;;   (setq bibtex-completion-pdf-symbol "⌘")
+;;   (setq bibtex-completion-notes-symbol "✎"))
+
 
 ;; ** Org-noter
 ;;
@@ -3425,6 +3441,62 @@ Org-mode properties drawer already, keep the headline and don’t insert
 ;; A fork/enhancement of defunct org-pdfview, has big future plans, recent commits (April 2020).  Has some kinda (temporary?) integrate with org-noter.
 ;; TODO: try it
 ;; https://github.com/fuxialexander/org-pdftools
+
+;; * Narrowing
+
+;; Default emacs narrowing has too many keys: Could wipe them out and
+;; make it a toggle as in  http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html (has
+;; a bunch of other toggles, maybe handy but I'll stick w/ this for
+;; now) Or could just addd a toggle and leave the old keys in place,
+;; as I'm doing.  Also, toggling with recursive-narrow instead of
+;; endlessparens narrow-or-widen function:
+;;
+;; Note that dired-narrow is different, narrows based on search terms
+;;
+;; endlessparens' toggler.  Seems like commenters like
+;; recursive-narrow better
+;;
+;; (defun narrow-or-widen-dwim (p)
+;;   "Widen if buffer is narrowed, narrow-dwim otherwise.
+;; Dwim means: region, org-src-block, org-subtree, or
+;; defun, whichever applies first. Narrowing to
+;; org-src-block actually calls `org-edit-src-code'.
+
+;; With prefix P, don't widen, just narrow even if buffer
+;; is already narrowed."
+;;   (interactive "P")
+;;   (declare (interactive-only))
+;;   (cond ((and (buffer-narrowed-p) (not p)) (widen))
+;; 	((region-active-p)
+;; 	 (narrow-to-region (region-beginning)
+;; 			   (region-end)))
+;; 	((derived-mode-p 'org-mode)
+;; 	 ;; `org-edit-src-code' is not a real narrowing
+;; 	 ;; command. Remove this first conditional if
+;; 	 ;; you don't want it.
+;; 	 (cond ((ignore-errors (org-edit-src-code) t)
+;; 		(delete-other-windows))
+;; 	       ((ignore-errors (org-narrow-to-block) t))
+;; 	       (t (org-narrow-to-subtree))))
+;; 	((derived-mode-p 'latex-mode)
+;; 	 (LaTeX-narrow-to-environment))
+;; 	(t (narrow-to-defun))))
+;; ;; TODO Idea is to have only a toggle.  Wipes out Emacs' entire
+;; ;; narrowing keymap but not in org-mode, which overwrites this, somehow.
+;; (define-key ctl-x-map "n" #'narrow-or-widen-dwim)
+
+;; Commenters act like recursive-narrow is an improvement over endlessparens'
+;; narrow-or-widen-dwim but I'm not sure why.  Maybe narrowed result maintains top headline indent?
+(use-package recursive-narrow
+  :after org)
+
+;; TODO put binding below inside recursive-narrow use-package
+;;
+;; Global narrowing binding is same as in org-mode
+(global-set-key (kbd "C-x n n") 'recursive-narrow-or-widen-dwim)
+;; Could have wiped out all Ctl-x n funcs (below) but this would have
+;; wiped out some org-roam funcs that I haven't tried yet.
+;;(define-key ctl-x-map "n" #'recursive-narrow-or-widen-dwim)
 
 ;; * Search and Replace (see also Swiper/Ivy)
 ;; ** Web Search
@@ -3649,13 +3721,15 @@ Org-mode properties drawer already, keep the headline and don’t insert
 ;; This causes find-file to crash when in a scratch buffer, dired, and
 ;; a few other places.  It works fine or .org, .emacs and other
 ;; programming files.
+;; It might have been causing org-roam problems too, so I commented it
+;; out now.
 ;; Bug Report: https://github.com/clemera/ivy-explorer/issues/16
  ; ido-grid-mode for ivy: C-f/b/p/n/a/e navigate 
-(use-package ivy-explorer
-  :after ivy
-  :diminish ivy-explorer-mode
-  :init
-  (ivy-explorer-mode 1))
+;; (use-package ivy-explorer
+;;   :after ivy
+;;   :diminish ivy-explorer-mode
+;;   :init
+;;   (ivy-explorer-mode 1))
 
 ;; from: https://github.com/abo-abo/swiper/issues/2021
 ;;; Ivy Hydra
