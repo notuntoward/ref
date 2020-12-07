@@ -145,7 +145,7 @@
 
         Related to [[highlight symbol]]
 
-******* TRY Search for 'ß' with 's'
+******* ACCEPTED Search for 'ß' with 's'
         See StackXchange answer to my question [[https://emacs.stackexchange.com/questions/32321/char-fold-search-match-for-german-eszett-%25c3%259f/38696][here]].
 
         Also, I promised to report this as an emacs bug.
@@ -382,6 +382,10 @@
 *********** tools needed: [[Elisp]]°
 ********* TRY [[https://github.com/caiorss/org-wiki][caiorss/org-wiki: Wiki for Emacs org-mode built on top of Emacs org-...]]
 ********* TRY [[https://www.emacswiki.org/emacs/Hyperbole][EmacsWiki: Hyperbole]]
+********* <<graphviz in Emacs>>
+*********** [[https://github.com/ppareit/graphviz-dot-mode][GitHub - ppareit/graphviz-dot-mode: Emacs mode for the DOT language]]
+*********** [[graphviz]]
+********* [[Emacs Mermaid]]
 ********* See [[Knowledge as Graphs]]
 ******* TRY [[http://kitchingroup.cheme.cmu.edu/blog/2017/04/15/A-new-org-mode-exporter-to-Word-for-scimax/][A new org-mode exporter to Word for scimax]]
 ******* TRY [[Saving/restoring window sessions]]
@@ -1123,7 +1127,6 @@
 ************* [[org-download]]
 *********** <<org-roam author likes org-journal>>
             From: [[https://blog.jethro.dev/posts/how_to_take_smart_notes_org/][How To Take Smart Notes With Org-mode]]
-  [[Zotero + Org Roam]]
 ********* TODO org-roam tutorials & manual
 *********** [[https://org-roam.github.io/org-roam/manual/][Org-roam User Manual]]: as up-to-date as info
 *********** [[https://org-roam.readthedocs.io/en/master/][org-roam home]]
@@ -1203,6 +1206,7 @@
 ********* [[https://org-roam.github.io/org-roam/manual/Tags.html#Tags][Tags (Org-roam User Manual)]] (not that helpful as of 6/5/20)
 ********* Recommended tagging system: [[https://fortelabs.co/blog/para/][The PARA Method: A Universal System for Organizing Digital Information]]
 ********* Utility funcs for [[https://d12frosted.io/posts/2020-06-10-org-roam-tags.html][Org-roam tags]], now merged w/ org-roam?
+********* [[Finding org-roam notes]]
 ******* <<Finding org-roam notes>>
 
         How to find your note again in a huge pile of OR notes?
@@ -1222,20 +1226,24 @@
         o looking at not graph
         o [[https://org-roam.discourse.group/t/how-to-browse-your-notes-efficiently/1001/2?u=scotto][functions connecting]] to [[org-brain]]
         o <<org-roam topic & related note discovery>> like in Evernote
+*********** [[org-ql]] (org search and query language)
+************* it's very easy to add [[https://github.com/alphapapa/org-ql/issues/158#issuecomment-735299197][search for dedicated targets]]
+*********** [[https://org-roam.discourse.group/t/how-to-browse-your-notes-efficiently/1001/3][How to browse your notes efficiently]] (org-roam discourse topic)
+*********** <<topic discovery and link suggestion in org-roam>>
 
-********* [[org-ql]] (org search and query language)
-*********** it's very easy to add [[https://github.com/alphapapa/org-ql/issues/158#issuecomment-735299197][search for dedicated targets]]
-********* [[https://org-roam.discourse.group/t/how-to-browse-your-notes-efficiently/1001/3][How to browse your notes efficiently]] (org-roam discourse topic)
-********* topic discovery and link suggestion in org-roam
-
-          11/2020: people had thought about this but no firm idea had emerged.
+            11/2020: people had thought about this but no firm idea had emerged.
           
-*********** _Very close_: [[https://hugocisneros.com/notes/][org-roam graph w/ machine-learned node size/color]] 
-*********** [[https://org-roam.discourse.group/t/application-of-graph-theory-to-roam-link-network/61/8][Application of Graph Theory to Roam link network - Graphing]]
-*********** [[https://org-roam.discourse.group/t/analysing-the-semantic-network/56][Analysing the semantic network - Graphing Capabilities - Org-roam]]
-*********** [[https://org-roam.discourse.group/t/rfc-interactive-visualization-and-explorer-tool/87/6][{RFC} Interactive Visualization and Explorer Tool]]
-*********** [[org-roam graph visualization]]
+************* _Very close_: [[https://hugocisneros.com/notes/][org-roam graph w/ machine-learned node size/color]] 
+************* [[https://org-roam.discourse.group/t/application-of-graph-theory-to-roam-link-network/61/8][Application of Graph Theory to Roam link network - Graphing]]
+************* [[https://org-roam.discourse.group/t/analysing-the-semantic-network/56][Analysing the semantic network - Graphing Capabilities - Org-roam]]
+************* [[https://org-roam.discourse.group/t/rfc-interactive-visualization-and-explorer-tool/87/6][{RFC} Interactive Visualization and Explorer Tool]]
+************* [[org-roam graph visualization]]
+************* <<org-similarity>>
+*************** [[https://github.com/soldeace/org-similarity][GitHub - org-similarity: A package to help org-mode users discover]]
+*************** announcement: [[https://org-roam.discourse.group/t/prototype-org-similarity-generate-a-list-of-similar-documents-org-mode/1029][org-similarity: generate a list of similar documents (Org-mode)]]
+*********** [[Visualizing Bibliographies]]
 ********* [[How to take Notes]]
+********* [[org-roam tags]]
 ******* multiple org-roam directories
         See: [[https://org-roam.readthedocs.io/en/master/configuration/][org-roam >> Having More Than One Org-roam Directory]]
 ******* <<org-roam graph visualization>>
@@ -1244,6 +1252,7 @@
 ********* make graph nodes clickable: [[https://org-roam.discourse.group/t/zero-to-emacs-and-org-roam-a-step-by-step-guide-on-windows-10/400/70?u=scotto][nobiot post]] 
 ********* [[org-roam, compendium-style interactive graph, org-journal but doom/mac]]
 ********* [[org-roam topic & related note discovery]]
+********* requires [[graphviz]] be installed
 ******* <<bookmarklet for org-roam capture>>
 ********* Is this just for storing web pages?
 ********* JK's own [[https://github.com/org-roam/org-roam/issues/217#issuecomment-595313500][bookmarklet and capture template]]
@@ -1315,6 +1324,7 @@
 
 ********* [[ox-json]]
 ********* [[org-ql]] (query langauge and search org-mode)
+********* [[Text2MindMap]]: simple outline to graph
 ********* [[https://org-roam.discourse.group/t/creating-an-org-roam-note-from-an-existing-headline/978][Creating an org-roam note from an existing headline]]
 ********* [[https://ag91.github.io/blog/2020/11/12/write-org-roam-notes-via-elisp/][org-mode TODO to org-roam note file via Elisp]]
 ********* [[Org-roam APIs]]
@@ -1782,6 +1792,11 @@
         From: [[https://github.com/jlumpe/ox-json/][jlumpe/ox-json: JSON export back end for Emacs Org mode]]
 ********* is used by [[pyorg]]
 ********* may be useful to [[Split 1 org file to many org-roam notes]]
+********* also [[org-to-xml]]
+******* <<org-to-xml>>
+        From: [[https://github.com/ndw/org-to-xml][GitHub - ndw/org-to-xml: Library to convert Emacs org-mode files to XML]]
+********* may be useful to [[Split 1 org file to many org-roam notes]]
+********* also [[ox-json]]
 ******* <<org-ql>>: query based org-searching
         From: [[https://github.com/alphapapa/org-ql][alphapapa/org-ql: An Org-mode query language, including search]]
 
@@ -11976,6 +11991,7 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ********* [[https://www.zotero.org/support/related][collections, tags and relations]]
 ********* <<zotnet>>: can draw graphs of relations
           From: [[https://www.exitsantacruz.com/zotnet/zotnet.php][ZotNet]]
+*********** also [[Visualizing Bibliographies]]
 ********* <<Zotero Voyant Export>>: visualized collections, but is _unmaintained_
           From: [[https://github.com/corajr/zotero-voyant-export][corajr/zotero-voyant-export: Export a Zotero collecti]]ons
 ******* crazily complicated Zotero/BibTex/Emacs workflow 
@@ -12179,12 +12195,21 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ********* XBEL: XML Bookmark Exchange Language
 ***** [[https://betalist.com/startups/memofon][Memofon]] text based mindmaps
 ***** [[https://gingkoapp.com/][Gingko]]: fancy textual mindmap w/ sliding note cards.  Hosted. Proprietary.
-***** [[https://www.xmind.net/features/][Xmind]]: mindmapper, can scrape by with concept maps
-      <<Xmind>>
+***** <<Xmind:>> mindmapper, can scrape by with concept maps
+      From:  [[https://www.xmind.net/features/][Xmind]]
 ******* [[http://www.xmind.net/blog/en/2013/12/how-to-build-a-concept-map-using-xmind/][can do concept maps]] but with manual layout, as far as I can tell
 ******* Does gant charts and outlines
 ******* has free version
 ******* has [[https://www.mind-mapping.org/interoperability-of-mind-mapping-software/XMIND.php][decent file interchangeablity]]
+
+***** <<Text2MindMap>>
+      From: [[https://tobloef.com/text2mindmap/][Text2MindMap]]
+
+      Interactive online tool.  Type in or load your indented outline and it will render a crude mindmap diagram in your browser.  The rendering looks similar to to the one used by the [[org-roam]] graph server.
+
+      The /graph layout is miserable/ compared to, say [[Xmind]], but since the task and server seem to be similar, and if the code is available, then it might be useful for my [[org-roam]] goal: [[Split 1 org file to many org-roam notes]]
+
+      Code probably has guts something like [[org-to-xml]] or [[ox-json]]
 
 *** DAG / Concept maps
 ***** <<Roam Research>>
@@ -12290,13 +12315,13 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ******* can group/collapse nodes like [[IHMC Cmaps]]
 ******* latest version: late 2016
 ******* [[http://yed.yworks.com/support/qa/306/how-i-can-configure-proxy-for-yed][configuring yEd for proxy]] (needed for some things)
-***** [[https://cran.r-project.org/web/packages/comato/index.html][comato]]: R library for Concept maps:
-      <<comato>>
+***** <<comato>>: R library for Concept maps:
+      From:  [[https://cran.r-project.org/web/packages/comato/index.html][comato]]
 ******* several file formats, including [[yEd]] (see manual)
 ******* plotting function does a few layout styles
 ******* a bunch of graph [[https://rdrr.io/cran/comato/][analysis functions]], some of which I think are in [[yEd]]
-***** [[http://cmap.ihmc.us/][IHMC Cmaps]]
-      <<IHMC Cmaps>>
+***** <<IHMC Cmaps>>
+      From: [[http://cmap.ihmc.us/][IHMC Cmaps]]
 ******* prettiest
 ******* good collapsibility of subtopics
 ******* somewhat mouse based
@@ -12347,9 +12372,6 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ******* proprietary file format, can print to PDF
 ***** [[https://oneslate.com/][OneSlate]]: DAG w/ fancy features, like heatmapping, conitive bias remover
 ***** [[http://www.ideashuffler.com/][Idea Shuffler]]: multilevel CMap with 1 good style of autorouting: $29
-***** [[https://gephi.org/][Gephi]]: more of a graph visualizer (lot's of them). Load somebody else's file
-      <<Gephi>>
-******* See [[Bibliography visualizaton using Gephi]]
 ***** [[https://www.mindomo.com/][Mindomo]]: DAG, commercial, online only
 ******* [[https://www.mindomo.com/pricing.htm][$35EUR/halfYear]]
 ******* lots of open file formats but I'm not sure if one is a DAG
@@ -12357,6 +12379,30 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ******* Compendium was cool in 2013; opensourced vers. seems dead
 ******* open source: [[https://github.com/CompendiumNG/CompendiumNG/graphs/contributors][CompendiumNG]]
 ******* [[org-roam, compendium-style interactive graph, org-journal but doom/mac]]
+***** [[PlantUML]] can draw them from emacs
+***** _Videos_ about concept maps
+******* [[https://www.youtube.com/watch?v=DdHG66opp5Y][JosephineMcMurry: Concept Mapping for Learning, Reflection, and Evaluation]]
+******* [[https://www.youtube.com/watch?v=S4SwSheh7TI&t=4012s][Concept mapping for time management and long term memory - YouTube]]
+********* Main procedure for learning new material
+          1. list
+          2. group
+          3. compare
+********* Software
+*********** his favorite IHMC Cmap Tools (2015)
+*********** iThoughtsHD (iPad) looked good too
+********* But he says 1st map s/b on paper or bulletin board: _Procedure_:
+          1. list using stickies
+          2. group by moving them around
+          3. compare by draw lines
+********* But he says some people are faster on computers
+***** Emacs [[Concept map-like stuff: superlabel, dedicated targets, org-brain]]
+*** General Graph Drawing Programs
+***** <<graphviz>>: high level connection file --> auto-laied out diagram
+******* [[https://graphviz.org/][Graphviz - Graph Visualization Software]]
+******* [[https://graphviz.org/gallery/][Gallery]]
+******* Used optionally in [[org-roam]] graphs
+******* [[graphviz in Emacs]]
+******* [[Mermaid Diagrams]]: simpler
 ***** <<Mermaid Diagrams>>
 
       Simple markup for creating nicely rendered flow diagrams, etc.
@@ -12376,23 +12422,12 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 
         [[https://twitter.com/obsdmd/status/1281301410890551296?lang=en][Obsidian supports Mermaid Diagrams]]
 
-***** [[PlantUML]] can draw them from emacs
-***** _Videos_ about concept maps
-******* [[https://www.youtube.com/watch?v=DdHG66opp5Y][JosephineMcMurry: Concept Mapping for Learning, Reflection, and Evaluation]]
-******* [[https://www.youtube.com/watch?v=S4SwSheh7TI&t=4012s][Concept mapping for time management and long term memory - YouTube]]
-********* Main procedure for learning new material
-          1. list
-          2. group
-          3. compare
-********* Software
-*********** his favorite IHMC Cmap Tools (2015)
-*********** iThoughtsHD (iPad) looked good too
-********* But he says 1st map s/b on paper or bulletin board: _Procedure_:
-          1. list using stickies
-          2. group by moving them around
-          3. compare by draw lines
-********* But he says some people are faster on computers
-***** Emacs [[Concept map-like stuff: superlabel, dedicated targets, org-brain]]
+******* [[graphviz]] (similar, but more complicated)
+
+***** <<Gephi>>: more of a graph visualizer (lot's of them). Load somebody else's file
+      From: [[https://gephi.org/][Gephi]]
+******* See [[Bibliography visualizaton using Gephi]]
+
 *** Model Driven Development (MDD)
 ***** [[http://dsmforum.org/events/MDD-TIF07/][MDD Forum]]
 ***** [[http://www.metacase.com/products.html][MetaEdit+]] Domain-specific modeling (DSM) environment
@@ -12412,6 +12447,7 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ******* [[https://plantuml.com/][PlantUML: Open-source tool that uses simple textual descriptions to draw beautiful UML]]
 ******* Not just UML's.  Can draw DAGs, mindmaps, timing diagrams and a ton of other things
 ******* <<Emacs PlantUML>>
+********* [[https://github.com/skuro/plantuml-mode][GitHub - skuro/plantuml-mode: A major mode for editing PlantUML sources in Emacs]]
 ********* Can draw diagrams from Emacs using [[orgbabelhelper]] ([[org-diagram drawing with plantuml-babel.org]])
 ******* VScode PlantUML
 
@@ -12428,7 +12464,7 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ******* <<Gephi & Sci2 co-author graph>>
         From: [[https://abhishekkathuria.wordpress.com/2014/07/01/visualizing-your-co-author-network/][Gephi & Sci2 Co-author graph]]
 
-        _This wasn't useful._  Took forever and the network wasn't topic-based but co-author based.  And then, you couldn't see authors or paper titles on the graph when you cliked on them.
+        _This wasn't useful._  Took forever and the network wasn't topic-based but co-author based.  And then, you couldn't see authors or paper titles on the graph when you clicked on them.
 
         1. Start [[https://sci2.cns.iu.edu/user/index.php][Sci2]] and [[Gephi]]
         2. Load the references into Sci2 using the File->Load option.   /This required a lot of cleanup in my energy.bib/
@@ -12456,6 +12492,8 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ***** [[DocEar]], kind-of...
 ***** [[org-roam]]
 ***** [[Roam Research]]
+***** [[zotnet]] (Zotero visualiztion)
+***** [[org-roam topic & related note discovery]]
 *** <<The Brain>>
     Like that CMU Concept map think
 ***** [[https://thebrain.com/][TheBrain: The Ultimate Digital Memory]]    
