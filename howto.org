@@ -478,7 +478,7 @@
 ********* Ruby: [[https://github.com/BoolLi/BibTex-Fetcher/blob/master/parser.rb][BibTex-Fetcher/parser.rb at master · BoolLi/BibTex-Fetcher]]
 ********* [[http://guides.lib.berkeley.edu/information-studies/apis][APIs for scholarly resources]]
 ********* See also: [[BibTex and Emacs]]
-***** *ACCEPTED*
+**** *ACCEPTED*
 ******* ACCEPTED right justify mode-line clock
 
         DONE: the smart-mode-line does this and I now have it installed.
@@ -1147,6 +1147,72 @@
 *********** [[https://org-roam.readthedocs.io/en/master/comparison/][org-roam comparison with similar packages]]
 *********** [[BSAG moved from org-roam to Obsidian]]
 *********** [[Knowledge as Graphs]]
+******* TODO Issues to resolve before migrating to org-roam
+********* splitting energytop.org
+*********** do I want to migrate comment out of energytop.org
+************* also [[Split 1 org file to many org-roam notes]]
+************* DONE can I get the nice pdf-in-emacs thing in org-noter?
+              Yes
+************* DONE DON'T CARE: would break current "everything in one place" that I have now in JabRef
+              This is fine.  I'm resolved to move my comments to single bibtex files now
+*********** also [[Split 1 org file to many org-roam notes]]
+********* splitting energy.bib
+*********** would need to write a script to make individual .org note files for each bibtex entry
+*********** figure out how to use [[helm-bibtex]]
+************* [[org-roam-bibtex]] seeems to be based on these
+*********** Is there one cite note per bibtex item?  *Probably*, maybe not for JK
+
+************* Seems like one note per paper is common ([[https://github.com/org-roam/org-roam/issues/474][#474]]), but that people also want to be able so selectively link to citation notes or idea notes.  This function was added in [[https://github.com/org-roam/org-roam/pull/481][#481]], but I didn't read it carefully enough to understand how it works.  It may also have wound up in org-roam-bibtex.
+
+************* [[org-roam workflow with Zotero, org-ref, org-noter, deft]] a full (but very buggy) is *one-note per pdf*.         
+************* [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][video]]  on [[org-roam-bibtex]] demonstrates one note per bib entry.  One note per cite key looks nice b/c the back links uniquely tell you where it was cited.  Maybe nice because note backlinks and and <<backlinks from other cites notes are segregated>>.  I guess I also would like to segregate relationships between papers and relationships between notes.  Seems like notes would be more for collecting ideas, while papers might be more the raw ideas, which can be related, so that when you're writing a note (your own paper) and you make a cite, you see what other papers you should look at?.  
+
+************* Yet Jethro Kuan himself, in his public braindump,  has multiple bibliography cite links in many notes.  It's not clear to me that he puts individual paper notes into org-roam, since he [[https://github.com/org-roam/org-roam/pull/481#issuecomment-615174636][considers the use case in PR481 to be niche]].  Seems like a note is instead an idea, which may be supported by papers and their citations.
+
+*********** TODO is cite note name the bibtex key?   
+
+            I couldn't tell what people are naming their bib item cite notes.
+
+*********** TODO <<how put paper abstracts into notes?>>
+        
+            I want search to see abstracts so I can search like I do now in energy.bib.  But if there are tons of little org notes, it won't be able to do that?
+
+************** also [[org-roam and bibtex]]
+************** also [[org-roam-bibtex]]
+********* migrating Evernote org-roam
+*********** get info out of evernote?
+*********** is there a way to capture graphics and images?
+*********** Will this get a "what's related" feature like [[Evernote]] clipper ha
+********* performance w/ large number of little files
+*********** would 5k+ little org files be slower or faster than what I have now? 
+************* it's possibly OK: [[https://org-roam.discourse.group/t/what-does-it-feel-like-to-work-with-10-000-notes-in-org-roam-benchmarking-org-roams-search-methods/227/3][what-does-it-feel-like-to-work-with-10-000-notes-in-org-roam]]
+********* get info out of books?
+********* [[Copying out of Kindle book]]?  
+          Also, is [[Kindle]] easier/better than books, and do I want to be locked into it?
+********* Do I want to start making an [[org-journal]]?
+********* First thoughts now complete
+*********** DONE get latex working on Windows 1st?
+            Nah, can do later
+*********** DONE .emacs --> .emacs.d (or init.el?) so comply w/ new, standard emacs setup
+            Nah, can do later
+*********** DONE can I tolerate the Drawer thing?
+            Yeah, it's not so bad.
+*********** DONE link target searching
+
+            At least two problems:
+************* how search through thousands of links when trying to make one?
+************* how distinguish between paper (bibtex) links and general idea links?
+*********** DONE can I install everything needed for [[org-roam on Windows]]
+            Yup, I can
+*********** DONE install emacs+org-roam in [[WSL]] to avoid all the windows problems
+            Nah. I installed WSL2 and had problems (can't remember what) and there are not prominent OR users who use Windows.  Seems like Windows bugs will get worked out eventually.
+************* 1st thing would be to install wsl2, whenever that's available 
+************* can I call emacs in wsl2 from windows?  Associate files, on taskbar, etc.?
+************* could still have windows emacs for simpler workflows
+*********** DONE is it going to last?
+            Seems like it has a lot of excitement, many social media connections
+*********** DONE install emacs 27 first, since org-roam likes it?
+************* also doesn't require imagemagic anymore.  Does that make pdf-tools easier?
 ******* <<org-roam on Windows>>
 ********* [[https://github.com/nobiot/Zero-to-Emacs-and-Org-roam/blob/main/40.Qol.md][Zero-to-Emacs-and-Org-roam on Windows (nobiot)]]
 ********* [[https://org-roam.readthedocs.io/en/master/installation/][org-roam official install instructions]] mentions Windows
@@ -1365,61 +1431,6 @@
 ******* also [[org-transclusion]]
 ******* also [[gkroam]]
 ******* also [[org-brain]]
-******* TODO Issues to resolve before migrating to org-roam
-********* figure out how to use [[helm-bibtex]]
-*********** [[org-roam-bibtex]] seeems to be based on these
-********* is it going to last?
-********* install Doom Emacs since [[org-roam author migrated to Doom Emacs]]
-********* install emacs 27 first, since org-roam likes it?
-*********** also doesn't require imagemagic anymore.  Does that make pdf-tools easier?
-********* .emacs --> .emacs.d (or init.el?) so comply w/ new, standard emacs setup
-********* get latex working on Windows 1st?
-********* install emacs+org-roam in [[WSL]] to avoid all the windows problems 
-*********** 1st thing would be to install wsl2, whenever that's available 
-*********** can I call emacs in wsl2 from windows?  Associate files, on taskbar, etc.?
-*********** could still have windows emacs for simpler workflows
-********* can I install everything needed for [[org-roam on Windows]]
-********* do I want to migrate comment out of energytop.org
-*********** would break current "everything in one place" that I have now in JabRef
-*********** would need to write a script to make individual .org note files for each bibtex entry
-*********** can I get the nice pdf-in-emacs thing in org-noter? 
-*********** also [[Split 1 org file to many org-roam notes]]
-********* would 5k+ little org files be slower or faster than athat I have now? 
-*********** it's possibly OK: [[https://org-roam.discourse.group/t/what-does-it-feel-like-to-work-with-10-000-notes-in-org-roam-benchmarking-org-roams-search-methods/227/3][what-does-it-feel-like-to-work-with-10-000-notes-in-org-roam]]
-********* link target searching
-
-          At least two problems:
-*********** how search throuh thousands of links when trying to make one?
-*********** how distinguish between paper (bibtex) links and general idea links?
-
-********* can I tolerate the Drawer thing?
-********* is there a way to capture graphics and images?
-********* get info out of books?
-********* get info out of evernote?
-********* [[Copying out of Kindle book]]?  
-          Also, is [[Kindle]] easier/better than books, and do I want to be locked into it?
-********* Is there one cite note per bibtex item?  *Probably*, maybe not for JK
-
-*********** Seems like one note per paper is common ([[https://github.com/org-roam/org-roam/issues/474][#474]]), but that people also want to be able so selectively link to citation notes or idea notes.  This function was added in [[https://github.com/org-roam/org-roam/pull/481][#481]], but I didn't read it carefully enough to understand how it works.  It may also have wound up in org-roam-bibtex.
-
-*********** [[org-roam workflow with Zotero, org-ref, org-noter, deft]] a full (but very buggy) is *one-note per pdf*.         
-*********** [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][video]]  on [[org-roam-bibtex]] demonstrates one note per bib entry.  One note per cite key looks nice b/c the back links uniquely tell you where it was cited.  Maybe nice because note backlinks and and <<backlinks from other cites notes are segregated>>.  I guess I also would like to segregate relationships between papers and relationships between notes.  Seems like notes would be more for collecting ideas, while papers might be more the raw ideas, which can be related, so that when you're writing a note (your own paper) and you make a cite, you see what other papers you should look at?.  
-
-*********** Yet Jethro Kuan himself, in his public braindump,  has multiple bibliography cite links in many notes.  It's not clear to me that he puts individual paper notes into org-roam, since he [[https://github.com/org-roam/org-roam/pull/481#issuecomment-615174636][considers the use case in PR481 to be niche]].  Seems like a note is instead an idea, which may be supported by papers and their citations.
-
-********* TODO is cite note name the bibtex key?   
-
-          I couldn't tell what people are naming their bib item cite notes.
-
-********* Will this get a "what's related" feature like [[Evernote]] clipper ha
-********* Do I want to start making an [[org-journal]]?
-********* also [[Split 1 org file to many org-roam notes]]
-********* TODO <<how put paper abstracts into notes?>>
-        
-          I want search to see abstracts so I can search like I do now in energy.bib.  But if there are tons of little org notes, it won't be able to do that?
-
-************ also [[org-roam and bibtex]]
-************ also [[org-roam-bibtex]]
 
 ***** <<org-brain>>
       Concept mapping in emacs, new project in March, 2017
@@ -11705,9 +11716,9 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 ******** [[Fixing tiny fonts on Surface pro]] (a problem older JabRef had)
 ***** <<Zotero>>
 
-The main reasons for trying Zotero are that some [[org-roam]] users say they use it, and that [[Zotero + Word]] is convenient.  Another is that it's quite good at extracting bibliography data from pdfs, which save a lot of time.  I could use merge that with energy.bib.
+One reason for trying Zotero are that some [[org-roam]] users say they use it, and that [[Zotero + Word]] is convenient.  Another is that it's quite good at extracting bibliography data from pdfs, which save a lot of time.  I could use merge that with energy.bib.  It also does a good job of saving web pages.
 
-But I would like it better if there was no export merge step.  Export is kind of handled by [[BetterBibtex]], which [[BBT automatically exports to bib file]], but there is still the problem of the Zotero attachment file structure, and also the possiblity that the exported bibtex file changes on every export, making [[Zotero + GIT]] problematic.
+But I would like it better if there was no export merge step.  Export is kind-of handled by [[BetterBibtex]], in which [[BBT automatically exports to bib file]], but there is still the problem of the Zotero attachment file structure, and also the possiblity that the exported bibtex file changes on every export, making [[Zotero + GIT]] problematic (if it's sorted?).
 
 Other problem is that JabRef uses "comments" and Zotero uses "notes"
 
@@ -11991,6 +12002,9 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ********* [[https://www.zotero.org/support/related][collections, tags and relations]]
 ********* <<zotnet>>: can draw graphs of relations
           From: [[https://www.exitsantacruz.com/zotnet/zotnet.php][ZotNet]]
+
+          Exports to an external drawing rendering program, not internal to Zotero.  Links are manually created by you somehow.  I tried the quick "visualize your bib" link in the documentation but it didn't work on the 1st try.  Since this all looks cumbersome, I left it there.
+          
 *********** also [[Visualizing Bibliographies]]
 ********* <<Zotero Voyant Export>>: visualized collections, but is _unmaintained_
           From: [[https://github.com/corajr/zotero-voyant-export][corajr/zotero-voyant-export: Export a Zotero collecti]]ons
@@ -12066,8 +12080,8 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 *************** annotates later, 
 *************** so Zotero can't get in the middle.  
 *************** Also can't annotate if reread the saved file.
-*************** Is [[https://news.ycombinator.com/item?id=25228089][said]] to be what [[Zotero]] uses to save web pages
-              
+*************** [[Zotero]] now [[https://forums.zotero.org/discussion/85306/available-for-beta-testing-improved-webpage-snapshots][uses to Single File logic to save web pages]]
+*************** My [[https://github.com/gildas-lormeau/SingleFile/issues/562][Single File Feature Request]]
 ************* Firefox [[https://addons.mozilla.org/en-US/firefox/addon/page-hacker/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search][Page Hacker]]: saved and restored in Zotero, just like I'd want but only bolds, underlines... no highlights
 ************* [[https://chrome.google.com/webstore/detail/save-page-we/dhhpefjklgkmgeafimnjhojgjamoafof?hl=en-US][Save Page WE]] (Both Firefox & Chrome): 
 
@@ -12083,6 +12097,8 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 *************** The catch is knowing where Zotero has actually saved the file.  The Zotero 
 *************** Dangerous b/c FF "Hilighter + Notes" always saves highlights as metadata somewhere, makes it look like you have saved the raw html that Zotero looks at, even if you have actually saved in some random location.
 ************* Chrome [[https://hypothes.is/users/scotto][hypothes.is annotator]] marks up and Zotero saves but can't re-edit saved html file Zotero makes in hypothes.is. /Can/ re-edit in hypothes.is web page, though. Also: [[Hypothesis]]
+*********** I [[https://forums.zotero.org/discussion/comment/347897/][posted a question]] about annotation to Zotero dev adamsmith.
+*********** Firefox [[https://addons.mozilla.org/en-US/firefox/addon/save-in/][Save In]] at least saves pages to subdirs of ~/Downloads
 ******* Misc. Zotero Plugins I've tried, may want to use
 ********* [[https://github.com/retorquere/zotero-auto-index][retorquere/zotero-auto-index]]
 ********* <<ZotNet>>: bib ref relations graph drawer by Christy M. Byrd
