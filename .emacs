@@ -383,7 +383,7 @@ TODO: make this a general function."
 ;;(use-package quelp-use-package)  ;; had gpg problem on this line
 
 ;; I don't think I ever got perspectives to work
-;; ;; Perspectives for emacs
+;; *** Perspectives for emacs
 ;; ;; From: https://github.com/andresilva/emacs.d/blob/master/init.el
 
 ;; ;; Use one folder for all save/history/cache files (more than persp-mode uses it)
@@ -720,9 +720,9 @@ TODO: make this a general function."
 ;;   (call-interactively 'grep))
 ;; (global-set-key (kbd "<C-S-tab>")  'other-window) ; backwards
 
-;; ** Indirect buffers
+;; ** Indirect Buffer Cloning
 
-;; *** Buffer Cloning
+;; *** Full Buffer Cloning
 
 (defun sdo/clone-indirect-buffer-other-frame (newname display-flag &optional norecord)
   "Like `clone-indirect-buffer' but display in another frame."
@@ -744,8 +744,8 @@ TODO: make this a general function."
 
 ;; *** Org subtree Cloning
 
-;; common name for indirect org-tree buffers
-;; originally from: https://github.com/alphapapa/bufler.el/issues/13
+;; Compute a common name for indirect org-tree buffers.
+;; Snipped from: https://github.com/alphapapa/bufler.el/issues/13
 (defun sdo/org-tree-to-indirect-buffer-name ()
   (let* ((heading (org-get-heading t t))
          (level (org-outline-level))
@@ -763,7 +763,7 @@ appended.  If a buffer by that name already exists, it is
 selected instead of creating a new buffer."
   (interactive "P")
   (let* ((new-buffer-p)
-         (pos (point))
+;         (pos (point))
          (buffer-name (sdo/org-tree-to-indirect-buffer-name))
          (new-buffer (or (get-buffer buffer-name)
                          (prog1 (condition-case nil
@@ -797,6 +797,41 @@ appended.  If a buffer by that name already exists, just print name (unless curs
 ;; Emacs default is C-c C-x b; this extra binding mirrors buffer clones above
 (global-set-key (kbd "C-x 4 t") 'sdo/org-tree-to-indirect-buffer)
 (global-set-key (kbd "C-x 5 t") 'sdo/org-tree-to-indirect-buffer-new-frame)
+
+;; *** Kill buffer along with frame when frame is (probably!) indirect
+
+;; ;; from: https://emacs.stackexchange.com/a/2915/14273
+;; (defun maybe-delete-frame-buffer (frame)
+;;   "When a dedicated FRAME is deleted, also kill its buffer.
+;; A dedicated frame contains a single window whose buffer is not
+;; displayed anywhere else."
+;;   (let ((windows (window-list frame)))
+;;     (when (eq 1 (length windows))
+;;       (let ((buffer (window-buffer (car windows))))
+;;         (when (eq 1 (length (get-buffer-window-list buffer nil t)))
+;;           (kill-buffer buffer))))))
+
+;; ;; bind to C-x 0 (maybe this is too unexpected?)
+;; (add-to-list 'delete-frame-functions #'maybe-delete-frame-buffer)
+
+;; modifed from: https://emacs.stackexchange.com/a/2915/14273
+;; binding to C-x 5 C-0 ensures that you really mean to delete the
+;; buffer (important?)
+(defun delete-frame-maybe-buffer ()
+  "When a dedicated FRAME is deleted, also kill its buffer.
+A dedicated frame contains a single window whose buffer is not
+displayed anywhere else."
+  (interactive)
+  (let ((windows (window-list (selected-frame))))
+    (when (eq 1 (length windows))
+      (let ((buffer (window-buffer (car windows))))
+        (when (eq 1 (length (get-buffer-window-list buffer nil t)))
+          (kill-buffer buffer)))))
+  (call-interactively 'delete-frame))
+
+(global-set-key (kbd "C-x 5 C-0") 'delete-frame-maybe-buffer)
+
+
 
 ;; * File Finding / Opening
 
@@ -2028,12 +2063,6 @@ appended.  If a buffer by that name already exists, just print name (unless curs
  '(org-superstar-headline-bullets-list '("●" "￭" "￮" "►" "•" "□" "▸" "▫" "▹"))
  '(org-superstar-item-bullet-alist '((42 . 10043) (43 . 10011) (45 . 9644)))
  '(org-superstar-special-todo-items t)
- '(org-superstar-todo-bullet-alist
-   '(("TODO" . 9744)
-     ("DONE" . 9745)
-     ("TRY" . 9728)
-     ("REJECTED" . 10005)
-     ("ACCEPTED" . 10003)))
  '(org-use-speed-commands t)
  '(outshine-org-style-global-cycling-at-bob-p t)
  '(outshine-use-speed-commands t)
@@ -2330,7 +2359,18 @@ appended.  If a buffer by that name already exists, just print name (unless curs
   (setq org-download-method 'org-download-method-dirname-from-orgfile))
 
 ;; Show org-mode bullets as UTF-8 characters (org-bullets replacement).
-;; Nicer bullets: for others: https://www.w3schools.com/charsets/ref_utf_symbols.asp
+;; Nicer bullets: for others:
+;; https://www.w3schools.com/charsets/ref_utf_symbols.asp
+
+;; My TODO chars.  Checked box graphics look cool but aren't fixed
+;; width and so mess up headline indenting a little bit
+ ;; '(org-superstar-todo-bullet-alist
+ ;;   '(("TODO" . 9744)
+ ;;     ("DONE" . 9745)
+ ;;     ("TRY" . 9728)
+ ;;     ("REJECTED" . 10005)
+ ;;     ("ACCEPTED" . 10003)))
+
 (use-package org-superstar
   :init
   ;; org-superstar github: loads faster
@@ -2615,7 +2655,8 @@ This function avoids making messed up targets by exiting without doing anything 
 ;;(global-set-key [C-f1] 'my/toggle-subtree) 
 ;;(global-set-key [C-f2] 'my/toggle-subtree) 
 
-;; Converts lines to checkboxes; convert them to TODO's with: C-c C-*
+;; Converts non-heading text lines to checkboxes lists;
+;; convert checbox lists to TODO's with: C-c C-*
 ;; https://stackoverflow.com/questions/18667385/convert-lines-of-text-into-todos-or-check-boxes-in-org-mode
 (defun org-set-line-checkbox (arg)
   (interactive "P")
@@ -2910,7 +2951,6 @@ This function avoids making messed up targets by exiting without doing anything 
   :hook (org-roam-mode . org-roam-bibtex-mode)
   :bind (:map org-mode-map
               (("C-c n a" . orb-note-actions))))
-
 
 ;; ;; NOTE the below don't take effect unless you've run M-x org-roam-bibtex-mode or customize it to ON
 ;; ;;
