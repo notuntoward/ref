@@ -3,15 +3,6 @@
     My experiments, Emacs packages I've tried and installed (from Melpa repository). Also, some builtins I could try
 
 ***** *TRY*
-******* TRY <<org-capture>>
-********* Tutorial Video: [[https://www.youtube.com/watch?v=qCdScs4YO8k][Emacs: Introduction to ORG-CAPTURE]]
-********* [[bookmarklet for org-roam capture]]
-******* TRY <<orca>>
-        From: [[https://github.com/abo-abo/orca][GitHub - abo-abo/orca: ORg CApture]]
-
-********* capture web pages into emacs org-mode.
-********* Sorts capture destination by URL
-********* is use in [[org-roam]] example by [[org-roam workflow with Zotero, org-ref, org-noter, deft]]
 ******* TRY Ivy 
          From: [[https://www.youtube.com/watch?v=QcPenVmmQyM][Emacs: Ivy tips and tricks]]
          also seee: https://protesilaos.com/dotemacs/
@@ -1157,7 +1148,8 @@
               This is fine.  I'm resolved to move my comments to single bibtex files now
 *********** also [[Split 1 org file to many org-roam notes]]
 ********* splitting energy.bib
-*********** would need to write a script to make individual .org note files for each bibtex entry
+*********** need a script to make a .org note file for each bibtex entry
+************* [[https://org-roam.discourse.group/t/bibtex-parser-that-preserves-whitespace/1048?u=scotto][my question]]: how to preserve comment and abstract whitespace?
 *********** figure out how to use [[helm-bibtex]]
 ************* [[org-roam-bibtex]] seeems to be based on these
 *********** Is there one cite note per bibtex item?  *Probably*, maybe not for JK
@@ -1250,6 +1242,13 @@
 ************* <<OR cite note title is org-ref link>>: key/title: from org-roam-bibtex [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][video]]
 ************* cite: links required, not Zotero, b/c [[backlinks from other cites notes are segregated]]
 ************* *Would Zotero autosync overwrite those ORB mods?*
+*********** <<OR zotero + org-noter + helm-bibtex + org-ref + orb + workflow doc>>
+            From: [[https://www.ianjones.us/org-roam-bibtex][Org Roam Bibtex]]
+
+************* I'm not clear on how the path to pdfs, etc. are setup
+************* workflow starts w/ pdf, uses zotero to find its .bib file?
+************* uses the bib betterbibtex file interface to ORB/OR
+
 *********** <<make org-roam-bibtex put bib notes in separate dir>>
 
             I think this is supposed to work but I can't get org-roam-bibtex to put refs in a recursive dir.  It work for a second, then failed somehow.
@@ -1300,13 +1299,18 @@
             11/2020: people had thought about this but no firm idea had emerged.
           
 ************* _Very close_: [[https://hugocisneros.com/notes/][org-roam graph w/ machine-learned node size/color]] 
+************* <<org-similarity>>
+*************** [[https://github.com/soldeace/org-similarity][GitHub - org-similarity: A package to help org-mode users discover]]
+*************** announcement: [[https://org-roam.discourse.group/t/prototype-org-similarity-generate-a-list-of-similar-documents-org-mode/1029][org-similarity: generate a list of similar documents (Org-mode)]]
+************* <<delve>>
+              From: [[https://github.com/publicimageltd/delve][delve: Delve into your org-roam zettelkasten.]]
+
+              It somehow finds pages by "following links."  The author [[https://org-roam.discourse.group/t/prototype-org-similarity-generate-a-list-of-similar-documents-org-mode/1029/9?u=scotto][says]] that it "uses a hierarchical list paradigm to explore the notes."
+              
 ************* [[https://org-roam.discourse.group/t/application-of-graph-theory-to-roam-link-network/61/8][Application of Graph Theory to Roam link network - Graphing]]
 ************* [[https://org-roam.discourse.group/t/analysing-the-semantic-network/56][Analysing the semantic network - Graphing Capabilities - Org-roam]]
 ************* [[https://org-roam.discourse.group/t/rfc-interactive-visualization-and-explorer-tool/87/6][{RFC} Interactive Visualization and Explorer Tool]]
 ************* [[org-roam graph visualization]]
-************* <<org-similarity>>
-*************** [[https://github.com/soldeace/org-similarity][GitHub - org-similarity: A package to help org-mode users discover]]
-*************** announcement: [[https://org-roam.discourse.group/t/prototype-org-similarity-generate-a-list-of-similar-documents-org-mode/1029][org-similarity: generate a list of similar documents (Org-mode)]]
 *********** [[Visualizing Bibliographies]]
 ********* [[How to take Notes]]
 ********* [[org-roam tags]]
@@ -1319,13 +1323,28 @@
 ********* [[org-roam, compendium-style interactive graph, org-journal but doom/mac]]
 ********* [[org-roam topic & related note discovery]]
 ********* requires [[graphviz]] be installed
-******* <<bookmarklet for org-roam capture>>
+********* _fix_: "Format: "svg" not recognized. Use one of" in OR graph
+          I got this msg when I ran org-roam-graph.  The problem apparently was caused by updating the graphviz binary via choco.
+
+          After running [[https://stackoverflow.com/questions/62769161/error-format-svg-not-recognized-use-one-of][this fix command]] in windows-terminal:
+
+             dot -c
+
+         then M-x org-roam-graph did display a graph in an emacs window -- and not the fancy [[org-roam-server]] display in the browser.  This message was shown:
+
+             Not using View mode because the major mode is special
+
+         /As of 12/10/20, I haven't been able to get the browser display working again./
+
+******* <<org-roam capture from browser>>
 ********* Is this just for storing web pages?
 ********* JK's own [[https://github.com/org-roam/org-roam/issues/217#issuecomment-595313500][bookmarklet and capture template]]
 ********* [[https://org-roam.discourse.group/t/how-would-i-log-resources-like-articles-youtube-videos-etc/71/6][more on captures]] w/ code from JK @ end
 ********* potential [[https://org-roam.discourse.group/t/linking-to-new-notes-from-the-capture-buffer/108][bookmarklet problem]] and workaround, until OR bug is fixed.
 
+********* [[https://seds.nl/notes/org-roam-firefox-bookmark/][Org-roam Firefox bookmark]]
 ********* also [[org-capture]]
+********* also [[clipping web pages with org-mode]]
 ******* <<syncing org-roam across multiple machines>>
 
         Putting org-roam notes on OneDrive worked fine except that there were often sync conflicts in org-roam.db, the sqlite3 file generated by org-roam.
@@ -1360,6 +1379,7 @@
 ********* [[https://github.com/org-roam/org-roam-bibtex][org-roam/org-roam-bibtex: Connector between Org-roam, BibTeX-completion]]
 ********* [[https://www.rousette.org.uk/archives/extending-org-roam/][BSAG » Extending org-roam]]
 ********* [[https://www.ianjones.us/2020-05-05-doom-emacs#org7ef714a][Own Your Second Brain: Set Up org-roam on Your Own Machine]]
+********* [[OR zotero + org-noter + helm-bibtex + org-ref + orb + workflow doc]]
 ********* <<org-roam, deft and org-download (setup)>>
 *********** From: [[https://zzamboni.org/post/my-emacs-configuration-with-commentary/][My Emacs Configuration, With Commentary]]
 *********** Pretty basic, no hints about bibtex, citelinks, etc.
@@ -1367,7 +1387,7 @@
 *********** also [[org-download]]
 ********* <<org-roam, compendium-style interactive graph, org-journal but doom/mac>>
 
-          Fantastic clickable, graph that zooms in on cliques like [[Compendium]] did.  Can also move the nodes with your mouse.  Works through SVG graphs fed to chrome via org-roam-server,  The setup for that part isn't explained in text but is mentioned [[https://youtu.be/gDAbpz98ooU?t=150][in the video]].
+          Fantastic clickable, graph that zooms in on cliques like [[Compendium]] did.  Can also move the nodes with your mouse.  Works through SVG graphs fed to chrome via <<org-roam-server>>,  The setup for that part isn't explained in text but is mentioned [[https://youtu.be/gDAbpz98ooU?t=150][in the video]].
 
           Those fancy graphs are a nice-to-have, but maybe getting citelinks and [[org-roam-bibtex]] to work is more important.
 
@@ -1376,6 +1396,7 @@
 *********** Also [[Compendium]]
 ********* [[org-roam workflow with Zotero, org-ref, org-noter, deft]]
 ********* [[http://www.cesarolea.com/posts/taking-smart-notes/index.html][Free Your Brain, Free Yourself and Become a Better Professional]]
+********* [[https://www.reddit.com/r/emacs/comments/hltl69/org_roam_for_academics_demo/][Org Roam for Academics Demo : emacs]]
 ********* also [[file and directory setups for org-roam]]
 ******* back/forward in org-roam file history: [[info:org-roam#Browsing History with winner-mode][use built-in winner mode]]
 ******* <<Split 1 org file to many org-roam notes>> (energytop.org --> org-roam)
@@ -1637,6 +1658,26 @@
 ******* [[org-mode native citaton support]] (not ready yet in May 2020)
 ******* [[org-roam workflow with Zotero, org-ref, org-noter, deft]]
 ******* [[Zotero + org-ref]]
+***** <<clipping web pages with org-mode>>
+******* <<org-capture>>
+********* Tutorial Video: [[https://www.youtube.com/watch?v=qCdScs4YO8k][Emacs: Introduction to ORG-CAPTURE]]
+******* [[org-roam capture from browser]]
+******* <<orca>>
+        From: [[https://github.com/abo-abo/orca][GitHub - abo-abo/orca: ORg CApture]]
+
+********* capture web pages into emacs org-mode.
+********* Sorts capture destination by URL
+********* is use in [[org-roam]] example by [[org-roam workflow with Zotero, org-ref, org-noter, deft]]
+******* grasp
+        From: [[https://github.com/karlicoss/grasp][GitHub - karlicoss/grasp: A reliable org-capture browser extension for Chrome...]]
+
+********* Chrome/Firefox extension that captures your web page highlights to a default .org file
+********* said to be more reliable than standard [[org-capture]]
+********* looks like it has to run a Linux daemon, though
+
+******* [[https://addons.mozilla.org/en-US/firefox/addon/org-web-capture/][Org Web Capture – Get this Extension for Firefox (en-US)]]
+******* [[https://seds.nl/notes/orgmode-firefox-bookmark/][Org-mode Firefox bookmarks]]
+******* also [[org-roam capture from browser]]
 ***** <<org-noter>>
 
       Opens papers in emacs, syncs your pdf annotation w/ org-mode doc.  
@@ -1792,6 +1833,7 @@
 ******* [[http://orgmode.org/worg/dev/org-element-api.html][Org Element API]] (for org-mode elisp programming)
 ******* [[http://orgmode.org/worg/org-tools/][Org Mode tools!]] (parsers in many languages)
 ******* [[http://ergoemacs.org/emacs/elisp_parse_org_mode.html][Xah Elisp: Parse Org Mode Tutorial]]
+******* [[https://github.com/karlicoss/orgparse][orgparse: Python module for reading Emacs org-mode files]]
 ******* [[https://github.com/ndwarshuis/org-ml][org-ml: functional org lib]]: slow IO but fast graph manip once read
 ******* [[https://common-lisp.net/project/cl-org-mode/][CL-ORG-MODE : A Lisp Parser of org-mode outlines]]
 ******* [[Elisp]]
@@ -1799,6 +1841,8 @@
 ******* [[org-mode parsers in Python]]
 ******* [[Orger]]
 ******* [[https://gitlab.com/cgenie/org-parse][CGenie / org-parse]]: org --> [[https://gitlab.com/cgenie/org-parse][S-expressions]] (readable by other lisps)
+******* [[https://github.com/orgapp/orgajs][orgajs: parse org-mode content into AST]]
+******* [[https://github.com/volhovm/orgstat][orgstat: Statistics visualizer for org-mode (AST-based)]]
 ******* <<ox-json>>: org-mode to json
         From: [[https://github.com/jlumpe/ox-json/][jlumpe/ox-json: JSON export back end for Emacs Org mode]]
 ********* is used by [[pyorg]]
@@ -1812,7 +1856,6 @@
         From: [[https://github.com/alphapapa/org-ql][alphapapa/org-ql: An Org-mode query language, including search]]
 
         Could use this for searching org-mode in general (maybe even better than swiper) or for parsing org-mode for export.  Has callable libraries which may be useful to [[Split 1 org file to many org-roam notes]]
-        
 ******* [[Org-roam APIs]]
 ***** org-mode graphics
 ******* emacs artist mode
@@ -1981,6 +2024,8 @@
 ********* [[Orger]]
 ********* [[Org interface to online databases, PIM's etc.]]
 ******* [[https://pandoc.org/org.html][Pandoc - Org-mode features and differences]]
+***** [[https://github.com/elxbarbosa/novels.org][novels.org: Novels.org - Your Novels in Plain Text (Emacs]]
+
 *** <<Neuron Zettelkasten>>
     Home: [[https://neuron.zettel.page/][Neuron Zettelkasten]]
 
@@ -12170,6 +12215,37 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ******* <<Mathpix Emacs Plugin: mathpix.el>>
 ********* [[https://github.com/jethrokuan/mathpix.el][jethrokuan/mathpix.el: Mathpix Emacs Plugin]]
 *** [[PDF processing in Python]]
+*** BibTeX parsers
+***** Text::BibTeX (I think)
+
+[[https://metacpan.org/pod/bt_postprocess][bt_postprocess - post-processing of BibTeX strings, values, and entries - met...]]
+              [[https://metacpan.org/pod/distribution/Text-BibTeX/btparse/doc/btparse.pod][btparse - C library for parsing and processing BibTeX data files - metacpan.org]]
+
+        A C-language bibtex parser that [[https://metacpan.org/pod/distribution/Text-BibTeX/btparse/doc/btparse.pod][must be downloaded separately]] from [[Text::BibTex]].  Builds failed, and it looks like the author (Greg Ward) is [[https://www.gerg.ca/][not doing CPAN stuff anymore]].
+
+        But I was able to install it [[https://launchpad.net/ubuntu/bionic/+package/libbtparse-dev][on Ubuntu]] with apt-get: apt-get libbtparse or something like that
+
+        uses [[Text::Bibtex]] as the frontend.  Can see from [[https://metacpan.org/pod/bt_postprocess][here]] that it first creates an AST which has no collapsed spaces, and that there are functions to look stuff up in it (bt_traversal()).  Post processing functions do the white space deletion (or not, presumably).
+
+        Is used by [[LaTeX::BibTeX]], which seems to have simpler way of specifying non-collapsing whitespace.
+
+***** <<LaTeX::BibTeX>>
+      From: [[https://metacpan.org/pod/LaTeX::BibTeX::Entry][LaTeX::BibTeX::Entry - read and parse BibTeX files - metacpan.org]]
+
+      I'm not able to install this.  It "couldn't find an acceptable version of btparse nearby..." even though [[Text::Bibtex]] was able to, and runs.
+
+      Will return raw .bib files w/o collapsing, I think if you set ~preserve_values~.  This, prevents [[btparse]] from running maximum post processing parsing, I think.
+
+      First code in the [[https://metacpan.org/pod/LaTeX::BibTeX::Value][LaTeX::BibTeX::Value]] page shows how to set the ~preserve_values~ flag (very easy.)
+
+      Does have some example programs.
+
+***** bibtex2web
+      From: [[https://rawgit.com/mernst/bibtex2web/master/bibtex2web.html][bibtex2web: create webpages from BibTeX bibliography files]]
+
+      I think this somehow uses [[bp]] because some strings in the bp code are also in this code, according to google.
+
+*** [[PDF processing in Python]]
 * <<How to take Notes>>
 *** [[https://www.amazon.com/How-Take-Smart-Notes-Nonfiction-ebook/dp/B06WVYW33Y][Ahrens 2017: How to Take Smart Notes]] (it's on my [[Kindle]])
 *** [[https://notes.andymatuschak.org/About_these_notes][AndyM: about these notes]]: home page to thoughts about notes
@@ -12192,6 +12268,19 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ***** [[http://bnbeckwith.com/code/writegood-mode.html][WriteGood Mode]]: Weasel words, passive voice dupes
 ***** also [[Emacs]]
 * <<Knowledge as Graphs>>
+*** <<Knowledge Graphs in Emacs>>
+***** [[org-roam]]
+***** [[org-brain]]
+***** [[Neuron Zettelkasten]]
+***** Sacha Chau's elisp for making a goal concept map (code at end of [[http://pages.sachachua.com/evil-plans/][this page]])
+***** [[org-diagram drawing with plantuml-babel.org]]
+***** [[http://orgmode.org/worg/org-contrib/org-wikinodes.html][org-wikinodes: CamelCase wiki-like links]] (kind of a graph)
+***** [[https://github.com/alphapapa/org-graph-view][org-graph-view: View Org buffers as a clickable, graphical]]
+***** [[Concept map-like stuff: superlabel, dedicated targets, org-brain]]
+***** [[JabRef]]
+***** Not quite baked: [[http://tex.stackexchange.com/questions/316986/creating-concept-map-akin-to-markdown/316993][Concept maps with LaTex]] (so can use emacs)
+******* [[http://emacs.stackexchange.com/questions/24300/translate-pseudo-code-automatically-on-export-from-latex-to-pdf-in-org-mode][emacs orgmode concept map / Latex]] (also not baked)
+*** [[Relations and Visualization in Zotero]]
 *** Tree / Mindmaps
 ***** MindMeister
 ******* mainly a mindmap tool
@@ -12379,8 +12468,6 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ******* can't find anything about the file format
 ***** [[MindMeister]]
 ***** [[Xmind]] (barely)
-***** Not quite baked: [[http://tex.stackexchange.com/questions/316986/creating-concept-map-akin-to-markdown/316993][Concept maps with LaTex]] (so can use emacs)
-******* [[http://emacs.stackexchange.com/questions/24300/translate-pseudo-code-automatically-on-export-from-latex-to-pdf-in-org-mode][emacs orgmode concept map / Latex]] (also not baked)
 ***** [[http://www.thinkcomposer.com/][ThinkComposer]]: general DAG drawer, multilevel
 ******* lots of formatting options
 ******* multilevel stuff looks nice
@@ -12515,15 +12602,6 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ***** [[https://thebrain.com/][TheBrain: The Ultimate Digital Memory]]    
 ***** emacs-clone: [[org-brain]]     
 ***** examples of use: [[https://thebrain.com/big-thinkers][TheBrain Big Thinkers]]
-*** <<Knowledge Graphs in Emacs>>
-***** [[org-roam]]
-***** [[org-brain]]
-***** [[Neuron Zettelkasten]]
-***** Sacha Chau's elisp for making a goal concept map (code at end of [[http://pages.sachachua.com/evil-plans/][this page]])
-***** [[org-diagram drawing with plantuml-babel.org]]
-***** [[http://orgmode.org/worg/org-contrib/org-wikinodes.html][org-wikinodes: CamelCase wiki-like links]] (kind of a graph)
-***** [[Concept map-like stuff: superlabel, dedicated targets, org-brain]]
-***** [[JabRef]]
 *** [[Relations and Visualization in Zotero]]
 * <<Document Annotation>>
 *** [[https://beepb00p.xyz/annotating.html][How to annotate literally everything]]
@@ -12623,6 +12701,10 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ******* can also [[https://ifttt.com/connect/instapaper/evernote][sync Evernote and Instaper using IFTTT]]
 *** [[https://github.com/exomut/evernote-dump][exomut/evernote-dump: Convert Evernote .enex files to markdown and files]]
 *** [[Evernote and Emacs]]
+*** Legacy Evernote Install
+
+    [[https://help.evernote.com/hc/en-us/articles/360052560314?fbclid=IwAR2TNqp-eGRH3Ds8Vfu-CiKPjYolJzZ_keR9eWQaDahJ2GN-7hwn595zI8w&__s=bsetfdgzirbvqtopurph][Install an older version of Evernote – Evernote Help & Learning]]
+
 *** <<Alternatives to Evernote for web page capture/annotation>>
 ***** [[Hypothesis]]
 ***** [[https://getpocket.com/][Pocket]]
