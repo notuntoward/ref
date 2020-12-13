@@ -1105,7 +1105,8 @@
         I'd like to do do that for (display-time-mode 1), where time would go on left side of modeline.
         
 *** <<Org Mode>>
-***** <<org-roam>>: org-mode based, inspired by [[Roam Research]]
+***** <<org-roam>> 
+      org-mode based Zettelkasten, inspired by [[Roam Research]]
 ******* Intro, basic org-roam info
 ********* [[https://github.com/org-roam][org-roam/org-roam: Rudimentary Roam replica with Org-mode]]
 ********* example: [[https://github.com/jethrokuan/braindump][author's's braindump]]: many org files, pdfs, 
@@ -1255,23 +1256,60 @@
 
 ************* bib notes in <org-roam-topdir>/<bibdir>: [[https://org-roam.discourse.group/t/org-roam-bibtex-in-a-sub-directory/649][Org Roam Bibtex in a Sub Dir]]
 ************* [[make org-roam scan recursive directories]]
-************* [[https://org-roam.discourse.group/t/filtering-by-tags-aka-do-not-show-literature-notes/357/5][Filtering by tags (aka do not show literature notes)]]
-
-              I think directories become some sort of tag but I've lost track of this topic.
-
+************* [[searching by roam_tags]]
+*********** [[zotero-captured web pages accessed ith org-roam-bibtex]]
 *********** also [[org-roam and bibtex]]
 *********** also [[Zotero + Org Roam]]
+*********** <<org-roam-bibtex ref vs. non-ref note search/link>>
+           From: [[https://org-roam.discourse.group/t/filtering-by-tags-aka-do-not-show-literature-notes/357/5][Filtering by tags (aka do not show literature notes)]]
+
+           You can search for non-ref files with:
+
+             orb-find-non-ref-fild
+
+           (I'm not sure how ref or not is defined, though. Is this a tag search of some kind?)
+
+           And you can insert a link to a non-ref file with:
+
+              orb-insert-non-ref
+
+
 ********* [[Zotero + Org Roam]]
 ********* [[how put paper abstracts into notes?]]
-******* <<org-roam tags>>
+******* <<roam_tags in org-roam>>
         So far, I can't get this to work.  And anyway [[https://org-roam.discourse.group/t/tags-and-links-and-tags-oh-my/181/11][tags are way more limited now]] (6/5/20) than JK hopes to make them in the future.
 
-********* recommendation for directory tagging: [[https://github.com/org-roam/org-roam/pull/604#issuecomment-633777601][org-roam/org-roam#604 (feat): Add a tagging system by jethrokuan]]
-********* [[https://github.com/org-roam/org-roam/pull/604#issue-416808067][directory tagging]] in org-roam
-********* [[https://org-roam.github.io/org-roam/manual/Tags.html#Tags][Tags (Org-roam User Manual)]] (not that helpful as of 6/5/20)
-********* Recommended tagging system: [[https://fortelabs.co/blog/para/][The PARA Method: A Universal System for Organizing Digital Information]]
-********* Utility funcs for [[https://d12frosted.io/posts/2020-06-10-org-roam-tags.html][Org-roam tags]], now merged w/ org-roam?
+********* <<searching by roam_tags>>
+*********** org-roam roam_tags show up in minibuffer search
+************* new interactive functions for managing aliases and tags
+              From: [[https://github.com/org-roam/org-roam/pull/1183/files][org-roam/org-roam#1183 (feat): interactive functions for managing aliases and...]]
+*************** must be similar to gif in [[https://github.com/org-roam/org-roam/pull/1183][original PR]]
+                custom code Was first posted on OR-discourse:
+                Utility funcs for [[https://d12frosted.io/posts/2020-06-10-org-roam-tags.html][roam_tags]]
+
+*************** _What is an alias?_
+************* original tag behavior (different now?)
+*************** [[https://org-roam.discourse.group/t/how-to-use-roam-tags-and-or-tags/190/6?u=scotto][says]] Jethro in May 2020 ([[https://org-roam.discourse.group/t/how-to-use-roam-tags-and-or-tags/190/11?u=scotto][they are roam_tags]])
+*************** _seems bad_: if you have alot of tags you won't see the note title!
+*************** Jethro [[https://org-roam.discourse.group/t/how-to-use-roam-tags-and-or-tags/190/16?u=scotto][says]] ivy regex searches will narrow it down (true?)
+*********** [[org-roam-bibtex ref vs. non-ref note search/link]]
+*********** direct sql search for roam tags (custom code)
+       From: [[https://org-roam.discourse.group/t/searching-roam-tags-or-properties-generally/753/11?u=scotto][Searching ROAM_TAGS (or properties generally)]]
+                
+       Is this a good alternative the newly built-in OR tag search?
+*********** [[https://org-roam.discourse.group/t/tags-and-links-and-tags-oh-my/181/2?u=scotto][deft helps tag search]]
+*********** [[directories are roam_tags]]
+*********** [[org-roam-server graph can be narrowed by num-hops or org-roam roam_tags]]
+*********** [[delve can browses by roam_tags]]
+********* Recommended org-roam tagging system
+*********** [[https://fortelabs.co/blog/para/][The PARA Method: A Universal System for Organizing Digital Information]]
+*********** [[https://org-roam.discourse.group/t/tags-and-links-and-tags-oh-my/181/4?u=scotto][suggestion]]: tags ID type of note, not content: _I don't love this_
+*********** [[https://org-roam.discourse.group/t/tags-and-links-and-tags-oh-my/181/11?u=scotto][suggestion]]: use links on concept pages like tags
 ********* [[Finding org-roam notes]]
+********* <<directories are roam_tags>>
+*********** Directories become some sort of tag: [[roam_tags can be built of recursive dirs]]
+*********** [[https://github.com/org-roam/org-roam/pull/604#issue-416808067][directory tagging]] in org-roam
+*********** [[roam_tags can be built of recursive dirs]]
 ******* <<Finding org-roam notes>>
 
         How to find your note again in a huge pile of OR notes?
@@ -1306,14 +1344,20 @@
               From: [[https://github.com/publicimageltd/delve][delve: Delve into your org-roam zettelkasten.]]
 
               It somehow finds pages by "following links."  The author [[https://org-roam.discourse.group/t/prototype-org-similarity-generate-a-list-of-similar-documents-org-mode/1029/9?u=scotto][says]] that it "uses a hierarchical list paradigm to explore the notes."
+
+*************** <<delve can browses by roam_tags>>
+                From: [[https://github.com/publicimageltd/delve][delve: Delve into your org-roam zettelkasten.]]
+
+                "Opening Delve the first time, you can browse your zettelkasten by ROAM_TAG, or use one of the predefined searches. Further functionality will be added."
               
 ************* [[https://org-roam.discourse.group/t/application-of-graph-theory-to-roam-link-network/61/8][Application of Graph Theory to Roam link network - Graphing]]
 ************* [[https://org-roam.discourse.group/t/analysing-the-semantic-network/56][Analysing the semantic network - Graphing Capabilities - Org-roam]]
 ************* [[https://org-roam.discourse.group/t/rfc-interactive-visualization-and-explorer-tool/87/6][{RFC} Interactive Visualization and Explorer Tool]]
 ************* [[org-roam graph visualization]]
+************* also [[Knowledge Graphs in Emacs]]
 *********** [[Visualizing Bibliographies]]
 ********* [[How to take Notes]]
-********* [[org-roam tags]]
+********* [[roam_tags in org-roam]]
 ******* multiple org-roam directories
         See: [[https://org-roam.readthedocs.io/en/master/configuration/][org-roam >> Having More Than One Org-roam Directory]]
 ******* <<org-roam graph visualization>>
@@ -1336,6 +1380,8 @@
 
          /As of 12/10/20, I haven't been able to get the browser display working again./
 
+********* <<org-roam-server graph can be narrowed by num-hops or org-roam roam_tags>>
+          From: [[https://org-roam.discourse.group/t/an-opinionated-academics-workflow-for-using-org-roam/601/5?u=scotto][An Opinionated Academic's workflow for using Org-Roam]]
 ******* <<org-roam capture from browser>>
 ********* Is this just for storing web pages?
 ********* JK's own [[https://github.com/org-roam/org-roam/issues/217#issuecomment-595313500][bookmarklet and capture template]]
@@ -1343,6 +1389,7 @@
 ********* potential [[https://org-roam.discourse.group/t/linking-to-new-notes-from-the-capture-buffer/108][bookmarklet problem]] and workaround, until OR bug is fixed.
 
 ********* [[https://seds.nl/notes/org-roam-firefox-bookmark/][Org-roam Firefox bookmark]]
+********* [[zotero-captured web pages accessed ith org-roam-bibtex]]
 ********* also [[org-capture]]
 ********* also [[clipping web pages with org-mode]]
 ******* <<syncing org-roam across multiple machines>>
@@ -1415,6 +1462,10 @@
 ********* [[https://org-roam.discourse.group/t/creating-an-org-roam-note-from-an-existing-headline/978][Creating an org-roam note from an existing headline]]
 ********* [[https://ag91.github.io/blog/2020/11/12/write-org-roam-notes-via-elisp/][org-mode TODO to org-roam note file via Elisp]]
 ********* [[Org-roam APIs]]
+********* [[Merging org-roam notes back to single org file]]
+******* <<Merging org-roam notes back to single org file>>
+********* [[https://org-roam.discourse.group/t/interoperability-between-org-roam-and-regular-org/715][Interoperability between Org Roam and regular Org - How To - Org-roam]]
+********* [[Split 1 org file to many org-roam notes]]
 ******* <<Org-roam APIs>>
 ********* [[Orger]]: org mode python interface to generic APIs e.g. roam research
 ********* org-roam interface with roam-research
@@ -1444,10 +1495,15 @@
         This is so I can have a separate folder (bib-notes) for paper entries yet org-roam will find them.
 
 ********* Seems there: [[https://github.com/org-roam/org-roam/issues/736][org-roam/org-roam#736 (wrong-number-of-arguments) from org-roam--list-files-e...]]
-********* Tags can be built of recursive dirs: [[help:org-roam-tag-sources]] 
+********* <<roam_tags can be built of recursive dirs>>f
+          [[help:org-roam-tag-sources]]
 
           So I customized it to ‘all-directories’
 
+*********** also [[make org-roam-bibtex put bib notes in separate dir]]
+
+********* also [[roam_tags in org-roam]]
+********* also [[searching by roam_tags]]
 ********* [[make org-roam-bibtex put bib notes in separate dir]]
 ******* also [[org-transclusion]]
 ******* also [[gkroam]]
@@ -10927,7 +10983,29 @@ file_name.parent.mkdir(parents=True, exist_ok=True)
 ******* <<Pytorch high level wrappers>> (like Keras for Tensorflow)
         From: [[https://neptune.ai/blog/model-training-libraries-pytorch-ecosystem][8 Creators and Core Contributors Talk About Their Model Training Libraries Fr...]]
 
-        
+*** <<timestamps in python>>
+    
+    The ~Dateutil~ timestamp parser seems a good replacement for built-in python ~datetime~ parser, as it (mostly, I suppose) doesn't require you to specify a time string format.  Web commenters say that it can be slower than ~datetime~ but the delay was insignificant when I parsed my 2K entry energy.bib file.
+
+    The main format guessing ~datetime~ alterantes seem to be:
+
+    From: [[https://opensource.com/article/18/4/python-datetime-libraries][6 Python datetime libraries | Opensource.com]]
+      Dateutil
+      Arrow
+      Moment
+      Maya
+      Delorean
+      Freezegun
+
+    From: [[https://stackabuse.com/converting-strings-to-datetime-in-python/][Converting Strings to datetime in Python]]
+
+      Dateutil
+      Maya
+      Arrow
+
+    From comments to the article above
+******* [[https://github.com/sdispater/pendulum][GitHub - sdispater/pendulum: Python datetimes made easy]]
+******* [[https://github.com/caronc/datetools][GitHub - caronc/datetools: Date/Time Manipulation plus and advanced cron-like...]]
 *** <<Powerpoint and Python>>
 ***** [[https://towardsdatascience.com/creating-presentations-with-python-3f5737824f61][Creating Presentations with Python]]
 ***** [[Powerpoint and Jupyterlab]]
@@ -12144,6 +12222,9 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ************* Chrome [[https://hypothes.is/users/scotto][hypothes.is annotator]] marks up and Zotero saves but can't re-edit saved html file Zotero makes in hypothes.is. /Can/ re-edit in hypothes.is web page, though. Also: [[Hypothesis]]
 *********** I [[https://forums.zotero.org/discussion/comment/347897/][posted a question]] about annotation to Zotero dev adamsmith.
 *********** Firefox [[https://addons.mozilla.org/en-US/firefox/addon/save-in/][Save In]] at least saves pages to subdirs of ~/Downloads
+********* <<zotero-captured web pages accessed ith org-roam-bibtex>>
+          From: [[https://org-roam.discourse.group/t/creating-html-document-notes-with-org-roam-bibtex/396/11][Creating html document notes with org-roam-bibtex]]
+
 ******* Misc. Zotero Plugins I've tried, may want to use
 ********* [[https://github.com/retorquere/zotero-auto-index][retorquere/zotero-auto-index]]
 ********* <<ZotNet>>: bib ref relations graph drawer by Christy M. Byrd
@@ -12215,7 +12296,22 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ******* <<Mathpix Emacs Plugin: mathpix.el>>
 ********* [[https://github.com/jethrokuan/mathpix.el][jethrokuan/mathpix.el: Mathpix Emacs Plugin]]
 *** [[PDF processing in Python]]
-*** BibTeX parsers
+*** Python BibTeX parsers
+***** _I'm using_: <<python-bibtexparser>>
+      
+      This worked with some fussing but it does allow you to avoid whitespace collapsing.
+
+      *Fussing*
+      o use encoding="utf8" (forces you to do things in more steps)
+      o interpolate_strings=False (also forces you to do things in more steps)
+
+******* [[https://github.com/sciunto-org/python-bibtexparser][python-bibtexparser: Bibtex parser for Python 3.3+]]
+******* [[https://bibtexparser.readthedocs.io/en/master/tutorial.html#step-2-parse-it][Tutorial — BibtexParser 1.0.1 documentation]]
+***** <<pybtex>>
+      From: [[https://bitbucket.org/pybtex-devs/pybtex/src/master/][pybtex: A BibTeX-compatible bibliography processor in Python]]
+
+      This worked with no fuss, but I couldn't find a way to preserve whitespace in comments and abstracts.
+     
 ***** Text::BibTeX (I think)
 
 [[https://metacpan.org/pod/bt_postprocess][bt_postprocess - post-processing of BibTeX strings, values, and entries - met...]]
@@ -12245,6 +12341,7 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 
       I think this somehow uses [[bp]] because some strings in the bp code are also in this code, according to google.
 
+***** [[https://github.com/matthew-brett/babybib][babybib: Tiny bibtex parser]]
 *** [[PDF processing in Python]]
 * <<How to take Notes>>
 *** [[https://www.amazon.com/How-Take-Smart-Notes-Nonfiction-ebook/dp/B06WVYW33Y][Ahrens 2017: How to Take Smart Notes]] (it's on my [[Kindle]])
@@ -12280,6 +12377,7 @@ Linking is cumbersome (fiddly menu-based copy in zotero, paste in emacs, and the
 ***** [[JabRef]]
 ***** Not quite baked: [[http://tex.stackexchange.com/questions/316986/creating-concept-map-akin-to-markdown/316993][Concept maps with LaTex]] (so can use emacs)
 ******* [[http://emacs.stackexchange.com/questions/24300/translate-pseudo-code-automatically-on-export-from-latex-to-pdf-in-org-mode][emacs orgmode concept map / Latex]] (also not baked)
+***** [[org-roam topic & related note discovery]]
 *** [[Relations and Visualization in Zotero]]
 *** Tree / Mindmaps
 ***** MindMeister
