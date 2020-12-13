@@ -3474,7 +3474,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 *********** [[file:energy.bib::Szekely09brownDistCov][Szekely et al. 2009: Brownian Distance Covariance]]
 *********** [[file:energy.bib::Szekely12distCovUniq][Szekely & Rizzo 2012 Uniqueness Distance Covariance]]
 ********* <<Generalized Correlation>>
-*********** [[file:energy.bib::doi:10.1080/03610918.2015.1122048][Vinod 2017: Generalized Correlation and kernel Causality]]
+*********** [[file:energy.bib::Vinod17genCorrCause][Vinod 2017: Generalized Correlation and kernel Causality]]
 ********* <<Partial Mutual Information Estimation>>
 
           Is sometimes called [[Conditional Mutual Information]] e.g. the
@@ -5355,7 +5355,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                            
 ***** [[http://www.afia-france.org/tiki-index.php%3Fpage%3DGroupeDeLecture090402JP][Detecting the arrow of time with independent noise models]]
 ***** [[ARIMA Forecasting]]
 *** [[Extreme Quantile Clustering]]
-*** [[file:energy.bib::doi:10.1080/03610918.2015.1122048][Vinod 2017: Generalized Correlation & Kernel Causality]]
+*** [[file:energy.bib::Vinod17genCorrCause][Vinod 2017: Generalized Correlation & Kernel Causality]]
 *** also: [[Types of dependence or similarity]]
 * <<Ensuring bounded regression outputs>>
   <<bounded regression outputs>>
@@ -7537,7 +7537,7 @@ variables will be preferred, when possible.
 
 ******* [[file:energy.bib::UKONS08holtWintersARIMAreg][National 2008: From Holt Winters ARIMA Modelling]] : trend + multip/add seasonal
 *** [[Extreme Quantile Clustering]]
-*** [[file:energy.bib::doi:10.1080/03610918.2015.1122048][Vinod 2017: Generalized Correlation & Kernel Causality]]
+*** [[file:energy.bib::Vinod17genCorrCause][Vinod 2017: Generalized Correlation & Kernel Causality]]
 *** also: [[Types of dependence or similarity]]
 
 ***** Caltech video: [[http://itunes.apple.com/us/podcast/where-wind-comes-from-on-earth/id422627541?i%3d91602098][where the wind comes from]]
@@ -10286,6 +10286,7 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 ******* [[cite:Adams13glblWindPowOvrEst][Adams & Keith 2013: Are wind power pot. overest]]?
 ******* An argument against this: [[http://www.evernote.com/l/AA0V1xHzL29PgYhOrFprhksnanhADGk1XAI/][Max Planck Institute Study On Large-Scale Wind Energy Misses The Mark]]
 ******* Another argument against this: [[http://www.evernote.com/l/AA0PmyllbtxLC52xav2ayetPfbCJM_0OfyI/][Wind could meet many times world's total power demand by 2030, Stanford researchers say]]
+***** [[cite:Anon16UnderstandingLocalDiurnalWind][Anonymous 2016: Understanding Local Diurnal Winds]]
 *** Solar Meteorology and Solar Power Assessments
 ***** [[cite:Koehler17critWeathSolarPow][Koehler et al. 2017: Critical Weath for Solar Pow]]
 ***** [[cite:Newport17introSolarRad][Newport 2017: Introduction to Solar Radiation]] 
