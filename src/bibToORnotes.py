@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
 # %% [markdown]
-# ### TODO: can all that #+ tag crap be at the bottom of the org note?
-# Partial answer:  If I move this stuff to the end of an org-roam note and delete the db, OR is still able to find it correctly, so it apparently reads #+ anywhere.
-# The only problem so far is that if there are not roam_tags, and I run M-x org-roam-tag-add, it puts the new #+ thing at the top of the file, even if all the other #+ stuff is at the bottom.
-#
-# Create a feature request??
-#
-# ### TODO: different formatting for title and author/date at top:  all italics?
-# ### TODO: stem keywords with NLTK?
+# ### TODO: British spelling to American?
+# I only found one example where this split a tag: "optimization".
+# quick hack:
+# https://stackoverflow.com/questions/42329766/python-nlp-british-english-vs-american-english
+# https://stackoverflow.com/questions/18840640/python-2-7-find-and-replace-from-text-file-using-dictionary-to-new-text-file
 
 # %%
 from pathlib import Path
@@ -16,6 +13,7 @@ from bibtexparser.bparser import BibTexParser
 from dateutil.parser import parse
 import string
 from collections import defaultdict
+from nltk.corpus import wordnet
 
 # %%
 refDir = Path("C:/Users/scott/OneDrive - Clean Power Research/ref")
@@ -28,8 +26,10 @@ bibInNm = "energy"
 bibInFNm = bibDirBase / f"{bibInNm}.bib"
 noteOutDir = Path("C:/Users/scott/tmp/bibNotesOR")
 
-matchWhiteSpace_regexp = re.compile(r"\s+") # for colapsing/replacing whitespace
-matchLeadStars_regexp = re.compile(r"\s+") # for de-orgifying orig .bib comments
+# for colapsing/replacing whitespace
+matchWhiteSpace_regexp = re.compile(r"\s+")
+# for de-orgifying orig .bib comments
+matchLeadStars_regexp = re.compile(r"\s+")
 
 # %%
 # Read source .bib as string so can handle parsing in a separate step, avoiding
@@ -53,32 +53,35 @@ keywordsCntAll = defaultdict(lambda: 0)
 keywordsItem = defaultdict(lambda: [])
 remPunctTable = str.maketrans('', '', string.punctuation)
 
-# Collect all bibkeys and the keywords for each item
+# Collect all bibkeys and (normalized) keywords for each item
 for bibitem in bib_database.entries:
     bibkey = bibitem['ID']
     bibkeysAll.add(bibkey)
 
     if "keywords" in bibitem:
-        # convert various .bib keyword lists to OR format
-        kws_full_list = []
-        for kw in re.split(', |; |,|;', bibitem['keywords']):
-            if len(kw) > 0:
-                kw = kw.translate(remPunctTable)
-                kw = matchWhiteSpace_regexp.sub("_", kw).strip("_").lower()
-                keywordsCntAll[kw] += 1
-                keywordsItem[bibkey] += [kw]
+        # convert various .bib keyword list formats to OR format
+        for kw_phrase in re.split(', |; |,|;', bibitem['keywords']):
+            if len(kw_phrase) > 0:
+                # normalize to lowercase, no punctuation, singular, no spaces
+                kw_phrase = kw_phrase.translate(remPunctTable).lower().split()
+                for idx, word in enumerate(kw_phrase):
+                    if (word_singular := wordnet.morphy(word)) is not None:
+                        kw_phrase[idx] = word_singular
 
-# Remove rare keywords and then make roam_tags string for each bibkey
+                kw_phrase = "_".join(kw_phrase)
+                keywordsItem[bibkey] += [kw_phrase]
+                keywordsCntAll[kw_phrase] += 1
+
+# Remove rare keywords and then make a roam_tags string for each bibkey
 nOccurMin = 3
-keepKeywordsDict = {kw: count for kw, count in keywordsCntAll.items() if count >= nOccurMin}
-keepKeywords = set(keepKeywordsDict.keys())
+keepKeywords = set({kw: count for kw, count in keywordsCntAll.items()
+                    if count >= nOccurMin}.keys())
 
 roam_tags_str = dict()
-for bibkey, kws in keywordsItem.items():
+for bibkey in bibkeysAll:
+    kws = keywordsItem[bibkey]
     kwsItemKeep = keepKeywords.intersection(kws)
-
-    if len(kwsItemKeep) > 0:
-        roam_tags_str[bibkey] = f'#+roam_tags: {" ".join(kwsItemKeep)}'
+    roam_tags_str[bibkey] = f'#+roam_tags: {" ".join(kwsItemKeep)}'
 
 print(f"keeping {len(keepKeywords)} of {len(keywordsCntAll)} unique keywords")
 
@@ -86,25 +89,56 @@ print(f"keeping {len(keepKeywords)} of {len(keywordsCntAll)} unique keywords")
 # %%
 # Translate selected .bib entries to org-roam note syntax, and write notes
 
-def replace_leading(source, char="o"):
-    """A leading string of '*' is replaced w/ o's, avoiding org-mode trouble"""
-    stripped = source.lstrip('*')
-    return char * (len(source) - len(stripped)) + stripped
+def fix_comment_stars(commentStr):
+    """Replace leading stars with 'o's.  Bib used '*'s which may
+    result in inadvertently collapsed .org headlines"""
 
-
-def fix_comment_stars(commentstr):
-    """.bib entries weren't org-aware, messy use of '*': replace w/ 'o' """
     outlns = []
-    for ln in commentstr.split('\n'):
-        outlns += [replace_leading(ln, 'o')]
+    for ln in commentStr.split('\n'):
+        noLstars = ln.lstrip('*')
+        outlns += ["o" * (len(ln) - len(noLstars)) + noLstars]
 
     return "\n".join(outlns)
 
 
-def bibitem_to_ORnote(bibitem):
-    """Makes org-roam note text from a .bib file item"""
+def bibitem_to_OR_note(bibitem):
+    """Makes org-roam note text from a .bib file item.  The note contains 
+    the .bib comment, abstract and metadata.  The filename, OR title and key
+    are the .bib citekey."""
+
     bibkey = bibitem['ID']
-    noteLns = [f"#+title:{bibkey}"]
+
+    noteLns = []
+    if "title" in bibitem:
+        noteLns += [f"={bibitem['title']}="]
+
+    authChunks = []
+    if "author" in bibitem:
+        authChunks += [bibitem['author']]
+
+    if "year" in bibitem:
+        authChunks += [f"({bibitem['year']})"]
+
+    if len(authChunks) > 0:
+        authStr = " ".join(authChunks)
+        noteLns += [f"/{authStr}/"]
+
+    if "comment" in bibitem:
+        commentTxt = bibitem['comment']
+        words = re.findall(r'\w+', commentTxt)
+        words = set([w.translate(remPunctTable) for w in words])
+
+        for citedKey in words.intersection(bibkeysAll):
+            linkStr = f"[[file:{citedKey}.org][{citedKey}]]"
+            commentTxt = commentTxt.replace(citedKey, linkStr)
+
+        noteLns += ["", fix_comment_stars(commentTxt)]
+
+    if "abstract" in bibitem:
+        noteLns += ["", "* Abstract", bibitem['abstract']]
+
+    noteLns += ["", "* Org-Roam Metadata", f"#+title:{bibkey}"]
+
     if "timestamp" in bibitem:
         try:
             dt = parse(bibitem['timestamp'])
@@ -114,46 +148,15 @@ def bibitem_to_ORnote(bibitem):
 
         noteLns.append(f"#+created: [{timeStr}]")
 
-    noteLns.append(f"#+roam_key: cite:{bibkey}")
-
-    if bibkey in roam_tags_str:
-        noteLns += [roam_tags_str[bibkey]]
-
-    noteLns += [""]
-    if "title" in bibitem:
-        noteLns += [f"*{bibitem['title']}*"]
-
-    tmpline = []
-    if "author" in bibitem:
-        tmpline += [bibitem['author']]
-
-    if "year" in bibitem:
-        tmpline += [f"({bibitem['year']})"]
-
-    if len(tmpline) > 0:
-        noteLns += [" ".join(tmpline)]
-
-    if "comment" in bibitem:
-        commentTxt = bibitem['comment']
-        words = re.findall(r'\w+', commentTxt)
-        words = set([w.translate(remPunctTable) for w in words])
-
-        for citedKey in words.intersection(bibkeysAll):
-            didReplace = True
-            linkStr = f"[[file:{citedKey}.org][{citedKey}]]"
-            commentTxt = commentTxt.replace(citedKey, linkStr)
-
-        noteLns += ["", fix_comment_stars(commentTxt)]
-
-    if "abstract" in bibitem:
-        noteLns += ["", "* Abstract", bibitem['abstract']]
+    noteLns += [f"#+roam_key: cite:{bibkey}",
+                roam_tags_str[bibkey]]
 
     return noteLns
 
 
 # Write a separate org-roam note file for each .bib entry
 for bibitem in bib_database.entries:
-    noteLns = bibitem_to_ORnote(bibitem)
+    noteLns = bibitem_to_OR_note(bibitem)
 
     noteOutFNm = noteOutDir / f"{bibitem['ID']}.org"
     with open(noteOutFNm, 'w', encoding="utf8") as fh:
@@ -165,21 +168,11 @@ print("\nDone.")
 # %% [markdown]
 # ### Prototype code below.  Don't run.
 
-# %%
-# s = "energy_source, nuclear_power; nuclear_power;"
-
-# kws_underscore=[]
-# for kw in re.split(',|;|, |; ',s):
-#     if len(kw) > 0:
-#         kws_underscore += [matchWhiteSpace_regexp.sub("_", kw).strip("_")]
-
-# kws_underscore
-
 # %% [markdown]
 # #### pybtex parser string examples
 
 # %%
-#from pybtex.database.input import bibtex
+# from pybtex.database.input import bibtex
 # bibitem['keywords']="CRPS, Diagnostic tools  , Evaluation framework, Ignorance Score, Probabilistic solar forecasting, Scoring rules"
 # bibkws = bibitem['keywords'].split(", ")
 # bibkws
@@ -213,8 +206,8 @@ print("\nDone.")
 # as_text(bib_database.entries[0]['author'])
 
 # %% [markdown]
-# ### BibTeX::Parser
-# I wasn't able to get this to not collapse whitespace so below is the hack to get around that.  Turns out that bibtexparser could do the job w/o the hacks.
+# #### BibTeX::Parser
+# I wasn't able to get this to not collapse whitespace, so below is the hack to get around that.  But it turned out that bibtexparser could do the job w/o the hack.
 
 # %%
 # bibIn = bibtex.Parser().parse_file(bibInFNm)
@@ -223,7 +216,7 @@ print("\nDone.")
 # bibkeyFields = dict()
 # for bibkey, bibitem in bibIn.entries.items():
 #     if 'comment' in bibitem.fields:
-#         bibkeyFields[bibkey] = True 
+#         bibkeyFields[bibkey] = True
 # %%
 # keysWithComments = list(bibkeyFields.keys())
 # nextKey = keysWithComments.pop(0)
