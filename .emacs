@@ -3097,16 +3097,20 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; needed for ORB, apparently
 (use-package magit-section)
 
-;; like 1st of https://githubmemory.com/repo/org-roam/org-roam-bibtex/issues
-(use-package org-roam-bibtex
-;;  :straight t
-  ;; :after needed for straight: https://github.com/org-roam/org-roam-bibtex
-  :after (org-roam org-ref helm-bibtex ivy-bibtex)
-  :init
-  (setq orb-insert-interface 'ivy-bibtex)
-  (setq orb-note-actions-interface 'ivy)
-  (add-to-list 'orb-preformat-keywords "year")
-  (org-roam-bibtex-mode))
+;; ORB puts any .org file link into OR DB:  I don't want that b/c I want to link to product code, etc.
+;; TURN OFF for now
+;; TODOL: MAKE A PR about this
+
+;; ;; setup like 1st of https://githubmemory.com/repo/org-roam/org-roam-bibtex/issues
+;; (use-package org-roam-bibtex
+;; ;;  :straight t
+;;   ;; :after needed for straight: https://github.com/org-roam/org-roam-bibtex
+;;   :after (org-roam org-ref helm-bibtex ivy-bibtex)
+;;   :init
+;;   (setq orb-insert-interface 'ivy-bibtex)
+;;   (setq orb-note-actions-interface 'ivy)
+;;   (add-to-list 'orb-preformat-keywords "year")
+;;   (org-roam-bibtex-mode)) ;; probably what grabs C-c l
 
 ;; A temporary ORB fix so don't have to select template type every time.
 ;; Goes away when proposed changes to main org-roam pkg are made
@@ -3669,7 +3673,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 (if (setq rg_exe (sdo/find-exec "rg" "ripgrep needed org-roam and others"))
     (progn (use-package deadgrep)
            (global-set-key [f5] 'deadgrep)
-           ;; search cwd
+           ;; use current working dir as starting point of search
            ;; https://github.com/Wilfred/deadgrep/issues/14#issuecomment-464363207
            (defun wh/return-default-dir ()
              default-directory)
@@ -4473,15 +4477,10 @@ reuse it's window, otherwise create new one."
 (display-time-mode 1) ; time on the modeline (is customized)
 
 ;; From?: https://www.reddit.com/r/emacs/comments/722t6w/in_smartlinemode_how_to_only_view_buffername_and/dnffnoq/
-;;
-;; this is constantly causing errors like this:
-;;
-;; Error during redisplay: (eval (sml/generate-minor-modes)) signaled (wrong-type-argument number-or-marker-p \10) [43 times]
-;;
-;; (use-package smart-mode-line 
-;;   :config
-;;   (setq sml/theme nil) ; don't change existing modeline faces
-;;   (sml/setup))
+(use-package smart-mode-line 
+  :config
+  (setq sml/theme nil) ; don't change existing modeline faces
+  (sml/setup))
 
 ;;(setq sml/replacer-regexp-list '((".+" "")))
 
