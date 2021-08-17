@@ -3060,16 +3060,12 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; ** v2 Org-Roam
 
-;; does v2 still use sqlite3?
-(sdo/find-exec "sqlite3" "sqlite3 needed by org-roam")
-(use-package emacsql-sqlite3)
-
 ;; TODO: :custom (org-id-method 'ts) doesn't work
 ;;       https://org-roam.discourse.group/t/org-roam-major-redesign/1198/28
 ;; TIPS
 ;; add org-id to headline: org-id-copy
 
-(setq org-roam-v2-ack t) ;; no v2 startup msg (doesn't work inside use-package)
+(setq org-roam-v2-ack t) ;; Stop v2 startup msg. Doesn't work, anwywhere
 
 (use-package org-roam
 ;;  :straight t
