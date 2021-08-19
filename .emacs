@@ -252,6 +252,24 @@ TODO: make this a general function."
     (message "DPIthis %s" DPIthis)
     (setq nPixThis (max 1 (round (+ (* (/ (- nPixHigh nPixLow) (- DPIhigh DPIlow)) (- DPIthis DPIlow)) nPixLow))))))
 
+;; (defun set-default-font-per-dpi ()
+;;   "Sets the default font appropriately for the screen DPI"
+
+;;     (setq DPIthis (dpi-avg))
+;;     (message "DPIthis %s" DPIthis)
+
+;;     (default-text-scale-increment 50) ; about right for Dell 27"
+    
+;;     (defun my-preferred-font-increment ()
+;;       (let ( (dpi (dpi-avg)) )
+;;         (cond
+;;          ((< dpi 110) 10)
+;;          ((< dpi 130) 11)
+;;          ((< dpi 130) 50)
+;;          (t 12))))
+;;
+;; (defvar my-preferred-font-increment (my-preferred-font-increment)))
+
 
 ;; https://github.com/jinnovation/.emacs.d
 ;;
@@ -411,7 +429,7 @@ TODO: make this a general function."
 (use-package resize-window) ; put in hydra below
 
 ;; ** Adjusting Window Orientation
-(use-package transpose-frame ; tons of functions, this one is most general
+(use-package transpose-frame ; tons of functions; this one is most general
   :config (global-set-key (kbd "C-|")  'rotate-frame-clockwise))
 
 (winner-mode 1) ; Undo window config: C-c left; Redo window config: C-c right
@@ -722,16 +740,16 @@ See also `toggle-frame-maximized'."
 ;; TODO: shrink some more and put a bunch of other window functions on
 ;; this hydra?  Maybe frames, buffers, ...
 ;; TODO compare w/ ace-window and hydr: https://www.youtube.com/watch?v=_qZliI1BKzI
-(use-package hydra) ; should probably put some hydra defs inside of it, or this inside of ivy
+(use-package hydra) ; s/ probably put some hydra defs inside of it, or this inside of ivy
 (defhydra hydra-window (:color pink :hint nil :timeout 20)
   "
-     Move          Swap             Resize         Split
-╭─────────────────────────────────────────────────────────────┐
-      U             C-U               M-U          [v]ertical
-      ▲              ▲                 ▲           [h]orizontal
+     Move          Swap          Resize        Split
+╭─────────────────────────────────────────────────────────┐
+      U            C-U             M-U         [v]ertical
+      ▲             ▲               ▲          [h]orizontal
  L ◀   ▶ R   C-L ◀   ▶ C-R   M-L ◀   ▶ M-R    [s]ensibly
-      ▼              ▼                 ▼           ╭──────────┐
-      D             C-D               M-D          quit : [q]
+      ▼             ▼               ▼          ╭──────────┐
+      D            C-D             M-D          quit : [q]
 "
   ("<left>" windmove-left)
   ("<down>" windmove-down)
@@ -2931,6 +2949,38 @@ TODO: add a cycle that opens or collapses all prop drawers?"
     ))
 
 ;; ** Org and Git
+
+;; WARNING: If you've changed the file since the last git checkin,
+;; following that link won't show your changes.  This is because
+;; ol-git-link checks out the most recently checked in version of the
+;; file you've made the link from and then displays that.
+
+;; TODO: warn if file has changes not in git.  Maybe don't check out a
+;; version but link directly to the file?
+
+;; Makes a link description from the marked region for git links. Overwrites function in:
+;; ~/.emacs.d/elpa/org-plus-contrib-20210816/ol-git-link.el
+;;
+(defun org-git-store-link ()
+  "Store git link to current file.  The link description is the active mark region, if there is one.
+This is an overwrite of the same-named function in ol-git-link.el"
+  (when (buffer-file-name)
+    (let ((file (abbreviate-file-name (buffer-file-name)))
+	  (line (line-number-at-pos)))
+      (when (org-git-gitrepos-p file)
+        (if mark-active
+          (let ((region (funcall region-extract-function nil)))
+            (deactivate-mark)
+	    (org-store-link-props
+	     :type "git"
+	     :link (org-git-create-git-link file line)
+             :description region))
+          (org-store-link-props
+	   :type "git"
+	   :link (org-git-create-git-link file line)))))))
+
+;; also see .emacs example: (defun my//dired-store-link ...)
+
 ;;For magit buffers https://github.com/magit/orgit
 ;;(use-package orgit)
 
@@ -3124,14 +3174,21 @@ TODO: add a cycle that opens or collapses all prop drawers?"
       :type org-roam-bibtex)))   ;; <= type marker
 
 ;; ** org-roam-ui (graph viewing)
-;; straight OR pkgs seem to have problems; mixed melpa and straight
-;; also seem to; and this pkg isn't yet in melpa:  skip it for now.
-;; on 
-;; (use-package org-roam-ui
-;;   :straight t
-;;   (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
-;;   :after org-roam
-;;   :hook (org-roam . org-roam-ui-mode))
+
+;; config from: https://github.com/org-roam/org-roam-ui
+(use-package org-roam-ui
+  :straight (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+  :after org-roam
+;;  :hook
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;  :hook (after-init . org-roam-ui-mode)
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
 
 ;; "pdf-scrapper" part of org-roam-bibtex requires ruby gem
 ;; anystyle_cli
@@ -4600,6 +4657,9 @@ reuse it's window, otherwise create new one."
 ;; ** Weather
 ;;
 ;; SEEMS BROKEN, as of Feb 2021
+;; The problem might be known, and there's an unmerged PR to fix it (could try
+;; *straight to get it?)
+;; https://github.com/bcbcarl/emacs-wttrin/issues/16
 
 ;; M-x wttrin to start, 'g' to next city, 'q' qo quit
 (use-package wttrin
