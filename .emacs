@@ -2957,6 +2957,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; TODO: warn if file has changes not in git.  Maybe don't check out a
 ;; version but link directly to the file?
+;; TODO: move the "description is marked region" thing to org-store-link-props since everybody must call that one, right?
 
 ;; Makes a link description from the marked region for git links. Overwrites function in:
 ;; ~/.emacs.d/elpa/org-plus-contrib-20210816/ol-git-link.el
@@ -2971,13 +2972,14 @@ This is an overwrite of the same-named function in ol-git-link.el"
         (if mark-active
           (let ((region (funcall region-extract-function nil)))
             (deactivate-mark)
+            ;; I'm using the obsolete org-store-link-props here b/c org-link-store-props concats :description into the link instead of making it a separate description.  SOMETIMES org-store-link-props does too (in .py files?)  Seems to think that marked region (or :description?) is the string that should be searched for when visiting the link.  Does it NOT use description if region is marked?
 	    (org-store-link-props
-	     :type "git"
-	     :link (org-git-create-git-link file line)
-             :description region))
-          (org-store-link-props
-	   :type "git"
-	   :link (org-git-create-git-link file line)))))))
+             :link (org-git-create-git-link file line)
+             :description region
+             :type "git"))
+          (org-link-store-props
+	   :link (org-git-create-git-link file line)
+           :type "git"))))))
 
 ;; also see .emacs example: (defun my//dired-store-link ...)
 
