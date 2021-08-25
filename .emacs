@@ -236,13 +236,123 @@ DISPLAY is a display name, frame or terminal, as in
            (mm-d (pyth mm-w mm-h)))
       (/ pix-d (mm2in mm-d)))))
 
+
+;; DPI vs. monitor
+;;
+;; | screen         | dpi |
+;; |----------------+-----|
+;; | Surface Pro    | 267 |
+;; | Surface Book 2 | 260 |
+;; | Dell 27" 4K    | 128 |
+;; | Dell 24" 4K    |     |
+;; | MacBook Pro    | 131 |
+;; | HP 27" 1080p   |     |
+
+;; this does something every time window size changes (not just frames
+;; but windows inside of it)
+
+;; from: https://www.reddit.com/r/emacs/comments/dpc2aj/readjusting_fontsize_according_to_monitor/
+;; (defun hoagie-adjust-font-size (frame)
+;;   (message "window size change event"))
+;; (add-hook 'window-size-change-functions #'hoagie-adjust-font-size)
+;; is dispwatch a better alternative?
+
+;; dispwatch calls you if the current display (monitor?) configuration changes.
+;;https://github.com/mnp/dispwatch
+
+;; TODO comment
+;; TODO put nDivPix calc into this
+;; TODO change function name to something more appropriate
+(defun set-fonts-per-dpi ()
+  (let* ((dpiThis (dpi-avg))
+         (fontHeightThis (round (/ 20480 dpiThis))))
+    
+    (message "Setting font of display with dpi=%s to height %s" dpiThis fontHeightThis)
+    ;; advice from: https://protesilaos.com/codelog/2020-09-05-emacs-note-mixed-font-heights/
+    (set-face-attribute 'default nil :font "Consolas" :height fontHeightThis)
+    (set-face-attribute 'fixed-pitch nil :family "Consolas" :height 1.0)
+    (set-face-attribute 'variable-pitch nil :family "Georgia" :height 1.0)))
+  
+(defun my-display-changed-hook (disp)
+  (message "Changed to  display of size %s" disp)
+  (set-fonts-per-dpi))
+
+(use-package dispwatch
+  :config (and
+      (add-hook 'dispwatch-display-change-hooks #'my-display-changed-hook)
+      (dispwatch-mode 1)))
+
+(add-hook 'after-init-hook #'set-fonts-per-dpi)
+(add-hook 'after-make-frame-functions #'set-fonts-per-dpi)
+
+;; do something similar with functions that clone to frames or
+;; whatever?
+;; could entirely replace function, like this: (define-key
+;; special-event-map [iconify-frame] 'my-frame-action)
+;; (https://emacs.stackexchange.com/a/64616/14273)
+
+;; centers every new frame, including the initial one using
+;; (after-init-hook  and 'after-make-frame-functions.  I could change
+;; fonts instead.
+;;
+;; https://christiantietze.de/posts/2021/06/emacs-center-window-single-function/
+
+;; different font per window; if a buffer moves to, say, a buffer with
+;; a big font, then all windows containint that buffer will get big
+;; (in this idea):
+;; https://emacs.stackexchange.com/a/13263/14273
+
+;; function that shrinks frame text font if frame width gets less than
+;; 76 chars
+;; https://blog.patshead.com/2016/04/emacs-automatically-adjust-font-size-when-frame-width-changes.html
+
+;; 4 ways to name fonts in emacs.  In Windows, only the form
+;; "fontname[-fontsize]" is supported.  So do always use that so it's multiplatform.
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Fonts.html
+
+;; default-text-scale package (I have/use) sets all fonts on all
+;; frames and new ones made thereafter:
+;; https://github.com/purcell/default-text-scale
+
+;; (display-monitor-attributes-list &optional DISPLAY) omitting
+;; DISPLAY gives you selected (active?) frame's monitor properties.
+;; Or, you can give it a DISPLAY argument
+;; https://emacs.stackexchange.com/questions/60707/how-to-get-the-display-dimensions-of-the-display-emacs-is-in
+
+;; Emacs's idea of a  “Display” is the total available space, while
+;; “monitor” is a single (display) device, like one Dell monitor.
+;; display-monitor-attributes-list. That shows information for all
+;; monitors known to the system; frame-monitor-attributes, that limits
+;; the information to the monitor of the current Emacs frame. Has code
+;; to center a frame in a monitor.  Also works on MacOS, which has
+;; some kind of menu offsetting:
+;; https://christiantietze.de/posts/2021/06/emacs-center-window-on-current-monitor/
+
+;; (display-pixel-width)
+;; (display-pixel-height)
+;; return "display" size in pixels
+;; https://stackoverflow.com/questions/2151449/can-i-detect-the-display-size-resolution-in-emacs
+
+;; vague advice for detecting if a frame moves to a different frame.
+;; Guy says he's implemented it but doesn't give code
+;; https://emacs.stackexchange.com/questions/22513/is-there-a-way-to-detect-change-of-monitor-in-emacs-elisp
+
+;; setting default frame size but is this obsoleted by the
+;; default-font package I'm using now?
+;; https://emacs.stackexchange.com/questions/7583/transiently-adjust-text-size-in-mode-line-and-minibuffer
+
+;; recommended way to chaange all font sizes (when they have mixed sizes): change fonts in proportion to a change in the default font
+;; https://protesilaos.com/codelog/2020-09-05-emacs-note-mixed-font-heights/
+;; Font size adjustment
+
+
 (defun calcDivNpix ()
   "Computes # pix for window divider based on screen DPI.
 TODO: make this a general function."
 
   ;; (let* ((nPixHigh 6.0)    ; Home monior (Dell 4K)
   ;;       (DPIhigh   185.0)
-  (let* ((nPixHigh 6.0)    ; Surface Pro
+  (let* ((nPixHigh 6.0)    ; Surface Pro / SB2: dpi = 267 / 260
          (DPIhigh   267)
          (nPixLow   3.0)    ; CPR monitor
          (DPIlow    94.0)
@@ -269,6 +379,26 @@ TODO: make this a general function."
 ;;          (t 12))))
 ;;
 ;; (defvar my-preferred-font-increment (my-preferred-font-increment)))
+
+;; default-text-scale-increment.el
+;; increments all frames
+;;
+;; This sets all frames to a specific given font
+;; https://gist.github.com/mecab/1bc847e51034ae1e11b813b79f7da553
+;; TODO easy to work from this.
+;; TODO but set different fonts on sceens w/ different resolutions?
+(defun change-font-size (size)
+  "Change font size (clearly `:height` in `face-attribute`) to given SIZE."
+
+  (interactive
+   (list
+    (read-number
+     (format "Input font size (current=%d): " (face-attribute 'default :height))
+     nil)))
+ 
+  (set-face-attribute 'default nil :height size)
+)
+
 
 
 ;; https://github.com/jinnovation/.emacs.d
@@ -305,6 +435,8 @@ TODO: make this a general function."
       (when (fboundp 'goto-address) (add-hook 'find-file-hooks 'goto-address))
       (define-key global-map [S-down-mouse-3] 'imenu)
 
+      ;; TODO: put this inside of set-fonts-per-dpi ()
+      
       ;; Set window dividers (mouse grab lines for moving window boundaries)
       (setq nPixDiv (calcDivNpix))
       (message "nPixDiv: %s" nPixDiv)
@@ -437,12 +569,42 @@ TODO: make this a general function."
 ;; ** Attempts at saving desktop
 ;; *** Burly
 
-;; looks promising, ran into stupid emacs 27.1 GPG key thing.
+;; Seems promising, but I can't get it to work.  If I save a burly
+;; bookmark and then try to open it wtth burly-open-bookmark, I get an
+;; error:  window--state-put-2: Wrong type argument: stringp, nil
+;; Also, Zamansky has a video showing that you can persist burly
+;; bookmarks to a file, but I don't see it on the official burly page:
+;; https://github.com/alphapapa/burly.el/blob/master/README.org
+;;
 ;; TODO: come back to this later
-;; (use-package quelpa)
-;;(use-package quelp-use-package)  ;; had gpg problem on this line
 
-;; I don't think I ever got perspectives to work
+;; ;; from: https://github.com/tompurl/dot-emacs/blob/master/emacs-init.org
+;; (unless (package-installed-p 'quelpa)
+;;   (with-temp-buffer
+;;     (url-insert-file-contents "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
+;;     (eval-buffer)
+;;     (quelpa-self-upgrade)))
+
+;; ;;…and let’s integrate it with use-package:
+
+;; (quelpa
+;;  '(quelpa-use-package
+;;    :fetcher git
+;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
+;; (require 'quelpa-use-package)
+
+;; (use-package async) ;; SO: below needs this
+
+;; (use-package burly
+;;   :quelpa (burly :fetcher github :repo "alphapapa/burly.el"))
+
+;; ;; from https://github.com/torgeir/.emacs.d
+;; (use-package burly
+;;   :straight 
+;; ;;  :straight nil
+;;   :commands (burly-bookmark-windows burly-open-bookmark burly-open-url)
+;;   :load-path "site-lisp/burly")
+
 ;; *** Perspectives for emacs
 ;; ;; From: https://github.com/andresilva/emacs.d/blob/master/init.el
 
@@ -540,6 +702,7 @@ TODO: make this a general function."
 ;; (winsav-save-mode 1);
 ;; (require 'winsav-save-configuration)
 
+;; I don't think I ever got perspectives to work
 ;; ** Make a new *scratch* buffer right after killing it
 
 ;; From: https://www.emacswiki.org/emacs/RecreateScratchBuffer
@@ -2328,7 +2491,6 @@ Version 2020-11-20 2021-01-18"
  '(org-outline-path-complete-in-steps nil)
  '(org-pretty-entities nil)
  '(org-refile-targets '((nil :maxlevel . 6)))
- '(org-roam-bibtex-mode t)
  '(org-roam-completion-everywhere t)
  '(org-roam-completion-system 'ivy)
  '(org-roam-db-update-method 'idle-timer)
@@ -3117,14 +3279,16 @@ This is an overwrite of the same-named function in ol-git-link.el"
 ;; TIPS
 ;; add org-id to headline: org-id-copy
 
-(setq org-roam-v2-ack t) ;; Stop v2 startup msg. Doesn't work, anwywhere
+;; Doesn't work no matter where I put it:
+;; my bug report:  https://github.com/org-roam/org-roam/issues/1789
+;;(setq org-roam-v2-ack t) ;; Stop v2 startup msg. Doesn't work, anwywhere
 
 (use-package org-roam
 ;;  :straight t
 ;;  :straight (:branch "v2" :host github :repo "org-roam/org-roam")
   :custom
   ;; (org-roam-directory (file-truename org_roam_dir))
-  (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
+;;  (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
   (org-roam-directory (file-truename "~/tmp"))
   (org-id-method 'ts) ;; use timestamps for org-id
   :bind (("C-c n l" . org-roam-buffer-toggle)
@@ -3135,7 +3299,6 @@ This is an overwrite of the same-named function in ol-git-link.el"
          ([mouse-1] . org-roam-visit-thing)
          ("C-c n j" . org-roam-dailies-capture-today))
   :config
-  ;; PR #1758 and 5.3 of manual: https://www.orgroam.com/manual.html
   (org-roam-db-autosync-mode)
   ;; If using org-roam-protocol
   (require 'org-roam-protocol))
@@ -3163,17 +3326,17 @@ This is an overwrite of the same-named function in ol-git-link.el"
 ;; A temporary ORB fix so don't have to select template type every time.
 ;; Goes away when proposed changes to main org-roam pkg are made
 ;; https://github.com/org-roam/org-roam-bibtex/issues/206
-(setq org-roam-capture-templates
-  '(;; find node template
-    ("d" "default" plain "%?" :if-new
-     (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
-     :unnarrowed t)
+;; (setq org-roam-capture-templates
+;;   '(;; find node template
+;;     ("d" "default" plain "%?" :if-new
+;;      (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+;;      :unnarrowed t)
 
-    ;; dailies template
-    ("r" "reference template" plain "* %?" 
-      :if-new
-      (file+head "path/to/notes/${citekey}.org" "#+title: ${title}\n")
-      :type org-roam-bibtex)))   ;; <= type marker
+;;     ;; dailies template
+;;     ("r" "reference template" plain "* %?" 
+;;       :if-new
+;;       (file+head "path/to/notes/${citekey}.org" "#+title: ${title}\n")
+;;       :type org-roam-bibtex)))   ;; <= type marker
 
 ;; ** org-roam-ui (graph viewing)
 
@@ -4720,7 +4883,7 @@ reuse it's window, otherwise create new one."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#ffffff" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 102 :width normal :foundry "outline" :family "Consolas"))))
+ ;;'(default ((t (:inherit nil :stipple nil :background "#ffffff" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 102 :width normal :foundry "outline" :family "Consolas"))))
  '(aw-leading-char-face ((t (:foreground "red" :weight bold))))
  '(cperl-array ((t (:background "*" :foreground "saddlebrown" :slant italic))))
  '(cperl-hash ((t (:background "*" :foreground "darkgreen" :slant oblique))))
