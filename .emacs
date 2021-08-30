@@ -111,8 +111,12 @@
 
 ;; * Computer-specific setup
 ;; ** OS-dependent settings
+
 (defvar running-ms-windows
   (eq system-type 'windows-nt))
+
+(defvar running-MacOS
+  (eq system-type 'darwin))
 
 (defvar running-gnu-linux
   (string-match "linux" (prin1-to-string system-type)))
@@ -156,6 +160,7 @@
       ;;   (let ((explicit-shell-file-name (concat cygwin-bin-dir "bash"))
       ;;         (call-interactively 'shell)))
       ;;   (global-set-key [M-f11] 'cygwin-shell)))) ; cygwin bash
+
 
 ;; ** Individual Computer-dependent settings
 
@@ -234,6 +239,8 @@ DISPLAY is a display name, frame or terminal, as in
            (mm-w (cl-second (assoc 'mm-size atts)))
            (mm-h (cl-third (assoc 'mm-size atts)))
            (mm-d (pyth mm-w mm-h)))
+      (message "pixdims=(%s %s)  mmdims=(%s %s) mm-d=%s, in-d=%d"
+               pix-w pix-h mm-w mm-h mm-d (mm2in mm-d))
       (/ pix-d (mm2in mm-d)))))
 
 
@@ -260,30 +267,74 @@ DISPLAY is a display name, frame or terminal, as in
 ;; dispwatch calls you if the current display (monitor?) configuration changes.
 ;;https://github.com/mnp/dispwatch
 
-;; TODO comment
-;; TODO put nDivPix calc into this
-;; TODO change function name to something more appropriate
-(defun set-fonts-per-dpi ()
-  (let* ((dpiThis (dpi-avg))
-         (fontHeightThis (round (/ 20480 dpiThis))))
-    
-    (message "Setting font of display with dpi=%s to height %s" dpiThis fontHeightThis)
-    ;; advice from: https://protesilaos.com/codelog/2020-09-05-emacs-note-mixed-font-heights/
-    (set-face-attribute 'default nil :font "Consolas" :height fontHeightThis)
+;; Didn't work
+;; (defun set-fonts-per-dpi ()
+;;   ;; change font height approriately for display DPI
+;;   (let* ((dpi (dpi-avg))
+;;          (fontHeightThis
+;;           (cond
+;;            ((< dpi 110) 100)
+;;            ((< dpi 130) 100)
+;;            ((< dpi 160) 100)
+;;            (t 100))))
+;; ;;       (fontHeightThis (round (/ 20480 dpiThis))))
+
+;;     ;; Emacs font height is a fixed physical height in real world: 10 * points (https://www.gnu.org/software/emacs/manual/html_node/emacs/Fonts.html)
+;;     ;; so DPI shouldn't matter, then, right?
+;;     ;; 1 point: a fixed 1/72" = 0.353mm (https://en.wikipedia.org/wiki/Point_(typography))
+;;     (message "Setting font of display with dpi=%s to height %s" dpi fontHeightThis)
+;;     ;; advice from: https://protesilaos.com/codelog/2020-09-05-emacs-note-mixed-font-heights/
+;;     (set-face-attribute 'default nil :font "Consolas" :height fontHeightThis)
+;;     (set-face-attribute 'fixed-pitch nil :family "Consolas" :height 1.0)
+;;     (set-face-attribute 'variable-pitch nil :family "Georgia" :height 1.0)))
+  
+;; (add-hook 'after-init-hook #'set-fonts-per-dpi)
+;; (add-hook 'after-make-frame-functions #'set-fonts-per-dpi)
+;; (defun my-display-changed-hook (disp)
+;;   (message "Changed to display of size %s" disp)
+;;   (set-fonts-per-dpi)) 
+
+;; This sets all frames to a specific given font
+;; https://gist.github.com/mecab/1bc847e51034ae1e11b813b79f7da553
+;; TODO easy to work from this.
+;; TODO but set different fonts on sceens w/ different resolutions?
+
+(defun change-font-size (size)
+  "Change font size (clearly `:height` in `face-attribute`) to given SIZE."
+
+  (interactive
+   (list
+    (read-number
+     (format "Input font size (current_size=%d): " (face-attribute 'default :height))
+     nil)))
+ 
+  (set-face-attribute 'default nil :height size)
+)
+
+(defun set-default-font-per-screen ()
+  "Change font size (`:height` in `face-attribute`) approriately."
+
+  (let ((fontHeightBase 100))
+    (if running-MacOS
+        ;; Windows font scalings were OK as is; MacOS needs a touchup
+        (setq fontHeightBase 140))
+
+    ;; https://protesilaos.com/codelog/2020-09-05-emacs-note-mixed-font-heights/
+    (set-face-attribute 'default nil :font "Consolas" :height fontHeightBase)
     (set-face-attribute 'fixed-pitch nil :family "Consolas" :height 1.0)
     (set-face-attribute 'variable-pitch nil :family "Georgia" :height 1.0)))
-  
+
 (defun my-display-changed-hook (disp)
-  (message "Changed to  display of size %s" disp)
-  (set-fonts-per-dpi))
+  (set-default-font-per-screen)
+  (message "Changed to display of size %s" disp)) ;; not that useful w/o DPI change
 
 (use-package dispwatch
   :config (and
       (add-hook 'dispwatch-display-change-hooks #'my-display-changed-hook)
       (dispwatch-mode 1)))
 
-(add-hook 'after-init-hook #'set-fonts-per-dpi)
-(add-hook 'after-make-frame-functions #'set-fonts-per-dpi)
+(add-hook 'after-init-hook #'set-default-font-per-screen)
+(add-hook 'after-make-frame-functions #'set-default-font-per-screen)
 
 ;; do something similar with functions that clone to frames or
 ;; whatever?
@@ -341,7 +392,7 @@ DISPLAY is a display name, frame or terminal, as in
 ;; default-font package I'm using now?
 ;; https://emacs.stackexchange.com/questions/7583/transiently-adjust-text-size-in-mode-line-and-minibuffer
 
-;; recommended way to chaange all font sizes (when they have mixed sizes): change fonts in proportion to a change in the default font
+;; recommended way to change all font sizes (when they have mixed sizes): change fonts in proportion to a change in the default font
 ;; https://protesilaos.com/codelog/2020-09-05-emacs-note-mixed-font-heights/
 ;; Font size adjustment
 
@@ -383,51 +434,19 @@ TODO: make this a general function."
 ;; default-text-scale-increment.el
 ;; increments all frames
 ;;
-;; This sets all frames to a specific given font
-;; https://gist.github.com/mecab/1bc847e51034ae1e11b813b79f7da553
-;; TODO easy to work from this.
-;; TODO but set different fonts on sceens w/ different resolutions?
-(defun change-font-size (size)
-  "Change font size (clearly `:height` in `face-attribute`) to given SIZE."
 
-  (interactive
-   (list
-    (read-number
-     (format "Input font size (current=%d): " (face-attribute 'default :height))
-     nil)))
+;; didn't work
+;; (defun change-font-size-pixels (size)
+;;   "Change font size (clearly `:pixels` in `face-attribute`) to given SIZE."
+
+;;   (interactive
+;;    (list
+;;     (read-number
+;;      (format "Input font size (current=%d pix): " (face-attribute 'default :pixels))
+;;      nil)))
  
-  (set-face-attribute 'default nil :height size)
-)
-
-
-
-;; https://github.com/jinnovation/.emacs.d
-;;
-;; Error message:
-;; get-current-displays -> function ‘remove-if’ from cl package called at runtime
-;; (defun get-current-displays ()
-;;   "Get alist of attributes of displays w/ Emacs buffers."
-;;   (interactive)
-;;   (remove-if
-;;    (lambda (disp)
-;;      (eq nil (cdr (assoc 'frames disp))))
-;;    (display-monitor-attributes-list)))
-;;
-;; (defun fontify-frame ()
-;;   "Adjusts frame's text size according to current display's
-;; resolution. Prevents illegibly small text on high-resolution
-;; displays and, similarly, impractically large text on
-;; low-resolution displays."
-;;   (interactive)
-;;   ;; FIXME: assumes only one emacs frame on one disp
-;;   ;; bug: jjin-get-* wasn't in .emacs; use the func that was
-;; ;;  (let* ((curr-disp (car (jjin-get-current-displays)))
-;;   (let* ((curr-disp (car (in-get-current-displays)))
-;;          (disp-width (nth 3 (assoc 'geometry curr-disp)))
-;;          (font-name (if (eq system-type 'darwin) t"Terminus (TTF)" "Terminus"))
-;;          (font-size (if (> disp-width 2000) "12" "04")))
-;;     (if (display-graphic-p)
-;;         (set-frame-parameter nil 'font (string-join `(,font-name ,font-size) " ")))))
+;;   (set-face-attribute 'default nil :pixels size)
+;; )
 
 (if window-system
     (progn
@@ -3112,6 +3131,10 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; ** Org and Git
 
+;; Behavior when link to a file in git.  This only happens if org-modules contains  ol-git-link
+;;
+;; OL-GIT-LINK IS TOO PROBLEMATIC without improvements below e.g. if you're in the middle of editing before checking in, git: links send you to a file without your edits!
+;;
 ;; WARNING: If you've changed the file since the last git checkin,
 ;; following that link won't show your changes.  This is because
 ;; ol-git-link checks out the most recently checked in version of the
@@ -3283,25 +3306,64 @@ This is an overwrite of the same-named function in ol-git-link.el"
 ;; my bug report:  https://github.com/org-roam/org-roam/issues/1789
 ;;(setq org-roam-v2-ack t) ;; Stop v2 startup msg. Doesn't work, anwywhere
 
+;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
 (use-package org-roam
-;;  :straight t
-;;  :straight (:branch "v2" :host github :repo "org-roam/org-roam")
+  :straight t
+  ;; :straight (:branch "v2" :host github :repo "org-roam/org-roam")
+  :init
+  (setq org-roam-v2-ack t)
   :custom
   ;; (org-roam-directory (file-truename org_roam_dir))
 ;;  (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
   (org-roam-directory (file-truename "~/tmp"))
+  (org-roam-completion-everywhere t)
   (org-id-method 'ts) ;; use timestamps for org-id
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
-         ("C-c n g" . org-roam-graph)
          ("C-c n i" . org-roam-node-insert)
+         ("C-c n g" . org-roam-graph)
          ("C-c n h" . org-roam-capture)
          ([mouse-1] . org-roam-visit-thing)
-         ("C-c n j" . org-roam-dailies-capture-today))
+         ;; may not exist aymore
+         ;;("C-c n j" . org-roam-dailies-capture-today)
+         :map org-mode-map
+         ("C-M-i" . completion-at-point)
+         ;; this map may not exist anymore
+         ;; :map org-roam-dailies-map
+         ;; ("Y" . org-roam-dailies-capture-yesterday)
+         ;; ("T" . org-roam-dailies-capture-tomorrow)
+         )
+  ;; may not exist anymore
+  ;; :bind-keymap
+  ;; ("C-c n d" . org-roam-dailies-map)
   :config
-  (org-roam-db-autosync-mode)
+  (require 'org-roam-dailies) ;; Ensure the keymap is available
+  ;; from: https://org-roam.discourse.group/t/daily-task-management-with-org-agenda-and-org-roam-dailies/989/17?u=scotto
+  (setq org-roam-dailies-capture-templates
+        (let ((head
+               (concat "#+title: %<%Y-%m-%d (%A)>\n#+startup: showall\n* Daily Overview\n"
+                       "#+begin_src emacs-lisp :results value raw\n"
+                       "(as/get-daily-agenda \"%<%Y-%m-%d>\")\n"
+                       "#+end_src\n"
+                       "* [/] Do Today\n* [/] Maybe Do Today\n* Journal\n")))
+          `(("j" "journal" entry
+             "* %<%H:%M> %?"
+             :if-new (file+head+olp "%<%Y-%m-%d>.org" ,head ("Journal")))
+            ("t" "do today" item
+             "[ ] %a"
+             :if-new (file+head+olp "%<%Y-%m-%d>.org" ,head ("Do Today"))
+             :immediate-finish t)
+            ("m" "maybe do today" item
+             "[ ] %a"
+             :if-new (file+head+olp "%<%Y-%m-%d>.org" ,head ("Maybe Do Today"))
+             :immediate-finish t))))
+
+  ;; (org-roam-db-autosync-mode) ;; function isn't defined
   ;; If using org-roam-protocol
   (require 'org-roam-protocol))
+
+;; ** org-roam-dailies
+
 
 ;; ** org-roam-bibtex
 
