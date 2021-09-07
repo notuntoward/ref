@@ -2502,7 +2502,7 @@ Version 2020-11-20 2021-01-18"
  '(org-list-allow-alphabetical t)
  '(org-list-empty-line-terminates-plain-lists t)
  '(org-modules
-   '(ol-bibtex org-mouse ol-eshell ol-git-link ol-man org-inlinetask org-mouse org-protocol org-choose))
+   '(ol-bibtex org-mouse ol-eshell ol-man org-inlinetask org-mouse org-protocol org-choose))
  '(org-noter-auto-save-last-location t)
  '(org-noter-doc-property-in-notes t)
  '(org-occur-case-fold-search ''smart)
@@ -2848,11 +2848,20 @@ Version 2020-11-20 2021-01-18"
  ;;     ("ACCEPTED" . 10003)))
 
 (use-package org-superstar
+  :after org
   :init
   ;; org-superstar github: loads faster
   (setq inhibit-compacting-font-caches t)
-  :hook
-  (org-mode . (lambda () (org-superstar-mode 1))))
+  :hook (org-mode . org-superstar-mode))
+
+;; (use-package org-superstar
+;;   :after org
+;;   :init
+;;   ;; org-superstar github: loads faster
+;;   ;; (setq inhibit-compacting-font-caches t)
+;;   :hook
+;;   (org-mode . (lambda () (org-superstar-mode 1))))
+
 
 ;; Show hidden emphasis markers e.g.* in *bold*.  So can see where cursor is.
 (use-package org-appear
@@ -3147,24 +3156,24 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; Makes a link description from the marked region for git links. Overwrites function in:
 ;; ~/.emacs.d/elpa/org-plus-contrib-20210816/ol-git-link.el
 ;;
-(defun org-git-store-link ()
-  "Store git link to current file.  The link description is the active mark region, if there is one.
-This is an overwrite of the same-named function in ol-git-link.el"
-  (when (buffer-file-name)
-    (let ((file (abbreviate-file-name (buffer-file-name)))
-	  (line (line-number-at-pos)))
-      (when (org-git-gitrepos-p file)
-        (if mark-active
-          (let ((region (funcall region-extract-function nil)))
-            (deactivate-mark)
-            ;; I'm using the obsolete org-store-link-props here b/c org-link-store-props concats :description into the link instead of making it a separate description.  SOMETIMES org-store-link-props does too (in .py files?)  Seems to think that marked region (or :description?) is the string that should be searched for when visiting the link.  Does it NOT use description if region is marked?
-	    (org-store-link-props
-             :link (org-git-create-git-link file line)
-             :description region
-             :type "git"))
-          (org-link-store-props
-	   :link (org-git-create-git-link file line)
-           :type "git"))))))
+;; (defun org-git-store-link ()
+;;   "Store git link to current file.  The link description is the active mark region, if there is one.
+;; This is an overwrite of the same-named function in ol-git-link.el"
+;;   (when (buffer-file-name)
+;;     (let ((file (abbreviate-file-name (buffer-file-name)))
+;; 	  (line (line-number-at-pos)))
+;;       (when (org-git-gitrepos-p file)
+;;         (if mark-active
+;;           (let ((region (funcall region-extract-function nil)))
+;;             (deactivate-mark)
+;;             ;; I'm using the obsolete org-store-link-props here b/c org-link-store-props concats :description into the link instead of making it a separate description.  SOMETIMES org-store-link-props does too (in .py files?)  Seems to think that marked region (or :description?) is the string that should be searched for when visiting the link.  Does it NOT use description if region is marked?
+;; 	    (org-store-link-props
+;;              :link (org-git-create-git-link file line)
+;;              :description region
+;;              :type "git"))
+;;           (org-link-store-props
+;; 	   :link (org-git-create-git-link file line)
+;;            :type "git"))))))
 
 ;; also see .emacs example: (defun my//dired-store-link ...)
 
@@ -3302,22 +3311,17 @@ This is an overwrite of the same-named function in ol-git-link.el"
 ;; TIPS
 ;; add org-id to headline: org-id-copy
 
-;; Doesn't work no matter where I put it:
-;; my bug report:  https://github.com/org-roam/org-roam/issues/1789
-;;(setq org-roam-v2-ack t) ;; Stop v2 startup msg. Doesn't work, anwywhere
-
 ;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
 (use-package org-roam
-  :straight t
-  ;; :straight (:branch "v2" :host github :repo "org-roam/org-roam")
+;;  :straight t
   :init
   (setq org-roam-v2-ack t)
   :custom
-  ;; (org-roam-directory (file-truename org_roam_dir))
-;;  (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
   (org-roam-directory (file-truename "~/tmp"))
-  (org-roam-completion-everywhere t)
-  (org-id-method 'ts) ;; use timestamps for org-id
+  ;; (org-roam-directory (file-truename org_roam_dir))
+  (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
+  (org-id-method 'ts)
+
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert)
@@ -3325,42 +3329,87 @@ This is an overwrite of the same-named function in ol-git-link.el"
          ("C-c n h" . org-roam-capture)
          ([mouse-1] . org-roam-visit-thing)
          ;; may not exist aymore
-         ;;("C-c n j" . org-roam-dailies-capture-today)
+         ("C-c n j" . org-roam-dailies-capture-today)
          :map org-mode-map
          ("C-M-i" . completion-at-point)
          ;; this map may not exist anymore
          ;; :map org-roam-dailies-map
-         ;; ("Y" . org-roam-dailies-capture-yesterday)
-         ;; ("T" . org-roam-dailies-capture-tomorrow)
+         ("Y" . org-roam-dailies-capture-yesterday)
+         ("T" . org-roam-dailies-capture-tomorrow)
          )
-  ;; may not exist anymore
+  ;; causes error:
   ;; :bind-keymap
   ;; ("C-c n d" . org-roam-dailies-map)
+  
   :config
   (require 'org-roam-dailies) ;; Ensure the keymap is available
-  ;; from: https://org-roam.discourse.group/t/daily-task-management-with-org-agenda-and-org-roam-dailies/989/17?u=scotto
-  (setq org-roam-dailies-capture-templates
-        (let ((head
-               (concat "#+title: %<%Y-%m-%d (%A)>\n#+startup: showall\n* Daily Overview\n"
-                       "#+begin_src emacs-lisp :results value raw\n"
-                       "(as/get-daily-agenda \"%<%Y-%m-%d>\")\n"
-                       "#+end_src\n"
-                       "* [/] Do Today\n* [/] Maybe Do Today\n* Journal\n")))
-          `(("j" "journal" entry
-             "* %<%H:%M> %?"
-             :if-new (file+head+olp "%<%Y-%m-%d>.org" ,head ("Journal")))
-            ("t" "do today" item
-             "[ ] %a"
-             :if-new (file+head+olp "%<%Y-%m-%d>.org" ,head ("Do Today"))
-             :immediate-finish t)
-            ("m" "maybe do today" item
-             "[ ] %a"
-             :if-new (file+head+olp "%<%Y-%m-%d>.org" ,head ("Maybe Do Today"))
-             :immediate-finish t))))
+  (org-roam-db-autosync-mode))
 
-  ;; (org-roam-db-autosync-mode) ;; function isn't defined
-  ;; If using org-roam-protocol
-  (require 'org-roam-protocol))
+;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
+;; (use-package org-roam
+;; ;;  :straight t
+;;   ;;:straight (:branch "v2.1.10" :host github :repo "org-roam/org-roam")
+;;   :init
+;;   (setq org-roam-v2-ack t)
+;;   :custom
+;;   ;; (org-roam-directory (file-truename org_roam_dir))
+;; ;;  (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
+;;   (org-roam-directory (file-truename "~/tmp"))
+;;   (org-roam-completion-everywhere t)
+;;   (org-id-method 'ts) ;; use timestamps for org-id
+;;   :bind (("C-c n l" . org-roam-buffer-toggle)
+;;          ("C-c n f" . org-roam-node-find)
+;;          ("C-c n i" . org-roam-node-insert)
+;;          ("C-c n g" . org-roam-graph)
+;;          ("C-c n h" . org-roam-capture)
+;;          ([mouse-1] . org-roam-visit-thing)
+;;          ;; may not exist aymore
+;;          ;;("C-c n j" . org-roam-dailies-capture-today)
+;;          :map org-mode-map
+;;          ("C-M-i" . completion-at-point)
+;;          ;; this map may not exist anymore
+;;          ;; :map org-roam-dailies-map
+;;          ;; ("Y" . org-roam-dailies-capture-yesterday)
+;;          ;; ("T" . org-roam-dailies-capture-tomorrow)
+;;          )
+;;   ;; may not exist anymore
+;;   ;;:bind-keymap
+;;   ;;("C-c n d" . org-roam-dailies-map)
+;;   ;; :config
+;;   ;;(require 'org-roam-dailies) ;; Ensure the keymap is available
+;;   ;; from: https://org-roam.discourse.group/t/daily-task-management-with-org-agenda-and-org-roam-dailies/989/17?u=scotto
+;;   ;; (setq org-roam-dailies-capture-templates
+;;   ;;       (let ((head
+;;   ;;              (concat "#+title: %<%Y-%m-%d (%A)>\n#+startup: showall\n* Daily Overview\n"
+;;   ;;                      "#+begin_src emacs-lisp :results value raw\n"
+;;   ;;                      "(as/get-daily-agenda \"%<%Y-%m-%d>\")\n"
+;;   ;;                      "#+end_src\n"
+;;   ;;                      "* [/] Do Today\n* [/] Maybe Do Today\n* Journal\n")))
+;;   ;;         `(("j" "journal" entry
+;;   ;;            "* %<%H:%M> %?"
+;;   ;;            :if-new (file+head+olp "%<%Y-%m-%d>.org" ,head ("Journal")))
+;;   ;;           ("t" "do today" item
+;;   ;;            "[ ] %a"
+;;   ;;            :if-new (file+head+olp "%<%Y-%m-%d>.org" ,head ("Do Today"))
+;;   ;;            :immediate-finish t)
+;;   ;;           ("m" "maybe do today" item
+;;   ;;            "[ ] %a"
+;;   ;;            :if-new (file+head+olp "%<%Y-%m-%d>.org" ,head ("Maybe Do Today"))
+;;   ;;            :immediate-finish t))))
+
+;;   (org-roam-db-autosync-mode) ;; function isn't defined (ONLY IN WINDOWS?)
+;;   ;; If using org-roam-protocol
+;;   ;; doesn't seem to be there anymore
+;;   ;;(require 'org-roam-protocol)
+
+
+
+
+
+
+
+;;   )
+
 
 ;; ** org-roam-dailies
 
@@ -3370,9 +3419,15 @@ This is an overwrite of the same-named function in ol-git-link.el"
 ;; needed for ORB, apparently
 (use-package magit-section)
 
-;; ORB puts any .org file link into OR DB:  I don't want that b/c I want to link to product code, etc.
-;; TURN OFF for now
-;; TODOL: MAKE A PR about this
+
+(use-package org-roam-bibtex
+  :after org-roam
+  :config
+  (require 'org-ref)) ; if Org Ref is not loaded anywhere else, load it here
+
+;; orb puts any .org file link into or db:  i don't want that b/c i want to link to product code, etc.
+;; turn off for now
+;; todol: make a pr about this
 
 ;; ;; setup like 1st of https://githubmemory.com/repo/org-roam/org-roam-bibtex/issues
 ;; (use-package org-roam-bibtex
@@ -3728,7 +3783,22 @@ This is an overwrite of the same-named function in ol-git-link.el"
 
 ;; ** Org-noter
 ;;
-;; Keybindings, basic explanation: https://github.com/weirdNox/org-noter#keys
+;; keybindings, basic explanation: https://github.com/weirdnox/org-noter#keys
+
+;; simple, just so it compiles.  started from: https://rgoswami.me/posts/org-note-workflow
+(use-package org-noter
+  :after (:any org pdf-view)
+  :config
+  (setq
+   ;; the wm can handle splits
+   org-noter-notes-window-location 'other-frame
+   ;; please stop opening frames
+   org-noter-always-create-frame nil
+   ;; i want to see the whole file
+   org-noter-hide-other nil
+   ;; everything is relative to the main notes file
+   org-noter-notes-search-path (list org_notes_dir)))
+
 ;;
 ;; Workflow w/ org-noter, org-roam org-roam-bibtex and org-ref.  Also plans for org-journal: https://rgoswami.me/posts/org-note-workflow/
 ;;
@@ -3736,31 +3806,30 @@ This is an overwrite of the same-named function in ol-git-link.el"
 ;;I guess it's not as good at multiple documents
 ;;(https://dotdoom.rgoswami.me/config.html)
 ;;
-;; org-noter config inspired by: https://write.as/dani/notes-on-org-noter
-(use-package org-noter
-  :after org
-  :after pdf-tools
-  :config (setq org-noter-default-notes-file-names '("org-noter-notes.org")
-                org-noter-notes-search-path '("~/tmp/org-noter")
-                ))
-;;                  org-noter-separate-notes-from-heading t))
+;; ;; org-noter config inspired by: https://write.as/dani/notes-on-org-noter
+;; (use-package org-noter
+;;   :after org
+;;   :after pdf-tools
+;;   :config
+;;   (setq org-noter-default-notes-file-names '("org-noter-notes.org")
+;;                 org-noter-notes-search-path '("~/tmp/org-noter")))
+;; ;;                  org-noter-separate-notes-from-heading t))
+;; ;; coordinating org-noter with org-notes
+;; ;; https://write.as/dani/notes-on-org-noter
+;; (defun org-ref-noter-at-point ()
+;;   "open the pdf for bibtex key under point if it exists."
+;;   (interactive)
+;;   (let* ((results (org-ref-get-bibtex-key-and-file))
+;;          (key (car results))
+;;          (pdf-file (funcall org-ref-get-pdf-filename-function key)))
+;;     (if (file-exists-p pdf-file)
+;;         (progn
+;;           (find-file-other-window pdf-file)
+;;           (org-noter))
+;;       (message "no pdf found for %s" key))))
 
-;; coordinating org-noter with org-notes
-;; https://write.as/dani/notes-on-org-noter
-(defun org-ref-noter-at-point ()
-  "Open the pdf for bibtex key under point if it exists."
-  (interactive)
-  (let* ((results (org-ref-get-bibtex-key-and-file))
-         (key (car results))
-         (pdf-file (funcall org-ref-get-pdf-filename-function key)))
-    (if (file-exists-p pdf-file)
-        (progn
-          (find-file-other-window pdf-file)
-          (org-noter))
-      (message "no pdf found for %s" key))))
-
-(add-to-list 'org-ref-helm-user-candidates 
-             '("Org-Noter notes" . org-ref-noter-at-point))
+;; (add-to-list 'org-ref-helm-user-candidates 
+;;              '("org-noter notes" . org-ref-noter-at-point))
 
 ;; ** Org-pdftools and org-noter-pdftools
 ;;
@@ -3949,7 +4018,8 @@ This is an overwrite of the same-named function in ol-git-link.el"
 ;; TODO make deadgrep search contents of pdfs, like Windows explorer
 ;; can
 ;;
-;; TODO: use :init or :config within use-package 
+;; TODO: use :init or :config within use-package
+;; TODO: maybe don't need wh/return-default-dir anymore:  https://github.com/Wilfred/deadgrep/commit/14c7d6b74c7891ed7294abe1a6f5914948e4ab49
 (if (setq rg_exe (sdo/find-exec "rg" "ripgrep needed org-roam and others"))
     (progn (use-package deadgrep)
            (global-set-key [f5] 'deadgrep)
@@ -3973,7 +4043,15 @@ This is an overwrite of the same-named function in ol-git-link.el"
 ;;   (global-set-key [f5] 'lgrep))
 
 ;; *** helm-rg
-;; ;; couldn't adjust faces easily and prot convinced me that pkg 'rg' is better
+;; helm-rg couldn't adjust faces easily and prot convinced me that pkg
+;; 'rg' is better (but then I couldn't get rg to work and went to deadgrep)
+
+;; but helm-rg has nice hook to add file links based on search results
+;; see  Use helm-rg to find notes to make connections to using full
+;; text search" in : https://notes.alexkehayias.com/org-roam/
+;;
+;; but this config didn't compile immediately for me so I removed it
+
 ;; (use-package helm-rg
 ;;   :bind
 ;;   (("C-c r" . helm-rg)))
