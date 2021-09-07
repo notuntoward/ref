@@ -2407,6 +2407,8 @@ Scott
 *** <<Monotonic Neural Nets>>
 ***** [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning]] with [[Tensor Flow]]
 ***** [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (built-in montonic)
+*** Neural Net Quality Metrics
+***** [[cite:Martin21predNNqualNoData][Martin et al. 2021: Predicting Trends Quality NN No Data]]
 * <<Data Efficient Models>>
 ***** <<Data efficiency: Naive Bayes vs. Logistic Regression>>
 ******* [[file:energy.bib::Ng02discrimVsGenNBvsLogRgrsn][Ng & Jordan 2002 Discrim vs. Gen, Logistic Rgrssn vs. Naive Bayes]]
@@ -8397,6 +8399,7 @@ Scott
 ******* <<Satellite to Ground Irradiance>>
 ********* <<Solar Irradiance to Power Physical Models>>
 *********** [[cite:Mayer21cmprPhyMdlPVfrcst][Mayer & Grof 2021: Comparison Physical PV frcst Models]]
+*********** [[cite:Suh17irradMnthlyToHrlyEPP][Suh & Choi 2017: Methods Converting Monthly Sat Irrad to Hourly]]
 *********** [[Irradiance Physical models]]
 ********* <<Irradiance Physical models>>
 *********** [[cite:Ponsukcharoen12irradFrcstSat][Ponsukcharoen 2012: Solar Irradiance Forecast Class Notes]]
@@ -13970,8 +13973,9 @@ TODO: reference them in outline above and then delete them from here
    03/29/21  [[cite:Hoff10quantPVpowVar][Hoff & Perez 2010: Quantifying PV Output Variability]]
    04/29/21  [[cite:Li16continMarkovWind][Li et al. 2016: Modeling Wind Speed Contin Markov]]
    05/02/21  [[cite:Lave13solarVarWvlt][Lave et al. 2013: Wavelet Based Variability]]
-   07/10/21  [[cite:Liu16housePriceHeteroHierarch][Liu et al. 2016: House Price Modeling]] 
-   
+   07/10/21  [[cite:Liu16housePriceHeteroHierarch][Liu et al. 2016: House Price Modeling]]
+   09/04/21  [[cite:Suh17irradMnthlyToHrlyEPP][Suh & Choi 2017: Methods Converting Monthly Sat Irrad to Hrly]]
+[[cite:Martin21predNNqualNoData][             Martin et al. 2021: Predicting Trends Quality NN no Data]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
