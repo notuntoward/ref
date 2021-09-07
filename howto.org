@@ -303,6 +303,17 @@
         but I can never get recursive find to work.
 
 ********* TRY ? [[http://ergoemacs.org/emacs/elisp-xah-find-text.html][xah-find]] package: pure emacs find/grep good for windows
+********* <<deadgrep>>
+*********** <<deadgrep for org-roam>>
+            From:[[https://org-roam.discourse.group/t/using-consult-ripgrep-with-org-roam-for-searching-notes/1226/12?u=scotto][Using consult-ripgrep with org-roam for searching notes - #12 by adouzzy - Ho...]]
+
+            adouzzy
+            I ended up using deadgrep instead.
+            Instead of calling rg directly, I have a bash wrapup. This allow me to remove id string in the link. Make reading easier. It’s not pretty but very useful
+
+            rg -i --color always "$@" | sed "s/\[id:[a-z0-9]\+-[a-z0-9]\+-[a-z0-9]\+-[a-z0-9]\+-[a-z0-9]\+\]//g"
+
+            
 ******* ACCEPTED <<ivy-mode>>
 ********* TRY org-mode search: horribly slow when not expanded, otherwise fast
 ********* TRY =C-h m=: inside of swiper, etc. brings up ivy help.  READ IT.
@@ -1850,10 +1861,12 @@
              F2((File2)) --> H2.1((h2.1))
              H2.1 --> H1.2.2
 
-********* TRY tags 
+********* TRY <<learn to use OR v2 tags>>
 *********** a bit about tags [[https://org-roam.discourse.group/t/org-roam-major-redesign/1198/124?u=scotto][here]]
 *********** and [[https://org-roam.discourse.group/t/org-roam-major-redesign/1198/211?u=scotto][here]]
+*********** somehow, vertico or selectrum help w/ tags (from a System Crafters video)
 *********** subdirs work but [[https://org-roam.discourse.group/t/org-roam-major-redesign/1198/220?u=scotto][don't become tags in V2, can show up in completions]]
+*********** also [[org-roam v2 note segregation: dir/tag/filename]]
 ********* TRY get org-roam-completion-everywhere to work
 *********** [[https://codeberg.org/jeyj0/dotfiles/src/branch/main/.config/home-manager/parts/emacs/emacs.el#L209][example .emacs]]
 *********** [[https://org-roam.discourse.group/t/fuzzy-completion-at-point/1715][Fuzzy completion-at-point - Troubleshooting - Org-roam]]
@@ -1867,6 +1880,44 @@
 ********* ACCEPTED update property hiding function docs ([[https://org-roam.discourse.group/t/org-roam-major-redesign/1198/175?u=scotto][discourse]] and [[https://github.com/org-roam/org-roam/wiki/Hitchhiker's-Rough-Guide-to-Org-roam-V2#hiding-properties][wiki]])
 ********* ACCEPTED does OR and everything else work after paradox melpa update?
           Yes
+******* <<org-roam v2 note segregation: dir/tag/filename>>
+
+        _In [[Evernote]]_ I used flat tags, links and effectively, summary notes.  That seemed to work.  But [[https://org-roam.discourse.group/t/implementing-hierarchies-namespaces-in-org-roam-v2/1504/16?u=scotto][OR V2 does scan directories hierarchically]].
+
+        Much discussion in: [[https://www.orgroam.com/manual.html#How-do-I-have-more-than-one-Org_002droam-directory_003f][How do I have more than one Org-roam directory?]]
+        
+********* separate by directory
+*********** separate reference dir
+************* use [[https://org-roam.discourse.group/t/implementing-hierarchies-namespaces-in-org-roam-v2/1504/16?u=scotto][templates to put refs in separate directory]]
+************* bibtex reference notes [[https://github.com/org-roam/org-roam-bibtex/blob/master/doc/orb-manual.org#handling-long-templates][stored in dir spec'ed in capture template]]
+*********** separate work from home
+            From: [[https://org-roam.discourse.group/t/multiple-root-directories/1368/5][Multiple Root directories - #5 by edgimar - Development - Org-roam]]
+
+          
+            For each directory where you want to keep a separate org-roam.db, create a .dir-locals file, which basic org-mode can use to set up a separate DB:
+
+            .dir-locals  contents:
+
+            ((nil . ((eval . (progn
+                     (setq-local org-roam-directory (locate-dominating-file default-directory ".dir-locals.el"))
+                     (setq-local org-roam-db-location (concat org-roam-directory "org-roam.db")))))))
+                   
+*********** dailies/journal files in separate dir
+
+            These both can share a DB with the general org-roam dir
+          
+************* variable [[https://www.orgroam.com/manual.html#Org_002droam-Dailies][org-roam-dailies-directory puts all dailies files]] under org-roam-directory.
+
+************* [[https://www.orgroam.com/manual.html#Org_002djournal][org-journal files can be put anywhere]]
+          
+********* separate by tagging
+*********** org-roam [[https://org-roam.discourse.group/t/implementing-hierarchies-namespaces-in-org-roam-v2/1504/2?u=scotto][v2 uses org-roam tags, which can be hierarchical]]
+*********** also [[learn to use OR v2 tags]]
+********* separate by note filename
+          using hierarchical filenames instead: [[https://org-roam.discourse.group/t/implementing-hierarchies-namespaces-in-org-roam-v2/1504][Implementing Hierarchies/Namespaces in org-roam (V2)]]
+******* org-roam v2 searching
+********* showing tags in search results, direct querying DB for tags...
+          From: [[https://systemcrafters.net/live-streams/september-03-2021/][System Crafters Live! - September 3, 2021 - System Crafters]]
 ***** Intro, basic org-roam info
 ******* [[https://github.com/org-roam][org-roam/org-roam: Rudimentary Roam replica with Org-mode]]
 ******* example: [[https://github.com/jethrokuan/braindump][author's's braindump]]: many org files, pdfs, 
@@ -1890,7 +1941,7 @@
 ************* prefers one org-note per paper
 ************* ... although he picked [[org-noter]] b/c it was better at multiple documents linked to one file
 ************* [[helm-bibtex]] is configured to deal with single-pdf notes 
-************* TODO does search with deft, not e.g. deadgrep.  Why?
+************* TODO does search with deft, not e.g. [[deadgrep]].  Why?
 ************* .bib file auto-exported to [[Zotero]] seems like a temporary file.  Everything stays in Zotero
 ************* seems that he only gits notes, but not zotero references
 ************* Firefox and Chrome capture templates for web pages
@@ -2104,20 +2155,22 @@
 
       Main ideas are
       o some kind of search
-        o title search (org-find-file?)
-        o fuzzy search through all titles and note content
-          o helm-grep-do-git-grep
-          o helm-org-rifle (only on open files?)
-          o counsel-rg
-          o consult-ripgrep ([[https://org-roam.discourse.group/t/using-consult-ripgrep-with-org-roam-for-searching-notes/1226][org-roam-rg-search]], looks good)
-          o [[org-roam, deft and org-download (setup)]]
-          o DEPRECATED [[https://github.com/org-roam/company-org-roam][company-org-roam]]: completion backend for creating links to notes
+********* title search (org-find-file?)
+********* fuzzy search through all titles and note content
 
-          I guess company-org-roam is deprecated: [[https://org-roam.discourse.group/t/problems-with-completion/1098][Problems with Completion - Troubleshooting - Org-roam]]
+*********** [[deadgrep for org-roam]]
+*********** helm-grep-do-git-grep
+*********** helm-org-rifle (only on open files?)
+*********** counsel-rg
+*********** consult-ripgrep ([[https://org-roam.discourse.group/t/using-consult-ripgrep-with-org-roam-for-searching-notes/1226][org-roam-rg-search]], looks good)
+*********** [[org-roam, deft and org-download (setup)]]
+*********** DEPRECATED [[https://github.com/org-roam/company-org-roam][company-org-roam]]: completion backend for creating links to notes
+
+            I guess company-org-roam is deprecated: [[https://org-roam.discourse.group/t/problems-with-completion/1098][Problems with Completion - Troubleshooting - Org-roam]]
           
-      o linking org-notes
-        o structure notes (notes whose purpose is to link other notes)
-        o lots of direct cross linking of notes
+********* linking org-notes
+*********** structure notes (notes whose purpose is to link other notes)
+*********** lots of direct cross linking of notes
 ********* autocompletion when creating a link inside a note
           From: [[https://org-roam.discourse.group/t/how-to-to-get-title-of-the-target-note-working-with-inline-autocomplete-in-org-roam/782][How to to get {{Title of the target note}} working with inline autocomplete i...]]
 
@@ -2133,7 +2186,11 @@
 
           11/2020: people had thought about this but no firm idea had emerged.
           
-*********** _Very close_: [[https://hugocisneros.com/notes/][org-roam graph w/ machine-learned node size/color]] 
+*********** <<Hugo Cisneros graph and topic discovery>>
+            _Very close_: [[https://hugocisneros.com/notes/][org-roam graph w/ machine-learned node size/color]]
+
+            Hugo Cisneros published his python, lisp etc. [[https://hugocisneros.com/blog/my-org-roam-notes-workflow/][here]].  He uses [[ox-hugo]]
+            
 *********** <<org-similarity>>
 ************* [[https://github.com/soldeace/org-similarity][GitHub - org-similarity: A package to help org-mode users discover]]
 ************* announcement: [[https://org-roam.discourse.group/t/prototype-org-similarity-generate-a-list-of-similar-documents-org-mode/1029][org-similarity: generate a list of similar documents (Org-mode)]]
@@ -2327,7 +2384,11 @@
             I guess could be converted to [[https://davidbieber.com/snippets/2020-04-25-roam-json-export/][roam-research json format]].  Assuming that this format is the same one as roam-research reads.
 
 ************* is used by [[pyorg]]
-*********** [[https://www.reddit.com/r/orgmode/comments/7wjmwr/orga_the_ultimate_orgmode_parser_in_javascript/du2cui3/][ox-hugo]] writes org-mode to markdown (but so does [[pandoac]])
+*********** <<ox-hugo>> [[https://www.reddit.com/r/orgmode/comments/7wjmwr/orga_the_ultimate_orgmode_parser_in_javascript/du2cui3/][
+            ox-hugo]] writes org-mode to markdown (but so does [[pandoac]])
+
+            Used in [[Hugo Cisneros graph and topic discovery]]
+            
 ********* roam-research API
 *********** [[https://www.npmjs.com/package/roam-research-private-api][roam-research-private-api - npm]]
 *********** [[https://github.com/shanrauf/roam-research-python][GitHub - shanrauf/roam-research-python]]
@@ -3961,9 +4022,22 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ********* [[jedi and conda]]
 ********* [[elpy pyenv interface]]
 ********* [[anaconda-mode seems to use pyenv for conda environments]]
+********* [[https://emacs.stackexchange.com/questions/20092/using-conda-environments-in-emacs][Using conda environments in emacs - Emacs Stack Exchange]]
+        
+        What I'd like is something automatic.  Here, it's a bit gross: 
+
+        1. put cond envs into a file,
+        2. hardcode a reference to that file in emacs,
+        3. Run =M-x pyenv-workon= to switch
+
+           The venv file for for tensorflow (on my SP4) is:
+
+           c:/Users/scotto/Anaconda3/envs/tensorflow/
+
 ********* general: [[python conda environments]]
-******* pyenv
+******* <<pyenv in emacs>>
 ********* <<elpy pyenv interface>>         
+********* 
 *********** [[https://stackoverflow.com/questions/37472595/how-to-activate-the-anancondas-env-python-in-emacs][how to activate the ananconda's env python in emacs? - Stack Overflow]]
 *********** [[https://smythp.com/emacs/python/2016/04/27/pyenv-elpy.html][Using Elpy with pyenv in Emacs]]
 *********** [[https://github.com/ssbb/pyenv-mode-auto][pyenv-mode-auto: Automatically activates pyenv version within E...]]
@@ -3979,19 +4053,8 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
             _For the directory local auto-setting_
             o I don't know what variable to set or what filename to put the settings in.  The help doesn't say.
 
-*********** [[elpy pyenv interface]]
-********* [[https://emacs.stackexchange.com/questions/20092/using-conda-environments-in-emacs][Using conda environments in emacs - Emacs Stack Exchange]]
-        
-          What I'd like is something automatic.  Here, it's a bit gross: 
-
-          1. put cond envs into a file,
-          2. hardcode a reference to that file in emacs,
-          3. Run =M-x pyenv-workon= to switch
-
-             The venv file for for tensorflow (on my SP4) is:
-
-             c:/Users/scotto/Anaconda3/envs/tensorflow/
-
+*********** [[elpy pyenv interface]
+********* [[pyenv and virtualenv]]
 ******* [[https://github.com/proofit404/anaconda-mode][anaconda-mode: Code navigation, documentation lookup and ...]]
 ********* is [[https://github.com/proofit404/anaconda-mode/issues/38][smaller than elpy]]
 ********* [[https://github.com/proofit404/anaconda-mode/issues/38][has]] an interface to jedi
@@ -6716,16 +6779,59 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
       git push -u origin master      
 ***** Git branches
 ******* Making a branch
-********* making a branch within an already checked out repositoryu
+********* making a branch within an already checked out repository
 
           git checkout -b <branch name>
          
+******* cloning a remote branch
+
+        cd to the dir where you want to put the clone, then:
+
+          git clone -b branch_name repot_url
+
+        e.g.
+        
+          git clone -b GELI-3425-make-forecast-duration-configu git@bitbucket.org:gelibitbucket/geli-engine.git
+
+        If it asks for a password, it's the one associated with your ssh public/private key pair, the one stored in ~/.ssh/id_rsa.pub
+
+        Note: that there's some way to prevent it asking for a pwd every time, but I don't remember it.
+
+        Note: bitbucket has a link on the repo master page from which to copy the repo URL e.g. on [[https://bitbucket.org/gelibitbucket/geli-engine/src/master/][this bitbucket page]] 
+
 ******* updating a git branch
         From: [[https://remarkablemark.org/blog/2017/06/02/git-update-branch/][How to update a Git branch]]
 
         while in the branch
 
         git pull
+        
+******* committing to a branch
+
+        To commit everything: cd to top dir of branch
+
+        git commit -m "commit message" -a
+
+        (can also do this from emacs vc-dir in top dir of checked out branch)
+
+******* pushing to a remote branch
+
+          git push -u origin branch_name
+
+        e.g.
+
+          git push -u origin GELI-3425-make-forecast-duration-configu
+
+******* creating a pull request for a branch
+
+        I. go to the JIRA ticket page, e.g. this one:
+
+          https://growingenergylabs.atlassian.net/browse/GELI-3425
+
+        II. assming you've already made a branch for this ticket, and that you've pushed your fixes to the branch, then click on the "commit" link on the lower right side of the page. This will create a popup.
+
+        III. On the popup, click the "pull requests" link at the top and then the "create pull request" button at the bottom.
+
         
 ***** Git submodules
 
@@ -6779,13 +6885,15 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
       git remote set-url origin git remote set-url origin https://github.com/notuntoward/pyglmnet.git
 
       git push --set-upstream origin dataset_and_ex_fixes
+      (note: the above is a [[https://stackoverflow.com/questions/2765421/how-do-i-push-a-new-local-branch-to-a-remote-git-repository-and-track-it-too]["post-creation step"; I think you need to use the -u option]] once the branch created.  i.e., you'd later type:
+      git push -u origin <branch>)
 
       Following instructions that were printed on the command line, I visited
 
       https://github.com/notuntoward/pyglmnet/pull/new/dataset_and_ex_fixes
 
       and made a pull request back to the original pyglmnet repository
-      
+***** 
 ***** sending a git patch
 
       If you've cloned a reporitory and made changes, here's [[https://thoughtbot.com/blog/send-a-patch-to-someone-using-git-format-patch][how to email a patch]].  This makes separate patches for each change in your clone, I think.
@@ -10596,6 +10704,9 @@ Maybe it will do until jupyterlab-lsp works again.
       OR 
       help("modules") # inside interpreter shell
 
+***** <<pyenv and virtualenv>>
+******* 
+******* [[pyenv in emacs]]
 ***** also [[Cookiecutter Data Science]]
 ***** [[Compare running python version programmatically]]
 ***** Check for python package security vulnerabilities
@@ -12265,6 +12376,10 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
     http://toolserver.org/~diberri/cgi-bin/html2wiki/index.cgi
 
     could also use org mode generic export
+* PostGres
+
+  python manage.py showmigrations
+  
 * MySQL
 *** good Ruby [[http://www.kitebird.com/articles/ruby-mysql.html][mysql howto]]
 *** getting [[proj/regime/][names of databases/tables/columns]]
@@ -12458,21 +12573,22 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 ******* [[https://support.apple.com/en-us/HT201236][Mac keyboard shortcuts - Apple Support]]
 ******* [[https://www.digitaltrends.com/computing/mac-keyboard-shortcuts/][The Best Mac Keyboard Shortcuts for 2021]]
 ******* [[https://www.computerworld.com/article/3023544/30-keyboard-shortcuts-mac-users-need-to-know.html][30 keyboard shortcuts Mac users need to know]]
-***** TRY Windows / MacOS keyboard correspondence
+***** TRY <<Windows / MacOS keyboard correspondence>>
       From: [[https://support.apple.com/guide/mac-help/windows-keys-on-a-mac-keyboard-cpmh0152/mac][Windows keys on a Mac keyboard - Apple Support]]
             [[https://9to5mac.com/2016/03/17/how-to-remap-windows-keyboard-buttons-match-mac-layout/][How-To: Remap Windows keyboards to match the Mac keyboard layout]]
 
       *Keyboard Function*
-      | Windows key      | Mac key                                       | MacOS function                                                                                                                                                                     |
-      |------------------+-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-      | Del              | Del, Fn-Delete                                | Deletes the character to the right. On Mac notebook computers, press Fn-Delete.                                                                                                    |
-      | Alt              | Option                                        | Enters special characters, such as é.                                                                                                                                              |
-      | Control, Windows | Command                                       | Performs actions or shortcuts. For example, pressing Command-S usually saves a document or file.                                                                                   |
-      | Home, End        | Command-Left Arrow, Command-Right Arrow       | On the Mac, use the Command and arrow keys to go to the beginning or end of the current line, and use the Home and End keys to go to the beginning or end of the current document. |
-      | Num Lock         | Num LockShift-Clear                           | In some apps, controls whether pressing keys in the numeric keypad enters numbers or moves the cursor.                                                                             |
-      | Scroll Lock      | Control-F14 (may need to press & hold the Fn) | In some apps, controls whether pressing the arrow keys moves the cursor or scrolls in a window.                                                                                    |
-      | Print Screen     | Shift-Command-3, Shift-Command-4              | Takes pictures of the screen. Shift-Command-3 takes a picture of the entire screen. Shift-Command-4 takes a picture of the part of the screen you select.                          |
-
+      | Windows key      | Mac key                                 | MacOS function                                                                                                                                                                     |
+      |------------------+-----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+      | Del              | Del, Fn-Delete                          | Deletes the character to the right. On Mac notebook computers, press Fn-Delete.                                                                                                    |
+      | Alt              | Option                                  | Enters special characters, such as é.                                                                                                                                              |
+      | Control, Windows | Command                                 | Performs actions or shortcuts. For example, pressing Command-S usually saves a document or file.                                                                                   |
+      | Home, End        | Command-Left Arrow, Command-Right Arrow | On the Mac, use the Command and arrow keys to go to the beginning or end of the current line, and use the Home and End keys to go to the beginning or end of the current document. |
+      | Num Lock         | Num LockShift-Clear                     | In some apps, controls whether pressing keys in the numeric keypad enters numbers or moves the cursor.                                                                             |
+      | Scroll Lock      | Control-F14 (maybe press & hold the Fn) | In some apps, controls whether pressing the arrow keys moves the cursor or scrolls in a window.                                                                                    |
+      | PrntScrn / Win+S | Shift-Command-3,4,5                     | Takes pictures of the screen. Shift-Command-3 takes a picture of the entire screen. Shift-Command-4 takes a picture of the part of the screen you select.                          |
+      Also [[Screen snipping (screenshots) on MacOS]]
+      
       *Physical location of MacOS keys on exteranal Windows keyboard (default)*
       | OS                 |          |           |            |
       |--------------------+----------+-----------+------------|
@@ -12598,11 +12714,7 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 ******* [[https://en.wikipedia.org/wiki/Table_of_keyboard_shortcuts][Table of keyboard shortcuts: Windows/MacOS/Emacs/Vim...]]
 
 ***** also [[Per app function keys on touchbar]]
-***** also [[Added keyboard shortcuts]]
-*** Screenshots
-
-    [[https://support.apple.com/en-us/HT201361][Take a screenshot on your Mac - Apple Support]]
-    
+***** also [[Added keyboard shortcuts]]    
 *** Trackpad a.k.a. Touchpad
 ***** double tap window select and drag
       From: [[https://support.apple.com/guide/mac-help/change-mouse-trackpad-preferences-unac899/mac][Change Mouse & Trackpad preferences for accessibility on Mac]]
@@ -12788,7 +12900,7 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 
     Allows you to separate revers external mouse scroll direction, so it goes the normal way on Windows and Linux.  Doesnt also reverse the Track Pad, which already scrolls normally.
 
-*** Screen snipping
+*** <<Screen snipping (screenshots) on MacOS>>
     From: [[https://support.apple.com/en-us/HT201361][Take a screenshot on your Mac - Apple Support]]
 
     | function                       | keys           |
@@ -12797,7 +12909,9 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
     | draw selection                 | Shft+Cmd+4     |
     | window/menu                    | Shft+Cmd+4+spc |
     | screenshot app                 | Shft+Cmd+5     |
-    | save to clipboard, not desktop | Ctrl+...       |
+    | *save to clipboard*, not desktop | Ctrl+...       |
+
+    Also: [[Windows / MacOS keyboard correspondence]]
 
 *** <<Added keyboard shortcuts>>
 ***** [[Default MacOS keyboard shortcuts]]
@@ -12888,7 +13002,7 @@ _commandline (The Unarchiver) Windows_
 *********** on typical Wifi: "indistinguishable for wired mouse"
 *********** wifi or eithernet (USB not mentioned)
 ********* Lightning to USB cable or local Wi-Fi network (USB on Mac only?)
-*********** like [[SideCar]]
+*********** like [[Apple SideCar]]
 *********** use USB work on a Windows machine?
 ********* MacOS host sw is [[https://avatron.com/get-air-display/][free]]
 ********* [[https://pcmac.download/app/419449718/air-display][here]], it suggests that you need an android emulator
@@ -12912,6 +13026,33 @@ _commandline (The Unarchiver) Windows_
 ********* [[https://support.apple.com/en-us/HT210380][Use your iPad as a second display for your Mac with Sidecar]]
 ********* used as dual monitor, screen latency is imperceptable, even on WiFi
 ********* WiFi or USB, so can use iPad when don't have WiFi
+********* <<Computers Compatible with SideCar>>: all iPad Pros 
+          From: [[https://osxdaily.com/2019/10/11/sidecar-compatible-mac-ipad-list/][List of Macs & iPads with Sidecar Compatibility]]
+*********** iPad Models with Sidecar Support
+
+            iPad must be running iPadOS 13 or later, and must be one of the following devices:
+
+            - iPad Pro (all models, including 9.7″ iPad Pro, 10.5″ iPad Pro, 11″ iPad Pro, 12.9″ iPad Pro, all generations)
+            - iPad Air (3rd generation and newer)
+            - iPad (7th generation and newer)
+            - iPad (6th generation and newer)
+            - iPad mini 5 (and newer)
+
+            You might notice that only the iPad models with Apple Pencil support will also support Sidecar (and yes, you can use Sidecar without having an Apple Pencil, just use touch interaction instead).
+
+*********** Macs with Sidecar Compatibility
+
+            The Mac must be running MacOS Catalina 10.15 or later, and must be one of the following computers:
+
+            - MacBook Pro (2016) or newer
+            - MacBook Air (2018) or newer
+            - MacBook (Early 2016) or newer
+            - Mac Mini (2018) or newer
+            - Mac Pro (2019)
+            - iMac Pro (2017) or newer
+            - iMac (Late 2015) or newer
+
+*********** also [[iPads Compatible with Apple Pencil]]
 ********* [[AirDisplay]] also uses WiFi or USB
 ********* run OneNote on MacOs, control it on MacOS
 *********** Photoshop [[https://www.youtube.com/watch?v=7ROc8dMDams][pen latency was a bad problem]] (2019)
@@ -12937,6 +13078,35 @@ _commandline (The Unarchiver) Windows_
         mirrors many things to many things, but I couldn't tell if it did Mac --> PC
 
         Is recommended [[https://www.quora.com/How-do-I-use-a-Windows-laptop-as-a-second-monitor-for-a-MacBook][here]] for Mac --> PC
+
+******* <<Apple Pencil>>
+********* <<iPads Compatible with Apple Pencil>>: iPad Pro 12.9" >= 3rd gen
+          From: [[https://support.apple.com/en-us/HT211029][Apple Pencil compatibility - Apple Support]]
+
+*********** Apple Pencil (2nd generation)
+
+            You can use Apple Pencil (2nd generation) with these iPad models: 
+
+            - iPad Air (4th generation)
+            - iPad Pro 12.9-inch (3rd generation) and later
+            - iPad Pro 11-inch (1st generation) and later
+
+*********** Apple Pencil (1st generation)
+
+            You can use Apple Pencil (1st generation) with these iPad models:
+
+            - iPad (8th generation)
+            - iPad mini (5th generation)
+            - iPad (7th generation)
+            - iPad (6th generation)
+            - iPad Air (3rd generation)
+            - iPad Pro 12.9-inch (1st or 2nd generation)
+            - iPad Pro 10.5-inch
+            - iPad Pro 9.7-inch
+
+            Not sure which iPad you have? Identify your iPad model.
+
+*********** also [[Computers Compatible with SideCar]]
 
 ******* <<5kplayer: free, blocky>>
 ********* recommended [[Ma6Echu4][here]]
@@ -12973,6 +13143,22 @@ _commandline (The Unarchiver) Windows_
 ********* Windows/Mac verison expensive: $80/yr or $100/yr for Win+Mac
 ******* [[https://pdfexpert.com/ios/how-to-annotate-pdf][PDF Expert]] might be OK
 ******* [[ don't seem to be best alternatives][Drawboard alternatives]] don't seem to be best alternatives
+***** [[Apple Pencil]]
+***** [[Computers Compatible with SideCar]]
+***** [[iPads Compatible with Apple Pencil]]
+***** Which iPad to buy in 2021 (goes w/ Geli MacBook)? _iPadPro 12.9" >= 3rdGen_
+******* [[Computers Compatible with SideCar]]: all iPad Pros 
+******* [[iPads Compatible with Apple Pencil]]: iPad Pro 12.9" >= 3rd gen
+******* memory: >= 128 GB
+
+        OneDrive share == 18.5G  (pdfs)
+                 pix   == 40G    (pictures)
+
+******* Best deal as of 09/17/21
+********* apple pencil 2: Target, free ship: [[https://www.target.com/p/apple-pencil-2nd-generation/-/A-54217063?ref=tgt_adv_XS000000&AFID=google_pla_df&fndsrc=tgtao&DFA=71700000012807845&CPNG=PLA_Electronics%2BShopping_Local%7CElectronics_Ecomm_Hardlines&adgroup=SC_Electronics&LID=700000001170770pgs&LNM=PRODUCT_GROUP&network=g&device=c&location=9033497&targetid=pla-627591811898&ds_rl=1246978&ds_rl=1248099&gclid=Cj0KCQjwvO2IBhCzARIsALw3ASpgleyXvkn4dERwiCxTn-Tc-UQx0-vdTNZypeiL49MPYghPY-kFxq4aAqpEEALw_wcB&gclsrc=aw.ds][$100]]
+********* iPad Pro 12.9-inch, 3rd Gen - Wi-Fi, 256GB - Space Gray (Renewed, Amazon): [[https://www.amazon.com/dp/B07Q8RX57R/ref=olp_aod_redir_impl1?_encoding=UTF8&aod=1][$713]]
+********* iPad Pro 12.9-inch 3rd Gen (Oct 2018) 256GB - Space Gray - (Wi-Fi + GSM/CDMA + LTE) : [[https://www.backmarket.com/tested-and-certified-used-ipad-pro-129-inch-3rd-gen-october-2018-256gb-space-gray-wi-fi-gsmcdma-lte/81732.html?shopping=gmc&gclid=Cj0KCQjwvO2IBhCzARIsALw3ASq1mrCwEewelnRIl3BxbHAlfXcsldH64OpX3F3jlZcM554TDCveBWcaAmj_EALw_wcB][$660 (fair); $725 (excellent)]]
+
 *** Blue Light Filter: [[https://support.apple.com/en-us/HT207513][Use Builtin Night Shift]]
 *** postgresql
     From: [[https://wiki.postgresql.org/wiki/Homebrew][Homebrew - PostgreSQL wiki]]
@@ -13941,6 +14127,7 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
       Windows/Linux and (unsupported) MacOS
 
 ***** [[ZotNet]]
+***** [[https://github.com/athensresearch/athens][athens: Free self-hosted desktop app]]
 ***** VUE
 ******* complete but ugly
 ******* paths are kind of interesting for display and presentation
