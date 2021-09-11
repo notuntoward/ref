@@ -2450,14 +2450,6 @@ Version 2020-11-20 2021-01-18"
  '(gud-pdb-command-name "python -m pdb")
  '(gud-tooltip-echo-area t)
  '(gud-tooltip-mode t)
- ;; '(ido-auto-merge-work-directories-length -1)
- ;; '(ido-cannot-complete-command 'ido-grid-mode-tab)
- ;; '(ido-create-new-buffer 'always)
- ;; '(ido-everywhere t)
- ;; '(ido-grid-mode t)
- ;; '(ido-mode 'both nil (ido))
- ;; '(ido-use-filename-at-point 'guess)
- ;; '(ido-use-url-at-point t)
  '(indent-tabs-mode nil)
  '(indicate-buffer-boundaries nil)
  '(indicate-empty-lines t)
@@ -2502,7 +2494,7 @@ Version 2020-11-20 2021-01-18"
  '(org-list-allow-alphabetical t)
  '(org-list-empty-line-terminates-plain-lists t)
  '(org-modules
-   '(ol-bibtex org-mouse ol-eshell ol-man org-inlinetask org-mouse org-protocol org-choose))
+   '(ol-bibtex ol-info org-inlinetask org-mouse ol-eshell org-annotate-file ol-bookmark org-choose ol-elisp-symbol org-mac-link ol-man org-track org-mouse org-protocol org-choose))
  '(org-noter-auto-save-last-location t)
  '(org-noter-doc-property-in-notes t)
  '(org-occur-case-fold-search ''smart)
@@ -2510,7 +2502,6 @@ Version 2020-11-20 2021-01-18"
  '(org-outline-path-complete-in-steps nil)
  '(org-pretty-entities nil)
  '(org-refile-targets '((nil :maxlevel . 6)))
- '(org-roam-completion-everywhere t)
  '(org-roam-completion-system 'ivy)
  '(org-roam-db-update-method 'idle-timer)
  '(org-roam-file-completion-tag-position 'append)
@@ -2552,7 +2543,6 @@ Version 2020-11-20 2021-01-18"
  '(search-default-mode 'char-fold-to-regexp)
  '(send-mail-function 'mailclient-send-it)
  '(show-paren-mode t)
- ;;'(sml/mode-width '\10)
  '(sml/mode-width 10)
  '(sml/modified-char "•")
  '(sml/name-width 30)
@@ -3138,6 +3128,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
                    )
     ))
 
+
 ;; ** Org and Git
 
 ;; Behavior when link to a file in git.  This only happens if org-modules contains  ol-git-link
@@ -3333,17 +3324,36 @@ TODO: add a cycle that opens or collapses all prop drawers?"
          :map org-mode-map
          ("C-M-i" . completion-at-point)
          ;; this map may not exist anymore
-         ;; :map org-roam-dailies-map
-         ("Y" . org-roam-dailies-capture-yesterday)
-         ("T" . org-roam-dailies-capture-tomorrow)
+;;         :map org-roam-dailies-map
+;;         ("Y" . org-roam-dailies-capture-yesterday)
+;;         ("T" . org-roam-dailies-capture-tomorrow)
          )
   ;; causes error:
   ;; :bind-keymap
   ;; ("C-c n d" . org-roam-dailies-map)
   
   :config
+  (use-package org-roam-bibtex)
+
+  ;; https://org-roam.discourse.group/t/minimal-setup-for-helm-bibtex-org-roam-v2-org-roam-bibtex/1971/2?u=scotto
+  (org-roam-bibtex-mode +1)
+
   (require 'org-roam-dailies) ;; Ensure the keymap is available
   (org-roam-db-autosync-mode))
+
+;; adds a bullet to today's daily w/ a timestamp on the front of it
+;; (works in v2):
+;; https://org-roam.discourse.group/t/v2-daily-capture-template-not-working/1887
+;; (setq org-roam-dailies-capture-templates
+;;       (let ((head
+;;              (concat "#+title: %<%Y-%m-%d (%A)>\n#+startup: showall\n* Daily Overview\n"
+;;                      "#+begin_src emacs-lisp :results value raw\n"
+;;                      "(as/get-daily-agenda \"%<%Y-%m-%d>\")\n"
+;;                      "#+end_src\n"
+;;                      "* [/] Do Today\n* [/] Maybe Do Today\n* Journal\n")))
+;;         `(("j" "journal" entry
+;;            "* %<%H:%M> %?" :if-new
+;;            (file+head+olp "%<%Y-%m-%d>.org" ,head ("Journal"))))))
 
 ;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
 ;; (use-package org-roam
@@ -3417,13 +3427,15 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; ** org-roam-bibtex
 
 ;; needed for ORB, apparently
-(use-package magit-section)
+;;(use-package magit-section)
 
 
-(use-package org-roam-bibtex
-  :after org-roam
-  :config
-  (require 'org-ref)) ; if Org Ref is not loaded anywhere else, load it here
+;; s/b Loaded INSIDE Of Org-Roam?
+;; https://org-roam.discourse.group/t/org-roam-bibtex-for-org-roam-v2/1574/88
+;; (use-package org-roam-bibtex
+;;   :after org-roam
+;;   :config
+;;   (require 'org-ref)) ; if Org Ref is not loaded anywhere else, load it here
 
 ;; orb puts any .org file link into or db:  i don't want that b/c i want to link to product code, etc.
 ;; turn off for now
@@ -3731,10 +3743,10 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; *** Helm-bibtex
 ;; Seems to be rquired for org-roam-bibtex
-
-(use-package helm-bibtex
-  :bind*
-  ("C-c C-h" . helm-bibtex))
+;; but then v2 org-roam-bibtex complains that it can't find 
+;; (use-package helm-bibtex
+;;   :bind*
+;;   ("C-c C-h" . helm-bibtex))
 
 ;; *** ivy-bibtex
 
@@ -4528,10 +4540,43 @@ _C-M-a_ change default action from list for this session
 (global-set-key "\C-c\C-b" 'count-words-buffer)
 
 ;; ** flyspell
-(use-package flyspell-correct
+
+;; from: https://github.com/gicmo/dot-emacs/blob/master/init.el
+;;       http://www.nextpoint.se/?p=656
+
+(setq hunspell_bin (sdo/find-exec "hunspell" "Needed by ispell and flyspell."))
+(use-package flyspell
+  :init
+  (setenv "DICPATH" (expand-file-name "~/.hunspell"))
+  :custom
+  (flyspell-issue-message-flag nil)
+  (flyspell-issue-welcome-flag nil)
   :config
-  (require 'flyspell-correct-ido)
-  (define-key flyspell-mode-map (kbd "C-;") 'flyspell-correct-previous-word-generic))
+  (setq ispell-program-name hunspell_bin)
+  (setq ispell-really-hunspell t
+	ispell-extra-args '("-i" "utf-8")
+	ispell-local-dictionary-alist
+	'(("deutsch"
+	   "[A-Za-zöäüß]" "[^A-Za-zöäüß]" "[']" nil
+	   ("-d" "de_DE_frami")
+	   nil utf-8)
+	  ("english"
+	   "[A-Za-z]" "[^A-Za-z]" "[']" nil
+	   ("-d" "en_US")
+	   nil utf-8))
+	ispell-dictionary "english"
+        ispell-dictionary-alist ispell-local-dictionary-alist
+        ispell-hunspell-dictionary-alist ispell-dictionary-alist))
+
+;; https://github.com/d12frosted/flyspell-correct
+;; fails if you don't have ispell installed (or aspell or hunspell?)
+;; hunspell expects dictionaries in ~/.hunspell (see howto.org)
+(use-package flyspell-correct
+  :after flyspell
+  :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
+
+(use-package flyspell-correct-ivy
+  :after flyspell-correct)
 
 ;; ** find repeated words
 (defun find-find-word-word ()
@@ -5023,7 +5068,6 @@ reuse it's window, otherwise create new one."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;;'(default ((t (:inherit nil :stipple nil :background "#ffffff" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 102 :width normal :foundry "outline" :family "Consolas"))))
  '(aw-leading-char-face ((t (:foreground "red" :weight bold))))
  '(cperl-array ((t (:background "*" :foreground "saddlebrown" :slant italic))))
  '(cperl-hash ((t (:background "*" :foreground "darkgreen" :slant oblique))))
