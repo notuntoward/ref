@@ -2444,6 +2444,10 @@ Version 2020-11-20 2021-01-18"
  '(ess-ps-viewer-pref "gv")
  '(ess-style 'OWN)
  '(flycheck-python-pycompile-executable pythonbin)
+ '(flyspell-correct-interface 'flyspell-correct-ivy)
+ '(flyspell-duplicate-distance 0)
+ '(flyspell-issue-message-flag nil)
+ '(flyspell-issue-welcome-flag nil)
  '(focus-follows-mouse t)
  '(gdb-many-windows t)
  '(gud-chdir-before-run t)
@@ -4221,9 +4225,17 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; prescient sorts and filters candidate lists for ivy/counsel.
 ;; Does this sometimes stop ivy search from working?
 ;;
-(use-package prescient)
+(use-package prescient
+  :config
+  (prescient-persist-mode)) ; persist across emacs sessions
+
+;; prescient-sort-full-matches-first
+;; prescient-use-char-folding
+;; prescient-use-case-folding
+;; prescient-save-file
+
 (use-package ivy-prescient
-  :after counsel
+  :after counsel ivy prescient
   :custom
   (ivy-prescient-mode t))
 ;; in docs but doesn't exist?  
@@ -4579,55 +4591,76 @@ _C-M-a_ change default action from list for this session
   :after flyspell-correct)
 
 ;; ** find repeated words
-(defun find-find-word-word ()
-  (interactive)
-  (re-search-forward "\\b\\(\\w+\\)\\W+\\1\\b"))
-;; (global-set-key "\e=" 'find-find-word-word) ; use this for goto-line-with-feedback
-
-;; ** writegood
-(use-package writegood-mode
-  :config
-  (global-set-key "\C-cg" 'writegood-mode)
-  (global-set-key "\C-c\C-gg" 'writegood-grade-level)
-  (global-set-key "\C-c\C-ge" 'writegood-reading-ease))
-
+;; redundant since in writegood
+;; (defun find-find-word-word ()
+;;   (interactive)
+;;   (re-search-forward "\\b\\(\\w+\\)\\W+\\1\\b"))
+;; ;; (global-set-key "\e=" 'find-find-word-word) ; use this for goto-line-with-feedback
 
 ;; ** artbollocks
 ;; https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
 ;; do I like this?
-(use-package artbollocks-mode
-  :defer t
-  :config
-  (setq artbollocks-weasel-words-regex
-        (concat "\\b" (regexp-opt
-                       '("one of the"
-                         "should"
-                         "just"
-                         "sort of"
-                         "a lot"
-                         "probably"
-                         "maybe"
-                         "perhaps"
-                         "I think"
-                         "really"
-                         "pretty"
-                         "nice"
-                         "action"
-                         "utilize"
-                         "leverage") t) "\\b"))
-  ;; Don't show the art critic words, or at least until I figure
-  ;; out my own jargon
-  (setq artbollocks-jargon nil))
+;; writegood-mode does similar things
+;; (use-package artbollocks-mode
+;;   :defer t
+;;   :config
+;;   (setq artbollocks-weasel-words-regex
+;;         (concat "\\b" (regexp-opt
+;;                        '("one of the"
+;;                          "should"
+;;                          "just"
+;;                          "sort of"
+;;                          "a lot"
+;;                          "probably"
+;;                          "maybe"
+;;                          "perhaps"
+;;                          "I think"
+;;                          "really"
+;;                          "pretty"
+;;                          "nice"
+;;                          "action"
+;;                          "utilize"
+;;                          "leverage") t) "\\b"))
+;;   ;; Don't show the art critic words, or at least until I figure
+;;   ;; out my own jargon
+;;   (setq artbollocks-jargon nil))
+
+
+;; ** writegood
+(use-package writegood-mode)
+  ;; :config
+  ;; (global-set-key "\C-cg" 'writegood-mode)
+  ;; (global-set-key "\C-c\C-gg" 'writegood-grade-level)
+  ;; (global-set-key "\C-c\C-ge" 'writegood-reading-ease))
+
+(defun sdo/reading-scores (&optional start end)
+  "Flesch-Kincaid reading grade level and ease.  This is a merged version of the scoring functions 'writegood-grade-level and 'writegood-reading-ease."
+  (interactive)
+  (let* ((params (writegood-fk-parameters start end))
+         (sentences (nth 0 params))
+         (words     (nth 1 params))
+         (syllables (nth 2 params))
+         (ease-score     (+ (* 0.39 (/ words sentences)) (* 11.8 (/ syllables words)) -15.59))
+         (grade-score (- 206.835 (* 1.015 (/ words sentences)) (* 84.6 (/ syllables words)))))
+    (message "Grade %.2f: Ease: %.2f (%s)" grade-score
+             ease-score (writegood-reading-ease-score->comment ease-score))))
 
 ;; ** toggle writing tools
+;; flyspell and writegood both highlight duplicated words; use the
+;; flyspell face b/c it only highlights the duplicated workd
+;; writegood faces
+;;   writegood-weasels-face
+;;   writegood-passive-voice-face
+;;   writegood-duplicates-face
+;; flyspell faces
+;;   flyspell-duplicate-face
+;;   flyspell-incorrect-face
 (defun toggle-writing-tools ()
   "Enable/disable writing and proofing tools"
   (interactive)
   ;; why don't these modes turn off when this function is called twice?  They do when called individually and interactively
-  (flyspell-mode)
-  (writegood-mode)
-  (artbollocks-mode)) ;; do I like this?
-
+  (call-interactively 'flyspell-mode)
+  (call-interactively 'writegood-mode))
 (global-set-key (kbd "C-c W") 'toggle-writing-tools)
 
 ;; ** Latex
@@ -5085,7 +5118,8 @@ reuse it's window, otherwise create new one."
  '(eshell-ls-product ((((class color) (background light)) (:foreground "DarkSeaGreen"))))
  '(eshell-ls-special ((((class color) (background light)) (:foreground "darkred" :weight bold))))
  '(eshell-prompt ((t (:foreground "SlateGray" :weight bold))))
- '(flyspell-incorrect ((t (:underline (:color "firebrick1" :style wave)))))
+ '(flyspell-duplicate ((t (:foreground "black" :strike-through t :underline "firebrick1"))))
+ '(flyspell-incorrect ((t (:foreground "black" :underline (:color "firebrick" :style wave)))))
  '(font-lock-builtin-face ((((type tty) (class color)) (:foreground "red"))))
  '(font-lock-function-name-face ((t (:foreground "navy" :weight bold))))
  '(font-lock-keyword-face ((nil (:foreground "navy"))))
@@ -5123,5 +5157,6 @@ reuse it's window, otherwise create new one."
  '(region ((t (:background "LightSteelBlue1"))))
  '(sml/modified ((t (:inherit sml/not-modified :foreground "firebrick" :weight bold))))
  '(table-cell-face ((t (:background "honeydew1" :foreground "black" :inverse-video nil))))
- '(writegood-duplicates-face ((t (:underline (:color "orange" :style wave)))))
- '(writegood-passive-voice-face ((t (:underline (:color "MediumOrchid1" :style wave))))))
+ '(writegood-duplicates-face ((t (:foreground "black" :strike-through t :underline "firebrick1"))))
+ '(writegood-passive-voice-face ((t (:foreground "LightBlue4" :underline t :weight bold))))
+ '(writegood-weasels-face ((t (:foreground "dark khaki" :underline t :weight bold)))))
