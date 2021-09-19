@@ -1293,8 +1293,7 @@
         Only numbers on 1st level, this doc
         - #+options: num:1
 
-******* ox-confluence (exists)
-
+******* [[ox-confluence]]
 ******* <<org-mode to/from OneNote>>
 ********* <<org-mode export to OneNote>>
 *********** via MS Word
@@ -1318,6 +1317,19 @@
 *********** also [[org-mode export to OneNote]]
 ********* also [[OneNote]]
 ********* also [[Org to/from MS Word]]
+******* disable heading numbering & bullets in export
+        From: [[https://stackoverflow.com/a/9096734/2591097][How do you remove numbering from headers when exporting from org-mode...]]
+        
+        Can be done programmatically in .emacs settings or in file variables.  File variables below:
+
+        All headings showing, Only bullets, use @ top if file    
+
+         #+OPTIONS: H:0 num:0
+
+        All headings showing, bullets below top level headlines
+
+         #+OPTIONS: H:0 num:1
+
 ***** Moving/skipping to headlines
 ******* [[Swiper]]
 ******* [[http://orgmode.org/org.html#Motion][org-goto]]: =C-c C-j=
@@ -1368,7 +1380,12 @@
 
 
         _IWES TexLive Solution_: Disable the proxy stuff in Chrome, delete
-        http_proxy (not sure if necess.) & then hook up with the IWES guest Wifi.  Finally, I was able to do a normal TexLive internet install. I also had to add the path to the TexLive latexmk binary (C:\texlive\2016\bin\win32) to the PATH environment variable.  I don't remember needing to do this at home.
+        http_proxy (not sure if necess.) & then hook up with the IWES guest Wifi.  Finally, I was able to do a normal TexLive internet install. 
+
+        *I also had to add the path to the TexLive latexmk binary*)
+        (in 2021 on my SB2 computer, this was c:\texlive\2021\bin\win32\latexmk.exe)
+
+ (C:\texlive\2016\bin\win32) to the PATH environment variable.  I don't remember needing to do this at home.
 
         Note also that, in .emacs, I had to modify the advice from
         https://github.com/jkitchin/org-ref/issues/346#issuecomment-262874374
@@ -1444,6 +1461,8 @@
 ******* [[org-zotxt-noter]] lets you take notes on [[Zotero]] / [[zotxt]] attachment (pdf)
 ******* [[org-roam workflow with Zotero, org-ref, org-noter, deft]]
 ******* org-noter-create-skeleton gets pdf annotations
+******* <<preventing an OR v2 node for each org-noter annotation>>
+        From: [[https://org-roam.discourse.group/t/exlude-org-noter-insert-notes-from-being-cached-as-nodes/2017/3?u=scotto][Exlude org-noter-insert notes from being cached as nodes]]
 ***** <<all bibtex entries inside of org-mode file>>
       From: [[http://cachestocaches.com/2020/3/org-mode-annotated-bibliography/][Managing my Annotated Bibliography with Emacs' Org Mode]]
 
@@ -1811,6 +1830,10 @@
 ********* [[Orger]]
 ********* [[Org interface to online databases, PIM's etc.]]
 ******* [[https://pandoc.org/org.html][Pandoc - Org-mode features and differences]]
+***** <<org-mode on iPad>>
+******* [[https://beorgapp.com/][beorg - Task management for iPhone and iPad]]
+******* [[https://apps.apple.com/us/app/mobileorg/id634225528][‎MobileOrg on the App Store]]
+******* [[https://irreal.org/blog/?p=8407][Organice | Irreal]] (browser based?)
 ***** [[https://github.com/elxbarbosa/novels.org][novels.org: Novels.org - Your Novels in Plain Text (Emacs]]
 ***** also [[obsidian and emacs]]
 ***** also [[org-brain]]
@@ -1818,7 +1841,7 @@
 *** <<org-roam>> 
     org-mode based Zettelkasten, inspired by [[Roam Research]]
 
-***** V2 
+***** org-roam V2 
 ******* repo branch: [[https://github.com/org-roam/org-roam/tree/v2][GitHub - org-roam/org-roam at v2]]
 ******* bugs
 ********* doesn't work: :custom (org-id-method 'ts) ;; use timestamps for org-id
@@ -1902,6 +1925,8 @@
                      (setq-local org-roam-directory (locate-dominating-file default-directory ".dir-locals.el"))
                      (setq-local org-roam-db-location (concat org-roam-directory "org-roam.db")))))))
                    
+*********** general dir filter
+            [[https://org-roam.discourse.group/t/filter-org-roam-node-find-insert-using-tags-and-folders/1907/2?u=scotto][Filter org-roam-node-{find, insert} using tags and folder (bram85)]]
 *********** dailies/journal files in separate dir
 
             These both can share a DB with the general org-roam dir
@@ -1918,6 +1943,8 @@
 ******* org-roam v2 searching
 ********* showing tags in search results, direct querying DB for tags...
           From: [[https://systemcrafters.net/live-streams/september-03-2021/][System Crafters Live! - September 3, 2021 - System Crafters]]
+******* renaming OR note filename if #title changes: [[https://org-roam.discourse.group/t/does-renaming-title-no-longer-renames-the-filename/2018/3?u=scotto][arozbiz code]]
+******* [[preventing an OR v2 node for each org-noter annotation]]
 ***** Intro, basic org-roam info
 ******* [[https://github.com/org-roam][org-roam/org-roam: Rudimentary Roam replica with Org-mode]]
 ******* example: [[https://github.com/jethrokuan/braindump][author's's braindump]]: many org files, pdfs, 
@@ -3047,6 +3074,66 @@ was better, I started using that instead.  See [[org-tree operations]].
 *** <<Using customization instead of .emacs setq>>
 
     Guy [[https://emacs.stackexchange.com/questions/102/advantages-of-setting-variables-with-setq-instead-of-custom-el][convincingly recommends]] using customizations instead of setq.  Also putting customizations in a separate file (I'm not sure this matters).
+
+*** Spellchecking
+***** [[https://github.com/d12frosted/flyspell-correct][d12frosted/flyspell-correct]]
+
+      Seems nice and in Sept. 2021 had commits only a few months old.  Requires ispell/aspell/hunspell, I think.
+***** [[http://www.nextpoint.se/?p=656][Emacs and Hunspell on MS Windows for Beginners]] (worked)
+***** <<hunspell>>
+      See [[https://hunspell.github.io/][Hunspell: About]]
+      
+      Windows/linux/MacOS spell checking that's compatible with emacs flyspell
+
+******* install emacs packages
+        Windows
+          choco install hunspell.portable
+
+        MacOS
+          brew install hunspell
+
+******* Install dictionaries:
+        From: [[https://passingcuriosity.com/2017/emacs-hunspell-and-dictionaries/][Emacs, Hunspell, Dictionary, and You - Passing Curiosity]]
+              [[https://stackoverflow.com/questions/56429761/on-macos-hunspell-cant-find-existing-aff-and-dic-files-in-library-spelling][On MacOS, hunspell can't find existing .aff and .dic files in Lib]]
+              [[https://github.com/hunspell/hunspell][hunspell/hunspell: The most popular spellchecking library.]]
+
+        mkdir ~/.hunspell
+        cd ~/.hunspell
+        
+        wget -O en_US.dic https://cgit.freedesktop.org/libreoffice/dictionaries/plain/en/en_US.dic
+        wget -O en_US.aff https://cgit.freedesktop.org/libreoffice/dictionaries/plain/en/en_US.aff
+        wget -O hyph_en_US.dic https://cgit.freedesktop.org/libreoffice/dictionaries/plain/en/hyph_en_US.dic
+                
+        wget -O de_DE_frami.aff https://cgit.freedesktop.org/libreoffice/dictionaries/plain/de/de_DE_frami.aff        
+        wget -O de_DE_frami.dic https://cgit.freedesktop.org/libreoffice/dictionaries/plain/de/de_DE_frami.dic
+        wget -O hyph_de_DE.dic https://cgit.freedesktop.org/libreoffice/dictionaries/plain/de/hyph_de_DE.dic
+        
+******* configure .emacs for hunspell
+
+        (setq ispell-program-name "hunspell")
+        (setenv "DICPATH""~/.hunspell")
+
+******* fix can't find dict problem (Windows only; works in MacOS)
+
+        (ispell-find-hunspell-dictionaries) can't find the dictionaries, should initialize `ispell-hunspell-dictionary-alist
+        
+********* bugfix for hunspell 17.0 and greater no longer needed
+
+          [[file:c:/ProgramData/chocolatey/lib/emacs/tools/emacs/share/emacs/27.2/lisp/textmodes/ispell.el][ispell.el]] had a bug, as discussed [[https://debbugs.gnu.org/cgi/bugreport.cgi?bug=33493][here]] (with a patch). But it looks like this was fixed in emacs 27.2
+
+********* aspell but says best way is aspell on WSL; rest of emacs on Windows
+          [[https://www.reddit.com/r/emacs/comments/dinynj/whats_your_strategy_for_spellchecking_on_windows/f3y4jpo?utm_source=share&utm_medium=web2x&context=3][What&#x27;s your strategy for spell-checking on Windows 10? : emacs]]
+
+******* <<hunspell setup for multiple languages>>
+********* [[https://stackoverflow.com/questions/42159012/emacs-spell-check-on-fly-for-2-languages][Emacs. Spell check "on fly" for 2 languages - Stack Overflow]]
+********* [[https://github.com/Hi-Angel/dotfiles/blob/55e1daf5266ee997e72700cf7d8b6463e2b02531/.emacs#L859-L870][dotfiles/.emacs at 55e1daf5266ee997e72700cf7d8b6463e2b02531 · Hi-Angel/dotfil...]]
+
+***** multiple languages
+****** [[hunspell setup for multiple languages]]
+***** guesslanguage package
+      From: [[https://stackoverflow.com/questions/42159012/emacs-spell-check-on-fly-for-2-languages][Emacs. Spell check "on fly" for 2 languages - Stack Overflow]]
+
+      I guess it guesses which language you're typing?  Someone online said ispell language guessing didn't work.  I don't know if he meant this one.
 
 *** Fonts
 ***** inc/dec displayed font size: =C-x C-+= or =C-x C--=
@@ -7024,6 +7111,32 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 ******* perl is here: [[http://search.cpan.org/~bobtfish/Text-Markdown-1.000031/lib/Text/Markdown.pm][Text::Markdown]]
 ******* [[http://search.cpan.org/~mramberg/MojoMojo-1.05/lib/MojoMojo/Formatter/Markdown.pm][MojoMojo::Formatter::Markdown]] (MultiMarkdown) does do tables
 ********* but have to install latex, etc.?
+* Confluence
+*** [[Confluence supports PlantUML]]
+*** Writing Conflunce in org-mode
+*****  M-x org-confluence-export-as-confluence 
+***** [[Emacs PlantUML]]
+***** <<ox-confluence>>
+
+      Some kind of org-mode to confluence supporter.  [[https://eising.it/posts/org-pandoc-confluence/][Guy who writes a lot of confluence pages]] uses it (in 2020).  He also syncs w/ git.
+
+******* [[https://github.com/aspiers/orgmode/blob/master/contrib/lisp/ox-confluence.el][orgmode/ox-confluence.el at master · aspiers/orgmode · GitHub]]
+******* TRY but I'm not sure how to use it in emacs
+        
+***** [[https://eising.it/posts/org-pandoc-confluence/][How to avoid confluence as much as possible]]: ox-confluence/pandoc/git
+***** [[https://www.reddit.com/r/orgmode/comments/hugs7h/exporting_to_confluence/][many export org to markdown or html]], say org/ox-confluence are obsolete
+***** org-kungfu
+      From: [[https://github.com/baohaojun/org-kungfu][baohaojun/org-kungfu: Using Org-mode to write Confluence pages]]
+
+      Uses perl and pandoc, keeps confluence and org-mode synced, somehow
+
+      Seems to be maintained.  In Sept. 2021, last commit was Feb 2021
+
+*** Jira and org-mode
+***** [[https://www.emacswiki.org/emacs/OrgJiraMode][EmacsWiki: Org Jira Mode]]
+***** [[https://github.com/stig/ox-jira.el][stig/ox-jira.el: Org-mode export backend for JIRA markup]]
+***** [[https://emacs.stackexchange.com/questions/15079/in-org-mode-how-do-i-export-to-jira-wiki-markup/48331][In org-mode, how do I export to JIRA wiki markup?]]
+
 * Screenscraping
 *** <<Google Spreadsheet Table Scraping>>
     From: [[http://blog.ouseful.info/2008/10/14/data-scraping-wikipedia-with-google-spreadsheets/][google spreadsheets]]: amazing!
@@ -11830,6 +11943,14 @@ else:
 *** <<Python NLP libs>>
 ***** [[https://towardsdatascience.com/5-nlp-models-that-you-need-to-know-about-754594a3225b][5 NLP Models That You Need to Know About]]
 ***** [[https://towardsdatascience.com/6-nlp-techniques-every-data-scientist-should-know-7cdea012e5c3][6 NLP Techniques Every Data Scientist Should Know]]
+* Programming tools
+*** diff/patch
+    From: [[https://www.pair.com/support/kb/paircloud-diff-and-patch/][How to use diff and patch]]
+    
+    modify file1.htm with the changes described in patchfile.patch
+    
+    patch file1.html patchfile.patch
+    
 * <<Data Versioning>>
 
   The [[POC versioning Machine Learning pipeline]] looks pretty good.  Has DVC parameterization and Jupyter notebooks.  Worth looking into?
@@ -12420,9 +12541,10 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 ***** VPN connection on taskbar
 ******* [[https://vpnmyway.wordpress.com/version-history-download/][VPNMyWay is supposed to put the connection on the taskbar]]
 * <<Lyx>>
-*** Windows Lyx: use TexLive instead of MikTex: [[How to make the org-ref latex compile: install TexLive]]
+*** Windows Lyx
 
-    <<Lyx tweaks for TexLive>>
+***** use TexLive instead of MikTex: [[How to make the org-ref latex compile: install TexLive]]
+***** <<Lyx tweaks for TexLive>>
 
     Lyx complained at first when I installed the version that came without MikTex and forced it to use a new TexLive install (this was on my work computer; not a problem at home, maybe because of the proxy stuff).  It said that document classes and modules were missing, and therefore, it couldn't make pdfs of the help files.  I did two things:
 
@@ -12431,6 +12553,12 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 
        And then pdf making (and everything else that I checked) worked.
 
+***** Tiny icons and text (?) in lyx interface
+
+      Solution: right click on a tiny icon and select a bigger icons size.
+
+      This affects all icons but did not immediately seem to change menu text size in lyx interface (menus, etc.).  But /maybe/ these got bigger after I restarted lyx?
+      
 *** <<Mac Lyx>>
 
     I haven't gotten this to work yet on the MacBook Pro (2021).
@@ -13135,13 +13263,16 @@ _commandline (The Unarchiver) Windows_
         *Question*: can iPad screen be shown only in a window of the MacOS screen, so that you could write on the iPad and see the result on the big screen, along with other stuff, while you're Zooming?
 
 ******* 3rd party mirroring software. Many: [[Computer/Tablet as Second Monitor]]
-***** pdf annotation on iPad
-******* goodnotes imports to proprietary format, [[https://www.reddit.com/r/GoodNotes/comments/ig39pg/converting_goodnotes_file_to_pdf/][must export to pdf]]
+***** <<pdf annotation on iPad>>
+******* [[https://community.adobe.com/t5/acrobat-reader-mobile-discussions/viewing-pdf-files-from-onedrive/m-p/6582082#M179][Viewing pdf files from OneDrive - Adobe Support Community]]
 ******* [[https://pdf.wondershare.com/pdfelement-ios/][PDFelement]], rated [[https://pdf.wondershare.com/mobile-app/ipad-pro-pdf-annotation.html][best free iPad]] (mac version (not free) also [[https://pdf.wondershare.com/mobile-app/ipad-pro-pdf-annotation.html][does OCR]])
 ********* said to be [[https://pdf.wondershare.com/pdf-editor-mac/pdf-xchange-for-mac-alternative.html][best PDF-Xchange alternative]] too 
 ********* [[https://pdf.wondershare.com/pdfelement.html][Windows version]] of PDFelement (pen is good, favorite pen system not great)
 ********* Windows/Mac verison expensive: $80/yr or $100/yr for Win+Mac
+******* [[https://apps.apple.com/us/app/foxit-pdf-editor/id507040546][Foxit PDF Editor]]: free, good ratings, Mac Desktop version is good
 ******* [[https://pdfexpert.com/ios/how-to-annotate-pdf][PDF Expert]] might be OK
+******* Some like Adobe Reader, but not clear if can underline/highlight w/ pen
+******* goodnotes imports to proprietary format, [[https://www.reddit.com/r/GoodNotes/comments/ig39pg/converting_goodnotes_file_to_pdf/][must export to pdf]]
 ******* [[ don't seem to be best alternatives][Drawboard alternatives]] don't seem to be best alternatives
 ***** [[Apple Pencil]]
 ***** [[Computers Compatible with SideCar]]
@@ -13159,6 +13290,16 @@ _commandline (The Unarchiver) Windows_
 ********* iPad Pro 12.9-inch, 3rd Gen - Wi-Fi, 256GB - Space Gray (Renewed, Amazon): [[https://www.amazon.com/dp/B07Q8RX57R/ref=olp_aod_redir_impl1?_encoding=UTF8&aod=1][$713]]
 ********* iPad Pro 12.9-inch 3rd Gen (Oct 2018) 256GB - Space Gray - (Wi-Fi + GSM/CDMA + LTE) : [[https://www.backmarket.com/tested-and-certified-used-ipad-pro-129-inch-3rd-gen-october-2018-256gb-space-gray-wi-fi-gsmcdma-lte/81732.html?shopping=gmc&gclid=Cj0KCQjwvO2IBhCzARIsALw3ASq1mrCwEewelnRIl3BxbHAlfXcsldH64OpX3F3jlZcM554TDCveBWcaAmj_EALw_wcB][$660 (fair); $725 (excellent)]]
 
+***** To install in ipad
+******* OneNote
+******* PDFelement/FoxitPDF/AdobeReader: [[pdf annotation on iPad]] 
+******* [[https://apps.apple.com/us/app/adobe-scan-mobile-pdf-scanner/id1199564834][Adobe Scan: Mobile PDF Scanner]]
+******* [[https://www.speedtest.net/apps/ios][Speedtest]] (internet)
+******* [[https://apps.apple.com/us/app/snapseed/id439438619][‎Snapseed on the App Store]]
+******* [[https://7minuteworkout.jnj.com/][J&J 7 minute workout]]
+******* [[org-mode on iPad]]
+******* [[https://support.mozilla.org/en-US/kb/install-firefox-your-ipad-iphone-or-ipod][Firefox on your iPad, iPhone or iPod]]
+******* [[https://apps.apple.com/us/app/lastpass-password-manager/id324613447][‎LastPass Password Manager on the App Store]]
 *** Blue Light Filter: [[https://support.apple.com/en-us/HT207513][Use Builtin Night Shift]]
 *** postgresql
     From: [[https://wiki.postgresql.org/wiki/Homebrew][Homebrew - PostgreSQL wiki]]
@@ -14307,11 +14448,17 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 *********** [[https://plantuml.com/emacs][org-mode integration]] also note that [[https://orgmode.org/Changes.html#orgdd3d5c7][can now directly use plantUML exe, don't need JAR]]
 *********** Can draw diagrams from Emacs using [[orgbabelhelper]] ([[org-diagram drawing with plantuml-babel.org]])
 ********* PlantUML mindmap syntax [[https://plantuml.com/mindmap-diagram][is just like org-mode sytnax]]
+********* [[Confluence supports PlantUML]]
 ******* [[PlantUML diagrams in Joplin]]
 ******* VScode PlantUML
 
         [[https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml][PlantUML - Visual Studio Marketplace]]
 
+******* <<Confluence supports PlantUML>>
+        From: [[https://eising.it/posts/org-pandoc-confluence/][How to avoid confluence as much as possible    ]]
+
+        This makes [[Emacs PlantUML]] sensible.
+        
 *** <<Visualizing Bibliographies>>
 ***** [[http://www.qiqqa.com/][qiqqa]]: biblio tool, does visualizations, imports bibtex, pdfs
 
