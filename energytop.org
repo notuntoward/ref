@@ -2215,6 +2215,7 @@ Scott
           - low latency (NxN) e.g. Robotics
 
 ********* above is from tutorial video: [[https://www.youtube.com/watch?v=S27pHKBEp30][LSTM is dead. Long Live Transformers!]]
+********* [[cite:Dama21reviewTSfrcst][Dama & Sinoquet 2021: Review Time Series Forecast]]
 ********* Transformer Network Software
 *********** [[https://github.com/huggingface/transformers][GitHub - huggingface/transformers: Transformers: State-of-the-art Natural La...]]
 ********* also [[Probabilistic Deep Learning]]
@@ -2494,7 +2495,6 @@ Scott
 ***** <<Feature Selection for Logistic Regression>>
 ******* [[file:energy.bib::Nogueira18featSelStbl][Nogueira et al. 2018: Stability Feature Selection Algorithms]]
 ******* [[file:energy.bib::Saabas15featSelStabilRFE][Saabas 2015: Selecting Feats Stability, RFE & others]]
-
 ******* [[Stability Feature Selection]]
 ******* usable? [[cite:Wei15varImpCmpr][Wei 2015: Compare Var Imp High Dim (RF permutation tests)]]
 ***** [[cite:Jayaram16tranfLrnBrainCompInt][Jayaram et al. 2016: Transfer Learning Brain Interface Log Reg]]
@@ -7560,6 +7560,7 @@ variables will be preferred, when possible.
         forecast = a * persistence + (1-a) * climatology
 
         might want to remove diurnal comps too.
+***** [[GLM performance metrics]]
 ***** <<Financial value/cost of forecasts>>
 ******* [[file:energy.bib::Lew11valWindFrcst][Lew et al. 2011]] val wind frcst
 ******* see also: [[Forecast Error Cost]]
@@ -8369,6 +8370,7 @@ Scott
 ***** [[cite:Vu15solarFrcstIBMmachLrn][Vu 2015: Machine IBM US DOE solar/demand/wind frcst Deep]]
 ***** [[cite:codeLab17solFrcstTypesWeb][codeLab 2017: Solar Forecast Types Web]] (nice frcst types table)
 ***** [[file:energy.bib::Bacher09pvFrcstOnlineClrSky][Bacher et al. 2009: Online]] PV clear sky ARX
+***** [[cite:Abdel-Nasser19pvPowFrcst-LSTM-RNN][Abdel-Nasser & Mahmoud 2019: Accurate LSTM RNN]]
 ***** [[file:energy.bib::Chen11Online24hSolFrcstWeathTyp][Chen et al. 2011: Online]] 24 hr PV, weath cat
 ***** [[file:energy.bib::Lorenz11RegionalPVpowFrcst][Lorenz et al. 2011: Regional PV]] regional upscale frcst
 ***** [[file:energy.bib::Pedro12solarFrcstAlgsNoExog][Pedro & Coimbra 2012: Assessment]] algs solar frcst pure power autoregress
@@ -8435,6 +8437,7 @@ Scott
 ******* also [[Satellite to Ground Irradiance]] (has temporal smoothing too)
 ******* also [[AC power overestimating due to unmodeld high freq. clipped DC]].
 ***** Solar Forecast Software
+******* [[cite:Gurupira17comparePvSimSoftware][Gurupira & Rix 2017: PV Simulation Software Comparisons]]
 ******* [[https://pvlib-python.readthedocs.io/en/stable/index.html][pvlib]]: comprehensive PV stuff
 ********* especially [[https://pvlib-python.readthedocs.io/en/stable/forecasts.html][pvlib foreasting module]]
 *********** downloads NWP and computes forecasted power & other things
@@ -8470,7 +8473,7 @@ Scott
 ******* [[cite:Kaur16benefitsSolPowFrcstImbalMkt][Kaur et al. 2016: Benefits Sol Pow Frcst Imbal Mkt]]
 ******* [[cite:Cibulka12frcstNeedsCAISO][Cibulka et al. 2012: Frcst Needs CAISO]]
 ******* [[cite:Killinger17qcpv][Killinger et al. 2017: QCPV qual ctrl]]: some kind of persistence
-******* [[cite:Sengupta17bestPracticesSolarRsrc][Sengupta et al. 2017: Best Practices Handbook]]: several kinds of peristence
+******* [[cite:Sengupta21solarBestPractBkNREL][Sengupta et al. 2021: NREL Solar Resrc Best Practice Bk]]: several kinds of peristence
 ******* [[cite:Zhang15solFrcstMetrics][Zhang et al. 2015 sol frcst metrics]]: 3TIER "persistence of cloudiness"
 ******* [[cite:Kleissl13SolarEnrgyFrcstBk][Kleissl 2013: Solar Energy Forecasting]]: several kinds of persistence
 ******* [[cite:Kleissl14curStateArtSolFrcst][Kleissl 2014: Current State Art Sol Frcst]]: persistences compared across different papers
@@ -9005,6 +9008,7 @@ Scott
 ***** [[EPRI Predictive Thermal Circuit Ratings Technology Project]] will integrate load forecasting
 ***** [[file:energy.bib::Hassan13nnEnsbl][Hassan et al. 2013: Neural]] ensemble demand forecast
 ***** [[cite:Zheng17loadFrcstRNNlstm][Zheng et al. 2017: Electric Load Forecasting RNN LSATM]]
+***** [[cite:Abdel-Nasser19pvPowFrcst-LSTM-RNN][Abdel-Nasser & Mahmoud 2019: Accurate LSTM RNN]]
 ***** [[cite:Bianchi15ShortTermElectric][Bianchi et al. 2015: Short Term Electric Load Echo State PCA]]
 ***** [[cite:Marino16bldngLdFrcstDeepNN][Marino et al. 2016: Building Load Frcst, LSTM RNN]]
 ***** [[cite:Cheung11smartDsptchRES][Cheung & Rios-Zalapa 2011: Smart Grid Dispatch Net Demand]] 
@@ -10494,7 +10498,7 @@ Horizontal wind shear exist on side of the jet, e.g., weaker winds at the edge o
 ***** [[cite:Koehler17critWeathSolarPow][Koehler et al. 2017: Critical Weath for Solar Pow]]
 ***** [[cite:Newport17introSolarRad][Newport 2017: Introduction to Solar Radiation]] 
 ***** [[cite:Kleissl13SolarEnrgyFrcstBk][Kleissl 2013: Solar Energy Forecasting Resource Assessment Book]]      
-***** [[file:energy.bib::Sengupta17bestPracticesSolarRsrc][Sengupta et al. 2017: Best Practices Handbook Solar Resource]]
+***** [[cite:Sengupta21solarBestPractBkNREL][Sengupta et al. 2021: NREL Solar Resrc Best Practice Bk]]
 ***** <<Solar Satellite Irradiance Calibration>>
 ******* [[file:energy.bib::Alfi16uncertSatteliteGrnd][Alfi et al. 2016: Importance of input and uncert. Satellite Tune]] (CPR)
 ******* [[file:energy.bib::Kankiewicz14solarUncertRsrcTune][Kankiewicz et al. 2014: Reduce Solar Project Uncert Tuning]] (CPR)
@@ -13507,7 +13511,7 @@ TODO: reference them in outline above and then delete them from here
 *** [[cite:Ranaboldo12frcstMOSfeatSel][Ranaboldo 2013: Implementation of a Model Output Statistics Based on Meteorological Variable Screening for Short Term Wind Power Forecast MLR MOS for Short Term Wind Power Forecast]]
 *** [[cite:Rubin15techLrnRateElecSply][Rubin 2015: A Review of Learning Rates for Electricity Supply Technologies]]
 *** [[cite:Ruder17multiTskDeepNN][Ruder 2017: An Overview of Multi Task Learning in Deep Neural Networks]]
-*** [[cite:Sengupta17bestPracticesSolarRsrc][Sengupta 2017: Best Practices Handbook for the Collection and Use of Solar Resource Data for Solar Energy Applications Second Edition]]
+*** [[cite:Sengupta21solarBestPractBkNREL][Sengupta et al. 2021: NREL Solar Resrc Best Practice Bk]]
 *** [[cite:Sugiartawan17waveletLSTMfrcst][Sugiartawan 2017: Prediction by a Hybrid of Wavelet Transform and Long Short Term Memory Neural Network]]
 *** [[cite:Taylor13dimCurseLocRgrsn][Taylor 2013: Challenging the Curse of Dimensionality in Multivariate Local Linear Regression]]
 *** [[cite:Zhuang20pvProbSkyState][Tina 2012: Analysis of Forecast Errors for Irradiance on the Horizontal Plane]]
