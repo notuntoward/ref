@@ -1385,8 +1385,6 @@
         *I also had to add the path to the TexLive latexmk binary*)
         (in 2021 on my SB2 computer, this was c:\texlive\2021\bin\win32\latexmk.exe)
 
- (C:\texlive\2016\bin\win32) to the PATH environment variable.  I don't remember needing to do this at home.
-
         Note also that, in .emacs, I had to modify the advice from
         https://github.com/jkitchin/org-ref/issues/346#issuecomment-262874374
         (which I mention there).
@@ -7137,6 +7135,12 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 ***** [[https://github.com/stig/ox-jira.el][stig/ox-jira.el: Org-mode export backend for JIRA markup]]
 ***** [[https://emacs.stackexchange.com/questions/15079/in-org-mode-how-do-i-export-to-jira-wiki-markup/48331][In org-mode, how do I export to JIRA wiki markup?]]
 
+*** Importing to confluence
+***** [[https://community.atlassian.com/t5/Confluence-questions/Import-markdown-into-Confluence/qaq-p/211797][can directly paste in confluence text]], like exported from emacs or pandoc
+******* [[https://github.com/emacsmirror/org/blob/master/contrib/lisp/ox-confluence.el][org-confluence]] export
+******* [[ox-confluence]]
+******* nice numbered bibliograpy:  org -> pdf -> word -> import word ionto confluence
+***** [[https://confluence.atlassian.com/doc/import-a-word-document-into-confluence-170493136.html][Import a Word Document into Confluence]]
 * Screenscraping
 *** <<Google Spreadsheet Table Scraping>>
     From: [[http://blog.ouseful.info/2008/10/14/data-scraping-wikipedia-with-google-spreadsheets/][google spreadsheets]]: amazing!
@@ -14003,6 +14007,38 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
           - dvips is supposed to work too, for dvi only
             - or run: dvips, which can do that to (org-preview-latex-window?)
         - C-c C-e l l (export to Latex, which is fast)
+***** TRY exporting org-mode, latex to html with bibliography references
+
+      *Problem* org-export-dispatch calls an html exporter that doesn't process bibliography references very well e.g. the bibkey shows up in both the referencing setences as in the bibliography (it's not numbered, author names, etc.)
+
+      *Solution* [[https://data-mining.philippe-fournier-viger.com/how-to-convert-latex-to-html/][run htlatex]] or equivalent (for TexLive on Windows 10 in 2021, you must run xhlatex
+
+      1. Make the latex processor run by using org-export-dispatch to make a pdf
+      2. open an eshell or other shell that has PATH set correctly (not the new windows terminal)
+      3. run: xhlatex document_name.tex
+
+      This uses all the garbage leftover after the pdf frun (x.dvi x.log,...) to make an x.html file
+
+      Seems to work pretty well.
+
+      *Note* It's also possible to open the pdf in word and have it export in html, but the results aren't as good as with xhlatex
+
+******* TRY make org-export-dispatch run xhlatex, avoiding the extra steps
+
+********* using latex options?
+
+          At top of org doc, add latex option,
+
+          #+options: tex:htlatex
+
+          as think is done [[https://www.reddit.com/r/orgmode/comments/hclaxa/properly_exporting_latex_to_html_from_orgmode/fyo5bzn?utm_source=share&utm_medium=web2x&context=3][here]].
+          
+          Since, with TexLive on Windows, I don't have an htlatex.exe but instead xhlatex.exe, I think this also requires setting an [[https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-LaTeX.html][org babel option]]:
+
+          (setq org-babel-latex-htlatex "xhlatex")
+
+          I [[https://www.reddit.com/r/emacs/comments/prffy6/how_to_use_htlatex_or_xhlatex_in_orgexportdispatch/][asked a question]] about this on redit.
+      
 ***** [[https://www.emacswiki.org/emacs/LaTeXPreviewPane][LaTeX Preview Pane]]
 ***** emacs viewing latex pdfs
 ******* must have [[http://stackoverflow.com/questions/28474736/how-to-open-pdf-file-in-emacs][dvipdf or dvipdfm]] & gs installed
