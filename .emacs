@@ -3133,6 +3133,13 @@ TODO: add a cycle that opens or collapses all prop drawers?"
     ))
 
 
+;; ** Org Import
+
+(use-package org-pandoc-import
+  :straight (:host github
+             :repo "tecosaur/org-pandoc-import"
+             :files ("*.el" "filters" "preprocessors")))
+
 ;; ** Org and Git
 
 ;; Behavior when link to a file in git.  This only happens if org-modules contains  ol-git-link
@@ -3307,8 +3314,12 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; add org-id to headline: org-id-copy
 
 ;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
+;; several startup org-roams, also initializing org-roam-bibtex 
 (use-package org-roam
-;;  :straight t
+  ;;  :straight t
+  ;; calling one of these commands will initialize Org-roam and ORB
+  :commands (org-roam-node-find org-roam-graph org-roam-capture
+                                org-roam-dailies-capture-today org-roam-buffer-toggle)
   :init
   (setq org-roam-v2-ack t)
   :custom
@@ -3337,14 +3348,22 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;; ("C-c n d" . org-roam-dailies-map)
   
   :config
-  (use-package org-roam-bibtex)
-
-  ;; https://org-roam.discourse.group/t/minimal-setup-for-helm-bibtex-org-roam-v2-org-roam-bibtex/1971/2?u=scotto
-  (org-roam-bibtex-mode +1)
-
+  ;;(org-roam-setup)
+  
+  ;; The line below caues org-roam to hang and time out after 30
+  ;;seconds, at least on Windows.  Maybe it didn't on Mac
+  ;;(org-roam-bibtex-mode +1)
+  
   (require 'org-roam-dailies) ;; Ensure the keymap is available
-  (org-roam-db-autosync-mode))
+  (org-roam-db-autosync-mode)
 
+  ;; commenting this out removed an org-roam empty buffer error (sometimes)
+  ;; https://org-roam.discourse.group/t/minimal-setup-for-helm-bibtex-org-roam-v2-org-roam-bibtex/1971/2?u=scotto
+  ;;(org-roam-bibtex-mode +1)
+  )
+
+(use-package ivy-bibtex)
+  
 ;; adds a bullet to today's daily w/ a timestamp on the front of it
 ;; (works in v2):
 ;; https://org-roam.discourse.group/t/v2-daily-capture-template-not-working/1887
@@ -4556,29 +4575,48 @@ _C-M-a_ change default action from list for this session
 ;; from: https://github.com/gicmo/dot-emacs/blob/master/init.el
 ;;       http://www.nextpoint.se/?p=656
 
-(setq hunspell_bin (sdo/find-exec "hunspell" "Needed by ispell and flyspell."))
-(use-package flyspell
-  :init
-  (setenv "DICPATH" (expand-file-name "~/.hunspell"))
-  :custom
-  (flyspell-issue-message-flag nil)
-  (flyspell-issue-welcome-flag nil)
+
+;; windows hunbspell can't save to personal dict
+;; my bug report: https://github.com/d12frosted/flyspell-correct/issues/97#issuecomment-923047599
+;; (setq hunspell_bin (sdo/find-exec "hunspell" "Needed by ispell and flyspell."))
+;; (setq hunspell_dict_dir (expand-file-name "~/.hunspell"))
+;; (use-package flyspell
+;;   :init
+;;   (setenv "DICPATH" hunspell_dict_dir)
+;;   :custom
+;;   (flyspell-issue-message-flag nil)
+;;   (flyspell-issue-welcome-flag nil)
+;;   (ispell-program-name hunspell_bin)
+;;   ;; (ispell-extra-args '("-i utf-8 -p en_US"))
+;;   (ispell-dictionary "english")
+;;   (ispell-silently-savep t)
+;;   :config
+;;   (setq ispell-really-hunspell t
+;; 	;; ispell-extra-args '("-i" "utf-8")
+;; 	ispell-local-dictionary-alist
+;; 	'(("deutsch"
+;; 	   "[A-Za-zöäüß]" "[^A-Za-zöäüß]" "[']" nil
+;; 	   ("-d" "de_DE_frami" "-p" hunspell_dict_dir)
+;; 	   nil utf-8)
+;; 	  ("english"
+;; 	   "[A-Za-z]" "[^A-Za-z]" "[']" nil
+;; 	   ("-d" "en_US" "-p" hunspell_dict_dir)
+;; 	   nil utf-8))
+;;         ispell-dictionary-alist ispell-local-dictionary-alist
+;;         ispell-hunspell-dictionary-alist ispell-dictionary-alist))
+
+
+;; aspell config started from https://github.com/d12frosted/flyspell-correct/issues/97#issuecomment-923047599
+(setq aspell_bin (sdo/find-exec "aspell" "Needed by ispell and flyspell."))
+(use-package ispell
   :config
-  (setq ispell-program-name hunspell_bin)
-  (setq ispell-really-hunspell t
-	ispell-extra-args '("-i" "utf-8")
-	ispell-local-dictionary-alist
-	'(("deutsch"
-	   "[A-Za-zöäüß]" "[^A-Za-zöäüß]" "[']" nil
-	   ("-d" "de_DE_frami")
-	   nil utf-8)
-	  ("english"
-	   "[A-Za-z]" "[^A-Za-z]" "[']" nil
-	   ("-d" "en_US")
-	   nil utf-8))
-	ispell-dictionary "english"
-        ispell-dictionary-alist ispell-local-dictionary-alist
-        ispell-hunspell-dictionary-alist ispell-dictionary-alist))
+  (setq ispell-dictionary "english"
+        ispell-program-name aspell_bin)
+  (when (equal (file-name-base ispell-program-name) "aspell")
+    (add-to-list 'ispell-extra-args "--sug-mode=normal")))
+
+(use-package flyspell
+  :diminish flyspell-mode )
 
 ;; https://github.com/d12frosted/flyspell-correct
 ;; fails if you don't have ispell installed (or aspell or hunspell?)
@@ -4655,6 +4693,8 @@ _C-M-a_ change default action from list for this session
 ;; flyspell faces
 ;;   flyspell-duplicate-face
 ;;   flyspell-incorrect-face
+
+;; TODO turn on/off visual line mode
 (defun toggle-writing-tools ()
   "Enable/disable writing and proofing tools"
   (interactive)
@@ -4996,7 +5036,7 @@ reuse it's window, otherwise create new one."
 
 (show-paren-mode 1) ; turn on blinking parens
 
-;; visual line mode messes up org-tables but is GREAT for everything else
+;; visual line mode messes up org-tables but is GREAT for everything else.
 (global-visual-line-mode +1) ; soft line wrapping
 (global-set-key (kbd "C-c t") 'toggle-truncate-lines) ; e.g. to view org-mode tables
 ;;(global-set-key (kbd "C-c w") 'toggle-truncate-lines) ; e.g. to view org-mode tables
@@ -5010,8 +5050,8 @@ reuse it's window, otherwise create new one."
 
 ;; Sets the wrap-prefix property on the fly so that single-long-line
 ;; paragraphs get word-wrapped in a way similar to what you'd get with
-;; M-q using adaptive-fill-mode,
-;; However, it doesn't indent 2nd line numbered or lettered lists
+;; M-q using adaptive-fill-mode, but withouth changing text so doesn't
+;; mess up visual line mode. However, it doesn't indent 2nd line numbered or lettered lists
 (use-package adaptive-wrap ; required for visual line mode hook below?
   :diminish adaptive-wrap-prefix-mode
   ;;  :config (add-hook 'visual-line-mode-hook (adaptive-wrap-prefix-mode +1)))
@@ -5026,6 +5066,7 @@ reuse it's window, otherwise create new one."
 ;;  (setq-default adaptive-wrap-extra-indent 2))
 
 ;; turn fill-paragraph into a fill/unfill toggle
+;; runs when type M-q
 (use-package unfill
   :bind ([remap fill-paragraph] . unfill-toggle))
 
