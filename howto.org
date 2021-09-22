@@ -1210,18 +1210,22 @@
 ******* <<Org to/from MS Word>>
 ********* <<org-mode to/from Word using pandoc command line>>
 
-          make a Word file
-          pandoc -f org -t docx -o tmp.docx tmp.org
-          make a .org file
-          pandoc -f docx -t org -o tmp2.org tmp.docx
+          _Basic (too basic, see Fix below)_
+            make a Word file
+            pandoc -f org -t docx -o tmp.docx tmp.org
+            make a .org file
+            pandoc -f docx -t org -o tmp2.org tmp.docx
 
-          This really works!  The org-mode outline structure shows up as an outline structure in Word, and on the docx-->org step, the org structure is retained.
+          This kinda works: The org-mode outline structure shows up as an outline structure in Word, and on the docx-->org step, the org structure is retained.  But this has those annoying :PROPERTIES: drawers, which weren't there before.  
+
+          _Fix_
+
+            pandoc -t org my_doc.docx | sed -E "/^[[:space:]]+:/ d" > my_doc.org
 
           Problems
-          - a syntax error when I tried to convert my whole howto.org file.
-          - the docx-->org version has those annoying :PROPERTIES: drawers, which weren't there before.  I guess I could just delete them.
           - Heading fonts, etc. are
-          - How to control the appearance of headlines, etc. in Word output? (See  [[Pandoc docx output formatting]])
+          - How to control the appearance of headlines, etc. in Word output? (See [[Pandoc docx output formatting]])
+          - a syntax error when I tried to convert my whole howto.org file.
 
 *********** <<Pandoc docx output formatting>>
 ************* [[https://github.com/jgm/pandoc-templates/issues/20][how to create docx template · Issue #20 · jgm/pandoc-templates · GitHub]]
@@ -1293,7 +1297,67 @@
         Only numbers on 1st level, this doc
         - #+options: num:1
 
-******* [[ox-confluence]]
+******* export '_' and '^' as chars instead sub and superscript
+        From: [[https://emacs.stackexchange.com/a/54525/14273][How to export underscore as underscore instead of highlight]]
+
+        _Per org document_ 
+
+        Add at top: #+OPTIONS: ^:nil
+
+        _For all org documents_
+
+        In emacs customizations: Group Org Export 
+                             --> Group Org Export General
+                             --> Option Org Export With Sub Superscripts
+
+******* <<org-mode to/from confluence>>
+
+        Best I can do for now:
+
+        _org --> confluence_
+
+          1. export org to a pdf via latex
+             (latex .bib proc. is better than html export)
+          2. open pdf in Word
+          3. [[import Word to Confluence]]
+
+          *Note* [[exporting org-mode, latex to html with bibliography references]] would be an one step deal if I could only get emacs to run xhlatex
+
+        _confluence --> org_
+
+          1. [[export confluence to word]]
+          2. M-x org-pandoc-import-docx-to-org
+           ([[https://github.com/tecosaur/org-pandoc-import][org-pandoc-import]] avoids :Property drawers when use pandoc directly)
+
+********* [[exporting org-mode, latex to html with bibliography references]]
+********* Word to org, using pandoc directly
+          From [[https://emacs.stackexchange.com/questions/31906/in-org-mode-a-function-to-delete-all-properties-drawers][in org-mode, a function to delete all properties drawers?]]
+
+          pandoc -t org my_file.docx | sed -E "/^[[:space:]]+:/ d" > my_file.org
+
+********* M-x org-confluence-export-as-confluence 
+********* [[Emacs PlantUML]]
+********* <<ox-confluence>>
+
+          Some kind of org-mode to confluence supporter.  [[https://eising.it/posts/org-pandoc-confluence/][Guy who writes a lot of confluence pages]] uses it (in 2020).  He also syncs w/ git.
+
+          BUT [[https://www.reddit.com/r/orgmode/comments/hugs7h/exporting_to_confluence/][many export org to markdown or html]], say org/ox-confluence is obsolete
+
+*********** [[https://github.com/aspiers/orgmode/blob/master/contrib/lisp/ox-confluence.el][orgmode/ox-confluence.el at master · aspiers/orgmode · GitHub]]
+*********** TRY but I'm not sure how to use it in emacs
+        
+********* [[https://eising.it/posts/org-pandoc-confluence/][How to avoid confluence as much as possible]]: ox-confluence/pandoc/git
+********* [[https://www.reddit.com/r/orgmode/comments/hugs7h/exporting_to_confluence/][many export org to markdown or html]], say org/ox-confluence are obsolete
+********* org-kungfu
+          From: [[https://github.com/baohaojun/org-kungfu][baohaojun/org-kungfu: Using Org-mode to write Confluence pages]]
+
+          Uses perl and pandoc, keeps confluence and org-mode synced, somehow
+
+          Seems to be maintained.  In Sept. 2021, last commit was Feb 2021
+
+********* [[Exporting from confluence]]
+********* [[export confluence to MS Word]]
+********* [[Importing to confluence]]
 ******* <<org-mode to/from OneNote>>
 ********* <<org-mode export to OneNote>>
 *********** via MS Word
@@ -1829,6 +1893,9 @@
 ********* [[Org interface to online databases, PIM's etc.]]
 ******* [[https://pandoc.org/org.html][Pandoc - Org-mode features and differences]]
 ***** <<org-mode on iPad>>
+
+      Programs that run org-mode on iPad.  Net opinion seems to be that running emacs itself on an ipad is nearly impossible.
+      
 ******* [[https://beorgapp.com/][beorg - Task management for iPhone and iPad]]
 ******* [[https://apps.apple.com/us/app/mobileorg/id634225528][‎MobileOrg on the App Store]]
 ******* [[https://irreal.org/blog/?p=8407][Organice | Irreal]] (browser based?)
@@ -3079,10 +3146,12 @@ was better, I started using that instead.  See [[org-tree operations]].
       Seems nice and in Sept. 2021 had commits only a few months old.  Requires ispell/aspell/hunspell, I think.
 ***** [[http://www.nextpoint.se/?p=656][Emacs and Hunspell on MS Windows for Beginners]] (worked)
 ***** <<hunspell>>
-      See [[https://hunspell.github.io/][Hunspell: About]]
+      See [[https://hunspell.github.io/][Hunspell: About]] _and also_ [[https://linux.die.net/man/1/hunspell][hunspell(1) - Linux man page]]
       
       Windows/linux/MacOS spell checking that's compatible with emacs flyspell
 
+      But I can't get saving to hunspell personal dictionary to work ([[https://github.com/d12frosted/flyspell-correct/issues/97][my bug report]]).  But it does work on [[aspell]].
+      
 ******* install emacs packages
         Windows
           choco install hunspell.portable
@@ -3111,21 +3180,42 @@ was better, I started using that instead.  See [[org-tree operations]].
         (setq ispell-program-name "hunspell")
         (setenv "DICPATH""~/.hunspell")
 
-******* fix can't find dict problem (Windows only; works in MacOS)
-
-        (ispell-find-hunspell-dictionaries) can't find the dictionaries, should initialize `ispell-hunspell-dictionary-alist
-        
-********* bugfix for hunspell 17.0 and greater no longer needed
-
-          [[file:c:/ProgramData/chocolatey/lib/emacs/tools/emacs/share/emacs/27.2/lisp/textmodes/ispell.el][ispell.el]] had a bug, as discussed [[https://debbugs.gnu.org/cgi/bugreport.cgi?bug=33493][here]] (with a patch). But it looks like this was fixed in emacs 27.2
-
-********* aspell but says best way is aspell on WSL; rest of emacs on Windows
-          [[https://www.reddit.com/r/emacs/comments/dinynj/whats_your_strategy_for_spellchecking_on_windows/f3y4jpo?utm_source=share&utm_medium=web2x&context=3][What&#x27;s your strategy for spell-checking on Windows 10? : emacs]]
+        and my .emacs file
 
 ******* <<hunspell setup for multiple languages>>
 ********* [[https://stackoverflow.com/questions/42159012/emacs-spell-check-on-fly-for-2-languages][Emacs. Spell check "on fly" for 2 languages - Stack Overflow]]
 ********* [[https://github.com/Hi-Angel/dotfiles/blob/55e1daf5266ee997e72700cf7d8b6463e2b02531/.emacs#L859-L870][dotfiles/.emacs at 55e1daf5266ee997e72700cf7d8b6463e2b02531 · Hi-Angel/dotfil...]]
+******* hunspell path to personal dict
 
+        I still can't get this to work.  My bug report: [[https://github.com/d12frosted/flyspell-correct/issues/97][d12frosted/flyspell-correct#97 Does personal dictionary save work?]]
+***** <<aspell>>
+
+      Unlike with [[hunspell]], saving to personal dictionary to works
+      
+******* Windows install
+        From: [[https://facelessuser.github.io/pyspelling/][Basic Usage - PySpelling]]
+
+        Use msys32:
+
+        Basic
+        pacman -S mingw-w64-x86_64-aspell mingw-w64-x86_64-aspell-en
+
+        *Then add this to Windows path*:
+
+           c:/tools/msys64/mingw64/bin
+
+        Other msys64 progs are installed in c:/tools/msys64/usr/bin.  No idea
+
+        But they modify the default paths in their [[https://www.appveyor.com/docs/appveyor-yml/][appveyor.yml]]
+        
+******* Mac Install
+
+          brew install aspell
+
+        check dictionary (was default English, for me)
+
+          aspell dump dicts
+      
 ***** multiple languages
 ****** [[hunspell setup for multiple languages]]
 ***** guesslanguage package
@@ -7111,36 +7201,30 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 ********* but have to install latex, etc.?
 * Confluence
 *** [[Confluence supports PlantUML]]
-*** Writing Conflunce in org-mode
-*****  M-x org-confluence-export-as-confluence 
-***** [[Emacs PlantUML]]
-***** <<ox-confluence>>
-
-      Some kind of org-mode to confluence supporter.  [[https://eising.it/posts/org-pandoc-confluence/][Guy who writes a lot of confluence pages]] uses it (in 2020).  He also syncs w/ git.
-
-******* [[https://github.com/aspiers/orgmode/blob/master/contrib/lisp/ox-confluence.el][orgmode/ox-confluence.el at master · aspiers/orgmode · GitHub]]
-******* TRY but I'm not sure how to use it in emacs
-        
-***** [[https://eising.it/posts/org-pandoc-confluence/][How to avoid confluence as much as possible]]: ox-confluence/pandoc/git
-***** [[https://www.reddit.com/r/orgmode/comments/hugs7h/exporting_to_confluence/][many export org to markdown or html]], say org/ox-confluence are obsolete
-***** org-kungfu
-      From: [[https://github.com/baohaojun/org-kungfu][baohaojun/org-kungfu: Using Org-mode to write Confluence pages]]
-
-      Uses perl and pandoc, keeps confluence and org-mode synced, somehow
-
-      Seems to be maintained.  In Sept. 2021, last commit was Feb 2021
-
+*** [[org-mode to/from confluence]]
 *** Jira and org-mode
 ***** [[https://www.emacswiki.org/emacs/OrgJiraMode][EmacsWiki: Org Jira Mode]]
 ***** [[https://github.com/stig/ox-jira.el][stig/ox-jira.el: Org-mode export backend for JIRA markup]]
 ***** [[https://emacs.stackexchange.com/questions/15079/in-org-mode-how-do-i-export-to-jira-wiki-markup/48331][In org-mode, how do I export to JIRA wiki markup?]]
 
-*** Importing to confluence
+*** <<Importing to confluence>>
 ***** [[https://community.atlassian.com/t5/Confluence-questions/Import-markdown-into-Confluence/qaq-p/211797][can directly paste in confluence text]], like exported from emacs or pandoc
 ******* [[https://github.com/emacsmirror/org/blob/master/contrib/lisp/ox-confluence.el][org-confluence]] export
 ******* [[ox-confluence]]
 ******* nice numbered bibliograpy:  org -> pdf -> word -> import word ionto confluence
-***** [[https://confluence.atlassian.com/doc/import-a-word-document-into-confluence-170493136.html][Import a Word Document into Confluence]]
+***** load an html file into a browser then paste it confluence
+***** <<import Word to Confluence>>
+      From: [[https://confluence.atlassian.com/doc/import-a-word-document-into-confluence-170493136.html][Import a Word Document into Confluence]]
+      
+*** <<Exporting from confluence>>
+***** <<export confluence to MS Word>>
+
+        "..." on LHS page --> Export --> Export to Word
+      
+***** <<export confluence to pdf>>
+
+      "..." on LHS page --> Export --> Export to PDF
+    
 * Screenscraping
 *** <<Google Spreadsheet Table Scraping>>
     From: [[http://blog.ouseful.info/2008/10/14/data-scraping-wikipedia-with-google-spreadsheets/][google spreadsheets]]: amazing!
@@ -14007,7 +14091,7 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
           - dvips is supposed to work too, for dvi only
             - or run: dvips, which can do that to (org-preview-latex-window?)
         - C-c C-e l l (export to Latex, which is fast)
-***** TRY exporting org-mode, latex to html with bibliography references
+***** <<exporting org-mode, latex to html with bibliography references>>
 
       *Problem* org-export-dispatch calls an html exporter that doesn't process bibliography references very well e.g. the bibkey shows up in both the referencing setences as in the bibliography (it's not numbered, author names, etc.)
 
@@ -14023,6 +14107,8 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 
       *Note* It's also possible to open the pdf in word and have it export in html, but the results aren't as good as with xhlatex
 
+      *Note* For exporting to confluence can also: org->pdf->word->confluence
+
 ******* TRY make org-export-dispatch run xhlatex, avoiding the extra steps
 
 ********* using latex options?
@@ -14037,8 +14123,9 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 
           (setq org-babel-latex-htlatex "xhlatex")
 
-          I [[https://www.reddit.com/r/emacs/comments/prffy6/how_to_use_htlatex_or_xhlatex_in_orgexportdispatch/][asked a question]] about this on redit.
+          I [[https://www.reddit.com/r/emacs/comments/prffy6/how_to_use_htlatex_or_xhlatex_in_orgexportdispatch/][asked a question on reddit]] about this also a [[https://stackoverflow.com/q/69248568/2591097][question on stackoverflow]].
       
+******* also [[org-mode to/from confluence]]
 ***** [[https://www.emacswiki.org/emacs/LaTeXPreviewPane][LaTeX Preview Pane]]
 ***** emacs viewing latex pdfs
 ******* must have [[http://stackoverflow.com/questions/28474736/how-to-open-pdf-file-in-emacs][dvipdf or dvipdfm]] & gs installed
