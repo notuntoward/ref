@@ -1042,11 +1042,12 @@ See also `toggle-frame-maximized'."
 (global-set-key (kbd "M-c") 'sdo/capitalize-word-or-region)
 
 ;; *** crux (a mix of movement and other stuff)
-(use-package crux
-  :bind (("C-a" . crux-move-beginning-of-line)
-         ("M-'" . crux-duplicate-and-comment-current-line-or-region)
-         ("C-c R" . crux-rename-file-and-buffer)
-         ("C-k" . crux-kill-and-join-forward)))
+;; In visual line mode breaks C-a
+;; (use-package crux
+;;   :bind (("C-a" . crux-move-beginning-of-line)
+;;          ("M-'" . crux-duplicate-and-comment-current-line-or-region)
+;;          ("C-c R" . crux-rename-file-and-buffer)
+;;          ("C-k" . crux-kill-and-join-forward)))
 
 ;; * Buffer Handling
 ;; ** Buffer naming
@@ -2481,7 +2482,7 @@ Version 2020-11-20 2021-01-18"
  '(neo-reset-size-on-open t)
  '(neo-window-fixed-size nil)
  '(org-agenda-files
-   '("~/OneDrivef/energytop.org" "~/OneDrive/ref/DOE_brainstorm/20200605152244-test0.org" "c:/Users/scott/OneDrive/ref/tmp.org"))
+   '("c:/Users/scott/OneDrive/share/proj/roadmapFrcst/forecast_roadmap.org" "c:/Users/scott/OneDrivef/energytop.org" "c:/Users/scott/OneDrive/ref/DOE_brainstorm/20200605152244-test0.org" "c:/Users/scott/OneDrive/ref/tmp.org"))
  '(org-confirm-shell-links 'y-or-n-p)
  '(org-ctrl-k-protect-subtree 'error)
  '(org-cycle-include-plain-lists 'integrate)
@@ -4609,10 +4610,16 @@ _C-M-a_ change default action from list for this session
 ;; aspell config started from https://github.com/d12frosted/flyspell-correct/issues/97#issuecomment-923047599
 (setq aspell_bin (sdo/find-exec "aspell" "Needed by ispell and flyspell."))
 (use-package ispell
+  :custom
+  (flyspell-issue-message-flag nil)
+  (flyspell-issue-welcome-flag nil)
+  (ispell-program-name aspell_bin)
+  (ispell-dictionary "english")
+  (ispell-silently-savep t)
   :config
-  (setq ispell-dictionary "english"
-        ispell-program-name aspell_bin)
   (when (equal (file-name-base ispell-program-name) "aspell")
+    ;; 'normal' is 2X slower than 'ultra' but is OK
+    ;; http://aspell.net/man-html/Notes-on-the-Different-Suggestion-Modes.html#Notes-on-the-Different-Suggestion-Modes
     (add-to-list 'ispell-extra-args "--sug-mode=normal")))
 
 (use-package flyspell
