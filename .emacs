@@ -1,5 +1,15 @@
 ;; * Emacs Startup Behavior
 
+;; Profile emacs startup
+;; From: https://github.com/daviwil/dotfiles/blob/master/Emacs.org#startup-performance
+;; https://www.youtube.com/watch?v=bF84mQMmfa8
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "*** Emacs loaded in %s seconds with %d garbage collections."
+                     (emacs-init-time)
+;;                     (emacs-init-time "%.2f") # has no args
+                     gcs-done)))
+
 (require 'server) ; so file association works on windows and
 (server-start)  ; for emacsclient (emacsclientw on Windows)
 
@@ -11,11 +21,27 @@
       initial-scratch-message nil
       initial-major-mode 'org-mode) ; so scratch is an org buffer
 
+(defun sdo/find-exec(cmd_name &optional notFoundMsg)
+  "Finds path to executable 'cmd_name' and returns it, or nil if not found."
+  (let (cmd_path retpathstr)
+    (setq cmd_path (executable-find cmd_name))
+    (if (not cmd_path)
+        (progn (if notFoundMsg
+		   (warn "%s not found. %s" cmd_name notFoundMsg)
+		 (warn  "%s not found." cmd_name))
+	       (setq retpathstr nil))
+      (progn (message "found %s at: %s" cmd_name cmd_path)
+             (setq retpathstr cmd_path))))) ; there must be a better way...
+
 ;; * Package Configuration
 ;; ** straight.el
-
-;; Requires git 
 ;; https://github.com/raxod502/straight.el#features
+;;
+;; On replacing package.el w/ straight:
+;; https://www.youtube.com/watch?v=UmbVeqphGlc&t=237s
+
+(sdo/find-exec "git" "Need git for straight.el")
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -35,7 +61,7 @@
 
 ;; make straight the default (for now, it's org-roam only)
 ;; https://github.com/raxod502/straight.el/blob/0946e1b14886e05973fb88ff18ccd90a8c8a25a4/README.md#integration-with-use-package
-;; (setq straight-use-package-by-default t)
+(setq straight-use-package-by-default t)
 
 ;; ** package.el
 ;; Avoid complaints, put before (require 'package)
@@ -45,26 +71,27 @@
   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
 ;; use package.el at least for getting a list of archives
-(require 'package)
-(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t) 
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+;;(require 'package)
+;;(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t) 
+;;(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 ;; TODO: Do I need separate org archive?  Boots faster if I remove it?
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+;;(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 
-(unless (package-installed-p 'use-package) ; so can do a totally clean start
-  (message "Installing use-package, diminish and refreshing")
-  (package-refresh-contents)
-  (package-install 'use-package)
-  (package-install 'diminish)) ; wouldn't install w/ use-package for some reason
+;;(unless (package-installed-p 'use-package) ; so can do a totally clean start
+;;  (message "Installing use-package, diminish and refreshing")
+;;  (package-refresh-contents)
+;;  (package-install 'use-package)
+;;  (package-install 'diminish)) ; wouldn't install w/ use-package for some reason
 
 ;; from: http://cachestocaches.com/2015/8/getting-started-use-package/
-(eval-when-compile
-  (require 'use-package))
+;;(eval-when-compile
+;;  (require 'use-package))
 
-(use-package bind-key) ; use inside use-package, invoke with :bind-key
+;;(use-package bind-key) ; use inside use-package, invoke with :bind-key
 
-(setq use-package-always-ensure t) ; so use-package always installs missing pkgs
+;;(setq use-package-always-ensure t) ; so use-package always installs missing pkgs
 
+(use-package diminish) ; can prevent display of package mode string
 (use-package try) ; M-x try to test a pkg w/o installing it
 
 ;; ** elpa gpg key error workaround
@@ -85,12 +112,12 @@
 ;; but other modelines are automatically inverted when the modeline is
 ;; darkened.  Is that controlled by installed pkg: smart-mode-line ?
 
-(use-package paradox
-  :defer 1
-  :custom
-  (paradox-enable))
-
-;; |----------+---------------------------------------|
+;; (use-package paradox
+;;   :defer 1
+;;   :custom
+;;   (paradox-enable))
+;;
+;; ;; |----------+---------------------------------------|
 ;; | Shortcut | Description                           |
 ;; |----------+---------------------------------------|
 ;; | v        | Visit the package's homepage          |
@@ -171,6 +198,8 @@
   ("desktop-6bq3kmf" ; Surface Pro
    (setq shareDir "C:/Users/scott/OneDrive/share"))
   ("desktop-qegmu0d" ; Surface Book 2
+   (setq shareDir "C:/Users/scott/OneDrive/share"))
+  ("desktop-2u4trqe" ; Surface laptop studio
    (setq shareDir "C:/Users/scott/OneDrive/share"))
   ("desktop-rvtj6ua" ; Surface Go
    (setq shareDir "C:/Users/scott/OneDrive/share"))
@@ -494,18 +523,6 @@ TODO: make this a general function."
 
 ;; * Operating System Interaction
 
-(defun sdo/find-exec(cmd_name &optional notFoundMsg)
-  "Finds path to executable 'cmd_name' and returns it, or nil if not found."
-  (let (cmd_path retpathstr)
-    (setq cmd_path (executable-find cmd_name))
-    (if (not cmd_path)
-        (progn (if notFoundMsg
-		   (warn "%s not found. %s" cmd_name notFoundMsg)
-		 (warn  "%s not found." cmd_name))
-	       (setq retpathstr nil))
-      (progn (message "found %s at: %s" cmd_name cmd_path)
-             (setq retpathstr cmd_path))))) ; there must be a better way...
-
 ;; ** Shell Mode
 ;; Make up/down arrows search cmd history like tcsh
 (require 'shell)
@@ -635,7 +652,7 @@ TODO: make this a general function."
 
 ;; ;; https://github.com/Bad-ptr/persp-mode.el  
 ;; (use-package persp-mode
-;;   :ensure t
+;;   :straight t
 ;;   :diminish persp-mode
 
 ;;   :init
@@ -702,7 +719,7 @@ TODO: make this a general function."
 ;;
 ;; (desktop-save-mode 0) ;ensure there's no interference w/ builtin mode
 ;; (use-package desktop+
-;;   :ensure t
+;;   :straight t
 ;;   :commands (desktop+-create desktop+-load)
 ;;   :config
 ;;   (setq desktop+-base-dir (concat user-cache-directory "desktop"))
@@ -1489,7 +1506,7 @@ displayed anywhere else."
 ;; is somewhat redundant w/ just doing swiper search of dired buffer
 ;; also see: narrow-or-widen-dwim
 (use-package dired-narrow
-  :ensure t
+  :straight t
   :bind (:map dired-mode-map ("/" . dired-narrow)))
 
 ;; *** Better org-links from dired
@@ -1853,7 +1870,7 @@ Version 2020-11-20 2021-01-18"
 ;; ;; aligns columns (on: C-c C-a , off: C-c C-u), prints header, etc.
 ;; ;; Need to toggle-truncate-lines (C-c w) for wide files
 ;; (use-package csv-mode
-;;   :ensure t
+;;   :straight t
 ;;   :config
 ;;   (setq csv-align-padding 2)
 ;;
@@ -1895,7 +1912,7 @@ Version 2020-11-20 2021-01-18"
 
 ;; started from: https://github.com/thisirs/dotemacs/blob/master/lisp/init-matlab.el
 (use-package matlab 
-  :ensure matlab-mode
+  :straight matlab-mode
   :mode ("\\.m$" . matlab-mode)
   :commands (matlab-shell)
   :config
@@ -2035,7 +2052,7 @@ Version 2020-11-20 2021-01-18"
 
 (when (setq conda_exe (sdo/find-exec "conda" "Needed for most python packages"))
   (use-package conda
-    :ensure t
+    :straight t
     :config
     (setq conda-env-home-directory (expand-file-name
                                     (concat (file-name-directory conda_exe)
@@ -2107,6 +2124,7 @@ Version 2020-11-20 2021-01-18"
   (use-package elpy
     :defer t
     :diminish elpy-mode
+    :after flycheck flycheck-pos-tip
     ;; Bind global "make" key to "C-u the command below" This runs
     ;; the region or whole .py buffer in a (possibly newly made) *Python*
     ;; console buffer, and then moves the cursor there.
@@ -2214,7 +2232,7 @@ Version 2020-11-20 2021-01-18"
   ;;       maybe these two other calls work before %matplotlib inline is called?
 
   (use-package ein
-    :ensure t
+    :straight t
     :init
     ;; So outshine or highlight-indent-guides on prog-mode-hook don't break inline plots
     (setq ein:polymode t) ;; Get right mode e.g. elpy in cells (fails in :config)
@@ -2488,7 +2506,7 @@ Version 2020-11-20 2021-01-18"
  '(org-cycle-include-plain-lists 'integrate)
  '(org-directory "~/")
  '(org-ellipsis "…")
- '(org-export-backends '(ascii html latex odt org confluence freemind s5))
+ '(org-export-backends '(ascii html latex odt org))
  '(org-export-with-broken-links 'mark)
  '(org-fontify-done-headline t)
  '(org-fontify-emphasized-text t)
@@ -2499,7 +2517,7 @@ Version 2020-11-20 2021-01-18"
  '(org-list-allow-alphabetical t)
  '(org-list-empty-line-terminates-plain-lists t)
  '(org-modules
-   '(ol-bibtex ol-info org-inlinetask org-mouse ol-eshell org-annotate-file ol-bookmark org-choose ol-elisp-symbol org-mac-link ol-man org-track org-mouse org-protocol org-choose))
+   '(ol-bibtex ol-info org-inlinetask org-mouse ol-eshell org-annotate-file ol-bookmark ol-elisp-symbol ol-man org-mouse org-protocol))
  '(org-noter-auto-save-last-location t)
  '(org-noter-doc-property-in-notes t)
  '(org-occur-case-fold-search ''smart)
@@ -2527,7 +2545,7 @@ Version 2020-11-20 2021-01-18"
  '(outshine-use-speed-commands t)
  '(package-check-signature 'allow-unsigned)
  '(package-selected-packages
-   '(smart-mode-line conda org-superstar moom resize-window frame-fns quelpa-use-package frame-cmds recursive-narrow ivy-todo ivy-explorer counsel ivy-bibtex org-ref unfill xterm-color org-noter org-plus-contrib realgud highlight-indent-guides org-web-tools elpy quelpa paradox gnu-elpa-keyring-update deadgrep erefactor helm-org-rifle deft zotxt zotxt-emacs emacsql-sqlite3 cask wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm elpygen ox-pandoc powershell helpful dired+ helm-descbinds smartscan artbollocks-mode highlight-thing swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move))
+   '(smart-mode-line conda org-superstar moom resize-window frame-fns quelpa-use-package frame-cmds recursive-narrow ivy-todo ivy-explorer counsel ivy-bibtex org-ref unfill xterm-color org-noter realgud highlight-indent-guides org-web-tools elpy quelpa paradox gnu-elpa-keyring-update deadgrep erefactor helm-org-rifle deft zotxt zotxt-emacs emacsql-sqlite3 cask wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm elpygen ox-pandoc powershell helpful dired+ helm-descbinds smartscan artbollocks-mode highlight-thing swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
@@ -2791,8 +2809,9 @@ Version 2020-11-20 2021-01-18"
 ;; TODO: experiment with C-c C-x C-b or M-x org-tree-to-indirect-buffer
 
 (use-package org
-  :ensure org-plus-contrib ; fewer clean install errors, still must restart 3X
-  :pin org
+;;  :straight org-plus-contrib ; fewer clean install errors, still must restart 3X
+  ;;  :pin gnu
+  ;; :pin melpa ;; messes up straight.el
   :diminish org-mode  ; doesn't hide the "Org" in modeline, for some reason
   :diminish org-table-header-line-mode  ; customization: org-table-header-line-p
   :config
@@ -2841,6 +2860,15 @@ Version 2020-11-20 2021-01-18"
  ;;     ("TRY" . 9728)
  ;;     ("REJECTED" . 10005)
  ;;     ("ACCEPTED" . 10003)))
+
+
+;; do this for org-mode v 9.5
+;; https://mail.google.com/mail/u/0/#inbox/FMfcgzGlkFvBtzqVbNDzVdPxpXvNPsGX
+;; You have to load oc-biblatex, say using use-package, and also set
+;; org-cite-export-processors, like:
+;; (setq org-cite-export-processors
+;; '((latex biblatex)
+;;   (t csl)))
 
 (use-package org-superstar
   :after org
@@ -3112,34 +3140,36 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 (when (sdo/find-exec "pandoc" "Needed for org-mode export to .docx, etc.")
   ;; from: https://github.com/rubensts/.emacs.d/blob/master/emacs-init.org
   (use-package ox-pandoc
-    :after org-plus-contrib
+;;    :after org-plus-contrib
     :demand t
     :config
-    (validate-setq org-pandoc-options '((standalone . t))            ; default options for all output formats
-                   org-pandoc-options-for-docx '((standalone . nil)) ; cancel above settings only for 'docx' format
+    (setq org-pandoc-options '((standalone . t))            ; default options for all output formats
+          org-pandoc-options-for-docx '((standalone . nil)) ; cancel above settings only for 'docx' format
 
-                   org-pandoc-options-for-beamer-pdf '((latex-engine . "lualatex"))
-                   org-pandoc-options-for-latex-pdf  '((latex-engine . "lualatex"))
-                   ;;org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")
-                   ;;                                   (template . "~/.pandoc/templates/memoir2.latex" ))
-                   ;;org-pandoc-options-for-latex '((latex-engine . "xelatex")
-                   ;;                               (template . "~/.pandoc/templates/memoir2.latex" ))
+          org-pandoc-options-for-beamer-pdf '((latex-engine . "lualatex"))
+          org-pandoc-options-for-latex-pdf  '((latex-engine . "lualatex"))
+          ;;org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")
+          ;;                                   (template . "~/.pandoc/templates/memoir2.latex" ))
+          ;;org-pandoc-options-for-latex '((latex-engine . "xelatex")
+          ;;                               (template . "~/.pandoc/templates/memoir2.latex" ))
 
-                   ;; Use external css for html5
-                   ;; (let ((stylesheet (expand-file-name
-                   ;;                    (locate-user-emacs-file "etc/pandoc.css"))))
-                   ;;   (setq org-pandoc-options-for-html5
-                   ;;         `((css . ,(concat "file://" stylesheet)))))
-                   )
+          ;; Use external css for html5
+          ;; (let ((stylesheet (expand-file-name
+          ;;                    (locate-user-emacs-file "etc/pandoc.css"))))
+          ;;   (setq org-pandoc-options-for-html5
+          ;;         `((css . ,(concat "file://" stylesheet)))))
+          )
     ))
 
 
 ;; ** Org Import
 
-(use-package org-pandoc-import
-  :straight (:host github
-             :repo "tecosaur/org-pandoc-import"
-             :files ("*.el" "filters" "preprocessors")))
+;; There was nothing wrong with this.  I commented it out only to test the removal of :straight.
+;;
+;; (use-package org-pandoc-import
+;;   :straight (:host github
+;;              :repo "tecosaur/org-pandoc-import"
+;;              :files ("*.el" "filters" "preprocessors")))
 
 ;; ** Org and Git
 
@@ -3218,7 +3248,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; Completion package for Org mode: https://github.com/emacs-helm/helm-org
 (use-package helm-org
   ;;:defer 90
-  :ensure t
+  :straight t
   :config
   ;; (add-to-list 'helm-completing-read-handlers-alist '(org-capture . helm-org-completing-read-tags))
   ;; (add-to-list 'helm-completing-read-handlers-alist '(org-set-tags . helm-org-completing-read-tags))
@@ -3267,14 +3297,14 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
 (use-package org-ref
   :after org
+  :straight (:branch "org-ref-2" :host github :repo "jkitchin/org-ref")
   :init
   (let ((default-directory docDir))
 
-    (setq org-ref-bibliography-notes org_ref_notes_fnm
-          org-ref-default-bibliography bibfile_list 
-          ;; whatever looks at org-ref-pdf-directory seems to look only at 1st element of list, unlike user of bibtex-completion-bibliography in helm--bibtex.  This is even though user of org-ref-default-bibliography =does= look at lists.
-          org-ref-pdf-directory bibpdf_list
-          reftex-default-bibliography org-ref-default-bibliography))
+    (setq bibtex-completion-notes-path org_ref_notes_fnm
+          bibtex-completion-bibliography bibfile_list 
+          bibtex-completion-library-path bibpdf_list
+          reftex-default-bibliography bibtex-completion-bibliography))
 
   ;; ;; showing broken links slowed down energytop.org (but much less in Oct. 2017)
   ;; ;;  https://github.com/jkitchin/org-ref/issues/468
@@ -3321,11 +3351,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;; calling one of these commands will initialize Org-roam and ORB
   :commands (org-roam-node-find org-roam-graph org-roam-capture
                                 org-roam-dailies-capture-today org-roam-buffer-toggle)
-  :init
-  (setq org-roam-v2-ack t)
   :custom
-  (org-roam-directory (file-truename "~/tmp"))
-  ;; (org-roam-directory (file-truename org_roam_dir))
   (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
   (org-id-method 'ts)
 
@@ -3347,21 +3373,39 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;; causes error:
   ;; :bind-keymap
   ;; ("C-c n d" . org-roam-dailies-map)
+
+  :init
+  (setq org-roam-v2-ack t)
+  ;; set this here instead of in :custom so it can be used during init
+  (setq org-roam-directory (file-truename "~/tmp"))
+  ;; from: https://www.orgroam.com/manual.html
+  (setq org-roam-dailies-directory (expand-file-name "daily"
+                                                     org-roam-directory))
+  (setq org-roam-dailies-capture-templates
+        '(("d" "default" entry
+           "* %?"
+           :target (file+head "%<%Y-%m-%d>.org"
+                              "#+title: %<%Y-%m-%d>\n"))))
   
+
   :config
+  (org-roam-db-autosync-mode)
+  ;; If using org-roam-protocol
+  (require 'org-roam-protocol))
+   
   ;;(org-roam-setup)
   
   ;; The line below caues org-roam to hang and time out after 30
   ;;seconds, at least on Windows.  Maybe it didn't on Mac
   ;;(org-roam-bibtex-mode +1)
   
-  (require 'org-roam-dailies) ;; Ensure the keymap is available
-  (org-roam-db-autosync-mode)
+;;  (require 'org-roam-dailies) ;; Ensure the keymap is available
+;;  (org-roam-db-autosync-mode)
 
   ;; commenting this out removed an org-roam empty buffer error (sometimes)
   ;; https://org-roam.discourse.group/t/minimal-setup-for-helm-bibtex-org-roam-v2-org-roam-bibtex/1971/2?u=scotto
   ;;(org-roam-bibtex-mode +1)
-  )
+;;  )
 
 (use-package ivy-bibtex)
   
@@ -3758,8 +3802,8 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;;    see also Org-roam-bibtex
 
 ;; init these here so helm-bibtex and ivy-bibtex can share them
-(setq bibtex-completion-bibliography bibfile_list)
-(setq bibtex-completion-library-path bibpdf_list)
+;;(setq bibtex-completion-bibliography bibfile_list)
+;;(setq bibtex-completion-library-path bibpdf_list)
 ;; Find pdf w/ JabRef/Zotero fields
 (setq bibtex-completion-pdf-field "file")
 ;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
@@ -3783,7 +3827,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; ;; and part from:
 ;; ;; https://people.umass.edu/weikaichen/zh/post/emacs-academic-tools/
 ;; (use-package ivy-bibtex
-;;   :ensure t
+;;   :straight t
 ;;   :bind*
 ;;   ("C-c C-r" . ivy-bibtex)
 ;;   :config
@@ -4094,7 +4138,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; (use-package helm-rg
 ;;   :if (executable-find "rg")
-;;   :ensure t
+;;   :straight t
 ;;   :init
 ;;   (progn
 ;;     (setq helm-grep-ag-command "rg --color=always --colors 'match:fg:black' --colors 'match:bg:white' --smart-case --no-heading --line-number %s %s %s")
@@ -4155,6 +4199,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; C-; on symbol/word edits all instances in scope & other things. C-; to exit
 (use-package iedit
+;;  :defer 0
   :config
   (defun iedit-within-defun ()
     "Do iedit search and replace within current defun (equivalent to C-0 C-;)"
@@ -4164,6 +4209,12 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   (define-key prog-mode-map (kbd "C-;") 'iedit-within-defun))
 
 ;; * Swiper/Ivy
+
+(use-package ivy
+  :bind (("C-s" . swiper)
+         ("C-x b" . ivy-switch-buffer))
+  :config
+  (ivy-mode 1))
 
 ;; Help while in ivy search:
 ;;  ivy hydra: C-o;
@@ -4187,22 +4238,6 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;; Note: could also experiment w/ swiper-isearch-toggle
   (fset 'swiper-func-forward 'swiper-isearch) ; standard swiper, slow on large org files
   (fset 'swiper-func-backward 'swiper-isearch-backward) ; standard swiper, slow on large org files
-
-  ;; TODO: combine forward backward into one function instead of this hack
-  ;; (defun sdo/swiper-region (isForward)
-  ;;   "If region selected, swipe for it, else do normal swiper call"
-  ;;   (interactive)
-  ;;   (let ((swiper-func (if isForward swiper-func-forward swiper-func-backward)))
-  ;;     (if mark-active
-  ;;         (let ((region (funcall region-extract-function nil)))
-  ;;           (deactivate-mark)
-  ;;           (funcall swiper-func region))
-  ;;       (funcall swiper-func))))
-  ;;
-  ;; (defun sdo/swiper-region-forward ()
-  ;;   "If region selected, swipe for it forward, else do normal swiper call"
-  ;;   (interactive)
-  ;;   (sdo/swiper-region t))
 
   (defun sdo/swiper-region-forward ()
     "If region selected, swipe for it forward, else do normal swiper call"
@@ -4236,8 +4271,17 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   (global-set-key (kbd "C-x V") 'ivy-switch-view)
   ;; actually, this seems to do the (nearly) same thing as C-s s
   (global-set-key (kbd "C-c C-r") 'ivy-resume) ;Resume last ivy completion sess
-  (global-set-key (kbd "C-x B") 'ivy-switch-buffer-other-window )
-  :config
+  ;;  (global-set-key (kbd "C-x B") 'ivy-switch-buffer-other-window )
+  ;; https://www.youtube.com/watch?v=uyMdDzjQFMU
+  ;; if use prescient, want to use pers-counsel-switch-buffer* or ivy-counsel-switch-buffer*
+  ;; vertico doesn't need anything special, just works
+  ;; selectrum: persp-switch-to-buffer*
+  ;; or: persp-ibuffer for standard ibuffer
+
+  ;; counsel-switch maks ivy stop searching
+  ;; (global-set-key (kbd "C-x b") 'counsel-switch-buffer)
+  ;; (global-set-key (kbd "C-x B") 'counsel-switch-buffer-other-window )
+  ;; :config
   ;; for consistent backwards search binding within ivy minibuffer
   (bind-key "C-r" 'ivy-previous-line-or-history ivy-minibuffer-map)
   )
@@ -4718,7 +4762,7 @@ _C-M-a_ change default action from list for this session
 
 ;; Hack: (use-package auctex) doesn;t work because, "once installed, auctex overrides the tex package":
 ;; http://cachestocaches.com/2015/8/getting-started-use-package/
-(use-package tex :defer t :ensure auctex) ; a hack for auctex
+(use-package tex :defer t :straight auctex) ; a hack for auctex
 (use-package auctex-latexmk :defer t)
 
 (add-hook 'LaTeX-mode-hook
@@ -4755,6 +4799,7 @@ When done, can undo the window config with winner-mode: C-c Left"
 
 (use-package which-key ; complex key hints, better than guide-key
   :diminish which-key-mode
+;;  :defer 0
   :config
   (which-key-mode)
   (which-key-setup-side-window-right-bottom)) ; do bottom if no room on side
@@ -4763,7 +4808,7 @@ When done, can undo the window config with winner-mode: C-c Left"
 ;;  :config (helm-descbinds-mode))
 
 (use-package helm-swoop
-  :ensure t
+  :straight t
   :defer t
   :bind
   (;;("C-x c s" . helm-swoop)
@@ -5094,7 +5139,7 @@ reuse it's window, otherwise create new one."
 
 ;; M-x wttrin to start, 'g' to next city, 'q' qo quit
 (use-package wttrin
-  :ensure t
+  :straight t
   :commands (wttrin wttrin-query wttrin-exit)
   :init
   (setq wttrin-default-cities '("Seattle"
