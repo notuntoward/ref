@@ -62,6 +62,8 @@
 ;; make straight the default (for now, it's org-roam only)
 ;; https://github.com/raxod502/straight.el/blob/0946e1b14886e05973fb88ff18ccd90a8c8a25a4/README.md#integration-with-use-package
 (setq straight-use-package-by-default t)
+;; good explanation of how to debug emacs init speed:
+;; https://www.youtube.com/watch?v=bF84mQMmfa8  (system crafters)
 ;;(setq use-package-verbose t) ; messages when load pkg., good for init debug
 
 ;; ** package.el
