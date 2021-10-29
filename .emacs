@@ -134,7 +134,8 @@
 ;; * Emacs Speed Test
 
 ;; Find out what's slowing down emacs start by running M-x esup
-(use-package esup)
+(use-package esup
+  :defer t)
 
 ;; * Computer-specific setup
 ;; ** OS-dependent settings
@@ -557,7 +558,7 @@ TODO: make this a general function."
 ;; ** Powershell (Windows)
 
 (if running-ms-windows  ; could be in OS-specific section too
-    (use-package powershell))
+    (use-package powershell :defer t))
 
 ;; ** Remote Process Communication
 
@@ -594,11 +595,11 @@ TODO: make this a general function."
 ;; ** Window resizing
 
 ;; https://github.com/dpsutton/resize-window
-(use-package resize-window) ; put in hydra below
+(use-package resize-window :defer 0) ; put in hydra below
 
 ;; ** Adjusting Window Orientation
-(use-package transpose-frame ; tons of functions; this one is most general
-  :config (global-set-key (kbd "C-|")  'rotate-frame-clockwise))
+(use-package transpose-frame ; tons of functions; this one is most
+  :bind (("C-|" . rotate-frame-clockwise)))
 
 (winner-mode 1) ; Undo window config: C-c left; Redo window config: C-c right
 
@@ -769,33 +770,35 @@ TODO: make this a general function."
 
 ;; *** Moom Frame Resize
 
-;; https://github.com/takaxp/moom
-(use-package moom
-  :diminish moom-mode
-  :config
-  (setq moom-verbose t)
-  (setq moom-use-font-module nil)
-  (setq moom-user-margin '(0 0 0 0)) ;; FYI, the default value is '(0 0 0 0), not t
-  (add-hook 'moom-before-fill-screen-hook #'moom-move-frame)
-  (moom-mode 1)
-  ;;(setq moom-user-margin '(0 0 16 0))
-  ;; (moom-mode)
-  )
+;; my hacked resize seemed to work better than Moom?
+;;
+;; ;; https://github.com/takaxp/moom
+;; (use-package moom
+;;   :diminish moom-mode
+;;   :config
+;;   (setq moom-verbose t)
+;;   (setq moom-use-font-module nil)
+;;   (setq moom-user-margin '(0 0 0 0)) ;; FYI, the default value is '(0 0 0 0), not t
+;;   (add-hook 'moom-before-fill-screen-hook #'moom-move-frame)
+;;   (moom-mode 1)
+;;   ;;(setq moom-user-margin '(0 0 16 0))
+;;   ;; (moom-mode)
+;;   )
 
-(setq moom--height-maximized nil) ; state for height max toggle
+;; (setq moom--height-maximized nil) ; state for height max toggle
 
-(defun sdo/moom-toggle-frame-height-maximized ()
-  "Toggle frame height maximized.  This almost works but doesn't"
-  (interactive)
-  (let ((moom--print-status nil))
-    (if (setq moom--height-maximized (not moom--height-maximized))
-        (progn
-          (moom--save-last-status)
-          (moom-fill-height)
-          (toggle-frame-fullscreen)
-          (toggle-frame-fullscreen))
-      (moom-restore-last-status)))
-  (moom-print-status))
+;; (defun sdo/moom-toggle-frame-height-maximized ()
+;;   "Toggle frame height maximized.  This almost works but doesn't"
+;;   (interactive)
+;;   (let ((moom--print-status nil))
+;;     (if (setq moom--height-maximized (not moom--height-maximized))
+;;         (progn
+;;           (moom--save-last-status)
+;;           (moom-fill-height)
+;;           (toggle-frame-fullscreen)
+;;           (toggle-frame-fullscreen))
+;;       (moom-restore-last-status)))
+;;   (moom-print-status))
 
 ;; 
        
@@ -939,7 +942,8 @@ See also `toggle-frame-maximized'."
 ;; TODO: shrink some more and put a bunch of other window functions on
 ;; this hydra?  Maybe frames, buffers, ...
 ;; TODO compare w/ ace-window and hydr: https://www.youtube.com/watch?v=_qZliI1BKzI
-(use-package hydra) ; s/ probably put some hydra defs inside of it, or this inside of ivy
+(use-package hydra
+  :defer t); s/ probably put some hydra defs inside of it, or this inside of ivy
 (defhydra hydra-window (:color pink :hint nil :timeout 20)
   "
      Move          Swap          Resize        Split
@@ -1058,14 +1062,6 @@ See also `toggle-frame-maximized'."
 (global-set-key (kbd "M-l") 'sdo/downcase-word-or-region)
 (global-set-key (kbd "M-c") 'sdo/capitalize-word-or-region)
 
-;; *** crux (a mix of movement and other stuff)
-;; In visual line mode breaks C-a
-;; (use-package crux
-;;   :bind (("C-a" . crux-move-beginning-of-line)
-;;          ("M-'" . crux-duplicate-and-comment-current-line-or-region)
-;;          ("C-c R" . crux-rename-file-and-buffer)
-;;          ("C-k" . crux-kill-and-join-forward)))
-
 ;; * Buffer Handling
 ;; ** Buffer naming
 
@@ -1121,29 +1117,14 @@ See also `toggle-frame-maximized'."
 ;; So ctl-shift-arrow keys move buffers within a frame (ctl-arrows move cursor)
 ;; (org-mode keys should have already been unbound in the org section)
 (use-package buffer-move
-  :config
-  (global-set-key (kbd "<C-S-up>")     'buf-move-up)
-  (global-set-key (kbd "<C-S-down>")   'buf-move-down)
-  (global-set-key (kbd "<C-S-left>")   'buf-move-left)
-  (global-set-key (kbd "<C-S-right>")  'buf-move-right))
+  :bind (
+  ("<C-S-up>"    . 'buf-move-up)
+  ("<C-S-down>"  . 'buf-move-down)
+  ("<C-S-left>"  . 'buf-move-left)
+  ("<C-S-right>" .  'buf-move-right)))
 
 ;; tab keys work across buffers like browsers across tabs
 (global-set-key (kbd "<C-tab>")  'other-window) ; forwards
-
-;; ;; CAN'T GET THIS TO WORK: CYCLE BUFFERS BACKWARDS
-;; (global-set-key (kbd "<C-S-tab>") (lambda () (interactive) (other-window -1)))
-
-;; (defun other-window-backwards ()
-;;   (interactive "P") 
-;;   (other-window -1))
-;; (global-set-key (kbd "<C-S-tab>")  'other-window-backwards) ; backwards
-
-;; (defun other-window-backwards ()
-;;   (interactive "P") 
-;;   (call-interactively 'grep))
-;; (global-set-key (kbd "<C-S-tab>")  'other-window) ; backwards
-
-;; ** Indirect Buffer Cloning
 
 ;; *** Full Buffer Cloning
 
@@ -1292,6 +1273,7 @@ displayed anywhere else."
 (if (setq pacbin (sdo/find-exec "pacman" "Need MSYS2 for pdf-tools & more"))
     (progn
       (use-package pdf-tools
+        :defer t
         :config
         ;; Ensure mingw64 libraries on front of PATH, not other tools' libs
         ;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
@@ -1841,7 +1823,7 @@ Version 2020-11-20 2021-01-18"
 ;;
 ;; See what keys are unbound. To see what's left on e.g. C-c type 'p'
 ;; and then the chars "C-c". Don't type the keycombo "C-c"
-(use-package free-keys)
+;;(use-package free-keys)
 
 (global-set-key [f1] 'revert-buffer)
 (global-set-key [f2] 'vc-dir)
@@ -1975,18 +1957,18 @@ Version 2020-11-20 2021-01-18"
 ;; replacing preceding-sexp with elisp--preceding-sexp, then
 ;; recompiling.
 ;; My erefactor issue: https://github.com/mhayashi1120/Emacs-erefactor/issues/5
-(use-package erefactor
-  :defer t
-  :init
-  (add-hook 'emacs-lisp-mode-hook
-            (lambda ()
-              (define-key emacs-lisp-mode-map "\C-c\C-v" erefactor-map)))
+;; (use-package erefactor
+;;   :defer t
+;;   :init
+;;   (add-hook 'emacs-lisp-mode-hook
+;;             (lambda ()
+;;               (define-key emacs-lisp-mode-map "\C-c\C-v" erefactor-map)))
 
-  ;; TODO do this
-  ;;And set these variables correctly: erefactor-lint-path-alist, erefactor-lint-by-emacsen
-  ;; Highlight local variables: DOES THIS DO ANYTHING?  Need paths above?
-  (add-hook 'emacs-lisp-mode-hook 'erefactor-lazy-highlight-turn-on)
-  (add-hook 'lisp-interaction-mode-hook 'erefactor-lazy-highlight-turn-on))
+;;   ;; TODO do this
+;;   ;;And set these variables correctly: erefactor-lint-path-alist, erefactor-lint-by-emacsen
+;;   ;; Highlight local variables: DOES THIS DO ANYTHING?  Need paths above?
+;;   (add-hook 'emacs-lisp-mode-hook 'erefactor-lazy-highlight-turn-on)
+;;   (add-hook 'lisp-interaction-mode-hook 'erefactor-lazy-highlight-turn-on))
 
 ;; ** C/C++
 ;; note: connect to common hook used by new cc-mode
@@ -2025,6 +2007,7 @@ Version 2020-11-20 2021-01-18"
   (next-line 2))
 
 (use-package xcscope ; Source code brower like etags but better
+  :defer t
   :config
   (define-key cscope-list-entry-keymap "q" 'quit-window)) ; so quits like dired
 
@@ -2232,7 +2215,7 @@ Version 2020-11-20 2021-01-18"
   ;;       maybe these two other calls work before %matplotlib inline is called?
 
   (use-package ein
-    :straight t
+    :defer t
     :init
     ;; So outshine or highlight-indent-guides on prog-mode-hook don't break inline plots
     (setq ein:polymode t) ;; Get right mode e.g. elpy in cells (fails in :config)
@@ -2336,7 +2319,7 @@ Version 2020-11-20 2021-01-18"
 
 ;; ** C#
 
-(use-package csharp-mode)
+(use-package csharp-mode :defer t)
 (use-package omnisharp
   :after csharp-mode
   :after company)
@@ -2588,11 +2571,12 @@ Version 2020-11-20 2021-01-18"
  '(window-divider-mode t))
 
 (use-package flycheck
+  :defer t
   :config
   (eval-after-load "flycheck-mode" '(diminish 'flycheck-mode)))
 (diminish 'flycheck-mode) ;; only works outside of use-package flycheck
 
-(use-package flycheck-pos-tip)
+(use-package flycheck-pos-tip :after flycheck)
 
 ;; Make interpreter shells do arrow prev/last matching, like linux
 ;; shells.  I think this will be overwritten by some modes
@@ -2783,6 +2767,7 @@ Version 2020-11-20 2021-01-18"
 
 ;; From: https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
 (use-package org-download
+  :after org
   :config
   ;; add support to dired
   (add-hook 'dired-mode-hook 'org-download-enable))
@@ -2877,15 +2862,6 @@ Version 2020-11-20 2021-01-18"
   (setq inhibit-compacting-font-caches t)
   :hook (org-mode . org-superstar-mode))
 
-;; (use-package org-superstar
-;;   :after org
-;;   :init
-;;   ;; org-superstar github: loads faster
-;;   ;; (setq inhibit-compacting-font-caches t)
-;;   :hook
-;;   (org-mode . (lambda () (org-superstar-mode 1))))
-
-
 ;; Show hidden emphasis markers e.g.* in *bold*.  So can see where cursor is.
 (use-package org-appear
   :custom
@@ -2896,31 +2872,34 @@ Version 2020-11-20 2021-01-18"
   (org-appear-delay 1)
   :hook (org-mode . org-appear-mode))
 
-;; ;; From: https://emacs.stackexchange.com/a/41705/14273
-(defun org-fold-outer ()
-  ;; Fold org-headline that the cursor is inside of
-  (interactive)
-  (beginning-of-line)
-  (if (string-match "^*+" (thing-at-point 'line t))
-      (outline-up-heading 1))
-  (outline-hide-subtree))
-(define-key org-mode-map (kbd "C-c u") 'org-fold-outer)
-;; painful
-;;(define-key org-mode-map (kbd "C-c <C-tab>") 'org-fold-outer)
+(with-eval-after-load 'org
+  ;; ;; From: https://emacs.stackexchange.com/a/41705/14273
+  (defun org-fold-outer ()
+    ;; Fold org-headline that the cursor is inside of
+    (interactive)
+    (beginning-of-line)
+    (if (string-match "^*+" (thing-at-point 'line t))
+        (outline-up-heading 1))
+    (outline-hide-subtree))
+  (define-key org-mode-map (kbd "C-c u") 'org-fold-outer)
+  ;; painful
+  ;;(define-key org-mode-map (kbd "C-c <C-tab>") 'org-fold-outer)
+  )
 
 (use-package org-autolist ; new - or -[ ] w/ return
-  :after org
   :diminish org-autolist-mode
-  :config
-  (add-hook 'org-mode-hook #'org-autolist-mode)) 
+  :hook (org-mode . org-autolist-mode))
+;;  :config
+;;  (add-hook 'org-mode-hook #'org-autolist-mode)) 
 
 ;; Quick org emphasis:  Select text & hit key below. expand-region pkg helps.
 ;; Handy using er/expand, mapped to C-=
 (use-package wrap-region
   :diminish wrap-region-mode
   :diminish wrap-region-minor-mode
+  :hook (org-mode . wrap-region-mode)
   :config
-  (add-hook 'org-mode-hook #'wrap-region-mode)
+;;  (add-hook 'org-mode-hook #'wrap-region-mode)
   (wrap-region-add-wrapper "*" "*" nil 'org-mode)  ; bold
   (wrap-region-add-wrapper "/" "/" nil 'org-mode)  ; italics
   (wrap-region-add-wrapper "_" "_" nil 'org-mode)  ; underline
@@ -2929,6 +2908,7 @@ Version 2020-11-20 2021-01-18"
   (wrap-region-add-wrapper "+" "+" nil 'org-mode)) ; strikeout
 
 (use-package org-cliplink ; make hyper link from URL in clipboard
+  :after org
   :config (define-key org-mode-map (kbd "C-c y") 'org-cliplink))
 
 ;; I can't get this to do anything but duplicate existing org-cliplink
@@ -2960,7 +2940,7 @@ Version 2020-11-20 2021-01-18"
 ;;         (insert link)))))
 
 ;; ** org Mode Dedicated Targets
-(require 'org)
+;;(require 'org)
 
 ;; --- Hide org-mode dedicated targets -----------------------------------------
 ;;
@@ -2980,41 +2960,43 @@ Version 2020-11-20 2021-01-18"
 ;;       or maybe the github library that resulted from that discussion?
 ;;       https://github.com/talwrii/org-hide-targets
 
-;; From: Nicolas Goaziou: https://mail.google.com/mail/u/0/#inbox/QgrcJHsNmtZZNZFRdHZBqCqcmZVLJkSdzJq
-;; He also suggested this bit of code as another alternative:
-;;         (org-element-lineage (org-element-context) '(target radio-target) t)
-(defun org-at-target-p ()
-  "Return true if cursor is on a dedicated target.  
+(with-eval-after-load 'org
+
+  ;; From: Nicolas Goaziou: https://mail.google.com/mail/u/0/#inbox/QgrcJHsNmtZZNZFRdHZBqCqcmZVLJkSdzJq
+  ;; He also suggested this bit of code as another alternative:
+  ;;         (org-element-lineage (org-element-context) '(target radio-target) t)
+  (defun org-at-target-p ()
+    "Return true if cursor is on a dedicated target.  
 This is a replacement for org-mode's buggy, and now-deleted, function"
-  (memq (org-element-type (org-element-context)) '(target radio-target)))
+    (memq (org-element-type (org-element-context)) '(target radio-target)))
 
-(defcustom org-hidden-links-additional-re "\\(<<\\)[[:print:]]+?\\(>>\\)"
-  "Regular expression that matches strings where the invisible-property of the sub-matches 1 and 2 is set to org-link."
-  :type '(choice (const :tag "Off" nil) regexp)
-  :group 'org-link)
-(make-variable-buffer-local 'org-hidden-links-additional-re)
+  (defcustom org-hidden-links-additional-re "\\(<<\\)[[:print:]]+?\\(>>\\)"
+    "Regular expression that matches strings where the invisible-property of the sub-matches 1 and 2 is set to org-link."
+    :type '(choice (const :tag "Off" nil) regexp)
+    :group 'org-link)
+  (make-variable-buffer-local 'org-hidden-links-additional-re)
 
-(defun org-activate-hidden-links-additional (limit)
-  "Put invisible-property org-link on strings matching `org-hide-links-additional-re'."
-  (if org-hidden-links-additional-re
-      (re-search-forward org-hidden-links-additional-re limit t)
-    (goto-char limit)
-    nil))
+  (defun org-activate-hidden-links-additional (limit)
+    "Put invisible-property org-link on strings matching `org-hide-links-additional-re'."
+    (if org-hidden-links-additional-re
+        (re-search-forward org-hidden-links-additional-re limit t)
+      (goto-char limit)
+      nil))
 
-(defun org-hidden-links-hook-function ()
-  "Add rule for `org-activate-hidden-links-additional' to `org-font-lock-extra-keywords'.
+  (defun org-hidden-links-hook-function ()
+    "Add rule for `org-activate-hidden-links-additional' to `org-font-lock-extra-keywords'.
 You can include this function in `org-font-lock-set-keywords-hook'."
-  (add-to-list 'org-font-lock-extra-keywords
-	       '(org-activate-hidden-links-additional
-		 (1 '(face org-target invisible org-link))
-		 (2 '(face org-target invisible org-link)))))
+    (add-to-list 'org-font-lock-extra-keywords
+	         '(org-activate-hidden-links-additional
+		   (1 '(face org-target invisible org-link))
+		   (2 '(face org-target invisible org-link)))))
 
-(add-hook 'org-font-lock-set-keywords-hook #'org-hidden-links-hook-function)
+  (add-hook 'org-font-lock-set-keywords-hook #'org-hidden-links-hook-function)
 
-;; IMPROVEMENT: Parse headlines w/ links in them; give option for clean target text
-;; IMPROVEMENT: Make this work for across files, like jkitchin's better-link thing
-(defun create-and-link-dedicated-org-target (callPrefix)
-  "Makes or reads a dedicated org-mode link target (<<X>>) and puts an internal link to it ([[X]]) into the kill ring; you can reference the target somewhere else by pasting the link.
+  ;; IMPROVEMENT: Parse headlines w/ links in them; give option for clean target text
+  ;; IMPROVEMENT: Make this work for across files, like jkitchin's better-link thing
+  (defun create-and-link-dedicated-org-target (callPrefix)
+    "Makes or reads a dedicated org-mode link target (<<X>>) and puts an internal link to it ([[X]]) into the kill ring; you can reference the target somewhere else by pasting the link.
 
 Where the target goes:
   No prefix
@@ -3031,117 +3013,121 @@ Where the target goes:
     Otherwise: the user is prompted to enter the target text and a
                new full target is inserted at point.
 This function avoids making messed up targets by exiting without doing anything if the target text would contain link or target symbols."
-  (interactive "p")
+    (interactive "p")
 
-  (if (eq major-mode 'org-mode)
-      (let* ((separatePaste (eq callPrefix 4))
-	     (targBdy
+    (if (eq major-mode 'org-mode)
+        (let* ((separatePaste (eq callPrefix 4))
+	       (targBdy
+	        (cond
+	         (mark-active
+		  (funcall region-extract-function nil))
+	         ((org-at-target-p)
+		  (save-excursion
+		    (let* ((p1 (progn (skip-chars-backward "^<“") (point)))
+			   (p2 (progn (skip-chars-forward  "^>”") (point))))
+		      (buffer-substring p1 p2))))
+	         ((org-at-heading-p)
+		  (or (nth 4 (org-heading-components))
+		      (read-string "Target text: ")))
+	         (t
+		  (read-string "Target text: "))
+	         ))
+	       (targDclr (concat "<<" targBdy ">>")))
+
+	  (if (string-match "\\(\\[\\[\\)\\|\\(]]\\)\\|\\(<<\\)\\|\\(>>\\)" targBdy)
+	      (message
+	       "Found link/target symbols ([[,]],<<,>>): Manually select region?")
+	    (unless (org-at-target-p)
 	      (cond
 	       (mark-active
-		(funcall region-extract-function nil))
-	       ((org-at-target-p)
-		(save-excursion
-		  (let* ((p1 (progn (skip-chars-backward "^<“") (point)))
-			 (p2 (progn (skip-chars-forward  "^>”") (point))))
-		    (buffer-substring p1 p2))))
+	        (if separatePaste
+		    (progn (goto-char (region-end))
+			   (insert (format " %s" targDclr)))
+		  (delete-region (region-beginning) (region-end))
+		  (insert targDclr)
+		  (deactivate-mark)))
 	       ((org-at-heading-p)
-		(or (nth 4 (org-heading-components))
-		    (read-string "Target text: ")))
+	        (if separatePaste
+		    (progn (end-of-line)
+			   (insert (format "\n%s" targDclr))
+			   (org-indent-line))
+		  (org-edit-headline targDclr)))
 	       (t
-		(read-string "Target text: "))
-	       ))
-	     (targDclr (concat "<<" targBdy ">>")))
+	        (insert targDclr))))
 
-	(if (string-match "\\(\\[\\[\\)\\|\\(]]\\)\\|\\(<<\\)\\|\\(>>\\)" targBdy)
-	    (message
-	     "Found link/target symbols ([[,]],<<,>>): Manually select region?")
-	  (unless (org-at-target-p)
-	    (cond
-	     (mark-active
-	      (if separatePaste
-		  (progn (goto-char (region-end))
-			 (insert (format " %s" targDclr)))
-		(delete-region (region-beginning) (region-end))
-		(insert targDclr)
-		(deactivate-mark)))
-	     ((org-at-heading-p)
-	      (if separatePaste
-		  (progn (end-of-line)
-			 (insert (format "\n%s" targDclr))
-			 (org-indent-line))
-		(org-edit-headline targDclr)))
-	     (t
-	      (insert targDclr))))
-
-	  (kill-new (concat "[[" targBdy "]]"))
-	  ))
-    (message "Not in org-mode buffer")
-    ))
-(global-set-key "\em" 'create-and-link-dedicated-org-target)
-
+	    (kill-new (concat "[[" targBdy "]]"))
+	    ))
+      (message "Not in org-mode buffer")
+      ))
+  (global-set-key "\em" 'create-and-link-dedicated-org-target)
+  )
 ;; ** Hide/show/toggle :PROPERTIES: drawer
 
-(defun org-hide-properties ()
-  "Hide all org-mode headline property drawers in buffer. Could be slow if it has a lot of overlays.
+(with-eval-after-load 'org
+
+  (defun org-hide-properties ()
+    "Hide all org-mode headline property drawers in buffer. Could be slow if it has a lot of overlays.
 TODO: instead of regexp, try to parse org.  Maybe use the two suggestions above for org-at-target-p, or somehow get and walk the buffer's AST.  Parsing seems like it'd be faster.
 TODO: does this work if you've hidden props and then create a new prop door?  Can you still hide and unhide everything, or does this cause a wierd bug?
 TODO: hide a new prop drawer as soon as leave it, if in hide mode?
 TODO: add a cycle that opens or collapses all prop drawers?"
-  (interactive)
-  (save-excursion
-    (goto-char (point-min))
-    (while (re-search-forward
-            "^ *:properties:\n\\( *:.+?:.*\n\\)+ *:end:\n" nil t)
-      (let ((ov_this (make-overlay (match-beginning 0) (match-end 0))))
-        (overlay-put ov_this 'display "")
-        (overlay-put ov_this 'hidden-prop-drawer t))))
-  (put 'org-toggle-properties-hide-state 'state 'hidden))
+    (interactive)
+    (save-excursion
+      (goto-char (point-min))
+      (while (re-search-forward
+              "^ *:properties:\n\\( *:.+?:.*\n\\)+ *:end:\n" nil t)
+        (let ((ov_this (make-overlay (match-beginning 0) (match-end 0))))
+          (overlay-put ov_this 'display "")
+          (overlay-put ov_this 'hidden-prop-drawer t))))
+    (put 'org-toggle-properties-hide-state 'state 'hidden))
 
-(defun org-show-properties ()
-  "Show all org-mode property drawers hidden by org-hide-properties."
-  (interactive)
-  (remove-overlays (point-min) (point-max) 'hidden-prop-drawer t)
-  (put 'org-toggle-properties-hide-state 'state 'shown))
+  (defun org-show-properties ()
+    "Show all org-mode property drawers hidden by org-hide-properties."
+    (interactive)
+    (remove-overlays (point-min) (point-max) 'hidden-prop-drawer t)
+    (put 'org-toggle-properties-hide-state 'state 'shown))
 
-(defun org-toggle-properties ()
-  "Toggle visibility of property drawers."
-  (interactive)
-  (if (eq (get 'org-toggle-properties-hide-state 'state) 'hidden)
-      (org-show-properties)
-    (org-hide-properties)))
+  (defun org-toggle-properties ()
+    "Toggle visibility of property drawers."
+    (interactive)
+    (if (eq (get 'org-toggle-properties-hide-state 'state) 'hidden)
+        (org-show-properties)
+      (org-hide-properties)))
 
-(define-key org-mode-map (kbd "C-c p h") 'org-hide-properties)
-(define-key org-mode-map (kbd "C-c p s") 'org-show-properties)
-(define-key org-mode-map (kbd "C-c p t") 'org-toggle-properties)
+  (define-key org-mode-map (kbd "C-c p h") 'org-hide-properties)
+  (define-key org-mode-map (kbd "C-c p s") 'org-show-properties)
+  (define-key org-mode-map (kbd "C-c p t") 'org-toggle-properties)
 
-;; ** Text -> checkbox -> TODO
-;; Converts non-heading text lines to checkboxes lists;
-;; convert checkbox lists to TODO's with: C-c C-*
-;; https://stackoverflow.com/questions/18667385/convert-lines-of-text-into-todos-or-check-boxes-in-org-mode
-(defun org-set-line-checkbox (arg)
-  (interactive "P")
-  (let ((n (or arg 1)))
-    (when (region-active-p)
-      (setq n (count-lines (region-beginning)
-                           (region-end)))
-      (goto-char (region-beginning)))
-    (dotimes (i n)
-      (beginning-of-line)
-      (insert "- [ ] ")
-      (forward-line))
-    (beginning-of-line)))
+  ;; ** Text -> checkbox -> TODO
+  ;; Converts non-heading text lines to checkboxes lists;
+  ;; convert checkbox lists to TODO's with: C-c C-*
+  ;; https://stackoverflow.com/questions/18667385/convert-lines-of-text-into-todos-or-check-boxes-in-org-mode
+  (defun org-set-line-checkbox (arg)
+    (interactive "P")
+    (let ((n (or arg 1)))
+      (when (region-active-p)
+        (setq n (count-lines (region-beginning)
+                             (region-end)))
+        (goto-char (region-beginning)))
+      (dotimes (i n)
+        (beginning-of-line)
+        (insert "- [ ] ")
+        (forward-line))
+      (beginning-of-line)))
+  )
 
 ;; ** Org Export
 
-(use-package ox-minutes :defer 5) ; nice(er) ascii export, but slow start
+(use-package ox-minutes
+  :after org) ; nice(er) ascii export, but slow start
 
 ;; *** Pandoc helper for org export
 
 (when (sdo/find-exec "pandoc" "Needed for org-mode export to .docx, etc.")
   ;; from: https://github.com/rubensts/.emacs.d/blob/master/emacs-init.org
   (use-package ox-pandoc
-;;    :after org-plus-contrib
-    :demand t
+    :after org
+;;    :demand t
     :config
     (setq org-pandoc-options '((standalone . t))            ; default options for all output formats
           org-pandoc-options-for-docx '((standalone . nil)) ; cancel above settings only for 'docx' format
@@ -3248,6 +3234,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; Completion package for Org mode: https://github.com/emacs-helm/helm-org
 (use-package helm-org
   ;;:defer 90
+  :after org
   :straight t
   :config
   ;; (add-to-list 'helm-completing-read-handlers-alist '(org-capture . helm-org-completing-read-tags))
@@ -3280,16 +3267,17 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; For Zotero add-in "zutilo"  Conflicts/same-as zotxt?
 ;; https://orgmode-exocortex.com/2020/05/13/linking-to-zotero-items-and-collections-from-org-mode/
-(org-link-set-parameters "zotero" :follow
-                         (lambda (zpath)
-                           (browse-url
-                            ;; we get the "zotero:"-less url, so we put it back.
-                            (format "zotero:%s" zpath))))
+(with-eval-after-load 'org
+  (org-link-set-parameters "zotero" :follow
+                           (lambda (zpath)
+                             (browse-url
+                              ;; we get the "zotero:"-less url, so we put it back.
+                              (format "zotero:%s" zpath)))))
 
 ;; For Zotero add-in "zotxt"  Conflicts/same-as zutilo?
 ;; https://github.com/egh/zotxt-emacs
 ;; Pastes biblio summary of Zotero entries in org-mode, connects to org-noter
-(use-package zotxt)
+(use-package zotxt :defer t)
 
 ;; ** Org-ref
 
@@ -3407,7 +3395,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;;(org-roam-bibtex-mode +1)
 ;;  )
 
-(use-package ivy-bibtex)
+(use-package ivy-bibtex :defer t)
   
 ;; adds a bullet to today's daily w/ a timestamp on the front of it
 ;; (works in v2):
@@ -3479,61 +3467,12 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;;   ;; If using org-roam-protocol
 ;;   ;; doesn't seem to be there anymore
 ;;   ;;(require 'org-roam-protocol)
-
-
-
-
-
-
-
 ;;   )
 
 
 ;; ** org-roam-dailies
 
-
 ;; ** org-roam-bibtex
-
-;; needed for ORB, apparently
-;;(use-package magit-section)
-
-
-;; s/b Loaded INSIDE Of Org-Roam?
-;; https://org-roam.discourse.group/t/org-roam-bibtex-for-org-roam-v2/1574/88
-;; (use-package org-roam-bibtex
-;;   :after org-roam
-;;   :config
-;;   (require 'org-ref)) ; if Org Ref is not loaded anywhere else, load it here
-
-;; orb puts any .org file link into or db:  i don't want that b/c i want to link to product code, etc.
-;; turn off for now
-;; todol: make a pr about this
-
-;; ;; setup like 1st of https://githubmemory.com/repo/org-roam/org-roam-bibtex/issues
-;; (use-package org-roam-bibtex
-;; ;;  :straight t
-;;   ;; :after needed for straight: https://github.com/org-roam/org-roam-bibtex
-;;   :after (org-roam org-ref helm-bibtex ivy-bibtex)
-;;   :init
-;;   (setq orb-insert-interface 'ivy-bibtex)
-;;   (setq orb-note-actions-interface 'ivy)
-;;   (add-to-list 'orb-preformat-keywords "year")
-;;   (org-roam-bibtex-mode)) ;; probably what grabs C-c l
-
-;; A temporary ORB fix so don't have to select template type every time.
-;; Goes away when proposed changes to main org-roam pkg are made
-;; https://github.com/org-roam/org-roam-bibtex/issues/206
-;; (setq org-roam-capture-templates
-;;   '(;; find node template
-;;     ("d" "default" plain "%?" :if-new
-;;      (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
-;;      :unnarrowed t)
-
-;;     ;; dailies template
-;;     ("r" "reference template" plain "* %?" 
-;;       :if-new
-;;       (file+head "path/to/notes/${citekey}.org" "#+title: ${title}\n")
-;;       :type org-roam-bibtex)))   ;; <= type marker
 
 ;; ** org-roam-ui (graph viewing)
 
@@ -3552,220 +3491,6 @@ TODO: add a cycle that opens or collapses all prop drawers?"
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start t))
 
-;; "pdf-scrapper" part of org-roam-bibtex requires ruby gem
-;; anystyle_cli
-;; https://github.com/org-roam/org-roam-bibtex
-; https://github.com/inukshuk/anystyle-cli
-;; (use-package org-roam-bibtex
-;;   :straight (:branch "v2" :host github :repo "org-roam/org-roam")
-;;   :diminish org-roam-bibtex-mode
-;;   :after org-roam
-;;   :hook (org-roam-mode . org-roam-bibtex-mode)
-;;   :bind (:map org-mode-map
-;;               (("c-c n a" . orb-note-actions))))
-
-;; (use-package org-roam-bibtex
-;;   :straight (:branch "v2" :host github :repo "org-roam/org-roam")
-;;   :after org-roam
-;;   :config
-;;   (require 'org-ref)) ; optional: if Org Ref is not loaded anywhere else, load it here
-
-;; ** PRE-V2 ORG-ROAM: when I uninstalled it, the bibtex "Which function for
-;; *** creating the link?" problem went away
-;; *** PRE-V2: Org-roam
-;; *** Org-roam basic config
-
-;; Started from:
-;; http://www.cesarolea.com/posts/taking-smart-notes/index.html
-
-;; (sdo/find-exec "dot" "graphviz needed by org-roam")
-
-;; (use-package org-roam
-;;   :diminish org-roam-mode
-;;   :hook (after-init . org-roam-mode) ; really slows down emacs startup
-;;   :config
-;;   (setq org-roam-db-location "~/org-roam.db")
-;;   (require 'org-roam-protocol) ;; for org-roam-capture?
-;;   :custom (org-roam-directory org_roam_dir)
-;;   ;;:custom (org-roam-directory "~/Sync/Org/roam/")
-;;   :bind (:map org-roam-mode-map
-;;               (("C-c n l" . org-roam)
-;;                ("C-c n f" . org-roam-find-file)
-;;                ("C-c n g" . org-roam-graph)
-;;                ("C-c n c" . org-roam-capture))
-;;               :map org-mode-map
-;;               (("C-c n i" . org-roam-insert))
-;;               (("C-c n I" . org-roam-insert-immediate))))
-
-;; ;; Much fancier than OR default graph viewer.  Clickable links, etc.
-;; ;; To see the graph in your browser:
-;; ;;   M-x org-roam-server-mode
-;; ;;   open browser to 127.0.0.1:8080
-;; (use-package org-roam-server
-;;   :config
-;;   (setq org-roam-server-host "127.0.0.1"
-;;         org-roam-server-port 8080
-;;         org-roam-server-authenticate nil
-;;         org-roam-server-export-inline-images t
-;;         org-roam-server-serve-files nil
-;;         org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
-;;         org-roam-server-network-poll t
-;;         org-roam-server-network-arrows nil
-;;         org-roam-server-network-label-truncate t
-;;         org-roam-server-network-label-truncate-length 60
-;;         org-roam-server-network-label-wrap-length 20))
-
-;; ;; *** Deft
-
-;; ;; not super-useful, as it searches titles only, I think.  ag. seems better
-;; ;; starter config from: https://github.com/TimPerry/.emacs.d/blob/master/init.el
-;; (use-package deft
-;;   :bind ("<f6>" . deft)
-;;   :commands (deft)
-;;     :config
-;;     (setq deft-extensions '("org") ;; ignore anything but .org (good idea?)
-;;           deft-directory org_roam_dir
-;;           deft-recursive t))
-
-;; ;; ;; deft as Used by org-roam author
-;; ;; ;; https://blog.jethro.dev/posts/zettelkasten_with_org/
-;; ;; ;; and others from org-roam searching.
-;; ;; ;; From: https://rgoswami.me/posts/org-note-workflow/#search
-;; ;; (use-package deft
-;; ;;   :commands deft
-;; ;;   :init
-;; ;;   (setq deft-default-extension "org"
-;; ;;         ;; de-couples filename and note title:
-;; ;;         deft-use-filename-as-title nil
-;; ;;         deft-use-filter-string-for-filename t
-;; ;;         ;; disable auto-save
-;; ;;         deft-auto-save-interval -1.0
-;; ;;         ;; converts the filter string into a readable file-name using kebab-case:
-;; ;;         deft-file-naming-rules
-;; ;;         '((noslash . "-")
-;; ;;           (nospace . "-")
-;; ;;           (case-fn . downcase)))
-;; ;;   :config
-;; ;;   (add-to-list 'deft-extensions "tex")
-;; ;;   )
-
-;; ;; *** Org-roam-bibtex
-
-;; ;; Handy: to open a cite note's pdf: C-c n a RET
-;; ;;From github page: https://github.com/org-roam/org-roam-bibtex
-;; (use-package org-roam-bibtex
-;;   :diminish org-roam-bibtex-mode
-;;   :after org-roam
-;;   :hook (org-roam-mode . org-roam-bibtex-mode)
-;;   :bind (:map org-mode-map
-;;               (("C-c n a" . orb-note-actions))))
-
-;; ;; NOTE the below don't take effect unless you've run M-x org-roam-bibtex-mode or customize it to ON
-;; ;;
-;; ;; BUG below: I removed the heading: "* {title}" or something like that from the orb-template, but org-noter must be started on a heading, for some stupid reason, so when I try to run it, it asks for some file and I don't what what it wants.  Didn't do that before I removed the heading.
-;; ;;
-;; ;;From github page: https://github.com/org-roam/org-roam-bibtex
-;; ;; This works with org-noter.  If you're in the org-roam-cite note, and run org-noter, it will set things up correctly.  Two cautions
-;; ;; 1. must put cursor in headline (required) before M-x org-noter
-;; ;; 2. I =think= you have to save (C-c C-n?) the new helm-bibtex capture b/f running org-noter
-;; (setq orb-preformat-keywords
-;;       '(("citekey" . "=key=") "title" "url" "file" "author-or-editor" "keywords"
-;;         "year" "abstract"))
-
-;; (setq orb-templates
-;;       '(("r" "ref" plain (function org-roam-capture--get-point)
-;;          ""
-;;          :file-name "bib-notes/${citekey}"
-;;          :head "#+TITLE: ${citekey}\n#+created: %u\n#+last_modified: %U\n#+ROAM_KEY: ${ref}
-
-;; *${title}*
-;; ${author-or-editor} (${year})
-
-
-;; ;; put citekey in title of bib notes, title in note.  This can get much fancier and can have multiple templates
-;;  (setq orb-templates
-;;       '(("r" "ref" plain (function org-roam-capture--get-point) ""
-;;          :file-name "${citekey}"
-;;          :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n" ; <--
-;;          :unnarrowed t)))
-
-
-;; from:  https://rgoswami.me/posts/org-note-workflow/#helm-bibtex
-;; Copies in keywords, which I may or may not like
-;;  (use-package org-roam-bibtex
-;;   :after (org-roam)
-;;   :hook (org-roam-mode . org-roam-bibtex-mode)
-;;   :config
-;;   (setq org-roam-bibtex-preformat-keywords
-;;    '("=key=" "title" "url" "file" "author-or-editor" "keywords"))
-;;   (setq orb-templates
-;;         '(("r" "ref" plain (function org-roam-capture--get-point)
-;;            ""
-;;            :file-name "${citekey}"
-;;            :head "#+TITLE: ${=key=}: ${title}\n#+ROAM_KEY: ${ref}
-
-;; - tags ::
-;; - keywords :: ${keywords}
-
-;; \n* ${title}\n  :PROPERTIES:\n  :Custom_ID: ${=key=}\n  :URL: ${url}\n  :AUTHOR: ${author-or-editor}\n  :NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n  :NOTER_PAGE: \n  :END:\n\n"
-
-;;            :unnarrowed t))))
-
-;; These are for capturing stuff not in a bibtex file already, I think
-;;
-;; from: https://github.com/zaeph/org-roam-bibtex
-;; (setq orb-preformat-keywords
-;;       '(("citekey" . "=key=")
-;;         ("type" . "=type=")
-;;        "title"))
-;; (setq org-roam-capture-templates
-;;       '(("r" "reference" plain (function org-roam-capture--get-point)
-;;          "#+ROAM_KEY: %^{citekey}%? fullcite: %\1
-;;           #+TAGS: %^{type}
-;;           This %\2 deals with ..."
-;;          :file-name "references/%<%Y-%m-%d-%H%M%S>_${title}"
-;;          :head "#+TITLE: ${title}"
-;;          :unnarrowed t)))
-
-
-;; based on: https://dotdoom.rgoswami.me/config.html#text-3
-;;;;(after org-ref
-;; (setq
-;;  ;; bibtex-completion-notes-path org_ref_notes_dir
-;;  ;; bibtex-completion-bibliography bibfile_roam_fnms
-;;  ;; bibtex-completion-pdf-field "file"
-;;  bibtex-completion-notes-template-multiple-files
-;;  (concat
-;;   "#+TITLE: ${title}\n"
-;;   "#+ROAM_KEY: cite:${=key=}\n"
-;;   "* TODO Notes\n"
-;;   ":PROPERTIES:\n"
-;;   ":Custom_ID: ${=key=}\n"
-;;   ":NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n"
-;;   ":AUTHOR: ${author-abbrev}\n"
-;;   ":JOURNAL: ${journaltitle}\n"
-;;   ":DATE: ${date}\n"
-;;   ":YEAR: ${year}\n"
-;;   ":DOI: ${doi}\n"
-;;   ":URL: ${url}\n"
-;;   ":END:\n\n"
-;;   )
-;;  )
-;; ;;)
-
-;; a better alternative?
-;; https://org-roam.discourse.group/t/does-anyone-have-a-workflow-for-associating-notes-with-a-zotero-stored-pdf/112/10?u=scotto
-;;
-;; or pieces of this:
-;; https://rgoswami.me/posts/org-note-workflow/
-
-
-;; *** Org-roam-tags
-
-;; From: https://gist.github.com/d12frosted/4a55f3d072a813159c1d7b31c21bac9a
-;; Docs: https://d12frosted.io/posts/2020-06-10-org-roam-tags.html
-;;
-;; Didn't work.  Calling +org-notes-tags-add inside a note gave the error: "user-error: Current buffer is not a note"
 
 ;; *** Org-roam API
 ;;
@@ -3808,57 +3533,6 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 (setq bibtex-completion-pdf-field "file")
 ;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
 (setq bibtex-completion-notes-path (expand-file-name "bib-notes" org_roam_dir))
-
-;; *** Helm-bibtex
-;; Seems to be rquired for org-roam-bibtex
-;; but then v2 org-roam-bibtex complains that it can't find 
-;; (use-package helm-bibtex
-;;   :bind*
-;;   ("C-c C-h" . helm-bibtex))
-
-;; *** ivy-bibtex
-
-;; BSAG has dropped org-roam now.  I thought removing migh fix my ivy
-;; problem but it didn't.  Anyway, maybe there are newer ivy-bibtex
-;; setups that I could revisit if I revisitorg-roam.
-
-;; ;; BSAG uses this instead of helm.  This is part from her:
-;; ;; https://mail.google.com/mail/u/0/#sent/FFNDWMkpMkrFWrkjBSSGpHcJSdSZHJGb
-;; ;; and part from:
-;; ;; https://people.umass.edu/weikaichen/zh/post/emacs-academic-tools/
-;; (use-package ivy-bibtex
-;;   :straight t
-;;   :bind*
-;;   ("C-c C-r" . ivy-bibtex)
-;;   :config
-;;   ;; https://github.com/tmalsburg/helm-bibtex
-;;   (setq bibtex-completion-additional-search-fields '(journal booktitle))
-;;   ;; TODO good extra info but makes entry list scraggly.  Fix that.
-;;   (setq bibtex-completion-display-formats
-;;         '((article       . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${journal:40}")
-;;           (inbook        . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
-;;           (incollection  . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-;;           (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-;;           (t             . "${=has-pdf=:1}${=has-note=:1} ${=type=:3} ${year:4} ${author:36} ${title:*}")))
-;;   (setq ivy-bibtex-default-action #'ivy-bibtex-insert-citation)
-;;   (ivy-set-actions
-;;    'ivy-bibtex
-;;    '(("p" ivy-bibtex-open-any "Open PDF, URL, or DOI")
-;;      ("e" ivy-bibtex-edit-notes "Edit notes")))
-;;   ;; from BSAG
-;;   (defun bibtex-completion-open-pdf-external (keys &optional fallback-action)
-;;     (let ((bibtex-completion-pdf-open-function
-;;            (lambda (fpath) (async-start-process "open" "open" "open" fpath))))
-;;       (bibtex-completion-open-pdf keys fallback-action)))
-
-;;   (ivy-bibtex-ivify-action bibtex-completion-open-pdf-external ivy-bibtex-open-pdf-external)
-
-;;   (ivy-add-actions
-;;    'ivy-bibtex
-;;    '(("P" ivy-bibtex-open-pdf-external "Open PDF file in external viewer (if present)")))
-;;   ;; TODO too busy?
-;;   (setq bibtex-completion-pdf-symbol "⌘")
-;;   (setq bibtex-completion-notes-symbol "✎"))
 
 
 ;; ** Org-noter
@@ -3974,47 +3648,47 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; So equation numbers in org-mode increment correctly.  If force it
 ;;to remove old images, then this *almost* works.
 ;; https://kitchingroup.cheme.cmu.edu/blog/2016/11/07/Better-equation-numbering-in-LaTeX-fragments-in-org-mode/
-(defun org-renumber-environment (orig-func &rest args)
-  (let ((results '()) 
-        (counter -1)
-        (numberp))
+;; (defun org-renumber-environment (orig-func &rest args)
+;;   (let ((results '()) 
+;;         (counter -1)
+;;         (numberp))
 
-    (setq results (loop for (begin .  env) in 
-                        (org-element-map (org-element-parse-buffer) 'latex-environment
-                          (lambda (env)
-                            (cons
-                             (org-element-property :begin env)
-                             (org-element-property :value env))))
-                        collect
-                        (cond
-                         ((and (string-match "\\\\begin{equation}" env)
-                               (not (string-match "\\\\tag{" env)))
-                          (incf counter)
-                          (cons begin counter))
-                         ((string-match "\\\\begin{align}" env)
-                          (prog2
-                              (incf counter)
-                              (cons begin counter)                          
-                            (with-temp-buffer
-                              (insert env)
-                              (goto-char (point-min))
-                              ;; \\ is used for a new line. Each one leads to a number
-                              (incf counter (count-matches "\\\\$"))
-                              ;; unless there are nonumbers.
-                              (goto-char (point-min))
-                              (decf counter (count-matches "\\nonumber")))))
-                         (t
-                          (cons begin nil)))))
+;;     (setq results (loop for (begin .  env) in 
+;;                         (org-element-map (org-element-parse-buffer) 'latex-environment
+;;                           (lambda (env)
+;;                             (cons
+;;                              (org-element-property :begin env)
+;;                              (org-element-property :value env))))
+;;                         collect
+;;                         (cond
+;;                          ((and (string-match "\\\\begin{equation}" env)
+;;                                (not (string-match "\\\\tag{" env)))
+;;                           (incf counter)
+;;                           (cons begin counter))
+;;                          ((string-match "\\\\begin{align}" env)
+;;                           (prog2
+;;                               (incf counter)
+;;                               (cons begin counter)                          
+;;                             (with-temp-buffer
+;;                               (insert env)
+;;                               (goto-char (point-min))
+;;                               ;; \\ is used for a new line. Each one leads to a number
+;;                               (incf counter (count-matches "\\\\$"))
+;;                               ;; unless there are nonumbers.
+;;                               (goto-char (point-min))
+;;                               (decf counter (count-matches "\\nonumber")))))
+;;                          (t
+;;                           (cons begin nil)))))
 
-    (when (setq numberp (cdr (assoc (point) results)))
-      (setf (car args)
-            (concat
-             (format "\\setcounter{equation}{%s}\n" numberp)
-             (car args)))))
+;;     (when (setq numberp (cdr (assoc (point) results)))
+;;       (setf (car args)
+;;             (concat
+;;              (format "\\setcounter{equation}{%s}\n" numberp)
+;;              (car args)))))
   
-  (apply orig-func args))
+;;   (apply orig-func args))
 
-(advice-add 'org-create-formula-image :around #'org-renumber-environment)
+;; (advice-add 'org-create-formula-image :around #'org-renumber-environment)
 
 ;; You can remove the advice like this.
 ;; (advice-remove 'org-create-formula-image #'org-renumber-environment)
@@ -4283,7 +3957,10 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;; (global-set-key (kbd "C-x B") 'counsel-switch-buffer-other-window )
   ;; :config
   ;; for consistent backwards search binding within ivy minibuffer
-  (bind-key "C-r" 'ivy-previous-line-or-history ivy-minibuffer-map)
+
+  ;; TODO: why did ivy-minibuffer-map disappear, causing this an error here?
+;;  (bind-key "C-r" 'ivy-previous-line-or-history ivy-minibuffer-map)
+
   )
 
 ;; prescient sorts and filters candidate lists for ivy/counsel.
@@ -4654,6 +4331,7 @@ _C-M-a_ change default action from list for this session
 ;; aspell config started from https://github.com/d12frosted/flyspell-correct/issues/97#issuecomment-923047599
 (setq aspell_bin (sdo/find-exec "aspell" "Needed by ispell and flyspell."))
 (use-package ispell
+  :defer t
   :custom
   (flyspell-issue-message-flag nil)
   (flyspell-issue-welcome-flag nil)
@@ -4667,6 +4345,7 @@ _C-M-a_ change default action from list for this session
     (add-to-list 'ispell-extra-args "--sug-mode=normal")))
 
 (use-package flyspell
+  :defer t
   :diminish flyspell-mode )
 
 ;; https://github.com/d12frosted/flyspell-correct
@@ -4686,37 +4365,10 @@ _C-M-a_ change default action from list for this session
 ;;   (re-search-forward "\\b\\(\\w+\\)\\W+\\1\\b"))
 ;; ;; (global-set-key "\e=" 'find-find-word-word) ; use this for goto-line-with-feedback
 
-;; ** artbollocks
-;; https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
-;; do I like this?
-;; writegood-mode does similar things
-;; (use-package artbollocks-mode
-;;   :defer t
-;;   :config
-;;   (setq artbollocks-weasel-words-regex
-;;         (concat "\\b" (regexp-opt
-;;                        '("one of the"
-;;                          "should"
-;;                          "just"
-;;                          "sort of"
-;;                          "a lot"
-;;                          "probably"
-;;                          "maybe"
-;;                          "perhaps"
-;;                          "I think"
-;;                          "really"
-;;                          "pretty"
-;;                          "nice"
-;;                          "action"
-;;                          "utilize"
-;;                          "leverage") t) "\\b"))
-;;   ;; Don't show the art critic words, or at least until I figure
-;;   ;; out my own jargon
-;;   (setq artbollocks-jargon nil))
-
 
 ;; ** writegood
-(use-package writegood-mode)
+(use-package writegood-mode
+  :defer t)
   ;; :config
   ;; (global-set-key "\C-cg" 'writegood-mode)
   ;; (global-set-key "\C-c\C-gg" 'writegood-grade-level)
@@ -4799,7 +4451,7 @@ When done, can undo the window config with winner-mode: C-c Left"
 
 (use-package which-key ; complex key hints, better than guide-key
   :diminish which-key-mode
-;;  :defer 0
+  :defer 0
   :config
   (which-key-mode)
   (which-key-setup-side-window-right-bottom)) ; do bottom if no room on side
@@ -4822,7 +4474,6 @@ When done, can undo the window config with winner-mode: C-c Left"
     (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop))
   )
 
-(use-package hydra) ; otherwise defhydra is unknown.  I'm not sure why.
 (defhydra hydra-utils (:color blue :hint nil)
   "
 Utils:
@@ -4879,6 +4530,7 @@ _f_: face       _C_: cust-mode   _W_: window resize        _E_: ediff-files
 (global-set-key (kbd "M-<linefeed>") 'hydra-utils/body) ; alt+conext: WinKbd on MacOS
 ;; TODO: an org link to helpful pages like you can get for C-l in info or man page
 (use-package helpful ; better emacs info: https://github.com/Wilfred/helpful
+  :defer t
   :bind
   ( ; Note that the built-in `describe-function' includes both functions
    ;; and macros. `helpful-function' is functions only, so we provide
@@ -4899,54 +4551,21 @@ _f_: face       _C_: cust-mode   _W_: window resize        _E_: ediff-files
    ;; By default, C-h C is bound to describe `describe-coding-system'. I
    ;; don't find this very useful, but it's frequently useful to only
    ;; look at interactive functions.
-   ("C-h C" . #'helpful-command)))
+   ("C-h C" . #'helpful-command))
+  :init
+  ;; helpful helper: click on a link and the helpful window is reused.
+  ;; From: https://d12frosted.io/posts/2019-06-26-emacs-helpful.html
+  (setq helpful-switch-buffer-function #'+helpful-switch-to-buffer)
 
-;; helpful helper: click on a link and the helpful window is reused.
-;; From: https://d12frosted.io/posts/2019-06-26-emacs-helpful.html
-(setq helpful-switch-buffer-function #'+helpful-switch-to-buffer)
-
-(defun +helpful-switch-to-buffer (buffer-or-name)
-  "Switch to helpful BUFFER-OR-NAME.
+  (defun +helpful-switch-to-buffer (buffer-or-name)
+    "Switch to helpful BUFFER-OR-NAME.
 
 The logic is simple, if we are currently in the helpful buffer,
 reuse it's window, otherwise create new one."
-  (if (eq major-mode 'helpful-mode)
-      (switch-to-buffer buffer-or-name)
-    (pop-to-buffer buffer-or-name)))
-
-
-;;" Guru mode disables some common keybindings and suggests the use of the established Emacs alternatives instead."
-;;(use-package guru-mode) ; nudges you to use
-
-;; ;;--------------------------------
-
-;; ;; Note that the built-in `describe-function' includes both functions
-;; ;; and macros. `helpful-function' is functions only, so we provide
-;; ;; `helpful-callable' as a drop-in replacement.
-;; (global-set-key (kbd "C-h f") #'helpful-callable)
-
-;; (global-set-key (kbd "C-h v") #'helpful-variable)
-;; (global-set-key (kbd "C-h k") #'helpful-key)
-
-;; I also recommend the following keybindings to get the most out of helpful:
-
-;; ;; Lookup the current symbol at point. C-c C-d is a common keybinding
-;; ;; for this in lisp modes.
-;; (global-set-key (kbd "C-c C-d") #'helpful-at-point)
-
-;; ;; Look up *F*unctions (excludes macros).
-;; ;;
-;; ;; By default, C-h F is bound to `Info-goto-emacs-command-node'. Helpful
-;; ;; already links to the manual, if a function is referenced there.
-;; (global-set-key (kbd "C-h F") #'helpful-function)
-
-;; ;; Look up *C*ommands.
-;; ;;
-;; ;; By default, C-h C is bound to describe `describe-coding-system'. I
-;; ;; don't find this very useful, but it's frequently useful to only
-;; ;; look at interactive functions.
-;; (global-set-key (kbd "C-h C") #'helpful-command)
-;; ;;--------------------------------
+    (if (eq major-mode 'helpful-mode)
+        (switch-to-buffer buffer-or-name)
+      (pop-to-buffer buffer-or-name)))
+  )
 
 ;; * Appearance
 ;; ** Font Size and Text Scaling
@@ -4997,6 +4616,7 @@ reuse it's window, otherwise create new one."
 (add-hook 'post-command-hook 'hcz-set-cursor-color-according-to-mode)
 
 (use-package beacon ; Flashes the cursor's line when you scroll.  Helpful.
+  :defer 0
   :diminish beacon-mode
   :config
   (beacon-mode 1))
@@ -5010,79 +4630,53 @@ reuse it's window, otherwise create new one."
   (setq sml/theme nil) ; don't change existing modeline faces
   (sml/setup))
 
-;;(setq sml/replacer-regexp-list '((".+" "")))
-
-;; THIS ENDED UP PRODUCING LONG NAMES IN BUFFER in emacs 27.  The
-;; default is better than this
-;;
-;; modeline filename is something like uniquified buffer name but has
-;; project info.  I don't quite understand the logic for '|' vs. '/'
-;; From:
-;; https://www.reddit.com/r/emacs/comments/8xobt3/tip_in_modeline_show_buffer_file_path_relative_to/
-
-;; (with-eval-after-load 'subr-x
-;;   (setq-default mode-line-buffer-identification
-;;                 '(:eval (format-mode-line (propertized-buffer-identification (or (when-let* ((buffer-file-truename buffer-file-truename)
-;;                                                                                              (prj (cdr-safe (project-current)))
-;;                                                                                              (prj-parent (file-name-directory (directory-file-name (expand-file-name prj)))))
-;;                                                                                    (concat (file-relative-name (file-name-directory buffer-file-truename) prj-parent) (file-name-nondirectory buffer-file-truename)))
-;;                                                                                  "%b"))))))
-
-;; attempt to get just the unquified buffer name.  Didn't work.
-;; (with-eval-after-load 'subr-x
-;;   (setq-default mode-line-buffer-identification
-;;                 'buffername))
-
-
-;; ;; TODO: try https://github.com/seagle0128/doom-modeline
-;;Not pretty out of the box, but is good for long filenames: uses
-;;buffer-name, which I have set to be uniquified.
-;; (use-package doom-modeline
-;;   :config
-;;   (setq doom-modeline-buffer-file-name-style 'buffer-name)
-;;   :hook (after-init . doom-modeline-mode))
-
 ;; ** Shell Look (xterm, eshell, etc.)
 
 ;; ANSI & XTERM 256 color support
-;; From: https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-shell.el
-(use-package xterm-color
-  :defines (compilation-environment
-            eshell-preoutput-filter-functions
-            eshell-output-filter-functions)
-  :functions (compilation-filter my-advice-compilation-filter)
-  :init
-  ;; For shell and interpreters
-  (setenv "TERM" "xterm-256color")
-  (setq comint-output-filter-functions
-        (remove 'ansi-color-process-output comint-output-filter-functions))
-  (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter)
-  (add-hook 'shell-mode-hook
-            (lambda ()
-              ;; Disable font-locking to improve performance
-              (font-lock-mode -1)
-              ;; Prevent font-locking from being re-enabled
-              (make-local-variable 'font-lock-function)
-              (setq font-lock-function #'ignore)))
+;; From:
+;; https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-shell.el
+;;
+;; TODO: what does this do?  Only for when running emacs in a
+;; terminal.  Then run xterm-colorize-buffer to get colors?  Is it
+;; doing anything for eshell on windows or mac?
+;;
+;; (use-package xterm-color
+;;   :defines (compilation-environment
+;;             eshell-preoutput-filter-functions
+;;             eshell-output-filter-functions)
+;;   :functions (compilation-filter my-advice-compilation-filter)
+;;   :init
+;;   ;; For shell and interpreters
+;;   (setenv "TERM" "xterm-256color")
+;;   (setq comint-output-filter-functions
+;;         (remove 'ansi-color-process-output comint-output-filter-functions))
+;;   (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter)
+;;   (add-hook 'shell-mode-hook
+;;             (lambda ()
+;;               ;; Disable font-locking to improve performance
+;;               (font-lock-mode -1)
+;;               ;; Prevent font-locking from being re-enabled
+;;               (make-local-variable 'font-lock-function)
+;;               (setq font-lock-function #'ignore)))
 
-  ;; For eshell
-  (with-eval-after-load 'esh-mode
-    (add-hook 'eshell-before-prompt-hook
-              (lambda ()
-                (setq xterm-color-preserve-properties t)))
-    (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
-    (setq eshell-output-filter-functions
-          (remove 'eshell-handle-ansi-color eshell-output-filter-functions)))
+;;   ;; For eshell
+;;   (with-eval-after-load 'esh-mode
+;;     (add-hook 'eshell-before-prompt-hook
+;;               (lambda ()
+;;                 (setq xterm-color-preserve-properties t)))
+;;     (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
+;;     (setq eshell-output-filter-functions
+;;           (remove 'eshell-handle-ansi-color eshell-output-filter-functions)))
 
-  ;; For compilation buffers
-  (setq compilation-environment '("TERM=xterm-256color"))
-  (defun my-advice-compilation-filter (f proc string)
-    (funcall f proc
-             (if (eq major-mode 'rg-mode) ; compatible with `rg'
-                 string
-               (xterm-color-filter string))))
-  (advice-add 'compilation-filter :around #'my-advice-compilation-filter)
-  (advice-add 'gud-filter :around #'my-advice-compilation-filter))
+;;   ;; For compilation buffers
+;;   (setq compilation-environment '("TERM=xterm-256color"))
+;;   (defun my-advice-compilation-filter (f proc string)
+;;     (funcall f proc
+;;              (if (eq major-mode 'rg-mode) ; compatible with `rg'
+;;                  string
+;;                (xterm-color-filter string))))
+;;   (advice-add 'compilation-filter :around #'my-advice-compilation-filter)
+;;   (advice-add 'gud-filter :around #'my-advice-compilation-filter))
 
 ;; ** Other
 
@@ -5103,7 +4697,11 @@ reuse it's window, otherwise create new one."
 ;; Sets the wrap-prefix property on the fly so that single-long-line
 ;; paragraphs get word-wrapped in a way similar to what you'd get with
 ;; M-q using adaptive-fill-mode, but withouth changing text so doesn't
-;; mess up visual line mode. However, it doesn't indent 2nd line numbered or lettered lists
+;; mess up visual line mode. However, it doesn't indent 2nd line
+;; numbered or lettered lists
+;;
+;; TODO: how does this work, or not work, with unfill package?
+;; 
 (use-package adaptive-wrap ; required for visual line mode hook below?
   :diminish adaptive-wrap-prefix-mode
   ;;  :config (add-hook 'visual-line-mode-hook (adaptive-wrap-prefix-mode +1)))
@@ -5137,39 +4735,39 @@ reuse it's window, otherwise create new one."
 ;; *straight to get it?)
 ;; https://github.com/bcbcarl/emacs-wttrin/issues/16
 
-;; M-x wttrin to start, 'g' to next city, 'q' qo quit
-(use-package wttrin
-  :straight t
-  :commands (wttrin wttrin-query wttrin-exit)
-  :init
-  (setq wttrin-default-cities '("Seattle"
-                                "Alexandria, MN"
-                                "Minneapolis"
-                                "New York"
-                                "Copenhagen, Denmark"
-                                "Bayreuth, Germany")))
-;; Originally from: http://pragmaticemacs.com/emacs/weather-in-emacs/
-;; Rewritten to remove dependence on obsolete frame-cmds pkg, and to
-;; clean up after itself at quit (sdo in Jan 2020)
+;; ;; M-x wttrin to start, 'g' to next city, 'q' qo quit
+;; (use-package wttrin
+;;   :straight t
+;;   :commands (wttrin wttrin-query wttrin-exit)
+;;   :init
+;;   (setq wttrin-default-cities '("Seattle"
+;;                                 "Alexandria, MN"
+;;                                 "Minneapolis"
+;;                                 "New York"
+;;                                 "Copenhagen, Denmark"
+;;                                 "Bayreuth, Germany")))
+;; ;; Originally from: http://pragmaticemacs.com/emacs/weather-in-emacs/
+;; ;; Rewritten to remove dependence on obsolete frame-cmds pkg, and to
+;; ;; clean up after itself at quit (sdo in Jan 2020)
 
-;; Function to open wttrin with first city on list
-(defun sdo/wttrin ()
-  "Open `wttrin' without prompting, using first city in `wttrin-default-cities'.  Window is sized to fit wttrn display."
-  (interactive)
-  (setq pre-wttrin-frame-config (current-frame-configuration))
-  (delete-other-windows)
-  (set-frame-width (selected-frame) 130)
-  (set-frame-height (selected-frame) 48)
-  (set-background-color "black") ;; goes away after do wttrn 'q'
-  (set-foreground-color "gray")
-  (wttrin-query (car wttrin-default-cities)))
+;; ;; Function to open wttrin with first city on list
+;; (defun sdo/wttrin ()
+;;   "Open `wttrin' without prompting, using first city in `wttrin-default-cities'.  Window is sized to fit wttrn display."
+;;   (interactive)
+;;   (setq pre-wttrin-frame-config (current-frame-configuration))
+;;   (delete-other-windows)
+;;   (set-frame-width (selected-frame) 130)
+;;   (set-frame-height (selected-frame) 48)
+;;   (set-background-color "black") ;; goes away after do wttrn 'q'
+;;   (set-foreground-color "gray")
+;;   (wttrin-query (car wttrin-default-cities)))
 
-(defun sdo/wttrin-restore-frame ()
-  "Remove all *wttr.in buffers, then restore frame and window configuration saved prior to launching wttrin."
-  (interactive)
-  (kill-matching-buffers "*wttr.in - *" nil t)
-  (set-frame-configuration pre-wttrin-frame-config))
-(advice-add 'wttrin-exit :after #'sdo/wttrin-restore-frame)
+;; (defun sdo/wttrin-restore-frame ()
+;;   "Remove all *wttr.in buffers, then restore frame and window configuration saved prior to launching wttrin."
+;;   (interactive)
+;;   (kill-matching-buffers "*wttr.in - *" nil t)
+;;   (set-frame-configuration pre-wttrin-frame-config))
+;; (advice-add 'wttrin-exit :after #'sdo/wttrin-restore-frame)
 
 ;; * Variables Set By Emacs's built-in Customization Interface 
 ;; ** Custom Set Variables
