@@ -62,6 +62,7 @@
 ;; make straight the default (for now, it's org-roam only)
 ;; https://github.com/raxod502/straight.el/blob/0946e1b14886e05973fb88ff18ccd90a8c8a25a4/README.md#integration-with-use-package
 (setq straight-use-package-by-default t)
+;;(setq use-package-verbose t) ; messages when load pkg., good for init debug
 
 ;; ** package.el
 ;; Avoid complaints, put before (require 'package)
@@ -92,7 +93,7 @@
 ;;(setq use-package-always-ensure t) ; so use-package always installs missing pkgs
 
 (use-package diminish) ; can prevent display of package mode string
-(use-package try) ; M-x try to test a pkg w/o installing it
+(use-package try :defer t) ; M-x try to test a pkg w/o installing it
 
 ;; ** elpa gpg key error workaround
 ;; Just these things skip elpa 27.1 gpg key error:
@@ -2035,7 +2036,6 @@ Version 2020-11-20 2021-01-18"
 
 (when (setq conda_exe (sdo/find-exec "conda" "Needed for most python packages"))
   (use-package conda
-    :straight t
     :config
     (setq conda-env-home-directory (expand-file-name
                                     (concat (file-name-directory conda_exe)
@@ -2322,26 +2322,25 @@ Version 2020-11-20 2021-01-18"
 (use-package csharp-mode :defer t)
 (use-package omnisharp
   :after csharp-mode
-  :after company)
+  :after company
+  :init
+  ;; Inspired by: https://github.com/OmniSharp/omnisharp-emacs
+  (defun my-csharp-mode-setup ()
+    (omnisharp-mode)
+    (company-mode)
+    (flycheck-mode)
+    (setq c-syntactic-indentation t)
+    (c-set-style "ellemtel")
+    (electric-pair-local-mode 1) ;; Emacs 25
+    (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
+    (local-set-key (kbd "C-c C-c") 'recompile))
 
-;; Inspired by: https://github.com/OmniSharp/omnisharp-emacs
+  (add-hook 'csharp-mode-hook 'my-csharp-mode-setup t))
 
 ;; maybe this can go inside of use-package ominsharp?
 (eval-after-load
     'company
   '(add-to-list 'company-backends #'company-omnisharp))
-
-(defun my-csharp-mode-setup ()
-  (omnisharp-mode)
-  (company-mode)
-  (flycheck-mode)
-  (setq c-syntactic-indentation t)
-  (c-set-style "ellemtel")
-  (electric-pair-local-mode 1) ;; Emacs 25
-  (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
-  (local-set-key (kbd "C-c C-c") 'recompile))
-
-(add-hook 'csharp-mode-hook 'my-csharp-mode-setup t)
 
 ;; ** YAML
 
@@ -2414,7 +2413,6 @@ Version 2020-11-20 2021-01-18"
      (other . "gnu")))
  '(calendar-week-start-day 1)
  '(column-number-mode t)
- '(conda-anaconda-home conda-env-home-directory)
  '(counsel-grep-base-command "grep -nEi '%s' %s")
  '(counsel-search-engine 'google)
  '(delete-selection-mode nil)
@@ -2500,7 +2498,7 @@ Version 2020-11-20 2021-01-18"
  '(org-list-allow-alphabetical t)
  '(org-list-empty-line-terminates-plain-lists t)
  '(org-modules
-   '(ol-bibtex ol-info org-inlinetask org-mouse ol-eshell org-annotate-file ol-bookmark ol-elisp-symbol ol-man org-mouse org-protocol))
+   '(ol-bibtex ol-info org-inlinetask org-mouse ol-eshell ol-man org-mouse org-protocol))
  '(org-noter-auto-save-last-location t)
  '(org-noter-doc-property-in-notes t)
  '(org-occur-case-fold-search ''smart)
@@ -2797,6 +2795,7 @@ Version 2020-11-20 2021-01-18"
 ;;  :straight org-plus-contrib ; fewer clean install errors, still must restart 3X
   ;;  :pin gnu
   ;; :pin melpa ;; messes up straight.el
+  :defer t
   :diminish org-mode  ; doesn't hide the "Org" in modeline, for some reason
   :diminish org-table-header-line-mode  ; customization: org-table-header-line-p
   :config
@@ -2832,20 +2831,6 @@ Version 2020-11-20 2021-01-18"
   ;; could do setq-local for dir or file-specific dirname:
   ;; https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
   (setq org-download-method 'org-download-method-dirname-from-orgfile))
-
-;; Show org-mode bullets as UTF-8 characters (org-bullets replacement).
-;; Nicer bullets: for others:
-;; https://www.w3schools.com/charsets/ref_utf_symbols.asp
-
-;; My TODO chars.  Checked box graphics look cool but aren't fixed
-;; width and so mess up headline indenting a little bit
- ;; '(org-superstar-todo-bullet-alist
- ;;   '(("TODO" . 9744)
- ;;     ("DONE" . 9745)
- ;;     ("TRY" . 9728)
- ;;     ("REJECTED" . 10005)
- ;;     ("ACCEPTED" . 10003)))
-
 
 ;; do this for org-mode v 9.5
 ;; https://mail.google.com/mail/u/0/#inbox/FMfcgzGlkFvBtzqVbNDzVdPxpXvNPsGX
@@ -2895,6 +2880,7 @@ Version 2020-11-20 2021-01-18"
 ;; Quick org emphasis:  Select text & hit key below. expand-region pkg helps.
 ;; Handy using er/expand, mapped to C-=
 (use-package wrap-region
+  :after org
   :diminish wrap-region-mode
   :diminish wrap-region-minor-mode
   :hook (org-mode . wrap-region-mode)
@@ -2911,36 +2897,7 @@ Version 2020-11-20 2021-01-18"
   :after org
   :config (define-key org-mode-map (kbd "C-c y") 'org-cliplink))
 
-;; I can't get this to do anything but duplicate existing org-cliplink
-;; functionality.  Other stuff seems broken or just doesn't do much.
-;;
-;; ;; The archive site (https://archive.is/E14FW) this uses to get a
-;; ;; zipped webfile doesn't actually make he zip file, even if I
-;; ;; manually type the original URL into the site's URL page.  See:
-;; ;; https://archive.is/E14FW and try to download the zipfile on the page.
-
-;; ;; From: https://github.com/jwiegley/dot-emacs/blob/master/dot-org.el
-;; (use-package org-web-tools
-;;  :bind (("C-, C-y" . my-org-insert-url) ;; like org-cliplink
-;;         ("C-, C-M-y" . org-web-tools-insert-web-page-as-entry))
-;;  :functions (org-web-tools--org-link-for-url
-;;             org-web-tools--get-first-url)
-;;  :preface
-;;   (declare-function org-web-tools--org-link-for-url "org-web-tools")
-;;   (declare-function org-web-tools--get-first-url "org-web-tools")
-;;   (defun my-org-insert-url (&optional arg)
-;;     (interactive "P")
-;;     (require' org-web-tools)
-;;     (let ((link (org-web-tools--org-link-for-url
-;;                  (org-web-tools--get-first-url))))
-;;       (if arg
-;;           (progn
-;;             (org-set-property "URL" link)
-;;             (message "Added pasteboard link to URL property"))
-;;         (insert link)))))
-
 ;; ** org Mode Dedicated Targets
-;;(require 'org)
 
 ;; --- Hide org-mode dedicated targets -----------------------------------------
 ;;
