@@ -33,6 +33,12 @@
       (progn (message "found %s at: %s" cmd_name cmd_path)
              (setq retpathstr cmd_path))))) ; there must be a better way...
 
+;; greatly reduce garbage collection on startup
+;; (https://youtu.be/9i_9hse_Y08?t=2973)
+;; For me, it went from 59 to 5 startup GC's
+;; BE SURE TO DECREASE it again at END OF STARTUP
+(setq gc-cons-threshold (* 50 1000 1000))
+
 ;; * Package Configuration
 ;; ** straight.el
 ;; https://github.com/raxod502/straight.el#features
@@ -64,7 +70,7 @@
 (setq straight-use-package-by-default t)
 ;; good explanation of how to debug emacs init speed:
 ;; https://www.youtube.com/watch?v=bF84mQMmfa8  (system crafters)
-;;(setq use-package-verbose t) ; messages when load pkg., good for init debug
+(setq use-package-verbose t) ; messages when load pkg., good for init debug
 
 ;; ** package.el
 ;; Avoid complaints, put before (require 'package)
@@ -2038,6 +2044,7 @@ Version 2020-11-20 2021-01-18"
 
 (when (setq conda_exe (sdo/find-exec "conda" "Needed for most python packages"))
   (use-package conda
+    :defer 0
     :config
     (setq conda-env-home-directory (expand-file-name
                                     (concat (file-name-directory conda_exe)
@@ -2383,6 +2390,7 @@ Version 2020-11-20 2021-01-18"
 
 ;; does this make org-mode slower?  If so, disable it like this: http://stackoverflow.com/questions/24814988/emacs-disable-auto-complete-in-python-mode
 (use-package auto-complete
+  :defer 0
   :diminish auto-complete-mode
   :diminish global-auto-complete-mode
   :diminish auto-complete-minor-mode
@@ -2615,15 +2623,18 @@ Version 2020-11-20 2021-01-18"
 
 ;; *** Outshine: org-mode like headlines in programming and other modes
 (use-package outshine
+  :hook ((outline-minor-mode . outshine-mode) ; for outshine itself
+         (prog-mode . outline-minor-mode))    ; all prog modes
+
   ;; this works if I run it from inside .emacs but not after a clean start  
   ;;  :bind (:map outline-minor-mode-map ("S-<tab>" . outshine-cycle-buffer))
   ;; diminish doesn't work
   :diminish outline-mode
   :diminish outline-minor-mode
   :config
-  (add-hook 'outline-minor-mode-hook 'outshine-mode) ; for outshine itself
-  (add-hook 'prog-mode-hook 'outline-minor-mode)     ; all prog modes
-  ;; can only diminish outshine mode here, like this, for some reason
+  ;; (add-hook 'outline-minor-mode-hook 'outshine-mode) ; for outshine itself
+  ;; (add-hook 'prog-mode-hook 'outline-minor-mode)     ; all prog modes
+  ;; ;; can only diminish outshine mode here, like this, for some reason
   (eval-after-load "outshine" '(diminish 'outshine-mode)) 
   ;; works here
   (bind-keys
@@ -3086,6 +3097,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;; from: https://github.com/rubensts/.emacs.d/blob/master/emacs-init.org
   (use-package ox-pandoc
     :after org
+    :defer 0
 ;;    :demand t
     :config
     (setq org-pandoc-options '((standalone . t))            ; default options for all output formats
@@ -4415,8 +4427,7 @@ When done, can undo the window config with winner-mode: C-c Left"
   (which-key-mode)
   (which-key-setup-side-window-right-bottom)) ; do bottom if no room on side
 
-(use-package helm-descbinds)
-;;  :config (helm-descbinds-mode))
+(use-package helm-descbinds :commands helm-descbinds)
 
 (use-package helm-swoop
   :straight t
@@ -4727,6 +4738,14 @@ reuse it's window, otherwise create new one."
 ;;   (kill-matching-buffers "*wttr.in - *" nil t)
 ;;   (set-frame-configuration pre-wttrin-frame-config))
 ;; (advice-add 'wttrin-exit :after #'sdo/wttrin-restore-frame)
+
+;; * Shrink garbage collection @ end of init
+
+;; Threshold was made huge @ init beginning for fast startup time.
+;; Here, shrink it dow, so emacs doesn't get giant when run it for a
+;; long time
+;; (https://youtu.be/9i_9hse_Y08?t=3066)
+(setq gc-cons-threshold (* 2 1000 1000))  
 
 ;; * Variables Set By Emacs's built-in Customization Interface 
 ;; ** Custom Set Variables
