@@ -113,38 +113,10 @@
 ;; https://www.reddit.com/r/emacs/comments/d9rchm/emacs_archivecontentssig_not_verifying/
 (use-package gnu-elpa-keyring-update)
 
-;; ** paradox package interface
-;; updated package interface.  Start with M-x paradox-list-packages
-;; TODO: paradox modeline faces aren't visible when window is in use
-;; (i.e. the modeline background is dark blue)
-;; can customize paradox-modeline-face (try M-x paradox-customize)
-;; but other modelines are automatically inverted when the modeline is
-;; darkened.  Is that controlled by installed pkg: smart-mode-line ?
-
-;; (use-package paradox
-;;   :defer 1
-;;   :custom
-;;   (paradox-enable))
-;;
-;; ;; |----------+---------------------------------------|
-;; | Shortcut | Description                           |
-;; |----------+---------------------------------------|
-;; | v        | Visit the package's homepage          |
-;; | l        | View a list of recent commits         |
-;; | f r      | filters by regexp (occur);            |
-;; | f u      | display only packages with upgrades;  |
-;; | f k      | filters by keyword (emacs 24.4 only). |
-;; | f c      | clear filters                         |
-;; | h        | See all keys                          |
-;; | s        | Star/unstar package                   |
-;; | g        | Refresh package list                  |
-;; |----------+---------------------------------------|
-
 ;; * Emacs Speed Test
 
 ;; Find out what's slowing down emacs start by running M-x esup
-(use-package esup
-  :defer t)
+;; (use-package esup :defer t) ; this might have worked but I don't remember
 
 ;; * Computer-specific setup
 ;; ** OS-dependent settings
@@ -164,10 +136,7 @@
            (global-set-key [C-f11] 'shell) ; native shell
            ;; force chrome on Linux
            (setq browse-url-browser-function (quote browse-url-generic))
-           (setq browse-url-generic-program "google-chrome")
-	   ;; old UW SSLI: change to whatever is the latest
-	   (setq ps-lpr-command "lp"
-		 ps-lpr-switches (list "-dssli")))) 
+           (setq browse-url-generic-program "google-chrome")))
 
 (if running-ms-windows  ; more windows setup is also later in .emacs
     (progn 
@@ -180,24 +149,7 @@
       (global-set-key [f11] 'eshell) ; almost Unix, consistent across OS's
       (global-set-key [C-f11] 'powershell) ; native shell
       (setq w32-use-w32-font-dialog nil)
-      (setq os-which-cmd "where")
-      (setq
-       ps-lpr-command "c:\\Program Files\\gstools\\gsview\\gsview32.exe"
-       ps-lpr-switches (list "/p" "-sDEVICE=mswinpr" "-") )
-      ))
-      ;; ;; So emacs recognizes Cygwin's path names
-      ;; ;; (http://www.khngai.com/emacs/cygwin.php)
-      ;; ;; NOTE: now obsolete, so must copy it from .emacs.d/* to .emacs.d/elpa
-      ;; (use-package cygwin-mount 
-      ;;   :config (cygwin-mount-activate))
-      ;; (setq cygwin-bin-dir "c:/cygwin64/bin/")
-      ;; (defun cygwin-shell ()
-      ;;   "Run cygwin bash in shell mode."
-      ;;   (interactive)
-      ;;   (let ((explicit-shell-file-name (concat cygwin-bin-dir "bash"))
-      ;;         (call-interactively 'shell)))
-      ;;   (global-set-key [M-f11] 'cygwin-shell)))) ; cygwin bash
-
+      (setq os-which-cmd "where")))
 
 ;; ** Individual Computer-dependent settings
 
@@ -293,46 +245,7 @@ DISPLAY is a display name, frame or terminal, as in
 ;; | Dell 24" 4K    |     |
 ;; | MacBook Pro    | 131 |
 ;; | HP 27" 1080p   |     |
-
-;; this does something every time window size changes (not just frames
-;; but windows inside of it)
-
-;; from: https://www.reddit.com/r/emacs/comments/dpc2aj/readjusting_fontsize_according_to_monitor/
-;; (defun hoagie-adjust-font-size (frame)
-;;   (message "window size change event"))
-;; (add-hook 'window-size-change-functions #'hoagie-adjust-font-size)
-;; is dispwatch a better alternative?
-
-;; dispwatch calls you if the current display (monitor?) configuration changes.
-;;https://github.com/mnp/dispwatch
-
-;; Didn't work
-;; (defun set-fonts-per-dpi ()
-;;   ;; change font height approriately for display DPI
-;;   (let* ((dpi (dpi-avg))
-;;          (fontHeightThis
-;;           (cond
-;;            ((< dpi 110) 100)
-;;            ((< dpi 130) 100)
-;;            ((< dpi 160) 100)
-;;            (t 100))))
-;; ;;       (fontHeightThis (round (/ 20480 dpiThis))))
-
-;;     ;; Emacs font height is a fixed physical height in real world: 10 * points (https://www.gnu.org/software/emacs/manual/html_node/emacs/Fonts.html)
-;;     ;; so DPI shouldn't matter, then, right?
-;;     ;; 1 point: a fixed 1/72" = 0.353mm (https://en.wikipedia.org/wiki/Point_(typography))
-;;     (message "Setting font of display with dpi=%s to height %s" dpi fontHeightThis)
-;;     ;; advice from: https://protesilaos.com/codelog/2020-09-05-emacs-note-mixed-font-heights/
-;;     (set-face-attribute 'default nil :font "Consolas" :height fontHeightThis)
-;;     (set-face-attribute 'fixed-pitch nil :family "Consolas" :height 1.0)
-;;     (set-face-attribute 'variable-pitch nil :family "Georgia" :height 1.0)))
-  
-;; (add-hook 'after-init-hook #'set-fonts-per-dpi)
-;; (add-hook 'after-make-frame-functions #'set-fonts-per-dpi)
-;; (defun my-display-changed-hook (disp)
-;;   (message "Changed to display of size %s" disp)
-;;   (set-fonts-per-dpi)) 
-
+;;
 ;; This sets all frames to a specific given font
 ;; https://gist.github.com/mecab/1bc847e51034ae1e11b813b79f7da553
 ;; TODO easy to work from this.
@@ -375,73 +288,10 @@ DISPLAY is a display name, frame or terminal, as in
 (add-hook 'after-init-hook #'set-default-font-per-screen)
 (add-hook 'after-make-frame-functions #'set-default-font-per-screen)
 
-;; do something similar with functions that clone to frames or
-;; whatever?
-;; could entirely replace function, like this: (define-key
-;; special-event-map [iconify-frame] 'my-frame-action)
-;; (https://emacs.stackexchange.com/a/64616/14273)
-
-;; centers every new frame, including the initial one using
-;; (after-init-hook  and 'after-make-frame-functions.  I could change
-;; fonts instead.
-;;
-;; https://christiantietze.de/posts/2021/06/emacs-center-window-single-function/
-
-;; different font per window; if a buffer moves to, say, a buffer with
-;; a big font, then all windows containint that buffer will get big
-;; (in this idea):
-;; https://emacs.stackexchange.com/a/13263/14273
-
-;; function that shrinks frame text font if frame width gets less than
-;; 76 chars
-;; https://blog.patshead.com/2016/04/emacs-automatically-adjust-font-size-when-frame-width-changes.html
-
-;; 4 ways to name fonts in emacs.  In Windows, only the form
-;; "fontname[-fontsize]" is supported.  So do always use that so it's multiplatform.
-;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Fonts.html
-
-;; default-text-scale package (I have/use) sets all fonts on all
-;; frames and new ones made thereafter:
-;; https://github.com/purcell/default-text-scale
-
-;; (display-monitor-attributes-list &optional DISPLAY) omitting
-;; DISPLAY gives you selected (active?) frame's monitor properties.
-;; Or, you can give it a DISPLAY argument
-;; https://emacs.stackexchange.com/questions/60707/how-to-get-the-display-dimensions-of-the-display-emacs-is-in
-
-;; Emacs's idea of a  “Display” is the total available space, while
-;; “monitor” is a single (display) device, like one Dell monitor.
-;; display-monitor-attributes-list. That shows information for all
-;; monitors known to the system; frame-monitor-attributes, that limits
-;; the information to the monitor of the current Emacs frame. Has code
-;; to center a frame in a monitor.  Also works on MacOS, which has
-;; some kind of menu offsetting:
-;; https://christiantietze.de/posts/2021/06/emacs-center-window-on-current-monitor/
-
-;; (display-pixel-width)
-;; (display-pixel-height)
-;; return "display" size in pixels
-;; https://stackoverflow.com/questions/2151449/can-i-detect-the-display-size-resolution-in-emacs
-
-;; vague advice for detecting if a frame moves to a different frame.
-;; Guy says he's implemented it but doesn't give code
-;; https://emacs.stackexchange.com/questions/22513/is-there-a-way-to-detect-change-of-monitor-in-emacs-elisp
-
-;; setting default frame size but is this obsoleted by the
-;; default-font package I'm using now?
-;; https://emacs.stackexchange.com/questions/7583/transiently-adjust-text-size-in-mode-line-and-minibuffer
-
-;; recommended way to change all font sizes (when they have mixed sizes): change fonts in proportion to a change in the default font
-;; https://protesilaos.com/codelog/2020-09-05-emacs-note-mixed-font-heights/
-;; Font size adjustment
-
-
 (defun calcDivNpix ()
   "Computes # pix for window divider based on screen DPI.
 TODO: make this a general function."
 
-  ;; (let* ((nPixHigh 6.0)    ; Home monior (Dell 4K)
-  ;;       (DPIhigh   185.0)
   (let* ((nPixHigh 6.0)    ; Surface Pro / SB2: dpi = 267 / 260
          (DPIhigh   267)
          (nPixLow   3.0)    ; CPR monitor
@@ -452,40 +302,6 @@ TODO: make this a general function."
     (message "DPIthis %s" DPIthis)
     (setq nPixThis (max 1 (round (+ (* (/ (- nPixHigh nPixLow) (- DPIhigh DPIlow)) (- DPIthis DPIlow)) nPixLow))))))
 
-;; (defun set-default-font-per-dpi ()
-;;   "Sets the default font appropriately for the screen DPI"
-
-;;     (setq DPIthis (dpi-avg))
-;;     (message "DPIthis %s" DPIthis)
-
-;;     (default-text-scale-increment 50) ; about right for Dell 27"
-    
-;;     (defun my-preferred-font-increment ()
-;;       (let ( (dpi (dpi-avg)) )
-;;         (cond
-;;          ((< dpi 110) 10)
-;;          ((< dpi 130) 11)
-;;          ((< dpi 130) 50)
-;;          (t 12))))
-;;
-;; (defvar my-preferred-font-increment (my-preferred-font-increment)))
-
-;; default-text-scale-increment.el
-;; increments all frames
-;;
-
-;; didn't work
-;; (defun change-font-size-pixels (size)
-;;   "Change font size (clearly `:pixels` in `face-attribute`) to given SIZE."
-
-;;   (interactive
-;;    (list
-;;     (read-number
-;;      (format "Input font size (current=%d pix): " (face-attribute 'default :pixels))
-;;      nil)))
- 
-;;   (set-face-attribute 'default nil :pixels size)
-;; )
 
 (if window-system
     (progn
@@ -501,24 +317,7 @@ TODO: make this a general function."
       ;; setq said to best best way, even though this is customizable
       (setq window-divider-default-right-width nPixDiv)
       ;; bottom hard to mouse on SP; hack is to add a pixel (TODO: improve)
-      (setq window-divider-default-bottom-width (+ nPixDiv 1))
-
-      ;; TODO also set pixel width of scrollbars, etc
-      ;; TODO Use dispwatch, https://github.com/mnp/dispwatch, to change these things dynamically
-      ;;      Also:
-      ;; https://emacs.stackexchange.com/questions/28390/quickly-adjusting-text-to-dpi-changes
-      ;; Scroll bar width/height
-      ;; (set-window-scroll-bars nil 11 t) ; set current WINDOW
-      ;;(setq-default scroll-bar-width 50) ; default or all new windows and
-      ;;frames
-      ;; (modify-all-frames-parameters ) should change them all
-      ;; (message "%s" (frame-parameters)) prints frame params
-      ;;
-      ;; need to change both initial and default params:
-      ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Emacs-ignores-frame-parameters.html
-
-      ;; TODO change font too?
-      )
+      (setq window-divider-default-bottom-width (+ nPixDiv 1)))
   (progn
     ;; on a term or cmdshell:
     (menu-bar-mode -1) ;menubar off when on an xterm (xemacs does automatically)
@@ -569,19 +368,6 @@ TODO: make this a general function."
 (if running-ms-windows  ; could be in OS-specific section too
     (use-package powershell :defer t))
 
-;; ** Remote Process Communication
-
-;; Could put scp/ftp or whatever here, if I need that someday
-
-;; TRAMP almost never used, slows things down
-;; tramp: remote ssh, like ange-ftp: info page command different for gnu/xemacs
-;;(require 'tramp)
-;; su uses uuencoding: not as good as mimencode (sm) but not installed on Suns
-;;(setq tramp-default-method "su")
-;; mimeencoding is installed on finch and eagle, so could use there and
-;; force su on other machines e.g. "/[su/orca]~"
-;;(setq tramp-default-method "sm")
-
 ;; * Backups, autosaves, autoloads, etc.
 ;; From: https://www.emacswiki.org/emacs/BackupDirectory
 ;; Do this especially since TempoBox gets confused w/ ~ @ filename front
@@ -613,43 +399,9 @@ TODO: make this a general function."
 (winner-mode 1) ; Undo window config: C-c left; Redo window config: C-c right
 
 ;; ** Attempts at saving desktop
-;; *** Burly
-
-;; Seems promising, but I can't get it to work.  If I save a burly
-;; bookmark and then try to open it wtth burly-open-bookmark, I get an
-;; error:  window--state-put-2: Wrong type argument: stringp, nil
-;; Also, Zamansky has a video showing that you can persist burly
-;; bookmarks to a file, but I don't see it on the official burly page:
-;; https://github.com/alphapapa/burly.el/blob/master/README.org
-;;
-;; TODO: come back to this later
-
-;; ;; from: https://github.com/tompurl/dot-emacs/blob/master/emacs-init.org
-;; (unless (package-installed-p 'quelpa)
-;;   (with-temp-buffer
-;;     (url-insert-file-contents "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
-;;     (eval-buffer)
-;;     (quelpa-self-upgrade)))
-
-;; ;;…and let’s integrate it with use-package:
-
-;; (quelpa
-;;  '(quelpa-use-package
-;;    :fetcher git
-;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
-;; (require 'quelpa-use-package)
-
-;; (use-package async) ;; SO: below needs this
-
-;; (use-package burly
-;;   :quelpa (burly :fetcher github :repo "alphapapa/burly.el"))
-
-;; ;; from https://github.com/torgeir/.emacs.d
-;; (use-package burly
-;;   :straight 
-;; ;;  :straight nil
-;;   :commands (burly-bookmark-windows burly-open-bookmark burly-open-url)
-;;   :load-path "site-lisp/burly")
+;; Tried but failed: Burly, desktop+, bookmark+, winsav
+;; persp seemed most promising, but never quite did the job either:
+;; Much later (2021), system crafters guy liked it.
 
 ;; *** Perspectives for emacs
 ;; ;; From: https://github.com/andresilva/emacs.d/blob/master/init.el
@@ -712,43 +464,6 @@ TODO: make this a general function."
 ;;                       (make-indirect-buffer bb nbn t))))
 ;;                 (setq persp-indirrect-buffers-to-restore nil))))
 
-;; buggy, as of April 8, 2017
-;;(require 'desktop+) ; needed?
-;; experiment: does this save indirect buffers?
-;;(load "c:/Users/scott/Downloads/nxhtml-master/nxhtml-master/util/winsav.el")
-                                        ;(winsav-save-mode 1);
-;;
-;; Works if only one session is saved. If save a second one, it's broken
-;; ;; Better session management
-;;
-;; (defconst user-cache-directory
-;; (expand-file-name (concat user-emacs-directory ".cache/"))
-;; "My emacs storage area for persistent files.")
-;; ;; create the `user-cache-directory' if it doesn't exist
-;; (make-directory user-cache-directory t)
-;;
-;; (desktop-save-mode 0) ;ensure there's no interference w/ builtin mode
-;; (use-package desktop+
-;;   :straight t
-;;   :commands (desktop+-create desktop+-load)
-;;   :config
-;;   (setq desktop+-base-dir (concat user-cache-directory "desktop"))
-;;   (defun my/desktop-frame-title-function (desktop-name)
-;;     (list (concat "%f | [" desktop-name "]")))
-;;   (setq desktop+-frame-title-function
-;;         'my/desktop-frame-title-function)
-;;   )
-
-;;  (require 'bookmark+) ;fancy bookmarks and desktop session saving (no work)
-
-;; something's wrong with this download,
-;; says: error: Non-hex digit used for Unicode escape
-
-;;  (load "~\lib\emacs\nxhtml-master\util\winsav.el");
-;; (winsav-save-mode 1);
-;; (require 'winsav-save-configuration)
-
-;; I don't think I ever got perspectives to work
 ;; ** Make a new *scratch* buffer right after killing it
 
 ;; From: https://www.emacswiki.org/emacs/RecreateScratchBuffer
@@ -777,40 +492,6 @@ TODO: make this a general function."
 
 ;; ** Frame resizing
 
-;; *** Moom Frame Resize
-
-;; my hacked resize seemed to work better than Moom?
-;;
-;; ;; https://github.com/takaxp/moom
-;; (use-package moom
-;;   :diminish moom-mode
-;;   :config
-;;   (setq moom-verbose t)
-;;   (setq moom-use-font-module nil)
-;;   (setq moom-user-margin '(0 0 0 0)) ;; FYI, the default value is '(0 0 0 0), not t
-;;   (add-hook 'moom-before-fill-screen-hook #'moom-move-frame)
-;;   (moom-mode 1)
-;;   ;;(setq moom-user-margin '(0 0 16 0))
-;;   ;; (moom-mode)
-;;   )
-
-;; (setq moom--height-maximized nil) ; state for height max toggle
-
-;; (defun sdo/moom-toggle-frame-height-maximized ()
-;;   "Toggle frame height maximized.  This almost works but doesn't"
-;;   (interactive)
-;;   (let ((moom--print-status nil))
-;;     (if (setq moom--height-maximized (not moom--height-maximized))
-;;         (progn
-;;           (moom--save-last-status)
-;;           (moom-fill-height)
-;;           (toggle-frame-fullscreen)
-;;           (toggle-frame-fullscreen))
-;;       (moom-restore-last-status)))
-;;   (moom-print-status))
-
-;; 
-       
 ;; *** My hacked Frame Resize
 
 (defun sdo/toggle-frame-fullheight (&optional frame)
@@ -878,25 +559,6 @@ See also `toggle-frame-maximized'."
     ;; animation to complete can cause a crash, or other unexpected
     ;; behavior, on macOS (bug#28496).
     (when (featurep 'cocoa) (sleep-for 0.5))))
-
-;; *** My Frame Resize doodling (for reference, commented out)
-
-;; ;; set frame position
-;; (setq frame-resize-pixelwise t)
-;; (set-frame-position (selected-frame) 0 0)
-
-;; ;; set frame size
-;; (set-frame-size (selected-frame) 1024 600 t)
-
-;; ;; get frame size
-;; (frame-pixel-height)
-;; (frame-pixel-width)
-
-;; (set-frame-height (selected-frame) (frame-pixel-width) 600 t)
-
-;; (toggle-frame-fullscreen)
-
-;; (display-height-pix)
 
 ;; * Scrolling, Cursor Movement and Selection
 
@@ -1015,21 +677,6 @@ See also `toggle-frame-maximized'."
       (shrink-window arg)
     (enlarge-window arg)))
 
-;; A different use for C-x w: works pretty well but does less than
-;; hydra above (could add all those keys, though)
-;; https://www.reddit.com/r/emacs/comments/7evidd/windmove_shortcuts/
-;; (defun windmove-prefix ()
-;;   (interactive)
-;;   (set-transient-map
-;;    (let ((map (make-sparse-keymap)))
-;;      (define-key map (kbd "<left>") 'windmove-left)
-;;      (define-key map (kbd "<right>") 'windmove-right)
-;;      (define-key map (kbd "<up>") 'windmove-up)
-;;      (define-key map (kbd "<down>") 'windmove-down) map)
-;;    t))
-
-;; (define-key (current-global-map) (kbd "C-x w") 'windmove-prefix)
-
 ;; *** Window move forward/back
 ;; Do an emacs Back buttion, traversing cursor movement history across
 ;; windows and frames using mouse buttons usually bound to browser
@@ -1043,10 +690,6 @@ See also `toggle-frame-maximized'."
 ;; handy with, at least, wrap-region for italics, bold,... emphasis
 (use-package expand-region
   :bind ("C-=" . er/expand-region))
-
-;; smart-region is similar (worse?) and I was running out of key bindings
-;;(use-package smart-region ; smart region selection expand
-;;:init (global-set-key (kbd "C--") 'smart-region)) ; C-x toggles to start/end
 
 ;; *** Selection-sensitive case commands
 (defun sdo/upcase-word-or-region ()
@@ -1078,9 +721,6 @@ See also `toggle-frame-maximized'."
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward)
 (setq uniquify-after-kill-buffer-p 1)
-
-;; save C-c n for org-roam
-;;(global-set-key "n" 'rename-buffer) ; TODO does this work?
 
 ;; ** List Buffers w/ ctl-mouse1
 (defun cw-build-buffers ()
@@ -1213,20 +853,6 @@ appended.  If a buffer by that name already exists, just print name (unless curs
 
 ;; *** Kill buffer along with frame when frame is (probably!) indirect
 
-;; ;; from: https://emacs.stackexchange.com/a/2915/14273
-;; (defun maybe-delete-frame-buffer (frame)
-;;   "When a dedicated FRAME is deleted, also kill its buffer.
-;; A dedicated frame contains a single window whose buffer is not
-;; displayed anywhere else."
-;;   (let ((windows (window-list frame)))
-;;     (when (eq 1 (length windows))
-;;       (let ((buffer (window-buffer (car windows))))
-;;         (when (eq 1 (length (get-buffer-window-list buffer nil t)))
-;;           (kill-buffer buffer))))))
-
-;; ;; bind to C-x 0 (maybe this is too unexpected?)
-;; (add-to-list 'delete-frame-functions #'maybe-delete-frame-buffer)
-
 ;; modifed from: https://emacs.stackexchange.com/a/2915/14273
 ;; binding to C-x 5 C-0 ensures that you really mean to delete the
 ;; buffer (important?)
@@ -1243,18 +869,6 @@ displayed anywhere else."
   (call-interactively 'delete-frame))
 
 (global-set-key (kbd "C-x 5 C-0") 'delete-frame-maybe-buffer)
-
-
-
-;; ** Recursive minibuffers
-
-;; Allows you to open a minubuffer when already in one.  Not sure when
-;; this is useful  -- maybe when gettting multiple files loaded?  Is
-;; used in
-;; https://github.com/nobiot/Zero-to-Emacs-and-Org-roam/blob/main/40.Qol.md
-;;
-;; I've enabled this by customizing enable-recursive-minibuffers  and minibuffer-depth-indicate-mode
-
 
 ;; * File Finding / Opening
 
@@ -1336,29 +950,12 @@ displayed anywhere else."
         ;; This will change the color of the Note.
         (setq pdf-annot-default-text-annotation-properties
               '((color . "#90ee90")))
-
-        ;; Keybindings: https://github.com/politza/pdf-tools
-        ;; - M-g l x: is "go to page number x", also M-g g
-        ;; - B, N: history-back and history-forward
-        ;; - M-s o: pdf-occur is nice, has same mapping as <occur>
-        ;; - Copy rectangular images (equations, graphs):
-        ;;   select w/ M-mouse, then (C-c TAB) or (right-mouse & "create image")
         ))
   (message "Can't find msys2 not installed so skipping pdf-tools init"))
 
 ;; ** Dired Mode
 ;; *** Generic Dired and Win32 integration
 
-;; REMINDER: in dired, type "W" on a file to open w/ Windows default
-;; application (Firefox for .html, emacs for .org, ...)
-
-;; TODO: when I do this, dired-subtree doesn't work.  Figure out why, fix.
-;; So dired puts folders at top.  The discovered ls program must
-;; handle GNU switches (e.g. OSX doesn't)
-;;(setq insert-directory-program (sdo/find-exec "ls" "For dired folder ordering"))
-;;(setq dired-listing-switches "-laGh1v --group-directories-first")
-;;(setq dired-listing-switches "-laGh1v")
-;;(setq ls-lisp-dirs-first t) ; for Windows, when runs lisp ls by default
 (add-hook  'dired-mode-hook
 	   (lambda ()
              (dired-hide-details-mode) ; less junk.  ')' restores orig format
@@ -1374,23 +971,6 @@ displayed anywhere else."
 (setq dired-recursive-deletes t)
 
 ;; *** Dired subtree and project explorer
-
-;; From: https://mads-hartmann.com/2016/05/12/emacs-tree-view.html
-;; TODO: consider using whole dired-subtree package, or dired-filter
-;; TODO: add the code for projectile/project explorer
-
-;; (defun sdo/dwim-toggle-or-open ()
-;;   "Toggle subtree or open the file.  Do nothing on '.'; on '..', go up"
-;;   (interactive)
-;;   (if (file-directory-p (dired-get-file-for-visit))
-;;       (let ((dir-at-point (file-name-nondirectory(dired-get-filename nil t))))
-;;         (if (string= dir-at-point "..")
-;;             (dired-find-file) ;; go up a dir
-;;           (if (not (string= dir-at-point ".")) ;; do nothing if on '.'
-;;               (progn
-;;                 (dired-subtree-toggle)
-;;                 (revert-buffer)))))
-;;     (dired-find-file)))
 
 (defun mhj/dwim-toggle-or-open ()
   "Toggle subtree or open the file."
@@ -1502,9 +1082,9 @@ displayed anywhere else."
 
 ;; *** Better org-links from dired
 
-;; From:
-;; https://emacs.stackexchange.com/questions/13093/get-org-link-to-insert-link-description-automatically
+;; From: https://emacs.stackexchange.com/a/40528/14273
 (defun my//dired-store-link (orig-fun &rest args)
+  "Insert dired link description automatically."
   (if (derived-mode-p 'dired-mode)
       (let ((file (dired-get-filename nil t)))
         (setf file (if file
@@ -1515,8 +1095,8 @@ displayed anywhere else."
           (push (list link desc) org-stored-links)
           (car org-stored-links)))
     (apply orig-fun args)))
-(advice-add 'org-store-link :around #'my//dired-store-link)
 
+(advice-add 'org-store-link :around #'my//dired-store-link)
 
 ;; *** Open current file from dired using default OS program
 
@@ -1555,60 +1135,10 @@ Version 2019-11-04 2021-02-16"
 
 (define-key dired-mode-map [(shift return)] 'xah-open-in-external-app)
 
-;; ** BROKEN Open current file's folder in default OS finder e.g. Windows Explorer
-
-;; Works both in dired and in an ordinary buffer visiting some file
-;;
-;; ONLY WORKS IF PATH HAS NO SPACES
-;;
-(defun xah-show-in-desktop ()
-  "Show current file in desktop.
- (Mac Finder, Windows Explorer, Linux file manager)
-This command can be called when in a file buffer or in `dired'.
-URL `http://ergoemacs.org/emacs/emacs_dired_open_file_in_ext_apps.html'
-Version 2020-11-20 2021-01-18"
-  (interactive)
-  (let (($path (if (buffer-file-name) (buffer-file-name) default-directory)))
-    (cond
-     ((string-equal system-type "windows-nt")
-      (message (format "PowerShell -Command Start-Process Explorer -FilePath %s" (shell-quote-argument default-directory)))
-      (shell-command (format "PowerShell -Command Start-Process Explorer -FilePath %s" (shell-quote-argument default-directory)))
-      ;; todo. need to make window highlight the file
-      )
-     ((string-equal system-type "darwin")
-      (if (eq major-mode 'dired-mode)
-          (let (($files (dired-get-marked-files )))
-            (if (eq (length $files) 0)
-                (shell-command (concat "open " (shell-quote-argument (expand-file-name default-directory ))))
-              (shell-command (concat "open -R " (shell-quote-argument (car (dired-get-marked-files )))))))
-        (shell-command
-         (concat "open -R " (shell-quote-argument $path)))))
-
-     ((string-equal system-type "gnu/linux")
-      (let (
-            (process-connection-type nil)
-            (openFileProgram (if (file-exists-p "/usr/bin/gvfs-open")
-                                 "/usr/bin/gvfs-open"
-                               "/usr/bin/xdg-open")))
-        (start-process "" nil openFileProgram (shell-quote-argument $path)))
-      ;; (shell-command "xdg-open .") ;; 2013-02-10 this sometimes froze emacs till the folder is closed. eg with nautilus
-      ))))
-
-;; overwrites built-in set-fill-column
-;;(global-set-key (kbd "C-x F") 'xah-show-in-desktop)
-
 ;; ** Find-file and URL
-;;
-;; find-file is currently overwritten by ido, which is a pain about pasting in full file paths.  Kludge is to type c-f c-f so orig find-file is called, which handles full-paths fine.
-;;
-;; But ivy just handles it.
-;; https://emacs.stackexchange.com/questions/18128/quickly-open-file-by-full-path-in-clipboard
-;;
-;; TODO: I would like to use ivy but functions below use
-;;find-file-other-window and find-file-other-frame, which have no ivy
-;;analogs.  Also, I like ido's grid mode (ivy-explorer is a grid-like option,
-;;but it's become buggy and unsupported)
 
+;;https://emacs.stackexchange.com/questions/18128/quickly-open-file-by-full-path-in-clipboard
+;;
 ;; Avoid extra "file or url" text in minibuf; use ffap only @ valid URL or path
 (defun find-file-guessing (arg)
   "Call find-file with file at point if valid. With a universal argument,
@@ -1640,7 +1170,6 @@ Version 2020-11-20 2021-01-18"
 (global-set-key (kbd "C-x C-f") 'find-file-guessing) ; overridden by dired-mode-hook
 (global-set-key (kbd "C-x 4 f") 'find-file-guessing-other-window)
 (global-set-key (kbd "C-x 5 f") 'find-file-guessing-other-frame)
-;;(global-set-key (kbd "C-x f") 'find-file-literally); erases set-fill-column
 
 ;; ** Copy filename of current buffer (kind of the opposite of ffap)
 
@@ -1788,21 +1317,6 @@ Version 2020-11-20 2021-01-18"
 ;; Overwrites ido-list-directory, which was less useful than this
 (global-set-key (kbd "C-x C-d") 'bjm/ivy-dired-recent-dirs)
 
-;; ** another recent directory: puts dir history in in 'C' and 'R'
-;; https://github.com/jixiuf/ivy-dired-history
-;; (use-package ivy-dired-history
-;;   :config
-;;   (require 'savehist)
-;;   (add-to-list 'savehist-additional-variables 'ivy-dired-history-variable)
-;;   (savehist-mode 1)
-;;   ;; or if you use desktop-save-mode
-;;   ;; (add-to-list 'desktop-globals-to-save 'ivy-dired-history-variable)
-;;   (with-eval-after-load 'dired
-;;     (require 'ivy-dired-history)
-;;     ;; if you are using ido,you'd better disable ido for dired
-;;     ;; (define-key (cdr ido-minor-mode-map-entry) [remap dired] nil) ;in ido-setup-hook
-;;     (define-key dired-mode-map "," 'dired)))
-
 ;;* Function key bindings
 ;; ** functions run by function keys
 (defun indent-buffer ()
@@ -1838,13 +1352,6 @@ Version 2020-11-20 2021-01-18"
 (global-set-key [f2] 'vc-dir)
 (global-set-key [f3] 'ediff-files)
 (global-set-key [f4] 'indent-buffer)
-;; (use-package igrep
-;;   :config
-;;   (setq igrep-options "-i") ; -n is default for igrep
-;;   (global-set-key [f5] 'igrep)
-;;   (global-set-key [f6] 'igrep-find))
-;; deadgrep, counsel-rg, etc. if ripgrep installed, else 'lgrep (see above)
-;; (global-set-key [f5] 'lgrep)
 (global-set-key [f6] 'rgrep)
 (global-set-key [f7] 'clear-buffer)
 (global-set-key [f8] 'compile)
@@ -1852,49 +1359,6 @@ Version 2020-11-20 2021-01-18"
 ;; f10 reserved for remote desktop (vnc, thinlink, etc.)
 ;;(global-set-key [f11] 'shell) (make OS-dependent, above)
 (global-set-key [f12] 'repeat-complex-command)
-
-;; emacs 27.1 has some gpg change.  I think I fixed this on the SP but
-;; not on the GO.  Skip this for now since I don't use it anyway.
-;;
-;; ;; ** CSV mode
-
-;; ;; aligns columns (on: C-c C-a , off: C-c C-u), prints header, etc.
-;; ;; Need to toggle-truncate-lines (C-c w) for wide files
-;; (use-package csv-mode
-;;   :straight t
-;;   :config
-;;   (setq csv-align-padding 2)
-;;
-;; ;; From: https://tinyurl.com/trtrmau
-;; (defun csv-align-visible ()
-;;   "Align only visible entries in csv-mode. C-c C-a is already bound to align all fields, but is slow."
-;;   (interactive)
-;;   (csv-align-fields nil
-;;    (window-start (selected-window))
-;;    (window-end (selected-window)))
-;;   (message "Aligned visible fields only. Press C-c C-w to align again."))
-
-;; :bind (:map csv-mode-map
-;;             ("C-c C-w" . 'csv-align-visible)
-;;             ("C-c C-h" . csv-header-line))
-;; ;; 1st page only, must redo 
-;; :hook (csv-mode . csv-align-visible) 
-;; ;; show header: bad for long colnames, narrow colvals
-;; :hook (csv-mode . csv-header-line)
-;; ;; doesn't seem to work
-;; :hook (csv-mode . toggle-truncate-lines)) 
-
-;; * Version Control
-
-;; magit-section needed for org-roam-bibtex at least.  But it's getting it from straight.el or melpa if installed that way.
-;; (use-package magit
-;; ;;  :bind (("C-x g" . magit-status))
-;;   :config
-;;   ;; seems to bring up the 2 panel ediff instead of standard 3 panel
-;;   ;; 2vs3 panel discussion:
-;;   ;; https://github.com/magit/magit/issues/1743
-;;   ;; However one of the panels ("index") is read-only
-;;   (setq magit-ediff-dwim-show-on-hunks t))
 
 ;; * Programming Modes
 ;; ** Matlab mode
@@ -1904,6 +1368,7 @@ Version 2020-11-20 2021-01-18"
 ;; started from: https://github.com/thisirs/dotemacs/blob/master/lisp/init-matlab.el
 (use-package matlab 
   :straight matlab-mode
+  :defer t
   :mode ("\\.m$" . matlab-mode)
   :commands (matlab-shell)
   :config
@@ -1935,49 +1400,19 @@ Version 2020-11-20 2021-01-18"
   (defun matlab-shell-fix-slowness ()
     (remove-hook 'comint-output-filter-functions 'matlab-shell-render-html-anchor t)
     (remove-hook 'comint-output-filter-functions 'matlab-shell-render-errors-as-anchor t))
-  (add-hook 'matlab-shell-mode-hook #'matlab-shell-fix-slowness))
-
-(provide 'init-matlab)
+  (add-hook 'matlab-shell-mode-hook #'matlab-shell-fix-slowness)
+  :init
+  (provide 'init-matlab))
 
 ;; ** elisp
 
 ;; Get rid of message "Package cl is deprecated".
 (setq byte-compile-warnings '(cl-functions))
 
-;; (https://github.com/kiwanami/emacs-epc/issues/35)
-;; cl is obsolete and shouldn't be used anymore:
-;; (https://github.com/kiwanami/emacs-epc/issues/35)
-;; Running 
-;;   (require 'loadhist)
-;;  (file-dependents (feature-file 'cl))
-;; shows that the following still depend upon clib
-;; ("c:/Users/scott/.emacs.d/elpa/omnisharp-20201002.1600/omnisharp.elc" "c:/Users/scott/.emacs.d/elpa/writegood-mode-20180525.1343/writegood-mode.el" "c:/Users/scott/.emacs.d/elpa/org-plus-contrib-20201102/org-choose.elc")
-
 (add-hook 'emacs-lisp-mode-hook
 	  '(lambda ()
 	     (set (make-local-variable 'dabbrev-case-fold-search) nil)
 	     (set (make-local-variable 'dabbrev-case-replace) nil)))
-
-;; Rename elisp symbols:
-;; C-c C-v r : Rename symbol in current buffer. Resolve let binding as long as i can.
-;; Other bindings: https://github.com/mhayashi1120/Emacs-erefactor
-;; As of 11/5/20, the elpa version causes a compile warning.  Fix is
-;; to manually edit: ./elpa/erefactor-20200513.1252/erefactor.el:922,
-;; replacing preceding-sexp with elisp--preceding-sexp, then
-;; recompiling.
-;; My erefactor issue: https://github.com/mhayashi1120/Emacs-erefactor/issues/5
-;; (use-package erefactor
-;;   :defer t
-;;   :init
-;;   (add-hook 'emacs-lisp-mode-hook
-;;             (lambda ()
-;;               (define-key emacs-lisp-mode-map "\C-c\C-v" erefactor-map)))
-
-;;   ;; TODO do this
-;;   ;;And set these variables correctly: erefactor-lint-path-alist, erefactor-lint-by-emacsen
-;;   ;; Highlight local variables: DOES THIS DO ANYTHING?  Need paths above?
-;;   (add-hook 'emacs-lisp-mode-hook 'erefactor-lazy-highlight-turn-on)
-;;   (add-hook 'lisp-interaction-mode-hook 'erefactor-lazy-highlight-turn-on))
 
 ;; ** C/C++
 ;; note: connect to common hook used by new cc-mode
@@ -2022,15 +1457,6 @@ Version 2020-11-20 2021-01-18"
 
 ;; ** Python
 
-;; *Python* buffer doesn't start at home.  I tried conda updata --all
-;; *and also the hack below, but now, instead of an error message, the
-;; **Python* buffer opens but is frozen when I run, for example,
-;; *sutil.py from elpy (C-u C-c C-c).  But in a conda terminal, I can
-;; *start "jupyter console" so I'm not sure what's going on.
-
-;; hack:
-;; *https://stackoverflow.com/questions/59631663/jupyter-console-fails-to-start-but-jupyter-notebook-is-fine
-
 ;; *** Python editing setup
 
 ;; TODO: some of my calls to sdo/find-exec may no longer be necessary,
@@ -2054,21 +1480,10 @@ Version 2020-11-20 2021-01-18"
     
     (conda-env-initialize-interactive-shells)
     (conda-env-initialize-eshell)
-    (conda-env-activate "base")
-    
-    ;; Use if projects have environments files indicating their conda envs
-    ;;(setq conda-project-env-name "environment.yml") ; needed by autoactivate
-    ;;(conda-env-autoactivate-mode t)
-    ;;conda environment is set on the modeline in custom variables
-    )
+    (conda-env-activate "base"))
 
   (setq autopep8bin (sdo/find-exec "autopep8" "Needed by py-autopep8 autofix-on-save & elpy"))
   (when autopep8bin (use-package py-autopep8))
-
-  ;; So C-c i generates a python function/method stub from symbol at point
-  ;; (use-package elpygen ; seems to be separate from elpy, despite the name
-  ;;   :config
-  ;;   (define-key python-mode-map (kbd "C-c i") 'elpygen-implement))
 
   ;; for Python mode comment filling
   ;; https://stackoverflow.com/questions/2214199/how-to-use-emacs-to-write-comments-with-proper-indentation-line-length-and-wra
@@ -2330,8 +1745,8 @@ Version 2020-11-20 2021-01-18"
 
 (use-package csharp-mode :defer t)
 (use-package omnisharp
-  :after csharp-mode
-  :after company
+  :defer t
+  :after (csharp-mode company)
   :init
   ;; Inspired by: https://github.com/OmniSharp/omnisharp-emacs
   (defun my-csharp-mode-setup ()
@@ -2395,8 +1810,6 @@ Version 2020-11-20 2021-01-18"
   :diminish global-auto-complete-mode
   :diminish auto-complete-minor-mode
   :config (global-auto-complete-mode))
-
-;; Note that I've remapped er\iedit to iedit-within-defun
 
 ;; syntax checkers for many languages
 ;; To use flycheck for over 40 languages, do this:
@@ -2482,7 +1895,6 @@ Version 2020-11-20 2021-01-18"
    '(("%e" mode-line-front-space mode-line-mule-info mode-line-client mode-line-modified mode-line-remote mode-line-frame-identification "   " mode-line-buffer-identification mode-line-position
       (vc-mode vc-mode)
       "  " :exec conda-env-current-name "   " mode-line-modes "  " mode-line-misc-info mode-line-end-spaces)))
- '(moom-use-font-module nil)
  '(mouse-autoselect-window 0.5)
  '(mouse-avoidance-nudge-dist 10)
  '(mouse-wheel-progressive-speed nil)
@@ -2535,8 +1947,6 @@ Version 2020-11-20 2021-01-18"
  '(outshine-org-style-global-cycling-at-bob-p t)
  '(outshine-use-speed-commands t)
  '(package-check-signature 'allow-unsigned)
- '(package-selected-packages
-   '(smart-mode-line conda org-superstar moom resize-window frame-fns quelpa-use-package frame-cmds recursive-narrow ivy-todo ivy-explorer counsel ivy-bibtex org-ref unfill xterm-color org-noter realgud highlight-indent-guides org-web-tools elpy quelpa paradox gnu-elpa-keyring-update deadgrep erefactor helm-org-rifle deft zotxt zotxt-emacs emacsql-sqlite3 cask wttrin org ivy-hydra helm-org dired-narrow shell-pop dired-subtree ivy-rich flycheck-cstyle flycheck-cython flycheck-inline flycheck-pos-tip multi-line yaml-mode flycheck csharp-mode omnisharp org-bullets py-autopep8 smex helm elpygen ox-pandoc powershell helpful dired+ helm-descbinds smartscan artbollocks-mode highlight-thing swiper-helm esup auctex auctex-latexmk psvn helm-cscope xcscope ido-completing-read+ helm-swoop ag company dumb-jump outshine lispy org-download w32-browser replace-from-region xah-math-input flyspell-correct flyspell-correct-ivy google-translate gscholar-bibtex helm-google ox-minutes transpose-frame which-key beacon ox-clip hl-line+ copyit-pandoc pandoc pandoc-mode org-ac flycheck-color-mode-line flycheck-perl6 iedit wrap-region avy cdlatex latex-unicode-math-mode f writegood-mode auto-complete matlab-mode popup parsebib org-cliplink org-autolist key-chord ido-grid-mode ido-hacks ido-describe-bindings hydra google-this google-maps flx-ido expand-region diminish bind-key biblio async adaptive-wrap buffer-move))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(paradox-github-token "0c7c1507250926e3124c250ae6afbc8f677b9a61")
@@ -2597,11 +2007,6 @@ Version 2020-11-20 2021-01-18"
 
 ;; *** Ediff
 
-;; TODO report ediff 'm' bug: Typing 'm' in ediff minibuffer spreads
-;; emacs across a width equal to both dual monitors, although emacs's
-;; left edge is always put on the left edge of the right monitor, even
-;; if it was originally in the left monitor
-
 ;; Do not pop up a separate window "frame" for ediff
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 ;; Avoid folding headlines when ediffing org-mode
@@ -2626,15 +2031,9 @@ Version 2020-11-20 2021-01-18"
   :hook ((outline-minor-mode . outshine-mode) ; for outshine itself
          (prog-mode . outline-minor-mode))    ; all prog modes
 
-  ;; this works if I run it from inside .emacs but not after a clean start  
-  ;;  :bind (:map outline-minor-mode-map ("S-<tab>" . outshine-cycle-buffer))
-  ;; diminish doesn't work
   :diminish outline-mode
   :diminish outline-minor-mode
   :config
-  ;; (add-hook 'outline-minor-mode-hook 'outshine-mode) ; for outshine itself
-  ;; (add-hook 'prog-mode-hook 'outline-minor-mode)     ; all prog modes
-  ;; ;; can only diminish outshine mode here, like this, for some reason
   (eval-after-load "outshine" '(diminish 'outshine-mode)) 
   ;; works here
   (bind-keys
@@ -2730,6 +2129,7 @@ Version 2020-11-20 2021-01-18"
        term-color-darkgoldenrod
        term-color-ivory4])
 ;; * Org Mode
+
 ;; ** Org-* dirs and files
 
 ;; set up org and bib for old way of doing things and experimental org-roam, or a true org-roam, org-ref setup
@@ -2799,19 +2199,20 @@ Version 2020-11-20 2021-01-18"
 
 ;; ** Org Basic Config
 
-;; TODO This sets frame width based on screen and char size.  Might help:
-;; https://gitlab.msu.edu/joshia/celta-vm-home-config/commit/f34b238c7a7eb5da2130b1a337e83f5940f086ae?w=1
-
 ;; TODO: experiment with C-c C-x C-b or M-x org-tree-to-indirect-buffer
-
+;;
 (use-package org
 ;;  :straight org-plus-contrib ; fewer clean install errors, still must restart 3X
   ;;  :pin gnu
   ;; :pin melpa ;; messes up straight.el
-  :defer t
+  :defer 0
   :diminish org-mode  ; doesn't hide the "Org" in modeline, for some reason
   :diminish org-table-header-line-mode  ; customization: org-table-header-line-p
   :config
+  ;;############## DEBUGGING: REMOVE #########
+  ;; (setq  org-element--cache-self-verify 'backtrace)
+  ;; (call-interactively 'org-element-cache-reset)
+  ;; ;;########################               
   (define-key global-map "\C-cl" 'org-store-link)
   (global-set-key (kbd "C-c L") 'org-insert-link-global) ; insert in any buffer
   (global-set-key (kbd "C-c o") 'org-open-at-point-global) ; open in any buffer
@@ -2887,8 +2288,6 @@ Version 2020-11-20 2021-01-18"
 (use-package org-autolist ; new - or -[ ] w/ return
   :diminish org-autolist-mode
   :hook (org-mode . org-autolist-mode))
-;;  :config
-;;  (add-hook 'org-mode-hook #'org-autolist-mode)) 
 
 ;; Quick org emphasis:  Select text & hit key below. expand-region pkg helps.
 ;; Handy using er/expand, mapped to C-=
@@ -2898,7 +2297,6 @@ Version 2020-11-20 2021-01-18"
   :diminish wrap-region-minor-mode
   :hook (org-mode . wrap-region-mode)
   :config
-;;  (add-hook 'org-mode-hook #'wrap-region-mode)
   (wrap-region-add-wrapper "*" "*" nil 'org-mode)  ; bold
   (wrap-region-add-wrapper "/" "/" nil 'org-mode)  ; italics
   (wrap-region-add-wrapper "_" "_" nil 'org-mode)  ; underline
@@ -3102,137 +2500,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
     :config
     (setq org-pandoc-options '((standalone . t))            ; default options for all output formats
           org-pandoc-options-for-docx '((standalone . nil)) ; cancel above settings only for 'docx' format
-
-          org-pandoc-options-for-beamer-pdf '((latex-engine . "lualatex"))
-          org-pandoc-options-for-latex-pdf  '((latex-engine . "lualatex"))
-          ;;org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")
-          ;;                                   (template . "~/.pandoc/templates/memoir2.latex" ))
-          ;;org-pandoc-options-for-latex '((latex-engine . "xelatex")
-          ;;                               (template . "~/.pandoc/templates/memoir2.latex" ))
-
-          ;; Use external css for html5
-          ;; (let ((stylesheet (expand-file-name
-          ;;                    (locate-user-emacs-file "etc/pandoc.css"))))
-          ;;   (setq org-pandoc-options-for-html5
-          ;;         `((css . ,(concat "file://" stylesheet)))))
-          )
-    ))
-
-
-;; ** Org Import
-
-;; There was nothing wrong with this.  I commented it out only to test the removal of :straight.
-;;
-;; (use-package org-pandoc-import
-;;   :straight (:host github
-;;              :repo "tecosaur/org-pandoc-import"
-;;              :files ("*.el" "filters" "preprocessors")))
-
-;; ** Org and Git
-
-;; Behavior when link to a file in git.  This only happens if org-modules contains  ol-git-link
-;;
-;; OL-GIT-LINK IS TOO PROBLEMATIC without improvements below e.g. if you're in the middle of editing before checking in, git: links send you to a file without your edits!
-;;
-;; WARNING: If you've changed the file since the last git checkin,
-;; following that link won't show your changes.  This is because
-;; ol-git-link checks out the most recently checked in version of the
-;; file you've made the link from and then displays that.
-
-;; TODO: warn if file has changes not in git.  Maybe don't check out a
-;; version but link directly to the file?
-;; TODO: move the "description is marked region" thing to org-store-link-props since everybody must call that one, right?
-
-;; Makes a link description from the marked region for git links. Overwrites function in:
-;; ~/.emacs.d/elpa/org-plus-contrib-20210816/ol-git-link.el
-;;
-;; (defun org-git-store-link ()
-;;   "Store git link to current file.  The link description is the active mark region, if there is one.
-;; This is an overwrite of the same-named function in ol-git-link.el"
-;;   (when (buffer-file-name)
-;;     (let ((file (abbreviate-file-name (buffer-file-name)))
-;; 	  (line (line-number-at-pos)))
-;;       (when (org-git-gitrepos-p file)
-;;         (if mark-active
-;;           (let ((region (funcall region-extract-function nil)))
-;;             (deactivate-mark)
-;;             ;; I'm using the obsolete org-store-link-props here b/c org-link-store-props concats :description into the link instead of making it a separate description.  SOMETIMES org-store-link-props does too (in .py files?)  Seems to think that marked region (or :description?) is the string that should be searched for when visiting the link.  Does it NOT use description if region is marked?
-;; 	    (org-store-link-props
-;;              :link (org-git-create-git-link file line)
-;;              :description region
-;;              :type "git"))
-;;           (org-link-store-props
-;; 	   :link (org-git-create-git-link file line)
-;;            :type "git"))))))
-
-;; also see .emacs example: (defun my//dired-store-link ...)
-
-;;For magit buffers https://github.com/magit/orgit
-;;(use-package orgit)
-
-;; This is nice, but it ALWAYS stores git links if the file is in a
-;;git repository -- screws up links across energytop.org and
-;;howto.org, because they would point to certain git versions instead
-;;of the CURRENT git version.
-;;
-;; My issue report:
-;;https://github.com/ReimarFinken/org-git-link/issues/5
-;; Author's introduction:
-;;https://lists.gnu.org/archive/html/emacs-orgmode/2009-10/msg00730.html
-;; somebody has same problem:
-;;https://stackoverflow.com/questions/56158827/how-do-i-disable-or-rein-in-org-git-link-org-plus-contrib-20190513
-;;
-;;All git links https://orgmode.org/worg/org-contrib/org-git-link.html
-;;(if (sdo/find-exec "git") (add-to-list 'org-modules 'org-git-link))
-
-;; ** Org-rifle
-;; Search org-mode file(s) and get results and their place in the org-mode tree hierarchy
-;; TODO: Try it: https://github.com/alphapapa/org-rifle
-;;
-;; Is this better than org-deft b/c it limits its search to org files?
-;;
-;; From: https://dustinlacewell.github.io/emacs.d/
-(use-package helm-org-rifle
-  :after (helm org)
-  :commands helm-org-rifle-current-buffer
-  :config
-  (define-key org-mode-map (kbd "M-r") 'helm-org-rifle-current-buffer))
-
-;; ** org-ql
-
-;; From https://github.com/novoid/dot-emacs/blob/master/config.org
-;; Used by: org-ql
-;; Completion package for Org mode: https://github.com/emacs-helm/helm-org
-(use-package helm-org
-  ;;:defer 90
-  :after org
-  :straight t
-  :config
-  ;; (add-to-list 'helm-completing-read-handlers-alist '(org-capture . helm-org-completing-read-tags))
-  ;; (add-to-list 'helm-completing-read-handlers-alist '(org-set-tags . helm-org-completing-read-tags))
-  )
-
-;; commented out to avoid the dash-functional warning
-;; my bug report: https://github.com/alphapapa/org-ql/issues/206
-;; (use-package org-ql
-;;   :after helm-org
-;;   :config
-;;   (require 'org-ql-search) ;; workaround for https://github.com/alphapapa/org-ql/issues/53
-;; )
-;;
-;; (use-package helm-org-ql
-;;   :after org-ql
-;;   :config
-;;   (require 'helm-org-ql) ;; so it's available
-;; )
-
-;; Dedicated target search (in non-expq query, use dt:Name)
-;; https://github.com/alphapapa/org-ql/issues/158
-;; Doesn't compile
-;; (org-ql-defpred (dedicated-target dt) (name)
-;;   "Search for a dedicated target named NAME (i.e. \"<<NAME>>\")."
-;;   :normalizers ((`(, predicate-names ,name)
-;;                  `(regexp ,(concat "<<" name ">>")))))
+          )))
 
 ;; ** Org and Zotero
 
@@ -3260,13 +2528,11 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   :init
   (let ((default-directory docDir))
 
-    (setq bibtex-completion-notes-path org_ref_notes_fnm
-          bibtex-completion-bibliography bibfile_list 
-          bibtex-completion-library-path bibpdf_list
-          reftex-default-bibliography bibtex-completion-bibliography))
-
-  ;; ;; showing broken links slowed down energytop.org (but much less in Oct. 2017)
-  ;; ;;  https://github.com/jkitchin/org-ref/issues/468
+    (setq org-ref-bibliography-notes org_ref_notes_fnm
+          org-ref-default-bibliography bibfile_list 
+          org-ref-pdf-directory bibpdf_list
+          reftex-default-bibliography org-ref-default-bibliography))
+  ;;  https://github.com/jkitchin/org-ref/issues/468
   ;;(setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
   :config
   (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
@@ -3278,10 +2544,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
         bibtex-autokey-titlewords 2
         bibtex-autokey-titlewords-stretch 1
         bibtex-autokey-titleword-length 5)
-  ;; Make org-ref cite: link folded in emacs.  Messes up Latex export:
-  ;; https://github.com/jkitchin/org-ref/issues/345#issuecomment-262646855
-  ;;  (org-link-set-parameters "cite" :display nil)
-  ;; Improvement, or at least more explicity setting from:
+  ;; Make org-ref cite: link folded in emacs.
   ;; https://org-roam.discourse.group/t/customize-display-of-cite-links/129/19
   (org-link-set-parameters "cite" :display 'org-link)
   ;; Make the 'cite:' link type available when C-c l on a bibtex entry
@@ -3290,11 +2553,6 @@ TODO: add a cycle that opens or collapses all prop drawers?"
     (setq org-link-parameters (delq lnk org-link-parameters))
     (push lnk org-link-parameters))
   )
-
-;; Unfortunately, this may screw up linking to techreports:
-;; https://github.com/jkitchin/org-ref/issues/205
-;; at least they work after I comment it out
-;; (bibtex-set-dialect 'biblatex); so org-ref can recognize more entry types e.g. patent
 
 ;; ** v2 Org-Roam
 
@@ -3323,16 +2581,8 @@ TODO: add a cycle that opens or collapses all prop drawers?"
          ;; may not exist aymore
          ("C-c n j" . org-roam-dailies-capture-today)
          :map org-mode-map
-         ("C-M-i" . completion-at-point)
-         ;; this map may not exist anymore
-;;         :map org-roam-dailies-map
-;;         ("Y" . org-roam-dailies-capture-yesterday)
-;;         ("T" . org-roam-dailies-capture-tomorrow)
-         )
-  ;; causes error:
-  ;; :bind-keymap
-  ;; ("C-c n d" . org-roam-dailies-map)
-
+         ("C-M-i" . completion-at-point))
+ 
   :init
   (setq org-roam-v2-ack t)
   ;; set this here instead of in :custom so it can be used during init
@@ -3345,117 +2595,19 @@ TODO: add a cycle that opens or collapses all prop drawers?"
            "* %?"
            :target (file+head "%<%Y-%m-%d>.org"
                               "#+title: %<%Y-%m-%d>\n"))))
-  
-
   :config
   (org-roam-db-autosync-mode)
   ;; If using org-roam-protocol
   (require 'org-roam-protocol))
-   
-  ;;(org-roam-setup)
-  
-  ;; The line below caues org-roam to hang and time out after 30
-  ;;seconds, at least on Windows.  Maybe it didn't on Mac
-  ;;(org-roam-bibtex-mode +1)
-  
-;;  (require 'org-roam-dailies) ;; Ensure the keymap is available
-;;  (org-roam-db-autosync-mode)
-
-  ;; commenting this out removed an org-roam empty buffer error (sometimes)
-  ;; https://org-roam.discourse.group/t/minimal-setup-for-helm-bibtex-org-roam-v2-org-roam-bibtex/1971/2?u=scotto
-  ;;(org-roam-bibtex-mode +1)
-;;  )
 
 (use-package ivy-bibtex :defer t)
   
-;; adds a bullet to today's daily w/ a timestamp on the front of it
-;; (works in v2):
-;; https://org-roam.discourse.group/t/v2-daily-capture-template-not-working/1887
-;; (setq org-roam-dailies-capture-templates
-;;       (let ((head
-;;              (concat "#+title: %<%Y-%m-%d (%A)>\n#+startup: showall\n* Daily Overview\n"
-;;                      "#+begin_src emacs-lisp :results value raw\n"
-;;                      "(as/get-daily-agenda \"%<%Y-%m-%d>\")\n"
-;;                      "#+end_src\n"
-;;                      "* [/] Do Today\n* [/] Maybe Do Today\n* Journal\n")))
-;;         `(("j" "journal" entry
-;;            "* %<%H:%M> %?" :if-new
-;;            (file+head+olp "%<%Y-%m-%d>.org" ,head ("Journal"))))))
-
-;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
-;; (use-package org-roam
-;; ;;  :straight t
-;;   ;;:straight (:branch "v2.1.10" :host github :repo "org-roam/org-roam")
-;;   :init
-;;   (setq org-roam-v2-ack t)
-;;   :custom
-;;   ;; (org-roam-directory (file-truename org_roam_dir))
-;; ;;  (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
-;;   (org-roam-directory (file-truename "~/tmp"))
-;;   (org-roam-completion-everywhere t)
-;;   (org-id-method 'ts) ;; use timestamps for org-id
-;;   :bind (("C-c n l" . org-roam-buffer-toggle)
-;;          ("C-c n f" . org-roam-node-find)
-;;          ("C-c n i" . org-roam-node-insert)
-;;          ("C-c n g" . org-roam-graph)
-;;          ("C-c n h" . org-roam-capture)
-;;          ([mouse-1] . org-roam-visit-thing)
-;;          ;; may not exist aymore
-;;          ;;("C-c n j" . org-roam-dailies-capture-today)
-;;          :map org-mode-map
-;;          ("C-M-i" . completion-at-point)
-;;          ;; this map may not exist anymore
-;;          ;; :map org-roam-dailies-map
-;;          ;; ("Y" . org-roam-dailies-capture-yesterday)
-;;          ;; ("T" . org-roam-dailies-capture-tomorrow)
-;;          )
-;;   ;; may not exist anymore
-;;   ;;:bind-keymap
-;;   ;;("C-c n d" . org-roam-dailies-map)
-;;   ;; :config
-;;   ;;(require 'org-roam-dailies) ;; Ensure the keymap is available
-;;   ;; from: https://org-roam.discourse.group/t/daily-task-management-with-org-agenda-and-org-roam-dailies/989/17?u=scotto
-;;   ;; (setq org-roam-dailies-capture-templates
-;;   ;;       (let ((head
-;;   ;;              (concat "#+title: %<%Y-%m-%d (%A)>\n#+startup: showall\n* Daily Overview\n"
-;;   ;;                      "#+begin_src emacs-lisp :results value raw\n"
-;;   ;;                      "(as/get-daily-agenda \"%<%Y-%m-%d>\")\n"
-;;   ;;                      "#+end_src\n"
-;;   ;;                      "* [/] Do Today\n* [/] Maybe Do Today\n* Journal\n")))
-;;   ;;         `(("j" "journal" entry
-;;   ;;            "* %<%H:%M> %?"
-;;   ;;            :if-new (file+head+olp "%<%Y-%m-%d>.org" ,head ("Journal")))
-;;   ;;           ("t" "do today" item
-;;   ;;            "[ ] %a"
-;;   ;;            :if-new (file+head+olp "%<%Y-%m-%d>.org" ,head ("Do Today"))
-;;   ;;            :immediate-finish t)
-;;   ;;           ("m" "maybe do today" item
-;;   ;;            "[ ] %a"
-;;   ;;            :if-new (file+head+olp "%<%Y-%m-%d>.org" ,head ("Maybe Do Today"))
-;;   ;;            :immediate-finish t))))
-
-;;   (org-roam-db-autosync-mode) ;; function isn't defined (ONLY IN WINDOWS?)
-;;   ;; If using org-roam-protocol
-;;   ;; doesn't seem to be there anymore
-;;   ;;(require 'org-roam-protocol)
-;;   )
-
-
-;; ** org-roam-dailies
-
-;; ** org-roam-bibtex
-
 ;; ** org-roam-ui (graph viewing)
 
 ;; config from: https://github.com/org-roam/org-roam-ui
 (use-package org-roam-ui
   :straight (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
   :after org-roam
-;;  :hook
-;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-;;         a hookable mode anymore, you're advised to pick something yourself
-;;         if you don't care about startup time, use
-;;  :hook (after-init . org-roam-ui-mode)
   :config
   (setq org-roam-ui-sync-theme t
         org-roam-ui-follow t
@@ -3497,19 +2649,14 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; ** Bibfile files and directories
 ;;    see also Org-roam-bibtex
 
-;; init these here so helm-bibtex and ivy-bibtex can share them
-;;(setq bibtex-completion-bibliography bibfile_list)
-;;(setq bibtex-completion-library-path bibpdf_list)
 ;; Find pdf w/ JabRef/Zotero fields
 (setq bibtex-completion-pdf-field "file")
 ;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
-(setq bibtex-completion-notes-path (expand-file-name "bib-notes" org_roam_dir))
-
+(setq org-ref-bibliography-notes (expand-file-name "bib-notes" org_roam_dir))
 
 ;; ** Org-noter
 ;;
 ;; keybindings, basic explanation: https://github.com/weirdnox/org-noter#keys
-
 ;; simple, just so it compiles.  started from: https://rgoswami.me/posts/org-note-workflow
 (use-package org-noter
   :after (:any org pdf-view)
@@ -3524,196 +2671,15 @@ TODO: add a cycle that opens or collapses all prop drawers?"
    ;; everything is relative to the main notes file
    org-noter-notes-search-path (list org_notes_dir)))
 
-;;
-;; Workflow w/ org-noter, org-roam org-roam-bibtex and org-ref.  Also plans for org-journal: https://rgoswami.me/posts/org-note-workflow/
-;;
-;; Could also try https://github.com/rudolfochrist/interleave although
-;;I guess it's not as good at multiple documents
-;;(https://dotdoom.rgoswami.me/config.html)
-;;
-;; ;; org-noter config inspired by: https://write.as/dani/notes-on-org-noter
-;; (use-package org-noter
-;;   :after org
-;;   :after pdf-tools
-;;   :config
-;;   (setq org-noter-default-notes-file-names '("org-noter-notes.org")
-;;                 org-noter-notes-search-path '("~/tmp/org-noter")))
-;; ;;                  org-noter-separate-notes-from-heading t))
-;; ;; coordinating org-noter with org-notes
-;; ;; https://write.as/dani/notes-on-org-noter
-;; (defun org-ref-noter-at-point ()
-;;   "open the pdf for bibtex key under point if it exists."
-;;   (interactive)
-;;   (let* ((results (org-ref-get-bibtex-key-and-file))
-;;          (key (car results))
-;;          (pdf-file (funcall org-ref-get-pdf-filename-function key)))
-;;     (if (file-exists-p pdf-file)
-;;         (progn
-;;           (find-file-other-window pdf-file)
-;;           (org-noter))
-;;       (message "no pdf found for %s" key))))
-
-;; (add-to-list 'org-ref-helm-user-candidates 
-;;              '("org-noter notes" . org-ref-noter-at-point))
-
-;; ** Org-pdftools and org-noter-pdftools
-;;
-;; A fork/enhancement of defunct org-pdfview, has big future plans, recent commits (April 2020).  Has some kinda (temporary?) integrate with org-noter.
-;; TODO: try it
-;; https://github.com/fuxialexander/org-pdftools
-
-;; ** org-latex
-
-;; Faster latex entry: http://orgmode.org/manual/CDLaTeX-mode.html#CDLaTeX-mode
-;;
-;; When scimax/org-return, maybe use it instead.  May go back to this if the two are merged.
-;; (use-package cdlatex
-;;   :diminish org-cdlatex-mode
-;;   :config (add-hook 'org-mode-hook 'turn-on-org-cdlatex))
-
-;; TODO: does this work? https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
-;; (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
-
-;; mostly from: https://github.com/hieutkt/emacs-config
-;;
-
-;; makes most things variable pitch except code, tables, etc.
-;; Variable pitch
-;; (add-hook 'org-mode-hook
-;;           '(lambda ()
-;;              (variable-pitch-mode 1)))
-;;
-;; (mapc (lambda (face)
-;;         (set-face-attribute face nil :inherit 'fixed-pitch))
-;;       (list 'org-code
-;;             'org-link
-;;             'org-block
-;;             'org-table
-;;             'org-block-begin-line
-;;             'org-block-end-line
-;;             'org-meta-line
-;;             'org-document-info-keyword
-;;             'org-latex-and-related))
-
-;; can't get org-preview example to work.  This one:
-;; https://orgmode.org/worg/org-tutorials/org-latex-preview.html
-;;
-;; ;; ORG LATEX PREVIEW
-;; (setq org-startup-with-latex-preview t
-;;       ;; Make latex preview with "C-c C-x C-l" slightly bigger
-;;       org-format-latex-options
-;;       (plist-put org-format-latex-options :scale 1.8)
-;;       ;; Cache the preview images elsewhere
-;;       org-preview-latex-image-directory "~/.cache/ltximg/")
-
-;; Highlight latex stuffs
-;; But does this slow down energytop.org?
-;; (setq org-highlight-latex-and-related '(latex entities))
-
-;; Auto expand preview latex images when cursor is on it
-;; nice but really slows down energytop.org
-;; (use-package org-fragtog
-;;   :config (add-hook 'org-mode-hook 'org-fragtog-mode))
-
-
-;; So equation numbers in org-mode increment correctly.  If force it
-;;to remove old images, then this *almost* works.
-;; https://kitchingroup.cheme.cmu.edu/blog/2016/11/07/Better-equation-numbering-in-LaTeX-fragments-in-org-mode/
-;; (defun org-renumber-environment (orig-func &rest args)
-;;   (let ((results '()) 
-;;         (counter -1)
-;;         (numberp))
-
-;;     (setq results (loop for (begin .  env) in 
-;;                         (org-element-map (org-element-parse-buffer) 'latex-environment
-;;                           (lambda (env)
-;;                             (cons
-;;                              (org-element-property :begin env)
-;;                              (org-element-property :value env))))
-;;                         collect
-;;                         (cond
-;;                          ((and (string-match "\\\\begin{equation}" env)
-;;                                (not (string-match "\\\\tag{" env)))
-;;                           (incf counter)
-;;                           (cons begin counter))
-;;                          ((string-match "\\\\begin{align}" env)
-;;                           (prog2
-;;                               (incf counter)
-;;                               (cons begin counter)                          
-;;                             (with-temp-buffer
-;;                               (insert env)
-;;                               (goto-char (point-min))
-;;                               ;; \\ is used for a new line. Each one leads to a number
-;;                               (incf counter (count-matches "\\\\$"))
-;;                               ;; unless there are nonumbers.
-;;                               (goto-char (point-min))
-;;                               (decf counter (count-matches "\\nonumber")))))
-;;                          (t
-;;                           (cons begin nil)))))
-
-;;     (when (setq numberp (cdr (assoc (point) results)))
-;;       (setf (car args)
-;;             (concat
-;;              (format "\\setcounter{equation}{%s}\n" numberp)
-;;              (car args)))))
-  
-;;   (apply orig-func args))
-
-;; (advice-add 'org-create-formula-image :around #'org-renumber-environment)
-
-;; You can remove the advice like this.
-;; (advice-remove 'org-create-formula-image #'org-renumber-environment)
-
-
 ;; * Narrowing
 
 ;; Default emacs narrowing has too many keys: Could wipe them out and
-;; make it a toggle as in  http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html (has
-;; a bunch of other toggles, maybe handy but I'll stick w/ this for
-;; now) Or could just addd a toggle and leave the old keys in place,
-;; as I'm doing.  Also, toggling with recursive-narrow instead of
-;; endlessparens narrow-or-widen function:
-;;
-;; Note that dired-narrow is different, narrows based on search terms
-;;
-;; endlessparens' toggler.  Seems like commenters like
-;; recursive-narrow better
-;;
-;; (defun narrow-or-widen-dwim (p)
-;;   "Widen if buffer is narrowed, narrow-dwim otherwise.
-;; Dwim means: region, org-src-block, org-subtree, or
-;; defun, whichever applies first. Narrowing to
-;; org-src-block actually calls `org-edit-src-code'.
-
-;; With prefix P, don't widen, just narrow even if buffer
-;; is already narrowed."
-;;   (interactive "P")
-;;   (declare (interactive-only))
-;;   (cond ((and (buffer-narrowed-p) (not p)) (widen))
-;; 	((region-active-p)
-;; 	 (narrow-to-region (region-beginning)
-;; 			   (region-end)))
-;; 	((derived-mode-p 'org-mode)
-;; 	 ;; `org-edit-src-code' is not a real narrowing
-;; 	 ;; command. Remove this first conditional if
-;; 	 ;; you don't want it.
-;; 	 (cond ((ignore-errors (org-edit-src-code) t)
-;; 		(delete-other-windows))
-;; 	       ((ignore-errors (org-narrow-to-block) t))
-;; 	       (t (org-narrow-to-subtree))))
-;; 	((derived-mode-p 'latex-mode)
-;; 	 (LaTeX-narrow-to-environment))
-;; 	(t (narrow-to-defun))))
-;; ;; TODO Idea is to have only a toggle.  Wipes out Emacs' entire
-;; ;; narrowing keymap but not in org-mode, which overwrites this, somehow.
-;; (define-key ctl-x-map "n" #'narrow-or-widen-dwim)
-
+;; make it a toggle as in
 ;; Commenters act like recursive-narrow is an improvement over endlessparens'
 ;; narrow-or-widen-dwim but I'm not sure why.  Maybe narrowed result
 ;; maintains top headline indent?  Maybe that's because it handles
 ;; org-mode too?
-(use-package recursive-narrow
-  :after org)
+(use-package recursive-narrow :after org)
 
 ;; TODO put binding below inside recursive-narrow use-package
 ;;
@@ -3724,27 +2690,10 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;;(define-key ctl-x-map "n" #'recursive-narrow-or-widen-dwim)
 
 ;; * Search and Replace (see also Swiper/Ivy)
-;; ** Web Search
-
-;; overrides org-mode bindings e.g. sparse-tree: C-c /
-;; (use-package google-this      ;; TODO: compare with counsel-search
-;;   :diminish google-this-mode
-;;   :config
-;;   (google-this-mode 1)) ; bound to C-c / g (and other bindings after '/')
-
 ;; ** File System Search
 
 ;; *** deadgrep
 ;; File search w/ nice interface, better than standard emacs lgrep, I think
-;; Alternative mentioned by deadgrep author is ivy-rg, for incremental results:
-;; https://www.reddit.com/r/emacs/comments/8x57ck/deadgrep_fast_friendly_searching_with_ripgrep_and/
-;;
-;; TODO deadgrep vs. counsel-rg vs. rg vs. ivy-grep vs. helm-rg
-;; TODO make deadgrep search contents of pdfs, like Windows explorer
-;; can
-;;
-;; TODO: use :init or :config within use-package
-;; TODO: maybe don't need wh/return-default-dir anymore:  https://github.com/Wilfred/deadgrep/commit/14c7d6b74c7891ed7294abe1a6f5914948e4ab49
 (if (setq rg_exe (sdo/find-exec "rg" "ripgrep needed org-roam and others"))
     (progn (use-package deadgrep)
            (global-set-key [f5] 'deadgrep)
@@ -3755,67 +2704,6 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
            (setq deadgrep-project-root-function #'wh/return-default-dir))
   (global-set-key [f5] 'lgrep))
-
-;; *** counsel-rg
-;; TODO combo of conusel-rg and fuzzy (fzf) searching
-;;  as in: https://protesilaos.com/dotemacs/
-;;  demo: https://www.youtube.com/watch?v=IDkx48JwDco
-;; nice swiper like completion.  helm-rg might/might not be better
-;; problem is that it's like swiper: can't go back and forth between search results.  Also, prot convinced me that pkg rg is better (below)
-;;
-;; (if rg_exe
-;;     (global-set-key [f5] 'counsel-rg)
-;;   (global-set-key [f5] 'lgrep))
-
-;; *** helm-rg
-;; helm-rg couldn't adjust faces easily and prot convinced me that pkg
-;; 'rg' is better (but then I couldn't get rg to work and went to deadgrep)
-
-;; but helm-rg has nice hook to add file links based on search results
-;; see  Use helm-rg to find notes to make connections to using full
-;; text search" in : https://notes.alexkehayias.com/org-roam/
-;;
-;; but this config didn't compile immediately for me so I removed it
-
-;; (use-package helm-rg
-;;   :bind
-;;   (("C-c r" . helm-rg)))
-
-;; (use-package helm-rg
-;;   :if (executable-find "rg")
-;;   :straight t
-;;   :init
-;;   (progn
-;;     (setq helm-grep-ag-command "rg --color=always --colors 'match:fg:black' --colors 'match:bg:white' --smart-case --no-heading --line-number %s %s %s")
-;;     (setq helm-grep-ag-pipe-cmd-switches '("--colors 'match:fg:black'" "--colors 'match:bg:white'"))))
-;;     ;; (general-setq helm-grep-ag-command "rg --color=always --colors 'match:fg:black' --colors 'match:bg:yellow' --smart-case --no-heading --line-number %s %s %s")
-;;     ;; (general-setq helm-grep-ag-pipe-cmd-switches '("--colors 'match:fg:black'" "--colors 'match:bg:yellow'"))))
-
-;; 
-;; (if rg_exe
-;;     ;; prot likes this: https://www.youtube.com/watch?v=4qLD4oHOrlc
-;;     (use-package rg
-;;       :init
-;;       (rg-enable-default-bindings)
-;;       :config
-;;       (global-set-key [f5] 'rg))
-;;   (global-set-key [f5] 'lgrep))
-
-;; see also: Deft in org-roam section
-
-;; (use-package ag
-;;   :after counsel
-;;   :config
-;;   ;; supposed to work on Windows: https://github.com/abo-abo/swiper/issues/672
-;;   (setq counsel-ag-base-command "ag --vimgrep --nocolor --nogroup %s")  
-;;   ;; DOESN'T WORK.  Neither does counsel-ag
-;;   ;; so can use ag inside of eshell. Installation: run alias ag 'ag-eshell $1' in eshell. This puts this elisp in emacs.d/eshell/alias, so need to do this for each install.
-;;   ;; from: https://github.com/tomjakubowski/.emacs.d/issues/3
-;;   (defun ag-eshell (string)
-;;     "Search with ag using the current eshell directory and a given string.
-;;    To be used from within an eshell alias
-;;    (`alias ag 'ag-eshell $1'` within eshell)"
-;;     (ag/search string (eshell/pwd))))
 
 ;; ** Search/Replace within Buffer
 
@@ -3853,34 +2741,34 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   :init
   (define-key prog-mode-map (kbd "C-;") 'iedit-within-defun))
 
-;; * Swiper/Ivy
+;; * Prescient
+
+;; prescient sorts and filters candidate lists for
+;; ivy/counsel/vertico, etc..
+;; Does this sometimes stop ivy search from working?
+(use-package prescient
+  :config
+  (prescient-persist-mode)) ; persist across emacs sessions
+
+;; * Swiper/Ivy/Counsel
 
 (use-package ivy
   :bind (("C-s" . swiper)
          ("C-x b" . ivy-switch-buffer))
   :config
-  (ivy-mode 1))
+  (ivy-mode 1)) ; so it starts @ emacs boot, no delay
 
-;; Help while in ivy search:
-;;  ivy hydra: C-o;
-;;  ivy full help: C-h m
+;; Help while in swiper search:
+;;  swiper hydra: C-o;
+;;  swiper full help: C-h m
 (use-package swiper
   :diminish ivy-mode
   :init
   ;;(setq ivy-use-virtual-buffers t) ; ivy-switch-buffer also shows recent files
   (setq ivy-count-format "(%d/%d) ") ; show candidate index/count in swiper
-  ;; Search with swiper, handles org-mode headline unfold much better than helm
-  ;; C-s C-w (extra C-w's expand region) also works well
-  ;; I added -i to counsel-grep-base-command so grep is case-insensitive
-  ;;  (fset 'swiper-func 'counsel-grep-or-swiper) ; uses grep for long files, esp. org
-
-  ;; swiper-isearch is much faster than plain swiper:
+  ;; swiper-isearch is much faster than plain swiper but slower than
+  ;; grep swiper?:
   ;; https://oremacs.com/2019/04/07/swiper-isearch/
-  ;; Are the matches different?
-  ;; (fset 'swiper-func-forward 'swiper) ; standard swiper, slow on large org files
-  ;; (fset 'swiper-func-backward 'swiper-backward) ; standard swiper,
-  ;; slow on large org files
-  ;; Note: could also experiment w/ swiper-isearch-toggle
   (fset 'swiper-func-forward 'swiper-isearch) ; standard swiper, slow on large org files
   (fset 'swiper-func-backward 'swiper-isearch-backward) ; standard swiper, slow on large org files
 
@@ -3916,67 +2804,15 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   (global-set-key (kbd "C-x V") 'ivy-switch-view)
   ;; actually, this seems to do the (nearly) same thing as C-s s
   (global-set-key (kbd "C-c C-r") 'ivy-resume) ;Resume last ivy completion sess
-  ;;  (global-set-key (kbd "C-x B") 'ivy-switch-buffer-other-window )
-  ;; https://www.youtube.com/watch?v=uyMdDzjQFMU
-  ;; if use prescient, want to use pers-counsel-switch-buffer* or ivy-counsel-switch-buffer*
-  ;; vertico doesn't need anything special, just works
-  ;; selectrum: persp-switch-to-buffer*
-  ;; or: persp-ibuffer for standard ibuffer
-
-  ;; counsel-switch maks ivy stop searching
-  ;; (global-set-key (kbd "C-x b") 'counsel-switch-buffer)
-  ;; (global-set-key (kbd "C-x B") 'counsel-switch-buffer-other-window )
-  ;; :config
-  ;; for consistent backwards search binding within ivy minibuffer
-
-  ;; TODO: why did ivy-minibuffer-map disappear, causing this an error here?
-;;  (bind-key "C-r" 'ivy-previous-line-or-history ivy-minibuffer-map)
-
   )
-
-;; prescient sorts and filters candidate lists for ivy/counsel.
-;; Does this sometimes stop ivy search from working?
-;;
-(use-package prescient
-  :config
-  (prescient-persist-mode)) ; persist across emacs sessions
-
-;; prescient-sort-full-matches-first
-;; prescient-use-char-folding
-;; prescient-use-case-folding
-;; prescient-save-file
 
 (use-package ivy-prescient
   :after counsel ivy prescient
   :custom
   (ivy-prescient-mode t))
-;; in docs but doesn't exist?  
-;;  (ivy-prescient-retain-classic-highlighting t))
-
-;; consider these counsel commands (from:
-;; https://dev.to/deciduously/how-i-emacs-and-so-can-you-packages-m9p)
-;; so far, I like: counsel-git, counsel-git-grep, 
-
-;; ;; Override the basic Emacs commands
-;; (use-package counsel
-;;   :bind* ; load when pressed
-;;   (("M-x"     . counsel-M-x)
-;;    ("C-s"     . swiper)
-;;    ("C-x C-f" . counsel-find-file)
-;;    ("C-x C-r" . counsel-recentf)  ; search for recently edited
-;;    ("C-c g"   . counsel-git)      ; search for files in git repo
-;;    ("C-c j"   . counsel-git-grep) ; search for regexp in git repo
-;;    ("C-c /"   . counsel-ag)       ; Use ag for regexp
-;;    ("C-x l"   . counsel-locate)
-;;    ("C-x C-f" . counsel-find-file)
-;;    ("<f1> f"  . counsel-describe-function)
-;;    ("<f1> v"  . counsel-describe-variable)
-;;    ("<f1> l"  . counsel-find-library)
-;;    ("<f2> i"  . counsel-info-lookup-symbol)
-;;    ("<f2> u"  . counsel-unicode-char)
-;;    ("C-c C-r" . ivy-resume)))     ; Resume last Ivy-based completion
 
 (use-package counsel ; better kill-ring 2nd yanking
+  :after ivy
   :init
   :diminish counsel-mode
   :bind
@@ -3985,194 +2821,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
    ("M-y" . ivy-next-line)) ; needed?
   :config
   ;; Internet search, compare w/ google-this
-  ;; TODO: make it search for region if selected, like
-  ;; sdo/swiper-region and for thing at point, like c-c s
-  ;; (swiper-isearch-thing-at-point) does now.  There are many
-  ;; *-at-point functions already here.  Maybe one is an inspiration.
-  ;; Some existing funcs call emac's symbol-at-point.
   (global-set-key (kbd "C-S-s")  'counsel-search)) ; doesn't work in :bind
-
-  ;; TODO? use this to replace ido func, as in
-  ;; https://github.com/nobiot/Zero-to-Emacs-and-Org-roam/blob/main/40.Qol.md
-;; ?
-  ;; this would mess up find-file guessing, etc. and ido grid-mode
-;; (since ivy-explorer has probs and is unsupported)
-
-  ;; (global-set-key (kbd "M-x") #'counsel-M-x)
-;; This causes find-file to crash when in a scratch buffer, dired, and
-;; a few other places.  It works fine or .org, .emacs and other
-;; programming files.
-;; It might have been causing org-roam problems too, so I commented it
-;; out now.
-;; Bug Report: https://github.com/clemera/ivy-explorer/issues/16
- ; ido-grid-mode for ivy: C-f/b/p/n/a/e navigate 
-;; (use-package ivy-explorer
-;;   :after ivy
-;;   :diminish ivy-explorer-mode
-;;   :init
-;;   (ivy-explorer-mode 1))
-
-;; from: https://github.com/abo-abo/swiper/issues/2021
-;;; Ivy Hydra
-;; replace the ivy-hydra with this learning one
-;; uses regular ivy-mode keybindings to provide cleaner help and aid learning
-(defhydra hydra-ivy (:hint nil
-                           :color pink)
-  "
-
-Navigation:
-_C-n_/_C-p_ next/previous  _M-<_/_M->_ begin/end  _C-v_/_M-v_ scroll up/down
-_C-'_ select with avy
-
-Use current selection to:
-_RET_,_C-m_ default action  _M-o_ choose from actions
-_C-M-j_ use current input not selection
-
-Do action with current selection and loop to choose more items:
-_C-M-m_ default action  _C-M-o_ choose action
-_C-M-n_/_C-M-p_ default action and select next/previous
-
-Insert into input field:
-_TAB_ complete input as far as possible
-_C-j_ or _TAB_ _TAB_ complete directory and search or complete filename and do action
-_M-n_/_M-p_ history next/previous  _M-i_ selection  _M-j_ word-at-point
-_C-r_ reverse search history  _C-s_ next line or last from history if empty 
-
-Other operations with current candidates:
-_S-SPC_ restrict to current matches  _M-w_ saves selections to kill ring
-_C-c C-o_ open candidates in ivy-occur buffer
-
-Other:
-_c_ toggle calling  _M-c_ toggle case folding  _M-r_ toggle regexp
-_C-c C-s_ rotate sort function if multiple defined
-_C-c C-a_ toggle user configured ignore lists
-_C-M-a_ change default action from list for this session
-"
-  ;; Navigation
-  ("M-<" ivy-beginning-of-buffer)
-  ("C-n" ivy-next-line)
-  ("C-p" ivy-previous-line)
-  ("M->" ivy-end-of-buffer)
-  ("C-v" ivy-scroll-up-command)
-  ("M-v" ivy-scroll-down-command)
-  ;; Single selection, action, exit
-  ("RET" ivy-done :exit t)
-  ("C-m" ivy-done :exit t)
-  ("M-o" ivy-dispatching-done :exit t)
-  ("C-j" ivy-alt-done :exit t)
-  ("TAB" ivy-partial-or-done :exit t)
-  ("C-M-j" ivy-immediate-done :exit t)
-  ("C-'" ivy-avy :exit nil)
-  ;; Multiple selections, actions, no exit
-  ("C-M-m" ivy-call)
-  ("C-M-o" ivy-dispatching-call)
-  ("C-M-n" ivy-next-line-and-call)
-  ("C-M-p" ivy-previous-line-and-call)
-  ;; alter input
-  ("M-n" ivy-next-history-element)
-  ("M-p" ivy-previous-history-element)
-  ("M-i" ivy-insert-current)
-  ("M-j" ivy-yank-word)
-  ("S-SPC" ivy-restrict-to-matches)
-  ("C-r" ivy-reverse-i-search)
-  ("C-s" ivy-next-line-or-history)
-  ;; other
-  ("M-w" ivy-kill-ring-save)
-  ;; non-standard utilities
-  ("c" ivy-toggle-calling)
-  ("M-c" ivy-toggle-case-fold)
-  ("M-r" ivy-toggle-regexp-quote)
-  ("C-c C-s" ivy-rotate-sort)
-  ("C-c C-a" ivy-toggle-ignore)
-  ("C-M-a" ivy-read-action)
-  ("C-c C-o" ivy-occur :exit t)
-  )
-(define-key ivy-minibuffer-map (kbd "C-o") 'hydra-ivy/body)
-
-;; ;; Is this needed anymore, since ivy-isearch is now (Apr 2019) so much faster?
-;; (defun org-toggle-outline-visibility ()
-;;   "Hides all subheadlines or restores original visibility before toggle.
-;;    Eventually use this to speed up ivy by showing everything, searching and then unshowing everything."
-;;   (interactive)
-;;   ;; NAH, need to call "hide everything on one call; save outline on next.  Also, apparently need for arguments for org-save-outline-visibility:  see emacs help. 
-;;   (org-save-outline-visibility nil))
-
-;; * IDO Mode
-
-;; TODO: find a new file that's like something already existing but shorter (so you can create a new file w/ a shorter name.  eg.s C-x C-x tmp   and there
-;; is already a file named tmp.txt.  Or, renane a file to a shorter
-;; version of its name e.g. rename tmp.txt to tmp.
-;; I can't do this.  Ido and counsel-find-file both
-;; have a problem in this situation.
-;; Note: ido on find-file supposedly can be overriden with C-j (to validate) or
-;; C-F (after you've narrowed options).  However, Evernote is
-;; currently bound to C-F.
-;; https://stackoverflow.com/questions/21007014/not-selecting-what-emacs-ido-is-suggesting
-;; But neither option works. in the case of shorter name.
-;;
-;; Commentining out (ido-mode 1) and (ido-everywhere 1) fixes file
-;; visiting but not file renaming.  Ivy is getting in the
-;; way with naming: can force it to accept your shorter choice with C-M-j
-;;
-;; TODO: how to open a pdf with ido (mapped to C-x C-f).  Currently,
-;; it doesn't use the system default (PDF Xchange editor) but instead
-;; opens it in an emacs buffer.  Is Ivy any better?
-;; Nope. counsel-find-file does it too.
-;; In dired, I can open a pdf with the sytem pdf reader with 'W' key.
-;; This calls browse-url-of-dired-file; hitting RETURN of 'f' calls
-;; dired-find-file
-
-;; Ido mode (a replacement for iswitchb and much else).  Much is in customizations
-;; advice from: http://www.masteringemacs.org/article/introduction-to-ido-mode
-;; See also sdo/get-recentf() in keybinding section, which (currently) uses ido
-;; Ivy is fancier but I'm keeping Ido around because it has a nice
-;; grid mode that isn't available for Ivy (but see ivy-explorer).
-;;
-;; Should be placed after ivy to avoid partial ivy overwrites of ido functions
-
-;; Commenting out  these fixed renaming a file to a shorter but similar name
-;;(ido-mode 1) ; https://github.com/DarwinAwardWinner/ido-completing-read-plus
-;;(ido-everywhere 1)
-
-;; From: http://stackoverflow.com/questions/17986194/emacs-disable-automatic-file-search-in-ido-mode
-;; so it doesn't search for file completions in other directories.  Really
-;; hoses up dired directory create, for example.
-;;(setq ido-auto-merge-work-directories-length -1)
-
-;; replaces emacs w/ ido in as many places as possible
-;; https://github.com/DarwinAwardWinner/ido-completing-read-plus
-;; (use-package ido-completing-read+
-;;   :config (ido-ubiquitous-mode 1)) ; run it (almost) everywhere
-
-;; how files are ordered in the ido mini-buffer
-;; (setq ido-file-extensions-order '(".org" ".m" ".R" "_emacs" ".emacs" ".txt" ".py" ".pl" ".pm" ".el" ".c" ".cpp" ".h" ".rb" ".xml"))
-
-;; (use-package ido-grid-mode ;; https://github.com/emacsmirror/ido-vertical-mode
-;;   :config (ido-grid-mode 1))
-
-;; (use-package flx-ido
-;;   :init
-;;   ;; copied from https://github.com/bdd/.emacs.d/blob/master/packages.el
-;;   (setq gc-cons-threshold (* 20 (expt 2 20)) ido-use-faces nil) ; megabytes
-;;   :config
-;;   (flx-ido-mode 1)
-;;   ;; disable ido faces to see flx highlights.
-;;   (setq ido-enable-flex-matching t)
-;;   (setq ido-use-faces nil))
-
-;; ;; This disappeard from melpa, and I gues I'm not using it anyway
-;; ;; ;; I also have a hydra set up to do counsel bindings but ido-describe-bindings is here because it also shows unicode chars (that I don't know how to activate with my keyboard, but at least they're there...)
-;; ;; (use-package ido-describe-bindings
-;; ;;   :config (global-set-key (kbd "C-h b") 'ido-describe-bindings))
-
-;; ;; ido- matching for emacs commands: https://www.reddit.com/r/emacs/comments/1xnhws/speaking_of_emacs_modes_flx_flxido_ido_smex_helm/?st=iu1g56lu&sh=554484fb
-;; (use-package smex
-;;   :config
-;;   (smex-initialize)
-;;   (global-set-key (kbd "M-x") 'smex)
-;;   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;;   ;; This is your old M-x.
-;;   (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
 
 ;; * Company Mode
 ;; Tab completion of variables, common words, ...  To activate (not a default): M-x company-mode or turn it on globally.
@@ -4203,34 +2852,6 @@ _C-M-a_ change default action from list for this session
 	  '(lambda ()
 	     (set (make-local-variable 'dabbrev-case-fold-search) t)
 	     (set (make-local-variable 'dabbrev-case-replace) t)))
-
-;; ** Google translate.
-
-;; There are tons of customizations
-;; https://github.com/atykhonov/google-translate
-;;
-;; TODO fix keybindings.  I have a syntax error of some kind
-;;
-;; (use-package google-translate
-;;    :defer t
-;;    :commands (google-translate-query-translate-reverse
-;;                 google-translate-query-translate
-;;                 google-translate-at-point
-;;                 google-translate-at-point-reverse)
-;;    :init
-;;    (progn
-;;      (bind-key "c-c t s"  'google-translate-smooth-translate)
-;;      (bind-key "c-c t l" 'google-translate-query-translate-reverse)
-;;      (bind-key "c-c t l" 'google-translate-query-translate)
-;;      (bind-key "c-c t k" 'google-translate-at-point)
-;;      (bind-key "c-c t k" 'google-translate-at-point-reverse))
-;;    :config
-;;    (setq google-translate-default-source-language "en")
-;;    (setq google-translate-default-target-language "de")
-;;    ;; use c-n to switch language translation direction
-;;    (setq google-translate-translation-directions-alist '(("en" . "de") ("de" . "en")))
-;;    ;; (org-babel-load-file "~/.emacs.d/init-google-translate.org") 
-;;    )
 
 ;; ** Word counting
 (defun count-words-buffer ()
@@ -4267,9 +2888,8 @@ _C-M-a_ change default action from list for this session
 
 ;; from: https://github.com/gicmo/dot-emacs/blob/master/init.el
 ;;       http://www.nextpoint.se/?p=656
-
-
-;; windows hunbspell can't save to personal dict
+;;
+;; windows hunspell is more "modern" but I can't make it save to personal dict
 ;; my bug report: https://github.com/d12frosted/flyspell-correct/issues/97#issuecomment-923047599
 ;; (setq hunspell_bin (sdo/find-exec "hunspell" "Needed by ispell and flyspell."))
 ;; (setq hunspell_dict_dir (expand-file-name "~/.hunspell"))
@@ -4329,14 +2949,6 @@ _C-M-a_ change default action from list for this session
 (use-package flyspell-correct-ivy
   :after flyspell-correct)
 
-;; ** find repeated words
-;; redundant since in writegood
-;; (defun find-find-word-word ()
-;;   (interactive)
-;;   (re-search-forward "\\b\\(\\w+\\)\\W+\\1\\b"))
-;; ;; (global-set-key "\e=" 'find-find-word-word) ; use this for goto-line-with-feedback
-
-
 ;; ** writegood
 (use-package writegood-mode
   :defer t)
@@ -4379,9 +2991,8 @@ _C-M-a_ change default action from list for this session
 
 ;; ** Latex
 
-;; Note: while debugging, I uninstalled imagemagick (choco) and then reinstalled it on SB2.  But now magick .exe doesn't exist.
-;; Skip it for now.
-;;(sdo/find-exec "magick" "Imagemagick binary required by ein & latex preview")
+(sdo/find-exec "latexmk"
+               "For org-mode Latex pdfs. TexLive doesn't install it by default")
 
 ;; Hack: (use-package auctex) doesn;t work because, "once installed, auctex overrides the tex package":
 ;; http://cachestocaches.com/2015/8/getting-started-use-package/
@@ -4409,15 +3020,6 @@ When done, can undo the window config with winner-mode: C-c Left"
 
 ;; * Emacs Command Execution
 
-;; undo-tree was useful once in a while, but it was buggy on 19.03.21 so I removed it.
-;; C-/ is like old undo, C-? is redo.  C-x u visualizes an undo tree, q to exit
-;; (use-package undo-tree
-;;   :diminish undo-tree-mode
-;;   :config
-;;   (global-undo-tree-mode)
-;;   (setq undo-tree-visualizer-timestamps t)
-;;   (setq undo-tree-visualizer-diff t))
-
 (fset 'yes-or-no-p 'y-or-n-p) ; type just "y" instead of "yes"
 
 (use-package which-key ; complex key hints, better than guide-key
@@ -4428,21 +3030,6 @@ When done, can undo the window config with winner-mode: C-c Left"
   (which-key-setup-side-window-right-bottom)) ; do bottom if no room on side
 
 (use-package helm-descbinds :commands helm-descbinds)
-
-(use-package helm-swoop
-  :straight t
-  :defer t
-  :bind
-  (;;("C-x c s" . helm-swoop)
-   ("M-i" . helm-swoop)
-   ("M-I" . helm-swoop-back-to-last-point)
-   ("C-c M-i" . helm-multi-swoop)
-   ("C-x M-i" . helm-multi-swoop-all))
-  :config
-  (progn
-    (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
-    (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop))
-  )
 
 (defhydra hydra-utils (:color blue :hint nil)
   "
@@ -4594,59 +3181,10 @@ reuse it's window, otherwise create new one."
 ;; ** Modeline
 (display-time-mode 1) ; time on the modeline (is customized)
 
-;; From?: https://www.reddit.com/r/emacs/comments/722t6w/in_smartlinemode_how_to_only_view_buffername_and/dnffnoq/
 (use-package smart-mode-line 
   :config
   (setq sml/theme nil) ; don't change existing modeline faces
   (sml/setup))
-
-;; ** Shell Look (xterm, eshell, etc.)
-
-;; ANSI & XTERM 256 color support
-;; From:
-;; https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-shell.el
-;;
-;; TODO: what does this do?  Only for when running emacs in a
-;; terminal.  Then run xterm-colorize-buffer to get colors?  Is it
-;; doing anything for eshell on windows or mac?
-;;
-;; (use-package xterm-color
-;;   :defines (compilation-environment
-;;             eshell-preoutput-filter-functions
-;;             eshell-output-filter-functions)
-;;   :functions (compilation-filter my-advice-compilation-filter)
-;;   :init
-;;   ;; For shell and interpreters
-;;   (setenv "TERM" "xterm-256color")
-;;   (setq comint-output-filter-functions
-;;         (remove 'ansi-color-process-output comint-output-filter-functions))
-;;   (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter)
-;;   (add-hook 'shell-mode-hook
-;;             (lambda ()
-;;               ;; Disable font-locking to improve performance
-;;               (font-lock-mode -1)
-;;               ;; Prevent font-locking from being re-enabled
-;;               (make-local-variable 'font-lock-function)
-;;               (setq font-lock-function #'ignore)))
-
-;;   ;; For eshell
-;;   (with-eval-after-load 'esh-mode
-;;     (add-hook 'eshell-before-prompt-hook
-;;               (lambda ()
-;;                 (setq xterm-color-preserve-properties t)))
-;;     (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
-;;     (setq eshell-output-filter-functions
-;;           (remove 'eshell-handle-ansi-color eshell-output-filter-functions)))
-
-;;   ;; For compilation buffers
-;;   (setq compilation-environment '("TERM=xterm-256color"))
-;;   (defun my-advice-compilation-filter (f proc string)
-;;     (funcall f proc
-;;              (if (eq major-mode 'rg-mode) ; compatible with `rg'
-;;                  string
-;;                (xterm-color-filter string))))
-;;   (advice-add 'compilation-filter :around #'my-advice-compilation-filter)
-;;   (advice-add 'gud-filter :around #'my-advice-compilation-filter))
 
 ;; ** Other
 
@@ -4655,7 +3193,6 @@ reuse it's window, otherwise create new one."
 ;; visual line mode messes up org-tables but is GREAT for everything else.
 (global-visual-line-mode +1) ; soft line wrapping
 (global-set-key (kbd "C-c t") 'toggle-truncate-lines) ; e.g. to view org-mode tables
-;;(global-set-key (kbd "C-c w") 'toggle-truncate-lines) ; e.g. to view org-mode tables
 
 (column-number-mode 1) ; in mode-line
 (mouse-avoidance-mode 'animate)  ; get mouse out of way of cursor, is customized
@@ -4679,14 +3216,8 @@ reuse it's window, otherwise create new one."
   		    (lambda ()
   		      (adaptive-wrap-prefix-mode +1)
   		      (diminish 'visual-line-mode))))
-;;Other adaptive-wrap settings I could use but
-;; don't want extra indent after bullet
-;; (with-eval-after-load 'adaptive-wrap
-;;   (setq-default adaptive-wrap-extra-indent 0))
-;;  (setq-default adaptive-wrap-extra-indent 2))
 
-;; turn fill-paragraph into a fill/unfill toggle
-;; runs when type M-q
+;; turn fill-paragraph into a fill/unfill toggle, runs when type M-q
 (use-package unfill
   :bind ([remap fill-paragraph] . unfill-toggle))
 
@@ -4696,48 +3227,6 @@ reuse it's window, otherwise create new one."
 (setq visible-bell t)
 ;; turn off the annoying alarm bell (is this redundant?)
 (setq ring-bell-function 'ignore)
-
-;; * Outside World
-;; ** Weather
-;;
-;; SEEMS BROKEN, as of Feb 2021
-;; The problem might be known, and there's an unmerged PR to fix it (could try
-;; *straight to get it?)
-;; https://github.com/bcbcarl/emacs-wttrin/issues/16
-
-;; ;; M-x wttrin to start, 'g' to next city, 'q' qo quit
-;; (use-package wttrin
-;;   :straight t
-;;   :commands (wttrin wttrin-query wttrin-exit)
-;;   :init
-;;   (setq wttrin-default-cities '("Seattle"
-;;                                 "Alexandria, MN"
-;;                                 "Minneapolis"
-;;                                 "New York"
-;;                                 "Copenhagen, Denmark"
-;;                                 "Bayreuth, Germany")))
-;; ;; Originally from: http://pragmaticemacs.com/emacs/weather-in-emacs/
-;; ;; Rewritten to remove dependence on obsolete frame-cmds pkg, and to
-;; ;; clean up after itself at quit (sdo in Jan 2020)
-
-;; ;; Function to open wttrin with first city on list
-;; (defun sdo/wttrin ()
-;;   "Open `wttrin' without prompting, using first city in `wttrin-default-cities'.  Window is sized to fit wttrn display."
-;;   (interactive)
-;;   (setq pre-wttrin-frame-config (current-frame-configuration))
-;;   (delete-other-windows)
-;;   (set-frame-width (selected-frame) 130)
-;;   (set-frame-height (selected-frame) 48)
-;;   (set-background-color "black") ;; goes away after do wttrn 'q'
-;;   (set-foreground-color "gray")
-;;   (wttrin-query (car wttrin-default-cities)))
-
-;; (defun sdo/wttrin-restore-frame ()
-;;   "Remove all *wttr.in buffers, then restore frame and window configuration saved prior to launching wttrin."
-;;   (interactive)
-;;   (kill-matching-buffers "*wttr.in - *" nil t)
-;;   (set-frame-configuration pre-wttrin-frame-config))
-;; (advice-add 'wttrin-exit :after #'sdo/wttrin-restore-frame)
 
 ;; * Shrink garbage collection @ end of init
 
@@ -4750,20 +3239,10 @@ reuse it's window, otherwise create new one."
 ;; * Variables Set By Emacs's built-in Customization Interface 
 ;; ** Custom Set Variables
 
-;; '(w32shell-cygwin-bin "C:\\cygwin64\\bin"))
+;; custom set variables used to be here but emacs moved them and keeps
+;; them moved.  TODO: move them back.
 
 ;; ** Custom Set Faces
-
-;; For Macbook Pro
-;; '(default ((t (:inherit nil :extend nil :stipple nil :background
-;; "#ffffff" :foreground "#000000" :inverse-video nil :box nil
-;; :strike-through nil :overline nil :underline nil :slant normal
-;; :weight normal :height 120 :width normal :foundry "nil" :family
-;; "Consolas"))))
-
-;; For windows PCs
-;; '(default ((t (:inherit nil :stipple nil :background "#ffffff" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 102 :width normal :foundry "outline" :family "Consolas"))))
-
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
