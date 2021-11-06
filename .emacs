@@ -1469,12 +1469,13 @@ Version 2019-11-04 2021-02-16"
 ;; (when (setq conda_exe (sdo/find-exec "thisIsNotThere" "Needed for most python packages"))
 
 (when (setq conda_exe (sdo/find-exec "conda" "Needed for most python packages"))
+  (setq conda-env-home-directory (expand-file-name
+                                  (concat (file-name-directory conda_exe)
+                                          "..")))
+
   (use-package conda
     :defer 0
     :config
-    (setq conda-env-home-directory (expand-file-name
-                                    (concat (file-name-directory conda_exe)
-                                            "..")))
     (custom-set-variables
      '(conda-anaconda-home conda-env-home-directory))
     
@@ -1836,6 +1837,7 @@ Version 2019-11-04 2021-02-16"
      (other . "gnu")))
  '(calendar-week-start-day 1)
  '(column-number-mode t)
+ '(conda-anaconda-home conda-env-home-directory)
  '(counsel-grep-base-command "grep -nEi '%s' %s")
  '(counsel-search-engine 'google)
  '(delete-selection-mode nil)
@@ -1869,8 +1871,6 @@ Version 2019-11-04 2021-02-16"
  '(flycheck-python-pycompile-executable pythonbin)
  '(flyspell-correct-interface 'flyspell-correct-ivy)
  '(flyspell-duplicate-distance 0)
- '(flyspell-issue-message-flag nil)
- '(flyspell-issue-welcome-flag nil)
  '(focus-follows-mouse t)
  '(gdb-many-windows t)
  '(gud-chdir-before-run t)
@@ -1981,7 +1981,6 @@ Version 2019-11-04 2021-02-16"
  '(sml/shorten-directory t)
  '(sml/show-file-name nil)
  '(sml/vc-mode-show-backend nil)
- '(swiper-action-recenter nil)
  '(tool-bar-mode nil)
  '(visual-line-fringe-indicators '(nil top-right-angle))
  '(w32-use-w32-font-dialog nil)
@@ -2174,37 +2173,11 @@ Version 2019-11-04 2021-02-16"
 ;; but include pdfs in energy.bib so it can find pdfs if visited manually
 (setq bibpdf_list (list bibfile_energy_pdf_dir bibfile_roam_pdf_dir)) 
 
-;; ** Org-download
+;; ** Org package, basic config
 
-;; From: https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
-(use-package org-download
-  :after org
-  :config
-  ;; add support to dired
-  (add-hook 'dired-mode-hook 'org-download-enable))
-
-;; make drag-and-drop image save in the same name folder as org file
-;; ex: `aa-bb-cc.org' then save image test.png to `aa-bb-cc/test.png'
-(defun org-download-method-dirname-from-orgfile (link)
-  (let ((filename
-         (file-name-nondirectory
-          (car (url-path-and-query
-                (url-generic-parse-url link)))))
-        (dirname (file-name-sans-extension (buffer-name)) ))
-    ;; if directory not exist, create it
-    (unless (file-exists-p dirname)
-      (make-directory dirname))
-    ;; return the path to save the download files
-    (expand-file-name filename dirname)))
-
-;; ** Org Basic Config
-
-;; TODO: experiment with C-c C-x C-b or M-x org-tree-to-indirect-buffer
+;; TODO: experiment with C-c C-x C-b or M-x sdo/org-tree-to-indirect-buffer
 ;;
 (use-package org
-;;  :straight org-plus-contrib ; fewer clean install errors, still must restart 3X
-  ;;  :pin gnu
-  ;; :pin melpa ;; messes up straight.el
   :defer 0
   :diminish org-mode  ; doesn't hide the "Org" in modeline, for some reason
   :diminish org-table-header-line-mode  ; customization: org-table-header-line-p
@@ -2284,6 +2257,8 @@ Version 2019-11-04 2021-02-16"
   ;; painful
   ;;(define-key org-mode-map (kbd "C-c <C-tab>") 'org-fold-outer)
   )
+
+;; ** Org Basic Config
 
 (use-package org-autolist ; new - or -[ ] w/ return
   :diminish org-autolist-mode
@@ -2483,6 +2458,29 @@ TODO: add a cycle that opens or collapses all prop drawers?"
         (forward-line))
       (beginning-of-line)))
   )
+
+;; ** Org-download
+
+;; From: https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
+(use-package org-download
+  :after org
+  :config
+  ;; add support to dired
+  (add-hook 'dired-mode-hook 'org-download-enable))
+
+;; make drag-and-drop image save in the same name folder as org file
+;; ex: `aa-bb-cc.org' then save image test.png to `aa-bb-cc/test.png'
+(defun org-download-method-dirname-from-orgfile (link)
+  (let ((filename
+         (file-name-nondirectory
+          (car (url-path-and-query
+                (url-generic-parse-url link)))))
+        (dirname (file-name-sans-extension (buffer-name)) ))
+    ;; if directory not exist, create it
+    (unless (file-exists-p dirname)
+      (make-directory dirname))
+    ;; return the path to save the download files
+    (expand-file-name filename dirname)))
 
 ;; ** Org Export
 
@@ -2750,19 +2748,362 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   :config
   (prescient-persist-mode)) ; persist across emacs sessions
 
-;; * Swiper/Ivy/Counsel
+;; * Completion: Vertico/Corfu/Orderless/Marginalia/Embark
 
+;; ;; SUMMARY: Lot's of great functions but I prefer swiper search
+;; ;; highlighting.  Worth the trade?
+
+;; ;; ** Completions with Vertico
+
+;; ;; This came from systemcrafter guy: https://config.daviwil.com/emacs
+
+;; (defun dw/minibuffer-backward-kill (arg)
+;;   "When minibuffer is completing a file name delete up to parent
+;; folder, otherwise delete a word"
+;;   (interactive "p")
+;;   (if minibuffer-completing-file-name
+;;       ;; Borrowed from https://github.com/raxod502/selectrum/issues/498#issuecomment-803283608
+;;       (if (string-match-p "/." (minibuffer-contents))
+;;           (zap-up-to-char (- arg) ?/)
+;;         (delete-minibuffer-contents))
+;;       (backward-kill-word arg)))
+
+;; ;; TODO: try vertico extensions:
+;; ;; https://github.com/minad/vertico#extensions
+;; ;; vertico- buffer, directory, grid, mouse, repeat, reverse
+;; ;; TODO: C-r does search backwards, like I did w/ swiper
+;; ;; TODO: show full match in main buffer, like ivy
+;; ;;
+;; (use-package vertico
+;;   :bind (:map vertico-map
+;;          ("C-s" . vertico-next)
+;;          ("C-r" . vertico-previous)
+;;          ;; ("C-j" . vertico-next)
+;;          ;; ("C-k" . vertico-previous)
+;;          ;; ("C-f" . vertico-exit)
+;;          :map minibuffer-local-map
+;;          ("M-h" . dw/minibuffer-backward-kill))
+;;   :custom
+;;   (vertico-cycle t)
+;;   :custom-face
+;; ;;  (vertico-current ((t (:background "#3a3f5a"))))
+;;   :init
+;;   (vertico-mode))
+
+;; ;; ** Completions with selectrum
+
+;; ;; ;; I'm not sure how this is different from vertico
+;; ;; ;; To use this, must also modify consult bindings so calls selctrum functions
+;; ;; ;; Started from https://config.daviwil.com/emacs
+;; ;; (use-package selectrum
+;; ;;   :bind (("C-M-r" . selectrum-repeat)
+;; ;;          :map selectrum-minibuffer-map
+;; ;;          ("C-r" . selectrum-select-from-history)
+;; ;;          ("C-j" . selectrum-next-candidate)
+;; ;;          ("C-k" . selectrum-previous-candidate)
+;; ;;          :map minibuffer-local-map
+;; ;;          ("M-h" . backward-kill-word))
+;; ;;   :custom
+;; ;;   (selectrum-fix-minibuffer-height t)
+;; ;;   (selectrum-num-candidates-displayed 7)
+;; ;;   (selectrum-refine-candidates-function #'orderless-filter)
+;; ;;   (selectrum-highlight-candidates-function #'orderless-highlight-matches)
+;; ;;   :custom-face
+;; ;;   (selectrum-current-candidate ((t (:background "light gray"))))
+;; ;;   :init
+;; ;;   (selectrum-mode 1))
+
+;; ;; ** Completions in Regions with Corfu
+
+;; ;; is this doing anything?
+;; (use-package corfu
+;;   :bind (:map corfu-map
+;;               ;; ("C-j" . corfu-next)
+;;               ;; ("C-k" . corfu-previous)
+;;               ;; ("C-f" . corfu-insert))
+;;               )
+;;   :custom
+;;   (corfu-cycle t)
+;;   :config
+;;   (corfu-global-mode))
+
+;; ;; ** Improved Candidate Filtering with Orderless
+
+;; (use-package orderless
+;;   :init
+;;   (setq completion-styles '(orderless)
+;;         completion-category-defaults nil
+;;         completion-category-overrides '((file (styles . (partial-completion))))))
+
+;; ;; (use-package restricto
+;; ;;   :straight '(restricto :host github
+;; ;;                         :repo "oantolin/restricto")
+;; ;;   :after vertico
+;; ;;   :demand t
+;; ;;   :bind (:map vertico-map
+;; ;;          ("S-SPC" . restricto-narrow))
+;; ;;   :config
+;; ;;   (restricto-mode))
+
+;; ;; Persist history over Emacs restarts. Vertico sorts by history
+;; ;; position.  Like prescient, I guess.
+;; ;; from: https://github.com/minad/vertico
+;; (use-package savehist
+;;   :init
+;;   (savehist-mode))
+
+;; ;; A few more useful configurations...
+;; ;; from: https://github.com/minad/vertico
+;; (use-package emacs
+;;   :init
+;;   ;; Add prompt indicator to `completing-read-multiple'.
+;;   ;; Alternatively try `consult-completing-read-multiple'.
+;;   (defun crm-indicator (args)
+;;     (cons (concat "[CRM] " (car args)) (cdr args)))
+;;   (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
+
+;;   ;; Do not allow the cursor in the minibuffer prompt
+;;   (setq minibuffer-prompt-properties
+;;         '(read-only t cursor-intangible t face minibuffer-prompt))
+;;   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+
+;;   ;; Emacs 28: Hide commands in M-x which do not work in the current mode.
+;;   ;; Vertico commands are hidden in normal buffers.
+;;   ;; (setq read-extended-command-predicate
+;;   ;;       #'command-completion-default-include-p)
+
+;;   ;; Enable recursive minibuffers
+;;   (setq enable-recursive-minibuffers t))
+
+;; ;; ** Consult Commands
+
+;; ;; Consult provides a lot of useful completion commands similar to
+;; ;; Ivy's Counsel.
+
+;; ;; Started from systemcrafter guy: https://config.daviwil.com/emacs
+;; (use-package consult
+;;   :demand t
+;;   :bind (("C-M-l" . consult-imenu)
+;;          ;; ("C-M-j" . persp-switch-to-buffer*) ;; use when if have perspective 
+;;          ("C-x C-r" . consult-recent-file) ;; overrides my function, I hope
+;;          ("C-x C-b" . consult-buffer) ;; override ibuffer binding, does more
+;;          ("C-s" . consult-line) ;; also consult-line-multi searches across bufs
+;;          ;;("C-s" . consult-isearch) ; doesn't work
+;;          ;; overrides deadgrep, also has grep, git-grep
+;;          ("<F5>" . consult-ripgrep)
+;;          ;; search org & outshine headers (overrides default isearch bindings)
+;;          ;; ("C-c s" . consult-outline) ;; works but hangs in energytop.org
+;;          :map minibuffer-local-map
+;;          ("C-r" . consult-history))
+;;   :custom
+;;   ;;(consult-project-root-function #'dw/get-project-root)
+;;   (completion-in-region-function #'consult-completion-in-region)
+;;   (consult-line-point-placement 'match-beginning)
+;;   :config
+;;   (consult-preview-at-point-mode)) ;; SDO: use new command name, I think
+
+;; ;; Example configuration for Consult
+;; ;; https://github.com/minad/consult
+;; ;; (use-package consult
+;; ;;   ;; Replace bindings. Lazily loaded due by `use-package'.
+;; ;;   :bind (;; C-c bindings (mode-specific-map)
+;; ;;          ("C-c h" . consult-history)
+;; ;;          ("C-c m" . consult-mode-command)
+;; ;;          ("C-c b" . consult-bookmark)
+;; ;;          ("C-c k" . consult-kmacro)
+;; ;;          ;; C-x bindings (ctl-x-map)
+;; ;;          ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+;; ;;          ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
+;; ;;          ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+;; ;;          ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+;; ;;          ;; Custom M-# bindings for fast register access
+;; ;;          ("M-#" . consult-register-load)
+;; ;;          ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
+;; ;;          ("C-M-#" . consult-register)
+;; ;;          ;; Other custom bindings
+;; ;;          ("M-y" . consult-yank-pop)                ;; orig. yank-pop
+;; ;;          ("<help> a" . consult-apropos)            ;; orig. apropos-command
+;; ;;          ;; M-g bindings (goto-map)
+;; ;;          ("M-g e" . consult-compile-error)
+;; ;;          ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
+;; ;;          ("M-g g" . consult-goto-line)             ;; orig. goto-line
+;; ;;          ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+;; ;;          ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
+;; ;;          ("M-g m" . consult-mark)
+;; ;;          ("M-g k" . consult-global-mark)
+;; ;;          ("M-g i" . consult-imenu)
+;; ;;          ("M-g I" . consult-imenu-multi)
+;; ;;          ;; M-s bindings (search-map)
+;; ;;          ("M-s f" . consult-find)
+;; ;;          ("M-s F" . consult-locate)
+;; ;;          ("M-s g" . consult-grep)
+;; ;;          ("M-s G" . consult-git-grep)
+;; ;;          ("M-s r" . consult-ripgrep)
+;; ;;          ("M-s l" . consult-line)
+;; ;;          ("M-s L" . consult-line-multi)
+;; ;;          ("M-s m" . consult-multi-occur)
+;; ;;          ("M-s k" . consult-keep-lines)
+;; ;;          ("M-s u" . consult-focus-lines)
+;; ;;          ;; Isearch integration
+;; ;;          ("M-s e" . consult-isearch-history)
+;; ;;          :map isearch-mode-map
+;; ;;          ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
+;; ;;          ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
+;; ;;          ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
+;; ;;          ("M-s L" . consult-line-multi))           ;; needed by consult-line to detect isearch
+
+;; ;;   ;; Enable automatic preview at point in the *Completions* buffer.
+;; ;;   ;; This is relevant when you use the default completion UI,
+;; ;;   ;; and not necessary for Vertico, Selectrum, etc.
+;; ;;   :hook (completion-list-mode . consult-preview-at-point-mode)
+
+;; ;;   ;; The :init configuration is always executed (Not lazy)
+;; ;;   :init
+
+;; ;;   ;; Optionally configure the register formatting. This improves the register
+;; ;;   ;; preview for `consult-register', `consult-register-load',
+;; ;;   ;; `consult-register-store' and the Emacs built-ins.
+;; ;;   (setq register-preview-delay 0
+;; ;;         register-preview-function #'consult-register-format)
+
+;; ;;   ;; Optionally tweak the register preview window.
+;; ;;   ;; This adds thin lines, sorting and hides the mode line of the window.
+;; ;;   (advice-add #'register-preview :override #'consult-register-window)
+
+;; ;;   ;; Optionally replace `completing-read-multiple' with an enhanced version.
+;; ;;   (advice-add #'completing-read-multiple :override #'consult-completing-read-multiple)
+
+;; ;;   ;; Use Consult to select xref locations with preview
+;; ;;   (setq xref-show-xrefs-function #'consult-xref
+;; ;;         xref-show-definitions-function #'consult-xref)
+
+;; ;;   ;; Configure other variables and modes in the :config section,
+;; ;;   ;; after lazily loading the package.
+;; ;;   :config
+
+;; ;;   ;; Optionally configure preview. The default value
+;; ;;   ;; is 'any, such that any key triggers the preview.
+;; ;;   ;; (setq consult-preview-key 'any)
+;; ;;   ;; (setq consult-preview-key (kbd "M-."))
+;; ;;   ;; (setq consult-preview-key (list (kbd "<S-down>") (kbd "<S-up>")))
+;; ;;   ;; For some commands and buffer sources it is useful to configure the
+;; ;;   ;; :preview-key on a per-command basis using the `consult-customize' macro.
+;; ;;   (consult-customize
+;; ;;    consult-theme
+;; ;;    :preview-key '(:debounce 0.2 any)
+;; ;;    consult-ripgrep consult-git-grep consult-grep
+;; ;;    consult-bookmark consult-recent-file consult-xref
+;; ;;    consult--source-file consult--source-project-file consult--source-bookmark
+;; ;;    :preview-key (kbd "M-."))
+
+;; ;;   ;; Optionally configure the narrowing key.
+;; ;;   ;; Both < and C-+ work reasonably well.
+;; ;;   (setq consult-narrow-key "<") ;; (kbd "C-+")
+
+;; ;;   ;; Optionally make narrowing help available in the minibuffer.
+;; ;;   ;; You may want to use `embark-prefix-help-command' or which-key instead.
+;; ;;   ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
+
+;; ;;   ;; Optionally configure a function which returns the project root directory.
+;; ;;   ;; There are multiple reasonable alternatives to chose from.
+;; ;;   ;;;; 1. project.el (project-roots)
+;; ;;   (setq consult-project-root-function
+;; ;;         (lambda ()
+;; ;;           (when-let (project (project-current))
+;; ;;             (car (project-roots project)))))
+;; ;;   ;;;; 2. projectile.el (projectile-project-root)
+;; ;;   ;; (autoload 'projectile-project-root "projectile")
+;; ;;   ;; (setq consult-project-root-function #'projectile-project-root)
+;; ;;   ;;;; 3. vc.el (vc-root-dir)
+;; ;;   ;; (setq consult-project-root-function #'vc-root-dir)
+;; ;;   ;;;; 4. locate-dominating-file
+;; ;;   ;; (setq consult-project-root-function (lambda () (locate-dominating-file "." ".git")))
+;; ;; )
+
+;; ;; TODO: add "search selection" like I put in ivy (see below)
+;; ;; From: https://takeonrules.com/2021/05/15/a-year-or-so-of-emacs/
+;; ;; (advice-add #'consult-line
+;; ;;             :around
+;; ;;             #'jnf/consult-line
+;; ;;             '((name . "wrapper")))
+
+;; ;; (defun jnf/consult-line (consult-line-function &rest rest)
+;; ;;   "Advising function around `CONSULT-LINE-FUNCTION'.
+
+;; ;;   ;; When there's an active region, use that as the first parameter
+;; ;;   ;; for `CONSULT-LINE-FUNCTION'.  Otherwise, use the current word as
+;; ;;   ;; nthe first parameter.  This function handles the `REST' of the
+;; ;;   ;; parameters."
+;; ;;   (interactive)
+;; ;;   (if (use-region-p)
+;; ;;       (apply consult-line-function
+;; ;;         (buffer-substring (region-beginning) (region-end)) rest)
+;; ;;       (apply consult-line-function
+;; ;;         (thing-at-point 'word) rest)))
+
+;; ;; ** Completion Annotations with Marginalia
+
+;; ;; Marginalia provides helpful annotations for various types of minibuffer completions. You can think of it as a replacement of ivy-rich.
+
+;; (use-package marginalia
+;;   :after vertico
+;; ;;  :straight t
+;;   :custom
+;;   (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+;;   :init
+;;   (marginalia-mode))
+
+;; ;; ** Completion Actions with Embark
+
+;; (use-package embark
+;;   :straight t
+;;   :bind (("C-S-a" . embark-act)
+;;          :map minibuffer-local-map
+;;          ("C-." . embark-dwim)
+;;          ("C-;" . embark-act))
+;; ;;         ("C-d" . embark-act))
+;;   :config
+
+;;   (setq embark-action-indicator '(
+;;         ;; Show Embark actions via which-key (system crafter guy)
+;;         (lambda (map)
+;;           (which-key--show-keymap "Embark" map nil nil 'no-paging)
+;;           #'which-key--hide-popup-ignore-command)
+;;         embark-become-indicator embark-action-indicator
+;;         ;; SO added below (but I don't get what this does)
+;;         ;; See: https://github.com/oantolin/embark/wiki/Additional-Configuration#use-which-key-like-a-key-menu-prompt        
+;;         embark-highlight-indicator
+;;         embark-isearch-highlight-indicator)))
+
+;; ;; SO: seems like this must already work if you've installed embark?
+;; ;;Seems like systemcrafters buy has supplanted it with which-key,
+;; ;;inside of embar, use-package
+;; ;;
+;; ;; (use-package embark-consult
+;; ;;   :straight '(embark-consult :host github
+;; ;;                              :repo "oantolin/embark"
+;; ;;                              :files ("embark-consult.el"))
+;; ;;   :after (embark consult)
+;; ;;   :demand t
+;; ;;   :hook
+;; ;;   (embark-collect-mode . embark-consult-preview-minor-mode))
+
+;; * Completion: Ivy/Swiper/Counsel/Company
+;; ** Ivy
 (use-package ivy
   :bind (("C-s" . swiper)
          ("C-x b" . ivy-switch-buffer))
   :config
   (ivy-mode 1)) ; so it starts @ emacs boot, no delay
 
+;; ** Swiper
+
 ;; Help while in swiper search:
 ;;  swiper hydra: C-o;
 ;;  swiper full help: C-h m
 (use-package swiper
   :diminish ivy-mode
+  :custom (swiper-action-recenter nil) ;; does this work?
   :init
   ;;(setq ivy-use-virtual-buffers t) ; ivy-switch-buffer also shows recent files
   (setq ivy-count-format "(%d/%d) ") ; show candidate index/count in swiper
@@ -2811,6 +3152,8 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   :custom
   (ivy-prescient-mode t))
 
+;; ** Counsel
+
 (use-package counsel ; better kill-ring 2nd yanking
   :after ivy
   :init
@@ -2823,7 +3166,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;; Internet search, compare w/ google-this
   (global-set-key (kbd "C-S-s")  'counsel-search)) ; doesn't work in :bind
 
-;; * Company Mode
+;; ** Company Mode
 ;; Tab completion of variables, common words, ...  To activate (not a default): M-x company-mode or turn it on globally.
 
 ;; Used in other packages.  Here, make it prescient.  Maybe put this section in one of those places instead of here?
@@ -3230,9 +3573,7 @@ reuse it's window, otherwise create new one."
 
 ;; * Shrink garbage collection @ end of init
 
-;; Threshold was made huge @ init beginning for fast startup time.
-;; Here, shrink it dow, so emacs doesn't get giant when run it for a
-;; long time
+;; Threshold was made huge @ init beginning for fast startup time. Shrink it here, so emacs doesn't get giant when after running for a while
 ;; (https://youtu.be/9i_9hse_Y08?t=3066)
 (setq gc-cons-threshold (* 2 1000 1000))  
 
@@ -3305,6 +3646,78 @@ reuse it's window, otherwise create new one."
  '(region ((t (:background "LightSteelBlue1"))))
  '(sml/modified ((t (:inherit sml/not-modified :foreground "firebrick" :weight bold))))
  '(table-cell-face ((t (:background "honeydew1" :foreground "black" :inverse-video nil))))
+ '(vertico-current ((t (:extend t :background "lavender blush"))))
+ '(vertico-group-separator ((t (:inherit green :strike-through t))))
+ '(vertico-group-title ((t (:inherit red :slant italic))))
+ '(vertico-multiline ((t (:inherit violet))))
+ '(writegood-duplicates-face ((t (:foreground "black" :strike-through t :underline "firebrick1"))))
+ '(writegood-passive-voice-face ((t (:foreground "LightBlue4" :underline t :weight bold))))
+ '(writegood-weasels-face ((t (:foreground "dark khaki" :underline t :weight bold)))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(aw-leading-char-face ((t (:foreground "red" :weight bold))))
+ '(cperl-array ((t (:background "*" :foreground "saddlebrown" :slant italic))))
+ '(cperl-hash ((t (:background "*" :foreground "darkgreen" :slant oblique))))
+ '(cperl-nonoverridable ((t (:background "*" :foreground "black" :weight normal))))
+ '(cursor ((t (:background "blue"))))
+ '(dired-directory ((t (:foreground "MediumBlue"))))
+ '(dired-ignored ((t (:foreground "NavajoWhite4"))))
+ '(ediff-even-diff-face-A ((((class color)) (:background "light grey" :foreground "red"))))
+ '(ediff-even-diff-face-B ((((class color)) (:background "light grey" :foreground "red"))))
+ '(ediff-odd-diff-face-A ((t (:background "gray" :foreground "black"))))
+ '(ediff-odd-diff-face-B ((t (:background "gray" :foreground "black"))))
+ '(eshell-ls-archive ((((class color) (background light)) (:foreground "green4" :weight bold))))
+ '(eshell-ls-backup ((((class color) (background light)) (:inherit dired-ignored))))
+ '(eshell-ls-directory ((((class color) (background light)) (:inherit dired-directory :weight bold))))
+ '(eshell-ls-product ((((class color) (background light)) (:foreground "DarkSeaGreen"))))
+ '(eshell-ls-special ((((class color) (background light)) (:foreground "darkred" :weight bold))))
+ '(eshell-prompt ((t (:foreground "SlateGray" :weight bold))))
+ '(flyspell-duplicate ((t (:foreground "black" :strike-through t :underline "firebrick1"))))
+ '(flyspell-incorrect ((t (:foreground "black" :underline (:color "firebrick" :style wave)))))
+ '(font-lock-builtin-face ((((type tty) (class color)) (:foreground "red"))))
+ '(font-lock-function-name-face ((t (:foreground "navy" :weight bold))))
+ '(font-lock-keyword-face ((nil (:foreground "navy"))))
+ '(font-lock-string-face ((t (:foreground "black" :slant italic))))
+ '(fringe ((t (:background "gray93" :foreground "light slate gray" :weight bold))))
+ '(highlight-indentation-face ((t (:foreground "light gray"))))
+ '(hl-line ((t (:background "gray97"))))
+ '(ido-first-match ((t (:background "antique white" :weight bold))))
+ '(isearch ((t (:background "papaya whip" :foreground "black"))))
+ '(lazy-highlight ((t (:background "honeydew3"))))
+ '(matlab-region-face ((t (:background "LightSteelBlue1"))))
+ '(mode-line ((t (:background "RoyalBlue4" :foreground "snow" :box (:line-width -1 :style released-button) :weight bold))))
+ '(org-code ((t (:inherit black :inverse-video nil :weight bold :family "Courier New"))))
+ '(org-done ((t (:foreground "Gray" :weight bold))))
+ '(org-done-face ((t (:foreground "gray" :weight bold))))
+ '(org-ellipsis ((t (:foreground "dark slate gray" :weight normal))))
+ '(org-headline-done ((((class color) (background light)) (:foreground "gray"))))
+ '(org-headline-done-face ((((class color) (background light)) (:foreground "Gray"))))
+ '(org-level-1 ((nil (:weight bold))))
+ '(org-level-2 ((((class color) (background light)) (:foreground "black"))))
+ '(org-level-3 ((((class color) (background light)) (:foreground "black"))))
+ '(org-level-4 ((((class color) (background light)) (:foreground "black"))))
+ '(org-level-5 ((((class color) (background light)) (:foreground "black"))))
+ '(org-level-6 ((((class color) (background light)) (:foreground "black"))))
+ '(org-level-7 ((((class color) (background light)) (:foreground "black"))))
+ '(org-level-8 ((((class color) (background light)) (:foreground "black"))))
+ '(org-link ((t (:foreground "blue3"))))
+ '(org-roam-link ((t (:foreground "dark goldenrod"))))
+ '(org-table ((t (:background "honeydew1" :foreground "gray0"))))
+ '(org-tag ((nil (:foreground "dark green" :slant italic :weight bold))))
+ '(org-target ((t (:foreground "dark slate blue" :weight bold))))
+ '(org-todo ((t (:foreground "Firebrick" :weight normal))))
+ '(org-verbatim ((t (:inherit shadow :weight bold))))
+ '(org-warning ((t (:foreground "firebrick" :weight normal))))
+ '(region ((t (:background "LightSteelBlue1"))))
+ '(sml/modified ((t (:inherit sml/not-modified :foreground "firebrick" :weight bold))))
+ '(table-cell-face ((t (:background "honeydew1" :foreground "black" :inverse-video nil))))
+ '(vertico-current ((t (:extend t :background "khaki1"))))
+ '(vertico-group-separator ((t (:inherit green :strike-through t))))
+ '(vertico-group-title ((t (:inherit red :slant italic))))
+ '(vertico-multiline ((t (:inherit violet))))
  '(writegood-duplicates-face ((t (:foreground "black" :strike-through t :underline "firebrick1"))))
  '(writegood-passive-voice-face ((t (:foreground "LightBlue4" :underline t :weight bold))))
  '(writegood-weasels-face ((t (:foreground "dark khaki" :underline t :weight bold)))))
