@@ -1200,6 +1200,10 @@
       *Headline/List Conversion*
         C-c * (org-toggle-heading)
 
+      *Tree to indirect buffer*
+        C-x 4 t  sdo/org-tree-to-indirect-buffer
+        C-x 5 t  sdo/org-tree-to-indirect-buffer-new-frame
+
 ******* also [[Narrowing/Widening: narrow-or-widen-dwim]]
 ***** org-mode export
 ******* A plain text file
@@ -1418,11 +1422,61 @@
 
 ******* [[outshine-mode]]
 ***** [[Narrowing/Widening: narrow-or-widen-dwim]]
+***** <<org-cite>>
+******* [[https://org-roam.discourse.group/t/what-do-you-think-about-org-ref-v3/2133/16][What do you think about org-ref V3? - #16 by mshevchuk]]
+******* prettier cite rendering: links w/ paper title, etc.
+********* [[https://github.com/andras-simonyi/org-cite-csl-activate][GitHub - andras-simonyi/org-cite-csl-activate: A CSL-based activation process...]]
+********* bdarcus's answer to my question about it is [[https://org-roam.discourse.group/t/all-about-the-upcoming-org-cite-feature/1600/27?u=scotto][here]]
+
+******* Eric S. Fraga's question/answer on 10/20/21
+
+Config that eventually worked for him
+            
+    1. install =embark=
+    2. update and load =parsebib=
+    3. load =oc-bibtex-actions=
+    4. set =org-cite-insert-processor= to ='oc-bibtex-actions=
+
+Date: Tue, 19 Oct 2021 17:30:36 +0100
+From: Eric S Fraga <e.fraga@ucl.ac.uk>
+To: Emacs Org mode mailing list <emacs-orgmode@gnu.org>
+Subject: the tangled web of org-cite, selectrum, completing-read, ...
+Message-ID: <87tuhdou37.fsf@ucl.ac.uk>
+Content-Type: text/plain; charset="utf-8"
+
+Hello all,
+
+TL;DR: how can I format the suggestions listed by selectrum when I ask
+to insert a citation with org-cite-insert?
+
+Longer version: I use selectrum a my completion engine together with
+marginalia.  This works very well for most selections I wish to
+make.  However, for org-cite, the display has the author list truncated
+(to 25 characters; screenshot image attached, assuming it doesn't get
+removed by the mailing list server) and the search only appears to
+consider the truncated text.  The result is that if I am looking for a
+paper by an author (say Kitchin ;-)) who is not one of the first few
+authors on a particular publication, I won't be able to find that
+particular publication (sorry John).
+
+I have no idea which bit of the tool chain does the
+formatting/truncation or whether I can make the search ignore the
+truncated information.  I hope somebody has some suggestions.  I started
+looking at bibtex-completions, which does mention org-cite (at least in
+the most recent version), but none of the configuration suggestions
+seems to have any effect.
+
+Any pointers welcome!
+
+Thank you,
+eric              
+
+******* [[configuring new org-cite and org-roam-bibtex]]
 ***** <<org-ref>>
 ******* [[https://github.com/jkitchin/org-ref/commits/master]["release notes"]]
 ******* TODO better install
-********* DONE works best with latexmk (customization in my =.emacs=)
-********* DONE latexmk works best in TexLive, not MikTex, to install TexLive
+********* works best with latexmk (customization in my =.emacs=)
+********* latexmk works best in TexLive, not MikTex, to install TexLive
 ********* TODO give it a valid path to common .bib file in .emacs or customizations
 *********** TODO seems that you can't give paths to .bib file inside of org file.  Really?
 *********** TODO how make it the same path to energy.bib on work and home computers?
@@ -1702,6 +1756,7 @@
 ******* [[http://ergoemacs.org/emacs/elisp_parse_org_mode.html][Xah Elisp: Parse Org Mode Tutorial]]
 ******* [[https://github.com/ndwarshuis/org-ml][org-ml: functional org lib]]: slow IO but fast graph manip once read
 ******* [[https://common-lisp.net/project/cl-org-mode/][CL-ORG-MODE : A Lisp Parser of org-mode outlines]]
+******* [[https://github.com/d12frosted/vulpea][vulpea: A collection of functions for note taking based o...]]
 ******* [[Elisp]]
 ******* [[https://github.com/daitangio/org-mode-parser][daitangio/org-mode-parser]]: javascript nodejs
 ******* [[org-mode parsers in Python]]
@@ -2000,6 +2055,8 @@
 
 ************* [[https://www.orgroam.com/manual.html#Org_002djournal][org-journal files can be put anywhere]]
           
+*********** capture template for separate dirs
+            From: [[https://org-roam.discourse.group/t/how-to-customize-file-name-and-path-at-time-of-capture/1213][How to Customize File Name and Path at Time of Capture]] 
 ********* separate by tagging
 *********** org-roam [[https://org-roam.discourse.group/t/implementing-hierarchies-namespaces-in-org-roam-v2/1504/2?u=scotto][v2 uses org-roam tags, which can be hierarchical]]
 *********** also [[learn to use OR v2 tags]]
@@ -2010,6 +2067,8 @@
           From: [[https://systemcrafters.net/live-streams/september-03-2021/][System Crafters Live! - September 3, 2021 - System Crafters]]
 ******* renaming OR note filename if #title changes: [[https://org-roam.discourse.group/t/does-renaming-title-no-longer-renames-the-filename/2018/3?u=scotto][arozbiz code]]
 ******* [[preventing an OR v2 node for each org-noter annotation]]
+******* tidying up org-roam rendering
+********* 3 posts, starting [[https://org-roam.discourse.group/t/turn-off-the-bright-meta/2174/2?u=scotto][here]]
 ***** Intro, basic org-roam info
 ******* [[https://github.com/org-roam][org-roam/org-roam: Rudimentary Roam replica with Org-mode]]
 ******* example: [[https://github.com/jethrokuan/braindump][author's's braindump]]: many org files, pdfs, 
@@ -2093,33 +2152,33 @@
         Also, is [[Kindle]] easier/better than books, and do I want to be locked into it?
 ******* Do I want to start making an [[org-journal]]?
 ******* First thoughts now complete
-********* DONE get latex working on Windows 1st?
+********* get latex working on Windows 1st?: No
           Nah, can do later
-********* DONE .emacs --> .emacs.d (or init.el?) so comply w/ new, standard emacs setup
+********* .emacs --> .emacs.d (or init.el?) so comply w/ new, standard emacs setup: No
           Nah, can do later
-********* DONE can I tolerate the Drawer thing?
+********* can I tolerate the Drawer thing?: Yes
           Yeah, it's not so bad.
-********* DONE link target searching
+********* link target searching
 
           At least two problems:
 *********** how search through thousands of links when trying to make one?
 *********** how distinguish between paper (bibtex) links and general idea links?
-********* DONE can I install everything needed for [[org-roam on Windows]]
+********* can I install everything needed for [[org-roam on Windows]]: Yes
           Yup, I can
-********* DONE install emacs+org-roam in [[WSL]] to avoid all the windows problems
+********* install emacs+org-roam in [[WSL]] to avoid all the windows problems: No
           Nah. I installed WSL2 and had problems (can't remember what) and there are not prominent OR users who use Windows.  Seems like Windows bugs will get worked out eventually.
 *********** 1st thing would be to install wsl2, whenever that's available 
 *********** can I call emacs in wsl2 from windows?  Associate files, on taskbar, etc.?
 *********** could still have windows emacs for simpler workflows
-********* DONE is it going to last?
+********* is it going to last?: Probably
           Seems like it has a lot of excitement, many social media connections
-********* DONE install emacs 27 first, since org-roam likes it?
+********* install emacs 27 first, since org-roam likes it?: Yes
 *********** also doesn't require imagemagic anymore.  Does that make pdf-tools easier?
 ***** TRY org-roam tweaks to consider
 ******* make dwim func for org-roam-insert and org-insert-link
         From: [[https://www.orgroam.com/manual.html#Introduction][Org-roam User Manual]], Section 9
 
-        If you've stored a link to a headline, you need to insert it with org-store-link.  But if you'rd linking to an OR note, you muse use org-rom-insert
+        If you've stored a link to a headline, you need to insert it with org-store-link.  But if you're linking to an OR note, you must use org-roam-insert
 
         This is confusing.  Can these just do the right thing, if in org mode, and if on a headline?
         
@@ -2129,7 +2188,7 @@
 ******* [[https://www.reddit.com/r/emacs/comments/f97twk/using_orgroam_on_windows_10/][Using org-roam on windows 10 : emacs]] (messy)
 ******* sqlite3 now on all platforms: [[https://github.com/org-roam/org-roam/issues/682][org-roam/org-roam#682 Need maintainable Windows 10 install]]
 ******* ripgrep and find on Windows org-roam
-********* 'rg' should work: [[https://github.com/org-roam/org-roam/issues/724][org-roam/org-roam#724 `rg` returns bad paths for Windows users]]
+********* 'rg' should work: [[https://github.com/org-roam/org-roam/issues/724][org-roam/org-roam#724 `rg` returns bad* paths for Windows users]]
 ********* 'find' gets confused w/ Windows find: [[https://github.com/org-roam/org-roam/issues/682][org-roam/org-roam#682 maintainable Windows 10 install]]
 ***** <<org-roam and bibtex>>
 ******* the org-roam mode for this: [[org-roam-bibtex]]
@@ -2143,6 +2202,12 @@
 ********* can create org-cite pages directly from bibtex entry
 *********** templates for new cite pages e.g. "ref" or "ref + [[org-noter]]"
 *********** seems to require using helm-bibtex or ivy-bibtex (don't directly visit .bib)
+
+********* <<configuring new org-cite and org-roam-bibtex>>
+
+          Nothing here yet.
+
+*********** [[org-cite]]
 ********* Is there a way to extract notes to cite note when marks have come from Drawboard or PDF-Xchange Editor?
 *********** extracting annotations from pdf
             From [[https://org-roam.discourse.group/t/does-anyone-have-a-workflow-for-associating-notes-with-a-zotero-stored-pdf/112/9?u=scotto][here]]:
@@ -4643,7 +4708,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 
     And the program is also seen in the standard windows install/uninstall control panel thing.
 
-*** [[http://pandoc.org/installing.html][MikTex recommended for Windows]], (not TexLive, which is supposed to handle unicode?)
+*** [[http://pandoc.org/installing.html][MikTex recommended for Windows]], (not TexLive, which is supposed to handle unicode?  Note: in 2021, I have up on Windows MikTex, and used TexLive)
 *** [[Org to/from MS Word]]
 *** Pandoc bibs specified by .csl files (not .sty).  Latest are [[https://www.zotero.org/styles?q=ieee][here]].
 *** clickable reference citations
@@ -5076,13 +5141,28 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 
         choco upgrade all
 
-******* LIst installed packages
+******* List installed packages
 
           choco list --local-only
 
         Or:
 
           clist -l
+
+******* Copy choco install from one Windows machine to another
+        From: [[https://stackoverflow.com/questions/43167087/how-to-get-a-list-of-packages-from-one-machine-and-install-in-another-with-choco][How to get a list of packages from one machine and install in another with Ch...]]
+
+        _On Source Machine_
+
+        $packageXml = ''
+choco list -lo -r | % { $_ -split '\|' | select -first 1 } | % { $packageXml += "`n`t<package id=""$_"" />" }
+Set-Content "<?xml version=`"1.0`" encoding=`"utf-8`"?>`n<packages>$packageXml`n</packages>" -Path .\packages.config
+
+        _On New Target Machine_
+
+        Copy over the packages.config file and then run:
+
+          choco install packages.config
 
 ***** Windows package management overviews
 ******* Chocolatey says use Chocolatey, not OneGet:  [[https://chocolatey.org/faq#how-is-chocolatey-different-than-onegetpowershell-package-management][ChocolateyFAQs]]
@@ -5246,9 +5326,15 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 
 ******* Window focus follows mouse + autoraise
 
+        _Windows 11_:
+
+        Winaero Tweaker --> XMouse Options
+          click Enable window tracking (I set activation time out to 750)
+          click Enable window raising
+
         _Windows 10_:
 
-        Control Panel\Ease of Access\Ease of Access Center\Make the mouse easier to useControl Panel\Ease of Access\Ease of Access Center\Make the mouse easier to use
+        Control Panel\Ease of Access\Ease of Access Center\Make the mouse easier to use
 
         click: "Activate a window by hovering over it with the mouse".
 
@@ -6173,6 +6259,7 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 ********* Commenters say [[http://www.pentaxforums.com/forums/58-troubleshooting-beginner-help/310854-cannot-view-raw-files-windows-10-a.html][Codec not necessary for Win10]]
 ********* [[https://www.adobe.com/support/downloads/thankyou.jsp?ftpID=5495&fileID=5491][DNG Codec 2.0]], for OLD Windows Photo Viewer, commenters say it's not updated
 ***** [[http://www.faststone.org/FSViewerDetail.htm][Fast Stone Image Viewer]]: free, works on Panasonic RW2, Adobe DNG, and others
+*** [[Latex on Windows]]
 *** also [[Install MS Office and MS Fonts on MacOS]]
 * PC Performance Testing
 *** Computational
@@ -11553,12 +11640,17 @@ ERROR: tensorflow 2.1.0 has requirement tensorboard<2.2.0,>=2.1.0, but you'll ha
                   parallel = Parallel(verbose=100)
                   print(parallel([delayed(slow_power)(i, 5) for i in range(10)]))
 
+*********** [[Airflow and scikit-learn]]
 ******* [[Parallelization for SciPy]]
 ******* [[Hadoop]]
 ******* [[https://kubernetes.io/][Kubernetes]] (not just Python, more for containers)
 ******* [[d6t/d6tflow]] (data versioning and parallelization)
 ******* [[https://github.com/spotify/luigi][spotify/luigi is a Python module that helps you build complex...]] (dep run)
-******* [[https://airflow.apache.org/][Apache Airflow]]
+******* <<Airflow>>
+********* [[https://airflow.apache.org/][Apache Airflow]] website
+********* <<Airflow and scikit-learn>>
+*********** [[https://devklaus.wordpress.com/2019/03/31/airflow-for-orchestrate-your-machine-learning-algorithms/][Airflow to orchestrate your machine learning algorithms]]
+*********** also [[Scikit-learn]]
 ******* also [[Data Versioning]]
 ***** Func value caching: [[https://medium.com/better-programming/every-python-programmer-should-know-lru-cache-from-the-standard-library-8e6c20c6bc49][Every Python Programmer Should Know LRU_cache From the Standard Library]]
 ***** vectorizing more important than in Matlab ([[https://github.com/Technologicat/python-3-scicomp-intro/blob/master/python_scicomp_notes.pdf][Informal introduction to Python 3 for scientific computing]])
@@ -11580,7 +11672,7 @@ if sys.version_info >= (3,8,0):
 else:
     print("python version < 3.8")
 
-*** Scikit-learn
+*** <<Scikit-learn>>
 ***** <<Concise LinearRegressor()>>
       LinearRegressor() expects X to be a 2D column array.
 
@@ -11655,6 +11747,7 @@ else:
 ********* Uses [[Numba: JIT compiler]]
 ********* [[Speeding up Pandas]]
 
+***** [[Airflow and scikit-learn]]
 *** SciPy
 ***** <<Parallelization for SciPy>>
 ******* SciPy and Spark
@@ -12628,75 +12721,6 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
       See the web page for many other Settings shortcut codes
 ***** VPN connection on taskbar
 ******* [[https://vpnmyway.wordpress.com/version-history-download/][VPNMyWay is supposed to put the connection on the taskbar]]
-* <<Lyx>>
-*** Windows Lyx
-
-***** use TexLive instead of MikTex: [[How to make the org-ref latex compile: install TexLive]]
-***** <<Lyx tweaks for TexLive>>
-
-    Lyx complained at first when I installed the version that came without MikTex and forced it to use a new TexLive install (this was on my work computer; not a problem at home, maybe because of the proxy stuff).  It said that document classes and modules were missing, and therefore, it couldn't make pdfs of the help files.  I did two things:
-
-    1. Deleted my http_proxy env var again (it was still on IWES guest WiFi w/ no proxy)
-    2. In Lyx, ran Tools-->Reconfigure
-
-       And then pdf making (and everything else that I checked) worked.
-
-***** Tiny icons and text (?) in lyx interface
-
-      Solution: right click on a tiny icon and select a bigger icons size.
-
-      This affects all icons but did not immediately seem to change menu text size in lyx interface (menus, etc.).  But /maybe/ these got bigger after I restarted lyx?
-      
-*** <<Mac Lyx>>
-
-    I haven't gotten this to work yet on the MacBook Pro (2021).
-    
-    From [[https://formulae.brew.sh/cask/lyx][here]], I tried
-      
-      brew install --cask lyx    
-      
-    but when I tried to run it, I got the error message
-
-      "“LyX” can’t be opened because Apple cannot check it for
-      malicious software.
-
-      This software needs to be updated. Contact the developer for more information."
-
-    So, I installed a copy from here:
-
-      [[https://www.lyx.org/Download][LyX | Download]]
-
-    and I still have the same problem.
-
-***** [[Latex on MacOS]] (must also install latex)
-***** old
-******* Installed [[http://www.ctan.org/tex-archive/systems/mac/mactex/][MacTex and MacTexExtras]]
-********* actually mactex installed on leopard was already newer than the MacTex pkg
-********* didn't install extras
-******* install the [[http://www.lyx.org/Download][lyx macosx binary]]
-********* error log:
-
-          1. Removing obsolete files ....
-          ... Done removing obsolete files.
-
-          2. Testing to see if old LyX user's folder should be moved to new location ....
-          ... Done moving LyX user's directory to new location.
-
-          3. (No preferences file found at ~/Library/'Application Support'/LyX-1.5/.)
-
-          4. Installing default LyX templates ....
-          ... Done installing default LyX templates.
-
-          5. Installing LyX's special LaTeX files ....
-          ? Found TeX installation at .
-          ? Local TeX directory set to ~/Library/texmf.
-          ? Installed LyX's additional LaTeX .cls and .sty files.
-
-          ERROR: Cannot run texhash command. Please run manually.
-
-          ... Done.
-
-********* and... texhash does not seem to be installed anywhere (can't find in finder)
 * MacOS
 *** Package manager for MacOS: use HomeBrew Cask
 
@@ -13338,7 +13362,7 @@ _commandline (The Unarchiver) Windows_
 ******* iDisplay (Windows main, iPad 2nd wifi mon.): $15
         From: [[https://www.businessinsider.com/how-to-use-ipad-as-second-screen-on-windows][How to Use an IPad As a Second Monitor for a Windows PC]]
 ***** also [[OneNote drawing tablet with iPad]]
-*** iPad
+*** <<iPad>>
 ***** <<OneNote drawing tablet with iPad>>
 ******* [[Apple SideCar]]
 ******* Quicktime and USB cable
@@ -13353,15 +13377,85 @@ _commandline (The Unarchiver) Windows_
 ******* 3rd party mirroring software. Many: [[Computer/Tablet as Second Monitor]]
 ***** <<pdf annotation on iPad>>
 ******* [[https://community.adobe.com/t5/acrobat-reader-mobile-discussions/viewing-pdf-files-from-onedrive/m-p/6582082#M179][Viewing pdf files from OneDrive - Adobe Support Community]]
-******* [[https://pdf.wondershare.com/pdfelement-ios/][PDFelement]], rated [[https://pdf.wondershare.com/mobile-app/ipad-pro-pdf-annotation.html][best free iPad]] (mac version (not free) also [[https://pdf.wondershare.com/mobile-app/ipad-pro-pdf-annotation.html][does OCR]])
+******* TRY [[https://pdfexpert.com/ios/how-to-annotate-pdf][PDF Expert]]: very good
+
+        Most important things free ($49/yr for license). Only complaints
+        - must buy favorite pens
+        - pay for insert page
+        - pay for rotate page
+
+********* Pen writes well, colors limited (5 + 1 custom); pay extra for more favorite pens and tools
+********* no pen opacity but OK since have freehand highlighter (and also separate highlighter tied to printed lines).
+********* neat tiny text zoom
+********* go to page and history back and forth (see in multipage layou)
+********* nice multipage display of /only/ annotated pages.
+********* can change colors/properties sometime after editing them
+********* insert image (in margin, since can't insert pages w/o paying)
+********* insert audio
+********* some kind of measuring for scale, like in blueprints
+********* checkboxes, kinda nice
+********* very nice outlines, history, bookmarks search
+********* good links to onedrive,save happens when unfullscreen doc, showing folders.
+********* Some kind of "connect to computer" thing.  It does connect to MacBOok, at least.  Not sure what it does, though.  Nice backup if offline but have wifi connected computer nearby?
+********* text box usable, can edit with pen
+********* highlighter/underliner/pen/marker/text
+********* has delete/rotate/merge page (paid, need PRO version)
+
+********* nice that can move pen bar to side, like in Drawboard
+******* TRY Xodo: good
+        
+        Has everything, even a ruler, and pen/pencil distinction.  Very good page flipping, editable bookmarks and outline display.
+
+        only complaints: 
+        - can't pencil write in text box (but can kindof edit it?  Might have crashed once).
+        - max of 4 favorite saved pens
+********* even has goto page
+******* Adobe Acrobat Reader: competent
+
+        It's competent but not completely user friendly.
+
+********* some kind of fancy liquid mode that I had to sign into my adobe acct. to see.
+********* step through comments
+********* goto page
+********* no bookmarks
+********* textbox works, a bit wonky, can't use pen
+********* editing pdf is extra, but commenting, which does most things is fine
+********* no idea of favorite pens, but this is OK.  Writing is good.
+******* TRY Flexcil:  might be good if OneDrive doesn't get copied
+
+********* annotation part and navigatin look pretty nice
+********* but it seems that it wants to copy OneDrive (couldn't test since had to pay)
+********* cheap: $9 license, not time limit mentioned.  Can try for 15 days
+
+******* REJECTED Cabinet: no OneDrive (I think), dorky UI
+
+        Might be OK but seems to want to keep all your docs in its own little cabinet.  Not free either, I think.
+
+******* REJECTED [[https://pdf.wondershare.com/pdfelement-ios/][PDFelement]], rated [[https://pdf.wondershare.com/mobile-app/ipad-pro-pdf-annotation.html][best free iPad]] (mac version (not free) also [[https://pdf.wondershare.com/mobile-app/ipad-pro-pdf-annotation.html][does OCR]])
+
+        Quite nice but very expensive.  Syncs w/ some stuff but can apparently only copy from OneDrive. Not clear how to keep it in sync.
+
+********* has all the features, but $40 perpetual or crappy subscription
 ********* said to be [[https://pdf.wondershare.com/pdf-editor-mac/pdf-xchange-for-mac-alternative.html][best PDF-Xchange alternative]] too 
 ********* [[https://pdf.wondershare.com/pdfelement.html][Windows version]] of PDFelement (pen is good, favorite pen system not great)
 ********* Windows/Mac verison expensive: $80/yr or $100/yr for Win+Mac
-******* [[https://apps.apple.com/us/app/foxit-pdf-editor/id507040546][Foxit PDF Editor]]: free, good ratings, Mac Desktop version is good
-******* [[https://pdfexpert.com/ios/how-to-annotate-pdf][PDF Expert]] might be OK
-******* Some like Adobe Reader, but not clear if can underline/highlight w/ pen
-******* goodnotes imports to proprietary format, [[https://www.reddit.com/r/GoodNotes/comments/ig39pg/converting_goodnotes_file_to_pdf/][must export to pdf]]
-******* [[ don't seem to be best alternatives][Drawboard alternatives]] don't seem to be best alternatives
+******* REJECTED [[https://apps.apple.com/us/app/foxit-pdf-editor/id507040546][Foxit PDF Editor]]
+        free, good ratings, Mac Desktop version is good
+        
+HOWEVER, the pen annotations are horrible.  Just like the old acroread.
+
+******* REJECTED PDF Pro
+
+        Competent but not complete, pen annotation is paid
+
+********* Pen writes well. 3 thicknesses; no opacity
+********* syncs to onedrive, but I'm not clear how
+********* does sync to icloud
+********* text box oK
+********* no favorite pens but easy to click different colors
+********* highlighter/NOUNDERLINER/pen/marker/text
+******* REJECTED goodnotes imports to proprietary format, [[https://www.reddit.com/r/GoodNotes/comments/ig39pg/converting_goodnotes_file_to_pdf/][must export to pdf]]
+******* REJECTED [[ don't seem to be best alternatives][Drawboard alternatives]] don't seem to be best alternatives
 ***** [[Apple Pencil]]
 ***** [[Computers Compatible with SideCar]]
 ***** [[iPads Compatible with Apple Pencil]]
@@ -13571,18 +13665,18 @@ But I would like it better if there was no export merge step.  Export is kind-of
             _Configuration_
 
             *I.* In [[BetterBibtex]] (BBT)
+            o [[Install and Config for BBT]]
             o define a bibtex citekey in "Extra" field. (zotero>prefs>BBT)
             o Zotero>Edit>Preferences>BBT>Citation Keys>keep keys unique = "across all libraries"
             o Zotero>Edit>Preferences>BBT>Citation Keys>On Conflict... = "postfixed (causes..."
 
-            *II.* From [[https://github.com/jlegewie/zotfile/issues/468#issuecomment-758895076][here]], in zotero>Tools>ZotfilePrefs>RenameRules, put {%b} in both "format for all item types except patents" and "format for patents".
+            *II.* [[http://zotfile.com/#how-to-install--set-up-zotfile][Install ZotFile]]
+
+            Then, from [[https://github.com/jlegewie/zotfile/issues/468#issuecomment-758895076][here]], in zotero>Tools>ZotfilePrefs>RenameRules, put {%b} in both "format for all item types except patents" and "format for patents".
 
             Zotero->Tools->Zotfile Preferences->Renaming Rules
                    -> "Format for all item Types except Patents"
                        AND "Format for patents"
-
-            put {"b": "citekey"} in these fields
-
 
             *III.* Unclick "Use Zotero to Rename"
 
@@ -13601,9 +13695,9 @@ But I would like it better if there was no export merge step.  Export is kind-of
 
            _Configuration_
             
-           1. Zotero->Preferences->Advanced->Files and Folders->Base Directory = C:\Users\scott\OneDrive - Clean Power Research\ref\zotero\papers_added
-           2. Zotero->Tools->ZotfilePreferences->GeneralSettings-> "Source Folder for Attaching New Files":  I used "C:\Users\scott\OneDrive - Clean Power Research\ref\zotero\papers_to_add"
-           3. ...Location of Files -> Custom Location.  I used "C:\Users\scott\OneDrive - Clean Power Research\ref\zotero\papers_added\papers"
+           1. Zotero->Preferences->Advanced->Files and Folders->Base Directory = C:\Users\scott\share\ref\zotero\papers_added
+           2. Zotero->Tools->ZotfilePreferences->GeneralSettings-> "Source Folder for Attaching New Files":  I used "C:\Users\scott\share\ref\zotero\papers_to_add"
+           3. ...Location of Files -> Custom Location.  I used "C:\Users\scott\share\ref\zotero\papers_added\papers"
            4. UNcheck "use subfolder defined by..." to avoid subfolders underneath.
            5. Ensure that [[BetterBibtex]] exports .bib file w/ BibTex citekeys you have defined (in all papers): [[define exported bibtex citekey with BBT]]
            6. Ensure moved pdf names match bibtex key: [[rename pdfs to bibtex key with zotfile]]
@@ -13636,8 +13730,11 @@ But I would like it better if there was no export merge step.  Export is kind-of
 Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone notes fields.
 
 ********* [[https://retorque.re/zotero-better-bibtex/][Better Bibtex for Zotero]]
-********* Install and Config for BBT
-*********** Download: [[https://github.com/retorquere/zotero-better-bibtex/releases/tag/v5.2.126][Release v5.2.126 · retorquere/zotero-better-bibtex]]
+********* <<Install and Config for BBT>>
+*********** Download: [[https://github.com/retorquere/zotero-better-bibtex/releases][Releases · retorquere/zotero-better-bibtex · GitHub]]
+
+            In Firefox, you must right click --> save link as and go from there.  If you click on in directly on the web page, FF gives you a "corrupt xpi message."
+
 *********** Install: [[https://retorque.re/zotero-better-bibtex/installation/][Installation :: Better BibTeX for Zotero]]
 *********** Config of BBT
 
@@ -13656,6 +13753,7 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
               I could drag a citation/citation link in one of many formats but I don't use this so far: [[https://retorque.re/zotero-better-bibtex/installation/preferences/citation-keys/#quick-copydrag-and-drop-citations][Citation keys :: Better BibTeX for Zotero]]
 ************* <<Automatic BBT bibtex file export>>
 *************** Define where the bibifle will be exported
+
               You define the export file the first time you automatically export (right-click on it in the left Zotero pane and choose “Export Library…” or “Export Collection…”.).  Check the "Keep Updated" tickbox and it will stay updated.
 
               I made Collection named "ExportToBib" and exporting to
@@ -14051,6 +14149,8 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ********* asdkfjladsfj test headline to verfy that checkbox font is too big
 ***** [[org-ref]]
 ***** [[BibTex and Emacs]]
+*** Bibtex styles
+***** visual guide: [[https://www.overleaf.com/learn/latex/Bibtex_bibliography_styles][Bibtex bibliography styles]]
 *** lint-like latex/bibtex syntax checkers
 ***** [[http://linux.die.net/man/1/lacheck][lacheck]]
 ***** [[http://baruch.ev-en.org/proj/chktex/][ChkTex]]
@@ -14060,6 +14160,12 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ***** [[http://ftp.math.utah.edu/pub//bibclean/][bibclean]]
 *** converting [[http://www.see-out.com/sandramau/bibpat.html][patent info to bibtex entries]] (google scholar also works)
 *** [[Latex on MacOS]]
+*** <<Latex on Windows>>
+    
+    In 2021, I could not get MikTex to work on Windows with org-mode latex export.  But TexLive did work: not installed with choco, but by downloading and installing the Windows TexLive executable, following [[https://math.asu.edu/resources/computer-resources/texlive-windows][these instructions]].
+
+    After that, I used the TexLive UI to install ALL packages, as default org mode latex exports require packages not installed by the TexLive default config.  I just did ALL to keep it simple.  The install took a long time, but I hope it will help to avoid future errors.
+
 *** <<Latex and Emacs>>
 ***** emacs [[https://www.emacswiki.org/emacs/LaTeXPreviewPane][latex-preview-pane]] is handy for finding org-mode export problems
 ***** <<Org-mode latex editing>>
@@ -14069,7 +14175,8 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 
         Inline latex autorender, shows bare latex when the cursor is over it
 ******* see also: [[org-ref]]
-***** smooth SVG equations in org mode
+***** smooth SVG equation
+      s in org mode
       From: [[https://www.guilhermesalome.com/posts/making-emacs-look-good.html][Making Emacs Look Good]]
 
       See the section: "Nice Looking LaTeX Equations in Org-Mode"
@@ -14153,6 +14260,78 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
         C-c C-x C-l
 
 *** [[BibTex and Emacs]]
+*** Latex Editors w/ WYSIWIG
+***** [[https://gsuite.google.com/marketplace/app/docx2latex/415272416461][Doc2LaTex]] Google Docs add-on
+******* email: [[https://mail.google.com/mail/u/0/#inbox/FMfcgzGlkZFzWRjphQtlDpCJTWjGvqrT][Call for templates!]] (I requested UWEE Tech Report template)
+***** <<Lyx>>
+******* Windows Lyx
+
+********* use TexLive instead of MikTex: [[How to make the org-ref latex compile: install TexLive]]
+********* <<Lyx tweaks for TexLive>>
+
+        Lyx complained at first when I installed the version that came without MikTex and forced it to use a new TexLive install (this was on my work computer; not a problem at home, maybe because of the proxy stuff).  It said that document classes and modules were missing, and therefore, it couldn't make pdfs of the help files.  I did two things:
+
+        1. Deleted my http_proxy env var again (it was still on IWES guest WiFi w/ no proxy)
+        2. In Lyx, ran Tools-->Reconfigure
+
+           And then pdf making (and everything else that I checked) worked.
+
+********* Tiny icons and text (?) in lyx interface
+
+          Solution: right click on a tiny icon and select a bigger icons size.
+
+          This affects all icons but did not immediately seem to change menu text size in lyx interface (menus, etc.).  But /maybe/ these got bigger after I restarted lyx?
+      
+******* <<Mac Lyx>>
+
+        I haven't gotten this to work yet on the MacBook Pro (2021).
+    
+        From [[https://formulae.brew.sh/cask/lyx][here]], I tried
+      
+          brew install --cask lyx    
+      
+        but when I tried to run it, I got the error message
+
+          "“LyX” can’t be opened because Apple cannot check it for
+          malicious software.
+
+          This software needs to be updated. Contact the developer for more information."
+
+        So, I installed a copy from here:
+
+          [[https://www.lyx.org/Download][LyX | Download]]
+
+        and I still have the same problem.
+
+********* [[Latex on MacOS]] (must also install latex)
+********* old
+*********** Installed [[http://www.ctan.org/tex-archive/systems/mac/mactex/][MacTex and MacTexExtras]]
+************* actually mactex installed on leopard was already newer than the MacTex pkg
+************* didn't install extras
+*********** install the [[http://www.lyx.org/Download][lyx macosx binary]]
+************* error log:
+
+              1. Removing obsolete files ....
+              ... Done removing obsolete files.
+
+              2. Testing to see if old LyX user's folder should be moved to new location ....
+              ... Done moving LyX user's directory to new location.
+
+              3. (No preferences file found at ~/Library/'Application Support'/LyX-1.5/.)
+
+              4. Installing default LyX templates ....
+              ... Done installing default LyX templates.
+
+              5. Installing LyX's special LaTeX files ....
+              ? Found TeX installation at .
+              ? Local TeX directory set to ~/Library/texmf.
+              ? Installed LyX's additional LaTeX .cls and .sty files.
+
+              ERROR: Cannot run texhash command. Please run manually.
+
+              ... Done.
+
+************* and... texhash does not seem to be installed anywhere (can't find in finder)
 *** [[Visualizing Bibliographies]]
 *** How to get a DOI for a paper: [[http://www.crossref.org/SimpleTextQuery][Simple Text Query Version 1.4.6]]
 
@@ -14271,7 +14450,7 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ********* XBEL: XML Bookmark Exchange Language
 ***** [[https://betalist.com/startups/memofon][Memofon]] text based mindmaps
 ***** [[https://gingkoapp.com/][Gingko]]: fancy textual mindmap w/ sliding note cards.  Hosted. Proprietary.
-***** <<Xmind:>> mindmapper, can scrape by with concept maps
+***** <<Xmind>> mindmapper, can scrape by with concept maps
       From:  [[https://www.xmind.net/features/][Xmind]]
 ******* [[http://www.xmind.net/blog/en/2013/12/how-to-build-a-concept-map-using-xmind/][can do concept maps]] but with manual layout, as far as I can tell
 ******* Does gant charts and outlines
@@ -14637,6 +14816,10 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ***** Seems to be the best: [[https://www.connectedpapers.com/][Connected Papers | Find and explore academic papers]]
 ***** [[https://openknowledgemaps.org/][Open Knowledge Maps - A visual interface to the world's scientific knowledge]]
 ***** [[https://researchrabbitapp.com/][Research Rabbit]]: integrated mindmaps / ref search etc. Seems slick.
+* Project Planning Tools
+*** Gantt charts
+***** [[https://www.projectlibre.com/product/1-alternative-microsoft-project-open-source][#1 Free Alternative to Microsoft Project Open Source | Projectlibre]]
+***** [[Xmind]] does Gantt charts
 * <<Document Annotation>>
 *** [[https://beepb00p.xyz/annotating.html][How to annotate literally everything]]
 *** [[https://readwise.io/][Readwise]]: [[Kindle]], Instapaper, Pocket, iBooks, and more
