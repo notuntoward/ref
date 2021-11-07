@@ -1197,6 +1197,9 @@
           C-x n b       org-narrow-to-block
           C-x n w       widen
 
+      *Tree Folding*
+          C-c u         org-fold-outer
+
       *Headline/List Conversion*
         C-c * (org-toggle-heading)
 
@@ -1205,6 +1208,21 @@
         C-x 5 t  sdo/org-tree-to-indirect-buffer-new-frame
 
 ******* also [[Narrowing/Widening: narrow-or-widen-dwim]]
+******* also [[org-mode searching]]
+***** <<org-mode searching>>
+
+      C-c / t             org-show-todo-tree
+      M-x org-occur
+      M-x consult-outline
+      M-x counsel-org-goto  # Nov. 2021: breaks swiper, though
+      M-x counsel-org-tag
+
+******* also [[org-tree operations]]
+
+=oc-bibtex-actions=
+******* [[https://kitchingroup.cheme.cmu.edu/blog/2017/01/03/Find-stuff-in-org-mode-anywhere/][Find stuff in org-mode anywhere]]
+******* also [[Org-mode parsers]]
+
 ***** org-mode export
 ******* A plain text file
         For some reason, I can't see ascii in the export dispatcher, so I installed ox-minutes
@@ -1423,6 +1441,10 @@
 ******* [[outshine-mode]]
 ***** [[Narrowing/Widening: narrow-or-widen-dwim]]
 ***** <<org-cite>>
+
+      The built in org-mode citation processor, starting with org mode 9.5
+
+******* [[https://orgmode.org/org.html#Citation-handling][The Org Manual: Citation-handling]]
 ******* [[https://org-roam.discourse.group/t/what-do-you-think-about-org-ref-v3/2133/16][What do you think about org-ref V3? - #16 by mshevchuk]]
 ******* prettier cite rendering: links w/ paper title, etc.
 ********* [[https://github.com/andras-simonyi/org-cite-csl-activate][GitHub - andras-simonyi/org-cite-csl-activate: A CSL-based activation process...]]
@@ -1472,6 +1494,14 @@ Thank you,
 eric              
 
 ******* [[configuring new org-cite and org-roam-bibtex]]
+******* exporting org-cites to pandoc
+********* citeproc author [[https://www.reddit.com/r/emacs/comments/oiljph/comment/h4wztn4/?utm_source=share&utm_medium=web2x&context=3][expects]] pandoc to support it
+********* The pandoc ticket for this: [[https://github.com/jgm/pandoc/issues/7329][#7329]]
+******* org-mode cite link follower
+********* works in plain org 9.5: "jump to bib entry by clicking ref link" 
+********* bib entry search, like what org-ref helm thing dis
+*********** [[https://github.com/bdarcus/citar][citar: quickly find and act on BibTeX, BibL...]]
+*********** it wants embark, etc.
 ***** <<org-ref>>
 ******* [[https://github.com/jkitchin/org-ref/commits/master]["release notes"]]
 ******* TODO better install
@@ -1542,6 +1572,20 @@ eric
 ******* [[org-roam workflow with Zotero, org-ref, org-noter, deft]]
 ******* [[Zotero + org-ref]]
 ******* [[org-mode native citaton support]] (possibly w/ new built-in [[org-ref]] mode)
+***** [[https://www.gnu.org/software/emacs/manual/html_node/org/Previewing-LaTeX-fragments.html][Previewing LaTeX fragments]]
+      Can do it with commands in org text:
+
+      #+STARTUP: latexpreview
+      #+STARTUP: nolatexpreview
+
+      or with the keyboard
+
+      C-c C-x C-l  (preview on)
+      C-c C-c      (preview off)
+
+***** [[https://www.emacswiki.org/emacs/LaTeXMathPreview][LaTeX Math Preview]] (not just org mode)
+******* asks for filename every time, unlike on the web page
+******* note that latex escaping, like in org mode, isn't needed
 ***** <<clipping web pages with org-mode>>
 ******* <<org-capture>>
 ********* Tutorial Video: [[https://www.youtube.com/watch?v=qCdScs4YO8k][Emacs: Introduction to ORG-CAPTURE]]
@@ -1589,33 +1633,6 @@ eric
 ***** Org-mode and [[Zotero]]
 ******* [[zotxt-emacs]]: interfaces [[Zotero]] with [[https://github.com/egh/zotxt-emacs][org-mode and org-noter]]
 ******* [[zutilo]]: also adds links?  what's the diff?
-***** [[http://kitchingroup.cheme.cmu.edu/blog/archive/][KitchinGroup Blog]]: <<how to do interesting stuff in org-mode/org-ref>>
-******* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/04/New-link-features-in-org-9/][New link features in org 9]]
-        - store-my-headline :: a headline line that could replace those crappy dedicated-targets!
-******* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/07/Better-equation-numbering-in-LaTeX-fragments-in-org-mode/][Better equation numbering in LaTeX fragments in org-mode]]
-******* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/06/Justifying-LaTeX-preview-fragments-in-org-mode/][Justifying LaTeX preview fragments in org-mode]] with tooltips to see code
-******* [[http://kitchingroup.cheme.cmu.edu/blog/2015/10/09/Automatic-latex-image-toggling-when-cursor-is-on-a-fragment/][Automatic latex image toggling when cursor is on a fragment]] (with video, but broken)
-
-        It's been broken as of org-mode 8.3, or so.  Se James Wong post [[http://kitchingroup.cheme.cmu.edu/blog/2015/10/09/Automatic-latex-image-toggling-when-cursor-is-on-a-fragment/][here]].
-******* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/10/Persistent-highlighting-in-Emacs/][Persistent highlighting in Emacs]] (not a top priority)
-******* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/08/New-color-link-in-org-9-0-using-font-lock-to-color-the-text/][New color link in org 9.0 using font-lock to color the text]] (not a top priority)
-******* [[http://kitchingroup.cheme.cmu.edu/blog/2016/06/16/Copy-formatted-org-mode-text-from-Emacs-to-other-applications/][Copy formatted org-mode text from Emacs to other applications]] (Mac only for now)
-******* also [[org-ref]]
-***** [[https://www.gnu.org/software/emacs/manual/html_node/org/Previewing-LaTeX-fragments.html][The Org Manual: Previewing LaTeX fragments]]
-      Can do it with commands in org text:
-
-      #+STARTUP: latexpreview
-      #+STARTUP: nolatexpreview
-
-      or with the keyboard
-
-      C-c C-x C-l  (preview on)
-      C-c C-c      (preview off)
-
-***** [[https://www.emacswiki.org/emacs/LaTeXMathPreview][EmacsWiki: LaTeX Math Preview]] (not just org mode)
-******* asks for filename every time, unlike on the web page
-******* note that latex escaping, like in org mode, isn't needed
-***** [[http://ieeexplore.ieee.org/search/searchresult.jsp?reload=true&newsearch=true&queryText=Org-mode&x=0&y=0][IEEE papers about org-mode]]
 ***** /emphasizing/ a word / sentence / ... / marked region
 
       1. Mark region to emphasize
@@ -1777,6 +1794,8 @@ eric
         From: [[https://github.com/alphapapa/org-ql][alphapapa/org-ql: An Org-mode query language, including search]]
 
         Could use this for searching org-mode in general (maybe even better than swiper) or for parsing org-mode for export.  Has callable libraries which may be useful to [[Split 1 org file to many org-roam notes]]
+******* [[https://kitchingroup.cheme.cmu.edu/blog/2017/01/03/Find-stuff-in-org-mode-anywhere/][Find stuff in org-mode anywhere]]
+******* also [[org-mode searching]]
 ******* [[Org-roam APIs]]
 ***** org-mode graphics
 ******* emacs artist mode
@@ -1954,6 +1973,24 @@ eric
 ******* [[https://beorgapp.com/][beorg - Task management for iPhone and iPad]]
 ******* [[https://apps.apple.com/us/app/mobileorg/id634225528][‎MobileOrg on the App Store]]
 ******* [[https://irreal.org/blog/?p=8407][Organice | Irreal]] (browser based?)
+***** Org-mode news, manuals, documentation
+******* [[https://orgmode.org/][Org mode for Emacs]]
+******* [[https://orgmode.org/manual/][The Org Manual]]
+******* [[https://blog.tecosaur.com/tmio/][This Month in Org]]
+******* [[https://git.savannah.gnu.org/cgit/emacs/org-mode.git/tree/etc/ORG-NEWS][ORG-NEWS\etc - emacs/org-mode.git - Emacs Org mode]]
+******* [[http://kitchingroup.cheme.cmu.edu/blog/archive/][KitchinGroup Blog]]: <<how to do interesting stuff in org-mode/org-ref>>
+********* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/04/New-link-features-in-org-9/][New link features in org 9]]
+        - store-my-headline :: a headline line that could replace those crappy dedicated-targets!
+********* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/07/Better-equation-numbering-in-LaTeX-fragments-in-org-mode/][Better equation numbering in LaTeX fragments in org-mode]]
+********* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/06/Justifying-LaTeX-preview-fragments-in-org-mode/][Justifying LaTeX preview fragments in org-mode]] with tooltips to see code
+********* [[http://kitchingroup.cheme.cmu.edu/blog/2015/10/09/Automatic-latex-image-toggling-when-cursor-is-on-a-fragment/][Automatic latex image toggling when cursor is on a fragment]] (with video, but broken)
+
+        It's been broken as of org-mode 8.3, or so.  Se James Wong post [[http://kitchingroup.cheme.cmu.edu/blog/2015/10/09/Automatic-latex-image-toggling-when-cursor-is-on-a-fragment/][here]].
+********* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/10/Persistent-highlighting-in-Emacs/][Persistent highlighting in Emacs]] (not a top priority)
+********* [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/08/New-color-link-in-org-9-0-using-font-lock-to-color-the-text/][New color link in org 9.0 using font-lock to color the text]] (not a top priority)
+********* [[http://kitchingroup.cheme.cmu.edu/blog/2016/06/16/Copy-formatted-org-mode-text-from-Emacs-to-other-applications/][Copy formatted org-mode text from Emacs to other applications]] (Mac only for now)
+********* also [[org-ref]]
+******* [[http://ieeexplore.ieee.org/search/searchresult.jsp?reload=true&newsearch=true&queryText=Org-mode&x=0&y=0][IEEE papers about org-mode]]
 ***** [[https://github.com/elxbarbosa/novels.org][novels.org: Novels.org - Your Novels in Plain Text (Emacs]]
 ***** also [[obsidian and emacs]]
 ***** also [[org-brain]]
@@ -2023,6 +2060,8 @@ eric
 ********* ACCEPTED update property hiding function docs ([[https://org-roam.discourse.group/t/org-roam-major-redesign/1198/175?u=scotto][discourse]] and [[https://github.com/org-roam/org-roam/wiki/Hitchhiker's-Rough-Guide-to-Org-roam-V2#hiding-properties][wiki]])
 ********* ACCEPTED does OR and everything else work after paradox melpa update?
           Yes
+******* org-roam v1 to v2 migration
+********* [[https://d12frosted.io/posts/2021-06-11-path-to-org-roam-v2.html][Path to org-roam v2]] (vupela, dl12frosted, lots of elisp)
 ******* <<org-roam v2 note segregation: dir/tag/filename>>
 
         _In [[Evernote]]_ I used flat tags, links and effectively, summary notes.  That seemed to work.  But [[https://org-roam.discourse.group/t/implementing-hierarchies-namespaces-in-org-roam-v2/1504/16?u=scotto][OR V2 does scan directories hierarchically]].
@@ -2065,6 +2104,7 @@ eric
 ******* org-roam v2 searching
 ********* showing tags in search results, direct querying DB for tags...
           From: [[https://systemcrafters.net/live-streams/september-03-2021/][System Crafters Live! - September 3, 2021 - System Crafters]]
+********* [[https://org-roam.discourse.group/t/using-consult-ripgrep-with-org-roam-for-searching-notes/1226][bms/org-roam-rg-search()]]: very nice, still a wip, so check thread end
 ******* renaming OR note filename if #title changes: [[https://org-roam.discourse.group/t/does-renaming-title-no-longer-renames-the-filename/2018/3?u=scotto][arozbiz code]]
 ******* [[preventing an OR v2 node for each org-noter annotation]]
 ******* tidying up org-roam rendering
@@ -3580,7 +3620,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 
 ******* [[https://github.com/m-parashar/emax64/releases][Releases · m-parashar/emax64 · GitHub]]
 ******* [[https://alpha.gnu.org/gnu/emacs/pretest/windows/emacs-27/][Gnu Emacs 27 windows alpha builds]]
-***** Installing
+***** Installing directly on Windows
 
       1. Run the emacs windows installer e.g. Chocolatey or Vincent Goulet
 
@@ -3601,6 +3641,9 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 
       8. [[Pinning emacs to Windows 10 Taskbar]]
 
+***** <<Emacs on WSL2>>
+******* [[https://elecming.medium.com/the-ultimate-emacs-hacking-tutorial-in-windows-10-wsl-2-cfd3ea3893e3][The Ultimate Emacs Hacking Tutorial in Windows 10 WSL 2]]
+******* Xpra or X2Go Xserver (I think) [[https://www.reddit.com/r/emacs/comments/inol6f/comment/g4cc21x/?utm_source=share&utm_medium=web2x&context=3][fix Emacs on WSL2 problem]]
 ***** Pinning emacs to taskbar
 ******* <<Pinning emacs to Windows 10 Taskbar>>
 
@@ -4448,6 +4491,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ***** I mapped C-s s to swiper-isearch-thing-at-point (supposed to be symbols search but it only extracts a symbol-like-thing and then search for string matches w/o knowing the language)
 ***** symbol search and replace: [[refactoring in elpy]]
 ******* [[https://github.com/m-parashar/emax64/releases][emax64: has pdf-tools built-in]]
+***** also [[Linux on Windows]]
 * Surface Book 2
 *** Slow WiFi
     From: [[https://windowsreport.com/surface-book-2-slow-wifi/][Surface Book 2 slow Wi-Fi issues {BEST SOLUTIONS}]]
@@ -5030,6 +5074,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
         writeable.  To fix, I right clicked on the folder in windows explorer
         and changed the owner from admin to me.  This was the same procedure
         as for [[Windows .emacs.d problem]]
+***** [[Emacs on WSL2]]
 *** [[Windows Emacs]]
 *** <<Windows links>>
 ***** <<Windows symbolic links>>
@@ -12970,6 +13015,7 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
     Accessibility --> display --> Cursor size
     
 *** <<MacOS Emacs>>
+***** [[https://sourabhbajaj.com/mac-setup/Emacs/][Emacs · macOS Setup Guide]]  (including emacs 28)
 ***** installing gnu emacs on OSX
 
       Probably [[https://sourabhbajaj.com/mac-setup/Emacs/][should]] install the macports emacs-mac using cask.  From "method 1" [[https://sourabhbajaj.com/mac-setup/Emacs/][here]]:
