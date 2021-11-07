@@ -1292,31 +1292,6 @@ Version 2019-11-04 2021-02-16"
 (global-set-key (kbd "C-x 4 r") 'sdo/find-recentf-other-window) ; like find-file
 (global-set-key (kbd "C-x 5 r") 'sdo/find-recentf-other-frame)
 
-;; ** Find recent directories
-;; From: http://pragmaticemacs.com/emacs/open-a-recent-directory-in-dired-revisited
-;; And:  http://stackoverflow.com/questions/23328037/in-emacs-how-to-maintain-a-list-of-recent-directories
-;; Alternative: M-x crux-recentf-find-directory
-(defun bjm/ivy-dired-recent-dirs ()
-  "Present a list of recently used directories and open the selected one in dired"
-  (interactive)
-  (let ((recent-dirs
-         (delete-dups
-          (mapcar (lambda (file)
-                    (if (file-directory-p file)
-                        file
-                      (file-name-directory file)))
-                  recentf-list))))
-
-    (let ((dir (ivy-read "Directory: "
-                         recent-dirs
-                         :re-builder #'ivy--regex
-                         :sort nil
-                         :initial-input nil)))
-      (dired dir))))
-
-;; Overwrites ido-list-directory, which was less useful than this
-(global-set-key (kbd "C-x C-d") 'bjm/ivy-dired-recent-dirs)
-
 ;;* Function key bindings
 ;; ** functions run by function keys
 (defun indent-buffer ()
@@ -1869,7 +1844,6 @@ Version 2019-11-04 2021-02-16"
  '(ess-ps-viewer-pref "gv")
  '(ess-style 'OWN)
  '(flycheck-python-pycompile-executable pythonbin)
- '(flyspell-correct-interface 'flyspell-correct-ivy)
  '(flyspell-duplicate-distance 0)
  '(focus-follows-mouse t)
  '(gdb-many-windows t)
@@ -1880,8 +1854,6 @@ Version 2019-11-04 2021-02-16"
  '(indent-tabs-mode nil)
  '(indicate-buffer-boundaries nil)
  '(indicate-empty-lines t)
- '(ivy-mode t)
- '(ivy-wrap t)
  '(load-home-init-file t t)
  '(load-prefer-newer t)
  '(matlab-comment-column 0)
@@ -1928,7 +1900,6 @@ Version 2019-11-04 2021-02-16"
  '(org-outline-path-complete-in-steps nil)
  '(org-pretty-entities nil)
  '(org-refile-targets '((nil :maxlevel . 6)))
- '(org-roam-completion-system 'ivy)
  '(org-roam-db-update-method 'idle-timer)
  '(org-roam-file-completion-tag-position 'append)
  '(org-special-ctrl-k nil)
@@ -2173,6 +2144,11 @@ Version 2019-11-04 2021-02-16"
 ;; but include pdfs in energy.bib so it can find pdfs if visited manually
 (setq bibpdf_list (list bibfile_energy_pdf_dir bibfile_roam_pdf_dir)) 
 
+;; Find pdf w/ JabRef/Zotero fields
+(setq bibtex-completion-pdf-field "file")
+;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
+(setq org-ref-bibliography-notes (expand-file-name "bib-notes" org_roam_dir))
+
 ;; ** Org package, basic config
 
 ;; TODO: experiment with C-c C-x C-b or M-x sdo/org-tree-to-indirect-buffer
@@ -2189,7 +2165,7 @@ Version 2019-11-04 2021-02-16"
   (define-key global-map "\C-cl" 'org-store-link)
   (global-set-key (kbd "C-c L") 'org-insert-link-global) ; insert in any buffer
   (global-set-key (kbd "C-c o") 'org-open-at-point-global) ; open in any buffer
-  (global-set-key "\C-cb" 'org-iswitchb) ; switch between org buffers
+  ;;(global-set-key "\C-cb" 'org-iswitchb) ; switch between org buffers
   ;;(global-set-key "\C-cc" 'org-capture) ; ovewrites org-ref-bibtex bindings
   ;;(define-key global-map "\C-ca" 'org-agenda) ; I don't use agenda
 
@@ -2218,14 +2194,6 @@ Version 2019-11-04 2021-02-16"
   ;; could do setq-local for dir or file-specific dirname:
   ;; https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
   (setq org-download-method 'org-download-method-dirname-from-orgfile))
-
-;; do this for org-mode v 9.5
-;; https://mail.google.com/mail/u/0/#inbox/FMfcgzGlkFvBtzqVbNDzVdPxpXvNPsGX
-;; You have to load oc-biblatex, say using use-package, and also set
-;; org-cite-export-processors, like:
-;; (setq org-cite-export-processors
-;; '((latex biblatex)
-;;   (t csl)))
 
 (use-package org-superstar
   :after org
@@ -2516,6 +2484,54 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; Pastes biblio summary of Zotero entries in org-mode, connects to org-noter
 (use-package zotxt :defer t)
 
+;; ** Org-cite (native)
+;; For the native cites in org-mode 9.5+
+
+;; ;; Generic native citations (for latex files, I suppose)
+;; ;; From: https://github.com/bdarcus/citar
+;; (use-package citar
+;;   :defer t
+;;   :straight (:host github :repo "bdarcus/citar") ; not on straight
+;;   :bind (("C-c b" . citar-insert-citation)
+;;          :map minibuffer-local-map
+;;          ("M-b" . citar-insert-preset))
+;;   :custom
+;;   (citar-bibliography '("~/OneDrive/share/ref/energy.bib")))
+
+;; ;; use consult-completing-read for enhanced interface
+;; ;; From: https://github.com/bdarcus/citar
+;; (with-eval-after-load 'embark
+;;   (advice-add #'completing-read-multiple :override
+;;               #'consult-completing-read-multiple))
+
+;; ;; org native citations
+;; ;; From: https://github.com/bdarcus/citar
+;; (use-package citar-org
+;;   :after (org citar)         ; so that org-mode-map is defined
+;;   :straight (:host github :repo "bdarcus/citar") ; not on straight
+;;   ;; melpa?
+;;   :no-require
+;;   :ensure nil
+;;   :bind
+;;   (:map org-mode-map ("C-c b" . #'org-cite-insert)) ; also  C-c C-x C-@
+;;   :custom
+  
+;;   (org-cite-global-bibliography '("~/OneDrive/share/ref/energy.bib"))
+;;   (org-cite-insert-processor 'citar)
+;;   (org-cite-follow-processor 'citar)
+;;   (org-cite-activate-processor 'citar)
+;;   (citar-at-point-function 'embark-act)
+;;   :init
+;;   (citar-filenotify-setup '(LaTeX-mode-hook org-mode-hook)))
+
+;; ;; do this for org-mode v 9.5
+;; ;; https://mail.google.com/mail/u/0/#inbox/FMfcgzGlkFvBtzqVbNDzVdPxpXvNPsGX
+;; ;; You have to load oc-biblatex, say using use-package, and also set
+;; ;; org-cite-export-processors, like:
+;; ;; (setq org-cite-export-processors
+;; ;; '((latex biblatex)
+;; ;;   (t csl)))
+
 ;; ** Org-ref
 
 ;; Store links in bibtex: C-c l; in .org files C-c ]
@@ -2569,6 +2585,8 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   :custom
   (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
   (org-id-method 'ts)
+  ;; comment out unless specifically want to use ivy
+  ;;  (org-roam-completion-system 'ivy)
 
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
@@ -2598,7 +2616,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;; If using org-roam-protocol
   (require 'org-roam-protocol))
 
-(use-package ivy-bibtex :defer t)
+;; (use-package ivy-bibtex :defer t) ; moved to ivy section
   
 ;; ** org-roam-ui (graph viewing)
 
@@ -2644,14 +2662,6 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;;       (kill-line)
 ;;       (kill-line))))
 
-;; ** Bibfile files and directories
-;;    see also Org-roam-bibtex
-
-;; Find pdf w/ JabRef/Zotero fields
-(setq bibtex-completion-pdf-field "file")
-;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
-(setq org-ref-bibliography-notes (expand-file-name "bib-notes" org_roam_dir))
-
 ;; ** Org-noter
 ;;
 ;; keybindings, basic explanation: https://github.com/weirdnox/org-noter#keys
@@ -2691,24 +2701,29 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; ** File System Search
 
 ;; *** deadgrep
-;; File search w/ nice interface, better than standard emacs lgrep, I think
-(if (setq rg_exe (sdo/find-exec "rg" "ripgrep needed org-roam and others"))
-    (progn (use-package deadgrep)
-           (global-set-key [f5] 'deadgrep)
-           ;; use current working dir as starting point of search
-           ;; https://github.com/Wilfred/deadgrep/issues/14#issuecomment-464363207
-           (defun wh/return-default-dir ()
-             default-directory)
 
-           (setq deadgrep-project-root-function #'wh/return-default-dir))
-  (global-set-key [f5] 'lgrep))
+;; comment out so can instead use consult-ripgrep
+;;
+;; ;; File search w/ nice interface, better than standard emacs lgrep, I think
+;; (if (setq rg_exe (sdo/find-exec "rg" "ripgrep needed org-roam and others"))
+;;     (progn (use-package deadgrep)
+;;            (global-set-key [f5] 'deadgrep)
+;;            ;; use current working dir as starting point of search
+;;            ;; https://github.com/Wilfred/deadgrep/issues/14#issuecomment-464363207
+;;            (defun wh/return-default-dir ()
+;;              default-directory)
+
+;;            (setq deadgrep-project-root-function #'wh/return-default-dir))
+;;   (global-set-key [f5] 'lgrep))
 
 ;; ** Search/Replace within Buffer
 
+;; Commented out so as not to conflict with consult binding
+;;
 ;; Bindings for searching with currently highlighted string
 ;; See also "C-c s") 'swiper-isearch-thing-at-point)
-(define-key isearch-mode-map "\M-s" 'isearch-repeat-forward)  ; word forward
-(define-key isearch-mode-map "\M-r" 'isearch-repeat-backward) ; word backward
+;; (define-key isearch-mode-map "\M-s" 'isearch-repeat-forward)  ; word forward
+;; (define-key isearch-mode-map "\M-r" 'isearch-repeat-backward) ; word backward
 
 (use-package replace-from-region
   :config                    ; default was query-replace
@@ -2750,351 +2765,357 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; * Completion: Vertico/Corfu/Orderless/Marginalia/Embark
 
-;; ;; SUMMARY: Lot's of great functions but I prefer swiper search
-;; ;; highlighting.  Worth the trade?
+;; SUMMARY: Lot's of great functions but I prefer swiper search
+;; highlighting.  Worth the trade?
 
-;; ;; ** Completions with Vertico
+;; ** Completions with Vertico
 
-;; ;; This came from systemcrafter guy: https://config.daviwil.com/emacs
+;; This came from systemcrafter guy: https://config.daviwil.com/emacs
 
-;; (defun dw/minibuffer-backward-kill (arg)
-;;   "When minibuffer is completing a file name delete up to parent
-;; folder, otherwise delete a word"
-;;   (interactive "p")
-;;   (if minibuffer-completing-file-name
-;;       ;; Borrowed from https://github.com/raxod502/selectrum/issues/498#issuecomment-803283608
-;;       (if (string-match-p "/." (minibuffer-contents))
-;;           (zap-up-to-char (- arg) ?/)
-;;         (delete-minibuffer-contents))
-;;       (backward-kill-word arg)))
+(defun dw/minibuffer-backward-kill (arg)
+  "When minibuffer is completing a file name delete up to parent
+folder, otherwise delete a word"
+  (interactive "p")
+  (if minibuffer-completing-file-name
+      ;; Borrowed from https://github.com/raxod502/selectrum/issues/498#issuecomment-803283608
+      (if (string-match-p "/." (minibuffer-contents))
+          (zap-up-to-char (- arg) ?/)
+        (delete-minibuffer-contents))
+      (backward-kill-word arg)))
 
-;; ;; TODO: try vertico extensions:
-;; ;; https://github.com/minad/vertico#extensions
-;; ;; vertico- buffer, directory, grid, mouse, repeat, reverse
-;; ;; TODO: C-r does search backwards, like I did w/ swiper
-;; ;; TODO: show full match in main buffer, like ivy
-;; ;;
-;; (use-package vertico
-;;   :bind (:map vertico-map
-;;          ("C-s" . vertico-next)
-;;          ("C-r" . vertico-previous)
-;;          ;; ("C-j" . vertico-next)
-;;          ;; ("C-k" . vertico-previous)
-;;          ;; ("C-f" . vertico-exit)
+;; TODO: try vertico extensions:
+;; https://github.com/minad/vertico#extensions
+;; vertico- buffer, directory, grid, mouse, repeat, reverse
+;; TODO: C-r does search backwards, like I did w/ swiper
+;; TODO: show full match in main buffer, like ivy
+;;
+(use-package vertico
+  :bind (:map vertico-map
+         ("C-s" . vertico-next)
+         ("C-r" . vertico-previous)
+         ;; ("C-j" . vertico-next)
+         ;; ("C-k" . vertico-previous)
+         ;; ("C-f" . vertico-exit)
+         :map minibuffer-local-map
+         ("M-h" . dw/minibuffer-backward-kill))
+  :custom
+  (vertico-cycle t)
+  :custom-face
+;;  (vertico-current ((t (:background "#3a3f5a"))))
+  :init
+  (vertico-mode))
+
+;; ** Completions with selectrum
+
+;; ;; I'm not sure how this is different from vertico
+;; ;; To use this, must also modify consult bindings so calls selctrum functions
+;; ;; Started from https://config.daviwil.com/emacs
+;; (use-package selectrum
+;;   :bind (("C-M-r" . selectrum-repeat)
+;;          :map selectrum-minibuffer-map
+;;          ("C-r" . selectrum-select-from-history)
+;;          ("C-j" . selectrum-next-candidate)
+;;          ("C-k" . selectrum-previous-candidate)
 ;;          :map minibuffer-local-map
-;;          ("M-h" . dw/minibuffer-backward-kill))
+;;          ("M-h" . backward-kill-word))
 ;;   :custom
-;;   (vertico-cycle t)
+;;   (selectrum-fix-minibuffer-height t)
+;;   (selectrum-num-candidates-displayed 7)
+;;   (selectrum-refine-candidates-function #'orderless-filter)
+;;   (selectrum-highlight-candidates-function #'orderless-highlight-matches)
 ;;   :custom-face
-;; ;;  (vertico-current ((t (:background "#3a3f5a"))))
+;;   (selectrum-current-candidate ((t (:background "light gray"))))
 ;;   :init
-;;   (vertico-mode))
+;;   (selectrum-mode 1))
 
-;; ;; ** Completions with selectrum
+;; ** Completions in Regions with Corfu
 
-;; ;; ;; I'm not sure how this is different from vertico
-;; ;; ;; To use this, must also modify consult bindings so calls selctrum functions
-;; ;; ;; Started from https://config.daviwil.com/emacs
-;; ;; (use-package selectrum
-;; ;;   :bind (("C-M-r" . selectrum-repeat)
-;; ;;          :map selectrum-minibuffer-map
-;; ;;          ("C-r" . selectrum-select-from-history)
-;; ;;          ("C-j" . selectrum-next-candidate)
-;; ;;          ("C-k" . selectrum-previous-candidate)
-;; ;;          :map minibuffer-local-map
-;; ;;          ("M-h" . backward-kill-word))
-;; ;;   :custom
-;; ;;   (selectrum-fix-minibuffer-height t)
-;; ;;   (selectrum-num-candidates-displayed 7)
-;; ;;   (selectrum-refine-candidates-function #'orderless-filter)
-;; ;;   (selectrum-highlight-candidates-function #'orderless-highlight-matches)
-;; ;;   :custom-face
-;; ;;   (selectrum-current-candidate ((t (:background "light gray"))))
-;; ;;   :init
-;; ;;   (selectrum-mode 1))
+;; is this doing anything?
+(use-package corfu
+  :bind (:map corfu-map
+              ;; ("C-j" . corfu-next)
+              ;; ("C-k" . corfu-previous)
+              ;; ("C-f" . corfu-insert))
+              )
+  :custom
+  (corfu-cycle t)
+  :config
+  (corfu-global-mode))
 
-;; ;; ** Completions in Regions with Corfu
+;; ** Improved Candidate Filtering with Orderless
 
-;; ;; is this doing anything?
-;; (use-package corfu
-;;   :bind (:map corfu-map
-;;               ;; ("C-j" . corfu-next)
-;;               ;; ("C-k" . corfu-previous)
-;;               ;; ("C-f" . corfu-insert))
-;;               )
-;;   :custom
-;;   (corfu-cycle t)
-;;   :config
-;;   (corfu-global-mode))
+(use-package orderless
+  :init
+  (setq completion-styles '(orderless)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles . (partial-completion))))))
 
-;; ;; ** Improved Candidate Filtering with Orderless
-
-;; (use-package orderless
-;;   :init
-;;   (setq completion-styles '(orderless)
-;;         completion-category-defaults nil
-;;         completion-category-overrides '((file (styles . (partial-completion))))))
-
-;; ;; (use-package restricto
-;; ;;   :straight '(restricto :host github
-;; ;;                         :repo "oantolin/restricto")
-;; ;;   :after vertico
-;; ;;   :demand t
-;; ;;   :bind (:map vertico-map
-;; ;;          ("S-SPC" . restricto-narrow))
-;; ;;   :config
-;; ;;   (restricto-mode))
-
-;; ;; Persist history over Emacs restarts. Vertico sorts by history
-;; ;; position.  Like prescient, I guess.
-;; ;; from: https://github.com/minad/vertico
-;; (use-package savehist
-;;   :init
-;;   (savehist-mode))
-
-;; ;; A few more useful configurations...
-;; ;; from: https://github.com/minad/vertico
-;; (use-package emacs
-;;   :init
-;;   ;; Add prompt indicator to `completing-read-multiple'.
-;;   ;; Alternatively try `consult-completing-read-multiple'.
-;;   (defun crm-indicator (args)
-;;     (cons (concat "[CRM] " (car args)) (cdr args)))
-;;   (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
-
-;;   ;; Do not allow the cursor in the minibuffer prompt
-;;   (setq minibuffer-prompt-properties
-;;         '(read-only t cursor-intangible t face minibuffer-prompt))
-;;   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
-
-;;   ;; Emacs 28: Hide commands in M-x which do not work in the current mode.
-;;   ;; Vertico commands are hidden in normal buffers.
-;;   ;; (setq read-extended-command-predicate
-;;   ;;       #'command-completion-default-include-p)
-
-;;   ;; Enable recursive minibuffers
-;;   (setq enable-recursive-minibuffers t))
-
-;; ;; ** Consult Commands
-
-;; ;; Consult provides a lot of useful completion commands similar to
-;; ;; Ivy's Counsel.
-
-;; ;; Started from systemcrafter guy: https://config.daviwil.com/emacs
-;; (use-package consult
-;;   :demand t
-;;   :bind (("C-M-l" . consult-imenu)
-;;          ;; ("C-M-j" . persp-switch-to-buffer*) ;; use when if have perspective 
-;;          ("C-x C-r" . consult-recent-file) ;; overrides my function, I hope
-;;          ("C-x C-b" . consult-buffer) ;; override ibuffer binding, does more
-;;          ("C-s" . consult-line) ;; also consult-line-multi searches across bufs
-;;          ;;("C-s" . consult-isearch) ; doesn't work
-;;          ;; overrides deadgrep, also has grep, git-grep
-;;          ("<F5>" . consult-ripgrep)
-;;          ;; search org & outshine headers (overrides default isearch bindings)
-;;          ;; ("C-c s" . consult-outline) ;; works but hangs in energytop.org
-;;          :map minibuffer-local-map
-;;          ("C-r" . consult-history))
-;;   :custom
-;;   ;;(consult-project-root-function #'dw/get-project-root)
-;;   (completion-in-region-function #'consult-completion-in-region)
-;;   (consult-line-point-placement 'match-beginning)
-;;   :config
-;;   (consult-preview-at-point-mode)) ;; SDO: use new command name, I think
-
-;; ;; Example configuration for Consult
-;; ;; https://github.com/minad/consult
-;; ;; (use-package consult
-;; ;;   ;; Replace bindings. Lazily loaded due by `use-package'.
-;; ;;   :bind (;; C-c bindings (mode-specific-map)
-;; ;;          ("C-c h" . consult-history)
-;; ;;          ("C-c m" . consult-mode-command)
-;; ;;          ("C-c b" . consult-bookmark)
-;; ;;          ("C-c k" . consult-kmacro)
-;; ;;          ;; C-x bindings (ctl-x-map)
-;; ;;          ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
-;; ;;          ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
-;; ;;          ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
-;; ;;          ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
-;; ;;          ;; Custom M-# bindings for fast register access
-;; ;;          ("M-#" . consult-register-load)
-;; ;;          ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
-;; ;;          ("C-M-#" . consult-register)
-;; ;;          ;; Other custom bindings
-;; ;;          ("M-y" . consult-yank-pop)                ;; orig. yank-pop
-;; ;;          ("<help> a" . consult-apropos)            ;; orig. apropos-command
-;; ;;          ;; M-g bindings (goto-map)
-;; ;;          ("M-g e" . consult-compile-error)
-;; ;;          ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
-;; ;;          ("M-g g" . consult-goto-line)             ;; orig. goto-line
-;; ;;          ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
-;; ;;          ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
-;; ;;          ("M-g m" . consult-mark)
-;; ;;          ("M-g k" . consult-global-mark)
-;; ;;          ("M-g i" . consult-imenu)
-;; ;;          ("M-g I" . consult-imenu-multi)
-;; ;;          ;; M-s bindings (search-map)
-;; ;;          ("M-s f" . consult-find)
-;; ;;          ("M-s F" . consult-locate)
-;; ;;          ("M-s g" . consult-grep)
-;; ;;          ("M-s G" . consult-git-grep)
-;; ;;          ("M-s r" . consult-ripgrep)
-;; ;;          ("M-s l" . consult-line)
-;; ;;          ("M-s L" . consult-line-multi)
-;; ;;          ("M-s m" . consult-multi-occur)
-;; ;;          ("M-s k" . consult-keep-lines)
-;; ;;          ("M-s u" . consult-focus-lines)
-;; ;;          ;; Isearch integration
-;; ;;          ("M-s e" . consult-isearch-history)
-;; ;;          :map isearch-mode-map
-;; ;;          ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
-;; ;;          ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
-;; ;;          ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
-;; ;;          ("M-s L" . consult-line-multi))           ;; needed by consult-line to detect isearch
-
-;; ;;   ;; Enable automatic preview at point in the *Completions* buffer.
-;; ;;   ;; This is relevant when you use the default completion UI,
-;; ;;   ;; and not necessary for Vertico, Selectrum, etc.
-;; ;;   :hook (completion-list-mode . consult-preview-at-point-mode)
-
-;; ;;   ;; The :init configuration is always executed (Not lazy)
-;; ;;   :init
-
-;; ;;   ;; Optionally configure the register formatting. This improves the register
-;; ;;   ;; preview for `consult-register', `consult-register-load',
-;; ;;   ;; `consult-register-store' and the Emacs built-ins.
-;; ;;   (setq register-preview-delay 0
-;; ;;         register-preview-function #'consult-register-format)
-
-;; ;;   ;; Optionally tweak the register preview window.
-;; ;;   ;; This adds thin lines, sorting and hides the mode line of the window.
-;; ;;   (advice-add #'register-preview :override #'consult-register-window)
-
-;; ;;   ;; Optionally replace `completing-read-multiple' with an enhanced version.
-;; ;;   (advice-add #'completing-read-multiple :override #'consult-completing-read-multiple)
-
-;; ;;   ;; Use Consult to select xref locations with preview
-;; ;;   (setq xref-show-xrefs-function #'consult-xref
-;; ;;         xref-show-definitions-function #'consult-xref)
-
-;; ;;   ;; Configure other variables and modes in the :config section,
-;; ;;   ;; after lazily loading the package.
-;; ;;   :config
-
-;; ;;   ;; Optionally configure preview. The default value
-;; ;;   ;; is 'any, such that any key triggers the preview.
-;; ;;   ;; (setq consult-preview-key 'any)
-;; ;;   ;; (setq consult-preview-key (kbd "M-."))
-;; ;;   ;; (setq consult-preview-key (list (kbd "<S-down>") (kbd "<S-up>")))
-;; ;;   ;; For some commands and buffer sources it is useful to configure the
-;; ;;   ;; :preview-key on a per-command basis using the `consult-customize' macro.
-;; ;;   (consult-customize
-;; ;;    consult-theme
-;; ;;    :preview-key '(:debounce 0.2 any)
-;; ;;    consult-ripgrep consult-git-grep consult-grep
-;; ;;    consult-bookmark consult-recent-file consult-xref
-;; ;;    consult--source-file consult--source-project-file consult--source-bookmark
-;; ;;    :preview-key (kbd "M-."))
-
-;; ;;   ;; Optionally configure the narrowing key.
-;; ;;   ;; Both < and C-+ work reasonably well.
-;; ;;   (setq consult-narrow-key "<") ;; (kbd "C-+")
-
-;; ;;   ;; Optionally make narrowing help available in the minibuffer.
-;; ;;   ;; You may want to use `embark-prefix-help-command' or which-key instead.
-;; ;;   ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
-
-;; ;;   ;; Optionally configure a function which returns the project root directory.
-;; ;;   ;; There are multiple reasonable alternatives to chose from.
-;; ;;   ;;;; 1. project.el (project-roots)
-;; ;;   (setq consult-project-root-function
-;; ;;         (lambda ()
-;; ;;           (when-let (project (project-current))
-;; ;;             (car (project-roots project)))))
-;; ;;   ;;;; 2. projectile.el (projectile-project-root)
-;; ;;   ;; (autoload 'projectile-project-root "projectile")
-;; ;;   ;; (setq consult-project-root-function #'projectile-project-root)
-;; ;;   ;;;; 3. vc.el (vc-root-dir)
-;; ;;   ;; (setq consult-project-root-function #'vc-root-dir)
-;; ;;   ;;;; 4. locate-dominating-file
-;; ;;   ;; (setq consult-project-root-function (lambda () (locate-dominating-file "." ".git")))
-;; ;; )
-
-;; ;; TODO: add "search selection" like I put in ivy (see below)
-;; ;; From: https://takeonrules.com/2021/05/15/a-year-or-so-of-emacs/
-;; ;; (advice-add #'consult-line
-;; ;;             :around
-;; ;;             #'jnf/consult-line
-;; ;;             '((name . "wrapper")))
-
-;; ;; (defun jnf/consult-line (consult-line-function &rest rest)
-;; ;;   "Advising function around `CONSULT-LINE-FUNCTION'.
-
-;; ;;   ;; When there's an active region, use that as the first parameter
-;; ;;   ;; for `CONSULT-LINE-FUNCTION'.  Otherwise, use the current word as
-;; ;;   ;; nthe first parameter.  This function handles the `REST' of the
-;; ;;   ;; parameters."
-;; ;;   (interactive)
-;; ;;   (if (use-region-p)
-;; ;;       (apply consult-line-function
-;; ;;         (buffer-substring (region-beginning) (region-end)) rest)
-;; ;;       (apply consult-line-function
-;; ;;         (thing-at-point 'word) rest)))
-
-;; ;; ** Completion Annotations with Marginalia
-
-;; ;; Marginalia provides helpful annotations for various types of minibuffer completions. You can think of it as a replacement of ivy-rich.
-
-;; (use-package marginalia
+;; (use-package restricto
+;;   :straight '(restricto :host github
+;;                         :repo "oantolin/restricto")
 ;;   :after vertico
-;; ;;  :straight t
-;;   :custom
-;;   (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+;;   :demand t
+;;   :bind (:map vertico-map
+;;          ("S-SPC" . restricto-narrow))
+;;   :config
+;;   (restricto-mode))
+
+;; Persist history over Emacs restarts. Vertico sorts by history
+;; position.  Like prescient, I guess.
+;; from: https://github.com/minad/vertico
+(use-package savehist
+  :init
+  (savehist-mode))
+
+;; A few more useful configurations...
+;; from: https://github.com/minad/vertico
+(use-package emacs
+  :init
+
+  ;; does this mess up doing C-o on org-cite links?
+  ;; Add prompt indicator to `completing-read-multiple'.
+  ;; Alternatively try `consult-completing-read-multiple'.
+  (defun crm-indicator (args)
+    (cons (concat "[CRM] " (car args)) (cdr args)))
+  (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
+
+  ;; Do not allow the cursor in the minibuffer prompt
+  (setq minibuffer-prompt-properties
+        '(read-only t cursor-intangible t face minibuffer-prompt))
+  (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+
+  ;; Emacs 28: Hide commands in M-x which do not work in the current mode.
+  ;; Vertico commands are hidden in normal buffers.
+  ;; (setq read-extended-command-predicate
+  ;;       #'command-completion-default-include-p)
+
+  ;; Enable recursive minibuffers
+  (setq enable-recursive-minibuffers t))
+
+;; ** Consult Commands
+
+;; Consult provides a lot of useful completion commands similar to
+;; Ivy's Counsel.
+
+;; Started from systemcrafter guy: https://config.daviwil.com/emacs
+(use-package consult
+;;  :demand t  ; caused problems w/ org-mode-map binding below
+  :bind (("C-M-l" . consult-imenu)
+         ;; ("C-M-j" . persp-switch-to-buffer*) ;; use when if have perspective 
+         ("C-x C-r" . consult-recent-file) ;; overrides my function, I hope
+         ("C-x C-b" . consult-buffer) ;; override ibuffer binding, does more
+         ;;("C-s" . consult-line) ;; also consult-line-multi for across bufs
+         ;;("C-s" . consult-isearch) ; doesn't work
+         ;; overrides deadgrep, also has grep, git-grep
+         ("<f5>" . consult-ripgrep)
+         ;; search org & outshine headers (overrides default isearch bindings)
+          ("M-s s" . consult-outline) ;; works but hangs in energytop.org
+         :map minibuffer-local-map
+         ("C-r" . consult-history)
+         :map org-mode-map
+         ;; consistent w/ consult example M-s search bindings (below)
+         ("M-s s" . consult-org-heading) ; for org, better than consult-outline 
+         )
+  :custom
+  ;;(consult-project-root-function #'dw/get-project-root)
+  (completion-in-region-function #'consult-completion-in-region)
+  (consult-line-point-placement 'match-beginning)
+  :config
+  (consult-preview-at-point-mode)) ;; SDO: use new command name, I think
+
+;; Example configuration for Consult
+;; https://github.com/minad/consult
+;; (use-package consult
+;;   ;; Replace bindings. Lazily loaded due by `use-package'.
+;;   :bind (;; C-c bindings (mode-specific-map)
+;;          ("C-c h" . consult-history)
+;;          ("C-c m" . consult-mode-command)
+;;          ("C-c b" . consult-bookmark)
+;;          ("C-c k" . consult-kmacro)
+;;          ;; C-x bindings (ctl-x-map)
+;;          ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+;;          ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
+;;          ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+;;          ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+;;          ;; Custom M-# bindings for fast register access
+;;          ("M-#" . consult-register-load)
+;;          ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
+;;          ("C-M-#" . consult-register)
+;;          ;; Other custom bindings
+;;          ("M-y" . consult-yank-pop)                ;; orig. yank-pop
+;;          ("<help> a" . consult-apropos)            ;; orig. apropos-command
+;;          ;; M-g bindings (goto-map)
+;;          ("M-g e" . consult-compile-error)
+;;          ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
+;;          ("M-g g" . consult-goto-line)             ;; orig. goto-line
+;;          ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+;;          ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
+;;          ("M-g m" . consult-mark)
+;;          ("M-g k" . consult-global-mark)
+;;          ("M-g i" . consult-imenu)
+;;          ("M-g I" . consult-imenu-multi)
+;;          ;; M-s bindings (search-map)
+;;          ("M-s f" . consult-find)
+;;          ("M-s F" . consult-locate)
+;;          ("M-s g" . consult-grep)
+;;          ("M-s G" . consult-git-grep)
+;;          ("M-s r" . consult-ripgrep)
+;;          ("M-s l" . consult-line)
+;;          ("M-s L" . consult-line-multi)
+;;          ("M-s m" . consult-multi-occur)
+;;          ("M-s k" . consult-keep-lines)
+;;          ("M-s u" . consult-focus-lines)
+;;          ;; Isearch integration
+;;          ("M-s e" . consult-isearch-history)
+;;          :map isearch-mode-map
+;;          ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
+;;          ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
+;;          ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
+;;          ("M-s L" . consult-line-multi))           ;; needed by consult-line to detect isearch
+
+;;   ;; Enable automatic preview at point in the *Completions* buffer.
+;;   ;; This is relevant when you use the default completion UI,
+;;   ;; and not necessary for Vertico, Selectrum, etc.
+;;   :hook (completion-list-mode . consult-preview-at-point-mode)
+
+;;   ;; The :init configuration is always executed (Not lazy)
 ;;   :init
-;;   (marginalia-mode))
 
-;; ;; ** Completion Actions with Embark
+;;   ;; Optionally configure the register formatting. This improves the register
+;;   ;; preview for `consult-register', `consult-register-load',
+;;   ;; `consult-register-store' and the Emacs built-ins.
+;;   (setq register-preview-delay 0
+;;         register-preview-function #'consult-register-format)
 
-;; (use-package embark
-;;   :straight t
-;;   :bind (("C-S-a" . embark-act)
-;;          :map minibuffer-local-map
-;;          ("C-." . embark-dwim)
-;;          ("C-;" . embark-act))
-;; ;;         ("C-d" . embark-act))
+;;   ;; Optionally tweak the register preview window.
+;;   ;; This adds thin lines, sorting and hides the mode line of the window.
+;;   (advice-add #'register-preview :override #'consult-register-window)
+
+;;   ;; Optionally replace `completing-read-multiple' with an enhanced version.
+;;   (advice-add #'completing-read-multiple :override #'consult-completing-read-multiple)
+
+;;   ;; Use Consult to select xref locations with preview
+;;   (setq xref-show-xrefs-function #'consult-xref
+;;         xref-show-definitions-function #'consult-xref)
+
+;;   ;; Configure other variables and modes in the :config section,
+;;   ;; after lazily loading the package.
 ;;   :config
 
-;;   (setq embark-action-indicator '(
-;;         ;; Show Embark actions via which-key (system crafter guy)
-;;         (lambda (map)
-;;           (which-key--show-keymap "Embark" map nil nil 'no-paging)
-;;           #'which-key--hide-popup-ignore-command)
-;;         embark-become-indicator embark-action-indicator
-;;         ;; SO added below (but I don't get what this does)
-;;         ;; See: https://github.com/oantolin/embark/wiki/Additional-Configuration#use-which-key-like-a-key-menu-prompt        
-;;         embark-highlight-indicator
-;;         embark-isearch-highlight-indicator)))
+;;   ;; Optionally configure preview. The default value
+;;   ;; is 'any, such that any key triggers the preview.
+;;   ;; (setq consult-preview-key 'any)
+;;   ;; (setq consult-preview-key (kbd "M-."))
+;;   ;; (setq consult-preview-key (list (kbd "<S-down>") (kbd "<S-up>")))
+;;   ;; For some commands and buffer sources it is useful to configure the
+;;   ;; :preview-key on a per-command basis using the `consult-customize' macro.
+;;   (consult-customize
+;;    consult-theme
+;;    :preview-key '(:debounce 0.2 any)
+;;    consult-ripgrep consult-git-grep consult-grep
+;;    consult-bookmark consult-recent-file consult-xref
+;;    consult--source-file consult--source-project-file consult--source-bookmark
+;;    :preview-key (kbd "M-."))
 
-;; ;; SO: seems like this must already work if you've installed embark?
-;; ;;Seems like systemcrafters buy has supplanted it with which-key,
-;; ;;inside of embar, use-package
-;; ;;
-;; ;; (use-package embark-consult
-;; ;;   :straight '(embark-consult :host github
-;; ;;                              :repo "oantolin/embark"
-;; ;;                              :files ("embark-consult.el"))
-;; ;;   :after (embark consult)
-;; ;;   :demand t
-;; ;;   :hook
-;; ;;   (embark-collect-mode . embark-consult-preview-minor-mode))
+;;   ;; Optionally configure the narrowing key.
+;;   ;; Both < and C-+ work reasonably well.
+;;   (setq consult-narrow-key "<") ;; (kbd "C-+")
+
+;;   ;; Optionally make narrowing help available in the minibuffer.
+;;   ;; You may want to use `embark-prefix-help-command' or which-key instead.
+;;   ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
+
+;;   ;; Optionally configure a function which returns the project root directory.
+;;   ;; There are multiple reasonable alternatives to chose from.
+;;   ;;;; 1. project.el (project-roots)
+;;   (setq consult-project-root-function
+;;         (lambda ()
+;;           (when-let (project (project-current))
+;;             (car (project-roots project)))))
+;;   ;;;; 2. projectile.el (projectile-project-root)
+;;   ;; (autoload 'projectile-project-root "projectile")
+;;   ;; (setq consult-project-root-function #'projectile-project-root)
+;;   ;;;; 3. vc.el (vc-root-dir)
+;;   ;; (setq consult-project-root-function #'vc-root-dir)
+;;   ;;;; 4. locate-dominating-file
+;;   ;; (setq consult-project-root-function (lambda () (locate-dominating-file "." ".git")))
+;; )
+
+;; TODO: add "search selection" like I put in ivy (see below)
+;; From: https://takeonrules.com/2021/05/15/a-year-or-so-of-emacs/
+;; (advice-add #'consult-line
+;;             :around
+;;             #'jnf/consult-line
+;;             '((name . "wrapper")))
+
+;; (defun jnf/consult-line (consult-line-function &rest rest)
+;;   "Advising function around `CONSULT-LINE-FUNCTION'.
+
+;;   ;; When there's an active region, use that as the first parameter
+;;   ;; for `CONSULT-LINE-FUNCTION'.  Otherwise, use the current word as
+;;   ;; nthe first parameter.  This function handles the `REST' of the
+;;   ;; parameters."
+;;   (interactive)
+;;   (if (use-region-p)
+;;       (apply consult-line-function
+;;         (buffer-substring (region-beginning) (region-end)) rest)
+;;       (apply consult-line-function
+;;         (thing-at-point 'word) rest)))
+
+;; ** Completion Annotations with Marginalia
+
+;; Marginalia provides helpful annotations for various types of minibuffer completions. You can think of it as a replacement of ivy-rich.
+
+(use-package marginalia
+  :after vertico
+;;  :straight t
+  :custom
+  (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+  :init
+  (marginalia-mode))
+
+;; ** Completion Actions with Embark
+
+(use-package embark
+  :straight t
+  :bind (("C-S-a" . embark-act)
+         :map minibuffer-local-map
+         ("C-." . embark-dwim)
+         ("C-;" . embark-act))
+;;         ("C-d" . embark-act))
+  :config
+
+  (setq embark-action-indicator '(
+        ;; Show Embark actions via which-key (system crafter guy)
+        (lambda (map)
+          (which-key--show-keymap "Embark" map nil nil 'no-paging)
+          #'which-key--hide-popup-ignore-command)
+        embark-become-indicator embark-action-indicator
+        ;; SO added below (but I don't get what this does)
+        ;; See: https://github.com/oantolin/embark/wiki/Additional-Configuration#use-which-key-like-a-key-menu-prompt        
+        embark-highlight-indicator
+        embark-isearch-highlight-indicator)))
+
+;; SO: seems like this must already work if you've installed embark?
+;;Seems like systemcrafters buy has supplanted it with which-key,
+;;inside of embar, use-package
+;;
+;; (use-package embark-consult
+;;   :straight '(embark-consult :host github
+;;                              :repo "oantolin/embark"
+;;                              :files ("embark-consult.el"))
+;;   :after (embark consult)
+;;   :demand t
+;;   :hook
+;;   (embark-collect-mode . embark-consult-preview-minor-mode))
 
 ;; * Completion: Ivy/Swiper/Counsel/Company
 ;; ** Ivy
-(use-package ivy
-  :bind (("C-s" . swiper)
-         ("C-x b" . ivy-switch-buffer))
-  :config
-  (ivy-mode 1)) ; so it starts @ emacs boot, no delay
+;; (use-package ivy
+;;   :bind (("C-s" . swiper)
+;;          ("C-x b" . ivy-switch-buffer))
+;;   :config
+;;   (ivy-mode 1)) ; so it starts @ emacs boot, no delay
 
 ;; ** Swiper
 
@@ -3103,10 +3124,14 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;;  swiper full help: C-h m
 (use-package swiper
   :diminish ivy-mode
-  :custom (swiper-action-recenter nil) ;; does this work?
+  :custom
+  (swiper-action-recenter nil) ;; does this work?
+  (ivy-count-format "(%d/%d) ") ; show candidate index/count in swiper
+;;  (ivy-mode t) ; not needed, at last not for just swiper
+  (ivy-wrap t)
+
   :init
   ;;(setq ivy-use-virtual-buffers t) ; ivy-switch-buffer also shows recent files
-  (setq ivy-count-format "(%d/%d) ") ; show candidate index/count in swiper
   ;; swiper-isearch is much faster than plain swiper but slower than
   ;; grep swiper?:
   ;; https://oremacs.com/2019/04/07/swiper-isearch/
@@ -3131,50 +3156,85 @@ TODO: add a cycle that opens or collapses all prop drawers?"
           (swiper-func-backward region))
       (swiper-func-backward)))
 
-  (global-set-key "\C-s" 'sdo/swiper-region-forward)
-  (global-set-key "\C-r" 'sdo/swiper-region-backward)
-  ;; see also jrh-isearch-with-region
-  (global-set-key (kbd "C-c s") 'swiper-isearch-thing-at-point)
-  ;; ivy-views integrate with ivy-switch-buffer (See
-  ;; https://oremacs.com/2016/06/27/ivy-push-view/).  That's probably
-  ;; nice but I'm still using ido-switch-buffer b/c of its rectangular
-  ;; grid view.  So, I've bound ivy-switch view to something close to switch-buffer.
-  ;; NOTE: there is now an "ivy-grid" view: ivy-explorer, below.
-  (global-set-key (kbd "C-c v") 'ivy-push-view)
-  (global-set-key (kbd "C-c V") 'ivy-pop-view) ; works like delete
-  (global-set-key (kbd "C-x V") 'ivy-switch-view)
-  ;; actually, this seems to do the (nearly) same thing as C-s s
-  (global-set-key (kbd "C-c C-r") 'ivy-resume) ;Resume last ivy completion sess
+  :bind (("C-s" . sdo/swiper-region-forward)
+         ("C-r" . sdo/swiper-region-backward)
+         ("C-c s" . swiper-isearch-thing-at-point))
+
+  ;; comment out stuff not involving swiper (use consult, etc. for that)
+  ;; ;; ;; ivy-views integrate with ivy-switch-buffer (See
+  ;; ;; https://oremacs.com/2016/06/27/ivy-push-view/).  That's probably
+  ;; ;; nice but I'm still using ido-switch-buffer b/c of its rectangular
+  ;; ;; grid view.  So, I've bound ivy-switch view to something close to switch-buffer.
+  ;; ;; NOTE: there is now an "ivy-grid" view: ivy-explorer, below.
+  ;; (global-set-key (kbd "C-c v") 'ivy-push-view)
+  ;; (global-set-key (kbd "C-c V") 'ivy-pop-view) ; works like delete
+  ;; (global-set-key (kbd "C-x V") 'ivy-switch-view)
+  ;; ;; actually, this seems to do the (nearly) same thing as C-s s
+  ;; (global-set-key (kbd "C-c C-r") 'ivy-resume) ;Resume last ivy completion sess
   )
 
-(use-package ivy-prescient
-  :after counsel ivy prescient
-  :custom
-  (ivy-prescient-mode t))
+;; (use-package ivy-prescient
+;;   :after counsel ivy prescient
+;;   :custom
+;;   (ivy-prescient-mode t))
 
 ;; ** Counsel
 
-(use-package counsel ; better kill-ring 2nd yanking
-  :after ivy
-  :init
-  :diminish counsel-mode
-  :bind
-  (("M-y" . counsel-yank-pop)
-   :map ivy-minibuffer-map
-   ("M-y" . ivy-next-line)) ; needed?
-  :config
-  ;; Internet search, compare w/ google-this
-  (global-set-key (kbd "C-S-s")  'counsel-search)) ; doesn't work in :bind
+;; (use-package counsel ; better kill-ring 2nd yanking
+;;   :after ivy
+;;   :init
+;;   :diminish counsel-mode
+;;   :bind
+;;   (("M-y" . counsel-yank-pop)
+;;    :map ivy-minibuffer-map
+;;    ("M-y" . ivy-next-line)) ; needed?
+;;   :config
+;;   ;; Internet search, compare w/ google-this
+;;   (global-set-key (kbd "C-S-s")  'counsel-search)) ; doesn't work in :bind
 
-;; ** Company Mode
-;; Tab completion of variables, common words, ...  To activate (not a default): M-x company-mode or turn it on globally.
+;; ;; ** Company Mode
+;; ;; Tab completion of variables, common words, ...  To activate (not a default): M-x company-mode or turn it on globally.
 
-;; Used in other packages.  Here, make it prescient.  Maybe put this section in one of those places instead of here?
-(use-package company-prescient
-  :after company
-  :init
-  (company-prescient-mode))
+;; ;; Used in other packages.  Here, make it prescient.  Maybe put this section in one of those places instead of here?
+;; (use-package company-prescient
+;;   :after company
+;;   :init
+;;   (company-prescient-mode))
 
+;; ** ivy-bibtex
+
+;; (use-package ivy-bibtex :defer t)
+
+;; ** flyspell-correct-ivy
+
+;; (use-package flyspell-correct-ivy
+;;   :after flyspell-correct)
+
+;; ** Ivy find recent directories
+;; ;; From: http://pragmaticemacs.com/emacs/open-a-recent-directory-in-dired-revisited
+;; ;; And:  http://stackoverflow.com/questions/23328037/in-emacs-how-to-maintain-a-list-of-recent-directories
+;; ;; Alternative: M-x crux-recentf-find-directory
+;; (defun bjm/ivy-dired-recent-dirs ()
+;;   "Present a list of recently used directories and open the selected one in dired"
+;;   (interactive)
+;;   (let ((recent-dirs
+;;          (delete-dups
+;;           (mapcar (lambda (file)
+;;                     (if (file-directory-p file)
+;;                         file
+;;                       (file-name-directory file)))
+;;                   recentf-list))))
+
+;;     (let ((dir (ivy-read "Directory: "
+;;                          recent-dirs
+;;                          :re-builder #'ivy--regex
+;;                          :sort nil
+;;                          :initial-input nil)))
+;;       (dired dir))))
+
+;; ;; Overwrites ido-list-directory, which was less useful than this
+;; (global-set-key (kbd "C-x C-d") 'bjm/ivy-dired-recent-dirs)
+  
 ;; * Writing Tools
 ;; ** General Editing
 
@@ -3287,18 +3347,13 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; hunspell expects dictionaries in ~/.hunspell (see howto.org)
 (use-package flyspell-correct
   :after flyspell
+  ;; comment out unless specifically want to use ivy
+  ;; :custom
+  ;; (flyspell-correct-interface 'flyspell-correct-ivy)
   :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
 
-(use-package flyspell-correct-ivy
-  :after flyspell-correct)
-
 ;; ** writegood
-(use-package writegood-mode
-  :defer t)
-  ;; :config
-  ;; (global-set-key "\C-cg" 'writegood-mode)
-  ;; (global-set-key "\C-c\C-gg" 'writegood-grade-level)
-  ;; (global-set-key "\C-c\C-ge" 'writegood-reading-ease))
+(use-package writegood-mode :defer t)
 
 (defun sdo/reading-scores (&optional start end)
   "Flesch-Kincaid reading grade level and ease.  This is a merged version of the scoring functions 'writegood-grade-level and 'writegood-reading-ease."
