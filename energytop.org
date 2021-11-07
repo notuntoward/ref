@@ -285,6 +285,7 @@
 
     then the prediction is significant i.e. you can reject the null-hypothesis that the target could be just as well predicted by a single intercept term.
 
+    
 *** inference vs. learning vs. estimation
 
     My quick answer 1:
@@ -424,8 +425,8 @@
         inverse Cholesky transformation.
       o quickly solve linear systems that involve a covariance matrix (efficient)
       o matrix inverse
-      o Kalman filtering
-      o non-linear optimization
+      o [[Kalman filtering]]
+      o [[Non-linear Optimization]] (somehow)
       o can somehow _attribute forecast errors_ to variables ([[file:energy.bib::Gale08cholesky][Gale 2008: Cholesky Decomposition]])
 
     *Properties*
@@ -507,7 +508,7 @@
 
     The property of a probabilistic forecast performance score.  A score is [[file:energy.bib::Brocker07properScore][local only if]] it depends only upon the predicted pdf value at the true answer, X.  This "appears" to be desirable but a [[Proper Score]] is [[file:energy.bib::Brocker07properScore][more important]].
 
-    Locality and Properness are used to derive the ignorance score in [[file:energy.bib::Roulston02frcstInfoEval][Roulston & Smith 2002: Evaluating]] and especially [[file:energy.bib::Benedetti10scoreFrcstVerifRare][Benedetti 2010: Scoring]].
+    Locality and Properness are used to derive the ignorance score in [[cite:Roulston02frcstInfoEval][Roulston & Smith 2002: Evaluating Prob Frcst Info Theory]] and especially [[cite:Benedetti10scoreFrcstVerifRare][Benedetti 2010: Frcst Scoring and Ignorance Score]]
 
     Note that the [[Continuous Ranked Probability Score (CRPS)]] is not local.
 
@@ -2223,7 +2224,8 @@ Scott
 ******* <<Deep Sequence Learning for Time Series Forecasting>>
 
         Seems like LSTMs, Transformers, ... are mainly binary or classifier outputs.  But the binary output can be a threshold indicator bit, like in [[Distribution Regression]].  So could do multitask DR ( [[cite:Vogt18multiDistLrnAnomDet][Vogt et al. 2018: Multi Task Dist Anom Det DRNN1]]) on each sequence element.  Position dependence seems like maybe you'd want a Transformer network.
-        
+
+********* also [[Deep Scenario Generation]]        
 ***** [[Deep Learning School, Stanford, 2016]]
 ***** TODO [[http://lamda.nju.edu.cn/weixs/project/CNNTricks/CNNTricks.html][Must Know Tips/Tricks in Deep Neural Networks]]
 ***** TODO Ladder networks
@@ -2245,6 +2247,7 @@ Scott
 ******* [[file:energy.bib::Vogt19windPowFrcstDpLrnXfer][Vogt et al. 2019: Wind Pow Forecast Deep Lrn, Xfer Lrn]]
 ******* [[Multiple layers for power curve/wind]]
 ******* [[cite:Prabadevi21dpLearnDmdRespEVchrgSurvey][Prabadevi et al. 2021: Deep Learning Intelligent Dmd Resp. EV]]
+******* [[cite:Tang21scenariioGenReduceAutoenc][Tang 2021: Deep Scen Gen / Reduce AutoEnc]]
 ******* 2017 entries
 ********* [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]] :DpLrn:FrcstDmd:
 ********* TODO [[cite:Busseti12deepLrnTimeSer][Busseti et al. 2012: Deep Learning Time Series Modeling (Demand frcst, RNN best)]] :DpLrn:RNN:FrcstDmd:
@@ -2410,6 +2413,7 @@ Scott
 ***** [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (built-in montonic)
 *** Neural Net Quality Metrics
 ***** [[cite:Martin21predNNqualNoData][Martin et al. 2021: Predicting Trends Quality NN No Data]]
+*** [[Learning Physical Models with NN]]
 * <<Data Efficient Models>>
 ***** <<Data efficiency: Naive Bayes vs. Logistic Regression>>
 ******* [[file:energy.bib::Ng02discrimVsGenNBvsLogRgrsn][Ng & Jordan 2002 Discrim vs. Gen, Logistic Rgrssn vs. Naive Bayes]]
@@ -3395,16 +3399,15 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 *********** [[file:energy.bib::Doquire11mutInfMissDat][Doquire & Verleysen 2011: Mutual]]
 *********** [[file:energy.bib::Brown12condLikInfoFeatSel][Brown et al. 2012: Conditional]] lik info feat sel, has Matlab
 *********** [[file:energy.bib::Bennasar15jointMImaxFeatSel][Bennasar et al. 2015: Feature Joint Mutual Information Maximisation]]
-*********** Mutual Information Properties: [[http://www.scholarpedia.org/article/mutual_information][scholarpedia: mutual information]]
-            <<Mutual Information Properties>>
-************* mi independence additivity
+*********** <<Mutual Information Properties>> ()
+            From: [[http://www.scholarpedia.org/article/mutual_information][scholarpedia: mutual information]]
+************* MI independence additivity
 
                 i(x,w;,y,z)                                                                                                        = i(x;y) + i(w;z)  when [xy] indep. [wz]
 
                 from: [[http://www.scholarpedia.org/article/mutual_information][scholarpedia: mutual information]]
 
-************* mi data processing inequality: post-processing cannot increase information
-              <<mi data processing inequality>>
+************* <<MI Data Processing Inequality>>: post-processing cannot increase information
 
               if z is a function of y _only_, then:
 
@@ -3415,8 +3418,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
               are a lower bound of i(x;y).
 
 ************* [[http://www.mtm.ufsc.br/~taneja/book/node6.html][entropy properties]] (wikipedia has some too).
-************* multi-dimensional mi bounds
-              <<multi-dimensional mi bounds>>
+************* <<multi-dimensional MI bounds>>
 
             could use these indepenence assumption to lower bound some mi
             decomposition intended to reduce the dimensionality bias in the
@@ -3433,10 +3435,8 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
             [[http://en.wikipedia.org/wiki/inequalities_in_information_theory][inequalities in information theory]]
             [[file:energy.bib::][Asari 2005: Technical Notes Linear]] (upper and lower MI bounds, for Gaussians, I think)
 
-
-************* mutual information decomposition, transforming
-              <<mutual information decomposition, transforming>>
-*************** chain rules
+************* <<Mutual Information Decomposition, Transforming>>
+*************** MI chain rules
 ***************** (sum of conditional mi's) [[http://slpl.cse.nsysu.edu.tw/cpchen/courses/ita/l1_entropy.pdf][chia ping's notes!]]
 ***************** also eqs. 19,20 of [[file:energy.bib::srinivasa08mutinforeview][srinivasa 2008: review multivariate mutual information]]
 *************** [[file:energy.bib::brown09newinfofeatsel][brown 2009]]
@@ -3444,8 +3444,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 *************** lattice/non-neg factors: [[file:energy.bib::williams10nonnegmutinfdecomp][Williams & Beer 2010: Nonnegative decomposition multivariate information]]
 *************** [[http://cvml.unige.ch/publications/postscript/2011/itw2011-voloshynovskiy.pdf][sign-magnitude decomposition of mutual information with polarization effect in digital identification]]
 *************** [[http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber%3d5750013][empirical mode decomposition technique with conditional mutual information for denoising operational sensor data]]
-*********** Mutual Information Confidence Bounds
-            <<Mutual Information Confidence Bounds>>
+*********** <<Mutual Information Confidence Bounds>>
 ************* [[file:energy.bib::may06critvalmi][may et al. 2006: critical values kernel]]
 ************* [[file:energy.bib::][Asari 2005: Technical Notes Linear]] (upper and lower MI bounds, for Gaussians, I think)
 ************* [[file:energy.bib::goebel05apprxmidist][goebel et al. 2005]]
@@ -3471,7 +3470,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
               - the one in milca dist
               - [[file:energy.bib::calsaverini09copulainfo][calsaverini & vicente 2009]]
               - [[file:energy.bib::poczos10rankestreninfo][poczos et al. 2010: rego]]
-*********** TODO mutual information dimension reduction
+*********** TODO Mutual Information Dimension Reduction
 *********** <<Software for Mutual Information>>
 ************* R packages
 *************** [[http://crantastic.org/packages/aami][aamin {aami}]]
@@ -4066,6 +4065,7 @@ Hope that helps,
       error distribution error
       e.g. [[Continuous Ranked Probability Score (CRPS)]]
 
+******* [[cite:Kang21FrcstWithFrcstsDiversity][Kang et al. 2021: Forecast Forecasts Diversity Combo]]
 ******* see, maybe merge: [[*Physics-based%20power%20curve%20features][Physics-based power curve features]]
 ******* see, maybe merge: [[Wind power features besides spd/dir]]
 ******* see, maybe merge: [[Feature selection for probabilistic forecasts]]
@@ -4186,6 +4186,11 @@ Hope that helps,
 ******* also [[Forecast quality metrics]]
 ******* [[Interpretable Models]] often include feature importance measures
 ***** [[Feature Selection for Deep Learning]]
+***** <<Feature Importance>>
+******* TODO collect all feature importance links here
+******* [[Random forest feature importance as a feature selection method]]
+******* [[Attribution of errors to features]]
+******* also [[Interpretable Models]]
 *** <<Attribution of errors to features>>
     (maybe don't select it causes them?)
 ***** [[file:energy.bib::Gale08cholesky][Gale 2008: Cholesky Decomposition]] colinearity, forecast error attributiuon
@@ -4317,8 +4322,12 @@ Hope that helps,
 ******* Feature selection for random forests
 ********* RF featsel situated in broader featsel context: [[file:energy.bib::Saeys07reviewFeatSelBioInf][Saeys et al. 2007 feat sel review]]
 ********* Featsel does improve RFs: [[https://www.evernote.com/l/AA3_Fvd1gbFID4N1S8TZnlgrCZphI269mOs/][Joel 2017: Is Romantic Desire Predictable?]]
-******* Random forests as a feature selection method
+******* <<Random forest feature importance as a feature selection method>>
 ********* [[cite:Wei15varImpCmpr][Wei 2015: Compare Var Imp High Dim (RF permutation tests)]]
+********* [[cite:Strobl07randFrstImprtncBias][Strobl et al. 2007: Bias Random Forest Feat Imp]]
+********* [[cite:Deng11featImpRFmultiVarBias][Deng et al. 2011: Bias Importance Measures RF]]
+********* [[cite:Zhou21unbiasedRFfeatImp][Zhou & Hooker 2021: Unbiased Measurement RF Feat Imp]]
+********* also [[Feature Importance]]
 ******* also [[Random Forests]]
 ***** TODO <<Random Forest Probabilistic Regression>>
 ******* TODO [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
@@ -4433,6 +4442,8 @@ Hope that helps,
 *** also [[Boosted Quantile Regression]]
 *** also [[Feature selection for varying coefficient models]]
 *** also [[Boosted Decision Trees]]
+* <<Kalman filtering>>
+*** TODO put all Kalman refs here
 * <<Factorization Machines>>
   
   Related to support vector machines.  I think this is in Python H2O library.
@@ -5479,6 +5490,7 @@ sera
 ***** many: [[file:energy.bib::Simonoff09transfRegrsn][Simonoff 2009: Transformations]], plus what relationship is implied
 ***** [[file:energy.bib::Ohara2010noLogCountDat][O'hara & Kotze 2010: Do not log counts]]: Poisson/Neg. binom best for counts
 ***** [[file:energy.bib::Wang13extrmQRpowTranf][Wang & Li 2013: Estimation Extreme Conditional]] lin w/ nonlinear tails, tail test
+***** [[cite:Wang18peakLoadExtrmValTheory][Wang et al. 2018: Load forecast GEV]]
 ***** [[file:energy.bib::Gill01interpIntrctHierGLM][Gill 2001: Interpreting]] interactions, GLM
 ***** [[file:energy.bib::Granger76frcstXfrmSeries][Granger & Newbold 1976: Forecasting]]
 ***** [[file:energy.bib::Ahmed10empCompForecast][Ahmed et al. 2010]] machine time series
@@ -7116,7 +7128,6 @@ variables will be preferred, when possible.
       if MI is a good ensemble evaluator, then keeping MI in dim
       reduction must be good, right?
 ***** [[file:energy.bib::Tomassi11suffDimRedPkg][Tomassi et al. 2011: LDR]]
-
 ***** [[file:energy.bib::Cai12quantRgrsnSemiParamVC][Cai & Xiao 2012: Semiparametric]] (time var QR)
 ***** [[file:energy.bib::Demsar13spatialPCA][Demsar et al. 2013: Principal]] PCA, spatial
 ***** [[file:energy.bib::Althoff12OnlnTnsrFactPCA][Althoff 2012: Online Tensor Factorization]] (featsel faster multilinear tensor PCA)
@@ -7402,6 +7413,7 @@ variables will be preferred, when possible.
 ******* Also [[Quantile Score]]
 ******* Also [[Energy Score]]
 ***** TODO <<Energy Score>>
+
       Energy Score is the multivariate extension of CRPS (UPSULA IEA
       talk giving on 4/3/2020). This talk also had tips about
       detecting errors in calibration and correlation.  Tried normal
@@ -7468,7 +7480,7 @@ variables will be preferred, when possible.
 ***** [[cite:Bessa12adaptQuantCopulaFrcst][Bessa et al. 2012: Time Adaptive Quantile Copula]]
 ***** [[cite:Pierrot21adaptGenLogitNormWindFrcst][Pierrot & Pinson 2021: Adaptive Generalized Logit Wind Pow Frcst]]
 ***** [[file:energytop.org::*Classification%20Metrics%20under%20Class%20Imbalance][Classification Metrics under Class Imbalance]]
-***** [[file:energy.bib::Willmott05maeVsRmse][Willmott & Matsuura 2005: Advantages MAE RMSE]] MAE better for climate model compare
+***** [[cite:Willmott05maeVsRmse][Willmott & Matsuura 2005: Advantages MAE vs RMSE]] MAE better for climate model compare
 ***** [[cite:Chai14rmseOrMae][Chai & Draxler 2014: Root RMSE MAE]]: when RMSE is/isn't good
 ***** [[file:energy.bib::Gale08cholesky][Gale 2008: Cholesky Decomposition]] colinearity, forecast error attribution
 ***** [[http://www.eumetcal.org/resources/ukmeteocal/verification/www/english/msg/ver_prob_forec/index.htm][EU page]] on probabilistic forecasts (and [[http://www.eumetcal.org/resources/ukmeteocal/verification/www/english/courses/msgcrs/index.htm][on general forecast verification]])
@@ -7706,6 +7718,8 @@ variables will be preferred, when possible.
 ***** also [[Portfolio Optimization and Forecasting]]
 ***** also [[Portfolio Analysis]]
 *** <<Forecast combination>>
+***** [[cite:Kang21FrcstWithFrcstsDiversity][Kang et al. 2021: Forecast Forecasts Diversity Combo]]
+***** [[cite:Bhatnagar21merlionTSfrcstAnomDet][Bhatnagar et al. 2021: Merlion TS frcst anom det autoML ensemble]]
 ***** [[file:energy.bib::Tascikaraoglu14windFrstCombo][Tascikaraoglu & Uzunoglu 2014]] combining wind pow frcsts
 ***** [[file:energy.bib::Bremen07windDetProbModelComb][Bremen 2007: Combination Deterministic Probabilistic]] (multi NWP)
 ***** [[file:energy.bib::Lu07lagEnsemble][Lu et al. 2007: Short Range Numerical]]
@@ -8403,6 +8417,9 @@ Scott
 *********** [[cite:Mayer21cmprPhyMdlPVfrcst][Mayer & Grof 2021: Comparison Physical PV frcst Models]]
 *********** [[cite:Suh17irradMnthlyToHrlyEPP][Suh & Choi 2017: Methods Converting Monthly Sat Irrad to Hourly]]
 *********** [[Irradiance Physical models]]
+*********** TODO <<Learning Physical Models with NN>>
+************* [[cite:Chen21physicalHardConstraintNN][Chen et al. 2021: Theory HCP constrained phys NN]]
+************* TODO add related DOE papers
 ********* <<Irradiance Physical models>>
 *********** [[cite:Ponsukcharoen12irradFrcstSat][Ponsukcharoen 2012: Solar Irradiance Forecast Class Notes]]
 *********** <<Clear Sky Models>>
@@ -8982,8 +8999,13 @@ Scott
 ***** [[file:energy.bib::Zhang18probLoadFrcstRandFrstQD][Zhang et al. 2018: Parallel Random Forest Load Forecast, Quant Det.]] 
 ***** [[http://www.mathworks.com/videos/data-driven-fitting-with-matlab-81809.html?form_seq%3Dconf1092&confirmation_page&wfsid%3D5770029][Matlab load forecasting example]] video (code is [[http://www.mathworks.com/matlabcentral/fileexchange/31562-data-driven-fitting-with-matlab][here]], uses LSBoost)
 ***** [[https://www.mathworks.com/company/newsletters/articles/data-driven-insights-with-matlab-analytics-an-energy-load-forecasting-case-study.html?s_tid=conf_addres_DA_eb][Data-Driven Insights with MATLAB Analytics: An Energy Load Forecasting Case Study]]
+***** <<Peak Load Forecasting>>
+******* [[cite:Wang18peakLoadExtrmValTheory][Wang et al. 2018: High Impact Low Peak Load Frcst]]
+******* also [[Extreme Value Estimation]]
 ***** TODO [[cite:Wang16loadFrcstRcncyBigDat][Wang et al. 2016: Electric Ld Frcst big dat, single model]]
 ***** TODO [[cite:Hong16probLoadFrcstTutorial][Hong & Fan 2016: Probabilistic Load Frcst Tutorial]]
+***** [[cite:Long20EvalLoadFrcstCustLevShrt][Long 2020: Eval Customer Lev Load Frcst]]: commercial errors vs. persistence
+***** [[cite:AguilarMadrid21elecLoadFrcstML][Aguilar & Antonio 2021: ST Elec Load Frcst ML]]: XGboost better than RF
 ***** [[cite:openEnergi15machLrnSmrtGrid][openEnergi 2016: How Can Machine Lrn Smard Grid Deep Reinf Lrn]] 
 ***** [[cite:Vu15solarFrcstIBMmachLrn][Vu 2015: Machine IBM US DOE solar/demand/wind frcst Deep]]
 ***** [[cite:Perera14machLrnTechRES][Perera et al. 2014: Machine Learning Techniques RES]]
@@ -9075,7 +9097,7 @@ Scott
 ******* TODO PV compared to Wind/Load[[file:energy.bib::Forbes11pvWindRelTenneT][: Forbes et al. 2011: Do Higher PV]]
 ******* [[cite:Braun13windSolErrDep][Braun et al. 2013: Are Forecasting Errors wind and PV dep.?]] NO.
 ******* [[cite:Zhang13windPVcorr][Zhang et al. 2013: Investigating Correlation Between Wind and PV Frcst Err]] YES.
-******* [[cite:Zhang14jointProbDistWndSolWest][Zhang et al. 2014: Joint sol wind pow frcst err]]
+******* [[cite:Zhang15corrWndSolrFrcstErr][Zhang et al. 2015: Correlation Wind Solar Frcst Errs]]
 ******* TODO PV compared to Wind/Load[[file:energy.bib::Forbes11pvWindRelTenneT][: Forbes et al. 2011: Do Higher PV]]
 ******* higher than expected wind means both more power from both wind and PV
 
@@ -9088,7 +9110,7 @@ Scott
 ******* [[file:energy.bib::Schefzik13ensCplaCpla][Schefzik et al. 2013: Uncertainty]] (ensemble copula copula (ens-->scen))
 ******* [[file:energy.bib::Yan10copulaRpkg][Yan & Kojadinovic 2010: Modeling Multivariate Distributions]]
 ******* [[file:energy.bib::Khan07perfMutInfoShortNoise][Khan et al. 2007: Relative]] (comparison of dependence metrics)
-******* TODO add Axel/Rafael/Mine paper (2013, presented in London)
+******* [[cite:Braun13windSolErrDep][Braun et al. 2013: Are solar/wind forecast errors independent?]]
 ******* [[cite:DiazVico17deepNNwindSolEnrgyPred][Diaz--Vico et al. 2017: Deep Neural Networks Wind and Solar Energy Frcst]](?)
 ******* [[Net Demand Forecast]]
 ******* [[Solar forecasting and features]]
@@ -9241,8 +9263,7 @@ Scott
 ********* [[file:energy.bib::Lofstrom09ensmblSel][Lofstrom et al. 2009: Ensemble]] selection, classif
 ********* [[file:energy.bib::Jose14TrimOpinPoolCal][Jose et al. 2014: Trimmed Opinion Pools]]
 ********* see also [[Continuous valued AdaBoost]] (which select (weight) ensembles)
-******* Scenarios from ensembles: generated by machine learning
-        <<Scenarios from ensembles>>
+******* <<Scenarios from ensembles>>: generated by machine learning
 ********* [[file:energy.bib::Gagne12machnLrnEnhanceEns][Gagne et al. 2012: Machine Storm Scale Ensemble]]
 ********* [[file:energy.bib::Schefzik13ensCplaCpla][Schefzik et al. 2013: Uncertainty]] ensemble copula copula
 ********* see [[Scenario Generation]]
@@ -9271,7 +9292,7 @@ Scott
 
 ******* also [[Copulas]]
 ******* [[cite:Wang16evalStochMethScen][Wang et al. 2016: Evaluating Stoch Scen Frcst]]
-******* scenario tree reduction
+******* <<Scenario Tree Reduction>>
 
 ********* optimization problem:
 
@@ -9348,6 +9369,8 @@ Scott
 *********** e.g. bilmes's paper: [[http://ssli.ee.washington.edu/~bilmes//pgs/sort_date.html][online algorithms for submodular minimization with combinatorial constraints]]
 *********** see paper?: "on submodular value functions of dynamic programming"
 ********* TODO [[file:energy.bib::GroweKuska03scenarioRedTree][Growe-Kuska et al. 2003: Scenario]] reduction, highly cited (Nazgul's paper)
+********* [[cite:Tang21scenariioGenReduceAutoenc][Tang 2021: Deep Scen Gen / Reduce AutoEnc]]
+********* [[Deep Scenario Generation]]
 ******* [[*Multiple%20output%20quantile%20regresson][Multiple output quantile regresson]]
 ******* Quantile Differential Equations
         <<Quantile Differential Equations>>
@@ -9400,8 +9423,18 @@ Scott
 ******* [[cite:Soares17distGridMgmtPowFlw][Soares et al. 2017: Active Distribution Grid pow flow scenarios]]
 ******* could [[Submodular optimzation]] be a good way to optimize w/ them?
 
-******* see [[Scenarios from ensembles]]
-******* see also: [[*Quantile%20Regression][Quantile Regression]]
+******* <<Deep Scenario Generation>>
+
+********* [[cite:Tang21scenariioGenReduceAutoenc][Tang 2021: Deep Scen Gen / Reduce AutoEnc]]
+********* [[Scenario Tree Reduction]]
+******* also [[Scenarios from ensembles]]
+******* also [[*Quantile%20Regression][Quantile Regression]]
+******* also [[Probabilistic Alternatives to Scenarios]]
+***** <<Probabilistic Alternatives to Scenarios>>
+******* [[cite:Wang13extrmQRpowTranf][Wang & Li 2013: Estimation Extreme Conditional]]
+******* cite:Golestaneh19PolyhedralPredRegnPow
+******* cite:Hong20frcstReview
+******* also [[Scenario Generation]]
 ***** <<Use of probabilistic forecasting>>
 
       I had a whole bunch of these in session buddy for ewelina but i lost
@@ -9829,7 +9862,9 @@ onenote:https://d.docs.live.net/4bbd96b3698748f8/Documents/CPR/SolarAnywhere.one
 ************* nonparametric change point between extreme and nonextreme regions of the data,
 ************* graphical methods where one studies the dependence of GP-related metrics on threshold
 ************* Goodness-of-Fit (GoF): for a certain level of significance, find lowest thresh where GPD fits            
- 
+********* [[cite:Wang18peakLoadExtrmValTheory][Wang et al. 2018: Load forecast GEV]]
+********* also [[Peak Load Forecasting]]
+
 ******* [[Metalog Distributions]] also work, are more general
         e.g. slides, p. 17 of [[file:energy.bib::Keelin16metalogDist][Keelin 2016: Metalog Distributions]]
 
@@ -10240,21 +10275,20 @@ al. 2012: Current]])
       8. how related is this idea to [[file:energy.bib::kirch11timefreqbtstrp][kirch & politis 2011: tft]] ?
 
 ***** <<Bayesian FFT>>
-******* [[http://homepages.inf.ed.ac.uk/amos/missingfft.html][bayesian fourier transform]]:
+******* [[http://homepages.inf.ed.ac.uk/amos/missingfft.html][Bayesian Fourier Transform]]:
 ********* graphical model demo, some text, no sofware or math
 ********* deals w/ missing features
-******* [[http://www.phas.ubc.ca/~gregory/papers/bayesrevol.pdf][a bayesian revolution in spectral analysis]]
+******* [[http://www.phas.ubc.ca/~gregory/papers/bayesrevol.pdf][a Bayesian revolution in spectral analysis]]
         something about using bayesian priors:  this could be a guess
         derived from a temporally filled-in data point.  also shows a
         time domain prediction of some kind.
-
+******* [[use direct dft to estimate ft of partly missing features]] ?
 ***** [[file:energy.bib::pinson10reldiagsercorr][pinson et al. 2010: reliability]]: surrogate paper which spawned this idea
-***** [[http://homepages.inf.ed.ac.uk/amos/missingfft.html][bayesian fourier transform]]
 ***** [[http://books.nips.cc/papers/files/nips16/nips2003_aa55.pdf][generalised propagation for fast fourier transforms with partial or missing features]]
 ***** [[http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber%3d00003925][constrained fourier space method for compensation of missing features in emission computed tomography]]
 ******* [[http://www.ncbi.nlm.nih.gov/pubmed/18230450][pub med page]]
-***** [[http://www.mathworks.com/matlabcentral/newsreader/view_thread/105116][use direct dft to estimate ft of partly missing features]] (matlab)
-      <<use direct dft to estimate ft of partly missing features>>
+***** <<use direct dft to estimate ft of partly missing features>>
+      From: [[http://www.mathworks.com/matlabcentral/newsreader/view_thread/105116][use direct dft to estimate ft of partly missing features]] (matlab)
 
       use this to either fill-in time points (just do inverse dft),
       or to select historical spectra which match the estimated one
@@ -10308,7 +10342,7 @@ later corrected by greg heath:
       exerpt:  bootstrapping in the frequency domain has an appeal in that
       the fourier transform acts as a decorrelating transform.
 ***** [[file:energy.bib::pinson10reldiagsercorr][pinson et al. 2010: reliability]]: surrogate paper which spawned this idea
-***** represent the n-dim fft as a bayesian fourier transform? e.g.
+***** represent the n-dim fft as a [[Bayesian FFT]] ? e.g.
       http://homepages.inf.ed.ac.uk/amos/missingfft.html
 ***** <<Frequency Domain Smoothed Covariance>>
       Smoothed Covariance Estimation w/ bootstrapping in freq domain
@@ -10331,6 +10365,14 @@ later corrected by greg heath:
 *** [[https://pypi.org/project/fancyimpute/][fancyimpute]]: A variety of matrix completion and imputation algorithms implemented in Python
 *** xcorr handling missing features w/ permutation sig. test: [[file:energy.bib::simpson01estsigxcorrmiss][simpson et al. 2001: estimation and significance]]
 *** [[http://www.ms.unimelb.edu.au/staff/publications.php%3fpub_id%3d1271][maximum likelihood estimation for linear regression models involving missing covariate observations]]
+*** <<Autoencoder Imputation>>
+
+    Advantage of these is they're nonlinear and can handle a mix of continuous and categorical variables (I think).
+
+***** [[cite:CardosoPereira20autoEncMissImpute][Cardoso et al. 2020: Reviewing Autoencoders Missing]]
+***** [[https://www.evernote.com/l/AA38o4FEuA5IL7DoMH7PYfD9Vt7Pz5AunIY/][Time Series generation with VAE LSTM (tutorial)]]
+***** also [[Deep Scenario Generation]]
+
 *** also [[Missing Features and AutoML]]
 *** also [[Matlab stepwise regression]] handles missing values
 *** also [[Clustering with missing features for insignicant bins]]
@@ -11216,6 +11258,7 @@ Scott
 ******* TODO [[file:energy.bib::Garnier14blncErrIntraday][Garnier & Madlener 2014: Balancing]] intraday errors, opt, Germany
 ******* TODO [[file:energy.bib::Zugno13tradeWindGenMrktQs][Zugno et al. 2013: Trading]] generalized Pinson07*
 ******* TODO [[file:energy.bib::Shenoy15stochOptLdFrcstRgrssn][Shenoy et al. 2015: Non Parametric Regression]] stoch opt: Boyd's paper on quant rgrssn, quad (convex) prog. & stoch. opt
+*******  [[https://www.evernote.com/l/AA2Q2BisgYVLcpAilQnT88IWjYENpR0UiX8/][Best Algorithms to Make Solar Power Storage Profitable]] (quadratic opt.)
 ******* [[cite:openEnergi15machLrnSmrtGrid][openEnergi 2016: How Can Machine Lrn Smart Grid Deep Reinf Lrn]]
 ******* [[cite:Siemens14sennFrcstsRES][Siemens 2014: Better Forecast Renewable Energy Sources Deep? SENN]]
 ******* [[file:energy.bib::Zhang12optBidMktDAwind][Zhang et al. 2012: Optimal]] bidding DA wind mkt
@@ -11446,8 +11489,26 @@ Scott
 ******* [[https://www.evernote.com/l/AA2Q2BisgYVLcpAilQnT88IWjYENpR0UiX8/][Best Algs to Make Solar Storage Profitable]] (linear, quadratic, dynamic)
 ******* [[file:energy.bib::Anitescu11hiOrdCIstochProgBS][Anitescu & Petra 2011: Higher Order Confidence]] (bootstrapping in optimization)
 ***** [[My optimization learning path]]
-***** Optimization software
-      <<Optimization software>>
+***** TODO Distributed Optimization
+******* [[cite:Bernstein21rtOptCtrlTR][Bernstein 2021: Real Time Opt Dist Arch]]
+******* [[cite:Kroposki20AutonEnergyGridsCtl][Kroposki et al. 2020: Autonomous Energy Grids Distrib Grid]]
+******* [[cite:Yang19distribOptSurvey][Yang et al. 2019: Survey Distributed Optimization]]
+******* TODO Distributed Optimization Videos
+********* DONE [[https://www.youtube.com/watch?v=y6N0uorxQu4][Siemens DEOP Distributed Energy Optimization - YouTube]]
+
+          They seem to do some kind of distributed optimization but they don't explain it.  Mainly about dashboards, and showing what happened.  They seemed to have global goals but they never explain how they meet them while satsifying local constraints, which there must be, although they don't mention this issue either.
+          
+********* TODO [[https://www.energy.gov/eere/femp/distributed-energy-resources-resilience][Distributed Energy Resources for Resilience | Department of Energy]]
+********* TODO [[https://new.siemens.com/my/en/products/energy/energy-automation-and-smart-grid/grid-applications/energyip/deop.html][DEOP - Distributed Energy Optimization | EnergyIP platform | Siemens Malaysia]]
+********* TODO [[https://www.youtube.com/watch?v=p-Uyw6d9kVo][NREL OptGrid]]
+********* TODO [[https://www.youtube.com/watch?v=Sv-zeQ-VswI][NREL Autonomous Energy Sys (April 2021)]]
+********* TODO [[https://www.youtube.com/watch?v=k6doEestUTU][NREL Autonomous Opt and Ctrl Energy (Jul 2021)]] 
+********* TODO [[https://www.gurobi.com/resource/optimize-distributed-energy-storage-assets/][Using Gurobi to Optimize Distributed Energy Storage Assets - Gurobi]]
+***** Quadratic optimization best for PV+battery opt: [[https://www.evernote.com/l/AA2Q2BisgYVLcpAilQnT88IWjYENpR0UiX8/][Best Algorithms to Make Solar Power Storage Profitable]]
+***** Non-linear Optimization
+******* TODO put all instances of non-linear optimization here
+******* [[Cholesky Decomposition]] can somehow be used for non-linear optimization
+***** <<Optimization software>>
 ******* [[MATPOWER]] power system simulation and optimization
 ******* [[http://www.i2c2.aut.ac.nz/Wiki/OPTI/index.php/Main/WhatIsOPTI][OPTI]] (matlab, windows)
 ******* [[http://scip.zib.de/][SCIP comparison]] (general opt, I think)
@@ -11459,10 +11520,11 @@ Scott
 ********* vers 2 can be connected to commercial solvers, does mixed integers
 ******* [[http://www-01.ibm.com/software/commerce/optimization/cplex-optimizer/][CPLEX]] (IWES has this, I think)
 ******* [[Matlab Toolbox for Submodular Function Optimization]]
+******* [[https://www.evernote.com/l/AA2Q2BisgYVLcpAilQnT88IWjYENpR0UiX8/][Best Algorithms to Make Solar Power Storage Profitable]] (quadratic opt.)
+******* [[Operation of Energy Storage]]
 *** Reliability
 ***** PV+Wind will reduce TennetT reliability (claim)[[file:energy.bib::Forbes11pvWindRelTenneT][: Forbes et al. 2011: Do Higher PV]]
-*** Dynamic Redispatch
-    <<Dynamic Redispatch>>
+*** <<Dynamic Redispatch>>
 ***** [[file:energy.bib::Wildenhues13OptAlocSizDynStatcom][Wildenhues 2013: Optimal Allocation And]] statcom MS thesis
 ***** [[file:energy.bib::Phan14stochOptPowFlow2stage][Phan & Ghosh 2014: Two]] stage stoch opt powerflow
 ***** [[file:energy.bib::Zhao12EconDsptchStochOptVar][Zhao & Tong 2012: Economic]] dispatch, stoch opt, VaR (related)
@@ -12481,6 +12543,8 @@ Brittany
 *** [[Stephan: concept building process]]
 *** Also: [[Dimension reduction]]
 *** [[Autoencoder Time Series Clustering]]
+*** [[Autoencoder Imputation]]
+*** [[Deep Scenario Generation]]
 * Reseach Initiatives
 *** Henrik's overview talk on my 1st day @ DTU (5/10/2010)
     General Topics  (see also notes written by Henrik)
@@ -12694,16 +12758,22 @@ Probabilistic programming library in Python with hooks to numpy and [[Tensor Flo
 *** Need for energy storage
 ***** [[http://ieeexplore.ieee.org/xpl/tocresult.jsp?asf_arn%3dnull&asf_iid%3d0&asf_pun%3d5&asf_in%3d2&asf_rpp%3dnull&asf_iv%3d100&asf_sp%3d&asf_pn%3d1][the intermittency challenge.  massive energy storage in a sustainable future.]]
       special issue, ieee, 2012.
+*** <<PV + Storage plant config>>
+***** [[cite:Kim21pvConfigValIncreaseStorage][Kim et al. 2021: Project Developer Options HighPV storage]]
+***** [[cite:Gorman21battRESlocalVsIndep][Gorman et al. 2021: Are Coupled Renewable Batt Local]]
+***** also [[Portfolio Optimization]]
+***** also [[Operation of Energy Storage]]
 *** Energy Storage Technology
 ***** Batteries
 ******* japanese [[http://www.sciam.com/article.cfm%3fid%3dstoring-the-breeze-new-battery-might-make-wind-power-reliable][ngk batteries]] used by xcel in mn
 ***** excel's [[http://www.xcelenergy.com/sitecollectiondocuments/docs/appendixe.pdf][storage technology comparison]] (there's one from bpa, somewhere)
-
 ***** power2gas
 ******* [[File:energy.bib::sterner10pow2methslides][Sterner et al. 2010: Renewable]] energy to methane
 *** <<Operation of Energy Storage>>
 ***** Pierre's scenario-driven battery charging optimization
 ***** [[https://www.evernote.com/l/AA2Q2BisgYVLcpAilQnT88IWjYENpR0UiX8/][Best Algorithms to Make Solar Power Storage Profitable]] (quadratic opt.)
+***** [[PV + Storage plant config]]
+***** [[Portfolio Optimization]]
 * <<Discrete Events: Poisson arrivals, etc.>>
 *** [[cite:Smirni16cs426dscrtEvntSimCrsNotes][Smirni 2016: Discrete Event Sim. Course Notes]], does Poisson
 *** [[cite:Shinomoto10EstFireRatePoisson][Shinomoto 2010: Estimating Firing Rate Book Chapter]], Poisson rate est.
@@ -12758,6 +12828,7 @@ Probabilistic programming library in Python with hooks to numpy and [[Tensor Flo
 ***** [[cite:Goldstein16cmprUnsupNovDetMV][Goldstein & Uchida 2016: Comparative Evaluation Unsupervised]] anom det
 ***** [[cite:Clifton13extrmFuncThNovDet][Clifton et al. 2013: Extreme Function Theory Novelty Detection]]
 ***** [[cite:Malhotra15lstmAnomDetTS][Malhotra et al. 2015: LSTM TimeSer Anom. Det: Kalman could be Copula]]
+***** [[cite:Bhatnagar21merlionTSfrcstAnomDet][Bhatnagar et al. 2021: Merlion TS frcst anom det autoML ensemble]]
 ***** [[http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6786425][Highly Comparative Feature-Based Time-Series Classification]]
 ******* is its own Matlab thttps://www.gitbook.com/book/benfulcher/hctsa-manual/details
 ******* [[JIDT: Java Information Dynamics Toolkit]]
@@ -13162,6 +13233,7 @@ TOTO: read Fan16* for an overview
 *** [[file:energy.bib::FernandezDelgado19srvyRgrssnMeth][Fernandez-Delgado et al. 2019: Extensive survey of regression methods]]
 *** [[cite:Feurer20autoSklearn20][Feurer et al. 2020: Auto Sklearn 2.0]]
 *** [[cite:Feurer15autoMLautoSkLrn][Feurer et al. 2015: Efficient Robust Automated Machine Learning]] (code: auto-sklearn)
+*** [[cite:Bhatnagar21merlionTSfrcstAnomDet][Bhatnagar et al. 2021: Merlion TS frcst anom det AutoML ensemble]]
 *** [[file:energy.bib::Harrell15rgrssnMdlStrtgyBook][Harrell 2015: Regression Strategies]]
 *** <<Missing Features and AutoML>>
 ***** built-in handling: [[cite:Feurer20autoSklearn20][Feurer et al. 2020: Auto Sklearn 2.0]]
@@ -13254,6 +13326,8 @@ TOTO: read Fan16* for an overview
 *** [[Transformer Networks]]: relevance scores are interpretable?)
 *** also [["Deep" Feature Synthesis (Featuretools)]]
 *** also [[Attribution of errors to features]]
+*** also [[Graph Networks]]
+*** also [[Feature Importance]]
 * <<My Optimization Learning Path>>
   Stuff I should learn about for electricity system optimization
 
@@ -13980,6 +14054,9 @@ TODO: reference them in outline above and then delete them from here
    07/10/21  [[cite:Liu16housePriceHeteroHierarch][Liu et al. 2016: House Price Modeling]]
    09/04/21  [[cite:Suh17irradMnthlyToHrlyEPP][Suh & Choi 2017: Methods Converting Monthly Sat Irrad to Hrly]]
 [[cite:Martin21predNNqualNoData][             Martin et al. 2021: Predicting Trends Quality NN no Data]]
+   09/21/21  [[cite:Long20EvalLoadFrcstCustLevShrt][Long 2020: Eval Customer Lev Load Frcst]]
+             [[cite:AguilarMadrid21elecLoadFrcstML][Aguilar & Antonio 2021: ST Elec Load Frcst ML]]: XGboost better than RF
+
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
