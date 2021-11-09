@@ -33,9 +33,9 @@
       (progn (message "found %s at: %s" cmd_name cmd_path)
              (setq retpathstr cmd_path))))) ; there must be a better way...
 
-;; greatly reduce garbage collection on startup
+;; Greatly reduce garbage collection on startup
 ;; (https://youtu.be/9i_9hse_Y08?t=2973)
-;; For me, it went from 59 to 5 startup GC's
+;; For me, it went from 59 startup GC events to 5 of them
 ;; BE SURE TO DECREASE it again at END OF STARTUP
 (setq gc-cons-threshold (* 50 1000 1000))
 
@@ -71,6 +71,10 @@
 ;; good explanation of how to debug emacs init speed:
 ;; https://www.youtube.com/watch?v=bF84mQMmfa8  (system crafters)
 (setq use-package-verbose t) ; messages when load pkg., good for init debug
+
+;; to see if problems are tdue :defer, :after,... problems
+;; https://emacs.stackexchange.com/a/33798/14273
+(setq use-package-always-demand t)
 
 ;; ** package.el
 ;; Avoid complaints, put before (require 'package)
@@ -234,7 +238,6 @@ DISPLAY is a display name, frame or terminal, as in
                pix-w pix-h mm-w mm-h mm-d (mm2in mm-d))
       (/ pix-d (mm2in mm-d)))))
 
-
 ;; DPI vs. monitor
 ;;
 ;; | screen         | dpi |
@@ -276,6 +279,10 @@ DISPLAY is a display name, frame or terminal, as in
     (set-face-attribute 'fixed-pitch nil :family "Consolas" :height 1.0)
     (set-face-attribute 'variable-pitch nil :family "Georgia" :height 1.0)))
 
+;; org v9.5 cache problem remained after I commented it out, so just let it run
+;;(set-default-font-per-screen) ; run it on startup (don't need w/ display hook)
+
+;; ---- SEEMS OK turn off for org cache test ----------------------
 (defun my-display-changed-hook (disp)
   (set-default-font-per-screen)
   (message "Changed to display of size %s" disp)) ;; not that useful w/o DPI change
@@ -287,6 +294,7 @@ DISPLAY is a display name, frame or terminal, as in
 
 (add-hook 'after-init-hook #'set-default-font-per-screen)
 (add-hook 'after-make-frame-functions #'set-default-font-per-screen)
+;; ---- end turn off for org cache test ----------------------
 
 (defun calcDivNpix ()
   "Computes # pix for window divider based on screen DPI.
@@ -468,7 +476,7 @@ TODO: make this a general function."
 
 ;; From: https://www.emacswiki.org/emacs/RecreateScratchBuffer
 ;; If the *scratch* buffer is killed, recreate it automatically
-;; FROM: Morten Welind
+;; From: Morten Welind
 ;;http://www.geocrawler.com/archives/3/338/1994/6/0/1877802/
 (save-excursion
   (set-buffer (get-buffer-create "*scratch*"))
@@ -1907,16 +1915,9 @@ Version 2019-11-04 2021-02-16"
  '(org-startup-align-all-tables t)
  '(org-startup-indented nil)
  '(org-startup-truncated t)
- '(org-superstar-cycle-headline-bullets nil)
- '(org-superstar-headline-bullets-list '("●" "￭" "￮" "►" "•" "□" "▸" "▫" "▹"))
- '(org-superstar-item-bullet-alist '((42 . 10043) (43 . 10011) (45 . 9644)))
- '(org-superstar-special-todo-items t)
- '(org-superstar-todo-bullet-alist '(("TODO" . 9646) ("DONE" . 9647)))
  '(org-table-header-line-p t)
  '(org-use-speed-commands t)
  '(org-yank-adjusted-subtrees t)
- '(outshine-org-style-global-cycling-at-bob-p t)
- '(outshine-use-speed-commands t)
  '(package-check-signature 'allow-unsigned)
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
@@ -1998,6 +1999,9 @@ Version 2019-11-04 2021-02-16"
 
 ;; *** Outshine: org-mode like headlines in programming and other modes
 (use-package outshine
+  :custom
+  (outshine-org-style-global-cycling-at-bob-p t)
+  (outshine-use-speed-commands t)
   :hook ((outline-minor-mode . outshine-mode) ; for outshine itself
          (prog-mode . outline-minor-mode))    ; all prog modes
 
@@ -2012,14 +2016,18 @@ Version 2019-11-04 2021-02-16"
 
 ;; *** Vertical indent lines in programming modes
 
-(use-package highlight-indentation
-  :diminish highlight-indentation-mode) ; indicator: ||
 
+;; seems like this isn't needed if you have highlight-indent-guides
+;; https://github.com/DarthFennec/highlight-indent-guides#alternatives
+;; (use-package highlight-indentation
+;;   :diminish highlight-indentation-mode) ; indicator: ||
+
+;; TODO: this doesn't work anymore
 (use-package highlight-indent-guides
   :diminish highlight-indent-guides-mode ;; indicator: h-i-g (works here)
   :config
   (setq highlight-indent-guides-method 'character) ; nicest, thinnest lines
-  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
+  :hook (prog-mode-hook . highlight-indent-guides))
 
 ;; *** Debuggers
 ;; **** realgud
@@ -2154,7 +2162,7 @@ Version 2019-11-04 2021-02-16"
 ;; TODO: experiment with C-c C-x C-b or M-x sdo/org-tree-to-indirect-buffer
 ;;
 (use-package org
-  :defer 0
+;;  :defer 0
   :diminish org-mode  ; doesn't hide the "Org" in modeline, for some reason
   :diminish org-table-header-line-mode  ; customization: org-table-header-line-p
   :config
@@ -2188,20 +2196,23 @@ Version 2019-11-04 2021-02-16"
           ("\\.mm\\'" . default)
           ("\\.x?html?\\'" . default)
           ("\\.pdf\\'" . default)
-          (auto-mode . emacs)))
-  
-  ;; TODO get this to work
-  ;; could do setq-local for dir or file-specific dirname:
-  ;; https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
-  (setq org-download-method 'org-download-method-dirname-from-orgfile))
+          (auto-mode . emacs))))
 
 (use-package org-superstar
-  :after org
+;;  :after org
+  :custom
+  (org-superstar-cycle-headline-bullets nil)
+  (org-superstar-headline-bullets-list '("●" "￭" "￮" "►" "•" "□" "▸" "▫" "▹"))
+  (org-superstar-item-bullet-alist '((42 . 10043) (43 . 10011) (45 . 9644)))
+  (org-superstar-special-todo-items t)
+  (org-superstar-todo-bullet-alist '(("TODO" . 9646) ("DONE" . 9647)))
   :init
   ;; org-superstar github: loads faster
   (setq inhibit-compacting-font-caches t)
+  ;; only works w/ "org-superstar-mode: but see like it s/b just "org-superstar"
   :hook (org-mode . org-superstar-mode))
 
+;; --- SEEMS OK is this messing up org cache?----------------------------------
 ;; Show hidden emphasis markers e.g.* in *bold*.  So can see where cursor is.
 (use-package org-appear
   :custom
@@ -2211,6 +2222,7 @@ Version 2019-11-04 2021-02-16"
   (org-appear-autosubmarkers t)
   (org-appear-delay 1)
   :hook (org-mode . org-appear-mode))
+;; --- is this messing up org cache?----------------------------------
 
 (with-eval-after-load 'org
   ;; ;; From: https://emacs.stackexchange.com/a/41705/14273
@@ -2226,7 +2238,7 @@ Version 2019-11-04 2021-02-16"
   ;;(define-key org-mode-map (kbd "C-c <C-tab>") 'org-fold-outer)
   )
 
-;; ** Org Basic Config
+; ** Org Basic Config
 
 (use-package org-autolist ; new - or -[ ] w/ return
   :diminish org-autolist-mode
@@ -2253,7 +2265,7 @@ Version 2019-11-04 2021-02-16"
 
 ;; ** org Mode Dedicated Targets
 
-;; --- Hide org-mode dedicated targets -----------------------------------------
+;; --- SEEMS OK does org-mode dedicated targets cause cache probs? ----------
 ;;
 ;; TODO: Fix M-m link saving. It picks sometimes picks up a headline star and then puts it into the stored link (I think).  I'm noticing this in bad links to dedicated links sprinked around energytop.org.  I don't know if these wer made when I initially created the dedicated target; if it was when I typed M-m when on an already existing dedicated target, or if I somehow just pasted this in erroneously myself, which seems unlikely, since I've seen many.  Additionally, examples of this error that I can remember made the mistake on dedicated links that in top level headlines e.g. "* Headine" and not "*** Headline"
 ;;
@@ -2372,6 +2384,7 @@ This function avoids making messed up targets by exiting without doing anything 
       ))
   (global-set-key "\em" 'create-and-link-dedicated-org-target)
   )
+
 ;; ** Hide/show/toggle :PROPERTIES: drawer
 
 (with-eval-after-load 'org
@@ -2429,40 +2442,44 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; ** Org-download
 
-;; From: https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
-(use-package org-download
-  :after org
-  :config
-  ;; add support to dired
-  (add-hook 'dired-mode-hook 'org-download-enable))
+;; NO doesn't seem to cause cache problem but DOES greatly slow down emacs init
+;;
+;; --- SEEMS OK is this messing up org mode cache ------------
+;; ;; TODO get this to work
+;;   ;; could do setq-local for dir or file-specific dirname:
+;;   ;; https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
+;; ;; make drag-and-drop image save in the same name folder as org file
+;; ;; ex: `aa-bb-cc.org' then save image test.png to `aa-bb-cc/test.png'
+;; (defun org-download-method-dirname-from-orgfile (link)
+;;   (let ((filename
+;;          (file-name-nondirectory
+;;           (car (url-path-and-query
+;;                 (url-generic-parse-url link)))))
+;;         (dirname (file-name-sans-extension (buffer-name)) ))
+;;     ;; if directory not exist, create it
+;;     (unless (file-exists-p dirname)
+;;       (make-directory dirname))
+;;     ;; return the path to save the download files
+;;     (expand-file-name filename dirname)))
 
-;; make drag-and-drop image save in the same name folder as org file
-;; ex: `aa-bb-cc.org' then save image test.png to `aa-bb-cc/test.png'
-(defun org-download-method-dirname-from-orgfile (link)
-  (let ((filename
-         (file-name-nondirectory
-          (car (url-path-and-query
-                (url-generic-parse-url link)))))
-        (dirname (file-name-sans-extension (buffer-name)) ))
-    ;; if directory not exist, create it
-    (unless (file-exists-p dirname)
-      (make-directory dirname))
-    ;; return the path to save the download files
-    (expand-file-name filename dirname)))
+;; ;; From: https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
+;; (use-package org-download
+;;   :after org
+;;   :custom
+;;   (org-download-method 'org-download-method-dirname-from-orgfile)
+;;   :hook
+;;   (dired-mode . org-download-enable))
+;; --- end is this messing up org mode cache -----------------------------
 
 ;; ** Org Export
 
-(use-package ox-minutes
-  :after org) ; nice(er) ascii export, but slow start
+(use-package ox-minutes :after org) ; nice(er) ascii export, but slow start
 
-;; *** Pandoc helper for org export
-
+;; Pandoc helper for org export
 (when (sdo/find-exec "pandoc" "Needed for org-mode export to .docx, etc.")
   ;; from: https://github.com/rubensts/.emacs.d/blob/master/emacs-init.org
   (use-package ox-pandoc
-    :after org
-    :defer 0
-;;    :demand t
+    :after org ; so pandoc shows up in org-export-dispatch screen
     :config
     (setq org-pandoc-options '((standalone . t))            ; default options for all output formats
           org-pandoc-options-for-docx '((standalone . nil)) ; cancel above settings only for 'docx' format
@@ -2470,7 +2487,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; ** Org and Zotero
 
-;; For Zotero add-in "zutilo"  Conflicts/same-as zotxt?
+;; For Zotero add-in "zutilo"  Conflicts or Same-As zotxt?
 ;; https://orgmode-exocortex.com/2020/05/13/linking-to-zotero-items-and-collections-from-org-mode/
 (with-eval-after-load 'org
   (org-link-set-parameters "zotero" :follow
@@ -2487,50 +2504,53 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; ** Org-cite (native)
 ;; For the native cites in org-mode 9.5+
 
-;; ;; Generic native citations (for latex files, I suppose)
-;; ;; From: https://github.com/bdarcus/citar
-;; (use-package citar
-;;   :defer t
-;;   :straight (:host github :repo "bdarcus/citar") ; not on straight
-;;   :bind (("C-c b" . citar-insert-citation)
-;;          :map minibuffer-local-map
-;;          ("M-b" . citar-insert-preset))
-;;   :custom
-;;   (citar-bibliography '("~/OneDrive/share/ref/energy.bib")))
+;; Generic native citations (for latex files, I suppose)
+;; From: https://github.com/bdarcus/citar
+(use-package citar
+;;  :defer t
+  :bind (("C-c b" . citar-insert-citation)
+         :map minibuffer-local-map
+         ("M-b" . citar-insert-preset))
+  :custom
+  (citar-bibliography '("~/OneDrive/share/ref/energy.bib"))
+  (citar-library-paths '("~/OneDrive/share/ref/papers"))
+  (citar-file-parser-functions
+;; https://github.com/bdarcus/citar/issues/389#issuecomment-964484978   
+;;        '(citar-file-parser-default
+          '(citar-file-parser-triplet)))
 
-;; ;; use consult-completing-read for enhanced interface
-;; ;; From: https://github.com/bdarcus/citar
-;; (with-eval-after-load 'embark
-;;   (advice-add #'completing-read-multiple :override
-;;               #'consult-completing-read-multiple))
+;; use consult-completing-read for enhanced interface
+;; From: https://github.com/bdarcus/citar
+(with-eval-after-load 'embark
+  (advice-add #'completing-read-multiple :override
+              #'consult-completing-read-multiple))
 
-;; ;; org native citations
-;; ;; From: https://github.com/bdarcus/citar
-;; (use-package citar-org
-;;   :after (org citar)         ; so that org-mode-map is defined
-;;   :straight (:host github :repo "bdarcus/citar") ; not on straight
-;;   ;; melpa?
-;;   :no-require
-;;   :ensure nil
-;;   :bind
-;;   (:map org-mode-map ("C-c b" . #'org-cite-insert)) ; also  C-c C-x C-@
-;;   :custom
-  
-;;   (org-cite-global-bibliography '("~/OneDrive/share/ref/energy.bib"))
-;;   (org-cite-insert-processor 'citar)
-;;   (org-cite-follow-processor 'citar)
-;;   (org-cite-activate-processor 'citar)
-;;   (citar-at-point-function 'embark-act)
-;;   :init
-;;   (citar-filenotify-setup '(LaTeX-mode-hook org-mode-hook)))
+;; org native citations
+;; From: https://github.com/bdarcus/citar
+(use-package citar-org
+  :no-require
+  :ensure nil
+  ; citar-org is in citar: https://github.com/bdarcus/citar/issues/380
+  :straight citar  
+  :bind
+ :bind
+  (:map org-mode-map :package org ("C-c b" . #'org-cite-insert)) ; also  C-c C-x C-@
+  :custom
+  (org-cite-global-bibliography '("~/OneDrive/share/ref/energy.bib"))
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+  (citar-at-point-function 'embark-act)
+  :init
+  (citar-filenotify-setup '(LaTeX-mode-hook org-mode-hook)))
 
-;; ;; do this for org-mode v 9.5
-;; ;; https://mail.google.com/mail/u/0/#inbox/FMfcgzGlkFvBtzqVbNDzVdPxpXvNPsGX
-;; ;; You have to load oc-biblatex, say using use-package, and also set
-;; ;; org-cite-export-processors, like:
-;; ;; (setq org-cite-export-processors
-;; ;; '((latex biblatex)
-;; ;;   (t csl)))
+;; do this for org-mode v 9.5
+;; https://mail.google.com/mail/u/0/#inbox/FMfcgzGlkFvBtzqVbNDzVdPxpXvNPsGX
+;; You have to load oc-biblatex, say using use-package, and also set
+;; org-cite-export-processors, like:
+;; (setq org-cite-export-processors
+;; '((latex biblatex)
+;;   (t csl)))
 
 ;; ** Org-ref
 
@@ -2616,8 +2636,6 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;; If using org-roam-protocol
   (require 'org-roam-protocol))
 
-;; (use-package ivy-bibtex :defer t) ; moved to ivy section
-  
 ;; ** org-roam-ui (graph viewing)
 
 ;; config from: https://github.com/org-roam/org-roam-ui
@@ -2790,6 +2808,7 @@ folder, otherwise delete a word"
 ;; TODO: show full match in main buffer, like ivy
 ;;
 (use-package vertico
+  :after swiper ; so inherited fonts are defined?
   :bind (:map vertico-map
          ("C-s" . vertico-next)
          ("C-r" . vertico-previous)
@@ -2839,8 +2858,7 @@ folder, otherwise delete a word"
               )
   :custom
   (corfu-cycle t)
-  :config
-  (corfu-global-mode))
+  (corfu-global-mode t))
 
 ;; ** Improved Candidate Filtering with Orderless
 
@@ -3123,13 +3141,13 @@ folder, otherwise delete a word"
 ;;  swiper hydra: C-o;
 ;;  swiper full help: C-h m
 (use-package swiper
+  :demand t ; so its fonts are defined for vertico/consult/...?
   :diminish ivy-mode
   :custom
   (swiper-action-recenter nil) ;; does this work?
   (ivy-count-format "(%d/%d) ") ; show candidate index/count in swiper
 ;;  (ivy-mode t) ; not needed, at last not for just swiper
   (ivy-wrap t)
-
   :init
   ;;(setq ivy-use-virtual-buffers t) ; ivy-switch-buffer also shows recent files
   ;; swiper-isearch is much faster than plain swiper but slower than
@@ -3174,7 +3192,7 @@ folder, otherwise delete a word"
   )
 
 ;; (use-package ivy-prescient
-;;   :after counsel ivy prescient
+;;   :after (counsel ivy prescient)
 ;;   :custom
 ;;   (ivy-prescient-mode t))
 
@@ -3201,14 +3219,16 @@ folder, otherwise delete a word"
 ;;   :init
 ;;   (company-prescient-mode))
 
-;; ** ivy-bibtex
+;; ;; ** ivy-bibtex
 
-;; (use-package ivy-bibtex :defer t)
+;; (use-package ivy-bibtex
+;;   :after ivy
+;;   :defer t)
 
 ;; ** flyspell-correct-ivy
 
 ;; (use-package flyspell-correct-ivy
-;;   :after flyspell-correct)
+;;   :after (ivy flyspell-correct))
 
 ;; ** Ivy find recent directories
 ;; ;; From: http://pragmaticemacs.com/emacs/open-a-recent-directory-in-dired-revisited
@@ -3646,6 +3666,12 @@ reuse it's window, otherwise create new one."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(aw-leading-char-face ((t (:foreground "red" :weight bold))))
+ '(consult-file ((t (:inherit swiper-match-face-2))))
+ '(consult-preview-cursor ((t (:inherit swiper-match-face-2))))
+ '(consult-preview-line ((t (:inherit swiper-line-face :extend t))))
+ '(consult-preview-match ((t (:inherit swiper-match-face-2))))
+ '(corfu-bar ((t (:inherit swiper-line-face))))
+;; '(corfu-bar ((t (:background "purple"))))
  '(cperl-array ((t (:background "*" :foreground "saddlebrown" :slant italic))))
  '(cperl-hash ((t (:background "*" :foreground "darkgreen" :slant oblique))))
  '(cperl-nonoverridable ((t (:background "*" :foreground "black" :weight normal))))
@@ -3676,6 +3702,10 @@ reuse it's window, otherwise create new one."
  '(lazy-highlight ((t (:background "honeydew3"))))
  '(matlab-region-face ((t (:background "LightSteelBlue1"))))
  '(mode-line ((t (:background "RoyalBlue4" :foreground "snow" :box (:line-width -1 :style released-button) :weight bold))))
+ '(orderless-match-face-0 ((t (:inherit swiper-match-face-2 :weight bold))))
+ '(orderless-match-face-1 ((t (:inherit swiper-match-face-3))))
+ '(orderless-match-face-2 ((t (:inherit swiper-match-face-4 :weight bold))))
+ '(orderless-match-face-3 ((t (:inherit swiper-match-face-1 :weight bold))))
  '(org-code ((t (:inherit black :inverse-video nil :weight bold :family "Courier New"))))
  '(org-done ((t (:foreground "Gray" :weight bold))))
  '(org-done-face ((t (:foreground "gray" :weight bold))))
@@ -3701,78 +3731,11 @@ reuse it's window, otherwise create new one."
  '(region ((t (:background "LightSteelBlue1"))))
  '(sml/modified ((t (:inherit sml/not-modified :foreground "firebrick" :weight bold))))
  '(table-cell-face ((t (:background "honeydew1" :foreground "black" :inverse-video nil))))
- '(vertico-current ((t (:extend t :background "lavender blush"))))
+ '(vertico-current ((t (:inherit swiper-line-face))))
  '(vertico-group-separator ((t (:inherit green :strike-through t))))
  '(vertico-group-title ((t (:inherit red :slant italic))))
  '(vertico-multiline ((t (:inherit violet))))
  '(writegood-duplicates-face ((t (:foreground "black" :strike-through t :underline "firebrick1"))))
  '(writegood-passive-voice-face ((t (:foreground "LightBlue4" :underline t :weight bold))))
  '(writegood-weasels-face ((t (:foreground "dark khaki" :underline t :weight bold)))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(aw-leading-char-face ((t (:foreground "red" :weight bold))))
- '(cperl-array ((t (:background "*" :foreground "saddlebrown" :slant italic))))
- '(cperl-hash ((t (:background "*" :foreground "darkgreen" :slant oblique))))
- '(cperl-nonoverridable ((t (:background "*" :foreground "black" :weight normal))))
- '(cursor ((t (:background "blue"))))
- '(dired-directory ((t (:foreground "MediumBlue"))))
- '(dired-ignored ((t (:foreground "NavajoWhite4"))))
- '(ediff-even-diff-face-A ((((class color)) (:background "light grey" :foreground "red"))))
- '(ediff-even-diff-face-B ((((class color)) (:background "light grey" :foreground "red"))))
- '(ediff-odd-diff-face-A ((t (:background "gray" :foreground "black"))))
- '(ediff-odd-diff-face-B ((t (:background "gray" :foreground "black"))))
- '(eshell-ls-archive ((((class color) (background light)) (:foreground "green4" :weight bold))))
- '(eshell-ls-backup ((((class color) (background light)) (:inherit dired-ignored))))
- '(eshell-ls-directory ((((class color) (background light)) (:inherit dired-directory :weight bold))))
- '(eshell-ls-product ((((class color) (background light)) (:foreground "DarkSeaGreen"))))
- '(eshell-ls-special ((((class color) (background light)) (:foreground "darkred" :weight bold))))
- '(eshell-prompt ((t (:foreground "SlateGray" :weight bold))))
- '(flyspell-duplicate ((t (:foreground "black" :strike-through t :underline "firebrick1"))))
- '(flyspell-incorrect ((t (:foreground "black" :underline (:color "firebrick" :style wave)))))
- '(font-lock-builtin-face ((((type tty) (class color)) (:foreground "red"))))
- '(font-lock-function-name-face ((t (:foreground "navy" :weight bold))))
- '(font-lock-keyword-face ((nil (:foreground "navy"))))
- '(font-lock-string-face ((t (:foreground "black" :slant italic))))
- '(fringe ((t (:background "gray93" :foreground "light slate gray" :weight bold))))
- '(highlight-indentation-face ((t (:foreground "light gray"))))
- '(hl-line ((t (:background "gray97"))))
- '(ido-first-match ((t (:background "antique white" :weight bold))))
- '(isearch ((t (:background "papaya whip" :foreground "black"))))
- '(lazy-highlight ((t (:background "honeydew3"))))
- '(matlab-region-face ((t (:background "LightSteelBlue1"))))
- '(mode-line ((t (:background "RoyalBlue4" :foreground "snow" :box (:line-width -1 :style released-button) :weight bold))))
- '(org-code ((t (:inherit black :inverse-video nil :weight bold :family "Courier New"))))
- '(org-done ((t (:foreground "Gray" :weight bold))))
- '(org-done-face ((t (:foreground "gray" :weight bold))))
- '(org-ellipsis ((t (:foreground "dark slate gray" :weight normal))))
- '(org-headline-done ((((class color) (background light)) (:foreground "gray"))))
- '(org-headline-done-face ((((class color) (background light)) (:foreground "Gray"))))
- '(org-level-1 ((nil (:weight bold))))
- '(org-level-2 ((((class color) (background light)) (:foreground "black"))))
- '(org-level-3 ((((class color) (background light)) (:foreground "black"))))
- '(org-level-4 ((((class color) (background light)) (:foreground "black"))))
- '(org-level-5 ((((class color) (background light)) (:foreground "black"))))
- '(org-level-6 ((((class color) (background light)) (:foreground "black"))))
- '(org-level-7 ((((class color) (background light)) (:foreground "black"))))
- '(org-level-8 ((((class color) (background light)) (:foreground "black"))))
- '(org-link ((t (:foreground "blue3"))))
- '(org-roam-link ((t (:foreground "dark goldenrod"))))
- '(org-table ((t (:background "honeydew1" :foreground "gray0"))))
- '(org-tag ((nil (:foreground "dark green" :slant italic :weight bold))))
- '(org-target ((t (:foreground "dark slate blue" :weight bold))))
- '(org-todo ((t (:foreground "Firebrick" :weight normal))))
- '(org-verbatim ((t (:inherit shadow :weight bold))))
- '(org-warning ((t (:foreground "firebrick" :weight normal))))
- '(region ((t (:background "LightSteelBlue1"))))
- '(sml/modified ((t (:inherit sml/not-modified :foreground "firebrick" :weight bold))))
- '(table-cell-face ((t (:background "honeydew1" :foreground "black" :inverse-video nil))))
- '(vertico-current ((t (:extend t :background "khaki1"))))
- '(vertico-group-separator ((t (:inherit green :strike-through t))))
- '(vertico-group-title ((t (:inherit red :slant italic))))
- '(vertico-multiline ((t (:inherit violet))))
- '(writegood-duplicates-face ((t (:foreground "black" :strike-through t :underline "firebrick1"))))
- '(writegood-passive-voice-face ((t (:foreground "LightBlue4" :underline t :weight bold))))
- '(writegood-weasels-face ((t (:foreground "dark khaki" :underline t :weight bold)))))
+
