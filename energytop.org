@@ -9292,6 +9292,7 @@ Scott
 
 ******* also [[Copulas]]
 ******* [[cite:Wang16evalStochMethScen][Wang et al. 2016: Evaluating Stoch Scen Frcst]]
+******* [[file:energy.bib::pinson10reldiagsercorr][pinson et al. 2010: reliability]]: something about scenario gen /w Fourier
 ******* <<Scenario Tree Reduction>>
 
 ********* optimization problem:
@@ -10139,6 +10140,7 @@ al. 2012: Current]])
 *** [[http://ir.uiowa.edu/etd/439/][model selection criteria in the presence of missing features based on the kullback-leibler discrepancy]]
 
 *** [[fourier based missing value fill-in]] maybe could be done w/ bootstrap
+*** [[file:energy.bib::pinson10reldiagsercorr][pinson et al. 2010: reliability]]: something about scenario gen /w Fourier
 *** [[file:energy.bib::Sherwood13wgtQRmiss][Sherwood et al. 2013: Weighted]] QR for missing features
 *** [[http://www.google.de/search?hl%3Den&rlz%3D1C1CHFX_en-GBDE446DE446&q%3Dspectral%2Bclustering%2Bwith%2Bmissing%2Bvariables&oq%3Dspectral%2Bclustering%2Bwith%2Bmissing%2Bvariables&aq%3Df&aqi%3D&aql%3D&gs_sm%3De&gs_upl%3D19573l20207l0l20511l7l6l0l0l0l2l229l692l3.2.1l6l0][missing features and spectral clustering]]
 *** periodicity measurement that handles missing features: [[file:energy.bib::Hocke08gapfillLombScarglePer][Hocke & Kämpfer 2008: Gap filling and]]
