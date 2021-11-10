@@ -73,7 +73,7 @@
 
 ;; to see if problems are tdue :defer, :after,... problems
 ;; https://emacs.stackexchange.com/a/33798/14273
-(setq use-package-always-demand t)
+;; (setq use-package-always-demand t)
 
 ;; ** package.el
 ;; Avoid complaints, put before (require 'package)
@@ -2680,7 +2680,7 @@ folder, otherwise delete a word"
  '(org-noter-auto-save-last-location t)
  '(org-noter-doc-property-in-notes t)
  '(org-occur-case-fold-search ''smart)
- '(org-odd-levels-only t)
+;; '(org-odd-levels-only t)
  '(org-outline-path-complete-in-steps nil)
  '(org-pretty-entities nil)
  '(org-refile-targets '((nil :maxlevel . 6)))
