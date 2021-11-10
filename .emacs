@@ -62,7 +62,6 @@
   (load bootstrap-file nil 'nomessage))
 
 ;; to use straight within use-package, do like:
-;; (use-package docker :straight t)
 (straight-use-package 'use-package)
 
 ;; make straight the default (for now, it's org-roam only)
@@ -136,7 +135,6 @@
 
 (if running-gnu-linux
     (progn (setq os-which-cmd "which")
-           (global-set-key [f11] 'eshell) ; almost Unix, consistent across OS's
            (global-set-key [C-f11] 'shell) ; native shell
            ;; force chrome on Linux
            (setq browse-url-browser-function (quote browse-url-generic))
@@ -150,7 +148,6 @@
       (global-set-key "\240" (quote iconify-frame))
       ;; menu key is M-x, like it is on Linux
       (global-set-key (kbd "<apps>") 'execute-extended-command)
-      (global-set-key [f11] 'eshell) ; almost Unix, consistent across OS's
       (global-set-key [C-f11] 'powershell) ; native shell
       (setq w32-use-w32-font-dialog nil)
       (setq os-which-cmd "where")))
@@ -605,14 +602,20 @@ See also `toggle-frame-maximized'."
 (define-key (current-global-map) (kbd "C-x o") 'other-window-and-beyond)
 
 ;; So C-arrow keys move cursor to different buffer (C-S-arrow moves buffers)
-(setq windmove-wrap-around t ) ; wrap windows around edge, like torus space
+(use-package windmove
+  :bind (("<C-up>"    . windmove-up)
+         ("<C-down>"  . windmove-down)
+         ("<C-left>"  . windmove-left)
+         ("<C-right>" . windmove-right))
+  :custom
+  (windmove-wrap-around t)) ; wrap windows around edge, like torus space
 
 ;; TODO: remove these bindings in favor of hyra?
 ;; Overwrites org keys I don't use (are inhibited in org setup)
-(global-set-key (kbd "<C-up>")     'windmove-up)
-(global-set-key (kbd "<C-down>")   'windmove-down)
-(global-set-key (kbd "<C-left>")   'windmove-left)
-(global-set-key (kbd "<C-right>")  'windmove-right)
+;; (global-set-key (kbd "<C-up>")     'windmove-up)
+;; (global-set-key (kbd "<C-down>")   'windmove-down)
+;; (global-set-key (kbd "<C-left>")   'windmove-left)
+;; (global-set-key (kbd "<C-right>")  'windmove-right)
 
 ;; Window movement, since windmove mappings above are overwritten in elpy
 ;; https://www.reddit.com/r/emacs/comments/7evidd/windmove_shortcuts/
@@ -621,71 +624,74 @@ See also `toggle-frame-maximized'."
 ;; TODO: shrink some more and put a bunch of other window functions on
 ;; this hydra?  Maybe frames, buffers, ...
 ;; TODO compare w/ ace-window and hydr: https://www.youtube.com/watch?v=_qZliI1BKzI
-(use-package hydra
-  :defer t); s/ probably put some hydra defs inside of it, or this inside of ivy
-(defhydra hydra-window (:color pink :hint nil :timeout 20)
-  "
-     Move          Swap          Resize        Split
-╭─────────────────────────────────────────────────────────┐
-      U            C-U             M-U         [v]ertical
-      ▲             ▲               ▲          [h]orizontal
- L ◀   ▶ R   C-L ◀   ▶ C-R   M-L ◀   ▶ M-R    [s]ensibly
-      ▼             ▼               ▼          ╭──────────┐
-      D            C-D             M-D          quit : [q]
-"
-  ("<left>" windmove-left)
-  ("<down>" windmove-down)
-  ("<up>" windmove-up)
-  ("<right>" windmove-right)
-  ("h" split-window-below)
-  ("v" split-window-right)
-  ("s" (split-window-sensibly))
-  ("M-<up>" hydra-move-splitter-up) 
-  ("M-<down>" hydra-move-splitter-down)
-  ("M-<left>" hydra-move-splitter-left)
-  ("M-<right>" hydra-move-splitter-right)
-  ("C-<up>" buf-move-up)
-  ("C-<down>" buf-move-down)
-  ("C-<left>" buf-move-left)
-  ("C-<right>" buf-move-right)
-  ("q" nil))
 
-(global-set-key (kbd "C-x w") 'hydra-window/body)
+;; I never use this
+;;
+;; (use-package hydra
+;;   :defer t); s/ probably put some hydra defs inside of it, or this inside of ivy
+;; (defhydra hydra-window (:color pink :hint nil :timeout 20)
+;;   "
+;;      Move          Swap          Resize        Split
+;; ╭─────────────────────────────────────────────────────────┐
+;;       U            C-U             M-U         [v]ertical
+;;       ▲             ▲               ▲          [h]orizontal
+;;  L ◀   ▶ R   C-L ◀   ▶ C-R   M-L ◀   ▶ M-R    [s]ensibly
+;;       ▼             ▼               ▼          ╭──────────┐
+;;       D            C-D             M-D          quit : [q]
+;; "
+;;   ("<left>" windmove-left)
+;;   ("<down>" windmove-down)
+;;   ("<up>" windmove-up)
+;;   ("<right>" windmove-right)
+;;   ("h" split-window-below)
+;;   ("v" split-window-right)
+;;   ("s" (split-window-sensibly))
+;;   ("M-<up>" hydra-move-splitter-up) 
+;;   ("M-<down>" hydra-move-splitter-down)
+;;   ("M-<left>" hydra-move-splitter-left)
+;;   ("M-<right>" hydra-move-splitter-right)
+;;   ("C-<up>" buf-move-up)
+;;   ("C-<down>" buf-move-down)
+;;   ("C-<left>" buf-move-left)
+;;   ("C-<right>" buf-move-right)
+;;   ("q" nil))
 
-;; splitter funcs from: https://github.com/abo-abo/hydra/blob/master/hydra-examples.el
-(defun hydra-move-splitter-left (arg)
-  "Move window splitter left."
-  (interactive "p")
-  (if (let ((windmove-wrap-around))
-        (windmove-find-other-window 'right))
-      (shrink-window-horizontally arg)
-    (enlarge-window-horizontally arg)))
+;; (global-set-key (kbd "C-x w") 'hydra-window/body)
 
-(defun hydra-move-splitter-right (arg)
-  "Move window splitter right."
-  (interactive "p")
-  (if (let ((windmove-wrap-around))
-        (windmove-find-other-window 'right))
-      (enlarge-window-horizontally arg)
-    (shrink-window-horizontally arg)))
+;; ;; splitter funcs from: https://github.com/abo-abo/hydra/blob/master/hydra-examples.el
+;; (defun hydra-move-splitter-left (arg)
+;;   "Move window splitter left."
+;;   (interactive "p")
+;;   (if (let ((windmove-wrap-around))
+;;         (windmove-find-other-window 'right))
+;;       (shrink-window-horizontally arg)
+;;     (enlarge-window-horizontally arg)))
 
-(defun hydra-move-splitter-up (arg)
-  "Move window splitter up."
-  (interactive "p")
-  (if (let ((windmove-wrap-around))
-        (windmove-find-other-window 'up))
-      (enlarge-window arg)
-    (shrink-window arg)))
+;; (defun hydra-move-splitter-right (arg)
+;;   "Move window splitter right."
+;;   (interactive "p")
+;;   (if (let ((windmove-wrap-around))
+;;         (windmove-find-other-window 'right))
+;;       (enlarge-window-horizontally arg)
+;;     (shrink-window-horizontally arg)))
 
-(defun hydra-move-splitter-down (arg)
-  "Move window splitter down."
-  (interactive "p")
-  (if (let ((windmove-wrap-around))
-        (windmove-find-other-window 'up))
-      (shrink-window arg)
-    (enlarge-window arg)))
+;; (defun hydra-move-splitter-up (arg)
+;;   "Move window splitter up."
+;;   (interactive "p")
+;;   (if (let ((windmove-wrap-around))
+;;         (windmove-find-other-window 'up))
+;;       (enlarge-window arg)
+;;     (shrink-window arg)))
 
-;; *** Window move forward/back
+;; (defun hydra-move-splitter-down (arg)
+;;   "Move window splitter down."
+;;   (interactive "p")
+;;   (if (let ((windmove-wrap-around))
+;;         (windmove-find-other-window 'up))
+;;       (shrink-window arg)
+;;     (enlarge-window arg)))
+
+;; *** Window move forward/back with mouse
 ;; Do an emacs Back buttion, traversing cursor movement history across
 ;; windows and frames using mouse buttons usually bound to browser
 ;; forward/back.  On MS sculpt mouse, swipe down is 'back'; up is 'forward'
@@ -964,13 +970,14 @@ displayed anywhere else."
 ;; ** Dired Mode
 ;; *** Generic Dired and Win32 integration
 
-(add-hook  'dired-mode-hook
-	   (lambda ()
-             (dired-hide-details-mode) ; less junk.  ')' restores orig format
-             ;; make dired search case insensitive (default is case sensitive)
-	     (setq case-fold-search t)
-             ;; override for dired, in which this is annoying, for some reason
-	     (define-key dired-mode-map (kbd "C-x C-f") 'find-file)))
+(with-eval-after-load 'dired
+  (add-hook  'dired-mode-hook
+	     (lambda ()
+               (dired-hide-details-mode) ; less junk.  ')' restores orig format
+               ;; make dired search case insensitive (default is case sensitive)
+	       (setq case-fold-search t)
+               ;; override for dired, in which this is annoying, for some reason
+	       (define-key dired-mode-map (kbd "C-x C-f") 'find-file))))
 
 ;; so that dired automatically updates stale directory list when buffer revisted
 (setq dired-no-confirm `(revert-subdirs))
@@ -980,134 +987,139 @@ displayed anywhere else."
 
 ;; *** Dired subtree and project explorer
 
-(defun mhj/dwim-toggle-or-open ()
-  "Toggle subtree or open the file."
-  (interactive)
-  (if (file-directory-p (dired-get-file-for-visit))
-      (progn
-        (dired-subtree-toggle)
-        (revert-buffer))
-    (dired-find-file)))
+;; It turns out that don't actually use the expansion capabilities of this
+;;
+;; (defun mhj/dwim-toggle-or-open ()
+;;   "Toggle subtree or open the file."
+;;   (interactive)
+;;   (if (file-directory-p (dired-get-file-for-visit))
+;;       (progn
+;;         (dired-subtree-toggle)
+;;         (revert-buffer))
+;;     (dired-find-file)))
+;;
+;; ;; TODO: Click both toggles directory and opens in a new dired window.  Get rid of the open.
+;; (defun mhj/mouse-dwim-to-toggle-or-open (event)
+;;   "Toggle subtree or the open file on mouse-click in dired."
+;;   (interactive "e")
+;;   (let* ((window (posn-window (event-end event)))
+;;          (buffer (window-buffer window))
+;;          (pos (posn-point (event-end event))))
+;;     (progn
+;;       (with-current-buffer buffer
+;;         (goto-char pos)
+;;         (mhj/dwim-toggle-or-open)))))
+;;
+;; (use-package dired-subtree
+;;   :demand
+;;   :bind
+;;   (:map dired-mode-map
+;;         ("<enter>" . dired-find-file)
+;;         ("<return>" . dired-find-file)
+;;         ("<tab>" . mhj/dwim-toggle-or-open)
+;;         ("<down-mouse-1>" . mhj/mouse-dwim-to-toggle-or-open))
+;;   :config
+;;   (progn
+;;     ;; Function to customize the line prefixes (I simply indent the lines a bit)
+;;     (setq dired-subtree-line-prefix (lambda (depth) (make-string (* 2 depth) ?\s)))
+;;     (setq dired-subtree-use-backgrounds nil)))
 
-;; TODO: Click both toggles directory and opens in a new dired window.  Get rid of the open.
-(defun mhj/mouse-dwim-to-toggle-or-open (event)
-  "Toggle subtree or the open file on mouse-click in dired."
-  (interactive "e")
-  (let* ((window (posn-window (event-end event)))
-         (buffer (window-buffer window))
-         (pos (posn-point (event-end event))))
-    (progn
-      (with-current-buffer buffer
-        (goto-char pos)
-        (mhj/dwim-toggle-or-open)))))
-
-(use-package dired-subtree
-  :demand
-  :bind
-  (:map dired-mode-map
-        ("<enter>" . dired-find-file)
-        ("<return>" . dired-find-file)
-        ("<tab>" . mhj/dwim-toggle-or-open)
-        ("<down-mouse-1>" . mhj/mouse-dwim-to-toggle-or-open))
-  :config
-  (progn
-    ;; Function to customize the line prefixes (I simply indent the lines a bit)
-    (setq dired-subtree-line-prefix (lambda (depth) (make-string (* 2 depth) ?\s)))
-    (setq dired-subtree-use-backgrounds nil)))
-
-;; My "Bugfixed" version of the function in dired-subtree.el
-;; Mabye it's not fixing anything: See my bug report:
-;;   https://github.com/Fuco1/dired-hacks/issues/164
-(defun dired-subtree-insert ()
-  "Insert subtree under this directory."
-  (interactive)
-  (when (and (dired-subtree--dired-line-is-directory-or-link-p)
-             (not (dired-subtree--is-expanded-p)))
-    (let* ((dir-name (dired-get-filename nil t))
-           (listing (dired-subtree--readin (file-name-as-directory dir-name)))
-           beg end)
-      (read-only-mode -1)
-      (move-end-of-line 1)
-      ;; this is pretty ugly, I'm sure it can be done better
-      (save-excursion
-        (insert listing)
-        (setq end (+ (point) 2)))
-      (newline)
-      (setq beg (point))
-      (let ((inhibit-read-only t))
-        (remove-text-properties (1- beg) beg '(dired-filename)))
-      (let* ((ov (make-overlay beg end))
-             (parent (dired-subtree--get-ov (1- beg)))
-             (depth (or (and parent (1+ (overlay-get parent 'dired-subtree-depth)))
-                        1))
-             (face (intern (format "dired-subtree-depth-%d-face" depth))))
-        (when dired-subtree-use-backgrounds
-          (overlay-put ov 'face face))
-        ;; refactor this to some function
-        (overlay-put ov 'line-prefix
-                     (if (stringp dired-subtree-line-prefix)
-                         (if (not dired-subtree-use-backgrounds)
-                             (apply 'concat (-repeat depth dired-subtree-line-prefix))
-                           (cond
-                            ((eq nil dired-subtree-line-prefix-face)
-                             (apply 'concat
-                                    (-repeat depth dired-subtree-line-prefix)))
-                            ((eq 'subtree dired-subtree-line-prefix-face)
-                             (concat
-                              dired-subtree-line-prefix
-                              (propertize
-                               (apply 'concat
-                                      (-repeat (1- depth) dired-subtree-line-prefix))
-                               'face face)))
-                            ((eq 'parents dired-subtree-line-prefix-face)
-                             (concat
-                              dired-subtree-line-prefix
-                              (apply 'concat
-                                     (--map
-                                      (propertize dired-subtree-line-prefix
-                                                  'face
-                                                  (intern (format "dired-subtree-depth-%d-face" it)))
-                                      (number-sequence 1 (1- depth))))))))
-                       (funcall dired-subtree-line-prefix depth)))
-        (overlay-put ov 'dired-subtree-name dir-name)
-        (overlay-put ov 'dired-subtree-parent parent)
-        (overlay-put ov 'dired-subtree-depth depth)
-        (overlay-put ov 'evaporate t)
-        (push ov dired-subtree-overlays))
-      (goto-char beg)
-      (dired-move-to-filename)
-      (read-only-mode 1)
-      (run-hooks 'dired-subtree-after-insert-hook))))
+;; ;; My "Bugfixed" version of the function in dired-subtree.el
+;; ;; Mabye it's not fixing anything: See my bug report:
+;; ;;   https://github.com/Fuco1/dired-hacks/issues/164
+;; (defun dired-subtree-insert ()
+;;   "Insert subtree under this directory."
+;;   (interactive)
+;;   (when (and (dired-subtree--dired-line-is-directory-or-link-p)
+;;              (not (dired-subtree--is-expanded-p)))
+;;     (let* ((dir-name (dired-get-filename nil t))
+;;            (listing (dired-subtree--readin (file-name-as-directory dir-name)))
+;;            beg end)
+;;       (read-only-mode -1)
+;;       (move-end-of-line 1)
+;;       ;; this is pretty ugly, I'm sure it can be done better
+;;       (save-excursion
+;;         (insert listing)
+;;         (setq end (+ (point) 2)))
+;;       (newline)
+;;       (setq beg (point))
+;;       (let ((inhibit-read-only t))
+;;         (remove-text-properties (1- beg) beg '(dired-filename)))
+;;       (let* ((ov (make-overlay beg end))
+;;              (parent (dired-subtree--get-ov (1- beg)))
+;;              (depth (or (and parent (1+ (overlay-get parent 'dired-subtree-depth)))
+;;                         1))
+;;              (face (intern (format "dired-subtree-depth-%d-face" depth))))
+;;         (when dired-subtree-use-backgrounds
+;;           (overlay-put ov 'face face))
+;;         ;; refactor this to some function
+;;         (overlay-put ov 'line-prefix
+;;                      (if (stringp dired-subtree-line-prefix)
+;;                          (if (not dired-subtree-use-backgrounds)
+;;                              (apply 'concat (-repeat depth dired-subtree-line-prefix))
+;;                            (cond
+;;                             ((eq nil dired-subtree-line-prefix-face)
+;;                              (apply 'concat
+;;                                     (-repeat depth dired-subtree-line-prefix)))
+;;                             ((eq 'subtree dired-subtree-line-prefix-face)
+;;                              (concat
+;;                               dired-subtree-line-prefix
+;;                               (propertize
+;;                                (apply 'concat
+;;                                       (-repeat (1- depth) dired-subtree-line-prefix))
+;;                                'face face)))
+;;                             ((eq 'parents dired-subtree-line-prefix-face)
+;;                              (concat
+;;                               dired-subtree-line-prefix
+;;                               (apply 'concat
+;;                                      (--map
+;;                                       (propertize dired-subtree-line-prefix
+;;                                                   'face
+;;                                                   (intern (format "dired-subtree-depth-%d-face" it)))
+;;                                       (number-sequence 1 (1- depth))))))))
+;;                        (funcall dired-subtree-line-prefix depth)))
+;;         (overlay-put ov 'dired-subtree-name dir-name)
+;;         (overlay-put ov 'dired-subtree-parent parent)
+;;         (overlay-put ov 'dired-subtree-depth depth)
+;;         (overlay-put ov 'evaporate t)
+;;         (push ov dired-subtree-overlays))
+;;       (goto-char beg)
+;;       (dired-move-to-filename)
+;;       (read-only-mode 1)
+;;       (run-hooks 'dired-subtree-after-insert-hook))))
 
 ;; *** Dired narrow: show only string matches, then edit only narrowed part
 
 ;; '/', type a narrowing string  starts it, 'g' ends the narrowing
-;; is somewhat redundant w/ just doing swiper search of dired buffer
+;; Is somewhat redundant w/ just doing swiper search of dired buffer
+;; Is also somewhat redudant w/ consult, although that reverts to
+;; dired when you pick a dir.
 ;; also see: narrow-or-widen-dwim
 (use-package dired-narrow
-  :straight t
   :bind (:map dired-mode-map ("/" . dired-narrow)))
 
 ;; *** Better org-links from dired
 
-;; From: https://emacs.stackexchange.com/a/40528/14273
-(defun my//dired-store-link (orig-fun &rest args)
-  "Insert dired link description automatically."
-  (if (derived-mode-p 'dired-mode)
-      (let ((file (dired-get-filename nil t)))
-        (setf file (if file
-                       (abbreviate-file-name (expand-file-name file))
-                     default-directory))
-        (let ((link (concat "file:" file))
-              (desc (file-name-nondirectory file)))
-          (push (list link desc) org-stored-links)
-          (car org-stored-links)))
-    (apply orig-fun args)))
+(with-eval-after-load 'org
+  ;; From: https://emacs.stackexchange.com/a/40528/14273
+  (defun my//dired-store-link (orig-fun &rest args)
+    "Insert dired link description automatically."
+    (if (derived-mode-p 'dired-mode)
+        (let ((file (dired-get-filename nil t)))
+          (setf file (if file
+                         (abbreviate-file-name (expand-file-name file))
+                       default-directory))
+          (let ((link (concat "file:" file))
+                (desc (file-name-nondirectory file)))
+            (push (list link desc) org-stored-links)
+            (car org-stored-links)))
+      (apply orig-fun args)))
 
-(advice-add 'org-store-link :around #'my//dired-store-link)
+  (advice-add 'org-store-link :around #'my//dired-store-link))
 
 ;; *** Open current file from dired using default OS program
 
+;; could replace this w/ (I think) equivalent consult function
 (defun xah-open-in-external-app (&optional @fname)
   "Open the current file or dired marked files in external app.
 When called in emacs lisp, if @fname is given, open that.
@@ -1141,7 +1153,8 @@ Version 2019-11-04 2021-02-16"
          (lambda ($fpath) (let ((process-connection-type nil))
                             (start-process "" nil "xdg-open" $fpath))) $file-list))))))
 
-(define-key dired-mode-map [(shift return)] 'xah-open-in-external-app)
+(with-eval-after-load 'dired
+  (define-key dired-mode-map [(shift return)] 'xah-open-in-external-app))
 
 ;; ** Find-file and URL
 
@@ -1340,57 +1353,62 @@ Version 2019-11-04 2021-02-16"
 (global-set-key [f8] 'compile)
 (global-set-key [f9] 'align-equals)
 ;; f10 reserved for remote desktop (vnc, thinlink, etc.)
-;;(global-set-key [f11] 'shell) (make OS-dependent, above)
+(global-set-key [f11] 'eshell) ; almost Unix, consistent across OS's
+;; (global-set-key [C-f11] 'shell) ; native shell, (make OS-dependent, above)
+;;
+;; is there a consult function for this?
 (global-set-key [f12] 'repeat-complex-command)
 
 ;; * Programming Modes
 ;; ** Matlab mode
 
-;; Got errors about obsolete code when I first installed this in packages. Note that abo-abo says that this package is no longer maintained (but did he mean THIS package or is THIS package actually his package? the 'matlab' package below is 'matlab-emacs' in sourceforge).  Anyway, abo-abo has a new matlab package, maybe worth trying.
+;; Matlab on Windows barely works in emacs anymore, but keep around for Linux?
+;;
+;; ;; Got errors about obsolete code when I first installed this in packages. Note that abo-abo says that this package is no longer maintained (but did he mean THIS package or is THIS package actually his package? the 'matlab' package below is 'matlab-emacs' in sourceforge).  Anyway, abo-abo has a new matlab package, maybe worth trying.
 
-;; started from: https://github.com/thisirs/dotemacs/blob/master/lisp/init-matlab.el
-(use-package matlab 
-  :straight matlab-mode
-  :defer t
-  :mode ("\\.m$" . matlab-mode)
-  :commands (matlab-shell)
-  :config
-  (setq matlab-shell-command "matlab")
-  (setq matlab-shell-command-switches '("-nodesktop" "-nosplash"))
+;; ;; started from: https://github.com/thisirs/dotemacs/blob/master/lisp/init-matlab.el
+;; (use-package matlab 
+;;   :straight matlab-mode
+;;   :defer t
+;;   :mode ("\\.m$" . matlab-mode)
+;;   :commands (matlab-shell)
+;;   :config
+;;   (setq matlab-shell-command "matlab")
+;;   (setq matlab-shell-command-switches '("-nodesktop" "-nosplash"))
 
-  ;; Don't switch to figure window
-  (setenv "WINDOWID" (frame-parameter (selected-frame) 'outer-window-id))
+;;   ;; Don't switch to figure window
+;;   (setenv "WINDOWID" (frame-parameter (selected-frame) 'outer-window-id))
 
-  (setq-default matlab-change-current-directory t)
-  (setq-default matlab-functions-have-end t)
-  (setq-default matlab-indent-function-body 'guess)
-  (setq matlab-indent-end-before-return t)
+;;   (setq-default matlab-change-current-directory t)
+;;   (setq-default matlab-functions-have-end t)
+;;   (setq-default matlab-indent-function-body 'guess)
+;;   (setq matlab-indent-end-before-return t)
 
-  ;;(setq auto-mode-alist (cons '("\\.m\\'" . matlab-mode) auto-mode-alist)) ; in big list already
-  (defun my-matlab-mode-hook ()
-    (local-set-key "\M-j" #'join-to-next-line)
-    (local-set-key "\M-;" 'comment-dwim)
-    (auto-fill-mode -1)
-    (setq fill-column 80)		; where auto-fill should wrap
-    (define-key matlab-mode-map [f1] 'matlab-fill-paragraph) ; override global
-    (define-key matlab-mode-map "\e;" 'comment-dwim) ; override matlab's commenter
-    )
-  (setq matlab-mode-hook 'my-matlab-mode-hook)
+;;   ;;(setq auto-mode-alist (cons '("\\.m\\'" . matlab-mode) auto-mode-alist)) ; in big list already
+;;   (defun my-matlab-mode-hook ()
+;;     (local-set-key "\M-j" #'join-to-next-line)
+;;     (local-set-key "\M-;" 'comment-dwim)
+;;     (auto-fill-mode -1)
+;;     (setq fill-column 80)		; where auto-fill should wrap
+;;     (define-key matlab-mode-map [f1] 'matlab-fill-paragraph) ; override global
+;;     (define-key matlab-mode-map "\e;" 'comment-dwim) ; override matlab's commenter
+;;     )
+;;   (setq matlab-mode-hook 'my-matlab-mode-hook)
 
-  ;;so matlab R12 runs in emacs and don't get a splash over remote connections prevents error messages from starting GUI but then plots don't work
-  (setq matlab-shell-command-switches '("-nodesktop -nosplash"))
+;;   ;;so matlab R12 runs in emacs and don't get a splash over remote connections prevents error messages from starting GUI but then plots don't work
+;;   (setq matlab-shell-command-switches '("-nodesktop -nosplash"))
 
-  (defun matlab-shell-fix-slowness ()
-    (remove-hook 'comint-output-filter-functions 'matlab-shell-render-html-anchor t)
-    (remove-hook 'comint-output-filter-functions 'matlab-shell-render-errors-as-anchor t))
-  (add-hook 'matlab-shell-mode-hook #'matlab-shell-fix-slowness)
-  :init
-  (provide 'init-matlab))
+;;   (defun matlab-shell-fix-slowness ()
+;;     (remove-hook 'comint-output-filter-functions 'matlab-shell-render-html-anchor t)
+;;     (remove-hook 'comint-output-filter-functions 'matlab-shell-render-errors-as-anchor t))
+;;   (add-hook 'matlab-shell-mode-hook #'matlab-shell-fix-slowness)
+;;   :init
+;;   (provide 'init-matlab))
 
 ;; ** elisp
 
 ;; Get rid of message "Package cl is deprecated".
-(setq byte-compile-warnings '(cl-functions))
+;;(setq byte-compile-warnings '(cl-functions))
 
 (add-hook 'emacs-lisp-mode-hook
 	  '(lambda ()
@@ -1455,7 +1473,6 @@ Version 2019-11-04 2021-02-16"
   (setq conda-env-home-directory (expand-file-name
                                   (concat (file-name-directory conda_exe)
                                           "..")))
-
   (use-package conda
     :defer 0
     :config
@@ -1622,17 +1639,20 @@ Version 2019-11-04 2021-02-16"
   ;;       (https://github.com/millejoh/emacs-ipython-notebook/pull/627)
   ;;       maybe these two other calls work before %matplotlib inline is called?
 
-  (use-package ein
-    :defer t
-    :init
-    ;; So outshine or highlight-indent-guides on prog-mode-hook don't break inline plots
-    (setq ein:polymode t) ;; Get right mode e.g. elpy in cells (fails in :config)
-    :commands (ein:notebooklist-open))
+  ;; seems to be only for Jupyter-non-lab notebooks, and I couldn't
+  ;;get it started last time I tried it.  Comment it out until I need it.
+  ;;
+  ;; (use-package ein
+  ;;   :defer t
+  ;;   :init
+  ;;   ;; So outshine or highlight-indent-guides on prog-mode-hook don't break inline plots
+  ;;   (setq ein:polymode t) ;; Get right mode e.g. elpy in cells (fails in :config)
+  ;;   :commands (ein:notebooklist-open))
 
-  ;; temporary hack to get rid of notebook save error
-  ;; https://github.com/millejoh/emacs-ipython-notebook/issues/623
-  (defun request--goto-next-body (&optional noerror)
-    (re-search-forward "^[\r\n|\n]" nil noerror))
+  ;; ;; temporary hack to get rid of notebook save error
+  ;; ;; https://github.com/millejoh/emacs-ipython-notebook/issues/623
+  ;; (defun request--goto-next-body (&optional noerror)
+  ;;   (re-search-forward "^[\r\n|\n]" nil noerror))
   )
 
 ;; ** Perl
@@ -1727,41 +1747,35 @@ Version 2019-11-04 2021-02-16"
 
 ;; ** C#
 
-(use-package csharp-mode :defer t)
-(use-package omnisharp
-  :defer t
-  :after (csharp-mode company)
-  :init
-  ;; Inspired by: https://github.com/OmniSharp/omnisharp-emacs
-  (defun my-csharp-mode-setup ()
-    (omnisharp-mode)
-    (company-mode)
-    (flycheck-mode)
-    (setq c-syntactic-indentation t)
-    (c-set-style "ellemtel")
-    (electric-pair-local-mode 1) ;; Emacs 25
-    (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
-    (local-set-key (kbd "C-c C-c") 'recompile))
-
-  (add-hook 'csharp-mode-hook 'my-csharp-mode-setup t))
-
-;; maybe this can go inside of use-package ominsharp?
-(eval-after-load
-    'company
-  '(add-to-list 'company-backends #'company-omnisharp))
+;; I'm not using C# an
+;;
+;; (use-package csharp-mode :defer t)
+;; (use-package omnisharp
+;;   :defer t
+;;   :after (csharp-mode company)
+;;   :init
+;;   ;; Inspired by: https://github.com/OmniSharp/omnisharp-emacs
+;;   (defun my-csharp-mode-setup ()
+;;     (omnisharp-mode)
+;;     (company-mode)
+;;     (flycheck-mode)
+;;     (setq c-syntactic-indentation t)
+;;     (c-set-style "ellemtel")
+;;     (electric-pair-local-mode 1) ;; Emacs 25
+;;     (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
+;;     (local-set-key (kbd "C-c C-c") 'recompile))
+;;
+;;   (add-hook 'csharp-mode-hook 'my-csharp-mode-setup t))
+;;
+;; ;; maybe this can go inside of use-package ominsharp?
+;; (eval-after-load
+;;     'company
+;;   '(add-to-list 'company-backends #'company-omnisharp))
 
 ;; ** YAML
 
 (use-package yaml-mode
   :mode ("\\.yml$" "\\.dvc$")) ;; data version control (DVC) files
-
-;; ** elisp programming and dot emacs
-
-(defun dot-emacs-diff (p)
-  "Ediff ~/.emacs with ref/.emacs.  When done, can undo the window config with winner-mode: C-c Left"
-  (interactive "p")
-  (ediff-files "~/.emacs"
-               (expand-file-name ".emacs" docDir)))
 
 ;; ** General purpose programming config
 
@@ -2016,7 +2030,6 @@ Version 2019-11-04 2021-02-16"
 
 ;; *** Vertical indent lines in programming modes
 
-
 ;; seems like this isn't needed if you have highlight-indent-guides
 ;; https://github.com/DarthFennec/highlight-indent-guides#alternatives
 ;; (use-package highlight-indentation
@@ -2106,6 +2119,7 @@ Version 2019-11-04 2021-02-16"
        term-color-purple
        term-color-darkgoldenrod
        term-color-ivory4])
+
 ;; * Org Mode
 
 ;; ** Org-* dirs and files
@@ -2499,7 +2513,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; For Zotero add-in "zotxt"  Conflicts/same-as zutilo?
 ;; https://github.com/egh/zotxt-emacs
 ;; Pastes biblio summary of Zotero entries in org-mode, connects to org-noter
-(use-package zotxt :defer t)
+(use-package zotxt :after org)
 
 ;; ** Org-cite (native)
 ;; For the native cites in org-mode 9.5+
@@ -2513,11 +2527,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
          ("M-b" . citar-insert-preset))
   :custom
   (citar-bibliography '("~/OneDrive/share/ref/energy.bib"))
-  (citar-library-paths '("~/OneDrive/share/ref/papers"))
-  (citar-file-parser-functions
-;; https://github.com/bdarcus/citar/issues/389#issuecomment-964484978   
-;;        '(citar-file-parser-default
-          '(citar-file-parser-triplet)))
+  (citar-library-paths '("~/OneDrive/share/ref/papers")))
 
 ;; use consult-completing-read for enhanced interface
 ;; From: https://github.com/bdarcus/citar
@@ -2543,14 +2553,6 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   (citar-at-point-function 'embark-act)
   :init
   (citar-filenotify-setup '(LaTeX-mode-hook org-mode-hook)))
-
-;; do this for org-mode v 9.5
-;; https://mail.google.com/mail/u/0/#inbox/FMfcgzGlkFvBtzqVbNDzVdPxpXvNPsGX
-;; You have to load oc-biblatex, say using use-package, and also set
-;; org-cite-export-processors, like:
-;; (setq org-cite-export-processors
-;; '((latex biblatex)
-;;   (t csl)))
 
 ;; ** Org-ref
 
@@ -2685,7 +2687,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; keybindings, basic explanation: https://github.com/weirdnox/org-noter#keys
 ;; simple, just so it compiles.  started from: https://rgoswami.me/posts/org-note-workflow
 (use-package org-noter
-  :after (:any org pdf-view)
+  :after (:all org pdf-view)
   :config
   (setq
    ;; the wm can handle splits
@@ -2827,6 +2829,7 @@ folder, otherwise delete a word"
 ;; ** Completions with selectrum
 
 ;; ;; I'm not sure how this is different from vertico
+;;
 ;; ;; To use this, must also modify consult bindings so calls selctrum functions
 ;; ;; Started from https://config.daviwil.com/emacs
 ;; (use-package selectrum
@@ -2868,16 +2871,6 @@ folder, otherwise delete a word"
         completion-category-defaults nil
         completion-category-overrides '((file (styles . (partial-completion))))))
 
-;; (use-package restricto
-;;   :straight '(restricto :host github
-;;                         :repo "oantolin/restricto")
-;;   :after vertico
-;;   :demand t
-;;   :bind (:map vertico-map
-;;          ("S-SPC" . restricto-narrow))
-;;   :config
-;;   (restricto-mode))
-
 ;; Persist history over Emacs restarts. Vertico sorts by history
 ;; position.  Like prescient, I guess.
 ;; from: https://github.com/minad/vertico
@@ -2885,7 +2878,7 @@ folder, otherwise delete a word"
   :init
   (savehist-mode))
 
-;; A few more useful configurations...
+;; A few more useful configurations for vertico...
 ;; from: https://github.com/minad/vertico
 (use-package emacs
   :init
@@ -2939,7 +2932,16 @@ folder, otherwise delete a word"
   (completion-in-region-function #'consult-completion-in-region)
   (consult-line-point-placement 'match-beginning)
   :config
-  (consult-preview-at-point-mode)) ;; SDO: use new command name, I think
+  (consult-preview-at-point-mode)  ;; SDO: use new command name, I think
+  ;;  Leave automatic immediate previews enabled in general and
+  ;;  disable the automatic preview only for commands, where the
+  ;;  preview may be expensive due to file loading.
+  ;; https://github.com/minad/consult#live-previews
+  (consult-customize
+   consult-ripgrep consult-git-grep consult-grep
+   consult-bookmark consult-recent-file consult-xref
+   consult--source-file consult--source-project-file consult--source-bookmark
+   :preview-key (kbd "M-.")))
 
 ;; Example configuration for Consult
 ;; https://github.com/minad/consult
@@ -3086,7 +3088,6 @@ folder, otherwise delete a word"
 
 (use-package marginalia
   :after vertico
-;;  :straight t
   :custom
   (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
   :init
@@ -3114,20 +3115,8 @@ folder, otherwise delete a word"
         embark-highlight-indicator
         embark-isearch-highlight-indicator)))
 
-;; SO: seems like this must already work if you've installed embark?
-;;Seems like systemcrafters buy has supplanted it with which-key,
-;;inside of embar, use-package
-;;
-;; (use-package embark-consult
-;;   :straight '(embark-consult :host github
-;;                              :repo "oantolin/embark"
-;;                              :files ("embark-consult.el"))
-;;   :after (embark consult)
-;;   :demand t
-;;   :hook
-;;   (embark-collect-mode . embark-consult-preview-minor-mode))
-
 ;; * Completion: Ivy/Swiper/Counsel/Company
+
 ;; ** Ivy
 ;; (use-package ivy
 ;;   :bind (("C-s" . swiper)
@@ -3599,7 +3588,7 @@ reuse it's window, otherwise create new one."
 ;; ** Modeline
 (display-time-mode 1) ; time on the modeline (is customized)
 
-(use-package smart-mode-line 
+(use-package smart-mode-line
   :config
   (setq sml/theme nil) ; don't change existing modeline faces
   (sml/setup))
