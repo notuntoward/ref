@@ -2,13 +2,16 @@
 
 ;; Profile emacs startup
 ;; From: https://github.com/daviwil/dotfiles/blob/master/Emacs.org#startup-performance
-;; https://www.youtube.com/watch?v=bF84mQMmfa8
+;; https://www.youtube.com/watch?v=bF84mQMmfa8 (and comments)
+
+;; commentor says emacs -Q loads with 113 features
 (add-hook 'emacs-startup-hook
           (lambda ()
-            (message "*** Emacs loaded in %s seconds with %d garbage collections."
-                     (emacs-init-time)
-;;                     (emacs-init-time "%.2f") # has no args
-                     gcs-done)))
+            (message "Emacs Loaded in %s: %d garbage collections and %d features loaded."
+           (format "%.2f secs"
+                   (float-time
+                    (time-subtract after-init-time before-init-time)))
+           gcs-done (length features))))
 
 (require 'server) ; so file association works on windows and
 (server-start)  ; for emacsclient (emacsclientw on Windows)
