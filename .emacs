@@ -343,6 +343,19 @@ TODO: make this a general function."
 
 ;; * Operating System Interaction
 
+;; ** exec fro Shell (MacOS)
+
+;; Enable environment variables for all package installations.  Recommened by the homebrew emacs-plus emacs@28 package. Causes warnings on Windows, though.
+(if running-MacOS
+    ;; https://github.com/dtan4/dot.emacs.d/blob/master/init.el
+    (use-package exec-path-from-shell
+      :config
+      (if (display-graphic-p)
+          (let ((envs '("PATH" "GOPATH" "GOROOT")))
+            (exec-path-from-shell-initialize)
+            (setq exec-path-from-shell-check-startup-files nil)
+            (exec-path-from-shell-copy-envs envs)))))
+
 ;; ** Shell Mode
 ;; Make up/down arrows search cmd history like tcsh
 (require 'shell)
@@ -1123,88 +1136,6 @@ reuse it's window, otherwise create new one."
   )
 
 ;; * File Finding / Opening
-
-;; ** pdf-tools
-;;
-;; Open and annotate pdfs.  
-;; See demo: http://tuhdo.github.io/static/emacs-read-pdf.gif
-;; Also used by org-roam (I think) and some latex stuff (I think)
-;;
-;; Installation:
-;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
-;; pdf-tools requires libraries (msys2 on Windows) so it can build itself.
-;;
-;; FIRST INSTALL on fresh machine: On Windows, msys2 will download the libraries itself if you answer it's "where is mysys2?" question with: c:/tools/msys64
-;; You can check the install with M-x pdf-info-check-epdinfo
-;;
-;; pdf-tools use-package call inspired by:
-;; http://pragmaticemacs.com/emacs/more-pdf-tools-tweaks/
-;;
-(defun sdo/popdir (dir)
-  "Like unix popd.  Return parent directory of dir."
-  (unless (equal "/" dir)
-    (file-name-directory (directory-file-name dir))))
-
-(if (setq pacbin (sdo/find-exec "pacman" "Need MSYS2 for pdf-tools & more"))
-    (progn
-      (use-package pdf-tools
-        :defer t
-        :config
-        ;; Ensure mingw64 libraries on front of PATH, not other tools' libs
-        ;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
-        (setq msys2dir (sdo/popdir (sdo/popdir (sdo/popdir pacbin))))
-        (setq msys2libdir (expand-file-name "mingw64\\bin" msys2dir))
-        (setenv "PATH" (concat msys2libdir ";" (getenv "PATH")))
-        ;; initialise (will download and build msys2 libs too, I think)
-        (pdf-tools-install)
-        ;; open pdfs scaled to fit page
-        (setq-default pdf-view-display-size 'fit-page)
-        ;; (setq pdf-annot-activate-created-annotations t) ; for annotation text
-        (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
-        (setq pdf-view-resize-factor 1.1)   ; default is 25%
-        ;; Shorter shortcuts than e.g. C-c C-a h. These Work on =mouse= sel.
-        (define-key pdf-view-mode-map (kbd "h")
-          'pdf-annot-add-highlight-markup-annotation)
-        (define-key pdf-view-mode-map (kbd "t")
-          'pdf-annot-add-text-annotation)
-        (define-key pdf-view-mode-map (kbd "u")
-          'pdf-annot-add-underline-markup-annotation)
-        (define-key pdf-view-mode-map (kbd "D")
-          'pdf-annot-delete)
-        ;; Navigation: can also use M-< and M-> like normal
-        (define-key pdf-view-mode-map (kbd "C-<home>") 'pdf-view-first-page)
-        (define-key pdf-view-mode-map (kbd "C-<end>") 'pdf-view-last-page)
-
-        ;; Custom annotation colors: https://github.com/politza/pdf-tools/issues/581#issuecomment-646370370
-        ;; Emacs color pickers: https://emacs.stackexchange.com/questions/5582/are-there-color-pickers-for-emacs
-        ;; Strike out
-        (defun pdftools-strikeout-gray (oldfun loe)
-          (apply oldfun loe '("gray")))
-        (advice-add 'pdf-annot-add-strikeout-markup-annotation :around 
-                    #'pdftools-strikeout-gray)
-        ;; Underline
-        (defun pdftools-underline-purple (oldfun loe)
-          (apply oldfun loe '("#8a1e8a")))
-        (advice-add 'pdf-annot-add-underline-markup-annotation :around 
-                    #'pdftools-underline-purple)
-        ;; Squiggly underline
-        (defun pdftools-squiggly-red (oldfun loe)
-          (apply oldfun loe '("#fe2500")))
-        (advice-add 'pdf-annot-add-squiggly-markup-annotation :around 
-                    #'pdftools-squiggly-red)
-        
-        ;; Default color for text highlight. 
-        ;; This will change the color of the Note.
-        (setq pdf-annot-default-markup-annotation-properties
-              '((color . "green")))
-
-        ;; Default color for text.
-        ;; This will change the color of the Note.
-        (setq pdf-annot-default-text-annotation-properties
-              '((color . "#90ee90")))
-        ))
-  (message "Can't find msys2 not installed so skipping pdf-tools init"))
-
 ;; ** Dired Mode
 ;; *** Generic Dired and Win32 integration
 
@@ -3463,6 +3394,88 @@ TODO: add a cycle that opens or collapses all prop drawers?"
    org-noter-hide-other nil
    ;; everything is relative to the main notes file
    org-noter-notes-search-path (list org_notes_dir)))
+
+;; ** pdf-tools
+;;
+;; Open and annotate pdfs.  
+;; See demo: http://tuhdo.github.io/static/emacs-read-pdf.gif
+;; Also used by org-roam (I think) and some latex stuff (I think)
+;;
+;; Installation:
+;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
+;; pdf-tools requires libraries (msys2 on Windows) so it can build itself.
+;;
+;; FIRST INSTALL on fresh machine: On Windows, msys2 will download the libraries itself if you answer it's "where is mysys2?" question with: c:/tools/msys64
+;; You can check the install with M-x pdf-info-check-epdinfo
+;;
+;; pdf-tools use-package call inspired by:
+;; http://pragmaticemacs.com/emacs/more-pdf-tools-tweaks/
+;;
+(defun sdo/popdir (dir)
+  "Like unix popd.  Return parent directory of dir."
+  (unless (equal "/" dir)
+    (file-name-directory (directory-file-name dir))))
+
+(if (setq pacbin (sdo/find-exec "pacman" "Need MSYS2 for pdf-tools & more"))
+    (progn
+      (use-package pdf-tools
+        :defer t
+        :config
+        ;; Ensure mingw64 libraries on front of PATH, not other tools' libs
+        ;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
+        (setq msys2dir (sdo/popdir (sdo/popdir (sdo/popdir pacbin))))
+        (setq msys2libdir (expand-file-name "mingw64\\bin" msys2dir))
+        (setenv "PATH" (concat msys2libdir ";" (getenv "PATH")))
+        ;; initialise (will download and build msys2 libs too, I think)
+        (pdf-tools-install)
+        ;; open pdfs scaled to fit page
+        (setq-default pdf-view-display-size 'fit-page)
+        ;; (setq pdf-annot-activate-created-annotations t) ; for annotation text
+        (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+        (setq pdf-view-resize-factor 1.1)   ; default is 25%
+        ;; Shorter shortcuts than e.g. C-c C-a h. These Work on =mouse= sel.
+        (define-key pdf-view-mode-map (kbd "h")
+          'pdf-annot-add-highlight-markup-annotation)
+        (define-key pdf-view-mode-map (kbd "t")
+          'pdf-annot-add-text-annotation)
+        (define-key pdf-view-mode-map (kbd "u")
+          'pdf-annot-add-underline-markup-annotation)
+        (define-key pdf-view-mode-map (kbd "D")
+          'pdf-annot-delete)
+        ;; Navigation: can also use M-< and M-> like normal
+        (define-key pdf-view-mode-map (kbd "C-<home>") 'pdf-view-first-page)
+        (define-key pdf-view-mode-map (kbd "C-<end>") 'pdf-view-last-page)
+
+        ;; Custom annotation colors: https://github.com/politza/pdf-tools/issues/581#issuecomment-646370370
+        ;; Emacs color pickers: https://emacs.stackexchange.com/questions/5582/are-there-color-pickers-for-emacs
+        ;; Strike out
+        (defun pdftools-strikeout-gray (oldfun loe)
+          (apply oldfun loe '("gray")))
+        (advice-add 'pdf-annot-add-strikeout-markup-annotation :around 
+                    #'pdftools-strikeout-gray)
+        ;; Underline
+        (defun pdftools-underline-purple (oldfun loe)
+          (apply oldfun loe '("#8a1e8a")))
+        (advice-add 'pdf-annot-add-underline-markup-annotation :around 
+                    #'pdftools-underline-purple)
+        ;; Squiggly underline
+        (defun pdftools-squiggly-red (oldfun loe)
+          (apply oldfun loe '("#fe2500")))
+        (advice-add 'pdf-annot-add-squiggly-markup-annotation :around 
+                    #'pdftools-squiggly-red)
+        
+        ;; Default color for text highlight. 
+        ;; This will change the color of the Note.
+        (setq pdf-annot-default-markup-annotation-properties
+              '((color . "green")))
+
+        ;; Default color for text.
+        ;; This will change the color of the Note.
+        (setq pdf-annot-default-text-annotation-properties
+              '((color . "#90ee90")))
+        ))
+  (message "Can't find msys2 not installed so skipping pdf-tools init"))
+
 
 ;; * Writing Tools
 ;; ** General Editing
