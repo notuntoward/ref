@@ -3247,6 +3247,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar)
   (citar-at-point-function 'embark-act)
+  (citar-file-open-function 'citar-file-open-external)
   :init
   (citar-filenotify-setup '(LaTeX-mode-hook org-mode-hook)))
 
