@@ -3216,35 +3216,18 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 (use-package citar
   :straight (:host github :repo "bdarcus/citar")
   :bind (("C-c b" . citar-insert-citation)
+         ;; also  C-c C-x C-@
+         (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
          :map minibuffer-local-map
          ("M-b" . citar-insert-preset))
   :custom
-  
   (citar-bibliography '("~/ref/energy.bib"
                         "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
   (citar-library-paths '("~/ref/papers"
-                         "~/ref/DOE_brainstorm/papers")))
-
-;; use consult-completing-read for enhanced interface
-;; From: https://github.com/bdarcus/citar
-(with-eval-after-load 'embark
-  (advice-add #'completing-read-multiple :override
-              #'consult-completing-read-multiple))
-
-;; org native citations
-;; From: https://github.com/bdarcus/citar
-(use-package citar-org
-  :no-require
-  :ensure nil
-  ; citar-org is in citar: https://github.com/bdarcus/citar/issues/380
-  :straight citar  
-  :config
+                         "~/ref/DOE_brainstorm/papers"))
   ;; so citar can open JabRef-style file fields
   (setq citar-file-parser-functions '(citar-file-parser-default
                                       citar-file-parser-triplet))
-  :bind
-  (:map org-mode-map :package org ("C-c b" . #'org-cite-insert)) ; also  C-c C-x C-@
-  :custom
   (org-cite-global-bibliography '("~/ref/energy.bib"
                                   "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
 
@@ -3257,6 +3240,12 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;; if .bib file changes, "invalidate the cache by default".  Is that good?
   ;; https://github.com/bdarcus/citar#refreshing-the-library-display
   (citar-filenotify-setup '(LaTeX-mode-hook org-mode-hook)))
+
+;; use consult-completing-read for enhanced interface
+;; From: https://github.com/bdarcus/citar
+(with-eval-after-load 'embark
+  (advice-add #'completing-read-multiple :override
+              #'consult-completing-read-multiple))
 
 ;; ** Org-ref
 
