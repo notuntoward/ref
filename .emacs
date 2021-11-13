@@ -2592,8 +2592,6 @@ folder, otherwise delete a word"
  '(mouse-wheel-tilt-scroll t)
  '(neo-reset-size-on-open t)
  '(neo-window-fixed-size nil)
- '(org-agenda-files
-   '("c:/Users/scott/OneDrive/share/proj/roadmapFrcst/forecast_roadmap.org" "c:/Users/scott/OneDrivef/energytop.org" "c:/Users/scott/OneDrive/ref/DOE_brainstorm/20200605152244-test0.org" "c:/Users/scott/OneDrive/ref/tmp.org"))
  '(org-confirm-shell-links 'y-or-n-p)
  '(org-ctrl-k-protect-subtree 'error)
  '(org-cycle-include-plain-lists 'integrate)
@@ -3216,13 +3214,16 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; Generic native citations (for latex files, I suppose)
 ;; From: https://github.com/bdarcus/citar
 (use-package citar
-;;  :defer t
+  :straight (:host github :repo "bdarcus/citar")
   :bind (("C-c b" . citar-insert-citation)
          :map minibuffer-local-map
          ("M-b" . citar-insert-preset))
   :custom
-  (citar-bibliography '("~/OneDrive/share/ref/energy.bib"))
-  (citar-library-paths '("~/OneDrive/share/ref/papers")))
+  
+  (citar-bibliography '("~/ref/energy.bib"
+                        "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
+  (citar-library-paths '("~/ref/papers"
+                         "~/ref/DOE_brainstorm/papers")))
 
 ;; use consult-completing-read for enhanced interface
 ;; From: https://github.com/bdarcus/citar
@@ -3237,17 +3238,24 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   :ensure nil
   ; citar-org is in citar: https://github.com/bdarcus/citar/issues/380
   :straight citar  
+  :config
+  ;; so citar can open JabRef-style file fields
+  (setq citar-file-parser-functions '(citar-file-parser-default
+                                      citar-file-parser-triplet))
   :bind
- :bind
   (:map org-mode-map :package org ("C-c b" . #'org-cite-insert)) ; also  C-c C-x C-@
   :custom
-  (org-cite-global-bibliography '("~/OneDrive/share/ref/energy.bib"))
+  (org-cite-global-bibliography '("~/ref/energy.bib"
+                                  "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
+
   (org-cite-insert-processor 'citar)
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar)
-  (citar-at-point-function 'embark-act)
+  (citar-at-point-function 'embark-act) ;; not strictly necessary
   (citar-file-open-function 'citar-file-open-external)
   :init
+  ;; if .bib file changes, "invalidate the cache by default".  Is that good?
+  ;; https://github.com/bdarcus/citar#refreshing-the-library-display
   (citar-filenotify-setup '(LaTeX-mode-hook org-mode-hook)))
 
 ;; ** Org-ref
