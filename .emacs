@@ -2625,6 +2625,7 @@ folder, otherwise delete a word"
  '(org-table-header-line-p t)
  '(org-use-speed-commands t)
  '(org-yank-adjusted-subtrees t)
+ '(org-odd-levels-only t)
  '(package-check-signature 'allow-unsigned)
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
@@ -3208,11 +3209,8 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; Pastes biblio summary of Zotero entries in org-mode, connects to org-noter
 (use-package zotxt :after org)
 
-;; ** Org-cite (native)
-;; For the native cites in org-mode 9.5+
+;; ** Org-cite (native in org 9.5+)
 
-;; Generic native citations (for latex files, I suppose)
-;; From: https://github.com/bdarcus/citar
 (use-package citar
   :straight (:host github :repo "bdarcus/citar")
   :bind (("C-c b" . citar-insert-citation)
@@ -3221,6 +3219,9 @@ TODO: add a cycle that opens or collapses all prop drawers?"
          :map minibuffer-local-map
          ("M-b" . citar-insert-preset))
   :custom
+  ;; https://github.com/bdarcus/citar/issues/407#issuecomment-968158550
+  (org-cite-global-bibliography '("~/ref/energy.bib"
+                                  "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
   (citar-bibliography '("~/ref/energy.bib"
                         "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
   (citar-library-paths '("~/ref/papers"
@@ -3228,14 +3229,14 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;; so citar can open JabRef-style file fields
   (setq citar-file-parser-functions '(citar-file-parser-default
                                       citar-file-parser-triplet))
-  (org-cite-global-bibliography '("~/ref/energy.bib"
-                                  "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
-
   (org-cite-insert-processor 'citar)
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar)
-  (citar-at-point-function 'embark-act) ;; not strictly necessary
+  (citar-at-point-function 'embark-act) ; So more C-o options than file list
   (citar-file-open-function 'citar-file-open-external)
+
+ (citar-open-note-function 'orb-citar-edit-note) ; default, I think
+  ;; (citar-open-note-function 'orb-bibtex-actions-edit-note') ; OR
   :init
   ;; if .bib file changes, "invalidate the cache by default".  Is that good?
   ;; https://github.com/bdarcus/citar#refreshing-the-library-display
@@ -3317,7 +3318,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   :init
   (setq org-roam-v2-ack t)
   ;; set this here instead of in :custom so it can be used during init
-  (setq org-roam-directory (file-truename "~/tmp"))
+  (setq org-roam-directory (file-truename "~/tmp/bibNotesOR"))
   ;; from: https://www.orgroam.com/manual.html
   (setq org-roam-dailies-directory (expand-file-name "daily"
                                                      org-roam-directory))
