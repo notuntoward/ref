@@ -282,10 +282,6 @@ DISPLAY is a display name, frame or terminal, as in
     (set-face-attribute 'fixed-pitch nil :family "Consolas" :height 1.0)
     (set-face-attribute 'variable-pitch nil :family "Georgia" :height 1.0)))
 
-;; org v9.5 cache problem remained after I commented it out, so just let it run
-;;(set-default-font-per-screen) ; run it on startup (don't need w/ display hook)
-
-;; ---- SEEMS OK turn off for org cache test ----------------------
 (defun my-display-changed-hook (disp)
   (set-default-font-per-screen)
   (message "Changed to display of size %s" disp)) ;; not that useful w/o DPI change
@@ -297,7 +293,6 @@ DISPLAY is a display name, frame or terminal, as in
 
 (add-hook 'after-init-hook #'set-default-font-per-screen)
 (add-hook 'after-make-frame-functions #'set-default-font-per-screen)
-;; ---- end turn off for org cache test ----------------------
 
 (defun calcDivNpix ()
   "Computes # pix for window divider based on screen DPI.
@@ -328,7 +323,18 @@ TODO: make this a general function."
       ;; setq said to best best way, even though this is customizable
       (setq window-divider-default-right-width nPixDiv)
       ;; bottom hard to mouse on SP; hack is to add a pixel (TODO: improve)
-      (setq window-divider-default-bottom-width (+ nPixDiv 1)))
+      (setq window-divider-default-bottom-width (+ nPixDiv 1))
+
+      ;; this has no effect
+      ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Scroll-Bars.html
+      ;; (add-hook 'after-make-frame-functions
+      ;;           (lambda (frame)
+      ;;             (set-window-scroll-bars
+      ;;              (minibuffer-window frame) 0 nil 0 nil t)
+      ;;             (set-window-fringes
+      ;;              (minibuffer-window frame) 0 0 nil t)))
+
+      )
   (progn
     ;; on a term or cmdshell:
     (menu-bar-mode -1) ;menubar off when on an xterm (xemacs does automatically)
@@ -2823,12 +2829,13 @@ folder, otherwise delete a word"
       bibfile_energy_pdf_dir (expand-file-name "papers" docDir)
       bibfile_energytop_fnm (expand-file-name "energytop.bib" docDir))
 
+(setq org_roam_dir "~/OneDrive/share/ref/tmp_org_roam_test")
+
 (if t
     (progn
       (message "Old org/bib init with playground org-roam or DOE brainstorm")
       (setq
-       org_roam_dir (expand-file-name "DOE_brainstorm" docDir)
-;;       org_roam_dir (expand-file-name "C:/Users/scott/tmp/bibNotesOR")
+;;       org_roam_dir (expand-file-name "DOE_brainstorm" docDir)
        org_notes_dir (expand-file-name "org-notes" org_roam_dir)
        bibfile_roam_fnms (list (expand-file-name
                                 "deepSolarDOE.bib" org_roam_dir)
@@ -2920,7 +2927,6 @@ folder, otherwise delete a word"
   ;; only works w/ "org-superstar-mode: but see like it s/b just "org-superstar"
   :hook (org-mode . org-superstar-mode))
 
-;; --- SEEMS OK is this messing up org cache?----------------------------------
 ;; Show hidden emphasis markers e.g.* in *bold*.  So can see where cursor is.
 (use-package org-appear
   :custom
@@ -2930,7 +2936,6 @@ folder, otherwise delete a word"
   (org-appear-autosubmarkers t)
   (org-appear-delay 1)
   :hook (org-mode . org-appear-mode))
-;; --- is this messing up org cache?----------------------------------
 
 (with-eval-after-load 'org
   ;; ;; From: https://emacs.stackexchange.com/a/41705/14273
@@ -3181,7 +3186,8 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; ** Org Export
 
-(use-package ox-minutes :after org) ; nice(er) ascii export, but slow start
+;; doesn't work w/ latest org, last updated in 2018
+;; (use-package ox-minutes :after org) ; nice(er) ascii export, but slow start
 
 ;; Pandoc helper for org export
 (when (sdo/find-exec "pandoc" "Needed for org-mode export to .docx, etc.")
@@ -3234,13 +3240,16 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   (org-cite-activate-processor 'citar)
   (citar-at-point-function 'embark-act) ; So more C-o options than file list
   (citar-file-open-function 'citar-file-open-external)
-
- (citar-open-note-function 'orb-citar-edit-note) ; default, I think
+  (citar-open-note-function 'orb-citar-edit-note) ; default, I think
   ;; (citar-open-note-function 'orb-bibtex-actions-edit-note') ; OR
   :init
   ;; if .bib file changes, "invalidate the cache by default".  Is that good?
   ;; https://github.com/bdarcus/citar#refreshing-the-library-display
-  (citar-filenotify-setup '(LaTeX-mode-hook org-mode-hook)))
+  (citar-filenotify-setup '(LaTeX-mode-hook org-mode-hook))
+  :config
+  ;; this is supposed to pick up styles, like IEEE but doesn't
+  ;; (setq org-cite-csl-styles-dir "~/Zotero/styles") ;; hangs org on startup
+  )
 
 ;; use consult-completing-read for enhanced interface
 ;; From: https://github.com/bdarcus/citar
@@ -3318,8 +3327,9 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   :init
   (setq org-roam-v2-ack t)
   ;; set this here instead of in :custom so it can be used during init
-  (setq org-roam-directory (file-truename "~/tmp/bibNotesOR"))
-  ;; from: https://www.orgroam.com/manual.html
+;;  (setq org-roam-directory (file-truename "~/tmp/bibNotesOR"))
+  (setq org-roam-directory (file-truename org_roam_dir))
+  ;; from: https://www.orgroam.com/manual.html=
   (setq org-roam-dailies-directory (expand-file-name "daily"
                                                      org-roam-directory))
   (setq org-roam-dailies-capture-templates
