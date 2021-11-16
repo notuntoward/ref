@@ -1445,12 +1445,12 @@
       The built in org-mode citation processor, starting with org mode 9.5
 
 ******* [[https://orgmode.org/org.html#Citation-handling][The Org Manual: Citation-handling]]
-******* [[https://org-roam.discourse.group/t/what-do-you-think-about-org-ref-v3/2133/16][What do you think about org-ref V3? - #16 by mshevchuk]]
 ******* prettier cite rendering: links w/ paper title, etc.
 ********* [[https://github.com/andras-simonyi/org-cite-csl-activate][GitHub - andras-simonyi/org-cite-csl-activate: A CSL-based activation process...]]
 ********* bdarcus's answer to my question about it is [[https://org-roam.discourse.group/t/all-about-the-upcoming-org-cite-feature/1600/27?u=scotto][here]]
 
 ******* Eric S. Fraga's question/answer on 10/20/21
+
 
 Config that eventually worked for him
             
@@ -1497,11 +1497,24 @@ eric
 ******* exporting org-cites to pandoc
 ********* citeproc author [[https://www.reddit.com/r/emacs/comments/oiljph/comment/h4wztn4/?utm_source=share&utm_medium=web2x&context=3][expects]] pandoc to support it
 ********* The pandoc ticket for this: [[https://github.com/jgm/pandoc/issues/7329][#7329]]
-******* org-mode cite link follower
+******* <<citar>>
+org-mode cite link follower
 ********* works in plain org 9.5: "jump to bib entry by clicking ref link" 
 ********* bib entry search, like what org-ref helm thing dis
 *********** [[https://github.com/bdarcus/citar][citar: quickly find and act on BibTeX, BibL...]]
-*********** it wants embark, etc.
+*********** it works best w/ embark, etc.
+********* setting up citar to open org ref notes on a bibitem
+*********  <<citar and zotero>>
+*********** [[https://blog.tecosaur.com/tmio/2021-07-31-citations.html#working-with-zotero][Working with Zotero, July 2021]]
+*********** citar can use zotero bibtex styles
+
+They're [[https://www.zotero.org/support/zotero_data][in]] ~\Zotero\styles.  To use them, add this to citar use-package():
+
+
+(setq org-cite-csl-styles-dir "~/Zotero/styles")
+
+
+******* [[https://org-roam.discourse.group/t/what-do-you-think-about-org-ref-v3/2133/16][What do you think about org-ref V3? - #16 by mshevchuk]]
 ***** <<org-ref>>
 ******* [[https://github.com/jkitchin/org-ref/commits/master]["release notes"]]
 ******* TODO better install
@@ -1571,6 +1584,7 @@ eric
 ******* [[org-mode native citaton support]] (not ready yet in May 2020)
 ******* [[org-roam workflow with Zotero, org-ref, org-noter, deft]]
 ******* [[Zotero + org-ref]]
+******* [[citar and zotero]]
 ******* [[org-mode native citaton support]] (possibly w/ new built-in [[org-ref]] mode)
 ***** [[https://www.gnu.org/software/emacs/manual/html_node/org/Previewing-LaTeX-fragments.html][Previewing LaTeX fragments]]
       Can do it with commands in org text:
@@ -1693,7 +1707,7 @@ eric
 ******* <<Org-mode interface to trello>>: [[https://github.com/org-trello/org-trello][org-trello]]
 ******* [[https://orgmode.org/worg/org-tools/index.html][Org Mode tools!]]
 ********* [[org-mode parsers in Python]]
-***** Hiding/Closing org :PROPERTIES: drawer
+***** <<Hiding/Closing org :PROPERTIES: drawer>>
 ******* completely hiding them
         
 ********* [[https://stackoverflow.com/a/17492723/2591097][Completely hide the :PROPERTIES: drawer in org-mode]]
@@ -1711,6 +1725,7 @@ eric
           
 *********** JeffBrown [[https://org-roam.discourse.group/t/org-roam-major-redesign/1198/56?u=scotto][says it works]], but wants a toggle (like I do)
 *********** might be slow w/ lots of headlines, says author
+******* TRY write fringe indicator for [[https://github.com/org-roam/org-roam/wiki/Hitchhiker's-Rough-Guide-to-Org-roam-V2#hiding-properties][hidden property drawers]]
 ******* cycle drawer visibility using builtin (doesn't work)
 
         This doesn't seem to change normal emacs behavior
@@ -2012,11 +2027,10 @@ eric
 *********** seems standard [[https://github.com/org-roam/org-roam-bibtex#important-news][org-roam-bibtex will be v2 compatible on July 3]]?  What about org-roam itself?
 *********** what to [[https://org-roam.discourse.group/t/org-roam-bibtex-for-org-roam-v2/1574/9?u=scotto][remove org-roam-hook]] since OR isn't a mode anymore
 ********* TRY navigating nodes by graph
-********* TRY add quelpa/straight OR v2 install to wiki
-********* TRY ask about need for sqlite: will sqlite3 just work now?
 ********* TRY the OR variables [[https://github.com/jethrokuan/dots/blob/6149a2378806656a5a195e3873f81c2c1456f650/.doom.d/config.el#L323-L329][here]], also the capture templates below it
 *********** a [[https://org-roam.discourse.group/t/org-roam-major-redesign/1198/107?u=scotto][terse hint]] of what sections are
 *********** a ton of [[https://codeberg.org/jeyj0/dotfiles/src/branch/main/.config/home-manager/parts/emacs/emacs.el#L209][OR V2 capture templates]] from this [[https://org-roam.discourse.group/t/org-roam-major-redesign/1198/226?u=scotto][guy]]
+*********** [[https://www.youtube.com/watch?v=CUkuyW6hr18][5 Org Roam Hacks for Better Productivity in Emacs - YouTube]]
 ********* TRY bug report on headline/note graph render: no heirarchy in headlines (didn't Jethro say there would be?).  Jethro [[https://org-roam.discourse.group/t/org-roam-major-redesign/1198][says]]:
 
             Nodes link to other nodes using ID links. Nodes also have
@@ -2050,8 +2064,7 @@ eric
 ********* TRY get org-roam-completion-everywhere to work
 *********** [[https://codeberg.org/jeyj0/dotfiles/src/branch/main/.config/home-manager/parts/emacs/emacs.el#L209][example .emacs]]
 *********** [[https://org-roam.discourse.group/t/fuzzy-completion-at-point/1715][Fuzzy completion-at-point - Troubleshooting - Org-roam]]
-********* TRY write fringe indicator for [[https://github.com/org-roam/org-roam/wiki/Hitchhiker's-Rough-Guide-to-Org-roam-V2#hiding-properties][hidden property drawers]]
-********* TRY how to I know when the v2 respository is updated?
+********* ACCEPTED how to I know when the v2 respository is updated?
 ********* TRY [[https://org-roam.discourse.group/t/org-roam-major-redesign/1198/134?u=scotto][sidebar org-roam-buffer]]
 ********* TRY mouse click on OR link goes to link: [[https://org-roam.discourse.group/t/org-roam-major-redesign/1198/152][here]]
 ********* TRY [[https://org-roam.discourse.group/t/org-roam-major-redesign/1198/181?u=scotto][selectrum/embark keymappings]]
@@ -2060,6 +2073,8 @@ eric
 ********* ACCEPTED update property hiding function docs ([[https://org-roam.discourse.group/t/org-roam-major-redesign/1198/175?u=scotto][discourse]] and [[https://github.com/org-roam/org-roam/wiki/Hitchhiker's-Rough-Guide-to-Org-roam-V2#hiding-properties][wiki]])
 ********* ACCEPTED does OR and everything else work after paradox melpa update?
           Yes
+********* ACCEPTED add quelpa/straight OR v2 install to wiki
+********* ACCEPTED ask about need for sqlite: will sqlite3 just work now?
 ******* org-roam v1 to v2 migration
 ********* [[https://d12frosted.io/posts/2021-06-11-path-to-org-roam-v2.html][Path to org-roam v2]] (vupela, dl12frosted, lots of elisp)
 ******* <<org-roam v2 note segregation: dir/tag/filename>>
@@ -2073,6 +2088,14 @@ eric
 ************* use [[https://org-roam.discourse.group/t/implementing-hierarchies-namespaces-in-org-roam-v2/1504/16?u=scotto][templates to put refs in separate directory]]
 ************* bibtex reference notes [[https://github.com/org-roam/org-roam-bibtex/blob/master/doc/orb-manual.org#handling-long-templates][stored in dir spec'ed in capture template]]
 *********** separate work from home
+************ home/work symlink and selective cloud sync
+             From: [[https://org-roam.discourse.group/t/way-to-exclude-personal-notes-on-my-work-computer-using-git/2209/2?u=scotto][exclude personal notes on my work computer - #2 by nobiot]]
+
+Have sub folders personal and work, symlinked to different folders. Sync only work folder to work machines.
+
+             Seems better/simpler than [[separate home/work DBs]].  I'd just keep the reference DB in my "share" directory; make a new one for personal stuff.
+             
+************ <<separate home/work DBs>> (works in V2?)
             From: [[https://org-roam.discourse.group/t/multiple-root-directories/1368/5][Multiple Root directories - #5 by edgimar - Development - Org-roam]]
 
           
@@ -2105,8 +2128,23 @@ eric
 ********* showing tags in search results, direct querying DB for tags...
           From: [[https://systemcrafters.net/live-streams/september-03-2021/][System Crafters Live! - September 3, 2021 - System Crafters]]
 ********* [[https://org-roam.discourse.group/t/using-consult-ripgrep-with-org-roam-for-searching-notes/1226][bms/org-roam-rg-search()]]: very nice, still a wip, so check thread end
+******* [[https://www.youtube.com/watch?v=CUkuyW6hr18][5 Org Roam Hacks for Better Productivity in Emacs - YouTube]]
+******* controlling and limiting property drawers
+******** avoid creating property drawers in the 1st place
+
+From: [[https://org-roam.discourse.group/t/control-over-headings-turning-into-nodes/2217/2][Control over headings turning into nodes]]         
+
+Turn this off, I think:
+
+org-id-link-to-org-use-id
+
+******** [[Hiding/Closing org :PROPERTIES: drawer]]
+
 ******* renaming OR note filename if #title changes: [[https://org-roam.discourse.group/t/does-renaming-title-no-longer-renames-the-filename/2018/3?u=scotto][arozbiz code]]
 ******* [[preventing an OR v2 node for each org-noter annotation]]
+
+See: [[https://github.com/bdarcus/citar#notes][GitHub - bdarcus/citar: Emacs package to quickly find and act on BibTeX, BibL...]]
+
 ******* tidying up org-roam rendering
 ********* 3 posts, starting [[https://org-roam.discourse.group/t/turn-off-the-bright-meta/2174/2?u=scotto][here]]
 ***** Intro, basic org-roam info
@@ -2634,7 +2672,7 @@ eric
 ***** [[Knowledge as Graphs]]
 ***** [[Knowledge Graphs in Emacs]]
 
-*** Ivy 
+*** <<Ivy/Swiper/Counsel>>
      From: [[https://www.youtube.com/watch?v=QcPenVmmQyM][Emacs: Ivy tips and tricks]]
      also seee: https://protesilaos.com/dotemacs/
 
@@ -2646,6 +2684,13 @@ eric
 ****** ivy-occur
 ****** ivy-rich (more info about emacs commands, AMX)
 ****** ivy-posframe: lists you put frame in different places
+****** also [[Vertico & Co faces to match w/ Ivy & Co faces]]
+****** also [[Vertico/Selectrum/Consult/Orca/Marginalia]]
+*** <<Vertico/Selectrum/Consult/Orca/Marginalia>>
+***** <<Vertico & Co faces to match w/ Ivy & Co faces>>
+
+
+***** also [[Ivy/Swiper/Counsel]]
 *** Viewing pdfs in Emacs
 ***** [[https://youtu.be/LFO2UbzbZhA?t=360][DocViewer works in plain emacs]] (probably Linux, though)
 ***** [[Viewing pdfs in Windows Emacs]]
@@ -4316,6 +4361,19 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
            The venv file for for tensorflow (on my SP4) is:
 
            c:/Users/scotto/Anaconda3/envs/tensorflow/
+
+********* install conda packages from conda-forge instead of anaconda
+
+          So that
+
+            conda install <package>          
+
+          tries hardest to install from conda-forge 
+
+            conda config --add channels conda-forge
+            conda config --set channel_priority strict
+
+          This is recommended [[https://youtu.be/Kqsk-siz9QA?list=PLsT4-aZA6_bg4Ol1XfzTKcnQ_ctzdXpxH&t=823][here]] so that packages are more likely to be installed without conflicts.  For the same reason, guy also recommends miniconda instead of full anaconda (fewer packages overall, and most will come from conda-forge).
 
 ********* general: [[python conda environments]]
 ******* <<pyenv in emacs>>
@@ -11464,7 +11522,7 @@ file_name.parent.mkdir(parents=True, exist_ok=True)
 ***** debuggers
 ******* [[https://medium.com/analytics-vidhya/cyberbrain-python-debugging-redefined-1db4c47a4d32][Cyberbrain: Python debugging, redefine]]: variable dependency graphs & more
         
-        Runs in VSCode only for now.  Can install within built-in VSC marketplace, or like so:
+        Runs in [[Vscode]] only for now.  Can install within built-in VSC marketplace, or like so:
 
         pip install cyberbrain
         code --install-extension laike9m.cyberbrain
@@ -11924,6 +11982,10 @@ else:
 
         However, as of Aug 2019, I couldn't get this to work.
  
+***** <<vscode>>
+******* shrinking vscode vertical blank space
+********* [[https://github.com/microsoft/vscode/issues/130287][Controlling vertical space between output elements]]
+********* [[https://github.com/microsoft/vscode-jupyter/issues/6024][Option to hide toolbars above cells / move them...]]
 *** Python Package installation
 ***** XGboost on Windows
       Hard to find on Windows.  Almost everything is on linux.  But this seems to work:
@@ -13539,6 +13601,13 @@ HOWEVER, the pen annotations are horrible.  Just like the old acroread.
     brew services start postgresql
     psql postgres
 
+*** show hidden file in MacOS finder
+
+   In finder type 
+
+     Command + shift + . (laptop keyboard)
+     Alt     + shfit + . (external windows keyboard)
+
 *** Killing a MacOS task
     1.) kill -9 in a terminal -- work OK for almost everything
     2.) Command+Option+Escape, choose process, kill it
@@ -13769,6 +13838,7 @@ But I would like it better if there was no export merge step.  Export is kind-of
 *************** [[https://richardzach.org/2019/02/09/bibtex-friendly-pdf-management-with-zotero/][BibTeX-friendly PDF management with Zotero]]
 *************** [[https://www.researchgate.net/publication/325828616_Tutorial_The_Best_Reference_Manager_Setup_Zotero_ZotFile_Cloud_Storage/comments][The Best Reference Manager Setup (Zotero + ZotFile + Cloud St...]]
 
+********* [[citar and zotero]]
 ******* <<BetterBibtex>>: citekeys, char encoding... 
 
           /On export/, names [[https://retorque.re/zotero-better-bibtex/citing/][citkeys like the JabRef]] automatic key generator.  If you reimport them, they are preserved inside of Zotero -- it "pins" them so they aren't changed (can see this in the Zotero info pane).  If you want to make your own citekey, do this.  In additon, you can [[rename pdfs to bibtex key with zotfile]]
@@ -14652,7 +14722,7 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ******* latest version: late 2016
 ******* [[http://yed.yworks.com/support/qa/306/how-i-can-configure-proxy-for-yed][configuring yEd for proxy]] (needed for some things)
 ***** <<comato>>: R library for Concept maps:
-      From:  [[https://cran.r-project.org/web/packages/comato/index.html][comato]]
+      From: [[https://cran.r-project.org/web/packages/comato/index.html][comato]]
 ******* several file formats, including [[yEd]] (see manual)
 ******* plotting function does a few layout styles
 ******* a bunch of graph [[https://rdrr.io/cran/comato/][analysis functions]], some of which I think are in [[yEd]]
