@@ -146,6 +146,11 @@
            (setq browse-url-browser-function (quote browse-url-generic))
            (setq browse-url-generic-program "google-chrome")))
 
+(defun sdo/popdir (dir)
+  "Like unix popd.  Return parent directory of dir."
+  (unless (equal "/" dir)
+    (file-name-directory (directory-file-name dir))))
+
 (if running-ms-windows  ; more windows setup is also later in .emacs
     (progn 
       ;;Try to match winxp minimize command (also matches works in Gnome?)
@@ -156,7 +161,17 @@
       (global-set-key (kbd "<apps>") 'execute-extended-command)
       (global-set-key [C-f11] 'powershell) ; native shell
       (setq w32-use-w32-font-dialog nil)
-      (setq os-which-cmd "where")))
+      (setq os-which-cmd "where")
+      (if (setq pacbin-windows (sdo/find-exec
+                       "pacman" "Windows needs MSYS2 for pdf-tools & more"))
+          (progn 
+            ;; Ensure mingw64 libraries on front of PATH, not other tools' libs
+            ;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
+            (setq msys2dir (sdo/popdir
+                            (sdo/popdir (sdo/popdir pacbin-windows))))
+            (setq msys2libdir (expand-file-name "mingw64\\bin" msys2dir))
+            (setenv "PATH" (concat msys2libdir ";" (getenv "PATH"))))
+        (message "Can't find msys2 on Windows so skipping pdf-tools init"))))
 
 ;; ** Individual Computer-dependent settings
 
@@ -3241,6 +3256,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   (citar-at-point-function 'embark-act) ; So more C-o options than file list
   (citar-file-open-function 'citar-file-open-external)
   (citar-open-note-function 'orb-citar-edit-note) ; default, I think
+  ;; (citar-file-find-additional-files t) ; finds pdfs... w/ same start as key
   ;; (citar-open-note-function 'orb-bibtex-actions-edit-note') ; OR
   :init
   ;; if .bib file changes, "invalidate the cache by default".  Is that good?
@@ -3295,64 +3311,64 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; ** v2 Org-Roam
 
-;; TODO: :custom (org-id-method 'ts) doesn't work
-;;       https://org-roam.discourse.group/t/org-roam-major-redesign/1198/28
-;; TIPS
-;; add org-id to headline: org-id-copy
+;; ;; TODO: :custom (org-id-method 'ts) doesn't work
+;; ;;       https://org-roam.discourse.group/t/org-roam-major-redesign/1198/28
+;; ;; TIPS
+;; ;; add org-id to headline: org-id-copy
 
-;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
-;; several startup org-roams, also initializing org-roam-bibtex 
-(use-package org-roam
-  ;;  :straight t
-  ;; calling one of these commands will initialize Org-roam and ORB
-  :commands (org-roam-node-find org-roam-graph org-roam-capture
-                                org-roam-dailies-capture-today org-roam-buffer-toggle)
-  :custom
-  (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
-  (org-id-method 'ts)
-  ;; comment out unless specifically want to use ivy
-  ;;  (org-roam-completion-system 'ivy)
+;; ;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
+;; ;; several startup org-roams, also initializing org-roam-bibtex 
+;; (use-package org-roam
+;;   ;;  :straight t
+;;   ;; calling one of these commands will initialize Org-roam and ORB
+;;   :commands (org-roam-node-find org-roam-graph org-roam-capture
+;;                                 org-roam-dailies-capture-today org-roam-buffer-toggle)
+;;   :custom
+;;   (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
+;;   (org-id-method 'ts)
+;;   ;; comment out unless specifically want to use ivy
+;;   ;;  (org-roam-completion-system 'ivy)
 
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert)
-         ("C-c n g" . org-roam-graph)
-         ("C-c n h" . org-roam-capture)
-         ([mouse-1] . org-roam-visit-thing)
-         ;; may not exist aymore
-         ("C-c n j" . org-roam-dailies-capture-today)
-         :map org-mode-map
-         ("C-M-i" . completion-at-point))
+;;   :bind (("C-c n l" . org-roam-buffer-toggle)
+;;          ("C-c n f" . org-roam-node-find)
+;;          ("C-c n i" . org-roam-node-insert)
+;;          ("C-c n g" . org-roam-graph)
+;;          ("C-c n h" . org-roam-capture)
+;;          ([mouse-1] . org-roam-visit-thing)
+;;          ;; may not exist aymore
+;;          ("C-c n j" . org-roam-dailies-capture-today)
+;;          :map org-mode-map
+;;          ("C-M-i" . completion-at-point))
  
-  :init
-  (setq org-roam-v2-ack t)
-  ;; set this here instead of in :custom so it can be used during init
-;;  (setq org-roam-directory (file-truename "~/tmp/bibNotesOR"))
-  (setq org-roam-directory (file-truename org_roam_dir))
-  ;; from: https://www.orgroam.com/manual.html=
-  (setq org-roam-dailies-directory (expand-file-name "daily"
-                                                     org-roam-directory))
-  (setq org-roam-dailies-capture-templates
-        '(("d" "default" entry
-           "* %?"
-           :target (file+head "%<%Y-%m-%d>.org"
-                              "#+title: %<%Y-%m-%d>\n"))))
-  :config
-  (org-roam-db-autosync-mode)
-  ;; If using org-roam-protocol
-  (require 'org-roam-protocol))
+;;   :init
+;;   (setq org-roam-v2-ack t)
+;;   ;; set this here instead of in :custom so it can be used during init
+;; ;;  (setq org-roam-directory (file-truename "~/tmp/bibNotesOR"))
+;;   (setq org-roam-directory (file-truename org_roam_dir))
+;;   ;; from: https://www.orgroam.com/manual.html=
+;;   (setq org-roam-dailies-directory (expand-file-name "daily"
+;;                                                      org-roam-directory))
+;;   (setq org-roam-dailies-capture-templates
+;;         '(("d" "default" entry
+;;            "* %?"
+;;            :target (file+head "%<%Y-%m-%d>.org"
+;;                               "#+title: %<%Y-%m-%d>\n"))))
+;;   :config
+;;   (org-roam-db-autosync-mode)
+;;   ;; If using org-roam-protocol
+;;   (require 'org-roam-protocol))
 
 ;; ** org-roam-ui (graph viewing)
 
-;; config from: https://github.com/org-roam/org-roam-ui
-(use-package org-roam-ui
-  :straight (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
-  :after org-roam
-  :config
-  (setq org-roam-ui-sync-theme t
-        org-roam-ui-follow t
-        org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start t))
+;; ;; config from: https://github.com/org-roam/org-roam-ui
+;; (use-package org-roam-ui
+;;   :straight (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+;;   :after org-roam
+;;   :config
+;;   (setq org-roam-ui-sync-theme t
+;;         org-roam-ui-follow t
+;;         org-roam-ui-update-on-save t
+;;         org-roam-ui-open-on-start t))
 
 
 ;; *** Org-roam API
@@ -3419,22 +3435,13 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; pdf-tools use-package call inspired by:
 ;; http://pragmaticemacs.com/emacs/more-pdf-tools-tweaks/
 ;;
-(defun sdo/popdir (dir)
-  "Like unix popd.  Return parent directory of dir."
-  (unless (equal "/" dir)
-    (file-name-directory (directory-file-name dir))))
-
-(if (setq pacbin (sdo/find-exec "pacman" "Need MSYS2 for pdf-tools & more"))
+(if (or running-MacOS running-gnu-linux pacbin-windows)
     (progn
+      (message "Initializing pdf-tools")
       (use-package pdf-tools
         :defer t
         :config
-        ;; Ensure mingw64 libraries on front of PATH, not other tools' libs
-        ;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
-        (setq msys2dir (sdo/popdir (sdo/popdir (sdo/popdir pacbin))))
-        (setq msys2libdir (expand-file-name "mingw64\\bin" msys2dir))
-        (setenv "PATH" (concat msys2libdir ";" (getenv "PATH")))
-        ;; initialise (will download and build msys2 libs too, I think)
+        ;; initialise (on Windows will download and build msys2 libs too)
         (pdf-tools-install)
         ;; open pdfs scaled to fit page
         (setq-default pdf-view-display-size 'fit-page)
@@ -3481,9 +3488,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
         ;; This will change the color of the Note.
         (setq pdf-annot-default-text-annotation-properties
               '((color . "#90ee90")))
-        ))
-  (message "Can't find msys2 not installed so skipping pdf-tools init"))
-
+        )))
 
 ;; * Writing Tools
 ;; ** General Editing
