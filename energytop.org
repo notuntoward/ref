@@ -9905,6 +9905,7 @@ onenote:https://d.docs.live.net/4bbd96b3698748f8/Documents/CPR/SolarAnywhere.one
 ******* [[file:energy.bib::Ranjan09CombEvalProbFrcsts][Ranjan 2009: Combining Evaluating Probabilistic Forecasts]]
 ******* [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]] (pools weather stations)
 ******* [[cite:Kim16sprsCondCplaMultiOut][Kim 2016: Sparse Cond. Copula Multi Out]]
+******* [[cite:Jose14TrimOpinPoolCal][Jose et al. 2014: Trimmed Opinion Pools]]
 ******* [[Aggregated regression using GLMs]]
 ******* see also: [[Copulas]]
 ******* see also: [[Quantile Regression]]
@@ -10419,7 +10420,7 @@ later corrected by greg heath:
 ***** also [[Feature Selection Quality Metrics]]
 * Disaggregation
 
-  You have and aggregation (sum, hisgtogram, etc.) of the outcomes of a bunch of individuals but not the individual outcomes.  You want the outcomes.  Example: you have all the power consumed on a feeder but not the individual power customer power consumption.  Getting the individual customer power is disaggregation (this is something like what Josh Quinnell did for MNSP and CPR).
+  You have an aggregation (sum, hisgtogram, etc.) of the outcomes of a bunch of individuals but not the individual outcomes.  You want the outcomes.  Example: you have all the power consumed on a feeder but not the individual power customer power consumption.  Getting the individual customer power is disaggregation (this is something like what Josh Quinnell did for MNSP and CPR).
 
 There is also that Dutch PhD thesis where the guy did this Dutch-wide assumed PV adoption; he deaggregated that using logistic regression outputs as weights.
 
