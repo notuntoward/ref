@@ -1073,19 +1073,11 @@
 ******* c++ library
 ******* 2004 latest update
 ******* has recurrent, Kohonen, Hopfield, RBF, MLP
-***** [[http://www.sumo.intec.ugent.be/?q%3Dsumo_toolbox][SUMO toolbox]]
+***** <<SUMO toolbox>>
+      From: [[http://www.sumo.intec.ugent.be/?q%3Dsumo_toolbox][SUMO toolbox]]
 ******* actively supported by SUMO lab, w/ pubs in Sept. 2008
 ******* fairly expensive (2000 euros?)
-******* Does surrogate models
-
-        Surrogate models are fast-running approximations of complex
-        time-consuming computer simulations. Surrogate models are also known
-        as response surface models (RSM), metamodels or emulators. They
-        mimic the complex behavior of the underlying simulation model.
-        Surrogate models are used for parametric studies, optimization,
-        design-space exploration, visualization, prototyping and sensitivity
-        analysis.
-
+******* does [[Surrogate Models]]
 ******* uses fann
 ******* uses Sun Grid engine
 ******* lots of algs, incl SVM's, several NN implementations
@@ -1569,7 +1561,7 @@
 ******* also [[Forecast aggregation]]
 ***** separate wind and power curve estimation
 ******* predict wind from wind
-******* then apply a learned power curve (see [[Power Curve Learning]])
+******* then apply a learned power curve (see [[Wind Power Curve Learning]])
 ***** Asymmetric training cost functions
 ******* MPCC lets you do this (p. 4 of [[file:energy.bib::Bessa10infoWindPow][Bessa et al. 2010: Information]])
 ******* [[Gaussian Processes to model asymmetric error distributions]]
@@ -2413,7 +2405,23 @@ Scott
 ***** [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (built-in montonic)
 *** Neural Net Quality Metrics
 ***** [[cite:Martin21predNNqualNoData][Martin et al. 2021: Predicting Trends Quality NN No Data]]
-*** [[Learning Physical Models with NN]]
+*** <<Learning Physical Models with NN>>
+***** [[cite:Chen21physicalHardConstraintNN][Chen et al. 2021: Theory HCP constrained phys NN]]
+***** TODO add related DOE papers
+***** <<Surrogate Models>>
+
+      Surrogate models are fast-running approximations of complex
+time-consuming computer simulations. Surrogate models are also known
+as response surface models (RSM), metamodels or emulators. They mimic
+the complex behavior of the underlying simulation model.  Surrogate
+models are used for parametric studies, optimization, design-space
+exploration, visualization, prototyping and sensitivity analysis.
+
+This is often an NN e.g [[SUMO toolbox]]
+***** [[file:energy.bib::vogt15hybridphysmlrgnfrcst][Vogt et al. 2015: hybrid "physical" machine]] regional upscale
+***** also [[Solar physical model software]]
+***** also [[Solar Power Forecasting Physical Models]]
+***** also [[Physics-Based Wind Power Curve Features]]
 * <<Data Efficient Models>>
 ***** <<Data efficiency: Naive Bayes vs. Logistic Regression>>
 ******* [[file:energy.bib::Ng02discrimVsGenNBvsLogRgrsn][Ng & Jordan 2002 Discrim vs. Gen, Logistic Rgrssn vs. Naive Bayes]]
@@ -4066,7 +4074,7 @@ Hope that helps,
       e.g. [[Continuous Ranked Probability Score (CRPS)]]
 
 ******* [[cite:Kang21FrcstWithFrcstsDiversity][Kang et al. 2021: Forecast Forecasts Diversity Combo]]
-******* see, maybe merge: [[*Physics-based%20power%20curve%20features][Physics-based power curve features]]
+******* see, maybe merge: [[*Physics-based%20power%20curve%20features][Physics-Based Wind Power Curve Features]]
 ******* see, maybe merge: [[Wind power features besides spd/dir]]
 ******* see, maybe merge: [[Feature selection for probabilistic forecasts]]
 ******* [[file:energy.bib::Wu09featSelQR][Wu & Liu 2009: Variable]] selection quantile regression
@@ -4432,7 +4440,7 @@ Hope that helps,
 ********* see also [[Multiplicative Process Estimation]]
 ******* could be Interaction terms eg. [[file:energy.bib::Kneib09varSelGeoaddRgrssn][Kneib et al. 2009: Variable Selection Model]]
 ******* Possibly another interaction term picker: [[file:energy.bib::Duvenaud11AddGausProcIntrct][Duvenaud et al. 2011: Additive]] Gaussian Proce Interact
-******* wind power stuff that could be base learners: [[Physics-based power curve features]]
+******* wind power stuff that could be base learners: [[Physics-Based Wind Power Curve Features]]
 ***** Beta regression can be boosted by (I think) [[http://cran.r-project.org/web/packages/gamboostLSS/index.html][gamboostLSS]] R package
 ***** see [[Boosted Quantile Regression]]
 ***** see [[Feature selection for varying coefficient models]]
@@ -4543,7 +4551,7 @@ Hope that helps,
 ******* [[file:energy.bib::Boydstun80comp3DmaxReach][Boydstun et al. 1980]] explains well how to build periodic spline basis
 ******* only need cos(dir) for angular kernel: [[file:energy.bib::Kaufman05perSplnRgrsn][Kaufman et al. 2005: Spline]]
 ******* k                                                                                                                          =2 Fourier coeffs is enough (he does sin/cos): [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]]
-******* see also: [[Physics-based power curve features]]
+******* see also: [[Physics-Based Wind Power Curve Features]]
 ******* see [[Harmonic Periodic Bases]]
 ***** see also [[Circular Statistics]]
 ***** [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]] does this with Fourier [[Interaction terms]]
@@ -5054,7 +5062,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                            
 ******* a QC meeting time saver, not an accuracy improvement
 ******* could use deviation from a single-turbine power curve, as in [[file:energy.bib::Li01neuralWindPowGen][Li et al. 2001: Using neural networks]]
 ******* The flat spot and QR detector I wrote at Fraunhofer
-******* also see [[Power Curve Learning]]
+******* also see [[Wind Power Curve Learning]]
 ***** wind turbines cut off around [[http://www.gepower.com/prod_serv/products/wind_turbines/en/15mw/specs.htm][20-25 m/s]]
 ***** low bias or high bias (offset?)
 ***** gain errors
@@ -5845,7 +5853,7 @@ sera
 *** [[cite:SaintDrenan17probRgnlPVfrcst][Saint-Drenan et al. 2017 prob PV frcst]] 
 * <<Learning montonicity>>
 
-  Maybe important for [[Power Curve Learning]], since an ideal power
+  Maybe important for [[Wind Power Curve Learning]], since an ideal power
   curve is monotonic (/except for beyond cutoff/).  Also good for
   [[Conditional Density Estimation][Conditional Density Estimation]], since cdfs must also be monotonic.
 
@@ -6250,7 +6258,7 @@ sera
                        speeds, outputs are ensemble wind powers
                        - would only make sense for single farm since speeds
                          don't add
-                       - would be a kind of [[Power Curve Learning]]
+                       - would be a kind of [[Wind Power Curve Learning]]
                     2) quantile persistence forecast, as in [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]] or [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: Systematic Integration Large (prob. persist & more)]]
                        - similar to Markov time-dependence for prob forecast
                     3.) could be used for analog ensembles (forecast from
@@ -8168,7 +8176,7 @@ Scott
 ********* sodar/lidar used for power curves: [[http://www.iop.org/ej/abstract/1755-1315/1/1/012059][remote sensing used for power curves]]
 ******* <<Forecasting Features>>
 ********* <<Wind power features besides spd/dir>>
-*********** see, maybe merge: [[*Physics-based%20power%20curve%20features][Physics-based power curve features]]
+*********** see, maybe merge: [[*Physics-based%20power%20curve%20features][Physics-Based Wind Power Curve Features]]
 *********** see, maybe merge: [[Relationship between NWP forecast variables and forecast error]]
 *********** see, maybe merge: [[Feature selection for probabilistic forecasts]]
 *********** Met model stability params ([[File:energy.bib::hagemann09vextraptemp][Hagemann et al. 2009: uncertainty]] (temp,windspeed,stabilty param(z?)))
@@ -8219,10 +8227,10 @@ Scott
 ************* [[http://www.soe.ucsc.edu/~taoswap/GroupMeeting/UnscentedSeries_DanYuan_2004_11_17.ppt][Unscented Kalman Filter Slides]]
 *********** Autotrain of NN's
 ************* [[file:energy.bib::Yan12autoNNtsFrcst][Yan 2012: Toward Automatic Time]] auto NN train
-*********** also: [[Physics-based power curve features]]
+*********** also: [[Physics-Based Wind Power Curve Features]]
 *********** also: [[Relationship between NWP forecast variables and forecast error]]
 *********** also: [[Summary of sensor location picking papers]]
-*********** also: [[Power curve learning]]
+*********** also: [[Wind Power Curve Learning]]
 *********** also: [[Feature Selection]]
 ******* <<Lag Selection Enablers>>
 ********* another explanation for why lags might make sense: [[file:energy.bib::lu07lagensemble][lu et al. 2007: short range numerical]]
@@ -8343,7 +8351,7 @@ Scott
 ********* TODO read [[File:~/proj/norsewind/doc/norsewind.org::norsewind%20publications][Norsewind Publications]] to find out how satellite imaging is going
 ******* <<Relationship between NWP forecast variables and forecast error>>
 ********* see [[Feature selection for probabilistic forecasts]]
-********* see, maybe merge: [[*Physics-based%20power%20curve%20features][Physics-based power curve features]]
+********* see, maybe merge: [[*Physics-based%20power%20curve%20features][Physics-Based Wind Power Curve Features]]
 ********* see, maybe merge: [[Wind power features besides spd/dir]]
 ********* see, maybe merge: [[Feature selection for probabilistic forecasts]]
 
@@ -8411,15 +8419,12 @@ Scott
 ***** Spatio-temporal with uncertainty:  [[cite:Lave13solarVarWvlt][Lave et al. 2013: Wavelet Based Variability]]
 ***** [[cite:Newport17introSolarRad][Newport 2017: Introduction to Solar Radiation]] 
 ***** [[https://www.nrel.gov/midc/solpos/solpos.html][MIDC SOLPOS Calculator]]: time/place --> solar position and intensitytime/
-***** Solar Power Forecasting Physcial Models
+***** <<Solar Power Forecasting Physical Models>>
 ******* <<Satellite to Ground Irradiance>>
 ********* <<Solar Irradiance to Power Physical Models>>
 *********** [[cite:Mayer21cmprPhyMdlPVfrcst][Mayer & Grof 2021: Comparison Physical PV frcst Models]]
 *********** [[cite:Suh17irradMnthlyToHrlyEPP][Suh & Choi 2017: Methods Converting Monthly Sat Irrad to Hourly]]
 *********** [[Irradiance Physical models]]
-*********** TODO <<Learning Physical Models with NN>>
-************* [[cite:Chen21physicalHardConstraintNN][Chen et al. 2021: Theory HCP constrained phys NN]]
-************* TODO add related DOE papers
 ********* <<Irradiance Physical models>>
 *********** [[cite:Ponsukcharoen12irradFrcstSat][Ponsukcharoen 2012: Solar Irradiance Forecast Class Notes]]
 *********** <<Clear Sky Models>>
@@ -8435,6 +8440,24 @@ Scott
 *********** [[Cloud Motion Vector Estimation]]
 ********* <<Cloud Motion Vector Estimation>>
 *********** [[cite:Su20cloudMotionDpLrn][Su et al. 2020: Prediction Short Time]]
+******* <<Solar physical model software>>
+********* Solar model chain in python
+          
+          Generic plant model w/ some of the models covered in [[cite:Mayer21cmprPhyMdlPVfrcst][Mayer & Grof 2021: Extensive Comparison Physical]]
+
+*********** [[https://mail.google.com/mail/u/0/#inbox/FMfcgzGlkZGBlmQzBRsvqnXpBgpWHpDx][email]]
+*********** [[https://github.com/salazarna/Solar_Code/blob/main/pipeline.py][repo]] 
+************* uses "cnosolar" mystery lib
+********* [[cite:Gurupira17comparePvSimSoftware][Gurupira & Rix 2017: PV Simulation Software Comparisons]]
+********* [[https://pvlib-python.readthedocs.io/en/stable/index.html][pvlib]]: comprehensive PV stuff
+*********** especially [[https://pvlib-python.readthedocs.io/en/stable/forecasts.html][pvlib foreasting module]]
+************* downloads NWP and computes forecasted power & other things
+************* [[https://pvlib-python.readthedocs.io/en/stable/installation.html#standardrelease][conda install]] for using forecasting module
+*********** pvlib solar time functions
+************* [[https://pvlib-python.readthedocs.io/en/stable/generated/pvlib.location.Location.html][pvlib.location.Location]]: returns time zone of a location
+*********** [[https://pvlib-python.readthedocs.io/en/latest/generated/pvlib.solarposition.sun_rise_set_transit_ephem.html][pvlib.solarposition.sun_rise_set_transit_ephem]]: rets sun rise/set xit
+******* also [[Learning Physical Models with NN]]
+******* also [[Physics-Based Wind Power Curve Features]]
 ******* also [[Solar Variability Forecasting]]
 ***** <<Temp. smooth spatial pt. meas to match large PV plant smoothing>>
 
@@ -8535,8 +8558,8 @@ Scott
 ******* basic question, occurs all over: combining pre-trained predictions or NWP w/ adaptation :researchTopic:
 ********* example is Dynamical Prediction model on slide 11 of [[file:energy.bib::Madsen08toolsWindIntegrate][Madsen et al. 2008: Tools for Integrating]]
 ********* [[file:energy.bib::Madsen08toolsWindIntegrate][Madsen et al. 2008: Tools for Integrating]] also does NowCaster type forecasts using wind predictions (p. 18)
-***** <<Power curve learning>>
-******* <<Physics-based power curve features>>
+***** <<Wind Power Curve Learning>>
+******* <<Physics-Based Wind Power Curve Features>>
 
          Provide them as options to an NN, let feature selection pick the
          best.  Alternatively, they could be turned into
@@ -10484,7 +10507,7 @@ There is also that Dutch PhD thesis where the guy did this Dutch-wide assumed PV
 *** ensemble interactions: [[file:energy.bib::BenBourllegue13ensCalLgstIntrct][Ben 2013: Calibrated]] short-range precip.
 *** Wind QR but doesn't use: [[file:energy.bib::Bremnes04windLocQR][Bremnes 2004: Probabilistic]]
 *** Wind QR, uses a ton: [[file:energy.bib::Pritchard10varQuantProbFrcst][Pritchard 2010: Short]]
-*** a way to model wind direction in [[Power Curve Learning]]
+*** a way to model wind direction in [[Wind Power Curve Learning]]
 *** interaction terms probably important for wind pow curve: [[file:energy.bib::Lee14PowerCurveEstimation][Lee et al. 2014: Power Curve Estimation]]
 *** house price QR uses interactions: [[file:energy.bib::He99multiVarQRsplines][He & Ng 1999: Quantile]]
 *** [[file:energy.bib::Tibshirani15statLrnSprsLassoBk][Tibshirani et al. 2015: Statistical Lrn Sparsity Lasso]]
