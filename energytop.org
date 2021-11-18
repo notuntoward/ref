@@ -2406,8 +2406,18 @@ Scott
 *** Neural Net Quality Metrics
 ***** [[cite:Martin21predNNqualNoData][Martin et al. 2021: Predicting Trends Quality NN No Data]]
 *** <<Learning Physical Models with NN>>
-***** [[cite:Chen21physicalHardConstraintNN][Chen et al. 2021: Theory HCP constrained phys NN]]
 ***** TODO add related DOE papers
+***** [[cite:Mayer21cmprPhyMdlPVfrcst][Mayer & Grof 2021: Extensive Comparison Physical]]
+***** [[cite:Chen21physicalHardConstraintNN][Chen et al. 2021: Theory HCP constrained phys NN]]
+***** [[cite:Karpatne17physNNlakeT][Karpatne et al. 2017: Physics Neural Networks PGNN]]
+***** [[cite:Kelly08newWindModel][Kelly 2008: New Modeling Techniques]]
+***** [[cite:GE16predixArchSrvcTechNote][GE 2016: Predix Architecture Services]]
+***** [[cite:Jin19physInvNN][Jin et al. 2019: Physics Driven Deep]]
+***** [[cite:SalcedoSanz09frcstBankNN][Salcedo-Sanz et al. 2009: Accurate Frcst Wind Pow Model Combo]]
+***** [[cite:Wan10equivWindPowCurve][Wan et al. 2010: Development Equivalent Wind]]: wind pow curv fit 
+***** [[cite:Jemberie04infoTheoryHydro][Jemberie 2004: Information Theory Artificial: combined phys and NN]]
+***** [[cite:Jin19physInvNN][Jin et al. 2019: Physics Driven Deep]]
+***** [[file:energy.bib::vogt15hybridphysmlrgnfrcst][Vogt et al. 2015: hybrid "physical" machine]] regional upscale
 ***** <<Surrogate Models>>
 
       Surrogate models are fast-running approximations of complex
@@ -2418,7 +2428,6 @@ models are used for parametric studies, optimization, design-space
 exploration, visualization, prototyping and sensitivity analysis.
 
 This is often an NN e.g [[SUMO toolbox]]
-***** [[file:energy.bib::vogt15hybridphysmlrgnfrcst][Vogt et al. 2015: hybrid "physical" machine]] regional upscale
 ***** also [[Solar physical model software]]
 ***** also [[Solar Power Forecasting Physical Models]]
 ***** also [[Physics-Based Wind Power Curve Features]]
