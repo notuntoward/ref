@@ -67,16 +67,26 @@
 ;; to use straight within use-package, do like:
 (straight-use-package 'use-package)
 
-;; make straight the default (for now, it's org-roam only)
-;; https://github.com/raxod502/straight.el/blob/0946e1b14886e05973fb88ff18ccd90a8c8a25a4/README.md#integration-with-use-package
+;; make straight the default for use-package (so don't need :straight)
 (setq straight-use-package-by-default t)
 ;; good explanation of how to debug emacs init speed:
 ;; https://www.youtube.com/watch?v=bF84mQMmfa8  (system crafters)
 (setq use-package-verbose t) ; messages when load pkg., good for init debug
-
 ;; to see if problems are tdue :defer, :after,... problems
 ;; https://emacs.stackexchange.com/a/33798/14273
 ;; (setq use-package-always-demand t)
+
+;; https://www.manueluberti.eu/emacs/2019/11/02/thirty-straight-days/
+(defun mu-straight-pull-or-prune (&optional prune)
+  "Update all available packages via `straight'.
+With PRUNE, prune the build cache and the build directory."
+  (interactive "P")
+  (if prune
+      (when (y-or-n-p "Prune build cache and build directory?")
+        (straight-prune-build-cache)
+        (straight-prune-build-directory))
+    (when (y-or-n-p "Update all available packages?")
+      (straight-pull-all))))
 
 ;; ** package.el
 ;; Avoid complaints, put before (require 'package)
@@ -2943,14 +2953,16 @@ folder, otherwise delete a word"
   :hook (org-mode . org-superstar-mode))
 
 ;; Show hidden emphasis markers e.g.* in *bold*.  So can see where cursor is.
-(use-package org-appear
-  :custom
-  (org-appear-autoentities t)
-  (org-appear-autokeywords t)
-  (org-appear-autolinks t)
-  (org-appear-autosubmarkers t)
-  (org-appear-delay 1)
-  :hook (org-mode . org-appear-mode))
+;; this seemed more annoying than useful
+;; (use-package org-appear
+;;   ;; comment out so only expands emphasis
+;;   ;; :custom
+;;   ;; (org-appear-autoentities t)
+;;   ;; (org-appear-autokeywords t)
+;;   ;; (org-appear-autolinks t)
+;;   ;; (org-appear-autosubmarkers t)
+;;   ;; (org-appear-delay 1)
+;;   :hook (org-mode . org-appear-mode))
 
 (with-eval-after-load 'org
   ;; ;; From: https://emacs.stackexchange.com/a/41705/14273
@@ -3247,6 +3259,8 @@ TODO: add a cycle that opens or collapses all prop drawers?"
                         "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
   (citar-library-paths '("~/ref/papers"
                          "~/ref/DOE_brainstorm/papers"))
+  ;; citar notes don't work, as of 11/28/21
+  (citar-notes-paths) '("~/ref/tmp_papers_notes")
   ;; so citar can open JabRef-style file fields
   (setq citar-file-parser-functions '(citar-file-parser-default
                                       citar-file-parser-triplet))
@@ -3255,9 +3269,9 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   (org-cite-activate-processor 'citar)
   (citar-at-point-function 'embark-act) ; So more C-o options than file list
   (citar-file-open-function 'citar-file-open-external)
-  (citar-open-note-function 'orb-citar-edit-note) ; default, I think
   ;; (citar-file-find-additional-files t) ; finds pdfs... w/ same start as key
-  ;; (citar-open-note-function 'orb-bibtex-actions-edit-note') ; OR
+  ;;(citar-open-note-function 'orb-citar-edit-note) ; default, I think
+  (citar-open-note-function 'orb-bibtex-actions-edit-note) ; OR
   :init
   ;; if .bib file changes, "invalidate the cache by default".  Is that good?
   ;; https://github.com/bdarcus/citar#refreshing-the-library-display
