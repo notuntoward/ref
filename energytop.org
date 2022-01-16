@@ -284,7 +284,6 @@
        p-value < F-test    (both from, say, from Matlab's regress() function)
 
     then the prediction is significant i.e. you can reject the null-hypothesis that the target could be just as well predicted by a single intercept term.
-
     
 *** inference vs. learning vs. estimation
 
@@ -829,7 +828,6 @@
     Must use odds ratio when using Restrospective (Case-Control) studies 
     (see [[Prospective vs. Restrospective]]).  Also see [[file:energy.bib::Lindley00philOfStat][Lindley 2000 Philosophy of Statistics]]
 
-
 *** <<Prospective vs. Restrospective>>
     From: [[file:energy.bib::StatsDirect19prospectVsRetroStudies][StatsDirect 2019: Prospective vs. Retrospective Studies]]
 
@@ -879,6 +877,11 @@
 ***** Specificity = proportion of actual negatives correctly detected
 ******* a.k.a. true negative rate
         
+*** <<Neural net width>>
+    From: [[https://en.wikipedia.org/wiki/Large_width_limits_of_neural_networks][Large width limits of neural networks]]
+
+    This is the number of nodes in a hidden layer.
+    
 * Albedo vs. Specular Reflectance
   From: [[file:energy.bib::Blah238_14_specularVsReflective][blah238 2014: Difference Albedo Surface Reflectance]]
 
@@ -1992,6 +1995,7 @@ Scott
 ********* Garrard Hassan (Bristol, England) sells software the does the work
 ***** [[https://www.evernote.com/l/AA2JO1ths9tHbbpek2JKdO4_h9uc2_C14ro/][The Neural Network Zoo]] (visual guide to NN structures)
 ***** also [[Neural Net Activation Functions]]
+***** [[Neural net width]]: the # of hidden nodes
 *** <<Neural Net Weights Initialization>>
 ***** [[cite:Jones15xavierInitBlog][Jones 2015: Explanation Xavier Initialization (simple blog post)]]
 ***** [[cite:Glorot10undrstndDiffDpLrnFFnets][Glorot & Bengio 2010: Understanding Diff Deep NN Lrn: Xavier Initialization]]
@@ -2032,7 +2036,7 @@ Scott
 *** <<Neural Net Activation Functions>>
 ***** [[cite:Clevert15dpLrnELU][Clevert et al. 2015: Fast Accurate Deep Lrn ELU]]
 ***** Why ReLU works better
-      From: [[https://sea-adl.org/2019/12/03/lstm-is-dead-long-live-transformers/][LSTM is dead, long live Transformers – Seattle Applied Deep Learning]]
+      From: [[https://sea-adl.org/2019/12/03/lstm-is-dead-long-live-transformers/][LSTM is dead, long live Transformers Seattle Applied Deep Learning]]
 ******* ReLU  advantages over e.g. sigmoid or tanh
 ********* RHS goes to inf, allows neuron to express stronger opinion than others
 ********* Gradient doesn't saturate on high end
@@ -2403,6 +2407,8 @@ Scott
 *** <<Monotonic Neural Nets>>
 ***** [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning]] with [[Tensor Flow]]
 ***** [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (built-in montonic)
+***** Make this an NN output layer?  [[cite:Keelin16metalogDist][Keelin 2016: Metalog Distributions]]
+***** also [[Learning montonicity]]
 *** Neural Net Quality Metrics
 ***** [[cite:Martin21predNNqualNoData][Martin et al. 2021: Predicting Trends Quality NN No Data]]
 *** <<Learning Physical Models with NN>>
@@ -2428,6 +2434,14 @@ models are used for parametric studies, optimization, design-space
 exploration, visualization, prototyping and sensitivity analysis.
 
 This is often an NN e.g [[SUMO toolbox]]
+***** TODO below is a mix of surrogate models and surrogate data: FIGURE OUT
+***** [[file:energy.bib::pinson10reldiagsercorr][Pinson et al. 2010: Reliability]]: surrogate paper which spawned this idea
+***** [[cite:Kirch11timeFreqBtStrp][Kirch & Politis 2011: TFT surrogate freq. bootstrap]]
+***** [[cite:Mairal13stochMMlargeOpt][Mairal 2013: Stochastic Surrogate Optimization]]
+***** [[cite:Hunter04mmQRtutorial][Hunter & Lange 2004: MM optim. w/ surrogate function]]
+***** [[cite:Pinson10relDiagSerCorr][Pinson et al. 2010: Reliability Surrogate Consistency]]
+***** [[cite:Safta14accelGridOptSDE][Safta et al. 2014: Toward Using Surrogates]] Stoch. opt: unit commit SDE
+***** [[cite:Kraskov04syncIndepMeasMIphd][Kraskov 2004: Synchronization Interdependence Measures]]: surrogate data
 ***** also [[Solar physical model software]]
 ***** also [[Solar Power Forecasting Physical Models]]
 ***** also [[Physics-Based Wind Power Curve Features]]
@@ -2545,8 +2559,15 @@ This is often an NN e.g [[SUMO toolbox]]
 *** Evaluation, [[Stopping Criteria]], etc: [[Forecast quality metrics]]
 *** <<Dimension reduction>>
 
-    PCA and stuff like that.  Sufficient dimR, MI dim R, PLS, etc.
+    PCA and stuff like that (but try UMAP!).  Sufficient dimR, MI dim R, PLS, etc.
     start collection stuff here
+
+***** <<UMAP: Uniform Manifold Approximation & Projection>>
+
+      Better than [[PCA: Principal Components Analysis]], yet [[https://towardsdatascience.com/8-booming-data-science-libraries-you-must-watch-out-in-2022-cec2dbb42437][almost as fast]].  UMAP is [[https://towardsdatascience.com/tricky-way-of-using-dimensionality-reduction-for-outlier-detection-in-python-4ee7665cdf99][good for Anomaly detection]].
+
+******* [[https://umap-learn.readthedocs.io/en/latest/][UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction]]
+******* [[https://towardsdatascience.com/tricky-way-of-using-dimensionality-reduction-for-outlier-detection-in-python-4ee7665cdf99][Tricky Way of Using Dimensionality Reduction For Outlier Detection in Python]]
 
 ***** [[file:energy.bib::Maaten09DimRedCmpr][Maaten et al. 2009: Dimensionality]] reduce review + intrins. dim, matlab
 ***** [[cite:Maaten08VisualizingDataUsingTSNE][Maaten & Hinton 2008: Visualizing data using t-SNE]]
@@ -2573,6 +2594,8 @@ This is often an NN e.g [[SUMO toolbox]]
 ******* [[cite:Garcke17dimRedWindTurb][Garcke et al. 2017: Dimension Reduction PCA/DTW Turb Anom]]
 ******* [[cite:Greenewald15krnckrProdPCAspatTempCov][Greenewald & Hero 2015: Robust Kronecker Product PCA spat/time cov]]
 ******* [[MDS vs. PCA]]
+******* UMAP vs. PCA
+********* [[UMAP: Uniform Manifold Approximation & Projection]]
 ******* <<Sparse PCA>>
 ********* [[file:energy.bib::Zou06SparsePCA][Zou et al. 2006: Sparse]] PCA (PCA w/ Lasso-elastic net)
 ********* [[file:energy.bib::Sjoestrand12spasmMatlab][Sjoestrand et al. 2012: Spasm]]: DTU Matlab: Sparse PCA, other sparse algs.
@@ -4367,10 +4390,15 @@ Hope that helps,
 ***** [[Random Forest Feature Generation]]
 ***** [[Random Forests in Reinforcement Learning]]
 *** <<Boosted Decision Trees>>
+
+Note that [[https://towardsdatascience.com/8-booming-data-science-libraries-you-must-watch-out-in-2022-cec2dbb42437][LightGBM are now (2021) doing better than XBBoost]], are faster and use less memory.
+
 ***** [[https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/][A Gentle Introduction to XGBoost for Applied Machine Learning]]
+***** [[https://www.evernote.com/l/AA2l1dRm2WBJPY1j8w6RyoPyCAJk-xH5B0I/][Interpretable Machine Learning with XGBoost]]
 ***** Adaboost: [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining ADABOOST and Random forest Interp]]
 ***** [[file:energy.bib::Chen15higgsBoostTr][Chen & He 2015: Higgs Boson Boosted Trees]]
 ***** [[file:energy.bib::Chen16xgboostSclbl][Chen & Guestrin 2016: XGBoost scalable tree boost]]       
+***** [[cite:AguilarMadrid21elecLoadFrcstML][Aguilar & Antonio 2021: ST Elec Load Frcst ML]]: XGboost better than RF
 ***** <<Monotonic Boosted Trees>>
 ******* [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning (lightgbm, xgboost, TensorFLow)]] 
 ******* [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonic Constraints: xgboost 1.0.0-SNAPSHOT documentation]]
@@ -6096,6 +6124,7 @@ sera
 ******* [[file:energy.bib::Pinson07nonParamProbFrcsEval][Pinson et al. 2007: Non]] param prob frcst eval tails
 ******* TODO [[Concept Drift Detection]]
 ***** <<Quantile Crossover>>
+******* [[Monotonic Neural Nets]]
 ******* how to avoid linear and spline QR crossover: [[file:energy.bib::Dette08quantRgrsNonCross][Dette & Volgushev 2008: Non]]
 ******* Nadaraya-Watson immune? [[cite:Hall99methCondDistEst][Hall et al. 1999: Methods Estimating Conditional]]
 ******* TODO [[file:energy.bib::Shenoy15stochOptLdFrcstRgrssn][Shenoy et al. 2015: Non Parametric Regression]] stoch opt: Boyd's paper on quant rgrssn, quad (convex) prog. & stoch. opt
@@ -8426,8 +8455,8 @@ Scott
 ***** [[cite:Zhuang20pvProbSkyState][Zhuang et al. 2020: simple solar prob frcst Markov sky state]]
 ***** [[file:energy.bib::Tascikaraoglu14windFrstCombo][Tascikaraoglu & Uzunoglu 2014]] combining wind pow & solar frcsts
 ***** Spatio-temporal with uncertainty:  [[cite:Lave13solarVarWvlt][Lave et al. 2013: Wavelet Based Variability]]
-***** [[cite:Newport17introSolarRad][Newport 2017: Introduction to Solar Radiation]] 
-***** [[https://www.nrel.gov/midc/solpos/solpos.html][MIDC SOLPOS Calculator]]: time/place --> solar position and intensitytime/
+***** [[cite:Newport17introSolarRad][Newport 2017: Introduction to Solar Radiation]]  
+***** [[https://www.nrel.gov/midc/solpos/solpos.html][MIDC SOLPOS Calculator]]: time/place --> solar position and intensitytime/ 
 ***** <<Solar Power Forecasting Physical Models>>
 ******* <<Satellite to Ground Irradiance>>
 ********* <<Solar Irradiance to Power Physical Models>>
@@ -8457,6 +8486,7 @@ Scott
 *********** [[https://mail.google.com/mail/u/0/#inbox/FMfcgzGlkZGBlmQzBRsvqnXpBgpWHpDx][email]]
 *********** [[https://github.com/salazarna/Solar_Code/blob/main/pipeline.py][repo]] 
 ************* uses "cnosolar" mystery lib
+************* [[https://mail.google.com/mail/u/0/#inbox/FMfcgzGlkZGBlmQzBRsvqnXpBgpWHpDx][email]] w/ diagram
 ********* [[cite:Gurupira17comparePvSimSoftware][Gurupira & Rix 2017: PV Simulation Software Comparisons]]
 ********* [[https://pvlib-python.readthedocs.io/en/stable/index.html][pvlib]]: comprehensive PV stuff
 *********** especially [[https://pvlib-python.readthedocs.io/en/stable/forecasts.html][pvlib foreasting module]]
@@ -8978,7 +9008,7 @@ Scott
         SVM: [[file:energy.bib::Sorjamaa07methLongTermPred][Sorjamaa et al. 2007: Methodology for long]]
         http://www.springerlink.com/content/9nc3mhv3pgan6mv6/
 *** [[cite:Hodge16IntroWndSolrFrcstVal][Hodge 2016: Introduction Wind Solar Power Forecasting]]
-*** [[Http://procomun.wordpress.com/2010/11/02/how-to-simulate-wind-speed-time-series-with-r/][how to simulate a wind speed time series with r]] (markov/weibull)
+*** [[http://procomun.wordpress.com/2010/11/02/how-to-simulate-wind-speed-time-series-with-r/][How to simulate a wind speed time series with R]] (Markov/Weibull)
 *** Possible short term forecasting improvements
 ***** existing feature selection algs (more in other parts of this file)
 ******* [[file:energy.bib::deluna05predspatiotempsparse][luna & genton 2005: predictive spatio temporal]]
@@ -9069,6 +9099,9 @@ Scott
 ***** [[cite:Sinn14EnergyDemandFrcst][Sinn 2014: Energy Demand Forecasting slides, maybe net demand]]
 ***** [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]
 ***** [[file:energy.bib::Gajowniczek18clustElecLoadFrcst][Gajowniczek & Z\kabkowski 2018: Sim Clust Algs for Elec Frcst]]
+***** [[cite:Zhou11conjFrcstMkts][Zhou et al. 2011: Short Term Congestion Frcst]] NYISO
+***** [[cite:NYISO2020ldFrcstMan][NYISO 2020: Load Forecasting Manual]]  (NYISO peak load frcst: ICAP, etc.)
+***** [[cite:Headley19maxValSolarStrgNY][Headley 2019: Max Value Solar and Storage in NY (VDER alt 3)]]
 ***** TODO <<Spatial Load Forecast>>
 ******** TODO [[cite:Crawford16loadFrcstERCOT][Crawford 2016: ERCOT Load Forecasting IBM NN]] (good results, good intro paper to read?)
 ******** TODO [[cite:Stevie12SpatiaFrcstLoad][Stevie 2012: Spatial Forecasting grid planning.  Feats for CNN?]]
@@ -11287,6 +11320,7 @@ Scott
 ***** [[cite:Kaur16benefitsSolPowFrcstImbalMkt][Kaur et al. 2016: Benefits sol pow frcst Imbal Mkts]]
 ***** [[cite:Bessa17imprvUnderstandUncertFrcstPow][Bessa et al. 2017: Towards Improved Understand Uncert Frcst Industry]]
 
+***** [[cite:Hall18locTempValsNYCA][Hall et al. 2018: Locational Temporal Values of DER: NY and CA]]
 ***** <<Optimal Bidding>>
 ******* [[file:energy.bib::Pinson07tradeWindProbFrcst][Pinson et al. 2007: Trading Wind Generation]] (DTU alg. for IRPWIND)
 ********* [[Why Bremnes/DTU quantile trading doesn't work for Germany]]
@@ -11327,9 +11361,10 @@ Scott
 
 ***** see also: [[Juan Mi's Electricity Markets Class]]
 ***** see also: [[Price Forecasting]]
-*** Optimization/Integration
+*** <<Optimization/Integration>>
 ***** Pierre Pinson has many [[http://www.imm.dtu.dk/english/research/mathematical_statistics/publications.aspx][publications]] on this topic (and many other wind energy topics)
 ***** [[cite:Tsaousoglou21derFlexUncDpLrn][Tsaousoglou et al. 2021: Managing Distributed Flexibility]]: NN solves dual, DERs self-schedule
+***** [[cite:Headley19maxValSolarStrgNY][Headley 2019: Max Value Solar Storage NY (VDER alt 3)]]
 ***** [[Development And Deployment Of An Advanced Wind Forecasting Technique]]
 ***** [[Energy Management System (EMS) Integration]]
 ***** [[File:energy.bib::das08sensselworstcase][Das & Kempe 2008: Sensor Selection Minimizing]] (worst case (for safety))
@@ -11557,6 +11592,7 @@ Scott
 ******* [[Matlab Toolbox for Submodular Function Optimization]]
 ******* [[https://www.evernote.com/l/AA2Q2BisgYVLcpAilQnT88IWjYENpR0UiX8/][Best Algorithms to Make Solar Power Storage Profitable]] (quadratic opt.)
 ******* [[Operation of Energy Storage]]
+***** also [[My Optimization Learning Path]]
 *** Reliability
 ***** PV+Wind will reduce TennetT reliability (claim)[[file:energy.bib::Forbes11pvWindRelTenneT][: Forbes et al. 2011: Do Higher PV]]
 *** <<Dynamic Redispatch>>
@@ -12796,6 +12832,7 @@ Probabilistic programming library in Python with hooks to numpy and [[Tensor Flo
 *** <<PV + Storage plant config>>
 ***** [[cite:Kim21pvConfigValIncreaseStorage][Kim et al. 2021: Project Developer Options HighPV storage]]
 ***** [[cite:Gorman21battRESlocalVsIndep][Gorman et al. 2021: Are Coupled Renewable Batt Local]]
+***** [[cite:Hall18locTempValsNYCA][Hall et al. 2018: Locational Temporal Values of DER: NY and CA]]
 ***** also [[Portfolio Optimization]]
 ***** also [[Operation of Energy Storage]]
 *** Energy Storage Technology
@@ -12809,6 +12846,7 @@ Probabilistic programming library in Python with hooks to numpy and [[Tensor Flo
 ***** [[https://www.evernote.com/l/AA2Q2BisgYVLcpAilQnT88IWjYENpR0UiX8/][Best Algorithms to Make Solar Power Storage Profitable]] (quadratic opt.)
 ***** [[PV + Storage plant config]]
 ***** [[Portfolio Optimization]]
+***** [[cite:Headley19maxValSolarStrgNY][Headley 2019: Max Value Solar and Storage in NY (VDER alt 3)]]
 * <<Discrete Events: Poisson arrivals, etc.>>
 *** [[cite:Smirni16cs426dscrtEvntSimCrsNotes][Smirni 2016: Discrete Event Sim. Course Notes]], does Poisson
 *** [[cite:Shinomoto10EstFireRatePoisson][Shinomoto 2010: Estimating Firing Rate Book Chapter]], Poisson rate est.
@@ -13269,10 +13307,19 @@ TOTO: read Fan16* for an overview
 *** [[cite:Feurer20autoSklearn20][Feurer et al. 2020: Auto Sklearn 2.0]]
 *** [[cite:Feurer15autoMLautoSkLrn][Feurer et al. 2015: Efficient Robust Automated Machine Learning]] (code: auto-sklearn)
 *** [[cite:Bhatnagar21merlionTSfrcstAnomDet][Bhatnagar et al. 2021: Merlion TS frcst anom det AutoML ensemble]]
+*** [[https://pycaret.org/][PyCaret]] autoML w/ time series
 *** [[file:energy.bib::Harrell15rgrssnMdlStrtgyBook][Harrell 2015: Regression Strategies]]
 *** <<Missing Features and AutoML>>
 ***** built-in handling: [[cite:Feurer20autoSklearn20][Feurer et al. 2020: Auto Sklearn 2.0]]
 *** Also [[Frugal Machine Learning]]
+*** [[Hyperparameter Searching]]
+* <<Hyperparameter Searching>>
+
+*** TODO collect relevant papers under this category, optimzation, PV physical models, sklearn pipelines, etc.
+
+*** There's a [[Gaussian Process]] way of doing this, somewhere
+*** [[https://towardsdatascience.com/why-is-everyone-at-kaggle-obsessed-with-optuna-for-hyperparameter-tuning-7608fdca337c][Why Is Everyone at Kaggle Obsessed with Optuna For Hyperparameter Tuning?]]
+*** There's that raft characterizing a lake paper, somewhere here
 * <<Frugal Machine Learning>> ("big data on small data")
 
   At the ECML PKDD 2017 roundtable discussion, one of the researchers mentioned this area, as the place where academic researchers can make progress even if they don't have Google's gigantic computers.  I googled for the topic immediately after the conference but didn't see an overview paper or website, but did get some seeemingly related hits:
@@ -13350,9 +13397,10 @@ TOTO: read Fan16* for an overview
     Explains the result of a complicated model with a simpler model, has python
 
 ***** [[file:energy.bib::Lundberg17interpModlPred][Lundberg & Lee 2017: Unif Interp Models w/ code]]
-
+***** Tutorial: [[https://towardsdatascience.com/how-to-explain-black-box-models-with-shap-the-ultimate-guide-539c152d3275][Hate Black-box Models? Time to Change That With SHAP]]
 ***** [[https://www.evernote.com/l/AA1sBGonQh1GDac8BlJJ9a0iWSDqMCZ4if0/][How to avoid the Machine Learning blackbox with SHAP]]
-***** [[https://www.evernote.com/l/AA2l1dRm2WBJPY1j8w6RyoPyCAJk-xH5B0I/][Interpretable Machine Learning with XGBoost]]
+
+*** [[https://www.evernote.com/l/AA2l1dRm2WBJPY1j8w6RyoPyCAJk-xH5B0I/][Interpretable Machine Learning with XGBoost]]
 *** [[Interpretable regression metrics]]
 *** [[Graph Networks]]
 *** [[file:energy.bib::Nathans12mlrVarImp][Nathans et al. 2012: Interpreting var imp, MLR and PCA]]
@@ -13428,37 +13476,39 @@ TOTO: read Fan16* for an overview
 ***** [[http://www.slideserve.com/Patman/a-primer-on-mixed-integer-linear-programming][A Primer on Mixed Integer Linear Programming]] (matlab, ampl, cplex)
 ***** MIT course: [[http://ocw.mit.edu/courses/sloan-school-of-management/15-083j-integer-programming-and-combinatorial-optimization-fall-2009/][Integer Programming and Combinatorial Optimization]]
 ***** [[Book: Introduction to Linear Optimization]] used in MIT course
-*** Stochastic programming
+*** Stochastic optimization
+***** [[cite:Mairal13stochMMlargeOpt][Mairal 2013: Stochastic Surrogate Optimization]]
+***** Stochastic programming
 
     *Conclusion*: Buy (download?) "Lectures on Stoch. Programming:
      Modeling and Theory" and go through the author's lectures.
 
-***** Book: [[http://www.amazon.com/Lectures-Stochastic-Programming-Modeling-Optimization/dp/089871687X][Lectures on Stochastic Programming: Modeling and Theory]],
-******* is also [[http://www2.isye.gatech.edu/people/faculty/Alex_Shapiro/SPbook.pdf][free online]]
-******* author's [[http://www.uclouvain.be/en-311355.html][lectures]] for a UCL class
-******* author (Shapiro) seems to be an authority
-******* [[http://www.siam.org/books/mp09/MP09_SIREVbookreview.pdf][review]] suggests that it's a good book
-********* [[http://www.siam.org/books/mp09/MP09_SIREVbookreview.pdf][seems more modern]] than Juan Mi's "intro to stoch prog." and the other book by Kall and Wallace
+******* Book: [[http://www.amazon.com/Lectures-Stochastic-Programming-Modeling-Optimization/dp/089871687X][Lectures on Stochastic Programming: Modeling and Theory]],
+********* is also [[http://www2.isye.gatech.edu/people/faculty/Alex_Shapiro/SPbook.pdf][free online]]
+********* author's [[http://www.uclouvain.be/en-311355.html][lectures]] for a UCL class
+********* author (Shapiro) seems to be an authority
+********* [[http://www.siam.org/books/mp09/MP09_SIREVbookreview.pdf][review]] suggests that it's a good book
+*********** [[http://www.siam.org/books/mp09/MP09_SIREVbookreview.pdf][seems more modern]] than Juan Mi's "intro to stoch prog." and the other book by Kall and Wallace
           (Juan Mi's "intro to stoch prog." copyright 1997)
-********* scenario trees, probabilistic contstraints, multistage problems
-********* optimization for risk (Andre really wanted this)
-********* copyright 2009
-***** Book for Juan Mi's class: [[http://www.amazon.com/Introduction-Stochastic-Programming-Operations-Engineering/dp/0387982175][Introduction to stochastic programmming]]
+*********** scenario trees, probabilistic contstraints, multistage problems
+*********** optimization for risk (Andre really wanted this)
+*********** copyright 2009
+******* Book for Juan Mi's class: [[http://www.amazon.com/Introduction-Stochastic-Programming-Operations-Engineering/dp/0387982175][Introduction to stochastic programmming]]
       J. Birge and F. Louveaux, Springer 1997.
       <<Book: Introduction to stochastic programmming>>
       Used by several classes e.g. UWisc IE495, but Amazon reviewers
       don't like it, [[http://www.amazon.com/Introduction-Stochastic-Programming-Operations-Engineering/dp/0387982175][think it's math-heavy]]
-******* [[http://books.google.com/books/about/Introduction_to_Stochastic_Programming.html?id%3DcfrMw9crazsC&redir_esc%3Dy][google book search]]
-******* basic linear programming knowledge [[http://www.amazon.com/Introduction-Stochastic-Programming-Operations-Engineering/dp/0387982175][assumed]] for this book
-***** [[http://homepages.cae.wisc.edu/~linderot/classes/ie495/index.html][IE495 -- Stochastic Programming]] (Wisc. lectures)
-******* discusses scenarios,
-******* seems friendly
-******* [[http://homepages.cae.wisc.edu/~linderot/classes/ie495/syllabus.pdf][uses]] the [[Book: Introduction to stochastic programmming]] (like Juan Mi)
-***** [[http://stoprog.org/index.html?resources.html][Stochastic Programming Resources]]
-******* friendly intro: [[http://stoprog.org/index.html?resources.html][Official COSP Stochastic Programming Introduction]]
-******* [[http://stoprog.org/index.html?resources.html][software]]
-***** Book: [[http://books.google.de/books/about/Stochastic_programming.html?id%3DzvAZAQAAIAAJ&redir_esc%3Dy][Stochastic programming]], ([[http://www.csee.wvu.edu/~xinl/library/books/stochastic_programming.pdf][free online]])
-***** MIT course: [[http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-231-dynamic-programming-and-stochastic-control-fall-2011/index.htm][Dynamic Programming and Stochastic Control]]
+********* [[http://books.google.com/books/about/Introduction_to_Stochastic_Programming.html?id%3DcfrMw9crazsC&redir_esc%3Dy][google book search]]
+********* basic linear programming knowledge [[http://www.amazon.com/Introduction-Stochastic-Programming-Operations-Engineering/dp/0387982175][assumed]] for this book
+******* [[http://homepages.cae.wisc.edu/~linderot/classes/ie495/index.html][IE495 -- Stochastic Programming]] (Wisc. lectures)
+********* discusses scenarios,
+********* seems friendly
+********* [[http://homepages.cae.wisc.edu/~linderot/classes/ie495/syllabus.pdf][uses]] the [[Book: Introduction to stochastic programmming]] (like Juan Mi)
+******* [[http://stoprog.org/index.html?resources.html][Stochastic Programming Resources]]
+********* friendly intro: [[http://stoprog.org/index.html?resources.html][Official COSP Stochastic Programming Introduction]]
+********* [[http://stoprog.org/index.html?resources.html][software]]
+******* Book: [[http://books.google.de/books/about/Stochastic_programming.html?id%3DzvAZAQAAIAAJ&redir_esc%3Dy][Stochastic programming]], ([[http://www.csee.wvu.edu/~xinl/library/books/stochastic_programming.pdf][free online]])
+******* MIT course: [[http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-231-dynamic-programming-and-stochastic-control-fall-2011/index.htm][Dynamic Programming and Stochastic Control]]
 *** Stochastic Optimization for energy systems (Juan Mi's stuff)
     *Conclusion*: Buy Juan Mi's book and go through his course's lecture
      notes, when available.
@@ -13571,9 +13621,14 @@ optimization to be a generalization of linear programming.
 *** [[German Power Market Data]]
 *** [[file:energy.bib::Jensen17euDatSimRE][Jensen & Pinson 2017: RE Europe European Sim Reanalysis (IRPWIND WP82.3)]]
 *** also [[Data Sets for Technology Adoption]]
+*** also [[Optimization/Integration]]
+
+* Cloud Computing
+*** [[cite:Nust20dockerDS10rules][Nuest et al. 2020: Ten Simple Rules DS Containers]]
+*** [[cite:Sculley15HidTechDebtMLsys][Sculley et al. 2015: Hidden Technical Debt ML sys]]
 * TODO Regenerated bib entries
 
-These papers were missing from energy.bin on 1/1/21 and were regenerated.
+These papers were missing from energy.bib on 1/1/21 and were regenerated.
 Maybe they are still referenced in energytop.org
 
 TODO: reference them in outline above and then delete them from here
@@ -14091,7 +14146,8 @@ TODO: reference them in outline above and then delete them from here
 [[cite:Martin21predNNqualNoData][             Martin et al. 2021: Predicting Trends Quality NN no Data]]
    09/21/21  [[cite:Long20EvalLoadFrcstCustLevShrt][Long 2020: Eval Customer Lev Load Frcst]]
              [[cite:AguilarMadrid21elecLoadFrcstML][Aguilar & Antonio 2021: ST Elec Load Frcst ML]]: XGboost better than RF
-
+   12/12/21  [[cite:NYISO2020ldFrcstMan][NYISO 2020: Load Forecasting Manual]] (NYISO peak load ICAP)
+   12/15/21  [[cite:Hall18locTempValsNYCA][Hall et al. 2018: Locational Temporal Values of DER: NY and CA]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
