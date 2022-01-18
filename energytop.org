@@ -1639,7 +1639,7 @@
 *********** may want wavelet basis: [[http://gbi.agrsci.dk/~shd/public/FDA2008/Day1/smooth_talk.pdf][handles discontinuities better]] than B-spline
 *********** can use for basis selection for lagged wind speed basis
 *********** can assure monotonicity for spinning reserves ([[Learning monotonicity]])
-*********** see [[Learning montonicity]]
+*********** see [[Learning monotonicity]]
 *********** [[http://gbi.agrsci.dk/~shd/public/FDA2008/][FDA2008 Copenhagen workshop]]:
 ************* describes the theory of AmpPhaseDecomp, I think
 ************* DONE document on registration alignment: [[file:energy.bib::Ramsay08funcAnalNotes][Ramsay 2008: Notes Functional]]
@@ -2408,7 +2408,7 @@ Scott
 ***** [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning]] with [[Tensor Flow]]
 ***** [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (built-in montonic)
 ***** Make this an NN output layer?  [[cite:Keelin16metalogDist][Keelin 2016: Metalog Distributions]]
-***** also [[Learning montonicity]]
+***** also [[Learning monotonicity]]
 *** Neural Net Quality Metrics
 ***** [[cite:Martin21predNNqualNoData][Martin et al. 2021: Predicting Trends Quality NN No Data]]
 *** <<Learning Physical Models with NN>>
@@ -4310,7 +4310,7 @@ Hope that helps,
 ******* extrapolation beyond training outputs: [[https://www.evernote.com/l/AA0XaycItP9BVZXF7qqYp9wsnhQINsieAaw/][Extrapolation is tough for trees!]]
 ******* Stability (or not?) See: [[Random Forest feature selection]]
 ******* lots of class overlap (combined w/ high dims, I think): [[file:energy.bib::Tomasev13imbalKnnHubs][Tomasev & Mladenic 2013: Class]]
-******* [[Learning montonicity]], although at [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][least boosted trees have a fix]]
+******* [[Learning monotonicity]], although at [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][least boosted trees have a fix]]
 ******* [[Most machine learning tasks involve learning from high-dimensional data, which is often quite difficult][Overlapping classes with imbalance]]
 ***** Trees are good for ? ... (add something here)
 ******* high dim, few samples (n<<p): [[file:energy.bib::Strobl09rcrsPartForest][Strobl et al. 2009 intro recurs part.]]
@@ -5888,16 +5888,16 @@ sera
 *** [[file:energy.bib::Clifton13machLrnPowCurvTurbShear][Clifton et al. 2013: Using]] mach lrn pow curve: turb & shear & dec. tree
 
 *** [[cite:SaintDrenan17probRgnlPVfrcst][Saint-Drenan et al. 2017 prob PV frcst]] 
-* <<Learning montonicity>>
+* <<Learning monotonicity>>
 
   Maybe important for [[Wind Power Curve Learning]], since an ideal power
   curve is monotonic (/except for beyond cutoff/).  Also good for
   [[Conditional Density Estimation][Conditional Density Estimation]], since cdfs must also be monotonic.
 
-*** montonicity with splines: [[http://www.psych.mcgill.ca/misc/fda/ex-growth-d1.html][intro]] text and [[http://www.psych.mcgill.ca/misc/fda/ex-growth-d2.html][example]]
+*** monotonicity with splines: [[http://www.psych.mcgill.ca/misc/fda/ex-growth-d1.html][intro]] text and [[http://www.psych.mcgill.ca/misc/fda/ex-growth-d2.html][example]]
 *** p. 11, [[file:energy.bib::Ramsay08funcAnalNotes][Ramsay 2008: Notes Functional]]
 *** smooth.monotone() in the [[http://cran.r-project.org/web/packages/fda/fda.pdf][R fda package]] should work for this
-*** use montonicity in [[Functional Data Analysis]] regression?
+*** use monotonicity in [[Functional Data Analysis]] regression?
 ***** (p. 23, [[file:energy.bib::Ramsay08funcAnalNotes][Ramsay 2008: Notes Functional]])
 ***** example 2. in [[file:~/lib/R/x86_64-unknown-linux-gnu/2.12/fda/demo/growth.R::f%20x%20b_0%20b_1%20D%201%20exp%20W%20x][fda/demo/growth.R]]
 ***** I don't know yet how to do this in regression, though
@@ -5933,7 +5933,7 @@ sera
 *** Linear quantile spline w/ mono/other constraints: p. 332, [[file:energy.bib::Koenker05QuantRgrssnBook][Koenker 2005: Quantile]]
 *** [[http://www.mai.liu.se/~olbur/PROJECTS/isot_regr.html][Isotonic Regression]] project
 *** [[http://www.mathworks.com/help/techdoc/ref/pchip.html][Matlab's builtin: pchip()]] is mono _if training data is purely monotonic_
-***** montonicity is ensured when the training data is monotonic
+***** monotonicity is ensured when the training data is monotonic
 ******* won't get polynomial-type ringing at sharp edges
 ***** from: [[file:energy.bib::Ableson12classNotesMonoSpline][Ableson: Applications Numerical Methods Lecture]] (monotone matlab, pchip)
 ******* estimates ‘reasonable’ derivatives at each control point
@@ -5945,6 +5945,7 @@ sera
 
 *** [[Monotonic Neural Nets]]
 *** [[Monotonic Boosted Trees]]
+*** [[Monotonic Neural Nets]]
 * <<Conditional Density Estimation>>
 *** <<Quantile Regression>>
 ***** [[file:energy.bib::Bremnes06compQuantileWind][Bremnes 2006]] QR compared
@@ -6142,7 +6143,7 @@ sera
 ******* [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]] (deep meth. for quantiles or DR thresh probs?)
 ******* [[cite:Waltrup15expectileQuantile][Waltrup et al. 2015: Expectile/Quantile DavidGoliath]]: cross, expect loss
 ******* expectile vs quantile: [[cite:Koenker13expectileLivByndMn][Koenker 2013: Expectile Live Beyond Means]]
-******* see also: [[Learning montonicity]] (for smoothing out quantile crossover)
+******* see also: [[Learning monotonicity]] (for smoothing out quantile crossover)
 ******* see also: [[Distributions from quantile forecasts]]
 ***** <<Quantile regression and ABC>>
       Improve QR high dim probs w/ [[Approximate Bayesian Computation (ABC)]]
@@ -6265,7 +6266,7 @@ sera
 
 ***** See also: [[Extreme Quantile Forecasting]]
 ***** See also: [[Probabilistic Deep Learning]]
-***** see also: [[Learning montonicity]] (for smoothing out quantile crossover)
+***** see also: [[Learning monotonicity]] (for smoothing out quantile crossover)
 ***** see also: [[Feature Selection For Probabilistic Forecasts]]
 ***** see also: [[file:energytop.org::*Scenario%20Generation][Scenario Generation]]
 ***** see also: [[Probabilistic Forecasting]]
@@ -6307,7 +6308,7 @@ sera
 ***** [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: Systematic Integration Large (prob. persist & more)]]
 
 ***** see also: [[Counterfactual Distributions]]
-***** see also: [[Learning montonicity]] (for smoothing out cdf crossover)
+***** see also: [[Learning monotonicity]] (for smoothing out cdf crossover)
 ***** see also: [[Quantile Regression]] (the inverse problem)
 *** <<Bootstrapping>>
 ***** [[file:energy.bib::politis03btstrptimeser][politis 2003]]
@@ -6719,7 +6720,7 @@ sera
 ***** Also: [[Non-stationary covariance]]
 *** also [[Forecasting]]
 *** also [[Uncertainty estimation]]
-*** also [[Learning montonicity]]
+*** also [[Learning monotonicity]]
 * <<Regime Learning>>
 *** <<Regime Detection Criteria>>
 ***** [[generic%20change%20point%20detection][generic change point detection]]
@@ -8688,7 +8689,7 @@ Scott
 
          A simple proxy for stability/wake effects:  [[cite:Mittelmeier17powStdRatioWake][Mittelmeier et al. 2017: SCADA data pow std ratio wake]]
 
-******* [[Learning montonicity]]
+******* [[Learning monotonicity]]
 ******* [[file:energy.bib::Sohoni16critRevWindPowCrvModel][Sohoni et al. 2016: Critical Review Wind]]: Wind Power curve
 ******* estimate power curve online, from wind speed predictions and produced power
 ********* could be an additional step of wind forecasting errors corrections
@@ -8845,7 +8846,7 @@ Scott
             From [[file:energy.bib::Tancret99CompNeuralGaussProcAlloy][Tancret et al. 1999: Comparison of artificial]] GP's will
             extend trends for a litle bit, but decay to a default b/c of
             Gaussian covariance decay w/ length scale.  So, NN's may BE
-            better for monotonic trends!  See also: [[Learning montonicity]]
+            better for monotonic trends!  See also: [[Learning monotonicity]]
 *********** but people do it.  See:
 ************* [[Multi-step%20Gaussian%20Processes%20Forecasting][Multi-step Gaussian Process Forecasting]]
 ************* [[file:energy.bib::Chapados08augFrcstGaussProc][Chapados & Bengio 2008: Augmented Functional Time]]
@@ -11612,10 +11613,10 @@ Scott
 ***** [[file:energy.bib::Morales09valReservWind][Morales et al. 2009: Economic]]
 ***** [[file:energy.bib::Blum10nonlinApproxBayesComp][Blum & Francois 2010: Non Approximate Bayesian Computation]]
 ***** see [[Approximate Bayesian Computation (ABC)]]
-***** see [[Learning montonicity]]
+***** see [[Learning monotonicity]]
 ***** See Juan Miguel (and Tryggvi's?) papers in my email.  I bibtexed some of them, I think.
-***** [[Functional Data Analysis]] can assure montonicity in bidding functions
-***** see [[Learning  montonicity]]
+***** [[Functional Data Analysis]] can assure monotonicity in bidding functions
+***** see [[Learning  monotonicity]]
 *** <<Ramps in Integration>>
 ***** [[file:energy.bib::Svoboda97schedRampConstr][Svoboda et al. 1997: Short]] (term schedule ramp)
 ***** [[file:energy.bib::Soder93rsrvWindHydroThrm][Soder 1993: Reserve]] (wind/hydro/thermal.  Considers net load uncertainty, ramps)
