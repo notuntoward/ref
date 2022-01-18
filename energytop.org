@@ -48,6 +48,7 @@
 *********** [[https://youtu.be/Ejec3ID_h0w][TensorFlow Tutorial]] (Sherry Moore, Google Brain)
 *********** [[file:energy.bib::Geron17HandsOnMachineLearningWithScikitLearnAndTensorFlowConceptsToolsAndTechniquesToBuildIntelligentSystems][Geron 2017: Hands On Scikit Learn TensorFlow Book]] (I have)
 *********** Monotonic Lattice Neural Nets: [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning]]
+            also [[Monotonic Neural Nets]]
 *********** Can do [[Probabilistic Programming]].  See [[TF Probability]]
 *********** Probabilistic Programming language linked to TF: [[Edward2]]
 *********** also "TensorFlow" in howto.org
@@ -2405,9 +2406,10 @@ Scott
 ******* See also: [[Wind spatio-temporal patterns]]
 
 *** <<Monotonic Neural Nets>>
-***** [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning]] with [[Tensor Flow]]
-***** [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (built-in montonic)
-***** Make this an NN output layer?  [[cite:Keelin16metalogDist][Keelin 2016: Metalog Distributions]]
+***** Monotonic Lattice Neural Nets: [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning]]
+***** [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (built-in monotonic)
+***** [[cite:Keelin16metalogDist][Keelin 2016: Metalog Distributions]] Make this an NN output layer?
+***** [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning (lightgbm, xgboost, TensorFLow)]] 
 ***** also [[Learning monotonicity]]
 *** Neural Net Quality Metrics
 ***** [[cite:Martin21predNNqualNoData][Martin et al. 2021: Predicting Trends Quality NN No Data]]
@@ -4403,6 +4405,7 @@ Note that [[https://towardsdatascience.com/8-booming-data-science-libraries-you-
 ******* [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning (lightgbm, xgboost, TensorFLow)]] 
 ******* [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonic Constraints: xgboost 1.0.0-SNAPSHOT documentation]]
 ******* [[Monotonic Neural Nets]]
+******* also [[Learning monotonicity]]
 * <<Boosted Regression>>
 
   Train a prediction algorithm, test, and then train a new model on the residual...
@@ -5914,8 +5917,8 @@ sera
 
     He's written some fortran to do this.
 
-*** TODO I think I sent Tryggvi some other papers on montonic learning (check)
-*** Dispatch by learning montone functions: [[file:energy.bib::Lai05partSwarmDispNonSmth][Lai et al. 2005: Particle]] swarm non-smooth
+*** TODO I think I sent Tryggvi some other papers on monotonic learning (check)
+*** Dispatch by learning monotone functions: [[file:energy.bib::Lai05partSwarmDispNonSmth][Lai et al. 2005: Particle]] swarm non-smooth
 *** [[file:energy.bib::Bollaerts06psplineSimpMultiShape][Bollaerts et al. 2006: Simple P]] splines, multivariate, shape constr
 *** [[file:energy.bib::Eilers15twentyYrsPspline][Eilers et al. 2015: Twenty P]]splines review
 *** [[file:energy.bib::Lyche05SplineMethodsLecNts][Lyche & Moerken 2005: Spline Methods]]: UoOslo Spline course lectures
@@ -6373,7 +6376,7 @@ sera
 ***** generating samples from estimated cdf ([[https://inlieuofabettertitle.wordpress.com/2013/11/30/cant-invert-the-cdf-perhaps-interpolation-is-a-good-idea/][in Python]])
 ***** monotonic cubic interpolation
 ******* [[http://mathematica.stackexchange.com/questions/5929/%25CE%2597ow-to-create-an-interpolated-cdf-from-its-samples][from]] Stackexchange
-******* [[https://en.wikipedia.org/wiki/Monotone_cubic_interpolation][montonic cubic interpolation]] (Wikipedia)
+******* [[https://en.wikipedia.org/wiki/Monotone_cubic_interpolation][monotonic cubic interpolation]] (Wikipedia)
 ******* more cdf interpolation ideas ([[http://stats.stackexchange.com/questions/4909/interpolating-the-empirical-cumulative-function][Cross Validated]])
 ******* [[https://books.google.de/books?id                                                                                         =qkGlfJRuRs8C&pg=PA130&lpg=PA130&dq=inverse+of+noisy+samples+of+a+monotonic+function&source=bl&ots=iOzwIL5LmR&sig=X-e9QiR67gJPwaS-YL_5lTMzibI&hl=en&sa=X&redir_esc=y#v=onepage&q=inverse%2520of%2520noisy%2520samples%2520of%2520a%2520monotonic%2520function&f=false][monotone interpolating splines]] (google books)
 *** <<Distribution Regression>>
@@ -6394,7 +6397,7 @@ sera
 ***** [[cite:Belloni13progEvalHiDim][Belloni et al. 2013: Program]] eval high dim (use LASSO)
 ***** [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]] (deep meth. for thresh probs, no crossover?)
 ***** An NN w/ LSE cost function [[https://books.google.de/books?id                                                                =U_b2BwAAQBAJ&pg=PA5&lpg=PA5&dq=neural+network+for+estimating+conditional+mean&source=bl&ots=hLZiI0M6Tp&sig=hljm-efcyj4eiRoXF9KVHzsgZP0&hl=en&sa=X&redir_esc=y#v=onepage&q=neural%2520network%2520for%2520estimating%2520conditional%2520mean&f=false][estimates conditional mean]] (needed for dist rgrssn)
-***** [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (built-in montonic)
+***** [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (built-in monotonic)
 ***** [[The many ways to use Nadaraya-Watson kernels to predict conditional probs]]
 ***** Nadaraya-Watson for random forest probs: [[cite:Olson18sensRndFrstProbKern][Olson & Wyner 2018: Sense Rand Frst Prob]]
 ***** [[cite:Li08condCDFcatContin][Li & Racine 2008: Nonparametric CDF contin/disc]] (Nadaraya-Watson-like)
