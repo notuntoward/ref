@@ -1442,15 +1442,18 @@
 ***** [[Narrowing/Widening: narrow-or-widen-dwim]]
 ***** <<org-cite>>
 
-      The built in org-mode citation processor, starting with org mode 9.5
+      The new built in org-mode citation processor, starting with org mode 9.5.  Can use [[citar]] for bibtex link processing.
 
 ******* [[https://orgmode.org/org.html#Citation-handling][The Org Manual: Citation-handling]]
 ******* prettier cite rendering: links w/ paper title, etc.
 ********* [[https://github.com/andras-simonyi/org-cite-csl-activate][GitHub - andras-simonyi/org-cite-csl-activate: A CSL-based activation process...]]
 ********* bdarcus's answer to my question about it is [[https://org-roam.discourse.group/t/all-about-the-upcoming-org-cite-feature/1600/27?u=scotto][here]]
+******* converting org-ref links to org-cite
+********* <<code for converting org-ref links to new native org cite links>>
 
+[[https://github.com/bdarcus/citar/issues/442][function to convert org-ref and/or pandoc citations to org]]
+********* using [[https://github.com/bdarcus/citar/issues/485#issuecomment-992463280][pandoc to do org-ref --> org-cite]]
 ******* Eric S. Fraga's question/answer on 10/20/21
-
 
 Config that eventually worked for him
             
@@ -1498,13 +1501,16 @@ eric
 ********* citeproc author [[https://www.reddit.com/r/emacs/comments/oiljph/comment/h4wztn4/?utm_source=share&utm_medium=web2x&context=3][expects]] pandoc to support it
 ********* The pandoc ticket for this: [[https://github.com/jgm/pandoc/issues/7329][#7329]]
 ******* <<citar>>
-org-mode cite link follower
+
+And [[org-cite]]e link follower written by the guy who started native org-mode citation links.  Can replace [[org-roam-bibtex v2]], at least [[https://github.com/bdarcus/citar/issues/485#issuecomment-991994134][according to citar author]].  To adopt energytop.org would need [[code for converting org-ref links to new native org cite links]].
+
 ********* works in plain org 9.5: "jump to bib entry by clicking ref link" 
 ********* bib entry search, like what org-ref helm thing dis
 *********** [[https://github.com/bdarcus/citar][citar: quickly find and act on BibTeX, BibL...]]
 *********** it works best w/ embark, etc.
 ********* setting up citar to open org ref notes on a bibitem
-*********  <<citar and zotero>>
+********* [[https://gist.github.com/bdarcus/09dff264a75ae78330d8ee1a1ee5e1b2][how to create a hydra for use with citar, and org-cite "follow processor" tha...]]
+********* <<citar and zotero>>
 *********** [[https://blog.tecosaur.com/tmio/2021-07-31-citations.html#working-with-zotero][Working with Zotero, July 2021]]
 *********** citar can use zotero bibtex styles
 
@@ -1513,7 +1519,20 @@ They're [[https://www.zotero.org/support/zotero_data][in]] ~\Zotero\styles.  To 
 
 (setq org-cite-csl-styles-dir "~/Zotero/styles")
 
+********* cross-references (to figures, etc.) with citar
+          From: [[https://github.com/bdarcus/oxr][GitHub - bdarcus/oxr]]
 
+********* <<opening the pdfs of the refs of an org-roam node>>
+
+I don't quite understand what a "ref" is here, but this seems useful:
+
+[[https://github.com/bdarcus/citar/issues/531#issuecomment-1013692752][bdarcus/citar#531 Access PDF from org-roam note]]
+
+
+********* mixing org-ref and org-cite references
+          From: [[https://github.com/bdarcus/citar/wiki/major-mode-functions#using-a-different-citation-insert-function][major mode functions · bdarcus/citar Wiki · GitHub]]
+******* converting org-ref links to new org-cite links
+********* [[https://tecosaur.github.io/emacs-config/config.html#citation,code--4]["Attempt to convert org-ref citations to org-cite syntax."]]
 ******* [[https://org-roam.discourse.group/t/what-do-you-think-about-org-ref-v3/2133/16][What do you think about org-ref V3? - #16 by mshevchuk]]
 ***** <<org-ref>>
 ******* [[https://github.com/jkitchin/org-ref/commits/master]["release notes"]]
@@ -2127,7 +2146,12 @@ Have sub folders personal and work, symlinked to different folders. Sync only wo
 ******* org-roam v2 searching
 ********* showing tags in search results, direct querying DB for tags...
           From: [[https://systemcrafters.net/live-streams/september-03-2021/][System Crafters Live! - September 3, 2021 - System Crafters]]
+*********** extra info: [[https://org-roam.discourse.group/t/systemcrafters-hack-selecting-from-a-list-of-notes-with-a-specific-tag/2307/2?u=scotto][SystemCrafters Hack: Selecting from a list of notes with a specific tag - #2 ...]]
+********* v2 uses [[https://org-roam.discourse.group/t/how-to-use-roam-tags-and-or-tags/190/32?u=scotto][org-roam headline tags and #+filetags for the whole file]]
 ********* [[https://org-roam.discourse.group/t/using-consult-ripgrep-with-org-roam-for-searching-notes/1226][bms/org-roam-rg-search()]]: very nice, still a wip, so check thread end
+********* searching for nodes (notes) with tags
+*********** [[https://org-roam.discourse.group/t/show-nodes-of-same-tag-in-org-roam-buffer/2270/2?u=scotto][Show nodes of same tag in org-roam-buffer]]
+********* [[https://org-roam.discourse.group/t/what-is-the-best-way-to-use-org-roam-node-read-with-an-arbitrary-list-of-nodes/2014/4][org-roam-node-read]] for capture accepts filter-fn [[https://github.com/org-roam/org-roam/pull/1993][to limit choices]]
 ******* [[https://www.youtube.com/watch?v=CUkuyW6hr18][5 Org Roam Hacks for Better Productivity in Emacs - YouTube]]
 ******* controlling and limiting property drawers
 ******** avoid creating property drawers in the 1st place
@@ -2135,8 +2159,6 @@ Have sub folders personal and work, symlinked to different folders. Sync only wo
 From: [[https://org-roam.discourse.group/t/control-over-headings-turning-into-nodes/2217/2][Control over headings turning into nodes]]         
 
 Turn this off, I think:
-
-org-id-link-to-org-use-id
 
 ******** [[Hiding/Closing org :PROPERTIES: drawer]]
 
@@ -2147,6 +2169,18 @@ See: [[https://github.com/bdarcus/citar#notes][GitHub - bdarcus/citar: Emacs pac
 
 ******* tidying up org-roam rendering
 ********* 3 posts, starting [[https://org-roam.discourse.group/t/turn-off-the-bright-meta/2174/2?u=scotto][here]]
+******* org-roam-links
+********* [[https://www.orgroam.com/manual.html#Completing-within-Link-Brackets][Completing within Link Brackets]]: complete with '[' and then TAB?
+********* [[https://github.com/org-roam/org-roam/blob/d93423d4e11da95bcf177b2bc3c74cb1d1acf807/extensions/org-roam-overlay.el][Org-Roam-Overlay]] somehow displays link title, [[https://org-roam.discourse.group/t/package-release-org-roam-ui/1871/38?u=scotto][according to nobiot]]
+******* [[https://www.orgroam.com/manual.html#Refs][Org-roam Refs]]: either a web page URL or a bibtex citation key
+******* [[opening the pdfs of the refs of an org-roam node]]
+******* [[org-roam-bibtex v2]] (still needed?)
+******* capture template sending to separate directories
+See: [[https://org-roam.discourse.group/t/setting-up-org-roam-capture-to-file-org-roam-directory-subdirectories/2397/4][Setting up `org-roam-capture-` to file `org-roam-directory` subdirectories]]
+***** <<org-roam-bibtex v2>>
+
+      Could replace ORBv2 with [[citar]]
+
 ***** Intro, basic org-roam info
 ******* [[https://github.com/org-roam][org-roam/org-roam: Rudimentary Roam replica with Org-mode]]
 ******* example: [[https://github.com/jethrokuan/braindump][author's's braindump]]: many org files, pdfs, 
@@ -2446,6 +2480,9 @@ See: [[https://github.com/bdarcus/citar#notes][GitHub - bdarcus/citar: Emacs pac
 *********** NLP I could add to emacs
 ************* This could be added to [[org-similarity]] or [[delve]]
 ************* [[Python NLP libs]]
+************* <<Emacs Application Framework: lib to connect python, etc. to Emacs>>
+*************** [[https://github.com/emacs-eaf/emacs-application-framework][GitHub - emacs-eaf/emacs-application-framework]]
+*************** Emacs Conf. Talk [[https://emacsconf.org/2021/talks/eaf/][Emacs Application Framework: A 2021 Update]]
 *********** also [[Knowledge Graphs in Emacs]]
 ********* [[Visualizing Bibliographies]]
 ******* [[How to take Notes]]
@@ -2688,8 +2725,6 @@ See: [[https://github.com/bdarcus/citar#notes][GitHub - bdarcus/citar: Emacs pac
 ****** also [[Vertico/Selectrum/Consult/Orca/Marginalia]]
 *** <<Vertico/Selectrum/Consult/Orca/Marginalia>>
 ***** <<Vertico & Co faces to match w/ Ivy & Co faces>>
-
-
 ***** also [[Ivy/Swiper/Counsel]]
 *** Viewing pdfs in Emacs
 ***** [[https://youtu.be/LFO2UbzbZhA?t=360][DocViewer works in plain emacs]] (probably Linux, though)
@@ -4337,6 +4372,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 *********** appears to also work with conda files other than environment.yml
           
             says: " search up the directory tree for a file defining a conda environment, such as an environment.yml file, and try to activate the named environment"
+
 *********** hooks to eshell so can easily run conda commands from there          
 *********** =conda-anaconda-home= must be set to anaconda home unless have . file
 
@@ -4541,6 +4577,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ******* [[org-roam author likes org-journal]]
 *** [[Emacs writing tools]]
 *** [[Knowledge Graphs in Emacs]]
+*** [[Emacs Application Framework: lib to connect python, etc. to Emacs]]
 *** Search for Symbol at Point
 ***** =M-s .= is default emacs way to do [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Symbol-Search.html][Symbol Search]]
 
@@ -4550,6 +4587,35 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ***** symbol search and replace: [[refactoring in elpy]]
 ******* [[https://github.com/m-parashar/emax64/releases][emax64: has pdf-tools built-in]]
 ***** also [[Linux on Windows]]
+* Surface Laptop Studio
+*** vscode on WSL
+    On my SLS, follow the steps in:
+    
+    [[https://code.visualstudio.com/docs/remote/wsl-tutorial][Work in Windows Subsystem for Linux with Visual Studio Code]]
+    
+*** tensorflow on WSL
+    on my SLS
+
+    Running tensorflow with [[https://docs.microsoft.com/en-us/windows/ai/directml/dml-intro][DirectML]] (an easy way to use Windows GPUs?), limits python version to 3.7 (as of Nov. 2021)
+
+    But can I run TF w/o a GPU?
+
+***** Worked for python 3.6, should also work for 3.5 and 3.7
+      [[https://docs.microsoft.com/en-us/windows/ai/directml/gpu-tensorflow-wsl][Tensorflow with DirectML on WSL | Microsoft Docs]]
+***** [[https://github.com/microsoft/DirectML/issues/16#issuecomment-645625854][python <= 3.7 is because directml supports TF <= 1.15]]  (TF is 2.0 now).
+***** [[https://github.com/microsoft/tensorflow-directml/wiki/Roadmap#development-moving-forward][On Sept 2021, MS was just starting on TF2 for DirectML]]
+
+*** tensorflow on native Windows
+    Supposed to be doable but I haven't tried it:
+
+    [[https://docs.microsoft.com/en-us/windows/ai/directml/gpu-tensorflow-windows][TensorFlow with DirectML on Windows | Microsoft Docs]]
+
+    Again, as of 10/21/21, and as with TF on WSL, it only works for python 3.5, 3.6, 3.7
+
+*** tensorflow in MacOS
+***** TF main page lists CPU-only support: [[https://www.tensorflow.org/install/pip#windows][Install TensorFlow with pip]]
+***** but MacOS covers python 3.7, 3.8 and 3.9
+***** TF 2.4 on 2019 Intel MacBook: [[https://blog.tensorflow.org/2020/11/accelerating-tensorflow-performance-on-mac.html][Accelerating TensorFlow Performance on Mac — The TensorFlow Blog]]    
 * Surface Book 2
 *** Slow WiFi
     From: [[https://windowsreport.com/surface-book-2-slow-wifi/][Surface Book 2 slow Wi-Fi issues {BEST SOLUTIONS}]]
@@ -4927,7 +4993,18 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ********* TODO [[https://medium.com/@maurogiusti/running-ubuntu-on-windows-10-with-wsl2-c4f06b3c353][Running Ubuntu on Windows 10 with WSL2]]
 ********* also: [[https://docs.microsoft.com/en-us/windows/wsl/install-win10][Windows Subsystem for Linux Installation Guide for Windows 10]]
 ******* [[https://www.howtogeek.com/265900/everything-you-can-do-with-windows-10s-new-bash-shell/][Everything You Can Do With Windows 10’s New Bash Shell]]
-******* Emacs on WSL
+******* TODO Emacs on WSL
+********* TODO Several ways, PPA Repository may be easiest & best
+
+After updating to latest WSL2 (wsl --update) PPA runs graphical emacs,
+but startup is much slower than emacs -nw.  This is without loading my
+big .emacs file.
+
+*********** TODO swap caps/ctrl on linux, so emacs is usable
+*********** TODO get font size right.  On Surface Laptop Studio, they are tiny 
+*********** [[https://linuxhint.com/ubuntu_emacs_installation/][Emacs download and installation on Ubuntu]]
+*********** out of box, PPA install does emacs -nw fine
+
 ********* [[https://github.com/hubisan/emacs-wsl][hubisan/emacs-wsl: Install and run emacs with the Windows Subsystem]]
 ********* [[https://utf9k.net/blog/emacs-wsl2-install/][Setting up Emacs inside of a WSL2 distribution]]
 ********* <<Emacs 25 on Ubunto 16.10>> (what's available on LoW in May, 2017)
@@ -4937,6 +5014,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
           sudo apt-get update
           sudo apt-get install emacs25
 ******* [[https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/][How to Run Graphical Linux Desktop Applications from Windows 10’s Bash Shell]]
+******* [[https://www.youtube.com/watch?v=b1YBx1L8op4][Windows 11 runs Graphical Linux Apps out of the box with WSLg - YouTube]]
 ******* Running Linux window mgr. on windows, .bashrc for DISPLAY env var
         From: [[http://www.zdnet.com/article/how-to-run-run-the-native-ubuntu-desktop-on-windows-10/][​How to run the native Ubuntu desktop on Windows 10 | ZDNet]]
 
@@ -6730,6 +6808,14 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 *** <<MS Office and Emacs>>
 ***** [[Org to/from MS Word]]
 ***** Viewing MS Office or OpenDocument in Emacs adocs: [[http://stackoverflow.com/questions/28474736/how-to-open-pdf-file-in-emacs][need unoconv]] & gs
+***** Getting a link to an outlook email
+******* [[https://superuser.com/a/1256130/1250395][org-mode function + Outlook macro]]
+******* Copy to OneNote: right click on email --> Outlook Icon
+******* Copy to Evernote:  right click on email --> Evernote Icon
+******* Using Outlook web interface
+********* copying web page URL, I think: [[https://itectec.com/webapp/how-to-get-a-link-to-a-specific-email-thread-a-k-a-conversation-in-microsoft-outlook-web-interface/][Outlook web interface doesn't work]]
+********* But via TODO?  [[https://superuser.com/questions/1503128/link-to-microsoft-outlook-365-webmail-email/1572112#1572112][web - Link to Microsoft Outlook 365 Webmail email]]
+******* OR, just give up and copy email text after doing "reply all"
 *** [[Importing pdf tables into Excel/Word]]
 *** Excel
 ***** Interpolate function
@@ -7219,6 +7305,7 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 ******* [[https://confluence.atlassian.com/bitbucket/use-the-ssh-protocol-with-bitbucket-cloud-221449711.html][bitbucket SSH key]]
 ******* [[https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud?team_source=header&utm_source=special-offer-email&utm_medium=email&utm_campaign=EP-124][Learn Git with Bitbucket Cloud | Atlassian Git Tutorial]]
 ******* [[https://developer.atlassian.com/blog/2016/02/6-secret-bitbucket-features/?team_source=header&utm_source=special-offer-email&utm_medium=email&utm_campaign=EP-124][6 Bitbucket secrets - Atlassian Developers]]
+******* Bitbucket is compatible with [[Gitpod]]
 ***** <<git in emacs>>
 ******* [[VC: emacs's builtin version control meta interface]]
 ******* Built-in VC
@@ -10955,7 +11042,9 @@ Maybe it will do until jupyterlab-lsp works again.
 
           conda env update -n base -f base_old_environment.yml
 
-          Note that you can't import an environment of the same name as one that already exists on the new machine e.g. "base" so you have to give it a new name.  If you want to import to the name on the new machine, you can delete the old environment then rename the one you imported e.g.
+          I think the above works for making the base of one machine match another.
+
+          However, folklore somewhere said that you can't import an environment of the same name as one that already exists on the new machine e.g. "base" so you have to give it a new name.  If you want to import to the name on the new machine, you can delete the old environment then rename the one you imported.
           
 ******* CPR workstation install
 
@@ -11461,6 +11550,7 @@ Maybe it will do until jupyterlab-lsp works again.
 
       Suggests plots for you, has sort of "question you want answered by the plot" language, and plots it makes can be translated to matplotlib, and other frameworks, for further refinement.
       
+***** [[Graphviz in Python]]
 ***** [[Plotly]]
 *** [[Powerpoint and Python]]
 *** Paths in python
@@ -11505,20 +11595,28 @@ file_name.parent.mkdir(parents=True, exist_ok=True)
 ******* [[https://dash.plot.ly/][Dash User Guide and Documentation - Dash by Plotly]]
 ******* Connects to [[Plotly]] and [[Plotly Express]]
 *** <<Python Streaming>>
-***** Installing Pyspark in a docker
+***** <<Installing Pyspark in a docker>>
 ******* Better: [[https://medium.com/@suci/running-pyspark-on-jupyter-notebook-with-docker-602b18ac4494][Running PySpark on Jupyter Notebook with Docker – Medium]]
 ******* [[https://stackoverflow.com/questions/33109989/how-to-install-pyspark-spark-for-learning-purpose-on-a-laptop-with-limited-res][How to install pyspark & spark for learning purpose on a laptop with...]]
 ******* Sparkling Water Deployment
 
         https://www.youtube.com/watch?v=jpzi0-1mKyA
 
-*** Python debugging
+******* [[Docker Containers]]
+*** TRY Python debugging
 ***** set a breakpoint by adding a line of code
 
       import pdb; pdb.set_trace() # Pause execution here with the debugger active.
 
-***** Code checkers: [[https://www.pylint.org/][Pylint]], [[https://github.com/davidfraser/pyan][pyan]], [[https://github.com/megies/pyflakes][Pyflakes]]
+***** TRY python code checkers
+******* [[https://www.pylint.org/][Pylint]]
+******* TRY pyre (has vscode extension too)
 
+        Intro: [[https://python.plainenglish.io/using-facebooks-pyre-to-infer-types-in-python-automatically-718d028fe57d][Using Facebook’s Pyre to Automatically Infer Types in Python]]
+        <<vscode>> extension: [[https://marketplace.visualstudio.com/items?itemName=fb-pyre-check.pyre-vscode][pyre-vscode - Visual Studio Marketplace]]
+        
+******* [[https://github.com/davidfraser/pyan][pyan]] 
+******* [[https://github.com/megies/pyflakes][Pyflakes]]
 ***** debuggers
 ******* [[https://medium.com/analytics-vidhya/cyberbrain-python-debugging-redefined-1db4c47a4d32][Cyberbrain: Python debugging, redefine]]: variable dependency graphs & more
         
@@ -11986,6 +12084,11 @@ else:
 ******* shrinking vscode vertical blank space
 ********* [[https://github.com/microsoft/vscode/issues/130287][Controlling vertical space between output elements]]
 ********* [[https://github.com/microsoft/vscode-jupyter/issues/6024][Option to hide toolbars above cells / move them...]]
+******* note taking on vscode
+********* [[dendron]]
+********* [[Foam]]
+******* graphs in vscode
+********* [[Mermaid in vscode]]
 *** Python Package installation
 ***** XGboost on Windows
       Hard to find on Windows.  Almost everything is on linux.  But this seems to work:
@@ -12286,6 +12389,7 @@ else:
 
 ***** [[Simple Jupyter + DVC]]
 ***** [[DAGsHub: "GitHub for DVC"]]
+*** [[https://neptune.ai/][Neptune.ai | Metadata Store for MLOps]]
 *** <<DAGsHub: "GitHub for DVC">>: : built on top of DVC
 
     DAGsHub is a GitHub-like repository for DVC data versioning.  A nice GUI, really nice graph showing DAG and maybe some other stuff.  Would be good for collaboration like GitHub is, but I'm not sure I need it, since as far as I can tell, anything that runs on it would run directly on my desktop, with no DAGsHub "install"
@@ -12304,7 +12408,7 @@ else:
 ***** "git style" version control
 ***** Transforms with "Python's cousin," Starlark
 ***** Based on [[https://techcrunch.com/2015/10/04/why-the-internet-needs-ipfs-before-its-too-late/][IPFS]], a distributed thing that could replace http
-*** [[https://github.com/peopledoc/mlvtools][mlvtools: Public repository for versioning machine learnin...]]
+*** [[https://github.com/peopledoc/mlvt~ools][mlvtools: Public repository for versioning machine learnin...]]
 *** [[RunRouter]]
 *** [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
 *** [[Versioning Jupyter Notebooks]] (by themselves)
@@ -12321,7 +12425,7 @@ else:
 ***** author says it's easier to use in a Jupyter notebook
 ***** Article: [[https://vatlab.github.io/blog/post/sos-workflow-engine/][SoS: a cure to pipelineitis]]
 ***** video: [[https://www.youtube.com/watch?v=U75eKosFbp8][SoS: A polyglot notebook and workflow system]]
-*** [[https://www.gitpod.io/docs/][Gitpod]]: builds/deletes/maintains programming environments like conda -- a docker++
+*** [[Gitpod]]
 *** [[Dask can compute on graphs]]
 *** also [[Parallelization in Python]]
 * Cloud Computing
@@ -12356,6 +12460,16 @@ https://aws.amazon.com/blogs/machine-learning/deploy-trained-keras-or-tensorflow
 
 https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn-support/
 
+
+***** <<Docker Containers>>
+******* excellent YouTube tutorial: [[https://www.youtube.com/watch?v=0oEsMwSxBsk][Containers? So What? Docker 101 Explained.]]
+******* [[cite:Nust20dockerDS10rules][Nuest et al. 2020: Ten Simple Rules DS Containers]]
+******* [[https://www.youtube.com/watch?v=8vXoMqWgbQQ][Top 8 Docker Best Practices for using Docker in Production]]
+******* [[Installing Pyspark in a docker]]
+******* <<Gitpod>>
+********* [[https://www.gitpod.io/docs/][Introduction to Gitpod]]
+********* builds/deletes/maintains programming environments like conda -- a docker++
+********* [[https://www.gitpod.io/blog/bitbucket][Gitpod for Bitbucket]]
 * Android
 *** Commandline
 ***** Termux app
@@ -14607,7 +14721,7 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ***** <<Foam>> Personal knowledge manager
       See: [[https://foambubble.github.io/foam/][Foam | A personal knowledge management and sharing system for VSCode]]
 
-      Also built on VScode: [[dendron]]
+      Also built on [[vscode]] is [[dendron]]
 
 ******* [[https://www.zylstra.org/blog/][Said]] to be a potential open source alternative to [[Obsidian]] (a clone?)
 ***** [[https://nesslabs.com/roam-research-alternatives][Roam Research free, open source, and self-hosted alternatives]]
@@ -14664,7 +14778,7 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ***** <<dendron>>
       From: [[https://www.dendron.so/][Dendron]]
 
-      "hierarchy first" note system that has backlinks and other arbitrary links between notes.  Graphs and backlinks like [[Roam Research]], hierarchy like [[org-mode]].  Text based (markdown), open source, non necessarily web-served, like [[org-roam]] and [[obsidian]].  Built on VScode like [[Foam]].
+      A free "hierarchy first" note system that has backlinks and other arbitrary links between notes.  Graphs and backlinks like [[Roam Research]], hierarchy like [[Org Mode]].  Text based ([[Markdown]]), open source, non necessarily web-served, like [[org-roam]] and [[obsidian]].  Built on [[vscode]] like [[Foam]].
 
       Is "1% finished" on Nov 29, 2020.  Has several intro videos on [[https://www.dendron.so/][main page]].
 
@@ -14678,6 +14792,8 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 
       clicking on graph nodes bring you to note.
 
+******* [[https://www.youtube.com/watch?v=dW6m4_O0qvQ][YouTube: Note taking inside of VS Code]] (dendron)
+      
 ***** <<Trilium>>
       From: [[https://github.com/zadam/trilium/][trilium: Build your personal knowledge base with Trilium Notes]]
       
@@ -14810,6 +14926,8 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ******* Used optionally in [[org-roam]] graphs
 ******* [[graphviz in Emacs]]
 ******* [[Mermaid Diagrams]]: simpler
+******* <<Graphviz in Python>>
+********* [[https://github.com/KairosAerospace/flowgiston][KairosAerospace/flowgiston: Python library for dead-simple flowchart...]]
 ***** <<Mermaid Diagrams>>
 
       Simple markup for creating nicely rendered flow diagrams, etc.  Can try it out online:  [[https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbiAgQVtDaHJpc3RtYXNdIC0tPnxHZXQgbW9uZXl8IEIoR28gc2hvcHBpbmcpXG4gIEIgLS0-IEN7TGV0IG1lIHRoaW5rfVxuICBDIC0tPnxPbmV8IERbTGFwdG9wXVxuICBDIC0tPnxUd298IEVbaVBob25lXVxuICBDIC0tPnxUaHJlZXwgRltmYTpmYS1jYXIgQ2FyXVxuXHRcdCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In19][Mermaid live editor]]
@@ -14823,7 +14941,7 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ********* Emacs: [[https://github.com/abrochard/mermaid-mode][abrochard/mermaid-mode: Emacs major mode for working with mermaid graphs]]
 ********* org mode: [[https://github.com/arnm/ob-mermaid][arnm/ob-mermaid: Generate mermaid diagrams within Emacs org-mode babel]]
 ******* [[Mermaid diagrams in Joplin]]
-******* VScode Mermaid
+******* <<Mermaid in vscode>>
 ********* [[https://marketplace.visualstudio.com/items?itemName=vstirbu.vscode-mermaid-preview][Mermaid Preview - Visual Studio Marketplace]]
 
 ******* <<Obsidian Mermaid>>
@@ -15136,3 +15254,6 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ******* [[https://blog.readwise.io/use-readwise-to-automatically-export-highlights-to-evernote/][How to Automatically Export Your Kindle Highlights to Evernote]]
 *** Syncing Kindle Annotations
 ***** [[https://readwise.io/][Readwise]]: Kindle, Instapaper, Pocket, iBooks, and more
+* Bibliography
+bibliographystyle:unsrt
+bibliography:energy.bib
