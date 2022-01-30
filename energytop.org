@@ -2425,6 +2425,10 @@ Scott
 ***** [[cite:Wan10equivWindPowCurve][Wan et al. 2010: Development Equivalent Wind]]: wind pow curv fit 
 ***** [[cite:Jemberie04infoTheoryHydro][Jemberie 2004: Information Theory Artificial: combined phys and NN]]
 ***** [[cite:Jin19physInvNN][Jin et al. 2019: Physics Driven Deep]]
+***** [[https://github.com/tensorflow/lattice][tensorflow/lattice: Lattice methods in TensorFlow]]: allows domain knowledge
+
+"The library enables you to inject domain knowledge into the learning process through common-sense or policy-driven shape constraints. This is done using a collection of Keras layers that can satisfy constraints such as monotonicity, convexity and pairwise trust"
+
 ***** [[file:energy.bib::vogt15hybridphysmlrgnfrcst][Vogt et al. 2015: hybrid "physical" machine]] regional upscale
 ***** <<Surrogate Models>>
 
@@ -8463,10 +8467,6 @@ Scott
 ***** [[https://www.nrel.gov/midc/solpos/solpos.html][MIDC SOLPOS Calculator]]: time/place --> solar position and intensitytime/ 
 ***** <<Solar Power Forecasting Physical Models>>
 ******* <<Satellite to Ground Irradiance>>
-********* <<Solar Irradiance to Power Physical Models>>
-*********** [[cite:Mayer21cmprPhyMdlPVfrcst][Mayer & Grof 2021: Comparison Physical PV frcst Models]]
-*********** [[cite:Suh17irradMnthlyToHrlyEPP][Suh & Choi 2017: Methods Converting Monthly Sat Irrad to Hourly]]
-*********** [[Irradiance Physical models]]
 ********* <<Irradiance Physical models>>
 *********** [[cite:Ponsukcharoen12irradFrcstSat][Ponsukcharoen 2012: Solar Irradiance Forecast Class Notes]]
 *********** <<Clear Sky Models>>
@@ -8482,6 +8482,11 @@ Scott
 *********** [[Cloud Motion Vector Estimation]]
 ********* <<Cloud Motion Vector Estimation>>
 *********** [[cite:Su20cloudMotionDpLrn][Su et al. 2020: Prediction Short Time]]
+******* <<Solar Irradiance to Power Physical Models>>
+********* [[cite:etip-pv17asessPVfrcstObsNeed][etip-pv 2017: Assess need better PV frcst]]: (1+k)*log(GHI) power model
+********* [[cite:Mayer21cmprPhyMdlPVfrcst][Mayer & Grof 2021: Comparison Physical PV frcst Models]]
+********* [[cite:Suh17irradMnthlyToHrlyEPP][Suh & Choi 2017: Methods Converting Monthly Sat Irrad to Hourly]]
+********* [[Irradiance Physical models]]
 ******* <<Solar physical model software>>
 ********* Solar model chain in python
           
@@ -8767,10 +8772,11 @@ Scott
         us: [[file:energy.bib::Grimit08windStateOfArt][Grimit & Potter 2008: State of Art]]
 ******* see: also [[Network w/ Built-in Power Curve]]
 ******* non-parametric regression w/ power curve learning: [[http://cran.r-project.org/web/packages/truncSP/truncSP.pdf][R's truncSP package]]
-******* see: [[Converting Product to Sums]]
-******* see: [[censored distributions]]
-******* see: [[Regime Learning]] (regimes could be wind spd/dir, cutoff, downregulation, etc.)
-******* see: [[Distribution to Distribution Regression]] (speed ensemble to power distribution learning)
+******* also [[Converting Product to Sums]]
+******* also [[censored distributions]]
+******* also [[Regime Learning]] (regimes could be wind spd/dir, cutoff, downregulation, etc.)
+******* also [[Distribution to Distribution Regression]] (speed ensemble to power distribution learning)
+******* also [[Learning Physical Models with NN]]
 ******* [[http://www.mathworks.com/access/helpdesk/help/toolbox/stats/index.html%3F/access/helpdesk/help/toolbox/stats/nlmefit.html&http://www.google.com/search%3Fq%3DMixed-Effects%2BModels%2Bmatlab&ie%3Dutf-8&oe%3Dutf-8&aq%3Dt&rls%3Dorg.mozilla:en-US:official&client%3Dfirefox-][Mixed effects model]] (matlab)
 ********* constant for wind pred/ mixed for regimes?
 ********* separate wind prediction from power curve learning (which may depend upon dirty blades, etc.)
@@ -8802,7 +8808,7 @@ Scott
 ***** adaptive variance estimation: eg. [[file:energy.bib::Madsen08toolsWindIntegrate][Madsen et al. 2008: Tools for Integrating]]
 ***** affected by wind location on power curve eg. [[file:energy.bib::Zack08truewindOverview][Zack 2008: Overview of AWS]]
 ***** use [[Dynamic PCA]] to notice mismatch (like fault detection)?
-***** also see: [[Probabilistic Forecasting]]
+***** also also [[Probabilistic Forecasting]]
 *** What forecasting composable building blocks to use?
 ***** example of blocks is WPPT in [[file:energy.bib::Madsen08toolsWindIntegrate][Madsen et al. 2008: Tools for Integrating]]
 ***** see also [[Stopping Criteria]]
@@ -8986,7 +8992,7 @@ Scott
 ******* also [[Cupola with Gaussian Process Temporal dependency]]
 ******* [[file:energy.bib::Osborne08realtimeGausProc][Osborne et al. 2008: Towards Real Time]]
 ******* See [[Copula Processes]]
-******* See: [[Non-homogeneous Gaussian Regression]]
+******* also [[Non-homogeneous Gaussian Regression]]
 ***** <<Non-homogeneous Gaussian Regression>>
 
       Seems to be an extreme value (max) technique using [[Gaussian Processes]]?
@@ -9057,8 +9063,8 @@ Scott
        Lambda picking: [[file:energy.bib::Unknown13boxCoxSeasonal][Unknown 2013: Research Paper]] on Box-Cox seasonal
 
 ******* TODO find this: one of the papers i looked at (nonlinear something?) made a linear algorithm nonlinear by multiplying terms
-******* also see: [[Tensors]]
-******* also see: [[Varying coefficient models]]
+******* also also [[Tensors]]
+******* also also [[Varying coefficient models]]
 
 *** <<Load Forecasting (Demand Forecasting)>>
 ***** TODO [[file:energy.bib::Meer18reviewProbPVfrcstNetDmd][Meer et al. 2018: Review Probabilistic PV and demand forecasting]]
@@ -9190,7 +9196,7 @@ Scott
     /collect or ref. all copula, scenario gen, prob frcst stuff here/
 ***** [[file:energy.bib::Meer18reviewProbPVfrcstNetDmd][Meer et al. 2018: Review Probabilistic PV and demand forecasting]]
 ***** [[File:energy.bib::bessa12adaptquantcopulafrcst][Bessa et al. 2012: time]] adaptive quantile copula prob. frcst
-***** see: [[Quantile Mixtures]]
+***** also [[Quantile Mixtures]]
 ***** [[File:energy.bib::mcgovern11multidimtsmotifweath][Mcgovern et al. 2011: identifying]] (sax multi time ts classification for weath)
 
 ***** [[File:energy.bib::messner13probfrcstinvcensor][Messner et al. 2013: probabilistic]]
@@ -9300,10 +9306,10 @@ Scott
 ********* [[file:energy.bib::Peters13StochConvectObsModel][Peters et al. 2013: Stochastic]] convect temporal (Richard Keane)
 ******* [[Rank Histogram]]
 ******* Need ensembles for [[Extreme Quantile Forecasting]], says: [[file:energy.bib::Moehrlen12tradeStrtgyRESeeg2012][Moehrlen et al. 2012: Investigation EEG]]
-******* See: [[Scenario/Ensemble quality metrics]]
-******* See: [[Summing Quantiles]]
-******* See: [[Quantile Mixtures]]
-******* See: [[Distribution to Distribution Regression]] (could be calibration)
+******* also [[Scenario/Ensemble quality metrics]]
+******* also [[Summing Quantiles]]
+******* also [[Quantile Mixtures]]
+******* also [[Distribution to Distribution Regression]] (could be calibration)
 ******* time lagged ensembles
 ********* [[https://www.evernote.com/edit/00309683-c8b5-4c3e-b56f-0d09638bae2a?shard%3Ds13&csrfBusterToken%3D224d4f6f#st%3Dp&n%3D00309683-c8b5-4c3e-b56f-0d09638bae2a][The Ensemble Dimension]]: friendly explanation and pictures of ensembles, including lagged
 ********* time lagged ensemble combination: [[file:energy.bib::Lu07lagEnsemble][Lu et al. 2007: Short Range Numerical]]
@@ -9317,8 +9323,8 @@ Scott
 ******* ensembles and ramps
         <<Ensembles and Ramps>>
 ********* [[file:energy.bib::Jorgensen08aesoFR][Joergensen & M\ohrlen 2008: AESO Wind Power]] (best ensembles, meteorology)
-********* See: [[Regimes and Ramps]]
-********* See: [[Ramp Forecasting]]
+********* also [[Regimes and Ramps]]
+********* also [[Ramp Forecasting]]
 ******* <<Ensemble selection>>
 ********* <<Random Forest Ensemble Selection>>
 *********** [[file:energy.bib::Lofstrom09ensmblSel][Lofstrom et al. 2009: Ensemble]] selection, classif
@@ -9425,7 +9431,7 @@ Scott
 ************* there are online submodular optimization methods: help w/ beam?
 
               the viterbi beam limiting idea may be kind of dumb; can an
-              online submod opt. method (see: [[submodular tutorial slides]])
+              online submod opt. method (also [[submodular tutorial slides]])
               be smarter somehow?
 
 ************* submod combined across time steps
@@ -9680,8 +9686,8 @@ http://www.inf.ufpr.br/lesoliveira/download/ijica2012.pdf
 
 taylor & francis online :: development of machine learning‐based real time scheduling systems: using ensemble based on wrapper feature selection approach - international journal of production research - volume 50, issue 20
 http://www.tandfonline.com/doi/abs/10.1080/00207543.2011.636389
-***** See: [[Copulas]] (and maybe move it to here?)
-***** See: *** Ensuring bounded regression outputs
+***** also [[Copulas]] (and maybe move it to here?)
+***** also *** Ensuring bounded regression outputs
     <<bounded regression outputs>>
 
     Note that the expected value of a perfect quantile forecast would do
@@ -9943,7 +9949,7 @@ onenote:https://d.docs.live.net/4bbd96b3698748f8/Documents/CPR/SolarAnywhere.one
 ******* [[advanced utility forecasting application]] (extreme events)
 ******* [[file:energy.bib::Tomasev11knnHubsHighDim][Tomasev & Mladenic 2011: Nearest Neighbor Voting]] extreme events related
 ******* [[file:energy.bib::Phung09lrnImbalSets][Phung et al. 2009: Learning]] w/ imbalanced sets (extreme events would be imbalanced)
-******* See: [[Non-homogeneous Gaussian Regression]]
+******* also [[Non-homogeneous Gaussian Regression]]
 *** <<Forecast aggregation>> (upscaling)
 ***** <<Point forecast aggregation>>
 ******* [[forecast aggregation by submodular optimization]]
@@ -10536,7 +10542,7 @@ There is also that Dutch PhD thesis where the guy did this Dutch-wide assumed PV
       Example for when higher order (3rd, so product of 3 things) tensor was
       useful
 
-      See: [[file:d:/Users/sotterson/OneDrive/shareHW/school/lectures_misc/hinton10DeepLrnMultIntrct/][Hinton Interaction Video/slide downloads]]
+      also [[file:d:/Users/sotterson/OneDrive/shareHW/school/lectures_misc/hinton10DeepLrnMultIntrct/][Hinton Interaction Video/slide downloads]]
 
       I've downloaded slides from a [[http://videolectures.net/nips09_hinton_dlmi/][2009 talk]] (couldn't get the video) and
       video from a [[https://archive.org/details/Redwood_Center_2010_03_22_Geoffrey_Hinton][2010 talk]] (no slides)
@@ -10560,9 +10566,9 @@ There is also that Dutch PhD thesis where the guy did this Dutch-wide assumed PV
     Has ref for picking interaction terms w/ lasso and hierarchy.
     This one: [[file:energy.bib::Lim15lrnInteractHierGrpLasso][Lim & Hastie 2015: Learning Interactions Hierarchical]]
 *** [[file:energy.bib::Lim15lrnInteractHierGrpLasso][Lim & Hastie 2015: Learning Interactions Hierarchical]]
-*** also see: [[Multiplicative Process Estimation]]
-*** also see: [[Tensors]]
-*** also see: [[Varying coefficient models]]
+*** also [[Multiplicative Process Estimation]]
+*** also [[Tensors]]
+*** also [[Varying coefficient models]]
 * <<Class Imbalance Handling>>
 
   Important for novelty or outlier detection, fault detection, and predictive maintenance.
@@ -11301,7 +11307,7 @@ Scott
       [[file:energy.bib::Skytte99powRegNordPool][Skytte 1999: Nordic Nord Pool]]
 ***** <<Wind/Solar derivatives (ramps)>>
 ******* [[https://www.evernote.com/edit/686a2fba-ddae-4d62-b901-e648c223d0f0#n%3D686a2fba-ddae-4d62-b901-e648c223d0f0][NREL article]]
-******* See: [[Ramp Forecasting]]
+******* also [[Ramp Forecasting]]
 ******* [[file:energy.bib::][Crampes et al. 2018: Supply flex mkt, ramps]]
 ***** Control reserve
 ******* [[cite:Maurer09dimSTctlRsrvProb][Maurer et al. 2009: Dimensioning]] how DE does ctl. res dimensioning
@@ -12912,16 +12918,16 @@ Probabilistic programming library in Python with hooks to numpy and [[Tensor Flo
 ***** <<Isolation Forest Anomaly Detection>>
 ******* Ch5,6 of: [[file:energy.bib::Aggarwal17OutlierAnalysisBook][Aggarwal 2017: Outlier Analysis Book]]
 ******* [[file:energy.bib::ERCIMnews16spclIssueMachLrn][News 2016: Special]] RF and Deep NN were best.
-***** also see [[Concept drift detection]]
-***** also see [[Generic change point detection]]
-***** also see: [[https://www.gitbook.com/book/benfulcher/hctsa-manual/details][Transfer Learning]]
-***** also see [[Fault Detection]]
-***** also see [[Extreme Quantile Forecasting]]
-***** also see [[Changepoint Detection]]
-***** also see [[Outlier detection]]
-***** also see [[Trend Copulas]]
-***** also see [[Concept Drift Detection]]
-***** also see [[State Change Alarm Criteria]]
+***** see [[Concept drift detection]]
+***** see [[Generic change point detection]]
+***** see [[https://www.gitbook.com/book/benfulcher/hctsa-manual/details][Transfer Learning]]
+***** see [[Fault Detection]]
+***** see [[Extreme Quantile Forecasting]]
+***** see [[Changepoint Detection]]
+***** see [[Outlier detection]]
+***** see [[Trend Copulas]]
+***** see [[Concept Drift Detection]]
+***** see [[State Change Alarm Criteria]]
 *** <<Changepoint Detection>>
 ***** <<Generic change point detection>>: when to switch; when to spawn new model
 ******* [[file:energy.bib::Saatcci10chngPtGausProc][Saatci et al. 2010: Gaussian Process Change Point Models]]
@@ -12944,8 +12950,8 @@ Probabilistic programming library in Python with hooks to numpy and [[Tensor Flo
 ******* [[MARS]] (multivariate adaptive regression splines)
 ******* [[file:energy.bib::Lemire07alterPieceLinSeg][Lemire 2007: Linear Time Series Segmentation]]
 ******* [[cite:Minka01BayesLinRegress][Minka 2001: Bayesian Linear Regression Changepoint det]]
-******* see also: [[Novelty Detection]]
-******* see also: [[Clustering of regression models]]
+******* also [[Novelty Detection]]
+******* also [[Clustering of regression models]]
 ******* Quantile changepoint det: p. 332 of [[file:energy.bib::Koenker05QuantRgrssnBook][Koenker 2005: Quantile]] regression
 ******* measures changes in linear dep: [[file:energy.bib::Ombao08evCoherNonStat][Ombao & Van 2008: Evolutionary Coherence Nonstationary Signals]]
 ********* selects optimal window width
@@ -13038,7 +13044,7 @@ Probabilistic programming library in Python with hooks to numpy and [[Tensor Flo
 ***** [[http://www.statisticsviews.com/details/feature/6597751/Outlier-Detection-Gets-a-Makeover---Surprise-Discovery-in-Scientific-Big-Data.html][Outlier Detection Gets a Makeover - Surprise Discovery in Scientific Big Data]]
 ***** [[file:energy.bib::Gupta14OutlierDetTempSurv][Gupta et al. 2014: Outlier Detection Temporal Data]] Survey (also has book)
 ***** [[cite:Aggarwal17OutlierAnalysisBook][Aggarwal 2017: Outlier Analysis]] Book
-***** see: [[Trend Copulas]]
+***** also [[Trend Copulas]]
 
 ***** [[https://www.amazon.com/Detection-Temporal-Synthesis-Knowledge-Discovery/dp/1627053751][Outlier Detection for Temporal Data (Synthesis Lectures on Data Mining and Knowledge Discovery)]] Book
 ***** also [[State Change Alarm Criteria]]
@@ -13062,7 +13068,7 @@ Probabilistic programming library in Python with hooks to numpy and [[Tensor Flo
 ******* [[file:energy.bib::Laptev17tsExtrmFrcastNNuber][Laptev et al. 2017: Time Extreme Event LSTM Uber]]
 ******* [[https://www.google.com/search?q%3Dknn%2Bwith%2Bconcept%2Bdrift&ie%3Dutf-8&oe%3Dutf-8&aq%3Dt&rls%3Dorg.mozilla:en-US:official&client%3Dfirefox-a#q%3Drecurring%2Bconcept%2Bdrift&rls%3Dorg.mozilla:en-US:official&spell%3D1][lots of papers]] on recurring concept drift (like regime learning)
 ******* [[file:energy.bib::Gama14conceptDrftSurvey][Gama et al. 2014]] survey concept drift
-******* see: [[Trend Copulas]]
+******* also [[Trend Copulas]]
 ******* Use [[Local Transfer Entropy & Differential Entropy]] to notice model change?
 ******* see also: [[Transfer Learning]]
 
@@ -13635,7 +13641,7 @@ optimization to be a generalization of linear programming.
 These papers were missing from energy.bib on 1/1/21 and were regenerated.
 Maybe they are still referenced in energytop.org
 
-TODO: reference them in outline above and then delete them from here
+TODO: move their links to the outline above and then delete them from here
 
 *** [[cite:Allen02sprtExtrmVal][Allen 2002: Utilizing the Sequential Probability Ratio Test for Building Joint Monitoring]]
 *** [[cite:Wikipedia17matrixNormDist][Arnold 1981: The Theory of Linear Models and Multivariate Analysis]]
