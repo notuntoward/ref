@@ -187,7 +187,7 @@ With PRUNE, prune the build cache and the build directory."
 
 (setq computerNm (downcase system-name)) ; downcase: was getting random case
 (pcase (eval 'computerNm)
-  ("macbook-pro.local"     ; Geli MacBook Pro
+  ("macbook-pro-3.local"     ; Geli MacBook Pro
    (progn (setq shareDir "/Users/scott/OneDrive/share")))
   ("desktop-6bq3kmf" ; Surface Pro
    (setq shareDir "C:/Users/scott/OneDrive/share"))
@@ -1559,6 +1559,21 @@ Version 2019-11-04 2021-02-16"
 ;; is there a consult function for this?
 (global-set-key [f12] 'repeat-complex-command)
 
+;; ** prevent find-file-literally from wiping out saved place
+
+;; So find-file-literally doesn't wipe out place when visiting
+;; org-files.  This was a problem for consult preview.  It will be
+;; fixed in emacs 29.1
+;; https://github.com/minad/consult/issues/465
+(with-eval-after-load 'saveplace
+  (defun my/dont-save-place-when-find-file-literally (orig-fun &rest args)
+    (unless find-file-literally
+      (apply orig-fun args)))
+
+  (advice-add #'save-place-to-alist
+              :around #'my/dont-save-place-when-find-file-literally))
+
+
 ;; * Search and Replace (see also Swiper/Ivy)
 ;; ** File System Search
 
@@ -1633,7 +1648,6 @@ Version 2019-11-04 2021-02-16"
 ;; ** Completions with Vertico
 
 ;; This came from systemcrafter guy: https://config.daviwil.com/emacs
-
 (defun dw/minibuffer-backward-kill (arg)
   "When minibuffer is completing a file name delete up to parent
 folder, otherwise delete a word"
@@ -2504,6 +2518,14 @@ folder, otherwise delete a word"
 (use-package yaml-mode
   :mode ("\\.yml$" "\\.dvc$")) ;; data version control (DVC) files
 
+;; ** Mermaid
+
+;; from: https://github.com/alexpeits/emacs.d
+(use-package mermaid-mode
+  :ensure t
+  :mode (("\\.mmd\\'" . mermaid-mode)
+         ("\\.mermaid\\'" . mermaid-mode)))
+
 ;; ** General purpose programming config
 
 ;; determines what mode is entered, based on file extension
@@ -2852,9 +2874,16 @@ folder, otherwise delete a word"
 ;; set up org and bib for old way of doing things and experimental org-roam, or a true org-roam, org-ref setup
 (setq bibfile_energy_fnm (expand-file-name "energy.bib" docDir)
       bibfile_energy_pdf_dir (expand-file-name "papers" docDir)
-      bibfile_energytop_fnm (expand-file-name "energytop.bib" docDir))
+      bibfile_energytop_fnm (expand-file-name "energytop.org" docDir)
+      ;; bibnotes_dir (expand-file-name "tmp_papers_notes" docDir)
+      bibnotes_dir (expand-file-name "~/tmp_papers_notes" docDir))
+(setq bibfile_list (list bibfile_energy_fnm
+                     "~/ref/DOE_brainstorm/deepSolarDOE.bib")
+      bibpdf_list (list bibfile_energy_pdf_dir
+                        "~/ref/DOE_brainstorm/papers"))
 
-(setq org_roam_dir "~/OneDrive/share/ref/tmp_org_roam_test")
+
+(setq org_roam_dir "~/tmp_org_roam_test")
 
 (if t
     (progn
@@ -2887,15 +2916,19 @@ folder, otherwise delete a word"
      org-roam-directory org_notes_dir
      )))
 
-;; Users of this require that it really be a list, even if only one item
-(setq bibfile_list bibfile_roam_fnms) ;; helm-bibtex slow w/ energy.bib
+;; ;; Users of this require that it really be a list, even if only one
+;; ;; item
+;; (setq bibfile_list '("~/ref/energy.bib"
+;;                     "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
+
+;; (setq bibfile_list bibfile_roam_fnms) ;; helm-bibtex slow w/ energy.bib
 ;; but include pdfs in energy.bib so it can find pdfs if visited manually
-(setq bibpdf_list (list bibfile_energy_pdf_dir bibfile_roam_pdf_dir)) 
+;;(setq bibpdf_list (list bibfile_energy_pdf_dir bibfile_roam_pdf_dir)) 
 
 ;; Find pdf w/ JabRef/Zotero fields
 (setq bibtex-completion-pdf-field "file")
 ;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
-(setq org-ref-bibliography-notes (expand-file-name "bib-notes" org_roam_dir))
+;;(setq org-ref-bibliography-notes (expand-file-name "bib-notes" org_roam_dir))
 
 ;; ** Org package, basic config
 
@@ -3244,6 +3277,9 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; ** Org-cite (native in org 9.5+)
 
+;; TODO: SEE this for bdarcus's citar embark config wiki
+;; https://github.com/bdarcus/citar/wiki/Embark
+
 (use-package citar
   :straight (:host github :repo "bdarcus/citar")
   :bind (("C-c b" . citar-insert-citation)
@@ -3253,14 +3289,13 @@ TODO: add a cycle that opens or collapses all prop drawers?"
          ("M-b" . citar-insert-preset))
   :custom
   ;; https://github.com/bdarcus/citar/issues/407#issuecomment-968158550
-  (org-cite-global-bibliography '("~/ref/energy.bib"
-                                  "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
-  (citar-bibliography '("~/ref/energy.bib"
-                        "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
-  (citar-library-paths '("~/ref/papers"
-                         "~/ref/DOE_brainstorm/papers"))
+  (org-cite-global-bibliography biblist_new)
+  ;; (org-cite-global-bibliography '("~/ref/energy.bib"
+  ;;                                 "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
+  (citar-bibliography bibfile_list)
+  (citar-library-paths bibpdf_list)
   ;; citar notes don't work, as of 11/28/21
-  (citar-notes-paths) '("~/ref/tmp_papers_notes")
+  (citar-notes-paths bibnotes_dir)
   ;; so citar can open JabRef-style file fields
   (setq citar-file-parser-functions '(citar-file-parser-default
                                       citar-file-parser-triplet))
@@ -3269,6 +3304,8 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   (org-cite-activate-processor 'citar)
   (citar-at-point-function 'embark-act) ; So more C-o options than file list
   (citar-file-open-function 'citar-file-open-external)
+  ;; from emacsconf
+  ;;(citar-file-extensions '("pdf" "org" "md"))
   ;; (citar-file-find-additional-files t) ; finds pdfs... w/ same start as key
   ;;(citar-open-note-function 'orb-citar-edit-note) ; default, I think
   (citar-open-note-function 'orb-bibtex-actions-edit-note) ; OR
@@ -3278,7 +3315,36 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   (citar-filenotify-setup '(LaTeX-mode-hook org-mode-hook))
   :config
   ;; this is supposed to pick up styles, like IEEE but doesn't
-  ;; (setq org-cite-csl-styles-dir "~/Zotero/styles") ;; hangs org on startup
+  ;; (setq org-cite-csl-styles-dir "~/Zotero/styles") ;; hangs org on
+  ;; startup
+  
+  (defun robo/citar-full-names (names)
+    "Transform names like LastName, FirstName to FirstName LastName."
+    (when (stringp names)
+      (mapconcat
+       (lambda (name)
+         (if (eq 1 (length name))
+             (split-string name " ")
+           (let ((split-name (split-string name ", ")))
+             (cl-concatenate 'string (nth 1 split-name) " " (nth 0 split-name)))))
+       (split-string names " and ") ", ")))
+
+  ;; somehow, this section causes the error: progn: Wrong type argument: characterp, "1"
+  ;; (setq citar-display-transform-functions
+  ;;       '((t . citar-clean-string)
+  ;;         (("author" "editor") . robo/citar-full-names)))
+
+  ;; possibly works but I haven't tested what it does w/ some order
+  ;; escaping drug companies; from (cpr
+
+
+  ;; TODO: try above w/ pretty, which might test 
+  (setq citar-templates
+        '((main . "${author editor:55}     ${date year issued:4}     ${title:55}")
+          (suffix . "  ${tags keywords keywords:40}")
+          (preview . "${author editor} ${title}, ${journal publisher container-title collection-title booktitle} ${volume} (${year issued date}).\n")
+          (note . "#+title: Notes on ${author editor}, ${title}")))
+
   )
 
 ;; use consult-completing-read for enhanced interface
@@ -3286,6 +3352,23 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 (with-eval-after-load 'embark
   (advice-add #'completing-read-multiple :override
               #'consult-completing-read-multiple))
+
+
+;; ** Ebib
+
+(use-package ebib
+  :custom
+  (ebib-preload-bib-files bibfile_list)
+  (ebib-index-columns
+        (quote
+         (("timestamp" 12 t)
+          ("Entry Key" 20 t)
+          ("Author/Editor" 40 nil)
+          ("Year" 6 t)
+          ("Title" 50 t))))
+  (ebib-index-default-sort (quote ("timestamp" . descend)))
+  (ebib-timestamp-format "%Y.%m.%d")
+  (ebib-use-timestamp t))
 
 ;; ** Org-ref
 
@@ -3332,58 +3415,108 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; ;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
 ;; ;; several startup org-roams, also initializing org-roam-bibtex 
-;; (use-package org-roam
-;;   ;;  :straight t
-;;   ;; calling one of these commands will initialize Org-roam and ORB
-;;   :commands (org-roam-node-find org-roam-graph org-roam-capture
-;;                                 org-roam-dailies-capture-today org-roam-buffer-toggle)
-;;   :custom
-;;   (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
-;;   (org-id-method 'ts)
-;;   ;; comment out unless specifically want to use ivy
-;;   ;;  (org-roam-completion-system 'ivy)
+(use-package org-roam
+  ;;  :straight t
+  ;; calling one of these commands will initialize Org-roam and ORB
+  :commands (org-roam-node-find org-roam-graph org-roam-capture
+                                org-roam-dailies-capture-today org-roam-buffer-toggle)
+  :custom
+  (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
+  (org-id-method 'ts)
+  ;; from emacsconf
+  (org-roam-node-display-template "${title:80} ${tags:80}")
 
-;;   :bind (("C-c n l" . org-roam-buffer-toggle)
-;;          ("C-c n f" . org-roam-node-find)
-;;          ("C-c n i" . org-roam-node-insert)
-;;          ("C-c n g" . org-roam-graph)
-;;          ("C-c n h" . org-roam-capture)
-;;          ([mouse-1] . org-roam-visit-thing)
-;;          ;; may not exist aymore
-;;          ("C-c n j" . org-roam-dailies-capture-today)
-;;          :map org-mode-map
-;;          ("C-M-i" . completion-at-point))
+  ;; comment out unless specifically want to use ivy
+  ;;  (org-roam-completion-system 'ivy)
+
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n h" . org-roam-capture)
+         ([mouse-1] . org-roam-visit-thing)
+         ;; may not exist aymore
+         ("C-c n j" . org-roam-dailies-capture-today)
+         :map org-mode-map
+         ("C-M-i" . completion-at-point))
  
-;;   :init
-;;   (setq org-roam-v2-ack t)
-;;   ;; set this here instead of in :custom so it can be used during init
-;; ;;  (setq org-roam-directory (file-truename "~/tmp/bibNotesOR"))
-;;   (setq org-roam-directory (file-truename org_roam_dir))
-;;   ;; from: https://www.orgroam.com/manual.html=
-;;   (setq org-roam-dailies-directory (expand-file-name "daily"
-;;                                                      org-roam-directory))
-;;   (setq org-roam-dailies-capture-templates
-;;         '(("d" "default" entry
-;;            "* %?"
-;;            :target (file+head "%<%Y-%m-%d>.org"
-;;                               "#+title: %<%Y-%m-%d>\n"))))
-;;   :config
-;;   (org-roam-db-autosync-mode)
-;;   ;; If using org-roam-protocol
-;;   (require 'org-roam-protocol))
+  :init
+  (setq org-roam-v2-ack t)
+  ;; set this here instead of in :custom so it can be used during init
+  ;;  (setq org-roam-directory (file-truename "~/tmp/bibNotesOR"))
+  ;; truename used for performance: https://org-roam.discourse.group/t/org-roam-buffer-does-not-update-on-click-link-buffer-switch/2364/8?u=scotto
+  (setq org-roam-directory (file-truename org_roam_dir))
+  ;; from: https://www.orgroam.com/manual.html=
+  (setq org-roam-dailies-directory (expand-file-name "daily"
+                                                     org-roam-directory))
+  (setq org-roam-dailies-capture-templates
+        '(("d" "default" entry
+           "* %?"
+           :target (file+head "%<%Y-%m-%d>.org"
+                              "#+title: %<%Y-%m-%d>\n"))))
+  :config
+  (org-roam-db-autosync-mode)
+  ;; If using org-roam-protocol
+  (require 'org-roam-protocol))
 
 ;; ** org-roam-ui (graph viewing)
 
-;; ;; config from: https://github.com/org-roam/org-roam-ui
-;; (use-package org-roam-ui
-;;   :straight (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
-;;   :after org-roam
-;;   :config
-;;   (setq org-roam-ui-sync-theme t
-;;         org-roam-ui-follow t
-;;         org-roam-ui-update-on-save t
-;;         org-roam-ui-open-on-start t))
+;; config from: https://github.com/org-roam/org-roam-ui
+(use-package org-roam-ui
+  :straight (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+  :after org-roam
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
 
+;; ** org-roam-bibtex
+
+(use-package org-roam-bibtex
+  :config
+  (setq org-roam-capture-templates
+        '(("d" "default" plain "%?"
+           :if-new (file+head "${slug}.org"
+                              "#+title: ${title}\n#+SETUPFILE: ~/ref/tmp_papers_notes/setup_file.org\n* References :ignore:\n#+print_bibliography:")
+           :unnarrowed t)
+          ;; capture to inbox
+          ("i" "inbox" entry "* TODO %?\n"
+           :target (node "45acaadd-02fb-4b93-a741-45d37ff9fd5e")
+           :unnarrowed t
+           :empty-lines-before 1
+           :empty-lines-after 1
+           :prepend t)
+          ;; bibliography note template
+
+          ("r" "bibliography reference" plain "%?"
+~/ref/tmp_papers_notes
+;;           :if-new (file+head "references/notes_${citekey}.org"
+           :if-new (file+head "~/ref/tmp_papers_notes/refs/notes_${citekey}.org"
+                              "#+title: Notes on ${title}\n#+SETUPFILE: ~/ref/tmp_papers_notes/refs/ref/setup_file_ref.org\n* References :ignore:\n#+print_bibliography:")
+           :unnarrowed t)
+          ;; for my annotated bibliography needs
+          ("s" "short bibliography reference (no id)" entry "* ${title} [cite:@%^{citekey}]\n%?"
+           :target (node "01af7246-1b2e-42a5-b8e7-68be9157241d")
+           :unnarrowed t
+           :empty-lines-before 1
+           :prepend t)))
+  (defun robo/capture-to-inbox ()
+    "Capture a TODO straight to the inbox."
+    (interactive)
+    (org-roam-capture- :goto nil
+                       :keys "i"
+                       :node (org-roam-node-from-id "45acaadd-02fb-4b93-a741-45d37ff9fd5e")))
+  (require 'org-roam-bibtex)
+
+  ;; TODO: figure out note files dirs in tis
+  ;; (expand-file-name "notes_${citekey}.org" bibnotes_dir)
+
+  (setq citar-open-note-function 'orb-citar-edit-note
+        citar-notes-paths '("~/ref/tmp_papers_notes/refs")
+        orb-preformat-keywords '("citekey" "title" "url" "author-or-editor" "keywords" "file")
+        orb-process-file-keyword t
+        orb-file-field-extensions '("pdf")))
 
 ;; *** Org-roam API
 ;;
