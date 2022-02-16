@@ -4373,6 +4373,7 @@ Hope that helps,
 ********* [[cite:Strobl07randFrstImprtncBias][Strobl et al. 2007: Bias Random Forest Feat Imp]]
 ********* [[cite:Deng11featImpRFmultiVarBias][Deng et al. 2011: Bias Importance Measures RF]]
 ********* [[cite:Zhou21unbiasedRFfeatImp][Zhou & Hooker 2021: Unbiased Measurement RF Feat Imp]]
+********* Tree Shap works best: [[https://www.evernote.com/l/AA2l1dRm2WBJPY1j8w6RyoPyCAJk-xH5B0I][Interpretable Machine Learning with XGBoost]]
 ********* also [[Feature Importance]]
 ******* also [[Random Forests]]
 ***** TODO <<Random Forest Probabilistic Regression>>
@@ -4400,6 +4401,12 @@ Hope that helps,
 Note that [[https://towardsdatascience.com/8-booming-data-science-libraries-you-must-watch-out-in-2022-cec2dbb42437][LightGBM are now (2021) doing better than XBBoost]], are faster and use less memory.
 
 ***** [[https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/][A Gentle Introduction to XGBoost for Applied Machine Learning]]
+***** <<LightGBM>>
+******* [[file:energy.bib::Ke17LightGBM][Ke et al.: LightGBM]]: original paper
+******* [[file:energy.bib::Hou18QRimplemHowLightGBM][Hou 2018: How LightGBM does QR]]
+******* [[https://www.evernote.com/l/AA3fzOkwtEJNCLmuUblCYNj5yBih9CA-w04][CatBoost vs. Light GBM vs. XGBoost - Towards Data Science]]
+******* [[https://www.evernote.com/l/AA2l1dRm2WBJPY1j8w6RyoPyCAJk-xH5B0I][Interpretable Machine Learning with XGBoost]]: Shap in some LGBMs
+******* [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ][Monotonicity constraints in machine learning]]
 ***** [[https://www.evernote.com/l/AA2l1dRm2WBJPY1j8w6RyoPyCAJk-xH5B0I/][Interpretable Machine Learning with XGBoost]]
 ***** Adaboost: [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining ADABOOST and Random forest Interp]]
 ***** [[file:energy.bib::Chen15higgsBoostTr][Chen & He 2015: Higgs Boson Boosted Trees]]
@@ -4855,8 +4862,6 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                            
 *********** [[http://www.psych.mcgill.ca/misc/fda/software.html][FDAfuns]]: functional data code, including splines
 *********** [[file:energy.bib::Cao12crvDerivParaPenSpln][Cao et al. 2012: Estimating]] curves, derivs penalized spline w/ also parametric penalty (Matlab)
 *********** Matlab B-spline toolbox (free) [[http://www.mathworks.de/matlabcentral/fileexchange/27047-b-spline-tools/content/bspline_tools_1_2/doc/html/BsplineDoc.html#5][approximates a reasonable power curve]], does 2D
-*************
-
 *********** [[file:energy.bib::Eilers96FlexSmthBsplnPnlty][Eilers & Marx 1996: Flexible B]] penalized spline (R and Matlab in paper)
 *********** Matlab [[http://www.mathworks.de/matlabcentral/fileexchange/27047-b-spline-tools][B-Spline Tools]] (free) [[http://www.mathworks.de/matlabcentral/fileexchange/27047-b-spline-tools/content/bspline_tools_1_2/doc/html/BsplineDoc.html#23][does 2D spline fit]].
 *********** Matlab [[http://www.mathworks.de/matlabcentral/fileexchange/19632-n-dimensional-bsplines][N-Dimensional BSplines]]: does up to 3D splines
@@ -6076,6 +6081,7 @@ sera
 ******* [[file:energy.bib::Juban07ProbWndFrcstFeatSelKDE][Juban et al. 2007: Probabilistic Wind Power Kernel Forecasts]] (compared against kernels)
 ******* [[file:energy.bib::Fugon08dataMineFrcst][Fugon et al. 2008: Data]]: Wind power feature selection, prob forecast
 ******* also [[Random Forest Probabilistic Regression]]
+******* [[LightGBM]] boosted tree also does quantile regression
 ***** <<Autoregressive Quantile Regression>>
 
       Lots of algorithms, maybe good for Henry Martin's limit order book models
@@ -6187,7 +6193,7 @@ sera
 ******* Pinson boosting paper
 ******* new Moeller paper
 ******* Treed Gaussian processes paper
-******* <<Tree-Based Probabilistic Regression>>
+******* [[Tree-Based Probabilistic Regression]]
 ******* see also [[Boosted Regression]]
 ******* see also [[Continuous Output Boosting]] (more specific)
 ******* see also: [[Feature selection for varying coefficient models]]
@@ -8484,7 +8490,12 @@ Scott
 *********** [[cite:Su20cloudMotionDpLrn][Su et al. 2020: Prediction Short Time]]
 ******* <<Solar Irradiance to Power Physical Models>>
 ********* [[cite:etip-pv17asessPVfrcstObsNeed][etip-pv 2017: Assess need better PV frcst]]: (1+k)*log(GHI) power model
-********* [[cite:Mayer21cmprPhyMdlPVfrcst][Mayer & Grof 2021: Comparison Physical PV frcst Models]]
+********* Self-heating matters: [[https://www.evernote.com/l/AA2fHn7be0RNjJ3xKgk8696G5VXXukgLkX4/][PV can heat the local urban environment]]
+********* Soiling models
+*********** CPR [[https://www.solaranywhere.com/support/solar-energy-modeling-services/soiling-loss-modeling/?mkt_tok=MzY5LUhCWi02MDUAAAGCWiB1Qj2QxQ8IKMR3KcPxjnxkhrdX8vGwCyjHZXmIBvONFyQjJ5HiKBhOmUFrINRCq7b5KCMb8OIeOL4DqUvuzCTqOY8tnM_MkNNs2gUKWw][says]] that Li20 paper says: 30% capacity loss in N. Africa
+*********** CPR [[https://www.solaranywhere.com/support/solar-energy-modeling-services/soiling-loss-modeling/?mkt_tok=MzY5LUhCWi02MDUAAAGCWiB1Qj2QxQ8IKMR3KcPxjnxkhrdX8vGwCyjHZXmIBvONFyQjJ5HiKBhOmUFrINRCq7b5KCMb8OIeOL4DqUvuzCTqOY8tnM_MkNNs2gUKWw][uses]] pvlib.soiling.hsu
+********* Snow-loss modeling
+*********** CPR has [[https://www.solaranywhere.com/support/solar-energy-modeling-services/snow-loss-modeling/?mkt_tok=MzY5LUhCWi02MDUAAAGCWiB1Qg_o-EPyudOwTdbiUg7z8bWWUay_qVtShI5s8nvS1jEd8yS-9u1SapSoIEIFhh7QxwdRXSUGXypy1sOFNm7IRvFOefv5tEW9Q1PG-g][two methods for solar loss]], one based on [[https://www.solaranywhere.com/support/solar-energy-modeling-services/snow-loss-modeling/?mkt_tok=MzY5LUhCWi02MDUAAAGCWiB1Qg_o-EPyudOwTdbiUg7z8bWWUay_qVtShI5s8nvS1jEd8yS-9u1SapSoIEIFhh7QxwdRXSUGXypy1sOFNm7IRvFOefv5tEW9Q1PG-g][SAM/NREL study]]
 ********* [[cite:Suh17irradMnthlyToHrlyEPP][Suh & Choi 2017: Methods Converting Monthly Sat Irrad to Hourly]]
 ********* [[Irradiance Physical models]]
 ******* <<Solar physical model software>>
@@ -10500,6 +10511,7 @@ later corrected by greg heath:
 There is also that Dutch PhD thesis where the guy did this Dutch-wide assumed PV adoption; he deaggregated that using logistic regression outputs as weights.
 
   *** [[Aggregated regression using GLMs]]
+*** [[cite:Bidgely22energyDisagg][Bidgely 2022: Energy Load Disaggregation]]: house disag, only 30 days of data
 * <<Tensors>>
 
   Stuff that makes tensors easier, or uses them
@@ -13375,7 +13387,7 @@ TOTO: read Fan16* for an overview
 
 ***** TODO [[cite:Karpathy16deepReinfLrnPongPix][Karpathy 2016: Deep Reinforcement Learning]] Pong Pix Blog
 ***** [[https://en.wikipedia.org/wiki/Reinforcement_learning][Reinforcement learning - Wikipedia]]
-***** [[http://www.wildml.com/2016/10/learning-reinforcement-learning/][Learning Reinforcement Learning (with Code, Exercises and Solutions) – WildML]]
+***** [[http://www.wildml.com/2016/10/learning-reinforcement-learning/][Learning Reinforcement Learning (with Code, Exercises and Solutions) WildML]]
 ***** [[https://www.youtube.com/watch?v=2pWv7GOvuf0][RL Course by David Silver - Lecture 1: Introduction to Reinforcement Learning]]
       This course is preferred by at least one commenter [[David Silve][here]].
 ***** [[cite:Szepesvari10algReinfLrnBook][Szepesvari 2010: Algorithms for Reinf Lrn Book]] (has slides)
@@ -13410,7 +13422,7 @@ TOTO: read Fan16* for an overview
 ***** Tutorial: [[https://towardsdatascience.com/how-to-explain-black-box-models-with-shap-the-ultimate-guide-539c152d3275][Hate Black-box Models? Time to Change That With SHAP]]
 ***** [[https://www.evernote.com/l/AA1sBGonQh1GDac8BlJJ9a0iWSDqMCZ4if0/][How to avoid the Machine Learning blackbox with SHAP]]
 
-*** [[https://www.evernote.com/l/AA2l1dRm2WBJPY1j8w6RyoPyCAJk-xH5B0I/][Interpretable Machine Learning with XGBoost]]
+*** Tree Shap better than featImp: [[https://www.evernote.com/l/AA2l1dRm2WBJPY1j8w6RyoPyCAJk-xH5B0I][Interpretable Machine Learning with XGBoost]]
 *** [[Interpretable regression metrics]]
 *** [[Graph Networks]]
 *** [[file:energy.bib::Nathans12mlrVarImp][Nathans et al. 2012: Interpreting var imp, MLR and PCA]]
