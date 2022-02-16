@@ -2138,6 +2138,7 @@ Have sub folders personal and work, symlinked to different folders. Sync only wo
           
 *********** capture template for separate dirs
             From: [[https://org-roam.discourse.group/t/how-to-customize-file-name-and-path-at-time-of-capture/1213][How to Customize File Name and Path at Time of Capture]] 
+********* [[https://org-roam.discourse.group/t/how-to-make-org-roam-dailies-goto-always-go-to-default-template/2450/2?u=scotto][How to make org-roam-dailies-goto always go to default template?]]
 ********* separate by tagging
 *********** org-roam [[https://org-roam.discourse.group/t/implementing-hierarchies-namespaces-in-org-roam-v2/1504/2?u=scotto][v2 uses org-roam tags, which can be hierarchical]]
 *********** also [[learn to use OR v2 tags]]
@@ -2152,6 +2153,8 @@ Have sub folders personal and work, symlinked to different folders. Sync only wo
 ********* searching for nodes (notes) with tags
 *********** [[https://org-roam.discourse.group/t/show-nodes-of-same-tag-in-org-roam-buffer/2270/2?u=scotto][Show nodes of same tag in org-roam-buffer]]
 ********* [[https://org-roam.discourse.group/t/what-is-the-best-way-to-use-org-roam-node-read-with-an-arbitrary-list-of-nodes/2014/4][org-roam-node-read]] for capture accepts filter-fn [[https://github.com/org-roam/org-roam/pull/1993][to limit choices]]
+********* OR searching with consult-ripgrep
+*********** [[https://org-roam.discourse.group/t/using-consult-ripgrep-with-org-roam-for-searching-notes/1226/31?u=scotto][Using consult-ripgrep with org-roam for searching notes]]
 ******* [[https://www.youtube.com/watch?v=CUkuyW6hr18][5 Org Roam Hacks for Better Productivity in Emacs - YouTube]]
 ******* controlling and limiting property drawers
 ******** avoid creating property drawers in the 1st place
@@ -2177,6 +2180,31 @@ See: [[https://github.com/bdarcus/citar#notes][GitHub - bdarcus/citar: Emacs pac
 ******* [[org-roam-bibtex v2]] (still needed?)
 ******* capture template sending to separate directories
 See: [[https://org-roam.discourse.group/t/setting-up-org-roam-capture-to-file-org-roam-directory-subdirectories/2397/4][Setting up `org-roam-capture-` to file `org-roam-directory` subdirectories]]
+******* capture template automatically tagging as draft
+        From: [[https://jethrokuan.github.io/org-roam-guide/][How I Take Notes with Org-roam]]
+
+Idea is to always start notes as draft so that you can find unfinished work later. Once you're done, you manually remove the draft tag.  I may or may not find this useful.  The code:
+
+(defun jethro/tag-new-node-as-draft ()
+  (org-roam-tag-add '("draft")))
+(add-hook 'org-roam-capture-new-node-hook #'jethro/tag-new-node-as-draft)
+
+
+Seems like a nice way to brainstorm a bunch of notes and then find them later Normally, I do this in org with empty headlines, but if you're making single note zettel files, they're not so easy to flip through; in this case, I can see how this would help find them.
+
+But if you used the "node per headline" idea and brainstormed in one file, finding them later would be as easy as in org-mode.
+
+******* work flow with org-roam and [[zotero]]
+********* [[https://org-roam.discourse.group/t/has-anyone-migrated-away-from-zotero-mendeley-to-just-an-org-based-solution-probably-org-ref/772/2?u=scotto][nobiot's workflow diagram]]
+
+******* deleting an org-roam file and references to it
+        From: [[https://org-roam.discourse.group/t/any-recommended-methodology-to-delete-an-org-roam-file/54/5][Any recommended methodology to delete an org-roam file?]]
+
+For now, simply deleting a file won't fix references to it in notes.  But at least if you do it with dired, the OR database will be updated; if deleted outside of emacs, the DB will be updated when you run =M-x org-roam-db-build-cache=.
+
+[[https://org-roam.discourse.group/t/any-recommended-methodology-to-delete-an-org-roam-file/54/6?u=scotto][Guy calls python]] that both deletes the note references and the file.  But this still doesn't handle references to a headline.
+
+
 ***** <<org-roam-bibtex v2>>
 
       Could replace ORBv2 with [[citar]]
@@ -8800,6 +8828,8 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
           From: [[https://plot.ly/python/figurewidget/][Plotly FigureWidget Overview]]
 ********* [[grouped stacked bar plot in plotly]]
 ********* [[waterfall charts in plotly]]
+********* vertical and horizontal lines and boxes in plotly
+*********** [[https://plotly.com/python/horizontal-vertical-shapes/][Horizontal Vertical Shapes]]
 ********* [[altair]] is similar, maybe more concise?
 ******* <<Bokeh:>> interative, in at least R and python
 ********* [[Python Bokeh]] 
@@ -10764,6 +10794,13 @@ Maybe it will do until jupyterlab-lsp works again.
 
       %config InlineBackend.figure_format ='retina'
 
+      OR
+
+      import matplotlib_inline.backend_inline
+      matplotlib_inline.backend_inline.set_matplotlib_formats('retina')
+
+      In VSCODE, eyeballing, the plots look the same with thest two methods
+
 ***** <<Versioning Jupyter Notebooks>>
 
       Conclusion: [[https://github.com/mwouts/jupytext][Jupytext]] is the "[[https://nextjournal.com/schmudde/how-to-version-control-jupyter][most complete version control solution]]" and to me, it seems quite workable, esp. if you paired notebooks.  Maybe config so .py files are in subdir (or not?)?  
@@ -11503,6 +11540,7 @@ Maybe it will do until jupyterlab-lsp works again.
 ******* pandas/series is closer: [[https://machinelearningmastery.com/time-series-data-visualization-with-python/][Time Series Data Visualization with Python]]
 ******* also [[R functions like my Matlab stackplot()]]
 ***** [[https://medium.com/analytics-vidhya/how-to-do-a-sankey-plot-in-python-5298869f5e8e][Process Flow Plots: How to do a Sankey Plot in Python]]
+******* also: [[https://medium.com/analytics-vidhya/how-to-do-a-sankey-plot-in-python-5298869f5e8e][How to do a Sankey Plot in Python]]
 ***** multi-line plots in python
 ******* multi-time series with range slider (plotly)
         [[https://plot.ly/python/time-series/][Time Series With Rangeslider]]
@@ -11589,6 +11627,17 @@ file_name.parent.mkdir(parents=True, exist_ok=True)
 
       # there are many other funcs I didn't look at...
       
+*** Python configuration files
+
+How to store global settings e.g. URLs, passwords and constants without hardcoding in source and checking them into git.  Multi-language would also be nice...
+
+***** <<python-dotenv>>
+      From: [[https://betterprogramming.pub/getting-rid-of-hardcoded-python-variables-with-the-dotenv-module-d0aff8ce0c80][Python Dotenv Module | by Nicholas Obert | Better Programming]]
+
+      This stores configs in a dot file.  Syntax looks like bash.
+      
+***** I also read about something that was superior to JSON and XML.  Where?  
+
 *** <<Python Dashboarding>>
 ***** [[Dashboarding with Jupyter Notebooks]]
 ***** <<Dash>>
@@ -12334,6 +12383,51 @@ else:
 *** <<Python NLP libs>>
 ***** [[https://towardsdatascience.com/5-nlp-models-that-you-need-to-know-about-754594a3225b][5 NLP Models That You Need to Know About]]
 ***** [[https://towardsdatascience.com/6-nlp-techniques-every-data-scientist-should-know-7cdea012e5c3][6 NLP Techniques Every Data Scientist Should Know]]
+*** combinations of stuff in lists with python
+
+    and also avoiding deeply nested loops
+    
+***** itertools.product: All combinations of lists (list of lists)
+
+    #+BEGIN_SRC python
+      from itertools import product
+
+      fruits = ["apple", "orange", "pear"]
+      recipes = ["pie", "juice", "cake"]
+      pies = ['crumble','tart']
+
+
+      for fruit, recipe in product(fruits, recipes):
+          print(fruit, recipe)
+
+    #+END_SRC
+
+    output:
+
+      apple pie
+      apple juice
+      apple cake
+
+
+    #+BEGIN_SRC python
+
+      categories = [fruits, recipes, pies]
+
+      for combo in product(*categories):
+          print(combo)
+          
+    #+END_SRC
+
+    output:
+
+      ('apple', 'pie', 'crumble')
+      ('apple', 'pie', 'tart')
+      ('apple', 'juice', 'crumble')
+   
+***** itertools.combinations: limited combinations
+
+      See sutil.py gencombos()
+      
 * Programming tools
 *** diff/patch
     From: [[https://www.pair.com/support/kb/paircloud-diff-and-patch/][How to use diff and patch]]
