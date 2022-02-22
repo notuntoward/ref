@@ -160,6 +160,7 @@
 *** [[cite:Molnar19interpMLbk][Molnar 2019: Interpretable ML Book]]
 *** [[cite:Sargent21quantEconPython][Sargent & Stachurski 2021: Quantitative Economics Python]]: has code
 *** [[cite:Davidson-Pilon15BayesianMethodsHackers][Davidson-Pilon 2015: Bayesian Methods Hackers]]
+*** [[cite:Molnar18InterpretableMachineLearning][Molnar 2018: Interpretable Machine Learning]]
 *** [[Books w/ source code]]
 *** Wind energy books I could buy
     these three looked good, looking at amazon.com on 9/6/2011
@@ -773,6 +774,10 @@
     _Saturated Model_: a maximally complicated model that comes as close as possible to memorizing the training data.  I think that this can mean that the predicted value exactly equals the true value.  For GLMs, it's the model with the same distribution and link function as the model being tested but which can have the best possible mean response for each input (more or less: [[file:energy.bib::Altman09glmNonlinMdlCourseNts][Altman 2009: Model Adequancy, Deviance, Lect 11]])
 
     Also: [[Forecast quality metrics]]
+
+    Saturated is a good thing for large nets:
+***** [[cite:Bubeck21univrslLawRobust][Bubeck & Sellke 2021: Universal Law Robustness Isoperimetry]]
+***** [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
 
 *** Bayes Error
 
@@ -1489,7 +1494,9 @@
 ***** Should use nested CV (or double BS) for model selection ([[http://stats.stackexchange.com/questions/14516/understanding-bootstrapping-for-validation-and-model-selection][Frank Harrel]] comment)
 ***** See [[http://biostat.mc.vanderbilt.edu/wiki/Main/RmS][this]] for Frank Harrel's rational)
 ***** Really limit complexity by min CV error? 
-      [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
+******* [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
+******* [[cite:Bubeck21univrslLawRobust][Bubeck & Sellke 2021: Universal Law Robustness Isoperimetry]]
+******* also [[Deviance]] (Saturated Model)
 ***** [[https://www.evernote.com/l/AA3SoUDUls5L364oW5_l0PB-1ntmcHZlRQ0/][Wikipedia: Cross-validation (statistics)]]
 ***** [[file:energy.bib::Cochrane18crossValTimeSer][Cochrane 2018: Time Ser. Nested CrossVal: causal, good test, indep assume]]
 ***** [[file:energy.bib::Bergmeir18crossValARfrcst][Bergmeir et al. 2018: Cross Val for Time Series Pred]]: "use normal CV"
@@ -1803,6 +1810,7 @@ STUFF SOME R CODE IN HERE
 ******* Retain 2d relationships in pca w/ tensor approximation: angle/lag?
         http://zoonek2.free.fr/UNIX/48_R/05.html
 ******* [[file:energy.bib::He99multiVarQRsplines][He & Ng 1999: Quantile]] sums of 2D interaction tensor splines
+
 ******* PCA used for direction learning: [[file:energy.bib::Marvuglia11lrnFarmPowCrvGMR][Marvuglia & Messineo 2011: Learning]] farm pow curve GMR instead of MLP
 ******* multi-dimensional spline _smoothing_ [[http://en.scientificcommons.org/42924801][background]]
 ******* multi-dimensional _regression_ splines: [[file:energy.bib::Kagerer13splnLSQregrssnIntro][Kagerer 2013]] intro LSQ spline rgrssn
@@ -2268,6 +2276,7 @@ Scott
 ********* [[cite:Kusiak16shareDataWind][Kusiak 2016: Share data on wind energy]]
 ********* [[cite:openEnergi15machLrnSmrtGrid][openEnergi 2016: How Can Machine Lrn Smart Grid Deep Reinf Lrn]] :DpLrn:DmdRspns:Opt:ReinfLrnDp:SlfCnsmpt:
 ********* [[cite:Sergio15DeepLrnWindFrcst][Sergio & Ludermir 2015: Deep Learning Wind DBN]] :DpLrn:DpBlfNtwrk:FrcstProb:FrcstWndSpd:
+
 ********* [[cite:Bianchi15ShortTermElectric][Bianchi et al. 2015: Short Term Electric Load Echo State PCA]] :DpLrn:FrcstWndSpd:FrcstProb:
 ********* [[cite:Zaytar16wthFrcstWeq2seqRNNlstm][Zaytar & Amrani 2016: Sequence Sequence Weather RNN LSTM (but fake journal?)]]
 ********* [[cite:Zheng17loadFrcstRNNlstm][Zheng et al. 2017: Electric Load Forecasting RNN LSTM]] :DpLrn:FrcstDmd:RNN:LSTM:
@@ -2566,8 +2575,9 @@ This is often an NN e.g [[SUMO toolbox]]
 *** <<Dimension reduction>>
 
     PCA and stuff like that (but try UMAP!).  Sufficient dimR, MI dim R, PLS, etc.
-    start collection stuff here
 
+    start collection stuff here
+***** [[PCA: Principal Components Analysis]]
 ***** <<UMAP: Uniform Manifold Approximation & Projection>>
 
       Better than [[PCA: Principal Components Analysis]], yet [[https://towardsdatascience.com/8-booming-data-science-libraries-you-must-watch-out-in-2022-cec2dbb42437][almost as fast]].  UMAP is [[https://towardsdatascience.com/tricky-way-of-using-dimensionality-reduction-for-outlier-detection-in-python-4ee7665cdf99][good for Anomaly detection]].
@@ -2587,18 +2597,37 @@ This is often an NN e.g [[SUMO toolbox]]
 ***** [[file:energy.bib::May11revVarSelNN][May et al. 2011: Review]] of varsel for NN's: huge tree of featsel/dimred methods
 ***** <<PCA: Principal Components Analysis>>
 
-      _Put here_:
+      Possibly, [[UMAP: Uniform Manifold Approximation & Projection]] is better than PCA
 
-      svd,
-      adaptive,
-      online
-      sparse
-      probabilistic
-      spline,
-      weighted, ....
-
+******* TODO could add SVD
 ******* [[cite:Garcke17dimRedWindTurb][Garcke et al. 2017: Dimension Reduction PCA/DTW Turb Anom]]
 ******* [[cite:Greenewald15krnckrProdPCAspatTempCov][Greenewald & Hero 2015: Robust Kronecker Product PCA spat/time cov]]
+******* [[file:energy.bib::Nathans12mlrVarImp][Nathans et al. 2012: Interpreting var imp, MLR and PCA]]
+******* PCA Gaussianization: [[http://www.uv.es/vista/vistavalencia/software/GPCA/GPCA.htm][Vista GPCA Toolbox 1.0]] (MATLAB)
+          corresponding paper: [[file:energy.bib::Laparra09pcaGauss][Laparra et al. 2009: PCA Gaussianization]]
+******* [[Sparse PCA]] (some variants use lasso)
+******* PCA used for direction learning: [[file:energy.bib::Marvuglia11lrnFarmPowCrvGMR][Marvuglia & Messineo 2011: Learning]] farm pow curve GMR instead of MLP
+******* [[Matlab PCA filling missing values]]
+******* [[file:energy.bib::Ku95dynPCA][Ku et al. 1995: Disturbance]] (DPCA)
+******* [[file:energy.bib::Nathans12mlrVarImp][Nathans et al. 2012: Interpreting var imp, MLR and PCA]]
+******* [[cite:Greenewald15krnckrProdPCAspatTempCov][Greenewald & Hero 2015: Robust Kronecker Product PCA spat/time cov]]
+******* [[cite:Garcke17dimRedWindTurb][Garcke et al. 2017: Dimension Reduction PCA/DTW Turb Anom]]
+******* [[cite:Kuncheva14PCAFeatureExtraction][Kuncheva & Faithfull 2014: PCA Feature Extraction]] change pt. det
+******* [[file:energy.bib::SantosTeixeira10anomSubSpcTrk][Santos & Milidiu 2010: Data]] (uses copied lags, like DPCA)
+******* [[file:energy.bib::Brand02IncrSVDmissDat][Brand 2002: Incremental]] PCA with missing
+******* [[cite:Bianchi15ShortTermElectric][Bianchi et al. 2015: Short Term Electric Load Echo State PCA]]
+******* Using KPCA for kernel: [[http://www.dcs.shef.ac.uk/ml/gpip/abstract/franz.pdf][How to choose the covariance for Gaussian process regression independently of the basis]]
+******* [[file:energy.bib::Morillo13PenEstFDAphd][Morillo 2013: Penalized]] func data analysis: PCA, PLS... splines
+******* [[Spline regression and PCA]]
+******* Fourier or Wavelet bases in functional PCA: [[file:energy.bib::Aguilera13psplinePCA][Aguilera & Aguilera-Morillo 2013: Penalized PCA B]]
+******* [[file:energy.bib::Zhu14SpatVarCoeffJump][Zhu et al. 2014: Spatially Varying Coefficient]] w/ func. PCA train
+******* [[file:energy.bib::Lange03uncertFrcstMetSit][Lange & Heinemann 2003: Relating]] PCA of met stations vs. error
+******* [[file:energy.bib::Althoff12OnlnTnsrFactPCA][Althoff 2012: Online Tensor Factorization]] (featsel faster multilinear tensor PCA)
+******* [[cite:Bianchi15ShortTermElectric][Bianchi et al. 2015: Short Term Electric Load Echo State PCA]] :DpLrn:FrcstWndSpd:FrcstProb:
+******* [[cite:Valpola15neurPCA2deepUnsupLrnBk][Valpola 2015: From neural PCA to deep unsupervised learning (ladder)]]
+******* [[file:energy.bib::Chow99dynPCAintTransf][Chow et al. 1999: Dynamic]] PCA integral: wavelet pca finds delays
+******* [[PCA for Deep Learning]]
+******* [[file:energy.bib::Bengio13repLrnOvrvw][Bengio et al. 2013: Representation Learning]]: deep feat learn & PCA
 ******* [[MDS vs. PCA]]
 ******* UMAP vs. PCA
 ********* [[UMAP: Uniform Manifold Approximation & Projection]]
@@ -2643,6 +2672,7 @@ But whitening is not really done for computer vision, as it transforms the image
 
 But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature learning?
 
+***** [[PCA/PLS for spatio-temporal pattern recognition]]
 ***** <<Partial Least Squares Regression>>
 ******* [[cite:Lee07rbstAdaptPLS][Lee et al. 2007: Robust Adaptive Partial]]
 ******* [[cite:Xu07optWgtPLS][Xu et al. 2007: Optimized sample-weighted PLSR]]
@@ -4232,6 +4262,7 @@ Hope that helps,
 ******* also [[Forecast quality metrics]]
 ******* [[Interpretable Models]] often include feature importance measures
 ***** [[Feature Selection for Deep Learning]]
+***** [[SHAP for feature selection]]
 ***** <<Feature Importance>>
 ******* TODO collect all feature importance links here
 ******* [[Random forest feature importance as a feature selection method]]
@@ -4247,7 +4278,7 @@ Hope that helps,
 *** also [[Dimension Reduction For Changepoint Detection]]
 *** also [[Feature Generation]]
 *** also [[Feature Learning]]
-********* also [[PCA for Deep Learning]]
+*** also [[PCA for Deep Learning]]
 * <<Feature Learning>>
 *** [[Transfer Learning]]
 *** [[cite:Kanter15deepFeatSyntCpla][Kanter & Veeramachaneni 2015: Deep Feat Synth Gauss Copula]]
@@ -4336,6 +4367,7 @@ Hope that helps,
 ******* Random forests are good for high dim: [[file:energy.bib::strobl09rcrspartforest][Strobl et al. 2009]] (tutorial)
 ***** [[file:energy.bib::Wyner17adaboostRandFrstInterp][Wyner et al. 2017: Explaining ADABOOST and Random forest Interp]]
 ***** [[file:energy.bib::Belkin18modernMachLrnBiasVar][Belkin et al. 2018: Reconciling Modern Mach Lrn bias-var tradeoff]]
+***** [[cite:Bubeck21univrslLawRobust][Bubeck & Sellke 2021: Universal Law Robustness Isoperimetry]]
 ***** TODO [[file:energy.bib::Olson18sensRndFrstProbKern][Olson & Wyner 2018: Making Sense Random Forest Prob]] (how to tune for good probs) 
 ***** [[file:energy.bib::Li11randKNNfeatSelVsRandFrst][Li et al. 2011: Random KNN Random Forests]] (more stable than plain RFs)
 ***** [[file:energy.bib::Breiman04consistRandForest][Breiman 2004: Consistency of Random Forests TR]]
@@ -4925,26 +4957,25 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                            
 
       an improvement may be the 3D cylindrical coordinate spline in
       Deng04cylindSpln3D and Jian08volCylBspln (matrix form, good refs)
-******* [[file:energy.bib::VanDerLinde03pcaDimRedSpline][Van 2003: PCA]] dim red for splines
-******* Spline PCA useful for picking # of knots?  [[file:energy.bib::Cornillon08forcstPrincComp][Cornillon et al. 2008: Forecasting]]
-******* Discriminative PCA to get clusts, knots?: [[file:energy.bib::Jombart10discrimPCA][Jombart et al. 2010: Discriminant]]
+******* <<Spline regression and PCA>>
+********* [[file:energy.bib::VanDerLinde03pcaDimRedSpline][Van 2003: PCA]] dim red for splines
+********* Spline PCA useful for picking # of knots?  [[file:energy.bib::Cornillon08forcstPrincComp][Cornillon et al. 2008: Forecasting]]
+********* Discriminative PCA to get clusts, knots?: [[file:energy.bib::Jombart10discrimPCA][Jombart et al. 2010: Discriminant]]
 ******* [[file:energy.bib::Qin07rgrsnClustVSkmeans][Qin & Self 2007: K]] kmeans vs. B-spline basis clust & others, in R
 ********* [[http://cran.r-project.org/web/packages/pbs/index.html][R package pbs]]: easily portable source code does periodic b-spline basis
 ******* [[file:energy.bib::Hofner12mboostR][Hofner et al. 2012: Model R]]  boosted QR with splines, I think
-******* Spline knot choice
-        <<Spline knot choice>>
+******* <<Spline knot choice>>
 ********* matlab [[http://www.mathworks.com/help/curvefit/optknt.html?searchHighlight%3Doptknt][optknt]] function [[http://www.mathworks.com/help/curvefit/examples/how-to-construct-splines.html#zmw57dd0e914][picks them]], references papers
 ********* see also: [[Periodic knots]]
 ********* [[Penalized Splines]] just use a ton of them and then smooth
-******* spline PCA useful for picking # of knots?  [[file:energy.bib::Cornillon08forcstPrincComp][Cornillon et al. 2008: Forecasting]]
+********* spline PCA useful for picking # of knots?  [[file:energy.bib::Cornillon08forcstPrincComp][Cornillon et al. 2008: Forecasting]]
 ******* Fourier or Wavelet bases in functional PCA, w/ splines: [[file:energy.bib::Aguilera13psplinePCA][Aguilera & Aguilera-Morillo 2013: Penalized PCA B]]
 ******* TODO Multi-dimensional splines
 ********* TODO reference here the multi-dim spline things already in energytop.org
 ********* [[file:energy.bib::Shalizi15datAnalElemViewBk][Shalizi 2015: Advanced]]: Section 8.4
 ******* see: [[Spline PCA]]
 ******* see: [[Spline effective degrees of freedom]]
-******* TODO Penalized Splines
-        <<Penalized Splines>>
+******* TODO <<Penalized Splines>>
 ********* Smoothed _regression_ splines: [[file:energy.bib::Kagerer13splnLSQregrssnIntro][Kagerer 2013]] intro LSQ spline rgrssn
 ********* [[file:energy.bib::Eilers10SplnsKntsPnlties][Eilers & Marx 2010: Splines]] Penalized, periodic splines
 ********* [[file:energy.bib::Eilers15twentyYrsPspline][Eilers et al. 2015: Twenty P]]splines review
@@ -5092,8 +5123,11 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                            
 ******* [[cite:Long06qcrad][Long & Shi 2006: QCRad Value Added Product]]
 ******* probably:  [[cite:Bright20irradpy][Bright et al. 2020 irradpy]]
 ***** [[https://wiki.pangaea.de/wiki/BSRN_Toolbox][BSRN Toolbox: software for "surfrad" visualization and QC]]
-***** [[cite:Schmithusen19toolboxBSRNv2][Schmithüsen et al. 2019: BSRN Toolbox V2]]
-***** [[cite:Schmithusen12QualityChecksBSRN][Schmithüsen 2012: Quality Checks BSRN Toolbox]]
+***** [[cite:Hamann17ibmMLsolarFrcstHamann17ibmMLsolarFrcst][Hamann 2017: Multi Multi Model Solar Forecast]]: has surfrad errors
+***** [[cite:Sengupta20ausSolarFrcstNREL][Sengupta & Turchi 2017: Australian Solar Energy Forecasting]]: has surfrad errors
+***** [[file:energy.bib::Alfi16uncertSatteliteGrnd][Alfi et al. 2016: Importance of input and uncert. Satellite Tune]] (CPR): has surfrad
+***** [[cite:Schmithusen19toolboxBSRNv2][Schmithsen et al. 2019: BSRN Toolbox V2]]
+***** [[cite:Schmithusen12QualityChecksBSRN][Schmithsen 2012: Quality Checks BSRN Toolbox]]
 ***** [[cite:Urraca17satelliteSolarQC][Urraca et al. 2017: Quality Ctrl Sattelite Solar Rad]]
 ***** TODO [[cite:Yang18solarIrradQC][Yang et al. 2018: Quality Control Solar]]
 ***** TODO [[cite:Habte19seriQC][Habte et al. 2011: Qual Assess SERI-QC]]
@@ -8497,6 +8531,7 @@ Scott
 ********* Snow-loss modeling
 *********** CPR has [[https://www.solaranywhere.com/support/solar-energy-modeling-services/snow-loss-modeling/?mkt_tok=MzY5LUhCWi02MDUAAAGCWiB1Qg_o-EPyudOwTdbiUg7z8bWWUay_qVtShI5s8nvS1jEd8yS-9u1SapSoIEIFhh7QxwdRXSUGXypy1sOFNm7IRvFOefv5tEW9Q1PG-g][two methods for solar loss]], one based on [[https://www.solaranywhere.com/support/solar-energy-modeling-services/snow-loss-modeling/?mkt_tok=MzY5LUhCWi02MDUAAAGCWiB1Qg_o-EPyudOwTdbiUg7z8bWWUay_qVtShI5s8nvS1jEd8yS-9u1SapSoIEIFhh7QxwdRXSUGXypy1sOFNm7IRvFOefv5tEW9Q1PG-g][SAM/NREL study]]
 ********* [[cite:Suh17irradMnthlyToHrlyEPP][Suh & Choi 2017: Methods Converting Monthly Sat Irrad to Hourly]]
+********* [[cite:Kleissl13SolarEnrgyFrcstBk][Kleissl 2013: Solar Energy Forecasting]]: several kinds of persistence
 ********* [[Irradiance Physical models]]
 ******* <<Solar physical model software>>
 ********* Solar model chain in python
@@ -8988,6 +9023,7 @@ Scott
 ******* Gaussian Process Basics [[http://videolectures.net/gpip06_mackay_gpb/][video]] by David MacKay
 ******* [[Multi-Step-Ahead Prediction with Gaussian Processes and TS-Fuzzy Models]]
 ******* [[file:energy.bib::Girard03gaussProcUncertainMultiStep][Girard et al. 2003: Gaussian Process priors]]
+
 ******* Using KPCA for kernel: [[http://www.dcs.shef.ac.uk/ml/gpip/abstract/franz.pdf][How to choose the covariance for Gaussian process regression independently of the basis]]
 ******* Possibly another interaction term picker: [[file:energy.bib::Duvenaud11AddGausProcIntrct][Duvenaud et al. 2011: Additive]] Gaussian Proce Interact
 ******* [[http://mlg.eng.cam.ac.uk/pub/pdf/Tur11.pdf][Gaussian Processes for State Space Models and Change Point Detection]]
@@ -10204,7 +10240,8 @@ al. 2012: Current]])
 ***** doesn't seem to to separate train and test
 *** [[http://www.cc.gatech.edu/~hpark/othersoftware_data.php][Local Least Square Imputation]] of missing values
 ***** this one can do separate train and test
-*** [[http://hawaii.sys.i.kyoto-u.ac.jp/~oba/tools/bpcafill.html][bpcafill.m: BPCA missing value estimator for Matlab]]
+*** <<bpcafill.m BPCA missing value estimator>>
+***** [[http://hawaii.sys.i.kyoto-u.ac.jp/~oba/tools/bpcafill.html][bpcafill.m: BPCA missing value estimator for Matlab]]
 ***** paper: [[file:energy.bib::oba03pcaimp][Oba et al. 2003: Bayesian]]
 ***** could use part of this to fill separate test set e.g. giving cov matrix from amelia ii.
 ***** there are also r and java versions
@@ -10230,12 +10267,12 @@ al. 2012: Current]])
 *** [[file:energy.bib::pinson10reldiagsercorr][pinson et al. 2010: reliability]]: something about scenario gen /w Fourier
 *** [[file:energy.bib::Sherwood13wgtQRmiss][Sherwood et al. 2013: Weighted]] QR for missing features
 *** [[http://www.google.de/search?hl%3Den&rlz%3D1C1CHFX_en-GBDE446DE446&q%3Dspectral%2Bclustering%2Bwith%2Bmissing%2Bvariables&oq%3Dspectral%2Bclustering%2Bwith%2Bmissing%2Bvariables&aq%3Df&aqi%3D&aql%3D&gs_sm%3De&gs_upl%3D19573l20207l0l20511l7l6l0l0l0l2l229l692l3.2.1l6l0][missing features and spectral clustering]]
-*** periodicity measurement that handles missing features: [[file:energy.bib::Hocke08gapfillLombScarglePer][Hocke & Kämpfer 2008: Gap filling and]]
-
-*** [[https://www.mathworks.com/help/stats/pca.html][Matlab PCA handles missing values]] (docs have references to papers)
+*** periodicity measurement that handles missing features: [[file:energy.bib::Hocke08gapfillLombScarglePer][Hocke & Kampfer 2008: Gap filling and]]
+*** <<Matlab PCA filling missing values>>
+***** [[bpcafill.m BPCA missing value estimator]]
+***** [[https://www.mathworks.com/help/stats/pca.html][Matlab PCA handles missing values]] (docs have references to papers)
 ***** some [[https://stackoverflow.com/questions/27804613/principal-component-analysis-w-alternating-least-squares-for-missing-data][StackOverflow Chatter]] on this: 
 *** [[file:energy.bib::Anagnostopoulos10streamCov][Anagnostopoulos et al.: Streaming Covariance Selection]] (lasso w/ missing feat handling)
-
 *** [[file:energy.bib::doquire11mutinfmissdat][Doquire & Verleysen 2011: Mutual]]
 *** [[file:energy.bib::barber10arhmmwindfrcst][Barber et al. 2010: Auto Regressive HMM]] (bockhorst, missing features)
 *** [[file:energy.bib::dereszynski12sensntwkmissdat][Dereszynski 2012: Probabilistic]] (bayesian, like barber)
@@ -13340,7 +13377,18 @@ TOTO: read Fan16* for an overview
 *** TODO collect relevant papers under this category, optimzation, PV physical models, sklearn pipelines, etc.
 
 *** There's a [[Gaussian Process]] way of doing this, somewhere
-*** [[https://towardsdatascience.com/why-is-everyone-at-kaggle-obsessed-with-optuna-for-hyperparameter-tuning-7608fdca337c][Why Is Everyone at Kaggle Obsessed with Optuna For Hyperparameter Tuning?]]
+*** [[SHAP for feature selection]]: requires hypertuning during featsel
+*** <<Optuna>>
+
+    A mixed method hyperparemeter tuner that looks easy to use, works on a ton of frameworks sklenar, pytorch, [[LightGBM]], ... and can do general distributed optimization.  Seems like a desktop optimization can be simply adjusted to work on the cloud.  It's also very active: in 2/20/22, latest update was 3 days ago
+    
+***** [[https://optuna.org/][optuna.org]]: has several videos, many tutorials, example notebooks, a paper, ...
+***** TODO top level [[https://optuna.readthedocs.io/en/stable/tutorial/index.html][video optuna tutorial]]
+***** [[https://optuna.org/#video][blog posts and tutorial videos about Optuna]]
+***** TODO [[https://github.com/optuna/optuna-examples/blob/main/lightgbm/lightgbm_integration.py][lightgbm module example code]]
+***** [[https://github.com/optuna/optuna/commits/master][Optuna GitHub]]: the code, more examples, code modules, e.g. for lightgbm 
+***** [[https://towardsdatascience.com/why-is-everyone-at-kaggle-obsessed-with-optuna-for-hyperparameter-tuning-7608fdca337c][Why Is Everyone at Kaggle Obsessed with Optuna For Hyperparameter Tuning?]]
+***** [[https://github.com/optuna/optuna-dashboard][Graphical optuna dashboard]]
 *** There's that raft characterizing a lake paper, somewhere here
 * <<Frugal Machine Learning>> ("big data on small data")
 
@@ -13414,15 +13462,59 @@ TOTO: read Fan16* for an overview
 * <<Interpretable Models>>
 *** Youtube: [[https://www.youtube.com/watch?v=UBiNzVfv3L4][Fast, flexible, and interpretable regression modeling, Daniela Witten]]
     Piecewise constant LASSO that's fast and good for high dim problems.
+*** [[cite:Molnar18InterpretableMachineLearning][Molnar 2018: Interpretable Machine Learning]]: Book
 *** <<SHAP Interpretable Models>>
 
     Explains the result of a complicated model with a simpler model, has python
 
 ***** [[file:energy.bib::Lundberg17interpModlPred][Lundberg & Lee 2017: Unif Interp Models w/ code]]
 ***** Tutorial: [[https://towardsdatascience.com/how-to-explain-black-box-models-with-shap-the-ultimate-guide-539c152d3275][Hate Black-box Models? Time to Change That With SHAP]]
+***** Principles: [[https://www.evernote.com/l/AA3IjFu_i-JFAJL4zgyxVrQgx_cE9UiGXH8/][Model interpretability — Making your model confess: Shapley values]]
 ***** [[https://www.evernote.com/l/AA1sBGonQh1GDac8BlJJ9a0iWSDqMCZ4if0/][How to avoid the Machine Learning blackbox with SHAP]]
+***** [[https://www.evernote.com/l/AA2l1dRm2WBJPY1j8w6RyoPyCAJk-xH5B0I/][Interpretable Machine Learning with XGBoost]]
+***** [[cite:Molnar18InterpretableMachineLearning][Molnar 2018: Interpretable Machine Learning]] (has SHAP section/video)
+***** Tree Shap better than featImp: [[https://www.evernote.com/l/AA2l1dRm2WBJPY1j8w6RyoPyCAJk-xH5B0I][Interpretable Machine Learning with XGBoost]]
+***** <<SHAP for feature selection>>
 
-*** Tree Shap better than featImp: [[https://www.evernote.com/l/AA2l1dRm2WBJPY1j8w6RyoPyCAJk-xH5B0I][Interpretable Machine Learning with XGBoost]]
+      SHAP used to rank feats and avoiding a combinatorial search by
+      walking down that list.  But recommendation is to tune hyper
+      params before each ranking.
+
+      *Greedy search goes something like*:
+
+      #+BEGIN_SRC python
+        paramGrid = params_you_wil_consider
+        nFeatsRejectPerIter = k # num featues to reject @ each iteration
+        featsSelected = all_of_them
+        performance[allFeats] = test_model(featsSelected)
+
+        while len(featsSelected) >= minFeats:
+            # model hyperparam could be CV test along param grid
+            model, hyperParamsBest = train_model_hyper(featsSelected,paramGrid)
+            # Shap ranking is also CV according to Probatus article below
+            feat_shap_rank = shap_rank_CV(model,featsSelected)
+            featsSelected = featsSelected[:-NFeatsRejectPerIter]
+            performance[featsSelected] = test_model(featsSelected)
+
+        # retrain w/ best hyperparms & #feats
+        #   OR: 
+        # given selected feats, rerun hyperparam selection
+        # ?
+
+      #+END_SRC
+
+      *Question*: fold this into [[Optuna]] ?
+         
+******* [[https://medium.com/ing-blog/open-sourcing-shaprfecv-improved-feature-selection-powered-by-shap-994fe7861560][ShapRFECV a.k.a. Probatus]]: SHAP orders feats, only for classification
+******* [[https://github.com/cerlymarco/shap-hypetune][shap-hypertune]]:
+
+********* Both regrssn & classif., 
+********* GitHub, works w/ scikit-learn. 
+********* LightGBM and XGBM buit in.
+********* Does greedy search (RFE), Random and Bayes.
+********* [[https://github.com/cerlymarco/shap-hypetune/blob/main/notebooks/LGBM_usage.ipynb][LightGBM sample code]]
+        
+******* also [[Feature Selection]]
 *** [[Interpretable regression metrics]]
 *** [[Graph Networks]]
 *** [[file:energy.bib::Nathans12mlrVarImp][Nathans et al. 2012: Interpreting var imp, MLR and PCA]]
@@ -13474,8 +13566,7 @@ TOTO: read Fan16* for an overview
 ***** other [[http://search.mit.edu/search?site%3Docw&client%3Dmit&getfields%3D*&output%3Dxml_no_dtd&proxystylesheet%3Dhttp%253A%252F%252Focw.mit.edu%252Fsearch%252Fgoogle-ocw.xsl&proxyreload%3D1&as_dt%3Di&oe%3Dutf-8&departmentName%3Dweb&filter%3D0&courseName%3D&q%3Dlinear%2Bprogramming&btnG.x%3D0&btnG.y%3D0][MIT lectures on linear programming]]
 ***** [[http://saravananthirumuruganathan.wordpress.com/2011/03/26/detailed-tutorial-on-linear-programming/][Tutorial on Linear Programming]] (links in the references)
 ***** Book: [[Convex Optimization]] has some linear stuff
-***** Book: [[http://www.amazon.com/exec/obidos/ASIN/1886529191/ref%3Dnosim/mitopencourse-20][Introduction to Linear Optimization]]
-      <<Book: Introduction to Linear Optimization>>
+***** <<Book: Introduction to Linear Optimization>>
 ******* used in MIT course: [[Introduction to Mathematical Programming]]
 ******* [[http://athenasc.com/linoptcontents.html][Table of Contents]]
 ******* has integer programming
