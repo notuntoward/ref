@@ -1796,7 +1796,8 @@ folder, otherwise delete a word"
   (consult-customize
    consult-ripgrep consult-git-grep consult-grep
    consult-bookmark consult-recent-file consult-xref
-   consult--source-file consult--source-project-file consult--source-bookmark
+   consult--source-bookmark consult--source-recent-file
+   consult--source-project-recent-file
    :preview-key (kbd "M-.")))
 
 ;; Example configuration for Consult
@@ -3279,6 +3280,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; TODO: SEE this for bdarcus's citar embark config wiki
 ;; https://github.com/bdarcus/citar/wiki/Embark
+;; TODO: set up .bib file autorefresh: https://github.com/bdarcus/citar#refreshing-the-library-display
 
 (use-package citar
   :straight (:host github :repo "bdarcus/citar")
