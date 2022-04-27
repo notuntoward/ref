@@ -1505,11 +1505,15 @@ eric
 And [[org-cite]]e link follower written by the guy who started native org-mode citation links.  Can replace [[org-roam-bibtex v2]], at least [[https://github.com/bdarcus/citar/issues/485#issuecomment-991994134][according to citar author]].  To adopt energytop.org would need [[code for converting org-ref links to new native org cite links]].
 
 ********* works in plain org 9.5: "jump to bib entry by clicking ref link" 
+********* [[JethroK's org-roam capture templates for citar]]
 ********* bib entry search, like what org-ref helm thing dis
 *********** [[https://github.com/bdarcus/citar][citar: quickly find and act on BibTeX, BibL...]]
 *********** it works best w/ embark, etc.
 ********* setting up citar to open org ref notes on a bibitem
 ********* [[https://gist.github.com/bdarcus/09dff264a75ae78330d8ee1a1ee5e1b2][how to create a hydra for use with citar, and org-cite "follow processor" tha...]]
+********* customizing citar completion display [[https://github.com/bdarcus/citar#templates][with templates]]
+********* opening pdfs w/ citar
+          From: [[https://github.com/bdarcus/citar/issues/531#issuecomment-1065821719][here]]
 ********* <<citar and zotero>>
 *********** [[https://blog.tecosaur.com/tmio/2021-07-31-citations.html#working-with-zotero][Working with Zotero, July 2021]]
 *********** citar can use zotero bibtex styles
@@ -1528,12 +1532,18 @@ I don't quite understand what a "ref" is here, but this seems useful:
 
 [[https://github.com/bdarcus/citar/issues/531#issuecomment-1013692752][bdarcus/citar#531 Access PDF from org-roam note]]
 
+********* opening pdfs and notes in citar using emark
+          From: [[https://github.com/bdarcus/citar/discussions/564#discussioncomment-2456592][Workflow question: acting on bibtex entries #564]]
+
+          does citar-open, which is the pdf?
+          and citar-open-notes (so an org-roam literature note?)
 
 ********* mixing org-ref and org-cite references
           From: [[https://github.com/bdarcus/citar/wiki/major-mode-functions#using-a-different-citation-insert-function][major mode functions · bdarcus/citar Wiki · GitHub]]
 ******* converting org-ref links to new org-cite links
 ********* [[https://tecosaur.github.io/emacs-config/config.html#citation,code--4]["Attempt to convert org-ref citations to org-cite syntax."]]
 ******* [[https://org-roam.discourse.group/t/what-do-you-think-about-org-ref-v3/2133/16][What do you think about org-ref V3? - #16 by mshevchuk]]
+******* [[JethroK uses Zotero and org-cite links]]
 ***** <<org-ref>>
 ******* [[https://github.com/jkitchin/org-ref/commits/master]["release notes"]]
 ******* TODO better install
@@ -2144,6 +2154,11 @@ Have sub folders personal and work, symlinked to different folders. Sync only wo
 *********** also [[learn to use OR v2 tags]]
 ********* separate by note filename
           using hierarchical filenames instead: [[https://org-roam.discourse.group/t/implementing-hierarchies-namespaces-in-org-roam-v2/1504][Implementing Hierarchies/Namespaces in org-roam (V2)]]
+********* [[capture template sending to separate directories]]
+********* [[capture template automatically tagging as draft]]
+********* [[JethroK's directory-specific capture templates]]
+********* [[folder as org-roam note type (JethroK)]]
+********* [[capture templates]]
 ******* org-roam v2 searching
 ********* showing tags in search results, direct querying DB for tags...
           From: [[https://systemcrafters.net/live-streams/september-03-2021/][System Crafters Live! - September 3, 2021 - System Crafters]]
@@ -2165,7 +2180,9 @@ Turn this off, I think:
 
 ******** [[Hiding/Closing org :PROPERTIES: drawer]]
 
-******* renaming OR note filename if #title changes: [[https://org-roam.discourse.group/t/does-renaming-title-no-longer-renames-the-filename/2018/3?u=scotto][arozbiz code]]
+******* renaming OR note filename if #title changes
+********* [[https://org-roam.discourse.group/t/does-renaming-title-no-longer-renames-the-filename/2018/3?u=scotto][arozbiz code]]
+********* [[https://org-roam.discourse.group/t/does-renaming-title-no-longer-renames-the-filename/2018/6?u=scotto][timquelch code]]
 ******* [[preventing an OR v2 node for each org-noter annotation]]
 
 See: [[https://github.com/bdarcus/citar#notes][GitHub - bdarcus/citar: Emacs package to quickly find and act on BibTeX, BibL...]]
@@ -2178,9 +2195,38 @@ See: [[https://github.com/bdarcus/citar#notes][GitHub - bdarcus/citar: Emacs pac
 ******* [[https://www.orgroam.com/manual.html#Refs][Org-roam Refs]]: either a web page URL or a bibtex citation key
 ******* [[opening the pdfs of the refs of an org-roam node]]
 ******* [[org-roam-bibtex v2]] (still needed?)
-******* capture template sending to separate directories
+******* <<capture templates>>
+********* <<capture template sending to separate directories>>
 See: [[https://org-roam.discourse.group/t/setting-up-org-roam-capture-to-file-org-roam-directory-subdirectories/2397/4][Setting up `org-roam-capture-` to file `org-roam-directory` subdirectories]]
-******* capture template automatically tagging as draft
+********* [[capture template automatically tagging as draft]]
+******* work flow with org-roam and [[zotero]]
+********* [[https://org-roam.discourse.group/t/has-anyone-migrated-away-from-zotero-mendeley-to-just-an-org-based-solution-probably-org-ref/772/2?u=scotto][nobiot's workflow diagram]]
+********* [[JethroK uses Zotero and org-cite links]]
+******* deleting an org-roam file and references to it
+        From: [[https://org-roam.discourse.group/t/any-recommended-methodology-to-delete-an-org-roam-file/54/5][Any recommended methodology to delete an org-roam file?]]
+
+For now, simply deleting a file won't fix references to it in notes.  But at least if you do it with dired, the OR database will be updated; if deleted outside of emacs, the DB will be updated when you run =M-x org-roam-db-build-cache=.
+
+[[https://org-roam.discourse.group/t/any-recommended-methodology-to-delete-an-org-roam-file/54/6?u=scotto][Guy calls python]] that both deletes the note references and the file.  But this still doesn't handle references to a headline.
+
+******* TRY How JethroK uses org-roam
+          From: [[https://jethrokuan.github.io/org-roam-guide/][How I Take Notes with Org-roam]]
+
+          TODO: read Jethro's advice
+          
+          Lots of general advice, including:
+          
+********* <<JethroK's directory-specific capture templates>>
+********* <<JethroK's org-roam capture templates for citar>>
+
+          He's got a function that makes a new OR refence note from a bib entry:
+
+            (defun jethro/org-roam-node-from-cite ...
+
+********* <<folder as org-roam note type (JethroK)>>
+********* <<JethroK uses Zotero and org-cite links>>
+
+********* <<capture template automatically tagging as draft>>
         From: [[https://jethrokuan.github.io/org-roam-guide/][How I Take Notes with Org-roam]]
 
 Idea is to always start notes as draft so that you can find unfinished work later. Once you're done, you manually remove the draft tag.  I may or may not find this useful.  The code:
@@ -2189,22 +2235,11 @@ Idea is to always start notes as draft so that you can find unfinished work late
   (org-roam-tag-add '("draft")))
 (add-hook 'org-roam-capture-new-node-hook #'jethro/tag-new-node-as-draft)
 
-
 Seems like a nice way to brainstorm a bunch of notes and then find them later Normally, I do this in org with empty headlines, but if you're making single note zettel files, they're not so easy to flip through; in this case, I can see how this would help find them.
 
 But if you used the "node per headline" idea and brainstormed in one file, finding them later would be as easy as in org-mode.
 
-******* work flow with org-roam and [[zotero]]
-********* [[https://org-roam.discourse.group/t/has-anyone-migrated-away-from-zotero-mendeley-to-just-an-org-based-solution-probably-org-ref/772/2?u=scotto][nobiot's workflow diagram]]
-
-******* deleting an org-roam file and references to it
-        From: [[https://org-roam.discourse.group/t/any-recommended-methodology-to-delete-an-org-roam-file/54/5][Any recommended methodology to delete an org-roam file?]]
-
-For now, simply deleting a file won't fix references to it in notes.  But at least if you do it with dired, the OR database will be updated; if deleted outside of emacs, the DB will be updated when you run =M-x org-roam-db-build-cache=.
-
-[[https://org-roam.discourse.group/t/any-recommended-methodology-to-delete-an-org-roam-file/54/6?u=scotto][Guy calls python]] that both deletes the note references and the file.  But this still doesn't handle references to a headline.
-
-
+********* [[org-roam v2 note segregation: dir/tag/filename]]
 ***** <<org-roam-bibtex v2>>
 
       Could replace ORBv2 with [[citar]]
@@ -2519,6 +2554,7 @@ For now, simply deleting a file won't fix references to it in notes.  But at lea
 ********* [[https://org-roam.discourse.group/t/match-highlighting-with-ivy/1933?u=scotto][Match highlighting with Ivy - How To - Org-roam]]
 ***** multiple org-roam directories
       See: [[https://org-roam.readthedocs.io/en/master/configuration/][org-roam >> Having More Than One Org-roam Directory]]
+******* [[folder as org-roam note type (JethroK)]]
 ***** <<org-roam graph visualization>>
 ******* [[https://org-roam.discourse.group/t/application-of-graph-theory-to-roam-link-network/61][Application of Graph Theory to Roam link network]]
 ******* [[https://org-roam.discourse.group/t/edge-direction-in-graph/923/6][Edge direction in graph - How To - Org-roam]]
@@ -2578,6 +2614,7 @@ For now, simply deleting a file won't fix references to it in notes.  But at lea
 
 ***** list of notes linked to this one
       See: [[https://org-roam.discourse.group/t/viewing-all-the-notes-not-a-graph-of-them-linked-to-this-note/126/4][Viewing all the notes (not a graph of them) linked to this note?]]
+***** [[https://github.com/jgru/consult-org-roam][consult-org-roam: A bunch of convenience functions: ripgrep, backlinks, completing read...]]
 ***** <<file and directory setups for org-roam>>
 ******* org-file setup w/ agenda/todo, etc. uses OR just as a wiki: [[https://org-roam.discourse.group/t/separation-of-notes/475/3?u=scotto][Separation of notes?]]
 ******* also [[complete org-roam setups]]
@@ -2722,7 +2759,13 @@ For now, simply deleting a file won't fix references to it in notes.  But at lea
 
       A simpler version of [[org-roam]] based on large org files w/ headlines as link targets instead of separate files.  Headlines as link targets is what org-roam is moving towards, so I'm not sure if this has advantages other than not messing with the complexity of org-roam.
       
+***** also [[zettledesk]]: a layer intended to be above org-roam
 ***** also [[org-brain]]
+*** <<zettledesk>>
+
+    A tool for organizing [[org-roam]] notes.  Might be worth checking out, since, if I ever get to using org-roam, I'll have a huge pile of notes to sift through.  This could be a way of quickly making multiple energytop.org's
+    
+***** [[https://github.com/Vidianos-Giannitsis/zetteldesk.el][GitHub - Vidianos-Giannitsis/zetteldesk.el: Zetteldesk.el is an emacs library...]]
 *** <<org-brain>>
     Concept mapping in emacs, new project in March, 2017
 ***** [[https://github.com/Kungsgeten/org-brain][GitHub - Kungsgeten/org-brain: Org-mode wiki + concept-mapping]]
@@ -4830,8 +4873,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 **** Don't dim X60 tablet screen brightness when on battery
 
      From [[http://forums.lenovo.com/t5/X-Series-Tablet-ThinkPad-Laptops/X60-tablet-screen-brightness/td-p/89483][here]]:
-     Go into BIOS (F1 while booting), then Configuration, and set the display
-     brightness to mx there, press F10 to save and exit.
+     Go into BIOS (F1 while booting), then Configuration, and set the display brightness to mx there, press F10 to save and exit.
 
 **** Disable screen rotation by ctrl-alt-arrowkey hotkeys
 
@@ -5212,8 +5254,7 @@ big .emacs file.
         windows and cygwin but not for emacsw32, which sees the .lnk
         extension and can't figure out how to follow it.  I can add a couple
         hacks in my .emacs files so that info from cygwin ls is used to
-        properly display the link, but again, emacs can't follow it.  Since
-        emacs couldn't follow the orignal cygwin link either, there's no
+        properly display the link, but again, emacs can't follow it.  Since emacs couldn't follow the orignal cygwin link either, there's no
         loss, and this is a small step forward.
 
         o I added it to the windows system CYGWIN enviroment variable (which
@@ -5671,8 +5712,7 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
     tasklist
 
     The tasklist command has numerous optional switches, but there are a couple
-    I want to mention. One is the -m switch, which causes tasklist to display
-    all the DLL modules associated with a task. The other is the -svc switch,
+    I want to mention. One is the -m switch, which causes tasklist to display all the DLL modules associated with a task. The other is the -svc switch,
     which lists the services that support each task. Here’s how they look:
 
     tasklist -m
@@ -6090,16 +6130,15 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 
     Microsoft has released a [[http://support.microsoft.com/kb/2900023][tech article]] about this.
 
-    When using Windows 8.1 on a computer with a display featuring a high
-    number of dots per inch (high-DPI), some desktop applications may
+    When using Windows 8.1 on a computer with a display featuring a high number of dots per inch (high-DPI), some desktop applications may
     appear somewhat blurry as compared to other applications on the
     screen.
 
     In order to provide an optimal experience on high-DPI displays,
-    desktop applications need to detect the DPI of the display which is in
-    use, and scale their graphical elements, text, and screen layout
-    appropriately. Some applications do not implement this; thus they may
-    not look as sharp.
+    desktop applications need to detect the DPI of the display which
+    is in use, and scale their graphical elements, text, and screen
+    layout appropriately. Some applications do not implement this;
+    thus they may not look as sharp.
 
     If there is not an updated DPI-aware version of the application
     available, you may be able to alter the appearance of the application
@@ -6442,8 +6481,8 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 ***** Windows explorer thumbnails
 ******* Use [[http://www.fastpictureviewer.com/codecs/][FastPictureViewer]] ($10) or FastPictureViewer Professional ($50)
 
-        The $10 version got me thumbnails in MS Windows Explorer but did
-        not allow Windows 10 Photos app to display Panasonic Rw2
+        The $10 version got me thumbnails in MS Windows Explorer but
+        did not allow Windows 10 Photos app to display Panasonic Rw2
         images. Presumably FPV Pro would do that.
 
 ******* [[https://mail.google.com/mail/u/0/?shva=1#search/raw/1572e3cdbfb76a5f][one of my comments]] on this MS thread.
@@ -7247,6 +7286,26 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 ******* [[http://git.or.cz/course/svn.html][Git vs. SVN Crash Course]]
 ******* [[http://rogerdudler.github.io/git-guide/][git - the simple guide - no deep shit!]]
 ******* TODO (recommended for DevOps/Agile): [[https://www.atlassian.com/git/tutorials/advanced-overview][Advanced Git Tutorials Overview | Atlassian Git Tutorial]]
+***** undo git commit
+      From: [[https://www.codeleaks.io/how-to-uncommit-changes-in-git/][How to Uncommit Changes in Git? {Complete Guide} - Code Leaks]]
+
+      _undo last commit while leaving the previously committed changes unstaged_
+
+      git reset HEAD^
+
+      _and many other options..._
+
+***** adding a directory to a git repo
+
+      *Note*: must have at least one file in a dir before you try to do a commit
+
+      mkdir <dirname>
+      put file(s) in it
+      git add <dirname>
+      git commit <dirname>
+      git push
+
+      
 ***** Initializing a git repository from scratch
       From: https://bitbucket.org/
 
@@ -7310,7 +7369,6 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
         II. assming you've already made a branch for this ticket, and that you've pushed your fixes to the branch, then click on the "commit" link on the lower right side of the page. This will create a popup.
 
         III. On the popup, click the "pull requests" link at the top and then the "create pull request" button at the bottom.
-
         
 ***** Git submodules
 
@@ -7373,7 +7431,58 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
       https://github.com/notuntoward/pyglmnet/pull/new/dataset_and_ex_fixes
 
       and made a pull request back to the original pyglmnet repository
-***** 
+***** Git on Windows
+******* <<git bash>>
+        ([[https://gitforwindows.org/][comes with SCM git for windows]])
+
+        Getting a bash shell
+
+        WinKey + git bash
+
+******* <<setup git for ssh keys, like at Geli>>
+        From: [[https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/][Set up an SSH key | Bitbucket Cloud | Atlassian Support]]
+
+        within [[git bash]] terminal, assuming ssh private ssh key is in ~/.ssh/id_rsa :
+
+        _Generate public / private keys_
+        
+        ssh-keygen
+
+        (type in a password for the key that you have made up)
+
+        _Add private ssh key so don't have to type a password all the time_
+        
+        eval $(ssh-agent)
+        ssh-add ~/.ssh/id_rsa
+
+        (enter password (made up by you above) associated w/ that private key
+        (stored in LastPass for Geli))
+
+        _Add public key to Bitbucket account settings_
+
+        Log in to the bitbucket account (Geli, see credentials in LastPass)
+
+        Account red dot --> Personal Settings --> SSH keys --> SS keys --> Add key button
+
+        Open .ssh/id_rsa.pub file (or whatever public key file), copy contents.  Doesn't matter whether or not you include the email address @ end.
+
+        Paste in contents (and copy to some place in Geli's confluence??, see Geli setup)
+
+        In git bash terminal, confirm config
+
+        ssh -T git@bitbucket.org
+
+        (type "yes")
+
+******* cloning a reporitory from bitbucket/sourcetree (install source tree if needed)
+
+        [[setup git for ssh keys, like at Geli]]
+
+        log in to bitbucket e.g. https://bitbucket.org/gelibitbucket/ds-experimental/src/master/
+
+        clone (upper right) --> Clone in Sourcetree --> select repo to clone and local dir
+
+        
 ***** sending a git patch
 
       If you've cloned a reporitory and made changes, here's [[https://thoughtbot.com/blog/send-a-patch-to-someone-using-git-format-patch][how to email a patch]].  This makes separate patches for each change in your clone, I think.
@@ -7725,8 +7834,7 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 ******* [[http://de.mathworks.com/help/matlab/ref/alpha.html][transparent scatter plot]] using alpha
 ******* [[http://www.mathworks.com/matlabcentral/answers/103074-how-can-i-set-the-transparency-of-line-objects-in-matlab-7-14-r2012a][transparent lines]] using patches (lines ignore alpha)
 ***** high precision data cursor
-      For when it doesn't display enough digits to figure out where a point
-      is:
+      For when it doesn't display enough digits to figure out where a point is:
 
       - enable data cursor mode by clicking on the plot window cursor icon
       - Click on the plot somewhere
@@ -11643,6 +11751,14 @@ How to store global settings e.g. URLs, passwords and constants without hardcodi
 ***** <<Dash>>
 ******* [[https://dash.plot.ly/][Dash User Guide and Documentation - Dash by Plotly]]
 ******* Connects to [[Plotly]] and [[Plotly Express]]
+*** Operational Python
+
+    Python in operations, data versions, model persistence, etc.  DO I NEED THIS SECTION?
+
+***** [[Python Streaming]]
+***** [[Tests in Python]]
+***** [[sklearn model persistence]]
+
 *** <<Python Streaming>>
 ***** <<Installing Pyspark in a docker>>
 ******* Better: [[https://medium.com/@suci/running-pyspark-on-jupyter-notebook-with-docker-602b18ac4494][Running PySpark on Jupyter Notebook with Docker – Medium]]
@@ -11726,7 +11842,7 @@ How to store global settings e.g. URLs, passwords and constants without hardcodi
         import sutil as su  # noqa: E402
 
 *** Symbolic computation: [[http://www.sympy.org/de/index.html][SymPy]]
-*** Tests in Python
+*** <<Tests in Python>>
 ***** guy [[https://www.youtube.com/watch?v=k55d3ZUF3ZQ][says]] to use pytest pkg, not built-in unittest.  For sure, it's shorter.
 *** Speeding up Python
 ***** <<Speeding up Pandas>>
@@ -11998,6 +12114,13 @@ else:
 ********* [[Speeding up Pandas]]
 
 ***** [[Airflow and scikit-learn]]
+***** <<sklearn model persistence>>
+
+      pickle not recommended, what are the alternatives?
+
+******* [[https://scikit-learn.org/stable/modules/model_persistence.html][Model persistence — scikit-learn 1.0.2 documentation]]
+******* also [[Data Versioning]]
+
 *** SciPy
 ***** <<Parallelization for SciPy>>
 ******* SciPy and Spark
@@ -12208,7 +12331,7 @@ else:
 
            But is it?  The [[https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs][editable pip install]] says there are advantages to using pip, and a commenter [[https://stackoverflow.com/questions/19048732/python-setup-py-develop-vs-install][here]] says that he had problems w/ setup.py develop and so used pip install -e PATH
 
-*** Mutual Information
+*** Mutual Information in Python
 ***** Kraskov-like MI in Python (see energytop.org) 
 *** Probabilistic Programming in Python: [[https://pyro.ai/][Pyro]]
 
@@ -12483,6 +12606,7 @@ else:
 
 ***** [[Simple Jupyter + DVC]]
 ***** [[DAGsHub: "GitHub for DVC"]]
+***** [[https://thesequence.substack.com/p/-guest-post-how-to-build-an-ml-platform?token=eyJ1c2VyX2lkIjoyOTA1NDQ4MiwicG9zdF9pZCI6NTA3NTY2OTYsIl8iOiJ6Lzg3UiIsImlhdCI6MTY0ODQ4Mjk0MiwiZXhwIjoxNjQ4NDg2NTQyLCJpc3MiOiJwdWItNTQzMDkiLCJzdWIiOiJwb3N0LXJlYWN0aW9uIn0.Gtu5194KcTAf8j_cH9skdaTwXefZy162sc32KBWw9co&s=r][How to Build an ML Platform from Scratch]]: uses [[DVC data version control]]
 *** [[https://neptune.ai/][Neptune.ai | Metadata Store for MLOps]]
 *** <<DAGsHub: "GitHub for DVC">>: : built on top of DVC
 
@@ -12505,6 +12629,7 @@ else:
 *** [[https://github.com/peopledoc/mlvt~ools][mlvtools: Public repository for versioning machine learnin...]]
 *** [[RunRouter]]
 *** [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
+*** [[sklearn model persistence]]
 *** [[Versioning Jupyter Notebooks]] (by themselves)
 *** [[Data versioning in Jupyter notebooks]]
 *** [[Cookiecutter Data Science]]
@@ -12521,6 +12646,7 @@ else:
 ***** video: [[https://www.youtube.com/watch?v=U75eKosFbp8][SoS: A polyglot notebook and workflow system]]
 *** [[Gitpod]]
 *** [[Dask can compute on graphs]]
+*** [[https://thesequence.substack.com/p/-guest-post-how-to-build-an-ml-platform?token=eyJ1c2VyX2lkIjoyOTA1NDQ4MiwicG9zdF9pZCI6NTA3NTY2OTYsIl8iOiJ6Lzg3UiIsImlhdCI6MTY0ODQ4Mjk0MiwiZXhwIjoxNjQ4NDg2NTQyLCJpc3MiOiJwdWItNTQzMDkiLCJzdWIiOiJwb3N0LXJlYWN0aW9uIn0.Gtu5194KcTAf8j_cH9skdaTwXefZy162sc32KBWw9co&s=r][How to Build an ML Platform from Scratch]]: uses [[DVC data version control]]
 *** also [[Parallelization in Python]]
 * Cloud Computing
 *** <<Hadoop>>
@@ -12564,6 +12690,12 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 ********* [[https://www.gitpod.io/docs/][Introduction to Gitpod]]
 ********* builds/deletes/maintains programming environments like conda -- a docker++
 ********* [[https://www.gitpod.io/blog/bitbucket][Gitpod for Bitbucket]]
+******* [[AWS serverless can run a container image]]
+***** <<Serverless AWS>>
+******* <<AWS serverless can run a container image>>
+        From: [[https://aws.amazon.com/blogs/compute/python-3-9-runtime-now-available-in-aws-lambda/][Python 3.9 runtime now available in AWS Lambda]]
+********* also [[Docker Containers]]
+*** also energytop.org: [[file:energytop.org::*<<Cloud Computing / MLops>>][Cloud Computing / MLops]]
 * Android
 *** Commandline
 ***** Termux app
@@ -12673,6 +12805,14 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 ***** Duplicate tab
 ******* middle or ctrl-click on the Reload Button (circular arrow)
 ******* ctrl-click on tab and drag
+
+***** turn off page search fail bleep
+
+      Get rid of bleeping sound when Ctrl-F doesn't find something on a web page:
+
+      about:config (in URL window)
+      accessibility.typeaheadfind.enablesound
+      set to false
 
 *** <<Google Search>>
 ***** get rid of annoying pdf url mangling
@@ -13835,6 +13975,7 @@ HOWEVER, the pen annotations are horrible.  Just like the old acroread.
 ***** Mail.app keyboard shortcuts
 ***** FREE VERSION DOESN'T WORK: install [[http://indev.ca/MailActOn.html][MailActOn]]
 ******* MacOS disables 1.3.2, says it's incompatible
+*** [[MacOS mermaid-cli]]
 *** [[Mac Lyx]]
 *** [[MacBooK Pro]]
 * Compiled stuff from other folks
@@ -14450,6 +14591,7 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 *********** Firefox [[https://addons.mozilla.org/en-US/firefox/addon/save-in/][Save In]] at least saves pages to subdirs of ~/Downloads
 ********* <<zotero-captured web pages accessed ith org-roam-bibtex>>
           From: [[https://org-roam.discourse.group/t/creating-html-document-notes-with-org-roam-bibtex/396/11][Creating html document notes with org-roam-bibtex
+******* [[JethroK uses Zotero and org-cite links]]
 ******* also [[PDF highlighter extension for Roam Research]] (has link to zotero)
 ******* Misc. Zotero Plugins I've tried, may want to use
 ********* [[https://github.com/retorquere/zotero-auto-index][retorquere/zotero-auto-index]]
@@ -15034,6 +15176,12 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 
 ********* Emacs: [[https://github.com/abrochard/mermaid-mode][abrochard/mermaid-mode: Emacs major mode for working with mermaid graphs]]
 ********* org mode: [[https://github.com/arnm/ob-mermaid][arnm/ob-mermaid: Generate mermaid diagrams within Emacs org-mode babel]]
+******* mermaid cli
+********* <<MacOS mermaid-cli>>
+          From: [[https://github.com/mermaid-js/mermaid-cli#install-with-brew][mermaid-js/mermaid-cli: Command line tool]]
+
+          brew install mermaid-cli
+          
 ******* [[Mermaid diagrams in Joplin]]
 ******* <<Mermaid in vscode>>
 ********* [[https://marketplace.visualstudio.com/items?itemName=vstirbu.vscode-mermaid-preview][Mermaid Preview - Visual Studio Marketplace]]
@@ -15042,8 +15190,7 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 
         [[https://twitter.com/obsdmd/status/1281301410890551296?lang=en][Obsidian supports Mermaid Diagrams]]
 
-******* [[graphviz]] (similar, but more complicated)
-
+******* also [[graphviz]] (similar, but more complicated)
 ***** <<Gephi>>: more of a graph visualizer (lot's of them). Load somebody else's file
       From: [[https://gephi.org/][Gephi]]
 ******* See [[Bibliography visualizaton using Gephi]]
@@ -15144,6 +15291,11 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ***** Seems to be the best: [[https://www.connectedpapers.com/][Connected Papers | Find and explore academic papers]]
 ***** [[https://openknowledgemaps.org/][Open Knowledge Maps - A visual interface to the world's scientific knowledge]]
 ***** [[https://researchrabbitapp.com/][Research Rabbit]]: integrated mindmaps / ref search etc. Seems slick.
+********* Windows mermaid-cli
+          From: [[https://github.com/mermaidjs/mermaid.cli/issues/73#issuecomment-876701921][mermaidjs/mermaid.cli#73 Install on Windows]]
+
+          npm install -g mermaid.cli
+          
 * Project Planning Tools
 *** Gantt charts
 ***** [[https://www.projectlibre.com/product/1-alternative-microsoft-project-open-source][#1 Free Alternative to Microsoft Project Open Source | Projectlibre]]
