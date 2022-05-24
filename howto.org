@@ -1778,11 +1778,18 @@ I don't quite understand what a "ref" is here, but this seems useful:
 
         This is probably what I really want, but I can't find it.
 
-******* [[http://ergoemacs.org/emacs/elisp_toggle_command.html][Elisp: How to Write a Toggle Command]]
-***** Lowercasing :PROPERTIES: and all the other keyword
-      Uppercase is OK now, in both [[https://scripter.co/org-keywords-lower-case][org-mode]] and [[https://github.com/org-roam/org-roam/issues/768][org-roam]]
+******* toning down the color
 
-      Here's a [[https://scripter.co/org-keywords-lower-case][function]] to lower them in your org buffer
+******* [[http://ergoemacs.org/emacs/elisp_toggle_command.html][Elisp: How to Write a Toggle Command]]
+***** Deemphasizing but not hiding :PROPERTIES: drawer
+******* More subtle, grayed out :PROPERTIES: drawer color
+
+        I customized =org-drawer= face to =snow3=.  Much better.
+        
+******* Lowercasing :PROPERTIES: and all the other keyword
+        Uppercase is OK now, in both [[https://scripter.co/org-keywords-lower-case][org-mode]] and [[https://github.com/org-roam/org-roam/issues/768][org-roam]]
+
+        Here's a [[https://scripter.co/org-keywords-lower-case][function]] to lower them in your org buffer
 
 ***** <<Presentation slides from org-mode>>
 ******* [[https://github.com/coldnew/org-ioslide][org-ioslide: Export org-mode to Google I/O HTML5 slide.]]
@@ -1838,6 +1845,7 @@ I don't quite understand what a "ref" is here, but this seems useful:
         From: [[https://github.com/alphapapa/org-ql][alphapapa/org-ql: An Org-mode query language, including search]]
 
         Could use this for searching org-mode in general (maybe even better than swiper) or for parsing org-mode for export.  Has callable libraries which may be useful to [[Split 1 org file to many org-roam notes]]
+******* [[logseq's org-mode parser]]
 ******* [[https://kitchingroup.cheme.cmu.edu/blog/2017/01/03/Find-stuff-in-org-mode-anywhere/][Find stuff in org-mode anywhere]]
 ******* also [[org-mode searching]]
 ******* [[Org-roam APIs]]
@@ -2104,6 +2112,17 @@ I don't quite understand what a "ref" is here, but this seems useful:
           Yes
 ********* ACCEPTED add quelpa/straight OR v2 install to wiki
 ********* ACCEPTED ask about need for sqlite: will sqlite3 just work now?
+******* dailies/journal
+********* <<dailies/journal files in separate dir>>
+
+            These both can share a DB with the general org-roam dir
+          
+*********** variable [[https://www.orgroam.com/manual.html#Org_002droam-Dailies][org-roam-dailies-directory puts all dailies files]] under org-roam-directory.
+
+*********** [[https://www.orgroam.com/manual.html#Org_002djournal][org-journal files can be put anywhere]]          
+
+********* [[https://org-roam.discourse.group/t/help-refile-to-daily-and-create-if-necessary/2602/2?u=scotto][move note to correct daily file]]
+********* [[modification to logseq config for OR dailies compatibility]]
 ******* org-roam v1 to v2 migration
 ********* [[https://d12frosted.io/posts/2021-06-11-path-to-org-roam-v2.html][Path to org-roam v2]] (vupela, dl12frosted, lots of elisp)
 ******* <<org-roam v2 note segregation: dir/tag/filename>>
@@ -2138,14 +2157,7 @@ Have sub folders personal and work, symlinked to different folders. Sync only wo
                    
 *********** general dir filter
             [[https://org-roam.discourse.group/t/filter-org-roam-node-find-insert-using-tags-and-folders/1907/2?u=scotto][Filter org-roam-node-{find, insert} using tags and folder (bram85)]]
-*********** dailies/journal files in separate dir
-
-            These both can share a DB with the general org-roam dir
-          
-************* variable [[https://www.orgroam.com/manual.html#Org_002droam-Dailies][org-roam-dailies-directory puts all dailies files]] under org-roam-directory.
-
-************* [[https://www.orgroam.com/manual.html#Org_002djournal][org-journal files can be put anywhere]]
-          
+*********** [[dailies/journal files in separate dir]]
 *********** capture template for separate dirs
             From: [[https://org-roam.discourse.group/t/how-to-customize-file-name-and-path-at-time-of-capture/1213][How to Customize File Name and Path at Time of Capture]] 
 ********* [[https://org-roam.discourse.group/t/how-to-make-org-roam-dailies-goto-always-go-to-default-template/2450/2?u=scotto][How to make org-roam-dailies-goto always go to default template?]]
@@ -2164,6 +2176,7 @@ Have sub folders personal and work, symlinked to different folders. Sync only wo
           From: [[https://systemcrafters.net/live-streams/september-03-2021/][System Crafters Live! - September 3, 2021 - System Crafters]]
 *********** extra info: [[https://org-roam.discourse.group/t/systemcrafters-hack-selecting-from-a-list-of-notes-with-a-specific-tag/2307/2?u=scotto][SystemCrafters Hack: Selecting from a list of notes with a specific tag - #2 ...]]
 ********* v2 uses [[https://org-roam.discourse.group/t/how-to-use-roam-tags-and-or-tags/190/32?u=scotto][org-roam headline tags and #+filetags for the whole file]]
+********* searching using [[https://www.reddit.com/r/emacs/comments/uigz8r/how_do_people_search_their_org_roam_notes/][consult-notes or consult-org-roam]]
 ********* [[https://org-roam.discourse.group/t/using-consult-ripgrep-with-org-roam-for-searching-notes/1226][bms/org-roam-rg-search()]]: very nice, still a wip, so check thread end
 ********* searching for nodes (notes) with tags
 *********** [[https://org-roam.discourse.group/t/show-nodes-of-same-tag-in-org-roam-buffer/2270/2?u=scotto][Show nodes of same tag in org-roam-buffer]]
@@ -2172,14 +2185,13 @@ Have sub folders personal and work, symlinked to different folders. Sync only wo
 *********** [[https://org-roam.discourse.group/t/using-consult-ripgrep-with-org-roam-for-searching-notes/1226/31?u=scotto][Using consult-ripgrep with org-roam for searching notes]]
 ******* [[https://www.youtube.com/watch?v=CUkuyW6hr18][5 Org Roam Hacks for Better Productivity in Emacs - YouTube]]
 ******* controlling and limiting property drawers
-******** avoid creating property drawers in the 1st place
+********* avoid creating property drawers in the 1st place
 
 From: [[https://org-roam.discourse.group/t/control-over-headings-turning-into-nodes/2217/2][Control over headings turning into nodes]]         
 
 Turn this off, I think:
 
-******** [[Hiding/Closing org :PROPERTIES: drawer]]
-
+********* [[Hiding/Closing org :PROPERTIES: drawer]]
 ******* renaming OR note filename if #title changes
 ********* [[https://org-roam.discourse.group/t/does-renaming-title-no-longer-renames-the-filename/2018/3?u=scotto][arozbiz code]]
 ********* [[https://org-roam.discourse.group/t/does-renaming-title-no-longer-renames-the-filename/2018/6?u=scotto][timquelch code]]
@@ -2244,6 +2256,26 @@ But if you used the "node per headline" idea and brainstormed in one file, findi
 
       Could replace ORBv2 with [[citar]]
 
+***** <<org-roam and logseq>>
+******* [[https://org-roam.discourse.group/t/logseq-floss-web-outliner-compatible-with-org-roam-now/980/10?u=scotto][org-roam discourse: logseq compatibility with org-roam]]
+******* logseq is compatible w/ [[org-roam]]        
+******* [[https://coredumped.dev/2021/05/26/taking-org-roam-everywhere-with-logseq/][Taking org-roam everywhere with logseq]]
+******* org-roam markdown format (logseq uses markdown)
+********* [[https://github.com/nobiot/md-roam][nobiot/md-roam: Use Org-roam with markdown files by adding Md-roam.]]
+********* [[https://www.dschapman.com/notes/794e717c-83c9-4fed-b083-7079b08b1b57][Convert Org-Roam to Markdown]]
+******* [[modification to logseq config for OR dailies compatibility]]
+******* [[https://discuss.logseq.com/t/logseq-org-mode-compatability/869][Logseq <> Org mode compatability - General - Logseq]]
+******* <<logseq's org-mode parser>>
+
+          [[https://github.com/logseq/mldoc][logseq/mldoc: Another Emacs Org-mode and Markdown parse.]]
+
+********* also [[Org-mode parsers]]
+******* <<import org-roam to logseq>>
+********* [[https://www.reddit.com/r/logseq/comments/ukjxfg/ive_written_a_python_script_which_lets_you_import/][I've written a Python script which let's you import your Org-Roam]]
+******* also [[org-roam]]
+******* also [[org-mode]]
+******* also [[logseq]]
+***** [[import org-roam to logseq]]
 ***** Intro, basic org-roam info
 ******* [[https://github.com/org-roam][org-roam/org-roam: Rudimentary Roam replica with Org-mode]]
 ******* example: [[https://github.com/jethrokuan/braindump][author's's braindump]]: many org files, pdfs, 
@@ -2481,6 +2513,16 @@ But if you used the "node per headline" idea and brainstormed in one file, findi
 
         As of 12/28/20, this thread had code that was almost able to this well.  Maybe it will be perfected soon.
         
+***** org-roam-refile
+
+There is a built-in org-roam-refile.
+
+Also, [[https://org-roam.discourse.group/t/refactoring-items-out-of-a-node/1857/2?u=scotto][org-roam-extract-subtree]] [[https://org-roam.discourse.group/t/refactoring-items-out-of-a-node/1857/2?u=scotto][will]] convert current the subtree at point to a node, and extract it into a new file.  I think it also leaves a reference to the new file.
+
+***** org-roam-dailies-insert-date
+
+[[https://github.com/org-roam/org-roam/issues/1587#issuecomment-970405311][From the author]], I think it puts a reference to a node into the dailies file at a date you select.
+
 ***** <<Finding org-roam notes>>
 
       How to find your note again in a huge pile of OR notes?
@@ -2752,7 +2794,6 @@ But if you used the "node per headline" idea and brainstormed in one file, findi
       [[Roam Research]] clone based on emacs [[Org Mode]]
 ******* also [[org-roam]]
 ******* also [[org-brain]] 
-***** [[logseq]] is compatible w/ org-roam        
 ***** also [[org-transclusion]]
 ***** org-z
       From: [[https://github.com/landakram/org-z][landakram/org-z: Lightweight, Org-mode flavored zettelkasten links.]]
@@ -11351,10 +11392,11 @@ Maybe it will do until jupyterlab-lsp works again.
           - change this directory's permission so I have full permissions
             - file explorer, right click on anaconda3
             - properties --> security --> scroll to Users --> edit --> click on Full control
-        - point PATH towards the install (for emacs, among others)
+        - point PATH towards the /conda install/ (for emacs, among others)
           (Make sure this is /above/ msys2 path. Otherwise, the msys2
           python you get when installing diff, etc., will mess up emacs
-          [[elpy]].  Also make sure that it's above %USERPROFILE%\AppData\Local\Microsoft\WindowsApps , which as of May 2019 suddenly holds a python.exe)
+          [[elpy]].
+        - *Also make sure that it's above* %USERPROFILE%\AppData\Local\Microsoft\WindowsApps , which as of May 2019 suddenly holds a python.exe)
         - install everything necessary in the base environment first
         - <<create stdso environment>>
           - conda create -n stdso --clone base
@@ -12695,6 +12737,11 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 ******* <<AWS serverless can run a container image>>
         From: [[https://aws.amazon.com/blogs/compute/python-3-9-runtime-now-available-in-aws-lambda/][Python 3.9 runtime now available in AWS Lambda]]
 ********* also [[Docker Containers]]
+*** ONNX model format & pipelines
+    From: [[https://onnx.ai/about.html][ONNX | About]]
+
+    scikit-learn-like pipelines, ONNX model storage format, pre-traine models, [[https://onnx.ai/supported-tools.html#buildModel][tons of frameworks supported]], e.g. [[Matlab]], Keras, PyTorgh, Tensorflow, XGBoost, scikit-learn, [[http://onnx.ai/sklearn-onnx/auto_tutorial/plot_gexternal_lightgbm_reg.html][LightGBM]]
+    
 *** also energytop.org: [[file:energytop.org::*<<Cloud Computing / MLops>>][Cloud Computing / MLops]]
 * Android
 *** Commandline
@@ -13999,7 +14046,7 @@ HOWEVER, the pen annotations are horrible.  Just like the old acroread.
   (sometimes, this doesn't work b/c package expects config file in /usr)
 
 * <<Latex/Bibtex>>
-*** Bibtex Managers
+*** <<Bibtex Managers>>
 ***** <<JabRef>>
 ******* News and feature requests go [[http://discourse.jabref.org][here]]
 ******* bug reports go [[https://github.com/JabRef/jabref/issues][here]]
@@ -14097,6 +14144,7 @@ But I would like it better if there was no export merge step.  Export is kind-of
 ******* TODO get store URLs in bibtex
 ********* In Zotero>Edit>preferenceces>BBT>Export>Add URLs tro BibTeX export = "in the 'url' filed
 ********* this find Z's link attrachments, that contain the URLs: [[https://github.com/retorquere/zotero-better-bibtex/issues/1765][retorquere/zotero-better-bibtex#1765 Store Zotero Links in bibtex URL field]]
+******* [[https://zbib.org/][Zoterobib]]: fast pure browser way to make a bibliography.  Nice.
 ******* [[https://www.zotero.org/download/][Zotero App Download]]
 ******* Alternatives to Zotero
 
@@ -14613,8 +14661,11 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ************* try [[https://github.com/egh/zotxt-emacs][GitHub - egh/zotxt-emacs]]
 *********** In Org-mode?
 ********* asdkfjladsfj test headline to verfy that checkbox font is too big
+******* [[Research Rabbit]] as a connection to zotero
+******* [[logseq in zotero]]
 ***** [[org-ref]]
 ***** [[BibTex and Emacs]]
+***** [[logseq bibliography]]
 *** Bibtex styles
 ***** visual guide: [[https://www.overleaf.com/learn/latex/Bibtex_bibliography_styles][Bibtex bibliography styles]]
 *** lint-like latex/bibtex syntax checkers
@@ -14812,7 +14863,7 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ******* <<Mathpix Emacs Plugin: mathpix.el>>
 ********* [[https://github.com/jethrokuan/mathpix.el][jethrokuan/mathpix.el: Mathpix Emacs Plugin]]
 *** [[PDF processing in Python]]
-*** Python BibTeX parsers
+*** <<Python BibTeX parsers>>
 ***** _I'm using_: <<python-bibtexparser>>
       
       This worked with some fussing but it does allow you to avoid whitespace collapsing.
@@ -14941,7 +14992,7 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ******* <<PDF highlighter extension for Roam Research>>
         [[https://www.youtube.com/watch?v=-yVqQqUEHKI][Academic Workflow in Roam Research with PDF Highlighter Extension - Tutorial]]
 
-        Excellent pdf annotator and complete workflow -- it's fantastic.  My only big complaint is that it locks you into roam research's proprietary tool.  
+Excellent pdf annotator and complete workflow -- it's fantastic.  My only big complaint is that it locks you into roam research's proprietary tool.  
 
 ********* really complete
 ********* copies highlights into an outline, but you can re-org, put them your own words, etc.
@@ -14968,7 +15019,93 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
       Is [[https://github.com/logseq/logseq/issues/672][said]] to be compatible with [[org-roam]].  Is also a way to get [[https://coredumped.dev/2021/05/26/taking-org-roam-everywhere-with-logseq/][org-roam on mobile devices]] (or just when offline?).
       
 ******* [[https://github.com/logseq/logseq][GitHub - logseq/logseq: A privacy-first, open-source...]]
+******* [[https://www.youtube.com/watch?v=PvFr36bcpYc][Taking notes on YouTube videos in LogSeq]]
+******* android and (probably) IOS apps for logseq
+********* [[https://logseqweekly.com/12-dec-2021-logseq-mobile-android-app-and-sync-with-google-drive/][Logseq Mobile App (Android) and Sync with Google Drive. Logseq IOS...]]
+********* Desktop (Win/MacOS) & Android (apk) downloads: [[https://github.com/logseq/logseq/releases/][Releases logseq/logseq]]
+********* IOS seema a WIP (1/22): [[https://logseqweekly.com/1-jan-22-logseq-0-5-6-logseq-android-and-ios-mobile-apps-workflows-and-plugins/][1-Jan-22: Logseq 0.5.6]]
+******* drawing in logseq
+********* [[https://www.loom.com/share/cdc10a6d54644d7c9bb88cdcb3a0168b?t=0][Logseq draw with Excalidraw]]
 
+        Based on Semi-OK block diagrams that can stay connected and some handwriting possibility.  Nothing like OneNote but is more than nothing.
+
+        Seems like you'd be tied to [[https://excalidraw.com/][excalidraw.com]]?  Would [[mermaid in logseq]] be better then (except for the handwriting).
+        
+********* <<mermaid in logseq>>
+        From: [[https://github.com/hkgnp/logseq-mermaid-plugin][GitHub - hkgnp/logseq-mermaid-plugin]]
+
+        Looks pretty good.  But I didn't get it to work immediately
+********* many kinds of text-->diagram: [[https://github.com/npgrosser/logseq-diagrams-as-code][logseq-diagrams-as-code]]
+******* git in logseq
+
+I think systemcrafters guy said pages could be check into git at short time intervals.  Also, I see that there's a "check page history" function under the "..." menu
+
+******* logseq webclipping
+********* supoosedly can use Chrome [[https://chrome.google.com/webstore/detail/roam-highlighter/hponfflfgcjikmehlcdcnpapicnljkkc?hl=en][Roam Highlighter]] but just copies highlight text, doesn't save page
+******* Youtube video annotation
+********* Nice: [[https://www.youtube.com/watch?v=C88wssS5QCI&t=218s][Logseq Helium Plugin for Easy Note taking on Youtube videos]]
+********* Builtin with Hacks: [[https://www.youtube.com/watch?v=PvFr36bcpYc&t=397s][Taking notes on YouTube videos in LogSeq]]
+******* <<emacs keybindings in logseq>>
+********* They seem to be default in MacOS but not in Windows
+********* [[https://discuss.logseq.com/t/emacs-org-inspired-keyboard-shortcuts-few-issues/4511][Emacs/Org-inspired keyboard shortcuts + few issues]]
+********* some emacs keys are somehow already there: [[https://github.com/logseq/logseq/blob/master/src/main/frontend/modules/shortcut/config.cljs][logseq/config.cljs at master]]
+******* [[https://www.youtube.com/watch?v=aYSbvGgLo9s][How to Write Using Logseq (Long Form Writing Setup) - YouTube]]
+********* remove brackets from links: cmd+c cmd+c (but need his html & a theme?)
+********* document mode (hides bullets) toggle: <esc> t d
+********* something about transclusion alias that I didn't quite understand
+********* link aliases (maybe from some other video, maybe the "best 8 note taking apps"?
+********* shift + enter to go to the next line w/o making a new bullet
+******* links
+********* hiding brackets is [[https://discuss.logseq.com/t/cant-hide-brackets/2835][in settings, can toggle w/ ctrl-c, ctrl-b]]
+********* link alias: [[https://preslav.me/2022/04/10/create-link-aliases-in-logseq/][web-like links]]: [displayed]([ [ realLinkID ] ])
+******* <<logseq bibliography>>
+********* <<logseq in zotero>>
+          From: [[https://www.youtube.com/watch?v=DOKlTIJcqBQ][Integrating Logseq and Zotero: A great combination for academic writing]] (video)
+
+          The logseq zotero interface is about halfways there.
+          
+          Can link to zotero entries.  Click on them and Zotero opens up, and from there, you can see the Zotero entry and even the pdf (embedded in Zotero).  But later, if you want to publish, you must manually search for the Zotero key and replace it with the proper citation style.  At the end of your doc, you could paste in a Zotero-generated bibliography (he shows this at the beginning).
+
+          Weaknesses
+          - involves private/public key setup w/ Zotero website.  Would this work offline?
+          - [[https://discuss.logseq.com/t/link-to-external-pdfs-in-local-zotero-folder-and-better-bibtex-support/6038][Not sure]] if my big, local pdf dir would work
+          - But [[https://discuss.logseq.com/t/any-way-to-manage-bibliographic-references-via-bib-files/6079][does a zotero plugin keep it local or is it a "house of cards"]]
+          - not really tied to bibtex; is Zotero
+          
+********* [[logseq]]
+********* [[Bibtex Managers]]
+******* selected plugins for logseq
+        plugins not listed elsewhere
+********* [[https://github.com/hyrijk/logseq-plugin-block-to-page][block to page plugin]] converts a logseq bullet into a separate page. Nice
+********* [[https://github.com/pengx17/logseq-plugin-bullet-threading][logseq-plugin-bullet-threading: interesting but too noisy?]]
+********* move block/reference/... to many things: nice: [[https://github.com/vipzhicheng/logseq-plugin-move-block][ogseq-plugin-move-block: A Logseq plugin help you copy]]
+********* merge pages: [[https://github.com/hkgnp/logseq-mergepages-plugin][GitHub - hkgnp/logseq-mergepages-plugin]]
+********* pdf export: [[https://github.com/sawhney17/logseq-pdf-export][GitHub - sawhney17/logseq-pdf-export]]
+********* an excel-like embedable spreadsheet: [[https://github.com/sethyuan/logseq-plugin-luckysheet][GitHub - sethyuan/logseq-plugin-luckysheet: Embed Luckysheet (spreadsheet)]]
+********* ordered list (not sure how to use): [[https://github.com/sethyuan/logseq-plugin-ol][GitHub - sethyuan/logseq-plugin-ol: Ordered lists, flat or nested, multiple f...]]
+********* [[https://mobile.twitter.com/hkgnp/status/1499720222320001028][logseq parse csv plugin]] : couldn't get it to work
+********* like [[org-cliplink]]: [[https://codetea.com/this-logseq-plugin-will-extract-the-title-of-a-web-page-and-wrap-the-url-in-markdown-syntax/][This logseq plugin will extract the title of a web page and wrap the URL in m...]]
+********* [[https://github.com/pengx17/logseq-plugin-tabs][logseq-plugin-tabs: A Logseq plugin which lets you open page...]]
+******* TRY ipad and logseq *(doesn't work)
+********* when add new graph, OneDrive shows up but is grayed out
+********* if link to "logseq" in "on my iPad" get a blank DB
+******* *Blems?*
+********* DB seems to be absolute path, won't work on OneDrive share
+********* DB not autogenerated if make new file?
+********* [[emacs keybindings in logseq]]
+********* no way to resize images
+********* see May 14 comments on move block
+********* "..." menu: has variable contents, is confusing, hard to find stuff on it.
+********* if change linked-to bullets, the 
+******* moving back and forth across notes doesn't restore cursor position, like Firefox does
+******* switching tabs back and forth across notes doesn't restore cursor position, like Firefox does
+******* [[org-roam and logseq]]
+******* multiple logseq graphs
+********* it's implemented: [[https://github.com/logseq/logseq/pull/4881][open action for logseq protocol #4881]]
+********* Guy's thoughts: [[https://logseqweekly.com/02-oct-21-logseq-0-4-2-release-plugins-one-vs-multiple-graphs-acronyms/][Plugins, One vs Multiple Graphs, Acronyms]]
+******* logseq metadata is in notes, I think, DB built from them, like [[org-roam]]
+******* <<modification to logseq config for OR dailies compatibility>>
+********* [[https://org-roam.discourse.group/t/logseq-floss-web-outliner-compatible-with-org-roam-now/980?u=scotto][comment on Logseq: FLOSS web outliner, compatible with Org Roam now]]
 ***** <<obsidian>>
       From: [[https://obsidian.md/][Obsidian]]
 
@@ -14978,13 +15115,13 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ******* People who have switched to Obsidian
 ********* <<BSAG moved from org-roam to Obsidian>>
 
-          Gal who shared her [[org-roam]] setup with me has [[https://www.rousette.org.uk/archives/obsidian/][moved]] from org-roam to Obsidian b/c of Dropbox sync probs.  But I wonder if the sync problems might have been fixed either by moving the DB out of Dropbox (or OneNote) as I did.
+          Gal who shared her [[org-roam]] setup with me has [[https://www.rousette.org.uk/archives/obsidian/][moved]] from org-roam to Obsidian b/c of Dropbox sync probs.  But I wonder if the sync problems might have been fixed either by moving the DB out of Dropbox (or OneDrive) as I did.
 
           On the other hand, she says that getting rid of org-roam and org-ref has made her emacs much faster, and that she can store her ideas with "less friction" than with org-roam.
 
 ********* <<Ton Zijlstra replaced Evernote and much else with Obsidian and Zotero>>
 
-            His descriptions of how he made the gradual migration to a Zettlekasten style -- "Evergreen Notes", or "Notions," as he calls them -- is intersting and also quite quantitative.  
+            His descriptions of how he made the gradual migration to a Zettlekasten style -- "Evergreen Notes", or "Notions," as he calls them -- is interesting and also quite quantitative.  
 
 *********** From a long series of his posts
 ************* [[https://www.zylstra.org/blog/2020/10/100-days-in-obsidian-pt-1/][100 Days in Obsidian, Pt. 1 – Interdependent Thoughts]]
@@ -15296,6 +15433,18 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 
           npm install -g mermaid.cli
           
+* Literature Search Tools
+*** [[Python BibTeX parsers]]
+*** <<Research Rabbit>>
+    From: [[https://researchrabbitapp.com/home][Research Rabbit]]
+
+***** [[logseq]] is working on connection (from [[https://www.youtube.com/watch?v=PN6tjeQfxRc][a youtube video]])
+***** has a [[Zotero]] connection 
+*** <<Connected Papers>>
+    From: [[https://www.connectedpapers.com/][Connected Papers | Find and explore academic papers]]    
+*** [[Zotero]]
+*** <<Google Scholar>>
+***** [[https://scholar.google.com/][Google Scholar]]
 * Project Planning Tools
 *** Gantt charts
 ***** [[https://www.projectlibre.com/product/1-alternative-microsoft-project-open-source][#1 Free Alternative to Microsoft Project Open Source | Projectlibre]]
