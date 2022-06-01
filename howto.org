@@ -1618,8 +1618,8 @@ I don't quite understand what a "ref" is here, but this seems useful:
 ***** [[https://www.gnu.org/software/emacs/manual/html_node/org/Previewing-LaTeX-fragments.html][Previewing LaTeX fragments]]
       Can do it with commands in org text:
 
-      #+STARTUP: latexpreview
-      #+STARTUP: nolatexpreview
+      #+`STARTUP: latexpreview`  # backticks to mess up syntax, don't let it run here
+      #+`STARTUP: nolatexpreview`
 
       or with the keyboard
 
@@ -2257,6 +2257,7 @@ But if you used the "node per headline" idea and brainstormed in one file, findi
       Could replace ORBv2 with [[citar]]
 
 ***** <<org-roam and logseq>>
+******* See my notes on this in logseg: /logseq and emacs/
 ******* [[https://org-roam.discourse.group/t/logseq-floss-web-outliner-compatible-with-org-roam-now/980/10?u=scotto][org-roam discourse: logseq compatibility with org-roam]]
 ******* logseq is compatible w/ [[org-roam]]        
 ******* [[https://coredumped.dev/2021/05/26/taking-org-roam-everywhere-with-logseq/][Taking org-roam everywhere with logseq]]
@@ -2271,6 +2272,7 @@ But if you used the "node per headline" idea and brainstormed in one file, findi
 
 ********* also [[Org-mode parsers]]
 ******* <<import org-roam to logseq>>
+********* [[https://github.com/TheLostLambda/org2seq][org2seq: Tools for migrating from org-roam v2 to Logseq]]
 ********* [[https://www.reddit.com/r/logseq/comments/ukjxfg/ive_written_a_python_script_which_lets_you_import/][I've written a Python script which let's you import your Org-Roam]]
 ******* also [[org-roam]]
 ******* also [[org-mode]]
@@ -3753,6 +3755,19 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 
 *** <<Windows Emacs>>
 ***** <<Windows emacs builds>>
+******* <<Mysys2 Emacs>>
+
+        GNU [[https://www.gnu.org/software/emacs/download.html][suggests]] installing emacs from [[Msys2]]:
+
+           pacman -S mingw-w64-x86_64-emacs
+
+        This ends up in:
+
+           c:/tools/msys64/mingw64/bin
+
+        Which I should have already out in my path to get the something approaching [[Linux on Windows]].
+
+******* TRY [[WSL]]: should I try this?
 ******* <<Chocolatey Emacs>> choco install  (in admin powershell)
         Using [[Chocolatey]] package manager (see [[https://chocolatey.org/packages/Emacs][here]])
 
@@ -3848,10 +3863,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
         5. Target == C:\ProgramData\chocolatey\bin\emacsclientw.exe -c -n -a runemacs.exe
         6. set Start in: to %HOME%, assuming HOME was set to the emacs homedir, as emacs expects.
 
-        _Historical Note_: Windows 10 had an [[9696
-
-        |   |
-        ][AppID bug]] that broke pinning but it
+        _Historical Note_: Windows 10 had an [[9696        ][AppID bug]] that broke pinning but it
         was [[http://permalink.gmane.org/gmane.emacs.windows/6050][fixed]], and I noticed that it /almost/ worked on 7/17/16.  Seems to be totally fixed on 9/15/17.
 
 ********* Old stuff that didn't work
@@ -3921,8 +3933,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
              USED TO WORK: 4. "C:\Program Files (x86)\GNU Emacs 24.4\bin\runemacs.exe"
           7. change the starting directory to %HOME% so it starts in the right place
 ***** [[screen rotation shortcut undo]]
-***** Fix connection actively refused error
-      <<Fix connection actively refused error>>
+***** <<Fix connection actively refused error>>
 
       Problem: try to open file with emacs, or start from task bar, etc,
       and get this error message:
@@ -5069,7 +5080,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
     Get-ChildItem Env:PATH
 
 *** <<Linux on Windows>>
-***** Msys2
+***** <<Msys2>>
 
       Alternative to cygwin, seems easier to install?
 
@@ -5097,6 +5108,8 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
       If it can't unlock databases, do:
 
         del C:\tools\msys64\var\lib\pacman\db.lck
+
+      Also note: [[Mysys2 Emacs]]
     
 ***** <<WSL>>: Windows System Linux
       This is about using Windows 10 with e.g. Ubuntu Bash
@@ -11710,12 +11723,18 @@ Maybe it will do until jupyterlab-lsp works again.
 ********* [[https://towardsdatascience.com/visualizing-data-at-the-zip-code-level-with-folium-d07ac983db20][Visualizing Data at the ZIP Code Level with Folium – Towards Data Science]]
 ********* [[https://python-visualization.github.io/folium/][folium documentation]] is sparse
 ********* [[https://dillonshook.com/leaflet-zip-code-map-part-1/][Leaflet Zip Code Map Part 1: Dillon Shook]] (looks nice, 2014 article)
-******* [[http://geopandas.org/][Geopandas]]
+******* <<geopandas>>
+        From: [[http://geopandas.org/][Geopandas]]
+        
         Can draw maps fast and ugly, fix them up later, do spatial calcs
+        
 ********* [[http://darribas.org/gds15/content/labs/lab_03.html][lab_03: Mapping in Python with geopandas]]
 ********* is up to date: [[https://github.com/geopandas/geopandas/commits/master][last commit]] was today (4/16/19)
 ********* reads shape files, GeoJSON, others
 ********* can do [[http://darribas.org/gds15/content/labs/lab_03.html][interactive/zoomable]] maps
+********* can [[https://developers.arcgis.com/python/api-reference/arcgis.geometry.html#to-geo-coordinate-string][to_geo_coordinate_string()]] func [[undo ArcGIS Pro Mercator projection shape files]]?
+
+
 ******* Matplotlib map plotting
 ********* [[https://www.christianpeccei.com/zipmap/][Drawing ZIP Code Boundaries]]
 ********* [[http://www.jtrive.com/visualizing-population-density-by-zip-code-with-basemap.html][Visualizing Population Density by Zip Code with basemap - The Pleasure of Fin...]]
@@ -11733,6 +11752,13 @@ Maybe it will do until jupyterlab-lsp works again.
 ******* (DEAD) Vincent and Pandas
 ********* [[https://github.com/wrobstory/vincent][Died in 2016]]
 ********* [[http://wrobstory.github.io/2013/10/mapping-data-python.html][Mapping Data in Python with Pandas and Vincent | wrobstory.github.io]]
+******* <<undo ArcGIS Pro Mercator projection shape files>>
+
+        From Dakota, on 5/27/22:
+        Hey Scott, figured out whats going on here, apparently ARCGIS uses some weird Web Mercator projection coordinate system for their default coordinates
+
+********* This tool will convert to lat,long, which I gess is wgs84.  [[https://products.aspose.app/gis/en/transformation/mercator-to-wgs84][MERCATOR to WGS84 - online and free]]
+********* does [[geopandas]] have something for this too?
 ***** <<lux>>
       From: [[https://github.com/lux-org/lux][lux: Python API for Intelligent Visual Data Discovery]]
 
@@ -13320,15 +13346,15 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
             [[https://9to5mac.com/2016/03/17/how-to-remap-windows-keyboard-buttons-match-mac-layout/][How-To: Remap Windows keyboards to match the Mac keyboard layout]]
 
       *Keyboard Function*
-      | Windows key      | Mac key                                 | MacOS function                                                                                                                                                                     |
-      |------------------+-----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-      | Del              | Del, Fn-Delete                          | Deletes the character to the right. On Mac notebook computers, press Fn-Delete.                                                                                                    |
-      | Alt              | Option                                  | Enters special characters, such as é.                                                                                                                                              |
-      | Control, Windows | Command                                 | Performs actions or shortcuts. For example, pressing Command-S usually saves a document or file.                                                                                   |
+      | Windows key      | Mac key                                 | MacOS function                                                                   |
+      |------------------+-----------------------------------------+----------------------------------------------------------------------------------|
+      | Del              | Del, Fn-Delete                          | Deletes the character to the right. On Mac notebook computers, press Fn-Delete.  |
+      | Alt              | Option                                  | Enters special characters, such as é.                                            |
+      | Control, Windows | Command                                 | Performs actions or shortcuts. For example, pressing Command-S usually saves a document or file. |
       | Home, End        | Command-Left Arrow, Command-Right Arrow | On the Mac, use the Command and arrow keys to go to the beginning or end of the current line, and use the Home and End keys to go to the beginning or end of the current document. |
-      | Num Lock         | Num LockShift-Clear                     | In some apps, controls whether pressing keys in the numeric keypad enters numbers or moves the cursor.                                                                             |
-      | Scroll Lock      | Control-F14 (maybe press & hold the Fn) | In some apps, controls whether pressing the arrow keys moves the cursor or scrolls in a window.                                                                                    |
-      | PrntScrn / Win+S | Shift-Command-3,4,5                     | Takes pictures of the screen. Shift-Command-3 takes a picture of the entire screen. Shift-Command-4 takes a picture of the part of the screen you select.                          |
+      | Num Lock         | Num LockShift-Clear                     | In some apps, controls whether pressing keys in the numeric keypad enters numbers or moves the cursor. |
+      | Scroll Lock      | Control-F14 (maybe press & hold the Fn) | In some apps, controls whether pressing the arrow keys moves the cursor or scrolls in a window. |
+      | PrntScrn / Win+S | Shift-Command-3,4,5                     | Takes pictures of the screen. Shift-Command-3 takes a picture of the entire screen. Shift-Command-4 takes a picture of the part of the screen you select. |
       Also [[Screen snipping (screenshots) on MacOS]]
       
       *Physical location of MacOS keys on exteranal Windows keyboard (default)*
@@ -14007,6 +14033,9 @@ HOWEVER, the pen annotations are horrible.  Just like the old acroread.
     1.) kill -9 in a terminal -- work OK for almost everything
     2.) Command+Option+Escape, choose process, kill it
     3.) Right click the dock icon, hold down option, choose Force Quit
+*** password for sudo in MacOS terminal
+***** sudo pwd is [[https://lemp.io/what-is-my-sudo-password-mac-os/#0][same as MacOS admin account pwd]]
+***** stored in my Google place
 *** $SHELL: spec'ed in 2 places:
     1. system prefs (apple shape on desktop menu, system prefs, accounts ...)
 
@@ -14764,7 +14793,7 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 
       To get around this problem, you can put
 
-        #+STARTUP: latexpreview
+       #+`STARTUP: latexpreview` # backticks intentionally stop running here
 
       at the top of the org file, which should cause all the equations to be rendered when you open it.  (disable it with #+STARTUP: nolatexpreview)
       
@@ -15106,6 +15135,14 @@ I think systemcrafters guy said pages could be check into git at short time inte
 ******* logseq metadata is in notes, I think, DB built from them, like [[org-roam]]
 ******* <<modification to logseq config for OR dailies compatibility>>
 ********* [[https://org-roam.discourse.group/t/logseq-floss-web-outliner-compatible-with-org-roam-now/980?u=scotto][comment on Logseq: FLOSS web outliner, compatible with Org Roam now]]
+******* a near clone: [[athens]]
+***** <<athens>>
+******* [[https://github.com/athensresearch/athens][GitHub - athensresearch/athens: Free self-hosted desktop app]]
+******* a nicer looking a near clone of [[logseq]] (as of v2.0 beta 37 (5/31/22))
+******* local desktop version is free
+******* they mention teams a lot: maybe the (paid) online version is what they're selling
+******* [[https://github.com/logseq/logseq/issues/4138#issuecomment-1036326117][has its own database format]]
+******* [[https://github.com/logseq/logseq/issues/4138#issuecomment-1030830798][said]] to be less extensible than [[logseq]]
 ***** <<obsidian>>
       From: [[https://obsidian.md/][Obsidian]]
 
@@ -15328,6 +15365,10 @@ I think systemcrafters guy said pages could be check into git at short time inte
         [[https://twitter.com/obsdmd/status/1281301410890551296?lang=en][Obsidian supports Mermaid Diagrams]]
 
 ******* also [[graphviz]] (similar, but more complicated)
+******* Windows mermaid-cli
+        From: [[https://github.com/mermaidjs/mermaid.cli/issues/73#issuecomment-876701921][mermaidjs/mermaid.cli#73 Install on Windows]]
+
+        npm install -g mermaid.cli
 ***** <<Gephi>>: more of a graph visualizer (lot's of them). Load somebody else's file
       From: [[https://gephi.org/][Gephi]]
 ******* See [[Bibliography visualizaton using Gephi]]
@@ -15421,30 +15462,30 @@ I think systemcrafters guy said pages could be check into git at short time inte
 ***** emacs-clone: [[org-brain]]     
 ***** examples of use: [[https://thebrain.com/big-thinkers][TheBrain Big Thinkers]]
 *** [[Relations and Visualization in Zotero]]
-*** Online knowledge as graphs
+*** <<Online knowledge as graphs search engines>>
     
     Web pages or APIs that can search for references, make graphs of related work.
 
 ***** Seems to be the best: [[https://www.connectedpapers.com/][Connected Papers | Find and explore academic papers]]
 ***** [[https://openknowledgemaps.org/][Open Knowledge Maps - A visual interface to the world's scientific knowledge]]
-***** [[https://researchrabbitapp.com/][Research Rabbit]]: integrated mindmaps / ref search etc. Seems slick.
-********* Windows mermaid-cli
-          From: [[https://github.com/mermaidjs/mermaid.cli/issues/73#issuecomment-876701921][mermaidjs/mermaid.cli#73 Install on Windows]]
-
-          npm install -g mermaid.cli
-          
+***** [[Research Rabbit]]: integrated mindmaps / ref search etc. Seems slick.
 * Literature Search Tools
+*** <<Google Scholar>>
+***** [[https://scholar.google.com/][Google Scholar]]
 *** [[Python BibTeX parsers]]
 *** <<Research Rabbit>>
     From: [[https://researchrabbitapp.com/home][Research Rabbit]]
 
+    A rolling kanban-like paper lookup workflow thing cites/cited-by, similar work (topic clustering, I think), suggested authors, citation DAGs everwhere,...
+
+    Finds research teams.  Interesting...
+    
+***** [[https://www.youtube.com/watch?v=wHBql2JncyU&list=PLsGUqkzkaMO-pHGEISiwNCa-ZbD2ZptH6&index=4][How I use Research Rabbit for academic research - YouTube]]
 ***** [[logseq]] is working on connection (from [[https://www.youtube.com/watch?v=PN6tjeQfxRc][a youtube video]])
 ***** has a [[Zotero]] connection 
 *** <<Connected Papers>>
     From: [[https://www.connectedpapers.com/][Connected Papers | Find and explore academic papers]]    
 *** [[Zotero]]
-*** <<Google Scholar>>
-***** [[https://scholar.google.com/][Google Scholar]]
 * Project Planning Tools
 *** Gantt charts
 ***** [[https://www.projectlibre.com/product/1-alternative-microsoft-project-open-source][#1 Free Alternative to Microsoft Project Open Source | Projectlibre]]
