@@ -187,7 +187,7 @@ With PRUNE, prune the build cache and the build directory."
 
 (setq computerNm (downcase system-name)) ; downcase: was getting random case
 (pcase (eval 'computerNm)
-  ("macbook-pro-3.local"     ; Geli MacBook Pro
+  ("macbook-pro-5.local"     ; Geli MacBook Pro
    (progn (setq shareDir "/Users/scott/OneDrive/share")))
   ("desktop-6bq3kmf" ; Surface Pro
    (setq shareDir "C:/Users/scott/OneDrive/share"))
@@ -683,7 +683,9 @@ See also `toggle-frame-maximized'."
 
 ;; visual line mode messes up org-tables but is GREAT for everything else.
 (global-visual-line-mode +1) ; soft line wrapping
-(global-set-key (kbd "C-c t") 'toggle-truncate-lines) ; e.g. to view org-mode tables
+
+;; in emacs 28.1, this is now C-x x t
+;; (global-set-key (kbd "C-c t") 'toggle-truncate-lines) ; e.g. to view org-mode tables
 
 (column-number-mode 1) ; in mode-line
 (mouse-avoidance-mode 'animate)  ; get mouse out of way of cursor, is customized
@@ -719,6 +721,8 @@ See also `toggle-frame-maximized'."
 ;; turn off the annoying alarm bell (is this redundant?)
 (setq ring-bell-function 'ignore)
 
+;; * Images
+(setq org-image-actual-width nil)
 ;; * Scrolling, Cursor Movement and Selection
 
 ;; *** Cursor and scroll 
@@ -741,6 +745,13 @@ See also `toggle-frame-maximized'."
 
 (global-set-key (kbd "M-=") 'goto-line-with-feedback)
 (global-set-key (kbd "C-M-=") 'global-display-line-numbers-mode) ; toggles all
+
+;; seems nice but straight cloning didn't work
+;; recommended: https://stackoverflow.com/questions/39696806/visual-line-mode-except-in-tables?noredirect=1#comment126873272_39696806
+;; https://github.com/misohena/phscroll
+;; (use-package phscroll
+;;  :straight (:host github :repo "misohena/org-phscroll"))
+
 
 ;; *** Window Movement
 ;; A better C-x o
@@ -979,6 +990,9 @@ See also `toggle-frame-maximized'."
 
 ;; I don't understand the difference between clone-indirect-buffer and clone-indirect-buffer-other-window
 (global-set-key (kbd "C-x 4 c") 'clone-indirect-buffer-other-window)
+
+;; WARNING: below overwrites the new emacs 28.1 'clone-frame' command
+;; C-x t n is similar to clone-frame, but puts it in an emacs tab
 (global-set-key (kbd "C-x 5 c") 'sdo/clone-indirect-buffer-other-frame)
 
 ;; *** Org subtree Cloning
@@ -1058,7 +1072,8 @@ displayed anywhere else."
 
 ;; * Emacs Command Execution
 
-(fset 'yes-or-no-p 'y-or-n-p) ; type just "y" instead of "yes"
+;; in emacs 28.1 is the option use-short-answers
+;;(fset 'yes-or-no-p 'y-or-n-p) ; type just "y" instead of "yes"
 
 (use-package which-key ; complex key hints, better than guide-key
   :diminish which-key-mode
@@ -1630,6 +1645,16 @@ Version 2019-11-04 2021-02-16"
     (let ((current-prefix-arg '(0))) (call-interactively 'iedit-mode)))
   :init
   (define-key prog-mode-map (kbd "C-;") 'iedit-within-defun))
+
+;; https://www.youtube.com/watch?v=jNa3axo40qM
+;; Mouse from:
+;; http://pragmaticemacs.com/emacs/add-multiple-cursors-with-mouse-clicks/
+;; TODO: does mouse thing conflict /w org-roam binding?
+(use-package multiple-cursors
+  :ensure t
+  :bind (("M-." . mc/mark-next-like-this)
+         ("M-," . mc/unmark-next-like-this)
+         ("C-S-<mouse-1>" . mc/add-cursor-on-click)))
 
 ;; * Prescient
 
@@ -2420,10 +2445,19 @@ folder, otherwise delete a word"
 		 (format "perl -cw %s"
 			 (file-name-nondirectory buffer-file-name)))))
 
-;; ** VC source code control (also see "Org and Git")
+;; ** Version Control: emacs vc and git
 
 (eval-after-load "vc-hooks"
-  '(define-key vc-prefix-map "=" 'vc-ediff)) ; so C-x v = will use ediff
+  '(define-key vc-prefix-map "=" 'vc-ediff)) ; so C-x v = will use
+                                        ; ediff
+
+;; From: https://github.com/escherize/prelude-dotemacs/blob/master/personal.el
+(use-package git-link
+  :config
+  ;; (add-to-list 'git-link-remote-alist
+  ;;              '("github\\.threatbuild\\.com" git-link-github))
+  ;; (setq git-link-default-branch "master")
+  (global-set-key (kbd "C-c g l") 'git-link))
 
 ;; ** R language
 
@@ -2564,8 +2598,13 @@ folder, otherwise delete a word"
 ;;   (global-flycheck-mode)
 
 ;; Set flycheck python path: must do this for after conda to it
-;; pythonbin points to the conda python, and not the default non-working Windows python3
+;; pythonbin points to the conda python, and not the default
+;; non-working Windows python3
+;; BUT THIS fails, still gets windows python, as of 5/17/22
 (setq pythonbin (sdo/find-exec "python" "Needed by autofix-on-save, REPL, flycheck, elpy & py-python"))
+;; this didn't help.  How could it fail??
+;;(setq pythonbin "c:/Users/scott/miniconda3/python.exe")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -2588,6 +2627,7 @@ folder, otherwise delete a word"
  '(counsel-grep-base-command "grep -nEi '%s' %s")
  '(counsel-search-engine 'google)
  '(delete-selection-mode nil)
+ '(dired-auto-revert-buffer t)
  '(dired-dwim-target t)
  '(display-time-24hr-format t)
  '(display-time-default-load-average nil)
@@ -2598,7 +2638,6 @@ folder, otherwise delete a word"
  '(elpy-rpc-python-command "python")
  '(elpy-shell-display-buffer-after-send t)
  '(elpy-shell-starting-directory 'current-directory)
- '(emacsw32-style-frame-title t)
  '(enable-recursive-minibuffers t)
  '(ess-ido-flex-matching t)
  '(ess-language "R" t)
@@ -2623,6 +2662,7 @@ folder, otherwise delete a word"
  '(gud-pdb-command-name "python -m pdb")
  '(gud-tooltip-echo-area t)
  '(gud-tooltip-mode t)
+ '(help-enable-symbol-autoload t)
  '(indent-tabs-mode nil)
  '(indicate-buffer-boundaries nil)
  '(indicate-empty-lines t)
@@ -2646,6 +2686,7 @@ folder, otherwise delete a word"
  '(mouse-wheel-tilt-scroll t)
  '(neo-reset-size-on-open t)
  '(neo-window-fixed-size nil)
+ '(next-error-message-highlight 'keep)
  '(org-confirm-shell-links 'y-or-n-p)
  '(org-ctrl-k-protect-subtree 'error)
  '(org-cycle-include-plain-lists 'integrate)
@@ -2666,11 +2707,13 @@ folder, otherwise delete a word"
  '(org-noter-auto-save-last-location t)
  '(org-noter-doc-property-in-notes t)
  '(org-occur-case-fold-search ''smart)
+ '(org-odd-levels-only t)
  '(org-outline-path-complete-in-steps nil)
  '(org-pretty-entities nil)
  '(org-refile-targets '((nil :maxlevel . 6)))
  '(org-roam-db-update-method 'idle-timer)
  '(org-roam-file-completion-tag-position 'append)
+ '(org-roam-file-exclude-regexp '("data/" "logseq/"))
  '(org-special-ctrl-k nil)
  '(org-speed-commands-user '(("s" . narrow-or-widen-dwim)))
  '(org-startup-align-all-tables t)
@@ -2679,7 +2722,6 @@ folder, otherwise delete a word"
  '(org-table-header-line-p t)
  '(org-use-speed-commands t)
  '(org-yank-adjusted-subtrees t)
- '(org-odd-levels-only t)
  '(package-check-signature 'allow-unsigned)
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
@@ -2716,6 +2758,7 @@ folder, otherwise delete a word"
  '(sml/show-file-name nil)
  '(sml/vc-mode-show-backend nil)
  '(tool-bar-mode nil)
+ '(use-short-answers t)
  '(visual-line-fringe-indicators '(nil top-right-angle))
  '(w32-use-w32-font-dialog nil)
  '(window-divider-default-places t)
@@ -2884,7 +2927,7 @@ folder, otherwise delete a word"
                         "~/ref/DOE_brainstorm/papers"))
 
 
-(setq org_roam_dir "~/tmp_org_roam_test")
+(setq org_roam_dir "~/share/tmp_org_roam_test")
 
 (if t
     (progn
@@ -3314,7 +3357,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   :init
   ;; if .bib file changes, "invalidate the cache by default".  Is that good?
   ;; https://github.com/bdarcus/citar#refreshing-the-library-display
-  (citar-filenotify-setup '(LaTeX-mode-hook org-mode-hook))
+  ;; (citar-filenotify-setup '(LaTeX-mode-hook org-mode-hook))
   :config
   ;; this is supposed to pick up styles, like IEEE but doesn't
   ;; (setq org-cite-csl-styles-dir "~/Zotero/styles") ;; hangs org on
@@ -3340,20 +3383,37 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;; escaping drug companies; from (cpr
 
 
-  ;; TODO: try above w/ pretty, which might test 
-  (setq citar-templates
-        '((main . "${author editor:55}     ${date year issued:4}     ${title:55}")
-          (suffix . "  ${tags keywords keywords:40}")
-          (preview . "${author editor} ${title}, ${journal publisher container-title collection-title booktitle} ${volume} (${year issued date}).\n")
-          (note . "#+title: Notes on ${author editor}, ${title}")))
+  ;; ;; TODO: try above w/ pretty, which might test 
+  ;; (setq citar-templates
+  ;;       '((main . "${author editor:55}     ${date year issued:4}     ${title:55}")
+  ;;         (suffix . "  ${tags keywords keywords:40}")
+  ;;         (preview . "${author editor} ${title}, ${journal publisher container-title collection-title booktitle} ${volume} (${year issued date}).\n")
+  ;;         (note . "#+title: Notes on ${author editor}, ${title}")))
 
   )
 
+;; From: https://github.com/mclear-tools/citar-capf
+;; Was written w/ the help of the citar author, Bruce D'Arcus
+;; (use-package citar-capf
+;;   :straight (:type git :host github :repo "mclear-tools/citar-capf")
+;;   ;; NOTE: Set these hooks for whatever modes for which you want citar citation completion
+;;   :hook ((org-mode markdown-mode tex-mode latex-mode reftex-mode) . citar-capf-mode) 
+;;   :config
+;;   ;; if you don't already have this set in citar
+;;   ;; (setq citar-bibliography "path/to/bib")
+;;   (setq citar-templates
+;;       `((main . " ${=key= id:15} ${title:48}")
+;;         (suffix . "${author editor:30}  ${=type=:12}  ${=beref=:12} ${tags keywords:*}")
+;;         (preview . "${author editor} (${year issued date}) ${title}, ${journal journaltitle publisher container-title collection-title}.\n"))))
+
+;; Seems like the below got dropped by the vertico guy?  There was
+;; lots of discussion and then citar-capf was written, apparently in response
+;;
 ;; use consult-completing-read for enhanced interface
 ;; From: https://github.com/bdarcus/citar
-(with-eval-after-load 'embark
-  (advice-add #'completing-read-multiple :override
-              #'consult-completing-read-multiple))
+;; (with-eval-after-load 'embark
+;;   (advice-add #'completing-read-multiple :override
+;;               #'consult-completing-read-multiple))
 
 
 ;; ** Ebib
@@ -3460,6 +3520,26 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   (org-roam-db-autosync-mode)
   ;; If using org-roam-protocol
   (require 'org-roam-protocol))
+
+
+;; I don't know where/how to use this
+;; From: https://jethrokuan.github.io/org-roam-guide/
+;; (defun jethro/org-roam-node-from-cite (keys-entries)
+;;     (interactive (list (citar-select-ref :multiple nil :rebuild-cache t)))
+;;     (let ((title (citar--format-entry-no-widths (cdr keys-entries)
+;;                                                 "${author editor} :: ${title}")))
+;;       (org-roam-capture- :templates
+;;                          '(("r" "reference" plain "%?" :if-new
+;;                             (file+head "reference/${citekey}.org"
+;;                                        ":PROPERTIES:
+;; :ROAM_REFS: [cite:@${citekey}]
+;; :END:
+;; #+title: ${title}\n")
+;;                             :immediate-finish t
+;;                             :unnarrowed t))
+;;                          :info (list :citekey (car keys-entries))
+;;                          :node (org-roam-node-create :title title)
+;;                          :props '(:finalize find-file))))
 
 ;; ** org-roam-ui (graph viewing)
 
@@ -3791,6 +3871,18 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   (call-interactively 'writegood-mode))
 (global-set-key (kbd "C-c W") 'toggle-writing-tools)
 
+;; ** markdown
+
+;; https://jblevins.org/projects/markdown-mode/
+;; https://codeberg.org/takeonrules/dotemacs/src/branch/main/emacs.d/configuration.org
+(use-package markdown-mode
+  :hook ((markdown-mode . turn-on-visual-line-mode))
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "pandoc"))
+
+
 ;; ** Latex
 
 (sdo/find-exec "latexmk"
@@ -3798,8 +3890,8 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; Hack: (use-package auctex) doesn;t work because, "once installed, auctex overrides the tex package":
 ;; http://cachestocaches.com/2015/8/getting-started-use-package/
-(use-package tex :defer t :straight auctex) ; a hack for auctex
-(use-package auctex-latexmk :defer t)
+;;(use-package tex :defer t :straight auctex) ; a hack for auctex
+;;(use-package auctex-latexmk :defer t)
 
 (add-hook 'LaTeX-mode-hook
 	  (lambda ()
@@ -3882,6 +3974,7 @@ When done, can undo the window config with winner-mode: C-c Left"
  '(org-code ((t (:inherit black :inverse-video nil :weight bold :family "Courier New"))))
  '(org-done ((t (:foreground "Gray" :weight bold))))
  '(org-done-face ((t (:foreground "gray" :weight bold))))
+ '(org-drawer ((t (:foreground "snow3"))))
  '(org-ellipsis ((t (:foreground "dark slate gray" :weight normal))))
  '(org-headline-done ((((class color) (background light)) (:foreground "gray"))))
  '(org-headline-done-face ((((class color) (background light)) (:foreground "Gray"))))
@@ -3913,3 +4006,4 @@ When done, can undo the window config with winner-mode: C-c Left"
  '(writegood-passive-voice-face ((t (:foreground "LightBlue4" :underline t :weight bold))))
  '(writegood-weasels-face ((t (:foreground "dark khaki" :underline t :weight bold)))))
 
+(put 'narrow-to-region 'disabled nil)
