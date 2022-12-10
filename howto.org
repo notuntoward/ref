@@ -1540,6 +1540,7 @@ I don't quite understand what a "ref" is here, but this seems useful:
 
 ********* mixing org-ref and org-cite references
           From: [[https://github.com/bdarcus/citar/wiki/major-mode-functions#using-a-different-citation-insert-function][major mode functions · bdarcus/citar Wiki · GitHub]]
+********* [[JethroK's org-roam capture templates for citar]]
 ******* converting org-ref links to new org-cite links
 ********* [[https://tecosaur.github.io/emacs-config/config.html#citation,code--4]["Attempt to convert org-ref citations to org-cite syntax."]]
 ******* [[https://org-roam.discourse.group/t/what-do-you-think-about-org-ref-v3/2133/16][What do you think about org-ref V3? - #16 by mshevchuk]]
@@ -1573,7 +1574,8 @@ I don't quite understand what a "ref" is here, but this seems useful:
         http_proxy (not sure if necess.) & then hook up with the IWES guest Wifi.  Finally, I was able to do a normal TexLive internet install. 
 
         *I also had to add the path to the TexLive latexmk binary*)
-        (in 2021 on my SB2 computer, this was c:\texlive\2021\bin\win32\latexmk.exe)
+        (in 2022 on my Surface Laptop Studio, this should have been: c:\texlive\2022\bin\win32\latexmk.exe
+        but latexmk wasn't installed by the choco texlive package.  To install latexmk, I ran the Tex Live Manager and installed the latexmk and latexmk.win32 tex packages)
 
         Note also that, in .emacs, I had to modify the advice from
         https://github.com/jkitchin/org-ref/issues/346#issuecomment-262874374
@@ -1649,6 +1651,20 @@ I don't quite understand what a "ref" is here, but this seems useful:
 ******* [[https://addons.mozilla.org/en-US/firefox/addon/org-web-capture/][Org Web Capture – Get this Extension for Firefox (en-US)]]
 ******* [[https://seds.nl/notes/orgmode-firefox-bookmark/][Org-mode Firefox bookmarks]]
 ******* also [[org-roam capture from browser]]
+***** annotating videos in org-mode
+******* <<org-media-note>>
+********* [[https://github.com/yuchen-lea/org-media-note][org-media-note]]
+********* is an updated (forked?) version of [[org-noter]]
+********* last update was 5/18/22 in 7/22
+********* used by [[org-noter-media]]
+******* <<org-noter-media>>
+********* [[https://github.com/c1-g/org-noter-media/blob/main/README.org#caveat--installation][org-noter-media]]
+********* last update was 6/12/22 in 7/22
+********* use [[org-media-note]]
+********* straight: installation instructions
+
+******* [[https://org-roam.discourse.group/t/annotating-youtube-videos-with-timestamp-v2/1617?u=scotto][capturing youtube links with time stamps]]: similar to logseq extension?
+
 ***** <<org-noter>>
 
       Opens papers in emacs, syncs your pdf annotation w/ org-mode doc.  
@@ -1666,6 +1682,7 @@ I don't quite understand what a "ref" is here, but this seems useful:
 ******* org-noter-create-skeleton gets pdf annotations
 ******* <<preventing an OR v2 node for each org-noter annotation>>
         From: [[https://org-roam.discourse.group/t/exlude-org-noter-insert-notes-from-being-cached-as-nodes/2017/3?u=scotto][Exlude org-noter-insert notes from being cached as nodes]]
+******* [[org-noter-media]]: org-noter extended for video annotation
 ***** <<all bibtex entries inside of org-mode file>>
       From: [[http://cachestocaches.com/2020/3/org-mode-annotated-bibliography/][Managing my Annotated Bibliography with Emacs' Org Mode]]
 
@@ -1706,6 +1723,8 @@ I don't quite understand what a "ref" is here, but this seems useful:
 
                   ... make this customization
 
+                  #+BEGIN_SRC elisp
+
                   ~(setq org-list-demote-modify-bullet '(("-"  . "+")~
                   ~("+"  . "*")~
                   ~("*"  . "-")~
@@ -1715,6 +1734,7 @@ I don't quite understand what a "ref" is here, but this seems useful:
                *Hierarchical list numbers* e.g 1., 2., 2.1, 2.2, 3., ...
 
                ~(setq org-plain-list-ordered-item-terminator ?\))~
+               #+END_SRC               
 
                Then org only allows order list bullets ending with parentheses, and won't recognize "2.", "2.1", etc., as bullets.
 
@@ -1726,8 +1746,9 @@ I don't quite understand what a "ref" is here, but this seems useful:
 ***** <<Save org file folding state>>: [[https://github.com/dandavison/org-fold/blob/master/org-fold.el][org-fold/org-fold.el at master · dandavison/org-fold]]
 ***** [[Org-mode latex editing]]
 ***** <<Org interface to online databases, PIM's etc.>>
-******* <<Orger>>: org mode python interface to generic APIs e.g. roam research (read only from roam-research)
-        Python library to download from large number of online services
+******* <<Orger>>: python to convert many formats to org-mode e.g roam research (read only from roam-research)
+
+Python library to download from a [[https://beepb00p.xyz/orger.html][large number of online services]].  Is pippable, and last commit was only 15 days old in June 2022.
 
 ********* [[https://github.com/karlicoss/orger][karlicoss/orger: Tool to convert data into searchable and interactiv]]
 ********* tutorial: [[https://beepb00p.xyz/orger.html][Orger: plaintext reflection of your digital self | beepb00p]]
@@ -2002,20 +2023,25 @@ I don't quite understand what a "ref" is here, but this seems useful:
 ********* pyorg
           From: [[https://github.com/jlumpe/pyorg][jlumpe/pyorg]]
 
-          Python communicate w/ emacs client using [[https://github.com/jlumpe/python-emacs][python-emacs]] library; pyorg works specifically w/ org-files.  Install is a bit complcated.
+          Python communicates w/ emacs client using [[https://github.com/jlumpe/python-emacs][python-emacs]] library; pyorg works specifically w/ org-files.  Install is a bit complcated.
+          
 *********** deeper parse than orgparse e.g. undestands links
 *********** must also install a pyorg.el package in emacs to get server interaction, which needs [[ox-json]]
+*********** also requires [[https://github.com/jlumpe/python-emacs][python-emacs]] python package (not autoinstalled by pip)
+*********** [[https://github.com/jlumpe/pyorg/issues/4][my bug report]]
 ********* [[https://github.com/karlicoss/orgparse][orgparse: Python module for reading Emacs org-mode files]]
 
-          [[https://github.com/karlicoss/orgparse][orgparse]] had commits up to June 2020 in Oct 2020, is pipable.  Was recommended by the author of [[https://github.com/bjonnh/PyOrgMode][PyOrgMode]] instead of his own package.
+          [[https://github.com/karlicoss/orgparse][orgparse]] had 3 month only commits in June 2022, is
+          pipable.  Was recommended by the author of [[https://github.com/bjonnh/PyOrgMode][PyOrgMode]] instead
+          of his own package.
 
           But doesn't parse links, targets other things...
 
 ********* [[https://github.com/nasa9084/py-org][py-org: The Org-mode Parser for Python]] (last commit was nearly 3 years old in Oct 2020)
 ********* a couple fairly python funcs in here [[http://orgmode.org/worg/org-tools/][Org Mode tools!]]
 ********* [[http://members.optusnet.com.au/~charles57/GTD/orgnode.html][Orgnode - reading org-mode in Python]]: cmdlline tool from 2010
-*********** [[https://github.com/rdmnk/Orgnode][rdmnk/Orgnode: Org-mode parser using python]] (easiwer to install)
-********* [[Orger]]
+*********** [[https://github.com/rdmnk/Orgnode][rdmnk/Orgnode: Org-mode parser using python]] (easier to install)
+********* [[Orger]]: more of an X to org-mode importer?
 ********* [[Org interface to online databases, PIM's etc.]]
 ******* [[https://pandoc.org/org.html][Pandoc - Org-mode features and differences]]
 ***** <<org-mode on iPad>>
@@ -2118,11 +2144,17 @@ I don't quite understand what a "ref" is here, but this seems useful:
             These both can share a DB with the general org-roam dir
           
 *********** variable [[https://www.orgroam.com/manual.html#Org_002droam-Dailies][org-roam-dailies-directory puts all dailies files]] under org-roam-directory.
-
 *********** [[https://www.orgroam.com/manual.html#Org_002djournal][org-journal files can be put anywhere]]          
+*********** <<org-dailies capture template>>
+************* see [[https://org-roam.discourse.group/t/daily-task-management-with-org-agenda-and-org-roam-dailies/989/17?u=scotto][Daily task management with org-agenda and org-roam-dailies #17]]
+************* [[meeting capture template]]
+*********** [[https://org-roam.discourse.group/t/help-refile-to-daily-and-create-if-necessary/2602/3][Help refile to daily (and create if necessary)]]
 
 ********* [[https://org-roam.discourse.group/t/help-refile-to-daily-and-create-if-necessary/2602/2?u=scotto][move note to correct daily file]]
 ********* [[modification to logseq config for OR dailies compatibility]]
+********* [[https://github.com/org-roam/org-roam/issues/1587][org-roam/org-roam#1587 Insert link to daily file using the date selector]]
+********* [[https://org-roam.discourse.group/t/help-refile-to-daily-and-create-if-necessary/2602/2][Help refile to daily (and create if necessary) - #2 by telotortium - Requests...]]
+********* [[meeting capture template]]
 ******* org-roam v1 to v2 migration
 ********* [[https://d12frosted.io/posts/2021-06-11-path-to-org-roam-v2.html][Path to org-roam v2]] (vupela, dl12frosted, lots of elisp)
 ******* <<org-roam v2 note segregation: dir/tag/filename>>
@@ -2181,6 +2213,7 @@ Have sub folders personal and work, symlinked to different folders. Sync only wo
 ********* searching for nodes (notes) with tags
 *********** [[https://org-roam.discourse.group/t/show-nodes-of-same-tag-in-org-roam-buffer/2270/2?u=scotto][Show nodes of same tag in org-roam-buffer]]
 ********* [[https://org-roam.discourse.group/t/what-is-the-best-way-to-use-org-roam-node-read-with-an-arbitrary-list-of-nodes/2014/4][org-roam-node-read]] for capture accepts filter-fn [[https://github.com/org-roam/org-roam/pull/1993][to limit choices]]
+********* [[https://org-roam.discourse.group/t/modify-org-roam-node-find-to-list-nodes-with-a-given-filetag/2651/2?u=scotto][Modify org-roam-node-find to list nodes with a given filetag]]
 ********* OR searching with consult-ripgrep
 *********** [[https://org-roam.discourse.group/t/using-consult-ripgrep-with-org-roam-for-searching-notes/1226/31?u=scotto][Using consult-ripgrep with org-roam for searching notes]]
 ******* [[https://www.youtube.com/watch?v=CUkuyW6hr18][5 Org Roam Hacks for Better Productivity in Emacs - YouTube]]
@@ -2209,8 +2242,22 @@ See: [[https://github.com/bdarcus/citar#notes][GitHub - bdarcus/citar: Emacs pac
 ******* [[org-roam-bibtex v2]] (still needed?)
 ******* <<capture templates>>
 ********* <<capture template sending to separate directories>>
-See: [[https://org-roam.discourse.group/t/setting-up-org-roam-capture-to-file-org-roam-directory-subdirectories/2397/4][Setting up `org-roam-capture-` to file `org-roam-directory` subdirectories]]
+*********** See: [[https://org-roam.discourse.group/t/setting-up-org-roam-capture-to-file-org-roam-directory-subdirectories/2397/4][Setting up `org-roam-capture-` to file `org-roam-directory` subdirectories]]
+*********** [[JethroK's directory-specific capture templates]]
 ********* [[capture template automatically tagging as draft]]
+********* [[org-dailies capture template]]
+********* [[JethroK's org-roam capture templates for citar]]
+********* [[capture template automatically tagging as draft]]
+********* <<meeting capture template>>
+
+          Would be nice to always put a meeting into an OR dailies note, so easy to find, and easy for standups, weekly reports, etc.
+
+          In dailies, could make it a reference to a headline in an org-roam meeting file.  Or could make it a note in a project file.  OR... could org-refile it to either place.
+          
+*********** Could  modify org-roam-capture-task [[https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/][here]] to "meeting to project"
+*********** [[https://gist.github.com/nickanderson/b75240f0d19b153913475225c25a2140][Playing wiht org-roam-capture-templates]]: meeting template & others
+*********** [[https://www.reddit.com/r/orgmode/comments/vhpcs1/orgcapture_template_for_events_in_org/][Org-Capture Template for Events in Org]]: meeting template & others
+************* code gist: [[https://gist.github.com/anoduck/51826c4e49311c677c88649d5dd1fd0a][reddit-org_events.el · GitHub]]
 ******* work flow with org-roam and [[zotero]]
 ********* [[https://org-roam.discourse.group/t/has-anyone-migrated-away-from-zotero-mendeley-to-just-an-org-based-solution-probably-org-ref/772/2?u=scotto][nobiot's workflow diagram]]
 ********* [[JethroK uses Zotero and org-cite links]]
@@ -2221,6 +2268,11 @@ For now, simply deleting a file won't fix references to it in notes.  But at lea
 
 [[https://org-roam.discourse.group/t/any-recommended-methodology-to-delete-an-org-roam-file/54/6?u=scotto][Guy calls python]] that both deletes the note references and the file.  But this still doesn't handle references to a headline.
 
+******* [[https://org-roam.discourse.group/t/opening-url-in-roam-refs-field/2564][Opening URL in ROAM_REFS field? - Requests - Org-roam]]
+******* [[https://org-roam.discourse.group/t/query-files-modified-in-the-past-12-hours/2561][Query files modified in the past 12 hours - How To - Org-roam]]
+******* OR conflicts with org-mode 
+********* OR org-ids [[https://org-roam.discourse.group/t/should-org-roams-treatment-of-all-ids-as-nodes-be-opt-in/2557][clash with org-attach and org-caldav]]
+********* [[https://org-roam.discourse.group/t/should-org-roams-treatment-of-all-ids-as-nodes-be-opt-in/2557][Should org-roam's treatment of all ID's as nodes be opt-in? - Development - O...]]
 ******* TRY How JethroK uses org-roam
           From: [[https://jethrokuan.github.io/org-roam-guide/][How I Take Notes with Org-roam]]
 
@@ -2319,6 +2371,10 @@ But if you used the "node per headline" idea and brainstormed in one file, findi
 *********** DONE DON'T CARE: would break current "everything in one place" that I have now in JabRef
             This is fine.  I'm resolved to move my comments to single org-roam notes now
 ********* also [[Split 1 org file to many org-roam notes]]
+********* example of migrating from an old .tex system to org-roam
+          From: [[https://www.youtube.com/watch?v=HXa5fZjbioA][An overview of how I add nodes to emacs org-roam. - YouTube]]
+*********** adds uids to selected headings (and tags somehow) for graph structure
+*********** cmdline python script exports one-by-one from old system to org-roam
 ******* splitting energy.bib
 ********* need a script to make a .org note file for each bibtex entry
 *********** [[https://org-roam.discourse.group/t/bibtex-parser-that-preserves-whitespace/1048?u=scotto][my question]]: how to preserve comment and abstract whitespace?
@@ -2395,7 +2451,16 @@ But if you used the "node per headline" idea and brainstormed in one file, findi
 ******* [[https://github.com/nobiot/Zero-to-Emacs-and-Org-roam/blob/main/40.Qol.md][Zero-to-Emacs-and-Org-roam on Windows (nobiot)]]
 ******* [[https://org-roam.readthedocs.io/en/master/installation/][org-roam official install instructions]] mentions Windows
 ******* [[https://www.reddit.com/r/emacs/comments/f97twk/using_orgroam_on_windows_10/][Using org-roam on windows 10 : emacs]] (messy)
-******* sqlite3 now on all platforms: [[https://github.com/org-roam/org-roam/issues/682][org-roam/org-roam#682 Need maintainable Windows 10 install]]
+******* must install gcc so it can compile its own copy of sqlite
+
+        org-roam uses the emacsql package internally, and this must install and
+        compile a custom native sqlite binary.  Easiest way is to install a C-compiler with choco (or msys2).  For choco, [[https://lucidmanager.org/productivity/taking-notes-with-emacs-org-mode-and-org-roam/][one guy suggests]] installing it with "choco install mingw" but I had got a huge # of emacs errors when I fired it up.
+
+        But pacman (from windows install fo msys2) worked
+
+          pacman -S gcc
+
+********* sqlite3 now on all platforms: [[https://github.com/org-roam/org-roam/issues/682][org-roam/org-roam#682 Need maintainable Windows 10 install]]
 ******* ripgrep and find on Windows org-roam
 ********* 'rg' should work: [[https://github.com/org-roam/org-roam/issues/724][org-roam/org-roam#724 `rg` returns bad* paths for Windows users]]
 ********* 'find' gets confused w/ Windows find: [[https://github.com/org-roam/org-roam/issues/682][org-roam/org-roam#682 maintainable Windows 10 install]]
@@ -2628,7 +2693,6 @@ Also, [[https://org-roam.discourse.group/t/refactoring-items-out-of-a-node/1857/
 
 ******* [[https://seds.nl/notes/org-roam-firefox-bookmark/][Org-roam Firefox bookmark]]
 ******* [[zotero-captured web pages accessed ith org-roam-bibtex]]
-******* [[https://org-roam.discourse.group/t/annotating-youtube-videos-with-timestamp-v2/1617?u=scotto][capturing youtube links with time stamps]]
 ******* also [[org-capture]]
 ******* also [[clipping web pages with org-mode]]
 ***** <<syncing org-roam across multiple machines>>
@@ -3496,7 +3560,7 @@ was better, I started using that instead.  See [[org-tree operations]].
 
         Use msys32:
 
-        Basic
+        pacman -S aspell
         pacman -S mingw-w64-x86_64-aspell mingw-w64-x86_64-aspell-en
 
         *Then add this to Windows path*:
@@ -4521,6 +4585,12 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 
            c:/Users/scotto/Anaconda3/envs/tensorflow/
 
+********* <<using miniconda instead of anaconda>>
+
+          [[https://conda.io/projects/conda/en/latest/user-guide/install/windows.html][Installing miniconda on windows]]:  install windows installer from this website, and while installing, tick the box allowing vscode and other parts of windows to use its compiler as a default.  This gives you the anaconda terminals, etc. which is handy.
+
+          Add [[Anaconda Paths]] (pointing to mininconda instead of anaconda)
+
 ********* install conda packages from conda-forge instead of anaconda
 
           So that
@@ -4532,8 +4602,8 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
             conda config --add channels conda-forge
             conda config --set channel_priority strict
 
-          This is recommended [[https://youtu.be/Kqsk-siz9QA?list=PLsT4-aZA6_bg4Ol1XfzTKcnQ_ctzdXpxH&t=823][here]] so that packages are more likely to be installed without conflicts.  For the same reason, guy also recommends miniconda instead of full anaconda (fewer packages overall, and most will come from conda-forge).
-
+          This is recommended [[https://youtu.be/Kqsk-siz9QA?list=PLsT4-aZA6_bg4Ol1XfzTKcnQ_ctzdXpxH&t=823][here]] so that packages are more likely to be installed without conflicts.  For the same reason, guy also recommends [[using miniconda instead of anaconda]] (fewer packages overall, and most will come from conda-forge).
+          
 ********* general: [[python conda environments]]
 ******* <<pyenv in emacs>>
 ********* <<elpy pyenv interface>>         
@@ -5114,18 +5184,22 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ***** <<WSL>>: Windows System Linux
       This is about using Windows 10 with e.g. Ubuntu Bash
 ******* Install wsl2
-********* TODO [[https://medium.com/@maurogiusti/running-ubuntu-on-windows-10-with-wsl2-c4f06b3c353][Running Ubuntu on Windows 10 with WSL2]]
-********* also: [[https://docs.microsoft.com/en-us/windows/wsl/install-win10][Windows Subsystem for Linux Installation Guide for Windows 10]]
+********* installing from Windows Store (MS recommended)
+*********** [[https://devblogs.microsoft.com/commandline/a-preview-of-wsl-in-the-microsoft-store-is-now-available/][A preview of WSL in the Microsoft Store is now available! - Windows Command Line]]
+*********** I just installed Ubuntu (unversioned) from windows store, didn't follow the distro link in the article above
 ******* [[https://www.howtogeek.com/265900/everything-you-can-do-with-windows-10s-new-bash-shell/][Everything You Can Do With Windows 10’s New Bash Shell]]
 ******* TODO Emacs on WSL
-********* TODO Several ways, PPA Repository may be easiest & best
+********* installing on ubuntu
+*********** [[https://itsfoss.com/install-emacs-ubuntu/][How to Install Emacs on Ubuntu Linux]] (got emacs 27.1, in Nov 2022)
+*********** TRY [[https://ubuntuhandbook.org/index.php/2022/06/install-gnu-emacs-28-1-ubuntu-22-04-20-04/][How to Install GNU Emacs 28.1 in Ubuntu]]
+********* Several ways, PPA Repository may be easiest & best
 
 After updating to latest WSL2 (wsl --update) PPA runs graphical emacs,
 but startup is much slower than emacs -nw.  This is without loading my
 big .emacs file.
 
-*********** TODO swap caps/ctrl on linux, so emacs is usable
-*********** TODO get font size right.  On Surface Laptop Studio, they are tiny 
+*********** swap caps/ctrl on linux, so emacs is usable
+*********** get font size right.  On Surface Laptop Studio, they are tiny 
 *********** [[https://linuxhint.com/ubuntu_emacs_installation/][Emacs download and installation on Ubuntu]]
 *********** out of box, PPA install does emacs -nw fine
 
@@ -5792,6 +5866,9 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 
 *** single click opens stuff
 
+    *Windows 11*
+    Windows Explorer --> "..." --> Options ---> Change folder and search options
+
     *Windows 10*
     Windows Explorer --> View tab --> Options ---> Change folder and search options
 
@@ -6244,7 +6321,14 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
     WindowsKey + Space Bar (on >= windows 8)
 
 *** Keyboard remapping (ctrl-capslock, insert)
-***** [[http://www.randyrants.com/category/sharpkeys/][Sharpkeys]] 
+***** Using Microsoft PowerToys
+      See: [[https://zachrussell.net/blog/map-caps-lock-to-control-windows/][How To Map Caps Lock To Control in Windows 10 & Windows 11]]
+
+      I did this because I wasn't sure if Sharpkeys was causing the pen weirdness on my Surface Lapotop Studio.  It was, but PowerToys causes the same weirdness (removing/restoring the pen causes capslock and excecution of pen click actions)
+      
+***** windows caps/ctrl swap with SharpKeys
+      [[http://www.randyrants.com/category/sharpkeys/][See Sharpkeys]]
+      
 ******* works great for caps/ctrl swapping, is what I use for Windows
 ******* available on chocolately
 ******* tried to also disable accidental insert mode
@@ -6563,6 +6647,7 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 ***** [[http://www.faststone.org/FSViewerDetail.htm][Fast Stone Image Viewer]]: free, works on Panasonic RW2, Adobe DNG, and others
 *** [[Latex on Windows]]
 *** also [[Install MS Office and MS Fonts on MacOS]]
+*** also [[MacOS]]
 * PC Performance Testing
 *** Computational
 ***** PC Mag Computational Test Procedure
@@ -11376,15 +11461,45 @@ Maybe it will do until jupyterlab-lsp works again.
 
       "pip installs python packages within any environment; conda installs any package within conda environments"
 
-***** how to see all installed pip packages 
+***** pip
+******* how to see all installed pip packages 
 
       In a conda shell, or someplace that has a path to python
       pip list
       OR 
       help("modules") # inside interpreter shell
 
+******* pip-tools: replace requirements.txt w/ get conda-style dep solver
+        From: [[https://medium.com/@ramalhodevitor/abandon-requirements-txt-for-managing-dependencies-in-python-immediately-50b1c45b824a][Abandon requirements.txt for managing dependencies in Python...]]
+
+        Useful for Q CELLS pip & requirments.txt & virtualenv environments?
+
+        Seems almost as easy as conda.  Conda can also make a requirements.txt file, but pip-tools works directly with virtualenvs.
+        
+********* install [[https://github.com/jazzband/pip-tools][pip-tools]] in every virtualenv you use
+
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install pip-tools
+
+********* create a requirement.in file for each
+
+          List just the packages you want: it will figure out the rest.  If you want to specify version limits on some packages, it can do that too.
+
+********* pip-compile: make requirements.txt using pip-compile
+
+          pip-compile ./requirements.in
+
+********* pip-compile: for upgrading packages
+
+          pip-compile --upgrade-package <package name>
+          
+********* pip-sync: quickly change/sync/undo virtualenv w/ requirements.txt
+
+Upgrade or uninstall any packages not contained on your requirements.txt file. Make it easier for your to explore a package and get rid of it really fast.          
+
+
 ***** <<pyenv and virtualenv>>
-******* 
 ******* [[pyenv in emacs]]
 ***** also [[Cookiecutter Data Science]]
 ***** [[Compare running python version programmatically]]
@@ -11617,6 +11732,11 @@ Maybe it will do until jupyterlab-lsp works again.
 ******* <<Python Bokeh>>
 ********* [[http://nbviewer.jupyter.org/github/bokeh/bokeh-notebooks/blob/master/quickstart/quickstart.ipynb][Bokeh Jupyter Notebook Viewer]] (examples)
 ********* [[R Bokey]]
+******* Lux
+        From: [[https://github.com/lux-org/lux][lux: Automatically visualize your pandas dataframe via a sin...]]
+
+        Autogenerated plots, optionally with your sloppy intent direction.  Seems like this would be best for simpler problems.
+        
 ******* [[http://www.pyqtgraph.org/documentation/index.html][pyqtgraph]]: ver interactive/fast for large data, not as publishable as ggplot
 ******* [[grouped stacked bar plot in plotly]]
 ***** <<Matplotlib>>
@@ -11714,6 +11834,10 @@ Maybe it will do until jupyterlab-lsp works again.
         [[https://stackoverflow.com/questions/30868707/how-can-i-plot-two-different-spaced-time-series-on-one-same-plot-in-python][How can I plot two different spaced time series on one same plot in Python]]
 
 ***** zoomable python plots
+***** Data Exploration in Python
+******* <<Mito: Spreadsheet makes python, plotly code>>
+********* Could be handy for a new data set
+********* From: [[https://jjdiamondreivich.medium.com/interactive-python-is-changing-data-science-e1e397ef6bbd][Interactive Python is Changing Data Science]]
 ***** <<Map plotting in Python>>
 ******* [[Choropleth]]: any map w/ shaded areas portraying spatially aggredated data
 ******* [[Plotly Map Plotting]]
@@ -11764,6 +11888,16 @@ Maybe it will do until jupyterlab-lsp works again.
 
       Suggests plots for you, has sort of "question you want answered by the plot" language, and plots it makes can be translated to matplotlib, and other frameworks, for further refinement.
       
+***** waterfall plots
+******* matplotlib:
+https://kristinelpetrosyan.medium.com/how-to-choose-the-perfect-graph-for-your-dataframe-1665ee469f8b
+******* waterfall charts library (but I can’t figure out how to make the lines)
+https://medium.com/geekculture/creating-a-waterfall-chart-in-python-dc7bcddecb45
+******* plotly (has the lines):
+ https://plotly.com/python/waterfall-charts/
+******* seaborn (I couldn’t figure out the lines):
+https://medium.com/geekculture/creating-a-waterfall-chart-in-python-dc7bcddecb45
+
 ***** [[Graphviz in Python]]
 ***** [[Plotly]]
 *** [[Powerpoint and Python]]
@@ -12311,6 +12445,12 @@ else:
 ******* Tensorflow/Cuda and Pycharm
 ********* LD_LIBRARY_PATH bug in PyCharm: [[https://github.com/tensorflow/tensorflow/issues/9530][PyCharm won't correctly import tensorflow]]
 ********* <<Remote Interpreter example with Tensorflow>>: [[https://medium.com/@erikhallstrm/work-remotely-with-pycharm-tensorflow-and-ssh-c60564be862d][Work remotely with PyCharm, TensorFlow and SSH]]
+******* Jump to definition
+
+        Put cursor on variable, function, method...
+        ctrl+shift+I (definition window pops up)
+        hit return in definition to jump to code
+
 ***** Atom
 ***** <<Spyder>>
 ******* <<Spyder Jupyter Notebooks>>
@@ -12329,6 +12469,26 @@ else:
 ********* [[Foam]]
 ******* graphs in vscode
 ********* [[Mermaid in vscode]]
+******* interactive shell in vscode
+        From: [[https://youtu.be/lwN4-W1WR84?t=112][VSCode's Python Interactive mode is AMAZING!]]
+
+        Gives you an interface similar to matlab, spyder or Rstudio.  You can bet plots and access to variables in the right hand side window, while editing plain, non-notebook python in the left window.
+
+********* To start it
+*********** edit a python file
+*********** put #%% at the top and run it
+*********** after that any #%% runs like a matlab or jupyter notebook cell
+*********** at the bottom lhs is an interactive window where you can type other commands.
+*********** you can export the lhs window as a notebook, with cells and graphs
+
+********* plots show up in right window if you do:
+
+          #%%
+          import pandas as pd
+          import numpy as np
+          import matplotlib.pyplot as plt
+          %matplotlib inline
+        
 *** Python Package installation
 ***** XGboost on Windows
       Hard to find on Windows.  Almost everything is on linux.  But this seems to work:
@@ -12492,6 +12652,107 @@ else:
         From: [[https://neptune.ai/blog/model-training-libraries-pytorch-ecosystem][8 Creators and Core Contributors Talk About Their Model Training Libraries Fr...]]
 
 *** <<Pandas>>
+***** Dataframe display styling
+      From: [[https://towardsdatascience.com/essential-techniques-to-style-pandas-dataframes-8796c74c9ff3][Essential Techniques to Style Pandas DataFrames]]
+      From: [[https://pub.towardsai.net/improve-your-analytical-report-with-conditional-formatting-in-pandas-76039fd3ccb5][How To Improve Your Analytical Report With Conditional Formatting In Pandas]]
+
+      *Cheatsheet*: [[https://miro.medium.com/max/1050/1*I-0S6V9yHWlFZUlJnIhz9w.png][Essential Techniques to Style pandas DataFrames]]
+      
+******* Display all columns (global option):
+      
+        pd.set_option("display.max_columns", None)
+
+******* Display full width of each column e.g. when have long texts in them:
+
+        pd.set_option("display.max_colwidth", None)
+
+******* Saving & restoring global display options:
+
+        See sutils.restore_print_opts() and related code
+        (I should make general purpose sutil funcs for this)
+
+********* TODO sutil funcs to save/restore jupyterlab/pandas/numpy print options
+
+******* Shading by content, like in Excel
+
+        _Highlight max and min_
+
+          # highlight extrema down colums (default is axis=0), note chaining
+          df.style.highlight_min(color = "red").highlight_max(color = "green") #
+
+          # highlight max row value
+          df.style.highlight_max(axis = 1))
+
+        _Within range_
+
+          dataframe.style.highlight_between(left, right
+
+        _Nans_
+
+          df.style.highlight_null(null_color = "yellow")
+
+        _Min/Max/Missing_
+
+          See: [[https://pub.towardsai.net/improve-your-analytical-report-with-conditional-formatting-in-pandas-76039fd3ccb5][How To Improve Your Analytical Report With Conditional Formatting In Pandas]]
+
+        _Gradients_ w.r.t cell value
+
+          df.style.background_gradient()
+
+******* Shading only a subset
+
+          df.style.background_gradient(subset = ["A", "D"]))
+
+******* Hide index
+
+          df.style.hide_index()
+          
+******* Format numbers/text in each cell
+
+        # for clumns A, B, C, D
+        df.style.format({"A" : "{:,.0f}",
+                 "B" : "{:d} $",
+                 "C" : "{:.3f}",
+                 "D" : "{:.2f}"})
+
+******* Background display properties for whole table, rows or cells
+
+          df.style.set_properties(subset = ["C"],
+                                  **{"background-color": "lightblue",  
+                                  "color" : "white",
+                                  "border" : "0.5px solid white"})
+
+******* Foreground (number, text) properties based on function of cell value
+
+        # make neg values red, non-neg green
+        def custom_styling(val):
+            color = "red" if val < 0 else "black"
+            return f"color: {color}"
+
+        df.style.applymap(custom_styling)
+
+******* Fill cells with a bar indicating numeric value
+
+        # magnitude
+        df.style.bar(subset = ["A"], 
+             color = "lightblue", 
+             vmin = 0)
+
+       # signed magnitude
+       df.style.bar(subset = ["D"], 
+                    align = "mid", 
+                    color = ["salmon", "lightgreen"])\
+         .set_properties(**{'border': '0.5px solid black'})
+       
+******* Styled dataframe exported to Excel
+
+        # must install openpyxl to do this
+        df.style.background_gradient(subset = ["D"], 
+                             cmap = "RdYlGn", 
+                             vmin = -1, 
+                             vmax = 1)\
+        .to_excel("styled.xlsx", engine = "openpyxl")
+                 
 ***** [[Pandas Parallelization]]
 ***** Drop top level of multilevel column index
       From: [[https://stackoverflow.com/a/22233719/2591097][Pandas: drop a level from a multi-level column index?]]
@@ -12720,19 +12981,6 @@ else:
 *** <<Hadoop>>
 ***** [[file:energy.bib::Bengfort16hdoopIntroDSbook][Bengfort & Kim 2016: Data Analytics Hadoop Intro Book]]
 *** <<Amazon AWS/S3>>
-***** CPR AWS/S3 setup
-      From  Mike Newman, on Teams, 11/18/20
-******* AWS [[https://us-east-1.signin.aws.amazon.com/oauth?SignatureVersion=4&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJMOATPLHVSJ563XQ&X-Amz-Date=2020-11-20T02%3A57%3A20.454Z&X-Amz-Signature=bd7781acd4a2906fe6fe12344191892074069831d0875830305ce974add4902a&X-Amz-SignedHeaders=host&client_id=arn%3Aaws%3Aiam%3A%3A015428540659%3Auser%2Fhomepage&code_challenge=JYJIIGPIw25r4inUnMWA9hSVK2q6wqtvAa7iBbRi0ys&code_challenge_method=SHA-256&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3Fstate%3DhashArgs%2523%26isauthcode%3Dtrue&response_type=code&state=hashArgs%23][login page]] (I am sotterson@250657904178)
-        sotterson is the IAM account name
-        250657904178 is the account ID
-******* click on create notebook instance, LHS menu
-******* [[https://us-west-2.console.aws.amazon.com/sagemaker/home?region=us-west-2#/landing][AWS Sagemaker sign in page]]
-******* *S3 bucket*: datascience.dev.cleanpower.com
-******* *Role*: CPR-Sagemaker-DataScience (what I enter into instance role field)
-********* full role spec:
-
-          arn:aws:iam::250657904178:role/CPR-Sagemaker-DataScience
-
 ***** Tutorials
 ******* Amazon re:invent [[https://mail.google.com/mail/u/0/#inbox/FMfcgxwKjTWcXDZQTPxgjGCQQpKnTKTl][conference prep email]]
 
@@ -12748,7 +12996,6 @@ https://aws.amazon.com/blogs/machine-learning/deploy-trained-keras-or-tensorflow
 
 https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn-support/
 
-
 ***** <<Docker Containers>>
 ******* excellent YouTube tutorial: [[https://www.youtube.com/watch?v=0oEsMwSxBsk][Containers? So What? Docker 101 Explained.]]
 ******* [[cite:Nust20dockerDS10rules][Nuest et al. 2020: Ten Simple Rules DS Containers]]
@@ -12763,6 +13010,8 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 ******* <<AWS serverless can run a container image>>
         From: [[https://aws.amazon.com/blogs/compute/python-3-9-runtime-now-available-in-aws-lambda/][Python 3.9 runtime now available in AWS Lambda]]
 ********* also [[Docker Containers]]
+***** Reading AWS buckets 
+******* [[https://s3browser.com/how-to-upload-and-download-files.aspx][S3 Browser]] (windows tool)
 *** ONNX model format & pipelines
     From: [[https://onnx.ai/about.html][ONNX | About]]
 
@@ -13249,7 +13498,7 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
       See the web page for many other Settings shortcut codes
 ***** VPN connection on taskbar
 ******* [[https://vpnmyway.wordpress.com/version-history-download/][VPNMyWay is supposed to put the connection on the taskbar]]
-* MacOS
+* <<MacOS>>
 *** Package manager for MacOS: use HomeBrew Cask
 
     Should install [[Homebrew]].
@@ -13309,7 +13558,7 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 
       mkdir ~/Library/Fonts
       
-      Copy to the dir above, all the fonds in:
+      Copy to the dir above, all the fonts in:
 
       /Applications/Microsoft Word.app/Contents/Resources/DFonts
       
@@ -13672,6 +13921,8 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 *** <<Screen snipping (screenshots) on MacOS>>
     From: [[https://support.apple.com/en-us/HT201361][Take a screenshot on your Mac - Apple Support]]
 
+    _MacOS Default_
+    
     | function                       | keys           |
     |--------------------------------+----------------|
     | fullscreen                     | Shft+Cmd+3     |
@@ -13679,6 +13930,8 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
     | window/menu                    | Shft+Cmd+4+spc |
     | screenshot app                 | Shft+Cmd+5     |
     | *save to clipboard*, not desktop | Ctrl+...       |
+
+    _But [[https://www.xnipapp.com/][Xnip]] is better, and is also free_
 
     Also: [[Windows / MacOS keyboard correspondence]]
 
@@ -13692,6 +13945,7 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 
     brew install --cask microsoft-teams
     
+*** [[https://howchoo.com/mac/macos-prioritize-ethernet-over-wifi][How to Prioritize Ethernet Over Wi-Fi in macOS]]
 *** Slack (MacOS)
 
     brew install --cask slack
@@ -14054,6 +14308,7 @@ HOWEVER, the pen annotations are horrible.  Just like the old acroread.
 *** [[MacOS mermaid-cli]]
 *** [[Mac Lyx]]
 *** [[MacBooK Pro]]
+*** also [[Windows]]
 * Compiled stuff from other folks
 *** I'm putting it into ~/contrib
 *** so use
@@ -15344,6 +15599,9 @@ I think systemcrafters guy said pages could be check into git at short time inte
 
 ******* Language: [[https://medium.com/better-programming/mermaid-create-charts-and-diagrams-with-markdown-88a9e639ab14][Mermaid — Create Charts and Diagrams With Markdown-like Syntax.]]
 ******* Very nice web editor w/ exports: [[https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbiAgQVtDaHJpc3RtYXNdIC0tPnxHZXQgbW9uZXl8IEIoR28gc2hvcHBpbmcpXG4gIEIgLS0-IEN7TGV0IG1lIHRoaW5rfVxuICBDIC0tPnxPbmV8IERbTGFwdG9wXVxuICBDIC0tPnxUd298IEVbaVBob25lXVxuICBDIC0tPnxUaHJlZXwgRltmYTpmYS1jYXIgQ2FyXVxuXHRcdCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In19][Mermaid live editor]]
+******* <<Gantt charts in Mermaid>>
+********* tutorial: [[https://subscription.packtpub.com/book/business-and-other/9781801078023/15/ch15lvl1sec80/creating-a-gantt-chart-with-mermaid][Creating a Gantt Chart with Mermaid]]
+********* my feature request: [[https://github.com/mermaid-js/mermaid/issues/3290][#3290 Vertical dependency lines in Gantt chart]]
 ******* <<Emacs Mermaid>>
 
         Bummer that you must install extra command line program: [[https://github.com/mermaid-js/mermaid-cli][GitHub mermaid-js/mermaid-cli]], which is [[https://github.com/mermaidjs/mermaid.cli/issues/73][problematic for Windows]].
@@ -15490,6 +15748,7 @@ I think systemcrafters guy said pages could be check into git at short time inte
 *** Gantt charts
 ***** [[https://www.projectlibre.com/product/1-alternative-microsoft-project-open-source][#1 Free Alternative to Microsoft Project Open Source | Projectlibre]]
 ***** [[Xmind]] does Gantt charts
+***** [[Gantt charts in Mermaid]]
 * <<Document Annotation>>
 *** [[https://beepb00p.xyz/annotating.html][How to annotate literally everything]]
 *** [[https://readwise.io/][Readwise]]: [[Kindle]], Instapaper, Pocket, iBooks, and more
