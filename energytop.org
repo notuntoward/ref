@@ -161,6 +161,8 @@
 *** [[cite:Sargent21quantEconPython][Sargent & Stachurski 2021: Quantitative Economics Python]]: has code
 *** [[cite:Davidson-Pilon15BayesianMethodsHackers][Davidson-Pilon 2015: Bayesian Methods Hackers]]
 *** [[cite:Molnar18InterpretableMachineLearning][Molnar 2018: Interpretable Machine Learning]]
+*** <<Causality Books>>
+***** [[cite:Pearl18bookWhyCausEff][Pearl & Mackenzie 2018: The book of why Cause Effect]]
 *** [[Books w/ source code]]
 *** Wind energy books I could buy
     these three looked good, looking at amazon.com on 9/6/2011
@@ -500,11 +502,11 @@
 ******* [[cite:Gneiting07strictPropScore][Gneiting & Raftery 2007: Strictly Proper Scoring]], eq. (27)
 ******* [[cite:Ehm16quantileExpectileScrFrcst][Ehm et al. 2016: Quantile, Expectile Score Forecasts]]
 ******* [[cite:Gneiting11compFrcstWgtQntSc][Gneiting & Ranjan 2011: Comparing quantile weighted scoring]]
-
 ***** [[Quantile score & DWD style per-quantile reliability plots]]
 ***** [[Quantile Confidence estimates]]
 ***** [[Continuous Ranked Probability Score (CRPS)]]
 *** [[Continuous Ranked Probability Score (CRPS)]]
+*** [[cite:Johnstone12econValProbFrcstPortfolio][Johnstone 2012: Log optimal econ eval prob frcst]]
 *** <<Local Score>>
 
     The property of a probabilistic forecast performance score.  A score is [[file:energy.bib::Brocker07properScore][local only if]] it depends only upon the predicted pdf value at the true answer, X.  This "appears" to be desirable but a [[Proper Score]] is [[file:energy.bib::Brocker07properScore][more important]].
@@ -1572,6 +1574,7 @@
 ***** <<Regional forecasts via hierarchical forecasts>>
 ******* relevant to Dong project
 ******* Miguel (visiting Spanish research, 2010) has a thesis on aggregation
+******* [[cite:Olivares22hierarchFrcstRefFm][Olivares et al. 2022: Hierarchical Forecast Reference Frmwrk]]
 ******* [[file:energy.bib::Athanasopoulos09hierFrcst][Athanasopoulos et al. 2009: Hierarchical Australian]]
 ********* has R ([[http://cran.r-project.org/web/packages/hts/index.html][hts package]], manual is [[http://cran.r-project.org/web/packages/hts/hts.pdf][here]])
 ********* I could improve by adding spatio temporal
@@ -2072,7 +2075,7 @@ Scott
 ********* Discontinuous gradient at origin (GELU fixes this)
 
 ***** In Deep Nets different activations don't matter
-      From: [[https://sea-adl.org/2019/12/03/lstm-is-dead-long-live-transformers/][LSTM is dead, long live Transformers – Seattle Applied Deep Learning]]
+      From: [[https://sea-adl.org/2019/12/03/lstm-is-dead-long-live-transformers/][LSTM is dead, long live Transformers Seattle Applied Deep Learning]]
 ******* as long as you don't use tanh/sigmoid
 ******* But optimizers do matter
 ********* Adam: fast, but tends to overfit
@@ -2367,7 +2370,11 @@ Scott
 ***** <<Deep Feature Learning>>
 ******* [[cite:Karpathy14featLrnEscpdsBlog][Karpathy 2014: Feature Learning Escapades]] (Transfer learning)
 ******* [[cite:Zeiler14vizUnderstandConvNN][Zeiler & Fergus 2014: Visualizing]] conv NN feat learn
+******* [[https://www.evernote.com/l/AA0LjmG_yKhNtofiblqhElTx7jwPxHZEKrI/][Ferus 2022: logistic regrssn, AR feats beat deep NN in TS classif]]
 ******* also [["Deep" Feature Synthesis (Featuretools)]]
+***** <<LSTM Models>>
+******* TODO collect lstm papers here (LOGSEQ queries could keep this live)
+******* [[free LSTM ERCOT price forecast SW]]
 ***** Deep Learning Code
 ******* Matlab: [[http://www.mathworks.com/matlabcentral/fileexchange/38310-deep-learning-toolbox][Deep Learning Toolbox]]
 ******* [[http://deeplearning.net/software_links/][deeplearning.net]]: software and papers, and [[http://deeplearning.net/reading-list/tutorials/][tutorials]]
@@ -2432,6 +2439,7 @@ Scott
 *** <<Monotonic Neural Nets>>
 ***** Monotonic Lattice Neural Nets: [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning]]
 ***** [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (built-in monotonic)
+***** [[cite:Chilinski20nnLikViaCDF][Chilinski & Silva 2020: Neural Likelihoods Cumulative]]
 ***** [[cite:Keelin16metalogDist][Keelin 2016: Metalog Distributions]] Make this an NN output layer?
 ***** [[https://www.evernote.com/l/AA3CYD4M3edKZ7Ox_K7_NgyG3km5whz64TQ/][Monotonicity constraints in machine learning (lightgbm, xgboost, TensorFLow)]] 
 ***** also [[Learning monotonicity]]
@@ -2472,9 +2480,11 @@ This is often an NN e.g [[SUMO toolbox]]
 ***** [[cite:Pinson10relDiagSerCorr][Pinson et al. 2010: Reliability Surrogate Consistency]]
 ***** [[cite:Safta14accelGridOptSDE][Safta et al. 2014: Toward Using Surrogates]] Stoch. opt: unit commit SDE
 ***** [[cite:Kraskov04syncIndepMeasMIphd][Kraskov 2004: Synchronization Interdependence Measures]]: surrogate data
+***** physics models with sparsity constraints: [[https://www.youtube.com/watch?v=7n7xaviepKM][Discrepancy Modeling with Physics Informed Machine Learning - YouTube]]
 ***** also [[Solar physical model software]]
 ***** also [[Solar Power Forecasting Physical Models]]
 ***** also [[Physics-Based Wind Power Curve Features]]
+* [[https://www.evernote.com/l/AA0LjmG_yKhNtofiblqhElTx7jwPxHZEKrI/][Ferus 2022: logistic regression, AR feats beats deep NN for TS classif]]
 * <<Data Efficient Models>>
 ***** <<Data efficiency: Naive Bayes vs. Logistic Regression>>
 ******* [[file:energy.bib::Ng02discrimVsGenNBvsLogRgrsn][Ng & Jordan 2002 Discrim vs. Gen, Logistic Rgrssn vs. Naive Bayes]]
@@ -2482,6 +2492,7 @@ This is often an NN e.g [[SUMO toolbox]]
 ******* also [[Logistic Regression]]
 ******* also [[Rare Events and Logistic Regression]]
 ***** also [[Deep Learning with Small Data]]
+***** [[https://www.evernote.com/l/AA0LjmG_yKhNtofiblqhElTx7jwPxHZEKrI/][Ferus 2022: logistic regression, AR feats beats deep NN for TS classif]]
 * <<Multi-task Learning>>
 *** TODO [[file:energy.bib::Caruana97multiTaskLrn][Caruana 1997: Multitask Learning]]
 *** TODO [[file:energy.bib::Ruder17multiTskDeepNN][Ruder 2017 multitask deep NN]]
@@ -2595,7 +2606,7 @@ This is often an NN e.g [[SUMO toolbox]]
 ***** [[PCA: Principal Components Analysis]]
 ***** <<UMAP: Uniform Manifold Approximation & Projection>>
 
-      Better than [[PCA: Principal Components Analysis]], yet [[https://towardsdatascience.com/8-booming-data-science-libraries-you-must-watch-out-in-2022-cec2dbb42437][almost as fast]].  UMAP is [[https://towardsdatascience.com/tricky-way-of-using-dimensionality-reduction-for-outlier-detection-in-python-4ee7665cdf99][good for Anomaly detection]].
+      Better than [[PCA: Principal Components Analysis]], yet [[https://towardsdatascience.com/8-booming-data-science-libraries-you-must-watch-out-in-2022-cec2dbb42437][almost as fast]].  UMAP is [[https://towardsdatascience.com/tricky-way-of-using-dimensionality-reduction-for-outlier-detection-in-python-4ee7665cdf99][good for Anomaly detection]] and is also [[https://umap-learn.readthedocs.io/en/latest/inverse_transform.html][invertible]], like PCA.
 
 ******* [[https://www.youtube.com/watch?v=eN0wFzBA4Sc][UMAP Dimension Reduction, Main Ideas!!! - YouTube]]
 ******* [[https://umap-learn.readthedocs.io/en/latest/][UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction]]
@@ -2605,7 +2616,7 @@ This is often an NN e.g [[SUMO toolbox]]
 ***** [[cite:Maaten08VisualizingDataUsingTSNE][Maaten & Hinton 2008: Visualizing data using t-SNE]]
 ***** [[cite:Blau17NonRedundSpectDimRed][Blau & Michaeli 2017: Non Redundant Spectral Dimensionality Reduction]]
 ***** <<KNN Dimension Reduction>>
-******* [[file:energy.bib::Kramer11dimRedKNN][Kramer 2011: Dimensionality]]  reduction via KNN manifolds
+******* [[file:energy.bib::Kramer11dimRedKNN][Kramer 2011: Dimensionality]] reduction via KNN manifolds
 ******* [[file:energy.bib::Kramer13SortHiDimNN][Kramer 2013: Sorting High Dimensional]] KNN noisy/missing feats
 ******* [[High dimensional KNN hubs]]
 ***** [[Dimension reduction for local linear models]]
@@ -3062,8 +3073,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 *************** /anyway/, use uniqueness/commonality to cluster regimes somehow?
 *********** combo of corr, partial and part corr: [[file:energy.bib::schrems08pseudocorrvarsel][Schrems Et Al. 2008: Data Based Multivariate]]
 ************* has decent explanation of the merits of each
-*********** partial coherence or partial directed coherence
-            <<partial coherence>> <<partial directed coherence>>
+*********** <<partial coherence>> <<partial directed coherence>>
 
 ************* like partial correlation but in freq domain, any lag, can determine causality
 ************* partial coherence
@@ -4301,6 +4311,7 @@ Hope that helps,
 * <<Feature Learning>>
 *** [[Transfer Learning]]
 *** [[cite:Kanter15deepFeatSyntCpla][Kanter & Veeramachaneni 2015: Deep Feat Synth Gauss Copula]]
+*** [[https://www.evernote.com/l/AA0LjmG_yKhNtofiblqhElTx7jwPxHZEKrI/][Ferus 2022: logistic regrssn, AR feats beat deep NN in TS classif]]
 *** also [[Feature Generation]]
 * <<Feature Generation>>
 *** <<"Deep" Feature Synthesis (Featuretools)>>
@@ -4313,6 +4324,7 @@ Hope that helps,
 
 *** <<Random Forest Feature Generation>>
 ***** [[file:energy.bib::Kanter15deepFeatSyntCpla][Kanter & Veeramachaneni 2015: Deep]]
+*** [[https://www.evernote.com/l/AA0LjmG_yKhNtofiblqhElTx7jwPxHZEKrI/][Ferus 2022: logistic regrssn, AR feats beat deep NN in TS classif]]
 *** also [[Feature Learning]]
 * <<Model Selection>>
 *** [[http://projecteuclid.org/dpubs?service%3dui&version%3d1.0&verb%3ddisplay&handle%3deuclid.ejs/1245415825][model selection by resampling penalization]]
@@ -4347,7 +4359,7 @@ Hope that helps,
 *** see also: [[model selection]]
 
 *** [[Multi-Model NWP]]
-*** [[*Ensemble Forecasting][Ensemble Forecasting]]
+*** [[Ensemble Forecasting]]
 *** [[file:energytop.org::*Boosted%20regression][Boosted regression]]
 * <<KNN Regression>>
 *** [[file:energy.bib::Altman92kernKNNrgrssn][Altman 1992 Intro to Kernel and KNN Regression]]
@@ -4484,6 +4496,7 @@ Hope that helps,
 ********* [[LightGBM & tuning with optuna]]
 ********* also [[scikit-optimize]]: does Bayesian LightGBM
 ********* TODO also [[optuna]]: does many kinds of tuning, special LightGBM thing too
+******* [[https://www.kaggle.com/code/paweljankiewicz/lightgbm-with-sklearn-pipelines/notebook][LightGBM with Sklearn pipelines]]
 ******* also [[hyperopt]]: does LightGBM optimization
 ******* also [[XGBoost vs. LightGBM vs. Catboost]]
 ***** <<Catboost>>
@@ -4525,7 +4538,7 @@ Hope that helps,
 ******* [[Monotonic Neural Nets]]
 ******* also [[Learning monotonicity]]
 ***** <<Feature Selection for Boosted Trees>>
-******* [[cite:Kursa10featSelBoruta][Kursa & Rudnicki 2010: Feature Selection Boruta Package]]
+******* [[cite:Kursa10featSelBoruta][Kursa & Rudnicki 2010: Feature Selection Boruta Package]] (and other algs)
 ******* [[Feature Importance]]
 ******* [[SHAP for feature selection]]
 ******* also [[Feature Selection]]
@@ -5284,7 +5297,7 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                            
 ******* is its own Matlab thttps://www.gitbook.com/book/benfulcher/hctsa-manual/details
 ******* [[JIDT: Java Information Dynamics Toolkit]]
 
-
+***** [[https://www.evernote.com/l/AA0LjmG_yKhNtofiblqhElTx7jwPxHZEKrI/][Ferus 2022: logistic regression, AR feats beats deep NN for TS classif]]
 ***** [[https://medium.com/version-1/an-introduction-to-shapelets-the-shapes-in-time-series-c55b94205614][An Introduction To Shapelets: The Shapes In Time Series]]
       Use for classification, is learned, several references, has python
 ***** also [[Time series clustering]]
@@ -5590,6 +5603,10 @@ http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber                            
 ***** [[ARIMA Forecasting]]
 *** [[Extreme Quantile Clustering]]
 *** [[file:energy.bib::Vinod17genCorrCause][Vinod 2017: Generalized Correlation & Kernel Causality]]
+*** [[partial coherence]]
+*** [[Causality Books]]
+*** Causality software
+***** [[https://github.com/py-why][PyWhy · GitHub]]
 *** also: [[Types of dependence or similarity]]
 * <<Ensuring bounded regression outputs>>
   <<bounded regression outputs>>
@@ -6203,6 +6220,7 @@ sera
 ***** [[cite:Zhang16detProbIntrvVari][Zhang et al. 2016: Deterministic]] interval, variational. Uses ELM
 ***** [[cite:Suchwalko16loadFrcst3deepLrnBlog][Suchwalko 2016: load frcst, 3 methods, Deep Lrn prob]]
 ***** [[file:energy.bib::Tayman11popFrcstAccRgrssn][Tayman et al. 2011: Evaluating pop frcst w/ regression model]]
+***** [[cite:Allen09quantRgrsMinRisk][Allen & Singh 2009: Minimizing Portfolio Loss QR]]
 ***** <<Tree-Based Probabilistic Regression>>
 ******* [[file:energy.bib::Bhat11quantRgrsnTrees][Bhat et al. 2011: Quantile Regression Trees]]
 ******* [[file:energy.bib::Meinshausen06qrForests][Meinshausen 2006: Quantile Regression Forests]]
@@ -6281,7 +6299,8 @@ sera
 ******* [[file:energy.bib::Dette06nonParamMonoRgrssn][Dette et al. 2006]] nonparam mono rgrssn: rearrangement method that can uncross
 ******* [[file:energy.bib::Dette08quantRgrsNonCross][Dette & Volgushev 2008: Non]] crossing quantile curves
 ******* [[file:energy.bib::Keelin11QuantParamDist][Keelin & Powley 2011: Quantile]] param dist
-******* [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]]
+******* [[cite:Chilinski18neuralLikCDF][Chilinski & Silva 2018: Neural Likelihoods Cumulative]]
+******* [[cite:Chilinski20nnLikViaCDF][Chilinski & Silva 2020: Neural Likelihoods Cumulative]]
 ******* [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]] (deep meth. for quantiles or DR thresh probs?)
 ******* [[cite:Waltrup15expectileQuantile][Waltrup et al. 2015: Expectile/Quantile DavidGoliath]]: cross, expect loss
 ******* expectile vs quantile: [[cite:Koenker13expectileLivByndMn][Koenker 2013: Expectile Live Beyond Means]]
@@ -6536,7 +6555,8 @@ sera
 ***** [[cite:Belloni13progEvalHiDim][Belloni et al. 2013: Program]] eval high dim (use LASSO)
 ***** [[cite:Niu16ordinalMultiOutCNNage][Niu et al. 2016: Ordinal Regression Multiple CNN Age Est.]] (deep meth. for thresh probs, no crossover?)
 ***** An NN w/ LSE cost function [[https://books.google.de/books?id                                                                =U_b2BwAAQBAJ&pg=PA5&lpg=PA5&dq=neural+network+for+estimating+conditional+mean&source=bl&ots=hLZiI0M6Tp&sig=hljm-efcyj4eiRoXF9KVHzsgZP0&hl=en&sa=X&redir_esc=y#v=onepage&q=neural%2520network%2520for%2520estimating%2520conditional%2520mean&f=false][estimates conditional mean]] (needed for dist rgrssn)
-***** [[cite:Chilinski18neuralLikCDF][Chilinski & Silva: Neural Likelihoods Cumulative]] (built-in monotonic)
+***** [[cite:Chilinski18neuralLikCDF][Chilinski & Silva 2018: Neural Likelihoods Cumulative]] (built-in monotonic)
+***** [[cite:Chilinski20nnLikViaCDF][Chilinski & Silva 2020: Neural Likelihoods Cumulative]]
 ***** [[The many ways to use Nadaraya-Watson kernels to predict conditional probs]]
 ***** Nadaraya-Watson for random forest probs: [[cite:Olson18sensRndFrstProbKern][Olson & Wyner 2018: Sense Rand Frst Prob]]
 ***** [[cite:Li08condCDFcatContin][Li & Racine 2008: Nonparametric CDF contin/disc]] (Nadaraya-Watson-like)
@@ -6623,7 +6643,7 @@ sera
 ******* <<Copulas in Python>>
 ********* Barehanded Python: [[https://twiecki.io/blog/2018/05/03/copulas/][An intuitive, visual guide to copulas, MCMC]]
 ********* Copulas (MIT Python lib)
-          From: [[https://sdv.dev/Copulas/][Overview — Copulas 0.5.0 documentation]]
+          From: [[https://sdv.dev/Copulas/][Overview: Copulas 0.5.0 documentation]]
 *********** univariate: do they model temporal correlation?
 *********** the usual bivarate
 *********** multivariate: Gaussian and D/C/R [[Factor/Vine Copulas]]
@@ -6654,7 +6674,7 @@ sera
 ***** [[file:energy.bib::Gneiting14ProbFrcsting][Gneiting & Katzfuss 2014: Probabilistic Forecasting]] overview
 ***** Monte Carlo w/ Multivariate Normal Dist [[Http://www.thisisthegreenroom.com/2009/monte-carlo-house-of-cards/][Is A Discrete Gaussian Copula]]
 ***** [[cite:Bai16condCplaWindPowCrvFeat][Bai et al. 2016 Cond. Copula wind Pow curve and feats]]
-***** TODO [[cite:Zhang16copulaConvPowSys][Zhang et al. 2016: Copula Based Dependent Convoltion Pow Sys]]
+***** TODO [[cite:Zhang16copulaConvPowSys][Zhang et al. 2016: Copula Based Dependent Convolution Pow Sys]]
 ***** [[File:energy.bib::genest07copulaeverything][Genest & Favre 2007: Everything You Always]] (+ friendly slides)
 ***** Nice Writeup: [[Http://www.mathworks.de/company/newsletters/news_notes/win03/monte_carlo.html][Monte-Carlo Simulation In Matlab Using Copulas]]
 ***** [[Http://www.mathworks.de/products/statistics/demos.html?file%3d/products/demos/shipping/stats/copulademo.html][Simulating Dependent Random Variables Using Copulas]]
@@ -7188,6 +7208,7 @@ variables will be preferred, when possible.
         - remove if fail permutation test: [[file:energy.bib::francois06permtestmutinf][françois et al. 2006]] (or later papers)
         - could also try correlation, using p-value test: [[file:energy.bib::simpson01estsigxcorrmiss][simpson et al. 2001: estimation]]
         - correlation could be a baseline for prelim lag selection too
+        - [[https://www.evernote.com/l/AA0LjmG_yKhNtofiblqhElTx7jwPxHZEKrI/][Ferus 2022: Augmented Dickey-Fuller unit root test for AR lag sel]]
         - could also use [[file:energy.bib::meinshausen08pvalhidim][Meinshausen et al. 2008: p]] ?
         - [[cite:Belloni13progEvalHiDim][Belloni et al. 2013: Program]] eval high dim (uses LASSO)
         - lasso papers to read [1/7]
@@ -7547,6 +7568,7 @@ variables will be preferred, when possible.
 ********* also [[Johnson System Distributions]]
 ********* also [[Metalog Distributions]]
 ******* <<Metalog Distributions>>
+********* [[cite:Keelin21metalogFlexExpertBayes][Keelin & Howard 2021: Metalog Distributions]]
 ********* [[file:energy.bib::Keelin19metalogCloseFrm][Keelin et al. 2019: Metalog Distribution Lognormal Sum, Closed Form]]
 ********* [[file:energy.bib::Keelin16metalogDist][Keelin 2016: Metalog Distributions]]
 ********* [[file:energy.bib::Keelin11QuantParamDist][Keelin & Powley 2011: Quantile Param Dist]]
@@ -8133,10 +8155,10 @@ variables will be preferred, when possible.
 ***** [[file:energy.bib::Clyde10bayesAdaptSampVarSelAvg][Clyde et al. 2010: Bayesian]] (adaptive sampling)
 ***** maybe incremental sparsification (but I'm don't not sure how to handle dim change)
       [[file:energy.bib::Nguyen_Tuong10incSparse][Nguyen-Tuong & Peters 2010: Incremental Sparsification Real]]
-*** Lagged wind velocity basis
-    <<Lagged wind velocity basis>>
+*** <<Lagged wind velocity basis>>
 ***** [[Angular In Input]] / [[Basis Learning]]
 ***** [[Distributed lag]]
+***** [[https://www.evernote.com/l/AA0LjmG_yKhNtofiblqhElTx7jwPxHZEKrI/][Ferus 2022: Augmented Dickey-Fuller unit root test for AR lag sel]]ect
 ***** <<Converting Product to Sums>>
 
       Many relationships e.g. direction and wind speed in power curves
@@ -8463,8 +8485,10 @@ Scott
 ********* [[file:energy.bib::Wibral15BitsBrainsTE][Wibral et al. 2015: Bits Brains Biologically Inspired Computing]] (TE featsel)
 
 ********* Multivariate AR lag selection: [[File:energy.bib::winker00multivarlagsel][Winker 2000: Optimized Multivariate Lag Structure Selection]]
+********* [[cite:Papana08EvalMutInfoDynSys][Papana & Kugiumtzis 2008: Eval MI for lag determ, complex sys]]
+********* [[https://www.evernote.com/l/AA0LjmG_yKhNtofiblqhElTx7jwPxHZEKrI/][Ferus 2022: logistic regression, AR feats beats deep NN (picks lags)]] 
 ********* xcorr handling missing features w/ permutation sig. test: [[file:energy.bib::simpson01estsigxcorrmiss][simpson et al. 2001: estimation and significance]]
-********* improve permutation test: [[file:energy.bib::francois07resampparamfreefeatsel][françois et al. 2007: resampling methods for]]
+********* improve permutation test: [[file:energy.bib::francois07resampparamfreefeatsel][francois et al. 2007: resampling methods for]]
 ********* Might want to do a [[Wavelet Time Series Model]]
 ******* <<Wind spatio-temporal patterns>>
 ********* [[file:energy.bib::alkhouli05gustfrntdettmplt][alkhouli & debrunner 2005: gust front detection]]
@@ -8630,55 +8654,122 @@ Scott
 *********** CPR has [[https://www.solaranywhere.com/support/solar-energy-modeling-services/snow-loss-modeling/?mkt_tok=MzY5LUhCWi02MDUAAAGCWiB1Qg_o-EPyudOwTdbiUg7z8bWWUay_qVtShI5s8nvS1jEd8yS-9u1SapSoIEIFhh7QxwdRXSUGXypy1sOFNm7IRvFOefv5tEW9Q1PG-g][two methods for solar loss]], one based on [[https://www.solaranywhere.com/support/solar-energy-modeling-services/snow-loss-modeling/?mkt_tok=MzY5LUhCWi02MDUAAAGCWiB1Qg_o-EPyudOwTdbiUg7z8bWWUay_qVtShI5s8nvS1jEd8yS-9u1SapSoIEIFhh7QxwdRXSUGXypy1sOFNm7IRvFOefv5tEW9Q1PG-g][SAM/NREL study]]
 ********* [[cite:Suh17irradMnthlyToHrlyEPP][Suh & Choi 2017: Methods Converting Monthly Sat Irrad to Hourly]]
 ********* [[cite:Kleissl13SolarEnrgyFrcstBk][Kleissl 2013: Solar Energy Forecasting]]: several kinds of persistence
-********* <<Summary: Irradiance to Power Sub-models (Mayer21)>>
+********* DONE <<Summary: Irradiance to Power Sub-models (Mayer21)>>
           Based on Models in [[cite:Mayer21cmprPhyMdlPVfrcst][Mayer & Grof 2021: Extensive Comparison Physical PV Models]]
+********* Solar geometry to ground: [[https://www.pveducation.org/pvcdrom/terrestrial-solar-radiation][Terrestrial Solar Radiation | PVEducation]]
 
-Sub Models (Section 3.5 & Co.)
+Sub Models (Section 3.5 & Co. of [[cite:Mayer21cmprPhyMdlPVfrcst][Mayer & Grof 2021: Extensive Comparison Physical PV Models]])
 
-| Code | Thing modeled           | Table | Details                                                                              |
-|------+-------------------------+-------+--------------------------------------------------------------------------------------|
-| C    | (component) separation  |     1 | Separation of beam and Diffuse irradiation                                           |
-| D    | (diffuse) transposition |     2 | Horizontal irrad --> tilted surace (== POI according to pyData2021 conference video) |
-| R    | reflection              |     3 | Reflection loss from PV module surface                                               |
-| T    | cell temperature        |     4 | Effect of temp (NOCT?) on performance                                                |
-| P    | PV performance          |     5 | electronic modelEmpirical or N-transistor model                                      |
-| S    | shading                 |     6 | uneven irrad on PV surface, both stochastic (clouds) and deterministic (geometric)   |
-| I    | inverter                |     7 | voltage and/or power limits, DC:AC ratio, clipping, load-dep efficiency              |
+| Code | Thing modeled           | Table | Details                                                                          |
+|------+-------------------------+-------+----------------------------------------------------------------------------------|
+| C    | (component) separation  |     1 | Separation of beam and Diffuse irradiation                                       |
+| D    | (diffuse) transposition |     2 | Horizontal irrad -> tilted surace (== POI according to pyData2021 conference video) |
+| R    | reflection              |     3 | Horizontal irrad -> tilted surace (== POI according to pyData2021 conference video) |
+| T    | cell temperature        |     4 | Effect of temp (NOCT?) on performance                                            |
+| P    | PV performance          |     5 | electronic modelEmpirical or N-transistor model                                  |
+| S    | shading                 |     6 | uneven irrad on PV surface, both stochastic (clouds) and deterministic (geometric) |
+| I    | inverter                |     7 | voltage and/or power limits, DC:AC ratio, clipping, load-dep efficiency          |
 
 
 Sub Models in Joint Model (Table 15)
 
 | Joint Model      | Modeled   | Code | Sub Model Details        |    BibRef | BibKey                              | AltRefBibKey                     | GotRef? |
 |------------------+-----------+------+--------------------------+-----------+-------------------------------------+----------------------------------+---------|
-| Simplest         | sep       | C1   | ERBS                     |        33 | Erbs82EstDiffuseIrrad               |                                  | Y       |
-| C1D1R1T1P1S1I1   | transp    | D1   | Liu-Jordan               |        47 | Liu61dailyInsolTiltEqtr             | Li11EstDailyBeamRadTilt          | Y       |
+| Simplest         | sep       | C1   | ERBS                     |        33 | [[cite:Erbs82EstDiffuseIrrad][Erbs82EstDiffuseIrrad]]               |                                  | Y       |
+| C1D1R1T1P1S1I1   | transp    | D1   | Liu-Jordan               |        47 | [[cite:Liu61dailyInsolTiltEqtr][Liu61dailyInsolTiltEqtr]]             | [[cite:Li11EstDailyBeamRadTilt][Li11EstDailyBeamRadTilt]]          | Y       |
 |                  | reflec    | R1   | None                     |      none | n/a                                 |                                  | Y       |
 |                  | temp      | T1   | NOCT (data sheet T_NOCT) |        69 | Ross82FlatplatePVmod                |                                  | Y       |
-|                  | PV module | P1   | Evans                    |        79 | Evans77costPVcnctrt                 | Dubey13TempDepPV                 | Y       |
+|                  | PV module | P1   | Evans                    |        79 | [[cite:Evans77costPVcnctrt][Evans77costPVcnctrt]]                 | [[cite:Dubey13TempDepPV][Dubey13TempDepPV]]                 | Y       |
 |                  | shade     | S1   | None                     |      none | n/a                                 |                                  | Y       |
 |                  | Inverter  | I1   | Constant                 | datasheet | n/a                                 |                                  | Y       |
 |------------------+-----------+------+--------------------------+-----------+-------------------------------------+----------------------------------+---------|
-| Best MAE Overall | sep       | C8   | Starke w/ Perez Clearsky |        44 | Starke18cloudResOnMinDirrad         | Yang19SatelAugDiffuseSolar       | Y       |
+| Best MAE Overall | sep       | C8   | Starke w/ Perez Clearsky |        44 | [[cite:Starke18oneMinDiffuseIrrad][Starke18oneMinDiffuseIrrad]]          | Yang19SatelAugDiffuseSolar       | Y       |
 | C8D10R3T2P1S2I2  |           |      |                          |        39 | Ineichen02airmassIndpTurbCoeff      |                                  |         |
 |                  | transp    | D10  | Reindl param of [58]     |        58 | Perez90daylightAvailIrradDirectGlbl |                                  | Y       |
 |                  |           |      |                          |        59 | Reindl90hrlyTileIrradMdl            | Loutzenhiser07validIrradIncline  |         |
 |                  | reflec    | R3   | Physical, uncoated glass |        64 | Marion17aoiCorrectDiffusePV         | ShenLiang19crystSiliconBifacPV   | Y       |
 |                  | temp      | T2   | NOCT (data sheet T_NOCT) |        63 | King04pvArrayPerform                |                                  | Y       |
-|                  | PV module | P1   | Evans                    |        79 | Evans77costPVcnctrt                 |                                  | Y       |
+|                  | PV module | P1   | Evans                    |        79 | [[cite:Evans77costPVcnctrt][Evans77costPVcnctrt]]                 | [[cite:Dubey13TempDepPV][Dubey13TempDepPV]]                 | Y       |
 |                  | shade     | S2   | Mayer, many params?      |        83 | Mayer20optPVplantGenetic            |                                  | Y       |
 |                  | Inverter  | I2   | Driesse, quadratic       |        85 | Driesse08curvesEfficPVinvert        | pvlib.inverter.adr, [99] better? | Y       |
 
 
-Separation and Transposition models are most important, and there are probabilistic models for these [103] and [104].  Probably relevant for AU VPP.
+Separation and Transposition models are most important, and there are probabilistic models for these [[cite:Starke18oneMinDiffuseIrrad][Starke et al. 2018: Res Diffuse Rad]], ref [103] and [104].  Probably relevant for AU VPP.
 
-| Prob. Thing Modeled | BibRef | BibKey                  | AltRefBibKey | GotRef |                                                        |
+| Prob. Thing Modeled | BibRef | BibKey                  | AltRefBibKey | GotRef | Note                                                   |
 |---------------------+--------+-------------------------+--------------+--------+--------------------------------------------------------|
-| Separation          |    103 | Kim19probPredDNImc      | can't find   | N      | citers say 103 "simulates predictors," seems about DNI |
+| Separation          |    103 | Kim19probPredDNImc      | can't find   | Y      | citers say 103 "simulates predictors," seems about DNI |
 | Transposition       |    104 | Quan20probIrradTranspos |              | Y      |                                                        |
 
+********* [[cite:Erbs82EstDiffuseIrrad][Erbs et al. 1982: Estimation Diffuse Radiation]]
+********* [[cite:Vignola11GHICorrelationsDHI][Vignola 2011: GHI Correlations DHI]]
+********* [[cite:Liu61dailyInsolTiltEqtr][Liu & Jordan 1961: Daily Insolation Surfaces]]
+********* [[cite:Li11EstDailyBeamRadTilt][Li et al. 2011: Estimation Daily Beam]]
+********* [[cite:Evans77costPVcnctrt][Evans & Florschuetz 1977: Cost Studies Terrestrial conc. PV]]
+********* [[cite:Dubey13TempDepPV][Dubey et al. 2013: Temp Dep PV model]]
+********* [[cite:Starke18oneMinDiffuseIrrad][Starke et al. 2018: Res Diffuse Rad]]
+********* [[pvlib: comprehensive set of PV physical models in python]]: implements some of this?
 ********* [[Irradiance Physical models]]
 ********* [[Learning Physical Models with NN]]
 ******* <<Solar physical model software>>
+********* TODO [[cite:Gurupira17comparePvSimSoftware][Gurupira & Rix 2017: PV Simulation Software Comparisons]]
+********* <<pvlib: comprehensive set of PV physical models in python>>
+*********** [[cite:Holmgren18PVlib][Holmgren et al. 2018: Pvlib Python]]
+*********** [[cite:Remund22solarRsrcAssessPython][Remund & Sengupta 2022: Solar Resource Assessment Python:]] uses pvlib
+*********** [[https://pvlib-python.readthedocs.io/en/stable/index.html][pvlib online documentation]]
+*********** pvlib requires [[nrel-pysam]] for: pvlib.ivtools.sdm.fit_cec_sam()
+*********** especially [[https://pvlib-python.readthedocs.io/en/stable/user_guide/forecasts.html#forecasts][deprecated pvlib foreasting module]]
+************* downloads NWP and computes forecasted power & other things
+************* [[https://pvlib-python.readthedocs.io/en/stable/installation.html#standardrelease][conda install]] for using forecasting module
+*********** pvlib solar time functions
+************* [[https://pvlib-python.readthedocs.io/en/stable/generated/pvlib.location.Location.html][pvlib.location.Location]]: returns time zone of a location
+*********** [[https://pvlib-python.readthedocs.io/en/latest/generated/pvlib.solarposition.sun_rise_set_transit_ephem.html][pvlib.solarposition.sun_rise_set_transit_ephem]]: rets sun rise/set xit
+*********** pvlib examples
+************* [[https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling][PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling: Data and tools]]: full tutorial
+*************** v. similar but needs pwd: [[https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial][GitHub - PVSC-Python-Tutorials/PVSC48-Python-Tutorial: PVSC48 computing tutor...]]
+************* [[https://github.com/itprorh66/SolarPV-Simulator][itprorh66/SolarPV-Simulator: A Python Project to model the operation]]: PV+batt sim
+************* [[https://github.com/srlightfoote/PVLIB-Solar-Modeling/blob/master/PVLIB%2BTMY%2Bto%2BEnergy.ipynb][PVLIB-Solar-Modeling/PVLIB+TMY+to+Energy.ipynb at master · srlightfoote/PVLIB: fixed tilt sys]]
+************* [[https://github.com/MarceloDL-A/solar_cell_pvlib_auto_examples_jupyter][MarceloDL-A/solar_cell_pvlib_auto_examples_jupyter]]: ipynb w/ fancy AOI, shading, soiling...
+************* [[https://github.com/tyfenton/solar_forecast_weather][tyfenton/solar_forecast_weather: Simplified way to draw forecast dat: getting NOAA frcsts]]
+************* [[https://github.com/gabegraves/Solar-Irradiance-Calc/blob/main/Solar%20Irradiance%20Calc%20Advanced.py][Solar-Irradiance-Calc/Solar Irradiance Calc Advanced.py at main gabegraves]]: POA, etc
+************* [[https://github.com/Solcast/howto-pandas][Solcast/howto-pandas: How-To Solcast - Python, Pandas, MatPlotLib: PVsim]] forecasts w/ free solcast forecasts
+************* panel+inverter: [[https://assessingsolar.org/notebooks/solar_power_modeling.html][Solar Power Modelling — Solar Resource Assessment in Python]]
+*********** pv module models usable by pvlib
+
+
+            Tips from [[cite:Remund22solarRsrcAssessPython][Remund & Sengupta 2022: Solar Resource Assessment Python]]
+
+************* CEC or Sandia databases are directly usable
+************* NREL-SAM (& "desoto", "sandia"?) are converted w/ fit functions
+*************** pvlib fit funcs probs somehow fixed using scipy.optimize.root
+***************** pvlib fit function convergence not guaranteed
+               See: [[https://groups.google.com/g/pvlib-python/c/c7RN4cSnmxw/m/QchVP-y-BwAJ][email]] from cwh@sandia.gov
+
+***************** scipy.optimize.root fix
+              
+              From [[https://mail.google.com/mail/u/0/#inbox/FMfcgzGqQSPzJcpDZmPTjzmcNjLFCDNx][this email]] I got from the pvlib mailing list:
+
+              El miércoles, 28 de julio de 2021 a las 8:27:54 UTC-5, josedomin...@gmail.com escribió:
+
+              Just in case it is of interest, the convergence problems
+              for the pvlib.ivtools.sdm.fit_desoto seems to be solved
+              if the [[https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root.html][scipy.optimize.root]] function uses the method
+              "lm", instead of the by default method "hybr".
+
+              Regards,
+
+              uses Captura.JPG
+*************** [[https://pvlib-python.readthedocs.io/en/stable/reference/generated/pvlib.ivtools.sdm.fit_cec_sam.html][pvlib.ivtools.sdm.fit_cec_sam — pvlib python]]
+*************** [[https://pvlib-python.readthedocs.io/en/stable/reference/generated/pvlib.ivtools.sdm.fit_desoto.html][pvlib.ivtools.sdm.fit_desoto — pvlib python]]
+*************** [[https://pvlib-python.readthedocs.io/en/stable/reference/generated/pvlib.ivtools.sdm.fit_desoto_sandia.html][pvlib.ivtools.sdm.fit_desoto_sandia — pvlib python]]
+********* <<nrel-pysam>>
+
+          Solar modules needed by
+          [[pvlib: comprehensive set of PV physical models in python]]
+
+          Also some PV modeling on the project homepage: [[https://sam.nrel.gov/software-development-kit-sdk/pysam.html][PySAM - System Advisor Model - SAM.]]
+          
+*********** install: conda install -c nrel nrel-pysam
 ********* Solar model chain in python
           
           Generic plant model w/ some of the models covered in [[cite:Mayer21cmprPhyMdlPVfrcst][Mayer & Grof 2021: Extensive Comparison Physical]]
@@ -8697,14 +8788,6 @@ Separation and Transposition models are most important, and there are probabilis
 https://pvsc-python-tutorial.eastus.cloudapp.azure.com/user/lampshadz/tree/pyData-2021-Solar-PV-Modeling
 
 *********** My OneNote Notes
-********* TODO [[cite:Gurupira17comparePvSimSoftware][Gurupira & Rix 2017: PV Simulation Software Comparisons]]
-********* [[https://pvlib-python.readthedocs.io/en/stable/index.html][pvlib]]: comprehensive PV stuff
-*********** especially [[https://pvlib-python.readthedocs.io/en/stable/forecasts.html][pvlib foreasting module]]
-************* downloads NWP and computes forecasted power & other things
-************* [[https://pvlib-python.readthedocs.io/en/stable/installation.html#standardrelease][conda install]] for using forecasting module
-*********** pvlib solar time functions
-************* [[https://pvlib-python.readthedocs.io/en/stable/generated/pvlib.location.Location.html][pvlib.location.Location]]: returns time zone of a location
-*********** [[https://pvlib-python.readthedocs.io/en/latest/generated/pvlib.solarposition.sun_rise_set_transit_ephem.html][pvlib.solarposition.sun_rise_set_transit_ephem]]: rets sun rise/set xit
 ******* also [[Learning Physical Models with NN]]
 ******* also [[Physics-Based Wind Power Curve Features]]
 ******* also [[Solar Variability Forecasting]]
@@ -8727,13 +8810,7 @@ https://pvsc-python-tutorial.eastus.cloudapp.azure.com/user/lampshadz/tree/pyDat
 ******* also [[AC power overestimating due to unmodeld high freq. clipped DC]].
 ***** Solar Forecast Software
 ******* [[cite:Gurupira17comparePvSimSoftware][Gurupira & Rix 2017: PV Simulation Software Comparisons]]
-******* [[https://pvlib-python.readthedocs.io/en/stable/index.html][pvlib]]: comprehensive PV stuff
-********* especially [[https://pvlib-python.readthedocs.io/en/stable/forecasts.html][pvlib foreasting module]]
-*********** downloads NWP and computes forecasted power & other things
-*********** [[https://pvlib-python.readthedocs.io/en/stable/installation.html#standardrelease][conda install]] for using forecasting module
-********* pvlib solar time functions
-*********** [[https://pvlib-python.readthedocs.io/en/stable/generated/pvlib.location.Location.html][pvlib.location.Location]]: returns time zone of a location
-********* [[https://pvlib-python.readthedocs.io/en/latest/generated/pvlib.solarposition.sun_rise_set_transit_ephem.html][pvlib.solarposition.sun_rise_set_transit_ephem]]: rets sun rise/set xit
+******* [[pvlib: comprehensive set of PV physical models in python]] esp. forecasting modules
 ******* [[https://pypi.org/project/suntime/][suntime]]: really simple.  have the option to do everything in UTC, but can do local time too.
 ******* [[https://astral.readthedocs.io/en/latest/][Astral]]: almost as simple as suntime for sunset/sunrise, get them with one call instead of 2
 ******* [[https://pypi.org/project/solartime/][solartime]]
@@ -8741,7 +8818,7 @@ https://pvsc-python-tutorial.eastus.cloudapp.azure.com/user/lampshadz/tree/pyDat
 ******* [[file:energy.bib::Meyers19pvDgrdAnlysisNoPhysMdl][Meyers et al. 2019: Signal Processing PV degrade no phys]] :SolarAnywhere:DataQual:
 ******* [[file:energy.bib::Meyers18statClearSkyFit][Meyers et al. 2018: Statistical Clear Sky Fitting Algorithm]] :SolarAnywhere:DataQual:
 ******* [[file:energy.bib::Meyers19toolsPVdatSci][Meyers 2019: Tools PV Data Sci]]
-******* [[https://pvlib-python.readthedocs.io/en/stable/index.html][pvlib]] might be useful for diagnostics
+******* [[pvlib: comprehensive set of PV physical models in python]]: has some
 ***** <<Smart Persistence for Solar Power>>
 ******* smart persistence definition: [[cite:Notton19irradFrcst3comp][Notton et al. 2019: Forecasting Three Components]]
 ******* horizons for smart persistence: maybe 0-15 mins?
@@ -8993,7 +9070,7 @@ https://pvsc-python-tutorial.eastus.cloudapp.azure.com/user/lampshadz/tree/pyDat
 ******* have a variable # of years to do the regression
 ***** could at least use [[file:energy.bib::Minka01BayesLinRegress][Minka 2001: Bayesian Linear Regression]]
 *** Blending NWP w/ statistical forecast
-***** [[file:energy.bib::Kober12probNowcastBlendNWP][Kober et al. 2012: Blending]] nowcast and ens. (Richard K.)
+***** [[file:energy.bib::Kober12probNowcastBlendNWP][Kober et al. 2012: Blendinog]] nowcast and ens. (Richard K.)
 ***** [[file:energy.bib::Cheng08semiSupCalibForecast][Cheng & Tan 2008: Semi supervised learning]]
 ***** [[file:energy.bib::Chapados08augFrcstGaussProc][Chapados & Bengio 2008: Augmented Functional Time]]
 ***** [[file:energy.bib::SalcedoSanz09frcstBankNN][Salcedo-Sanz et al. 2009: Accurate]]: combo different global models, downscale res)
@@ -9312,7 +9389,8 @@ https://pvsc-python-tutorial.eastus.cloudapp.azure.com/user/lampshadz/tree/pyDat
 ***** <<Peak Load Forecasting>>
 ******* [[cite:NYISO2020ldFrcstMan][NYISO 2020: Load Forecasting Manual]]  (NYISO peak load frcst: ICAP, etc.)
 ******* [[cite:Harris93peakDemandNorm][Harris et al. 1993: Normalization Peak Demand]]
-******* [[cite:Wang18peakLoadExtrmValTheory][Wang et al. 2018: High Impact Low Peak Load Frcst]]
+******* TODO [[cite:Wang18peakLoadExtrmValTheory][Wang et al. 2018: High Impact Low Peak Load Frcst]] *(GET PAPER)*
+******* [[cite:Wang13extrmQRpowTranf][Wang & Li 2013: Estimation Extreme Conditional Power Xfrm]]
 ******* [[cite:McSharry05probFrcstPkLoad][McSharry et al. 2005: Prob .Forecasts Magnitude & Time Peak Demand]]
 ******* [[cite:Hyndman10densFrcstPeakLoad][Hyndman & Fan 2010: Density Forecasting Long Term Peak Demand]]
 ******* also [[Extreme Value Estimation]]
@@ -9323,10 +9401,15 @@ https://pvsc-python-tutorial.eastus.cloudapp.azure.com/user/lampshadz/tree/pyDat
 ******** [[cite:Mirowski14loadFrcstFeatAlgAgg][Mirowski et al. 2014: Demand Frcst, algs, feats, aggregation]]
 ******** [[Aggregated regression using GLMs]]
 ***** TODO [[Electrical Load Profile Clustering]]
-***** <<Data for German Load Forecast>>
-******* [[http://open-power-system-data.org/data-sources#12_German_load_data][Open Power System Data (and German load data)]]
-******* [[cite:Stevie12SpatiaFrcstLoad][Stevie 2012: Spatial Forecasting grid planning.  Feats for CNN?]]
-******* [[cite:Hong15ldFrcstCaseStdy][Hong & Shahidehpour 2015: Load Case Std, time/space scales, feats, prob]]
+***** <<Data Sets for Load Forecasting>>
+******* [[https://www.nrel.gov/buildings/end-use-load-profiles.html][End-Use Load Profiles for the U.S. Building Stock | Buildings | NREL]]
+******* [[https://data.openei.org/submissions/4520][OEDI: End-Use Load Profiles for the U.S. Building Stock]]
+******* <<Data for German Load Forecast>>
+********* [[http://open-power-system-data.org/data-sources#12_German_load_data][Open Power System Data (and German load data)]]
+********* [[cite:Stevie12SpatiaFrcstLoad][Stevie 2012: Spatial Forecasting grid planning.  Feats for CNN?]]
+********* [[cite:Hong15ldFrcstCaseStdy][Hong & Shahidehpour 2015: Load Case Std, time/space scales, feats, prob]]
+******* [[German Power Market Data]]
+******* [[Machine Learning Data Sets]]
 ***** see also [[Combined wind and load forecasting]]
 ***** see also [[file:energytop.org::*Net%20Demand%20Forecast][Net Demand Forecast]]
 
@@ -9448,6 +9531,7 @@ https://pvsc-python-tutorial.eastus.cloudapp.azure.com/user/lampshadz/tree/pyDat
 ******* could be a kind of a mix of regime switch and adaptive
 ********* train models for different regimes
 ********* recent error history emphasizes best model
+******* [[cite:Johnstone12econValProbFrcstPortfolio][Johnstone 2012: Log optimal econ eval]]: use to pick ensembles to use?
 ******* Friendly ECMWF pamphlet describing meteorology of how ensembles are generated
 ******* TODO [[cite:Ren15ensWindSolPowFrcstRev][Ren et al. 2015: Ensemble wind/sol frcst]]
 ******* [[cite:Hamill04introNWPens_Slides][Hamill 2004: Introduction Numerical Weather & Ens Slides]]
@@ -9673,8 +9757,9 @@ https://pvsc-python-tutorial.eastus.cloudapp.azure.com/user/lampshadz/tree/pyDat
 ********* Code for SDE estimation
 *********** [[HTTP://ctsm.info/][CTSM-R]]: DTU's library (has user guide and math guide)
 *********** [[HTTP://www2.imm.dtu.dk/projects/psm/][PSM]]: Population stats, another DTU library, builds on CTSM-R
-********* TODO [[File:energy.bib::iversen13solarfrcstsde][Iversen et al. 2013: probabilistic forecasts solar]]
-********* TODO [[http://www.sciencedirect.com/science/article/pii/s1570865908002068][Numerical generation of stochastic differential equations in climate models]]
+********* TODO [[File:energy.bib::iversen13solarfrcstsde][Iversen et al. 2013: probabilistic forecasts solar]]: /Users/scott/Library/CloudStorage/OneDrive-Personal/share/ds-experimental/scotto/proj/pvPhysModel/learnAngles.py
+~/Library/CloudStorage/OneDrive-Personal/share/ds-experimental/scotto/proj/pvPhysModel/learnAngles.ipynb
+********* TODO [[http://www.sciencedirect.com/science/article/pii/s1570865908002068][Numerical generation of stochastic differential equations in climate models]]: /Users/scott/Library/CloudStorage/OneDrive-Personal/share/ds-experimental/scotto/proj/pvPhysModel/learnAngles.py
 ********* SDEs proposed to extend: [[cite:Tastu15spcTimeTrajGaussCpla][Tastu et al. 2015: Space Time Trajectories]]
 ********* [[cite:Simpson12spatStatForgetCov][Simpson et al. 2012: In order forget covar matrix, SDE]]
 ********* TODO [[file:energy.bib::Anahua08markovPowCurvWind][Anahua et al. 2008: Markovian Power Curve]]
@@ -9706,14 +9791,21 @@ https://pvsc-python-tutorial.eastus.cloudapp.azure.com/user/lampshadz/tree/pyDat
 ******* <<Deep Scenario Generation>>
 
 ********* [[cite:Tang21scenariioGenReduceAutoenc][Tang 2021: Deep Scen Gen / Reduce AutoEnc]]
+********* CS480/680: generative networks
+
+          Pretty good video tutorials from Waterloo, 2019, I think
+          
+*********** [[https://www.youtube.com/watch?v=3nmBnudFAR8][Lecture 6: Normalizing flows (Priyank Jaini)]]
+*********** [[https://www.youtube.com/watch?v=DWVlEw0D3gA][Lecture 21: variational autoencoders and GANs:]] 
 ********* [[Scenario Tree Reduction]]
 ******* also [[Scenarios from ensembles]]
 ******* also [[*Quantile%20Regression][Quantile Regression]]
 ******* also [[Probabilistic Alternatives to Scenarios]]
 ***** <<Probabilistic Alternatives to Scenarios>>
 ******* [[cite:Wang13extrmQRpowTranf][Wang & Li 2013: Estimation Extreme Conditional]]
-******* cite:Golestaneh19PolyhedralPredRegnPow
-******* cite:Hong20frcstReview
+******* [[cite:Golestaneh19PolyhedralPredRegnPow][Golestaneh et al. 2019: Polyhedral Predictive Regions]]
+******* [[cite:Tasseff22PolyhedralRelaxationsOptimal][Tasseff et al. 2022: Polyhedral Relaxations Optimal]]: optimizaton uses
+******* [[cite:Hong20frcstReview][Hong et al. 2020: Energy Forecasting Review]]
 ******* also [[Scenario Generation]]
 ***** <<Use of probabilistic forecasting>>
 
@@ -10118,7 +10210,7 @@ onenote:https://d.docs.live.net/4bbd96b3698748f8/Documents/CPR/SolarAnywhere.one
 ************* subsample data into chunks
 ************* find max value in each chunk
 ************* max values will fit GEV
-************* <<Extreme value distributions>>: 
+************* <<Extreme value distributions (EVT)>>: 
             From: [[https://www.kdnuggets.com/2016/02/21-data-science-interview-questions-answers-part2.html/3][21 Must-Know Data Science Interview Questions and Answers, part 2]]
 *************** 3 distributions can model extremes, according to EVT
 ***************** Gumble
@@ -10129,9 +10221,12 @@ onenote:https://d.docs.live.net/4bbd96b3698748f8/Documents/CPR/SolarAnywhere.one
 ***************** create a new dataset containing only the maximum values of these N data sets
 ***************** new dataset can only be described by one of the [[Extreme value distributions]]. 
 ***************** <<Generalized Extreme Value Distribution>> (GEV): combines the 3 EVT models and EVD model.
+*************** My [[https://onedrive.live.com/view.aspx?resid=4BBD96B3698748F8%21214&id=documents&wd=target%28FrcstTheory.one%7CBE3D2002-1CE0-4C13-8301-3613FED61624%2FGeneralized%20Extreme%20Value%20Distribution%7C3C4C9E15-9765-4ABC-8184-B0532C8D27F6%2F%29
+onenote:https://d.docs.live.net/4bbd96b3698748f8/Documents/OneNote%20Notebooks/Scott's%20Notebook/FrcstTheory.one#Generalized%20Extreme%20Value%20Distribution&section-id={BE3D2002-1CE0-4C13-8301-3613FED61624}&page-id={3C4C9E15-9765-4ABC-8184-B0532C8D27F6}&end][OneNote Page on GEV]]
 
-*********** <<Generalized Pareto Distribution>> ([[https://www.actuaries.org.uk/documents/short-introduction-extreme-value-theory-slides][GPD]]): Peaks over threshold
-          (More modern that GEV)
+*********** <<Generalized Pareto Distribution>>
+            ([[cite:Paddam02introGPDslides][Paddam 2001: Short Introduction Extreme GEV]]): Peaks over threshold
+            (More modern that GEV)
 
 ************* collect values over a single threshold across whole distribution
 ************* values fit a Generalized Pareto Distribution (GPD)
@@ -10145,6 +10240,7 @@ onenote:https://d.docs.live.net/4bbd96b3698748f8/Documents/CPR/SolarAnywhere.one
 *************** graphical methods where one studies the dependence of GP-related metrics on threshold
 *************** Goodness-of-Fit (GoF): for a certain level of significance, find lowest thresh where GPD fits            
 *********** [[cite:Wang18peakLoadExtrmValTheory][Wang et al. 2018: Load forecast GEV]]
+*********** [[cite:Wang13extrmQRpowTranf][Wang & Li 2013: Estimation Extreme Conditional]]
 *********** also [[Peak Load Forecasting]]
 
 ********* [[Metalog Distributions]] also work, are more general
@@ -10313,6 +10409,9 @@ al. 2012: Current]])
 *********** need better link between skill scores (quality) and decsion impact (value)
 
 *** TODO <<Portfolio Optimization and Forecasting>>
+***** [[cite:Wikipedia22ModernPortfolioTheory][Wikipedia 2022: Modern Portfolio Theory]]: JonD thinks we could use this
+***** [[cite:Penrose13stockLogNormLectures][Penrose 2013 log-normal stock price]]
+***** [[cite:Johnstone12econValProbFrcstPortfolio][Johnstone 2012: Log-optimal econ prob forecast eval]]
 ***** TODO [[cite:Gijbels18OptExpectShortfallCpla][Gijbels & Herrmann 2018: Optimal Wgts for Expected Shortfall Cpla]]
 ***** TODO [[file:energy.bib::Taylor98cmbinFrcstQuants][Taylor & Bunn 1998: Combining quantile forecasts]] (expert quantile forecasts combined to single est. by weighted sum from QR)
 ***** TODO [[file:energy.bib::Eisenbrand09optMethFin_CrsNotes][Eisenbrand 2009: Optimization Methods Finance Course Notes]]
@@ -10329,6 +10428,7 @@ al. 2012: Current]])
 ***** [[cite:Camargo15modelWindPVcmplmnt][Camargo et al. 2015: Spatiotemporal model wind+PV complimentarity]]
 ***** [[file:energy.bib::Eckersley18utilFuncImpossUncert][Eckersley 2018: Impossibility Uncertainty Theorems Util Func]] (for UI choices?)
 ***** [[cite:Tsaousoglou21derFlexUncDpLrn][Tsaousoglou et al. 2021: Managing Distributed Flexibility]]: NN solves dual, DERs self-schedule
+***** [[cite:Allen09quantRgrsMinRisk][Allen & Singh 2009: Minimizing Portfolio Loss QR]]
 ***** also [[Forecast aggregation]] (several more articles on summing RV's)
 ***** also [[Aggregation vs. Forecasting Accuracy]]
 ***** also [[Clustering for prediction]]
@@ -10663,7 +10763,7 @@ later corrected by greg heath:
 *** also [[Matlab stepwise regression]] handles missing values
 *** also [[Clustering with missing features for insignicant bins]]
 *** also [[Mutual Information and Missing Values]]
-*** also AutoML With Missing Features 
+*** also [[Missing Features and AutoML]]
 * <<Distance Measures>>
 *** [[file:energy.bib::Kalpakis01distClustARIMA][Kalpakis et al. 2001: Distance measures for]]
 *** [[file:energy.bib::Domingos12afutkMachLrn][Domingos 2012: Few Useful Things]] to know about machine learning
@@ -11223,6 +11323,7 @@ nka@mkonline.com
 
 Phone: +49 30 315 17 19 23 | Mobile + 49 151 17 22 80 31
 
+********* [[Machine Learning Data Sets]]
 ******* Market Questions/Answers: Dominik Jost
 ********* Intraday
 *********** Seller/buyer task
@@ -11500,6 +11601,9 @@ Scott
 ********* Also has some kind of data, but Dominik says don't look for it here
 ******* NordPool can trade Germany power ([[http://www.nordpoolspot.com/TAS/nord-pool-spot-intraday/continuous-intraday-in-germany/][with 20 minutes market closing time]])
 ******* See also [[Price Forecasting]]
+***** <<ERCOT Power Market>>
+******* TODO collect ERCOT papers (or logseq query?)
+******* [[free LSTM ERCOT price forecast SW]]
 ***** [[http://www.strommarkttreffen.org/vergangene-treffen/][Group strommarkttreffen]]
       German group who works on electricity markets, does price modeling.
 
@@ -11541,6 +11645,12 @@ Scott
 ***** [[cite:Bessa17imprvUnderstandUncertFrcstPow][Bessa et al. 2017: Towards Improved Understand Uncert Frcst Industry]]
 
 ***** [[cite:Hall18locTempValsNYCA][Hall et al. 2018: Locational Temporal Values of DER: NY and CA]]
+***** <<Price Forecasting>>
+******* TODO collect price forecasting papers here, or if I've accidentally deleted this, retrieve them from GIT
+******* Price Forecasting with LSTM 
+********* <<free LSTM ERCOT price forecast SW>>: [[https://github.com/rpglab/WholesaleElectrPricePredict][WholesaleElectrPricePredict]]
+********* [[LSTM Models]]
+********* [[ERCOT Power Market]]
 ***** <<Optimal Bidding>>
 ******* [[file:energy.bib::Pinson07tradeWindProbFrcst][Pinson et al. 2007: Trading Wind Generation]] (DTU alg. for IRPWIND)
 ********* [[Why Bremnes/DTU quantile trading doesn't work for Germany]]
@@ -11606,6 +11716,7 @@ Scott
 ***** [[file:energy.bib::Kozmik12simDiffStochDynOpt][Kozmik 2012: Similarities]] (relationships between different kinds of stoch opt)
 ***** [[file:energy.bib::Mairal13stochMMlargeOpt][Mairal 2013: Stochastic]] MM (has C++ lib code)
 ***** [[file:energy.bib::Bertsimas13adptRobustOptUC][Bertsimas et al. 2013: Adaptive Robust Optimization]]
+***** [[cite:Akbari-Dibavar19stochRobustOptMkts][Akbari-Dibavar et al. 2019: Hybrid Stochastic Robust Mkts]]
 ***** [[cite:Dokic15systIntegLrgData][Dokic et al. 2015: System. Integ. Lrg. (prob. persist & robust opt.)]]
 ***** [[file:energy.bib::Zhao14neISOrobustUC][Zhao et al. 2014: Comprehensive Evaluation Robust Unit Commitment]] (New England ISO)
 ***** [[file:energy.bib::Harsha14invntryRevOptDemand][Harsha et al. 2014: Data Driven Inventory]]
@@ -11815,6 +11926,14 @@ Scott
 ******* [[Matlab Toolbox for Submodular Function Optimization]]
 ******* [[https://www.evernote.com/l/AA2Q2BisgYVLcpAilQnT88IWjYENpR0UiX8/][Best Algorithms to Make Solar Power Storage Profitable]] (quadratic opt.)
 ******* [[Operation of Energy Storage]]
+******* MIP-EGO
+********* Python github: [[https://github.com/wangronin/MIP-EGO][MIP-EGO: Mixed-Integer Parallel Efficient Global Optimization]]
+********* [[cite:Jones98efficientGblOpt_EGO][Jones et al. 1998: Efficient Global Optimization Blackbox]]: EGO paper
+********* [[cite:Stein19autoConfigDeepNN_MIP-EGO][Stein et al. 2019: Automatic Configuration Deep NN]]: MIP-EGO paper
+********* tutorials
+*********** [[https://autoxai.blogspot.com/2021/10/tutorial-hyper-parameter-optimisation.html][Tutorial: Hyper-parameter Optimisation for Machine Learning Models using MiP-EGO]]
+*********** [[https://github.com/wangronin/MIP-EGO][MIP-EGO: Mixed-Integer Parallel Efficient Global Optimization]]
+*********** original EGO?: [[https://smt.readthedocs.io/en/latest/_src_docs/applications/ego.html#][Efficient Global Optimization (EGO) — SMT 1.4.dev]]
 ***** also [[My Optimization Learning Path]]
 *** Reliability
 ***** PV+Wind will reduce TennetT reliability (claim)[[file:energy.bib::Forbes11pvWindRelTenneT][: Forbes et al. 2011: Do Higher PV]]
@@ -12595,6 +12714,7 @@ Brittany
 ******* TODO [[file:energy.bib::Bernards18multiDER][Bernards et al. 2018: Stat Models Diverse Energy Adopt]]
 ******* TODO [[cite:Bernards19botUpNtwrkTool][Bernards et al. 2019: Bottom up statistical Network Scenario]]
 ******* [[cite:Bernards18stochDistNtwkPlan_PhD][Bernards 2018: Stochastic Distribution Planning PhD Thesis]]
+******* [[https://www.evernote.com/l/AA0LjmG_yKhNtofiblqhElTx7jwPxHZEKrI/][Ferus 2022: logistic regression, AR feats beats deep NN for TS classif]]
 ******* also [[Logistic Regression]]
 ***** Explicit Space/Time modeling adoption
 ******* TODO [[file:energy.bib::Comin04crossCntryTheoryFact][Comin & Hobijn 2004: Cross Country Adopt Theory Facts]]
@@ -13535,6 +13655,7 @@ TOTO: read Fan16* for an overview
 *** [[cite:Bhatnagar21merlionTSfrcstAnomDet][Bhatnagar et al. 2021: Merlion TS frcst anom det AutoML ensemble]]
 *** [[https://pycaret.org/][PyCaret]] autoML w/ time series
 *** [[file:energy.bib::Harrell15rgrssnMdlStrtgyBook][Harrell 2015: Regression Strategies]]
+*** LazyPredict: [[https://towardsdatascience.com/how-to-run-40-regression-models-with-a-few-lines-of-code-5a24186de7d][How to Run 40 Regression Models with a Few Lines of Code]]
 *** <<Missing Features and AutoML>>
 ***** built-in handling: [[cite:Feurer20autoSklearn20][Feurer et al. 2020: Auto Sklearn 2.0]]
 *** Also [[Frugal Machine Learning]]
@@ -13841,6 +13962,8 @@ TOTO: read Fan16* for an overview
 ***** [[Book: Introduction to Linear Optimization]] used in MIT course
 *** Stochastic optimization
 ***** [[cite:Mairal13stochMMlargeOpt][Mairal 2013: Stochastic Surrogate Optimization]]
+***** [[cite:Tasseff22PolyhedralRelaxationsOptimal][Tasseff et al. 2022: Polyhedral Relaxations Optimal]]: optimizaton uses
+***** TODO [[cite:Akbari-Dibavar19stochRobustOptMkts][Akbari-Dibavar et al. 2019: Hybrid Stochastic Robust Mkts]]
 ***** Stochastic programming
 
     *Conclusion*: Buy (download?) "Lectures on Stoch. Programming:
@@ -13981,6 +14104,9 @@ optimization to be a generalization of linear programming.
 *** [[https://en.wikipedia.org/wiki/List_of_datasets_for_machine_learning_research][Wikipedia: List of datasets for machine learning research]]
 *** [[https://www.quora.com/Where-can-I-find-large-datasets-open-to-the-public][Quora: Where can I find large datasets open to the public?]]
 *** [[https://www.reddit.com/r/datasets/][Reddit subreddit: r/datasets]]
+*** [[German Power Market Data]]
+*** [[Data for German Load Forecast]]
+*** [[Data Sets for Load Forecasting]]
 *** [[German Power Market Data]]
 *** [[file:energy.bib::Jensen17euDatSimRE][Jensen & Pinson 2017: RE Europe European Sim Reanalysis (IRPWIND WP82.3)]]
 *** also [[Data Sets for Technology Adoption]]
@@ -14515,6 +14641,11 @@ TODO: move their links to the outline above and then delete them from here
    12/15/21  [[cite:Hall18locTempValsNYCA][Hall et al. 2018: Locational Temporal Values of DER: NY and CA]]
    22/02/23  [[cite:Lundberg17interpModlPred][Lundberg & Lee 2017: SHAP interpretable models]]
    22/04/08  [[cite:Susik17betterXGBoost][Susik 2017: Better XGBoost, LightGBM, CatBoost]] (also has video)
+   22/05/01  [[cite:Kursa10featSelBoruta][Kursa & Rudnicki 2010: Feature Selection Boruta Package]]
+   22/05/26  [[https://www.evernote.com/l/AA0LjmG_yKhNtofiblqhElTx7jwPxHZEKrI/][Ferus 2022: logistic regrssn, AR feats beat deep NN in TS classif]]
+   22/06/02  [[cite:Harris93peakDemandNorm][Harris et al. 1993: Normalization Peak Demand]]
+            ([[cite:Paddam02introGPDslides][Paddam 2001: Short Introduction Extreme GEV]]): Peaks over threshold
+   22/09/30  [[cite:Remund22solarRsrcAssessPython][Remund & Sengupta 2022: Solar Resource Assessment Python]]
 * Bibliography
 bibliographystyle:unsrt
 bibliography:energy.bib
