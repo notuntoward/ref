@@ -187,15 +187,9 @@ With PRUNE, prune the build cache and the build directory."
 
 (setq computerNm (downcase system-name)) ; downcase: was getting random case
 (pcase (eval 'computerNm)
-  ("macbook-pro-5.local"     ; Geli MacBook Pro
+  ("macbook-pro-7.local"     ; Geli MacBook Pro
    (progn (setq shareDir "/Users/scott/OneDrive/share")))
-  ("desktop-6bq3kmf" ; Surface Pro
-   (setq shareDir "C:/Users/scott/OneDrive/share"))
-  ("desktop-qegmu0d" ; Surface Book 2
-   (setq shareDir "C:/Users/scott/OneDrive/share"))
-  ("desktop-2u4trqe" ; Surface laptop studio
-   (setq shareDir "C:/Users/scott/OneDrive/share"))
-  ("desktop-rvtj6ua" ; Surface Go
+  ("desktop-vpfvctb" ; Surface laptop studio
    (setq shareDir "C:/Users/scott/OneDrive/share"))
   (progn (warn "Can't assign shareDir for unknown computer: %s" computerNm)
 	 (setq shareDir (concat "unknown_computer_" computerNm "_shareDir")))
@@ -374,7 +368,7 @@ TODO: make this a general function."
 
 ;; * Operating System Interaction
 
-;; ** exec fro Shell (MacOS)
+;; ** exec from Shell (MacOS)
 
 ;; Enable environment variables for all package installations.  Recommened by the homebrew emacs-plus emacs@28 package. Causes warnings on Windows, though.
 (if running-MacOS
@@ -440,6 +434,861 @@ TODO: make this a general function."
       create-lockfiles nil)
 
 (global-auto-revert-mode t) ; updates when file changes, like Matlab.
+
+;; * Org Mode
+
+;;   Put org mode use-package near top of .emacs.  emacs 28.2 warning
+;;   messages suggest that when org is installed with straight.el,
+;;   there will be an org-mode version conflict somwhere (I didn't
+;;   quite understand this, though)
+
+;; ** Org-* dirs and files
+
+;; set up org and bib for old way of doing things and experimental org-roam, or a true org-roam, org-ref setup
+(setq bibfile_energy_fnm (expand-file-name "energy.bib" docDir)
+      bibfile_energy_pdf_dir (expand-file-name "papers" docDir)
+      bibfile_energytop_fnm (expand-file-name "energytop.org" docDir)
+      ;; bibnotes_dir (expand-file-name "tmp_papers_notes" docDir)
+      bibnotes_dir (expand-file-name "~/tmp_papers_notes" docDir))
+(setq bibfile_list (list bibfile_energy_fnm
+                     "~/ref/DOE_brainstorm/deepSolarDOE.bib")
+      bibpdf_list (list bibfile_energy_pdf_dir
+                        "~/ref/DOE_brainstorm/papers"))
+
+
+;;(setq org_roam_dir "~/share/tmp_org_roam_test")
+(setq org_roam_dir "~/ref/org_roam")
+
+(if t
+    (progn
+      (message "Old org/bib init with playground org-roam or DOE brainstorm")
+      (setq
+;;       org_roam_dir (expand-file-name "DOE_brainstorm" docDir)
+       org_notes_dir (expand-file-name "org-notes" org_roam_dir)
+       bibfile_roam_fnms (list (expand-file-name
+                                "deepSolarDOE.bib" org_roam_dir)
+                               (expand-file-name
+                                "newTechAdoption.bib"
+                                (expand-file-name "newTechAdoption" org_roam_dir)))
+       bibfile_roam_pdf_dir (expand-file-name "papers" org_roam_dir)
+       org_ref_notes_dir (expand-file-name "bib-notes" org_roam_dir)
+       org_ref_notes_fnm (expand-file-name "DOE_brainstorm.org" org_roam_dir)
+       org-directory org_notes_dir
+       deft-directory org_notes_dir
+       ))
+  (progn
+    (message "org-roam style init")
+    ;; simillar to idea in https://rgoswami.me/posts/org-note-workflow/
+    (setq
+     org_roam_dir (expand-file-name "org_roam" docDir)
+     org_notes_dir (expand-file-name "org_notes" org_roam_dir)
+     bibfile_roam_fnms (list (expand-file-name "zotlib.bib" org_roam_dir))
+     bibfile_roam_pdf_dir (expand-file-name "papers" org_roam_dir)
+     org_ref_notes_dir (expand-file-name "org_ref_notes" org_roam_dir)
+     org-directory org_notes_dir
+     deft-directory org_notes_dir
+     org-roam-directory org_notes_dir
+     )))
+
+;; ;; Users of this require that it really be a list, even if only one
+;; ;; item
+;; (setq bibfile_list '("~/ref/energy.bib"
+;;                     "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
+
+;; (setq bibfile_list bibfile_roam_fnms) ;; helm-bibtex slow w/ energy.bib
+;; but include pdfs in energy.bib so it can find pdfs if visited manually
+;;(setq bibpdf_list (list bibfile_energy_pdf_dir bibfile_roam_pdf_dir)) 
+
+;; Find pdf w/ JabRef/Zotero fields
+(setq bibtex-completion-pdf-field "file")
+;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
+;;(setq org-ref-bibliography-notes (expand-file-name "bib-notes" org_roam_dir))
+
+;; ** Org package, basic config
+
+;; TODO: experiment with C-c C-x C-b or M-x sdo/org-tree-to-indirect-buffer
+;;
+(use-package org
+;;  :defer 0
+  :diminish org-mode  ; doesn't hide the "Org" in modeline, for some reason
+  :diminish org-table-header-line-mode  ; customization: org-table-header-line-p
+  :config
+  ;;############## DEBUGGING: REMOVE #########
+  ;; (setq  org-element--cache-self-verify 'backtrace)
+  ;; (call-interactively 'org-element-cache-reset)
+  ;; ;;########################               
+  (define-key global-map "\C-cl" 'org-store-link)
+  (global-set-key (kbd "C-c L") 'org-insert-link-global) ; insert in any buffer
+  (global-set-key (kbd "C-c o") 'org-open-at-point-global) ; open in any buffer
+  ;;(global-set-key "\C-cb" 'org-iswitchb) ; switch between org buffers
+  ;;(global-set-key "\C-cc" 'org-capture) ; ovewrites org-ref-bibtex bindings
+  ;;(define-key global-map "\C-ca" 'org-agenda) ; I don't use agenda
+
+  ;; Unbind standard org keys so can always use for buffer-move
+  (define-key org-mode-map (kbd "<C-S-up>") nil) ; was timestamp clock up sync
+  (define-key org-mode-map (kbd "<C-S-down>") nil) ; was timestamp clck dwn sync
+  (define-key org-mode-map (kbd "<C-S-left>")  nil) ; was switch TODO set
+  (define-key org-mode-map (kbd "<C-S-right>") nil) ; was switch TODO set
+  ;; (define-key org-mode-map (kbd "C-x n <return>") 'org-toggle-narrow-to-subtree) ; was switch TODO set
+  ;;(define-key org-mode-map (kbd "C-x n")
+  ;;'org-toggle-narrow-to-subtree) ; was switch TODO set
+
+  ;; Match narrow/widen binding in other modes (below)
+  (define-key org-mode-map (kbd "C-x n n") 'recursive-narrow-or-widen-dwim)
+
+  ;; open docx files in default application (ie msword)
+  ;; https://emacs.stackexchange.com/questions/22485/org-mode-pandoc-export-to-docx-and-open
+  (setq org-file-apps
+        '(("\\.docx\\'" . default)
+          ("\\.mm\\'" . default)
+          ("\\.x?html?\\'" . default)
+          ("\\.pdf\\'" . default)
+          (auto-mode . emacs))))
+
+(use-package org-superstar
+;;  :after org
+  :custom
+  (org-superstar-cycle-headline-bullets nil)
+  (org-superstar-headline-bullets-list '("●" "￭" "￮" "►" "•" "□" "▸" "▫" "▹"))
+  (org-superstar-item-bullet-alist '((42 . 10043) (43 . 10011) (45 . 9644)))
+  (org-superstar-special-todo-items t)
+  (org-superstar-todo-bullet-alist '(("TODO" . 9646) ("DONE" . 9647)))
+  :init
+  ;; org-superstar github: loads faster
+  (setq inhibit-compacting-font-caches t)
+  ;; only works w/ "org-superstar-mode: but see like it s/b just "org-superstar"
+  :hook (org-mode . org-superstar-mode))
+
+;; Show hidden emphasis markers e.g.* in *bold*.  So can see where cursor is.
+;; this seemed more annoying than useful
+;; (use-package org-appear
+;;   ;; comment out so only expands emphasis
+;;   ;; :custom
+;;   ;; (org-appear-autoentities t)
+;;   ;; (org-appear-autokeywords t)
+;;   ;; (org-appear-autolinks t)
+;;   ;; (org-appear-autosubmarkers t)
+;;   ;; (org-appear-delay 1)
+;;   :hook (org-mode . org-appear-mode))
+
+(with-eval-after-load 'org
+  ;; ;; From: https://emacs.stackexchange.com/a/41705/14273
+  (defun org-fold-outer ()
+    ;; Fold org-headline that the cursor is inside of
+    (interactive)
+    (beginning-of-line)
+    (if (string-match "^*+" (thing-at-point 'line t))
+        (outline-up-heading 1))
+    (outline-hide-subtree))
+  (define-key org-mode-map (kbd "C-c u") 'org-fold-outer)
+  ;; painful
+  ;;(define-key org-mode-map (kbd "C-c <C-tab>") 'org-fold-outer)
+  )
+
+; ** Org Basic Config
+
+(use-package org-autolist ; new - or -[ ] w/ return
+  :diminish org-autolist-mode
+  :hook (org-mode . org-autolist-mode))
+
+;; Quick org emphasis:  Select text & hit key below. expand-region pkg helps.
+;; Handy using er/expand, mapped to C-=
+(use-package wrap-region
+  :after org
+  :diminish wrap-region-mode
+  :diminish wrap-region-minor-mode
+  :hook (org-mode . wrap-region-mode)
+  :config
+  (wrap-region-add-wrapper "*" "*" nil 'org-mode)  ; bold
+  (wrap-region-add-wrapper "/" "/" nil 'org-mode)  ; italics
+  (wrap-region-add-wrapper "_" "_" nil 'org-mode)  ; underline
+  (wrap-region-add-wrapper "=" "=" nil 'org-mode)  ; literal
+  (wrap-region-add-wrapper "~" "~" nil 'org-mode)  ; code
+  (wrap-region-add-wrapper "+" "+" nil 'org-mode)) ; strikeout
+
+(use-package org-cliplink ; make hyper link from URL in clipboard
+  :after org
+  :config (define-key org-mode-map (kbd "C-c y") 'org-cliplink))
+
+;; ** org Mode Dedicated Targets
+
+;; --- SEEMS OK does org-mode dedicated targets cause cache probs? ----------
+;;
+;; TODO: Fix M-m link saving. It picks sometimes picks up a headline star and then puts it into the stored link (I think).  I'm noticing this in bad links to dedicated links sprinked around energytop.org.  I don't know if these wer made when I initially created the dedicated target; if it was when I typed M-m when on an already existing dedicated target, or if I somehow just pasted this in erroneously myself, which seems unlikely, since I've seen many.  Additionally, examples of this error that I can remember made the mistake on dedicated links that in top level headlines e.g. "* Headine" and not "*** Headline"
+;;
+;; Hides the <<>> around dedicated targets; the face of the remaining visible text is set by customizing the face: org-target
+;; Inspiration: https://emacs.stackexchange.com/questions/19230/how-to-hide-targets
+;; but regexp there worked only for all :alnum: targets.  I tried to
+;; invert org-target-regexp but couldn't get that to work, so here,
+;; I'm just matching printable chars in the middle.
+
+;; TODO: modify internal org-links code here:
+;; http://pragmaticemacs.com/emacs/insert-internal-org-mode-links-the-ivy-way/
+;; to get dedicated links plus the list of headlines which aren't dedicated?
+;; TODO: maybe this approach to dedicated targets is more robust?
+;;       https://emacs.stackexchange.com/questions/19230/how-to-hide-targets
+;;       or maybe the github library that resulted from that discussion?
+;;       https://github.com/talwrii/org-hide-targets
+
+(with-eval-after-load 'org
+
+  ;; From: Nicolas Goaziou: https://mail.google.com/mail/u/0/#inbox/QgrcJHsNmtZZNZFRdHZBqCqcmZVLJkSdzJq
+  ;; He also suggested this bit of code as another alternative:
+  ;;         (org-element-lineage (org-element-context) '(target radio-target) t)
+  (defun org-at-target-p ()
+    "Return true if cursor is on a dedicated target.  
+This is a replacement for org-mode's buggy, and now-deleted, function"
+    (memq (org-element-type (org-element-context)) '(target radio-target)))
+
+  (defcustom org-hidden-links-additional-re "\\(<<\\)[[:print:]]+?\\(>>\\)"
+    "Regular expression that matches strings where the invisible-property of the sub-matches 1 and 2 is set to org-link."
+    :type '(choice (const :tag "Off" nil) regexp)
+    :group 'org-link)
+  (make-variable-buffer-local 'org-hidden-links-additional-re)
+
+  (defun org-activate-hidden-links-additional (limit)
+    "Put invisible-property org-link on strings matching `org-hide-links-additional-re'."
+    (if org-hidden-links-additional-re
+        (re-search-forward org-hidden-links-additional-re limit t)
+      (goto-char limit)
+      nil))
+
+  (defun org-hidden-links-hook-function ()
+    "Add rule for `org-activate-hidden-links-additional' to `org-font-lock-extra-keywords'.
+You can include this function in `org-font-lock-set-keywords-hook'."
+    (add-to-list 'org-font-lock-extra-keywords
+	         '(org-activate-hidden-links-additional
+		   (1 '(face org-target invisible org-link))
+		   (2 '(face org-target invisible org-link)))))
+
+  (add-hook 'org-font-lock-set-keywords-hook #'org-hidden-links-hook-function)
+
+  ;; IMPROVEMENT: Parse headlines w/ links in them; give option for clean target text
+  ;; IMPROVEMENT: Make this work for across files, like jkitchin's better-link thing
+  (defun create-and-link-dedicated-org-target (callPrefix)
+    "Makes or reads a dedicated org-mode link target (<<X>>) and puts an internal link to it ([[X]]) into the kill ring; you can reference the target somewhere else by pasting the link.
+
+Where the target goes:
+  No prefix
+    Region Selected: region is replaced with the new target;
+    Cursor on existing target: target is only read: no buffer changes;
+    Cursor on headline: headline text is replaced with new target;
+    Otherwise: the user is prompted to enter the target text and a
+               new full target is inserted at point.
+  C-u prefix
+    Region Selected: new target is placed to the right of the region;
+    Cursor on existing target: target is only read: no buffer changes;
+    Cursor on headline: headline text becomes the target text, and the full
+                        target is inserted on the line below the headline;
+    Otherwise: the user is prompted to enter the target text and a
+               new full target is inserted at point.
+This function avoids making messed up targets by exiting without doing anything if the target text would contain link or target symbols."
+    (interactive "p")
+
+    (if (eq major-mode 'org-mode)
+        (let* ((separatePaste (eq callPrefix 4))
+	       (targBdy
+	        (cond
+	         (mark-active
+		  (funcall region-extract-function nil))
+	         ((org-at-target-p)
+		  (save-excursion
+		    (let* ((p1 (progn (skip-chars-backward "^<“") (point)))
+			   (p2 (progn (skip-chars-forward  "^>”") (point))))
+		      (buffer-substring p1 p2))))
+	         ((org-at-heading-p)
+		  (or (nth 4 (org-heading-components))
+		      (read-string "Target text: ")))
+	         (t
+		  (read-string "Target text: "))
+	         ))
+	       (targDclr (concat "<<" targBdy ">>")))
+
+	  (if (string-match "\\(\\[\\[\\)\\|\\(]]\\)\\|\\(<<\\)\\|\\(>>\\)" targBdy)
+	      (message
+	       "Found link/target symbols ([[,]],<<,>>): Manually select region?")
+	    (unless (org-at-target-p)
+	      (cond
+	       (mark-active
+	        (if separatePaste
+		    (progn (goto-char (region-end))
+			   (insert (format " %s" targDclr)))
+		  (delete-region (region-beginning) (region-end))
+		  (insert targDclr)
+		  (deactivate-mark)))
+	       ((org-at-heading-p)
+	        (if separatePaste
+		    (progn (end-of-line)
+			   (insert (format "\n%s" targDclr))
+			   (org-indent-line))
+		  (org-edit-headline targDclr)))
+	       (t
+	        (insert targDclr))))
+
+	    (kill-new (concat "[[" targBdy "]]"))
+	    ))
+      (message "Not in org-mode buffer")
+      ))
+  (global-set-key "\em" 'create-and-link-dedicated-org-target)
+  )
+
+;; ** Hide/show/toggle :PROPERTIES: drawer
+
+(with-eval-after-load 'org
+
+  (defun org-hide-properties ()
+    "Hide all org-mode headline property drawers in buffer. Could be slow if it has a lot of overlays.
+TODO: instead of regexp, try to parse org.  Maybe use the two suggestions above for org-at-target-p, or somehow get and walk the buffer's AST.  Parsing seems like it'd be faster.
+TODO: does this work if you've hidden props and then create a new prop door?  Can you still hide and unhide everything, or does this cause a wierd bug?
+TODO: hide a new prop drawer as soon as leave it, if in hide mode?
+TODO: add a cycle that opens or collapses all prop drawers?"
+    (interactive)
+    (save-excursion
+      (goto-char (point-min))
+      (while (re-search-forward
+              "^ *:properties:\n\\( *:.+?:.*\n\\)+ *:end:\n" nil t)
+        (let ((ov_this (make-overlay (match-beginning 0) (match-end 0))))
+          (overlay-put ov_this 'display "")
+          (overlay-put ov_this 'hidden-prop-drawer t))))
+    (put 'org-toggle-properties-hide-state 'state 'hidden))
+
+  (defun org-show-properties ()
+    "Show all org-mode property drawers hidden by org-hide-properties."
+    (interactive)
+    (remove-overlays (point-min) (point-max) 'hidden-prop-drawer t)
+    (put 'org-toggle-properties-hide-state 'state 'shown))
+
+  (defun org-toggle-properties ()
+    "Toggle visibility of property drawers."
+    (interactive)
+    (if (eq (get 'org-toggle-properties-hide-state 'state) 'hidden)
+        (org-show-properties)
+      (org-hide-properties)))
+
+  (define-key org-mode-map (kbd "C-c p h") 'org-hide-properties)
+  (define-key org-mode-map (kbd "C-c p s") 'org-show-properties)
+  (define-key org-mode-map (kbd "C-c p t") 'org-toggle-properties)
+
+  ;; ** Text -> checkbox -> TODO
+  ;; Converts non-heading text lines to checkboxes lists;
+  ;; convert checkbox lists to TODO's with: C-c C-*
+  ;; https://stackoverflow.com/questions/18667385/convert-lines-of-text-into-todos-or-check-boxes-in-org-mode
+  (defun org-set-line-checkbox (arg)
+    (interactive "P")
+    (let ((n (or arg 1)))
+      (when (region-active-p)
+        (setq n (count-lines (region-beginning)
+                             (region-end)))
+        (goto-char (region-beginning)))
+      (dotimes (i n)
+        (beginning-of-line)
+        (insert "- [ ] ")
+        (forward-line))
+      (beginning-of-line)))
+  )
+
+;; ** Org-download
+
+;; NO doesn't seem to cause cache problem but DOES greatly slow down emacs init
+;;
+;; --- SEEMS OK is this messing up org mode cache ------------
+;; ;; TODO get this to work
+;;   ;; could do setq-local for dir or file-specific dirname:
+;;   ;; https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
+;; ;; make drag-and-drop image save in the same name folder as org file
+;; ;; ex: `aa-bb-cc.org' then save image test.png to `aa-bb-cc/test.png'
+;; (defun org-download-method-dirname-from-orgfile (link)
+;;   (let ((filename
+;;          (file-name-nondirectory
+;;           (car (url-path-and-query
+;;                 (url-generic-parse-url link)))))
+;;         (dirname (file-name-sans-extension (buffer-name)) ))
+;;     ;; if directory not exist, create it
+;;     (unless (file-exists-p dirname)
+;;       (make-directory dirname))
+;;     ;; return the path to save the download files
+;;     (expand-file-name filename dirname)))
+
+;; ;; From: https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
+;; (use-package org-download
+;;   :after org
+;;   :custom
+;;   (org-download-method 'org-download-method-dirname-from-orgfile)
+;;   :hook
+;;   (dired-mode . org-download-enable))
+;; --- end is this messing up org mode cache -----------------------------
+
+;; ** Org Export
+
+;; doesn't work w/ latest org, last updated in 2018
+;; (use-package ox-minutes :after org) ; nice(er) ascii export, but slow start
+
+;; Pandoc helper for org export
+(when (sdo/find-exec "pandoc" "Needed for org-mode export to .docx, etc.")
+  ;; from: https://github.com/rubensts/.emacs.d/blob/master/emacs-init.org
+  (use-package ox-pandoc
+    :after org ; so pandoc shows up in org-export-dispatch screen
+    :config
+    (setq org-pandoc-options '((standalone . t))            ; default options for all output formats
+          org-pandoc-options-for-docx '((standalone . nil)) ; cancel above settings only for 'docx' format
+          )))
+
+;; ** Org Parsing
+
+(use-package pyorg
+ :straight (:host github :repo "jlumpe/pyorg" :files ("pyorg.el")))
+
+;; ** Org and Zotero
+
+;; For Zotero add-in "zutilo"  Conflicts or Same-As zotxt?
+;; https://orgmode-exocortex.com/2020/05/13/linking-to-zotero-items-and-collections-from-org-mode/
+(with-eval-after-load 'org
+  (org-link-set-parameters "zotero" :follow
+                           (lambda (zpath)
+                             (browse-url
+                              ;; we get the "zotero:"-less url, so we put it back.
+                              (format "zotero:%s" zpath)))))
+
+;; For Zotero add-in "zotxt"  Conflicts/same-as zutilo?
+;; https://github.com/egh/zotxt-emacs
+;; Pastes biblio summary of Zotero entries in org-mode, connects to org-noter
+(use-package zotxt :after org)
+
+;; ** Org-cite (native in org 9.5+)
+
+;; TODO: SEE this for bdarcus's citar embark config wiki
+;; https://github.com/bdarcus/citar/wiki/Embark
+;; TODO: set up .bib file autorefresh: https://github.com/bdarcus/citar#refreshing-the-library-display
+
+(use-package citar
+  :straight (:host github :repo "bdarcus/citar")
+  :bind (("C-c b" . citar-insert-citation)
+         ;; also  C-c C-x C-@
+         (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
+         :map minibuffer-local-map
+         ("M-b" . citar-insert-preset))
+  :custom
+  ;; https://github.com/bdarcus/citar/issues/407#issuecomment-968158550
+  (org-cite-global-bibliography biblist_new)
+  ;; (org-cite-global-bibliography '("~/ref/energy.bib"
+  ;;                                 "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
+  (citar-bibliography bibfile_list)
+  (citar-library-paths bibpdf_list)
+  ;; citar notes don't work, as of 11/28/21
+  (citar-notes-paths bibnotes_dir)
+  ;; so citar can open JabRef-style file fields
+  (setq citar-file-parser-functions '(citar-file-parser-default
+                                      citar-file-parser-triplet))
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+  (citar-at-point-function 'embark-act) ; So more C-o options than file list
+  (citar-file-open-function 'citar-file-open-external)
+  ;; from emacsconf
+  ;;(citar-file-extensions '("pdf" "org" "md"))
+  ;; (citar-file-find-additional-files t) ; finds pdfs... w/ same start as key
+  ;;(citar-open-note-function 'orb-citar-edit-note) ; default, I think
+  (citar-open-note-function 'orb-bibtex-actions-edit-note) ; OR
+  :init
+  ;; if .bib file changes, "invalidate the cache by default".  Is that good?
+  ;; https://github.com/bdarcus/citar#refreshing-the-library-display
+  ;; (citar-filenotify-setup '(LaTeX-mode-hook org-mode-hook))
+  :config
+  ;; this is supposed to pick up styles, like IEEE but doesn't
+  ;; (setq org-cite-csl-styles-dir "~/Zotero/styles") ;; hangs org on
+  ;; startup
+  
+  (defun robo/citar-full-names (names)
+    "Transform names like LastName, FirstName to FirstName LastName."
+    (when (stringp names)
+      (mapconcat
+       (lambda (name)
+         (if (eq 1 (length name))
+             (split-string name " ")
+           (let ((split-name (split-string name ", ")))
+             (cl-concatenate 'string (nth 1 split-name) " " (nth 0 split-name)))))
+       (split-string names " and ") ", ")))
+
+  ;; somehow, this section causes the error: progn: Wrong type argument: characterp, "1"
+  ;; (setq citar-display-transform-functions
+  ;;       '((t . citar-clean-string)
+  ;;         (("author" "editor") . robo/citar-full-names)))
+
+  ;; possibly works but I haven't tested what it does w/ some order
+  ;; escaping drug companies; from (cpr
+
+
+  ;; ;; TODO: try above w/ pretty, which might test 
+  ;; (setq citar-templates
+  ;;       '((main . "${author editor:55}     ${date year issued:4}     ${title:55}")
+  ;;         (suffix . "  ${tags keywords keywords:40}")
+  ;;         (preview . "${author editor} ${title}, ${journal publisher container-title collection-title booktitle} ${volume} (${year issued date}).\n")
+  ;;         (note . "#+title: Notes on ${author editor}, ${title}")))
+
+  )
+
+;; From: https://github.com/mclear-tools/citar-capf
+;; Was written w/ the help of the citar author, Bruce D'Arcus
+;; (use-package citar-capf
+;;   :straight (:type git :host github :repo "mclear-tools/citar-capf")
+;;   ;; NOTE: Set these hooks for whatever modes for which you want citar citation completion
+;;   :hook ((org-mode markdown-mode tex-mode latex-mode reftex-mode) . citar-capf-mode) 
+;;   :config
+;;   ;; if you don't already have this set in citar
+;;   ;; (setq citar-bibliography "path/to/bib")
+;;   (setq citar-templates
+;;       `((main . " ${=key= id:15} ${title:48}")
+;;         (suffix . "${author editor:30}  ${=type=:12}  ${=beref=:12} ${tags keywords:*}")
+;;         (preview . "${author editor} (${year issued date}) ${title}, ${journal journaltitle publisher container-title collection-title}.\n"))))
+
+;; Seems like the below got dropped by the vertico guy?  There was
+;; lots of discussion and then citar-capf was written, apparently in response
+;;
+;; use consult-completing-read for enhanced interface
+;; From: https://github.com/bdarcus/citar
+;; (with-eval-after-load 'embark
+;;   (advice-add #'completing-read-multiple :override
+;;               #'consult-completing-read-multiple))
+
+
+;; ** Ebib
+
+(use-package ebib
+  :custom
+  (ebib-preload-bib-files bibfile_list)
+  (ebib-index-columns
+        (quote
+         (("timestamp" 12 t)
+          ("Entry Key" 20 t)
+          ("Author/Editor" 40 nil)
+          ("Year" 6 t)
+          ("Title" 50 t))))
+  (ebib-index-default-sort (quote ("timestamp" . descend)))
+  (ebib-timestamp-format "%Y.%m.%d")
+  (ebib-use-timestamp t))
+
+;; ** Org-ref
+
+;; Store links in bibtex: C-c l; in .org files C-c ]
+;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
+(use-package org-ref
+  :after org
+  :straight (:branch "org-ref-2" :host github :repo "jkitchin/org-ref")
+  :init
+  (let ((default-directory docDir))
+
+    (setq org-ref-bibliography-notes org_ref_notes_fnm
+          org-ref-default-bibliography bibfile_list 
+          org-ref-pdf-directory bibpdf_list
+          reftex-default-bibliography org-ref-default-bibliography))
+  ;;  https://github.com/jkitchin/org-ref/issues/468
+  ;;(setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
+  :config
+  (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
+  ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
+  (setq bibtex-autokey-year-length 4
+        bibtex-autokey-name-year-separator "-"
+        bibtex-autokey-year-title-separator "-"
+        bibtex-autokey-titleword-separator "-"
+        bibtex-autokey-titlewords 2
+        bibtex-autokey-titlewords-stretch 1
+        bibtex-autokey-titleword-length 5)
+  ;; Make org-ref cite: link folded in emacs.
+  ;; https://org-roam.discourse.group/t/customize-display-of-cite-links/129/19
+  (org-link-set-parameters "cite" :display 'org-link)
+  ;; Make the 'cite:' link type available when C-c l on a bibtex entry
+  ;; https://github.com/jkitchin/org-ref/issues/345
+  (let ((lnk (assoc "bibtex" org-link-parameters)))
+    (setq org-link-parameters (delq lnk org-link-parameters))
+    (push lnk org-link-parameters))
+  )
+
+;; ** v2 Org-Roam
+
+;; ;; TODO: :custom (org-id-method 'ts) doesn't work
+;; ;;       https://org-roam.discourse.group/t/org-roam-major-redesign/1198/28
+;; ;; TIPS
+;; ;; add org-id to headline: org-id-copy
+
+;; ;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
+;; ;; several startup org-roams, also initializing org-roam-bibtex 
+(use-package org-roam
+  ;;  :straight t
+  ;; calling one of these commands will initialize Org-roam and ORB
+  :commands (org-roam-node-find org-roam-graph org-roam-capture
+                                org-roam-dailies-capture-today org-roam-buffer-toggle)
+  :custom
+  (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
+  (org-id-method 'ts)
+  ;; from emacsconf
+  (org-roam-node-display-template "${title:80} ${tags:80}")
+
+  ;; comment out unless specifically want to use ivy
+  ;;  (org-roam-completion-system 'ivy)
+
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n h" . org-roam-capture)
+         ([mouse-1] . org-roam-visit-thing)
+         ;; may not exist aymore
+         ("C-c n j" . org-roam-dailies-capture-today)
+         :map org-mode-map
+         ("C-M-i" . completion-at-point))
+ 
+  :init
+  ;; (setq org-roam-v2-ack t)
+  ;; set this here instead of in :custom so it can be used during init
+  ;;  (setq org-roam-directory (file-truename "~/tmp/bibNotesOR"))
+  ;; truename used for performance: https://org-roam.discourse.group/t/org-roam-buffer-does-not-update-on-click-link-buffer-switch/2364/8?u=scotto
+  (setq org-roam-directory org_roam_dir)
+  ;; from: https://www.orgroam.com/manual.html=
+  (setq org-roam-dailies-directory (expand-file-name "daily"
+                                                     org-roam-directory))
+  (setq org-roam-dailies-capture-templates
+        '(("d" "default" entry
+           "* %?"
+           :target (file+head "%<%Y-%m-%d>.org"
+                              "#+title: %<%Y-%m-%d>\n"))))
+  :config
+  (org-roam-db-autosync-mode)
+  ;; If using org-roam-protocol
+  (require 'org-roam-protocol))
+
+
+;; I don't know where/how to use this
+;; From: https://jethrokuan.github.io/org-roam-guide/
+;; (defun jethro/org-roam-node-from-cite (keys-entries)
+;;     (interactive (list (citar-select-ref :multiple nil :rebuild-cache t)))
+;;     (let ((title (citar--format-entry-no-widths (cdr keys-entries)
+;;                                                 "${author editor} :: ${title}")))
+;;       (org-roam-capture- :templates
+;;                          '(("r" "reference" plain "%?" :if-new
+;;                             (file+head "reference/${citekey}.org"
+;;                                        ":PROPERTIES:
+;; :ROAM_REFS: [cite:@${citekey}]
+;; :END:
+;; #+title: ${title}\n")
+;;                             :immediate-finish t
+;;                             :unnarrowed t))
+;;                          :info (list :citekey (car keys-entries))
+;;                          :node (org-roam-node-create :title title)
+;;                          :props '(:finalize find-file))))
+
+;; ** org-roam-ui (graph viewing)
+
+;; config from: https://github.com/org-roam/org-roam-ui
+(use-package org-roam-ui
+  :straight (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+  :after org-roam
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
+
+;; ** org-roam-bibtex
+
+(use-package org-roam-bibtex
+  :config
+  (setq org-roam-capture-templates
+        '(("d" "default" plain "%?"
+           :if-new (file+head "${slug}.org"
+                              "#+title: ${title}\n#+SETUPFILE: ~/ref/tmp_papers_notes/setup_file.org\n* References :ignore:\n#+print_bibliography:")
+           :unnarrowed t)
+          ;; capture to inbox
+          ("i" "inbox" entry "* TODO %?\n"
+           :target (node "45acaadd-02fb-4b93-a741-45d37ff9fd5e")
+           :unnarrowed t
+           :empty-lines-before 1
+           :empty-lines-after 1
+           :prepend t)
+          ;; bibliography note template
+
+          ("r" "bibliography reference" plain "%?"
+~/ref/tmp_papers_notes
+;;           :if-new (file+head "references/notes_${citekey}.org"
+           :if-new (file+head "~/ref/tmp_papers_notes/refs/notes_${citekey}.org"
+                              "#+title: Notes on ${title}\n#+SETUPFILE: ~/ref/tmp_papers_notes/refs/ref/setup_file_ref.org\n* References :ignore:\n#+print_bibliography:")
+           :unnarrowed t)
+          ;; for my annotated bibliography needs
+          ("s" "short bibliography reference (no id)" entry "* ${title} [cite:@%^{citekey}]\n%?"
+           :target (node "01af7246-1b2e-42a5-b8e7-68be9157241d")
+           :unnarrowed t
+           :empty-lines-before 1
+           :prepend t)))
+  (defun robo/capture-to-inbox ()
+    "Capture a TODO straight to the inbox."
+    (interactive)
+    (org-roam-capture- :goto nil
+                       :keys "i"
+                       :node (org-roam-node-from-id "45acaadd-02fb-4b93-a741-45d37ff9fd5e")))
+  (require 'org-roam-bibtex)
+
+  ;; TODO: figure out note files dirs in tis
+  ;; (expand-file-name "notes_${citekey}.org" bibnotes_dir)
+
+  (setq citar-open-note-function 'orb-citar-edit-note
+        citar-notes-paths '("~/ref/tmp_papers_notes/refs")
+        orb-preformat-keywords '("citekey" "title" "url" "author-or-editor" "keywords" "file")
+        orb-process-file-keyword t
+        orb-file-field-extensions '("pdf")))
+
+;; *** Org-roam API
+;;
+;; From:
+;; https://org-roam.discourse.group/t/creating-an-org-roam-note-from-an-existing-headline/978
+;; Latest version:
+;;https://github.com/telotortium/doom.d/blob/f0295cc510d31c813e2a61ab2fc4aad3ae531e49/org-config.el#L1250-L1271
+
+;; ;; This works!
+;; (defun org-roam-create-note-from-headline ()
+;;   "Create an Org-roam note from the current headline and jump to it.
+
+;; Normally, insert the headline’s title using the ’#title:’ file-level property
+;; and delete the Org-mode headline. However, if the current headline has a
+;; Org-mode properties drawer already, keep the headline and don’t insert
+;; ‘#+title:'. Org-roam can extract the title from both kinds of notes, but using
+;; ‘#+title:’ is a bit cleaner for a short note, which Org-roam encourages."
+;;   (interactive)
+;;   (let ((title (nth 4 (org-heading-components)))
+;;         (has-properties (org-get-property-block)))
+;;     (org-cut-subtree)
+;;     (org-roam-find-file title nil nil 'no-confirm)
+;;     (org-paste-subtree)
+;;     (unless has-properties
+;;       (kill-line)
+;;       (while (outline-next-heading)
+;;         (org-promote)))
+;;     (goto-char (point-min))
+;;     (when has-properties
+;;       (kill-line)
+;;       (kill-line))))
+
+;; ** Org-noter
+;;
+;; *** Org-noter-media: modified org-note
+;; LOTS OF STRAIGHTEL DOC BUGS: e.g. branch "link-as-doc" doesn't exist
+;; This incompatible fork of org-noter can annotate videos like youtube; eventually w/ mpv player:
+;;this repo: https://github.com/c1-g/org-noter-media.
+;; Also org-media note
+;; (use-package org-noter
+;;   :straight '(org-noter :type git
+;;                         :host github
+;;                         :repo "weirdNox/org-noter"
+;;                         :fork "c1-g/org-noter-plus-djvu"
+;;                         :branch "link-as-doc"
+;;                         :files ("other/*.el" "*.el" "modules/*.el"))
+;;   :config
+;;   (use-package org-noter-nov :ensure nil)
+;;   (use-package org-noter-djvu :ensure nil)
+;;   (use-package org-noter-pdf :ensure nil))
+
+;; ;; The thing the annotates videos to org-mode  
+;; (use-package org-noter-media
+;;   :straight '(org-noter-media :type git
+;;                               :host github
+;;                               :repo "auroranil/org-noter-media"
+;;                               :fork "c1-g/org-noter-media"))
+
+;; *** original org-note
+;; keybindings, basic explanation: https://github.com/weirdnox/org-noter#keys
+;; simple, just so it compiles.  started from: https://rgoswami.me/posts/org-note-workflow
+(use-package org-noter
+  :after (:all org pdf-view)
+  :config
+  (setq
+   ;; the wm can handle splits
+   org-noter-notes-window-location 'other-frame
+   ;; please stop opening frames
+   org-noter-always-create-frame nil
+   ;; i want to see the whole file
+   org-noter-hide-other nil
+   ;; everything is relative to the main notes file
+   org-noter-notes-search-path (list org_notes_dir)))
+
+;; For annotating videos
+;; ** org-media note
+;; https://github.com/yuchen-lea/org-media-note
+;;  somehow different that org-noter-media, doesn't have a straight.el
+;; install example,un like org-noter-media
+;; ** pdf-tools
+;;
+;; Open and annotate pdfs.  
+;; See demo: http://tuhdo.github.io/static/emacs-read-pdf.gif
+;; Also used by org-roam (I think) and some latex stuff (I think)
+;;
+;; Installation:
+;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
+;; pdf-tools requires libraries (msys2 on Windows) so it can build itself.
+;;
+;; FIRST INSTALL on fresh machine: On Windows, msys2 will download the libraries itself if you answer it's "where is mysys2?" question with: c:/tools/msys64
+;; You can check the install with M-x pdf-info-check-epdinfo
+;;
+;; pdf-tools use-package call inspired by:
+;; http://pragmaticemacs.com/emacs/more-pdf-tools-tweaks/
+;;
+(if (or running-MacOS running-gnu-linux pacbin-windows)
+    (progn
+      (message "Initializing pdf-tools")
+      (use-package pdf-tools
+        :defer t
+        :config
+        ;; initialise (on Windows will download and build msys2 libs too)
+        (pdf-tools-install)
+        ;; open pdfs scaled to fit page
+        (setq-default pdf-view-display-size 'fit-page)
+        ;; (setq pdf-annot-activate-created-annotations t) ; for annotation text
+        (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+        (setq pdf-view-resize-factor 1.1)   ; default is 25%
+        ;; Shorter shortcuts than e.g. C-c C-a h. These Work on =mouse= sel.
+        (define-key pdf-view-mode-map (kbd "h")
+          'pdf-annot-add-highlight-markup-annotation)
+        (define-key pdf-view-mode-map (kbd "t")
+          'pdf-annot-add-text-annotation)
+        (define-key pdf-view-mode-map (kbd "u")
+          'pdf-annot-add-underline-markup-annotation)
+        (define-key pdf-view-mode-map (kbd "D")
+          'pdf-annot-delete)
+        ;; Navigation: can also use M-< and M-> like normal
+        (define-key pdf-view-mode-map (kbd "C-<home>") 'pdf-view-first-page)
+        (define-key pdf-view-mode-map (kbd "C-<end>") 'pdf-view-last-page)
+
+        ;; Custom annotation colors: https://github.com/politza/pdf-tools/issues/581#issuecomment-646370370
+        ;; Emacs color pickers: https://emacs.stackexchange.com/questions/5582/are-there-color-pickers-for-emacs
+        ;; Strike out
+        (defun pdftools-strikeout-gray (oldfun loe)
+          (apply oldfun loe '("gray")))
+        (advice-add 'pdf-annot-add-strikeout-markup-annotation :around 
+                    #'pdftools-strikeout-gray)
+        ;; Underline
+        (defun pdftools-underline-purple (oldfun loe)
+          (apply oldfun loe '("#8a1e8a")))
+        (advice-add 'pdf-annot-add-underline-markup-annotation :around 
+                    #'pdftools-underline-purple)
+        ;; Squiggly underline
+        (defun pdftools-squiggly-red (oldfun loe)
+          (apply oldfun loe '("#fe2500")))
+        (advice-add 'pdf-annot-add-squiggly-markup-annotation :around 
+                    #'pdftools-squiggly-red)
+        
+        ;; Default color for text highlight. 
+        ;; This will change the color of the Note.
+        (setq pdf-annot-default-markup-annotation-properties
+              '((color . "green")))
+
+        ;; Default color for text.
+        ;; This will change the color of the Note.
+        (setq pdf-annot-default-text-annotation-properties
+              '((color . "#90ee90")))
+        )))
+
+;; ** org-media-note
+;; For annotating youtube, etc, like in logseq.  Try this sometime.
+;;
+;; https://github.com/yuchen-lea/org-media-note
+;;
 
 ;; * Window/Frame Config, Desktop Save and Restore
 ;; ** Window resizing
@@ -1789,9 +2638,58 @@ folder, otherwise delete a word"
 ;; Consult provides a lot of useful completion commands similar to
 ;; Ivy's Counsel.
 
+;; inspired by
+;; https://www.reddit.com/r/emacs/comments/l725u0/a_small_wrapper_for_consultripgrep_to_override/
+(defun my-consult-ripgrep (prefix)
+  "if called w/ prefix (C-u), then search in current buffer's dir instead of default project dir."
+  (interactive "P")
+  (consult-ripgrep
+   (if (not prefix)
+       nil
+     (if (eq prefix 1)
+         t
+       (if (buffer-file-name) default-directory t)))))
+
+
+;; File search w/ nice interface, better than standard emacs lgrep, I think
+;; (if (setq rga_exe (sdo/find-exec "rga" "ripgrep-all needed ro org-roam, etc."))
+;;     (progn (use-package deadgrep)
+;;            (global-set-key [f5] 'deadgrep)
+;;            ;; use current working dir as starting point of search
+;;            ;; https://github.com/Wilfred/deadgrep/issues/14#issuecomment-464363207
+;;            (defun wh/return-default-dir (junk)
+;;              default-directory)
+
+;;            (setq deadgrep-project-root-function #'wh/return-default-dir))
+;;  (global-set-key [f5] 'lgrep))
+
+(defun pick-consult-root-dir (junk)
+  "For now, just return the default-directory.  Could make this smarter."
+  default-directory)
+
+(if (setq rga_exe (sdo/find-exec "rga" "ripgrep-all needed for org-roam, etc."))
+    ;; from: https://github.com/minad/consult/issues/6#issuecomment-1150436294
+    (defun consult-rga ()
+      (interactive)
+      (let ((consult-ripgrep-args (->> consult-ripgrep-args
+                                       (string-remove-prefix "rg")
+				       (concat "rga"))))
+        (consult-ripgrep))))
+
+;; ;; Doesn't work.  I need to get the consult-rga args right
+;; (defun my-consult-rga (prefix)
+;;   "if called w/ prefix (C-u), then search in current buffer's dir instead of default project dir."
+;;   (interactive "P")
+;;   (consult-rga
+;;    (if (not prefix)
+;;        nil
+;;      (if (eq prefix 1)
+;;          t
+;;        (if (buffer-file-name) default-directory t)))))
+
 ;; Started from systemcrafter guy: https://config.daviwil.com/emacs
 (use-package consult
-;;  :demand t  ; caused problems w/ org-mode-map binding below
+  ;;  :demand t  ; caused problems w/ org-mode-map binding below
   :bind (("C-M-l" . consult-imenu)
          ;; ("C-M-j" . persp-switch-to-buffer*) ;; use when if have perspective 
          ("C-x C-r" . consult-recent-file) ;; overrides my function, I hope
@@ -1799,9 +2697,10 @@ folder, otherwise delete a word"
          ;;("C-s" . consult-line) ;; also consult-line-multi for across bufs
          ;;("C-s" . consult-isearch) ; doesn't work
          ;; overrides deadgrep, also has grep, git-grep
-         ("<f5>" . consult-ripgrep)
+         ;;         ("<f5>" . consult-ripgrep)
+         ("<f5>" . my-consult-ripgrep)
          ;; search org & outshine headers (overrides default isearch bindings)
-          ("M-s s" . consult-outline) ;; works but hangs in energytop.org
+         ("M-s s" . consult-outline) ;; works but hangs in energytop.org
          :map minibuffer-local-map
          ("C-r" . consult-history)
          :map org-mode-map :package org 
@@ -1809,7 +2708,7 @@ folder, otherwise delete a word"
          ("M-s s" . consult-org-heading) ; for org, better than consult-outline 
          )
   :custom
-  ;;(consult-project-root-function #'dw/get-project-root)
+  (consult-project-function #'pick-consult-root-dir)
   (completion-in-region-function #'consult-completion-in-region)
   (consult-line-point-placement 'match-beginning)
   :config
@@ -1823,7 +2722,25 @@ folder, otherwise delete a word"
    consult-bookmark consult-recent-file consult-xref
    consult--source-bookmark consult--source-recent-file
    consult--source-project-recent-file
-   :preview-key (kbd "M-.")))
+   :preview-key (kbd "M-."))
+  ;; Ripgrep-all (cannot jump to pdf page though)
+  ;; From:
+  ;; https://nest.pijul.org/alexdarcy/emacs.d:main/CBNDWUXF2JZSE.GQ6QA
+  ;; DOESN'T WORK, THOUGH
+  ;; NEEDS TO GO INTO CONSULT-CUSTOMIZE
+  ;; https://github.com/minad/consult#multiple-sources
+  (defcustom consult-ripgrep-all-command
+    "rga --null --line-buffered --color=ansi --max-columns=1000\
+   --no-heading --line-number . -e ARG OPTS"
+    "Command line string for ripgrep-all, see `consult-ripgrep-all'.
+The command string must have a specific format, including ARG and OPTS
+substrings. ARG is replaced by the filter string and OPTS by the auxillary
+command options."
+    :type 'string)
+  (defun consult-ripgrep-all (&optional dir initial)
+    (interactive "P")
+    (consult--grep "Ripgrep-all" consult-ripgrep-all-command dir initial))
+  )
 
 ;; Example configuration for Consult
 ;; https://github.com/minad/consult
@@ -2374,7 +3291,7 @@ folder, otherwise delete a word"
 
     ;; code tidy when save
     (if autopep8bin
-        (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+        (add-hook 'elpy-mode-hook 'py-autopep8))
     
     ;; Undo ely's override of C-arrowkeys
     ;; https://github.com/jorgenschaefer/elpy/issues/1188
@@ -2766,6 +3683,7 @@ folder, otherwise delete a word"
 
 (use-package flycheck
   :defer t
+  :after conda  ;; sets python path
   :config
   (eval-after-load "flycheck-mode" '(diminish 'flycheck-mode)))
 (diminish 'flycheck-mode) ;; only works outside of use-package flycheck
@@ -2910,814 +3828,6 @@ folder, otherwise delete a word"
        term-color-purple
        term-color-darkgoldenrod
        term-color-ivory4])
-
-;; * Org Mode
-
-;; ** Org-* dirs and files
-
-;; set up org and bib for old way of doing things and experimental org-roam, or a true org-roam, org-ref setup
-(setq bibfile_energy_fnm (expand-file-name "energy.bib" docDir)
-      bibfile_energy_pdf_dir (expand-file-name "papers" docDir)
-      bibfile_energytop_fnm (expand-file-name "energytop.org" docDir)
-      ;; bibnotes_dir (expand-file-name "tmp_papers_notes" docDir)
-      bibnotes_dir (expand-file-name "~/tmp_papers_notes" docDir))
-(setq bibfile_list (list bibfile_energy_fnm
-                     "~/ref/DOE_brainstorm/deepSolarDOE.bib")
-      bibpdf_list (list bibfile_energy_pdf_dir
-                        "~/ref/DOE_brainstorm/papers"))
-
-
-(setq org_roam_dir "~/share/tmp_org_roam_test")
-
-(if t
-    (progn
-      (message "Old org/bib init with playground org-roam or DOE brainstorm")
-      (setq
-;;       org_roam_dir (expand-file-name "DOE_brainstorm" docDir)
-       org_notes_dir (expand-file-name "org-notes" org_roam_dir)
-       bibfile_roam_fnms (list (expand-file-name
-                                "deepSolarDOE.bib" org_roam_dir)
-                               (expand-file-name
-                                "newTechAdoption.bib"
-                                (expand-file-name "newTechAdoption" org_roam_dir)))
-       bibfile_roam_pdf_dir (expand-file-name "papers" org_roam_dir)
-       org_ref_notes_dir (expand-file-name "bib-notes" org_roam_dir)
-       org_ref_notes_fnm (expand-file-name "DOE_brainstorm.org" org_roam_dir)
-       org-directory org_notes_dir
-       deft-directory org_notes_dir
-       ))
-  (progn
-    (message "org-roam style init")
-    ;; simillar to idea in https://rgoswami.me/posts/org-note-workflow/
-    (setq
-     org_roam_dir (expand-file-name "org_roam" docDir)
-     org_notes_dir (expand-file-name "org_notes" org_roam_dir)
-     bibfile_roam_fnms (list (expand-file-name "zotlib.bib" org_roam_dir))
-     bibfile_roam_pdf_dir (expand-file-name "papers" org_roam_dir)
-     org_ref_notes_dir (expand-file-name "org_ref_notes" org_roam_dir)
-     org-directory org_notes_dir
-     deft-directory org_notes_dir
-     org-roam-directory org_notes_dir
-     )))
-
-;; ;; Users of this require that it really be a list, even if only one
-;; ;; item
-;; (setq bibfile_list '("~/ref/energy.bib"
-;;                     "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
-
-;; (setq bibfile_list bibfile_roam_fnms) ;; helm-bibtex slow w/ energy.bib
-;; but include pdfs in energy.bib so it can find pdfs if visited manually
-;;(setq bibpdf_list (list bibfile_energy_pdf_dir bibfile_roam_pdf_dir)) 
-
-;; Find pdf w/ JabRef/Zotero fields
-(setq bibtex-completion-pdf-field "file")
-;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
-;;(setq org-ref-bibliography-notes (expand-file-name "bib-notes" org_roam_dir))
-
-;; ** Org package, basic config
-
-;; TODO: experiment with C-c C-x C-b or M-x sdo/org-tree-to-indirect-buffer
-;;
-(use-package org
-;;  :defer 0
-  :diminish org-mode  ; doesn't hide the "Org" in modeline, for some reason
-  :diminish org-table-header-line-mode  ; customization: org-table-header-line-p
-  :config
-  ;;############## DEBUGGING: REMOVE #########
-  ;; (setq  org-element--cache-self-verify 'backtrace)
-  ;; (call-interactively 'org-element-cache-reset)
-  ;; ;;########################               
-  (define-key global-map "\C-cl" 'org-store-link)
-  (global-set-key (kbd "C-c L") 'org-insert-link-global) ; insert in any buffer
-  (global-set-key (kbd "C-c o") 'org-open-at-point-global) ; open in any buffer
-  ;;(global-set-key "\C-cb" 'org-iswitchb) ; switch between org buffers
-  ;;(global-set-key "\C-cc" 'org-capture) ; ovewrites org-ref-bibtex bindings
-  ;;(define-key global-map "\C-ca" 'org-agenda) ; I don't use agenda
-
-  ;; Unbind standard org keys so can always use for buffer-move
-  (define-key org-mode-map (kbd "<C-S-up>") nil) ; was timestamp clock up sync
-  (define-key org-mode-map (kbd "<C-S-down>") nil) ; was timestamp clck dwn sync
-  (define-key org-mode-map (kbd "<C-S-left>")  nil) ; was switch TODO set
-  (define-key org-mode-map (kbd "<C-S-right>") nil) ; was switch TODO set
-  ;; (define-key org-mode-map (kbd "C-x n <return>") 'org-toggle-narrow-to-subtree) ; was switch TODO set
-  ;;(define-key org-mode-map (kbd "C-x n")
-  ;;'org-toggle-narrow-to-subtree) ; was switch TODO set
-
-  ;; Match narrow/widen binding in other modes (below)
-  (define-key org-mode-map (kbd "C-x n n") 'recursive-narrow-or-widen-dwim)
-
-  ;; open docx files in default application (ie msword)
-  ;; https://emacs.stackexchange.com/questions/22485/org-mode-pandoc-export-to-docx-and-open
-  (setq org-file-apps
-        '(("\\.docx\\'" . default)
-          ("\\.mm\\'" . default)
-          ("\\.x?html?\\'" . default)
-          ("\\.pdf\\'" . default)
-          (auto-mode . emacs))))
-
-(use-package org-superstar
-;;  :after org
-  :custom
-  (org-superstar-cycle-headline-bullets nil)
-  (org-superstar-headline-bullets-list '("●" "￭" "￮" "►" "•" "□" "▸" "▫" "▹"))
-  (org-superstar-item-bullet-alist '((42 . 10043) (43 . 10011) (45 . 9644)))
-  (org-superstar-special-todo-items t)
-  (org-superstar-todo-bullet-alist '(("TODO" . 9646) ("DONE" . 9647)))
-  :init
-  ;; org-superstar github: loads faster
-  (setq inhibit-compacting-font-caches t)
-  ;; only works w/ "org-superstar-mode: but see like it s/b just "org-superstar"
-  :hook (org-mode . org-superstar-mode))
-
-;; Show hidden emphasis markers e.g.* in *bold*.  So can see where cursor is.
-;; this seemed more annoying than useful
-;; (use-package org-appear
-;;   ;; comment out so only expands emphasis
-;;   ;; :custom
-;;   ;; (org-appear-autoentities t)
-;;   ;; (org-appear-autokeywords t)
-;;   ;; (org-appear-autolinks t)
-;;   ;; (org-appear-autosubmarkers t)
-;;   ;; (org-appear-delay 1)
-;;   :hook (org-mode . org-appear-mode))
-
-(with-eval-after-load 'org
-  ;; ;; From: https://emacs.stackexchange.com/a/41705/14273
-  (defun org-fold-outer ()
-    ;; Fold org-headline that the cursor is inside of
-    (interactive)
-    (beginning-of-line)
-    (if (string-match "^*+" (thing-at-point 'line t))
-        (outline-up-heading 1))
-    (outline-hide-subtree))
-  (define-key org-mode-map (kbd "C-c u") 'org-fold-outer)
-  ;; painful
-  ;;(define-key org-mode-map (kbd "C-c <C-tab>") 'org-fold-outer)
-  )
-
-; ** Org Basic Config
-
-(use-package org-autolist ; new - or -[ ] w/ return
-  :diminish org-autolist-mode
-  :hook (org-mode . org-autolist-mode))
-
-;; Quick org emphasis:  Select text & hit key below. expand-region pkg helps.
-;; Handy using er/expand, mapped to C-=
-(use-package wrap-region
-  :after org
-  :diminish wrap-region-mode
-  :diminish wrap-region-minor-mode
-  :hook (org-mode . wrap-region-mode)
-  :config
-  (wrap-region-add-wrapper "*" "*" nil 'org-mode)  ; bold
-  (wrap-region-add-wrapper "/" "/" nil 'org-mode)  ; italics
-  (wrap-region-add-wrapper "_" "_" nil 'org-mode)  ; underline
-  (wrap-region-add-wrapper "=" "=" nil 'org-mode)  ; literal
-  (wrap-region-add-wrapper "~" "~" nil 'org-mode)  ; code
-  (wrap-region-add-wrapper "+" "+" nil 'org-mode)) ; strikeout
-
-(use-package org-cliplink ; make hyper link from URL in clipboard
-  :after org
-  :config (define-key org-mode-map (kbd "C-c y") 'org-cliplink))
-
-;; ** org Mode Dedicated Targets
-
-;; --- SEEMS OK does org-mode dedicated targets cause cache probs? ----------
-;;
-;; TODO: Fix M-m link saving. It picks sometimes picks up a headline star and then puts it into the stored link (I think).  I'm noticing this in bad links to dedicated links sprinked around energytop.org.  I don't know if these wer made when I initially created the dedicated target; if it was when I typed M-m when on an already existing dedicated target, or if I somehow just pasted this in erroneously myself, which seems unlikely, since I've seen many.  Additionally, examples of this error that I can remember made the mistake on dedicated links that in top level headlines e.g. "* Headine" and not "*** Headline"
-;;
-;; Hides the <<>> around dedicated targets; the face of the remaining visible text is set by customizing the face: org-target
-;; Inspiration: https://emacs.stackexchange.com/questions/19230/how-to-hide-targets
-;; but regexp there worked only for all :alnum: targets.  I tried to
-;; invert org-target-regexp but couldn't get that to work, so here,
-;; I'm just matching printable chars in the middle.
-
-;; TODO: modify internal org-links code here:
-;; http://pragmaticemacs.com/emacs/insert-internal-org-mode-links-the-ivy-way/
-;; to get dedicated links plus the list of headlines which aren't dedicated?
-;; TODO: maybe this approach to dedicated targets is more robust?
-;;       https://emacs.stackexchange.com/questions/19230/how-to-hide-targets
-;;       or maybe the github library that resulted from that discussion?
-;;       https://github.com/talwrii/org-hide-targets
-
-(with-eval-after-load 'org
-
-  ;; From: Nicolas Goaziou: https://mail.google.com/mail/u/0/#inbox/QgrcJHsNmtZZNZFRdHZBqCqcmZVLJkSdzJq
-  ;; He also suggested this bit of code as another alternative:
-  ;;         (org-element-lineage (org-element-context) '(target radio-target) t)
-  (defun org-at-target-p ()
-    "Return true if cursor is on a dedicated target.  
-This is a replacement for org-mode's buggy, and now-deleted, function"
-    (memq (org-element-type (org-element-context)) '(target radio-target)))
-
-  (defcustom org-hidden-links-additional-re "\\(<<\\)[[:print:]]+?\\(>>\\)"
-    "Regular expression that matches strings where the invisible-property of the sub-matches 1 and 2 is set to org-link."
-    :type '(choice (const :tag "Off" nil) regexp)
-    :group 'org-link)
-  (make-variable-buffer-local 'org-hidden-links-additional-re)
-
-  (defun org-activate-hidden-links-additional (limit)
-    "Put invisible-property org-link on strings matching `org-hide-links-additional-re'."
-    (if org-hidden-links-additional-re
-        (re-search-forward org-hidden-links-additional-re limit t)
-      (goto-char limit)
-      nil))
-
-  (defun org-hidden-links-hook-function ()
-    "Add rule for `org-activate-hidden-links-additional' to `org-font-lock-extra-keywords'.
-You can include this function in `org-font-lock-set-keywords-hook'."
-    (add-to-list 'org-font-lock-extra-keywords
-	         '(org-activate-hidden-links-additional
-		   (1 '(face org-target invisible org-link))
-		   (2 '(face org-target invisible org-link)))))
-
-  (add-hook 'org-font-lock-set-keywords-hook #'org-hidden-links-hook-function)
-
-  ;; IMPROVEMENT: Parse headlines w/ links in them; give option for clean target text
-  ;; IMPROVEMENT: Make this work for across files, like jkitchin's better-link thing
-  (defun create-and-link-dedicated-org-target (callPrefix)
-    "Makes or reads a dedicated org-mode link target (<<X>>) and puts an internal link to it ([[X]]) into the kill ring; you can reference the target somewhere else by pasting the link.
-
-Where the target goes:
-  No prefix
-    Region Selected: region is replaced with the new target;
-    Cursor on existing target: target is only read: no buffer changes;
-    Cursor on headline: headline text is replaced with new target;
-    Otherwise: the user is prompted to enter the target text and a
-               new full target is inserted at point.
-  C-u prefix
-    Region Selected: new target is placed to the right of the region;
-    Cursor on existing target: target is only read: no buffer changes;
-    Cursor on headline: headline text becomes the target text, and the full
-                        target is inserted on the line below the headline;
-    Otherwise: the user is prompted to enter the target text and a
-               new full target is inserted at point.
-This function avoids making messed up targets by exiting without doing anything if the target text would contain link or target symbols."
-    (interactive "p")
-
-    (if (eq major-mode 'org-mode)
-        (let* ((separatePaste (eq callPrefix 4))
-	       (targBdy
-	        (cond
-	         (mark-active
-		  (funcall region-extract-function nil))
-	         ((org-at-target-p)
-		  (save-excursion
-		    (let* ((p1 (progn (skip-chars-backward "^<“") (point)))
-			   (p2 (progn (skip-chars-forward  "^>”") (point))))
-		      (buffer-substring p1 p2))))
-	         ((org-at-heading-p)
-		  (or (nth 4 (org-heading-components))
-		      (read-string "Target text: ")))
-	         (t
-		  (read-string "Target text: "))
-	         ))
-	       (targDclr (concat "<<" targBdy ">>")))
-
-	  (if (string-match "\\(\\[\\[\\)\\|\\(]]\\)\\|\\(<<\\)\\|\\(>>\\)" targBdy)
-	      (message
-	       "Found link/target symbols ([[,]],<<,>>): Manually select region?")
-	    (unless (org-at-target-p)
-	      (cond
-	       (mark-active
-	        (if separatePaste
-		    (progn (goto-char (region-end))
-			   (insert (format " %s" targDclr)))
-		  (delete-region (region-beginning) (region-end))
-		  (insert targDclr)
-		  (deactivate-mark)))
-	       ((org-at-heading-p)
-	        (if separatePaste
-		    (progn (end-of-line)
-			   (insert (format "\n%s" targDclr))
-			   (org-indent-line))
-		  (org-edit-headline targDclr)))
-	       (t
-	        (insert targDclr))))
-
-	    (kill-new (concat "[[" targBdy "]]"))
-	    ))
-      (message "Not in org-mode buffer")
-      ))
-  (global-set-key "\em" 'create-and-link-dedicated-org-target)
-  )
-
-;; ** Hide/show/toggle :PROPERTIES: drawer
-
-(with-eval-after-load 'org
-
-  (defun org-hide-properties ()
-    "Hide all org-mode headline property drawers in buffer. Could be slow if it has a lot of overlays.
-TODO: instead of regexp, try to parse org.  Maybe use the two suggestions above for org-at-target-p, or somehow get and walk the buffer's AST.  Parsing seems like it'd be faster.
-TODO: does this work if you've hidden props and then create a new prop door?  Can you still hide and unhide everything, or does this cause a wierd bug?
-TODO: hide a new prop drawer as soon as leave it, if in hide mode?
-TODO: add a cycle that opens or collapses all prop drawers?"
-    (interactive)
-    (save-excursion
-      (goto-char (point-min))
-      (while (re-search-forward
-              "^ *:properties:\n\\( *:.+?:.*\n\\)+ *:end:\n" nil t)
-        (let ((ov_this (make-overlay (match-beginning 0) (match-end 0))))
-          (overlay-put ov_this 'display "")
-          (overlay-put ov_this 'hidden-prop-drawer t))))
-    (put 'org-toggle-properties-hide-state 'state 'hidden))
-
-  (defun org-show-properties ()
-    "Show all org-mode property drawers hidden by org-hide-properties."
-    (interactive)
-    (remove-overlays (point-min) (point-max) 'hidden-prop-drawer t)
-    (put 'org-toggle-properties-hide-state 'state 'shown))
-
-  (defun org-toggle-properties ()
-    "Toggle visibility of property drawers."
-    (interactive)
-    (if (eq (get 'org-toggle-properties-hide-state 'state) 'hidden)
-        (org-show-properties)
-      (org-hide-properties)))
-
-  (define-key org-mode-map (kbd "C-c p h") 'org-hide-properties)
-  (define-key org-mode-map (kbd "C-c p s") 'org-show-properties)
-  (define-key org-mode-map (kbd "C-c p t") 'org-toggle-properties)
-
-  ;; ** Text -> checkbox -> TODO
-  ;; Converts non-heading text lines to checkboxes lists;
-  ;; convert checkbox lists to TODO's with: C-c C-*
-  ;; https://stackoverflow.com/questions/18667385/convert-lines-of-text-into-todos-or-check-boxes-in-org-mode
-  (defun org-set-line-checkbox (arg)
-    (interactive "P")
-    (let ((n (or arg 1)))
-      (when (region-active-p)
-        (setq n (count-lines (region-beginning)
-                             (region-end)))
-        (goto-char (region-beginning)))
-      (dotimes (i n)
-        (beginning-of-line)
-        (insert "- [ ] ")
-        (forward-line))
-      (beginning-of-line)))
-  )
-
-;; ** Org-download
-
-;; NO doesn't seem to cause cache problem but DOES greatly slow down emacs init
-;;
-;; --- SEEMS OK is this messing up org mode cache ------------
-;; ;; TODO get this to work
-;;   ;; could do setq-local for dir or file-specific dirname:
-;;   ;; https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
-;; ;; make drag-and-drop image save in the same name folder as org file
-;; ;; ex: `aa-bb-cc.org' then save image test.png to `aa-bb-cc/test.png'
-;; (defun org-download-method-dirname-from-orgfile (link)
-;;   (let ((filename
-;;          (file-name-nondirectory
-;;           (car (url-path-and-query
-;;                 (url-generic-parse-url link)))))
-;;         (dirname (file-name-sans-extension (buffer-name)) ))
-;;     ;; if directory not exist, create it
-;;     (unless (file-exists-p dirname)
-;;       (make-directory dirname))
-;;     ;; return the path to save the download files
-;;     (expand-file-name filename dirname)))
-
-;; ;; From: https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
-;; (use-package org-download
-;;   :after org
-;;   :custom
-;;   (org-download-method 'org-download-method-dirname-from-orgfile)
-;;   :hook
-;;   (dired-mode . org-download-enable))
-;; --- end is this messing up org mode cache -----------------------------
-
-;; ** Org Export
-
-;; doesn't work w/ latest org, last updated in 2018
-;; (use-package ox-minutes :after org) ; nice(er) ascii export, but slow start
-
-;; Pandoc helper for org export
-(when (sdo/find-exec "pandoc" "Needed for org-mode export to .docx, etc.")
-  ;; from: https://github.com/rubensts/.emacs.d/blob/master/emacs-init.org
-  (use-package ox-pandoc
-    :after org ; so pandoc shows up in org-export-dispatch screen
-    :config
-    (setq org-pandoc-options '((standalone . t))            ; default options for all output formats
-          org-pandoc-options-for-docx '((standalone . nil)) ; cancel above settings only for 'docx' format
-          )))
-
-;; ** Org and Zotero
-
-;; For Zotero add-in "zutilo"  Conflicts or Same-As zotxt?
-;; https://orgmode-exocortex.com/2020/05/13/linking-to-zotero-items-and-collections-from-org-mode/
-(with-eval-after-load 'org
-  (org-link-set-parameters "zotero" :follow
-                           (lambda (zpath)
-                             (browse-url
-                              ;; we get the "zotero:"-less url, so we put it back.
-                              (format "zotero:%s" zpath)))))
-
-;; For Zotero add-in "zotxt"  Conflicts/same-as zutilo?
-;; https://github.com/egh/zotxt-emacs
-;; Pastes biblio summary of Zotero entries in org-mode, connects to org-noter
-(use-package zotxt :after org)
-
-;; ** Org-cite (native in org 9.5+)
-
-;; TODO: SEE this for bdarcus's citar embark config wiki
-;; https://github.com/bdarcus/citar/wiki/Embark
-;; TODO: set up .bib file autorefresh: https://github.com/bdarcus/citar#refreshing-the-library-display
-
-(use-package citar
-  :straight (:host github :repo "bdarcus/citar")
-  :bind (("C-c b" . citar-insert-citation)
-         ;; also  C-c C-x C-@
-         (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
-         :map minibuffer-local-map
-         ("M-b" . citar-insert-preset))
-  :custom
-  ;; https://github.com/bdarcus/citar/issues/407#issuecomment-968158550
-  (org-cite-global-bibliography biblist_new)
-  ;; (org-cite-global-bibliography '("~/ref/energy.bib"
-  ;;                                 "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
-  (citar-bibliography bibfile_list)
-  (citar-library-paths bibpdf_list)
-  ;; citar notes don't work, as of 11/28/21
-  (citar-notes-paths bibnotes_dir)
-  ;; so citar can open JabRef-style file fields
-  (setq citar-file-parser-functions '(citar-file-parser-default
-                                      citar-file-parser-triplet))
-  (org-cite-insert-processor 'citar)
-  (org-cite-follow-processor 'citar)
-  (org-cite-activate-processor 'citar)
-  (citar-at-point-function 'embark-act) ; So more C-o options than file list
-  (citar-file-open-function 'citar-file-open-external)
-  ;; from emacsconf
-  ;;(citar-file-extensions '("pdf" "org" "md"))
-  ;; (citar-file-find-additional-files t) ; finds pdfs... w/ same start as key
-  ;;(citar-open-note-function 'orb-citar-edit-note) ; default, I think
-  (citar-open-note-function 'orb-bibtex-actions-edit-note) ; OR
-  :init
-  ;; if .bib file changes, "invalidate the cache by default".  Is that good?
-  ;; https://github.com/bdarcus/citar#refreshing-the-library-display
-  ;; (citar-filenotify-setup '(LaTeX-mode-hook org-mode-hook))
-  :config
-  ;; this is supposed to pick up styles, like IEEE but doesn't
-  ;; (setq org-cite-csl-styles-dir "~/Zotero/styles") ;; hangs org on
-  ;; startup
-  
-  (defun robo/citar-full-names (names)
-    "Transform names like LastName, FirstName to FirstName LastName."
-    (when (stringp names)
-      (mapconcat
-       (lambda (name)
-         (if (eq 1 (length name))
-             (split-string name " ")
-           (let ((split-name (split-string name ", ")))
-             (cl-concatenate 'string (nth 1 split-name) " " (nth 0 split-name)))))
-       (split-string names " and ") ", ")))
-
-  ;; somehow, this section causes the error: progn: Wrong type argument: characterp, "1"
-  ;; (setq citar-display-transform-functions
-  ;;       '((t . citar-clean-string)
-  ;;         (("author" "editor") . robo/citar-full-names)))
-
-  ;; possibly works but I haven't tested what it does w/ some order
-  ;; escaping drug companies; from (cpr
-
-
-  ;; ;; TODO: try above w/ pretty, which might test 
-  ;; (setq citar-templates
-  ;;       '((main . "${author editor:55}     ${date year issued:4}     ${title:55}")
-  ;;         (suffix . "  ${tags keywords keywords:40}")
-  ;;         (preview . "${author editor} ${title}, ${journal publisher container-title collection-title booktitle} ${volume} (${year issued date}).\n")
-  ;;         (note . "#+title: Notes on ${author editor}, ${title}")))
-
-  )
-
-;; From: https://github.com/mclear-tools/citar-capf
-;; Was written w/ the help of the citar author, Bruce D'Arcus
-;; (use-package citar-capf
-;;   :straight (:type git :host github :repo "mclear-tools/citar-capf")
-;;   ;; NOTE: Set these hooks for whatever modes for which you want citar citation completion
-;;   :hook ((org-mode markdown-mode tex-mode latex-mode reftex-mode) . citar-capf-mode) 
-;;   :config
-;;   ;; if you don't already have this set in citar
-;;   ;; (setq citar-bibliography "path/to/bib")
-;;   (setq citar-templates
-;;       `((main . " ${=key= id:15} ${title:48}")
-;;         (suffix . "${author editor:30}  ${=type=:12}  ${=beref=:12} ${tags keywords:*}")
-;;         (preview . "${author editor} (${year issued date}) ${title}, ${journal journaltitle publisher container-title collection-title}.\n"))))
-
-;; Seems like the below got dropped by the vertico guy?  There was
-;; lots of discussion and then citar-capf was written, apparently in response
-;;
-;; use consult-completing-read for enhanced interface
-;; From: https://github.com/bdarcus/citar
-;; (with-eval-after-load 'embark
-;;   (advice-add #'completing-read-multiple :override
-;;               #'consult-completing-read-multiple))
-
-
-;; ** Ebib
-
-(use-package ebib
-  :custom
-  (ebib-preload-bib-files bibfile_list)
-  (ebib-index-columns
-        (quote
-         (("timestamp" 12 t)
-          ("Entry Key" 20 t)
-          ("Author/Editor" 40 nil)
-          ("Year" 6 t)
-          ("Title" 50 t))))
-  (ebib-index-default-sort (quote ("timestamp" . descend)))
-  (ebib-timestamp-format "%Y.%m.%d")
-  (ebib-use-timestamp t))
-
-;; ** Org-ref
-
-;; Store links in bibtex: C-c l; in .org files C-c ]
-;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
-(use-package org-ref
-  :after org
-  :straight (:branch "org-ref-2" :host github :repo "jkitchin/org-ref")
-  :init
-  (let ((default-directory docDir))
-
-    (setq org-ref-bibliography-notes org_ref_notes_fnm
-          org-ref-default-bibliography bibfile_list 
-          org-ref-pdf-directory bibpdf_list
-          reftex-default-bibliography org-ref-default-bibliography))
-  ;;  https://github.com/jkitchin/org-ref/issues/468
-  ;;(setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
-  :config
-  (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
-  ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
-  (setq bibtex-autokey-year-length 4
-        bibtex-autokey-name-year-separator "-"
-        bibtex-autokey-year-title-separator "-"
-        bibtex-autokey-titleword-separator "-"
-        bibtex-autokey-titlewords 2
-        bibtex-autokey-titlewords-stretch 1
-        bibtex-autokey-titleword-length 5)
-  ;; Make org-ref cite: link folded in emacs.
-  ;; https://org-roam.discourse.group/t/customize-display-of-cite-links/129/19
-  (org-link-set-parameters "cite" :display 'org-link)
-  ;; Make the 'cite:' link type available when C-c l on a bibtex entry
-  ;; https://github.com/jkitchin/org-ref/issues/345
-  (let ((lnk (assoc "bibtex" org-link-parameters)))
-    (setq org-link-parameters (delq lnk org-link-parameters))
-    (push lnk org-link-parameters))
-  )
-
-;; ** v2 Org-Roam
-
-;; ;; TODO: :custom (org-id-method 'ts) doesn't work
-;; ;;       https://org-roam.discourse.group/t/org-roam-major-redesign/1198/28
-;; ;; TIPS
-;; ;; add org-id to headline: org-id-copy
-
-;; ;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
-;; ;; several startup org-roams, also initializing org-roam-bibtex 
-(use-package org-roam
-  ;;  :straight t
-  ;; calling one of these commands will initialize Org-roam and ORB
-  :commands (org-roam-node-find org-roam-graph org-roam-capture
-                                org-roam-dailies-capture-today org-roam-buffer-toggle)
-  :custom
-  (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
-  (org-id-method 'ts)
-  ;; from emacsconf
-  (org-roam-node-display-template "${title:80} ${tags:80}")
-
-  ;; comment out unless specifically want to use ivy
-  ;;  (org-roam-completion-system 'ivy)
-
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert)
-         ("C-c n g" . org-roam-graph)
-         ("C-c n h" . org-roam-capture)
-         ([mouse-1] . org-roam-visit-thing)
-         ;; may not exist aymore
-         ("C-c n j" . org-roam-dailies-capture-today)
-         :map org-mode-map
-         ("C-M-i" . completion-at-point))
- 
-  :init
-  (setq org-roam-v2-ack t)
-  ;; set this here instead of in :custom so it can be used during init
-  ;;  (setq org-roam-directory (file-truename "~/tmp/bibNotesOR"))
-  ;; truename used for performance: https://org-roam.discourse.group/t/org-roam-buffer-does-not-update-on-click-link-buffer-switch/2364/8?u=scotto
-  (setq org-roam-directory (file-truename org_roam_dir))
-  ;; from: https://www.orgroam.com/manual.html=
-  (setq org-roam-dailies-directory (expand-file-name "daily"
-                                                     org-roam-directory))
-  (setq org-roam-dailies-capture-templates
-        '(("d" "default" entry
-           "* %?"
-           :target (file+head "%<%Y-%m-%d>.org"
-                              "#+title: %<%Y-%m-%d>\n"))))
-  :config
-  (org-roam-db-autosync-mode)
-  ;; If using org-roam-protocol
-  (require 'org-roam-protocol))
-
-
-;; I don't know where/how to use this
-;; From: https://jethrokuan.github.io/org-roam-guide/
-;; (defun jethro/org-roam-node-from-cite (keys-entries)
-;;     (interactive (list (citar-select-ref :multiple nil :rebuild-cache t)))
-;;     (let ((title (citar--format-entry-no-widths (cdr keys-entries)
-;;                                                 "${author editor} :: ${title}")))
-;;       (org-roam-capture- :templates
-;;                          '(("r" "reference" plain "%?" :if-new
-;;                             (file+head "reference/${citekey}.org"
-;;                                        ":PROPERTIES:
-;; :ROAM_REFS: [cite:@${citekey}]
-;; :END:
-;; #+title: ${title}\n")
-;;                             :immediate-finish t
-;;                             :unnarrowed t))
-;;                          :info (list :citekey (car keys-entries))
-;;                          :node (org-roam-node-create :title title)
-;;                          :props '(:finalize find-file))))
-
-;; ** org-roam-ui (graph viewing)
-
-;; config from: https://github.com/org-roam/org-roam-ui
-(use-package org-roam-ui
-  :straight (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
-  :after org-roam
-  :config
-  (setq org-roam-ui-sync-theme t
-        org-roam-ui-follow t
-        org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start t))
-
-;; ** org-roam-bibtex
-
-(use-package org-roam-bibtex
-  :config
-  (setq org-roam-capture-templates
-        '(("d" "default" plain "%?"
-           :if-new (file+head "${slug}.org"
-                              "#+title: ${title}\n#+SETUPFILE: ~/ref/tmp_papers_notes/setup_file.org\n* References :ignore:\n#+print_bibliography:")
-           :unnarrowed t)
-          ;; capture to inbox
-          ("i" "inbox" entry "* TODO %?\n"
-           :target (node "45acaadd-02fb-4b93-a741-45d37ff9fd5e")
-           :unnarrowed t
-           :empty-lines-before 1
-           :empty-lines-after 1
-           :prepend t)
-          ;; bibliography note template
-
-          ("r" "bibliography reference" plain "%?"
-~/ref/tmp_papers_notes
-;;           :if-new (file+head "references/notes_${citekey}.org"
-           :if-new (file+head "~/ref/tmp_papers_notes/refs/notes_${citekey}.org"
-                              "#+title: Notes on ${title}\n#+SETUPFILE: ~/ref/tmp_papers_notes/refs/ref/setup_file_ref.org\n* References :ignore:\n#+print_bibliography:")
-           :unnarrowed t)
-          ;; for my annotated bibliography needs
-          ("s" "short bibliography reference (no id)" entry "* ${title} [cite:@%^{citekey}]\n%?"
-           :target (node "01af7246-1b2e-42a5-b8e7-68be9157241d")
-           :unnarrowed t
-           :empty-lines-before 1
-           :prepend t)))
-  (defun robo/capture-to-inbox ()
-    "Capture a TODO straight to the inbox."
-    (interactive)
-    (org-roam-capture- :goto nil
-                       :keys "i"
-                       :node (org-roam-node-from-id "45acaadd-02fb-4b93-a741-45d37ff9fd5e")))
-  (require 'org-roam-bibtex)
-
-  ;; TODO: figure out note files dirs in tis
-  ;; (expand-file-name "notes_${citekey}.org" bibnotes_dir)
-
-  (setq citar-open-note-function 'orb-citar-edit-note
-        citar-notes-paths '("~/ref/tmp_papers_notes/refs")
-        orb-preformat-keywords '("citekey" "title" "url" "author-or-editor" "keywords" "file")
-        orb-process-file-keyword t
-        orb-file-field-extensions '("pdf")))
-
-;; *** Org-roam API
-;;
-;; From:
-;; https://org-roam.discourse.group/t/creating-an-org-roam-note-from-an-existing-headline/978
-;; Latest version:
-;;https://github.com/telotortium/doom.d/blob/f0295cc510d31c813e2a61ab2fc4aad3ae531e49/org-config.el#L1250-L1271
-
-;; ;; This works!
-;; (defun org-roam-create-note-from-headline ()
-;;   "Create an Org-roam note from the current headline and jump to it.
-
-;; Normally, insert the headline’s title using the ’#title:’ file-level property
-;; and delete the Org-mode headline. However, if the current headline has a
-;; Org-mode properties drawer already, keep the headline and don’t insert
-;; ‘#+title:'. Org-roam can extract the title from both kinds of notes, but using
-;; ‘#+title:’ is a bit cleaner for a short note, which Org-roam encourages."
-;;   (interactive)
-;;   (let ((title (nth 4 (org-heading-components)))
-;;         (has-properties (org-get-property-block)))
-;;     (org-cut-subtree)
-;;     (org-roam-find-file title nil nil 'no-confirm)
-;;     (org-paste-subtree)
-;;     (unless has-properties
-;;       (kill-line)
-;;       (while (outline-next-heading)
-;;         (org-promote)))
-;;     (goto-char (point-min))
-;;     (when has-properties
-;;       (kill-line)
-;;       (kill-line))))
-
-;; ** Org-noter
-;;
-;; keybindings, basic explanation: https://github.com/weirdnox/org-noter#keys
-;; simple, just so it compiles.  started from: https://rgoswami.me/posts/org-note-workflow
-(use-package org-noter
-  :after (:all org pdf-view)
-  :config
-  (setq
-   ;; the wm can handle splits
-   org-noter-notes-window-location 'other-frame
-   ;; please stop opening frames
-   org-noter-always-create-frame nil
-   ;; i want to see the whole file
-   org-noter-hide-other nil
-   ;; everything is relative to the main notes file
-   org-noter-notes-search-path (list org_notes_dir)))
-
-;; ** pdf-tools
-;;
-;; Open and annotate pdfs.  
-;; See demo: http://tuhdo.github.io/static/emacs-read-pdf.gif
-;; Also used by org-roam (I think) and some latex stuff (I think)
-;;
-;; Installation:
-;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
-;; pdf-tools requires libraries (msys2 on Windows) so it can build itself.
-;;
-;; FIRST INSTALL on fresh machine: On Windows, msys2 will download the libraries itself if you answer it's "where is mysys2?" question with: c:/tools/msys64
-;; You can check the install with M-x pdf-info-check-epdinfo
-;;
-;; pdf-tools use-package call inspired by:
-;; http://pragmaticemacs.com/emacs/more-pdf-tools-tweaks/
-;;
-(if (or running-MacOS running-gnu-linux pacbin-windows)
-    (progn
-      (message "Initializing pdf-tools")
-      (use-package pdf-tools
-        :defer t
-        :config
-        ;; initialise (on Windows will download and build msys2 libs too)
-        (pdf-tools-install)
-        ;; open pdfs scaled to fit page
-        (setq-default pdf-view-display-size 'fit-page)
-        ;; (setq pdf-annot-activate-created-annotations t) ; for annotation text
-        (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
-        (setq pdf-view-resize-factor 1.1)   ; default is 25%
-        ;; Shorter shortcuts than e.g. C-c C-a h. These Work on =mouse= sel.
-        (define-key pdf-view-mode-map (kbd "h")
-          'pdf-annot-add-highlight-markup-annotation)
-        (define-key pdf-view-mode-map (kbd "t")
-          'pdf-annot-add-text-annotation)
-        (define-key pdf-view-mode-map (kbd "u")
-          'pdf-annot-add-underline-markup-annotation)
-        (define-key pdf-view-mode-map (kbd "D")
-          'pdf-annot-delete)
-        ;; Navigation: can also use M-< and M-> like normal
-        (define-key pdf-view-mode-map (kbd "C-<home>") 'pdf-view-first-page)
-        (define-key pdf-view-mode-map (kbd "C-<end>") 'pdf-view-last-page)
-
-        ;; Custom annotation colors: https://github.com/politza/pdf-tools/issues/581#issuecomment-646370370
-        ;; Emacs color pickers: https://emacs.stackexchange.com/questions/5582/are-there-color-pickers-for-emacs
-        ;; Strike out
-        (defun pdftools-strikeout-gray (oldfun loe)
-          (apply oldfun loe '("gray")))
-        (advice-add 'pdf-annot-add-strikeout-markup-annotation :around 
-                    #'pdftools-strikeout-gray)
-        ;; Underline
-        (defun pdftools-underline-purple (oldfun loe)
-          (apply oldfun loe '("#8a1e8a")))
-        (advice-add 'pdf-annot-add-underline-markup-annotation :around 
-                    #'pdftools-underline-purple)
-        ;; Squiggly underline
-        (defun pdftools-squiggly-red (oldfun loe)
-          (apply oldfun loe '("#fe2500")))
-        (advice-add 'pdf-annot-add-squiggly-markup-annotation :around 
-                    #'pdftools-squiggly-red)
-        
-        ;; Default color for text highlight. 
-        ;; This will change the color of the Note.
-        (setq pdf-annot-default-markup-annotation-properties
-              '((color . "green")))
-
-        ;; Default color for text.
-        ;; This will change the color of the Note.
-        (setq pdf-annot-default-text-annotation-properties
-              '((color . "#90ee90")))
-        )))
 
 ;; * Writing Tools
 ;; ** General Editing
@@ -3911,6 +4021,12 @@ When done, can undo the window config with winner-mode: C-c Left"
   (split-window-horizontally)
   (other-window 1)
   (find-file bibfile_energy_fnm))
+
+;; ** pdfgrep
+;; can't install Windows binary, although could on MacOS
+;; (use-package pdfgrep
+;;   :straight (:host github :repo "jeremy-compostella/pdfgrep")
+;;   )
 
 ;; * Shrink garbage collection @ end of init
 
