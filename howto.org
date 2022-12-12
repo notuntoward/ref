@@ -13606,11 +13606,16 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
       | PrntScrn / Win+S | Shift-Command-3,4,5                     | Takes pictures of the screen. Shift-Command-3 takes a picture of the entire screen. Shift-Command-4 takes a picture of the part of the screen you select. |
       Also [[Screen snipping (screenshots) on MacOS]]
       
-      *Physical location of MacOS keys on exteranal Windows keyboard (default)*
-      | OS                 |          |           |            |
-      |--------------------+----------+-----------+------------|
-      | Macintosh keyboard | ctrl (^) | opt (-\_) | cmd (⌘)    |
-      | Windows   keyboard | ctrl (^) | cmd (⌘)   | opt (-\_ ) |
+      *Physical location of MacOS keys on external Windows keyboards (default)*
+      | OS                     |          |            |            |
+      |------------------------+----------+------------+------------|
+      | Macintosh keyboard     | ctrl (^) | opt (-\_)  | cmd (⌘)    |
+      | Windows Logic keyboard | ctrl (^) | cmd (⌘)    | opt (-\_ ) |
+      | Windows Mini keyboard  | ctrl (^) | opt (-\_ ) | cmd (⌘)    |
+
+      Need to swap these with Karabiner.  Swapping Mac keyboard
+      ctrl/caps also does it for the Logic and mini windows keyboards.
+      On the mini, must separately swap opt and cmd.
 
 ******* _Karabiner Elements PC-style mapping bug_
 ********* ctrl-x gets mapped to Mx ([[https://github.com/pqrs-org/Karabiner-Elements/issues/2789][my bug report]] on this and other bugs)  
