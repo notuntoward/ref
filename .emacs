@@ -187,7 +187,7 @@ With PRUNE, prune the build cache and the build directory."
 
 (setq computerNm (downcase system-name)) ; downcase: was getting random case
 (pcase (eval 'computerNm)
-  ("macbook-pro-7.local"     ; Geli MacBook Pro
+  ("macbook-pro-8.local"     ; Geli MacBook Pro
    (progn (setq shareDir "/Users/scott/OneDrive/share")))
   ("desktop-vpfvctb" ; Surface laptop studio
    (setq shareDir "C:/Users/scott/OneDrive/share"))
@@ -972,7 +972,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; Store links in bibtex: C-c l; in .org files C-c ]
 ;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
 (use-package org-ref
-  :after org
+  :after org helm-bibtex
   :straight (:branch "org-ref-2" :host github :repo "jkitchin/org-ref")
   :init
   (let ((default-directory docDir))
@@ -1013,7 +1013,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; ;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
 ;; ;; several startup org-roams, also initializing org-roam-bibtex 
 (use-package org-roam
-  ;;  :straight t
+  :after helm-bibtex
   ;; calling one of these commands will initialize Org-roam and ORB
   :commands (org-roam-node-find org-roam-graph org-roam-capture
                                 org-roam-dailies-capture-today org-roam-buffer-toggle)
