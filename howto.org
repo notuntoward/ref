@@ -1,4 +1,6 @@
 * <<Emacs>>
+*** Auto .emacs maker:  file out the checkboxes and it makes one for you
+    [[https://emacs.amodernist.com/][Emacs Configuration Generator]]
 *** *Emacs to try*
     My experiments, Emacs packages I've tried and installed (from Melpa repository). Also, some builtins I could try
 
@@ -25,8 +27,17 @@
           [[https://github.com/mnp/dispwatch][dispwatch: Emacs - Watch the current display for changes (ie plu...]]
 
 ********* scaling fonts across all frames
-          [[https://github.com/purcell/default-text-scale][default-text-scale: Easily adjust the font size in all Emacs...]]
+*********** [[https://github.com/purcell/default-text-scale][default-text-scale: Easily adjust the font size in all Emacs...]]
+*********** zoom-frm
 
+            Change all buffers' text scales & frame sizes, keeping const #chars width.  This is fixed for Windows in 2023.  Works as it should.  I borrowed a use-package setup from [[https://github.com/danielmai/.emacs.d/blob/master/config.org#zoom-frm][here]], but haven't yet figured out what keys to bind it to.
+            
+************* 2023 emacs guy liked it: [[https://youtu.be/UtSu3ydxKJ4?t=354][Some new Emacs packages I tried]] 
+************* [[https://github.com/emacsmirror/zoom-frm][GitHub - emacsmirror/zoom-frm: Commands to zoom frame font size]]
+************* But do [[https://github.com/emacsmirror/frame-cmds/blob/master/frame-cmds.el][frm-cmds.el]] and [[https://github.com/emacs-mirror/emacs/blob/master/lisp/help-fns.el][frm-fns.el work now?]]
+
+              If I remember correctly, these only worked on Xwindows before, so not on Windows.  But I see that they've been updated in Dec 2022 and in 2023; do they work on Windows now?
+              
 ********* scaling fonts for one frame
           [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Text-Scale.html]]
 
@@ -1310,6 +1321,9 @@
 ********* also [[org-mode to/from OneNote]]
 ******* Controlling header numbering in exports
 
+        Bullets instead of numbers, no author or TOC
+        - #+OPTIONS: num:0 H:0 author:nil toc:nil
+
         Off entirely for all documents
         (setq org-export-with-section-numbers nil)
 
@@ -1448,6 +1462,8 @@
 ******* prettier cite rendering: links w/ paper title, etc.
 ********* [[https://github.com/andras-simonyi/org-cite-csl-activate][GitHub - andras-simonyi/org-cite-csl-activate: A CSL-based activation process...]]
 ********* bdarcus's answer to my question about it is [[https://org-roam.discourse.group/t/all-about-the-upcoming-org-cite-feature/1600/27?u=scotto][here]]
+********* dotemacs that has it: [[https://github.com/anghyflawn/dot-emacs/blob/master/emacs.org][dot-emacs/emacs.org at master · anghyflawn/dot-emacs · GitHub]]
+********* [[https://tecosaur.github.io/emacs-config/config.html][org-cite-csl-activate function]] preventing buffer modes
 ******* converting org-ref links to org-cite
 ********* <<code for converting org-ref links to new native org cite links>>
 
@@ -2073,7 +2089,7 @@ Python library to download from a [[https://beepb00p.xyz/orger.html][large numbe
 ***** also [[obsidian and emacs]]
 ***** also [[org-brain]]
 ***** also [[org-roam]]
-*** <<org-roam>> 
+*** <<org-roam>>
     org-mode based Zettelkasten, inspired by [[Roam Research]]
 
 ***** org-roam V2 
@@ -2472,6 +2488,8 @@ But if you used the "node per headline" idea and brainstormed in one file, findi
 ******* [[org-ref]] (assumed by a lot of org-roam)
 ******* <<org-roam-bibtex>>
         Mostly From: org-roam-bibtex [[https://www.youtube.com/watch?v=Wy9WvF5gWYg][video]]
+********* Simple explanation: [[https://org-roam.discourse.group/t/request-bibtex-org-roam-bibtex-for-morons/2910][Request: bibtex / org-roam-bibtex for morons]]
+********* Simple explanation: [[https://org-roam.discourse.group/t/zk-roam-refs-vs-reference-literature-notes/2914][ZK / ROAM_REFS vs reference/literature notes]]
 ********* reference collection seems to come from [[helm-bibtex]]
 ********* can create org-cite pages directly from bibtex entry
 *********** templates for new cite pages e.g. "ref" or "ref + [[org-noter]]"
@@ -2645,6 +2663,7 @@ Also, [[https://org-roam.discourse.group/t/refactoring-items-out-of-a-node/1857/
 
              "Opening Delve the first time, you can browse your zettelkasten by ROAM_TAG, or use one of the predefined searches. Further functionality will be added."
               
+*********** [[PDF processing in Python]]: for reading papers
 *********** [[https://org-roam.discourse.group/t/application-of-graph-theory-to-roam-link-network/61/8][Application of Graph Theory to Roam link network - Graphing]]
 *********** [[https://org-roam.discourse.group/t/analysing-the-semantic-network/56][Analysing the semantic network - Graphing Capabilities - Org-roam]]
 *********** [[https://org-roam.discourse.group/t/rfc-interactive-visualization-and-explorer-tool/87/6][{RFC} Interactive Visualization and Explorer Tool]]
@@ -2655,6 +2674,9 @@ Also, [[https://org-roam.discourse.group/t/refactoring-items-out-of-a-node/1857/
 ************* <<Emacs Application Framework: lib to connect python, etc. to Emacs>>
 *************** [[https://github.com/emacs-eaf/emacs-application-framework][GitHub - emacs-eaf/emacs-application-framework]]
 *************** Emacs Conf. Talk [[https://emacsconf.org/2021/talks/eaf/][Emacs Application Framework: A 2021 Update]]
+*********** [[https://org-roam.discourse.group/t/a-demo-of-ai-for-linking-writing-and-thinking-with-org-roam-should-we-build-org-roam-ai/2891][Demo of AI for linking, writing, and thinking with org-roam.]]
+*********** also [[https://www.youtube.com/watch?v=4oUrm4CnIjo][ChatGPT in Emacs]]: writes elisp!
+************* repo and install inst: [[https://github.com/joshcho/ChatGPT.el][ChatGPT.el: ChatGPT in Emacs]]
 *********** also [[Knowledge Graphs in Emacs]]
 ********* [[Visualizing Bibliographies]]
 ******* [[How to take Notes]]
@@ -2860,6 +2882,7 @@ Also, [[https://org-roam.discourse.group/t/refactoring-items-out-of-a-node/1857/
       [[Roam Research]] clone based on emacs [[Org Mode]]
 ******* also [[org-roam]]
 ******* also [[org-brain]] 
+***** also [[vscode org-roam-like and diagramming packges]]
 ***** also [[org-transclusion]]
 ***** org-z
       From: [[https://github.com/landakram/org-z][landakram/org-z: Lightweight, Org-mode flavored zettelkasten links.]]
@@ -3041,6 +3064,12 @@ So, [[https://www.reddit.com/r/emacs/comments/clxa9p/orgpdftools_a_custom_org_li
 
       Emacs builtin, =query-replace=, originally bound to =M-%,= has many prefixes, which still work.
 
+***** <<Substitute package>>
+
+      Does whole buffer w/o you needing to jump to front or select a region.  I think it also [[Replace within region or defun]], etc.
+
+      Emacs guy likes it in 2023: [[https://youtu.be/UtSu3ydxKJ4?t=602][Some new Emacs packages I tried]]
+
 ***** <<Replace within region or defun>>
 
       Handy for changing a string everywhere in a buffer at once, for example, changing a varible (which could be matched by string searc or by =M-s .=)
@@ -3050,7 +3079,7 @@ So, [[https://www.reddit.com/r/emacs/comments/clxa9p/orgpdftools_a_custom_org_li
 ******* <<iedit>> interactive replace of string/symbol in region/defun & more
         (also see [[Rectangle editing]] and [[smartscan]])
 
-        _Simultaneiously replace through whole buffer_
+        _Simultaneously replace through whole buffer_
         (once you are in iedit mode...)
 
         1. put cursor on symbol you want to edit (or mark some text)
@@ -3087,6 +3116,8 @@ So, [[https://www.reddit.com/r/emacs/comments/clxa9p/orgpdftools_a_custom_org_li
         =M-s .=
 
         Replace default behavior is to "search and replace within the selected region" so it's not as easy to initiate a search string with a region.  Would require some hacking.
+
+******* [[Substitute package]]
 
 ***** Replace history
 
@@ -3997,6 +4028,11 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
              USED TO WORK: 4. "C:\Program Files (x86)\GNU Emacs 24.4\bin\runemacs.exe"
           7. change the starting directory to %HOME% so it starts in the right place
 ***** [[screen rotation shortcut undo]]
+***** Symlinks in Windows Emacs Dired
+      From: [[https://youtu.be/WyixBzLcf1A?t=997][Properly installing Emacs on Windows - YouTube]]
+
+      So Windows symlinks can be made in dired, like for Linux. I should do this!
+      
 ***** <<Fix connection actively refused error>>
 
       Problem: try to open file with emacs, or start from task bar, etc,
@@ -4400,6 +4436,12 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
         http://cestlaz.github.io/stories/emacs/
         http://cestlaz.github.io/posts/using-emacs-12-python
         http://cestlaz.github.io/posts/using-emacs-13-yasnippet
+***** [[https://www.reddit.com/r/emacs/comments/yxragm/comment/ix45hiv/?utm_source=share&utm_medium=web2x&context=3][setup of emacs python debuggers]]: realgud, pdbpp, pdb
+***** eglot
+
+      An emacs package that runs LSP things.  Works perfectly on MacOS but not on Windows.
+      
+******* My Windows "bug" report: [[https://github.com/joaotavora/eglot/discussions/1182][Error in post-command-hook]]
 ***** jedi
 
       From [[http://wikemacs.org/wiki/Python][here]]: "It helps at autocompletion, finding definitions, showing documentation, etc. Elpy makes good use of it."
@@ -4587,7 +4629,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 
 ********* <<using miniconda instead of anaconda>>
 
-          [[https://conda.io/projects/conda/en/latest/user-guide/install/windows.html][Installing miniconda on windows]]:  install windows installer from this website, and while installing, tick the box allowing vscode and other parts of windows to use its compiler as a default.  This gives you the anaconda terminals, etc. which is handy.
+          [[https://conda.io/projects/conda/en/latest/user-guide/install/windows.html][Installing miniconda on windows]]:  install windows installer from this website, and while installing, tick the box allowing [[vscode]] and other parts of windows to use its compiler as a default.  This gives you the anaconda terminals, etc. which is handy.
 
           Add [[Anaconda Paths]] (pointing to mininconda instead of anaconda)
 
@@ -4688,8 +4730,31 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
       For a public browser link. Share the note and copy the share url.
 
 ***** also [[Evernote]]
-*** Emacs speed up
-***** TODO profilers
+*** <<Debugging Emacs>>
+***** open-dribble-file: a keystroke logger, so you can see what happened before a problem
+***** view-lossage: Can see the last =lossage-size= keystrokes
+***** which-key-dump-bindings: dumps which-key output to a buffer
+***** describe-char: like describe-face but more low level, tells you what drew that character?
+***** figuring out why emacs hangs
+      From: [[https://youtu.be/RlfFHTPq62A?t=581][I keep getting stuck in Emacs. Shoot my troubles.]]
+
+      Break a frozen emacs, send it to debugger:
+      
+        pkill -SIGUSR2 Emacs
+
+      Why this is described here:  [[info:elisp#Error Debugging][elisp#Error Debugging]].  By default, =debug-on-event= is set to to this when it receives a sigusr2.
+
+      *Question* how do this on Windows?
+      *Question* does this work on MacOS?
+
+***** [[emacs profilers]]
+***** also [[Emacs speed up]]
+*** <<Emacs speed up>>
+***** TODO <<emacs profilers>>
+
+      [[help:profiler-start]]
+      [[help:profiler-start]]
+      
 ******* [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Profiling.html][GNU Emacs Lisp Reference Manual: Profiling]]
 
         M-x profiler-start
@@ -4700,6 +4765,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
         (when you have looked around enough)
 ******* [[https://punchagan.muse-amuse.in/posts/how-i-learnt-to-use-emacs-profiler.html][How I learnt to use Emacs' profiler]]
 ******* TODO [[https://lists.nongnu.org/archive/html/emacs-orgmode/2016-07/msg00222.html][Try]] `elp-instrument-package' on "org-" prefix
+
 ***** startup
 ******* guy says use =use-package=: [[https://anuragpeshne.github.io/essays/emacsSpeed.html][Speeding Up Emacs]]
 ******* profiling .emacs
@@ -4734,6 +4800,8 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ********* (adaptive-wrap-prefix-mode +1) in visual-line-mode-hook
 ********* commenting out: (global-visual-line-mode +1)
 ********* TODO try adaptive-wrap
+
+***** also [[Debugging Emacs]]
 
 *** <<Changing Windows Emacs Icon>>
 
@@ -4781,10 +4849,12 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ******* [[https://github.com/m-parashar/emax64/releases][emax64: has pdf-tools built-in]]
 ***** also [[Linux on Windows]]
 * Surface Laptop Studio
-*** vscode on WSL
+*** <<vscode on WSL>>
     On my SLS, follow the steps in:
     
     [[https://code.visualstudio.com/docs/remote/wsl-tutorial][Work in Windows Subsystem for Linux with Visual Studio Code]]
+
+    Also [[vscode]]
     
 *** tensorflow on WSL
     on my SLS
@@ -4805,36 +4875,13 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 
     Again, as of 10/21/21, and as with TF on WSL, it only works for python 3.5, 3.6, 3.7
 
-*** tensorflow in MacOS
+*** <<tensorflow in MacOS>>
 ***** TF main page lists CPU-only support: [[https://www.tensorflow.org/install/pip#windows][Install TensorFlow with pip]]
 ***** but MacOS covers python 3.7, 3.8 and 3.9
 ***** TF 2.4 on 2019 Intel MacBook: [[https://blog.tensorflow.org/2020/11/accelerating-tensorflow-performance-on-mac.html][Accelerating TensorFlow Performance on Mac — The TensorFlow Blog]]    
-* Surface Book 2
-*** Slow WiFi
-    From: [[https://windowsreport.com/surface-book-2-slow-wifi/][Surface Book 2 slow Wi-Fi issues {BEST SOLUTIONS}]]
-
-    This worked in Aug 2020 but since then, just rebooting has w/o the commands below also worked:
-
-    In admin cmd promp:
-
-      netsh int ip reset
-      netsh int tcp set heuristics disabled
-      netsh int tcp set global autotuninglevel=disabled
-      netsh int tcp set global rss=enabled
-
-    Then restart
-
-*** Internet and maybe Power fix
-    Reinstalling all hardware drivers from [[https://support.microsoft.com/en-us/help/4023482/surface-download-drivers-and-firmware][here]] was recommended for fixing the randomly failing ethernet and WiFi problem.  I think I remember that it was also the fix for the problem with the Surface Dock disconnecting and reconnecting.
-
-    The driver I installed on 9/22/20 was: SurfaceBook2_Win10_ 18362_*_*.msi
-
-    This was on Win10 build 19041; according to the [[https://support.microsoft.com/en-us/help/4023482/surface-download-drivers-and-firmware][instructions]], I should have installed SurfaceBook2_Win10_ 19041_*_*.msi.  But the tech support said 18362, and never answered my question about the discrepancy.
-
-    _I don't know yet if this actually worked_
-
-    *Randomly failing ethernet and WiFi problem*: where the connection randomly switched from ethernet (via Surface dock) to WiFi but then showed that there was no internet connection on the taskbar icon; in fact, the internet connection was actually working (I could browse the web on FireFox) but parts of the OS thought it wasn't, e.g. logging into teams or outlook.  The fix was recommended by MS support (SRX1509219786ID - TS).  Follow the many messages on this [[https://mail.google.com/mail/u/0/#sent/FMfcgxwJXxrwFRzCNVmKbJPKJXqnPfdH][looonnngg email chain]].
-
+***** also [[MacBooK Pro]]
+*** Windows store apps close after closing lid and going to sleep
+***** either step 1 or step 2 fixed it: [[https://answers.microsoft.com/en-us/windows/forum/all/apps-close-in-sleep-mode/68ee45f6-938b-4b54-90d8-35a488e9eb93][Apps close in sleep mode?]]
 * <<MacBooK Pro>>
 *** External [[Monitors]] on MacBook Pro
 ***** two external monitors
@@ -4845,6 +4892,8 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ******* says Anker USB-C to HDMI works on his MacBook Pro 16 (I think)
 *** [[MacOS]]
 
+*** [[tensorflow in MacOS]]
+*** [[MacBook M1 Display Scaling on LG DualUp 28"]]
 * Computer Devices
 *** Webcam
 ***** Logitech C920e Pro HD
@@ -4859,8 +4908,15 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 *** <<Monitors>>
 ***** Monitors by size, resolution, ...: [[https://pcpartpicker.com/products/monitor/#r=256001440&F=381000000,660400000&C=0][Choose A Monitor - PCPartPicker]]
 ***** [[https://www.urtech.ca/2019/04/solved-complete-list-of-screen-resolution-names-sizes-and-aspect-ratios/][Complete List of Screen Resolution Names, Sizes and Aspect Ratios]]
-***** Dell P2415Q / P2715Q monitor
-*******  Enabling HDMI 2.0 on P2415Q / P2715Q
+***** <<Dell P2415Q / P2715Q monitor>>
+******* Specs
+        From: [[https://www.displayspecifications.com/en/model/a01d746][27" Dell P2715Q - Specifications]]
+
+        pix: 3840 x 2160 (tot: 8294400)
+        dpi: 163
+        physical dimensions: 25.2 x 15.0 x 2.0" (without stand)
+                             25.2 x 16.7 x 8.0" (with stand)
+******* Enabling HDMI 2.0 on P2415Q / P2715Q
         2.0 isn't enabled by default, and you need that for [[MacBook to single P2415Q]]
 
         *Instructions*
@@ -4873,6 +4929,38 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ********* A dialog box appears statingHDMI 1.4 Enable/Disable (HDMI 1.4 Enable/Disable)
 ********* selectDisable HDMI 1.4 supportOption, and then press the button next to the green check mark to confirm your choice.
 ********* Reconnect the video cable to the monitor
+***** LG DualUp 28"
+******* Specs
+        From: [[https://www.theverge.com/23273991/lg-dualup-tall-pc-windows-mac-monitor-review][LG DualUp review: a tall, pricey monitor geared toward efficiency]]
+
+        pix:  2,560 wide x 2,880 tall (tot: 7372800)
+
+        dpi ~ 140
+        [[https://www.tomsguide.com/reviews/lg-dualup-monitor][physical dimensions]]: 18.9 x 21.6 x 1.76 (without stand),
+                             18.9 x 33.19 x 18.16 inches (with stand)
+
+        _Compared to [[Dell P2415Q / P2715Q monitor]]_:
+
+          Somewhat more usable pixels (heigher) but a bit less sharp?
+            - squarer, taller aspect ratio
+            - any rotation, LG has more vertical pix, is taller than normal Dell
+            - less DPI
+            - fewer pixels
+        
+******* Display Scaling
+********* <<MacBook M1 Display Scaling on LG DualUp 28">>
+
+          brew install --cask betterdisplay
+
+*********** reviewers say default scaling to match M1 display is bad
+*********** [[https://github.com/waydabber/BetterDisplay][BetterDisplay]] app is [[https://www.youtube.com/watch?v=UtAA2MphRGA][said]] to fix that
+*********** also [[MacBooK Pro]]
+            
+******* LG OnScreen Control Software
+********* download: [[https://www.lg.com/us/support/software-firmware-drivers?customerModelCode=34UM58-P&csSalesCode=34UM58-P.ATT&category=CT10000030&subcategory=CT30000200][Software, Firmware & Driver Downloads | LG USA Support]]
+********* also lets up [[https://www.tomsguide.com/reviews/lg-dualup-monitor][update the monitor's internal software]]
+********* [[https://www.tomsguide.com/reviews/lg-dualup-monitor][Tom's article]]: has contrast control ([[https://cdn.mos.cms.futurecdn.net/RUDis8N24VkVph2iENcHFL-1200-80.jpg.webp][screenshot]]), not on control stick
+******* [[https://www.tomsguide.com/reviews/lg-dualup-monitor][Tom's article]]: Power Toys is another way that LG software
 *** [[https://pcpartpicker.com/][Pick parts. Build your PC. Compare and share. - PCPartPicker]]
 * Old Computers
 *** Microsoft Surface Pro 3
@@ -5055,6 +5143,32 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 
 **** Won't stay in sleep fix: [[Prevent devices from waking out of sleep]]
      "
+*** Surface Book 2
+***** Slow WiFi
+    From: [[https://windowsreport.com/surface-book-2-slow-wifi/][Surface Book 2 slow Wi-Fi issues {BEST SOLUTIONS}]]
+
+    This worked in Aug 2020 but since then, just rebooting has w/o the commands below also worked:
+
+    In admin cmd promp:
+
+      netsh int ip reset
+      netsh int tcp set heuristics disabled
+      netsh int tcp set global autotuninglevel=disabled
+      netsh int tcp set global rss=enabled
+
+    Then restart
+
+***** Internet and maybe Power fix
+    Reinstalling all hardware drivers from [[https://support.microsoft.com/en-us/help/4023482/surface-download-drivers-and-firmware][here]] was recommended for fixing the randomly failing ethernet and WiFi problem.  I think I remember that it was also the fix for the problem with the Surface Dock disconnecting and reconnecting.
+
+    The driver I installed on 9/22/20 was: SurfaceBook2_Win10_ 18362_*_*.msi
+
+    This was on Win10 build 19041; according to the [[https://support.microsoft.com/en-us/help/4023482/surface-download-drivers-and-firmware][instructions]], I should have installed SurfaceBook2_Win10_ 19041_*_*.msi.  But the tech support said 18362, and never answered my question about the discrepancy.
+
+    _I don't know yet if this actually worked_
+
+    *Randomly failing ethernet and WiFi problem*: where the connection randomly switched from ethernet (via Surface dock) to WiFi but then showed that there was no internet connection on the taskbar icon; in fact, the internet connection was actually working (I could browse the web on FireFox) but parts of the OS thought it wasn't, e.g. logging into teams or outlook.  The fix was recommended by MS support (SRX1509219786ID - TS).  Follow the many messages on this [[https://mail.google.com/mail/u/0/#sent/FMfcgxwJXxrwFRzCNVmKbJPKJXqnPfdH][looonnngg email chain]].
+
 * ImageMagick
 *** [[http://stackoverflow.com/questions/4481573/how-to-override-windows-convert-command-by-imagemagicks-one][How to override Windows' convert command by ImageMagick's one? - Stack Overflow]]
 * <<Pandoc>>
@@ -5945,8 +6059,15 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
     control.  e.g. I did this for pdfs.
 
 *** Turn off default beep
-    This is the one that comes up when I mistype stuff.  Happens too often, esp. on Win10 Fall Creators Update.
+    This is the one that comes up when I mistype stuff.  Happens way too often.
 
+    Windows 11, from [[https://medium.com/microsoft-student-champs-sri-lanka/disable-windows-11-alert-sounds-238d92445d01#id_token=eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk4NmVlOWEzYjc1MjBiNDk0ZGY1NGZlMzJlM2U1YzRjYTY4NWM4OWQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJuYmYiOjE2Nzk2MDI1OTQsImF1ZCI6IjIxNjI5NjAzNTgzNC1rMWs2cWUwNjBzMnRwMmEyamFtNGxqZGNtczAwc3R0Zy5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjEwNjY2MzM1MzgyOTcwNzIwMTEzOSIsImhkIjoic2hhcnBsZWFmLm9yZyIsImVtYWlsIjoic2NvdHRvQHNoYXJwbGVhZi5vcmciLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXpwIjoiMjE2Mjk2MDM1ODM0LWsxazZxZTA2MHMydHAyYTJqYW00bGpkY21zMDBzdHRnLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwibmFtZSI6IlNjb3R0IE90dGVyc29uIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FHTm15eGJnTWQtQU1ZcnBRTXR2cVB1UEhZSXdTcmtYQ0pkenlUQWFiM010PXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6IlNjb3R0IiwiZmFtaWx5X25hbWUiOiJPdHRlcnNvbiIsImlhdCI6MTY3OTYwMjg5NCwiZXhwIjoxNjc5NjA2NDk0LCJqdGkiOiIwYjNkNTljMWZjZjE2OWFlYTZhN2UyMDhhNDNkMjMxZmM2MjcwZTlkIn0.mvsHCRNvXUJq4MILbO4yCtcA_Tw1b7fNHdjqWQ4AncByiTeJltVq6RQfUE_qTqWXVQAyg9KDcOgReYC8IuBN2dppsb-VFzcGpPa3s2WqUB9cvmPRyi4mB9ljQIhz1YmZCS98-Z6zf9jnR3uquw7A9kWchKF8mn14u8J4PBybadx21nMvmWxhLBKFiX1JjH58AdvEJPp5o1weFYpxsecVkJI1BKF3xmA2nTiRwexuHPs1vpW3yTHH1H4ZFIQfdNLkZ-SjGoe2lZwafU876OPhBKeWEGEwUdtnsI3qWLnrH_eF2m3hWdGUQoLRGPtuI6LFQiWPcEaGGJkJztE3zPPPEQ][here]]:
+
+    Win+R (control panel) -> Hardware and Sound -> Sound -> Sounds
+
+    Then set "Default Beep" to (None)
+
+***** Windows 10
     Windows Key --> Change System Sounds --> Default Beep 
 
     --> Select (None) in Sounds menu below
@@ -6407,11 +6528,13 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 ***** [[http://iboyd.net/index.php/2010/05/16/windows-7-power-management-fixing-pc-insomnia/][Advanced article]] on PC insomnia
 ***** Using the event viewer
       [[Http://www.techrepublic.com/article/simplify-the-windows-87-event-viewer-by-creating-custom-views/#ftag%3DRSS56d97e7][Detailed article]] event viewer customized views
-*** <<Avoid Spotify shutoff when screen saver turns on>>
+*** Spotify
+***** <<Avoid Spotify shutoff when screen saver turns on>>
     
-    Problem is [[https://www.ghacks.net/2016/09/13/play-music-on-a-surface-while-the-screen-is-off/][said]] to be connected standby
+      Problem is [[https://www.ghacks.net/2016/09/13/play-music-on-a-surface-while-the-screen-is-off/][said]] to be connected standby
 
-    Solution: [[Turn off connected standby]]
+      Solution: [[Turn off connected standby]]
+***** Fix missing Amazon Echo Dot: [[https://finddiffer.com/why-wont-my-echo-show-up-on-spotify/#:~:text=If%20you%20can't%20link,This%20should%20fix%20it!][Why won’t My Echo show up on Spotify?]]
 
 *** TRY <<Turn off connected standby>>
 
@@ -6433,8 +6556,7 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
     - Shutting off Spotify and Youtube when have screen saver
       ([[Avoid Spotify shutoff when screen saver turns on]])     
 
-*** Custom refresh image
-    <<Custom refresh image>>
+*** <<Custom refresh image>>
 
     How to set a restore point for the system config, including
     programs. From [[http://www.howtogeek.com/108944/how-to-create-a-custom-refresh-image-in-windows-8/][here]]:
@@ -7546,17 +7668,19 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 ******* [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
 ******* [[Git version control]]
 ******* [[Emacs/Git for experiment logging]] (git/emacs/org-mode)
-***** Point cloned repository to my github fork
+******* <<Forking a github project, debugging/fix it on local machine>>
       Inspired by user IBwWG, here: [[https://gist.github.com/jagregory/710671][How to move to a fork after cloning]]
 
       I cloned a repository (https://github.com/glm-tools/pyglmnet/), made a branch named dataset_and_ex_fixes, and then did some bugfixes
 
-      But I couldn't do a pull request for it back to /glm-tools/pyglmnet/ because that has to be done from a fork.  
+      But I couldn't do a pull request for it back to /glm-tools/pyglmnet/ because *PRs must be done from a fork*.  
 
-      So, on github, I made a fork with url:
+      So, on github, I made a fork with url. The I cloned it to my local machine.  I cd'ed to the local machine dir where I wanted the repo to be, then:
 
-      https://github.com/notuntoward/pyglmnet
+           git clone https://github.com/notuntoward/pyglmnet
 
+      Then, I did my edits and tests.
+      
       Then, in my local clone, I pointed it to my fork with:
 
       git remote set-url origin git remote set-url origin https://github.com/notuntoward/pyglmnet.git
@@ -7570,6 +7694,9 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
       https://github.com/notuntoward/pyglmnet/pull/new/dataset_and_ex_fixes
 
       and made a pull request back to the original pyglmnet repository
+
+******* also [[Editing and debugging a python package installed from source]]
+
 ***** Git on Windows
 ******* <<git bash>>
         ([[https://gitforwindows.org/][comes with SCM git for windows]])
@@ -7579,25 +7706,233 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
         WinKey + git bash
 
 ******* <<setup git for ssh keys, like at Geli>>
-        From: [[https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/][Set up an SSH key | Bitbucket Cloud | Atlassian Support]]
+********* <<Setting up public/private keys on local machine>>
+*********** MacOS
+            From: [[https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/][Set up an SSH key | Bitbucket Cloud | Atlassian Support]]
 
-        within [[git bash]] terminal, assuming ssh private ssh key is in ~/.ssh/id_rsa :
+            within [[git bash]] terminal, assuming ssh private ssh key is in:
+            ~/.ssh/id_rsa
 
-        _Generate public / private keys_
+            _Generate public / private keys_
         
-        ssh-keygen
+            ssh-keygen
 
-        (type in a password for the key that you have made up)
+            (type in a password for the key that you have made up)
 
-        _Add private ssh key so don't have to type a password all the time_
+            _Add private ssh key so don't have to type a password all the time_
         
-        eval $(ssh-agent)
-        ssh-add ~/.ssh/id_rsa
+            eval $(ssh-agent)
+            ssh-add ~/.ssh/id_rsa
 
-        (enter password (made up by you above) associated w/ that private key
-        (stored in LastPass for Geli))
+            (enter password (made up by you above) associated w/ that
+             private key (stored in LastPass for Geli))
+             
+*********** Linux
+            From: [[https://support.atlassian.com/bitbucket-cloud/docs/set-up-personal-ssh-keys-on-linux/][Set up personal SSH keys on Linux | Bitbucket]]
 
-        _Add public key to Bitbucket account settings_
+            Assming OpenSSH is already installed, To allow git to use
+            your SSH key, an SSH agent needs to be running on your
+            device:
+
+              eval $(ssh-agent)
+
+            You may need to add this command to your ~/.bashrc,
+            ~/.zshrc, ~/.profile, or equivalent shell configuration
+            file. Adding this command to a shell configuration file
+            will ensure the agent is running when you open a terminal.
+
+            Create an SSH key pair (key name below is "bitbucket_work"  Need unique for each machine):
+
+              cd ~
+
+              ssh-keygen -t ed25519 -b 4096 -C "scott.otterson@qcells.com" -f bitbucket_work
+
+            Assuming that =scott.otterson@qcells.com= is the email associated with my work bitbucket account, and that =bitbucket_work= is the output filename for the key.
+            
+*********** Windows
+            From: [[https://support.atlassian.com/bitbucket-cloud/docs/set-up-personal-ssh-keys-on-windows/][Set up personal SSH keys on Windows | Bitbucket Cloud | Atlassian Support]]
+
+************* Install OpenSSH on your device.
+
+              Install Git for windows
+
+              I think I did this with choco, but I don't remember.  Could do it from here:
+
+                 https://gitforwindows.org/. 
+
+              This also installs a git bash terminal.  Verify ssh install using this:
+
+                Run git bash from Start Menu
+
+                In git bash terminal
+
+                   ssh -V
+
+                should see installed version of SSY
+
+************* Start the SSH service
+
+*************** Using git bash
+
+                In git bash terminal
+
+                  eval $(ssh-agent)
+
+                So ssh autostarts when open git bash terminal, also add this ~/.bashrc
+
+                Verify
+
+                  ps -a | grep ssh-agent
+
+*************** Could also do in Powershell:
+
+                 In admin powershell
+
+                 Check to see if ssh service is running:
+
+                   Get-Service ssh-agent
+
+                 Start it (I needed to [[https://stackoverflow.com/a/53606760/2591097][set it to manual 1st (admin mode)]]. Then ssh-agen will start it)
+
+                   Get-Service -Name ssh-agent | Set-Service -StartupType Manual
+                   Start-Service ssh-agent
+
+                 To make it automatic (still doesn't work, but at least I can start it in manual):
+
+                   Set-Service -Name sshd -StartupType 'Automatic'
+
+************* Create an SSH key pair for work bitbucket cloud account, using work email
+
+              cd ~
+              ssh-keygen -t ed25519 -b 4096 -C "scott.otterson@qcells.com" -f qcells_windows_bitbucket
+
+*************** Windows Laptop Studio Work Bitbucket key:
+
+              I used pwd: oG1<jT9)
+
+ssh-keygen -t ed25519 -b 4096 -C "scott.otterson@qcells.com" -f qcells_windows_bitbucket
+Generating public/private ed25519 key pair.
+qcells_windows_bitbucket already exists.
+Overwrite (y/n)? y
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in qcells_windows_bitbucket
+Your public key has been saved in qcells_windows_bitbucket.pub
+The key fingerprint is:
+SHA256:bmvQiHmL4jvUmgt4+FIrObP2moHSzSw0nrtVxex+q28 scott.otterson@qcells.com
+The key's randomart image is:
++--[ED25519 256]--+
+|              |
+| o            |
+| +            |
+| o            |
+| o. o.oS      |
+| o=o*+.+o.    |
+| *=*+=o o+ .  |
+| B=O+. ...oE. |
+| oXXB   .o+o  |
++----[SHA256]-----+
+
+
+************* Add your key to the SSH agent.
+
+              This puts the keys in your current directory (s/b ~ if you've followed instructions). 
+               
+                 ssh-add qcells_windows_bitbucket
+
+              Instruction say to use: ssh-add ~/{ssh-key-name}, but '~~~' doesn't work in Windows.  The files it creates are:
+
+                 {ssh-key-name} — the private key.
+                 {ssh-key-name}.pub — the public key.
+
+              Incongrously, the next instruction from BitBucket
+              assumes that you've put them under .ssh.  So do this, where qcells_windows_bitbucket replaces {ssh-key-name}:
+
+                  mv qcells_windows_bitbucket ~/.ssh
+                  mv qcells_windows_bitbucket.pub ~/.ssh
+
+              To ensure the correct SSH key is used when connecting to
+              Bitbucket, update or create your SSH configuration file
+              (~/.ssh/config) with the following settings:
+
+                Host bitbucket.org
+                  AddKeysToAgent yes
+                  IdentityFile ~/.ssh/{ssh-key-name}
+
+************* Provide Bitbucket Cloud with your public key.
+
+              1. Log into bitbucket.org (scott.otterson@qcells.com for work; scotto@sharpleaf.org for home.
+
+              2. At bitbucket.org, click setting icon on navigation bar at the top/right of the screen.
+
+              3. Under Settings, select Personal settings.
+
+              4. Under Security, select SSH keys.
+
+              5. Select Add key.
+
+              6. In the Add SSH key dialog, provide a Label to help you identify which key you are adding. For example, Work Laptop <Manufacturer> <Model>. A meaning full label will help you identify old or unwanted keys in the future.
+
+              7. Open the public SSH key file (public keys have the .pub file extension) in a text editor. The public key should be in the .ssh/ directory of your user (or home) directory. The contents will be similar to:
+
+                 ssh-ed25529 LLoWYaPswHzVqQ7L7B07LzIJbntgmHqrE40t17nGXL71QX9IoFGKYoF5pJKUMvR+DZotTm user@example.com
+
+              8. Copy the contents of the public key file and paste the key into the Key field of the Add SSH key dialog.
+
+              9. Select Add key.
+
+              If the key is added successfully, the dialog will close
+              and the key will be listed on the SSH keys page.
+
+              If you receive the error That SSH key is invalid, check
+              that you copied the entire contents of the public key
+              (.pub file).
+
+************* Check that your SSH authentication works.
+
+              To test that the SSH key was added successfully, open a
+              terminal on your device and run the following command:
+
+                 ssh -T git@bitbucket.org
+
+*************** You'll probably get an error message like this one
+
+PS C:\Users\scott> ssh -T git@bitbucket.org
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the RSA key sent by the remote host is
+SHA256:46OSHA1Rmj8E8ERTC6xkNcmGOw9oFxYr0WF6zWW8l1E.
+Please contact your system administrator.
+Add correct host key in C:\\Users\\scott/.ssh/known_hosts to get rid of this message.
+Offending RSA key in C:\\Users\\scott/.ssh/known_hosts:1
+Host key for bitbucket.org has changed and you have requested strict checking.
+Host key verification failed.
+
+*************** Fix that error, if you do get it:
+
+                The problem is likely that the old bitbucket.org key is in the known_hosts file.  In the error message above, it's on the first line.  So..
+
+                1. Delete the line(s?) with bitbucket.org on it (them?)
+                2. add the correct key by runnin ssh -T git@bitbucket.org (which will as if you want to add it)
+*************** Test known_hosts
+
+                From [[https://bitbucket.org/blog/ssh-host-key-changes?jobid=106086290&subid=1709810598][here]], run:
+
+                  ssh git@bitbucket.org host_key_info
+
+                and you should see something like this:
+
+                  PS C:\Users\scott\share\ds-experimental> ssh git@bitbucket.org host_key_info
+                  You are using host key with fingerprint:
+                  ssh-ed25519 SHA256:ybgmFkzwOSotHTHLJgHO0QN8L0xErw6vd0VhFA9m3SM
+
+                  See https://bitbucket.org/blog/ssh-host-key-changes for more details.
+
+********* Add public key to Bitbucket account settings
 
         Log in to the bitbucket account (Geli, see credentials in LastPass)
 
@@ -7612,6 +7947,28 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
         ssh -T git@bitbucket.org
 
         (type "yes")
+
+******* Preventing git push from asking for your password all the time
+        From Bing Chat:
+
+        # don't ask for a pwd more than once per 24 hrs
+        git config --global credential.helper cache
+        git config --global credential.helper 'cache --timeout=86400'
+
+        # Alternatively, you can use SSH instead of HTTPS to authenticate with the remote repository. This will allow you to use your SSH key instead of your password. Here are the steps to do this:
+
+        ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+        # add the key to ~/.ssh and bitbucket.org as before
+
+        Do [[Setting up public/private keys on local machine]] but use the -rsa flag in ssh-keygen, as above
+
+        # Change the remote URL of your repository to use SSH instead of HTTPS:
+
+        git remote set-url origin git@bitbucket.org:<username>/<repository>.git
+
+
+
 
 ******* cloning a reporitory from bitbucket/sourcetree (install source tree if needed)
 
@@ -9078,7 +9435,7 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 ********* vertical and horizontal lines and boxes in plotly
 *********** [[https://plotly.com/python/horizontal-vertical-shapes/][Horizontal Vertical Shapes]]
 ********* [[altair]] is similar, maybe more concise?
-******* <<Bokeh:>> interative, in at least R and python
+******* <<Bokeh:>> interactive, in at least R and python
 ********* [[Python Bokeh]] 
 ********* [[R Bokey]]
 ******* <<R Bokey>>
@@ -9772,6 +10129,8 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
         [[http://bm2.genes.nig.ac.jp/RGM2/R_current/library/Hmisc/man/string.bounding.box.html][string.bounding.box]]()
         [[http://bm2.genes.nig.ac.jp/RGM2/R_current/library/Hmisc/man/string.break.line.html][string.break.line]]() (for prntbl if insert newlines?)
         stringDims()
+
+******* [[prnvar for python]]
 
 ***** prntbl
 ******* [[http://www.stat.ucl.ac.be/ISdidactique/Rhelp/library/clim.pact/html/lower.case.html][lower.case()]]
@@ -10555,6 +10914,37 @@ plt.show()
 
       %load filename.py
 
+***** sending jupyterlab cell output to file instead of screen
+
+      #+begin_src python
+
+        import io
+        # to capture both stdout and stderr
+        # from contextlib import redirect_stdout, redirect_stderr
+        # captures only stdout
+        from contextlib import redirect_stdout
+
+        def a_function(i,j):
+            print(f"\t {i=}, {j=}")
+
+        output = ""
+        for i in range(10):
+            print(f"start {i=}")
+
+            for j in range(10):
+                # gets both stdout and stderr
+                # with io.StringIO() as buf, redirect_stdout(buf), redirect_stderr(buf):
+
+                # gets only stdout
+                with io.StringIO() as buf, redirect_stdout(buf):
+                    a_function(i,j)
+                    output += buf.getvalue()
+
+        with open('filename.txt', 'a+') as f: # append
+          f.write('result\n')
+          
+      #+end_src
+
 ***** Jupyterlab extensions 
 ******* listing/updating/uninstalling installed juypterlab extensions
 
@@ -11046,7 +11436,7 @@ Maybe it will do until jupyterlab-lsp works again.
       import matplotlib_inline.backend_inline
       matplotlib_inline.backend_inline.set_matplotlib_formats('retina')
 
-      In VSCODE, eyeballing, the plots look the same with thest two methods
+      In [[vscode]], eyeballing, the plots look the same with thest two methods
 
 ***** <<Versioning Jupyter Notebooks>>
 
@@ -11498,7 +11888,6 @@ Maybe it will do until jupyterlab-lsp works again.
 
 Upgrade or uninstall any packages not contained on your requirements.txt file. Make it easier for your to explore a package and get rid of it really fast.          
 
-
 ***** <<pyenv and virtualenv>>
 ******* [[pyenv in emacs]]
 ***** also [[Cookiecutter Data Science]]
@@ -11621,6 +12010,153 @@ Upgrade or uninstall any packages not contained on your requirements.txt file. M
         conda skeleton pypi package
         conda-build package
 
+******* [[XGboost on Windows]]
+
+***** <<XGboost on Windows>>
+      Hard to find on Windows.  Almost everything is on linux.  But this seems to work:
+
+      [[https://www.youtube.com/watch?v=lxDEkTuaz_k][How to install and use XGBOOST library in anaconda on Windows 10 ? - YouTube]]
+
+      Results are not as good as show on this notebook website: Here:
+      https://www.kaggle.com/metadist/work-like-a-pro-with-pipelines-and-feature-unions
+      the log loss is shown as 0.5192380...  but using this xgboost install, I'm seeing 0.556257 (worse than the Bernoulli example)
+
+      Anway, the instructions are:
+      1. run: conda install -c anaconda py-xgboost  (from: [[https://anaconda.org/anaconda/py-xgboost][Py Xgboost :: Anaconda Cloud]])
+      2. In python shell, test with: import xgboost as xgb
+
+******* also [[Windows Python]]
+
+***** Installing/debugging cloned github python packages within conda environment
+      From [[https://stackoverflow.com/questions/46076754/use-package-from-github-in-conda-virtual-environment][here]] and [[https://www.youtube.com/watch?v=5hq0Edi2Ou8][here]]
+
+      Taking the example of http://github.com/glm-tools/pyglmnet
+
+******* Activate the conda environment
+      
+        Windows: 
+        1. start a anaconda powershell prompt
+        2. cd to the directory you want to clone to
+        3. activate: for base, type "activate base"
+        4. Run the commands below from inside the andaconda prompt
+
+******* Install git in the virtual environment: (conda install git)
+
+        conda install git
+
+******* Clone the project. (git clone [URL])
+
+        git clone http://github.com/glm-tools/pyglmnet
+
+******* Install the package (has the effect of pointing a "python path" to your clone of this repo)
+********* cd to package directory that contains setup.py.
+********* run setup
+*********** best way: [[Editing and debugging a python package installed from source]]
+*********** 2nd best way: python setup.py install
+******* To delete the package: pip uninstall pyglmnet
+******* <<Editing and debugging a python package installed from source>>
+
+        Using the example of pyglmnet
+        
+        Once package was installed, I didn't know how to debug/fix the code.
+        
+        So, first, you have have to /delete any installed package/: 
+
+        pip uninstall pyglmnet
+
+        Then you can edit the code wherever you have cloned the package and it will take immediate effect (you won't have to install it after every code change).  There are at least three ways to do this.
+
+        <<Installing a cloned package so you can debug it>>
+        (has the effect of pointing a "python path" to your clone of this repo)
+        
+        _The 1st is the best_:
+      
+        1. do an [[https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/#working-in-development-mode][editable pipinstall]]: python -m pip install -e .
+
+           - cd to project root directory and run: python -m pip install -e .
+           - <<package root dir>> ?
+             - [[https://py-pkgs.org/04-package-structure.html][is sometimes the directory above pkg's src dir]]
+             - maybe infer after [[getting an installed package __init__.py file]] 
+           - Your packages edits then  immediately affects your imports
+           - No special python path code in scripts doing imports
+
+        2. Hack paths to point to the cloned repository
+
+           In any script that imports the package, insert code like this:
+
+           import sys
+           srcPath = "c:\\Users/Scott\\OneDrive - Clean Power Research\\WattPlanGrid\\mnsp\\sandbox\\pyglmnet"
+           if srcPath not in sys.path:
+           sys.path.append(srcPath)
+
+           This would have to be before the statement which imports the package.
+
+           This is ugly b/c you have to remember to delete the path hack code above.
+
+        3. run [[https://stackoverflow.com/questions/19048732/python-setup-py-develop-vs-install][python setup.py develop]]
+
+           Maybe this is the best way.
+
+           But is it?  The [[https://pip.pypa.io/en/stable/cli/pip_install/][editable pipinstall]] says there are advantages to using pip, and a commenter [[https://stackoverflow.com/a/19048754/2591097][here]] says that he had problems w/ setup.py develop and so used pip install -e PATH
+
+******* Making a python package
+********* <<python package structure>>
+
+*********** [[https://py-pkgs.org/04-package-structure.html][4. Package structure and distribution — Python Packages]]
+*********** [[Root dir of installed (non-builitin) python package]]
+
+******* also [[Forking a github project, debugging/fix it on local machine]] 
+        
+***** <<Root dir of installed (non-builitin) python package>>
+
+      I believe that the "root dir" is the one that has setup.py in it, and is the place where you want to run
+      
+      
+******* [[https://py-pkgs.org/04-package-structure.html][root dir is sometimes the directory above pkg's src dir]]: but not all pkgs have a src dir
+******* <<getting an installed package __init__.py file>>
+
+        I believe every package has an __init__.py file, and if the it's in a 'src' dir, then the [[package root dir]] probably a couple directories above it.  At least, you can figure it out manually and hardcode it relative to the __init__.py file, since that should be relatively constant for a given package, and shouldn't change across machines and install OS's.
+
+********* Example: source cloned from githup: [[https://github.com/LauritzR/Principal-Feature-Analysis][Principal-Feature-Analysis]]:
+
+        Assuming you've done: [[Installing a cloned package so you can debug it]]
+
+        #+begin_src python
+
+          import principal_feature_analysis
+          import pathlib as pl
+          rootDir = pl.Path(principal_feature_analysis.__file__).parent.parent.parent
+
+          print(f"{rootDir=}")
+          setupFNm = pl.Path(rootDir / 'setup.py')
+          print(f"{setupFNm=}\n{setupFNm.is_file()=}")
+        #+end_src
+
+        Output:
+        rootDir=WindowsPath('C:/Users/scott/OneDrive/share/repos/Principal-Feature-Analysis')
+        setupFNm=WindowsPath('C:/Users/scott/OneDrive/share/repos/Principal-Feature-Analysis/setup.py')
+        
+        setupFNm.is_file()=True
+
+********* Example: conda-forge pandas
+
+          This one has no src dir, but at least you know where the package is.
+
+        #+begin_src python
+          import pandas
+          import pathlib as pl
+
+          initFNm = pandas.__file__
+          rootDirNoSetup = pl.Path(pandas.__file__).parent
+
+          print(f"{initFNm=}\n{rootDirNoSetup=}")
+        #+end_src
+
+        Output:
+          initFNm='c:\\Users\\scott\\miniconda3\\lib\\site-packages\\pandas\\__init__.py'
+          rootDirNoSetup=WindowsPath('c:/Users/scott/miniconda3/lib/site-packages/pandas')
+        
+******* also [[python package structure]]
 *** [[Python in Emacs]]
 *** <<Python Graphics>>
 ***** 2018 overview of Python graphics libraries
@@ -11834,6 +12370,13 @@ Upgrade or uninstall any packages not contained on your requirements.txt file. M
         [[https://stackoverflow.com/questions/30868707/how-can-i-plot-two-different-spaced-time-series-on-one-same-plot-in-python][How can I plot two different spaced time series on one same plot in Python]]
 
 ***** zoomable python plots
+***** Grafana
+******* stair step time series in grafana w/ start/end time stamp marks
+
+       They call this "Interpolation mode: Step before" and "Interpolation mode Step after"
+
+       [[https://play.grafana.org/d/nP8rcffGk/4-new-features-in-v7-4?orgId=1][Examples]]
+       
 ***** Data Exploration in Python
 ******* <<Mito: Spreadsheet makes python, plotly code>>
 ********* Could be handy for a new data set
@@ -11977,22 +12520,24 @@ How to store global settings e.g. URLs, passwords and constants without hardcodi
 
 ***** TRY python code checkers
 ******* [[https://www.pylint.org/][Pylint]]
-******* TRY pyre (has vscode extension too)
+******* TRY pyre (has [[vscode]] extension too)
 
         Intro: [[https://python.plainenglish.io/using-facebooks-pyre-to-infer-types-in-python-automatically-718d028fe57d][Using Facebook’s Pyre to Automatically Infer Types in Python]]
-        <<vscode>> extension: [[https://marketplace.visualstudio.com/items?itemName=fb-pyre-check.pyre-vscode][pyre-vscode - Visual Studio Marketplace]]
+********* <<pyre vscode extension>>
+          <<[[vscode]]>> extension: [[https://marketplace.visualstudio.com/items?itemName=fb-pyre-check.pyre-[[vscode]]][pyre-[[vscode]] - Visual Studio Marketplace]]
         
 ******* [[https://github.com/davidfraser/pyan][pyan]] 
 ******* [[https://github.com/megies/pyflakes][Pyflakes]]
 ***** debuggers
-******* [[https://medium.com/analytics-vidhya/cyberbrain-python-debugging-redefined-1db4c47a4d32][Cyberbrain: Python debugging, redefine]]: variable dependency graphs & more
+******* <<Cyberbrain>>
+        From: [[https://medium.com/analytics-vidhya/cyberbrain-python-debugging-redefined-1db4c47a4d32][Cyberbrain: Python debugging, redefine]]: variable dependency graphs & more
         
-        Runs in [[Vscode]] only for now.  Can install within built-in VSC marketplace, or like so:
+        Runs in [[vscode]] only for now.  Can install within built-in VSC marketplace, or like so:
 
         pip install cyberbrain
         code --install-extension laike9m.cyberbrain
         
-***** prnvar for python
+***** <<prnvar for python>>
 ******* I wrote my own, in sutils.py
 ******* <<icecream>>
         Similar to prnvar(): [[https://github.com/gruns/icecream][icecream: Never use print() to debug again.]]
@@ -12006,6 +12551,7 @@ How to store global settings e.g. URLs, passwords and constants without hardcodi
         
         snoop: [[https://medium.com/geekculture/snoop-on-your-python-eaa2f157743a][Snoop on Your Python. Like IceCream on Steroids — You’ll never…  ]]
         
+******* [[R funcs useful for R prnvar()]]
 *** String Processing (Python)
 ***** parse: Perl-like named string chunk extraction
       From: [[https://stackoverflow.com/questions/44292000/extract-a-name-substring-from-a-filename-and-store-it-in-a-variable-in-python][Extract a name substring from a filename and store it in a variable]]
@@ -12058,7 +12604,7 @@ How to store global settings e.g. URLs, passwords and constants without hardcodi
 ********* <<Hand-coded Pandas Parallel Apply>>
 *********** [[https://medium.com/@30mb1/6-ways-to-significantly-speed-up-pandas-with-a-couple-lines-of-code-part-1-2c2dfb0de230][6 ways to significantly speed up Pandas with a couple lines of code. P1]]
 *********** [[Pandarallel]] is probably better
-********* <<Pandarallel>> (probably better that)
+********* <<Pandarallel>> (probably better than that)
 *********** [[https://medium.com/@30mb1/6-ways-to-significantly-speed-up-pandas-with-a-couple-lines-of-code-part-1-2c2dfb0de230][6 ways to significantly speed up Pandas with a couple lines of code. P1]]
 *********** Probably [[https://medium.com/@30mb1/6-ways-to-significantly-speed-up-pandas-with-a-couple-lines-of-code-part-1-2c2dfb0de230][better]] than [[Hand-coded Pandas Parallel Apply]]
 
@@ -12361,7 +12907,48 @@ else:
 ***** <<SciPy optimization>>
       [[https://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html][Optimization (scipy.optimize) — SciPy v1.1.0 Reference Guide]]
 *** <<Python IDEs>>
-***** Visual Studio Code (VSC)
+***** <<vscode>>
+******* debugging in vscode
+********* debugging jupyter notebooks in vscode
+
+          - Set cell breakpoint on a line(click on L cell margin, see a red dot)
+          - Click on the cell's run caret on the upper L cell marking
+          - Select debug cell
+          - a panel of debugging icons appears, usually in upper L
+          - BREAKPOINTS tickboxes in lower L enables bkpts e.g. on errors
+
+*********** [[https://github.com/microsoft/vscode-jupyter/issues/13246][vscode-jupyter#13246 Cell debugger needs "break at exception...]]
+*********** tutorial video 
+*********** In SPYDER, can [[https://github.com/microsoft/vscode-jupyter/issues/1652#issuecomment-797785152][use %pdb to go into pdb if error]], but not VSCODE Jupyter, as of 4/1/23
+******* shrinking vscode vertical blank space
+********* [[https://github.com/microsoft/vscode/issues/130287][Controlling vertical space between output elements]]
+********* [[https://github.com/microsoft/vscode-jupyter/issues/6024][Option to hide toolbars above cells / move them...]]
+******* note taking on vscode
+********* [[dendron]]
+********* [[Foam]]
+******* graphs in vscode
+********* [[Mermaid in vscode]]
+******* interactive shell in vscode
+        From: [[https://youtu.be/lwN4-W1WR84?t=112][VSCode's Python Interactive mode is AMAZING!]]
+
+        Gives you an interface similar to matlab, spyder or Rstudio.  You can bet plots and access to variables in the right hand side window, while editing plain, non-notebook python in the left window.
+
+********* To start it
+*********** edit a python file
+*********** put #%% at the top and run it
+*********** after that any #%% runs like a matlab or jupyter notebook cell
+*********** at the bottom lhs is an interactive window where you can type other commands.
+*********** you can export the lhs window as a notebook, with cells and graphs
+
+********* plots show up in right window if you do:
+
+          #%%
+          import pandas as pd
+          import numpy as np
+          import matplotlib.pyplot as plt
+          %matplotlib inline
+******* [[pyre vscode extension]]
+******* [[Cyberbrain]]: python debugger, dependency analyzer for vscode
 ******* Syncing Visual Studio Code Settings
         Use: [[https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync][Settings Sync - Visual Studio Marketplace]] (extension)
 
@@ -12394,16 +12981,182 @@ else:
 
         documentation of variables is [[https://code.visualstudio.com/docs/editor/variables-reference][here]]; my GitHub comment is [[https://github.com/Microsoft/vscode-python/issues/5468][here]].
 
-******* VSC Emacs keybindings
+******* Emacs keybindings in vscode
 
-        I picked 
+        In 2022, I'm using the *Awesome Emacs Keymap* extension.
+        
+        Originally, I picked: *Emacs Friendly Keymap* lfs.vscode-emacs-friendly Leaping Frog Studios.  It had almost perfect stars, was a fork to another older, abandoned but popular emacs extension (from Hiro Sun), and had new updates (latest was 5/6/19 when viewed on 12/11/19).  Seems good.  Maybe it was, but later, for some reason, I picked the Awesome Emacs Keymap extension, which worked fine.
 
-        Emacs Friendly Keymap lfs.vscode-emacs-friendly Leaping Frog Studios
+********* emacs keybindings in vsc terminal
+*********** [[https://www.reddit.com/r/vscode/comments/no035a/comment/hb2k0wr/?utm_source=share&utm_medium=web2x&context=3][Said to work]]: Settings -> Terminal-> integrated -> allow chords
 
-        It had almost perfect stars, was a fork to another older, abandoned but popular emacs extension (from Hiro Sun), and had new updates (latest was 5/6/19 when viewed on 12/11/19).  Seems good.
+            But for me, it doesn't.  If I type Ctrl+B, I seee ^B in the terminal.  Does this have something to do with the fact that I'm using Windows Terminal?  Did I set that up for vscode?
 
 ******* Getting a console like Spyder, Rstudio and Matlab
 ********* [[https://www.r-bloggers.com/2020/07/setting-up-vs-code-for-python-development-like-rstudio/][Setting up VS Code for Python Development like RStudio | R-bloggers]]
+******* <<vscode org-roam-like and diagramming packges>>
+********* [[Foam]]: organizer runs in vscode
+********* [[dendron]]: vscode organizer
+********* [[Mermaid in vscode]]
+********* [[vscode PlantUML]]
+********* also [[org-roam]]
+******* [[using miniconda instead of anaconda]]: install tickbox for vscode
+******* [[vscode on WSL]]
+******* <<Running vscode on Sagemaker>>
+
+        *Question*: Use new [[https://code.visualstudio.com/blogs/2022/12/07/remote-even-better][vscode remote tunnel]] instead of local ssh?
+
+********* <<Connect VS Code to AWS (General)>>
+          From: [[https://www.c-sharpcorner.com/article/how-to-connect-vs-code-to-aws/][How To Connect VS Code To AWS]]
+
+          This doesn't connect sagemaker, but allows you to do some AWS stuff that seems more admin-like.  Don't know what it means.  Also, the page is slightly wrong:
+
+          Windows files to create:
+
+            c:/Users/scott/.aws/config
+            c:/Users/scott/.aws/credentials
+
+          In the credentials file, it's OK to leave aws_session_token blank:
+
+            aws_session_token=
+          
+********* [[https://aws.amazon.com/blogs/machine-learning/use-the-amazon-sagemaker-local-mode-to-train-on-your-notebook-instance/][Use the Amazon SageMaker local mode to train on your notebook instance]]
+********* [[https://www.youtube.com/watch?v=K3ngZKF31mc][Train with Amazon SageMaker on your local machine]]
+
+          A container based approach to running VSCODE locally.
+
+          steps
+
+          Windows
+            choco install openssl
+            install docker somehow
+            Install AWS CLI: [[https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html][Installing or updating the latest version of the AWS CLI]]
+                In a windows terminal (or cmd window?)
+                  msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi
+                In a cmd window, check (doesn't work in windows terminal):
+                  aws --version 
+              
+            
+          Create a local cona environment matching sagmaker notebook kernel
+          
+            conda create -n tensorflow_pyth3_9 python=3.9
+            conda activate tensorflow_pyth3_9
+
+          On sagemaker and locally, install an environment wihe
+          matching python and tensorflow versions:
+
+             This might not work
+               conda install tensorflow=2.11 keras sagemaker ipykernel
+
+             But this might
+               [[Sagemaker notebook kernels with specific python version]]
+
+          Once created on local, do:
+
+             pip install sagemaker
+             pip install boto3
+             conda install ipykernel
+
+          Create a notebook kernel
+             python -m ipykernel install --user --name tensorflow_pyth3_9 --display-name "Python (tensorflow_pyth3_9)"
+
+          In that environment, start jupyterlab (after making sure
+          docker is running locally)
+
+            jupyter lab
+
+          Then make a new notebook using the kernel tensorflow_pyth3_9
+
+          From [[https://us-west-1.console.aws.amazon.com/sagemaker/home?region=us-west-1#/notebook-instances/test1][here]], my IAM role ARN is:
+            arn:aws:iam::538039645537:role/service-role/AmazonSageMaker-ExecutionRole-20200625T083360 
+
+          # make sure docker is running
+          jupyter notebook
+           
+********* [[https://stackoverflow.com/questions/71880336/can-one-run-sagemaker-notebook-code-locally-in-visual-studio-code][can one run sagemaker notebook code locally in visual s...]]
+
+          local vscode, from 2022
+
+********* [[https://www.youtube.com/watch?v=Ftim9YeN58Y][Connect EC2 instance to VSCode using remote ssh and run jupyter Notebooks]]
+
+          Local vscode, from 2022.  Looked quite complicated, and by the end of the video, I'm not sure what he had achieved.
+          
+********* [[https://guyernest.medium.com/connecting-vs-code-to-develop-machine-learning-models-in-the-aws-cloud-aa1ebd16f890][Connecting VS Code to Develop Machine Learning Models in the AWS Cloud]]
+
+        local machine vscode runs AWS sagemaker
+
+        I locally installed [[https://www.docker.com/get-started/][Docker Desktop]] on my Windows machine:
+
+           choco install docker-desktop
+        
+        This was [[https://stefanscherer.github.io/how-to-install-docker-the-chocolatey][recommended]] as the best docker setup for Windows.
+
+        Seems complicated and incomplete, as of 2020
+        
+********* [[https://medium.com/codex/running-vs-code-for-free-on-aws-bfb1aed7be6f][VS Code in Sagemaker Studio Lab. Code-server in 5 mins]]
+
+          [[https://studiolab.sagemaker.aws/][Studiolab]] is a free version of Sagemaker.  But this is with vscode running in the web browser, which I don't want.
+          
+********* [[https://towardsdatascience.com/hosting-vs-code-in-sagemaker-studio-f211385e25f7][Hosting VS Code on SageMaker. Step-by-step guide to set it up]]
+
+          I think both options were browser based.  I wanted vscode
+          running locally.
+
+********* [[https://aws.amazon.com/blogs/machine-learning/host-code-server-on-amazon-sagemaker/][Host code-server on Amazon SageMaker | AWS Machine Learning Blog]]
+
+          Browser-based vscode.  I don't like...
+
+******* <<Running vscode on AWS EC2>>
+********* Abhi GPU-Vscode EC2 instructions
+*********** Confluence: [[https://growingenergylabs.atlassian.net/wiki/spaces/~63c5a906417bef6fc906a2c0/pages/8497594395/GPU+server+setup+for+cloud+computing][GPU server setup for cloud computing]]
+*********** ssh config
+
+_Combining w/ [[https://growingenergylabs.slack.com/archives/D04S81PGPEZ/p1678311599717599][Abhi's slack]], and [[https://linuxize.com/post/using-the-ssh-config-file/][this]], I think my .ssh/config contents should be_:
+
+Host *
+UseKeychain yes
+
+Host dev-gpu-usw2
+User scott.otterson
+HostName dev-gpu-usw2.geli.internal
+AddKeysToAgent yes
+ForwardAgent yes
+ProxyCommand ssh -xaqW%h:22 ec2-user@dev-usw2.geli.net
+
+*********** must install aws cli on local machine
+            See: [[https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html][Installing or updating the latest version of the AWS CLI - AWS Command Line I...]]
+
+*********** EC2 starting/stopping
+            From: [[https://growingenergylabs.slack.com/archives/C04R1T27PEW/p1678311515676859][Slack]]
+
+            Commands to start, connect or stop the AWS server:
+
+            _starting_
+
+            aws ec2 start-instances --region us-west-2 --instance-ids i-0c06dfbcdb18a1918
+
+            /Doesn't seem to be needed/
+            ssh dev-gpu-usw2
+
+            jupyter notebook --no-browser --port=8080
+
+            _stopping_
+
+            aws ec2 stop-instances --region us-west-2 --instance-ids i-0c06dfbcdb18a1918
+
+*********** copying data to EC2
+
+            From local laptop to AWS, full path on the AWS side, probably not needed for local
+
+            scp -r /Users/scott/share/ds-experimental/scotto/proj/VDERalt3 scott.otterson@dev-gpu-usw2:/home/scott.otterson/ds-experimental/scotto/proj/
+
+            scp -r /Users/scott/share/ds-experimental/scotto/lib scott.otterson@dev-gpu-usw2:/home/scott.otterson/ds-experimental/scotto/lib
+            
+********* [[https://growingenergylabs.atlassian.net/wiki/spaces/analytics/pages/8409055277/VSCode+Developer+Gaia+Setup][VSCode Developer Gaia Setup (Nace)]]
+********* [[https://growingenergylabs.atlassian.net/wiki/spaces/SD/pages/61768476/Set+up+an+EC2+Instance+on+AWS][Set up an EC2 Instance on AWS]]
+********* also [[Docker Containers]]
+******* [[https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/whisper-setup-ent-devs.html][Setting up CodeWhisperer for enterprise devs - AWS Toolkit for VS Code]]
+
 ***** Rodeo
 ***** [[Python in Emacs]]
 ***** <<PyCharm>>
@@ -12446,7 +13199,6 @@ else:
 ********* LD_LIBRARY_PATH bug in PyCharm: [[https://github.com/tensorflow/tensorflow/issues/9530][PyCharm won't correctly import tensorflow]]
 ********* <<Remote Interpreter example with Tensorflow>>: [[https://medium.com/@erikhallstrm/work-remotely-with-pycharm-tensorflow-and-ssh-c60564be862d][Work remotely with PyCharm, TensorFlow and SSH]]
 ******* Jump to definition
-
         Put cursor on variable, function, method...
         ctrl+shift+I (definition window pops up)
         hit return in definition to jump to code
@@ -12460,105 +13212,9 @@ else:
 
         However, as of Aug 2019, I couldn't get this to work.
  
-***** <<vscode>>
-******* shrinking vscode vertical blank space
-********* [[https://github.com/microsoft/vscode/issues/130287][Controlling vertical space between output elements]]
-********* [[https://github.com/microsoft/vscode-jupyter/issues/6024][Option to hide toolbars above cells / move them...]]
-******* note taking on vscode
-********* [[dendron]]
-********* [[Foam]]
-******* graphs in vscode
-********* [[Mermaid in vscode]]
-******* interactive shell in vscode
-        From: [[https://youtu.be/lwN4-W1WR84?t=112][VSCode's Python Interactive mode is AMAZING!]]
+***** [[vscode]]
 
-        Gives you an interface similar to matlab, spyder or Rstudio.  You can bet plots and access to variables in the right hand side window, while editing plain, non-notebook python in the left window.
-
-********* To start it
-*********** edit a python file
-*********** put #%% at the top and run it
-*********** after that any #%% runs like a matlab or jupyter notebook cell
-*********** at the bottom lhs is an interactive window where you can type other commands.
-*********** you can export the lhs window as a notebook, with cells and graphs
-
-********* plots show up in right window if you do:
-
-          #%%
-          import pandas as pd
-          import numpy as np
-          import matplotlib.pyplot as plt
-          %matplotlib inline
-        
-*** Python Package installation
-***** XGboost on Windows
-      Hard to find on Windows.  Almost everything is on linux.  But this seems to work:
-
-      [[https://www.youtube.com/watch?v=lxDEkTuaz_k][How to install and use XGBOOST library in anaconda on Windows 10 ? - YouTube]]
-
-      Results are not as good as show on this notebook website: Here:
-      https://www.kaggle.com/metadist/work-like-a-pro-with-pipelines-and-feature-unions
-      the log loss is shown as 0.5192380...  but using this xgboost install, I'm seeing 0.556257 (worse than the Bernoulli example)
-
-      Anway, the instructions are:
-      1. run: conda install -c anaconda py-xgboost  (from: [[https://anaconda.org/anaconda/py-xgboost][Py Xgboost :: Anaconda Cloud]])
-      2. In python shell, test with: import xgboost as xgb
-
-***** Installing/debugging cloned github python packages within conda environment
-      From [[https://stackoverflow.com/questions/46076754/use-package-from-github-in-conda-virtual-environment][here]] and [[https://www.youtube.com/watch?v=5hq0Edi2Ou8][here]]
-
-      Taking the example of http://github.com/glm-tools/pyglmnet
-
-******* Activate the conda environment
-      
-        Windows: 
-        1. start a anaconda powershell prompt
-        2. cd to the directory you want to clone to
-        3. activate: for base, type "activate base"
-        4. Run the commands below from inside the andaconda prompt
-
-******* Install git in the virtual environment: (conda install git)
-
-        conda install git
-
-******* Clone the project. (git clone [URL])
-
-        git clone http://github.com/glm-tools/pyglmnet
-
-******* Install the package 
-********* cd to package directory that contains setup.py.
-********* run: python setup.py install
-******* To delete the package: pip uninstall pyglmnet
-******* Running and debugging
-
-        If the package is installed, I don't know how to debug or bugfix the code.
-
-        So, first, you have have to /delete the installed package/: 
-
-        pip uninstall pyglmnet
-
-        Then you can edit the code wherever you have cloned the package and it will take immediate effect (you won't have to install it after every code change).  There are at least three ways to do this:
-      
-        1. Hack paths to point to the cloned repository
-
-           In any script that imports the package, insert code like this:
-
-           import sys
-           srcPath = "c:\\Users/Scott\\OneDrive - Clean Power Research\\WattPlanGrid\\mnsp\\sandbox\\pyglmnet"
-           if srcPath not in sys.path:
-           sys.path.append(srcPath)
-
-           This would have to be before the statement which imports the package.
-
-           This is ugly b/c you have to remember to delete the path hack code above.
-
-        2. do an [[https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs][editable pip install]]: pip install -e PATH
-
-        3. run [[https://stackoverflow.com/questions/19048732/python-setup-py-develop-vs-install][python setup.py develop]]
-
-           Maybe this is the best way.
-
-           But is it?  The [[https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs][editable pip install]] says there are advantages to using pip, and a commenter [[https://stackoverflow.com/questions/19048732/python-setup-py-develop-vs-install][here]] says that he had problems w/ setup.py develop and so used pip install -e PATH
-
+*** [[Python install and package management]]
 *** Mutual Information in Python
 ***** Kraskov-like MI in Python (see energytop.org) 
 *** Probabilistic Programming in Python: [[https://pyro.ai/][Pyro]]
@@ -12764,6 +13420,8 @@ else:
       df
       
 ***** [[sklearn Column Transform of pandas dataframes]]
+***** table styling, pandas
+******* good: [[https://towardsdatascience.com/style-pandas-dataframe-like-a-master-6b02bf6468b0][Style Pandas Dataframe Like a Master]]
 *** <<timestamps in python>>
     
     The ~Dateutil~ timestamp parser seems a good replacement for built-in python ~datetime~ parser, as it (mostly, I suppose) doesn't require you to specify a time string format.  Web commenters say that it can be slower than ~datetime~ but the delay was insignificant when I parsed my 2K entry energy.bib file.
@@ -12829,12 +13487,16 @@ else:
 
     PyPDF2 seems to be the simplest one, based on the articles below.  But I haven't tried the others.
 
+***** [[https://carolinamendozab.medium.com/nice-and-easy-way-to-extract-data-from-pdf-files-with-python-d71b58f43d04][How to extract data from PDF files with Python — nice and easy]]
 ***** [[https://medium.com/@umerfarooq_26378/python-for-pdf-ef0fac2808b0][Python for Pdf]] (many libraries, different and overlapping skills)
 ***** [[https://www.geeksforgeeks.org/working-with-pdf-files-in-python/][Working with PDF files in Python]]
 ***** [[https://levelup.gitconnected.com/modifying-pdf-files-using-python-64374fd0da2c][Modifying PDF Files Using Python]]
+***** also [[org-roam topic & related note discovery]]
 *** <<Python NLP libs>>
 ***** [[https://towardsdatascience.com/5-nlp-models-that-you-need-to-know-about-754594a3225b][5 NLP Models That You Need to Know About]]
 ***** [[https://towardsdatascience.com/6-nlp-techniques-every-data-scientist-should-know-7cdea012e5c3][6 NLP Techniques Every Data Scientist Should Know]]
+***** [[Python Personal Knowldge Query]]
+*** [[Python Personal Knowldge Query]]
 *** combinations of stuff in lists with python
 
     and also avoiding deeply nested loops
@@ -12996,6 +13658,48 @@ https://aws.amazon.com/blogs/machine-learning/deploy-trained-keras-or-tensorflow
 
 https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn-support/
 
+******* [[Running vscode on Sagemaker]]
+
+******* Sagemaker kernels
+********* <<Sagemaker notebook kernels with specific python version>>
+          From: [[https://awstip.com/how-to-use-a-newer-python-version-in-aws-sagemaker-notebook-1682a89625ef][How to use a newer python version in AWS Sagemaker Notebook]]
+
+          After you [[Open a Sagemaker console]]:
+
+            conda create -n tensorflow_python3_9 python=3.9
+              If see message saying the shell isn't set up, [[https://stackoverflow.com/a/65183109/2591097][do this]]:
+                   source ~/anaconda3/etc/profile.d/conda.sh
+
+            conda activate tensorflow_python3_9
+
+          In the sagemaker terminal, I just did:
+
+            conda install tensorflow
+
+          But to get a matching latest version of tensorflow on MS laptop, you
+          may need to [[https://medium.com/analytics-vidhya/install-tensorflow-2-0-along-with-all-packages-on-anaconda-for-windows-10-and-ubuntu-86a89ba51983][use pip to get tensorflow 2.0 on Windows]]:
+
+            pip install --upgrade pip
+            pip install --upgrade tensorflow
+            
+            conda install pandas keras (and whatever else)
+
+******* <<Open a Sagemaker console>>
+        From: [[https://milesmurdocca.com/how-do-i-open-a-terminal-in-an-aws-sagemaker-instance/][How do I open a terminal in an AWS SageMaker instance?]]
+
+********* Open the Amazon SageMaker console. Start an existing notebook or create a new notebook instance.
+********* From the same console screen, open the Jupyter dashboard, and then choose the Files tab.
+********* Choose New, and then choose Terminal. This will bring up a terminal window.
+
+******* Get Sagemaker role
+        From: [[https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html][SageMaker Roles - Amazon SageMaker]]
+
+        In online AWS sagemaker:
+        
+          import sagemaker
+          sagemaker_session = sagemaker.Session()
+          role = sagemaker.get_execution_role()
+
 ***** <<Docker Containers>>
 ******* excellent YouTube tutorial: [[https://www.youtube.com/watch?v=0oEsMwSxBsk][Containers? So What? Docker 101 Explained.]]
 ******* [[cite:Nust20dockerDS10rules][Nuest et al. 2020: Ten Simple Rules DS Containers]]
@@ -13012,6 +13716,7 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 ********* also [[Docker Containers]]
 ***** Reading AWS buckets 
 ******* [[https://s3browser.com/how-to-upload-and-download-files.aspx][S3 Browser]] (windows tool)
+***** [[Running vscode on AWS EC2]]
 *** ONNX model format & pipelines
     From: [[https://onnx.ai/about.html][ONNX | About]]
 
@@ -13099,8 +13804,8 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 ***** disable built-in pdf reader (or change it)
       from [[https://support.mozilla.org/en-US/kb/disable-built-pdf-viewer-and-use-another-viewer][here]]:
 
-      1. Click menu
-      2. Options
+      1. Click hamburger menu
+      2. Settings
       3. Applications panel.
       4. Find Portable Document Format (PDF) in the list and click on it to select it.
       5. Click on the drop-down arrow in the Action column for the above
@@ -13515,6 +14220,15 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 
       [[https://www.cyberciti.biz/faq/how-to-install-homebrew-on-macos-package-manager/][How to install Homebrew on macOS (brew command) - nixCraft]]
 
+
+    Update brew and cask:
+
+      brew update
+
+    Upgrade all installed packages (runs brew update 1st):
+
+      brew upgrade      
+
 ***** [[http://www.macports.org/][MacPorts]]
 
       sudo port install <name of ported package>
@@ -13595,15 +14309,15 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
             [[https://9to5mac.com/2016/03/17/how-to-remap-windows-keyboard-buttons-match-mac-layout/][How-To: Remap Windows keyboards to match the Mac keyboard layout]]
 
       *Keyboard Function*
-      | Windows key      | Mac key                                 | MacOS function                                                                   |
-      |------------------+-----------------------------------------+----------------------------------------------------------------------------------|
-      | Del              | Del, Fn-Delete                          | Deletes the character to the right. On Mac notebook computers, press Fn-Delete.  |
-      | Alt              | Option                                  | Enters special characters, such as é.                                            |
-      | Control, Windows | Command                                 | Performs actions or shortcuts. For example, pressing Command-S usually saves a document or file. |
+      | Windows key      | Mac key                                 | MacOS function                                                                                                                                                                     |
+      |------------------+-----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+      | Del              | Del, Fn-Delete                          | Deletes the character to the right. On Mac notebook computers, press Fn-Delete.                                                                                                    |
+      | Alt              | Option                                  | Enters special characters, such as é.                                                                                                                                              |
+      | Control, Windows | Command                                 | Performs actions or shortcuts. For example, pressing Command-S usually saves a document or file.                                                                                   |
       | Home, End        | Command-Left Arrow, Command-Right Arrow | On the Mac, use the Command and arrow keys to go to the beginning or end of the current line, and use the Home and End keys to go to the beginning or end of the current document. |
-      | Num Lock         | Num LockShift-Clear                     | In some apps, controls whether pressing keys in the numeric keypad enters numbers or moves the cursor. |
-      | Scroll Lock      | Control-F14 (maybe press & hold the Fn) | In some apps, controls whether pressing the arrow keys moves the cursor or scrolls in a window. |
-      | PrntScrn / Win+S | Shift-Command-3,4,5                     | Takes pictures of the screen. Shift-Command-3 takes a picture of the entire screen. Shift-Command-4 takes a picture of the part of the screen you select. |
+      | Num Lock         | Num LockShift-Clear                     | In some apps, controls whether pressing keys in the numeric keypad enters numbers or moves the cursor.                                                                             |
+      | Scroll Lock      | Control-F14 (maybe press & hold the Fn) | In some apps, controls whether pressing the arrow keys moves the cursor or scrolls in a window.                                                                                    |
+      | PrntScrn / Win+S | Shift-Command-3,4,5                     | Takes pictures of the screen. Shift-Command-3 takes a picture of the entire screen. Shift-Command-4 takes a picture of the part of the screen you select.                          |
       Also [[Screen snipping (screenshots) on MacOS]]
       
       *Physical location of MacOS keys on external Windows keyboards (default)*
@@ -15221,10 +15935,36 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ***** [[org-roam]]
 ***** [[http://bnbeckwith.com/code/writegood-mode.html][WriteGood Mode]]: Weasel words, passive voice dupes
 ***** also [[Emacs]]
+* <<Personal Knowledge Query>>
+
+  Querying my own data using modern AI e.g. OpenAI token vectorier
+
+*** <<Python Personal Knowldge Query>>
+***** <<Irtiza Hafiz's personal database query project>>
+******* [[https://levelup.gitconnected.com/creating-your-own-ai-powered-second-brain-a-guide-with-python-and-chatgpt-f5547ef7e136][Creating Your Own AI-Powered Second Brain: A Guide with Python and ChatGPT]]
+******* [[https://www.youtube.com/@irtizahafiz][Code with Irtiza - YouTube]]
+******* uses [[llama_index]]
+***** <<llama_index>>
+
+      Library w/ examples showing how to vectorize documents with OpenAI token vectorizer
+      
+******* GitHub: [[https://github.com/jerryjliu/llama_index][GitHub - jerryjliu/llama_index: LlamaIndex (GPT Index) is a project that prov]]
+******* used by [[Irtiza Hafiz's personal database query project]]
+
+*** <<Emacs Personal Knowldge Query>>
+***** [[ekg]]
+
+*** also [[Knowledge as Graphs]]  
 * <<Knowledge as Graphs>>
 *** <<Knowledge Graphs in Emacs>>
 ***** [[org-roam]]
 ***** [[org-brain]]
+***** <<ekg>>
+
+      An emacs kind-of org-mode that uses sql as its database.  Has nascent OpenAI-based note similarity search, tags, but no inter-note links?  It looks pretty alpha in Feb. 2023.
+      
+******* [[https://github.com/ahyatt/ekg][ahyatt/ekg: The emacs knowledge graph, app for notes and structured]]
+******* [[https://www.youtube.com/watch?v=qxa2VrseFUA][Introduction to ekg, the Emacs Knowledge Graph - YouTube]]
 ***** [[Neuron Zettelkasten]]
 ***** Sacha Chau's elisp for making a goal concept map (code at end of [[http://pages.sachachua.com/evil-plans/][this page]])
 ***** [[org-diagram drawing with plantuml-babel.org]]
@@ -15236,14 +15976,15 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ******* [[http://emacs.stackexchange.com/questions/24300/translate-pseudo-code-automatically-on-export-from-latex-to-pdf-in-org-mode][emacs orgmode concept map / Latex]] (also not baked)
 ***** [[org-roam topic & related note discovery]]
 ***** [[Emacs Mermaid]] (can do)
+***** also [[Emacs Personal Knowldge Query]]
 *** [[Relations and Visualization in Zotero]]
 *** Tree / Mindmaps
 ***** MindMeister
 ******* mainly a mindmap tool
 ******* has crappy links kinda like concept maps
 ***** [[freemind and/or freeplane]]
-***** [[http://www.docear.org/software/screenshots/][DocEar]]: does bibtex based outlines as mindmaps
-      <<DocEar>>
+***** <<DocEar>> 
+******* [[http://www.docear.org/software/screenshots/][DocEar]] does bibtex based outlines as mindmaps
 ******* [[https://docear.uservoice.com/forums/124375-docear-s-feature-wishlist/suggestions/3571506-clones][cloned nodes aren't developed]] yet, so it's strictly a tree
 ***** OPML
 ******* _trees only_: a standard [[https://en.wikipedia.org/wiki/OPML][for hierarchical, ordered list]]s
@@ -15297,7 +16038,7 @@ Excellent pdf annotator and complete workflow -- it's fantastic.  My only big co
 ***** <<Foam>> Personal knowledge manager
       See: [[https://foambubble.github.io/foam/][Foam | A personal knowledge management and sharing system for VSCode]]
 
-      Also built on [[vscode]] is [[dendron]]
+      Also built on [[[[vscode]]]] is [[dendron]]
 
 ******* [[https://www.zylstra.org/blog/][Said]] to be a potential open source alternative to [[Obsidian]] (a clone?)
 ***** [[https://nesslabs.com/roam-research-alternatives][Roam Research free, open source, and self-hosted alternatives]]
@@ -15627,6 +16368,7 @@ I think systemcrafters guy said pages could be check into git at short time inte
 
         [[https://twitter.com/obsdmd/status/1281301410890551296?lang=en][Obsidian supports Mermaid Diagrams]]
 
+******* [[https://www.evernote.com/shard/s13/nl/1523219/75f7dd8f-d0ad-499c-81cf-e2a68d4235cb][Using ChatGPT to build System Diagrams]]: mermaid and plantML
 ******* also [[graphviz]] (similar, but more complicated)
 ******* Windows mermaid-cli
         From: [[https://github.com/mermaidjs/mermaid.cli/issues/73#issuecomment-876701921][mermaidjs/mermaid.cli#73 Install on Windows]]
@@ -15668,7 +16410,8 @@ I think systemcrafters guy said pages could be check into git at short time inte
 ********* PlantUML mindmap syntax [[https://plantuml.com/mindmap-diagram][is just like org-mode sytnax]]
 ********* [[Confluence supports PlantUML]]
 ******* [[PlantUML diagrams in Joplin]]
-******* VScode PlantUML
+******* [[https://www.evernote.com/shard/s13/nl/1523219/75f7dd8f-d0ad-499c-81cf-e2a68d4235cb][Using ChatGPT to build System Diagrams]]: mermaid and plantML
+******* <<vscode PlantUML>>
 
         [[https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml][PlantUML - Visual Studio Marketplace]]
 
@@ -15732,6 +16475,7 @@ I think systemcrafters guy said pages could be check into git at short time inte
 ***** Seems to be the best: [[https://www.connectedpapers.com/][Connected Papers | Find and explore academic papers]]
 ***** [[https://openknowledgemaps.org/][Open Knowledge Maps - A visual interface to the world's scientific knowledge]]
 ***** [[Research Rabbit]]: integrated mindmaps / ref search etc. Seems slick.
+*** also [[Personal Knowledge Query]]
 * Literature Search Tools
 *** <<Google Scholar>>
 ***** [[https://scholar.google.com/][Google Scholar]]
@@ -15878,7 +16622,7 @@ I think systemcrafters guy said pages could be check into git at short time inte
       o plain text markdown web pages in: C:\Users\scott\OneDrive\Apps\Joplin
       o [[https://discourse.joplinapp.org/t/can-you-annotate-clipped-web-pages/2745/10][WYSIWYG highlighting not forthcoming]], can do manually in markdown
       o There is an [[https://www.patreon.com/posts/34246624][experimental WYSIWYG editor]], but it doesn't highlight
-      o can also edit in external editor vscode seems to be default.  Emacs w/ dabbrevs could do the [[https://stackoverflow.com/questions/25104738/text-highlight-in-markdown][highlighting w/ html <mark> tags]], or if edit markdown notes, use built-in \==text==\ markdown notation (yellow only unless you add css or something)
+      o can also edit in external editor [[vscode]] seems to be default.  Emacs w/ dabbrevs could do the [[https://stackoverflow.com/questions/25104738/text-highlight-in-markdown][highlighting w/ html <mark> tags]], or if edit markdown notes, use built-in \==text==\ markdown notation (yellow only unless you add css or something)
 
 ******* links/backlinks kinda but not quite there yet
 ********* links to other notes [[https://joplinapp.org/markdown/#links-to-other-notes][possible but clunky]] (12/01/20)
