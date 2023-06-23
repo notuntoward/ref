@@ -6768,6 +6768,7 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 ********* [[https://www.adobe.com/support/downloads/thankyou.jsp?ftpID=5495&fileID=5491][DNG Codec 2.0]], for OLD Windows Photo Viewer, commenters say it's not updated
 ***** [[http://www.faststone.org/FSViewerDetail.htm][Fast Stone Image Viewer]]: free, works on Panasonic RW2, Adobe DNG, and others
 *** [[Latex on Windows]]
+*** [[Git on Windows]]
 *** also [[Install MS Office and MS Fonts on MacOS]]
 *** also [[MacOS]]
 * PC Performance Testing
@@ -7697,7 +7698,7 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 
 ******* also [[Editing and debugging a python package installed from source]]
 
-***** Git on Windows
+***** <<Git on Windows>>
 ******* <<git bash>>
         ([[https://gitforwindows.org/][comes with SCM git for windows]])
 
@@ -7801,12 +7802,18 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 
                    Set-Service -Name sshd -StartupType 'Automatic'
 
-************* Create an SSH key pair for work bitbucket cloud account, using work email
+************* Create an SSH key pair for bitbucket cloud accounts, using work and sharpleaf emails
 
               cd ~
+
+              # work
               ssh-keygen -t ed25519 -b 4096 -C "scott.otterson@qcells.com" -f qcells_windows_bitbucket
 
-*************** Windows Laptop Studio Work Bitbucket key:
+              # personal (notuntoward, I used the website password):
+              using [[Preventing git push from asking for your password all the time]]
+
+              ssh-keygen -t ed25519 -b 4096 -C "scotto@sharpleaf.org" -f ~/.ssh/personal_windows_bitbucket
+*************** Windows Laptop Studio Work Bitbucket key
 
               I used pwd: oG1<jT9)
 
@@ -7832,6 +7839,30 @@ The key's randomart image is:
 | B=O+. ...oE. |
 | oXXB   .o+o  |
 +----[SHA256]-----+
+
+*************** Windows Laptop Studio Personal Bitbucket key
+
+$ ssh-keygen -t ed25519 -b 4096 -C "scotto@sharpleaf.org" -f ~/.ssh/personal_windows_bitbucket
+Generating public/private ed25519 key pair.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/users/scott/.ssh/personal_windows_bitbucket
+Your public key has been saved in /c/users/scott/.ssh/personal_windows_bitbucket.pub
+The key fingerprint is:
+SHA256:G5Cyh3vuh8OPs5Zhk9O4AOqlDKUDjT4dNWS2VJr1qJ0 scotto@sharpleaf.org
+The key's randomart image is:
++--[ED25519 256]--+
+| .=.o       |
+| +o=.o      |
+| o  o++. .  |
+| o +. +o..  |
+| o+..+..ES  |
+| =o o.oB .o |
+| +.+ .+.B.  |
+| +   oO..   |
+| o=*.       |
++----[SHA256]-----+
+
 
 
 ************* Add your key to the SSH agent.
@@ -7948,14 +7979,28 @@ Host key verification failed.
 
         (type "yes")
 
-******* Preventing git push from asking for your password all the time
+******* <<Preventing git push from asking for your password all the time>>
         From Bing Chat:
 
         # don't ask for a pwd more than once per 24 hrs
+
+        *Does not work* (error message below)
         git config --global credential.helper cache
         git config --global credential.helper 'cache --timeout=86400'
 
-        # Alternatively, you can use SSH instead of HTTPS to authenticate with the remote repository. This will allow you to use your SSH key instead of your password. Here are the steps to do this:
+        *Error message* for credential stuff
+        $ git push
+        error: unknown option `timeout=86400'
+        usage: git credential-cache [options] <action>
+        credential-cache is disabled in this build of Git
+
+
+        *Can't actually do the below for bitbucket*
+        
+        # Alternatively, you can use SSH instead of HTTPS to
+        # authenticate with the remote repository. This will allow you
+        # to use your SSH key instead of your password. But it seems like you can't do that for bitbucket, because won't accept -t rsa (that's what it was, I think) and now (June 2023) requires -t ed25519.  Anyway, here are the
+        # steps to do this:
 
         ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 
@@ -14309,15 +14354,15 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
             [[https://9to5mac.com/2016/03/17/how-to-remap-windows-keyboard-buttons-match-mac-layout/][How-To: Remap Windows keyboards to match the Mac keyboard layout]]
 
       *Keyboard Function*
-      | Windows key      | Mac key                                 | MacOS function                                                                                                                                                                     |
-      |------------------+-----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-      | Del              | Del, Fn-Delete                          | Deletes the character to the right. On Mac notebook computers, press Fn-Delete.                                                                                                    |
-      | Alt              | Option                                  | Enters special characters, such as é.                                                                                                                                              |
-      | Control, Windows | Command                                 | Performs actions or shortcuts. For example, pressing Command-S usually saves a document or file.                                                                                   |
+      | Windows key      | Mac key                                 | MacOS function                                                                                                                                                                   |
+      |------------------+-----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+      | Del              | Del, Fn-Delete                          | Deletes the character to the right. On Mac notebook computers, press Fn-Delete.                                                                                                  |
+      | Alt              | Option                                  | Enters special characters, such as é.                                                                                                                                            |
+      | Control, Windows | Command                                 | Performs actions or shortcuts. For example, pressing Command-S usually saves a document or file.                                                                                 |
       | Home, End        | Command-Left Arrow, Command-Right Arrow | On the Mac, use the Command and arrow keys to go to the beginning or end of the current line, and use the Home and End keys to go to the beginning or end of the current document. |
-      | Num Lock         | Num LockShift-Clear                     | In some apps, controls whether pressing keys in the numeric keypad enters numbers or moves the cursor.                                                                             |
-      | Scroll Lock      | Control-F14 (maybe press & hold the Fn) | In some apps, controls whether pressing the arrow keys moves the cursor or scrolls in a window.                                                                                    |
-      | PrntScrn / Win+S | Shift-Command-3,4,5                     | Takes pictures of the screen. Shift-Command-3 takes a picture of the entire screen. Shift-Command-4 takes a picture of the part of the screen you select.                          |
+      | Num Lock         | Num LockShift-Clear                     | In some apps, controls whether pressing keys in the numeric keypad enters numbers or moves the cursor.                                                                           |
+      | Scroll Lock      | Control-F14 (maybe press & hold the Fn) | In some apps, controls whether pressing the arrow keys moves the cursor or scrolls in a window.                                                                                  |
+      | PrntScrn / Win+S | Shift-Command-3,4,5                     | Takes pictures of the screen. Shift-Command-3 takes a picture of the entire screen. Shift-Command-4 takes a picture of the part of the screen you select.                        |
       Also [[Screen snipping (screenshots) on MacOS]]
       
       *Physical location of MacOS keys on external Windows keyboards (default)*
