@@ -8,10 +8,10 @@
 (add-hook 'emacs-startup-hook
           (lambda ()
             (message "Emacs Loaded in %s: %d garbage collections and %d features loaded."
-           (format "%.2f secs"
-                   (float-time
-                    (time-subtract after-init-time before-init-time)))
-           gcs-done (length features))))
+                     (format "%.2f secs"
+                             (float-time
+                              (time-subtract after-init-time before-init-time)))
+                     gcs-done (length features))))
 
 (require 'server) ; so file association works on windows and
 (server-start)  ; for emacsclient (emacsclientw on Windows)
@@ -131,6 +131,10 @@ With PRUNE, prune the build cache and the build directory."
 
 ;; * Emacs Debugging
 
+;; M-x restart-emacs kills emacs, restarts another one.  A simple convenience.
+;; already included in emacs 29, so can remove this: https://youtu.be/RYGwG62VMGw?t=656
+(use-package restart-emacs)
+
 ;; Find out what's slowing down emacs start by running M-x esup
 ;; (use-package esup :defer t) ; this might have worked but I don't remember
 ;;
@@ -173,7 +177,7 @@ With PRUNE, prune the build cache and the build directory."
       (setq w32-use-w32-font-dialog nil)
       (setq os-which-cmd "where")
       (if (setq pacbin-windows (sdo/find-exec
-                       "pacman" "Windows needs MSYS2 for pdf-tools & more"))
+                                "pacman" "Windows needs MSYS2 for pdf-tools & more"))
           (progn 
             ;; Ensure mingw64 libraries on front of PATH, not other tools' libs
             ;; https://github.com/politza/pdf-tools#compilation-and-installation-on-windows
@@ -184,18 +188,15 @@ With PRUNE, prune the build cache and the build directory."
         (message "Can't find msys2 on Windows so skipping pdf-tools init"))))
 
 ;; ** Individual Computer-dependent settings
+(setq computerNm (downcase system-name)) ; downcase: was getting
+                                        ; random case
+(defun get-shareDir (s)
+  (cond ((string-equal s "desktop-vpfvctb") "C:/Users/scott/OneDrive/share")
+        ((string-prefix-p "macbook-pro" s) "/Users/scott/OneDrive/share")
+        (t (progn (warn "Can't assign shareDir for unknown computer: %s" s)
+                  (concat "unknown_shareDir_for_unknown_computer_" s)))))
 
-(setq computerNm (downcase system-name)) ; downcase: was getting random case
-(pcase (eval 'computerNm)
-  ("macbook-pro-8.local"     ; Geli MacBook Pro
-   (progn (setq shareDir "/Users/scott/OneDrive/share")))
-  ("desktop-vpfvctb" ; Surface laptop studio
-   (setq shareDir "C:/Users/scott/OneDrive/share"))
-  (progn (warn "Can't assign shareDir for unknown computer: %s" computerNm)
-	 (setq shareDir (concat "unknown_computer_" computerNm "_shareDir")))
-  )
-;; Dad's computers: Desktop-2L6G237 (Surface), Desktop-IOS9UTJ (Compaq) 
-
+(setq shareDir (get-shareDir computerNm))
 
 (unless (file-readable-p shareDir)
   (warn "shareDir %s doesn't exist or not readable" shareDir))
@@ -270,6 +271,7 @@ DISPLAY is a display name, frame or terminal, as in
 ;; | Dell 24" 4K    |     |
 ;; | MacBook Pro    | 131 |
 ;; | HP 27" 1080p   |     |
+;; | LG Dualup 28   | 130 |
 ;;
 ;; This sets all frames to a specific given font
 ;; https://gist.github.com/mecab/1bc847e51034ae1e11b813b79f7da553
@@ -284,12 +286,15 @@ DISPLAY is a display name, frame or terminal, as in
     (read-number
      (format "Input font size (current_size=%d): " (face-attribute 'default :height))
      nil)))
- 
+  
   (set-face-attribute 'default nil :height size)
-)
+  )
 
 (defun set-default-font-per-screen ()
   "Change font size (`:height` in `face-attribute`) approriately."
+
+  ;;  (setq nPixDiv (calcDivNpix))
+  ;;  (message "nPixDiv: %s" nPixDiv)
 
   (let ((fontHeightBase 100))
     (if running-MacOS
@@ -307,8 +312,8 @@ DISPLAY is a display name, frame or terminal, as in
 
 (use-package dispwatch
   :config (and
-      (add-hook 'dispwatch-display-change-hooks #'my-display-changed-hook)
-      (dispwatch-mode 1)))
+           (add-hook 'dispwatch-display-change-hooks #'my-display-changed-hook)
+           (dispwatch-mode 1)))
 
 (add-hook 'after-init-hook #'set-default-font-per-screen)
 (add-hook 'after-make-frame-functions #'set-default-font-per-screen)
@@ -334,7 +339,7 @@ TODO: make this a general function."
       (when (fboundp 'goto-address) (add-hook 'find-file-hooks 'goto-address))
       (define-key global-map [S-down-mouse-3] 'imenu)
 
-      ;; TODO: put this inside of set-fonts-per-dpi ()
+      ;; TODO: put this inside of set-default-font-per-screen()
       
       ;; Set window dividers (mouse grab lines for moving window boundaries)
       (setq nPixDiv (calcDivNpix))
@@ -448,76 +453,56 @@ TODO: make this a general function."
 (setq bibfile_energy_fnm (expand-file-name "energy.bib" docDir)
       bibfile_energy_pdf_dir (expand-file-name "papers" docDir)
       bibfile_energytop_fnm (expand-file-name "energytop.org" docDir)
+      zotero_filedir (expand-file-name "zotero" docDir)
+      bibfiles_zotero_fnm (directory-files zotero_filedir t "\\.bib$")
+;;      bibfiles_zotero_pdf_dir (expand-file-name "zotero" zotero_filedir)
+      bibfile_DOE_dir (expand-file-name "DOE_brainstorm" docDir)
+      bibfile_DOE_fnm (expand-file-name "deepSolarDOE.bib" bibfile_DOE_dir)
+      bibfile_DOE_pdf_dir (expand-file-name "papers" bibfile_DOE_dir)
+
       ;; bibnotes_dir (expand-file-name "tmp_papers_notes" docDir)
-      bibnotes_dir (expand-file-name "~/tmp_papers_notes" docDir))
-(setq bibfile_list (list bibfile_energy_fnm
-                     "~/ref/DOE_brainstorm/deepSolarDOE.bib")
-      bibpdf_list (list bibfile_energy_pdf_dir
-                        "~/ref/DOE_brainstorm/papers"))
+      bibnotes_dirs (list (expand-file-name "tmp_papers_notes" docDir)))
 
+(setq bibfile_list (append (list bibfile_energy_fnm bibfile_DOE_fnm)
+                           bibfiles_zotero_fnm)
+      bibpdf_dir_list (list bibfile_energy_pdf_dir  bibfile_DOE_pdf_dir
+                        zotero_filedir))
 
-;;(setq org_roam_dir "~/share/tmp_org_roam_test")
-(setq org_roam_dir "~/ref/org_roam")
-
-(if t
-    (progn
-      (message "Old org/bib init with playground org-roam or DOE brainstorm")
-      (setq
-;;       org_roam_dir (expand-file-name "DOE_brainstorm" docDir)
-       org_notes_dir (expand-file-name "org-notes" org_roam_dir)
-       bibfile_roam_fnms (list (expand-file-name
-                                "deepSolarDOE.bib" org_roam_dir)
-                               (expand-file-name
-                                "newTechAdoption.bib"
-                                (expand-file-name "newTechAdoption" org_roam_dir)))
-       bibfile_roam_pdf_dir (expand-file-name "papers" org_roam_dir)
-       org_ref_notes_dir (expand-file-name "bib-notes" org_roam_dir)
-       org_ref_notes_fnm (expand-file-name "DOE_brainstorm.org" org_roam_dir)
-       org-directory org_notes_dir
-       deft-directory org_notes_dir
-       ))
-  (progn
-    (message "org-roam style init")
-    ;; simillar to idea in https://rgoswami.me/posts/org-note-workflow/
-    (setq
-     org_roam_dir (expand-file-name "org_roam" docDir)
-     org_notes_dir (expand-file-name "org_notes" org_roam_dir)
-     bibfile_roam_fnms (list (expand-file-name "zotlib.bib" org_roam_dir))
-     bibfile_roam_pdf_dir (expand-file-name "papers" org_roam_dir)
-     org_ref_notes_dir (expand-file-name "org_ref_notes" org_roam_dir)
-     org-directory org_notes_dir
-     deft-directory org_notes_dir
-     org-roam-directory org_notes_dir
-     )))
-
-;; ;; Users of this require that it really be a list, even if only one
-;; ;; item
-;; (setq bibfile_list '("~/ref/energy.bib"
-;;                     "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
-
-;; (setq bibfile_list bibfile_roam_fnms) ;; helm-bibtex slow w/ energy.bib
-;; but include pdfs in energy.bib so it can find pdfs if visited manually
-;;(setq bibpdf_list (list bibfile_energy_pdf_dir bibfile_roam_pdf_dir)) 
+(setq org-roam-directory "~/ref/org_roam")
+(message "Old org/bib init with playground org-roam or DOE brainstorm")
+(setq org_notes_dir (expand-file-name "org-notes" org-roam-directory)
+      bibfile_roam_fnms (list (expand-file-name
+                               "deepSolarDOE.bib" org-roam-directory)
+                              (expand-file-name "newTechAdoption.bib"
+                                                (expand-file-name
+                                                 "newTechAdoption"
+                                                 org-roam-directory)))
+      bibfile_roam_pdf_dir (expand-file-name "papers" org-roam-directory)
+      org_ref_notes_dir (expand-file-name "bib-notes" org-roam-directory)
+      org_ref_notes_fnm (expand-file-name "DOE_brainstorm.org"
+                                          org-roam-directory)
+      org-directory org_notes_dir
+      deft-directory org_notes_dir)
 
 ;; Find pdf w/ JabRef/Zotero fields
 (setq bibtex-completion-pdf-field "file")
-;; This dir must be present, otherwise helm-bibtex will make a file with this name.  YET it is ignored.
-;;(setq org-ref-bibliography-notes (expand-file-name "bib-notes" org_roam_dir))
 
 ;; ** Org package, basic config
 
 ;; TODO: experiment with C-c C-x C-b or M-x sdo/org-tree-to-indirect-buffer
 ;;
 (use-package org
-;;  :defer 0
+  ;;  :defer 0
+  ;; avoid org bug that braks org-roam
+  ;; https://github.com/org-roam/org-roam/issues/2361#issuecomment-1650957932
+  :straight (:branch "ca873f7")
   :diminish org-mode  ; doesn't hide the "Org" in modeline, for some reason
   :diminish org-table-header-line-mode  ; customization: org-table-header-line-p
   :config
-  ;;############## DEBUGGING: REMOVE #########
-  ;; (setq  org-element--cache-self-verify 'backtrace)
-  ;; (call-interactively 'org-element-cache-reset)
-  ;; ;;########################               
+  ;; TODO: try new link bindings: https://youtu.be/ks-3LphODws?t=346
   (define-key global-map "\C-cl" 'org-store-link)
+  ;; TODO: get rid of (kbd *): not needed in emacs 29: https://youtu.be/RYGwG62VMGw?t=798
+  ;; NOTE: emacs 29 will then be stricter about syntax keyboard setting: https://youtu.be/RYGwG62VMGw?t=949
   (global-set-key (kbd "C-c L") 'org-insert-link-global) ; insert in any buffer
   (global-set-key (kbd "C-c o") 'org-open-at-point-global) ; open in any buffer
   ;;(global-set-key "\C-cb" 'org-iswitchb) ; switch between org buffers
@@ -533,6 +518,7 @@ TODO: make this a general function."
   ;;(define-key org-mode-map (kbd "C-x n")
   ;;'org-toggle-narrow-to-subtree) ; was switch TODO set
 
+  ;; NOTE: I've also mapped: (org-speed-commands-user '(("s" . narrow-or-widen-dwim)))
   ;; Match narrow/widen binding in other modes (below)
   (define-key org-mode-map (kbd "C-x n n") 'recursive-narrow-or-widen-dwim)
 
@@ -543,10 +529,17 @@ TODO: make this a general function."
           ("\\.mm\\'" . default)
           ("\\.x?html?\\'" . default)
           ("\\.pdf\\'" . default)
-          (auto-mode . emacs))))
+          (auto-mode . emacs)))
+  ;; nice checkbox chars: https://jft.home.blog/2019/07/17/use-unicode-symbol-to-display-org-mode-checkboxes/comment-page-1/?unapproved=39&moderation-hash=c27ca582f6ef7a0e2364a0c81b730dc2#comment-39
+  :hook (org-mode . (lambda ()
+                  "Beautify Org Checkbox Symbol"
+                  (push '("[ ]" .  "☐") prettify-symbols-alist)
+                  (push '("[X]" . "☑" ) prettify-symbols-alist)
+                  (push '("[-]" . "❍" ) prettify-symbols-alist)
+                  (prettify-symbols-mode))))
 
 (use-package org-superstar
-;;  :after org
+  ;;  :after org
   :custom
   (org-superstar-cycle-headline-bullets nil)
   (org-superstar-headline-bullets-list '("●" "￭" "￮" "►" "•" "□" "▸" "▫" "▹"))
@@ -559,8 +552,8 @@ TODO: make this a general function."
   ;; only works w/ "org-superstar-mode: but see like it s/b just "org-superstar"
   :hook (org-mode . org-superstar-mode))
 
-;; Show hidden emphasis markers e.g.* in *bold*.  So can see where cursor is.
-;; this seemed more annoying than useful
+;; Show hidden emphasis markers e.g. '*' in *bold*.  So can see where cursor is.
+;; Also URL links. But this seemed more annoying than useful
 ;; (use-package org-appear
 ;;   ;; comment out so only expands emphasis
 ;;   ;; :custom
@@ -770,8 +763,9 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   (define-key org-mode-map (kbd "C-c p t") 'org-toggle-properties)
 
   ;; ** Text -> checkbox -> TODO
-  ;; Converts non-heading text lines to checkboxes lists;
-  ;; convert checkbox lists to TODO's with: C-c C-*
+  ;; Converts non-heading text lines at cursor or in region to checkboxes lists;
+  ;; convert checkbox lists to TODO's with: C-c C-_  Note: C-c -
+  ;; converts to list and C-c * converts to headline
   ;; https://stackoverflow.com/questions/18667385/convert-lines-of-text-into-todos-or-check-boxes-in-org-mode
   (defun org-set-line-checkbox (arg)
     (interactive "P")
@@ -786,6 +780,8 @@ TODO: add a cycle that opens or collapses all prop drawers?"
         (forward-line))
       (beginning-of-line)))
   )
+  (define-key org-mode-map (kbd "C-c C-_") 'org-set-line-checkbox)
+
 
 ;; ** Org-download
 
@@ -820,6 +816,8 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; ** Org Export
 
+(sdo/find-exec "zip" "Needed for org-mode export to .odt")
+
 ;; doesn't work w/ latest org, last updated in 2018
 ;; (use-package ox-minutes :after org) ; nice(er) ascii export, but slow start
 
@@ -835,8 +833,8 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; ** Org Parsing
 
-(use-package pyorg
- :straight (:host github :repo "jlumpe/pyorg" :files ("pyorg.el")))
+;; (use-package pyorg
+;;   :straight (:host github :repo "jlumpe/pyorg" :files ("pyorg.el")))
 
 ;; ** Org and Zotero
 
@@ -856,135 +854,157 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; ** Org-cite (native in org 9.5+)
 
-;; TODO: SEE this for bdarcus's citar embark config wiki
-;; https://github.com/bdarcus/citar/wiki/Embark
-;; TODO: set up .bib file autorefresh: https://github.com/bdarcus/citar#refreshing-the-library-display
+;; (require 'oc-csl-activate)
+;; (setq org-cite-activate-processor 'csl-activate)
+;; This causes edited Org citations with valid cite keys to be rendered immediately when the cursor leaves them, but unedited citations remain unrendered. The interactive command
 
+;; org-cite-csl-activate-render-all
+;; in contrast, renders all Org citations in the current buffer.
+
+;; One way of making sure that cursor-sensor-mode is turned on is adding the corresponding command to org-mode-hook:
+
+;; (add-hook 'org-mode-hook (lambda () (cursor-sensor-mode 1)))
+
+;; I thought this might be the cause of the messed up org-ref links but they are messed up whether or not oc-csl-activate is commented out.
+;; prettier in-buffer org cites
+;; https://github.com/anghyflawn/dot-emacs/blob/master/emacs.org
+(use-package oc-csl-activate
+  :straight (:host github :repo "andras-simonyi/org-cite-csl-activate")
+  :config
+  (add-hook 'org-mode-hook (lambda () (cursor-sensor-mode 1)))
+  (setq org-cite-activate-processor 'csl-activate
+        org-cite-csl-activate-use-document-style t))
+
+;; another: https://github.com/tecosaur/emacs-config/blob/master/config.org
+;;          there's also an org-ref converter at that URL:
+;;
+;; (use-package oc-csl-activate
+;;   :after oc
+;;   ;; SDO: I added this
+;;   :straight (:host github :repo "andras-simonyi/org-cite-csl-activate")
+;;   :config
+;;   (setq org-cite-csl-activate-use-document-style t)
+;;   (defun +org-cite-csl-activate/enable ()
+;;     (interactive)
+;;     (setq org-cite-activate-processor 'csl-activate)
+;;     (add-hook 'org-mode-hook '((lambda () (cursor-sensor-mode 1)) org-cite-csl-activate-render-all))
+;;     ;; SDO: something's wrong w/ defadvice, after I remove the !
+;;     (defadvice! +org-cite-csl-activate-render-all-silent (orig-fn)
+;;       :around #'org-cite-csl-activate-render-all
+;;       (with-silent-modifications (funcall orig-fn)))
+;;     (when (eq major-mode 'org-mode)
+;;       (with-silent-modifications
+;;         (save-excursion
+;;           (goto-char (point-min))
+;;           (org-cite-activate (point-max)))
+;;         (org-cite-csl-activate-render-all)))
+;;     (fmakunbound #'+org-cite-csl-activate/enable)))
+
+;; started from citar: https://github.com/emacs-citar/citar#org-cite
+
+;; 4/5/23 post: https://www.reddit.com/r/orgmode/comments/12dpbfx/guide_to_org_cite/
+;; referencing this: https://amerygration.com/Blog/citation_handling_in_emacs.html
+
+;; is already working below
+;; (use-package vertico
+;;   :ensure t
+;;   :config
+;;   (vertico-mode))
+;;
+;; (use-package orderless
+;;   :ensure t
+;;   :init
+;;   (setq completion-styles '(orderless basic)
+;;         completion-category-overrides
+;;         '((file (styles basic partial-completion)))))
+
+(use-package embark
+  :after vertico
+  :ensure t)
+
+(use-package marginalia
+  :after vertico
+  :ensure t
+  :config
+  (marginalia-mode))
+
+(use-package citeproc
+  :ensure t)
+
+;; (use-package embark-consult             ; Consult integration for Embark
+;;   :demand :after (embark consult)
+;;   :hook
+;;   (embark-collect-mode-hook . consult-preview-at-point-mode))
+
+
+;; It's possible to open entries directly in zotero
+;; https://github.com/emacs-citar/citar#opening-reference-entries
+;; you need to somehow set sometime to 'citar-open-entry-in-zotero'
+;; So citar opens pdfs with an external reading, I customized citar-file-open-functions to 'citar-file-open-external for the pdf extension
+;; TODO: how to make it open Drawboard if available?  
 (use-package citar
-  :straight (:host github :repo "bdarcus/citar")
+  :ensure t
+  :init
+  (setq org-cite-insert-processor 'citar
+        org-cite-follow-processor 'citar
+        org-cite-activate-processor 'citar
+        org-cite-global-bibliography bibfile_list
+        citar-bibliography org-cite-global-bibliography
+        citar-library-paths bibpdf_dir_list
+        citar-notes-paths bibnotes_dirs)
   :bind (("C-c b" . citar-insert-citation)
          ;; also  C-c C-x C-@
          (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
          :map minibuffer-local-map
-         ("M-b" . citar-insert-preset))
-  :custom
-  ;; https://github.com/bdarcus/citar/issues/407#issuecomment-968158550
-  (org-cite-global-bibliography biblist_new)
-  ;; (org-cite-global-bibliography '("~/ref/energy.bib"
-  ;;                                 "~/ref/DOE_brainstorm/deepSolarDOE.bib"))
-  (citar-bibliography bibfile_list)
-  (citar-library-paths bibpdf_list)
-  ;; citar notes don't work, as of 11/28/21
-  (citar-notes-paths bibnotes_dir)
-  ;; so citar can open JabRef-style file fields
-  (setq citar-file-parser-functions '(citar-file-parser-default
-                                      citar-file-parser-triplet))
-  (org-cite-insert-processor 'citar)
-  (org-cite-follow-processor 'citar)
-  (org-cite-activate-processor 'citar)
-  (citar-at-point-function 'embark-act) ; So more C-o options than file list
-  (citar-file-open-function 'citar-file-open-external)
-  ;; from emacsconf
-  ;;(citar-file-extensions '("pdf" "org" "md"))
-  ;; (citar-file-find-additional-files t) ; finds pdfs... w/ same start as key
-  ;;(citar-open-note-function 'orb-citar-edit-note) ; default, I think
-  (citar-open-note-function 'orb-bibtex-actions-edit-note) ; OR
+         ("M-b" . citar-insert-preset))) ; ??  from 
+
+(use-package citar-embark
+  :after citar embark
+  :ensure t
   :init
-  ;; if .bib file changes, "invalidate the cache by default".  Is that good?
-  ;; https://github.com/bdarcus/citar#refreshing-the-library-display
-  ;; (citar-filenotify-setup '(LaTeX-mode-hook org-mode-hook))
+  (setq citar-at-point-function 'embark-act)
   :config
-  ;; this is supposed to pick up styles, like IEEE but doesn't
-  ;; (setq org-cite-csl-styles-dir "~/Zotero/styles") ;; hangs org on
-  ;; startup
-  
-  (defun robo/citar-full-names (names)
-    "Transform names like LastName, FirstName to FirstName LastName."
-    (when (stringp names)
-      (mapconcat
-       (lambda (name)
-         (if (eq 1 (length name))
-             (split-string name " ")
-           (let ((split-name (split-string name ", ")))
-             (cl-concatenate 'string (nth 1 split-name) " " (nth 0 split-name)))))
-       (split-string names " and ") ", ")))
-
-  ;; somehow, this section causes the error: progn: Wrong type argument: characterp, "1"
-  ;; (setq citar-display-transform-functions
-  ;;       '((t . citar-clean-string)
-  ;;         (("author" "editor") . robo/citar-full-names)))
-
-  ;; possibly works but I haven't tested what it does w/ some order
-  ;; escaping drug companies; from (cpr
-
-
-  ;; ;; TODO: try above w/ pretty, which might test 
-  ;; (setq citar-templates
-  ;;       '((main . "${author editor:55}     ${date year issued:4}     ${title:55}")
-  ;;         (suffix . "  ${tags keywords keywords:40}")
-  ;;         (preview . "${author editor} ${title}, ${journal publisher container-title collection-title booktitle} ${volume} (${year issued date}).\n")
-  ;;         (note . "#+title: Notes on ${author editor}, ${title}")))
-
-  )
-
-;; From: https://github.com/mclear-tools/citar-capf
-;; Was written w/ the help of the citar author, Bruce D'Arcus
-;; (use-package citar-capf
-;;   :straight (:type git :host github :repo "mclear-tools/citar-capf")
-;;   ;; NOTE: Set these hooks for whatever modes for which you want citar citation completion
-;;   :hook ((org-mode markdown-mode tex-mode latex-mode reftex-mode) . citar-capf-mode) 
-;;   :config
-;;   ;; if you don't already have this set in citar
-;;   ;; (setq citar-bibliography "path/to/bib")
-;;   (setq citar-templates
-;;       `((main . " ${=key= id:15} ${title:48}")
-;;         (suffix . "${author editor:30}  ${=type=:12}  ${=beref=:12} ${tags keywords:*}")
-;;         (preview . "${author editor} (${year issued date}) ${title}, ${journal journaltitle publisher container-title collection-title}.\n"))))
-
-;; Seems like the below got dropped by the vertico guy?  There was
-;; lots of discussion and then citar-capf was written, apparently in response
-;;
-;; use consult-completing-read for enhanced interface
-;; From: https://github.com/bdarcus/citar
-;; (with-eval-after-load 'embark
-;;   (advice-add #'completing-read-multiple :override
-;;               #'consult-completing-read-multiple))
-
+  (citar-embark-mode))
 
 ;; ** Ebib
 
-(use-package ebib
-  :custom
-  (ebib-preload-bib-files bibfile_list)
-  (ebib-index-columns
-        (quote
-         (("timestamp" 12 t)
-          ("Entry Key" 20 t)
-          ("Author/Editor" 40 nil)
-          ("Year" 6 t)
-          ("Title" 50 t))))
-  (ebib-index-default-sort (quote ("timestamp" . descend)))
-  (ebib-timestamp-format "%Y.%m.%d")
-  (ebib-use-timestamp t))
+;; I'm not using this
+;; (use-package ebib
+;;   :custom
+;;   (ebib-preload-bib-files bibfile_list)
+;;   (ebib-index-columns
+;;    (quote
+;;     (("timestamp" 12 t)
+;;      ("Entry Key" 20 t)
+;;      ("Author/Editor" 40 nil)
+;;      ("Year" 6 t)
+;;      ("Title" 50 t))))
+;;   (ebib-index-default-sort (quote ("timestamp" . descend)))
+;;   (ebib-timestamp-format "%Y.%m.%d")
+;;   (ebib-use-timestamp t))
 
 ;; ** Org-ref
 
-;; Store links in bibtex: C-c l; in .org files C-c ]
-;; Inspiration: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
+;; required by org-ref
+(use-package helm-bibtex)
+
 (use-package org-ref
-  :after org helm-bibtex
+;;  :after org helm-bibtex ;; blocks bibtex hydra binding if no org file visit
   :straight (:branch "org-ref-2" :host github :repo "jkitchin/org-ref")
+  ;; doesn't work
+  ;;:bind ("C-c j" . 'org-ref-bibtex-hydra/body)
   :init
   (let ((default-directory docDir))
 
     (setq org-ref-bibliography-notes org_ref_notes_fnm
           org-ref-default-bibliography bibfile_list 
-          org-ref-pdf-directory bibpdf_list
+          org-ref-pdf-directory bibpdf_dir_list
           reftex-default-bibliography org-ref-default-bibliography))
   ;;  https://github.com/jkitchin/org-ref/issues/468
   ;;(setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
-  :config
-  (define-key bibtex-mode-map "\C-cj" 'org-ref-bibtex-hydra/body)
+  :config ;; do it all in :init?
+  ;; doesn't work: doesn't show up bindings when edit .bib file
+  ;;(define-key bibtex-mode-map (kbd "C-c j") 'org-ref-bibtex-hydra/body)
   ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
   (setq bibtex-autokey-year-length 4
         bibtex-autokey-name-year-separator "-"
@@ -1000,16 +1020,20 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;; https://github.com/jkitchin/org-ref/issues/345
   (let ((lnk (assoc "bibtex" org-link-parameters)))
     (setq org-link-parameters (delq lnk org-link-parameters))
-    (push lnk org-link-parameters))
-  )
+    (push lnk org-link-parameters)))
 
-;; ** v2 Org-Roam
+;; wasn't called if inside of org-ref, for some reason
+(define-key bibtex-mode-map (kbd "C-c j") 'org-ref-bibtex-hydra/body)
+
+;; ;; ** v2 Org-Roam
 
 ;; ;; TODO: :custom (org-id-method 'ts) doesn't work
 ;; ;;       https://org-roam.discourse.group/t/org-roam-major-redesign/1198/28
 ;; ;; TIPS
 ;; ;; add org-id to headline: org-id-copy
 
+;; TODO: org-roam-find-node shows hierarchy: https://github.com/org-roam/org-roam/wiki/User-contributed-Tricks#showing-node-hierarchy
+;;
 ;; ;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
 ;; ;; several startup org-roams, also initializing org-roam-bibtex 
 (use-package org-roam
@@ -1026,6 +1050,8 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;; comment out unless specifically want to use ivy
   ;;  (org-roam-completion-system 'ivy)
 
+  ;; Use winner-undo/redo as forward/backward keys for org-roam ?
+  ;; https://youtu.be/OzKZJSCLo90?t=38
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert)
@@ -1036,13 +1062,11 @@ TODO: add a cycle that opens or collapses all prop drawers?"
          ("C-c n j" . org-roam-dailies-capture-today)
          :map org-mode-map
          ("C-M-i" . completion-at-point))
- 
+  
   :init
   ;; (setq org-roam-v2-ack t)
   ;; set this here instead of in :custom so it can be used during init
-  ;;  (setq org-roam-directory (file-truename "~/tmp/bibNotesOR"))
   ;; truename used for performance: https://org-roam.discourse.group/t/org-roam-buffer-does-not-update-on-click-link-buffer-switch/2364/8?u=scotto
-  (setq org-roam-directory org_roam_dir)
   ;; from: https://www.orgroam.com/manual.html=
   (setq org-roam-dailies-directory (expand-file-name "daily"
                                                      org-roam-directory))
@@ -1056,25 +1080,6 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;; If using org-roam-protocol
   (require 'org-roam-protocol))
 
-
-;; I don't know where/how to use this
-;; From: https://jethrokuan.github.io/org-roam-guide/
-;; (defun jethro/org-roam-node-from-cite (keys-entries)
-;;     (interactive (list (citar-select-ref :multiple nil :rebuild-cache t)))
-;;     (let ((title (citar--format-entry-no-widths (cdr keys-entries)
-;;                                                 "${author editor} :: ${title}")))
-;;       (org-roam-capture- :templates
-;;                          '(("r" "reference" plain "%?" :if-new
-;;                             (file+head "reference/${citekey}.org"
-;;                                        ":PROPERTIES:
-;; :ROAM_REFS: [cite:@${citekey}]
-;; :END:
-;; #+title: ${title}\n")
-;;                             :immediate-finish t
-;;                             :unnarrowed t))
-;;                          :info (list :citekey (car keys-entries))
-;;                          :node (org-roam-node-create :title title)
-;;                          :props '(:finalize find-file))))
 
 ;; ** org-roam-ui (graph viewing)
 
@@ -1090,50 +1095,50 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; ** org-roam-bibtex
 
-(use-package org-roam-bibtex
-  :config
-  (setq org-roam-capture-templates
-        '(("d" "default" plain "%?"
-           :if-new (file+head "${slug}.org"
-                              "#+title: ${title}\n#+SETUPFILE: ~/ref/tmp_papers_notes/setup_file.org\n* References :ignore:\n#+print_bibliography:")
-           :unnarrowed t)
-          ;; capture to inbox
-          ("i" "inbox" entry "* TODO %?\n"
-           :target (node "45acaadd-02fb-4b93-a741-45d37ff9fd5e")
-           :unnarrowed t
-           :empty-lines-before 1
-           :empty-lines-after 1
-           :prepend t)
-          ;; bibliography note template
+;; (use-package org-roam-bibtex
+;;   :config
+;;   (setq org-roam-capture-templates
+;;         '(("d" "default" plain "%?"
+;;            :if-new (file+head "${slug}.org"
+;;                               "#+title: ${title}\n#+SETUPFILE: ~/ref/tmp_papers_notes/setup_file.org\n* References :ignore:\n#+print_bibliography:")
+;;            :unnarrowed t)
+;;           ;; capture to inbox
+;;           ("i" "inbox" entry "* TODO %?\n"
+;;            :target (node "45acaadd-02fb-4b93-a741-45d37ff9fd5e")
+;;            :unnarrowed t
+;;            :empty-lines-before 1
+;;            :empty-lines-after 1
+;;            :prepend t)
+;;           ;; bibliography note template
 
-          ("r" "bibliography reference" plain "%?"
-~/ref/tmp_papers_notes
-;;           :if-new (file+head "references/notes_${citekey}.org"
-           :if-new (file+head "~/ref/tmp_papers_notes/refs/notes_${citekey}.org"
-                              "#+title: Notes on ${title}\n#+SETUPFILE: ~/ref/tmp_papers_notes/refs/ref/setup_file_ref.org\n* References :ignore:\n#+print_bibliography:")
-           :unnarrowed t)
-          ;; for my annotated bibliography needs
-          ("s" "short bibliography reference (no id)" entry "* ${title} [cite:@%^{citekey}]\n%?"
-           :target (node "01af7246-1b2e-42a5-b8e7-68be9157241d")
-           :unnarrowed t
-           :empty-lines-before 1
-           :prepend t)))
-  (defun robo/capture-to-inbox ()
-    "Capture a TODO straight to the inbox."
-    (interactive)
-    (org-roam-capture- :goto nil
-                       :keys "i"
-                       :node (org-roam-node-from-id "45acaadd-02fb-4b93-a741-45d37ff9fd5e")))
-  (require 'org-roam-bibtex)
+;;           ("r" "bibliography reference" plain "%?"
+;;            ~/ref/tmp_papers_notes
+;;            ;;           :if-new (file+head "references/notes_${citekey}.org"
+;;            :if-new (file+head "~/ref/tmp_papers_notes/refs/notes_${citekey}.org"
+;;                               "#+title: Notes on ${title}\n#+SETUPFILE: ~/ref/tmp_papers_notes/refs/ref/setup_file_ref.org\n* References :ignore:\n#+print_bibliography:")
+;;            :unnarrowed t)
+;;           ;; for my annotated bibliography needs
+;;           ("s" "short bibliography reference (no id)" entry "* ${title} [cite:@%^{citekey}]\n%?"
+;;            :target (node "01af7246-1b2e-42a5-b8e7-68be9157241d")
+;;            :unnarrowed t
+;;            :empty-lines-before 1
+;;            :prepend t)))
+;;   (defun robo/capture-to-inbox ()
+;;     "Capture a TODO straight to the inbox."
+;;     (interactive)
+;;     (org-roam-capture- :goto nil
+;;                        :keys "i"
+;;                        :node (org-roam-node-from-id "45acaadd-02fb-4b93-a741-45d37ff9fd5e")))
+;;   (require 'org-roam-bibtex)
 
-  ;; TODO: figure out note files dirs in tis
-  ;; (expand-file-name "notes_${citekey}.org" bibnotes_dir)
+;;   ;; TODO: figure out note files dirs in tis
+;;   ;; (expand-file-name "notes_${citekey}.org" bibnotes_dir)
 
-  (setq citar-open-note-function 'orb-citar-edit-note
-        citar-notes-paths '("~/ref/tmp_papers_notes/refs")
-        orb-preformat-keywords '("citekey" "title" "url" "author-or-editor" "keywords" "file")
-        orb-process-file-keyword t
-        orb-file-field-extensions '("pdf")))
+;;   (setq citar-open-note-function 'orb-citar-edit-note
+;;         citar-notes-paths '("~/ref/tmp_papers_notes/refs")
+;;         orb-preformat-keywords '("citekey" "title" "url" "author-or-editor" "keywords" "file")
+;;         orb-process-file-keyword t
+;;         orb-file-field-extensions '("pdf")))
 
 ;; *** Org-roam API
 ;;
@@ -1195,6 +1200,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; *** original org-note
 ;; keybindings, basic explanation: https://github.com/weirdnox/org-noter#keys
 ;; simple, just so it compiles.  started from: https://rgoswami.me/posts/org-note-workflow
+;; update: adjust based on setup here: https://github.com/fuxialexander/org-pdftools
 (use-package org-noter
   :after (:all org pdf-view)
   :config
@@ -1232,62 +1238,189 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 (if (or running-MacOS running-gnu-linux pacbin-windows)
     (progn
       (message "Initializing pdf-tools")
-      (use-package pdf-tools
-        :defer t
-        :config
-        ;; initialise (on Windows will download and build msys2 libs too)
-        (pdf-tools-install)
-        ;; open pdfs scaled to fit page
-        (setq-default pdf-view-display-size 'fit-page)
-        ;; (setq pdf-annot-activate-created-annotations t) ; for annotation text
-        (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
-        (setq pdf-view-resize-factor 1.1)   ; default is 25%
-        ;; Shorter shortcuts than e.g. C-c C-a h. These Work on =mouse= sel.
-        (define-key pdf-view-mode-map (kbd "h")
-          'pdf-annot-add-highlight-markup-annotation)
-        (define-key pdf-view-mode-map (kbd "t")
-          'pdf-annot-add-text-annotation)
-        (define-key pdf-view-mode-map (kbd "u")
-          'pdf-annot-add-underline-markup-annotation)
-        (define-key pdf-view-mode-map (kbd "D")
-          'pdf-annot-delete)
-        ;; Navigation: can also use M-< and M-> like normal
-        (define-key pdf-view-mode-map (kbd "C-<home>") 'pdf-view-first-page)
-        (define-key pdf-view-mode-map (kbd "C-<end>") 'pdf-view-last-page)
+      ;; (use-package pdf-tools
+      ;;   :defer t
+      ;;   :config
+      ;;   ;; initialise (on Windows will download and build msys2 libs too)
+      ;;   (pdf-tools-install)
+      ;;   ;; open pdfs scaled to fit page
+      ;;   (setq-default pdf-view-display-size 'fit-page)
+      ;;   ;; (setq pdf-annot-activate-created-annotations t) ; for annotation text
+      ;;   (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+      ;;   (setq pdf-view-resize-factor 1.1)   ; default is 25%
+      ;;   ;; Shorter shortcuts than e.g. C-c C-a h. These Work on =mouse= sel.
+      ;;   (define-key pdf-view-mode-map (kbd "h")
+      ;;     'pdf-annot-add-highlight-markup-annotation)
+      ;;   (define-key pdf-view-mode-map (kbd "t")
+      ;;     'pdf-annot-add-text-annotation)
+      ;;   (define-key pdf-view-mode-map (kbd "u")
+      ;;     'pdf-annot-add-underline-markup-annotation)
+      ;;   (define-key pdf-view-mode-map (kbd "D")
+      ;;     'pdf-annot-delete)
+      ;;   ;; Navigation: can also use M-< and M-> like normal
+      ;;   (define-key pdf-view-mode-map (kbd "C-<home>") 'pdf-view-first-page)
+      ;;   (define-key pdf-view-mode-map (kbd "C-<end>") 'pdf-view-last-page)
 
-        ;; Custom annotation colors: https://github.com/politza/pdf-tools/issues/581#issuecomment-646370370
-        ;; Emacs color pickers: https://emacs.stackexchange.com/questions/5582/are-there-color-pickers-for-emacs
-        ;; Strike out
-        (defun pdftools-strikeout-gray (oldfun loe)
-          (apply oldfun loe '("gray")))
-        (advice-add 'pdf-annot-add-strikeout-markup-annotation :around 
-                    #'pdftools-strikeout-gray)
-        ;; Underline
-        (defun pdftools-underline-purple (oldfun loe)
-          (apply oldfun loe '("#8a1e8a")))
-        (advice-add 'pdf-annot-add-underline-markup-annotation :around 
-                    #'pdftools-underline-purple)
-        ;; Squiggly underline
-        (defun pdftools-squiggly-red (oldfun loe)
-          (apply oldfun loe '("#fe2500")))
-        (advice-add 'pdf-annot-add-squiggly-markup-annotation :around 
-                    #'pdftools-squiggly-red)
+      ;;   ;; Custom annotation colors: https://github.com/politza/pdf-tools/issues/581#issuecomment-646370370
+      ;;   ;; Emacs color pickers: https://emacs.stackexchange.com/questions/5582/are-there-color-pickers-for-emacs
+      ;;   ;; Strike out
+      ;;   (defun pdftools-strikeout-gray (oldfun loe)
+      ;;     (apply oldfun loe '("gray")))
+      ;;   (advice-add 'pdf-annot-add-strikeout-markup-annotation :around 
+      ;;               #'pdftools-strikeout-gray)
+      ;;   ;; Underline
+      ;;   (defun pdftools-underline-purple (oldfun loe)
+      ;;     (apply oldfun loe '("#8a1e8a")))
+      ;;   (advice-add 'pdf-annot-add-underline-markup-annotation :around 
+      ;;               #'pdftools-underline-purple)
+      ;;   ;; Squiggly underline
+      ;;   (defun pdftools-squiggly-red (oldfun loe)
+      ;;     (apply oldfun loe '("#fe2500")))
+      ;;   (advice-add 'pdf-annot-add-squiggly-markup-annotation :around 
+      ;;               #'pdftools-squiggly-red)
         
-        ;; Default color for text highlight. 
-        ;; This will change the color of the Note.
-        (setq pdf-annot-default-markup-annotation-properties
-              '((color . "green")))
+      ;;   ;; Default color for text highlight. 
+      ;;   ;; This will change the color of the Note.
+      ;;   (setq pdf-annot-default-markup-annotation-properties
+      ;;         '((color . "green")))
 
-        ;; Default color for text.
-        ;; This will change the color of the Note.
-        (setq pdf-annot-default-text-annotation-properties
-              '((color . "#90ee90")))
-        )))
+      ;;   ;; Default color for text.
+      ;;   ;; This will change the color of the Note.
+      ;;   (setq pdf-annot-default-text-annotation-properties
+      ;;         '((color . "#90ee90")))
+      ;;   )
+
+      ;; direct from: https://github.com/fuxialexander/org-pdftools
+      (use-package org-noter
+        :config
+        ;; Your org-noter config ........
+        ;; On windows, first install, will ask for your msys dir.  Say c:/tools/msys64/
+        (require 'org-noter-pdftools))
+
+      (use-package org-pdftools
+        :hook (org-mode . org-pdftools-setup-link))
+
+      (use-package org-noter-pdftools
+        :after org-noter
+        :config
+        ;; Add a function to ensure precise note is inserted
+        (defun org-noter-pdftools-insert-precise-note (&optional toggle-no-questions)
+          (interactive "P")
+          (org-noter--with-valid-session
+           (let ((org-noter-insert-note-no-questions (if toggle-no-questions
+                                                         (not org-noter-insert-note-no-questions)
+                                                       org-noter-insert-note-no-questions))
+                 (org-pdftools-use-isearch-link t)
+                 (org-pdftools-use-freepointer-annot t))
+             (org-noter-insert-note (org-noter--get-precise-info)))))
+
+        ;; fix https://github.com/weirdNox/org-noter/pull/93/commits/f8349ae7575e599f375de1be6be2d0d5de4e6cbf
+        (defun org-noter-set-start-location (&optional arg)
+          "When opening a session with this document, go to the current location.
+           With a prefix ARG, remove start location."
+          (interactive "P")
+          (org-noter--with-valid-session
+           (let ((inhibit-read-only t)
+                 (ast (org-noter--parse-root))
+                 (location (org-noter--doc-approx-location (when (called-interactively-p 'any) 'interactive))))
+             (with-current-buffer (org-noter--session-notes-buffer session)
+               (org-with-wide-buffer
+                (goto-char (org-element-property :begin ast))
+                (if arg
+                    (org-entry-delete nil org-noter-property-note-location)
+                  (org-entry-put nil org-noter-property-note-location
+                                 (org-noter--pretty-print-location location))))))))
+        (with-eval-after-load 'pdf-annot
+          (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+
+      ))
 
 ;; ** org-media-note
 ;; For annotating youtube, etc, like in logseq.  Try this sometime.
 ;;
 ;; https://github.com/yuchen-lea/org-media-note
+;;
+
+;; * ekg
+
+(use-package ekg)
+;;  :bind (([f11] . ekg-capture)))
+
+;; * logseq
+;; ** logseq-open-in-emacs
+
+
+;; DOESN"T WORK:
+;; error: Could not find package org-protocol. Updating recipe repositories: (org-elpa melpa gnu-elpa-mirror nongnu-elpa el-get emacsmirror-mirror) with ‘straight-pull-recipe-repositories’ may fix this
+;; 
+;; Because org-protocol is internal to emacs and I'm using straight?
+;;
+;; so logseq can open a note file in emacs
+;; https://github.com/ksqsf/logseq-open-in-emacs
+;; (use-package org-protocol
+;;   :ensure org
+;;   :config
+;;   (add-to-list 'org-protocol-protocol-alist
+;;                '("org-find-file" :protocol "find-file" :function org-protocol-find-file :kill-client nil))
+
+;;   (defun org-protocol-find-file-fix-wsl-path (path)
+;;     "If inside WSL, change Windows-style paths to WSL-style paths."
+;;     (if (not (string-match-p "-[Mm]icrosoft" operating-system-release))
+;;         path
+;;       (save-match-data
+;;         (if (/= 0 (string-match "^\\([a-zA-Z]\\):\\(/.*\\)" path))
+;;             path
+;;           (let ((volume (match-string-no-properties 1 path))
+;;                 (abspath (match-string-no-properties 2 path)))
+;;             (format "/mnt/%s%s" (downcase volume) abspath))))))
+
+;;   (defun org-protocol-find-file (fname)
+;;     "Process org-protocol://find-file?path= style URL."
+;;     (let ((f (plist-get (org-protocol-parse-parameters fname nil '(:path)) :path)))
+;;       (find-file (org-protocol-find-file-fix-wsl-path f))
+;;       (raise-frame)
+;;       (select-frame-set-input-focus (selected-frame)))))
+;; * chatGPT
+
+;; DOESN'T WORK: chatgpt interface written by chatgpt itself
+;; my chatGPT secret key (following chatgpt instructions):
+;; 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
+
+;; (defvar chatgpt-api-url "https://api.openai.com/v1/engines/davinci-codex/completions")
+;;
+;; (defun chatgpt-api-request (prompt)
+;;   "Send PROMPT to the ChatGPT API and return the response."
+;;   (let* ((auth-token "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")
+;;          (body `((prompt . ,prompt)
+;;                  (max_tokens . 50)
+;;                  (n . 1)))
+;;          (headers `(("Content-Type" . "application/json")
+;;                     ("Authorization" . ,(concat "Bearer " auth-token)))))
+;;     (with-current-buffer
+;;         (url-retrieve-synchronously chatgpt-api-url nil nil nil t)
+;;       (goto-char (point-min))
+;;       (re-search-forward "^$")
+;;       (delete-region (point-min) (point))
+;;       (url-insert-file-contents chatgpt-api-url nil nil t)
+;;       (url-encode-url)
+;;       (setq buffer-string))))
+
+;; https://github.com/joshcho/ChatGPT.el
+;; https://www.youtube.com/watch?v=4oUrm4CnIjo
+;;
+;; "chatgpt install" command fails.  Seems to be hardcoded to firefox?
+;; or is it b/c I used condo for first command.?
+;;
+;; conda install epc
+;; pip install git+https://github.com/mmabrouk/chatgpt-wrapper
+;; chatgpt install
+;;
+;; (use-package chatgpt
+;;   :straight (:host github :repo "joshcho/ChatGPT.el" :files ("dist" "*.el"))
+;;   :init
+;;   (require 'python)
+;;   (setq chatgpt-repo-path "~/.emacs.d/straight/repos/ChatGPT.el/")
+;;   :bind ("C-c q" . chatgpt-query))
 ;;
 
 ;; * Window/Frame Config, Desktop Save and Restore
@@ -1306,6 +1439,34 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; Tried but failed: Burly, desktop+, bookmark+, winsav
 ;; persp seemed most promising, but never quite did the job either:
 ;; Much later (2021), system crafters guy liked it.
+
+;; *** burly
+
+;; Works, but must run M-x toggle-tab-bar-mode-from-frame in order to retrieve burly bookmarks.  This will put some tabs in eamcs, which you can remove with M-x toggle-tab-bar-mode-from-frame again.
+;; https://github.com/alphapapa/burly.el
+;; https://github.com/hawnzug/dot-emacs
+(use-package burly
+  :init
+  (burly-tabs-mode +1)
+  :commands
+  (burly-bookmark-frames
+   burly-bookmark-windows
+   burly-open-bookmark
+   burly-open-last-bookmark))
+
+;; Was this supposed to persist burly across sessions?  It breaks stuff.
+;;
+;; ;; from: https://github.com/alphapapa/burly.el/issues/48#issuecomment-1019454101
+;; (savehist-mode)
+;; (bookmark-maybe-load-default-file) ;; doesn't exist?
+;; (bookmark-load)
+;; (defun my/burly-savehist-integration ()
+;;   (when (bound-and-true-p burly-opened-bookmark-name)
+;;     (setq burly-opened-bookmark-name
+;;           (substring-no-properties burly-opened-bookmark-name))))
+;; (add-hook 'savehist-save-hook #'my/burly-savehist-integration)
+;; (add-to-list 'savehist-additional-variables 'burly-opened-bookmark-name)
+
 
 ;; *** Perspectives for emacs
 ;; ;; From: https://github.com/andresilva/emacs.d/blob/master/init.el
@@ -1370,6 +1531,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; ** Make a new *scratch* buffer right after killing it
 
+;; TODO: remove this:  emacs 29 can be configured to do similar, I think: https://youtu.be/RYGwG62VMGw?t=883
 ;; From: https://www.emacswiki.org/emacs/RecreateScratchBuffer
 ;; If the *scratch* buffer is killed, recreate it automatically
 ;; From: Morten Welind
@@ -1467,14 +1629,29 @@ See also `toggle-frame-maximized'."
 ;; * Appearance
 ;; ** Font Size and Text Scaling
 
-;; Change default font, changing frame size, keeping constant # chars in frame
+;; Change text scale in current bufferr, keeping constant frame size constant
+(global-set-key (kbd "C->") 'text-scale-increase)
+(global-set-key (kbd "C-<") 'text-scale-decrease)
+
+
+;; Change text scale of all buffers, sometimes changing frame size
 (use-package default-text-scale
   :bind (("C-M-=" . default-text-scale-increase)
          ("C-M--" . default-text-scale-decrease)))
 
-;; change text scale, keeping constant frame size while increasing size of chars
-(global-set-key (kbd "C->") 'text-scale-increase)
-(global-set-key (kbd "C-<") 'text-scale-decrease)
+
+;; ;; Change all buffers' text scales & frame sizes, keeping const #chars width
+;; ;; https://github.com/danielmai/.emacs.d/blob/master/config.org#zoom-frm
+;; ;; Note: default-text-scale seems to do the same thing, with fewer package deps
+;; (use-package frame-fns)
+;; (use-package frame-cmds)
+;; (use-package zoom-frm
+;;   ;; TODO: figure out what to bind this to
+;;   ;; :bind (("C-x-=" . zoom-in/out)
+;;   ;;        ("H-z"   . toggle-zoom-frame)
+;;   ;;        ("s-<f1>" . toggle-zoom-frame))
+;;   :config
+;;   (setq frame-zoom-font-difference 10))
 
 ;; Different background color if started from root
 (if (string-match "root" (user-real-login-name))
@@ -1526,6 +1703,16 @@ See also `toggle-frame-maximized'."
   (setq sml/theme nil) ; don't change existing modeline faces
   (sml/setup))
 
+;; ** Paren matching
+
+;; Doesn't do anything with my current setup.  Maybe I need to
+;; configure it for a white background, and remove some other
+;; hard-coded paren match I've creates somewhere in .emacs?
+;;
+;; Does it conflict with show-paren-mode, which I have turned on?
+;;
+;; (use-package rainbow-delimiters)
+
 ;; ** Other
 
 (show-paren-mode 1) ; turn on blinking parens
@@ -1553,7 +1740,8 @@ See also `toggle-frame-maximized'."
 ;; 
 (use-package adaptive-wrap ; required for visual line mode hook below?
   :diminish adaptive-wrap-prefix-mode
-  ;;  :config (add-hook 'visual-line-mode-hook (adaptive-wrap-prefix-mode +1)))
+  ;;  :config (add-hook 'visual-line-mode-hook
+  ;;  (adaptive-wrap-prefix-mode +1)))
   :config (add-hook 'visual-line-mode-hook
   		    (lambda ()
   		      (adaptive-wrap-prefix-mode +1)
@@ -1593,14 +1781,53 @@ See also `toggle-frame-maximized'."
     (display-line-numbers-mode -1)))                 ; only on current buffer
 
 (global-set-key (kbd "M-=") 'goto-line-with-feedback)
-(global-set-key (kbd "C-M-=") 'global-display-line-numbers-mode) ; toggles all
+(global-set-key (kbd "M-+") 'global-display-line-numbers-mode) ; toggles all
 
-;; seems nice but straight cloning didn't work
+;; After scrolling (scroll-up/down-command), highlights the previous current line, if it's still in screen.  Does something different for pageup/down.  Not sure I care.
+;; https://hoeltgman.gitlab.io/dotemacs/
+;; (use-package golden-ratio-scroll-screen
+;;   :ensure t
+;;   :config
+;;   (global-set-key [remap scroll-down-command] 'golden-ratio-scroll-screen-down)
+;;   (global-set-key [remap scroll-up-command]   'golden-ratio-scroll-screen-up))
+
+;; *** golden-ratio
+;; MESSES UP VC-DIFF
+;; Expands size of window you switch to.
+;; https://www.youtube.com/watch?v=k5Nwwo4QTmI
+;; Alternative: https://github.com/cyrus-and/zoom
+;; (use-package golden-ratio
+;;   :diminish golden-ratio-mode  ; doesn't hide the "Org" in modeline, for some reason
+;;   :init
+;;   (setq golden-ratio-auto-scale t)
+;;   (golden-ratio-mode 1))
+
+;; ;; Prevent golden-ratio from messing up ediff (could also do for helm)
+;; ;; from: https://github.com/roman/golden-ratio.el/wiki
+
+;; (defun pl/ediff-comparison-buffer-p ()
+;;   (and (boundp 'ediff-this-buffer-ediff-sessions)
+;;        ediff-this-buffer-ediff-sessions))
+
+;; (eval-after-load "golden-ratio"
+;;   '(progn
+;;      (add-to-list 'golden-ratio-exclude-modes "ediff-mode")
+;;      (add-to-list 'golden-ratio-inhibit-functions 'pl/ediff-comparison-buffer-p)))
+
+;; ;; Do w/ use-package :hook ? Can that specifically go to 'ediff-startup-hook ?
+;; (defun my-ediff-golden-ratio-startup-hook ()
+;;   "Workaround to balance the ediff windows when golden-ratio is enabled."
+;;   ;; There's probably a better way to do it.
+;;   (ediff-toggle-split)
+;;   (ediff-toggle-split))
+
+;; (add-hook 'ediff-startup-hook 'my-ediff-golden-ratio-startup-hook)
+
 ;; recommended: https://stackoverflow.com/questions/39696806/visual-line-mode-except-in-tables?noredirect=1#comment126873272_39696806
 ;; https://github.com/misohena/phscroll
 ;; (use-package phscroll
-;;  :straight (:host github :repo "misohena/org-phscroll"))
-
+;;   :straight (:host github :repo "misohena/org-phscroll"
+;;                    :files ("org-phscroll.el" "phscroll.el")))
 
 ;; *** Window Movement
 ;; A better C-x o
@@ -1813,10 +2040,10 @@ See also `toggle-frame-maximized'."
 ;; (org-mode keys should have already been unbound in the org section)
 (use-package buffer-move
   :bind (
-  ("<C-S-up>"    . 'buf-move-up)
-  ("<C-S-down>"  . 'buf-move-down)
-  ("<C-S-left>"  . 'buf-move-left)
-  ("<C-S-right>" .  'buf-move-right)))
+         ("<C-S-up>"    . 'buf-move-up)
+         ("<C-S-down>"  . 'buf-move-down)
+         ("<C-S-left>"  . 'buf-move-left)
+         ("<C-S-right>" .  'buf-move-right)))
 
 ;; tab keys work across buffers like browsers across tabs
 (global-set-key (kbd "<C-tab>")  'other-window) ; forwards
@@ -1931,7 +2158,9 @@ displayed anywhere else."
   (which-key-mode)
   (which-key-setup-side-window-right-bottom)) ; do bottom if no room on side
 
-(use-package helm-descbinds :commands helm-descbinds)
+(use-package helm-descbinds
+  :after helm-bibtex
+  :commands helm-descbinds)
 
 (use-package hydra
   :commands defhydra
@@ -2373,7 +2602,9 @@ Version 2019-11-04 2021-02-16"
   (interactive "P")
   (sdo/find-recentf-func 'find-file-other-frame))
 
-(global-set-key (kbd "C-x C-r") 'sdo/find-recentf)
+;;(global-set-key "\C-x \C-r" 'sdo/find-recentf)
+;;(global-set-key (kbd "C-x C-r") 'sdo/find-recentf)
+(global-set-key (kbd "\C-x \C-r") 'sdo/find-recentf)
 (global-set-key (kbd "C-x 4 r") 'sdo/find-recentf-other-window) ; like find-file
 (global-set-key (kbd "C-x 5 r") 'sdo/find-recentf-other-frame)
 
@@ -2486,14 +2717,32 @@ Version 2019-11-04 2021-02-16"
 
 ;; C-; on symbol/word edits all instances in scope & other things. C-; to exit
 (use-package iedit
-;;  :defer 0
+  ;;  :defer 0
   :config
-  (defun iedit-within-defun ()
+  ;; Doesn't seem to work, but now none of iedit does, for some reason
+  ;; ;; https://www.masteringemacs.org/article/iedit-interactive-multi-occurrence-editing-in-your-buffer
+  ;; (defun iedit-dwim (arg)
+  ;;   "Starts iedit but uses \\[narrow-to-defun] to limit its scope."
+  ;;   (interactive "P")
+  ;;   (if arg
+  ;;       (iedit-mode)
+  ;;     (save-excursion
+  ;;       (save-restriction
+  ;;         (widen)
+  ;;         ;; this function determines the scope of `iedit-start'.
+  ;;         (if iedit-mode
+  ;;             (iedit-done)
+  ;;           ;; `current-word' can of course be replaced by other
+  ;;           ;; functions.
+  ;;           (narrow-to-defun)
+  ;;           (iedit-start (current-word) (point-min) (point-max)))))))
+  
+  (defun sdo/iedit-within-defun ()
     "Do iedit search and replace within current defun (equivalent to C-0 C-;)"
     (interactive)
     (let ((current-prefix-arg '(0))) (call-interactively 'iedit-mode)))
-  :init
-  (define-key prog-mode-map (kbd "C-;") 'iedit-within-defun))
+  :bind
+  (("C-'" . sdo/iedit-within-defun)))
 
 ;; https://www.youtube.com/watch?v=jNa3axo40qM
 ;; Mouse from:
@@ -2504,6 +2753,18 @@ Version 2019-11-04 2021-02-16"
   :bind (("M-." . mc/mark-next-like-this)
          ("M-," . mc/unmark-next-like-this)
          ("C-S-<mouse-1>" . mc/add-cursor-on-click)))
+
+;; Substitute: (rename within defun, directinal global replace, etc.)
+;; ieditwithin-defun might be a little nicer (C-;)
+;; https://protesilaos.com/codelog/2023-01-16-emacs-substitute-package-demo
+;; TODO:
+;; (add-hook 'substitute-post-replace-functions #'substitute-report-operation)
+;; (let ((map global-map))
+;;   (define-key map (kbd "M-# s") #'substitute-target-below-point)
+;;   (define-key map (kbd "M-# r") #'substitute-target-above-point)
+;;   (define-key map (kbd "M-# d") #'substitute-target-in-defun)
+;;   (define-key map (kbd "M-# b") #'substitute-target-in-buffer))
+;; (use-package substitute)
 
 ;; * Prescient
 
@@ -2531,7 +2792,7 @@ folder, otherwise delete a word"
       (if (string-match-p "/." (minibuffer-contents))
           (zap-up-to-char (- arg) ?/)
         (delete-minibuffer-contents))
-      (backward-kill-word arg)))
+    (backward-kill-word arg)))
 
 ;; TODO: try vertico extensions:
 ;; https://github.com/minad/vertico#extensions
@@ -2539,59 +2800,122 @@ folder, otherwise delete a word"
 ;; TODO: C-r does search backwards, like I did w/ swiper
 ;; TODO: show full match in main buffer, like ivy
 ;;
+;; vertico extensions video: https://www.youtube.com/watch?v=hPwDbx--Waw
+;; setting up embark collect from vertico: http://ix.io/47pP/elisp
+;; via: vertico extensions video
+;;
+;; my config, as of 3/4/23
 (use-package vertico
   :after swiper ; so inherited fonts are defined?
   :bind (:map vertico-map
-         ("C-s" . vertico-next)
-         ("C-r" . vertico-previous)
-         ;; ("C-j" . vertico-next)
-         ;; ("C-k" . vertico-previous)
-         ;; ("C-f" . vertico-exit)
-         :map minibuffer-local-map
-         ("M-h" . dw/minibuffer-backward-kill))
+              ("C-s" . vertico-next)
+              ("C-r" . vertico-previous)
+              ;; ("C-j" . vertico-next)
+              ;; ("C-k" . vertico-previous)
+              ;; ("C-f" . vertico-exit)
+              :map minibuffer-local-map
+              ("M-h" . dw/minibuffer-backward-kill))
   :custom
   (vertico-cycle t)
   :custom-face
-;;  (vertico-current ((t (:background "#3a3f5a"))))
+  ;;  (vertico-current ((t (:background "#3a3f5a"))))
   :init
   (vertico-mode))
 
-;; ** Completions with selectrum
+;; ;; my modified 3/4/23 setup
+;; (use-package vertico
+;;   :after swiper ; so inherited fonts are defined?
+;;   :straight (vertico :files (:defaults "extensions/*")
+;; 		     ;; from: https://github.com/abroekhof/dotemacs
+;; 		     :includes (vertico-buffer
+;; 				vertico-directory
+;; 				vertico-grid
+;; 				vertico-flat
+;; 				vertico-indexed
+;; 				vertico-mouse
+;; 				vertico-quick
+;; 				vertico-repeat
+;; 				vertico-reverse))
 
-;; ;; I'm not sure how this is different from vertico
-;;
-;; ;; To use this, must also modify consult bindings so calls selctrum functions
-;; ;; Started from https://config.daviwil.com/emacs
-;; (use-package selectrum
-;;   :bind (("C-M-r" . selectrum-repeat)
-;;          :map selectrum-minibuffer-map
-;;          ("C-r" . selectrum-select-from-history)
-;;          ("C-j" . selectrum-next-candidate)
-;;          ("C-k" . selectrum-previous-candidate)
-;;          :map minibuffer-local-map
-;;          ("M-h" . backward-kill-word))
+;;   :bind (:map vertico-map
+;;               ("C-s" . vertico-next)
+;;               ("C-r" . vertico-previous)
+;;               ;; ("C-j" . vertico-next)
+;;               ;; ("C-k" . vertico-previous)
+;;               ;; ("C-f" . vertico-exit)
+;;               :map minibuffer-local-map
+;;               ("M-h" . dw/minibuffer-backward-kill))
 ;;   :custom
-;;   (selectrum-fix-minibuffer-height t)
-;;   (selectrum-num-candidates-displayed 7)
-;;   (selectrum-refine-candidates-function #'orderless-filter)
-;;   (selectrum-highlight-candidates-function #'orderless-highlight-matches)
+;;   (vertico-cycle t)
 ;;   :custom-face
-;;   (selectrum-current-candidate ((t (:background "light gray"))))
+;;   ;;  (vertico-current ((t (:background "#3a3f5a"))))
 ;;   :init
-;;   (selectrum-mode 1))
+;;   (vertico-mode))
+
+
+;; started from:  https://github.com/minad/vertico
+;; on vertico extensions: https://www.youtube.com/watch?v=hPwDbx--Waw
+;; (use-package vertico ; VERTical Interactive COmpletion
+;;   :straight (vertico :files (:defaults "extensions/*")
+;; 		     ;; from: https://github.com/abroekhof/dotemacs
+;; 		     :includes (vertico-buffer
+;; 				vertico-directory
+;; 				vertico-grid
+;; 				vertico-flat
+;; 				vertico-indexed
+;; 				vertico-mouse
+;; 				vertico-quick
+;; 				vertico-repeat
+;; 				vertico-reverse))
+;;   :hook (after-init-hook . vertico-mode)
+;;   :bind (:map vertico-map
+;;               ("M-q" . vertico-multiform-grid)
+;; 	      ("M-RET" . vertico-exit-input))
+;;   :custom
+;;   ((vertico-multiform-commands
+;;     '((consult-grep buffer)
+;;       (consult-imenu buffer)
+;;       (consult-line buffer))))
+;;   :config
+;; ;;  (vertico-multiform-mode 1))
+;;   )
+
+;; If hit return on dir, open that dir in vertico, instead of going to dired
+;; started from: https://github.com/abroekhof/dotemacs
+;; (use-package vertico-directory
+;;   :after vertico
+;;   :ensure nil
+;;   ;; More convenient directory navigation commands
+;;   :bind (:map vertico-map
+;;               ("RET" . vertico-directory-enter)
+;;               ("DEL" . vertico-directory-delete-char)
+;;               ("M-DEL" . vertico-directory-delete-word))
+;;   ;; Tidy shadowed file names (whatever that means)
+;;   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
 ;; ** Completions in Regions with Corfu
 
-;; is this doing anything?
-(use-package corfu
-  :bind (:map corfu-map
-              ;; ("C-j" . corfu-next)
-              ;; ("C-k" . corfu-previous)
-              ;; ("C-f" . corfu-insert))
-              )
-  :custom
-  (corfu-cycle t)
-  (corfu-global-mode t))
+;; it's code (etc.) completion mechanism, like company
+
+;; so far, I haven't been able to get corfu to work with eglot, so
+;; I'll just use company for now
+;;
+;; https://github.com/minad/corfu/issues/136
+;; (use-package corfu
+;;   :demand t
+;;   :custom
+;;   (corfu-auto t)
+;;   :init
+;;   (corfu-global-mode))
+
+;; (use-package corfu
+;;   :bind (:map corfu-map
+;;               ("C-n" . corfu-next)
+;;               ("C-p" . corfu-previous)
+;;               ("C-i" . corfu-insert))
+;;   :custom
+;;   (corfu-cycle t)
+;;   (corfu-global-mode t))
 
 ;; ** Improved Candidate Filtering with Orderless
 
@@ -2608,16 +2932,21 @@ folder, otherwise delete a word"
   :init
   (savehist-mode))
 
-;; A few more useful configurations for vertico...
+;; A few more useful configurations...
 ;; from: https://github.com/minad/vertico
+
+;; A few more useful configurations...
 (use-package emacs
   :init
-
-  ;; does this mess up doing C-o on org-cite links?
   ;; Add prompt indicator to `completing-read-multiple'.
-  ;; Alternatively try `consult-completing-read-multiple'.
+  ;; We display [CRM<separator>], e.g., [CRM,] if the separator is a comma.
   (defun crm-indicator (args)
-    (cons (concat "[CRM] " (car args)) (cdr args)))
+    (cons (format "[CRM%s] %s"
+                  (replace-regexp-in-string
+                   "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
+                   crm-separator)
+                  (car args))
+          (cdr args)))
   (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
 
   ;; Do not allow the cursor in the minibuffer prompt
@@ -2632,6 +2961,31 @@ folder, otherwise delete a word"
 
   ;; Enable recursive minibuffers
   (setq enable-recursive-minibuffers t))
+
+;; A few more useful configurations for vertico...
+;; from: https://github.com/minad/vertico
+;; (use-package emacs
+;;   :init
+
+;;   ;; does this mess up doing C-o on org-cite links?
+;;   ;; Add prompt indicator to `completing-read-multiple'.
+;;   ;; Alternatively try `consult-completing-read-multiple'.
+;;   (defun crm-indicator (args)
+;;     (cons (concat "[CRM] " (car args)) (cdr args)))
+;;   (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
+
+;;   ;; Do not allow the cursor in the minibuffer prompt
+;;   (setq minibuffer-prompt-properties
+;;         '(read-only t cursor-intangible t face minibuffer-prompt))
+;;   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+
+;;   ;; Emacs 28: Hide commands in M-x which do not work in the current mode.
+;;   ;; Vertico commands are hidden in normal buffers.
+;;   ;; (setq read-extended-command-predicate
+;;   ;;       #'command-completion-default-include-p)
+
+;;   ;; Enable recursive minibuffers
+;;   (setq enable-recursive-minibuffers t))
 
 ;; ** Consult Commands
 
@@ -2687,13 +3041,25 @@ folder, otherwise delete a word"
 ;;          t
 ;;        (if (buffer-file-name) default-directory t)))))
 
+;; (use-package consult
+;;   :bind (("C-s"   . consult-line)
+;;          ("C-x C-r" . consult-recent-file) ;; overrides my recentf
+;;          ("C-x b" . consult-buffer)))
+
+
+;; TODO: consult dir has stuff for docker hosts, too
+
+;;https://github.com/karthink/consult-dir#docker-hosts
+
+;; I WAS using this one, as of 3/1/23
+;; start over w/ something simple?  Like 
 ;; Started from systemcrafter guy: https://config.daviwil.com/emacs
 (use-package consult
   ;;  :demand t  ; caused problems w/ org-mode-map binding below
   :bind (("C-M-l" . consult-imenu)
          ;; ("C-M-j" . persp-switch-to-buffer*) ;; use when if have perspective 
-         ("C-x C-r" . consult-recent-file) ;; overrides my function, I hope
-         ("C-x C-b" . consult-buffer) ;; override ibuffer binding, does more
+         ;; ("C-x C-r" . consult-recent-file) ;; overrides my recentf function
+         ;;("C-x C-b" . consult-buffer) ;; override ibuffer binding, does more
          ;;("C-s" . consult-line) ;; also consult-line-multi for across bufs
          ;;("C-s" . consult-isearch) ; doesn't work
          ;; overrides deadgrep, also has grep, git-grep
@@ -2718,10 +3084,14 @@ folder, otherwise delete a word"
   ;;  preview may be expensive due to file loading.
   ;; https://github.com/minad/consult#live-previews
   (consult-customize
+   ;;remove recent-file stuff, in case they conflict with mine
    consult-ripgrep consult-git-grep consult-grep
-   consult-bookmark consult-recent-file consult-xref
-   consult--source-bookmark consult--source-recent-file
-   consult--source-project-recent-file
+   consult-bookmark consult-xref consult--source-bookmark
+   ;; original
+   ;; consult--source-project-recent-file
+   ;; consult-bookmark consult-recent-file consult-xref
+   ;; consult--source-bookmark consult--source-recent-file
+   ;; consult--source-project-recent-file
    :preview-key (kbd "M-."))
   ;; Ripgrep-all (cannot jump to pdf page though)
   ;; From:
@@ -2742,144 +3112,26 @@ command options."
     (consult--grep "Ripgrep-all" consult-ripgrep-all-command dir initial))
   )
 
-;; Example configuration for Consult
-;; https://github.com/minad/consult
-;; (use-package consult
-;;   ;; Replace bindings. Lazily loaded due by `use-package'.
-;;   :bind (;; C-c bindings (mode-specific-map)
-;;          ("C-c h" . consult-history)
-;;          ("C-c m" . consult-mode-command)
-;;          ("C-c b" . consult-bookmark)
-;;          ("C-c k" . consult-kmacro)
-;;          ;; C-x bindings (ctl-x-map)
-;;          ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
-;;          ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
-;;          ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
-;;          ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
-;;          ;; Custom M-# bindings for fast register access
-;;          ("M-#" . consult-register-load)
-;;          ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
-;;          ("C-M-#" . consult-register)
-;;          ;; Other custom bindings
-;;          ("M-y" . consult-yank-pop)                ;; orig. yank-pop
-;;          ("<help> a" . consult-apropos)            ;; orig. apropos-command
-;;          ;; M-g bindings (goto-map)
-;;          ("M-g e" . consult-compile-error)
-;;          ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
-;;          ("M-g g" . consult-goto-line)             ;; orig. goto-line
-;;          ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
-;;          ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
-;;          ("M-g m" . consult-mark)
-;;          ("M-g k" . consult-global-mark)
-;;          ("M-g i" . consult-imenu)
-;;          ("M-g I" . consult-imenu-multi)
-;;          ;; M-s bindings (search-map)
-;;          ("M-s f" . consult-find)
-;;          ("M-s F" . consult-locate)
-;;          ("M-s g" . consult-grep)
-;;          ("M-s G" . consult-git-grep)
-;;          ("M-s r" . consult-ripgrep)
-;;          ("M-s l" . consult-line)
-;;          ("M-s L" . consult-line-multi)
-;;          ("M-s m" . consult-multi-occur)
-;;          ("M-s k" . consult-keep-lines)
-;;          ("M-s u" . consult-focus-lines)
-;;          ;; Isearch integration
-;;          ("M-s e" . consult-isearch-history)
-;;          :map isearch-mode-map
-;;          ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
-;;          ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
-;;          ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
-;;          ("M-s L" . consult-line-multi))           ;; needed by consult-line to detect isearch
+;;TODO: add "search selection" like I put in ivy (see below)
+;;From: https://takeonrules.com/2021/05/15/a-year-or-so-of-emacs/
+(advice-add #'consult-line
+            :around
+            #'jnf/consult-line
+            '((name . "wrapper")))
 
-;;   ;; Enable automatic preview at point in the *Completions* buffer.
-;;   ;; This is relevant when you use the default completion UI,
-;;   ;; and not necessary for Vertico, Selectrum, etc.
-;;   :hook (completion-list-mode . consult-preview-at-point-mode)
+(defun jnf/consult-line (consult-line-function &rest rest)
+  "Advising function around `CONSULT-LINE-FUNCTION'.
 
-;;   ;; The :init configuration is always executed (Not lazy)
-;;   :init
-
-;;   ;; Optionally configure the register formatting. This improves the register
-;;   ;; preview for `consult-register', `consult-register-load',
-;;   ;; `consult-register-store' and the Emacs built-ins.
-;;   (setq register-preview-delay 0
-;;         register-preview-function #'consult-register-format)
-
-;;   ;; Optionally tweak the register preview window.
-;;   ;; This adds thin lines, sorting and hides the mode line of the window.
-;;   (advice-add #'register-preview :override #'consult-register-window)
-
-;;   ;; Optionally replace `completing-read-multiple' with an enhanced version.
-;;   (advice-add #'completing-read-multiple :override #'consult-completing-read-multiple)
-
-;;   ;; Use Consult to select xref locations with preview
-;;   (setq xref-show-xrefs-function #'consult-xref
-;;         xref-show-definitions-function #'consult-xref)
-
-;;   ;; Configure other variables and modes in the :config section,
-;;   ;; after lazily loading the package.
-;;   :config
-
-;;   ;; Optionally configure preview. The default value
-;;   ;; is 'any, such that any key triggers the preview.
-;;   ;; (setq consult-preview-key 'any)
-;;   ;; (setq consult-preview-key (kbd "M-."))
-;;   ;; (setq consult-preview-key (list (kbd "<S-down>") (kbd "<S-up>")))
-;;   ;; For some commands and buffer sources it is useful to configure the
-;;   ;; :preview-key on a per-command basis using the `consult-customize' macro.
-;;   (consult-customize
-;;    consult-theme
-;;    :preview-key '(:debounce 0.2 any)
-;;    consult-ripgrep consult-git-grep consult-grep
-;;    consult-bookmark consult-recent-file consult-xref
-;;    consult--source-file consult--source-project-file consult--source-bookmark
-;;    :preview-key (kbd "M-."))
-
-;;   ;; Optionally configure the narrowing key.
-;;   ;; Both < and C-+ work reasonably well.
-;;   (setq consult-narrow-key "<") ;; (kbd "C-+")
-
-;;   ;; Optionally make narrowing help available in the minibuffer.
-;;   ;; You may want to use `embark-prefix-help-command' or which-key instead.
-;;   ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
-
-;;   ;; Optionally configure a function which returns the project root directory.
-;;   ;; There are multiple reasonable alternatives to chose from.
-;;   ;;;; 1. project.el (project-roots)
-;;   (setq consult-project-root-function
-;;         (lambda ()
-;;           (when-let (project (project-current))
-;;             (car (project-roots project)))))
-;;   ;;;; 2. projectile.el (projectile-project-root)
-;;   ;; (autoload 'projectile-project-root "projectile")
-;;   ;; (setq consult-project-root-function #'projectile-project-root)
-;;   ;;;; 3. vc.el (vc-root-dir)
-;;   ;; (setq consult-project-root-function #'vc-root-dir)
-;;   ;;;; 4. locate-dominating-file
-;;   ;; (setq consult-project-root-function (lambda () (locate-dominating-file "." ".git")))
-;; )
-
-;; TODO: add "search selection" like I put in ivy (see below)
-;; From: https://takeonrules.com/2021/05/15/a-year-or-so-of-emacs/
-;; (advice-add #'consult-line
-;;             :around
-;;             #'jnf/consult-line
-;;             '((name . "wrapper")))
-
-;; (defun jnf/consult-line (consult-line-function &rest rest)
-;;   "Advising function around `CONSULT-LINE-FUNCTION'.
-
-;;   ;; When there's an active region, use that as the first parameter
-;;   ;; for `CONSULT-LINE-FUNCTION'.  Otherwise, use the current word as
-;;   ;; nthe first parameter.  This function handles the `REST' of the
-;;   ;; parameters."
-;;   (interactive)
-;;   (if (use-region-p)
-;;       (apply consult-line-function
-;;         (buffer-substring (region-beginning) (region-end)) rest)
-;;       (apply consult-line-function
-;;         (thing-at-point 'word) rest)))
+  ;; When there's an active region, use that as the first parameter
+  ;; for `CONSULT-LINE-FUNCTION'.  Otherwise, use the current word as
+  ;; nthe first parameter.  This function handles the `REST' of the
+  ;; parameters."
+  (interactive)
+  (if (use-region-p)
+      (apply consult-line-function
+        (buffer-substring (region-beginning) (region-end)) rest)
+      (apply consult-line-function
+        (thing-at-point 'word) rest)))
 
 ;; ** Completion Annotations with Marginalia
 
@@ -2894,37 +3146,41 @@ command options."
 
 ;; ** Completion Actions with Embark
 
-(use-package embark
-  :straight t
-  :bind (("C-S-a" . embark-act)
-         :map minibuffer-local-map
-         ("C-." . embark-dwim)
-         ("C-;" . embark-act))
-;;         ("C-d" . embark-act))
-  :config
+;; subsubmed by 4/5/23 package above, but maybe this is OK?
+;; (use-package embark
+;;   :straight t
+;;   :bind (("C-S-a" . embark-act)
+;;          :map minibuffer-local-map
+;;          ("C-." . embark-dwim)
+;;          ("C-;" . embark-act))
+;;   ;;         ("C-d" . embark-act))
+;;   :config
 
-  (setq embark-action-indicator '(
-        ;; Show Embark actions via which-key (system crafter guy)
-        (lambda (map)
-          (which-key--show-keymap "Embark" map nil nil 'no-paging)
-          #'which-key--hide-popup-ignore-command)
-        embark-become-indicator embark-action-indicator
-        ;; SO added below (but I don't get what this does)
-        ;; See: https://github.com/oantolin/embark/wiki/Additional-Configuration#use-which-key-like-a-key-menu-prompt        
-        embark-highlight-indicator
-        embark-isearch-highlight-indicator)))
+;;   (setq embark-action-indicator '(
+;;                                   ;; Show Embark actions via which-key (system crafter guy)
+;;                                   (lambda (map)
+;;                                     (which-key--show-keymap "Embark" map nil nil 'no-paging)
+;;                                     #'which-key--hide-popup-ignore-command)
+;;                                   embark-become-indicator embark-action-indicator
+;;                                   ;; SO added below (but I don't get what this does)
+;;                                   ;; See: https://github.com/oantolin/embark/wiki/Additional-Configuration#use-which-key-like-a-key-menu-prompt        
+;;                                   embark-highlight-indicator
+;;                                   embark-isearch-highlight-indicator)))
 
 ;; * Completion: Ivy/Swiper/Counsel/Company
+;;   Ivy vs. Swiper vs. Company:
+;;   https://www.reddit.com/r/emacs/comments/6x7ph2/comment/dmeyrcz/?utm_source=share&utm_medium=web2x&context=3
 
-;; ** Ivy
+;; ** Ivy (A better M-x)
+;;    https://writequit.org/denver-emacs/presentations/files/m-x-usage.gif
 ;; (use-package ivy
 ;;   :bind (("C-s" . swiper)
 ;;          ("C-x b" . ivy-switch-buffer))
 ;;   :config
 ;;   (ivy-mode 1)) ; so it starts @ emacs boot, no delay
 
-;; ** Swiper
-
+;; ** Swiper (for searching in buffer, a better C-s)
+;;    https://writequit.org/denver-emacs/presentations/files/swiper.gif
 ;; Help while in swiper search:
 ;;  swiper hydra: C-o;
 ;;  swiper full help: C-h m
@@ -2934,7 +3190,7 @@ command options."
   :custom
   (swiper-action-recenter nil) ;; does this work?
   (ivy-count-format "(%d/%d) ") ; show candidate index/count in swiper
-;;  (ivy-mode t) ; not needed, at last not for just swiper
+  ;;  (ivy-mode t) ; not needed, at last not for just swiper
   (ivy-wrap t)
   :init
   ;;(setq ivy-use-virtual-buffers t) ; ivy-switch-buffer also shows recent files
@@ -2979,6 +3235,10 @@ command options."
   ;; (global-set-key (kbd "C-c C-r") 'ivy-resume) ;Resume last ivy completion sess
   )
 
+;; puts most recently use completion on top of list.  But I don't see
+;; a change when I do this.  Maybe it's default in ivy now?  Or maybe
+;; completions I'm looking at aren't done by ivy?
+;;
 ;; (use-package ivy-prescient
 ;;   :after (counsel ivy prescient)
 ;;   :custom
@@ -2998,14 +3258,37 @@ command options."
 ;;   ;; Internet search, compare w/ google-this
 ;;   (global-set-key (kbd "C-S-s")  'counsel-search)) ; doesn't work in :bind
 
-;; ;; ** Company Mode
-;; ;; Tab completion of variables, common words, ...  To activate (not a default): M-x company-mode or turn it on globally.
+;; ;; ** Company Mode (code completion, etc.)
+;; ;; Tab completion of variables, common words, ...  To activate (not
+;; ;; a default): M-x company-mode or turn it on globally.
+;; https://camo.githubusercontent.com/c088e25214451803a62c91f6b28bde13195da3ea/687474703a2f2f692e696d6775722e636f6d2f4c5236394d644e2e676966
 
-;; ;; Used in other packages.  Here, make it prescient.  Maybe put this section in one of those places instead of here?
-;; (use-package company-prescient
-;;   :after company
-;;   :init
-;;   (company-prescient-mode))
+;; from:
+;; https://medium.com/helpshift-engineering/configuring-emacs-from-scratch-use-package-c30382297877
+;; Set global-company-mode so that that eglot can run company
+;; completion
+;; TODO: make this work for all programming modes.  Right now, I just
+;; have to manually run M-x company-complete to start
+;; language file
+
+;; I think company was used for some things, like eglot,  but it does too much completion in org-mode, and overwrites the handy org-ref-bibtex-hydra (?)
+;; (use-package company
+;; ;; doesn't do anything
+;; ;;  :hook (prog-mode-hook . company-complete)
+;;   :config
+;;   (setq company-idle-delay 0.3)
+;;   (global-company-mode t))
+;; ;;
+;; does nothing.  Must manually run M-x company-complete in some butter  
+;;  (company-complete))
+
+
+;; Used in other packages.  Here, make it prescient.  Maybe put this section in one of those places instead of here?
+(use-package company-prescient
+  :after company
+  :init
+  (company-prescient-mode))
+
 
 ;; ;; ** ivy-bibtex
 
@@ -3017,6 +3300,7 @@ command options."
 
 ;; (use-package flyspell-correct-ivy
 ;;   :after (ivy flyspell-correct))
+
 
 ;; ** Ivy find recent directories
 ;; ;; From: http://pragmaticemacs.com/emacs/open-a-recent-directory-in-dired-revisited
@@ -3042,7 +3326,15 @@ command options."
 
 ;; ;; Overwrites ido-list-directory, which was less useful than this
 ;; (global-set-key (kbd "C-x C-d") 'bjm/ivy-dired-recent-dirs)
-  
+
+;; * Versioning
+
+;; Requires magit to do much
+;; https://gitlab.com/pidu/git-timemachine
+;; (use-package git-timemachine            ; Walk through git revisions of a file
+;;   :bind ("C-x v t" . git-timemachine-toggle)
+;;   :commands git-timemachine)
+
 ;; * Programming Modes
 ;; ** Matlab mode
 
@@ -3095,16 +3387,16 @@ command options."
 ;;(setq byte-compile-warnings '(cl-functions))
 
 (add-hook 'emacs-lisp-mode-hook
-	  '(lambda ()
-	     (set (make-local-variable 'dabbrev-case-fold-search) nil)
-	     (set (make-local-variable 'dabbrev-case-replace) nil)))
+	  #'(lambda ()
+	      (set (make-local-variable 'dabbrev-case-fold-search) nil)
+	      (set (make-local-variable 'dabbrev-case-replace) nil)))
 
 ;; ** C/C++
 ;; note: connect to common hook used by new cc-mode
 (add-hook 'c-mode-common-hook
-	  '(lambda ()
-	     (set (make-local-variable 'dabbrev-case-fold-search) nil)
-	     (set (make-local-variable 'dabbrev-case-replace) nil)))
+	  #'(lambda ()
+	      (set (make-local-variable 'dabbrev-case-fold-search) nil)
+	      (set (make-local-variable 'dabbrev-case-replace) nil)))
 
 (defun my-c-mode-common-hook ()
   (c-toggle-auto-hungry-state 1) ; not sure what this does
@@ -3158,7 +3450,7 @@ command options."
                                   (concat (file-name-directory conda_exe)
                                           "..")))
   (use-package conda
-    :defer 0
+    :defer t
     :config
     (custom-set-variables
      '(conda-anaconda-home conda-env-home-directory))
@@ -3168,16 +3460,23 @@ command options."
     (conda-env-activate "base"))
 
   (setq autopep8bin (sdo/find-exec "autopep8" "Needed by py-autopep8 autofix-on-save & elpy"))
-  (when autopep8bin (use-package py-autopep8))
+  (when autopep8bin
+    (use-package py-autopep8
+      :config
+      (setq py-autopep8-options '("--max-line-length=100" "--aggressive"))))
+;; Don't autoformat: it was missing up my checkins to open-source GitHub repos
+;;      :hook (python-mode . py-autopep8-mode)))
 
-  ;; for Python mode comment filling
-  ;; https://stackoverflow.com/questions/2214199/how-to-use-emacs-to-write-comments-with-proper-indentation-line-length-and-wra
-  (require 'newcomment)
-  (add-hook 'python-mode-hook (progn
-                                (setq comment-auto-fill-only-comments 1)
-                                (setq-default auto-fill-function 'do-auto-fill)))
+  ;; messes up eglot on windows?
+  
+  ;; ;; for Python mode comment filling
+  ;; ;; https://stackoverflow.com/questions/2214199/how-to-use-emacs-to-write-comments-with-proper-indentation-line-length-and-wra
+  ;; (require 'newcomment)
+  ;; (add-hook 'python-mode-hook (progn
+  ;;                               (setq comment-auto-fill-only-comments 1)
+  ;;                               (setq-default auto-fill-function 'do-auto-fill)))
 
-  (diminish 'auto-fill-function) ; only works here, for some reason
+  ;; (diminish 'auto-fill-function) ; only works here, for some reason
 
   ;; Use Elpy instead of python-mode.
   ;;
@@ -3205,100 +3504,139 @@ command options."
               (set-process-query-on-exit-flag pproc nil))
           (kill-buffer))))
 
-  (defun sdo/run-python-clean-as-possible ()
-    "If region is active, then call elpy-shell-send-region-or-buffer-and-go; otherwise, save current buffer and run its contents in new *Python* console, killing any existing console; "
-    (interactive)
-    (unless (region-active-p)
-      (save-buffer)
-      (sdo/kill-python-console))
-    (elpy-shell-send-region-or-buffer-and-go t))
+  ;;; <EGLOT> configuration, pick this or the LSP configuration but not both.
+  ;; Using Eglot with Pyright, a language server for Python.
+  ;; From: https://gist.github.com/Nathan-Furnal/b327f14e861f009c014af36c1790ec49
+  ;; See: https://github.com/joaotavora/eglot.
+  ;; must set up a python LSP server for python:
+  ;; https://github.com/joaotavora/eglot#connecting-to-a-server
+  ;; pyright (conda-forge) is vscode's pylance backend, so maybe that's best
+  ;; https://discuss.python.org/t/lsp-for-python/22194/6
+  ;; see https://langserver.org/ for language servers other than pyright
+  ;;    JSON:  https://github.com/microsoft/vscode/tree/main/extensions/json-language-
+  ;;    BibTex: https://github.com/oncomouse/citation-langserver
+  ;;    Bash: https://github.com/bash-lsp/bash-language-server
+  ;;    html:
+  ;; https://github.com/Microsoft/vscode/tree/main/extensions/htmlfeatures/server
+  ;;    latex: https://github.com/latex-lsp/texlab
+  ;;    R: https://github.com/REditorSupport/languageserver
+  ;;    XML: https://github.com/microclimate-devops/xml-language-server
+  ;;
+  ;; Crashed when not from forge. Do this: conda install -c
+  ;; conda-forge pyright
+  ;;
+  ;; EGLOT NOT STARTING in python files, but does start for elisp.
+  ;; MacOS only?  elot-ensure should do the job?  For now, manually
+  ;; type M-x eglot when in a python file.
+  ;;
+
+  ;; Worked on MacOS but kept reconnecting Windows, hanging emacs 29.
+  ;; (when (sdo/find-exec "pyright" "Server needed for python eglot")
+  ;;   (use-package eglot
+  ;;     :defer t
+  ;;     ;; :bind (:map eglot-mode-map
+  ;;     ;;             ("C-c <tab>" . #'company-complete)
+  ;;     ;;             ("C-c e f n" . #'flymake-goto-next-error)
+  ;;     ;;             ("C-c e f p" . #'flymake-goto-prev-error)
+  ;;     ;;             ("C-c e r  " . #'eglot-rename))
+      
+  ;;     :hook (python-mode . eglot-ensure)))
   
-  (use-package elpy
-    :defer t
-    :diminish elpy-mode
-    :after flycheck flycheck-pos-tip
-    ;; Bind global "make" key to "C-u the command below" This runs
-    ;; the region or whole .py buffer in a (possibly newly made) *Python*
-    ;; console buffer, and then moves the cursor there.
-    :bind ("<f8>" . (lambda () (interactive) (elpy-shell-send-region-or-buffer-and-go t)))
-    :bind ("<S-f8>" . sdo/run-python-clean-as-possible)
-    :bind ("<M-f8>" . (lambda () (interactive) (realgud:pdb))) ; :ipdb, :trepan, :gdb ?
-    :init
-    (elpy-enable)
-    ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?):
-    ;; https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
-    ;; conda install -c anaconda jupyter_console 
-    (sdo/find-exec "jupyter-console" "Elpy is set up to use this")
-    (setq python-shell-interpreter "jupyter"
-          python-shell-interpreter-args "console --simple-prompt"
-          python-shell-prompt-detect-failure-warning nil)
-    (add-to-list 'python-shell-completion-native-disabled-interpreters
-                 "jupyter")
 
-    ;; use flycheck, not elpy's flymake
-    ;; (https://realpython.com/blog/python/emacs-the-best-python-editor/
-    ;;  https://elpy.readthedocs.io/en/latest/customization_tips.html)
-    ;; I don't think I'm seeing much flycheck output
-    (if (require 'flycheck nil t)
-        (progn (message "found emacs flycheck package")
-               (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-               (add-hook 'elpy-mode-hook 'flycheck-mode)
-               (flycheck-pos-tip-mode)
-               (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-               )
-      (warn "elpy didn't find flycheck emacs package"))
+  ;; (defun sdo/run-python-clean-as-possible ()
+  ;;   "If region is active, then call elpy-shell-send-region-or-buffer-and-go; otherwise, save current buffer and run its contents in new *Python* console, killing any existing console; "
+  ;;   (interactive)
+  ;;   (unless (region-active-p)
+  ;;     (save-buffer)
+  ;;     (sdo/kill-python-console))
+  ;;   (elpy-shell-send-region-or-buffer-and-go t))
+  
+  ;; (use-package elpy
+  ;;   :defer t
+  ;;   :diminish elpy-mode
+  ;;   :after flycheck flycheck-pos-tip
+  ;;   ;; Bind global "make" key to "C-u the command below" This runs
+  ;;   ;; the region or whole .py buffer in a (possibly newly made) *Python*
+  ;;   ;; console buffer, and then moves the cursor there.
+  ;;   :bind ("<f8>" . (lambda () (interactive) (elpy-shell-send-region-or-buffer-and-go t)))
+  ;;   :bind ("<S-f8>" . sdo/run-python-clean-as-possible)
+  ;;   :bind ("<M-f8>" . (lambda () (interactive) (realgud:pdb))) ; :ipdb, :trepan, :gdb ?
+  ;;   :init
+  ;;   (elpy-enable)
+  ;;   ;; jupyter recommended over ipython (how s/ this work w/ conda env switch?):
+  ;;   ;; https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
+  ;;   ;; conda install -c anaconda jupyter_console 
+  ;;   (sdo/find-exec "jupyter-console" "Elpy is set up to use this")
+  ;;   (setq python-shell-interpreter "jupyter"
+  ;;         python-shell-interpreter-args "console --simple-prompt"
+  ;;         python-shell-prompt-detect-failure-warning nil)
+  ;;   (add-to-list 'python-shell-completion-native-disabled-interpreters
+  ;;                "jupyter")
 
-    ;; Enable emacs 26 flymake indicators in an otherwise light
-    ;; modeline
-    ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
-    (setq elpy-remove-modeline-lighter t)
-    (advice-add 'elpy-modules-remove-modeline-lighter
-                :around (lambda (fun &rest args)
-                          (unless (eq (car args) 'flymake-mode)
-                            (apply fun args))))
+  ;;   ;; use flycheck, not elpy's flymake
+  ;;   ;; (https://realpython.com/blog/python/emacs-the-best-python-editor/
+  ;;   ;;  https://elpy.readthedocs.io/en/latest/customization_tips.html)
+  ;;   ;; I don't think I'm seeing much flycheck output
+  ;;   (if (require 'flycheck nil t)
+  ;;       (progn (message "found emacs flycheck package")
+  ;;              (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  ;;              (add-hook 'elpy-mode-hook 'flycheck-mode)
+  ;;              (flycheck-pos-tip-mode)
+  ;;              (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  ;;              )
+  ;;     (warn "elpy didn't find flycheck emacs package"))
 
-    ;; Better "M-.":
-    ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
-    (defun elpy-goto-definition-or-rgrep ()
-      "Go to the definition of the symbol at point, if found. Otherwise, run `elpy-rgrep-symbol'."
-      (interactive)
-      (ring-insert find-tag-marker-ring (point-marker))
-      (condition-case nil (elpy-goto-definition)
-        (error (elpy-rgrep-symbol
-                (concat "\\(def\\|class\\)\s" (thing-at-point 'symbol) "(")))))
-    (define-key elpy-mode-map (kbd "M-.") 'elpy-goto-definition-or-rgrep)
+  ;;   ;; Enable emacs 26 flymake indicators in an otherwise light
+  ;;   ;; modeline
+  ;;   ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
+  ;;   (setq elpy-remove-modeline-lighter t)
+  ;;   (advice-add 'elpy-modules-remove-modeline-lighter
+  ;;               :around (lambda (fun &rest args)
+  ;;                         (unless (eq (car args) 'flymake-mode)
+  ;;                           (apply fun args))))
 
-    ;; Enable full font locking of inputs in the python shell
-    ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
-    ;; I can't see that this does anything
-    (advice-add 'elpy-shell--insert-and-font-lock
-                :around (lambda (f string face &optional no-font-lock)
-                          (if (not (eq face 'comint-highlight-input))
-                              (funcall f string face no-font-lock)
-                            (funcall f string face t)
-                            (python-shell-font-lock-post-command-hook))))
+  ;;   ;; Better "M-.":
+  ;;   ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
+  ;;   (defun elpy-goto-definition-or-rgrep ()
+  ;;     "Go to the definition of the symbol at point, if found. Otherwise, run `elpy-rgrep-symbol'."
+  ;;     (interactive)
+  ;;     (ring-insert find-tag-marker-ring (point-marker))
+  ;;     (condition-case nil (elpy-goto-definition)
+  ;;       (error (elpy-rgrep-symbol
+  ;;               (concat "\\(def\\|class\\)\s" (thing-at-point 'symbol) "(")))))
+  ;;   (define-key elpy-mode-map (kbd "M-.") 'elpy-goto-definition-or-rgrep)
 
-    (advice-add 'comint-send-input
-                :around (lambda (f &rest args)
-                          (if (eq major-mode 'inferior-python-mode)
-                              (cl-letf ((g (symbol-function 'add-text-properties))
-                                        ((symbol-function 'add-text-properties)
-                                         (lambda (start end properties &optional object)
-                                           (unless (eq (nth 3 properties) 'comint-highlight-input)
-                                             (funcall g start end properties object)))))
-                                (apply f args))
-                            (apply f args))))    
+  ;;   ;; Enable full font locking of inputs in the python shell
+  ;;   ;; https://elpy.readthedocs.io/en/latest/customization_tips.html
+  ;;   ;; I can't see that this does anything
+  ;;   (advice-add 'elpy-shell--insert-and-font-lock
+  ;;               :around (lambda (f string face &optional no-font-lock)
+  ;;                         (if (not (eq face 'comint-highlight-input))
+  ;;                             (funcall f string face no-font-lock)
+  ;;                           (funcall f string face t)
+  ;;                           (python-shell-font-lock-post-command-hook))))
+
+  ;;   (advice-add 'comint-send-input
+  ;;               :around (lambda (f &rest args)
+  ;;                         (if (eq major-mode 'inferior-python-mode)
+  ;;                             (cl-letf ((g (symbol-function 'add-text-properties))
+  ;;                                       ((symbol-function 'add-text-properties)
+  ;;                                        (lambda (start end properties &optional object)
+  ;;                                          (unless (eq (nth 3 properties) 'comint-highlight-input)
+  ;;                                            (funcall g start end properties object)))))
+  ;;                               (apply f args))
+  ;;                           (apply f args))))    
 
     ;; code tidy when save
-    (if autopep8bin
-        (add-hook 'elpy-mode-hook 'py-autopep8))
+    ;; (if autopep8bin
+    ;;     (add-hook 'elpy-mode-hook 'py-autopep8-mode))
     
-    ;; Undo ely's override of C-arrowkeys
-    ;; https://github.com/jorgenschaefer/elpy/issues/1188
-    (eval-after-load "elpy"
-      '(cl-dolist (key '("C-<up>" "C-<down>" "C-<left>" "C-<right>"))
-         (define-key elpy-mode-map (kbd key) nil)))
-    )
+    ;; ;; Undo ely's override of C-arrowkeys
+    ;; ;; https://github.com/jorgenschaefer/elpy/issues/1188
+    ;; (eval-after-load "elpy"
+    ;;   '(cl-dolist (key '("C-<up>" "C-<down>" "C-<left>" "C-<right>"))
+    ;;      (define-key elpy-mode-map (kbd key) nil)))
+    ;;)
 
   ;; *** EIN
   ;; TODO: figure out plot scaling.  Once imagemagick hack is here:
@@ -3502,13 +3840,15 @@ command options."
 (put 'eval-expression 'disabled nil) ; disabled by default
 (global-set-key "\e;" 'comment-line) ; like dwim but better: no region, cmmnt repeats
 
+;; auto-complete gets in way of company python autocomplete
+;;
 ;; does this make org-mode slower?  If so, disable it like this: http://stackoverflow.com/questions/24814988/emacs-disable-auto-complete-in-python-mode
-(use-package auto-complete
-  :defer 0
-  :diminish auto-complete-mode
-  :diminish global-auto-complete-mode
-  :diminish auto-complete-minor-mode
-  :config (global-auto-complete-mode))
+;; (use-package auto-complete
+;;   :defer 0
+;;   :diminish auto-complete-mode
+;;   :diminish global-auto-complete-mode
+;;   :diminish auto-complete-minor-mode
+;;   :config (global-auto-complete-mode))
 
 ;; syntax checkers for many languages
 ;; To use flycheck for over 40 languages, do this:
@@ -3539,6 +3879,10 @@ command options."
      (awk-mode . "awk")
      (other . "gnu")))
  '(calendar-week-start-day 1)
+ '(citar-file-open-functions
+   '(("html" . citar-file-open-external)
+     ("pdf" . citar-file-open-external)
+     (t . find-file)))
  '(column-number-mode t)
  '(conda-anaconda-home conda-env-home-directory)
  '(counsel-grep-base-command "grep -nEi '%s' %s")
@@ -3552,9 +3896,6 @@ command options."
  '(display-time-mode t)
  '(ediff-keep-variants nil)
  '(ediff-split-window-function 'split-window-horizontally)
- '(elpy-rpc-python-command "python")
- '(elpy-shell-display-buffer-after-send t)
- '(elpy-shell-starting-directory 'current-directory)
  '(enable-recursive-minibuffers t)
  '(ess-ido-flex-matching t)
  '(ess-language "R" t)
@@ -3609,7 +3950,7 @@ command options."
  '(org-cycle-include-plain-lists 'integrate)
  '(org-directory "~/")
  '(org-ellipsis "…")
- '(org-export-backends '(ascii html latex odt org))
+ '(org-export-backends '(ascii beamer html latex odt org))
  '(org-export-with-broken-links 'mark)
  '(org-fontify-done-headline t)
  '(org-fontify-emphasized-text t)
@@ -3678,6 +4019,8 @@ command options."
  '(use-short-answers t)
  '(visual-line-fringe-indicators '(nil top-right-angle))
  '(w32-use-w32-font-dialog nil)
+ '(warning-suppress-log-types '((use-package) (:warning)))
+ '(warning-suppress-types '((comp) (:warning)))
  '(window-divider-default-places t)
  '(window-divider-mode t))
 
@@ -3771,20 +4114,20 @@ command options."
   :config
   (load-library "realgud") ; avoid M-x load-library on every startup
   (add-hook 'gud-mode-hook
-	    '(lambda ()
-               ;; conflicts w/ other home bindings...
-	       (local-set-key [home]   ; move to beginning of line, after prompt
-			      'comint-bol)
-	       (local-set-key [up]     ; cycle backward through command history
-			      '(lambda () (interactive)
-			         (if (comint-after-pmark-p)
-				     (comint-previous-input 1)
-				   (previous-line 1))))
-	       (local-set-key [down]    ; cycle forward through command history
-			      '(lambda () (interactive)
-			         (if (comint-after-pmark-p)
-				     (comint-next-input 1)
-				   (forward-line 1))))))
+	    #'(lambda ()
+                ;; conflicts w/ other home bindings...
+	        (local-set-key [home]   ; move to beginning of line, after prompt
+			       'comint-bol)
+	        (local-set-key [up]     ; cycle backward through command history
+			       #'(lambda () (interactive)
+			           (if (comint-after-pmark-p)
+				       (comint-previous-input 1)
+				     (previous-line 1))))
+	        (local-set-key [down]    ; cycle forward through command history
+			       #'(lambda () (interactive)
+			           (if (comint-after-pmark-p)
+				       (comint-next-input 1)
+				     (forward-line 1))))))
   :commands (realgud:gdb
              realgud:ipdb
              realgud:pdb))
@@ -3829,6 +4172,110 @@ command options."
        term-color-darkgoldenrod
        term-color-ivory4])
 
+;; * Presentations
+
+
+;; From System Crafters: https://systemcrafters.net/emacs-tips/presentations-with-org-present/
+;; I think it expects more of the full setup, here (which isn't copied below):
+;; The final configuration:
+;; https://systemcrafters.net/emacs-tips/presentations-with-org-present/
+
+(defun dw/org-present-prepare-slide ()
+  (org-overview)
+  (org-show-entry)
+  (org-show-children))
+
+(defun dw/org-present-hook ()
+  (setq-local face-remapping-alist '((default (:height 1.5) variable-pitch)
+                                     (header-line (:height 4.5) variable-pitch)
+                                     (org-code (:height 1.55) org-code)
+                                     (org-verbatim (:height 1.55) org-verbatim)
+                                     (org-block (:height 1.25) org-block)
+                                     (org-block-begin-line (:height 0.7) org-block)))
+  (setq header-line-format " ")
+  (org-display-inline-images)
+  (dw/org-present-prepare-slide))
+
+(defun dw/org-present-quit-hook ()
+  (setq-local face-remapping-alist '((default variable-pitch default)))
+  (setq header-line-format nil)
+  (org-present-small)
+  (org-remove-inline-images))
+
+(defun dw/org-present-prev ()
+  (interactive)
+  (org-present-prev)
+  (dw/org-present-prepare-slide))
+
+(defun dw/org-present-next ()
+  (interactive)
+  (org-present-next)
+  (dw/org-present-prepare-slide))
+
+(use-package org-present
+  :bind (:map org-present-mode-keymap
+         ("C-c C-j" . dw/org-present-next)
+         ("C-c C-k" . dw/org-present-prev))
+  :hook ((org-present-mode . dw/org-present-hook)
+         (org-present-mode-quit . dw/org-present-quit-hook)))
+
+;; As-is, you can't control what headline level is the slide you switch to/from, so not useful.  But maybe there's a configuration?
+
+;; ;; https://www.omarpolo.com/dots/emacs.html
+;; (use-package org-tree-slide
+;;   :custom ((org-image-actual-width nil))
+;;   :config
+;;   (defun op/org-present-frame ()
+;;     (let ((frame (make-frame `( ;(minibuffer . nil)
+;;                                (title . "Presentation")
+;;                                (menu-bar-lines . 0)
+;;                                (tool-bar-lines . 0)
+;;                                (vertical-scroll-bars . nil)
+;;                                (left-fringe . 0)
+;;                                (right-fringe . 0)
+;;                                (internal-border-width . 10)
+;;                                ;(cursor-type . nil)
+;;                                ))))
+;;       (select-frame-set-input-focus frame)
+;;       (toggle-frame-fullscreen)
+;;       (raise-frame frame)
+;;       frame))
+;;
+;;   (defun op/org-present ()
+;;     (interactive)
+;;     (let ((name "*presentazione*"))
+;;       (ignore-errors
+;;         (kill-buffer name))
+;;       ;; (with-current-buffer (make-indirect-buffer (current-buffer)
+;;       ;;                                            name))
+;;       (op/org-present-frame)
+;;       (org-display-inline-images)
+;;       (olivetti-mode)
+;;       (olivetti-set-width 90)
+;;       (call-interactively #'org-tree-slide-mode)
+;;       (text-scale-adjust 3))))
+
+;; had problems w/ bullets, seemed mainly a screen magnifier and cursor hider
+;; https://systemcrafters.net/emacs-tips/presentations-with-org-present/
+(use-package org-present)
+;;
+;; https://github.com/dholm/dotemacs/blob/master/.emacs.d/lisp/modes/org.el
+  ;; (use-package org-present
+  ;;   :config
+  ;;   (with-eval-after-load 'org-present
+  ;;     (add-hook 'org-present-mode-hook
+  ;;               (lambda ()
+  ;;                 (org-present-big)
+  ;;                 (org-display-inline-images)
+  ;;                 (org-present-hide-cursor)
+  ;;                 (org-present-read-only)))
+  ;;     (add-hook 'org-present-mode-quit-hook
+  ;;               (lambda ()
+  ;;                 (org-present-small)
+  ;;                 (org-remove-inline-images)
+  ;;                 (org-present-show-cursor)
+  ;;                 (org-present-read-write)))))
+
 ;; * Writing Tools
 ;; ** General Editing
 
@@ -3846,9 +4293,9 @@ command options."
 (global-set-key (kbd "C-c d") 'insert-date-string)
 
 (add-hook 'text-mode-hook
-	  '(lambda ()
-	     (set (make-local-variable 'dabbrev-case-fold-search) t)
-	     (set (make-local-variable 'dabbrev-case-replace) t)))
+	  #'(lambda ()
+	      (set (make-local-variable 'dabbrev-case-fold-search) t)
+	      (set (make-local-variable 'dabbrev-case-replace) t)))
 
 ;; ** Word counting
 (defun count-words-buffer ()
@@ -3887,7 +4334,12 @@ command options."
 ;;       http://www.nextpoint.se/?p=656
 ;;
 ;; windows hunspell is more "modern" but I can't make it save to personal dict
-;; my bug report: https://github.com/d12frosted/flyspell-correct/issues/97#issuecomment-923047599
+;; my bug report:
+;;       https://github.com/d12frosted/flyspell-correct/issues/97#issuecomment-923047599
+;; Emacs Elements advice for Windows huspell, says aspell is painful
+;;       in Windows.  I haven't looked at this, may be worthwhile:
+;; https://github.com/revrari/emacs_elements_chapter_2/blob/main/installing-emacs-windows.md
+;;
 ;; (setq hunspell_bin (sdo/find-exec "hunspell" "Needed by ispell and flyspell."))
 ;; (setq hunspell_dict_dir (expand-file-name "~/.hunspell"))
 ;; (use-package flyspell
