@@ -763,44 +763,44 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; ** Org-ref
 
 ;; required by org-ref
-(use-package helm-bibtex)
+;; (use-package helm-bibtex)
 
-(use-package org-ref
-;;  :after org helm-bibtex ;; blocks bibtex hydra binding if no org file visit
-  :straight (:branch "org-ref-2" :host github :repo "jkitchin/org-ref")
-  ;; doesn't work
-  ;;:bind ("C-c j" . 'org-ref-bibtex-hydra/body)
-  :init
-  (let ((default-directory docDir))
+;; (use-package org-ref
+;; ;;  :after org helm-bibtex ;; blocks bibtex hydra binding if no org file visit
+;;   :straight (:branch "org-ref-2" :host github :repo "jkitchin/org-ref")
+;;   ;; doesn't work
+;;   ;;:bind ("C-c j" . 'org-ref-bibtex-hydra/body)
+;;   :init
+;;   (let ((default-directory docDir))
 
-    (setq org-ref-bibliography-notes org_ref_notes_fnm
-          org-ref-default-bibliography bibfile_list 
-          org-ref-pdf-directory bibpdf_dir_list
-          reftex-default-bibliography org-ref-default-bibliography))
-  ;;  https://github.com/jkitchin/org-ref/issues/468
-  ;;(setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
-  :config ;; do it all in :init?
-  ;; doesn't work: doesn't show up bindings when edit .bib file
-  ;;(define-key bibtex-mode-map (kbd "C-c j") 'org-ref-bibtex-hydra/body)
-  ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
-  (setq bibtex-autokey-year-length 4
-        bibtex-autokey-name-year-separator "-"
-        bibtex-autokey-year-title-separator "-"
-        bibtex-autokey-titleword-separator "-"
-        bibtex-autokey-titlewords 2
-        bibtex-autokey-titlewords-stretch 1
-        bibtex-autokey-titleword-length 5)
-  ;; Make org-ref cite: link folded in emacs.
-  ;; https://org-roam.discourse.group/t/customize-display-of-cite-links/129/19
-  (org-link-set-parameters "cite" :display 'org-link)
-  ;; Make the 'cite:' link type available when C-c l on a bibtex entry
-  ;; https://github.com/jkitchin/org-ref/issues/345
-  (let ((lnk (assoc "bibtex" org-link-parameters)))
-    (setq org-link-parameters (delq lnk org-link-parameters))
-    (push lnk org-link-parameters)))
+;;     (setq org-ref-bibliography-notes org_ref_notes_fnm
+;;           org-ref-default-bibliography bibfile_list 
+;;           org-ref-pdf-directory bibpdf_dir_list
+;;           reftex-default-bibliography org-ref-default-bibliography))
+;;   ;;  https://github.com/jkitchin/org-ref/issues/468
+;;   ;;(setq org-ref-show-broken-links nil) ;still need to prohibit broken link show?
+;;   :config ;; do it all in :init?
+;;   ;; doesn't work: doesn't show up bindings when edit .bib file
+;;   ;;(define-key bibtex-mode-map (kbd "C-c j") 'org-ref-bibtex-hydra/body)
+;;   ;; bibtex-key generator: firstauthor-year-title-words (from bixuanzju)
+;;   (setq bibtex-autokey-year-length 4
+;;         bibtex-autokey-name-year-separator "-"
+;;         bibtex-autokey-year-title-separator "-"
+;;         bibtex-autokey-titleword-separator "-"
+;;         bibtex-autokey-titlewords 2
+;;         bibtex-autokey-titlewords-stretch 1
+;;         bibtex-autokey-titleword-length 5)
+;;   ;; Make org-ref cite: link folded in emacs.
+;;   ;; https://org-roam.discourse.group/t/customize-display-of-cite-links/129/19
+;;   (org-link-set-parameters "cite" :display 'org-link)
+;;   ;; Make the 'cite:' link type available when C-c l on a bibtex entry
+;;   ;; https://github.com/jkitchin/org-ref/issues/345
+;;   (let ((lnk (assoc "bibtex" org-link-parameters)))
+;;     (setq org-link-parameters (delq lnk org-link-parameters))
+;;     (push lnk org-link-parameters)))
 
-;; wasn't called if inside of org-ref, for some reason
-(define-key bibtex-mode-map (kbd "C-c j") 'org-ref-bibtex-hydra/body)
+;; ;; wasn't called if inside of org-ref, for some reason
+;; (define-key bibtex-mode-map (kbd "C-c j") 'org-ref-bibtex-hydra/body)
 
 
 ;; ** Org-download
@@ -838,26 +838,34 @@ TODO: add a cycle that opens or collapses all prop drawers?"
                               ;; we get the "zotero:"-less url, so we put it back.
                               (format "zotero:%s" zpath)))))
 
-;; For Zotero add-in "zotxt"  Conflicts/same-as zutilo?
-;; https://github.com/egh/zotxt-emacs
-;; Pastes biblio summary of Zotero entries in org-mode, connects to org-noter
-(use-package zotxt :after org)
+;; * ORG-ROAM-CITAR-BIBTEX DEBUG REPORT SEND
+;;
+;; BUG REPORT: https://github.com/org-roam/org-roam-bibtex/issues/273
 
-;; ** Org-cite (native in org 9.5+)
+;; ;; OVERWRITE THESE FOR EXAMPLE
+;;
+;; ;; bib and org file setup
+;; (setq bibfile_energy_fnm (expand-file-name "energy.bib" docDir)
+;;       bibfile_energy_pdf_dir (expand-file-name "papers" docDir)
+;;       bibfile_energytop_fnm (expand-file-name "energytop.org" docDir)
+;;       zotero_filedir (expand-file-name "zotero" docDir)
+;;       bibfiles_zotero_fnm (directory-files zotero_filedir t "\\.bib$")
+;;       bibfile_DOE_dir (expand-file-name "DOE_brainstorm" docDir)
+;;       bibfile_DOE_fnm (expand-file-name "deepSolarDOE.bib" bibfile_DOE_dir)
+;;       bibfile_DOE_pdf_dir (expand-file-name "papers" bibfile_DOE_dir)
+;;       )
 
-;; *** oc-csl-activate
-;; DOESN'T WORK
-;; I thought this might be the cause of the messed up org-ref links but they are messed up whether or not oc-csl-activate is commented out.
-;; prettier in-buffer org cites
-;; https://github.com/anghyflawn/dot-emacs/blob/master/emacs.org
-;; (use-package oc-csl-activate
-;;   :straight (:host github :repo "andras-simonyi/org-cite-csl-activate")
-;;   :config
-;;   (add-hook 'org-mode-hook (lambda () (cursor-sensor-mode 1)))
-;;   (setq org-cite-activate-processor 'csl-activate
-;;         org-cite-csl-activate-use-document-style t))
+;; (setq bibfile_list (append (list bibfile_energy_fnm bibfile_DOE_fnm)
+;;                            bibfiles_zotero_fnm)
+;;       bibpdf_dir_list (list bibfile_energy_pdf_dir  bibfile_DOE_pdf_dir
+;;                         zotero_filedir))
 
-; *** citar and packages it needs
+;; (setq org-roam-dir "~/ref/org_roam")
+
+;; Find pdf w/ JabRef/Zotero fields
+(setq bibtex-completion-pdf-field "file")
+
+;; *** citar and packages it needs
 (use-package embark
   :after vertico
   :ensure t)
@@ -871,11 +879,14 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 (use-package citeproc
   :ensure t)
 
-;; It's possible to open entries directly in zotero
-;; https://github.com/emacs-citar/citar#opening-reference-entries
-;; you need to somehow set sometime to 'citar-open-entry-in-zotero'
-;; So citar opens pdfs with an external reading, I customized citar-file-open-functions to 'citar-file-open-external for the pdf extension
-;; TODO: how to make it open Drawboard if available?
+(use-package citar-embark
+  :after citar embark
+  :ensure t
+  :init
+  (setq citar-at-point-function 'embark-act)
+  :config
+  (citar-embark-mode))
+
 (use-package citar
   :init
   (setq org-cite-insert-processor 'citar
@@ -892,65 +903,11 @@ TODO: add a cycle that opens or collapses all prop drawers?"
          :map minibuffer-local-map
          ("M-b" . citar-insert-preset))) ; ??  from 
 
-;; https://github.com/emacs-citar/citar-org-roam
-;; With this, M-x citar-open-notes can create a new bib note under citar-notes-paths
 (use-package citar-org-roam
   :after (citar org-roam)
-  ;; :init
-  ;;   (setq citar-org-roam-note-title-template "${author} - ${title} FRED")
   :config
-   (setq citar-org-roam-note-directory "lit")
   (citar-org-roam-mode))
 
-;; DOESN'T WORK
-;; make your own note title
-;; https://github.com/emacs-citar/citar-org-roam#templates
-(setq citar-org-roam-note-title-template "${author} - ${title} FRED")
-(setq org-roam-capture-templates
-      '(("d" "default" plain
-         "%?"
-         :target
-         (file+head
-          "%<%Y%m%d%H%M%S>-${slug}.org"
-          "#+title: ${note-title}\n")
-         :unnarrowed t)
-        ("n" "literature note" plain
-         "%?"
-         :target
-         (file+head
-          "%(expand-file-name (or citar-org-roam-subdir \"\") org-roam-dir)/${citar-citekey}.org"
-          "#+title: ${citar-citekey} (${citar-date}). ${note-title}.\n#+created: %U\n#+last_modified: %U\n\n")
-         :unnarrowed t)))
-(setq citar-org-roam-capture-template-key "n")
-
-(use-package citar-embark
-  :after citar embark
-  :ensure t
-  :init
-  (setq citar-at-point-function 'embark-act)
-  :config
-  (citar-embark-mode))
-
-;; DIDN'T WORK
-;; From: https://github.com/emacs-citar/citar-org-roam
-;;
-;; SDO: probably too much breakable stuff
-;; ;; From: https://honnef.co/articles/my-org-roam-workflows-for-taking-notes-and-writing-articles/
-;;
-;; DIDN'T WORK
-;; From: https://jethrokuan.github.io/org-roam-guide/
-
-;; ** Org-Roam
-
-;; TODO: :custom (org-id-method 'ts) doesn't work
-;;       https://org-roam.discourse.group/t/org-roam-major-redesign/1198/28
-;; TIPS
-;; add org-id to headline: org-id-copy
-
-;; TODO: org-roam-find-node shows hierarchy: https://github.com/org-roam/org-roam/wiki/User-contributed-Tricks#showing-node-hierarchy
-;;
-;; ;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
-;; ;; several startup org-roams, also initializing org-roam-bibtex 
 (use-package org-roam
   :after helm-bibtex ; necessary?
   ;; calling one of these commands will initialize Org-roam and ORB
@@ -959,19 +916,33 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   :custom
   (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
   (org-id-method 'ts)
+  (org-roam-directory org-roam-dir)
   ;; from emacsconf
   (org-roam-node-display-template "${title:80} ${tags:80}")
-  ;; from: https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
-   ;; adds a timestamp to dailies. DO I WANT THAT?
-  (ORG-roam-dailies-capture-templates
-   '(("d" "default" entry "* %<%I:%M %p>: %?"
-      :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
-
-  ;; comment out unless specifically want to use ivy
-  ;;  (org-roam-completion-system 'ivy)
-
-  ;; Use winner-undo/redo as forward/backward keys for org-roam ?
-  ;; https://youtu.be/OzKZJSCLo90?t=38
+  (org-roam-capture-templates '(("m" "main"
+                                 plain
+                                 "%?"
+                                 :if-new (file+head "main/${slug}.org" "#+title: ${title}\n"):immediate-finish
+                                 t
+                                 :unnarrowed t)
+                                ("r" "bibliography reference"
+                                 plain
+                                 "* First Pass\n** Category\n(type of paper)\n** Context\n(Related Research)\n** Correctness\n(Valid assumptions)\n** Contributions\n** Clarity\n* Second Pass\n** Notes\n** Concepts I don't get\n** Questions\n** Summary\n** Relevant Related Work\n* Third Pass\n** Strong Points\n** Weak Points\n"
+                                 :target (file+head "references/notes/${citekey}.org" "#+title: ${title}\n"):unnarrowed
+                                 t)
+                                ("t" "topic"
+                                 plain
+                                 "* Category\n\n%?\n\n"
+                                 :if-new (file+head "topics/${slug}.org" "#+title: ${title}\n#+filetags: Topic"):immediate-finish
+                                 t
+                                 :unnarrowed t)
+                                ("a" "other resources"
+                                 plain
+                                 "%?"
+                                 :if-new (file+head "articles/${title}.org" "#+title: ${title}\n#+filetags:
+  :article:\n"):immediate-finish
+                                 t
+                                 :unnarrowed t)))
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert)
@@ -984,15 +955,195 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ("C-c n D" . org-roam-dailies-map) ;; get options for all dailies key bindings
   
   :init
-  ;; (setq org-roam-v2-ack t)
-  ;; set this here instead of in :custom so it can be used during init
-  ;; truename used for performance: https://org-roam.discourse.group/t/org-roam-buffer-does-not-update-on-click-link-buffer-switch/2364/8?u=scotto
-  ;; from: https://www.orgroam.com/manual.html=
   (setq org-roam-dailies-directory (expand-file-name "daily"
                                                      org-roam-dir))
   :config
   (require 'org-roam-dailies) ;; Ensure the keymap is available
-  (org-roam-db-autosync-mode))
+  (org-roam-db-autosync-mode) ;; nee org-roam-setup
+  (org-roam-bibtex-mode +1))
+
+(use-package org-roam-bibtex
+  :straight t
+  :after org-roam
+  :hook (org-roam-mode . org-roam-bibtex-mode))
+
+;; * ORG-ROAM-CITAR-BIBTEX KINDA WORKED BUT NOT QUITE
+;; For Zotero add-in "zotxt"  Conflicts/same-as zutilo?
+;; https://github.com/egh/zotxt-emacs
+;; Pastes biblio summary of Zotero entries in org-mode, connects to org-noter
+;; (use-package zotxt :after org)
+
+;; ;; ** Org-cite (native in org 9.5+)
+
+;; ;; *** oc-csl-activate
+;; ;; DOESN'T WORK
+
+;; ; *** citar and packages it needs
+;; (use-package embark
+;;   :after vertico
+;;   :ensure t)
+
+;; (use-package marginalia
+;;   :after vertico
+;;   :ensure t
+;;   :config
+;;   (marginalia-mode))
+
+;; (use-package citeproc
+;;   :ensure t)
+
+;; ;; It's possible to open entries directly in zotero
+;; ;; https://github.com/emacs-citar/citar#opening-reference-entries
+;; ;; you need to somehow set something to 'citar-open-entry-in-zotero'
+;; ;; So citar opens pdfs with an external reading, I customized citar-file-open-functions to 'citar-file-open-external for the pdf extension
+;; ;; TODO: how to make it open Drawboard if available?
+;; (use-package citar
+;;   :init
+;;   (setq org-cite-insert-processor 'citar
+;;         org-cite-follow-processor 'citar
+;;         org-cite-activate-processor 'citar
+;;         org-cite-global-bibliography bibfile_list
+;;         citar-bibliography org-cite-global-bibliography
+;;         citar-library-paths bibpdf_dir_list
+;;         citar-notes-paths (list org-roam-dir))
+
+;;   :bind (("C-c b" . citar-insert-citation)
+;;          ;; also  C-c C-x C-@
+;;          (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
+;;          ("C-c C-1" . citar-open-library-files)
+;;          :map minibuffer-local-map
+;;          ("M-b" . citar-insert-preset))) ; ??  from 
+
+;; ;; https://github.com/emacs-citar/citar-org-roam
+;; ;; With this, M-x citar-open-notes can create a new bib note under citar-notes-paths
+;; (use-package citar-org-roam
+;;   :after (citar org-roam)
+;;   ;; :init
+;;   ;;   (setq citar-org-roam-note-title-template "${author} - ${title} FRED")
+;;   :config
+;; ;;   (setq citar-org-roam-note-directory "lit")
+;;   (citar-org-roam-mode))
+
+;; (use-package org-roam-bibtex
+;;   :straight t
+;;   :after org-roam
+;;   :hook (org-roam-mode . org-roam-bibtex-mode)
+;;   :config
+;;   )
+
+;; (use-package citar-embark
+;;   :after citar embark
+;;   :ensure t
+;;   :init
+;;   (setq citar-at-point-function 'embark-act)
+;;   :config
+;;   (citar-embark-mode))
+
+;; ;; DIDN'T WORK
+;; ;; From: https://github.com/emacs-citar/citar-org-roam
+;; ;;
+;; ;; SDO: probably too much breakable stuff
+;; ;; ;; From: https://honnef.co/articles/my-org-roam-workflows-for-taking-notes-and-writing-articles/
+;; ;;
+;; ;; DIDN'T WORK
+;; ;; From: https://jethrokuan.github.io/org-roam-guide/
+
+;; ;; ** Org-Roam
+
+;; ;; TODO: :custom (org-id-method 'ts) doesn't work
+;; ;;       https://org-roam.discourse.group/t/org-roam-major-redesign/1198/28
+;; ;; TIPS
+;; ;; add org-id to headline: org-id-copy
+
+;; ;; TODO: org-roam-find-node shows hierarchy: https://github.com/org-roam/org-roam/wiki/User-contributed-Tricks#showing-node-hierarchy
+;; ;;
+;; ;; ;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
+;; ;; ;; several startup org-roams, also initializing org-roam-bibtex 
+;; (use-package org-roam
+;;   :after helm-bibtex ; necessary?
+;;   ;; calling one of these commands will initialize Org-roam and ORB
+;;   :commands (org-roam-node-find org-roam-graph org-roam-capture
+;;                                 org-roam-dailies-capture-today org-roam-buffer-toggle)
+;;   :custom
+;;   (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
+;;   (org-id-method 'ts)
+;;   (org-roam-directory org-roam-dir)
+;;   ;; from emacsconf
+;;   (org-roam-node-display-template "${title:80} ${tags:80}")
+;;   ;; from: https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
+;;    ;; adds a timestamp to dailies. DO I WANT THAT?
+;;   ;; (ORG-roam-dailies-capture-templates
+;;   ;;  '(("d" "default" entry "* %<%I:%M %p>: %?"
+;;   ;;     :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
+;;   (org-roam-capture-templates '(("m" "main"
+;;                                  plain
+;;                                  "%?"
+;;                                  :if-new (file+head "main/${slug}.org" "#+title: ${title}\n"):immediate-finish
+;;                                  t
+;;                                  :unnarrowed t)
+;;                                 ("r" "bibliography reference"
+;;                                  plain
+;;                                  "* First Pass\n** Category\n(type of paper)\n** Context\n(Related Research)\n** Correctness\n(Valid assumptions)\n** Contributions\n** Clarity\n* Second Pass\n** Notes\n** Concepts I don't get\n** Questions\n** Summary\n** Relevant Related Work\n* Third Pass\n** Strong Points\n** Weak Points\n"
+;;                                  :target (file+head "references/notes/${citekey}.org" "#+title: ${title}\n"):unnarrowed
+;;                                  t)
+;;                                 ("t" "topic"
+;;                                  plain
+;;                                  "* Category\n\n%?\n\n"
+;;                                  :if-new (file+head "topics/${slug}.org" "#+title: ${title}\n#+filetags: Topic"):immediate-finish
+;;                                  t
+;;                                  :unnarrowed t)
+;;                                 ("a" "other resources"
+;;                                  plain
+;;                                  "%?"
+;;                                  :if-new (file+head "articles/${title}.org" "#+title: ${title}\n#+filetags:
+;;   :article:\n"):immediate-finish
+;;                                  t
+;;                                  :unnarrowed t)))
+
+;;   ;; comment out unless specifically want to use ivy
+;;   ;;  (org-roam-completion-system 'ivy)
+
+;;   ;; Use winner-undo/redo as forward/backward keys for org-roam ?
+;;   ;; https://youtu.be/OzKZJSCLo90?t=38
+;;   :bind (("C-c n l" . org-roam-buffer-toggle)
+;;          ("C-c n f" . org-roam-node-find)
+;;          ("C-c n i" . org-roam-node-insert)
+;;          ("C-c n g" . org-roam-graph)
+;;          ("C-c n h" . org-roam-capture)
+;;          ([mouse-1] . org-roam-visit-thing)
+
+;;          ("C-c n d" . org-roam-dailies-capture-today)) ; only 2 keys for today
+;;   :bind-keymap  
+;;   ("C-c n D" . org-roam-dailies-map) ;; get options for all dailies key bindings
+  
+;;   :init
+;;   ;; (setq org-roam-v2-ack t)
+;;   ;; set this here instead of in :custom so it can be used during init
+;;   ;; truename used for performance: https://org-roam.discourse.group/t/org-roam-buffer-does-not-update-on-click-link-buffer-switch/2364/8?u=scotto
+;;   ;; from: https://www.orgroam.com/manual.html=
+;;   (setq org-roam-dailies-directory (expand-file-name "daily"
+;;                                                      org-roam-dir))
+;;   :config
+;;   (require 'org-roam-dailies) ;; Ensure the keymap is available
+;;   ;;(org-roam-setup) obsolete
+;;   (org-roam-db-autosync-mode) ;; nee org-roam-setup
+;;   (org-roam-bibtex-mode +1))
+;; ;;  )
+
+
+;;(bind-keys* ((kbd "C-c z") . orb-insert-link)) ;; must insert to create new
+
+;; (require 'citar-org-roam)
+;; (citar-register-notes-source 'orb-citar-source
+;;                              (list :name "Org-Roam Notes"
+;;                                    :category 'org-roam-node
+;;                                    :items #'citar-org-roam--get-candidates
+;;                                    :hasitems #'citar-org-roam-has-notes
+;;                                    :open #'citar-org-roam-open-note
+;;                                    :create #'orb-citar-edit-note
+;;                                    :annotate #'citar-org-roam--annotate))
+
+;; (setq citar-notes-source 'orb-citar-source)
 
 ;; ** org-roam-ui (graph viewing)
 
@@ -1014,6 +1165,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; ** org-roam-bibtex
 
+;; OLD
 ;; (use-package org-roam-bibtex
 ;;   :config
 ;;   (setq org-roam-capture-templates
@@ -1042,22 +1194,26 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;;            :unnarrowed t
 ;;            :empty-lines-before 1
 ;;            :prepend t)))
-;;   (defun robo/capture-to-inbox ()
-;;     "Capture a TODO straight to the inbox."
-;;     (interactive)
-;;     (org-roam-capture- :goto nil
-;;                        :keys "i"
-;;                        :node (org-roam-node-from-id "45acaadd-02fb-4b93-a741-45d37ff9fd5e")))
+
+;;   ;; what is this??
+;;   ;; (defun robo/capture-to-inbox ()
+;;   ;;   "Capture a TODO straight to the inbox."
+;;   ;;   (interactive)
+;;   ;;   (org-roam-capture- :goto nil
+;;   ;;                      :keys "i"
+;;   ;;                      :node (org-roam-node-from-id "45acaadd-02fb-4b93-a741-45d37ff9fd5e")))
+  
 ;;   (require 'org-roam-bibtex)
 
-;;   ;; TODO: figure out note files dirs in tis
-;;   ;; (expand-file-name "notes_${citekey}.org" bibnotes_dir)
+  ;; TODO: figure out note files dirs in tis
+  ;; (expand-file-name "notes_${citekey}.org" bibnotes_dir)
 
-;;   (setq citar-open-note-function 'orb-citar-edit-note
-;;         citar-notes-paths '("~/ref/tmp_papers_notes/refs")
-;;         orb-preformat-keywords '("citekey" "title" "url" "author-or-editor" "keywords" "file")
-;;         orb-process-file-keyword t
-;;         orb-file-field-extensions '("pdf")))
+  ;; doesn't citar-org-roam handle this?
+  ;; (setq citar-open-note-function 'orb-citar-edit-note
+  ;;       citar-notes-paths '("~/ref/tmp_papers_notes/refs")
+  ;;       orb-preformat-keywords '("citekey" "title" "url" "author-or-editor" "keywords" "file")
+  ;;       orb-process-file-keyword t
+  ;;       orb-file-field-extensions '("pdf")))
 
 ;; *** Org-roam API
 ;;
