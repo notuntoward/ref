@@ -348,16 +348,6 @@ TODO: make this a general function."
       (setq window-divider-default-right-width nPixDiv)
       ;; bottom hard to mouse on SP; hack is to add a pixel (TODO: improve)
       (setq window-divider-default-bottom-width (+ nPixDiv 1))
-
-      ;; this has no effect
-      ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Scroll-Bars.html
-      ;; (add-hook 'after-make-frame-functions
-      ;;           (lambda (frame)
-      ;;             (set-window-scroll-bars
-      ;;              (minibuffer-window frame) 0 nil 0 nil t)
-      ;;             (set-window-fringes
-      ;;              (minibuffer-window frame) 0 0 nil t)))
-
       )
   (progn
     ;; on a term or cmdshell:
@@ -391,7 +381,7 @@ TODO: make this a general function."
 (require 'shell)
 (define-key shell-mode-map [up]	'comint-previous-matching-input-from-input)
 (define-key shell-mode-map [down] 'comint-next-matching-input-from-input)
-
+
 ;; so ^M doesn't show up in Linux xemacs shell while logged in to Solaris
 (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)
 (add-hook 'comint-output-filter-functions 'shell-strip-ctrl-m nil t)
@@ -455,34 +445,17 @@ TODO: make this a general function."
       bibfile_energytop_fnm (expand-file-name "energytop.org" docDir)
       zotero_filedir (expand-file-name "zotero" docDir)
       bibfiles_zotero_fnm (directory-files zotero_filedir t "\\.bib$")
-;;      bibfiles_zotero_pdf_dir (expand-file-name "zotero" zotero_filedir)
       bibfile_DOE_dir (expand-file-name "DOE_brainstorm" docDir)
       bibfile_DOE_fnm (expand-file-name "deepSolarDOE.bib" bibfile_DOE_dir)
       bibfile_DOE_pdf_dir (expand-file-name "papers" bibfile_DOE_dir)
-
-      ;; bibnotes_dir (expand-file-name "tmp_papers_notes" docDir)
-      bibnotes_dirs (list (expand-file-name "tmp_papers_notes" docDir)))
+      )
 
 (setq bibfile_list (append (list bibfile_energy_fnm bibfile_DOE_fnm)
                            bibfiles_zotero_fnm)
       bibpdf_dir_list (list bibfile_energy_pdf_dir  bibfile_DOE_pdf_dir
                         zotero_filedir))
 
-(setq org-roam-directory "~/ref/org_roam")
-(message "Old org/bib init with playground org-roam or DOE brainstorm")
-(setq org_notes_dir (expand-file-name "org-notes" org-roam-directory)
-      bibfile_roam_fnms (list (expand-file-name
-                               "deepSolarDOE.bib" org-roam-directory)
-                              (expand-file-name "newTechAdoption.bib"
-                                                (expand-file-name
-                                                 "newTechAdoption"
-                                                 org-roam-directory)))
-      bibfile_roam_pdf_dir (expand-file-name "papers" org-roam-directory)
-      org_ref_notes_dir (expand-file-name "bib-notes" org-roam-directory)
-      org_ref_notes_fnm (expand-file-name "DOE_brainstorm.org"
-                                          org-roam-directory)
-      org-directory org_notes_dir
-      deft-directory org_notes_dir)
+(setq org-roam-dir "~/ref/org_roam")
 
 ;; Find pdf w/ JabRef/Zotero fields
 (setq bibtex-completion-pdf-field "file")
@@ -551,18 +524,6 @@ TODO: make this a general function."
   (setq inhibit-compacting-font-caches t)
   ;; only works w/ "org-superstar-mode: but see like it s/b just "org-superstar"
   :hook (org-mode . org-superstar-mode))
-
-;; Show hidden emphasis markers e.g. '*' in *bold*.  So can see where cursor is.
-;; Also URL links. But this seemed more annoying than useful
-;; (use-package org-appear
-;;   ;; comment out so only expands emphasis
-;;   ;; :custom
-;;   ;; (org-appear-autoentities t)
-;;   ;; (org-appear-autokeywords t)
-;;   ;; (org-appear-autolinks t)
-;;   ;; (org-appear-autosubmarkers t)
-;;   ;; (org-appear-delay 1)
-;;   :hook (org-mode . org-appear-mode))
 
 (with-eval-after-load 'org
   ;; ;; From: https://emacs.stackexchange.com/a/41705/14273
@@ -782,190 +743,6 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   )
   (define-key org-mode-map (kbd "C-c C-_") 'org-set-line-checkbox)
 
-
-;; ** Org-download
-
-;; NO doesn't seem to cause cache problem but DOES greatly slow down emacs init
-;;
-;; --- SEEMS OK is this messing up org mode cache ------------
-;; ;; TODO get this to work
-;;   ;; could do setq-local for dir or file-specific dirname:
-;;   ;; https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
-;; ;; make drag-and-drop image save in the same name folder as org file
-;; ;; ex: `aa-bb-cc.org' then save image test.png to `aa-bb-cc/test.png'
-;; (defun org-download-method-dirname-from-orgfile (link)
-;;   (let ((filename
-;;          (file-name-nondirectory
-;;           (car (url-path-and-query
-;;                 (url-generic-parse-url link)))))
-;;         (dirname (file-name-sans-extension (buffer-name)) ))
-;;     ;; if directory not exist, create it
-;;     (unless (file-exists-p dirname)
-;;       (make-directory dirname))
-;;     ;; return the path to save the download files
-;;     (expand-file-name filename dirname)))
-
-;; ;; From: https://coldnew.github.io/hexo-org-example/2018/05/22/use-org-download-to-drag-image-to-emacs/
-;; (use-package org-download
-;;   :after org
-;;   :custom
-;;   (org-download-method 'org-download-method-dirname-from-orgfile)
-;;   :hook
-;;   (dired-mode . org-download-enable))
-;; --- end is this messing up org mode cache -----------------------------
-
-;; ** Org Export
-
-(sdo/find-exec "zip" "Needed for org-mode export to .odt")
-
-;; doesn't work w/ latest org, last updated in 2018
-;; (use-package ox-minutes :after org) ; nice(er) ascii export, but slow start
-
-;; Pandoc helper for org export
-(when (sdo/find-exec "pandoc" "Needed for org-mode export to .docx, etc.")
-  ;; from: https://github.com/rubensts/.emacs.d/blob/master/emacs-init.org
-  (use-package ox-pandoc
-    :after org ; so pandoc shows up in org-export-dispatch screen
-    :config
-    (setq org-pandoc-options '((standalone . t))            ; default options for all output formats
-          org-pandoc-options-for-docx '((standalone . nil)) ; cancel above settings only for 'docx' format
-          )))
-
-;; ** Org Parsing
-
-;; (use-package pyorg
-;;   :straight (:host github :repo "jlumpe/pyorg" :files ("pyorg.el")))
-
-;; ** Org and Zotero
-
-;; For Zotero add-in "zutilo"  Conflicts or Same-As zotxt?
-;; https://orgmode-exocortex.com/2020/05/13/linking-to-zotero-items-and-collections-from-org-mode/
-(with-eval-after-load 'org
-  (org-link-set-parameters "zotero" :follow
-                           (lambda (zpath)
-                             (browse-url
-                              ;; we get the "zotero:"-less url, so we put it back.
-                              (format "zotero:%s" zpath)))))
-
-;; For Zotero add-in "zotxt"  Conflicts/same-as zutilo?
-;; https://github.com/egh/zotxt-emacs
-;; Pastes biblio summary of Zotero entries in org-mode, connects to org-noter
-(use-package zotxt :after org)
-
-;; ** Org-cite (native in org 9.5+)
-
-;; (require 'oc-csl-activate)
-;; (setq org-cite-activate-processor 'csl-activate)
-;; This causes edited Org citations with valid cite keys to be rendered immediately when the cursor leaves them, but unedited citations remain unrendered. The interactive command
-
-;; org-cite-csl-activate-render-all
-;; in contrast, renders all Org citations in the current buffer.
-
-;; One way of making sure that cursor-sensor-mode is turned on is adding the corresponding command to org-mode-hook:
-
-;; (add-hook 'org-mode-hook (lambda () (cursor-sensor-mode 1)))
-
-;; I thought this might be the cause of the messed up org-ref links but they are messed up whether or not oc-csl-activate is commented out.
-;; prettier in-buffer org cites
-;; https://github.com/anghyflawn/dot-emacs/blob/master/emacs.org
-(use-package oc-csl-activate
-  :straight (:host github :repo "andras-simonyi/org-cite-csl-activate")
-  :config
-  (add-hook 'org-mode-hook (lambda () (cursor-sensor-mode 1)))
-  (setq org-cite-activate-processor 'csl-activate
-        org-cite-csl-activate-use-document-style t))
-
-;; another: https://github.com/tecosaur/emacs-config/blob/master/config.org
-;;          there's also an org-ref converter at that URL:
-;;
-;; (use-package oc-csl-activate
-;;   :after oc
-;;   ;; SDO: I added this
-;;   :straight (:host github :repo "andras-simonyi/org-cite-csl-activate")
-;;   :config
-;;   (setq org-cite-csl-activate-use-document-style t)
-;;   (defun +org-cite-csl-activate/enable ()
-;;     (interactive)
-;;     (setq org-cite-activate-processor 'csl-activate)
-;;     (add-hook 'org-mode-hook '((lambda () (cursor-sensor-mode 1)) org-cite-csl-activate-render-all))
-;;     ;; SDO: something's wrong w/ defadvice, after I remove the !
-;;     (defadvice! +org-cite-csl-activate-render-all-silent (orig-fn)
-;;       :around #'org-cite-csl-activate-render-all
-;;       (with-silent-modifications (funcall orig-fn)))
-;;     (when (eq major-mode 'org-mode)
-;;       (with-silent-modifications
-;;         (save-excursion
-;;           (goto-char (point-min))
-;;           (org-cite-activate (point-max)))
-;;         (org-cite-csl-activate-render-all)))
-;;     (fmakunbound #'+org-cite-csl-activate/enable)))
-
-;; started from citar: https://github.com/emacs-citar/citar#org-cite
-
-;; 4/5/23 post: https://www.reddit.com/r/orgmode/comments/12dpbfx/guide_to_org_cite/
-;; referencing this: https://amerygration.com/Blog/citation_handling_in_emacs.html
-
-;; is already working below
-;; (use-package vertico
-;;   :ensure t
-;;   :config
-;;   (vertico-mode))
-;;
-;; (use-package orderless
-;;   :ensure t
-;;   :init
-;;   (setq completion-styles '(orderless basic)
-;;         completion-category-overrides
-;;         '((file (styles basic partial-completion)))))
-
-(use-package embark
-  :after vertico
-  :ensure t)
-
-(use-package marginalia
-  :after vertico
-  :ensure t
-  :config
-  (marginalia-mode))
-
-(use-package citeproc
-  :ensure t)
-
-;; (use-package embark-consult             ; Consult integration for Embark
-;;   :demand :after (embark consult)
-;;   :hook
-;;   (embark-collect-mode-hook . consult-preview-at-point-mode))
-
-
-;; It's possible to open entries directly in zotero
-;; https://github.com/emacs-citar/citar#opening-reference-entries
-;; you need to somehow set sometime to 'citar-open-entry-in-zotero'
-;; So citar opens pdfs with an external reading, I customized citar-file-open-functions to 'citar-file-open-external for the pdf extension
-;; TODO: how to make it open Drawboard if available?  
-(use-package citar
-  :ensure t
-  :init
-  (setq org-cite-insert-processor 'citar
-        org-cite-follow-processor 'citar
-        org-cite-activate-processor 'citar
-        org-cite-global-bibliography bibfile_list
-        citar-bibliography org-cite-global-bibliography
-        citar-library-paths bibpdf_dir_list
-        citar-notes-paths bibnotes_dirs)
-  :bind (("C-c b" . citar-insert-citation)
-         ;; also  C-c C-x C-@
-         (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
-         :map minibuffer-local-map
-         ("M-b" . citar-insert-preset))) ; ??  from 
-
-(use-package citar-embark
-  :after citar embark
-  :ensure t
-  :init
-  (setq citar-at-point-function 'embark-act)
-  :config
-  (citar-embark-mode))
-
 ;; ** Ebib
 
 ;; I'm not using this
@@ -1025,19 +802,157 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;; wasn't called if inside of org-ref, for some reason
 (define-key bibtex-mode-map (kbd "C-c j") 'org-ref-bibtex-hydra/body)
 
-;; ;; ** v2 Org-Roam
 
-;; ;; TODO: :custom (org-id-method 'ts) doesn't work
-;; ;;       https://org-roam.discourse.group/t/org-roam-major-redesign/1198/28
-;; ;; TIPS
-;; ;; add org-id to headline: org-id-copy
+;; ** Org-download
+
+;; Can't get it to work
+
+;; ** Org Export
+
+(sdo/find-exec "zip" "Needed for org-mode export to .odt")
+
+;; Pandoc helper for org export
+(when (sdo/find-exec "pandoc" "Needed for org-mode export to .docx, etc.")
+  ;; from: https://github.com/rubensts/.emacs.d/blob/master/emacs-init.org
+  (use-package ox-pandoc
+    :after org ; so pandoc shows up in org-export-dispatch screen
+    :config
+    (setq org-pandoc-options '((standalone . t))            ; default options for all output formats
+          org-pandoc-options-for-docx '((standalone . nil)) ; cancel above settings only for 'docx' format
+          )))
+
+;; ** Org Parsing
+
+;; (use-package pyorg
+;;   :straight (:host github :repo "jlumpe/pyorg" :files ("pyorg.el")))
+
+
+;; ** Org and Zotero
+
+;; For Zotero add-in "zutilo"  Conflicts or Same-As zotxt?
+;; https://orgmode-exocortex.com/2020/05/13/linking-to-zotero-items-and-collections-from-org-mode/
+(with-eval-after-load 'org
+  (org-link-set-parameters "zotero" :follow
+                           (lambda (zpath)
+                             (browse-url
+                              ;; we get the "zotero:"-less url, so we put it back.
+                              (format "zotero:%s" zpath)))))
+
+;; For Zotero add-in "zotxt"  Conflicts/same-as zutilo?
+;; https://github.com/egh/zotxt-emacs
+;; Pastes biblio summary of Zotero entries in org-mode, connects to org-noter
+(use-package zotxt :after org)
+
+;; ** Org-cite (native in org 9.5+)
+
+;; *** oc-csl-activate
+;; DOESN'T WORK
+;; I thought this might be the cause of the messed up org-ref links but they are messed up whether or not oc-csl-activate is commented out.
+;; prettier in-buffer org cites
+;; https://github.com/anghyflawn/dot-emacs/blob/master/emacs.org
+;; (use-package oc-csl-activate
+;;   :straight (:host github :repo "andras-simonyi/org-cite-csl-activate")
+;;   :config
+;;   (add-hook 'org-mode-hook (lambda () (cursor-sensor-mode 1)))
+;;   (setq org-cite-activate-processor 'csl-activate
+;;         org-cite-csl-activate-use-document-style t))
+
+; *** citar and packages it needs
+(use-package embark
+  :after vertico
+  :ensure t)
+
+(use-package marginalia
+  :after vertico
+  :ensure t
+  :config
+  (marginalia-mode))
+
+(use-package citeproc
+  :ensure t)
+
+;; It's possible to open entries directly in zotero
+;; https://github.com/emacs-citar/citar#opening-reference-entries
+;; you need to somehow set sometime to 'citar-open-entry-in-zotero'
+;; So citar opens pdfs with an external reading, I customized citar-file-open-functions to 'citar-file-open-external for the pdf extension
+;; TODO: how to make it open Drawboard if available?
+(use-package citar
+  :init
+  (setq org-cite-insert-processor 'citar
+        org-cite-follow-processor 'citar
+        org-cite-activate-processor 'citar
+        org-cite-global-bibliography bibfile_list
+        citar-bibliography org-cite-global-bibliography
+        citar-library-paths bibpdf_dir_list
+        citar-notes-paths (list org-roam-dir))
+  :bind (("C-c b" . citar-insert-citation)
+         ;; also  C-c C-x C-@
+         (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
+         ("C-c C-1" . citar-open-library-files)
+         :map minibuffer-local-map
+         ("M-b" . citar-insert-preset))) ; ??  from 
+
+;; https://github.com/emacs-citar/citar-org-roam
+;; With this, M-x citar-open-notes can create a new bib note under citar-notes-paths
+(use-package citar-org-roam
+  :after (citar org-roam)
+  ;; :init
+  ;;   (setq citar-org-roam-note-title-template "${author} - ${title} FRED")
+  :config
+   (setq citar-org-roam-note-directory "lit")
+  (citar-org-roam-mode))
+
+;; DOESN'T WORK
+;; make your own note title
+;; https://github.com/emacs-citar/citar-org-roam#templates
+(setq citar-org-roam-note-title-template "${author} - ${title} FRED")
+(setq org-roam-capture-templates
+      '(("d" "default" plain
+         "%?"
+         :target
+         (file+head
+          "%<%Y%m%d%H%M%S>-${slug}.org"
+          "#+title: ${note-title}\n")
+         :unnarrowed t)
+        ("n" "literature note" plain
+         "%?"
+         :target
+         (file+head
+          "%(expand-file-name (or citar-org-roam-subdir \"\") org-roam-dir)/${citar-citekey}.org"
+          "#+title: ${citar-citekey} (${citar-date}). ${note-title}.\n#+created: %U\n#+last_modified: %U\n\n")
+         :unnarrowed t)))
+(setq citar-org-roam-capture-template-key "n")
+
+(use-package citar-embark
+  :after citar embark
+  :ensure t
+  :init
+  (setq citar-at-point-function 'embark-act)
+  :config
+  (citar-embark-mode))
+
+;; DIDN'T WORK
+;; From: https://github.com/emacs-citar/citar-org-roam
+;;
+;; SDO: probably too much breakable stuff
+;; ;; From: https://honnef.co/articles/my-org-roam-workflows-for-taking-notes-and-writing-articles/
+;;
+;; DIDN'T WORK
+;; From: https://jethrokuan.github.io/org-roam-guide/
+
+;; ** Org-Roam
+
+;; TODO: :custom (org-id-method 'ts) doesn't work
+;;       https://org-roam.discourse.group/t/org-roam-major-redesign/1198/28
+;; TIPS
+;; add org-id to headline: org-id-copy
 
 ;; TODO: org-roam-find-node shows hierarchy: https://github.com/org-roam/org-roam/wiki/User-contributed-Tricks#showing-node-hierarchy
 ;;
 ;; ;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
 ;; ;; several startup org-roams, also initializing org-roam-bibtex 
 (use-package org-roam
-  :after helm-bibtex
+  :after helm-bibtex ; necessary?
   ;; calling one of these commands will initialize Org-roam and ORB
   :commands (org-roam-node-find org-roam-graph org-roam-capture
                                 org-roam-dailies-capture-today org-roam-buffer-toggle)
@@ -1046,6 +961,11 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   (org-id-method 'ts)
   ;; from emacsconf
   (org-roam-node-display-template "${title:80} ${tags:80}")
+  ;; from: https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
+   ;; adds a timestamp to dailies. DO I WANT THAT?
+  (ORG-roam-dailies-capture-templates
+   '(("d" "default" entry "* %<%I:%M %p>: %?"
+      :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
 
   ;; comment out unless specifically want to use ivy
   ;;  (org-roam-completion-system 'ivy)
@@ -1058,10 +978,10 @@ TODO: add a cycle that opens or collapses all prop drawers?"
          ("C-c n g" . org-roam-graph)
          ("C-c n h" . org-roam-capture)
          ([mouse-1] . org-roam-visit-thing)
-         ;; may not exist aymore
-         ("C-c n j" . org-roam-dailies-capture-today)
-         :map org-mode-map
-         ("C-M-i" . completion-at-point))
+
+         ("C-c n d" . org-roam-dailies-capture-today)) ; only 2 keys for today
+  :bind-keymap  
+  ("C-c n D" . org-roam-dailies-map) ;; get options for all dailies key bindings
   
   :init
   ;; (setq org-roam-v2-ack t)
@@ -1069,24 +989,23 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;; truename used for performance: https://org-roam.discourse.group/t/org-roam-buffer-does-not-update-on-click-link-buffer-switch/2364/8?u=scotto
   ;; from: https://www.orgroam.com/manual.html=
   (setq org-roam-dailies-directory (expand-file-name "daily"
-                                                     org-roam-directory))
-  (setq org-roam-dailies-capture-templates
-        '(("d" "default" entry
-           "* %?"
-           :target (file+head "%<%Y-%m-%d>.org"
-                              "#+title: %<%Y-%m-%d>\n"))))
+                                                     org-roam-dir))
   :config
-  (org-roam-db-autosync-mode)
-  ;; If using org-roam-protocol
-  (require 'org-roam-protocol))
-
+  (require 'org-roam-dailies) ;; Ensure the keymap is available
+  (org-roam-db-autosync-mode))
 
 ;; ** org-roam-ui (graph viewing)
 
+;; To see big graph in browser:
+;;   Use M-x org-roam-ui-mode RET to enable the global mode. It will start a web server on http://127.0.0.1:35901/ and connect to it via a WebSocket for real-time updates.
 ;; config from: https://github.com/org-roam/org-roam-ui
 (use-package org-roam-ui
   :straight (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
   :after org-roam
+  ;; normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+  ;; a hookable mode anymore, you're advised to pick something yourself
+  ;; if you don't care about startup time, use
+  ;;:hook (after-init . org-roam-ui-mode)
   :config
   (setq org-roam-ui-sync-theme t
         org-roam-ui-follow t
@@ -1173,31 +1092,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; ** Org-noter
 ;;
-;; *** Org-noter-media: modified org-note
-;; LOTS OF STRAIGHTEL DOC BUGS: e.g. branch "link-as-doc" doesn't exist
-;; This incompatible fork of org-noter can annotate videos like youtube; eventually w/ mpv player:
-;;this repo: https://github.com/c1-g/org-noter-media.
-;; Also org-media note
-;; (use-package org-noter
-;;   :straight '(org-noter :type git
-;;                         :host github
-;;                         :repo "weirdNox/org-noter"
-;;                         :fork "c1-g/org-noter-plus-djvu"
-;;                         :branch "link-as-doc"
-;;                         :files ("other/*.el" "*.el" "modules/*.el"))
-;;   :config
-;;   (use-package org-noter-nov :ensure nil)
-;;   (use-package org-noter-djvu :ensure nil)
-;;   (use-package org-noter-pdf :ensure nil))
-
-;; ;; The thing the annotates videos to org-mode  
-;; (use-package org-noter-media
-;;   :straight '(org-noter-media :type git
-;;                               :host github
-;;                               :repo "auroranil/org-noter-media"
-;;                               :fork "c1-g/org-noter-media"))
-
-;; *** original org-note
+;; *** original org-noter
 ;; keybindings, basic explanation: https://github.com/weirdnox/org-noter#keys
 ;; simple, just so it compiles.  started from: https://rgoswami.me/posts/org-note-workflow
 ;; update: adjust based on setup here: https://github.com/fuxialexander/org-pdftools
@@ -1212,7 +1107,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
    ;; i want to see the whole file
    org-noter-hide-other nil
    ;; everything is relative to the main notes file
-   org-noter-notes-search-path (list org_notes_dir)))
+   org-noter-notes-search-path (list org-roam-dir)))
 
 ;; For annotating videos
 ;; ** org-media note
