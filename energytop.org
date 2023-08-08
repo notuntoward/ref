@@ -1516,6 +1516,7 @@
 ******* [[cite:Bubeck21univrslLawRobust][Bubeck & Sellke 2021: Universal Law Robustness Isoperimetry]]
 ******* also [[Deviance]] (Saturated Model)
 ***** [[https://www.evernote.com/l/AA3SoUDUls5L364oW5_l0PB-1ntmcHZlRQ0/][Wikipedia: Cross-validation (statistics)]]
+***** [[file:energy.bib::Brownlee21nestedCrossval][Brownlee 2020: Nested Cross Validation]]
 ***** [[file:energy.bib::Cochrane18crossValTimeSer][Cochrane 2018: Time Ser. Nested CrossVal: causal, good test, indep assume]]
 ***** [[file:energy.bib::Bergmeir18crossValARfrcst][Bergmeir et al. 2018: Cross Val for Time Series Pred]]: "use normal CV"
 *** <<Reusable Holdout>>
@@ -2223,7 +2224,7 @@ Scott
 
 ********* good [[https://www.youtube.com/watch?v=WCUNPb-5EYI][RNN and LSTM video tutorial, Brandom Rohrer]] (and links to more)
 
-******* <<Transformer Networks>> [0/1]
+******* <<Transformer Networks>> [0/2]
 
         Do same job as LSTMS and then some.  Seem to be mainly about language models, but maybe they can somehow do continuous time series forecasts, as LSTMs do.
 
@@ -2246,6 +2247,23 @@ Scott
 ********* [[Transformer Probabilisitc Forecasting]]
 ********* also [[Probabilistic Deep Learning]]
 
+********* TODO Read "Attention is all you need"
+********* TODO <<Transformer Probabilisitc Forecasting>>
+*********** TODO [[https://huggingface.co/blog/informer][Multivariate Probabilistic Time Series Forecasting with Informer]] w/ code (READ)
+*********** <<Temporal Fusion Transformer>>
+
+            TemporalFusionTransformers are [[https://www.evernote.com/l/AA0XTk9smcpHN7prVbVaU_E/][said]] to be start of the
+            art, can be trained with transfer learning, and are
+            included in the DARTS autoML library. They are
+            explainable, either via their attention mechanism, or by
+            using SHAP or LIME.  Can also do probabilistic
+            forecasting, like with a copula, think.
+
+************* Tutorial: [[https://www.evernote.com/l/AA0XTk9smcpHN7prVbVaU_E/][Temporal Fusion Transformer: Time Series Forecasting with Deep Learning]]
+
+************* [[Darts AutoML]]
+*********** also [[Transformer Networks]]
+*********** also [[Probabilistic Deep Learning]]
 ******* <<Deep Sequence Learning for Time Series Forecasting>>
 
         Seems like LSTMs, Transformers, ... are mainly binary or classifier outputs.  But the binary output can be a threshold indicator bit, like in [[Distribution Regression]].  So could do multitask DR ( [[cite:Vogt18multiDistLrnAnomDet][Vogt et al. 2018: Multi Task Dist Anom Det DRNN1]]) on each sequence element.  Position dependence seems like maybe you'd want a Transformer network.
@@ -2564,6 +2582,7 @@ This is often an NN e.g [[SUMO toolbox]]
 *** <<Logistic Regression>>
 ***** [[file:energy.bib::Jordan97whyLogisticIRLS][Jordan & others 1995: Why the Logistic]]
 ***** [[file:energy.bib::Shalizi15datAnalElemViewBk][Shalizi 2015: Advanced]] data analysis from elementary perspective (logistic regression, ...)
+***** [[https://www.evernote.com/l/AA2NAyKCMlVN1KTUtwPEWLW/][What is C parameter in sklearn Logistic Regression?]]: inverse ridge, is ON
 ***** [[file:energy.bib::][Nielsen et al. 2004: Wind Power Ensemble Forecasting]] (logistic shape pow curve)
 ***** [[Bounding by output transformation or modeling]]
 ***** <<Rare Events and Logistic Regression>>
@@ -4403,6 +4422,7 @@ Hope that helps,
 ******* [[SHAP Interpretable Models]]
 ******* [[Random forest feature importance as a feature selection method]]
 ******* [[Attribution of errors to features]]
+******* [[Temporal Fusion Transformer]] can be explained by SHAP or LIME
 ******* also [[Interpretable Models]]
 ******* also [[Feature Selection for Boosted Trees]]
 ***** [[Feature Selection for Boosted Trees]]
@@ -8921,38 +8941,38 @@ Scott
 
 Sub Models (Section 3.5 & Co. of [[cite:Mayer21cmprPhyMdlPVfrcst][Mayer & Grof 2021: Extensive Comparison Physical PV Models]])
 
-| Code | Thing modeled           | Table | Details                                                                             |
-|------+-------------------------+-------+-------------------------------------------------------------------------------------|
-| C    | (component) separation  |     1 | Separation of beam and Diffuse irradiation                                          |
+| Code | Thing modeled           | Table | Details                                                                          |
+|------+-------------------------+-------+----------------------------------------------------------------------------------|
+| C    | (component) separation  |     1 | Separation of beam and Diffuse irradiation                                       |
 | D    | (diffuse) transposition |     2 | Horizontal irrad -> tilted surace (== POI according to pyData2021 conference video) |
 | R    | reflection              |     3 | Horizontal irrad -> tilted surace (== POI according to pyData2021 conference video) |
-| T    | cell temperature        |     4 | Effect of temp (NOCT?) on performance                                               |
-| P    | PV performance          |     5 | electronic modelEmpirical or N-transistor model                                     |
-| S    | shading                 |     6 | uneven irrad on PV surface, both stochastic (clouds) and deterministic (geometric)  |
-| I    | inverter                |     7 | voltage and/or power limits, DC:AC ratio, clipping, load-dep efficiency             |
+| T    | cell temperature        |     4 | Effect of temp (NOCT?) on performance                                            |
+| P    | PV performance          |     5 | electronic modelEmpirical or N-transistor model                                  |
+| S    | shading                 |     6 | uneven irrad on PV surface, both stochastic (clouds) and deterministic (geometric) |
+| I    | inverter                |     7 | voltage and/or power limits, DC:AC ratio, clipping, load-dep efficiency          |
 
 
 Sub Models in Joint Model (Table 15)
 
-| Joint Model      | Modeled   | Code | Sub Model Details        |    BibRef | BibKey                                                          | AltRefBibKey                                              | GotRef? |
-|------------------+-----------+------+--------------------------+-----------+-----------------------------------------------------------------+-----------------------------------------------------------+---------|
-| Simplest         | sep       | C1   | ERBS                     |        33 | [[cite:Erbs82EstDiffuseIrrad][Erbs82EstDiffuseIrrad]]           |                                                           | Y       |
-| C1D1R1T1P1S1I1   | transp    | D1   | Liu-Jordan               |        47 | [[cite:Liu61dailyInsolTiltEqtr][Liu61dailyInsolTiltEqtr]]       | [[cite:Li11EstDailyBeamRadTilt][Li11EstDailyBeamRadTilt]] | Y       |
-|                  | reflec    | R1   | None                     |      none | n/a                                                             |                                                           | Y       |
-|                  | temp      | T1   | NOCT (data sheet T_NOCT) |        69 | Ross82FlatplatePVmod                                            |                                                           | Y       |
-|                  | PV module | P1   | Evans                    |        79 | [[cite:Evans77costPVcnctrt][Evans77costPVcnctrt]]               | [[cite:Dubey13TempDepPV][Dubey13TempDepPV]]               | Y       |
-|                  | shade     | S1   | None                     |      none | n/a                                                             |                                                           | Y       |
-|                  | Inverter  | I1   | Constant                 | datasheet | n/a                                                             |                                                           | Y       |
-|------------------+-----------+------+--------------------------+-----------+-----------------------------------------------------------------+-----------------------------------------------------------+---------|
-| Best MAE Overall | sep       | C8   | Starke w/ Perez Clearsky |        44 | [[cite:Starke18oneMinDiffuseIrrad][Starke18oneMinDiffuseIrrad]] | Yang19SatelAugDiffuseSolar                                | Y       |
-| C8D10R3T2P1S2I2  |           |      |                          |        39 | Ineichen02airmassIndpTurbCoeff                                  |                                                           |         |
-|                  | transp    | D10  | Reindl param of [58]     |        58 | Perez90daylightAvailIrradDirectGlbl                             |                                                           | Y       |
-|                  |           |      |                          |        59 | Reindl90hrlyTileIrradMdl                                        | Loutzenhiser07validIrradIncline                           |         |
-|                  | reflec    | R3   | Physical, uncoated glass |        64 | Marion17aoiCorrectDiffusePV                                     | ShenLiang19crystSiliconBifacPV                            | Y       |
-|                  | temp      | T2   | NOCT (data sheet T_NOCT) |        63 | King04pvArrayPerform                                            |                                                           | Y       |
-|                  | PV module | P1   | Evans                    |        79 | [[cite:Evans77costPVcnctrt][Evans77costPVcnctrt]]               | [[cite:Dubey13TempDepPV][Dubey13TempDepPV]]               | Y       |
-|                  | shade     | S2   | Mayer, many params?      |        83 | Mayer20optPVplantGenetic                                        |                                                           | Y       |
-|                  | Inverter  | I2   | Driesse, quadratic       |        85 | Driesse08curvesEfficPVinvert                                    | pvlib.inverter.adr, [99] better?                          | Y       |
+| Joint Model      | Modeled   | Code | Sub Model Details        |    BibRef | BibKey                              | AltRefBibKey                     | GotRef? |
+|------------------+-----------+------+--------------------------+-----------+-------------------------------------+----------------------------------+---------|
+| Simplest         | sep       | C1   | ERBS                     |        33 | [[cite:Erbs82EstDiffuseIrrad][Erbs82EstDiffuseIrrad]]               |                                  | Y       |
+| C1D1R1T1P1S1I1   | transp    | D1   | Liu-Jordan               |        47 | [[cite:Liu61dailyInsolTiltEqtr][Liu61dailyInsolTiltEqtr]]             | [[cite:Li11EstDailyBeamRadTilt][Li11EstDailyBeamRadTilt]]          | Y       |
+|                  | reflec    | R1   | None                     |      none | n/a                                 |                                  | Y       |
+|                  | temp      | T1   | NOCT (data sheet T_NOCT) |        69 | Ross82FlatplatePVmod                |                                  | Y       |
+|                  | PV module | P1   | Evans                    |        79 | [[cite:Evans77costPVcnctrt][Evans77costPVcnctrt]]                 | [[cite:Dubey13TempDepPV][Dubey13TempDepPV]]                 | Y       |
+|                  | shade     | S1   | None                     |      none | n/a                                 |                                  | Y       |
+|                  | Inverter  | I1   | Constant                 | datasheet | n/a                                 |                                  | Y       |
+|------------------+-----------+------+--------------------------+-----------+-------------------------------------+----------------------------------+---------|
+| Best MAE Overall | sep       | C8   | Starke w/ Perez Clearsky |        44 | [[cite:Starke18oneMinDiffuseIrrad][Starke18oneMinDiffuseIrrad]]          | Yang19SatelAugDiffuseSolar       | Y       |
+| C8D10R3T2P1S2I2  |           |      |                          |        39 | Ineichen02airmassIndpTurbCoeff      |                                  |         |
+|                  | transp    | D10  | Reindl param of [58]     |        58 | Perez90daylightAvailIrradDirectGlbl |                                  | Y       |
+|                  |           |      |                          |        59 | Reindl90hrlyTileIrradMdl            | Loutzenhiser07validIrradIncline  |         |
+|                  | reflec    | R3   | Physical, uncoated glass |        64 | Marion17aoiCorrectDiffusePV         | ShenLiang19crystSiliconBifacPV   | Y       |
+|                  | temp      | T2   | NOCT (data sheet T_NOCT) |        63 | King04pvArrayPerform                |                                  | Y       |
+|                  | PV module | P1   | Evans                    |        79 | [[cite:Evans77costPVcnctrt][Evans77costPVcnctrt]]                 | [[cite:Dubey13TempDepPV][Dubey13TempDepPV]]                 | Y       |
+|                  | shade     | S2   | Mayer, many params?      |        83 | Mayer20optPVplantGenetic            |                                  | Y       |
+|                  | Inverter  | I2   | Driesse, quadratic       |        85 | Driesse08curvesEfficPVinvert        | pvlib.inverter.adr, [99] better? | Y       |
 
 
 Separation and Transposition models are most important, and there are probabilistic models for these [[cite:Starke18oneMinDiffuseIrrad][Starke et al. 2018: Res Diffuse Rad]], ref [103] and [104].  Probably relevant for AU VPP.
@@ -9763,10 +9783,7 @@ https://pvsc-python-tutorial.eastus.cloudapp.azure.com/user/lampshadz/tree/pyDat
 ***** see also [[Load Forecasting (Demand Forecasting)]]
 *** TODO <<Probabilistic Forecasting>>
     /collect or ref. all copula, scenario gen, prob frcst stuff here/
-***** TODO <<Transformer Probabilisitc Forecasting>>
-******* TODO [[https://huggingface.co/blog/informer][Multivariate Probabilistic Time Series Forecasting with Informer]] w/ code (READ)
-******* also [[Transformer Networks]]
-******* also [[Probabilistic Deep Learning]]
+***** TODO [[Transformer Probabilisitc Forecasting]]
 ***** [[file:energy.bib::Meer18reviewProbPVfrcstNetDmd][Meer et al. 2018: Review Probabilistic PV and demand forecasting]]
 ***** [[File:energy.bib::bessa12adaptquantcopulafrcst][Bessa et al. 2012: time]] adaptive quantile copula prob. frcst
 ***** also [[Quantile Mixtures]]
@@ -11892,6 +11909,11 @@ Scott
 ***** <<ERCOT Power Market>>
 ******* TODO collect ERCOT papers (or logseq query?)
 ******* [[free LSTM ERCOT price forecast SW]]
+***** <<CAISO Market>>
+******* Overview Videos
+********* videos: [[https://growingenergylabs.atlassian.net/wiki/spaces/SD/pages/8582332470/CAISO+Market+Overview+Training+Videos][CAISO Market Overview Training Videos]]
+********* my notes: [[https://onedrive.live.com/view.aspx?resid=4BBD96B3698748F8%21737227&id=documents&wd=target%28CAISO.one%7CD8FE86F7-ACC0-4B01-844D-F2D4AEC0903D%2FCAISO%20Market%20Overview%20Training%20Videos%7C19F88E39-EEE9-6148-83D7-94FE2E254B90%2F%29][Notes: CAISO Market Overview Training Videos]]
+******* [[https://www.evernote.com/shard/s13/sh/3ad4c85e-0826-455c-acc8-13286f8aa11c/JkthIMXaBKcdna7bn1lOpseMYaLdsQLb3PXsBjnRFYUP1D0HGKwjHmaQLg][California passes 5GW of grid-scale battery storage]]:  BESS revenue comes from energy trades in solar-heavy markets; from ancillary services in wind-heavy
 ***** [[http://www.strommarkttreffen.org/vergangene-treffen/][Group strommarkttreffen]]
       German group who works on electricity markets, does price modeling.
 
@@ -12581,6 +12603,72 @@ Erika
 ******* [[file:energy.bib::Mihnev16anomDetParamSysPtnt][Mihnev et al. 2016: Anom Det in Param Sys (like SPRT?)]] 
 ******* [[https://onedrive.live.com/edit.aspx/work/IWES?cid=4bbd96b3698748f8&id=documents&wd=target%2528Tutorials.one%257C93389E1B-FCE1-4F63-9068-1B49828D94D3%252FPredictive%2520Maintenance%2520with%2520Matlab%257CF90A03D9-B2A1-49F5-97FD-A5E26BFE11C0%252F%2529][Predictive Maintenance with Matlab (my OneNote notes on tutorial)]]
 ***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (discusses ROC stats, learning)
+***** <<Battery Predictive Maintenance>>
+******* Lithium Battery Predictive Maintenance
+********* [[https://www.evernote.com/l/AA2FzMiHDCRE_blptASxwi4bmmv/][GM purchases software for predicting EV battery fires]] (ALGOLiON): weeks ahead, only BMS data
+********* [[https://storagewiki.epri.com/index.php/BESS_Failure_Event_Database][BESS Failure Event Database - EPRI Storage Wiki]]
+******* <<Data for battery predictive maintenance>>
+********* [[https://data.nasa.gov/dataset/Li-ion-Battery-Aging-Datasets/uj5r-zjdb][Li-ion Battery Aging Datasets | NASA Open Data Portal]]
+*********** last updated in 2022
+********* [[https://howey.eng.ox.ac.uk/data-and-code/][Data and code · Battery Intelligence Lab]]
+*********** common cite is Birkl17* (in zotero-only for as of Aug 2023)
+********* NASA PCoE Battery data: [[https://www.nasa.gov/content/prognostics-center-of-excellence-data-set-repository][Prognostics Center of Excellence Data Set Repository | NASA]]
+*********** used in some papers e.g. Tian22battSOHpred
+*********** old, though Is 2007
+*********** is this the same as the aging dataset?
+*********** key: Saha07battDatLiNASA
+********* TODO NASA Randomized Battery
+*********** used by papers: e.g. Lu22battDegrPredUncertFut
+*********** kaggle user: [[https://www.kaggle.com/datasets/patrickfleith/nasa-randomized-battery-usage-dataset][NASA Randomized Battery Usage Dataset | Kaggle]]
+*********** Bing Chat download advice
+
+*Note*: Bing/NASA's avcide might be less manual but could also download by clicking buttons (heading has links to buttons)
+
+*Prompt*: how to download data from NASA Open Data Portal
+
+*Response*:
+
+To download all of NASA's randomized battery usage datasets, you can follow these steps:
+
+- Visit the [NASA Open Data Portal](^11^) and search for "randomized battery usage".
+- You will see a list of datasets that match your query. Click on the one you want to download.
+- You will be taken to a page with the dataset's metadata and a link to the actual data. The data may be hosted on a different NASA archive site, such as the [NAS Data Portal](^12^) or the [AVIRIS Data Portal](^10^).
+- Depending on the site, you may need to use LaunchPad to authenticate or register for an account before you can access the data.
+- Once you have access to the data, you can download it as a file or a folder, depending on the format. Some sites may also offer tools for filtering, visualizing, or analyzing the data online.
+- If you want to download multiple files or folders in bulk, you can use a command line tool such as wget or curl. For example, to download all the files in a directory, you can use this command:
+
+    for i in `lynx - dump - listonly download_directory_URL | grep download_data. php | awk ' {print $2}' `; \\ do file= ` basename $i `; wget - O $file $i ; done
+
+where download_directory_URL is the URL of the directory containing the files you want to download.
+
+I hope this helps you find and download the data you need. If you have any questions, please let me know. 😊
+
+Source: Conversation with Bing, 7/25/2023
+(1) NASA Open Data Portal. https://data.nasa.gov/.
+(2) Downloading Datasets from the NAS Data Portal. https://www.nas.nasa.gov/hecc/support/kb/downloading-datasets-from-the-nas-data-portal_575.html.
+(3) JPL | AVIRIS Data Portal - NASA. https://aviris.jpl.nasa.gov/dataportal/.
+(4) Data-Driven Prediction of Long and Short-Term Li-ion Battery ... - NASA. https://www.nasa.gov/sites/default/files/atoms/files/nabw22_sudarshan_-_2022_nasa_abw_presentation.pdf.
+(5) Li-ion Battery Aging Datasets | NASA Open Data Portal. https://data.nasa.gov/dataset/Li-ion-Battery-Aging-Datasets/uj5r-zjdb.
+(6) Comparison of Open Datasets for Lithium-ion Battery Testing. https://medium.com/batterybits/comparison-of-open-datasets-for-lithium-ion-battery-testing-fd0de091ca2.
+(7) Datasets — ProgPy Python Packages 1.4.0 documentation - GitHub Pages. https://nasa.github.io/progpy/api_ref/prog_models/DataSets.html.
+(8) Randomized Battery Usage 1: Random Walk - Catalog. https://catalog.data.gov/dataset/randomized-battery-usage-1-random-walk.
+(9) undefined. https://news.softpedia.com/news/samsung-galaxy-s7-edge-catches-fire-while-charging-507925.shtml#sgal_1[2.
+(10) undefined. https://www.cnn.com/interactive/2019/03/business/tesla-history-timeline/index.html[3.
+(11) undefined. https://www.npr.org/2013/01/25/170231466/boeings-787-problems-remain-a-mystery.
+(12) undefined. https://www.nasa.gov/content/prognostics-center-of-excellence-data-set-repository.
+(13) NASA Data Portal and APIs | NASA. https://www.nasa.gov/content/nasa-data-portal-and-apis/.
+(14) undefined. https://data.nas.nasa.gov/ecco/data.php?dir=/eccodata/llc_270/iter42/input.
+
+*********** there are [[https://data.nasa.gov/browse?q=randomized+battery+usage][7 data sets]]
+************* [[https://data.nasa.gov/Raw-Data/Randomized-Battery-Usage-1-Random-Walk/ugxu-9kjx][Randomized Battery Usage 1: Random Walk | NASA Open Data Portal]]
+************* [[https://data.nasa.gov/Raw-Data/Randomized-Battery-Usage-2-Room-Temperature-Random/qghr-qkfw][Randomized Battery Usage 2: Room Temperature Random Walk | NASA Open Data Portal]]
+************* [[https://data.nasa.gov/Raw-Data/Randomized-Battery-Usage-3-Room-Temperature-Variab/ed33-vxp2][Randomized Battery Usage 3: Room Temperature Variable Recharge Random Walk | ...]]
+************* [[https://data.nasa.gov/Raw-Data/Randomized-Battery-Usage-4-40C-Right-Skewed-Random/gah6-q2es/data][Randomized Battery Usage 4: 40C Right-Skewed Random Walk | NASA Open Data Portal]]
+************* [[https://data.nasa.gov/Raw-Data/Randomized-Battery-Usage-5-High-Temperature-Right-/tcjd-g74p][Randomized Battery Usage 5: High Temperature Right-Skewed Random Walk | NASA ...]]
+************* [[https://www.opendatanetwork.com/dataset/data.nasa.gov/5uxu-h2h6][Randomized Battery Usage 6: 40C Left Skewed Random Walk]]
+************* [[https://data.nasa.gov/Raw-Data/Randomized-Battery-Usage-7-Low-Temperature-Left-Sk/sb48-rsbc][Randomized Battery Usage 7: Low-Temperature Left-Skewed Random Walk | NASA Op...]]
+*********** TODO *I think there are more*: continue searching for "Randomized Battery Usage X"
+********* [[file:~/OneDrive/share/ds-experimental/scotto/proj/battMdl/doc/battMdl.org::*<<Q.Home Data>>][<<Q.Home Data>>]]
 ***** also [[Class Imbalance Handling]]
 ***** also [[Fault Prediction]]
 ***** also [[State Change Detection][State Change Detection]] (for flaw detection)
@@ -13955,7 +14043,12 @@ Automatically tweaking machine learning parameters, selecting algorithms, featur
 *** <<Missing Features and AutoML>>
 ***** built-in handling: [[cite:Feurer20autoSklearn20][Feurer et al. 2020: Auto Sklearn 2.0]]
 *** <<Time Series AutoML>>
-***** [[https://unit8co.github.io/darts/][Darts: Time Series Made Easy in Python]]: HenryM's BS student used it
+***** <<Darts AutoML>>
+
+      Henry Martin's BS student used it
+
+******* [[https://unit8co.github.io/darts/][Darts: Time Series Made Easy in Python]]
+******* [[Temporal Fusion Transformer]] is in Darts
 *** Also [[Frugal Machine Learning]]
 *** [[Hyperparameter Searching]]
 * <<Hyperparameter Searching>>
@@ -14140,6 +14233,7 @@ Automatically tweaking machine learning parameters, selecting algorithms, featur
 ***** [[cite:Molnar18InterpretableMachineLearning][Molnar 2018: Interpretable Machine Learning]] (has SHAP section/video)
 ***** SHAP messed up by co-linear features: [[https://www.evernote.com/l/AA0n6_GrboFHip8sh-ynF0N/][ARFS - Is collinearity harmful?]]
 ***** Tree SHAP better than RF featImp: [[https://www.evernote.com/l/AA2l1dRm2WBJPY1j8w6RyoPyCAJk-xH5B0I][Interpretable Machine Learning XGBoost]]
+***** [[Temporal Fusion Transformer]] can be explained by SHAP or LIME
 ***** <<SHAP for feature selection>>
 
       SHAP used to rank feats and avoiding a combinatorial search by
@@ -14972,6 +15066,9 @@ TODO: move their links to the outline above and then delete them from here
              [[https://www.evernote.com/l/AA22JA0sKFBAfL9QVWj2d_H/][On the Validation of UMAP]]: tuning UMAP for classification
              [[file:energy.bib::McInnes18featUMAPclassif][McInnes 2018: UMAP Feature Extraction Technique Classification]]
    23/05/04  [[file:energy.bib::Khatun21heuristContinPairIndep][Khatun & Siddiqui 2021: contin pairwise dep heuristic]]
+   23/06/27  [[file:energy.bib::Chandra20sklearnCustomPipeline][Chandra 2020: Pipelines Custom Transformers Scikit Learn]]
+             [[file:energy.bib::Kafrouni23threshInPipeline][Kafrouni 2023: How Add Decision threshold]]
+   23/07/18  [[https://www.evernote.com/l/AA2NAyKCMlVN1KTUtwPEWLW/][What is C parameter in sklearn Logistic Regression?]]
 
 *** Bibliography
 bibliographystyle:unsrt
