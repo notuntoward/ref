@@ -114,8 +114,7 @@ With PRUNE, prune the build cache and the build directory."
 
 ;;(use-package bind-key) ; use inside use-package, invoke with :bind-key
 
-;;(setq use-package-always-ensure t) ; so use-package always installs missing pkgs
-
+(setq use-package-always-ensure t) ; so use-package always installs missing pkgs
 (use-package diminish) ; can prevent display of package mode string
 (use-package try :defer t) ; M-x try to test a pkg w/o installing it
 
@@ -447,15 +446,14 @@ TODO: make this a general function."
       bibfiles_zotero_fnm (directory-files zotero_filedir t "\\.bib$")
       bibfile_DOE_dir (expand-file-name "DOE_brainstorm" docDir)
       bibfile_DOE_fnm (expand-file-name "deepSolarDOE.bib" bibfile_DOE_dir)
-      bibfile_DOE_pdf_dir (expand-file-name "papers" bibfile_DOE_dir)
-      )
+      bibfile_DOE_pdf_dir (expand-file-name "papers" bibfile_DOE_dir))
 
 (setq bibfile_list (append (list bibfile_energy_fnm bibfile_DOE_fnm)
                            bibfiles_zotero_fnm)
       bibpdf_dir_list (list bibfile_energy_pdf_dir  bibfile_DOE_pdf_dir
                         zotero_filedir))
 
-(setq org-roam-dir "~/ref/org_roam")
+(setq org-roam-dir (expand-file-name "org-roam" docDir))
 
 ;; Find pdf w/ JabRef/Zotero fields
 (setq bibtex-completion-pdf-field "file")
@@ -466,9 +464,10 @@ TODO: make this a general function."
 ;;
 (use-package org
   ;;  :defer 0
-  ;; avoid org bug that braks org-roam
+  ;; avoid org bug that breaks org-roam
   ;; https://github.com/org-roam/org-roam/issues/2361#issuecomment-1650957932
-  :straight (:branch "ca873f7")
+  ;; doesn't work anymore, so remove.  Hopefully new org has fixed tis bug
+  ;; :straight (:branch "ca873f7")
   :diminish org-mode  ; doesn't hide the "Org" in modeline, for some reason
   :diminish org-table-header-line-mode  ; customization: org-table-header-line-p
   :config
@@ -762,6 +761,10 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; ** Org-ref
 
+;; org-ref was causing error: "Cannot open load file: No such file or directory, helm-config:
+;; This is probably because helm-config was removed and org-ref is old
+;; https://emacs.stackexchange.com/questions/75337/getting-error-cannot-open-load-file-no-such-file-or-directory-helm-config-su
+;;
 ;; required by org-ref
 ;; (use-package helm-bibtex)
 
@@ -829,46 +832,63 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; ** Org and Zotero
 
-;; For Zotero add-in "zutilo"  Conflicts or Same-As zotxt?
-;; https://orgmode-exocortex.com/2020/05/13/linking-to-zotero-items-and-collections-from-org-mode/
+;; In org mode, open a :zotero link in the Zotero program.  C-o or click works.
+;; See: howto.org: <<Clickable :zotero link in org file>>
+(defun org-zotero-open (path)
+  (browse-url (format "zotero:%s" path)))
+
 (with-eval-after-load 'org
-  (org-link-set-parameters "zotero" :follow
-                           (lambda (zpath)
-                             (browse-url
-                              ;; we get the "zotero:"-less url, so we put it back.
-                              (format "zotero:%s" zpath)))))
+  (org-link-set-parameters "zotero" :follow #'org-zotero-open))
 
-;; * ORG-ROAM-CITAR-BIBTEX DEBUG REPORT SEND
+
+;; DOES THIS BREAK ZOTERO LINKS TO PDF? e.g. for Che21PredictiveBatteryHealth:
 ;;
-;; BUG REPORT: https://github.com/org-roam/org-roam-bibtex/issues/273
-
-;; ;; OVERWRITE THESE FOR EXAMPLE
+;; zotero://select/library/items/TNVYHX34
 ;;
-;; ;; bib and org file setup
-;; (setq bibfile_energy_fnm (expand-file-name "energy.bib" docDir)
-;;       bibfile_energy_pdf_dir (expand-file-name "papers" docDir)
-;;       bibfile_energytop_fnm (expand-file-name "energytop.org" docDir)
-;;       zotero_filedir (expand-file-name "zotero" docDir)
-;;       bibfiles_zotero_fnm (directory-files zotero_filedir t "\\.bib$")
-;;       bibfile_DOE_dir (expand-file-name "DOE_brainstorm" docDir)
-;;       bibfile_DOE_fnm (expand-file-name "deepSolarDOE.bib" bibfile_DOE_dir)
-;;       bibfile_DOE_pdf_dir (expand-file-name "papers" bibfile_DOE_dir)
-;;       )
+;; Right now, only links to top-level zotero entry work???
+;;
+;; Pastes :zotero item key of Zotero entries into org-mode, if org-zotxt-mode is turned on, else the bibtey.  Also connects to org-noter. Works with Zotero add-in "zotxt": https://github.com/egh/zotxt-emacs
+;;
+;; Type of link is controlled by org-zotxt-link-description-style customization:
+;;  citation: zotero: link w/ full title/author/publisher... cite string
+;;  citekey:  zotero: link w/ bibtex cite
+;;  title:    CRASHES: bug report: https://github.com/egh/zotxt-emacs/issues/75
+;; Can also use setq
+;; https://github.com/egh/zotxt-emacs/issues/59#issuecomment-1034549542
+;; (setq org-zotxt-link-description-style :citation)
+;;
+;; TODO: fork to make descriptive text like the old bibtex links
+(use-package zotxt
+  :after org
+  :bind ("C-c z" . org-zotxt-insert-reference-link)
+  :hook (org-mode . org-zotxt-mode)
+  :config
+  ;; So can M-x org-zotxt-noter, then sel item in Zotero, mk. notes on
+  ;; its attachment. This does bring up the pdf and highlight but not
+  ;; sure if it's doing what it's supposed to inside the
+  ;; org-document. Should be making clickable links to the annotations
+  ;; or something.  It's adding some text under :PROPERTIES: but I
+  ;; don't know how to use it.
+  (require 'org-zotxt-noter))
 
-;; (setq bibfile_list (append (list bibfile_energy_fnm bibfile_DOE_fnm)
-;;                            bibfiles_zotero_fnm)
-;;       bibpdf_dir_list (list bibfile_energy_pdf_dir  bibfile_DOE_pdf_dir
-;;                         zotero_filedir))
+;; ** Org-cite (native in org 9.5+)
 
-;; (setq org-roam-dir "~/ref/org_roam")
+;; *** oc-csl-activate
+;; DOESN'T WORK
+;; I thought this might be the cause of the messed up org-ref links but they are messed up whether or not oc-csl-activate is commented out.
+;; prettier in-buffer org cites
+;; https://github.com/anghyflawn/dot-emacs/blob/master/emacs.org
+;; (use-package oc-csl-activate
+;;   :straight (:host github :repo "andras-simonyi/org-cite-csl-activate")
+;;   :config
+;;   (add-hook 'org-mode-hook (lambda () (cursor-sensor-mode 1)))
+;;   (setq org-cite-activate-processor 'csl-activate
+;;         org-cite-csl-activate-use-document-style t))
 
-;; Find pdf w/ JabRef/Zotero fields
-(setq bibtex-completion-pdf-field "file")
-
-;; *** citar and packages it needs
+; *** citar and packages it needs
 (use-package embark
-  :after vertico
-  :ensure t)
+  :bind ("M-o" . embark-act)
+  :after vertico)
 
 (use-package marginalia
   :after vertico
@@ -879,124 +899,81 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 (use-package citeproc
   :ensure t)
 
-(use-package citar-embark
-  :after citar embark
-  :ensure t
-  :init
-  (setq citar-at-point-function 'embark-act)
-  :config
-  (citar-embark-mode))
+;; < ----------- START ~ashton314/emacs-bedrock/researcher.el
+(setq citar-bibliography '("~/share/ref/zotero/Battery_Review_zotero.bib")
+      org-roam-directory org-roam-dir)
 
 (use-package citar
-  :init
-  (setq org-cite-insert-processor 'citar
-        org-cite-follow-processor 'citar
-        org-cite-activate-processor 'citar
-        org-cite-global-bibliography bibfile_list
-        citar-bibliography org-cite-global-bibliography
-        citar-library-paths bibpdf_dir_list
-        citar-notes-paths (list org-roam-dir))
+  :ensure t
   :bind (("C-c b" . citar-insert-citation)
-         ;; also  C-c C-x C-@
-         (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
-         ("C-c C-1" . citar-open-library-files)
          :map minibuffer-local-map
-         ("M-b" . citar-insert-preset))) ; ??  from 
+         ("M-b" . citar-insert-preset))
+  :custom
+  ;; Allows you to customize what citar-open does
+  (citar-file-open-functions '(("html" . citar-file-open-external)
+                               ;; ("pdf" . citar-file-open-external)
+                               (t . find-file)))
+  (citar-notes-paths (list (expand-file-name "lit" org-roam-dir))))
+
+;; Optional: if you have the embark package installed, enable the
+;; ability to act on citations with citar by invoking `embark-act'.
+;(use-package citar-embark
+;  :after citar embark
+;  :diminish ""
+;  :no-require
+;  :config (citar-embark-mode))
 
 (use-package citar-org-roam
-  :after (citar org-roam)
+  :diminish ""
+  ;; To get this to work both citar *and* org-roam have to have been used
+  :after citar org-roam
+  :no-require
   :config
-  (citar-org-roam-mode))
+  (citar-org-roam-mode)
+  (setq citar-org-roam-note-title-template "${author} - ${title}\n#+filetags: ${tags}"))
+
+;; from: https://github.com/emacs-citar/citar-org-roam#templates
+(setq org-roam-capture-templates
+      '(("d" "default" plain
+         "%?"
+         :target
+         (file+head
+          "%<%Y%m%d%H%M%S>-${slug}.org"
+          "#+title: ${note-title}\n")
+         :unnarrowed t)
+        ("n" "literature note" plain
+         "%?"
+         :target
+         (file+head
+          "%(expand-file-name (or citar-org-roam-subdir \"\") org-roam-directory)/${citar-citekey}.org"
+          "#+title: ${citar-citekey} (${citar-date}). ${note-title}.\n#+created: %U\n#+last_modified: %U\n\n")
+         :unnarrowed t)))
+
+(setq citar-org-roam-capture-template-key "n")
+
 
 (use-package org-roam
-  :after helm-bibtex ; necessary?
-  ;; calling one of these commands will initialize Org-roam and ORB
-  :commands (org-roam-node-find org-roam-graph org-roam-capture
-                                org-roam-dailies-capture-today org-roam-buffer-toggle)
-  :custom
-  (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
-  (org-id-method 'ts)
-  (org-roam-directory org-roam-dir)
-  ;; from emacsconf
-  (org-roam-node-display-template "${title:80} ${tags:80}")
-  (org-roam-capture-templates '(("m" "main"
-                                 plain
-                                 "%?"
-                                 :if-new (file+head "main/${slug}.org" "#+title: ${title}\n"):immediate-finish
-                                 t
-                                 :unnarrowed t)
-                                ("r" "bibliography reference"
-                                 plain
-                                 "* First Pass\n** Category\n(type of paper)\n** Context\n(Related Research)\n** Correctness\n(Valid assumptions)\n** Contributions\n** Clarity\n* Second Pass\n** Notes\n** Concepts I don't get\n** Questions\n** Summary\n** Relevant Related Work\n* Third Pass\n** Strong Points\n** Weak Points\n"
-                                 :target (file+head "references/notes/${citekey}.org" "#+title: ${title}\n"):unnarrowed
-                                 t)
-                                ("t" "topic"
-                                 plain
-                                 "* Category\n\n%?\n\n"
-                                 :if-new (file+head "topics/${slug}.org" "#+title: ${title}\n#+filetags: Topic"):immediate-finish
-                                 t
-                                 :unnarrowed t)
-                                ("a" "other resources"
-                                 plain
-                                 "%?"
-                                 :if-new (file+head "articles/${title}.org" "#+title: ${title}\n#+filetags:
-  :article:\n"):immediate-finish
-                                 t
-                                 :unnarrowed t)))
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert)
-         ("C-c n g" . org-roam-graph)
-         ("C-c n h" . org-roam-capture)
-         ([mouse-1] . org-roam-visit-thing)
-
-         ("C-c n d" . org-roam-dailies-capture-today)) ; only 2 keys for today
-  :bind-keymap  
-  ("C-c n D" . org-roam-dailies-map) ;; get options for all dailies key bindings
-  
-  :init
-  (setq org-roam-dailies-directory (expand-file-name "daily"
-                                                     org-roam-dir))
+  :ensure t
   :config
-  (require 'org-roam-dailies) ;; Ensure the keymap is available
-  (org-roam-db-autosync-mode) ;; nee org-roam-setup
-  (org-roam-bibtex-mode +1))
+  ;; Make sure the backlinks buffer always shows up in a side window
+  (add-to-list 'display-buffer-alist
+               '("\\*org-roam\\*"
+                 (display-buffer-in-side-window)
+                 (side . right)
+                 (window-width . 0.4)
+                 (window-height . fit-window-to-buffer)))
 
-(use-package org-roam-bibtex
-  :straight t
-  :after org-roam
-  :hook (org-roam-mode . org-roam-bibtex-mode))
+  (org-roam-db-autosync-mode))
+;; > ----------- END ~ashton314/emacs-bedrock/researcher.el
 
-;; * ORG-ROAM-CITAR-BIBTEX KINDA WORKED BUT NOT QUITE
-;; For Zotero add-in "zotxt"  Conflicts/same-as zutilo?
-;; https://github.com/egh/zotxt-emacs
-;; Pastes biblio summary of Zotero entries in org-mode, connects to org-noter
-;; (use-package zotxt :after org)
 
-;; ;; ** Org-cite (native in org 9.5+)
 
-;; ;; *** oc-csl-activate
-;; ;; DOESN'T WORK
-
-;; ; *** citar and packages it needs
-;; (use-package embark
-;;   :after vertico
-;;   :ensure t)
-
-;; (use-package marginalia
-;;   :after vertico
-;;   :ensure t
-;;   :config
-;;   (marginalia-mode))
-
-;; (use-package citeproc
-;;   :ensure t)
-
-;; ;; It's possible to open entries directly in zotero
-;; ;; https://github.com/emacs-citar/citar#opening-reference-entries
-;; ;; you need to somehow set something to 'citar-open-entry-in-zotero'
-;; ;; So citar opens pdfs with an external reading, I customized citar-file-open-functions to 'citar-file-open-external for the pdf extension
-;; ;; TODO: how to make it open Drawboard if available?
+;; ----------- START MINE OLD
+;; It's possible to open entries directly in zotero
+;; https://github.com/emacs-citar/citar#opening-reference-entries
+;; you need to somehow set sometime to 'citar-open-entry-in-zotero'
+;; So citar opens pdfs with an external reading, I customized citar-file-open-functions to 'citar-file-open-external for the pdf extension
+;; TODO: how to make it open Drawboard if available?
 ;; (use-package citar
 ;;   :init
 ;;   (setq org-cite-insert-processor 'citar
@@ -1006,59 +983,153 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;;         citar-bibliography org-cite-global-bibliography
 ;;         citar-library-paths bibpdf_dir_list
 ;;         citar-notes-paths (list org-roam-dir))
-
 ;;   :bind (("C-c b" . citar-insert-citation)
 ;;          ;; also  C-c C-x C-@
 ;;          (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
 ;;          ("C-c C-1" . citar-open-library-files)
 ;;          :map minibuffer-local-map
 ;;          ("M-b" . citar-insert-preset))) ; ??  from 
+;; ----------- END MINE OLD
 
-;; ;; https://github.com/emacs-citar/citar-org-roam
-;; ;; With this, M-x citar-open-notes can create a new bib note under citar-notes-paths
+;; < ---- START hieuphay ----------------------------------------------
+;; ;;(use-package pdf-occur) ;; hieuphay's citar wants this but not needed?
+;; (use-package citar
+;;   :after (embark pdf-occur)
+;;   :hook
+;;   (LaTeX-mode . citar-capf-setup)
+;;   (org-mode . citar-capf-setup)
+;;   :custom
+;;   (org-cite-global-bibliography bibfile_list)
+;;   (citar-bibliography org-cite-global-bibliography)
+;;   (citar-notes-paths (list org-roam-dir))
+;;   (citar-library-paths bibpdf_dir_list)
+;;   (citar-file-variable "file")
+  
+;;    ;; :config
+;;    ;; (setq
+;;    ;; citar-bibliography (list (concat org-directory "/references/zotero.bib"))
+;;    ;; citar-notes-paths (list(concat org-directory "/org-roam/literature/"))
+;;    ;; citar-library-paths (list (concat org-directory "/org-roam/"))
+;;    ;; citar-file-variable "file"
+;;    ;; org-cite-global-bibliography citar-bibliography)
+;;    ;; Search contents of PDFs
+;;    ;; (after! (embark pdf-occur)
+;;    ;; SDO: broken:  citar-file--files-for-multiple-entries doesn't exist
+;;    ;; (defun citar/search-pdf-contents (keys-entries &optional str)
+;;    ;;   "Search pdfs."
+;;    ;;   (interactive (list (citar-select-refs)))
+;;    ;;   (let ((files (citar-file--files-for-multiple-entries
+;;    ;;                 (citar--ensure-entries keys-entries)
+;;    ;;                 citar-library-paths
+;;    ;;                 '("pdf")))
+;;    ;;         (search-str (or str (read-string "Search string: "))))
+;;    ;;     (pdf-occur-search files search-str t)))
+;;    ;; ;; with this, you can exploit embark's multitarget actions, so that you can run `embark-act-all`
+;;    ;; (add-to-list 'embark-multitarget-actions #'citar/search-pdf-contents)
+;;    )
+;; > ---- END hieuphay ----------------------------------------------
+
+;; ----------- START MINE OLD
+;; https://github.com/emacs-citar/citar-org-roam
+;; With this, M-x citar-open-notes can create a new bib note under citar-notes-paths
 ;; (use-package citar-org-roam
 ;;   :after (citar org-roam)
 ;;   ;; :init
 ;;   ;;   (setq citar-org-roam-note-title-template "${author} - ${title} FRED")
 ;;   :config
-;; ;;   (setq citar-org-roam-note-directory "lit")
+;;    (setq citar-org-roam-note-directory "lit")
 ;;   (citar-org-roam-mode))
 
-;; (use-package org-roam-bibtex
-;;   :straight t
-;;   :after org-roam
-;;   :hook (org-roam-mode . org-roam-bibtex-mode)
-;;   :config
-;;   )
+;; ;; DOESN'T WORK
+;; ;; make your own note title
+;; ;; https://github.com/emacs-citar/citar-org-roam#templates
+;; (setq citar-org-roam-note-title-template "${author} - ${title} FRED")
+;; (setq org-roam-capture-templates
+;;       '(("d" "default" plain
+;;          "%?"
+;;          :target
+;;          (file+head
+;;           "%<%Y%m%d%H%M%S>-${slug}.org"
+;;           "#+title: ${note-title}\n")
+;;          :unnarrowed t)
+;;         ("n" "literature note" plain
+;;          "%?"
+;;          :target
+;;          (file+head
+;;           "%(expand-file-name (or citar-org-roam-subdir \"\") org-roam-dir)/${citar-citekey}.org"
+;;           "#+title: ${citar-citekey} (${citar-date}). ${note-title}.\n#+created: %U\n#+last_modified: %U\n\n")
+;;          :unnarrowed t)))
+;; (setq citar-org-roam-capture-template-key "n")
+;; ----------- END MINE OLD
 
+;; < ---- START hieuphay ----------------------------------------------
+;; ;; Citar integrates with Org-roam via citar-org-roam.el. This makes the comand citar-open-notes (bind to SPC n b) use Org-roam’s template system. The bibliography notes created this way will be set up with proper ID and ROAM_REFS properties. The integration also comes with a nice inteface when following an org citation
+
+;; ;; I'm not using the hugo stuff so I'll just leave it and hope everything works if I don't
+;; (use-package citar-org-roam
+;;   :after (citar org-roam)
+;;   :no-require
+;;   :custom
+;;   (citar-org-roam-mode t)
+;;   :config
+;;   (setq citar-org-roam-subdir "literature"
+;;         citar-org-roam-note-title-template
+;;         (string-join
+;;          '("${author editor} (${year issued date}) ${title}"
+;;            "#+filetags: literature"
+;;            "#+startup: overview"
+;;            "#+options: toc:2 num:t"
+;;            "#+hugo_base_dir: ~/Dropbox/Blogs/hieutkt/"
+;;            "#+hugo_section: ./notes"
+;;            "#+hugo_custom_front_matter: :exclude true :math true"
+;;            "#+hugo_custom_front_matter: :bibinfo '((doi .\"${doi}\") (isbn . \"${isbn}\") (url . \"${url}\") (year . \"${year}\") (month . \"${month}\") (date . \"${date}\") (author . \"${author}\") (journal . \"${journal}\"))"
+;;            "#+hugo_series: \"Reading notes\""
+;;            "#+hugo_tags:"
+;;            ""
+;;            "* What?"
+;;            "* Why?"
+;;            "* How?"
+;;            "* And?"
+;;            ) "\n")))
+
+;; > ---- END hieuphay ----------------------------------------------
+
+;; ----------- START MINE OLD 
 ;; (use-package citar-embark
-;;   :after citar embark
+;;   :after (citar embark)
 ;;   :ensure t
 ;;   :init
 ;;   (setq citar-at-point-function 'embark-act)
 ;;   :config
 ;;   (citar-embark-mode))
+;; ----------- END MINE OLD
 
-;; ;; DIDN'T WORK
-;; ;; From: https://github.com/emacs-citar/citar-org-roam
-;; ;;
-;; ;; SDO: probably too much breakable stuff
-;; ;; ;; From: https://honnef.co/articles/my-org-roam-workflows-for-taking-notes-and-writing-articles/
-;; ;;
-;; ;; DIDN'T WORK
-;; ;; From: https://jethrokuan.github.io/org-roam-guide/
+;; Hieuphay didn't use this citar-embark package.  I'll leave it out to start)
+;; (use-package citar-embark
 
-;; ;; ** Org-Roam
 
-;; ;; TODO: :custom (org-id-method 'ts) doesn't work
-;; ;;       https://org-roam.discourse.group/t/org-roam-major-redesign/1198/28
-;; ;; TIPS
-;; ;; add org-id to headline: org-id-copy
+;; DIDN'T WORK
+;; From: https://github.com/emacs-citar/citar-org-roam
+;;
+;; SDO: probably too much breakable stuff
+;; ;; From: https://honnef.co/articles/my-org-roam-workflows-for-taking-notes-and-writing-articles/
+;;
+;; DIDN'T WORK
+;; From: https://jethrokuan.github.io/org-roam-guide/
 
-;; ;; TODO: org-roam-find-node shows hierarchy: https://github.com/org-roam/org-roam/wiki/User-contributed-Tricks#showing-node-hierarchy
-;; ;;
-;; ;; ;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
-;; ;; ;; several startup org-roams, also initializing org-roam-bibtex 
+;; ** Org-Roam
+
+;; ----------- START MINE OLD
+
+;; TODO: :custom (org-id-method 'ts) doesn't work
+;;       https://org-roam.discourse.group/t/org-roam-major-redesign/1198/28
+;; TIPS
+;; add org-id to headline: org-id-copy
+
+;; TODO: org-roam-find-node shows hierarchy: https://github.com/org-roam/org-roam/wiki/User-contributed-Tricks#showing-node-hierarchy
+;;
+;; ;; https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
+;; ;; several startup org-roams, also initializing org-roam-bibtex 
 ;; (use-package org-roam
 ;;   :after helm-bibtex ; necessary?
 ;;   ;; calling one of these commands will initialize Org-roam and ORB
@@ -1067,38 +1138,13 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;;   :custom
 ;;   (org-roam-completion-everywhere t) ;; org-roam links completion-at-point
 ;;   (org-id-method 'ts)
-;;   (org-roam-directory org-roam-dir)
 ;;   ;; from emacsconf
 ;;   (org-roam-node-display-template "${title:80} ${tags:80}")
 ;;   ;; from: https://systemcrafters.net/build-a-second-brain-in-emacs/keep-a-journal/
 ;;    ;; adds a timestamp to dailies. DO I WANT THAT?
-;;   ;; (ORG-roam-dailies-capture-templates
-;;   ;;  '(("d" "default" entry "* %<%I:%M %p>: %?"
-;;   ;;     :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
-;;   (org-roam-capture-templates '(("m" "main"
-;;                                  plain
-;;                                  "%?"
-;;                                  :if-new (file+head "main/${slug}.org" "#+title: ${title}\n"):immediate-finish
-;;                                  t
-;;                                  :unnarrowed t)
-;;                                 ("r" "bibliography reference"
-;;                                  plain
-;;                                  "* First Pass\n** Category\n(type of paper)\n** Context\n(Related Research)\n** Correctness\n(Valid assumptions)\n** Contributions\n** Clarity\n* Second Pass\n** Notes\n** Concepts I don't get\n** Questions\n** Summary\n** Relevant Related Work\n* Third Pass\n** Strong Points\n** Weak Points\n"
-;;                                  :target (file+head "references/notes/${citekey}.org" "#+title: ${title}\n"):unnarrowed
-;;                                  t)
-;;                                 ("t" "topic"
-;;                                  plain
-;;                                  "* Category\n\n%?\n\n"
-;;                                  :if-new (file+head "topics/${slug}.org" "#+title: ${title}\n#+filetags: Topic"):immediate-finish
-;;                                  t
-;;                                  :unnarrowed t)
-;;                                 ("a" "other resources"
-;;                                  plain
-;;                                  "%?"
-;;                                  :if-new (file+head "articles/${title}.org" "#+title: ${title}\n#+filetags:
-;;   :article:\n"):immediate-finish
-;;                                  t
-;;                                  :unnarrowed t)))
+;;   (ORG-roam-dailies-capture-templates
+;;    '(("d" "default" entry "* %<%I:%M %p>: %?"
+;;       :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
 
 ;;   ;; comment out unless specifically want to use ivy
 ;;   ;;  (org-roam-completion-system 'ivy)
@@ -1125,47 +1171,308 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;;                                                      org-roam-dir))
 ;;   :config
 ;;   (require 'org-roam-dailies) ;; Ensure the keymap is available
-;;   ;;(org-roam-setup) obsolete
-;;   (org-roam-db-autosync-mode) ;; nee org-roam-setup
-;;   (org-roam-bibtex-mode +1))
-;; ;;  )
+;;   (org-roam-db-autosync-mode))
+;; ----------- END MINE OLD
+
+;; < ---- START hieuphay ----------------------------------------------
+
+;; ;; a supposed fix for the "Selecting deleted buffer" problem, where I get this message every other time I run org-roam-db-sync.
+;; ;; https://www.reddit.com/r/emacs/comments/10er0gl/error_selecting_deleted_buffer_sqlite_orgroam/
+;; ;;
+;; ;; This problem might also explain why (org-roam-db-autosync-enable) doesn't autosync.
+;; ;;
+;; ;; Thread with nobiot and jethrok here: https://github.com/org-roam/org-roam/issues/1221
+
+;; (use-package org-roam
+;;   :after (org all-the-icons)
+;;   :custom
+;;   (org-roam-completion-everywhere nil)
+;;   :init
+;;   (setq org-roam-directory org-roam-dir
+;;         org-roam-dailies-directory (expand-file-name "daily" org-roam-dir)
+;;         org-id-method 'ts
+;;         ;; org-roam-directory (concat org-directory "/Org-roam/")
+;;         ;; org-roam-completion-everywhere nil ;; this is a custom
+;;         ;;Functions tags are special types of tags which tells what the node are for
+;;         ;;In the future, this should probably be replaced by categories
+;;         hp/org-roam-function-tags '("compilation" "argument" "journal" "concept" "tool" "data" "bio" "literature" "event" "website"))
+
+;;   :config
+;;   (org-roam-db-autosync-mode)
+;;   (org-roam-db-autosync-mode +1)
+;;   (org-roam-db-autosync-enable)
+;;   ;; Do I care? From: https://github.com/org-roam/org-roam/issues/2235
+;;   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+
+;;   ;; Org-roam interface
+;;   (cl-defmethod org-roam-node-hierarchy ((node org-roam-node))
+;;     "Return the node's TITLE, as well as it's HIERACHY."
+;;     (let* ((title (org-roam-node-title node))
+;;            (olp (mapcar (lambda (s) (if (> (length s) 10) (concat (substring s 0 10)  "...") s)) (org-roam-node-olp node)))
+;;            (level (org-roam-node-level node))
+;;            (filetitle (org-roam-get-keyword "TITLE" (org-roam-node-file node)))
+;;            (filetitle-or-name (if filetitle filetitle (file-name-nondirectory (org-roam-node-file node))))
+;;            (shortentitle (if (> (length filetitle-or-name) 20) (concat (substring filetitle-or-name 0 20)  "...") filetitle-or-name))
+;;            (separator (concat " " (all-the-icons-material "chevron_right") " ")))
+;;       (cond
+;;        ((= level 1) (concat (propertize (format "=level:%d=" level) 'display (all-the-icons-material "insert_drive_file" :face 'all-the-icons-dyellow))
+;;                             (propertize shortentitle 'face 'org-roam-olp) separator title))
+;;        ((= level 2) (concat (propertize (format "=level:%d=" level) 'display (all-the-icons-material "insert_drive_file" :face 'all-the-icons-dsilver))
+;;                             (propertize (concat shortentitle separator (string-join olp separator)) 'face 'org-roam-olp) separator title))
+;;        ((> level 2) (concat (propertize (format "=level:%d=" level) 'display (all-the-icons-material "insert_drive_file" :face 'org-roam-olp))
+;;                             (propertize (concat shortentitle separator (string-join olp separator)) 'face 'org-roam-olp) separator title))
+;;        (t (concat (propertize (format "=level:%d=" level) 'display (all-the-icons-material "insert_drive_file" :face 'all-the-icons-yellow))
+;;                   (if filetitle title (propertize filetitle-or-name 'face 'all-the-icons-dyellow)))))))
+
+;;   (cl-defmethod org-roam-node-functiontag ((node org-roam-node))
+;;     "Return the FUNCTION TAG for each node. These tags are intended to be unique to each file, and represent the note's function.
+;;         journal data literature"
+;;     (let* ((tags (seq-filter (lambda (tag) (not (string= tag "ATTACH"))) (org-roam-node-tags node))))
+;;       (concat
+;;        ;; Argument or compilation
+;;        (cond
+;;         ((member "argument" tags)
+;;          (propertize "=f:argument=" 'display (all-the-icons-material "forum" :face 'all-the-icons-dred)))
+;;         ((member "compilation" tags)
+;;          (propertize "=f:compilation=" 'display (all-the-icons-material "collections" :face 'all-the-icons-dyellow)))
+;;         (t (propertize "=f:empty=" 'display (all-the-icons-material "remove" :face 'org-hide))))
+;;        ;; concept, bio, data or event
+;;        (cond
+;;         ((member "concept" tags)
+;;          (propertize "=f:concept=" 'display (all-the-icons-material "blur_on" :face 'all-the-icons-dblue)))
+;;         ((member "tool" tags)
+;;          (propertize "=f:tool=" 'display (all-the-icons-material "build" :face 'all-the-icons-dblue)))
+;;         ((member "bio" tags)
+;;          (propertize "=f:bio=" 'display (all-the-icons-material "people" :face 'all-the-icons-dblue)))
+;;         ((member "event" tags)
+;;          (propertize "=f:event=" 'display (all-the-icons-material "event" :face 'all-the-icons-dblue)))
+;;         ((member "data" tags)
+;;          (propertize "=f:data=" 'display (all-the-icons-material "data_usage" :face 'all-the-icons-dblue)))
+;;         (t (propertize "=f:nothing=" 'display (all-the-icons-material "format_shapes" :face 'org-hide))))
+;;        ;; literature
+;;        (cond
+;;         ((member "literature" tags)
+;;          (propertize "=f:literature=" 'display (all-the-icons-material "book" :face 'all-the-icons-dcyan)))
+;;         ((member "website" tags)
+;;          (propertize "=f:website=" 'display (all-the-icons-material "move_to_inbox" :face 'all-the-icons-dsilver)))
+;;         (t (propertize "=f:nothing=" 'display (all-the-icons-material "book" :face 'org-hide))))
+;;        ;; journal
+;;        )))
+
+;;   (cl-defmethod org-roam-node-othertags ((node org-roam-node))
+;;     "Return the OTHER TAGS of each notes."
+;;     (let* ((tags (seq-filter (lambda (tag) (not (string= tag "ATTACH"))) (org-roam-node-tags node)))
+;;            (specialtags hp/org-roam-function-tags)
+;;            (othertags (seq-difference tags specialtags 'string=)))
+;;        (propertize
+;;         (string-join
+;;          (append '(" ") othertags)
+;;          (propertize "#" 'display (all-the-icons-material "label" :face 'all-the-icons-dgreen)))
+;;         'face 'all-the-icons-dgreen)))
+
+;;   (cl-defmethod org-roam-node-backlinkscount ((node org-roam-node))
+;;     (let* ((count (caar (org-roam-db-query
+;;                          [:select (funcall count source)
+;;                           :from links
+;;                           :where (= dest $s1)
+;;                           :and (= type "id")]
+;;                          (org-roam-node-id node)))))
+;;       (if (> count 0)
+;;           (concat (propertize "=has:backlinks=" 'display (all-the-icons-material "link" :face 'all-the-icons-blue)) (format "%d" count))
+;;         (concat (propertize "=not-backlinks=" 'display (all-the-icons-material "link" :face 'org-hide))  " "))))
+
+;;   (cl-defmethod org-roam-node-directories ((node org-roam-node))
+;;     (if-let ((dirs (file-name-directory (file-relative-name (org-roam-node-file node) org-roam-directory))))
+;;         (concat
+;;          (if (string= "journal/" dirs)
+;;              (all-the-icons-material "edit" :face 'all-the-icons-dsilver)
+;;            (all-the-icons-material "folder" :face 'all-the-icons-dsilver))
+;;          (propertize (string-join (f-split dirs) "/") 'face 'all-the-icons-dsilver) " ")
+;;       ""))
+
+;;   ;; (defun +marginalia--time-colorful (time)
+;;   ;;   (let* ((seconds (float-time (time-subtract (current-time) time)))
+;;   ;;          (color (doom-blend
+;;   ;;                  (face-attribute 'marginalia-on :foreground nil t)
+;;   ;;                  (face-attribute 'marginalia-off :foreground nil t)
+;;   ;;                  (/ 1.0 (log (+ 3 (/ (+ 1 seconds) 345600.0)))))))
+;;   ;;     ;; 1 - log(3 + 1/(days + 1)) % grey
+;;   ;;     (propertize (marginalia--time time) 'face (list :foreground color :slant 'italic))))
 
 
-;;(bind-keys* ((kbd "C-c z") . orb-insert-link)) ;; must insert to create new
+;;   (setq org-roam-node-display-template
+;;         (concat  "${backlinkscount:16} ${functiontag} ${directories}${hierarchy}${othertags} ")
+;;         )
+;;         ;; org-roam-node-annotation-function
+;;         ;; (lambda (node) (+marginalia--time-colorful (org-roam-node-file-mtime node))))
+;;   ) ;; end of use-package org-roam
 
-;; (require 'citar-org-roam)
-;; (citar-register-notes-source 'orb-citar-source
-;;                              (list :name "Org-Roam Notes"
-;;                                    :category 'org-roam-node
-;;                                    :items #'citar-org-roam--get-candidates
-;;                                    :hasitems #'citar-org-roam-has-notes
-;;                                    :open #'citar-org-roam-open-note
-;;                                    :create #'orb-citar-edit-note
-;;                                    :annotate #'citar-org-roam--annotate))
+;; ;; FOR SOME REASON THIS ISN'T SET INSIDE OF use-package org-roam
+;; (setq org-roam-directory org-roam-dir)
 
-;; (setq citar-notes-source 'orb-citar-source)
+
+
+;; ;; these packages don't exist.  Is this a doom thing?
+;; ;;
+;; ;; (use-package org-roam-capture
+;; ;;   :config
+;; ;;   (setq org-roam-capture-templates
+;; ;;         `(("d" "default" plain "%?"
+;; ;;            :target
+;; ;;            (file+head "${slug}_%<%Y-%m-%d--%H-%M-%S>.org"
+;; ;;                       "#+title: ${title}\n#+created: %U\n#+filetags: %(completing-read \"Function tags: \" hp/org-roam-function-tags)\n#+startup: overview")
+;; ;;            :unnarrowed t))))
+
+;; ;; (use-package org-roam-dailies
+;; ;;   :config
+;; ;;   (setq org-roam-dailies-directory "journal/"
+;; ;;         org-roam-dailies-capture-templates
+;; ;;         '(("d" "daily" entry "* %?"
+;; ;;            :target
+;; ;;            (file+head "%<%Y-%m-%d>.org"
+;; ;;                       "#+title: %<%Y-%m-%d %a>\n#+filetags: journal\n#+startup: overview\n#+created: %U\n\n")
+;; ;;            :immediate-finish t)))
+;; ;;   (map! :leader
+;; ;;         :prefix "n"
+;; ;;         (:prefix ("j" . "journal")
+;; ;;          :desc "Arbitrary date" "d" #'org-roam-dailies-goto-date
+;; ;;          :desc "Today"          "j" #'org-roam-dailies-goto-today
+;; ;;          :desc "Tomorrow"       "m" #'org-roam-dailies-goto-tomorrow
+;; ;;          :desc "Yesterday"      "y" #'org-roam-dailies-goto-yesterday)))
+
+;; ;; I don't know what this does, as a doomly defadvice!
+;; ''
+;; ;; (with-eval-after-load 'org-roam
+;; ;;   (defadvice! yeet/org-roam-in-own-workspace-a (&rest _)
+;; ;;   "Open all roam buffers in there own workspace."
+;; ;;   :before #'org-roam-node-find
+;; ;;   :before #'org-roam-node-random
+;; ;;   :before #'org-roam-buffer-display-dedicated
+;; ;;   :before #'org-roam-buffer-toggle
+;; ;;   :before #'org-roam-dailies-goto-today
+;; ;;   (when (modulep! :ui workspaces)
+;; ;;     (+workspace-switch "Org-roam" t))))
+
+;; ;; Can't find org-roam-protocol
+;; ;;
+;; ;; (use-package org-roam-protocol
+;; ;;   :after (org-roam org-roam-dailies org-protocol)
+;; ;;   :config
+;; ;;   (add-to-list
+;; ;;    'org-roam-capture-ref-templates
+;; ;;    `(;; Browser bookletmark template:
+;; ;;      ;; javascript:location.href =
+;; ;;      ;; 'org-protocol://roam-ref?template=w&ref='
+;; ;;      ;; + encodeURIComponent(location.href)
+;; ;;      ;; + '&title='
+;; ;;      ;; + encodeURIComponent(document.getElementsByTagName("h1")[0].innerText)
+;; ;;      ;; + '&hostname='
+;; ;;      ;; + encodeURIComponent(location.hostname)
+;; ;;      ("w" "webref" entry "* ${title} ([[${ref}][${hostname}]])\n%?"
+;; ;;       :target
+;; ;;       (file+head
+;; ;;        ,(concat org-roam-dailies-directory "%<%Y-%m>.org")
+;; ;;        ,(string-join
+;; ;;          '(":properties:"
+;; ;;            ":roam_refs: %^{Key}"
+;; ;;            "🔚"
+;; ;;            "#+title: %<%Y-%m>"
+;; ;;            "#+filetags: journal"
+;; ;;            "#+startup: overview"
+;; ;;            "#+created: %U"
+;; ;;            "") "\n"))
+;; ;;       :unnarrowed t))))
+
+;; ;; WHAT DOES THIS STUFF DO?
+;; ;;
+;; ;; backlink counts
+
+;; (defface hp/org-roam-count-overlay-face
+;;   '((t :inherit org-list-dt :height 0.8))
+;;   "Face for Org Roam count overlay.")
+
+;; (defun hp/org-roam--count-overlay-make (pos count)
+;;   (let* ((overlay-value (propertize
+;;                          (concat "·" (format "%d" count) " ")
+;;                          'face 'hp/org-roam-count-overlay-face 'display '(raise 0.2)))
+;;          (ov (make-overlay pos pos (current-buffer) nil t)))
+;;     (overlay-put ov 'roam-backlinks-count count)
+;;     (overlay-put ov 'priority 1)
+;;     (overlay-put ov 'after-string overlay-value)))
+
+;; (defun hp/org-roam--count-overlay-remove-all ()
+;;   (dolist (ov (overlays-in (point-min) (point-max)))
+;;     (when (overlay-get ov 'roam-backlinks-count)
+;;       (delete-overlay ov))))
+
+;; (defun hp/org-roam--count-overlay-make-all ()
+;;   (hp/org-roam--count-overlay-remove-all)
+;;   (org-element-map (org-element-parse-buffer) 'link
+;;     (lambda (elem)
+;;       (when (string-equal (org-element-property :type elem) "id")
+;;         (let* ((id (org-element-property :path elem))
+;;                (count (caar
+;;                        (org-roam-db-query
+;;                         [:select (funcall count source)
+;;                          :from links
+;;                          :where (= dest $s1)
+;;                          :and (= type "id")]
+;;                         id))))
+;;           (when (< 0 count)
+;;             (hp/org-roam--count-overlay-make
+;;              (org-element-property :end elem)
+;;              count)))))))
+
+;; (define-minor-mode hp/org-roam-count-overlay-mode
+;;   "Display backlink count for org-roam links."
+;;   :after-hook
+;;   (if hp/org-roam-count-overlay-mode
+;;       (progn
+;;         (hp/org-roam--count-overlay-make-all)
+;;         (add-hook 'after-save-hook #'hp/org-roam--count-overlay-make-all nil t))
+;;     (hp/org-roam--count-overlay-remove-all)
+;;     (remove-hook 'after-save-hook #'hp/org-roam--count-overlay-remove-all t)))
+
+;; (add-hook 'org-mode-hook #'hp/org-roam-count-overlay-mode)
+
+;; > ---- END hieuphay ----------------------------------------------
+
+
 
 ;; ** org-roam-ui (graph viewing)
+
+;; ----------- START MINE OLD
 
 ;; To see big graph in browser:
 ;;   Use M-x org-roam-ui-mode RET to enable the global mode. It will start a web server on http://127.0.0.1:35901/ and connect to it via a WebSocket for real-time updates.
 ;; config from: https://github.com/org-roam/org-roam-ui
+;; (use-package org-roam-ui
+;;   ;; :straight (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+;;   :custom
+;;   (org-roam-ui-follow-mode t)
+;;   :after org-roam
+;;   ;; normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;   ;; a hookable mode anymore, you're advised to pick something yourself
+;;   ;; if you don't care about startup time, use
+;;   ;;:hook (after-init . org-roam-ui-mode)
+;;   :config
+;;   (setq org-roam-ui-sync-theme t
+;;         org-roam-ui-follow t
+;;         org-roam-ui-update-on-save t
+;;         org-roam-ui-open-on-start t))
+
+;; ----------- END MINE OLD
+
+(use-package websocket
+  :after org-roam)
+
 (use-package org-roam-ui
-  :straight (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
   :after org-roam
-  ;; normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-  ;; a hookable mode anymore, you're advised to pick something yourself
-  ;; if you don't care about startup time, use
-  ;;:hook (after-init . org-roam-ui-mode)
-  :config
-  (setq org-roam-ui-sync-theme t
-        org-roam-ui-follow t
-        org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start t))
+  :commands (org-roam-ui-mode))
+
 
 ;; ** org-roam-bibtex
 
-;; OLD
 ;; (use-package org-roam-bibtex
 ;;   :config
 ;;   (setq org-roam-capture-templates
@@ -1194,26 +1501,22 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;;            :unnarrowed t
 ;;            :empty-lines-before 1
 ;;            :prepend t)))
-
-;;   ;; what is this??
-;;   ;; (defun robo/capture-to-inbox ()
-;;   ;;   "Capture a TODO straight to the inbox."
-;;   ;;   (interactive)
-;;   ;;   (org-roam-capture- :goto nil
-;;   ;;                      :keys "i"
-;;   ;;                      :node (org-roam-node-from-id "45acaadd-02fb-4b93-a741-45d37ff9fd5e")))
-  
+;;   (defun robo/capture-to-inbox ()
+;;     "Capture a TODO straight to the inbox."
+;;     (interactive)
+;;     (org-roam-capture- :goto nil
+;;                        :keys "i"
+;;                        :node (org-roam-node-from-id "45acaadd-02fb-4b93-a741-45d37ff9fd5e")))
 ;;   (require 'org-roam-bibtex)
 
-  ;; TODO: figure out note files dirs in tis
-  ;; (expand-file-name "notes_${citekey}.org" bibnotes_dir)
+;;   ;; TODO: figure out note files dirs in tis
+;;   ;; (expand-file-name "notes_${citekey}.org" bibnotes_dir)
 
-  ;; doesn't citar-org-roam handle this?
-  ;; (setq citar-open-note-function 'orb-citar-edit-note
-  ;;       citar-notes-paths '("~/ref/tmp_papers_notes/refs")
-  ;;       orb-preformat-keywords '("citekey" "title" "url" "author-or-editor" "keywords" "file")
-  ;;       orb-process-file-keyword t
-  ;;       orb-file-field-extensions '("pdf")))
+;;   (setq citar-open-note-function 'orb-citar-edit-note
+;;         citar-notes-paths '("~/ref/tmp_papers_notes/refs")
+;;         orb-preformat-keywords '("citekey" "title" "url" "author-or-editor" "keywords" "file")
+;;         orb-process-file-keyword t
+;;         orb-file-field-extensions '("pdf")))
 
 ;; *** Org-roam API
 ;;
@@ -1245,26 +1548,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 ;;     (when has-properties
 ;;       (kill-line)
 ;;       (kill-line))))
-
-;; ** Org-noter
 ;;
-;; *** original org-noter
-;; keybindings, basic explanation: https://github.com/weirdnox/org-noter#keys
-;; simple, just so it compiles.  started from: https://rgoswami.me/posts/org-note-workflow
-;; update: adjust based on setup here: https://github.com/fuxialexander/org-pdftools
-(use-package org-noter
-  :after (:all org pdf-view)
-  :config
-  (setq
-   ;; the wm can handle splits
-   org-noter-notes-window-location 'other-frame
-   ;; please stop opening frames
-   org-noter-always-create-frame nil
-   ;; i want to see the whole file
-   org-noter-hide-other nil
-   ;; everything is relative to the main notes file
-   org-noter-notes-search-path (list org-roam-dir)))
-
 ;; For annotating videos
 ;; ** org-media note
 ;; https://github.com/yuchen-lea/org-media-note
@@ -1289,65 +1573,59 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 (if (or running-MacOS running-gnu-linux pacbin-windows)
     (progn
       (message "Initializing pdf-tools")
-      ;; (use-package pdf-tools
-      ;;   :defer t
-      ;;   :config
-      ;;   ;; initialise (on Windows will download and build msys2 libs too)
-      ;;   (pdf-tools-install)
-      ;;   ;; open pdfs scaled to fit page
-      ;;   (setq-default pdf-view-display-size 'fit-page)
-      ;;   ;; (setq pdf-annot-activate-created-annotations t) ; for annotation text
-      ;;   (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
-      ;;   (setq pdf-view-resize-factor 1.1)   ; default is 25%
-      ;;   ;; Shorter shortcuts than e.g. C-c C-a h. These Work on =mouse= sel.
-      ;;   (define-key pdf-view-mode-map (kbd "h")
-      ;;     'pdf-annot-add-highlight-markup-annotation)
-      ;;   (define-key pdf-view-mode-map (kbd "t")
-      ;;     'pdf-annot-add-text-annotation)
-      ;;   (define-key pdf-view-mode-map (kbd "u")
-      ;;     'pdf-annot-add-underline-markup-annotation)
-      ;;   (define-key pdf-view-mode-map (kbd "D")
-      ;;     'pdf-annot-delete)
-      ;;   ;; Navigation: can also use M-< and M-> like normal
-      ;;   (define-key pdf-view-mode-map (kbd "C-<home>") 'pdf-view-first-page)
-      ;;   (define-key pdf-view-mode-map (kbd "C-<end>") 'pdf-view-last-page)
-
-      ;;   ;; Custom annotation colors: https://github.com/politza/pdf-tools/issues/581#issuecomment-646370370
-      ;;   ;; Emacs color pickers: https://emacs.stackexchange.com/questions/5582/are-there-color-pickers-for-emacs
-      ;;   ;; Strike out
-      ;;   (defun pdftools-strikeout-gray (oldfun loe)
-      ;;     (apply oldfun loe '("gray")))
-      ;;   (advice-add 'pdf-annot-add-strikeout-markup-annotation :around 
-      ;;               #'pdftools-strikeout-gray)
-      ;;   ;; Underline
-      ;;   (defun pdftools-underline-purple (oldfun loe)
-      ;;     (apply oldfun loe '("#8a1e8a")))
-      ;;   (advice-add 'pdf-annot-add-underline-markup-annotation :around 
-      ;;               #'pdftools-underline-purple)
-      ;;   ;; Squiggly underline
-      ;;   (defun pdftools-squiggly-red (oldfun loe)
-      ;;     (apply oldfun loe '("#fe2500")))
-      ;;   (advice-add 'pdf-annot-add-squiggly-markup-annotation :around 
-      ;;               #'pdftools-squiggly-red)
-        
-      ;;   ;; Default color for text highlight. 
-      ;;   ;; This will change the color of the Note.
-      ;;   (setq pdf-annot-default-markup-annotation-properties
-      ;;         '((color . "green")))
-
-      ;;   ;; Default color for text.
-      ;;   ;; This will change the color of the Note.
-      ;;   (setq pdf-annot-default-text-annotation-properties
-      ;;         '((color . "#90ee90")))
-      ;;   )
-
-      ;; direct from: https://github.com/fuxialexander/org-pdftools
-      (use-package org-noter
+      (use-package pdf-tools
+        :defer t
         :config
-        ;; Your org-noter config ........
-        ;; On windows, first install, will ask for your msys dir.  Say c:/tools/msys64/
-        (require 'org-noter-pdftools))
+        ;; initialise (on Windows will download and build msys2 libs too)
+        (pdf-tools-install)
+        ;; open pdfs scaled to fit page
+        (setq-default pdf-view-display-size 'fit-page)
+        ;; (setq pdf-annot-activate-created-annotations t) ; for annotation text
+        (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+        (setq pdf-view-resize-factor 1.1)   ; default is 25%
+        ;; Shorter shortcuts than e.g. C-c C-a h. These Work on =mouse= sel.
+        (define-key pdf-view-mode-map (kbd "h")
+          'pdf-annot-add-highlight-markup-annotation)
+        (define-key pdf-view-mode-map (kbd "t")
+          'pdf-annot-add-text-annotation)
+        (define-key pdf-view-mode-map (kbd "u")
+          'pdf-annot-add-underline-markup-annotation)
+        (define-key pdf-view-mode-map (kbd "D")
+          'pdf-annot-delete)
+        ;; Navigation: can also use M-< and M-> like normal
+        (define-key pdf-view-mode-map (kbd "C-<home>") 'pdf-view-first-page)
+        (define-key pdf-view-mode-map (kbd "C-<end>") 'pdf-view-last-page)
 
+        ;; Custom annotation colors: https://github.com/politza/pdf-tools/issues/581#issuecomment-646370370
+        ;; Emacs color pickers: https://emacs.stackexchange.com/questions/5582/are-there-color-pickers-for-emacs
+        ;; Strike out
+        (defun pdftools-strikeout-gray (oldfun loe)
+          (apply oldfun loe '("gray")))
+        (advice-add 'pdf-annot-add-strikeout-markup-annotation :around 
+                    #'pdftools-strikeout-gray)
+        ;; Underline
+        (defun pdftools-underline-purple (oldfun loe)
+          (apply oldfun loe '("#8a1e8a")))
+        (advice-add 'pdf-annot-add-underline-markup-annotation :around 
+                    #'pdftools-underline-purple)
+        ;; Squiggly underline
+        (defun pdftools-squiggly-red (oldfun loe)
+          (apply oldfun loe '("#fe2500")))
+        (advice-add 'pdf-annot-add-squiggly-markup-annotation :around 
+                    #'pdftools-squiggly-red)
+        
+        ;; Default color for text highlight. 
+        ;; This will change the color of the Note.
+        (setq pdf-annot-default-markup-annotation-properties
+              '((color . "green")))
+
+        ;; Default color for text.
+        ;; This will change the color of the Note.
+        (setq pdf-annot-default-text-annotation-properties
+              '((color . "#90ee90")))
+        )
+
+      ;; **  org-pdftools, org-noter-pdftools
       (use-package org-pdftools
         :hook (org-mode . org-pdftools-setup-link))
 
@@ -1384,6 +1662,25 @@ TODO: add a cycle that opens or collapses all prop drawers?"
         (with-eval-after-load 'pdf-annot
           (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
 
+      ;; **  org-noter
+      ;; keybindings, basic explanation: https://github.com/weirdnox/org-noter#keys
+      ;; simple, just so it compiles.  started from: https://rgoswami.me/posts/org-note-workflow
+      ;; update: adjust based on setup here: https://github.com/fuxialexander/org-pdftools
+      ;; partly from: https://github.com/fuxialexander/org-pdftools
+      ;; On windows, first install, will ask for your msys dir.  Say c:/tools/msys64/
+      (use-package org-noter
+        :after (:all org pdf-view)
+        :config
+        (require 'org-noter-pdftools)
+        (setq
+         ;; the wm can handle splits
+         org-noter-notes-window-location 'other-frame
+         ;; please stop opening frames
+         org-noter-always-create-frame nil
+         ;; i want to see the whole file
+         org-noter-hide-other nil
+         ;; everything is relative to the main notes file
+         org-noter-notes-search-path (list org-roam-dir)))
       ))
 
 ;; ** org-media-note
@@ -4511,7 +4808,7 @@ command options."
 	    (define-key LaTeX-mode-map "\C-xn"
 	      nil)))
 
-;; ** Bibtex
+;; ** Citations
 ;; SEE ALSO: org-ref
 
 (defun add-bibitem-org ()
