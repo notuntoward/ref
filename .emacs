@@ -841,28 +841,12 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   (org-link-set-parameters "zotero" :follow #'org-zotero-open))
 
 
-;; DOES THIS BREAK ZOTERO LINKS TO PDF? e.g. for Che21PredictiveBatteryHealth:
-;;
-;; zotero://select/library/items/TNVYHX34
-;;
-;; Right now, only links to top-level zotero entry work???
-;;
-;; Pastes :zotero item key of Zotero entries into org-mode, if org-zotxt-mode is turned on, else the bibtey.  Also connects to org-noter. Works with Zotero add-in "zotxt": https://github.com/egh/zotxt-emacs
-;;
-;; Type of link is controlled by org-zotxt-link-description-style customization:
-;;  citation: zotero: link w/ full title/author/publisher... cite string
-;;  citekey:  zotero: link w/ bibtex cite
-;;  title:    CRASHES: bug report: https://github.com/egh/zotxt-emacs/issues/75
-;; Can also use setq
-;; https://github.com/egh/zotxt-emacs/issues/59#issuecomment-1034549542
-;; (setq org-zotxt-link-description-style :citation)
-;;
-;; TODO: fork to make descriptive text like the old bibtex links
 (use-package zotxt
   :after org
   :bind ("C-c z" . org-zotxt-insert-reference-link)
   :hook (org-mode . org-zotxt-mode)
   :config
+
   ;; So can M-x org-zotxt-noter, then sel item in Zotero, mk. notes on
   ;; its attachment. This does bring up the pdf and highlight but not
   ;; sure if it's doing what it's supposed to inside the
@@ -870,6 +854,47 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   ;; or something.  It's adding some text under :PROPERTIES: but I
   ;; don't know how to use it.
   (require 'org-zotxt-noter))
+
+(with-eval-after-load 'zotxt
+  ;; My hack to get a descriptive zotero link
+  ;; Put it here in attempt to overwrite zotxt function
+  ;; BUT THIS DOESN'T WORK
+  ;; Fork zotxt and modify that code?
+  ;; TODO make a PR?
+  ;;
+  ;; Generate decriptive link string, so don't have to retype so much
+  (defun org-zotxt-make-link-description (citestr)
+    "Makes a descriptive link string from :citation field in item.
+   There must be a better way than parsing :citation but I
+   couldn't figure it out."
+    (let* ((num-titlewords 4)
+           (maxlen-titleword 7)
+           (title (car (split-string (car (last (split-string str "\“"))) "\”")))
+           (firstN (cl-subseq (split-string title) 0 num-titlewords))
+           (twstr  (mapconcat (lambda (word)
+                                (substring word 0 (min maxlen-titleword
+                                                       (length word))))
+                              firstN " "))
+           (author1-last-name (car (split-string str ",")))
+           (year (car (last (split-string datestr " ")))))
+      (concat author1-last-name " " year ": " twstr)))
+
+  (defun org-zotxt-make-item-link (item)
+    "Return an Org mode link for ITEM as a string. I've added a
+   descriptive link to this."
+    (org-make-link-string
+     (format "zotero://select/items/%s"
+             (plist-get item :key))
+     (cl-case org-zotxt-link-description-style
+       (:citekey (concat "@" (plist-get item org-zotxt-link-description-style)))
+       (:title (plist-get item :title))
+       (:descriptive (org-zotxt-make-link-description (plist-get item :citation)))
+       (t (plist-get item :citation)))))
+
+  ;; TODO: this should be customized instead
+  ;; TOOD: fix refs to org-zotxt-link-description-style so this will work
+  (setq org-zotxt-link-description-style :descriptive)
+  )
 
 ;; ** Org-cite (native in org 9.5+)
 
@@ -1691,8 +1716,9 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 ;; * ekg
 
-(use-package ekg)
-;;  :bind (([f11] . ekg-capture)))
+;; my bug report: https://github.com/ahyatt/ekg/issues/88
+;; (use-package ekg)
+;; :bind (([f11] . ekg-capture)))
 
 ;; * logseq
 ;; ** logseq-open-in-emacs
@@ -4328,6 +4354,7 @@ command options."
  '(org-table-header-line-p t)
  '(org-use-speed-commands t)
  '(org-yank-adjusted-subtrees t)
+ '(org-zotxt-link-description-style :citekey)
  '(package-check-signature 'allow-unsigned)
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
@@ -4370,7 +4397,8 @@ command options."
  '(warning-suppress-log-types '((use-package) (:warning)))
  '(warning-suppress-types '((comp) (:warning)))
  '(window-divider-default-places t)
- '(window-divider-mode t))
+ '(window-divider-mode t)
+ '(zotxt-default-search-method :everything))
 
 (use-package flycheck
   :defer t
