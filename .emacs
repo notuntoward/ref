@@ -842,6 +842,7 @@ TODO: add a cycle that opens or collapses all prop drawers?"
 
 
 (use-package zotxt
+  :diminish org-zotxt-mode ;; doesn't work. Also doesn't: org-zotxt and OrgZot
   :after org
   :bind ("C-c z" . org-zotxt-insert-reference-link)
   :hook (org-mode . org-zotxt-mode)
@@ -915,6 +916,46 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   :bind ("M-o" . embark-act)
   :after vertico)
 
+;; From: https://github.com/oantolin/embark/wiki/Additional-Configuration#use-which-key-like-a-key-menu-prompt
+(defun embark-which-key-indicator ()
+  "An embark indicator that displays keymaps using which-key.
+The which-key help message will show the type and value of the
+current target followed by an ellipsis if there are further
+targets."
+  (lambda (&optional keymap targets prefix)
+    (if (null keymap)
+        (which-key--hide-popup-ignore-command)
+      (which-key--show-keymap
+       (if (eq (plist-get (car targets) :type) 'embark-become)
+           "Become"
+         (format "Act on %s '%s'%s"
+                 (plist-get (car targets) :type)
+                 (embark--truncate-target (plist-get (car targets) :target))
+                 (if (cdr targets) "…" "")))
+       (if prefix
+           (pcase (lookup-key keymap prefix 'accept-default)
+             ((and (pred keymapp) km) km)
+             (_ (key-binding prefix 'accept-default)))
+         keymap)
+       nil nil t (lambda (binding)
+                   (not (string-suffix-p "-argument" (cdr binding))))))))
+
+(setq embark-indicators
+  '(embark-which-key-indicator
+    embark-highlight-indicator
+    embark-isearch-highlight-indicator))
+
+(defun embark-hide-which-key-indicator (fn &rest args)
+  "Hide the which-key indicator immediately when using the completing-read prompter."
+  (which-key--hide-popup-ignore-command)
+  (let ((embark-indicators
+         (remq #'embark-which-key-indicator embark-indicators)))
+      (apply fn args)))
+
+(advice-add #'embark-completing-read-prompter
+            :around #'embark-hide-which-key-indicator)
+
+;; ----------------------------------------
 (use-package marginalia
   :after vertico
   :ensure t
@@ -987,8 +1028,9 @@ TODO: add a cycle that opens or collapses all prop drawers?"
                  (side . right)
                  (window-width . 0.4)
                  (window-height . fit-window-to-buffer)))
-
-  (org-roam-db-autosync-mode))
+  )
+;; this cause a several second emacs startup delay, even if I had only a few OR files.  I'm not sure when the DB is synced when this is turned off, but the default is OFF, so maybe it's OK to leave it that way?
+;;  (org-roam-db-autosync-mode))
 ;; > ----------- END ~ashton314/emacs-bedrock/researcher.el
 
 
@@ -3366,19 +3408,6 @@ folder, otherwise delete a word"
 ;; Consult provides a lot of useful completion commands similar to
 ;; Ivy's Counsel.
 
-;; inspired by
-;; https://www.reddit.com/r/emacs/comments/l725u0/a_small_wrapper_for_consultripgrep_to_override/
-(defun my-consult-ripgrep (prefix)
-  "if called w/ prefix (C-u), then search in current buffer's dir instead of default project dir."
-  (interactive "P")
-  (consult-ripgrep
-   (if (not prefix)
-       nil
-     (if (eq prefix 1)
-         t
-       (if (buffer-file-name) default-directory t)))))
-
-
 ;; File search w/ nice interface, better than standard emacs lgrep, I think
 ;; (if (setq rga_exe (sdo/find-exec "rga" "ripgrep-all needed ro org-roam, etc."))
 ;;     (progn (use-package deadgrep)
@@ -3391,6 +3420,20 @@ folder, otherwise delete a word"
 ;;            (setq deadgrep-project-root-function #'wh/return-default-dir))
 ;;  (global-set-key [f5] 'lgrep))
 
+;; inspired by
+;; https://www.reddit.com/r/emacs/comments/l725u0/a_small_wrapper_for_consultripgrep_to_override/
+;; this has to be defined before consult is loaded, but as is, it would define this function even if ripgrep not installed on this system.
+;; TODO: do some if/else nesting to fix this.
+(defun my-consult-ripgrep (prefix)
+  "if called w/ prefix (C-u), then search in current buffer's dir instead of default project dir."
+  (interactive "P")
+  (consult-ripgrep
+   (if (not prefix)
+       nil
+     (if (eq prefix 1)
+         t
+       (if (buffer-file-name) default-directory t)))))
+
 (defun pick-consult-root-dir (junk)
   "For now, just return the default-directory.  Could make this smarter."
   default-directory)
@@ -3402,7 +3445,9 @@ folder, otherwise delete a word"
       (let ((consult-ripgrep-args (->> consult-ripgrep-args
                                        (string-remove-prefix "rg")
 				       (concat "rga"))))
-        (consult-ripgrep))))
+        (consult-ripgrep)))
+
+  )
 
 ;; ;; Doesn't work.  I need to get the consult-rga args right
 ;; (defun my-consult-rga (prefix)
@@ -4343,7 +4388,6 @@ command options."
  '(org-outline-path-complete-in-steps nil)
  '(org-pretty-entities nil)
  '(org-refile-targets '((nil :maxlevel . 6)))
- '(org-roam-db-update-method 'idle-timer)
  '(org-roam-file-completion-tag-position 'append)
  '(org-roam-file-exclude-regexp '("data/" "logseq/"))
  '(org-special-ctrl-k nil)
@@ -4395,7 +4439,7 @@ command options."
  '(visual-line-fringe-indicators '(nil top-right-angle))
  '(w32-use-w32-font-dialog nil)
  '(warning-suppress-log-types '((use-package) (:warning)))
- '(warning-suppress-types '((comp) (:warning)))
+ '(warning-suppress-types '((org-roam) (comp) (:warning)))
  '(window-divider-default-places t)
  '(window-divider-mode t)
  '(zotxt-default-search-method :everything))
