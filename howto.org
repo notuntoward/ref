@@ -1743,7 +1743,7 @@ I don't quite understand what a "ref" is here, but this seems useful:
 ******* *BUT*: Could be a way to use [[org-roam]] for all paper notes?
 
 ***** Org-mode and [[Zotero]]
-******* [[zotxt-emacs]]: interfaces [[Zotero]] with [[https://github.com/egh/zotxt-emacs][org-mode and org-noter]]
+******* [[zotxt-emacs]]
 ******* [[zutilo]]: also adds links?  what's the diff?
 ***** /emphasizing/ a word / sentence / ... / marked region
 
@@ -2917,6 +2917,10 @@ Also, [[https://org-roam.discourse.group/t/refactoring-items-out-of-a-node/1857/
 ******* also [[roam_tags in org-roam]]
 ******* also [[searching by roam_tags]]
 ******* [[make org-roam-bibtex put bib notes in separate dir]]
+***** <<org-roam and obsidian>>
+******* [[https://github.com/goshatch/orgroam_to_obsidian][GitHub: orgroam_to_obsidian: Convert an org-roam notes collection]]
+******* [[https://gosha.net/2023/org-roam-to-obsidian/][Importing org-roam notes into Obsidian]]: but he stuck w/ org-roam
+
 ***** <<gkroam>>
       [[Roam Research]] clone based on emacs [[Org Mode]]
 ******* also [[org-roam]]
@@ -3298,7 +3302,7 @@ was better, I started using that instead.  See [[org-tree operations]].
     | ascii | result after shift-space |
     |-------+--------------------------|
     | =     | ≈                        |
-    | =>    | ⇒                        |
+    | =>    | ⇒                       |
 
     _To see other options_: =M-x xah-math-input-list-math-symbols=
 
@@ -3901,7 +3905,15 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 
         Which I should have already out in my path to get the something approaching [[Linux on Windows]].
 
-******* TRY [[WSL]]: should I try this?
+******* Windows Package Manager Emacs install
+
+        The choco emacs packasge was stuck on emacs 28 for, it seems like, more than a year after emacs 29 was released.  There seemed to be an emacs 29 package on chocolately, but there were warnings that it had failed some test.
+
+        Installing emacs 29.2 using [[https://learn.microsoft.com/en-us/windows/package-manager/][Windows Package Manager]] was easy:
+
+        1. [[https://www.makeuseof.com/windows-package-manager-windows-11/][Install windows package manager]]: install "App Installer" from MS store.
+        2. In windows terminal, type: winget install GNU.emacs
+
 ******* <<Chocolatey Emacs>> choco install  (in admin powershell)
         Using [[Chocolatey]] package manager (see [[https://chocolatey.org/packages/Emacs][here]])
 
@@ -4345,6 +4357,17 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ******* [[file:/Applications/Emacs.app/Contents/Resources/lisp/textmodes/bibtex.el.gz::defconst%20bibtex%20name%20part][bibtex-name-part]] matches the name of a field (regexp used by other funcs)
 ******* inspired by [[file:~/.emacs::org%20add%20link%20type%20docview%20org%20docview%20open][org-docview]] (here's the [[http://osdir.com/ml/emacs-orgmode-gnu/2009-08/msg00358.html][original thread]])
 ********* I insatalled w32-browser and emacs still insisted on use xpdf...
+*** Markdown
+***** viewing rendered markdown file in a browser using pandoc & markdown mode
+      From: [[https://stackoverflow.com/a/54014770/2591097][How can I preview markdown in Emacs in real time]]
+
+      In markdown file type: C-c C-c p
+
+      This isn't really realtime: the render only updates when you type C-c C-c p
+
+      I think this requires pandoc too.
+      
+***** [[https://github.com/seagle0128/grip-mode][grip-mode: Instant Github-flavored Markdown/Org preview]]
 *** <<Rectangle editing>>
     See: [[info:emacs#Rectangles][info:emacs#Rectangles]]
 ***** =C-x r RET= [[iedit-rectangle-mode]]: type same stuff on every line in rectangle
@@ -4481,6 +4504,7 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
       An emacs package that runs LSP things.  Works perfectly on MacOS but not on Windows.
       
 ******* My Windows "bug" report: [[https://github.com/joaotavora/eglot/discussions/1182][Error in post-command-hook]]
+******* [[https://www.youtube.com/watch?v=SbTzIt6rISg][Python Configuration for Emacs 29: eglot, tree sitter, ...]]
 ***** jedi
 
       From [[http://wikemacs.org/wiki/Python][here]]: "It helps at autocompletion, finding definitions, showing documentation, etc. Elpy makes good use of it."
@@ -4921,6 +4945,28 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ***** also [[MacBooK Pro]]
 *** Windows store apps close after closing lid and going to sleep
 ***** either step 1 or step 2 fixed it: [[https://answers.microsoft.com/en-us/windows/forum/all/apps-close-in-sleep-mode/68ee45f6-938b-4b54-90d8-35a488e9eb93][Apps close in sleep mode?]]
+*** Rotation lock
+
+Rotation lock was getting stuck on for some reason.  I tried the below [[https://www.reddit.com/r/Surface/comments/vfdirl/comment/jntle4e/?utm_source=share&utm_medium=web2x&context=3][from here]], and it worked:
+
+In laptop mode, open your action center (the thing which opens when you click WiFi/Spearker/Battery icons)
+
+Click the Edit button
+
+Click "+ Add"
+
+Choose "Rotation lock"
+
+Close the edit mode - the "Rotation lock" should be visible, but greyed out
+
+Switch your laptop to tablet mode (i.e. fold your screen to be flat on the keyboard)
+
+Open the action center
+
+"Rotation lock" is enabled - click it, to switch it off
+
+Also, you can run "Surface Diagnostic Toolkit" (just search for it in your "Start" menu) - one test is about screen rotation. If it works there, the above solution should help you.
+
 * <<MacBooK Pro>>
 *** External [[Monitors]] on MacBook Pro
 ***** two external monitors
@@ -5289,6 +5335,13 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
     After installing anaconda put it on the front of path. See [[Anaconda Paths]]
 
 *** [[http://www.burningcutlery.com/derek/winsetup/][Making Windows usable]]
+*** Disabling Windows 11 widgets
+    From: [[https://www.geekbits.io/how-to-completely-disable-widgets-in-windows-11/#:~:text=Disabling%20Widgets%20in%20Windows%2011.,to%20off%20as%20shown%20below.][How to Completely Disable Widgets in Windows 11]]
+    
+    This completely gets rid of the LHS screen widgets.  In a admin terminal type:
+
+    Get-AppxPackage | Where-Object {$_.Name -like "*WebExperience*"} | Remove-AppxPackage
+    
 *** <<Windows environment variables: displaying>>
     From: [[http://windowsitpro.com/powershell/powershell-one-liner-getting-local-environment-variables][here]]
 
@@ -5327,6 +5380,14 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
       To _update all packages_, in an admin command shell:
 
         pacman -Syu  [may need to do it several times until everything is rebuilt]
+
+      To [[https://wiki.archlinux.org/title/pacman][remove a package]]
+
+        pacman -R package_name
+
+      or package and its dependencies which aren't required by other packages:
+
+        pacman -Rs package_name
 
       If it can't unlock databases, do:
 
@@ -5612,6 +5673,7 @@ big .emacs file.
       2. right click on app you want to create a shortcut for
       3. choose "creat shortcut"
 
+*** [[Install single-file-companion-lite so SingleFile can automatically save outside of Downloads]]
 *** User Interface Dark Mode automatically set by time
     From: No extra software: [[https://pureinfotech.com/switch-light-dark-mode-automatically-windows-11/][How to switch light and dark mode automatically on Windows 11]]
 ***** *Works*: [[https://github.com/AutoDarkMode/Windows-Auto-Night-Mode][AutoDarkMode/Windows-Auto-Night-Mode]] (Windows store app)
@@ -7683,6 +7745,16 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 
       TODO: [[https://git-scm.com/book/en/v2/Git-Tools-Submodules][Git - Submodules]]
 
+******* a explanation
+
+[[https://git-scm.com/book/en/v2/Git-Tools-Submodules][Git - Submodules]] allow you to make repo B a sub directory inside of Repo A.  This is done in a reproducible way, as both repos remain under source control.  It helps with code isolation and depeandency minimization, while still allowing software sharing across multiple repos.
+
+Submodules are useful in several ways.  For example, I've written general purpose python utilities, and use them in the both the VDER and AEMO products.  Since, in the future, we will put products in separate repos, some way to share code across them is desirable.  Another submodule use is when you've got third party libraries.  I've forked a couple GitHub libraries, and modified them with my own tweaks.  I ended up not using the result, but if I had, I would've needed some way to maintain these forks, and to keep them in sync with their GitHub masters.
+
+The main downsides of Git Submodules are that few people know about them, and that submodules add complexity to the repo updating process.  But I think we need them, or something like them.
+
+You might also want to chat with Halley about submodules, as she used them at EPRI labs.
+
 ***** <<Git large file storage for test data>>
 
       Git Large File Storage (LFS) _replaces_ large files such as audio samples, videos, datasets, and graphics with _text pointers inside Git_, while storing the file contents on a remote server like GitHub.com or GitHub Enterprise.
@@ -8091,7 +8163,6 @@ Host key verification failed.
         log in to bitbucket e.g. https://bitbucket.org/gelibitbucket/ds-experimental/src/master/
 
         clone (upper right) --> Clone in Sourcetree --> select repo to clone and local dir
-
         
 ***** sending a git patch
 
@@ -11591,6 +11662,11 @@ Maybe it will do until jupyterlab-lsp works again.
         o can make an output like commandline diff.  Not graphical, or emacs ediff, etc.
         o is smart about notebooks with data in them and non-meaningful changes in json structure.
 
+        *nbdiff-web*: gui version of nbdiff
+        
+        nbdiff-web notebook_1.ipynb notebook_2.ipynb
+
+
         *nbmerg*: command line merge
 
         nbmerge simple-nbdime-base.ipynb simple-nbdime-local.ipynb simple-nbdime-remote.ipynb  --decisions
@@ -11723,6 +11799,17 @@ Maybe it will do until jupyterlab-lsp works again.
 ***** <<Powerpoint and Jupyterlab>>
 ******* TRY [[https://github.com/timkpaine/jupyterlab_powerpoint][timkpaine/jupyterlab_powerpoint: Creating PowerPoints from jupyter]]
 
+***** clear_output: self-overwriting of cell print statements, like counters
+      From: [[https://stackoverflow.com/a/24818304/2591097][python - ipython notebook clear cell output in code]] 
+
+      from IPython.display import clear_output
+
+      for i in range(10):
+        clear_output(wait=True)
+        print("Hello World!")
+
+      # only the last Hello World! will remain afer the loop is done
+
 ***** also [[Poetry, Jupyter Notebooks and vscode]]
 ***** also [[Spyder Jupyter Notebooks]]
 ***** also [[Python Dashboarding]]      
@@ -11802,6 +11889,18 @@ Maybe it will do until jupyterlab-lsp works again.
       
       pip list
 
+******* speeding up conda solve
+********* using libmamba solver to speed up conda installs
+          From: [[https://github.com/modin-project/modin?tab=readme-ov-file#from-conda-forge][modin docs on conda]]
+
+          Install libmamba in base environment:
+
+            conda install -n base conda-libmamba-solver
+
+          Install some package, using libmamba solver:
+
+            conda install -c conda-forge modin-ray modin-hdk --solver=libmamba
+          
 ******* <<documenting conda environment with environment.yml>>
         From: [[https://tdhopper.com/blog/2015/Nov/24/my-python-environment-workflow-with-conda/][My Python Environment Workflow with Conda - tdhopper.com]]
 
@@ -11828,6 +11927,10 @@ Maybe it will do until jupyterlab-lsp works again.
 
             conda env export | grep -v "^prefix: " > environment.yml
       
+********* deleting a conda environment
+
+          conda remove --name ENV_NAME --all
+
 ********* importing conda base environment from another machine
 
           o  export base from the source machine [[
@@ -11841,6 +11944,7 @@ Maybe it will do until jupyterlab-lsp works again.
 
           However, folklore somewhere said that you can't import an environment of the same name as one that already exists on the new machine e.g. "base" so you have to give it a new name.  If you want to import to the name on the new machine, you can delete the old environment then rename the one you imported.
           
+
 ******* CPR workstation install
 
 ********* anaconda prompt taskbar icon settings
@@ -12571,8 +12675,21 @@ https://medium.com/geekculture/creating-a-waterfall-chart-in-python-dc7bcddecb45
 ******* seaborn (I couldn’t figure out the lines):
 https://medium.com/geekculture/creating-a-waterfall-chart-in-python-dc7bcddecb45
 
-***** [[Graphviz in Python]]
 ***** [[Plotly]]
+***** [[https://towardsdatascience.com/d3blocks-the-python-library-to-create-interactive-and-standalone-d3js-charts-3dda98ce97d4][D3Blocks: Python Library to Create Interactive and Standalone D3js Charts]]
+
+      Creates many kinds very nice interactive html plots.  Seems easy to use.
+      
+***** <<Python Graph Drawing>>
+******* gravis
+********* [[https://towardsdatascience.com/the-new-best-python-package-for-visualising-network-graphs-e220d59e054e][The New Best Python Package for Visualising Network Graphs]]
+********* looks pretty good
+
+******* [[Graphviz in Python]]
+******* <<Mermaid Python>>
+********* [[https://github.com/Dynnammo/python_mermaid?tab=readme-ov-file][python_mermaid]]: good python API but doesn't render in notebook
+********* [[https://pypi.org/project/mermaid-python/][mermaid-python]]: renders in jupyter notebook but takes raw Mermaid code
+********* also [[Mermaid Diagrams]]
 *** [[Powerpoint and Python]]
 *** Paths in python
 ***** <<pathlib>>
@@ -12741,7 +12858,6 @@ How to store global settings e.g. URLs, passwords and constants without hardcodi
 ********* <<Pandarallel>> (probably better than that)
 *********** [[https://medium.com/@30mb1/6-ways-to-significantly-speed-up-pandas-with-a-couple-lines-of-code-part-1-2c2dfb0de230][6 ways to significantly speed up Pandas with a couple lines of code. P1]]
 *********** Probably [[https://medium.com/@30mb1/6-ways-to-significantly-speed-up-pandas-with-a-couple-lines-of-code-part-1-2c2dfb0de230][better]] than [[Hand-coded Pandas Parallel Apply]]
-
 ******* <<Numba: JIT compiler>>
 ********* [[https://medium.com/@30mb1/6-ways-to-significantly-speed-up-pandas-with-a-couple-lines-of-code-part-1-2c2dfb0de230][6 ways to significantly speed up Pandas with a couple lines of code. P1]]
 ******* [[https://towardsdatascience.com/heres-how-to-make-pandas-iteration-150x-faster-20ccb5477128][Use itertuples() instead of iterrows()]]: faster b/c tuples are immutable?
@@ -13697,7 +13813,9 @@ ProxyCommand ssh -xaqW%h:22 ec2-user@dev-usw2.geli.net
 ***** [[https://towardsdatascience.com/5-nlp-models-that-you-need-to-know-about-754594a3225b][5 NLP Models That You Need to Know About]]
 ***** [[https://towardsdatascience.com/6-nlp-techniques-every-data-scientist-should-know-7cdea012e5c3][6 NLP Techniques Every Data Scientist Should Know]]
 ***** [[Python Personal Knowldge Query]]
-*** [[Python Personal Knowldge Query]]
+*** [[Latex and Python]]
+*** [[Python Personal Knowledge Query]]
+*** [[Python interface to Zotero]]
 *** combinations of stuff in lists with python
 
     and also avoiding deeply nested loops
@@ -14510,23 +14628,23 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
             [[https://9to5mac.com/2016/03/17/how-to-remap-windows-keyboard-buttons-match-mac-layout/][How-To: Remap Windows keyboards to match the Mac keyboard layout]]
 
       *Keyboard Function*
-      | Windows key      | Mac key                                 | MacOS function                                                                   |
-      |------------------+-----------------------------------------+----------------------------------------------------------------------------------|
-      | Del              | Del, Fn-Delete                          | Deletes the character to the right. On Mac notebook computers, press Fn-Delete.  |
-      | Alt              | Option                                  | Enters special characters, such as é.                                            |
-      | Control, Windows | Command                                 | Performs actions or shortcuts. For example, pressing Command-S usually saves a document or file. |
+      | Windows key      | Mac key                                 | MacOS function                                                                                                                                                                     |
+      |------------------+-----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+      | Del              | Del, Fn-Delete                          | Deletes the character to the right. On Mac notebook computers, press Fn-Delete.                                                                                                    |
+      | Alt              | Option                                  | Enters special characters, such as é.                                                                                                                                              |
+      | Control, Windows | Command                                 | Performs actions or shortcuts. For example, pressing Command-S usually saves a document or file.                                                                                   |
       | Home, End        | Command-Left Arrow, Command-Right Arrow | On the Mac, use the Command and arrow keys to go to the beginning or end of the current line, and use the Home and End keys to go to the beginning or end of the current document. |
-      | Num Lock         | Num LockShift-Clear                     | In some apps, controls whether pressing keys in the numeric keypad enters numbers or moves the cursor. |
-      | Scroll Lock      | Control-F14 (maybe press & hold the Fn) | In some apps, controls whether pressing the arrow keys moves the cursor or scrolls in a window. |
-      | PrntScrn / Win+S | Shift-Command-3,4,5                     | Takes pictures of the screen. Shift-Command-3 takes a picture of the entire screen. Shift-Command-4 takes a picture of the part of the screen you select. |
+      | Num Lock         | Num LockShift-Clear                     | In some apps, controls whether pressing keys in the numeric keypad enters numbers or moves the cursor.                                                                             |
+      | Scroll Lock      | Control-F14 (maybe press & hold the Fn) | In some apps, controls whether pressing the arrow keys moves the cursor or scrolls in a window.                                                                                    |
+      | PrntScrn / Win+S | Shift-Command-3,4,5                     | Takes pictures of the screen. Shift-Command-3 takes a picture of the entire screen. Shift-Command-4 takes a picture of the part of the screen you select.                          |
       Also [[Screen snipping (screenshots) on MacOS]]
       
       *Physical location of MacOS keys on external Windows keyboards (default)*
       | OS                     |          |            |            |
       |------------------------+----------+------------+------------|
-      | Macintosh keyboard     | ctrl (^) | opt (-\_)  | cmd (⌘)    |
-      | Windows Logic keyboard | ctrl (^) | cmd (⌘)    | opt (-\_ ) |
-      | Windows Mini keyboard  | ctrl (^) | opt (-\_ ) | cmd (⌘)    |
+      | Macintosh keyboard     | ctrl (^) | opt (-\_)  | cmd (⌘)   |
+      | Windows Logic keyboard | ctrl (^) | cmd (⌘)   | opt (-\_ ) |
+      | Windows Mini keyboard  | ctrl (^) | opt (-\_ ) | cmd (⌘)   |
 
       Need to swap these with Karabiner.  Swapping Mac keyboard
       ctrl/caps also does it for the Logic and mini windows keyboards.
@@ -14861,6 +14979,7 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 ******* [[RPN calculator: MacOS default]]
 ******* also [[Keyboard remapping on MacOS]]
 
+*** [[Install single-file-companion-lite so SingleFile can automatically save outside of Downloads]]
 *** MS Teams (MacOS)
 
     brew install --cask microsoft-teams
@@ -15338,6 +15457,8 @@ HOWEVER, the pen annotations are horrible.  Just like the old acroread.
 
 But I would like it better if there was no export merge step.  Export is kind-of handled by [[BetterBibtex]], in which [[Automatic BBT bibtex file export]], but there is still the problem of the Zotero attachment file structure, and also the possiblity that the exported bibtex file changes on every export, making [[Zotero + GIT]] problematic (if it's sorted?).
 
+******* Top Zotero Tutorials
+********* [[https://www.youtube.com/watch?v=pZTjiSSOsE4][Reading, Annotating, Note-taking, and Drafting/Outlining with Zotero 6]]
 ******* DONE NEEDED FOR ORG-ROAM and BIBTEX SYNCHING
 ********* DONE can free Zotero synch only refs, leave pdfs / bibtex in separately syched dirs?
 
@@ -15379,8 +15500,17 @@ But I would like it better if there was no export merge step.  Export is kind-of
 
         *Note*: notations made inside of zotero aren't written to the original pdf.
         
+******* copying and pasting a paper link into a Zotero note
+        My request:
+
+        [[https://forums.zotero.org/discussion/106868/insert-citation-into-a-note-with-copy-paste-in-addition-to?new=1][Insert citation into a note with copy/paste, in addition to {+}]]
+
+        Also:
+
+        [[https://forums.zotero.org/discussion/106869/dock-the-floating-cite-link-search-bar-or-make-it-stay-on-top][Dock the floating cite link search bar or make it stay on top]]
+
 ******* TODO get store URLs in bibtex
-********* In Zotero>Edit>preferenceces>BBT>Export>Add URLs tro BibTeX export = "in the 'url' filed
+********* In Zotero>Edit>preferenceces>BBT>Export>Add URLs to BibTeX export = "in the 'url' filed
 ********* this find Z's link attachments, that contain the URLs: [[https://github.com/retorquere/zotero-better-bibtex/issues/1765][retorquere/zotero-better-bibtex#1765 Store Zotero Links in bibtex URL field]]
 ******* [[zotero in logseq]]
 ******* [[zotero and obsidian]]
@@ -15428,7 +15558,7 @@ But I would like it better if there was no export merge step.  Export is kind-of
 ********* <<zotxt>>: org-mode and org-noter integration
 *********** guy uses it: [[https://github.com/org-roam/org-roam/issues/258][Supplying a title to `org-roam-find-file`]]
 *********** zotxt in: [[http://www.mkbehr.com/posts/a-research-workflow-with-zotero-and-org-mode/][A research workflow with Zotero and Org mode]]
-*********** has [[https://github.com/egh/zotxt-emacs][org-mode and org-noter]] support
+*********** org-mode and org-noter support is in [[zotxt-emacs]]
 *********** [[https://whk.name/cookbook/zoteroPandoc/][requires]] that Zotero be running, either deskop or browser, I think
 *********** alternative [[https://whk.name/cookbook/zoteroPandoc/][apparently]] is [[BetterBibtex]] but seems like s/ use both?
 *********** also [[zotxt-emacs]] melpa extension
@@ -15619,12 +15749,38 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ********* <<BBT and zotfile bug>>
 *********** [[https://github.com/retorquere/zotero-better-bibtex/issues/2597#issuecomment-1662942815][my comment]]
 
-******* <<zotxt-emacs>> interfaces [[Zotero]] with [[https://github.com/egh/zotxt-emacs][org-mode and org-noter]]
+******* Exporting from Zotero
+
+        Can export entry, selected entries, collection, et.
+
+        Zotero can be exported to many different formats.
+
+        For the .bib export Everything is expored in a mostly in a reasonable way, with some information loss and garbling, here and there.
+        
+        Where .bib export puts stuff when have selected export files,
+        notes, and annotations:
+
+        - everything under a single folder
+        - bibtext type citation info goes to a .bib file
+        - pdfs are stored in a subfolder (.bib file links to them)
+        - pdf annotations made in Zotero are written to the pdf
+        - Zotero notes to 'note' bib entry, maybe htmlified (not .md, .org...)
+          - citations within Zotero note become '(author year)' citation strings, which could be ambiguous across a big database
+          - references to zotero pdf annotations go into note as strings e.g. '"highlighted text" (Zhang et al., 2023, p. 1)'
+          - any fancy not structures, like bulleted lists become html
+          - Maybe OK for [[obsidian]] export: default obs. setting is html --> md
+
+******* <<zotxt-emacs>>
+        Code: [[https://github.com/egh/zotxt-emacs][GitHub - egh/zotxt-emacs]]
+
+        Directly searches Zotero DB for reference information e.g
+        :zotero link, etc. Helps [[Zotero]] interface with [[https://github.com/egh/zotxt-emacs][org-mode and
+        org-noter]]
    
-        A bibliography entry paster (w/ hidden link) and interace to org-noter.  Can also open attachment of that link. [[zutilo]] pastes links instead, but you do the paste and org-link editing.
+        A bibliography entry paster (w/ hidden link) and interace to org-noter.  Can also open attachment of that link. Not that [[zutilo]] can also get a :zotero link (from inside Zotero), but then you do the paste into org-mode and the org-zotero-link editing.
 
 ********* emacs lib for using  [[Zotero]] addon [[zotxt]]
-********* [[https://github.com/egh/zotxt-emacs][zotxt melpa package]] provides org-zotxt-mode, etc.
+********* [[https://github.com/egh/zotxt-emacs][zotxt-emacs  melpa package]] provides org-zotxt-mode, etc.
 ********* package name is actually "zotxt"
 ********* what it does (works! instructions [[https://github.com/egh/zotxt-emacs][here]])
 *********** inserts reference, a bibliio summary of Zotero entry, not link
@@ -15632,13 +15788,14 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 *********** <<org-zotxt-noter>> for taking [[org-noter]] notes on the attachment (what does this do?)
 ************* org-zotxt-noter is [[https://github.com/emacsmirror/zotxt/blob/master/org-zotxt.el][like `org-noter', but use Zotero]]
 ************* However, M-x org-zotxt-noter doesn't work, function not present in emacs. 
-********* emacs lisp called to make a reference for: =C-" i=
+********* emacs lisp called to make a reference for: ~C-" i~
             
           org-zotxt-insert-reference-link
 
-********* Seems to be bibtex based, since requireds [[Better BibTeX]]
+********* Requires [[Better BibTeX]] but not its exported .bib file, I think
+********* My zotxt-emacs bug report: [[https://github.com/egh/zotxt-emacs/issues/75#issuecomment-1674106399][egh/zotxt-emacs#75 deferred error with 'title']]
 ******* also [[Direct DB sync between Emacs and Zotero (no bibtex file)]]
-******* <<zutilo>>: links in org-mode to Zotero app + editing functions
+******* <<zutilo>>: adds various Zotero commands that also help org-mode to Zotero interface
         Mainly from:  [[https://github.com/willsALMANJ/Zutilo][Zotero plugin providing some additional editing]]
 
         Direct, Bibtex-less Zotero links inside of org_mode.  And
@@ -15677,15 +15834,13 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 *********** relate several selected items
 *********** copy path to attachment (configure in preferences)
 *********** additional keyboard shortcuts
-*********** TODO what is a link to a /collection/? 
 ********* option link collections, not just single articles, is kind of cool
 ********* Documentation
-*********** command refernce [[https://github.com/willsALMANJ/Zutilo/blob/master/docs/COMMANDS.md][Zutilo/COMMANDS.md· GitHub]]
+*********** command reference [[https://github.com/willsALMANJ/Zutilo/blob/master/docs/COMMANDS.md][Zutilo/COMMANDS.md· GitHub]]
 *********** usage: [[https://github.com/willsALMANJ/Zutilo/blob/master/docs/USAGE.md][Zutilo/USAGE.md · GitHub]]
 
 ********* Installation: [[https://orgmode-exocortex.com/2020/05/13/linking-to-zotero-items-and-collections-from-org-mode/][Linking to Zotero items and collections from Org mode]]
 ********* Example of bibtex-less org_mode+Zotero? [[https://cpbotha.net/2019/09/21/note-taking-strategy-2019/#web-pages-and-articles][Note-taking strategy 2019. voices in my head]]
-********* how different from [[zotxt-emacs]] ?
 ********* also [[Direct DB sync between Emacs and Zotero (no bibtex file)]]
 ******* TODO <<pdf viewer in zotero>>
 ********* [[https://guides.lib.uconn.edu/zotero/annotate#:~:text=You%20can%20view%20and%20annotate,top%20left%20of%20the%20toolbar.][should start within zotero w/ double click]], but get system pdf viewer
@@ -15707,8 +15862,31 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 ******* also [[Zotero as only a reference downloader, pdf grabber]]
 ******* <<Web Page Annotation in Zotero>>
 
-        Zotero doesn't have it yet:  [[https://forums.zotero.org/discussion/89301/feature-request-add-annotations-for-web-pages][Feature request: Add annotations for web pages - Zotero Forums]]
+********* Zotero [[https://forums.zotero.org/discussion/89301/feature-request-add-annotations-for-web-pages][doesn't have it yet]]
+********* but... [[https://forums.zotero.org/discussion/comment/440523#Comment_440523][Web annotation coming in Zotero 7, also pdf stylus annotation]]
+********* [[zotero-captured web pages accessed ith org-roam-bibtex]]
 
+******* <<Python interface to Zotero>>
+********* <<pyzotero>>
+
+          Uses [[https://www.zotero.org/support/dev/web_api/v3/start][zotero Web API]].  Some commentors think that's not good.  I'm not sure why.
+
+          My Key: fDlCZtNCgQrTpgRUJWvY9yaQ
+          Key name: pyzotero_SDO
+          
+*********** [[https://github.com/urschrei/pyzotero?tab=readme-ov-file][GitHub - Pyzotero: a Python client for the Zotero API]]
+*********** [[https://pyzotero.readthedocs.io/en/latest/][Pyzotero documentation]]
+********* pyzotero-local
+
+          Interacts w/ local zotero, but last update was 3 years ago (in 2024).  Is it dead?
+          
+*********** [[https://github.com/sailist/pyzotero-local][GitHub - pyzotero-local]]
+********* Better Bibtex debug bridge
+
+          Can somehow interact w/ Zotero this way.  Here's an old [[https://forums.zotero.org/discussion/81195/limited-proof-of-concept-csv-to-zotero-import][2020 thread]].  The Github was updated 9 mos. ago (checked in Feb 2024)
+*********** https://github.com/retorquere/zotero-better-bibtex/tree/master/test/fixtures/debug-bridge
+
+********* [[Python Personal Knowledge Query]]
 ******* <<Zotero + GIT>>
 
         I want to check in zotero-acquired data into git -- either in zotero format or, preferably, bibtex.
@@ -15757,36 +15935,39 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
           
 ******* Zotero + Roam Research
 ********* [[PDF highlighter extension for Roam Research]] has zotero connection
-******* TRY <<Direct DB sync between Emacs and Zotero (no bibtex file)>>
+******* <<Direct DB sync between Emacs and Zotero (no bibtex file)>>
+        Largely from: [[https://stackoverflow.com/a/72911939/2591097][open zotero by clicking on a :zotero link]]
+        
+        Make clickable org file :zotero link going directly to Zotero
+        without requiring a bibtex file.  This could also help with
+        [[Syncing Zotero across multiple machines]].
 
-        This could help with [[Syncing Zotero across multiple machines]], or using Zotero directly. Do [[zutilo]] and [[zotxt-emacs]] somehow do this already?
+        Uses Zotero plugin, [[zutilo]], an emacs config change, and the emacs package [[zotxt-emacs]].
 
-        Otherwise..
-********* <<Clickable :zotero link in org file>>
-          From: [[https://stackoverflow.com/a/72911939/2591097][open zotero by clicking on a :zotero link]]
-          
-          So that, in org mode, I can click on a ~:zotero~ link to open the Zotero program and put the cursor on some item.  The item an be an entry, note, comment, pdf, etc.
+        Clicking or ~C-o~ on link brings you to an entry, note, comment, pdf, etc.
 
-          ~C-o~ also opens the link.
-          
-          In org-mode, a bare text like this works:
+        Inside org-mode, bare text like this works:
 
-              zotero://select/library/items/5CRLFUE7
+            zotero://select/library/items/5CRLFUE7
 
-          Also pretty links like this:
+        Can edit it to make pretty links like this:
 
-              [[zotero://select/library/items/5CRLFUE7][good paper]]
+            [[zotero://select/library/items/5CRLFUE7][good paper]]
 
-          It even starts Zotero if it's not running!
+        It even starts Zotero if it's not running!
 
-          *pdf note*: the link won't open the pdf, just put the cursor
-          on it in Zotero. You have to click it there to open the pdf.  Or, if the zotero link pointed to the a paper's top level item, then you can double click on that to open the pdf.
+********* Sources of :zotero link
+*********** copy link inside Zotero with [[https://github.com/wshanks/Zutilo][zutilo]] command (below)
+*********** OR search Zotero within emacs using [[zotxt-emacs]].
 
-*********** *emacs config* to activate a :zotero link in org-mode
+********* Configuration for clickable :zotero link
+*********** *emacs config*
 
-            Use elisp from here: [[https://stackoverflow.com/a/72911939/2591097][open zotero by clicking on a :zotero link]]
+            _Jump_ to :zotero link in org-mode with the elisp from here:
+            [[https://stackoverflow.com/a/72911939/2591097][open zotero by clicking on a :zotero link]].  This works and
+            it's now in my .emacs
 
-            This works and it's in my .emacs
+            _Search_ for a :zotero link with [[zotxt-emacs]].  Also mostly works, is now in my .emacs
              
 *********** *zotero config* to get a :zotero link
             From: Zotero with [[https://forums.zotero.org/discussion/24241/linking-to-zotero-items-via-zotero-select][copy select item links]]
@@ -15799,7 +15980,16 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
               - context menu
               - =C-l= keyboard shortcut
 
-********* [[https://github.com/whacked/zotero-query.el][azotero-query.el: query local zotero database from emacs]]
+********* Opening a pdf note:
+
+          The link won't open the pdf, just put the cursor on it in
+          Zotero. You have to click it there to open the pdf.  Or, if
+          the zotero link pointed to the a paper's top level item,
+          then you can double click on that to open the pdf.
+
+********* Other Zotero DB interfaces
+
+*********** [[https://github.com/whacked/zotero-query.el][zotero-query.el: query local zotero database from emacs]]
           I tried
 
           (use-package zotero-query.el
@@ -15813,11 +16003,12 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 
           [[https://github.com/mmzeeman/esqlite][GitHub - mmzeeman/esqlite: Erlang NIF for sqlite]]
 
-********* [[https://github.com/dalanicolai/zotero-find][zotero-find: lookup and open zotero items]] (zotero can't be running)
-********* [[https://github.com/vspinu/zotelo][vspinu/zotelo: Manage zotero collections from emacsemacs.]]
+*********** [[https://github.com/dalanicolai/zotero-find][zotero-find: lookup and open zotero items]] (zotero can't be running)
+*********** [[https://github.com/vspinu/zotelo][vspinu/zotelo: Manage zotero collections from emacsemacs.]]
 ********* also [[zotxt-emacs]]
 ********* also [[zutilo]]
 ********* alternative: [[Zotero as only a reference downloader, pdf grabber]]
+
 ******* <<Zotero as only a reference downloader, pdf grabber>>
 
         The steps would be:
@@ -15852,6 +16043,7 @@ Note that this can also export BibLaTeX and other stuff e.g. JSON, or standalone
 
         This is something like [[http://disq.us/p/1ec7xqs][Muad Abd El Hay]] did: Zotero --> [[org-ref]], but kept Zotero around.
           
+********* [[Direct DB sync between Emacs and Zotero (no bibtex file)]]
 ********* [[https://www.zotero.org/support/sync][sync {Zotero Documentation}]]
 ********* <<Zotero Storage>>
           From: [[https://www.zotero.org/storage][Zotero Storage]]
@@ -15935,7 +16127,7 @@ Zotero desktop -> edit -> preferences -> General -> unclick "automatically take 
 
 ********* People also use [[zotfile]] for syncing w/ Android and iPad tablets
 
-******* Turn off automatic snapshots
+******* Turn off automatic web page snapshots from Zotero Connectors
         By default Zotero stores a screenshot of the page you got the reference from.  This clutters things up.  How to turn it off is explained [[https://www.researchgate.net/publication/325828616_Tutorial_The_Best_Reference_Manager_Setup_Zotero_ZotFile_Cloud_Storage/comments][here]].
 ******* Paper-getting sources for zotero
         From:  [[https://www.researchgate.net/publication/325828616_Tutorial_The_Best_Reference_Manager_Setup_Zotero_ZotFile_Cloud_Storage/comments][here]]
@@ -16019,13 +16211,41 @@ Zotero desktop -> edit -> preferences -> General -> unclick "automatically take 
 
               If mark first, then Beanote markup is stored by Zotero.  But if you open the stored html file again (in Chrome), you can't add new Beanote markups, or edit old ones.
 
-************* [[https://chrome.google.com/webstore/detail/singlefile/mpiodijhokgodhhofbcjdecpffjipkle?hl=en][Single File]] (Chrome & Firefox) 
+************* <<SingleFileZ>>
+
+              A version of [[SingleFile]] that compresses too (maybe a bit slower?)
+              
+*************** [[https://github.com/gildas-lormeau/SingleFileZ][SingleFileZ: Web Extension for Firefox/MS Edge and...]]
+
+************* <<SingleFile>>
+
+              A broswer extension that can markup and store a web page anywhere, and also re-edit them, if you have the right options set up.  This is excellent.
+              
+              [[SingleFileZ]] seems almost the same, and also compresses (a bit slower?)
+              
+*************** [[https://chrome.google.com/webstore/detail/singlefile/mpiodijhokgodhhofbcjdecpffjipkle?hl=en][Single File]] (Chrome & Firefox) 
 *************** saves 1st (to Downloads, regardless of "annotate first" option); 
 *************** annotates later, 
 *************** so Zotero can't get in the middle.  
 *************** Also can't annotate if reread the saved file.
+*************** <<Install single-file-companion-lite so SingleFile can automatically save outside of Downloads>>
+***************** install on local machine and its OS (Win and MacOS, ...)
+***************** install for each browser (chromium, Firefox, etc._
+***************** SingleFile author mentions it [[https://github.com/gildas-lormeau/SingleFile/issues/1325#issuecomment-1830739340][here]]
+*************** used by [[obsidian]] HTML Reader plugin
+***************** SingleFile GitHub page says
+******************* My Obsidian Form Question:
+
+[[https://forum.obsidian.md/t/how-to-add-meta-info-to-stored-html-files-e-g-tags/64791][                    How to add meta info to stored .html files e.g. tags]]
+
+******************* My HTML Reader Feature Request:
+
+                   [[https://github.com/nuthrash/obsidian-html-plugin/issues/14][ obsidian-html-plugin#14 Feature Request: frontmatter metadata]]
+                    
+***************** [[Obsidian, SingleFile and SingleFileZ]]
 *************** [[Zotero]] now [[https://forums.zotero.org/discussion/85306/available-for-beta-testing-improved-webpage-snapshots][uses to Single File logic to save web pages]]
 *************** My [[https://github.com/gildas-lormeau/SingleFile/issues/562][Single File Feature Request]]
+*************** Supposed to work with [[Obsidian HTML plugin]]
 ************* Firefox [[https://addons.mozilla.org/en-US/firefox/addon/page-hacker/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search][Page Hacker]]: saved and restored in Zotero, just like I'd want but only bolds, underlines... no highlights
 ************* [[https://chrome.google.com/webstore/detail/save-page-we/dhhpefjklgkmgeafimnjhojgjamoafof?hl=en-US][Save Page WE]] (Both Firefox & Chrome): 
 
@@ -16043,6 +16263,7 @@ Zotero desktop -> edit -> preferences -> General -> unclick "automatically take 
 ************* Chrome [[https://hypothes.is/users/scotto][hypothes.is annotator]] marks up and Zotero saves but can't re-edit saved html file Zotero makes in hypothes.is. /Can/ re-edit in hypothes.is web page, though. Also: [[Hypothesis]]
 *********** I [[https://forums.zotero.org/discussion/comment/347897/][posted a question]] about annotation to Zotero dev adamsmith.
 *********** Firefox [[https://addons.mozilla.org/en-US/firefox/addon/save-in/][Save In]] at least saves pages to subdirs of ~/Downloads
+*********** [[SingleFile]] says [[https://github.com/gildas-lormeau/SingleFile#projects-usingcompatible-with-singlefile][it works with Zotero Connector]] (Zotero 7?)
 ********* <<zotero-captured web pages accessed ith org-roam-bibtex>>
           From: [[https://org-roam.discourse.group/t/creating-html-document-notes-with-org-roam-bibtex/396/11][Creating html document notes with org-roam-bibtex
 ******* [[JethroK uses Zotero and org-cite links]]
@@ -16064,10 +16285,10 @@ Zotero desktop -> edit -> preferences -> General -> unclick "automatically take 
           I also know how to [[Use zotfile to put pdfs in a single folder]], 
 *********** In Zotero?
 *********** In Bibtex (Emacs bib mode / JabRef)
-************* try [[https://github.com/egh/zotxt-emacs][GitHub - egh/zotxt-emacs]]
+************* try [[zotxt-emacs]]
 *********** In Org-mode?
-********* asdkfjladsfj test headline to verfy that checkbox font is too big
 ******* [[Research Rabbit]] as a connection to zotero
+******* [[https://mail.google.com/mail/u/0/#inbox/FMfcgzGtwWLFcdFQBHgFXfGZzrxSrGSM][My request]] for forward/back buttons on Zotero
 ******* [[zotero in logseq]]
 ******* <<cleaning out zotero tags>>
 
@@ -16105,6 +16326,14 @@ Zotero desktop -> edit -> preferences -> General -> unclick "automatically take 
 
     After that, I used the TexLive UI to install ALL packages, as default org mode latex exports require packages not installed by the TexLive default config.  I just did ALL to keep it simple.  The install took a long time, but I hope it will help to avoid future errors.
 
+    Even later, I installed texlive with choco.  Then I did
+
+    tlmgr update --self  # needed to run next command
+    tlmgr update --all
+    tlmgr install scheme-full
+
+    The last line installs all packages.  I had an obsidian pdf export error (via pandoc) the solution of which seemed to be to install the texlive-latex-recommended, and textlive-latex-extras but I couldn't find this on chocolately.  So I just installed all texlive packages.
+    
 *** <<Latex and Emacs>>
 ***** emacs [[https://www.emacswiki.org/emacs/LaTeXPreviewPane][latex-preview-pane]] is handy for finding org-mode export problems
 ***** <<Org-mode latex editing>>
@@ -16331,6 +16560,9 @@ Zotero desktop -> edit -> preferences -> General -> unclick "automatically take 
       I think this somehow uses [[bp]] because some strings in the bp code are also in this code, according to google.
 
 ***** [[https://github.com/matthew-brett/babybib][babybib: Tiny bibtex parser]]
+*** <<Latex and Python>>
+***** [[https://github.com/lukas-blecher/LaTeX-OCR][pix2tex]]: has GUI to screengrab an equation, convert it to latex
+******* example [[https://levelup.gitconnected.com/7-must-know-python-tips-for-2024-2f2930ff2acb][here]]
 *** [[PDF processing in Python]]
 *** [[BibTex in Joplin]]
 * <<How to take Notes>>
@@ -16376,7 +16608,8 @@ Zotero desktop -> edit -> preferences -> General -> unclick "automatically take 
 ******* H2O based, from H2O, so can check out the python from GitHub
 ******* runs on local small GPU or CPU
 ******* cmdline or GUI
-
+***** [[Python interface to Zotero]]
+*** [[Personal knowledge querying in Obsidian]]
 *** <<Emacs Personal Knowledge Query>>
 ***** [[ekg]]
 ***** also [[Python Personal Knowledge Query]]
@@ -16711,13 +16944,17 @@ I think systemcrafters guy said pages could be check into git at short time inte
 
       Very similar to Roam Research.  
 
-******* <<zotero and obsidian>>
+******* TRY <<zotero and obsidian>> [/]
 
-        The generated annotation pages are superior to those from [[zotero in logseq]].  Cleaner, longformy, some (semi-problematic) connection with  [[pdf annotation in zotero]], but generally cleaner and less buggy.  Like Logseq, it doesn't require zotero papers to be stored in zotero's online DB, and it can find pdfs stored in my external OneDrive pdf dir.  I'm pretty sure that I can also move the obsidian vault to OneDrive and it will work across MacOS and Windows (I've only tried MacOS so far). 
+        This is assuming I'm using the Zotero Integration plugin.
+        There are other options too, but this one seems like the most
+        stable and maintained, in 8/23.
+
+        The generated annotation pages are superior to those from [[zotero in logseq]].  They're cleaner, longformy, with some (semi-problematic) connection with  [[pdf annotation in zotero]], but generally less buggy.  Like Logseq, it doesn't require zotero papers to be stored in zotero's online DB, and it can find pdfs stored in my external OneDrive pdf dir.  I'm pretty sure that I can also move the obsidian vault to OneDrive and it will work across MacOS and Windows (I've only tried MacOS so far). 
         
         This is using the [[https://github.com/mgmeyers/obsidian-zotero-integration][obsidian-zotero-integration]] plugin, which
         has by far the most downloads and seem commonly recommended
-        recently.  I also used an annotation template from here: [[https://forum.obsidian.md/t/my-zotero-annotation-template-that-works/51662][My Zotero annotation template that works]].
+        recently.  I also used an annotation template from here: [[https://forum.obsidian.md/t/my-zotero-annotation-template-that-works/51662][My Zotero hacked annotation template that works]].
 
         I like all this.  But niggling problems ...
 
@@ -16734,10 +16971,43 @@ I think systemcrafters guy said pages could be check into git at short time inte
         template and into the graph.  See my [[https://forum.obsidian.md/t/zotero-integration-import-templates/36310/190?u=scotto][question to a template author]].
         His message is [[https://forum.obsidian.md/t/zotero-integration-import-templates/36310/107?u=scotto][here]], and I took [[https://gist.github.com/QWxleA/c7f08e8feded332736a6b376045d0fe4][his template from his gist]].
 
+        *Problem*: my template didn't import images correctly.  [[https://github.com/mgmeyers/obsidian-zotero-integration/issues/264#issuecomment-1704351101][My bug report]], from when I didn't realize that this could have been caused by my template, not the plugin.  Several solutions are proposed anyway.
+
+        *Problem* (with partial fix): Zotero reference picker bar hides under windows.  The partial fix is here:
+        [[https://github.com/mgmeyers/obsidian-zotero-integration/issues/4#issuecomment-1566690780][mgmeyers/obsidian-zotero-integration#4 Zotero picker bar]]
+        It's partial because I guess it causes problems some [[https://github.com/mgmeyers/obsidian-zotero-integration/issues/249][problem I don't understand]].
+
         *Minor Problem*: The created reference note doesn't have a
-        direct to the pdf. The "pdf" link goes to the Zotero entry.
+        direct link to the pdf. The "pdf" link goes to the Zotero entry.
         You can get to it from Zotero by showing the pdf file its
         folder, and clicking on it there.
+
+********* TRY Zotero Obsidian Template that updates metadata, works with images
+
+[[https://forum.obsidian.md/t/zotero-integration-import-templates/36310/105?u=scotto][These 2 obs-zot plugins]] keep metadata updated, works with images, but does not update notes after 1st copy.  One groups all the annotations; the other displays them in a long list.  The grouped annotations should be handy, as this will at least hide them in Obsidian, and maybe I could delete all but the interesting ones, or somehow, in Zotero, avoid storing unininteresting ones, like ink.
+
+Anyway, keeping the Zotero tags up-to-date in the meta data means that I could at least always overwrite Obsidian tags with zotero tags.
+
+Apparaently, I tried one of these templates, [[https://forum.obsidian.md/t/zotero-integration-import-templates/36310/190?u=scotto][since I asked a question]].
+
+
+*********** A [[https://github.com/mgmeyers/obsidian-zotero-integration/issues/264#issuecomment-1712913929][recommended template that does images right]]
+
+            In response to a bug report about a template not working for images
+
+*********** TRY Not sure if annotations are persistent. I should try it to find out.  
+
+*********** TRY in notes do the (author: year) cross references get converted to zotero ID's so you can jump to them in Obsidian?
+
+*********** TRY Do I using zotero tags as masters, overwriting the ones copied to Obsidian?
+
+*********** TRY [[https://forum.obsidian.md/t/zotero-integration-import-templates/36310/115?u=scotto][this plugin]] turns zotero hashtags into links. Better? 
+
+*********** TRY Also uses creases plugin to fold headlines.  I wanted to try that out somewhere too.
+
+*********** TRY the other templates mentioned on this page, maybe sticking with later ones.
+
+*********** TRY compare the other template suggestions in responses to   [[https://github.com/mgmeyers/obsidian-zotero-integration/issues/264#issuecomment-1704351101][My bug report]]
 
 ********* TODO can an obsidian zotero [[file:~/Documents/Obsidian Vault/Zotero-Template-2.md::{% for annotation in annotations -%}{%- if annotation.annotatedText -%}{% if 'Red' in annotation.colorCategory %}][template]] be modified to not copy in all highlights, maybe highlights only of a certain color? 
         
@@ -16748,6 +17018,39 @@ I think systemcrafters guy said pages could be check into git at short time inte
 ************* I ordered it and can download it [[https://app.lemonsqueezy.com/my-orders/e206b6a2-33cc-4308-83d6-54d804352203][here]]
 *********** [[https://www.youtube.com/watch?v=cBm95iCcX2E][EVERY Plugin I'm Using After 2 years in Obsidian]]
 *********** decent explanation: [[https://dannyhatcher.com/zotero-obsidian-integration/][Zotero Obsidian Integration - Danny Hatcher]]
+*********** [[https://publish.obsidian.md/history-notes/01+Notetaking+for+Historians][Doing History with Zotero and Obsidian]] [0/6]
+
+            [[https://publish.obsidian.md/history-notes/01+Notetaking+for+Historians#From+Source+to+Research+Note+at+a+Glance][Well thought out and graphically documented]] has
+            
+            - minimal (but some) redundancy across Zotero and Obsidian.  
+            - automated way to split up single lit note into zettelkasten-sized subnotes
+            - Good templates I could borrow, including for the Zotero integration plugin.
+            
+************* Zotero is for...
+*************** getting papers and metadata
+*************** paper annotation
+*************** tagging done in Zotero, imported into obsidian 
+*************** obsidian template replaces spaces in zotero tags with '-' so works in obsidian
+*************** no notes of any kind in zotero
+************* Obsidian is for...
+*************** import all annotations, etc. for a paper to a single literature note (template)
+*************** moves whatever's selected ion the single note (annotations, etc.) to across separate notes
+***************** template, copies meta info too, I think
+***************** very copy-text-from-highlight orientated, but his template selection-based template means you don't have to be.
+*************** [[https://publish.obsidian.md/history-notes/01+Notetaking+for+Historians#Search+Research+Notes][Obsidian front matter + dataview makes note searching tractable]] in Obsidian
+************* TODO would annotation moved to subnotes still click back to annotation in pdf in zotero?
+************* TODO are the obsidian notes updateable somehow?  So you can change tags in Zotero
+************* TODO tags in zotero, really?  
+*************** zotero for tags creates a redundancy w/ Obsidian
+*************** also extra tag inheritance problem 
+***************** w/ split up lit notes 
+***************** would be additional to problem in Obsidian single note --> subnotes hierarchy
+*************** couldn't use Obsidian's tag hiearchy
+*************** BUT /might/ make searching for papers in zotero easier
+
+************* TODO does Obsidian have a way to inherit tags from single note to subnotes? 
+************* TODO Look at hsiangyu_wong's comment recommending zotero-better-bibnotes [[https://forums.zotero.org/discussion/97389/edit-citation-style-in-notes-added-from-annotations][here]].
+
 ********* also [[pdf viewer in zotero]]
 ********* also [[Zotero]]
 ******* emacs bindings in obsidian
@@ -16777,6 +17080,65 @@ I think systemcrafters guy said pages could be check into git at short time inte
 ************* [[https://www.zylstra.org/blog/2016/11/how-to-leave-evernote/][How to Leave Evernote? – Interdependent Thoughts]]
 ************* also [[Alternatives to Evernote for web page capture/annotation]]
 
+********* [[https://nesslabs.com/evernote-to-obsidian][Switching from Evernote]] to the clipper [[Obsidian Clipper]] is problematic
+
+******* Webclipping in Obsidian
+********* YES: <<Obsidian, SingleFile and SingleFileZ>>
+
+          Makes almost perfect web page copy, that you can annotate and reannotate.  Only annoyance is that you have to give it a save path each time you save it.  Can also delete annoying web page elements like sidebars, that I'm always trying to get rid of in [[Evernote]].
+
+*********** Obsidian can read SingleFile and SingleFileZ files in its vault
+*********** Can _reannotate_ if "Open in Default App"
+*********** Searchable with [[https://github.com/scambier/obsidian-omnisearch][obsidian-omnisearch plugin]]
+
+            In omnisearch plugin settings "additional text files to
+            search, must add some html. My full string there is:
+
+            txt org html zip.html
+            
+*********** TODO *Problems*
+************* *Bug Report* Intermittenly Misses WA Post graphics?  Worked fine the next day
+              [[https://github.com/gildas-lormeau/SingleFile/issues/1208#issue-1844342276][gildas-lormeau/SingleFile#1208 Graphics sometimes missed]]
+************* meta info isn't stored, like the URL, date, ... 
+*************** *Bug report*
+
+                [[https://github.com/gildas-lormeau/SingleFile/issues/1209#issue-1844350657][SingleFile#1209 Infobar not shown. Add a simple text option?]]
+
+*************** *Question*: [[https://forum.obsidian.md/t/how-to-add-meta-info-to-stored-html-files-e-g-tags/64791?u=scotto][How to add meta info to stored .html files e.g. tags]]
+************* no way I can see in obsidian to add tags and other front-matter
+
+********* MAYBE: <<MarkDownload Web Clipper>>
+*********** Repo: [[https://forum.obsidian.md/t/markdownload-markdown-web-clipper/173][MarkDownload Web Clipper]]
+*********** settings suggest can store images, but I can't make it work
+*********** settings suggest can go do obsidian vault, but it doesn't
+*********** [[Obsidian Clipper]] might be better, eventually
+********* MAYBE [[https://github.com/DominikPieper/obsidian-ReadItLater][obsidian-ReadItLater]] plugin
+*********** directly downloads whatever URL is in your clipboard
+*********** metadata like author, etc. not stored (configurable, though?)
+*********** highlighting in Obsidian is as clunky as it is in Evernote
+*********** unreliable image capture
+************* captures SOME images 
+************* and sometimes DUPLICATES THEM on same article
+********* MEH [[https://omnivore.app/][Omnivore]]: syncs /w Logseq and Obsidian ([[https://github.com/omnivore-app/obsidian-omnivore][obsidian-omnivore plugin]])
+*********** stores markdown in obsidian w/ one randomly chosen image (if you set up the plugin template and set to singlefile.
+*********** I don't see where it syncs the metadata in the template, though
+*********** doing markup in obsidian is meh.  Need to do it online w/ yet another tool.
+*********** is not storing some metadata ([[https://github.com/omnivore-app/obsidian-omnivore/issues/109][omnivore-app/obsidian-omnivore#109 Where does the metadata go?]])
+********* ? <<Obsidian HTML plugin>>
+*********** Repo: [[https://github.com/nuthrash/obsidian-html-plugin][obsidian-html-plugin: This is a plugin for Obsidian (https:...]]
+*********** [[SingleFile]] (excellent) [[https://github.com/gildas-lormeau/SingleFile#known-issues][says]] it works with this.  How?
+********* ? [[https://github.com/aleksey-rezvov/obsidian-local-images][obsidian-local-images]]
+*********** supposed to download images in markdown links
+*********** but now I can't find a markdown downloader that makes them
+********* NO: [[https://help.readwise.io/article/48-how-do-i-capture-highlights-from-web-articles-into-readwise][Readwise saves highlights (only, pair with "read it later" app)]]
+*********** it only highlights
+********* NOT YET: <<Obsidian Clipper>>
+          [[https://github.com/jplattel/obsidian-clipper][obsidian-clipper: A Chrome/FF extension that easily clips sele]]
+*********** clips only text you select, can't do whole page
+*********** no highilghting
+*********** can't do images
+*********** My Feature Request: [[https://github.com/jplattel/obsidian-clipper/issues/75][obsidian-clipper#75 Store whole page, with highlights marked?]]
+*********** compare with [[MarkDownload Web Clipper]]
 ******* [[Obsidian Mermaid]]
 ******* <<Obsidian OCR>>
 
@@ -16810,6 +17172,41 @@ I think systemcrafters guy said pages could be check into git at short time inte
 
           I'm not sure if this makes headlines in the org-mode section into obsidian nodes, or of you can add nodes inside of obsidian org-mode section.
 
+******* <<Evernote and Obsidian>>
+********* Moving Evernote data into Obsidian
+*********** <<Obsidian Importer Plugin>>
+************* [[https://github.com/obsidianmd/obsidian-importer][obsidianmd/obsidian-importer: Obsidian Importer lets you import]]
+************* had problem with image size
+************* I don't think it got the attached pdfs
+************* Note names were compressions of note titles
+************* This meant that cross-note links were broken
+************* [[https://discussion.evernote.com/forums/topic/146739-looking-for-evernote-alternatives%E2%80%A6-suggestions-clarified-my-question/?do=findComment&comment=690988][Claim that "links" are handled]] 
+*********** [[Yarle Evernote Exporter]] might be better than the pluging
+*********** Successful EN --> Obsidian w/ good links, pdf attachements
+************* [[https://discussion.evernote.com/forums/topic/146739-looking-for-evernote-alternatives%E2%80%A6-suggestions-clarified-my-question/?do=findComment&comment=691194][eric99 comment]]
+************* was this with the [[Yarle Evernote Exporter]] ?
+*********** also [[Exporting Evernote Notes]]
+
+********* [[https://discussion.evernote.com/forums/topic/146739-looking-for-evernote-alternatives%E2%80%A6-suggestions-clarified-my-question/?do=findComment&comment=693054][Good Evernote vs. Obsidian post]]
+
+******* frontmatter meta info showing up in graph
+
+        I [[https://forum.obsidian.md/t/zotero-integration-import-templates/36310/190?u=scotto][asked a question]] on this, and [[https://forum.obsidian.md/t/zotero-integration-import-templates/36310/191?u=scotto][I guess it was a bug]].
+
+******* dataview
+********* tutorials
+*********** [[https://www.youtube.com/watch?v=ZMPp1wqAjF8][Dataview query builder - YouTube]]
+************* [[https://s-blu.github.io/basic-dataview-query-builder/][Query Builder]]
+************* [[https://github.com/s-blu/obsidian_dataview_example_vault][Example Template]] 
+******* AI and obsidian
+******* [[org-roam and obsidian]]
+******* <<Personal knowledge querying in Obsidian>>
+********* Smart Connections and Copilot: [[https://www.youtube.com/watch?v=SG2ozNh-27Y][The Free AI Tool that Knows Everything You've Written.]]
+********* also [[Personal Knowledge Query]]
+********* link suggestions
+*********** Smart Connectins Plugin
+************* [[https://github.com/brianpetro/obsidian-smart-connections][obsidian-smart-connections: Chat with your notes in Obsid...]]
+************* says its best, good advice  [[https://www.youtube.com/watch?v=d30jraaUmeY][Obsidian AI Plugin You Need]]
 ***** <<dendron>>
       From: [[https://www.dendron.so/][Dendron]]
 
@@ -16978,6 +17375,7 @@ I think systemcrafters guy said pages could be check into git at short time inte
 
 ********* Emacs: [[https://github.com/abrochard/mermaid-mode][abrochard/mermaid-mode: Emacs major mode for working with mermaid graphs]]
 ********* org mode: [[https://github.com/arnm/ob-mermaid][arnm/ob-mermaid: Generate mermaid diagrams within Emacs org-mode babel]]
+******* [[Mermaid Python]]
 ******* mermaid cli
 ********* <<MacOS mermaid-cli>>
           From: [[https://github.com/mermaid-js/mermaid-cli#install-with-brew][mermaid-js/mermaid-cli: Command line tool]]
@@ -17002,6 +17400,7 @@ I think systemcrafters guy said pages could be check into git at short time inte
       From: [[https://gephi.org/][Gephi]]
 ******* See [[Bibliography visualizaton using Gephi]]
 
+***** [[Python Graph Drawing]]
 *** Model Driven Development (MDD)
 ***** [[http://dsmforum.org/events/MDD-TIF07/][MDD Forum]]
 ***** [[http://www.metacase.com/products.html][MetaEdit+]] Domain-specific modeling (DSM) environment
@@ -17065,9 +17464,9 @@ I think systemcrafters guy said pages could be check into git at short time inte
 
 
 ******* /Likely obsolete/: [[http://tex.stackexchange.com/questions/43066/tool-to-visualize-connections-between-bibtex-entries][Gephi & NWB]]
-        Best answer: <<Gephi & NWP bibliography visualization>>
+        Best answer: <<Gephi & NWB bibliography visualization>>
 
-        _ACTUALLY_, NWB is unmaintained and stuff doesn't work.  But somehow, it seems like it's necessary to download the edu.iu.nwb.converter.prefusebibtex plugin from [[http://nwb.cns.iu.edu/svn/nwb/trunk/plugins/converter/][here]] and drop it in some plugin directory in the unzipped NWP folder tree.  NWB may have been superceeded by Sci2 ([[Gephi & Sci2 co-author graph]])
+        _ACTUALLY_, NWB is unmaintained and stuff doesn't work.  But somehow, it seems like it's necessary to download the edu.iu.nwb.converter.prefusebibtex plugin from [[http://nwb.cns.iu.edu/svn/nwb/trunk/plugins/converter/][here]] and drop it in some plugin directory in the unzipped NWB folder tree.  NWB may have been superceeded by Sci2 ([[Gephi & Sci2 co-author graph]])
 
         This is possible with the following two tools:
 
@@ -17214,6 +17613,7 @@ I think systemcrafters guy said pages could be check into git at short time inte
 ***** [[https://itswiki.imm.dtu.dk/How_do_I.../Use_the_Cluster_Facilities][matlab mini howto]]
 ***** also see: [[R cluster computing]]
 * <<Evernote>>
+*** Evernote support link: https://help.evernote.com/hc/requests/new
 *** Syncing Evernote with external sources
 ***** [[Readwise]]
 ***** <<Instapaper>>
@@ -17222,6 +17622,7 @@ I think systemcrafters guy said pages could be check into git at short time inte
 
 ******* syncs w/ Evenote using API ([[https://blog.instapaper.com/post/122859293691][Updated Evernote Integration]])
 ******* can also [[https://ifttt.com/connect/instapaper/evernote][sync Evernote and Instaper using IFTTT]]
+***** [[Evernote and Obsidian]]
 *** [[https://github.com/exomut/evernote-dump][exomut/evernote-dump: Convert Evernote .enex files to markdown and files]]
 *** [[Evernote and Emacs]]
 *** Legacy Evernote Install
@@ -17266,8 +17667,18 @@ I think systemcrafters guy said pages could be check into git at short time inte
         [[https://github.com/joplin/plugin-bibtex][joplin/plugin-bibtex: Use locally stored BibTeX files to integrate c...]]
 ******* video reviewer guy says you won't use this if you use [[Emacs]] and [[org-mode]]
 ***** [[Trilium]]
+***** [[obsidian]] (copy webpage to markdown)
 ***** [[Web Page Annotation in Zotero]]
 ***** [[Replacing Evernote with Zotero]]
+*** Evernote said cancel [[https://discussion.evernote.com/forums/topic/146739-looking-for-evernote-alternatives%E2%80%A6-suggestions-clarified-my-question/?do=findComment&comment=690983][within 60 days of July 14, 2023]], but stuck w/ full year
+*** <<Exporting Evernote Notes>>
+***** <<Yarle Evernote Exporter>>
+******* [[https://github.com/akosbalasko/yarle][yarle: Yarle - The ultimate converter of Evernote notes ...]]
+******* [[https://discussion.evernote.com/forums/topic/146739-looking-for-evernote-alternatives%E2%80%A6-suggestions-clarified-my-question/?do=findComment&comment=690954][claimed Yarle advantages over Obsidian importer plugin]]
+******* [[https://discussion.evernote.com/forums/topic/146739-looking-for-evernote-alternatives%E2%80%A6-suggestions-clarified-my-question/?do=findComment&comment=690969][more sophisticated]] than [[Obsidian Importer Plugin]]
+******* might solve problems with [[Obsidian Importer Plugin]]
+***** [[Obsidian Importer Plugin]]
+*** [[Evernote and Obsidian]]
 * <<Kindle>>
 *** Exporting Kindle files to pdf
     See partial overview [[http://www.digitaltrends.com/mobile/how-to-convert-kindle-to-pdf/#!LpAlh][here]].
