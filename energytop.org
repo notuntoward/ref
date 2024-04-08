@@ -2122,6 +2122,7 @@ Scott
 ********* TODO [[http://neuralnetworksanddeeplearning.com/chap5.html][Is informal]]: [[cite:Bengio09lrnDeepArchAI][Bengio 2009: Learning Deep Architectures AI]]
 ********* [[cite:Pascanu2013numRespRgnsDeepNNpieceLin][Pascanu et al. 2013 Num response regions picewise deep]] 
 ********* [[cite:Montufar2014numLinRegnDeepNN][Montufar et al. 2014: Number Linear Regions piecewise deep]]
+********* [[zotero://select/library/items/6E5GCZXK][Kaplan20scaleLawsLLM]]: deep LLM scaling laws
 ***** <<Deep Learning Classes/Tutorials/Videos>>
 ******* TODO [[https://learn.deeplearning.ai/diffusion-models/lesson/1/introduction][How Diffusion Models Work]]
 ******* TODO [[http://www.evernote.com/l/AA2KD9DttQRPEZaXZ10OCCcdQBUaeIoa39I/][A Brief Overview of Deep Learning]]
@@ -2247,7 +2248,8 @@ Scott
 ********* [[Transformer Probabilisitc Forecasting]]
 ********* also [[Probabilistic Deep Learning]]
 
-********* TODO Read "Attention is all you need"
+********* TODO Read [[zotero://select/library/items/JPEYNNM8][Attention is all you need]] (zotero: link doesn't work?)
+
 ********* TODO <<Transformer Probabilisitc Forecasting>>
 *********** TODO [[https://huggingface.co/blog/informer][Multivariate Probabilistic Time Series Forecasting with Informer]] w/ code (READ)
 *********** <<Temporal Fusion Transformer>>
@@ -2522,6 +2524,10 @@ This is often an NN e.g [[SUMO toolbox]]
 ******* also [[Rare Events and Logistic Regression]]
 ***** also [[Deep Learning with Small Data]]
 ***** [[https://www.evernote.com/l/AA0LjmG_yKhNtofiblqhElTx7jwPxHZEKrI/][Ferus 2022: logistic regression, AR feats beats deep NN for TS classif]]
+***** [[https://medium.com/@dreamferus/the-powerful-feature-extraction-method-youve-never-heard-of-1e960483e709][The powerful feature extraction method you've never heard of]]: simple TS classif: AR + logreg
+***** [[Graph Networks]]
+***** [[LSTM]]
+***** [[Learning Physical Models with NN]]
 * <<Multi-task Learning>>
 *** TODO [[file:energy.bib::Caruana97multiTaskLrn][Caruana 1997: Multitask Learning]]
 *** TODO [[file:energy.bib::Ruder17multiTskDeepNN][Ruder 2017 multitask deep NN]]
@@ -3312,6 +3318,7 @@ But I wonder, if for images, [[Tensor PCA]] would still allow deep image feature
 ************* [[file:energy.bib::Gao15mutInfoStrongDep][Gao et al. 2015: Efficient Estimation Mutual]]: Good tutorial, Kraskov variant for high dep. struct
 ************* [[file:energy.bib::Doquire11mutInfMissDat][Doquire & Verleysen 2011: Mutual]] inf featsel: set net KSG ests. to zero
 ************* [[file:energy.bib::Keller15EstMutualInfStrm][Keller et al. 2015: Estimating Mutual Information Data Streams]] (variable lag and window width)
+************* [[file:energy.bib::Belghazi18nnMI][Belghazi et al. 2018: NN MI]]: fix Kraskov high di MI bias?
 ************* <<Kraskov MI estimator with missing features>>
 *************** see [[File:energy.bib::doquire11mutinfmissdat][Doquire & Verleysen 2011: Mutual Info Miss Dat]]
 *************** also [[Missing Features]]
@@ -8801,7 +8808,7 @@ Scott
 ************* use radar@sea rain data to correct sar wind speed?       :idea:
 ************* errors ==> need to 3 state regression for <2m/s, 2m/s<speed<20m/s, >20m/s
 ************* atmoshperic stability affects accuracy
-*************** use nwp to generate sar confidence?                    :idea:
+*************** use NWP to generate SAR confidence?                    :idea:
 ************* bad near coast, where you'd want to use sar for wind!
 *************** spatially dependent sar confidence or feature selection :idea:
 ************* confidence estimation (my thoughts)                      :idea:
@@ -8809,7 +8816,7 @@ Scott
 *************** no truth ==> hard to estimate confidence or reliability
 *************** instead, must use mutual info or correlation w/ the thing you're predicting (partial corr?  joint?)
 *************** related to predictability predicition in safewind (but for sar, which isn't in there?)
-*********** answrs is used by riso for norsewind (p. 23, [[file:energy.bib::oldroyd08norsewindrep1][oldroyd 2008: norsewind year periodic report]])
+*********** answer is used by RISO for NorseWind (p. 23, [[file:energy.bib::oldroyd08norsewindrep1][oldroyd 2008: norsewind year periodic report]])
 ************* answrs white paper: [[file:energy.bib::monaldo03sarwindanswrs][monaldo et al. 2003: sar measurement ocean surface winds]]
               the white paper describing theory in the software doc:
               [[http://sd-www.jhuapl.edu/fermi/sar/stormwatch/answrs_v5.pdf][answrs: apl/noaa sar wind retrieval system software documentation version 5.0]]
@@ -8941,15 +8948,15 @@ Scott
 
 Sub Models (Section 3.5 & Co. of [[cite:Mayer21cmprPhyMdlPVfrcst][Mayer & Grof 2021: Extensive Comparison Physical PV Models]])
 
-| Code | Thing modeled           | Table | Details                                                                          |
-|------+-------------------------+-------+----------------------------------------------------------------------------------|
-| C    | (component) separation  |     1 | Separation of beam and Diffuse irradiation                                       |
+| Code | Thing modeled           | Table | Details                                                                             |
+|------+-------------------------+-------+-------------------------------------------------------------------------------------|
+| C    | (component) separation  |     1 | Separation of beam and Diffuse irradiation                                          |
 | D    | (diffuse) transposition |     2 | Horizontal irrad -> tilted surace (== POI according to pyData2021 conference video) |
 | R    | reflection              |     3 | Horizontal irrad -> tilted surace (== POI according to pyData2021 conference video) |
-| T    | cell temperature        |     4 | Effect of temp (NOCT?) on performance                                            |
-| P    | PV performance          |     5 | electronic modelEmpirical or N-transistor model                                  |
-| S    | shading                 |     6 | uneven irrad on PV surface, both stochastic (clouds) and deterministic (geometric) |
-| I    | inverter                |     7 | voltage and/or power limits, DC:AC ratio, clipping, load-dep efficiency          |
+| T    | cell temperature        |     4 | Effect of temp (NOCT?) on performance                                               |
+| P    | PV performance          |     5 | electronic modelEmpirical or N-transistor model                                     |
+| S    | shading                 |     6 | uneven irrad on PV surface, both stochastic (clouds) and deterministic (geometric)  |
+| I    | inverter                |     7 | voltage and/or power limits, DC:AC ratio, clipping, load-dep efficiency             |
 
 
 Sub Models in Joint Model (Table 15)
@@ -9133,6 +9140,8 @@ https://pvsc-python-tutorial.eastus.cloudapp.azure.com/user/lampshadz/tree/pyDat
 ******* [[cite:Feng19openSolarDat][Feng et al. 2019: OpenSolar dataset]]: smart persistence?
 ******* [[cite:Gorman18openDatNEMOSIS][Gorman et al. 2018: NEMOSIS NEM Open]] Source
 ******* [[cite:AEMO21ausAncSrvcMktData][AEMO: Ancillary Services Market]]
+******* [[https://www.youtube.com/watch?v=LFiV--uzjh8][**NEW** Google Adds Solar Capability to Google Maps (8/2023)]]
+******* [[https://joint-research-centre.ec.europa.eu/photovoltaic-geographical-information-system-pvgis_en][Photovoltaic Geographical Information System (PVGIS)]]
 ***** also [[Wind and Solar Forecast Error Dependence]]
 ***** also [[Solar Variability Forecasting]] (a prob forecast input feature?)
 *** <<Price Forecasting>>
@@ -9143,6 +9152,7 @@ https://pvsc-python-tutorial.eastus.cloudapp.azure.com/user/lampshadz/tree/pyDat
 ***** [[file:energy.bib::Taylor07frcstSprMktPriceQR][Taylor 2007: Forecasting]] Q frcst-->point, expon. wgt., adapt is best, good paper
 ***** [[file:energy.bib::Szmit12holtWinterMultiPeriod][Szmit & Szmit 2012: Usage Holt Winters]] : multi-periodicity Holt-Winters
 ***** Additional price foreasting features: [[German Power Market]] (some papers there)
+***** Features predicting [[https://www.evernote.com/shard/s13/sh/ec865f1b-f530-458b-9192-aac5696e5174/WWxezvDv8jFlMM8H6XdNb97HlYvfPUAKnM10g6FwaIi1ATH0SSIMhyoxsg][price spikes like in ERCOT graphs]]?
 ***** [[cite:Hagemann15priceDetDEintraday][Hagemann 2015: Price German]] Intraday price determinants
 ***** [[cite:Monteiro16intrdyPrcFrcstIber][Monteiro et al. 2016: Short Term Price]] Intraday NN, Iberia
 ***** [[cite:Cabrera16adaptProbPriceFrcst][Cabrera et al. 2016: Time Adaptive Probabilistic]] DE Day ahead price frcst
@@ -9928,6 +9938,7 @@ https://pvsc-python-tutorial.eastus.cloudapp.azure.com/user/lampshadz/tree/pyDat
 ********* [[file:energy.bib::Jose14TrimOpinPoolCal][Jose et al. 2014: Trimmed Opinion Pools]]
 ********* see also [[Continuous valued AdaBoost]] (which select (weight) ensembles)
 ******* <<Scenarios from ensembles>>: generated by machine learning
+********* [[https://github.com/IBM/IBMWeatherGen][IBM/IBMWeatherGen: A daily stochastic weather generator based on res]]
 ********* [[file:energy.bib::Gagne12machnLrnEnhanceEns][Gagne et al. 2012: Machine Storm Scale Ensemble]]
 ********* [[file:energy.bib::Schefzik13ensCplaCpla][Schefzik et al. 2013: Uncertainty]] ensemble copula copula
 ********* see [[Scenario Generation]]
@@ -11912,7 +11923,8 @@ Scott
 ***** <<CAISO Market>>
 ******* Overview Videos
 ********* videos: [[https://growingenergylabs.atlassian.net/wiki/spaces/SD/pages/8582332470/CAISO+Market+Overview+Training+Videos][CAISO Market Overview Training Videos]]
-********* my notes: [[https://onedrive.live.com/view.aspx?resid=4BBD96B3698748F8%21737227&id=documents&wd=target%28CAISO.one%7CD8FE86F7-ACC0-4B01-844D-F2D4AEC0903D%2FCAISO%20Market%20Overview%20Training%20Videos%7C19F88E39-EEE9-6148-83D7-94FE2E254B90%2F%29][Notes: CAISO Market Overview Training Videos]]
+*********** my notes: [[https://onedrive.live.com/view.aspx?resid=4BBD96B3698748F8%21737227&id=documents&wd=target%28CAISO.one%7CD8FE86F7-ACC0-4B01-844D-F2D4AEC0903D%2FCAISO%20Market%20Overview%20Training%20Videos%7C19F88E39-EEE9-6148-83D7-94FE2E254B90%2F%29][Notes: CAISO Market Overview Training Videos]]
+********* [[https://growingenergylabs.atlassian.net/wiki/spaces/SD/pages/8657600567/CAISO+Market+Training+Slides][Harsh's paid CAISO course slides]]
 ******* [[https://www.evernote.com/shard/s13/sh/3ad4c85e-0826-455c-acc8-13286f8aa11c/JkthIMXaBKcdna7bn1lOpseMYaLdsQLb3PXsBjnRFYUP1D0HGKwjHmaQLg][California passes 5GW of grid-scale battery storage]]:  BESS revenue comes from energy trades in solar-heavy markets; from ancillary services in wind-heavy
 ***** [[http://www.strommarkttreffen.org/vergangene-treffen/][Group strommarkttreffen]]
       German group who works on electricity markets, does price modeling.
@@ -12604,13 +12616,33 @@ Erika
 ******* [[https://onedrive.live.com/edit.aspx/work/IWES?cid=4bbd96b3698748f8&id=documents&wd=target%2528Tutorials.one%257C93389E1B-FCE1-4F63-9068-1B49828D94D3%252FPredictive%2520Maintenance%2520with%2520Matlab%257CF90A03D9-B2A1-49F5-97FD-A5E26BFE11C0%252F%2529][Predictive Maintenance with Matlab (my OneNote notes on tutorial)]]
 ***** [[http://www.evernote.com/l/AA3XAEszIZhE3bRqLqziJ4RBiaCrpKL1TX4/][Evaluating Failure Prediction Models for Predictive Maintenance]] (discusses ROC stats, learning)
 ***** <<Battery Predictive Maintenance>>
-******* Lithium Battery Predictive Maintenance
+******* Prorietary Lithium Battery Predictive Maintenance data
 ********* [[https://www.evernote.com/l/AA2FzMiHDCRE_blptASxwi4bmmv/][GM purchases software for predicting EV battery fires]] (ALGOLiON): weeks ahead, only BMS data
-********* [[https://storagewiki.epri.com/index.php/BESS_Failure_Event_Database][BESS Failure Event Database - EPRI Storage Wiki]]
+******* Battery Prediction Software
+********* Open Source
+*********** [[https://github.com/microsoft/BatteryML][GitHub - microsoft/BatteryML]]
+*********** [[https://tri-amdd.github.io/beep/][BEEP - Battery Evaluation and Early Prediction]]
+********* Paid
+*********** Accure
+************* Confluence: [[https://growingenergylabs.atlassian.net/wiki/spaces/SD/pages/8504672257/Accure-+Battery+Intelligence+Provider][Accure- Battery Intelligence Provider]]
+************* Meeting docs for 3/29/23 meeting: [[file:accure][accure]]
+*********** DNV
+
+Web:  [[https://store.veracity.com/battery-ai][Battery AI | Veracity by DNV]]
+
+Even for their generic battery model, DNV had a huge data set from other batteries, similar to Accure, with the difference that DNV's  data appears to have come from accelerated aging tests.
+
+Also, their bespoke battery model is hybrid ML and physics, like what many papers have. 
+
+And no failure prediction.
+
+*********** Nace [[https://growingenergylabs.slack.com/archives/C05L8111MKQ/p1695283641991299][says]] that DNV use accelerated aging data
+
 ******* <<Data for battery predictive maintenance>>
+********* [[https://storagewiki.epri.com/index.php/BESS_Failure_Event_Database][BESS Failure Event Database - EPRI Storage Wiki]]
 ********* [[https://data.nasa.gov/dataset/Li-ion-Battery-Aging-Datasets/uj5r-zjdb][Li-ion Battery Aging Datasets | NASA Open Data Portal]]
 *********** last updated in 2022
-********* [[https://howey.eng.ox.ac.uk/data-and-code/][Data and code · Battery Intelligence Lab]]
+********* [[https://howey.eng.ox.ac.uk/data-and-code/][Data and code: Battery Intelligence Lab]]
 *********** common cite is Birkl17* (in zotero-only for as of Aug 2023)
 ********* NASA PCoE Battery data: [[https://www.nasa.gov/content/prognostics-center-of-excellence-data-set-repository][Prognostics Center of Excellence Data Set Repository | NASA]]
 *********** used in some papers e.g. Tian22battSOHpred
@@ -12621,6 +12653,14 @@ Erika
 *********** used by papers: e.g. Lu22battDegrPredUncertFut
 *********** kaggle user: [[https://www.kaggle.com/datasets/patrickfleith/nasa-randomized-battery-usage-dataset][NASA Randomized Battery Usage Dataset | Kaggle]]
 *********** Bing Chat download advice
+********* Data for: "Data-driven prediction of battery cycle life before capacity degradation"
+*********** paper: in Zotero: Severson19battCycleLifeCapDegrd
+*********** data URL: https://data.matr.io/1/projects/5c48dd2bc625d700019f3204
+*********** Steven [[https://growingenergylabs.slack.com/archives/D05L23YUJKG/p1694123147235049][says]]
+
+Steven Sun
+ Hi Scott, this is the dataset can be use for cycle life prediction and SOC prediction, it is also the largest open source li-ion battery dataset in the world at this moment.
+https://data.matr.io/1/projects/5c48dd2bc625d700019f3204
 
 *Note*: Bing/NASA's avcide might be less manual but could also download by clicking buttons (heading has links to buttons)
 
@@ -12668,6 +12708,13 @@ Source: Conversation with Bing, 7/25/2023
 ************* [[https://www.opendatanetwork.com/dataset/data.nasa.gov/5uxu-h2h6][Randomized Battery Usage 6: 40C Left Skewed Random Walk]]
 ************* [[https://data.nasa.gov/Raw-Data/Randomized-Battery-Usage-7-Low-Temperature-Left-Sk/sb48-rsbc][Randomized Battery Usage 7: Low-Temperature Left-Skewed Random Walk | NASA Op...]]
 *********** TODO *I think there are more*: continue searching for "Randomized Battery Usage X"
+********* Data from "Degradation-Safety Analytics in Lithium-Ion Cells: Part I. Aging Under Charge/Discharge Cycling": [[https://www.batteryarchive.org/study_summaries.html][UL Labs  Purdue University (UL-PUR)]]
+********* Data from Degradation-Safety Analytics in Lithium-Ion Cells and Modules: Part III. Aging and Safety of Pouch Format Cells: [[https://www.batteryarchive.org/study_summaries.html][UL Labs  Purdue University (UL-PUR)]] 
+********* Data from Reversible and Irreversible Expansion of Lithium-Ion Batteries Under a Wide Range of Stress Factorsi: [[https://www.batteryarchive.org/study_summaries.html][University of Michigan (MICH)]]
+********* Data from Predicting the impact of formation protocols on battery lifetime immediately after manufacturing: [[https://www.batteryarchive.org/study_summaries.html][University of Michigan (MICH)]]
+********* CALCE data sets: [[https://www.batteryarchive.org/study_summaries.html][Center for Advanced Life Cycle Engineering (CALCE)]]
+********* Data from: "Intrinsic Variability in the Degradation of a Batch of Commercial 18650 Lithium-Ion Cells": [[https://www.batteryarchive.org/study_summaries.html][Hawaii Natural Energy Institute (HNEI)]]
+********* Data from egradation of Commercial Lithium-ion Cells as a Function of Chemistry and Cycling Conditions: [[https://www.batteryarchive.org/study_summaries.html][Sandia National Laboratories (SNL)]]
 ********* [[file:~/OneDrive/share/ds-experimental/scotto/proj/battMdl/doc/battMdl.org::*<<Q.Home Data>>][<<Q.Home Data>>]]
 ***** also [[Class Imbalance Handling]]
 ***** also [[Fault Prediction]]
