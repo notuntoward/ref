@@ -438,12 +438,19 @@ TODO: make this a general function."
 
 ;; ** Org-* dirs and files
 
+;; set up obsidian and zotero dir
+(setq zotero_filedir "") ; defaults
+(setq bibfiles_zotero_fnm ""
+      obsidDir (expand-file-name "obsidian/Obsidian Share Vault" docDir))
+(unless (file-readable-p obsidDir)
+  (warn "obsidDir %s doesn't exist or not readable" obsidDir)
+  (setq zotero_filedir (expand-file-name "lit/lit_sources" obsidDir)
+	bibfiles_zotero_fnm (directory-files zotero_filedir t "\\.bib$")))
+
 ;; set up org and bib for old way of doing things and experimental org-roam, or a true org-roam, org-ref setup
 (setq bibfile_energy_fnm (expand-file-name "energy.bib" docDir)
       bibfile_energy_pdf_dir (expand-file-name "papers" docDir)
       bibfile_energytop_fnm (expand-file-name "energytop.org" docDir)
-      zotero_filedir (expand-file-name "zotero" docDir)
-      bibfiles_zotero_fnm (directory-files zotero_filedir t "\\.bib$")
       bibfile_DOE_dir (expand-file-name "DOE_brainstorm" docDir)
       bibfile_DOE_fnm (expand-file-name "deepSolarDOE.bib" bibfile_DOE_dir)
       bibfile_DOE_pdf_dir (expand-file-name "papers" bibfile_DOE_dir))
@@ -4234,6 +4241,8 @@ command options."
   :ensure t
   :mode (("\\.mmd\\'" . mermaid-mode)
          ("\\.mermaid\\'" . mermaid-mode)))
+
+;; ** Nunjucks
 
 ;; ** General purpose programming config
 
