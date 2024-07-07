@@ -6512,7 +6512,6 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
     properly handle high DPI settings, it may have adverse side effects
     such as truncated text or incorrectly sized graphical elements.
 
-
     o Lower the overall Windows DPI setting. To do this, open the
     desktop Display control panel (or search for "dpiscaling" from the
     Start Screen) and adjust the slider under "Change the size of all
@@ -14646,11 +14645,13 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
       | Windows Logic keyboard | ctrl (^) | cmd (⌘)   | opt (-\_ ) |
       | Windows Mini keyboard  | ctrl (^) | opt (-\_ ) | cmd (⌘)   |
 
-      Need to swap these with Karabiner.  Swapping Mac keyboard
-      ctrl/caps also does it for the Logic and mini windows keyboards.
-      On the mini, must separately swap opt and cmd.
+      Would have liked to have swapped these with Karabiner.  Swapping
+      Mac keyboard ctrl/caps also does it for the Logic and mini
+      windows keyboards.  On the mini, must separately swap opt and
+      cmd.
 
 ******* _Karabiner Elements PC-style mapping bug_
+********* *In the end, I didn't use Karabiner*: I used [[built-in MacOS keyboard remapping]]
 ********* ctrl-x gets mapped to Mx ([[https://github.com/pqrs-org/Karabiner-Elements/issues/2789][my bug report]] on this and other bugs)  
 ********* ctrl messup happens regardless of ctrl <--> capslock switching or whether cmd <--> opt on G620 windows keyboard
 ********* Only happens in emacs; ctrl-f, ctrl-z still works like ctrl-f, etc. in Firefox, etc.
@@ -14741,11 +14742,13 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 
     *OR*: [[https://9to5mac.com/2016/03/17/how-to-remap-windows-keyboard-buttons-match-mac-layout/][How-To: Remap Windows keyboards to match the Mac keyboard layout]]
     
-***** control/capslock swap: can do this w/ [[https://coderwall.com/p/cq_lkg/remapping-caps-lock-key-to-something-more-natural-on-mac-os-x][built-in MacOS GUI]] (also with Karabiner).  USB keyboard mapping can be changed ony when it's plugged in.
+***** <<built-in MacOS keyboard remapping>>
+******* control/capslock swap: can do this w/ [[https://coderwall.com/p/cq_lkg/remapping-caps-lock-key-to-something-more-natural-on-mac-os-x][built-in MacOS GUI]] (also with Karabiner).  USB keyboard mapping can be changed ony when it's plugged in.
+******* System Settings -> Keyboard -> Keyboard Shortcuts -> Modifier Keys
 ***** [[https://karabiner-elements.pqrs.org/docs/][Karbiner Elements]] was the [[https://www.slant.co/topics/523/viewpoints/49/~best-power-user-tools-for-macos~karabiner][top rated keyboard mapper]] in MacOS powertools.
 
-      I ended up not using Karabiner b/c the combination of (free &
-      simple) [[Rectangle]] and built-in MacOS keyboard remapping, handled
+      *I ended up not using Karabiner* b/c the combination of (free &
+      simple) [[Rectangle]] and [[built-in MacOS keyboard remapping]], handled
       control/capslock and window snapping shortcuts just fine.
 
       But, to install Karabiner:
@@ -14755,7 +14758,10 @@ https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-adds-scikit-learn
 ***** home/end pgup/pgdown remapping
 ******* Starry Hope's home/end pgup/pgdown ideas (from 2006)
 
-        Can remap to what he thinks is the right thing either manually or w/ a script he wrote.  But I'm not sure if it still on MacOS Catalina, or if the mapping his appropriate for a MacBook Pro keyboard.
+        Can remap to what he thinks is the right thing either manually
+        or w/ a script he wrote.  But I'm not sure if it still on
+        MacOS Catalina, or if the mapping his appropriate for a
+        MacBook Pro keyboard.
         
 ******* manual config edits
         http://www.starryhope.com/tech/2006/mac-os-x-home-and-end-keys/
