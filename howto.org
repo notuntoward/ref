@@ -1619,24 +1619,33 @@ I don't quite understand what a "ref" is here, but this seems useful:
 
         The solution for org-ref was to [[https://github.com/jkitchin/org-ref/issues/346#issuecomment-262874374][use latexmk]].  However, MikTex latexmk kept crashing on both home and work computers.  Since org-ref people were successfully using TexLive, I installed that instead (it can work with [[Lyx]], which is what it was using, but see the [[Lyx Tweaks for TexLive]]
 
+        After installing TexLiv stuff using choco, then I installed latexmk with this command line (command prompt admin mode):
+        
+            tlmgr install latexmk
+
+       Note also that, in .emacs, I had to modify the advice from
+       https://github.com/jkitchin/org-ref/issues/346#issuecomment-262874374
+       (which I mention there).
+
+       As before, everything works starting from the leftover .tex
+       file, for example, this makes a valid pdf: latexmk -f -pdf tmp
+
+      * Surface Laptop studio latexmk path fix
+
+          *Wasn't necessary on my surface pro copilot*
+          
+         Also had to add the path to the TexLive latexmk binary*)
+        (in 2022 on my Surface Laptop Studio, this should have been: c:\texlive\2022\bin\win32\latexmk.exe
+        but latexmk wasn't installed by the choco texlive package.  To install latexmk, I ran the Tex Live Manager and installed the latexmk and latexmk.win32 tex packages)
+******* IWES TexLive        
+
         _IWES TexLive Problem_: The proxy was a problem, even if I disabled it in Chrome and deleted by http_proxy env var.  And I was unable to customize the TexLive environment to use a proxy because it insists upon using a URL proxy and IWES has only a numerical IP address.
 
 
         _IWES TexLive Solution_: Disable the proxy stuff in Chrome, delete
         http_proxy (not sure if necess.) & then hook up with the IWES guest Wifi.  Finally, I was able to do a normal TexLive internet install. 
 
-        *I also had to add the path to the TexLive latexmk binary*)
-        (in 2022 on my Surface Laptop Studio, this should have been: c:\texlive\2022\bin\win32\latexmk.exe
-        but latexmk wasn't installed by the choco texlive package.  To install latexmk, I ran the Tex Live Manager and installed the latexmk and latexmk.win32 tex packages)
-
-        Note also that, in .emacs, I had to modify the advice from
-        https://github.com/jkitchin/org-ref/issues/346#issuecomment-262874374
-        (which I mention there).
-
-        As before, everything works starting from the leftover .tex file, for example, this makes a valid pdf:  latexmk -f -pdf tmp
-
-
-********* why _latex bibtex latex latex_ works on org-ref leftover .tex file
+******* why _latex bibtex latex latex_ works on org-ref leftover .tex file
 
           Reasoning from [[http://tex.stackexchange.com/questions/8332/undefined-citation-warnings][here]]:
 
@@ -4911,6 +4920,9 @@ This started much faster than my standard .emacs (on 5/21/20) and also opened en
 ***** symbol search and replace: [[refactoring in elpy]]
 ******* [[https://github.com/m-parashar/emax64/releases][emax64: has pdf-tools built-in]]
 ***** also [[Linux on Windows]]
+* Surface Pro 11
+*** Emacs
+***** Somebody said (incorrectly, for MSYS2, don't know about scoop) that [[https://www.reddit.com/r/Surface/comments/1e2xbve/surface_pro_11_developer_experience/][MSYS2 has an Arm emacs, and]] so does [[Scoop]]
 * Surface Laptop Studio
 *** <<vscode on WSL>>
     On my SLS, follow the steps in:
@@ -5762,12 +5774,24 @@ Set-Content "<?xml version=`"1.0`" encoding=`"utf-8`"?>`n<packages>$packageXml`n
 
           choco install packages.config
 
+***** winget
+      See [[*winget][winget]]
+******* winget installs binaries in varying, hard-to-find directories
+
+        Awful, but here are [[https://github.com/microsoft/winget-cli/issues/2298#issuecomment-2304066397][workarounds]] that corral them in one place,
+        and adds command aliases pointing to them (I think).
+
 ***** Windows package management overviews
 ******* Chocolatey says use Chocolatey, not OneGet:  [[https://chocolatey.org/faq#how-is-chocolatey-different-than-onegetpowershell-package-management][ChocolateyFAQs]]
 ******* [[https://stackoverflow.com/questions/37823964/whats-the-difference-between-chocolatey-oneget-psget-nuget][powershell - What's the difference between Chocolatey, OneGet, PsGet, NuGet, ...]]
 ******* [[https://www.hanselman.com/blog/AptGetForWindowsOneGetAndChocolateyOnWindows10.aspx][Apt-Get for Windows - OneGet and Chocolatey on Windows 10 - Scott Hanselman]]
 ******* could use it to install ripgrep: [[https://github.com/BurntSushi/ripgrep][GitHub - BurntSushi/ripgrep: ripgrep combines the usability of The Silver Sea...]]
 ******* [[https://blogs.technet.microsoft.com/packagemanagement/2015/05/05/10-things-about-oneget-that-are-completely-different-than-you-think/][10 things about OneGet that are completely different than you think. – Packag...]] (OneGet works on Windows 7 too)
+
+***** 
+***** <<Scoop>>
+******* [[https://en.wikipedia.org/wiki/Scoop_Package_Manager][Scoop Package Manager - Wikipedia]]
+
 
 *** Windows Explorer "send to" menu
 
@@ -5924,13 +5948,88 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
 
 ******* Window focus follows mouse + autoraise
 
-        _Windows 11_:
+********* Windows 11
 
-        Winaero Tweaker --> XMouse Options
+          This <<window activating control panel setting>> should work on both arm64 and intel Windows 11.  So far (8/23/2024), I've tested it on arm64.
+
+          1. Win + R, then 'control' (for control panel)
+          2. Ease of Access Center
+          3. Change how your mouse works
+          4. click "Activate a window by hovering over it with the mouse.'
+
+          This does autoraise, with about a half a second hover delay.  That's only 0.5 s, I think, by default.
+
+          To adjust the autoraise delay (from [[https://www.perplexity.ai/search/in-windows-11-i-have-enabled-t-8GgtX4lbSG6R0b0b6Q1GXA#0][perplexity]])
+
+*********** Steps to Adjust Hover Activation Time
+************* Open the Registry Editor:
+*************** Press Win + R to open the Run dialog.
+*************** Type regedit and press Enter. Confirm any User Account Control (UAC) prompts.
+************* Navigate to the Relevant Key:
+************* In the Registry Editor, type in the search bar at the top:
+*************** HKEY_CURRENT_USER\Control Panel\Desktop
+************* Modify the Activation Delay:
+*************** Locate the ActiveWndTrkTimeout entry in the right pane.
+*************** If it doesn’t exist, ensure that the "Activate a window by hovering" feature is enabled in the Ease of Access settings. Then refresh the Registry Editor (press F5).
+*************** Double-click on ActiveWndTrkTimeout.
+*************** Select Decimal as the base.
+*************** Enter your desired delay in milliseconds (e.g., 1000 for 1 second or 2000 for 2 seconds). The default value is 500 milliseconds.
+************* Apply Changes:
+*************** Click OK to save your changes.
+*************** Close the Registry Editor.
+************* Restart or Sign Out:
+*************** Sign out of your account and sign back in, or restart your computer for the changes to take effect.
+
+          On intel Windows 11, it was possible to do this with [[Winaero Tweaker]], but that program, doesn't work with arm64 (get a popup saying it's only for x86 and x64).  Luckily, there's a [[window activating control panel setting]] that pretty much does the same thing as the tweaker.
+          
+*This is an alternative that I haven't done this yet as the regedit values are ambiguous, and I don't want to screw this up while I have other things to do.*
+
+To enable the window autoraise feature and set the activation timeout on your ARM64 Windows Surface device, you can use the Windows Registry Editor to adjust specific settings. Here's how you can do it:
+
+1. *Open the Registry Editor:*
+   - Press `Win + R` to open the Run dialog.
+   - Type `regedit` and press Enter.
+
+2. *Navigate to the Registry Key:*
+   - Go to `HKEY_CURRENT_USER\Control Panel\Desktop`.
+
+3. *Modify UserPreferencesMask:*
+   - Find the `UserPreferencesMask` value in the right pane. This is a `REG_BINARY` value.
+   - Double-click on `UserPreferencesMask` to edit it.
+   - To enable both window tracking and raising, you typically need to ensure the first byte is set to include both features. The exact value might vary, but you can try setting it to a value that ensures both focus and raise, like `df` or similar, depending on your current configuration.
+
+### Set Activation Timeout
+
+1. *Locate ActiveWndTrkTimeout:*
+   - In the same `HKEY_CURRENT_USER\Control Panel\Desktop` key, look for the `ActiveWndTrkTimeout` DWORD. If it doesn't exist, you may need to create it.
+
+2. *Set the Timeout Value:*
+   - Double-click on `ActiveWndTrkTimeout`.
+   - Select the *Decimal* option.
+   - Enter the desired timeout in milliseconds. For example, enter `750` for a 750 ms delay before the window is activated when you hover over it[1][6].
+
+3. *Apply Changes:*
+   - Close the Registry Editor.
+   - Sign out and sign back into your user account, or restart your computer to apply the changes.
+
+By following these steps, you can enable the window autoraise feature and set a custom activation timeout on your Windows device without using third-party software like Winaero Tweaker.
+
+Citations:
+[1] https://www.elevenforum.com/t/change-time-to-activate-window-by-hovering-over-with-mouse-pointer-in-windows-11.6105/
+[2] https://www.partitionwizard.com/news/stop-auto-resizing-of-windows.html
+[3] https://winaero.com/turn-on-xmouse-active-window-tracking-focus-follows-mouse-pointer-feature-in-windows-8-1-windows-8-and-windows-7/
+[4] https://answers.microsoft.com/en-us/windows/forum/all/solved-cant-change-the-delay-to-raise-window-on/1969446c-df25-49ab-b126-aacfd5fe99d6
+[5] https://www.elevenforum.com/t/is-winaero-tweaker-safe.24591/
+[6] https://www.tenforums.com/tutorials/113268-change-time-activate-window-hovering-over-mouse-windows.html
+[7] https://winaero.com/enable-xmouse-window-tracking-windows-10/
+
+*********** _Windows 11_ intel-only:
+
+        <<Winaero Tweaker>> --> XMouse Options
           click Enable window tracking (I set activation time out to 750)
           click Enable window raising
 
-        _Windows 10_:
+********* _Windows 10_:
 
         Control Panel\Ease of Access\Ease of Access Center\Make the mouse easier to use
 
@@ -6548,6 +6647,109 @@ The recommended one of the three possible ways to do it, disabling UDP, so only 
     WindowsKey + Space Bar (on >= windows 8)
 
 *** Keyboard remapping (ctrl-capslock, insert)
+***** windows caps/ctrl swap with Regedit
+
+      *None of these attempts even managed to swap capslock and ctrl, much less did it without side effects*
+
+      PowerToys and Sharpkeys could both swap caps/ctrl, however, they had the identical side effects: caplock turned out when coming out of sleep, pen storage causing the screen snipper to pop up; random times when ctrl key was applied before every click and keystroke, and so on.
+
+      A [[https://superuser.com/a/1827601/1250395][Jan 2024 commenter]] thinks that Windows 11 started using
+      different bits for some keys, and I guess, that SharpKeys and
+      PowerToys haven't caught up.  He claims that his solution works,
+      but others disagree.
+
+      _His old, non-functioning (he says) solution_
+
+      "After some trial and error I found out why. Not sure about other
+      keys, but for R/L shift and CapsLock, Win 11 seems to change the
+      1st byte of their scan codes to 0xe0. Previously it was 0x00.
+
+      My previous solution (which did something with the enter key) is this:
+
+      [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+      "Scancode Map"=hex:00,00,00,00,00,00,00,00,05,00,00,00,3a,00,2a,00,2a,00,3a,00,36,00,1c,00,1c,00,36,00,00,00,00,00
+
+      Formatted with each 2 bytes on a line:
+
+        00,00,00,00,
+        00,00,00,00,
+        05,00,00,00,
+        3a,00,2a,00,
+        2a,00,3a,00,
+        36,00,1c,00,
+        1c,00,36,00,
+        00,00,00,00
+
+        "
+
+      _Deriving a capslock/ctrl swapper from his new, supposedly working solution_
+
+      From an MS document he cites, about swapping capslock and control:
+
+        Value: Interpretation
+        0X00000000: Header: Version. Set to all zeroes.
+        0x00000000: Header: Flags. Set to all zeroes.
+        0x00000003: Three entries in the map (including null entry).
+        0x001D003A: Left CTRL key CAPS L0CK (0XID ox3A).
+        0x003A001D: CAPS LOCK Left CTRL key (0x3A oxl D).
+        0X00000000: Null terminator.
+
+      If it's true that for caps and ctrl, the 00 shoud instead by e0,
+      then the new Windows 11 keyswapping command should be:
+
+        0X00000000: Header: Version. Set to all zeroes.
+        0x00000000: Header: Flags. Set to all zeroes.
+        0x00000003: Three entries in the map (including null entry).
+        0xE01DE03A: Left CTRL key CAPS L0CK (0XID ox3A).
+        0xE03AE01D: CAPS LOCK Left CTRL key (0x3A oxl D).
+        0X00000000: Null terminator.
+
+      Converting this back into the regedit command, and replacing 'O' with 0:
+
+        00 00 00 00
+        00 00 00 00
+        00 00 00 03
+        E0 1D E0 3A
+        E0 3A E0 1D
+        00 00 00 00
+
+      OR
+        00,00,00,00
+        00,00,00,00
+        00,00,00,03
+        E0,1D,E0,3A
+        E0,3A,E0,1D
+        00,00,00,00
+
+      OR
+        00,00,00,00,00,00,00,00,00,00,00,03,E0,1D,E0,3A,E0,3A,E0,1D,00,00,00,00
+
+      OR folowing [[https://zachrussell.net/blog/map-caps-lock-to-control-windows/][How To Map Caps Lock To Control in Windows 10 & Windows 11]]
+        In admin powershell, and using Set-Property instead of New-Property, b/c I get "existing property" error messages when using New-Property.  I also deleted some zeros from above, in order to match this web page, and changed the first "3" to "2", also to match this web page:
+      
+        00,00,00,00,00,00,00,00,02,E0,1D,E0,3A,E0,3A,E0,1D,00,00,00,00
+
+        $hexified = "00,00,00,00,00,00,00,00,02,E0,1D,E0,3A,E0,3A,E0,1D,00,00,00,00".Split(',') | % { "0x$_"};
+
+$kbLayout = 'HKLM:\System\CurrentControlSet\Control\Keyboard Layout';
+
+Set-ItemProperty -Path $kbLayout -Name "Scancode Map" -Value ([byte[]]$hexified)
+
+      The result is I see no error messages, and after I reboot, I can see the change in RegEdit.
+
+      OR use the method immediately above, with the codes from the message above that (more zoroes, and the '3').  It's all the same exept for:
+
+        $hexified = "00,00,00,00,00,00,00,00,00,00,00,03,E0,1D,E0,3A,E0,3A,E0,1D,00,00,00,00".Split(',') | % { "0x$_"};
+
+      This had no effect either.
+
+      OR just use the website's code with no modification (Go back to website's hexified):
+
+              $hexified = "00,00,00,00,00,00,00,00,02,00,1D,00,3A,00,3A,00,1D,00,00,00,00".Split(',') | % { "0x$_"};
+
+     This had no effect either.
+
+
 ***** Using Microsoft PowerToys
       See: [[https://zachrussell.net/blog/map-caps-lock-to-control-windows/][How To Map Caps Lock To Control in Windows 10 & Windows 11]]
 
@@ -8387,6 +8589,7 @@ Host key verification failed.
 ***** [[http://briss.sourceforge.net/][briss]]: windows, have to save 1 page 1st, and then crop
 *** split and merging
 ***** [[http://sourceforge.net/projects/pdfsam/][PDF Split and Merge]]: split, merge, mix and rotate
+***** the program pdfsam can do this
 *** extract pdf bookmarks
 
     This works:
