@@ -1,0 +1,7 @@
+/* Remove extra indentation from embedded sections */
+/* Doesn't entirely remove it, but cuts it maybe in half */
+/* From: https://www.perplexity.ai/search/the-obsidian-anuppuccin-theme-mgqrJK7GQHu7e6VaYP7V.g#0 */
+
+.markdown-embed, .file-embed {
+    padding: 0px 0px !important; /* Adjust the padding values as needed */
+}

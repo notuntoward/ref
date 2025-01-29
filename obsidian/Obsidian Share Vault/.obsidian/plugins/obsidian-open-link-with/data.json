@@ -1,0 +1,16 @@
+{
+  "selected": "_system",
+  "custom": {
+    "opera": [
+      "c:/Users/mamoru/AppData/Local/Programs/Opera/launcher.exe"
+    ],
+    "opera-private": [
+      "c:/Users/mamoru/AppData/Local/Programs/Opera/launcher.exe",
+      "--private"
+    ]
+  },
+  "modifierBindings": [],
+  "enableLog": false,
+  "timeout": 500,
+  "inAppViewRec": []
+}

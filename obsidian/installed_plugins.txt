@@ -1,0 +1,107 @@
+@ Symbol Linking
+AutoMOC
+Better Search Views
+Blockier
+Calendar
+Callout Manager
+Commander
+Code Block
+Codeblock Customizer
+Colored Text
+Confluence Integration
+Confluence Import
+Consistent Attachments and Links
+Convert url to preview (iframe)
+Creases
+Custom File Explorer sorting
+Quick Switcher++
+Dataview
+DB Folder
+Diagrams
+Excel
+Execute Code
+Extract url content
+Graph Analysis
+Navigate Cursor History
+Highlightr
+Hotkey Helper
+Image Converter
+Insert Heading Link
+Janitor
+Keyboard Analyzer
+Lapel
+Link Tree
+Links
+Logstravaganza
+Media Extended
+Media Notes
+Mermaid Tools
+Mousewheel Image zoom
+Multi Properties
+Multiple Notes Outline
+Note Refactor
+Advanced URI
+Annotator
+Auto Link Title
+Better Command Palette
+Carry-Forward
+Copy Block Link
+Custom Frames
+Daily Note Outline
+Excalidraw
+Excel to Markdown Table
+Git
+Heading Shifter
+Hover Editor
+HTML Reader
+Iconize
+Importer
+Kanban
+Kindle Highlights
+List Callouts
+Local Images Plus
+Minimal Theme Settings
+Open Link With
+Outliner
+Pandoc Plugin
+Pandoc Reference List
+Tagged Documents Viewer
+Plugin Update Tracker
+Prominent Bookmarked Files
+Quiet Outline
+ReadItLater
+Show Current File Path
+Style Settings
+Tasks
+Timestamp Notes
+Toggle Case
+Underline
+Vault Changelog
+Zoom
+Zotero Integration
+Strange New Worlds
+Text Transporter
+Omnisearch
+PDF++
+Periodic Notes
+Quick Preview
+Quoth
+Recent Files
+Remember cursor position
+Remotely Save
+Settings Search
+Share my plugin list
+Short links
+Smart Connections
+Spotify Link
+Supercharged Links
+Symbols Prettifier
+Advanced Tables
+Tabout
+Tag Wrangler
+Templater
+Text Extractor
+Wikilinks to MDLinks
+Zotero Bridge
+Zotero Link
+ZotLit

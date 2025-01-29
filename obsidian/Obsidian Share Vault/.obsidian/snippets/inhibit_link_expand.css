@@ -1,0 +1,8 @@
+/* This does nothing that I can see.  Came from Gemini: https://gemini.google.com/app/1b26b41a4e25fc90 */
+
+/* Idea: make obsidian links work more like a browser.  Don't expand just because I put a cursor on them */
+
+.markdown-preview-view a {
+  pointer-events: none;
+  cursor: text;
+}

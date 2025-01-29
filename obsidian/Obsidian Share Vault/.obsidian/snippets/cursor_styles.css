@@ -1,0 +1,109 @@
+/* iAWriter-ish style. The cursor colour in a light theme */
+/* From: https://forum.obsidian.md/t/control-the-cursors-appearance/59340/2?u=scotto */
+
+/* This worked for a while, then the cursor totally disappeared.  Not sure what changed -- I redownloaded a fresh version and it still didn't work */
+
+.theme-light .x-cursor {
+    opacity: 1;
+    /* my settings */
+    /* background: #82A67D;*
+    /* width: 10px; */
+    /* original settings */
+    background: #00bbff;
+    width: 4px;
+    left: -1px;
+    top: -2px;
+    /* original setting */
+    height: calc(6px + var(--cursor-height));
+    /* height: calc(var(--cursor-height));    */
+    transition: opacity;
+    top: calc( -6px - var(--header-height));
+}
+
+/* iAWriter-ish style. The cursor colour in a dark theme */
+.theme-dark .x-cursor {
+    opacity: 1;
+    background: #2c95b4;
+    width: 4px;
+    left: -1px;
+    top: -2px;
+    height: calc(6px + var(--cursor-height));
+    transition: opacity;
+    top: calc( -6px - var(--header-height));
+}
+
+
+
+.cm-editor * {
+    caret-color: transparent !important;
+}
+
+
+
+/* Disable movement effect */
+.cursorWrapper .x-cursor::after {
+    display: none;
+}
+
+
+/* Blinking */
+
+.cursorWrapper .x-cursor0,
+.cursorWrapper .x-cursor1 {
+    animation: blink1 1s 0s both infinite;
+    animation-delay: 2s;
+}
+
+
+
+@keyframes blink1 {
+    0% {
+        opacity: 0.5;
+    }
+
+    45% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+
+    65% {
+        opacity: 0;
+    }
+
+    95% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}
+
+/* @keyframes blink1 {
+    0% {
+        opacity: 1;
+    }
+
+    45% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+
+    65% {
+        opacity: 0;
+    }
+
+    95% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+} */

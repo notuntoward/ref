@@ -1,0 +1,52 @@
+/* Gives different bullets for different levels, like in org-mode.  This came from the author of the style-bullets obsidian plugin.  Doesn't work in reading view, though.
+
+   My feature request: https://github.com/lilian-pouliquen/obsidian-custom-list-character/issues/2#issuecomment-1837264844
+
+ * Emacs unordered list by Lilian POULIQUEN
+ * 
+ * Based on:
+ *   - https://forum.obsidian.md/t/style-bullets-in-lists-by-level/46152
+ */
+
+.markdown-source-view.mod-cm6 .HyperMD-list-line-1 .list-bullet:after {
+/* Bullet */
+	height: 10px;
+	width: 10px;
+	border-radius: 50%;
+} 
+
+.markdown-source-view.mod-cm6 .HyperMD-list-line-2 .list-bullet:after {
+/* Solid Square */
+	height: 10px;
+	width: 10px;
+	border-radius: 0%;
+} 
+
+.markdown-source-view.mod-cm6 .HyperMD-list-line-3 .list-bullet:after {
+/* Hollow Bullet */
+	height: 9px;
+	width: 9px;
+	background-color: Transparent;
+	border-style: solid;
+	border-radius: 50%;
+	border-width: 1px;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-list-line-4 .list-bullet:after { 
+/* Triangle:  originally 8px, 8px, 15px */
+  height: 0;
+  width: 0; 
+  background-color: Transparent;
+  border-radius: 0%;  
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 11px solid;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-list-line-5 .list-bullet:after {
+/* Small Bullet */
+	height: 5px;
+	width: 5px;
+	border-radius: 50%;
+}
+

@@ -1,0 +1,282 @@
+---
+created date: 2024-11-09T16:39:13-08:00
+modified date: 2025-01-28T23:06:32-08:00
+---
+# TODO
+- graph showing all the information loss sources from a good D policy to a voter's rational decision about it
+- same graph of info loss from polls to D policy and messaging decision
+- graph showing all sources of polling error
+- examples of compounding policy errors
+- ranking of factors affecting a vote e.g. of fear (I did a perplexity on this but it's not saved in zotero)
+- dig into economic literature on irrational consumer behavior
+- dig into the list of cognitive errors (both voters, R's and D's make them)
+
+# Why did the Democrats fail?
+## Harris
+## Biden?
+## AI
+### Examples of AI in politics
+- Kapoor23misinfoAInotTheProb
+- A warning: Palmer23llmsArgueConvincing
+### Political AI background
+- [[Gen AI Talk Ideas#Sentiment Analysis|Sentiment Analysis]]
+- [Robots Talk Back, AI Security Risks, Political Deepfakes, and more](zotero://select/library/items/QUV7MR9D)
+- 
+## The Chinese
+## The Russians
+## The Jews
+## The Gays
+## Lying Republicans
+- in Dawson23cognitiveAbilityVotingEU the UK higher cog. voters were more likely to vote remain during Brexit. Authors speculate that lower cog. voters are vulnerable to misinformation
+## The Great Trump
+Trump is really the best president ever.
+## People forgot how bad Trump was
+- Medina24amnesiaAboutTrump
+## Covid
+## Ukraine
+## Political Correctness
+- the word wokeness as toxic as "socialism" for general electorate: Yokley23wokeVoterPerception
+- wokeness exposes elite lack of priority on lower class issues (Gorman says): Bedford21GOPFindsSuccess
+- leftist proposals most closely associated with wokeness aren’t widely popular: Bedford21GOPFindsSuccess
+	- 18% of people in the United States support defunding the police (USA today poll)
+	- 56% of them, opposed sports teams or leagues using their public platform to advocate for social or political change. 
+	- Fifty-eight percent of all voters said they opposed corporations using their platforms to advocate for social causes.
+	- Carville flagged wokeness as a D problem
+	- A pretty good quote from Sen. Tim Scott:
+	  
+	   “It’s backwards to fight discrimination with different discrimination. And it’s wrong to try to use our painful past to dishonestly shut down debates in the present.”
+	   
+	   and
+	   
+	   "It is a progressive conception of diversity that does not include diversity of thought. It is discrimination falsely marketed as inclusion,”
+- D's shaming Rs with different opinions
+	- Lewis24demsGenderID
+- WA state low income 0-interest loans
+	- FAIR24fairVsWalkerLoanDiscrim
+	- excludes Japanese, Jews and whites
+	- ? Does WA may have more poor whites than any other group? If so, this is politically stupid. In any case, seems nasty, if the idea is to address poverty.
+- Friedersdorf24worstIdentPolit
+## The Economy
+## Postmaterialism
+Both R's and D's vote less on economic issues and more on values: Lowrey24riseUnionRight
+
+Econ used to be D advantage (although the D's may have still lost on economic issues like inflation?).
+
+this paper shows that, while the method may be more accurate accurate, the turnout overestimate suggests that self-selection bias is not sufficiently reduced.
+.
+## Immigration
+
+## US Culture
+## Random Bad Luck
+## Anti-Incumbency Cycle
+## Racism / Sexism
+## Trump is what the People Wanted
+## Global Trend
+## Loss of trust in experts, institutions
+- people don't belive experts, media, etc. Go to friends
+	- I have more than one article on this, I think
+	- odd example: Elon Musk: Verma24muskPoliticsEcoCar
+## Lack of D party enthusiasm/turnout
+- was the D loss due to poor Democratic turnout or to Ds switching to R?
+## Abortion overemphasized, not important
+- abortion a concern of young women, not old?
+- more concern about economy
+- do the graph votes associated with ranking combinations of issues
+## Weak economy doomed D's
+- many posts say so
+- but some say it was actually a perceived strong economy doomed the D's, rather than a weak real/perceived econ (Pastor24greatBidenEconHelpedTrump)
+## Overreliance on demographic groups
+### Demographic Info Sources
+- PBS24keyVoteGroupsInteract : interesting but can't search since must operate interactively
+
+### Student loans & youth vote
+- voters who have student load debt
+	- 780k people have (Habeshian24trumpStudentDebtWA)
+	- 140 M total 2024 voters: PBS24keyVoteGroupsInteract (not final yet)
+#### Student loans as political liability?
+  
+  Young people e.g. student loans was a liability (Trump tried to enrage the larger working class) for small amount of student voters. Also an example of issue interaction: (maybe made upper class students happy, working class mad) ^i6p3
+	- young people were 14% of 2024 voters (CIRCLE24youthVote2024), 38% of them had no college experience
+		- so the affected young people vote was 14% * 62% = 8.68% of voters
+	- ~ 42% of eligible voters aged 18-29 cast ballots in the 2024 presidential election, lower than in 2020 (17%) and 2016 (19%) (CIRCLE24youthVote2024)
+	- Young voters favored Kamala Harris over Donald Trump by 6 percentage points (52% to 46%) (CIRCLE24youthVote2024, I think)
+	- smaller margin Biden't 2020 25% in 2020 (CIRCLE24youthVote2024, I think)
+	- Young voters w/o college education went for Trump by 10%;  with some college for Harris by 12%, college grads 14 % (Arrojas24collegeAgeVote, I think) 
+	- college-experienced voters cast about 62% of the 2024 vote
+		- 40% of the voting-eligible youth population are young people without college experience (CIRCLE24youthVote2024)
+		- 38% of all youth votes were cast by young people without college experience (CIRCLE24youthVote2024)
+# Campaign Message Ideas
+## Polarization Enhancement: Your fellow R is evil (algorithmic) ^q98mss
+- For details & perplexity-derived evidence of implementability see Blake25infightMAGA
+## Musk as traitor to America
+- Musk donated $100M to Trumps 2024 election, but he’s very vulnerable to China’s gov’t actions, making him a vehicle to manipulate Trump, in order to forward his own interests, maybe at the cost to American workers and national security (Bradsher24muskNeedChina)
+- Musk unfairness
+	- how much money he as vs. average American: Is he really worth 1.6M X the average American?
+	- his interests aren't your interests
+	- He employs XX Americans; other industries employ YY
+	- He adds XX to American economy; other industries add YY
+- Musk danger
+	- his interests and vulnerability to China make his influence questionable, esp. Chinese network-connected cars, if Trump cuts Biden's tariff
+	- look what he did to Twitter
+- Message evolution
+	- attack Musk as being born rich, get resentful MAGA heads nodding, then emphasize that Trump was born rich too
+- Verma24muskPoliticsEcoCar
+# Questions
+## How voters weight different policies in their voting decision (sensitivity analysis)
+## Media effectiveness
+- e.g. Yurieff24trumpUsedInfluencers : did this really work as claimed here?
+- ? how do advertisers measure or (get proxies of) effectiveness of media message --> purchase
+## How to communicate comparative government performance
+- US low taxes, high GDP, a better COVID recovery and lower inflation that peers
+- ? Displaying an inflation "weather map?"
+	- would this have helped?
+	- across countries
+	- also time graphs
+	- ? but would have to consider that low income people were hit harder than high income people
+		-  put that in the map?
+- same thing with gun deaths
+- health insurance costs
+- etc.
+## New Proxies
+Just more predictor variables for various things. Things similar to education, which predicts poll response, vote likelihood, party lean. What other information is there that is gettable?  Could this be a long list of things, with missing feature imputation when not available?
+
+- turnout proxies
+- poll response proxies
+- party vote lean proxy
+- Pederson volatility (Pedersen79dynamPartyVolatileEU), used e.g. in (Qvortrup24neurosciVoteEmotion and many others)
+## What factors make a person accept facts from somebody he dislikes
+- i.e. how to persuade through rural anti-intellectualism
+## Destructing Conspiracy Theories
+- facts don't seem to work, can reinforce existing opinion (references..)
+- conspiracy theory attractions
+	- makes your life simple ==> make your conspiracy make your life complicated
+	- convinces you that you are good ==> make it make you look bad (a common tactic, I think)
+	- ...
+# Predictive Models and Analysis Techniques
+- market sentiment indexes predicted by economic variables (Weber24implicitCoordInflateShock).  Could be *voter* sentiment predicted by other variables
+- bulk features built from the poll difference between a presidential candidate and same-party state/county/city candidates. Or, look at post-election results for election autopsies
+- during election autopsies analyzing across elections in different years, try to factor out the effect of each (modelable) variable so you can see which thing by itself — inflation, war, … — caused the big changes.  
+	- See example of doing this in words in [Ezra Klein Speaks Frankly Abou...](https://youtu.be/vkXJiEzWxFs?t=1484)..
+	- His wife's article is cited. Did she use numbers?
+# Questions / Hypotheses to test
+- [ ] @ Take a look at all the paper's at this guy's lab:  Kolbert25oneEmotionEthics
+## Education realignment around D's
+- [Klein says](https://youtu.be/vkXJiEzWxFs?t=1511) it's happening globally, that there is theorizing about why
+- [ ] ? Could it be the smarter people who can understand more complex arguments of the kind that the D's make? Dawson23cognitiveAbilityVotingEU says cognitive limitations affected political choice but I haven't read it yet. Does this interact with other cognitive loads, say stress from losing a job or higher prices?
+	- [ ] do low IQ people need more shortcuts? Rubin24demsLowInfoVoterShortcut or is it just busy, low information voters?
+- [ ] Are "low information voters" often really high information voters who know a lot about conspiracy theories (JV Last kind says this in TheBulwark24isAmericaSerious) i.e. are many just crazy? How distinguish? Campaign-wise, is it worth distinguishing them?
+## How specifically does Trump sound like an honest, real person?
+- non-politically correct, says what they're thinking but others are afraid to say it?
+- just says what they already think? He's not persuading but got in front of their parade?
+- is inarticulate, as in most conversations?
+## How communicate policy to voters who know nothing?
+- Voters know shockingly little and this was who Harris needed to convince: Rubin24demsLowInfoVoterShortcut
+- [ ] # ID features that are salient to low info voters just before election, when they pay a little attention: Rubin24demsLowInfoVoterShortcut
+## Are there ideological fractures in Trump coalition that could be exploited by D's?
+- or are new Rs "tolerant" and so they won't have ideological fights?
+- one guy's take: Walther24barstoolConservatism
+## Was 2024 not a revolt against D politicians but against D voters?
+- D politicians didn't talk much about the Left, but D voters still did (Wells24electionMythsLessons)
+	- If true, then D politician messaging won't help, unless it's a Bill Clintonesque Sister Souljah moment?
+	- ? how true are these points?
+- related:Lewis24demsGenderID 
+## Auto-detection of political messaging/conversation themes and their importance
+- Sentiment analysis was used to shape messages, etc. in 2024. maybe earlier
+- how are representative of general population
+- how important to the people who are talking about it
+## Issue half-life
+- given a set of issues, predict how "important", "salient" they will be in the future
+- a factor useful to know if an issue will be important by the time of the election
+## Polling by sentiment analysis
+- first, do [[#Auto-detection of political messaging/conversation themes and their importance|Auto-detection of political messaging/conversation themes and their importance]]
+- then, [[#Issue half-life|Issue half-life]]
+- then estimate representativeness of total voting population (like polling respondent weighting)
+- also [[Gen AI Talk Ideas#Sentiment Analysis|Sentiment Analysis]]
+## Detect when people are so tired of a message that they ignore it
+- so know when to switch adverts
+- to settle arguments about whether somebody's interest (mens rights, womens rights, global warming) has been beaten for the death for the moment
+## Issue/Message interaction tester
+- an issue/message that most voters might find uninteresting e.g. wokeism (see studies I found stating this) might be potent which combined with some other issue/message
+- examples
+	- actual 2024 election examples
+		- wokeism and working class economic worries
+			- Glueck24endWhiteWorkingDems, Yudkin24perceptGapIDpolit, Chait24ModerateNotSurrender
+			- Top reason why "swing voters" (decision was up in the air somehow, see definition) went to Trump was D's too focused on cultural issues, more imp. than inflation: Cass24WhyChoseTrump as well as Bennett23wokeUseAsDistraction
+		- Liberal Asians going Right b/c of crime
+			- Seattle: CID (Chinatown) b/c of crime: Cabahug24seattleCIDshiftTrump
+			- San Francisco: Kang24youngMaleVoters
+				- believed Dems "equity-driven school policies" was not a good reaction to hate Crimes, Dems seen as looking after their interests
+		- [[#Student loads as political liability?|Student loads as political liability?]] 
+		- Roaring stockmarket as liability: Weber24implicitCoordInflateShock
+		- suburban R never trumper emphasis vs. working class economic worries: Glueck24endWhiteWorkingDems
+		- wokeism vs. suburban school worries during COVID: Goldstein24SchoolBattlesMay , Editorial23cheerMediocWAschools
+		- anti-Israel vs. concern for order, econ: The very least popular reason for voting for Trump was Harris was too pro-Israel (Cass24WhyAmericaChose) but the R's made hay of campus riots 
+			- [ ] ? but didn't the D's also lose MI arab votes b/c of Israel?
+		- trans: [[Dionne24hiddenVictoryProgrssiv|Dionne24: The lessons in progressives’ hidden 2024 victories]]
+	- speculative examples
+		- Abortion backfire theory?: TheBulwark24bulwarkHelpTrump
+			- State initiatives might have been a turnout tool for pro-abortion/anti-immigration Trump voters
+			- [ ] ? check with studies done months after the election if this is true
+		- [ ] ? COVID restrictions vs. working class economic worries: a guess, I don't have a source
+		- [ ] ? Were young feminists Grose24youngWimynWillTalkSexistm in an unfortunate interaction?
+		- if trans+economy was bad for Harris, how about Mike Johnson's new trans bathroom ban (Solender24transBathroomBanMikeJohnson). Doesn't he have more important things to do that the working class expects to get done?
+		- R abandonment of Gay Marriage and Abortion was OK b/c immigration was a strong issue for anti-GM, anti-Ab people. They were also distracted by the R's anti-trans antidote. Dionne24hiddenVictoryProgrssiv
+- idea: do a message testing survey of the type in Blueprint24pollPosHarrisCase where conjoint analysis is done with Trump attacks and Harris rebuttals. 
+	- But idea here is to pair *same-candidate* issues/messages and measure effects.
+	- This could get combinatorial fast: could the test be approximated by:
+		1. making compressed LLM-style tokens of messages and issues
+		2. randomly sample a multivariate message/issue token space
+		3. for each realization, generate a test paragraph that contains this exact combination of message/issue
+		4. actually test these synthetic messages during polling
+	- Like doing [[Hyperparameter Tuning]] but modern instead of grid
+		- Blueprint24pollPosHarrisCase is like a grid search
+		- Instead do randomized or something fanceir like [[Zygmunt17fastHyperband|Zygmunt17fastHyperband|Hyperband]] 
+		- Could tailor to compute (survey time) budget:[[Eggensperger22hyperparamOptHPOBench]] 
+		- the optimal survey could be found iteratively
+			- with the message adjusted to the by the tuning algorithm on each test
+			- a poor man's reinforcement learning
+	- somehow would have to get rid of the poll-responder underestimate effect
+		- maybe try to adust them with paid benchmark surveys e.g. [[Lau23compareProbPanelsPoll]],  discussed in [[Cohn24changePollsAvoid2020]] 
+	- use [[#Detect when people are so tired of a message that they ignore it|Detect when people are so tired of a message that they ignore it]] so know for sure when switch to new message
+
+- also: Sperling24politMeddleAdsBackfire
+- also: Silver20pollQuestTestAhead
+# New tools needed by the D's
+## Political State / Warning Realtime Dashboard
+- Policy/message effects
+	- Venn diagram or stack plot stacking votes with different combinations of priorities, according to pols like Lee24abortionVsEconomy.
+- Current/forecasted economy, electoral consequence forecast
+	- Economic buying power of different socio-econ groups
+		- realtime cost of living indicator
+		- somehow put that in context with different levels of class income (which will change too)
+		- different in different areas: rural vs. suburbs vs. city vs. bad neighborhoods
+	- Estimate of marginal effect on each class, and on regions
+		- [ ] consider: Grose24youngWimynWillTalkSexistm, won't acknowledge young feminsit saturation, yet this was only 9% of population (according to her article's comments, but I can check this)
+	- Estimate of marginal effect on candidate/party/incumbent popularity, turnout, vote consequence
+	- besides raw econ numbers, consider how this is perceived e.g. the "country's good/bad direction," etc.like in McMann24mornCnsltRateDefMeth
+- something about campaign timing: I think I zoteroed something about timing, but I can't find it at the moment
+- something about party unity, since that seems to matter
+- a candidate's purity rating
+	- how out of step he/she is with the electorate
+	- how possible would it be to backtrack during the general?
+	- forecast of ultimate electorate effect
+- [[#Auto-detection of political messaging/conversation themes and their importance|Auto-detection of political messaging/conversation themes and their importance]]
+- [[#Issue half-life|Issue half-life]]
+- [[#Polling by sentiment analysis|Polling by sentiment analysis]]
+- Monitoring media for year-round opportunities
+	- constantly monitor media, find issue or issue combos that are favorable to you, or unfavorable to your opponent
+	- pump these to advertising or insert in news, like Fox does all the time
+	- one use for the [[#Issue/Message interaction tester|Issue/Message interaction tester]]
+- Must run long term, year around, keep pounding the message
+	- Rubin24demsLowInfoVoterShortcut
+- Media attack graph, as in Thompson24rumbleRightWingYT
+# Potential Partners
+- UW Center for an informed public
+	- [Center for an Informed Public](https://www.cip.uw.edu/2024/10/31/misinformation-why-people-spread-rumors/)
+	- [[Jevin D. West]]: UW data scientist, currently on loan at U. Berkeley
+- "Civics for Adults": Blankinship24waElectSumryYouth
+# Political Data Sources
+- [Bright Data - All in One Platform for Proxies and Web Scraping](https://brightdata.com/)
+	- They spontaneously [offered](https://mail.google.com/mail/u/0/#search/from%3A+keshet/FMfcgzQZSjmLKWjvwShPlnMCgVjLSCpk) me pro bono, non-profit access, but I wasn't an institute, so in the end, they said no.
+	- one guy's idea: [Web Scraping 101: A Million Dollar SaaS Idea](https://www.youtube.com/watch?v=oyIQenEvWN8)
+- MorningConsult (same as Bright Data?)

@@ -1,0 +1,43 @@
+{
+  "is_obsidian_vault": true,
+  "smart_blocks": {
+    "embed_blocks": true,
+    "min_chars": "300"
+  },
+  "smart_sources": {
+    "single_file_data_path": ".smart-env/smart_sources.json",
+    "embed_model": {
+      "adapter": "transformers",
+      "transformers": {
+        "legacy_transformers": true,
+        "model_key": "TaylorAI/bge-micro-v2"
+      },
+      "model_key": "TaylorAI/bge-micro-v2",
+      "legacy_transformers": true
+    },
+    "smart_change": {
+      "active": true
+    },
+    "min_chars": "300"
+  },
+  "file_exclusions": "Untitled",
+  "folder_exclusions": "smart-chats, Merged RAG Political Sources",
+  "smart_view_filter": {
+    "render_markdown": true,
+    "show_full_path": false
+  },
+  "excluded_headings": "",
+  "smart_chats_folder": "smart-chats",
+  "smart_directories": {},
+  "smart_threads": {
+    "chat_model": {
+      "adapter": "openai",
+      "openai": {
+        "model_key": "gpt-4o"
+      }
+    },
+    "embed_model": {
+      "model_key": "None"
+    }
+  }
+}

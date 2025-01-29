@@ -139,6 +139,8 @@ With PRUNE, prune the build cache and the build directory."
 ;;
 ;;  get a trace dump on error
 ;;  M-x toggle-debug-on-error
+;;  or add this:
+;; (setq debug-on-error t) ; doesn't help w/ my recentf error
 
 ;; * Computer-specific setup
 ;; ** OS-dependent settings
@@ -190,7 +192,8 @@ With PRUNE, prune the build cache and the build directory."
 (setq computerNm (downcase system-name)) ; downcase: was getting
                                         ; random case
 (defun get-shareDir (s)
-  (cond ((string-equal s "desktop-vpfvctb") "C:/Users/scott/OneDrive/share")
+  (cond ((string-equal s "sp11_sdo") "C:/Users/scott/OneDrive/share")
+	((string-equal s "desktop-vpfvctb") "C:/Users/scott/OneDrive/share")
         ((string-prefix-p "macbook-pro" s) "/Users/scott/OneDrive/share")
         (t (progn (warn "Can't assign shareDir for unknown computer: %s" s)
                   (concat "unknown_shareDir_for_unknown_computer_" s)))))
@@ -1639,12 +1642,16 @@ targets."
 ;; pdf-tools requires libraries (msys2 on Windows) so it can build itself.
 ;;
 ;; FIRST INSTALL on fresh machine: On Windows, msys2 will download the libraries itself if you answer it's "where is mysys2?" question with: c:/tools/msys64
-;; You can check the install with M-x pdf-info-check-epdinfo
+;; then you can check the install with M-x pdf-info-check-epdinfo
 ;;
 ;; pdf-tools use-package call inspired by:
 ;; http://pragmaticemacs.com/emacs/more-pdf-tools-tweaks/
 ;;
+;; skip build on windows for now
+(setq pacbin-windows nil)
+(message "SKIPPING PDF-TOOLS because I couldn't build it on surface pro copilot")
 (if (or running-MacOS running-gnu-linux pacbin-windows)
+;;(if (or running-MacOS running-gnu-linux pacbin-windows)
     (progn
       (message "Initializing pdf-tools")
       (use-package pdf-tools
@@ -2573,6 +2580,8 @@ displayed anywhere else."
 
 ;; in emacs 28.1 is the option use-short-answers
 ;;(fset 'yes-or-no-p 'y-or-n-p) ; type just "y" instead of "yes"
+
+
 
 (use-package which-key ; complex key hints, better than guide-key
   :diminish which-key-mode
@@ -3762,6 +3771,14 @@ command options."
 ;;   :commands git-timemachine)
 
 ;; * Programming Modes
+;; ** treesitter
+
+;; Does this do anything?
+;; recommended here: https://www.youtube.com/watch?v=SOxlQ7ogplA
+(use-package treesit-auto
+  :config
+  (global-treesit-auto-mode))
+
 ;; ** Matlab mode
 
 ;; Matlab on Windows barely works in emacs anymore, but keep around for Linux?
@@ -4473,6 +4490,8 @@ command options."
 
 ;; *** Ediff
 
+(setq diff_bin (sdo/find-exec "diff" "Needed for several things."))
+
 ;; Do not pop up a separate window "frame" for ediff
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 ;; Avoid folding headlines when ediffing org-mode
@@ -4511,17 +4530,10 @@ command options."
 
 ;; *** Vertical indent lines in programming modes
 
-;; seems like this isn't needed if you have highlight-indent-guides
-;; https://github.com/DarthFennec/highlight-indent-guides#alternatives
-;; (use-package highlight-indentation
-;;   :diminish highlight-indentation-mode) ; indicator: ||
-
-;; TODO: this doesn't work anymore
-(use-package highlight-indent-guides
-  :diminish highlight-indent-guides-mode ;; indicator: h-i-g (works here)
-  :config
-  (setq highlight-indent-guides-method 'character) ; nicest, thinnest lines
-  :hook (prog-mode-hook . highlight-indent-guides))
+;; Doesn't do anything that I can see...
+(use-package indent-bars
+  :ensure t
+  :hook ((python-mode yaml-mode) . indent-bars-mode))
 
 ;; *** Debuggers
 ;; **** realgud
@@ -4872,6 +4884,18 @@ command options."
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "pandoc"))
+
+;; ;; opens rendered side window too.  But this can hang emacs if a huge markdown file is opened by windows file association, or a windows "open-with" menu choice.  So, I decided to use the simpler setup above.
+;; ;; TOOO: combine these 2 setups somehow
+;; (use-package markdown-mode
+;;   :hook ((markdown-mode . turn-on-visual-line-mode)
+;;          (markdown-mode . markdown-live-preview-mode))
+;;   :mode (("README\\.md\\'" . gfm-mode)
+;;          ("\\.md\\'" . markdown-mode)
+;;          ("\\.markdown\\'" . markdown-mode))
+;;   :init
+;;   (setq markdown-command "pandoc")
+;;   (setq markdown-split-window-direction 'right))
 
 
 ;; ** Latex

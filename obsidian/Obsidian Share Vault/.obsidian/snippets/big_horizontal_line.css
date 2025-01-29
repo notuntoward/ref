@@ -1,0 +1,5 @@
+.markdown-preview-view hr, hr {
+  border: none;
+  height: 3px;
+  background-color: var(--color-accent);
+}

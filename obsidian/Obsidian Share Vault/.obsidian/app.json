@@ -1,0 +1,26 @@
+{
+  "pdfExportSettings": {
+    "includeName": true,
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  },
+  "newFileLocation": "current",
+  "attachmentFolderPath": "./attachments",
+  "alwaysUpdateLinks": true,
+  "userIgnoreFilters": [
+    "Obsidian/templates/",
+    "attachments/"
+  ],
+  "defaultViewMode": "source",
+  "foldHeading": true,
+  "showUnsupportedFiles": true,
+  "propertiesInDocument": "hidden",
+  "tabSize": 2,
+  "focusNewTab": false,
+  "showInlineTitle": true,
+  "useMarkdownLinks": false,
+  "readableLineLength": true,
+  "showLineNumber": false
+}

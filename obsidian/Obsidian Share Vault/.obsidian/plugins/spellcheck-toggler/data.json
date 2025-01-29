@@ -1,0 +1,14 @@
+{
+  "externalLinks": {
+    "behaviour": "global"
+  },
+  "internalLinks": {
+    "behaviour": "default"
+  },
+  "htmlComments": {
+    "behaviour": "default"
+  },
+  "anyNode": {
+    "behaviour": "default"
+  }
+}

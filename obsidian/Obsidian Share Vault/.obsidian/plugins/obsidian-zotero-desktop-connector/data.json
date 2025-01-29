@@ -1,0 +1,101 @@
+{
+  "database": "Zotero",
+  "noteImportFolder": "lit/lit_notes",
+  "pdfExportImageDPI": 120,
+  "pdfExportImageFormat": "jpg",
+  "pdfExportImageQuality": 90,
+  "citeFormats": [
+    {
+      "name": "MLA9",
+      "format": "formatted-citation",
+      "cslStyle": "modern-language-association"
+    }
+  ],
+  "exportFormats": [
+    {
+      "name": "Test",
+      "outputPathTemplate": "Scratch Space/{{citekey}}.md",
+      "imageOutputPathTemplate": "Scratch Space/{{citekey}}",
+      "imageBaseNameTemplate": "image",
+      "templatePath": "Obsidian/templates/test.md",
+      "cslStyle": "modern-language-association"
+    },
+    {
+      "name": "Literature Note",
+      "outputPathTemplate": "lit/lit_notes/{{citekey}}.md",
+      "imageOutputPathTemplate": "lit/lit_notes/{{citekey}}/",
+      "imageBaseNameTemplate": "image",
+      "templatePath": "Obsidian/templates/literature_note.md",
+      "cslStyle": "modern-language-association"
+    },
+    {
+      "name": "persist example",
+      "outputPathTemplate": "lit/lit_notes/{{citekey}}.md",
+      "imageOutputPathTemplate": "lit/lit_notes/{{citekey}}/",
+      "imageBaseNameTemplate": "image",
+      "templatePath": "Obsidian/templates/zotTemp-PersistExample.md",
+      "cslStyle": "natbib"
+    },
+    {
+      "name": "zotTemp-LS-SDO-note-persist",
+      "outputPathTemplate": "lit/lit_notes/{{citekey}}.md",
+      "imageOutputPathTemplate": "lit/lit_notes/{{citekey}}/",
+      "imageBaseNameTemplate": "image",
+      "templatePath": "Obsidian/templates/zotTemp-LS-SDO-note-persist.md",
+      "cslStyle": "IEEE"
+    },
+    {
+      "name": "zot_phelan_230821",
+      "outputPathTemplate": "lit/lit_notes/{{citekey}}.md",
+      "imageOutputPathTemplate": "lit/lit_notes/{{citekey}}/",
+      "imageBaseNameTemplate": "image",
+      "cslStyle": "modern-language-association",
+      "templatePath": "Obsidian/templates/zot_phelan_230821.md"
+    },
+    {
+      "name": "RRaftis V2.3",
+      "outputPathTemplate": "lit/lit_notes/{{citekey}}.md",
+      "imageOutputPathTemplate": "lit/lit_notes/{citekey}}/",
+      "imageBaseNameTemplate": "image",
+      "templatePath": "Obsidian/templates/zotTemp-RickRaftis-V2.3.md",
+      "cslStyle": "natbib"
+    },
+    {
+      "name": "QWxlea-240307",
+      "outputPathTemplate": "lit/lit_notes/{{citekey}}.md",
+      "imageOutputPathTemplate": "lit/lit_notes/{{citekey}}/",
+      "imageBaseNameTemplate": "image",
+      "templatePath": "Obsidian/templates/zotTemp-QWxlea-240307.md"
+    },
+    {
+      "name": "zotTemp-LS-SDO.md",
+      "outputPathTemplate": "lit/lit_notes/{{citekey}}.md",
+      "imageOutputPathTemplate": "lit/lit_notes/{{citekey}}/",
+      "imageBaseNameTemplate": "image",
+      "templatePath": "Obsidian/templates/zotTemp-LS-SDO-html.md",
+      "cslStyle": "natbib"
+    },
+    {
+      "name": "zotTemp-Phelan2308-orig",
+      "outputPathTemplate": "lit/lit_notes/{{citekey}}.md",
+      "imageOutputPathTemplate": "lit/lit_notes/{{citekey}}/",
+      "imageBaseNameTemplate": "image",
+      "templatePath": "Obsidian/templates/zotTemp-Phelan2308-orig.md",
+      "cslStyle": "natbib"
+    },
+    {
+      "name": "lit LSQ-SDO",
+      "outputPathTemplate": "lit/lit_notes/{{citekey}}.md",
+      "imageOutputPathTemplate": "lit/lit_notes/{{citekey}}/",
+      "imageBaseNameTemplate": "image",
+      "templatePath": "Obsidian/templates/zotTemp-LS-SDO.md",
+      "cslStyle": "natbib"
+    }
+  ],
+  "citeSuggestTemplate": "[[{{citekey}}]]",
+  "openNoteAfterImport": true,
+  "whichNotesToOpenAfterImport": "all-imported-notes",
+  "shouldConcat": true,
+  "pdfExportImageOCR": false,
+  "pdfExportImageTesseractPath": ""
+}

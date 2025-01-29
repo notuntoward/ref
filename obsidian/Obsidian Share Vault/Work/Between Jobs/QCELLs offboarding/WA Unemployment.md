@@ -1,0 +1,36 @@
+---
+created date: 2024-08-21T12:37:18-07:00
+modified date: 2024-10-13T13:06:56-07:00
+---
+
+- Weekly claim filing spot: [Employment Security - Login](https://secure.esd.wa.gov/home/)
+- First claim filed: for 8/21-8/24/2024
+	- [[Last QCELLS Paystub.PDF]]
+		- Was for: $1,590.19
+		- for 3 weekdays:  period was 8/16-20/2024, so Fri, Mon, Tue.
+		- so I was paid by QCELLSfor 2 days (Mon, Tues) over the first unemployed week (8/12-24)
+			- hours:23.64 
+			- gross pay: $2,010.80 
+	- If the amount was for 2 days @ 8hrs/day, the gross pay was: 2010.8/23.64 * 16 hrs = $1360.95
+	- [ ] FILED on 8/29/24
+- [[WA Unemployment Submission 240820.pdf]]
+- [[__temp__WA Unemp Your Benefit Rights and Responsibilities 240820.pdf]]
+	- [[__temp__WA Unemp Your Benefit Rights and Responsibilities 240820.pdf#page=1&annotation=217R|$1079 each week for up to 26 weeks, for a total of up to $28054]]
+	- [[__temp__WA Unemp Your Benefit Rights and Responsibilities 240820.pdf#page=1&annotation=220R|sending you a statement of benefits, wages and hours]]
+	- [[__temp__WA Unemp Your Benefit Rights and Responsibilities 240820.pdf#page=1&annotation=223R|You must submit weekly claims]]
+		- [ ] must submit a claim on 1st week ([[__temp__WA Unemp Your Benefit Rights and Responsibilities 240820.pdf#page=2&annotation=240R|waiting week]]), even though you won't get paid!
+			- [ ] on that claim, must [[__temp__WA Unemp Your Benefit Rights and Responsibilities 240820.pdf#page=2&annotation=243R|report your gross (before tax) earnings and number of hours worked this week, even if you have not been paid yet.]]
+			- [ ] ? Do I need to report my severance pay, or just wages, and for this year or last year?
+		- [[__temp__WA Unemp Your Benefit Rights and Responsibilities 240820.pdf#page=2&annotation=234R|On eServices at esd.wa.gov. After a week ends, submit your weekly claim anytime between 12:01 a.m. Sunday @ end of this week, and 11:59 p.m. Saturday, the next week]]
+		- Can also submit by phone: [[__temp__WA Unemp Your Benefit Rights and Responsibilities 240820.pdf#page=2&annotation=237R|800-318-6022]]
+	- [[__temp__WA Unemp Your Benefit Rights and Responsibilities 240820.pdf#page=1&annotation=231R|eServices account at  esd.wa.gov]]
+		- Duties
+			- [[__temp__WA Unemp Your Benefit Rights and Responsibilities 240820.pdf#page=3&annotation=251R|Each week you submit a claim, you must:]]
+				- Make at least three employer contacts;
+				- OR: Go to your local WorkSource center and participate in at least three approved job search activities;
+				- OR: Do a combination of at least three employer contacts and approved job search activities.
+			- [[__temp__WA Unemp Your Benefit Rights and Responsibilities 240820.pdf#page=3&annotation=254R|You must keep a written log of your job search activities.]]
+- QCELLS report to WA state of my wages
+  - from: [Employment Security - Login](https://secure.esd.wa.gov/employeewagedata/)
+  - [[Employment Security Deparment Employee Wages - 240820.pdf]]
+    ![[WA Unemployment-20240820200939948.webp|476]]

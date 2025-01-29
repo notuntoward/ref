@@ -1,0 +1,1 @@
+{"path":"Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/Pasted image 20250113213646.webp","text":"SELECT ProductName ,UnitPrice ,SupplierID FROM Products WHERE UnitPrice >= 75;","libVersion":"0.3.2","langs":"eng"}

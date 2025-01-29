@@ -1,0 +1,10 @@
+{
+  "pathToPandoc": "C:\\ProgramData\\chocolatey\\bin\\pandoc.EXE",
+  "tooltipDelay": 400,
+  "zoteroGroups": [],
+  "renderCitations": true,
+  "renderCitationsReadingMode": true,
+  "renderLinkCitations": true,
+  "enableCiteKeyCompletion": true,
+  "showCitekeyTooltips": true
+}

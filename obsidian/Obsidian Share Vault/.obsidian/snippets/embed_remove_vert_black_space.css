@@ -1,0 +1,35 @@
+/* Remove margins and paddings from internal embeds */
+/* Helps but doesn't remove all of the unnecessary white space above & below */
+/* From: https://www.perplexity.ai/search/the-obsidian-anuppuccin-theme-mgqrJK7GQHu7e6VaYP7V.g#0 */
+div.internal-embed,
+div.internal-embed-container,
+div.internal-embed .markdown-embed-content,
+div.internal-embed .markdown-embed {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+}
+
+/* Ensure the left border is preserved */
+div.internal-embed .markdown-embed {
+    border-left: inherit !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+}
+
+/* Ensure block-level elements display correctly */
+div.internal-embed .markdown-embed-content p,
+div.internal-embed .markdown-embed-content h1,
+div.internal-embed .markdown-embed-content h2,
+div.internal-embed .markdown-embed-content h3,
+div.internal-embed .markdown-embed-content h4,
+div.internal-embed .markdown-embed-content h5,
+div.internal-embed .markdown-embed-content h6,
+div.internal-embed .markdown-embed-content ul,
+div.internal-embed .markdown-embed-content ol,
+div.internal-embed .markdown-embed-content blockquote,
+div.internal-embed .markdown-embed-content pre,
+div.internal-embed .markdown-embed-content code {
+    margin: 0 !important;
+    padding: 0 !important;
+}

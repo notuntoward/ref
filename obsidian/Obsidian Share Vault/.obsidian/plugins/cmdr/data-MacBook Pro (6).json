@@ -1,0 +1,64 @@
+{
+  "confirmDeletion": true,
+  "showAddCommand": true,
+  "debug": false,
+  "editorMenu": [],
+  "fileMenu": [
+    {
+      "id": "open-with-default-app:open",
+      "icon": "lucide-arrow-up-right",
+      "name": "Open in default app",
+      "mode": "any"
+    }
+  ],
+  "leftRibbon": [
+    {
+      "id": "obsidian-daily-note-outline:daily-note-outline-open",
+      "icon": "align-center",
+      "name": "Daily Note Outline: Open Outline",
+      "mode": "54bff91863930610"
+    },
+    {
+      "id": "obsidian-custom-frames:open-custom-frames-google-keep",
+      "icon": "briefcase",
+      "name": "Custom Frames: Open Google Keep",
+      "mode": "any"
+    },
+    {
+      "id": "recent-files-obsidian:recent-files-open",
+      "icon": "clock-3",
+      "name": "Recent Files: Open",
+      "mode": "any"
+    },
+    {
+      "id": "obsidian-daily-note-outline:daily-note-outline-open",
+      "icon": "align-center",
+      "name": "Daily Note Outline: Open Outline",
+      "mode": "any"
+    }
+  ],
+  "rightRibbon": [],
+  "titleBar": [],
+  "statusBar": [],
+  "pageHeader": [],
+  "macros": [],
+  "explorer": [],
+  "hide": {
+    "statusbar": [],
+    "leftRibbon": [
+      "PDF++: Toggle auto-focus",
+      "PDF++: Toggle auto-paste"
+    ]
+  },
+  "spacing": 8,
+  "advancedToolbar": {
+    "rowHeight": 48,
+    "rowCount": 1,
+    "spacing": 0,
+    "buttonWidth": 48,
+    "columnLayout": false,
+    "mappedIcons": [],
+    "tooltips": false,
+    "heightOffset": 0
+  }
+}
