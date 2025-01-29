@@ -1,0 +1,350 @@
+{
+  "main": {
+    "id": "d59ea0976aa1fa2a",
+    "type": "split",
+    "children": [
+      {
+        "id": "611605e2e96dfb99",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "848296823d102b49",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lit/refwrangle/Perplexity Spaces.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Perplexity Spaces"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "762a4a4d8d2b4628",
+    "type": "split",
+    "children": [
+      {
+        "id": "030d8d20389bf2a8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7ee2628547aab10f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "677d4c9a7cddb77b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "92cbc131a99c4a14",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          },
+          {
+            "id": "989422cecdd72fec",
+            "type": "leaf",
+            "state": {
+              "type": "daily-note-outline",
+              "state": {
+                "activeSet": 0,
+                "activeGranularity": 0
+              },
+              "icon": "calendar-clock",
+              "title": "Daily Note Outline"
+            }
+          },
+          {
+            "id": "fa6de533ff8a3dc8",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {},
+              "icon": "clock",
+              "title": "Recent Files"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 581.5
+  },
+  "right": {
+    "id": "a12d2a035d4e7e94",
+    "type": "split",
+    "children": [
+      {
+        "id": "f94f3d4120fd5429",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "76f4c03f208eb0cc",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "lit/lit_notes/Agarwal21TspDBTimeSeries.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Agarwal21TspDBTimeSeries"
+            }
+          },
+          {
+            "id": "c1ba2cf93293bfcb",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "combined_articles.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from combined_articles"
+            }
+          },
+          {
+            "id": "2964e49ee92df99d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "d6f07a2e6232de3a",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "654c5fb15d9b4b80",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "lit/lit_notes/Shi19optBattCtrlAging.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Shi19optBattCtrlAging"
+            }
+          },
+          {
+            "id": "93567fe9a6492699",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+          },
+          {
+            "id": "5b68815d8cd2778e",
+            "type": "leaf",
+            "state": {
+              "type": "Strange New Worlds",
+              "state": {},
+              "icon": "file-digit",
+              "title": "Strange New Worlds"
+            }
+          },
+          {
+            "id": "0ce6645564590f39",
+            "type": "leaf",
+            "state": {
+              "type": "file-properties",
+              "state": {
+                "file": "lit/lit_notes/Shi19optBattCtrlAging.md"
+              },
+              "icon": "lucide-info",
+              "title": "File properties for Shi19optBattCtrlAging"
+            }
+          },
+          {
+            "id": "21439ac381cb7e76",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-chat-view",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "b22564fa7dd3a798",
+            "type": "leaf",
+            "state": {
+              "type": "custom-frames-google-keep",
+              "state": {},
+              "icon": "lucide-files",
+              "title": "Google Keep"
+            }
+          },
+          {
+            "id": "53b0b5d322f741f6",
+            "type": "leaf",
+            "state": {
+              "type": "Strange New Worlds",
+              "state": {},
+              "icon": "file-digit",
+              "title": "Strange New Worlds"
+            }
+          },
+          {
+            "id": "6a070509c455ce95",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {},
+              "icon": "spreadsheet",
+              "title": "Advanced Tables"
+            }
+          }
+        ],
+        "currentTab": 6
+      }
+    ],
+    "direction": "horizontal",
+    "width": 511.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "command-palette:Open command palette": false,
+      "markdown-importer:Open format converter": false,
+      "zk-prefixer:Create new unique note": false,
+      "workspaces:Manage workspace layouts": false,
+      "media-extended:Open media": false,
+      "templater-obsidian:Templater": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian42-text-transporter:Text Transporter": false,
+      "darlal-switcher-plus:Open in Headings Mode": false,
+      "darlal-switcher-plus:Open Symbols for the active editor": false,
+      "obsidian-kanban:Create new board": false,
+      "omnisearch:Omnisearch": false,
+      "pdf-plus:PDF++: Toggle auto-copy": false,
+      "pdf-plus:PDF++: Toggle auto-focus": false,
+      "pdf-plus:PDF++: Toggle auto-paste": false,
+      "mermaid-tools:Open Mermaid Toolbar": false,
+      "obsidian-custom-frames:Open Google Calendar": false,
+      "obsidian-importer:Open Importer": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "cmdr:Daily Note Outline: Open Outline": false,
+      "cmdr:Custom Frames: Open Google Keep": false,
+      "cmdr:Recent Files: Open": false,
+      "cmdr:Commander: Open Commander Settings": false,
+      "cmdr:Custom Frames: Open Google Calendar": false,
+      "cmdr:Outline: Open outline of the current file": false,
+      "cmdr:Bookmark Show": false,
+      "obsidian-local-images-plus:Local Images Plus  0.16.2\r\nLocalize attachments (plugin folder)": false
+    }
+  },
+  "active": "848296823d102b49",
+  "lastOpenFiles": [
+    "lit/refwrangle/Zotero to Obsidian to RAG.md",
+    "Lit Note Summary D Folder.md",
+    "Friends and Family",
+    "Work/VPP ideas/Research Ideas/University Forecasting Research Search.md",
+    "Work/VPP ideas/Research Ideas/University Pick Process Mermaid Diagram.md",
+    "Work/VPP ideas/Research Ideas/Top N Forcasting Unis.md",
+    "Work/VPP ideas/Research Ideas/Research Group Ideas.md",
+    "work/QCELLS/Research Ideas/tmp_mehrmaid_test.md",
+    "work/QCELLS/Research Ideas/Questions for JonL.md",
+    "Work/VPP ideas/Research Ideas/Proposal docs for battery optimization.md",
+    "work/Research Group Org/attachments/e633d319569f2598a25bca268fd83958_MD5.pdf.md",
+    "work/QCELLS/Research Ideas/Microsoft Cooperation.md",
+    "work/Research Group Org/attachments",
+    "work/Research Group Org",
+    "Work/VPP ideas/Research Ideas/Algorithm Plan.md",
+    "Work/VPP ideas/Research Ideas/Conferences.md",
+    "Work/VPP ideas/AEMO/Algorithms for AEMO.md",
+    "Software Dev/Athena.md",
+    "Work/VPP ideas/CAISO/Existing CAISO Forecast Types.md",
+    "Work/VPP ideas/CAISO/Market Details (CAISO).md",
+    "Work/VPP ideas/CAISO/CAISO Papers to Start With.md",
+    "work/QCELLS/CAISO/QCELLS Plans.md",
+    "work/QCELLS/forecasting QCELLS/Forecasting Infra.md",
+    "lit/lit_notes/Shi19optBattCtrlAging.md",
+    "Politics/Political Causality/US Elections 2024.md",
+    "lit/lit_notes/Stewart24divideDemsWorkingClass.md",
+    "lit/lit_sources/Unconfirmed 791534.crdownload",
+    "lit/lit_sources/Unconfirmed 873378.crdownload",
+    "lit/lit_sources/Unconfirmed 752712.crdownload",
+    "Clippings/Opinion  It’s the Corruption, Stupid.md",
+    "lit/lit_sources/Kang24youngMaleVoters.html",
+    "lit/lit_sources/Kang24WhatsMatterYoung.html",
+    "Clippings/‘What a circus’ eligible US voters on why they didn’t vote in the 2024 presidential election.md",
+    "Clippings/Biden’s agenda had a big impact. Will history give him credit.md",
+    "Politics/Political Causality/Merged RAG Political Sources/merged_RAG_6.pdf",
+    "Politics/Political Causality/Merged RAG Political Sources/merged_RAG_5.pdf",
+    "Clippings/attachments/b0fc57e7b304dcd73cb94f5430796c72_MD5.jpg",
+    "Clippings/attachments/200771b89768a731e0093a498d407aca_MD5.svg",
+    "Clippings/attachments/375b84dd046d61d702009b3011f43f0a_MD5.avif",
+    "Clippings/attachments/6b44b399206351d6dbf5c93a9712f0f1_MD5.png",
+    "Clippings/attachments/d46b29741e5f86650dac2ef855fbc405_MD5.png",
+    "Clippings/attachments/36ca49a822b5115110107393eec98625_MD5.png",
+    "Clippings/attachments/af273d517d4c34c6353eda4ce02eec4b_MD5.png",
+    "Clippings/attachments/e5c1382554068c26dce27ca026d1778b_MD5.png",
+    "Clippings/attachments/fd7139d2865a94254aeffe2b1b3137ac_MD5.png",
+    "Clippings/attachments/aa27657537c21bba1514369b7404836a_MD5.png"
+  ]
+}

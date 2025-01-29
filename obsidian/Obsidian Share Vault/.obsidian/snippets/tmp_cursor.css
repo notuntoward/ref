@@ -1,0 +1,9 @@
+.theme-light .x-cursor, .theme-dark .x-cursor {
+    opacity: 1;
+    background: #00bbff; /* Change this to your preferred color */
+    width: 4px; /* Adjust the width as needed */
+    left: -1px;
+    top: 5px;
+    height: calc(13px + var(--cursor-height));
+    transition: opacity;
+}

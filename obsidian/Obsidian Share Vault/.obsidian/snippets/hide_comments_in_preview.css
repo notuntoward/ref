@@ -1,0 +1,9 @@
+/* In live-preview, hides all a comment line (but leaves a blank line) unless the cursor is on it.  No effect on source or view mode.
+
+ From: https://forum.obsidian.md/t/hide-comment-in-live-preview-but-not-in-source-mode/79078/2?u=scotto*/
+
+.is-live-preview .cm-line:not(.cm-active):has(.cm-comment-start, .cm-comment-end) * {
+    visibility: hidden;
+}
+
+

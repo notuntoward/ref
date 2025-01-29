@@ -1,0 +1,23 @@
+{
+  "accentColor": "",
+  "enabledCssSnippets": [
+    "Zotero-Template-2",
+    "bigEquations",
+    "checkbox",
+    "command-pallet-hotkey-color",
+    "hide_comments_not_selected",
+    "style_settings_plugin",
+    "hide_comments_unless_cursor",
+    "emacs_unordered_list_reading_mode",
+    "hide_comments_in_preview",
+    "dark_line",
+    "extended-colorschemes",
+    "embed_remove_indent",
+    "embed_remove_vert_black_space"
+  ],
+  "theme": "moonstone",
+  "cssTheme": "AnuPpuccin",
+  "baseFontSize": 15,
+  "textFontFamily": "Consolas",
+  "nativeMenus": false
+}

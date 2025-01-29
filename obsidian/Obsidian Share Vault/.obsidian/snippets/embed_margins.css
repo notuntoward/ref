@@ -1,0 +1,6 @@
+/* From: cargo culted from Copilot
+ Seems to have no effect on embeds */
+.embedded {
+    margin: 0px;
+    padding: 0px;
+}

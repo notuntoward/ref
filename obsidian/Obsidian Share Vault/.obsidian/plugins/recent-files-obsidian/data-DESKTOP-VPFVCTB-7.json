@@ -1,0 +1,207 @@
+{
+  "recentFiles": [
+    {
+      "basename": "CAISO Papers to Start With",
+      "path": "work/CAISO/CAISO Papers to Start With.md"
+    },
+    {
+      "basename": "Zygmunt17fastHyperband",
+      "path": "lit/lit_notes/Zygmunt17fastHyperband.md"
+    },
+    {
+      "basename": "Zarnikau20determElecPriceMISO",
+      "path": "lit/lit_notes/Zarnikau20determElecPriceMISO.md"
+    },
+    {
+      "basename": "CAISO ideas",
+      "path": "work/CAISO/CAISO ideas.md"
+    },
+    {
+      "basename": "Existing CAISO Forecast Types",
+      "path": "work/CAISO/Existing CAISO Forecast Types.md"
+    },
+    {
+      "basename": "FERC24understandParticipCAISO",
+      "path": "lit/lit_notes/FERC24understandParticipCAISO.md"
+    },
+    {
+      "basename": "Kavrelishvili23priceFrcstCAISOthesis",
+      "path": "lit/lit_notes/Kavrelishvili23priceFrcstCAISOthesis.md"
+    },
+    {
+      "basename": "2024-07-24",
+      "path": "dailies/2024-07-24.md"
+    },
+    {
+      "basename": "FERC24understandParticipCAISO",
+      "path": "lit/lit_sources/FERC24understandParticipCAISO.pdf"
+    },
+    {
+      "basename": "Fattah20elecMktOvrvwDA_ID",
+      "path": "lit/lit_notes/Fattah20elecMktOvrvwDA_ID.md"
+    },
+    {
+      "basename": "Guan23electMktTradingML",
+      "path": "lit/lit_notes/Guan23electMktTradingML.md"
+    },
+    {
+      "basename": "Manguin16elecPricePredCAISO",
+      "path": "lit/lit_notes/Manguin16elecPricePredCAISO.md"
+    },
+    {
+      "basename": "Bahareh23priceFrcstCAISOidAndDA",
+      "path": "lit/lit_notes/Bahareh23priceFrcstCAISOidAndDA.md"
+    },
+    {
+      "basename": "2024-07-23",
+      "path": "dailies/2024-07-23.md"
+    },
+    {
+      "basename": "2024-07-19",
+      "path": "dailies/2024-07-19.md"
+    },
+    {
+      "basename": "Obsidian Sync",
+      "path": "Obsidian/Obsidian Sync.md"
+    },
+    {
+      "basename": "Handling Concept Drift in Forecasting",
+      "path": "topic/Handling Concept Drift in Forecasting.md"
+    },
+    {
+      "basename": "Salwala22distribIncrmntlMLbigTS",
+      "path": "lit/lit_notes/Salwala22distribIncrmntlMLbigTS.md"
+    },
+    {
+      "basename": "Handling",
+      "path": "topic/Handling.md"
+    },
+    {
+      "basename": "Market Rule Changes (from View)",
+      "path": "work/priceFrcstAEMO/Source Info/AEMO Market and Data/Market Rule Changes (from View).md"
+    },
+    {
+      "basename": "Market rule changes - Kanyawee Keeratimahat - Confluence-20231009223332568",
+      "path": "work/priceFrcstAEMO/Source Info/AEMO Market and Data/Market rule changes - Kanyawee Keeratimahat - Confluence-20231009223332568.webp"
+    },
+    {
+      "basename": "AEMO Market Timing",
+      "path": "work/priceFrcstAEMO/Source Info/AEMO Market and Data/AEMO Market Timing.md"
+    },
+    {
+      "basename": "Liu23conceptDriftGlobalTSfrcst",
+      "path": "lit/lit_notes/Liu23conceptDriftGlobalTSfrcst.md"
+    },
+    {
+      "basename": "LightGBM",
+      "path": "topic/LightGBM.md"
+    },
+    {
+      "basename": "Salwala22distribIncrmntlMLbigTS",
+      "path": "lit/lit_sources/Salwala22distribIncrmntlMLbigTS.pdf"
+    },
+    {
+      "basename": "Liu23conceptDriftGlobalTSfrcst",
+      "path": "lit/lit_sources/Liu23conceptDriftGlobalTSfrcst.pdf"
+    },
+    {
+      "basename": "Hyperparameter Tuning",
+      "path": "topic/Hyperparameter Tuning.md"
+    },
+    {
+      "basename": "Concept Drift and Adaptation",
+      "path": "topic/Concept Drift and Adaptation.md"
+    },
+    {
+      "basename": "Model Stacking",
+      "path": "topic/Model Stacking.md"
+    },
+    {
+      "basename": "2024-06-18",
+      "path": "dailies/2024-06-18.md"
+    },
+    {
+      "basename": "2024-03-28",
+      "path": "dailies/2024-03-28.md"
+    },
+    {
+      "basename": "2024-07-18",
+      "path": "dailies/2024-07-18.md"
+    },
+    {
+      "basename": "Maduskar23unsuperDriftDetUDDT",
+      "path": "lit/lit_notes/Maduskar23unsuperDriftDetUDDT.md"
+    },
+    {
+      "basename": "Dancker24dontNeedDprLrnTSfrcst",
+      "path": "lit/lit_notes/Dancker24dontNeedDprLrnTSfrcst.md"
+    },
+    {
+      "basename": "3Blue1Brown24WvizIntroGPTtransfrmr",
+      "path": "lit/lit_notes/3Blue1Brown24WvizIntroGPTtransfrmr.md"
+    },
+    {
+      "basename": "2024-07-06",
+      "path": "dailies/2024-07-06.md"
+    },
+    {
+      "basename": "Kanban-1721334698746",
+      "path": "lit/Kanban-1721334698746.md"
+    },
+    {
+      "basename": "Challu22NHiTSNeuralHierarchical",
+      "path": "lit/lit_notes/Challu22NHiTSNeuralHierarchical.md"
+    },
+    {
+      "basename": "2024-07-04",
+      "path": "dailies/2024-07-04.md"
+    },
+    {
+      "basename": "Causality",
+      "path": "topic/Causality.md"
+    },
+    {
+      "basename": "2024-07-17",
+      "path": "dailies/2024-07-17.md"
+    },
+    {
+      "basename": "Dancker24dontNeedDprLrnTSfrcst",
+      "path": "lit/lit_sources/Dancker24dontNeedDprLrnTSfrcst.pdf"
+    },
+    {
+      "basename": "2023-10-09",
+      "path": "dailies/2023-10-09.md"
+    },
+    {
+      "basename": "2023-10-05",
+      "path": "dailies/2023-10-05.md"
+    },
+    {
+      "basename": "Oreshkin20neuraBasisFrcstNBEATS",
+      "path": "lit/lit_notes/Oreshkin20neuraBasisFrcstNBEATS.md"
+    },
+    {
+      "basename": "2024-07-16",
+      "path": "dailies/2024-07-16.md"
+    },
+    {
+      "basename": "Chen24multiConceptDriftVrblSlideWin",
+      "path": "lit/lit_notes/Chen24multiConceptDriftVrblSlideWin.md"
+    },
+    {
+      "basename": "24OpenaiTiktoken",
+      "path": "lit/lit_notes/24OpenaiTiktoken.md"
+    },
+    {
+      "basename": "Lit Note Summary DBF",
+      "path": "lit/Lit Note Summary DBF.md"
+    },
+    {
+      "basename": "Optimization for Energy Markets",
+      "path": "topic/Optimization for Energy Markets.md"
+    }
+  ],
+  "omittedPaths": [],
+  "maxLength": null,
+  "openType": "tab"
+}

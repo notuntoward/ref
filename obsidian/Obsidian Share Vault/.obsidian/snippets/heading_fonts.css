@@ -1,0 +1,21 @@
+/* Make headers take up vertical space */
+
+/* Helpful: https://forum.obsidian.md/t/setting-to-reduce-huge-h1-heading-font-size/45511/7?u=scotto */
+/* Smaller sizes */
+body {
+  --h1-size: 1.50em;
+  --h2-size: 1.30em;
+  --h3-size: 1.20em;
+  --h4-size: 1.12em;
+  --h5-size: 1.12em;
+  --h6-size: 1.12em;
+}
+
+/* Helpful: https://forum.obsidian.md/t/huge-spacing-between-headers-and-text/41749/2?u=scotto */
+/* Smaller vertical margins */
+/* Target headings in both editing and preview modes */
+.mod-cm6 .cm-editor .HyperMD-header, .markdown-reading-view .markdown-preview-section :is(h1,h2,h3,h4,h5,h6) {
+    line-height: 1em !important;
+    margin:2px 0px 2px 0px !important;
+    padding: 1px 0px 2px 0px !important;
+}

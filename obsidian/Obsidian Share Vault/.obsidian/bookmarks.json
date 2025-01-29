@@ -1,0 +1,118 @@
+{
+  "items": [
+    {
+      "type": "file",
+      "ctime": 1710007259364,
+      "path": "Writing/Tired Words and Phrases.md"
+    },
+    {
+      "type": "group",
+      "ctime": 1712213291440,
+      "items": [
+        {
+          "type": "file",
+          "ctime": 1710007362892,
+          "path": "Obsidian/TODO Obsidian.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1710007374493,
+          "path": "Obsidian/Default Obsidian Editing Hotkeys.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1710007387123,
+          "path": "Obsidian/Current Obsidian Commands and Hotkeys.md"
+        }
+      ],
+      "title": "Obsidian"
+    },
+    {
+      "type": "group",
+      "ctime": 1712213338896,
+      "items": [
+        {
+          "type": "file",
+          "ctime": 1710007332239,
+          "path": "House Projects/Heat Pump Water Heater.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1696623650448,
+          "path": "House Projects/House Rewire/House Rewire Permit Procedure Steps.md",
+          "subpath": "#^e7f88a"
+        }
+      ],
+      "title": "House"
+    },
+    {
+      "type": "group",
+      "ctime": 1712213212617,
+      "items": [
+        {
+          "type": "file",
+          "ctime": 1710007225286,
+          "path": "Work/VPP ideas/Generative AI talk/Gen AI Talk Ideas.md"
+        },
+        {
+          "type": "folder",
+          "ctime": 1711052829902,
+          "path": "Work/VPP ideas/Generative AI talk"
+        }
+      ],
+      "title": "Gen AI"
+    },
+    {
+      "type": "group",
+      "ctime": 1712213385921,
+      "items": [
+        {
+          "type": "file",
+          "ctime": 1712092500915,
+          "path": "lit/Lit Note Summary.md"
+        },
+        {
+          "type": "folder",
+          "ctime": 1712092548305,
+          "path": "lit/lit_notes"
+        },
+        {
+          "type": "folder",
+          "ctime": 1710023406240,
+          "path": "lit"
+        }
+      ],
+      "title": "Lit"
+    },
+    {
+      "type": "file",
+      "ctime": 1714071197639,
+      "path": "Work/VPP ideas/Research Ideas/Research Group Ideas.md"
+    },
+    {
+      "type": "file",
+      "ctime": 1732819445059,
+      "path": "Politics/Political Causality/US Elections 2024.md"
+    },
+    {
+      "type": "file",
+      "ctime": 1733169226749,
+      "path": "Work/Between Jobs/QCELLs offboarding/WA Unemployment.md"
+    },
+    {
+      "type": "file",
+      "ctime": 1733973563411,
+      "path": "lit/refwrangle/Zotero to Obsidian to RAG.md"
+    },
+    {
+      "type": "folder",
+      "ctime": 1736885201853,
+      "path": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)"
+    },
+    {
+      "type": "file",
+      "ctime": 1737007455090,
+      "path": "Politics/Political Causality/Meta Info from political causality literature review.md"
+    }
+  ]
+}

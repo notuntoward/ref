@@ -1,0 +1,14 @@
+/* Remove task Done strikethough.  The Style Settings plugin can do this for the Minimal theme, but not for Gitsidian, which I prefer.
+
+   The approach below looks like it would just remove all text decoration from tasks, but it doesn't: you can still bold, etc. within tasks, and also, when you click the checkbox, the task text is very slightly greyed out, which I like.
+
+   From: https://forum.obsidian.md/t/option-to-disable-strikethrough-for-checked-todo-items/45431/2?u=scotto */
+
+/* <<------------- Hide Strikethrough in READING VIEW ----------------->> */
+	.markdown-preview-view ul>li.task-list-item {
+		text-decoration: none;
+	}
+/* <<------------- Hide Strikethrough in LIVE PREVIEW ----------------->> */
+	.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="x"] {
+		text-decoration: none;
+	}
