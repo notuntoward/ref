@@ -15,14 +15,27 @@
               "state": {
                 "file": "tmp_new_cites_perplexity_example.md",
                 "mode": "source",
-                "backlinks": false,
-                "source": false
+                "source": false,
+                "backlinks": false
               },
               "icon": "lucide-file",
               "title": "tmp_new_cites_perplexity_example"
             }
+          },
+          {
+            "id": "3e99f899351c2d66",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.8.3"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.8.3"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -41,7 +54,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -299,7 +313,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "848296823d102b49",
+  "active": "3e99f899351c2d66",
   "lastOpenFiles": [
     "lit/refwrangle/Perplexity Details.md",
     "lit/lit_sources/25PopularExerciseSupplement.html",
