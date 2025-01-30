@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "All Tasks Summary.md",
+                "file": "Obsidian/Obsidian and GIT Repo.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "All Tasks Summary"
+              "title": "Obsidian and GIT Repo"
             }
           }
         ]
@@ -301,6 +301,10 @@
   },
   "active": "848296823d102b49",
   "lastOpenFiles": [
+    "Obsidian/attachments/Pasted image 20250129174128.webp",
+    "Obsidian/attachments/Pasted image 20250129173055.webp",
+    "All Tasks Summary.md",
+    "Obsidian/Obsidian and GIT Repo.md",
     "lit/refwrangle/Perplexity Spaces.md",
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "Lit Note Summary D Folder.md",
@@ -327,14 +331,11 @@
     "work/QCELLS/forecasting QCELLS/Forecasting Infra.md",
     "lit/lit_notes/Shi19optBattCtrlAging.md",
     "Politics/Political Causality/US Elections 2024.md",
-    "lit/lit_notes/Stewart24divideDemsWorkingClass.md",
     "lit/lit_sources/Unconfirmed 791534.crdownload",
     "lit/lit_sources/Unconfirmed 873378.crdownload",
     "lit/lit_sources/Unconfirmed 752712.crdownload",
-    "Clippings/Opinion  It’s the Corruption, Stupid.md",
     "lit/lit_sources/Kang24youngMaleVoters.html",
     "lit/lit_sources/Kang24WhatsMatterYoung.html",
-    "Clippings/‘What a circus’ eligible US voters on why they didn’t vote in the 2024 presidential election.md",
     "Politics/Political Causality/Merged RAG Political Sources/merged_RAG_6.pdf",
     "Politics/Political Causality/Merged RAG Political Sources/merged_RAG_5.pdf",
     "Clippings/attachments/b0fc57e7b304dcd73cb94f5430796c72_MD5.jpg",
@@ -345,7 +346,6 @@
     "Clippings/attachments/36ca49a822b5115110107393eec98625_MD5.png",
     "Clippings/attachments/af273d517d4c34c6353eda4ce02eec4b_MD5.png",
     "Clippings/attachments/e5c1382554068c26dce27ca026d1778b_MD5.png",
-    "Clippings/attachments/fd7139d2865a94254aeffe2b1b3137ac_MD5.png",
-    "Clippings/attachments/aa27657537c21bba1514369b7404836a_MD5.png"
+    "Clippings/attachments/fd7139d2865a94254aeffe2b1b3137ac_MD5.png"
   ]
 }
