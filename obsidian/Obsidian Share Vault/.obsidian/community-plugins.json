@@ -67,5 +67,6 @@
   "notice-logger",
   "orgmode-cm6",
   "instant-above-divider",
-  "obsidian-meta-bind-plugin"
+  "obsidian-meta-bind-plugin",
+  "obsidian-git"
 ]

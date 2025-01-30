@@ -1,0 +1,74 @@
+#+STARTUP: latexpreview
+
+* test
+  
+\[
+e^{i\pi} = -1
+\]
+
+\[
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+\]
+
+* test 2
+
+Within emacs numbered equations are always (1), but they'll be correctly numbered in exported latex doc pdf.
+
+Some text above numbered equation on its own line:
+
+\begin{equation}                      
+y=\sqrt{b}                            
+\end{equation}                        
+
+Some text below equation.
+
+\begin{equation}                      
+y=\sin{b}                            
+\end{equation}                        
+
+* here's mixed text and equations, unnumbered equations on their own lines
+  
+If $a^2=b^{e^{i\theta}}$ and \( b=2 \), then the solution must be
+either $$ a=+\sqrt{2} $$ or \[ a=-\sqrt{2} \].  
+
+* a new numbered equ number 
+
+  \begin{equation}                      
+y=\sqrt{b}                            
+\end{equation}                        
+
+* better equ. numbers in org mode
+  From: https://kitchingroup.cheme.cmu.edu/blog/2016/11/07/Better-equation-numbering-in-LaTeX-fragments-in-org-mode/
+
+  *MUST PUT LISP ON KITCHIN PAGE INTO .EMACS FOR THIS*
+  
+   Here are some example equations to see if it works (/almost but not quite/).
+
+   Below adapted from Kitchin example org file.
+
+This should be numbered (4)
+\begin{equation} \int y^2 dx \end{equation}
+
+This is a numbered equation with a custom number. This should have (E1) as the number.
+\begin{equation}\tag{E1} \int x^2 dx \end{equation}
+
+But equation* is not numbered
+\begin{equation*} \int x^2 dx \end{equation*}
+
+LaTeX align environments are numbered. The first line is (5), the second line is not numbered (because we put \nonumber in the line), and the third line is (6).
+\begin{align} a = 5 \\ b=6 \nonumber \\ c = 8 \end{align}
+
+But align* environments are not numbered.
+\begin{align*} a = 5 \\ b=6 \end{align*}
+
+This should be numbered (7) (but it's not).
+\begin{equation} \int x^4 dx \end{equation}
+
+These should be numbered (8), (9) and (10) (but aren't b/c equ above is wrong).
+\begin{align} a = 5 \\ b=6 \\ c = 8 \end{align}
+
+This should be numbered with (E2).
+\begin{equation}\tag{E2} \int x^2 dx \end{equation}
+
+And this should be numbered (11) (but isn't b/c above equs are wrong).
+\begin{equation} \int x^2 dx \end{equation}
