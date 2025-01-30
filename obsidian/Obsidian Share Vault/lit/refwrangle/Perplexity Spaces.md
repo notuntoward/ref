@@ -1,14 +1,15 @@
 ---
 created date: 2024-12-15T14:05:38-08:00
-modified date: 2024-12-15T14:07:13-08:00
+modified date: 2025-01-29T16:58:31-08:00
 ---
 A [[Retrieval Augmented Generation (RAG)]] system comparable to Google's [[NotebookLM|NotebookLM]]
 ### My uses
 
-#### Refwrangle
+#### Refwrangle uses for Perplexity Spaces
 I'm going to save my perplexity searches in a Space, so that I don't lose them if my browser crashes and loses all my perplexity tabs.  
 - I'm probably going to save them as markdown and put them in obsidian (but not allow them to be AI'ed by Smart Connections
-- [ ] Then I'll edit them to replace the numbered references with referencesI've downloaded into my zotero DB (and have made obsidian)
+- [ ] @ Then I'll edit them to replace the numbered references with references items I've downloaded into my zotero DB
+	- [ ] ? Is this a zotero citekey or an obsidian zotero note?
 ### Limitations
 Perplexity Spaces have several restrictions and limitations regarding file uploads and queries:
 
