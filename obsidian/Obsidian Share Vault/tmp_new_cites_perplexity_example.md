@@ -1,3 +1,6 @@
+---
+modified date: 2025-01-30T09:34:21-08:00
+---
 Corporations today employ a variety of modern techniques to measure and manage their public image. These methods are designed to assess brand perception, track changes over time, and identify factors influencing shifts in public sentiment. Here's an overview of these techniques, their frequency of updates, and how companies analyze the causes of changes in public image:
 
 ## **Modern Techniques to Measure Public Image**
@@ -50,3 +53,62 @@ When a shift in public image occurs, corporations use several techniques to dete
    - Customer service logs, employee feedback, and operational audits may reveal internal factors contributing to negative perceptions (e.g., poor service quality) [[Mohamed24brandPerceptionChng]] [49].
 
 In conclusion, corporations utilize a mix of advanced analytics tools and traditional surveys to measure their public image comprehensively. They frequently update these insights based on industry needs and employ sophisticated methods like sentiment analysis and anomaly detection to uncover the root causes of changes in perception. These efforts not only safeguard reputation but also align branding strategies with financial performance goals.
+
+Citations:
+[1] https://www.quantilope.com/resources/what-is-brand-value-and-how-to-measure
+[2] https://www.meltwater.com/en/blog/reputation-measurement
+[3] https://brand24.com/blog/brand-tracking/
+[4] https://zorgle.co.uk/how-a-strong-brand-image-impacts-a-companys-financial-performance/
+[5] https://www.hanoverresearch.com/insights-blog/corporate/brand-tracking-surveys-guide/
+[6] https://www.groupcaliber.com/brand-tracking-101-what-every-business-needs-to-know-for-long-term-success/
+[7] https://pmc.ncbi.nlm.nih.gov/articles/PMC5095155/
+[8] https://vorecol.com/blogs/blog-the-impact-of-realtime-feedback-on-corporate-reputation-and-brand-image-172149
+[9] https://pure.manchester.ac.uk/ws/portalfiles/portal/84023663/FULL_TEXT.PDF
+[10] https://pmc.ncbi.nlm.nih.gov/articles/PMC9167012/
+[11] https://www.mdpi.com/2076-3417/9/16/3336
+[[Quantilope25brandTrackingGuide]] https://www.quantilope.com/resources/guide-to-brand-tracking
+[13] https://pure.roehampton.ac.uk/ws/files/1360152/Conceptualizing_and_Measuring_CEO_Brand_Image_AAM.pdf
+[14] https://www.ijitee.org/wp-content/uploads/papers/v8i6s/F61030486S19.pdf
+[15] https://www.researchgate.net/publication/233717024_How_to_measure_brand_image_a_reasoned_review
+[16] https://prlab.co/blog/csr-and-public-relations/
+[17] https://www.linkedin.com/advice/3/what-most-effective-ways-measure-corporate-u1ode
+[[Krysiak-Adamczyk25brandSentimAnlyss]] https://survicate.com/blog/brand-sentiment-analysis/
+[19] https://www.channelfutures.com/regulation-compliance/5-ways-to-improve-your-company-s-image
+[20] https://www.driveresearch.com/market-research-company-blog/how-to-conduct-a-corporate-image-study-market-research-company/
+[[Wolanin24brandSentimentCare]] https://brand24.com/blog/brand-sentiment/
+[22] https://www.mackenziecorp.com/4-brand-development-projects-for-2025/
+[23] https://www.3epr.com/public-relations-kpis-you-should-be-measuring-in-2025/
+[24] https://www.pewresearch.org/internet/2021/02/18/experts-say-the-new-normal-in-2025-will-be-far-more-tech-driven-presenting-more-big-challenges/
+[25] https://www.mightyroar.com/blog/promotion-profit
+[26] https://ijecm.co.uk/wp-content/uploads/2016/03/434.pdf
+[27] https://www.inputkit.io/en/blog/bad-brand-image-reputation-9-causes-impacts/
+[28] https://www.forbes.com/councils/forbescommunicationscouncil/2023/12/05/maximizing-marketing-profit-and-loss-statements-roi-measurement-strategies/
+[29] https://kellercenter.hankamer.baylor.edu/news/story/2020/secret-linking-csr-financial-profitability
+[30] https://www.brandtastic1.com/blog/companys-image-impact-business/
+[31] https://agicap.com/en/article/profit-and-loss-forecast/
+[32] http://www.diva-portal.org/smash/get/diva2:1331409/FULLTEXT01.pdf
+[33] https://www.linkedin.com/advice/3/how-can-you-determine-financial-impact-rebranding
+[[Mathew21socialMediaToolsTop23]] https://www.meltwater.com/en/blog/top-social-media-monitoring-tools
+[35] https://www.surveymonkey.com/mp/brand-image/
+[36] https://www.sprinklr.com/blog/brand-monitoring-tools/
+[[Eskimi24brandMetrics8]] https://www.eskimi.com/blog/brand-metrics
+[38] https://www.qualtrics.com/experience-management/brand/brand-tracking-guide/
+[39] https://www.pemavor.com/top-brand-monitoring-tools-that-will-transform-your-business/
+[40] https://www.ronsela.com/brand-measurement/
+[[HighFrequencyBrandTracking]] https://blog.tapresearch.com/high-frequency-brand-tracking
+[42] https://youscan.io/blog/social-media-monitoring-tools/
+[43] https://www.bestviso.com/en/brandimage/
+[[Mohamed2monitorToolsPR]] https://www.aimtechnologies.co/pr-monitoring-tools-enhancing-your-public-relations-strategy/
+[[Mohamed24brandPerceptionChng]] https://www.aimtechnologies.co/changing-brand-perception-strategies-and-impact/
+[46] https://www.forbes.com/councils/forbescommunicationscouncil/2019/12/13/10-smart-techniques-for-dealing-with-public-image-disasters/
+[47] https://dto-research.com/en/current/professional-articles/391-the-image-analysis-why-it-is-important-for-companies-to-address-their-brand-s-self-image-and-external-image
+[48] https://www.forbes.com/sites/forbesagencycouncil/2016/06/03/five-steps-to-change-the-perception-of-your-brand/
+[49] https://www.agilitypr.com/pr-news/public-relations/4-simple-ways-to-improve-your-public-image/
+[50] https://hbr.org/2012/09/better-customer-insight-in-real-time
+[51] https://www.radarr.com/blog/ultimate-guide-to-brand-perception/
+[[Newton23importanceBrandPercept]] https://www.brandwatch.com/blog/marketing-the-importance-of-brand-perception/
+[53] https://pmc.ncbi.nlm.nih.gov/articles/PMC1301708/
+[54] https://www.researchgate.net/figure/Quantitative-comparison-of-visual-tracking-methods-and-our-proposed-method-based-on_tbl4_323159767
+
+---
+Answer from Perplexity: pplx.ai/share
