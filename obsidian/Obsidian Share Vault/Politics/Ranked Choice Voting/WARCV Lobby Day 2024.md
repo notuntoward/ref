@@ -15,6 +15,8 @@ Fairvote WA's lobbying day
 - logistics email: [Gmail](https://mail.google.com/mail/u/0/#search/natalie.morgan%40fairvotewa.org/FMfcgzQZSjZnCNLKwmffSMRZxXbQCZdB)
 - RCV roadmap: [Roadmap to RCV: Lobby Day 2025!](https://www.youtube.com/watch?v=LsJElpJzd5A)
 - Committee discussion video: [House State Government & Tribal Relations - TVW](https://tvw.org/video/house-state-government-tribal-relations-2025011558/?eventID=2025011558)
+- legislators on committee to call who must release the RCV bill:[Gmail](https://mail.google.com/mail/u/0/#inbox/FMfcgzQZSsKsZQQSJsNtMQsZBXBwPJWQ)
+- Agenda of lobby day: [Lobby Day &#39;25 | Agenda - Google Docs](https://docs.google.com/document/d/15GiFbCxmLo_K7eSOfqftanFFULG1F37LU2LoWaYyL1A/edit?tab=t.0)
 ## Ride Share
 - [Carpool and Ride Share Signup Sheet for your Group.](https://www.groupcarpool.com/t/txja0m?ms=20250107LobbyDaySignups3rdEmail&emci=c1f1b31c-ccd1-ef11-88d0-0022482a9d92&emdi=9ca48892-d7d1-ef11-88d0-0022482a9d92&ceid=3762619)
 - I'm signed up for a 5am start in Marzieh Barnes's car on 2/5/25, riding with Rachael Snell and Caroline Sayre (on the way back)
