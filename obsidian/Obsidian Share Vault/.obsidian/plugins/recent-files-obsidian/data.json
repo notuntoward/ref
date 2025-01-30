@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "Mohamed24brandPerceptionChng",
+      "path": "lit/lit_notes/Mohamed24brandPerceptionChng.md"
+    },
+    {
+      "basename": "Mohamed24brandPerceptionChng",
+      "path": "lit/lit_sources/Mohamed24brandPerceptionChng.html"
+    },
+    {
       "basename": "tmp_new_cites_perplexity_example",
       "path": "tmp_new_cites_perplexity_example.md"
     },
@@ -191,10 +199,6 @@
     {
       "basename": "Probabilistic Forecast Scoring",
       "path": "Topic Notes/Probabilistic Forecast Scoring.md"
-    },
-    {
-      "basename": "Price Forecast Normalization",
-      "path": "Topic Notes/Price Forecast Normalization.md"
     }
   ],
   "omittedPaths": [],
