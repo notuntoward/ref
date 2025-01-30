@@ -1,20 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "tmp_perplex_MI",
-      "path": "tmp_perplex_MI.md"
-    },
-    {
-      "basename": "download",
-      "path": "download.md"
+      "basename": "tmp_perplex_dialog_with_files",
+      "path": "tmp_perplex_dialog_with_files.md"
     },
     {
       "basename": "tmp_new_cites_perplexity_example",
       "path": "tmp_new_cites_perplexity_example.md"
     },
     {
-      "basename": "tmp_perplex_dialog_with_files",
-      "path": "tmp_perplex_dialog_with_files.md"
+      "basename": "Lit Note Summary D Folder",
+      "path": "Lit Note Summary D Folder.md"
+    },
+    {
+      "basename": "download",
+      "path": "download.md"
+    },
+    {
+      "basename": "tmp_perplex_raw_share",
+      "path": "tmp_perplex_raw_share.md"
     },
     {
       "basename": "WARCV Lobby Day 2024",
@@ -35,10 +39,6 @@
     {
       "basename": "Zotero to Obsidian to RAG",
       "path": "lit/refwrangle/Zotero to Obsidian to RAG.md"
-    },
-    {
-      "basename": "Lit Note Summary D Folder",
-      "path": "Lit Note Summary D Folder.md"
     },
     {
       "basename": "University Forecasting Research Search",
@@ -195,10 +195,6 @@
     {
       "basename": "Price Forecast Normalization",
       "path": "Topic Notes/Price Forecast Normalization.md"
-    },
-    {
-      "basename": "Price Curve Prediction",
-      "path": "Topic Notes/Price Curve Prediction.md"
     }
   ],
   "omittedPaths": [],

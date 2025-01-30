@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tmp_perplex_MI.md",
-                "mode": "source",
+                "file": "tmp_perplex_dialog_with_files.md",
+                "mode": "preview",
                 "backlinks": false,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "tmp_perplex_MI"
+              "title": "tmp_perplex_dialog_with_files"
             }
           }
         ]
@@ -301,11 +301,13 @@
   },
   "active": "848296823d102b49",
   "lastOpenFiles": [
-    "download.md",
     "tmp_perplex_MI.md",
-    "Unconfirmed 409310.crdownload",
-    "tmp_new_cites_perplexity_example.md",
     "tmp_perplex_dialog_with_files.md",
+    "tmp_new_cites_perplexity_example.md",
+    "Lit Note Summary D Folder.md",
+    "download.md",
+    "tmp_perplex_raw_share.md",
+    "Unconfirmed 409310.crdownload",
     "Politics/Ranked Choice Voting/WARCV Lobby Day 2024.md",
     "lit/lit_sources/Krysiak-Adamczyk25brandSentimAnlyss.html",
     "lit/lit_sources/BrandSentimentAnalysis.html",
@@ -323,7 +325,6 @@
     "All Tasks Summary.md",
     "lit/refwrangle/Perplexity Spaces.md",
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
-    "Lit Note Summary D Folder.md",
     "Work/VPP ideas/Research Ideas/University Forecasting Research Search.md",
     "Work/VPP ideas/Research Ideas/University Pick Process Mermaid Diagram.md",
     "Work/VPP ideas/Research Ideas/Top N Forcasting Unis.md",
@@ -338,7 +339,6 @@
     "Work/VPP ideas/AEMO/Algorithms for AEMO.md",
     "Software Dev/Athena.md",
     "Work/VPP ideas/CAISO/Existing CAISO Forecast Types.md",
-    "Work/VPP ideas/CAISO/Market Details (CAISO).md",
     "Clippings/attachments/b0fc57e7b304dcd73cb94f5430796c72_MD5.jpg",
     "Clippings/attachments/200771b89768a731e0093a498d407aca_MD5.svg",
     "Clippings/attachments/375b84dd046d61d702009b3011f43f0a_MD5.avif",
