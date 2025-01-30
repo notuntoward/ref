@@ -23,7 +23,9 @@ Mutual information (MI) is a measure of the mutual dependence between two random
 
 To calculate MI from data using Python:
 
-1.  For discrete variables:```python
+1.  For discrete variables:
+   
+   ```python
     from sklearn.metrics import mutual_info_score
     
     mi = mutual_info_score(X, Y)
