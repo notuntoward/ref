@@ -1,6 +1,5 @@
 ---
-created date: 2025-01-30T14:26:20-08:00
-modified date: 2025-01-30T14:26:20-08:00
+modified date: 2025-01-30T15:24:58-08:00
 ---
 Corporations today employ a variety of modern techniques to measure and manage their public image. These methods are designed to assess brand perception, track changes over time, and identify factors influencing shifts in public sentiment. Here's an overview of these techniques, their frequency of updates, and how companies analyze the causes of changes in public image:
 
@@ -51,7 +50,7 @@ When a shift in public image occurs, corporations use several techniques to dete
    - By linking sales data or customer churn rates with sentiment trends, companies can infer the impact of specific events or campaigns on their public image [20] [25].
 
 5. **Internal Reviews**:
-   - Customer service logs, employee feedback, and operational audits may reveal internal factors contributing to negative perceptions (e.g., poor service quality) [UZQDN77L==>Mohamed24brandPerceptionChng](zotero://select/library/items/UZQDN77L) [49].
+   - Customer service logs, employee feedback, and operational audits may reveal internal factors contributing to negative perceptions (e.g., poor service quality) [[Mohamed24brandPerceptionChng]] [49].
 
 In conclusion, corporations utilize a mix of advanced analytics tools and traditional surveys to measure their public image comprehensively. They frequently update these insights based on industry needs and employ sophisticated methods like sentiment analysis and anomaly detection to uncover the root causes of changes in perception. These efforts not only safeguard reputation but also align branding strategies with financial performance goals.
 
