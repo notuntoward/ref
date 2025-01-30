@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-19T18:34:29-08:00
-modified date: 2025-01-15T10:02:06-08:00
+modified date: 2025-01-29T23:05:48-08:00
 ---
 Fairvote WA's lobbying day
 # MY LD Captain Calling Duties
