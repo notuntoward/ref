@@ -295,12 +295,14 @@
       "cmdr:Custom Frames: Open Google Calendar": false,
       "cmdr:Outline: Open outline of the current file": false,
       "cmdr:Bookmark Show": false,
-      "obsidian-local-images-plus:Local Images Plus  0.16.2\r\nLocalize attachments (plugin folder)": false
+      "obsidian-local-images-plus:Local Images Plus  0.16.2\r\nLocalize attachments (plugin folder)": false,
+      "obsidian-git:Open Git source control": false
     }
   },
   "active": "848296823d102b49",
   "lastOpenFiles": [
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
+    "lit/refwrangle/Perplexity Spaces.md",
     "Lit Note Summary D Folder.md",
     "Friends and Family",
     "Work/VPP ideas/Research Ideas/University Forecasting Research Search.md",
@@ -333,7 +335,6 @@
     "lit/lit_sources/Kang24youngMaleVoters.html",
     "lit/lit_sources/Kang24WhatsMatterYoung.html",
     "Clippings/‘What a circus’ eligible US voters on why they didn’t vote in the 2024 presidential election.md",
-    "Clippings/Biden’s agenda had a big impact. Will history give him credit.md",
     "Politics/Political Causality/Merged RAG Political Sources/merged_RAG_6.pdf",
     "Politics/Political Causality/Merged RAG Political Sources/merged_RAG_5.pdf",
     "Clippings/attachments/b0fc57e7b304dcd73cb94f5430796c72_MD5.jpg",

@@ -1,0 +1,18 @@
+old/
+org-roam/
+papers.speakerClust/
+DOE_brainstorm/
+EV adoption papers inspired by Norway/
+ltximg/
+refwrangle/bin/obsidian-clipper-main/src/side-panel.html
+refwrangle/bin/chrome_extensions/obsidian-clipper-main/src/utils/filters/trim.ts
+refwrangle/bin/chromedriver-win64.zip
+refwrangle/bin/
+refwrangle/dat/
+refwrangle/test/dat/
+refwrangle/test/node_modules/
+refwrangle/test/tmp/
+reviews/
+src/.ipynb_checkpoints/
+DistributionClustering/
+obsidian/Obsidian Share Vault/lit/lit_sources/
