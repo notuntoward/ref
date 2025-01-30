@@ -46,7 +46,7 @@ modified date: 2024-12-18T08:32:05-08:00
 %% begin Obsidian Notes %%
 ___
 
-Google's new [[Retrieval Augmented Generation (RAG)]] chatbot. Comparable, maybe better than [[Perplexity Spaces]]?
+Google's new [[Retrieval Augmented Generation (RAG)]] chatbot. Comparable, maybe better than [[Perplexity Details]]?
 ### Uses
 - [[Zotero to Obsidian to RAG]]
 - [[US Elections 2024]]
@@ -55,7 +55,7 @@ Google's new [[Retrieval Augmented Generation (RAG)]] chatbot. Comparable, maybe
 - John24notebookLMGoogDocBest
 - Nair24NotebookLMSourcesBestPrac
 ### Limitations
-Here are the current limits for different versions of NotebookLM ([Perplexity on 12/14/24](https://www.perplexity.ai/search/i-have-a-onedrive-personal-acc-iznGMCQMQsGA0LivBMkFqw#7)). Overall better than [[lit/refwrangle/Perplexity Spaces.md#Limitations |Perplexity Space Limitations]], I think.
+Here are the current limits for different versions of NotebookLM ([Perplexity on 12/14/24](https://www.perplexity.ai/search/i-have-a-onedrive-personal-acc-iznGMCQMQsGA0LivBMkFqw#7)). Overall better than [[Perplexity Details#Limitations|Perplexity Space Limitations]], I think.
 #### Standard Version Limits
 - 500,000 words per source
 - Up to 200MB for local uploads

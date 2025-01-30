@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tmp_perplex_dialog_with_files.md",
-                "mode": "preview",
+                "file": "tmp_new_cites_perplexity_example.md",
+                "mode": "source",
                 "backlinks": false,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "tmp_perplex_dialog_with_files"
+              "title": "tmp_new_cites_perplexity_example"
             }
           }
         ]
@@ -301,8 +301,10 @@
   },
   "active": "848296823d102b49",
   "lastOpenFiles": [
-    "tmp_perplex_MI.md",
+    "lit/refwrangle/Perplexity Details.md",
+    "lit/lit_sources/25PopularExerciseSupplement.html",
     "tmp_perplex_dialog_with_files.md",
+    "tmp_perplex_MI.md",
     "tmp_new_cites_perplexity_example.md",
     "Lit Note Summary D Folder.md",
     "download.md",
@@ -317,13 +319,11 @@
     "lit/lit_sources/Mohamed24PRMonitoringTools.html",
     "lit/lit_sources/Mohamed23sentimAnlyssTools.html",
     "lit/lit_sources/Mohamed23SentimentAnalysisTools.html",
-    "lit/lit_sources/Mathew21socialMediaToolsTop23.html",
     "lit/lit_notes/hill2024methodology.md",
     "Obsidian/Obsidian and GIT Repo.md",
     "Obsidian/attachments/Pasted image 20250129174128.webp",
     "Obsidian/attachments/Pasted image 20250129173055.webp",
     "All Tasks Summary.md",
-    "lit/refwrangle/Perplexity Spaces.md",
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "Work/VPP ideas/Research Ideas/University Forecasting Research Search.md",
     "Work/VPP ideas/Research Ideas/University Pick Process Mermaid Diagram.md",
@@ -338,7 +338,6 @@
     "Work/VPP ideas/Research Ideas/Conferences.md",
     "Work/VPP ideas/AEMO/Algorithms for AEMO.md",
     "Software Dev/Athena.md",
-    "Work/VPP ideas/CAISO/Existing CAISO Forecast Types.md",
     "Clippings/attachments/b0fc57e7b304dcd73cb94f5430796c72_MD5.jpg",
     "Clippings/attachments/200771b89768a731e0093a498d407aca_MD5.svg",
     "Clippings/attachments/375b84dd046d61d702009b3011f43f0a_MD5.avif",

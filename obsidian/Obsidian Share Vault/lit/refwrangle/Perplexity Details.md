@@ -1,11 +1,16 @@
 ---
 created date: 2024-12-15T14:05:38-08:00
-modified date: 2025-01-29T16:58:31-08:00
+modified date: 2025-01-30T14:06:50-08:00
 ---
-A [[Retrieval Augmented Generation (RAG)]] system comparable to Google's [[NotebookLM|NotebookLM]]
-### My uses
+A [[Retrieval Augmented Generation (RAG)]] system comparable to Google's [[NotebookLM]]
 
-#### Refwrangle uses for Perplexity Spaces
+## Downloading Perplexity Dialogues
+
+- Nice browser extension for this: [Save my Chatbot](https://github.com/Hugo-COLLIN/SaveMyPhind-conversation-exporter)
+- My bug report: [Code blocks need a newline when perplexity numbers them · Issue #237 · Hugo-COLLIN/SaveMyPhind-conversation-exporter · GitHub](https://github.com/Hugo-COLLIN/SaveMyPhind-conversation-exporter/issues/237)
+## Perplexity Spaces
+
+### Refwrangle uses for Perplexity Spaces
 I'm going to save my perplexity searches in a Space, so that I don't lose them if my browser crashes and loses all my perplexity tabs.  
 - I'm probably going to save them as markdown and put them in obsidian (but not allow them to be AI'ed by Smart Connections
 - [ ] @ Then I'll edit them to replace the numbered references with references items I've downloaded into my zotero DB
