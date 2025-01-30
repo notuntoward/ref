@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tmp_perplex_dialog_with_files.md",
+                "file": "tmp_new_cites_perplexity_example.md",
                 "mode": "source",
                 "backlinks": false,
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "tmp_perplex_dialog_with_files"
+              "title": "tmp_new_cites_perplexity_example"
             }
           }
         ]
@@ -301,8 +301,9 @@
   },
   "active": "848296823d102b49",
   "lastOpenFiles": [
-    "Politics/Ranked Choice Voting/WARCV Lobby Day 2024.md",
     "tmp_perplex_dialog_with_files.md",
+    "tmp_new_cites_perplexity_example.md",
+    "Politics/Ranked Choice Voting/WARCV Lobby Day 2024.md",
     "lit/lit_sources/Krysiak-Adamczyk25brandSentimAnlyss.html",
     "lit/lit_sources/BrandSentimentAnalysis.html",
     "lit/lit_sources/Wolanin24brandSentimentCare.html",
@@ -338,7 +339,6 @@
     "Work/VPP ideas/CAISO/Market Details (CAISO).md",
     "Work/VPP ideas/CAISO/CAISO Papers to Start With.md",
     "work/QCELLS/CAISO/QCELLS Plans.md",
-    "work/QCELLS/forecasting QCELLS/Forecasting Infra.md",
     "Clippings/attachments/b0fc57e7b304dcd73cb94f5430796c72_MD5.jpg",
     "Clippings/attachments/200771b89768a731e0093a498d407aca_MD5.svg",
     "Clippings/attachments/375b84dd046d61d702009b3011f43f0a_MD5.avif",

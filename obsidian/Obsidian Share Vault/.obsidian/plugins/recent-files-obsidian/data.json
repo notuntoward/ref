@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "tmp_new_cites_perplexity_example",
+      "path": "tmp_new_cites_perplexity_example.md"
+    },
+    {
       "basename": "tmp_perplex_dialog_with_files",
       "path": "tmp_perplex_dialog_with_files.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Political Token Encoding in AI and Behavior Analysis ( Elicit)",
       "path": "Politics/attachments/Political Token Encoding in AI and Behavior Analysis ( Elicit).html"
-    },
-    {
-      "basename": "Morning Oats and Yogurt",
-      "path": "Health/Diet/Morning Oats and Yogurt.md"
     }
   ],
   "omittedPaths": [],
