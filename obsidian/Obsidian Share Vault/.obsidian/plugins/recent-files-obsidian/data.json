@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "tmp_perplex_dialog_with_files",
-      "path": "tmp_perplex_dialog_with_files.md"
-    },
-    {
       "basename": "tmp_new_cites_perplexity_example",
       "path": "tmp_new_cites_perplexity_example.md"
+    },
+    {
+      "basename": "Perplexity Details",
+      "path": "lit/refwrangle/Perplexity Details.md"
+    },
+    {
+      "basename": "tmp_perplex_dialog_with_files",
+      "path": "tmp_perplex_dialog_with_files.md"
     },
     {
       "basename": "Lit Note Summary D Folder",
@@ -31,10 +35,6 @@
     {
       "basename": "All Tasks Summary",
       "path": "All Tasks Summary.md"
-    },
-    {
-      "basename": "Perplexity Spaces",
-      "path": "lit/refwrangle/Perplexity Spaces.md"
     },
     {
       "basename": "Zotero to Obsidian to RAG",
