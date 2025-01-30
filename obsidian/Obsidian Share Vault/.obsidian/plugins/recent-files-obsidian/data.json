@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "tmp_perplex_MI",
+      "path": "tmp_perplex_MI.md"
+    },
+    {
       "basename": "download",
       "path": "download.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Price Curve Prediction",
       "path": "Topic Notes/Price Curve Prediction.md"
-    },
-    {
-      "basename": "Prediction Performance Metrics",
-      "path": "Topic Notes/Prediction Performance Metrics.md"
     }
   ],
   "omittedPaths": [],

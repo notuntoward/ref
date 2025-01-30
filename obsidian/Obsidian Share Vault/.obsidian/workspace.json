@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "download.md",
+                "file": "tmp_perplex_MI.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "download"
+              "title": "tmp_perplex_MI"
             }
           }
         ]
@@ -301,8 +301,10 @@
   },
   "active": "848296823d102b49",
   "lastOpenFiles": [
-    "tmp_new_cites_perplexity_example.md",
     "download.md",
+    "tmp_perplex_MI.md",
+    "Unconfirmed 409310.crdownload",
+    "tmp_new_cites_perplexity_example.md",
     "tmp_perplex_dialog_with_files.md",
     "Politics/Ranked Choice Voting/WARCV Lobby Day 2024.md",
     "lit/lit_sources/Krysiak-Adamczyk25brandSentimAnlyss.html",
@@ -314,7 +316,6 @@
     "lit/lit_sources/Mohamed23sentimAnlyssTools.html",
     "lit/lit_sources/Mohamed23SentimentAnalysisTools.html",
     "lit/lit_sources/Mathew21socialMediaToolsTop23.html",
-    "lit/lit_sources/Mathew21Top23Social.html",
     "lit/lit_notes/hill2024methodology.md",
     "Obsidian/Obsidian and GIT Repo.md",
     "Obsidian/attachments/Pasted image 20250129174128.webp",
@@ -338,7 +339,6 @@
     "Software Dev/Athena.md",
     "Work/VPP ideas/CAISO/Existing CAISO Forecast Types.md",
     "Work/VPP ideas/CAISO/Market Details (CAISO).md",
-    "Work/VPP ideas/CAISO/CAISO Papers to Start With.md",
     "Clippings/attachments/b0fc57e7b304dcd73cb94f5430796c72_MD5.jpg",
     "Clippings/attachments/200771b89768a731e0093a498d407aca_MD5.svg",
     "Clippings/attachments/375b84dd046d61d702009b3011f43f0a_MD5.avif",
