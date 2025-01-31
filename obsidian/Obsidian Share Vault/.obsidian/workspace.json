@@ -310,7 +310,8 @@
       "cmdr:Outline: Open outline of the current file": false,
       "cmdr:Bookmark Show": false,
       "obsidian-local-images-plus:Local Images Plus  0.16.2\r\nLocalize attachments (plugin folder)": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false
     }
   },
   "active": "848296823d102b49",
