@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "perplexity_multi_prompt_savemychatbot_example",
+      "path": "perplexity_multi_prompt_savemychatbot_example.md"
+    },
+    {
       "basename": "perplexity_single_prompt_savemychatbot_example",
       "path": "perplexity_single_prompt_savemychatbot_example.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "__temp__Forecasting Interview Prep",
       "path": "Work/Between Jobs/Interview Prep/__temp__Forecasting Interview Prep.md"
-    },
-    {
-      "basename": "Dental Coverage",
-      "path": "Work/Between Jobs/QCELLs offboarding/attachments/Dental Coverage.pdf"
     }
   ],
   "omittedPaths": [],
