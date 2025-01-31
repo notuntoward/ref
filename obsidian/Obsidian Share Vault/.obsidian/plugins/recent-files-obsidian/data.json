@@ -5,10 +5,6 @@
       "path": "perplexity_multi_prompt_savemychatbot_example.md"
     },
     {
-      "basename": "perplexity_single_prompt_savemychatbot_example",
-      "path": "perplexity_single_prompt_savemychatbot_example.md"
-    },
-    {
       "basename": "tmp_new_cites_perplexity_example",
       "path": "tmp_new_cites_perplexity_example.md"
     },
@@ -25,20 +21,12 @@
       "path": "lit/refwrangle/Perplexity Details.md"
     },
     {
-      "basename": "tmp_perplex_dialog_with_files",
-      "path": "tmp_perplex_dialog_with_files.md"
-    },
-    {
       "basename": "Lit Note Summary D Folder",
       "path": "Lit Note Summary D Folder.md"
     },
     {
       "basename": "download",
       "path": "download.md"
-    },
-    {
-      "basename": "tmp_perplex_raw_share",
-      "path": "tmp_perplex_raw_share.md"
     },
     {
       "basename": "WARCV Lobby Day 2024",
