@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "tmp_savemychatbot_multiprompt_perplexity_example",
+      "path": "tmp_savemychatbot_multiprompt_perplexity_example.md"
+    },
+    {
       "basename": "Dependency Metrics",
       "path": "Topic Notes/Dependency Metrics.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Unemployment Health Insurance",
       "path": "Work/Between Jobs/QCELLs offboarding/Unemployment Health Insurance.md"
-    },
-    {
-      "basename": "Image Processing Review",
-      "path": "Work/Between Jobs/Interview Prep/Image Processing Review.md"
     }
   ],
   "omittedPaths": [],

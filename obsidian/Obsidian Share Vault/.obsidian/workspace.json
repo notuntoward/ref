@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Topic Notes/Dependency Metrics.md",
+                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Dependency Metrics"
+              "title": "tmp_savemychatbot_multiprompt_perplexity_example"
             }
           }
         ]
@@ -102,8 +102,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 581.5,
-    "collapsed": true
+    "width": 581.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -304,9 +303,12 @@
   },
   "active": "e48f1a671d115989",
   "lastOpenFiles": [
+    "Topic Notes/Dependency Metrics.md",
+    "tmp_savemychatbot_multiprompt_perplexity_example.md",
+    "lit/lit_sources/Galli22mutInfoPython.html",
+    "lit/lit_sources/Galli22MutualInformationPython.html",
     "lit/lit_notes/Bai23estTotalCorrMIest.md",
     "lit/lit_notes/Seok15mutInfoDiscrtRcrsAdaptPart.md",
-    "Topic Notes/Dependency Metrics.md",
     "lit/lit_notes/Zbili21entMutInfoQuickEasyEst.md",
     "lit/lit_notes/Young23mutInfoMeasEpidem.md",
     "perplexity_multi_prompt_savemychatbot_example.md",
@@ -318,11 +320,8 @@
     "lit/lit_sources/Young23mutInfoMeasEpedem.pdf",
     "lit/lit_sources/Young23MutualInformationMeasuring.pdf",
     "lit/lit_sources/QuickEasyWay.html",
-    "lit/lit_sources/Bai23EstimatingTotalCorrelation.html",
-    "lit/lit_sources/Bai23EstimatingTotalCorrelation.pdf",
     "tmp_new_cites_perplexity_example.md",
     "perplexity_single_prompt_savemychatbot_example.md",
-    "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "lit/lit_notes/Mohamed24brandPerceptionChng.md",
     "lit/refwrangle/Perplexity Details.md",
     "tmp_perplex_dialog_with_files.md",
@@ -341,7 +340,6 @@
     "Work/VPP ideas/Research Ideas/University Pick Process Mermaid Diagram.md",
     "Work/VPP ideas/Research Ideas/Top N Forcasting Unis.md",
     "Work/VPP ideas/Research Ideas/Research Group Ideas.md",
-    "work/QCELLS/Research Ideas/tmp_mehrmaid_test.md",
     "Clippings/attachments/b0fc57e7b304dcd73cb94f5430796c72_MD5.jpg",
     "Clippings/attachments/200771b89768a731e0093a498d407aca_MD5.svg",
     "Clippings/attachments/375b84dd046d61d702009b3011f43f0a_MD5.avif",
