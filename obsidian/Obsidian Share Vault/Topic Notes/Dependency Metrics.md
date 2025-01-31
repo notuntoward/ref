@@ -1,9 +1,9 @@
 ---
 created date: 2025-01-30T21:24:28-08:00
-modified date: 2025-01-30T21:59:28-08:00
+modified date: 2025-01-31T09:50:59-08:00
 ---
-# A list of Dependency Matrix Papers
-(some day, do better than this)
+# A list of Dependency Metric Papers
+(some day, do better than this.  I have a lot more of these somewhere, maybe in energytop.org?)
 
 - [[Young23mutInfoMeasEpidem|Young23: Mutual information: Measuring nonlinear dependence in longitudinal epidemiological data]]
 - [[Seok15mutInfoDiscrtRcrsAdaptPart|Seok15: Mutual Information between Discrete Variables with Many Categories using Recursive Adaptive Partitioning]] 

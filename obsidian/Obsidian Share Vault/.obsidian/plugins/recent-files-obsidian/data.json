@@ -5,12 +5,24 @@
       "path": "tmp_savemychatbot_multiprompt_perplexity_example.md"
     },
     {
-      "basename": "tmp_new_cites_perplexity_example",
-      "path": "tmp_new_cites_perplexity_example.md"
+      "basename": "Zbili21entMutInfoQuickEasyEst",
+      "path": "lit/lit_notes/Zbili21entMutInfoQuickEasyEst.md"
     },
     {
       "basename": "Dependency Metrics",
       "path": "Topic Notes/Dependency Metrics.md"
+    },
+    {
+      "basename": "Graphics Color Picking",
+      "path": "Topic Notes/Graphics Color Picking.md"
+    },
+    {
+      "basename": "Grokking Neural Net",
+      "path": "Topic Notes/Grokking Neural Net.md"
+    },
+    {
+      "basename": "tmp_new_cites_perplexity_example",
+      "path": "tmp_new_cites_perplexity_example.md"
     },
     {
       "basename": "Seok15mutInfoDiscrtRcrsAdaptPart",
@@ -19,10 +31,6 @@
     {
       "basename": "Bai23estTotalCorrMIest",
       "path": "lit/lit_notes/Bai23estTotalCorrMIest.md"
-    },
-    {
-      "basename": "Zbili21entMutInfoQuickEasyEst",
-      "path": "lit/lit_notes/Zbili21entMutInfoQuickEasyEst.md"
     },
     {
       "basename": "Young23mutInfoMeasEpidem",
@@ -191,14 +199,6 @@
     {
       "basename": "Akyildirim22sigMethodsMktAnmly",
       "path": "lit/lit_notes/Akyildirim22sigMethodsMktAnmly.md"
-    },
-    {
-      "basename": "Meta Info from political causality literature review",
-      "path": "Politics/Political Causality/Meta Info from political causality literature review.md"
-    },
-    {
-      "basename": "Unemployment Health Insurance",
-      "path": "Work/Between Jobs/QCELLs offboarding/Unemployment Health Insurance.md"
     }
   ],
   "omittedPaths": [],
