@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "Dependency Metrics",
+      "path": "Topic Notes/Dependency Metrics.md"
+    },
+    {
+      "basename": "Bai23estTotalCorrMIest",
+      "path": "lit/lit_notes/Bai23estTotalCorrMIest.md"
+    },
+    {
+      "basename": "Seok15mutInfoDiscrtRcrsAdaptPart",
+      "path": "lit/lit_notes/Seok15mutInfoDiscrtRcrsAdaptPart.md"
+    },
+    {
+      "basename": "Zbili21entMutInfoQuickEasyEst",
+      "path": "lit/lit_notes/Zbili21entMutInfoQuickEasyEst.md"
+    },
+    {
+      "basename": "Young23mutInfoMeasEpidem",
+      "path": "lit/lit_notes/Young23mutInfoMeasEpidem.md"
+    },
+    {
       "basename": "perplexity_multi_prompt_savemychatbot_example",
       "path": "perplexity_multi_prompt_savemychatbot_example.md"
     },
@@ -179,14 +199,6 @@
     {
       "basename": "Image Processing Review",
       "path": "Work/Between Jobs/Interview Prep/Image Processing Review.md"
-    },
-    {
-      "basename": "MLOPS Interview Prep",
-      "path": "Work/Between Jobs/Interview Prep/MLOPS Interview Prep.md"
-    },
-    {
-      "basename": "__temp__Forecasting Interview Prep",
-      "path": "Work/Between Jobs/Interview Prep/__temp__Forecasting Interview Prep.md"
     }
   ],
   "omittedPaths": [],
