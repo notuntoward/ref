@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "611605e2e96dfb99",
+        "id": "d7e131d30d4b5a22",
         "type": "tabs",
         "children": [
           {
-            "id": "3e99f899351c2d66",
+            "id": "e48f1a671d115989",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -102,8 +102,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 581.5,
-    "collapsed": true
+    "width": 581.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -302,7 +301,7 @@
       "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false
     }
   },
-  "active": "3e99f899351c2d66",
+  "active": "e48f1a671d115989",
   "lastOpenFiles": [
     "tmp_new_cites_perplexity_example.md",
     "lit/lit_notes/Mohamed24brandPerceptionChng.md",
