@@ -5,16 +5,20 @@
       "path": "tmp_savemychatbot_multiprompt_perplexity_example.md"
     },
     {
+      "basename": "tmp_new_cites_perplexity_example",
+      "path": "tmp_new_cites_perplexity_example.md"
+    },
+    {
       "basename": "Dependency Metrics",
       "path": "Topic Notes/Dependency Metrics.md"
     },
     {
-      "basename": "Bai23estTotalCorrMIest",
-      "path": "lit/lit_notes/Bai23estTotalCorrMIest.md"
-    },
-    {
       "basename": "Seok15mutInfoDiscrtRcrsAdaptPart",
       "path": "lit/lit_notes/Seok15mutInfoDiscrtRcrsAdaptPart.md"
+    },
+    {
+      "basename": "Bai23estTotalCorrMIest",
+      "path": "lit/lit_notes/Bai23estTotalCorrMIest.md"
     },
     {
       "basename": "Zbili21entMutInfoQuickEasyEst",
@@ -27,10 +31,6 @@
     {
       "basename": "perplexity_multi_prompt_savemychatbot_example",
       "path": "perplexity_multi_prompt_savemychatbot_example.md"
-    },
-    {
-      "basename": "tmp_new_cites_perplexity_example",
-      "path": "tmp_new_cites_perplexity_example.md"
     },
     {
       "basename": "Mohamed24brandPerceptionChng",
