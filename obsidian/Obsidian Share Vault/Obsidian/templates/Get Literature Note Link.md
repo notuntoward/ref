@@ -1,7 +1,3 @@
----
-created date: 2025-01-26T12:50:50-08:00
-modified date: 2025-01-26T12:50:50-08:00
----
 <%*
 // A template for selecting and pasting literature note links.  
 // I've mapped this to a hot key (ctrl-])
