@@ -1,6 +1,6 @@
 ---
-created date: 2025-01-30T21:48:31-08:00
-modified date: 2025-01-30T21:48:31-08:00
+created date: 2025-01-30T22:02:44-08:00
+modified date: 2025-01-30T22:02:44-08:00
 ---
 # What is the meaning of mutual information and how do I calculated it from data. Justify your answer...
 Exported on 30/01/2025 at 20:48:53 [from Perplexity.ai](https://www.perplexity.ai/search/what-is-the-meaning-of-mutual-0KwDqlhiRkWTYiWcFEWU8w) - with [SaveMyChatbot](https://save.hugocollin.com)
@@ -69,11 +69,11 @@ In conclusion, mutual information is a robust and flexible measure of statistica
 **Sources:**
 - [(1) Mutual information](https://en.wikipedia.org/wiki/mutual_information)
 - [(2) PDF Entropy and Mutual Information](https://people.cs.umass.edu/~elm/teaching/docs/mutinf.pdf)
-- ==[Galli22mutInfoPython➔555NDHRR](zotero://select/library/items/555NDHRR)== [(3) Mutual information with Python - Train in Data's Blog](https://www.blog.trainindata.com/mutual-information-with-python)
+- [(3) Mutual information with Python - Train in Data's Blog](https://www.blog.trainindata.com/mutual-information-with-python) ==[Galli22mutInfoPython➔555NDHRR](zotero://select/library/items/555NDHRR)==
 - [(4) What is Mutual Information? - Quantdare](https://quantdare.com/what-is-mutual-information)
 - [(5) Mutual information - Scholarpedia](http://www.scholarpedia.org/article/mutual_information)
-- ==[[Seok15mutInfoDiscrtRcrsAdaptPart]]== [(6) Mutual Information between Discrete Variables with Many ... - Nature](https://www.nature.com/articles/srep10981)
-- ==[[Zbili21entMutInfoQuickEasyEst]]== [(7) A Quick and Easy Way to Estimate Entropy and Mutual Information ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc8239197)
+- [(6) Mutual Information between Discrete Variables with Many ... - Nature](https://www.nature.com/articles/srep10981) ==[[Seok15mutInfoDiscrtRcrsAdaptPart]]==
+- [(7) A Quick and Easy Way to Estimate Entropy and Mutual Information ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc8239197) ==[[Zbili21entMutInfoQuickEasyEst]]==
 - [(8) Calculating mutual information from experimental data: A primer](https://ai.stanford.edu/~gal/research/redundancy-reduction/neuron_suppl/node2.html)
 - [(9) PDF Statistical Validation of Mutual Information Calculations](https://repository.brynmawr.edu/cgi/viewcontent.cgi?article=1037&context=physics_pubs)
 - [(10) Mutual information: Measuring nonlinear dependence in ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc10132663)
@@ -239,7 +239,7 @@ Limitations:
 *   Provides less information about the nature of the relationship than Pearson
 
 Spearman correlation is more flexible than Pearson but still more limited than mutual information in detecting complex relationships.
-
+
 Distance Correlation
 --------------------
 
@@ -290,11 +290,11 @@ Hoeffding's D is less commonly used than mutual information but can be valuable 
 **Sources:**
 - [(1) Mutual information](https://en.wikipedia.org/wiki/mutual_information)
 - [(2) PDF Entropy and Mutual Information](https://people.cs.umass.edu/~elm/teaching/docs/mutinf.pdf)
-- ==[Galli22mutInfoPython➔555NDHRR](zotero://select/library/items/555NDHRR)== [(3) Mutual information with Python - Train in Data's Blog](https://www.blog.trainindata.com/mutual-information-with-python)
+- [(3) Mutual information with Python - Train in Data's Blog](https://www.blog.trainindata.com/mutual-information-with-python) ==[Galli22mutInfoPython➔555NDHRR](zotero://select/library/items/555NDHRR)==
 - [(4) What is Mutual Information? - Quantdare](https://quantdare.com/what-is-mutual-information)
 - [(5) Mutual information - Scholarpedia](http://www.scholarpedia.org/article/mutual_information)
-- ==[[Seok15mutInfoDiscrtRcrsAdaptPart]]== [(6) Mutual Information between Discrete Variables with Many ... - Nature](https://www.nature.com/articles/srep10981)
-- ==[[Zbili21entMutInfoQuickEasyEst]]== [(7) A Quick and Easy Way to Estimate Entropy and Mutual Information ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc8239197)
+- [(6) Mutual Information between Discrete Variables with Many ... - Nature](https://www.nature.com/articles/srep10981) ==[[Seok15mutInfoDiscrtRcrsAdaptPart]]==
+- [(7) A Quick and Easy Way to Estimate Entropy and Mutual Information ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc8239197) ==[[Zbili21entMutInfoQuickEasyEst]]==
 - [(8) Calculating mutual information from experimental data: A primer](https://ai.stanford.edu/~gal/research/redundancy-reduction/neuron_suppl/node2.html)
 - [(9) PDF Statistical Validation of Mutual Information Calculations](https://repository.brynmawr.edu/cgi/viewcontent.cgi?article=1037&context=physics_pubs)
 - [(10) Mutual information: Measuring nonlinear dependence in ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc10132663)

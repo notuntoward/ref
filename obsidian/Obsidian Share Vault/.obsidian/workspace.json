@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "d7e131d30d4b5a22",
+        "id": "73eac49601b99fac",
         "type": "tabs",
         "children": [
           {
-            "id": "e48f1a671d115989",
+            "id": "76cfc43420f6cfe3",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -301,14 +301,17 @@
       "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false
     }
   },
-  "active": "e48f1a671d115989",
+  "active": "76cfc43420f6cfe3",
   "lastOpenFiles": [
-    "Topic Notes/Dependency Metrics.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
+    "tmp_new_cites_perplexity_example.md",
+    "Topic Notes/Dependency Metrics.md",
+    "lit/lit_sources/Singh24corrAllTypes.html",
+    "lit/lit_sources/Singh24AllTypesCorrelation.html",
+    "lit/lit_notes/Seok15mutInfoDiscrtRcrsAdaptPart.md",
     "lit/lit_sources/Galli22mutInfoPython.html",
     "lit/lit_sources/Galli22MutualInformationPython.html",
     "lit/lit_notes/Bai23estTotalCorrMIest.md",
-    "lit/lit_notes/Seok15mutInfoDiscrtRcrsAdaptPart.md",
     "lit/lit_notes/Zbili21entMutInfoQuickEasyEst.md",
     "lit/lit_notes/Young23mutInfoMeasEpidem.md",
     "perplexity_multi_prompt_savemychatbot_example.md",
@@ -318,9 +321,6 @@
     "lit/lit_sources/Young23mutInfoMeasEpidem.pdf",
     "lit/lit_sources/Zbili21entMutInfoQuickEasyEst.pdf",
     "lit/lit_sources/Young23mutInfoMeasEpedem.pdf",
-    "lit/lit_sources/Young23MutualInformationMeasuring.pdf",
-    "lit/lit_sources/QuickEasyWay.html",
-    "tmp_new_cites_perplexity_example.md",
     "perplexity_single_prompt_savemychatbot_example.md",
     "lit/lit_notes/Mohamed24brandPerceptionChng.md",
     "lit/refwrangle/Perplexity Details.md",
