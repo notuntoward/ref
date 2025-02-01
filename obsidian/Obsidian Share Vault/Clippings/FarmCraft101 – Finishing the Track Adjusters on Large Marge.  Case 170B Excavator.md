@@ -9,6 +9,6 @@ created: 2025-01-31
 tags:
   - videos
 created date: 2025-01-31T16:41:40-08:00
-modified date: 2025-01-31T16:41:40-08:00
+modified date: 2025-01-31T16:44:19-08:00
 ---
 ![Finishing the Track Adjusters on Large Marge.  Case 170B Excavator.](https://www.youtube.com/watch?v=MjsHMc4FyUE)
