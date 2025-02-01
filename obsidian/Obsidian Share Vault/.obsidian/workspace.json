@@ -21,6 +21,16 @@
               "icon": "lucide-file",
               "title": "Mutual information - Wikipedia"
             }
+          },
+          {
+            "id": "4edace0fca761911",
+            "type": "leaf",
+            "state": {
+              "type": "ntb-whats-new-view",
+              "state": {},
+              "icon": "file-text",
+              "title": "What's new in Note Toolbar?"
+            }
           }
         ]
       }
@@ -54,7 +64,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "[notetoolbar: Daily Note]",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -99,7 +109,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
