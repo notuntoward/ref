@@ -12,6 +12,29 @@ modified date: 2025-01-28T23:06:32-08:00
 - dig into the list of cognitive errors (both voters, R's and D's make them)
 
 # Why did the Democrats fail?
+
+asdflkjas asl;kdfkj
+asdflk;asdf
+## Lame
+
+asdflkjasd fals;kjasdl;fkasdlkfj
+asdflk;jasdlk;jsadf
+### Fussy
+
+asdflkjasd fals;kjasdl;fkasdlkfj
+asdflk;jasdlk;jsadf
+#### Ineloquent
+
+asdflkjasd fals;kjasdl;fkasdlkfj
+asdflk;jasdlk;jsadf
+##### smelly
+
+asdflkjasd fals;kjasdl;fkasdlkfj
+asdflk;jasdlk;jsadf
+###### Rambunctios
+
+asdflkjasd fals;kjasdl;fkasdlkfj
+asdflk;jasdlk;jsadf
 ## Harris
 ## Biden?
 ## AI
