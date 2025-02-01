@@ -1,6 +1,34 @@
 {
   "recentFiles": [
     {
+      "basename": "US Elections 2024",
+      "path": "Politics/Political Causality/US Elections 2024.md"
+    },
+    {
+      "basename": "Lit Note Summary D Folder",
+      "path": "Lit Note Summary D Folder.md"
+    },
+    {
+      "basename": "Module 1 - SQL for Data Science",
+      "path": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md"
+    },
+    {
+      "basename": "WA Unemployment",
+      "path": "Work/Between Jobs/QCELLs offboarding/WA Unemployment.md"
+    },
+    {
+      "basename": "download",
+      "path": "download.md"
+    },
+    {
+      "basename": "tmp_new_cites_perplexity_example",
+      "path": "tmp_new_cites_perplexity_example.md"
+    },
+    {
+      "basename": "perplexity_multi_prompt_savemychatbot_example",
+      "path": "perplexity_multi_prompt_savemychatbot_example.md"
+    },
+    {
       "basename": "2025-01-31",
       "path": "Dailies/2025-01-31.md"
     },
@@ -11,18 +39,6 @@
     {
       "basename": "FarmCraft101 – Finishing the Track Adjusters on Large Marge.  Case 170B Excavator",
       "path": "Clippings/FarmCraft101 – Finishing the Track Adjusters on Large Marge.  Case 170B Excavator.md"
-    },
-    {
-      "basename": "US Elections 2024",
-      "path": "Politics/Political Causality/US Elections 2024.md"
-    },
-    {
-      "basename": "tmp_new_cites_perplexity_example",
-      "path": "tmp_new_cites_perplexity_example.md"
-    },
-    {
-      "basename": "perplexity_multi_prompt_savemychatbot_example",
-      "path": "perplexity_multi_prompt_savemychatbot_example.md"
     },
     {
       "basename": "tmp_savemychatbot_multiprompt_perplexity_example",
@@ -67,14 +83,6 @@
     {
       "basename": "Perplexity Details",
       "path": "lit/refwrangle/Perplexity Details.md"
-    },
-    {
-      "basename": "Lit Note Summary D Folder",
-      "path": "Lit Note Summary D Folder.md"
-    },
-    {
-      "basename": "download",
-      "path": "download.md"
     },
     {
       "basename": "WARCV Lobby Day 2024",
@@ -153,10 +161,6 @@
       "path": "lit/lit_notes/Sevilla22ComputeTrendsThree.md"
     },
     {
-      "basename": "WA Unemployment",
-      "path": "Work/Between Jobs/QCELLs offboarding/WA Unemployment.md"
-    },
-    {
       "basename": "Poplawski12dimmingLEDs",
       "path": "lit/lit_notes/Poplawski12dimmingLEDs.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "merged_RAG_0",
       "path": "Politics/Political Causality/Merged RAG Political Sources/merged_RAG_0.md"
-    },
-    {
-      "basename": "Pacemaker Summary",
-      "path": "Friends and Family/JackPaceMaker/Pacemaker Summary.md"
     }
   ],
   "omittedPaths": [],

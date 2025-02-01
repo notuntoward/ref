@@ -13,28 +13,6 @@ modified date: 2025-01-31T16:41:39-08:00
 
 # Why did the Democrats fail?
 
-asdflkjas asl;kdfkj
-asdflk;asdf
-## Lame
-
-asdflkjasd fals;kjasdl;fkasdlkfj
-asdflk;jasdlk;jsadf
-### Fussy
-
-asdflkjasd fals;kjasdl;fkasdlkfj
-asdflk;jasdlk;jsadf
-#### Ineloquent
-
-asdflkjasd fals;kjasdl;fkasdlkfj
-asdflk;jasdlk;jsadf
-##### smelly
-
-asdflkjasd fals;kjasdl;fkasdlkfj
-asdflk;jasdlk;jsadf
-###### Rambunctios
-
-asdflkjasd fals;kjasdl;fkasdlkfj
-asdflk;jasdlk;jsadf
 ## Harris
 ## Biden?
 ## AI
