@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Untitled",
+      "path": "Untitled.md"
+    },
+    {
       "basename": "US Elections 2024",
       "path": "Politics/Political Causality/US Elections 2024.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Agarwal21TspDBTimeSeries",
       "path": "lit/lit_notes/Agarwal21TspDBTimeSeries.md"
-    },
-    {
-      "basename": "merged_RAG_0",
-      "path": "Politics/Political Causality/Merged RAG Political Sources/merged_RAG_0.md"
     }
   ],
   "omittedPaths": [],
