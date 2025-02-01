@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "2025-01-31",
+      "path": "Dailies/2025-01-31.md"
+    },
+    {
       "basename": "Mutual information - Wikipedia",
       "path": "Clippings/Mutual information - Wikipedia.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Pacemaker Summary",
       "path": "Friends and Family/JackPaceMaker/Pacemaker Summary.md"
-    },
-    {
-      "basename": "Custom File Icons Windows Explorer",
-      "path": "Howto/Custom File Icons Windows Explorer.md"
     }
   ],
   "omittedPaths": [],
