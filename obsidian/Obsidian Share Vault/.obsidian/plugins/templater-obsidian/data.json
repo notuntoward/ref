@@ -15,8 +15,15 @@
   "enable_folder_templates": true,
   "folder_templates": [
     {
-      "folder": "dailies",
+      "folder": "Dailies",
       "template": "Obsidian/templates/Daily Note Template.md"
+    }
+  ],
+  "enable_file_templates": false,
+  "file_templates": [
+    {
+      "regex": ".*",
+      "template": ""
     }
   ],
   "syntax_highlighting": true,
