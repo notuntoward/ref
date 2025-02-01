@@ -4,35 +4,56 @@
     "type": "split",
     "children": [
       {
-        "id": "645a33bd72ee517d",
+        "id": "0d412cf996dd63fb",
         "type": "tabs",
         "children": [
           {
-            "id": "f966b05bcd3627e0",
+            "id": "14942923744dad40",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Dailies/2025-01-31.md",
+                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2025-01-31"
+              "title": "Module 1 - SQL for Data Science"
             }
           },
           {
-            "id": "4edace0fca761911",
+            "id": "62a8096f6fe728b6",
             "type": "leaf",
             "state": {
-              "type": "ntb-whats-new-view",
-              "state": {},
-              "icon": "file-text",
-              "title": "What's new in Note Toolbar?"
+              "type": "markdown",
+              "state": {
+                "file": "Politics/Political Causality/US Elections 2024.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "US Elections 2024"
+            }
+          },
+          {
+            "id": "9a5d8bd2f918f300",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Lit Note Summary D Folder.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Lit Note Summary D Folder"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -109,7 +130,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -312,20 +333,24 @@
       "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false
     }
   },
-  "active": "f966b05bcd3627e0",
+  "active": "62a8096f6fe728b6",
   "lastOpenFiles": [
-    "Clippings/Mutual information - Wikipedia.md",
+    "Lit Note Summary D Folder.md",
+    "Politics/Political Causality/US Elections 2024.md",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
+    "Work/Between Jobs/QCELLs offboarding/WA Unemployment.md",
+    "download.md",
+    "tmp_new_cites_perplexity_example.md",
+    "perplexity_multi_prompt_savemychatbot_example.md",
     "Dailies/2025-01-31.md",
+    "Clippings/Mutual information - Wikipedia.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",
     "Clippings/attachments/673e3898b72e33125e5dcb2278f3cd42_MD5.png",
     "Clippings/FarmCraft101 – Finishing the Track Adjusters on Large Marge.  Case 170B Excavator.md",
     "Clippings/attachments",
-    "Politics/Political Causality/US Elections 2024.md",
     "Clippings",
-    "tmp_new_cites_perplexity_example.md",
-    "perplexity_multi_prompt_savemychatbot_example.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "lit/lit_notes/Zbili21entMutInfoQuickEasyEst.md",
     "Topic Notes/Dependency Metrics.md",
@@ -347,15 +372,11 @@
     "lit/refwrangle/Perplexity Details.md",
     "tmp_perplex_dialog_with_files.md",
     "tmp_perplex_MI.md",
-    "Lit Note Summary D Folder.md",
-    "download.md",
     "tmp_perplex_raw_share.md",
     "Politics/Ranked Choice Voting/WARCV Lobby Day 2024.md",
     "lit/lit_notes/hill2024methodology.md",
-    "Obsidian/Obsidian and GIT Repo.md",
     "Obsidian/attachments/Pasted image 20250129174128.webp",
     "Obsidian/attachments/Pasted image 20250129173055.webp",
-    "All Tasks Summary.md",
     "Clippings/attachments/b0fc57e7b304dcd73cb94f5430796c72_MD5.jpg",
     "Clippings/attachments/200771b89768a731e0093a498d407aca_MD5.svg",
     "Clippings/attachments/375b84dd046d61d702009b3011f43f0a_MD5.avif",
