@@ -58,17 +58,32 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Untitled.md",
+                "file": "refwrangle Urls file 1.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Untitled"
+              "title": "refwrangle Urls file 1"
+            }
+          },
+          {
+            "id": "a240d3071f7f6d9e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "refwrangle url file 2.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "refwrangle url file 2"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -166,7 +181,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Untitled.md",
+                "file": "refwrangle url file 2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -176,7 +191,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Untitled"
+              "title": "Backlinks for refwrangle url file 2"
             }
           },
           {
@@ -258,10 +273,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Untitled.md"
+                "file": "refwrangle url file 2.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for Untitled"
+              "title": "File properties for refwrangle url file 2"
             }
           },
           {
@@ -337,9 +352,10 @@
       "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false
     }
   },
-  "active": "6a070509c455ce95",
+  "active": "a240d3071f7f6d9e",
   "lastOpenFiles": [
-    "Untitled.md",
+    "refwrangle url file 2.md",
+    "refwrangle Urls file 1.md",
     "lit/lit_sources/MMSDataModelSummary_v5.2.pdf",
     "lit/lit_sources/MMSDataModelSummary.pdf",
     "Politics/Political Causality/US Elections 2024.md",

@@ -1,8 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "Untitled",
-      "path": "Untitled.md"
+      "basename": "refwrangle url file 2",
+      "path": "refwrangle url file 2.md"
+    },
+    {
+      "basename": "refwrangle Urls file 1",
+      "path": "refwrangle Urls file 1.md"
     },
     {
       "basename": "US Elections 2024",
@@ -195,10 +199,6 @@
     {
       "basename": "Dionne24hiddenVictoryProgrssiv",
       "path": "lit/lit_sources/Dionne24hiddenVictoryProgrssiv.html"
-    },
-    {
-      "basename": "Agarwal21TspDBTimeSeries",
-      "path": "lit/lit_notes/Agarwal21TspDBTimeSeries.md"
     }
   ],
   "omittedPaths": [],
