@@ -69,5 +69,6 @@
   "instant-above-divider",
   "obsidian-meta-bind-plugin",
   "obsidian-git",
-  "ink"
+  "ink",
+  "note-toolbar"
 ]
