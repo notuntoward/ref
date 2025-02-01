@@ -166,7 +166,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "lit/lit_notes/Agarwal21TspDBTimeSeries.md",
+                "file": "Untitled.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -176,7 +176,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Agarwal21TspDBTimeSeries"
+              "title": "Backlinks for Untitled"
             }
           },
           {
@@ -258,20 +258,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "lit/lit_notes/Shi19optBattCtrlAging.md"
+                "file": "Untitled.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for Shi19optBattCtrlAging"
-            }
-          },
-          {
-            "id": "21439ac381cb7e76",
-            "type": "leaf",
-            "state": {
-              "type": "smart-connections-chat-view",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
+              "title": "File properties for Untitled"
             }
           },
           {
@@ -305,12 +295,11 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 10
       }
     ],
     "direction": "horizontal",
-    "width": 511.5,
-    "collapsed": true
+    "width": 511.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -348,11 +337,11 @@
       "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false
     }
   },
-  "active": "6b59e90c8c8a2ccf",
+  "active": "6a070509c455ce95",
   "lastOpenFiles": [
+    "Untitled.md",
     "lit/lit_sources/MMSDataModelSummary_v5.2.pdf",
     "lit/lit_sources/MMSDataModelSummary.pdf",
-    "Untitled.md",
     "Politics/Political Causality/US Elections 2024.md",
     "lit/lit_sources/Seals99irradFrcstDiag.pdf",
     "Lit Note Summary D Folder.md",
@@ -383,7 +372,6 @@
     "lit/lit_notes/Bai23estTotalCorrMIest.md",
     "lit/lit_notes/Young23mutInfoMeasEpidem.md",
     "lit/lit_sources/Seok15mutInfoDiscrtRcrsAdaptPart.pdf",
-    "lit/lit_sources/Bai23estTotalCorrMIest.pdf",
     "perplexity_single_prompt_savemychatbot_example.md",
     "lit/lit_notes/Mohamed24brandPerceptionChng.md",
     "lit/refwrangle/Perplexity Details.md",
