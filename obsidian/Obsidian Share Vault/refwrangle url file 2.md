@@ -1,6 +1,6 @@
 ---
 created date: 2025-01-31T20:50:04-08:00
-modified date: 2025-01-31T20:50:04-08:00
+modified date: 2025-01-31T23:49:58-08:00
 ---
 You're absolutely right, and I apologize for my previous oversight. My job is indeed to find the URLs for the entries in the CSV file. Here are the URLs I was able to find for the entries dated from 2021 to the present:
 
