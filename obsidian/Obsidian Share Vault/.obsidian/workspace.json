@@ -118,8 +118,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 581.5,
-    "collapsed": true
+    "width": 581.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -309,15 +308,15 @@
   },
   "active": "62a8096f6fe728b6",
   "lastOpenFiles": [
-    "lit/lit_notes/Bai23estTotalCorrMIest.md",
+    "Politics/Political Causality/US Elections 2024.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
+    "lit/lit_notes/Bai23estTotalCorrMIest.md",
     "lit/lit_notes/Seok15mutInfoDiscrtRcrsAdaptPart.md",
     "lit/lit_notes/Young23mutInfoMeasEpidem.md",
     "Clippings/–.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
     "lit/lit_sources/Seok15mutInfoDiscrtRcrsAdaptPart.pdf",
     "lit/lit_notes/Zbili21entMutInfoQuickEasyEst.md",
-    "Politics/Political Causality/US Elections 2024.md",
     "Dailies/2023-11-27.md",
     "lit/lit_sources/BaiEstimatingTotalCorrelation.pdf",
     "perplexity_multi_prompt_savemychatbot_example.md",
