@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "Bai23estTotalCorrMIest",
+      "path": "lit/lit_notes/Bai23estTotalCorrMIest.md"
+    },
+    {
+      "basename": "Module 1 - SQL for Data Science",
+      "path": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md"
+    },
+    {
       "basename": "tmp_savemychatbot_multiprompt_perplexity_example",
       "path": "tmp_savemychatbot_multiprompt_perplexity_example.md"
     },
@@ -23,10 +31,6 @@
     {
       "basename": "Young23mutInfoMeasEpidem",
       "path": "lit/lit_notes/Young23mutInfoMeasEpidem.md"
-    },
-    {
-      "basename": "Bai23estTotalCorrMIest",
-      "path": "lit/lit_notes/Bai23estTotalCorrMIest.md"
     },
     {
       "basename": "2023-11-27",
@@ -55,10 +59,6 @@
     {
       "basename": "refwrangle Urls file 1",
       "path": "refwrangle Urls file 1.md"
-    },
-    {
-      "basename": "Module 1 - SQL for Data Science",
-      "path": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md"
     },
     {
       "basename": "WA Unemployment",
@@ -195,10 +195,6 @@
     {
       "basename": "2023-11-16",
       "path": "Dailies/2023-11-16.md"
-    },
-    {
-      "basename": "Wodecki24yannLeCunDitchGenAI",
-      "path": "lit/lit_notes/Wodecki24yannLeCunDitchGenAI.md"
     }
   ],
   "omittedPaths": [],
