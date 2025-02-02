@@ -5,6 +5,18 @@
       "path": "tmp_savemychatbot_multiprompt_perplexity_example.md"
     },
     {
+      "basename": "US Elections 2024",
+      "path": "Politics/Political Causality/US Elections 2024.md"
+    },
+    {
+      "basename": "Bai23estTotalCorrMIest",
+      "path": "lit/lit_notes/Bai23estTotalCorrMIest.md"
+    },
+    {
+      "basename": "2023-11-27",
+      "path": "Dailies/2023-11-27.md"
+    },
+    {
       "basename": "perplexity_multi_prompt_savemychatbot_example",
       "path": "perplexity_multi_prompt_savemychatbot_example.md"
     },
@@ -35,10 +47,6 @@
     {
       "basename": "refwrangle Urls file 1",
       "path": "refwrangle Urls file 1.md"
-    },
-    {
-      "basename": "US Elections 2024",
-      "path": "Politics/Political Causality/US Elections 2024.md"
     },
     {
       "basename": "Module 1 - SQL for Data Science",
@@ -75,10 +83,6 @@
     {
       "basename": "Grokking Neural Net",
       "path": "Topic Notes/Grokking Neural Net.md"
-    },
-    {
-      "basename": "Bai23estTotalCorrMIest",
-      "path": "lit/lit_notes/Bai23estTotalCorrMIest.md"
     },
     {
       "basename": "Young23mutInfoMeasEpidem",
@@ -195,10 +199,6 @@
     {
       "basename": "Dionne24hiddenVictoryProgrssiv",
       "path": "lit/lit_notes/Dionne24hiddenVictoryProgrssiv.md"
-    },
-    {
-      "basename": "Dionne24hiddenVictoryProgrssiv",
-      "path": "lit/lit_sources/Dionne24hiddenVictoryProgrssiv.html"
     }
   ],
   "omittedPaths": [],
