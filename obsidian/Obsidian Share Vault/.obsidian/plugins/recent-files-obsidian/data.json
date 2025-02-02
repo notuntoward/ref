@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "Perplexity Details",
+      "path": "lit/refwrangle/Perplexity Details.md"
+    },
+    {
       "basename": "tmp_savemychatbot_multiprompt_perplexity_example",
       "path": "tmp_savemychatbot_multiprompt_perplexity_example.md"
     },
     {
-      "basename": "Zbili21entMutInfoQuickEasyEst",
-      "path": "lit/lit_notes/Zbili21entMutInfoQuickEasyEst.md"
-    },
-    {
       "basename": "US Elections 2024",
       "path": "Politics/Political Causality/US Elections 2024.md"
+    },
+    {
+      "basename": "Zbili21entMutInfoQuickEasyEst",
+      "path": "lit/lit_notes/Zbili21entMutInfoQuickEasyEst.md"
     },
     {
       "basename": "Bai23estTotalCorrMIest",
@@ -39,10 +43,6 @@
     {
       "basename": "perplexity_multi_prompt_savemychatbot_example",
       "path": "perplexity_multi_prompt_savemychatbot_example.md"
-    },
-    {
-      "basename": "Perplexity Details",
-      "path": "lit/refwrangle/Perplexity Details.md"
     },
     {
       "basename": "tmp_new_cites_perplexity_example",
