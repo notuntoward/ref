@@ -5,12 +5,16 @@
       "path": "tmp_savemychatbot_multiprompt_perplexity_example.md"
     },
     {
-      "basename": "US Elections 2024",
-      "path": "Politics/Political Causality/US Elections 2024.md"
+      "basename": "Young23mutInfoMeasEpidem",
+      "path": "lit/lit_notes/Young23mutInfoMeasEpidem.md"
     },
     {
       "basename": "Bai23estTotalCorrMIest",
       "path": "lit/lit_notes/Bai23estTotalCorrMIest.md"
+    },
+    {
+      "basename": "US Elections 2024",
+      "path": "Politics/Political Causality/US Elections 2024.md"
     },
     {
       "basename": "2023-11-27",
@@ -83,10 +87,6 @@
     {
       "basename": "Grokking Neural Net",
       "path": "Topic Notes/Grokking Neural Net.md"
-    },
-    {
-      "basename": "Young23mutInfoMeasEpidem",
-      "path": "lit/lit_notes/Young23mutInfoMeasEpidem.md"
     },
     {
       "basename": "Mohamed24brandPerceptionChng",
