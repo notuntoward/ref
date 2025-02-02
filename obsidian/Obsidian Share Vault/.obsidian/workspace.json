@@ -28,13 +28,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lit/refwrangle/Perplexity Details.md",
+                "file": "saved_perplexity_chat_youtube_bug.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Perplexity Details"
+              "title": "saved_perplexity_chat_youtube_bug"
             }
           }
         ],
@@ -114,8 +114,7 @@
               "title": "Recent Files"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -227,10 +226,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "lit/refwrangle/Perplexity Details.md"
+                "file": "saved_perplexity_chat_youtube_bug.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for Perplexity Details"
+              "title": "File properties for saved_perplexity_chat_youtube_bug"
             }
           },
           {
@@ -309,6 +308,8 @@
   },
   "active": "62a8096f6fe728b6",
   "lastOpenFiles": [
+    "lit/refwrangle/Perplexity Details.md",
+    "saved_perplexity_chat_youtube_bug.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "Politics/Political Causality/US Elections 2024.md",
     "tmp_savemychatbot_multiprompt_perplexity_example 1.md",
@@ -323,7 +324,6 @@
     "Dailies/2023-11-27.md",
     "lit/lit_sources/BaiEstimatingTotalCorrelation.pdf",
     "perplexity_multi_prompt_savemychatbot_example.md",
-    "lit/refwrangle/Perplexity Details.md",
     "tmp_new_cites_perplexity_example.md",
     "refwrangle url file 2.md",
     "Lit Note Summary D Folder.md",
@@ -348,7 +348,6 @@
     "lit/lit_sources/Singh24corrAllTypes.html",
     "lit/lit_sources/Singh24AllTypesCorrelation.html",
     "lit/lit_sources/Galli22mutInfoPython.html",
-    "perplexity_single_prompt_savemychatbot_example.md",
     "Obsidian/attachments/Pasted image 20250129174128.webp",
     "Obsidian/attachments/Pasted image 20250129173055.webp",
     "Clippings/attachments/b0fc57e7b304dcd73cb94f5430796c72_MD5.jpg",
