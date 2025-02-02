@@ -5,8 +5,12 @@
       "path": "tmp_savemychatbot_multiprompt_perplexity_example.md"
     },
     {
-      "basename": "Young23mutInfoMeasEpidem",
-      "path": "lit/lit_notes/Young23mutInfoMeasEpidem.md"
+      "basename": "Seok15mutInfoDiscrtRcrsAdaptPart",
+      "path": "lit/lit_notes/Seok15mutInfoDiscrtRcrsAdaptPart.md"
+    },
+    {
+      "basename": "Seok15mutInfoDiscrtRcrsAdaptPart",
+      "path": "lit/lit_sources/Seok15mutInfoDiscrtRcrsAdaptPart.pdf"
     },
     {
       "basename": "Zbili21entMutInfoQuickEasyEst",
@@ -15,6 +19,10 @@
     {
       "basename": "US Elections 2024",
       "path": "Politics/Political Causality/US Elections 2024.md"
+    },
+    {
+      "basename": "Young23mutInfoMeasEpidem",
+      "path": "lit/lit_notes/Young23mutInfoMeasEpidem.md"
     },
     {
       "basename": "Bai23estTotalCorrMIest",
@@ -31,10 +39,6 @@
     {
       "basename": "Perplexity Details",
       "path": "lit/refwrangle/Perplexity Details.md"
-    },
-    {
-      "basename": "Seok15mutInfoDiscrtRcrsAdaptPart",
-      "path": "lit/lit_notes/Seok15mutInfoDiscrtRcrsAdaptPart.md"
     },
     {
       "basename": "tmp_new_cites_perplexity_example",
@@ -195,10 +199,6 @@
     {
       "basename": "Wodecki24yannLeCunDitchGenAI",
       "path": "lit/lit_notes/Wodecki24yannLeCunDitchGenAI.md"
-    },
-    {
-      "basename": "Dionne24hiddenVictoryProgrssiv",
-      "path": "lit/lit_notes/Dionne24hiddenVictoryProgrssiv.md"
     }
   ],
   "omittedPaths": [],

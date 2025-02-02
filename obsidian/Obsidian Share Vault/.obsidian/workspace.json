@@ -4,6 +4,28 @@
     "type": "split",
     "children": [
       {
+        "id": "c4e2888bf1e2e652",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "37a9bb0436404212",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "lit/lit_sources/Seok15mutInfoDiscrtRcrsAdaptPart.pdf",
+                "page": 1,
+                "left": -17,
+                "top": 786,
+                "zoom": 0.8668248005966981
+              },
+              "icon": "lucide-file-text",
+              "title": "Seok15mutInfoDiscrtRcrsAdaptPart"
+            }
+          }
+        ]
+      },
+      {
         "id": "0d412cf996dd63fb",
         "type": "tabs",
         "children": [
@@ -119,7 +141,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 581.5
+    "width": 581.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -309,16 +332,17 @@
   },
   "active": "62a8096f6fe728b6",
   "lastOpenFiles": [
-    "lit/lit_notes/Young23mutInfoMeasEpidem.md",
+    "lit/lit_notes/Seok15mutInfoDiscrtRcrsAdaptPart.md",
+    "lit/lit_sources/Seok15mutInfoDiscrtRcrsAdaptPart.pdf",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "lit/lit_notes/Zbili21entMutInfoQuickEasyEst.md",
     "Politics/Political Causality/US Elections 2024.md",
+    "lit/lit_notes/Young23mutInfoMeasEpidem.md",
     "lit/lit_notes/Bai23estTotalCorrMIest.md",
     "Dailies/2023-11-27.md",
     "lit/lit_sources/BaiEstimatingTotalCorrelation.pdf",
     "perplexity_multi_prompt_savemychatbot_example.md",
     "lit/refwrangle/Perplexity Details.md",
-    "lit/lit_notes/Seok15mutInfoDiscrtRcrsAdaptPart.md",
     "tmp_new_cites_perplexity_example.md",
     "refwrangle url file 2.md",
     "Lit Note Summary D Folder.md",
@@ -344,11 +368,9 @@
     "lit/lit_sources/Singh24corrAllTypes.html",
     "lit/lit_sources/Singh24AllTypesCorrelation.html",
     "lit/lit_sources/Galli22mutInfoPython.html",
-    "lit/lit_sources/Galli22MutualInformationPython.html",
     "perplexity_single_prompt_savemychatbot_example.md",
     "lit/lit_notes/Mohamed24brandPerceptionChng.md",
     "tmp_perplex_dialog_with_files.md",
-    "tmp_perplex_MI.md",
     "Obsidian/attachments/Pasted image 20250129174128.webp",
     "Obsidian/attachments/Pasted image 20250129173055.webp",
     "Clippings/attachments/b0fc57e7b304dcd73cb94f5430796c72_MD5.jpg",

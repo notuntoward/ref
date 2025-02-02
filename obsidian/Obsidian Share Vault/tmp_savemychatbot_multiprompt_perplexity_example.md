@@ -1,5 +1,5 @@
 ---
-modified date: 2025-02-01T19:13:55-08:00
+modified date: 2025-02-01T19:33:13-08:00
 ---
 ## User
 what is the meaning of mutual information and how do I calculated it from data. Justify your answer with empirical academic sources, or publications from reputable organizations
@@ -62,7 +62,7 @@ In conclusion, mutual information is a robust and flexible measure of statistica
 
 ---
 **Sources:**
-- [(1) Mutual information](https://en.wikipedia.org/wiki/mutual_information) ==[[Zbili21entMutInfoQuickEasyEst]]==
+- [(1) Mutual information](https://en.wikipedia.org/wiki/mutual_information) ==[Galli22mutInfoPython→555NDHRR](zotero://select/library/items/555NDHRR)==
 - [(2) PDF Entropy and Mutual Information](https://people.cs.umass.edu/~elm/teaching/docs/mutinf.pdf) ==[[Zbili21entMutInfoQuickEasyEst]]==
 - [(3) Mutual information with Python - Train in Data's Blog](https://www.blog.trainindata.com/mutual-information-with-python) ==[Galli22mutInfoPython→555NDHRR](zotero://select/library/items/555NDHRR)==
 - [(4) What is Mutual Information? - Quantdare](https://quantdare.com/what-is-mutual-information) ==[Galli22mutInfoPython→555NDHRR](zotero://select/library/items/555NDHRR)==
@@ -174,7 +174,7 @@ Hoeffding's D is less commonly used than mutual information but can be valuable 
 
 ---
 **Sources:**
-- [(1) Mutual information](https://en.wikipedia.org/wiki/mutual_information) ==[[Zbili21entMutInfoQuickEasyEst]]==
+- [(1) Mutual information](https://en.wikipedia.org/wiki/mutual_information) ==[Galli22mutInfoPython→555NDHRR](zotero://select/library/items/555NDHRR)==
 - [(2) PDF Entropy and Mutual Information](https://people.cs.umass.edu/~elm/teaching/docs/mutinf.pdf) ==[[Zbili21entMutInfoQuickEasyEst]]==
 - [(3) Mutual information with Python - Train in Data's Blog](https://www.blog.trainindata.com/mutual-information-with-python) ==[Galli22mutInfoPython→555NDHRR](zotero://select/library/items/555NDHRR)==
 - [(4) What is Mutual Information? - Quantdare](https://quantdare.com/what-is-mutual-information) ==[Galli22mutInfoPython→555NDHRR](zotero://select/library/items/555NDHRR)==
