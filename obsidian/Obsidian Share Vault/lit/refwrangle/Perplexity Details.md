@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-15T14:05:38-08:00
-modified date: 2025-01-30T14:06:50-08:00
+modified date: 2025-02-01T17:29:16-08:00
 ---
 A [[Retrieval Augmented Generation (RAG)]] system comparable to Google's [[NotebookLM]]
 
@@ -8,6 +8,7 @@ A [[Retrieval Augmented Generation (RAG)]] system comparable to Google's [[Noteb
 
 - Nice browser extension for this: [Save my Chatbot](https://github.com/Hugo-COLLIN/SaveMyPhind-conversation-exporter)
 - My bug report: [Code blocks need a newline when perplexity numbers them · Issue #237 · Hugo-COLLIN/SaveMyPhind-conversation-exporter · GitHub](https://github.com/Hugo-COLLIN/SaveMyPhind-conversation-exporter/issues/237)
+- another bug report: [Reference numbers don&#39;t always match sources list, sometimes missing from sources list · Issue #251 · Hugo-COLLIN/SaveMyPhind-conversation-exporter · GitHub](https://github.com/Hugo-COLLIN/SaveMyPhind-conversation-exporter/issues/251)
 ## Perplexity Spaces
 
 ### Refwrangle uses for Perplexity Spaces

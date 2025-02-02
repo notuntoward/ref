@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "tmp_savemychatbot_multiprompt_perplexity_example",
+      "path": "tmp_savemychatbot_multiprompt_perplexity_example.md"
+    },
+    {
       "basename": "perplexity_multi_prompt_savemychatbot_example",
       "path": "perplexity_multi_prompt_savemychatbot_example.md"
     },
     {
-      "basename": "tmp_savemychatbot_multiprompt_perplexity_example",
-      "path": "tmp_savemychatbot_multiprompt_perplexity_example.md"
+      "basename": "Perplexity Details",
+      "path": "lit/refwrangle/Perplexity Details.md"
     },
     {
       "basename": "Zbili21entMutInfoQuickEasyEst",
@@ -87,10 +91,6 @@
     {
       "basename": "Mohamed24brandPerceptionChng",
       "path": "lit/lit_sources/Mohamed24brandPerceptionChng.html"
-    },
-    {
-      "basename": "Perplexity Details",
-      "path": "lit/refwrangle/Perplexity Details.md"
     },
     {
       "basename": "WARCV Lobby Day 2024",
