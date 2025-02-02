@@ -1,3 +1,6 @@
+---
+modified date: 2025-02-01T19:13:55-08:00
+---
 ## User
 what is the meaning of mutual information and how do I calculated it from data. Justify your answer with empirical academic sources, or publications from reputable organizations
 
