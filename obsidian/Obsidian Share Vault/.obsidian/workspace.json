@@ -28,13 +28,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
-                "mode": "source",
-                "source": false,
+                "file": "lit/refwrangle/Perplexity Details.md",
+                "mode": "preview",
+                "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "tmp_savemychatbot_multiprompt_perplexity_example"
+              "title": "Perplexity Details"
             }
           }
         ],
@@ -70,7 +70,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "zotero bug",
+                "query": "\"save my chatbot\"",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -114,7 +114,8 @@
               "title": "Recent Files"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -226,10 +227,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md"
+                "file": "lit/refwrangle/Perplexity Details.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for tmp_savemychatbot_multiprompt_perplexity_example"
+              "title": "File properties for Perplexity Details"
             }
           },
           {
@@ -308,11 +309,11 @@
   },
   "active": "62a8096f6fe728b6",
   "lastOpenFiles": [
-    "lit/lit_notes/Zbili21entMutInfoQuickEasyEst.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "Politics/Political Causality/US Elections 2024.md",
-    "tmp_savemychatbot_multiprompt_perplexity_example 2.md",
     "tmp_savemychatbot_multiprompt_perplexity_example 1.md",
+    "lit/lit_notes/Zbili21entMutInfoQuickEasyEst.md",
+    "tmp_savemychatbot_multiprompt_perplexity_example 2.md",
     "lit/lit_notes/Bai23estTotalCorrMIest.md",
     "lit/lit_notes/Seok15mutInfoDiscrtRcrsAdaptPart.md",
     "lit/lit_notes/Young23mutInfoMeasEpidem.md",
