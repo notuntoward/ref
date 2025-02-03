@@ -10,21 +10,6 @@
           {
             "id": "62a8096f6fe728b6",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                },
-                {
-                  "title": "2025-02-03_08-20-15_Perplexity.ai_Loading a zotero database using pyzotero is very slow. What...",
-                  "icon": "lucide-file",
-                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"2025-02-03_08-20-15_Perplexity.ai_Loading a zotero database using pyzotero is very slow. What....md\",\"mode\":\"source\",\"source\":false,\"backlinks\":false},\"icon\":\"lucide-file\",\"title\":\"2025-02-03_08-20-15_Perplexity.ai_Loading a zotero database using pyzotero is very slow. What...\"}",
-                  "eState": "{\"cursor\":{\"from\":{\"line\":4,\"ch\":0},\"to\":{\"line\":4,\"ch\":0}}}"
-                }
-              ]
-            },
             "state": {
               "type": "markdown",
               "state": {
@@ -40,27 +25,6 @@
           {
             "id": "41693cfb5b8817f9",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                },
-                {
-                  "title": "tmp_savemychatbot_multiprompt_perplexity_example",
-                  "icon": "lucide-file",
-                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"tmp_savemychatbot_multiprompt_perplexity_example.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":false},\"icon\":\"lucide-file\",\"title\":\"tmp_savemychatbot_multiprompt_perplexity_example\"}",
-                  "eState": "{\"cursor\":{\"from\":{\"line\":1617,\"ch\":21},\"to\":{\"line\":1617,\"ch\":21}},\"scroll\":1592.3446056729272}"
-                },
-                {
-                  "title": "2025-02-03_08-20-15_Perplexity.ai_Loading a zotero database using pyzotero is very slow. What...",
-                  "icon": "lucide-file",
-                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"2025-02-03_08-20-15_Perplexity.ai_Loading a zotero database using pyzotero is very slow. What....md\",\"mode\":\"source\",\"source\":false,\"backlinks\":false},\"icon\":\"lucide-file\",\"title\":\"2025-02-03_08-20-15_Perplexity.ai_Loading a zotero database using pyzotero is very slow. What...\"}",
-                  "eState": "{\"cursor\":{\"from\":{\"line\":4,\"ch\":0},\"to\":{\"line\":4,\"ch\":0}}}"
-                }
-              ]
-            },
             "state": {
               "type": "markdown",
               "state": {
@@ -76,15 +40,6 @@
           {
             "id": "e6a2cb37a26c4927",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
             "state": {
               "type": "markdown",
               "state": {
@@ -114,15 +69,6 @@
           {
             "id": "7ee2628547aab10f",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
             "state": {
               "type": "file-explorer",
               "state": {
@@ -136,19 +82,10 @@
           {
             "id": "677d4c9a7cddb77b",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
             "state": {
               "type": "search",
               "state": {
-                "query": "\"save my chatbot\"",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -162,15 +99,6 @@
           {
             "id": "92cbc131a99c4a14",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
             "state": {
               "type": "bookmarks",
               "state": {},
@@ -181,15 +109,6 @@
           {
             "id": "989422cecdd72fec",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
             "state": {
               "type": "daily-note-outline",
               "state": {
@@ -203,15 +122,6 @@
           {
             "id": "fa6de533ff8a3dc8",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
             "state": {
               "type": "recent-files",
               "state": {},
@@ -220,7 +130,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -238,15 +148,6 @@
           {
             "id": "76f4c03f208eb0cc",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
             "state": {
               "type": "backlink",
               "state": {
@@ -266,15 +167,6 @@
           {
             "id": "c1ba2cf93293bfcb",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
             "state": {
               "type": "outgoing-link",
               "state": {
@@ -289,15 +181,6 @@
           {
             "id": "2964e49ee92df99d",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
             "state": {
               "type": "tag",
               "state": {
@@ -311,15 +194,6 @@
           {
             "id": "d6f07a2e6232de3a",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
             "state": {
               "type": "all-properties",
               "state": {
@@ -334,15 +208,6 @@
           {
             "id": "654c5fb15d9b4b80",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
             "state": {
               "type": "outline",
               "state": {
@@ -355,15 +220,6 @@
           {
             "id": "93567fe9a6492699",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
             "state": {
               "type": "calendar",
               "state": {},
@@ -374,15 +230,6 @@
           {
             "id": "5b68815d8cd2778e",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
             "state": {
               "type": "Strange New Worlds",
               "state": {},
@@ -393,15 +240,6 @@
           {
             "id": "0ce6645564590f39",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
             "state": {
               "type": "file-properties",
               "state": {
@@ -414,15 +252,6 @@
           {
             "id": "b22564fa7dd3a798",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
             "state": {
               "type": "custom-frames-google-keep",
               "state": {},
@@ -433,15 +262,6 @@
           {
             "id": "53b0b5d322f741f6",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
             "state": {
               "type": "Strange New Worlds",
               "state": {},
@@ -452,15 +272,6 @@
           {
             "id": "6a070509c455ce95",
             "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
             "state": {
               "type": "advanced-tables-toolbar",
               "state": {},
@@ -514,9 +325,9 @@
   },
   "active": "41693cfb5b8817f9",
   "lastOpenFiles": [
-    "tmp_savemychatbot_multiprompt_perplexity_example.md",
-    "Dailies/2025-02-03.md",
     "2025-02-03_08-20-15_Perplexity.ai_Loading a zotero database using pyzotero is very slow. What....md",
+    "Dailies/2025-02-03.md",
+    "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
     "tmp_new_cites_perplexity_example.md",
     "saved_perplexity_chat_youtube_bug.md",
