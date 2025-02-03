@@ -1,5 +1,6 @@
 ---
 modified date: 2025-02-03T09:26:50-08:00
+created date: 2025-02-03T09:48:12-08:00
 ---
 # Loading a zotero database using pyzotero is very slow. What is the best way to cache it, considering...
 Exported on 03/02/2025 at 08:20:15 [from Perplexity.ai](https://www.perplexity.ai/search/loading-a-zotero-database-usin-kbVbm3pVSiew4LHtSR3wGw) - with [SaveMyChatbot](https://save.hugocollin.com)

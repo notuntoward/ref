@@ -248,10 +248,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md"
+                "file": "2025-02-03_08-20-15_Perplexity.ai_Loading a zotero database using pyzotero is very slow. What....md"
               },
               "icon": "lucide-info",
-              "title": "File properties for tmp_savemychatbot_multiprompt_perplexity_example"
+              "title": "File properties for 2025-02-03_08-20-15_Perplexity.ai_Loading a zotero database using pyzotero is very slow. What..."
             }
           },
           {
@@ -325,15 +325,13 @@
       "cmdr:Outline: Open outline of the current file": false,
       "cmdr:Bookmark Show": false,
       "obsidian-git:Open Git source control": false,
-      "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false,
-      "smart-connections:Open: View Smart Connections": false,
-      "smart-connections:Open: Smart Chat Conversation": false
+      "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false
     }
   },
-  "active": "62a8096f6fe728b6",
+  "active": "fab291f9672f578e",
   "lastOpenFiles": [
-    "2025-02-03_08-20-15_Perplexity.ai_Loading a zotero database using pyzotero is very slow. What....md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
+    "2025-02-03_08-20-15_Perplexity.ai_Loading a zotero database using pyzotero is very slow. What....md",
     "tmp_new_cites_perplexity_example.md",
     "saved_perplexity_chat_youtube_bug.md",
     "lit/lit_sources/BaiEstimatingTotalCorrelation.pdf",
