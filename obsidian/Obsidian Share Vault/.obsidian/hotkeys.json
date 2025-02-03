@@ -915,5 +915,7 @@
       ],
       "key": "]"
     }
-  ]
+  ],
+  "pane-relief:go-next": [],
+  "pane-relief:go-prev": []
 }
