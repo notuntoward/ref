@@ -304,7 +304,9 @@
       "cmdr:Outline: Open outline of the current file": false,
       "cmdr:Bookmark Show": false,
       "obsidian-git:Open Git source control": false,
-      "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false
+      "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false,
+      "smart-connections:Open: View Smart Connections": false,
+      "smart-connections:Open: Smart Chat Conversation": false
     }
   },
   "active": "62a8096f6fe728b6",
