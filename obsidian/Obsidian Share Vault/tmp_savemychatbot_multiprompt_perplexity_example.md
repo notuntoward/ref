@@ -1,3 +1,7 @@
+---
+created date: 2025-02-03T14:21:08-08:00
+modified date: 2025-02-03T14:21:42-08:00
+---
 # What is the meaning of mutual information and how do I calculated it from data. Justify your answer...
 Exported on 30/01/2025 at 20:48:53 [from Perplexity.ai](https://www.perplexity.ai/search/what-is-the-meaning-of-mutual-0KwDqlhiRkWTYiWcFEWU8w) - with [SaveMyChatbot](https://save.hugocollin.com)
 
@@ -57,8 +61,7 @@ While mutual information is a versatile measure, it's important to note:
 
 In conclusion, mutual information is a robust and flexible measure of statistical dependence, widely used in data science and related fields. Its ability to capture complex relationships makes it a valuable tool in modern data analysis.
 
----
-**Sources:**
+### Sources
 - [==(1)== Mutual information](https://en.wikipedia.org/wiki/mutual_information)
 - [(2) PDF Entropy and Mutual Information](https://people.cs.umass.edu/~elm/teaching/docs/mutinf.pdf)
 - [(3) Mutual information with Python - Train in Data's Blog](https://www.blog.trainindata.com/mutual-information-with-python) **[Galli22mutInfoPython➔555NDHRR](zotero://select/library/items/555NDHRR)**
@@ -164,8 +167,7 @@ Limitations:
 
 Hoeffding's D is less commonly used than mutual information but can be valuable for detecting complex relationships in certain scenarios. In conclusion, while mutual information is a powerful and flexible measure of dependency, other metrics can be more appropriate in specific situations. Pearson and Spearman correlations are simpler and more interpretable for linear and monotonic relationships, respectively. Distance correlation and MIC aim to capture a wide range of dependencies, similar to mutual information, but with different computational and interpretability trade-offs. The choice of metric depends on the specific characteristics of the data and the type of relationship being investigated.
 
----
-**Sources:**
+### Sources
 - [==(1)== Mutual information](https://en.wikipedia.org/wiki/mutual_information)
 - [(2) PDF Entropy and Mutual Information](https://people.cs.umass.edu/~elm/teaching/docs/mutinf.pdf)
 - [(3) Mutual information with Python - Train in Data's Blog](https://www.blog.trainindata.com/mutual-information-with-python) **[Galli22mutInfoPython➔555NDHRR](zotero://select/library/items/555NDHRR)**
@@ -259,8 +261,7 @@ Calculating exact total correlation values can be challenging, especially when c
 
 In conclusion, total correlation offers a powerful tool for analyzing multivariate dependencies, complementing traditional correlation measures. Its ability to capture complex relationships makes it valuable in modern data analysis and machine learning applications, despite the challenges in its estimation.
 
----
-**Sources:**
+### Sources
 - [==(1)== How do I measure the relationship between two variables? - AskUs](https://libanswers.lib.miamioh.edu/stats-faq/faq/343635)
 - [(2) PDF Measuring Dependence Powerfully and Equitably](https://jmlr.csail.mit.edu/papers/volume17/15-308/15-308.pdf)
 - [==(3)== Mutual information versus correlation - Cross Validated](https://stats.stackexchange.com/questions/81659/mutual-information-versus-correlation)
