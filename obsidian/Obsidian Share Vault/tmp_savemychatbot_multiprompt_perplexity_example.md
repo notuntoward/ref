@@ -1,5 +1,5 @@
 ---
-modified date: 2025-02-02T18:41:57-08:00
+modified date: 2025-02-02T19:29:08-08:00
 ---
 # What is the meaning of mutual information and how do I calculated it from data. Justify your answer...
 Exported on 30/01/2025 at 20:48:53 [from Perplexity.ai](https://www.perplexity.ai/search/what-is-the-meaning-of-mutual-0KwDqlhiRkWTYiWcFEWU8w) - with [SaveMyChatbot](https://save.hugocollin.com)
@@ -67,27 +67,27 @@ In conclusion, mutual information is a robust and flexible measure of statistica
 ---
 **Sources:**
 - [**(1)** Mutual information](https://en.wikipedia.org/wiki/mutual_information)
-- [**(2)** PDF Entropy and Mutual Information](https://people.cs.umass.edu/~elm/teaching/docs/mutinf.pdf)
+- [(2) PDF Entropy and Mutual Information](https://people.cs.umass.edu/~elm/teaching/docs/mutinf.pdf)
 - [(3) Mutual information with Python - Train in Data's Blog](https://www.blog.trainindata.com/mutual-information-with-python) ==[Galli22mutInfoPython➔555NDHRR](zotero://select/library/items/555NDHRR)==
 - [**(4)** What is Mutual Information? - Quantdare](https://quantdare.com/what-is-mutual-information)
 - [**(5)** Mutual information - Scholarpedia](http://www.scholarpedia.org/article/mutual_information)
 - [(6) Mutual Information between Discrete Variables with Many ... - Nature](https://www.nature.com/articles/srep10981) ==[[Seok15mutInfoDiscrtRcrsAdaptPart]]==
 - [(7) A Quick and Easy Way to Estimate Entropy and Mutual Information ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc8239197) ==[[Zbili21entMutInfoQuickEasyEst]]==
-- [**(8)** Calculating mutual information from experimental data: A primer](https://ai.stanford.edu/~gal/research/redundancy-reduction/neuron_suppl/node2.html)
-- [**(9)** PDF Statistical Validation of Mutual Information Calculations](https://repository.brynmawr.edu/cgi/viewcontent.cgi?article=1037&context=physics_pubs)
+- [(8) Calculating mutual information from experimental data: A primer](https://ai.stanford.edu/~gal/research/redundancy-reduction/neuron_suppl/node2.html)
+- [(9) PDF Statistical Validation of Mutual Information Calculations](https://repository.brynmawr.edu/cgi/viewcontent.cgi?article=1037&context=physics_pubs)
 - [(10) Mutual information: Measuring nonlinear dependence in ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc10132663) ==[[Young23mutInfoMeasEpidem]]==
-- [**(11)** Mutual information - Quantiki](https://www.quantiki.org/wiki/mutual-information)
+- [(11) Mutual information - Quantiki](https://www.quantiki.org/wiki/mutual-information)
 - [**(12)** What is Mutual Information? - Quantdare](https://quantdare.com/what-is-mutual-information)
-- [**(13)** PDF Mutual information - NYU Stern](https://pages.stern.nyu.edu/~dbackus/bcz/entropy/mutual-information-wikipedia.pdf)
-- [**(14)** PDF Some data analyses using mutual information 1 INTRODUCTION](https://www.stat.berkeley.edu/~brill/papers/bjps1.pdf)
-- [**(15)** Understanding Mutual Information - Home - Matthew Kowal](https://mkowal2.github.io/posts/2020/01/understanding-mi)
-- [**(16)** Mutual information - Scholarpedia](http://www.scholarpedia.org/article/mutual_information)
-- [**(17)** Mutual Information | lcalem](https://lcalem.github.io/blog/2018/10/17/mutual-information)
+- [(13) PDF Mutual information - NYU Stern](https://pages.stern.nyu.edu/~dbackus/bcz/entropy/mutual-information-wikipedia.pdf)
+- [(14) PDF Some data analyses using mutual information 1 INTRODUCTION](https://www.stat.berkeley.edu/~brill/papers/bjps1.pdf)
+- [(15) Understanding Mutual Information - Home - Matthew Kowal](https://mkowal2.github.io/posts/2020/01/understanding-mi)
+- [(16) Mutual information - Scholarpedia](http://www.scholarpedia.org/article/mutual_information)
+- [(17) Mutual Information | lcalem](https://lcalem.github.io/blog/2018/10/17/mutual-information)
 - [**(18)** How to calculate mutual information - Mathematics Stack Exchange](https://math.stackexchange.com/questions/3020611/how-to-calculate-mutual-information)
-- [**(19)** PDF Lecture 1: Entropy and mutual information](http://www.ece.tufts.edu/ee/194nit/lect01.pdf)
-- [**(20)** Mutual information - Wikipedia](https://en.wikipedia.org/wiki/mutual_information)
-- [**(21)** PDF Estimation of Entropy and Mutual Information - UC Berkeley Statistics](https://www.stat.berkeley.edu/~binyu/summer08/l2p2.pdf)
-- [**(22)** What is empirical mutual information? - Theoretical Computer ...](https://cstheory.stackexchange.com/questions/33671/what-is-empirical-mutual-information)
+- [(19) PDF Lecture 1: Entropy and mutual information](http://www.ece.tufts.edu/ee/194nit/lect01.pdf)
+- [(20) Mutual information - Wikipedia](https://en.wikipedia.org/wiki/mutual_information)
+- [(21) PDF Estimation of Entropy and Mutual Information - UC Berkeley Statistics](https://www.stat.berkeley.edu/~binyu/summer08/l2p2.pdf)
+- [(22) What is empirical mutual information? - Theoretical Computer ...](https://cstheory.stackexchange.com/questions/33671/what-is-empirical-mutual-information)
 
 
 
@@ -179,46 +179,46 @@ Hoeffding's D is less commonly used than mutual information but can be valuable 
 ---
 **Sources:**
 - [**(1)** Mutual information](https://en.wikipedia.org/wiki/mutual_information)
-- [**(2)** PDF Entropy and Mutual Information](https://people.cs.umass.edu/~elm/teaching/docs/mutinf.pdf)
+- [(2) PDF Entropy and Mutual Information](https://people.cs.umass.edu/~elm/teaching/docs/mutinf.pdf)
 - [(3) Mutual information with Python - Train in Data's Blog](https://www.blog.trainindata.com/mutual-information-with-python) ==[Galli22mutInfoPython➔555NDHRR](zotero://select/library/items/555NDHRR)==
-- [**(4)** What is Mutual Information? - Quantdare](https://quantdare.com/what-is-mutual-information)
-- [**(5)** Mutual information - Scholarpedia](http://www.scholarpedia.org/article/mutual_information)
+- [(4) What is Mutual Information? - Quantdare](https://quantdare.com/what-is-mutual-information)
+- [(5) Mutual information - Scholarpedia](http://www.scholarpedia.org/article/mutual_information)
 - [(6) Mutual Information between Discrete Variables with Many ... - Nature](https://www.nature.com/articles/srep10981) ==[[Seok15mutInfoDiscrtRcrsAdaptPart]]==
 - [(7) A Quick and Easy Way to Estimate Entropy and Mutual Information ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc8239197) ==[[Zbili21entMutInfoQuickEasyEst]]==
-- [**(8)** Calculating mutual information from experimental data: A primer](https://ai.stanford.edu/~gal/research/redundancy-reduction/neuron_suppl/node2.html)
+- [(8) Calculating mutual information from experimental data: A primer](https://ai.stanford.edu/~gal/research/redundancy-reduction/neuron_suppl/node2.html)
 - [**(9)** PDF Statistical Validation of Mutual Information Calculations](https://repository.brynmawr.edu/cgi/viewcontent.cgi?article=1037&context=physics_pubs)
 - [(10) Mutual information: Measuring nonlinear dependence in ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc10132663) ==[[Young23mutInfoMeasEpidem]]==
-- [**(11)** Mutual information - Quantiki](https://www.quantiki.org/wiki/mutual-information)
-- [**(12)** What is Mutual Information? - Quantdare](https://quantdare.com/what-is-mutual-information)
-- [**(13)** PDF Mutual information - NYU Stern](https://pages.stern.nyu.edu/~dbackus/bcz/entropy/mutual-information-wikipedia.pdf)
-- [**(14)** PDF Some data analyses using mutual information 1 INTRODUCTION](https://www.stat.berkeley.edu/~brill/papers/bjps1.pdf)
-- [**(15)** Understanding Mutual Information - Home - Matthew Kowal](https://mkowal2.github.io/posts/2020/01/understanding-mi)
-- [**(16)** Mutual information - Scholarpedia](http://www.scholarpedia.org/article/mutual_information)
+- [(11) Mutual information - Quantiki](https://www.quantiki.org/wiki/mutual-information)
+- [(12) What is Mutual Information? - Quantdare](https://quantdare.com/what-is-mutual-information)
+- [(13) PDF Mutual information - NYU Stern](https://pages.stern.nyu.edu/~dbackus/bcz/entropy/mutual-information-wikipedia.pdf)
+- [(14) PDF Some data analyses using mutual information 1 INTRODUCTION](https://www.stat.berkeley.edu/~brill/papers/bjps1.pdf)
+- [(15) Understanding Mutual Information - Home - Matthew Kowal](https://mkowal2.github.io/posts/2020/01/understanding-mi)
+- [(16) Mutual information - Scholarpedia](http://www.scholarpedia.org/article/mutual_information)
 - [**(17)** Mutual Information | lcalem](https://lcalem.github.io/blog/2018/10/17/mutual-information)
-- [**(18)** How to calculate mutual information - Mathematics Stack Exchange](https://math.stackexchange.com/questions/3020611/how-to-calculate-mutual-information)
-- [**(19)** PDF Lecture 1: Entropy and mutual information](http://www.ece.tufts.edu/ee/194nit/lect01.pdf)
-- [**(20)** Mutual information - Wikipedia](https://en.wikipedia.org/wiki/mutual_information)
-- [**(21)** PDF Estimation of Entropy and Mutual Information - UC Berkeley Statistics](https://www.stat.berkeley.edu/~binyu/summer08/l2p2.pdf)
-- [**(22)** What is empirical mutual information? - Theoretical Computer ...](https://cstheory.stackexchange.com/questions/33671/what-is-empirical-mutual-information)
-- [**(23)** How do I measure the relationship between two variables? - AskUs](https://libanswers.lib.miamioh.edu/stats-faq/faq/343635)
-- [**(24)** PDF Measuring Dependence Powerfully and Equitably](https://jmlr.csail.mit.edu/papers/volume17/15-308/15-308.pdf)
-- [**(25)** Mutual information versus correlation - Cross Validated](https://stats.stackexchange.com/questions/81659/mutual-information-versus-correlation)
-- [**(26)** Why is Mutual information not used as extensively as correlation ...](https://www.reddit.com/r/statistics/comments/18bj0qn/why_is_mutual_information_not_used_as_extensively)
-- [**(27)** Is More Information Always Better in Machine Learn...](https://community.alteryx.com/t5/data-science/is-more-information-always-better-in-machine-learning/ba-p/1181613)
-- [**(28)** Correlation - Wikipedia](https://en.wikipedia.org/wiki/correlation)
-- [**(29)** Correlation pitfalls – Happier times with mutual information?](https://mattiheino.com/2019/05/10/correlation)
-- [**(30)** Correlation vs Mutual Information - Mathemafrica](http://www.mathemafrica.org?p=16127)
-- [**(31)** PDF Lecture 2: Measures of Correlation and Dependence - statistics](https://www.stats.ox.ac.uk/~cucuring/lecture_2_correlations_dependence.pdf)
-- [**(32)** PDF A Comparison of Correlation Measures - Michael Clark](https://m-clark.github.io/docs/correlationcomparison.pdf)
-- [**(33)** How Correlations Quantify the Relationships between Variables](https://www.ringersciences.com/post/understanding-your-data-how-correlations-quantify-the-relationships-between-variables)
-- [**(34)** Correlation : Understanding Relationships in Your Data | Qasim Jaffery](https://www.linkedin.com/pulse/correlation-understanding-relationships-your-data-qasim-jaffery-bxk4f)
-- [**(35)** Four Methods to Statistically Measure Your Data Correlation](https://www.turintech.ai/four-methods-to-statistically-measure-your-data-correlation)
-- [**(36)** PDF Fair Representation Learning: An Alternative to Mutual Information](https://cs.nju.edu.cn/yuanyao/static/kdd2022.pdf)
-- [**(37)** Measures of Relationships | Covariance and Correlation - K2 Analytics](https://www.k2analytics.co.in/covariance-and-correlation)
+- [(18) How to calculate mutual information - Mathematics Stack Exchange](https://math.stackexchange.com/questions/3020611/how-to-calculate-mutual-information)
+- [(19) PDF Lecture 1: Entropy and mutual information](http://www.ece.tufts.edu/ee/194nit/lect01.pdf)
+- [(20) Mutual information - Wikipedia](https://en.wikipedia.org/wiki/mutual_information)
+- [(21) PDF Estimation of Entropy and Mutual Information - UC Berkeley Statistics](https://www.stat.berkeley.edu/~binyu/summer08/l2p2.pdf)
+- [(22) What is empirical mutual information? - Theoretical Computer ...](https://cstheory.stackexchange.com/questions/33671/what-is-empirical-mutual-information)
+- [(23) How do I measure the relationship between two variables? - AskUs](https://libanswers.lib.miamioh.edu/stats-faq/faq/343635)
+- [(24) PDF Measuring Dependence Powerfully and Equitably](https://jmlr.csail.mit.edu/papers/volume17/15-308/15-308.pdf)
+- [(25) Mutual information versus correlation - Cross Validated](https://stats.stackexchange.com/questions/81659/mutual-information-versus-correlation)
+- [(26) Why is Mutual information not used as extensively as correlation ...](https://www.reddit.com/r/statistics/comments/18bj0qn/why_is_mutual_information_not_used_as_extensively)
+- [(27) Is More Information Always Better in Machine Learn...](https://community.alteryx.com/t5/data-science/is-more-information-always-better-in-machine-learning/ba-p/1181613)
+- [(28) Correlation - Wikipedia](https://en.wikipedia.org/wiki/correlation)
+- [(29) Correlation pitfalls – Happier times with mutual information?](https://mattiheino.com/2019/05/10/correlation)
+- [(30) Correlation vs Mutual Information - Mathemafrica](http://www.mathemafrica.org?p=16127)
+- [(31) PDF Lecture 2: Measures of Correlation and Dependence - statistics](https://www.stats.ox.ac.uk/~cucuring/lecture_2_correlations_dependence.pdf)
+- [(32) PDF A Comparison of Correlation Measures - Michael Clark](https://m-clark.github.io/docs/correlationcomparison.pdf)
+- [(33) How Correlations Quantify the Relationships between Variables](https://www.ringersciences.com/post/understanding-your-data-how-correlations-quantify-the-relationships-between-variables)
+- [(34) Correlation : Understanding Relationships in Your Data | Qasim Jaffery](https://www.linkedin.com/pulse/correlation-understanding-relationships-your-data-qasim-jaffery-bxk4f)
+- [(35) Four Methods to Statistically Measure Your Data Correlation](https://www.turintech.ai/four-methods-to-statistically-measure-your-data-correlation)
+- [(36) PDF Fair Representation Learning: An Alternative to Mutual Information](https://cs.nju.edu.cn/yuanyao/static/kdd2022.pdf)
+- [(37) Measures of Relationships | Covariance and Correlation - K2 Analytics](https://www.k2analytics.co.in/covariance-and-correlation)
 - [(38) All Types of Correlation Metrics in Data Science | by Simranjeet Singh](https://python.plainenglish.io/all-types-of-correlation-metrics-in-data-science-4f36e512bec3?gi=fae23aa34bd4) ==[Singh24corrAllTypes➔WIJGHLLI](zotero://select/library/items/WIJGHLLI)==
-- [**(39)** How to measure the relationship between variables](https://towardsdatascience.com/how-to-measure-relationship-between-variables-d0606df27fd8)
-- [**(40)** Mutual information - Wikipedia](https://en.wikipedia.org/wiki/mutual_information)
-- [**(41)** Pearson vs Spearman correlations: practical applications](https://www.surveymonkey.com/market-research/resources/pearson-correlation-vs-spearman-correlation)
+- [(39) How to measure the relationship between variables](https://towardsdatascience.com/how-to-measure-relationship-between-variables-d0606df27fd8)
+- [(40) Mutual information - Wikipedia](https://en.wikipedia.org/wiki/mutual_information)
+- [(41) Pearson vs Spearman correlations: practical applications](https://www.surveymonkey.com/market-research/resources/pearson-correlation-vs-spearman-correlation)
 
 
 
@@ -279,23 +279,23 @@ In conclusion, total correlation offers a powerful tool for analyzing multivaria
 ---
 **Sources:**
 - [**(1)** How do I measure the relationship between two variables? - AskUs](https://libanswers.lib.miamioh.edu/stats-faq/faq/343635)
-- [**(2)** PDF Measuring Dependence Powerfully and Equitably](https://jmlr.csail.mit.edu/papers/volume17/15-308/15-308.pdf)
+- [(2) PDF Measuring Dependence Powerfully and Equitably](https://jmlr.csail.mit.edu/papers/volume17/15-308/15-308.pdf)
 - [**(3)** Mutual information versus correlation - Cross Validated](https://stats.stackexchange.com/questions/81659/mutual-information-versus-correlation)
 - [**(4)** Why is Mutual information not used as extensively as correlation ...](https://www.reddit.com/r/statistics/comments/18bj0qn/why_is_mutual_information_not_used_as_extensively)
 - [**(5)** Is More Information Always Better in Machine Learn...](https://community.alteryx.com/t5/data-science/is-more-information-always-better-in-machine-learning/ba-p/1181613)
 - [**(6)** Correlation - Wikipedia](https://en.wikipedia.org/wiki/correlation)
-- [**(7)** Correlation pitfalls – Happier times with mutual information?](https://mattiheino.com/2019/05/10/correlation)
-- [**(8)** Correlation vs Mutual Information - Mathemafrica](http://www.mathemafrica.org?p=16127)
-- [**(9)** PDF Lecture 2: Measures of Correlation and Dependence - statistics](https://www.stats.ox.ac.uk/~cucuring/lecture_2_correlations_dependence.pdf)
-- [**(10)** PDF A Comparison of Correlation Measures - Michael Clark](https://m-clark.github.io/docs/correlationcomparison.pdf)
-- [**(11)** How Correlations Quantify the Relationships between Variables](https://www.ringersciences.com/post/understanding-your-data-how-correlations-quantify-the-relationships-between-variables)
-- [**(12)** Correlation : Understanding Relationships in Your Data | Qasim Jaffery](https://www.linkedin.com/pulse/correlation-understanding-relationships-your-data-qasim-jaffery-bxk4f)
-- [**(13)** Four Methods to Statistically Measure Your Data Correlation](https://www.turintech.ai/four-methods-to-statistically-measure-your-data-correlation)
-- [**(14)** PDF Fair Representation Learning: An Alternative to Mutual Information](https://cs.nju.edu.cn/yuanyao/static/kdd2022.pdf)
-- [**(15)** Measures of Relationships | Covariance and Correlation - K2 Analytics](https://www.k2analytics.co.in/covariance-and-correlation)
+- [(7) Correlation pitfalls – Happier times with mutual information?](https://mattiheino.com/2019/05/10/correlation)
+- [(8) Correlation vs Mutual Information - Mathemafrica](http://www.mathemafrica.org?p=16127)
+- [(9) PDF Lecture 2: Measures of Correlation and Dependence - statistics](https://www.stats.ox.ac.uk/~cucuring/lecture_2_correlations_dependence.pdf)
+- [(10) PDF A Comparison of Correlation Measures - Michael Clark](https://m-clark.github.io/docs/correlationcomparison.pdf)
+- [(11) How Correlations Quantify the Relationships between Variables](https://www.ringersciences.com/post/understanding-your-data-how-correlations-quantify-the-relationships-between-variables)
+- [(12) Correlation : Understanding Relationships in Your Data | Qasim Jaffery](https://www.linkedin.com/pulse/correlation-understanding-relationships-your-data-qasim-jaffery-bxk4f)
+- [(13) Four Methods to Statistically Measure Your Data Correlation](https://www.turintech.ai/four-methods-to-statistically-measure-your-data-correlation)
+- [(14) PDF Fair Representation Learning: An Alternative to Mutual Information](https://cs.nju.edu.cn/yuanyao/static/kdd2022.pdf)
+- [(15) Measures of Relationships | Covariance and Correlation - K2 Analytics](https://www.k2analytics.co.in/covariance-and-correlation)
 - [(16) All Types of Correlation Metrics in Data Science | by Simranjeet Singh](https://python.plainenglish.io/all-types-of-correlation-metrics-in-data-science-4f36e512bec3?gi=fae23aa34bd4) ==[Singh24corrAllTypes➔WIJGHLLI](zotero://select/library/items/WIJGHLLI)==
-- [**(17)** How to measure the relationship between variables](https://towardsdatascience.com/how-to-measure-relationship-between-variables-d0606df27fd8)
-- [**(18)** Mutual information - Wikipedia](https://en.wikipedia.org/wiki/mutual_information)
-- [**(19)** Pearson vs Spearman correlations: practical applications](https://www.surveymonkey.com/market-research/resources/pearson-correlation-vs-spearman-correlation)
+- [(17) How to measure the relationship between variables](https://towardsdatascience.com/how-to-measure-relationship-between-variables-d0606df27fd8)
+- [(18) Mutual information - Wikipedia](https://en.wikipedia.org/wiki/mutual_information)
+- [(19) Pearson vs Spearman correlations: practical applications](https://www.surveymonkey.com/market-research/resources/pearson-correlation-vs-spearman-correlation)
 
 
