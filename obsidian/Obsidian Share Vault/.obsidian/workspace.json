@@ -29,8 +29,8 @@
               "type": "markdown",
               "state": {
                 "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
-                "mode": "preview",
-                "source": false,
+                "mode": "source",
+                "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
