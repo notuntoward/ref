@@ -1,5 +1,6 @@
 ---
 modified date: 2025-02-02T20:59:35-08:00
+created date: 2025-02-03T00:47:55-08:00
 ---
 # What is the meaning of mutual information and how do I calculated it from data. Justify your answer...
 Exported on 30/01/2025 at 20:48:53 [from Perplexity.ai](https://www.perplexity.ai/search/what-is-the-meaning-of-mutual-0KwDqlhiRkWTYiWcFEWU8w) - with [SaveMyChatbot](https://save.hugocollin.com)
