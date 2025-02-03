@@ -28,13 +28,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "saved_perplexity_chat_youtube_bug.md",
+                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
                 "mode": "preview",
-                "source": true,
+                "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "saved_perplexity_chat_youtube_bug"
+              "title": "tmp_savemychatbot_multiprompt_perplexity_example"
             }
           }
         ],
@@ -226,10 +226,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "saved_perplexity_chat_youtube_bug.md"
+                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for saved_perplexity_chat_youtube_bug"
+              "title": "File properties for tmp_savemychatbot_multiprompt_perplexity_example"
             }
           },
           {
@@ -308,9 +308,9 @@
   },
   "active": "62a8096f6fe728b6",
   "lastOpenFiles": [
+    "saved_perplexity_chat_youtube_bug.md",
     "lit/lit_sources/BaiEstimatingTotalCorrelation.pdf",
     "lit/refwrangle/Perplexity Details.md",
-    "saved_perplexity_chat_youtube_bug.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "Politics/Political Causality/US Elections 2024.md",
     "tmp_savemychatbot_multiprompt_perplexity_example 1.md",
