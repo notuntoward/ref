@@ -412,7 +412,9 @@ To modify your existing script that uses Pyzotero's online API for **read-only**
     *   Use the `local=True` parameter when creating the `Zotero` object in Pyzotero. This tells Pyzotero to use the local HTTP API instead of the online API.
     *   You will still need your Zotero library ID and an API key (generated locally in Zotero for ==local access).==
     
-    Example:```python
+    Example:
+    
+    ```python
     from pyzotero import zotero
     
     # Replace with your library ID and local API key
@@ -429,7 +431,9 @@ To modify your existing script that uses Pyzotero's online API for **read-only**
     ```
     
 3.  **Adjust Endpoint Logic (if needed)***   By default, Pyzotero will handle the endpoint for you when `local=True`. The local API runs at `http://localhost:23119/api/`.
-    *   If you encounter issues with URL generation, you can manually set the `endpoint` attribute:```python
+    *   If you encounter issues with URL generation, you can manually set the `endpoint` attribute:
+    
+    ```python
         zot.endpoint = "http://localhost:23119/api/"
         ```
     
