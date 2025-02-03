@@ -36,19 +36,9 @@
               "icon": "lucide-file",
               "title": "tmp_savemychatbot_multiprompt_perplexity_example"
             }
-          },
-          {
-            "id": "1275f6a46d68b378",
-            "type": "leaf",
-            "state": {
-              "type": "swar8080/AVAILABLE_PLUGIN_UPDATES",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin Updates"
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -317,7 +307,7 @@
       "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false
     }
   },
-  "active": "1275f6a46d68b378",
+  "active": "62a8096f6fe728b6",
   "lastOpenFiles": [
     "tmp_new_cites_perplexity_example.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
