@@ -14,8 +14,8 @@
               "type": "markdown",
               "state": {
                 "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
-                "mode": "preview",
-                "source": true,
+                "mode": "source",
+                "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
@@ -287,13 +287,16 @@
       "cmdr:Outline: Open outline of the current file": false,
       "cmdr:Bookmark Show": false,
       "obsidian-git:Open Git source control": false,
-      "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false
+      "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false,
+      "smart-connections:Open: View Smart Connections": false,
+      "smart-connections:Open: Smart Chat Conversation": false
     }
   },
   "active": "62a8096f6fe728b6",
   "lastOpenFiles": [
-    "tmp_new_cites_perplexity_example.md",
+    "lit/lit_notes/Young23mutInfoMeasEpidem.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
+    "tmp_new_cites_perplexity_example.md",
     "2025-02-03_08-20-15_Perplexity.ai_Loading a zotero database using pyzotero is very slow. What....md",
     "Dailies/2025-02-03.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
@@ -306,7 +309,6 @@
     "tmp_savemychatbot_multiprompt_perplexity_example 2.md",
     "lit/lit_notes/Bai23estTotalCorrMIest.md",
     "lit/lit_notes/Seok15mutInfoDiscrtRcrsAdaptPart.md",
-    "lit/lit_notes/Young23mutInfoMeasEpidem.md",
     "Clippings/–.md",
     "lit/lit_sources/Seok15mutInfoDiscrtRcrsAdaptPart.pdf",
     "Dailies/2023-11-27.md",

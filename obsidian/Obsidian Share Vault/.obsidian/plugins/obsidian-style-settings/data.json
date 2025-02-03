@@ -51,5 +51,6 @@
   "anuppuccin-theme-settings@@h3-weight": 600,
   "anuppuccin-theme-settings@@h4-weight": 600,
   "anuppuccin-theme-settings@@h5-weight": 600,
-  "anuppuccin-theme-settings@@h6-weight": 600
+  "anuppuccin-theme-settings@@h6-weight": 600,
+  "anuppuccin-theme-settings@@ctp-custom-base@@light": "#FFFFFF"
 }

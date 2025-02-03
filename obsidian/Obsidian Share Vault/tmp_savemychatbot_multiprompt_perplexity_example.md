@@ -1,3 +1,6 @@
+---
+modified date: 2025-02-03T12:45:17-08:00
+---
 # What is the meaning of mutual information and how do I calculated it from data. Justify your answer...
 Exported on 30/01/2025 at 20:48:53 [from Perplexity.ai](https://www.perplexity.ai/search/what-is-the-meaning-of-mutual-0KwDqlhiRkWTYiWcFEWU8w) - with [SaveMyChatbot](https://save.hugocollin.com)
 
@@ -16,24 +19,24 @@ Mathematically, the mutual information I(X;Y) between two random variables X and
 1.  It is always non-negative.
 2.  It is symmetric: I(X;Y) = I(Y;X).
 3.  It is zero if and only if X and Y are independent.
-4.  It captures all types of dependence, both linear and nonlinear [[Young23mutInfoMeasEpidem]].
+4.  It captures all types of dependence, both linear and nonlinear [[Young23mutInfoMeasEpidem|fred]].
 
 Calculation from Data
 ---------------------
 
 To calculate mutual information from empirical data, follow these steps:
 
-1.  Estimate the joint probability distribution p(x,y) and marginal distributions p(x) and p(y) from the data.
-2.  For discrete variables, this can be done by counting occurrences and normalizing.
-3.  For continuous variables, discretize the data into bins or use kernel density estimation [Galli22mutInfoPython➔555NDHRR](zotero://select/library/items/555NDHRR) ==[18](https://math.stackexchange.com/questions/3020611/how-to-calculate-mutual-information)==.
-4.  Apply the mutual information formula using the estimated probabilities.
+5.  Estimate the joint probability distribution p(x,y) and marginal distributions p(x) and p(y) from the data.
+6.  For discrete variables, this can be done by counting occurrences and normalizing.
+7.  For continuous variables, discretize the data into bins or use kernel density estimation [Galli22mutInfoPython➔555NDHRR](zotero://select/library/items/555NDHRR) ==[18](https://math.stackexchange.com/questions/3020611/how-to-calculate-mutual-information)==.
+8.  Apply the mutual information formula using the estimated probabilities.
 
 For example, given a dataset with two discrete variables:
 
-1.  Create a contingency table of joint occurrences.
-2.  Normalize the table to get joint probabilities.
-3.  Calculate marginal probabilities by summing rows and columns.
-4.  Apply the MI formula to compute the final result ==[18](https://math.stackexchange.com/questions/3020611/how-to-calculate-mutual-information)==.
+9.  Create a contingency table of joint occurrences.
+10.  Normalize the table to get joint probabilities.
+11.  Calculate marginal probabilities by summing rows and columns.
+12.  Apply the MI formula to compute the final result ==[18](https://math.stackexchange.com/questions/3020611/how-to-calculate-mutual-information)==.
 
 For continuous variables, one approach is to create histograms and treat each bin as a discrete category [20].
 
@@ -42,22 +45,22 @@ Applications and Significance
 
 Mutual information has wide-ranging applications in various fields:
 
-1.  Feature selection in machine learning [Galli22mutInfoPython➔555NDHRR](zotero://select/library/items/555NDHRR) [[Young23mutInfoMeasEpidem]].
-2.  Analyzing gene expression data in bioinformatics [[Seok15mutInfoDiscrtRcrsAdaptPart]].
-3.  Image processing and registration [[Seok15mutInfoDiscrtRcrsAdaptPart]].
-4.  Neuroscience for analyzing neural signals [[Zbili21entMutInfoQuickEasyEst]].
-5.  Epidemiology for identifying relationships in clinical data [[Young23mutInfoMeasEpidem]].
+13.  Feature selection in machine learning [Galli22mutInfoPython➔555NDHRR](zotero://select/library/items/555NDHRR) [[Young23mutInfoMeasEpidem|Young23mutInfoMeasEpidem]].
+14.  Analyzing gene expression data in bioinformatics [[Seok15mutInfoDiscrtRcrsAdaptPart|Seok15mutInfoDiscrtRcrsAdaptPart]].
+15.  Image processing and registration [[Seok15mutInfoDiscrtRcrsAdaptPart|Seok15mutInfoDiscrtRcrsAdaptPart]].
+16.  Neuroscience for analyzing neural signals [[Zbili21entMutInfoQuickEasyEst|Zbili21entMutInfoQuickEasyEst]].
+17.  Epidemiology for identifying relationships in clinical data [[Young23mutInfoMeasEpidem|Young23mutInfoMeasEpidem]].
 
-Its ability to capture nonlinear relationships makes it a powerful tool in data analysis, often complementing or surpassing traditional measures like correlation coefficients [[Young23mutInfoMeasEpidem]] ==[12](https://quantdare.com/what-is-mutual-information/)==.
+Its ability to capture nonlinear relationships makes it a powerful tool in data analysis, often complementing or surpassing traditional measures like correlation coefficients [[Young23mutInfoMeasEpidem|Young23mutInfoMeasEpidem]] ==[12](https://quantdare.com/what-is-mutual-information/)==.
 
 Limitations and Considerations
 ------------------------------
 
 While mutual information is a versatile measure, it's important to note:
 
-1.  Estimating MI from finite samples can be challenging, especially for high-dimensional data [[Zbili21entMutInfoQuickEasyEst]].
-2.  Various bias correction methods exist to improve estimation accuracy [[Seok15mutInfoDiscrtRcrsAdaptPart]].
-3.  Normalized versions of MI have been developed to facilitate comparisons across different scales ==[12](https://quantdare.com/what-is-mutual-information/)==.
+18.  Estimating MI from finite samples can be challenging, especially for high-dimensional data [[Zbili21entMutInfoQuickEasyEst|Zbili21entMutInfoQuickEasyEst]].
+19.  Various bias correction methods exist to improve estimation accuracy [[Seok15mutInfoDiscrtRcrsAdaptPart|Seok15mutInfoDiscrtRcrsAdaptPart]].
+20.  Normalized versions of MI have been developed to facilitate comparisons across different scales ==[12](https://quantdare.com/what-is-mutual-information/)==.
 
 In conclusion, mutual information is a robust and flexible measure of statistical dependence, widely used in data science and related fields. Its ability to capture complex relationships makes it a valuable tool in modern data analysis.
 
@@ -68,11 +71,11 @@ In conclusion, mutual information is a robust and flexible measure of statistica
 - [(3) Mutual information with Python - Train in Data's Blog](https://www.blog.trainindata.com/mutual-information-with-python) **[Galli22mutInfoPython➔555NDHRR](zotero://select/library/items/555NDHRR)**
 - [==(4)== What is Mutual Information? - Quantdare](https://quantdare.com/what-is-mutual-information)
 - [==(5)== Mutual information - Scholarpedia](http://www.scholarpedia.org/article/mutual_information)
-- [(6) Mutual Information between Discrete Variables with Many ... - Nature](https://www.nature.com/articles/srep10981) **[[Seok15mutInfoDiscrtRcrsAdaptPart]]**
-- [(7) A Quick and Easy Way to Estimate Entropy and Mutual Information ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc8239197) **[[Zbili21entMutInfoQuickEasyEst]]**
+- [(6) Mutual Information between Discrete Variables with Many ... - Nature](https://www.nature.com/articles/srep10981) **[[Seok15mutInfoDiscrtRcrsAdaptPart|Seok15mutInfoDiscrtRcrsAdaptPart]]**
+- [(7) A Quick and Easy Way to Estimate Entropy and Mutual Information ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc8239197) **[[Zbili21entMutInfoQuickEasyEst|Zbili21entMutInfoQuickEasyEst]]**
 - [(8) Calculating mutual information from experimental data: A primer](https://ai.stanford.edu/~gal/research/redundancy-reduction/neuron_suppl/node2.html)
 - [(9) PDF Statistical Validation of Mutual Information Calculations](https://repository.brynmawr.edu/cgi/viewcontent.cgi?article=1037&context=physics_pubs)
-- [(10) Mutual information: Measuring nonlinear dependence in ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc10132663) **[[Young23mutInfoMeasEpidem]]**
+- [(10) Mutual information: Measuring nonlinear dependence in ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc10132663) **[[Young23mutInfoMeasEpidem|Young23mutInfoMeasEpidem]]**
 - [(11) Mutual information - Quantiki](https://www.quantiki.org/wiki/mutual-information)
 - [==(12)== What is Mutual Information? - Quantdare](https://quantdare.com/what-is-mutual-information)
 - [(13) PDF Mutual information - NYU Stern](https://pages.stern.nyu.edu/~dbackus/bcz/entropy/mutual-information-wikipedia.pdf)
@@ -180,11 +183,11 @@ Hoeffding's D is less commonly used than mutual information but can be valuable 
 - [(3) Mutual information with Python - Train in Data's Blog](https://www.blog.trainindata.com/mutual-information-with-python) **[Galli22mutInfoPython➔555NDHRR](zotero://select/library/items/555NDHRR)**
 - [(4) What is Mutual Information? - Quantdare](https://quantdare.com/what-is-mutual-information)
 - [(5) Mutual information - Scholarpedia](http://www.scholarpedia.org/article/mutual_information)
-- [(6) Mutual Information between Discrete Variables with Many ... - Nature](https://www.nature.com/articles/srep10981) **[[Seok15mutInfoDiscrtRcrsAdaptPart]]**
-- [(7) A Quick and Easy Way to Estimate Entropy and Mutual Information ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc8239197) **[[Zbili21entMutInfoQuickEasyEst]]**
+- [(6) Mutual Information between Discrete Variables with Many ... - Nature](https://www.nature.com/articles/srep10981) **[[Seok15mutInfoDiscrtRcrsAdaptPart|Seok15mutInfoDiscrtRcrsAdaptPart]]**
+- [(7) A Quick and Easy Way to Estimate Entropy and Mutual Information ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc8239197) **[[Zbili21entMutInfoQuickEasyEst|Zbili21entMutInfoQuickEasyEst]]**
 - [(8) Calculating mutual information from experimental data: A primer](https://ai.stanford.edu/~gal/research/redundancy-reduction/neuron_suppl/node2.html)
 - [==(9)== PDF Statistical Validation of Mutual Information Calculations](https://repository.brynmawr.edu/cgi/viewcontent.cgi?article=1037&context=physics_pubs)
-- [(10) Mutual information: Measuring nonlinear dependence in ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc10132663) **[[Young23mutInfoMeasEpidem]]**
+- [(10) Mutual information: Measuring nonlinear dependence in ...](https://pmc.ncbi.nlm.nih.gov/articles/pmc10132663) **[[Young23mutInfoMeasEpidem|Young23mutInfoMeasEpidem]]**
 - [(11) Mutual information - Quantiki](https://www.quantiki.org/wiki/mutual-information)
 - [(12) What is Mutual Information? - Quantdare](https://quantdare.com/what-is-mutual-information)
 - [(13) PDF Mutual information - NYU Stern](https://pages.stern.nyu.edu/~dbackus/bcz/entropy/mutual-information-wikipedia.pdf)
@@ -230,9 +233,9 @@ Definition and Interpretation
 
 The total correlation C(X₁, X₂, ..., Xₙ) for a set of n random variables is defined as: $C(X_1,X_2,...,X_n)=\sum_{i=1}^nH(X_i)-H(X_1,X_2,...,X_n)$ Where H(Xᵢ) is the entropy of the i-th variable and H(X₁, X₂, ..., Xₙ) is the joint entropy of all variables ==[1](https://en.wikipedia.org/wiki/Total_correlation)==. Total correlation can be interpreted as:
 
-1.  The Kullback-Leibler divergence between the joint distribution and the product of marginal distributions.
-2.  The amount of information shared among the variables.
-3.  The reduction in uncertainty about the entire set when considering all variables together.
+21.  The Kullback-Leibler divergence between the joint distribution and the product of marginal distributions.
+22.  The amount of information shared among the variables.
+23.  The reduction in uncertainty about the entire set when considering all variables together.
 
 Properties and Characteristics
 ------------------------------
@@ -249,27 +252,27 @@ Comparison with Other Measures
 
 Total correlation differs from other correlation measures in several ways:
 
-1.  **Scope**: Unlike Pearson or Spearman correlations, which measure pairwise relationships, total correlation captures dependencies among multiple variables simultaneously ==[4](https://stats.stackexchange.com/questions/81659/mutual-information-versus-correlation)==.
-2.  **Nonlinearity**: Total correlation can detect both linear and nonlinear relationships, making it more versatile than traditional correlation coefficients ==[5](http://www.mathemafrica.org/?p=16127)==.
-3.  **Information theory basis**: Being rooted in information theory, total correlation provides a different perspective on variable relationships compared to statistical correlation measures ==[1](https://en.wikipedia.org/wiki/Total_correlation)==.
+24.  **Scope**: Unlike Pearson or Spearman correlations, which measure pairwise relationships, total correlation captures dependencies among multiple variables simultaneously ==[4](https://stats.stackexchange.com/questions/81659/mutual-information-versus-correlation)==.
+25.  **Nonlinearity**: Total correlation can detect both linear and nonlinear relationships, making it more versatile than traditional correlation coefficients ==[5](http://www.mathemafrica.org/?p=16127)==.
+26.  **Information theory basis**: Being rooted in information theory, total correlation provides a different perspective on variable relationships compared to statistical correlation measures ==[1](https://en.wikipedia.org/wiki/Total_correlation)==.
 
 Applications and Significance
 -----------------------------
 
 Total correlation has found applications in various fields:
 
-1.  **Machine Learning**: Used as a regularizer in learning tasks to minimize or maximize correlations among latent embeddings ==[3](https://arxiv.org/abs/2011.04794)== ==[6](https://proceedings.mlr.press/v206/bai23a/bai23a.pdf)==.
-2.  **Data Analysis**: Helps in understanding complex relationships in multivariate datasets ==[1](https://en.wikipedia.org/wiki/Total_correlation)==.
-3.  **Feature Selection**: Can be used to identify relevant features by quantifying their collective information content ==[3](https://arxiv.org/abs/2011.04794)==.
+27.  **Machine Learning**: Used as a regularizer in learning tasks to minimize or maximize correlations among latent embeddings ==[3](https://arxiv.org/abs/2011.04794)== ==[6](https://proceedings.mlr.press/v206/bai23a/bai23a.pdf)==.
+28.  **Data Analysis**: Helps in understanding complex relationships in multivariate datasets ==[1](https://en.wikipedia.org/wiki/Total_correlation)==.
+29.  **Feature Selection**: Can be used to identify relevant features by quantifying their collective information content ==[3](https://arxiv.org/abs/2011.04794)==.
 
 Estimation and Challenges
 -------------------------
 
 Calculating exact total correlation values can be challenging, especially when closed-form distributions are unknown. Recent research has focused on developing estimation methods:
 
-1.  **Mutual Information Decomposition**: Approaches like TCeld (Total Correlation Estimator via Linear Decomposition) decompose total correlation into mutual information terms, which can be estimated using variational methods ==[3](https://arxiv.org/abs/2011.04794)== ==[6](https://proceedings.mlr.press/v206/bai23a/bai23a.pdf)==.
-2.  **Sample-based Estimators**: Techniques have been developed to estimate total correlation from data samples without assuming specific distributions ==[6](https://proceedings.mlr.press/v206/bai23a/bai23a.pdf)==.
-3.  **Consistency and Bounds**: Theoretical analyses provide insights into the statistical consistency of these estimators and their performance bounds ==[6](https://proceedings.mlr.press/v206/bai23a/bai23a.pdf)==.
+30.  **Mutual Information Decomposition**: Approaches like TCeld (Total Correlation Estimator via Linear Decomposition) decompose total correlation into mutual information terms, which can be estimated using variational methods ==[3](https://arxiv.org/abs/2011.04794)== ==[6](https://proceedings.mlr.press/v206/bai23a/bai23a.pdf)==.
+31.  **Sample-based Estimators**: Techniques have been developed to estimate total correlation from data samples without assuming specific distributions ==[6](https://proceedings.mlr.press/v206/bai23a/bai23a.pdf)==.
+32.  **Consistency and Bounds**: Theoretical analyses provide insights into the statistical consistency of these estimators and their performance bounds ==[6](https://proceedings.mlr.press/v206/bai23a/bai23a.pdf)==.
 
 In conclusion, total correlation offers a powerful tool for analyzing multivariate dependencies, complementing traditional correlation measures. Its ability to capture complex relationships makes it valuable in modern data analysis and machine learning applications, despite the challenges in its estimation.
 
