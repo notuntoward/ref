@@ -410,7 +410,7 @@ To modify your existing script that uses Pyzotero's online API for **read-only**
 2.  **Modify the Pyzotero Initialization**
     
     *   Use the `local=True` parameter when creating the `Zotero` object in Pyzotero. This tells Pyzotero to use the local HTTP API instead of the online API.
-    *   You will still need your Zotero library ID and an API key (generated locally in Zotero for local access).
+    *   You will still need your Zotero library ID and an API key (generated locally in Zotero for ==local access).==
     
     Example:```python
     from pyzotero import zotero
