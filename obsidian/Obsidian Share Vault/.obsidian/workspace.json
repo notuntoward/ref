@@ -11,10 +11,15 @@
             "id": "17fc50611c3d12eb",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "tmp_savemychatbot_multiprompt_perplexity_example"
             }
           }
         ]
@@ -93,12 +98,12 @@
               "title": "Recent Files"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 581.5,
-    "collapsed": true
+    "width": 581.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -174,12 +179,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of tmp_savemychatbot_multiprompt_perplexity_example"
             }
           },
           {
@@ -207,9 +213,11 @@
             "type": "leaf",
             "state": {
               "type": "file-properties",
-              "state": {},
+              "state": {
+                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md"
+              },
               "icon": "lucide-info",
-              "title": "File properties"
+              "title": "File properties for tmp_savemychatbot_multiprompt_perplexity_example"
             }
           },
           {
