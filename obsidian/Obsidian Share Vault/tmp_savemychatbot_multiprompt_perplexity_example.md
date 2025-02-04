@@ -1,5 +1,5 @@
 ---
-modified date: 2025-02-03T19:52:48-08:00
+modified date: 2025-02-03T20:25:55-08:00
 ---
 # What is the meaning of mutual information and how do I calculated it from data. Justify your answer...
 Exported on 30/01/2025 at 20:48:53 [from Perplexity.ai](https://www.perplexity.ai/search/what-is-the-meaning-of-mutual-0KwDqlhiRkWTYiWcFEWU8w) - with [SaveMyChatbot](https://save.hugocollin.com)
@@ -8,7 +8,7 @@ Exported on 30/01/2025 at 20:48:53 [from Perplexity.ai](https://www.perplexity.a
 # User: "What is the meaning of mutual information and how do..."
 what is the meaning of mutual information and how do I calculated it from data. Justify your answer with empirical academic sources, or publications from reputable organizations
 
-## AI answer
+### AI answer
 Mutual information (MI) is a fundamental concept in information theory that measures the mutual dependence between two random variables. It quantifies the amount of information obtained about one random variable by observing another random variable ==[1](https://en.wikipedia.org/wiki/Mutual_Information)== ==[5](http://www.scholarpedia.org/article/Mutual_information)==. In other words, mutual information indicates how much knowing one variable reduces uncertainty about the other.
 
 ## Definition and Interpretation
@@ -89,7 +89,7 @@ In conclusion, mutual information is a robust and flexible measure of statistica
 # User: "Are there other metrics that calculate such a relationship? Compare..."
 Are there other metrics that calculate such a relationship? Compare their merits to those of mutual information
 
-## AI answer
+### AI answer
 There are indeed several other metrics that can be used to calculate relationships between variables, each with its own strengths and limitations compared to mutual information. Here are some key alternatives:
 
 ## Pearson Correlation Coefficient
@@ -214,7 +214,7 @@ Hoeffding's D is less commonly used than mutual information but can be valuable 
 # User: "How about total correlation..."
 How about total correlation
 
-## AI answer
+### AI answer
 Total correlation, also known as multivariate constraint or multiinformation, is a generalization of mutual information that quantifies the dependency among a set of random variables. It measures the amount of redundancy or shared information within a group of variables.
 
 ## Definition and Interpretation
