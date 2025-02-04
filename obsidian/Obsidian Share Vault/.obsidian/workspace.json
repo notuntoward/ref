@@ -4,22 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "9c577fdd643e99d1",
+        "id": "64ca407ce5c05bb4",
         "type": "tabs",
         "children": [
           {
-            "id": "079ebbcb686f1e5a",
+            "id": "896412e2da5b6742",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "tmp_savemychatbot_multiprompt_perplexity_example"
+              "title": "New tab"
             }
           }
         ]
@@ -178,13 +173,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of tmp_savemychatbot_multiprompt_perplexity_example"
+              "title": "Outline"
             }
           },
           {
@@ -212,11 +206,9 @@
             "type": "leaf",
             "state": {
               "type": "file-properties",
-              "state": {
-                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md"
-              },
+              "state": {},
               "icon": "lucide-info",
-              "title": "File properties for tmp_savemychatbot_multiprompt_perplexity_example"
+              "title": "File properties"
             }
           },
           {
@@ -294,8 +286,9 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "079ebbcb686f1e5a",
+  "active": "896412e2da5b6742",
   "lastOpenFiles": [
+    "received_file.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "lit/lit_notes/3Blue1Brown24visAttenTransfrmr.md",
     "lit/lit_sources/25WAEngineersLaunched.html",
@@ -335,7 +328,6 @@
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",
     "Clippings/attachments/673e3898b72e33125e5dcb2278f3cd42_MD5.png",
-    "Clippings/FarmCraft101 – Finishing the Track Adjusters on Large Marge.  Case 170B Excavator.md",
     "Obsidian/attachments/Pasted image 20250129174128.webp",
     "Obsidian/attachments/Pasted image 20250129173055.webp",
     "Clippings/attachments/b0fc57e7b304dcd73cb94f5430796c72_MD5.jpg",
