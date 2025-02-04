@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "perplexity_multi_prompt_savemychatbot_example",
+      "path": "perplexity_multi_prompt_savemychatbot_example.md"
+    },
+    {
       "basename": "tmp_savemychatbot_multiprompt_perplexity_example",
       "path": "tmp_savemychatbot_multiprompt_perplexity_example.md"
     },
@@ -51,10 +55,6 @@
     {
       "basename": "2023-11-27",
       "path": "Dailies/2023-11-27.md"
-    },
-    {
-      "basename": "perplexity_multi_prompt_savemychatbot_example",
-      "path": "perplexity_multi_prompt_savemychatbot_example.md"
     },
     {
       "basename": "refwrangle url file 2",
