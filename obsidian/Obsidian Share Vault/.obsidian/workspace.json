@@ -4,17 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "2cfc9a12b8ebbf44",
+        "id": "9ffb2523239adcb4",
         "type": "tabs",
         "children": [
           {
-            "id": "360be613fdb1420f",
+            "id": "62329b20fd5e7843",
             "type": "leaf",
             "state": {
-              "type": "custom-frames-google-calendar",
-              "state": {},
-              "icon": "lucide-calendar",
-              "title": "Google Calendar"
+              "type": "markdown",
+              "state": {
+                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "tmp_savemychatbot_multiprompt_perplexity_example"
             }
           }
         ]
@@ -97,7 +102,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 581.5
+    "width": 581.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -173,12 +179,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of tmp_savemychatbot_multiprompt_perplexity_example"
             }
           },
           {
@@ -206,9 +213,11 @@
             "type": "leaf",
             "state": {
               "type": "file-properties",
-              "state": {},
+              "state": {
+                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md"
+              },
               "icon": "lucide-info",
-              "title": "File properties"
+              "title": "File properties for tmp_savemychatbot_multiprompt_perplexity_example"
             }
           },
           {
@@ -286,7 +295,7 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "360be613fdb1420f",
+  "active": "62329b20fd5e7843",
   "lastOpenFiles": [
     "perplexity_multi_prompt_savemychatbot_example.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
