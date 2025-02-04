@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "088d289d121b6f7a",
+        "id": "4089b78107e49ab9",
         "type": "tabs",
         "children": [
           {
-            "id": "bb4068d462d0a66e",
+            "id": "77d11cc3d8eff34b",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -295,7 +295,7 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "bb4068d462d0a66e",
+  "active": "77d11cc3d8eff34b",
   "lastOpenFiles": [
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "saved_perplexity_chat_youtube_bug.md",
