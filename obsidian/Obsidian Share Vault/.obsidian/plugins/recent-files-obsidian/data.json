@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "received_file",
+      "path": "received_file.md"
+    },
+    {
       "basename": "tmp_savemychatbot_multiprompt_perplexity_example",
       "path": "tmp_savemychatbot_multiprompt_perplexity_example.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Poplawski12dimmingLEDs",
       "path": "lit/lit_notes/Poplawski12dimmingLEDs.md"
-    },
-    {
-      "basename": "Smith10ModelingLongitudinalData",
-      "path": "lit/lit_notes/Smith10ModelingLongitudinalData.md"
     }
   ],
   "omittedPaths": [],
