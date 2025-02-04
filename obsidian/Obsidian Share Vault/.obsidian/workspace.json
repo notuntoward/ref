@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "b7f6f2379e4f0130",
+        "id": "9c577fdd643e99d1",
         "type": "tabs",
         "children": [
           {
-            "id": "83b9a302cd1104d6",
+            "id": "079ebbcb686f1e5a",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -250,7 +250,7 @@
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -294,7 +294,7 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "0ce6645564590f39",
+  "active": "079ebbcb686f1e5a",
   "lastOpenFiles": [
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "lit/lit_notes/3Blue1Brown24visAttenTransfrmr.md",

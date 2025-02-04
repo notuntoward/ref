@@ -1,7 +1,6 @@
 ---
 category: aichat
-created date: 2025-02-03 22:04:32.693000
-modified date: 2025-02-03T22:09:51-08:00
+created date: 2025-02-03 22:27:31.555847
 ---
 Exported on 30/01/2025 at 20:48:53 [from Perplexity.ai](https://www.perplexity.ai/search/what-is-the-meaning-of-mutual-0KwDqlhiRkWTYiWcFEWU8w) - with [SaveMyChatbot](https://save.hugocollin.com)   
 # User: "What is the meaning of mutual information and how do..."
