@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "64ca407ce5c05bb4",
+        "id": "0828ed6b6c78eab6",
         "type": "tabs",
         "children": [
           {
-            "id": "896412e2da5b6742",
+            "id": "17fc50611c3d12eb",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -97,7 +97,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 581.5
+    "width": 581.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -246,7 +247,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 511.5
+    "width": 511.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -286,8 +288,10 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "896412e2da5b6742",
+  "active": "17fc50611c3d12eb",
   "lastOpenFiles": [
+    "lit/lit_sources/Chait25demsShowWhyLost.html",
+    "lit/lit_sources/Chait25DemocratsShowWhy.html",
     "received_file.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "lit/lit_notes/3Blue1Brown24visAttenTransfrmr.md",
@@ -319,11 +323,9 @@
     "Lit Note Summary D Folder.md",
     "refwrangle Urls file 1.md",
     "lit/lit_sources/MMSDataModelSummary_v5.2.pdf",
-    "lit/lit_sources/MMSDataModelSummary.pdf",
     "Work/Between Jobs/QCELLs offboarding/WA Unemployment.md",
     "download.md",
     "Dailies/2025-01-31.md",
-    "Clippings/Mutual information - Wikipedia.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",
