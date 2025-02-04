@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "fe039c2418810f95",
+        "id": "96162aa4441df896",
         "type": "tabs",
         "children": [
           {
-            "id": "24ea6ea9bf185a95",
+            "id": "0e886b1f69293a91",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -246,8 +246,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 511.5,
-    "collapsed": true
+    "width": 511.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -287,7 +286,7 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "24ea6ea9bf185a95",
+  "active": "0e886b1f69293a91",
   "lastOpenFiles": [
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "lit/lit_sources/Leonhardt25econAheadElseBehind.html",
