@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "0d412cf996dd63fb",
+        "id": "088d289d121b6f7a",
         "type": "tabs",
         "children": [
           {
-            "id": "62a8096f6fe728b6",
+            "id": "bb4068d462d0a66e",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -295,10 +295,10 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "62a8096f6fe728b6",
+  "active": "bb4068d462d0a66e",
   "lastOpenFiles": [
-    "saved_perplexity_chat_youtube_bug.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
+    "saved_perplexity_chat_youtube_bug.md",
     "tmp_new_cites_perplexity_example.md",
     "lit/lit_sources/Tjostheim22depByndPearson.pdf",
     "lit/lit_sources/Tjostheim22depBeyondPearson.pdf",
