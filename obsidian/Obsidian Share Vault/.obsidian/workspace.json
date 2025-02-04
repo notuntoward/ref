@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "9ffb2523239adcb4",
+        "id": "b7f6f2379e4f0130",
         "type": "tabs",
         "children": [
           {
-            "id": "62329b20fd5e7843",
+            "id": "83b9a302cd1104d6",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -102,8 +102,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 581.5,
-    "collapsed": true
+    "width": 581.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -295,11 +294,11 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "62329b20fd5e7843",
+  "active": "0ce6645564590f39",
   "lastOpenFiles": [
+    "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "lit/lit_notes/3Blue1Brown24visAttenTransfrmr.md",
     "lit/lit_sources/25WAEngineersLaunched.html",
-    "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "perplexity_multi_prompt_savemychatbot_example.md",
     "saved_perplexity_chat_youtube_bug.md",
     "tmp_new_cites_perplexity_example.md",
