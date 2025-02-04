@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "3Blue1Brown24visAttenTransfrmr",
+      "path": "lit/lit_notes/3Blue1Brown24visAttenTransfrmr.md"
+    },
+    {
+      "basename": "25WAEngineersLaunched",
+      "path": "lit/lit_sources/25WAEngineersLaunched.html"
+    },
+    {
       "basename": "tmp_savemychatbot_multiprompt_perplexity_example",
       "path": "tmp_savemychatbot_multiprompt_perplexity_example.md"
     },
@@ -191,10 +199,6 @@
     {
       "basename": "Smith10ModelingLongitudinalData",
       "path": "lit/lit_notes/Smith10ModelingLongitudinalData.md"
-    },
-    {
-      "basename": "Kris & Mary's dimmable LED kitchen lights",
-      "path": "House Projects/Kris & Mary's dimmable LED kitchen lights.md"
     }
   ],
   "omittedPaths": [],
