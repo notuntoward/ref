@@ -1,11 +1,12 @@
 ---
-modified date: 2025-02-03T18:01:00-08:00
+created date: 2025-02-03T18:25:15-08:00
+modified date: 2025-02-03T18:25:15-08:00
 ---
 # What is the meaning of mutual information and how do I calculated it from data. Justify your answer...
 Exported on 30/01/2025 at 20:48:53 [from Perplexity.ai](https://www.perplexity.ai/search/what-is-the-meaning-of-mutual-0KwDqlhiRkWTYiWcFEWU8w) - with [SaveMyChatbot](https://save.hugocollin.com)
 
 
-"What is the meaning of mutual information and how do"
+## User: "What is the meaning of mutual information and how do..."
 what is the meaning of mutual information and how do I calculated it from data. Justify your answer with empirical academic sources, or publications from reputable organizations
 
 ## AI answer
@@ -86,7 +87,7 @@ In conclusion, mutual information is a robust and flexible measure of statistica
 
 
 
-"Are there other metrics that calculate such a relationship? Compare"
+## User: "Are there other metrics that calculate such a relationship? Compare..."
 Are there other metrics that calculate such a relationship? Compare their merits to those of mutual information
 
 ## AI answer
@@ -211,7 +212,7 @@ Hoeffding's D is less commonly used than mutual information but can be valuable 
 
 
 
-"How about total correlation ## AI answer Total correlation, also"
+## User: "How about total correlation..."
 How about total correlation
 
 ## AI answer
