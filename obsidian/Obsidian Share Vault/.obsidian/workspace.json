@@ -4,17 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "96162aa4441df896",
+        "id": "df70b0e42f083b75",
         "type": "tabs",
         "children": [
           {
-            "id": "0e886b1f69293a91",
+            "id": "94ca496b2595d3bd",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "tmp_savemychatbot_multiprompt_perplexity_example"
             }
           }
         ]
@@ -173,12 +178,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of tmp_savemychatbot_multiprompt_perplexity_example"
             }
           },
           {
@@ -246,7 +252,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 511.5
+    "width": 511.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -281,10 +288,11 @@
       "cmdr:Outline: Open outline of the current file": false,
       "cmdr:Bookmark Show": false,
       "obsidian-git:Open Git source control": false,
-      "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false
+      "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false,
+      "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "0e886b1f69293a91",
+  "active": "94ca496b2595d3bd",
   "lastOpenFiles": [
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "lit/lit_sources/Leonhardt25econAheadElseBehind.html",
