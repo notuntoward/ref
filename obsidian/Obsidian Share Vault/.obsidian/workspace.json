@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "a2ac61f5af109a8f",
+        "id": "3ceac8fa848704bb",
         "type": "tabs",
         "children": [
           {
-            "id": "8de590644cbfef6a",
+            "id": "0861ace5b731ed0f",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -274,7 +274,6 @@
       "mermaid-tools:Open Mermaid Toolbar": false,
       "obsidian-custom-frames:Open Google Calendar": false,
       "obsidian-importer:Open Importer": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false,
       "cmdr:Daily Note Outline: Open Outline": false,
       "cmdr:Custom Frames: Open Google Keep": false,
       "cmdr:Recent Files: Open": false,
@@ -287,7 +286,7 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "8de590644cbfef6a",
+  "active": "0861ace5b731ed0f",
   "lastOpenFiles": [
     "perplexity_2025-02-04_18-56-54.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
