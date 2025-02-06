@@ -4,22 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "df70b0e42f083b75",
+        "id": "a2ac61f5af109a8f",
         "type": "tabs",
         "children": [
           {
-            "id": "94ca496b2595d3bd",
+            "id": "8de590644cbfef6a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "tmp_savemychatbot_multiprompt_perplexity_example"
+              "title": "New tab"
             }
           }
         ]
@@ -102,7 +97,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 581.5
+    "width": 581.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -178,13 +174,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of tmp_savemychatbot_multiprompt_perplexity_example"
+              "title": "Outline"
             }
           },
           {
@@ -292,8 +287,9 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "94ca496b2595d3bd",
+  "active": "8de590644cbfef6a",
   "lastOpenFiles": [
+    "perplexity_2025-02-04_18-56-54.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "lit/lit_sources/Leonhardt25econAheadElseBehind.html",
     "lit/lit_sources/Leonhardt25USEconomyRacing.html",
