@@ -11,10 +11,15 @@
             "id": "0861ace5b731ed0f",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Work/VPP ideas/Generative AI talk/Gen AI Talk Ideas.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Gen AI Talk Ideas"
             }
           }
         ]
@@ -49,7 +54,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "benchmarks",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -93,7 +98,8 @@
               "title": "Recent Files"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -174,12 +180,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "lit/lit_notes/Rajpurkar25robotDoctor.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of Rajpurkar25robotDoctor"
             }
           },
           {
@@ -207,9 +214,11 @@
             "type": "leaf",
             "state": {
               "type": "file-properties",
-              "state": {},
+              "state": {
+                "file": "lit/lit_notes/Rajpurkar25robotDoctor.md"
+              },
               "icon": "lucide-info",
-              "title": "File properties"
+              "title": "File properties for Rajpurkar25robotDoctor"
             }
           },
           {
@@ -243,12 +252,11 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
-    "width": 511.5,
-    "collapsed": true
+    "width": 511.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -286,8 +294,12 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "0861ace5b731ed0f",
+  "active": "0ce6645564590f39",
   "lastOpenFiles": [
+    "Work/VPP ideas/Generative AI talk/Gen AI Talk Ideas.md",
+    "lit/lit_sources/Rajpurkar25robotDoctor.html",
+    "lit/lit_sources/Unconfirmed 431034.crdownload",
+    "lit/lit_notes/Rajpurkar25robotDoctor.md",
     "lit/lit_sources/Rajpurkar25OrobotDoctor.html",
     "lit/lit_sources/Rajpurkar25OpinionRobotDoctor.html",
     "perplexity_2025-02-04_18-56-54.md",
@@ -303,9 +315,6 @@
     "saved_perplexity_chat_youtube_bug.md",
     "tmp_new_cites_perplexity_example.md",
     "lit/lit_sources/Tjostheim22depByndPearson.pdf",
-    "lit/lit_sources/Tjostheim22depBeyondPearson.pdf",
-    "lit/lit_sources/Tjostheim22statDepByndPears.pdf",
-    "lit/lit_sources/Tjostheim22StatisticalDependencePearsonsa.pdf",
     "lit/lit_notes/Young23mutInfoMeasEpidem.md",
     "2025-02-03_08-20-15_Perplexity.ai_Loading a zotero database using pyzotero is very slow. What....md",
     "Dailies/2025-02-03.md",
@@ -323,7 +332,6 @@
     "Lit Note Summary D Folder.md",
     "refwrangle Urls file 1.md",
     "Work/Between Jobs/QCELLs offboarding/WA Unemployment.md",
-    "download.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",

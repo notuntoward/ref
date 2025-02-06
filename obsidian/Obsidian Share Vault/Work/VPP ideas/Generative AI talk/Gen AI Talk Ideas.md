@@ -4,7 +4,7 @@ tags:
   - ml/zeroshot
   - ml/genAI
 created date: 2024-10-22T09:21:55-07:00
-modified date: 2025-01-11T11:02:12-08:00
+modified date: 2025-02-06T10:14:17-08:00
 ---
 **TODO** get all Zotero "Generative AI" collection into this
 **TODO** get all related browser tab groups into this
@@ -806,6 +806,8 @@ not designed to solve social problems: [[Birch24genAIwasteTimeMoney|Generative a
 - Did queries? [[Barousse24dataAnlystGPT4Outperf|Study: GPT-4 outperforms Data Analysts]]
 ## Sentiment Analysis
 - (Weber24implicitCoordInflateShock): model shows people feel good about price increases during shortages (could also predict voters feeling good)
+## Medicine
+- [[Rajpurkar25robotDoctor|Rajpurkar25: The Robot Doctor Will See You Now]]: sometimes useful and safe now but you have to do it right
 ## Test / Synthetic Data Generation
 - [Using generative AI to improve software testing](zotero://select/library/items/TFAA7VRT): weather, I think.  test patterns.  Future grid sims?
 - [Evaluating LLM Applications Hayes 2024](zotero://select/library/items/VL9LM73G)
