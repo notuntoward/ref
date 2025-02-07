@@ -124,7 +124,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 581.5
+    "width": 581.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -200,13 +201,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Dailies/2025-02-07.md",
+                "file": "lit/refwrangle/Zotero to Obsidian to RAG.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 2025-02-07"
+              "title": "Outline of Zotero to Obsidian to RAG"
             }
           },
           {
@@ -235,10 +236,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Dailies/2025-02-07.md"
+                "file": "lit/refwrangle/Zotero to Obsidian to RAG.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for 2025-02-07"
+              "title": "File properties for Zotero to Obsidian to RAG"
             }
           },
           {
@@ -316,14 +317,15 @@
       "note-atomizer:Atomize note": false
     }
   },
-  "active": "4fef84348c134ee3",
+  "active": "d62023471c64b50f",
   "lastOpenFiles": [
+    "Dailies/2025-02-07.md",
+    "lit/refwrangle/Zotero to Obsidian to RAG.md",
+    "Dailies/2024-02-25.md",
+    "lit/lit_sources/Unconfirmed 981641.crdownload",
     "lit/lit_sources/White25datReconcileGay.html",
     "lit/lit_sources/White25OpinionHowMy.html",
     "Dailies/2025-02-06.md",
-    "Dailies/2025-02-07.md",
-    "Dailies/2024-02-25.md",
-    "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "Clippings/Mutual information - Wikipedia.md",
     "Dailies/2024-04-11.md",
     "atomic-notes/Historical Context.md",
@@ -350,8 +352,6 @@
     "perplexity_2025-02-04_18-56-54.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "lit/lit_sources/Leonhardt25econAheadElseBehind.html",
-    "lit/lit_sources/Leonhardt25USEconomyRacing.html",
-    "lit/lit_sources/Chait25demsShowWhyLost.html",
     "received_file.md",
     "lit/lit_notes/3Blue1Brown24visAttenTransfrmr.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
