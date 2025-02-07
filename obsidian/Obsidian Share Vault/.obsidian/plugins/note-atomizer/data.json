@@ -1,0 +1,7 @@
+{
+  "apiKey": "",
+  "outputFolder": "atomic-notes",
+  "model": "gpt-4o-mini",
+  "enableAtomizedTag": true,
+  "customTags": ""
+}
