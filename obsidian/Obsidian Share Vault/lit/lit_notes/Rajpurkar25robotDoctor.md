@@ -21,7 +21,7 @@ ZoteroCollections:
   - ai_and_health
   - general_ai
 created date: 2025-02-06T10:06:00-08:00
-modified date: 2025-02-06T10:15:19-08:00
+modified date: 2025-02-06T15:47:30-08:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/TEICBHWW)   | [**URL**](https://www.nytimes.com/2025/02/02/opinion/ai-doctors-medicine.html) | **[[Rajpurkar25robotDoctor]]**
