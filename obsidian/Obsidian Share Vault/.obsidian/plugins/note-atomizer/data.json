@@ -1,5 +1,5 @@
 {
-  "apiKey": "",
+  "apiKey": "sk-VEaSJLAenqJt4Eanze_deSswdIVxQnFmaKExXhDdAIT3BlbkFJzo-MFo0vgXE37-iauyq2Ubav4JhtTA_ZZ_D9KxVg8A",
   "outputFolder": "atomic-notes",
   "model": "gpt-4o-mini",
   "enableAtomizedTag": true,

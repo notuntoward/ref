@@ -1,6 +1,50 @@
 {
   "recentFiles": [
     {
+      "basename": "Mutual information - Wikipedia",
+      "path": "Clippings/Mutual information - Wikipedia.md"
+    },
+    {
+      "basename": "Applications of Mutual Information",
+      "path": "atomic-notes/Applications of Mutual Information.md"
+    },
+    {
+      "basename": "Calculation for Continuous Variables",
+      "path": "atomic-notes/Calculation for Continuous Variables.md"
+    },
+    {
+      "basename": "Calculation for Discrete Variables",
+      "path": "atomic-notes/Calculation for Discrete Variables.md"
+    },
+    {
+      "basename": "Definition of Mutual Information",
+      "path": "atomic-notes/Definition of Mutual Information.md"
+    },
+    {
+      "basename": "Historical Context",
+      "path": "atomic-notes/Historical Context.md"
+    },
+    {
+      "basename": "Mutual Information in Information Theory",
+      "path": "atomic-notes/Mutual Information in Information Theory.md"
+    },
+    {
+      "basename": "Mutual Information vs. Correlation",
+      "path": "atomic-notes/Mutual Information vs. Correlation.md"
+    },
+    {
+      "basename": "Properties of Mutual Information",
+      "path": "atomic-notes/Properties of Mutual Information.md"
+    },
+    {
+      "basename": "Relationship to Entropy",
+      "path": "atomic-notes/Relationship to Entropy.md"
+    },
+    {
+      "basename": "Variations of Mutual Information",
+      "path": "atomic-notes/Variations of Mutual Information.md"
+    },
+    {
       "basename": "2025-02-06",
       "path": "Dailies/2025-02-06.md"
     },
@@ -125,10 +169,6 @@
       "path": "Dailies/2025-01-31.md"
     },
     {
-      "basename": "Mutual information - Wikipedia",
-      "path": "Clippings/Mutual information - Wikipedia.md"
-    },
-    {
       "basename": "FarmCraft101 – Finishing the Track Adjusters on Large Marge.  Case 170B Excavator",
       "path": "Clippings/FarmCraft101 – Finishing the Track Adjusters on Large Marge.  Case 170B Excavator.md"
     },
@@ -159,46 +199,6 @@
     {
       "basename": "Obsidian and GIT Repo",
       "path": "Obsidian/Obsidian and GIT Repo.md"
-    },
-    {
-      "basename": "All Tasks Summary",
-      "path": "All Tasks Summary.md"
-    },
-    {
-      "basename": "University Forecasting Research Search",
-      "path": "Work/VPP ideas/Research Ideas/University Forecasting Research Search.md"
-    },
-    {
-      "basename": "University Pick Process Mermaid Diagram",
-      "path": "Work/VPP ideas/Research Ideas/University Pick Process Mermaid Diagram.md"
-    },
-    {
-      "basename": "Top N Forcasting Unis",
-      "path": "Work/VPP ideas/Research Ideas/Top N Forcasting Unis.md"
-    },
-    {
-      "basename": "Research Group Ideas",
-      "path": "Work/VPP ideas/Research Ideas/Research Group Ideas.md"
-    },
-    {
-      "basename": "Proposal docs for battery optimization",
-      "path": "Work/VPP ideas/Research Ideas/Proposal docs for battery optimization.md"
-    },
-    {
-      "basename": "Algorithm Plan",
-      "path": "Work/VPP ideas/Research Ideas/Algorithm Plan.md"
-    },
-    {
-      "basename": "Conferences",
-      "path": "Work/VPP ideas/Research Ideas/Conferences.md"
-    },
-    {
-      "basename": "Algorithms for AEMO",
-      "path": "Work/VPP ideas/AEMO/Algorithms for AEMO.md"
-    },
-    {
-      "basename": "Athena",
-      "path": "Software Dev/Athena.md"
     }
   ],
   "omittedPaths": [],
