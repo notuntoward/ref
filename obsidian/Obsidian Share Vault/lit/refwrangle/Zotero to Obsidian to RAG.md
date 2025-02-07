@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-02-07T14:45:07-08:00
+modified date: 2025-02-07T15:17:09-08:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -178,6 +178,9 @@ I think what I need is a way to add a button to Zotero that makes an obsidian no
 		- or maybe one of the direct SQL python libs?
 	- [ways to interface with python to obsidian (perplexity)](https://www.perplexity.ai/search/what-are-all-the-ways-python-c-FHKyuIXRQfS75w9b0e35kA)
 ## Starting an Obsidian command from an external program
+### Sending a command to obsidian from zotero
+- [zotero plugin to do it (perplexity)](https://www.perplexity.ai/search/i-would-like-zotero-to-start-a-tHD7P3cGTDui5gd5gXr4zA)
+### Receiving a command in Obsidian 
 - [Remotely running an obsidian command  (perplexity)](https://www.perplexity.ai/search/is-there-an-obsidian-api-that-K9k8PCB6QuaOZxdbziW8qw)
 	- could use this to run the [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
 		- would still have that annoying zotero popup though
