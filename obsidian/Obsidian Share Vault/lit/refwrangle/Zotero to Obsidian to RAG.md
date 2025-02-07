@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-02-07T14:30:41-08:00
+modified date: 2025-02-07T14:37:27-08:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -189,7 +189,7 @@ I think what I need is a way to add a button to Zotero that makes an obsidian no
 	- [Obsidian URI Scheme](https://help.obsidian.md/Extending+Obsidian/Obsidian+URI)
 	- [URI Commands](https://github.com/kzhovn/uri-commands-obsidian)
 	- [Advanced URI Plugin](https://github.com/kzhovn/uri-commands-obsidian)
-- 
+	- [Local REST API for Obsidian](https://coddingtonbear.github.io/obsidian-local-rest-api/)
 ## Obsidian plugins which are zotero DB interfaces
 - [[Dailies/2025-02-07.md#Obsidian Zotero Sync Client Plugin |Obsidian Zotero Sync Client Plugin]]
 	- directly accesses the zotero DB, and you can add javascript make an obsidian literature note title and contents
