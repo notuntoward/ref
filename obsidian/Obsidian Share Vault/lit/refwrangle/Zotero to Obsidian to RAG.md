@@ -176,6 +176,11 @@ I think what I need is a way to add a button to Zotero that makes an obsidian no
 	- [pyzotero](<lit/refwrangle/Zotero to Obsidian to RAG.md#^xy71 >) seems best for zotero
 		- or maybe one of the direct SQL python libs?
 	- [ways to interface with python to obsidian (perplexity)](https://www.perplexity.ai/search/what-are-all-the-ways-python-c-FHKyuIXRQfS75w9b0e35kA)
+- [Remotely running an obsidian command  (perplexity)](https://www.perplexity.ai/search/is-there-an-obsidian-api-that-K9k8PCB6QuaOZxdbziW8qw)
+	- could use this to run the [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
+		- would still have that annoying zotero popup though
+			- unless you could make it start the "classic" interface first
+		- @ OR unless you used an API, which accepts keys ([can do with zotero integration and zotero bridge plugins](https://www.perplexity.ai/search/is-there-an-api-that-would-all-.O2.uzPHS.KixPqwqKvkrw) 
 
 # Zotero DB Facts
 
