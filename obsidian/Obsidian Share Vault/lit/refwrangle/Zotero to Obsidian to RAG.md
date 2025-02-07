@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-02-06T16:55:52-08:00
+modified date: 2025-02-06T18:32:02-08:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -149,25 +149,37 @@ Zotero _Better Notes Add-on has a way of two-way syncing Obsidian Markdown_ note
 
 Could use the to reduce the steps and friction between getting a note into zotero and the **immediately making an Obsidian literature note properly linked to Zotero**, so that I actually get this done, instead of letting the unlinked zotero entries pile up, or even skipping making the zotero note at all.
 
-## SQL to SQL Zotero/Obsidian connection
+I think what I need is a way to add a button to Zotero that makes an obsidian note(s) on the current or selected group of notes.
+
+## SQL SQL Zotero/Obsidian connection
 - [[Dailies/2025-02-06.md#SQLSeal plugin |SQLSeal plugin]]  
 	- Obsidian --> SQL --> Obsidian (automatically, I think)
 	- [ ] ? but can it make a page?
-	- It's [said](https://www.reddit.com/r/ObsidianMD/comments/ze8b7d/database_long_term/) that there's no SQL DB inside obsidian, notes are the only DB. 
-- [pyzotero](https://github.com/urschrei/pyzotero) connects directly to obsidian DB
-	- not direct to SQL but using a query
+	- **No SQL DB inside obsidian**, as notes are the only DB, it is [said](https://www.reddit.com/r/ObsidianMD/comments/ze8b7d/database_long_term/).  
+- [pyzotero](https://github.com/urschrei/pyzotero) connects directly to zoter SQLite DB ^xy71
+	- not direct to SQL but using Zotero's official API
+		- does that insulate the user from internal Zotero SQLite changes?
 	- could output a csv or json? for SQLSeal, somehow
 - [methods for querying Zotero SQLite](https://www.perplexity.ai/search/what-are-all-the-ways-of-direc-W7LoFkYaTsCx57vd4EGVuA)
 - [python methods for directly querying Zotero SQLite + Tips](https://www.perplexity.ai/search/what-are-all-the-ways-of-direc-PK5MaMzPQiSG2PCPrwX2rw)
 	- [sqlite3](https://docs.python.org/3/library/sqlite3.html): a built-in libary
 	- Tips link above has several examples
 	- [zoteroutils](https://github.com/piyueh/zoteroutils): no commits in five years (from Feb, 2025)
-	- [pyzottk](https://github.com/sbrisard/pyzottk/commits/master/):  no commits in six years (from Feb, 2025
+	- [pyzottk](https://github.com/sbrisard/pyzottk/commits/master/):  no commits in six years (from Feb, 2025)
+# Programming interfaces to Obsidian and Zotero
+- [Obsidian plugs are written in Typescript, ](https://forum.obsidian.md/t/which-programming-language-to-create-plugins-for-obsidian/11261/4)
+	- [TypeScript: JavaScript With Syntax For Types.](https://www.typescriptlang.org/)
+	- [Should You Learn TypeScript? A Coder&#039;s Guide for 2025](https://careerfoundry.com/en/blog/web-development/learn-typescript/)
+- [Zotero Plugins are written in Javascript](https://www.zotero.org/support/dev/client_coding/plugin_development)
+	- and they advise that using an external tool might be easier than learning how to make a plugin
+- Python interfaces
+	- [pyzotero](<lit/refwrangle/Zotero to Obsidian to RAG.md#^xy71 >) seems best for zotero
+		- or maybe one of the direct SQL python libs?
+	- [ways to interface with python to obsidian (perplexity)](https://www.perplexity.ai/search/what-are-all-the-ways-python-c-FHKyuIXRQfS75w9b0e35kA)
 
 # Zotero DB Facts
 
 - It's [directly accessible SQLite](https://www.zotero.org/support/dev/client_coding/direct_sqlite_database_access)
 - [kb:item\_types\_and\_fields \[...](https://www.zotero.org/support/kb/item_types_and_fields)
-- 
 # Web Scraping
 - see [[Politics/Political Causality/US Elections 2024.md#Political Data Sources |Political Data Sources]]
