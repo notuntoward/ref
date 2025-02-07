@@ -1,30 +1,31 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-01-19T09:03:55-08:00
+modified date: 2025-02-06T16:15:52-08:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
 
 I'm putting this code in `ref/refwrangle`.  Also see [[Zotero 6 to 7]].
-# Problems to solve before using NotebookLM
+# Zotero to NotebookLM
+## Problems to solve before using NotebookLM
 
-## YouTube: can't point to a specific point in a video
+### YouTube: can't point to a specific point in a video
 It can cite an entire YT video as a source, but it can't highlight a specific passage in the transcript: it just highlights the whole thing.
-## Manual entry
+### Manual entry
 Every single source must be entered manually. I have hundreds of articles, so this is not tenable.
-## Total data limit
+### Total data limit
 There's a limit on the total bytes of data uploaded, as well as a size limit for each file.
-## Some web sites files can't be imported
+### Some web sites files can't be imported
 For example, [WA shifted (slightly) right in...](https://www.seattletimes.com/seattle-news/data/wa-shifted-slightly-right-in-2024-though-many-counties-moved-left/) can't be imported. It seems that NLM can read the website but, due to "source restrictions" it can't point you to the line where some point is made. This does work for some web pages, for example [Election 2024: How and why you...](https://apnews.com/article/young-black-latino-men-trump-economy-jobs-9184ca85b1651f06fd555ab2df7982b5).
-# Tasks
+## Tasks
 
-## Avoid manual entry by lumping all sources into giant files
+### Avoid manual entry by lumping all sources into giant files
 - [ ] # consider pdf merging using PyMuPDF ([see perplexity](https://www.perplexity.ai/search/can-pymupdf4llm-preserve-meta-5ToaZGOvRVedgdXwjDlOig#2)). Help with metadata, somehow with PyMuPDF4LLM?
 - [ ] # Consider using google docs: [[lit/lit_notes/NotebookLM.md#Data Required, Best practices |Data Required, Best practices]]. Help with metadata?
 - [x] can NLM distinguish sources in lumped together pdfs? Must do by hand
 - [x] test if multiple web sites can be distinguished of lumped together: doesn't seem possible, must do by hand
 - [x] same for YT videos: by hand
-## Convert web pages to pdfs
+### Convert web pages to pdfs
 - NLM is good at simplifying and cleaning web pages when given URLs; 
 - [ ] ? is it equally good at cleaning pdfs made from web pages?
 - if so, it doesn't seem necessary to clean them, unless the extra content runs over the data limit
@@ -74,13 +75,13 @@ For example, [WA shifted (slightly) right in...](https://www.seattletimes.com/se
 			- project is poorly maintained and almost undocumented!
 			- ? but can at least get a header with a non-clickable html basename. Good enough, since NLM might strip it anyway?
 	- [ ] ? use the successful **beautiful soup** part to `weasyprint` tests to clean the html, then `wkhtmltopdf` to make the pdf?
-## PDFs to markdown
+### PDFs to markdown
 - **Don't need to do** this as long as I'm using NLM
 - But for the record, `pymupdf4llm` seems to work ^xslw
 	- [The PDF Extraction Revolution: Why PymuPDF4llm is Your New Best Friend (and LlamaParse is Crying)](https://ai.gopubby.com/the-pdf-extraction-revolution-why-pymupdf4llm-is-your-new-best-friend-and-llamaparse-is-crying-e57882dee7f8)
 	- does a good job with pdf output by `wkhtmltopdf`
 - for NLM would need to convert the .md back to .pdf again
-## Easier Obsidian Lit Notes from Zotero Entries
+### Easier Obsidian Lit Notes from Zotero Entries
 
 - [[2024-02-25#Bulk Obsidian Literature Note Creation From Zotero|Bulk Obsidian Literature Note Creation From Zotero]]
 - A [script](https://forum.obsidian.md/t/automatically-import-new-papers-from-zotero-to-obsidian/79057/2?u=scotto) which uses BetterBibtex Zotero Plugin and [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]].  
@@ -89,8 +90,59 @@ For example, [WA shifted (slightly) right in...](https://www.seattletimes.com/se
 - Make it frictionless to make a quick note in zotero turn it into an obsidian obsidian note.  
 	- Is this satisfied by above?
 	- [[Obsidian/Zotero 6 to 7.md#MarkDB-Connect Zotero Plugin|MarkDB-Connect Zotero Plugin]] will show the new notes automatically in zotero
-# Can either download and strip from a URL, or can strip an already downloaded html file
+## Can either download and strip from a URL, or can strip an already downloaded html file
 - convert youtube transcripts to pdfs
+
+# Zotero entries to Obsidian Literature Notes
+
+# Zotero <--> Obsidian Links
+
+Zotero _Better Notes Add-on has a way of two-way syncing Obsidian Markdown_ notes.  It worked but then it broke (Oct. 2023).  Would be nice to get 2-way syncing working, but in the meantime, here are simpler ways.
+
+- [[Dailies/2024-02-25.md#Zotero Integration Plugin |Zotero Integration Plugin]]
+	- I'm using it
+	- Is very good at converting zotero entry data into data structures usable by obsidian
+	- plugin templates handle much formatting of obsidian stuff, but nunjucks is a PITA
+	- But it's clunky because getting a lit note into obsidian is a >1 step process
+	-  [[Zotero 6 to 7#MarkDB-Connect Zotero Plugin|MarkDB-Connect]] helps find which entries you've hooked up
+
+**Related and similar**:  [[2023-10-08#OneNote <--> Obsidian Links|OneNote <--> Obsidian Links]]
+### Plugins: Zotero <--> Obsidian Links
+#### Zotero Plugins
+
+##### MarkDB-Connect Plugin
+- see [[Zotero 6 to 7#MarkDB-Connect Zotero Plugin|MarkDB-Connect]]
+##### Better Notes Plugin
+- [zotero-better-notes](https://github.com/windingwind/zotero-better-notes)
+- 2-way markdown sync?  Fragile?  Lots of other stuff I'm not sure I care about
+#### Obsidian Plugins
+* **Roll your own**: [Linking from Obsidian to Zotero](https://forum.obsidian.md/t/linking-from-obsidian-to-zotero/29128)
+* [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]: seemed best to me in 2023
+* [obsidian-citation-plugin](https://github.com/hans/obsidian-citation-plugin): was this was broken in 2023
+* [[2024-03-06#Zotero Link|Zotero Link]] is the easiest
+### Manual (not using e.g. Zotero Integration Plugin)
+
+#### Links to Obsidian inside of a Zotero Note
+
+1. Put cursor on Obsidian page or block you want to jump to (e.g. from inside Zotero)
+	- If Page
+		- right click on page
+		- select: "Copy Advanced URI" OR "Copy Obsidian URL" (either works)
+	- Else if Block
+		- In command pallet: type "URI"
+		- Select the command that _Advanced URI: copy URI for current block_
+		- <u>This only works if page is in a writeable mode</u>
+2. Paste into a Zotero note, by highlight some text in the zotero note and either:
+	1. _Ctrl+K_ (finicky)
+	2. clicking zotero's link icon
+
+#### Links to Zotero inside of Obsidian
+
+1. Put cursor on Zotero item/note/...you want to jump to (e.g. from inside Obsidian)
+2. Right click and select "copy select item links"
+3. Paste into a Zotero note e.g. by highlighting some link text and typing _Ctrl+K_
+
+**MORE**: [[Manual Links to Zotero]]
 # Zotero DB Facts
 
 - [kb:item\_types\_and\_fields \[...](https://www.zotero.org/support/kb/item_types_and_fields)

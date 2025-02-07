@@ -70,5 +70,6 @@
   "obsidian-meta-bind-plugin",
   "obsidian-git",
   "ink",
-  "note-toolbar"
+  "note-toolbar",
+  "sqlseal"
 ]

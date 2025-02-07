@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "2023-10-08",
+      "path": "Dailies/2023-10-08.md"
+    },
+    {
+      "basename": "Zotero to Obsidian to RAG",
+      "path": "lit/refwrangle/Zotero to Obsidian to RAG.md"
+    },
+    {
+      "basename": "2023-10-12",
+      "path": "Dailies/2023-10-12.md"
+    },
+    {
+      "basename": "2024-02-25",
+      "path": "Dailies/2024-02-25.md"
+    },
+    {
+      "basename": "2025-02-06",
+      "path": "Dailies/2025-02-06.md"
+    },
+    {
       "basename": "Rajpurkar25robotDoctor",
       "path": "lit/lit_notes/Rajpurkar25robotDoctor.md"
     },
@@ -145,10 +165,6 @@
       "path": "All Tasks Summary.md"
     },
     {
-      "basename": "Zotero to Obsidian to RAG",
-      "path": "lit/refwrangle/Zotero to Obsidian to RAG.md"
-    },
-    {
       "basename": "University Forecasting Research Search",
       "path": "Work/VPP ideas/Research Ideas/University Forecasting Research Search.md"
     },
@@ -183,22 +199,6 @@
     {
       "basename": "Athena",
       "path": "Software Dev/Athena.md"
-    },
-    {
-      "basename": "Existing CAISO Forecast Types",
-      "path": "Work/VPP ideas/CAISO/Existing CAISO Forecast Types.md"
-    },
-    {
-      "basename": "Market Details (CAISO)",
-      "path": "Work/VPP ideas/CAISO/Market Details (CAISO).md"
-    },
-    {
-      "basename": "CAISO Papers to Start With",
-      "path": "Work/VPP ideas/CAISO/CAISO Papers to Start With.md"
-    },
-    {
-      "basename": "Shi19optBattCtrlAging",
-      "path": "lit/lit_notes/Shi19optBattCtrlAging.md"
     }
   ],
   "omittedPaths": [],
