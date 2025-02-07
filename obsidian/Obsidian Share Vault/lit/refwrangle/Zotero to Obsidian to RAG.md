@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-02-06T16:15:52-08:00
+modified date: 2025-02-06T16:55:52-08:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -105,6 +105,7 @@ Zotero _Better Notes Add-on has a way of two-way syncing Obsidian Markdown_ note
 	- plugin templates handle much formatting of obsidian stuff, but nunjucks is a PITA
 	- But it's clunky because getting a lit note into obsidian is a >1 step process
 	-  [[Zotero 6 to 7#MarkDB-Connect Zotero Plugin|MarkDB-Connect]] helps find which entries you've hooked up
+	- 
 
 **Related and similar**:  [[2023-10-08#OneNote <--> Obsidian Links|OneNote <--> Obsidian Links]]
 ### Plugins: Zotero <--> Obsidian Links
@@ -143,8 +144,30 @@ Zotero _Better Notes Add-on has a way of two-way syncing Obsidian Markdown_ note
 3. Paste into a Zotero note e.g. by highlighting some link text and typing _Ctrl+K_
 
 **MORE**: [[Manual Links to Zotero]]
+
+# Direct zotero/obsidan DB-to-DB connection?
+
+Could use the to reduce the steps and friction between getting a note into zotero and the **immediately making an Obsidian literature note properly linked to Zotero**, so that I actually get this done, instead of letting the unlinked zotero entries pile up, or even skipping making the zotero note at all.
+
+## SQL to SQL Zotero/Obsidian connection
+- [[Dailies/2025-02-06.md#SQLSeal plugin |SQLSeal plugin]]  
+	- Obsidian --> SQL --> Obsidian (automatically, I think)
+	- [ ] ? but can it make a page?
+	- It's [said](https://www.reddit.com/r/ObsidianMD/comments/ze8b7d/database_long_term/) that there's no SQL DB inside obsidian, notes are the only DB. 
+- [pyzotero](https://github.com/urschrei/pyzotero) connects directly to obsidian DB
+	- not direct to SQL but using a query
+	- could output a csv or json? for SQLSeal, somehow
+- [methods for querying Zotero SQLite](https://www.perplexity.ai/search/what-are-all-the-ways-of-direc-W7LoFkYaTsCx57vd4EGVuA)
+- [python methods for directly querying Zotero SQLite + Tips](https://www.perplexity.ai/search/what-are-all-the-ways-of-direc-PK5MaMzPQiSG2PCPrwX2rw)
+	- [sqlite3](https://docs.python.org/3/library/sqlite3.html): a built-in libary
+	- Tips link above has several examples
+	- [zoteroutils](https://github.com/piyueh/zoteroutils): no commits in five years (from Feb, 2025)
+	- [pyzottk](https://github.com/sbrisard/pyzottk/commits/master/):  no commits in six years (from Feb, 2025
+
 # Zotero DB Facts
 
+- It's [directly accessible SQLite](https://www.zotero.org/support/dev/client_coding/direct_sqlite_database_access)
 - [kb:item\_types\_and\_fields \[...](https://www.zotero.org/support/kb/item_types_and_fields)
+- 
 # Web Scraping
 - see [[Politics/Political Causality/US Elections 2024.md#Political Data Sources |Political Data Sources]]
