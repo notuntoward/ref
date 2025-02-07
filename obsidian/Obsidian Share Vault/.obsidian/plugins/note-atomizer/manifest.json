@@ -1,0 +1,11 @@
+{
+	"id": "note-atomizer",
+	"name": "Atomizer",
+	"version": "1.0.1",
+	"minAppVersion": "0.15.0",
+	"description": "Turn any text into insightful atomic notes.",
+	"author": "Zac Bagley",
+	"authorUrl": "https://binx.page",
+	"fundingUrl": "https://buymeacoffee.com/binxly",
+	"isDesktopOnly": false
+}
