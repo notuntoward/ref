@@ -75,7 +75,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "\"smart connections plugin\"",
+                "query": "\"zotero link plugin\"",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -119,7 +119,8 @@
               "title": "Recent Files"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -317,9 +318,10 @@
   },
   "active": "4fef84348c134ee3",
   "lastOpenFiles": [
-    "lit/refwrangle/Zotero to Obsidian to RAG.md",
-    "Dailies/2025-02-07.md",
     "Dailies/2025-02-06.md",
+    "Dailies/2025-02-07.md",
+    "Dailies/2024-02-25.md",
+    "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "Clippings/Mutual information - Wikipedia.md",
     "Dailies/2024-04-11.md",
     "atomic-notes/Historical Context.md",
@@ -336,7 +338,6 @@
     "2025-02-03_08-20-15_Perplexity.ai_Loading a zotero database using pyzotero is very slow. What....md",
     "Dailies/2023-10-08.md",
     "Dailies/2023-10-12.md",
-    "Dailies/2024-02-25.md",
     "lit/lit_notes/Rajpurkar25robotDoctor.md",
     "lit/lit_sources/Allison25WashingtonReelsTrumps.html",
     "Work/VPP ideas/Generative AI talk/Gen AI Talk Ideas.md",
