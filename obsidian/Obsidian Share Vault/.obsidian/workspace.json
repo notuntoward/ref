@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lit/refwrangle/Zotero to Obsidian to RAG.md",
+                "file": "lit/lit_notes/Alammar18illustratedTransformer.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Zotero to Obsidian to RAG"
+              "title": "Alammar18illustratedTransformer"
             }
           }
         ]
@@ -119,13 +119,11 @@
               "title": "Recent Files"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 581.5,
-    "collapsed": true
+    "width": 581.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -201,13 +199,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "lit/refwrangle/Zotero to Obsidian to RAG.md",
+                "file": "Dailies/2025-02-07.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Zotero to Obsidian to RAG"
+              "title": "Outline of 2025-02-07"
             }
           },
           {
@@ -236,10 +234,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "lit/refwrangle/Zotero to Obsidian to RAG.md"
+                "file": "Dailies/2025-02-07.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for Zotero to Obsidian to RAG"
+              "title": "File properties for 2025-02-07"
             }
           },
           {
@@ -317,10 +315,11 @@
       "note-atomizer:Atomize note": false
     }
   },
-  "active": "d62023471c64b50f",
+  "active": "4fef84348c134ee3",
   "lastOpenFiles": [
-    "Dailies/2025-02-07.md",
+    "lit/lit_notes/Alammar18illustratedTransformer.md",
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
+    "Dailies/2025-02-07.md",
     "Dailies/2024-02-25.md",
     "lit/lit_sources/Unconfirmed 981641.crdownload",
     "lit/lit_sources/White25datReconcileGay.html",
