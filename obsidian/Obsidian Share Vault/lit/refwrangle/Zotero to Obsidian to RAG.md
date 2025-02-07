@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-02-07T13:24:15-08:00
+modified date: 2025-02-07T14:30:41-08:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -167,6 +167,7 @@ I think what I need is a way to add a button to Zotero that makes an obsidian no
 	- [zoteroutils](https://github.com/piyueh/zoteroutils): no commits in five years (from Feb, 2025)
 	- [pyzottk](https://github.com/sbrisard/pyzottk/commits/master/):  no commits in six years (from Feb, 2025)
 # Programming interfaces to Obsidian and Zotero
+## Languages
 - [Obsidian plugs are written in Typescript, ](https://forum.obsidian.md/t/which-programming-language-to-create-plugins-for-obsidian/11261/4)
 	- [TypeScript: JavaScript With Syntax For Types.](https://www.typescriptlang.org/)
 	- [Should You Learn TypeScript? A Coder&#039;s Guide for 2025](https://careerfoundry.com/en/blog/web-development/learn-typescript/)
@@ -176,11 +177,20 @@ I think what I need is a way to add a button to Zotero that makes an obsidian no
 	- [pyzotero](<lit/refwrangle/Zotero to Obsidian to RAG.md#^xy71 >) seems best for zotero
 		- or maybe one of the direct SQL python libs?
 	- [ways to interface with python to obsidian (perplexity)](https://www.perplexity.ai/search/what-are-all-the-ways-python-c-FHKyuIXRQfS75w9b0e35kA)
+## Starting an Obsidian command from an external program
 - [Remotely running an obsidian command  (perplexity)](https://www.perplexity.ai/search/is-there-an-obsidian-api-that-K9k8PCB6QuaOZxdbziW8qw)
 	- could use this to run the [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
 		- would still have that annoying zotero popup though
 			- unless you could make it start the "classic" interface first
 		- @ OR unless you used an API, which accepts keys ([can do with zotero integration and zotero bridge plugins](https://www.perplexity.ai/search/is-there-an-api-that-would-all-.O2.uzPHS.KixPqwqKvkrw) 
+			- @ An example of [code running Zotero Integration API on a list of zotero item keys](https://forum.obsidian.md/t/bulk-import-zotero-library-annotations-into-obsidian-with-zotero-integration-plugin/76254/3?u=scotto)
+- Obsidian URI handlers
+	- [Command URI Plugin](https://github.com/deathau/command-uri-obsidian)
+	- [Obsidian URI Scheme](https://help.obsidian.md/Extending+Obsidian/Obsidian+URI)
+	- [URI Commands](https://github.com/kzhovn/uri-commands-obsidian)
+	- [Advanced URI Plugin](https://github.com/kzhovn/uri-commands-obsidian)
+- 
+## Obsidian plugins which are zotero DB interfaces
 - [[Dailies/2025-02-07.md#Obsidian Zotero Sync Client Plugin |Obsidian Zotero Sync Client Plugin]]
 	- directly accesses the zotero DB, and you can add javascript make an obsidian literature note title and contents
 	- from here, I think you can write a snippet of Javascript to call the [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]] via its API to actually make the notes
