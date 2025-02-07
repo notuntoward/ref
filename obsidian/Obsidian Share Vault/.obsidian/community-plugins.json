@@ -72,5 +72,6 @@
   "ink",
   "note-toolbar",
   "sqlseal",
-  "note-atomizer"
+  "note-atomizer",
+  "obsidian-local-rest-api"
 ]

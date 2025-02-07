@@ -32,11 +32,14 @@
             "id": "4fef84348c134ee3",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Dailies/2025-02-07.md"
+                "file": "Dailies/2025-02-07.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
               },
-              "icon": "excalidraw-icon",
+              "icon": "lucide-file",
               "title": "2025-02-07"
             }
           }
@@ -315,9 +318,9 @@
   "active": "4fef84348c134ee3",
   "lastOpenFiles": [
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
+    "Dailies/2025-02-07.md",
     "Dailies/2025-02-06.md",
     "lit/lit_notes/Alammar18illustratedTransformer.md",
-    "Dailies/2025-02-07.md",
     "Dailies/2024-02-25.md",
     "lit/lit_sources/Unconfirmed 981641.crdownload",
     "lit/lit_sources/White25datReconcileGay.html",
