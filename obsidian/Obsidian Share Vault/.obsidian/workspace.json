@@ -123,7 +123,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 581.5
+    "width": 581.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -315,10 +316,10 @@
       "note-atomizer:Atomize note": false
     }
   },
-  "active": "4fef84348c134ee3",
+  "active": "d62023471c64b50f",
   "lastOpenFiles": [
-    "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "Dailies/2025-02-07.md",
+    "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "Dailies/2025-02-06.md",
     "lit/lit_notes/Alammar18illustratedTransformer.md",
     "Dailies/2024-02-25.md",
