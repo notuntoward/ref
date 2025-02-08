@@ -179,7 +179,7 @@ I think what I need is a way to add a button to Zotero that makes an obsidian no
 	- [ways to interface with python to obsidian (perplexity)](https://www.perplexity.ai/search/what-are-all-the-ways-python-c-FHKyuIXRQfS75w9b0e35kA)
 ## Starting an Obsidian command from an external program
 ### Sending a command to obsidian from zotero
-- [zotero plugin to do it (perplexity)](https://www.perplexity.ai/search/i-would-like-zotero-to-start-a-tHD7P3cGTDui5gd5gXr4zA)
+- [making a zotero plugin to do it (perplexity)](https://www.perplexity.ai/search/i-would-like-zotero-to-start-a-tHD7P3cGTDui5gd5gXr4zA)
 ### Receiving a command in Obsidian 
 - [Remotely running an obsidian command  (perplexity)](https://www.perplexity.ai/search/is-there-an-obsidian-api-that-K9k8PCB6QuaOZxdbziW8qw)
 	- could use this to run the [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
