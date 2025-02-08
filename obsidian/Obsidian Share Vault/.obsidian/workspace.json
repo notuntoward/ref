@@ -32,14 +32,11 @@
             "id": "4fef84348c134ee3",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "Dailies/2025-02-07.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
+                "file": "Dailies/2025-02-07.md"
               },
-              "icon": "lucide-file",
+              "icon": "excalidraw-icon",
               "title": "2025-02-07"
             }
           }
