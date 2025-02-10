@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Dailies/2025-02-09.md",
+                "file": "Dailies/2023-11-18.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2025-02-09"
+              "title": "2023-11-18"
             }
           }
         ]
@@ -103,7 +103,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 581.5
+    "width": 581.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -298,13 +299,13 @@
   },
   "active": "4fef84348c134ee3",
   "lastOpenFiles": [
+    "Dailies/2025-02-09.md",
     "lit/refwrangle/Perplexity Details.md",
     "Dailies/2025-02-07.md",
     "response_with_citations.md",
     "Dailies/2025-02-06.md",
     "Dailies/Untitled.md",
     "Dailies/Untitled 1.md",
-    "Dailies/2025-02-09.md",
     "Obsidian/templates/Open Calendar.md",
     "Obsidian/templates/Daily Note Template SAVE.md",
     "lit/lit_sources/Vu23FreshLLMsearchAug.pdf",
