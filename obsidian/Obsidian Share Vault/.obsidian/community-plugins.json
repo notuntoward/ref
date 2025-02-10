@@ -73,5 +73,6 @@
   "note-toolbar",
   "sqlseal",
   "note-atomizer",
-  "obsidian-local-rest-api"
+  "obsidian-local-rest-api",
+  "obsidian-shellcommands"
 ]
