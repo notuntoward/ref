@@ -1,11 +1,21 @@
 {
+  "emptyViewToolbar": null,
   "export": {
     "includeIcons": true,
     "replaceVars": true,
     "useDataEls": true,
     "useIds": true
   },
-  "folderMappings": [],
+  "folderMappings": [
+    {
+      "folder": "Dailies",
+      "toolbar": "c87055f4-5589-41e6-be77-2f2a300cf935"
+    },
+    {
+      "folder": "",
+      "toolbar": ""
+    }
+  ],
   "icon": "circle-ellipsis",
   "ribbonAction": "toolbar",
   "scriptingEnabled": false,
@@ -17,9 +27,9 @@
       "uuid": "c87055f4-5589-41e6-be77-2f2a300cf935",
       "customClasses": "",
       "defaultStyles": [
-        "border",
         "even",
-        "sticky"
+        "sticky",
+        "right"
       ],
       "items": [
         {
@@ -175,16 +185,16 @@
           }
         },
         {
-          "uuid": "1a9d6f67-44a0-45c4-9dca-5b625738b69c",
+          "uuid": "83ffab52-5d5d-4aa3-b48d-030be1ac197f",
           "label": "",
-          "icon": "lucide-arrow-right",
-          "link": "Daily notes: Open next daily note",
+          "icon": "lucide-align-justify",
+          "link": "Daily Note Outline: Open Outline",
           "linkAttr": {
-            "commandId": "daily-notes:goto-next",
+            "commandId": "obsidian-daily-note-outline:daily-note-outline-open",
             "hasVars": false,
             "type": "command"
           },
-          "tooltip": "Next daily note",
+          "tooltip": "",
           "visibility": {
             "desktop": {
               "allViews": {
@@ -213,16 +223,16 @@
           }
         },
         {
-          "uuid": "c073c7ee-2728-4415-a637-13187a764d44",
+          "uuid": "1a9d6f67-44a0-45c4-9dca-5b625738b69c",
           "label": "",
-          "icon": "",
-          "link": "",
+          "icon": "lucide-arrow-right",
+          "link": "Daily notes: Open next daily note",
           "linkAttr": {
-            "commandId": "",
+            "commandId": "daily-notes:goto-next",
             "hasVars": false,
             "type": "command"
           },
-          "tooltip": "",
+          "tooltip": "Next daily note",
           "visibility": {
             "desktop": {
               "allViews": {
@@ -270,150 +280,9 @@
           }
         }
       },
-      "updated": "2025-02-01T01:19:24.062Z"
-    },
-    {
-      "uuid": "41078e88-0ef3-430c-95af-f95ea3cc42ef",
-      "customClasses": "",
-      "defaultStyles": [],
-      "items": [
-        {
-          "uuid": "d49038a9-5aad-4e2d-8abf-903e0c6a9e8a",
-          "label": "",
-          "icon": "lucide-arrow-left",
-          "link": "Daily notes: Open previous daily note",
-          "linkAttr": {
-            "commandId": "daily-notes:goto-prev",
-            "hasVars": false,
-            "type": "command"
-          },
-          "tooltip": "Previous daily note",
-          "visibility": {
-            "desktop": {
-              "allViews": {
-                "components": [
-                  "icon",
-                  "label"
-                ]
-              }
-            },
-            "mobile": {
-              "allViews": {
-                "components": [
-                  "icon",
-                  "label"
-                ]
-              }
-            },
-            "tablet": {
-              "allViews": {
-                "components": [
-                  "icon",
-                  "label"
-                ]
-              }
-            }
-          }
-        },
-        {
-          "uuid": "17fa1f38-d800-4eed-860d-ec26c461676f",
-          "label": "",
-          "icon": "lucide-calendar-check",
-          "link": "Daily notes: Open today's daily note",
-          "linkAttr": {
-            "commandId": "daily-notes",
-            "hasVars": false,
-            "type": "command"
-          },
-          "tooltip": "Today's daily note",
-          "visibility": {
-            "desktop": {
-              "allViews": {
-                "components": [
-                  "icon",
-                  "label"
-                ]
-              }
-            },
-            "mobile": {
-              "allViews": {
-                "components": [
-                  "icon",
-                  "label"
-                ]
-              }
-            },
-            "tablet": {
-              "allViews": {
-                "components": [
-                  "icon",
-                  "label"
-                ]
-              }
-            }
-          }
-        },
-        {
-          "uuid": "bfc061f9-7e41-4fcc-84a8-329ce951619d",
-          "label": "",
-          "icon": "lucide-arrow-right",
-          "link": "Daily notes: Open next daily note",
-          "linkAttr": {
-            "commandId": "daily-notes:goto-next",
-            "hasVars": false,
-            "type": "command"
-          },
-          "tooltip": "Next daily note",
-          "visibility": {
-            "desktop": {
-              "allViews": {
-                "components": [
-                  "icon",
-                  "label"
-                ]
-              }
-            },
-            "mobile": {
-              "allViews": {
-                "components": [
-                  "icon",
-                  "label"
-                ]
-              }
-            },
-            "tablet": {
-              "allViews": {
-                "components": [
-                  "icon",
-                  "label"
-                ]
-              }
-            }
-          }
-        }
-      ],
-      "mobileStyles": [],
-      "name": "Daily Notes",
-      "position": {
-        "desktop": {
-          "allViews": {
-            "position": "props"
-          }
-        },
-        "mobile": {
-          "allViews": {
-            "position": "props"
-          }
-        },
-        "tablet": {
-          "allViews": {
-            "position": "props"
-          }
-        }
-      },
-      "updated": "2025-02-01T01:25:42.279Z"
+      "updated": "2025-02-09T21:28:41.451Z"
     }
   ],
   "version": 20240727.1,
-  "whatsnew_version": 1.17
+  "whatsnew_version": 1.18
 }

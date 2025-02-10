@@ -4,27 +4,6 @@
     "type": "split",
     "children": [
       {
-        "id": "a77f06afe3b6d177",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "d62023471c64b50f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "tmp_savemychatbot_multiprompt_perplexity_example"
-            }
-          }
-        ]
-      },
-      {
         "id": "c654463da84ddf48",
         "type": "tabs",
         "children": [
@@ -32,12 +11,15 @@
             "id": "4fef84348c134ee3",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Dailies/2025-02-07.md"
+                "file": "lit/refwrangle/Perplexity Details.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
               },
-              "icon": "excalidraw-icon",
-              "title": "2025-02-07"
+              "icon": "lucide-file",
+              "title": "Perplexity Details"
             }
           }
         ]
@@ -116,7 +98,8 @@
               "title": "Recent Files"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -232,10 +215,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Dailies/2025-02-07.md"
+                "file": "Dailies/Untitled.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for 2025-02-07"
+              "title": "File properties for Untitled"
             }
           },
           {
@@ -269,7 +252,7 @@
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -310,16 +293,31 @@
       "obsidian-git:Open Git source control": false,
       "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false,
       "obsidian-excalidraw-plugin:New drawing": false,
-      "note-atomizer:Atomize note": false
+      "note-atomizer:Atomize note": false,
+      "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "d62023471c64b50f",
+  "active": "4fef84348c134ee3",
   "lastOpenFiles": [
+    "Dailies/2025-02-07.md",
+    "response_with_citations.md",
+    "Dailies/2025-02-06.md",
+    "Dailies/Untitled.md",
+    "Dailies/Untitled 1.md",
+    "Dailies/2025-02-09.md",
+    "Obsidian/templates/Open Calendar.md",
+    "Obsidian/templates/Daily Note Template SAVE.md",
+    "lit/lit_sources/Vu23FreshLLMsearchAug.pdf",
+    "lit/lit_sources/Vu23FreshLLMsearchAug.html",
+    "lit/lit_sources/Vu23FreshLLMsRefreshingLarge.html",
+    "lit/lit_sources/Vu23FreshLLMsRefreshingLarge.pdf",
+    "lit/lit_sources/FreshLLMsRefreshingLarge.html",
+    "lit/lit_sources/Sartre44antisemiteJew.pdf",
+    "lit/lit_sources/QuoteJeanPaulSartre.html",
+    "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "perplexity_multi_prompt_savemychatbot_example.md",
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "perplexity_2025-02-07_22-14-16.md",
-    "Dailies/2025-02-07.md",
-    "Dailies/2025-02-06.md",
     "lit/lit_notes/Alammar18illustratedTransformer.md",
     "Dailies/2024-02-25.md",
     "lit/lit_sources/Unconfirmed 981641.crdownload",
@@ -337,20 +335,6 @@
     "atomic-notes/Mutual Information in Information Theory.md",
     "atomic-notes/Mutual Information vs. Correlation.md",
     "atomic-notes/Properties of Mutual Information.md",
-    "atomic-notes",
-    "2025-02-03_08-20-15_Perplexity.ai_Loading a zotero database using pyzotero is very slow. What....md",
-    "Dailies/2023-10-08.md",
-    "Dailies/2023-10-12.md",
-    "lit/lit_notes/Rajpurkar25robotDoctor.md",
-    "lit/lit_sources/Allison25WashingtonReelsTrumps.html",
-    "Work/VPP ideas/Generative AI talk/Gen AI Talk Ideas.md",
-    "lit/lit_sources/Rajpurkar25robotDoctor.html",
-    "lit/lit_sources/Unconfirmed 431034.crdownload",
-    "lit/lit_sources/Rajpurkar25OrobotDoctor.html",
-    "lit/lit_sources/Rajpurkar25OpinionRobotDoctor.html",
-    "perplexity_2025-02-04_18-56-54.md",
-    "tmp_savemychatbot_multiprompt_perplexity_example.md",
-    "lit/lit_sources/Leonhardt25econAheadElseBehind.html",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",

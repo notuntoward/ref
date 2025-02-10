@@ -9,6 +9,18 @@ A [[Retrieval Augmented Generation (RAG)]] system comparable to Google's [[Noteb
 - Nice browser extension for this: [Save my Chatbot](https://github.com/Hugo-COLLIN/SaveMyPhind-conversation-exporter)
 - My bug report: [Code blocks need a newline when perplexity numbers them · Issue #237 · Hugo-COLLIN/SaveMyPhind-conversation-exporter · GitHub](https://github.com/Hugo-COLLIN/SaveMyPhind-conversation-exporter/issues/237)
 - another bug report: [Reference numbers don&#39;t always match sources list, sometimes missing from sources list · Issue #251 · Hugo-COLLIN/SaveMyPhind-conversation-exporter · GitHub](https://github.com/Hugo-COLLIN/SaveMyPhind-conversation-exporter/issues/251)
+
+## API (Perplexity)
+It looks like 
+- [Supported Models - Perplexity](https://docs.perplexity.ai/guides/model-cards): 
+	- really seems like I have to look at this page to know what the current ones are
+	- Limited to Perplexity's own stuff: sonar-reasoning-pro, sonar-reasoning	127k	Chat Completion
+sonar-pro	200k	Chat Completion
+sonar
+- API Wrappers that wrap Perplexity
+	- [litellm](https://github.com/BerriAI/litellm): open source, many other LLMs including OpenAI. Easiest, besides "my" own Python?
+	- [Apify](https://apify.com/ivanvia/perplexity-ai-wrapper/api): commercial product: APIFY ($5/mo)
+	- [Superblocks](https://docs.superblocks.com/integrations/integrations-library/perplexity): commercial, drag and drop, all kinds of APIs e.g. Dropbox
 ## Perplexity Spaces
 
 ### Refwrangle uses for Perplexity Spaces

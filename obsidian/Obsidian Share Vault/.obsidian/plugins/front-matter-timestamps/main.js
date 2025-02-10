@@ -89,6 +89,14 @@ var FrontMatterTimestampsPlugin = class extends import_obsidian.Plugin {
         if (this.settings.debug) {
           console.log(`File created: ${file.path}`);
         }
+        if (Date.now() - file.stat.ctime > 3e4) {
+          if (this.settings.debug) {
+            console.log(
+              `Skipping timestamps on ${file.path}; ctime is older than 60s.`
+            );
+          }
+          return;
+        }
         if (this.settings.autoAddTimestamps && file.extension === "md" && !this.isPathExcluded(file.path)) {
           this.pendingNewFiles.add(file.path);
           this.handleNewFileTimestamps(file);
