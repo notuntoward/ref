@@ -18,7 +18,7 @@ It looks like
 sonar-pro	200k	Chat Completion
 sonar
 - API Wrappers that wrap Perplexity
-	- [litellm](https://github.com/BerriAI/litellm): open source, many other LLMs including OpenAI. Easiest, besides "my" own Python?
+	- [litellm](https://github.com/BerriAI/litellm): open source, many other LLMs including OpenAI. Easiest, besides "my own" Python?
 	- [Apify](https://apify.com/ivanvia/perplexity-ai-wrapper/api): commercial product: APIFY ($5/mo)
 	- [Superblocks](https://docs.superblocks.com/integrations/integrations-library/perplexity): commercial, drag and drop, all kinds of APIs e.g. Dropbox
 ## Perplexity Spaces
