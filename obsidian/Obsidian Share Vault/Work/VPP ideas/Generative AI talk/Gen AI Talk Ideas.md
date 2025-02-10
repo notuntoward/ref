@@ -4,7 +4,7 @@ tags:
   - ml/zeroshot
   - ml/genAI
 created date: 2024-10-22T09:21:55-07:00
-modified date: 2025-02-06T10:14:17-08:00
+modified date: 2025-02-10T07:45:26-08:00
 ---
 **TODO** get all Zotero "Generative AI" collection into this
 **TODO** get all related browser tab groups into this
@@ -327,6 +327,9 @@ When does it work and when doesn't. and when I say "it" WHAT am I talking about?
 		- experienced people not rewarded
 - Or, do the above with Venn diagrams
 - LLM output as an anti-pattern (job recommendations); and as a template (DEI statement)
+- [[Lee25genAIworkerCritThink|Lee25: The impact of generative AI on critical thinking: Self-reported reductions in cognitive effort and confidence effects from a survey of knowledge workers]]: MS says AI makes you dumb and dull
+
+
 #### Won't you just grab AI and lose your creativity
 - [[Bogost24aiLostMagic|AI Has Lost Its Magic]]: funny poems, pictures but now bored
 - [[Bogost23endRecommendLttrs|The End of Recommendation Letters]]. techniques for anti & pro-cliche diversity boilerplate
