@@ -13,13 +13,58 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Dailies/2023-11-18.md",
+                "file": "Politics/Political Causality/US Elections 2024.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2023-11-18"
+              "title": "US Elections 2024"
+            }
+          },
+          {
+            "id": "66241334318cac09",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lit/lit_notes/Verma24muskPoliticsEcoCar.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Verma24muskPoliticsEcoCar"
+            }
+          },
+          {
+            "id": "4346dea37b4e11e8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lit/lit_notes/Kapoor23misinfoAInotTheProb.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Kapoor23misinfoAInotTheProb"
+            }
+          },
+          {
+            "id": "60cf333b33f689ab",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lit/lit_notes/Lee25genAIworkerCritThink.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Lee25genAIworkerCritThink"
             }
           }
         ]
@@ -99,7 +144,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -120,7 +165,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Lit Note Summary D Folder.md",
+                "file": "Politics/Political Causality/US Elections 2024.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -130,7 +175,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Lit Note Summary D Folder"
+              "title": "Backlinks for US Elections 2024"
             }
           },
           {
@@ -180,13 +225,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Dailies/2025-02-07.md",
+                "file": "Politics/Political Causality/US Elections 2024.md",
                 "followCursor": false,
-                "showSearch": false,
-                "searchQuery": ""
+                "showSearch": true,
+                "searchQuery": "human"
               },
               "icon": "lucide-list",
-              "title": "Outline of 2025-02-07"
+              "title": "Outline of US Elections 2024"
             }
           },
           {
@@ -251,8 +296,7 @@
               "title": "Advanced Tables"
             }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "horizontal",
@@ -299,6 +343,18 @@
   },
   "active": "4fef84348c134ee3",
   "lastOpenFiles": [
+    "lit/lit_notes/Verma24muskPoliticsEcoCar.md",
+    "lit/lit_notes/Palmer23llmsArgueConvincing.md",
+    "Politics/Political Causality/US Elections 2024.md",
+    "lit/lit_notes/Kapoor23misinfoAInotTheProb.md",
+    "lit/lit_notes/Lee25genAIworkerCritThink.md",
+    "Politics/Political Causality/Meta Info from political causality literature review.md",
+    "Work/VPP ideas/Generative AI talk/Gen AI Talk Ideas.md",
+    "Dailies/2023-11-18.md",
+    "lit/lit_sources/Lee25genAIworkerCritThink.pdf",
+    "lit/lit_sources/Lee25ImpactGenerativeAI.pdf",
+    "lit/lit_sources/25ImpactGenerativeAIa.pdf",
+    "lit/lit_sources/lee_2025_ai_critical_thinking_survey.pdf",
     "Dailies/2025-02-09.md",
     "lit/refwrangle/Perplexity Details.md",
     "Dailies/2025-02-07.md",
@@ -314,27 +370,15 @@
     "lit/lit_sources/Vu23FreshLLMsRefreshingLarge.pdf",
     "lit/lit_sources/FreshLLMsRefreshingLarge.html",
     "lit/lit_sources/Sartre44antisemiteJew.pdf",
-    "lit/lit_sources/QuoteJeanPaulSartre.html",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "perplexity_multi_prompt_savemychatbot_example.md",
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "perplexity_2025-02-07_22-14-16.md",
     "lit/lit_notes/Alammar18illustratedTransformer.md",
     "Dailies/2024-02-25.md",
-    "lit/lit_sources/Unconfirmed 981641.crdownload",
-    "lit/lit_sources/White25datReconcileGay.html",
-    "lit/lit_sources/White25OpinionHowMy.html",
     "Clippings/Mutual information - Wikipedia.md",
     "Dailies/2024-04-11.md",
     "atomic-notes/Historical Context.md",
-    "atomic-notes/Relationship to Entropy.md",
-    "atomic-notes/Variations of Mutual Information.md",
-    "atomic-notes/Applications of Mutual Information.md",
-    "atomic-notes/Calculation for Continuous Variables.md",
-    "atomic-notes/Calculation for Discrete Variables.md",
-    "atomic-notes/Definition of Mutual Information.md",
-    "atomic-notes/Mutual Information in Information Theory.md",
-    "atomic-notes/Mutual Information vs. Correlation.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",

@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-01-31T20:06:26-08:00
+modified date: 2025-02-10T07:52:07-08:00
 ---
 # TODO
 - graph showing all the information loss sources from a good D policy to a voter's rational decision about it
@@ -17,8 +17,10 @@ modified date: 2025-01-31T20:06:26-08:00
 ## Biden?
 ## AI
 ### Examples of AI in politics
-- Kapoor23misinfoAInotTheProb
-- A warning: Palmer23llmsArgueConvincing
+- [[Kapoor23misinfoAInotTheProb|Kapoor23: We Looked at 78 Election Deepfakes. Political Misinformation is not an AI Problem.]] 
+- A warning: [[Palmer23llmsArgueConvincing|Palmer23: Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors: implications for Governance]] 
+- Not politics, but general loss of thinking?  [[Lee25genAIworkerCritThink|Lee25: The impact of generative AI]] 
+
 ### Political AI background
 - [[Gen AI Talk Ideas#Sentiment Analysis|Sentiment Analysis]]
 - [Robots Talk Back, AI Security Risks, Political Deepfakes, and more](zotero://select/library/items/QUV7MR9D)
@@ -74,9 +76,9 @@ this paper shows that, while the method may be more accurate accurate, the turno
 ## Trump is what the People Wanted
 ## Global Trend
 ## Loss of trust in experts, institutions
-- people don't belive experts, media, etc. Go to friends
+- people don't believe experts, media, etc. Go to friends
 	- I have more than one article on this, I think
-	- odd example: Elon Musk: Verma24muskPoliticsEcoCar
+	- odd example: [[Verma24muskPoliticsEcoCar|Verma24: Musk’s politics hadn’t seeped into Tesla. Then he axed its eco car of the future.]]
 ## Lack of D party enthusiasm/turnout
 - was the D loss due to poor Democratic turnout or to Ds switching to R?
 ## Abortion overemphasized, not important
@@ -121,7 +123,9 @@ this paper shows that, while the method may be more accurate accurate, the turno
 	- look what he did to Twitter
 - Message evolution
 	- attack Musk as being born rich, get resentful MAGA heads nodding, then emphasize that Trump was born rich too
-- Verma24muskPoliticsEcoCar
+- [[Verma24muskPoliticsEcoCar|Verma24: Musk’s politics hadn’t seeped into Tesla. Then he axed its eco car of the future.]] 
+- A Musk attack, since he wants all AI?[[Palmer23llmsArgueConvincing|Palmer23: Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors: implications for Governance]] 
+
 # Questions
 ## How voters weight different policies in their voting decision (sensitivity analysis)
 ## Media effectiveness
