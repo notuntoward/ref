@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-15T14:05:38-08:00
-modified date: 2025-02-01T17:29:16-08:00
+modified date: 2025-02-09T18:37:14-08:00
 ---
 A [[Retrieval Augmented Generation (RAG)]] system comparable to Google's [[NotebookLM]]
 
