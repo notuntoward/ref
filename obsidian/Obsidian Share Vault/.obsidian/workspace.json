@@ -23,6 +23,16 @@
             }
           },
           {
+            "id": "ede4daf741821756",
+            "type": "leaf",
+            "state": {
+              "type": "swar8080/AVAILABLE_PLUGIN_UPDATES",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin Updates"
+            }
+          },
+          {
             "id": "66241334318cac09",
             "type": "leaf",
             "state": {
@@ -67,7 +77,8 @@
               "title": "Lee25genAIworkerCritThink"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -148,8 +159,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 581.5,
-    "collapsed": true
+    "width": 581.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -341,7 +351,7 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "4fef84348c134ee3",
+  "active": "ede4daf741821756",
   "lastOpenFiles": [
     "lit/lit_notes/Verma24muskPoliticsEcoCar.md",
     "lit/lit_notes/Palmer23llmsArgueConvincing.md",
