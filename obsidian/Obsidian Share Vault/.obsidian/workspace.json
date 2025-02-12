@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "c654463da84ddf48",
+        "id": "c1c75e603024bf81",
         "type": "tabs",
         "children": [
           {
-            "id": "66241334318cac09",
+            "id": "5ed0d3d9406be1a3",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -296,10 +296,11 @@
       "clipper-catalog:Show all clippings": false
     }
   },
-  "active": "66241334318cac09",
+  "active": "5ed0d3d9406be1a3",
   "lastOpenFiles": [
-    "Politics/Political Causality/US Elections 2024.md",
+    "lit/lit_notes/Young23mutInfoMeasEpidem.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
+    "Politics/Political Causality/US Elections 2024.md",
     "tmp_new_cites_perplexity_example.md",
     "lit/lit_notes/Mohamed24brandPerceptionChng.md",
     "lit/refwrangle/Perplexity Parsing.md",
@@ -333,7 +334,6 @@
     "Clippings/{@typePerson,@idhttpswww.obsidianstats.compluginsclipper-catalogauthor,nameGreg K.} – Clipper Catalog - A catalog view that provides a powerful interface for all your clipped web articles and content. Easily organize, search, and manage your web.md",
     "lit/lit_notes/Palmer23llmsArgueConvincing.md",
     "Politics/Political Causality/Meta Info from political causality literature review.md",
-    "Work/VPP ideas/Generative AI talk/Gen AI Talk Ideas.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",
