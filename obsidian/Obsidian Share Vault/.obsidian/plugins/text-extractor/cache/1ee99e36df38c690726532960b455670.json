@@ -1,1 +1,0 @@
-{"path":"work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/Pasted image 20250113214209.webp","text":"SELECT ProductID ,UnitPrice ,SupplierID From Products WHERE SupplierID IN (9, 10, 1717)%","libVersion":"0.3.2","langs":"eng"}

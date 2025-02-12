@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "4fef84348c134ee3",
+            "id": "66241334318cac09",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -23,58 +23,18 @@
             }
           },
           {
-            "id": "ede4daf741821756",
-            "type": "leaf",
-            "state": {
-              "type": "swar8080/AVAILABLE_PLUGIN_UPDATES",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin Updates"
-            }
-          },
-          {
-            "id": "66241334318cac09",
+            "id": "e8926776f7f07cde",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lit/lit_notes/Verma24muskPoliticsEcoCar.md",
+                "file": "lit/refwrangle/Perplexity Parsing.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Verma24muskPoliticsEcoCar"
-            }
-          },
-          {
-            "id": "4346dea37b4e11e8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "lit/lit_notes/Kapoor23misinfoAInotTheProb.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "Kapoor23misinfoAInotTheProb"
-            }
-          },
-          {
-            "id": "60cf333b33f689ab",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "lit/lit_notes/Lee25genAIworkerCritThink.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "Lee25genAIworkerCritThink"
+              "title": "Perplexity Parsing"
             }
           }
         ],
@@ -155,11 +115,12 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 581.5
+    "width": 581.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -175,7 +136,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Politics/Political Causality/US Elections 2024.md",
+                "file": "lit/refwrangle/Perplexity Parsing.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -185,7 +146,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for US Elections 2024"
+              "title": "Backlinks for Perplexity Parsing"
             }
           },
           {
@@ -235,13 +196,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Politics/Political Causality/US Elections 2024.md",
+                "file": "lit/refwrangle/Perplexity Parsing.md",
                 "followCursor": false,
                 "showSearch": true,
-                "searchQuery": "human"
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of US Elections 2024"
+              "title": "Outline of Perplexity Parsing"
             }
           },
           {
@@ -270,10 +231,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Dailies/Untitled.md"
+                "file": "lit/refwrangle/Perplexity Parsing.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for Untitled"
+              "title": "File properties for Perplexity Parsing"
             }
           },
           {
@@ -306,7 +267,8 @@
               "title": "Advanced Tables"
             }
           }
-        ]
+        ],
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
@@ -348,47 +310,47 @@
       "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false,
       "obsidian-excalidraw-plugin:New drawing": false,
       "note-atomizer:Atomize note": false,
-      "obsidian-shellcommands:Shell commands: Custom variables": false
+      "obsidian-shellcommands:Shell commands: Custom variables": false,
+      "clipper-catalog:Show all clippings": false
     }
   },
-  "active": "ede4daf741821756",
+  "active": "e8926776f7f07cde",
   "lastOpenFiles": [
-    "lit/lit_notes/Verma24muskPoliticsEcoCar.md",
-    "lit/lit_notes/Palmer23llmsArgueConvincing.md",
+    "Clippings/–.md",
+    "lit/lit_sources/Unconfirmed 255999.crdownload",
+    "lit/refwrangle/Perplexity Parsing.md",
+    "lit/lit_sources/Yokley25trumpPollFeb10.html",
+    "lit/lit_sources/TrackingPublicOpinion.html",
+    "lit/lit_sources/Joelving25fakePaperContam.html",
+    "lit/lit_sources/U.S25FakeScientificPapers.html",
+    "lit/lit_sources/Harrison25wikipediaDoxTools.html",
+    "lit/lit_sources/Harrison25wikipediaDox.html",
+    "lit/lit_sources/Harrison25Project2025sCreators.html",
+    "lit/refwrangle/attachments/Ink/Writing/2025.2.10 - 22.46pm.writing",
+    "lit/refwrangle/attachments/Ink/Writing",
+    "Dailies/2025-02-10.md",
+    "tmp_savemychatbot_multiprompt_perplexity_example.md",
+    "lit/lit_notes/Gora23polandEndRightWing.md",
     "Politics/Political Causality/US Elections 2024.md",
-    "lit/lit_notes/Kapoor23misinfoAInotTheProb.md",
+    "lit/lit_notes/Hutchinson15brainEndurTrn.md",
+    "Work/VPP ideas/Research Ideas/Algorithm Plan.md",
+    "lit/refwrangle/Perplexity Details.md",
+    "lit/lit_notes/DiazGarcia25BrainEndurTrnOldCogPhys.md",
+    "Politics/Political Causality/Refwrangler.md",
+    "Health/Exercise/Brain Endurance Training.md",
+    "Dailies/2024-03-23.md",
     "lit/lit_notes/Lee25genAIworkerCritThink.md",
+    "lit/lit_notes/Kapoor23misinfoAInotTheProb.md",
+    "lit/refwrangle/Zotero to Obsidian to RAG.md",
+    "lit/lit_notes/Verma24muskPoliticsEcoCar.md",
+    "Clippings/{@typePerson,nameNuno Campos,urlhttpsmedium.com@nuno.f.s.campos} – Obsidian Plugins Review — 92 - Obsidian Observer - Medium.md",
+    "Clippings/Mutual information - Wikipedia.md",
+    "Clippings/FarmCraft101 – Finishing the Track Adjusters on Large Marge.  Case 170B Excavator.md",
+    "Clippings/{@typePerson,@idhttpswww.obsidianstats.compluginsclipper-catalogauthor,nameGreg K.} – Clipper Catalog - A catalog view that provides a powerful interface for all your clipped web articles and content. Easily organize, search, and manage your web.md",
+    "lit/lit_notes/Palmer23llmsArgueConvincing.md",
     "Politics/Political Causality/Meta Info from political causality literature review.md",
     "Work/VPP ideas/Generative AI talk/Gen AI Talk Ideas.md",
     "Dailies/2023-11-18.md",
-    "lit/lit_sources/Lee25genAIworkerCritThink.pdf",
-    "lit/lit_sources/Lee25ImpactGenerativeAI.pdf",
-    "lit/lit_sources/25ImpactGenerativeAIa.pdf",
-    "lit/lit_sources/lee_2025_ai_critical_thinking_survey.pdf",
-    "Dailies/2025-02-09.md",
-    "lit/refwrangle/Perplexity Details.md",
-    "Dailies/2025-02-07.md",
-    "response_with_citations.md",
-    "Dailies/2025-02-06.md",
-    "Dailies/Untitled.md",
-    "Dailies/Untitled 1.md",
-    "Obsidian/templates/Open Calendar.md",
-    "Obsidian/templates/Daily Note Template SAVE.md",
-    "lit/lit_sources/Vu23FreshLLMsearchAug.pdf",
-    "lit/lit_sources/Vu23FreshLLMsearchAug.html",
-    "lit/lit_sources/Vu23FreshLLMsRefreshingLarge.html",
-    "lit/lit_sources/Vu23FreshLLMsRefreshingLarge.pdf",
-    "lit/lit_sources/FreshLLMsRefreshingLarge.html",
-    "lit/lit_sources/Sartre44antisemiteJew.pdf",
-    "tmp_savemychatbot_multiprompt_perplexity_example.md",
-    "perplexity_multi_prompt_savemychatbot_example.md",
-    "lit/refwrangle/Zotero to Obsidian to RAG.md",
-    "perplexity_2025-02-07_22-14-16.md",
-    "lit/lit_notes/Alammar18illustratedTransformer.md",
-    "Dailies/2024-02-25.md",
-    "Clippings/Mutual information - Wikipedia.md",
-    "Dailies/2024-04-11.md",
-    "atomic-notes/Historical Context.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",

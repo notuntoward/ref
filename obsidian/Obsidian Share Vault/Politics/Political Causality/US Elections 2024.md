@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-02-10T12:01:46-08:00
+modified date: 2025-02-10T21:12:54-08:00
 ---
 # TODO
 - graph showing all the information loss sources from a good D policy to a voter's rational decision about it
@@ -8,6 +8,7 @@ modified date: 2025-02-10T12:01:46-08:00
 - graph showing all sources of polling error
 - examples of compounding policy errors
 - ranking of factors affecting a vote e.g. of fear (I did a perplexity on this but it's not saved in zotero)
+	- note: [fear can turn liberals into conservatives and safety can turn conservatives into liberals](https://share.evernote.com/note/4fa1a1d3-c603-48fb-b04d-d33eec4d0370)
 - dig into economic literature on irrational consumer behavior
 - dig into the list of cognitive errors (both voters, R's and D's make them)
 
@@ -98,16 +99,16 @@ this paper shows that, while the method may be more accurate accurate, the turno
 	- 140 M total 2024 voters: PBS24keyVoteGroupsInteract (not final yet)
 #### Student loans as political liability?
   
-  Young people e.g. student loans was a liability (Trump tried to enrage the larger working class) for small amount of student voters. Also an example of issue interaction: (maybe made upper class students happy, working class mad) ^i6p3
-	- young people were 14% of 2024 voters (CIRCLE24youthVote2024), 38% of them had no college experience
-		- so the affected young people vote was 14% * 62% = 8.68% of voters
-	- ~ 42% of eligible voters aged 18-29 cast ballots in the 2024 presidential election, lower than in 2020 (17%) and 2016 (19%) (CIRCLE24youthVote2024)
-	- Young voters favored Kamala Harris over Donald Trump by 6 percentage points (52% to 46%) (CIRCLE24youthVote2024, I think)
-	- smaller margin Biden't 2020 25% in 2020 (CIRCLE24youthVote2024, I think)
-	- Young voters w/o college education went for Trump by 10%;  with some college for Harris by 12%, college grads 14 % (Arrojas24collegeAgeVote, I think) 
-	- college-experienced voters cast about 62% of the 2024 vote
-		- 40% of the voting-eligible youth population are young people without college experience (CIRCLE24youthVote2024)
-		- 38% of all youth votes were cast by young people without college experience (CIRCLE24youthVote2024)
+Young people e.g. student loans was a liability (Trump tried to enrage the larger working class) for small amount of student voters. Also an example of issue interaction: (maybe made upper class students happy, working class mad) ^i6p3
+- young people were 14% of 2024 voters (CIRCLE24youthVote2024), 38% of them had no college experience
+	- so the affected young people vote was 14% * 62% = 8.68% of voters
+- ~ 42% of eligible voters aged 18-29 cast ballots in the 2024 presidential election, lower than in 2020 (17%) and 2016 (19%) (CIRCLE24youthVote2024)
+- Young voters favored Kamala Harris over Donald Trump by 6 percentage points (52% to 46%) (CIRCLE24youthVote2024, I think)
+- smaller margin Biden't 2020 25% in 2020 (CIRCLE24youthVote2024, I think)
+- Young voters w/o college education went for Trump by 10%;  with some college for Harris by 12%, college grads 14 % (Arrojas24collegeAgeVote, I think) 
+- college-experienced voters cast about 62% of the 2024 vote
+	- 40% of the voting-eligible youth population are young people without college experience (CIRCLE24youthVote2024)
+	- 38% of all youth votes were cast by young people without college experience (CIRCLE24youthVote2024)
 # Campaign Message Ideas
 ## Polarization Enhancement: Your fellow R is evil (algorithmic) ^q98mss
 - For details & perplexity-derived evidence of implementability see Blake25infightMAGA
@@ -275,6 +276,10 @@ Just more predictor variables for various things. Things similar to education, w
 - Must run long term, year around, keep pounding the message
 	- Rubin24demsLowInfoVoterShortcut
 - Media attack graph, as in Thompson24rumbleRightWingYT
+
+# Success Stories: Recent Authoritarian Takedowns
+- [[Gora23polandEndRightWing|Gora23: Elections in Poland Bring the End of Right-wing Populist Rule - Brexit Institute]] 
+
 # Potential Partners
 - UW Center for an informed public
 	- [Center for an Informed Public](https://www.cip.uw.edu/2024/10/31/misinformation-why-people-spread-rumors/)
