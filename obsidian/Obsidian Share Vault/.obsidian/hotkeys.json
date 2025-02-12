@@ -917,5 +917,14 @@
     }
   ],
   "pane-relief:go-next": [],
-  "pane-relief:go-prev": []
+  "pane-relief:go-prev": [],
+  "editor:open-link-in-new-leaf": [],
+  "editor:toggle-fold": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Enter"
+    }
+  ]
 }
