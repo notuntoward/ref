@@ -13,14 +13,37 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tmp_new_cites_perplexity_example.md",
+                "file": "lit/refwrangle/Perplexity Parsing.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "tmp_new_cites_perplexity_example"
-            }
+              "title": "Perplexity Parsing"
+            },
+            "group": "772ec445679ce629"
+          }
+        ]
+      },
+      {
+        "id": "a6d96fd8ae15bf2c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f916e7a6204adbc4",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "lit/refwrangle/Perplexity Parsing.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Perplexity Parsing"
+            },
+            "group": "772ec445679ce629"
           }
         ]
       }
@@ -98,11 +121,13 @@
               "title": "Recent Files"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 390.5
+    "width": 390.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -248,9 +273,49 @@
               "icon": "spreadsheet",
               "title": "Advanced Tables"
             }
+          },
+          {
+            "id": "ff43aec8bb1158bf",
+            "type": "leaf",
+            "state": {
+              "type": "SC-custom-variables-view",
+              "state": {},
+              "icon": "code-glyph",
+              "title": "Shell commands: Custom variables"
+            }
+          },
+          {
+            "id": "0a8816221aeb7932",
+            "type": "leaf",
+            "state": {
+              "type": "SC-custom-variables-view",
+              "state": {},
+              "icon": "code-glyph",
+              "title": "Shell commands: Custom variables"
+            }
+          },
+          {
+            "id": "64242d06694d3c37",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          },
+          {
+            "id": "96c58da176aaf0d0",
+            "type": "leaf",
+            "state": {
+              "type": "mermaid-toolbar-view",
+              "state": {},
+              "icon": "trident-custom",
+              "title": "Mermaid Toolbar"
+            }
           }
         ],
-        "currentTab": 7
+        "currentTab": 14
       }
     ],
     "direction": "horizontal",
@@ -296,8 +361,10 @@
       "clipper-catalog:Show all clippings": false
     }
   },
-  "active": "aab15d0f5ef28071",
+  "active": "f916e7a6204adbc4",
   "lastOpenFiles": [
+    "Excalidraw/Drawing 2025-02-13 07.34.36.excalidraw.md",
+    "lit/refwrangle/Perplexity Parsing.md",
     "tmp_new_cites_perplexity_example.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "saved_perplexity_chat_youtube_bug.md",
@@ -307,7 +374,6 @@
     "lit/lit_notes/Young23mutInfoMeasEpidem.md",
     "Politics/Political Causality/US Elections 2024.md",
     "lit/lit_notes/Mohamed24brandPerceptionChng.md",
-    "lit/refwrangle/Perplexity Parsing.md",
     "Clippings/–.md",
     "lit/lit_sources/Unconfirmed 255999.crdownload",
     "lit/lit_sources/Yokley25trumpPollFeb10.html",
@@ -333,7 +399,6 @@
     "Clippings/{@typePerson,nameNuno Campos,urlhttpsmedium.com@nuno.f.s.campos} – Obsidian Plugins Review — 92 - Obsidian Observer - Medium.md",
     "Clippings/Mutual information - Wikipedia.md",
     "Clippings/FarmCraft101 – Finishing the Track Adjusters on Large Marge.  Case 170B Excavator.md",
-    "Clippings/{@typePerson,@idhttpswww.obsidianstats.compluginsclipper-catalogauthor,nameGreg K.} – Clipper Catalog - A catalog view that provides a powerful interface for all your clipped web articles and content. Easily organize, search, and manage your web.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",

@@ -1,6 +1,6 @@
 ---
 created date: 2025-02-10T15:50:01-08:00
-modified date: 2025-02-11T16:27:18-08:00
+modified date: 2025-02-13T07:34:37-08:00
 ---
 
 # Reference relinking
@@ -115,9 +115,3 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 }
 ```
 
-```handwritten-ink
-{
-	"versionAtEmbed": "0.3.3",
-	"filepath": "lit/refwrangle/attachments/Ink/Writing/2025.2.10 - 22.46pm.writing"
-}
-```
