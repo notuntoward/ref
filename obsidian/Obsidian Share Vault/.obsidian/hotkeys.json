@@ -700,15 +700,6 @@
       "key": "E"
     }
   ],
-  "darlal-switcher-plus:switcher-plus:open-symbols-active": [
-    {
-      "modifiers": [
-        "Mod",
-        "Alt"
-      ],
-      "key": "O"
-    }
-  ],
   "emacs-text-editor:recenter-top-bottom": [
     {
       "modifiers": [
@@ -925,6 +916,15 @@
         "Mod"
       ],
       "key": "Enter"
+    }
+  ],
+  "customjs:invokeScript": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "O"
     }
   ]
 }

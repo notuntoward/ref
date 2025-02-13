@@ -1,7 +1,9 @@
 ---
 created date: 2025-02-10T15:50:01-08:00
-modified date: 2025-02-13T07:34:37-08:00
+modified date: 2025-02-13T08:29:37-08:00
 ---
+
+
 
 # Reference relinking
 
@@ -67,6 +69,7 @@ refnum_to_link_source = links_from_source_perp(sources_text)
 #refnums_body = regexp_body_refs(body_text)
 ```
 - sources
+
 ```python
 refnum_to_url = build_refnum_lookup(sources_text)
 newlinks = {}
@@ -82,7 +85,10 @@ for refnum, url in refnum_to_url:
 
 # smc
 
+
 	
+
+
 
 
 ```
@@ -114,4 +120,6 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 	"aspectRatio": 1.4570088750187715
 }
 ```
+
+
 
