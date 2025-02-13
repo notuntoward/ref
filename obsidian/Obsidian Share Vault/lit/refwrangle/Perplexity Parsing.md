@@ -84,13 +84,6 @@ for refnum, url in refnum_to_url:
 # perp
 
 # smc
-
-
-	
-
-
-
-
 ```
 
 ## Save My Chatbot Reponse
