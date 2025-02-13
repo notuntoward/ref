@@ -115,21 +115,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "654c5fb15d9b4b80",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "lit/refwrangle/Perplexity Parsing.md",
-                "followCursor": false,
-                "showSearch": true,
-                "searchQuery": ""
-              },
-              "icon": "lucide-list",
-              "title": "Outline of Perplexity Parsing"
-            }
-          },
-          {
             "id": "a8bae8de1a83b9c3",
             "type": "leaf",
             "state": {
@@ -232,8 +217,24 @@
               "icon": "trident-custom",
               "title": "Mermaid Toolbar"
             }
+          },
+          {
+            "id": "d734bbd99985e9d0",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "lit/refwrangle/Perplexity Parsing.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Perplexity Parsing"
+            }
           }
-        ]
+        ],
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
@@ -283,6 +284,8 @@
   },
   "active": "d20ea0829c82ecfe",
   "lastOpenFiles": [
+    "Obsidian/custom_javascripts/outline_pane_toggle.js",
+    "Obsidian/custom_javascripts",
     "Obsidian/templates/Calendar Open.md",
     "Obsidian/templates_old/Daily Note Template SAVE.md",
     "Obsidian/templates_old/tmp.md",
@@ -310,7 +313,6 @@
     "Obsidian/templates_old/old/test_works_for_html.md",
     "Obsidian/templates_old/old",
     "Obsidian/templates_old/literature_note_SAVE_250126.md",
-    "Obsidian/templates_old/literature_note_OK_zotTemp-Phelan2308-orig.md",
     "Obsidian/templates_old",
     "lit/lit_sources/ZoomInstaller.exe",
     "lit/lit_sources/Unconfirmed 126373.crdownload",
@@ -318,7 +320,6 @@
     "lit/lit_sources/Yokley25trumpPollFeb10.html",
     "lit/lit_sources/TrackingPublicOpinion.html",
     "lit/lit_sources/Joelving25fakePaperContam.html",
-    "lit/lit_sources/U.S25FakeScientificPapers.html",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",
