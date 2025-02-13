@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Dailies/2025-02-13.md",
+                "file": "lit/refwrangle/Perplexity Parsing.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2025-02-13"
+              "title": "Perplexity Parsing"
             }
           }
         ]
@@ -98,11 +98,13 @@
               "title": "Recent Files"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 390.5
+    "width": 390.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -290,10 +292,11 @@
       "cmdr:Ink: New handwriting section": false
     }
   },
-  "active": "7ee2628547aab10f",
+  "active": "d20ea0829c82ecfe",
   "lastOpenFiles": [
-    "lit/refwrangle/Perplexity Parsing.md",
+    "lit/refwrangle/attachments/Ink/Drawing/2025.2.13 - 9.17am.drawing",
     "Dailies/2025-02-13.md",
+    "lit/refwrangle/Perplexity Parsing.md",
     "Obsidian/custom_javascripts/outline_pane_toggle.js",
     "Obsidian/custom_javascripts",
     "Obsidian/templates/Calendar Open.md",
@@ -320,7 +323,6 @@
     "Obsidian/templates_old/old_lit_note_templates/literature_note_BROKEN_FN_to_BASENAME.md",
     "Obsidian/templates_old/old_lit_note_templates",
     "Obsidian/templates_old/old/test.md",
-    "Obsidian/templates_old/old/test_works_for_html.md",
     "Obsidian/templates_old/old",
     "Obsidian/templates_old",
     "lit/lit_sources/ZoomInstaller.exe",

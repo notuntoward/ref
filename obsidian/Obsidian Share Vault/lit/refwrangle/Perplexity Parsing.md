@@ -104,7 +104,22 @@ def links_from_source_smc(sources_text)
 refnum_to_link_source = links_from_source_smc(sources_text)
 
 ```
-# Dataflow
+## Dataflow
+### Relinking many concatenated reference sections
+
+
+```handdrawn-ink
+{
+	"versionAtEmbed": "0.3.3",
+	"filepath": "lit/refwrangle/attachments/Ink/Drawing/2025.2.13 - 9.17am.drawing",
+	"width": 500,
+	"aspectRatio": 1
+}
+```
+
+### Rough overall
+
+**My mermaid flowchart in refwrangle/doc is better**
 ```handdrawn-ink
 {
 	"versionAtEmbed": "0.3.3",
