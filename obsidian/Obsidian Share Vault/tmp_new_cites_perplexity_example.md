@@ -1,3 +1,6 @@
+---
+modified date: 2025-02-13T15:44:16-08:00
+---
 
 **docIx=0**
 Corporations today employ a variety of modern techniques to measure and manage their public image. These methods are designed to assess brand perception, track changes over time, and identify factors influencing shifts in public sentiment. Here's an overview of these techniques, their frequency of updates, and how companies analyze the causes of changes in public image:
