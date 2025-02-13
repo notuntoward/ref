@@ -1,5 +1,6 @@
 ---
-modified date: 2025-02-12T16:38:52-08:00
+created date: 2025-02-12T17:00:49-08:00
+modified date: 2025-02-12T17:00:49-08:00
 ---
 Corporations today employ a variety of modern techniques to measure and manage their public image. These methods are designed to assess brand perception, track changes over time, and identify factors influencing shifts in public sentiment. Here's an overview of these techniques, their frequency of updates, and how companies analyze the causes of changes in public image:
 
@@ -61,51 +62,51 @@ Citations:
 ==([4](https://zorgle.co.uk/how-a-strong-brand-image-impacts-a-companys-financial-performance/)) https://zorgle.co.uk/how-a-strong-brand-image-impacts-a-companys-financial-performance/ ==
 ==([5](https://www.hanoverresearch.com/insights-blog/corporate/brand-tracking-surveys-guide/)) https://www.hanoverresearch.com/insights-blog/corporate/brand-tracking-surveys-guide/ ==
 ==([6](https://www.groupcaliber.com/brand-tracking-101-what-every-business-needs-to-know-for-long-term-success/)) https://www.groupcaliber.com/brand-tracking-101-what-every-business-needs-to-know-for-long-term-success/ ==
-==([7](https://pmc.ncbi.nlm.nih.gov/articles/PMC5095155/)) https://pmc.ncbi.nlm.nih.gov/articles/PMC5095155/ ==
-==([8](https://vorecol.com/blogs/blog-the-impact-of-realtime-feedback-on-corporate-reputation-and-brand-image-172149)) https://vorecol.com/blogs/blog-the-impact-of-realtime-feedback-on-corporate-reputation-and-brand-image-172149 ==
-==([9](https://pure.manchester.ac.uk/ws/portalfiles/portal/84023663/FULL_TEXT.PDF)) https://pure.manchester.ac.uk/ws/portalfiles/portal/84023663/FULL_TEXT.PDF ==
-==([10](https://pmc.ncbi.nlm.nih.gov/articles/PMC9167012/)) https://pmc.ncbi.nlm.nih.gov/articles/PMC9167012/ ==
-==([11](https://www.mdpi.com/2076-3417/9/16/3336)) https://www.mdpi.com/2076-3417/9/16/3336 ==
+([7](https://pmc.ncbi.nlm.nih.gov/articles/PMC5095155/)) https://pmc.ncbi.nlm.nih.gov/articles/PMC5095155/
+([8](https://vorecol.com/blogs/blog-the-impact-of-realtime-feedback-on-corporate-reputation-and-brand-image-172149)) https://vorecol.com/blogs/blog-the-impact-of-realtime-feedback-on-corporate-reputation-and-brand-image-172149
+([9](https://pure.manchester.ac.uk/ws/portalfiles/portal/84023663/FULL_TEXT.PDF)) https://pure.manchester.ac.uk/ws/portalfiles/portal/84023663/FULL_TEXT.PDF
+([10](https://pmc.ncbi.nlm.nih.gov/articles/PMC9167012/)) https://pmc.ncbi.nlm.nih.gov/articles/PMC9167012/
+([11](https://www.mdpi.com/2076-3417/9/16/3336)) https://www.mdpi.com/2076-3417/9/16/3336
 ([12](https://www.quantilope.com/resources/guide-to-brand-tracking)) **[Quantilope25brandTrackingGuide➔KDQW57EY](zotero://select/library/items/KDQW57EY)**
-==([13](https://pure.roehampton.ac.uk/ws/files/1360152/Conceptualizing_and_Measuring_CEO_Brand_Image_AAM.pdf)) https://pure.roehampton.ac.uk/ws/files/1360152/Conceptualizing_and_Measuring_CEO_Brand_Image_AAM.pdf ==
-==([14](https://www.ijitee.org/wp-content/uploads/papers/v8i6s/F61030486S19.pdf)) https://www.ijitee.org/wp-content/uploads/papers/v8i6s/F61030486S19.pdf ==
-==([15](https://www.researchgate.net/publication/233717024_How_to_measure_brand_image_a_reasoned_review)) https://www.researchgate.net/publication/233717024_How_to_measure_brand_image_a_reasoned_review ==
-==([16](https://prlab.co/blog/csr-and-public-relations/)) https://prlab.co/blog/csr-and-public-relations/ ==
-==([17](https://www.linkedin.com/advice/3/what-most-effective-ways-measure-corporate-u1ode)) https://www.linkedin.com/advice/3/what-most-effective-ways-measure-corporate-u1ode ==
+([13](https://pure.roehampton.ac.uk/ws/files/1360152/Conceptualizing_and_Measuring_CEO_Brand_Image_AAM.pdf)) https://pure.roehampton.ac.uk/ws/files/1360152/Conceptualizing_and_Measuring_CEO_Brand_Image_AAM.pdf
+([14](https://www.ijitee.org/wp-content/uploads/papers/v8i6s/F61030486S19.pdf)) https://www.ijitee.org/wp-content/uploads/papers/v8i6s/F61030486S19.pdf
+([15](https://www.researchgate.net/publication/233717024_How_to_measure_brand_image_a_reasoned_review)) https://www.researchgate.net/publication/233717024_How_to_measure_brand_image_a_reasoned_review
+([16](https://prlab.co/blog/csr-and-public-relations/)) https://prlab.co/blog/csr-and-public-relations/
+([17](https://www.linkedin.com/advice/3/what-most-effective-ways-measure-corporate-u1ode)) https://www.linkedin.com/advice/3/what-most-effective-ways-measure-corporate-u1ode
 ([18](https://survicate.com/blog/brand-sentiment-analysis/)) **[Krysiak-Adamczyk25brandSentimAnlyss➔839Z6XEL](zotero://select/library/items/839Z6XEL)**
-==([19](https://www.channelfutures.com/regulation-compliance/5-ways-to-improve-your-company-s-image)) https://www.channelfutures.com/regulation-compliance/5-ways-to-improve-your-company-s-image ==
+([19](https://www.channelfutures.com/regulation-compliance/5-ways-to-improve-your-company-s-image)) https://www.channelfutures.com/regulation-compliance/5-ways-to-improve-your-company-s-image
 ==([20](https://www.driveresearch.com/market-research-company-blog/how-to-conduct-a-corporate-image-study-market-research-company/)) https://www.driveresearch.com/market-research-company-blog/how-to-conduct-a-corporate-image-study-market-research-company/ ==
 ([21](https://brand24.com/blog/brand-sentiment/)) **[Wolanin24brandSentimentCare➔7A9XQEFG](zotero://select/library/items/7A9XQEFG)**
-==([22](https://www.mackenziecorp.com/4-brand-development-projects-for-2025/)) https://www.mackenziecorp.com/4-brand-development-projects-for-2025/ ==
-==([23](https://www.3epr.com/public-relations-kpis-you-should-be-measuring-in-2025/)) https://www.3epr.com/public-relations-kpis-you-should-be-measuring-in-2025/ ==
-==([24](https://www.pewresearch.org/internet/2021/02/18/experts-say-the-new-normal-in-2025-will-be-far-more-tech-driven-presenting-more-big-challenges/)) https://www.pewresearch.org/internet/2021/02/18/experts-say-the-new-normal-in-2025-will-be-far-more-tech-driven-presenting-more-big-challenges/ ==
+([22](https://www.mackenziecorp.com/4-brand-development-projects-for-2025/)) https://www.mackenziecorp.com/4-brand-development-projects-for-2025/
+([23](https://www.3epr.com/public-relations-kpis-you-should-be-measuring-in-2025/)) https://www.3epr.com/public-relations-kpis-you-should-be-measuring-in-2025/
+([24](https://www.pewresearch.org/internet/2021/02/18/experts-say-the-new-normal-in-2025-will-be-far-more-tech-driven-presenting-more-big-challenges/)) https://www.pewresearch.org/internet/2021/02/18/experts-say-the-new-normal-in-2025-will-be-far-more-tech-driven-presenting-more-big-challenges/
 ==([25](https://www.mightyroar.com/blog/promotion-profit)) https://www.mightyroar.com/blog/promotion-profit ==
-==([26](https://ijecm.co.uk/wp-content/uploads/2016/03/434.pdf)) https://ijecm.co.uk/wp-content/uploads/2016/03/434.pdf ==
+([26](https://ijecm.co.uk/wp-content/uploads/2016/03/434.pdf)) https://ijecm.co.uk/wp-content/uploads/2016/03/434.pdf
 ==([27](https://www.inputkit.io/en/blog/bad-brand-image-reputation-9-causes-impacts/)) https://www.inputkit.io/en/blog/bad-brand-image-reputation-9-causes-impacts/ ==
 ==([28](https://www.forbes.com/councils/forbescommunicationscouncil/2023/12/05/maximizing-marketing-profit-and-loss-statements-roi-measurement-strategies/)) https://www.forbes.com/councils/forbescommunicationscouncil/2023/12/05/maximizing-marketing-profit-and-loss-statements-roi-measurement-strategies/ ==
-==([29](https://kellercenter.hankamer.baylor.edu/news/story/2020/secret-linking-csr-financial-profitability)) https://kellercenter.hankamer.baylor.edu/news/story/2020/secret-linking-csr-financial-profitability ==
-==([30](https://www.brandtastic1.com/blog/companys-image-impact-business/)) https://www.brandtastic1.com/blog/companys-image-impact-business/ ==
-==([31](https://agicap.com/en/article/profit-and-loss-forecast/)) https://agicap.com/en/article/profit-and-loss-forecast/ ==
-==([32](http://www.diva-portal.org/smash/get/diva2:1331409/FULLTEXT01.pdf)) http://www.diva-portal.org/smash/get/diva2:1331409/FULLTEXT01.pdf ==
+([29](https://kellercenter.hankamer.baylor.edu/news/story/2020/secret-linking-csr-financial-profitability)) https://kellercenter.hankamer.baylor.edu/news/story/2020/secret-linking-csr-financial-profitability
+([30](https://www.brandtastic1.com/blog/companys-image-impact-business/)) https://www.brandtastic1.com/blog/companys-image-impact-business/
+([31](https://agicap.com/en/article/profit-and-loss-forecast/)) https://agicap.com/en/article/profit-and-loss-forecast/
+([32](http://www.diva-portal.org/smash/get/diva2:1331409/FULLTEXT01.pdf)) http://www.diva-portal.org/smash/get/diva2:1331409/FULLTEXT01.pdf
 ==([33](https://www.linkedin.com/advice/3/how-can-you-determine-financial-impact-rebranding)) https://www.linkedin.com/advice/3/how-can-you-determine-financial-impact-rebranding ==
 ([34](https://www.meltwater.com/en/blog/top-social-media-monitoring-tools)) **[Mathew21socialMediaToolsTop23➔K3EGPXPI](zotero://select/library/items/K3EGPXPI)**
-==([35](https://www.surveymonkey.com/mp/brand-image/)) https://www.surveymonkey.com/mp/brand-image/ ==
-==([36](https://www.sprinklr.com/blog/brand-monitoring-tools/)) https://www.sprinklr.com/blog/brand-monitoring-tools/ ==
+([35](https://www.surveymonkey.com/mp/brand-image/)) https://www.surveymonkey.com/mp/brand-image/
+([36](https://www.sprinklr.com/blog/brand-monitoring-tools/)) https://www.sprinklr.com/blog/brand-monitoring-tools/
 ([37](https://www.eskimi.com/blog/brand-metrics)) **[Eskimi24brandMetrics8➔TQCKKKZM](zotero://select/library/items/TQCKKKZM)**
-==([38](https://www.qualtrics.com/experience-management/brand/brand-tracking-guide/)) https://www.qualtrics.com/experience-management/brand/brand-tracking-guide/ ==
+([38](https://www.qualtrics.com/experience-management/brand/brand-tracking-guide/)) https://www.qualtrics.com/experience-management/brand/brand-tracking-guide/
 ==([39](https://www.pemavor.com/top-brand-monitoring-tools-that-will-transform-your-business/)) https://www.pemavor.com/top-brand-monitoring-tools-that-will-transform-your-business/ ==
-==([40](https://www.ronsela.com/brand-measurement/)) https://www.ronsela.com/brand-measurement/ ==
+([40](https://www.ronsela.com/brand-measurement/)) https://www.ronsela.com/brand-measurement/
 ([41](https://blog.tapresearch.com/high-frequency-brand-tracking)) **[HighFrequencyBrandTracking➔4FC2JG9B](zotero://select/library/items/4FC2JG9B)**
 ==([42](https://youscan.io/blog/social-media-monitoring-tools/)) https://youscan.io/blog/social-media-monitoring-tools/ ==
 ==([43](https://www.bestviso.com/en/brandimage/)) https://www.bestviso.com/en/brandimage/ ==
 ([44](https://www.aimtechnologies.co/pr-monitoring-tools-enhancing-your-public-relations-strategy/)) **[Mohamed2monitorToolsPR➔MW8W5LIA](zotero://select/library/items/MW8W5LIA)**
 ([45](https://www.aimtechnologies.co/changing-brand-perception-strategies-and-impact/)) **[[Mohamed24brandPerceptionChng|Mohamed24brandPerceptionChng]]**
-==([46](https://www.forbes.com/councils/forbescommunicationscouncil/2019/12/13/10-smart-techniques-for-dealing-with-public-image-disasters/)) https://www.forbes.com/councils/forbescommunicationscouncil/2019/12/13/10-smart-techniques-for-dealing-with-public-image-disasters/ ==
-==([47](https://dto-research.com/en/current/professional-articles/391-the-image-analysis-why-it-is-important-for-companies-to-address-their-brand-s-self-image-and-external-image)) https://dto-research.com/en/current/professional-articles/391-the-image-analysis-why-it-is-important-for-companies-to-address-their-brand-s-self-image-and-external-image ==
-==([48](https://www.forbes.com/sites/forbesagencycouncil/2016/06/03/five-steps-to-change-the-perception-of-your-brand/)) https://www.forbes.com/sites/forbesagencycouncil/2016/06/03/five-steps-to-change-the-perception-of-your-brand/ ==
+([46](https://www.forbes.com/councils/forbescommunicationscouncil/2019/12/13/10-smart-techniques-for-dealing-with-public-image-disasters/)) https://www.forbes.com/councils/forbescommunicationscouncil/2019/12/13/10-smart-techniques-for-dealing-with-public-image-disasters/
+([47](https://dto-research.com/en/current/professional-articles/391-the-image-analysis-why-it-is-important-for-companies-to-address-their-brand-s-self-image-and-external-image)) https://dto-research.com/en/current/professional-articles/391-the-image-analysis-why-it-is-important-for-companies-to-address-their-brand-s-self-image-and-external-image
+([48](https://www.forbes.com/sites/forbesagencycouncil/2016/06/03/five-steps-to-change-the-perception-of-your-brand/)) https://www.forbes.com/sites/forbesagencycouncil/2016/06/03/five-steps-to-change-the-perception-of-your-brand/
 ==([49](https://www.agilitypr.com/pr-news/public-relations/4-simple-ways-to-improve-your-public-image/)) https://www.agilitypr.com/pr-news/public-relations/4-simple-ways-to-improve-your-public-image/ ==
-==([50](https://hbr.org/2012/09/better-customer-insight-in-real-time)) https://hbr.org/2012/09/better-customer-insight-in-real-time ==
-==([51](https://www.radarr.com/blog/ultimate-guide-to-brand-perception/)) https://www.radarr.com/blog/ultimate-guide-to-brand-perception/ ==
+([50](https://hbr.org/2012/09/better-customer-insight-in-real-time)) https://hbr.org/2012/09/better-customer-insight-in-real-time
+([51](https://www.radarr.com/blog/ultimate-guide-to-brand-perception/)) https://www.radarr.com/blog/ultimate-guide-to-brand-perception/
 ([52](https://www.brandwatch.com/blog/marketing-the-importance-of-brand-perception/)) **[Newton23importanceBrandPercept➔WPXSY5NK](zotero://select/library/items/WPXSY5NK)**
-==([53](https://pmc.ncbi.nlm.nih.gov/articles/PMC1301708/)) https://pmc.ncbi.nlm.nih.gov/articles/PMC1301708/ ==
-==([54](https://www.researchgate.net/figure/Quantitative-comparison-of-visual-tracking-methods-and-our-proposed-method-based-on_tbl4_323159767)) https://www.researchgate.net/figure/Quantitative-comparison-of-visual-tracking-methods-and-our-proposed-method-based-on_tbl4_323159767 ==
+([53](https://pmc.ncbi.nlm.nih.gov/articles/PMC1301708/)) https://pmc.ncbi.nlm.nih.gov/articles/PMC1301708/
+([54](https://www.researchgate.net/figure/Quantitative-comparison-of-visual-tracking-methods-and-our-proposed-method-based-on_tbl4_323159767)) https://www.researchgate.net/figure/Quantitative-comparison-of-visual-tracking-methods-and-our-proposed-method-based-on_tbl4_323159767
