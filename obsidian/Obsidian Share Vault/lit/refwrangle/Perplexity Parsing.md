@@ -112,8 +112,8 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 {
 	"versionAtEmbed": "0.3.3",
 	"filepath": "lit/refwrangle/attachments/Ink/Drawing/2025.2.13 - 9.17am.drawing",
-	"width": 500,
-	"aspectRatio": 1
+	"width": 920,
+	"aspectRatio": 1.8930041152263375
 }
 ```
 
