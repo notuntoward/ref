@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "97eaa8ca11847d87",
+        "id": "9ac2608d8a01007e",
         "type": "tabs",
         "children": [
           {
-            "id": "7f3a31faf61dd58e",
+            "id": "ee2e0e2101934bb4",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -102,8 +102,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 390.5,
-    "collapsed": true
+    "width": 390.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -291,10 +290,10 @@
       "cmdr:Ink: New handwriting section": false
     }
   },
-  "active": "7f3a31faf61dd58e",
+  "active": "ee2e0e2101934bb4",
   "lastOpenFiles": [
-    "lit/lit_notes/Mohamed24brandPerceptionChng.md",
     "tmp_new_cites_perplexity_example.md",
+    "lit/lit_notes/Mohamed24brandPerceptionChng.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "lit/refwrangle/Perplexity Parsing.md",
     "lit/lit_sources/Graham25trumpSupportersDidnt.html",
