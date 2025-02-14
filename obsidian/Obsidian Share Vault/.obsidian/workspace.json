@@ -11,10 +11,15 @@
             "id": "7f3a31faf61dd58e",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "tmp_new_cites_perplexity_example.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "tmp_new_cites_perplexity_example"
             }
           }
         ]
@@ -97,7 +102,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 390.5
+    "width": 390.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
