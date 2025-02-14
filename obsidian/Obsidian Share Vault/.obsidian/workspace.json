@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Dailies/2024-03-23.md",
+                "file": "tmp_stock_perplexy_merged.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2024-03-23"
+              "title": "tmp_stock_perplexy_merged"
             }
           }
         ]
@@ -293,6 +293,7 @@
   },
   "active": "ee2e0e2101934bb4",
   "lastOpenFiles": [
+    "Dailies/2024-03-23.md",
     "tmp_stock_perplexy_merged.md",
     "lit/lit_sources/Wells25RepublicansWonElections.html",
     "lit/lit_sources/Ludwig25votersCorrectEcon.html",

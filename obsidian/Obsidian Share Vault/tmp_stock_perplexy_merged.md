@@ -1,6 +1,3 @@
----
-modified date: 2025-02-14T00:47:26-08:00
----
 # Responses
 # claude_3_5_sonnet.md
 Two notable defeats of right-wing populist governments have occurred in recent years:
@@ -268,31 +265,31 @@ The defeats of extreme right-wing populists in these countries often result from
 
 
 # Citations
-([1](https://www.bbc.com/news/world-europe-36130006)) https://www.bbc.com/news/world-europe-36130006
 ==([1](https://www.bbc.com/news/world-europe-36130006)) https://www.bbc.com/news/world-europe-36130006 ==
+([1](https://www.bbc.com/news/world-europe-36130006)) https://www.bbc.com/news/world-europe-36130006
 ([2](https://www.politico.eu/article/mapped-europe-far-right-government-power-politics-eu-italy-finalnd-hungary-parties-elections-polling/)) https://www.politico.eu/article/mapped-europe-far-right-government-power-politics-eu-italy-finalnd-hungary-parties-elections-polling/
 ([3](https://forum.lasaweb.org/files/vol54-issue4/dossier-3.pdf)) https://forum.lasaweb.org/files/vol54-issue4/dossier-3.pdf
-([4](https://www.euronews.com/my-europe/2024/04/23/will-spains-vox-benefit-from-the-rise-of-the-extreme-right-in-europe)) **[Euronews24spainVoxRightEU➔UX6ZXAXR](zotero://select/library/items/UX6ZXAXR)**
 ==([4](https://globalaffairs.org/commentary-and-analysis/blogs/brazils-systemic-mistrust-elections-and-democracy)) https://globalaffairs.org/commentary-and-analysis/blogs/brazils-systemic-mistrust-elections-and-democracy ==
-==([5](https://www.bbc.com/news/world-europe-63029909)) https://www.bbc.com/news/world-europe-63029909 ==
+([4](https://www.euronews.com/my-europe/2024/04/23/will-spains-vox-benefit-from-the-rise-of-the-extreme-right-in-europe)) **[Euronews24spainVoxRightEU➔UX6ZXAXR](zotero://select/library/items/UX6ZXAXR)**
 ([5](https://www.bbc.com/news/world-europe-63029909)) https://www.bbc.com/news/world-europe-63029909
+==([5](https://www.bbc.com/news/world-europe-63029909)) https://www.bbc.com/news/world-europe-63029909 ==
 ([6](https://dgap.org/en/research/publications/right-wing-populists-would-win-poland-today)) https://dgap.org/en/research/publications/right-wing-populists-would-win-poland-today
 ==([6](https://dgap.org/en/research/publications/right-wing-populists-would-win-poland-today)) https://dgap.org/en/research/publications/right-wing-populists-would-win-poland-today ==
 ==([7](https://www.pewresearch.org/global/2024/12/11/global-elections-in-2024-what-we-learned-in-a-year-of-political-disruption/)) https://www.pewresearch.org/global/2024/12/11/global-elections-in-2024-what-we-learned-in-a-year-of-political-disruption/ ==
 ([7](https://www.pewresearch.org/global/2024/12/11/global-elections-in-2024-what-we-learned-in-a-year-of-political-disruption/)) https://www.pewresearch.org/global/2024/12/11/global-elections-in-2024-what-we-learned-in-a-year-of-political-disruption/
 ([8](https://www.pewresearch.org/short-reads/2022/10/06/populists-in-europe-especially-those-on-the-right-have-increased-their-vote-shares-in-recent-elections/)) https://www.pewresearch.org/short-reads/2022/10/06/populists-in-europe-especially-those-on-the-right-have-increased-their-vote-shares-in-recent-elections/
 ==([8](https://www.pewresearch.org/short-reads/2022/10/06/populists-in-europe-especially-those-on-the-right-have-increased-their-vote-shares-in-recent-elections/)) https://www.pewresearch.org/short-reads/2022/10/06/populists-in-europe-especially-those-on-the-right-have-increased-their-vote-shares-in-recent-elections/ ==
-==([9](https://foreignpolicy.com/2023/12/26/right-wing-populism-are-set-to-sweep-the-west-in-2024/)) https://foreignpolicy.com/2023/12/26/right-wing-populism-are-set-to-sweep-the-west-in-2024/ ==
 ([9](https://foreignpolicy.com/2023/12/26/right-wing-populism-are-set-to-sweep-the-west-in-2024/)) https://foreignpolicy.com/2023/12/26/right-wing-populism-are-set-to-sweep-the-west-in-2024/
-==([10](https://www.populismstudies.org/populism-in-2023-the-year-in-review/)) https://www.populismstudies.org/populism-in-2023-the-year-in-review/ ==
+==([9](https://foreignpolicy.com/2023/12/26/right-wing-populism-are-set-to-sweep-the-west-in-2024/)) https://foreignpolicy.com/2023/12/26/right-wing-populism-are-set-to-sweep-the-west-in-2024/ ==
 ([10](https://www.populismstudies.org/populism-in-2023-the-year-in-review/)) https://www.populismstudies.org/populism-in-2023-the-year-in-review/
+==([10](https://www.populismstudies.org/populism-in-2023-the-year-in-review/)) https://www.populismstudies.org/populism-in-2023-the-year-in-review/ ==
 ([11](https://carnegieendowment.org/posts/2022/09/how-a-far-right-victory-in-italy-might-ripple-through-the-eu?lang=en)) https://carnegieendowment.org/posts/2022/09/how-a-far-right-victory-in-italy-might-ripple-through-the-eu?lang=en
 ==([11](https://carnegieendowment.org/posts/2022/09/how-a-far-right-victory-in-italy-might-ripple-through-the-eu?lang=en)) https://carnegieendowment.org/posts/2022/09/how-a-far-right-victory-in-italy-might-ripple-through-the-eu?lang=en ==
 ([12](https://dcubrexitinstitute.eu/2023/10/elections-in-poland-bring-the-end-of-right-wing-populist-rule/)) **[[Gora23polandEndRightWing|Gora23polandEndRightWing]]**
 ([13](https://www.brookings.edu/articles/the-populist-challenge-to-liberal-democracy/)) https://www.brookings.edu/articles/the-populist-challenge-to-liberal-democracy/
 ==([13](https://www.brookings.edu/articles/the-populist-challenge-to-liberal-democracy/)) https://www.brookings.edu/articles/the-populist-challenge-to-liberal-democracy/ ==
-([14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)) https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/
 ==([14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)) https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/ ==
+([14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)) https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/
 ([15](https://institute.global/insights/politics-and-governance/high-tide-populism-power-1990-2020)) https://institute.global/insights/politics-and-governance/high-tide-populism-power-1990-2020
 ([16](https://canopyforum.org/2024/10/03/european-elections-2024-successes-and-failures-of-far-right-political-parties/)) https://canopyforum.org/2024/10/03/european-elections-2024-successes-and-failures-of-far-right-political-parties/
 ([17](https://theloop.ecpr.eu/how-real-is-the-threat-of-the-populist-far-right-in-the-european-parliament-elections/)) https://theloop.ecpr.eu/how-real-is-the-threat-of-the-populist-far-right-in-the-european-parliament-elections/
@@ -307,8 +304,8 @@ The defeats of extreme right-wing populists in these countries often result from
 ([26](https://www.bu.edu/articles/2024/do-global-right-wing-losses-mean-anything-for-the-us-presidential-election/)) https://www.bu.edu/articles/2024/do-global-right-wing-losses-mean-anything-for-the-us-presidential-election/
 ([27](https://www.populismstudies.org/waking-the-sleeping-populist-giant-the-2024-european-elections-and-populism-in-the-netherlands/)) https://www.populismstudies.org/waking-the-sleeping-populist-giant-the-2024-european-elections-and-populism-in-the-netherlands/
 ([28](https://www.populismstudies.org/eight-years-of-populist-rule-in-poland-comes-to-an-end/)) https://www.populismstudies.org/eight-years-of-populist-rule-in-poland-comes-to-an-end/
-==([29](https://en.wikipedia.org/wiki/Vox_(political_party))) https://en.wikipedia.org/wiki/Vox_(political_party) ==
 ([29](https://en.wikipedia.org/wiki/Vox_(political_party))) https://en.wikipedia.org/wiki/Vox_(political_party)
+==([29](https://en.wikipedia.org/wiki/Vox_(political_party))) https://en.wikipedia.org/wiki/Vox_(political_party) ==
 ([30](https://www.iiss.org/online-analysis/survival-online/2024/09/the-janus-face-of-italys-far-right/)) https://www.iiss.org/online-analysis/survival-online/2024/09/the-janus-face-of-italys-far-right/
 ==([31](https://library.fes.de/pdf-files/bueros/warschau/21049.pdf)) https://library.fes.de/pdf-files/bueros/warschau/21049.pdf ==
 ([32](https://www.csis.org/analysis/whither-spain-july-2023-general-election-results-and-beyond)) https://www.csis.org/analysis/whither-spain-july-2023-general-election-results-and-beyond
