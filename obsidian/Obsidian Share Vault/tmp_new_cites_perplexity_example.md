@@ -1,3 +1,4 @@
+# Response
 Corporations today employ a variety of modern techniques to measure and manage their public image. These methods are designed to assess brand perception, track changes over time, and identify factors influencing shifts in public sentiment. Here's an overview of these techniques, their frequency of updates, and how companies analyze the causes of changes in public image:
 
 ## **Modern Techniques to Measure Public Image**
@@ -51,7 +52,7 @@ When a shift in public image occurs, corporations use several techniques to dete
 
 In conclusion, corporations utilize a mix of advanced analytics tools and traditional surveys to measure their public image comprehensively. They frequently update these insights based on industry needs and employ sophisticated methods like sentiment analysis and anomaly detection to uncover the root causes of changes in perception. These efforts not only safeguard reputation but also align branding strategies with financial performance goals.
 
-Citations:
+# Citations
 ==([1](https://www.quantilope.com/resources/what-is-brand-value-and-how-to-measure)) https://www.quantilope.com/resources/what-is-brand-value-and-how-to-measure ==
 ==([2](https://www.meltwater.com/en/blog/reputation-measurement)) https://www.meltwater.com/en/blog/reputation-measurement ==
 ==([3](https://brand24.com/blog/brand-tracking/)) https://brand24.com/blog/brand-tracking/ ==
