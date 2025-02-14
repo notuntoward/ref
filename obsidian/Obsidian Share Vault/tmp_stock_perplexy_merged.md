@@ -1,3 +1,6 @@
+---
+modified date: 2025-02-14T00:47:26-08:00
+---
 # Responses
 # claude_3_5_sonnet.md
 Two notable defeats of right-wing populist governments have occurred in recent years:
@@ -17,7 +20,7 @@ The Finns Party suffered a significant electoral defeat in the 2024 European Par
 ## Attempted but Failed Defeats
 
 **Spain**
-Despite losing over 600,000 votes in the most recent general election, the far-right maintains influence due to high political polarization ==[4](https://www.euronews.com/my-europe/2024/04/23/will-spains-vox-benefit-from-the-rise-of-the-extreme-right-in-europe)== ==[14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)==. The country remains in a paradoxical situation where populist forces retain significant influence even after electoral defeats ==[14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)==.
+Despite losing over 600,000 votes in the most recent general election, the far-right maintains influence due to high political polarization [Euronews24spainVoxRightEU➔UX6ZXAXR](zotero://select/library/items/UX6ZXAXR) ==[14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)==. The country remains in a paradoxical situation where populist forces retain significant influence even after electoral defeats ==[14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)==.
 
 It's worth noting that the trend in most of Europe has been moving in the opposite direction, with right-wing populist parties gaining strength in countries like Italy (Brothers of Italy), Sweden (Sweden Democrats), and Hungary (Fidesz) ==[8](https://www.pewresearch.org/short-reads/2022/10/06/populists-in-europe-especially-those-on-the-right-have-increased-their-vote-shares-in-recent-elections/)==. Recent research indicates that 2024 may see one of the most significant challenges to liberal democracy since the end of the Cold War ==[9](https://foreignpolicy.com/2023/12/26/right-wing-populism-are-set-to-sweep-the-west-in-2024/)==.
 
@@ -46,9 +49,9 @@ In the past five years, several democratic countries have seen the defeat of ext
 - **Demographics:** Younger voters and urban areas leaned heavily toward progressive parties focused on climate change and equality [Herkman24LfinnPopulistLoss➔Z8X4PF32](zotero://select/library/items/Z8X4PF32).
 
 ## Spain
-- **What Happened:** In Spain's 2023 general elections, the far-right Vox party lost over 600,000 votes compared to previous elections. It failed to expand its influence despite political polarization ==[4](https://www.euronews.com/my-europe/2024/04/23/will-spains-vox-benefit-from-the-rise-of-the-extreme-right-in-europe)== ==[14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)==.
-- **Causes:** Vox's aggressive rhetoric alienated centrist voters while its association with controversial alliances weakened its appeal. The Socialist Party (PSOE) effectively mobilized progressive coalitions to counteract Vox's rise ==[4](https://www.euronews.com/my-europe/2024/04/23/will-spains-vox-benefit-from-the-rise-of-the-extreme-right-in-europe)== ==[14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)==.
-- **Campaign Effects:** Campaigns highlighting economic recovery post-COVID-19 and social progress were more effective than Vox's focus on cultural issues ==[4](https://www.euronews.com/my-europe/2024/04/23/will-spains-vox-benefit-from-the-rise-of-the-extreme-right-in-europe)==.
+- **What Happened:** In Spain's 2023 general elections, the far-right Vox party lost over 600,000 votes compared to previous elections. It failed to expand its influence despite political polarization [Euronews24spainVoxRightEU➔UX6ZXAXR](zotero://select/library/items/UX6ZXAXR) ==[14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)==.
+- **Causes:** Vox's aggressive rhetoric alienated centrist voters while its association with controversial alliances weakened its appeal. The Socialist Party (PSOE) effectively mobilized progressive coalitions to counteract Vox's rise [Euronews24spainVoxRightEU➔UX6ZXAXR](zotero://select/library/items/UX6ZXAXR) ==[14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)==.
+- **Campaign Effects:** Campaigns highlighting economic recovery post-COVID-19 and social progress were more effective than Vox's focus on cultural issues [Euronews24spainVoxRightEU➔UX6ZXAXR](zotero://select/library/items/UX6ZXAXR).
 - **Demographics:** Women and younger voters overwhelmingly rejected Vox's socially conservative platform, favoring progressive policies instead ==[14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)==.
 
 ## Broader Trends
@@ -66,17 +69,17 @@ In the last five years, several democratic countries have witnessed the defeat o
 
 **Finland**: In the 2024 European Parliament elections, the populist radical-right Finns Party experienced a significant setback, coming in sixth place nationally and losing 6.2% of its vote share compared to the previous election. This decline can be attributed to several factors, including internal party strife, a shift in voter preferences towards more centrist or left-leaning parties, and possibly a backlash against the party's more extreme positions [Herkman24LfinnPopulistLoss➔Z8X4PF32](zotero://select/library/items/Z8X4PF32).
 
-**Spain**: While not a complete defeat, the far-right party Vox in Spain lost over 600,000 votes in the country's latest general election. However, the political landscape in Spain remains highly polarized, and Vox has an opportunity to regain ground in the upcoming European Parliament elections. The loss in the general election was partly due to strategic voting by the electorate to prevent a far-right government, as well as the influence of other parties' campaigns focusing on unity and moderation ==[4](https://www.euronews.com/my-europe/2024/04/23/will-spains-vox-benefit-from-the-rise-of-the-extreme-right-in-europe)== ==[14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)==.
+**Spain**: While not a complete defeat, the far-right party Vox in Spain lost over 600,000 votes in the country's latest general election. However, the political landscape in Spain remains highly polarized, and Vox has an opportunity to regain ground in the upcoming European Parliament elections. The loss in the general election was partly due to strategic voting by the electorate to prevent a far-right government, as well as the influence of other parties' campaigns focusing on unity and moderation [Euronews24spainVoxRightEU➔UX6ZXAXR](zotero://select/library/items/UX6ZXAXR) ==[14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)==.
 
 **Demographic Factors**: 
 - **Poland**: The opposition's success was partly due to mobilizing younger voters and urban dwellers who were more likely to support democratic values and were disillusioned with PiS's governance style [[Gora23polandEndRightWing|Gora23polandEndRightWing]].
 - **Finland**: The decline of the Finns Party might be linked to demographic shifts, with younger voters and those in urban areas showing less support for radical right-wing parties [Herkman24LfinnPopulistLoss➔Z8X4PF32](zotero://select/library/items/Z8X4PF32).
-- **Spain**: The demographic factors influencing the election results are less clear, but the polarization suggests that age, education, and urban-rural divides play a role in voter preferences ==[4](https://www.euronews.com/my-europe/2024/04/23/will-spains-vox-benefit-from-the-rise-of-the-extreme-right-in-europe)== ==[14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)==.
+- **Spain**: The demographic factors influencing the election results are less clear, but the polarization suggests that age, education, and urban-rural divides play a role in voter preferences [Euronews24spainVoxRightEU➔UX6ZXAXR](zotero://select/library/items/UX6ZXAXR) ==[14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)==.
 
 **Campaign Effects**: 
 - **Poland**: The opposition's campaign was effective in highlighting the need for democratic reforms and judicial independence, which appealed to voters concerned about the erosion of democratic norms under PiS [[Gora23polandEndRightWing|Gora23polandEndRightWing]].
 - **Finland**: The Finns Party's campaign might have been undermined by internal divisions and a failure to adapt to changing voter priorities [Herkman24LfinnPopulistLoss➔Z8X4PF32](zotero://select/library/items/Z8X4PF32).
-- **Spain**: The campaigns of other parties, particularly those advocating for unity and moderation, likely influenced voters to strategically vote against Vox ==[4](https://www.euronews.com/my-europe/2024/04/23/will-spains-vox-benefit-from-the-rise-of-the-extreme-right-in-europe)== ==[14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)==.
+- **Spain**: The campaigns of other parties, particularly those advocating for unity and moderation, likely influenced voters to strategically vote against Vox [Euronews24spainVoxRightEU➔UX6ZXAXR](zotero://select/library/items/UX6ZXAXR) ==[14](https://whogoverns.eu/in-polarised-spain-populists-win-even-when-they-lose-the-elections/)==.
 
 These examples illustrate that while extreme right-wing populism has seen significant gains in some parts of Europe, there are also instances where democratic forces have successfully pushed back against such movements through effective campaigning, voter mobilization, and addressing key demographic concerns.
 
@@ -254,7 +257,7 @@ In the 2024 European Parliament elections, the populist radical-right Finns Part
 - **Demographic Factors**: The party traditionally draws support from rural areas and older voters, but these demographics may have been less mobilized in the European elections.
 
 ## 3. **Spain**
-While not a complete defeat, Spain's far-right party Vox lost significant ground in the latest general election, losing over 600,000 votes ==[4](https://www.euronews.com/my-europe/2024/04/23/will-spains-vox-benefit-from-the-rise-of-the-extreme-right-in-europe)==. This decline suggests that Vox's populist appeal may be waning.
+While not a complete defeat, Spain's far-right party Vox lost significant ground in the latest general election, losing over 600,000 votes [Euronews24spainVoxRightEU➔UX6ZXAXR](zotero://select/library/items/UX6ZXAXR). This decline suggests that Vox's populist appeal may be waning.
 
 - **Causes**: Economic recovery and a shift in public opinion towards more moderate political options could have contributed to Vox's decline.
 - **Campaigns**: The main parties focused on economic stability and social cohesion, which may have undercut Vox's populist narrative.
@@ -269,9 +272,8 @@ The defeats of extreme right-wing populists in these countries often result from
 ==([1](https://www.bbc.com/news/world-europe-36130006)) https://www.bbc.com/news/world-europe-36130006 ==
 ([2](https://www.politico.eu/article/mapped-europe-far-right-government-power-politics-eu-italy-finalnd-hungary-parties-elections-polling/)) https://www.politico.eu/article/mapped-europe-far-right-government-power-politics-eu-italy-finalnd-hungary-parties-elections-polling/
 ([3](https://forum.lasaweb.org/files/vol54-issue4/dossier-3.pdf)) https://forum.lasaweb.org/files/vol54-issue4/dossier-3.pdf
-([4](https://www.euronews.com/my-europe/2024/04/23/will-spains-vox-benefit-from-the-rise-of-the-extreme-right-in-europe)) https://www.euronews.com/my-europe/2024/04/23/will-spains-vox-benefit-from-the-rise-of-the-extreme-right-in-europe
+([4](https://www.euronews.com/my-europe/2024/04/23/will-spains-vox-benefit-from-the-rise-of-the-extreme-right-in-europe)) **[Euronews24spainVoxRightEU➔UX6ZXAXR](zotero://select/library/items/UX6ZXAXR)**
 ==([4](https://globalaffairs.org/commentary-and-analysis/blogs/brazils-systemic-mistrust-elections-and-democracy)) https://globalaffairs.org/commentary-and-analysis/blogs/brazils-systemic-mistrust-elections-and-democracy ==
-==([4](https://www.euronews.com/my-europe/2024/04/23/will-spains-vox-benefit-from-the-rise-of-the-extreme-right-in-europe)) https://www.euronews.com/my-europe/2024/04/23/will-spains-vox-benefit-from-the-rise-of-the-extreme-right-in-europe ==
 ==([5](https://www.bbc.com/news/world-europe-63029909)) https://www.bbc.com/news/world-europe-63029909 ==
 ([5](https://www.bbc.com/news/world-europe-63029909)) https://www.bbc.com/news/world-europe-63029909
 ([6](https://dgap.org/en/research/publications/right-wing-populists-would-win-poland-today)) https://dgap.org/en/research/publications/right-wing-populists-would-win-poland-today
