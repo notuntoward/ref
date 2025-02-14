@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tmp_stock_perplexy_merged.md",
+                "file": "Dailies/2024-03-23.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "tmp_stock_perplexy_merged"
+              "title": "2024-03-23"
             }
           }
         ]
@@ -293,11 +293,11 @@
   },
   "active": "ee2e0e2101934bb4",
   "lastOpenFiles": [
+    "tmp_stock_perplexy_merged.md",
     "lit/lit_sources/Wells25RepublicansWonElections.html",
     "lit/lit_sources/Ludwig25votersCorrectEcon.html",
     "lit/lit_sources/Ludwig25VotersWereRight.html",
     "tmp_new_cites_perplexity_example.md",
-    "tmp_stock_perplexy_merged.md",
     "lit/lit_sources/Euronews24spainVoxRightEU.html",
     "lit/lit_sources/NaNWillVoxBenefit.html",
     "lit/lit_sources/Herkman24LfinnPopulistLoss.html",
@@ -310,7 +310,6 @@
     "lit/lit_sources/Graham25TrumpSupportersWho.html",
     "lit/refwrangle/attachments/Ink/Drawing/2025.2.13 - 9.17am.drawing",
     "Dailies/2025-02-13.md",
-    "Obsidian/custom_javascripts/outline_pane_toggle.js",
     "Obsidian/templates/Calendar Open.md",
     "Obsidian/templates_old/Daily Note Template SAVE.md",
     "Obsidian/templates_old/tmp.md",
