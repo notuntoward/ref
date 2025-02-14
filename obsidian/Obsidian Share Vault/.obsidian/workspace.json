@@ -4,22 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "9defe4872816b8fa",
+        "id": "97eaa8ca11847d87",
         "type": "tabs",
         "children": [
           {
-            "id": "d20ea0829c82ecfe",
+            "id": "7f3a31faf61dd58e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "tmp_new_cites_perplexity_example.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "tmp_new_cites_perplexity_example"
+              "title": "New tab"
             }
           }
         ]
@@ -290,10 +285,11 @@
       "cmdr:Ink: New handwriting section": false
     }
   },
-  "active": "d20ea0829c82ecfe",
+  "active": "7f3a31faf61dd58e",
   "lastOpenFiles": [
-    "tmp_savemychatbot_multiprompt_perplexity_example.md",
+    "lit/lit_notes/Mohamed24brandPerceptionChng.md",
     "tmp_new_cites_perplexity_example.md",
+    "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "lit/refwrangle/Perplexity Parsing.md",
     "lit/lit_sources/Graham25trumpSupportersDidnt.html",
     "lit/lit_sources/Graham25TrumpSupportersWho.html",
@@ -322,7 +318,6 @@
     "Obsidian/templates_old/old_lit_note_templates/zotTemp-LS-SDO.md",
     "Obsidian/templates_old/old_lit_note_templates/Zotero-Template-3-SDO.md",
     "Obsidian/templates_old/old_lit_note_templates/Ultrashort Link.md",
-    "Obsidian/templates_old/old_lit_note_templates/literature_note_BROKEN_FN_to_BASENAME.md",
     "Obsidian/templates_old/old_lit_note_templates",
     "Obsidian/templates_old/old",
     "Obsidian/templates_old",
