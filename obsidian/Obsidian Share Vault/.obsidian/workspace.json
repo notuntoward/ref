@@ -102,7 +102,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 390.5
+    "width": 390.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -292,6 +293,9 @@
   },
   "active": "ee2e0e2101934bb4",
   "lastOpenFiles": [
+    "lit/lit_sources/Wells25RepublicansWonElections.html",
+    "lit/lit_sources/Ludwig25votersCorrectEcon.html",
+    "lit/lit_sources/Ludwig25VotersWereRight.html",
     "tmp_new_cites_perplexity_example.md",
     "tmp_stock_perplexy_merged.md",
     "lit/lit_sources/Euronews24spainVoxRightEU.html",
@@ -307,7 +311,6 @@
     "lit/refwrangle/attachments/Ink/Drawing/2025.2.13 - 9.17am.drawing",
     "Dailies/2025-02-13.md",
     "Obsidian/custom_javascripts/outline_pane_toggle.js",
-    "Obsidian/custom_javascripts",
     "Obsidian/templates/Calendar Open.md",
     "Obsidian/templates_old/Daily Note Template SAVE.md",
     "Obsidian/templates_old/tmp.md",
@@ -326,7 +329,6 @@
     "Obsidian/templates_old/old_lit_note_templates/zotTemp-LS-SDO-note-persist.md",
     "Obsidian/templates_old/old_lit_note_templates/zotTemp-PersistExample.md",
     "Obsidian/templates_old/old_lit_note_templates/zotero_new_template.md",
-    "Obsidian/templates_old/old_lit_note_templates",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",
