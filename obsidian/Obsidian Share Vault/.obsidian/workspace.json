@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "saved_perplexity_chat_youtube_bug.md",
+                "file": "tmp_new_cites_perplexity_example.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "saved_perplexity_chat_youtube_bug"
+              "title": "tmp_new_cites_perplexity_example"
             }
           }
         ]
@@ -292,8 +292,8 @@
   },
   "active": "ee2e0e2101934bb4",
   "lastOpenFiles": [
-    "tmp_new_cites_perplexity_example.md",
     "saved_perplexity_chat_youtube_bug.md",
+    "tmp_new_cites_perplexity_example.md",
     "lit/lit_notes/Mohamed24brandPerceptionChng.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "lit/refwrangle/Perplexity Parsing.md",
