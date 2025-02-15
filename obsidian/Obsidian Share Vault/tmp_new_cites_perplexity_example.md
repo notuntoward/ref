@@ -1,6 +1,5 @@
 ---
-created date: 2025-02-14T21:14:01-08:00
-modified date: 2025-02-14T21:14:01-08:00
+modified date: 2025-02-14T21:22:24-08:00
 ---
 # Response
 In the last five years, extreme right-wing populist movements have faced notable electoral defeats in democratic countries such as Brazil and France. These cases illustrate the interplay of political strategies, demographic factors, and public sentiment in curbing the rise of far-right populism.
