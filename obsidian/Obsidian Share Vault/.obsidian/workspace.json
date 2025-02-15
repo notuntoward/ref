@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "9ac2608d8a01007e",
+        "id": "89a199d4666463e6",
         "type": "tabs",
         "children": [
           {
-            "id": "ee2e0e2101934bb4",
+            "id": "417bc61f6eba0462",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -285,7 +285,7 @@
       "cmdr:Ink: New handwriting section": false
     }
   },
-  "active": "ee2e0e2101934bb4",
+  "active": "417bc61f6eba0462",
   "lastOpenFiles": [
     "tmp_new_cites_perplexity_example.md",
     "tmp_stock_perplexy_merged.md",
