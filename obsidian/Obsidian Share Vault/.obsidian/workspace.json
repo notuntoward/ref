@@ -11,10 +11,15 @@
             "id": "417bc61f6eba0462",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "tmp_new_cites_perplexity_example.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "tmp_new_cites_perplexity_example"
             }
           }
         ]
