@@ -4,22 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "89a199d4666463e6",
+        "id": "3ccfc1cc00bc32f1",
         "type": "tabs",
         "children": [
           {
-            "id": "4d7908ade99cf8d2",
+            "id": "8c8887bb1a814173",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "tmp_new_cites_perplexity_example.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "tmp_new_cites_perplexity_example"
+              "title": "New tab"
             }
           }
         ]
@@ -291,13 +286,13 @@
       "cmdr:Ink: New handwriting section": false
     }
   },
-  "active": "4d7908ade99cf8d2",
+  "active": "8c8887bb1a814173",
   "lastOpenFiles": [
+    "tmp_new_cites_perplexity_example.md",
     "lit/lit_sources/Unconfirmed 538793.crdownload",
     "lit/lit_sources/Superville25leftSeattleSchls.html",
     "lit/lit_sources/25WhyHaveThousands.html",
     "perplexity_2025-02-07_22-14-16.md",
-    "tmp_new_cites_perplexity_example.md",
     "download.md",
     "perplexity_multi_prompt_savemychatbot_example.md",
     "saved_perplexity_chat_youtube_bug.md",
@@ -313,7 +308,6 @@
     "lit/lit_notes/Mohamed24brandPerceptionChng.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "lit/refwrangle/Perplexity Parsing.md",
-    "lit/lit_sources/Graham25trumpSupportersDidnt.html",
     "Dailies/2025-02-13.md",
     "Obsidian/templates/Calendar Open.md",
     "Obsidian/templates_old/Daily Note Template SAVE.md",
