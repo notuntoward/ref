@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "9c09807d8c3b8990",
+        "id": "2adc48d5c2dc8a85",
         "type": "tabs",
         "children": [
           {
-            "id": "595de9cff414c488",
+            "id": "140b6f17aeea43de",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -102,8 +102,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 390.5,
-    "collapsed": true
+    "width": 390.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -290,14 +289,14 @@
       "cmdr:Ink: New handwriting section": false
     }
   },
-  "active": "595de9cff414c488",
+  "active": "140b6f17aeea43de",
   "lastOpenFiles": [
     "tmp_stock_perplexy_merged.md",
+    "tmp_new_cites_perplexity_example.md",
     "lit/lit_sources/Unconfirmed 162083.crdownload",
     "lit/lit_sources/Przybylski23endPolandsIlliberal.html",
     "lit/lit_sources/Dionis23EndPolandsIlliberal.html",
     "perplexity_2025-02-07_22-14-16.md",
-    "tmp_new_cites_perplexity_example.md",
     "lit/lit_sources/Unconfirmed 538793.crdownload",
     "lit/lit_sources/Superville25leftSeattleSchls.html",
     "lit/lit_sources/25WhyHaveThousands.html",
