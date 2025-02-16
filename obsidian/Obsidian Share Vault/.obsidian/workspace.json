@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tmp_new_cites_perplexity_example.md",
+                "file": "tmp_stock_perplexy_merged.md",
                 "mode": "source",
-                "source": false,
+                "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "tmp_new_cites_perplexity_example"
+              "title": "tmp_stock_perplexy_merged"
             }
           }
         ]
@@ -222,13 +222,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tmp_new_cites_perplexity_example.md",
+                "file": "tmp_stock_perplexy_merged.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of tmp_new_cites_perplexity_example"
+              "title": "Outline of tmp_stock_perplexy_merged"
             }
           },
           {
@@ -291,8 +291,8 @@
   },
   "active": "140b6f17aeea43de",
   "lastOpenFiles": [
-    "tmp_stock_perplexy_merged.md",
     "tmp_new_cites_perplexity_example.md",
+    "tmp_stock_perplexy_merged.md",
     "perplexity_2025-02-07_22-14-16.md",
     "lit/lit_sources/Unconfirmed 162083.crdownload",
     "lit/lit_sources/Przybylski23endPolandsIlliberal.html",
