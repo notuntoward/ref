@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
+                "file": "perplexity_2025-02-07_22-14-16.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "tmp_savemychatbot_multiprompt_perplexity_example"
+              "title": "perplexity_2025-02-07_22-14-16"
             }
           }
         ]
@@ -222,13 +222,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tmp_savemychatbot_multiprompt_perplexity_example.md",
+                "file": "perplexity_2025-02-07_22-14-16.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of tmp_savemychatbot_multiprompt_perplexity_example"
+              "title": "Outline of perplexity_2025-02-07_22-14-16"
             }
           },
           {
@@ -292,6 +292,7 @@
   },
   "active": "140b6f17aeea43de",
   "lastOpenFiles": [
+    "perplexity_multi_prompt_savemychatbot_example.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "tmp_new_cites_perplexity_example.md",
     "tmp_stock_perplexy_merged.md",
@@ -304,7 +305,6 @@
     "lit/lit_sources/Superville25leftSeattleSchls.html",
     "lit/lit_sources/25WhyHaveThousands.html",
     "download.md",
-    "perplexity_multi_prompt_savemychatbot_example.md",
     "saved_perplexity_chat_youtube_bug.md",
     "Dailies/2024-03-23.md",
     "lit/lit_sources/Wells25RepublicansWonElections.html",
