@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "3ccfc1cc00bc32f1",
+        "id": "9c09807d8c3b8990",
         "type": "tabs",
         "children": [
           {
-            "id": "8c8887bb1a814173",
+            "id": "595de9cff414c488",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -223,13 +223,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Dailies/2025-02-13.md",
+                "file": "tmp_stock_perplexy_merged.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 2025-02-13"
+              "title": "Outline of tmp_stock_perplexy_merged"
             }
           },
           {
@@ -247,8 +247,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 511.5,
-    "collapsed": true
+    "width": 511.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -291,13 +290,13 @@
       "cmdr:Ink: New handwriting section": false
     }
   },
-  "active": "8c8887bb1a814173",
+  "active": "595de9cff414c488",
   "lastOpenFiles": [
+    "tmp_stock_perplexy_merged.md",
     "lit/lit_sources/Unconfirmed 162083.crdownload",
     "lit/lit_sources/Przybylski23endPolandsIlliberal.html",
     "lit/lit_sources/Dionis23EndPolandsIlliberal.html",
     "perplexity_2025-02-07_22-14-16.md",
-    "tmp_stock_perplexy_merged.md",
     "tmp_new_cites_perplexity_example.md",
     "lit/lit_sources/Unconfirmed 538793.crdownload",
     "lit/lit_sources/Superville25leftSeattleSchls.html",
@@ -310,7 +309,6 @@
     "lit/lit_sources/Ludwig25votersCorrectEcon.html",
     "lit/lit_sources/Ludwig25VotersWereRight.html",
     "lit/lit_sources/Euronews24spainVoxRightEU.html",
-    "lit/lit_sources/NaNWillVoxBenefit.html",
     "lit/lit_notes/Mohamed24brandPerceptionChng.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "lit/refwrangle/Perplexity Parsing.md",

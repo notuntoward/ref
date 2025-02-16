@@ -193,14 +193,14 @@ In recent years, several democratic countries have successfully countered far-ri
 ### Defeat of Law and Justice (PiS)
 - **Context**: The national-conservative PiS party lost its parliamentary majority after 8 years in power, replaced by a coalition led by Donald Tusk’s Civic Platform ==[134](https://www.politico.eu/article/poland-bye-to-pis-and-hello-to-donald-tusk/)== ==[161](https://www.americanprogress.org/article/polands-democratic-resurgence-from-backsliding-to-beacon/)== ==[182](https://edition.cnn.com/2023/12/11/europe/poland-pis-confidence-vote-tusk-intl/index.html)==.
 - **Causes**:
-  - Backlash against PiS’s erosion of judicial independence and restrictive abortion laws, which triggered mass protests led by women and youth ==[161](https://www.americanprogress.org/article/polands-democratic-resurgence-from-backsliding-to-beacon/)== ==[174](https://europeandemocracyhub.epd.eu/the-end-of-polands-illiberal-experiment/)== ==[99](https://theconversation.com/young-female-voters-were-the-key-to-defeating-populists-in-polands-election-providing-a-blueprint-to-reverse-democracys-decline-216397)==.
-  - Economic discontent over inflation and misuse of EU funds ==[174](https://europeandemocracyhub.epd.eu/the-end-of-polands-illiberal-experiment/)== ==[183](https://www.ui.se/globalassets/ui.se-eng/publications/ui-publications/2023/szczerbiak-a.-2023.-why-did-the-opposition-win-the-polish-election.-ui-brief-no.-8-december-2023..pdf)==.
+  - Backlash against PiS’s erosion of judicial independence and restrictive abortion laws, which triggered mass protests led by women and youth ==[161](https://www.americanprogress.org/article/polands-democratic-resurgence-from-backsliding-to-beacon/)== [Przybylski23endPolandsIlliberal➔PC248FCB](zotero://select/library/items/PC248FCB) ==[99](https://theconversation.com/young-female-voters-were-the-key-to-defeating-populists-in-polands-election-providing-a-blueprint-to-reverse-democracys-decline-216397)==.
+  - Economic discontent over inflation and misuse of EU funds [Przybylski23endPolandsIlliberal➔PC248FCB](zotero://select/library/items/PC248FCB) ==[183](https://www.ui.se/globalassets/ui.se-eng/publications/ui-publications/2023/szczerbiak-a.-2023.-why-did-the-opposition-win-the-polish-election.-ui-brief-no.-8-december-2023..pdf)==.
 - **Campaigns**:
   - Opposition parties (Civic Platform, Third Way, Left) formed a united front, framing the election as a choice between “democracy and authoritarianism” ==[166](https://blogs.lse.ac.uk/europpblog/2023/10/24/what-we-learned-from-the-2023-polish-election/)== ==[169](https://www.realinstitutoelcano.org/en/analyses/liberal-poland-is-back-the-impact-on-europe-of-the-2023-polish-vote/)==.
   - Viral social media campaigns targeted young voters, with influencers highlighting PiS’s corruption and anti-EU stance ==[99](https://theconversation.com/young-female-voters-were-the-key-to-defeating-populists-in-polands-election-providing-a-blueprint-to-reverse-democracys-decline-216397)== ==[193](https://notesfrompoland.com/2023/10/30/how-pis-lost-power-in-its-heartland/)==.
 - **Demographics**:
   - Historic youth turnout (70.9%) and record participation by women, especially in cities like Warsaw and Kraków ==[99](https://theconversation.com/young-female-voters-were-the-key-to-defeating-populists-in-polands-election-providing-a-blueprint-to-reverse-democracys-decline-216397)== ==[193](https://notesfrompoland.com/2023/10/30/how-pis-lost-power-in-its-heartland/)==.
-  - PiS retained older, rural voters but lost middle-class urbanites and swing regions ==[174](https://europeandemocracyhub.epd.eu/the-end-of-polands-illiberal-experiment/)== ==[193](https://notesfrompoland.com/2023/10/30/how-pis-lost-power-in-its-heartland/)==.
+  - PiS retained older, rural voters but lost middle-class urbanites and swing regions [Przybylski23endPolandsIlliberal➔PC248FCB](zotero://select/library/items/PC248FCB) ==[193](https://notesfrompoland.com/2023/10/30/how-pis-lost-power-in-its-heartland/)==.
 
 ---
 
@@ -221,7 +221,7 @@ In recent years, several democratic countries have successfully countered far-ri
 
 ## **Key Patterns**
 ### Institutional Resilience
-- **Checks and balances**: In Spain and Poland, constitutional courts and opposition coalitions limited populists’ power grabs ==[127](https://muse.jhu.edu/pub/1/article/915348)== ==[174](https://europeandemocracyhub.epd.eu/the-end-of-polands-illiberal-experiment/)==.
+- **Checks and balances**: In Spain and Poland, constitutional courts and opposition coalitions limited populists’ power grabs ==[127](https://muse.jhu.edu/pub/1/article/915348)== [Przybylski23endPolandsIlliberal➔PC248FCB](zotero://select/library/items/PC248FCB).
 - **EU influence**: Frozen funds and pressure on Poland’s PiS to restore rule of law galvanized pro-EU voters ==[161](https://www.americanprogress.org/article/polands-democratic-resurgence-from-backsliding-to-beacon/)== ==[169](https://www.realinstitutoelcano.org/en/analyses/liberal-poland-is-back-the-impact-on-europe-of-the-2023-polish-vote/)==.
 
 ### Demographic Shifts
@@ -348,7 +348,7 @@ The defeats of extreme right-wing populists in these countries often result from
 ([171](https://pulaski.pl/pulaski-commentary-the-baltic-resolve-estonias-2023-parliamentary-election-its-consequences-and-the-influence-on-the-war-in-ukraine-sebastian-czub/)) https://pulaski.pl/pulaski-commentary-the-baltic-resolve-estonias-2023-parliamentary-election-its-consequences-and-the-influence-on-the-war-in-ukraine-sebastian-czub/
 ([172](https://www.euractiv.com/section/elections/news/spanish-elections-paris-welcomes-voxs-defeat/)) https://www.euractiv.com/section/elections/news/spanish-elections-paris-welcomes-voxs-defeat/
 ([173](https://www.cfr.org/in-brief/how-polands-election-results-could-reshape-europe)) https://www.cfr.org/in-brief/how-polands-election-results-could-reshape-europe
-==([174](https://europeandemocracyhub.epd.eu/the-end-of-polands-illiberal-experiment/)) https://europeandemocracyhub.epd.eu/the-end-of-polands-illiberal-experiment/ ==
+([174](https://europeandemocracyhub.epd.eu/the-end-of-polands-illiberal-experiment/)) **[Przybylski23endPolandsIlliberal➔PC248FCB](zotero://select/library/items/PC248FCB)**
 ([175](https://news.err.ee/1608849136/party-ratings-ekre-and-center-both-see-a-rise-in-support-in-january)) https://news.err.ee/1608849136/party-ratings-ekre-and-center-both-see-a-rise-in-support-in-january
 ([176](https://www.washingtonpost.com/world/2023/07/24/vox-far-right-spain-election-results/)) https://www.washingtonpost.com/world/2023/07/24/vox-far-right-spain-election-results/
 ([177](https://bti-project.org/en/reports/country-report/EST)) https://bti-project.org/en/reports/country-report/EST
