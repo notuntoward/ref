@@ -11,15 +11,10 @@
             "id": "140b6f17aeea43de",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Lit Note Summary D Folder.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Lit Note Summary D Folder"
+              "title": "New tab"
             }
           }
         ]
@@ -222,13 +217,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Lit Note Summary D Folder.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lit Note Summary D Folder"
+              "title": "Outline"
             }
           },
           {
@@ -292,6 +286,7 @@
   "active": "140b6f17aeea43de",
   "lastOpenFiles": [
     "perplexity_2025-02-07_22-14-16.md",
+    "Lit Note Summary D Folder.md",
     "tmp_new_cites_perplexity_example.md",
     "tmp_stock_perplexy_merged.md",
     "lit/lit_sources/Unconfirmed 162083.crdownload",
