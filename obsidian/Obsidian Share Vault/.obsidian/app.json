@@ -22,5 +22,6 @@
   "showInlineTitle": true,
   "useMarkdownLinks": false,
   "readableLineLength": true,
-  "showLineNumber": false
+  "showLineNumber": false,
+  "promptDelete": false
 }
