@@ -1,6 +1,6 @@
 ---
 created date: 2025-02-10T15:50:01-08:00
-modified date: 2025-02-17T08:15:18-08:00
+modified date: 2025-02-17T10:36:06-08:00
 ---
 
 
@@ -117,19 +117,17 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 }
 ```
 
-### Rough overallr 
+### Rough overall datafl 
 
 **My mermaid flowchart in refwrangle/doc is better**
 ```handdrawn-ink
 {
 	"versionAtEmbed": "0.3.3",
 	"filepath": "lit/refwrangle/attachments/Ink/Drawing/2025.2.10 - 15.50pm.drawing",
-	"width": 742,
-	"aspectRatio": 1.4570088750187715
+	"width": 500,
+	"aspectRatio": 1.5661093328607476
 }
 ```
-
-
 
 # Citation link type vs zotero presence and perplexity dialog source
 
@@ -139,17 +137,15 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 | 0           | 1                     | num_link title         |
 | 1           | 0                     | num_link zotlink       |
 | 1           | 1                     | num_link title zotlink |
-# Multi file / multiprompt header organization
+# Multi file / multi-prompt header organization
 
-
-| SMC/Perp            | num files   | num prompts |     |     |
-| ------------------- | ----------- | ----------- | --- | --- |
-| asdf asdfasdfas asf | asdfasdfasd | asdfasdf    |     |     |
-| asdfasdf            | adsfasdf    | asdfasdfas  |     |     |
-
-| bob | fred | jill |
-
-
-|a|b|c|d|e|
-|-|-|-|-|-|
-| | | | | 
+| SMC/Perp | num files | num prompts | response title | file title | prompt title | chat file link |
+| -------- | --------- | ----------- | -------------- | ---------- | ------------ | -------------- |
+| perp     | 1         | 1           | \# Response    | none       | none         | top of output  |
+| perp     | 1         | M           | ResponseS      | none       |              |                |
+| perp     | N         | 1           | Response       | file stem  |              |                |
+| perp     | N         | M           | ResponseS      | file stem  |              |                |
+| smc      | 1         | 1           | Response       | none       | none         | top of output  |
+| smc      | 1         | M           | ResponseS      | none       | User: text   |                |
+| smc      | N         | 1           | Response       | file stem  |              |                |
+| smc      | N         | M           | ResponseS      | file stem  | User: text   |                |
