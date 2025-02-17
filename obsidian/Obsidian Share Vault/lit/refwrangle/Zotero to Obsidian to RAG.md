@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-02-07T22:16:10-08:00
+modified date: 2025-02-17T14:34:53-08:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.

@@ -65,7 +65,6 @@
   "enhanced-symbols-prettifier",
   "notice-logger",
   "orgmode-cm6",
-  "instant-above-divider",
   "obsidian-meta-bind-plugin",
   "obsidian-git",
   "ink",
@@ -76,5 +75,6 @@
   "obsidian-shellcommands",
   "clipper-catalog",
   "obsidian-heading-shifter",
-  "numerals"
+  "numerals",
+  "smart-connections"
 ]
