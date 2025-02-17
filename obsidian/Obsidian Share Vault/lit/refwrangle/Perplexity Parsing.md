@@ -164,7 +164,8 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 - [ ] prompt uniqueness (SMC)
 	- [ ] need a variable in the code
 	- [ ] detect uniqueness 
-		- either to auto detect uniqeness or to verify)
+		- either to auto detect uniqueness or to verify)
+- [ ] detect if it is an smc multiprompt
 - [ ] header logic
 	- [ ] Perp 11
 	- [ ] SMC 11
