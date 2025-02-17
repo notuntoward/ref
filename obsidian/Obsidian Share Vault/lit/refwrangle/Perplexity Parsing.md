@@ -1,6 +1,6 @@
 ---
 created date: 2025-02-10T15:50:01-08:00
-modified date: 2025-02-13T14:34:49-08:00
+modified date: 2025-02-17T08:15:18-08:00
 ---
 
 
@@ -142,8 +142,14 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 # Multi file / multiprompt header organization
 
 
-| SMC/Perp | num files | num prompts |
-| -------- | --------- | ----------- |
-|          |           |             |
-|          |           |             |
+| SMC/Perp            | num files   | num prompts |     |     |
+| ------------------- | ----------- | ----------- | --- | --- |
+| asdf asdfasdfas asf | asdfasdfasd | asdfasdf    |     |     |
+| asdfasdf            | adsfasdf    | asdfasdfas  |     |     |
 
+| bob | fred | jill |
+
+
+|a|b|c|d|e|
+|-|-|-|-|-|
+| | | | | 
