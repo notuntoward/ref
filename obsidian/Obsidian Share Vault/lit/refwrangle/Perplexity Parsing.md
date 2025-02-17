@@ -159,7 +159,7 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 	- insist on all same type to avoid mixed header headaches
 	- [ ]  how to specify type?
 		- [ ] need a variable in the code
-		- [ ] detect type 
+		- [x] detect type 
 			- either to autodetect or to verify that files are all the same type
 - [ ] prompt uniqueness (SMC)
 	- [ ] need a variable in the code
