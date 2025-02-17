@@ -131,3 +131,19 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 
 
 
+# Citation link type vs zotero presence and perplexity dialog source
+
+| zotero link | SMC source link title | source link            |
+| ----------- | --------------------- | ---------------------- |
+| 0           | 0                     | num_link url           |
+| 0           | 1                     | num_link title         |
+| 1           | 0                     | num_link zotlink       |
+| 1           | 1                     | num_link title zotlink |
+# Multi file / multiprompt header organization
+
+
+| SMC/Perp | num files | num prompts |
+| -------- | --------- | ----------- |
+|          |           |             |
+|          |           |             |
+
