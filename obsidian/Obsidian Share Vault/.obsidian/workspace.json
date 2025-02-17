@@ -247,8 +247,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 511.5,
-    "collapsed": true
+    "width": 511.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -293,11 +292,12 @@
   },
   "active": "1f49b5d1e617bf8e",
   "lastOpenFiles": [
+    "Untitled.md",
+    "lit/refwrangle/Perplexity Parsing.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "tmp_stock_perplexy_merged.md",
     "tmp_new_cites_perplexity_example.md",
     "tmp_new_cites_perplexity_example 1.md",
-    "lit/refwrangle/Perplexity Parsing.md",
     "Dailies/2025-02-17.md",
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "perplexity_2025-02-07_22-14-16.md",
@@ -328,7 +328,6 @@
     "Obsidian/templates_old/test_save.md",
     "Obsidian/templates_old/test_prints_by_itself.md",
     "Obsidian/templates_old/test.md",
-    "Obsidian/templates_old/test_adequate_250124.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",
