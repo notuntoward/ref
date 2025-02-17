@@ -81,6 +81,7 @@ For example, [WA shifted (slightly) right in...](https://www.seattletimes.com/se
 	- [The PDF Extraction Revolution: Why PymuPDF4llm is Your New Best Friend (and LlamaParse is Crying)](https://ai.gopubby.com/the-pdf-extraction-revolution-why-pymupdf4llm-is-your-new-best-friend-and-llamaparse-is-crying-e57882dee7f8)
 	- does a good job with pdf output by `wkhtmltopdf`
 - for NLM would need to convert the .md back to .pdf again
+- ChatGPT4o best ($); Marker OK (local GPU); PyMuPDF4LLM fast but no tables (I'm using): [Benchmarking PDF to Markdown Document Converters](https://ai.gopubby.com/benchmarking-pdf-to-markdown-document-converters-fc65a2c73bf2)
 ### Easier Obsidian Lit Notes from Zotero Entries
 
 - [[2024-02-25#Bulk Obsidian Literature Note Creation From Zotero|Bulk Obsidian Literature Note Creation From Zotero]]

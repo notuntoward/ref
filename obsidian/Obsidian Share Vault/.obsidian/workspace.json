@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lit/refwrangle/Perplexity Parsing.md",
+                "file": "lit/refwrangle/Zotero to Obsidian to RAG.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Perplexity Parsing"
+              "title": "Zotero to Obsidian to RAG"
             }
           }
         ]
@@ -54,7 +54,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "\"zotero link plugin\"",
+                "query": "weasyprint",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -99,7 +99,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -223,13 +223,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "lit/refwrangle/Perplexity Parsing.md",
+                "file": "lit/refwrangle/Zotero to Obsidian to RAG.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Perplexity Parsing"
+              "title": "Outline of Zotero to Obsidian to RAG"
             }
           },
           {
@@ -290,10 +290,11 @@
       "cmdr:Ink: New handwriting section": false
     }
   },
-  "active": "1f49b5d1e617bf8e",
+  "active": "677d4c9a7cddb77b",
   "lastOpenFiles": [
-    "Untitled.md",
     "lit/refwrangle/Perplexity Parsing.md",
+    "lit/refwrangle/Perplexity Details.md",
+    "Untitled.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "tmp_stock_perplexy_merged.md",
     "tmp_new_cites_perplexity_example.md",
@@ -327,7 +328,6 @@
     "Obsidian/templates_old/test_works_except_path.md",
     "Obsidian/templates_old/test_save.md",
     "Obsidian/templates_old/test_prints_by_itself.md",
-    "Obsidian/templates_old/test.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",
