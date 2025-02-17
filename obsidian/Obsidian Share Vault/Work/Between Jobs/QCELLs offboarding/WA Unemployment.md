@@ -1,9 +1,9 @@
 ---
 created date: 2024-08-21T12:37:18-07:00
-modified date: 2024-10-13T13:06:56-07:00
+modified date: 2025-02-16T18:58:40-08:00
 ---
-
 - Weekly claim filing spot: [Employment Security - Login](https://secure.esd.wa.gov/home/)
+- My **[[Unemployment Exhaustion Notice.pdf|unemployment runs out on approximately Feb 28, 2025]]**
 - First claim filed: for 8/21-8/24/2024
 	- [[Last QCELLS Paystub.PDF]]
 		- Was for: $1,590.19
