@@ -1,6 +1,6 @@
 ---
 created date: 2024-08-21T12:37:18-07:00
-modified date: 2025-02-16T18:58:40-08:00
+modified date: 2025-02-16T19:14:42-08:00
 ---
 - Weekly claim filing spot: [Employment Security - Login](https://secure.esd.wa.gov/home/)
 - My **[[Unemployment Exhaustion Notice.pdf|unemployment runs out on approximately Feb 28, 2025]]**
