@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lit/refwrangle/Perplexity Parsing.md",
+                "file": "tmp_perplexity_output.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Perplexity Parsing"
+              "title": "tmp_perplexity_output"
             }
           }
         ]
@@ -98,8 +98,7 @@
               "title": "Recent Files"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
@@ -325,15 +324,17 @@
   },
   "active": "1f49b5d1e617bf8e",
   "lastOpenFiles": [
+    "tmp_savemychatbot_multiprompt_perplexity_example.md",
+    "tmp_perplexity_output.md",
+    "lit/refwrangle/Perplexity Parsing.md",
+    "chatgpt4o_MissLinkBG.md",
     "Dailies/2025-02-13.md",
     "Dailies/2025-02-12.md",
     "Dailies/2025-02-17.md",
     "Dailies/2025-01-09.md",
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
-    "lit/refwrangle/Perplexity Parsing.md",
     "lit/refwrangle/Perplexity Details.md",
     "Untitled.md",
-    "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "tmp_stock_perplexy_merged.md",
     "tmp_new_cites_perplexity_example.md",
     "tmp_new_cites_perplexity_example 1.md",
@@ -359,8 +360,6 @@
     "Obsidian/templates/Calendar Open.md",
     "Obsidian/templates_old/Daily Note Template SAVE.md",
     "Obsidian/templates_old/tmp.md",
-    "Obsidian/templates_old/test_works_for_html.md",
-    "Obsidian/templates_old/test_works_except_path.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",
