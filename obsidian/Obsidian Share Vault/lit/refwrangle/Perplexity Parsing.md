@@ -1,6 +1,6 @@
 ---
 created date: 2025-02-10T15:50:01-08:00
-modified date: 2025-02-17T20:44:07-08:00
+modified date: 2025-02-18T13:02:32-08:00
 ---
 
 
@@ -153,7 +153,8 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 | smc      | N         | M            | 1          | Response       | file stem  | User: text   | below file tile  |
 ## Functions implied by multi-file / multi-prompt table
 
-- [ ] finish implementation of perp N1 same
+- [x] finish implementation of perp N1 same
+- [ ] parser for new stock perplexity format
 - [ ] finish merging of perp and SMC code
 - [ ] deal with file types (perp vs. SMC)
 	- insist on all same type to avoid mixed header headaches
