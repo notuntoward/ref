@@ -1,6 +1,6 @@
 ---
 created date: 2025-02-10T15:50:01-08:00
-modified date: 2025-02-17T12:56:19-08:00
+modified date: 2025-02-17T20:44:07-08:00
 ---
 
 
@@ -161,9 +161,9 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 		- [ ] need a variable in the code
 		- [x] detect type 
 			- either to autodetect or to verify that files are all the same type
-- [ ] prompt uniqueness (SMC)
+- [ ] prompt same prompt (SMC)
 	- [ ] need a variable in the code
-	- [ ] detect uniqueness 
+	- [ ] detect prompt similarity 
 		- either to auto detect uniqueness or to verify)
 - [x] detect if it is an smc multiprompt
 - [ ] header logic
