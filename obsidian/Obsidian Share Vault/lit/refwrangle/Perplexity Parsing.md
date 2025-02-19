@@ -139,22 +139,22 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 | 1           | 1                     | num_link title zotlink |
 # Multi file / multi-prompt header organization
 
-| SMC/Perp | num files | num prompts  | IMPLEMENT? | response title | file title | prompt title | chat file link   |
-| -------- | --------- | ------------ | ---------- | -------------- | ---------- | ------------ | ---------------- |
-| perp     | 1         | 1            | 1          | \# Response    | none       | none         | top of output    |
-| perp     | 1         | M            | 0          | Response (n)   | none       | none         | top of output    |
-| perp     | N         | 1 (unique)   | 0          | ResponseS      | file stem  | none         | below file tile  |
-| perp     | N         | 1 (same)     | 1          | ResponseS      | file stem  | none         | below file title |
-| perp     | N         | M            | 0          | Response       | file stem  | none         | below file tile  |
-| smc      | 1         | 1            | 1          | Response       | none       | none         | top of output    |
-| smc      | 1         | M            | 1          | Response       | none       | User: text   | top of output    |
-| smc      | N         | 1 (unique)   | 1          | Response       | file stem  | User: text   | below file tile  |
-| smc      | N         | 1 (all same) | 1          | ResponseS      | file stem  | User: text   | below file tile  |
-| smc      | N         | M            | 1          | Response       | file stem  | User: text   | below file tile  |
+| SMC/Perp | num files | num prompts  | IMPLEMENT? | response title | file title | top prompt | prompt title | chat file link   |
+| -------- | --------- | ------------ | ---------- | -------------- | ---------- | ---------- | ------------ | ---------------- |
+| perp     | 1         | 1            | 1          | \# Response    | none       | 0          | none         | top of output    |
+| perp     | 1         | M            | 0          | Response (n)   | none       | 0          | none         | top of output    |
+| perp     | N         | 1 (unique)   | 0          | ResponseS      | file stem  | 0          | none         | below file tile  |
+| perp     | N         | 1 (same)     | 1          | ResponseS      | file stem  | 1          | none         | below file title |
+| perp     | N         | M            | 0          | Response       | file stem  | 0          | none         | below file tile  |
+| smc      | 1         | 1            | 1          | Response       | none       | 0          | none         | top of output    |
+| smc      | 1         | M            | 1          | Response       | none       | 0          | User: text   | top of output    |
+| smc      | N         | 1 (unique)   | 1          | Response       | file stem  | 0          | User: text   | below file tile  |
+| smc      | N         | 1 (all same) | 1          | ResponseS      | file stem  | 1          | User: text   | below file tile  |
+| smc      | N         | M            | 1          | Response       | file stem  | 0          | User: text   | below file tile  |
 ## Functions implied by multi-file / multi-prompt table
 
 - [x] finish implementation of perp N1 same
-- [ ] parser for new stock perplexity format
+- [x] parser for new stock perplexity format
 - [ ] finish merging of perp and SMC code
 - [ ] deal with file types (perp vs. SMC)
 	- insist on all same type to avoid mixed header headaches
@@ -162,9 +162,9 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 		- [ ] need a variable in the code
 		- [x] detect type 
 			- either to autodetect or to verify that files are all the same type
-- [ ] prompt same prompt (SMC)
+- [ ] prompt same prompt (SMC or now, Perplexity too)
 	- [ ] need a variable in the code
-	- [ ] detect prompt similarity 
+	- [x] function to detect prompt similarity 
 		- either to auto detect uniqueness or to verify)
 - [x] detect if it is an smc multiprompt
 - [ ] header logic

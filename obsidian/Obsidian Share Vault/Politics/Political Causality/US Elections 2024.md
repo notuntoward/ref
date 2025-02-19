@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-02-10T21:12:54-08:00
+modified date: 2025-02-19T10:03:40-08:00
 ---
 # TODO
 - graph showing all the information loss sources from a good D policy to a voter's rational decision about it
@@ -80,7 +80,7 @@ this paper shows that, while the method may be more accurate accurate, the turno
 - people don't believe experts, media, etc. Go to friends
 	- I have more than one article on this, I think
 	- odd example: [[Verma24muskPoliticsEcoCar|Verma24: Musk’s politics hadn’t seeped into Tesla. Then he axed its eco car of the future.]]
-- Brazilians didn't trust democracy, still removed authoritarian: Ivanova22systemicMistrustBrazil
+- Brazilians didn't trust democracy, but eventually removed an authoritarian: Ivanova22systemicMistrustBrazil
 ## Lack of D party enthusiasm/turnout
 - was the D loss due to poor Democratic turnout or to Ds switching to R?
 ## Abortion overemphasized, not important

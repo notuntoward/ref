@@ -13,16 +13,39 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Politics/Political Causality/US Elections 2024.md",
+                "file": "lit/refwrangle/Perplexity Parsing.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "US Elections 2024"
+              "title": "Perplexity Parsing"
+            }
+          },
+          {
+            "id": "52b5f9182cb5e0da",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.8.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.8.7"
+            }
+          },
+          {
+            "id": "ba011fa0adb90a05",
+            "type": "leaf",
+            "state": {
+              "type": "ntb-whats-new-view",
+              "state": {},
+              "icon": "file-text",
+              "title": "What's new in Note Toolbar?"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -99,11 +122,12 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 251.5
+    "width": 251.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -223,13 +247,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Politics/Political Causality/US Elections 2024.md",
+                "file": "lit/refwrangle/Perplexity Parsing.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of US Elections 2024"
+              "title": "Outline of Perplexity Parsing"
             }
           },
           {
@@ -248,8 +272,8 @@
             "state": {
               "type": "smart-connections-view",
               "state": {},
-              "icon": "smart-connections",
-              "title": "Smart Connections"
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
             }
           },
           {
@@ -268,8 +292,8 @@
             "state": {
               "type": "smart-lookup-view",
               "state": {},
-              "icon": "search",
-              "title": "Smart Lookup"
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
             }
           }
         ],
@@ -277,7 +301,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 511.5
+    "width": 511.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -322,8 +347,9 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "1f49b5d1e617bf8e",
+  "active": "ba011fa0adb90a05",
   "lastOpenFiles": [
+    "Politics/Political Causality/US Elections 2024.md",
     "tmp_perplex_example.md",
     "tmp_stock_perplexy_merged.md",
     "tmp_new_cites_perplexity_example.md",
@@ -359,7 +385,6 @@
     "lit/lit_sources/Unconfirmed 538793.crdownload",
     "lit/lit_sources/Superville25leftSeattleSchls.html",
     "lit/lit_sources/25WhyHaveThousands.html",
-    "download.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",
