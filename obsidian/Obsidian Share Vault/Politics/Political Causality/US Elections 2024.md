@@ -80,6 +80,7 @@ this paper shows that, while the method may be more accurate accurate, the turno
 - people don't believe experts, media, etc. Go to friends
 	- I have more than one article on this, I think
 	- odd example: [[Verma24muskPoliticsEcoCar|Verma24: Musk’s politics hadn’t seeped into Tesla. Then he axed its eco car of the future.]]
+- Brazilians didn't trust democracy, still removed authoritarian: Ivanova22systemicMistrustBrazil
 ## Lack of D party enthusiasm/turnout
 - was the D loss due to poor Democratic turnout or to Ds switching to R?
 ## Abortion overemphasized, not important

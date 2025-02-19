@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "perple_new_format_longprompt_example.md",
+                "file": "Politics/Political Causality/US Elections 2024.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "perple_new_format_longprompt_example"
+              "title": "US Elections 2024"
             }
           }
         ]
@@ -54,7 +54,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "INSTANT",
+                "query": "trust",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -98,7 +98,8 @@
               "title": "Recent Files"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -222,13 +223,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "perple_new_format_longprompt_example.md",
+                "file": "Politics/Political Causality/US Elections 2024.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of perple_new_format_longprompt_example"
+              "title": "Outline of US Elections 2024"
             }
           },
           {
@@ -323,7 +324,14 @@
   },
   "active": "1f49b5d1e617bf8e",
   "lastOpenFiles": [
+    "tmp_perplex_example.md",
     "tmp_stock_perplexy_merged.md",
+    "tmp_new_cites_perplexity_example.md",
+    "tmp_stock_perplexy_merged 1.md",
+    "tmp_new_cites_perplexity_example 1.md",
+    "tmp_perplex_example 1.md",
+    "desktop.ini",
+    "attachments/tmp_perplex_example.md",
     "perple_new_format_longprompt_example.md",
     "tmp_savemychatbot_multiprompt_perplexity_example.md",
     "lit/refwrangle/Perplexity Parsing.md",
@@ -339,8 +347,6 @@
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "lit/refwrangle/Perplexity Details.md",
     "Untitled.md",
-    "tmp_new_cites_perplexity_example.md",
-    "tmp_new_cites_perplexity_example 1.md",
     "perplexity_2025-02-07_22-14-16.md",
     "Work/Between Jobs/QCELLs offboarding/WA Unemployment.md",
     "Work/Between Jobs/QCELLs offboarding/Unemployment Health Insurance.md",
@@ -354,11 +360,6 @@
     "lit/lit_sources/Superville25leftSeattleSchls.html",
     "lit/lit_sources/25WhyHaveThousands.html",
     "download.md",
-    "saved_perplexity_chat_youtube_bug.md",
-    "Dailies/2024-03-23.md",
-    "lit/lit_sources/Wells25RepublicansWonElections.html",
-    "lit/lit_notes/Mohamed24brandPerceptionChng.md",
-    "Obsidian/templates/Calendar Open.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",
