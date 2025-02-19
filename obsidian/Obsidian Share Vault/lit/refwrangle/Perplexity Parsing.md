@@ -1,6 +1,6 @@
 ---
 created date: 2025-02-10T15:50:01-08:00
-modified date: 2025-02-18T13:02:32-08:00
+modified date: 2025-02-19T12:32:02-08:00
 ---
 
 
@@ -117,7 +117,7 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 }
 ```
 
-### Rough overall datafl 
+### Rough overall dataflow
 
 **My mermaid flowchart in refwrangle/doc is better**
 ```handdrawn-ink
@@ -139,36 +139,39 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 | 1           | 1                     | num_link title zotlink |
 # Multi file / multi-prompt header organization
 
-| SMC/Perp | num files | num prompts  | IMPLEMENT? | response title | file title | top prompt | prompt title | chat file link   |
-| -------- | --------- | ------------ | ---------- | -------------- | ---------- | ---------- | ------------ | ---------------- |
-| perp     | 1         | 1            | 1          | \# Response    | none       | 0          | none         | top of output    |
-| perp     | 1         | M            | 0          | Response (n)   | none       | 0          | none         | top of output    |
-| perp     | N         | 1 (unique)   | 0          | ResponseS      | file stem  | 0          | none         | below file tile  |
-| perp     | N         | 1 (same)     | 1          | ResponseS      | file stem  | 1          | none         | below file title |
-| perp     | N         | M            | 0          | Response       | file stem  | 0          | none         | below file tile  |
-| smc      | 1         | 1            | 1          | Response       | none       | 0          | none         | top of output    |
-| smc      | 1         | M            | 1          | Response       | none       | 0          | User: text   | top of output    |
-| smc      | N         | 1 (unique)   | 1          | Response       | file stem  | 0          | User: text   | below file tile  |
-| smc      | N         | 1 (all same) | 1          | ResponseS      | file stem  | 1          | User: text   | below file tile  |
-| smc      | N         | M            | 1          | Response       | file stem  | 0          | User: text   | below file tile  |
+| SMC/Perp | num files | num prompts       | IMPLEMENT? | response title | Chat title   | top prompt | prompt title | chat file link   |
+| -------- | --------- | ----------------- | ---------- | -------------- | ------------ | ---------- | ------------ | ---------------- |
+| perp     | 1         | 1                 | 1          | \# Response    | none         | 1          | none         | top of output    |
+| perp     | 1         | M (doesn't exist) | 0          | n/a            | n/a          | n/a        | n/a          | n/a              |
+| perp     | N         | 1 (unique)        | 0          | ResponseS      | short prompt | 0          | none         | below file tile  |
+| perp     | N         | 1 (same)          | 1          | ResponseS      | file stem    | 1          | none         | below file title |
+| perp     | N         | M                 | 0          | Response       | short prompt | 0          | none         | below file tile  |
+| smc      | 1         | 1                 | 1          | Response       | none         | 0          | none         | top of output    |
+| smc      | 1         | M                 | 1          | Response       | short prompt | 0          | User: text   | top of output    |
+| smc      | N         | 1 (unique)        | 1          | Response       | short prompt | 0          | User: text   | below file tile  |
+| smc      | N         | 1 (all same)      | 1          | ResponseS      | file stem    | 1          | User: text   | below file tile  |
+| smc      | N         | M                 | 1          | Response       | short prompt | 0          | User: text   | below file tile  |
 ## Functions implied by multi-file / multi-prompt table
 
 - [x] finish implementation of perp N1 same
 - [x] parser for new stock perplexity format
 - [ ] finish merging of perp and SMC code
 - [ ] deal with file types (perp vs. SMC)
-	- insist on all same type to avoid mixed header headaches
+	- [ ] ? insist on all same type to avoid mixed header headaches?
 	- [ ]  how to specify type?
 		- [ ] need a variable in the code
 		- [x] detect type 
 			- either to autodetect or to verify that files are all the same type
-- [ ] prompt same prompt (SMC or now, Perplexity too)
-	- [ ] need a variable in the code
+- [x] prompt same prompt (SMC or now, Perplexity too)
+	- [x] need a variable in the code
 	- [x] function to detect prompt similarity 
 		- either to auto detect uniqueness or to verify)
 - [x] detect if it is an smc multiprompt
-- [ ] header logic
-	- [ ] Perp 11
+- [ ] Implemented
+	- [x] Perp 11
+	- [x] Perp N1 (same)
+	- [x] Perp N1 (unique)
+	- [x] Perp NM
 	- [ ] SMC 11
 	- [ ] SMC 1M
 	- [ ] SMC N1 unique
