@@ -14,7 +14,7 @@ publisher: ""
 citation key: CommDevs24ManimMathAnimGithub
 DOI: ""
 created date: 2024-10-13T15:22:05-07:00
-modified date: 2024-10-14T18:24:03-07:00
+modified date: 2025-02-19T16:58:49-08:00
 ---
 
 > [!info]- : [**Zotero**](zotero://select/library/items/CL5TPEF9)   | [**URL**](https://www.manim.community/)
@@ -48,7 +48,7 @@ modified date: 2024-10-14T18:24:03-07:00
 %% begin Obsidian Notes %%
 ___
 
-The community version of the software that Grant Sanderson, a.ka. CGP Grey of [3Blue1Brown](https://www.youtube.com/c/3blue1brown), uses to animate his videos. Has install packages for Windows, MacOS and Linux: for the console shown in his [tutorial video](https://www.youtube.com/watch?v=rbu7Zu5X1zI), I think, but there's also GitHub source for this, as well as his [personal GitHub repro of Manim](https://github.com/3b1b/manim).
+The community version of the software that Grant Sanderson, a.k.a. CGP Grey of [3Blue1Brown](https://www.youtube.com/c/3blue1brown), uses to animate his videos. Has install packages for Windows, MacOS and Linux: for the console shown in his [tutorial video](https://www.youtube.com/watch?v=rbu7Zu5X1zI), I think, but there's also GitHub source for this, as well as his [personal GitHub repro of Manim](https://github.com/3b1b/manim).
 ## Also
 - His personal version, as of 10/2024: [manim: Animation...](https://github.com/3b1b/manim)
 	- used, for example, on his video: [How are holograms possible?](https://www.youtube.com/watch?v=EmKQsSDlaa4)

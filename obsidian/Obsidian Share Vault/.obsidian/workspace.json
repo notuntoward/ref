@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Dailies/2025-02-19.md",
+                "file": "Politics/Political Causality/US Elections 2024.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2025-02-19"
+              "title": "US Elections 2024"
             }
           }
         ]
@@ -54,7 +54,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "trust",
+                "query": "\"Kaja Kallas\"",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -97,12 +97,23 @@
               "icon": "clock",
               "title": "Recent Files"
             }
+          },
+          {
+            "id": "245780956872d731",
+            "type": "leaf",
+            "state": {
+              "type": "tagfolder-view",
+              "state": {},
+              "icon": "stacked-levels",
+              "title": "Tag Folder"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 251.5
+    "width": 424.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -118,10 +129,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "lit/refwrangle/Perplexity Parsing.md"
+                "file": "Politics/Political Causality/US Elections 2024.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for Perplexity Parsing"
+              "title": "File properties for US Elections 2024"
             }
           },
           {
@@ -222,13 +233,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Dailies/2025-02-19.md",
+                "file": "Politics/Political Causality/US Elections 2024.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 2025-02-19"
+              "title": "Outline of US Elections 2024"
             }
           },
           {
@@ -247,8 +258,8 @@
             "state": {
               "type": "smart-connections-view",
               "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
+              "icon": "smart-connections",
+              "title": "Smart Connections"
             }
           },
           {
@@ -257,8 +268,8 @@
             "state": {
               "type": "smart-chat-view",
               "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
+              "icon": "message-square",
+              "title": "Smart Chat"
             }
           },
           {
@@ -267,8 +278,8 @@
             "state": {
               "type": "smart-lookup-view",
               "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
+              "icon": "search",
+              "title": "Smart Lookup"
             }
           }
         ],
@@ -276,7 +287,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 511.5
+    "width": 511.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -323,42 +335,42 @@
   },
   "active": "1f49b5d1e617bf8e",
   "lastOpenFiles": [
+    "lit/lit_sources/Szczerbiak23whyOppoWinPoland.pdf",
+    "lit/lit_sources/Szczerbiak23WhyDidOpposition.pdf",
     "Scratch Space/tmp_stock_perplexy_merged.md",
-    "Dailies/2025-02-19.md",
-    "lit/refwrangle/Perplexity Parsing.md",
+    "lit/lit_sources/Kahan13IdeologyMotivatedReasoning.pdf",
     "Scratch Space/tmp_perplex_example.md",
+    "lit/lit_sources/Watmough23populistEndPoland.pdf",
+    "lit/lit_sources/Watmough23populistEndPoland.html",
+    "lit/lit_sources/23EightYearsPopulist.html",
+    "All Tasks Summary.md",
+    "lit/lit_sources/Unconfirmed 315127.crdownload",
+    "lit/lit_sources/Leicester24blockFarRightFrenchFront.html",
+    "lit/lit_sources/Jeantet24blockFarRightFrenchFront.html",
+    "lit/lit_sources/24HowFrenchVoters.html",
+    "Clippings/{@typePerson,@idhttpswww.obsidianstats.compluginsclipper-catalogauthor,nameGreg K.} – Clipper Catalog - A catalog view that provides a powerful interface for all your clipped web articles and content. Easily organize, search, and manage your web.md",
+    "Clippings/{@typePerson,nameNuno Campos,urlhttpsmedium.com@nuno.f.s.campos} – Obsidian Plugins Review — 92 - Obsidian Observer - Medium.md",
+    "Clippings/FarmCraft101 – Finishing the Track Adjusters on Large Marge.  Case 170B Excavator.md",
+    "Topic Notes/Polling.md",
+    "lit/lit_notes/Cohn24changePollsAvoid2020.md",
+    "lit/lit_notes/CommDevs24ManimMathAnim.md",
+    "Dailies/2024-03-28.md",
+    "lit/lit_notes/Pixegami23RAGLangchainPython.md",
+    "lit/lit_notes/Hofferber23openAIapiBetterChatGPT.md",
+    "lit/lit_notes/Caballar24codingAIautopilot.md",
+    "lit/lit_notes/Dancker24dontNeedDprLrnTSfrcst.md",
+    "lit/lit_notes/KellyDetwiler24tale2CAISO_ERCOT.md",
+    "Dailies/2025-02-19.md",
+    "lit/lit_notes/Fattah20elecMktOvrvwDA_ID.md",
+    "Work/VPP ideas/CAISO/CAISO Papers to Start With.md",
+    "lit/lit_notes/Zarnikau20determElecPriceMISO.md",
+    "Clippings/Mutual information - Wikipedia.md",
+    "lit/lit_notes/FERC24understandParticipCAISO.md",
+    "lit/refwrangle/Perplexity Parsing.md",
     "Now, if you need to use the footnote extension, im.md",
     "perple_new_format_longprompt_example.md",
     "Politics/Political Causality/US Elections 2024.md",
-    "tmp_perplex_example.md",
-    "tmp_stock_perplexy_merged.md",
-    "tmp_new_cites_perplexity_example.md",
-    "tmp_stock_perplexy_merged 1.md",
-    "tmp_new_cites_perplexity_example 1.md",
-    "tmp_perplex_example 1.md",
     "desktop.ini",
-    "attachments/tmp_perplex_example.md",
-    "tmp_savemychatbot_multiprompt_perplexity_example.md",
-    "lit/lit_sources/Ivanova22systemicMistrustBrazil.html",
-    "lit/lit_sources/Ivanova22BrazilsSystemicMistrust.html",
-    "tmp_perplexity_output.md",
-    "chatgpt4o_MissLinkBG.md",
-    "Dailies/2025-02-13.md",
-    "Dailies/2025-02-12.md",
-    "Dailies/2025-02-17.md",
-    "Dailies/2025-01-09.md",
-    "lit/refwrangle/Zotero to Obsidian to RAG.md",
-    "lit/refwrangle/Perplexity Details.md",
-    "Untitled.md",
-    "perplexity_2025-02-07_22-14-16.md",
-    "Work/Between Jobs/QCELLs offboarding/WA Unemployment.md",
-    "Work/Between Jobs/QCELLs offboarding/Unemployment Exhaustion Notice.pdf",
-    "lit/lit_sources/Unconfirmed 162083.crdownload",
-    "lit/lit_sources/Przybylski23endPolandsIlliberal.html",
-    "lit/lit_sources/Dionis23EndPolandsIlliberal.html",
-    "lit/lit_sources/Unconfirmed 538793.crdownload",
-    "lit/lit_sources/Superville25leftSeattleSchls.html",
-    "lit/lit_sources/25WhyHaveThousands.html",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",

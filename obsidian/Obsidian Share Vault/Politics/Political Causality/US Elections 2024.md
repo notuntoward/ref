@@ -172,6 +172,8 @@ Just more predictor variables for various things. Things similar to education, w
 - [ ] ? Could it be the smarter people who can understand more complex arguments of the kind that the D's make? Dawson23cognitiveAbilityVotingEU says cognitive limitations affected political choice but I haven't read it yet. Does this interact with other cognitive loads, say stress from losing a job or higher prices?
 	- [ ] do low IQ people need more shortcuts? Rubin24demsLowInfoVoterShortcut or is it just busy, low information voters?
 - [ ] Are "low information voters" often really high information voters who know a lot about conspiracy theories (JV Last kind says this in TheBulwark24isAmericaSerious) i.e. are many just crazy? How distinguish? Campaign-wise, is it worth distinguishing them?
+## How to overcome motivated reasoning
+- Kahan13IdeologyMotivatedReasoning
 ## How specifically does Trump sound like an honest, real person?
 - non-politically correct, says what they're thinking but others are afraid to say it?
 - just says what they already think? He's not persuading but got in front of their parade?
