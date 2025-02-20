@@ -169,9 +169,10 @@ Just more predictor variables for various things. Things similar to education, w
 - [ ] @ Take a look at all the paper's at this guy's lab:  Kolbert25oneEmotionEthics
 ## Education realignment around D's
 - [Klein says](https://youtu.be/vkXJiEzWxFs?t=1511) it's happening globally, that there is theorizing about why
-- [ ] ? Could it be the smarter people who can understand more complex arguments of the kind that the D's make? Dawson23cognitiveAbilityVotingEU says cognitive limitations affected political choice but I haven't read it yet. Does this interact with other cognitive loads, say stress from losing a job or higher prices?
-	- [ ] do low IQ people need more shortcuts? Rubin24demsLowInfoVoterShortcut or is it just busy, low information voters?
-- [ ] Are "low information voters" often really high information voters who know a lot about conspiracy theories (JV Last kind says this in TheBulwark24isAmericaSerious) i.e. are many just crazy? How distinguish? Campaign-wise, is it worth distinguishing them?
+- My theories
+	- [ ] ? Could it be the smarter people who can understand more complex arguments of the kind that the D's make? Dawson23cognitiveAbilityVotingEU says cognitive limitations affected political choice but I haven't read it yet. Does this interact with other cognitive loads, say stress from losing a job or higher prices?
+		- [ ] do low IQ people need more shortcuts? Rubin24demsLowInfoVoterShortcut or is it just busy, low information voters?
+- [ ] Are "low information voters" often really high information voters who know a lot about conspiracy theories (JV Last kind of says this in TheBulwark24isAmericaSerious) i.e. are many just crazy? How distinguish? Campaign-wise, is it worth distinguishing them?
 ## How to overcome motivated reasoning
 - Kahan13IdeologyMotivatedReasoning
 ## How specifically does Trump sound like an honest, real person?
