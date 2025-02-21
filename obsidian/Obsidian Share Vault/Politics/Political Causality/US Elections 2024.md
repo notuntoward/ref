@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-02-19T10:03:40-08:00
+modified date: 2025-02-20T14:30:44-08:00
 ---
 # TODO
 - graph showing all the information loss sources from a good D policy to a voter's rational decision about it
@@ -80,7 +80,7 @@ this paper shows that, while the method may be more accurate accurate, the turno
 - people don't believe experts, media, etc. Go to friends
 	- I have more than one article on this, I think
 	- odd example: [[Verma24muskPoliticsEcoCar|Verma24: Musk’s politics hadn’t seeped into Tesla. Then he axed its eco car of the future.]]
-- Brazilians didn't trust democracy, but eventually removed an authoritarian: Ivanova22systemicMistrustBrazil
+- Brazilians didn't trust democracy, but eventually removed an authoritarian: [[Ivanova22systemicMistrustBrazil|Ivanova22: Brazil's Systemic Mistrust of Elections and Democracy]] 
 ## Lack of D party enthusiasm/turnout
 - was the D loss due to poor Democratic turnout or to Ds switching to R?
 ## Abortion overemphasized, not important
@@ -127,6 +127,8 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 	- attack Musk as being born rich, get resentful MAGA heads nodding, then emphasize that Trump was born rich too
 - [[Verma24muskPoliticsEcoCar|Verma24: Musk’s politics hadn’t seeped into Tesla. Then he axed its eco car of the future.]] 
 - A Musk attack, since he wants all AI?[[Palmer23llmsArgueConvincing|Palmer23: Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors: implications for Governance]] 
+- Musk is very unpopular, and he's barely started: [[Balz25trumpEarlyActionUnpop|Balz25: Many of Trump’s early actions are unpopular, Post-Ipsos poll finds]] 
+
 
 # Questions
 ## How voters weight different policies in their voting decision (sensitivity analysis)
@@ -162,7 +164,7 @@ Just more predictor variables for various things. Things similar to education, w
 # Predictive Models and Analysis Techniques
 - market sentiment indexes predicted by economic variables (Weber24implicitCoordInflateShock).  Could be *voter* sentiment predicted by other variables
 - bulk features built from the poll difference between a presidential candidate and same-party state/county/city candidates. Or, look at post-election results for election autopsies
-- during election autopsies analyzing across elections in different years, try to factor out the effect of each (modelable) variable so you can see which thing by itself — inflation, war, … — caused the big changes.  
+- during election autopsies analyzing across elections in different years, try to factor out the effect of each (modellable) variable so you can see which thing by itself — inflation, war, … — caused the big changes.  
 	- See example of doing this in words in [Ezra Klein Speaks Frankly Abou...](https://youtu.be/vkXJiEzWxFs?t=1484)..
 	- His wife's article is cited. Did she use numbers?
 # Questions / Hypotheses to test
@@ -282,7 +284,26 @@ Just more predictor variables for various things. Things similar to education, w
 - Media attack graph, as in Thompson24rumbleRightWingYT
 
 # Success Stories: Recent Authoritarian Takedowns
-- [[Gora23polandEndRightWing|Gora23: Elections in Poland Bring the End of Right-wing Populist Rule - Brexit Institute]] 
+- Poland
+	- [[Gora23polandEndRightWing|Gora23: Elections in Poland Bring the End of Right-wing Populist Rule - Brexit Institute]] 
+	- [[Watmough23populistEndPoland|Watmough23: Eight Years of Populist Rule in Poland Comes to an End - ECPS]] 
+	- [[Szczerbiak23whyOppoWinPoland|Szczerbiak23: Why did the opposition win the Polish election?]] 
+	- [[Smidt24rightPopulPlndHngry|Smidt24: How (not) to overcome right-wing populist governance: Exploring the influence of structural and electoral factors in the latest parliamentary elections in Poland and Hungary]] 
+	- [[Przybylski23endPolandsIlliberal|Przybylski23: The end of Poland’s illiberal experiment]] 
+	- [[Watmough23populistEndPoland|Watmough23: Eight Years of Populist Rule in Poland Comes to an End - ECPS]] 
+- Spain
+	- [[Euronews24spainVoxRightEU|Euronews24: Will Vox benefit from the rise of Europe's extreme right?]] 
+- France
+	- [[Leicester24blockFarRightFrenchFront|Leicester24: How French voters formed a 'Republican front' to block the far-right's path to victory]] 
+- Brazil
+	- [[Ivanova22systemicMistrustBrazil|Ivanova22: Brazil's Systemic Mistrust of Elections and Democracy]] 
+- Hungary
+	- didn't work:[[Smidt24rightPopulPlndHngry|Smidt24: How (not) to overcome right-wing populist governance: Exploring the influence of structural and electoral factors in the latest parliamentary elections in Poland and Hungary]] 
+- [ ] Slovania?
+- Finland
+	- [[Herkman24LfinnPopulistLoss|Herkman24: The Loss of the Populist Radical Right in the 2024 European Parliament Elections in Finland]] 
+
+
 
 # Potential Partners
 - UW Center for an informed public
