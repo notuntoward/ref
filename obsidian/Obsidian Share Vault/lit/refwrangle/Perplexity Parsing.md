@@ -1,6 +1,6 @@
 ---
 created date: 2025-02-10T15:50:01-08:00
-modified date: 2025-02-19T12:32:02-08:00
+modified date: 2025-02-20T12:16:39-08:00
 ---
 
 
@@ -112,14 +112,12 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 {
 	"versionAtEmbed": "0.3.3",
 	"filepath": "lit/refwrangle/attachments/Ink/Drawing/2025.2.13 - 9.17am.drawing",
-	"width": 920,
-	"aspectRatio": 1.8930041152263375
+	"width": 870,
+	"aspectRatio": 2.0422535211267605
 }
 ```
-
 ### Rough overall dataflow
 
-**My mermaid flowchart in refwrangle/doc is better**
 ```handdrawn-ink
 {
 	"versionAtEmbed": "0.3.3",
@@ -128,6 +126,8 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 	"aspectRatio": 1.5661093328607476
 }
 ```
+- **My mermaid flowchart in refwrangle/doc is better**
+	- was also easier to edit mermaid in vscode with live preview, as it's a code editor
 
 # Citation link type vs zotero presence and perplexity dialog source
 
@@ -143,9 +143,9 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 | -------- | --------- | ----------------- | ---------- | -------------- | ------------ | ---------- | ------------ | ---------------- |
 | perp     | 1         | 1                 | 1          | \# Response    | none         | 1          | none         | top of output    |
 | perp     | 1         | M (doesn't exist) | 0          | n/a            | n/a          | n/a        | n/a          | n/a              |
-| perp     | N         | 1 (unique)        | 0          | ResponseS      | short prompt | 0          | none         | below file tile  |
+| perp     | N         | 1 (unique)        | 1          | ResponseS      | short prompt | 0          | none         | below file tile  |
 | perp     | N         | 1 (same)          | 1          | ResponseS      | file stem    | 1          | none         | below file title |
-| perp     | N         | M                 | 0          | Response       | short prompt | 0          | none         | below file tile  |
+| perp     | N         | M                 | 1          | Response       | short prompt | 0          | none         | below file tile  |
 | smc      | 1         | 1                 | 1          | Response       | none         | 0          | none         | top of output    |
 | smc      | 1         | M                 | 1          | Response       | short prompt | 0          | User: text   | top of output    |
 | smc      | N         | 1 (unique)        | 1          | Response       | short prompt | 0          | User: text   | below file tile  |
@@ -162,6 +162,7 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 		- [ ] need a variable in the code
 		- [x] detect type 
 			- either to autodetect or to verify that files are all the same type
+			- I made an `is_smc...()` function
 - [x] prompt same prompt (SMC or now, Perplexity too)
 	- [x] need a variable in the code
 	- [x] function to detect prompt similarity 
@@ -177,6 +178,10 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 	- [ ] SMC N1 unique
 	- [ ] SMC N1 all same
 	- [ ] SMC NM
+- [ ] Relink and old perplexity output
+	- avoid problem of new AI forgetting old links, thus losing context you might have wanted to keep
+	- seems fairly easy
+
 --- 
 
  **Output Examples**

@@ -1,11 +1,27 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-02-17T14:34:53-08:00
+modified date: 2025-02-20T14:11:35-08:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
 
 I'm putting this code in `ref/refwrangle`.  Also see [[Zotero 6 to 7]].
+# Easier zotero-to-obsidian note transfer
+
+- [ ] Get and Link Zotero Item Templatre
+	- put cursor in an obsidian topic note, near a place relevant to the zotero item you're about to add
+	- run a "get and Link Zotero Item" templater action.  It will:
+		- run [[2024-03-09#Zotero Integration Plugin|Zotero Integration Plugin]] to import the lit note
+		- add a link to the new lit note at the current cursor position
+		- click the new lit note's `linked` property
+	- an improvement got `Get Literature Note Link.md`
+	- [ ] ? can a template regain cursor control after the zotero menu pops up
+		- it would have to do the `linked` property click
+			- although I guess it could call a different zotero integration template, one that has `linked` already clicked
+		- add the link to the new lit note 
+			- although I guess this could be done before calling the zotero interface
+			- [[2024-02-25#Zotero Integration Plugin]]
+			- 
 # Zotero to NotebookLM
 ## Problems to solve before using NotebookLM
 
@@ -14,7 +30,8 @@ It can cite an entire YT video as a source, but it can't highlight a specific pa
 ### Manual entry
 Every single source must be entered manually. I have hundreds of articles, so this is not tenable.
 ### Total data limit
-There's a limit on the total bytes of data uploaded, as well as a size limit for each file.
+There's a limit on the total bytes of data uploaded, as well as a size limit for each file. [[US Elections 2024#Success Stories Recent Authoritarian Takedowns]]
+
 ### Some web sites files can't be imported
 For example, [WA shifted (slightly) right in...](https://www.seattletimes.com/seattle-news/data/wa-shifted-slightly-right-in-2024-though-many-counties-moved-left/) can't be imported. It seems that NLM can read the website but, due to "source restrictions" it can't point you to the line where some point is made. This does work for some web pages, for example [Election 2024: How and why you...](https://apnews.com/article/young-black-latino-men-trump-economy-jobs-9184ca85b1651f06fd555ab2df7982b5).
 ## Tasks

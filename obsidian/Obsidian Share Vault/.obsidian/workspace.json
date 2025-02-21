@@ -8,21 +8,39 @@
         "type": "tabs",
         "children": [
           {
-            "id": "1f49b5d1e617bf8e",
+            "id": "c45e4e13e24578fe",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Politics/Political Causality/US Elections 2024.md",
+                "file": "lit/lit_notes/MorningConsult25agencyCutsFewSupport.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "US Elections 2024"
+              "title": "MorningConsult25agencyCutsFewSupport"
+            }
+          },
+          {
+            "id": "0bdaeb396940f5c3",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "lit/lit_sources/Kahan13IdeologyMotivatedReasoning.pdf",
+                "page": 1,
+                "left": -13,
+                "top": 796,
+                "zoom": 1.1372549019607843
+              },
+              "icon": "lucide-file-text",
+              "title": "Kahan13IdeologyMotivatedReasoning"
             }
           }
-        ]
+        ],
+        "currentTab": 1,
+        "stacked": true
       }
     ],
     "direction": "vertical"
@@ -54,7 +72,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "\"Kaja Kallas\"",
+                "query": "balz25",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -109,11 +127,12 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 424.5
+    "width": 721.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -129,10 +148,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Politics/Political Causality/US Elections 2024.md"
+                "file": "lit/lit_sources/Kahan13IdeologyMotivatedReasoning.pdf"
               },
               "icon": "lucide-info",
-              "title": "File properties for US Elections 2024"
+              "title": "File properties for Kahan13IdeologyMotivatedReasoning"
             }
           },
           {
@@ -190,7 +209,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "lit/refwrangle/Perplexity Parsing.md",
+                "file": "lit/lit_sources/Kahan13IdeologyMotivatedReasoning.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -200,7 +219,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Perplexity Parsing"
+              "title": "Backlinks for Kahan13IdeologyMotivatedReasoning"
             }
           },
           {
@@ -233,13 +252,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Politics/Political Causality/US Elections 2024.md",
+                "file": "lit/lit_sources/Kahan13IdeologyMotivatedReasoning.pdf",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of US Elections 2024"
+              "title": "Outline of Kahan13IdeologyMotivatedReasoning"
             }
           },
           {
@@ -282,8 +301,7 @@
               "title": "Smart Lookup"
             }
           }
-        ],
-        "currentTab": 8
+        ]
       }
     ],
     "direction": "horizontal",
@@ -333,44 +351,43 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "1f49b5d1e617bf8e",
+  "active": "0bdaeb396940f5c3",
   "lastOpenFiles": [
+    "lit/lit_notes/MorningConsult25agencyCutsFewSupport.md",
+    "lit/lit_sources/MorningConsult25agencyCutsFewSupport.html",
+    "lit/lit_notes/Balz25trumpEarlyActionUnpop.md",
+    "Dailies/2024-03-28.md",
+    "lit/lit_sources/Unconfirmed 517889.crdownload",
+    "lit/lit_sources/zotero-5723.html",
+    "Politics/Political Causality/US Elections 2024.md",
+    "Dailies/2025-02-20.md",
+    "Dailies/2024-05-19.md",
+    "lit/refwrangle/Zotero to Obsidian to RAG.md",
+    "Scratch Space/tmp_stock_perplexy_merged.md",
+    "Dailies/2024-03-09.md",
+    "lit/lit_notes/NotebookLM.md",
+    "House Projects/House Rewire/House Rewire Permit Procedure Steps.md",
+    "lit/refwrangle/Perplexity Parsing.md",
+    "lit/lit_notes/Euronews24spainVoxRightEU.md",
+    "lit/lit_sources/Unconfirmed 141169.crdownload",
+    "lit/lit_notes/Herkman24LfinnPopulistLoss.md",
+    "lit/lit_notes/Smidt24rightPopulPlndHngry.md",
+    "lit/lit_notes/Ivanova22systemicMistrustBrazil.md",
+    "lit/lit_notes/Leicester24blockFarRightFrenchFront.md",
+    "lit/lit_notes/Watmough23populistEndPoland.md",
+    "lit/lit_notes/Przybylski23endPolandsIlliberal.md",
+    "lit/lit_notes/Szczerbiak23whyOppoWinPoland.md",
+    "lit/lit_notes/Gora23polandEndRightWing.md",
+    "lit/lit_sources/Balz25trumpEarlyActionUnpop.html",
+    "lit/lit_sources/Balz25ManyTrumpsEarly.html",
+    "Dailies/2024-04-07.md",
+    "lit/lit_sources/Watmough23populistEndPoland.pdf",
+    "Obsidian/templates/literature_note.md",
     "lit/lit_sources/Szczerbiak23whyOppoWinPoland.pdf",
     "lit/lit_sources/Szczerbiak23WhyDidOpposition.pdf",
-    "Scratch Space/tmp_stock_perplexy_merged.md",
     "lit/lit_sources/Kahan13IdeologyMotivatedReasoning.pdf",
     "Scratch Space/tmp_perplex_example.md",
-    "lit/lit_sources/Watmough23populistEndPoland.pdf",
-    "lit/lit_sources/Watmough23populistEndPoland.html",
-    "lit/lit_sources/23EightYearsPopulist.html",
     "All Tasks Summary.md",
-    "lit/lit_sources/Unconfirmed 315127.crdownload",
-    "lit/lit_sources/Leicester24blockFarRightFrenchFront.html",
-    "lit/lit_sources/Jeantet24blockFarRightFrenchFront.html",
-    "lit/lit_sources/24HowFrenchVoters.html",
-    "Clippings/{@typePerson,@idhttpswww.obsidianstats.compluginsclipper-catalogauthor,nameGreg K.} – Clipper Catalog - A catalog view that provides a powerful interface for all your clipped web articles and content. Easily organize, search, and manage your web.md",
-    "Clippings/{@typePerson,nameNuno Campos,urlhttpsmedium.com@nuno.f.s.campos} – Obsidian Plugins Review — 92 - Obsidian Observer - Medium.md",
-    "Clippings/FarmCraft101 – Finishing the Track Adjusters on Large Marge.  Case 170B Excavator.md",
-    "Topic Notes/Polling.md",
-    "lit/lit_notes/Cohn24changePollsAvoid2020.md",
-    "lit/lit_notes/CommDevs24ManimMathAnim.md",
-    "Dailies/2024-03-28.md",
-    "lit/lit_notes/Pixegami23RAGLangchainPython.md",
-    "lit/lit_notes/Hofferber23openAIapiBetterChatGPT.md",
-    "lit/lit_notes/Caballar24codingAIautopilot.md",
-    "lit/lit_notes/Dancker24dontNeedDprLrnTSfrcst.md",
-    "lit/lit_notes/KellyDetwiler24tale2CAISO_ERCOT.md",
-    "Dailies/2025-02-19.md",
-    "lit/lit_notes/Fattah20elecMktOvrvwDA_ID.md",
-    "Work/VPP ideas/CAISO/CAISO Papers to Start With.md",
-    "lit/lit_notes/Zarnikau20determElecPriceMISO.md",
-    "Clippings/Mutual information - Wikipedia.md",
-    "lit/lit_notes/FERC24understandParticipCAISO.md",
-    "lit/refwrangle/Perplexity Parsing.md",
-    "Now, if you need to use the footnote extension, im.md",
-    "perple_new_format_longprompt_example.md",
-    "Politics/Political Causality/US Elections 2024.md",
-    "desktop.ini",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",

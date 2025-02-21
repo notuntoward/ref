@@ -14,7 +14,6 @@
   "settings-search",
   "obsidian-auto-link-title",
   "table-editor-obsidian",
-  "short-internal-links-to-headings",
   "obsidian-show-file-path",
   "blockier",
   "obsidian-better-command-palette",
@@ -69,7 +68,6 @@
   "obsidian-git",
   "ink",
   "note-toolbar",
-  "sqlseal",
   "note-atomizer",
   "obsidian-local-rest-api",
   "obsidian-shellcommands",
@@ -77,5 +75,6 @@
   "obsidian-heading-shifter",
   "numerals",
   "smart-connections",
-  "obsidian-tagfolder"
+  "obsidian-tagfolder",
+  "link-headers-directly"
 ]
