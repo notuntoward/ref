@@ -4,73 +4,78 @@
     "type": "split",
     "children": [
       {
-        "id": "d925a85558c91695",
+        "id": "574b1e94c2381ed0",
         "type": "tabs",
         "children": [
           {
-            "id": "9b2ce8f3bf3ef090",
+            "id": "bac646fddf95d552",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "lit/lit_sources/Watmough23populistEndPoland.pdf",
-                "page": 7,
+                "file": "lit/lit_sources/Emory25exercisesBayesTheorem.pdf",
+                "page": 1,
                 "left": -19,
-                "top": 341,
+                "top": 601,
                 "zoom": 0.7916666666666666
               },
               "icon": "lucide-file-text",
-              "title": "Watmough23populistEndPoland"
+              "title": "Emory25exercisesBayesTheorem"
             }
           }
         ]
       },
       {
-        "id": "5917253c1dcce25c",
+        "id": "7f0643e55df9b618",
         "type": "tabs",
         "children": [
           {
-            "id": "c45e4e13e24578fe",
+            "id": "ffa6a389833360b9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lit/lit_notes/Kahan13ideologyMotivatedReasoning.md",
+                "file": "Work/Between Jobs/Interview Prep/Basic Math/Basic Data Science Stats.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Kahan13ideologyMotivatedReasoning"
+              "title": "Basic Data Science Stats"
             }
           },
           {
-            "id": "01030d80741fdc57",
+            "id": "2ed3c9733b8e88ce",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lit/lit_notes/Watmough23populistEndPoland.md",
+                "file": "lit/lit_notes/Clyde20IntroBayesianThink.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Watmough23populistEndPoland"
+              "title": "Clyde20IntroBayesianThink"
             }
           },
           {
-            "id": "0bdaeb396940f5c3",
+            "id": "1f35ac2f067ea0ec",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "lit/lit_notes/Emory25exercisesBayesTheorem.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Emory25exercisesBayesTheorem"
             }
           }
         ],
-        "currentTab": 1,
+        "currentTab": 2,
         "stacked": true
       }
     ],
@@ -157,8 +162,7 @@
               "title": "Tag Folder"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -179,10 +183,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "lit/lit_sources/Watmough23populistEndPoland.pdf"
+                "file": "lit/lit_notes/Emory25exercisesBayesTheorem.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for Watmough23populistEndPoland"
+              "title": "File properties for Emory25exercisesBayesTheorem"
             }
           },
           {
@@ -382,43 +386,43 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "9b2ce8f3bf3ef090",
+  "active": "1f35ac2f067ea0ec",
   "lastOpenFiles": [
+    "Work/Between Jobs/Interview Prep/Basic Math/Basic Data Science Stats.md",
+    "lit/lit_sources/Emory25exercisesBayesTheorem.pdf",
+    "lit/lit_notes/Emory25exercisesBayesTheorem.md",
+    "lit/lit_notes/Clyde20IntroBayesianThink.md",
+    "lit/lit_sources/Clyde20IntroBayesianThink.pdf",
+    "Work/Between Jobs/Interview Prep/Basic Math/attachments/Basic Hypothesis Tests.html",
+    "Work/Between Jobs/Interview Prep/Basic Math/attachments",
+    "Work/Between Jobs/Interview Prep/Basic Math",
+    "Scratch Space/Explain bayes rule, then explain bayesian regressi.md",
+    "Scratch Space/2 tell me about the most common hypotheses testing m.md",
+    "lit/lit_sources/Clyde20IntroductionBayesianThinking.pdf",
+    "lit/lit_sources/Emory25exercisesBayesTheorem.html",
+    "lit/lit_sources/ExercisesBayesTheorem.html",
+    "lit/lit_sources/ExercisesBayesTheorema.html",
+    "Scratch Space/practice on Bayes solutions.pdf",
+    "Scratch Space/3. tell me about the most common hypotheses testing m (1).md",
+    "Scratch Space/2025-02-20_21-55-33_Perplexity.ai_tell me about the most common hypotheses testing methods. Use....md",
+    "Scratch Space/Describe the current state of Seattle's Burke Gilm.md",
+    "Scratch Space/tell me about the most common hypotheses testing m.md",
+    "Scratch Space/tmp_savemychatbot_multiprompt_perplexity_example.md",
+    "Scratch Space/tmp_perplex_example.md",
+    "Scratch Space/tmp_stock_perplexy_merged.md",
     "lit/lit_notes/Watmough23populistEndPoland.md",
-    "lit/lit_notes/Kahan13ideologyMotivatedReasoning.md",
-    "lit/lit_sources/Kahan13ideologyMotivatedReasoning.pdf",
     "Politics/Political Causality/US Elections 2024.md",
+    "lit/lit_notes/Editorial23cheerMediocWAschools.md",
     "lit/lit_notes/MorningConsult25agencyCutsFewSupport.md",
-    "lit/lit_sources/MorningConsult25agencyCutsFewSupport.html",
+    "lit/lit_notes/Superville25leftSeattleSchls.md",
+    "lit/lit_notes/Goldstein24SchoolBattlesMay.md",
+    "lit/lit_notes/Glueck24endWhiteWorkingDems.md",
+    "lit/lit_notes/Yokley25trumpPollFeb10.md",
+    "lit/lit_notes/Kahan13ideologyMotivatedReasoning.md",
     "lit/lit_notes/Balz25trumpEarlyActionUnpop.md",
     "Dailies/2024-03-28.md",
-    "lit/lit_sources/Unconfirmed 517889.crdownload",
-    "lit/lit_sources/zotero-5723.html",
     "Dailies/2025-02-20.md",
     "Dailies/2024-05-19.md",
-    "lit/refwrangle/Zotero to Obsidian to RAG.md",
-    "Scratch Space/tmp_stock_perplexy_merged.md",
-    "Dailies/2024-03-09.md",
-    "lit/lit_notes/NotebookLM.md",
-    "House Projects/House Rewire/House Rewire Permit Procedure Steps.md",
-    "lit/refwrangle/Perplexity Parsing.md",
-    "lit/lit_notes/Euronews24spainVoxRightEU.md",
-    "lit/lit_sources/Unconfirmed 141169.crdownload",
-    "lit/lit_notes/Herkman24LfinnPopulistLoss.md",
-    "lit/lit_notes/Smidt24rightPopulPlndHngry.md",
-    "lit/lit_notes/Ivanova22systemicMistrustBrazil.md",
-    "lit/lit_notes/Leicester24blockFarRightFrenchFront.md",
-    "lit/lit_notes/Przybylski23endPolandsIlliberal.md",
-    "lit/lit_notes/Szczerbiak23whyOppoWinPoland.md",
-    "lit/lit_notes/Gora23polandEndRightWing.md",
-    "lit/lit_sources/Balz25trumpEarlyActionUnpop.html",
-    "lit/lit_sources/Balz25ManyTrumpsEarly.html",
-    "Dailies/2024-04-07.md",
-    "lit/lit_sources/Watmough23populistEndPoland.pdf",
-    "Obsidian/templates/literature_note.md",
-    "lit/lit_sources/Szczerbiak23whyOppoWinPoland.pdf",
-    "lit/lit_sources/Szczerbiak23WhyDidOpposition.pdf",
-    "Scratch Space/tmp_perplex_example.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",

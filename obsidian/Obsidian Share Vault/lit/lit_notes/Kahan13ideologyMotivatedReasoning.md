@@ -14,7 +14,7 @@ ZoteroCollections:
   - neuropsycholinguisticpolitics
   - polarization
 created date: 2025-02-20T17:24:24-08:00
-modified date: 2025-02-20T17:28:08-08:00
+modified date: 2025-02-20T20:33:14-08:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/LTKRCQJ3)  | [**DOI**](https://doi.org/10.1017/S1930297500005271)  | [**URL**](https://www.cambridge.org/core/journals/judgment-and-decision-making/article/ideology-motivated-reasoning-and-cognitive-reflection/F8A6A74C9022363D672B0FD14DD8B89F) | **[[Kahan13ideologyMotivatedReasoning.pdf|PDF]]**
@@ -48,10 +48,10 @@ modified date: 2025-02-20T17:28:08-08:00
 %% begin Obsidian Notes %%
 ___
 
-I haven't read this but..
+I haven't read this but...
+
 ### Also
 - kind of related: [[Watmough23populistEndPoland]]
-
 ___
 %% end Obsidian Notes %%
 
