@@ -4,33 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "574b1e94c2381ed0",
+        "id": "71c56594675a0622",
         "type": "tabs",
         "children": [
           {
-            "id": "bac646fddf95d552",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "lit/lit_sources/Emory25exercisesBayesTheorem.pdf",
-                "page": 1,
-                "left": -19,
-                "top": 601,
-                "zoom": 0.7916666666666666
-              },
-              "icon": "lucide-file-text",
-              "title": "Emory25exercisesBayesTheorem"
-            }
-          }
-        ]
-      },
-      {
-        "id": "7f0643e55df9b618",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "ffa6a389833360b9",
+            "id": "ef5c694b9a2ae9d0",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -43,39 +21,8 @@
               "icon": "lucide-file",
               "title": "Basic Data Science Stats"
             }
-          },
-          {
-            "id": "2ed3c9733b8e88ce",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "lit/lit_notes/Clyde20IntroBayesianThink.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "Clyde20IntroBayesianThink"
-            }
-          },
-          {
-            "id": "1f35ac2f067ea0ec",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "lit/lit_notes/Emory25exercisesBayesTheorem.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "Emory25exercisesBayesTheorem"
-            }
           }
         ],
-        "currentTab": 2,
         "stacked": true
       }
     ],
@@ -108,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "\"good quote\"",
+                "query": "rampell25",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -162,12 +109,12 @@
               "title": "Tag Folder"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 721.5,
-    "collapsed": true
+    "width": 721.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -183,10 +130,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "lit/lit_notes/Emory25exercisesBayesTheorem.md"
+                "file": "Work/Between Jobs/Interview Prep/Basic Math/Basic Data Science Stats.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for Emory25exercisesBayesTheorem"
+              "title": "File properties for Basic Data Science Stats"
             }
           },
           {
@@ -287,13 +234,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "lit/lit_sources/Kahan13IdeologyMotivatedReasoning.pdf",
+                "file": "Work/Between Jobs/Interview Prep/Basic Math/Basic Data Science Stats.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Kahan13IdeologyMotivatedReasoning"
+              "title": "Outline of Basic Data Science Stats"
             }
           },
           {
@@ -336,7 +283,8 @@
               "title": "Plugin no longer active"
             }
           }
-        ]
+        ],
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
@@ -386,23 +334,27 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "1f35ac2f067ea0ec",
+  "active": "ef5c694b9a2ae9d0",
   "lastOpenFiles": [
+    "Work/Between Jobs/Interview Prep/Basic Math/attachments/Basic Hypothesis Tests.html",
     "Work/Between Jobs/Interview Prep/Basic Math/Basic Data Science Stats.md",
+    "Work/Between Jobs/Interview Prep/Basic Math/attachments/Unconfirmed 37873.crdownload",
+    "Work/Between Jobs/Interview Prep/Basic Math/attachments/~$sic Hypothesis Tests.html",
+    "lit/refwrangle/Perplexity Parsing.md",
+    "Politics/Political Causality/US Elections 2024.md",
+    "lit/lit_sources/Unconfirmed 666092.crdownload",
+    "lit/lit_notes/Rampell25genZmenLoveTrump.md",
+    "lit/lit_notes/Evans24techSplinterCulturalCtrl.md",
+    "lit/lit_sources/Evans24techSplinterCulturalCtrl.html",
+    "lit/lit_sources/Evans24GreatSplinteringHow.html",
+    "lit/lit_sources/Rampell25genZmenLoveTrump.html",
+    "lit/lit_notes/Clyde20IntroBayesianThink.md",
     "lit/lit_sources/Emory25exercisesBayesTheorem.pdf",
     "lit/lit_notes/Emory25exercisesBayesTheorem.md",
-    "lit/lit_notes/Clyde20IntroBayesianThink.md",
-    "lit/lit_sources/Clyde20IntroBayesianThink.pdf",
-    "Work/Between Jobs/Interview Prep/Basic Math/attachments/Basic Hypothesis Tests.html",
-    "Work/Between Jobs/Interview Prep/Basic Math/attachments",
-    "Work/Between Jobs/Interview Prep/Basic Math",
+    "lit/lit_sources/Unconfirmed 530671.crdownload",
+    "lit/lit_sources/Rampell25OpinionWhyGen.html",
     "Scratch Space/Explain bayes rule, then explain bayesian regressi.md",
     "Scratch Space/2 tell me about the most common hypotheses testing m.md",
-    "lit/lit_sources/Clyde20IntroductionBayesianThinking.pdf",
-    "lit/lit_sources/Emory25exercisesBayesTheorem.html",
-    "lit/lit_sources/ExercisesBayesTheorem.html",
-    "lit/lit_sources/ExercisesBayesTheorema.html",
-    "Scratch Space/practice on Bayes solutions.pdf",
     "Scratch Space/3. tell me about the most common hypotheses testing m (1).md",
     "Scratch Space/2025-02-20_21-55-33_Perplexity.ai_tell me about the most common hypotheses testing methods. Use....md",
     "Scratch Space/Describe the current state of Seattle's Burke Gilm.md",
@@ -411,7 +363,6 @@
     "Scratch Space/tmp_perplex_example.md",
     "Scratch Space/tmp_stock_perplexy_merged.md",
     "lit/lit_notes/Watmough23populistEndPoland.md",
-    "Politics/Political Causality/US Elections 2024.md",
     "lit/lit_notes/Editorial23cheerMediocWAschools.md",
     "lit/lit_notes/MorningConsult25agencyCutsFewSupport.md",
     "lit/lit_notes/Superville25leftSeattleSchls.md",
@@ -420,9 +371,6 @@
     "lit/lit_notes/Yokley25trumpPollFeb10.md",
     "lit/lit_notes/Kahan13ideologyMotivatedReasoning.md",
     "lit/lit_notes/Balz25trumpEarlyActionUnpop.md",
-    "Dailies/2024-03-28.md",
-    "Dailies/2025-02-20.md",
-    "Dailies/2024-05-19.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",

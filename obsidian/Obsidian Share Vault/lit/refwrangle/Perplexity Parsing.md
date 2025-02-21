@@ -1,6 +1,6 @@
 ---
 created date: 2025-02-10T15:50:01-08:00
-modified date: 2025-02-20T12:16:39-08:00
+modified date: 2025-02-21T10:52:09-08:00
 ---
 
 
@@ -155,6 +155,7 @@ refnum_to_link_source = links_from_source_smc(sources_text)
 
 - [x] finish implementation of perp N1 same
 - [x] parser for new stock perplexity format
+- [ ] Get cites from both body and sources and merge, check inconsistencies
 - [ ] finish merging of perp and SMC code
 - [ ] deal with file types (perp vs. SMC)
 	- [ ] ? insist on all same type to avoid mixed header headaches?

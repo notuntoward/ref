@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-02-20T20:51:01-08:00
+modified date: 2025-02-21T10:44:05-08:00
 ---
 # TODO
 - graph showing all the information loss sources from a good D policy to a voter's rational decision about it
@@ -59,7 +59,8 @@ Trump is really the best president ever.
 	- FAIR24fairVsWalkerLoanDiscrim
 	- excludes Japanese, Jews and whites
 	- ? Does WA may have more poor whites than any other group? If so, this is politically stupid. In any case, seems nasty, if the idea is to address poverty.
-- Friedersdorf24worstIdentPolit
+- [[Evans24techSplinterCulturalCtrl]]
+- [[Rampell25genZmenLoveTrump]]
 ## The Economy
 ## Postmaterialism
 Both R's and D's vote less on economic issues and more on values: Lowrey24riseUnionRight
@@ -128,8 +129,6 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 - [[Verma24muskPoliticsEcoCar|Verma24: Musk’s politics hadn’t seeped into Tesla. Then he axed its eco car of the future.]] 
 - A Musk attack, since he wants all AI?[[Palmer23llmsArgueConvincing|Palmer23: Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors: implications for Governance]] 
 - Musk is very unpopular, and he's barely started: [[Balz25trumpEarlyActionUnpop|Balz25: Many of Trump’s early actions are unpopular, Post-Ipsos poll finds]] 
-
-
 # Questions
 ## How voters weight different policies in their voting decision (sensitivity analysis)
 ## Media effectiveness
@@ -160,7 +159,14 @@ Just more predictor variables for various things. Things similar to education, w
 - conspiracy theory attractions
 	- makes your life simple ==> make your conspiracy make your life complicated
 	- convinces you that you are good ==> make it make you look bad (a common tactic, I think)
-	- ...
+	- …
+## Polarization: what, why, and how to overcome
+- [[Evans24techSplinterCulturalCtrl]]
+- [[Rampell25genZmenLoveTrump]]
+
+
+
+
 # Predictive Models and Analysis Techniques
 - market sentiment indexes predicted by economic variables (Weber24implicitCoordInflateShock).  Could be *voter* sentiment predicted by other variables
 - bulk features built from the poll difference between a presidential candidate and same-party state/county/city candidates. Or, look at post-election results for election autopsies
