@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-02-20T14:30:44-08:00
+modified date: 2025-02-20T17:30:54-08:00
 ---
 # TODO
 - graph showing all the information loss sources from a good D policy to a voter's rational decision about it
@@ -176,7 +176,8 @@ Just more predictor variables for various things. Things similar to education, w
 		- [ ] do low IQ people need more shortcuts? Rubin24demsLowInfoVoterShortcut or is it just busy, low information voters?
 - [ ] Are "low information voters" often really high information voters who know a lot about conspiracy theories (JV Last kind of says this in TheBulwark24isAmericaSerious) i.e. are many just crazy? How distinguish? Campaign-wise, is it worth distinguishing them?
 ## How to overcome motivated reasoning
-- Kahan13IdeologyMotivatedReasoning
+- [[Kahan13ideologyMotivatedReasoning]]
+- Related? [[Watmough23populistEndPoland]]
 ## How specifically does Trump sound like an honest, real person?
 - non-politically correct, says what they're thinking but others are afraid to say it?
 - just says what they already think? He's not persuading but got in front of their parade?
