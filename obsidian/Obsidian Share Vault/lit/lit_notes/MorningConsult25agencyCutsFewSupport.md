@@ -13,7 +13,7 @@ ZoteroTags:
 ZoteroCollections:
   - hot_takes_us_elect_2024
 created date: 2025-02-20T16:02:45-08:00
-modified date: 2025-02-20T17:21:33-08:00
+modified date: 2025-02-20T20:49:20-08:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/CZZWBJU4)   | [**URL**](https://links.morningconsult.com/s/vb/McP6pbqHHraFYnySPtH0CpAHT9XJtnDcNhrAtC_KmlHAZ4BTKBZ76NB7smRxs8gwzgA7i-bOZ3-lokEJCWOrTOnNJzB9DiBQbXlPyBHkHPKDQuGE_y1zf3qjP4sEkslhT8-B3OrnBWW84XJwIkTY4wUb3oIR7t2tOuJBbA/xDcHiGqYxspoA13OMhRsr7e_6oV03AYH/6) | **[[MorningConsult25agencyCutsFewSupport.html|HTM]]**
@@ -57,6 +57,8 @@ More about people not voting for what they wanted.  About 46% of the GOP want le
 
 # Also
 - [[Balz25trumpEarlyActionUnpop]]  
+- [[Yokley25trumpPollFeb10]]
+
 
 ___
 %% end Obsidian Notes %%

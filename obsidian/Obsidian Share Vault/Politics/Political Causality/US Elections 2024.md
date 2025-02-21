@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-02-20T17:30:54-08:00
+modified date: 2025-02-20T20:51:01-08:00
 ---
 # TODO
 - graph showing all the information loss sources from a good D policy to a voter's rational decision about it
@@ -221,8 +221,12 @@ Just more predictor variables for various things. Things similar to education, w
 				- believed Dems "equity-driven school policies" was not a good reaction to hate Crimes, Dems seen as looking after their interests
 		- [[#Student loads as political liability?|Student loads as political liability?]] 
 		- Roaring stockmarket as liability: Weber24implicitCoordInflateShock
-		- suburban R never trumper emphasis vs. working class economic worries: Glueck24endWhiteWorkingDems
-		- wokeism vs. suburban school worries during COVID: Goldstein24SchoolBattlesMay , Editorial23cheerMediocWAschools
+		- suburban R never trumper emphasis vs. working class economic worries:
+			- [[Glueck24endWhiteWorkingDems|Glueck24: Is This the End of the White Working-Class Democrat?]] 
+			- wokeism vs. suburban school worries during COVID: 
+				- [[Goldstein24SchoolBattlesMay|Goldstein24: School Battles May Help Explain Why Democrats Declined in Some Suburbs]] 
+				- [[Editorial23cheerMediocWAschools|Editorial23: Cheerleading mediocrity is not good enough for WA's education department]] 
+				- Seattle schools too, for some reason: [[Superville25leftSeattleSchls|Superville25: Why have thousands left Seattle schools? A new survey suggests answers]] 
 		- anti-Israel vs. concern for order, econ: The very least popular reason for voting for Trump was Harris was too pro-Israel (Cass24WhyAmericaChose) but the R's made hay of campus riots 
 			- [ ] ? but didn't the D's also lose MI arab votes b/c of Israel?
 		- trans: [[Dionne24hiddenVictoryProgrssiv|Dionne24: The lessons in progressives’ hidden 2024 victories]]
