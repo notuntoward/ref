@@ -30,12 +30,23 @@ if (selectedNote) {
   const aliases = frontMatter ? frontMatter.aliases : null;
 
   if (citekey) {
-    const match = citekey.match(/^([a-zA-Z]+)(\d{2})/);
+    const match = citekey.match(/^([a-zA-Z0-9]+)(\d{2})/); // match 3Blue1Brown, etc.
+    // const match = citekey.match(/^([a-zA-Z]+)(\d{2})/);
     if (match) {
       const authorName = match[1];
       const yearNum = match[2];
       const formattedCitekey = `${authorName}${yearNum}`;
       
+      if (aliases) {
+          new Notice("Has aliases.");
+          }
+      if (Array.isArray(aliases)) {
+          new Notice("aliases is array");
+          }
+      if (aliases.length > 0) {
+          new Notice("aliases is array len > 0");
+          }
+          
       if (aliases && Array.isArray(aliases) && aliases.length > 0) {
         // Remove duplicate aliases
         const uniqueAliases = [...new Set(aliases)];
