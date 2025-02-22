@@ -4,6 +4,45 @@
     "type": "split",
     "children": [
       {
+        "id": "1eb4e2ae059d70f2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "71ab683e364e5afe",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "lit/lit_sources/Clyde20IntroBayesianThink.pdf",
+                "page": 10,
+                "left": -33,
+                "top": 177,
+                "zoom": 0.4779411764705883
+              },
+              "icon": "lucide-file-text",
+              "title": "Clyde20IntroBayesianThink"
+            }
+          },
+          {
+            "id": "28b415f910fc1b96",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "lit/lit_sources/Emory25exercisesBayesTheorem.pdf",
+                "page": 1,
+                "left": -33,
+                "top": 606,
+                "zoom": 0.47794117647058826
+              },
+              "icon": "lucide-file-text",
+              "title": "Emory25exercisesBayesTheorem"
+            }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
         "id": "71c56594675a0622",
         "type": "tabs",
         "children": [
@@ -13,13 +52,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Work/Between Jobs/Interview Prep/Basic Math/Basic Data Science Stats.md",
+                "file": "lit/lit_notes/Emory25exercisesBayesTheorem.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Basic Data Science Stats"
+              "title": "Emory25exercisesBayesTheorem"
+            }
+          },
+          {
+            "id": "afaaf42b9b41696e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lit/lit_notes/3Blue1Brown19BayesThrmGeomChngBelief.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "3Blue1Brown19BayesThrmGeomChngBelief"
             }
           }
         ],
@@ -55,7 +109,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "rampell25",
+                "query": "latex",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -109,12 +163,12 @@
               "title": "Tag Folder"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 721.5
+    "width": 721.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -130,10 +184,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Work/Between Jobs/Interview Prep/Basic Math/Basic Data Science Stats.md"
+                "file": "lit/lit_sources/Emory25exercisesBayesTheorem.pdf"
               },
               "icon": "lucide-info",
-              "title": "File properties for Basic Data Science Stats"
+              "title": "File properties for Emory25exercisesBayesTheorem"
             }
           },
           {
@@ -283,13 +337,11 @@
               "title": "Plugin no longer active"
             }
           }
-        ],
-        "currentTab": 8
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 511.5,
-    "collapsed": true
+    "width": 511.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -304,7 +356,6 @@
       "media-extended:Open media": true,
       "templater-obsidian:Templater": true,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "obsidian42-text-transporter:Text Transporter": false,
       "darlal-switcher-plus:Open in Headings Mode": true,
       "darlal-switcher-plus:Open Symbols for the active editor": true,
       "obsidian-kanban:Create new board": true,
@@ -325,6 +376,7 @@
       "cmdr:Custom Frames: Open Google Keep": false,
       "cmdr:Recent Files: Open": false,
       "cmdr:Commander: Open Commander Settings": false,
+      "obsidian42-text-transporter:Text Transporter": false,
       "cmdr:Custom Frames: Open Google Calendar": false,
       "cmdr:Outline: Open outline of the current file": false,
       "cmdr:Bookmark Show": false,
@@ -334,10 +386,19 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "ef5c694b9a2ae9d0",
+  "active": "28b415f910fc1b96",
   "lastOpenFiles": [
-    "Work/Between Jobs/Interview Prep/Basic Math/attachments/Basic Hypothesis Tests.html",
+    "lit/lit_notes/Emory25exercisesBayesTheorem.md",
     "Work/Between Jobs/Interview Prep/Basic Math/Basic Data Science Stats.md",
+    "lit/lit_notes/Clyde20IntroBayesianThink.md",
+    "lit/lit_notes/3Blue1Brown19BayesThrmGeomChngBelief.md",
+    "lit/lit_sources/Clyde20IntroBayesianThink.pdf",
+    "Dailies/2023-10-17.md",
+    "lit/lit_notes/attachments/d0ef79bb85ffd401136605d35774ccb2_MD5.jpeg",
+    "lit/lit_notes/attachments/image.png",
+    "lit/lit_notes/attachments/0f9da6870b23bec3038d1bd85069bc1e_MD5.jpeg",
+    "lit/lit_notes/attachments/34bc42f9607ef00c1b91ebdcb94d7908_MD5.jpeg",
+    "Work/Between Jobs/Interview Prep/Basic Math/attachments/Basic Hypothesis Tests.html",
     "Work/Between Jobs/Interview Prep/Basic Math/attachments/Unconfirmed 37873.crdownload",
     "Work/Between Jobs/Interview Prep/Basic Math/attachments/~$sic Hypothesis Tests.html",
     "lit/refwrangle/Perplexity Parsing.md",
@@ -348,11 +409,8 @@
     "lit/lit_sources/Evans24techSplinterCulturalCtrl.html",
     "lit/lit_sources/Evans24GreatSplinteringHow.html",
     "lit/lit_sources/Rampell25genZmenLoveTrump.html",
-    "lit/lit_notes/Clyde20IntroBayesianThink.md",
     "lit/lit_sources/Emory25exercisesBayesTheorem.pdf",
-    "lit/lit_notes/Emory25exercisesBayesTheorem.md",
     "lit/lit_sources/Unconfirmed 530671.crdownload",
-    "lit/lit_sources/Rampell25OpinionWhyGen.html",
     "Scratch Space/Explain bayes rule, then explain bayesian regressi.md",
     "Scratch Space/2 tell me about the most common hypotheses testing m.md",
     "Scratch Space/3. tell me about the most common hypotheses testing m (1).md",
@@ -369,17 +427,11 @@
     "lit/lit_notes/Goldstein24SchoolBattlesMay.md",
     "lit/lit_notes/Glueck24endWhiteWorkingDems.md",
     "lit/lit_notes/Yokley25trumpPollFeb10.md",
-    "lit/lit_notes/Kahan13ideologyMotivatedReasoning.md",
-    "lit/lit_notes/Balz25trumpEarlyActionUnpop.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",
     "Clippings/attachments/673e3898b72e33125e5dcb2278f3cd42_MD5.png",
     "Obsidian/attachments/Pasted image 20250129174128.webp",
-    "Obsidian/attachments/Pasted image 20250129173055.webp",
-    "Clippings/attachments/b0fc57e7b304dcd73cb94f5430796c72_MD5.jpg",
-    "Clippings/attachments/200771b89768a731e0093a498d407aca_MD5.svg",
-    "Clippings/attachments/375b84dd046d61d702009b3011f43f0a_MD5.avif",
-    "Clippings/attachments/6b44b399206351d6dbf5c93a9712f0f1_MD5.png"
+    "Obsidian/attachments/Pasted image 20250129173055.webp"
   ]
 }

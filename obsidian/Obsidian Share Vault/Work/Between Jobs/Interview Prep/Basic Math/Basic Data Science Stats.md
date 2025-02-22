@@ -1,6 +1,6 @@
 ---
 created date: 2025-02-20T22:56:56-08:00
-modified date: 2025-02-20T23:06:06-08:00
+modified date: 2025-02-21T14:30:33-08:00
 ---
 
 # Hypothesis Testing
@@ -13,6 +13,16 @@ modified date: 2025-02-20T23:06:06-08:00
 	- Bayes Rule
 	- Chapter on Bayesian Regression
 	- And much more
+- [[3Blue1Brown19BayesThrmGeomChngBelief|3Blue1Brown19: Bayes theorem, the geometry of changing beliefs]] 
+
+
+
+
+
+
+
+
+
 
 
 
