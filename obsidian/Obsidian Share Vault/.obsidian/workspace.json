@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scratch Space/tmp_stock_perplexy_merged.md",
+                "file": "Scratch Space/tmp_savemychatbot_multiprompt_perplexity_example.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "tmp_stock_perplexy_merged"
+              "title": "tmp_savemychatbot_multiprompt_perplexity_example"
             }
           }
         ]
@@ -333,8 +333,8 @@
   },
   "active": "afaaf42b9b41696e",
   "lastOpenFiles": [
-    "Scratch Space/tmp_savemychatbot_multiprompt_perplexity_example.md",
     "Scratch Space/tmp_stock_perplexy_merged.md",
+    "Scratch Space/tmp_savemychatbot_multiprompt_perplexity_example.md",
     "Scratch Space/tmp_perplex_example.md",
     "lit/lit_notes/3Blue1Brown19BayesThrmGeomChngBelief.md",
     "Obsidian/templates_old/NEW Get and BROKEN Literature Note Link.md",
