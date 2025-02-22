@@ -13,7 +13,7 @@ ZoteroTags:
 ZoteroCollections:
   - basic_stats
 created date: 2025-02-20T23:02:12-08:00
-modified date: 2025-02-20T23:10:51-08:00
+modified date: 2025-02-21T21:53:08-08:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/IJPWCZ3B)   | [**URL**](https://mathcenter.oxford.emory.edu/site/math117/probSetBayesTheorem/) | **[[Emory25exercisesBayesTheorem.pdf|PDF]]** | **[[Emory25exercisesBayesTheorem.html|HTM]]**
@@ -47,7 +47,7 @@ Practice problems from Oxford.
 
 ### Also
 - [[Clyde20IntroBayesianThink|Clyde20: An introduction to Bayesian thinking]] 
-
+- 
 ___
 %% end Obsidian Notes %%
 

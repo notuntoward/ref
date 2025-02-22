@@ -899,14 +899,6 @@
     }
   ],
   "templater-obsidian:create-new-note-from-template": [],
-  "templater-obsidian:Obsidian/templates/Get Literature Note Link.md": [
-    {
-      "modifiers": [
-        "Mod"
-      ],
-      "key": "]"
-    }
-  ],
   "pane-relief:go-next": [],
   "pane-relief:go-prev": [],
   "editor:open-link-in-new-leaf": [],
@@ -925,6 +917,22 @@
         "Mod"
       ],
       "key": "O"
+    }
+  ],
+  "templater-obsidian:Obsidian/templates/Get Literature Note Link.md": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "]"
+    }
+  ],
+  "templater-obsidian:Obsidian/templates/Get Literature Note_Link.md": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "]"
     }
   ]
 }

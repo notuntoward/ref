@@ -13,7 +13,7 @@ ZoteroTags:
 ZoteroCollections:
   - basic_stats
 created date: 2025-02-21T14:10:54-08:00
-modified date: 2025-02-21T15:27:30-08:00
+modified date: 2025-02-21T22:18:39-08:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/XV4RD8YD)   | [**URL**](https://www.youtube.com/watch?v=HZGCoVF3YvM)
@@ -62,6 +62,8 @@ This is the famous Kahneman/Tversky farmer or librarian example, where the evide
 People instinctively fail to consider that probabilities multiply, not recognizing that it's less likely that a person belongs to two subgroups than just one.  For example...
 ### Told this
 
+
+
 Linda is 31 years old, single, outspoken, and very bright. She majored in philosophy. As a student, she was deeply concerned with issues of discrimination and social justice, and also participated in anti-nuclear demonstrations.
 
 ### Asked: Is Linda a bank teller and feminist?
@@ -80,8 +82,6 @@ I guess this is why you often hear science communicators say "40 out of 100" ins
 
 - [Based on counts or proportions](https://youtu.be/HZGCoVF3YvM?t=766)  
 - Similar to [[lit/lit_notes/Clyde20IntroBayesianThink.md#Counts based derivation of Bayes Rule |Counts based derivation of Bayes Rule]] found in [[Clyde20IntroBayesianThink]]
-
-
 ___
 %% end Obsidian Notes %%
 
