@@ -3,10 +3,23 @@
 // I've mapped this to a hot key (ctrl-])
 
 // Function to check if a note is a literature note
+// handles either array or scalar literaturenote category
 function isLiteratureNote(file) {
-  const frontMatter = app.metadataCache.getFileCache(file).frontmatter;
-  return frontMatter && frontMatter.category === 'literaturenote';
+  const frontMatter = app.metadataCache.getFileCache(file)?.frontmatter;
+  if (!frontMatter) return false;
+
+  // Handle both string and array cases for 'category'
+  if (Array.isArray(frontMatter.category)) {
+    return frontMatter.category.includes('literaturenote');
+  } else {
+    return frontMatter.category === 'literaturenote';
+  }
 }
+
+//function isLiteratureNote(file) {
+//  const frontMatter = app.metadataCache.getFileCache(file).frontmatter;
+//  return frontMatter && frontMatter.category === 'literaturenote';
+//}
 
 // Get all markdown files and filter for literature notes
 const allNotes = app.vault.getMarkdownFiles();
@@ -30,23 +43,13 @@ if (selectedNote) {
   const aliases = frontMatter ? frontMatter.aliases : null;
 
   if (citekey) {
-    const match = citekey.match(/^([a-zA-Z0-9]+)(\d{2})/); // match 3Blue1Brown, etc.
     // const match = citekey.match(/^([a-zA-Z]+)(\d{2})/);
+    const match = citekey.match(/^([a-zA-Z0-9]+)(\d{2})/); // match 3Blue1Brown25*, etc.
     if (match) {
       const authorName = match[1];
       const yearNum = match[2];
       const formattedCitekey = `${authorName}${yearNum}`;
-      
-      if (aliases) {
-          new Notice("Has aliases.");
-          }
-      if (Array.isArray(aliases)) {
-          new Notice("aliases is array");
-          }
-      if (aliases.length > 0) {
-          new Notice("aliases is array len > 0");
-          }
-          
+    
       if (aliases && Array.isArray(aliases) && aliases.length > 0) {
         // Remove duplicate aliases
         const uniqueAliases = [...new Set(aliases)];
@@ -93,9 +96,6 @@ if (selectedNote) {
           ch: cursor.ch + wikiLink.length
         };
         editor.setCursor(linkEndPosition);
-
-        // Optionally, you can add a notification
-        new Notice("Literature note link inserted. Cursor positioned at the end of the link.");
       } else {
         new Notice("Aliases not found or empty in the selected note.");
       }
