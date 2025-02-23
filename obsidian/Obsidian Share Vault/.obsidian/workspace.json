@@ -287,7 +287,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 438.5
+    "width": 438.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -327,15 +328,20 @@
       "cmdr:Outline: Open outline of the current file": false,
       "cmdr:Bookmark Show": false,
       "cmdr:Ink: New drawing": false,
-      "cmdr:Ink: New handwriting section": false
+      "cmdr:Ink: New handwriting section": false,
+      "smart-connections:Open: View Smart Connections": false,
+      "smart-connections:Open: Smart Chat Conversation": false
     }
   },
   "active": "ec9ba93e8b78fe95",
   "lastOpenFiles": [
-    "Scratch Space/tmp_savemychatbot_multiprompt_perplexity_example.md",
-    "Scratch Space/tmp_stock_perplexy_merged.md",
-    "lit/refwrangle/Perplexity Parsing.md",
     "Scratch Space/tmp_perplex_example.md",
+    "Scratch Space/tmp_stock_perplexy_merged.md",
+    "lit/lit_notes/Szczerbiak23whyOppoWinPoland.md",
+    "lit/lit_sources/Szczerbiak23whyOppoWinPoland.pdf",
+    "Scratch Space/attachments",
+    "Scratch Space/tmp_savemychatbot_multiprompt_perplexity_example.md",
+    "lit/refwrangle/Perplexity Parsing.md",
     "lit/lit_notes/3Blue1Brown19BayesThrmGeomChngBelief.md",
     "Obsidian/templates_old/NEW Get and BROKEN Literature Note Link.md",
     "Obsidian/templates/Get Literature Note_Link.md",
@@ -363,15 +369,11 @@
     "lit/lit_notes/Evans24techSplinterCulturalCtrl.md",
     "lit/lit_sources/Evans24techSplinterCulturalCtrl.html",
     "lit/lit_sources/Evans24GreatSplinteringHow.html",
-    "lit/lit_sources/Rampell25genZmenLoveTrump.html",
-    "lit/lit_sources/Unconfirmed 530671.crdownload",
     "Scratch Space/Explain bayes rule, then explain bayesian regressi.md",
     "Scratch Space/2 tell me about the most common hypotheses testing m.md",
     "Scratch Space/3. tell me about the most common hypotheses testing m (1).md",
     "Scratch Space/2025-02-20_21-55-33_Perplexity.ai_tell me about the most common hypotheses testing methods. Use....md",
     "Scratch Space/Describe the current state of Seattle's Burke Gilm.md",
-    "Scratch Space/tell me about the most common hypotheses testing m.md",
-    "lit/lit_notes/Editorial23cheerMediocWAschools.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",
