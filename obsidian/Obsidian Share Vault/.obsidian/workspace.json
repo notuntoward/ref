@@ -327,9 +327,7 @@
       "cmdr:Outline: Open outline of the current file": false,
       "cmdr:Bookmark Show": false,
       "cmdr:Ink: New drawing": false,
-      "cmdr:Ink: New handwriting section": false,
-      "smart-connections:Open: View Smart Connections": false,
-      "smart-connections:Open: Smart Chat Conversation": false
+      "cmdr:Ink: New handwriting section": false
     }
   },
   "active": "ec9ba93e8b78fe95",
