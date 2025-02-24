@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scratch Space/tmp_stock_perplexy_merged.md",
+                "file": "Scratch Space/tmp_perplex_example.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "tmp_stock_perplexy_merged"
+              "title": "tmp_perplex_example"
             }
           }
         ]
@@ -112,7 +112,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 721.5
+    "width": 721.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -232,13 +233,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scratch Space/tmp_stock_perplexy_merged.md",
+                "file": "Scratch Space/tmp_perplex_example.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of tmp_stock_perplexy_merged"
+              "title": "Outline of tmp_perplex_example"
             }
           },
           {
@@ -334,8 +335,9 @@
   },
   "active": "b3e99749fc2f8e21",
   "lastOpenFiles": [
-    "Scratch Space/tmp_stock_perplexy_merged.md",
+    "Scratch Space/tmp_perplexy_merged.md",
     "Scratch Space/tmp_perplex_example.md",
+    "Scratch Space/tmp_stock_perplexy_merged.md",
     "lit/lit_notes/Szczerbiak23whyOppoWinPoland.md",
     "lit/lit_sources/Szczerbiak23whyOppoWinPoland.pdf",
     "Scratch Space/attachments",
