@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scratch Space/tmp_perplex_example.md",
+                "file": "Scratch Space/tmp_perplexy_merged.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "tmp_perplex_example"
+              "title": "tmp_perplexy_merged"
             }
           }
         ]
@@ -233,13 +233,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scratch Space/tmp_perplex_example.md",
+                "file": "Scratch Space/tmp_perplexy_merged.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of tmp_perplex_example"
+              "title": "Outline of tmp_perplexy_merged"
             }
           },
           {
@@ -335,8 +335,8 @@
   },
   "active": "b3e99749fc2f8e21",
   "lastOpenFiles": [
-    "Scratch Space/tmp_perplexy_merged.md",
     "Scratch Space/tmp_perplex_example.md",
+    "Scratch Space/tmp_perplexy_merged.md",
     "Scratch Space/tmp_stock_perplexy_merged.md",
     "lit/lit_notes/Szczerbiak23whyOppoWinPoland.md",
     "lit/lit_sources/Szczerbiak23whyOppoWinPoland.pdf",
