@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "5ee9a72336278b54",
+        "id": "1d3865b4e9cf6324",
         "type": "tabs",
         "children": [
           {
-            "id": "ec9ba93e8b78fe95",
+            "id": "b3e99749fc2f8e21",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -112,8 +112,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 721.5,
-    "collapsed": true
+    "width": 721.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -333,10 +332,10 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "ec9ba93e8b78fe95",
+  "active": "b3e99749fc2f8e21",
   "lastOpenFiles": [
-    "Scratch Space/tmp_perplex_example.md",
     "Scratch Space/tmp_stock_perplexy_merged.md",
+    "Scratch Space/tmp_perplex_example.md",
     "lit/lit_notes/Szczerbiak23whyOppoWinPoland.md",
     "lit/lit_sources/Szczerbiak23whyOppoWinPoland.pdf",
     "Scratch Space/attachments",
