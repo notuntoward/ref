@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-02-20T14:11:35-08:00
+modified date: 2025-02-25T08:29:51-08:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -37,8 +37,9 @@ For example, [WA shifted (slightly) right in...](https://www.seattletimes.com/se
 ## Tasks
 
 ### Avoid manual entry by lumping all sources into giant files
-- [ ] # consider pdf merging using PyMuPDF ([see perplexity](https://www.perplexity.ai/search/can-pymupdf4llm-preserve-meta-5ToaZGOvRVedgdXwjDlOig#2)). Help with metadata, somehow with PyMuPDF4LLM?
-- [ ] # Consider using google docs: [[lit/lit_notes/NotebookLM.md#Data Required, Best practices |Data Required, Best practices]]. Help with metadata?
+- [ ] # Try out Docling: [[Auer24doclingTechRep|Auer24: Docling technical report]] 
+- [ ] Consider using google docs: [[lit/lit_notes/NotebookLM.md#Data Required, Best practices |Data Required, Best practices]]. Help with metadata?
+- [x] *I did it*. It's my current approach, as of Feb, 2025: consider pdf merging using PyMuPDF ([see perplexity](https://www.perplexity.ai/search/can-pymupdf4llm-preserve-meta-5ToaZGOvRVedgdXwjDlOig#2)). Help with metadata, somehow with PyMuPDF4LLM?
 - [x] can NLM distinguish sources in lumped together pdfs? Must do by hand
 - [x] test if multiple web sites can be distinguished of lumped together: doesn't seem possible, must do by hand
 - [x] same for YT videos: by hand
