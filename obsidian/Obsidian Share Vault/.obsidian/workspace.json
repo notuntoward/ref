@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scratch Space/tmp_perplexy_merged.md",
+                "file": "Scratch Space/tmp_perplex_example.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "tmp_perplexy_merged"
+              "title": "tmp_perplex_example"
             }
           }
         ]
@@ -128,10 +128,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Scratch Space/tmp_stock_perplexy_merged.md"
+                "file": "Scratch Space/tmp_perplex_example.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for tmp_stock_perplexy_merged"
+              "title": "File properties for tmp_perplex_example"
             }
           },
           {
@@ -232,13 +232,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scratch Space/tmp_perplexy_merged.md",
+                "file": "Scratch Space/tmp_perplex_example.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of tmp_perplexy_merged"
+              "title": "Outline of tmp_perplex_example"
             }
           },
           {
@@ -281,8 +281,7 @@
               "title": "Plugin no longer active"
             }
           }
-        ],
-        "currentTab": 8
+        ]
       }
     ],
     "direction": "horizontal",
@@ -334,8 +333,13 @@
   },
   "active": "b3e99749fc2f8e21",
   "lastOpenFiles": [
+    "lit/lit_notes/Gora23polandEndRightWing.md",
     "Scratch Space/tmp_perplex_example.md",
     "Scratch Space/tmp_perplexy_merged.md",
+    "lit/lit_notes/Young23mutInfoMeasEpidem.md",
+    "lit/refwrangle/Zotero to Obsidian to RAG.md",
+    "lit/lit_notes/Auer24doclingTechRep.md",
+    "lit/lit_sources/Docling.pdf",
     "Scratch Space/tmp_stock_perplexy_merged.md",
     "lit/lit_notes/Szczerbiak23whyOppoWinPoland.md",
     "lit/lit_sources/Szczerbiak23whyOppoWinPoland.pdf",
@@ -368,12 +372,7 @@
     "lit/lit_notes/Rampell25genZmenLoveTrump.md",
     "lit/lit_notes/Evans24techSplinterCulturalCtrl.md",
     "lit/lit_sources/Evans24techSplinterCulturalCtrl.html",
-    "lit/lit_sources/Evans24GreatSplinteringHow.html",
     "Scratch Space/Explain bayes rule, then explain bayesian regressi.md",
-    "Scratch Space/2 tell me about the most common hypotheses testing m.md",
-    "Scratch Space/3. tell me about the most common hypotheses testing m (1).md",
-    "Scratch Space/2025-02-20_21-55-33_Perplexity.ai_tell me about the most common hypotheses testing methods. Use....md",
-    "Scratch Space/Describe the current state of Seattle's Burke Gilm.md",
     "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
     "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
     "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",
