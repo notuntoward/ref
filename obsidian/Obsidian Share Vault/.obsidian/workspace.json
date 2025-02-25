@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scratch Space/tmp_perplex_example.md",
+                "file": "lit/refwrangle/Perplexity Parsing.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "tmp_perplex_example"
+              "title": "Perplexity Parsing"
             }
           }
         ]
@@ -112,12 +112,38 @@
       }
     ],
     "direction": "horizontal",
-    "width": 721.5
+    "width": 415.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
     "type": "split",
     "children": [
+      {
+        "id": "4c1de4a13022236b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "76f4c03f208eb0cc",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "lit/refwrangle/Perplexity Parsing.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Perplexity Parsing"
+            }
+          }
+        ]
+      },
       {
         "id": "f94f3d4120fd5429",
         "type": "tabs",
@@ -128,10 +154,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Scratch Space/tmp_perplex_example.md"
+                "file": "lit/refwrangle/Perplexity Parsing.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for tmp_perplex_example"
+              "title": "File properties for Perplexity Parsing"
             }
           },
           {
@@ -184,25 +210,6 @@
             }
           },
           {
-            "id": "76f4c03f208eb0cc",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "lit/lit_sources/Kahan13IdeologyMotivatedReasoning.pdf",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-coming-in",
-              "title": "Backlinks for Kahan13IdeologyMotivatedReasoning"
-            }
-          },
-          {
             "id": "c1ba2cf93293bfcb",
             "type": "leaf",
             "state": {
@@ -232,13 +239,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scratch Space/tmp_perplex_example.md",
+                "file": "lit/refwrangle/Perplexity Parsing.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of tmp_perplex_example"
+              "title": "Outline of Perplexity Parsing"
             }
           },
           {
@@ -285,8 +292,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 438.5,
-    "collapsed": true
+    "width": 438.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -326,16 +332,14 @@
       "cmdr:Outline: Open outline of the current file": false,
       "cmdr:Bookmark Show": false,
       "cmdr:Ink: New drawing": false,
-      "cmdr:Ink: New handwriting section": false,
-      "smart-connections:Open: View Smart Connections": false,
-      "smart-connections:Open: Smart Chat Conversation": false
+      "cmdr:Ink: New handwriting section": false
     }
   },
   "active": "b3e99749fc2f8e21",
   "lastOpenFiles": [
-    "lit/lit_notes/Gora23polandEndRightWing.md",
-    "Scratch Space/tmp_perplex_example.md",
     "Scratch Space/tmp_perplexy_merged.md",
+    "Scratch Space/tmp_perplex_example.md",
+    "lit/lit_notes/Gora23polandEndRightWing.md",
     "lit/lit_notes/Young23mutInfoMeasEpidem.md",
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "lit/lit_notes/Auer24doclingTechRep.md",
