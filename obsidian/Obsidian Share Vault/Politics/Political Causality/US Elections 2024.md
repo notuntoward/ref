@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-02-21T10:44:05-08:00
+modified date: 2025-02-25T15:12:00-08:00
 ---
 # TODO
 - graph showing all the information loss sources from a good D policy to a voter's rational decision about it
@@ -112,9 +112,9 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 	- 40% of the voting-eligible youth population are young people without college experience (CIRCLE24youthVote2024)
 	- 38% of all youth votes were cast by young people without college experience (CIRCLE24youthVote2024)
 # Campaign Message Ideas
-## Polarization Enhancement: Your fellow R is evil (algorithmic) ^q98mss
-- For details & perplexity-derived evidence of implementability see Blake25infightMAGA
-## Musk as traitor to America
+## Attacks
+- [[Politics/Political Causality/US Elections 2024.md#Polarization Enhancement Your fellow R is evil (algorithmic)|Polarization Enhancement: Your fellow R is evil (algorithmic) ^q98mss]]
+### Musk as traitor to America
 - Musk donated $100M to Trumps 2024 election, but he’s very vulnerable to China’s gov’t actions, making him a vehicle to manipulate Trump, in order to forward his own interests, maybe at the cost to American workers and national security (Bradsher24muskNeedChina)
 - Musk unfairness
 	- how much money he as vs. average American: Is he really worth 1.6M X the average American?
@@ -160,19 +160,20 @@ Just more predictor variables for various things. Things similar to education, w
 	- makes your life simple ==> make your conspiracy make your life complicated
 	- convinces you that you are good ==> make it make you look bad (a common tactic, I think)
 	- …
-## Polarization: what, why, and how to overcome
+## Polarization: what, why, and how to overcome or use
 - [[Evans24techSplinterCulturalCtrl]]
 - [[Rampell25genZmenLoveTrump]]
-
-
-
-
+- Moderates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]]
+### Polarization Enhancement: Your fellow R is evil (algorithmic)
+- For details & perplexity-derived evidence of implementability see Blake25infightMAGA
+- Moderates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]] 
 # Predictive Models and Analysis Techniques
 - market sentiment indexes predicted by economic variables (Weber24implicitCoordInflateShock).  Could be *voter* sentiment predicted by other variables
 - bulk features built from the poll difference between a presidential candidate and same-party state/county/city candidates. Or, look at post-election results for election autopsies
 - during election autopsies analyzing across elections in different years, try to factor out the effect of each (modellable) variable so you can see which thing by itself — inflation, war, … — caused the big changes.  
 	- See example of doing this in words in [Ezra Klein Speaks Frankly Abou...](https://youtu.be/vkXJiEzWxFs?t=1484)..
 	- His wife's article is cited. Did she use numbers?
+- Predicting district lean: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]]
 # Questions / Hypotheses to test
 - [ ] @ Take a look at all the paper's at this guy's lab:  Kolbert25oneEmotionEthics
 ## Education realignment around D's
@@ -326,3 +327,4 @@ Just more predictor variables for various things. Things similar to education, w
 	- They spontaneously [offered](https://mail.google.com/mail/u/0/#search/from%3A+keshet/FMfcgzQZSjmLKWjvwShPlnMCgVjLSCpk) me pro bono, non-profit access, but I wasn't an institute, so in the end, they said no.
 	- one guy's idea: [Web Scraping 101: A Million Dollar SaaS Idea](https://www.youtube.com/watch?v=oyIQenEvWN8)
 - MorningConsult (same as Bright Data?)
+- expected margin given district fundamentals: [[Jain25winsReplaceDB|Jain25: Full Wins Above Replacement (WAR) Database]] 
