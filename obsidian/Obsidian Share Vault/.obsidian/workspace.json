@@ -36,19 +36,9 @@
               "icon": "lucide-file",
               "title": "tmp_perplexy_merged"
             }
-          },
-          {
-            "id": "ea7b65759d7fd6d7",
-            "type": "leaf",
-            "state": {
-              "type": "swar8080/AVAILABLE_PLUGIN_UPDATES",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin Updates"
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -317,7 +307,7 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "ea7b65759d7fd6d7",
+  "active": "4d022dd540682896",
   "lastOpenFiles": [
     "Scratch Space/tmp_perplex_example.md",
     "Scratch Space/tmp_perplexy_merged.md",
