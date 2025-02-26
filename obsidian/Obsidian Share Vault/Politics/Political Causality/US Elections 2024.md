@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-02-25T15:12:00-08:00
+modified date: 2025-02-25T17:29:10-08:00
 ---
 # TODO
 - graph showing all the information loss sources from a good D policy to a voter's rational decision about it
