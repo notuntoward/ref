@@ -378,14 +378,6 @@
       "key": "PageDown"
     }
   ],
-  "media-extended:take-timestamp": [
-    {
-      "modifiers": [
-        "Mod"
-      ],
-      "key": "["
-    }
-  ],
   "media-extended:toggle-play": [
     {
       "modifiers": [
@@ -949,6 +941,23 @@
         "Mod"
       ],
       "key": "R"
+    }
+  ],
+  "outline:open": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "O"
+    }
+  ],
+  "obsidian-zotero-desktop-connector:zdc-exp-Literature Note": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "["
     }
   ]
 }

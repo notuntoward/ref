@@ -1,6 +1,6 @@
 ---
 created date: 2025-02-26T19:43:33-08:00
-modified date: 2025-02-27T11:43:45-08:00
+modified date: 2025-02-27T14:27:15-08:00
 ---
 ```yaml
 # Root command group
@@ -35,18 +35,23 @@ items:
     command: outline:open
     description: Open Outline
     
-  r:
+  ']':
     command: app:toggle-right-sidebar
     description: Toggle right pane
 
   # might want to use this for all the links commands
   # maybe use L for that?
-  l:
+  '[':
     command: app:toggle-left-sidebar
     description: Toggle left pane
 
   b:
-    command: app:workspace:previous-tab Previous Tab
+    command: bookmarks:open 
+    description: Show Bookmarks
+
+  B:
+    command: bookmarks:bookmark-current-view 
+    description: Show Bookmarks
 
   # A group of commands with common prefix key "f"
   f:

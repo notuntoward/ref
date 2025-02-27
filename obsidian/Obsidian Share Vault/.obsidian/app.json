@@ -21,7 +21,7 @@
   "focusNewTab": false,
   "showInlineTitle": true,
   "useMarkdownLinks": false,
-  "readableLineLength": true,
+  "readableLineLength": false,
   "showLineNumber": false,
   "promptDelete": false
 }
