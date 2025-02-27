@@ -15,7 +15,7 @@ ZoteroCollections:
   - identitypolitics
   - polarization
 created date: 2025-02-21T10:33:53-08:00
-modified date: 2025-02-27T11:49:05-08:00
+modified date: 2025-02-27T14:20:30-08:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/SB54SAG6)   | [**URL**](https://www.washingtonpost.com/opinions/2025/02/21/trump-young-men-gen-z/) | **[[Rampell25genZmenLoveTrump.html|HTM]]**
@@ -49,7 +49,8 @@ modified date: 2025-02-27T11:49:05-08:00
 %% begin Obsidian Notes %%
 ___
 
-Gen Z men (19-29, I think) voted for Trump +14, and while their enthusiasm has dampened since he took office, their net approval is still +7 (vs. -24 for same-aged women, on YouGov).  That's the biggest gender gap across demos, but not the biggest pro-Trump demo, which is middle-aged men (+13) **WHAT AM I SAYING::? +13 < +14??.**
+Gen Z men 
+(19-29, I think) voted for Trump +14, and while their enthusiasm has dampened since he took office, their net approval is still +7 (vs. -24 for same-aged women, on YouGov).  That's the biggest gender gap across demos, but not the biggest pro-Trump demo, which is middle-aged men (+13) **WHAT AM I SAYING::? +13 < +14??.**
 
 ### Why? Some theories
 - it's a backlash against feminism -- MeToo, etc., male pathologizing, etc.

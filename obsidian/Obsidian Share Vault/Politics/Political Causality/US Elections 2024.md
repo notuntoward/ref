@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-02-26T21:32:12-08:00
+modified date: 2025-02-27T15:04:03-08:00
 tags:
   - politics
   - polling
@@ -66,13 +66,12 @@ Trump is really the best president ever.
 - [[Evans24techSplinterCulturalCtrl]]
 - [[Rampell25genZmenLoveTrump]]
 ## The Economy
-## Postmaterialism
-Both R's and D's vote less on economic issues and more on values: Lowrey24riseUnionRight
-
-Econ used to be D advantage (although the D's may have still lost on economic issues like inflation?).
-
-this paper shows that, while the method may be more accurate accurate, the turnout overestimate suggests that self-selection bias is not sufficiently reduced.
-.
+### Economy really was bad
+- [[Ludwig25votersCorrectEcon|Ludwig25: Voters Were Right About the Economy. The Data Was Wrong.]] 
+- bad economy and interactions: [[Politics/Political Causality/US Elections 2024.md#Issue/Message Interaction Examples |Issue/Message Interaction Examples]]
+### Postmaterialism: when a bad economy matters less
+Both R's and D's vote less on economic issues and more on values: 
+- [[Lowrey24RiseUnionRight|Lowrey24: The Rise of the Union Right]] 
 ## Immigration
 
 ## US Culture
@@ -233,34 +232,34 @@ Just more predictor variables for various things. Things similar to education, w
 - to settle arguments about whether somebody's interest (mens rights, womens rights, global warming) has been beaten for the death for the moment
 ## Issue/Message interaction tester
 - an issue/message that most voters might find uninteresting e.g. wokeism (see studies I found stating this) might be potent which combined with some other issue/message
-- examples
-	- actual 2024 election examples
-		- wokeism and working class economic worries
-			- Glueck24endWhiteWorkingDems, Yudkin24perceptGapIDpolit, Chait24ModerateNotSurrender
-			- Top reason why "swing voters" (decision was up in the air somehow, see definition) went to Trump was D's too focused on cultural issues, more imp. than inflation: Cass24WhyChoseTrump as well as Bennett23wokeUseAsDistraction
-		- Liberal Asians going Right b/c of crime
-			- Seattle: CID (Chinatown) b/c of crime: Cabahug24seattleCIDshiftTrump
-			- San Francisco: Kang24youngMaleVoters
-				- believed Dems "equity-driven school policies" was not a good reaction to hate Crimes, Dems seen as looking after their interests
-		- [[#Student loads as political liability?|Student loads as political liability?]] 
-		- Roaring stockmarket as liability: Weber24implicitCoordInflateShock
-		- suburban R never trumper emphasis vs. working class economic worries:
-			- [[Glueck24endWhiteWorkingDems|Glueck24: Is This the End of the White Working-Class Democrat?]] 
-			- wokeism vs. suburban school worries during COVID: 
-				- [[Goldstein24SchoolBattlesMay|Goldstein24: School Battles May Help Explain Why Democrats Declined in Some Suburbs]] 
-				- [[Editorial23cheerMediocWAschools|Editorial23: Cheerleading mediocrity is not good enough for WA's education department]] 
-				- Seattle schools too, for some reason: [[Superville25leftSeattleSchls|Superville25: Why have thousands left Seattle schools? A new survey suggests answers]] 
-		- anti-Israel vs. concern for order, econ: The very least popular reason for voting for Trump was Harris was too pro-Israel (Cass24WhyAmericaChose) but the R's made hay of campus riots 
-			- [ ] ? but didn't the D's also lose MI arab votes b/c of Israel?
-		- trans: [[Dionne24hiddenVictoryProgrssiv|Dionne24: The lessons in progressives’ hidden 2024 victories]]
-	- speculative examples
-		- Abortion backfire theory?: TheBulwark24bulwarkHelpTrump
-			- State initiatives might have been a turnout tool for pro-abortion/anti-immigration Trump voters
-			- [ ] ? check with studies done months after the election if this is true
-		- [ ] ? COVID restrictions vs. working class economic worries: a guess, I don't have a source
-		- [ ] ? Were young feminists Grose24youngWimynWillTalkSexistm in an unfortunate interaction?
-		- if trans+economy was bad for Harris, how about Mike Johnson's new trans bathroom ban (Solender24transBathroomBanMikeJohnson). Doesn't he have more important things to do that the working class expects to get done?
-		- R abandonment of Gay Marriage and Abortion was OK b/c immigration was a strong issue for anti-GM, anti-Ab people. They were also distracted by the R's anti-trans antidote. Dionne24hiddenVictoryProgrssiv
+### Issue/Message Interaction Examples
+- actual 2024 election examples
+	- wokeism and working class economic worries
+		- Glueck24endWhiteWorkingDems, Yudkin24perceptGapIDpolit, Chait24ModerateNotSurrender
+		- Top reason why "swing voters" (decision was up in the air somehow, see definition) went to Trump was D's too focused on cultural issues, more imp. than inflation: Cass24WhyChoseTrump as well as Bennett23wokeUseAsDistraction
+	- Liberal Asians going Right b/c of crime
+		- Seattle: CID (Chinatown) b/c of crime: Cabahug24seattleCIDshiftTrump
+		- San Francisco: Kang24youngMaleVoters
+			- believed Dems "equity-driven school policies" was not a good reaction to hate Crimes, Dems seen as looking after their interests
+	- [[#Student loads as political liability?|Student loads as political liability?]] 
+	- Roaring stockmarket as liability: Weber24implicitCoordInflateShock
+	- suburban R never trumper emphasis vs. working class economic worries:
+		- [[Glueck24endWhiteWorkingDems|Glueck24: Is This the End of the White Working-Class Democrat?]] 
+		- wokeism vs. suburban school worries during COVID: 
+			- [[Goldstein24SchoolBattlesMay|Goldstein24: School Battles May Help Explain Why Democrats Declined in Some Suburbs]] 
+			- [[Editorial23cheerMediocWAschools|Editorial23: Cheerleading mediocrity is not good enough for WA's education department]] 
+			- Seattle schools too, for some reason: [[Superville25leftSeattleSchls|Superville25: Why have thousands left Seattle schools? A new survey suggests answers]] 
+	- anti-Israel vs. concern for order, econ: The very least popular reason for voting for Trump was Harris was too pro-Israel (Cass24WhyAmericaChose) but the R's made hay of campus riots 
+		- [ ] ? but didn't the D's also lose MI arab votes b/c of Israel?
+	- trans: [[Dionne24hiddenVictoryProgrssiv|Dionne24: The lessons in progressives’ hidden 2024 victories]]
+- speculative examples
+	- Abortion backfire theory?: TheBulwark24bulwarkHelpTrump
+		- State initiatives might have been a turnout tool for pro-abortion/anti-immigration Trump voters
+		- [ ] ? check with studies done months after the election if this is true
+	- [ ] ? COVID restrictions vs. working class economic worries: a guess, I don't have a source
+	- [ ] ? Were young feminists Grose24youngWimynWillTalkSexistm in an unfortunate interaction?
+	- if trans+economy was bad for Harris, how about Mike Johnson's new trans bathroom ban (Solender24transBathroomBanMikeJohnson). Doesn't he have more important things to do that the working class expects to get done?
+	- R abandonment of Gay Marriage and Abortion was OK b/c immigration was a strong issue for anti-GM, anti-Ab people. They were also distracted by the R's anti-trans antidote. Dionne24hiddenVictoryProgrssiv
 - idea: do a message testing survey of the type in Blueprint24pollPosHarrisCase where conjoint analysis is done with Trump attacks and Harris rebuttals. 
 	- But idea here is to pair *same-candidate* issues/messages and measure effects.
 	- This could get combinatorial fast: could the test be approximated by:
