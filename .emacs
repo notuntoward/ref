@@ -927,44 +927,6 @@ TODO: add a cycle that opens or collapses all prop drawers?"
   :after vertico)
 
 ;; From: https://github.com/oantolin/embark/wiki/Additional-Configuration#use-which-key-like-a-key-menu-prompt
-(defun embark-which-key-indicator ()
-  "An embark indicator that displays keymaps using which-key.
-The which-key help message will show the type and value of the
-current target followed by an ellipsis if there are further
-targets."
-  (lambda (&optional keymap targets prefix)
-    (if (null keymap)
-        (which-key--hide-popup-ignore-command)
-      (which-key--show-keymap
-       (if (eq (plist-get (car targets) :type) 'embark-become)
-           "Become"
-         (format "Act on %s '%s'%s"
-                 (plist-get (car targets) :type)
-                 (embark--truncate-target (plist-get (car targets) :target))
-                 (if (cdr targets) "…" "")))
-       (if prefix
-           (pcase (lookup-key keymap prefix 'accept-default)
-             ((and (pred keymapp) km) km)
-             (_ (key-binding prefix 'accept-default)))
-         keymap)
-       nil nil t (lambda (binding)
-                   (not (string-suffix-p "-argument" (cdr binding))))))))
-
-(setq embark-indicators
-  '(embark-which-key-indicator
-    embark-highlight-indicator
-    embark-isearch-highlight-indicator))
-
-(defun embark-hide-which-key-indicator (fn &rest args)
-  "Hide the which-key indicator immediately when using the completing-read prompter."
-  (which-key--hide-popup-ignore-command)
-  (let ((embark-indicators
-         (remq #'embark-which-key-indicator embark-indicators)))
-      (apply fn args)))
-
-(advice-add #'embark-completing-read-prompter
-            :around #'embark-hide-which-key-indicator)
-
 ;; ----------------------------------------
 (use-package marginalia
   :after vertico
@@ -2581,15 +2543,22 @@ displayed anywhere else."
 ;; in emacs 28.1 is the option use-short-answers
 ;;(fset 'yes-or-no-p 'y-or-n-p) ; type just "y" instead of "yes"
 
+;; ** which-key
 
-
-(use-package which-key ; complex key hints, better than guide-key
+;; Configure which-key safely
+(use-package which-key
   :diminish which-key-mode
   :defer 0
   :config
+  ;; Enable which-key mode
   (which-key-mode)
-  (which-key-setup-side-window-right-bottom)) ; do bottom if no room on side
+  ;; Use bottom placement for better compatibility
+  (setq which-key-popup-type 'side-window)
+  (setq which-key-side-window-location 'bottom)
+  ;; Optional: Adjust delay before popup appears
+  (setq which-key-idle-delay 0.5))
 
+;; ** other stuff
 (use-package helm-descbinds
   :after helm-bibtex
   :commands helm-descbinds)
