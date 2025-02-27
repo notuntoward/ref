@@ -1,6 +1,10 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-02-26T18:10:36-08:00
+modified date: 2025-02-26T21:32:12-08:00
+tags:
+  - politics
+  - polling
+  - ml
 ---
 # TODO
 - graph showing all the information loss sources from a good D policy to a voter's rational decision about it
@@ -172,6 +176,8 @@ Just more predictor variables for various things. Things similar to education, w
 ### Polarization Enhancement: Your fellow R is evil (algorithmic)
 - For details & perplexity-derived evidence of implementability see Blake25infightMAGA
 - Moderates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]] 
+# Rising Authoritarianism
+- The R's like democracy way less than the Ds: [[Bump25polSciworryRstrongman|Bump25: What political scientists see as worrisome, Republicans see as welcome]] 
 # Predictive Models and Analysis Techniques
 - market sentiment indexes predicted by economic variables (Weber24implicitCoordInflateShock).  Could be *voter* sentiment predicted by other variables
 - bulk features built from the poll difference between a presidential candidate and same-party state/county/city candidates. Or, look at post-election results for election autopsies
@@ -338,3 +344,5 @@ Just more predictor variables for various things. Things similar to education, w
 	- one guy's idea: [Web Scraping 101: A Million Dollar SaaS Idea](https://www.youtube.com/watch?v=oyIQenEvWN8)
 - MorningConsult (same as Bright Data?)
 - expected margin given district fundamentals: [[Jain25winsReplaceDB|Jain25: Full Wins Above Replacement (WAR) Database]] 
+- [[BrightLineWatch25democracyRrsrchOrg|BrightLineWatch25: Bright Line Watch]] 
+

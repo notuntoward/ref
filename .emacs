@@ -388,7 +388,7 @@ TODO: make this a general function."
 (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)
 (add-hook 'comint-output-filter-functions 'shell-strip-ctrl-m nil t)
 
-(if running-ms-windows ; so emacs uses command.com for shell
+(if running-ms-windows ; so emacs uses command.com for shell
     (setq process-coding-system-alist'(("cmdproxy" . (raw-text-dos . raw-text-dos)))))
 
 ;; So passwords aren't displayed
@@ -2545,7 +2545,6 @@ displayed anywhere else."
 
 ;; ** which-key
 
-;; Configure which-key safely
 (use-package which-key
   :diminish which-key-mode
   :defer 0
@@ -2553,7 +2552,6 @@ displayed anywhere else."
   ;; Enable which-key mode
   (which-key-mode)
   ;; Use bottom placement for better compatibility
-  (setq which-key-popup-type 'side-window)
   (setq which-key-side-window-location 'bottom)
   ;; Optional: Adjust delay before popup appears
   (setq which-key-idle-delay 0.5))
