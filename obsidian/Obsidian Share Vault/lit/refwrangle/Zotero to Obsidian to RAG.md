@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-02-25T08:29:51-08:00
+modified date: 2025-02-27T13:01:27-08:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -164,21 +164,42 @@ Zotero _Better Notes Add-on has a way of two-way syncing Obsidian Markdown_ note
 
 **MORE**: [[Manual Links to Zotero]]
 
-# Direct zotero/obsidan DB-to-DB connection?
+# Less tedious Zotero --> Obsidian Lit Note process
 
-Could use the to reduce the steps and friction between getting a note into zotero and the **immediately making an Obsidian literature note properly linked to Zotero**, so that I actually get this done, instead of letting the unlinked zotero entries pile up, or even skipping making the zotero note at all.
+Trying to reduce the steps and friction between adding an item to zotero and then **making an Obsidian literature note properly linked to Zotero**.  This is so that I actually get this done, instead of letting the unlinked zotero entries pile up, or even skipping making the zotero note at all.
 
-I think what I need is a way to add a button to Zotero that makes an obsidian note(s) on the current or selected group of notes.
 
-## SQL SQL Zotero/Obsidian connection
-- [[Dailies/2025-02-06.md#SQLSeal plugin |SQLSeal plugin]]  
-	- Obsidian --> SQL --> Obsidian (automatically, I think)
-	- [ ] ? but can it make a page?
-	- **No SQL DB inside obsidian**, as notes are the only DB, it is [said](https://www.reddit.com/r/ObsidianMD/comments/ze8b7d/database_long_term/).  
-- [pyzotero](https://github.com/urschrei/pyzotero) connects directly to zoter SQLite DB ^xy71
+
+## Push from Zotero with Zotero "Actions and Tags" plugin 
+
+I think what I need is a way to add a button to Zotero that makes an obsidian note(s) from the current or selected group of Zotero items.
+
+- [Reddit - Dive into anything](https://www.reddit.com/r/ObsidianMD/comments/1f48x0g/obsidian_plugin_autocreating_notes_from_zotero/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button): 
+	- guy makes a button in zotero, 
+	- but has his own note template, doesn't use [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
+- [ ] The [[Dailies/2024-03-26.md#Obsidian Citation Zotero plugin |Obsidian Citation Zotero plugin]] can also send notes with a zotero click into obsidian.
+- [ ] ? can either of these ideas by used to fire off  [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
+	- How? [[lit/refwrangle/Zotero to Obsidian to RAG.md#Running an Obsidian command from an external program |Running an Obsidian command from an external program]]
+		- one of the [[lit/refwrangle/Zotero to Obsidian to RAG.md#Obsidian URI handlers |Obsidian URI handlers]]?
+	- Maybe the zotero click would only send the zotero item citekeys, which would avoid the awful zotero citekey selector.
+	- An obsidian process would then look for these keys within obsidian's copy of the zotero DB, put there by, perhaps, the [[Dailies/2025-02-07.md#Zotero Sync Client Plugin |Zotero Sync Client Plugin]] or use one of the [[lit/refwrangle/Zotero to Obsidian to RAG.md#Obsidian plugins which are zotero DB interfaces |Obsidian plugins which are zotero DB interfaces]]
+	- Maybe there could be a python watcher to handle all of this?
+## Direct zotero/obsidan DB-to-DB connection?
+
+This could *somehow* help smooth the zotero --> obsidian process.
+### Zotero API interfaces
+
+- [[Dailies/2025-02-07.md#Zotero Sync Client Plugin |Zotero Sync Client Plugin]]: makes a zotero db copy in obsidian, that you can access with javascript, I think.
+- [pyzotero](https://github.com/urschrei/pyzotero) connects to zotero DB ^xy71
 	- not direct to SQL but using Zotero's official API
 		- does that insulate the user from internal Zotero SQLite changes?
 	- could output a csv or json? for SQLSeal, somehow
+### SQL SQL Zotero/Obsidian connection
+- [[Dailies/2025-02-06.md#SQLSeal plugin |SQLSeal plugin]]  
+	- Obsidian --> SQL --> Obsidian (automatically, I think, but it's read only, I think)
+	- [ ] ? but can it make a page?
+	- **No SQL DB inside obsidian**, as notes are the only DB, it is [said](https://www.reddit.com/r/ObsidianMD/comments/ze8b7d/database_long_term/).  
+
 - [methods for querying Zotero SQLite](https://www.perplexity.ai/search/what-are-all-the-ways-of-direc-W7LoFkYaTsCx57vd4EGVuA)
 - [python methods for directly querying Zotero SQLite + Tips](https://www.perplexity.ai/search/what-are-all-the-ways-of-direc-PK5MaMzPQiSG2PCPrwX2rw)
 	- [sqlite3](https://docs.python.org/3/library/sqlite3.html): a built-in libary
@@ -192,11 +213,11 @@ I think what I need is a way to add a button to Zotero that makes an obsidian no
 	- [Should You Learn TypeScript? A Coder&#039;s Guide for 2025](https://careerfoundry.com/en/blog/web-development/learn-typescript/)
 - [Zotero Plugins are written in Javascript](https://www.zotero.org/support/dev/client_coding/plugin_development)
 	- and they advise that using an external tool might be easier than learning how to make a plugin
-- Python interfaces
-	- [pyzotero](<lit/refwrangle/Zotero to Obsidian to RAG.md#^xy71 >) seems best for zotero
-		- or maybe one of the direct SQL python libs?
-	- [ways to interface with python to obsidian (perplexity)](https://www.perplexity.ai/search/what-are-all-the-ways-python-c-FHKyuIXRQfS75w9b0e35kA)
-## Starting an Obsidian command from an external program
+## Python interfaces
+- [pyzotero](<lit/refwrangle/Zotero to Obsidian to RAG.md#^xy71 >) seems best for zotero
+	- or maybe one of the direct SQL python libs?
+- [ways to interface with python to obsidian (perplexity)](https://www.perplexity.ai/search/what-are-all-the-ways-python-c-FHKyuIXRQfS75w9b0e35kA)
+## Running an Obsidian command from an external program
 ### Sending a command to obsidian from zotero
 - [making a zotero plugin to do it (perplexity)](https://www.perplexity.ai/search/i-would-like-zotero-to-start-a-tHD7P3cGTDui5gd5gXr4zA)
 ### Receiving a command in Obsidian 
@@ -206,14 +227,14 @@ I think what I need is a way to add a button to Zotero that makes an obsidian no
 			- unless you could make it start the "classic" interface first
 		- @ OR unless you used an API, which accepts keys ([can do with zotero integration and zotero bridge plugins](https://www.perplexity.ai/search/is-there-an-api-that-would-all-.O2.uzPHS.KixPqwqKvkrw) 
 			- @ An example of [code running Zotero Integration API on a list of zotero item keys](https://forum.obsidian.md/t/bulk-import-zotero-library-annotations-into-obsidian-with-zotero-integration-plugin/76254/3?u=scotto)
-- Obsidian URI handlers
-	- [Command URI Plugin](https://github.com/deathau/command-uri-obsidian)
-	- [Obsidian URI Scheme](https://help.obsidian.md/Extending+Obsidian/Obsidian+URI)
-	- [URI Commands](https://github.com/kzhovn/uri-commands-obsidian)
-	- [Advanced URI Plugin](https://github.com/kzhovn/uri-commands-obsidian)
-	- Local Rest API Plugin
-		- From: [GitHub - coddingtonbear/obsidian-local-rest-api: Unlock your automation needs by interacting with your notes in Obsidian over a secure REST API.](https://github.com/coddingtonbear/obsidian-local-rest-api)
-		-  [Interactive commands for Local REST API for Obsidian](https://coddingtonbear.github.io/obsidian-local-rest-api/)
+#### Obsidian URI handlers
+- [Command URI Plugin](https://github.com/deathau/command-uri-obsidian)
+- [Obsidian URI Scheme](https://help.obsidian.md/Extending+Obsidian/Obsidian+URI)
+- [URI Commands](https://github.com/kzhovn/uri-commands-obsidian)
+- [Advanced URI Plugin](https://github.com/kzhovn/uri-commands-obsidian)
+- Local Rest API Plugin
+	- From: [GitHub - coddingtonbear/obsidian-local-rest-api: Unlock your automation needs by interacting with your notes in Obsidian over a secure REST API.](https://github.com/coddingtonbear/obsidian-local-rest-api)
+	-  [Interactive commands for Local REST API for Obsidian](https://coddingtonbear.github.io/obsidian-local-rest-api/)
 ## Obsidian plugins which are zotero DB interfaces
 - [[Dailies/2025-02-07.md#Obsidian Zotero Sync Client Plugin |Obsidian Zotero Sync Client Plugin]]
 	- directly accesses the zotero DB, and you can add javascript make an obsidian literature note title and contents
