@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Obsidian/spacekeys.md",
+                "file": "Scratch Space/tmp_perplexy_merged.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "spacekeys"
+              "title": "tmp_perplexy_merged"
             }
           }
         ]
@@ -108,13 +108,11 @@
               "title": "Tag Folder"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 415.5,
-    "collapsed": true
+    "width": 415.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -130,10 +128,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Obsidian/spacekeys.md"
+                "file": "Scratch Space/tmp_perplexy_merged.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for spacekeys"
+              "title": "File properties for tmp_perplexy_merged"
             }
           },
           {
@@ -295,8 +293,10 @@
   },
   "active": "81f77981d839e129",
   "lastOpenFiles": [
-    "lit/lit_sources/Clyde20IntroBayesianThink.pdf",
+    "Topic Notes/Boosting.md",
+    "Scratch Space/tmp_perplexy_merged.md",
     "Obsidian/spacekeys.md",
+    "lit/lit_sources/Clyde20IntroBayesianThink.pdf",
     "Politics/Political Causality/US Elections 2024.md",
     "lit/lit_notes/Bump25polSciworryRstrongman.md",
     "lit/lit_notes/BrightLineWatch25accelTrnsgrssnTrump.md",
@@ -321,10 +321,8 @@
     "Politics/Political Causality/Untitled.md",
     "Obsidian/templates/Merge Tab Groups.md",
     "lit/lit_sources/Unconfirmed 708095.crdownload",
-    "lit/lit_sources/Bump25OpinionWhatPolitical.html",
     "lit/lit_notes/Young23wrongAppetiteMisinfo.md",
     "Work/VPP ideas/Generative AI talk/Gen AI Talk Ideas.md",
-    "Scratch Space/tmp_perplexy_merged.md",
     "Scratch Space/perplexity_2025-02-25_23-12-19.md",
     "Scratch Space/perplexity_2025-02-25_23-28-54.md",
     "Scratch Space/perplexity_2025-02-25_23-19-02.md",
