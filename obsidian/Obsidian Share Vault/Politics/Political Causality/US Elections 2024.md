@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-02-25T17:29:10-08:00
+modified date: 2025-02-26T18:10:36-08:00
 ---
 # TODO
 - graph showing all the information loss sources from a good D policy to a voter's rational decision about it
@@ -159,11 +159,16 @@ Just more predictor variables for various things. Things similar to education, w
 - conspiracy theory attractions
 	- makes your life simple ==> make your conspiracy make your life complicated
 	- convinces you that you are good ==> make it make you look bad (a common tactic, I think)
-	- …
+	- AI works
+		- [[Costello24durablyReduceConspiracyWithAI|Costello24: Durably reducing conspiracy beliefs through dialogues with AI]] 
+			- [[Duke25conspiracyThryCureAI|Duke25: Finally, something is puncturing conspiracy theories]] 
+			- [ ] ? Funny because AI was persuasive somewhere about politics?  Was i disinformation?  Anyway, I can't find the I remembered.  Where was it?
+			- [[Young23wrongAppetiteMisinfo|Young23: Wrong: How media, politics, and identity drive our appetite for misinformation]] 
+	- [How hackers at the Def Con conference tried to break AI chatbots](<How hackers at the Def Con conference tried to break AI chatbots>)
 ## Polarization: what, why, and how to overcome or use
 - [[Evans24techSplinterCulturalCtrl]]
 - [[Rampell25genZmenLoveTrump]]
-- Moderates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]]
+- Moderate candidates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]]
 ### Polarization Enhancement: Your fellow R is evil (algorithmic)
 - For details & perplexity-derived evidence of implementability see Blake25infightMAGA
 - Moderates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]] 
@@ -185,6 +190,9 @@ Just more predictor variables for various things. Things similar to education, w
 ## How to overcome motivated reasoning
 - [[Kahan13ideologyMotivatedReasoning]]
 - Related? [[Watmough23populistEndPoland]]
+- [[Duke25conspiracyThryCureAI|Duke25: Finally, something is puncturing conspiracy theories]] 
+- [[Costello24durablyReduceConspiracyWithAI|Costello24: Durably reducing conspiracy beliefs through dialogues with AI]] 
+
 ## How specifically does Trump sound like an honest, real person?
 - non-politically correct, says what they're thinking but others are afraid to say it?
 - just says what they already think? He's not persuading but got in front of their parade?
@@ -200,6 +208,8 @@ Just more predictor variables for various things. Things similar to education, w
 	- If true, then D politician messaging won't help, unless it's a Bill Clintonesque Sister Souljah moment?
 	- ? how true are these points?
 - related:Lewis24demsGenderID 
+- [[Young23wrongAppetiteMisinfo|Young23wrongAppetiteMisinfo]] : now there's *affective* polarization
+
 ## Auto-detection of political messaging/conversation themes and their importance
 - Sentiment analysis was used to shape messages, etc. in 2024. maybe earlier
 - how are representative of general population

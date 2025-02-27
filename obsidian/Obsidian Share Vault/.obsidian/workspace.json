@@ -8,36 +8,30 @@
         "type": "tabs",
         "children": [
           {
-            "id": "75f5eda67231640d",
+            "id": "4635b51aa7eeb39a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lit/lit_notes/Duke25conspiracyThryCureAI.md",
+                "file": "Obsidian/spacekeys.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Duke25conspiracyThryCureAI"
+              "title": "spacekeys"
             }
-          }
-        ]
-      },
-      {
-        "id": "56369adfc7613c79",
-        "type": "tabs",
-        "children": [
+          },
           {
-            "id": "d859945e077dd415",
+            "id": "281ebfbe6e0ad531",
             "type": "leaf",
             "state": {
               "type": "html-view",
               "state": {
-                "file": "lit/lit_sources/Duke25conspiracyThryCureAI.html"
+                "file": "lit/lit_sources/Bump25polSciworryRstrongman.html"
               },
               "icon": "code-glyph",
-              "title": "Duke25conspiracyThryCureAI"
+              "title": "Bump25polSciworryRstrongman"
             }
           }
         ]
@@ -72,7 +66,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "wrong book",
+                "query": "\"vertical tabs\"",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -127,12 +121,11 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 415.5,
-    "collapsed": true
+    "width": 415.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -148,10 +141,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "lit/lit_notes/Duke25conspiracyThryCureAI.md"
+                "file": "Obsidian/spacekeys.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for Duke25conspiracyThryCureAI"
+              "title": "File properties for spacekeys"
             }
           },
           {
@@ -223,13 +216,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "lit/lit_notes/Duke25conspiracyThryCureAI.md",
+                "file": "Obsidian/spacekeys.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Duke25conspiracyThryCureAI"
+              "title": "Outline of spacekeys"
             }
           },
           {
@@ -250,9 +243,18 @@
               "icon": "links-coming-in",
               "title": "Backlinks for Duke25conspiracyThryCureAI"
             }
+          },
+          {
+            "id": "f71bfba9e57d96ef",
+            "type": "leaf",
+            "state": {
+              "type": "Strange New Worlds",
+              "state": {},
+              "icon": "file-digit",
+              "title": "Strange New Worlds"
+            }
           }
-        ],
-        "currentTab": 6
+        ]
       }
     ],
     "direction": "horizontal",
@@ -297,13 +299,31 @@
       "cmdr:Outline: Open outline of the current file": false,
       "cmdr:Bookmark Show": false,
       "cmdr:Ink: New drawing": false,
-      "cmdr:Ink: New handwriting section": false
+      "cmdr:Ink: New handwriting section": false,
+      "smart-connections:Open: View Smart Connections": false,
+      "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "75f5eda67231640d",
+  "active": "4635b51aa7eeb39a",
   "lastOpenFiles": [
-    "lit/lit_sources/Duke25conspiracyThryCureAI.html",
+    "lit/lit_sources/Bump25polSciworryRstrongman.html",
+    "Obsidian/spacekeys.md",
+    "Dailies/2025-02-26.md",
+    "Dailies/2025-02-03.md",
+    "lit/lit_notes/Bump25polSciworryRstrongman.md",
+    "lit/lit_notes/Costello24durablyReduceConspiracyWithAI.md",
+    "lit/lit_sources/Costello24durablyReduceConspiracyWithAI.pdf",
     "lit/lit_notes/Duke25conspiracyThryCureAI.md",
+    "Politics/Political Causality/US Elections 2024.md",
+    "Politics/Political Causality/Untitled.md",
+    "Obsidian/templates/Merge Tab Groups.md",
+    "lit/lit_sources/Unconfirmed 708095.crdownload",
+    "lit/lit_sources/Bump25OpinionWhatPolitical.html",
+    "lit/lit_notes/Young23wrongAppetiteMisinfo.md",
+    "lit/lit_sources/Duke25conspiracyThryCureAI.html",
+    "Work/VPP ideas/Generative AI talk/Gen AI Talk Ideas.md",
+    "lit/lit_notes/McRaney22howMindsChange.md",
+    "lit/lit_sources/Costello24DurablyReducingConspiracy.pdf",
     "Scratch Space/tmp_perplexy_merged.md",
     "lit/lit_sources/Unconfirmed 593250.crdownload",
     "lit/lit_sources/Duke25OpinionFinallySomething.html",
@@ -312,15 +332,9 @@
     "Scratch Space/perplexity_2025-02-25_23-19-02.md",
     "lit/lit_sources/Klein25mediaTheoryExplains.html",
     "lit/lit_sources/Klein25OpinionTheoryMedia.html",
-    "lit/lit_sources/TellMeBook.html",
     "Scratch Space/tmp_perplex_example.md",
-    "Politics/Political Causality/US Elections 2024.md",
     "lit/lit_notes/Jain25winsReplaceDB.md",
     "lit/lit_notes/Jain25moderatesOverperform.md",
-    "lit/lit_sources/Jain25winsReplaceDB.html",
-    "lit/lit_sources/Jain25FullWinsReplacement.html",
-    "lit/lit_sources/Unconfirmed 294513.crdownload",
-    "lit/lit_sources/Jain25moderatesOverperform.html",
     "lit/lit_notes/attachments/d9cf5aa508c3350ddf353dece9a0213c_MD5.jpeg",
     "lit/lit_notes/attachments/image.png",
     "lit/refwrangle/Perplexity Parsing.md",
@@ -329,16 +343,6 @@
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "lit/lit_notes/Auer24doclingTechRep.md",
     "Scratch Space/tmp_stock_perplexy_merged.md",
-    "lit/lit_notes/Szczerbiak23whyOppoWinPoland.md",
-    "Scratch Space/tmp_savemychatbot_multiprompt_perplexity_example.md",
-    "lit/lit_notes/3Blue1Brown19BayesThrmGeomChngBelief.md",
-    "Obsidian/templates_old/NEW Get and BROKEN Literature Note Link.md",
-    "Obsidian/templates/Get Literature Note_Link.md",
-    "Obsidian/templates_old/NEW Get Literature Note Link.md",
-    "Obsidian/templates_old/OLD Get Literature Note Link.md",
-    "lit/lit_notes/Untitled.md",
-    "lit/lit_notes/Emory25exercisesBayesTheorem.md",
-    "Obsidian/templates/OLD Get Literature Note Link.md",
     "lit/lit_notes/attachments/d0ef79bb85ffd401136605d35774ccb2_MD5.jpeg",
     "lit/lit_notes/attachments/0f9da6870b23bec3038d1bd85069bc1e_MD5.jpeg",
     "lit/lit_notes/attachments/34bc42f9607ef00c1b91ebdcb94d7908_MD5.jpeg",
