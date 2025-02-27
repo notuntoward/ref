@@ -1,6 +1,6 @@
 ---
 created date: 2025-02-26T19:43:33-08:00
-modified date: 2025-02-26T23:24:14-08:00
+modified date: 2025-02-27T11:43:45-08:00
 ---
 ```yaml
 # Root command group
@@ -31,6 +31,10 @@ items:
     command: workspace:next-tab
     description: Next Tab 
 
+  O:
+    command: outline:open
+    description: Open Outline
+    
   r:
     command: app:toggle-right-sidebar
     description: Toggle right pane

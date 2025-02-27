@@ -15,7 +15,7 @@ ZoteroCollections:
   - identitypolitics
   - polarization
 created date: 2025-02-21T10:33:53-08:00
-modified date: 2025-02-21T10:37:28-08:00
+modified date: 2025-02-27T11:49:05-08:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/SB54SAG6)   | [**URL**](https://www.washingtonpost.com/opinions/2025/02/21/trump-young-men-gen-z/) | **[[Rampell25genZmenLoveTrump.html|HTM]]**
@@ -49,9 +49,9 @@ modified date: 2025-02-21T10:37:28-08:00
 %% begin Obsidian Notes %%
 ___
 
-Gen Z (19-29,I think) voted for Trump +14, a while their enthusiasm has dampened since he took office, their net approval is still +7 (vs. -24 for same-aged women, on YouGov).  That's the biggest gender gap across demos, but not the biggest pro-Trump demo, which is middle-aged men (+13).
+Gen Z men (19-29, I think) voted for Trump +14, and while their enthusiasm has dampened since he took office, their net approval is still +7 (vs. -24 for same-aged women, on YouGov).  That's the biggest gender gap across demos, but not the biggest pro-Trump demo, which is middle-aged men (+13) **WHAT AM I SAYING::? +13 < +14??.**
 
-### Why Soem theories:
+### Why? Some theories
 - it's a backlash against feminism -- MeToo, etc., male pathologizing, etc.
 	- [ ] # more info: [American Institute for Boys and Men](https://aibm.org/)
 - young males are doing poorly compared to young men: 
@@ -62,7 +62,7 @@ Gen Z (19-29,I think) voted for Trump +14, a while their enthusiasm has dampened
 - Polarization by smartphone and alt-right podcasters
 	- [ ] # more: [[Evans24techSplinterCulturalCtrl|Evans24: The Great Splintering: How Digital Tech Shattered Cultural Control]] 
 - They like Trump's style: brash, machon, makes them feel welcome
-# Yet maybe policy will eventually matter?
+### Yet maybe policy will eventually matter?
 - overall men's policy preferences haven't changed much over the years (not specifically young men, but overall)
 - Trump's policies seem unlikely to improve the state of young men
 - hint: YouGov poll shows a recent dip in young men's Trump approval; Post-Ipsos poll now shows them neutral on him
