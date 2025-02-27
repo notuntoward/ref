@@ -934,5 +934,21 @@
       ],
       "key": "]"
     }
+  ],
+  "recent-files-obsidian:recent-files-open": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "R"
+    }
+  ],
+  "spacekeys:leader": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "X"
+    }
   ]
 }
