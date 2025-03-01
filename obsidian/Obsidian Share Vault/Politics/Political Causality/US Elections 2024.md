@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-02-27T15:04:03-08:00
+modified date: 2025-02-27T15:46:36-08:00
 tags:
   - politics
   - polling
@@ -25,7 +25,6 @@ tags:
 - [[Kapoor23misinfoAInotTheProb|Kapoor23: We Looked at 78 Election Deepfakes. Political Misinformation is not an AI Problem.]] 
 - A warning: [[Palmer23llmsArgueConvincing|Palmer23: Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors: implications for Governance]] 
 - Not politics, but general loss of thinking?  [[Lee25genAIworkerCritThink|Lee25: The impact of generative AI]] 
-
 ### Political AI background
 - [[Gen AI Talk Ideas#Sentiment Analysis|Sentiment Analysis]]
 - [Robots Talk Back, AI Security Risks, Political Deepfakes, and more](zotero://select/library/items/QUV7MR9D)
@@ -165,7 +164,7 @@ Just more predictor variables for various things. Things similar to education, w
 	- AI works
 		- [[Costello24durablyReduceConspiracyWithAI|Costello24: Durably reducing conspiracy beliefs through dialogues with AI]] 
 			- [[Duke25conspiracyThryCureAI|Duke25: Finally, something is puncturing conspiracy theories]] 
-			- [ ] ? Funny because AI was persuasive somewhere about politics?  Was i disinformation?  Anyway, I can't find the I remembered.  Where was it?
+			- [ ] ? AI was persuasive here, too: [[Palmer23llmsArgueConvincing|Palmer23: Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors: implications for Governance]] 
 			- [[Young23wrongAppetiteMisinfo|Young23: Wrong: How media, politics, and identity drive our appetite for misinformation]] 
 	- [How hackers at the Def Con conference tried to break AI chatbots](<How hackers at the Def Con conference tried to break AI chatbots>)
 ## Polarization: what, why, and how to overcome or use

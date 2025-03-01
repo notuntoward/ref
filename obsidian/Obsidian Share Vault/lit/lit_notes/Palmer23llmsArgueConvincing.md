@@ -1,9 +1,10 @@
 ---
-category: literaturenote
+category:
+  - literaturenote
 tags: 
 read: false
 in-progress: false
-linked: false
+linked: true
 aliases:
   - "Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors: implications for Governance"
   - Large Language Models Can Argue
@@ -18,7 +19,7 @@ ZoteroCollections:
   - mediaadspolit
   - neuropsycholinguisticpolitics
 created date: 2025-02-10T07:47:29-08:00
-modified date: 2025-02-10T07:51:25-08:00
+modified date: 2025-02-27T15:48:04-08:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/T56CPQY3)  | [**DOI**](https://doi.org/10.1080/00323187.2024.2335471)  | [**URL**](https://doi.org/10.1080/00323187.2024.2335471) | **[[Palmer23llmsArgueConvincing.pdf|PDF]]**
@@ -52,8 +53,16 @@ modified date: 2025-02-10T07:51:25-08:00
 > Palmer, Alexis, and Arthur Spirling. “Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors: Implications for Governance.” _Political Science_, vol. 75, no. 3, Sept. 2023, pp. 281–91. _Taylor and Francis+NEJM_, [https://doi.org/10.1080/00323187.2024.2335471](https://doi.org/10.1080/00323187.2024.2335471).
 %% begin Obsidian Notes %%
 ___
+
 I need to read this.
 Sidenote: good attack on Musk, since he wants to make government all AI?
+
+### Also
+- AI worked here: [[Duke25conspiracyThryCureAI|Duke25: Finally, something is puncturing conspiracy theories]] 
+
+
+
+
 ___
 %% end Obsidian Notes %%
 

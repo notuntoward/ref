@@ -530,24 +530,6 @@
       "key": "A"
     }
   ],
-  "font-size:increment-font-size": [
-    {
-      "modifiers": [
-        "Mod",
-        "Shift"
-      ],
-      "key": "="
-    }
-  ],
-  "font-size:decrement-font-size": [
-    {
-      "modifiers": [
-        "Mod",
-        "Shift"
-      ],
-      "key": "-"
-    }
-  ],
   "emacs-text-editor:backward-word": [
     {
       "modifiers": [
@@ -692,15 +674,6 @@
       "key": "E"
     }
   ],
-  "emacs-text-editor:recenter-top-bottom": [
-    {
-      "modifiers": [
-        "Ctrl",
-        "Shift"
-      ],
-      "key": "L"
-    }
-  ],
   "editor:cycle-list-checklist": [
     {
       "modifiers": [
@@ -820,15 +793,6 @@
         "Shift"
       ],
       "key": ","
-    }
-  ],
-  "emacs-text-editor:end-of-buffer": [
-    {
-      "modifiers": [
-        "Mod",
-        "Shift"
-      ],
-      "key": "."
     }
   ],
   "emacs-text-editor:forward-char": [
@@ -958,6 +922,116 @@
         "Mod"
       ],
       "key": "["
+    }
+  ],
+  "simple-zoom:decrease-font-size": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "-"
+    }
+  ],
+  "simple-zoom:increase-font-size": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "="
+    }
+  ],
+  "simple-zoom:reset-font-size": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "="
+    }
+  ],
+  "font-size:decrement-font-size": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "-"
+    }
+  ],
+  "font-size:increment-font-size": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "="
+    }
+  ],
+  "font-size:reset-font-size": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "="
+    }
+  ],
+  "window:zoom-in": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "="
+    }
+  ],
+  "window:zoom-out": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "-"
+    }
+  ],
+  "obsidian-editor-shortcuts:deleteLine": [],
+  "obsidian-editor-shortcuts:duplicateLine": [],
+  "obsidian-editor-shortcuts:insertLineAbove": [],
+  "obsidian-editor-shortcuts:insertLineBelow": [],
+  "obsidian-editor-shortcuts:selectLine": [],
+  "obsidian-editor-shortcuts:transformToLowercase": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "L"
+    }
+  ],
+  "obsidian-editor-shortcuts:transformToUppercase": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "U"
+    }
+  ],
+  "obsidian-editor-shortcuts:addCursorsToSelectionEnds": [],
+  "obsidian-editor-shortcuts:copyLineDown": [],
+  "obsidian-editor-shortcuts:copyLineUp": [],
+  "obsidian-editor-shortcuts:joinLines": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "J"
+    }
+  ],
+  "obsidian-editor-shortcuts:selectWordOrNextOccurrence": [],
+  "obsidian-underline:toggle-underline-tag": [
+    {
+      "modifiers": [
+        "Alt",
+        "Shift"
+      ],
+      "key": "U"
     }
   ]
 }

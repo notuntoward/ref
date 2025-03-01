@@ -4,55 +4,71 @@
     "type": "split",
     "children": [
       {
-        "id": "2922875a896814ee",
+        "id": "876b5c715f9ac5a1",
         "type": "tabs",
         "children": [
           {
-            "id": "283464e776863873",
+            "id": "6278d6284f2b9bf5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Politics/Political Causality/US Elections 2024.md",
-                "mode": "source",
-                "source": false,
+                "file": "Dailies/2025-03-01.md",
+                "mode": "preview",
+                "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "US Elections 2024"
+              "title": "2025-03-01"
             }
           },
           {
-            "id": "6b79f3e50735b420",
+            "id": "960f69c5fcc69454",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lit/lit_notes/Lowrey24RiseUnionRight.md",
+                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lowrey24RiseUnionRight"
+              "title": "Module 2 - SQL for Data Science"
             }
           },
           {
-            "id": "1bee9807592e4940",
+            "id": "8250a3966be461fa",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Obsidian/spacekeys.md",
+                "file": "Scratch Space/tmp_perplexy_merged.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "spacekeys"
+              "title": "tmp_perplexy_merged"
+            }
+          },
+          {
+            "id": "6a3909db115ba051",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Dailies/2025-03-01.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "2025-03-01"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -84,7 +100,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "\"command uri\"",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -138,13 +154,11 @@
               "title": "Tag Folder"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 415.5,
-    "collapsed": true
+    "width": 415.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -160,10 +174,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Politics/Political Causality/US Elections 2024.md"
+                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for US Elections 2024"
+              "title": "File properties for Module 2 - SQL for Data Science"
             }
           },
           {
@@ -235,13 +249,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Politics/Political Causality/US Elections 2024.md",
+                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of US Elections 2024"
+              "title": "Outline of Module 2 - SQL for Data Science"
             }
           },
           {
@@ -250,7 +264,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "lit/lit_notes/Duke25conspiracyThryCureAI.md",
+                "file": "Scratch Space/tmp_perplexy_merged.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -260,7 +274,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Duke25conspiracyThryCureAI"
+              "title": "Backlinks for tmp_perplexy_merged"
             }
           },
           {
@@ -279,12 +293,22 @@
             "state": {
               "type": "smart-chat-view",
               "state": {},
-              "icon": "message-square",
-              "title": "Smart Chat"
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "25f6af3349411512",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -313,13 +337,8 @@
       "pdf-plus:PDF++: Toggle auto-paste": true,
       "mermaid-tools:Open Mermaid Toolbar": true,
       "obsidian-custom-frames:Open Google Calendar": true,
-      "obsidian-importer:Open Importer": true,
       "obsidian-git:Open Git source control": true,
-      "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": true,
       "obsidian-excalidraw-plugin:New drawing": true,
-      "note-atomizer:Atomize note": true,
-      "obsidian-shellcommands:Shell commands: Custom variables": true,
-      "clipper-catalog:Show all clippings": true,
       "cmdr:Daily Note Outline: Open Outline": false,
       "cmdr:Custom Frames: Open Google Keep": false,
       "cmdr:Recent Files: Open": false,
@@ -330,57 +349,58 @@
       "cmdr:Bookmark Show": false,
       "cmdr:Ink: New drawing": false,
       "cmdr:Ink: New handwriting section": false,
+      "obsidian-focus-mode:Toggle Focus Mode (Shift + Click to show active pane only)": false,
       "smart-connections:Open: View Smart Connections": false,
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "283464e776863873",
+  "active": "8250a3966be461fa",
   "lastOpenFiles": [
-    "lit/lit_notes/Lowrey24RiseUnionRight.md",
-    "Politics/Political Causality/US Elections 2024.md",
     "Obsidian/spacekeys.md",
-    "Dailies/2023-10-08.md",
-    "lit/lit_notes/Ludwig25votersCorrectEcon.md",
-    "lit/lit_notes/Rampell25genZmenLoveTrump.md",
     "Scratch Space/tmp_perplexy_merged.md",
-    "lit/refwrangle/Zotero to Obsidian to RAG.md",
-    "Dailies/2025-02-07.md",
-    "Dailies/2024-03-26.md",
+    "Dailies/2025-03-01.md",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
     "Dailies/2024-03-09.md",
-    "Dailies/2024-02-25.md",
-    "Topic Notes/Boosting.md",
-    "lit/lit_sources/Beinert25windFrcstAggZeroShot.pdf",
-    "lit/lit_sources/Beinert25EstimationAggregationWind.pdf",
-    "lit/lit_sources/Clyde20IntroBayesianThink.pdf",
-    "lit/lit_notes/Bump25polSciworryRstrongman.md",
-    "lit/lit_notes/BrightLineWatch25accelTrnsgrssnTrump.md",
-    "lit/lit_sources/Bump25polSciworryRstrongman.html",
-    "lit/lit_notes/BrightLineWatch25democracyRrsrchOrg.md",
-    "lit/lit_sources/BrightLineWatch25accelTrnsgrssnTrump.html",
-    "lit/lit_sources/AcceleratedTransgressionsSecond.html",
-    "lit/lit_sources/BrightLineWatch25democracyRrsrchOrg.html",
-    "lit/lit_sources/BrightLineWatch.html",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
+    "lit/lit_sources/Sang22elecPriceFrcstDcsnFocus.pdf",
+    "lit/lit_notes/SQLTutorial25sqlCheatSheet.md",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-11.png",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-10.png",
+    "[[Work/Between.md",
+    "[[Work",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-9.png",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-8.png",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-7.png",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-6.png",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-5.png",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-4.png",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-3.png",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-2.png",
+    "lit/lit_sources/SQLTutorial25sqlCheatSheet.pdf",
     "Dailies/2025-02-26.md",
-    "lit/lit_sources/Emory25exercisesBayesTheorem.pdf",
-    "lit/lit_notes/Auer24doclingTechRep.md",
+    "Dailies/2025-02-27.md",
+    "lit/lit_sources/SQLTutorial25sqlCheatSheet.html",
+    "Dailies/2025-02-19.md",
+    "Dailies/2025-02-17.md",
+    "Dailies/2025-02-13.md",
+    "Dailies/2025-02-12.md",
+    "lit/lit_notes/Rampell25genZmenLoveTrump.md",
+    "lit/lit_notes/Palmer23llmsArgueConvincing.md",
+    "Howto/Zotero Template for Obsidian.md",
     "lit/lit_sources/Jain25moderatesOverperform.html",
-    "lit/lit_notes/Jain25winsReplaceDB.md",
-    "lit/lit_notes/Jain25moderatesOverperform.md",
-    "lit/lit_notes/Duke25conspiracyThryCureAI.md",
-    "lit/lit_notes/McRaney22howMindsChange.md",
-    "Dailies/2025-02-03.md",
-    "lit/lit_notes/Costello24durablyReduceConspiracyWithAI.md",
-    "Politics/Political Causality/Untitled.md",
-    "Obsidian/templates/Merge Tab Groups.md",
-    "lit/lit_notes/attachments/d9cf5aa508c3350ddf353dece9a0213c_MD5.jpeg",
-    "lit/lit_notes/attachments/image.png",
-    "lit/lit_notes/attachments/d0ef79bb85ffd401136605d35774ccb2_MD5.jpeg",
-    "lit/lit_notes/attachments/0f9da6870b23bec3038d1bd85069bc1e_MD5.jpeg",
-    "lit/lit_notes/attachments/34bc42f9607ef00c1b91ebdcb94d7908_MD5.jpeg",
-    "Clippings/attachments/d3981a36bd0b8682b6b0b1394168e6c2_MD5.png",
-    "Clippings/attachments/2dbeb1435b5a0041290af1991c7d9a0d_MD5.png",
-    "Clippings/attachments/0d67b76cd9d3479b852c255d4b80eeaf_MD5.png",
-    "Clippings/attachments/673e3898b72e33125e5dcb2278f3cd42_MD5.png",
-    "Obsidian/attachments/Pasted image 20250129174128.webp"
+    "lit/lit_notes/Mond88rateResponsPace.md",
+    "Dailies/2024-03-23.md",
+    "lit/lit_notes/W3schools25sqlQuickReference.md",
+    "lit/lit_sources/SQLQuickReference.html",
+    "lit/lit_sources/SQLCheatSheet.html",
+    "lit/lit_sources/Mond88rateResponsPace.pdf",
+    "Work/VPP ideas/Generative AI talk/Gen AI Talk Ideas.md",
+    "Dailies/2025-02-28.md",
+    "lit/lit_notes/Lowrey24RiseUnionRighta.html.md",
+    "lit/lit_notes/Lowrey24RiseUnionRight.md",
+    "lit/lit_notes/Ludwig25votersCorrectEcon.md",
+    "lit/lit_notes/Nelson23ancillarySat_CAISO_ERCOT.md",
+    "lit/lit_sources/Seok15mutInfoDiscrtRcrsAdaptPart.pdf",
+    "lit/lit_sources/Beinert25windFrcstAggZeroShot.pdf"
   ]
 }

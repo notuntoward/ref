@@ -1,39 +1,92 @@
 ---
 created date: 2025-01-08T13:50:51-08:00
-modified date: 2025-01-13T17:37:46-08:00
+modified date: 2025-03-01T11:22:29-08:00
 ---
 
+# SQL Command Reference
+- **By Purpose**: [[SQLTutorial25sqlCheatSheet|SQTutorial25: SQL Cheat Sheet in PDF]] 
+- **Alphabetical**: [[W3schools25sqlQuickReference|W3schools25: SQL Quick Reference]] 
+- **Concise: [from OpenAI](https://chatgpt.com/share/67c266e4-425c-8005-8b49-e69ae741460f)** (I fixed truncation in select)
+
+| **Command**       | **Description**                                                                                                                                                                                     |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SELECT`          | Retrieves data from one or more tables. **Syntax:** `SELECT [DISTINCT] column1, column2, ... FROM table_name [WHERE condition] [GROUP BY column] [HAVING condition] [ORDER BY column ASC <br>[DESC] |
+| `INSERT`          | Adds new rows to a table. **Syntax:** `INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...);`                                                                                |
+| `UPDATE`          | Modifies existing rows in a table. **Syntax:** `UP
+| `DELETE`          | Removes rows from a table. **Syntax:** `DELETE FROM table_name [WHERE condition];`                                                                                                                  |
+| `CREATE TABLE`    | Creates a new table. **Syntax:** `CREATE TABLE table_name (column1 datatype [constraints], column2 datatype [constraints], ...);`                                                                   |
+| `ALTER TABLE`     | Modifies an existing table's structure. **Syntax:** `ALTER TABLE table_name ADD column_name datatype;` **Or:** `ALTER TABLE table_name DROP COLUMN column_name;`                                    |
+| `DROP TABLE`      | Deletes a table and its data. **Syntax:** `DROP TABLE table_name;`                                                                                                                                  |
+| `CREATE DATABASE` | Creates a new database. **Syntax:** `CREATE DATABASE database_name;`                                                                                                                                |
+| `DROP DATABASE`   | Deletes a database and its data. **Syntax:** `DROP DATABASE database_name;`                                                                                                                         |
+| `CREATE INDEX`    | Creates an index on a table's column(s) to improve query performance. **Syntax:** `CREATE [UNIQUE] INDEX index_name ON table_name (column1, column2, ...);`                                         |
+| `DROP INDEX`      | Removes an index from the database. **Syntax:** `DROP INDEX index_name;`                                                                                                                            |
+| `CREATE VIEW`     | Creates a virtual table based on the result set of a SELECT statement. **Syntax:** `CREATE VIEW view_name AS SELECT column1, column2, ... FROM table_name WHERE condition;`                         |
+| `DROP VIEW`       | Deletes a view. **Syntax:** `DROP VIEW view_name;`                                                                                                                                                  |
+| `GRANT`           | Assigns privileges to users. **Syntax:** `GRANT privilege_name ON object_name TO user_name;`                                                                                                        |
+| `REVOKE`          | Removes privileges from users. **Syntax:** `REVOKE privilege_name ON object_name FROM user_name;`                                                                                                   |
+| `COMMIT`          | Saves all transactions to the database. **Syntax:** `COMMIT;`                                                                                                                                       |
+| `ROLLBACK`        | Undoes transactions that have not yet been committed. **Syntax:** `ROLLBACK;`                                                                                                                       |
+| `SAVEPOINT`       | Sets a point within a transaction to which you can later roll back. **Syntax:** `SAVEPOINT savepoint_name;`                                                                                         |
+| `TRANSACTION`     | Begins a new transaction. **Syntax:** `BEGIN TRANSACTION;`                                                                                                                                          |
+
+This table provides a high-level overview of essential SQL commands and their general syntax. For more detailed information and additional commands, consider consulting comprehensive SQL references such as the [SQL Quick Reference by W3Schools](https://www.w3schools.com/sql/sql_quickref.asp) or the [SQL Cheat Sheet by SQL Tutorial](https://www.sqltutorial.org/sql-cheat-sheet/).
+
+### Citations:
+
+1. [https://www.manpagez.com/man/3/SQL::Statement::Syntax/](https://www.manpagez.com/man/3/SQL::Statement::Syntax/)
+2. [https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-qry-select-table-reference](https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/sql-ref-syntax-qry-select-table-reference)
+3. [https://phoenixnap.com/kb/linux-man](https://phoenixnap.com/kb/linux-man)
+4. [https://man.cx/mdb-sql(1)](https://man.cx/mdb-sql\(1\))
+5. [https://www.w3schools.com/sql/sql_quickref.asp](https://www.w3schools.com/sql/sql_quickref.asp)
+6. [https://www.postgresql.org/docs/current/app-psql.html](https://www.postgresql.org/docs/current/app-psql.html)
+7. [https://docs.oracle.com/cd/E86824_01/html/E54763/sql-1.html](https://docs.oracle.com/cd/E86824_01/html/E54763/sql-1.html)
+8. [https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax)
+9. [https://dev.mysql.com/doc/en/mysql.html](https://dev.mysql.com/doc/en/mysql.html)
 **Module 1 of Coursera / UCD Davis SQL Class Notes** (Lawrence22dataScienceSQLcourse)
 From: [Coursera | Online Courses & Credentials From Top Educators. Join for Free | Coursera](https://www.coursera.org/learn/sql-for-data-science/home/module/1)
+
+# My Observations
+## Three condition keyword
+From: [[SQLTutorial25sqlCheatSheet|SQLTutorial25sqlCheatSheet]]
+
+| Command             | Condition Keyword | Example                                                           | Why                                                                                                                                          |
+| ------------------- | ----------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| **SELECT**          | **WHERE**         | SELECT c1, c2 FROM t **WHERE** condition;                         |                                                                                                                                              |
+| SELECT... **GROUP** | **HAVING**        | SELECT c1, aggregate(c2) FROM t GROUP BY c1 **HAVING** condition; | [here?](<Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md#^753q >) |
+| SELECT... **JOIN**  | **ON**            | SELECT c1, c2 FROM t1 INNER JOIN t2 **ON** condition;             |                                                                                                                                              |
+## When col doesn't it have to be in the SELECT statement
+- ORDER BY ([here](<Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md#^xe1t >))
+- columns affected in aggregations (not the GROUP BY PART) ([here](<Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md#^o3u3 >))
 # Video Notes (Module 1)
 
 ## ECR Diagrams
 From: [Data Models, Part 3: Relational vs. Transactional Models - Getting Started and Selecting & Retrieving Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/HRlau/data-models-part-3-relational-vs-transactional-models)
-![[Pasted image 20250108135414.webp]]
-## Select
+![[Pasted image 20250108135414.webp|0x0]]
+## [SELECT col FROM table] : How to get data
 From: [Retrieving Data with a SELECT Statement - Getting Started and Selecting & Retrieving Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/oN0Ks/retrieving-data-with-a-select-statement) 
 ### All Columns
-![[__temp__Pasted image 20250108140738.webp|552]]
+![[Pasted image 20250108140738.webp|552|610x259]]
 
 OR:
 
-![[Pasted image 20250108140810.webp|154]]
-### Named Columns 
-![[Pasted image 20250108140518.webp|308]]
+![[Pasted image 20250108140810.webp|154|208x65]]
 
-### Limiting num rows to get, like Pandas .head()
+### Named Columns 
+![[Pasted image 20250108140518.webp|308|524x386]]
+
+### [LIMIT maxrows] : Limiting num rows to get, like Pandas .head()
 ![[Pasted image 20250108141023.webp|569]]
 
-## Creating Tables
+## [CREATE TABLE table] : Creating Tables
 From: [Creating Tables - Getting Started and Selecting & Retrieving Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/kuYRl/creating-tables)
 
-### Table declaration
-![[Pasted image 20250108142010.webp|375]]
+### Declaring a new table
+![[Pasted image 20250108142010.webp|375|491x280]]
 - key can't have NULLs
 - [ ] ? Varchar(): is this case sensitive?
-### Inserting data
-
-#### Insert with Unnamed v.s. Named Columns
+### [INSERT INTO table VALUES vals] putting data into a table
+#### Insert with Unnamed vs. Named Columns
 
 ![[Pasted image 20250108142755.webp|623]]
 
@@ -47,10 +100,10 @@ From: [Creating Temporary Tables - Getting Started and Selecting & Retrieving Da
 ### Declaring temp table
 
 **SQLite declaration**
-![[__temp__Pasted image 20250110151359.webp|249]]
+![[Pasted image 20250110151359.webp|249|0x0]]
 
 **Fancy Syntax, depends upon the SQL dialect (this is SQLite)**
-![[__temp__Pasted image 20250110151515.webp|390]]
+![[Pasted image 20250110151515.webp|390|587x295]]
 
 ### Temp Tables: suggested thing to look up
 
@@ -60,7 +113,7 @@ From: [Creating Temporary Tables - Getting Started and Selecting & Retrieving Da
 From: [Adding Comments to SQL - Getting Started and Selecting & Retrieving Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/akd1V/adding-comments-to-sql)
 
 **Dashes or c-style comments**
-![[Pasted image 20250110152911.webp|667]]
+![[Pasted image 20250110152911.webp|667|915x234]]
 
 ## Practice 1
 From: [Coursera | Online Courses & Credentials From Top Educators. Join for Free | Coursera](https://www.coursera.org/learn/sql-for-data-science/assignment-submission/saQci/practice-simple-select-queries)

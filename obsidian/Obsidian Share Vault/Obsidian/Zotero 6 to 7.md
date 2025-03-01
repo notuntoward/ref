@@ -1,6 +1,6 @@
 ---
 created date: 2024-08-20T17:36:57-07:00
-modified date: 2025-01-09T22:00:49-08:00
+modified date: 2025-02-27T16:46:43-08:00
 ---
 Stuff about updating zotero 6zo to zotero 7.  Also see [[Zotero to Obsidian to RAG]].
 # New Zotero 7 Features
@@ -79,6 +79,16 @@ Locate icon on the RHS margin looks up metainfo for the current entry. Can add n
 - I copied [this one](https://egh.github.io/zotero-lookup-engines/us.wa.seattle_public.html) (started with "seattle"): had spl, google scholar, crossreff
 	- there are a bunch more [here](https://egh.github.io/zotero-lookup-engines/)
 # Zotero 7 Plugins 
+
+## Pushing zotero items to Obsidian notes
+
+### Actions Tags Plugin
+From: [GitHub - windingwind/zotero-actions-tags: Customize your Zotero workflow.](https://github.com/windingwind/zotero-actions-tags)
+
+ - Used here [[lit/refwrangle/Zotero to Obsidian to RAG.md#Push from Zotero with Zotero "Actions and Tags" plugin  |Push from Zotero with Zotero "Actions and Tags" plugin ]]
+ - Examples of custom scripts (actions)
+	 - [What is This?](https://github.com/windingwind/zotero-actions-tags/tree/master?tab=readme-ov-file#-what-is-this)
+	 - Many user contributions: [Discussions · GitHub](https://github.com/windingwind/zotero-actions-tags/discussions)
 
 ### Plugins related to zotfile (zotero 7)
 
@@ -168,7 +178,7 @@ Match is synced at startup (slow the first time), can be refreshed with a tools 
 ###### Markdown DB connect References:
 - Github instructions for [matching BetterBibTeX citekeys](https://github.com/daeh/zotero-markdb-connect?tab=readme-ov-file#option-1-using-betterbibtex-citekeys)
 - obsolete (but still referenced in GitHub) tutorial: [Link from a Zotero it...](https://publish.obsidian.md/history-notes/Option+-+Link+from+a+Zotero+item+back+to+related+notes+in+Obsidian)
-
+]
 **installed**
 #### Better BibTex
 From: https://github.com/retorquere/zotero-better-bibtex
