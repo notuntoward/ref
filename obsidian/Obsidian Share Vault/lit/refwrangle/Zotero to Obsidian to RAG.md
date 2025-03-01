@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-02-27T13:01:27-08:00
+modified date: 2025-02-27T17:19:16-08:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -21,7 +21,7 @@ I'm putting this code in `ref/refwrangle`.  Also see [[Zotero 6 to 7]].
 		- add the link to the new lit note 
 			- although I guess this could be done before calling the zotero interface
 			- [[2024-02-25#Zotero Integration Plugin]]
-			- 
+- [ ] ! Combine with [[#Less tedious Zotero --> Obsidian Lit Note process]]
 # Zotero to NotebookLM
 ## Problems to solve before using NotebookLM
 
@@ -49,7 +49,7 @@ For example, [WA shifted (slightly) right in...](https://www.seattletimes.com/se
 - if so, it doesn't seem necessary to clean them, unless the extra content runs over the data limit
 - Possible levels of cleaning
 	- fairly literal copy of html in pdf
-		- **playwright**: maintained code, near-literal pdf copy of html
+		- **playwright**: maintained code, near-literal pdf copy of h]tml
 			- a [recommended](<lit/refwrangle/Zotero to Obsidian to RAG.md#^8cyi >)  alternative to pyppeteer
 			- won't run in Jupyterlab on Windows
 				- [must hack source to get working in Jupyter on Windows](https://stackoverflow.com/questions/71228742/how-to-use-the-playwright-library-in-a-jupyter-notebook-instead-of-using-a-regul) (works as is on Mac)
@@ -168,17 +168,19 @@ Zotero _Better Notes Add-on has a way of two-way syncing Obsidian Markdown_ note
 
 Trying to reduce the steps and friction between adding an item to zotero and then **making an Obsidian literature note properly linked to Zotero**.  This is so that I actually get this done, instead of letting the unlinked zotero entries pile up, or even skipping making the zotero note at all.
 
-
-
+- [ ] ! combine with [[#Easier zotero-to-obsidian note transfer]]
 ## Push from Zotero with Zotero "Actions and Tags" plugin 
 
 I think what I need is a way to add a button to Zotero that makes an obsidian note(s) from the current or selected group of Zotero items.
 
-- [Reddit - Dive into anything](https://www.reddit.com/r/ObsidianMD/comments/1f48x0g/obsidian_plugin_autocreating_notes_from_zotero/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button): 
+- [ ] [Reddit - Dive into anything](https://www.reddit.com/r/ObsidianMD/comments/1f48x0g/obsidian_plugin_autocreating_notes_from_zotero/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button): 
 	- guy makes a button in zotero, 
-	- but has his own note template, doesn't use [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
-- [ ] The [[Dailies/2024-03-26.md#Obsidian Citation Zotero plugin |Obsidian Citation Zotero plugin]] can also send notes with a zotero click into obsidian.
-- [ ] ? can either of these ideas by used to fire off  [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
+	- but has his own note template in java, doesn't use [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
+	- is based on the [[Obsidian/Zotero 6 to 7.md#Actions Tags Plugin |Actions Tags Plugin]]
+	- I could change the `function createNote(item)` function to loop like I do with nunjucks
+		- [ ] ! just try running the unmodified template to see if it works
+		- [ ] ! Try the [Perplexity rewrite](https://www.perplexity.ai/search/i-would-like-to-replace-obsidi-8gLqbO5PQbW6pDDc1fE5oQ) of my zotero integration nunjucks template for 
+- [ ] ? can this be used to fire off  [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
 	- How? [[lit/refwrangle/Zotero to Obsidian to RAG.md#Running an Obsidian command from an external program |Running an Obsidian command from an external program]]
 		- one of the [[lit/refwrangle/Zotero to Obsidian to RAG.md#Obsidian URI handlers |Obsidian URI handlers]]?
 	- Maybe the zotero click would only send the zotero item citekeys, which would avoid the awful zotero citekey selector.
@@ -227,6 +229,7 @@ This could *somehow* help smooth the zotero --> obsidian process.
 			- unless you could make it start the "classic" interface first
 		- @ OR unless you used an API, which accepts keys ([can do with zotero integration and zotero bridge plugins](https://www.perplexity.ai/search/is-there-an-api-that-would-all-.O2.uzPHS.KixPqwqKvkrw) 
 			- @ An example of [code running Zotero Integration API on a list of zotero item keys](https://forum.obsidian.md/t/bulk-import-zotero-library-annotations-into-obsidian-with-zotero-integration-plugin/76254/3?u=scotto)
+- [obsidian-local-rest-api: Unlock your automation needs by interacting with your notes in Obsidian over a secure REST API.](https://github.com/coddingtonbear/obsidian-local-rest-api?tab=readme-ov-file)
 #### Obsidian URI handlers
 - [Command URI Plugin](https://github.com/deathau/command-uri-obsidian)
 - [Obsidian URI Scheme](https://help.obsidian.md/Extending+Obsidian/Obsidian+URI)

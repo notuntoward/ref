@@ -4,15 +4,26 @@ tags:
   - ml/zeroshot
   - ml/genAI
 created date: 2024-10-22T09:21:55-07:00
-modified date: 2025-02-10T07:45:26-08:00
+modified date: 2025-02-28T14:16:09-08:00
 ---
 **TODO** get all Zotero "Generative AI" collection into this
 **TODO** get all related browser tab groups into this
 # Intro Draft 1
+falksflaksdfalksf
+# alfkjalsdfkjadsf
+## h2asldfkas fasfd
+### aaslfkjasdflkjsdf
+#### asflkjasdflj
+##### adslfkjasdlfkjasdf
+###### asl;fkjasldfkj
+
+asfdlkasdfj
+### asdflkjafl
+
 asdfasdfsaf
 ## My first contact with AI
 asdfsfda
-### **TEST HEADINGS**: boadflasdf
+# **TEST HEADINGS**: boadflasdf
 asdf
 #### asdflkajsdf
 asdf
@@ -188,6 +199,14 @@ When does it work and when doesn't. and when I say "it" WHAT am I talking about?
 - Segue from quick basic "what is gen AI" background to a demo:  "I know that's a bit more than some people want to know, but other people do want to know it.  So lemme try to make everybody happy showing an actual use case, that I think everybody could get something out of"
 	- Then do [[Gen AI Talk Demo - GoogleNotebookLM]]
 	- and move on to problems, bigger considerations, etc, and on from from textual analysis to other stuff
+
+##### adlfkjasflkj
+aa;slfkjaslkfjlas fasf
+as;lkjasdfljk
+##### aslkfjalsdjkf
+as;lfkjasl;kdfj 
+aslfkalfkdj
+
 # Unordered Points to make
 ## Underlying Neural Theory
 ### Neural Nets

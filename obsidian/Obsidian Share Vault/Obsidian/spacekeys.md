@@ -1,6 +1,6 @@
 ---
 created date: 2025-02-26T19:43:33-08:00
-modified date: 2025-02-27T14:27:15-08:00
+modified date: 2025-03-01T13:47:39-08:00
 ---
 ```yaml
 # Root command group
@@ -16,8 +16,8 @@ items:
     description: Close tab group
 
   1:
-    command: workspace:close-others-tab-group
-    description: Close other tab groups
+    command: obsidian-focus-mode:toggle-super-focus-mode
+    description: Super Focus
 
   2:
     command: workspace:split-horizontal
@@ -26,7 +26,7 @@ items:
   3:
     command: workspace:split-vertical
     description: Split Vertical
-
+    
   o:
     command: workspace:next-tab
     description: Next Tab 
@@ -39,20 +39,39 @@ items:
     command: app:toggle-right-sidebar
     description: Toggle right pane
 
-  # might want to use this for all the links commands
-  # maybe use L for that?
   '[':
     command: app:toggle-left-sidebar
     description: Toggle left pane
 
+  t:
+    command: table-editor-obsidian:table-control-bar
+    description: Tables Pane
+
   b:
-    command: bookmarks:open 
-    description: Show Bookmarks
+    command: bookmarks:open
+    description: Bookmark open
 
   B:
     command: bookmarks:bookmark-current-view 
-    description: Show Bookmarks
+    description: Bookmark current view
 
+  pagedown:
+    command: obsidian-focus-mode:toggle-focus-mode 
+    description: Bookmark current view
+
+  pageup:
+    command: obsidian-focus-mode:toggle-super-focus-mode 
+    description: Bookmark current view
+
+  'c-f':
+    command: darlal-switcher-plus:switcher-plus:open
+    description: Quick Switcher++
+
+  s:
+    command: editor:toggle-source
+    description: Toggle Preview Source
+
+# 
   # A group of commands with common prefix key "f"
   f:
     description: File
@@ -72,4 +91,5 @@ items:
       # m:
       #  command: file-explorer:move-file
       #  description: Move file
+
 ```
