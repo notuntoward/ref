@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
+                "file": "Scratch Space/tmp_link_ai_lit_output.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Module 2 - SQL for Data Science"
+              "title": "tmp_link_ai_lit_output"
             }
           }
         ]
@@ -108,8 +108,7 @@
               "title": "Tag Folder"
             }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "horizontal",
@@ -219,7 +218,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
+                "file": "Scratch Space/tmp_link_ai_lit_output.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -229,7 +228,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Module 2 - SQL for Data Science"
+              "title": "Backlinks for tmp_link_ai_lit_output"
             }
           },
           {
@@ -268,8 +267,8 @@
             "state": {
               "type": "smart-connections-view",
               "state": {},
-              "icon": "smart-connections",
-              "title": "Smart Connections"
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
             }
           }
         ],
@@ -320,10 +319,12 @@
   },
   "active": "960f69c5fcc69454",
   "lastOpenFiles": [
+    "lit/Lit Note Summary.md",
     "Scratch Space/tmp_link_ai_lit_output.md",
+    "lit/Lit Note TODOs.md",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
     "lit/lit_sources/Everitt25portlandsFirstRCV.pdf",
     "lit/lit_notes/Bai23estTotalCorrMIest.md",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
     "Scratch Space/tmp_perplexy_merged.md",
     "Dailies/2025-03-01.md",
     "Obsidian/spacekeys.md",
@@ -363,7 +364,6 @@
     "lit/lit_sources/Mond88rateResponsPace.pdf",
     "Work/VPP ideas/Generative AI talk/Gen AI Talk Ideas.md",
     "Dailies/2025-02-28.md",
-    "lit/lit_notes/Lowrey24RiseUnionRighta.html.md",
     "lit/lit_sources/Seok15mutInfoDiscrtRcrsAdaptPart.pdf"
   ]
 }
