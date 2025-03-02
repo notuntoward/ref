@@ -1,10 +1,9 @@
 ---
 created date: 2025-01-13T21:25:08-08:00
-modified date: 2025-03-01T14:17:10-08:00
+modified date: 2025-03-01T19:07:59-08:00
 ---
 **Module 2 of Coursera / UCD Davis SQL Class Notes** (Lawrence22dataScienceSQLcourse)
 From: [Module Introduction - Filtering, Sorting, and Calculating Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/GAA9h/module-introduction)
-
 # Intro
 From: [Module Introduction - Filterin...](https://www.coursera.org/learn/sql-for-data-science/lecture/GAA9h/module-introduction)
 ## Filtering Operators in this Module]

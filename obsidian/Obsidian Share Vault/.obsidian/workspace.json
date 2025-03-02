@@ -21,8 +21,24 @@
               "icon": "lucide-file",
               "title": "Module 2 - SQL for Data Science"
             }
+          },
+          {
+            "id": "127e7cee23673229",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Scratch Space/tmp_link_ai_lit_output.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "tmp_link_ai_lit_output"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -112,8 +128,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 415.5,
-    "collapsed": true
+    "width": 415.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -219,7 +234,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
+                "file": "Scratch Space/tmp_link_ai_lit_output.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -229,7 +244,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Module 2 - SQL for Data Science"
+              "title": "Backlinks for tmp_link_ai_lit_output"
             }
           },
           {
@@ -263,7 +278,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
@@ -308,11 +323,13 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "960f69c5fcc69454",
+  "active": "127e7cee23673229",
   "lastOpenFiles": [
-    "Dailies/2025-03-01.md",
+    "lit/lit_notes/Bai23estTotalCorrMIest.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
     "Scratch Space/tmp_perplexy_merged.md",
+    "Scratch Space/tmp_link_ai_lit_output.md",
+    "Dailies/2025-03-01.md",
     "Obsidian/spacekeys.md",
     "Dailies/2024-03-09.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
@@ -352,8 +369,6 @@
     "Dailies/2025-02-28.md",
     "lit/lit_notes/Lowrey24RiseUnionRighta.html.md",
     "lit/lit_notes/Lowrey24RiseUnionRight.md",
-    "lit/lit_notes/Ludwig25votersCorrectEcon.md",
-    "lit/lit_notes/Nelson23ancillarySat_CAISO_ERCOT.md",
     "lit/lit_sources/Seok15mutInfoDiscrtRcrsAdaptPart.pdf",
     "lit/lit_sources/Beinert25windFrcstAggZeroShot.pdf"
   ]

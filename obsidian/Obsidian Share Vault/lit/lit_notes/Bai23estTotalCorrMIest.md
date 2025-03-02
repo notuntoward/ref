@@ -9,15 +9,16 @@ aliases:
   - Estimating Total Correlation with Mutual
 citekey: Bai23estTotalCorrMIest
 ZoteroTags:
+  - obslitnote
   - computer_science_-_information_theory
   - mathematics_-_information_theory
 ZoteroCollections:
   - dependency_metrics_(merge_somewhere)
-created date: 2025-01-30T21:22:49-08:00
-modified date: 2025-01-30T21:23:13-08:00
+created date: 2025-03-01T19:55:34-08:00
+modified date: 2025-03-01T20:02:19-08:00
 ---
 
-> [!info]- &nbsp;[**Zotero**](zotero://select/library/items/NP9BWJQ2)  | [**DOI**](https://doi.org/10.48550/arXiv.2011.04794)  | [**URL**](http://arxiv.org/abs/2011.04794) | **[[Bai23estTotalCorrMIest.pdf|PDF]]**
+> [!info]- &nbsp;[**Zotero**](zotero://select/library/items/NP9BWJQ2)  | [**DOI**](https://doi.org/10.48550/arXiv.2011.04794)  | [**URL**](https://proceedings.mlr.press/v206/bai23a/bai23a.pdf) | **[[Bai23estTotalCorrMIest.pdf|PDF]]**
 >
 > 
 > **Abstract**
@@ -36,7 +37,7 @@ modified date: 2025-01-30T21:23:13-08:00
 > **ZoteroItemKey**:: NP9BWJQ2  
 > **itemType**:: preprint  
 > **DOI**:: 10.48550/arXiv.2011.04794  
-> **URL**:: http://arxiv.org/abs/2011.04794  
+> **URL**:: https://proceedings.mlr.press/v206/bai23a/bai23a.pdf  
 > **Journal**::   
 > **Volume**::   
 > **Issue**::   
@@ -45,7 +46,7 @@ modified date: 2025-01-30T21:23:13-08:00
 > **Location**::    
 > **Pages**::   
 > **ISBN**::   
-> **ZoteroTags**:: Computer Science - Information Theory, Mathematics - Information Theory
+> **ZoteroTags**:: obsLitNote, Computer Science - Information Theory, Mathematics - Information Theory
 > **Related**:: 
 
 > Bai, Ke, et al. _Estimating Total Correlation with Mutual Information Estimators_. arXiv:2011.04794, arXiv, 22 Feb. 2023. _arXiv.org_, [https://doi.org/10.48550/arXiv.2011.04794](https://doi.org/10.48550/arXiv.2011.04794).
@@ -56,12 +57,18 @@ ___
 %% end Obsidian Notes %%
 
 > [!note]- &nbsp;Zotero Note (1)
+> Bai23estTotalCorrMIest
+> 
 > Comment: Accepted by AISTATS 2023
 > 
-> <small>📝️ (modified: 2025-01-30) [link](zotero://select/library/items/UHY9YQLN) - [web](http://zotero.org/users/60638/items/UHY9YQLN)</small>
+> ##### Implementation:
+> 
+> [https://github.com/Linear95/TC-estimation](https://github.com/Linear95/TC-estimation)
+> 
+> <small>📝️ (modified: 2025-02-02) [link](zotero://select/library/items/UHY9YQLN) - [web](http://zotero.org/users/60638/items/UHY9YQLN)</small>
 >  
 > ---
 
 
 
-%% Import Date: 2025-01-30T21:23:12.822-08:00 %%
+%% Import Date: 2025-03-01T19:55:45.117-08:00 %%
