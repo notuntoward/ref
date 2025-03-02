@@ -21,24 +21,8 @@
               "icon": "lucide-file",
               "title": "Module 2 - SQL for Data Science"
             }
-          },
-          {
-            "id": "127e7cee23673229",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Scratch Space/tmp_link_ai_lit_output.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "tmp_link_ai_lit_output"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -124,11 +108,12 @@
               "title": "Tag Folder"
             }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 415.5
+    "width": 470.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -234,7 +219,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scratch Space/tmp_link_ai_lit_output.md",
+                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -244,7 +229,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for tmp_link_ai_lit_output"
+              "title": "Backlinks for Module 2 - SQL for Data Science"
             }
           },
           {
@@ -276,9 +261,19 @@
               "icon": "lucide-file",
               "title": "New tab"
             }
+          },
+          {
+            "id": "891baa85bae5ca74",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-view",
+              "state": {},
+              "icon": "smart-connections",
+              "title": "Smart Connections"
+            }
           }
         ],
-        "currentTab": 8
+        "currentTab": 11
       }
     ],
     "direction": "horizontal",
@@ -318,16 +313,18 @@
       "cmdr:Bookmark Show": false,
       "cmdr:Ink: New drawing": false,
       "cmdr:Ink: New handwriting section": false,
-      "obsidian-focus-mode:Toggle Focus Mode (Shift + Click to show active pane only)": false
+      "obsidian-focus-mode:Toggle Focus Mode (Shift + Click to show active pane only)": false,
+      "smart-connections:Open: View Smart Connections": false,
+      "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "127e7cee23673229",
+  "active": "960f69c5fcc69454",
   "lastOpenFiles": [
+    "Scratch Space/tmp_link_ai_lit_output.md",
     "lit/lit_sources/Everitt25portlandsFirstRCV.pdf",
     "lit/lit_notes/Bai23estTotalCorrMIest.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
     "Scratch Space/tmp_perplexy_merged.md",
-    "Scratch Space/tmp_link_ai_lit_output.md",
     "Dailies/2025-03-01.md",
     "Obsidian/spacekeys.md",
     "Dailies/2024-03-09.md",
@@ -367,7 +364,6 @@
     "Work/VPP ideas/Generative AI talk/Gen AI Talk Ideas.md",
     "Dailies/2025-02-28.md",
     "lit/lit_notes/Lowrey24RiseUnionRighta.html.md",
-    "lit/lit_sources/Seok15mutInfoDiscrtRcrsAdaptPart.pdf",
-    "lit/lit_sources/Beinert25windFrcstAggZeroShot.pdf"
+    "lit/lit_sources/Seok15mutInfoDiscrtRcrsAdaptPart.pdf"
   ]
 }
