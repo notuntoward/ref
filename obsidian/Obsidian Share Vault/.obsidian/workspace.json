@@ -8,21 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "6278d6284f2b9bf5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Dailies/2025-03-01.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "2025-03-01"
-            }
-          },
-          {
             "id": "960f69c5fcc69454",
             "type": "leaf",
             "state": {
@@ -36,39 +21,8 @@
               "icon": "lucide-file",
               "title": "Module 2 - SQL for Data Science"
             }
-          },
-          {
-            "id": "8250a3966be461fa",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Scratch Space/tmp_perplexy_merged.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "tmp_perplexy_merged"
-            }
-          },
-          {
-            "id": "6a3909db115ba051",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Dailies/2025-03-01.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "2025-03-01"
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -158,7 +112,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 415.5
+    "width": 415.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -264,7 +219,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scratch Space/tmp_perplexy_merged.md",
+                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -274,7 +229,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for tmp_perplexy_merged"
+              "title": "Backlinks for Module 2 - SQL for Data Science"
             }
           },
           {
@@ -343,7 +298,6 @@
       "cmdr:Custom Frames: Open Google Keep": false,
       "cmdr:Recent Files: Open": false,
       "cmdr:Commander: Open Commander Settings": false,
-      "obsidian42-text-transporter:Text Transporter": false,
       "cmdr:Custom Frames: Open Google Calendar": false,
       "cmdr:Outline: Open outline of the current file": false,
       "cmdr:Bookmark Show": false,
@@ -354,12 +308,12 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "8250a3966be461fa",
+  "active": "960f69c5fcc69454",
   "lastOpenFiles": [
-    "Obsidian/spacekeys.md",
-    "Scratch Space/tmp_perplexy_merged.md",
     "Dailies/2025-03-01.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
+    "Scratch Space/tmp_perplexy_merged.md",
+    "Obsidian/spacekeys.md",
     "Dailies/2024-03-09.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
     "lit/lit_sources/Sang22elecPriceFrcstDcsnFocus.pdf",
