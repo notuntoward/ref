@@ -3,6 +3,9 @@ category: literaturenote
 tags:
   - politics
   - votingSystems
+read: false
+in-progress: false
+linked: true
 citekey: Drutman21whatWeKnowRCV
 status:
   - unread
@@ -15,7 +18,7 @@ publisher: ""
 citation key: Drutman21whatWeKnowRCV
 DOI: ""
 created date: 2024-10-03T15:25:28-07:00
-modified date: 2024-10-03T15:46:13-07:00
+modified date: 2025-03-02T16:18:24-08:00
 ---
 
 > [!info]- : [**Zotero**](zotero://select/library/items/NEZYSA6K)   | [**URL**](http://newamerica.org/political-reform/reports/what-we-know-about-ranked-choice-voting/) | [[Drutman21whatWeKnowRCV.pdf|PDF]] | [[what-we-know-about-ranked-choice-voting.html|HTM]]

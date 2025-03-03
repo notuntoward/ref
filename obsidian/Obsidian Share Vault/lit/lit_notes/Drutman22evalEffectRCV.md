@@ -1,11 +1,10 @@
 ---
 category: literaturenote
-tags:
-  - politics
-  - votingSystems
+tags: politics, votingSystems
+read: false
+in-progress: false
+linked: true
 citekey: Dtrutman22evalEffectRCV
-status:
-  - unread
 dateread: 
 ZoteroTags: ""
 aliases:
@@ -15,7 +14,7 @@ publisher: ""
 citation key: Dtrutman22evalEffectRCV
 DOI: ""
 created date: 2024-10-03T15:24:31-07:00
-modified date: 2024-10-03T15:45:31-07:00
+modified date: 2025-03-02T16:18:09-08:00
 ---
 > [!info]- : [**Zotero**](zotero://select/library/items/NE75FMMH)   | [**URL**](http://newamerica.org/political-reform/reports/evaluating-the-effects-of-ranked-choice-voting/) | [[Dtrutman22evalEffectRCV.pdf|PDF]] | [[evaluating-the-effects-of-ranked-choice-voting.html|HTM]]
 >
