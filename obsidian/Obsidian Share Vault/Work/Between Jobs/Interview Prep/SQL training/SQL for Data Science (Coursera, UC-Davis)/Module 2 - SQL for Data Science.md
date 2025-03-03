@@ -1,9 +1,11 @@
 ---
 created date: 2025-01-13T21:25:08-08:00
-modified date: 2025-03-01T19:07:59-08:00
+modified date: 2025-03-02T21:34:48-08:00
 ---
 **Module 2 of Coursera / UCD Davis SQL Class Notes** (Lawrence22dataScienceSQLcourse)
 From: [Module Introduction - Filtering, Sorting, and Calculating Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/GAA9h/module-introduction)
+
+Filtering, Sorting, and Calculating Data with SQL
 # Intro
 From: [Module Introduction - Filterin...](https://www.coursera.org/learn/sql-for-data-science/lecture/GAA9h/module-introduction)
 ## Filtering Operators in this Module]
@@ -60,6 +62,13 @@ From: [Advanced Filtering: IN, OR, and NOT - Filtering, Sorting, and Calculating
 ## Using Wildcards in SQL
 From: [Using Wildcards in SQL - Filtering, Sorting, and Calculating Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/xIAow/using-wildcards-in-sql)
 
+The `predicate` used to do wildcard matching is **LIKE**.  For example:
+
+SELECT pay_type
+FROM jobs
+WHERE job_code LIKE '03%';
+
+
 ![[Pasted image 20250113221310.webp|394]]
 
 - `%` is the wildcard in strings
@@ -69,12 +78,12 @@ From: [Using Wildcards in SQL - Filtering, Sorting, and Calculating Data with SQ
 
 - note: wildcards neve`r match NULL
 
-![[Pasted image 20250113221757.webp|172|0x0]]
+![[Pasted image 20250113221757.webp|172|242x305]]
 
 - I *think* she screwed up with this explanation
 - Checking, it seems that `_` matches a single character
 - not supported by DB2
-![[Pasted image 20250113222214.webp|205|0x0]]
+![[Pasted image 20250113222214.webp|205|278x173]]
 
 - Matches a set of chars inside of `[]`, I think she said
 - but NOT in SQLite
@@ -84,7 +93,7 @@ From: [Using Wildcards in SQL - Filtering, Sorting, and Calculating Data with SQ
 # Sorting with ORDER BY
 From: [Sorting with ORDER BY - Filtering, Sorting, and Calculating Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/OIQ7a/sorting-with-order-by)
 
-![[Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/21a46ec41fd4a6786cacd55778079fe8_MD5.jpeg|270x210]]
+![[Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/21a46ec41fd4a6786cacd55778079fe8_MD5.jpeg|318x249]]
 
 1. comm after column name
 2. don't need to have been in SELECT to sort by it -- unlike pandas!  ^xe1t
@@ -95,19 +104,19 @@ From: [Sorting with ORDER BY - Filtering, Sorting, and Calculating Data with SQL
 
 - can sort by index:  Note the **Matlab-like 1-based column indexing**
 
-![[Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/93abaf1a3e5f7b564544e43206e620cb_MD5.jpeg|212x140]]
+![[Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/93abaf1a3e5f7b564544e43206e620cb_MD5.jpeg|210x138]]
 
 - **only for following column, must spec for each column** or I guess it does default sorting?
 # Math Operations
 From: [Math Operations - Filtering, Sorting, and Calculating Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/DYtOe/math-operations)
 
-![[image.png|309x206]]
+![[image.png|379x252]]
 
 - calc is after the selected cols, preceded by a comma
 - **AS** is name of new column where the result goes
 - above is **\***, can do: **+, -, \*, /**
 
-![[image-2.png|240x185]]
+![[image-2.png|286x221]]
 
 - order of opp follows American saying: "**P**lease **E**xcuse **M**y **D**ear **A**unt **S**ally"
 	- e.g. (UnitPrice - Discount)\*Quantity AS Total_Cost
@@ -116,7 +125,7 @@ From: [Math Operations - Filtering, Sorting, and Calculating Data with SQL | Cou
 From: [Aggregate Functions - Filtering, Sorting, and Calculating Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/O8yes/aggregate-functions)
 ## Math aggregators
 - aggregators are at least: **AVG**, **COUNT**, **MIN**, **MAX**, **SUM** (DISTINCT functions is kind of an aggregator too?)
-![[image-3.png|249x163]]
+![[image-3.png|304x200]]
 
 - aggregation is inside of the select statement: above, you don't select UnitPrice and then calc AVG. Instead, you do SELECT AVG(UnitPrice) as avg_price FROM products, or e.g.:
 
@@ -128,13 +137,13 @@ From: [Aggregate Functions - Filtering, Sorting, and Calculating Data with SQL |
 	- **\*** just counts the rows, regardless of columns
 	- COUNT(CustomerID) counts the **non-null** values 
 
-![[image-5.png|495x145]]
+![[image-5.png|541x158]]
 
 * getting the min/max range (note the AS'es in the middle of the select). Can do it without AS to get unnamed results
 ![[image-6.png|332x81]]
 
 ## Distinct
-![[image-7.png|219x242]]
+![[image-7.png|255x283]]
 
 - can't use DISTINCT with COUNT(\*)
 	- I guess b/c it contradicts the COUNT(\*)` behavior above (counts rows)
@@ -143,7 +152,7 @@ From: [Aggregate Functions - Filtering, Sorting, and Calculating Data with SQL |
 # Grouping Data with SQL
 [Grouping Data with SQL - Filtering, Sorting, and Calculating Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/LWL8X/grouping-data-with-sql)
 
-![[image-8.png|336x127]]
+![[image-8.png|405x153]]
 
 - GROUP BY comes at the end, after the calc done on the groups
 	- this is the *opposite of pandas*
@@ -155,11 +164,11 @@ From: [Aggregate Functions - Filtering, Sorting, and Calculating Data with SQL |
 	- [ ] ? why?  b/c you can assume you aggregate on anything not mentioned??
 	- if you don't list them, then you won't know the ordering of the results
 - NULLs get grouped
-![[image-10.png|232x178]]
+![[image-10.png|292x224]]
 
 - WHERE filters on rows, not groups ^753q
 
-![[image-11.png]]
+![[image-11.png|234x168]]
 
 - untangling it (different than pandas ordering)
 	- SELECT CustomerID, COUNT(\*) AS orders
@@ -174,5 +183,29 @@ From: [Aggregate Functions - Filtering, Sorting, and Calculating Data with SQL |
 	- [ ] ? would the ORDER BY clause be *before* GROUP BY or the aggregation *after*?
 	- [ ] ? does it matter for performance too, or just for display?
 
+# Putting it All Together
+[Putting it All Together - Filtering, Sorting, and Calculating Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/3NaSU/putting-it-all-together)
+
+## The order of SQL clauses
+Can skip some, for example, you can SELECT … FROM ORDER … BY\
+
+![[image-12.png|377x332]]
+
+OR...
+
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition
+GROUP BY column1
+HAVING condition
+ORDER BY column1 ASC/DESC;
+
+## SQL for Data Science Languages
+- [python-sql · PyPI](https://pypi.org/project/python-sql/)
+- [sqlite3 — DB-API 2.0 interface for SQLite databases &#8212; Python 3.13.2 documentation](https://docs.python.org/3/library/sqlite3.html)
 
 
+SELECT CustomerId, COUNT(InvoiceId)
+FROM Invoices
+GROUP By CustomerId
+ORDER BY COUNT(InvoiceId) DESC

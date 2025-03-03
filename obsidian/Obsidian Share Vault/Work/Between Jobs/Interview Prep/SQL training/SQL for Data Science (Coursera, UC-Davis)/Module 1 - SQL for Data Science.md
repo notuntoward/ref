@@ -1,8 +1,9 @@
 ---
 created date: 2025-01-08T13:50:51-08:00
-modified date: 2025-03-01T11:22:29-08:00
+modified date: 2025-03-02T21:34:23-08:00
 ---
 
+Getting Started and Selecting & Retrieving Data with SQL
 # SQL Command Reference
 - **By Purpose**: [[SQLTutorial25sqlCheatSheet|SQTutorial25: SQL Cheat Sheet in PDF]] 
 - **Alphabetical**: [[W3schools25sqlQuickReference|W3schools25: SQL Quick Reference]] 
@@ -32,6 +33,13 @@ modified date: 2025-03-01T11:22:29-08:00
 
 This table provides a high-level overview of essential SQL commands and their general syntax. For more detailed information and additional commands, consider consulting comprehensive SQL references such as the [SQL Quick Reference by W3Schools](https://www.w3schools.com/sql/sql_quickref.asp) or the [SQL Cheat Sheet by SQL Tutorial](https://www.sqltutorial.org/sql-cheat-sheet/).
 
+## Order of Basic Clauses
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition
+GROUP BY column1
+HAVING condition
+ORDER BY column1 ASC/DESC;
 ### Citations:
 
 1. [https://www.manpagez.com/man/3/SQL::Statement::Syntax/](https://www.manpagez.com/man/3/SQL::Statement::Syntax/)
@@ -50,7 +58,7 @@ From: [Coursera | Online Courses & Credentials From Top Educators. Join for Free
 ## Three condition keyword
 From: [[SQLTutorial25sqlCheatSheet|SQLTutorial25sqlCheatSheet]]
 
-| Command             | Condition Keyword | Example                                                           | Why                                                                                                                                          |
+| clause             | Condition Keyword | Example                                                           | Why                                                                                                                                          |
 | ------------------- | ----------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | **SELECT**          | **WHERE**         | SELECT c1, c2 FROM t **WHERE** condition;                         |                                                                                                                                              |
 | SELECT... **GROUP** | **HAVING**        | SELECT c1, aggregate(c2) FROM t GROUP BY c1 **HAVING** condition; | [here?](<Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md#^753q >) |
@@ -163,7 +171,7 @@ Then the database engineer links the product table to the color table with the 
 
 SQL statements, or SQL queries, are valid instructions that relational database management systems understand. Software developers build SQL statements by using different SQL language elements. SQL language elements are components such as identifiers, variables, and search conditions that form a correct SQL statement.
 
-For example, the following SQL statement uses a SQL INSERT command to store _Mattress Brand A,_ priced _$499,_ into a table named _Mattress_table,_ with column names _brand_name_ and _cost:_
+For example, the following SQL statement uses a SQL INSERT clause to store _Mattress Brand A,_ priced _$499,_ into a table named _Mattress_table,_ with column names _brand_name_ and _cost:_
 
 INSERT INTO _Mattress_table (brand_name, cost)_
 
@@ -183,7 +191,7 @@ The parser starts by tokenizing, or replacing, some of the words in the SQL stat
 
 ##### ****_Correctness_****
 
-The parser verifies that the SQL statement conforms to SQL semantics, or rules, that ensure the correctness of the query statement. For example, the parser checks if the SQL command ends with a semi-colon. If the semi-colon is missing, the parser returns an error.
+The parser verifies that the SQL statement conforms to SQL semantics, or rules, that ensure the correctness of the query statement. For example, the parser checks if the SQL clause ends with a semi-colon. If the semi-colon is missing, the parser returns an error.
 
 ##### ****_Authorization_****
 
@@ -197,29 +205,29 @@ The relational engine, or query processor, creates a plan for retrieving, writin
 
 The storage engine, or database engine, is the software component that processes the byte code and runs the intended SQL statement. It reads and stores the data in the database files on physical disk storage. Upon completion, the storage engine returns the result to the requesting application.
 
-### What are SQL commands?
+### What are SQL clauses?
 
-Structured query language (SQL) commands are specific keywords or SQL statements that developers use to manipulate the data stored in a relational database. You can categorize SQL commands as follows.
+Structured query language (SQL) clauses are specific keywords or SQL statements that developers use to manipulate the data stored in a relational database. You can categorize SQL clauses as follows.
 
 #### **Data definition language** 
 
-Data definition language (DDL) refers to SQL commands that design the database structure. Database engineers use DDL to create and modify database objects based on the business requirements. For example, the database engineer uses the CREATE command to create database objects such as tables, views, and indexes.
+Data definition language (DDL) refers to SQL clauses that design the database structure. Database engineers use DDL to create and modify database objects based on the business requirements. For example, the database engineer uses the CREATE clause to create database objects such as tables, views, and indexes.
 
 #### **Data query language**
 
-Data query language (DQL) consists of instructions for retrieving data stored in relational databases. Software applications use the SELECT command to filter and return specific results from a SQL table. 
+Data query language (DQL) consists of instructions for retrieving data stored in relational databases. Software applications use the SELECT clause to filter and return specific results from a SQL table. 
 
 #### **Data manipulation language**
 
-Data manipulation language (DML) statements write new information or modify existing records in a relational database. For example, an application uses the INSERT command to store a new record in the database.
+Data manipulation language (DML) statements write new information or modify existing records in a relational database. For example, an application uses the INSERT clause to store a new record in the database.
 
 #### **Data control language**
 
-Database administrators use data control language (DCL) to manage or authorize database access for other users. For example, they can use the GRANT command to permit certain applications to manipulate one or more tables. 
+Database administrators use data control language (DCL) to manage or authorize database access for other users. For example, they can use the GRANT clause to permit certain applications to manipulate one or more tables. 
 
 #### **Transaction control language**
 
-The relational engine uses transaction control language (TCL) to automatically make database changes. For example, the database uses the ROLLBACK command to undo an erroneous transaction. 
+The relational engine uses transaction control language (TCL) to automatically make database changes. For example, the database uses the ROLLBACK clause to undo an erroneous transaction. 
 
 ### What are SQL standards?
 
@@ -235,7 +243,7 @@ MySQL is an open-source relational database management system offered by Oracle.
 
 #### **SQL vs. MySQL**
 
-Structured query language (SQL) is a standard language for database creation and manipulation. MySQL is a relational database program that uses SQL queries. While SQL commands are defined by international standards, the MySQL software undergoes continual upgrades and improvements.
+Structured query language (SQL) is a standard language for database creation and manipulation. MySQL is a relational database program that uses SQL queries. While SQL clauses are defined by international standards, the MySQL software undergoes continual upgrades and improvements.
 
 ### What is NoSQL?
 
@@ -269,6 +277,8 @@ Get started with SQL Server on AWS by [signing up for an AWS account](https://p
 
 ## Data Modeling and ER Diagrams
 From: [Coursera | Online Courses & Credentials From Top Educators. Join for Free | Coursera](https://www.coursera.org/learn/sql-for-data-science/supplement/whI45/data-modeling-and-er-diagrams)
+
+
 
 **Lecturer recommends reviewing these**
 - [x] [Norwalk Aberdeen: Entity-Relationship Diagrams (9 Minute YouTube Video)](https://www.youtube.com/watch?v=c0_9Y8QAstg)

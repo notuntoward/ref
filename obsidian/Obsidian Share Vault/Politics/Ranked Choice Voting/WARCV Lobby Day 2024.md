@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-19T18:34:29-08:00
-modified date: 2025-01-29T23:05:48-08:00
+modified date: 2025-03-02T16:13:06-08:00
 ---
 Fairvote WA's lobbying day
 # MY LD Captain Calling Duties
@@ -24,7 +24,7 @@ Fairvote WA's lobbying day
 
 From Tim White, on the 1/29/25 FairVote WA Lobby day call
 
-> Hearing criticism from OSOS Stuart Holmes (?)claimed RCV auditing not possible because cast vote records are exempt from disclosure.  
+> Hearing criticism from OSOS Stuart Holmes (?) claimed RCV auditing not possible because cast vote records are exempt from disclosure.  
 > This was taken as fact by others who repeated it.  
 > The claim is false.  
 > Here's the law:  
