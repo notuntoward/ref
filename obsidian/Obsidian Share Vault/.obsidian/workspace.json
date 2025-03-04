@@ -23,7 +23,7 @@
             }
           },
           {
-            "id": "80c96d754224eba5",
+            "id": "376d78d651202ed6",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -38,7 +38,7 @@
             }
           },
           {
-            "id": "cceacb2fcbfb511e",
+            "id": "b97cca4bdc6c3663",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -85,7 +85,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "\"image converter\"",
+                "query": "tedious",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -349,15 +349,23 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "80c96d754224eba5",
+  "active": "376d78d651202ed6",
   "lastOpenFiles": [
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-15.png",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-14.png",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-13.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 3 - SQL for Data Science.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-12.png",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 3 - SQL for Data Science.md",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-24.png",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-23.png",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-22.png",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-21.png",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-20.png",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-19.png",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-18.png",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-17.png",
+    "Obsidian/spacekeys.md",
+    "lit/refwrangle/Zotero to Obsidian to RAG.md",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-16.png",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-15.png",
     "Dailies/2024-02-04.md",
     "Dailies/2025-03-02.md",
     "lit/lit_notes/Drutman21whatWeKnowRCV.md",
@@ -372,26 +380,17 @@
     "lit/lit_notes/Bai23estTotalCorrMIest.md",
     "Scratch Space/tmp_perplexy_merged.md",
     "Dailies/2025-03-01.md",
-    "Obsidian/spacekeys.md",
     "Dailies/2024-03-09.md",
     "lit/lit_sources/Sang22elecPriceFrcstDcsnFocus.pdf",
     "lit/lit_notes/SQLTutorial25sqlCheatSheet.md",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-11.png",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-10.png",
     "[[Work/Between.md",
     "[[Work",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-9.png",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-8.png",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-7.png",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-6.png",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-5.png",
     "lit/lit_sources/SQLTutorial25sqlCheatSheet.pdf",
     "Dailies/2025-02-26.md",
     "Dailies/2025-02-27.md",
     "lit/lit_sources/SQLTutorial25sqlCheatSheet.html",
     "Dailies/2025-02-19.md",
     "Dailies/2025-02-17.md",
-    "Dailies/2025-02-13.md",
     "lit/lit_sources/Jain25moderatesOverperform.html",
     "lit/lit_sources/SQLQuickReference.html",
     "lit/lit_sources/SQLCheatSheet.html",
