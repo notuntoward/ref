@@ -1,6 +1,6 @@
 ---
 created date: 2025-01-13T21:25:08-08:00
-modified date: 2025-03-03T12:25:27-08:00
+modified date: 2025-03-03T21:21:37-08:00
 ---
 **Module 2 of Coursera / UCD Davis SQL Class Notes** (Lawrence22dataScienceSQLcourse)
 From: [Module Introduction - Filtering, Sorting, and Calculating Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/GAA9h/module-introduction)
@@ -145,6 +145,14 @@ From: [Aggregate Functions - Filtering, Sorting, and Calculating Data with SQL |
 ## Distinct
 ![[image-7.png|255x283]]
 
+- DISTINCT not called like a function: It's
+  
+  SELECT DISTINCT CustomerID FROM Customers
+  
+  **not**
+  
+  SELECT DISTINCT(CustomerID) FROM Customers
+  
 - can't use DISTINCT with COUNT(\*)
 	- I guess b/c it contradicts the COUNT(\*)` behavior above (counts rows)
 	- So, I guess you can nest operators.  She hasn't shown that yet.

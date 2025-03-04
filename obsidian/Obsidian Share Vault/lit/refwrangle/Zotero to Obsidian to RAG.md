@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-03-03T14:09:54-08:00
+modified date: 2025-03-03T22:24:15-08:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -22,11 +22,18 @@ I'm putting this code in `ref/refwrangle`.  Also see [[Zotero 6 to 7]].
 			- although I guess this could be done before calling the zotero interface
 			- [[2024-02-25#Zotero Integration Plugin]]
 - [ ] ! Combine with [[#Less tedious Zotero --> Obsidian Lit Note process]]
+- [ ] ! Combine with [[Obsidian/Zotero 6 to 7.md#Pushing zotero items to Obsidian notes |Pushing zotero items to Obsidian notes]]
 # Zotero to NotebookLM
 ## Problems to solve before using NotebookLM
 
-### YouTube: can't point to a specific point in a video
-It can cite an entire YT video as a source, but it can't highlight a specific passage in the transcript: it just highlights the whole thing.
+### YouTube Transcripts
+#### Can't point to a specific point in a YouTube video
+It can cite an entire YT video as a source, but it can't highlight a specific passage in the transcript: it just highlights the whole thing.  
+- My solution was to add timestamps to the transcript so if it pointed you to a sentence, you'd see the timestamp that it came from.
+#### Getting YouTube  Transcript
+- with bare python, not connected to Zotero or Obsidian
+	- Use refwrangle.youtube2md() which uses [youtube-transcript-api/youtube...](https://github.com/jdepoix/youtube-transcript-api/blob/master/youtube_transcript_api/_transcripts.py)
+- Using Obsidian [[Dailies/2025-03-03.md#Companion Plugin and YouTube summarizer|Note Companion and YouTube summarizer]] somehow
 ### Manual entry
 Every single source must be entered manually. I have hundreds of articles, so this is not tenable.
 ### Total data limit
@@ -169,6 +176,7 @@ Zotero _Better Notes Add-on has a way of two-way syncing Obsidian Markdown_ note
 Trying to reduce the steps and friction between adding an item to zotero and then **making an Obsidian literature note properly linked to Zotero**.  This is so that I actually get this done, instead of letting the unlinked zotero entries pile up, or even skipping making the zotero note at all.
 
 - [ ] ! combine with [[#Easier zotero-to-obsidian note transfer]]
+- [ ] ! combine with [[Obsidian/Zotero 6 to 7.md#Pushing zotero items to Obsidian notes |Pushing zotero items to Obsidian notes]]
 ## Push from Zotero to Obsidian
 I think what I need is a way to add a button to Zotero that makes an obsidian note(s) from the current or selected group of Zotero items.
 ### Push with Zotero "Actions and Tags" plugin
