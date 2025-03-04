@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-02-27T17:19:16-08:00
+modified date: 2025-03-03T14:09:54-08:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -169,10 +169,9 @@ Zotero _Better Notes Add-on has a way of two-way syncing Obsidian Markdown_ note
 Trying to reduce the steps and friction between adding an item to zotero and then **making an Obsidian literature note properly linked to Zotero**.  This is so that I actually get this done, instead of letting the unlinked zotero entries pile up, or even skipping making the zotero note at all.
 
 - [ ] ! combine with [[#Easier zotero-to-obsidian note transfer]]
-## Push from Zotero with Zotero "Actions and Tags" plugin 
-
+## Push from Zotero to Obsidian
 I think what I need is a way to add a button to Zotero that makes an obsidian note(s) from the current or selected group of Zotero items.
-
+### Push with Zotero "Actions and Tags" plugin
 - [ ] [Reddit - Dive into anything](https://www.reddit.com/r/ObsidianMD/comments/1f48x0g/obsidian_plugin_autocreating_notes_from_zotero/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button): 
 	- guy makes a button in zotero, 
 	- but has his own note template in java, doesn't use [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
@@ -186,8 +185,13 @@ I think what I need is a way to add a button to Zotero that makes an obsidian no
 	- Maybe the zotero click would only send the zotero item citekeys, which would avoid the awful zotero citekey selector.
 	- An obsidian process would then look for these keys within obsidian's copy of the zotero DB, put there by, perhaps, the [[Dailies/2025-02-07.md#Zotero Sync Client Plugin |Zotero Sync Client Plugin]] or use one of the [[lit/refwrangle/Zotero to Obsidian to RAG.md#Obsidian plugins which are zotero DB interfaces |Obsidian plugins which are zotero DB interfaces]]
 	- Maybe there could be a python watcher to handle all of this?
+### Push with Zotero Action Cmd Plugin
+See: [zotero-action-cmd: A plugin for Zotero. Perform operations to execute custom commands](https://github.com/Bowen-0x00/zotero-action-cmd)
+- can trigger?
+	- system call so python or whatever
+	- run an http request?  
+- My question: [Does the command get informati...](https://github.com/Bowen-0x00/zotero-action-cmd/issues/29)
 ## Direct zotero/obsidan DB-to-DB connection?
-
 This could *somehow* help smooth the zotero --> obsidian process.
 ### Zotero API interfaces
 

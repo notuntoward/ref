@@ -85,7 +85,7 @@ Locate icon on the RHS margin looks up metainfo for the current entry. Can add n
 ### Actions Tags Plugin
 From: [GitHub - windingwind/zotero-actions-tags: Customize your Zotero workflow.](https://github.com/windingwind/zotero-actions-tags)
 
- - Used here [[lit/refwrangle/Zotero to Obsidian to RAG.md#Push from Zotero with Zotero "Actions and Tags" plugin  |Push from Zotero with Zotero "Actions and Tags" plugin ]]
+ - Used here [[lit/refwrangle/Zotero to Obsidian to RAG.md#Push with Zotero "Actions and Tags" plugin|Push from Zotero with Zotero "Actions and Tags" plugin ]]
  - Examples of custom scripts (actions)
 	 - [What is This?](https://github.com/windingwind/zotero-actions-tags/tree/master?tab=readme-ov-file#-what-is-this)
 	 - Many user contributions: [Discussions · GitHub](https://github.com/windingwind/zotero-actions-tags/discussions)

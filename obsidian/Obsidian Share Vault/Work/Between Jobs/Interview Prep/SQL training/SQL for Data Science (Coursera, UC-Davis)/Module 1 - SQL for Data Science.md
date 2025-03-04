@@ -1,6 +1,6 @@
 ---
 created date: 2025-01-08T13:50:51-08:00
-modified date: 2025-03-02T21:34:23-08:00
+modified date: 2025-03-03T12:32:11-08:00
 ---
 
 Getting Started and Selecting & Retrieving Data with SQL
@@ -108,11 +108,10 @@ From: [Creating Temporary Tables - Getting Started and Selecting & Retrieving Da
 ### Declaring temp table
 
 **SQLite declaration**
-![[Pasted image 20250110151359.webp|249|0x0]]
+![[Pasted image 20250110151359.webp|396x311]]
 
 **Fancy Syntax, depends upon the SQL dialect (this is SQLite)**
-![[Pasted image 20250110151515.webp|390|587x295]]
-
+![[Pasted image 20250110151515.webp|587x295]]
 ### Temp Tables: suggested thing to look up
 
 - updating temp tables
@@ -121,7 +120,7 @@ From: [Creating Temporary Tables - Getting Started and Selecting & Retrieving Da
 From: [Adding Comments to SQL - Getting Started and Selecting & Retrieving Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/akd1V/adding-comments-to-sql)
 
 **Dashes or c-style comments**
-![[Pasted image 20250110152911.webp|667|915x234]]
+![[Pasted image 20250110152911.webp|915x234]]
 
 ## Practice 1
 From: [Coursera | Online Courses & Credentials From Top Educators. Join for Free | Coursera](https://www.coursera.org/learn/sql-for-data-science/assignment-submission/saQci/practice-simple-select-queries)

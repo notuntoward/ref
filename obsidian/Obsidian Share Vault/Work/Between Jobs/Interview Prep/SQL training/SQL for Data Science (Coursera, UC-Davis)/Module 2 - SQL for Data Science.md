@@ -1,6 +1,6 @@
 ---
 created date: 2025-01-13T21:25:08-08:00
-modified date: 2025-03-02T21:34:48-08:00
+modified date: 2025-03-03T12:25:27-08:00
 ---
 **Module 2 of Coursera / UCD Davis SQL Class Notes** (Lawrence22dataScienceSQLcourse)
 From: [Module Introduction - Filtering, Sorting, and Calculating Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/GAA9h/module-introduction)
@@ -13,22 +13,22 @@ From: [Module Introduction - Filterin...](https://www.coursera.org/learn/sql-for
 ## Wildcards
 will use them...
 ## Math and Aggregate operators
-![[Pasted image 20250113212951.webp|147|231x199]]
+![[Pasted image 20250113212951.webp|147|198x171]]
 
 # Basics of Filtering
 From: [Basics of Filtering with SQL - Filtering, Sorting, and Calculating Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/ESCUo/basics-of-filtering-with-sql)
 ## Where 
 
-![[Pasted image 20250113213432.webp|511]]
+![[Pasted image 20250113213432.webp|511|512x252]]
 
 ## Where examples
-![[Pasted image 20250113213554.webp|411]]
+![[Pasted image 20250113213554.webp|411|411x190]]
 
 - ProductName is a string var, so '' around Tofu
 
-![[Pasted image 20250113213646.webp|410]]
+![[Pasted image 20250113213646.webp|410|422x191]]
 
-![[Pasted image 20250113213741.webp|407]]
+![[Pasted image 20250113213741.webp|407|407x238]]
 
 ![[Pasted image 20250113213809.webp|407]]
 
@@ -37,9 +37,9 @@ From: [Basics of Filtering with SQL - Filtering, Sorting, and Calculating Data w
 ## Advanced Filtering: IN, OR, and NOT
 From: [Advanced Filtering: IN, OR, and NOT - Filtering, Sorting, and Calculating Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/pycB9/advanced-filtering-in-or-and-not)
 
-![[Pasted image 20250113214209.webp|407]]
+![[Pasted image 20250113214209.webp|407|318x218]]
 
-![[Pasted image 20250113214309.webp|405]]
+![[Pasted image 20250113214309.webp|405|335x237]]
 
 - 2nd var in OR not executed of 1st is true
 - so I guess for efficiency, put use var that will remove the most entries 1st?
@@ -93,14 +93,14 @@ WHERE job_code LIKE '03%';
 # Sorting with ORDER BY
 From: [Sorting with ORDER BY - Filtering, Sorting, and Calculating Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/OIQ7a/sorting-with-order-by)
 
-![[Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/21a46ec41fd4a6786cacd55778079fe8_MD5.jpeg|318x249]]
+![[Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/21a46ec41fd4a6786cacd55778079fe8_MD5.jpeg|289x226]]
 
 1. comm after column name
 2. don't need to have been in SELECT to sort by it -- unlike pandas!  ^xe1t
 	1. [ ] ? b/c you can order by index, as below?
 3. last SELECT clause
 
-![[Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/fbc0d4ac1428724afe05e6afa98fc47c_MD5.jpeg|224x200]]
+![[Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/fbc0d4ac1428724afe05e6afa98fc47c_MD5.jpeg|246x220]]
 
 - can sort by index:  Note the **Matlab-like 1-based column indexing**
 
@@ -110,13 +110,13 @@ From: [Sorting with ORDER BY - Filtering, Sorting, and Calculating Data with SQL
 # Math Operations
 From: [Math Operations - Filtering, Sorting, and Calculating Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/DYtOe/math-operations)
 
-![[image.png|379x252]]
+![[image.png|345x229]]
 
 - calc is after the selected cols, preceded by a comma
 - **AS** is name of new column where the result goes
 - above is **\***, can do: **+, -, \*, /**
 
-![[image-2.png|286x221]]
+![[image-2.png|260x201]]
 
 - order of opp follows American saying: "**P**lease **E**xcuse **M**y **D**ear **A**unt **S**ally"
 	- e.g. (UnitPrice - Discount)\*Quantity AS Total_Cost
