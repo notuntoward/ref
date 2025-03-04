@@ -1,6 +1,6 @@
 ---
 created date: 2024-08-20T17:36:57-07:00
-modified date: 2025-02-27T16:46:43-08:00
+modified date: 2025-03-03T22:05:12-08:00
 ---
 Stuff about updating zotero 6zo to zotero 7.  Also see [[Zotero to Obsidian to RAG]].
 # New Zotero 7 Features
@@ -79,9 +79,10 @@ Locate icon on the RHS margin looks up metainfo for the current entry. Can add n
 - I copied [this one](https://egh.github.io/zotero-lookup-engines/us.wa.seattle_public.html) (started with "seattle"): had spl, google scholar, crossreff
 	- there are a bunch more [here](https://egh.github.io/zotero-lookup-engines/)
 # Zotero 7 Plugins 
-
 ## Pushing zotero items to Obsidian notes
 
+- Also: [[Zotero to Obsidian to RAG#Less tedious Zotero --> Obsidian Lit Note process]]
+- Also: [[Zotero to Obsidian to RAG#Push from Zotero to Obsidian]]
 ### Actions Tags Plugin
 From: [GitHub - windingwind/zotero-actions-tags: Customize your Zotero workflow.](https://github.com/windingwind/zotero-actions-tags)
 
@@ -89,9 +90,7 @@ From: [GitHub - windingwind/zotero-actions-tags: Customize your Zotero workflow.
  - Examples of custom scripts (actions)
 	 - [What is This?](https://github.com/windingwind/zotero-actions-tags/tree/master?tab=readme-ov-file#-what-is-this)
 	 - Many user contributions: [Discussions · GitHub](https://github.com/windingwind/zotero-actions-tags/discussions)
-
 ### Plugins related to zotfile (zotero 7)
-
 In Z6, I used `zotfile` to "manage attachments," which renamed attachments to the citation key, and moved them to a specified, single directory.  But it's not been updated for Z7, as of 8/20/24.
 #### retorquere/zotero-file
   From: [GitHub - retorquere/zotero-fil...](https://github.com/retorquere/zotero-file?tab=readme-ov-file)

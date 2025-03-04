@@ -1,6 +1,6 @@
 ---
 created date: 2025-03-02T21:32:30-08:00
-modified date: 2025-03-03T18:28:12-08:00
+modified date: 2025-03-03T21:59:37-08:00
 ---
 **Module 3 of Coursera / UCD Davis SQL Class Notes** (Lawrence22dataScienceSQLcourse)
 From: [Subqueries and Joins with SQL](https://www.coursera.org/learn/sql-for-data-science/home/module/2)
@@ -79,12 +79,12 @@ From: [Inner Joins - Subqueries and J...](https://www.coursera.org/learn/sql-for
 	- ? are these "aliases" in the same sense as "alias" in the [[Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 3 - SQL for Data Science.md#Aliases and Self Joins |Aliases and Self Joins]] section
 # Aliases and Self Joins
 From: [Aliases and Self Joins - Subqu...](https://www.coursera.org/learn/sql-for-data-science/lecture/cQKUS/aliases-and-self-joins)
-
 ## Aliases
-
 - "alias": when you use AS, when getting the table, but in [[#Self Joins (and concatenation)]], it looks you don't need AS, at least in after a FROM 
 
 ![[image-21.png|819x376]]
+
+- **WARNING**: the FROM Vendors AS v, Products AS p appears to act like a **CROSS JOIN** (see [perplexity's explanation](https://www.perplexity.ai/search/if-i-run-this-sql-lite-query-s-SWHelZG_Q.qAeXPUQyFpZQ#0) for a similar query)
 
 ## Self Joins (and concatenation)
 ![[image-22.png|478x257]]
@@ -107,10 +107,15 @@ From: [Advanced Joins: Left, Right, a...](https://www.coursera.org/learn/sql-for
 ![[image-23.png|325x208]]
 
 The syntax for pandas-like "outer" is FULL OUTER (in SQL Lite only?)
-
 # My JOIN comments
 - Must use them when need need to bring more than one column from an inner table
 	- because a [subquery can only bring a single column from an inner subquery](<Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 3 - SQL for Data Science.md#^u5dc >)
+- @ DON'T FORGET: **ON** requires a boolean equation
+	- So 
+	  JOIN albums AS alb ON tr.AlbumId = alb.AlbumId
+	- Not
+	  JOIN albums AS alb ON tr.AlbumId
+	- it's **not like the pandas ON** 
 
 # Unions
 From: [Unions - Subqueries and Joins ...](https://www.coursera.org/learn/sql-for-data-science/lecture/KxGPs/unions)
@@ -121,9 +126,24 @@ From: [Unions - Subqueries and Joins ...](https://www.coursera.org/learn/sql-for
 
 ![[image-24.png|268x203]]
 
-- in this example, they're just stacked
+- in this example, they're just stacked but (she didn't say this) [duplicate rows are removed](<Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 3 - SQL for Data Science.md#^vaws >)
 - ? how would you know which rows are for customers or suppliers?
+# SUMMARY
+From: [Summary - Subqueries and Joins...](https://www.coursera.org/learn/sql-for-data-science/lecture/xEejU/summary)
 
+- check to see if result of a JOIN has the number of results you'd expect (LEFT, RIGHT, CROSS)
+- check for duplicates
+- INNER, LEFT and RIGHT joins **require a condition** -- **not like in pandas** where you say `f"ON={column_name}"`
 
-
-
+![[image-25.png]]
+# Reading
+- [x] [SQL vs Python | Mode](https://mode.com/blog/learning-python-sql)
+- [ ] [SQL SERVER - Difference Between Union vs. Union All](https://blog.sqlauthority.com/2009/03/11/sql-server-difference-between-union-vs-union-all-optimal-performance-comparison/) (performance)
+	- UNION 
+		- requires same num cols, same col types
+		- deletes duplicate rows in the UNION ^vaws
+			- effectively, a SELECT DISTINCT on the results
+	- UNION ALL 
+		- doesn't remove dup rows
+		- is faster than UNION
+		- if you know the UNION inputs are distinct, use UNION ALL for speed

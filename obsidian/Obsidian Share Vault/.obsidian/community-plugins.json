@@ -21,7 +21,6 @@
   "colored-text",
   "better-search-views",
   "dataview",
-  "image-converter",
   "obsidian-kanban",
   "multi-properties",
   "omnisearch",
@@ -63,5 +62,6 @@
   "obsidian-zoom",
   "obsidian-focus-mode",
   "backlink-cache",
-  "obsidian-editor-shortcuts"
+  "obsidian-editor-shortcuts",
+  "image-converter"
 ]
