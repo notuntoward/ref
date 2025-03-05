@@ -1,6 +1,6 @@
 ---
 created date: 2025-03-02T21:32:30-08:00
-modified date: 2025-03-04T12:06:15-08:00
+modified date: 2025-03-05T11:05:18-08:00
 ---
 **Module 3 of Coursera / UCD Davis SQL Class Notes** (Lawrence22dataScienceSQLcourse)
 From: [Subqueries and Joins with SQL](https://www.coursera.org/learn/sql-for-data-science/home/module/2)
@@ -21,7 +21,7 @@ From: [Using Subqueries - Subqueries and Joins in SQL | Coursera](https://www.co
 		- **FROM** in the **inner** query can only be a **single column** ^u5dc 
 
 
-![[image-14.png|493x350]]
+![[image-14.png|A caption|493x350]]
 
 # Subquery Best Practices and Considerations
 From: [Subquery Best Practices and Considerations - Subqueries and Joins in SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/3ubfD/subquery-best-practices-and-considerations)
