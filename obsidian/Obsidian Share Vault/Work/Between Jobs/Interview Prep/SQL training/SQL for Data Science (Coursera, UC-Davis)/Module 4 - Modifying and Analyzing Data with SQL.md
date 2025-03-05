@@ -1,6 +1,6 @@
 ---
 created date: 2025-03-04T11:58:28-08:00
-modified date: 2025-03-04T12:05:08-08:00
+modified date: 2025-03-04T19:40:45-08:00
 ---
 From: [Module Introduction - Modifyin...](https://www.coursera.org/learn/sql-for-data-science/lecture/V9qBD/module-introduction)
 
