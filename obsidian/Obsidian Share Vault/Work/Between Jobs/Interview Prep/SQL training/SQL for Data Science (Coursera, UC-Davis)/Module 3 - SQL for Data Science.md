@@ -1,6 +1,6 @@
 ---
 created date: 2025-03-02T21:32:30-08:00
-modified date: 2025-03-03T21:59:37-08:00
+modified date: 2025-03-04T12:06:15-08:00
 ---
 **Module 3 of Coursera / UCD Davis SQL Class Notes** (Lawrence22dataScienceSQLcourse)
 From: [Subqueries and Joins with SQL](https://www.coursera.org/learn/sql-for-data-science/home/module/2)
@@ -97,13 +97,14 @@ From: [Aliases and Self Joins - Subqu...](https://www.coursera.org/learn/sql-for
 	- gives you a the employee and manager names on the same row
 	- because it's LEFT, you'll get a NULL for employees without a manager
 - Apparently (but she doesn't explain): `|| ' ' ||`  is string concatenation of 1st and last names
+	- YES, that's correct.  See: [[Module 4 - Modifying and Analyzing Data with SQL#Concatenation]]
 - EmployeeName and ManagerName are aliases
 
 # Advanced Joins: Left, Right, and Full Outer Joins
 From: [Advanced Joins: Left, Right, a...](https://www.coursera.org/learn/sql-for-data-science/lecture/993cg/advanced-joins-left-right-and-full-outer-joins)
 
 - @ SQL Lite only does LEFT joins!
-	- not a huge loss: RIGHT joins are the same as a LEFT join with the reversed order
+	- n RIGHT not a huge loss: RIGHT joins are the same as a LEFT join with the reversed order
 ![[image-23.png|325x208]]
 
 The syntax for pandas-like "outer" is FULL OUTER (in SQL Lite only?)
