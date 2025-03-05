@@ -43,13 +43,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 4 - Modifying and Analyzing Data with SQL.md",
+                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Final Project - SQL for Data Scientists.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Module 4 - Modifying and Analyzing Data with SQL"
+              "title": "Final Project - SQL for Data Scientists"
             }
           },
           {
@@ -175,10 +175,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 4 - Modifying and Analyzing Data with SQL.md"
+                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Final Project - SQL for Data Scientists.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for Module 4 - Modifying and Analyzing Data with SQL"
+              "title": "File properties for Final Project - SQL for Data Scientists"
             }
           },
           {
@@ -250,13 +250,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 4 - Modifying and Analyzing Data with SQL.md",
+                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Final Project - SQL for Data Scientists.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": "imm"
               },
               "icon": "lucide-list",
-              "title": "Outline of Module 4 - Modifying and Analyzing Data with SQL"
+              "title": "Outline of Final Project - SQL for Data Scientists"
             }
           },
           {
@@ -265,7 +265,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 4 - Modifying and Analyzing Data with SQL.md",
+                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Final Project - SQL for Data Scientists.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -275,7 +275,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Module 4 - Modifying and Analyzing Data with SQL"
+              "title": "Backlinks for Final Project - SQL for Data Scientists"
             }
           },
           {
@@ -359,13 +359,24 @@
       "cmdr:Bookmark Show": false,
       "cmdr:Ink: New drawing": false,
       "cmdr:Ink: New handwriting section": false,
-      "obsidian-focus-mode:Toggle Focus Mode (Shift + Click to show active pane only)": false,
-      "smart-connections:Open: View Smart Connections": false,
-      "smart-connections:Open: Smart Chat Conversation": false
+      "obsidian-focus-mode:Toggle Focus Mode (Shift + Click to show active pane only)": false
     }
   },
   "active": "65e024eaeff41a91",
   "lastOpenFiles": [
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/final_project.sqlite-journal",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/final_project.sqlite",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/yogurt_production.csv",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/yogurt_production.csv.crdownload",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/state_lookup.csv",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/state_lookup.csv.crdownload",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/egg_production.csv",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/egg_production.csv.crdownload",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/coffee_production.csv",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/coffee_production.csv.crdownload",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/B7_yyiTsRnCz1j19KE-_xA_4c4db332472344238d67147334902df1_.csv",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 4 - Modifying and Analyzing Data with SQL.md",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Final Project - SQL for Data Scientists.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-44.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-43.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-42.png",
@@ -376,21 +387,14 @@
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-37.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-36.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-35.png",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-34.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 3 - SQL for Data Science.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 4 - Modifying and Analyzing Data with SQL.md",
     "Dailies/2025-03-03.md",
     "Scratch Space/tmp_link_ai_lit_output.md",
     "lit/lit_notes/Ponnuru25learnDemsDKborder.md",
     "Politics/Political Causality/US Elections 2024.md",
-    "lit/lit_sources/Unconfirmed 286541.crdownload",
     "lit/lit_notes/Lowrey24RiseUnionRight.md",
-    "lit/lit_sources/Unconfirmed 455991.crdownload",
-    "lit/lit_sources/Unconfirmed 341289.crdownload",
-    "lit/lit_sources/Ponnuru25learnDemsDKborder.html",
-    "lit/lit_sources/Ponnuru25OpinionWhatDemocrats.html",
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "Dailies/2024-11-18.md",
     "Obsidian/Zotero 6 to 7.md",
@@ -404,13 +408,7 @@
     "Politics/Ranked Choice Voting/WARCV Lobby Day 2024.md",
     "lit/Lit Note TODOs.md",
     "lit/Lit Note Summary.md",
-    "lit/lit_sources/Everitt25portlandsFirstRCV.pdf",
     "lit/lit_notes/Bai23estTotalCorrMIest.md",
-    "Scratch Space/tmp_perplexy_merged.md",
-    "Dailies/2025-03-01.md",
-    "lit/lit_sources/Sang22elecPriceFrcstDcsnFocus.pdf",
-    "[[Work",
-    "lit/lit_sources/SQLTutorial25sqlCheatSheet.pdf",
-    "lit/lit_sources/SQLTutorial25sqlCheatSheet.html"
+    "Scratch Space/tmp_perplexy_merged.md"
   ]
 }
