@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-02-27T15:46:36-08:00
+modified date: 2025-03-04T09:49:50-08:00
 tags:
   - politics
   - polling
@@ -72,6 +72,7 @@ Trump is really the best president ever.
 Both R's and D's vote less on economic issues and more on values: 
 - [[Lowrey24RiseUnionRight|Lowrey24: The Rise of the Union Right]] 
 ## Immigration
+- 2X more voters prioritized immigration than abortion: [[Ponnuru25learnDemsDKborder|Ponnuru25: What Democrats can learn from Denmark’s left-leaning border hawks]] 
 
 ## US Culture
 ## Random Bad Luck
@@ -328,9 +329,8 @@ Just more predictor variables for various things. Things similar to education, w
 - [ ] Slovania?
 - Finland
 	- [[Herkman24LfinnPopulistLoss|Herkman24: The Loss of the Populist Radical Right in the 2024 European Parliament Elections in Finland]] 
-
-
-
+- Denmark, kinda
+	- [[Ponnuru25learnDemsDKborder|Ponnuru25: What Democrats can learn from Denmark’s left-leaning border hawks]] 
 # Potential Partners
 - UW Center for an informed public
 	- [Center for an Informed Public](https://www.cip.uw.edu/2024/10/31/misinformation-why-people-spread-rumors/)
