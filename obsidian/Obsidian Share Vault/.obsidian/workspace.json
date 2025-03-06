@@ -38,6 +38,21 @@
             }
           },
           {
+            "id": "79e203b638648784",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Amazon Energy Data Scientist Prep.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Amazon Energy Data Scientist Prep"
+            }
+          },
+          {
             "id": "65e024eaeff41a91",
             "type": "leaf",
             "state": {
@@ -68,7 +83,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -265,7 +280,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 3 - SQL for Data Science.md",
+                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Amazon Energy Data Scientist Prep.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -275,7 +290,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Module 3 - SQL for Data Science"
+              "title": "Backlinks for Amazon Energy Data Scientist Prep"
             }
           },
           {
@@ -364,8 +379,10 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "cb410ff3466d7b03",
+  "active": "79e203b638648784",
   "lastOpenFiles": [
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 3 - SQL for Data Science.md",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Amazon Energy Data Scientist Prep.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Final Project - SQL for Data Scientists.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/final_project.sqlite-journal",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/final_project.sqlite",
@@ -388,7 +405,6 @@
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-37.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-36.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-35.png",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 3 - SQL for Data Science.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
     "Dailies/2025-03-03.md",
