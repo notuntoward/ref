@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-04T09:49:50-08:00
+modified date: 2025-03-07T12:31:30-08:00
 tags:
   - politics
   - polling
@@ -84,6 +84,8 @@ Both R's and D's vote less on economic issues and more on values:
 - people don't believe experts, media, etc. Go to friends
 	- I have more than one article on this, I think
 	- odd example: [[Verma24muskPoliticsEcoCar|Verma24: Musk’s politics hadn’t seeped into Tesla. Then he axed its eco car of the future.]]
+- Musk trades in this: [[Isaac25internetCringeMusk|Isaac25: Elon Musk’s Internet: So Based, Much Wow. So Cringe?]] 
+
 - Brazilians didn't trust democracy, but eventually removed an authoritarian: [[Ivanova22systemicMistrustBrazil|Ivanova22: Brazil's Systemic Mistrust of Elections and Democracy]] 
 ## Lack of D party enthusiasm/turnout
 - was the D loss due to poor Democratic turnout or to Ds switching to R?
@@ -132,6 +134,7 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 - [[Verma24muskPoliticsEcoCar|Verma24: Musk’s politics hadn’t seeped into Tesla. Then he axed its eco car of the future.]] 
 - A Musk attack, since he wants all AI?[[Palmer23llmsArgueConvincing|Palmer23: Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors: implications for Governance]] 
 - Musk is very unpopular, and he's barely started: [[Balz25trumpEarlyActionUnpop|Balz25: Many of Trump’s early actions are unpopular, Post-Ipsos poll finds]] 
+- He may also be becoming uncool to his fans: - Musk trades in this: [[Isaac25internetCringeMusk|Isaac25: Elon Musk’s Internet: So Based, Much Wow. So Cringe?]] 
 # Questions
 ## How voters weight different policies in their voting decision (sensitivity analysis)
 ## Media effectiveness
@@ -168,6 +171,9 @@ Just more predictor variables for various things. Things similar to education, w
 			- [ ] ? AI was persuasive here, too: [[Palmer23llmsArgueConvincing|Palmer23: Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors: implications for Governance]] 
 			- [[Young23wrongAppetiteMisinfo|Young23: Wrong: How media, politics, and identity drive our appetite for misinformation]] 
 	- [How hackers at the Def Con conference tried to break AI chatbots](<How hackers at the Def Con conference tried to break AI chatbots>)
+## Authenticity and Trust: how to get it
+- Musk's internet language and imagery looks "authentic" to online gamers : [[Isaac25internetCringeMusk|Isaac25: Elon Musk’s Internet: So Based, Much Wow. So Cringe?]] 
+- Trumps tweets made him look authentic, for some reason [[Isaac25internetCringeMusk|Isaac25internetCringeMusk]] 
 ## Polarization: what, why, and how to overcome or use
 - [[Evans24techSplinterCulturalCtrl]]
 - [[Rampell25genZmenLoveTrump]]
