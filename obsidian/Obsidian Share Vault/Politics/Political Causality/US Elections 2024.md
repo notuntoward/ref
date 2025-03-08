@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-07T12:31:30-08:00
+modified date: 2025-03-07T20:54:50-08:00
 tags:
   - politics
   - polling
@@ -67,6 +67,7 @@ Trump is really the best president ever.
 ## The Economy
 ### Economy really was bad
 - [[Ludwig25votersCorrectEcon|Ludwig25: Voters Were Right About the Economy. The Data Was Wrong.]] 
+- [[MorningConsult25priceSurpriseIdx|MorningConsult25: price surprise index]] 
 - bad economy and interactions: [[Politics/Political Causality/US Elections 2024.md#Issue/Message Interaction Examples |Issue/Message Interaction Examples]]
 ### Postmaterialism: when a bad economy matters less
 Both R's and D's vote less on economic issues and more on values: 
@@ -174,7 +175,7 @@ Just more predictor variables for various things. Things similar to education, w
 ## Authenticity and Trust: how to get it
 - Musk's internet language and imagery looks "authentic" to online gamers : [[Isaac25internetCringeMusk|Isaac25: Elon Musk’s Internet: So Based, Much Wow. So Cringe?]] 
 - Trumps tweets made him look authentic, for some reason [[Isaac25internetCringeMusk|Isaac25internetCringeMusk]] 
-## Polarization: what, why, and how to overcome or use
+## Polarization: what, why, and how to overcome, or use
 - [[Evans24techSplinterCulturalCtrl]]
 - [[Rampell25genZmenLoveTrump]]
 - Moderate candidates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]]
@@ -183,8 +184,11 @@ Just more predictor variables for various things. Things similar to education, w
 - Moderates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]] 
 # Rising Authoritarianism
 - The R's like democracy way less than the Ds: [[Bump25polSciworryRstrongman|Bump25: What political scientists see as worrisome, Republicans see as welcome]] 
+- A good fear-of-Trump&Co argument from 
 # Predictive Models and Analysis Techniques
 - market sentiment indexes predicted by economic variables (Weber24implicitCoordInflateShock).  Could be *voter* sentiment predicted by other variables
+	- more on econ features: [[MorningConsult25priceSurpriseIdx|MorningConsult25priceSurpriseIdx]] 
+
 - bulk features built from the poll difference between a presidential candidate and same-party state/county/city candidates. Or, look at post-election results for election autopsies
 - during election autopsies analyzing across elections in different years, try to factor out the effect of each (modellable) variable so you can see which thing by itself — inflation, war, … — caused the big changes.  
 	- See example of doing this in words in [Ezra Klein Speaks Frankly Abou...](https://youtu.be/vkXJiEzWxFs?t=1484)..
@@ -295,8 +299,9 @@ Just more predictor variables for various things. Things similar to education, w
 		- realtime cost of living indicator
 		- somehow put that in context with different levels of class income (which will change too)
 		- different in different areas: rural vs. suburbs vs. city vs. bad neighborhoods
+		- [[MorningConsult25priceSurpriseIdx|MorningConsult25: price surprise index]] 
 	- Estimate of marginal effect on each class, and on regions
-		- [ ] consider: Grose24youngWimynWillTalkSexistm, won't acknowledge young feminsit saturation, yet this was only 9% of population (according to her article's comments, but I can check this)
+		- [ ] consider: Grose24youngWimynWillTalkSexistm, won't acknowledge young feminist saturation, yet this was only 9% of population (according to her article's comments, but I can check this)
 	- Estimate of marginal effect on candidate/party/incumbent popularity, turnout, vote consequence
 	- besides raw econ numbers, consider how this is perceived e.g. the "country's good/bad direction," etc.like in McMann24mornCnsltRateDefMeth
 - something about campaign timing: I think I zoteroed something about timing, but I can't find it at the moment
