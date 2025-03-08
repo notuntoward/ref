@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-07T20:54:50-08:00
+modified date: 2025-03-07T21:45:58-08:00
 tags:
   - politics
   - polling
@@ -184,8 +184,17 @@ Just more predictor variables for various things. Things similar to education, w
 - Moderates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]] 
 # Rising Authoritarianism
 - The R's like democracy way less than the Ds: [[Bump25polSciworryRstrongman|Bump25: What political scientists see as worrisome, Republicans see as welcome]] 
-- A good fear-of-Trump&Co argument from 
+- A good fear-of-Trump & Co caution from [[Arendt76originsTotalitariansim|Arendt76: The origins of totalitarianism]] 
+
+> the most characteristic aspect of totalitarian terror, that it is let loose when all organized opposition has died down and the totalitarian ruler knows that he no longer need to be afraid.
+
+
+
+
+
+
 # Predictive Models and Analysis Techniques
+
 - market sentiment indexes predicted by economic variables (Weber24implicitCoordInflateShock).  Could be *voter* sentiment predicted by other variables
 	- more on econ features: [[MorningConsult25priceSurpriseIdx|MorningConsult25priceSurpriseIdx]] 
 

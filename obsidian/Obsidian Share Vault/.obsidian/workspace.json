@@ -58,13 +58,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Politics/Political Causality/US Elections 2024.md",
+                "file": "Kindle/Arendt-The Origins Of Totalitarianism.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "US Elections 2024"
+              "title": "Arendt-The Origins Of Totalitarianism"
+            }
+          },
+          {
+            "id": "4127e3c81776f73a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lit/lit_notes/Arendt76originsTotalitariansim.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Arendt76originsTotalitariansim"
             }
           },
           {
@@ -73,8 +88,8 @@
             "state": {
               "type": "ntb-whats-new-view",
               "state": {},
-              "icon": "file-text",
-              "title": "What's new in Note Toolbar?"
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
             }
           },
           {
@@ -222,8 +237,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 470.5,
-    "collapsed": true
+    "width": 470.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -329,7 +343,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Politics/Political Causality/US Elections 2024.md",
+                "file": "Kindle/Arendt-The Origins Of Totalitarianism.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -339,7 +353,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for US Elections 2024"
+              "title": "Backlinks for Arendt-The Origins Of Totalitarianism"
             }
           },
           {
@@ -424,13 +438,34 @@
       "cmdr:Ink: New handwriting section": false,
       "obsidian-focus-mode:Toggle Focus Mode (Shift + Click to show active pane only)": false,
       "smart-connections:Open: View Smart Connections": false,
-      "smart-connections:Open: Smart Chat Conversation": false
+      "smart-connections:Open: Smart Chat Conversation": false,
+      "obsidian-kindle-plugin:Sync your Kindle highlights": false,
+      "unearthed-app:Kindle (Unearthed) Sync": false
     }
   },
   "active": "3cb26cb9ef4eec47",
   "lastOpenFiles": [
-    "lit/lit_notes/MorningConsult25priceSurpriseIdx.md",
+    "Unearthed/Books/the-origins-of-totalitarianism-(harvest-book-book-244).md",
+    "Kindle/Arendt-The Origins Of Totalitarianism.md",
+    "Unearthed Kindle",
+    "Unearthed/Books/you-say-you-want-a-revolution.md",
+    "Unearthed/Books/wrong.md",
+    "Unearthed/Books/the-sirens'-call.md",
+    "Unearthed/Books/the-origins-of-authoritarianism-and-why-it-still-works-today.md",
+    "Unearthed/Books/smart-brevity.md",
+    "Unearthed/Books/parachute-infantry.md",
+    "Unearthed/Books/if-we-burn.md",
+    "Unearthed/Books/how-to-take-smart-notes.md",
+    "Unearthed/Books/how-not-to-be-wrong.md",
+    "Unearthed/Books/dynamic-copula-methods-in-finance-(the-wiley-finance-series-book-627).md",
+    "Unearthed/Books/100-tricks-to-appear-smart-in-meetings.md",
+    "Unearthed/Books",
+    "Unearthed",
+    "[[Work/Between.md",
     "Politics/Political Causality/US Elections 2024.md",
+    "lit/lit_notes/Arendt76originsTotalitariansim.md",
+    "lit/lit_notes/Arendt73originsTotalitariansim.md",
+    "lit/lit_notes/MorningConsult25priceSurpriseIdx.md",
     "lit/lit_sources/MorningConsult25priceSurpriseIdx.html",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
     "lit/lit_sources/Unconfirmed 182981.crdownload",
@@ -443,9 +478,6 @@
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Final Project - SQL for Data Scientists.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 3 - SQL for Data Science.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/final_project.sqlite-journal",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/final_project.sqlite",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/yogurt_production.csv",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/yogurt_production.csv.crdownload",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 4 - Modifying and Analyzing Data with SQL.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-44.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-43.png",
@@ -457,22 +489,6 @@
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-37.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-36.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-35.png",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
-    "Dailies/2025-03-03.md",
-    "Scratch Space/tmp_link_ai_lit_output.md",
-    "lit/lit_notes/Ponnuru25learnDemsDKborder.md",
-    "lit/lit_notes/Lowrey24RiseUnionRight.md",
-    "lit/refwrangle/Zotero to Obsidian to RAG.md",
-    "Dailies/2024-11-18.md",
-    "Obsidian/Zotero 6 to 7.md",
-    "Obsidian/spacekeys.md",
-    "Dailies/2024-02-04.md",
-    "Dailies/2025-03-02.md",
-    "lit/lit_notes/Drutman21whatWeKnowRCV.md",
-    "lit/lit_notes/Everitt25portlandsFirstRCV.md",
-    "Politics/Ranked Choice Voting/Ranked Choice Voting.md",
-    "lit/lit_notes/Drutman22evalEffectRCV.md",
-    "Politics/Ranked Choice Voting/WARCV Lobby Day 2024.md",
-    "lit/Lit Note TODOs.md"
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md"
   ]
 }
