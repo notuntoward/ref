@@ -53,6 +53,21 @@
             }
           },
           {
+            "id": "3cb26cb9ef4eec47",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Politics/Political Causality/US Elections 2024.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "US Elections 2024"
+            }
+          },
+          {
             "id": "152ac523382f7186",
             "type": "leaf",
             "state": {
@@ -95,41 +110,7 @@
             }
           }
         ],
-        "currentTab": 5
-      },
-      {
-        "id": "bc34a7fdcf102cb3",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "b861c947ed8b62a9",
-            "type": "leaf",
-            "state": {
-              "type": "html-view",
-              "state": {
-                "file": "lit/lit_sources/Isaac25internetCringeMusk.html"
-              },
-              "icon": "code-glyph",
-              "title": "Isaac25internetCringeMusk"
-            }
-          },
-          {
-            "id": "3cb26cb9ef4eec47",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Politics/Political Causality/US Elections 2024.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "US Elections 2024"
-            }
-          }
-        ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -236,10 +217,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md"
+                "file": "Politics/Political Causality/US Elections 2024.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for Module 1 - SQL for Data Science"
+              "title": "File properties for US Elections 2024"
             }
           },
           {
@@ -311,13 +292,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
+                "file": "Politics/Political Causality/US Elections 2024.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Module 1 - SQL for Data Science"
+              "title": "Outline of US Elections 2024"
             }
           },
           {
@@ -326,7 +307,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
+                "file": "Politics/Political Causality/US Elections 2024.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -336,7 +317,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Module 1 - SQL for Data Science"
+              "title": "Backlinks for US Elections 2024"
             }
           },
           {
@@ -379,12 +360,12 @@
               "title": "Plugin no longer active"
             }
           }
-        ]
+        ],
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
-    "width": 552.5,
-    "collapsed": true
+    "width": 552.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -424,12 +405,16 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "b97cca4bdc6c3663",
+  "active": "76f4c03f208eb0cc",
   "lastOpenFiles": [
-    "lit/lit_notes/Isaac25internetCringeMusk.md",
+    "lit/lit_notes/MorningConsult25priceSurpriseIdx.md",
     "Politics/Political Causality/US Elections 2024.md",
+    "lit/lit_sources/MorningConsult25priceSurpriseIdx.html",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
+    "lit/lit_sources/Unconfirmed 182981.crdownload",
+    "lit/lit_sources/zotero-5802.html",
     "lit/lit_sources/Isaac25internetCringeMusk.html",
+    "lit/lit_notes/Isaac25internetCringeMusk.md",
     "lit/lit_sources/Unconfirmed 908830.crdownload",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Amazon Energy Data Scientist Prep.md",
     "lit/lit_sources/Isaac25ElonMusksInternet.html",
@@ -439,9 +424,6 @@
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/final_project.sqlite",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/yogurt_production.csv",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/yogurt_production.csv.crdownload",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/state_lookup.csv",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/state_lookup.csv.crdownload",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/egg_production.csv",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 4 - Modifying and Analyzing Data with SQL.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-44.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-43.png",
@@ -469,7 +451,6 @@
     "Politics/Ranked Choice Voting/Ranked Choice Voting.md",
     "lit/lit_notes/Drutman22evalEffectRCV.md",
     "Politics/Ranked Choice Voting/WARCV Lobby Day 2024.md",
-    "lit/Lit Note TODOs.md",
-    "lit/Lit Note Summary.md"
+    "lit/Lit Note TODOs.md"
   ]
 }
