@@ -68,6 +68,16 @@
             }
           },
           {
+            "id": "56ff108d2cb3e2fc",
+            "type": "leaf",
+            "state": {
+              "type": "ntb-whats-new-view",
+              "state": {},
+              "icon": "file-text",
+              "title": "What's new in Note Toolbar?"
+            }
+          },
+          {
             "id": "152ac523382f7186",
             "type": "leaf",
             "state": {
@@ -107,6 +117,18 @@
               },
               "icon": "lucide-file",
               "title": "Module 1 - SQL for Data Science"
+            }
+          },
+          {
+            "id": "4408b914f1d7c815",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.8.9"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.8.9"
             }
           }
         ],
@@ -405,7 +427,7 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "76f4c03f208eb0cc",
+  "active": "3cb26cb9ef4eec47",
   "lastOpenFiles": [
     "lit/lit_notes/MorningConsult25priceSurpriseIdx.md",
     "Politics/Political Causality/US Elections 2024.md",
