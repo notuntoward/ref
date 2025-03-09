@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-07T21:45:58-08:00
+modified date: 2025-03-08T19:09:38-08:00
 tags:
   - politics
   - polling
@@ -21,6 +21,8 @@ tags:
 ## Harris
 ## Biden?
 ## AI
+## Crime, disorder, homelessness
+- Tolerance of crime and disorder pissed off people, D's lost much in "diverse cities"  [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
 ### Examples of AI in politics
 - [[Kapoor23misinfoAInotTheProb|Kapoor23: We Looked at 78 Election Deepfakes. Political Misinformation is not an AI Problem.]] 
 - A warning: [[Palmer23llmsArgueConvincing|Palmer23: Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors: implications for Governance]] 
@@ -32,6 +34,7 @@ tags:
 ## The Chinese
 ## The Russians
 ## The Jews
+- ? were they miffed in a way similar to Asians?   [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
 ## The Gays
 ## Lying Republicans
 - in Dawson23cognitiveAbilityVotingEU the UK higher cog. voters were more likely to vote remain during Brexit. Authors speculate that lower cog. voters are vulnerable to misinformation
@@ -64,6 +67,7 @@ Trump is really the best president ever.
 	- ? Does WA may have more poor whites than any other group? If so, this is politically stupid. In any case, seems nasty, if the idea is to address poverty.
 - [[Evans24techSplinterCulturalCtrl]]
 - [[Rampell25genZmenLoveTrump]]
+- Obsessive race focus pissed off people of color! [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
 ## The Economy
 ### Economy really was bad
 - [[Ludwig25votersCorrectEcon|Ludwig25: Voters Were Right About the Economy. The Data Was Wrong.]] 
@@ -74,7 +78,7 @@ Both R's and D's vote less on economic issues and more on values:
 - [[Lowrey24RiseUnionRight|Lowrey24: The Rise of the Union Right]] 
 ## Immigration
 - 2X more voters prioritized immigration than abortion: [[Ponnuru25learnDemsDKborder|Ponnuru25: What Democrats can learn from Denmark’s left-leaning border hawks]] 
-
+- D's heavily lost Hispanics on the US-Mexico border: [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
 ## US Culture
 ## Random Bad Luck
 ## Anti-Incumbency Cycle
