@@ -15,7 +15,7 @@ ZoteroCollections:
   - neuropsycholinguisticpolitics
   - identitypolitics
 created date: 2025-03-08T18:48:44-08:00
-modified date: 2025-03-08T19:03:25-08:00
+modified date: 2025-03-08T21:56:28-08:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/JMTKX7UB)   | [**URL**](https://www.theatlantic.com/ideas/archive/2025/02/democrats-dei-dnc-buttigieg/681835/) | **[[Barro25demsNeedToCleanHouse.html|HTM]]**
@@ -70,7 +70,7 @@ Guy says the D's must stop ranking and prioritizing people by the level of margi
 			- "Biden administration presided over the entry of millions of migrants into the country in a way that was not in accordance with any intentionally enacted public policy" 
 			- Some of the hardest-against-D swinging counties were Latino, on the US-Mexico border
 		- BIPOC: "Black, Indigenous, and people of color” puts Latinos and Asians on the wrong end of the marginalization hierarchy.  And (I guess?) some knew it.
-- **What to do**: change what you stand for, and stand up to the obsessive race category lovers
+- **What to do**: change what you stand for, and stand up to the obsessive race categorists
 ___
 %% end Obsidian Notes %%
 
