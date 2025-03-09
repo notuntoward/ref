@@ -1,6 +1,6 @@
 ---
 created date: 2024-08-21T12:37:18-07:00
-modified date: 2025-02-16T19:14:42-08:00
+modified date: 2025-03-08T10:34:56-08:00
 ---
 - Weekly claim filing spot: [Employment Security - Login](https://secure.esd.wa.gov/home/)
 - My **[[Unemployment Exhaustion Notice.pdf|unemployment runs out on approximately Feb 28, 2025]]**
@@ -8,7 +8,7 @@ modified date: 2025-02-16T19:14:42-08:00
 	- [[Last QCELLS Paystub.PDF]]
 		- Was for: $1,590.19
 		- for 3 weekdays:  period was 8/16-20/2024, so Fri, Mon, Tue.
-		- so I was paid by QCELLSfor 2 days (Mon, Tues) over the first unemployed week (8/12-24)
+		- so I was paid by QCELLS for 2 days (Mon, Tues) over the first unemployed week (8/12-24)
 			- hours:23.64 
 			- gross pay: $2,010.80 
 	- If the amount was for 2 days @ 8hrs/day, the gross pay was: 2010.8/23.64 * 16 hrs = $1360.95

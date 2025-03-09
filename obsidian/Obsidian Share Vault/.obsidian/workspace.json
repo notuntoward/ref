@@ -13,141 +13,31 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
+                "file": "lit/refwrangle/Zotero to Obsidian to RAG.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Module 2 - SQL for Data Science"
+              "title": "Zotero to Obsidian to RAG"
             }
           },
           {
-            "id": "cb410ff3466d7b03",
+            "id": "9eddc15a98304d04",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 3 - SQL for Data Science.md",
+                "file": "lit/lit_notes/Barro25demsNeedToCleanHouse.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Module 3 - SQL for Data Science"
-            }
-          },
-          {
-            "id": "79e203b638648784",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Amazon Energy Data Scientist Prep.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "Amazon Energy Data Scientist Prep"
-            }
-          },
-          {
-            "id": "3cb26cb9ef4eec47",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Kindle/Arendt-The Origins Of Totalitarianism.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "Arendt-The Origins Of Totalitarianism"
-            }
-          },
-          {
-            "id": "4127e3c81776f73a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "lit/lit_notes/Arendt76originsTotalitariansim.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "Arendt76originsTotalitariansim"
-            }
-          },
-          {
-            "id": "56ff108d2cb3e2fc",
-            "type": "leaf",
-            "state": {
-              "type": "ntb-whats-new-view",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
-            }
-          },
-          {
-            "id": "152ac523382f7186",
-            "type": "leaf",
-            "state": {
-              "type": "html-view",
-              "state": {
-                "file": "lit/lit_sources/Isaac25internetCringeMusk.html"
-              },
-              "icon": "code-glyph",
-              "title": "Isaac25internetCringeMusk"
-            }
-          },
-          {
-            "id": "65e024eaeff41a91",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Final Project - SQL for Data Scientists.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "Final Project - SQL for Data Scientists"
-            }
-          },
-          {
-            "id": "b97cca4bdc6c3663",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "Module 1 - SQL for Data Science"
-            }
-          },
-          {
-            "id": "4408b914f1d7c815",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.8.9"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.8.9"
+              "title": "Barro25demsNeedToCleanHouse"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -179,7 +69,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "\"web clipper plugin\"",
+                "query": "unemployment",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -237,7 +127,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 470.5
+    "width": 470.5,
+    "collapsed": true
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -253,10 +144,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Politics/Political Causality/US Elections 2024.md"
+                "file": "lit/refwrangle/Zotero to Obsidian to RAG.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for US Elections 2024"
+              "title": "File properties for Zotero to Obsidian to RAG"
             }
           },
           {
@@ -328,13 +219,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Politics/Political Causality/US Elections 2024.md",
+                "file": "lit/refwrangle/Zotero to Obsidian to RAG.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of US Elections 2024"
+              "title": "Outline of Zotero to Obsidian to RAG"
             }
           },
           {
@@ -343,7 +234,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Kindle/Arendt-The Origins Of Totalitarianism.md",
+                "file": "lit/refwrangle/Zotero to Obsidian to RAG.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -353,7 +244,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Arendt-The Origins Of Totalitarianism"
+              "title": "Backlinks for Zotero to Obsidian to RAG"
             }
           },
           {
@@ -397,11 +288,12 @@
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
-    "width": 552.5
+    "width": 552.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -443,42 +335,43 @@
       "unearthed-app:Kindle (Unearthed) Sync": false
     }
   },
-  "active": "3cb26cb9ef4eec47",
+  "active": "ae92c594972a56fa",
   "lastOpenFiles": [
-    "Unearthed/Books/the-origins-of-totalitarianism-(harvest-book-book-244).md",
-    "Kindle/Arendt-The Origins Of Totalitarianism.md",
-    "Unearthed Kindle",
-    "Unearthed/Books/you-say-you-want-a-revolution.md",
-    "Unearthed/Books/wrong.md",
-    "Unearthed/Books/the-sirens'-call.md",
-    "Unearthed/Books/the-origins-of-authoritarianism-and-why-it-still-works-today.md",
-    "Unearthed/Books/smart-brevity.md",
-    "Unearthed/Books/parachute-infantry.md",
-    "Unearthed/Books/if-we-burn.md",
-    "Unearthed/Books/how-to-take-smart-notes.md",
-    "Unearthed/Books/how-not-to-be-wrong.md",
-    "Unearthed/Books/dynamic-copula-methods-in-finance-(the-wiley-finance-series-book-627).md",
-    "Unearthed/Books/100-tricks-to-appear-smart-in-meetings.md",
-    "Unearthed/Books",
-    "Unearthed",
-    "[[Work/Between.md",
+    "lit/lit_sources/Barro25demsNeedToCleanHouse.html",
+    "lit/lit_notes/Barro25demsNeedToCleanHouse.md",
     "Politics/Political Causality/US Elections 2024.md",
-    "lit/lit_notes/Arendt76originsTotalitariansim.md",
-    "lit/lit_notes/Arendt73originsTotalitariansim.md",
-    "lit/lit_notes/MorningConsult25priceSurpriseIdx.md",
-    "lit/lit_sources/MorningConsult25priceSurpriseIdx.html",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
-    "lit/lit_sources/Unconfirmed 182981.crdownload",
-    "lit/lit_sources/zotero-5802.html",
-    "lit/lit_sources/Isaac25internetCringeMusk.html",
-    "lit/lit_notes/Isaac25internetCringeMusk.md",
-    "lit/lit_sources/Unconfirmed 908830.crdownload",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Amazon Energy Data Scientist Prep.md",
-    "lit/lit_sources/Isaac25ElonMusksInternet.html",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Final Project - SQL for Data Scientists.md",
+    "lit/refwrangle/Zotero to Obsidian to RAG.md",
+    "lit/lit_sources/Unconfirmed 926943.crdownload",
+    "lit/lit_sources/Barro25DemocratsNeedClean.html",
+    "Scratch Space/Edsall20politicizedHumanNtr/Edsall20politicizedHumanNtr.pdf.md",
+    "Scratch Space/Edsall20politicizedHumanNtr/Edsall20politicizedHumanNtr.md",
+    "Scratch Space/Edsall20politicizedHumanNtr",
+    "Obsidian/Zotero 6 to 7.md",
+    "lit/lit_sources/Kindle/Arendt-The Origins Of Totalitarianism.md",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
+    "lit/lit_sources/Preston18psychopathPolitics.pdf",
+    "lit/lit_sources/Preston18psychopathicTraitsPolitics.pdf",
+    "lit/lit_sources/Preston18PsychopathicTraitsPolitics.pdf",
+    "lit/lit_sources/Preston18PsychopathicTraitsPolitics.html",
+    "lit/lit_sources/393d74e0-5451-4aaf-a3ed-717fe55b8346.htm",
+    "lit/lit_sources/Devine24politicalTrustMatters.pdf",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 3 - SQL for Data Science.md",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/data_final_project/final_project.sqlite-journal",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 4 - Modifying and Analyzing Data with SQL.md",
+    "Work/Between Jobs/QCELLs offboarding/WA Unemployment.md",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Final Project - SQL for Data Scientists.md",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Amazon Energy Data Scientist Prep.md",
+    "lit/lit_notes/Arendt76originsTotalitariansim.md",
+    "lit/lit_notes/BrightLineWatch25accelTrnsgrssnTrump.md",
+    "lit/lit_sources/Kindle/Ahrens-How to Take Smart Notes.md",
+    "lit/lit_sources/Unearthed/Books/the-origins-of-totalitarianism-(harvest-book-book-244).md",
+    "lit/lit_sources/Unearthed/Books/the-origins-of-authoritarianism-and-why-it-still-works-today.md",
+    "lit/lit_sources/Unearthed/Books/you-say-you-want-a-revolution.md",
+    "lit/lit_sources/Unearthed/Books/parachute-infantry.md",
+    "lit/lit_sources/Unearthed/Books/100-tricks-to-appear-smart-in-meetings.md",
+    "lit/lit_sources/Kindle/Young-Wrong.md",
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
+    "lit/lit_sources/Unearthed/Books/wrong.md",
+    "lit/lit_sources/Unearthed/Books/the-sirens'-call.md",
+    "lit/lit_sources/Unearthed/Books/smart-brevity.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-44.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-43.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-42.png",
@@ -488,7 +381,6 @@
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-38.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-37.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-36.png",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-35.png",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md"
+    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-35.png"
   ]
 }

@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-03-03T22:24:15-08:00
+modified date: 2025-03-08T17:44:36-08:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -185,7 +185,11 @@ I think what I need is a way to add a button to Zotero that makes an obsidian no
 	- but has his own note template in java, doesn't use [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
 	- is based on the [[Obsidian/Zotero 6 to 7.md#Actions Tags Plugin |Actions Tags Plugin]]
 	- I could change the `function createNote(item)` function to loop like I do with nunjucks
-		- [ ] ! just try running the unmodified template to see if it works
+		- [x] **This works** just try running the unmodified template to see if it works]
+			- see c:/Users/scott/OneDrive/share/ref/refwrangle/zmknote/action_tags_test.js
+			- documentation almost not there
+			- can only get collections if scripted is called via collections??
+			- python would be simpler: how to use [[#Push with Zotero Action Cmd Plugin]] ??
 		- [ ] ! Try the [Perplexity rewrite](https://www.perplexity.ai/search/i-would-like-to-replace-obsidi-8gLqbO5PQbW6pDDc1fE5oQ) of my zotero integration nunjucks template for 
 - [ ] ? can this be used to fire off  [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
 	- How? [[lit/refwrangle/Zotero to Obsidian to RAG.md#Running an Obsidian command from an external program |Running an Obsidian command from an external program]]
