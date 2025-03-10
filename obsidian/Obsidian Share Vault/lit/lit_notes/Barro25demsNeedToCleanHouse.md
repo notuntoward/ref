@@ -9,13 +9,12 @@ aliases:
   - Democrats Need to Clean House
   - Democrats Need to Clean House
 citekey: Barro25demsNeedToCleanHouse
-ZoteroTags:
-  - /unread
+ZoteroTags: 
 ZoteroCollections:
   - neuropsycholinguisticpolitics
   - identitypolitics
 created date: 2025-03-08T18:48:44-08:00
-modified date: 2025-03-08T21:56:28-08:00
+modified date: 2025-03-09T15:11:40-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/JMTKX7UB)   | [**URL**](https://www.theatlantic.com/ideas/archive/2025/02/democrats-dei-dnc-buttigieg/681835/) | **[[Barro25demsNeedToCleanHouse.html|HTM]]**
