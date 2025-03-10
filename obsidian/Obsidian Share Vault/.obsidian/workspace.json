@@ -4,41 +4,25 @@
     "type": "split",
     "children": [
       {
-        "id": "4439370b4a2876b6",
+        "id": "b109853359ebfeda",
         "type": "tabs",
         "children": [
           {
-            "id": "ae92c594972a56fa",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "lit/refwrangle/Zotero to Obsidian to RAG.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "Zotero to Obsidian to RAG"
-            }
-          },
-          {
-            "id": "9eddc15a98304d04",
+            "id": "4d16ccec07cfa766",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Scratch Space/tmp_zotero_to_obs_lit_note_jinja2.md",
                 "mode": "source",
-                "source": true,
+                "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
               "title": "tmp_zotero_to_obs_lit_note_jinja2"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -287,8 +271,7 @@
               "title": "Plugin no longer active"
             }
           }
-        ],
-        "currentTab": 6
+        ]
       }
     ],
     "direction": "horizontal",
@@ -329,49 +312,49 @@
       "cmdr:Ink: New drawing": false,
       "cmdr:Ink: New handwriting section": false,
       "obsidian-focus-mode:Toggle Focus Mode (Shift + Click to show active pane only)": false,
+      "unearthed-app:Kindle (Unearthed) Sync": false,
       "smart-connections:Open: View Smart Connections": false,
-      "smart-connections:Open: Smart Chat Conversation": false,
-      "obsidian-kindle-plugin:Sync your Kindle highlights": false,
-      "unearthed-app:Kindle (Unearthed) Sync": false
+      "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "9eddc15a98304d04",
+  "active": "4d16ccec07cfa766",
   "lastOpenFiles": [
-    "Scratch Space/Rudloff22epistemicBeliefConspiracy/Rudloff22epistemicBeliefConspiracy.md",
+    "lit/lit_sources/MorningConsult25rigntShiftGenZ.html",
     "Scratch Space/tmp_zotero_to_obs_lit_note_jinja2.md",
+    "Writing/Tired Words and Phrases.md",
+    "Obsidian/Obsidian Sync.md",
+    "lit/Lit Note Summary DBF.md",
+    "Politics/Ranked Choice Voting/WARCV Lobby Day 2024.md",
+    "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.pdf",
+    "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.html",
+    "Obsidian/spacekeys.md",
+    "lit/lit_sources/Clyde20IntroBayesianThink.pdf",
+    "lit/lit_notes/Clyde20IntroBayesianThink.md",
+    "Scratch Space/supplementary.html.md",
+    "lit/lit_notes/Barro25demsNeedToCleanHouse.md",
+    "lit/lit_notes/AHP23SingleLegKBSwap.md",
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
+    "Unearthed/Books/You-Say-You-Want-a-Revolution.md",
+    "Unearthed/Books/Wrong.md",
+    "Unearthed/Books/The-Ultimate-Volumetrics-Diet.md",
+    "Unearthed/Books/The-Sirens'-Call.md",
+    "Unearthed/Books/The-Origins-Of-Totalitarianism-(Harvest-Book-Book-244).md",
+    "Unearthed/Books/The-Origins-of-Authoritarianism-and-Why-it-Still-Works-Today.md",
+    "Unearthed/Books/Strange-Defeat.md",
+    "Unearthed/Books/Smart-Brevity.md",
+    "Unearthed/Books/Quantile-Regression-(Econometric-Society-Monographs-Book-38).md",
+    "Unearthed/Books/Prosperity-without-Growth.md",
+    "Unearthed/Books/Project-Gutenberg-Complete-Works-of-Winston-Churchill.md",
+    "Unearthed/Books/Parachute-Infantry.md",
+    "Unearthed/Books/Just-the-Funny-Parts.md",
+    "Unearthed/Books/If-We-Burn.md",
+    "Unearthed/Books",
+    "Unearthed",
     "Scratch Space/Rudloff22epistemicBeliefConspiracy/Rudloff22epistemicBeliefConspiracy.pdf",
     "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.pptx",
     "lit/lit_sources/Unconfirmed 867692.crdownload",
     "lit/lit_sources/~$nczy25EpidemiologyClinicalManifestation.txt",
     "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.txt",
-    "lit/lit_sources/~WRD1877.tmp",
-    "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.docx",
-    "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.html",
-    "lit/lit_sources/Unconfirmed 976995.crdownload",
-    "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.pdf",
-    "lit/lit_notes/Barro25demsNeedToCleanHouse.md",
-    "Politics/Political Causality/US Elections 2024.md",
-    "Scratch Space/Edsall20politicizedHumanNtr/Edsall20politicizedHumanNtr.pdf.md",
-    "Scratch Space/Edsall20politicizedHumanNtr/Edsall20politicizedHumanNtr.md",
-    "Obsidian/Zotero 6 to 7.md",
-    "lit/lit_sources/Kindle/Arendt-The Origins Of Totalitarianism.md",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 2 - SQL for Data Science.md",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 3 - SQL for Data Science.md",
-    "Work/Between Jobs/QCELLs offboarding/WA Unemployment.md",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Final Project - SQL for Data Scientists.md",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Amazon Energy Data Scientist Prep.md",
-    "lit/lit_notes/Arendt76originsTotalitariansim.md",
-    "lit/lit_notes/BrightLineWatch25accelTrnsgrssnTrump.md",
-    "lit/lit_sources/Kindle/Ahrens-How to Take Smart Notes.md",
-    "lit/lit_sources/Unearthed/Books/the-origins-of-totalitarianism-(harvest-book-book-244).md",
-    "lit/lit_sources/Unearthed/Books/the-origins-of-authoritarianism-and-why-it-still-works-today.md",
-    "lit/lit_sources/Unearthed/Books/you-say-you-want-a-revolution.md",
-    "lit/lit_sources/Unearthed/Books/parachute-infantry.md",
-    "lit/lit_sources/Unearthed/Books/100-tricks-to-appear-smart-in-meetings.md",
-    "lit/lit_sources/Kindle/Young-Wrong.md",
-    "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/Module 1 - SQL for Data Science.md",
-    "lit/lit_sources/Unearthed/Books/wrong.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-44.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-43.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-42.png",
