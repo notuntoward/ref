@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "b109853359ebfeda",
+        "id": "c5609baaa8968145",
         "type": "tabs",
         "children": [
           {
-            "id": "4d16ccec07cfa766",
+            "id": "5185043eafa4053d",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -317,8 +317,10 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "4d16ccec07cfa766",
+  "active": "5185043eafa4053d",
   "lastOpenFiles": [
+    "lit/lit_notes/Nyangon24pcaCAISOpriceFrcstDA.md",
+    "Scratch Space/tmp_zotero_to_obs_lit_note_jinja2.md",
     "Unearthed/Books/The-Poet.md",
     "Unearthed/Books/Photographer's-Guide-to-the-Panasonic-ZS100-TZ100.md",
     "Unearthed/Books/On-Fire.md",
@@ -328,7 +330,6 @@
     "Unearthed/Books/Dependence-Modeling-with-Copulas-(Chapman-&-Hall-CRC-Monographs-on-Statistics-&-Applied-Probability).md",
     "Unearthed/Books/Clean-Break.md",
     "lit/lit_sources/MorningConsult25rigntShiftGenZ.html",
-    "Scratch Space/tmp_zotero_to_obs_lit_note_jinja2.md",
     "Writing/Tired Words and Phrases.md",
     "Obsidian/Obsidian Sync.md",
     "lit/Lit Note Summary DBF.md",
@@ -348,7 +349,6 @@
     "Unearthed/Books/The-Sirens'-Call.md",
     "Unearthed/Books/The-Origins-Of-Totalitarianism-(Harvest-Book-Book-244).md",
     "Unearthed/Books/The-Origins-of-Authoritarianism-and-Why-it-Still-Works-Today.md",
-    "Unearthed/Books/Strange-Defeat.md",
     "Unearthed/Books",
     "Unearthed",
     "Scratch Space/Rudloff22epistemicBeliefConspiracy/Rudloff22epistemicBeliefConspiracy.pdf",
