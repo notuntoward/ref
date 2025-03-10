@@ -4,22 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "c5609baaa8968145",
+        "id": "a2fa5e1a1e6e8a9d",
         "type": "tabs",
         "children": [
           {
-            "id": "5185043eafa4053d",
+            "id": "4a66534d30c535ad",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scratch Space/tmp_zotero_to_obs_lit_note_jinja2.md",
+                "file": "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "tmp_zotero_to_obs_lit_note_jinja2"
+              "title": "Jonczy25EpidemiologyClinicalManifestation"
             }
           }
         ]
@@ -218,7 +218,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scratch Space/tmp_zotero_to_obs_lit_note_jinja2.md",
+                "file": "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -228,7 +228,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for tmp_zotero_to_obs_lit_note_jinja2"
+              "title": "Backlinks for Jonczy25EpidemiologyClinicalManifestation"
             }
           },
           {
@@ -317,10 +317,13 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "5185043eafa4053d",
+  "active": "4a66534d30c535ad",
   "lastOpenFiles": [
-    "lit/lit_notes/Nyangon24pcaCAISOpriceFrcstDA.md",
+    "Scratch Space/MorningConsult25rigntShiftGenZ.md",
+    "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
+    "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.pdf",
     "Scratch Space/tmp_zotero_to_obs_lit_note_jinja2.md",
+    "lit/lit_notes/Nyangon24pcaCAISOpriceFrcstDA.md",
     "Unearthed/Books/The-Poet.md",
     "Unearthed/Books/Photographer's-Guide-to-the-Panasonic-ZS100-TZ100.md",
     "Unearthed/Books/On-Fire.md",
@@ -334,7 +337,6 @@
     "Obsidian/Obsidian Sync.md",
     "lit/Lit Note Summary DBF.md",
     "Politics/Ranked Choice Voting/WARCV Lobby Day 2024.md",
-    "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.pdf",
     "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.html",
     "Obsidian/spacekeys.md",
     "lit/lit_sources/Clyde20IntroBayesianThink.pdf",
@@ -346,9 +348,6 @@
     "Unearthed/Books/You-Say-You-Want-a-Revolution.md",
     "Unearthed/Books/Wrong.md",
     "Unearthed/Books/The-Ultimate-Volumetrics-Diet.md",
-    "Unearthed/Books/The-Sirens'-Call.md",
-    "Unearthed/Books/The-Origins-Of-Totalitarianism-(Harvest-Book-Book-244).md",
-    "Unearthed/Books/The-Origins-of-Authoritarianism-and-Why-it-Still-Works-Today.md",
     "Unearthed/Books",
     "Unearthed",
     "Scratch Space/Rudloff22epistemicBeliefConspiracy/Rudloff22epistemicBeliefConspiracy.pdf",
