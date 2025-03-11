@@ -76,9 +76,9 @@ Stuff about updating zotero 6zo to zotero 7.  Also see [[Zotero to Obsidian to R
 Locate icon on the RHS margin looks up metainfo for the current entry. Can add new "lookup engines" to search more places. I tried to customize it by adding crossref and SPL, but didn't work after five minutes. I sent back to the default, which is google scholar.
 
 - must manually edit c:/Users/scott/Zotero/locate/engines.json
-- I copied [this one](https://egh.github.io/zotero-lookup-engines/us.wa.seattle_public.html) (started with "seattle"): had spl, google scholar, crossreff
+- I copied [this one](https://egh.github.io/zotero-lookup-engines/us.wa.seattle_public.html) (started with "seattle"): had spl, google scholar, crossref
 	- there are a bunch more [here](https://egh.github.io/zotero-lookup-engines/)
-# Zotero 7 Plugins 
+# Zotero 7 Plugins
 ## Pushing zotero items to Obsidian notes
 
 - Also: [[Zotero to Obsidian to RAG#Less tedious Zotero --> Obsidian Lit Note process]]
