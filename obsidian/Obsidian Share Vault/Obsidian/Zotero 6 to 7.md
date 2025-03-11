@@ -1,6 +1,6 @@
 ---
 created date: 2024-08-20T17:36:57-07:00
-modified date: 2025-03-03T22:05:12-08:00
+modified date: 2025-03-11T11:48:15-07:00
 ---
 Stuff about updating zotero 6zo to zotero 7.  Also see [[Zotero to Obsidian to RAG]].
 # New Zotero 7 Features
@@ -90,7 +90,7 @@ From: [GitHub - windingwind/zotero-actions-tags: Customize your Zotero workflow.
  - Examples of custom scripts (actions)
 	 - [What is This?](https://github.com/windingwind/zotero-actions-tags/tree/master?tab=readme-ov-file#-what-is-this)
 	 - Many user contributions: [Discussions · GitHub](https://github.com/windingwind/zotero-actions-tags/discussions)
-	 - My documentation request: [\[Feature\] Document what func...](https://github.com/windingwind/zotero-actions-tags/issues/474)
+	 - My documentation request: [\[Feature Document what func...](https://github.com/windingwind/zotero-actions-tags/issues/474)
 ### Plugins related to zotfile (zotero 7)
 In Z6, I used `zotfile` to "manage attachments," which renamed attachments to the citation key, and moved them to a specified, single directory.  But it's not been updated for Z7, as of 8/20/24.
 #### retorquere/zotero-file
