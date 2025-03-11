@@ -90,6 +90,7 @@ From: [GitHub - windingwind/zotero-actions-tags: Customize your Zotero workflow.
  - Examples of custom scripts (actions)
 	 - [What is This?](https://github.com/windingwind/zotero-actions-tags/tree/master?tab=readme-ov-file#-what-is-this)
 	 - Many user contributions: [Discussions · GitHub](https://github.com/windingwind/zotero-actions-tags/discussions)
+	 - My documentation request: [\[Feature\] Document what func...](https://github.com/windingwind/zotero-actions-tags/issues/474)
 ### Plugins related to zotfile (zotero 7)
 In Z6, I used `zotfile` to "manage attachments," which renamed attachments to the citation key, and moved them to a specified, single directory.  But it's not been updated for Z7, as of 8/20/24.
 #### retorquere/zotero-file
