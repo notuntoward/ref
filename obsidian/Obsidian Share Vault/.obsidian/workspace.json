@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lit/refwrangle/Zotero to Obsidian to RAG.md",
+                "file": "Obsidian/Zotero 6 to 7.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Zotero to Obsidian to RAG"
+              "title": "Zotero 6 to 7"
             }
           }
         ]
@@ -220,7 +220,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "lit/refwrangle/Zotero to Obsidian to RAG.md",
+                "file": "Obsidian/Zotero 6 to 7.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -230,7 +230,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Zotero to Obsidian to RAG"
+              "title": "Backlinks for Zotero 6 to 7"
             }
           },
           {
@@ -273,7 +273,8 @@
               "title": "Plugin no longer active"
             }
           }
-        ]
+        ],
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
@@ -321,6 +322,8 @@
   },
   "active": "e023c79c9b34008d",
   "lastOpenFiles": [
+    "lit/lit_sources/Frankfurt86onBullshitEssy.pdf",
+    "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "Obsidian/Zotero 6 to 7.md",
     "Dailies/2024-03-26.md",
     "Scratch Space/MorningConsult25rightShiftGenZ.md",
@@ -350,8 +353,6 @@
     "lit/lit_notes/Clyde20IntroBayesianThink.md",
     "Scratch Space/supplementary.html.md",
     "lit/lit_notes/Barro25demsNeedToCleanHouse.md",
-    "lit/lit_notes/AHP23SingleLegKBSwap.md",
-    "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "Unearthed/Books",
     "Unearthed",
     "Scratch Space/Rudloff22epistemicBeliefConspiracy/Rudloff22epistemicBeliefConspiracy.pdf",
