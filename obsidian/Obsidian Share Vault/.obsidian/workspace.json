@@ -4,22 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "a2fa5e1a1e6e8a9d",
+        "id": "b9f77c7da7793b91",
         "type": "tabs",
         "children": [
           {
-            "id": "4a66534d30c535ad",
+            "id": "e023c79c9b34008d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Obsidian/spacekeys.md",
+                "file": "Scratch Space/MorningConsult25rigntShiftGenZ.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "spacekeys"
+              "title": "MorningConsult25rigntShiftGenZ"
             }
           }
         ]
@@ -108,8 +108,7 @@
               "title": "Tag Folder"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -129,10 +128,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Scratch Space/tmp_zotero_to_obs_lit_note_jinja2.md"
+                "file": "Scratch Space/MorningConsult25rigntShiftGenZ.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for tmp_zotero_to_obs_lit_note_jinja2"
+              "title": "File properties for MorningConsult25rigntShiftGenZ"
             }
           },
           {
@@ -219,7 +218,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Obsidian/spacekeys.md",
+                "file": "Scratch Space/MorningConsult25rigntShiftGenZ.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -229,7 +228,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for spacekeys"
+              "title": "Backlinks for MorningConsult25rigntShiftGenZ"
             }
           },
           {
@@ -318,11 +317,13 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "677d4c9a7cddb77b",
+  "active": "e023c79c9b34008d",
   "lastOpenFiles": [
     "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
-    "Scratch Space/MorningConsult25rigntShiftGenZ.md",
     "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.pdf",
+    "Scratch Space/MorningConsult25rigntShiftGenZ.md",
+    "Scratch Space/None.md",
+    "Obsidian/spacekeys.md",
     "Scratch Space/tmp_zotero_to_obs_lit_note_jinja2.md",
     "lit/lit_notes/Nyangon24pcaCAISOpriceFrcstDA.md",
     "Unearthed/Books/The-Poet.md",
@@ -339,7 +340,6 @@
     "lit/Lit Note Summary DBF.md",
     "Politics/Ranked Choice Voting/WARCV Lobby Day 2024.md",
     "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.html",
-    "Obsidian/spacekeys.md",
     "lit/lit_sources/Clyde20IntroBayesianThink.pdf",
     "lit/lit_notes/Clyde20IntroBayesianThink.md",
     "Scratch Space/supplementary.html.md",
@@ -348,7 +348,6 @@
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "Unearthed/Books/You-Say-You-Want-a-Revolution.md",
     "Unearthed/Books/Wrong.md",
-    "Unearthed/Books/The-Ultimate-Volumetrics-Diet.md",
     "Unearthed/Books",
     "Unearthed",
     "Scratch Space/Rudloff22epistemicBeliefConspiracy/Rudloff22epistemicBeliefConspiracy.pdf",
