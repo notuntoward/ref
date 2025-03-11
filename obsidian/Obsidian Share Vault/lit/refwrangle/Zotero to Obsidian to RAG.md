@@ -183,7 +183,7 @@ I think what I need is a way to add a button to Zotero that makes an obsidian no
 - [ ] [Reddit - Dive into anything](https://www.reddit.com/r/ObsidianMD/comments/1f48x0g/obsidian_plugin_autocreating_notes_from_zotero/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button): 
 	- guy makes a button in zotero, 
 	- but has his own note template in java, doesn't use [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
-	- is based on the [[Obsidian/Zotero 6 to 7.md#Actions Tags Plugin |Actions Tags Plugin]]
+	- is based on the [[Obsidian/Zotero 6 to 7.md#Actions and Tags Plugin|Actions Tags Plugin]]
 	- I could change the `function createNote(item)` function to loop like I do with nunjucks
 		- [x] **This works** just try running the unmodified template to see if it works]
 			- see c:/Users/scott/OneDrive/share/ref/refwrangle/zmknote/action_tags_test.js
