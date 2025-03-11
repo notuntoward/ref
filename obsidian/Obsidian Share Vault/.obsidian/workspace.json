@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scratch Space/MorningConsult25rigntShiftGenZ.md",
+                "file": "Obsidian/Zotero 6 to 7.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "MorningConsult25rigntShiftGenZ"
+              "title": "Zotero 6 to 7"
             }
           }
         ]
@@ -54,7 +54,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "\"local api\"",
+                "query": "\"actions and tags\"",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -108,7 +108,8 @@
               "title": "Tag Folder"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -128,10 +129,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Scratch Space/MorningConsult25rigntShiftGenZ.md"
+                "file": "Obsidian/Zotero 6 to 7.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for MorningConsult25rigntShiftGenZ"
+              "title": "File properties for Zotero 6 to 7"
             }
           },
           {
@@ -218,7 +219,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scratch Space/MorningConsult25rigntShiftGenZ.md",
+                "file": "Obsidian/Zotero 6 to 7.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -228,7 +229,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for MorningConsult25rigntShiftGenZ"
+              "title": "Backlinks for Zotero 6 to 7"
             }
           },
           {
@@ -312,16 +313,17 @@
       "cmdr:Ink: New drawing": false,
       "cmdr:Ink: New handwriting section": false,
       "obsidian-focus-mode:Toggle Focus Mode (Shift + Click to show active pane only)": false,
-      "unearthed-app:Kindle (Unearthed) Sync": false,
-      "smart-connections:Open: View Smart Connections": false,
-      "smart-connections:Open: Smart Chat Conversation": false
+      "unearthed-app:Kindle (Unearthed) Sync": false
     }
   },
   "active": "e023c79c9b34008d",
   "lastOpenFiles": [
+    "Dailies/2024-03-26.md",
+    "Scratch Space/MorningConsult25rightShiftGenZ.md",
     "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
-    "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.pdf",
     "Scratch Space/MorningConsult25rigntShiftGenZ.md",
+    "lit/lit_sources/MorningConsult25rightShiftGenZ.html",
+    "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.pdf",
     "Scratch Space/None.md",
     "Obsidian/spacekeys.md",
     "Scratch Space/tmp_zotero_to_obs_lit_note_jinja2.md",
@@ -347,13 +349,11 @@
     "lit/lit_notes/AHP23SingleLegKBSwap.md",
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "Unearthed/Books/You-Say-You-Want-a-Revolution.md",
-    "Unearthed/Books/Wrong.md",
     "Unearthed/Books",
     "Unearthed",
     "Scratch Space/Rudloff22epistemicBeliefConspiracy/Rudloff22epistemicBeliefConspiracy.pdf",
     "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.pptx",
     "lit/lit_sources/Unconfirmed 867692.crdownload",
-    "lit/lit_sources/~$nczy25EpidemiologyClinicalManifestation.txt",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-44.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-43.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-42.png",
