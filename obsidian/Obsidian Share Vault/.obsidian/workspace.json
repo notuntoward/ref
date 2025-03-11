@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
+                "file": "Obsidian/spacekeys.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Jonczy25EpidemiologyClinicalManifestation"
+              "title": "spacekeys"
             }
           }
         ]
@@ -54,7 +54,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "unemployment",
+                "query": "\"local api\"",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -108,7 +108,8 @@
               "title": "Tag Folder"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -218,7 +219,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
+                "file": "Obsidian/spacekeys.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -228,7 +229,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Jonczy25EpidemiologyClinicalManifestation"
+              "title": "Backlinks for spacekeys"
             }
           },
           {
@@ -317,10 +318,10 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "4a66534d30c535ad",
+  "active": "677d4c9a7cddb77b",
   "lastOpenFiles": [
-    "Scratch Space/MorningConsult25rigntShiftGenZ.md",
     "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
+    "Scratch Space/MorningConsult25rigntShiftGenZ.md",
     "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.pdf",
     "Scratch Space/tmp_zotero_to_obs_lit_note_jinja2.md",
     "lit/lit_notes/Nyangon24pcaCAISOpriceFrcstDA.md",
