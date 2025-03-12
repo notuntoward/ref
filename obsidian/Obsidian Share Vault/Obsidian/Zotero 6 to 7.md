@@ -1,6 +1,6 @@
 ---
 created date: 2024-08-20T17:36:57-07:00
-modified date: 2025-03-11T12:13:44-07:00
+modified date: 2025-03-11T16:17:13-07:00
 ---
 Stuff about updating zotero 6zo to zotero 7.  Also see [[Zotero to Obsidian to RAG]].
 # New Zotero 7 Features
