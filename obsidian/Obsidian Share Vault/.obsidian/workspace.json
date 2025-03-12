@@ -4,22 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "426683a1c5e38767",
+        "id": "c80c42d6bcef558b",
         "type": "tabs",
         "children": [
           {
-            "id": "31ab82a50ec0e084",
+            "id": "97f139940cb574ca",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Jonczy25EpidemiologyClinicalManifestation"
+              "title": "New tab"
             }
           }
         ]
@@ -112,8 +107,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 470.5,
-    "collapsed": true
+    "width": 470.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -128,11 +122,9 @@
             "type": "leaf",
             "state": {
               "type": "file-properties",
-              "state": {
-                "file": "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md"
-              },
+              "state": {},
               "icon": "lucide-info",
-              "title": "File properties for Jonczy25EpidemiologyClinicalManifestation"
+              "title": "File properties"
             }
           },
           {
@@ -219,7 +211,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -229,7 +220,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Jonczy25EpidemiologyClinicalManifestation"
+              "title": "Backlinks"
             }
           },
           {
@@ -276,7 +267,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 552.5
+    "width": 552.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -317,10 +309,27 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "31ab82a50ec0e084",
+  "active": "97f139940cb574ca",
   "lastOpenFiles": [
-    "Scratch Space/MorningConsult25rightShiftGenZ.md",
+    "Scratch Space/Jonczy25EpidemiologyClinicalManifestation/Jonczy25EpidemiologyClinicalManifestation.md",
+    "Scratch Space/Jonczy25EpidemiologyClinicalManifestation/Jonczy25EpidemiologyClinicalManifestation.pdf",
+    "Scratch Space/3Blue1Brown19BayesThrmGeomChngBelief.md",
+    "Scratch Space/Jonczy25EpidemiologyClinicalManifestation",
+    "Scratch Space/Clyde20IntroBayesianThink.md",
     "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
+    "Scratch Space/Lake12KettlebellSwingExplPow.md",
+    "Scratch Space/Currier23ResistTrnStrngthHyperBayesNet.md",
+    "Scratch Space/GoranWinblad23KneeStrengtheningRun.md",
+    "Scratch Space/Zillen24PowerNotStrengthOldRunner.md",
+    "Scratch Space/Schulkin16evolvHumanRun.md",
+    "Scratch Space/Migala21powPlyometWorkout.md",
+    "lit/lit_sources/Currier23ResistTrnStrngthHyperBayesNet.pdf",
+    "Scratch Space/Holman24TargetStockPlunges.md",
+    "Scratch Space/News25IndoorTemperaturesAffect.md",
+    "lit/lit_sources/NuroscienceNews25IndoorTemperaturesAffect.html",
+    "lit/lit_sources/Holman24TargetStockPlunges.html",
+    "Scratch Space/LeCun24child50xMoreDat.md",
+    "Scratch Space/MorningConsult25rightShiftGenZ.md",
     "lit/lit_notes/Bump25polSciworryRstrongman.md",
     "Obsidian/Zotero 6 to 7.md",
     "lit/lit_notes/Jonczy25EpidemiologyClinicalManifestation.md",
@@ -335,26 +344,8 @@
     "Scratch Space/tmp_zotero_to_obs_lit_note_jinja2.md",
     "lit/lit_notes/Nyangon24pcaCAISOpriceFrcstDA.md",
     "Unearthed/Books/The-Poet.md",
-    "Unearthed/Books/Photographer's-Guide-to-the-Panasonic-ZS100-TZ100.md",
-    "Unearthed/Books/On-Fire.md",
-    "Unearthed/Books/Learn-German.md",
-    "Unearthed/Books/Financial-Engineering-with-Copulas-Explained-(Financial-Engineering-Explained).md",
-    "Unearthed/Books/Fearsome-Battle.md",
-    "Unearthed/Books/Dependence-Modeling-with-Copulas-(Chapman-&-Hall-CRC-Monographs-on-Statistics-&-Applied-Probability).md",
-    "Unearthed/Books/Clean-Break.md",
     "lit/lit_sources/MorningConsult25rigntShiftGenZ.html",
-    "Writing/Tired Words and Phrases.md",
-    "Obsidian/Obsidian Sync.md",
-    "lit/Lit Note Summary DBF.md",
-    "Politics/Ranked Choice Voting/WARCV Lobby Day 2024.md",
     "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.html",
-    "lit/lit_sources/Clyde20IntroBayesianThink.pdf",
-    "lit/lit_notes/Clyde20IntroBayesianThink.md",
-    "Scratch Space/supplementary.html.md",
-    "Unearthed/Books",
-    "Unearthed",
-    "Scratch Space/Rudloff22epistemicBeliefConspiracy/Rudloff22epistemicBeliefConspiracy.pdf",
-    "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.pptx",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-44.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-43.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-42.png",
