@@ -24,7 +24,6 @@
   "obsidian-kanban",
   "multi-properties",
   "omnisearch",
-  "remember-cursor-position",
   "tag-wrangler",
   "text-extractor",
   "pdf-plus",
@@ -64,5 +63,6 @@
   "backlink-cache",
   "obsidian-editor-shortcuts",
   "image-converter",
-  "unearthed-app"
+  "unearthed-app",
+  "cursor-position-history"
 ]

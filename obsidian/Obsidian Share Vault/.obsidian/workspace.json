@@ -4,22 +4,37 @@
     "type": "split",
     "children": [
       {
-        "id": "c80c42d6bcef558b",
+        "id": "036454050ca333b0",
         "type": "tabs",
         "children": [
           {
-            "id": "97f139940cb574ca",
+            "id": "638c0985301ebcb0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
+                "file": "Scratch Space/Ambler23dataModeling101.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Jonczy25EpidemiologyClinicalManifestation"
+              "title": "Ambler23dataModeling101"
+            }
+          },
+          {
+            "id": "55e18104ddccfab1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lit/lit_notes/Ambler23dataModeling101.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Ambler23dataModeling101"
             }
           }
         ]
@@ -54,7 +69,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "\"actions and tags\"",
+                "query": "\"remember cursor",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -128,10 +143,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md"
+                "file": "Scratch Space/Ambler23dataModeling101.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for Jonczy25EpidemiologyClinicalManifestation"
+              "title": "File properties for Ambler23dataModeling101"
             }
           },
           {
@@ -218,7 +233,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
+                "file": "Scratch Space/Ambler23dataModeling101.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -228,7 +243,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Jonczy25EpidemiologyClinicalManifestation"
+              "title": "Backlinks for Ambler23dataModeling101"
             }
           },
           {
@@ -317,39 +332,39 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "97f139940cb574ca",
+  "active": "638c0985301ebcb0",
   "lastOpenFiles": [
+    "lit/lit_notes/Ambler23dataModeling101.md",
+    "Scratch Space/Ambler23dataModeling101.md",
     "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
-    "Scratch Space/Robinson24eatWildWebsite.md",
-    "Scratch Space/Thudium23CartilageTissueTurnover.md",
-    "Scratch Space/Robinson13eatingWildSide.md",
-    "Scratch Space/Nield24CaffeineYourBlood.md",
-    "Scratch Space/Marks24ExercisesPursuedOlder.md",
-    "Scratch Space/Magkos24PathogenesisObesityCausal.md",
-    "Scratch Space/Luna23supersetBulgarianSquat.md",
-    "Scratch Space/Jin21DoesWeightLoss.md",
-    "Scratch Space/Dale19CompleteGuideBulgSquat.md",
-    "Scratch Space/Jonczy25EpidemiologyClinicalManifestation/Jonczy25EpidemiologyClinicalManifestation.md",
-    "Scratch Space/Jonczy25EpidemiologyClinicalManifestation/Jonczy25EpidemiologyClinicalManifestation.pdf",
-    "Scratch Space/3Blue1Brown19BayesThrmGeomChngBelief.md",
-    "Scratch Space/Jonczy25EpidemiologyClinicalManifestation",
+    "Scratch Space/Drkusic16starVsSnowflakeSchema.md",
+    "Scratch Space/Brumm23normSQL.md",
+    "Scratch Space/Codebasics23starSnowFlakeFactDimTbl.md",
+    "Scratch Space/Smallcombe24SQLVsNoSQLdiff5.md",
+    "Scratch Space/Coursera24SQLVsNoSQLdiffExplain.md",
+    "Scratch Space/MongoDB24noSQLVsSQLdatabases.md",
+    "Scratch Space/SQLTutorial25sqlCheatSheet.md",
+    "Scratch Space/W3schools25sqlQuickReference.md",
+    "Scratch Space/Lawrence22dataScienceSQLcourse.md",
+    "Scratch Space/zotero_to_obsidian_output.md",
+    "Shopping/Camping Winter Wear.md",
+    "Scratch Space/LeCun24child50xMoreDat.md",
+    "tmp3.md",
+    "lit/lit_notes/Grose24youngWimynWillTalkSexistm.md",
+    "tmp new.md",
+    "Scratch Space/tmp.md",
+    "Dailies/2025-03-12.md",
+    "lit/lit_notes/MongoDB24noSQLVsSQLdatabases.md",
     "Scratch Space/Clyde20IntroBayesianThink.md",
-    "Scratch Space/Lake12KettlebellSwingExplPow.md",
-    "Scratch Space/Currier23ResistTrnStrngthHyperBayesNet.md",
-    "Scratch Space/GoranWinblad23KneeStrengtheningRun.md",
-    "Scratch Space/Zillen24PowerNotStrengthOldRunner.md",
-    "Scratch Space/Schulkin16evolvHumanRun.md",
-    "Scratch Space/Migala21powPlyometWorkout.md",
+    "Obsidian/Zotero 6 to 7.md",
+    "Dailies/2023-10-20.md",
+    "Dailies/2024-03-23.md",
+    "Dailies/2024-03-25.md",
+    "Scratch Space/Jonczy25EpidemiologyClinicalManifestation/Jonczy25EpidemiologyClinicalManifestation.pdf",
+    "Scratch Space/Jonczy25EpidemiologyClinicalManifestation",
     "lit/lit_sources/Currier23ResistTrnStrngthHyperBayesNet.pdf",
-    "Scratch Space/Holman24TargetStockPlunges.md",
-    "Scratch Space/News25IndoorTemperaturesAffect.md",
     "lit/lit_sources/NuroscienceNews25IndoorTemperaturesAffect.html",
     "lit/lit_sources/Holman24TargetStockPlunges.html",
-    "Scratch Space/LeCun24child50xMoreDat.md",
-    "Scratch Space/MorningConsult25rightShiftGenZ.md",
-    "lit/lit_notes/Bump25polSciworryRstrongman.md",
-    "Obsidian/Zotero 6 to 7.md",
-    "lit/lit_notes/Jonczy25EpidemiologyClinicalManifestation.md",
     "lit/lit_sources/Jonczy25EpidemiologyClinicalManifestation.pdf",
     "lit/lit_sources/Frankfurt86onBullshitEssy.pdf",
     "lit/lit_sources/MorningConsult25rightShiftGenZ.html",
