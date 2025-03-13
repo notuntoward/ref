@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-08T19:09:38-08:00
+modified date: 2025-03-13T13:09:40-07:00
 tags:
   - politics
   - polling
@@ -73,6 +73,12 @@ Trump is really the best president ever.
 - [[Ludwig25votersCorrectEcon|Ludwig25: Voters Were Right About the Economy. The Data Was Wrong.]] 
 - [[MorningConsult25priceSurpriseIdx|MorningConsult25: price surprise index]] 
 - bad economy and interactions: [[Politics/Political Causality/US Elections 2024.md#Issue/Message Interaction Examples |Issue/Message Interaction Examples]]
+- Biden had high inflation and high interest rates, which voters hated: [[Prokop25trumpEconWorstPoll|Prokop25trumpEconWorstPoll]] 
+- Trump voters slavishly improved Trump during pandemic in contrast to treatment of Biden: [[Boak23presToutsBidenomics|Boak23presToutsBidenomics]] 
+- But were bad Trump voter ratings of Biden right? [[Ludwig25votersCorrectEcon|Ludwig25: Voters Were Right About the Economy. The Data Was Wrong.]] 
+- Good Biden econ helped Trump??
+	- [[Pastor24greatBidenEconHelpedTrump|Pastor24: The Economy Has Been Great Under Biden. That’s Why Trump Won.]] ??
+	- [[Coy24strongEconHurtDems|Coy24: Is It Possible the Democrats Were Hurt by a Strong Economy?]] 
 ### Postmaterialism: when a bad economy matters less
 Both R's and D's vote less on economic issues and more on values: 
 - [[Lowrey24RiseUnionRight|Lowrey24: The Rise of the Union Right]] 
@@ -191,12 +197,12 @@ Just more predictor variables for various things. Things similar to education, w
 - A good fear-of-Trump & Co caution from [[Arendt76originsTotalitariansim|Arendt76: The origins of totalitarianism]] 
 
 > the most characteristic aspect of totalitarian terror, that it is let loose when all organized opposition has died down and the totalitarian ruler knows that he no longer need to be afraid.
-
-
-
-
-
-
+# Breaking the Republican Fever
+Will the Rs ever pay attention to evidence?
+- Apparently at least a few Rs can: [[Prokop25trumpEconWorstPoll|Prokop25: Trump is torching his greatest political asset]] 
+- [ ] add my cult deprogramming perplexity stuff here
+- or were the R's right? [[Ludwig25votersCorrectEcon|Ludwig25: Voters Were Right About the Economy. The Data Was Wrong.]] 
+- But Biden had [[Boak23presToutsBidenomics|paradoxically terrible]] total-nation econ ratings, so Ds deluded too?
 # Predictive Models and Analysis Techniques
 
 - market sentiment indexes predicted by economic variables (Weber24implicitCoordInflateShock).  Could be *voter* sentiment predicted by other variables
