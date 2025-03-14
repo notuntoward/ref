@@ -4,22 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "036454050ca333b0",
+        "id": "d32d852903fefa9d",
         "type": "tabs",
         "children": [
           {
-            "id": "96c9fc5aaa7e2417",
+            "id": "23fd28092305af40",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Scratch Space/LeCun24child50xMoreDat.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "LeCun24child50xMoreDat"
+              "title": "New tab"
             }
           }
         ]
@@ -54,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "\"remember cursor",
+                "query": "lecun24child",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -218,7 +213,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scratch Space/LeCun24child50xMoreDat.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -228,7 +222,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for LeCun24child50xMoreDat"
+              "title": "Backlinks"
             }
           },
           {
@@ -317,11 +311,15 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "96c9fc5aaa7e2417",
+  "active": "23fd28092305af40",
   "lastOpenFiles": [
-    "Scratch Space/zotero_to_obsidian_output.md",
+    "Scratch Space/zotero_to_obsidian_note_output.md",
+    "lit/lit_notes/LeCun24child50xMoreDat.md",
     "Scratch Space/LeCun24child50xMoreDat.md",
+    "Scratch Space/zotero_to_obsidian_output.md",
+    "Scratch Space/W3schools25sqlQuickReference.md",
     "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
+    "Scratch Space/Lawrence22dataScienceSQLcourse.md",
     "Scratch Space/Drkusic16starVsSnowflakeSchema.md",
     "Scratch Space/Brumm23normSQL.md",
     "lit/lit_sources/ESIG25electMktVisionDecarb_Slides.pdf",
@@ -347,13 +345,10 @@
     "Scratch Space/Smallcombe24SQLVsNoSQLdiff5.md",
     "Scratch Space/MongoDB24noSQLVsSQLdatabases.md",
     "Scratch Space/SQLTutorial25sqlCheatSheet.md",
-    "Scratch Space/W3schools25sqlQuickReference.md",
-    "Scratch Space/Lawrence22dataScienceSQLcourse.md",
     "Shopping/Camping Winter Wear.md",
     "tmp3.md",
     "lit/lit_notes/Grose24youngWimynWillTalkSexistm.md",
     "tmp new.md",
-    "Scratch Space/tmp.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-44.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-43.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-42.png",
