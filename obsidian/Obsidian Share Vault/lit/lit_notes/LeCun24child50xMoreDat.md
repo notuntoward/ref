@@ -1,23 +1,23 @@
 ---
 category: literaturenote
 tags:
-  - ml/genAI
+read: false
+in-progress: false
+linked: false
+aliases: 
+- "I've made that point before..."
+- "I've made that point before..."
 citekey: LeCun24child50xMoreDat
-status:
-  - read
-dateread: 
-ZoteroTags: todo, obsLitNote
-aliases:
-  - I've made that point before...
-  - I've made that point before...
-publisher: ""
-citation key: LeCun24child50xMoreDat
-DOI: ""
-created date: 2024-05-05T09:43:25-07:00
-modified date: 2024-12-17T08:51:31-08:00
+ZoteroTags:
+- obslitnote
+ZoteroCollections:
+- generative_ai
+- scratch_space
+created date: 2025-03-13T23:35:29-07:00
+modified date: 
 ---
 
-> [!info]- : [**Zotero**](zotero://select/library/items/U7NTFFTP)   | [**URL**](https://www.linkedin.com/posts/yann-lecun_ive-made-that-point-before-llm-1e13-activity-7156484065603280896-QH63/) | [[LeCun24child50xMoreDat.pdf|PDF]]
+> [!info]- &nbsp;[**Zotero**](zotero://select/library/items/U7NTFFTP)   | [**URL**](https://www.linkedin.com/posts/yann-lecun_ive-made-that-point-before-llm-1e13-activity-7156484065603280896-QH63/) | **[[LeCun24child50xMoreDat.pdf|PDF]]**
 >
 > 
 > 
@@ -38,7 +38,7 @@ modified date: 2024-12-17T08:51:31-08:00
 > **Location**::    
 > **Pages**::   
 > **ISBN**::   
-> **ZoteroTags**:: todo, obsLitNote
+> **ZoteroTags**:: obsLitNote
 > **Related**:: 
 
 > LeCun, Yann. “I’ve Made That Point Before...” _LinkedIn_, Feb. 2024, [https://www.linkedin.com/posts/yann-lecun_ive-made-that-point-before-llm-1e13-activity-7156484065603280896-QH63/](https://www.linkedin.com/posts/yann-lecun_ive-made-that-point-before-llm-1e13-activity-7156484065603280896-QH63/).
@@ -53,9 +53,12 @@ Says video is more redundant than text but that’s good for self-supervised lea
 	- [[Wodecki24yannLeCunDitchGenAI]]
 	- [[LeCun24animalSmarterLessDat]]
 ___
+___
+==Delete this and write here.  Don't delete the `persist` directives above and below.==
+___
 %% end Obsidian Notes %%
 
-> [!note]- Zotero Note (1)
+> [!note]- &nbsp;Zotero Note (1)
 > LeCun24child50xMoreDat
 > 
 > 4 year old child has 50X more training data than current LLMs all available data would take 170 k years to read -- in ([LeCun, 2024](zotero://select/library/items/CCFV2YSY)), he says that current LLMs trained-on text data that would take 20,000 years to read.
@@ -71,5 +74,4 @@ ___
 
 
 
-
-%% Import Date: 2024-05-05T09:44:09.419-07:00 %%
+%% Import Date: 2025-03-13T23:35:41.873-07:00 %%
