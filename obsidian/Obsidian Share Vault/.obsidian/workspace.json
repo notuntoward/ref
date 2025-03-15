@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "d32d852903fefa9d",
+        "id": "17b20b56157d035c",
         "type": "tabs",
         "children": [
           {
-            "id": "23fd28092305af40",
+            "id": "a0ee6b7eafbe8b14",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -123,10 +123,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Scratch Space/LeCun24child50xMoreDat.md"
+                "file": "Scratch Space/zotero_to_obsidian_note_output.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for LeCun24child50xMoreDat"
+              "title": "File properties for zotero_to_obsidian_note_output"
             }
           },
           {
@@ -269,8 +269,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 552.5,
-    "collapsed": true
+    "width": 314.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -311,44 +310,43 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "23fd28092305af40",
+  "active": "7ee2628547aab10f",
   "lastOpenFiles": [
-    "Scratch Space/zotero_to_obsidian_note_output.md",
-    "lit/lit_notes/LeCun24child50xMoreDat.md",
-    "Scratch Space/LeCun24child50xMoreDat.md",
-    "Scratch Space/zotero_to_obsidian_output.md",
+    "Scratch Space/MongoDB24noSQLVsSQLdatabases.md",
+    "lit/lit_sources/SQLQuickReference.html",
     "Scratch Space/W3schools25sqlQuickReference.md",
-    "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
+    "Scratch Space/SQLTutorial25sqlCheatSheet.md",
+    "lit/lit_sources/SQLTutorial25sqlCheatSheet.pdf",
+    "Scratch Space/Smallcombe24SQLVsNoSQLdiff5.md",
     "Scratch Space/Lawrence22dataScienceSQLcourse.md",
+    "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
     "Scratch Space/Drkusic16starVsSnowflakeSchema.md",
+    "Scratch Space/Coursera24SQLVsNoSQLdiffExplain.md",
+    "Scratch Space/Codebasics23starSnowFlakeFactDimTbl.md",
     "Scratch Space/Brumm23normSQL.md",
+    "Scratch Space/Ambler23dataModeling101.md",
+    "Scratch Space/zotero_to_obsidian_note_output.md",
+    "Scratch Space/zot_note_to_obs.md",
+    "lit/lit_sources/HomeDepotSuet.html",
+    "Scratch Space/LeCun24child50xMoreDat.md",
+    "lit/lit_notes/Jonczy25EpidemiologyClinicalManifestation.md",
+    "Scratch Space/tmp.md",
+    "lit/lit_notes/LeCun24child50xMoreDat.md",
+    "lit/lit_notes/Prokop25trumpEconWorstPoll.md",
+    "lit/lit_notes/Pastor24greatBidenEconHelpedTrump.md",
+    "lit/lit_notes/Coy24strongEconHurtDems.md",
+    "lit/lit_notes/Boak23presToutsBidenomics.md",
+    "Scratch Space/zotero_to_obsidian_output.md",
     "lit/lit_sources/ESIG25electMktVisionDecarb_Slides.pdf",
     "lit/lit_sources/ESIG25electMktVisionDecarb.pdf",
     "Scratch Space/target_output.md",
-    "Scratch Space/Coursera24SQLVsNoSQLdiffExplain.md",
-    "Scratch Space/Codebasics23starSnowFlakeFactDimTbl.md",
-    "Scratch Space/Ambler23dataModeling101.md",
     "Politics/Political Causality/US Elections 2024.md",
-    "lit/lit_notes/Prokop25trumpEconWorstPoll.md",
-    "lit/lit_notes/Boak23presToutsBidenomics.md",
-    "lit/lit_notes/Pastor24greatBidenEconHelpedTrump.md",
     "lit/lit_sources/Unconfirmed 601420.crdownload",
     "lit/lit_sources/Unconfirmed 935682.crdownload",
     "lit/lit_sources/Prokop25trumpEconWorstPoll.html",
     "lit/lit_notes/Ambler23dataModeling101.md",
-    "lit/lit_notes/Coy24strongEconHurtDems.md",
     "lit/lit_sources/Unconfirmed 703831.crdownload",
     "lit/lit_sources/Boak23presToutsBidenomics.html",
-    "lit/lit_sources/23PresidentToutsBidenomics.html",
-    "lit/lit_sources/Unconfirmed 629805.crdownload",
-    "lit/lit_sources/Prokop25TrumpTorchingHis.html",
-    "Scratch Space/Smallcombe24SQLVsNoSQLdiff5.md",
-    "Scratch Space/MongoDB24noSQLVsSQLdatabases.md",
-    "Scratch Space/SQLTutorial25sqlCheatSheet.md",
-    "Shopping/Camping Winter Wear.md",
-    "tmp3.md",
-    "lit/lit_notes/Grose24youngWimynWillTalkSexistm.md",
-    "tmp new.md",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-44.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-43.png",
     "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image-42.png",
