@@ -11,10 +11,15 @@
             "id": "a0ee6b7eafbe8b14",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Scratch Space/Drkusic16starVsSnowflakeSchema.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Drkusic16starVsSnowflakeSchema"
             }
           }
         ]
@@ -123,10 +128,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "Scratch Space/zotero_to_obsidian_note_output.md"
+                "file": "Scratch Space/Drkusic16starVsSnowflakeSchema.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for zotero_to_obsidian_note_output"
+              "title": "File properties for Drkusic16starVsSnowflakeSchema"
             }
           },
           {
@@ -213,6 +218,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Scratch Space/Drkusic16starVsSnowflakeSchema.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -222,7 +228,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for Drkusic16starVsSnowflakeSchema"
             }
           },
           {
@@ -310,22 +316,22 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "7ee2628547aab10f",
+  "active": "a0ee6b7eafbe8b14",
   "lastOpenFiles": [
-    "Scratch Space/MongoDB24noSQLVsSQLdatabases.md",
-    "lit/lit_sources/SQLQuickReference.html",
-    "Scratch Space/W3schools25sqlQuickReference.md",
-    "Scratch Space/SQLTutorial25sqlCheatSheet.md",
-    "lit/lit_sources/SQLTutorial25sqlCheatSheet.pdf",
+    "Scratch Space/zotero_to_obsidian_note_output.md",
+    "Scratch Space/Drkusic16starVsSnowflakeSchema.md",
+    "Scratch Space/Brumm23normSQL.md",
+    "Scratch Space/Codebasics23starSnowFlakeFactDimTbl.md",
+    "Scratch Space/Ambler23dataModeling101.md",
     "Scratch Space/Smallcombe24SQLVsNoSQLdiff5.md",
     "Scratch Space/Lawrence22dataScienceSQLcourse.md",
-    "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
-    "Scratch Space/Drkusic16starVsSnowflakeSchema.md",
     "Scratch Space/Coursera24SQLVsNoSQLdiffExplain.md",
-    "Scratch Space/Codebasics23starSnowFlakeFactDimTbl.md",
-    "Scratch Space/Brumm23normSQL.md",
-    "Scratch Space/Ambler23dataModeling101.md",
-    "Scratch Space/zotero_to_obsidian_note_output.md",
+    "Scratch Space/SQLTutorial25sqlCheatSheet.md",
+    "Scratch Space/W3schools25sqlQuickReference.md",
+    "Scratch Space/Jonczy25EpidemiologyClinicalManifestation.md",
+    "Scratch Space/MongoDB24noSQLVsSQLdatabases.md",
+    "lit/lit_sources/SQLQuickReference.html",
+    "lit/lit_sources/SQLTutorial25sqlCheatSheet.pdf",
     "Scratch Space/zot_note_to_obs.md",
     "lit/lit_sources/HomeDepotSuet.html",
     "Scratch Space/LeCun24child50xMoreDat.md",
