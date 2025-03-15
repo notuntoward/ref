@@ -1,20 +1,20 @@
 ---
 category: literaturenote
-tags:
+tags: 
 read: false
 in-progress: false
 linked: false
-aliases: 
-- "I've made that point before..."
-- "I've made that point before..."
+aliases:
+  - I've made that point before...
+  - I've made that point before...
 citekey: LeCun24child50xMoreDat
 ZoteroTags:
-- obslitnote
+  - obslitnote
 ZoteroCollections:
-- generative_ai
-- scratch_space
+  - generative_ai
+  - scratch_space
 created date: 2025-03-13T23:35:29-07:00
-modified date: 
+modified date: 2025-03-14T11:58:46-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/U7NTFFTP)   | [**URL**](https://www.linkedin.com/posts/yann-lecun_ive-made-that-point-before-llm-1e13-activity-7156484065603280896-QH63/) | **[[LeCun24child50xMoreDat.pdf|PDF]]**
@@ -54,7 +54,14 @@ Says video is more redundant than text but that’s good for self-supervised lea
 	- [[LeCun24animalSmarterLessDat]]
 ___
 ___
-==Delete this and write here.  Don't delete the `persist` directives above and below.==
+LeCun24child50xMoreDat
+
+4 year old child has 50X more training data than current LLMs all available data would take 170 k years to read -- in ([LeCun, 2024](zotero://select/library/items/CCFV2YSY)), he says that current LLMs trained-on text data that would take 20,000 years to read.
+
+Says video is more redundant than text but that’s good for self-supervized learning, and that youtube accumulated 32khours of video per hour.
+
+- Do his 170k and 20k reading times agree with used and available high quality text in ([Villalobos et al., 2022](zotero://select/library/items/MAT7EU3N))?
+- Similar to ([LeCun, 2024](zotero://select/library/items/CCFV2YSY)) and ([Wodecki, 2024](zotero://select/library/items/SUISKUY6))
 ___
 %% end Obsidian Notes %%
 
