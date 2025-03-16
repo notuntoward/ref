@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-13T13:09:40-07:00
+modified date: 2025-03-15T12:53:25-07:00
 tags:
   - politics
   - polling
@@ -30,19 +30,24 @@ tags:
 ### Political AI background
 - [[Gen AI Talk Ideas#Sentiment Analysis|Sentiment Analysis]]
 - [Robots Talk Back, AI Security Risks, Political Deepfakes, and more](zotero://select/library/items/QUV7MR9D)
-- 
+- Thinks AI polling/policy making will improve sense of control [[Razzaque25trumperBelievePsych|Razzaque25trumperBelievePsych]] 
+
 ## The Chinese
 ## The Russians
+- KGB 85% of budget on overt destruction of US society: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 ## The Jews
 - ? were they miffed in a way similar to Asians?   [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
 ## The Gays
 ## Lying Republicans
 - in Dawson23cognitiveAbilityVotingEU the UK higher cog. voters were more likely to vote remain during Brexit. Authors speculate that lower cog. voters are vulnerable to misinformation
+- Trump was great at it: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
+
 ## The Great Trump
 Trump is really the best president ever.
 ## People forgot how bad Trump was
 - Medina24amnesiaAboutTrump
-## Covid
+## COVID
+- COVID + post-COVID inflation wiped out incumbents everywhere: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 ## Ukraine
 ## Political Correctness
 - the word wokeness as toxic as "socialism" for general electorate: Yokley23wokeVoterPerception
@@ -79,25 +84,33 @@ Trump is really the best president ever.
 - Good Biden econ helped Trump??
 	- [[Pastor24greatBidenEconHelpedTrump|Pastor24: The Economy Has Been Great Under Biden. That’s Why Trump Won.]] ??
 	- [[Coy24strongEconHurtDems|Coy24: Is It Possible the Democrats Were Hurt by a Strong Economy?]] 
+- COVID + post-COVID inflation wiped out incumbents everywhere: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 ### Postmaterialism: when a bad economy matters less
 Both R's and D's vote less on economic issues and more on values: 
 - [[Lowrey24RiseUnionRight|Lowrey24: The Rise of the Union Right]] 
+- or social insecurity: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 ## Immigration
 - 2X more voters prioritized immigration than abortion: [[Ponnuru25learnDemsDKborder|Ponnuru25: What Democrats can learn from Denmark’s left-leaning border hawks]] 
 - D's heavily lost Hispanics on the US-Mexico border: [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
+- I kind of loss of control of borders, increasing insecurity which in general, helped Trump: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 ## US Culture
 ## Random Bad Luck
 ## Anti-Incumbency Cycle
+- COVID + post-COVID inflation wiped out incumbents everywhere: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]]
 ## Racism / Sexism
 ## Trump is what the People Wanted
+- yes, they wanted to feel in control and better about themselves: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
+	- [ ] @ find empirical evidence for or against this idea
+
 ## Global Trend
+- COVID + post-COVID inflation wiped out incumbents everywhere: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 ## Loss of trust in experts, institutions
 - people don't believe experts, media, etc. Go to friends
 	- I have more than one article on this, I think
 	- odd example: [[Verma24muskPoliticsEcoCar|Verma24: Musk’s politics hadn’t seeped into Tesla. Then he axed its eco car of the future.]]
 - Musk trades in this: [[Isaac25internetCringeMusk|Isaac25: Elon Musk’s Internet: So Based, Much Wow. So Cringe?]] 
-
 - Brazilians didn't trust democracy, but eventually removed an authoritarian: [[Ivanova22systemicMistrustBrazil|Ivanova22: Brazil's Systemic Mistrust of Elections and Democracy]] 
+- I'm guessing modern KGBs helped this: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 ## Lack of D party enthusiasm/turnout
 - was the D loss due to poor Democratic turnout or to Ds switching to R?
 ## Abortion overemphasized, not important
@@ -107,6 +120,7 @@ Both R's and D's vote less on economic issues and more on values:
 ## Weak economy doomed D's
 - many posts say so
 - but some say it was actually a perceived strong economy doomed the D's, rather than a weak real/perceived econ (Pastor24greatBidenEconHelpedTrump)
+- COVID + post-COVID inflation wiped out incumbents everywhere: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 ## Overreliance on demographic groups
 ### Demographic Info Sources
 - PBS24keyVoteGroupsInteract : interesting but can't search since must operate interactively
@@ -146,6 +160,8 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 - A Musk attack, since he wants all AI?[[Palmer23llmsArgueConvincing|Palmer23: Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors: implications for Governance]] 
 - Musk is very unpopular, and he's barely started: [[Balz25trumpEarlyActionUnpop|Balz25: Many of Trump’s early actions are unpopular, Post-Ipsos poll finds]] 
 - He may also be becoming uncool to his fans: - Musk trades in this: [[Isaac25internetCringeMusk|Isaac25: Elon Musk’s Internet: So Based, Much Wow. So Cringe?]] 
+- [[Atrioc25teslaBacklashBiblical|Atrioc25: The Tesla Backlash Is Biblical]]: very lively summary of Musk lies and hypocrisy.  This is SO GOOD.
+	- [ ] @ how to expand this attack / true-conspiracy mongering attacks to the rest of Trump's circle.
 # Questions
 ## How voters weight different policies in their voting decision (sensitivity analysis)
 ## Media effectiveness
@@ -203,6 +219,7 @@ Will the Rs ever pay attention to evidence?
 - [ ] add my cult deprogramming perplexity stuff here
 - or were the R's right? [[Ludwig25votersCorrectEcon|Ludwig25: Voters Were Right About the Economy. The Data Was Wrong.]] 
 - But Biden had [[Boak23presToutsBidenomics|paradoxically terrible]] total-nation econ ratings, so Ds deluded too?
+- KGB guys says impossible:  [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 # Predictive Models and Analysis Techniques
 
 - market sentiment indexes predicted by economic variables (Weber24implicitCoordInflateShock).  Could be *voter* sentiment predicted by other variables
@@ -248,6 +265,7 @@ Will the Rs ever pay attention to evidence?
 - Sentiment analysis was used to shape messages, etc. in 2024. maybe earlier
 - how are representative of general population
 - how important to the people who are talking about it
+- Proposes AI polling/policy making: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 ## Issue half-life
 - given a set of issues, predict how "important", "salient" they will be in the future
 - a factor useful to know if an issue will be important by the time of the election
@@ -256,6 +274,7 @@ Will the Rs ever pay attention to evidence?
 - then, [[#Issue half-life|Issue half-life]]
 - then estimate representativeness of total voting population (like polling respondent weighting)
 - also [[Gen AI Talk Ideas#Sentiment Analysis|Sentiment Analysis]]
+- Proposes AI polling/policy making: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 ## Detect when people are so tired of a message that they ignore it
 - so know when to switch adverts
 - to settle arguments about whether somebody's interest (mens rights, womens rights, global warming) has been beaten for the death for the moment
@@ -339,7 +358,7 @@ Will the Rs ever pay attention to evidence?
 - Must run long term, year around, keep pounding the message
 	- Rubin24demsLowInfoVoterShortcut
 - Media attack graph, as in Thompson24rumbleRightWingYT
-
+- Proposes AI polling/policy making: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 # Success Stories: Recent Authoritarian Takedowns
 - Poland
 	- [[Gora23polandEndRightWing|Gora23: Elections in Poland Bring the End of Right-wing Populist Rule - Brexit Institute]] 
@@ -361,6 +380,7 @@ Will the Rs ever pay attention to evidence?
 	- [[Herkman24LfinnPopulistLoss|Herkman24: The Loss of the Populist Radical Right in the 2024 European Parliament Elections in Finland]] 
 - Denmark, kinda
 	- [[Ponnuru25learnDemsDKborder|Ponnuru25: What Democrats can learn from Denmark’s left-leaning border hawks]] 
+- ? is the UK a success story?  BREXITEERs wiped out but [[Razzaque25trumperBelievePsych|was it just COVID]]?
 # Potential Partners
 - UW Center for an informed public
 	- [Center for an Informed Public](https://www.cip.uw.edu/2024/10/31/misinformation-why-people-spread-rumors/)
