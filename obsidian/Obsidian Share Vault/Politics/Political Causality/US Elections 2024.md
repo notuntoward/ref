@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-15T12:53:25-07:00
+modified date: 2025-03-16T14:17:11-07:00
 tags:
   - politics
   - polling
@@ -162,6 +162,10 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 - He may also be becoming uncool to his fans: - Musk trades in this: [[Isaac25internetCringeMusk|Isaac25: Elon Musk’s Internet: So Based, Much Wow. So Cringe?]] 
 - [[Atrioc25teslaBacklashBiblical|Atrioc25: The Tesla Backlash Is Biblical]]: very lively summary of Musk lies and hypocrisy.  This is SO GOOD.
 	- [ ] @ how to expand this attack / true-conspiracy mongering attacks to the rest of Trump's circle.
+- Trump's White House promotion of Tesla is a good "he's not for you" attack
+	- tons of video of Trump saying EVs are bad, maybe even EV people are bad
+	- he's actually for Elon Musk, the richest guy in the world
+	- [ ] ? I'm sure this has been thought of, but how to reach the right audience and would it work?  Do a search on this
 # Questions
 ## How voters weight different policies in their voting decision (sensitivity analysis)
 ## Media effectiveness

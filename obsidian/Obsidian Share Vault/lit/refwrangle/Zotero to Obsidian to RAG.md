@@ -203,6 +203,16 @@ See: [zotero-action-cmd: A plugin for Zotero. Perform operations to execute cust
 	- system call so python or whatever
 	- run an http request?  
 - My question: [Does the command get informati...](https://github.com/Bowen-0x00/zotero-action-cmd/issues/29)
+
+### Making a Python webhook listener
+#### Making a standalone executable from python
+- gets what's needed to build executable without needing conda envs, and can run outside of refwrangle dirs
+- excludes PyQt becuase pyinstaller can't tolerate more than one, and somehow, my refwrangle env has more than one
+- prints the same stdout messages to the terminal as the .py verson
+
+```
+pyinstaller --exclude-module PyQt5 --exclude-module PySide6 --onefile zotero_to_obsidian_note_listener.py
+```
 ## Direct zotero/obsidan DB-to-DB connection?
 This could *somehow* help smooth the zotero --> obsidian process.
 ### Zotero API interfaces
