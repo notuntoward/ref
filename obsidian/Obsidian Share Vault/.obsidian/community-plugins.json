@@ -64,5 +64,6 @@
   "obsidian-editor-shortcuts",
   "image-converter",
   "unearthed-app",
-  "cursor-position-history"
+  "cursor-position-history",
+  "obsidian-local-rest-api"
 ]
