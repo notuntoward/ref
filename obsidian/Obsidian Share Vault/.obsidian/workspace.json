@@ -313,7 +313,9 @@
       "cmdr:Ink: New drawing": false,
       "cmdr:Ink: New handwriting section": false,
       "obsidian-focus-mode:Toggle Focus Mode (Shift + Click to show active pane only)": false,
-      "unearthed-app:Kindle (Unearthed) Sync": false
+      "unearthed-app:Kindle (Unearthed) Sync": false,
+      "smart-connections:Open: View Smart Connections": false,
+      "smart-connections:Open: Smart Chat Conversation": false
     }
   },
   "active": "4a18347d5aa0d9c2",
