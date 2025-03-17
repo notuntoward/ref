@@ -65,5 +65,6 @@
   "image-converter",
   "unearthed-app",
   "cursor-position-history",
-  "obsidian-local-rest-api"
+  "obsidian-local-rest-api",
+  "image-captions"
 ]

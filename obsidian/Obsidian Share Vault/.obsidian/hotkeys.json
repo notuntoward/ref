@@ -1025,5 +1025,32 @@
       ],
       "key": "U"
     }
-  ]
+  ],
+  "obsidian-heading-shifter:apply-heading4": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "4"
+    }
+  ],
+  "workspace:goto-tab-4": [],
+  "obsidian-heading-shifter:apply-heading5": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "5"
+    }
+  ],
+  "workspace:goto-tab-5": [],
+  "obsidian-heading-shifter:apply-heading6": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "6"
+    }
+  ],
+  "workspace:goto-tab-6": []
 }

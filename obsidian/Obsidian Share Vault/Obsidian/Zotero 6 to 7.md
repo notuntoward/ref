@@ -1,6 +1,6 @@
 ---
 created date: 2024-08-20T17:36:57-07:00
-modified date: 2025-03-11T16:17:13-07:00
+modified date: 2025-03-17T10:47:02-07:00
 ---
 Stuff about updating zotero 6zo to zotero 7.  Also see [[Zotero to Obsidian to RAG]].
 # New Zotero 7 Features
@@ -201,37 +201,7 @@ Seems like it could write the OCR'ed text back onto a pdf, but I'm not sure if i
 This obsidian plugin now works for Zotero 7, I guess, but maybe I don't care.  See [[2024-02-25#ZotLit plugin|ZotLit plugin]].
 
 **Not installed**
-#### PDF Download
-From: [GitHub - syt2/zotero-scipdf: D...](https://github.com/syt2/zotero-scipdf)
-Downloads hard to find pdfs, I think from scihub.  I don't know if this is working or not yet, but at least I'm not getting error popups all the time, like I was with a scihub downloader on Zotero6.
 
-- Settings: I changed the schihub URL to https://sci-hub.se/
-
- **installed**
-#### zotero-actions-tags
-From: **[zotero-actions-tags](https://github.com/windingwind/zotero-actions-tags)**
-
-A bunch of actions, I couldn't get it to do anything after futzing for 5 minutes.  Docs aren't great, but there are many [contributed scripts](https://github.com/windingwind/zotero-actions-tags/discussions/categories/action-scripts?page=4) that I could somehow use.  My first use is to add and remove a TODO tag to selected entries; I also might want to copy/paste tags someday.
-
-**try it later**
-##### Interesting action-tags scripts
-- [Copy and paste tags of selected item(s)](https://github.com/windingwind/zotero-actions-tags/discussions/194)
-- [Batch Tag Operations...](https://github.com/windingwind/zotero-actions-tags/discussions/351)
-- [Remove All Tags of Selection...](https://github.com/windingwind/zotero-actions-tags/discussions/127)
-- [Collection Tags  · wi...](https://github.com/windingwind/zotero-actions-tags/discussions/245)
-- [Replace Tag · windin...](https://github.com/windingwind/zotero-actions-tags/discussions/113)
-- [Actions & Tags 合集分享 ...](https://github.com/windingwind/zotero-actions-tags/discussions/300)
-- [add tag shortcut · w...](https://github.com/windingwind/zotero-actions-tags/discussions/139)
-
-#### Zotero Preview
-From [GitHub - dcartertod/zotero-plu...](https://github.com/dcartertod/zotero-plugins?tab=readme-ov-file)
-
-Adds a preview of the bibliography item in the bibtex style of your choosing -- easy to copy and paste.  Don't forget to get the [Zotero 7 version](https://github.com/dcartertod/zotero-plugins/releases).
-
-- Settings
-	- Preview style: MLA 9
-	- Position: Bottom
- **installed**
 ## File renaming in Zotero 7
 From: [file\_renaming \[Zotero Docume...](https://www.zotero.org/support/file_renaming)
 

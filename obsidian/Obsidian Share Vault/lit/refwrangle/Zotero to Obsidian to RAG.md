@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-03-16T19:08:51-07:00
+modified date: 2025-03-17T11:12:57-07:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -175,16 +175,18 @@ Zotero _Better Notes Add-on has a way of two-way syncing Obsidian Markdown_ note
 
 Trying to reduce the steps and friction between adding an item to zotero and then **making an Obsidian literature note properly linked to Zotero**.  This is so that I actually get this done, instead of letting the unlinked zotero entries pile up, or even skipping making the zotero note at all.
 
-- [ ] ! combine with [[#Easier zotero-to-obsidian note transfer]]
-- [ ] ! combine with [[Obsidian/Zotero 6 to 7.md#Pushing zotero items to Obsidian notes |Pushing zotero items to Obsidian notes]]
+- [ ] ! combine section with [[#Easier zotero-to-obsidian note transfer]]
+- [ ] ! combine section with [[Obsidian/Zotero 6 to 7.md#Pushing zotero items to Obsidian notes |Pushing zotero items to Obsidian notes]]
+- interesting [[Dailies/2023-10-12.md#Zotero Plugins |Zotero Plugins]]
 ## Push from Zotero to Obsidian
-I think what I need is a way to add a button to Zotero that makes an obsidian note(s) from the current or selected group of Zotero items.
+I think what I need is a way to add a button to Zotero that makes an obsidian note(s) from the current or selected group of Zotero items.  
 ### Push with Zotero "Actions and Tags" plugin
+- [[Dailies/2023-10-12.md#Actions & Tags Plugin |Actions & Tags Plugin]]
 - [ ] [Reddit - Dive into anything](https://www.reddit.com/r/ObsidianMD/comments/1f48x0g/obsidian_plugin_autocreating_notes_from_zotero/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button): 
 	- guy makes a button in zotero, 
 	- but has his own note template in java, doesn't use [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
 	- is based on the [[Obsidian/Zotero 6 to 7.md#Actions and Tags Plugin|Actions Tags Plugin]]
-	- I could change the `function createNote(item)` function to loop like I do with nunjucks
+	- I could change the `function createNote(item)` function to loop like I do with nunjucks or jinja2
 		- [x] **This works** just try running the unmodified template to see if it works]
 			- see c:/Users/scott/OneDrive/share/ref/refwrangle/zmknote/action_tags_test.js
 			- documentation almost not there
@@ -197,8 +199,14 @@ I think what I need is a way to add a button to Zotero that makes an obsidian no
 	- Maybe the zotero click would only send the zotero item citekeys, which would avoid the awful zotero citekey selector.
 	- An obsidian process would then look for these keys within obsidian's copy of the zotero DB, put there by, perhaps, the [[Dailies/2025-02-07.md#Zotero Sync Client Plugin |Zotero Sync Client Plugin]] or use one of the [[lit/refwrangle/Zotero to Obsidian to RAG.md#Obsidian plugins which are zotero DB interfaces |Obsidian plugins which are zotero DB interfaces]]
 	- Maybe there could be a python watcher to handle all of this?
+- [ ] Put obsidian note overwrite popup dialog in Zotero instead of Python
+	- [This script](<Obsidian/Zotero 6 to 7.md#^payx >) managed to do it.
+	- ! Try it, just to see if popups really do work
+	- [ ] It's a crappy numbered-choice popup: can I do better?
+- Could get a file picker from [this script](<Obsidian/Zotero 6 to 7.md#^2ry5 >)
 ### Push with Zotero Action Cmd Plugin
 See: [zotero-action-cmd: A plugin for Zotero. Perform operations to execute custom commands](https://github.com/Bowen-0x00/zotero-action-cmd)
+- almost no documentation
 - can trigger?
 	- system call so python or whatever
 	- run an http request?  

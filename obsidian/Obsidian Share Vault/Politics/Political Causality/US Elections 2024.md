@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-16T14:17:11-07:00
+modified date: 2025-03-17T12:47:21-07:00
 tags:
   - politics
   - polling
@@ -166,6 +166,8 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 	- tons of video of Trump saying EVs are bad, maybe even EV people are bad
 	- he's actually for Elon Musk, the richest guy in the world
 	- [ ] ? I'm sure this has been thought of, but how to reach the right audience and would it work?  Do a search on this
+- [[Atrioc25cannotExplainBitcoinGrift|Atrioc25: I Truly Cannot Explain This]]: bitcoin corruption, Trump, Trump family, (Musk too, I would guess, but don't have the details)
+
 # Questions
 ## How voters weight different policies in their voting decision (sensitivity analysis)
 ## Media effectiveness
