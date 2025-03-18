@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lit/lit_notes/Atrioc25cannotExplainBitcoinGrift.md",
+                "file": "Scratch Space/HangzouGrandTech23SlipElectricMotors.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Atrioc25cannotExplainBitcoinGrift"
+              "title": "HangzouGrandTech23SlipElectricMotors"
             }
           },
           {
@@ -84,7 +84,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "\"Image Captions\"",
+                "query": "\"Young, Dannagal Goldthwaite\"",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -158,10 +158,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "lit/lit_notes/Atrioc25cannotExplainBitcoinGrift.md"
+                "file": "Scratch Space/HangzouGrandTech23SlipElectricMotors.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for Atrioc25cannotExplainBitcoinGrift"
+              "title": "File properties for HangzouGrandTech23SlipElectricMotors"
             }
           },
           {
@@ -248,7 +248,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "lit/lit_notes/Atrioc25cannotExplainBitcoinGrift.md",
+                "file": "Scratch Space/HangzouGrandTech23SlipElectricMotors.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -258,7 +258,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Atrioc25cannotExplainBitcoinGrift"
+              "title": "Backlinks for HangzouGrandTech23SlipElectricMotors"
             }
           },
           {
@@ -305,8 +305,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5,
-    "collapsed": true
+    "width": 314.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -347,10 +346,13 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "daa5867004f6e896",
+  "active": "a8bae8de1a83b9c3",
   "lastOpenFiles": [
-    "Scratch Space/Alfonseca24wokeMean.md",
+    "lit/lit_sources/HangzouGrandTech23SlipElectricMotors.html",
+    "Scratch Space/HangzouGrandTech23SlipElectricMotors.md",
+    "Scratch Space/Young23wrongAppetiteMisinfo.md",
     "lit/lit_notes/Atrioc25cannotExplainBitcoinGrift.md",
+    "Scratch Space/Alfonseca24wokeMean.md",
     "lit/lit_sources/Alfonseca24wokeMean.html",
     "Dailies/2025-03-17.md",
     "Scratch Space/3Blue1Brown19BayesThrmGeomChngBelief.md",
@@ -374,8 +376,6 @@
     "Scratch Space/Jain25moderatesOverperform.md",
     "Scratch Space/Jain25winsReplaceDB.md",
     "Scratch Space/Klein25mediaTheoryExplains.md",
-    "Scratch Space/Bump25polSciworryRstrongman.md",
-    "Scratch Space/BrightLineWatch25democracyRrsrchOrg.md",
     "lit/lit_notes/attachments/image.png",
     "lit/lit_sources/Economist25tenIndicatorsUSecon.html",
     "lit/lit_sources/TenIndicatorsExplain.html",
