@@ -153,13 +153,11 @@
               "title": "Tag Folder"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 470.5,
-    "collapsed": true
+    "width": 470.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -366,18 +364,18 @@
   },
   "active": "4a18347d5aa0d9c2",
   "lastOpenFiles": [
+    "Scratch Space/3Blue1Brown19BayesThrmGeomChngBelief.md",
+    "Dailies/2025-03-17.md",
     "lit/lit_notes/Atrioc25cannotExplainBitcoinGrift.md",
     "lit/lit_notes/Isaac25internetCringeMusk.md",
     "Politics/Political Causality/US Elections 2024.md",
     "lit/lit_notes/Atrioc25teslaBacklashBiblical.md",
-    "Dailies/2025-03-17.md",
     "Dailies/2024-03-28.md",
     "Obsidian/Zotero 6 to 7.md",
     "Dailies/attachments/image.png",
     "Dailies/2024-05-19.md",
     "lit/refwrangle/Zotero to Obsidian to RAG.md",
     "Dailies/2023-10-12.md",
-    "Scratch Space/3Blue1Brown19BayesThrmGeomChngBelief.md",
     "Howto/Manual Links to Zotero.md",
     "Howto/Map Zotero links to Obsidian Lit note links.md",
     "Dailies/2024-03-26.md",
