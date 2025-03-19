@@ -44,7 +44,6 @@
   "obsidian-outliner",
   "front-matter-timestamps",
   "obsidian-excalidraw-plugin",
-  "obsidian-advanced-uri",
   "spellcheck-toggler",
   "shortcut-edit-mode",
   "enhanced-symbols-prettifier",
@@ -66,5 +65,6 @@
   "unearthed-app",
   "cursor-position-history",
   "obsidian-local-rest-api",
-  "image-captions"
+  "image-captions",
+  "obsidian-advanced-uri"
 ]
