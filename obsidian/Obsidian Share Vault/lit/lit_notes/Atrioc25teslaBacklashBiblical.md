@@ -56,7 +56,7 @@ Interesting that China sales are down 49% or something, even though they still "
 
 Odd: the video guy constantly laughs at his own jokes like that Russian youtuber.  Are they copying somebody or one, the other?
 
-**Video is impressive** with the amount of facts he covers in a short time in a visually interesting way, and with his really American jokey delivery.  How does he get all that research done?  The presentation is very logical and coherent, if you pay attention to that. You can see the wheels working behind his eyes, but you have to think about that first.  He's also a biz major, and attacks the stock on that ground too (ridiculous P/E ratio, study says the value of Musk's hype is > ~$800B, while estimated true value is ~$80B, so that's why they cant get rid of him), adding to his credibility, I think.  **Really good** 
+**Video is impressive** with the amount of facts he covers in a short time in a visually interesting way, and with his really American jokey delivery.  How does he get all that research done?  The presentation is very logical and coherent, if you pay attention to that. You can see the wheels working behind his eyes, but you have to think about that first.  He's also a biz major, and attacks Tesla stock on that ground too (ridiculous P/E ratio, study says the value of Musk's hype is > ~$800B, while estimated true Tesla value is ~$80B, so that's why they cant get rid of him, adding to his credibility, I think).  **Really good** 
 
 ### Also
 - [[Atrioc25cannotExplainBitcoinGrift]]

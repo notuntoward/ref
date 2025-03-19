@@ -4,11 +4,26 @@
     "type": "split",
     "children": [
       {
-        "id": "0e1668e49ceb490f",
+        "id": "a29ee597227194d9",
         "type": "tabs",
         "children": [
           {
-            "id": "e78314192eb36103",
+            "id": "45d2bb8e334a353f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "All Tasks Summary.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "All Tasks Summary"
+            }
+          },
+          {
+            "id": "b9e4bf7f1bfe60c4",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -21,8 +36,24 @@
               "icon": "lucide-file",
               "title": "Coursera24SQLVsNoSQLdiffExplain"
             }
+          },
+          {
+            "id": "39e4a4b8fc9fa05f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lit/lit_notes/Atrioc25teslaBacklashBiblical.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Atrioc25teslaBacklashBiblical"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -128,10 +159,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "lit/lit_notes/Coursera24SQLVsNoSQLdiffExplain.md"
+                "file": "lit/lit_notes/Atrioc25teslaBacklashBiblical.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for Coursera24SQLVsNoSQLdiffExplain"
+              "title": "File properties for Atrioc25teslaBacklashBiblical"
             }
           },
           {
@@ -218,7 +249,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "lit/lit_notes/Coursera24SQLVsNoSQLdiffExplain.md",
+                "file": "lit/lit_notes/Atrioc25teslaBacklashBiblical.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -228,7 +259,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Coursera24SQLVsNoSQLdiffExplain"
+              "title": "Backlinks for Atrioc25teslaBacklashBiblical"
             }
           },
           {
@@ -316,10 +347,11 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "e78314192eb36103",
+  "active": "39e4a4b8fc9fa05f",
   "lastOpenFiles": [
-    "All Tasks Summary.md",
     "lit/lit_notes/Coursera24SQLVsNoSQLdiffExplain.md",
+    "All Tasks Summary.md",
+    "lit/lit_notes/Atrioc25teslaBacklashBiblical.md",
     "Obsidian/Zotero 6 to 7.md",
     "Scratch Space/Hamilton19introQualMethods.md",
     "lit/lit_sources/Hamilton19introQualMethods.pdf",
@@ -333,7 +365,6 @@
     "Scratch Space/3Blue1Brown19BayesThrmGeomChngBelief.md",
     "lit/lit_notes/Isaac25internetCringeMusk.md",
     "Politics/Political Causality/US Elections 2024.md",
-    "lit/lit_notes/Atrioc25teslaBacklashBiblical.md",
     "Dailies/2024-03-28.md",
     "Dailies/attachments/image.png",
     "Dailies/2024-05-19.md",
