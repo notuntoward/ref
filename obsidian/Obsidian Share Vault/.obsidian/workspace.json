@@ -4,56 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "a29ee597227194d9",
+        "id": "5517a59946f37b42",
         "type": "tabs",
         "children": [
           {
-            "id": "45d2bb8e334a353f",
+            "id": "2c09bee6f02cbe5e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "All Tasks Summary.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "All Tasks Summary"
-            }
-          },
-          {
-            "id": "b9e4bf7f1bfe60c4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "lit/lit_notes/Coursera24SQLVsNoSQLdiffExplain.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "Coursera24SQLVsNoSQLdiffExplain"
-            }
-          },
-          {
-            "id": "39e4a4b8fc9fa05f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "lit/lit_notes/Atrioc25teslaBacklashBiblical.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "Atrioc25teslaBacklashBiblical"
+              "title": "New tab"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -158,11 +122,9 @@
             "type": "leaf",
             "state": {
               "type": "file-properties",
-              "state": {
-                "file": "lit/lit_notes/Atrioc25teslaBacklashBiblical.md"
-              },
+              "state": {},
               "icon": "lucide-info",
-              "title": "File properties for Atrioc25teslaBacklashBiblical"
+              "title": "File properties"
             }
           },
           {
@@ -249,7 +211,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "lit/lit_notes/Atrioc25teslaBacklashBiblical.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -259,7 +220,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Atrioc25teslaBacklashBiblical"
+              "title": "Backlinks"
             }
           },
           {
@@ -347,11 +308,12 @@
       "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "39e4a4b8fc9fa05f",
+  "active": "2c09bee6f02cbe5e",
   "lastOpenFiles": [
-    "lit/lit_notes/Coursera24SQLVsNoSQLdiffExplain.md",
     "All Tasks Summary.md",
+    "lit/lit_notes/Coursera24SQLVsNoSQLdiffExplain.md",
     "lit/lit_notes/Atrioc25teslaBacklashBiblical.md",
+    "DOES NOT EXIST.md",
     "Obsidian/Zotero 6 to 7.md",
     "Scratch Space/Hamilton19introQualMethods.md",
     "lit/lit_sources/Hamilton19introQualMethods.pdf",
@@ -378,7 +340,6 @@
     "Scratch Space/Emory25exercisesBayesTheorem.md",
     "Scratch Space/Clyde20IntroBayesianThink.md",
     "Scratch Space/Evans24techSplinterCulturalCtrl.md",
-    "Scratch Space/Jain25moderatesOverperform.md",
     "lit/lit_notes/attachments/image.png",
     "lit/lit_sources/Economist25tenIndicatorsUSecon.html",
     "lit/lit_sources/TenIndicatorsExplain.html",

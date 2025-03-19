@@ -15,7 +15,7 @@ ZoteroCollections:
   - hot_takes_us_elect_2024
   - campaignmoney
 created date: 2025-03-15T12:11:22-07:00
-modified date: 2025-03-17T12:45:53-07:00
+modified date: 2025-03-19T08:51:15-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/U7YZSNCH)   | [**URL**](https://www.youtube.com/watch?v=k9kmK0St9Jg)
