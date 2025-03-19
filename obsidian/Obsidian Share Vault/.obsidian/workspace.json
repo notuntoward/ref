@@ -11,10 +11,15 @@
             "id": "e78314192eb36103",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "lit/lit_notes/Coursera24SQLVsNoSQLdiffExplain.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Coursera24SQLVsNoSQLdiffExplain"
             }
           }
         ]
@@ -122,9 +127,11 @@
             "type": "leaf",
             "state": {
               "type": "file-properties",
-              "state": {},
+              "state": {
+                "file": "lit/lit_notes/Coursera24SQLVsNoSQLdiffExplain.md"
+              },
               "icon": "lucide-info",
-              "title": "File properties"
+              "title": "File properties for Coursera24SQLVsNoSQLdiffExplain"
             }
           },
           {
@@ -211,6 +218,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "lit/lit_notes/Coursera24SQLVsNoSQLdiffExplain.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -220,7 +228,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for Coursera24SQLVsNoSQLdiffExplain"
             }
           },
           {
