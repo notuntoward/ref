@@ -4,7 +4,7 @@ category:
 tags: 
 read: false
 in-progress: true
-linked: false
+linked: true
 aliases:
   - "Wrong: How media, politics, and identity drive our appetite for misinformation"
   - "Wrong: How media, politics, and"

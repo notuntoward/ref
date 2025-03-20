@@ -9,7 +9,8 @@ aliases:
   - On bullshit
   - On bullshit
 citekey: Frankfurt86onBullshitEssy
-ZoteroTags: 
+ZoteroTags:
+  - obslitnote
 ZoteroCollections:
   - authoritarianism
   - misdisinformation
@@ -17,11 +18,11 @@ ZoteroCollections:
   - morality_in_politics
   - neuropsycholinguisticpolitics
   - identitypolitics
-created date: 3/19/2025, 4:38:24 PM
-modified date: 2025-03-19T16:38:26-07:00
+created date: 3/19/2025, 6:19:09 PM
+modified date: 2025-03-19T18:21:34-07:00
 ---
 
-> [!info]- &nbsp;[**Zotero**](zotero://select/library/items/RGBEXMWN)  | **[[Frankfurt86onBullshitEssy.pdf|PDF]]**
+> [!info]- &nbsp;[**Zotero**](zotero://select/library/items/RGBEXMWN)  | **[[Frankfurt86onBullshitEssay.pdf|PDF]]**
 >> **Author**:: Frankfurt, Harry G.
 > **Title**:: "On bullshit"
 > **Date**:: 1986
@@ -38,7 +39,7 @@ modified date: 2025-03-19T16:38:26-07:00
 > **Location**:: 
 > **Pages**:: 
 > **ISBN**:: 
-> **ZoteroTags**:: []
+> **ZoteroTags**:: ['obsLitNote']
 > **ZoteroCollections**:: ['Authoritarianism', 'MisDisinformation', 'MediaAdsPolit', 'Morality in Politics', 'NeuroPsychoLinguisticPolitics', 'IdentityPolitics']
 > **Related**::
 

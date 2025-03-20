@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-19T16:42:14-07:00
+modified date: 2025-03-19T16:52:41-07:00
 tags:
   - politics
   - polling
@@ -204,11 +204,13 @@ Just more predictor variables for various things. Things similar to education, w
 			- [ ] ? AI was persuasive here, too: [[Palmer23llmsArgueConvincing|Palmer23: Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors: implications for Governance]] 
 			- [[Young23wrongAppetiteMisinfo|Young23: Wrong: How media, politics, and identity drive our appetite for misinformation]] 
 	- [How hackers at the Def Con conference tried to break AI chatbots](<How hackers at the Def Con conference tried to break AI chatbots>)
-	- [[Frankfurt86onBullshitEssy|Frankfurt86: On bullshit]] 
+	- [[Frankfurt86onBullshitEssay|Frankfurt86: On bullshit]] 
+	- [[Young23wrongAppetiteMisinfo|Young23: Wrong: How media, politics, and identity drive our appetite for misinformation]] 
+
 ## Authenticity and Trust: how to get it
 - Musk's internet language and imagery looks "authentic" to online gamers : [[Isaac25internetCringeMusk|Isaac25: Elon Musk’s Internet: So Based, Much Wow. So Cringe?]] 
 - Trumps tweets made him look authentic, for some reason [[Isaac25internetCringeMusk|Isaac25internetCringeMusk]] 
-- [[Frankfurt86onBullshitEssy|Frankfurt86: On bullshit]] 
+- [[Frankfurt86onBullshitEssay|Frankfurt86: On bullshit]] 
 ## Polarization: what, why, and how to overcome, or use
 - [[Evans24techSplinterCulturalCtrl]]
 - [[Rampell25genZmenLoveTrump]]
@@ -251,12 +253,12 @@ Will the Rs ever pay attention to evidence?
 - Related? [[Watmough23populistEndPoland]]
 - [[Duke25conspiracyThryCureAI|Duke25: Finally, something is puncturing conspiracy theories]] 
 - [[Costello24durablyReduceConspiracyWithAI|Costello24: Durably reducing conspiracy beliefs through dialogues with AI]] 
-- [[Frankfurt86onBullshitEssy|Frankfurt86: On bullshit]] 
+- [[Frankfurt86onBullshitEssay|Frankfurt86: On bullshit]] 
 ## How specifically does Trump sound like an honest, real person?
 - non-politically correct, says what they're thinking but others are afraid to say it?
 - just says what they already think? He's not persuading but got in front of their parade?
 - is inarticulate, as in most conversations?
-- [[Frankfurt86onBullshitEssy|Frankfurt86: On bullshit]] 
+- [[Frankfurt86onBullshitEssay|Frankfurt86: On bullshit]] 
 ## How communicate policy to voters who know nothing?
 - Voters know shockingly little and this was who Harris needed to convince: Rubin24demsLowInfoVoterShortcut
 - [ ] # ID features that are salient to low info voters just before election, when they pay a little attention: Rubin24demsLowInfoVoterShortcut
@@ -275,9 +277,9 @@ Will the Rs ever pay attention to evidence?
 - how are representative of general population
 - how important to the people who are talking about it
 - Proposes AI polling/policy making: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
-- [[Frankfurt86onBullshitEssy|Frankfurt86: On bullshit]] 
+- [[Frankfurt86onBullshitEssay|Frankfurt86: On bullshit]] 
 ## Auto-detection of misinformation and disinformation
-- [[Frankfurt86onBullshitEssy|Frankfurt86: On bullshit]] 
+- [[Frankfurt86onBullshitEssay|Frankfurt86: On bullshit]] 
 ## Issue half-life
 - given a set of issues, predict how "important", "salient" they will be in the future
 - a factor useful to know if an issue will be important by the time of the election
