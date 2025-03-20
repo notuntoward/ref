@@ -12,7 +12,7 @@ ZoteroTags:
 ZoteroCollections:
   - data_bases
 created date: 2025-03-12T11:36:41-07:00
-modified date: 2025-03-12T11:36:52-07:00
+modified date: 2025-03-20T15:38:04-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/YK4TVDBM)   | [**URL**](https://www.mongodb.com/resources/basics/databases/nosql-explained/nosql-vs-sql) | **[[MongoDB24noSQLVsSQLdatabases.html|HTM]]**
@@ -45,46 +45,71 @@ modified date: 2025-03-12T11:36:52-07:00
 > MongoDB. “NoSQL Vs SQL Databases.” _MongoDB_, 2024, [https://www.mongodb.com/resources/basics/databases/nosql-explained/nosql-vs-sql](https://www.mongodb.com/resources/basics/databases/nosql-explained/nosql-vs-sql).
 %% begin Obsidian Notes %%
 ___
-==Delete this and write here.  Don't delete the `persist` directives above and below.==
+### SQL
+-  reading in SQL course: ([Lawrence, 2022](zotero://select/library/items/B7TNABNU))
+- big list of SQL variants
+- scales “vertically”: make a single server bigger
+- ACID stingent security complant (always)
+- SQL use cases
+	- ACID required by regulations
+	- transactional
+	- enterprise resource planning e.g. supply chain, human resources,…
+### NoSQL
+- not always SQL (can do SQL too)
+- scaled “horizontally”: I think this means can expand by adding a new compute node
+- use when data changes fast, must be scalable, and when it’s non-structured
+- usually doesn’t meet stringent ACID standard
+	- SQL often does
+	- some NoSQL does e.g. Mongo’s
+- big list of NoSQL type
+	- Document
+	- Key-value
+	- Column-family stores
+	- Graph
+- NoSQL use case
+	- transactional (can just do internal SQL-type tables), or when store unstructured
+	- document and digital assets management
+	- graph and network analysis
+	- IoT
 ___
 %% end Obsidian Notes %%
 
 > [!note]- &nbsp;Zotero Note (1)
 > MongoDB25noSQLVsSQLdatabases
 > 
-> #### Points
-> 
+> - #### Points
+> - 
 > - Recommended reading in SQL course: ([Lawrence, 2022](zotero://select/library/items/B7TNABNU))
 > - clear graph of a set of foreign keys
-> 
-> #### SQL
-> 
+> - 
+> - #### SQL
+> - 
 > - big list of SQL variants
 > - scales “vertically”: make a single server bigger
 > - ACID stingent security complant (always)
 > - SQL use cases
->     
+>     - 
 >     - ACID required by regulations
 >     - transactional
 >     - enterprise resource planning e.g. supply chain, human resources,…
-> 
-> #### NoSQL
-> 
+> - 
+> - #### NoSQL
+> - 
 > - not always SQL (can do SQL too)
 > - scaled “horizontally”: I think this means can expand by adding a new compute node
 > - use when data changes fast, must be scalable, and when it’s non-structured
 > - usually doesn’t meet stringent ACID standards
->     
+>     - 
 >     - SQL often does
 >     - some NoSQL does e.g. Mongo’s
 > - big list of NoSQL types
->     
+>     - 
 >     - Document
 >     - Key-value
 >     - Column-family stores
 >     - Graph
 > - NoSQL use cases
->     
+>     - 
 >     - transactional (can just do internal SQL-type tables), or when store unstructured
 >     - document and digital assets management
 >     - graph and network analysis

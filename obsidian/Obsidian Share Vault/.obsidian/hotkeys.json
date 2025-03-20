@@ -37,7 +37,8 @@
   "obsidian-editor-shortcuts:toggleCase": [
     {
       "modifiers": [
-        "Alt"
+        "Alt",
+        "Shift"
       ],
       "key": "U"
     }
@@ -83,7 +84,14 @@
     }
   ],
   "editor:delete-paragraph": [],
-  "obsidian-editor-shortcuts:selectWordOrNextOccurrence": [],
+  "obsidian-editor-shortcuts:selectWordOrNextOccurrence": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "J"
+    }
+  ],
   "emacs-text-editor:end-of-buffer": [
     {
       "modifiers": [
@@ -280,23 +288,7 @@
       "key": "Tab"
     }
   ],
-  "workspace:previous-tab": [
-    {
-      "modifiers": [
-        "Ctrl"
-      ],
-      "key": "PageUp"
-    }
-  ],
-  "editor:cycle-list-checklist": [
-    {
-      "modifiers": [
-        "Mod",
-        "Shift"
-      ],
-      "key": "S"
-    }
-  ],
+  "workspace:previous-tab": [],
   "obsidian-excalidraw-plugin:save": [],
   "editor:save-file": [],
   "outline:open": [
@@ -306,6 +298,173 @@
         "Shift"
       ],
       "key": "O"
+    }
+  ],
+  "editor:toggle-source": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "E"
+    }
+  ],
+  "app:toggle-left-sidebar": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "PageUp"
+    }
+  ],
+  "app:toggle-right-sidebar": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "PageDown"
+    }
+  ],
+  "workspace:next-tab": [
+    {
+      "modifiers": [
+        "Ctrl"
+      ],
+      "key": "Tab"
+    }
+  ],
+  "backlink:open": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "\\"
+    }
+  ],
+  "links:editor-copy-link-to-object-to-clipboard": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "M"
+    }
+  ],
+  "editor:cycle-list-checklist": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "C"
+    }
+  ],
+  "editor:toggle-bullet-list": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "C"
+    }
+  ],
+  "links:editor-create-link-from-clipboard": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "N"
+    }
+  ],
+  "templater-obsidian:create-new-note-from-template": [],
+  "templater-obsidian:create-Obsidian/templates/Get Literature Note_Link.md": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "]"
+    }
+  ],
+  "global-search:open": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "S"
+    }
+  ],
+  "omnisearch:show-modal": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "S"
+    }
+  ],
+  "spacekeys:leader": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "X"
+    }
+  ],
+  "font-size:decrement-font-size": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "-"
+    }
+  ],
+  "font-size:increment-font-size": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "="
+    }
+  ],
+  "font-size:reset-font-size": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "="
+    }
+  ],
+  "window:zoom-in": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "="
+    }
+  ],
+  "window:zoom-out": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "-"
+    }
+  ],
+  "obsidian-editor-shortcuts:transformToUppercase": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "U"
+    }
+  ],
+  "obsidian-editor-shortcuts:transformToLowercase": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "L"
     }
   ]
 }
