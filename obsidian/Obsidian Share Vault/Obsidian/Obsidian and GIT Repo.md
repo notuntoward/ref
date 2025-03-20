@@ -22,5 +22,5 @@ git clone https://x-token-auth:ATCTT3xFfGN0LiSReih2xSTSXZNHjwCgUQ9AScnE3mm_lbw54
 ### The CLI command (which I did run)
 
 git config user.email pcqzd21yhcv97s2i704qivdofgk6v9@bots.bitbucket.org
-## I've put obsidian in the ref repo~~
+## I've put obsidian in the ref repo
 

@@ -43,13 +43,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lit/lit_notes/Frankfurt86onBullshitEssay.md",
+                "file": "Obsidian/Obsidian and GIT Repo.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Frankfurt86onBullshitEssay"
+              "title": "Obsidian and GIT Repo"
             }
           }
         ],
@@ -85,7 +85,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "westneat",
+                "query": "bitbucket",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -144,8 +144,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 470.5,
-    "collapsed": true
+    "width": 470.5
   },
   "right": {
     "id": "a12d2a035d4e7e94",
@@ -161,10 +160,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "lit/lit_notes/Frankfurt86onBullshitEssay.md"
+                "file": "Obsidian/Obsidian and GIT Repo.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for Frankfurt86onBullshitEssay"
+              "title": "File properties for Obsidian and GIT Repo"
             }
           },
           {
@@ -236,13 +235,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "lit/lit_notes/Frankfurt86onBullshitEssay.md",
+                "file": "Obsidian/Obsidian and GIT Repo.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Frankfurt86onBullshitEssay"
+              "title": "Outline of Obsidian and GIT Repo"
             }
           },
           {
@@ -251,7 +250,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "lit/lit_notes/Frankfurt86onBullshitEssay.md",
+                "file": "Obsidian/Obsidian and GIT Repo.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -261,7 +260,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Frankfurt86onBullshitEssay"
+              "title": "Backlinks for Obsidian and GIT Repo"
             }
           },
           {
@@ -351,8 +350,8 @@
   },
   "active": "e44361c5f91dfa3f",
   "lastOpenFiles": [
-    "lit/lit_sources/Frankfurt86onBullshitEssay.pdf",
     "lit/lit_notes/Frankfurt86onBullshitEssay.md",
+    "lit/lit_sources/Frankfurt86onBullshitEssay.pdf",
     "lit/lit_notes/Young23wrongAppetiteMisinfo.md",
     "Politics/Political Causality/US Elections 2024.md",
     "lit/lit_notes/Westneat25disaprTopStudentsSPS.md",
