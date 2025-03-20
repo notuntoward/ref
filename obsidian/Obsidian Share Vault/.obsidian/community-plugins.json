@@ -35,7 +35,6 @@
   "reveal-active-file-button",
   "font-size",
   "keyboard-analyzer",
-  "emacs-text-editor",
   "obsidian-style-settings",
   "note-refactor-obsidian",
   "mermaid-tools",
@@ -66,5 +65,6 @@
   "cursor-position-history",
   "obsidian-local-rest-api",
   "image-captions",
-  "obsidian-advanced-uri"
+  "obsidian-advanced-uri",
+  "emacs-text-editor"
 ]

@@ -1,0 +1,21 @@
+{
+  "properties:open-local": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "P"
+    }
+  ],
+    "obsidian-better-command-palette:open-better-commmand-palette": [],
+  "obsidian-zotero-desktop-connector:zdc-exp-zotero citekey": [
+    {
+      "modifiers": [
+        "Ctrl",
+        "Shift"
+      ],
+      "key": "Z"
+    }
+  ],    
+}
