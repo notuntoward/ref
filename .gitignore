@@ -42,3 +42,4 @@ refwrangle/zmknote/__pycache__/zotero_to_obsidian_note.cpython-313.pyc
 refwrangle/zmknote/test/multikey_listener_test.py
 refwrangle/zmknote/multikey_watcher_test.pymultikey_watcher_test_SAVE.py
 refwrangle/zmknote/test/zotero_watcher.log
+obsidian/Obsidian Share Vault/.obsidian/workspace.json
