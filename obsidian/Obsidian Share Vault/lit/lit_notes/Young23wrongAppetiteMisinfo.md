@@ -15,7 +15,7 @@ ZoteroCollections:
   - misdisinformation
   - identitypolitics
 created date: 2025-02-26T14:58:45-08:00
-modified date: 2025-02-26T15:26:12-08:00
+modified date: 2025-03-20T10:34:04-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/EVVT7PL7)   | [**URL**](https://www.press.jhu.edu/books/title/12834/wrong)
@@ -45,12 +45,9 @@ modified date: 2025-02-26T15:26:12-08:00
 > Young, Dannagal Goldthwaite. _Wrong: How Media, Politics, and Identity Drive Our Appetite for Misinformation_. Johns Hopkins University Press, 2023, p. 312, [https://www.press.jhu.edu/books/title/12834/wrong](https://www.press.jhu.edu/books/title/12834/wrong).
 %% begin Obsidian Notes %%
 ___
- Zotero Note (1)
 
 A source for ([“Populism, Media Revolutions, and Our Terrible Moment”, 2024](zotero://select/library/items/Q753PM3I))
-
 ### Also
-
 - [[Costello24durablyReduceConspiracyWithAI|Costello24: Durably reducing conspiracy beliefs through dialogues with AI]] 
 
 ___

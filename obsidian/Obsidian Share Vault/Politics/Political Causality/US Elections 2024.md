@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-19T16:52:41-07:00
+modified date: 2025-03-20T10:38:17-07:00
 tags:
   - politics
   - polling
@@ -41,6 +41,8 @@ tags:
 ## Lying Republicans
 - in Dawson23cognitiveAbilityVotingEU the UK higher cog. voters were more likely to vote remain during Brexit. Authors speculate that lower cog. voters are vulnerable to misinformation
 - Trump was great at it: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
+- People like Bannon are probably happy with their transparently dumb arguments: [[Sartre44antisemiteJew|Sartre44: Anti-semite and jew]] 
+
 
 ## The Great Trump
 Trump is really the best president ever.

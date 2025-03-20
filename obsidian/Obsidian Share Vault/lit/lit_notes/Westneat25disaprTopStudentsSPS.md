@@ -45,9 +45,9 @@ modified date: 2025-03-19T15:47:28-07:00
 %% begin Obsidian Notes %%
 ___
 
-Seattle's cancellation of advanced math in schools is another example of lofty liberal goals, but poor implementation and unconcern about results -- or even suppressing them.  Author says this is chronic in Seattle, similar to defund the police, laissez-faire hard drugs policy, and homeless encampments.  But at least SPS finally backed down on their plan, recognized failure, and adopted the more sensible they should have started with.
+Seattle's cancellation of advanced math in schools is another example of lofty liberal goals followed by poor implementation and unconcern about results -- or even suppressing them.  Author says this is chronic in Seattle, similar to Defund The Police, laissez-faire hard drugs policy, and homeless encampments.  But at least SPS finally did back down on their plan, recognized failure, and adopted the more sensible approach they should have started with.
 
-The cancellation plan eliminated advanced learning programs in schools. The idea was to make education more  diverse by effectively eliminating teach math above grade level (according to some parents).  The idea was to "desegregate," as one virtue-signaling school board member said, as is so common, tacitly accusing anybody who disagrees of racism.
+The advanced math cancellation plan eliminated advanced learning programs in schools. The idea was to make education more diverse by effectively prohibitively teaching math above grade level (according to some parents).  The idea was to "desegregate," as one virtue-signaling school board member put it, as is so common, tacitly accusing anybody who disagrees of racism.
 ### Results
 - Hamilton middle school
 	- 2016: 
