@@ -1,6 +1,6 @@
 ---
 created date: 2025-02-26T19:43:33-08:00
-modified date: 2025-03-01T13:47:39-08:00
+modified date: 2025-03-20T18:01:53-07:00
 ---
 ```yaml
 # Root command group
@@ -17,7 +17,7 @@ items:
 
   1:
     command: obsidian-focus-mode:toggle-super-focus-mode
-    description: Super Focus
+    description: Toggle Super Focus
 
   2:
     command: workspace:split-horizontal

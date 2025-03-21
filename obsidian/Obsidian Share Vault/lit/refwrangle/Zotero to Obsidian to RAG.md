@@ -1,13 +1,12 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-03-17T11:12:57-07:00
+modified date: 2025-03-20T20:10:03-07:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
 
 I'm putting this code in `ref/refwrangle`.  Also see [[Zotero 6 to 7]].
 # Easier zotero-to-obsidian note transfer
-
 - [ ] Get and Link Zotero Item Templatre
 	- put cursor in an obsidian topic note, near a place relevant to the zotero item you're about to add
 	- run a "get and Link Zotero Item" templater action.  It will:
@@ -38,11 +37,9 @@ It can cite an entire YT video as a source, but it can't highlight a specific pa
 Every single source must be entered manually. I have hundreds of articles, so this is not tenable.
 ### Total data limit
 There's a limit on the total bytes of data uploaded, as well as a size limit for each file. [[US Elections 2024#Success Stories Recent Authoritarian Takedowns]]
-
 ### Some web sites files can't be imported
 For example, [WA shifted (slightly) right in...](https://www.seattletimes.com/seattle-news/data/wa-shifted-slightly-right-in-2024-though-many-counties-moved-left/) can't be imported. It seems that NLM can read the website but, due to "source restrictions" it can't point you to the line where some point is made. This does work for some web pages, for example [Election 2024: How and why you...](https://apnews.com/article/young-black-latino-men-trump-economy-jobs-9184ca85b1651f06fd555ab2df7982b5).
 ## Tasks
-
 ### Avoid manual entry by lumping all sources into giant files
 - [ ] # Try out Docling: [[Auer24doclingTechRep|Auer24: Docling technical report]] 
 - [ ] Consider using google docs: [[lit/lit_notes/NotebookLM.md#Data Required, Best practices |Data Required, Best practices]]. Help with metadata?
@@ -78,7 +75,7 @@ For example, [WA shifted (slightly) right in...](https://www.seattletimes.com/se
 		- **pyppeteer**: by itself, does well at converting to pdf, removing some messy footers, headers and active sidebars on e.g. WA post articles.  
 			- But it leaves in comments, pictures and the annoying "look here" things interlaced with the main article text. 
 			- Also has an overlap problem with the html in Yan24berkeleyFuncCallLeaderBrd. I thought this library could be a preprocessing cleaner for `pymupdf4llm` but this overlap problem is a deal killer, as there are probably many more like it.
-			- # is [unmaintained](<lit/refwrangle/Zotero to Obsidian to RAG.md#^8cyi >)
+			- is [unmaintained](<lit/refwrangle/Zotero to Obsidian to RAG.md#^8cyi >)
 	- leaves a little structure
 		- **weasyprint + beautifulsoup**: BS extracts html structure, making varying levels of cleaning possible; weasyprint makes the pdf from some html.
 			- a **pain**: weasyprint constantly has library problems (GTK+ and fonts config to avoid error messages) on Windows 11, without me apparently changing anything.
@@ -90,7 +87,7 @@ For example, [WA shifted (slightly) right in...](https://www.seattletimes.com/se
 			- interesting precision/recall tradeoff variables, with a heuristic choice in baseline method, which I think only gets text, though, and loses hierarchy
 			- can output tables
 			- is up to date in 2024
-			- # but not great at getting all content, even with prefer_recall=True
+			- but not great at getting all content, even with prefer_recall=True
 				- entirely fails (success=False) on Tumulty24FrischLearnedDemsShould (WA Post)
 				- missies a lot on Yan24berkeleyFuncCallLeaderBrd
 				- see trafilatura_to_md_test.ipynb
@@ -118,11 +115,8 @@ For example, [WA shifted (slightly) right in...](https://www.seattletimes.com/se
 	- [[Obsidian/Zotero 6 to 7.md#MarkDB-Connect Zotero Plugin|MarkDB-Connect Zotero Plugin]] will show the new notes automatically in zotero
 ## Can either download and strip from a URL, or can strip an already downloaded html file
 - convert youtube transcripts to pdfs
-
 # Zotero entries to Obsidian Literature Notes
-
 # Zotero <--> Obsidian Links
-
 Zotero _Better Notes Add-on has a way of two-way syncing Obsidian Markdown_ notes.  It worked but then it broke (Oct. 2023).  Would be nice to get 2-way syncing working, but in the meantime, here are simpler ways.
 
 - [[Dailies/2024-02-25.md#Zotero Integration Plugin |Zotero Integration Plugin]]
@@ -148,9 +142,7 @@ Zotero _Better Notes Add-on has a way of two-way syncing Obsidian Markdown_ note
 * [obsidian-citation-plugin](https://github.com/hans/obsidian-citation-plugin): was this was broken in 2023
 * [[2024-03-06#Zotero Link|Zotero Link]] is the easiest
 ### Manual (not using e.g. Zotero Integration Plugin)
-
 #### Links to Obsidian inside of a Zotero Note
-
 1. Put cursor on Obsidian page or block you want to jump to (e.g. from inside Zotero)
 	- If Page
 		- right click on page
@@ -162,17 +154,13 @@ Zotero _Better Notes Add-on has a way of two-way syncing Obsidian Markdown_ note
 2. Paste into a Zotero note, by highlight some text in the zotero note and either:
 	1. _Ctrl+K_ (finicky)
 	2. clicking zotero's link icon
-
 #### Links to Zotero inside of Obsidian
-
 1. Put cursor on Zotero item/note/...you want to jump to (e.g. from inside Obsidian)
 2. Right click and select "copy select item links"
 3. Paste into a Zotero note e.g. by highlighting some link text and typing _Ctrl+K_
 
 **MORE**: [[Manual Links to Zotero]]
-
 # Less tedious Zotero --> Obsidian Lit Note process
-
 Trying to reduce the steps and friction between adding an item to zotero and then **making an Obsidian literature note properly linked to Zotero**.  This is so that I actually get this done, instead of letting the unlinked zotero entries pile up, or even skipping making the zotero note at all.
 
 - [ ] ! combine section with [[#Easier zotero-to-obsidian note transfer]]
@@ -211,7 +199,6 @@ See: [zotero-action-cmd: A plugin for Zotero. Perform operations to execute cust
 	- system call so python or whatever
 	- run an http request?  
 - My question: [Does the command get informati...](https://github.com/Bowen-0x00/zotero-action-cmd/issues/29)
-
 ### Making a Python webhook listener
 #### Making a standalone executable from python
 - gets what's needed to build executable without needing conda envs, and can run outside of refwrangle dirs
@@ -219,12 +206,30 @@ See: [zotero-action-cmd: A plugin for Zotero. Perform operations to execute cust
 - prints the same stdout messages to the terminal as the .py verson
 
 ```
-pyinstaller --exclude-module PyQt5 --exclude-module PySide6 --onefile zotero_to_obsidian_note_listener.py
+pyinstaller --exclude-module PyQt5 --exclude-module PySide6 --onefile zotero_to_obsidian_note_receiver.py
+```
+
+#### Installing the executable as a Windows Service
+When the above is done, go to an *admin terminal in the proper python environment*, and run this python script to install it as a windows service, that will restart at boot, or if the executable crashes.
+
+```
+zotero_to_obsidian_note_receiver_installer.py
+```
+
+To start it right after install (do this when you change the listener, etc.)
+
+```
+python zotero_to_obsidian_note_receiver_installer.py start
+```
+
+To uninstall (remove from Windows Registry):
+
+```
+python zotero_to_obsidian_note_receiver_installer.py remove
 ```
 ## Direct zotero/obsidan DB-to-DB connection?
 This could *somehow* help smooth the zotero --> obsidian process.
 ### Zotero API interfaces
-
 - [[Dailies/2025-02-07.md#Zotero Sync Client Plugin |Zotero Sync Client Plugin]]: makes a zotero db copy in obsidian, that you can access with javascript, I think.
 - [pyzotero](https://github.com/urschrei/pyzotero) connects to zotero DB ^xy71
 	- not direct to SQL but using Zotero's official API
@@ -286,10 +291,7 @@ This could *somehow* help smooth the zotero --> obsidian process.
 - [[Dailies/2025-02-07.md#Zotero Bridge Plugin |Zotero Bridge Plugin]]
 	- Provides an API access Obsidian and Obsidian Templater
 	- Better than the [[Dailies/2025-02-07.md#Obsidian Zotero Sync Client Plugin |Obsidian Zotero Sync Client Plugin]] ?
-	- 
-
 # Zotero DB Facts
-
 - It's [directly accessible SQLite](https://www.zotero.org/support/dev/client_coding/direct_sqlite_database_access)
 - [kb:item\_types\_and\_fields \[...](https://www.zotero.org/support/kb/item_types_and_fields)
 # Web Scraping

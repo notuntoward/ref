@@ -336,9 +336,10 @@
   "backlink:open": [
     {
       "modifiers": [
-        "Mod"
+        "Mod",
+        "Shift"
       ],
-      "key": "\\"
+      "key": "B"
     }
   ],
   "links:editor-copy-link-to-object-to-clipboard": [

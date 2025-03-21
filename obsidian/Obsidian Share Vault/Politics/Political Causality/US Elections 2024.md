@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-20T11:12:01-07:00
+modified date: 2025-03-20T20:18:43-07:00
 tags:
   - politics
   - polling
@@ -69,9 +69,10 @@ Trump is really the best president ever.
 - D's shaming Rs with different opinions
 	- Lewis24demsGenderID
 - WA state low income 0-interest loans
-	- FAIR24fairVsWalkerLoanDiscrim
+	- [[FAIR24fairVsWalkerLoanDiscrim|FAIR24: FAIR v. Walker]] 
 	- excludes Japanese, Jews and whites
 	- ? Does WA may have more poor whites than any other group? If so, this is politically stupid. In any case, seems nasty, if the idea is to address poverty.
+- More lefty nastiness (polls bad with Blacks and Hispanics): [[Friedersdorf24worstIdentPolit|Friedersdorf24: How to Move On From the Worst of Identity Politics]] 
 - [[Evans24techSplinterCulturalCtrl]]
 - [[Rampell25genZmenLoveTrump]]
 - Obsessive race focus pissed off people of color! [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
