@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-03-21T08:29:17-07:00
+modified date: 2025-03-21T11:23:51-07:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -210,8 +210,12 @@ pyinstaller --runtime-tmpdir=. --hidden-import win32timezone --exclude-module Py
 ```
 
 you may see some RapidFuzz warnings, but [perplexity says they don't matter](https://www.perplexity.ai/search/i-m-running-some-javascript-in-vZ5gnVgrTt.HqqKflbNg1g?11=d&3=d#17).
+#### Running the executable with a batch command
+I put this .bat on my Desktop.  Clicking it starts the receiver .exe.  You can minimize the terminal to the taskbar, and reopen it to check status
+#### Running the executable as a Windows Task
+**This didn't work**: the zotero sender just times out, and AI advice has been useless about what is wrong.
 #### Installing the executable as a Windows Service
-**So far, this doesn't work**: the zotero sender just times out, and AI has been useless about what is wrong.
+**So far, this doesn't work**: the zotero sender just times out, and AI advice has been useless about what is wrong.  
 
 Install Service 
 When the above is done, go to an *admin terminal in the proper python environment*, and run this python script to install it as a windows service, that will restart at boot, or if the executable crashes.
@@ -235,28 +239,44 @@ python zotero_to_obsidian_note_receiver_installer.py start
 7. Select "This account" instead of "Local System account"
 8. Enter your Windows username and password
 9. Click Apply and restart the service
-##### Grant network permissions (if keeping Local System):
-Windows 11 Home
+##### Grant Necessary File/Folder Permissions
+1. Navigate to the folder containing your service executable or log files.
+2. Right-click the folder and select Properties → Security.
+3. Ensure the service account (e.g., Local System or your user account) has Full Control permissions (already true for me)
+##### Firewall/Network Configuration
+1. Allow Port Through Firewall (To ensure your webhook receiver can listen on port 5050)
+	1. Open Windows Defender Firewall (Win + R, type wf.msc, press Enter).
+	2. Go to Inbound Rules → Click "New Rule..."
+	3. Select "Port" → Next.
+	4. Choose "TCP" and enter 5050 as the port → Next.
+	5. Select "Allow the connection" → Next.
+	6. Check all profiles (Domain, Private, Public) → Next.
+	7. Name it (e.g., "Webhook Receiver Port") → Finish.
+2. Check Listening Status (Use Command Prompt to verify if your service is listening on port 5050):
 
-Enable Group Policy and Local Security Policy on Home Edition
-If you're using Windows 11 Home, you can enable these tools manually:
+```
+bash
+netstat -ano | findstr :5050
+```
 
-1. Download the GPEdit Enabler script from [here](https://github.com/Coleisforrobot/gpedit-enabler) (I downloaded the .exe, not the .bat)
-2. Extract the .bat file and run it as Administrator.
-3. Restart your computer.
+If no results appear, the service might not be binding correctly to the port.  But I do see results, so this worked, I guess?
 
-After restarting, press Win + R, type secpol.msc, and check if it opens.
+Finally, restart the receiver service (above)
+##### Use Process Monitor for detailed diagnosis:
 
-Only works on Windows 11 Pro
-1. Open Local Security Policy (press Win+R, type secpol.msc, press Enter)
-2. Navigate to Security Settings → Local Policies → User Rights Assignment
-3. Find "Network Service" and ensure "Local System" is includedSet up the necessary permissions
-4. To uninstall (remove from Windows Registry):
+1. Download Process Monitor from Microsoft Sysinternals
+2. Filter for your service executable
+3. Look for ACCESS DENIED or network-related errors
+4. This shows exactly what resources it's trying to access
+
+*Result:* I could see that the server was running but no ACCESS DENIED errors
 #### Removing the webhook receiver service
 
 ```
 python zotero_to_obsidian_note_receiver_installer.py remove
 ```
+
+**Must reboot** before the non-service (command line) version works again.
 ## Direct zotero/obsidan DB-to-DB connection?
 This could *somehow* help smooth the zotero --> obsidian process.
 ### Zotero API interfaces
