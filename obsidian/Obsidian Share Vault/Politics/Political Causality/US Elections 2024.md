@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-20T20:18:43-07:00
+modified date: 2025-03-21T08:36:27-07:00
 tags:
   - politics
   - polling
@@ -209,6 +209,7 @@ Just more predictor variables for various things. Things similar to education, w
 	- [How hackers at the Def Con conference tried to break AI chatbots](<How hackers at the Def Con conference tried to break AI chatbots>)
 	- [[Frankfurt86onBullshitEssay|Frankfurt86: On bullshit]] 
 	- [[Young23wrongAppetiteMisinfo|Young23: Wrong: How media, politics, and identity drive our appetite for misinformation]] 
+	- [[Rudloff22epistemicBeliefConspiracy|Rudloff22: Beliefs about the nature of knowledge shape responses to the pandemic: Epistemic beliefs, the Dark Factor of Personality, and COVID-19–related conspiracy ideation and behavior]] 
 
 ## Authenticity and Trust: how to get it
 - Musk's internet language and imagery looks "authentic" to online gamers : [[Isaac25internetCringeMusk|Isaac25: Elon Musk’s Internet: So Based, Much Wow. So Cringe?]] 

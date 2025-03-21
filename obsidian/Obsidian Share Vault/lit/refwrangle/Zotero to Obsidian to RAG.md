@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-03-20T20:10:03-07:00
+modified date: 2025-03-21T08:29:17-07:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -201,9 +201,9 @@ See: [zotero-action-cmd: A plugin for Zotero. Perform operations to execute cust
 - My question: [Does the command get informati...](https://github.com/Bowen-0x00/zotero-action-cmd/issues/29)
 ### Making a Python webhook listener
 #### Making a standalone executable from python
-- gets what's needed to build executable without needing conda envs, and can run outside of refwrangle dirs
-- excludes PyQt becuase pyinstaller can't tolerate more than one, and somehow, my refwrangle env has more than one
-- prints the same stdout messages to the terminal as the .py verson
+- executable doesn't need conda envs,  can run outside of refwrangle dirs
+- excludes PyQt because pyinstaller can't tolerate more than one, and somehow, my refwrangle env has more than one
+- prints the same stdout messages to the terminal as the .py version
 
 ```
 pyinstaller --runtime-tmpdir=. --hidden-import win32timezone --exclude-module PyQt5 --exclude-module PySide6 --onefile zotero_to_obsidian_note_receiver.py
@@ -211,21 +211,48 @@ pyinstaller --runtime-tmpdir=. --hidden-import win32timezone --exclude-module Py
 
 you may see some RapidFuzz warnings, but [perplexity says they don't matter](https://www.perplexity.ai/search/i-m-running-some-javascript-in-vZ5gnVgrTt.HqqKflbNg1g?11=d&3=d#17).
 #### Installing the executable as a Windows Service
-**So far, this doesn't work**: the zotero sie just times out, and AI has been pretty useless.
+**So far, this doesn't work**: the zotero sender just times out, and AI has been useless about what is wrong.
 
+Install Service 
 When the above is done, go to an *admin terminal in the proper python environment*, and run this python script to install it as a windows service, that will restart at boot, or if the executable crashes.
 
 ```
 python zotero_to_obsidian_note_receiver_installer.py install
 ```
 
-To start it right after install (do this when you change the listener, etc.)
+To start it right after install (do this when you change the receiver , etc.)
 
 ```
 python zotero_to_obsidian_note_receiver_installer.py start
 ```
+##### Check the service account Permissions:
+1. Open Services (press Win+R, type services.msc, press Enter)
+2. Find your "Zotero to Obsidian Service"
+3. Right-click and select Properties
+4. Go to the "Log On" tab to see which account the service uses
+5. Change service account (recommended):
+6. In the same Properties dialog, "Log On" tab
+7. Select "This account" instead of "Local System account"
+8. Enter your Windows username and password
+9. Click Apply and restart the service
+##### Grant network permissions (if keeping Local System):
+Windows 11 Home
 
-To uninstall (remove from Windows Registry):
+Enable Group Policy and Local Security Policy on Home Edition
+If you're using Windows 11 Home, you can enable these tools manually:
+
+1. Download the GPEdit Enabler script from [here](https://github.com/Coleisforrobot/gpedit-enabler) (I downloaded the .exe, not the .bat)
+2. Extract the .bat file and run it as Administrator.
+3. Restart your computer.
+
+After restarting, press Win + R, type secpol.msc, and check if it opens.
+
+Only works on Windows 11 Pro
+1. Open Local Security Policy (press Win+R, type secpol.msc, press Enter)
+2. Navigate to Security Settings → Local Policies → User Rights Assignment
+3. Find "Network Service" and ensure "Local System" is includedSet up the necessary permissions
+4. To uninstall (remove from Windows Registry):
+#### Removing the webhook receiver service
 
 ```
 python zotero_to_obsidian_note_receiver_installer.py remove
