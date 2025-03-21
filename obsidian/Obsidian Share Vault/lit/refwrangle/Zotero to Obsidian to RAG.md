@@ -206,14 +206,17 @@ See: [zotero-action-cmd: A plugin for Zotero. Perform operations to execute cust
 - prints the same stdout messages to the terminal as the .py verson
 
 ```
-pyinstaller --exclude-module PyQt5 --exclude-module PySide6 --onefile zotero_to_obsidian_note_receiver.py
+pyinstaller --runtime-tmpdir=. --hidden-import win32timezone --exclude-module PyQt5 --exclude-module PySide6 --onefile zotero_to_obsidian_note_receiver.py
 ```
 
+you may see some RapidFuzz warnings, but [perplexity says they don't matter](https://www.perplexity.ai/search/i-m-running-some-javascript-in-vZ5gnVgrTt.HqqKflbNg1g?11=d&3=d#17).
 #### Installing the executable as a Windows Service
+**So far, this doesn't work**: the zotero sie just times out, and AI has been pretty useless.
+
 When the above is done, go to an *admin terminal in the proper python environment*, and run this python script to install it as a windows service, that will restart at boot, or if the executable crashes.
 
 ```
-zotero_to_obsidian_note_receiver_installer.py
+python zotero_to_obsidian_note_receiver_installer.py install
 ```
 
 To start it right after install (do this when you change the listener, etc.)
