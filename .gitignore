@@ -49,5 +49,7 @@ obsidian/Obsidian Share Vault/.obsidian/workspace.json
 /dist/
 *.pkg
 *.exe
+**/.mypy_cache/
+**/__pycache__/
 obsidian/Obsidian Share Vault/.obsidian/hotkeys.json
 refwrangle/zmknote/dist/zotero_item_receiver.log
