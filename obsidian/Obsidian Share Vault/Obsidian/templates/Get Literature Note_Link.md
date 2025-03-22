@@ -21,6 +21,13 @@ function isLiteratureNote(file) {
 //  return frontMatter && frontMatter.category === 'literaturenote';
 //}
 
+// Check if we have an active editor before proceeding
+const activeView = app.workspace.activeLeaf?.view;
+if (!activeView || !activeView.editor) {
+  new Notice("No active editor found.");
+  return;
+}
+
 // Get all markdown files and filter for literature notes
 const allNotes = app.vault.getMarkdownFiles();
 const literatureNotes = allNotes.filter(isLiteratureNote);
@@ -96,6 +103,7 @@ if (selectedNote) {
           ch: cursor.ch + wikiLink.length
         };
         editor.setCursor(linkEndPosition);
+        return; // Explicitly end template execution
       } else {
         new Notice("Aliases not found or empty in the selected note.");
       }
