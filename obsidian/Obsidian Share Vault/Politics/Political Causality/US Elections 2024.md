@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-22T10:39:20-07:00
+modified date: 2025-03-22T11:12:16-07:00
 tags:
   - politics
   - polling
@@ -173,8 +173,9 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 - [[Atrioc25cannotExplainBitcoinGrift|Atrioc25: I Truly Cannot Explain This]]: bitcoin corruption, Trump, Trump family, (Musk too, I would guess, but don't have the details)
 # Questions
 ## Trump Voter Satisfaction (post-2024 election)
-- [[Longwell]]
+- [[Longwell25areTrumpVotersGetAsk|Longwell25: Are These Trump Voters Getting What They Voted For? (with Mark Leibovich)]]
 ## How voters weight different policies in their voting decision (sensitivity analysis)
+- Econ most imp by far: [[Klein25demsFaceTrumpWon|Klein25: Democrats Need to Face Why Trump Won]] 
 ## Media effectiveness
 - e.g. Yurieff24trumpUsedInfluencers : did this really work as claimed here?
 - ? how do advertisers measure or (get proxies of) effectiveness of media message --> purchase
