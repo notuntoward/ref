@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-21T08:36:27-07:00
+modified date: 2025-03-21T21:00:31-07:00
 tags:
   - politics
   - polling
@@ -162,7 +162,8 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 - [[Verma24muskPoliticsEcoCar|Verma24: Musk’s politics hadn’t seeped into Tesla. Then he axed its eco car of the future.]] 
 - A Musk attack, since he wants all AI?[[Palmer23llmsArgueConvincing|Palmer23: Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors: implications for Governance]] 
 - Musk is very unpopular, and he's barely started: [[Balz25trumpEarlyActionUnpop|Balz25: Many of Trump’s early actions are unpopular, Post-Ipsos poll finds]] 
-- He may also be becoming uncool to his fans: - Musk trades in this: [[Isaac25internetCringeMusk|Isaac25: Elon Musk’s Internet: So Based, Much Wow. So Cringe?]] 
+- He may also be becoming uncool to his fans: 
+	- Musk trades in this: [[Isaac25internetCringeMusk|Isaac25: Elon Musk’s Internet: So Based, Much Wow. So Cringe?]] 
 - [[Atrioc25teslaBacklashBiblical|Atrioc25: The Tesla Backlash Is Biblical]]: very lively summary of Musk lies and hypocrisy.  This is SO GOOD.
 	- [ ] @ how to expand this attack / true-conspiracy mongering attacks to the rest of Trump's circle.
 - Trump's White House promotion of Tesla is a good "he's not for you" attack
@@ -170,7 +171,6 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 	- he's actually for Elon Musk, the richest guy in the world
 	- [ ] ? I'm sure this has been thought of, but how to reach the right audience and would it work?  Do a search on this
 - [[Atrioc25cannotExplainBitcoinGrift|Atrioc25: I Truly Cannot Explain This]]: bitcoin corruption, Trump, Trump family, (Musk too, I would guess, but don't have the details)
-
 # Questions
 ## How voters weight different policies in their voting decision (sensitivity analysis)
 ## Media effectiveness
@@ -338,7 +338,7 @@ Will the Rs ever pay attention to evidence?
 		4. actually test these synthetic messages during polling
 	- Like doing [[Hyperparameter Tuning]] but modern instead of grid
 		- Blueprint24pollPosHarrisCase is like a grid search
-		- Instead do randomized or something fanceir like [[Zygmunt17fastHyperband|Zygmunt17fastHyperband|Hyperband]] 
+		- Instead do randomized or something fancier like [[Zygmunt17fastHyperband|Zygmunt17fastHyperband|Hyperband]] 
 		- Could tailor to compute (survey time) budget:[[Eggensperger22hyperparamOptHPOBench]] 
 		- the optimal survey could be found iteratively
 			- with the message adjusted to the by the tuning algorithm on each test

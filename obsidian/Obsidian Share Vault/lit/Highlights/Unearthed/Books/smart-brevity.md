@@ -1,0 +1,10 @@
+---
+created date: 2025-03-07T22:33:11-08:00
+modified date: 2025-03-07T22:33:11-08:00
+---
+# Smart Brevity
+
+**Author:** [[VandeHei, Jim:Allen, Mike:Schwartz, Roy]]
+
+**Source:** Kindle
+
