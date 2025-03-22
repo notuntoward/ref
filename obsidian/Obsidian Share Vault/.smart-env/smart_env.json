@@ -6,6 +6,7 @@
   },
   "smart_sources": {
     "single_file_data_path": ".smart-env/smart_sources.json",
+    "min_chars": "300",
     "embed_model": {
       "adapter": "transformers",
       "transformers": {
@@ -17,8 +18,7 @@
     },
     "smart_change": {
       "active": true
-    },
-    "min_chars": "300"
+    }
   },
   "file_exclusions": "Untitled",
   "folder_exclusions": "smart-chats, Merged RAG Political Sources",
@@ -39,5 +39,8 @@
     "embed_model": {
       "model_key": "None"
     }
+  },
+  "smart_notices": {
+    "muted": {}
   }
 }

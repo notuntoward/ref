@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-21T21:00:31-07:00
+modified date: 2025-03-22T10:39:20-07:00
 tags:
   - politics
   - polling
@@ -172,6 +172,8 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 	- [ ] ? I'm sure this has been thought of, but how to reach the right audience and would it work?  Do a search on this
 - [[Atrioc25cannotExplainBitcoinGrift|Atrioc25: I Truly Cannot Explain This]]: bitcoin corruption, Trump, Trump family, (Musk too, I would guess, but don't have the details)
 # Questions
+## Trump Voter Satisfaction (post-2024 election)
+- [[Longwell]]
 ## How voters weight different policies in their voting decision (sensitivity analysis)
 ## Media effectiveness
 - e.g. Yurieff24trumpUsedInfluencers : did this really work as claimed here?
