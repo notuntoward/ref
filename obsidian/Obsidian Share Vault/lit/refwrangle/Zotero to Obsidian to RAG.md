@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-03-21T11:23:51-07:00
+modified date: 2025-03-21T15:07:40-07:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -169,8 +169,11 @@ Trying to reduce the steps and friction between adding an item to zotero and the
 ## Push from Zotero to Obsidian
 I think what I need is a way to add a button to Zotero that makes an obsidian note(s) from the current or selected group of Zotero items.  
 ### Push with Zotero "Actions and Tags" plugin
-- [[Dailies/2023-10-12.md#Actions & Tags Plugin |Actions & Tags Plugin]]
-- [ ] [Reddit - Dive into anything](https://www.reddit.com/r/ObsidianMD/comments/1f48x0g/obsidian_plugin_autocreating_notes_from_zotero/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button): 
+This more or less works, with minimal fuss starting the webhook receiver ([[lit/refwrangle/Zotero to Obsidian to RAG.md#Starting an executable from A&T Plugin javascript |Starting an executable from A&T Plugin javascript]]).  Good enough for now, although I'm itching to try [[lit/refwrangle/Zotero to Obsidian to RAG.md#Starting an executable from A&T Plugin javascript |Starting an executable from A&T Plugin javascript]].
+
+- [ ] [[Dailies/2023-10-12.md#Actions & Tags Plugin |Actions & Tags Plugin]]
+- [x] TODO: [[lit/refwrangle/Zotero to Obsidian to RAG.md#Starting an executable from A&T Plugin javascript |Starting an executable from A&T Plugin javascript]]
+- [x] [Reddit - Dive into anything](https://www.reddit.com/r/ObsidianMD/comments/1f48x0g/obsidian_plugin_autocreating_notes_from_zotero/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button): 
 	- guy makes a button in zotero, 
 	- but has his own note template in java, doesn't use [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
 	- is based on the [[Obsidian/Zotero 6 to 7.md#Actions and Tags Zotero Plugin|Actions Tags Plugin]]
@@ -181,16 +184,18 @@ I think what I need is a way to add a button to Zotero that makes an obsidian no
 			- can only get collections if scripted is called via collections??
 			- python would be simpler: how to use [[#Push with Zotero Action Cmd Plugin]] ??
 		- [ ] ! Try the [Perplexity rewrite](https://www.perplexity.ai/search/i-would-like-to-replace-obsidi-8gLqbO5PQbW6pDDc1fE5oQ) of my zotero integration nunjucks template for 
-- [ ] ? can this be used to fire off  [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
+- [x] ? can this be used to fire off  [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
+	- **Answer**: No, I can't find a way, so instead, I made a receiver that has a jinja2 template, a clone of the nunjucks used in Zotero Integration.
 	- How? [[lit/refwrangle/Zotero to Obsidian to RAG.md#Running an Obsidian command from an external program |Running an Obsidian command from an external program]]
 		- one of the [[lit/refwrangle/Zotero to Obsidian to RAG.md#Obsidian URI handlers |Obsidian URI handlers]]?
 	- Maybe the zotero click would only send the zotero item citekeys, which would avoid the awful zotero citekey selector.
 	- An obsidian process would then look for these keys within obsidian's copy of the zotero DB, put there by, perhaps, the [[Dailies/2025-02-07.md#Zotero Sync Client Plugin |Zotero Sync Client Plugin]] or use one of the [[lit/refwrangle/Zotero to Obsidian to RAG.md#Obsidian plugins which are zotero DB interfaces |Obsidian plugins which are zotero DB interfaces]]
 	- Maybe there could be a python watcher to handle all of this?
-- [ ] Put obsidian note overwrite popup dialog in Zotero instead of Python
-	- [This script](<Obsidian/Zotero 6 to 7.md#^payx >) managed to do it.
-	- ! Try it, just to see if popups really do work
-	- [ ] It's a crappy numbered-choice popup: can I do better?
+- [x] Put obsidian note overwrite popup dialog in Zotero instead of Python
+	- *Done*: [This script](<Obsidian/Zotero 6 to 7.md#^payx >) managed to do it.
+	- Try it, just to see if popups really do work
+	- [x] It's a crappy numbered-choice popup: can I do better?
+		- *Done:* Now I've got buttons in the sender
 - Could get a file picker from [this script](<Obsidian/Zotero 6 to 7.md#^2ry5 >)
 ### Push with Zotero Action Cmd Plugin
 See: [zotero-action-cmd: A plugin for Zotero. Perform operations to execute custom commands](https://github.com/Bowen-0x00/zotero-action-cmd)
@@ -199,7 +204,12 @@ See: [zotero-action-cmd: A plugin for Zotero. Perform operations to execute cust
 	- system call so python or whatever
 	- run an http request?  
 - My question: [Does the command get informati...](https://github.com/Bowen-0x00/zotero-action-cmd/issues/29)
-### Making a Python webhook listener
+### Making a Python webhook receiver
+I couldn't install nunjucks in the [[Dailies/2023-10-12.md#Actions & Tags Plugin |Actions & Tags Plugin]] javascript, and I couldn't get zotero item data in a resonable time (very slow pyzotero).  
+
+What I could do was make an obsidian lit note with a python webhook receiver using jinja2 (nunjucks clone), and I could feed it with data from selected zotero items with a javascript [[Dailies/2023-10-12.md#Actions & Tags Plugin |Actions & Tags Plugin]] webhook sender.
+
+This is about the python webhook receiver.
 #### Making a standalone executable from python
 - executable doesn't need conda envs,  can run outside of refwrangle dirs
 - excludes PyQt because pyinstaller can't tolerate more than one, and somehow, my refwrangle env has more than one
@@ -211,10 +221,21 @@ pyinstaller --runtime-tmpdir=. --hidden-import win32timezone --exclude-module Py
 
 you may see some RapidFuzz warnings, but [perplexity says they don't matter](https://www.perplexity.ai/search/i-m-running-some-javascript-in-vZ5gnVgrTt.HqqKflbNg1g?11=d&3=d#17).
 #### Running the executable with a batch command
-I put this .bat on my Desktop.  Clicking it starts the receiver .exe.  You can minimize the terminal to the taskbar, and reopen it to check status
-#### Running the executable as a Windows Task
+I added `zmknote\StartZoteroToObsidian.bat`.  Running it starts the receiver .exe.  You can minimize the terminal to the taskbar, and reopen it to check status.  I also put a shortcut to this on my Desktop, for ease of use.  I went with this after wasting a lot of time on [[#Zotero Receiver AutoStart approaches that didn't work]]
+
+#### Starting an executable from A&T Plugin javascript
+Idea is to kick it off from inside javascript, and to to check before sending each webhook command whether or not the receiver is running.  Give it a shot, someday.  It [seems possible to do](https://www.perplexity.ai/search/i-m-writing-a-javascript-for-t-Lq5T9KdLQHOS._whutHO_w#0).
+
+- [ ] Start receiver executable from plugin javascript
+	- This seems possible
+- [ ] Only start it if it's not already running, according to some kind of process check
+#### Zotero Receiver AutoStart approaches that didn't work
+I wasted a lot of time on these attempts, gave up, and went with [[#Running the executable with a batch command]]
+
+This *actually works* and is fairly usable.
+##### Running the executable as a Windows Task
 **This didn't work**: the zotero sender just times out, and AI advice has been useless about what is wrong.
-#### Installing the executable as a Windows Service
+##### Installing the executable as a Windows Service
 **So far, this doesn't work**: the zotero sender just times out, and AI advice has been useless about what is wrong.  
 
 Install Service 
@@ -229,7 +250,7 @@ To start it right after install (do this when you change the receiver , etc.)
 ```
 python zotero_to_obsidian_note_receiver_installer.py start
 ```
-##### Check the service account Permissions:
+###### Check the service account Permissions:
 1. Open Services (press Win+R, type services.msc, press Enter)
 2. Find your "Zotero to Obsidian Service"
 3. Right-click and select Properties
@@ -239,11 +260,11 @@ python zotero_to_obsidian_note_receiver_installer.py start
 7. Select "This account" instead of "Local System account"
 8. Enter your Windows username and password
 9. Click Apply and restart the service
-##### Grant Necessary File/Folder Permissions
+###### Grant Necessary File/Folder Permissions
 1. Navigate to the folder containing your service executable or log files.
 2. Right-click the folder and select Properties → Security.
 3. Ensure the service account (e.g., Local System or your user account) has Full Control permissions (already true for me)
-##### Firewall/Network Configuration
+###### Firewall/Network Configuration
 1. Allow Port Through Firewall (To ensure your webhook receiver can listen on port 5050)
 	1. Open Windows Defender Firewall (Win + R, type wf.msc, press Enter).
 	2. Go to Inbound Rules → Click "New Rule..."
@@ -262,7 +283,7 @@ netstat -ano | findstr :5050
 If no results appear, the service might not be binding correctly to the port.  But I do see results, so this worked, I guess?
 
 Finally, restart the receiver service (above)
-##### Use Process Monitor for detailed diagnosis:
+###### Use Process Monitor for detailed diagnosis:
 
 1. Download Process Monitor from Microsoft Sysinternals
 2. Filter for your service executable
@@ -270,7 +291,7 @@ Finally, restart the receiver service (above)
 4. This shows exactly what resources it's trying to access
 
 *Result:* I could see that the server was running but no ACCESS DENIED errors
-#### Removing the webhook receiver service
+##### Removing the webhook receiver service
 
 ```
 python zotero_to_obsidian_note_receiver_installer.py remove

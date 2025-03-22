@@ -270,14 +270,6 @@
       "key": "ArrowLeft"
     }
   ],
-  "editor:fold-all": [
-    {
-      "modifiers": [
-        "Shift"
-      ],
-      "key": "Tab"
-    }
-  ],
   "obsidian-outliner:unfold": [],
   "editor:unfold-all": [
     {
