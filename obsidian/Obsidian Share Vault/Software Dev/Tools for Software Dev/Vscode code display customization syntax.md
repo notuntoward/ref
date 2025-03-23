@@ -1,6 +1,6 @@
 ---
 created date: 2025-03-22T13:22:34-07:00
-modified date: 2025-03-22T13:30:19-07:00
+modified date: 2025-03-22T16:11:52-07:00
 ---
 
 Some [[Vscode Color Themes]] are almost perfect, just need a little tweaking.  This is about the tweaking syntax.
@@ -22,7 +22,7 @@ These are applied using `editor.tokenColorCustomizations` rather than `workbench
 You can customize font styles for specific code elements using the following pattern:
 
 ```json
-- "editor.tokenColorCustomizations": {
+"editor.tokenColorCustomizations": {
   "[ThemeName]": {
     "textMateRules": [
       {
@@ -50,7 +50,7 @@ Common scopes that can be customized include:
 - `keyword.control` - For control keywords[^2]
 - `variable.language` - For language variables like "this" or "self"[^2]
 - `meta.decorator` - For decorators[^2]
-- `punctuation.definition.comment` and `comment` - For comments[^2]
+- `comment` - For comments[^2]
 - Various punctuation elements for string interpolation[^2]
 - Various keyword operators[^2]
 
