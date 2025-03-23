@@ -18,8 +18,8 @@ ZoteroCollections:
   - morality_in_politics
   - neuropsycholinguisticpolitics
   - identitypolitics
-created date: 3/23/2025, 9:49:20 AM
-modified date: 2025-03-23T09:50:01-07:00
+created date: 3/23/2025, 1:22:06 PM
+modified date:
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/RGBEXMWN)  | **[[Frankfurt86onBullshitEssay.pdf|PDF]]**
