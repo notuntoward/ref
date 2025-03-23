@@ -73,6 +73,12 @@
         "Shift"
       ],
       "key": ","
+    },
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "F9"
     }
   ],
   "emacs-text-editor:delete-char": [
@@ -105,6 +111,12 @@
         "Shift"
       ],
       "key": "."
+    },
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "F10"
     }
   ],
   "obsidian-zoom:zoom-out": [],
@@ -307,6 +319,12 @@
         "Mod"
       ],
       "key": "PageUp"
+    },
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "F11"
     }
   ],
   "app:toggle-right-sidebar": [
@@ -315,6 +333,12 @@
         "Mod"
       ],
       "key": "PageDown"
+    },
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "F12"
     }
   ],
   "workspace:next-tab": [

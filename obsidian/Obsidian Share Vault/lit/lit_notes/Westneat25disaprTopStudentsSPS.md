@@ -14,7 +14,7 @@ ZoteroCollections:
   - identitypolitics
   - hot_takes_us_elect_2024
 created date: 3/19/2025, 2:49:47 PM
-modified date: 2025-03-19T15:47:28-07:00
+modified date: 2025-03-23T09:45:30-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/Z3525FUJ)  | [**URL**](https://www.seattletimes.com/seattle-news/seattle-was-told-it-was-disappearing-its-top-students-did-sps-hear/) | **[[Westneat25disaprTopStudentsSPS.html|HTM]]**
@@ -55,7 +55,7 @@ The advanced math cancellation plan eliminated advanced learning programs in sch
 		- 150 students taking these classes
 	- 2025: 
 		- no algebra II, 1 geometry
-- A Central district school, certainly, a target for "desegregation"
+- A Central district school, which must have been a target for "desegregation"
 	- 2019
 		- 60% students of color
 	- 2025

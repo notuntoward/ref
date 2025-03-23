@@ -8,7 +8,7 @@ linked: true
 aliases:
   - On bullshit
   - On bullshit
-citekey: Frankfurt86onBullshitEssy
+citekey: Frankfurt86onBullshitEssay
 ZoteroTags:
   - obslitnote
 ZoteroCollections:
@@ -18,15 +18,15 @@ ZoteroCollections:
   - morality_in_politics
   - neuropsycholinguisticpolitics
   - identitypolitics
-created date: 3/19/2025, 6:19:09 PM
-modified date: 2025-03-19T18:21:34-07:00
+created date: 3/23/2025, 9:49:20 AM
+modified date: 2025-03-23T09:50:01-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/RGBEXMWN)  | **[[Frankfurt86onBullshitEssay.pdf|PDF]]**
 >> **Author**:: Frankfurt, Harry G.
 > **Title**:: "On bullshit"
 > **Date**:: 1986
-> **Citekey**:: Frankfurt86onBullshitEssy
+> **Citekey**:: Frankfurt86onBullshitEssay
 > **ZoteroItemKey**:: RGBEXMWN
 > **itemType**:: journalArticle
 > **DOI**:: 
