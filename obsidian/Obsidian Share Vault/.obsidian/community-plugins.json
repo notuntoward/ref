@@ -64,5 +64,6 @@
   "obsidian-local-rest-api",
   "image-captions",
   "obsidian-advanced-uri",
-  "emacs-text-editor"
+  "emacs-text-editor",
+  "obsidian-importer"
 ]

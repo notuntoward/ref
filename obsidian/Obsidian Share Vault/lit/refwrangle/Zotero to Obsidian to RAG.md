@@ -1,11 +1,11 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-03-21T15:07:40-07:00
+modified date: 2025-03-23T19:04:38-07:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
 
-I'm putting this code in `ref/refwrangle`.  Also see [[Zotero 6 to 7]].
+I'm putting this code in `ref/refwrangle`.  Also see [[Zotero 6 to 7]] and [[Perplexity Parsing]]
 # Easier zotero-to-obsidian note transfer
 - [ ] Get and Link Zotero Item Templatre
 	- put cursor in an obsidian topic note, near a place relevant to the zotero item you're about to add
@@ -329,6 +329,7 @@ This could *somehow* help smooth the zotero --> obsidian process.
 - [pyzotero](<lit/refwrangle/Zotero to Obsidian to RAG.md#^xy71 >) seems best for zotero
 	- or maybe one of the direct SQL python libs?
 - [ways to interface with python to obsidian (perplexity)](https://www.perplexity.ai/search/what-are-all-the-ways-python-c-FHKyuIXRQfS75w9b0e35kA)
+- [[Dailies/2024-03-14.md#Python interfaces to Obsidian |Python interfaces to Obsidian]]
 ## Running an Obsidian command from an external program
 ### Sending a command to obsidian from zotero
 - [making a zotero plugin to do it (perplexity)](https://www.perplexity.ai/search/i-would-like-zotero-to-start-a-tHD7P3cGTDui5gd5gXr4zA)
