@@ -53,3 +53,5 @@ obsidian/Obsidian Share Vault/.obsidian/workspace.json
 **/__pycache__/
 obsidian/Obsidian Share Vault/.obsidian/hotkeys.json
 refwrangle/zmknote/dist/zotero_item_receiver.log
+refwrangle/test/split_footnotes_body_test.py
+obsidian/Obsidian Share Vault/Evernote/
