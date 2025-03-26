@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-03-23T19:04:38-07:00
+modified date: 2025-03-26T10:54:56-07:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -125,7 +125,6 @@ Zotero _Better Notes Add-on has a way of two-way syncing Obsidian Markdown_ note
 	- plugin templates handle much formatting of obsidian stuff, but nunjucks is a PITA
 	- But it's clunky because getting a lit note into obsidian is a >1 step process
 	-  [[Zotero 6 to 7#MarkDB-Connect Zotero Plugin|MarkDB-Connect]] helps find which entries you've hooked up
-	- 
 
 **Related and similar**:  [[2023-10-08#OneNote <--> Obsidian Links|OneNote <--> Obsidian Links]]
 ### Plugins: Zotero <--> Obsidian Links
@@ -161,17 +160,38 @@ Zotero _Better Notes Add-on has a way of two-way syncing Obsidian Markdown_ note
 
 **MORE**: [[Manual Links to Zotero]]
 # Less tedious Zotero --> Obsidian Lit Note process
-Trying to reduce the steps and friction between adding an item to zotero and then **making an Obsidian literature note properly linked to Zotero**.  This is so that I actually get this done, instead of letting the unlinked zotero entries pile up, or even skipping making the zotero note at all.
+Reduce the steps and friction between adding an item to zotero and then **making an Obsidian literature note properly linked to Zotero**.  This is so that I actually get this done, instea-d of letting the unlinked zotero entries pile up, or even skipping making the zotero note at all.
 
 - [ ] ! combine section with [[#Easier zotero-to-obsidian note transfer]]
 - [ ] ! combine section with [[Obsidian/Zotero 6 to 7.md#Pushing zotero items to Obsidian notes |Pushing zotero items to Obsidian notes]]
 - interesting [[Dailies/2023-10-12.md#Zotero Plugins |Zotero Plugins]]
+- [ ] ! must consider [[Obsidian Multicomputer Sync#Zotero <--> Obsidian Note integration compatibility with Obsidian Sync]]
+## Obsidian, Zotero and Evernote Tag Management
+- my zotero tags policy
+	- don't use zotero tags in obsidian, since they are often random junk imported from a web pate
+	- but do in include them in literature note, as they may be an inspiration for obsidian tags
+- my zotero collections policy
+	- these are meaningful to me, since I made them
+	- [ ] ? just always make them zotero tags?
+	- [ ] ? also add all collections nodes from bottom-most tag to root?  Make them obsidian hieararchical tags?
+- my Evernote tags policy
+	- Evernote tags are my best tags so far
+	- Evernote tags should be used literally, other tags combined with them somehow
+	- See [[Evernote Import To Obsidian]]
+### Obsidian auto-tag suggester
+- Inspiration: zotero script [GPT-Tagging Action](<Dailies/2023-10-12.md#^flx6 >)
+- I'd improve it by 
+	- making a GPT select among existing tags, 
+	- [ ] with option to add new one
+	- including categories
+	- use crappy zotero tags as a hint to a good tag
+- [ ] @ implement it
 ## Push from Zotero to Obsidian
 I think what I need is a way to add a button to Zotero that makes an obsidian note(s) from the current or selected group of Zotero items.  
 ### Push with Zotero "Actions and Tags" plugin
 This more or less works, with minimal fuss starting the webhook receiver ([[lit/refwrangle/Zotero to Obsidian to RAG.md#Starting an executable from A&T Plugin javascript |Starting an executable from A&T Plugin javascript]]).  Good enough for now, although I'm itching to try [[lit/refwrangle/Zotero to Obsidian to RAG.md#Starting an executable from A&T Plugin javascript |Starting an executable from A&T Plugin javascript]].
 
-- [ ] [[Dailies/2023-10-12.md#Actions & Tags Plugin |Actions & Tags Plugin]]
+- [x] [[Dailies/2023-10-12.md#Actions & Tags Plugin |Actions & Tags Plugin]]
 - [x] TODO: [[lit/refwrangle/Zotero to Obsidian to RAG.md#Starting an executable from A&T Plugin javascript |Starting an executable from A&T Plugin javascript]]
 - [x] [Reddit - Dive into anything](https://www.reddit.com/r/ObsidianMD/comments/1f48x0g/obsidian_plugin_autocreating_notes_from_zotero/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button): 
 	- guy makes a button in zotero, 
@@ -183,8 +203,8 @@ This more or less works, with minimal fuss starting the webhook receiver ([[lit/
 			- documentation almost not there
 			- can only get collections if scripted is called via collections??
 			- python would be simpler: how to use [[#Push with Zotero Action Cmd Plugin]] ??
-		- [ ] ! Try the [Perplexity rewrite](https://www.perplexity.ai/search/i-would-like-to-replace-obsidi-8gLqbO5PQbW6pDDc1fE5oQ) of my zotero integration nunjucks template for 
-- [x] ? can this be used to fire off  [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
+		- [x] Try the [Perplexity rewrite](https://www.perplexity.ai/search/i-would-like-to-replace-obsidi-8gLqbO5PQbW6pDDc1fE5oQ) of my zotero integration nunjucks template for 
+- [x] can this be used to fire off  [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]]
 	- **Answer**: No, I can't find a way, so instead, I made a receiver that has a jinja2 template, a clone of the nunjucks used in Zotero Integration.
 	- How? [[lit/refwrangle/Zotero to Obsidian to RAG.md#Running an Obsidian command from an external program |Running an Obsidian command from an external program]]
 		- one of the [[lit/refwrangle/Zotero to Obsidian to RAG.md#Obsidian URI handlers |Obsidian URI handlers]]?
@@ -325,7 +345,7 @@ This could *somehow* help smooth the zotero --> obsidian process.
 	- [Should You Learn TypeScript? A Coder&#039;s Guide for 2025](https://careerfoundry.com/en/blog/web-development/learn-typescript/)
 - [Zotero Plugins are written in Javascript](https://www.zotero.org/support/dev/client_coding/plugin_development)
 	- and they advise that using an external tool might be easier than learning how to make a plugin
-## Python interfaces
+## Python interfaces to Obsidian and Zotero
 - [pyzotero](<lit/refwrangle/Zotero to Obsidian to RAG.md#^xy71 >) seems best for zotero
 	- or maybe one of the direct SQL python libs?
 - [ways to interface with python to obsidian (perplexity)](https://www.perplexity.ai/search/what-are-all-the-ways-python-c-FHKyuIXRQfS75w9b0e35kA)

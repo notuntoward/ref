@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-17T08:51:31-08:00
-modified date: 2025-03-23T18:03:40-07:00
+modified date: 2025-03-26T09:15:18-07:00
 ---
 How to get my Evernotes into Obsidian.
 
@@ -52,6 +52,7 @@ i.e. ENEX --> Obsidian importer ---> Obsidian Markdown
 		- would the [[#Obsidian Importer Plugin]] markdown be like a "literaturenote" and go into `lit/lit_notes`?
 		- would the original Evernote html go into `lit/lit_sources`?
 	- [ ] # ask perplexity what people do about Zotero / Obsidian / Evernote imports
+- [ ] Need consistent [[lit/refwrangle/Zotero to Obsidian to RAG.md#Obsidian, Zotero and Evernote Tag Management |Obsidian, Zotero and Evernote Tag Management]]
 # Yarle
 From: [GitHub - akosbalasko/yarle: Ya...](https://github.com/akosbalasko/yarle/tree/master)
 

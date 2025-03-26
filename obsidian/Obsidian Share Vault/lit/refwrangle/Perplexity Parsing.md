@@ -1,17 +1,20 @@
 ---
 created date: 2025-02-10T15:50:01-08:00
-modified date: 2025-03-23T19:45:04-07:00
+modified date: 2025-03-24T10:18:38-07:00
 ---
 
 # Resources for Perplexity Parsing
 - [[Dailies/2024-03-14.md#Python interfaces to Obsidian |Python interfaces to Obsidian]]
 - Related: [[Zotero to Obsidian to RAG]]
-
+- [[2023-10-12#Zotero <--> Obsidian Links]]
+- [[Zotero to Obsidian to RAG#Python interfaces to Obsidian and Zotero]]
 # Reference relinking
-## Dataflow
+# Semi-manual Relinking: just relink footnotes
+My [[#Script-based Automatic Dataflow]] stuff keeps breaking b/c of small changes or bugs in Perplexity's or SaveMyChatbot's export format.  It's too brittle.
+
+But I could just paste either's markdown into an obsidian note, have python script recognize the footnotes and do the relinking *on that note only*.  Could be simpler.  Perplexity suggestion [[Perplexity Parsing]], for example [here](<Dailies/2024-03-14.md#^d3iv >).
+## Script-based Automatic Dataflow
 ### Relinking many concatenated reference sections
-
-
 ```handdrawn-ink
 {
 	"versionAtEmbed": "0.3.3",

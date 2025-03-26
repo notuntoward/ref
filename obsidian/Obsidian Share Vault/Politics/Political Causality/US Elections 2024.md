@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-22T11:12:16-07:00
+modified date: 2025-03-25T19:40:54-07:00
 tags:
   - politics
   - polling
@@ -172,6 +172,8 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 	- [ ] ? I'm sure this has been thought of, but how to reach the right audience and would it work?  Do a search on this
 - [[Atrioc25cannotExplainBitcoinGrift|Atrioc25: I Truly Cannot Explain This]]: bitcoin corruption, Trump, Trump family, (Musk too, I would guess, but don't have the details)
 # Questions
+## How to get and keep attention
+- the two axes of clickbait and A/B B testing: [[Muller21ClickbaitUnreasEffect|Muller21: Clickbait is Unreasonably Effective]] 
 ## Trump Voter Satisfaction (post-2024 election)
 - [[Longwell25areTrumpVotersGetAsk|Longwell25: Are These Trump Voters Getting What They Voted For? (with Mark Leibovich)]]
 ## How voters weight different policies in their voting decision (sensitivity analysis)
@@ -278,7 +280,6 @@ Will the Rs ever pay attention to evidence?
 	- ? how true are these points?
 - related:Lewis24demsGenderID 
 - [[Young23wrongAppetiteMisinfo|Young23wrongAppetiteMisinfo]] : now there's *affective* polarization
-
 ## Auto-detection of political messaging/conversation themes and their importance
 - Sentiment analysis was used to shape messages, etc. in 2024. maybe earlier
 - how are representative of general population
@@ -290,6 +291,8 @@ Will the Rs ever pay attention to evidence?
 ## Issue half-life
 - given a set of issues, predict how "important", "salient" they will be in the future
 - a factor useful to know if an issue will be important by the time of the election
+## Persuadable Voter Prediction
+A lot of polling is important only as a clue to how you can actually change the vote.  So this is predicting that a voter is not on your side but has some probability of being persuaded in your direction.  Training data would be past elections where this voter is known to have been (in my case) leaning R and eventually voted D (or said her or she would).  I bet David Shor's company does have this kind of data.
 ## Polling by sentiment analysis
 - first, do [[#Auto-detection of political messaging/conversation themes and their importance|Auto-detection of political messaging/conversation themes and their importance]]
 - then, [[#Issue half-life|Issue half-life]]
@@ -383,6 +386,9 @@ Will the Rs ever pay attention to evidence?
 	- Rubin24demsLowInfoVoterShortcut
 - Media attack graph, as in Thompson24rumbleRightWingYT
 - Proposes AI polling/policy making: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
+### Salient hypocrisy tracker
+Gaps in public perception of where Trump is spending his time vs. what people think he should prioritize,
+e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is the biggest mismatch]].  Also fuse with issue importance, media coverage, etc., for finding promising attack vectors, and demographic factors indicating if the gaps occur in the population of voters that need persuading.
 # Success Stories: Recent Authoritarian Takedowns
 - Poland
 	- [[Gora23polandEndRightWing|Gora23: Elections in Poland Bring the End of Right-wing Populist Rule - Brexit Institute]] 

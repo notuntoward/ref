@@ -45,8 +45,8 @@ refwrangle/zmknote/test/zotero_watcher.log
 obsidian/Obsidian Share Vault/.obsidian/workspace.json
 refwrangle/zmknote/zotero_item_receiver.log
 obsidian/Obsidian Share Vault/.obsidian/workspace.json
-/build/
-/dist/
+build/
+dist/
 *.pkg
 *.exe
 **/.mypy_cache/

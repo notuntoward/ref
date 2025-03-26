@@ -14,7 +14,7 @@ publisher: ""
 citation key: 3Blue1Brown24WvizIntroGPTtransfrmr
 DOI: ""
 created date: 2024-10-13T20:30:06-07:00
-modified date: 2024-10-18T12:31:19-07:00
+modified date: 2025-03-23T22:43:57-07:00
 ---
 
 > [!info]- : [**Zotero**](zotero://select/library/items/MXZJVR4S)   | [**URL**](https://www.youtube.com/watch?v=wjZofJX0v4M)
@@ -116,7 +116,7 @@ The common purpose of the many transformers is to find meaningful relations betw
 	- [00:13:04](https://www.youtube.com/watch?v=wjZofJX0v4M&t=785#t=13:04.98) embedding matrix: 1 column for each "word": weights begin random, and are trained
 	- [00:13:55](https://www.youtube.com/watch?v=wjZofJX0v4M&t=836#t=13:55.87) 12.3K dims in GPT3 embed vector
 	- [00:14:33](https://www.youtube.com/watch?v=wjZofJX0v4M&t=873#t=14:33.32) settles on embedding directions w/ semantic meaning
-	- [00:14:54](https://www.youtube.com/watch?v=wjZofJX0v4M&t=895#t=14:54.81) his embedding graph caem from python library gensim
+	- [00:14:54](https://www.youtube.com/watch?v=wjZofJX0v4M&t=895#t=14:54.81) his embedding graph came from python library gensim
 	- [00:15:01](https://www.youtube.com/watch?v=wjZofJX0v4M&t=902#t=15:01.88) difference between woman & man ~ diff between king and queen (almost, for real)
 	- [00:15:42](https://www.youtube.com/watch?v=wjZofJX0v4M&t=943#t=15:42.84) family relations better
 	- [00:15:49](https://www.youtube.com/watch?v=wjZofJX0v4M&t=950#t=15:49.61) seems to have found a direction for gender

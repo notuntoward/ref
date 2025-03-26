@@ -325,6 +325,12 @@
         "Mod"
       ],
       "key": "F11"
+    },
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "["
     }
   ],
   "app:toggle-right-sidebar": [
@@ -339,6 +345,12 @@
         "Mod"
       ],
       "key": "F12"
+    },
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "]"
     }
   ],
   "workspace:next-tab": [

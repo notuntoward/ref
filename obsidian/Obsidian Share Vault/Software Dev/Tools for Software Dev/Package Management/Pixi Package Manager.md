@@ -1,6 +1,6 @@
 ---
 created date: 2025-01-03T14:39:01-06:00
-modified date: 2025-01-03T15:53:33-06:00
+modified date: 2025-03-26T09:30:55-07:00
 ---
 [Pixi](https://github.com/prefix-dev/pixi) is a conda replacement that should be faster than conda, and should do better at [reproducibility](https://prefix.dev/blog/pixi_for_scientists).  Has [[#VSCode integrations|VSCode integrations]] that work with Jupyter Notebooks.
 
@@ -23,7 +23,7 @@ From: [I have many python projects which I wrote using conda environments, with 
 pixi init --import ./myenv.yml
 ```
 
-where myenv is a conda environment yaml environment
+where `myenv` is a conda environment yaml environment
 ## Installing global environments, like node
 From: [I have many python projects which I wrote using conda environments, with some...](https://www.perplexity.ai/search/i-have-many-python-projects-wh-3.OhuMOMTqa2m.qdLMR4hw#15)
 
