@@ -246,6 +246,12 @@
         "Mod"
       ],
       "key": "Insert"
+    },
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "C"
     }
   ],
   "emacs-text-editor:kill-region": [
@@ -383,7 +389,7 @@
       "modifiers": [
         "Mod"
       ],
-      "key": "C"
+      "key": "Q"
     }
   ],
   "editor:toggle-bullet-list": [
@@ -391,7 +397,7 @@
       "modifiers": [
         "Alt"
       ],
-      "key": "C"
+      "key": "Q"
     }
   ],
   "links:editor-create-link-from-clipboard": [
@@ -557,5 +563,24 @@
   "workspace:goto-tab-3": [],
   "workspace:goto-tab-4": [],
   "workspace:goto-tab-5": [],
-  "workspace:goto-tab-6": []
+  "workspace:goto-tab-6": [],
+  "obsidian-excalidraw-plugin:insert-link": [],
+  "table-editor-obsidian:table-control-bar": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "T"
+    }
+  ],
+  "workspace:undo-close-pane": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "T"
+    }
+  ]
 }

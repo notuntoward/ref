@@ -1,11 +1,29 @@
 ---
-modified date: 2025-03-26T14:32:50-07:00
+modified date: 2025-03-26T23:04:30-07:00
 created date: 2024-12-17T08:51:31-08:00
 ---
 
-This is about syncing Obsidian across computers, and is related to backup with the [[2024-07-30#Git Plugin]], and [[Obsidian and GIT Repo]].  Here's a [good overview](https://blog.kirillov.cc/posts/obsidian-livesync/).
+This is about syncing Obsidian across computers, and is related to backup with the [[2024-07-30#Git Plugin]], and [[Obsidian and GIT Repo]].  Here's a [good overview](https://blog.kirillov.cc/posts/obsidian-livesync/).  Note that obsidian itself [says](https://help.obsidian.md/data-storage):
+
+>You can create a vault anywhere your operating system allows. Obsidian syncs with Obsidian Sync, Dropbox, iCloud, OneDrive, Git, and many other third-party services.
+
+So maybe you don't need Obsidian sync afterall, unless phone, Linux or MacOS is important.  Therefore, now that I've finished [[Obsidian/Obsidian and GIT Repo.md#Separating Obsidian and refwrangle code checkins |Separating Obsidian and refwrangle code checkins]], maybe I don't need Obsidian sync.  That is, unless [[Obsidian/Obsidian Multicomputer Sync.md#Disruptive Obsidian popup: "has been modified externally, merging changes automatically" |Disruptive Obsidian popup: "has been modified externally, merging changes automatically"]] are still there, or if I re-experience [[Obsidian/Obsidian Multicomputer Sync.md#Synced Windows/MacOS hotkeys conflict and overwrite |Synced Windows/MacOS hotkeys conflict and overwrite]].
 # Official Obsidian Sync
-Costs $4/mo. or something like that, probably makes sense once I figure out [[Evernote Import To Obsidian]], easily justifying this small extra expense.  But what problems does this solve or cause?
+Low cost makes sense once I figure out [[Evernote Import To Obsidian]], easily justifying this small extra expense.  But what problems does this solve or cause?  (Evernote is $[10.83/mo](https://evernote.com/compare-plans))
+## What's available in Obsidian sync
+From: [Obsidian Sync](https://obsidian.md/sync)
+- price
+	- $4/mo (1 GB storage)
+	- $8/mo (10 GB storage)
+	- $20/mo ([100 GB](https://www.linkedin.com/posts/obsidianmd_were-excited-to-share-some-big-improvements-activity-7132806879063244800-k0fh/), but I don't see that on official Obsidian page)
+- features
+	- encryption
+	- version history, can see difference between versions, has file recovery
+	- cross-platform
+	- works offline
+- external programs writing to vault
+	- synced vault is just another OS directory
+	- seems that external progs can write to it
 ## Switching to Obsidian Sync
 - official advice: [Switch to Obsidian Sync - Obsi...](https://help.obsidian.md/sync/switch)
 ## Compatibility and Obsidian Sync
