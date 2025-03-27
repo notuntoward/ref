@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-03-26T10:54:56-07:00
+modified date: 2025-03-27T11:30:32-07:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -24,15 +24,14 @@ I'm putting this code in `ref/refwrangle`.  Also see [[Zotero 6 to 7]] and [[Per
 - [ ] ! Combine with [[Obsidian/Zotero 6 to 7.md#Pushing zotero items to Obsidian notes |Pushing zotero items to Obsidian notes]]
 # Zotero to NotebookLM
 ## Problems to solve before using NotebookLM
-
-### YouTube Transcripts
+### YouTube Transcripts to NotebookLM
 #### Can't point to a specific point in a YouTube video
 It can cite an entire YT video as a source, but it can't highlight a specific passage in the transcript: it just highlights the whole thing.  
 - My solution was to add timestamps to the transcript so if it pointed you to a sentence, you'd see the timestamp that it came from.
-#### Getting YouTube  Transcript
+#### Getting YouTube Transcript
 - with bare python, not connected to Zotero or Obsidian
 	- Use refwrangle.youtube2md() which uses [youtube-transcript-api/youtube...](https://github.com/jdepoix/youtube-transcript-api/blob/master/youtube_transcript_api/_transcripts.py)
-- Using Obsidian [[Dailies/2025-03-03.md#Companion Plugin and YouTube summarizer|Note Companion and YouTube summarizer]] somehow
+- Also see: [[YouTube Transcripts into Obsidian Lit Notes]]
 ### Manual entry
 Every single source must be entered manually. I have hundreds of articles, so this is not tenable.
 ### Total data limit

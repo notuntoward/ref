@@ -1,5 +1,5 @@
 ---
-modified date: 2025-03-26T23:04:30-07:00
+modified date: 2025-03-27T10:53:52-07:00
 created date: 2024-12-17T08:51:31-08:00
 ---
 
@@ -15,15 +15,17 @@ From: [Obsidian Sync](https://obsidian.md/sync)
 - price
 	- $4/mo (1 GB storage)
 	- $8/mo (10 GB storage)
-	- $20/mo ([100 GB](https://www.linkedin.com/posts/obsidianmd_were-excited-to-share-some-big-improvements-activity-7132806879063244800-k0fh/), but I don't see that on official Obsidian page)
+	- $20/mo ([100 GB](https://www.linkedin.com/posts/obsidianmd_were-excited-to-share-some-big-improvements-activity-7132806879063244800-k0fh/), but I don't see that price on official Obsidian page) ^m22n
 - features
 	- encryption
 	- version history, can see difference between versions, has file recovery
 	- cross-platform
 	- works offline
-- external programs writing to vault
+- external programs writing to vault ^m7u1
 	- synced vault is just another OS directory
 	- seems that external progs can write to it
+- [problems with Obsidian sync](https://forum.obsidian.md/t/how-to-use-obsidian-sync-effectively-and-safely/80545) as of April 2024
+- [official obsidian sync limitations](https://help.obsidian.md/sync/faq)
 ## Switching to Obsidian Sync
 - official advice: [Switch to Obsidian Sync - Obsi...](https://help.obsidian.md/sync/switch)
 ## Compatibility and Obsidian Sync
@@ -35,8 +37,12 @@ All things that might get better or worse with official Obsidian Sync.
 I've written code that does [[Zotero 6 to 7#Pushing zotero items to Obsidian notes]], stuff that does [[Zotero to Obsidian to RAG]], and [[Perplexity Parsing]], with the goal of [[lit/refwrangle/Zotero to Obsidian to RAG.md#Less tedious Zotero --> Obsidian Lit Note process |Less tedious Zotero --> Obsidian Lit Note process]].  All of these insert notes into Obsidian.  How do these work with official Obsidian Sync? 
 - pushing notes means that Obsidian has to be surprised which *might* be risking [[#Disruptive Obsidian popup "has been modified externally, merging changes automatically"]] problems.
 - Note that the [[2024-03-09#Zotero Integration Plugin]] can avoid syncing probs b/c it's a plugin that adds notes in a formal way.
-- [ ] ? I need a way to store all my **pdfs and web pages** where both Obsidian and Zotero can find them.  How?
-- [ ] ? Official way to add a note to Obsidian without causing problems, or are all my problems only because of OneDrive?
+- [ ] ? I need a way to store all my **pdfs and web pages** where both Obsidian and Zotero can find them.  
+	- [x] Lots of external files are not a problem.  Obsidian sync [uses an ordinary folder](<Obsidian/Obsidian Multicomputer Sync.md#^m7u1 >), and can store up to [100 GB](<Obsidian/Obsidian Multicomputer Sync.md#^m22n >) 
+	- But .html is [not on the list of supported attachment types](https://help.obsidian.md/attachments), and guy says that [.html sync is not supported by Obsidian Publish](https://www.reddit.com/r/ObsidianMD/comments/1gg07ld/comment/lxcsrq5/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button) (uses the word "sync" but question was about Obsidian Publish)
+	- I view html all the time with the [[2025-03-27#HTML Reader Plugin]].  
+	- [ ] My question: [Does .html sync? - Help - Obsi...](https://forum.obsidian.md/t/does-html-sync/98837?u=scotto)
+- [x] Official way to add a note to Obsidian without causing problems, or are all my problems only because of OneDrive?  Looks like just pasting files in [specifically supported.](https://help.obsidian.md/attachments)
 ### Multi-OS and Settings compatibility with Obsidian Sync
 - [ ] ? Does Obsidian Sync solve the [[#Synced Windows/MacOS hotkeys conflict and overwrite]] problems I had with OneDrive and whole-obsidian directory syncing?
 - How handle different root directories on different computers?
