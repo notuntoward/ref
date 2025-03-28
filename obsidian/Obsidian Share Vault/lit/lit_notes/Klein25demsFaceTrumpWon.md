@@ -42,8 +42,7 @@ modified date: 2025-03-26T22:33:57-07:00
 
 %% begin Obsidian Notes %%
 ___
-Karen Moe [recommended](https://mail.google.com/mail/u/0/#search/from%3Akaren/FMfcgzQZTgbSGSFpkqHPKPWTCZSDtvSF) this.
-
-- alkjasdlkfj asflkasdf
+- Karen Moe [recommended](https://mail.google.com/mail/u/0/#search/from%3Akaren/FMfcgzQZTgbSGSFpkqHPKPWTCZSDtvSF) this.
+- One of Shor's recommended books: [[Zaller92NatureOriginsMass|Zaller92: The Nature and Origins of Mass Opinion]] 
 ___
 %% end Obsidian Notes %%

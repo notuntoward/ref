@@ -2,7 +2,6 @@
   "lapel",
   "obsidian-zotero-desktop-connector",
   "cmdr",
-  "media-extended",
   "obsidian-plugin-update-tracker",
   "links",
   "templater-obsidian",
@@ -67,5 +66,6 @@
   "emacs-text-editor",
   "obsidian-importer",
   "ytranscript",
-  "yt-video-summarizer"
+  "yt-video-summarizer",
+  "reclipped-official"
 ]
