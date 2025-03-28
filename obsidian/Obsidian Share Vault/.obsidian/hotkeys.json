@@ -272,14 +272,7 @@
       "key": "K"
     }
   ],
-  "app:go-forward": [
-    {
-      "modifiers": [
-        "Alt"
-      ],
-      "key": "ArrowRight"
-    }
-  ],
+  "app:go-forward": [],
   "app:go-back": [
     {
       "modifiers": [
