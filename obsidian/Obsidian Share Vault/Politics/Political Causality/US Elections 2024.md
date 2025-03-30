@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-25T19:40:54-07:00
+modified date: 2025-03-29T21:15:15-07:00
 tags:
   - politics
   - polling
@@ -76,6 +76,9 @@ Trump is really the best president ever.
 - [[Evans24techSplinterCulturalCtrl]]
 - [[Rampell25genZmenLoveTrump]]
 - Obsessive race focus pissed off people of color! [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
+## Democrats were bad communicators
+- language and stuff
+- Harris & D's didn't say much: [[Longwell25demsChenyDemoc|Longwell25: Did Democrats Have a Liz Cheney Problem? (with Jen Psaki)]] 
 ## The Economy
 ### Economy really was bad
 - [[Ludwig25votersCorrectEcon|Ludwig25: Voters Were Right About the Economy. The Data Was Wrong.]] 
@@ -201,6 +204,13 @@ Just more predictor variables for various things. Things similar to education, w
 - Pederson volatility (Pedersen79dynamPartyVolatileEU), used e.g. in (Qvortrup24neurosciVoteEmotion and many others)
 ## What factors make a person accept facts from somebody he dislikes
 - i.e. how to persuade through rural anti-intellectualism
+## Do words in polls mean what you think they mean?
+- e.g. questions like is the country going in the "wrong" direction?'
+	- "wrong" means very different things to different people
+	- example from [[Longwell25demsChenyDemoc|Longwell25: Did Democrats Have a Liz Cheney Problem? (with Jen Psaki)]] :
+		- D's apparently made democracy a talking point, put Cheney on, etc. because polls seemed to say that "democracy" was salient
+		- But R's didn't want to hear D democracy talking points b/c the Ds who "stole" the election.
+		  
 ## Destructing Conspiracy Theories
 - facts don't seem to work, can reinforce existing opinion (references..)
 - conspiracy theory attractions
