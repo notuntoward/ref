@@ -107,19 +107,20 @@
     },
     {
       "modifiers": [
-        "Mod",
-        "Shift"
-      ],
-      "key": "."
-    },
-    {
-      "modifiers": [
         "Mod"
       ],
       "key": "F10"
     }
   ],
-  "obsidian-zoom:zoom-out": [],
+  "obsidian-zoom:zoom-out": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "."
+    }
+  ],
   "emacs-text-editor:forward-char": [
     {
       "modifiers": [
@@ -352,14 +353,7 @@
       "key": "]"
     }
   ],
-  "workspace:next-tab": [
-    {
-      "modifiers": [
-        "Ctrl"
-      ],
-      "key": "Tab"
-    }
-  ],
+  "workspace:next-tab": [],
   "backlink:open": [
     {
       "modifiers": [
@@ -574,6 +568,14 @@
         "Mod"
       ],
       "key": "T"
+    }
+  ],
+  "editor:toggle-fold": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Tab"
     }
   ]
 }
