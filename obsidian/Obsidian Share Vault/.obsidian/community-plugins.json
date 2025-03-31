@@ -1,5 +1,4 @@
 [
-  "lapel",
   "obsidian-zotero-desktop-connector",
   "cmdr",
   "obsidian-plugin-update-tracker",
@@ -67,5 +66,7 @@
   "obsidian-importer",
   "ytranscript",
   "yt-video-summarizer",
-  "reclipped-official"
+  "reclipped-official",
+  "heading-decorator",
+  "oin-gotoheading"
 ]

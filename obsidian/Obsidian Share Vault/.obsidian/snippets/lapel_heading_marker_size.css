@@ -1,0 +1,24 @@
+/* sets font size of heading level markers created by the obsidian lapel plugin */
+.cm-heading-marker[data-level="1"] {
+  font-size: 12px;
+}
+
+.cm-heading-marker[data-level="2"] {
+  font-size: 11px;
+}
+
+.cm-heading-marker[data-level="3"] {
+  font-size: 11px;
+}
+
+.cm-heading-marker[data-level="4"] {
+  font-size: 11px;
+}
+
+.cm-heading-marker[data-level="5"] {
+  font-size: 11px;
+}
+
+.cm-heading-marker[data-level="6"] {
+  font-size: 11px;b
+}

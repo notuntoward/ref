@@ -1,7 +1,6 @@
 {
   "accentColor": "",
   "enabledCssSnippets": [
-    "Zotero-Template-2",
     "bigEquations",
     "checkbox",
     "command-pallet-hotkey-color",
@@ -13,11 +12,12 @@
     "dark_line",
     "extended-colorschemes",
     "embed_remove_indent",
-    "embed_remove_vert_black_space"
+    "embed_remove_vert_black_space",
+    "lapel_heading_marker_size"
   ],
   "theme": "moonstone",
   "cssTheme": "AnuPpuccin",
-  "baseFontSize": 18,
+  "baseFontSize": 17,
   "textFontFamily": "Consolas",
   "nativeMenus": false,
   "baseFontSizeAction": true
