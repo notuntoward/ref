@@ -1,13 +1,13 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-29T21:15:15-07:00
+modified date: 2025-03-30T16:55:28-07:00
 tags:
   - politics
   - polling
   - ml
 ---
 # TODO
-- graph showing all the information loss sources from a good D policy to a voter's rational decision about it
+- graph showing all the information loss sources from a good D policy to a voter's decision about it, rational or not.
 - same graph of info loss from polls to D policy and messaging decision
 - graph showing all sources of polling error
 - examples of compounding policy errors
@@ -18,7 +18,13 @@ tags:
 
 # Why did the Democrats fail?
 
-## Harris
+## H2
+## H3
+### h31
+**** h311
+### h312
+
+### h32
 ## Biden?
 ## AI
 ## Crime, disorder, homelessness
