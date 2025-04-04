@@ -110,7 +110,7 @@ From: [Sorting with ORDER BY - Filtering, Sorting, and Calculating Data with SQL
 # Math Operations
 From: [Math Operations - Filtering, Sorting, and Calculating Data with SQL | Coursera](https://www.coursera.org/learn/sql-for-data-science/lecture/DYtOe/math-operations)
 
-![[image.png|345x229]]
+![[Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)/attachments/image.png|345x229]]
 
 - calc is after the selected cols, preceded by a comma
 - **AS** is name of new column where the result goes

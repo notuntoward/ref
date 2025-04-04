@@ -1,6 +1,6 @@
 ---
 created date: 2025-02-26T19:43:33-08:00
-modified date: 2025-03-20T18:01:53-07:00
+modified date: 2025-04-04T11:22:23-07:00
 ---
 ```yaml
 # Root command group
@@ -71,25 +71,28 @@ items:
     command: editor:toggle-source
     description: Toggle Preview Source
 
-# 
-  # A group of commands with common prefix key "f"
   f:
-    description: File
-    items:
+    command: editor:fold-all
+    description: Fold all
     
-      d: daily-notes Daily Notes
+  F:
+    command: editor:unfold-all
+    description: Unfold All
 
-      # Command mapped to the key sequence "f d"
-      # Description determined automatically from command
-      # d:
-      #  command: app:delete-file
-
-      # Command mapped to "f m"
-      # This uses the short form
-      m: file-explorer:move-file Move file
-      # (equivalent to long form:)
-      # m:
-      #  command: file-explorer:move-file
-      #  description: Move file
-
+  m:
+    command: editor:fold-more
+    description: Fold More
+    
+  l:
+    command: editor:fold-less
+    description: Fold Less
+    
+  h:
+    command: editor:fold-all
+    description: Fold All
+    
+  H:
+    command: editor:unfold-all
+    description: Unfold All    
+    
 ```

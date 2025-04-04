@@ -283,15 +283,6 @@
     }
   ],
   "obsidian-outliner:unfold": [],
-  "editor:unfold-all": [
-    {
-      "modifiers": [
-        "Mod",
-        "Shift"
-      ],
-      "key": "Tab"
-    }
-  ],
   "workspace:previous-tab": [],
   "obsidian-excalidraw-plugin:save": [],
   "editor:save-file": [],
@@ -576,6 +567,25 @@
         "Mod"
       ],
       "key": "Tab"
+    }
+  ],
+  "obsidian-auto-link-title:auto-link-title-normal-paste": [],
+  "quickadd:choice:fb6d379c-3579-4f38-9d7a-5af3189d5131": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "X"
+    }
+  ],
+  "quickadd:choice:cd3ea066-08f8-4959-bc4d-ddd296cd2a9a": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "V"
     }
   ]
 }

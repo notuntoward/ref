@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-03-30T16:55:28-07:00
+modified date: 2025-04-04T11:28:33-07:00
 tags:
   - politics
   - polling
@@ -156,7 +156,16 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 # Campaign Message Ideas
 ## Attacks
 - [[Politics/Political Causality/US Elections 2024.md#Polarization Enhancement Your fellow R is evil (algorithmic)|Polarization Enhancement: Your fellow R is evil (algorithmic) ^q98mss]]
-### Musk as traitor to America
+### Billionaire Buddies
+#### Advisors behind Tarrifs and their richguyness
+- Stephen Miran
+	- hedge fund strategest
+	- [[Miran24restructGlblTrade|Miran24: A user’s guide to restructuring the global trading system]] 
+	- see [[Schasfoort25tariffChaosSense|Schasfoort25: Why Trump's tariff chaos actually makes sense (big picture)]] 
+- Scott Bessent, Treasury secretary, **ultra wealthy hedge fund** manager
+	- worked with **George Soros** himself to **break the Bank of England** in the early 90s
+	- see [[Schasfoort25tariffChaosSense|Schasfoort25: Why Trump's tariff chaos actually makes sense (big picture)]] 
+#### Musk as traitor to America
 - Musk donated $100M to Trumps 2024 election, but he’s very vulnerable to China’s gov’t actions, making him a vehicle to manipulate Trump, in order to forward his own interests, maybe at the cost to American workers and national security (Bradsher24muskNeedChina)
 - Musk unfairness
 	- how much money he as vs. average American: Is he really worth 1.6M X the average American?
@@ -180,6 +189,7 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 	- he's actually for Elon Musk, the richest guy in the world
 	- [ ] ? I'm sure this has been thought of, but how to reach the right audience and would it work?  Do a search on this
 - [[Atrioc25cannotExplainBitcoinGrift|Atrioc25: I Truly Cannot Explain This]]: bitcoin corruption, Trump, Trump family, (Musk too, I would guess, but don't have the details)
+- 
 # Questions
 ## How to get and keep attention
 - the two axes of clickbait and A/B B testing: [[Muller21ClickbaitUnreasEffect|Muller21: Clickbait is Unreasonably Effective]] 

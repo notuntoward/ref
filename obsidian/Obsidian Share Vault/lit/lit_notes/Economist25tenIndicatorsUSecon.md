@@ -47,7 +47,7 @@ Impressive S&P500 graph for Trump vs. Biden and Obama.  Other graphs and data ab
 
 Can see that Obama was up on 1st term, Trump followed (good advisors kept him on course?) and then Biden continued with the steadiest increase.  I'm not sure what the vertical axis is, though.
 
-![[image.png]]
+![[lit/lit_notes/attachments/image.png]]
 
 - continue comments...
 
