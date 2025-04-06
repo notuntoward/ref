@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-04-04T11:28:33-07:00
+modified date: 2025-04-04T14:11:52-07:00
 tags:
   - politics
   - polling
@@ -97,6 +97,7 @@ Trump is really the best president ever.
 	- [[Pastor24greatBidenEconHelpedTrump|Pastor24: The Economy Has Been Great Under Biden. That’s Why Trump Won.]] ??
 	- [[Coy24strongEconHurtDems|Coy24: Is It Possible the Democrats Were Hurt by a Strong Economy?]] 
 - COVID + post-COVID inflation wiped out incumbents everywhere: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
+- [[Schasfoort25tariffChaosSense|Schasfoort25: Why Trump's tariff chaos actually makes sense (big picture)]] 
 ### Postmaterialism: when a bad economy matters less
 Both R's and D's vote less on economic issues and more on values: 
 - [[Lowrey24RiseUnionRight|Lowrey24: The Rise of the Union Right]] 
@@ -157,9 +158,9 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 ## Attacks
 - [[Politics/Political Causality/US Elections 2024.md#Polarization Enhancement Your fellow R is evil (algorithmic)|Polarization Enhancement: Your fellow R is evil (algorithmic) ^q98mss]]
 ### Billionaire Buddies
-#### Advisors behind Tarrifs and their richguyness
+#### Advisors behind Tariffs and their richguyness
 - Stephen Miran
-	- hedge fund strategest
+	- hedge fund strategist
 	- [[Miran24restructGlblTrade|Miran24: A user’s guide to restructuring the global trading system]] 
 	- see [[Schasfoort25tariffChaosSense|Schasfoort25: Why Trump's tariff chaos actually makes sense (big picture)]] 
 - Scott Bessent, Treasury secretary, **ultra wealthy hedge fund** manager
