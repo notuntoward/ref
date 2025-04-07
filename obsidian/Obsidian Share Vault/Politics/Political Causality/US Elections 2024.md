@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-04-04T14:11:52-07:00
+modified date: 2025-04-06T13:36:12-07:00
 tags:
   - politics
   - polling
@@ -98,6 +98,7 @@ Trump is really the best president ever.
 	- [[Coy24strongEconHurtDems|Coy24: Is It Possible the Democrats Were Hurt by a Strong Economy?]] 
 - COVID + post-COVID inflation wiped out incumbents everywhere: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 - [[Schasfoort25tariffChaosSense|Schasfoort25: Why Trump's tariff chaos actually makes sense (big picture)]] 
+- [[Cohn25econRiskRepubs|Cohn25: A risk like no other for Republicans]]: 40% of voters switching to Trump in 2024 listed econ & Tariffs as most imp. features.
 ### Postmaterialism: when a bad economy matters less
 Both R's and D's vote less on economic issues and more on values: 
 - [[Lowrey24RiseUnionRight|Lowrey24: The Rise of the Union Right]] 
@@ -266,6 +267,7 @@ Will the Rs ever pay attention to evidence?
 - or were the R's right? [[Ludwig25votersCorrectEcon|Ludwig25: Voters Were Right About the Economy. The Data Was Wrong.]] 
 - But Biden had [[Boak23presToutsBidenomics|paradoxically terrible]] total-nation econ ratings, so Ds deluded too?
 - KGB guys says impossible:  [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
+- [[Cohn25econRiskRepubs|Cohn25: A risk like no other for Republicans]] : bad trump econ ratings, cracks in Senate Rs
 # Predictive Models and Analysis Techniques
 
 - market sentiment indexes predicted by economic variables (Weber24implicitCoordInflateShock).  Could be *voter* sentiment predicted by other variables
@@ -416,7 +418,9 @@ A lot of polling is important only as a clue to how you can actually change the 
 ### Salient hypocrisy tracker
 Gaps in public perception of where Trump is spending his time vs. what people think he should prioritize,
 e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is the biggest mismatch]].  Also fuse with issue importance, media coverage, etc., for finding promising attack vectors, and demographic factors indicating if the gaps occur in the population of voters that need persuading.
-# Success Stories: Recent Authoritarian Takedowns
+# Signs of Hope
+- [[Cohn25econRiskRepubs|Cohn25: A risk like no other for Rs]] : Trump seen bad on econ, small 2024 wind, likely D mid-term wins
+## Success Stories: Recent Authoritarian Takedowns
 - Poland
 	- [[Gora23polandEndRightWing|Gora23: Elections in Poland Bring the End of Right-wing Populist Rule - Brexit Institute]] 
 	- [[Watmough23populistEndPoland|Watmough23: Eight Years of Populist Rule in Poland Comes to an End - ECPS]] 
