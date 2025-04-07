@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-04-06T13:36:12-07:00
+modified date: 2025-04-07T08:23:49-07:00
 tags:
   - politics
   - polling
@@ -17,14 +17,6 @@ tags:
 - dig into the list of cognitive errors (both voters, R's and D's make them)
 
 # Why did the Democrats fail?
-
-## H2
-## H3
-### h31
-**** h311
-### h312
-
-### h32
 ## Biden?
 ## AI
 ## Crime, disorder, homelessness
@@ -82,6 +74,11 @@ Trump is really the best president ever.
 - [[Evans24techSplinterCulturalCtrl]]
 - [[Rampell25genZmenLoveTrump]]
 - Obsessive race focus pissed off people of color! [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
+### Seattle Handsoff Protest
+I couldn't hear much, but I think the first speaker started talking about Native American being victims of white colonization.  Given the market tank, all the worries on the protestors poster, this was a total non-sequiter, and nobody near was cheering for it, but there were dutiful liberals scattered clapping and cheering: taking their medicine, probably worried about not clapping.
+- [ ] get the transcripts of the speakers, who were Pramila Jayapal, Justin Gill, Hamdi Mohamed
+	- organizations involved e.g., Seattle Indivisible, Planned Parenthood, Evergreen Resistance
+	- [according to Perplexity](https://www.perplexity.ai/search/where-can-i-find-a-recording-o-Q4lmSsJyTUq.JFAL5xdufw#0)
 ## Democrats were bad communicators
 - language and stuff
 - Harris & D's didn't say much: [[Longwell25demsChenyDemoc|Longwell25: Did Democrats Have a Liz Cheney Problem? (with Jen Psaki)]] 
@@ -99,6 +96,7 @@ Trump is really the best president ever.
 - COVID + post-COVID inflation wiped out incumbents everywhere: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 - [[Schasfoort25tariffChaosSense|Schasfoort25: Why Trump's tariff chaos actually makes sense (big picture)]] 
 - [[Cohn25econRiskRepubs|Cohn25: A risk like no other for Republicans]]: 40% of voters switching to Trump in 2024 listed econ & Tariffs as most imp. features.
+- [[Parker25trumpTariffEq|Parker25: Explaining the Trump Tariff Equation]]: how he came up with it.
 ### Postmaterialism: when a bad economy matters less
 Both R's and D's vote less on economic issues and more on values: 
 - [[Lowrey24RiseUnionRight|Lowrey24: The Rise of the Union Right]] 

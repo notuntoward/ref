@@ -13,7 +13,7 @@ ZoteroTags:
 ZoteroCollections:
   - economic_politics
 created date: 4/4/2025, 10:27:47 AM
-modified date: 2025-04-04T11:16:39-07:00
+modified date: 2025-04-07T07:58:55-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/VSFZIQP4)  | [**URL**](https://www.youtube.com/watch?v=1ts5wJ6OfzA)
@@ -61,6 +61,7 @@ Guesses at what Trump's global plan is, based on his statements, and those of tw
 	3. A lower dollar, good for US exports and manufacturing
 
 - Referenced in the vide notes: [[Hoogduin25cmplxUncertDcsnCrs|Hoogduin25: Decision making in a complex and uncertain world]] 
+- Trump admin's explanation of its tariffs: [[Parker25trumpTariffEq|Parker25: Explaining the Trump Tariff Equation]] 
 ___
 %% end Obsidian Notes %%
 # Transcript
