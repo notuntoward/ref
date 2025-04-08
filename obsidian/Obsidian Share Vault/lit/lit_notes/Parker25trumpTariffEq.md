@@ -13,7 +13,7 @@ ZoteroTags:
 ZoteroCollections:
   - economic_politics
 created date: 4/6/2025, 9:28:43 PM
-modified date: 2025-04-07T07:59:55-07:00
+modified date: 2025-04-07T12:49:37-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/7VYVNJD3)  | [**URL**](https://www.youtube.com/watch?v=j04IAbWCszg)
@@ -46,7 +46,7 @@ Explains the Equation Trump Admin used to compute Tariffs.  Equation "derivation
 From [here](https://youtu.be/j04IAbWCszg?t=312):
 ![[image-1.png|512x284]]
 
-Anyway, this equation requires that you know $\psi$, the fraction of the tariff passed to the consumer, and $\epsilon$, the elasticity of demand.  The paper the Trump admin used for justification is **actually nonlinear** and far more complex than this, and the Admin arbitrarily picked $\psi$ and $\epsilon$ so they'd cancel, giving the equation used.  They say they did that because it would be complex if not impossible.
+Anyway, this equation requires that you know $\psi$, the fraction of the tariff passed to the consumer, and $\epsilon$, the elasticity of demand.  The paper the Trump admin used for justification is **actually nonlinear** and far more complex than this, and the Admin arbitrarily picked $\psi$ and $\epsilon$ so they'd cancel, giving the equation used.  They say they did that because it would be complex if not impossible.  And anyway, the used the wrong number:  They used $\phi =0.25$ but it [[Berkowitz25tariffMathError|should have been]] $\phi = 0.945$
 
 But they didn't even use it!
 - if it was positive, they [divided by 2](https://youtu.be/j04IAbWCszg?t=719)
@@ -62,5 +62,6 @@ He also hates the use of `*` for  for multiplication, and the fact that they hav
 The [average tariff (weighted by imports) is 41%](https://youtu.be/j04IAbWCszg?t=982).  By their logic ($\psi = 0.25$) , this means that this is equivalent to a [10.25% tax on all imports](https://youtu.be/j04IAbWCszg?t=1011). (although [Trump said Americans won't have higher prices](https://youtu.be/j04IAbWCszg?t=1030) but China, etc. will).
 #### Also
 - Is this why Trump's tariff math is such garbage?  [[Schasfoort25tariffChaosSense|Schasfoort25: Why Trump's tariff chaos actually makes sense (big picture)]] 
+- [[Berkowitz25tariffMathError]]: the 4X error on the wrong equation.
 ___
 %% end Obsidian Notes %%

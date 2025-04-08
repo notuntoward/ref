@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-04-07T08:23:49-07:00
+modified date: 2025-04-07T12:32:44-07:00
 tags:
   - politics
   - polling
@@ -156,6 +156,12 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 # Campaign Message Ideas
 ## Attacks
 - [[Politics/Political Causality/US Elections 2024.md#Polarization Enhancement Your fellow R is evil (algorithmic)|Polarization Enhancement: Your fellow R is evil (algorithmic) ^q98mss]]
+### Tariffs: he and the Rs are not on your side
+- Tariffs are aimed at YOU
+	- the lies: these are reciprocal, fighting back against other countries's unfair tariffs
+	- the true: equations asked, how much do we have to raise taxes on consumers to force them to stop buying
+	- and ven these equations were botched, due to Trump & Co's incompetence
+- R politicians knew this was BS, but were afraid of Trump, wanted to bigger careers, and went along, even praised Trump!
 ### Billionaire Buddies
 #### Advisors behind Tariffs and their richguyness
 - Stephen Miran
