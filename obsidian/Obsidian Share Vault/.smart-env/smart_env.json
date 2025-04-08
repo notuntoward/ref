@@ -24,7 +24,8 @@
   "folder_exclusions": "smart-chats, Merged RAG Political Sources",
   "smart_view_filter": {
     "render_markdown": true,
-    "show_full_path": false
+    "show_full_path": false,
+    "results_limit": "20"
   },
   "excluded_headings": "",
   "smart_chats_folder": "smart-chats",
@@ -41,6 +42,8 @@
     }
   },
   "smart_notices": {
-    "muted": {}
+    "muted": {
+      "done_import": true
+    }
   }
 }
