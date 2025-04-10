@@ -1,13 +1,13 @@
 ---
 created date: 2025-04-08T15:27:16-07:00
-modified date: 2025-04-08T15:40:08-07:00
+modified date: 2025-04-10T14:44:53-07:00
 ---
 # Senior Optimization Data Science Role - Take-Home Challenge
 
 We've designed this challenge to give you an opportunity to showcase your technical skills and optimization modeling in a realistic scenario that aligns with our work. Here are the details:
 
 ## Challenge Overview
-You'll develop an optimization model for trading day-ahead (DA) versus real-time (RT) markets for a renewable generation asset (Wind). The output of the model is a ==single bid and offer price and quantity pair (PQ pair) for each hour==. The model should focus on the relationship between DA/RT price spreads across the day and identify opportunities for arbitrage and risk management. We've provided code to generate synthetic data including Locational Marginal Prices (LMP) and wind generation values that will form the foundatio=n of your optimization strategy.
+You'll develop an optimization model for trading day-ahead (DA) versus real-time (RT) markets for a renewable generation asset (Wind). The output of the model is a ==single bid and offer price and quantity pair (PQ pair) for each hour==. The model should focus on the relationship between DA/RT price spreads across the day and identify opportunities for arbitrage and risk management. We've provided code to generate synthetic data including Locational Marginal Prices (LMP) and wind generation values that will form the foundation of your optimization strategy.
 
 ## Market Clearing and Settlement
 
