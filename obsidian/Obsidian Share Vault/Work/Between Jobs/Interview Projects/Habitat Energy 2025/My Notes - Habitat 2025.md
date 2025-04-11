@@ -1,6 +1,6 @@
 ---
 created date: 2025-04-08T15:28:20-07:00
-modified date: 2025-04-10T09:54:11-07:00
+modified date: 2025-04-10T17:24:06-07:00
 ---
 # Definitions
 ## ERCOT
@@ -15,3 +15,8 @@ Use ERCOT definitions, although the description doesn't say so
 - should 
 	- consider relationship between DA/RT price spreads across the day 
 	- identify opportunities for arbitrage and risk management
+
+# Problem statement problems
+- seems to have flipped the bid and offer clearing conditions
+- the revenue calcs are normal, though
+- if put a do_as_stated boolean into the revenue calculator
