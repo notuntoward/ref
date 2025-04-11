@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-04-07T12:32:44-07:00
+modified date: 2025-04-11T09:29:04-07:00
 tags:
   - politics
   - polling
@@ -40,8 +40,6 @@ tags:
 - in Dawson23cognitiveAbilityVotingEU the UK higher cog. voters were more likely to vote remain during Brexit. Authors speculate that lower cog. voters are vulnerable to misinformation
 - Trump was great at it: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 - People like Bannon are probably happy with their transparently dumb arguments: [[Sartre44antisemiteJew|Sartre44: Anti-semite and jew]] 
-
-
 ## The Great Trump
 Trump is really the best president ever.
 ## People forgot how bad Trump was
@@ -97,6 +95,7 @@ I couldn't hear much, but I think the first speaker started talking about Native
 - [[Schasfoort25tariffChaosSense|Schasfoort25: Why Trump's tariff chaos actually makes sense (big picture)]] 
 - [[Cohn25econRiskRepubs|Cohn25: A risk like no other for Republicans]]: 40% of voters switching to Trump in 2024 listed econ & Tariffs as most imp. features.
 - [[Parker25trumpTariffEq|Parker25: Explaining the Trump Tariff Equation]]: how he came up with it.
+- Econ and costs are best Trump attack: [[Kessler25noiseTrumpChaosPoll|Kessler25noiseTrumpChaosPoll]] 
 ### Postmaterialism: when a bad economy matters less
 Both R's and D's vote less on economic issues and more on values: 
 - [[Lowrey24RiseUnionRight|Lowrey24: The Rise of the Union Right]] 
@@ -105,6 +104,7 @@ Both R's and D's vote less on economic issues and more on values:
 - 2X more voters prioritized immigration than abortion: [[Ponnuru25learnDemsDKborder|Ponnuru25: What Democrats can learn from Denmark’s left-leaning border hawks]] 
 - D's heavily lost Hispanics on the US-Mexico border: [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
 - I kind of loss of control of borders, increasing insecurity which in general, helped Trump: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
+- Mass immigrant deportation more popular than Trump himself: [[Kessler25noiseTrumpChaosPoll|Kessler25noiseTrumpChaosPoll]] 
 ## US Culture
 ## Random Bad Luck
 ## Anti-Incumbency Cycle
@@ -113,7 +113,7 @@ Both R's and D's vote less on economic issues and more on values:
 ## Trump is what the People Wanted
 - yes, they wanted to feel in control and better about themselves: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 	- [ ] @ find empirical evidence for or against this idea
-
+	- yes, e.g. mass immigrant deportation more popular than Trump himself: [[Kessler25noiseTrumpChaosPoll|Kessler25noiseTrumpChaosPoll]] 
 ## Global Trend
 - COVID + post-COVID inflation wiped out incumbents everywhere: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 ## Loss of trust in experts, institutions
@@ -195,7 +195,7 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 	- he's actually for Elon Musk, the richest guy in the world
 	- [ ] ? I'm sure this has been thought of, but how to reach the right audience and would it work?  Do a search on this
 - [[Atrioc25cannotExplainBitcoinGrift|Atrioc25: I Truly Cannot Explain This]]: bitcoin corruption, Trump, Trump family, (Musk too, I would guess, but don't have the details)
-- 
+- [[Kessler25noiseTrumpChaosPoll|Kessler25: Breaking Through the Noise on Trump’s Chaotic First Two Months]]: Musk is "box office poison"
 # Questions
 ## How to get and keep attention
 - the two axes of clickbait and A/B B testing: [[Muller21ClickbaitUnreasEffect|Muller21: Clickbait is Unreasonably Effective]] 
@@ -256,6 +256,7 @@ Just more predictor variables for various things. Things similar to education, w
 - [[Evans24techSplinterCulturalCtrl]]
 - [[Rampell25genZmenLoveTrump]]
 - Moderate candidates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]]
+- 14% of Trump voters might be movable [[Kessler25noiseTrumpChaosPoll]]
 ### Polarization Enhancement: Your fellow R is evil (algorithmic)
 - For details & perplexity-derived evidence of implementability see Blake25infightMAGA
 - Moderates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]] 
@@ -272,6 +273,7 @@ Will the Rs ever pay attention to evidence?
 - But Biden had [[Boak23presToutsBidenomics|paradoxically terrible]] total-nation econ ratings, so Ds deluded too?
 - KGB guys says impossible:  [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 - [[Cohn25econRiskRepubs|Cohn25: A risk like no other for Republicans]] : bad trump econ ratings, cracks in Senate Rs
+- 14% of Trump voters might be movable [[Kessler25noiseTrumpChaosPoll]]
 # Predictive Models and Analysis Techniques
 
 - market sentiment indexes predicted by economic variables (Weber24implicitCoordInflateShock).  Could be *voter* sentiment predicted by other variables
@@ -424,6 +426,9 @@ Gaps in public perception of where Trump is spending his time vs. what people th
 e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is the biggest mismatch]].  Also fuse with issue importance, media coverage, etc., for finding promising attack vectors, and demographic factors indicating if the gaps occur in the population of voters that need persuading.
 # Signs of Hope
 - [[Cohn25econRiskRepubs|Cohn25: A risk like no other for Rs]] : Trump seen bad on econ, small 2024 wind, likely D mid-term wins
+- 14% of Trump voters are movable?: [[Kessler25noiseTrumpChaosPoll|Kessler25noiseTrumpChaosPoll]] 
+	- best messages:  prices and econ, gov't cut safety risk , digital privacy, tariffs
+	- these were things that reduced Trump approval: vote change not tested
 ## Success Stories: Recent Authoritarian Takedowns
 - Poland
 	- [[Gora23polandEndRightWing|Gora23: Elections in Poland Bring the End of Right-wing Populist Rule - Brexit Institute]] 
@@ -458,4 +463,5 @@ e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is t
 - MorningConsult (same as Bright Data?)
 - expected margin given district fundamentals: [[Jain25winsReplaceDB|Jain25: Full Wins Above Replacement (WAR) Database]] 
 - [[BrightLineWatch25democracyRrsrchOrg|BrightLineWatch25: Bright Line Watch]] 
+- [Third Way](https://www.thirdway.org/): semi-democratic polling
 
