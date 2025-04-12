@@ -1,6 +1,6 @@
 ---
 created date: 2025-04-08T15:28:20-07:00
-modified date: 2025-04-11T18:12:15-07:00
+modified date: 2025-04-12T13:51:29-07:00
 ---
 # Definitions
 ## ERCOT
@@ -27,9 +27,12 @@ Use ERCOT definitions, although the description doesn't say so
 	- [ ] inits from optimization of with mean forecasts
 	- [ ] lims hard limits, like zeros, max price, solutions at extreme values
 - [ ] comprehension of algorithms
-	- [ ] what is k
+	- [x] what is k (clear smoother: I renamed it)
 	- [ ] logic for variance penalty
 	- [ ] what kind of algorithm is running
+- [x] high wind power assoc. with neg. RT price? (according to forecasts)
+	- answer (yes)
+	- @ justifies hedging on DA, when you'd be forced to pay for wind power instead of profit from it.
 - [ ] Whatever else is in the problem 
 - [ ] Clean gunk out of code
 - [ ] add tests (maybe delay until have final idea)
