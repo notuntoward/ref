@@ -1,6 +1,6 @@
 ---
 created date: 2025-04-08T15:28:20-07:00
-modified date: 2025-04-12T22:09:26-07:00
+modified date: 2025-04-13T13:45:33-07:00
 ---
 # Definitions
 ## ERCOT
@@ -15,7 +15,6 @@ Use ERCOT definitions, although the description doesn't say so
 - should 
 	- consider relationship between DA/RT price spreads across the day 
 	- identify opportunities for arbitrage and risk management
-
 # Problem statement problems
 - seems to have flipped the bid and offer clearing conditions
 - the revenue calcs are normal, though
@@ -37,6 +36,14 @@ Use ERCOT definitions, although the description doesn't say so
 	- This is [semi-deviation](<Work/Between Jobs/Interview Projects/Habitat Energy 2025/My Notes - Habitat 2025.md#^92yr >)
 - [ ] Clean gunk out of code
 - [ ] add tests (maybe delay until have final idea)
+- [x] Does my code to stochastic convex optimization
+	- Yes: [[My code does convex stochastic optimization]]
+		- stochastic b/c of scenarios
+		- convexity
+			- The risk penalty terms (variance or semi-deviation) are **quadratic convex functions**
+			-  Variable bounds (e.g., `da_offer_vol ≥ 0`) define a convex domain.
+			- Linear/quadratic constraints preserve convexity
+		- Ipopt solver is designed for **nonlinear convex optimization**
 - [gurobi not free, but it could have done quadratic](https://www.gurobi.com/solutions/licensing/)
 - [ ] risk penalties [[Risk Reduction strategies]]
 	- [How Does Risk Differ From Downside Risk?](https://www.investopedia.com/terms/d/downsiderisk.asp)
@@ -86,6 +93,19 @@ Use ERCOT definitions, although the description doesn't say so
 	- normally, might make sense b/c hard to get timing right of huge price spices, but this would give general awareness to all hours that one might be coming.
 	- a little pointless in this case b/c no actual prices, etc. to see if it works.
 	- [ ] ? adds yet another tunable param, b/c I gave it a multiplier.  Does that make sense, though?  If price forecasts are right?
+## Weakesses
+- [[Limitations IPopt with Pyomo]]
+	- limitations are really with IPOPT solver
+	- ipopt not good at poorly scaled problems
+		- common in stochastic programs due to disparate parameter magnitudes across scenarios (I have this)
+			- [x] DO I see the indicator of this:  "Search Direction is becoming Too Small"?
+				- try [[pyomo tee=True]] with [`print_level=5`](<Work/Between Jobs/Interview Projects/Habitat Energy 2025/My Ipopt Solver Options Explained.md#^h1gd >)
+					- didn't see problems
+		- [x] `u_strategy=adaptive`: said to be good for poorly scaled
+	- IPOPT prioritizes optimality conditions over returning the "best" feasible solution, which can leave users without actionable results
+	- [[Work/Between Jobs/Interview Projects/Habitat Energy 2025/Limitations IPopt with Pyomo.md#Mixed-Integer Optimization |Mixed-Integer Optimization]] not done by ipopt, 
+		- can nonconvex problems
+		- cannot do non-smooth
 ## Future
 - [ ] points in over Perplex and AI statements
 - [ ] ask them what they would do in addition
@@ -102,3 +122,7 @@ Use ERCOT definitions, although the description doesn't say so
 - [ ] make a literal "package"?
 - [ ] more error checking, docs (wait until finished)
 - [ ] logging?  (wait until finished)
+- [ ] Better optimization
+	- [ ] What aren't people doing in stochastic optimization
+	- My fascination with [[Contextual Optimization]]
+	- [ ] What are people doing with scenario tree reduction these days?
