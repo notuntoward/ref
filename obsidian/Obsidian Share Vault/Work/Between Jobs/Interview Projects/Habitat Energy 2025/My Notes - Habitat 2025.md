@@ -82,6 +82,10 @@ Use ERCOT definitions, although the description doesn't say so
 	
 - [ ] optuna hyperparm opt for params, once have real forecasts, prices
 - [ ] would expect better RT forecasts, as delivery time approaches, but can't compute that here.
+- [ ] setting optimizations once over the 24 hour period instead of for every hour
+	- normally, might make sense b/c hard to get timing right of huge price spices, but this would give general awareness to all hours that one might be coming.
+	- a little pointless in this case b/c no actual prices, etc. to see if it works.
+	- [ ] ? adds yet another tunable param, b/c I gave it a multiplier.  Does that make sense, though?  If price forecasts are right?
 ## Future
 - [ ] points in over Perplex and AI statements
 - [ ] ask them what they would do in addition
