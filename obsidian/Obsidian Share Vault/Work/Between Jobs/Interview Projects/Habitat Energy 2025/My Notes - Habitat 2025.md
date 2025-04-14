@@ -1,6 +1,6 @@
 ---
 created date: 2025-04-08T15:28:20-07:00
-modified date: 2025-04-13T16:22:52-07:00
+modified date: 2025-04-14T08:53:18-07:00
 ---
 # Definitions
 ## ERCOT
@@ -36,7 +36,7 @@ Use ERCOT definitions, although the description doesn't say so
 	- This is [semi-deviation](<Work/Between Jobs/Interview Projects/Habitat Energy 2025/My Notes - Habitat 2025.md#^92yr >)
 - [ ] Clean gunk out of code
 - [ ] add tests (maybe delay until have final idea)
-- [x] Does my code to stochastic convex optimization
+- [x] Does my code do 2-stage stochastic convex optimization?
 	- Yes: [[My code does non-linear, two-stage convex stochastic optimization]]
 		- **stochastic** b/c of scenarios
 		- **convex**
@@ -47,13 +47,14 @@ Use ERCOT definitions, although the description doesn't say so
 			- clearing probs
 			- risk penalties
 		- t**wo-stage**: [[Work/Between Jobs/Interview Projects/Habitat Energy 2025/My code does non-linear, two-stage convex stochastic optimization.md#Two-Stage Structure Explained |Two-Stage Structure Explained]]
-			- stae 1: bids/offers
+			- stage 1: bids/offers
 			- stage 2: revenue calcs
 	- Ipopt solver is designed for **nonlinear convex optimization**
 - [gurobi not free, but it could have done quadratic](https://www.gurobi.com/solutions/licensing/)
 - [ ] risk penalties [[Risk Reduction strategies]]
 	- [How Does Risk Differ From Downside Risk?](https://www.investopedia.com/terms/d/downsiderisk.asp)
-		- risk is is double sided variablity
+		- risk is is double sided variability
+		- 
 			- up and down
 			- corelated with level of return, in general
 		- downside risk is just the risk of loss
