@@ -1,6 +1,6 @@
 ---
 created date: 2025-04-08T15:28:20-07:00
-modified date: 2025-04-13T13:45:33-07:00
+modified date: 2025-04-13T16:22:52-07:00
 ---
 # Definitions
 ## ERCOT
@@ -37,13 +37,19 @@ Use ERCOT definitions, although the description doesn't say so
 - [ ] Clean gunk out of code
 - [ ] add tests (maybe delay until have final idea)
 - [x] Does my code to stochastic convex optimization
-	- Yes: [[My code does convex stochastic optimization]]
-		- stochastic b/c of scenarios
-		- convexity
+	- Yes: [[My code does non-linear, two-stage convex stochastic optimization]]
+		- **stochastic** b/c of scenarios
+		- **convex**
 			- The risk penalty terms (variance or semi-deviation) are **quadratic convex functions**
 			-  Variable bounds (e.g., `da_offer_vol ≥ 0`) define a convex domain.
 			- Linear/quadratic constraints preserve convexity
-		- Ipopt solver is designed for **nonlinear convex optimization**
+		- **nonlinear**
+			- clearing probs
+			- risk penalties
+		- t**wo-stage**: [[Work/Between Jobs/Interview Projects/Habitat Energy 2025/My code does non-linear, two-stage convex stochastic optimization.md#Two-Stage Structure Explained |Two-Stage Structure Explained]]
+			- stae 1: bids/offers
+			- stage 2: revenue calcs
+	- Ipopt solver is designed for **nonlinear convex optimization**
 - [gurobi not free, but it could have done quadratic](https://www.gurobi.com/solutions/licensing/)
 - [ ] risk penalties [[Risk Reduction strategies]]
 	- [How Does Risk Differ From Downside Risk?](https://www.investopedia.com/terms/d/downsiderisk.asp)
