@@ -1,6 +1,6 @@
 ---
 created date: 2025-04-08T15:27:16-07:00
-modified date: 2025-04-10T14:44:53-07:00
+modified date: 2025-04-14T15:40:46-07:00
 ---
 # Senior Optimization Data Science Role - Take-Home Challenge
 
@@ -19,8 +19,9 @@ For a given hour, market settlement follows these rules:
 - **Wind Revenue** = Wind Production Power × RT Price
 
 ### Clearing Conditions
-- An **offer** clears if the DA offer price is **greater than or equal to** the DA cleared price
-- A **bid** clears if the DA bid price is **less than or equal to** the DA cleared price
+==Backwards?==
+- An **offer** clears if the DA offer price is ==**greater than or equal to** ==the DA cleared price
+- A **bid** clears if the DA bid price is ==**less than or equal to** ==the DA cleared price
 
 ### Total Revenue
 Total Revenue = Settled Offer Revenue + Settled Bid Revenue + Wind Revenue
