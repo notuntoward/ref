@@ -1,6 +1,6 @@
 ---
 created date: 2025-04-08T15:28:20-07:00
-modified date: 2025-04-14T14:53:30-07:00
+modified date: 2025-04-15T11:55:54-07:00
 ---
 # Definitions
 ## ERCOT
@@ -114,6 +114,12 @@ Use ERCOT definitions, although the description doesn't say so
 		- can nonconvex problems
 		- cannot do non-smooth
 ## Future
+- [ ] could have optimized over many random forecast scenarios, but that stationarity is unrealistic
+	- and in any case, can't tune to minimize the loss due to forecast errors without the real prices
+		- yak shaving: since can assume forecasts are well calibrated, could do something like doing many tuning over many single realizations considered to be the "trutn"
+	- side note: contextual optimization for tuning forecasts (and optimization?)
+		- assuming that forecasts come from a model that can be trained with something like backprop, so gradients are followable
+			- unlike boosted models like LGBM, which are currently the best for this type of forecasting (include reference?)
 - [ ] points in over Perplex and AI statements
 - [ ] ask them what they would do in addition
 - could increase risk penalty vs. horizon
