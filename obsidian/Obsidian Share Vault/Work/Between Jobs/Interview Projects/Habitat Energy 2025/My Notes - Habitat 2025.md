@@ -1,6 +1,6 @@
 ---
 created date: 2025-04-08T15:28:20-07:00
-modified date: 2025-04-15T11:55:54-07:00
+modified date: 2025-04-15T16:05:30-07:00
 ---
 # Definitions
 ## ERCOT
