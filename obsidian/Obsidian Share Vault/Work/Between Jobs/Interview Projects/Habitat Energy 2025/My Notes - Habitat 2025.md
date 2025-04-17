@@ -1,6 +1,6 @@
 ---
 created date: 2025-04-08T15:28:20-07:00
-modified date: 2025-04-15T16:05:30-07:00
+modified date: 2025-04-16T19:31:33-07:00
 ---
 # Definitions
 ## ERCOT
@@ -139,3 +139,16 @@ Use ERCOT definitions, although the description doesn't say so
 	- [ ] What aren't people doing in stochastic optimization
 	- My fascination with [[Contextual Optimization]]
 	- [ ] What are people doing with scenario tree reduction these days?
+# Why is Deterministic Better?
+## Quick Lit Search
+Perplexity: [[Prob Forecast Use Virtual Bidding]]
+
+- [ ] [[Merrick22sharpeVolatElekMktVirtTrade|Merrick22: Using volatility forecasts to reduce risk and increase returns]] 
+- [ ] [[Li22mlVirtBidElecMktEfficiency|Li22: Machine Learning-Driven Virtual Bidding With Electricity Market Efficiency Analysis]] 
+- [ ] [[Gao20lelecMktProbFrcstStochProg|Gao20: Making money in energy markets: Probabilistic forecasting and stochastic programming paradigms]] 
+- [ ] [[Wang24dpElecMktPriceFrcstVirtBid|Wang24: Deep learning-based electricity price forecast for virtual bidding in wholesale electricity market]] 
+- [ ] [[Fang23elecMktvirtBidBrownian|Fang23: Electricity Virtual Bidding Strategy Via Entropy-Regularized Stochastic Control Method]] 
+- [ ] [[Laws23priceGenElecMktBidEval|Laws23: Stochastic price generation for evaluating wholesale electricity market bidding strategies]] 
+- [ ] [[Mones23stochOptConvergBid|Mones23: A general stochastic optimization framework for convergence bidding]] 
+- [ ] [[Backus24probFrcstSTtradeOpt|Backus24: Probabilistic price forecasts for short-term trade optimization]] 
+- [ ] [[Maciejowska19DayAheadVsIntraday|Maciejowska19: Day-Ahead vs. Intraday—Forecasting the Price Spread to Maximize Economic Benefits]] 
