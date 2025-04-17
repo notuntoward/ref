@@ -1,6 +1,6 @@
 ---
 created date: 2025-04-08T15:28:20-07:00
-modified date: 2025-04-16T19:32:58-07:00
+modified date: 2025-04-17T10:02:14-07:00
 ---
 # Definitions
 ## ERCOT
@@ -100,6 +100,8 @@ Use ERCOT definitions, although the description doesn't say so
 	- normally, might make sense b/c hard to get timing right of huge price spices, but this would give general awareness to all hours that one might be coming.
 	- a little pointless in this case b/c no actual prices, etc. to see if it works.
 	- [ ] ? adds yet another tunable param, b/c I gave it a multiplier.  Does that make sense, though?  If price forecasts are right?
+	- [ ] Mention that scenarios can be used inside the optimization because they're small because there's no storage and they should be used because they're correlated according to the problem statement and therefore quantiles by themselves aren't adequate.
+	- [ ] 
 ## Weakesses
 - [[Limitations IPopt with Pyomo]]
 	- limitations are really with IPOPT solver
@@ -141,14 +143,23 @@ Use ERCOT definitions, although the description doesn't say so
 	- [ ] What are people doing with scenario tree reduction these days?
 # Why is Deterministic Better?
 ## Quick Lit Search
-Perplexity: [[Prob Forecast Use Virtual Bidding]]
+Links found by Perplexity: [[Prob Forecast Use Virtual Bidding]]
 
-- [ ] [[Merrick22sharpeVolatElekMktVirtTrade|Merrick22: Using volatility forecasts to reduce risk and increase returns]] 
-- [ ] [[Li22mlVirtBidElecMktEfficiency|Li22: Machine Learning-Driven Virtual Bidding With Electricity Market Efficiency Analysis]] 
-- [ ] [[Gao20lelecMktProbFrcstStochProg|Gao20: Making money in energy markets: Probabilistic forecasting and stochastic programming paradigms]] 
-- [ ] [[Wang24dpElecMktPriceFrcstVirtBid|Wang24: Deep learning-based electricity price forecast for virtual bidding in wholesale electricity market]] 
-- [ ] [[Fang23elecMktvirtBidBrownian|Fang23: Electricity Virtual Bidding Strategy Via Entropy-Regularized Stochastic Control Method]] 
-- [ ] [[Laws23priceGenElecMktBidEval|Laws23: Stochastic price generation for evaluating wholesale electricity market bidding strategies]] 
-- [ ] [[Mones23stochOptConvergBid|Mones23: A general stochastic optimization framework for convergence bidding]] 
-- [ ] [[Backus24probFrcstSTtradeOpt|Backus24: Probabilistic price forecasts for short-term trade optimization]] 
 - [ ] [[Maciejowska19DayAheadVsIntraday|Maciejowska19: Day-Ahead vs. Intraday—Forecasting the Price Spread to Maximize Economic Benefits]] 
+	- referenced lot, I thought
+- [ ] [[Backus24probFrcstSTtradeOpt|Backus24: Probabilistic price forecasts for short-term trade optimization]] 
+	- easy
+- [ ] [[Merrick22sharpeVolatElekMktVirtTrade|Merrick22: Using volatility forecasts to reduce risk and increase returns]] 
+	- easy
+- [ ] [[Fang23elecMktvirtBidBrownian|Fang23: Electricity Virtual Bidding Strategy Via Entropy-Regularized Stochastic Control Method]] 
+	- simple spread based
+- [ ] [[Li22mlVirtBidElecMktEfficiency|Li22: Machine Learning-Driven Virtual Bidding With Electricity Market Efficiency Analysis]] 
+	- spread based
+- [ ] [[Wang24dpElecMktPriceFrcstVirtBid|Wang24: Deep learning-based electricity price forecast for virtual bidding in wholesale electricity market]] 
+	- mostly price frcst, but best strategy is trade on peak hour!
+- [ ] [[Gao20lelecMktProbFrcstStochProg|Gao20: Making money in energy markets: Probabilistic forecasting and stochastic programming paradigms]] 
+	- sampling strategy
+- [ ] [[Mones23stochOptConvergBid|Mones23: A general stochastic optimization framework for convergence bidding]] 
+	- seems relevant
+- [ ] [[Laws23priceGenElecMktBidEval|Laws23: Stochastic price generation for evaluating wholesale electricity market bidding strategies]] 
+	- probably good but a lot about SDEs

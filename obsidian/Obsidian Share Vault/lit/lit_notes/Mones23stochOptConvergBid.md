@@ -12,12 +12,14 @@ citekey: Mones23stochOptConvergBid
 ZoteroTags: 
 ZoteroCollections:
   - forecast_elec_mkt_price
-created date: 4/16/2025, 5:45:59 PM
-modified date: 2025-04-16T17:48:04-07:00
+created date: 4/16/2025, 7:50:08 PM
+modified date: 2025-04-16T19:50:45-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/M372REJ6)  | [**URL**](https://ieeexplore.ieee.org/abstract/document/10041754/) | **[[Mones23stochOptConvergBid.pdf|PDF]]**
->> **Author**:: Mones, Letif,  Lovett, Sean
+>> **Abstract**
+> Convergence (virtual) bidding is an important part  of two-settlement electric power markets as it can effectively  reduce discrepancies between the day-ahead and real-time mar- kets. Consequently, there is extensive research into the bidding  strategies of virtual participants aiming to obtain optimal bids  to submit to the day-ahead market. In this paper, we introduce a  price-based general stochastic optimization framework to obtain  optimal convergence bid curves. Within this framework, we  develop a computationally tractable linear programming-based  optimization model, which produces bid prices and volumes  simultaneously. We also show that different approximations and  simpliﬁcations in the general model lead naturally to state-of-the- art convergence bidding approaches, such as self-scheduling and  opportunistic approaches. Our general framework also provides  a straightforward way to compare the performance of these  models, which is demonstrated by numerical experiments on the  California (CAISO) market.
+> > **Author**:: Mones, Letif,  Lovett, Sean
 > **Title**:: "A general stochastic optimization framework for convergence bidding"
 > **Date**:: 2023
 > **Citekey**:: Mones23stochOptConvergBid
