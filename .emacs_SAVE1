@@ -3855,8 +3855,6 @@ command options."
 
 ;; (when (setq conda_exe (sdo/find-exec "thisIsNotThere" "Needed for most python packages"))
 
-;; **** virtual envs for uv
-
 ;; pyenv-mode: Manage Python versions via pyenv
 (use-package pyenv-mode
   :ensure t
@@ -3871,27 +3869,25 @@ command options."
   :ensure t
   :hook (after-init . envrc-global-mode))
 
-;; **** conda
-(when (setq conda_exe (sdo/find-exec "conda" "Needed for most python packages"))
-  (setq conda-env-home-directory (expand-file-name
-                                  (concat (file-name-directory conda_exe)
-                                          "..")))
-  (use-package conda
-    :defer t
-    :config
-    (custom-set-variables
-     '(conda-anaconda-home conda-env-home-directory))
+;; (when (setq conda_exe (sdo/find-exec "conda" "Needed for most python packages"))
+;;   (setq conda-env-home-directory (expand-file-name
+;;                                   (concat (file-name-directory conda_exe)
+;;                                           "..")))
+;;   (use-package conda
+;;     :defer t
+;;     :config
+;;     (custom-set-variables
+;;      '(conda-anaconda-home conda-env-home-directory))
     
-    (conda-env-initialize-interactive-shells)
-    (conda-env-initialize-eshell)
-    (conda-env-activate "base"))
+;;     (conda-env-initialize-interactive-shells)
+;;     (conda-env-initialize-eshell)
+;;     (conda-env-activate "base"))
 
   (setq autopep8bin (sdo/find-exec "autopep8" "Needed by py-autopep8 autofix-on-save & elpy"))
   (when autopep8bin
     (use-package py-autopep8
       :config
       (setq py-autopep8-options '("--max-line-length=100" "--aggressive"))))
-  
 ;; Don't autoformat: it was missing up my checkins to open-source GitHub repos
 ;;      :hook (python-mode . py-autopep8-mode)))
 
