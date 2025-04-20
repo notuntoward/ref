@@ -3857,16 +3857,19 @@ command options."
 
 ;; **** virtual envs for uv
 
-;; pyenv-mode: Manage Python versions via pyenv
-(use-package pyenv-mode
-  :ensure t
-  :init
-  (add-to-list 'exec-path "~/.pyenv/shims")
-  (setenv "WORKON_HOME" "~/.pyenv/versions/")
-  :config
-  (pyenv-mode))
+;; TODO: decide between direnv, envrc or reading and also how to get the emacs
+;; modeline to show the venv name, like it currently does for conda environments.
+;; related:
+;; https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221XEWikA_AUy-zHhDHfGDuEKgEcPbfPcjH%22%5D,%22action%22:%22open%22,%22userId%22:%22106663353829707201139%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing
 
-;; envrc: Buffer-local direnv integration (requires direnv installed)
+;; requires direnv bin installed, said to be more general the envrc
+(use-package direnv 
+  :ensure t  ; Automatically install if not present
+  :diminish direnv-mode ; Optional: Makes the mode lighter in the mode-line display
+  :config
+  (direnv-mode 1)) ; Enable the global minor mode
+
+;; envrc: Buffer-local direnv integration (doesn't require direnv bin installed)
 (use-package envrc
   :ensure t
   :hook (after-init . envrc-global-mode))
