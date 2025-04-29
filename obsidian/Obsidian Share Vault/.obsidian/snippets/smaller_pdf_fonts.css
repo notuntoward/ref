@@ -1,0 +1,7 @@
+/* exported pdf documents have giant fonts.  This makes them smaller */
+
+@media print {
+  body {
+    --font-text-size: 11pt !important;
+  }
+}

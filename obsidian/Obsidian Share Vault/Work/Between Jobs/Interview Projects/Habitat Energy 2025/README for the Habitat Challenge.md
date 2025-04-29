@@ -1,6 +1,6 @@
 ---
 created date: 2025-04-25T14:13:16-07:00
-modified date: 2025-04-28T17:21:32-07:00
+modified date: 2025-04-29T13:44:39-07:00
 ---
 
 This explains the take-home challenge for Habitat Energy: what it does, how well it did it, how to install it and how to test it.  The computational code is in a single file: `./src/trading_optimizer/optimizer.py`. The notebooks used run it, and to generate parts of this report, are in `./notebooks`
@@ -62,17 +62,18 @@ For each hour, rather than picking decision variables that maximize $E[R]$, the 
 where $RP(R)$ is some penalty function that increases with revenue risk, and $\lambda>=0$ is a weighting coefficient.  At the optimum decision variable choice, $J$ reaches its maximum, $J^*$.
 
 ### Revenue Variance Penalty
-In many situations, the risk is uncertainty of information, in this case, of forecasts and specifically, in the distribution of revenues predicted by the forecasts, given the decision variable choice.  This can be summarized by variance: $$Var(R) = \frac{1}{N} \sum_{i=1}^{N} (R_i - E[R])^2$$
+In many situations, the risk is uncertainty of information, in this case, of forecasts and specifically, in the distribution of revenues predicted by the forecasts, given a decision variable choice.  This can be summarized by variance: $$Var(R) = \frac{1}{N} \sum_{i=1}^{N} (R_i - E[R])^2$$
 Optimizing over the variance risk penalty is relatively simple; a weakness is that it penalizes generic uncertainty -- either of making less money than expected or of more money.  We're interested specifically in the risk of *losing* money.
 ### **Revenue Semi-Variance** Penalty:
 
-The semi-variance penalty responds to scenarios where revenues are below expected: where $R < E[R]$. For each scenario, the revenue shortfall, or **downside deviation** is: 
+The semi-variance penalty responds to scenarios where revenues are below expectation: where $R < E[R]$. For each scenario, the revenue shortfall, or **downside deviation** is: 
 $$d_i = \max(0, R_i - E[R])$$
 And for the set of scenarios, the **Semi-Variance** is: $$SemiVar(R) = \frac{1}{N} \sum_{i=1}^{N} d_i^2$$
+An advantage of semi-variance over related alternatives e.g. value at risk (VAR), conditional or not, is ease of implementation.  
 ## Trading Algorithm Optimization
 I wanted to experiment with the [pyomo python optimization library](https://www.pyomo.org/), mainly because I'd heard good things about it from colleagues: it was easy to use, modern, well-maintained, and supported many solver types, some for free.  So again, based on what I'd heard, I chose the free [IPOPT solver](https://coin-or.github.io/Ipopt/).  This [interior point](https://link.springer.com/chapter/10.1007/978-3-319-58356-3_20) software is said to be well-maintained, robustly coded, and capable of non-linear optimization (the market clearing rules in this project are non-linear, as are the decision variable products).  After a couple toy experiments, I stuck with IPOPT, and worked around its limitations.
 ### Market Clearing Rule Probability
-One IPOPT limitation was that it actually could not handle the infinitely sharp non-linearities in the DA clearing rules.  At this point, I could have used binary clearing variables, and switched to a [Mixed Integer Linear Programming](https://epubs.siam.org/doi/abs/10.1137/130915303) approach.  But instead, I used a recommended way around this problem, by using a smoothed, non-linear clearing probability:
+One IPOPT limitation was that it actually could not handle the infinitely sharp non-linearities in the DA clearing rules.  At this point, I could have switched to a [Mixed Integer Linear Programming](https://epubs.siam.org/doi/abs/10.1137/130915303) approach, and used binary clearing variables. But instead, I used a recommended way around this problem: a smoothed, non-linear clearing probability:
 
 $$
 \text{Pclear}(\Delta c) = \frac{1}{1 + \exp(\gamma \cdot \Delta c)}
@@ -87,7 +88,7 @@ A set of example clearing probabilities is shown below:
 
 ![[Work/Between Jobs/Interview Projects/Habitat Energy 2025/attachments/image-3.png]]
 ### Semi-Variance Slack Variables
-It was straight-forward to implement the Revenue Variance Penalty with IPOPT functions, but it turned out that the $max()$ function needed for the semi-variance downside deviation was not available.  However, implementation was again straight-forward with the addition of constrained **semi-deviation slack variables**.  This entailed redefining the shortfall variable, $d_i$, above, as:
+It was straight-forward to implement the Revenue Variance Penalty with IPOPT functions, but it turned out that a $max()$ function needed for the semi-variance downside deviation was not available.  However, implementation was again straight-forward with the addition of constrained **semi-deviation slack variables**.  This entailed redefining the shortfall variable, $d_i$, above, as:
     $$
     d_i \ge E[R] - R_i 
     $$
@@ -101,7 +102,7 @@ $$
 J = \left(\frac{1}{N} \sum_{i=1}^{N} R_i\right) - \lambda_{var} \left(\frac{1}{N} \sum_{i=1}^{N} (R_i - E[R])^2\right) - \lambda_{semi} \left(\frac{1}{N} \sum_{i=1}^{N} d_i^2\right)
 $$
 
-where $\lambda_{var}>=0$ is the variance penalty weight, and $\lambda_{semi} >= 0$ is the semi-deviation penalty weight.  For this project, only one of the variables was set to non-zero at a time.  It would be possible to use both in a way similar to the $l1$ and $l2$ norm complexity penalty weights in [elastic net regression](https://www.tandfonline.com/doi/abs/10.1080/02664763.2020.1787355).  But this option wasn't explored.
+where $\lambda_{var}>=0$ is the variance penalty weight, and $\lambda_{semi} >= 0$ is the semi-deviation penalty weight.  For this project, only one of the variables was set to non-zero at a time.  It would be possible to use both in a way similar to the $l1$ and $l2$ norm complexity penalty weights in [elastic net regression](https://www.tandfonline.com/doi/abs/10.1080/02664763.2020.1787355).  But this wasn't explored.
 
 ### Decision Variable Bounds and Initial Values
 During optimization, the decision variables were bounded, and each needed an initial value.  The manually determined values were:
@@ -115,9 +116,11 @@ During optimization, the decision variables were bounded, and each needed an ini
 | da_bid_vol | 0.0 | 200.0 | 60 |
 | da_bid_price | 22.0 | 58.0 | 38.0 |
 # Evaluation
-In real life, the approach used here would be evaluated with real wind generation and prices, along with their forecasts.  This would be done over years of historical data, with whatever forecast and optimization parameters being tuned on distinct train and dev sets, and then finally tested on a held-out test set.  For this, I would use a hyperparameter tuning package e.g. [optuna](https://optuna.org/).
+In real life, the approach used here would be evaluated with actual wind generation and prices, along with their forecasts.  This would be done over years of historical data, with whatever forecast and optimization parameters being tuned on distinct train and dev sets, and then finally tested on a held-out test set.  For this, I would use a hyperparameter tuning package e.g. [optuna](https://optuna.org/).  A goal for this tuning could be to maximize expected revenue over some long time period, while keeping the probability of catastrophic loss "low."  
 
-In this project, that's not possible, but I can show the results of a demo.  For the demo, I compared the expected total revenue over 24 hours for the cases of:
+What is a "low" probability and a "low" financial loss?  This would have something to do with how much emergency capital the trader can acquire at what cost, regulations, possible arrangements with hedge funds... this is something I would need to look into.
+
+In this project, none of this is possible, but I can show the results of a demo.  For the demo, I compared the expected total revenue over 24 hours for the cases of:
 
 - RT-only operation (only accept RT wind price)
 - DA trading with deterministic forecasts (decisions optimized on the mean of the scenario forecasts, and then evaluated on the same scenario forecasts used for the other cases)
@@ -127,26 +130,26 @@ In this project, that's not possible, but I can show the results of a demo.  For
 
 I set the decision variable bounds and initial values (above) to ensure convergence on all cases, and set the variance and semi-variance penalty weights to $\lambda_{var} = \lambda_{semi}=0.001$.  In practice, you would tune these on real data.  Tuning on many single-day forecast scenario sets might tell you something about performance on that day, but it's very much a "test on train" exercise, so I didn't do it.  This is just a demo.
 ## Semi-Variance Optimization Example
-The example plot below shows the results of a semi-variance optimization run across one day.  At the top is the objective value ($J^*$) -- the semi-variance penalized expected revenue for each hour's optimal decision variables.  Below, on the orange line, is the revenue variance at $J^*$. this is there only for completeness, as $\lambda_{var}=0$ for this run, and it had no effect on the optimization.  The revenue semi-variance (green) did affect the optimization, and it is highest when the price forecast scenarios have the highest downside variance (the forecast scenarios for wind power, DA price and RT price are at the plot bottom).  Regardless of risk, the red line shows that expected revenue at each hour's $J^*$ largely follows forecasted wind generation, with some chips taken out of it by large forecasted negative prices: offered volume (purple) roughly follows wind generation but offered price appears to be more influenced by the DA price.  The relationship between the bid price and volume, and the forecasts is not obvious.
+The example plot below shows the results of a semi-variance optimization run across one day.  At the top is the objective value ($J^*$) -- the semi-variance penalized expected revenue for each hour's optimal decision variables.  Below, on the orange line, is the revenue variance at $J^*$. This is there only for completeness, as $\lambda_{var}=0$ for this run, and it had no effect on the optimization.  The revenue semi-variance (green) did affect the optimization, and it is highest when the price forecast scenarios have the highest downside variance (the forecast scenarios for wind power, DA price and RT price are at the plot bottom).  Regardless of risk, the red line shows that expected revenue at each hour's $J^*$ roughly follows forecasted wind generation, with some chips taken out of it by large forecasted negative prices: offered volume (purple) also follows wind generation (more roughly) but offered price appears to be more influenced by the forecasted DA price.  The relationships the bid price and volume are not obvious.
 
 ![[Work/Between Jobs/Interview Projects/Habitat Energy 2025/attachments/image-13.png]]
 ## Comparison of Trading Strategies
 
-The histograms below, show the expected hourly distributions for the optimization and data input cases demoed here.
+The histograms below show the expected hourly distributions for the optimization and data input cases demoed here.
 
 #### RT-only
-At the top, is the hourly revenue histogram when the trading algorithm is to simply accept the RT price.  This produces the lowest mean hourly price (vertical red line) of all the cases: DA/RT arbitrage appears to be worth it.  The negative prices shown in the scenarios above don't show up in the hourly averages because the hourly mean price is always above zero.  Negative risk would show up if I plotted every scenario, so this is a weakness of these plots.
+At the top, is the hourly revenue histogram for the case when the trading "algorithm" is to simply accept the RT price.  This produces the lowest mean hourly revenue (vertical red line) of all the cases:  DA/RT arbitrage has benefits.  The negative prices shown in the scenario plots above don't show up in the hourly averages below because the hourly mean price is always above zero.  Negative risk would show up if I plotted every scenario, so this is a weakness of these plots.
 #### Deterministic
-In the next plot down, stand-ins for deterministic forecasts were generated by computing the scenario mean for the hour. The average revenue for the day is higher, suggesting that DA/RT arbitrage is worth it, even for this simple forecast.  Note that there are negative hours, and that the variance is high -- when given deterministic forecasts, there's no way for the trading algorithm to assess downside risk.
+In the next plot down, stand-ins for deterministic forecasts were generated by computing the scenario mean for the hour. The average revenue for the day is higher than the RT-only case, suggesting that DA/RT arbitrage is worth it, even for this simple forecast.  Note that there are hours with negative average revenue, and that the revenue variance is high -- when given deterministic forecasts, there's no way for the trading algorithm to assess downside risk.
 
 ![[Work/Between Jobs/Interview Projects/Habitat Energy 2025/attachments/image-14.png]]
 
 #### No Risk Penalty
-It's no surprise that the case with the highest variance of all -- along with the most negative hours -- is the one where DA/RT arbitrage is done on scenario forecast, but with no risk penalty.  This also has the highest expected value, as you would expect on this idealized data.
+It's no surprise that the case with the highest revenue variance of all -- along with the most negative hours -- is the one where DA/RT arbitrage is done on scenario forecasts, but with no risk penalty.  This also has the highest expected value, as you would expect on this idealized data.
 #### Variance Risk Penalty
 This one has the smallest hourly revenue spread, small enough that it has completely avoided negative hours, but since the penalty is equally sensitive to extrema above the mean, the result is that high profits are also missed, and this gives the variance penalty the lowest daily average revenue of the DA/RT arbitrage results.
 #### Semi-Variance Penalty
-There is one slightly negative value, but more very positive hours than with the variance penalty -- the daily average is better.
+For the semi-variance penalty, there is one slightly negative value, but more very positive hours than with the variance penalty -- the daily average is better.
 # Conclusions
 
 | Statistic           | RT-only | Deterministic | No Risk Penalty | Variance Penalty | Semi-Variance Penalty |
@@ -159,7 +162,7 @@ There is one slightly negative value, but more very positive hours than with the
 | Mean                |    1475 |          2209 |            3216 |             1945 |                  2526 |
 | Std. Dev.           |     624 |          2964 |            3571 |              823 |                  1394 |
 | Total               |   35392 |         53018 |           77175 |            46670 |                 60635 |
-Summarized in the table above, the highest total revenue over the day is achieved with no **Risk Risk Penalty** and this is also the riskiest method.  The least apparently risky of all is surprisingly, simply doing **RT-only**, although this is partly an artifact of the hourly histograms.  **Deterministic** forecasts are quite good for such a simple approach, but they have the second highest risk -- much higher than that of the **Semi-Variance** penalty, which is also the second most profitable.  Finally, the **Variance Penalty** has quite low risk but mediocre total revenue.
+Summarized in the table above, the highest total revenue over the day is achieved with no **Risk Risk Penalty** and this is also the riskiest method. The least apparently risky of all is surprisingly, simply doing **RT-only**, although this is partly an artifact of the hourly averaging.  **Deterministic** forecasts are quite good for such a simple approach, but they have the second highest risk -- much higher than that of the **Semi-Variance** penalty, which is also the second most profitable.  Finally, the **Variance Penalty** has quite low risk but mediocre total revenue.
 
 On this data, with these settings, the **Semi-Variance** penalty may be the happy medium.  But its true merit can only be confirmed on real data, and a thorough experimental design that real data would make possible.
 
