@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-04-11T09:29:04-07:00
+modified date: 2025-04-28T19:34:53-07:00
 tags:
   - politics
   - polling
@@ -15,39 +15,42 @@ tags:
 	- note: [fear can turn liberals into conservatives and safety can turn conservatives into liberals](https://share.evernote.com/note/4fa1a1d3-c603-48fb-b04d-d33eec4d0370)
 - dig into economic literature on irrational consumer behavior
 - dig into the list of cognitive errors (both voters, R's and D's make them)
-
 # Why did the Democrats fail?
-## Biden?
-## AI
-## Crime, disorder, homelessness
+## Harris Demographic, Geographic underperformance
+- [[Votes Harris Lost Compared to Margin of Trump Win]]
+- Geographic voting patterns: [[Woodland24electAmericanNations|Woodland24: The 2024 Presidential Election and the American Nations]] 
+## Factors Contributing to Harris Loss
+### Biden?
+### AI
+### Crime, disorder, homelessness
 - Tolerance of crime and disorder pissed off people, D's lost much in "diverse cities"  [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
-### Examples of AI in politics
+#### Examples of AI in politics
 - [[Kapoor23misinfoAInotTheProb|Kapoor23: We Looked at 78 Election Deepfakes. Political Misinformation is not an AI Problem.]] 
 - A warning: [[Palmer23llmsArgueConvincing|Palmer23: Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors: implications for Governance]] 
 - Not politics, but general loss of thinking?  [[Lee25genAIworkerCritThink|Lee25: The impact of generative AI]] 
-### Political AI background
+#### Political AI background
 - [[Gen AI Talk Ideas#Sentiment Analysis|Sentiment Analysis]]
 - [Robots Talk Back, AI Security Risks, Political Deepfakes, and more](zotero://select/library/items/QUV7MR9D)
 - Thinks AI polling/policy making will improve sense of control [[Razzaque25trumperBelievePsych|Razzaque25trumperBelievePsych]] 
 
-## The Chinese
-## The Russians
+### The Chinese
+### The Russians
 - KGB 85% of budget on overt destruction of US society: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
-## The Jews
+### The Jews
 - ? were they miffed in a way similar to Asians?   [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
-## The Gays
-## Lying Republicans
+### The Gays
+### Lying Republicans
 - in Dawson23cognitiveAbilityVotingEU the UK higher cog. voters were more likely to vote remain during Brexit. Authors speculate that lower cog. voters are vulnerable to misinformation
 - Trump was great at it: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 - People like Bannon are probably happy with their transparently dumb arguments: [[Sartre44antisemiteJew|Sartre44: Anti-semite and jew]] 
-## The Great Trump
+### The Great Trump
 Trump is really the best president ever.
-## People forgot how bad Trump was
+### People forgot how bad Trump was
 - Medina24amnesiaAboutTrump
-## COVID
+### COVID
 - COVID + post-COVID inflation wiped out incumbents everywhere: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
-## Ukraine
-## Political Correctness
+### Ukraine
+### Political Correctness
 - the word wokeness as toxic as "socialism" for general electorate: Yokley23wokeVoterPerception
 - wokeness exposes elite lack of priority on lower class issues (Gorman says): Bedford21GOPFindsSuccess
 - leftist proposals most closely associated with wokeness aren’t widely popular: Bedford21GOPFindsSuccess
@@ -72,21 +75,23 @@ Trump is really the best president ever.
 - [[Evans24techSplinterCulturalCtrl]]
 - [[Rampell25genZmenLoveTrump]]
 - Obsessive race focus pissed off people of color! [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
-### Seattle Handsoff Protest
+- Male underperf: [[Hendrickson25demsManProblem|Hendrickson25: Democrats Have a Man Problem]] 
+#### Seattle Handsoff Protest
 I couldn't hear much, but I think the first speaker started talking about Native American being victims of white colonization.  Given the market tank, all the worries on the protestors poster, this was a total non-sequiter, and nobody near was cheering for it, but there were dutiful liberals scattered clapping and cheering: taking their medicine, probably worried about not clapping.
 - [ ] get the transcripts of the speakers, who were Pramila Jayapal, Justin Gill, Hamdi Mohamed
 	- organizations involved e.g., Seattle Indivisible, Planned Parenthood, Evergreen Resistance
 	- [according to Perplexity](https://www.perplexity.ai/search/where-can-i-find-a-recording-o-Q4lmSsJyTUq.JFAL5xdufw#0)
-## Democrats were bad communicators
+### Democrats were bad communicators
 - language and stuff
 - Harris & D's didn't say much: [[Longwell25demsChenyDemoc|Longwell25: Did Democrats Have a Liz Cheney Problem? (with Jen Psaki)]] 
-## The Economy
-### Economy really was bad
+### The Economy
+#### Economy really was bad
 - [[Ludwig25votersCorrectEcon|Ludwig25: Voters Were Right About the Economy. The Data Was Wrong.]] 
 - [[MorningConsult25priceSurpriseIdx|MorningConsult25: price surprise index]] 
 - bad economy and interactions: [[Politics/Political Causality/US Elections 2024.md#Issue/Message Interaction Examples |Issue/Message Interaction Examples]]
 - Biden had high inflation and high interest rates, which voters hated: [[Prokop25trumpEconWorstPoll|Prokop25trumpEconWorstPoll]] 
 - Trump voters slavishly improved Trump during pandemic in contrast to treatment of Biden: [[Boak23presToutsBidenomics|Boak23presToutsBidenomics]] 
+- Biden's Bad/polarized consumer sentiment: [[MorningConsult25trump100days|MorningConsult25trump100: 100 Days of Trump]] 
 - But were bad Trump voter ratings of Biden right? [[Ludwig25votersCorrectEcon|Ludwig25: Voters Were Right About the Economy. The Data Was Wrong.]] 
 - Good Biden econ helped Trump??
 	- [[Pastor24greatBidenEconHelpedTrump|Pastor24: The Economy Has Been Great Under Biden. That’s Why Trump Won.]] ??
@@ -96,53 +101,63 @@ I couldn't hear much, but I think the first speaker started talking about Native
 - [[Cohn25econRiskRepubs|Cohn25: A risk like no other for Republicans]]: 40% of voters switching to Trump in 2024 listed econ & Tariffs as most imp. features.
 - [[Parker25trumpTariffEq|Parker25: Explaining the Trump Tariff Equation]]: how he came up with it.
 - Econ and costs are best Trump attack: [[Kessler25noiseTrumpChaosPoll|Kessler25noiseTrumpChaosPoll]] 
-### Postmaterialism: when a bad economy matters less
+- Inflationary pressure due to COVID
+	- Shipping congestion/rates: [[JoeBlogs25usSupplyChainMeltDown|JoeBlogs25: USA Supply Chain Meltdown]] 
+#### Weak economy doomed D's
+- many posts say so
+- but some say it was actually a perceived strong economy doomed the D's, rather than a weak real/perceived econ (Pastor24greatBidenEconHelpedTrump)
+- COVID + post-COVID inflation wiped out incumbents everywhere: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
+#### Postmaterialism: when a bad economy matters less
 Both R's and D's vote less on economic issues and more on values: 
 - [[Lowrey24RiseUnionRight|Lowrey24: The Rise of the Union Right]] 
 - or social insecurity: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
-## Immigration
+
+### Immigration
 - 2X more voters prioritized immigration than abortion: [[Ponnuru25learnDemsDKborder|Ponnuru25: What Democrats can learn from Denmark’s left-leaning border hawks]] 
 - D's heavily lost Hispanics on the US-Mexico border: [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
 - I kind of loss of control of borders, increasing insecurity which in general, helped Trump: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 - Mass immigrant deportation more popular than Trump himself: [[Kessler25noiseTrumpChaosPoll|Kessler25noiseTrumpChaosPoll]] 
-## US Culture
-## Random Bad Luck
-## Anti-Incumbency Cycle
+- Immigrants went R: [[Nowrasteh25natImmigVotedRep|Nowrasteh25: Naturalized Immigrants Probably Voted Republican in 2024]] 
+- 100 days: MAGA still *loves* Trump on immigration: [[Salvanto25trump100dayPollTariff]]
+- 100 day polls: deporting illegal aliens still gets small majority support [[Balz25trumpApprovSink]]
+### US Culture
+### Random Bad Luck
+### Anti-Incumbency Cycle
 - COVID + post-COVID inflation wiped out incumbents everywhere: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]]
-## Racism / Sexism
-## Trump is what the People Wanted
+### Racism / Sexism
+- Declare R racism b/c 100 days: MAGA still loves Trump on immigration? [[Salvanto25trump100dayPollTariff]]
+### Trump is what the People Wanted
 - yes, they wanted to feel in control and better about themselves: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 	- [ ] @ find empirical evidence for or against this idea
 	- yes, e.g. mass immigrant deportation more popular than Trump himself: [[Kessler25noiseTrumpChaosPoll|Kessler25noiseTrumpChaosPoll]] 
-## Global Trend
+- 100 days: R's happy with Trump policy, think he did what he promised [[Salvanto25trump100dayPollTariff]]
+### Global Trend
 - COVID + post-COVID inflation wiped out incumbents everywhere: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
-## Loss of trust in experts, institutions
+- global inflationary pressure: [[JoeBlogs25usSupplyChainMeltDown|JoeBlogs25: USA Supply Chain Meltdown]] 
+### Loss of trust in experts, institutions
 - people don't believe experts, media, etc. Go to friends
 	- I have more than one article on this, I think
 	- odd example: [[Verma24muskPoliticsEcoCar|Verma24: Musk’s politics hadn’t seeped into Tesla. Then he axed its eco car of the future.]]
 - Musk trades in this: [[Isaac25internetCringeMusk|Isaac25: Elon Musk’s Internet: So Based, Much Wow. So Cringe?]] 
 - Brazilians didn't trust democracy, but eventually removed an authoritarian: [[Ivanova22systemicMistrustBrazil|Ivanova22: Brazil's Systemic Mistrust of Elections and Democracy]] 
 - I'm guessing modern KGBs helped this: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
+- Conspiracy belief (probably) doesn't change attitude towards democracy: [[Dolan25authoritPrimeCnsprcy|Dolan25: Authoritarian minds may be primed for conspiracy beliefs, study suggests]] 
+- Voters trust Trump and Media *equally*! (37%): [[MorningConsult25trustTrumpVsMedia|MorningConsult25: Americans trust Trump as much]] 
 ## Lack of D party enthusiasm/turnout
 - was the D loss due to poor Democratic turnout or to Ds switching to R?
+- 100 day polls e.g. [[Balz25trumpApprovSink]]: D's still not popular, and Ds not satisfied Ds, unlike Rs who *are* satisfied with Trump
 ## Abortion overemphasized, not important
 - abortion a concern of young women, not old?
 - more concern about economy
 - do the graph votes associated with ranking combinations of issues
-## Weak economy doomed D's
-- many posts say so
-- but some say it was actually a perceived strong economy doomed the D's, rather than a weak real/perceived econ (Pastor24greatBidenEconHelpedTrump)
-- COVID + post-COVID inflation wiped out incumbents everywhere: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 ## Overreliance on demographic groups
 ### Demographic Info Sources
 - PBS24keyVoteGroupsInteract : interesting but can't search since must operate interactively
-
 ### Student loans & youth vote
 - voters who have student load debt
 	- 780k people have (Habeshian24trumpStudentDebtWA)
 	- 140 M total 2024 voters: PBS24keyVoteGroupsInteract (not final yet)
 #### Student loans as political liability?
-  
 Young people e.g. student loans was a liability (Trump tried to enrage the larger working class) for small amount of student voters. Also an example of issue interaction: (maybe made upper class students happy, working class mad) ^i6p3
 - young people were 14% of 2024 voters (CIRCLE24youthVote2024), 38% of them had no college experience
 	- so the affected young people vote was 14% * 62% = 8.68% of voters
@@ -162,6 +177,7 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 	- the true: equations asked, how much do we have to raise taxes on consumers to force them to stop buying
 	- and ven these equations were botched, due to Trump & Co's incompetence
 - R politicians knew this was BS, but were afraid of Trump, wanted to bigger careers, and went along, even praised Trump!
+- 100 days: R's happy with Trump tarffs & immigration [[Salvanto25trump100dayPollTariff]]
 ### Billionaire Buddies
 #### Advisors behind Tariffs and their richguyness
 - Stephen Miran
@@ -196,13 +212,24 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 	- [ ] ? I'm sure this has been thought of, but how to reach the right audience and would it work?  Do a search on this
 - [[Atrioc25cannotExplainBitcoinGrift|Atrioc25: I Truly Cannot Explain This]]: bitcoin corruption, Trump, Trump family, (Musk too, I would guess, but don't have the details)
 - [[Kessler25noiseTrumpChaosPoll|Kessler25: Breaking Through the Noise on Trump’s Chaotic First Two Months]]: Musk is "box office poison"
+- DOGE fires NHTSA self-driving experts while Tesla had $1.19B potential fines from NHTSA ($2.37B total Biden era liabilities): [[Robins-Early25muskConflictInt]]
+- Musk is incompetent
+	- [[Melber25MuskDemot100Days|Melber25MuskDemot100: Musk demoted as he loses over $100 BILLION in 100 Days: Ari Melber’s report on Trump slump]] 
 # Questions
 ## How to get and keep attention
 - the two axes of clickbait and A/B B testing: [[Muller21ClickbaitUnreasEffect|Muller21: Clickbait is Unreasonably Effective]] 
 ## Trump Voter Satisfaction (post-2024 election)
 - [[Longwell25areTrumpVotersGetAsk|Longwell25: Are These Trump Voters Getting What They Voted For? (with Mark Leibovich)]]
+	- answer: Yes: 100 days: R's happy with Trump policy, think he did what he promised [[Salvanto25trump100dayPollTariff]]
+- 100 day polls: Rs are satisfied, especially MAGA Rs, but not the rest of the public ^d9y3
+	- [[Balz25trumpApprovSink|Balz25: Trump approval sinks as Americans criticize his major policies, poll finds]] 
+	- [[Salvanto25trump100dayPollTariff|Salvanto25trump100: Trump's first 100 days seen as bringing big changes, but still too much focus on tariffs  — CBS News poll]] 
+	- [[MorningConsult25trump100days|MorningConsult25trump100: 100 Days of Trump]] 
+	- [[Melber25MuskDemot100Days|Melber25MuskDemot100: Musk demoted as he loses over $100 BILLION in 100 Days: Ari Melber’s report on Trump slump]] 
+	- [[Agiesta25trump100dayWorst7decades|Agiesta25trump100: Trump’s approval at 100 days lower than any president in at least seven decades]] 
 ## How voters weight different policies in their voting decision (sensitivity analysis)
 - Econ most imp by far: [[Klein25demsFaceTrumpWon|Klein25: Democrats Need to Face Why Trump Won]] 
+- 100 days: Econ and Immig most important: [[Salvanto25trump100dayPollTariff|Salvanto25trump100: Trump's first 100 days seen as bringing big changes, but still too much focus on tariffs  — CBS News poll]] 
 ## Media effectiveness
 - e.g. Yurieff24trumpUsedInfluencers : did this really work as claimed here?
 - ? how do advertisers measure or (get proxies of) effectiveness of media message --> purchase
@@ -217,6 +244,8 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 - same thing with gun deaths
 - health insurance costs
 - etc.
+## Convincing the need for short-term sacrifice
+- R's say 100 days not long enough to judge Trump's tariffs, by is this a mirage? [[Salvanto25trump100dayPollTariff]]
 ## New Proxies
 Just more predictor variables for various things. Things similar to education, which predicts poll response, vote likelihood, party lean. What other information is there that is gettable?  Could this be a long list of things, with missing feature imputation when not available?
 
@@ -247,6 +276,7 @@ Just more predictor variables for various things. Things similar to education, w
 	- [[Frankfurt86onBullshitEssay|Frankfurt86: On bullshit]] 
 	- [[Young23wrongAppetiteMisinfo|Young23: Wrong: How media, politics, and identity drive our appetite for misinformation]] 
 	- [[Rudloff22epistemicBeliefConspiracy|Rudloff22: Beliefs about the nature of knowledge shape responses to the pandemic: Epistemic beliefs, the Dark Factor of Personality, and COVID-19–related conspiracy ideation and behavior]] 
+- Conspiracy belief doesn't change attitude towards democracy but authoritarianism increases conspiracy belief (probably): [[Dolan25authoritPrimeCnsprcy|Dolan25: Authoritarian minds may be primed for conspiracy beliefs, study suggests]] 
 
 ## Authenticity and Trust: how to get it
 - Musk's internet language and imagery looks "authentic" to online gamers : [[Isaac25internetCringeMusk|Isaac25: Elon Musk’s Internet: So Based, Much Wow. So Cringe?]] 
@@ -260,11 +290,18 @@ Just more predictor variables for various things. Things similar to education, w
 ### Polarization Enhancement: Your fellow R is evil (algorithmic)
 - For details & perplexity-derived evidence of implementability see Blake25infightMAGA
 - Moderates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]] 
+- Voters trust Trump and Media *equally*! (37%): [[MorningConsult25trustTrumpVsMedia|MorningConsult25: Americans trust Trump as much]] 
+- Consumer sentiment polarization: [[MorningConsult25trump100days|MorningConsult25trump100: 100 Days of Trump]] 
+
 # Rising Authoritarianism
 - The R's like democracy way less than the Ds: [[Bump25polSciworryRstrongman|Bump25: What political scientists see as worrisome, Republicans see as welcome]] 
-- A good fear-of-Trump & Co caution from [[Arendt76originsTotalitariansim|Arendt76: The origins of totalitarianism]] 
+- A good fear-of-Trump & Co cautionary quote from [[Arendt76originsTotalitariansim|Arendt76: The origins of totalitarianism]]:
 
 > the most characteristic aspect of totalitarian terror, that it is let loose when all organized opposition has died down and the totalitarian ruler knows that he no longer need to be afraid.
+
+- Authoritarianism causes conspiracy belief, not vice versa (probably): [[Dolan25authoritPrimeCnsprcy|Dolan25: Authoritarian minds may be primed for conspiracy beliefs, study suggests]] 
+- 100 day polls: Trump s/ work with congress, Supreme court [[Balz25trumpApprovSink]]
+- Trumps massive reliance on executive orders (100 days): [[Melber25MuskDemot100Days|Melber25MuskDemot100: Musk demoted as he loses over $100 BILLION in 100 Days: Ari Melber’s report on Trump slump]] 
 # Breaking the Republican Fever
 Will the Rs ever pay attention to evidence?
 - Apparently at least a few Rs can: [[Prokop25trumpEconWorstPoll|Prokop25: Trump is torching his greatest political asset]] 
@@ -274,16 +311,22 @@ Will the Rs ever pay attention to evidence?
 - KGB guys says impossible:  [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 - [[Cohn25econRiskRepubs|Cohn25: A risk like no other for Republicans]] : bad trump econ ratings, cracks in Senate Rs
 - 14% of Trump voters might be movable [[Kessler25noiseTrumpChaosPoll]]
+- 100 day polls: Rs stick with Trump, but not rest of country [[Balz25trumpApprovSink]]
 # Predictive Models and Analysis Techniques
 
 - market sentiment indexes predicted by economic variables (Weber24implicitCoordInflateShock).  Could be *voter* sentiment predicted by other variables
 	- more on econ features: [[MorningConsult25priceSurpriseIdx|MorningConsult25priceSurpriseIdx]] 
-
+- economic features
+	- inflationary pressure: [[JoeBlogs25usSupplyChainMeltDown|JoeBlogs25: USA Supply Chain Meltdown]] 
+	- ? are economists good about predicting inflation well in advance?
+		- if so, then no need to look at fundamental econ features, just use economist predictions.
 - bulk features built from the poll difference between a presidential candidate and same-party state/county/city candidates. Or, look at post-election results for election autopsies
 - during election autopsies analyzing across elections in different years, try to factor out the effect of each (modellable) variable so you can see which thing by itself — inflation, war, … — caused the big changes.  
 	- See example of doing this in words in [Ezra Klein Speaks Frankly Abou...](https://youtu.be/vkXJiEzWxFs?t=1484)..
 	- His wife's article is cited. Did she use numbers?
 - Predicting district lean: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]]
+- time-lagged causality elimination technique: [[Dolan25authoritPrimeCnsprcy|Dolan25: Authoritarian minds may be primed for conspiracy beliefs, study suggests]] 
+- 100 day polls e.g. [[Balz25trumpApprovSink]]
 # Questions / Hypotheses to test
 - [ ] @ Take a look at all the paper's at this guy's lab:  Kolbert25oneEmotionEthics
 ## Education realignment around D's
@@ -339,6 +382,16 @@ A lot of polling is important only as a clue to how you can actually change the 
 - to settle arguments about whether somebody's interest (mens rights, womens rights, global warming) has been beaten for the death for the moment
 ## Issue/Message interaction tester
 - an issue/message that most voters might find uninteresting e.g. wokeism (see studies I found stating this) might be potent which combined with some other issue/message
+### Why interactions can matter
+- Trump polls badly on every issue except gender identity, yet the *public thinks he is more in touch* with regular people's concerns than Trump is
+	- e.g [100 day polls](<Politics/Political Causality/US Elections 2024.md#^d9y3 >)
+		- Trump underwater on all issues tested *except gender ID* ([[Agiesta25trump100dayWorst7decades]]), while another 100 day poll found Trump underwater on everything except immigration, yet voters thought the Dem Party was a little more out of touch than Trump, and trust *him* more than congressional Ds! ([[Balz25trumpApprovSink]])
+		- Is this a little like people trusting people more who look like them?
+	- gender id: 
+		- Lewis24demsGenderID : D's can't explain
+		- Peters25policySupportMoreThanTrump :  majority is OK with limit how doctors can treat children struggling w/ gender ID
+		- Edsall25deepWoundDems : transgender was in top 3 Trump campaign talking points (I see polls told him where the public stood)
+		- 
 ### Issue/Message Interaction Examples
 - actual 2024 election examples
 	- wokeism and working class economic worries
@@ -464,4 +517,9 @@ e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is t
 - expected margin given district fundamentals: [[Jain25winsReplaceDB|Jain25: Full Wins Above Replacement (WAR) Database]] 
 - [[BrightLineWatch25democracyRrsrchOrg|BrightLineWatch25: Bright Line Watch]] 
 - [Third Way](https://www.thirdway.org/): semi-democratic polling
+- [[Chenoweth24crowdCountCnsrt|Chenoweth24: Crowd Counting Consortium]]: crowd sizes, etc.
+
+# Also
+- [[Ranked Choice Voting]]
+- 
 

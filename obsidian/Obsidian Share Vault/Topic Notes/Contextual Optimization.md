@@ -1,5 +1,5 @@
 ---
-modified date: 2024-10-22T16:12:33-07:00
+modified date: 2025-04-24T17:09:36-07:00
 created date: 2024-12-17T08:51:31-08:00
 ---
 # TODO
@@ -61,3 +61,7 @@ Boosted trees are good for forecasting ([[Manokhin23worksTSfrcstNixtla]], [[Janu
 
 # Software
 - [[Tang23end2endPredOptPyEPO|PyEPO: A PyTorch-based End-to-End Predict-then-Optimize Library for Linear and Integer Programming]]
+# Related
+- [[Linear Optimization]]
+- [[Bertsimas97linOptIntroBk]]
+- 

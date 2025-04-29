@@ -1,6 +1,6 @@
 ---
 created date: 2025-03-22T12:59:51-07:00
-modified date: 2025-03-22T13:45:44-07:00
+modified date: 2025-04-23T10:15:59-07:00
 ---
 
 GitHub, and NetBeans specifically say they're customizable, but perplexity says all VS Code themes are, if you go to json:
@@ -17,14 +17,15 @@ You can also customize all light or dark themes using wildcard syntax like [*Lig
 
 This seems to be true: [[Vscode code display customization syntax]]
 # Good Themes
+## NetBeans light
+**This is my favorite**: good toned down gray comments, bolded function declaration names, docstrings palish orange (tolerable, would prefer to change), non-obnoxious squigglies.  Background a bit dim.
+- I tweaked colors using [this google ai studio dialogue](https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221y6bKnlA16M8mIpF5mM6dupgV5unFgtOd%22%5D,%22action%22:%22open%22,%22userId%22:%22106663353829707201139%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing)
 ## sema 
 light:
 Good, less colorful so maybe not as pretty, but good readability and not jarring.  Background still not as bright as I would like
 
 light chroma:
 not sure how diff from "light"
-## NetBeans light
-good toned down gray comments, bolded function declaration names, docstrings palish orange (tolerable, would prefer to change), non-obnoxious squigglies.  Background a bit dim.
 ## Visual Studio light
 I think what I was using (3/22/25).  This ain't bad, except for the red docstrings, red squigglies are still red. 
 ## Github

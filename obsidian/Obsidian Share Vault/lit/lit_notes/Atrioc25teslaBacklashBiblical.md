@@ -15,7 +15,7 @@ ZoteroCollections:
   - hot_takes_us_elect_2024
   - campaignmoney
 created date: 2025-03-15T12:11:22-07:00
-modified date: 2025-03-19T08:51:15-07:00
+modified date: 2025-04-22T10:55:13-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/U7YZSNCH)   | [**URL**](https://www.youtube.com/watch?v=k9kmK0St9Jg)
@@ -46,7 +46,7 @@ modified date: 2025-03-19T08:51:15-07:00
 %% begin Obsidian Notes %%
 ___
 
-A jokingly vicious source for attack ads on Elon Musk personally, and on Tesla stock fundamentals, for the short-sellers.  A motherlode of lies and hypocrisy by Musk, and much schadenfreude at the fall of Musk's reputation.  Great graph showing he's now destroying the gov't agencies that were investigating Tesla, and is also protecting Space-X by trying to get more gov't biz for it. Is also quietly extracting money from Tesla and funneling it into Space-X and some AI thing that he owns way more of, and which Chinese can secretly invest in (I think it says) (and now Musk says China should have Taiwan (I think his Ukraine messages probably also please Beijing)).  Video says Musk's gov't involvement is an escape hatch, to get away from the huge, unsustainable Tesla stock bubble.
+A jokingly vicious source for attack ads on Elon Musk personally, and on Tesla stock fundamentals, for the short-sellers.  A motherlode of lies and hypocrisy by Musk, and much schadenfreude at the fall of Musk's reputation.  Great graph showing he's now destroying the gov't agencies that were investigating Tesla, and is also protecting Space-X by trying to get more gov't biz for it. Musk is also quietly extracting money from Tesla and funneling it into Space-X and some AI thing that he owns way more of, and which the Chinese can secretly invest in (I think it says) (and now Musk says China should have Taiwan (I think his Ukraine messages probably also please Beijing)).  Video says Musk's gov't involvement is an escape hatch, to get away from the huge, unsustainable Tesla stock bubble.
 
 He points out that when Tesla stock crashes, your 401K in gonna crash, while Musk goes on with Space-X and other secret stuff, with little damage.
 

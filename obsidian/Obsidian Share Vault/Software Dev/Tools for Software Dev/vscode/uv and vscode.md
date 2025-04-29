@@ -1,11 +1,15 @@
 ---
 created date: 2025-04-11T12:24:35-07:00
-modified date: 2025-04-11T12:24:35-07:00
+modified date: 2025-04-20T13:20:42-07:00
 ---
+
+[This setup guide](<Software Dev/Tools for Software Dev/Package Management/uv package manager.md#Setting up uv for vscode and juypyter notebooks>) might be better.
 # How can I run jupyter notebooks inside of vscode when I'm using the uv package manager...
 Exported on 11/04/2025 at 12:23:19 [from Perplexity.ai](https://www.perplexity.ai/search/how-can-i-run-jupyter-notebook-GVKaoQXHTGiwFC7ASj92tA) - with [SaveMyChatbot](https://save.hugocollin.com)
 
-
+**Also see**: 
+- [[uv package manager]] 
+- [[Bugs in Vscode]] 
 ## User
 how can I run jupyter notebooks inside of vscode when I'm using the uv package manager
 
@@ -18,19 +22,34 @@ To run Jupyter Notebooks inside Visual Studio Code (VS Code) using the `uv` pack
 Ensure that the necessary packages are installed in your `uv`\-managed project environment:
 
 1.  **Initialize a Project** (if not already done):
-    
-    ```bash
-    uv init project
-    cd project
-    ```
-    
-2.  **Add Jupyter and ipykernel**:
+	1. From nothing
+	    
+	    ```bash
+	    uv init project
+	    cd project
+	    ```
+	    
+	2.  From a .toml file in the top project dir
+
+cd to the top proj di and run
+
+``` 
+uv init
+uv sync
+```
+
+This will
+- Create a `.venv` virtual environment in your project directory.
+- Install all dependencies in the .toml
+- Generate a `uv.lock` file for reproducible environment
+
+1. **Add Jupyter and ipykernel**:
     
     ```bash
     uv add --dev jupyter ipykernel
     ```
     
-3.  **Optional:** If you need to manipulate the environment from within the notebook, add `uv` as a development dependency:
+2.  **Optional:** If you need to manipulate the environment from within the notebook, add `uv` as a development dependency:
     
     ```bash
     uv add --dev uv
@@ -93,7 +112,7 @@ You can manage dependencies directly within your notebook using shell commands:
     !uv add pandas
     ```
     
-*   To install a package without persisting it in `pyproject.toml`:
+*   To install a package without persisting it in `pyproject.toml` (not good in general)
     
     ```python
     !uv pip install matplotlib

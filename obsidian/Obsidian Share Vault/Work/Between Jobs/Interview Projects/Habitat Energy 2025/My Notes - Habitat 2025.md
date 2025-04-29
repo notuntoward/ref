@@ -46,7 +46,7 @@ Use ERCOT definitions, although the description doesn't say so
 		- **nonlinear**
 			- clearing probs
 			- risk penalties
-		- t**wo-stage**: [[Work/Between Jobs/Interview Projects/Habitat Energy 2025/My code does non-linear, two-stage convex stochastic optimization.md#Two-Stage Structure Explained |Two-Stage Structure Explained]]
+		- t**wo-stage**: [[My code does non-linear, two-stage convex stochastic optimization#Two-Stage Structure Explained|Two-Stage Structure Explained]]
 			- stage 1: bids/offers
 			- stage 2: revenue calcs
 	- Ipopt solver is designed for **nonlinear convex optimization**
@@ -90,7 +90,7 @@ Use ERCOT definitions, although the description doesn't say so
 	 - Recommended development order
 		 - semi-deviation
 		 - expectiles
-		 - VaR: actually [[Work/Between Jobs/Interview Projects/Habitat Energy 2025/Risk Reduction strategies.md#**4. Practical Recommendations** |avoid VaR]]
+		 - VaR: actually [[Risk Reduction strategies#**4. Practical Recommendations**|avoid VaR]]
 	 - configuring multiple loss function in pyomo
 		 - [[Switchable Multiple Loss Functions in Pyomo no if-else]]
 	
@@ -108,11 +108,11 @@ Use ERCOT definitions, although the description doesn't say so
 	- ipopt not good at poorly scaled problems
 		- common in stochastic programs due to disparate parameter magnitudes across scenarios (I have this)
 			- [x] DO I see the indicator of this:  "Search Direction is becoming Too Small"?
-				- try [[pyomo tee=True]] with [`print_level=5`](<Work/Between Jobs/Interview Projects/Habitat Energy 2025/My Ipopt Solver Options Explained.md#^h1gd >)
+				- try [[pyomo tee=True]] with [print\_level\=5](<My Ipopt Solver Options Explained.md#^h1gd>)
 					- didn't see problems
 		- [x] `u_strategy=adaptive`: said to be good for poorly scaled
 	- IPOPT prioritizes optimality conditions over returning the "best" feasible solution, which can leave users without actionable results
-	- [[Work/Between Jobs/Interview Projects/Habitat Energy 2025/Limitations IPopt with Pyomo.md#Mixed-Integer Optimization |Mixed-Integer Optimization]] not done by ipopt, 
+	- [[Limitations IPopt with Pyomo#Mixed-Integer Optimization|Mixed-Integer Optimization]] not done by ipopt, 
 		- can nonconvex problems
 		- cannot do non-smooth
 ## Future

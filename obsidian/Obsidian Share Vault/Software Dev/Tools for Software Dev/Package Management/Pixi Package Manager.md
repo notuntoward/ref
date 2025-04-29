@@ -1,14 +1,15 @@
 ---
 created date: 2025-01-03T14:39:01-06:00
-modified date: 2025-03-26T09:30:55-07:00
+modified date: 2025-04-19T20:52:14-07:00
 ---
-[Pixi](https://github.com/prefix-dev/pixi) is a conda replacement that should be faster than conda, and should do better at [reproducibility](https://prefix.dev/blog/pixi_for_scientists).  Has [[#VSCode integrations|VSCode integrations]] that work with Jupyter Notebooks.
+[Pixi](https://github.com/prefix-dev/pixi) is a conda replacement that should be faster than conda, and should do better at [reproducibility](https://prefix.dev/blog/pixi_for_scientists).  Has [[#VSCode integrations|VSCode integrations]] that work with Jupyter Notebooks.  But instead of using this, I went with the [[uv package manager]] instead.
 
 - The [Perplexity dialog](https://www.perplexity.ai/search/i-have-many-python-projects-wh-3.OhuMOMTqa2m.qdLMR4hw#15) that convinced me that it's worth moving to pixi
 - Also: [7 Reasons to Switch from Conda to Pixi | prefix.dev](https://prefix.dev/blog/pixi_a_fast_conda_alternative)
 - "replaces" homebrew, winget, etc. for installing rg, bash, etc.: See [this page and video](https://prefix.dev/blog/pixi_a_fast_conda_alternative)
 - Installed packages are placed in a [hidden `.pixi` folder](https://prefix.dev/blog/pixi_a_fast_conda_alternative)
 - [[#Pixie Package Operations|Pixie Package Operations]]
+- [[uv package manager]]
 # Setup
 
 ## Install pixi
