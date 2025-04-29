@@ -8,13 +8,13 @@ This explains the take-home challenge for Habitat Energy: what it does, how well
 The software in this project is intended to make optimal trading decisions for a wind power producer who must sell wind power on a real-time (RT) electricity market. 
 ## The risk of doing nothing: selling only wind power
 
-The producer must always sell wind generation at RT prices -- potentially very high prices but incurring some hourly risk due to negative prices.  Below, are hourly forecasts across a 24 hour period of RT prices, along with wind generation. The upper right scatter plot shows prices exceeding $4000 but that is very rare.  Only 1.6% of RT prices exceed $75, while 7.7% are negative. Unfortunately, those negative prices are most like to occur when wind production is highest, meaning that simply selling wind generation with no hedging risks hourly losses. The lower right plot shows the relationship between RT price and wind generation for the vast majority of cases where prices are under $75: negative prices are unfortunately most likely at times when the wind producer must sell a lot of it.
+The producer must always sell wind generation at RT prices -- potentially very high prices but incurring some hourly risk due to negative prices.  Below, are hourly forecasts across a 24 hour period of RT prices, along with wind generation. The upper right scatter plot shows prices exceeding $4000 but that is very rare.  Only 1.6% of RT prices exceed $75, while 7.7% are negative. Unfortunately, those negative prices are most like to occur when wind production is high, meaning that simply selling wind generation with no hedging risks hourly losses. The lower right plot shows the relationship between RT price and wind generation for the vast majority of cases where prices are under $75: negative prices are unfortunately most likely at times when the wind producer must sell a lot of it.
 
 ![[Work/Between Jobs/Interview Projects/Habitat Energy 2025/attachments/image-1.png|789x566]]
 
 Note: All numerical data reported here is based on forecasts, as above, rather than actually realized prices or power generation.  The only data available are probabilistic forecasts of market prices and wind power generation, with 100 scenarios for each forecasted variable.
 ## Day ahead hedging
-The risk of losing money on the sale of an hour's wind generation can be theoretically reduced with virtual trades on the day ahead (DA) market. A virtual trader sells (offers) or buys (bids) a chosen amount of power for hours in the next day, and then pays or receives the RT price on that day.  This makes it possible to benefit from the fact that the DA market price is generally higher and more easily forecasted than the RT price, as in the graph and table below (same day as above): The mean DA price is $8.30 higher than the mean RT price, and its standard deviation is $148.3 lower. 
+The risk of losing money on the sale of an hour's wind generation can theoretically be reduced with virtual trades on the day ahead (DA) market. A virtual trader sells (offers) or buys (bids) a chosen amount of power for hours in the next day, and then pays or receives the RT price on that day.  This makes it possible to benefit from the fact that the DA market price is generally higher and more easily forecasted than the RT price, as shown in the graph and table below (same day as above): The mean DA price is $8.30 higher than the mean RT price, and its standard deviation is $148.3 lower. 
 
 
 ![[Work/Between Jobs/Interview Projects/Habitat Energy 2025/attachments/image-2.png|434x505]]
@@ -32,7 +32,7 @@ The risk of losing money on the sale of an hour's wind generation can be theoret
 First, expected revenue is defined according to this market's rules, and then methods for reducing risk are covered.  Finally, the trading algorithm optimization method to be de-risked is explained.
 ## Expected Revenue
 
-The information from which we can compute expected trading revenue are equiprobable forecast **scenarios** indexed by $i = 1, ... N$ where $N=100$.  For each of 24 trading hours, the scenarios contain:
+The information from which we can compute expected trading revenue are equiprobable forecast **scenarios**, indexed by $i = 1, ... N$ where $N=100$.  For each of 24 trading hours, the scenarios contain:
 
 *   `da_cleared_price[i]` ($P_{DA,i}$): The forecasted Day-Ahead market clearing price
 *   `rt_price[i]` ($P_{RT,i}$): The forecasted Real-Time market price
