@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-04-28T19:36:59-07:00
+modified date: 2025-04-29T17:25:28-07:00
 tags:
   - politics
   - polling
@@ -27,7 +27,7 @@ tags:
 #### Examples of AI in politics
 - [[Kapoor23misinfoAInotTheProb|Kapoor23: We Looked at 78 Election Deepfakes. Political Misinformation is not an AI Problem.]] 
 - A warning: [[Palmer23llmsArgueConvincing|Palmer23: Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors: implications for Governance]] 
-- Not politics, but general loss of thinking?  [[Lee25genAIworkerCritThink|Lee25: The impact of generative AI]] 
+- Not politics, but general loss of thinking?  [[Lee25genAIworkerCritThink|Lee25: The impact of generative AI]]
 #### Political AI background
 - [[Gen AI Talk Ideas#Sentiment Analysis|Sentiment Analysis]]
 - [Robots Talk Back, AI Security Risks, Political Deepfakes, and more](zotero://select/library/items/QUV7MR9D)
@@ -218,18 +218,26 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 # Questions
 ## How to get and keep attention
 - the two axes of clickbait and A/B B testing: [[Muller21ClickbaitUnreasEffect|Muller21: Clickbait is Unreasonably Effective]] 
-## Trump Voter Satisfaction (post-2024 election)
+## Making Important Issues Salient and relevant
+### Definitions: Salient, Relevant, Important
+From here:
+- **Salient** is about what you notice first.
+- **Relevant** is about what connects to the topic.
+- **Important** is about what matters most.
+### Issue Measurements: Salient, Relevant, Important
+- "Important" is hard to measure, not objective?
+- Measurement of Issue Salience and Relevance
+	- population-level measures (a kind of poll)
+		- "Have you heard about it" poll:  [[MorningConsult25negEconNewsBreakThru|MorningConsult25: Negative economic news is increasingly breaking through with Americans]] 
+- [[#Salient hypocrisy tracker]]
+###### Trump Voter Satisfaction (post-2024 election)
 - [[Longwell25areTrumpVotersGetAsk|Longwell25: Are These Trump Voters Getting What They Voted For? (with Mark Leibovich)]]
-	- answer: Yes: 100 days: R's happy with Trump policy, think he did what he promised [[Salvanto25trump100dayPollTariff]]
-- 100 day polls: Rs are satisfied, especially MAGA Rs, but not the rest of the public ^d9y3
-	- [[Balz25trumpApprovSink|Balz25: Trump approval sinks as Americans criticize his major policies, poll finds]] 
-	- [[Salvanto25trump100dayPollTariff|Salvanto25trump100: Trump's first 100 days seen as bringing big changes, but still too much focus on tariffs  — CBS News poll]] 
-	- [[MorningConsult25trump100days|MorningConsult25trump100: 100 Days of Trump]] 
-	- [[Melber25MuskDemot100Days|Melber25MuskDemot100: Musk demoted as he loses over $100 BILLION in 100 Days: Ari Melber’s report on Trump slump]] 
-	- [[Agiesta25trump100dayWorst7decades|Agiesta25trump100: Trump’s approval at 100 days lower than any president in at least seven decades]] 
+	- answer: Yes: 100 days: R's happy with Trump policy, think he did what he promised [[Salvanto25trump100dayPollTariff1]]
+- [[Politics/Political Causality/US Elections 2024.md#Trump 100 Day Polls: Term 2 |Trump 100 Day Polls: Term 2]]: Rs are satisfied, especially MAGA Rs, but not the rest of the public ^d9y3
 ## How voters weight different policies in their voting decision (sensitivity analysis)
 - Econ most imp by far: [[Klein25demsFaceTrumpWon|Klein25: Democrats Need to Face Why Trump Won]] 
 - 100 days: Econ and Immig most important: [[Salvanto25trump100dayPollTariff|Salvanto25trump100: Trump's first 100 days seen as bringing big changes, but still too much focus on tariffs  — CBS News poll]] 
+- [[#Issue Measurements Salient, Relevant, Important]]
 ## Media effectiveness
 - e.g. Yurieff24trumpUsedInfluencers : did this really work as claimed here?
 - ? how do advertisers measure or (get proxies of) effectiveness of media message --> purchase
@@ -326,7 +334,15 @@ Will the Rs ever pay attention to evidence?
 	- His wife's article is cited. Did she use numbers?
 - Predicting district lean: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]]
 - time-lagged causality elimination technique: [[Dolan25authoritPrimeCnsprcy|Dolan25: Authoritarian minds may be primed for conspiracy beliefs, study suggests]] 
-- 100 day polls e.g. [[Balz25trumpApprovSink]]
+## 100 Day Polls
+About polls 100 days into a term.  Factors out the fact that most presidents lose popularity over time, difference between day 1 and day 100 could be a kind of detrended features, kind of like % gain of different stocks over time.  I saw a graph like that for Trump vs. other presidents, but I'm not sure I have it.
+### Trump 100 Day Polls: Term 2
+- [[Balz25trumpApprovSink|Balz25: Trump approval sinks as Americans criticize his major policies, poll finds]] 
+- [[Salvanto25trump100dayPollTariff|Salvanto25trump100: Trump's first 100 days seen as bringing big changes, but still too much focus on tariffs  — CBS News poll]] 
+- [[MorningConsult25trump100days|MorningConsult25trump100: 100 Days of Trump]] 
+- [[Melber25MuskDemot100Days|Melber25MuskDemot100: Musk demoted as he loses over $100 BILLION in 100 Days: Ari Melber’s report on Trump slump]] 
+- [[Agiesta25trump100dayWorst7decades|Agiesta25trump100: Trump’s approval at 100 days lower than any president in at least seven decades]] 
+- [[MorningConsult25negEconNewsBreakThru|MorningConsult25: Negative economic news is increasingly breaking through with Americans]]
 # Questions / Hypotheses to test
 - [ ] @ Take a look at all the paper's at this guy's lab:  Kolbert25oneEmotionEthics
 ## Education realignment around D's
@@ -349,9 +365,11 @@ Will the Rs ever pay attention to evidence?
 ## How communicate policy to voters who know nothing?
 - Voters know shockingly little and this was who Harris needed to convince: Rubin24demsLowInfoVoterShortcut
 - [ ] # ID features that are salient to low info voters just before election, when they pay a little attention: Rubin24demsLowInfoVoterShortcut
+	- [[#Issue Measurements Salient, Relevant, Important]]
 ## Are there ideological fractures in Trump coalition that could be exploited by D's?
 - or are new Rs "tolerant" and so they won't have ideological fights?
 - one guy's take: Walther24barstoolConservatism
+- I keep hoping Christian conservatives will have a falling out with the libertarians, right wing business people, the white supremacists, and the Nazi types.
 ## Was 2024 not a revolt against D politicians but against D voters?
 - D politicians didn't talk much about the Left, but D voters still did (Wells24electionMythsLessons)
 	- If true, then D politician messaging won't help, unless it's a Bill Clintonesque Sister Souljah moment?
@@ -384,6 +402,7 @@ A lot of polling is important only as a clue to how you can actually change the 
 - an issue/message that most voters might find uninteresting e.g. wokeism (see studies I found stating this) might be potent which combined with some other issue/message
 ### Why interactions can matter
 - Trump polls badly on every issue except gender identity, yet the *public thinks he is more in touch* with regular people's concerns than Trump is
+	- e.g [[#100 Day Polls]]
 	- e.g [100 day polls](<Politics/Political Causality/US Elections 2024.md#^d9y3 >)
 		- Trump underwater on all issues tested *except gender ID* ([[Agiesta25trump100dayWorst7decades]]), while another 100 day poll found Trump underwater on everything except immigration, yet voters thought the Dem Party was a little more out of touch than Trump, and trust *him* more than congressional Ds! ([[Balz25trumpApprovSink]])
 		- Is this a little like people trusting people more who look like them?
@@ -447,6 +466,7 @@ A lot of polling is important only as a clue to how you can actually change the 
 ## Political State / Warning Realtime Dashboard
 - Policy/message effects
 	- Venn diagram or stack plot stacking votes with different combinations of priorities, according to pols like Lee24abortionVsEconomy.
+	- [[Politics/Political Causality/US Elections 2024.md#Issue Measurements Salient, Relevant, Important|Measurement: Salient, Relevant, Important]]
 - Current/forecasted economy, electoral consequence forecast
 	- Economic buying power of different socio-econ groups
 		- realtime cost of living indicator
@@ -477,6 +497,7 @@ A lot of polling is important only as a clue to how you can actually change the 
 ### Salient hypocrisy tracker
 Gaps in public perception of where Trump is spending his time vs. what people think he should prioritize,
 e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is the biggest mismatch]].  Also fuse with issue importance, media coverage, etc., for finding promising attack vectors, and demographic factors indicating if the gaps occur in the population of voters that need persuading.
+- [[#Issue Measurements Salient, Relevant, Important]]
 # Signs of Hope
 - [[Cohn25econRiskRepubs|Cohn25: A risk like no other for Rs]] : Trump seen bad on econ, small 2024 wind, likely D mid-term wins
 - 14% of Trump voters are movable?: [[Kessler25noiseTrumpChaosPoll|Kessler25noiseTrumpChaosPoll]] 

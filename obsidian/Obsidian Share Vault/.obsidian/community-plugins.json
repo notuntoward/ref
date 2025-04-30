@@ -52,6 +52,6 @@
   "front-matter-timestamps",
   "yt-video-summarizer",
   "ytranscript",
-  "remember-cursor-position",
-  "obsidian-git"
+  "obsidian-git",
+  "cursor-position-history"
 ]
