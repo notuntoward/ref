@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-04-29T17:25:28-07:00
+modified date: 2025-04-30T10:48:45-07:00
 tags:
   - politics
   - polling
@@ -20,7 +20,7 @@ tags:
 - [[Votes Harris Lost Compared to Margin of Trump Win]]
 - Geographic voting patterns: [[Woodland24electAmericanNations|Woodland24: The 2024 Presidential Election and the American Nations]] 
 ## Factors Contributing to Harris Loss
-### Biden?
+### Biden
 ### AI
 ### Crime, disorder, homelessness
 - Tolerance of crime and disorder pissed off people, D's lost much in "diverse cities"  [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
@@ -32,7 +32,6 @@ tags:
 - [[Gen AI Talk Ideas#Sentiment Analysis|Sentiment Analysis]]
 - [Robots Talk Back, AI Security Risks, Political Deepfakes, and more](zotero://select/library/items/QUV7MR9D)
 - Thinks AI polling/policy making will improve sense of control [[Razzaque25trumperBelievePsych|Razzaque25trumperBelievePsych]] 
-
 ### The Chinese
 ### The Russians
 - KGB 85% of budget on overt destruction of US society: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
@@ -71,7 +70,7 @@ Trump is really the best president ever.
 	- [[FAIR24fairVsWalkerLoanDiscrim|FAIR24: FAIR v. Walker]] 
 	- excludes Japanese, Jews and whites
 	- ? Does WA may have more poor whites than any other group? If so, this is politically stupid. In any case, seems nasty, if the idea is to address poverty.
-- More lefty nastiness (polls bad with Blacks and Hispanics): [[Friedersdorf24worstIdentPolit|Friedersdorf24: How to Move On From the Worst of Identity Politics]] 
+- More lefty nastiness (polls bad with Blacks and Hispanics): [[Friedersdorf24worstIdentPolit|Friedersdorf24: How to Move On From the Worst of Identity Politics]]
 - [[Evans24techSplinterCulturalCtrl]]
 - [[Rampell25genZmenLoveTrump]]
 - Obsessive race focus pissed off people of color! [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
@@ -111,7 +110,6 @@ I couldn't hear much, but I think the first speaker started talking about Native
 Both R's and D's vote less on economic issues and more on values: 
 - [[Lowrey24RiseUnionRight|Lowrey24: The Rise of the Union Right]] 
 - or social insecurity: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
-
 ### Immigration
 - 2X more voters prioritized immigration than abortion: [[Ponnuru25learnDemsDKborder|Ponnuru25: What Democrats can learn from Denmark’s left-leaning border hawks]] 
 - D's heavily lost Hispanics on the US-Mexico border: [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
@@ -269,7 +267,6 @@ Just more predictor variables for various things. Things similar to education, w
 	- example from [[Longwell25demsChenyDemoc|Longwell25: Did Democrats Have a Liz Cheney Problem? (with Jen Psaki)]] :
 		- D's apparently made democracy a talking point, put Cheney on, etc. because polls seemed to say that "democracy" was salient
 		- But R's didn't want to hear D democracy talking points b/c the Ds who "stole" the election.
-		  
 ## Destructing Conspiracy Theories
 - facts don't seem to work, can reinforce existing opinion (references..)
 - conspiracy theory attractions
@@ -499,9 +496,9 @@ Gaps in public perception of where Trump is spending his time vs. what people th
 e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is the biggest mismatch]].  Also fuse with issue importance, media coverage, etc., for finding promising attack vectors, and demographic factors indicating if the gaps occur in the population of voters that need persuading.
 - [[#Issue Measurements Salient, Relevant, Important]]
 # Signs of Hope
-- [[Cohn25econRiskRepubs|Cohn25: A risk like no other for Rs]] : Trump seen bad on econ, small 2024 wind, likely D mid-term wins
+- [[Cohn25econRiskRepubs|Cohn25: A risk like no other for Rs]] : Trump seen bad on econ, small 2024 win, likely D mid-term wins
 - 14% of Trump voters are movable?: [[Kessler25noiseTrumpChaosPoll|Kessler25noiseTrumpChaosPoll]] 
-	- best messages:  prices and econ, gov't cut safety risk , digital privacy, tariffs
+	- best messages:  prices and econ, gov't cut safety risk, digital privacy, tariffs
 	- these were things that reduced Trump approval: vote change not tested
 ## Success Stories: Recent Authoritarian Takedowns
 - Poland

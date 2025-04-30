@@ -1,6 +1,6 @@
 ---
 created date: 2025-04-25T14:13:16-07:00
-modified date: 2025-04-29T16:58:48-07:00
+modified date: 2025-04-30T11:06:41-07:00
 ---
 
 This explains the take-home challenge for Habitat Energy: what it does, how well it did it, how to install it and how to test it.  The computational code is in a single file: `./src/trading_optimizer/optimizer.py`. The notebooks used run it, and to generate parts of this report, are in `./notebooks`
@@ -15,7 +15,6 @@ The producer must always sell wind generation at RT prices -- potentially very h
 Note: All numerical data reported here is based on forecasts, as above, rather than actually realized prices or power generation.  The only data available are probabilistic forecasts of market prices and wind power generation, with 100 scenarios for each forecasted variable.
 ## Day ahead hedging
 The risk of losing money on the sale of an hour's wind generation can theoretically be reduced with virtual trades on the day ahead (DA) market. A virtual trader sells (offers) or buys (bids) a chosen amount of power for hours in the next day, and then pays or receives the RT price on that day.  This makes it possible to benefit from the fact that the DA market price is generally higher and more easily forecasted than the RT price, as shown in the graph and table below (same day as above): The mean DA price is $8.30 higher than the mean RT price, and its standard deviation is $148.3 lower. 
-
 
 ![[Work/Between Jobs/Interview Projects/Habitat Energy 2025/attachments/image-2.png|434x505]]
 
@@ -51,30 +50,25 @@ Given the decision variables, the **total revenue** for scenario $i$ is:
     $$
 where $P_{\text{bid\_clear}, i}$ is ideally 1 when $P_{bid} \ge P_{DA,i}$ and is 0 otherwise, and were $P_{\text{offer\_clear}, i}$ is ideally 1 when $P_{offer} \le P_{DA,i}$ and is 0 otherwise (approximations are discussed later).
 
-The expected revenue across the scenarios is then: $$E[R] = \frac{1}{N} \sum_{i=1}^{N} R_i$$
-If there was no goal to control risk, then the trading algorithm's **objective function** would be $E[R]$ i.e. its choice of decision variables would maximize $E[R]$.
+The expected revenue across the scenarios is then: $$E[R] = \frac{1}{N} \sum_{i=1}^{N} R_i$$If there was no goal to control risk, then the trading algorithm's **objective function** would be $E[R]$ i.e. its choice of decision variables would maximize $E[R]$.
 ## Risk reduction
 A trading optimization algorithm (below) that makes decisions that maximize expected revenue would yield the highest total revenue over a large number of days, assuming perfectly calibrated and sufficiently precise forecasts.  In real life, forecasts aren't perfectly calibrated, and there may not be enough days to recover from catastrophic losses. So instead of maximizing expected revenue, risk is often limited by optimizing for expected revenue minus a risk penalty.
 
 Risks of the kind reduced by common strategies such as futures, options and swaps are not on the menu, as we're limited to trading on the DA and RT market.  And, since the available forecasts are stationary -- real markets aren't -- it's not that useful to evaluate any trading strategy that spans more than one day. We must minimize risk on one day of hourly forecasts.  It's nice that the forecasts are scenarios, but since we're not operating storage, there is no memory, meaning that we can treat decisions on each hour independently. Therefore, the approach taken here is to limit risk on each hour.
 ### Risk-penalized objective functions
-For each hour, rather than picking decision variables that maximize $E[R]$, the trading algorithm objective function is: $$ J = E[R] - \lambda \cdot RP(R)$$
-where $RP(R)$ is some penalty function that increases with revenue risk, and $\lambda>=0$ is a weighting coefficient.  At the optimum decision variable choice, $J$ reaches its maximum, $J^*$.
+For each hour, rather than picking decision variables that maximize $E[R]$, the trading algorithm objective function is: $$ J = E[R] - \lambda \cdot RP(R)$$where $RP(R)$ is some penalty function that increases with revenue risk, and $\lambda>=0$ is a weighting coefficient.  At the optimum decision variable choice, $J$ reaches its maximum, $J^*$.
 
 ### Revenue Variance Penalty
-In many situations, the risk is uncertainty of information, in this case, of forecasts and specifically, in the distribution of revenues predicted by the forecasts, given a decision variable choice.  This can be summarized by variance: $$Var(R) = \frac{1}{N} \sum_{i=1}^{N} (R_i - E[R])^2$$
-Optimizing over the variance risk penalty is relatively simple; a weakness is that it penalizes generic uncertainty -- either of making less money than expected or of more money.  We're interested specifically in the risk of *losing* money.
+In many situations, the risk is uncertainty of information, in this case, of forecasts and specifically, in the distribution of revenues predicted by the forecasts, given a decision variable choice.  This can be summarized by variance: $$Var(R) = \frac{1}{N} \sum_{i=1}^{N} (R_i - E[R])^2$$Optimizing over the variance risk penalty is relatively simple; a weakness is that it penalizes generic uncertainty -- either of making less money than expected or of more money.  We're interested specifically in the risk of *losing* money.
 ### **Revenue Semi-Variance** Penalty:
 
 The semi-variance penalty responds to scenarios where revenues are below expectation: where $R < E[R]$. For each scenario, the revenue shortfall, or **downside deviation** is: 
 $$d_i = \max(0, R_i - E[R])$$
-And for the set of scenarios, the **Semi-Variance** is: $$SemiVar(R) = \frac{1}{N} \sum_{i=1}^{N} d_i^2$$
-An advantage of semi-variance over related alternatives e.g. value at risk (VAR), conditional or not, is ease of implementation.  
+And for the set of scenarios, the **Semi-Variance** is: $$SemiVar(R) = \frac{1}{N} \sum_{i=1}^{N} d_i^2$$An advantage of semi-variance over related alternatives e.g. value at risk (VAR), conditional or not, is ease of implementation.  
 ## Trading Algorithm Optimization
 I wanted to experiment with the [pyomo python optimization library](https://www.pyomo.org/), mainly because I'd heard good things about it from colleagues: it was easy to use, modern, well-maintained, and supported many solver types, some for free.  So again, based on what I'd heard, I chose the free [IPOPT solver](https://coin-or.github.io/Ipopt/).  This [interior point](https://link.springer.com/chapter/10.1007/978-3-319-58356-3_20) software is said to be well-maintained, robustly coded, and capable of non-linear optimization (the market clearing rules in this project are non-linear, as are the decision variable products).  After a couple toy experiments, I stuck with IPOPT, and worked around its limitations.
 ### Market Clearing Rule Probability
 One IPOPT limitation was that it actually could not handle the infinitely sharp non-linearities in the DA clearing rules.  At this point, I could have switched to a [Mixed Integer Linear Programming](https://epubs.siam.org/doi/abs/10.1137/130915303) approach, and used binary clearing variables. But instead, I used a recommended way around this problem: a smoothed, non-linear clearing probability:
-
 $$
 \text{Pclear}(\Delta c) = \frac{1}{1 + \exp(\gamma \cdot \Delta c)}
 $$
@@ -89,21 +83,16 @@ A set of example clearing probabilities is shown below:
 ![[Work/Between Jobs/Interview Projects/Habitat Energy 2025/attachments/image-3.png]]
 ### Semi-Variance Slack Variables
 It was straight-forward to implement the Revenue Variance Penalty with IPOPT functions, but it turned out that a $max()$ function needed for the semi-variance downside deviation was not available.  However, implementation was again straight-forward with the addition of constrained **semi-deviation slack variables**.  This entailed redefining the shortfall variable, $d_i$, above, as:
-    $$
+  $$
     d_i \ge E[R] - R_i 
     $$
-
 and then subjecting it to an optimizer non-negativity constraint, $d_i \ge 0$.  This ensures $d_i = \max(0, E[R] - R_i)$.
-
 ### Final Optimization Objective Function
-
 Substituting the definitions above, and using the slack variables for semi-variance, the final optimization objective function is:
 $$
 J = \left(\frac{1}{N} \sum_{i=1}^{N} R_i\right) - \lambda_{var} \left(\frac{1}{N} \sum_{i=1}^{N} (R_i - E[R])^2\right) - \lambda_{semi} \left(\frac{1}{N} \sum_{i=1}^{N} d_i^2\right)
 $$
-
 where $\lambda_{var}>=0$ is the variance penalty weight, and $\lambda_{semi} >= 0$ is the semi-deviation penalty weight.  For this project, only one of the variables was set to non-zero at a time.  It would be possible to use both in a way similar to the $l1$ and $l2$ norm complexity penalty weights in [elastic net regression](https://www.tandfonline.com/doi/abs/10.1080/02664763.2020.1787355).  But this wasn't explored.
-
 ### Decision Variable Bounds and Initial Values
 During optimization, the decision variables were bounded, and each needed an initial value.  The manually determined values were:
 
@@ -136,18 +125,16 @@ The example plot below shows the results of a semi-variance optimization run acr
 ## Comparison of Trading Strategies
 
 The histograms below show the expected hourly distributions for the optimization and data input cases demoed here.
-
 #### RT-only
-At the top, is the hourly revenue histogram for the case when the trading "algorithm" is to simply accept the RT price.  This produces the lowest mean hourly revenue (vertical red line) of all the cases: DA/RT arbitrage has benefits.  The negative prices shown in the scenario plots above don't show up in the hourly averages below because the hourly mean price is always above zero.  Negative risk would show up if I plotted every scenario, so this is a weakness of these plots.
+At the top, is the hourly revenue histogram for the case when the trading algorithm is to simply accept the RT price.  This produces the lowest mean hourly revenue (vertical red line) of all the cases: DA/RT arbitrage has benefits.  The negative prices shown in the scenario plots above don't show up in the hourly averages below because the hourly mean price is always above zero.  Negative risk would show up if I plotted every scenario, so this is a weakness of these plots.
 #### Deterministic
 In the next plot down, stand-ins for deterministic forecasts were generated by computing the scenario mean for the hour. The average revenue for the day is higher than the RT-only case, suggesting that DA/RT arbitrage is worth it, even for this simple forecast.  Note that there are hours with negative average revenue, and that the revenue variance is high -- when given deterministic forecasts, there's no way for the trading algorithm to assess downside risk.
 
 ![[Work/Between Jobs/Interview Projects/Habitat Energy 2025/attachments/image-14.png]]
-
 #### No Risk Penalty
 It's no surprise that the case with the highest revenue variance of all -- along with the most negative hours -- is the one where DA/RT arbitrage is done on scenario forecasts, but with no risk penalty.  This also has the highest expected value, as you would expect on this idealized data.
 #### Variance Risk Penalty
-This one has the smallest hourly revenue spread, small enough that it has completely avoided negative hours, but since the penalty is equally sensitive to extrema above the mean, the result is that high profits are also missed, and this gives the variance penalty the lowest daily average revenue of the DA/RT arbitrage results.
+This one has the smallest hourly revenue spread, small enough that it has completely avoided negative hours, but since the penalty is equally sensitive to extrema above the mean, the result is that high revenues are also missed, and this gives the variance penalty the lowest daily average revenue of the DA/RT arbitrage results.
 #### Semi-Variance Penalty
 For the semi-variance penalty, there is one slightly negative value, but more very positive hours than with the variance penalty -- the daily average is better.
 # Conclusions
@@ -165,9 +152,7 @@ For the semi-variance penalty, there is one slightly negative value, but more ve
 Summarized in the table above, the highest total revenue over the day is achieved with no **Risk Risk Penalty** and this is also the riskiest method. The least apparently risky of all is surprisingly, simply doing **RT-only**, although this is partly an artifact of the hourly averaging.  **Deterministic** forecasts are quite good for such a simple approach, but they have the second highest risk -- much higher than that of the **Semi-Variance** penalty, which is also the second most profitable.  Finally, the **Variance Penalty** has quite low risk but mediocre total revenue.
 
 On this data, with these settings, the **Semi-Variance** penalty may be the happy medium.  But its true merit can only be confirmed on real data, and a thorough experimental design that real data would make possible.
-
 # Installation, Testing, and Running this Package
-
 ## Environment Setup
 1. unzip wind_trader.zip
 2. install python dependencies (assuming you have `uv` installed already)
@@ -181,8 +166,7 @@ On this data, with these settings, the **Semi-Variance** penalty may be the happ
 	1. Download the IPOPT solver binary from: https://apmonitor.com/wiki/index.php/Main/DownloadIpopt
 	2. unzip and copy the the IPOPT (v3.9.1) AMPL Executable (ipopt.exe on Windows; ipopt elsewhere)
 	3. copy it to `wind_trader\bin`
-	   
-4. Run tests (91% coverage on the main code: optimizer.py).  A TODO here is to add more numerical tests: simple, but I'm out of time...   
+4. Run tests (91% coverage on the main code: `optimizer.py`).  A TODO here is to add more numerical tests: simple, but I'm out of time...   
 ```bash
 cd wind_trader
 uv run pytest --cov=trading_optimizer --cov-report=term-missing --cov-report=html
@@ -195,7 +179,7 @@ uv run pytest --cov=trading_optimizer --cov-report=term-missing --cov-report=htm
 
 The notebooks are:
 
-- data_viewer.ipynb:  preliminary data inspection
-- clear_smooth_test.ipynb:  dev experiments with clearing probabilties
-- trader_Nhours_pyomo.ipynb: the experiment runnner
-- summarize_runs.ipynb: makes tables and graphs from merged outputs of multiple runs of trader_Nhours_pyomo.ipynb
+- `data_viewer.ipynb`:  preliminary data inspection
+- `clear_smooth_test.ipynb`:  dev experiments with clearing probabilities
+- `trader_Nhours_pyomo.ipynb`: the experiment runner
+- `summarize_runs.ipynb`: makes tables and graphs from merged outputs of multiple runs of `trader_Nhours_pyomo.ipynb`
