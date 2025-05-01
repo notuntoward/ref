@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-04-30T10:48:45-07:00
+modified date: 2025-05-01T13:28:57-07:00
 tags:
   - politics
   - polling
@@ -21,8 +21,14 @@ tags:
 - Geographic voting patterns: [[Woodland24electAmericanNations|Woodland24: The 2024 Presidential Election and the American Nations]] 
 ## Factors Contributing to Harris Loss
 ### Biden
+What I think: One of the biggest.  He should have not run, should have dropped out sooner, and should have showcased here during his 1st term.
+### Harris
+Was she a crappy candidate?  A little, I think.
 ### AI
+What I think: AFIK, this wasn't too important.
 ### Crime, disorder, homelessness
+I think this was fairly big.  Ds earned a rep for incompetent.
+
 - Tolerance of crime and disorder pissed off people, D's lost much in "diverse cities"  [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
 #### Examples of AI in politics
 - [[Kapoor23misinfoAInotTheProb|Kapoor23: We Looked at 78 Election Deepfakes. Political Misinformation is not an AI Problem.]] 
@@ -85,7 +91,7 @@ I couldn't hear much, but I think the first speaker started talking about Native
 - Harris & D's didn't say much: [[Longwell25demsChenyDemoc|Longwell25: Did Democrats Have a Liz Cheney Problem? (with Jen Psaki)]] 
 ### The Economy
 #### Economy really was bad
-- [[Ludwig25votersCorrectEcon|Ludwig25: Voters Were Right About the Economy. The Data Was Wrong.]] 
+- [[Ludwig25votersCorrectEcon|Ludwig25: Voters Were Right About the Economy. The Data Was Wrong.]]
 - [[MorningConsult25priceSurpriseIdx|MorningConsult25: price surprise index]] 
 - bad economy and interactions: [[Politics/Political Causality/US Elections 2024.md#Issue/Message Interaction Examples |Issue/Message Interaction Examples]]
 - Biden had high inflation and high interest rates, which voters hated: [[Prokop25trumpEconWorstPoll|Prokop25trumpEconWorstPoll]] 
@@ -101,7 +107,7 @@ I couldn't hear much, but I think the first speaker started talking about Native
 - [[Parker25trumpTariffEq|Parker25: Explaining the Trump Tariff Equation]]: how he came up with it.
 - Econ and costs are best Trump attack: [[Kessler25noiseTrumpChaosPoll|Kessler25noiseTrumpChaosPoll]] 
 - Inflationary pressure due to COVID
-	- Shipping congestion/rates: [[JoeBlogs25usSupplyChainMeltDown|JoeBlogs25: USA Supply Chain Meltdown]] 
+	- Shipping congestion/rates: [[JoeBlogs25usSupplyChainMeltDown|JoeBlogs25: USA Supply Chain Meltdown]]
 #### Weak economy doomed D's
 - many posts say so
 - but some say it was actually a perceived strong economy doomed the D's, rather than a weak real/perceived econ (Pastor24greatBidenEconHelpedTrump)
@@ -282,7 +288,6 @@ Just more predictor variables for various things. Things similar to education, w
 	- [[Young23wrongAppetiteMisinfo|Young23: Wrong: How media, politics, and identity drive our appetite for misinformation]] 
 	- [[Rudloff22epistemicBeliefConspiracy|Rudloff22: Beliefs about the nature of knowledge shape responses to the pandemic: Epistemic beliefs, the Dark Factor of Personality, and COVID-19–related conspiracy ideation and behavior]] 
 - Conspiracy belief doesn't change attitude towards democracy but authoritarianism increases conspiracy belief (probably): [[Dolan25authoritPrimeCnsprcy|Dolan25: Authoritarian minds may be primed for conspiracy beliefs, study suggests]] 
-
 ## Authenticity and Trust: how to get it
 - Musk's internet language and imagery looks "authentic" to online gamers : [[Isaac25internetCringeMusk|Isaac25: Elon Musk’s Internet: So Based, Much Wow. So Cringe?]] 
 - Trumps tweets made him look authentic, for some reason [[Isaac25internetCringeMusk|Isaac25internetCringeMusk]] 
@@ -297,7 +302,6 @@ Just more predictor variables for various things. Things similar to education, w
 - Moderates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]] 
 - Voters trust Trump and Media *equally*! (37%): [[MorningConsult25trustTrumpVsMedia|MorningConsult25: Americans trust Trump as much]] 
 - Consumer sentiment polarization: [[MorningConsult25trump100days|MorningConsult25trump100: 100 Days of Trump]] 
-
 # Rising Authoritarianism
 - The R's like democracy way less than the Ds: [[Bump25polSciworryRstrongman|Bump25: What political scientists see as worrisome, Republicans see as welcome]] 
 - A good fear-of-Trump & Co cautionary quote from [[Arendt76originsTotalitariansim|Arendt76: The origins of totalitarianism]]:
@@ -318,7 +322,6 @@ Will the Rs ever pay attention to evidence?
 - 14% of Trump voters might be movable [[Kessler25noiseTrumpChaosPoll]]
 - 100 day polls: Rs stick with Trump, but not rest of country [[Balz25trumpApprovSink]]
 # Predictive Models and Analysis Techniques
-
 - market sentiment indexes predicted by economic variables (Weber24implicitCoordInflateShock).  Could be *voter* sentiment predicted by other variables
 	- more on econ features: [[MorningConsult25priceSurpriseIdx|MorningConsult25priceSurpriseIdx]] 
 - economic features
@@ -407,7 +410,6 @@ A lot of polling is important only as a clue to how you can actually change the 
 		- Lewis24demsGenderID : D's can't explain
 		- Peters25policySupportMoreThanTrump :  majority is OK with limit how doctors can treat children struggling w/ gender ID
 		- Edsall25deepWoundDems : transgender was in top 3 Trump campaign talking points (I see polls told him where the public stood)
-		- 
 ### Issue/Message Interaction Examples
 - actual 2024 election examples
 	- wokeism and working class economic worries
@@ -473,8 +475,8 @@ A lot of polling is important only as a clue to how you can actually change the 
 	- Estimate of marginal effect on each class, and on regions
 		- [ ] consider: Grose24youngWimynWillTalkSexistm, won't acknowledge young feminist saturation, yet this was only 9% of population (according to her article's comments, but I can check this)
 	- Estimate of marginal effect on candidate/party/incumbent popularity, turnout, vote consequence
-	- besides raw econ numbers, consider how this is perceived e.g. the "country's good/bad direction," etc.like in McMann24mornCnsltRateDefMeth
-- something about campaign timing: I think I zoteroed something about timing, but I can't find it at the moment
+	- besides raw econ numbers, consider how this is perceived e.g. the "country's good/bad direction," etc. Like in McMann24mornCnsltRateDefMeth
+- something about campaign timing: I think I zotero'ed something about timing, but I can't find it at the moment
 - something about party unity, since that seems to matter
 - a candidate's purity rating
 	- how out of step he/she is with the electorate
@@ -536,7 +538,6 @@ e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is t
 - [[BrightLineWatch25democracyRrsrchOrg|BrightLineWatch25: Bright Line Watch]] 
 - [Third Way](https://www.thirdway.org/): semi-democratic polling
 - [[Chenoweth24crowdCountCnsrt|Chenoweth24: Crowd Counting Consortium]]: crowd sizes, etc.
-
 # Also
 - [[Ranked Choice Voting]]
 - 
