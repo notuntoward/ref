@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-05-02T10:08:50-07:00
+modified date: 2025-05-03T10:48:06-07:00
 tags:
   - politics
   - polling
@@ -538,6 +538,7 @@ e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is t
 - [[BrightLineWatch25democracyRrsrchOrg|BrightLineWatch25: Bright Line Watch]] 
 - [Third Way](https://www.thirdway.org/): semi-democratic polling
 - [[Chenoweth24crowdCountCnsrt|Chenoweth24: Crowd Counting Consortium]]: crowd sizes, etc.
+- [[SeattleMetC25indexRsrch|SeattleMetC25: The Index]] (sentiment polling for Seattle area)
 # Also
 - [[Ranked Choice Voting]]
 - 
