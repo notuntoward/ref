@@ -1,6 +1,6 @@
 ---
 created date: 2024-08-29T11:11:35-07:00
-modified date: 2025-01-19T08:59:46-08:00
+modified date: 2025-05-04T16:03:43-07:00
 ---
 # WA State Provided Health Insurance (Apple Health)
 
@@ -10,10 +10,11 @@ modified date: 2025-01-19T08:59:46-08:00
 - Insurance Card should be mailed to me:
 	- [ProviderOne services card and ...](https://www.hca.wa.gov/free-or-low-cost-health-care/i-help-others-apply-and-access-apple-health/providerone-services-card-and-health-plan-card)
 - I'm eligible. After I filled out the web page forms, I got this: [[Eligibility_Results_11_02_2024.pdf]]
+	- eligibility details from pdf above:
+	  ![[image.png]]
 - I chose the **Community Health Plan of WA** on 11/2/24 (Application ID: 3795810). Oddly, the state's page says I signed up on 10/1/24:
   ![[Unemployment Health Insurance-20241102153616236.webp|478]]
 - State approval letter, can show it to Doctor or Pharmacist, it says
-  
 ## Health Insurance Plan Ratings
 
 Seems like **Community Health Plan of WA** is the best plan.

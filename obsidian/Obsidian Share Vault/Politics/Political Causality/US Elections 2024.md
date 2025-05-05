@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-05-03T10:48:06-07:00
+modified date: 2025-05-04T13:49:44-07:00
 tags:
   - politics
   - polling
@@ -228,7 +228,7 @@ From here:
 - **Salient** is about what you notice first.
 - **Relevant** is about what connects to the topic.
 - **Important** is about what matters most.
-### Issue Measurements: Salient, Relevant, Important
+### Issue Measurements: Salience, Relevance, Importance
 - "Important" is hard to measure, not objective?
 - Measurement of Issue Salience and Relevance
 	- population-level measures (a kind of poll)
@@ -241,7 +241,7 @@ From here:
 ## How voters weight different policies in their voting decision (sensitivity analysis)
 - Econ most imp by far: [[Klein25demsFaceTrumpWon|Klein25: Democrats Need to Face Why Trump Won]] 
 - 100 days: Econ and Immig most important: [[Salvanto25trump100dayPollTariff|Salvanto25trump100: Trump's first 100 days seen as bringing big changes, but still too much focus on tariffs  — CBS News poll]] 
-- [[#Issue Measurements Salient, Relevant, Important]]
+- [[#Issue Measurements Salience, Relevance, Importance]]
 ## Media effectiveness
 - e.g. Yurieff24trumpUsedInfluencers : did this really work as claimed here?
 - ? how do advertisers measure or (get proxies of) effectiveness of media message --> purchase
@@ -365,7 +365,7 @@ About polls 100 days into a term.  Factors out the fact that most presidents los
 ## How communicate policy to voters who know nothing?
 - Voters know shockingly little and this was who Harris needed to convince: Rubin24demsLowInfoVoterShortcut
 - [ ] # ID features that are salient to low info voters just before election, when they pay a little attention: Rubin24demsLowInfoVoterShortcut
-	- [[#Issue Measurements Salient, Relevant, Important]]
+	- [[#Issue Measurements Salience, Relevance, Importance]]
 ## Are there ideological fractures in Trump coalition that could be exploited by D's?
 - or are new Rs "tolerant" and so they won't have ideological fights?
 - one guy's take: Walther24barstoolConservatism
@@ -465,7 +465,7 @@ A lot of polling is important only as a clue to how you can actually change the 
 ## Political State / Warning Realtime Dashboard
 - Policy/message effects
 	- Venn diagram or stack plot stacking votes with different combinations of priorities, according to pols like Lee24abortionVsEconomy.
-	- [[Politics/Political Causality/US Elections 2024.md#Issue Measurements Salient, Relevant, Important|Measurement: Salient, Relevant, Important]]
+	- [[Politics/Political Causality/US Elections 2024.md#Issue Measurements Salience, Relevance, Importance|Measurement: Salient, Relevant, Important]]
 - Current/forecasted economy, electoral consequence forecast
 	- Economic buying power of different socio-econ groups
 		- realtime cost of living indicator
@@ -496,7 +496,7 @@ A lot of polling is important only as a clue to how you can actually change the 
 ### Salient hypocrisy tracker
 Gaps in public perception of where Trump is spending his time vs. what people think he should prioritize,
 e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is the biggest mismatch]].  Also fuse with issue importance, media coverage, etc., for finding promising attack vectors, and demographic factors indicating if the gaps occur in the population of voters that need persuading.
-- [[#Issue Measurements Salient, Relevant, Important]]
+- [[#Issue Measurements Salience, Relevance, Importance]]
 # Signs of Hope
 - [[Cohn25econRiskRepubs|Cohn25: A risk like no other for Rs]] : Trump seen bad on econ, small 2024 win, likely D mid-term wins
 - 14% of Trump voters are movable?: [[Kessler25noiseTrumpChaosPoll|Kessler25noiseTrumpChaosPoll]] 
