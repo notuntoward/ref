@@ -13,7 +13,7 @@ ZoteroTags:
 ZoteroCollections:
   - hot_takes_us_elect_2024
 created date: 2025-02-26T19:04:55-08:00
-modified date: 2025-02-26T21:33:31-08:00
+modified date: 2025-05-04T23:18:59-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/GJA2VKA3)   | [**URL**](https://www.washingtonpost.com/opinions/2025/02/26/trump-threats-democracy-experts-polling/) | **[[Bump25polSciworryRstrongman.html|HTM]]**
@@ -55,10 +55,9 @@ Over half of the R's wouldn't mind a single elected strongman with no congress, 
 
 The R's strongly approve of Trump's anti-democratic actions, *because* they affect democracy.  Luckily, most of both groups still think democracy is a "good" or "fairly good" a system of government, but 55% of Trump supporters say strongman, no congress leaders are good or fairly good.
 
-Looking at Trump-caused events rated by a group of political scientists as serious or extraordinary threats to democracy, around 75% of R's *approve*!  They approved of no late actions (I suppose shaky) by Biden, none of which were not rated as serious democracy threats.
+Looking at Trump-caused events rated by a group of political scientists as serious or extraordinary threats to democracy, around 75% of R's *approve*!  They approved of no late actions (I suppose shaky) by Biden, none of which were rated as serious democracy threats.
 
 ### Data Sources
-- [[BrightLineWatch25democracyRrsrchOrg|BrightLineWatch25: Bright Line Watch]] 
 - [ ] [[BrightLineWatch25accelTrnsgrssnTrump|BrightLineWatch25: Accelerated transgressions in the second Trump presidency | Bright Line Watch]] : **way** more interesting detail than what made it into Bump's article.  Worth looking into sometime
 
 
