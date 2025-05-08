@@ -1,6 +1,13 @@
- 
- by [[The Ezra Klein Show]] 
-
+---
+title: Democrats Need to Face Why Trump Won The Ezra Klein Show
+source: https://www.youtube.com/watch?v=Sx0J7dIlL7c
+author: "[[The Ezra Klein Show]]"
+platform: "[[www.youtube.com]]"
+published date: 2025-03-18 09:00:36
+created: 2025-03-28 03:55:25.623091
+created date: 2025-05-06T12:52:39-07:00
+modified date: 2025-05-06T12:52:39-07:00
+---
 **Summary Note** 
 - 
 ```timestamp 

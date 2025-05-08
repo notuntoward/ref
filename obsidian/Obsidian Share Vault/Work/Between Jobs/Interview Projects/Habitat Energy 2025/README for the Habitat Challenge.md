@@ -1,6 +1,6 @@
 ---
 created date: 2025-04-25T14:13:16-07:00
-modified date: 2025-04-30T11:06:41-07:00
+modified date: 2025-05-06T13:46:10-07:00
 ---
 
 This explains the take-home challenge for Habitat Energy: what it does, how well it did it, how to install it and how to test it.  The computational code is in a single file: `./src/trading_optimizer/optimizer.py`. The notebooks used run it, and to generate parts of this report, are in `./notebooks`
@@ -136,7 +136,7 @@ It's no surprise that the case with the highest revenue variance of all -- along
 #### Variance Risk Penalty
 This one has the smallest hourly revenue spread, small enough that it has completely avoided negative hours, but since the penalty is equally sensitive to extrema above the mean, the result is that high revenues are also missed, and this gives the variance penalty the lowest daily average revenue of the DA/RT arbitrage results.
 #### Semi-Variance Penalty
-For the semi-variance penalty, there is one slightly negative value, but more very positive hours than with the variance penalty -- the daily average is better.
+For the semi-variance penalty, there is one slightly negative hour, but more very positive hours than with the variance penalty -- the daily average is better.
 # Conclusions
 
 | Statistic           | RT-only | Deterministic | No Risk Penalty | Variance Penalty | Semi-Variance Penalty |

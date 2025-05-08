@@ -1,10 +1,13 @@
 ---
-created date: 2025-03-27T15:23:43-07:00
-modified date: 2025-03-28T08:37:37-07:00
+title: AWS reInvent 2018 Learning Applications Using TensorFlow Advanced Microgrid Solutions AIM401 R2
+source: https://www.youtube.com/watch?v=VIEp4GR9BRc
+author: "[[Amazon Web Services]]"
+platform: "[[www.youtube.com]]"
+published date: 2018-12-01 21:32:16
+created: 2023-10-01 19:12:36.496033
+created date: 2025-05-06T12:52:39-07:00
+modified date: 2025-05-06T12:52:39-07:00
 ---
- 
- by [[Amazon Web Services]] 
-
 **Summary Note** 
 - 
 ```timestamp 

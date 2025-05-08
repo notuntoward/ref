@@ -1,10 +1,13 @@
 ---
-created date: 2025-03-27T15:23:43-07:00
-modified date: 2025-03-27T15:23:43-07:00
+title: ML News Groq Gemma Sora Gemini and Air Canadas chatbot troubles
+source: https://www.youtube.com/watch?v=3nF8Z6HgSLQ
+author: "[[Yannic Kilcher]]"
+platform: "[[www.youtube.com]]"
+published date: 2024-03-01 22:57:18
+created: 2024-03-04 22:52:32.913733
+created date: 2025-05-06T12:52:39-07:00
+modified date: 2025-05-06T12:52:39-07:00
 ---
- 
- by [[Yannic Kilcher]] 
-
 Google's Gemma models are 2B and 7B param models.  Much smaller.  Open.
 
 Outperform llambda models of similar sizes, so quite performant.

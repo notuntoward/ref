@@ -1,10 +1,13 @@
 ---
-created date: 2025-03-27T15:23:43-07:00
-modified date: 2025-03-27T15:23:43-07:00
+title: Best Japanning Recipe
+source: https://www.youtube.com/watch?v=SBqgpdBNrt8
+author: "[[Hand Tool Rescue]]"
+platform: "[[www.youtube.com]]"
+published date: 2019-08-01 13:41:59
+created: 2023-09-29 05:03:14.554947
+created date: 2025-05-06T12:52:39-07:00
+modified date: 2025-05-06T12:52:39-07:00
 ---
- 
- by [[Hand Tool Rescue]] 
-
 - 
 ```timestamp 
 27:57 

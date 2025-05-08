@@ -47,7 +47,7 @@ Replace the transformer with one with the following ideal attributes:
 - [Tutorial: Phase Dimming - Ozuno](https://ozuno.com/blog/phase-dimming-a-tutorial/)[Tutorial: Phase Dimming - Ozuno](https://ozuno.com/blog/phase-dimming-a-tutorial/)
 - [Problems with dimming on 120V side of transformer](https://www.quora.com/Can-I-put-a-dimmer-on-the-110v-side-of-a-transformer-to-reduce-the-12v-output-and-dim-LED-lights)
 - [12VAC Dimmer, Electrical Box Mount, Decora Plate - YardBright® Landscape Lighting](https://yardbright.com/12vac-dimmer/). Expensive, pointless?
-- yet there are apparently "dimmable" 120 VAC to 12 VDC transformers ([[House Projects/Kris & Mary's dimmable LED kitchen lights.md#Possible transformer replacements |Possible transformer replacements]])
+- yet there are apparently "dimmable" 120 VAC to 12 VDC transformers ([[#Possible transformer replacements|Possible transformer replacements]])
 ## Replace LED bulbs?
 
 - Many "dimmable" 110-12V transformers, but they're 12 V AC, not DC.  

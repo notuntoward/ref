@@ -41,7 +41,7 @@ modified date: 2024-12-17T08:51:31-08:00
 ## My list of Questions
 
 ### Wire to house and 200 A box
-![[#^bc19ef]]
+![[#^bc19ef|^bc19ef]]
 - [ ] Sub-panel instead of new box?  If wire is big enough, isn't limiting factor the 100A main breaker in the existing panel?
 - [ ] Why 200 A: future heat pump (air, water), induction oven, EV
 - [ ] Recommended homeowner wiring reference?  Quick Guide is just a copy of "added pages"
