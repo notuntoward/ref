@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-05-08T21:09:51-07:00
+modified date: 2025-05-09T08:50:32-07:00
 tags:
   - politics
   - polling
@@ -219,6 +219,7 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 - DOGE fires NHTSA self-driving experts while Tesla had $1.19B potential fines from NHTSA ($2.37B total Biden era liabilities): [[Robins-Early25muskConflictInt]]
 - Musk is incompetent
 	- [[Melber25MuskDemot100Days|Melber25MuskDemot100: Musk demoted as he loses over $100 BILLION in 100 Days: Ari Melber’s report on Trump slump]] 
+- [[Jamison25yarvinInspireDOGE|Jamison25: Curtis Yarvin helped inspire DOGE. Now he scorns it.]] Silicon Valley guy worshiped by DC and Valley and DOGE MAGA wants a dictatorship.
 # Questions
 ## How to get and keep attention
 - the two axes of clickbait and A/B B testing: [[Muller21ClickbaitUnreasEffect|Muller21: Clickbait is Unreasonably Effective]] 
@@ -302,6 +303,7 @@ Just more predictor variables for various things. Things similar to education, w
 - Moderates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]] 
 - Voters trust Trump and Media *equally*! (37%): [[MorningConsult25trustTrumpVsMedia|MorningConsult25: Americans trust Trump as much]] 
 - Consumer sentiment polarization: [[MorningConsult25trump100days|MorningConsult25trump100: 100 Days of Trump]] 
+- [[#Musk as traitor to America]]
 # Rising Authoritarianism
 - The R's like democracy way less than the Ds: [[Bump25polSciworryRstrongman|Bump25: What political scientists see as worrisome, Republicans see as welcome]] 
 - A good fear-of-Trump & Co cautionary quote from [[Arendt76originsTotalitariansim|Arendt76: The origins of totalitarianism]]:
@@ -311,7 +313,7 @@ Just more predictor variables for various things. Things similar to education, w
 - Authoritarianism causes conspiracy belief, not vice versa (probably): [[Dolan25authoritPrimeCnsprcy|Dolan25: Authoritarian minds may be primed for conspiracy beliefs, study suggests]] 
 - 100 day polls: Trump s/ work with congress, Supreme court [[Balz25trumpApprovSink]]
 - Trumps massive reliance on executive orders (100 days): [[Melber25MuskDemot100Days|Melber25MuskDemot100: Musk demoted as he loses over $100 BILLION in 100 Days: Ari Melber’s report on Trump slump]] 
-- [[Jamison25yarvinInspireDOGE|Jamison25: Curtis Yarvin helped inspire DOGE. Now he scorns it.]] Silicon Valley guy worshiped by DC and Valley MAGA wants a dictatorship.
+- [[Jamison25yarvinInspireDOGE|Jamison25: Curtis Yarvin helped inspire DOGE. Now he scorns it.]] Silicon Valley guy worshiped by DC and Valley and DOGE MAGA wants a dictatorship.
 # Breaking the Republican Fever
 Will the Rs ever pay attention to evidence?
 - Apparently at least a few Rs can: [[Prokop25trumpEconWorstPoll|Prokop25: Trump is torching his greatest political asset]] 
@@ -322,6 +324,7 @@ Will the Rs ever pay attention to evidence?
 - [[Cohn25econRiskRepubs|Cohn25: A risk like no other for Republicans]] : bad trump econ ratings, cracks in Senate Rs
 - 14% of Trump voters might be movable [[Kessler25noiseTrumpChaosPoll]]
 - 100 day polls: Rs stick with Trump, but not rest of country [[Balz25trumpApprovSink]]
+- [[#Polarization Enhancement Your fellow R is evil (algorithmic)]]
 # Predictive Models and Analysis Techniques
 - market sentiment indexes predicted by economic variables (Weber24implicitCoordInflateShock).  Could be *voter* sentiment predicted by other variables
 	- more on econ features: [[MorningConsult25priceSurpriseIdx|MorningConsult25priceSurpriseIdx]] 
@@ -504,6 +507,8 @@ e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is t
 	- best messages:  prices and econ, gov't cut safety risk, digital privacy, tariffs
 	- these were things that reduced Trump approval: vote change not tested
 ## Success Stories: Recent Authoritarian Takedowns
+- US
+	- [[Dionne24hiddenVictoryProgrssiv|Dionne24: The lessons in progressives’ hidden 2024 victories]] 
 - Poland
 	- [[Gora23polandEndRightWing|Gora23: Elections in Poland Bring the End of Right-wing Populist Rule - Brexit Institute]] 
 	- [[Watmough23populistEndPoland|Watmough23: Eight Years of Populist Rule in Poland Comes to an End - ECPS]] 
