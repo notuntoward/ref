@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-05-04T13:49:44-07:00
+modified date: 2025-05-08T21:09:51-07:00
 tags:
   - politics
   - polling
@@ -311,6 +311,7 @@ Just more predictor variables for various things. Things similar to education, w
 - Authoritarianism causes conspiracy belief, not vice versa (probably): [[Dolan25authoritPrimeCnsprcy|Dolan25: Authoritarian minds may be primed for conspiracy beliefs, study suggests]] 
 - 100 day polls: Trump s/ work with congress, Supreme court [[Balz25trumpApprovSink]]
 - Trumps massive reliance on executive orders (100 days): [[Melber25MuskDemot100Days|Melber25MuskDemot100: Musk demoted as he loses over $100 BILLION in 100 Days: Ari Melber’s report on Trump slump]] 
+- [[Jamison25yarvinInspireDOGE|Jamison25: Curtis Yarvin helped inspire DOGE. Now he scorns it.]] Silicon Valley guy worshiped by DC and Valley MAGA wants a dictatorship.
 # Breaking the Republican Fever
 Will the Rs ever pay attention to evidence?
 - Apparently at least a few Rs can: [[Prokop25trumpEconWorstPoll|Prokop25: Trump is torching his greatest political asset]] 
