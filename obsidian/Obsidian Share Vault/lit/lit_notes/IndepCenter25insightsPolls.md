@@ -15,7 +15,7 @@ ZoteroCollections:
   - voting_systems
   - partyorganization
 created date: 5/11/2025, 10:00:35 AM
-modified date: 2025-05-11T10:00:50-07:00
+modified date: 2025-05-11T10:09:50-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/M4MCZV3E)  | [**URL**](https://www.independentcenter.org/insights) | **[[IndepCenter25insightsPolls.html|HTM]]**
@@ -45,6 +45,6 @@ modified date: 2025-05-11T10:00:50-07:00
 
 %% begin Obsidian Notes %%
 ___
-==Delete this and write here. Don't delete the `persist` directives above and below.==
+An organization that wants to select more independent candidates, kind of a third party party.  Not clear if they want that or if they want to weaken the Ds.  But this page has a lot of polls that bear on 3rd party possibilities.
 ___
 %% end Obsidian Notes %%
