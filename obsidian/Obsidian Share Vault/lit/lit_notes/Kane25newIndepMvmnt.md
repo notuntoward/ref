@@ -1,26 +1,26 @@
 ---
-category: 
-- literaturenote
-tags:
+category:
+  - literaturenote
+tags: 
 read: false
 in-progress: false
 linked: false
 aliases:
-- "New independent movement wants to deny both parties a House majority"
-- "New independent movement wants to"
+  - New independent movement wants to deny both parties a House majority
+  - New independent movement wants to
 citekey: Kane25newIndepMvmnt
-ZoteroTags: 
-- obslitnote
-ZoteroCollections: 
-- polarization
-- voting_systems
-- partyorganization
-- campaignmoney
-- politicalml
-- pollmethods
-- data_sources,_political
+ZoteroTags:
+  - obslitnote
+ZoteroCollections:
+  - polarization
+  - voting_systems
+  - partyorganization
+  - campaignmoney
+  - politicalml
+  - pollmethods
+  - data_sources,_political
 created date: 5/11/2025, 10:43:38 AM
-modified date:
+modified date: 2025-05-12T11:24:10-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/SKVVXXE7)  | [**URL**](https://www.washingtonpost.com/politics/2025/05/10/independents-two-party-system-house/) | **[[Kane25newIndepMvmnt.html|HTM]]**
