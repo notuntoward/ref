@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-05-09T14:47:11-07:00
+modified date: 2025-05-13T15:15:15-07:00
 tags:
   - politics
   - polling
@@ -22,6 +22,7 @@ tags:
 ## Factors Contributing to Harris Loss
 ### Biden
 What I think: One of the biggest.  He should have not run, should have dropped out sooner, and should have showcased here during his 1st term.
+- [[Tapper25bidenHandedTrumpPres|Tapper25: How Joe Biden Handed the Presidency to Donald Trump]]: the too-old denial
 ### Harris
 Was she a crappy candidate?  A little, I think.
 ### AI
