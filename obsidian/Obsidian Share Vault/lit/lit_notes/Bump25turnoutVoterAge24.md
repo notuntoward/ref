@@ -13,7 +13,7 @@ ZoteroTags:
 ZoteroCollections:
   - hot_takes_us_elect_2024
 created date: 5/15/2025, 12:09:27 PM
-modified date: 2025-05-15T12:09:28-07:00
+modified date: 2025-05-15T18:46:37-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/3UAMJAZT)  | [**URL**](https://www.washingtonpost.com/opinions/2025/05/15/young-voters-2024-election-turnout/) | **[[Bump25turnoutVoterAge24.html|HTM]]**
