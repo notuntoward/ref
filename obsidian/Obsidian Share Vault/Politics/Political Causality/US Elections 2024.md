@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-05-13T15:15:15-07:00
+modified date: 2025-05-22T09:57:50-07:00
 tags:
   - politics
   - polling
@@ -182,7 +182,10 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 	- the true: equations asked, how much do we have to raise taxes on consumers to force them to stop buying
 	- and ven these equations were botched, due to Trump & Co's incompetence
 - R politicians knew this was BS, but were afraid of Trump, wanted to bigger careers, and went along, even praised Trump!
-- 100 days: R's happy with Trump tarffs & immigration [[Salvanto25trump100dayPollTariff]]
+- 100 days: R's happy with Trump tariffs & immigration [[Salvanto25trump100dayPollTariff]]
+### Republican Deficit Hypocrisy
+- [[Bogage25houseBillDeficit|Bogage25: What’s in Trump and Republicans’ giant tax and immigration bill?]] 
+- [[Politics/Political Causality/US Elections 2024.md#Deficit spending for the Rich |Deficit spending for the Rich]]
 ### Billionaire Buddies
 #### Advisors behind Tariffs and their richguyness
 - Stephen Miran
@@ -221,6 +224,8 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 - Musk is incompetent
 	- [[Melber25MuskDemot100Days|Melber25MuskDemot100: Musk demoted as he loses over $100 BILLION in 100 Days: Ari Melber’s report on Trump slump]] 
 - [[Jamison25yarvinInspireDOGE|Jamison25: Curtis Yarvin helped inspire DOGE. Now he scorns it.]] Silicon Valley guy worshiped by DC and Valley and DOGE MAGA wants a dictatorship.
+#### Deficit spending for the Rich
+- [[Politics/Political Causality/US Elections 2024.md#Republican Deficit Hypocrisy |Republican Deficit Hypocrisy]]
 # Questions
 ## How to get and keep attention
 - the two axes of clickbait and A/B B testing: [[Muller21ClickbaitUnreasEffect|Muller21: Clickbait is Unreasonably Effective]] 
@@ -502,6 +507,7 @@ A lot of polling is important only as a clue to how you can actually change the 
 Gaps in public perception of where Trump is spending his time vs. what people think he should prioritize,
 e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is the biggest mismatch]].  Also fuse with issue importance, media coverage, etc., for finding promising attack vectors, and demographic factors indicating if the gaps occur in the population of voters that need persuading.
 - [[#Issue Measurements Salience, Relevance, Importance]]
+- [[Politics/Political Causality/US Elections 2024.md#Republican Deficit Hypocrisy |Republican Deficit Hypocrisy]]
 # Signs of Hope
 - [[Cohn25econRiskRepubs|Cohn25: A risk like no other for Rs]] : Trump seen bad on econ, small 2024 win, likely D mid-term wins
 - 14% of Trump voters are movable?: [[Kessler25noiseTrumpChaosPoll|Kessler25noiseTrumpChaosPoll]] 
