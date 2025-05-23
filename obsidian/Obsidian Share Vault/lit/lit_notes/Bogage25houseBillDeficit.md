@@ -16,7 +16,7 @@ ZoteroCollections:
   - short_termism
   - authoritarianism
 created date: 5/22/2025, 9:34:25 AM
-modified date: 2025-05-22T15:08:15-07:00
+modified date: 2025-05-23T10:29:01-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/DLNWY6GV)  | [**URL**](https://www.washingtonpost.com/business/2025/05/13/republican-trump-tax-immigration-plan/) | **[[Bogage25houseBillDeficit.html|HTM]]**
@@ -58,10 +58,13 @@ Huge deficit buster bill passed by house reps in May 2025.  Vast majority of def
 - remove Biden's EV tax credit, also clean energy incentives (Not clear from article thae later is in there).  At the same time as mandating new oil and gas on public lands
 - Federal worker protections removed: must choose between protections (not at will) or being able to save less for retirement
 - Raise the debt limit to $4T while the bill cuts, while cutting taxes by about $4.3T 
-
+- $1T of tax cuts go to > $1M earners: [Trump Pushes DISASTER Bill and...](https://www.youtube.com/watch?v=ThregX7d4G4)
 ### Front page graph
 ![[image-9.png|711x493]]
 ### Article Graph
 ![[image-8.png|726x894]]
+
+## Also
+- $1T of tax cuts go to > $1M earners: [Trump Pushes DISASTER Bill and...](https://www.youtube.com/watch?v=ThregX7d4G4)
 ___
 %% end Obsidian Notes %%
