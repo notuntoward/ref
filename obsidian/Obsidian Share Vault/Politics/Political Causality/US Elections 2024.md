@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-05-25T18:38:16-07:00
+modified date: 2025-05-26T13:46:25-07:00
 tags:
   - politics
   - polling
@@ -23,8 +23,10 @@ tags:
 ### Biden
 What I think: One of the biggest.  He should have not run, should have dropped out sooner, and should have showcased here during his 1st term.
 - [[Tapper25bidenHandedTrumpPres|Tapper25: How Joe Biden Handed the Presidency to Donald Trump]]: the too-old denial
+- Many thought Biden shouldn't run and with ample reasons: [[Lozada25bidenScapegoat|Lozada25: Biden Is a Scapegoat. The Democrats Are the Problem.]] 
 ### Harris
 Was she a crappy candidate?  A little, I think.
+- Her aids tried to improver her social skills with a practice dinner part: [[Lozada25bidenScapegoat|Lozada25: Biden Is a Scapegoat. The Democrats Are the Problem.]] 
 ### AI
 What I think: AFIK, this wasn't too important.
 ### Crime, disorder, homelessness
@@ -56,6 +58,8 @@ Trump is really the best president ever.
 ### COVID
 - COVID + post-COVID inflation wiped out incumbents everywhere: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 ### Ukraine
+### Groupthink
+- [[Lozada25bidenScapegoat|Lozada25: Biden Is a Scapegoat. The Democrats Are the Problem.]] 
 ### Political Correctness
 - the word wokeness as toxic as "socialism" for general electorate: Yokley23wokeVoterPerception
 - wokeness exposes elite lack of priority on lower class issues (Gorman says): Bedford21GOPFindsSuccess
@@ -110,6 +114,7 @@ I couldn't hear much, but I think the first speaker started talking about Native
 - Econ and costs are best Trump attack: [[Kessler25noiseTrumpChaosPoll|Kessler25noiseTrumpChaosPoll]] 
 - Inflationary pressure due to COVID
 	- Shipping congestion/rates: [[JoeBlogs25usSupplyChainMeltDown|JoeBlogs25: USA Supply Chain Meltdown]]
+- Inflation and Biden's age were what voters tracked: - [[Lozada25bidenScapegoat|Lozada25: Biden Is a Scapegoat. The Democrats Are the Problem.]] 
 #### Weak economy doomed D's
 - many posts say so
 - but some say it was actually a perceived strong economy doomed the D's, rather than a weak real/perceived econ (Pastor24greatBidenEconHelpedTrump)
@@ -149,10 +154,12 @@ Both R's and D's vote less on economic issues and more on values:
 - I'm guessing modern KGBs helped this: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 - Conspiracy belief (probably) doesn't change attitude towards democracy: [[Dolan25authoritPrimeCnsprcy|Dolan25: Authoritarian minds may be primed for conspiracy beliefs, study suggests]] 
 - Voters trust Trump and Media *equally*! (37%): [[MorningConsult25trustTrumpVsMedia|MorningConsult25: Americans trust Trump as much]] 
+- Fibbing about Biden's brain hurt trust in Ds: [[Lozada25bidenScapegoat|Lozada25: Biden Is a Scapegoat. The Democrats Are the Problem.]] 
 ## Lack of D party enthusiasm/turnout
 - was the D loss due to poor Democratic turnout or to Ds switching to R?
 - 100 day polls e.g. [[Balz25trumpApprovSink]]: D's still not popular, and Ds not satisfied Ds, unlike Rs who *are* satisfied with Trump
 - Blacks not optimistic about progress?  [[Horowitz25policeBLM5yearsFloyd|Horowitz25: Views of Race, Policing and Black Lives Matter in the 5 Years Since George Floyd’s Killing]] 
+- They didn't pick Harris: [[Lozada25bidenScapegoat|Lozada25: Biden Is a Scapegoat. The Democrats Are the Problem.]] 
 ## Abortion overemphasized, not important
 - abortion a concern of young women, not old?
 - more concern about economy
@@ -216,6 +223,7 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 	- Musk trades in this: [[Isaac25internetCringeMusk|Isaac25: Elon Musk’s Internet: So Based, Much Wow. So Cringe?]] 
 - [[Atrioc25teslaBacklashBiblical|Atrioc25: The Tesla Backlash Is Biblical]]: very lively summary of Musk lies and hypocrisy.  This is SO GOOD.
 	- [ ] @ how to expand this attack / true-conspiracy mongering attacks to the rest of Trump's circle.
+- Tesla sales down a bit in UW and WA: [[Buhain25waOutOfTeslaLove|Buhain25: Is Washington state falling out of love with Tesla?]] 
 - Trump's White House promotion of Tesla is a good "he's not for you" attack
 	- tons of video of Trump saying EVs are bad, maybe even EV people are bad
 	- he's actually for Elon Musk, the richest guy in the world
@@ -242,6 +250,7 @@ From here:
 - Measurement of Issue Salience and Relevance
 	- population-level measures (a kind of poll)
 		- "Have you heard about it" poll:  [[MorningConsult25negEconNewsBreakThru|MorningConsult25: Negative economic news is increasingly breaking through with Americans]] 
+- Biden didn't get that inflation and his age were his most important numbers: [[Lozada25bidenScapegoat|Lozada25: Biden Is a Scapegoat. The Democrats Are the Problem.]] 
 - [[#Salient hypocrisy tracker]]
 ###### Trump Voter Satisfaction (post-2024 election)
 - [[Longwell25areTrumpVotersGetAsk|Longwell25: Are These Trump Voters Getting What They Voted For? (with Mark Leibovich)]]
@@ -370,6 +379,7 @@ About polls 100 days into a term.  Factors out the fact that most presidents los
 - [[Duke25conspiracyThryCureAI|Duke25: Finally, something is puncturing conspiracy theories]] 
 - [[Costello24durablyReduceConspiracyWithAI|Costello24: Durably reducing conspiracy beliefs through dialogues with AI]] 
 - [[Frankfurt86onBullshitEssay|Frankfurt86: On bullshit]] 
+- Disaster of not doing so: [[Lozada25bidenScapegoat|Lozada25: Biden Is a Scapegoat. The Democrats Are the Problem.]] 
 ## How specifically does Trump sound like an honest, real person?
 - non-politically correct, says what they're thinking but others are afraid to say it?
 - just says what they already think? He's not persuading but got in front of their parade?
@@ -519,6 +529,7 @@ e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is t
 ## Success Stories: Recent Authoritarian Takedowns
 - US
 	- [[Dionne24hiddenVictoryProgrssiv|Dionne24: The lessons in progressives’ hidden 2024 victories]] 
+	- Tesla sales down a bit in UW and WA: [[Buhain25waOutOfTeslaLove|Buhain25: Is Washington state falling out of love with Tesla?]] 
 - Poland
 	- [[Gora23polandEndRightWing|Gora23: Elections in Poland Bring the End of Right-wing Populist Rule - Brexit Institute]] 
 	- [[Watmough23populistEndPoland|Watmough23: Eight Years of Populist Rule in Poland Comes to an End - ECPS]] 
