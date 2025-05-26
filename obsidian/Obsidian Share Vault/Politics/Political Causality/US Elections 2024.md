@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-05-22T09:57:50-07:00
+modified date: 2025-05-25T18:38:16-07:00
 tags:
   - politics
   - polling
@@ -82,6 +82,7 @@ Trump is really the best president ever.
 - [[Rampell25genZmenLoveTrump]]
 - Obsessive race focus pissed off people of color! [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
 - Male underperf: [[Hendrickson25demsManProblem|Hendrickson25: Democrats Have a Man Problem]] 
+- Only 27% think BLM worked in 2025, and BLM support dropped in just a couple (?) months after Floyd  [[Horowitz25policeBLM5yearsFloyd|Horowitz25: Views of Race, Policing and Black Lives Matter in the 5 Years Since George Floyd’s Killing]] 
 #### Seattle Handsoff Protest
 I couldn't hear much, but I think the first speaker started talking about Native American being victims of white colonization.  Given the market tank, all the worries on the protestors poster, this was a total non-sequiter, and nobody near was cheering for it, but there were dutiful liberals scattered clapping and cheering: taking their medicine, probably worried about not clapping.
 - [ ] get the transcripts of the speakers, who were Pramila Jayapal, Justin Gill, Hamdi Mohamed
@@ -151,6 +152,7 @@ Both R's and D's vote less on economic issues and more on values:
 ## Lack of D party enthusiasm/turnout
 - was the D loss due to poor Democratic turnout or to Ds switching to R?
 - 100 day polls e.g. [[Balz25trumpApprovSink]]: D's still not popular, and Ds not satisfied Ds, unlike Rs who *are* satisfied with Trump
+- Blacks not optimistic about progress?  [[Horowitz25policeBLM5yearsFloyd|Horowitz25: Views of Race, Policing and Black Lives Matter in the 5 Years Since George Floyd’s Killing]] 
 ## Abortion overemphasized, not important
 - abortion a concern of young women, not old?
 - more concern about economy
@@ -304,6 +306,7 @@ Just more predictor variables for various things. Things similar to education, w
 - [[Rampell25genZmenLoveTrump]]
 - Moderate candidates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]]
 - 14% of Trump voters might be movable [[Kessler25noiseTrumpChaosPoll]]
+- heavy R/D polarization on BLM, race: [[Horowitz25policeBLM5yearsFloyd|Horowitz25: Views of Race, Policing and Black Lives Matter in the 5 Years Since George Floyd’s Killing]] 
 ### Polarization Enhancement: Your fellow R is evil (algorithmic)
 - For details & perplexity-derived evidence of implementability see Blake25infightMAGA
 - Moderates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]] 
