@@ -1,6 +1,6 @@
 ---
-created date: 2025-03-10T10:23:54-07:00
-modified date: 2025-03-10T10:23:54-07:00
+created date: 2025-05-26T15:40:55-07:00
+modified date: 2025-05-26T15:40:55-07:00
 ---
 Dependence Modeling with Copulas (Chapman & Hall/CRC Monographs on Statistics & Applied Probability)
 

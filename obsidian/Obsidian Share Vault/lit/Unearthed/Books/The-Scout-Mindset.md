@@ -1,6 +1,6 @@
 ---
-created date: 2025-05-26T15:33:41-07:00
-modified date: 2025-05-26T15:33:41-07:00
+created date: 2025-05-26T15:40:55-07:00
+modified date: 2025-05-26T15:40:55-07:00
 ---
 The Scout Mindset
 Why Some People See Things Clearly and Others Don't

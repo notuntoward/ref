@@ -1,6 +1,6 @@
 ---
-created date: 2025-03-09T16:22:16-07:00
-modified date: 2025-03-09T16:22:16-07:00
+created date: 2025-05-26T15:40:55-07:00
+modified date: 2025-05-26T15:40:55-07:00
 ---
 The Origins of Authoritarianism - and Why it Still Works Today
 From Historical Strongmen and Key Authoritarian Moments in History to Modern Authoritarian ... Today (Government and Politics Book Series)

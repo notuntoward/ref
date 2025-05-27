@@ -1,6 +1,6 @@
 ---
-created date: 2025-03-10T10:23:54-07:00
-modified date: 2025-03-10T10:23:54-07:00
+created date: 2025-05-26T15:40:55-07:00
+modified date: 2025-05-26T15:40:55-07:00
 ---
 Clean Break
 The Story of Germany's Energy Transformation and What Americans Can Learn from It (Kindle Single)

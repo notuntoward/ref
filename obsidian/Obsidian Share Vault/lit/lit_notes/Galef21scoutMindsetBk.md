@@ -13,7 +13,7 @@ ZoteroTags:
 ZoteroCollections:
   - epistemiology_and_persuasion
 created date: 5/26/2025, 3:32:31 PM
-modified date: 2025-05-26T15:33:53-07:00
+modified date: 2025-05-26T18:44:34-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/IP3BZYUG)  | [**URL**](https://en.wikipedia.org/wiki/The_Scout_Mindset)
@@ -43,6 +43,16 @@ modified date: 2025-05-26T15:33:53-07:00
 
 %% begin Obsidian Notes %%
 ___
-==Delete this and write here. Don't delete the `persist` directives above and below.==
+
+## How Certain Are You?
+
+### Calibration Practice
+
+**Result**: Fairly well calibrated, maybe slightly under-confident.
+
+![[Calibration Test.png]]
+**Answers**
+
+![[Calibration Answers.png]]
 ___
 %% end Obsidian Notes %%
