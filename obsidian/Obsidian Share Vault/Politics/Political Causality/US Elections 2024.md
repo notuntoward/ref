@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-05-26T13:46:25-07:00
+modified date: 2025-05-27T16:04:18-07:00
 tags:
   - politics
   - polling
@@ -28,7 +28,7 @@ What I think: One of the biggest.  He should have not run, should have dropped o
 Was she a crappy candidate?  A little, I think.
 - Her aids tried to improver her social skills with a practice dinner part: [[Lozada25bidenScapegoat|Lozada25: Biden Is a Scapegoat. The Democrats Are the Problem.]] 
 ### AI
-What I think: AFIK, this wasn't too important.
+What I think: AFIK, this wasn't too important.  But the Tech Oligarch funders of Trump campaign esp. [[#Musk as traitor to America]] are getting what they paid for ([[Brody25techAccountBigBeautBill|Brody25techAccountBigBeautBill]] )
 ### Crime, disorder, homelessness
 I think this was fairly big.  Ds earned a rep for incompetent.
 
@@ -234,6 +234,7 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 - Musk is incompetent
 	- [[Melber25MuskDemot100Days|Melber25MuskDemot100: Musk demoted as he loses over $100 BILLION in 100 Days: Ari Melber’s report on Trump slump]] 
 - [[Jamison25yarvinInspireDOGE|Jamison25: Curtis Yarvin helped inspire DOGE. Now he scorns it.]] Silicon Valley guy worshiped by DC and Valley and DOGE MAGA wants a dictatorship.
+- [[Brody25techAccountBigBeautBill|Brody25: The Big Beautiful Bill Could Decimate Legal Accountability for Tech and Anything Tech Touches]]: part of what Musk presumably wanted.
 #### Deficit spending for the Rich
 - [[Politics/Political Causality/US Elections 2024.md#Republican Deficit Hypocrisy |Republican Deficit Hypocrisy]]
 # Questions
@@ -322,6 +323,10 @@ Just more predictor variables for various things. Things similar to education, w
 - Voters trust Trump and Media *equally*! (37%): [[MorningConsult25trustTrumpVsMedia|MorningConsult25: Americans trust Trump as much]] 
 - Consumer sentiment polarization: [[MorningConsult25trump100days|MorningConsult25trump100: 100 Days of Trump]] 
 - [[#Musk as traitor to America]]
+### Depolarization
+#### Agreement Issues
+Issues where progress is possible, maybe where you candidate con convince people that he's not an alien monster.
+- [[Freedman25usCommonGrndPoll|Freedman25: Americans are searching for common ground. This poll finds it.]] 
 # Rising Authoritarianism
 - The R's like democracy way less than the Ds: [[Bump25polSciworryRstrongman|Bump25: What political scientists see as worrisome, Republicans see as welcome]] 
 - A good fear-of-Trump & Co cautionary quote from [[Arendt76originsTotalitariansim|Arendt76: The origins of totalitarianism]]:
@@ -332,6 +337,7 @@ Just more predictor variables for various things. Things similar to education, w
 - 100 day polls: Trump s/ work with congress, Supreme court [[Balz25trumpApprovSink]]
 - Trumps massive reliance on executive orders (100 days): [[Melber25MuskDemot100Days|Melber25MuskDemot100: Musk demoted as he loses over $100 BILLION in 100 Days: Ari Melber’s report on Trump slump]] 
 - [[Jamison25yarvinInspireDOGE|Jamison25: Curtis Yarvin helped inspire DOGE. Now he scorns it.]] Silicon Valley guy worshiped by DC and Valley and DOGE MAGA wants a dictatorship.
+- [[Brody25techAccountBigBeautBill|Brody25: The Big Beautiful Bill Could Decimate Legal Accountability for Tech and Anything Tech Touches]]: part of what [[#Musk as traitor to America]] presumably wanted.
 # Breaking the Republican Fever
 Will the Rs ever pay attention to evidence?
 - Apparently at least a few Rs can: [[Prokop25trumpEconWorstPoll|Prokop25: Trump is torching his greatest political asset]] 
@@ -418,6 +424,10 @@ A lot of polling is important only as a clue to how you can actually change the 
 - then estimate representativeness of total voting population (like polling respondent weighting)
 - also [[Gen AI Talk Ideas#Sentiment Analysis|Sentiment Analysis]]
 - Proposes AI polling/policy making: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
+## Polling for agreement
+
+Bipartisan issues that can make your candidate look good if strongly pushed
+- [[#Agreement Issues]]
 ## Detect when people are so tired of a message that they ignore it
 - so know when to switch adverts
 - to settle arguments about whether somebody's interest (mens rights, womens rights, global warming) has been beaten for the death for the moment
@@ -551,6 +561,8 @@ e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is t
 - Denmark, kinda
 	- [[Ponnuru25learnDemsDKborder|Ponnuru25: What Democrats can learn from Denmark’s left-leaning border hawks]] 
 - ? is the UK a success story?  BREXITEERs wiped out but [[Razzaque25trumperBelievePsych|was it just COVID]]?
+## Areas of agreement
+- [[#Agreement Issues]]
 # Potential Partners
 - UW Center for an informed public
 	- [Center for an Informed Public](https://www.cip.uw.edu/2024/10/31/misinformation-why-people-spread-rumors/)
