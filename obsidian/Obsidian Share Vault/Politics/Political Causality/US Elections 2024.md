@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-05-27T16:04:18-07:00
+modified date: 2025-05-28T09:41:04-07:00
 tags:
   - politics
   - polling
@@ -235,6 +235,7 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 	- [[Melber25MuskDemot100Days|Melber25MuskDemot100: Musk demoted as he loses over $100 BILLION in 100 Days: Ari Melber’s report on Trump slump]] 
 - [[Jamison25yarvinInspireDOGE|Jamison25: Curtis Yarvin helped inspire DOGE. Now he scorns it.]] Silicon Valley guy worshiped by DC and Valley and DOGE MAGA wants a dictatorship.
 - [[Brody25techAccountBigBeautBill|Brody25: The Big Beautiful Bill Could Decimate Legal Accountability for Tech and Anything Tech Touches]]: part of what Musk presumably wanted.
+- Musk's USAID elimination is <u>killing 103 people/hour</u> [[Kessler25deathsForeignAidCit|Kessler25: Rubio’s claim that it’s ‘a lie’ that people have died from foreign-aid cuts]] 
 #### Deficit spending for the Rich
 - [[Politics/Political Causality/US Elections 2024.md#Republican Deficit Hypocrisy |Republican Deficit Hypocrisy]]
 # Questions

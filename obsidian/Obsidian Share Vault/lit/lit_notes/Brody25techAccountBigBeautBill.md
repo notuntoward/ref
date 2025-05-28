@@ -13,7 +13,7 @@ ZoteroTags:
 ZoteroCollections:
   - authoritarianism
 created date: 5/27/2025, 3:56:27 PM
-modified date: 2025-05-27T16:02:21-07:00
+modified date: 2025-05-28T09:41:42-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/L659AVWM)  | [**URL**](https://techpolicy.press/the-big-beautiful-bill-could-decimate-legal-accountability-for-tech-and-anything-tech-touches) | **[[Brody25techAccountBigBeautBill.html|HTM]]**
@@ -45,6 +45,6 @@ modified date: 2025-05-27T16:02:21-07:00
 ___
  “Big, beautiful bill” that passed the House (5/25) has a 10-year moratorium on state AI regulation, preempting states from enacting or enforcing their own AI laws.  Clearly serves Tech Oligarchy's interest.  
  
- - This article probably the most-used reference on a [Perplexity page](https://www.perplexity.ai/search/does-trump-s-big-beautiful-bil-BGpGj940Soei35FMyvj0tw#0) with much more on this topic.
+	 - This article probably the most-used reference on a [Perplexity page](https://www.perplexity.ai/search/does-trump-s-big-beautiful-bil-BGpGj940Soei35FMyvj0tw#0) with much more on this topic.
 ___
 %% end Obsidian Notes %%
