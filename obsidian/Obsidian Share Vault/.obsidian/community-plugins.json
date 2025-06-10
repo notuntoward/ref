@@ -52,5 +52,6 @@
   "templater-obsidian",
   "obsidian-underline",
   "ytranscript",
-  "obsidian-zotero-desktop-connector"
+  "obsidian-zotero-desktop-connector",
+  "obsidian-auto-link-title"
 ]
