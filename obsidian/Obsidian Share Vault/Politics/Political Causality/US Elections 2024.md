@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-05-28T09:41:04-07:00
+modified date: 2025-06-17T20:05:48-07:00
 tags:
   - politics
   - polling
@@ -27,12 +27,14 @@ What I think: One of the biggest.  He should have not run, should have dropped o
 ### Harris
 Was she a crappy candidate?  A little, I think.
 - Her aids tried to improver her social skills with a practice dinner part: [[Lozada25bidenScapegoat|Lozada25: Biden Is a Scapegoat. The Democrats Are the Problem.]] 
-### AI
-What I think: AFIK, this wasn't too important.  But the Tech Oligarch funders of Trump campaign esp. [[#Musk as traitor to America]] are getting what they paid for ([[Brody25techAccountBigBeautBill|Brody25techAccountBigBeautBill]] )
 ### Crime, disorder, homelessness
 I think this was fairly big.  Ds earned a rep for incompetent.
 
 - Tolerance of crime and disorder pissed off people, D's lost much in "diverse cities"  [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
+- BLM protests
+	- [[Bump25protestsNotHelpTrump|Stating the obvious: Mass protests are not going to help Trump]]
+### AI
+What I think: AFIK, this wasn't too important.  But the Tech Oligarch funders of Trump campaign esp. [[#Musk as traitor to America]] are getting what they paid for ([[Brody25techAccountBigBeautBill|Brody25techAccountBigBeautBill]] )
 #### Examples of AI in politics
 - [[Kapoor23misinfoAInotTheProb|Kapoor23: We Looked at 78 Election Deepfakes. Political Misinformation is not an AI Problem.]] 
 - A warning: [[Palmer23llmsArgueConvincing|Palmer23: Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors: implications for Governance]] 
@@ -265,6 +267,7 @@ From here:
 ## Media effectiveness
 - e.g. Yurieff24trumpUsedInfluencers : did this really work as claimed here?
 - ? how do advertisers measure or (get proxies of) effectiveness of media message --> purchase
+- [[Bump25protestsNotHelpTrump|Stating the obvious: Mass protests are not going to help Trump]]: R media framing turns R/L violence comparison upside down.
 ## How to communicate comparative government performance
 - US low taxes, high GDP, a better COVID recovery and lower inflation that peers
 - ? Displaying an inflation "weather map?"
@@ -293,7 +296,11 @@ Just more predictor variables for various things. Things similar to education, w
 	- example from [[Longwell25demsChenyDemoc|Longwell25: Did Democrats Have a Liz Cheney Problem? (with Jen Psaki)]] :
 		- D's apparently made democracy a talking point, put Cheney on, etc. because polls seemed to say that "democracy" was salient
 		- But R's didn't want to hear D democracy talking points b/c the Ds who "stole" the election.
-## Destructing Conspiracy Theories
+	- **Indea**: after an election, ask poll issue questions is a bunch of ways
+		- train a model to predictive model of the vote
+		- jointly tune an LLM that learns to ask the most predictive questions for each issue
+		- somehow, how do model how the candidates stood on the issue, though...
+# Destructing Conspiracy Theories
 - facts don't seem to work, can reinforce existing opinion (references..)
 - conspiracy theory attractions
 	- makes your life simple ==> make your conspiracy make your life complicated
@@ -318,6 +325,7 @@ Just more predictor variables for various things. Things similar to education, w
 - Moderate candidates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]]
 - 14% of Trump voters might be movable [[Kessler25noiseTrumpChaosPoll]]
 - heavy R/D polarization on BLM, race: [[Horowitz25policeBLM5yearsFloyd|Horowitz25: Views of Race, Policing and Black Lives Matter in the 5 Years Since George Floyd’s Killing]] 
+- [[Bump25protestsNotHelpTrump|Stating the obvious: Mass protests are not going to help Trump]]: R news bubble regarding protests
 ### Polarization Enhancement: Your fellow R is evil (algorithmic)
 - For details & perplexity-derived evidence of implementability see Blake25infightMAGA
 - Moderates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]] 
@@ -339,6 +347,13 @@ Issues where progress is possible, maybe where you candidate con convince people
 - Trumps massive reliance on executive orders (100 days): [[Melber25MuskDemot100Days|Melber25MuskDemot100: Musk demoted as he loses over $100 BILLION in 100 Days: Ari Melber’s report on Trump slump]] 
 - [[Jamison25yarvinInspireDOGE|Jamison25: Curtis Yarvin helped inspire DOGE. Now he scorns it.]] Silicon Valley guy worshiped by DC and Valley and DOGE MAGA wants a dictatorship.
 - [[Brody25techAccountBigBeautBill|Brody25: The Big Beautiful Bill Could Decimate Legal Accountability for Tech and Anything Tech Touches]]: part of what [[#Musk as traitor to America]] presumably wanted.
+# Citizen activism
+## Protests
+- [[Bump25protestsNotHelpTrump|Stating the obvious: Mass protests are not going to help Trump]]: hard to break the R news bubble regarding protests
+- [[#Seattle Handsoff Protest]]
+- [[Chenoweth25protest35rule|Chenoweth25protest35: Could The 3.5% Protest Rule Stop Donald Trump?]] 
+- [[Morris25noKingsDay|Morris25: 'No Kings Day' protests]]: < 3.5%, num protests > Trump term 1
+- [[Chenoweth24crowdCountCnsrt|Chenoweth24: Crowd Counting Consortium]] 
 # Breaking the Republican Fever
 Will the Rs ever pay attention to evidence?
 - Apparently at least a few Rs can: [[Prokop25trumpEconWorstPoll|Prokop25: Trump is torching his greatest political asset]] 
@@ -350,6 +365,7 @@ Will the Rs ever pay attention to evidence?
 - 14% of Trump voters might be movable [[Kessler25noiseTrumpChaosPoll]]
 - 100 day polls: Rs stick with Trump, but not rest of country [[Balz25trumpApprovSink]]
 - [[#Polarization Enhancement Your fellow R is evil (algorithmic)]]
+- [[Bump25protestsNotHelpTrump|Stating the obvious: Mass protests are not going to help Trump]]: hard to break the R news bubble regarding protests
 # Predictive Models and Analysis Techniques
 - market sentiment indexes predicted by economic variables (Weber24implicitCoordInflateShock).  Could be *voter* sentiment predicted by other variables
 	- more on econ features: [[MorningConsult25priceSurpriseIdx|MorningConsult25priceSurpriseIdx]] 
@@ -374,6 +390,7 @@ About polls 100 days into a term.  Factors out the fact that most presidents los
 - [[MorningConsult25negEconNewsBreakThru|MorningConsult25: Negative economic news is increasingly breaking through with Americans]]
 # Questions / Hypotheses to test
 - [ ] @ Take a look at all the paper's at this guy's lab:  Kolbert25oneEmotionEthics
+- [ ] [[#Do words in polls mean what you think they mean?]]
 ## Education realignment around D's
 - [Klein says](https://youtu.be/vkXJiEzWxFs?t=1511) it's happening globally, that there is theorizing about why
 - My theories
@@ -426,7 +443,6 @@ A lot of polling is important only as a clue to how you can actually change the 
 - also [[Gen AI Talk Ideas#Sentiment Analysis|Sentiment Analysis]]
 - Proposes AI polling/policy making: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 ## Polling for agreement
-
 Bipartisan issues that can make your candidate look good if strongly pushed
 - [[#Agreement Issues]]
 ## Detect when people are so tired of a message that they ignore it
@@ -579,7 +595,6 @@ e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is t
 - [Third Way](https://www.thirdway.org/): semi-democratic polling
 - [[Chenoweth24crowdCountCnsrt|Chenoweth24: Crowd Counting Consortium]]: crowd sizes, etc.
 - [[SeattleMetC25indexRsrch|SeattleMetC25: The Index]] (sentiment polling for Seattle area)
-# Also
+- [[Morris25strengthNumsNewsLtr|Morris25: Strength In Numbers | G. Elliott Morris | Substack]] 
 - [[Ranked Choice Voting]]
-- 
 
