@@ -90,7 +90,7 @@ Trump is really the best president ever.
 - Male underperf: [[Hendrickson25demsManProblem|Hendrickson25: Democrats Have a Man Problem]] 
 - Only 27% think BLM worked in 2025, and BLM support dropped in just a couple (?) months after Floyd  [[Horowitz25policeBLM5yearsFloyd|Horowitz25: Views of Race, Policing and Black Lives Matter in the 5 Years Since George Floyd’s Killing]] 
 #### Seattle Handsoff Protest
-I couldn't hear much, but I think the first speaker started talking about Native American being victims of white colonization.  Given the market tank, all the worries on the protestors poster, this was a total non-sequiter, and nobody near was cheering for it, but there were dutiful liberals scattered clapping and cheering: taking their medicine, probably worried about not clapping.
+I couldn't hear much, but I think the first speaker started talking about Native Americans being victims of white colonization.  Given the market tank, all the worries on the protestors' posters, this was a total non-sequitur; nobody near me cheered for it, but there were dutiful liberal scattered clapping and cheering: taking their medicine, probably worried about not clapping.
 - [ ] get the transcripts of the speakers, who were Pramila Jayapal, Justin Gill, Hamdi Mohamed
 	- organizations involved e.g., Seattle Indivisible, Planned Parenthood, Evergreen Resistance
 	- [according to Perplexity](https://www.perplexity.ai/search/where-can-i-find-a-recording-o-Q4lmSsJyTUq.JFAL5xdufw#0)
