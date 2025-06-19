@@ -1,6 +1,6 @@
 ---
 created date: 2025-06-18T13:13:33-07:00
-modified date: 2025-06-18T13:13:35-07:00
+modified date: 2025-06-19T14:37:37-07:00
 ---
 I thought I might reduce taxes with an early Roth conversion. If I get a job very soon, a conversion probably won't work, but I should still add my $8k max to the Roth.  If it takes me very long to get a job, I should do both.
 ##### Why do an early Roth conversion?
