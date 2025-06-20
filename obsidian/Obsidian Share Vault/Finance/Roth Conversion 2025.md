@@ -1,13 +1,17 @@
 ---
 created date: 2025-06-18T13:13:33-07:00
-modified date: 2025-06-19T14:37:37-07:00
+modified date: 2025-06-19T15:57:30-07:00
 ---
-I thought I might reduce taxes with an early Roth conversion. If I get a job very soon, a conversion probably won't work, but I should still add my $8k max to the Roth.  If it takes me very long to get a job, I should do both.
-##### Why do an early Roth conversion?
+I thought I might reduce taxes with an early Roth conversion. If I get a job very soon, a conversion probably won't work, but I should still add my standard $8k yearly limit to my Roth.  If it takes me very long to get a job, I should do both.
+# Why do an early Roth conversion?
 
-You pay taxes on when you withdraw money from a 401K, or convert it to a Roth.  Money grows without interest in a Roth, so you don't pay for taxes when you spend it.  So it's like a 401K, I think, except that you pay taxes at different times, and at <u>different tax brackets</u>.  
+You pay taxes on whenever you withdraw money from a 401K, either cashing it out, or converting it to a Roth.  Money (always deposited post-tax) grows within a Roth, so you don't pay for taxes when you withdraw it.  So it's like a 401K, I think, except that you pay taxes at different times, and at <u>different tax brackets</u>, depending upon the Roth withdrawal year income.
 
-If your current tax bracket is lower than your retirement tax bracket then it makes sense to do an early Roth conversion.
+If your current tax bracket is lower than your expected retirement tax bracket, then it may make sense to do an early Roth conversion:
+- **benefit**: you pay your 401k taxes in a lower bracket
+- **potential cost**: depends (at least) on how you pay your 401k withdrawal taxes
+	- if you pay by withdrawing 401k investments, then you don't continue earning on those investments, and this could bump up your tax bracket
+	- if you pay with cash outside of the 401k, then it can't bump up your withdrawal-year tax bracket, but you won't earn (taxable) interest and/or dividends on it either.
 
 For 2025, the tax brackets [are](https://www.bankrate.com/taxes/tax-brackets/#tax-bracket-2024):
 ![[image.png|602x470]]
@@ -43,7 +47,13 @@ It would make sense to convert $47.15k - $20k = **$27.1k**
 
 **No matter what, I can put $8k of cash** (I have a lot) into a Roth. 
 
-*If I get a job soon*, a Roth conversion wouldn't make sense, but **putting in $8k** into a Roth would still make sense, since I could withdraw it at age 59.5, and interestin there would accrue tax free.
+*If I get a job soon*, a Roth conversion wouldn't make sense, but **putting in $8k** into a Roth would still make sense, since I could withdraw it at age 59.5, and interest in there would accrue tax free.
 
 *If I don't get a job at all*, then I could **convert $27.15k** and **add the extra $8k**
 
+# adlfkjadlf
+## alsdkfjadsf
+### alsdfkj
+#### alsdkfja
+##### alkjalsdfj
+###### alskdfjldfk
