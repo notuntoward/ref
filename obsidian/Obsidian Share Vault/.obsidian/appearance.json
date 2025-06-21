@@ -17,8 +17,8 @@
     "smaller_pdf_fonts"
   ],
   "theme": "moonstone",
-  "cssTheme": "Typomagical",
-  "baseFontSize": 18,
+  "cssTheme": "",
+  "baseFontSize": 19,
   "textFontFamily": "Consolas",
   "nativeMenus": false,
   "baseFontSizeAction": true
