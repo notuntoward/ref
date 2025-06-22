@@ -13,7 +13,7 @@ ZoteroTags:
 ZoteroCollections:
   - hunchback_correction
 created date: 6/21/2025, 2:16:05 PM
-modified date: 2025-06-21T16:20:34-07:00
+modified date: 2025-06-22T11:38:04-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/I5VFEHZB)  | [**DOI**](https://doi.org/10.3233/BMR-130411) | [**URL**](https://journals.sagepub.com/doi/full/10.3233/BMR-130411) | **[[Seidi14hyperKyposisExrcsEffic.pdf|PDF]]**
@@ -48,15 +48,20 @@ Study of the efficacy of local and comprehensive corrective exercise programs (L
 - CCEP has five exercises (way more in [[Elpeze22kyphosisAdolescCCEP]])
 	- [[Seidi14hyperKyposisExrcsEffic.pdf#page=5&annotation=159R|chin tuck, erecting the thoracic spine and adduct scapulae]]
 	- Shown in: [[Seidi14hyperKyposisExrcsEffic.pdf#page=7&annotation=171R|Fig. 5. The CCEP.]]
+	- Exercise name guesses (Names from [Appendix B](Elpeze22kyphosisAdolescCCEP.pdf#page=12&annotation=244R) in study citing this one)
+		1. pectoral stretch, supine
+		2. neck extensor stretch
+		3. pectoral stretch, supine
 	- There's a 5 min warmup before and after them
 	- But no times given for the exercises, num. reps, etc.
 ### The 5 CCEP Exercises
 
-![[image-21.png|691x809]]
+![[image-21.png|933x1092]]
 
 # Also
 - More explained CCEP program: [[Elpeze22kyphosisAdolescCCEP|Elpeze22: The Effect of a Comprehensive Corrective Exercise Program on Kyphosis Angle and Balance in Kyphotic Adolescents]] 
 - Used in [[Combo Workout Revised Short]] and maybe [[Combo Workout Revised Long]]
+- 
 
 ___
 %% end Obsidian Notes %%

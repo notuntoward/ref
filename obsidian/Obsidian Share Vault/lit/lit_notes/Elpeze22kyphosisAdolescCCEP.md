@@ -19,7 +19,7 @@ ZoteroTags:
 ZoteroCollections:
   - hunchback_correction
 created date: 6/21/2025, 3:13:43 PM
-modified date: 2025-06-21T16:20:59-07:00
+modified date: 2025-06-22T10:29:30-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/H74ABD3E)  | [**DOI**](https://doi.org/10.3390/healthcare10122478) | **[[Elpeze22kyphosisAdolescCCEP.pdf|PDF]]**
@@ -61,6 +61,7 @@ CCEP (comprehensive corrective exercise program) as in [[Elpeze22kyphosisAdolesc
 - Far fewer in [[Seidi14hyperKyposisExrcsEffic|Seidi14hyperKyposisExrcsEffic]] 
 
 ### Exercise Program Progression
+From [Appendix A](Elpeze22kyphosisAdolescCCEP.pdf#page=12&annotation=243R) and [Appendix B](Elpeze22kyphosisAdolescCCEP.pdf#page=12&annotation=244R) (I AI-merged the two tables)
 
 | Weeks (CCEP)   | Comprehensive Corrective Exercise Program (CCEP)                                                                                                                                                                                                                                                                                                                                                                                          | Weeks (Intensity) | Exercises (Intensity)                  | Exercise Intensity                             |
 | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------- | :------------------------------------- | :--------------------------------------------- |
