@@ -1,6 +1,6 @@
 ---
 created date: 2025-06-21T12:14:59-07:00
-modified date: 2025-06-21T16:06:51-07:00
+modified date: 2025-06-21T20:13:56-07:00
 tags:
   - excercise
 ---
@@ -16,7 +16,7 @@ Also see [[Combo Workout Revised Long]]
 *   **Supersets (A, B, C):** Perform the two exercises in a pair (e.g., A1 then A2) back-to-back with minimal rest in between. Rest for 60-90 seconds only *after* completing the pair. Then, repeat for the total number of sets. 
 
 | Phase                       | Exercise                                                     | Sets | Reps/Dur    | Weight | Notes                                                         |
-| :-------------------------- | :----------------------------------------------------------- | :--- | :---------- | ------ | :------------------------------------------------------------ |
+|:--------------------------- |:------------------------------------------------------------ |:---- |:----------- | ------ |:------------------------------------------------------------- |
 | **Dynamic Warm-up**         | Jump Rope                                                    | 1    | 2-3 minutes |        | Light, continuous pace to warm up the body.                   |
 | (5-7 mins)                  | Band Sidestep                                                | 2    | 15-20 / dir |        | Activates glute medius for hip & knee stability.              |
 |                             | [Low Lunge Twist Stretch](https://youtu.be/1dcDoUG69Bc?t=17) | 2    | 5-8 / side  |        | Hold each twist 2-3 seconds. Hips and upper back (hunchback). |
@@ -29,7 +29,6 @@ Also see [[Combo Workout Revised Long]]
 | **Cool-down / Correctives** | Lateral Step-Downs (6")                                      | 2-3  | 10-15 / leg |        | **PT Prescribed.** Slow & controlled, no inward knee caving.  |
 | (10 mins ?)                 | Eccentric Heel Lowering                                      | 2-3  | 15 / leg    |        | Calf injury, lower ~3-4 sec.                                  |
 |                             | [[Seidi14hyperKyposisExrcsEffic\|5 kyphosis exercises]]      | 1    | 30-45 sec?  |        | Hunchback                                                     |
-|                             |                                                              |      |             |        |                                                               |
 ## AI Design
 ### AI Response
 Of course. This is an excellent set of goals and you've got a solid foundation. We can definitely make this routine more time-efficient while better targeting your specific goals, especially the hunchback and bicep development.
