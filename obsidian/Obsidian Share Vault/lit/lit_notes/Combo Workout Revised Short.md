@@ -1,31 +1,35 @@
 ---
 created date: 2025-06-21T12:14:59-07:00
-modified date: 2025-06-21T14:13:09-07:00
+modified date: 2025-06-21T16:06:51-07:00
+tags:
+  - excercise
 ---
 I developed this with [Google AI Studio](https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221mMPW9E6SOtEU2yeijUrZ23z-zU7Uap1D%22%5D,%22action%22:%22open%22,%22userId%22:%22106663353829707201139%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing) by asking it to modify my old Combo Workout ([Evernote](https://share.evernote.com/note/926479d4-d116-45de-98ec-a85743210407)).  See [[#My AI Prompt]] and [[Combo Workout Revised Long#AI Response]] below.
 
-My Modifications
+**My Modifications**
 - Removed the Standing Ankle Stretch from the end: the PT said I didn't have ankle mobility problems; I'm already doing several functional exercises what require ankle range of motion; and because some study said that functional exercises were more effective than stretching.
-- Replaced it with Dead Hang
+- Replaced it the five CCEP kyphosis (hunchback) exercises in [[Seidi14hyperKyposisExrcsEffic]], could advance to the many in [[Elpeze22kyphosisAdolescCCEP|Elpeze22kyphosisAdolescCCEP]] 
+
+Also see [[Combo Workout Revised Long]]
 ## Workout Summary
 
-*   **Supersets (A, B, C):** Perform the two exercises in a pair (e.g., A1 then A2) back-to-back with minimal rest in between. Rest for 60-90 seconds only *after* completing the pair. Then, repeat for the total number of sets.
+*   **Supersets (A, B, C):** Perform the two exercises in a pair (e.g., A1 then A2) back-to-back with minimal rest in between. Rest for 60-90 seconds only *after* completing the pair. Then, repeat for the total number of sets. 
 
-| Phase                       | Exercise                     | Sets | Reps/Dur    | Weight | Notes                                                                 |
-| :-------------------------- | :--------------------------- | :--- | :---------- | ------ | :-------------------------------------------------------------------- |
-| **Dynamic Warm-up**         | Jump Rope                    | 1    | 2-3 minutes |        | Light, continuous pace to warm up the body.                           |
-| (5-7 mins)                  | Band Sidestep                | 2    | 15-20 / dir |        | Activates glute medius for hip & knee stability.                      |
-|                             | Low Lunge Twist Stretch      | 2    | 5-8 / side  |        | Hold each twist 2-3 seconds. Hips and upper back (hunchback).         |
-| **Main Workout**            | **A1:** Goblet Squats        | 3    | 8-12 reps   |        | **PT Priority.** Keep torso upright to engage core and back.          |
-| (25-35 mins)                | **A2:** Dumbbell Rows        | 3    | 8-12 reps   |        | **Crucial for hunchback.** Shoulder blades back and down. Bicep work. |
-|                             | **B1:** Single Leg Deadlifts | 3    | 8-12 / leg  |        | **PT Prescribed.** balance, hamstrings, and lower back.               |
-|                             | **B2:** Pushups              | 3    | near fail   |        | Builds upper body pushing strength.                                   |
-|                             | **C1:** Hip Thrusts          | 3    | 10-15 reps  |        | glutes for lower back pain.                                           |
-|                             | **C2:** Dumbbell Bicep Curls | 3    | 8-12 / arm  |        | Directly targets your goal for bicep growth.                          |
-| **Cool-down / Correctives** | Lateral Step-Downs (6")      | 2-3  | 10-15 / leg |        | **PT Prescribed.** Slow & controlled, no inward knee caving.          |
-| (5 mins)                    | Eccentric Heel Lowering      | 2-3  | 15 / leg    |        | Calf injury, lower ~3-4 sec.                                          |
-|                             | Dead Hang                    | 1    | 30-45 sec   |        | Hunchback, progress to pull-ups. Tight core shoulder relax            |
-|                             |                              |      |             |        |                                                                       |
+| Phase                       | Exercise                                                     | Sets | Reps/Dur    | Weight | Notes                                                         |
+| :-------------------------- | :----------------------------------------------------------- | :--- | :---------- | ------ | :------------------------------------------------------------ |
+| **Dynamic Warm-up**         | Jump Rope                                                    | 1    | 2-3 minutes |        | Light, continuous pace to warm up the body.                   |
+| (5-7 mins)                  | Band Sidestep                                                | 2    | 15-20 / dir |        | Activates glute medius for hip & knee stability.              |
+|                             | [Low Lunge Twist Stretch](https://youtu.be/1dcDoUG69Bc?t=17) | 2    | 5-8 / side  |        | Hold each twist 2-3 seconds. Hips and upper back (hunchback). |
+| **Main Workout**            | **A1:** Goblet Squats                                        | 3    | 8-12 reps   |        | **PT Priority.** Keep torso upright to engage core and back.  |
+| (25-35 mins)                | **A2:** Dumbbell Rows                                        | 3    | 8-12 reps   |        | **Hunchback.** Shoulder blades back and down. Bicep work too. |
+|                             | **B1:** Single Leg Deadlifts                                 | 3    | 8-12 / leg  |        | **PT Prescribed.** balance, hamstrings, and lower back.       |
+|                             | **B2:** Pushups                                              | 3    | Near Fail   |        | Builds upper body pushing strength.                           |
+|                             | **C1:** Hip Thrusts                                          | 3    | 10-15 reps  |        | glutes for lower back pain.                                   |
+|                             | **C2:** Dumbbell Bicep Curls                                 | 3    | 8-12 / arm  |        | Bicep growth. 1-arm, alt-arm, double-arm                      |
+| **Cool-down / Correctives** | Lateral Step-Downs (6")                                      | 2-3  | 10-15 / leg |        | **PT Prescribed.** Slow & controlled, no inward knee caving.  |
+| (10 mins ?)                 | Eccentric Heel Lowering                                      | 2-3  | 15 / leg    |        | Calf injury, lower ~3-4 sec.                                  |
+|                             | [[Seidi14hyperKyposisExrcsEffic\|5 kyphosis exercises]]      | 1    | 30-45 sec?  |        | Hunchback                                                     |
+|                             |                                                              |      |             |        |                                                               |
 ## AI Design
 ### AI Response
 Of course. This is an excellent set of goals and you've got a solid foundation. We can definitely make this routine more time-efficient while better targeting your specific goals, especially the hunchback and bicep development.
@@ -138,3 +142,7 @@ Goblet Squat
 6.2 Eccentric Heel Lowering on Step
 7.1 Jump Rope
 7.2 Pushups standard & legs on chair
+## Also
+- [[Elpeze22kyphosisAdolescCCEP|Elpeze22: The Effect of a Comprehensive Corrective Exercise Program on Kyphosis Angle and Balance in Kyphotic Adolescents]] 
+- [[Seidi14hyperKyposisExrcsEffic|Seidi14: The efficiency of corrective exercise interventions on thoracic hyper-kyphosis angle]] 
+- [[Combo Workout Revised Long]]

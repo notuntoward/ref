@@ -17,7 +17,7 @@
     "smaller_pdf_fonts"
   ],
   "theme": "moonstone",
-  "cssTheme": "",
+  "cssTheme": "AnuPpuccin",
   "baseFontSize": 19,
   "textFontFamily": "Consolas",
   "nativeMenus": false,

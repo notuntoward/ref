@@ -1,8 +1,15 @@
 ---
 created date: 2025-06-20T18:54:24-07:00
-modified date: 2025-06-21T12:14:58-07:00
+modified date: 2025-06-21T16:17:13-07:00
+tags:
+  - excercise
 ---
-
+Also see: [[Combo Workout Revised Short]]
+**My Modifications**
+- Remove the Standing Ankle Dorsal Stretch from the end: the PT said I didn't have ankle mobility problems; I'm already doing several functional exercises what require ankle range of motion; and because some study said that functional exercises were more effective than stretching.
+- Removed Doorway Chest Stretch at end since redundant with kyphosis exercises (below)
+- Replaced these two with the five CCEP kyphosis (hunchback) exercises in [[Seidi14hyperKyposisExrcsEffic]], could advance to the many in [[Elpeze22kyphosisAdolescCCEP|Elpeze22kyphosisAdolescCCEP]] 
+- [ ] Consider if the ending Low Lunge Twist Stretch and Figure-Four Stretch exercises are redundant w/ the kyphosis exercises above
 ## Workout Summary
 
 ### **Part 1: Warm-up (5-7 minutes)**
@@ -32,12 +39,11 @@ Perform 3 sets for each group. For supersets/tri-sets, perform exercises back-to
 ### **Part 3: Cool-down (3-5 minutes)**
 *Goal: Improve flexibility and aid recovery. Hold each stretch gently.*
 
-| Phase       | Exercise                            | Duration               | Purpose / Notes                                       |
-|:----------- |:----------------------------------- |:---------------------- |:----------------------------------------------------- |
-| **Stretch** | Doorway Chest Stretch               | 30-45 seconds          | Opens the chest to counteract hunching posture.       |
-|             | Standing Ankle Dorsiflexion Stretch | 30-45 seconds          | Improves ankle mobility for squats and running.       |
-|             | Low Lunge Twist Stretch             | 30-45 seconds per side | Stretches hip flexors and improves thoracic mobility. |
-|             | Figure-Four Stretch                 | 30-45 seconds per side | Stretches the glutes and hips to release tension.     |
+| Phase       | Exercise                                                | Duration                                           | Purpose / Notes                                       |
+|:----------- |:------------------------------------------------------- |:-------------------------------------------------- |:----------------------------------------------------- |
+| **Stretch** | [[Seidi14hyperKyposisExrcsEffic\|5 kyphosis exercises]] | 30-45 seconds  [[Seidi14hyperKyposisExrcsEffic\|]] | Opens the chest to counteract hunching posture.       |
+|             | Low Lunge Twist Stretch                                 | 30-45 seconds per side                             | Stretches hip flexors and improves thoracic mobility. |
+|             | Figure-Four Stretch                                     | 30-45 seconds per side                             | Stretches the glutes and hips to release tension.     |
 ## AI Generation
 I [made this Google AI Studio](https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%2214zI2Ukpq6O2xLLzIN0Vs6ihsmfe3Ifn3%22%5D,%22action%22:%22open%22,%22userId%22:%22106663353829707201139%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing) with a [[#AI Prompt|prompting]] asking it to criticize and improve my old *Combo Workout Home Program* ([Evernote](https://share.evernote.com/note/926479d4-d116-45de-98ec-a85743210407)). I turned into the table [[#Workout Summary|Workout Summary]] by [asking](https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%2214zI2Ukpq6O2xLLzIN0Vs6ihsmfe3Ifn3%22%5D,%22action%22:%22open%22,%22userId%22:%22106663353829707201139%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing) AI Studio to summarize the [[##AI Response|AI Response]] in a Table.
 ### AI Response

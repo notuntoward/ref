@@ -11,9 +11,9 @@ aliases:
 citekey: Seidi14hyperKyposisExrcsEffic
 ZoteroTags: 
 ZoteroCollections:
-  - hunchback_correcton
+  - hunchback_correction
 created date: 6/21/2025, 2:16:05 PM
-modified date: 2025-06-21T14:54:55-07:00
+modified date: 2025-06-21T16:20:34-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/I5VFEHZB)  | [**DOI**](https://doi.org/10.3233/BMR-130411) | [**URL**](https://journals.sagepub.com/doi/full/10.3233/BMR-130411) | **[[Seidi14hyperKyposisExrcsEffic.pdf|PDF]]**
@@ -43,14 +43,20 @@ modified date: 2025-06-21T14:54:55-07:00
 
 %% begin Obsidian Notes %%
 ___
-Study of the efficacy of local and comprehensive corrective exercise programs (LCEP and CCEP) on [[Seidi14hyperKyposisExrcsEffic.pdf#page=4&annotation=165R|kyphosis angle]] (hunchback) finds both help, but CCEP is recommended, as it has an "extremely sarge effect size"
+Study of the efficacy of local and comprehensive corrective exercise programs (LCEP and CCEP) on [[Seidi14hyperKyposisExrcsEffic.pdf#page=4&annotation=165R|kyphosis angle]] (hunchback) finds both help, but CCEP is recommended, as it has an "extremely large effect size"
 
-- CCEP has five exercises:
+- CCEP has five exercises (way more in [[Elpeze22kyphosisAdolescCCEP]])
 	- [[Seidi14hyperKyposisExrcsEffic.pdf#page=5&annotation=159R|chin tuck, erecting the thoracic spine and adduct scapulae]]
-	- Shown in: [[Seidi14hyperKyposisExrcsEffic.pdf#page=7&annotation=171R|s angle 13 Fig. 5. The CCEP.]]
+	- Shown in: [[Seidi14hyperKyposisExrcsEffic.pdf#page=7&annotation=171R|Fig. 5. The CCEP.]]
+	- There's a 5 min warmup before and after them
+	- But no times given for the exercises, num. reps, etc.
 ### The 5 CCEP Exercises
-![[image-21.png]]
 
+![[image-21.png|691x809]]
+
+# Also
+- More explained CCEP program: [[Elpeze22kyphosisAdolescCCEP|Elpeze22: The Effect of a Comprehensive Corrective Exercise Program on Kyphosis Angle and Balance in Kyphotic Adolescents]] 
+- Used in [[Combo Workout Revised Short]] and maybe [[Combo Workout Revised Long]]
 
 ___
 %% end Obsidian Notes %%
