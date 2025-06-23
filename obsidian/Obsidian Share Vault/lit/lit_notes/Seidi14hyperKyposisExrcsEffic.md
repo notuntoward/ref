@@ -45,18 +45,18 @@ modified date: 2025-06-22T14:06:56-07:00
 
 %% begin Obsidian Notes %%
 ___
-Study of the efficacy of local and comprehensive corrective exercise programs (LCEP and CCEP) on [[Seidi14hyperKyposisExrcsEffic.pdf#page=4&annotation=165R|kyphosis angle]] (hunchback) finds both help, but CCEP is recommended, as it has an "extremely large effect size".  These appear to have been extended to include Postural perception training in [[Elpeze22kyphosisAdolescCCEP|Elpeze22kyphosisAdolescCCEP]], where they were found to be superior to a "thoracic exercise program."
+Local and comprehensive corrective exercise programs (LCEP and CCEP) fins both help [[Seidi14hyperKyposisExrcsEffic.pdf#page=4&annotation=165R|kyphosis angle]] (hunchback) but CCEP is recommended, as it has an "extremely large effect size".  These appear to have been extended to include Postural perception training in [[Elpeze22kyphosisAdolescCCEP|Elpeze22kyphosisAdolescCCEP]], where they were found to be superior to a "thoracic exercise program."
 - CCEP vs. (localized) LCEP
 	- I *think* CCEP has more compound exercises
 	- e.g. exercise 4
-		- I'm calling it scapular adduction and upward rotation, prone
-		- looking at [[AboGazia20scapulaAbdAddRot]], this works both adductor and elevator muscles at the same time: "[simultaneous](Seidi14hyperKyposisExrcsEffic.pdf#page=8&annotation=177R)" as in this paper
+		- I'm calling it 'scapular adduction and upward rotation, prone'
+		- looking at [[AboGazia20scapulaAbdAddRot]], this works both adductor and elevator muscles at the same time: "[simultaneous](Seidi14hyperKyposisExrcsEffic.pdf#page=8&annotation=177R)"
 - CCEP has five exercises (way more in [[Elpeze22kyphosisAdolescCCEP]])
 	- [[Seidi14hyperKyposisExrcsEffic.pdf#page=5&annotation=159R|chin tuck, erecting the thoracic spine and adduct scapulae]]
 	- Shown in: [[Seidi14hyperKyposisExrcsEffic.pdf#page=7&annotation=171R|Fig. 5. The CCEP.]]
 	- There's a 5 min warmup before and after them
 	- But no times given for the exercises, num. reps, etc.
-- Exercise )
+- Exercises
 	1. scapular rotate, supine 
 		- foam roll progression: [[Seidi14hyperKyposisExrcsEffic.pdf#page=5&annotation=213R|15, 20, 25 cm]]
 	2. neck extensor and chin tuck on ball

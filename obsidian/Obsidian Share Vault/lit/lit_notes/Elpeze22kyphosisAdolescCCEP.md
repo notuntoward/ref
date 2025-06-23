@@ -19,7 +19,7 @@ ZoteroTags:
 ZoteroCollections:
   - hunchback_correction
 created date: 6/21/2025, 3:13:43 PM
-modified date: 2025-06-22T13:40:37-07:00
+modified date: 2025-06-23T02:37:55-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/H74ABD3E)  | [**DOI**](https://doi.org/10.3390/healthcare10122478) | **[[Elpeze22kyphosisAdolescCCEP.pdf|PDF]]**
@@ -49,11 +49,11 @@ modified date: 2025-06-22T13:40:37-07:00
 
 %% begin Obsidian Notes %%
 ___
-CCEP (comprehensive corrective exercise program) as in [[Seidi14hyperKyposisExrcsEffic]], combined with [postural perception training](Elpeze22kyphosisAdolescCCEP.pdf#page=5&annotation=548R), is better than TEP (thoracic exercise program) and a control.  It's pretty time intensive.
-### Results: CCEP (+posture)
+CCEP (comprehensive corrective exercise program) as in [[Seidi14hyperKyposisExrcsEffic]], combined with [postural perception training](Elpeze22kyphosisAdolescCCEP.pdf#page=5&annotation=548R), is better than TEP (thoracic exercise program) and a control.  The exercise routine is pretty time intensive.
+### Results: CCEP + posture
 - best reduction in the kyphosis angle
 - Best postural perception improvement
-- Best and only improvement of the Romberg index (balance)
+- Best and only balance improvement (Romberg index)
 ### Exercises
 - [[Elpeze22kyphosisAdolescCCEP.pdf#page=5&annotation=551R|40–50 min, 3 days a week for 12 week]]
 - Reps/mins vs. Week in Program: [Appendix A](Elpeze22kyphosisAdolescCCEP.pdf#page=12&annotation=243R)
