@@ -1,6 +1,11 @@
 ---
 created date: 2025-06-18T13:13:33-07:00
 modified date: 2025-06-19T15:57:30-07:00
+tags:
+  - finance
+  - retirement_planning
+linked: true
+read: true
 ---
 I thought I might reduce taxes with an early Roth conversion. If I get a job very soon, a conversion probably won't work, but I should still add my standard $8k yearly limit to my Roth.  If it takes me very long to get a job, I should do both.
 # Why do an early Roth conversion?

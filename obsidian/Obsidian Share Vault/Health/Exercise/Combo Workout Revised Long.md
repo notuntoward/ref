@@ -1,14 +1,15 @@
 ---
 created date: 2025-06-20T18:54:24-07:00
-modified date: 2025-06-21T16:17:13-07:00
+modified date: 2025-06-22T16:22:21-07:00
 tags:
   - excercise
+  - posture
 ---
 Also see: [[Combo Workout Revised Short]]
 **My Modifications**
 - Remove the Standing Ankle Dorsal Stretch from the end: the PT said I didn't have ankle mobility problems; I'm already doing several functional exercises what require ankle range of motion; and because some study said that functional exercises were more effective than stretching.
 - Removed Doorway Chest Stretch at end since redundant with kyphosis exercises (below)
-- Replaced these two with the five CCEP kyphosis (hunchback) exercises in [[Seidi14hyperKyposisExrcsEffic]], could advance to the many in [[Elpeze22kyphosisAdolescCCEP|Elpeze22kyphosisAdolescCCEP]] 
+- Replaced these two with the five CCEP kyphosis (hunchback) exercises in [[Seidi14hyperKyposisExrcsEffic]], could advance to the many in [[Elpeze22kyphosisAdolescCCEP]] 
 - [ ] Consider if the ending Low Lunge Twist Stretch and Figure-Four Stretch exercises are redundant w/ the kyphosis exercises above
 ## Workout Summary
 
@@ -41,7 +42,7 @@ Perform 3 sets for each group. For supersets/tri-sets, perform exercises back-to
 
 | Phase       | Exercise                                                | Duration                                           | Purpose / Notes                                       |
 |:----------- |:------------------------------------------------------- |:-------------------------------------------------- |:----------------------------------------------------- |
-| **Stretch** | [[Seidi14hyperKyposisExrcsEffic\|5 kyphosis exercises]] | 30-45 seconds  [[Seidi14hyperKyposisExrcsEffic\|]] | Opens the chest to counteract hunching posture.       |
+| **Stretch** | [[Seidi14hyperKyposisExrcsEffic\|5 kyphosis exercises]] | 30-45 seconds  [Seidi14hyperKyposisExrcsEffic](Seidi14hyperKyposisExrcsEffic.md) | Opens the chest to counteract hunching posture.       |
 |             | Low Lunge Twist Stretch                                 | 30-45 seconds per side                             | Stretches hip flexors and improves thoracic mobility. |
 |             | Figure-Four Stretch                                     | 30-45 seconds per side                             | Stretches the glutes and hips to release tension.     |
 ## AI Generation

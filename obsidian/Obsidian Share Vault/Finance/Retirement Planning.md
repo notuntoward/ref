@@ -1,6 +1,6 @@
 ---
 created date: 2025-01-08T12:58:45-08:00
-modified date: 2025-01-08T13:38:05-08:00
+modified date: 2025-06-22T18:12:04-07:00
 ---
 
 # Combining 401Ks into Josh Tadke's Fund
@@ -20,3 +20,5 @@ modified date: 2025-01-08T13:38:05-08:00
 	- Return over 2024 was roughly zero???
 		- won't print total return over 2024, says it's "unavailable"
 	- Just to simplify
+# Roth allocation
+- [[Roth Conversion 2025]]

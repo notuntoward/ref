@@ -1,7 +1,10 @@
 ---
 category:
   - literaturenote
-tags: 
+tags:
+  - politics
+  - protest
+  - graphics
 read: true
 in-progress: false
 linked: true

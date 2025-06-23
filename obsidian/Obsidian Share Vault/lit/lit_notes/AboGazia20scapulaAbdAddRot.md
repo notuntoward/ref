@@ -1,26 +1,28 @@
 ---
 category:
   - literaturenote
-tags: 
-read: false
+tags:
+  - excercise
+  - posture
+read: true
 in-progress: false
-linked: false
+linked: true
 aliases:
   - "Scapular Abduction And Upward Rotation: Serratus Anterior"
   - "Scapular Abduction And Upward Rotation:"
-citekey: Abo-Gazia20scapulaAbdAddRot
+citekey: AboGazia20scapulaAbdAddRot
 ZoteroTags: 
 ZoteroCollections:
   - hunchback_correction
 created date: 6/22/2025, 11:33:00 AM
-modified date: 2025-06-22T11:37:49-07:00
+modified date: 2025-06-22T11:47:01-07:00
 ---
 
-> [!info]- &nbsp;[**Zotero**](zotero://select/library/items/VIIVERRE)  | [**URL**](https://kfs.edu.eg/pt/pdf/109202010464016.pdf) | **[[Abo-Gazia20scapulaAbdAddRot.pdf|PDF]]**
+> [!info]- &nbsp;[**Zotero**](zotero://select/library/items/VIIVERRE)  | [**URL**](https://kfs.edu.eg/pt/pdf/109202010464016.pdf) | **[[AboGazia20scapulaAbdAddRot.pdf|PDF]]**
 >> **Author**:: Abo-Gazia, Amr. A.
 > **Title**:: "Scapular Abduction And Upward Rotation: Serratus Anterior"
 > **Date**:: 6/5/2020
-> **Citekey**:: Abo-Gazia20scapulaAbdAddRot
+> **Citekey**:: AboGazia20scapulaAbdAddRot
 > **ZoteroItemKey**:: VIIVERRE
 > **itemType**:: document
 > **DOI**:: 
@@ -44,12 +46,12 @@ ___
 Lecture slides showing scapular abductors, adductors and elevator muscle motions (related to hunchback problems).  These muscles either power a motion (contract) or allow it (relax).
 
 - **abductors** rotate the scapula forwards, towards the abdomen
-	- [serratus anterior](Abo-Gazia20scapulaAbdAddRot.pdf#page=2&annotation=158R)
+	- [serratus anterior](AboGazia20scapulaAbdAddRot.pdf#page=2&annotation=158R)
 - **adductors** rotate backwards, towards spine and downwards
-	- backward: [trapesius](Abo-Gazia20scapulaAbdAddRot.pdf#page=8&annotation=162R)
-	- downward rotation: [rhomboids](Abo-Gazia20scapulaAbdAddRot.pdf#page=26&annotation=165R)
+	- backward: [trapesius](AboGazia20scapulaAbdAddRot.pdf#page=8&annotation=162R)
+	- downward rotation: [rhomboids](AboGazia20scapulaAbdAddRot.pdf#page=26&annotation=165R)
 - **elevators** rotate upwards
-	- [trapesius, levator scapulae, rhomboideus major & minor](Abo-Gazia20scapulaAbdAddRot.pdf#page=8&annotation=162R)
+	- [trapesius, levator scapulae, rhomboideus major & minor](AboGazia20scapulaAbdAddRot.pdf#page=8&annotation=162R)
 ### Also
 - [[Elpeze22kyphosisAdolescCCEP|Elpeze22: The Effect of a Comprehensive Corrective Exercise Program on Kyphosis Angle and Balance in Kyphotic Adolescents]] 
 - [[Seidi14hyperKyposisExrcsEffic|Seidi14: The efficiency of corrective exercise interventions on thoracic hyper-kyphosis angle]] 

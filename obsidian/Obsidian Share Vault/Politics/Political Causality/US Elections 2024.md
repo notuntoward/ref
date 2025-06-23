@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-06-18T13:07:30-07:00
+modified date: 2025-06-22T18:44:46-07:00
 tags:
   - politics
   - polling
@@ -535,6 +535,7 @@ Bipartisan issues that can make your candidate look good if strongly pushed
 - [[#Auto-detection of political messaging/conversation themes and their importance|Auto-detection of political messaging/conversation themes and their importance]]
 - [[#Issue half-life|Issue half-life]]
 - [[#Polling by sentiment analysis|Polling by sentiment analysis]]
+- cost/benefit of being poll-driven: [[lit/lit_notes/Morris25dataDrivenTrumpCvr.md#Popularism plusses and minuses (for Democrats) |Morris25: Interview with Michael Podhorzer about a data-driven approach to covering Trump]] 
 - Monitoring media for year-round opportunities
 	- constantly monitor media, find issue or issue combos that are favorable to you, or unfavorable to your opponent
 	- pump these to advertising or insert in news, like Fox does all the time

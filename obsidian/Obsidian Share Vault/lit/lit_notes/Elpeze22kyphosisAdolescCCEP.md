@@ -19,7 +19,7 @@ ZoteroTags:
 ZoteroCollections:
   - hunchback_correction
 created date: 6/21/2025, 3:13:43 PM
-modified date: 2025-06-22T10:29:30-07:00
+modified date: 2025-06-22T13:40:37-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/H74ABD3E)  | [**DOI**](https://doi.org/10.3390/healthcare10122478) | **[[Elpeze22kyphosisAdolescCCEP.pdf|PDF]]**
@@ -49,18 +49,39 @@ modified date: 2025-06-22T10:29:30-07:00
 
 %% begin Obsidian Notes %%
 ___
-CCEP (comprehensive corrective exercise program) as in [[Elpeze22kyphosisAdolescCCEP|Elpeze22: null]] [[Seidi14hyperKyposisExrcsEffic|Seidi14: The efficiency of corrective exercise interventions on thoracic hyper-kyphosis angle]], is better than TEP (thoracic exercise program) and a control.
-### CCEP improvements
+CCEP (comprehensive corrective exercise program) as in [[Seidi14hyperKyposisExrcsEffic]], combined with [postural perception training](Elpeze22kyphosisAdolescCCEP.pdf#page=5&annotation=548R), is better than TEP (thoracic exercise program) and a control.  It's pretty time intensive.
+### Results: CCEP (+posture)
 - best reduction in the kyphosis angle
 - Best postural perception improvement
 - Best and only improvement of the Romberg index (balance)
 ### Exercises
-- Exercise pictures (unclear what is what, though): [Figure 2](Elpeze22kyphosisAdolescCCEP.pdf#page=12&annotation=244R)
+- [[Elpeze22kyphosisAdolescCCEP.pdf#page=5&annotation=551R|40–50 min, 3 days a week for 12 week]]
 - Reps/mins vs. Week in Program: [Appendix A](Elpeze22kyphosisAdolescCCEP.pdf#page=12&annotation=243R)
 - Exercise Progression vs. Week in Program: [Appendix B](Elpeze22kyphosisAdolescCCEP.pdf#page=12&annotation=244R)
-- Far fewer in [[Seidi14hyperKyposisExrcsEffic|Seidi14hyperKyposisExrcsEffic]] 
+- [[Elpeze22kyphosisAdolescCCEP.pdf#page=5&annotation=548R|Postural perception training]]: instructed about what good posture is, checks in mirror
+- More exercises than [[Seidi14hyperKyposisExrcsEffic|Seidi14hyperKyposisExrcsEffic]] , and maybe different, judging by pictures.
+- Exercise pictures (unclear what is what, though): [Figure 2](Elpeze22kyphosisAdolescCCEP.pdf#page=12&annotation=244R)
 
 ### Exercise Program Progression
+- [[Elpeze22kyphosisAdolescCCEP.pdf#page=5&annotation=551R|40–50 min, 3 days a week for 12 week]] (max across 12 week program, since num/dur of exercises increases?)
+#### Exercise Times/Reps/Duration 
+Seems to be organized into supersets, each of which rotates through all exercises in [Appendix B](Elpeze22kyphosisAdolescCCEP.pdf#page=12&annotation=244R).  The "Exercises" column in [Appendix A](Elpeze22kyphosisAdolescCCEP.pdf#page=12&annotation=243R) seems to be (num. exercises in  [Appendix B](Elpeze22kyphosisAdolescCCEP.pdf#page=12&annotation=244R)) X (num. repeats of supersets) (see [this](Elpeze22kyphosisAdolescCCEP.pdf#page=5&annotation=166R), but actually, **I can't figure this out**)
+##### Definition: stretching vs. self-mobilization
+Different reps/durs for these types, which aren't defined, but I can use [this](Elpeze22kyphosisAdolescCCEP.pdf#page=5&annotation=554R) to guess.
+- there are both supine and standing versions of pec stretch and thorcic self-mobilizations (4 exercises in [[Elpeze22kyphosisAdolescCCEP.pdf#page=6&annotation=557R|Figure 2.]])
+- but **I still can't figure it out**
+##### Superset 
+- stretching: 30 s x 3 reps  **1.5 mins**
+- self-mobilization: 60 s x 2 reps **2 mins**
+##### Superset repeats
+
+| Weeks          | Exercises <br>(num. exercises) x (superset repeats) |
+| :------------- | :-------------------------------------------------- |
+| **Weeks 1–2**  | 5 × 2                                               |
+| **Weeks 3–4**  | 10 × 2                                              |
+| **Weeks 5–8**  | 10 × 3                                              |
+| **Weeks 9–12** | 15 × 3                                              |
+#### Merged Exercise List and Reps/Duration Tables
 From [Appendix A](Elpeze22kyphosisAdolescCCEP.pdf#page=12&annotation=243R) and [Appendix B](Elpeze22kyphosisAdolescCCEP.pdf#page=12&annotation=244R) (I AI-merged the two tables)
 
 | Weeks (CCEP)   | Comprehensive Corrective Exercise Program (CCEP)                                                                                                                                                                                                                                                                                                                                                                                          | Weeks (Intensity) | Exercises (Intensity)                  | Exercise Intensity                             |
@@ -73,6 +94,7 @@ From [Appendix A](Elpeze22kyphosisAdolescCCEP.pdf#page=12&annotation=243R) and [
 ### Also
 - [[Seidi14hyperKyposisExrcsEffic|Seidi14: The efficiency of corrective exercise interventions on thoracic hyper-kyphosis angle]] (fewer CCEP exercises)
 - Used in [[Combo Workout Revised Short]] and maybe [[Combo Workout Revised Long]]
+- Physio definitions: [[AboGazia20scapulaAbdAddRot|AboGazia20: Scapular Abduction And Upward Rotation: Serratus Anterior]] 
 
 ___
 %% end Obsidian Notes %%

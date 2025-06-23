@@ -2,9 +2,9 @@
 category:
   - literaturenote
 tags: 
-read: false
+read: true
 in-progress: false
-linked: false
+linked: true
 aliases:
   - Interview with Michael Podhorzer about a data-driven approach to covering Trump
   - Interview with Michael Podhorzer about
@@ -18,7 +18,7 @@ ZoteroCollections:
   - objectivity_in_politics
   - electionpredfeats
 created date: 6/16/2025, 9:24:47 PM
-modified date: 2025-06-17T09:15:52-07:00
+modified date: 2025-06-22T18:45:00-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/IJG6XVAP)  | [**URL**](https://www.gelliottmorris.com/p/interview-with-michael-podhorzer) | **[[Morris25dataDrivenTrumpCvr.html|HTM]]**
@@ -46,7 +46,17 @@ modified date: 2025-06-17T09:15:52-07:00
 
 >  Morris, G. Elliott. Interview with Michael Podhorzer about a Data-Driven Approach to Covering Trump. 13 May 2025, https://www.gelliottmorris.com/p/interview-with-michael-podhorzer.
 
+A discussion between a data-driven journalist, E. Morris, and a long-time commentator, M. Podhorzer, a little before the election.  There are some misses, like their belief in the importance of abortion (I think it turned out to not be the most important thing in 2024), and the rule of law/democracy. But there was also cost/benefit of populism and poll following. 
 
+I listened to this during a workout, and wrote down a timestamp where I remembered there being some juicy poll results about Trump policy vs. policy statements but I couldn't find it (I thought it was 36:40)
+### Popularism plusses and minuses (for Democrats)
+i.e. focusing only on issues perceived as most popular (by polling, I guess) and downplaying less popular ones.
+#### Minuses of Populism
+1. hard to know what's really popular [[lit/lit_notes/Morris25dataDrivenTrumpCvr.md#^3qtn |[00:20:00]]] 
+2. you're always worried about saying wrong thing, not bold or inspiring [[lit/lit_notes/Morris25dataDrivenTrumpCvr.md#^cnbi |[00:20:19]]]
+3. politics also about values and identity, not just policy [[lit/lit_notes/Morris25dataDrivenTrumpCvr.md#^2h63 |[00:20:34]]]
+#### Plusses of Populism
+1. corrective to left-wing politics completely indifferent to public opinion [[lit/lit_notes/Morris25dataDrivenTrumpCvr.md#^jxkb |[00:20:55]]]
 %% begin Obsidian Notes %%
 ___
 ### Video Transcript: Interview with Michael Podhorzer
@@ -150,15 +160,15 @@ ___
 
 [00:19:18] **G. Elliott Morris:** Let's talk about some of the different theories of the case for how Democrats could or should win in 2024, or at least how they could try to increase their odds of winning. You know, one of these is "popularism," which is a term that was coined by our mutual friend David Shor. What's your take on popularism?
 
-[00:19:39] **Michael Podhorzer:** So, popularism is the idea that Democrats should focus on their most popular policies and downplay their less popular ones. And, you know, on its face, it seems like a very sensible idea. You know, why wouldn't you want to talk about the things that people like and not talk about the things that people don't like?
+[00:19:39] **Michael Podhorzer:** So, ==popularism is the idea that Democrats should focus on their most popular policies and downplay their less popular ones==. And, you know, on its face, it seems like a very sensible idea. You know, why wouldn't you want to talk about the things that people like and not talk about the things that people don't like?
 
-[00:20:00] But I think that there are a few problems with it. One is that it's very hard to know what's popular and what's not. You know, you can poll these things, but polls are not always reliable. And public opinion is often very fluid and contradictory.
+[00:20:00] But I think that there are a few problems with it. One is that it's very hard to know what's popular and what's not. You know, you can poll these things, but polls are not always reliable. And public opinion is often very fluid and contradictory. ^3qtn
 
-[00:20:19] Another problem is that it can lead to a very cautious and defensive style of politics. You know, if you're always worried about saying the wrong thing, you're never going to say anything bold or inspiring.
+[00:20:19] Another problem is that it can lead to a very cautious and defensive style of politics. You know, if you're always worried about saying the wrong thing, you're never going to say anything bold or inspiring. ^cnbi
 
-[00:20:34] And then I think the third problem is that it ignores the fact that politics is not just about policy, it's also about values and identity. And so, you know, you can have the most popular policies in the world, but if people don't feel like you're on their side, they're not going to vote for you.
+[00:20:34] And then I think the third problem is that it ignores the fact that politics is not just about policy, it's also about values and identity. And so, you know, you can have the most popular policies in the world, but if people don't feel like you're on their side, they're not going to vote for you. ^2h63
 
-[00:20:55] And so, you know, my view is that popularism is a useful corrective to a certain kind of left-wing politics that is completely indifferent to public opinion. But I don't think it's a silver bullet. And I think that Democrats need to have a more holistic approach to politics that combines popular policies with a strong and clear and compelling message about their values and their vision for the country.
+[00:20:55] And so, you know, my view is that popularism is a useful corrective to a certain kind of left-wing politics that is completely indifferent to public opinion. But I don't think it's a silver bullet. And I think that Democrats need to have a more holistic approach to politics that combines popular policies with a strong and clear and compelling message about their values and their vision for the country. ^jxkb
 
 [00:21:28] **G. Elliott Morris:** So what would that message be? What is the vision that you think Democrats should be offering?
 

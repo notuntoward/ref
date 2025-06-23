@@ -1,24 +1,24 @@
 ---
-category: 
-- literaturenote
-tags:
+category:
+  - literaturenote
+tags: 
 read: false
 in-progress: false
 linked: false
 aliases:
-- "How to speak to a vaccine sceptic: research reveals what works"
-- "How to speak to a"
+  - "How to speak to a vaccine sceptic: research reveals what works"
+  - How to speak to a
 citekey: Pearson25vaccineScepticHowSpk
-ZoteroTags: 
-- diseases
-- public_health
-- vaccines
-ZoteroCollections: 
-- epistemiology_and_persuasion
-- misdisinformation
-- objectivity_in_politics
+ZoteroTags:
+  - diseases
+  - public_health
+  - vaccines
+ZoteroCollections:
+  - epistemiology_and_persuasion
+  - misdisinformation
+  - objectivity_in_politics
 created date: 6/10/2025, 10:26:40 AM
-modified date:
+modified date: 2025-06-22T19:32:54-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/HL5FKX5K)  | [**DOI**](https://doi.org/10.1038/d41586-025-01771-z) | [**URL**](https://www.nature.com/articles/d41586-025-01771-z) | **[[Pearson25HowSpeakVaccine.pdf|PDF]]** | **[[Pearson25vaccineScepticHowSpk.html|HTM]]**

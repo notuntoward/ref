@@ -1,34 +1,41 @@
 ---
 created date: 2025-06-21T12:14:59-07:00
-modified date: 2025-06-22T10:21:52-07:00
+modified date: 2025-06-22T18:06:19-07:00
 tags:
   - excercise
+  - posture
 ---
-I developed this with [Google AI Studio](https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221mMPW9E6SOtEU2yeijUrZ23z-zU7Uap1D%22%5D,%22action%22:%22open%22,%22userId%22:%22106663353829707201139%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing) by asking it to modify my old Combo Workout ([Evernote](https://share.evernote.com/note/926479d4-d116-45de-98ec-a85743210407)).  See [[#My AI Prompt]] and [[Combo Workout Revised Long#AI Response]] below.
+I developed this with [Google AI Studio](https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221mMPW9E6SOtEU2yeijUrZ23z-zU7Uap1D%22%5D,%22action%22:%22open%22,%22userId%22:%22106663353829707201139%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing) by asking it to modify my old Combo Workout ([Evernote](https://share.evernote.com/note/926479d4-d116-45de-98ec-a85743210407)).  See [[#My AI Prompt|My AI Prompt]] and [[Combo Workout Revised Long#AI Response]] below.
 
-**My Modifications**
-- Removed the Standing Ankle Stretch from the end: the PT said I didn't have ankle mobility problems; I'm already doing several functional exercises what require ankle range of motion; and because some study said that functional exercises were more effective than stretching.
-- Replaced it the five CCEP kyphosis (hunchback) exercises in [[Seidi14hyperKyposisExrcsEffic]], could advance to the many in [[Elpeze22kyphosisAdolescCCEP|Elpeze22kyphosisAdolescCCEP]] 
+**My Modifications to AI output**
+- Removed the Standing Ankle Stretch from the cool-down at the end: the PT said I didn't have ankle mobility problems; I'm already doing several functional exercises what require ankle range of motion; and because some study said that functional exercises were more effective than stretching.  I also turned it into superset **D**.
+- Added the five CCEP kyphosis (hunchback) exercises in [[Seidi14hyperKyposisExrcsEffic]] That paper's workout description was vague, so I mixed it with part of a related but far longer workout in a citing paper, [[Elpeze22kyphosisAdolescCCEP]].  From that paper, I'm including only a single iteration of its simplest "superset.".
 
 Also see [[Combo Workout Revised Long]]
 ## Workout Summary
 
-*   **Supersets (A, B, C):** Perform the two exercises in a pair (e.g., A1 then A2) back-to-back with minimal rest in between. Rest for 60-90 seconds only *after* completing the pair. Then, repeat for the total number of sets. 
+*   **Supersets (A, B, C, D):** Perform the two exercises in a pair (e.g., A1 then A2) back-to-back with minimal rest in between. Rest for 60-90 seconds only *after* completing the pair. Then, repeat for the total number of sets. 
 
-| Phase                  | Exercise                                                | Sets | Reps/Dur    | Weight | Notes                                                         |
-| :--------------------- | :------------------------------------------------------ | :--- | :---------- | ------ | :------------------------------------------------------------ |
-| **Dynamic Warm-up**    | Jump Rope                                               | 1    | 2-3 minutes |        | Light, continuous pace to warm up the body.                   |
-| (5-7 mins)             | Band Sidestep                                           | 2    | 15-20 / dir |        | Activates glute medius for hip & knee stability.              |
-|                        | [Low Lunge Twist](https://youtu.be/1dcDoUG69Bc?t=17)    | 2    | 5-8 / side  |        | Hold each twist 2-3 seconds. Hips and upper back (hunchback). |
-| **Main Workout**       | **A1:** Goblet Squats                                   | 3    | 8-12 reps   |        | **PT Priority.** Keep torso upright to engage core and back.  |
-| (25-35 mins)           | **A2:** Dumbbell Rows                                   | 3    | 8-12 reps   |        | **Hunchback.** Shoulder blades back and down. Bicep work too. |
-|                        | **B1:** 1 Leg Deadlifts                                 | 3    | 8-12 / leg  |        | **PT Prescribed.** balance, hamstrings, and lower back.       |
-|                        | **B2:** Pushups                                         | 3    | Near Fail   |        | Builds upper body pushing strength.                           |
-|                        | **C1:** Hip Thrusts                                     | 3    | 10-15 reps  |        | glutes for lower back pain.                                   |
-|                        | **C2:** Bicep Curls                                     | 3    | 8-12 / arm  |        | Bicep growth. 1-arm, alt-arm, double-arm                      |
-| **Cool-down, Correct** | Lateral Step-Down, 6"                                   | 2-3  | 10-15/leg   |        | **PT Prescribed.** Slow & controlled, no inward knee caving.  |
-| (10 mins ?)            | Eccentric Heel Lower                                    | 2-3  | 15 / leg    |        | Calf injury, lower ~3-4 sec.                                  |
-|                        | [[Seidi14hyperKyposisExrcsEffic\|5 kyphosis exercises]] | 1    | 30-45 sec?  |        | Hunchback                                                     |
+| Phase               | Exercise                                                                              | Sets | Reps/Dur    | Weight | Notes                                                                                                                     |
+| :------------------ | :------------------------------------------------------------------------------------ | :--- | :---------- | ------ | :------------------------------------------------------------------------------------------------------------------------ |
+| **Dynamic Warm-up** | Jump Rope                                                                             | 1    | 2-3 minutes |        | Light, continuous pace to warm up the body.                                                                               |
+| (5-7 mins)          | Band Sidestep                                                                         | 2    | 15-20 / dir |        | Activates glute medius for hip & knee stability.                                                                          |
+|                     | [Low Lunge Twist](https://youtu.be/1dcDoUG69Bc?t=17)                                  | 2    | 5-8 / side  |        | Hold each twist 2-3 seconds. Hips and upper back (hunchback).                                                             |
+| **Main Workout**    | **A1:** Goblet Squats                                                                 | 3    | 8-12 reps   |        | **PT Priority.** Keep torso upright to engage core and back.                                                              |
+| (25-35 mins)        | **A2:** Dumbbell Rows                                                                 |      | 8-12 reps   |        | **Hunchback.** Shoulder blades back and down. Bicep work too.                                                             |
+|                     | **B1:** 1 Leg Deadlifts                                                               | 3    | 8-12 / leg  |        | **PT Prescribed.** balance, hamstrings, and lower back.                                                                   |
+|                     | **B2:** Pushups                                                                       |      | Near Fail   |        | Builds upper body pushing strength.                                                                                       |
+|                     | **C1:** Hip Thrusts                                                                   | 3    | 10-15 reps  |        | glutes for lower back pain.                                                                                               |
+|                     | **C2:** Bicep Curls                                                                   |      | 8-12 / arm  |        | Bicep growth. 1-arm, alt-arm, double-arm                                                                                  |
+| **Knee-Calf**       | **D1:** Lateral Step-Down, 6"                                                         | 2-3  | 10-15/leg   |        | **PT Prescribed.** Slow & controlled, no inward knee caving.                                                              |
+| (7 mins ?)          | **D2: **Eccentric Heel Lower                                                          |      | 15 / leg    |        | Calf/Achilles, lower ~3-4 sec.                                                                                            |
+| **Kyphosis**        | 1. Scapular rotate, supine<br>on roll                                                 | 3    | 30 s        |        | Hunchback fix, from **[[Seidi14hyperKyposisExrcsEffic#Exercise timings/reps/durations?\|Seidi14hyperKyposisExrcsEffic]]** |
+| (7 mins?)           | 2. Neck extensor and chin<br>tuck on ball                                             | 2    | 60 s        |        |                                                                                                                           |
+|                     | 3. Pectoral stretch,<br>supine on roll                                                | 3    | 30 s        |        |                                                                                                                           |
+|                     | 4. Scapular adduction and<br>upward rotation, prone<br>on roll                        | 2    | 60 s        |        |                                                                                                                           |
+|                     | 5. Scapular adduction and <br>downward rotation and neck<br>extensor, sitting on matt | 3    | 30 s        |        |                                                                                                                           |
+
+
 ## AI Design
 ### AI Response
 Of course. This is an excellent set of goals and you've got a solid foundation. We can definitely make this routine more time-efficient while better targeting your specific goals, especially the hunchback and bicep development.
