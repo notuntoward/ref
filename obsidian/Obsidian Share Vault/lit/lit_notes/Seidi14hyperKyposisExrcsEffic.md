@@ -15,7 +15,7 @@ ZoteroTags:
 ZoteroCollections:
   - hunchback_correction
 created date: 6/21/2025, 2:16:05 PM
-modified date: 2025-06-22T14:06:56-07:00
+modified date: 2025-06-23T10:53:05-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/I5VFEHZB)  | [**DOI**](https://doi.org/10.3233/BMR-130411) | [**URL**](https://journals.sagepub.com/doi/full/10.3233/BMR-130411) | **[[Seidi14hyperKyposisExrcsEffic.pdf|PDF]]**
@@ -53,19 +53,11 @@ Local and comprehensive corrective exercise programs (LCEP and CCEP) fins both h
 		- looking at [[AboGazia20scapulaAbdAddRot]], this works both adductor and elevator muscles at the same time: "[simultaneous](Seidi14hyperKyposisExrcsEffic.pdf#page=8&annotation=177R)"
 - CCEP has five exercises (way more in [[Elpeze22kyphosisAdolescCCEP]])
 	- [[Seidi14hyperKyposisExrcsEffic.pdf#page=5&annotation=159R|chin tuck, erecting the thoracic spine and adduct scapulae]]
-	- Shown in: [[Seidi14hyperKyposisExrcsEffic.pdf#page=7&annotation=171R|Fig. 5. The CCEP.]]
+	- Pictures in: [[Seidi14hyperKyposisExrcsEffic.pdf#page=7&annotation=171R|Fig. 5. The CCEP.]]
 	- There's a 5 min warmup before and after them
 	- But no times given for the exercises, num. reps, etc.
-- Exercises
-	1. scapular rotate, supine 
-		- foam roll progression: [[Seidi14hyperKyposisExrcsEffic.pdf#page=5&annotation=213R|15, 20, 25 cm]]
-	2. neck extensor and chin tuck on ball
-	3. pectoral stretch, supine
-		- foam roll progression: [[Seidi14hyperKyposisExrcsEffic.pdf#page=5&annotation=213R|15, 20, 25 cm]]
-	4. scapular adduction and upward rotation, prone
-	5. scapular adduction and downward rotation and neck extensor, sitting
 ##### Exercise timings/reps/durations?
-This paper doesn't explain, so make exercise name guesses from [[AboGazia20scapulaAbdAddRot]] and [Appendix B](Elpeze22kyphosisAdolescCCEP.pdf#page=12&annotation=244R) and, as well as borrow [[lit/lit_notes/Elpeze22kyphosisAdolescCCEP.md#Superset  |Superset]] definitions. Guess at the stretch/self-mobilization category from the [[#CCEP Exercise Pictures]].  Foam roll info progression is also from *this* paper. 
+This paper doesn't explain the exact exercise routine or even name all the exercise, so I made exercise name guesses comparing exercises pictures to the anatomy drawings in [[AboGazia20scapulaAbdAddRot]] as well as using names in [Appendix B](Elpeze22kyphosisAdolescCCEP.pdf#page=12&annotation=244R) in [[Elpeze22kyphosisAdolescCCEP]].  I also borrowed my guess of [[lit/lit_notes/Elpeze22kyphosisAdolescCCEP.md#Superset  |Superset]] definitions from there. This required guessing the stretch/self-mobilization category from the [[#CCEP Exercise Pictures]].  Foam roll info progression is also from *this* paper. 
 
 |     | Name                                                                        | Foam Roll Progression                                                         | Type     | Duration | Reps |
 | :-- | :-------------------------------------------------------------------------- | :---------------------------------------------------------------------------- | -------- | -------- | ---- |
@@ -79,8 +71,7 @@ The **total time** for this single "superset" is **6.5 mins**, with no resting i
 The complete routine of [[Elpeze22kyphosisAdolescCCEP]] is *far longer and more complicated*, and takes nearly an **hour**!
 ### CCEP Exercise Pictures
 From  [[Seidi14hyperKyposisExrcsEffic.pdf#page=7&annotation=171R|Fig. 5. The CCEP.]]
-![[image-21.png|933x1092]]
-
+![[image-21.png|CCEP Exercises|933x1092]]
 # Also
 - More explained CCEP program: [[Elpeze22kyphosisAdolescCCEP|Elpeze22: The Effect of a Comprehensive Corrective Exercise Program on Kyphosis Angle and Balance in Kyphotic Adolescents]] 
 - Used in [[Combo Workout Revised Short]] and maybe [[Combo Workout Revised Long]]

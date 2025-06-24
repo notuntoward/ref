@@ -18,7 +18,7 @@
   ],
   "theme": "moonstone",
   "cssTheme": "AnuPpuccin",
-  "baseFontSize": 19,
+  "baseFontSize": 18,
   "textFontFamily": "Consolas",
   "nativeMenus": false,
   "baseFontSizeAction": true
