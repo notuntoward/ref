@@ -1,27 +1,27 @@
 ---
-category: 
-- literaturenote
-tags:
-read: false
+category:
+  - literaturenote
+tags: 
+read: true
 in-progress: false
-linked: false
+linked: true
 aliases:
-- "Only 2 in 5 U.S. consumers say they would pay more for "Made in America" products"
-- "Only 2 in 5 U.S."
-citekey: MorningConsult25buyAmericanPoll.
+  - Only 2 in 5 U.S. consumers say they would pay more for "Made in America" products"
+  - Only 2 in 5 U.S.
+citekey: MorningConsult25buyAmericanPoll
 ZoteroTags: 
-ZoteroCollections: 
-- economic_politics
-- short_termism
-created date: 6/27/2025, 10:44:04 AM
-modified date:
+ZoteroCollections:
+  - economic_politics
+  - short_termism
+created date: 6/27/2025, 10:46:45 AM
+modified date: 2025-06-27T10:54:50-05:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/37SKMGLR)  | [**URL**](https://links.morningconsult.com/s/vb/CEEkJIkUd79s_O3Ga8Yp3iYpVirffW_GMohiBySvqyoYZVenN2-BoQ3Tq28IqrwNP6f3MpbDmGz18ya3KNjvvdA9Pc-fktkT9y--nlK5UjlJu-x22JuNxF7CSMwYPUXEzmKfejCC4YXNPE0Euh2yA97Z_R6I6L1TwzFm9Q/8cMwxxv_GnxlbH3-QNGvYeFCC40G5dJE/10) | **[[MorningConsult25buyAmericanPoll..pdf|PDF]]**
 >> **Author**:: MorningConsult
 > **Title**:: "Only 2 in 5 U.S. consumers say they would pay more for "Made in America" products"
 > **Date**:: 6/27/25
-> **Citekey**:: MorningConsult25buyAmericanPoll.
+> **Citekey**:: MorningConsult25buyAmericanPoll
 > **ZoteroItemKey**:: 37SKMGLR
 > **itemType**:: webpage
 > **DOI**:: 
@@ -42,6 +42,6 @@ modified date:
 
 %% begin Obsidian Notes %%
 ___
-==Delete this and write here. Don't delete the `persist` directives above and below.==
+Only 2 in 5 Americans will pay more for American-made.  The least likely to pay are GenZ adults (31%); the most, Republicans (47%). Also of note. Independents 32% (a lot are GenZ, I suppose) and Democrats 35%.
 ___
 %% end Obsidian Notes %%

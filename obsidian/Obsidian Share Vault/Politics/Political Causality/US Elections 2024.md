@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-06-22T18:44:46-07:00
+modified date: 2025-06-27T19:56:50-05:00
 tags:
   - politics
   - polling
@@ -162,6 +162,7 @@ Both R's and D's vote less on economic issues and more on values:
 - 100 day polls e.g. [[Balz25trumpApprovSink]]: D's still not popular, and Ds not satisfied Ds, unlike Rs who *are* satisfied with Trump
 - Blacks not optimistic about progress?  [[Horowitz25policeBLM5yearsFloyd|Horowitz25: Views of Race, Policing and Black Lives Matter in the 5 Years Since George Floyd’s Killing]] 
 - They didn't pick Harris: [[Lozada25bidenScapegoat|Lozada25: Biden Is a Scapegoat. The Democrats Are the Problem.]] 
+- Both lack of enthusiasm, and failure to persuade defectors: [[Clement25demsNonWhiteVote24|Clement25demsNonWhiteVote24: Trump shook Democrats’ hold on non-White voters in 2024, report finds]] 
 ## Abortion overemphasized, not important
 - abortion a concern of young women, not old?
 - more concern about economy
@@ -184,6 +185,8 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 - college-experienced voters cast about 62% of the 2024 vote
 	- 40% of the voting-eligible youth population are young people without college experience (CIRCLE24youthVote2024)
 	- 38% of all youth votes were cast by young people without college experience (CIRCLE24youthVote2024)
+#### Minority Vote Loss
+- Big Minority shift away from Harris, no change in White: [[Clement25demsNonWhiteVote24|Clement25demsNonWhiteVote24: Trump shook Democrats’ hold on non-White voters in 2024, report finds]] 
 # Campaign Message Ideas
 ## Attacks
 - [[Politics/Political Causality/US Elections 2024.md#Polarization Enhancement Your fellow R is evil (algorithmic)|Polarization Enhancement: Your fellow R is evil (algorithmic) ^q98mss]]
@@ -194,6 +197,7 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 	- and ven these equations were botched, due to Trump & Co's incompetence
 - R politicians knew this was BS, but were afraid of Trump, wanted to bigger careers, and went along, even praised Trump!
 - 100 days: R's happy with Trump tariffs & immigration [[Salvanto25trump100dayPollTariff]]
+- [[MorningConsult25buyAmericanPoll|MorningConsult25: Only 2 in 5 U.S. consumers say they would pay more for "Made in America" products"]] 
 ### Republican Deficit Hypocrisy
 - [[Bogage25houseBillDeficit|Bogage25: What’s in Trump and Republicans’ giant tax and immigration bill?]] 
 - [[Politics/Political Causality/US Elections 2024.md#Deficit spending for the Rich |Deficit spending for the Rich]]
@@ -296,7 +300,7 @@ Just more predictor variables for various things. Things similar to education, w
 	- example from [[Longwell25demsChenyDemoc|Longwell25: Did Democrats Have a Liz Cheney Problem? (with Jen Psaki)]] :
 		- D's apparently made democracy a talking point, put Cheney on, etc. because polls seemed to say that "democracy" was salient
 		- But R's didn't want to hear D democracy talking points b/c the Ds who "stole" the election.
-	- **Indea**: after an election, ask poll issue questions is a bunch of ways
+	- **India**: after an election, ask poll issue questions is a bunch of ways
 		- train a model to predictive model of the vote
 		- jointly tune an LLM that learns to ask the most predictive questions for each issue
 		- somehow, how do model how the candidates stood on the issue, though...
