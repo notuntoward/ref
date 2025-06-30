@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-06-30T12:19:20-05:00
+modified date: 2025-06-30T16:28:25-05:00
 tags:
   - politics
   - polling
@@ -89,6 +89,7 @@ Trump is really the best president ever.
 - Obsessive race focus pissed off people of color! [[Barro25demsNeedToCleanHouse|Barro25demsNeedToCleanHouse]] 
 - Male underperf: [[Hendrickson25demsManProblem|Hendrickson25: Democrats Have a Man Problem]] 
 - Only 27% think BLM worked in 2025, and BLM support dropped in just a couple (?) months after Floyd  [[Horowitz25policeBLM5yearsFloyd|Horowitz25: Views of Race, Policing and Black Lives Matter in the 5 Years Since George Floyd’s Killing]] 
+- Men not on board with \#MeToo, not even GenZ (by far): [[MorningConsult25genZmeToo|MorningConsult25genZmeToo]] 
 #### Seattle Handsoff Protest
 I couldn't hear much, but I think the first speaker started talking about Native Americans being victims of white colonization.  Given the market tank, all the worries on the protestors' posters, this was a total non-sequitur; nobody near me cheered for it, but there were dutiful liberal scattered clapping and cheering: taking their medicine, probably worried about not clapping.
 - [ ] get the transcripts of the speakers, who were Pramila Jayapal, Justin Gill, Hamdi Mohamed
@@ -337,6 +338,7 @@ Just more predictor variables for various things. Things similar to education, w
 ## Polarization: what, why, and how to overcome, or use
 - [[Evans24techSplinterCulturalCtrl]]
 - [[Rampell25genZmenLoveTrump]]
+	- Men not on board with \#MeToo, not even GenZ (by far): [[MorningConsult25genZmeToo|MorningConsult25genZmeToo]] 
 - Moderate candidates do better than extremes: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]]
 - 14% of Trump voters might be movable [[Kessler25noiseTrumpChaosPoll]]
 - heavy R/D polarization on BLM, race: [[Horowitz25policeBLM5yearsFloyd|Horowitz25: Views of Race, Policing and Black Lives Matter in the 5 Years Since George Floyd’s Killing]] 
