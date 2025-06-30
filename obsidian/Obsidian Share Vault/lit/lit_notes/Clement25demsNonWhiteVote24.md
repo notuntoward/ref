@@ -15,7 +15,7 @@ ZoteroCollections:
   - identitypolitics
   - electionpredfeats
 created date: 6/27/2025, 7:12:35 PM
-modified date: 2025-06-27T19:51:41-05:00
+modified date: 2025-06-29T18:55:42-05:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/DBKD25JS)  | [**URL**](https://www.washingtonpost.com/politics/2025/06/26/trump-harris-non-white-voters-pew-survey/) | **[[Clement25demsNonWhiteVote24.html|HTM]]**
@@ -54,3 +54,5 @@ Turnout-wise, if turnout had been higher, the best result for Harris would have 
 ![[image-22.png]]
 ___
 %% end Obsidian Notes %%
+### Also
+- Concurs and expands: [[Cohn25allVoteHarrisLose|Cohn25: If Everyone Had Voted, Harris Still Would Have Lost]] 

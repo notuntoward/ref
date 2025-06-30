@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-06-27T19:56:50-05:00
+modified date: 2025-06-30T12:19:20-05:00
 tags:
   - politics
   - polling
@@ -117,6 +117,7 @@ I couldn't hear much, but I think the first speaker started talking about Native
 - Inflationary pressure due to COVID
 	- Shipping congestion/rates: [[JoeBlogs25usSupplyChainMeltDown|JoeBlogs25: USA Supply Chain Meltdown]]
 - Inflation and Biden's age were what voters tracked: - [[Lozada25bidenScapegoat|Lozada25: Biden Is a Scapegoat. The Democrats Are the Problem.]] 
+- Biden econ in voter memory: [[Bailey21econVoteHalfLife|Bailey21: What's the Half-Life of the Economic Vote? (About a Year and a Half)]] 
 #### Weak economy doomed D's
 - many posts say so
 - but some say it was actually a perceived strong economy doomed the D's, rather than a weak real/perceived econ (Pastor24greatBidenEconHelpedTrump)
@@ -147,6 +148,13 @@ Both R's and D's vote less on economic issues and more on values:
 ### Global Trend
 - COVID + post-COVID inflation wiped out incumbents everywhere: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
 - global inflationary pressure: [[JoeBlogs25usSupplyChainMeltDown|JoeBlogs25: USA Supply Chain Meltdown]] 
+### Loss of young, non-white voters
+- [[Cohn25allVoteHarrisLose|Cohn25: If Everyone Had Voted, Harris Still Would Have Lost]] 
+#### Explanations for loss of young, non-white voters?
+- [ ] ? Did they just go for Trump b/c he was changey?
+- [ ] ? Were they repelled by too much liberalism?
+- [ ] ? Or do they just not know anything: [[Annenberg24civicsKnowledgeSurvey|Annenberg24civicsKnowledgeSurvey]] 
+- [ ] ? Was it bad Dem Brand?  (58% disapprove [[Morris25rcvFailOKpollBias|Morris25rcvFailOKpollBias]] , worse than )
 ### Loss of trust in experts, institutions
 - people don't believe experts, media, etc. Go to friends
 	- I have more than one article on this, I think
@@ -162,7 +170,10 @@ Both R's and D's vote less on economic issues and more on values:
 - 100 day polls e.g. [[Balz25trumpApprovSink]]: D's still not popular, and Ds not satisfied Ds, unlike Rs who *are* satisfied with Trump
 - Blacks not optimistic about progress?  [[Horowitz25policeBLM5yearsFloyd|Horowitz25: Views of Race, Policing and Black Lives Matter in the 5 Years Since George Floyd’s Killing]] 
 - They didn't pick Harris: [[Lozada25bidenScapegoat|Lozada25: Biden Is a Scapegoat. The Democrats Are the Problem.]] 
-- Both lack of enthusiasm, and failure to persuade defectors: [[Clement25demsNonWhiteVote24|Clement25demsNonWhiteVote24: Trump shook Democrats’ hold on non-White voters in 2024, report finds]] 
+- Both lack of enthusiasm, and failure to persuade defectors: 
+	- [[Clement25demsNonWhiteVote24|Clement25demsNonWhiteVote24: Trump shook Democrats’ hold on non-White voters in 2024, report finds]] 
+	- [[Cohn25allVoteHarrisLose|Cohn25: If Everyone Had Voted, Harris Still Would Have Lost]] 
+	- Harris would have won only 72% of non-voters who were *registered Democrats!*: [[Cohn25allVoteHarrisLose|Cohn25allVoteHarrisLose]] 
 ## Abortion overemphasized, not important
 - abortion a concern of young women, not old?
 - more concern about economy
@@ -377,12 +388,17 @@ Will the Rs ever pay attention to evidence?
 	- inflationary pressure: [[JoeBlogs25usSupplyChainMeltDown|JoeBlogs25: USA Supply Chain Meltdown]] 
 	- ? are economists good about predicting inflation well in advance?
 		- if so, then no need to look at fundamental econ features, just use economist predictions.
+		- [[Bailey21econVoteHalfLife|Bailey21: What's the Half-Life of the Economic Vote? (About a Year and a Half)]] 
 - bulk features built from the poll difference between a presidential candidate and same-party state/county/city candidates. Or, look at post-election results for election autopsies
 - during election autopsies analyzing across elections in different years, try to factor out the effect of each (modellable) variable so you can see which thing by itself — inflation, war, … — caused the big changes.  
 	- See example of doing this in words in [Ezra Klein Speaks Frankly Abou...](https://youtu.be/vkXJiEzWxFs?t=1484)..
 	- His wife's article is cited. Did she use numbers?
 - Predicting district lean: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]]
 - time-lagged causality elimination technique: [[Dolan25authoritPrimeCnsprcy|Dolan25: Authoritarian minds may be primed for conspiracy beliefs, study suggests]] 
+- off-year election features
+	- Big (6%) increase in 2025 off-years for Ds is half due to D's becoming more educated. [[lit/lit_notes/Morris25rcvFailOKpollBias.md#How can Dems be winning 2025 Swings? |How can Dems be winning 2025 Swings?]]
+- Polling Book: [[Morris22strengthInNumsPollBk|Morris22: Strength in numbers: How polls work and why we need them]] 
+- [[Morris25econIndexTracker|Morris25: Economic-data-tracker]] 
 ## 100 Day Polls
 About polls 100 days into a term.  Factors out the fact that most presidents lose popularity over time, difference between day 1 and day 100 could be a kind of detrended features, kind of like % gain of different stocks over time.  I saw a graph like that for Trump vs. other presidents, but I'm not sure I have it.
 ### Trump 100 Day Polls: Term 2
@@ -417,6 +433,8 @@ About polls 100 days into a term.  Factors out the fact that most presidents los
 - Voters know shockingly little and this was who Harris needed to convince: Rubin24demsLowInfoVoterShortcut
 - [ ] # ID features that are salient to low info voters just before election, when they pay a little attention: Rubin24demsLowInfoVoterShortcut
 	- [[#Issue Measurements Salience, Relevance, Importance]]
+- Yup, they know nothing: [[Annenberg24civicsKnowledgeSurvey|Annenberg24: Annenberg Civics Knowledge Survey Archives]] 
+- My guess: Harris loss of dissatisfied young, nonwhite voters ([[Cohn25allVoteHarrisLose|Cohn25allVoteHarrisLose]] ) was partly b/c they know nothing
 ## Are there ideological fractures in Trump coalition that could be exploited by D's?
 - or are new Rs "tolerant" and so they won't have ideological fights?
 - one guy's take: Walther24barstoolConservatism
@@ -438,15 +456,25 @@ About polls 100 days into a term.  Factors out the fact that most presidents los
 ## Issue half-life
 - given a set of issues, predict how "important", "salient" they will be in the future
 - a factor useful to know if an issue will be important by the time of the election
+- [[Bailey21econVoteHalfLife|Bailey21: What's the Half-Life of the Economic Vote? (About a Year and a Half)]] 
 ## Persuadable Voter Prediction
 A lot of polling is important only as a clue to how you can actually change the vote.  So this is predicting that a voter is not on your side but has some probability of being persuaded in your direction.  Training data would be past elections where this voter is known to have been (in my case) leaning R and eventually voted D (or said her or she would).  I bet David Shor's company does have this kind of data.
-## Polling by sentiment analysis
+
+Persuadable probably depends upon how much voter's know ([[Annenberg24civicsKnowledgeSurvey|Annenberg24civicsKnowledgeSurvey]]), and I've heard that infrequent, unintersted voters are more pliable (somewhere).
+## Polling Methods
+- Polling Book: [[Morris22strengthInNumsPollBk|Morris22: Strength in numbers: How polls work and why we need them]] 
+- [[#Do words in polls mean what you think they mean?]]
+- Many rolling polls: [[Morris25trumpApprovEconDat|Morris25: Trump Approval Rating & Political, Economic Data Portal]] 
+- [[Morris25econIndexTracker|Morris25: Economic-data-tracker]] 
+### Polling correction
+- [[Gelman20estPollHouseEffects|Gelman20: Estimated “house effects” (biases of pre-election surveys from different pollsters) and here’s why you have to be careful not to overinterpret them]] 
+### Polling by sentiment analysis
 - first, do [[#Auto-detection of political messaging/conversation themes and their importance|Auto-detection of political messaging/conversation themes and their importance]]
 - then, [[#Issue half-life|Issue half-life]]
 - then estimate representativeness of total voting population (like polling respondent weighting)
 - also [[Gen AI Talk Ideas#Sentiment Analysis|Sentiment Analysis]]
 - Proposes AI polling/policy making: [[Razzaque25trumperBelievePsych|Razzaque25: Why TRUMP Supporters Really Believe]] 
-## Polling for agreement
+### Polling for agreement
 Bipartisan issues that can make your candidate look good if strongly pushed
 - [[#Agreement Issues]]
 ## Detect when people are so tired of a message that they ignore it
@@ -590,6 +618,18 @@ e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is t
 	- [Center for an Informed Public](https://www.cip.uw.edu/2024/10/31/misinformation-why-people-spread-rumors/)
 	- [[Jevin D. West]]: UW data scientist, currently on loan at U. Berkeley
 - "Civics for Adults": Blankinship24waElectSumryYouth
+# Books about Politics
+- [ ] [[Morris22strengthInNumsPollBk|Morris22: Strength in numbers: How polls work and why we need them]] 
+- [ ] [[Arendt76originsTotalitariansim|Arendt76: The origins of totalitarianism]] 
+- [ ] [[Clyde20IntroBayesianThink|Clyde20: An introduction to Bayesian thinking]] 
+- [ ] [[Sartre44antisemiteJew|Sartre44: Anti-semite and jew]] 
+- [ ] [[Lees-Marshment19politMktngBook|Lees-Marshment19: Political marketing: Principles and applications]] 
+- [ ] [[Hasen22cheapSpchDisinfoCure|Hasen22: Cheap speech: How disinformation poisons our politics―and how to cure it]] 
+- [ ] [[Ripley22conflictTrapOut|Ripley22: High conflict: Why we get trapped and how we get out]] 
+- [ ] [[Young23wrongAppetiteMisinfo|Young23: Wrong: How media, politics, and identity drive our appetite for misinformation]] 
+- [ ] [[Chatsiou20deepLrnPolitSci|Chatsiou20: Deep Learning for Political Science]] 
+- [ ] [[Bertoni23computSocSciPolicyHndBk|Bertoni23: Handbook of Computational Social Science for Policy]] 
+- [ ] [[Klein24bookPred2024elect|Klein24bookPred2024: The Book That Predicted the 2024 Election]] 
 # Political Data Sources
 - [Bright Data - All in One Platform for Proxies and Web Scraping](https://brightdata.com/)
 	- They spontaneously [offered](https://mail.google.com/mail/u/0/#search/from%3A+keshet/FMfcgzQZSjmLKWjvwShPlnMCgVjLSCpk) me pro bono, non-profit access, but I wasn't an institute, so in the end, they said no.
@@ -602,4 +642,6 @@ e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is t
 - [[SeattleMetC25indexRsrch|SeattleMetC25: The Index]] (sentiment polling for Seattle area)
 - [[Morris25strengthNumsNewsLtr|Morris25: Strength In Numbers | G. Elliott Morris | Substack]] 
 - [[Ranked Choice Voting]]
+- [[Annenberg24civicsKnowledgeSurvey|Annenberg24: Annenberg Civics Knowledge Survey Archives]] 
+- [[Morris25trumpApprovEconDat|Morris25: Trump Approval Rating & Political, Economic Data Portal]] 
 

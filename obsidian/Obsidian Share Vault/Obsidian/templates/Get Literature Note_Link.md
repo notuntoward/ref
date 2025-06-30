@@ -51,7 +51,8 @@ if (selectedNote) {
 
   if (citekey) {
     // const match = citekey.match(/^([a-zA-Z]+)(\d{2})/);
-    const match = citekey.match(/^([a-zA-Z0-9]+)(\d{2})/); // match 3Blue1Brown25*, etc.
+    // const match = citekey.match(/^([a-zA-Z0-9]+)(\d{2})/); // match 3Blue1Brown25*, etc.
+    const match = citekey.match(/^([a-zA-Z0-9-]+)(\d{2})/); // handle lastname hyphen
     if (match) {
       const authorName = match[1];
       const yearNum = match[2];
