@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-06-30T16:28:25-05:00
+modified date: 2025-07-01T13:50:05-05:00
 tags:
   - politics
   - polling
@@ -384,26 +384,35 @@ Will the Rs ever pay attention to evidence?
 - [[#Polarization Enhancement Your fellow R is evil (algorithmic)]]
 - [[Bump25protestsNotHelpTrump|Stating the obvious: Mass protests are not going to help Trump]]: hard to break the R news bubble regarding protests
 # Predictive Models and Analysis Techniques
+## Election Forecast Models
+- time-lagged causality elimination technique: [[Dolan25authoritPrimeCnsprcy|Dolan25: Authoritarian minds may be primed for conspiracy beliefs, study suggests]] 
+## Election Predictors
+### Economic Predictors
 - market sentiment indexes predicted by economic variables (Weber24implicitCoordInflateShock).  Could be *voter* sentiment predicted by other variables
-	- more on econ features: [[MorningConsult25priceSurpriseIdx|MorningConsult25priceSurpriseIdx]] 
-- economic features
-	- inflationary pressure: [[JoeBlogs25usSupplyChainMeltDown|JoeBlogs25: USA Supply Chain Meltdown]] 
-	- ? are economists good about predicting inflation well in advance?
-		- if so, then no need to look at fundamental econ features, just use economist predictions.
-		- [[Bailey21econVoteHalfLife|Bailey21: What's the Half-Life of the Economic Vote? (About a Year and a Half)]] 
-- bulk features built from the poll difference between a presidential candidate and same-party state/county/city candidates. Or, look at post-election results for election autopsies
+- more on econ features: [[MorningConsult25priceSurpriseIdx|MorningConsult25priceSurpriseIdx]] 
+- inflationary pressure: [[JoeBlogs25usSupplyChainMeltDown|JoeBlogs25: USA Supply Chain Meltdown]] 
+- ? are economists good about predicting inflation well in advance?
+	- if so, then no need to look at fundamental econ features, just use economist predictions.
+	- [[Bailey21econVoteHalfLife|Bailey21: What's the Half-Life of the Economic Vote? (About a Year and a Half)]] 
+- [[Morris25econIndexTracker|Morris25: Economic-data-tracker]] 
+### Voter Trait Predictors
+- [[Dolan25authoritPrimeCnsprcy|Dolan25: Authoritarian minds may be primed for conspiracy beliefs, study suggests]] 
+#### Cross-Pressured Voters
+- Good Ref: [[Dassonneville23voterCrossPressBk|Dassonneville23: Voters Under Pressure: Group-Based Cross-Pressure and Electoral Volatility]] 
+
+### Past Election Features
+- off-year election features
+	- Big (6%) increase in 2025 off-years for Ds is half due to D's becoming more educated. [[lit/lit_notes/Morris25rcvFailOKpollBias.md#How can Dems be winning 2025 Swings? |How can Dems be winning 2025 Swings?]]
 - during election autopsies analyzing across elections in different years, try to factor out the effect of each (modellable) variable so you can see which thing by itself — inflation, war, … — caused the big changes.  
 	- See example of doing this in words in [Ezra Klein Speaks Frankly Abou...](https://youtu.be/vkXJiEzWxFs?t=1484)..
 	- His wife's article is cited. Did she use numbers?
 - Predicting district lean: [[Jain25moderatesOverperform|Jain25: The real overperformers of the 2024 election might rankle you]]
-- time-lagged causality elimination technique: [[Dolan25authoritPrimeCnsprcy|Dolan25: Authoritarian minds may be primed for conspiracy beliefs, study suggests]] 
-- off-year election features
-	- Big (6%) increase in 2025 off-years for Ds is half due to D's becoming more educated. [[lit/lit_notes/Morris25rcvFailOKpollBias.md#How can Dems be winning 2025 Swings? |How can Dems be winning 2025 Swings?]]
+### Poll Features
+- bulk features built from the poll difference between a presidential candidate and same-party state/county/city candidates. Or, look at post-election results for election autopsies
 - Polling Book: [[Morris22strengthInNumsPollBk|Morris22: Strength in numbers: How polls work and why we need them]] 
-- [[Morris25econIndexTracker|Morris25: Economic-data-tracker]] 
-## 100 Day Polls
+#### 100 Day Polls
 About polls 100 days into a term.  Factors out the fact that most presidents lose popularity over time, difference between day 1 and day 100 could be a kind of detrended features, kind of like % gain of different stocks over time.  I saw a graph like that for Trump vs. other presidents, but I'm not sure I have it.
-### Trump 100 Day Polls: Term 2
+##### Trump 100 Day Polls: Term 2
 - [[Balz25trumpApprovSink|Balz25: Trump approval sinks as Americans criticize his major policies, poll finds]] 
 - [[Salvanto25trump100dayPollTariff|Salvanto25trump100: Trump's first 100 days seen as bringing big changes, but still too much focus on tariffs  — CBS News poll]] 
 - [[MorningConsult25trump100days|MorningConsult25trump100: 100 Days of Trump]] 
@@ -646,4 +655,5 @@ e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is t
 - [[Ranked Choice Voting]]
 - [[Annenberg24civicsKnowledgeSurvey|Annenberg24: Annenberg Civics Knowledge Survey Archives]] 
 - [[Morris25trumpApprovEconDat|Morris25: Trump Approval Rating & Political, Economic Data Portal]] 
+- [[Dassonneville23voterCrossPressBk|Dassonneville23: Voters Under Pressure: Group-Based Cross-Pressure and Electoral Volatility]] 
 

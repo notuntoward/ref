@@ -1,20 +1,20 @@
 ---
-category: 
-- literaturenote
-tags:
+category:
+  - literaturenote
+tags: 
 read: false
 in-progress: false
 linked: false
 aliases:
-- "Scabs are the WORST Way to Heal, Here’s Why"
-- "Scabs are the WORST Way"
+  - Scabs are the WORST Way to Heal, Here’s Why
+  - Scabs are the WORST Way
 citekey: Lam25scabsWorstHeal
 ZoteroTags: 
-ZoteroCollections: 
-- medical_devices
-- healing
+ZoteroCollections:
+  - medical_devices
+  - healing
 created date: 7/1/2025, 12:06:26 AM
-modified date:
+modified date: 2025-07-01T13:45:22-05:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/FZZCUQLG)  | [**URL**](https://www.youtube.com/watch?v=8NNwBtGh6WI)
