@@ -2,13 +2,18 @@
   "items": [
     {
       "type": "file",
-      "ctime": 1710007259364,
-      "path": "Writing/Tired Words and Phrases.md"
+      "ctime": 1751506257284,
+      "path": "Health/Exercise/Combo Workout Revised Short.md"
     },
     {
       "type": "group",
       "ctime": 1712213291440,
       "items": [
+        {
+          "type": "file",
+          "ctime": 1740695227625,
+          "path": "Obsidian/spacekeys.md"
+        },
         {
           "type": "file",
           "ctime": 1710007362892,
@@ -85,39 +90,65 @@
       "title": "Lit"
     },
     {
-      "type": "file",
-      "ctime": 1714071197639,
-      "path": "Work/VPP ideas/Research Ideas/Research Group Ideas.md"
+      "type": "group",
+      "ctime": 1751506291606,
+      "items": [
+        {
+          "type": "file",
+          "ctime": 1732819445059,
+          "path": "Politics/Political Causality/US Elections 2024.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1737007455090,
+          "path": "Politics/Political Causality/Meta Info from political causality literature review.md"
+        }
+      ],
+      "title": "Politics"
     },
     {
-      "type": "file",
-      "ctime": 1732819445059,
-      "path": "Politics/Political Causality/US Elections 2024.md"
+      "type": "group",
+      "ctime": 1751506327110,
+      "items": [
+        {
+          "type": "file",
+          "ctime": 1733973563411,
+          "path": "lit/refwrangle/Zotero to Obsidian to RAG.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1739988273419,
+          "path": "lit/refwrangle/Perplexity Parsing.md"
+        }
+      ],
+      "title": "Computer"
     },
     {
-      "type": "file",
-      "ctime": 1733169226749,
-      "path": "Work/Between Jobs/QCELLs offboarding/WA Unemployment.md"
-    },
-    {
-      "type": "file",
-      "ctime": 1733973563411,
-      "path": "lit/refwrangle/Zotero to Obsidian to RAG.md"
-    },
-    {
-      "type": "folder",
-      "ctime": 1736885201853,
-      "path": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)"
-    },
-    {
-      "type": "file",
-      "ctime": 1737007455090,
-      "path": "Politics/Political Causality/Meta Info from political causality literature review.md"
-    },
-    {
-      "type": "file",
-      "ctime": 1739988273419,
-      "path": "lit/refwrangle/Perplexity Parsing.md"
+      "type": "group",
+      "ctime": 1751506370399,
+      "items": [
+        {
+          "type": "folder",
+          "ctime": 1740179914810,
+          "path": "Work/Between Jobs/Interview Prep"
+        },
+        {
+          "type": "folder",
+          "ctime": 1736885201853,
+          "path": "Work/Between Jobs/Interview Prep/SQL training/SQL for Data Science (Coursera, UC-Davis)"
+        },
+        {
+          "type": "file",
+          "ctime": 1714071197639,
+          "path": "Work/VPP ideas/Research Ideas/Research Group Ideas.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1733169226749,
+          "path": "Work/Between Jobs/QCELLs offboarding/WA Unemployment.md"
+        }
+      ],
+      "title": "Job"
     },
     {
       "type": "folder",
@@ -125,14 +156,9 @@
       "path": "Scratch Space"
     },
     {
-      "type": "folder",
-      "ctime": 1740179914810,
-      "path": "Work/Between Jobs/Interview Prep"
-    },
-    {
       "type": "file",
-      "ctime": 1740695227625,
-      "path": "Obsidian/spacekeys.md"
+      "ctime": 1710007259364,
+      "path": "Writing/Tired Words and Phrases.md"
     }
   ]
 }
