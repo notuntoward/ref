@@ -1,10 +1,11 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-07-01T13:50:05-05:00
+modified date: 2025-07-08T23:19:00-05:00
 tags:
   - politics
   - polling
   - ml
+  - ️⃣
 ---
 # TODO
 - graph showing all the information loss sources from a good D policy to a voter's decision about it, rational or not.
@@ -188,15 +189,15 @@ Both R's and D's vote less on economic issues and more on values:
 	- 140 M total 2024 voters: PBS24keyVoteGroupsInteract (not final yet)
 #### Student loans as political liability?
 Young people e.g. student loans was a liability (Trump tried to enrage the larger working class) for small amount of student voters. Also an example of issue interaction: (maybe made upper class students happy, working class mad) ^i6p3
-- young people were 14% of 2024 voters (CIRCLE24youthVote2024), 38% of them had no college experience
+- young people were 14% of 2024 voters ([[CIRCLE24youthVote2024|The Youth Vote in 2024]]), 38% of them had no college experience
 	- so the affected young people vote was 14% * 62% = 8.68% of voters
-- ~ 42% of eligible voters aged 18-29 cast ballots in the 2024 presidential election, lower than in 2020 (17%) and 2016 (19%) (CIRCLE24youthVote2024)
-- Young voters favored Kamala Harris over Donald Trump by 6 percentage points (52% to 46%) (CIRCLE24youthVote2024, I think)
-- smaller margin Biden't 2020 25% in 2020 (CIRCLE24youthVote2024, I think)
-- Young voters w/o college education went for Trump by 10%;  with some college for Harris by 12%, college grads 14 % (Arrojas24collegeAgeVote, I think) 
+- ~ 42% of eligible voters aged 18-29 cast ballots in the 2024 presidential election, lower than in 2020 (17%) and 2016 (19%) ([[CIRCLE24youthVote2024|The Youth Vote in 2024]])
+- Young voters favored Kamala Harris over Donald Trump by 6 percentage points (52% to 46%) (([[CIRCLE24youthVote2024|The Youth Vote in 2024]]), I think)
+- smaller margin Biden's 2020 25% in 2020 (([[CIRCLE24youthVote2024|The Youth Vote in 2024]]), I think)
+- Young voters w/o college education went for Trump by 10%; with some college for Harris by 12%, college grads 14 % (Arrojas24collegeAgeVote, I think) 
 - college-experienced voters cast about 62% of the 2024 vote
-	- 40% of the voting-eligible youth population are young people without college experience (CIRCLE24youthVote2024)
-	- 38% of all youth votes were cast by young people without college experience (CIRCLE24youthVote2024)
+	- 40% of the voting-eligible youth population are young people without college experience ([[CIRCLE24youthVote2024|The Youth Vote in 2024]])
+	- 38% of all youth votes were cast by young people without college experience ([[CIRCLE24youthVote2024|The Youth Vote in 2024]])
 #### Minority Vote Loss
 - Big Minority shift away from Harris, no change in White: [[Clement25demsNonWhiteVote24|Clement25demsNonWhiteVote24: Trump shook Democrats’ hold on non-White voters in 2024, report finds]] 
 # Campaign Message Ideas
@@ -256,9 +257,13 @@ Young people e.g. student loans was a liability (Trump tried to enrage the large
 - Musk's USAID elimination is <u>killing 103 people/hour</u> [[Kessler25deathsForeignAidCit|Kessler25: Rubio’s claim that it’s ‘a lie’ that people have died from foreign-aid cuts]] 
 #### Deficit spending for the Rich
 - [[Politics/Political Causality/US Elections 2024.md#Republican Deficit Hypocrisy |Republican Deficit Hypocrisy]]
+## Emotional campaigning
+- [[Tham25emotionPolicyView|Tham25: Emotions and Policy Views]]: people angrier; anger best at affecting policy views; pos. emots slightly reduce populism
 # Questions
 ## How to get and keep attention
 - the two axes of clickbait and A/B B testing: [[Muller21ClickbaitUnreasEffect|Muller21: Clickbait is Unreasonably Effective]] 
+## Low propensity == unengaged?
+- [[ODonnel24politEngageDemGap|ODonnel24politEngageDemGap]] kinda uses the term interchangeably, but are they the same?
 ## Making Important Issues Salient and relevant
 ### Definitions: Salient, Relevant, Important
 From here:
@@ -280,10 +285,12 @@ From here:
 - Econ most imp by far: [[Klein25demsFaceTrumpWon|Klein25: Democrats Need to Face Why Trump Won]] 
 - 100 days: Econ and Immig most important: [[Salvanto25trump100dayPollTariff|Salvanto25trump100: Trump's first 100 days seen as bringing big changes, but still too much focus on tariffs  — CBS News poll]] 
 - [[#Issue Measurements Salience, Relevance, Importance]]
+- low engagement voters said to value material issues more than cultural, etc: [[ODonnel24politEngageDemGap|ODonnel24politEngageDemGap]] 
 ## Media effectiveness
 - e.g. Yurieff24trumpUsedInfluencers : did this really work as claimed here?
 - ? how do advertisers measure or (get proxies of) effectiveness of media message --> purchase
 - [[Bump25protestsNotHelpTrump|Stating the obvious: Mass protests are not going to help Trump]]: R media framing turns R/L violence comparison upside down.
+- presidential year unengaged, low propensity voters get political info from social circles, social media -- not news media.  Different from off-year voter population: [[ODonnel24politEngageDemGap|ODonnel24politEngageDemGap]] 
 ## How to communicate comparative government performance
 - US low taxes, high GDP, a better COVID recovery and lower inflation that peers
 - ? Displaying an inflation "weather map?"
@@ -312,10 +319,12 @@ Just more predictor variables for various things. Things similar to education, w
 	- example from [[Longwell25demsChenyDemoc|Longwell25: Did Democrats Have a Liz Cheney Problem? (with Jen Psaki)]] :
 		- D's apparently made democracy a talking point, put Cheney on, etc. because polls seemed to say that "democracy" was salient
 		- But R's didn't want to hear D democracy talking points b/c the Ds who "stole" the election.
-	- **India**: after an election, ask poll issue questions is a bunch of ways
+	- **India**: after an election, ask poll issue questions in a bunch of ways
 		- train a model to predictive model of the vote
 		- jointly tune an LLM that learns to ask the most predictive questions for each issue
 		- somehow, how do model how the candidates stood on the issue, though...
+## Detection of emotional communities
+- [[Tham25emotionPolicyView|Tham25emotionPolicyView]] says political explanation theories no longer work, need to consider emotional communities.
 # Destructing Conspiracy Theories
 - facts don't seem to work, can reinforce existing opinion (references..)
 - conspiracy theory attractions
@@ -477,8 +486,12 @@ Persuadable probably depends upon how much voter's know ([[Annenberg24civicsKnow
 - [[#Do words in polls mean what you think they mean?]]
 - Many rolling polls: [[Morris25trumpApprovEconDat|Morris25: Trump Approval Rating & Political, Economic Data Portal]] 
 - [[Morris25econIndexTracker|Morris25: Economic-data-tracker]] 
-### Polling correction
+### Polling Adjustments
+#### House Effects
 - [[Gelman20estPollHouseEffects|Gelman20: Estimated “house effects” (biases of pre-election surveys from different pollsters) and here’s why you have to be careful not to overinterpret them]] 
+#### Turnout Prediction
+- news media consumption predicts turnout, separate from education predicting turnout: [[ODonnel24politEngageDemGap|ODonnel24: What Political News Engagement Tells]] 
+- presidential year vs. non-presidential
 ### Polling by sentiment analysis
 - first, do [[#Auto-detection of political messaging/conversation themes and their importance|Auto-detection of political messaging/conversation themes and their importance]]
 - then, [[#Issue half-life|Issue half-life]]
@@ -554,6 +567,27 @@ Bipartisan issues that can make your candidate look good if strongly pushed
 
 - also: Sperling24politMeddleAdsBackfire
 - also: Silver20pollQuestTestAhead
+# Coding Projects
+- were 2024 voters cross-stressed (AI says this is a research gap, suggests data.  Also see articles)
+- Morris econ indicator
+- is education redundant with news media engagement in terms of prediction Harris vote (see article)
+- Evernote --> obsidian 
+	-  convert ev tags to obs tags, consistent w/ zotero topics
+	- AI author / title / date / pub... extract
+	- html preserved and maybe markdown for AI search?
+- zotero --> obsidian listener 
+	- restart of when try to send 
+		- how to automatically get receiver start path for restart
+		- how to know if receiver is running?
+		- use windows services instead?
+	- auto convert of zotero topics to obsidian tags
+		- consistency w/ existing tags (including evernote's)
+		- dedup
+		- memory of past topic name mapping
+		- memory of past obsidian tag names
+- Train LLM to reword polls to be most predictive of election result
+	- [[Politics/Political Causality/US Elections 2024.md#Do words in polls mean what you think they mean? |Do words in polls mean what you think they mean?]]
+	- get bunch of polls, tune LLM to min election prediction error?
 # New tools needed by the D's
 ## Political State / Warning Realtime Dashboard
 - Policy/message effects
@@ -656,4 +690,5 @@ e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is t
 - [[Annenberg24civicsKnowledgeSurvey|Annenberg24: Annenberg Civics Knowledge Survey Archives]] 
 - [[Morris25trumpApprovEconDat|Morris25: Trump Approval Rating & Political, Economic Data Portal]] 
 - [[Dassonneville23voterCrossPressBk|Dassonneville23: Voters Under Pressure: Group-Based Cross-Pressure and Electoral Volatility]] 
+- [[DataForProgress25DataSrc|DataForProgress25: Data For Progress]] 
 

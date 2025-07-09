@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-03-27T11:30:32-07:00
+modified date: 2025-07-07T18:35:17-05:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -38,7 +38,7 @@ Every single source must be entered manually. I have hundreds of articles, so th
 There's a limit on the total bytes of data uploaded, as well as a size limit for each file. [[US Elections 2024#Success Stories Recent Authoritarian Takedowns]]
 ### Some web sites files can't be imported
 For example, [WA shifted (slightly) right in...](https://www.seattletimes.com/seattle-news/data/wa-shifted-slightly-right-in-2024-though-many-counties-moved-left/) can't be imported. It seems that NLM can read the website but, due to "source restrictions" it can't point you to the line where some point is made. This does work for some web pages, for example [Election 2024: How and why you...](https://apnews.com/article/young-black-latino-men-trump-economy-jobs-9184ca85b1651f06fd555ab2df7982b5).
-## Tasks
+## Tasks for Zotero to NotebookLM
 ### Avoid manual entry by lumping all sources into giant files
 - [ ] # Try out Docling: [[Auer24doclingTechRep|Auer24: Docling technical report]] 
 - [ ] Consider using google docs: [[lit/lit_notes/NotebookLM.md#Data Required, Best practices |Data Required, Best practices]]. Help with metadata?

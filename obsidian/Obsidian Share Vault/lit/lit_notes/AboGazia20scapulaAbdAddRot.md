@@ -15,7 +15,7 @@ ZoteroTags:
 ZoteroCollections:
   - hunchback_correction
 created date: 6/22/2025, 11:33:00 AM
-modified date: 2025-06-22T11:47:01-07:00
+modified date: 2025-07-04T13:49:44-05:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/VIIVERRE)  | [**URL**](https://kfs.edu.eg/pt/pdf/109202010464016.pdf) | **[[AboGazia20scapulaAbdAddRot.pdf|PDF]]**
@@ -50,6 +50,7 @@ Lecture slides showing scapular abductors, adductors and elevator muscle motions
 - **adductors** rotate backwards, towards spine and downwards
 	- backward: [trapesius](AboGazia20scapulaAbdAddRot.pdf#page=8&annotation=162R)
 	- downward rotation: [rhomboids](AboGazia20scapulaAbdAddRot.pdf#page=26&annotation=165R)
+		- lower trapezius [[AboGazia20scapulaAbdAddRot.pdf#page=23&annotation=168R|mainly depress the scapula]]
 - **elevators** rotate upwards
 	- [trapesius, levator scapulae, rhomboideus major & minor](AboGazia20scapulaAbdAddRot.pdf#page=8&annotation=162R)
 ### Also

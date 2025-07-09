@@ -15,7 +15,7 @@ ZoteroTags:
 ZoteroCollections:
   - hunchback_correction
 created date: 6/21/2025, 2:16:05 PM
-modified date: 2025-06-23T10:53:05-07:00
+modified date: 2025-07-04T13:44:57-05:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/I5VFEHZB)  | [**DOI**](https://doi.org/10.3233/BMR-130411) | [**URL**](https://journals.sagepub.com/doi/full/10.3233/BMR-130411) | **[[Seidi14hyperKyposisExrcsEffic.pdf|PDF]]**
@@ -51,7 +51,7 @@ Local and comprehensive corrective exercise programs (LCEP and CCEP) fins both h
 	- e.g. exercise 4
 		- I'm calling it 'scapular adduction and upward rotation, prone'
 		- looking at [[AboGazia20scapulaAbdAddRot]], this works both adductor and elevator muscles at the same time: "[simultaneous](Seidi14hyperKyposisExrcsEffic.pdf#page=8&annotation=177R)"
-- CCEP has five exercises (way more in [[Elpeze22kyphosisAdolescCCEP]])
+- CCEP has five exercises ([[Elpeze22kyphosisAdolescCCEP]] has way more of them)
 	- [[Seidi14hyperKyposisExrcsEffic.pdf#page=5&annotation=159R|chin tuck, erecting the thoracic spine and adduct scapulae]]
 	- Pictures in: [[Seidi14hyperKyposisExrcsEffic.pdf#page=7&annotation=171R|Fig. 5. The CCEP.]]
 	- There's a 5 min warmup before and after them

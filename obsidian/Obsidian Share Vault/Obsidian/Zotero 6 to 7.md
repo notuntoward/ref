@@ -180,15 +180,15 @@ Match is synced at startup (slow the first time), can be refreshed with a tools 
 	- [ ] ? what tags are being synced?
 ##### Questions & Bugs
 - [ ] popup when I open obsidian note bug: [site permission requested ever...](https://github.com/daeh/zotero-markdb-connect/issues/136)
-- [x] ? find out why I get a 59 citekeys not matched error popup at zotero boot.
-- [ ] ? can I make a shortcut 
+- [x] find out why I get a 59 citekeys not matched error popup at zotero boot.
+- [x] can I make a shortcut 
 	- not yet, author waiting for PR: [enable keyboard shortcut to op...](https://github.com/daeh/zotero-markdb-connect/issues/9)
 	- people have [asked for Zutilo support](https://forums.zotero.org/discussion/94322/is-there-any-way-to-link-to-an-obsidian-note-from-zotero), but I don't see that this has happened, and also, Zutilo doesn't work for me on Zotero 7, as of 8/17/24 
+	- **Solved**: I wrote a [[#Actions and Tags Zotero Plugin]] script to open it with a shortcut
 - [ ] ? a way to make [[2024-02-25#Zotero Integration Plugin|Zotero Integration Plugin]] rerun sync whenever new imports made?
 ###### Markdown DB connect References:
 - Github instructions for [matching BetterBibTeX citekeys](https://github.com/daeh/zotero-markdb-connect?tab=readme-ov-file#option-1-using-betterbibtex-citekeys)
 - obsolete (but still referenced in GitHub) tutorial: [Link from a Zotero it...](https://publish.obsidian.md/history-notes/Option+-+Link+from+a+Zotero+item+back+to+related+notes+in+Obsidian)
-]
 **installed**
 #### Better BibTex Zotero Plugin
 From: https://github.com/retorquere/zotero-better-bibtex
