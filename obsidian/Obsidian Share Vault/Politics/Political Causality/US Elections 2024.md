@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-07-08T23:19:00-05:00
+modified date: 2025-07-09T20:28:47-05:00
 tags:
   - politics
   - polling
@@ -575,6 +575,8 @@ Bipartisan issues that can make your candidate look good if strongly pushed
 	-  convert ev tags to obs tags, consistent w/ zotero topics
 	- AI author / title / date / pub... extract
 	- html preserved and maybe markdown for AI search?
+- running average of cronometer calorie balance
+	- 1st use of google cli coder
 - zotero --> obsidian listener 
 	- restart of when try to send 
 		- how to automatically get receiver start path for restart
