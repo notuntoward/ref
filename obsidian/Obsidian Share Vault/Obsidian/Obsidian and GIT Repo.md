@@ -1,6 +1,6 @@
 ---
 created date: 2025-01-29T17:29:50-08:00
-modified date: 2025-03-26T23:05:22-07:00
+modified date: 2025-07-10T12:06:48-05:00
 ---
 
 # Repo for Obsidian Git Plugin
@@ -20,7 +20,7 @@ git clone https://x-token-auth:ATCTT3xFfGN0LiSReih2xSTSXZNHjwCgUQ9AScnE3mm_lbw54
 ### The CLI command (which I did run)
 git config user.email pcqzd21yhcv97s2i704qivdofgk6v9@bots.bitbucket.org
 ## Separating Obsidian and refwrangle code checkins
-This turns out to be awful for source code control. When automatic, repeated obsidian checkins caused by little text edits flood the repo, making it very difficult to figure out which checkin also checked in code that's causing some bug.  **I've got to separate obsidian checkins from code checkins**
+My cojoined obsidian and refwrangle repo turned out to be awful for source code control. When automatic, repeated obsidian checkins caused by little text edits flood the repo, making it very difficult to figure out which checkin also checked in code that's causing some bug.  **I've got to separate obsidian checkins from code checkins**
 
 Combining obsidian and git might aggravate other Obsidian problems too, but I don't know that I've seen any: See [[Obsidian Multicomputer Sync#Disruptive Obsidian popup "has been modified externally, merging changes automatically"]]
 
