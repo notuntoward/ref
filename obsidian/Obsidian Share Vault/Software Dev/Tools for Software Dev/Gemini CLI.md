@@ -1,6 +1,6 @@
 ---
 created date: 2025-07-10T12:30:36-05:00
-modified date: 2025-07-12T20:45:46-05:00
+modified date: 2025-07-13T10:32:37-05:00
 ---
 Google's new AI coding command line interface.
 # Installing Gemini CLI
@@ -63,22 +63,30 @@ uv venv
 You only need to approve such commands and Gemini will run them.
 # Code Generation with Gemini
 
-Once you have set up a Github Repo and UV with a basic setup like [[Software Dev/Tools for Software Dev/Gemini CLI.md#Set up a Github Repo and UV with Gemini |this one]], Gemini behaves much as you do when you are writing code in an editor.
+Once you have set up a Github Repo and UV with a basic setup like [[Software Dev/Tools for Software Dev/Gemini CLI.md#Set up a Github Repo and UV with Gemini |this one]], Gemini behaves much as you do when you are writing code in an editor.  
 
-When you have approved its proposals, it will:
+Much of this section applies to *either* Gemini CLI or Gemini Coding Assistant.
+
+**When you have approved its proposals, it will:**
 - its changes will overwrite any existing, regardless of whether or not it is checked in
 	- ? Is there a way to modify the prompt so that it will ensure checkin first?
 	- So, it's a good idea to check code in before you run a Gemini code operation
 		- gemini will ask you to approve any code changes before overwriting, and will show you a diff
 		- [diff will be side-by-side if your terminal is wide enough](https://www.perplexity.ai/search/explain-how-to-create-a-new-gi-QKnEnyGcRj.iWZU6ujlvmQ#14)
 	- However, you can [[Software Dev/Tools for Software Dev/Gemini CLI.md#Customize Gemini's code overwrite behavior |Customize Gemini's code overwrite behavior]] via prompt, config files, or by subscription-based enterprise features.
+
+- *will ignore manual edits* you've done, [unless you prompt it](https://www.perplexity.ai/search/explain-how-to-create-a-new-gi-QKnEnyGcRj.iWZU6ujlvmQ#11) e.g.
+	```
+	Review the current version of `main.py` before making changes
+	```
+	- [ ] Can this prompt be avoided using [[Software Dev/Tools for Software Dev/Gemini CLI.md#b. `.gemini/styleguide.md` |b. `.gemini/styleguide.md`]]
 - You have to prompt Gemini to git commit or git push e.g.
 ```
-	"Commit all changes with the message 'Add weather endpoint.'"
+	Commit all changes with the message 'Add weather endpoint.'
 ```
 OR
 ```
-	"Push the latest commits to the remote repository."
+	Push the latest commits to the remote repository.
 ```
 ## Customize Gemini's code overwrite behavior
 You can **customize Gemini's code overwrite behavior** primarily through configuration files and clear prompt instructions. Here’s how you can exert control and tailor how Gemini handles code overwrites in your projects:
@@ -92,7 +100,7 @@ Gemini responds to explicit natural language instructions. You can include overw
 This approach works well for ad hoc sessions and single-use policies[^8].
 ### 2. **Repository-Level Configuration**
 For persistent, project-wide customization, use Gemini Code Assist’s configuration system:
-#### **a. `.gemini/config.yaml`**
+#### a. `.gemini/config.yaml`
 This YAML file lets you set behaviors such as which files to ignore, and (in enterprise setups) can be expanded for more granular overwrite rules. While the public documentation focuses on code review and ignore patterns, you can use `ignore_patterns` to prevent Gemini from modifying certain files or directories[^4]:
 
 ```yaml
@@ -101,7 +109,7 @@ ignore_patterns:
   - "data/**"
   - "src/legacy_code/**"
 ```
-#### **b. `.gemini/styleguide.md`**
+#### b. `.gemini/styleguide.md`
 This Markdown file can include custom rules and best practices, including instructions about overwriting files. For example:
 
 > **Overwriting Policy:**
@@ -110,17 +118,17 @@ This Markdown file can include custom rules and best practices, including instru
 > - If a file has been changed since the last commit, create a backup before overwriting.
 
 Gemini will use these rules as part of its context when generating or modifying code[^4].
-### 3. **Best Practices for Overwrite Safety**
+### 3. Best Practices for Overwrite Safety
 - **Commit early, commit often:** Use git to checkpoint your code before major Gemini operations.
 - **Review before approve:** Gemini typically previews changes and asks for confirmation before overwriting files.
 - **Use ignore patterns:** Prevent accidental overwrites of sensitive or critical files by listing them in `.gemini/config.yaml`.
-### 4. **Enterprise \& Advanced Customization**
+### 4. Enterprise \& Advanced Customization
 
 If you’re using Gemini Code Assist with an Enterprise subscription, you can further refine overwrite and code generation behavior by:
 
 - Connecting Gemini to your private repositories for context-aware recommendations[^3].
 - Enforcing organization-wide style guides and overwrite policies through shared `.gemini/styleguide.md` files[^4].
-### 5. Summary: Gemini CLI overwrite customization
+### 5. Summary: Gemini overwrite customization
 
 | Customization Method | How to Use | Effect |
 | :-- | :-- | :-- |
@@ -140,13 +148,22 @@ Running `add` will automatically sync with the `.toml` lockfile, obviating the n
 
 **When still must run `uv sync`, even when you've `add` prompted**
 
-| Scenario | Need to Run `uv sync`? |
-| :-- | :--: |
-| Only using `uv add` for dependencies | No |
-| Manual edits to `pyproject.toml` or lockfile | Yes |
-| Pulling dependency changes from version control | Yes |
-| Recreating the virtual environment | Yes |
+| Scenario                                        | Need to Run `uv sync`? |
+| :---------------------------------------------- | :--------------------: |
+| Only using `uv add` for dependencies            |           No           |
+| Manual edits to `pyproject.toml` or lockfile    |          Yes           |
+| Pulling dependency changes from version control |          Yes           |
+| Recreating the virtual environment              |          Yes           |
 
 **In summary:**
 If you and Gemini always use `uv add` for dependency management in your project, you typically will not need to run `uv sync` during normal development. However, you may still need it in situations where the environment gets out of sync with the lockfile, such as after manual edits or pulling changes from others.
 
+# Gemini Code Assistant
+The vscode (and others) extension for running Gemini from inside a code editor.  Is said to be more convenient than Gemini CLI, but not as flexible.  Some places say it can't do multi-file, etc. but other stuff suggests it can.
+- [ ] Can Code Assistant operate across multiple files?
+
+- must sign in w/ my "personal account": scottopersonal@gmail.com
+	- [Free version doesn't work w/ my usual google workspace account](https://developers.google.com/gemini-code-assist/resources/faqs); must make a new "personal" google account to get it.
+
+## Differences between Code Assistant and CLI
+- [ ] ? CLI is more persistent unless Assistant uses styleguide.md or config.yaml?
