@@ -1,6 +1,6 @@
 ---
 created date: 2025-07-10T12:30:36-05:00
-modified date: 2025-07-12T17:23:46-05:00
+modified date: 2025-07-12T20:45:46-05:00
 ---
 Google's new AI coding command line interface.
 # Installing Gemini CLI
@@ -63,10 +63,74 @@ uv venv
 You only need to approve such commands and Gemini will run them.
 # Code Generation with Gemini
 
-Once you have set up a Github Repo and UV with a basic setup like [[Software Dev/Tools for Software Dev/Gemini CLI.md#Set up a Github Repo and UV with Gemini |this one]], Gemini behaves much as you do when you are writing code in an editor.  When you have approved its proposals, it will:
+Once you have set up a Github Repo and UV with a basic setup like [[Software Dev/Tools for Software Dev/Gemini CLI.md#Set up a Github Repo and UV with Gemini |this one]], Gemini behaves much as you do when you are writing code in an editor.
+
+When you have approved its proposals, it will:
 - its changes will overwrite any existing, regardless of whether or not it is checked in
 	- ? Is there a way to modify the prompt so that it will ensure checkin first?
-- So, it's a good idea to check code in 
+	- So, it's a good idea to check code in before you run a Gemini code operation
+		- gemini will ask you to approve any code changes before overwriting, and will show you a diff
+		- [diff will be side-by-side if your terminal is wide enough](https://www.perplexity.ai/search/explain-how-to-create-a-new-gi-QKnEnyGcRj.iWZU6ujlvmQ#14)
+	- However, you can [[Software Dev/Tools for Software Dev/Gemini CLI.md#Customize Gemini's code overwrite behavior |Customize Gemini's code overwrite behavior]] via prompt, config files, or by subscription-based enterprise features.
+- You have to prompt Gemini to git commit or git push e.g.
+```
+	"Commit all changes with the message 'Add weather endpoint.'"
+```
+OR
+```
+	"Push the latest commits to the remote repository."
+```
+## Customize Gemini's code overwrite behavior
+You can **customize Gemini's code overwrite behavior** primarily through configuration files and clear prompt instructions. Here’s how you can exert control and tailor how Gemini handles code overwrites in your projects:
+### 1. **Prompt-Based Control**
+Gemini responds to explicit natural language instructions. You can include overwrite policies in your prompts, such as:
+
+- “Before overwriting any file, always show me a diff and ask for confirmation.”
+- “Never overwrite existing files; create a new version with a suffix instead.”
+- “Only overwrite if the file has not been changed since the last commit.”
+
+This approach works well for ad hoc sessions and single-use policies[^8].
+### 2. **Repository-Level Configuration**
+For persistent, project-wide customization, use Gemini Code Assist’s configuration system:
+#### **a. `.gemini/config.yaml`**
+This YAML file lets you set behaviors such as which files to ignore, and (in enterprise setups) can be expanded for more granular overwrite rules. While the public documentation focuses on code review and ignore patterns, you can use `ignore_patterns` to prevent Gemini from modifying certain files or directories[^4]:
+
+```yaml
+ignore_patterns:
+  - "*.env"
+  - "data/**"
+  - "src/legacy_code/**"
+```
+#### **b. `.gemini/styleguide.md`**
+This Markdown file can include custom rules and best practices, including instructions about overwriting files. For example:
+
+> **Overwriting Policy:**
+> - Always prompt before overwriting any file.
+> - Never overwrite files in the `src/legacy_code/` directory.
+> - If a file has been changed since the last commit, create a backup before overwriting.
+
+Gemini will use these rules as part of its context when generating or modifying code[^4].
+### 3. **Best Practices for Overwrite Safety**
+- **Commit early, commit often:** Use git to checkpoint your code before major Gemini operations.
+- **Review before approve:** Gemini typically previews changes and asks for confirmation before overwriting files.
+- **Use ignore patterns:** Prevent accidental overwrites of sensitive or critical files by listing them in `.gemini/config.yaml`.
+### 4. **Enterprise \& Advanced Customization**
+
+If you’re using Gemini Code Assist with an Enterprise subscription, you can further refine overwrite and code generation behavior by:
+
+- Connecting Gemini to your private repositories for context-aware recommendations[^3].
+- Enforcing organization-wide style guides and overwrite policies through shared `.gemini/styleguide.md` files[^4].
+### 5. Summary: Gemini CLI overwrite customization
+
+| Customization Method | How to Use | Effect |
+| :-- | :-- | :-- |
+| Prompt instructions | Add overwrite rules to your prompts | Immediate, session-based control |
+| `.gemini/config.yaml` | Set ignore patterns or other config fields | Persistent, project-wide file protection |
+| `.gemini/styleguide.md` | Document overwrite policies and best practices | Contextual guidance for code generation |
+| Git version control | Commit before changes | Enables easy rollback of unwanted overwrites |
+
+**In summary:**
+You can customize Gemini’s code overwrite behavior by using clear prompt instructions, configuring `.gemini/config.yaml` and `.gemini/styleguide.md` in your repo, and leveraging git for safety. For the highest level of automation and enforcement, combine these approaches—especially in team or enterprise environments[^4][^8].
 ## Keeping UV Up to Date with Gemini
 From: [Explain how to create a new gi...](https://www.perplexity.ai/search/explain-how-to-create-a-new-gi-QKnEnyGcRj.iWZU6ujlvmQ#9)
 
