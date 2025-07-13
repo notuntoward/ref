@@ -1,14 +1,14 @@
 ---
 created date: 2025-03-26T09:31:15-07:00
-modified date: 2025-07-12T10:48:32-05:00
+modified date: 2025-07-12T15:17:35-05:00
 ---
 All about git
-# Creating a new github repo
+# Creating a new GitHub repo
 
 ## Installing GitHub CLI
 From: [Explain how to create a new gi...](https://www.perplexity.ai/search/explain-how-to-create-a-new-gi-QKnEnyGcRj.iWZU6ujlvmQ#0)
 
-First, install Node.js.
+First, [[Software Dev/Tools for Software Dev/Gemini CLI.md#Install Node.js|Install Node.js]]
 
 Then, for creating GitHub repositories, install the **GitHub CLI** (`gh` on the command line). On Windows, do:
 
