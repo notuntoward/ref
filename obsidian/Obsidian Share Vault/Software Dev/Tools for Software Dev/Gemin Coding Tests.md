@@ -1,6 +1,6 @@
 ---
 created date: 2025-07-13T13:08:23-05:00
-modified date: 2025-07-13T13:16:54-05:00
+modified date: 2025-07-13T16:48:02-05:00
 ---
 # Calorie and Exercise Grapher
 ## Prompt
