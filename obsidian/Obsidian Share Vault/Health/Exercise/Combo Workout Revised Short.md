@@ -1,6 +1,6 @@
 ---
 created date: 2025-06-21T12:14:59-07:00
-modified date: 2025-07-04T13:43:05-05:00
+modified date: 2025-07-15T11:57:07-05:00
 tags:
   - excercise
   - posture
