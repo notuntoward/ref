@@ -4,7 +4,7 @@ tags:
   - ml/zeroshot
   - ml/genAI
 created date: 2024-10-22T09:21:55-07:00
-modified date: 2025-02-28T14:16:09-08:00
+modified date: 2025-07-15T12:10:02-05:00
 ---
 **TODO** get all Zotero "Generative AI" collection into this
 **TODO** get all related browser tab groups into this
@@ -411,6 +411,8 @@ They're trained as to match distributions, not exact facts.  So, you might roll 
 - not planning or tooling or [[#Agents|Agents]]-based behavior [[__temp__Kilcher24mlNewsYouTube240402]]
 - [Autonomous Agent GPT4](zotero://select/library/items/KGKMANEE): or maybe it can do it?  Hilarious that this doc is actually written by chatGPT from the source code (as written in the doc itself)
 
+## How and What AI Understands
+- [[Shojaee25illusionThinkCmplxLens|Shojaee25: The Illusion of Thinking: Understanding the Strengths and Limitations of Reasoning Models via the Lens of Problem Complexity]] 
 ## Reality-constraining AI types keep LLMs real, constrain generic LLMS
 ### could do this here
 - while demoing chatGPT, veer into a Hitler thing, but then say, "Na, I won't...  the problem with this is that it's an unconstrained problem.  It's in infinite question space and... I'll talk about that later   

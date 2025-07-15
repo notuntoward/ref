@@ -1,23 +1,26 @@
 ---
-category: 
-- literaturenote
+category:
+  - literaturenote
 tags:
+  - AI
+  - explainable-machine-learning
+  - genAI
 read: false
 in-progress: false
-linked: false
+linked: true
 aliases:
-- "The Illusion of Thinking: Understanding the Strengths and Limitations of Reasoning Models via the Lens of Problem Complexity"
-- "The Illusion of Thinking: Understanding"
+  - "The Illusion of Thinking: Understanding the Strengths and Limitations of Reasoning Models via the Lens of Problem Complexity"
+  - "The Illusion of Thinking: Understanding"
 citekey: Shojaee25illusionThinkCmplxLens
-ZoteroTags: 
-- computer_science_-_artificial_intelligence
-- computer_science_-_machine_learning
-- computer_science_-_computation_and_language
-ZoteroCollections: 
-- generative_ai
-- how_ai_understands
+ZoteroTags:
+  - computer_science_-_artificial_intelligence
+  - computer_science_-_machine_learning
+  - computer_science_-_computation_and_language
+ZoteroCollections:
+  - generative_ai
+  - how_ai_understands
 created date: 7/15/2025, 11:58:12 AM
-modified date:
+modified date: 2025-07-15T12:11:29-05:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/AAWP74VT)  | [**DOI**](https://doi.org/10.48550/arXiv.2506.06941) | [**URL**](http://arxiv.org/abs/2506.06941) | **[[Shojaee25IllusionThinkingUnderstanding.pdf|PDF]]**

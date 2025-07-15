@@ -1,7 +1,14 @@
 ---
 category:
   - literaturenote
-tags: 
+tags:
+  - politics
+  - machine-learning
+  - economics
+  - United-States
+  - military
+  - communication
+  - media
 read: false
 in-progress: false
 linked: true
