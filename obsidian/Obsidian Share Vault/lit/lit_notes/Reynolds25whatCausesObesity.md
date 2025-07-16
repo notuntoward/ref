@@ -6,9 +6,9 @@ tags:
   - exercise
   - diet
   - ultra-processed-food
-read: false
+read: true
 in-progress: false
-linked: false
+linked: true
 aliases:
   - What causes obesity? A major new study is upending common wisdom.
   - What causes obesity? A major
@@ -18,7 +18,7 @@ ZoteroCollections:
   - diet
   - exercise
 created date: 7/15/2025, 2:46:26 PM
-modified date: 2025-07-15T14:47:51-05:00
+modified date: 2025-07-15T19:56:58-05:00
 ---
 	
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/6LT6B9H8)  | [**URL**](https://www.washingtonpost.com/wellness/2025/07/16/obesity-cause-diet-exercise/) | **[[Reynolds25whatCausesObesity.html|HTM]]**
@@ -52,9 +52,14 @@ Eating too many calories, especially of ultra-processed foods, has a 10X bigger 
 
 Study across "4,213 men and women from 34 countries or cultural groups, running the socioeconomic gamut from tribes in Africa to executives in Norway" says that people burn roughly the same body-size-adjusted calories no matter what they do physically, supporting the metabolic "constrained total energy expenditure model".  So the cause of obesity is eating too much, and of the wrong things: ultra-processed foods are a culprit.
 
-- Energy intake is ~10X more important in modern obesity than  energy expenditure (largely low physical activity).  
+- Energy intake is ~10X more important in modern obesity than  energy expenditure (largely low physical activity)
+
 - Strong correlation between high percentage of ultra-processed food calories and high body-fat percentage (note: percentage, not total amount).
 - `ultra-processed food`: this study defined it as "industrial formulations of five or more ingredients," which still seems vague.
 - exercise still essential for health (e.g. I say, the strong correlation between mortality and VO2max)
+- **However**, much hard exercise can reduce eating (thus weight), and change body composition ([[Health/Weight Loss.md#Exercise vs. Diet in Weight Loss |Exercise vs. Diet in Weight Loss]])
+### Also
+- Many other false calorie burning beliefs: [[Reynolds24ExercisingLoseWeight|Reynolds24: Exercising to lose weight? Science says it rarely works.]] 
+- [[Health/Weight Loss.md#Exercise vs. Diet in Weight Loss |Exercise vs. Diet in Weight Loss]]
 ___
 %% end Obsidian Notes %%
