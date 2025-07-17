@@ -16,7 +16,7 @@ ZoteroTags:
 ZoteroCollections:
   - diet
 created date: 7/15/2025, 3:32:52 PM
-modified date: 2025-07-15T18:23:09-05:00
+modified date: 2025-07-15T21:51:12-05:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/4KSFDRAE)  | [**URL**](https://www.washingtonpost.com/wellness/2024/11/27/exercise-weight-loss-science/) | **[[Reynolds24ExercisingLoseWeight.html|HTM]]**
