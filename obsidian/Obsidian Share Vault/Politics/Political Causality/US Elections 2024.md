@@ -1,6 +1,6 @@
 ---
 created date: 2024-11-09T16:39:13-08:00
-modified date: 2025-07-09T20:28:47-05:00
+modified date: 2025-07-16T22:07:27-07:00
 tags:
   - politics
   - polling
@@ -693,4 +693,4 @@ e.g. [[MorningConsult25trumpPrioMismatch|MorningConsult25: Imposing tariffs is t
 - [[Morris25trumpApprovEconDat|Morris25: Trump Approval Rating & Political, Economic Data Portal]] 
 - [[Dassonneville23voterCrossPressBk|Dassonneville23: Voters Under Pressure: Group-Based Cross-Pressure and Electoral Volatility]] 
 - [[DataForProgress25DataSrc|DataForProgress25: Data For Progress]] 
-
+- [Civiqs](https://civiqs.com/services/daily): Daily tracking polls
