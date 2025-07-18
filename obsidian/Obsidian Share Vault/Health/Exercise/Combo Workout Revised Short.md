@@ -1,6 +1,6 @@
 ---
 created date: 2025-06-21T12:14:59-07:00
-modified date: 2025-07-15T11:57:07-05:00
+modified date: 2025-07-18T13:16:29-07:00
 tags:
   - excercise
   - posture
@@ -154,3 +154,4 @@ Goblet Squat
 - [[Elpeze22kyphosisAdolescCCEP|Elpeze22: The Effect of a Comprehensive Corrective Exercise Program on Kyphosis Angle and Balance in Kyphotic Adolescents]] 
 - [[Seidi14hyperKyposisExrcsEffic|Seidi14: The efficiency of corrective exercise interventions on thoracic hyper-kyphosis angle]] 
 - [[Combo Workout Revised Long]]
+- [[Vella18newAnatomyStrngthTrnBk|Vella18: New anatomy for strength & fitness training: An illustrated guide to your muscles in action including exercises used in CrossFit®, P90X®, and other popular fitness programs]]  

@@ -1,6 +1,6 @@
 ---
 created date: 2025-07-17T18:00:48-07:00
-modified date: 2025-07-17T18:00:48-07:00
+modified date: 2025-07-18T10:58:20-07:00
 ---
 How to export Evernote notes into Obsidian 
 # Evernote Export Requirements
