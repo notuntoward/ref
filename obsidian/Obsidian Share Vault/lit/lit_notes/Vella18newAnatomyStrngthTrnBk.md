@@ -41,9 +41,9 @@ modified date: 2025-07-18T13:15:28-07:00
 
 %% begin Obsidian Notes %%
 ___
-Exercises and drawings of worked muscles.  Quite comprehensive, with some but not all kettlebell exercises.  pdf export of original epub is slightly messed up but not bad, but at least it's easy to annotate.  the .ePub file is better rendered but not annotatable.
+Exercises and drawings of worked muscles.  Somewhat comprehensive, with some kettlebell exercises.  pdf export of original epub is slightly messed up but not bad, but at least it's easy to annotate.  The .ePub file is better rendered but not annotatable.
 
 ### Also
-- [[Vella08anatomyStrngthTrnBk|Vella08: Anatomy for strength & fitness training: An illustrated guide to your muscles in action]] 
+- Old version: [[Vella08anatomyStrngthTrnBk|Vella08: Anatomy for strength & fitness training: An illustrated guide to your muscles in action]] 
 ___
 %% end Obsidian Notes %%
