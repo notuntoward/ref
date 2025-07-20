@@ -13,7 +13,7 @@ ZoteroTags:
 ZoteroCollections:
   - strength_training
 created date: 7/18/2025, 1:13:24 PM
-modified date: 2025-07-18T13:15:28-07:00
+modified date: 2025-07-19T13:50:45-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/TA5KKEI3)  | [**URL**](https://dokumen.pub/new-anatomy-for-strength-amp-fitness-training-an-illustrated-guide-to-your-muscles-in-action-9781504800518.html) | **[[Vella18newAnatomyStrngthTrnBk.pdf|PDF]]** | **[[Vella18newAnatomyStrngthTrnBk.epub|EPUB]]**

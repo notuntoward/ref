@@ -1,6 +1,6 @@
 ---
 created date: 2025-07-10T12:30:36-05:00
-modified date: 2025-07-13T13:17:10-05:00
+modified date: 2025-07-19T14:05:51-07:00
 ---
 Google's new AI coding command line interface.
 # Installing Gemini CLI
@@ -28,11 +28,9 @@ The Gemini CLI provides AI assistance directly in your terminal, offering featur
 ## Set up a Github Repo and UV with Gemini
 From: [Explain how to create a new gi...](https://www.perplexity.ai/search/explain-how-to-create-a-new-gi-QKnEnyGcRj.iWZU6ujlvmQ#5)
 
-ICreate a new public GitHub repo called "my-uv-app", initialize a Python uv environment, and ensure all generated code uses and updates this environment.
+Create a new public GitHub repo called "my-uv-app", initialize a Python uv environment, and ensure all generated code uses and updates this environment.
 
 For this project, always use `uv add` (not `uv pip install`) when installing dependencies.
-```
-
 This will create a repo in a subfolder of the Gemini `cwd`. You can specify a path for the repo by telling the prompt where to put it (I think).  Below, [Gemini will create](https://www.perplexity.ai/search/explain-how-to-create-a-new-gi-QKnEnyGcRj.iWZU6ujlvmQ#10) a standard python project structure, like this:
 ```
 my-uv-app/
@@ -137,7 +135,7 @@ If you’re using Gemini Code Assist with an Enterprise subscription, you can fu
 
 **In summary:**
 You can customize Gemini’s code overwrite behavior by using clear prompt instructions, configuring `.gemini/config.yaml` and `.gemini/styleguide.md` in your repo, and leveraging git for safety. For the highest level of automation and enforcement, combine these approaches—especially in team or enterprise environments[^4][^8].
-## Keeping UV Up to Date with Gemini
+## Keeping `uv` Up to Date with Gemini
 From: [Explain how to create a new gi...](https://www.perplexity.ai/search/explain-how-to-create-a-new-gi-QKnEnyGcRj.iWZU6ujlvmQ#9)
 
 When you [[Software Dev/Tools for Software Dev/Gemini CLI.md#Set up a Github Repo and UV with Gemini |Set up a Github Repo and UV with Gemini]] with a prompt that requires `uv add`, then, as Gemini generates new Python files or requirements, *it may propose* to `add` new dependencies.  

@@ -1,6 +1,6 @@
 ---
 created date: 2025-06-21T12:14:59-07:00
-modified date: 2025-07-18T13:16:29-07:00
+modified date: 2025-07-19T16:21:19-07:00
 tags:
   - excercise
   - posture
@@ -151,7 +151,11 @@ Goblet Squat
 7.1 Jump Rope
 7.2 Pushups standard & legs on chair
 ## Also
+- [[Running Training]]
+- [[Posture Training]]
 - [[Elpeze22kyphosisAdolescCCEP|Elpeze22: The Effect of a Comprehensive Corrective Exercise Program on Kyphosis Angle and Balance in Kyphotic Adolescents]] 
 - [[Seidi14hyperKyposisExrcsEffic|Seidi14: The efficiency of corrective exercise interventions on thoracic hyper-kyphosis angle]] 
 - [[Combo Workout Revised Long]]
 - [[Vella18newAnatomyStrngthTrnBk|Vella18: New anatomy for strength & fitness training: An illustrated guide to your muscles in action including exercises used in CrossFit®, P90X®, and other popular fitness programs]]  
+- Probably high load for strength (and for running, lower sets?): [[Currier23ResistTrnStrngthHyperBayesNet|Currier23: Resistance training prescription for muscle strength and hypertrophy in healthy adults: a systematic review and Bayesian network meta-analysis]] 
+- 

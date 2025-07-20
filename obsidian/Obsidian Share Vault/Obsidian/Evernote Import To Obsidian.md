@@ -1,9 +1,29 @@
 ---
 created date: 2024-12-17T08:51:31-08:00
-modified date: 2025-03-26T09:15:18-07:00
+modified date: 2025-07-19T14:01:06-07:00
 ---
 How to get my Evernotes into Obsidian.
 
+# Evernote Export Requirements
+- for each evernote note
+	- a `citekey` like name is created, in a format similar to the zotero bibtex citekeys I make by hand
+	- The following files are generated
+		- any attachments associated with that note
+			- name them `citekey`.X, where X
+		- `citekey`.html
+	- an html file 
+		- in which complex html pages are preserved as best as possible
+		- has links to its attachments
+	- an .md file 
+		- with the best markdown rendering of that note possible
+		- has all evernote meta info in the properties
+		- a link to the corresponding .html file
+		- links to any attachments in the evernote file
+	- the html and m
+
+- evernote tags become evernote tags
+- filenames have 
+- Exports 
 # Obsidian Importer Plugin
 From: [GitHub - obsidianmd/obsidian-i...](https://github.com/obsidianmd/obsidian-importer)
 
@@ -11,7 +31,7 @@ i.e. ENEX --> Obsidian importer ---> Obsidian Markdown
 
 - My Feature Request (it does kinda handle internal evernote links): [Feature Request: Handle Everno...](https://github.com/obsidianmd/obsidian-importer/issues/279)
 ## Importer Plugin Test results 3/23/25
-- [ ] ### 
+
 - Imported 1st 100 notes (max allowed) for each of "extinction", "exercise" tags
 - **Good**
 	- cross-note links work
@@ -29,7 +49,9 @@ i.e. ENEX --> Obsidian importer ---> Obsidian Markdown
 	- pictures and most everything else graphic are gone.  I *really* don't like this
 	- [ ] ? can only import 100 notes at a time.  How automate this?
 	- No link back to original evernote page, yet some inter-evernote links do go to original web page (note really good if have an imported version of the same)
-	- still has giant icon prob
+	- still has giant icon 
+- **Also**
+	- [[Evernote to Obsidian and Zotero]]
 # Evernote html export to Obsidian
 - Evernote allows you to import each note as an individual file, or as 1 big file
 - **Good**
