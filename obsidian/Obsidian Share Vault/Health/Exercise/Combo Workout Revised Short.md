@@ -1,6 +1,6 @@
 ---
 created date: 2025-06-21T12:14:59-07:00
-modified date: 2025-07-19T16:21:19-07:00
+modified date: 2025-07-21T21:01:43-07:00
 tags:
   - excercise
   - posture
@@ -16,7 +16,7 @@ Also see [[Combo Workout Revised Long]]
 
 *   **Supersets (A, B, C):** Perform the two exercises in a pair (e.g., A1 then A2) back-to-back with minimal rest in between. Rest for 60-90 seconds only *after* completing the pair. Then, repeat for the total number of sets. 
 
-| Phase               | Exercise                                                                                      | Sets | Reps/Dur         | Weight     | Notes                                                                                                                 |     |     |     |
+| Phase               | Exercise                                                                                      | Sets | Reps/Dur         | Weight, kg | Notes                                                                                                                 |     |     |     |
 | :------------------ | :-------------------------------------------------------------------------------------------- | :--- | :--------------- | ---------- | :-------------------------------------------------------------------------------------------------------------------- | --- | --- | --- |
 | **Dynamic Warm-up** | Jump Rope                                                                                     | 1    | 2-3 minutes      |            | Light, continuous pace to warm up the body.                                                                           |     |     |     |
 | (5-7 mins)          | Band Sidestep                                                                                 | 2    | 15-20 / dir      |            | Activates glute medius for hip & knee stability.                                                                      |     |     |     |
