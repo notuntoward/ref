@@ -19,7 +19,7 @@ ZoteroCollections:
   - strength_training
   - cognition
 created date: 7/21/2025, 9:05:24 PM
-modified date: 2025-07-21T22:40:38-07:00
+modified date: 2025-07-22T08:07:08-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/UGEJ73GF)  | [**DOI**](https://doi.org/10.1007/s11357-024-01483-8) | [**URL**](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12181617/) | **[[Ribeiro25resistTrainProtectMildCog.pdf|PDF]]**
@@ -49,7 +49,9 @@ modified date: 2025-07-21T22:40:38-07:00
 
 %% begin Obsidian Notes %%
 ___
-Weight training improved verbal episodic memory in adults diagnosed with mild cognitive impairment to the extent that, at the end of six months of training, five of twenty-two test subjects no longer had mild cognitive impairment -- and none of them had lost memory-related brain volume vs. the control group, who had.  
+Weight training improved verbal episodic memory in adults diagnosed with mild cognitive impairment to the extent that, at the end of six months of training, five of twenty-two test subjects no longer had mild cognitive impairment -- and none of them had lost memory-related brain volume vs. the control group, who had.  Several brain structure metrics also showed improvements, or lack of degradation, as seen in the control group.
+
+Benefits like this come from any physical exercise, so it's not clear to to me how weight training compares to aerobic exercise in this regard. However, [[Ribeiro25resistTrainProtectMildCog.pdf#page=3&annotation=166R|other cited studies say that increased muscle strength is correlated with improved cognitive functions and a reduced risk of Alzheimer's.]]
 
 Longer summary in [[Reinert25weightTrainCogDeclineAge|Reinert25weightTrainCogDeclineAge]] .
 #### Moderate to High Exercises In Study

@@ -19,7 +19,7 @@ ZoteroCollections:
   - strength_training
   - cognition
 created date: 7/21/2025, 9:18:48 PM
-modified date: 2025-07-21T22:48:18-07:00
+modified date: 2025-07-22T08:02:45-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/Y5G7S9T4)  | [**URL**](https://neurosciencenews.com/weight-training-alzheimers-aging-28538/) | **[[Reinert25weightTrainCogDeclineAge.html|HTM]]**
@@ -60,6 +60,7 @@ Six months of 2x/wk weight training <u>improved verbal episodic memory and brain
 	- pro-inflammatory proteins released (during aging, I guess) increase risk of dementia by causing chemicals that eventually kill brain cells
 	- author's currently analyzing irisin and BDNF chemicals stimulated by muscle contraction 
 		- ? so weight training stimulates more of them?
+		- anyway the paper itself says increased muscle strength related to better cognitive perf, or a lack of degradation.
 
 ![[lit/lit_notes/Ribeiro25resistTrainProtectMildCog.md#Moderate to High Exercises In Study|Weight Routine Used]]
 ## Also
