@@ -1,15 +1,25 @@
 ---
-category: literaturenote
+category:
+  - literaturenote
 tags:
   - forecasting
   - ml/deepLrn
   - forecasting/ensemble
   - LightGBM
+  - genAI
+  - feature-selection
+  - ml/forecast
+  - statistics
+  - forecasting/hierarchical
+  - ml/decision-tree-based
+  - ml/ensemble
+  - ml/hyperparamTune
 citekey: Dancker24dontNeedDprLrnTSfrcst
 status:
   - read
 dateread: 
-ZoteroTags: obsLitNote
+ZoteroTags:
+  - obsLitNote
 aliases:
   - Why You (Currently) Do Not Need Deep Learning for Time Series Forecasting
   - Why You (Currently) Do Not
@@ -19,7 +29,7 @@ DOI: ""
 "created date:": 2024-07-18T11:27:31-07:00
 "modified date:": 
 created date: 2024-07-18T11:27:59-07:00
-modified date: 2024-07-18T15:53:29-07:00
+modified date: 2025-07-21T14:42:23-07:00
 ---
 
 > [!info]- : [**Zotero**](zotero://select/library/items/2JRCSS7A)   | [**URL**](https://towardsdatascience.com/why-you-currently-do-not-need-deep-learning-for-time-series-forecasting-0de57f2bc0ed) | [[Dancker24dontNeedDprLrnTSfrcst.pdf|PDF]]
@@ -53,7 +63,7 @@ modified date: 2024-07-18T15:53:29-07:00
 %% begin Obsidian Notes %%
 ___
 
-[[LightGBM]] seems the best in forecasting contests and in real life, while statistical forecasting is still a useful baseline.  Deep learning forecasting e.g.  [N-BEATS](Oreshkin20neuraBasisFrcstNBEATS) and [N-HiTS](Challu22NHiTSNeuralHierarchical), gets academic attention, but for now, not much contest or the author's real-world use.  [[#Feature Engineering]] is where time is best spent, while [[#Ensembling]] and thorough [[#Cross Validation is Crucial]].  
+[[LightGBM]] seems the best in forecasting contests and in real life, while statistical forecasting is still a useful baseline.  Deep learning forecasting e.g.  [N-BEATS](Oreshkin20neuraBasisFrcstNBEATS) and [N-HiTS](Challu22NHiTSNeuralHierarchical), gets academic attention, but for now, not much contest or the author's real-world use.  [[#Forecast Feature Engineering]] is where time is best spent, while [[#Ensembling]] and thorough [[#Cross Validation is Crucial]].  
 
 This article suggests that, for AEMO, I'd better start ensembling diverse LightGBM models and hurry on those [exogenous features](Dancker24dontNeedDprLrnTSfrcst#^3vzu).
 
@@ -110,7 +120,7 @@ Kaggle winners have multiple models, averaging often best
 	- simple averaging
 - Averaging the best `M5` models for each time series [[Dancker24dontNeedDprLrnTSfrcst.pdf#page=11&annotation=2118R|beat (overall?) the winner by 2%]]
 - [ ] # I should try averaging AEMO with the different feature sets and cost funcs I've tried.
-# Feature Engineering
+# Forecast Feature Engineering
 
 Feature engineering is more important than what model you use, and the process consumes the most time. 
 
@@ -132,8 +142,13 @@ Feature engineering is more important than what model you use, and the process c
 - It's why Kagglers use [[LightGBM]]
 - Get better results the more things he tests
 - It's why contestants shun Deep Learning: it's slow and one-size-fits-all
+# Also
 
-
+- [[Periodicity Features]]: periodicity not really mentioned in [[Dancker24dontNeedDprLrnTSfrcst]] but it's important.
+- [[Januschowski22ForecastingTrees|Forecasting with trees]]
+- [[Forecasting Interview Prep]]
+- [[Tibshirani23calibScoreFrcst|Forecast Scoring and Calibration]]
+- [[Lainder22frcstGBTaugTuneCV|Forecasting with gradient boosted trees:]]
 ___
 %% end Obsidian Notes %%
 

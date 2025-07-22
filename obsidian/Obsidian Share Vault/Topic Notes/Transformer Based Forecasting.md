@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-17T08:51:31-08:00
-modified date: 2024-12-17T08:51:31-08:00
+modified date: 2025-07-21T14:21:24-07:00
 ---
 Collect papers where GTP-like things forecast stuff
 
@@ -26,6 +26,7 @@ Collect papers where GTP-like things forecast stuff
 - [[Ansari24chronosTSlangLearn|Ansari24: Chronos: Learning the Language of Time Series]]
 - [[TutorMaster24ChronosZeroShotTSfrcst|TutorMaster24: Chronos: Another Zero-Shot Time Series Forecaster LLM]]
 - [[Bentsen23transformersTimeSeriesData|Bentsen23: Transformers for Time-Series Data]]
+- [[Dancker24dontNeedDprLrnTSfrcst|Dancker24: Why You (Currently) Do Not Need Deep Learning for Time Series Forecasting]] 
 ## Power System Related Embedding (does this really belong here?)
 aggregation forecast?: [[Schreiber21TaskEmbeddingTemporal|Task Embedding Temporal Convolution Networks for Transfer Learning Problems in Renewable Power Time Series Forecast]]
 - autoencoder: [[Nivarthi22UnifiedAutoencoderTask|Unified Autoencoder with Task Embeddings for Multi-Task Learning in Renewable Power Forecasting]]

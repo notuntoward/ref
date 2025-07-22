@@ -15,7 +15,7 @@ ZoteroCollections:
   - electionpredfeats
   - neuropsycholinguisticpolitics
 created date: 7/1/2025, 1:47:14 PM
-modified date: 2025-07-01T13:49:16-05:00
+modified date: 2025-07-21T14:44:25-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/HU97A8MQ)  | [**URL**](https://global.oup.com/academic/product/voters-under-pressure-9780192894137?cc=us&lang=en&)
@@ -45,6 +45,6 @@ modified date: 2025-07-01T13:49:16-05:00
 
 %% begin Obsidian Notes %%
 ___
-A rollup of studies on cross-pressured voters, with empirical studies  Perplexity said this was the best reference, but the book is over $100 used!
+A rollup of studies on cross-pressured voters, with empirical studies  Perplexity said this book was the best reference, but it's over $100 used!
 ___
 %% end Obsidian Notes %%

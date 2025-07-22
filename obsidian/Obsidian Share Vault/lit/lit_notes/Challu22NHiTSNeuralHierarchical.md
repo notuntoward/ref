@@ -1,10 +1,16 @@
 ---
-category: literaturenote
-tags: ml/genAI
+category:
+  - literaturenote
+tags:
+  - ml/genAI
+  - forecasting
+  - forecasting/hierarchical
 citekey: Challu22NHiTSNeuralHierarchical
-status: unread
+status:
+  - unread
 dateread: 
-ZoteroTags: obsLitNote
+ZoteroTags:
+  - obsLitNote
 aliases:
   - "N-HiTS: Neural Hierarchical Interpolation for Time Series Forecasting"
   - "N-HiTS: Neural Hierarchical Interpolation for"

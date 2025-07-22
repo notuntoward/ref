@@ -1,6 +1,6 @@
 ---
 created date: 2025-07-10T12:30:36-05:00
-modified date: 2025-07-19T14:05:51-07:00
+modified date: 2025-07-21T12:16:37-07:00
 ---
 Google's new AI coding command line interface.
 # Installing Gemini CLI
@@ -28,10 +28,16 @@ The Gemini CLI provides AI assistance directly in your terminal, offering featur
 ## Set up a Github Repo and UV with Gemini
 From: [Explain how to create a new gi...](https://www.perplexity.ai/search/explain-how-to-create-a-new-gi-QKnEnyGcRj.iWZU6ujlvmQ#5)
 
+Using Gemini to create a new repo with a prompt.  Example:
+
+```
 Create a new public GitHub repo called "my-uv-app", initialize a Python uv environment, and ensure all generated code uses and updates this environment.
 
 For this project, always use `uv add` (not `uv pip install`) when installing dependencies.
+```
+
 This will create a repo in a subfolder of the Gemini `cwd`. You can specify a path for the repo by telling the prompt where to put it (I think).  Below, [Gemini will create](https://www.perplexity.ai/search/explain-how-to-create-a-new-gi-QKnEnyGcRj.iWZU6ujlvmQ#10) a standard python project structure, like this:
+
 ```
 my-uv-app/
 ├── .git/                  # Git repository metadata
