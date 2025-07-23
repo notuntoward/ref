@@ -19,7 +19,7 @@ ZoteroCollections:
   - strength_training
   - cognition
 created date: 7/21/2025, 9:05:24 PM
-modified date: 2025-07-22T08:07:08-07:00
+modified date: 2025-07-22T19:35:48-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/UGEJ73GF)  | [**DOI**](https://doi.org/10.1007/s11357-024-01483-8) | [**URL**](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12181617/) | **[[Ribeiro25resistTrainProtectMildCog.pdf|PDF]]**

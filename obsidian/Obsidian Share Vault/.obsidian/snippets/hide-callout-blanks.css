@@ -1,0 +1,14 @@
+/* Hide single empty lines within blockquotes/callouts in Live Preview 
+This fixes the problem in my original notes templates, where I had to use a `~` in order to make the call out fold.  With this snipping, I can just replace the `~` with a "true blank line", precededed by `>`
+
+THIS DIDN'T REALLY HELP.  But see the advice:
+https://www.perplexity.ai/search/in-obsidian-live-preview-mode-pMg_x1bTRYKII_pqzQgxqw#2
+*/
+
+.is-live-preview .HyperMD-quote .cm-line:empty {
+  min-height: 0 !important;
+  height: 0 !important;
+  line-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}

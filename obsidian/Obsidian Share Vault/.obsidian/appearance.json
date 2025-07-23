@@ -14,7 +14,8 @@
     "embed_remove_indent",
     "embed_remove_vert_black_space",
     "lapel_heading_marker_size",
-    "smaller_pdf_fonts"
+    "smaller_pdf_fonts",
+    "hide-callout-blanks"
   ],
   "theme": "moonstone",
   "cssTheme": "AnuPpuccin",

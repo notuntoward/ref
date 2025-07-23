@@ -29,7 +29,7 @@ DOI: ""
 "created date:": 2024-07-18T11:27:31-07:00
 "modified date:": 
 created date: 2024-07-18T11:27:59-07:00
-modified date: 2025-07-21T14:42:23-07:00
+modified date: 2025-07-22T19:29:38-07:00
 ---
 
 > [!info]- : [**Zotero**](zotero://select/library/items/2JRCSS7A)   | [**URL**](https://towardsdatascience.com/why-you-currently-do-not-need-deep-learning-for-time-series-forecasting-0de57f2bc0ed) | [[Dancker24dontNeedDprLrnTSfrcst.pdf|PDF]]
@@ -40,7 +40,7 @@ modified date: 2025-07-21T14:42:23-07:00
 > 
 > 
 > **FirstAuthor**:: Dancker, Jonte  
-~    
+>    
 > **Title**:: "Why You (Currently) Do Not Need Deep Learning for Time Series Forecasting"  
 > **Date**:: 2024-06-20  
 > **Citekey**:: Dancker24dontNeedDprLrnTSfrcst  
@@ -60,8 +60,8 @@ modified date: 2025-07-21T14:42:23-07:00
 > **Related**:: 
 
 > Dancker, Jonte. “Why You (Currently) Do Not Need Deep Learning for Time Series Forecasting.” _Medium_, 20 June 2024, [https://towardsdatascience.com/why-you-currently-do-not-need-deep-learning-for-time-series-forecasting-0de57f2bc0ed](https://towardsdatascience.com/why-you-currently-do-not-need-deep-learning-for-time-series-forecasting-0de57f2bc0ed).
-%% begin Obsidian Notes %%
 ___
+%% begin Obsidian Notes %%
 
 [[LightGBM]] seems the best in forecasting contests and in real life, while statistical forecasting is still a useful baseline.  Deep learning forecasting e.g.  [N-BEATS](Oreshkin20neuraBasisFrcstNBEATS) and [N-HiTS](Challu22NHiTSNeuralHierarchical), gets academic attention, but for now, not much contest or the author's real-world use.  [[#Forecast Feature Engineering]] is where time is best spent, while [[#Ensembling]] and thorough [[#Cross Validation is Crucial]].  
 
