@@ -214,8 +214,12 @@ var MultiTabPlugin = class extends import_obsidian6.Plugin {
       name: "Add Property to All Tabs in Window",
       callback: () => {
         new AddPropModal(this.app, (name, value) => {
-          const leaves = this.app.workspace.getLeavesOfType("markdown");
-          this.addPropertyToTabs(leaves, name, value);
+          var _a;
+          const activeWindow = (_a = this.app.workspace.activeLeaf) == null ? void 0 : _a.view.containerEl.win;
+          if (activeWindow) {
+            const leaves = this.app.workspace.getLeavesOfType("markdown").filter((leaf) => leaf.view.containerEl.win === activeWindow);
+            this.addPropertyToTabs(leaves, name, value);
+          }
         }).open();
       }
     });
@@ -224,8 +228,12 @@ var MultiTabPlugin = class extends import_obsidian6.Plugin {
       name: "Remove Property from All Tabs in Window",
       callback: () => {
         new RemovePropModal(this.app, (name) => {
-          const leaves = this.app.workspace.getLeavesOfType("markdown");
-          this.removePropertyFromTabs(leaves, name);
+          var _a;
+          const activeWindow = (_a = this.app.workspace.activeLeaf) == null ? void 0 : _a.view.containerEl.win;
+          if (activeWindow) {
+            const leaves = this.app.workspace.getLeavesOfType("markdown").filter((leaf) => leaf.view.containerEl.win === activeWindow);
+            this.removePropertyFromTabs(leaves, name);
+          }
         }).open();
       }
     });
@@ -234,8 +242,12 @@ var MultiTabPlugin = class extends import_obsidian6.Plugin {
       name: "Add Tag to All Tabs in Window",
       callback: () => {
         new AddTagModal(this.app, (name) => {
-          const leaves = this.app.workspace.getLeavesOfType("markdown");
-          this.addTagToTabs(leaves, name);
+          var _a;
+          const activeWindow = (_a = this.app.workspace.activeLeaf) == null ? void 0 : _a.view.containerEl.win;
+          if (activeWindow) {
+            const leaves = this.app.workspace.getLeavesOfType("markdown").filter((leaf) => leaf.view.containerEl.win === activeWindow);
+            this.addTagToTabs(leaves, name);
+          }
         }).open();
       }
     });
@@ -244,8 +256,12 @@ var MultiTabPlugin = class extends import_obsidian6.Plugin {
       name: "Remove Tag from All Tabs in Window",
       callback: () => {
         new RemoveTagModal(this.app, (name) => {
-          const leaves = this.app.workspace.getLeavesOfType("markdown");
-          this.removeTagFromTabs(leaves, name);
+          var _a;
+          const activeWindow = (_a = this.app.workspace.activeLeaf) == null ? void 0 : _a.view.containerEl.win;
+          if (activeWindow) {
+            const leaves = this.app.workspace.getLeavesOfType("markdown").filter((leaf) => leaf.view.containerEl.win === activeWindow);
+            this.removeTagFromTabs(leaves, name);
+          }
         }).open();
       }
     });
@@ -254,8 +270,12 @@ var MultiTabPlugin = class extends import_obsidian6.Plugin {
       name: "Rename Tag in All Tabs in Window",
       callback: () => {
         new RenameTagModal(this.app, (oldName, newName) => {
-          const leaves = this.app.workspace.getLeavesOfType("markdown");
-          this.renameTagInTabs(leaves, oldName, newName);
+          var _a;
+          const activeWindow = (_a = this.app.workspace.activeLeaf) == null ? void 0 : _a.view.containerEl.win;
+          if (activeWindow) {
+            const leaves = this.app.workspace.getLeavesOfType("markdown").filter((leaf) => leaf.view.containerEl.win === activeWindow);
+            this.renameTagInTabs(leaves, oldName, newName);
+          }
         }).open();
       }
     });
