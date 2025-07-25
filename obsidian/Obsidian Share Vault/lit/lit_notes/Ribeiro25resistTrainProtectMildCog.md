@@ -19,7 +19,7 @@ ZoteroCollections:
   - strength_training
   - cognition
 created date: 7/21/2025, 9:05:24 PM
-modified date: 2025-07-22T19:35:48-07:00
+modified date: 2025-07-24T10:04:05-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/UGEJ73GF)  | [**DOI**](https://doi.org/10.1007/s11357-024-01483-8) | [**URL**](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12181617/) | **[[Ribeiro25resistTrainProtectMildCog.pdf|PDF]]**
@@ -54,30 +54,33 @@ Weight training improved verbal episodic memory in adults diagnosed with mild co
 Benefits like this come from any physical exercise, so it's not clear to to me how weight training compares to aerobic exercise in this regard. However, [[Ribeiro25resistTrainProtectMildCog.pdf#page=3&annotation=166R|other cited studies say that increased muscle strength is correlated with improved cognitive functions and a reduced risk of Alzheimer's.]]
 
 Longer summary in [[Reinert25weightTrainCogDeclineAge|Reinert25weightTrainCogDeclineAge]] .
-#### Moderate to High Exercises In Study
-From paper: [[Ribeiro25resistTrainProtectMildCog.pdf#page=3&annotation=919R|Resistance Training Protocol]] (over 6 month testing period)
+#### Moderate to High Exercises In 
+From paper: [[Ribeiro25resistTrainProtectMildCog.pdf#page=3&annotation=209R|Resistance Training Protocol]] (over 6 month testing period)
 
-- 2 sessions/wk.
+- **Two sessions/week**
 	- 1 hr. duration each
 	- done in mornings
-	- 3 sets/session
-- Session
-	- Large muscle group exercises in each set
-		- exercises
-			1. pull-down
-			2. leg press
-			3. seated row
-			4. hip abduction machine
-			5. standing calf raise
-			6. reverse crunch
-			7. sit-up
-		- exercises alternated between upper/lower body
-		- exercises chosen at random
-	- 10 reps per set
-		- load for each rep is 80% 1-RM (1 rep max)
-		- load increases over time
-			- [[Ribeiro25resistTrainProtectMildCog.pdf#page=4&annotation=957R|1-RM retested at 12 wk intervals]]
-	- 1 min rest between sets
+
+- **Session**
+	- **Three sets/session**
+	- **1 min rest between sets**
+	- **One set** (large muscle group exercises)
+		- Exercises in set (alternate between upper/lower body)
+			1. leg extension
+			2. chest fly machine
+			3. seated leg curl 
+			4. lat. pull-down
+			5. leg press
+			6. seated row
+			7. hip abduction machine
+			8. standing calf raise
+			9. reverse crunch
+			10. sit-up
+		- Ten repetitions of each exercise per set
+			- load for each rep. is 80% of `1-RM` (1 rep max, max amount you can lift once)
+			- load increases over time, as `1-RM` increases with training
+				- [[Ribeiro25resistTrainProtectMildCog.pdf#page=4&annotation=957R|1-RM retested at 12 wk intervals]]
+		- upper/lower body pair order chosen randomly at each session
 ## Also
 - [[Reinert25weightTrainCogDeclineAge|Reinert25: Weight Training May Slow Cognitive Decline and Protect Aging Brains]] 
 ___

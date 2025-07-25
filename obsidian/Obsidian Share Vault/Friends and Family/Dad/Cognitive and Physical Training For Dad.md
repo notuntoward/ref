@@ -1,6 +1,6 @@
 ---
 created date: 2025-07-23T23:43:23-07:00
-modified date: 2025-07-24T01:46:58-07:00
+modified date: 2025-07-24T10:21:21-07:00
 ---
 # AI recommendations
 ## notebooklms
@@ -60,6 +60,7 @@ From: [I am looking for group classes...](https://www.perplexity.ai/search/i-am-
 
 All nine run **predominantly in person**, align with published evidence on resistance or cognitive training for mild cognitive impairment, and can be combined or sequenced to match individual tolerance and scheduling preferences.
 # My notes on plans
+
 ## BrainHQ
 - fairly convincing: [The Institute of Medicine’s Ch...](https://www.brainhq.com/world-class-science/the-institute-of-medicines-checklist-for-brain-training/#5)
 - [pricing](https://www.perplexity.ai/search/https-www-brainhq-com-appears-3fz3os2lTJuD_PRVpbpg7w#0): 
@@ -71,11 +72,15 @@ All nine run **predominantly in person**, align with published evidence on resis
 - [ForeverWell \| alexandriaymca....](https://alexandriaymca.com/foreverwell)
 - [[July ForeverWell Schedule.pdf|July ForeverWell Schedule Alex]]
 	- Doesn't seem to have 2 strength sessions/wk.  Instead 1 is balance, 1 is strength
-	- [ ] # Call Jeni or Tammi, (320) 834-9622, Re: [[Ribeiro25resistTrainProtectMildCog|Ribeiro25resistTrainProtectMildCog]] level training
+	- [ ] # Call Jeni or Tammi, (320) 834-9622
+		- I actually talked to Autumn
+		- how get 2 strength sessions [[Ribeiro25resistTrainProtectMildCog|Ribeiro25resistTrainProtectMildCog]] level training?
+		- want group activities
+		- private trainer mix?
 ## Vital Fit Club Strength Training (Alex)
 - [seems not senior-focused](https://www.perplexity.ai/search/https-www-brainhq-com-appears-3fz3os2lTJuD_PRVpbpg7w#1)
 ## Fit & Strong near Alex
 - [alternative to Vital Fit Club](https://www.perplexity.ai/search/https-www-brainhq-com-appears-3fz3os2lTJuD_PRVpbpg7w#1)
 - [Evidence-Based Program: Fit & ...](https://www.ncoa.org/article/evidence-based-program-fit-strong/)
-- Not currrently listed @ Alex YMCA
+- Not currently listed @ Alex YMCA
 - Hosted by Catholic Charities of Southern Minnesota: [Mankato, Owatonna, and Rochester](https://www.perplexity.ai/search/https-www-brainhq-com-appears-3fz3os2lTJuD_PRVpbpg7w#2)
