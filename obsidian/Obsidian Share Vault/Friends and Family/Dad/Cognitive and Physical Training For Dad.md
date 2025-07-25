@@ -1,6 +1,6 @@
 ---
 created date: 2025-07-23T23:43:23-07:00
-modified date: 2025-07-24T10:21:21-07:00
+modified date: 2025-07-25T12:23:48-07:00
 ---
 # AI recommendations
 ## notebooklms
@@ -77,6 +77,9 @@ All nine run **predominantly in person**, align with published evidence on resis
 		- how get 2 strength sessions [[Ribeiro25resistTrainProtectMildCog|Ribeiro25resistTrainProtectMildCog]] level training?
 		- want group activities
 		- private trainer mix?
+- Autumn: amarshall@alexandriaymca.com her extension is 111
+	- supplemental insurance might cover cost of membership
+	- he can show them his insurance card, they'll figure it out
 ## Vital Fit Club Strength Training (Alex)
 - [seems not senior-focused](https://www.perplexity.ai/search/https-www-brainhq-com-appears-3fz3os2lTJuD_PRVpbpg7w#1)
 ## Fit & Strong near Alex

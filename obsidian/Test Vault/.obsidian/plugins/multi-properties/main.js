@@ -870,7 +870,7 @@ function __awaiter(thisArg, _arguments, P, generator) {
 
 // src/AddPropInput.svelte
 function add_css(target) {
-  append_styles(target, "svelte-gwxj8w", "input.svelte-gwxj8w{max-height:25px;overflow-x:auto}select.svelte-gwxj8w{height:21px}#name-input.svelte-gwxj8w{flex-grow:0;width:auto}.modal-input-container.svelte-gwxj8w{width:95%;display:flex;flex-direction:row;align-items:center;gap:10px;margin-top:10px}.btn-inactive.svelte-gwxj8w{cursor:not-allowed;pointer-events:none;opacity:0.7}");
+  append_styles(target, "svelte-33qhuc", "input.svelte-33qhuc{max-height:25px;overflow-x:auto}select.svelte-33qhuc{height:21px}#name-input.svelte-33qhuc{flex-grow:0;width:auto}.modal-input-container.svelte-33qhuc{width:95%;display:flex;flex-direction:row;align-items:center;gap:10px;margin-top:10px}.btn-inactive.svelte-33qhuc{cursor:not-allowed;pointer-events:none;opacity:0.7}");
 }
 function get_each_context(ctx, list, i) {
   const child_ctx = ctx.slice();
@@ -910,10 +910,10 @@ function create_each_block(ctx) {
 }
 function create_fragment(ctx) {
   let div;
-  let a;
+  let button;
   let t0;
-  let a_class_value;
-  let a_tabindex_value;
+  let button_class_value;
+  let button_tabindex_value;
   let t1;
   let select;
   let t2;
@@ -933,7 +933,7 @@ function create_fragment(ctx) {
   return {
     c() {
       div = element("div");
-      a = element("a");
+      button = element("button");
       t0 = text("X");
       t1 = space();
       select = element("select");
@@ -944,14 +944,14 @@ function create_fragment(ctx) {
       input0 = element("input");
       t3 = space();
       input1 = element("input");
-      attr(a, "id", "del-btn");
-      attr(a, "class", a_class_value = "btn-del " + /*isFirst*/
-      (ctx[2] ? "btn-inactive" : "") + " svelte-gwxj8w");
-      attr(a, "tabindex", a_tabindex_value = /*isFirst*/
+      attr(button, "type", "button");
+      attr(button, "id", "del-btn");
+      attr(button, "class", button_class_value = "btn-del " + /*isFirst*/
+      (ctx[2] ? "btn-inactive" : "") + " svelte-33qhuc");
+      attr(button, "tabindex", button_tabindex_value = /*isFirst*/
       ctx[2] ? -1 : 0);
-      attr(a, "href", "href");
       attr(select, "id", "type-input");
-      attr(select, "class", "flex-obj svelte-gwxj8w");
+      attr(select, "class", "flex-obj svelte-33qhuc");
       if (
         /*optionVal*/
         ctx[7] === void 0
@@ -960,7 +960,7 @@ function create_fragment(ctx) {
         ctx[12].call(select)
       ));
       attr(input0, "id", "name-input");
-      attr(input0, "class", "name-input flex-obj svelte-gwxj8w");
+      attr(input0, "class", "name-input flex-obj svelte-33qhuc");
       attr(input0, "type", "text");
       attr(input0, "name", "name[]");
       attr(input0, "placeholder", "name");
@@ -969,13 +969,13 @@ function create_fragment(ctx) {
       attr(input1, "type", "text");
       attr(input1, "name", "value[]");
       attr(input1, "placeholder", "value");
-      attr(input1, "class", "value-input flex-obj svelte-gwxj8w");
-      attr(div, "class", "modal-input-container svelte-gwxj8w");
+      attr(input1, "class", "value-input flex-obj svelte-33qhuc");
+      attr(div, "class", "modal-input-container svelte-33qhuc");
     },
     m(target, anchor) {
       insert(target, div, anchor);
-      append(div, a);
-      append(a, t0);
+      append(div, button);
+      append(button, t0);
       append(div, t1);
       append(div, select);
       for (let i = 0; i < each_blocks.length; i += 1) {
@@ -1008,7 +1008,7 @@ function create_fragment(ctx) {
       if (!mounted) {
         dispose = [
           listen(
-            a,
+            button,
             "click",
             /*click_handler*/
             ctx[11]
@@ -1043,14 +1043,14 @@ function create_fragment(ctx) {
     },
     p(ctx2, [dirty]) {
       if (dirty & /*isFirst*/
-      4 && a_class_value !== (a_class_value = "btn-del " + /*isFirst*/
-      (ctx2[2] ? "btn-inactive" : "") + " svelte-gwxj8w")) {
-        attr(a, "class", a_class_value);
+      4 && button_class_value !== (button_class_value = "btn-del " + /*isFirst*/
+      (ctx2[2] ? "btn-inactive" : "") + " svelte-33qhuc")) {
+        attr(button, "class", button_class_value);
       }
       if (dirty & /*isFirst*/
-      4 && a_tabindex_value !== (a_tabindex_value = /*isFirst*/
+      4 && button_tabindex_value !== (button_tabindex_value = /*isFirst*/
       ctx2[2] ? -1 : 0)) {
-        attr(a, "tabindex", a_tabindex_value);
+        attr(button, "tabindex", button_tabindex_value);
       }
       if (dirty & /*options, Object*/
       256) {
@@ -1149,7 +1149,11 @@ function instance($$self, $$props, $$invalidate) {
   function changeType(type) {
     $$invalidate(6, valueEl.type = type, valueEl);
   }
-  const click_handler = () => isFirst ? false : removeInput(id);
+  const click_handler = () => {
+    if (!isFirst) {
+      removeInput(id);
+    }
+  };
   function select_change_handler() {
     optionVal = select_value(this);
     $$invalidate(7, optionVal);
@@ -1375,7 +1379,7 @@ var KNOWN_BAD_CHARACTERS = [
 // src/AddPropForm.svelte
 var { Map: Map_1 } = globals;
 function add_css2(target) {
-  append_styles(target, "svelte-1ied4k", ".modal-inputs-container.svelte-1ied4k{height:200px;width:100%;overflow-y:scroll;border-radius:5px;border-style:solid;display:flex;flex-direction:column;align-items:center}.modal-add-container.svelte-1ied4k{margin-top:10px}.alert-container.svelte-1ied4k{display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:10px;background-color:red;font-weight:bold}.hidden.svelte-1ied4k{display:none}");
+  append_styles(target, "svelte-1lpixw8", ".modal-inputs-container.svelte-1lpixw8{height:200px;width:100%;overflow-y:scroll;border-radius:5px;border-style:solid;display:flex;flex-direction:column;align-items:center}.modal-add-container.svelte-1lpixw8{margin-top:10px}.alert-container.svelte-1lpixw8{display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:10px;background-color:red;font-weight:bold}.hidden.svelte-1lpixw8{display:none}");
 }
 function get_each_context2(ctx, list, i) {
   const child_ctx = ctx.slice();
@@ -1541,10 +1545,10 @@ function create_fragment2(ctx) {
   let each_1_lookup = new Map_1();
   let t14;
   let div4;
-  let a;
+  let button0;
   let t16;
   let div5;
-  let button;
+  let button1;
   let current;
   let mounted;
   let dispose;
@@ -1575,10 +1579,10 @@ function create_fragment2(ctx) {
       );
       t3 = space();
       p0 = element("p");
-      p0.textContent = "Type in a property name, then value. Use the dropbox to choose what type of\r\n    data you wish to store.";
+      p0.textContent = "Type in a property name, then value. Use the dropbox to choose what type of\n    data you wish to store.";
       t5 = space();
       p1 = element("p");
-      t6 = text('If you want to make a List property, use the Text data type and separate\r\n    each value with a "');
+      t6 = text('If you want to make a List property, use the Text data type and separate\n    each value with a "');
       t7 = text(
         /*delimiter*/
         ctx[1]
@@ -1599,23 +1603,23 @@ function create_fragment2(ctx) {
       }
       t14 = space();
       div4 = element("div");
-      a = element("a");
-      a.textContent = "Add";
+      button0 = element("button");
+      button0.textContent = "Add";
       t16 = space();
       div5 = element("div");
-      button = element("button");
-      button.textContent = "Submit";
+      button1 = element("button");
+      button1.textContent = "Submit";
       attr(div1, "id", "alert-text");
       attr(div2, "id", "alert-container");
-      attr(div2, "class", "alert-container hidden svelte-1ied4k");
+      attr(div2, "class", "alert-container hidden svelte-1lpixw8");
       attr(input_1, "type", "checkbox");
       input_1.checked = /*overwrite*/
       ctx[0];
-      attr(div3, "class", "modal-inputs-container svelte-1ied4k");
-      attr(a, "class", "a-btn");
-      attr(a, "href", "href");
-      attr(div4, "class", "modal-add-container svelte-1ied4k");
-      attr(button, "class", "btn-submit");
+      attr(div3, "class", "modal-inputs-container svelte-1lpixw8");
+      attr(button0, "type", "button");
+      attr(button0, "class", "a-btn");
+      attr(div4, "class", "modal-add-container svelte-1lpixw8");
+      attr(button1, "class", "btn-submit");
       attr(div5, "class", "modal-button-container");
       attr(div6, "id", "multi-properties-modal");
       attr(div6, "class", "modal-content");
@@ -1651,10 +1655,10 @@ function create_fragment2(ctx) {
       }
       append(form, t14);
       append(form, div4);
-      append(div4, a);
+      append(div4, button0);
       append(form, t16);
       append(form, div5);
-      append(div5, button);
+      append(div5, button1);
       ctx[19](form);
       current = true;
       if (!mounted) {
@@ -1666,13 +1670,13 @@ function create_fragment2(ctx) {
             ctx[6]
           ),
           listen(
-            a,
+            button0,
             "click",
             /*click_handler*/
             ctx[18]
           ),
           listen(
-            button,
+            button1,
             "click",
             /*onSubmit*/
             ctx[9]
@@ -1744,8 +1748,8 @@ function create_fragment2(ctx) {
 function instance2($$self, $$props, $$invalidate) {
   let { submission } = $$props;
   let { overwrite } = $$props;
-  let { delimiter = "," } = $$props;
-  let { defaultProps = [] } = $$props;
+  let { delimiter } = $$props;
+  let { defaultProps } = $$props;
   let { changeBool } = $$props;
   let countInputs = 0;
   let formEl;
@@ -1813,15 +1817,14 @@ function instance2($$self, $$props, $$invalidate) {
         if (name === "tags") {
           value = cleanTags(value);
         }
-        if (value.contains(delimiter)) {
+        if (typeof value === "string" && value.includes(",")) {
           let str = removeExtraCommas(value);
           value = str.split(delimiter);
         }
       }
       if (value === "") value = null;
-      let inputType = input.previousElementSibling.children[0].innerText.toLowerCase();
       let propObj = {
-        type: inputType,
+        type: "text",
         data: value,
         overwrite: false,
         delimiter
@@ -1923,7 +1926,7 @@ var import_obsidian = require("obsidian");
 
 // src/AddConfirmForm.svelte
 function add_css3(target) {
-  append_styles(target, "svelte-135liin", ".msg.svelte-135liin{font-weight:bold;padding-bottom:10px}");
+  append_styles(target, "svelte-vt02cj", ".msg.svelte-vt02cj{font-weight:bold;padding-bottom:10px}");
 }
 function get_each_context3(ctx, list, i) {
   const child_ctx = ctx.slice();
@@ -2021,7 +2024,7 @@ function create_fragment3(ctx) {
       t8 = space();
       button1 = element("button");
       button1.textContent = "Cancel";
-      attr(p0, "class", "msg svelte-135liin");
+      attr(p0, "class", "msg svelte-vt02cj");
       attr(button0, "class", "mod-warning");
       attr(button0, "type", "submit");
     },
@@ -2279,7 +2282,7 @@ var import_obsidian5 = require("obsidian");
 
 // src/RemovePropForm.svelte
 function add_css4(target) {
-  append_styles(target, "svelte-1264666", ".name-container.svelte-1264666{display:flex;flex-direction:column;gap:5px;margin-top:10px;margin-bottom:20px}.alert-container.svelte-1264666{display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:10px;background-color:red;font-weight:bold}.button-container.svelte-1264666{display:flex;flex-direction:row;justify-content:space-between}.hidden.svelte-1264666{display:none}");
+  append_styles(target, "svelte-zna8bm", ".name-container.svelte-zna8bm{display:flex;flex-direction:column;gap:5px;margin-top:10px;margin-bottom:20px}.alert-container.svelte-zna8bm{display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:10px;background-color:red;font-weight:bold}.button-container.svelte-zna8bm{display:flex;flex-direction:row;justify-content:space-between}.hidden.svelte-zna8bm{display:none}");
 }
 function get_each_context4(ctx, list, i) {
   const child_ctx = ctx.slice();
@@ -2434,10 +2437,10 @@ function create_fragment4(ctx) {
       t9 = text(t9_value);
       attr(div1, "id", "alert-text");
       attr(div2, "id", "alert-container");
-      attr(div2, "class", "alert-container hidden svelte-1264666");
-      attr(div3, "class", "name-container svelte-1264666");
+      attr(div2, "class", "alert-container hidden svelte-zna8bm");
+      attr(div3, "class", "name-container svelte-zna8bm");
       attr(button0, "type", "submit");
-      attr(div4, "class", "button-container svelte-1264666");
+      attr(div4, "class", "button-container svelte-zna8bm");
     },
     m(target, anchor) {
       insert(target, div5, anchor);
@@ -2879,9 +2882,8 @@ var RemoveModal = class extends import_obsidian5.Modal {
 };
 
 // src/frontmatter.ts
-function addProperties(app, file, props, overwrite) {
-  let propCache = app.metadataCache.getAllPropertyInfos();
-  app.fileManager.processFrontMatter(file, (frontmatter) => {
+function addProperties(fileProcessor, file, props, overwrite, propCache) {
+  fileProcessor(file, (frontmatter) => {
     for (const [key, value] of props) {
       if (key === "tags" && !Array.isArray(value.data)) {
         frontmatter[key] = [value.data];
@@ -2906,8 +2908,8 @@ function addProperties(app, file, props, overwrite) {
     }
   });
 }
-async function addPropToSet(app, set, file) {
-  await app.fileManager.processFrontMatter(file, (frontmatter) => {
+async function addPropToSet(fileProcessor, set, file) {
+  await fileProcessor(file, (frontmatter) => {
     for (const key in frontmatter) {
       console.log({ key });
       set.add(key);
@@ -2915,8 +2917,8 @@ async function addPropToSet(app, set, file) {
   });
   return set;
 }
-function removeProperties(app, file, props) {
-  app.fileManager.processFrontMatter(file, (frontmatter) => {
+function removeProperties(fileProcessor, file, props) {
+  fileProcessor(file, (frontmatter) => {
     for (const prop of props) {
       frontmatter[prop] = void 0;
     }
@@ -2975,6 +2977,30 @@ var MultiPropPlugin = class extends import_obsidian6.Plugin {
   async onload() {
     await this.loadSettings();
     this.addSettingTab(new SettingTab(this.app, this));
+    this.addCommand({
+      id: "add-props-to-current-note",
+      name: "Add props to current note",
+      callback: () => {
+        const file = this.app.workspace.getActiveFile();
+        if (!file) {
+          new import_obsidian6.Notice("No active file to add properties to.", 4e3);
+          return;
+        }
+        this.createPropModal([file]);
+      }
+    });
+    this.addCommand({
+      id: "remove-props-from-current-note",
+      name: "Remove props from current note",
+      callback: () => {
+        const file = this.app.workspace.getActiveFile();
+        if (!file) {
+          new import_obsidian6.Notice("No active file to remove properties from.", 4e3);
+          return;
+        }
+        this.createRemoveModal([file]);
+      }
+    });
     this.addCommand({
       id: "add-props-to-open-tabs",
       name: "Add props to open tabs",
@@ -3063,7 +3089,7 @@ var MultiPropPlugin = class extends import_obsidian6.Plugin {
   async getPropsFromFolder(folder, names) {
     for (let obj of folder.children) {
       if (obj instanceof import_obsidian6.TFile && obj.extension === "md") {
-        names = await addPropToSet(this.app, names, obj);
+        names = await addPropToSet(this.app.fileManager.processFrontMatter, names, obj);
       }
       if (obj instanceof import_obsidian6.TFolder) {
         if (this.settings.recursive) {
@@ -3076,7 +3102,7 @@ var MultiPropPlugin = class extends import_obsidian6.Plugin {
   async getPropsFromFiles(files, names) {
     for (let file of files) {
       if (file instanceof import_obsidian6.TFile && file.extension === "md") {
-        names = await addPropToSet(this.app, names, file);
+        names = await addPropToSet(this.app.fileManager.processFrontMatter, names, file);
       }
     }
     return [...names];
@@ -3196,13 +3222,13 @@ var MultiPropPlugin = class extends import_obsidian6.Plugin {
   /** Callback function to run addProperties inside iterative functions.*/
   addPropsCallback(props) {
     return (file) => {
-      addProperties(this.app, file, props, this.settings.overwrite);
+      addProperties(this.app.fileManager.processFrontMatter, file, props, this.settings.overwrite, this.app.metadataCache.getAllPropertyInfos());
     };
   }
   /** Callback function to run removeProperties inside iterative functions. */
   removePropsCallback(props) {
     return (file) => {
-      removeProperties(this.app, file, props);
+      removeProperties(this.app.fileManager.processFrontMatter, file, props);
     };
   }
 };
