@@ -1,10 +1,13 @@
 ---
-title: "Note Four"
-status: "planning"
-priority: "high"
+title: Note Four
+status: planning
+priority: high
 tags:
   - project-b
   - bug-fix
+add to all: all
+added to rhs: r
+add2rhs2: "2"
 ---
 
 # Note Four

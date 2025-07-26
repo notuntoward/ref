@@ -1804,6 +1804,7 @@ function instance2($$self, $$props, $$invalidate) {
     let obj = /* @__PURE__ */ new Map();
     let inputs = formEl.querySelectorAll('input[name^="name[]"]');
     inputs.forEach((input) => {
+      var _a;
       if (!(input.nextElementSibling instanceof HTMLInputElement)) return;
       if (!(input.previousElementSibling instanceof HTMLSelectElement)) return;
       if (!(input.previousElementSibling.children[0] instanceof HTMLOptionElement)) return;
@@ -1812,6 +1813,16 @@ function instance2($$self, $$props, $$invalidate) {
         input.reportValidity();
         return;
       }
+      const selectEl = input.previousElementSibling;
+      const htmlType = selectEl.value;
+      const reverseOptions = {
+        "string": "text",
+        "number": "number",
+        "checkbox": "checkbox",
+        "date": "date",
+        "datetime-local": "datetime"
+      };
+      const obsidianType = (_a = reverseOptions[htmlType]) !== null && _a !== void 0 ? _a : "text";
       let value = parseValue(input.nextElementSibling, input.nextElementSibling.type);
       if (typeof value === "string") {
         if (name === "tags") {
@@ -1824,7 +1835,7 @@ function instance2($$self, $$props, $$invalidate) {
       }
       if (value === "") value = null;
       let propObj = {
-        type: "text",
+        type: obsidianType,
         data: value,
         overwrite: false,
         delimiter
@@ -2974,9 +2985,93 @@ var MultiPropPlugin = class extends import_obsidian6.Plugin {
     });
     return files;
   }
+  _getFilesFromCurrentWindow() {
+    const activeLeaf = this.app.workspace.activeLeaf;
+    if (!activeLeaf) {
+      new import_obsidian6.Notice("No active tab found.", 4e3);
+      return null;
+    }
+    const currentWindow = activeLeaf.win;
+    const files = [];
+    const fileSet = /* @__PURE__ */ new Set();
+    this.app.workspace.iterateAllLeaves((leaf) => {
+      if (leaf.win === currentWindow && leaf.view instanceof import_obsidian6.FileView) {
+        const file = leaf.view.file;
+        if (file && !fileSet.has(file.path)) {
+          files.push(file);
+          fileSet.add(file.path);
+        }
+      }
+    });
+    return files;
+  }
   async onload() {
     await this.loadSettings();
     this.addSettingTab(new SettingTab(this.app, this));
+    if (false) {
+      this.addCommand({
+        id: "run-live-integration-test",
+        name: "Run Live Integration Test (DEV)",
+        callback: async () => {
+          console.log("--- Starting Live Integration Test ---");
+          const pluginId = "multi-properties";
+          const plugin = this.app.plugins.plugins[pluginId];
+          if (!plugin) {
+            console.error("Plugin not found. Is it enabled?");
+            return;
+          }
+          const testNotePath = "test-note.md";
+          const file = this.app.vault.getAbstractFileByPath(testNotePath);
+          if (!(file instanceof import_obsidian6.TFile)) {
+            console.error(`Could not find '${testNotePath}' or it is not a TFile. Make sure the test vault is initialized.`);
+            return;
+          }
+          console.log("Running Test Case 1: Add Property");
+          const propToAdd = { name: "live-test-prop", type: "number", value: 999 };
+          const originalCreatePropModal = plugin.createPropModal;
+          plugin.createPropModal = (iterable) => {
+            const props = /* @__PURE__ */ new Map();
+            props.set(propToAdd.name, { type: propToAdd.type, data: propToAdd.value });
+            if (iterable instanceof import_obsidian6.TFolder) {
+              plugin.searchFolders(iterable, plugin.addPropsCallback(props));
+            } else {
+              plugin.searchFiles(iterable, plugin.addPropsCallback(props));
+            }
+          };
+          if (this.app.workspace.activeLeaf) {
+            this.app.workspace.activeLeaf.openFile(file);
+          }
+          this.app.commands.executeCommandById("multi-properties:add-props-to-current-note");
+          plugin.createPropModal = originalCreatePropModal;
+          await new Promise((resolve) => setTimeout(resolve, 100));
+          let metadata = this.app.metadataCache.getFileCache(file);
+          if (((_a = metadata == null ? void 0 : metadata.frontmatter) == null ? void 0 : _a[propToAdd.name]) === propToAdd.value) {
+            console.log("  \u2705 SUCCESS: Property was added correctly.");
+          } else {
+            console.error("  \u274C FAILED: Property was not added.", metadata == null ? void 0 : metadata.frontmatter);
+          }
+          console.log("Running Test Case 2: Remove Property");
+          const originalCreateRemoveModal = plugin.createRemoveModal;
+          plugin.createRemoveModal = (iterable) => {
+            if (iterable instanceof import_obsidian6.TFolder) {
+              plugin.searchFolders(iterable, plugin.removePropsCallback([propToAdd.name]));
+            } else {
+              plugin.searchFiles(iterable, plugin.removePropsCallback([propToAdd.name]));
+            }
+          };
+          this.app.commands.executeCommandById("multi-properties:remove-props-from-current-note");
+          plugin.createRemoveModal = originalCreateRemoveModal;
+          await new Promise((resolve) => setTimeout(resolve, 100));
+          metadata = this.app.metadataCache.getFileCache(file);
+          if (((_b = metadata == null ? void 0 : metadata.frontmatter) == null ? void 0 : _b[propToAdd.name]) === void 0) {
+            console.log("  \u2705 SUCCESS: Property was removed correctly.");
+          } else {
+            console.error("  \u274C FAILED: Property was not removed.", metadata == null ? void 0 : metadata.frontmatter);
+          }
+          console.log("--- Live Integration Test Complete ---");
+        }
+      });
+    }
     this.addCommand({
       id: "add-props-to-current-note",
       name: "Add props to current note",
@@ -3020,6 +3115,30 @@ var MultiPropPlugin = class extends import_obsidian6.Plugin {
         const files = this._getFilesFromActiveWindow();
         if (!files || !files.length) {
           new import_obsidian6.Notice("No open tabs to remove properties from.", 4e3);
+          return;
+        }
+        this.createRemoveModal(files);
+      }
+    });
+    this.addCommand({
+      id: "add-props-to-window-tabs",
+      name: "Add props to tabs in current window",
+      callback: () => {
+        const files = this._getFilesFromCurrentWindow();
+        if (!files || !files.length) {
+          new import_obsidian6.Notice("No open tabs in the current window to add properties to.", 4e3);
+          return;
+        }
+        this.createPropModal(files);
+      }
+    });
+    this.addCommand({
+      id: "remove-props-from-window-tabs",
+      name: "Remove props from tabs in current window",
+      callback: () => {
+        const files = this._getFilesFromCurrentWindow();
+        if (!files || !files.length) {
+          new import_obsidian6.Notice("No open tabs in the current window to remove properties from.", 4e3);
           return;
         }
         this.createRemoveModal(files);
@@ -3089,7 +3208,7 @@ var MultiPropPlugin = class extends import_obsidian6.Plugin {
   async getPropsFromFolder(folder, names) {
     for (let obj of folder.children) {
       if (obj instanceof import_obsidian6.TFile && obj.extension === "md") {
-        names = await addPropToSet(this.app.fileManager.processFrontMatter, names, obj);
+        names = await addPropToSet(this.app.fileManager.processFrontMatter.bind(this.app.fileManager), names, obj);
       }
       if (obj instanceof import_obsidian6.TFolder) {
         if (this.settings.recursive) {
@@ -3102,7 +3221,7 @@ var MultiPropPlugin = class extends import_obsidian6.Plugin {
   async getPropsFromFiles(files, names) {
     for (let file of files) {
       if (file instanceof import_obsidian6.TFile && file.extension === "md") {
-        names = await addPropToSet(this.app.fileManager.processFrontMatter, names, file);
+        names = await addPropToSet(this.app.fileManager.processFrontMatter.bind(this.app.fileManager), names, file);
       }
     }
     return [...names];
@@ -3222,13 +3341,13 @@ var MultiPropPlugin = class extends import_obsidian6.Plugin {
   /** Callback function to run addProperties inside iterative functions.*/
   addPropsCallback(props) {
     return (file) => {
-      addProperties(this.app.fileManager.processFrontMatter, file, props, this.settings.overwrite, this.app.metadataCache.getAllPropertyInfos());
+      addProperties(this.app.fileManager.processFrontMatter.bind(this.app.fileManager), file, props, this.settings.overwrite, this.app.metadataCache.getAllPropertyInfos());
     };
   }
   /** Callback function to run removeProperties inside iterative functions. */
   removePropsCallback(props) {
     return (file) => {
-      removeProperties(this.app.fileManager.processFrontMatter, file, props);
+      removeProperties(this.app.fileManager.processFrontMatter.bind(this.app.fileManager), file, props);
     };
   }
 };
