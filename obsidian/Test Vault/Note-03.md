@@ -1,8 +1,9 @@
 ---
-title: "Note Three"
-status: "in-progress"
-priority: "medium"
-tags: project-b
+title: Note Three
+status: in-progress
+priority: medium
+tags:
+  - addedtoallLHS3
 ---
 
 # Note Three

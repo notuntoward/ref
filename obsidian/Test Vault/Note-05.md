@@ -1,10 +1,12 @@
 ---
-title: "Note Five"
-status: "in-progress"
-assignee: "scott"
+title: Note Five
+status: in-progress
+assignee: scott
 review:
-  by: "jane"
-  date: "2025-07-24"
+  by: jane
+  date: 2025-07-24
+tags:
+  - addedtoallLHS3
 ---
 
 # Note Five

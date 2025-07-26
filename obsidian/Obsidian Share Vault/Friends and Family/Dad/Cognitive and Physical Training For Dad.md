@@ -1,6 +1,12 @@
 ---
 created date: 2025-07-23T23:43:23-07:00
 modified date: 2025-07-25T12:23:48-07:00
+category:
+  - topic-note
+tags:
+  - exercise
+  - intelligence
+  - aging
 ---
 # AI recommendations
 ## notebooklms

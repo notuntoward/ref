@@ -1,8 +1,14 @@
 ---
-title: "Note Six"
+title: Note Six
 is_active: true
 version: 2
-tags: [project-c, needs-review]
+tags:
+  - needs-review
+  - addedtoRHS1
+  - addedtorhs2
+  - tag1
+  - tag2
+  - tag3
 ---
 
 # Note Six

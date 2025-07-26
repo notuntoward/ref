@@ -1,8 +1,11 @@
 ---
-title: "Note Two"
-status: "completed"
-priority: "low"
-tags: [project-a, feature-y]
+title: Note Two
+status: completed
+priority: low
+tags:
+  - project-a
+  - tag-for-only-2
+  - addedtoallLHS3
 ---
 
 # Note Two
