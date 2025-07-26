@@ -68,7 +68,7 @@ All nine run **predominantly in person**, align with published evidence on resis
 		-  $14/mo or $96/yr ($8/mo).  **Watch out for yearly autorenew!**
 		- Some Medicare Advantage plans offer BrainHQ at no cost (software only), 
 	- $99/class unless your insurer covers, subscription required 1st
-## Foreverwell: YMCA Alex & Duluth
+## Foreverwell: YMCA Alex & Duluthnpm install -g @google/gemini-cli to update   
 - [ForeverWell \| alexandriaymca....](https://alexandriaymca.com/foreverwell)
 - [[July ForeverWell Schedule.pdf|July ForeverWell Schedule Alex]]
 	- Doesn't seem to have 2 strength sessions/wk.  Instead 1 is balance, 1 is strength
