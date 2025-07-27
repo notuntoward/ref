@@ -9,7 +9,6 @@ tags:
   - psychology
   - feature-selection
   - forecasting
-  - ml/bob
 read: false
 in-progress: false
 linked: false

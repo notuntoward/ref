@@ -2,12 +2,8 @@
 created date: 2025-07-26T18:20:43-07:00
 modified date: 2025-07-26T22:13:10-07:00
 tags:
-  - 2Hop
-  - AI
-  - anger
+  - refwrangle
 new property:
-  - bob
-  - fred
 ---
 # Requirements
 
@@ -60,11 +56,32 @@ The operations are:
 1. add a property and value(s)
    - the property name should be selected from a completion list of all property names in all notes, or a blank place to type a new property name
    - there should be a simple way select the property type
-1. set value
+2. set value
    - if it's not a list type
       - there should be a completion list of all values for the property in all notes, with simple way to type in a non-existing value
    - if it's a list type, there should be a similar completion list, and it should be easy to 
    - if it'
+# AI general prompts
+## color the tabs
+
+# My original attempts, starting from the fork
+
+Write an obsidian plugin that turns tabs a certain when I click on them.  The color is controlled by a side panel selector which has options for red, green and blue
+
+There are three coloring modes:
+
+1. a normal click: just colors that tab if it is not already colored, or otherwise, uncolors it.
+2. shift+click: allows me to select multiple tabs with a mouse (like in a browser), so that a contiguous range of tabs is colored
+3. ctrl+click: select and color several non-contiguous tabs.  
+   
+You must keep track of which tabs are currently colored, if the user changes to color in the side pane selector, the plugin must change all the previously colored tabs.
+
+## My prompt to gemini cli
+I want to create an obsidian plugin that allows me to select multiple tabs with a mouse:  shift+click (like in a browser), so that a contiguous range of tabs is selected or ctrl+click to select several non-contiguous tabs.  Figuring out how to do this selection and show it in the Obsidian UI is the first job.  Next, is to do operations on the selected tabs: 1. move tabs to new window (happens when I drag the tabs to a place outside of obsidian that is not another window) 2. move tabs to existing window (when I drag the selected tabs to an existing obsidian window)  3. add/remove properties to/from the selected tabs 3. add/remove/rename tags in selected tabs, first  adding a tags property to a tab if one doesn't exist.  4.I would also like to do these things for all tabs in a window or 5. for all open tabs in all windows.  For an example of how to add/remove properties to all tabs in window, see my plugin here: https://github.com/notuntoward/obsidian-multi-properties.git
+
+Set up a repo and write the code.
+## Tab colorizer: a first step
+- [AI studio dialog](https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%22165lArEVq5D5MOaEBV-EyKv902Ma378C3%22%5D,%22action%22:%22open%22,%22userId%22:%22106663353829707201139%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing)
 
 
 # Programming in Obsidian
