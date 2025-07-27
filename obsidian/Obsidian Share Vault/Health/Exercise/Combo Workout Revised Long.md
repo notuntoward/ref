@@ -2,7 +2,7 @@
 created date: 2025-06-20T18:54:24-07:00
 modified date: 2025-06-22T16:22:21-07:00
 tags:
-  - excercise
+  - exercise
   - posture
 ---
 Also see: [[Combo Workout Revised Short]]

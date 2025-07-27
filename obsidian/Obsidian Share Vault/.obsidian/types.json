@@ -27,6 +27,7 @@
     "ZoteroCollections": "multitext",
     "modified date": "datetime",
     "created date": "datetime",
-    "ZoteroImportDate": "datetime"
+    "ZoteroImportDate": "datetime",
+    "new property": "multitext"
   }
 }

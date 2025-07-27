@@ -2,7 +2,7 @@
 category:
   - literaturenote
 tags:
-  - excercise
+  - exercise
   - posture
 read: true
 in-progress: false

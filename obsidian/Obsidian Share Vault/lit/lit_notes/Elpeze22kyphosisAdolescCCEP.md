@@ -2,7 +2,7 @@
 category:
   - literaturenote
 tags:
-  - excercise
+  - exercise
 read: true
 in-progress: false
 linked: true

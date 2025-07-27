@@ -1,7 +1,15 @@
 ---
 category:
   - literaturenote
-tags: 
+tags:
+  - politics
+  - polling
+  - persuasion
+  - campaign-tactics
+  - psychology
+  - feature-selection
+  - forecasting
+  - ml/bob
 read: false
 in-progress: false
 linked: false

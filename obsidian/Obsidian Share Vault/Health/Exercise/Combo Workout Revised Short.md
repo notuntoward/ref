@@ -2,7 +2,7 @@
 created date: 2025-06-21T12:14:59-07:00
 modified date: 2025-07-21T21:01:43-07:00
 tags:
-  - excercise
+  - exercise
   - posture
 ---
 I developed this with [Google AI Studio](https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221mMPW9E6SOtEU2yeijUrZ23z-zU7Uap1D%22%5D,%22action%22:%22open%22,%22userId%22:%22106663353829707201139%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing) by asking it to modify my old Combo Workout ([Evernote](https://share.evernote.com/note/926479d4-d116-45de-98ec-a85743210407)).  See [[#My AI Prompt|My AI Prompt]] and [[Combo Workout Revised Long#AI Response]] below.
