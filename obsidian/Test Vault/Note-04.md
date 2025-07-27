@@ -1,11 +1,10 @@
 ---
-title: Note Four
-status: planning
-priority: high
+title: "Note Four"
+status: "planning"
+priority: "high"
 tags:
   - project-b
   - bug-fix
-  - addedtoallLHS3
 ---
 
 # Note Four

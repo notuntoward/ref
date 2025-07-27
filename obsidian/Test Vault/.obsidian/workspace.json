@@ -77,8 +77,7 @@
               "title": "Note-05"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       },
       {
         "id": "867fc24cfe728adf",
@@ -144,14 +143,10 @@
             "id": "846510dd3594bc11",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "note-11.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "note-11"
+              "title": "New tab"
             }
           },
           {
@@ -317,19 +312,19 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "846510dd3594bc11",
+  "active": "8dec879aa1a3463d",
   "lastOpenFiles": [
+    "Note-03.md",
+    "Note-01.md",
+    "Note-05.md",
+    "Note-04.md",
+    "Note-02.md",
     "note-12.md",
     "Note-06.md",
     "note-11.md",
     "Note-10.md",
     "Note-09.md",
     "Note-08.md",
-    "Note-05.md",
-    "Note-04.md",
-    "Note-03.md",
-    "Note-02.md",
-    "Note-01.md",
     "Note-07.md",
     "test-note.md"
   ]

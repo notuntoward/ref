@@ -1,28 +1,94 @@
-/* Basic button styling */
-#multi-properties-modal a {
-	display: inline-block;
-	padding: var(--size-4-1) var(--size-4-2);
-	text-decoration: none;
-	background-color: var(--interactive-normal);
-	box-shadow: var(--input-shadow);
-	color: var(--text-normal);
-	border-radius: 4px; /* Rounded corners */
-	cursor: pointer;
-	text-align: center;
-	font-weight: var(--input-font-weight);
-	font-size: var(--font-ui-small);
+/* styles.css */
+.property-search-container {
+  margin-bottom: 1rem;
 }
-
-/* Hover and focus styles */
-#multi-properties-modal a:hover,
-#multi-properties-modal a:focus {
-	outline: grey solid 2px;
+.property-search-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  background: var(--background-primary);
+  color: var(--text-normal);
 }
-
-/* Disabled style */
-#multi-properties-modal a:disabled {
-	background-color: #ccc; /* Disabled background color */
-	border-color: #ccc; /* Disabled border color */
-	color: #999; /* Disabled text color */
-	cursor: not-allowed;
+.selected-values-container {
+  margin-bottom: 1rem;
+  min-height: 3rem;
+  padding: 0.5rem;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  background: var(--background-secondary);
+}
+.selection-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+}
+.value-pill {
+  display: inline-flex;
+  align-items: center;
+  margin: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border-radius: 12px;
+  font-size: 0.875rem;
+}
+.value-pill .remove-btn {
+  margin-left: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  opacity: 0.7;
+}
+.value-pill .remove-btn:hover {
+  opacity: 1;
+}
+.available-values-container {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+}
+.value-option {
+  padding: 0.5rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+.value-option:hover {
+  background: var(--background-modifier-hover);
+}
+.value-option.create-new {
+  background: var(--background-modifier-form-field);
+  font-style: italic;
+}
+.multi-select-suggestion {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.multi-select-suggestion.is-selected {
+  background: var(--background-modifier-hover);
+}
+.checkbox-checked,
+.checkbox-unchecked {
+  width: 1rem;
+  text-align: center;
+}
+.selected-item {
+  font-weight: bold;
+  color: var(--interactive-accent);
+}
+.no-selection-message,
+.no-results-message {
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 1rem;
+}
+.button-container {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--background-modifier-border);
 }

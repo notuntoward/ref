@@ -1,15 +1,8 @@
 ---
-title: Note Ten
-status: in-progress
-priority: medium
-tags:
-  - feature-z
-  - needs-review
-  - addedtoRHS1
-  - addedtorhs2
-  - tag1
-  - tag2
-  - tag3
+title: "Note Ten"
+status: "in-progress"
+priority: "medium"
+tags: [project-c, feature-z, needs-review]
 ---
 
 # Note Ten
