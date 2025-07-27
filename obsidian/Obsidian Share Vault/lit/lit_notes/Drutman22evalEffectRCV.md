@@ -1,6 +1,6 @@
 ---
 category: literaturenote
-tags: politics, votingSystems
+tags: politics, voting-systems
 read: false
 in-progress: false
 linked: true

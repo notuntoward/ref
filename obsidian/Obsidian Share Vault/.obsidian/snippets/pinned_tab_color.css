@@ -1,0 +1,329 @@
+/* From: https://www.perplexity.ai/search/below-is-an-obsidian-css-snipp-4cqqh.HeTgqWhK7hD7KgJg#0 */
+
+/* Ultra-conservative pinned tabs using base colors */
+.workspace-tab-header:has(.mod-pinned) {
+  background-color: var(--color-base-20);
+  border-left: 1px solid var(--color-base-40);
+  color: var(--text-normal);
+}
+
+.workspace-tab-header:has(.mod-pinned):not(.is-active) {
+  /* DARKENED UNFOCUSED PINNED BACKGROUND: now uses --color-base-05 */
+  background-color: var(--color-base-05);
+  border-left: 1px solid var(--color-base-30);
+  color: var(--text-muted);
+
+  /* Make the pin icon subtly pop */
+  & .mod-pinned {
+    color: var(--interactive-accent);
+  }
+}
+
+.workspace-tab-header:has(.mod-pinned).is-active {
+  background-color: var(--color-base-25);
+  border-left: 2px solid var(--color-base-50);
+  color: var(--text-normal);
+  font-weight: 500;
+
+  & .workspace-tab-header-inner-title {
+    color: var(--text-normal);
+  }
+
+  /* Keep pin icon normal when focused */
+  & .mod-pinned {
+    color: var(--text-normal);
+  }
+}
+
+
+/* ------ hard to distinguish focused unpinned from unfocused pinned tab by background color alone
+
+/* Ultra-conservative pinned tabs using base colors */
+.workspace-tab-header:has(.mod-pinned) {
+  /* Very subtle base color background */
+  background-color: var(--color-base-20);
+  border-left: 1px solid var(--color-base-40);
+  
+  & .workspace-tab-header-inner-title {
+    display: block;
+  }
+  
+  color: var(--text-normal);
+}
+
+/* Unfocused state - even more subtle with styled pin icon */
+.workspace-tab-header:has(.mod-pinned):not(.is-active) {
+  background-color: var(--color-base-10);
+  border-left: 1px solid var(--color-base-30);
+  color: var(--text-m the pin icon for unfocused pinned tabs */
+  & .mod-pinned {
+    color: var(--interactive-accent);
+  }
+}
+
+/* Active state - barely perceptible background change */
+.workspace-tab-header:has(.mod-pinned).is-active {
+  background-color: var(--color-base-25);
+  border-left: 2px solid var(--color-base-50);
+  
+  /* Typography emphasis instead of color emphasis */
+  color: var(--text-normal);
+  font-weight: 500;
+  
+  & .workspace-tab-header-inner-title {
+    color: var(--text-normal);
+  }
+  
+  /* Keep pin icon normal color when focused */
+  & .mod-pinned {
+    color: var(--text-normal);
+  }
+}
+
+---------- */
+
+/* -------- Active pinned tab - barely perceptible background change
+
+.workspace-tab-header:has(.mod-pinned).is-active {
+  background-color: var(--color-base-25);
+  border-left: 2px solid var(--color-base-50);
+  
+  /* Typography emphasis instead of color emphasis */
+  color: var(--text-normal);
+  font-weight: 500;
+  
+  & .workspace-tab-header-inner-title {
+    color: var(--text-normal);
+  }
+  
+  /* Ensure pin icon uses normal text color when active */
+  & .mod-pinned {
+    color: var(--text-normal);
+  }
+}
+
+-------- */
+
+/* -------- quite good, but I would like unfocused pin icons to be colored
+
+/* Ultra-conservative pinned tabs using base colors */
+.workspace-tab-header:has(.mod-pinned) {
+  /* Very subtle base color background */
+  background-color: var(--color-base-20);
+  border-left: 1px solid var(--color-base-40);
+  
+  & .workspace-tab-header-inner-title {
+    display: block;
+  }
+  
+  color: var(--text-normal);
+}
+
+/* Unfocused state - even more subtle */
+.workspace-tab-header:has(.mod-pinned):not(.is-active) {
+  background-color: var(--color-base-10);
+  border-left: 1px solid var(--color-base-30);
+  color: var(--text-muted);
+}
+
+/* Active state - barely perceptible background change */
+.workspace-tab-header:has(.mod-pinned).is-active {
+  background-color: var(--color-base-25);
+  border-left: 2px solid var(--color-base-50);
+  
+  /* Typography emphasis instead of color emphasis */
+  color: var(--text-normal);
+  font-weight: 500;
+  
+  & .workspace-tab-header-inner-title {
+    color: var(--text-normal);
+  }
+}
+
+-------- */
+
+/* -------- "refined conservative approach."  Not bad!
+
+/* Pinned tabs with subtle, conservative background colors */
+.workspace-tab-header:has(.mod-pinned) {
+  /* Use subtle background that works with normal text */
+  background-color: var(--background-modifier-hover);
+  border-left: 2px solid var(--interactive-accent);
+  
+  & .workspace-tab-header-inner-title {
+    display: block;
+  }
+  
+  /* Normal text color works fine with hover background */
+  color: var(--text-normal);
+}
+
+/* Unfocused pinned tabs - even more subtle */
+.workspace-tab-header:has(.mod-pinned):not(.is-active) {
+  background-color: var(--background-modifier-hover);
+  border-left: 2px solid rgba(var(--interactive-accent-rgb), 0.4);
+  color: var(--text-muted);
+}
+
+/* FIXED: Active pinned tab with whisper-subtle background */
+.workspace-tab-header:has(.mod-pinned).is-active {
+  /* Much more subtle background - barely noticeable tint */
+  background-color: rgba(var(--background-modifier-hover-rgb), 0.6);
+  border-left: 3px solid var(--interactive-accent);
+  
+  /* Enhanced text readability without being obnoxious */
+  color:font-weight: 500; /* Slight weight increase instead of color change */
+  
+  & .workspace-tab-header-inner-title {
+    color: var(--text-normal);
+  }
+}
+
+/* Ensure pin icon remains visible */
+.workspace-tab-header:has(.mod-pinned) .mod-pinned {
+  color: var(--text-normal);
+}
+
+
+-------- */
+
+/* --------  too subtle.  I can't see any change to the default behavior
+
+/* Ultra-subtle pinned tab styling */
+.workspace-tab-header:has(.mod-pinned) {
+  /* Keep pin symbol and title visible */
+  & .workspace-tab-header-inner-title {
+    display: block;
+  }
+  
+  /* Ultra-subtle border instead of background color */
+  border-left: 1px solid rgba(var(--interactive-accent-rgb), 0.3);
+  
+  /* Maintain normal text colors */
+  color: var(--
+
+/* Unfocused pinned tabs - barely visible indication */
+.workspace-tab-header:has(.mod-pinned):not(.is-active) {
+  /* Even more subtle for unfocused state */
+  border-left: 1px solid rgba(var(--interactive-accent-rgb), 0.15);
+  background-color: rgba(var(--background-modifier-hover-rgb), 0.3);
+  color: var(--text-muted);
+}
+
+/* Active pinned tab - minimal but clear */
+.workspace-tab-header:has(.mod-pinned).is-active {
+  /* Very subtle background tint */
+  background-color: rgba(var(--background-primary-rgb), 0.95);
+  border-left: 2px solid rgba(var(--interactive-accent-rgb), 0.5);
+  
+  /* Normal text - no special coloring needed */
+  color: var(--text-normal);
+  
+  /* Ensure title remains readable */
+  & .workspace-tab-header-inner-title {
+    color: var(--text-normal);
+  }
+}
+
+-------- */
+
+/* -------- supposed to be conservative but looks nearly the same
+
+/* Conservative approach with guaranteed text visibility */
+.workspace-tab-header:has(.mod-pinned) {
+  /* Use subtle background that works with normal text */
+  background-color: var(--background-modifier-hover);
+  border-left: 2px solid var(--interactive-accent);
+  
+  & .workspace-tab-header-inner-title {
+    display: block;
+  }
+  
+  /* Normal text color works fine with hover background */
+  color: var(--text-normal);
+}
+
+/* Active state with enhanced border instead of background change */
+.workspace-tab-header:has(.mod-pinned).is-active {
+  background-color: var(--background-modifier-hover);
+  border-left-width: 4px;
+  border-left-color: var(--interactive-accent);
+  
+  /* No special text color needed */
+  color: var(--text-normal);
+  font-weight: 600; /* Make active state more obvious through typography */
+}
+
+-------- */
+
+/* -------- fairly bold colors
+
+/* Enhanced pinned tab styling with proper text visibility */
+.theme-dark .workspace-tab-header:has(.mod-pinned) {
+  /* Use semantic background color for stability */
+  background-color: var(--background-secondary-alt);
+  
+  /* Maintain tab curves from theme */
+  --tab-curve: var(--tab-curve, 0);
+  
+  /* Keep visible */
+  & .workspace-tab-header-inner-title {
+    display: block; /* Keep title visible */
+  }
+  
+  /* Optional: Add subtle border for enhanced visibility */
+  border-left: 2px solid var(--color-blue);
+  
+  /* Ensure text remains readable */
+  color: var(--text-normal);
+}
+
+.theme-light .workspace-tab-header:has(.mod-pinned) {
+  /* Semantic background for light theme */
+  background-color: var(--background-secondary-alt);
+  
+  --tab-curve: var(--tab-curve, 0);
+  
+  & .workspace-tab-header-inner-title {
+    display: block; /* Keep title visible */
+  }
+  
+  /* Subtle border accent */
+  border-left: 2px solid var(--color-blue);
+  
+  /* Maintain text readability */
+  color: var(--text-normal);
+}
+
+/* Ensure pinned tabs remain distinct from unfocused tabs */
+.workspace-tab-header:has(.mod-pinned):not(.is-active) {
+  /* Slightly different background to distinguish from regular unfocused tabs */
+  background-color: var(--interactive-normal);
+  
+  /* Maintain text visibility */
+  color: var(--text-muted);
+}
+
+/* FIXED: Active pinned tab styling with proper text contrast */
+.workspace-tab-header:has(.mod-pinned).is-active {
+  background-color: var(--interactive-accent);
+  
+  /* CRITICAL FIX: Use proper text color for accent backgrounds */
+  color: var(--text-on-accent) !important;
+  
+  /* Ensure inner title also uses correct color */
+  & .workspace-tab-header-inner-title {
+    color: var(--text-on-accent) !important;
+  }
+  
+  /* Enhanced border for active state */
+  border-left-color: var(--color-green);
+  border-left-width: 3px;
+}
+
+/* Additional fix for pin icon visibility on active tabs */
+.workspace-tab-header:has(.mod-pinned).is-active .mod-pinned {
+  color: var(--text-on-accent) !important;
+}
+
+-------- */

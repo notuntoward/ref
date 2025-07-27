@@ -2,7 +2,7 @@
 category: literaturenote
 tags:
   - politics
-  - votingSystems
+  - voting-systems
 read: false
 in-progress: false
 linked: true

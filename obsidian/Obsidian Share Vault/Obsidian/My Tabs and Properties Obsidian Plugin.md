@@ -1,9 +1,9 @@
 ---
 created date: 2025-07-26T18:20:43-07:00
-modified date: 2025-07-26T22:13:10-07:00
+modified date: 2025-07-27T11:13:01-07:00
 tags:
   - refwrangle
-new property:
+new property: 
 ---
 # Requirements
 
@@ -16,7 +16,16 @@ new property:
 | Show file properties  | Properties view core | good completion lists for both property names and property values (if list shows them w/ simple way to add or delete for single document).  Not too applicable here, I think.                                                                                |
 | Clear file properties | Base                 | too nuke                                                                                                                                                                                                                                                     |
 ## Relevant Plugins
-- [[2024-04-08#Properties View Core Plugin]]: fantastic for single notes
+- [[2024-04-08#Properties View Cor
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- e Plugin]]: fantastic for single notes
 - [[2024-04-08#Multi Properties plugin]]: not changing, my PR doesn't extend easily
 - [[2025-07-26#Better Properties Plugin|Better Properties Plugin]]: a dead-end
 - [[2025-07-26#Metadata Menu Plugin|Metadata Menu Plugin]]: obsolete?
