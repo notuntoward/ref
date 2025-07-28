@@ -5,6 +5,8 @@ tags:
   - statistics
   - significance-test
   - health
+  - confidence-interval
+  - meta-analysis
 read: true
 in-progress: false
 linked: true
