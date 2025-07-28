@@ -21,7 +21,7 @@ ZoteroTags:
 ZoteroCollections:
   - strength_training
 created date: 7/22/2025, 10:34:44 PM
-modified date: 2025-07-22T22:35:46-07:00
+modified date: 2025-07-27T15:31:34-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/SHX29BB4)  | [**DOI**](https://doi.org/10.3390/ijerph192315491) | [**URL**](https://www.mdpi.com/1660-4601/19/23/15491) | **[[Zhao22resistTrainElder.pdf|PDF]]**
@@ -52,5 +52,6 @@ modified date: 2025-07-22T22:35:46-07:00
 %% begin Obsidian Notes %%
 ___
 Kettlebell found most effective for sarcopenia.  I haven't read this, just the abstract.
+
 ___
 %% end Obsidian Notes %%

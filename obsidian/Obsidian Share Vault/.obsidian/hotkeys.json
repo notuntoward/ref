@@ -605,5 +605,13 @@
       "key": "ArrowDown"
     }
   ],
-  "obsidian-editor-shortcuts:insertLineBelow": []
+  "obsidian-editor-shortcuts:insertLineBelow": [],
+  "workspace:toggle-pin": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "P"
+    }
+  ]
 }

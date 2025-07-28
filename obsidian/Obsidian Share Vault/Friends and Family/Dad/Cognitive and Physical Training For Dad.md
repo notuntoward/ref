@@ -1,6 +1,6 @@
 ---
 created date: 2025-07-23T23:43:23-07:00
-modified date: 2025-07-26T18:19:59-07:00
+modified date: 2025-07-27T14:52:08-07:00
 category:
   - topic-note
 tags:
@@ -12,6 +12,7 @@ tags:
 ## Sources
 - [Cognitive Interventions: Boosting Older Adult Brain Health (my notebooklm)](https://notebooklm.google.com/notebook/4025cdeb-7477-4619-a708-c9a5c1003172)
 - [[Cognitive Training]]
+- [[Diet and Cognition]]: creatine, etc.
 ## Perplexity
 
 ### Physical Training

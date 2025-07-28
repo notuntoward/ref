@@ -1,40 +1,34 @@
-/* From: https://www.perplexity.ai/search/below-is-an-obsidian-css-snipp-4cqqh.HeTgqWhK7hD7KgJg#0 */
+/* I tried many things here but was never totally satisfied. So I just disabled this idea 
 
-/* Ultra-conservative pinned tabs using base colors */
-.workspace-tab-header:has(.mod-pinned) {
-  background-color: var(--color-base-20);
-  border-left: 1px solid var(--color-base-40);
-  color: var(--text-normal);
+From:
+https://www.perplexity.ai/search/below-is-an-obsidian-css-snipp-4cqqh.HeTgqWhK7hD7KgJg#11  */
+
+/* -------- just makes the pin icon fuzzy
+
+/* Make the pin icon universally prominent in tab headers */
+
+.workspace-tab-header .mod-pinned,
+.workspace-tab-header-status-icon.mod-pinned {
+  /* Accent or gold fallback for color */
+  color: var(--interactive-accent, gold) !important;
+  fill: var(--interactive-accent, gold) !important;
+
+  /* Slightly increase icon size */
+  font-size: 1.35em !important;
+  width: 1.3em !important;
+  height: 1.3em !important;
+
+  /* Add a bright drop shadow for further contrast */
+  filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px var(--background-modifier-border, #333));
+
+  /* Optional: increase icon weight for outlined SVGs */
+  stroke-width: 2.2px !important;
+
+  /* High stacking just in case */
+  z-index: 2;
 }
 
-.workspace-tab-header:has(.mod-pinned):not(.is-active) {
-  /* DARKENED UNFOCUSED PINNED BACKGROUND: now uses --color-base-05 */
-  background-color: var(--color-base-05);
-  border-left: 1px solid var(--color-base-30);
-  color: var(--text-muted);
-
-  /* Make the pin icon subtly pop */
-  & .mod-pinned {
-    color: var(--interactive-accent);
-  }
-}
-
-.workspace-tab-header:has(.mod-pinned).is-active {
-  background-color: var(--color-base-25);
-  border-left: 2px solid var(--color-base-50);
-  color: var(--text-normal);
-  font-weight: 500;
-
-  & .workspace-tab-header-inner-title {
-    color: var(--text-normal);
-  }
-
-  /* Keep pin icon normal when focused */
-  & .mod-pinned {
-    color: var(--text-normal);
-  }
-}
-
+------- */
 
 /* ------ hard to distinguish focused unpinned from unfocused pinned tab by background color alone
 
@@ -82,27 +76,6 @@
 
 ---------- */
 
-/* -------- Active pinned tab - barely perceptible background change
-
-.workspace-tab-header:has(.mod-pinned).is-active {
-  background-color: var(--color-base-25);
-  border-left: 2px solid var(--color-base-50);
-  
-  /* Typography emphasis instead of color emphasis */
-  color: var(--text-normal);
-  font-weight: 500;
-  
-  & .workspace-tab-header-inner-title {
-    color: var(--text-normal);
-  }
-  
-  /* Ensure pin icon uses normal text color when active */
-  & .mod-pinned {
-    color: var(--text-normal);
-  }
-}
-
--------- */
 
 /* -------- quite good, but I would like unfocused pin icons to be colored
 
