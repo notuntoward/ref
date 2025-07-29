@@ -70,7 +70,7 @@ ___
 	- compensates well for my low resting HR
 	- no measurements, although vulnerable to resting and max HR estimate errors
 	- better than using estimated HRmax
-- ==I'll try it, see if it's better==
+- ==I'll try %HRR, see if it's better==
 # Also
 - [[Scheid19wearableHRzones|Scheid19: Revisiting Heart Rate Target Zones Through the Lens of Wearable Technology]] 
 - [Long, low intensity endurance sessions: When is Low too low?  When is Long too long?](https://share.evernote.com/note/a689163e-387f-47f8-bbc8-b7f4e592f36d): Z3: 80-87; Z4: 87-93
