@@ -19,7 +19,7 @@ ZoteroTags:
 ZoteroCollections:
   - fitness_metrics
 created date: 7/28/2025, 12:23:02 PM
-modified date: 2025-07-28T12:52:43-07:00
+modified date: 2025-07-28T17:09:09-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/H2ZCHW56)  | [**DOI**](https://doi.org/10.1038/s41598-024-67331-z) | [**URL**](https://www.nature.com/articles/s41598-024-67331-z) | **[[Song24effectHIITvsMICT.pdf|PDF]]**
@@ -54,12 +54,16 @@ Weight and health comparison of HIIT vs. MICT. for the [[Song24effectHIITvsMICT.
 ==I didn't read more than this==, as I was mainly trying to get a duration definition for [[Wen19vo2maxHIITprotcol]]
 ### Definitions and Protocols
 - [[Song24effectHIITvsMICT.pdf#page=3&annotation=465R|HIIT Group]]
-	- intensity: [[Song24effectHIITvsMICT.pdf#page=3&annotation=468R|5–90% of HRmax]]
-	- rest: [[Song24effectHIITvsMICT.pdf#page=3&annotation=471R|50–60% of HRmax]]
+	- intensity interval: [[Song24effectHIITvsMICT.pdf#page=3&annotation=468R|5–90% of HRmax]] for [[Song24effectHIITvsMICT.pdf#page=3&annotation=556R|4 min]]
+	- low intensity interval (rest): [[Song24effectHIITvsMICT.pdf#page=3&annotation=471R|50–60% of HRmax]] for [[Song24effectHIITvsMICT.pdf#page=3&annotation=548R|3 min]]
+	- [[Song24effectHIITvsMICT.pdf#page=3&annotation=559R|4 sets]]
 	- training duration: [[Song24effectHIITvsMICT.pdf#page=3&annotation=486R|28 min.]]
 - [[Song24effectHIITvsMICT.pdf#page=3&annotation=474R|MICT Group]]
 	- intensity: [[Song24effectHIITvsMICT.pdf#page=3&annotation=477R|60–70% of HRmax.]]
 	- duration: [[Song24effectHIITvsMICT.pdf#page=4&annotation=480R|35 min]]
 	- training duration: [[Song24effectHIITvsMICT.pdf#page=4&annotation=494R|35 min]] (set to match energy consumption of one HIIT session)
+- [[Song24effectHIITvsMICT.pdf#page=3&annotation=535R|Three training sessions per Week]]
+# Also
+- [Long, low intensity endurance sessions: When is Low too low?  When is Long too long?](https://share.evernote.com/note/a689163e-387f-47f8-bbc8-b7f4e592f36d): Z3: 80-87; Z4: 87-93
 ___
 %% end Obsidian Notes %%
