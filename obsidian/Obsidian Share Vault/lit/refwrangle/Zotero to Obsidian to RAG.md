@@ -1,6 +1,6 @@
 ---
 created date: 2024-12-07T12:36:53-08:00
-modified date: 2025-07-07T18:35:17-05:00
+modified date: 2025-07-29T17:39:17-07:00
 ---
 
 I'd like to use [[NotebookLM]](NLM) to do [[Martineau23whatIsRAG.html|RAG]] on info captured in [[Zotero 6 to 7|Zotero]] and noted in Obsidian. I especially like that NLM can point to exact chunk of pdf text that supports a conclusion it has made. Besides pdfs, it also supports htmls, and YouTube links. But there are difficulties.
@@ -176,7 +176,7 @@ Reduce the steps and friction between adding an item to zotero and then **making
 - my Evernote tags policy
 	- Evernote tags are my best tags so far
 	- Evernote tags should be used literally, other tags combined with them somehow
-	- See [[Evernote Import To Obsidian]]
+	- See [[Evernote to Obsidian and Zotero]]
 ### Obsidian auto-tag suggester
 - Inspiration: zotero script [GPT-Tagging Action](<Dailies/2023-10-12.md#^flx6 >)
 - I'd improve it by 

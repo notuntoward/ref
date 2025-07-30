@@ -1,5 +1,5 @@
 ---
-modified date: 2025-03-27T10:53:52-07:00
+modified date: 2025-07-29T17:38:54-07:00
 created date: 2024-12-17T08:51:31-08:00
 ---
 
@@ -9,7 +9,7 @@ This is about syncing Obsidian across computers, and is related to backup with t
 
 So maybe you don't need Obsidian sync afterall, unless phone, Linux or MacOS is important.  Therefore, now that I've finished [[Obsidian/Obsidian and GIT Repo.md#Separating Obsidian and refwrangle code checkins |Separating Obsidian and refwrangle code checkins]], maybe I don't need Obsidian sync.  That is, unless [[Obsidian/Obsidian Multicomputer Sync.md#Disruptive Obsidian popup: "has been modified externally, merging changes automatically" |Disruptive Obsidian popup: "has been modified externally, merging changes automatically"]] are still there, or if I re-experience [[Obsidian/Obsidian Multicomputer Sync.md#Synced Windows/MacOS hotkeys conflict and overwrite |Synced Windows/MacOS hotkeys conflict and overwrite]].
 # Official Obsidian Sync
-Low cost makes sense once I figure out [[Evernote Import To Obsidian]], easily justifying this small extra expense.  But what problems does this solve or cause?  (Evernote is $[10.83/mo](https://evernote.com/compare-plans))
+Low cost makes sense once I figure out [[Evernote to Obsidian and Zotero]], easily justifying this small extra expense.  But what problems does this solve or cause?  (Evernote is $[10.83/mo](https://evernote.com/compare-plans))
 ## What's available in Obsidian sync
 From: [Obsidian Sync](https://obsidian.md/sync)
 - price
@@ -74,7 +74,7 @@ Is said to be caused by external programs modifying obsidian vault, and I think,
 	  - says Obsidian [[2025-03-26#Git Plugin]] will have eventually have conflicts
 	  - official Obsidian Sync "not an option", you don't control where files are stored, 
 	  - so they make a home compuer CouchDB server of some kind.  
-# Synced Windows/MacOS hotkeys conflict and overwrite
+#once  Synced Windows/MacOS hotkeys conflict and overwrite
 This is partly because I was syncing the whole obsidian directory with OneDrive.  When using [[2024-06-18#Emacs Text Editor Plugin|Emacs Text Editor Plugin]], and have mapped, say `alt + f` (`opt + f` on the Mac laptop keyboard) to `word forward` on the Mac, then what gets synced back to windows is to use `ctrl + f` for `word forward`. 
 
 ==Does that agree w/ the table below?==

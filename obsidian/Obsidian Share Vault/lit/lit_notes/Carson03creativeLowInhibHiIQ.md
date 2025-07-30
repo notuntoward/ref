@@ -1,10 +1,16 @@
 ---
 category:
   - literaturenote
-tags: 
-read: false
+tags:
+  - psychology
+  - intelligence
+  - creativity
+  - personality-traits
+  - perception
+  - hearing
+read: true
 in-progress: false
-linked: false
+linked: true
 aliases:
   - Decreased latent inhibition is associated with increased creative achievement in high-functioning individuals
   - Decreased latent inhibition is associated
@@ -24,7 +30,7 @@ ZoteroTags:
 ZoteroCollections:
   - cognition
 created date: 7/29/2025, 3:41:35 PM
-modified date: 2025-07-29T15:41:37-07:00
+modified date: 2025-07-29T16:14:31-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/JS3TWZL3)  | [**DOI**](https://doi.org/10.1037/0022-3514.85.3.499) | **[[Carson03creativeLowInhibHiIQ.pdf|PDF]]**
@@ -54,6 +60,16 @@ modified date: 2025-07-29T15:41:37-07:00
 
 %% begin Obsidian Notes %%
 ___
-==Delete this and write here. Don't delete the `persist` directives above and below.==
+People with low ability to inhibit stimulation of some kind (low `latent inhibition`) have both a higher probability of being creative and a higher probability of psychosis.  *I believe* this study also finds that `eminiently creative` individuals have low latent inhibition too, but also a high IQ (> 120) (not sure about psychosis).  
+
+A possible explanation is that low latent inhibition provides a person with extra amounts divergent information -- some of which originally seemed irrelevant -- and that a high IQ provides the horsepower to not be confused but to process something meaningful out of it.  
+### Tidbits
+
+- @ A high Big 5 Openness score predicts high creativity (openness was my highest score (see Evernote)), but I don't notice that I'm especially creative.
+- 3 kinds of tests for creativity: interesting
+- ? one test of low inhibition (I didn't quite understand it, would have to read again)
+- ? metanalysis used to combine tests.  I'm not sure why they just didn't compute a joint distribution (or is that what [[Lin21evalSMDmeta|meta analysis]] is?
+- ? Have to admit that I didn't quite follow the logic about the eminently creative separation, but I think I got it.  Would have to read again to be sure.
+
 ___
 %% end Obsidian Notes %%
