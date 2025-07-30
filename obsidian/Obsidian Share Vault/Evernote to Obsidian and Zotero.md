@@ -202,3 +202,7 @@ git checkout -b my-feature-branch
 git checkout main
 git reset --hard upstream/main
 ```
+
+## Do the export
+
+See [this](https://www.perplexity.ai/search/when-people-use-yarle-to-expor-c98liLYXT_CRpUu34yVnCg#9)
