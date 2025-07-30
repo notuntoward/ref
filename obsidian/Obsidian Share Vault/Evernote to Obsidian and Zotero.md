@@ -1,6 +1,6 @@
 ---
 created date: 2025-07-29T17:36:42-07:00
-modified date: 2025-07-29T20:18:51-07:00
+modified date: 2025-07-30T08:10:37-07:00
 ---
 How to get my Evernotes into Obsidian.
 

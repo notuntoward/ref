@@ -1,6 +1,6 @@
 ---
 created date: 2025-07-23T23:43:23-07:00
-modified date: 2025-07-27T14:52:08-07:00
+modified date: 2025-07-30T09:03:22-07:00
 category:
   - topic-note
 tags:
@@ -13,7 +13,7 @@ tags:
 - [Cognitive Interventions: Boosting Older Adult Brain Health (my notebooklm)](https://notebooklm.google.com/notebook/4025cdeb-7477-4619-a708-c9a5c1003172)
 - [[Cognitive Training]]
 - [[Diet and Cognition]]: creatine, etc.
-## Perplexity
+## Training available in Minnesota
 
 ### Physical Training
 From: [I am looking for group classes...](https://www.perplexity.ai/search/i-am-looking-for-group-classes-5ifSbi9MT7GSRm8TGKe3MA#0)

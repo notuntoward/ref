@@ -66,6 +66,7 @@ A possible explanation is that low latent inhibition provides a person with extr
 ### Tidbits
 
 - @ A high Big 5 Openness score predicts high creativity (openness was my highest score (see Evernote)), but I don't notice that I'm especially creative.
+	- Openness [is also associated](https://www.perplexity.ai/search/do-people-with-a-high-big-5-op-C0A21Zf6SemiOZxd0HydPw#0) with lower latent inhibition, and at extreme levels, with psychosis, which has the same underlying mechanism
 - 3 kinds of tests for creativity: interesting
 - ? one test of low inhibition (I didn't quite understand it, would have to read again)
 - ? metanalysis used to combine tests.  I'm not sure why they just didn't compute a joint distribution (or is that what [[Lin21evalSMDmeta|meta analysis]] is?
