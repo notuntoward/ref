@@ -1,20 +1,14 @@
 ---
 created date: 2025-06-21T12:14:59-07:00
-modified date: 2025-07-30T17:07:48-07:00
+modified date: 2025-07-30T22:33:56-07:00
 tags:
   - exercise
   - posture
 ---
-I developed this with [Google AI Studio](https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221mMPW9E6SOtEU2yeijUrZ23z-zU7Uap1D%22%5D,%22action%22:%22open%22,%22userId%22:%22106663353829707201139%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing) by asking it to modify my old Combo Workout ([Evernote](https://share.evernote.com/note/926479d4-d116-45de-98ec-a85743210407)).  See [[#My AI Prompt|My AI Prompt]] and [[Combo Workout Revised Long#AI Response]] below.
-
-**My Modifications to AI output**
-- Removed the Standing Ankle Stretch from the cool-down at the end: the PT said I didn't have ankle mobility problems; I'm already doing several functional exercises what require ankle range of motion; and because some study said that functional exercises were more effective than stretching.  I also turned it into superset **D**.
-- Added the five CCEP kyphosis (hunchback) exercises in [[Seidi14hyperKyposisExrcsEffic]] That paper's workout description was vague, so I mixed it with part of a related but far longer workout in a citing paper, [[Elpeze22kyphosisAdolescCCEP]].  From that paper, I'm including only a single iteration of its simplest "superset.".
-
-Also see [[Combo Workout Revised Long]]
+I developed this with [Google AI Studio](https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221mMPW9E6SOtEU2yeijUrZ23z-zU7Uap1D%22%5D,%22action%22:%22open%22,%22userId%22:%22106663353829707201139%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing) by asking it to modify my old Combo Workout ([Evernote](https://share.evernote.com/note/926479d4-d116-45de-98ec-a85743210407)).  See [[Health/Exercise/Combo Workout Revised Short.md#AI Design |AI Design]] and [[Health/Exercise/Combo Workout Revised Short.md#My Modifications to AI Design (below) |My Modifications to AI Design (below)]].  Also see [[Combo Workout Revised Long]].
 ## Workout Summary
 
-*   **Supersets (A, B, C):** Perform the two exercises in a pair (e.g., A1 then A2) back-to-back with minimal rest in between. Rest for 60-90 seconds only *after* completing the pair. Then, repeat for the total number of sets. 
+***Supersets (A, B, C):** Perform the two exercises in a pair (e.g., A1 then A2) back-to-back with minimal rest in between. Rest for 60-90 seconds only *after* completing the pair. Then, repeat for the total number of sets. 
 
 | Phase               | Exercise                                                                                      | Sets | Reps/Dur         | Weight, kg |
 |:------------------- |:--------------------------------------------------------------------------------------------- |:---- |:---------------- | ---------- |
@@ -35,17 +29,18 @@ Also see [[Combo Workout Revised Long]]
 |                     | 4. Scapular adduction and<br>upward rotation, prone<br>on roll                                | 2    | 60 s             |            |
 |                     | 5. Scapular adduction and <br>downward rotation and neck<br>extensor, sitting on matt         | 3    | 30 s             |            |
 
-### Kyphosis exercises (from  **[[Seidi14hyperKyposisExrcsEffic#Exercise timings/reps/durations?\|Seidi14hyperKyposisExrcsEffic]]**)
+## My Modifications to AI Design (below)
+- Removed the Standing Ankle Stretch from the cool-down at the end: the PT said I didn't have ankle mobility problems; I'm already doing several functional exercises what require ankle range of motion; and because some study said that functional exercises were more effective than stretching.  I also turned it into superset **D**.
+- Added the five CCEP kyphosis (hunchback) exercises in [[Seidi14hyperKyposisExrcsEffic]] That paper's workout description was vague, so I mixed it with part of a related but far longer workout in a citing paper, [[Elpeze22kyphosisAdolescCCEP]].  From that paper, I'm including only a single iteration of its simplest "superset.".
+# AI Design
 
-
-## AI Design
+I asked Google Gemini to critique [my original Combo Home Program](https://share.evernote.com/note/926479d4-d116-45de-98ec-a85743210407), an evernote page combining my PT workouts for running and back problems, with some upper body mixed in.  It was too long and too incoherent.
 ### AI Response
 Of course. This is an excellent set of goals and you've got a solid foundation. We can definitely make this routine more time-efficient while better targeting your specific goals, especially the hunchback and bicep development.
 
 Your analysis is spot on: the key to shortening the workout is better supersetting and removing redundancy. We'll restructure your routine into a clear Warm-up, a Main Workout block, and a Cool-down.
 
 Here is the analysis and the proposed new routine.
-
 #### Analysis of Your Current Routine
 
 *   **Strengths:** You have excellent exercises for knee/hip stability (Side Stepping, Lateral Step Downs, SLDL) and calf resilience (Heel Lowering). The PT-recommended Goblet Squats and your Hip Thrusts are fantastic choices for your goals.
@@ -53,13 +48,9 @@ Here is the analysis and the proposed new routine.
     1.  **Hunchback Treatment is Incomplete:** Hunchback (kyphosis) is often caused by tight chest muscles and weak upper back muscles (rhomboids, traps). Your routine has push-ups (which tighten the chest) but **no pulling exercises** to strengthen the upper back. This is the single biggest gap we need to fill.
     2.  **Bicep Goal is Unaddressed:** There are no exercises that target the biceps.
     3.  **Inefficient Structure:** The first three exercises are done sequentially without supersets, which takes a lot of time. Many of your "exercises" are actually mobility drills or activation work that are better suited for a warm-up.
-
----
-
 #### The Proposed, Time-Efficient Routine
 
 This routine is built around antagonist supersets (e.g., push/pull) and upper/lower body pairings. This is the most efficient way to work out, as one muscle group rests while the other works, dramatically cutting down on total rest time. The superset structure is exactly as you described: perform one set of A1, then one set of A2, rest briefly, and repeat for all sets.
-
 ##### **Part 1: Dynamic Warm-up & Activation (5 minutes)**
 
 *Instead of being part of the main workout, we'll move your activation and mobility work here to prepare your body.*
@@ -158,4 +149,4 @@ Goblet Squat
 - [[Combo Workout Revised Long]]
 - [[Vella18newAnatomyStrngthTrnBk|Vella18: New anatomy for strength & fitness training: An illustrated guide to your muscles in action including exercises used in CrossFit®, P90X®, and other popular fitness programs]]  
 - Probably high load for strength (and for running, lower sets?): [[Currier23ResistTrnStrngthHyperBayesNet|Currier23: Resistance training prescription for muscle strength and hypertrophy in healthy adults: a systematic review and Bayesian network meta-analysis]] 
-- 
+- [[Seidi14hyperKyposisExrcsEffic|Seidi14: The efficiency of corrective exercise interventions on thoracic hyper-kyphosis angle]] 
