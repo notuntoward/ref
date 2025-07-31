@@ -30,7 +30,7 @@ ZoteroTags:
 ZoteroCollections:
   - cognition
 created date: 7/29/2025, 3:41:35 PM
-modified date: 2025-07-29T16:14:31-07:00
+modified date: 2025-07-30T11:59:24-07:00
 ---
 
 > [!info]- &nbsp;[**Zotero**](zotero://select/library/items/JS3TWZL3)  | [**DOI**](https://doi.org/10.1037/0022-3514.85.3.499) | **[[Carson03creativeLowInhibHiIQ.pdf|PDF]]**

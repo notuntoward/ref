@@ -1,6 +1,6 @@
 ---
 created date: 2025-07-23T23:43:23-07:00
-modified date: 2025-07-30T09:03:22-07:00
+modified date: 2025-07-30T14:12:20-07:00
 category:
   - topic-note
 tags:
@@ -12,7 +12,8 @@ tags:
 ## Sources
 - [Cognitive Interventions: Boosting Older Adult Brain Health (my notebooklm)](https://notebooklm.google.com/notebook/4025cdeb-7477-4619-a708-c9a5c1003172)
 - [[Cognitive Training]]
-- [[Diet and Cognition]]: creatine, etc.
+- [[Cognition and Diet]]: creatine, etc.
+- [Mayo's definition of mild cognitive impairment](https://www.mayoclinic.org/diseases-conditions/mild-cognitive-impairment/symptoms-causes/syc-20354578)
 ## Training available in Minnesota
 
 ### Physical Training
@@ -80,14 +81,18 @@ All nine run **predominantly in person**, align with published evidence on resis
 - [ForeverWell \| alexandriaymca....](https://alexandriaymca.com/foreverwell)
 - [[July ForeverWell Schedule.pdf|July ForeverWell Schedule Alex]]
 	- Doesn't seem to have 2 strength sessions/wk.  Instead 1 is balance, 1 is strength
-	- [ ] # Call Jeni or Tammi, (320) 834-9622
+	- [x] # Call Jeni or Tammi, (320) 834-9622
 		- I actually talked to Autumn
 		- how get 2 strength sessions [[Ribeiro25resistTrainProtectMildCog|Ribeiro25resistTrainProtectMildCog]] level training?
 		- want group activities
 		- private trainer mix?
 - Autumn: amarshall@alexandriaymca.com her extension is 111
-	- supplemental insurance might cover cost of membership
-	- he can show them his insurance card, they'll figure it out
+	- talked to her on 7/25/25 or so
+	- [ ] I'll email her about Dad and my cognition and exercise stuff e.g. results in [[Reinert25weightTrainCogDeclineAge|Reinert25: Weight Training May Slow Cognitive Decline and Protect Aging Brains]] and the paper, [[Ribeiro25resistTrainProtectMildCog]]
+	- [ ] I'll email Dad about her
+	- she said
+		- supplemental insurance might cover cost of membership
+		- he can show them his insurance card, they'll figure it out
 ## Vital Fit Club Strength Training (Alex)
 - [seems not senior-focused](https://www.perplexity.ai/search/https-www-brainhq-com-appears-3fz3os2lTJuD_PRVpbpg7w#1)
 ## Fit & Strong near Alex
