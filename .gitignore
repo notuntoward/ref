@@ -1,5 +1,6 @@
 old/
 org-roam/
+evernote_to_obsidian/data/
 papers.speakerClust/
 DOE_brainstorm/
 EV adoption papers inspired by Norway/
@@ -56,3 +57,4 @@ obsidian/Obsidian Share Vault/.obsidian/hotkeys.json
 refwrangle/zmknote/dist/zotero_item_receiver.log
 refwrangle/test/split_footnotes_body_test.py
 obsidian/Obsidian Share Vault/Evernote/
+

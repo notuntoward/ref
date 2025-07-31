@@ -16,12 +16,12 @@ How to get my Evernotes into Obsidian.
 		- has links to its attachments
 	- an .md file 
 		- with the best markdown rendering of that note possible
-		- has all evernote meta info in the properties
+		- has all Evernote meta info in the properties
 		- a link to the corresponding .html file
 		- links to any attachments in the evernote file
 	- the html and m
 
-- evernote tags become evernote tags
+- Evernote tags become Evernote tags
 - filenames have 
 - Exports 
 # Obsidian Importer Plugin
@@ -29,7 +29,7 @@ From: [GitHub - obsidianmd/obsidian-i...](https://github.com/obsidianmd/obsidian
 
 i.e. ENEX --> Obsidian importer ---> Obsidian Markdown
 
-- My Feature Request (it does kinda handle internal evernote links): [Feature Request: Handle Everno...](https://github.com/obsidianmd/obsidian-importer/issues/279)
+- My Feature Request (it does kinda handle internal Evernote links): [Feature Request: Handle Everno...](https://github.com/obsidianmd/obsidian-importer/issues/279)
 ## Importer Plugin Test results 3/23/25
 
 ==This wasn't great.==
@@ -45,12 +45,12 @@ i.e. ENEX --> Obsidian importer ---> Obsidian Markdown
 - **Meh**
 	- Tables seem to survive, but not the colored cells
 	- some web page pictures survive but not all
-	- ? Some inter-evernote links go to note imported to evernote; some to Evernote's web page of the note (maybe client with some config).  How fix.
+	- ? Some inter-Evernote links go to note imported to Evernote; some to Evernote's web page of the note (maybe client with some config).  How fix.
 - **Bad**
 	- web pages are markdown
 	- pictures and most everything else graphic are gone.  I *really* don't like this
 	- [ ] ? can only import 100 notes at a time.  How automate this?
-	- No link back to original evernote page, yet some inter-evernote links do go to original web page (note really good if have an imported version of the same)
+	- No link back to original Evernote page, yet some inter-Evernote links do go to original web page (note really good if have an imported version of the same)
 	- still has giant icon 
 - **Also**
 	- [[Evernote to Obsidian and Zotero]]
@@ -97,17 +97,23 @@ A python script that's [said](https://github.com/AltoRetrato/evernote2obsidian) 
 - BUT, done separately, not a nice markdown-link-to-html like with yarle option
 	- [ ] @ look into hacking the python to do this, could submit a PR, but first try it out.
 - last update was 3 days ago (on 7/29/25)
-## Install evernote-backup
+## Install needed code
+### Install evernote-backup
+- required for evernote2obsidian
 - [ ] I've [requested](https://help.evernote.com/hc/en-us/requests/new?ticket_form_id=38709470427923) an Evernote API key for this
 - I installed evernote-backup to as a standard windows command line tool with :
 ```bash
 uv tool install evernote-backup
 ```
 
-How to use: [evernote-backup usage](https://github.com/vzhd1701/evernote-backup/?tab=readme-ov-file#usage)
-## Install evernote2obsidan
+How to use: [evernote-backup usage](https://github.com/vzhd1701/evernote-backup/?tab=readme-ov-file#usage).  
 
-### Fork it and clone it to local dir
+- On Windows, you have to <u>run this on a windows terminal</u>, not an eshell or a git bash term.
+- I didn't get a personal Evernote key, as suggested.  I tried, but Evernote customer service didn't respond.  Seems like it may work without my own key.
+- [x] it failed, but ran the next time I tried it: [\[Bug\]: backup fails but then...](https://github.com/vzhd1701/evernote-backup/issues/144)
+### Install evernote2obsidan
+
+#### Fork it and clone it to local dir
 
 - By default, this will `git push` will go to my fork (origin). For more details see [this](https://www.perplexity.ai/search/write-the-commands-to-fork-thi-.j8_TA3_QFmDiQETiprvig#1).
 - [ ] ? add this to [[uv package manager]] and [[Git Source Code Control]]
@@ -138,7 +144,7 @@ cd evernote2obsidian
 # (looks good)
 git remote -v
 ```
-### Set up uv around it
+#### Set up uv around it
 ```bash
 # Initialize UV project (this will create pyproject.toml and other files)
 
@@ -193,7 +199,7 @@ git branch -m new-branch-name
 # or rename some other branch
 git branch -m old-branch-name new-branch-name
 ```
-How to do it later (DON'T WANT TO, THOUGH)
+How to do it later (I'M NOT DOING THAT THIS TIME, THOUGH)
 ```bash
 # If you've already made commits on main, you can create a branch from those commits
 git checkout -b my-feature-branch
@@ -203,6 +209,23 @@ git checkout main
 git reset --hard upstream/main
 ```
 
-## Do the export
+## Download notes, convert to enex
 
-See [this](https://www.perplexity.ai/search/when-people-use-yarle-to-expor-c98liLYXT_CRpUu34yVnCg#9)
+See [this](https://www.perplexity.ai/search/when-people-use-yarle-to-expor-c98liLYXT_CRpUu34yVnCg#9)  
+
+```bash
+# don't forget to add this dir to .gitignore
+cd c:/Users/scott/OneDrive/share/ref/evernote_to_obsidian
+
+# first and only time init
+evernote-backup init-db
+
+# sync
+evernote-backup sync
+
+# extract the .enex files
+evernote-backup export exported_enex
+```
+
+```
+```

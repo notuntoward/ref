@@ -3042,11 +3042,13 @@ Version 2019-11-04 2021-02-16"
 (global-set-key [f2] 'vc-dir)
 (global-set-key [f3] 'ediff-files)
 (global-set-key [f4] 'indent-buffer)
+; [f5] assigned to deadgrep by default, I think
 (global-set-key [f6] 'rgrep)
 (global-set-key [f7] 'clear-buffer)
 (global-set-key [f8] 'compile)
 (global-set-key [f9] 'align-equals)
-;; f10 reserved for remote desktop (vnc, thinlink, etc.)
+;; f10 WAS reserved for remote desktop (vnc, thinlink, etc.)
+;; f10 NOW reserved for logihubG Illumination Toggle (backlight, on 7/31/25)
 (global-set-key [f11] 'eshell) ; almost Unix, consistent across OS's
 ;; (global-set-key [C-f11] 'shell) ; native shell, (make OS-dependent, above)
 ;;
@@ -3054,18 +3056,19 @@ Version 2019-11-04 2021-02-16"
 (global-set-key [f12] 'repeat-complex-command)
 
 ;; ** prevent find-file-literally from wiping out saved place
+;; OBSOLETE as of emacs 29.1
+;;
+;; ;; So find-file-literally doesn't wipe out place when visiting
+;; ;; org-files.  This was a problem for consult preview.  It will be
+;; ;; fixed in emacs 29.1
+;; ;; https://github.com/minad/consult/issues/465
+;; (with-eval-after-load 'saveplace
+;;   (defun my/dont-save-place-when-find-file-literally (orig-fun &rest args)
+;;     (unless find-file-literally
+;;       (apply orig-fun args)))
 
-;; So find-file-literally doesn't wipe out place when visiting
-;; org-files.  This was a problem for consult preview.  It will be
-;; fixed in emacs 29.1
-;; https://github.com/minad/consult/issues/465
-(with-eval-after-load 'saveplace
-  (defun my/dont-save-place-when-find-file-literally (orig-fun &rest args)
-    (unless find-file-literally
-      (apply orig-fun args)))
-
-  (advice-add #'save-place-to-alist
-              :around #'my/dont-save-place-when-find-file-literally))
+;;   (advice-add #'save-place-to-alist
+;;               :around #'my/dont-save-place-when-find-file-literally))
 
 
 ;; * Search and Replace (see also Swiper/Ivy)
