@@ -3224,7 +3224,6 @@ folder, otherwise delete a word"
   :init
   (vertico-mode))
 
-
 ;; ** Improved Candidate Filtering with Orderless
 
 (use-package orderless
